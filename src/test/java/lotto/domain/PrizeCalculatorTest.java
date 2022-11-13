@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.stream.Stream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -15,7 +16,8 @@ public class PrizeCalculatorTest {
     @MethodSource("provideParameters")
     @DisplayName("로또와 당첨 번호를 비교해서 일치하는 숫자 개수를 구한다")
     void compareLottoAndWinningNumber(Lotto lotto, List<Integer> winningNumber, int result) {
-        assertThat(PrizeCalculator.compareWinningNumbers(lotto, winningNumber)).isEqualTo(result);
+        PrizeCalculator prizeCalculator = new PrizeCalculator();
+        assertThat(prizeCalculator.compareWinningNumbers(lotto, winningNumber)).isEqualTo(result);
     }
     private static Stream<Arguments> provideParameters() {
         return Stream.of(
@@ -42,6 +44,7 @@ public class PrizeCalculatorTest {
             "6,false,2_000_000_000"
     })
     void returnMatchingPrize(int matchingNumber, boolean bonus, long prizeAmount){
-        assertThat(PrizeCalculator.getPrizeAmount(matchingNumber, bonus)).isEqualTo(prizeAmount);
+        PrizeCalculator prizeCalculator = new PrizeCalculator();
+        assertThat(prizeCalculator.getPrizeAmount(matchingNumber, bonus)).isEqualTo(prizeAmount);
     }
 }

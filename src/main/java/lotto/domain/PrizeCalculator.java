@@ -1,37 +1,34 @@
 package lotto.domain;
 
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
+
 import lotto.constant.LottoStatistic;
+import lotto.constant.PrizeStatistic;
 
-public enum PrizeCalculator {
-    THREE_MATCH(3, false, 5000),
-    FOUR_MATCH(4, false, 50_000),
-    FIVE_MATCH(5, false, 1_500_000),
-    FIVE_MATCH_PLUS_BONUS(5, true, 30_000_000),
-    SIX_MATCH(6, false, 2_000_000_000);
+public class PrizeCalculator {
+    private long totalPrizeAmount;
+    private Map<PrizeStatistic, Integer> prizeCount;
 
-    private final int matchingNumbers;
-    private final boolean bonus;
-    private final long prizeAmount;
-    private int count;
-
-    PrizeCalculator(int matchingNumbers, boolean bonus, long prizeAmount) {
-        this.matchingNumbers = matchingNumbers;
-        this.bonus = bonus;
-        this.prizeAmount = prizeAmount;
-        this.count = 0;
+    public PrizeCalculator() {
+        this.totalPrizeAmount = 0;
+        this.prizeCount = new EnumMap<>(PrizeStatistic.class);
+        for (PrizeStatistic prize : PrizeStatistic.values()) {
+            prizeCount.put(prize, 0);
+        }
     }
 
-    public static long getResultForLotto(Lotto lotto, List<Integer> winningNumbers, int bonusNumber) {
+    public void getResultForLotto(Lotto lotto, List<Integer> winningNumbers, int bonusNumber) {
         int matchingCount = compareWinningNumbers(lotto, winningNumbers);
         boolean doesBonusMatch = false;
         if (matchingCount == LottoStatistic.NUMBER_OF_LOTTERY_NUMBERS.getValue() - 1) {
             doesBonusMatch = lotto.doesContainNumber(bonusNumber);
         }
-        return getPrizeAmount(matchingCount, doesBonusMatch);
+        this.totalPrizeAmount += getPrizeAmount(matchingCount, doesBonusMatch);
     }
 
-    public static int compareWinningNumbers(Lotto lotto, List<Integer> winningNumbers) {
+    public int compareWinningNumbers(Lotto lotto, List<Integer> winningNumbers) {
         int count = 0;
         for (int number : winningNumbers) {
             if (lotto.doesContainNumber(number)) {
@@ -41,19 +38,19 @@ public enum PrizeCalculator {
         return count;
     }
 
-    public static long getPrizeAmount(int numberOfMatches, boolean doesBonusMatch) {
+    public long getPrizeAmount(int numberOfMatches, boolean doesBonusMatch) {
         long prizeAmount = 0;
-        for (PrizeCalculator prize : values()) {
-            if (prize.matchingNumbers == numberOfMatches && prize.bonus == doesBonusMatch){
-                prize.increaseCount();
-                prizeAmount = prize.prizeAmount;
+        for (PrizeStatistic prize : PrizeStatistic.values()) {
+            if (prize.getMatchingNumbers() == numberOfMatches && prize.geBonus() == doesBonusMatch){
+                prizeCount.merge(prize, 1, Integer::sum);
+                prizeAmount = prize.getPrizeAmount();
                 return prizeAmount;
             }
         }
         return prizeAmount;
     }
 
-    private void increaseCount() {
-        this.count++;
-    }
+    /*public void printPrizeResult() {
+
+    }*/
 }
