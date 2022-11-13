@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -16,10 +17,11 @@ public class Lotto {
         }
     }
 
-    public List<Integer> asList(){
-        return this.numbers;
+    public List<Integer> asSortedList(){
+        List<Integer> dup = this.numbers;
+        Collections.sort(dup);
+        return dup;
     }
-
 
     // TODO: 추가 기능 구현
 }

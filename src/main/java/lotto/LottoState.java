@@ -7,8 +7,8 @@ public enum LottoState {
     MATCH_THREE(3),
     MATCH_FOUR(4),
     MATCH_FIVE(5),
-    MATCH_FIVE_WITH_BONUS(5.5),
-    MATCH_SIX(6);
+    MATCH_SIX(6),
+    MATCH_FIVE_WITH_BONUS(7);
 
     LottoState(double howMuchYouHit){
     }
