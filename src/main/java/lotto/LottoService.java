@@ -27,7 +27,8 @@ public class LottoService {
     public List<Lotto> generateLottoList(int size){
         List<Lotto> generatedLottos = new ArrayList<>();
         for (int index = 0; index < size; index ++){
-            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+            List<Integer> randomNumbers = new ArrayList<>(
+                    Randoms.pickUniqueNumbersInRange(1,45,6));
             randomNumbers.sort(null);
             Lotto lotto = new Lotto(randomNumbers);
             generatedLottos.add(lotto);
