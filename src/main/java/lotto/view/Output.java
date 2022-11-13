@@ -1,7 +1,6 @@
 package lotto.view;
 
 import java.util.Map;
-import lotto.domain.User;
 import lotto.domain.WinningLotto;
 
 public class Output {

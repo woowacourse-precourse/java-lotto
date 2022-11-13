@@ -22,7 +22,6 @@ public class LottoMachine {
         List<Integer> lottoNumbers = lotto.getNumbers();
         return lottoNumbers.stream().filter(number -> this.winningLottoNumber.getWinningNumber().stream()
                 .anyMatch(Predicate.isEqual(number))).collect(Collectors.toList()).size();
-
     }
 
     public WinningLottoTicket createLottoTicket(LottoList lottoList) {
