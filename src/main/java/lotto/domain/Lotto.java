@@ -24,6 +24,10 @@ public class Lotto {
             throw new IllegalArgumentException(ERROR_NUMBERS_COUNT);
         }
         validateDuplicateNumber(numbers);
+        validateNumberRange(numbers);
+    }
+
+    private void validateNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number > LOTTO_RANGE_MAX || number < LOTTO_RANGE_MIN) {
                 throw new IllegalArgumentException(ERROR_NUMBER_RANGE);
