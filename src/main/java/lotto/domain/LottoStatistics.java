@@ -9,10 +9,10 @@ import java.util.List;
 
 public class LottoStatistics {
     public void getLottoStatistics(LottoBuyer lottoBuyer, LottoWinningNumber lottoWinningNumber) {
-        List<Lotto> lottos = lottoBuyer.getLottoTickets();
+        List<Lotto> lottoTickets = lottoBuyer.getLottoTickets();
         LottoResults lottoResults = lottoBuyer.getLottoResults();
 
-        for (Lotto lotto : lottos) {
+        for (Lotto lotto : lottoTickets) {
             List<Integer> lottoNumbers = lotto.getLotto();
             int lottoCount = countLottoNumber(lottoNumbers, lottoWinningNumber.getLottoWinningNumbers());
             boolean isBonus = checkIsBonus(lottoNumbers, lottoWinningNumber.getBonusNumber());
@@ -22,13 +22,9 @@ public class LottoStatistics {
 
 
     private int countLottoNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
-        int lottoCount = 0;
-        for (int number : winningNumbers) {
-            if (lottoNumbers.contains(number)) {
-                lottoCount += 1;
-            }
-        }
-        return lottoCount;
+        return (int) winningNumbers.stream()
+                .filter(s -> lottoNumbers.contains(s))
+                .count();
     }
 
     private boolean checkIsBonus(List<Integer> lottoNumbers, int bonusNumber) {
