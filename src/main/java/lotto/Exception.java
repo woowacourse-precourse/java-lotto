@@ -43,13 +43,11 @@ public class Exception {
 
     public static boolean isNotInRange(List<Integer> winningNumber) {
         for (int number : winningNumber) {
-            return checkOneNumber(number);
+            if (number < 1 || number > 45) {
+                return true;
+            }
         }
         return false;
-    }
-
-    private static boolean checkOneNumber(int number) {
-        return number < 1 || number > 45;
     }
 
 }
