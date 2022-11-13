@@ -12,6 +12,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+        System.out.println(this.numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -19,14 +20,14 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-    public static ArrayList<Object> randomNumberGenerate(int numberOfGame){
+    public static ArrayList<List<Integer>> randomNumberGenerate(int numberOfGame){
         int i = 0;
-        ArrayList<Object> userNumber = new ArrayList<>();
+        ArrayList<List<Integer>> userNumber = new ArrayList<>();
         do{
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(numbers);
             Lotto num = new Lotto(numbers);
-            userNumber.add(numbers);
+            userNumber.add(num.numbers);
             i ++;
         }while (i != numberOfGame);
         return userNumber;
