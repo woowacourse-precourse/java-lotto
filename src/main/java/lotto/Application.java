@@ -11,6 +11,10 @@ public class Application {
         System.out.println("구입금액을 입력해 주세요.");
         String moneyString =Console.readLine();
         int moneyInt = moneyExceptionHandling(moneyString);
+        List<List<Integer>> lottoList = makeLottoList(moneyInt);
+
+        System.out.printf("\n%d개를 구매했습니다.",moneyInt);
+        printLottoList(lottoList);
     }
 
     public static int moneyExceptionHandling(String moneyString){
@@ -36,5 +40,11 @@ public class Application {
             lottos.add(newLotto);
         }
         return lottos;
+    }
+
+    public static void printLottoList(List<List<Integer>> lottoList){
+        for(int i = 0; i< lottoList.size(); i++){
+            System.out.println(lottoList.get(i));
+        }
     }
 }
