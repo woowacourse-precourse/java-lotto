@@ -2,6 +2,7 @@ package lotto.utils;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Amount;
+import lotto.domain.Bonus;
 import lotto.domain.Lotto;
 
 import java.util.NoSuchElementException;
@@ -20,6 +21,12 @@ public final class Input {
     public static Lotto inputWinningNumbers() {
         String input = Console.readLine();
         return new Lotto(parseInputToIntegerList(input));
+    }
+
+    public static Bonus inputBonusNumber() {
+        String input = Console.readLine();
+        validateParseStringToInteger(input);
+        return new Bonus(Integer.parseInt(input));
     }
 
     private static void validateParseStringToInteger(String input) {
