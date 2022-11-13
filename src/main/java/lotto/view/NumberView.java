@@ -18,9 +18,14 @@ public class NumberView {
     }
     private static List<Integer> getWinNumbersFormat(String input) {
         List<Integer> result = new ArrayList<Integer>();
-        for (String num : input.split(",")) {
-            result.add(Integer.valueOf(num));
+        try {
+            for (String num : input.split(",")) {
+                result.add(Integer.valueOf(num));
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호를 쉽표(,)로 구분해주세요.");
         }
+
         return result;
     }
     private static List<Integer> checkWinNumbers(String input) {
