@@ -1,6 +1,7 @@
 package function;
 
 import java.io.ByteArrayInputStream;
+import lotto.Ui;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,10 +12,10 @@ public class PurchaseAmountTest {
 
     @DisplayName("정상적인 입력")
     @Test
-    void correctInput() {
+    void correctInput() throws IllegalAccessException {
         String data = "5000";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        assertThat(inputAmount()).isEqualTo("5000");
+        assertThat(Ui.inputPurchaseAmount()).isEqualTo(5000);
     }
 
     @DisplayName("숫자가 아닌 경우")
@@ -22,17 +23,17 @@ public class PurchaseAmountTest {
     void notNumber() {
         String data = "5000a";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        assertThatThrownBy(() -> inputAmount())
+        assertThatThrownBy(() -> Ui.inputPurchaseAmount())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("ERROR: 구입금액은 숫자만 입력이 가능합니다.");
     }
 
     @DisplayName("1000으로 나누어 떨어지지 않는 경우")
     @Test
-    void notDivisibleBy1000(){
+    void notDivisibleBy1000() {
         String data = "5001";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        assertThatThrownBy(() -> inputAmount())
+        assertThatThrownBy(() -> Ui.inputPurchaseAmount())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("ERROR: 구입금액이 1000으로 나누어 떨어지지 않습니다.");
     }
