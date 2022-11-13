@@ -13,14 +13,14 @@ public class ComparisonTest {
 	List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
 	int bonusNumber = 45;
 
-	@DisplayName("로또 1등 당첨 확인")
+	@DisplayName("당첨 번호와 일치하는 번호의 개수가 6개인 경우")
 	@Test
 	void compareLotto() {
 		List<Integer> myLotto = List.of(1, 2, 3, 4, 5, 6);
 		assertEquals(Comparison.matchLottoCount(winningLotto, myLotto), 6);
 	}
 
-	@DisplayName("로또 2등 당첨 확인")
+	@DisplayName("당첨 번호와 일치하는 번호의 개수가 5개이고, 보너스 번호가 일치하는 경우")
 	@Test
 	void compareLotto2() {
 		List<Integer> myLotto = List.of(1, 2, 3, 4, 5, 45);
@@ -30,28 +30,28 @@ public class ComparisonTest {
 		);
 	}
 
-	@DisplayName("로또 3등 당첨 확인")
+	@DisplayName("당첨 번호와 일치하는 번호의 개수가 5개인 경우")
 	@Test
 	void compareLotto3() {
 		List<Integer> myLotto = List.of(1, 2, 3, 4, 5, 45);
 		assertEquals(Comparison.matchLottoCount(winningLotto, myLotto), 5);
 	}
 
-	@DisplayName("로또 4등 당첨 확인")
+	@DisplayName("당첨 번호와 일치하는 번호의 개수가 4개인 경우")
 	@Test
 	void compareLotto4() {
 		List<Integer> myLotto = List.of(1, 2, 3, 4, 44, 45);
 		assertEquals(Comparison.matchLottoCount(winningLotto, myLotto), 4);
 	}
 
-	@DisplayName("로또 5등 당첨 확인")
+	@DisplayName("당첨 번호와 일치하는 번호의 개수가 3개인 경우")
 	@Test
 	void compareLotto5() {
 		List<Integer> myLotto = List.of(1, 2, 3, 43, 44, 45);
 		assertEquals(Comparison.matchLottoCount(winningLotto, myLotto), 3);
 	}
 
-	@DisplayName("로또 꽝 확인")
+	@DisplayName("당첨 번호와 일치하는 번호의 개수가 2개인 경우")
 	@Test
 	void compareLotto6() {
 		List<Integer> myLotto = List.of(1, 2, 43, 44, 45, 46);
