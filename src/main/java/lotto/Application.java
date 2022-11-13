@@ -4,17 +4,17 @@ public class Application {
     public static void main(String[] args) {
 
         Buyer buyer = new Buyer();
-        int buyMoney = buyer.inputBuyLottoMoney();
+        int buyMoney = buyer.validateBuyLottoMoney(buyer.inputBuyLottoMoney());
         int cnt = buyer.calculateLotteryNum(buyMoney);
         buyer.setLottos(cnt);
         buyer.printBuyLotto();
 
         LotteryMachine lotteryMachine = new LotteryMachine();
-        lotteryMachine.makeWinningLottoNum();
-        lotteryMachine.makeBonusNum(lotteryMachine.getLotto().getNumbers());
+        lotteryMachine.makeWinningLottoNum(lotteryMachine.inputWiningLottoNum());
+        lotteryMachine.makeBonusNum(lotteryMachine.getLotto().getNumbers(), lotteryMachine.inputBonusNum());
 
         int[] lottoResult = lotteryMachine.calculateLottoResult(buyer);
         lotteryMachine.printResult(lottoResult);
-        lotteryMachine.printRateOfReturn(lottoResult, buyMoney);
+        lotteryMachine.printRateOfReturn(lotteryMachine.calculateRateOfReturn(lottoResult, buyMoney));
     }
 }

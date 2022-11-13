@@ -29,6 +29,4 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(0, 46, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-
 }
