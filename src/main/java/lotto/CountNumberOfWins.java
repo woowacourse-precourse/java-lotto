@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class CountNumberOfWins {
     private int firstPlace;
     private int secondPlace;
@@ -17,5 +19,17 @@ public class CountNumberOfWins {
         this.fifthPlace = 0;
         this.buyLotto = buyLotto;
         this.winningNumbers = winningNumbers;
+    }
+
+    private List<List<Integer>> setBuyLotto() {
+        return buyLotto.issue();
+    }
+
+    private List<Integer> setWinningNumbers() {
+        return winningNumbers.input();
+    }
+
+    private int setBonusNumber() {
+        return winningNumbers.inputBonusNumber();
     }
 }
