@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("[TEST] UserServiceTest")
 class UserServiceTest {
@@ -30,6 +32,16 @@ class UserServiceTest {
                 .isPositive()
                 .isGreaterThan(-1)
                 .isEqualTo(1555000);
+    }
+
+    @Test
+    @DisplayName("구입한 로또 하나가 몇개의 숫자를 맞췄는지 반환한다.")
+    void checkTheNumberOfWinsTest() {
+        UserService userService = new UserService();
+        Lotto winningNumbers = new Lotto(Arrays.asList(1,2,3,4,5,6));
+        Lotto checkingNumbers = new Lotto(Arrays.asList(1,11,3,4,5,6));
+        assertThat(userService.checkTheNumberOfWinsInOne(winningNumbers,checkingNumbers))
+                .isEqualTo(5);
     }
 
 }
