@@ -89,10 +89,10 @@
   - checkDivideBy1000() : 구매금액이 1000원으로 나누었을 때 나누어 떨어지는지 확인하는 함수
   - receiveLottoSheetsCount(lottoSheetsAmount) : 구매금액을 받아 구매장수를 정하는 함수
   - generateRandomNumber(int lottoSheetsCount) : 6개의 번호를 랜덤으로 부여한 한 장의 로또를 구매금액에 맞춰 여러 장 생성
-### BonusNumberService
+### BonusNumberService (개발완료📌️)
 - function
   - generateBonusNumber() : 보너스 넘버를 받아올 함수
-  - checkNotEqualWinningNumber(bonusNumber) : 보너스 숫자를 인자로 받아 당첨번호와 다른지 확인하는 함수
+  - checkNotEqualWinningNumber(winningNumberList, bonusNumber) : 보너스 숫자를 인자로 받아 당첨번호와 다른지 확인하는 함수
   - checkBonusRange(bonusNumber) : 보너스 숫자를 받아 보너스 숫자가 1~45 사이의 숫자인지 확인하는 함수
 ### WinningNumberService (개발완료📌️)
 - function
