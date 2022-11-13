@@ -3,12 +3,13 @@ package lotto.domain;
 import java.util.Arrays;
 
 public enum Rank {
-    FIRST(6, false, 2_000_000_000L),
-    SECOND(5, true, 30_000_000L),
-    THIRD(5, false, 1_500_000L),
-    FOURTH(4, false, 50_000L),
+    BANG(0, false, 0L),
     FIFTH(3, false, 5_000L),
-    BANG(0, false, 0L);
+    FOURTH(4, false, 50_000L),
+    THIRD(5, false, 1_500_000L),
+    SECOND(5, true, 30_000_000L),
+    FIRST(6, false, 2_000_000_000L);
+
 
     private final int sameNumbersCount;
     private final boolean hasBonusNumber;
@@ -25,6 +26,14 @@ public enum Rank {
                 .filter(rank -> rank.check(sameNumbersCount, hasBonusNumber))
                 .findAny()
                 .orElse(BANG);
+    }
+
+    public int getSameNumbersCount() {
+        return sameNumbersCount;
+    }
+
+    public boolean hasBonusNumber() {
+        return hasBonusNumber;
     }
 
     public long getPrize() {
