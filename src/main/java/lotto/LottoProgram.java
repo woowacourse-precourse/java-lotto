@@ -5,11 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import lotto.domain.Buyer;
+import lotto.domain.Generator;
 import lotto.domain.Lotto;
 
 public class LottoProgram {
@@ -60,6 +62,45 @@ public class LottoProgram {
         }
 
         Lotto.setBonusNumber(Integer.parseInt(bonusNumber));
+
+        Generator.calculateRank(buyer);
+
+        System.out.println(buyer.getWinningSummary().entrySet());
+
+        System.out.println("당첨 통계\n---");
+        HashMap<String, Integer> winningSummary = buyer.getWinningSummary();
+        List<Ranking> rankings = new ArrayList<Ranking>(
+                Arrays.asList(
+                        Ranking.FIFTH,
+                        Ranking.FOURTH,
+                        Ranking.THIRD,
+                        Ranking.SECOND,
+                        Ranking.FIRST)
+        );
+
+        rankings.stream()
+                .forEach(rank -> {
+                    int rankCount = winningSummary.get(rank.getLabel());
+                    if (rank.getLabel().equals(Lotto.RANK_SECOND)) {
+                        buyer.setTotalWinningPrize(rank.getPrize() * rankCount);
+                        System.out.printf(
+                                "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n",
+                                rank.getWinningCount(), rank.getPrizeLabel(),
+                                rankCount);
+                        return;
+                    }
+                    buyer.setTotalWinningPrize(rank.getPrize() * rankCount);
+                    System.out.printf(
+                            "%d개 일치 (%s원) - %d개\n",
+                            rank.getWinningCount(), rank.getPrizeLabel(),
+                            rankCount);
+                });
+
+        double totalPrize = Generator.profitCalculate(
+                buyer.getTotalPurchaseAmout(), buyer.getTotalWinningPrize());
+
+        System.out.printf("총 수익률은 %.1f%%입니다.", totalPrize);
+
     }
 
     private static void purchasedLottoSave() {
