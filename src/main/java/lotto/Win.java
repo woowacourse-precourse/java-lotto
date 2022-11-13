@@ -77,4 +77,14 @@ public class Win {
 
         view.printMessage(context.toString());
     }
+
+    public double getWinnings() {
+        double total = 0;
+
+        for (Rank rank : Rank.values()) {
+            total += rank.getWinnings() * ranking.get(rank);
+        }
+
+        return total;
+    }
 }
