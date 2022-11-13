@@ -8,13 +8,22 @@ public class LottoGame {
     private final LottoGenerator generator = new LottoGenerator();
 
     public void start() {
-        Print.money();
-        LottoAmount amount = new LottoAmount(Input.purchaseAmount());
+        LottoAmount amount = insertMoney();
         Lottos lottos = purchaseLotto(amount.makeLottoTickets());
         WinningLotto winningLotto = makeWinningLotto();
+        Map<LottoOperator, Integer> winningResult = makeResult(lottos, winningLotto);
+        Print.yield(amount.makeLottoTickets(), winningResult);
+    }
+
+    private LottoAmount insertMoney() {
+        Print.money();
+        return new LottoAmount(Input.purchaseAmount());
+    }
+
+    private Map<LottoOperator, Integer> makeResult(Lottos lottos, WinningLotto winningLotto) {
         Map<LottoOperator, Integer> winningResult = findWinningResult(lottos, winningLotto);
         Print.winningResult(winningResult);
-        Print.yield(amount.makeLottoTickets(), winningResult);
+        return winningResult;
     }
 
     private Lottos purchaseLotto(int lottoTickets) {
