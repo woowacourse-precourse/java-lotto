@@ -17,6 +17,18 @@ public class User {
         this.lottoWinTypeMap = new HashMap<>();
     }
 
+    public int getMoney() {
+        return money;
+    }
+
+    public List<Lotto> getNumbers() {
+        return numbers;
+    }
+
+    public Map<LottoWinType, Integer> getLottoWinTypeMap() {
+        return lottoWinTypeMap;
+    }
+
     public static User of(int money, List<Lotto> lottos) {
         return new User(money, lottos);
     }
