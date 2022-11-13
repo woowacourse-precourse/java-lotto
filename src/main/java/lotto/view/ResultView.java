@@ -8,6 +8,8 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.String.*;
+
 public class ResultView {
 
     private static final String PRE_SCORE_MESSAGE = "당첨 통계\n---";
@@ -18,7 +20,7 @@ public class ResultView {
 
 
     public void showNumberOfLottoPurchase(RandomLotto randomLotto) {
-        String format = String.format(PURCHASE_LOTTO_NUM_FORMAT, randomLotto.getNumberOfLottoGame());
+        String format = format(PURCHASE_LOTTO_NUM_FORMAT, randomLotto.getNumberOfLottoGame());
         System.out.println(format);
     }
 
@@ -34,11 +36,20 @@ public class ResultView {
         Map<Winning, Integer> winningResultMap = winningResult.getWinningResultMap();
 
         for (Winning winning : Winning.values()) {
-            String format = String.format(SCORE_MESSAGE_FORMAT,
+            String format = format(SCORE_MESSAGE_FORMAT,
                     winning.getMatchMessage(),
                     decimalFormat.format(winning.getPrizeMoney()),
                     winningResultMap.get(winning));
             System.out.println(format);
         }
+    }
+
+    public void showLottoYield(WinningResult winningResult, int inputAmount) {
+        float yield = 0;
+        for (Winning winning : Winning.values()) {
+            yield += winning.getPrizeMoney() * winningResult.getWinningResultMap().get(winning);
+        }
+        String format = format(PROFIT_MESSAGE_FORMAT, yield / inputAmount);
+        System.out.println(format);
     }
 }

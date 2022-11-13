@@ -26,7 +26,9 @@ public class LottoController {
         resultView.showAllRandomLottoNumbers(randomLotto);
 
         Lotto lotto = new Lotto(inputView.getWinningNums(), inputView.getBonusNum());
-        WinningResult winningResult = new WinningResult(lottoService.confirmWinningResult(randomLotto, lotto));
+        HashMap<Winning, Integer> winningResultMap = lottoService.confirmWinningResult(randomLotto, lotto);
+        WinningResult winningResult = new WinningResult(winningResultMap);
         resultView.showWinningResult(winningResult);
+        resultView.showLottoYield(winningResult, inputAmount);
     }
 }
