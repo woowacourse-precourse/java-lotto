@@ -18,4 +18,9 @@ public class UI {
                 .collect(Collectors.toList());
         Lotto lotto = new Lotto(numbers);
     }
+
+    public static int getBonusNumber() {
+        String inputNumber = Console.readLine();
+        return Integer.parseInt(inputNumber);
+    }
 }
