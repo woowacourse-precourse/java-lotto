@@ -38,7 +38,7 @@ public class OutputView {
 
     public static void YieldPrint(double summoney, int paymonney) {
         double result = summoney * 100 / paymonney;
-        System.out.println("총 수익률은 " + result + "%입니다.");
+        System.out.println("총 수익률은 " + String.format("%.1f",result) + "%입니다.");
     }
 
 
