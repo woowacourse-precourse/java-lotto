@@ -11,7 +11,7 @@ public class Application {
         buyLotto();
         //List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
-    public static void buyLotto(){
+    public static void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         pay = Integer.parseInt(Console.readLine());
     }
