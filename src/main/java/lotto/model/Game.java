@@ -60,7 +60,7 @@ public class Game {
     }
 
     private void validateBonusByRange(Integer bonus){
-        if (bonus > 45 || bonus < 1) throw new IllegalArgumentException();
+        if (bonus > maximumLottoNumber || bonus < 1) throw new IllegalArgumentException();
     }
 
 
