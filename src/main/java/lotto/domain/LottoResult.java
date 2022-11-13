@@ -36,8 +36,12 @@ public enum LottoResult {
         }
 
         return Arrays.stream(LottoResult.values())
-                .filter(lottoResult -> lottoResult.getNumberOfMatches() == numberOfMatches)
+                .filter(lottoResult -> lottoResult.hasSameNumberOfMatches(numberOfMatches))
                 .findFirst()
                 .get();
+    }
+
+    private boolean hasSameNumberOfMatches(long numberOfMatches) {
+        return this.numberOfMatches == numberOfMatches;
     }
 }
