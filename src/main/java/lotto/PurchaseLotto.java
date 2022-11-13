@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 import ui.PurchasePrint;
+import constant.ConstantLottoProgram;
 import exceptioncase.PurchaseException;
 import camp.nextstep.edu.missionutils.Randoms;
 public class PurchaseLotto {
@@ -29,7 +30,7 @@ public class PurchaseLotto {
     }
     private static List<Integer> makeRandomNumbers(){
         List<Integer> numbers = new LinkedList<>();
-        while(numbers.size()<6){
+        while(numbers.size()<ConstantLottoProgram.LOTTO_LENGTH.getLength()){
             int randomnumber = Randoms.pickNumberInRange(1,45);
             if(numbers.contains(randomnumber))
                 continue;

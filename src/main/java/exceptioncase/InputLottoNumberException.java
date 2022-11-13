@@ -2,7 +2,7 @@ package exceptioncase;
 
 import java.util.Arrays;
 import java.util.List;
-
+import constant.ConstantLottoProgram;
 public class InputLottoNumberException {
     public static void exceptionsTest(String inpnut){
         isFitness(inpnut);
@@ -12,7 +12,8 @@ public class InputLottoNumberException {
         if(bonusNumber.equals(""))
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         int numericBonusNumber = Integer.parseInt(bonusNumber);
-        if(numericBonusNumber>45 || numericBonusNumber<1)
+        if(numericBonusNumber>ConstantLottoProgram.RANGE_OF_LOTTO_NUMBER.getMax() ||
+                numericBonusNumber<ConstantLottoProgram.RANGE_OF_LOTTO_NUMBER.getMin())
             throw new IllegalArgumentException("[ERROR] 1이상 45이하 숫자를 입력해주세요.");
         if(answerNumbers.contains(numericBonusNumber))
             throw new IllegalArgumentException("[ERROR] 기존 당첨번호와 중복입니다.");
@@ -24,7 +25,7 @@ public class InputLottoNumberException {
     }
     private static void islength(String input){
         String[] inputNumbers = input.split(",");
-        if(inputNumbers.length != 6 )
+        if(inputNumbers.length != ConstantLottoProgram.LOTTO_LENGTH.getLength())
             throw new IllegalArgumentException("[ERROR] 숫자를 6개만 입력해주세요.");
         isOverlapAndValue(inputNumbers);
     }
@@ -34,9 +35,9 @@ public class InputLottoNumberException {
             if(inputNumbers[i].equals(inputNumbers[i+1]))
                 throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
         }
-        if(Integer.parseInt(inputNumbers[0])<1)
+        if(Integer.parseInt(inputNumbers[0])<ConstantLottoProgram.RANGE_OF_LOTTO_NUMBER.getMin())
             throw new IllegalArgumentException("[ERROR] 1 이상의 숫자를 입력해주세요.");
-        if(Integer.parseInt((inputNumbers[inputNumbers.length-1]))>45)
+        if(Integer.parseInt((inputNumbers[inputNumbers.length-1]))>ConstantLottoProgram.RANGE_OF_LOTTO_NUMBER.getMax())
             throw new IllegalArgumentException("[ERROR] 45 이하의 숫자를 입력해주세요.");
     }
 }
