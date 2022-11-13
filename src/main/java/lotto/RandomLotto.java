@@ -17,13 +17,13 @@ public class RandomLotto {
 
     public static List<List<Integer>> creatRandomNumber(int lottoQuantity) {
         List<Integer> randomNumber;
-        List<List<Integer>> randomNumbersPr = new ArrayList<>();
+        List<List<Integer>> randomNumbersInMethod = new ArrayList<>();
         for (int i = 0; i < lottoQuantity; i++) {
             randomNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(randomNumber);
-            randomNumbersPr.add(randomNumber);
+            randomNumbersInMethod.add(randomNumber);
         }
-        return randomNumbersPr;
+        return randomNumbersInMethod;
     }
 
     private void validateRandomNumberDuplicate(List<List<Integer>> numbers) {
