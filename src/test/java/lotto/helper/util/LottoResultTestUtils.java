@@ -27,7 +27,8 @@ public final class LottoResultTestUtils {
     }
 
     public static BigDecimal findRevenuePercent(LottoResult lottoResult) {
-        Field revenuePercentField = ReflectionFieldUtils.processReflectionField(LottoResult.class, REVENUE_PERCENT_FIELD_NAME);
+        Field revenuePercentField = ReflectionFieldUtils
+                .processReflectionField(LottoResult.class, REVENUE_PERCENT_FIELD_NAME);
 
         try {
             return (BigDecimal) revenuePercentField.get(lottoResult);

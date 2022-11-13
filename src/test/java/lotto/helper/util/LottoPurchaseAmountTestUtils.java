@@ -13,9 +13,8 @@ public final class LottoPurchaseAmountTestUtils {
     }
 
     public static BigDecimal findPlayerPurchaseAmount(LottoPurchaseAmount lottoPurchaseAmount) {
-        Field playerPurchaseAmountField =
-            ReflectionFieldUtils.processReflectionField(LottoPurchaseAmount.class,
-                PLAYER_PURCHASE_AMOUNT_FIELD_NAME);
+        Field playerPurchaseAmountField = ReflectionFieldUtils
+                .processReflectionField(LottoPurchaseAmount.class, PLAYER_PURCHASE_AMOUNT_FIELD_NAME);
 
         try {
             return (BigDecimal) playerPurchaseAmountField.get(lottoPurchaseAmount);
