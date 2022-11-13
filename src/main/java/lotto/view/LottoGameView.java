@@ -24,6 +24,7 @@ public class LottoGameView {
         String money = Console.readLine();
 
         viewValidator.validateNumberType(money);
+        viewValidator.validateMoneyIsZero(money);
         viewValidator.validateUnitOf1000(money);
 
         return Integer.parseInt(money);

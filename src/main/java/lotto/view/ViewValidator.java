@@ -21,6 +21,12 @@ public class ViewValidator {
         }
     }
 
+    public void validateMoneyIsZero(String money) {
+        if (Integer.parseInt(money) == 0) {
+            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ZERO.getMessage());
+        }
+    }
+
     public void validateNumbersType(String numbers) {
         Arrays.stream(numbers.split(","))
                 .forEach(this::validateNumberType);
