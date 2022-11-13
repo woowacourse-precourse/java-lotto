@@ -17,11 +17,6 @@ public class Exchanger {
         return ExchangerHolder.INSTANCE;
     }
 
-    public double calculateProfitRate(Map<Rank, Integer> countOfRank, long payment) {
-        long profit = calculateProfit(countOfRank);
-        return (double) profit / payment;
-    }
-
     public long calculateProfit(Map<Rank, Integer> countOfRank) {
         long profit = 0;
 
@@ -32,6 +27,11 @@ public class Exchanger {
         }
 
         return profit;
+    }
+
+    public double calculateProfitRate(Map<Rank, Integer> countOfRank, long payment) {
+        long profit = calculateProfit(countOfRank);
+        return (double) profit / payment;
     }
 
 }
