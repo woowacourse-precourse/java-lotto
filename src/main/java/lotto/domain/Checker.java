@@ -39,7 +39,7 @@ public class Checker {
 
     public void insertBonusNumber() {
         System.out.println(INSERT_BONUS_NUMBER);
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        bonusNumber = Integer.parseInt(Console.readLine());
     }
 
     public List<Integer> getWinningNumbers() {
