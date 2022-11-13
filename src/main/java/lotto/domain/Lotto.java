@@ -22,8 +22,6 @@ public class Lotto {
         if (numbers.stream().filter(number -> 0 < number && number < 46).count() != 6) {
             throw new IllegalArgumentException("[ERROR]");
         }
-
-
     }
 
     // TODO: 추가 기능 구현

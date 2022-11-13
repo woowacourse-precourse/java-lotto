@@ -31,6 +31,10 @@ public class LottoMachine {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR]");
         }
+
+        if (money < 0) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
     }
 
     public List<Lotto> getLottoList() {
