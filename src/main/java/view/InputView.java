@@ -20,6 +20,8 @@ public class InputView {
 
         validatePattern(lottoNumbers);
         List<Integer> lotto = StringToList(lottoNumbers);
+
+        System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
         String bonusNumber = Console.readLine();
 
         return new WinningLotto(lotto, bonusNumber);
