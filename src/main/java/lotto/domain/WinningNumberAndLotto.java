@@ -5,7 +5,14 @@ import lotto.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoAndWinningNumber {
+public class WinningNumberAndLotto {
+
+    private final WinningNumberPlace winningNumberPlace;
+
+    public WinningNumberAndLotto(WinningNumberPlace winningNumberPlace) {
+        this.winningNumberPlace = winningNumberPlace;
+    }
+
     public List<Integer> comparison(List<List<Integer>> randomLotto, Lotto answer) {
         List<Integer> winningNumbers = answer.getNumbers();
         List<Integer> result = new ArrayList<>();
@@ -15,19 +22,10 @@ public class LottoAndWinningNumber {
 
             for (int numberLocation = 0; numberLocation < winningNumbers.size(); numberLocation++) {
                 int correctLotto = winningNumbers.get(numberLocation);
-                countLotto = checkConfirmation(random, countLotto, correctLotto);
+                countLotto = winningNumberPlace.judgement(random, countLotto, correctLotto);
             }
             result.add(countLotto);
         }
         return result;
-    }
-
-    public int checkConfirmation(List<Integer> random, int countLotto, int correctLotto) {
-        for (int randomLocation = 0; randomLocation < random.size(); randomLocation++) {
-            if (correctLotto == random.get(randomLocation)) {
-                countLotto++;
-            }
-        }
-        return countLotto;
     }
 }
