@@ -3,7 +3,7 @@ package lotto.service;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoStore;
 import lotto.domain.winning.WinningStatistics;
-import lotto.domain.winning.PurchasedLottoTickets;
+import lotto.domain.winning.LottoTickets;
 import lotto.domain.winning.LottoResults;
 import lotto.domain.winning.WinningLotto;
 import lotto.view.input.LottoScanner;
@@ -27,14 +27,14 @@ public class LottoService {
     public void start() {
         try {
             String money = money();
-            PurchasedLottoTickets purchasedLottoTickets = purchasedLottoTickets(money);
+            LottoTickets lottoTickets = lottoTickets(money);
 
             WinningLotto winningLotto = lottoMachine.winningLotto(
                     winningNumber(),
                     bonusNumber()
             );
 
-            makeWinningResults(purchasedLottoTickets, winningLotto);
+            makeWinningResults(lottoTickets, winningLotto);
         } catch (IllegalArgumentException e) {
             lottoPrinter.printErrorMessage(e.getMessage());
         }
@@ -45,11 +45,11 @@ public class LottoService {
         return lottoScanner.number();
     }
 
-    private PurchasedLottoTickets purchasedLottoTickets(String money) {
-        PurchasedLottoTickets purchasedLottoTickets = lottoStore.lottoTickets(money);
-        lottoPrinter.printPurchasedLottoTickets(purchasedLottoTickets);
+    private LottoTickets lottoTickets(String money) {
+        LottoTickets lottoTickets = lottoStore.lottoTickets(money);
+        lottoPrinter.printLottoTickets(lottoTickets);
 
-        return purchasedLottoTickets;
+        return lottoTickets;
     }
 
     private String winningNumber() {
@@ -62,11 +62,10 @@ public class LottoService {
         return lottoScanner.number();
     }
 
-    private void makeWinningResults(PurchasedLottoTickets purchasedLottoTickets,
-            WinningLotto winningLotto) {
-        LottoResults lottoResults = purchasedLottoTickets.lottoResults(winningLotto);
+    private void makeWinningResults(LottoTickets lottoTickets, WinningLotto winningLotto) {
+        LottoResults lottoResults = lottoTickets.lotteryResults(winningLotto);
         WinningStatistics winningStatistics = new WinningStatistics(
-                purchasedLottoTickets,
+                lottoTickets,
                 lottoResults
         );
 

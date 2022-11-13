@@ -51,7 +51,7 @@ public enum Ranking {
         this.winnings = winnings;
     }
 
-    public static Ranking ranking(int countsOfMatchingNumber, boolean isMatchedBonusNumber) {
+    static Ranking ranking(int countsOfMatchingNumber, boolean isMatchedBonusNumber) {
         if (isSecond(countsOfMatchingNumber, isMatchedBonusNumber)) {
             return SECOND;
         }
@@ -65,7 +65,7 @@ public enum Ranking {
                 && isMatchedBonusNumber;
     }
 
-    public long sumOfWinnings(int count) {
+    long sumOfWinnings(int count) {
         return winnings * count;
     }
 

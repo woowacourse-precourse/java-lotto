@@ -23,13 +23,7 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
-    private void validateDuplication(Lotto winningNumber, BonusNumber bonusNumber) {
-        if (bonusNumber.isIn(winningNumber)) {
-            throw new IllegalArgumentException(NOT_ALLOW_DUPLICATED_LOTTO_NUMBER);
-        }
-    }
-
-    public LottoResults lottoResults(List<Lotto> purchasedLottoTickets) {
+    LottoResults lotteryResults(List<Lotto> purchasedLottoTickets) {
         Map<Ranking, Integer> results = initializedRankingMap();
         judgeRanking(purchasedLottoTickets, results);  // TODO 메서드 이름 고민
 
@@ -56,6 +50,12 @@ public class WinningLotto {
             Ranking ranking = ranking(countsOfMatchingNumber, isMatchedBonusNumber);
 
             results.put(ranking, results.get(ranking) + 1);
+        }
+    }
+
+    private void validateDuplication(Lotto winningNumber, BonusNumber bonusNumber) {
+        if (bonusNumber.isIn(winningNumber)) {
+            throw new IllegalArgumentException(NOT_ALLOW_DUPLICATED_LOTTO_NUMBER);
         }
     }
 }

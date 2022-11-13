@@ -24,14 +24,14 @@ public class Lotto {
         this.numbers = sortedList(numbers);
     }
 
-    public boolean contains(int number) {
-        return numbers.contains(number);
-    }
-
     public int countsOfMatchingNumber(Lotto lotto) {
         return (int) numbers.stream()
                 .filter(lotto::contains)
                 .count();
+    }
+
+    boolean contains(int number) {
+        return numbers.contains(number);
     }
 
     private List<Integer> sortedList(List<Integer> numbers) {

@@ -3,16 +3,15 @@ package lotto.domain.winning;
 public class WinningStatistics {
 
     private final LottoResults lottoResults;
-    private final PurchasedLottoTickets purchasedLottoTickets;
+    private final LottoTickets lottoTickets;
 
-    public WinningStatistics(PurchasedLottoTickets purchasedLottoTickets,
-            LottoResults lottoResults) {
-        this.purchasedLottoTickets = purchasedLottoTickets;
+    public WinningStatistics(LottoTickets lottoTickets, LottoResults lottoResults) {
+        this.lottoTickets = lottoTickets;
         this.lottoResults = lottoResults;
     }
 
     public double rateOfReturn() {
-        int totalPayment = purchasedLottoTickets.totalPayment();
+        int totalPayment = lottoTickets.totalPayment();
         long totalWinnings = lottoResults.totalWinnings();
         double rate = (double) totalWinnings / totalPayment * 100;
 

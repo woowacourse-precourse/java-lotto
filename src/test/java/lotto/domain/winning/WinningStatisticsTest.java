@@ -14,7 +14,7 @@ class WinningStatisticsTest {
     @DisplayName("8개를 구매하고, 5000원짜리 한개가 당첨되면 수익률은 62.5%이다.")
     @Test
     void rateOfReturn1() {
-        PurchasedLottoTickets purchasedLottoTickets = new PurchasedLottoTickets(
+        LottoTickets lottoTickets = new LottoTickets(
                 List.of(
                         new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                         new Lotto(List.of(1, 2, 3, 4, 5, 6)),
@@ -38,7 +38,7 @@ class WinningStatisticsTest {
         );
 
         WinningStatistics winningStatistics = new WinningStatistics(
-                purchasedLottoTickets,
+                lottoTickets,
                 lottoResults
         );
 
@@ -51,7 +51,7 @@ class WinningStatisticsTest {
     @DisplayName("한 개도 당첨되지 않으면 수익률은 0.0%이다.")
     @Test
     void rateOfReturn2() {
-        PurchasedLottoTickets purchasedLottoTickets = new PurchasedLottoTickets(
+        LottoTickets lottoTickets = new LottoTickets(
                 List.of(
                         new Lotto(List.of(30, 32, 33, 34, 35, 40))
                 )
@@ -68,7 +68,7 @@ class WinningStatisticsTest {
         );
 
         WinningStatistics winningStatistics = new WinningStatistics(
-                purchasedLottoTickets,
+                lottoTickets,
                 lottoResults
         );
 

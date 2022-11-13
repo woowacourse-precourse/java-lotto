@@ -7,17 +7,17 @@ import java.util.StringJoiner;
 import lotto.domain.lotto_numbers.Lotto;
 import lotto.domain.winning.Ranking;
 
-public class StringFormatter {
+public class LottoFormat {
 
-    private StringFormatter() {
+    private LottoFormat() {
     }
 
-    static String purchasedNumberOfLottoTicketsFormat(int number) {
+    static String purchasedNumberOfLottoTickets(int number) {
         final String PURCHASED_SUFFIX = "개를 구매했습니다.";
         return number + PURCHASED_SUFFIX;
     }
 
-    static String purchasedLottoTicketsFormat(List<Lotto> purchasedLottoTickets) {
+    static String lottoTickets(List<Lotto> purchasedLottoTickets) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Lotto purchasedLotto : purchasedLottoTickets) {
             stringBuilder
@@ -28,12 +28,12 @@ public class StringFormatter {
         return stringBuilder.toString();
     }
 
-    static String errorMessageFormat(String message) {
+    static String errorMessage(String message) {
         final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
         return ERROR_MESSAGE_PREFIX + message;
     }
 
-    static String winningStatisticsFormat(Map<Ranking, Integer> results, double rateOfReturn) {
+    static String winningStatistics(Map<Ranking, Integer> results, double rateOfReturn) {
         StringJoiner stringJoiner = new StringJoiner("\n");
         stringJoiner
                 .add("당첨 통계")

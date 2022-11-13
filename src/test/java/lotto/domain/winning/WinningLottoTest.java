@@ -26,7 +26,7 @@ class WinningLottoTest {
         WinningLotto winningLotto = lottoMachine
                 .winningLotto("1,2,3,4,5,6", "7");
 
-        LottoResults lottoResults = winningLotto.lottoResults(purchasedLottos);
+        LottoResults lottoResults = winningLotto.lotteryResults(purchasedLottos);
         Map<Ranking, Integer> actual = lottoResults.results();
 
         Map<Ranking, Integer> expected = Map.of(
