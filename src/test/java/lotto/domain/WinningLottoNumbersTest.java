@@ -20,8 +20,7 @@ public class WinningLottoNumbersTest {
     void setUp() {
         winningLottoNumbers = new WinningLottoNumbers();
     }
-
-
+    
     @Test
     @DisplayName("보너스 번호 숫자외의 값")
     public void bonusNumberNotNumber() {

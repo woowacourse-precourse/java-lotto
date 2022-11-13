@@ -3,6 +3,7 @@ package lotto.service;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -24,14 +25,16 @@ public class CheckNumbersTest {
 
     @Test
     @SuppressWarnings("unchecked")
-    public void 개수_정상리턴_확인1() {
+    @DisplayName("개수_정상리턴_확인")
+    public void correctReturn() {
         myNumbers = Arrays.asList(1,2,3,4,5,6);
         count = checkNumbers.getCorrect(LOTTO_NUMBERS, myNumbers, 6);
         assertThat(count).isEqualTo(6);
     }
     @Test
     @SuppressWarnings("unchecked")
-    public void 개수_정상리턴_확인2() {
+    @DisplayName("개수_정상리턴_확인2")
+    public void correctReturn2() {
         myNumbers = Arrays.asList(1,2,8,4,5,33);
         count = checkNumbers.getCorrect(LOTTO_NUMBERS, myNumbers, 6);
         assertThat(count).isEqualTo(4);
