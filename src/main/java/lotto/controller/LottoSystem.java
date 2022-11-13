@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.BonusNumber;
 import lotto.domain.UserLotto;
 import lotto.domain.WinningLotto;
+import lotto.view.OutputView;
 
 public final class LottoSystem {
     private UserLotto userLotto;
@@ -10,16 +11,18 @@ public final class LottoSystem {
     private BonusNumber bonusNumber;
 
     public void run() {
-        initialize();
+        try {
+            initialize();
+            SettlementSystem.startProcess(winningLotto, userLotto, bonusNumber);
+
+        } catch (IllegalArgumentException e) {
+            OutputView.printIOMessage(e.getMessage());
+        }
     }
 
     private void initialize() {
-        try {
-            userLotto = new UserLotto();
-            winningLotto = new WinningLotto();
-            bonusNumber = new BonusNumber();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        userLotto = new UserLotto();
+        winningLotto = new WinningLotto();
+        bonusNumber = new BonusNumber();
     }
 }
