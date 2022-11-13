@@ -13,12 +13,28 @@ import static org.assertj.core.api.Assertions.*;
 
 class UserTest {
     User user = new User();
-    @DisplayName("입력된 구입 금액이 양수가 아니거나 1,000원으로 나누어 떨어지지 않으면 예외가 발생한다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"-12", "0", "-12345", "12345", "123"})
-    void createMoneyNotPositive(String number) {
+    @DisplayName("입력된 구입 금액이 0보다 작거나 같으면 예외가 발생한다.")
+    @Test
+    void createMoneyNotPositive() {
         assertThatThrownBy(
-                () -> user.checkThatPurchaseMoneyIsRightInput(number))
+                () -> user.checkThatPurchaseMoneyIsRightInput("-12"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력된 구입 금액이 1,000원으로 나누어 떨어지지 않으면 예외가 발생한다.")
+    @Test
+    void createMoneyNotMultipleOfThousand() {
+        assertThatThrownBy(
+                () -> user.checkThatPurchaseMoneyIsRightInput("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력된 구입 금액에 맞게 로또를 구매하는지 확인")
+    @Test
+    void createMoneyAndLotto() {
+        user.money = 8000;
+        user.purchaseLotto();
+        assertThat(user.myLotto.size()).isEqualTo(8);
+    }
+
 }
