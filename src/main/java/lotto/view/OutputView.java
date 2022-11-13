@@ -29,4 +29,9 @@ public class OutputView {
         System.out.println();
         System.out.println(INPUT_BONUS_NUMBER);
     }
+
+    public static void printStatistics() {
+        System.out.println();
+        System.out.println(STATISTICS);
+    }
 }
