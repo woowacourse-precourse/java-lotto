@@ -12,11 +12,7 @@ public class LottoMachine {
     private static final String NUMERIC_STRING_ERROR_MESSAGE = "숫자 리스트 혹은 숫자 형식으로 입력해 주세요.";
     private static final String ALREADY_EXISTED_NUMBER_ERROR_MESSAGE = "번호가 중복되어 입력되었습니다.";
 
-    public List<Integer> draw(int length) {
-        if(length > 0) {
-            List<String> inputs = inputNumber(length);
-        }
-        return List.of();
+    public void draw(List<Integer> wins, List<Integer> bonuses) {
     }
 
     private List<String> inputNumber(int length) {
