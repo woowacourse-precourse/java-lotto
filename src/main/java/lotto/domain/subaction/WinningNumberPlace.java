@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.subaction;
 
 import java.util.List;
 

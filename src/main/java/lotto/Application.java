@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.domain.LottoGame;
+import lotto.domain.LottoGameMachine;
 import lotto.domain.RandomLottoGenerator;
 import lotto.input.LottoTickets;
 import lotto.input.WinningNumber;
@@ -8,9 +8,7 @@ import lotto.input.WinningNumber;
 public class Application {
 
     public static void main(String[] args) {
-        LottoGame lottoGame = new LottoGame(new LottoTickets(),
-                                            new RandomLottoGenerator(),
-                                            new WinningNumber());
-        lottoGame.setUp();
+        LottoGameMachine lottoGameMachine = new LottoGameMachine(new LottoTickets(), new RandomLottoGenerator(), new WinningNumber());
+        lottoGameMachine.setUp();
     }
 }

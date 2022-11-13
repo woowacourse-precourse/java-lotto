@@ -4,9 +4,9 @@ import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.subaction.WinningNumberPlace;
 
 public class WinningNumberAndLotto {
-
     private final WinningNumberPlace winningNumberPlace;
 
     public WinningNumberAndLotto(WinningNumberPlace winningNumberPlace) {
