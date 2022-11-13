@@ -15,10 +15,10 @@ public class LotteryGame {
 
     public void buyLottos(int amount) {
         validateAmount(amount);
-        getRandomNumbers(amount / AMOUNT_UNIT);
+        drawLottos(amount / AMOUNT_UNIT);
     }
 
-    private void getRandomNumbers(int number) {
+    private void drawLottos(int number) {
         for (int i = 0; i < number; i++) {
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
