@@ -61,30 +61,20 @@ public class DataProcessing {
         return win;
     }
 
-    public List<Integer> resultWinLotto(List<Integer> countWin) {
-        List<Integer> resultLotto = new ArrayList<>();
-        int sixWin = 0;
-        int fiveWinBonusOne = 0;
-        int fiveWin = 0;
-        int fourWin = 0;
-        int threeWin = 0;
-        for (Integer integer : countWin) {
-            if (integer == 6)
-                sixWin += 1;
-            else if (integer == 7)
-                fiveWinBonusOne += 1;
-            else if (integer == 5)
-                fiveWin += 1;
-            else if (integer == 4)
-                fourWin += 1;
-            else if (integer == 3)
-                threeWin += 1;
+    public int[] resultWinLotto(List<Integer> countWin) {
+        int[] resultLotto = {0, 0, 0, 0, 0};
+        for (int i=0;i<countWin.size();++i) {
+            if (countWin.get(i) == 6)
+                resultLotto[4] += 1;
+            else if (countWin.get(i) == 7)
+                resultLotto[3] += 1;
+            else if (countWin.get(i) == 5)
+                resultLotto[2] += 1;
+            else if (countWin.get(i) == 4)
+                resultLotto[1] += 1;
+            else if (countWin.get(i) == 3)
+                resultLotto[0] += 1;
         }
-        resultLotto.add(threeWin);
-        resultLotto.add(fourWin);
-        resultLotto.add(fiveWin);
-        resultLotto.add(fiveWinBonusOne);
-        resultLotto.add(sixWin);
         return resultLotto;
     }
 }
