@@ -35,6 +35,10 @@ public class User {
         lotteryTickets.add(lotteryTicket);
     }
 
+    public boolean hasMoney() {
+        return money > Status.EMPTY.getStatus();
+    }
+
     public int getMoney() {
         return money;
     }
