@@ -9,16 +9,24 @@ import lotto.model.Money;
 
 public class LottoVendingMachine {
 
-    Money money;
     List<Lotto> haveLottoList;
 
     public LottoVendingMachine(Money money) {
         buyLottoTicket(money);
     }
 
+    public LottoVendingMachine(List<Lotto> lottoList) {
+        this.haveLottoList = lottoList;
+    }
+
     public List<Lotto> getHaveLottoList() {
         return haveLottoList;
     }
+
+    public int getPrice() {
+        return haveLottoList.size() * LottoConstants.LOTTO_PRICE;
+    }
+
 
     private void buyLottoTicket(Money money) {
         int count = money.getMoney() / LottoConstants.LOTTO_PRICE;
