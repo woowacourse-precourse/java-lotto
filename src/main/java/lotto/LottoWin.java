@@ -2,13 +2,18 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Randoms;
+
+import camp.nextstep.edu.missionutils.Console;
 public class LottoWin {
     static LottoWin lotto;
     private List<Integer> lottoNum;
 
     private LottoWin(){
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String userInput = Console.readLine();
+        List<Integer> numbers = convertStringToInt(userInput);
+        System.out.println("보너스 번호를 입력해 주세요.");
+        numbers.add(Integer.valueOf(Console.readLine()));
         this.lottoNum = numbers;
     }
 
@@ -19,22 +24,13 @@ public class LottoWin {
         return lotto;
     }
 
-//    수익률은 당첨금액/구입금액*100
-    public void profitRateCal(List<int[]> result){
-        final int expenseIndex = 0;
-        final int profitIndex = 1;
-        double profitRate;
-        int expenseSum = 0;
-        int profitSum = 0;
-        for(int[] userInfo : result){
-            expenseSum += userInfo[expenseIndex];
-            profitSum += userInfo[profitIndex];
+    public static List<Integer> convertStringToInt(String input){
+        String[] inputSplit = input.split(",");
+        List<Integer> returnData = new ArrayList<Integer>();
+        for(int index = 0; index < inputSplit.length; index++){
+            returnData.add(Integer.valueOf(inputSplit[index]));
         }
-        profitRate = ((double)profitSum / expenseSum) * 100;
-        System.out.println(String.format("%.2f", profitRate));
+        return returnData;
     }
 
-    public List<Integer> getLottoNum() {
-        return lottoNum;
-    }
 }
