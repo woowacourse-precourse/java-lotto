@@ -11,9 +11,14 @@ public class Application {
         int count = controller.getCount(money);
         List<Integer>[] issuedList = controller.issueLotto(count);
         List<Integer> numbers = console.inputWinningNumber();
+
         Lotto winningLotto = controller.issueWinningNumber(numbers);
         int plusNumber = console.inputPlusNumber();
         winningLotto.checkPlusNumber(plusNumber);
-        List<Integer> result = winningLotto.getResult(issuedList, plusNumber);
+
+        List<Integer>[] resultList = winningLotto.getResult(issuedList, plusNumber);
+
+//        List<Rank> rankList = Rank.getStringResult(resultList);
+//        console.outputResult(rankList);
     }
 }

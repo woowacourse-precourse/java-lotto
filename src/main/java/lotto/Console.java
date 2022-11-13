@@ -28,4 +28,7 @@ public class Console {
         int number = Integer.parseInt(readLine());
         return number;
     }
+    public void outputResult(List<Integer> result){
+
+    }
 }

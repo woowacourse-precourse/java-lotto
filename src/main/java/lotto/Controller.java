@@ -29,5 +29,4 @@ public class Controller {
         Lotto winningLotto = new Lotto(numbers);
         return winningLotto;
     }
-
 }

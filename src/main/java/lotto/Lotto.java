@@ -36,12 +36,13 @@ public class Lotto {
         }
     }
 
-    public List<Integer> getResult(List<Integer>[] issuedList, int plusNumber) {
+    public List<Integer>[] getResult(List<Integer>[] issuedList, int plusNumber) {
         HashMap winningMap = makeListToMap(numbers);
-        List<Integer> resultList = new ArrayList<>();
-        for (List<Integer> issuedLotto : issuedList) {
-            int count = compareLotto(issuedLotto, winningMap);
-            resultList.add(count);
+        List<Integer>[] resultList = new List[issuedList.length];
+        for (int i=0; i<issuedList.length; i++) {
+            List<Integer> issuedLotto = issuedList[i];
+            List<Integer> result = compareLotto(issuedLotto, winningMap, plusNumber);
+            resultList[i] = result;
         }
         return resultList;
     }
@@ -55,13 +56,23 @@ public class Lotto {
         return winningMap;
     }
 
-    private int compareLotto(List<Integer> issuedLotto, HashMap winningMap) {
+    private List<Integer> compareLotto(List<Integer> issuedLotto, HashMap winningMap, int plusNumber) {
         int count = 0;
+        int bonus = 0;
+        List<Integer> result = new ArrayList<>();
         for (int number : issuedLotto) {
             if (winningMap.get(number) != null) {
                 count++;
             }
         }
-        return count;
+        for (int number: issuedLotto) {
+            if (plusNumber==number){
+                bonus=1;
+                break;
+            }
+        }
+        result.add(count);
+        result.add(bonus);
+        return result;
     }
 }
