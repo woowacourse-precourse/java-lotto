@@ -24,4 +24,17 @@ public class StatisticsTest {
         // then
         assertThat(count).isEqualTo(3);
     }
+
+    @DisplayName("발행한 로또에 보너스 번호 존재 유무를 확인한다.")
+    @Test
+    void checkLottoNumbersContainBonusNumber() {
+        // given
+        Statistics statistics = new Statistics();
+
+        // when
+        String grade = statistics.checkLottoNumbersContainBonusNumber(List.of(1, 2, 3, 10, 22, 12), 3);
+
+        // then
+        assertThat(grade).isEqualTo("SECOND");
+    }
 }
