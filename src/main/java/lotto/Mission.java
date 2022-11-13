@@ -5,29 +5,30 @@ import static lotto.utils.Constant.LOTTO_PRICE;
 import java.util.EnumMap;
 import java.util.List;
 import lotto.controller.MoneyController;
+import lotto.controller.WinningController;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMaker;
 import lotto.domain.Money;
 import lotto.domain.Rank;
 import lotto.domain.ResultRepository;
 import lotto.domain.WinningLotto;
-import lotto.view.Input;
 import lotto.view.Output;
 
 public class Mission {
 
     Output output;
-    Input input;
-    MoneyController moneyController;
     LottoMaker lottoMaker;
     ResultRepository repository;
 
+    MoneyController moneyController;
+    WinningController winningController;
+
     Mission() {
         output = new Output();
-        input = new Input();
-        moneyController = new MoneyController();
         lottoMaker = new LottoMaker();
         repository = new ResultRepository();
+        moneyController = new MoneyController();
+        winningController = new WinningController();
 
         try {
             play();
@@ -43,7 +44,7 @@ public class Mission {
         List<Lotto> lottos = lottoMaker.getLottos(many);
         output.printLottos(lottos);
 
-        WinningLotto winningLotto = getWinningLotto();
+        WinningLotto winningLotto = winningController.getWinningLotto();
 
         for (Lotto lotto : lottos) {
             Rank rank = winningLotto.match(lotto);
@@ -68,22 +69,6 @@ public class Mission {
 
     private int calculateHowManyLotto(Money money) {
         return money.getMoney() / LOTTO_PRICE;
-    }
-
-    private WinningLotto getWinningLotto() {
-        List<Integer> winningNumbers = getWinningNumbers();
-        int bonusNumber = addBonusNumber();
-        return new WinningLotto(winningNumbers, bonusNumber);
-    }
-
-    private List<Integer> getWinningNumbers() {
-        output.printGetWinningNumbers();
-        return input.getWinningNumbers();
-    }
-
-    private int addBonusNumber() {
-        output.pringGetWinningBonusNumber();
-        return input.getWinningBonusNumber();
     }
 
     private double getRate(int inputMoney, int priceMoney) {
