@@ -15,7 +15,7 @@ public class User {
 
     private void validate(int amount) {
         if (amount % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000으로 나누어떨어지는 수여야 합니다.");
         }
     }
 
