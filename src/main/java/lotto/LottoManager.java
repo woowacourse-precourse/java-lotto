@@ -10,12 +10,28 @@ import java.util.Map;
 
 public class LottoManager {
     private static final int LOTTO_PRICE = 1000;
-    private static final int[] PROFIT = {5000, 50000, 1500000, 30000000, 2000000000};
+
+    public enum Information {
+        INPUT_WINNING_NUM_MESSAGE("당첨 번호를 입력해 주세요."),
+        INPUT_BONUS_NUM_MESSAGE("보너스 번호를 입력해 주세요."),
+        INPUT_BUY_MESSAGE("구매금액을 입력해 주세요."),
+        STATISTIC_MESSAGE("\n당첨 통계\n---");
+
+        private final String message;
+
+        Information(String message) {
+            this.message = message;
+        }
+
+        public void printMessage() {
+            System.out.println(this.message);
+        }
+    }
 
     public enum PrizeMoney {
         WIN_5(5000), WIN_4(50000), WIN_3(1500000), WIN_2(30000000), WIN_1(2000000000);
 
-        private int prizeMoney;
+        private final int prizeMoney;
 
         PrizeMoney(int prizeMoney) {
             this.prizeMoney = prizeMoney;
@@ -41,7 +57,7 @@ public class LottoManager {
     }
 
     public List<Integer> GenerateLottoNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        Information.INPUT_WINNING_NUM_MESSAGE.printMessage();
         String inputLottoNumbers = Console.readLine();
         List<Integer> lottoNumbers = new ArrayList<>();
         for (String number : inputLottoNumbers.split(",")) {
@@ -51,7 +67,7 @@ public class LottoManager {
     }
 
     public int GenerateBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        Information.INPUT_BONUS_NUM_MESSAGE.printMessage();
         String inputBonusNumbers = Console.readLine();
         return Integer.parseInt(inputBonusNumbers);
     }
@@ -63,6 +79,7 @@ public class LottoManager {
 
     public int getMoney() throws IllegalArgumentException {
         System.out.println("구매금액을 입력해 주세요.");
+        Information.INPUT_BUY_MESSAGE.printMessage();
         String inputMoney = Console.readLine();
 
         for (int i = 0; i < inputMoney.length(); i++) {
@@ -109,7 +126,7 @@ public class LottoManager {
 
     public void  printWinningMessage(Map<Integer, Integer> result) {
         //{0=3, 1=4, 2=1, 3=0, 4=0, 5=0, 6=0, 7=0} = {-,-,-,5등, 4등, 3등, 2등, 1등}
-        System.out.println("\n당첨 통계\n---");
+        Information.STATISTIC_MESSAGE.printMessage();
 
         int index = 3;
         for (StatisticMessage win : StatisticMessage.values()) {
