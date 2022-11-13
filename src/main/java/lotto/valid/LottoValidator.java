@@ -1,5 +1,6 @@
 package lotto.valid;
 
+import lotto.domain.Lotto;
 import lotto.domain.LottoIssuer;
 
 import java.util.HashSet;
@@ -21,7 +22,7 @@ public enum LottoValidator {
 
     private static void checkRange(List<Integer> numbers) {
         boolean incorrectNumberExists = numbers.stream()
-                .anyMatch(number -> number < LottoIssuer.MIN_LOTTO_NUMBER || number > LottoIssuer.MAX_LOTTO_NUMBER);
+                .anyMatch(number -> number < Lotto.MIN_NUMBER || number > Lotto.MAX_NUMBER);
 
         if (incorrectNumberExists) {
             throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE);
@@ -29,7 +30,7 @@ public enum LottoValidator {
     }
 
     private static void checkSize(List<Integer> numbers) {
-        if (numbers.size() != LottoIssuer.LOTTO_SIZE) {
+        if (numbers.size() != Lotto.NUMBER_SIZE) {
             throw new IllegalArgumentException(LOTTO_SIZE_ERROR_MESSAGE);
         }
     }
