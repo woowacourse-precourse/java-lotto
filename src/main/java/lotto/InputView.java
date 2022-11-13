@@ -10,6 +10,7 @@ public class InputView {
     }
 
     public static int getMoney(String input) {
+        MoneyValidator.validateMoney(input);
         int money = Integer.parseInt(input);
         System.out.println();
 
