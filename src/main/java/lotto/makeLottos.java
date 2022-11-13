@@ -13,5 +13,9 @@ public class makeLottos {
             index--;
         }
     }
-
+    void printLottoNumbers(){
+        for (Lotto lotto : lottosNumber){
+            System.out.println(lotto.toString());
+        }
+    }
 }
