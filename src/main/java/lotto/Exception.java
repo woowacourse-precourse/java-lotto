@@ -4,9 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Exception {
-    public static final int MIN_WINNING_NUMBER = 1;
-    public static final int MAX_WINNING_NUMBER = 45;
-    private static final int WINNING_NUMBER_SIZE = 6;
 
 
     public void checkPurchaseInput(String str) {
@@ -70,7 +67,7 @@ public class Exception {
     }
 
     private boolean isValidLength(String[] str) {
-        return str.length == WINNING_NUMBER_SIZE;
+        return str.length == Lotto.LOTTO_NUMBER_SIZE;
     }
 
     private boolean haveDuplicatedNumber(String[] winningNumbers) {
@@ -90,7 +87,7 @@ public class Exception {
     private boolean isValidNumberRange(String str) {
         int number = Integer.parseInt(str);
 
-        return MIN_WINNING_NUMBER <= number && number <= MAX_WINNING_NUMBER;
+        return Lotto.MIN_LOTTO_NUMBER <= number && number <= Lotto.MAX_LOTTO_NUMBER;
     }
 
 }

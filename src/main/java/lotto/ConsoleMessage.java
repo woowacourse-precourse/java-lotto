@@ -4,11 +4,13 @@ import java.util.List;
 
 public enum ConsoleMessage {
     START {
+        @Override
         public void printMsg() {
             System.out.println(START_MSG);
         }
     },
     PURCHASE {
+        @Override
         public void printMsg(List<Lotto> purchasedLotto) {
             String message = String.format(PURCHASE_MSG, purchasedLotto.size());
             System.out.println(message);
@@ -18,22 +20,26 @@ public enum ConsoleMessage {
         }
     },
     WINNING_NUMBER {
+        @Override
         public void printMsg() {
             System.out.println(WINNING_NUMBER_MSG);
         }
     },
     BONUS_NUMBER {
+        @Override
         public void printMsg() {
             System.out.println(BONUS_NUMBER_MSG);
         }
     },
     RESULT {
+        @Override
         public void printMsg(int[] result) {
             String message = String.format(RESULT_MSG, result[0], result[1], result[2], result[3], result[4]);
             System.out.println(message);
         }
     },
     YIELD {
+        @Override
         public void printMsg(double yield) {
             String message = String.format(YIELD_MSG, yield);
             System.out.println(message);
