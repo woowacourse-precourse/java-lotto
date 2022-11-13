@@ -24,13 +24,14 @@ public class Printer {
     }
 
     public void lottoCount(int count) {
-        System.out.println(count + COUNT_OF_LOTTO.getMessage());
+        System.out.println("\n" + count + COUNT_OF_LOTTO.getMessage());
     }
 
     public void everySoldLottoList(List<List<Integer>> soldLottoList) {
         for (List<Integer> lottoNumberList : soldLottoList) {
             System.out.println(lottoNumberList);
         }
+        System.out.println();
     }
 
     public void statistic() {
@@ -60,9 +61,8 @@ public class Printer {
 
     public void totalYield(long accumulatedWinningMoney) {
         double purchaseMoney = LottoShop.money;
-        double winningMoney = accumulatedWinningMoney;
 
-        double yield = winningMoney / purchaseMoney * 100;
+        double yield = (double) accumulatedWinningMoney / purchaseMoney * 100;
 
         String message = TOTAL_YIELD.getMessage();
         System.out.printf(message, yield);

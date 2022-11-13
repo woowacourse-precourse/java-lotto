@@ -7,9 +7,9 @@ public enum InformationMessage {
     COUNT_OF_LOTTO("개를 구매했습니다.");
 
 
-    private String message;
+    private final String message;
 
-    private InformationMessage(final String message) {
+    InformationMessage(final String message) {
         this.message = message;
     }
 

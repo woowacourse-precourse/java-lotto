@@ -1,7 +1,7 @@
 package lotto.Enum;
 
 public enum StatisticMessage {
-    STATISTIC("당첨 통계\n---"),
+    STATISTIC("\n당첨 통계\n---"),
     WINNING_5RANK("3개 일치 (5,000원) - "),
     WINNING_4RANK("4개 일치 (50,000원) - "),
     WINNING_3RANK("5개 일치 (1,500,000원) - "),
@@ -10,9 +10,9 @@ public enum StatisticMessage {
     SUFFIX("개"),
     TOTAL_YIELD("총 수익률은 %.1f%%입니다.\n");
 
-    private String message;
+    private final String message;
 
-    private StatisticMessage(final String message) {
+    StatisticMessage(final String message) {
         this.message = message;
     }
 
@@ -20,7 +20,4 @@ public enum StatisticMessage {
         return message;
     }
 
-    public String getMessage(int count) {
-        return message + count + SUFFIX.getMessage();
-    }
 }
