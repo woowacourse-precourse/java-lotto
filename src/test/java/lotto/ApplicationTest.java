@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("구입금액 0 입력시 IllegalArgumentException테스트")
     void 로또구입금액_0으로인해_예외발생_테스트() {
         assertSimpleTest(() -> {
-            new Money("0");
+            runException("0");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -74,56 +74,44 @@ class ApplicationTest extends NsTest {
     @DisplayName("구입 금액이 1000원으로 나누어 떨어지지 않기 때문에 IllegalArgumentException테스트")
     @ValueSource(strings = {"1005", "20001", "500", "2", "200"})
     void 로또구입금액으로인해_예외발생_테스트(String input) {
-        assertSimpleTest(() -> {
-            new Money(input);
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Money(input));
     }
 
     @ParameterizedTest
     @DisplayName("구입 금액 입력값이 숫자가 아니기 때문에 IllegalArgumentException테스트")
     @ValueSource(strings = {"10000a", "!avb10", "zxcffs", "5000!", "a", "1000."})
     void 로또구입금액_숫자가아니기때문에_예외발생_테스트(String input) {
-        assertSimpleTest(() -> {
-            new Money(input);
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Money(input));
     }
 
     @Test
     @DisplayName("당첨 번호의 숫자 범위가 1 ~ 45가 벗어나면 IllegalArgumentException 발생한다.")
     void 당첨번호범위_벗어나면_예외발생() {
-        assertSimpleTest(() -> {
-            new WinningTicket(Arrays.asList(1, 2, 3, 4, 5, 46), 7);
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new WinningTicket(Arrays.asList(1, 2, 3, 4, 5, 46), 7));
     }
 
     @Test
     @DisplayName("당첨 번호의 숫자 리스트 길이가 6이 아니면 IllegalArgumentException 발생한다.")
     void 당첨번호리스트_길이가_6을_벗어나면_예외발생() {
-        assertSimpleTest(() -> {
-            new WinningTicket(Arrays.asList(1, 2, 3, 4, 5, 6, 7), 8);
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new WinningTicket(Arrays.asList(1, 2, 3, 4, 5, 6, 7), 8));
     }
 
     @Test
     @DisplayName("당첨번호 리스트에 중복이 존재하면 IllegalArgumentException 발생한다.")
     void 당첨번호리스트_중복있으면_예외발생() {
-        assertSimpleTest(() -> {
-            new WinningTicket(Arrays.asList(1, 2, 3, 4, 6, 6), 8);
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new WinningTicket(Arrays.asList(1, 2, 3, 4, 6, 6), 8));
     }
 
     @Test
     @DisplayName("보너스 번호가 당첨번호 리스트에 존재하면 IllegalArgumentException 발생한다.")
     void 보너스번호_중복이면_예외발생() {
-        assertSimpleTest(() -> {
-            new WinningTicket(Arrays.asList(1, 2, 3, 4, 5, 6), 6);
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new WinningTicket(Arrays.asList(1, 2, 3, 4, 5, 6), 6));
     }
 
     @Override
