@@ -27,6 +27,10 @@ public class Lotto {
         return winningCount;
     }
 
+    public boolean checkForBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
     public void printLottoNumber() {
         System.out.println(numbers);
     }
@@ -77,24 +81,79 @@ public class Lotto {
 
 
 class LottoSystem {
+    enum PrizeMoney {
+        WIN(2000000000),
+        SECOND(30000000),
+        THIRD(1500000),
+        FOURTH(50000),
+        FIFTH(5000);
+        private final int prize;
+        PrizeMoney(int prize) { this.prize = prize; }
+        public int getValue() { return prize; }
+
+    }
 
     private static List<Lotto> purchasedLottos;
+    private static int[] winningCounts = new int[5];
+
+    public static void proceedSystem() {
+        PrintedGuidance.requestPayment();
+        purchaseLotto(UserInput.requestPayment());
+
+        PrintedGuidance.requestWinningNumber();
+        Lotto winningNumber = new Lotto(UserInput.requestWinningLottoNumber());
+        PrintedGuidance.requestBonusNumber();
+        int bonusNumber = UserInput.requestBonusNumber();
+
+        checkWinningStatus(winningNumber,bonusNumber);
+
+    }
 
     public static void purchaseLotto(int paymentMoney) {
-        if (paymentMoney % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 로또는 천원단위로 구매가 가능합니다." +
-                    "지불 금액을 다시확인해 주세요.");
-        }
+        validatePayment(paymentMoney);
 
         purchasedLottos = new ArrayList<>();
         int purchasedLottoCount = paymentMoney/1000;
+        PrintedGuidance.guideLottoPurchaseCount(purchasedLottoCount);
         for (int i = 0; i < purchasedLottoCount; i++) {
             purchasedLottos.add(makeLotto());
+        }
+        for (Lotto lotto : purchasedLottos) {
+            lotto.printLottoNumber();
         }
     }
 
     private static Lotto makeLotto() {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+    public static void checkWinningStatus(Lotto winningNumber, int bonusNumber) {
+        validateBonusNumber(winningNumber,bonusNumber);
+
+        for (Lotto lotto : purchasedLottos) {
+            winningCounts[lotto.checkWinning(winningNumber)]++;
+
+        }
+
+
+
+
+
+    }
+
+    private static void validatePayment(int paymentMoney) {
+        if (paymentMoney % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또는 천원단위로 구매가 가능합니다." +
+                    "지불 금액을 다시확인해 주세요.");
+        }
+    }
+    private static void validateBonusNumber(Lotto winningNumber, int bonusNumber) {
+        if(bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45사이의 숫자입니다.");
+        }
+        if(winningNumber.checkForBonusNumber(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호에 포함되지 않아야 합니다.");
+        }
     }
 
 
