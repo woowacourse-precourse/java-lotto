@@ -29,15 +29,15 @@ class PrizeCalculatorTest {
         Map<Prize, Integer> result = new EnumMap<>(Map.of(
                 Prize.FIFTH, 2,
                 Prize.THIRD, 1,
-                Prize.SECOND, 1
+                Prize.SECOND, 1,
+                Prize.FIRST, 0,
+                Prize.FOURTH, 0
+
         ));
 
         Map<Prize, Integer> prizeCountMap = PrizeCalculator.calculatePrize(lottos, winningLotto);
 
-        assertAll(
-                () -> assertThat(prizeCountMap).containsAllEntriesOf(result),
-                () -> assertThat(prizeCountMap).doesNotContainKeys(Prize.FIRST, Prize.FOURTH)
-        );
+        assertThat(prizeCountMap).containsAllEntriesOf(result);
     }
 
 }
