@@ -48,11 +48,11 @@ public class Mission {
 
         int priceMoney = repository.getTotalMoney();
 
-        long rate = getRate(money.getMoney(), priceMoney);
-
         output.printLottoResultTitle();
         EnumMap<Rank, Integer> result = repository.getResult();
         result.forEach((rank, count) -> callOutputAboutRank(rank, count));
+
+        String rate = getRate(money.getMoney(), priceMoney);
 
         output.printTotalRate(rate);
     }
@@ -82,14 +82,18 @@ public class Mission {
         return input.getWinningBonusNumber();
     }
 
-    private long getRate(int inputMoney, int priceMoney) {
-        double result = (double) inputMoney / priceMoney;
-        return Math.round(result);
+    private String getRate(int inputMoney, int priceMoney) {
+        double result = (double) priceMoney / inputMoney;
+        result *= 100;
+        return String.format("%.1f", result);
     }
 
     private void callOutputAboutRank(Rank rank, Integer count) {
         if (rank == Rank.SECOND) {
             output.printLottoResultAboutRankWithBonus(rank.getCountOfMatch(), rank.getMoney(), count);
+            return;
+        }
+        if (rank == Rank.ZERO) {
             return;
         }
         output.printLottoResultAboutRank(rank.getCountOfMatch(), rank.getMoney(), count);
