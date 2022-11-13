@@ -1,6 +1,9 @@
 package lotto;
 
+
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Manager {
     static final String Statement = "구입금액을 입력해 주세요.";
@@ -25,6 +28,20 @@ public class Manager {
             throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_IS_NOT_INTEGER);
         }
         return money;
+    }
+    public List<Integer> inputLottoNumber() {
+        List<Integer> lottoNumbers = new ArrayList<>();
+        String lottoNumber = Console.readLine();
+        String[] number = lottoNumber.split(",");
+        for(String num: number) {
+            try {
+                lottoNumbers.add(Integer.parseInt(num));
+            }
+            catch(NumberFormatException e) {
+                throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_IS_NOT_INTEGER);
+            }
+        }
+        return lottoNumbers;
     }
 
 }
