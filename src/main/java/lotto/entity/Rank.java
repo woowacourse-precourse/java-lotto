@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 
 public enum Rank {
 
-    FIRST(6, false,2_000_000_000, (count, bonus) -> count == 6),
+    FIRST(6, false, 2_000_000_000, (count, bonus) -> count == 6),
     SECOND(5, true, 30_000_000, (count, bonus) -> count == 5 && bonus),
     THIRD(5, false, 1_500_000, (count, bonus) -> count == 5 && !bonus),
     FOURTH(4, false, 50_000, (count, bonus) -> count == 4),
@@ -13,19 +13,25 @@ public enum Rank {
 
     private final int count;
     private final boolean bonus;
-    private final int prize;
+    private final long prize;
     private final BiFunction<Integer, Boolean, Boolean> expression;
 
-    Rank(int count, boolean bonus, int prize, BiFunction<Integer, Boolean, Boolean> expression) {
+    Rank(int count, boolean bonus, long prize, BiFunction<Integer, Boolean, Boolean> expression) {
         this.count = count;
         this.bonus = bonus;
         this.prize = prize;
         this.expression = expression;
     }
 
-    public int getCount() { return count; }
+    public int getCount() {
+        return count;
+    }
 
-    public int getPrize() {
+    public boolean getBonus() {
+        return bonus;
+    }
+
+    public long getPrize() {
         return prize;
     }
 
@@ -40,7 +46,7 @@ public enum Rank {
         if (bonus) {
             output.append(", 보너스 볼 일치");
         }
-        output.append(" (").append(String.format("%,d", prize)).append("원)");
+        output.append(String.format(" (%,d원)", prize));
         return output.toString();
     }
 
