@@ -78,7 +78,7 @@ class ApplicationTest extends NsTest {
     void createLottoByIntegerButNotMetCond() {
         //given
         Application application = new Application();
-        String input = "100";
+        String input = "124200";
         //when
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
