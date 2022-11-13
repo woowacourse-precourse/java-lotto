@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
@@ -9,7 +10,9 @@ public class User {
     private int lottoCount;
 
     // 로또 구매 개수 구현
-    public int buyingLotto(int money){
+    public int buyingLotto(){
+        String input = Console.readLine();
+        int money = UserMissChecking.numberChecking(input);
         return money / 1000;
     }
 
