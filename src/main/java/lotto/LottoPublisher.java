@@ -10,19 +10,17 @@ import static lotto.config.Constants.LottoPrice.LOTTO_PRICE;
 
 public class LottoPublisher {
 
-    private List<Lotto> lottos;
-
-    public LottoPublisher() {
-        this.lottos = new ArrayList<>();
+    public List<Lotto> publish(int money) {
+        validate(money);
+        return buyLotto(money);
     }
 
-    public void publish(int money) {
-
-        validate(money);
-
-        for (int i = 0; i < affordableLotto(money); i++) {
-            lottos.add(new Lotto(getRandomLottoNumber()));
+    private List<Lotto> buyLotto(int money) {
+        List<Lotto> Lottery = new ArrayList<>();
+        for (int i = 0; i < calculateAffordableLotto(money); i++) {
+            Lottery.add(getLottoNumber());
         }
+        return Lottery;
     }
 
     private void validate(int money) {
@@ -31,15 +29,11 @@ public class LottoPublisher {
         }
     }
 
-    private int affordableLotto(int money) {
+    private int calculateAffordableLotto(int money) {
         return money / LOTTO_PRICE;
     }
 
-    private List<Integer> getRandomLottoNumber() {
-        return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_START_INCLUSIVE, LOTTO_NUMBER_END_INCLUSIVE, LOTTO_SIZE);
-    }
-
-    public List<Lotto> getLottos() {
-        return lottos;
+    private Lotto getLottoNumber() {
+        return new Lotto(Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_START_INCLUSIVE, LOTTO_NUMBER_END_INCLUSIVE, LOTTO_SIZE));
     }
 }
