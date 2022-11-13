@@ -36,6 +36,17 @@ public abstract class Utility {
         return dividend/divisor;
     }
 
+    public static List<Lotto> totalPurchaseLotto(long howManyLotto){
+        List <Lotto> purchaseLotto = new ArrayList<>();
+        Lotto curLotto;
+        for(int i=0; i<howManyLotto; i++){
+            curLotto = createLotto();
+            purchaseLotto.add(curLotto);
+            printMessage(curLotto.toString());
+        }
+        return purchaseLotto;
+    }
+
     public static Lotto createLotto(){
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Lotto lotto = new Lotto(lottoNumbers);
