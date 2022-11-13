@@ -9,7 +9,7 @@ import lotto.game.domain.Money;
 import lotto.game.domain.WinningLotto;
 
 public class LottoService {
-    public List<Lotto> buyLotto(Money money) {
+    public List<Lotto> buyLottos(Money money) {
         List<Lotto> lottos = new ArrayList<>();
         long lottoCount = money.getValue() / 1000;
         for (int i = 0; i < lottoCount; i++) {

@@ -26,7 +26,7 @@ public class Game {
 
     public void start() {
         Money money = Money.of(ui.receiveInput(MESSAGE_PURCHASE_MONEY));
-        List<Lotto> lottos = lottoService.buyLotto(money);
+        List<Lotto> lottos = lottoService.buyLottos(money);
         ui.printPurchasedLottos(lottos);
 
         String winningNumbersInput = ui.receiveInput(MESSAGE_WINNING_NUMBER);

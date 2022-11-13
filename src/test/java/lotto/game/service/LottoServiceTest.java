@@ -26,7 +26,7 @@ class LottoServiceTest {
         Money money = Money.of(10000);
 
         // when
-        List<Lotto> lottos = lottoService.buyLotto(money);
+        List<Lotto> lottos = lottoService.buyLottos(money);
 
         // then
         assertThat(lottos.size())
