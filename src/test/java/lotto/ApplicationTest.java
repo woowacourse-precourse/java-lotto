@@ -159,6 +159,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void changeWinningNumbersStringToListTest() {
+
+        assertThat(List.of(1, 2, 3, 4, 5, 6)).isEqualTo(changeWinningNumbersStringToList("1,2,3,4,5,6"));
+    }
+
+    @Test
     void getWinningNumbersTest() {
 
         assertThat(List.of(1, 2, 3, 4, 5, 6)).isEqualTo(getWinningNumbers("1,2,3,4,5,6"));
