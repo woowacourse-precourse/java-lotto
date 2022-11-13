@@ -9,11 +9,11 @@ public class Application {
         Controller controller = new Controller();
         int money = console.inputMoney();
         int count = controller.getCount(money);
-        List<Lotto> issuedList = controller.issueLotto(count);
+        List<Integer>[] issuedList = controller.issueLotto(count);
         List<Integer> numbers = console.inputWinningNumber();
         Lotto winningLotto = controller.issueWinningNumber(numbers);
-        int number = console.inputPlusNumber();
-        winningLotto.checkPlusNumber(number);
-
+        int plusNumber = console.inputPlusNumber();
+        winningLotto.checkPlusNumber(plusNumber);
+//        controller.getResult(issuedList, winningLotto, plusNumber);
     }
 }

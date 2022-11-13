@@ -17,13 +17,12 @@ public class Controller {
         return count;
     }
 
-    public List<Lotto> issueLotto(int count) {
-        List<Lotto> issuedList = new ArrayList<Lotto>();
+    public List<Integer>[] issueLotto(int count) {
+        List<Integer>[] issuedList = new List[count];
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(numbers);
-            Lotto lotto = new Lotto(numbers);
-            issuedList.add(lotto);
+            issuedList[i] = numbers;
         }
         return issuedList;
     }
@@ -32,4 +31,6 @@ public class Controller {
         Lotto winningLotto = new Lotto(numbers);
         return winningLotto;
     }
+
+//    public void getResult(List<Integer>[] issuedList)
 }
