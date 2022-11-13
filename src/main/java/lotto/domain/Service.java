@@ -15,7 +15,7 @@ public class Service {
         Message.printNumberLottoTickets(nLottoTickets);
         Message.printLottoTickets(this.lottoTickets);
 
-        Message.printInputWinningNumbers();
+        Message.printInputServiceWinningNumbers();
     }
 
     private void setLottoTickets(int nLottoTickets){
