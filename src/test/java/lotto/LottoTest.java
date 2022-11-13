@@ -22,13 +22,13 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    @DisplayName("로또 번호가 범위를 초과 하면 예외가 발생한다.")
+    @DisplayName("로또 번호가 범위를 초과하면 예외가 발생한다.")
     @Test
     void createLottoByOverNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    @DisplayName("로또 번호가 범위 미만 이면 예외가 발생한다.")
+    @DisplayName("로또 번호가 범위 미만이면 예외가 발생한다.")
     @Test
     void createLottoByUnderNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(-1, 2, 3, 4, 5, 45)))
