@@ -1,14 +1,12 @@
 package lotto.domain;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import static lotto.domain.Lotto.LOTTO_NUMS_SIZE;
+import static lotto.domain.Utils.PATTERN;
+import static lotto.domain.Utils.separateNums;
 
 public class WinningNums {
-    private static final Pattern PATTERN = Pattern.compile("^[\\d]+, [\\d]+, [\\d]+, [\\d]+, [\\d]+, [\\d]+$");
     private final List<Integer> winningNums;
     private final int bonusNum;
 
@@ -52,13 +50,6 @@ public class WinningNums {
         return nums.stream()
                 .distinct()
                 .count() == LOTTO_NUMS_SIZE;
-    }
-
-    public List<Integer> separateNums(String input) {
-        return Arrays.asList(input.split(", "))
-                .stream()
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
     }
 }
 
