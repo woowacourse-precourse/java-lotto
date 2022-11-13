@@ -131,6 +131,6 @@ public class LottoController {
             earning += (prize * numberOfWins.get(prize));
         }
         yield = earning/(lottoData.getCountOfLotto() * lottoData.LOTTOPRICE);
-        output.showYield(yield);
+        output.showYield(yield*100);
     }
 }
