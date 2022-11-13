@@ -38,4 +38,8 @@ public class Model {
 
         return playerNumber;
     }
+
+    public static Integer MakeStringToInteger(String string) {
+        return Integer.parseInt(string);
+    }
 }
