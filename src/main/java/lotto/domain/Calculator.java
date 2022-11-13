@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Calculator {
 
-    int firstWin = 0;
-    int secondWin = 0;
-    int thirdWin = 0;
-    int fourthWin = 0;
-    int fifthWin = 0;
+    public int firstWin = 0;
+    public int secondWin = 0;
+    public int thirdWin = 0;
+    public int fourthWin = 0;
+    public int fifthWin = 0;
 
     public void updateResult(List<Integer> lottoNumbers, List<Integer> winningNumbers, int bonusNumber) {
         int winningCnt = countCorrectNumbers(lottoNumbers, winningNumbers);
