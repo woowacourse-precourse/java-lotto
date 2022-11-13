@@ -15,4 +15,13 @@ public class PlayerNumberValidation implements Validation{
         }
     }
 
+    public boolean validateBonusNumber(String number) {
+        try {
+            Integer.parseInt(number);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 }
