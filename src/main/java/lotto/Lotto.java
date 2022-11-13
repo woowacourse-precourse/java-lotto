@@ -58,15 +58,21 @@ public class Lotto {
         return lotto;
     }
 
-    public List<Integer> lottoCompare(List<Lotto> lottoNumber, List<Integer> winNumber) {
-        List<Integer> compareNumber = new ArrayList<>();
+    public List<WinLottoNumber> compareLottos(List<Lotto> lottoNumber, List<Integer> winNumber) {
+        List<WinLottoNumber> compareNumber = new ArrayList<>();
         for (int i = 0; i < lottoNumber.size(); i++) {
-            compareNumber = lottoNumber.get(i).getLottoNumbers().stream()
-                    .filter(number -> winNumber.stream().anyMatch(Predicate.isEqual(number)))
-                    .collect(Collectors.toList());
-            System.out.println("당첨 번호:" + compareNumber + ":");
+            WinLottoNumber winLottoNumber = compareLotto(lottoNumber, winNumber, i);
+            System.out.println("당첨 번호:" + compareNumber.get(i).getWinLottoNumber() + ":");
+            compareNumber.add(winLottoNumber);
         }
         return compareNumber;
+    }
+
+    public WinLottoNumber compareLotto(List<Lotto> lottoNumber, List<Integer> winNumber, int i){
+        WinLottoNumber winLottoNumber = new WinLottoNumber(lottoNumber.get(i).getLottoNumbers().stream()
+                .filter(number -> winNumber.stream().anyMatch(Predicate.isEqual(number)))
+                .collect(Collectors.toList()));
+        return winLottoNumber;
     }
 
 }
