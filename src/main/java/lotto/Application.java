@@ -53,8 +53,8 @@ public class Application {
     }
 
     public static void printEarningsRate(List<Integer> cashResult, double prize) {
-        double sumPrize = Math.round((prize / (cashResult.get(0) * 1000)) * 100);
-        System.out.println("총 수익률은" + sumPrize + "%입니다.");
+        double sumPrize = (prize / (cashResult.get(0) * 1000)) * 100;
+        System.out.println("총 수익률은 " + sumPrize + "%입니다.");
     }
 
 }
