@@ -108,20 +108,20 @@
 #### Model
 
 - Lotto 모델
-    - [ ] 몇등짜리 로또인지 추첨한다. `Lotto#draw`
+    - [ ✔ ] 몇등짜리 로또인지 추첨한다. `Lotto#draw`
     - [ ✔ ] 로또 번호 리스트의 문자열을 반환한다. `Lotto#toString`
-    - [ ] 유효한 로또인지 검사한다. `Lotto#validate`
+    - [ ✔ ] 유효한 로또인지 검사한다. `Lotto#validate`
 
 
 - LottoMachine 모델
     - [ ✔ ] 금액에 맞게 로또를 발행한다. `LottoMachine#publish`
-    - [ ] 입력된 모든 로또를 추첨하고 로또의 기록을 반환한다. `LottoMachine#drawAll`
-    - [ ] 당첨 번호와 보너스번호를 저장한다. `LottoMachine#setLuckyNumber`
-    - [ ] 당첨 번호와 보너스번호, 입력된 돈을 유효성검사한다. `LottoMachine#validate`
+    - [ ✔ ] 입력된 모든 로또를 추첨하고 로또의 기록을 반환한다. `LottoMachine#drawAll`
+    - [ ✔ ] 당첨 번호와 보너스번호를 저장한다. `LottoMachine#setLuckyNumber`
+    - [ ✔ ] 당첨 번호와 보너스번호, 입력된 돈을 유효성검사한다. `LottoMachine#validate`
 
 - WinningRecord 모델
-    - [ ] 당첨 기록을 반환한다. `WinningRecord#getWinningHistory`
-    - [ ] 수익률을 반환한다. `WinningRecord#getYield`
+    - [ ✔ ] 당첨 기록을 반환한다. `WinningRecord#getWinningHistory`
+    - [  ] 수익률을 반환한다. `WinningRecord#getYield`
 
 #### View
 
