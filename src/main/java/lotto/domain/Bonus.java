@@ -8,6 +8,7 @@ public class Bonus {
 
     public Bonus(int bonusNumber, Lotto winningLotto) {
         validateBonusDuplication(winningLotto, bonusNumber);
+        validateBonusRange(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
     private void validateBonusDuplication(Lotto winningLotto, int bonusNumber) {
@@ -15,6 +16,13 @@ public class Bonus {
         if (lottoNumbers.contains(bonusNumber)) {
             System.out.println("[ERROR} 보너스 번호는 담첨 번호에 포함될 수 없습니다.");
             throw new IllegalArgumentException("[ERROR] 잘못된 보너스 번호");
+        }
+    }
+
+    private void validateBonusRange(int bonusNumber) {
+        if (!(1 <= bonusNumber && bonusNumber <= 45)) {
+            System.out.println("[ERROR} 보너스 번호의 범위는 1 ~ 45 사이어야만 합니다.");
+            throw new IllegalArgumentException("[ERROR] 잘못된 보너스 번호 범위");
         }
     }
 

@@ -7,9 +7,9 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateSize(numbers);
-        validateRange(numbers);
-        validateDuplication(numbers);
+        validateLottoSize(numbers);
+        validateLottoRange(numbers);
+        validateLottoDuplication(numbers);
         this.numbers = numbers;
     }
 
@@ -17,14 +17,14 @@ public class Lotto {
         return this.numbers;
     }
 
-    private void validateSize(List<Integer> numbers) {
+    private void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             System.out.println("[ERROR} 복권 번호 개수는 6개이어야만 합니다.");
             throw new IllegalArgumentException("[ERROR] 잘못된 복권 번호 개수");
         }
     }
     
-    private void validateRange(List<Integer> numbers) {
+    private void validateLottoRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (!(1 <= number && number <= 45)) {
                 System.out.println("[ERROR} 복권 번호의 범위는 1 ~ 45 사이어야만 합니다.");
@@ -33,7 +33,7 @@ public class Lotto {
         }
     }
 
-    private void validateDuplication(List<Integer> numbers) {
+    private void validateLottoDuplication(List<Integer> numbers) {
         for (int index = 0; index < numbers.size(); index++) {
             if (numbers.indexOf(numbers.get(index)) != index) {
                 System.out.println("[ERROR} 복권 번호는 중복이 허용되지 않습니다.");
@@ -42,7 +42,7 @@ public class Lotto {
         }
     }
 
-    public static void validateIsNumeric(List<String> numbers) {
+    public static void validateLottoIsNumeric(List<String> numbers) {
         String pattern = "^[0-9]*$";
         for (String number : numbers) {
             if (!Pattern.matches(pattern, number)) {

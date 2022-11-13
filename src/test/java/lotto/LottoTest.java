@@ -41,7 +41,7 @@ class LottoTest {
     @MethodSource("setLottoNumbers")
     @ParameterizedTest(name = "{index}. {0}")
     void createLottoByOtherWords(List<String> numbers) {
-        assertThatThrownBy(() -> Lotto.validateIsNumeric(numbers))
+        assertThatThrownBy(() -> Lotto.validateLottoIsNumeric(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
