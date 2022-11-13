@@ -40,4 +40,13 @@ class LottoTest {
 
         assertThat(lotto.getSameNumCount(otherLotto.getNumbers())).isEqualTo(result);
     }
+
+    @DisplayName("로또 checkBonusNum() 기능 테스트")
+    @Test
+    void testBonusNum() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        boolean result = true;
+
+        assertThat(lotto.checkBonus(3)).isEqualTo(result);
+    }
 }
