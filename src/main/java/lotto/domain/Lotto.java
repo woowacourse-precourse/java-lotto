@@ -8,6 +8,9 @@ import lotto.ui.Ouput;
 
 public class Lotto {
     public static final int PRICE = 1000;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 45;
+    public static final int NUMBER_OF_NUMBERS = 6;
 
     private final List<Integer> numbers;
 
@@ -17,14 +20,14 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != NUMBER_OF_NUMBERS) {
             throw new IllegalArgumentException(Ouput.MUST_BE_SIX_DIGIT_ERROR);
         }
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(Ouput.HAD_DUPLICATE_NUMBER_ERROR);
         }
         for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) < 1 || numbers.get(i) > 45) {
+            if (numbers.get(i) < MIN_NUMBER || numbers.get(i) > MAX_NUMBER) {
                 throw new IllegalArgumentException(Ouput.MUST_BE_NUMBERS_BETWEEN_1_TO_45_ERROR);
             }
         }

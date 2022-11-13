@@ -53,7 +53,7 @@ public class WinnerChecker {
     }
 
     public void validateBounusNumber(Lotto winningLotto, int bonusNumber) {
-        if (bonusNumber > 45 || bonusNumber < 1) {
+        if (bonusNumber > Lotto.MAX_NUMBER || bonusNumber < Lotto.MIN_NUMBER) {
             throw new IllegalArgumentException(Ouput.MUST_BE_NUMBERS_BETWEEN_1_TO_45_ERROR);
         }
         if (hasBonusNumber(winningLotto, bonusNumber)) {

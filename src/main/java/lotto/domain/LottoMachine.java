@@ -10,7 +10,7 @@ public class LottoMachine {
     private List<Lotto> lottoTable = new ArrayList<>();
 
     public List<Integer> getRandomNumbers() {
-        return new ArrayList<Integer>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return Randoms.pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.NUMBER_OF_NUMBERS);
     }
 
     public int getAmount(int won) {
@@ -27,6 +27,7 @@ public class LottoMachine {
             lottoTable.add(lotto);
         }
     }
+
     public List<Lotto> getLottoTable() {
         return lottoTable;
     }
