@@ -77,4 +77,17 @@ public class StoreTest {
         //then
         assertThat(rankKeys).isEqualTo(compareRankKeys);
     }
+
+    @Test
+    @DisplayName("고객이 갖고 있는 모든 로또들을 오름차순으로 정렬하여 문자열로 반환한다.")
+    void checkFindAllLottoByCustomer() {
+        //given
+        setCustomerForStore();
+
+        //when
+        String answer = testStore.getAllLottoByCustomer();
+
+        //then
+        assertThat(answer).contains("[");
+    }
 }
