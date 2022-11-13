@@ -42,4 +42,9 @@ public class Lotto {
         }
         System.out.println(numbers.get(numbers.size() - 1) + "]");
     }
+
+    public void validateDistinctInBonusNumber(int bonusNumber) {
+        if (numbers.contains(bonusNumber))
+            throw new IllegalArgumentException(ErrorMessage.BONUS_DISTINCT_WINNING_NUMBER);
+    }
 }

@@ -4,6 +4,7 @@ import lotto.utils.Constant;
 import lotto.utils.ErrorMessage;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class BonusNumber {
     private int bonusNumber;
@@ -38,4 +39,5 @@ public class BonusNumber {
         if (result < 1 || result > 45)
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
     }
+
 }

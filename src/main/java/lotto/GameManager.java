@@ -25,6 +25,7 @@ public class GameManager {
 
         winningNumber = new Lotto(input.getWinningNumber());
         bonusNumber = new BonusNumber(input.getBonusNumber());
+        winningNumber.validateDistinctInBonusNumber(bonusNumber.getBonusNumber());
     }
 
     public int changeNumberOfLottoToBuy(int lottoPrice) {
