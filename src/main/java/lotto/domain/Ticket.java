@@ -17,14 +17,14 @@ public class Ticket {
         MoneyValidator.checkUnitOf1000Won(money);
         price = money;
         lottoCount = setLottoCount(money);
-        getLottos(lottoCount);
+        setLottos(lottoCount);
     }
 
     private int setLottoCount(int money) {
         return money / LOTTO_PRICE;
     }
 
-    private void getLottos(int lottoCount) {
+    private void setLottos(int lottoCount) {
         lottos = new ArrayList<>();
         for (int count = 0; count < lottoCount; count++) {
             lottos.add(createLotto());
