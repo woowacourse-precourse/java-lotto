@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -52,10 +51,12 @@ public class ConsoleManager {
     private static List<Integer> readWinningNumbers(){
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> ret = readNextIntegers(",");
-        boolean valid = ret.stream()
+        boolean between1And45 = ret.stream()
                 .allMatch(validator::isBetween1And45);
-        if(!valid)
+        if(!between1And45)
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 1과 45 사이어야 합니다.");
+        if(validator.isContainDuplicateNumber(ret))
+            throw new IllegalArgumentException("[ERROR] 당첨 번호에 중복이 있습니다.");
         System.out.println();
         return ret;
     }
@@ -76,6 +77,8 @@ public class ConsoleManager {
 
     public static List<Integer> readNextIntegers(String delimiter) {
         String line = readLine();
+        if(!validator.isProperNumbersLineFormat(line, delimiter))
+            throw new IllegalArgumentException("[ERROR] 당첨번호 입력 포맷이 맞지 않습니다");
         return Stream.of(line.split(delimiter))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -83,10 +86,7 @@ public class ConsoleManager {
 
     public static Integer readNextInteger() {
         String line = readLine();
-        boolean valid = line.chars()
-                .mapToObj(e -> (char) e)
-                .allMatch(Character::isDigit);
-        if(!valid)
+        if(!validator.isAllDigit(line))
             throw new IllegalArgumentException("[ERROR] 숫자만 입력할 수 있습니다.");
         return Integer.parseInt(line);
     }

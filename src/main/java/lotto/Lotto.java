@@ -23,7 +23,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또번호가 총 6개이어야만 합니다.");
         }
-        if (new HashSet(numbers).size() != 6) {
+        if (validator.isContainDuplicateNumber(numbers)) {
             throw new IllegalArgumentException("[ERROR] 로또번호에 중복이 없어야만 합니다.");
         }
         boolean valid = numbers.stream()
