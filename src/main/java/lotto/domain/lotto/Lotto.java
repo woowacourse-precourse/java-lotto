@@ -17,17 +17,38 @@ public class Lotto {
         validateNumbersSizeIsFixSize(numbers);
 
         var generatedLotto = generateLotto(numbers);
+
         validateLottoNumbersDuplicated(generatedLotto);
 
-        this.numbers = generatedLotto.stream()
-                .sorted()
-                .map(LottoNumber::number)
-                .collect(Collectors.toList());
+        this.numbers = this.convertListLottoNumberToListInteger(generatedLotto);
     }
 
     public Lotto(final String input) {
-        var generatedLotto = Arrays.stream(input.split(",")).map(LottoNumber::new).collect(Collectors.toList());
-        this.numbers = generatedLotto.stream().sorted().map(LottoNumber::number)
+        validateNumbersSizeIsFixSize(input);
+
+        var generatedLotto = generateLotto(input);
+
+        validateLottoNumbersDuplicated(generatedLotto);
+
+        this.numbers = convertListLottoNumberToListInteger(generatedLotto);
+    }
+
+    private List<LottoNumber> generateLotto(String input) {
+        return Arrays.stream(input.split(","))
+                .map(LottoNumber::new)
+                .collect(Collectors.toList());
+    }
+
+    private List<LottoNumber> generateLotto(List<Integer> numbers) {
+        return numbers.stream()
+                .map(LottoNumber::new)
+                .collect(Collectors.toList());
+    }
+
+    private List<Integer> convertListLottoNumberToListInteger(final List<LottoNumber> lottoNumbers) {
+        return lottoNumbers.stream()
+                .sorted()
+                .map(LottoNumber::number)
                 .collect(Collectors.toList());
     }
 
@@ -41,10 +62,10 @@ public class Lotto {
 
     }
 
-    private List<LottoNumber> generateLotto(List<Integer> numbers) {
-        return numbers.stream()
-                .map(LottoNumber::new)
-                .collect(Collectors.toList());
+    private void validateNumbersSizeIsFixSize(final String input) {
+        if (input.length() != FIX_SIZE) {
+            throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_SIZE);
+        }
     }
 
     private void validateNumbersSizeIsFixSize(List<Integer> numbers) {
