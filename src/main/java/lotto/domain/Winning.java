@@ -1,66 +1,85 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.*;
 
 public class Winning {
-    private final String ERROR_MSG = "[ERROR] 잘못된 입력 입니다.";
-    private List<Integer> winningNumbers;
-    private int bonusNumber;
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
+
+    private static Set<String> forDuplicateCheck = new HashSet<>();
+
+    public Winning(String winningNumberInput, String bonusNumberInput) {
+        this.winningNumbers = new ArrayList<>();
+        Arrays.stream(winningNumberInput.split(",")).
+                mapToInt(Integer::parseInt).forEach(winningNumbers::add);
+        this.bonusNumber = Integer.parseInt(bonusNumberInput);
+    }
 
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
     }
-
-    public void initWinningNumbers(String winningNumberInput) {
-        this.winningNumbers = new ArrayList<>();
-        String[] inputs = winningNumberInput.split(",");
-        for (String input : inputs) {
-            validate(input);
-            this.winningNumbers.add(Integer.parseInt(input));
-        }
-        validateInputLength(this.winningNumbers);
-    }
-
     public int getBonusNumber() {
         return bonusNumber;
     }
 
-    public void initBonusNumber(String bonusNumberInput) {
-        validate(bonusNumberInput);
-        this.bonusNumber = Integer.parseInt(bonusNumberInput);
+    // For UI with winning number input
+    public static String winningNumberInput() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String winningNumberInput = Console.readLine();
+        System.out.println();
+        validateWinningNumberInput(winningNumberInput);
+        return winningNumberInput;
     }
 
-    public void validate(String input) {
+    // For UI with bonus number input
+    public static String bonusNumberInput() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumberInput = Console.readLine();
+        System.out.println();
+        validate(bonusNumberInput);
+        return bonusNumberInput;
+    }
+
+    // Under Methods : for validate
+    public static void validateWinningNumberInput(final String winningNumber) {
+        String[] splitWinningNumber = winningNumber.split(",");
+
+        if (splitWinningNumber.length != 6) {
+            throw new IllegalArgumentException();
+        }
+
+        for (String i : splitWinningNumber){
+            validate(i);
+        }
+    }
+
+    public static void validate(final String input) {
         validateStringToInteger(input);
         validateRange(input);
         validateUniqueNumber(input);
     }
 
-    public void validateStringToInteger(String input) {
+    public static  void validateStringToInteger(final String input) {
         try {
             Integer.parseInt(input);
         }catch (Exception e) {
-            throw new IllegalArgumentException(ERROR_MSG);
+            throw new IllegalArgumentException();
         }
     }
 
-    public void validateRange(String input) {
+    public static void validateRange(final String input) {
         int intInput = Integer.parseInt(input);
         if (intInput < 1 || intInput > 45) {
-            throw new IllegalArgumentException(ERROR_MSG);
+            throw new IllegalArgumentException();
         }
     }
 
-    public void validateUniqueNumber(String input) {
-        int intInput = Integer.parseInt(input);
-        if (this.winningNumbers.contains(intInput)) {
-            throw new IllegalArgumentException(ERROR_MSG);
+    public static void validateUniqueNumber(final String input) {
+        if (forDuplicateCheck.contains(input)) {
+            throw new IllegalArgumentException();
         }
-    }
-
-    public void validateInputLength(List<Integer> winningNumbers) {
-        if (winningNumbers.size() != 6) {
-            throw new IllegalArgumentException(ERROR_MSG);
-        }
+        forDuplicateCheck.add(input);
     }
 }

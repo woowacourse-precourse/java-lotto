@@ -1,10 +1,12 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Purchase {
 
@@ -13,54 +15,25 @@ public class Purchase {
     private final List<Lotto> lotteries;
 
     public Purchase(String purchaseAmount) {
-        validatePurchase(purchaseAmount);
         this.purchaseAmount = Long.parseLong(purchaseAmount);
         this.purchaseQuantity = calculatePurchaseQuantity(this.purchaseAmount);
         this.lotteries = createLotteries(this.purchaseQuantity);
+
     }
 
     public long getPurchaseAmount() {
         return purchaseAmount;
     }
-
-    public long getPurchaseQuantity() {
-        return purchaseQuantity;
-    }
-
     public List<Lotto> getLotteries() {
         return lotteries;
     }
 
-    public void validatePurchase(String purchaseAmountInput) {
-        validateNumber(purchaseAmountInput);
-        validateNotInput(purchaseAmountInput);
-        validateUnit(purchaseAmountInput);
-    }
-
-    public void validateNumber(String purchaseAmountInput) {
-        if (!purchaseAmountInput.replaceAll("[0-9]", "").equals("")) {
-            throw new IllegalArgumentException("[ERROR] 구입금액은 숫자만 입력 가능합니다.");
-        }
-    }
-
-    public void validateNotInput(String purchaseAmountInput) {
-        if (purchaseAmountInput.length() == 0) {
-            throw new IllegalArgumentException("[ERROR] 구입금액을 입력해 주세요.");
-        }
-    }
-
-    public void validateUnit(String purchaseAmountInput) {
-        long intPurchaseAmountInput = Long.parseLong(purchaseAmountInput);
-        if(intPurchaseAmountInput % 1000 != 0 || intPurchaseAmountInput == 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위로 입력해 주세요.");
-        }
-    }
-
-    public Long calculatePurchaseQuantity(long purchaseAmount) {
+    public Long calculatePurchaseQuantity(final long purchaseAmount) {
         return purchaseAmount / 1000;
     }
 
-    public List<Lotto> createLotteries(long purchaseQuantity) {
+
+    public List<Lotto> createLotteries(final long purchaseQuantity) {
         List<Lotto> lottoList = new ArrayList<>();
         for (int i=0; i < purchaseQuantity; i++) {
             Lotto lotto = lottoCreator();
@@ -75,8 +48,33 @@ public class Purchase {
     }
 
     public List<Integer> createLottoNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(numbers);
         return numbers;
+    }
+
+    // For input UI
+    public static String purchaseAmountInput() {
+        System.out.println("구입금액을 입력해 주세요.");
+        String purchaseAmount = Console.readLine();
+        System.out.println();
+        validatePurchaseInput(purchaseAmount);
+        return purchaseAmount;
+    }
+
+    // For Print the Lotteries list purchased
+    public void printPurchaseLotteries() {
+        System.out.println(String.format("%d개를 구매했습니다.", purchaseQuantity));
+        for (Lotto lotto : lotteries) {
+            lotto.printLotto();
+        }
+        System.out.println();
+    }
+
+    public static void validatePurchaseInput(final String purchaseAmountInput) {
+        final String pattern = "[1-9]+[0-9]*0{3}";
+        if (!purchaseAmountInput.matches(pattern)) {
+            throw new IllegalArgumentException();
+        }
     }
 }

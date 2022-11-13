@@ -8,9 +8,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateLength(numbers);
-        validateDuplicatedNumber(numbers);
-        validateNumberRange(numbers);
+        validate(numbers);
         this.numbers = numbers;
     }
 
@@ -18,10 +16,13 @@ public class Lotto {
         return numbers;
     }
 
-    private void validateLength(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또의 번호 개수는 6개여야 합니다.");
+            System.out.println("[ERROR] 로또의 번호 개수는 6개여야 합니다.");
+            throw new IllegalArgumentException();
         }
+        validateDuplicatedNumber(numbers);
+        validateNumberRange(numbers);
     }
 
     private void validateDuplicatedNumber(List<Integer> numbers) {
@@ -30,7 +31,8 @@ public class Lotto {
 
         for(int x : duplicateChecker.values()) {
             if (x > 1) {
-                throw new IllegalArgumentException("[ERROR] 로또의 번호는 중복될 수 없습니다.");
+                System.out.println("[ERROR] 로또의 번호는 중복될 수 없습니다.");
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -38,7 +40,8 @@ public class Lotto {
     private void validateNumberRange(List<Integer> numbers) {
         long countsOfRangeOut = numbers.stream().filter(x -> x < 1 || x > 45).count();
         if (countsOfRangeOut > 0) {
-            throw new IllegalArgumentException("[ERROR] 로또의 숫자 범위는 1에서 45까지 가능합니다.");
+            System.out.println("[ERROR] 로또의 숫자 범위는 1에서 45까지 가능합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
