@@ -22,7 +22,6 @@ public class LottoTicket {
         ticketCount = totalCash / ticketPrice;
         return ticketCount;
     }
-
     public static List<List<Integer>> paidLotteryNumberGenerator(int numberofPaidLottery){
 
         List<List<Integer>> allOfLotteryNumbers = new ArrayList<>();
@@ -37,4 +36,5 @@ public class LottoTicket {
 
         return allOfLotteryNumbers;
     }
+
 }
