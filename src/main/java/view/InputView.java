@@ -17,12 +17,14 @@ public class InputView {
     public static String inputWinningNumber() {
         System.out.println(INPUT_WINNING_NUMBER);
         String winningNumber = Console.readLine();
+        System.out.println();
         return winningNumber;
     }
 
     public static int inputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
         String StringBonusNumber = Console.readLine();
+        System.out.println();
         int bonusNumber = Integer.parseInt(StringBonusNumber);
         return bonusNumber;
     }
