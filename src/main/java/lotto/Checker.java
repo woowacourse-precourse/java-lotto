@@ -3,12 +3,12 @@ package lotto;
 import constance.Texts;
 
 public class Checker {
-    public boolean checkAmountInput(String input) {
-        int inputToInteger = checkNumeric(input);
-        checkNegative(inputToInteger);
-        checkAmount(inputToInteger);
-        checkRemain(inputToInteger);
-        return false;
+    public int checkAmountInput(String input) {
+        int amount = checkNumeric(input);
+        checkNegative(amount);
+        checkAmount(amount);
+        checkRemain(amount);
+        return amount;
     }
 
     public int checkNumeric(String input) {

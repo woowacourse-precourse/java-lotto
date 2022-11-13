@@ -19,7 +19,7 @@ public class User {
     }
     private void setAmount(){
         String input = camp.nextstep.edu.missionutils.Console.readLine();
-        checker.checkAmountInput(input);
+        int amount = checker.checkAmountInput(input);
     }
 
 }
