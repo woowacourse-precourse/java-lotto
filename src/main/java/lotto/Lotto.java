@@ -17,12 +17,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         numberRangeValidate(numbers);
-        sixLetterValidate(numbers);
+        lengthValidate(numbers);
         duplicateValidate(numbers);
     }
 
     // TODO: 추가 기능 구현
-    private void sixLetterValidate(List<Integer> numbers) {
+    private void lengthValidate(List<Integer> numbers) {
         if (!SIZE.equals(numbers.size())) {
             throw new IllegalArgumentException(WRONG_LENGTH.toString());
         }
@@ -44,5 +44,9 @@ public class Lotto {
         if (illegal) {
             throw new IllegalArgumentException(WRONG_RANGE.toString());
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 }

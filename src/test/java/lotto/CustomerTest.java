@@ -48,13 +48,13 @@ public class CustomerTest {
         customer.inputWinningNumber("1 ,2,3,4,5,6");
         boolean wellEntered = true;
         for (int i = 1; i <= 6; i++) {
-            if (customer.getWinningNumber().get(i - 1) != i) {
+            if (customer.getWinningNumber().getNumbers().get(i - 1) != i) {
                 wellEntered = false;
             }
         }
 
         // then
-        assertThat(SIZE.equals(customer.getWinningNumber().size())).isTrue();
+        assertThat(SIZE.equals(customer.getWinningNumber().getNumbers().size())).isTrue();
         assertThat(wellEntered).isTrue();
     }
 

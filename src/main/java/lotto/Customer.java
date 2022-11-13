@@ -6,17 +6,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import static lotto.Const.SIZE;
 import static lotto.Const.BILL;
-import static lotto.ErrorPhrase.DUPLICATE;
-import static lotto.ErrorPhrase.WRONG_LENGTH;
 import static lotto.ErrorPhrase.WRONG_PAY;
 import static lotto.ErrorPhrase.WRONG_INPUT;
 import static lotto.ErrorPhrase.WRONG_RANGE;
 
 
 public class Customer {
-    private List<Integer> winningNumber;
+    private Lotto winningNumber;
     private int bonusNumber;
 
     public Customer() {
@@ -29,7 +26,6 @@ public class Customer {
     }
 
     public void inputWinningNumber(String input) {
-        winningNumberValidate(input);
         convertInputToLotto(input);
     }
 
@@ -41,11 +37,15 @@ public class Customer {
 
     private void convertInputToLotto(String input) {
         StringTokenizer delimitedInput = commaDelimited(input);
-        winningNumber = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
 
         while (delimitedInput.hasMoreTokens()) {
-            winningNumber.add(Integer.parseInt(removeLeadingAndTrailingSpaces(delimitedInput.nextToken())));
+            String number = removeLeadingAndTrailingSpaces(delimitedInput.nextToken());
+            isContainNumber(number);
+            numbers.add(Integer.parseInt(number));
         }
+
+        winningNumber = new Lotto(numbers);
     }
 
     private void bonusNumberValidate(String input) {
@@ -58,48 +58,12 @@ public class Customer {
         isNotWrongPay(input);
     }
 
-    public void winningNumberValidate(String input) {
-        StringTokenizer delimitedInput = commaDelimited(input);
-
-        isNotWrongLength(delimitedInput);
-        delimitedInputEachNumberValidate(delimitedInput);
-    }
-
-    private void delimitedInputEachNumberValidate(StringTokenizer delimitedInput) {
-        List<Integer> numbers = new ArrayList<>();
-
-        while (delimitedInput.hasMoreTokens()) {
-            String input = delimitedInput.nextToken();
-            input = removeLeadingAndTrailingSpaces(input);
-            isNotWrongRange(input);
-
-            numbers.add(Integer.parseInt(input));
-        }
-
-        duplicateValidate(numbers);
-    }
-
-    private void duplicateValidate(List<Integer> numbers) {
-        Set<Integer> duplicateCheck = new HashSet<>();
-        duplicateCheck.addAll(numbers);
-
-        if (!SIZE.equals(duplicateCheck.size())) {
-            throw new IllegalArgumentException(DUPLICATE.toString());
-        }
-    }
-
     private void isNotWrongRange(String input) {
         isContainNumber(input);
         int stringToInt = Integer.parseInt(input);
 
         if (!(1 <= stringToInt && stringToInt <= 45)) {
             throw new IllegalArgumentException(WRONG_RANGE.toString());
-        }
-    }
-
-    private void isNotWrongLength(StringTokenizer delimitedInput) {
-        if (!SIZE.equals(delimitedInput.countTokens())) {
-            throw new IllegalArgumentException(WRONG_LENGTH.toString());
         }
     }
 
@@ -126,6 +90,7 @@ public class Customer {
             throw new IllegalArgumentException(WRONG_PAY.toString());
         }
     }
+
     private StringTokenizer commaDelimited(String input) {
         return new StringTokenizer(input, ",");
     }
@@ -134,7 +99,7 @@ public class Customer {
         return input.trim();
     }
 
-    public List<Integer> getWinningNumber() {
+    public Lotto getWinningNumber() {
         return this.winningNumber;
     }
 
