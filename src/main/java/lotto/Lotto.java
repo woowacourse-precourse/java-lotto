@@ -28,6 +28,11 @@ public class Lotto {
         }
     }
 
+    /**
+     * 사용자가 입력한 로또 구입 금액을 검증한다.
+     * 1000으로 나누었을 때 몫이 1 미만이거나 나머지가 0이 아니면 예외가 발생
+     * @param purchaseAmount 사용자가 입력한 로또 구입 금액
+     */
     private static void ValidatePurchaseAmount(Integer purchaseAmount) {
         if (purchaseAmount / 1000 < 1) {
             throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
