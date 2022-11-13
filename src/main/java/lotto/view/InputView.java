@@ -1,23 +1,23 @@
 package lotto.view;
 
 import lotto.utils.OutputNonEnumMessage;
-import lotto.service.UserService;
+
+import java.util.List;
 
 public class InputView {
-    UserService userService = new UserService();
 
-    public void printUserInputMoney(String money){
+    public void printUserInputMoney(int money){
         System.out.println(OutputNonEnumMessage.INPUT_MONEY_MESSAGE);
-        System.out.println(userService.getUserMoney());
+        System.out.println(money);
     }
 
-    public void printUserInputLottoNumber(String number){
+    public void printUserInputLottoNumber(List<Integer>number){
         System.out.println(OutputNonEnumMessage.INPUT_LOTTO_NUMBER_MESSAGE);
-        System.out.println(userService.getLottoNumber());
+        System.out.println(number);
     }
 
-    public void printUserInputBonusNumber(String number){
+    public void printUserInputBonusNumber(int bonusNumber){
         System.out.println(OutputNonEnumMessage.INPUT_BONUS_NUMBER_MESSAGE);
-        System.out.println(userService.getBonusNumber());
+        System.out.println(bonusNumber);
     }
 }
