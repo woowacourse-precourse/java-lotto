@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.Arrays;
 
-public enum LottoResult {
+enum LottoResult {
     ZERO_CORRECT(0, 0),
     ONE_CORRECT(1, 0),
     TWO_CORRECT(2, 0),

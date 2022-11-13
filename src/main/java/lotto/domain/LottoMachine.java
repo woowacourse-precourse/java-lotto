@@ -3,7 +3,7 @@ package lotto.domain;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-public class LottoMachine {
+public final class LottoMachine {
     private final InputView inputView;
     private final OutputView outputView;
     private final PickNumbers pickNumbers;

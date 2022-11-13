@@ -2,7 +2,7 @@ package lotto.domain;
 
 import lotto.constant.LottoConstants;
 
-public class BonusNumber {
+final class BonusNumber {
     private final int number;
 
     public BonusNumber(int number) {

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class InputValidator {
+final class InputValidator {
     private static final Pattern NUMBER = Pattern.compile("^[0-9]+$");
     private static final Pattern SPLITTER_PATTERN = Pattern.compile("^([0-9],?)+[0-9]$");
 

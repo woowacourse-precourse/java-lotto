@@ -5,7 +5,7 @@ import lotto.constant.LottoConstants;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LottoStatistic {
+final class LottoStatistic {
     private final WinningLottery winningLottery;
     private final Lottos lottos;
 

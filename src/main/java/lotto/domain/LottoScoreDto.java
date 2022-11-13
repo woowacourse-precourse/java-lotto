@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public class LottoScoreDto {
+public final class LottoScoreDto {
     private final long three;
     private final long four;
     private final long five;

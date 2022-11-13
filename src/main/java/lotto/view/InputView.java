@@ -4,7 +4,7 @@ import handler.InputHandler;
 
 import java.util.List;
 
-public class InputView {
+public final class InputView {
     private final InputHandler inputHandler;
 
     public InputView(InputHandler inputHandler) {

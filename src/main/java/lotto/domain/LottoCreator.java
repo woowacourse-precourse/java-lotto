@@ -6,11 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class LottoCreator {
+final class LottoCreator {
     private final PickNumbers random;
 
     public LottoCreator(PickNumbers random) {
+        validate(random);
         this.random = random;
+    }
+
+    private void validate(PickNumbers random) {
+        if (random == null) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public Lottos createLottos(Money money) {
