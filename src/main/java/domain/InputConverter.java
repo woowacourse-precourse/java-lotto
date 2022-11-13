@@ -35,11 +35,15 @@ public class InputConverter {
         try {
             money = Integer.parseInt(moneyInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액에 숫자가 아닌 값이 포함되어 있습니다.");
+            String errorMessage = "[ERROR] 구입 금액에 숫자가 아닌 값이 포함되어 있습니다.";
+            System.out.println(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
         }
 
         if (money % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위로 입력되어야 합니다.");
+            String errorMessage = "[ERROR] 구입 금액은 1000원 단위로 입력되어야 합니다.";
+            System.out.println(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
@@ -48,11 +52,15 @@ public class InputConverter {
         try {
             bonusNumber = Integer.parseInt(numberInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 보너스 숫자가 숫자가 아닌 값으로 입력되었습니다.");
+            String errorMessage = "[ERROR] 보너스 숫자가 숫자가 아닌 값으로 입력되었습니다.";
+            System.out.println(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
         }
 
         if (bonusNumber < MINIMUM_NUMBER || bonusNumber > MAXIMUM_NUMBER) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 범위의 숫자여야 합니다.");
+            String errorMessage = "[ERROR] 보너스 숫자가 숫자가 아닌 값으로 입력되었습니다.";
+            System.out.println(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 }
