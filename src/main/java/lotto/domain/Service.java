@@ -9,6 +9,7 @@ import java.util.List;
 public class Service {
 
     private List<Lotto> lottoTickets;
+    private List<Integer> winningNumbers;
 
     public Service(int nLottoTickets){
         setLottoTickets(nLottoTickets);
@@ -16,6 +17,7 @@ public class Service {
         Message.printLottoTickets(this.lottoTickets);
 
         Message.printInputServiceWinningNumbers();
+        setWinningNumbers();
     }
 
     private void setLottoTickets(int nLottoTickets){
@@ -27,4 +29,7 @@ public class Service {
         }
     }
 
+    public void setWinningNumbers() {
+        this.winningNumbers = ServiceInput.getWinningNumbers();
+    }
 }

@@ -27,6 +27,20 @@ public class ServiceInput {
         return numbers;
     }
 
+    public static List<Integer> getWinningNumbers(){
+
+        List<String> splitInputWinningNumbers = getSplitInputWinningNumbers();
+
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (int i=0; i<splitInputWinningNumbers.size(); i++){
+            winningNumbers.add(Converter.StringToInteger(splitInputWinningNumbers.get(i)));
+        }
+
+        // TODO: 예외처리 구현
+
+        return winningNumbers;
+    }
+
     private static String getInputWinningNumbers() {
 
         String inputWinningNumbers = Console.readLine();
