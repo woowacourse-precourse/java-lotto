@@ -16,10 +16,16 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    public static void checkMoney(String Money){
+        if(Integer.valueOf(Money)%1000 != 0){
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력하셔야 합니다.");
+        }
+    }
 
     public static int buyLotto(){
         System.out.println("구입금액을 입력해 주세요.");
         String Money = readLine();
+        checkMoney(Money);
         int numBuy = Integer.valueOf(Money)/1000;
         return numBuy;
     }
