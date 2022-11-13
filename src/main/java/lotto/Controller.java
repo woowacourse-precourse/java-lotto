@@ -4,14 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-public class Game {
+public class Controller {
 
     public void play(int lottoCount) {
         System.out.println("게임 시작~");
         System.out.println(lottoCount);
 
         Set<List<Integer>> lottoNumbers = lottoGenerator(lottoCount);
-
         System.out.println(lottoNumbers);
 
     }
@@ -30,7 +29,6 @@ public class Game {
         Set<List<Integer>> lottoNumbers = new HashSet<>();
 
         for(int count =0; count < lottoCount; count++) {
-
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottoNumbers.add(lottoNumber);
         }
