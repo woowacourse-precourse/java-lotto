@@ -21,6 +21,7 @@ public class Judgement {
          resultUpdate(result,checkPlaceWin(tempWinner,transfromLotto,bonusNumber));
 
     }
+    printResult(this.result);
     }
     public int checkPlaceWin(Set<Integer> tempwinner,Set<Integer> transformLotto,String bonusNumber){
         tempwinner.retainAll(transformLotto);
@@ -40,15 +41,15 @@ public class Judgement {
         if(tempwinner.size()==3){
             place= 5;
         }
-        if(tempwinner.size()<4){
-            place= 0;
-        }
         return place;
     }
     public void resultUpdate(int[] result,int place){
         result[place]++;
     }
     public void printResult(int[] result){
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
         System.out.println("3개 일치 (5,000원) - "+result[5]+"개");
         System.out.println("4개 일치 (50,000원) - "+result[4]+"개");
         System.out.println("5개 일치 (1,500,000원) - "+result[3]+"개");

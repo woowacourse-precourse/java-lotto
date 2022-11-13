@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -7,6 +10,12 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+ /*       numbers.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1-o2;
+            }
+        });*/
         this.numbers = numbers;
     }
 
@@ -20,5 +29,7 @@ public class Lotto {
     }
 
 
+
     // TODO: 추가 기능 구현
 }
+
