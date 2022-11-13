@@ -4,11 +4,13 @@ import java.util.Arrays;
 
 public class Calculator {
 
-    static private long income = 0;
-    static private long[] placesCount = new long[6];
+    static private long income;
+    static private long[] placesCount;
     long money;
     long quantity;
     Calculator(long money) {
+        income = 0;
+        placesCount = new long[6];
         this.money = money;
         this.quantity = money / 1000;
     }
