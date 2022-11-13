@@ -15,6 +15,7 @@ public class UI {
     private int moneyInput() {
         System.out.println(MONEY_INPUT_MESSAGE);
         String moneyInput = Console.readLine();
+        Validation.validateMoneyInput(moneyInput);
 
         return Integer.parseInt(moneyInput);
     }
