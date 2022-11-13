@@ -58,4 +58,12 @@ public enum Rank {
     public void plusCount() {
         this.count += 1;
     }
+
+    public void clearCount() {
+        FIRST_PLACE.count = 0;
+        SECOND_PLACE.count = 0;
+        THIRD_PLACE.count = 0;
+        FOURTH_PLACE.count = 0;
+        FIFTH_PLACE.count = 0;
+    }
 }
