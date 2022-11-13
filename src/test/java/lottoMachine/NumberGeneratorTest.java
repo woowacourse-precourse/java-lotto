@@ -21,17 +21,4 @@ public class NumberGeneratorTest {
 
         assertThat(size).isEqualTo(6);
     }
-
-    @Test
-    void 생성된_숫자는_오름차순이어야_합니다() {
-        boolean isSorted = true;
-        for (int index = 1; index < numbers.size(); index++) {
-            if (numbers.get(index) < numbers.get(index - 1)) {
-                isSorted = false;
-                break;
-            }
-        }
-
-        assertThat(isSorted).isTrue();
-    }
 }
