@@ -40,7 +40,7 @@ public class Statistics {
                 bonus = isExistIn(answer.getBonusNumber(), lotto.getNumbers());
             }
             ranking = Ranking.getRanking(match, bonus);
-            counter.put(ranking, counter.get(ranking));
+            counter.put(ranking, counter.get(ranking) + 1);
         }
     }
 
