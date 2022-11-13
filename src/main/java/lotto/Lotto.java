@@ -31,6 +31,10 @@ public class Lotto {
         return numbers.toString();
     }
 
+    public boolean contains(int num) {
+        return numbers.contains(num);
+    }
+
     public static List<Integer> generateRandomLottoNumbers() {
         List<Integer> lottoNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         lottoNum.sort(Comparator.naturalOrder());
@@ -41,7 +45,25 @@ public class Lotto {
         int correct = 0;
 
         for(int num : numbers) {
-            // compare
+            if(answer.contains(num))
+                correct++;
         }
+
+        //
+    }
+
+    public static int rank(int correct, boolean bonus) {
+        if(correct == 6)
+            return 1;
+        if(correct == 5 && bonus)
+            return 2;
+        if(correct == 5)
+            return 3;
+        if(correct == 4)
+            return 4;
+        if(correct == 3)
+            return 5;
+
+        return -1;
     }
 }
