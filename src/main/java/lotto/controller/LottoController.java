@@ -3,7 +3,6 @@ package lotto.controller;
 import lotto.RateOfReturn;
 import lotto.Ticket;
 import lotto.Win;
-import lotto.validator.Validator;
 import lotto.view.LottoView;
 
 import java.util.Collections;
@@ -22,14 +21,13 @@ public class LottoController {
 
     public void start() {
         int money;
-        int lottoCount;
         int bonusNumber;
         Ticket ticket;
         Win win;
         double rate;
         RateOfReturn rateOfReturn;
         List<Integer> winningNumbers = Collections.EMPTY_LIST;
-        LottoView view = new LottoView(new Validator());
+        LottoView view = new LottoView();
 
         try {
             view.printMessage(INPUT_MONEY);

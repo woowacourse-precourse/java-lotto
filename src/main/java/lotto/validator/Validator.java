@@ -10,13 +10,17 @@ import static lotto.constant.ErrorMessage.*;
 public class Validator {
     public static final int LOTTO_COUNT = 6;
 
-    public void validateMoney(int money) {
+    private Validator() {
+    }
+
+    public static void validateMoney(int money) {
+        // TODO money <= 0 고민
         if (money < 0 || money % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_MONEY);
         }
     }
 
-    public void validateWinningNumbers(String numbers) {
+    public static void validateWinningNumbers(String numbers) {
         Set<String> uniqueNumbers;
 
         // 쉼표 개수 != 로또 번호 개수
@@ -37,15 +41,15 @@ public class Validator {
         }
     }
 
-    private boolean hasCommaDelimiter(String numbers) {
+    private static boolean hasCommaDelimiter(String numbers) {
         return numbers.contains(",");
     }
 
-    private boolean isLottoCount(Set<String> uniqueNumbers) {
+    private static boolean isLottoCount(Set<String> uniqueNumbers) {
         return uniqueNumbers.size() == LOTTO_COUNT;
     }
 
-    private boolean isRange(Set<String> uniqueNumbers) {
+    private static boolean isRange(Set<String> uniqueNumbers) {
         int number = 0;
 
         for (String uniqueNumber : uniqueNumbers) {
@@ -63,7 +67,7 @@ public class Validator {
         return true;
     }
 
-    public void validateBonusNumber(List<Integer> winningNumbers, String bonusNumber) {
+    public static void validateBonusNumber(List<Integer> winningNumbers, String bonusNumber) {
 
         if (!isRange(bonusNumber)) {
             throw new IllegalArgumentException(ERROR_RANGE);
@@ -74,11 +78,11 @@ public class Validator {
         }
     }
 
-    private boolean isDuplicated(List<Integer> winningNumbers, int bonusNumber) {
+    private static boolean isDuplicated(List<Integer> winningNumbers, int bonusNumber) {
         return winningNumbers.contains(bonusNumber);
     }
 
-    private boolean isRange(String bonusNumber) {
+    private static boolean isRange(String bonusNumber) {
         int number = 0;
 
         try {

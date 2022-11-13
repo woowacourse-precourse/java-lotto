@@ -10,12 +10,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.constant.ErrorMessage.*;
 
 public class LottoView {
-    private final Validator validator;
-
-    public LottoView(Validator validator) {
-        this.validator = validator;
-    }
-
     public void printMessage(String message) {
         System.out.println(message);
     }
@@ -35,12 +29,13 @@ public class LottoView {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_MONEY);
         }
-        validator.validateMoney(money);
+        Validator.validateMoney(money);
         return money;
     }
 
     public List<Integer> inputWinningNumbers() {
         String input = readLine();
+        Validator.validateWinningNumbers(input);
         return stringToList(input);
     }
 
@@ -51,7 +46,7 @@ public class LottoView {
 
     public int inputBonusNumber(List<Integer> winningNumbers) {
         String input = readLine();
-        validator.validateBonusNumber(winningNumbers, input);
+        Validator.validateBonusNumber(winningNumbers, input);
         return Integer.parseInt(input);
     }
 }

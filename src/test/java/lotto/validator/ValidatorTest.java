@@ -2,7 +2,6 @@ package lotto.validator;
 
 import lotto.constant.ErrorMessage;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,21 +9,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import static lotto.constant.ErrorMessage.*;
+import static lotto.validator.Validator.*;
 
 class ValidatorTest {
-    private Validator validator;
-
-    @BeforeEach
-    public void setup() {
-        validator = new Validator();
-    }
-
     @DisplayName("구매 금액이 0이상의 정수가 아니면 예외가 발생한다.")
     @Test
     public void validateMoneyLessThen0() {
         int money = -1;
 
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateMoney(money))
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validateMoney(money))
                 .withMessage(ErrorMessage.ERROR_MONEY);
     }
 
@@ -33,7 +26,7 @@ class ValidatorTest {
     public void validateMoneyByNot1000Multiples() {
         int money = 1100;
 
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateMoney(money))
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validateMoney(money))
                 .withMessage(ErrorMessage.ERROR_MONEY);
     }
 
@@ -42,7 +35,7 @@ class ValidatorTest {
     public void validateWinningNumbersByCommaDelimiter() {
         String numbers = "1234";
 
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateWinningNumbers(numbers))
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validateWinningNumbers(numbers))
                 .withMessage(ERROR_COMMA_DELIMITER);
     }
 
@@ -51,7 +44,7 @@ class ValidatorTest {
     public void validateWinningNumberByDuplicatedValues() {
         String numbers = "1,2,3,3,4,5";
 
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateWinningNumbers(numbers))
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validateWinningNumbers(numbers))
                 .withMessage(ERROR_DUPLICATE_SIZE);
     }
 
@@ -61,9 +54,9 @@ class ValidatorTest {
         String greatThanSizeNumbers = "1,2,3,4,5,6,7,8";
         String lessThanSizeNumbers = "1,2,3";
 
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateWinningNumbers(greatThanSizeNumbers))
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validateWinningNumbers(greatThanSizeNumbers))
                 .withMessage(ERROR_DUPLICATE_SIZE);
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateWinningNumbers(lessThanSizeNumbers))
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validateWinningNumbers(lessThanSizeNumbers))
                 .withMessage(ERROR_DUPLICATE_SIZE);
     }
 
@@ -72,7 +65,7 @@ class ValidatorTest {
     public void validateWinningNumberByRange() {
         String numbers = "1,2,3,4,46,7";
 
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateWinningNumbers(numbers))
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validateWinningNumbers(numbers))
                 .withMessage(ERROR_RANGE);
     }
 
@@ -82,7 +75,7 @@ class ValidatorTest {
         List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         String bonusNumber = "3";
 
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateBonusNumber(winningNumbers, bonusNumber))
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validateBonusNumber(winningNumbers, bonusNumber))
                 .withMessage(ERROR_DUPLICATE_BONUS);
     }
 
@@ -92,7 +85,7 @@ class ValidatorTest {
         List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         String bonusNumber = "46";
 
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateBonusNumber(winningNumbers, bonusNumber))
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validateBonusNumber(winningNumbers, bonusNumber))
                 .withMessage(ERROR_RANGE);
     }
 }

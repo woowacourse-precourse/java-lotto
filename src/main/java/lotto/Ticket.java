@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.validator.Validator;
 import lotto.view.LottoView;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class Ticket {
             tickets.add(Lotto.createLottoNumbers());
         }
 
-        return new Ticket(count, tickets, new LottoView(new Validator()));
+        return new Ticket(count, tickets, new LottoView());
     }
 
     public void printTickets() {

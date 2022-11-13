@@ -1,7 +1,6 @@
 package lotto;
 
 import lotto.constant.Rank;
-import lotto.validator.Validator;
 import lotto.view.LottoView;
 
 import java.util.LinkedHashMap;
@@ -50,7 +49,7 @@ public class Win {
             ranking.put(rank, ranking.get(rank) + 1);
         }
 
-        return new Win(ranking, new LottoView(new Validator()));
+        return new Win(ranking, new LottoView());
     }
 
     private static void init(Map<Rank, Integer> ranking) {
