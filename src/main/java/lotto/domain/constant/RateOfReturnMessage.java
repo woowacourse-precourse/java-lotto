@@ -15,3 +15,5 @@ public enum RateOfReturnMessage {
     return this.template.apply(rateOfReturn);
   }
 }
+
+
