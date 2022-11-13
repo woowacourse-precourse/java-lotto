@@ -3,7 +3,8 @@ package lotto.domain;
 import java.util.List;
 
 public class WinningLotto{
-    private static final Integer MINIMUM_RANK = 8;
+    private static final Integer RANK_TO_LIST = 3;
+    private static final Integer MAXIMUM_RANK = 6;
     private static Lotto winningLottoNumber;
     private static Integer bonusNumber;
 
@@ -13,12 +14,12 @@ public class WinningLotto{
     }
 
     public static Integer compareWinningLotto(Lotto lottoNumbers) {
-	int rank = MINIMUM_RANK;
+	int rank = 0;
 	for (Integer lottoNumber: lottoNumbers.getLottoNumbers()) {
-	    rank -= isContainWinningNumber(lottoNumber);
+	    rank += isContainWinningNumber(lottoNumber);
 	}
-	rank -= isNotContainBonusNumber(rank, lottoNumbers.getLottoNumbers());
-	return rank;
+	rank += isNotContainBonusNumber(rank, lottoNumbers.getLottoNumbers());
+	return rank - RANK_TO_LIST;
     }
 
     private static int isContainWinningNumber(Integer lottoNumber) {
@@ -32,7 +33,7 @@ public class WinningLotto{
     }
 
     private static int isNotContainBonusNumber(int rank, List<Integer> lottoNumbers) {
-	if (rank != 2) {
+	if (rank != MAXIMUM_RANK) {
 	    return 0;
 	}
 	if (!lottoNumbers.contains(bonusNumber)) {
