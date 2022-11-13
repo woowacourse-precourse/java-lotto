@@ -18,6 +18,7 @@ public class GameController {
         publishUserLotto(purchaseAmount);
         printLottoTicketDetail();
         assignWinningNumber();
+        assignBonusNumber();
     }
 
     public int inputPurchaseAmount() {
@@ -39,5 +40,9 @@ public class GameController {
     public void assignWinningNumber() {
         gameMessage.printInputWinningNumber();
         List<Integer> winningNumber = lottoInput.inputWinningNumber();
+    }
+
+    public void assignBonusNumber() {
+        gameMessage.printInputBonusNumber();
     }
 }
