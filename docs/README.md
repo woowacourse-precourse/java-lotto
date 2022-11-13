@@ -21,7 +21,7 @@
 
 <hr>
 
-## WinningNumbers 클래스 : 당첨 번호와 보너스 번호를 입력받는다.
+## WinningNumbers 클래스 : 당첨 번호와 보너스 번호를 입력받는다. [O]
 - 인스턴스 변수 [O]
   - lotto [O]
   - bonus [O]
