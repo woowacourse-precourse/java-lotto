@@ -8,4 +8,8 @@ public class LottoWallet {
     public LottoWallet(List<Lotto> lottos) {
         this.lottos = lottos;
     }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }
