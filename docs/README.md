@@ -9,9 +9,12 @@
 ### model
 
 1. Lotto
-    - [ ]  로또 개수만큼 발행 기능 → issueLotto
-    - [ ]  당첨 번호 저장 기능 → setWinningNumber
-    - [ ]  보너스 번호 저장 기능 → setBonusNumber
+    - [ ]  로또 번호 오름차순으로 정렬하는 기능 → sortLotto
+    - [ ]  로또 번호가 중복된 값은 아닌지 검증 기능 → validateDuplicateNumber
+    - [ ]  로또 번호가 1~45 사이의 값으로 입력됐는지 검증 기능 → validateBetween1And45
+    - [ ]  로또와 당첨 번호 비교 기능 → compareLotto_WinningNumber
+
+        당첨 기준 1등~5등 enum으로 선언
 2. Player
     - [x]  로또 구입 금액 저장 기능 → setPurchaseAmount
     - [x]  구입한 로또 개수 저장 기능 → setLottoCount
@@ -20,7 +23,9 @@
     - [ ]  수익률 저장 기능 → setLottoYield
 3. Seller
     - [x]  발행할 로또 개수 계산 기능 → countIssueingLotto
-    - [ ]  로또와 당첨 번호 비교 기능 → compareLotto_WinningNumber
+    - [ ]  로또 개수만큼 발행 기능 → issueLotto
+    - [ ]  당첨 번호 저장 기능 → setWinningNumber
+    - [ ]  보너스 번호 저장 기능 → setBonusNumber
 4. InputValidator
     - [x]  로또 구입 금액이 1,000원으로 나누어 떨어지는지 검증 기능 → validatePurchaseAmount
     - [ ]  당첨 번호를 쉼표 기준으로 입력했는지 검증 기능 → validateWinningNumber_Diveded_Comma
