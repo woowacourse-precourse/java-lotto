@@ -1,9 +1,5 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-
 import static lotto.view.Constants.BOUGHT_NOTHING;
 import static lotto.view.Constants.NOT_DIVISIBLE_BY_THOUSAND;
 
