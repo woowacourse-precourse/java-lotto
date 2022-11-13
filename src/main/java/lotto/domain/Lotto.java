@@ -1,6 +1,11 @@
 package lotto.domain;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.EnumMap;
 
 public class Lotto {
     private final List<Integer> numbers;
