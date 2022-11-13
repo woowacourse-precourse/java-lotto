@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
+import lotto.Constants.LOTTO;
 import lotto.Display;
 
 public class LottoProgram {
@@ -19,6 +20,7 @@ public class LottoProgram {
         inputBonusNumber();
         Generator.calculateRank(buyer);
         Display.winningResults(buyer);
+        Display.profitResult(buyer);
     }
 
     private static void inputPayment() {
@@ -31,7 +33,7 @@ public class LottoProgram {
 
         Display.lineChange();
 
-        int numbersOfLotto = payment / 1000;
+        int numbersOfLotto = payment / LOTTO.PRICE;
         buyer.setLottoPurchasedCount(numbersOfLotto);
         Display.paidAmout(numbersOfLotto);
 
@@ -63,7 +65,7 @@ public class LottoProgram {
 
         for (int lottoCount = 0; lottoCount < count; lottoCount++) {
             List<Integer> purchasedLottoNumber = new ArrayList<Integer>(
-                    Randoms.pickUniqueNumbersInRange(1, 45, 6));
+                    Randoms.pickUniqueNumbersInRange(LOTTO.START, LOTTO.END, LOTTO.SIZE));
             purchasedLottoNumber.sort(Comparator.naturalOrder());
             Display.lottoNumbers(purchasedLottoNumber);
             buyer.setLottoPurchased(new Lotto(purchasedLottoNumber));
