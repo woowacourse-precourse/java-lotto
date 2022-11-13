@@ -2,11 +2,17 @@ package lottoMachine;
 
 import static lottoMachine.enums.Numbers.KINDS_OF_PRIZE;
 import static lottoMachine.enums.Numbers.LOTTO_PRICE;
+import static lottoMachine.enums.Reward.FIFTH_REWARD;
+import static lottoMachine.enums.Reward.FIRST_REWARD;
+import static lottoMachine.enums.Reward.FOURTH_REWARD;
+import static lottoMachine.enums.Reward.SECOND_REWARD;
+import static lottoMachine.enums.Reward.THIRD_REWARD;
 
 import java.util.ArrayList;
 import java.util.List;
 import lotto.Lotto;
 import lottoMachine.device.LottoMachineDevices;
+import lottoMachine.enums.Reward;
 
 public class LottoMachine {
 
@@ -110,11 +116,12 @@ public class LottoMachine {
 
     private long getTotalWinningMoney() {
         List<Integer> winningHistory = getWinningHistory();
-        int[] winningMoney = new int[]{2_000_000_000, 30_000_000, 1_500_000, 50_000, 5000};
+        int[] winningMoney = new int[]{FIRST_REWARD.getReward(), SECOND_REWARD.getReward(),
+                THIRD_REWARD.getReward(), FOURTH_REWARD.getReward(), FIFTH_REWARD.getReward()};
 
         long totalWinningMoney = 0;
         for (int index = 0; index < winningHistory.size(); index++) {
-            totalWinningMoney += winningHistory.get(index) * winningMoney[index];
+            totalWinningMoney += (long) winningHistory.get(index) * winningMoney[index];
         }
         return totalWinningMoney;
     }
