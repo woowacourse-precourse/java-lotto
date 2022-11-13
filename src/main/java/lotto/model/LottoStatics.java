@@ -6,6 +6,9 @@ import java.util.HashMap;
 public class LottoStatics {
     private static final int DEFAULT_WINNING = 0;
     private static final int BONUS_SAME_COUNT = 5;
+    private static final String MESSAGE_STATICS_START = "당첨 통계\n---\n";
+
+    private static final String MESSAGE_STATICS_INFO = "%s (%d원) - %d개\n";
 
     private HashMap<Winning, Integer> staticsInfo;
 
@@ -54,5 +57,12 @@ public class LottoStatics {
 
     private boolean isBonusNumber(Lotto lotto, LottoStore store) {
         return lotto.getNumbers().contains(store.getBonusNumber());
+    }
+
+    private void printStatics() {
+        System.out.printf(MESSAGE_STATICS_START);
+        for (Winning value : Winning.values()) {
+            System.out.printf(MESSAGE_STATICS_INFO, value.getDetail(), value.getPrize(), staticsInfo.get(value));
+        }
     }
 }
