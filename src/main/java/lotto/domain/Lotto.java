@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.LottoValidation;
+import lotto.Validation;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ public class Lotto {
     }
 
     private void validLotto(List<Integer> numbers) {
-        LottoValidation.validateLottoSize(numbers);
-        LottoValidation.validLottoNumberDuplicate(numbers);
-        LottoValidation.validNumberRange(numbers);
+        Validation.validateLottoSize(numbers);
+        Validation.validLottoNumberDuplicate(numbers);
+        Validation.validNumberRange(numbers);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.LottoValidation;
+import lotto.Validation;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,14 +18,14 @@ public class LottoNumber {
     }
 
     private void validBonusNumber(String number) {
-        LottoValidation.validIsDigit(number);
-        LottoValidation.validNumberRange(Integer.parseInt(number));
+        Validation.validIsDigit(number);
+        Validation.validNumberRange(Integer.parseInt(number));
     }
 
     private List<Integer> convertStringToInteger(String numbers) {
         return Stream.of(numbers.split(","))
                 .map(num -> num.replaceAll(" ", ""))
-                .filter(num -> LottoValidation.validIsDigit(num))
+                .filter(num -> Validation.validIsDigit(num))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }

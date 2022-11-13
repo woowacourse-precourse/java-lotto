@@ -5,7 +5,7 @@ import java.util.List;
 import static constant.Constant.*;
 import static constant.ErrorMessage.*;
 
-public class LottoValidation {
+public class Validation {
 
     public static void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
@@ -23,19 +23,16 @@ public class LottoValidation {
     }
 
     public static void validNumberRange(List<Integer> numbers) {
-        boolean isValid = numbers.stream()
-                .noneMatch(num -> num < LOTTO_NUMBER_MIN || num > LOTTO_NUMBER_MAX);
-        if (!isValid) {
-            System.out.println(NOT_LOTTO_NUMBER_RANGE);
-            throw new IllegalArgumentException(NOT_LOTTO_NUMBER_RANGE);
-        }
+        numbers.stream()
+                .allMatch(num -> validNumberRange(num));
     }
 
-    public static void validNumberRange(int num) {;
+    public static Boolean validNumberRange(int num) {;
         if (num < LOTTO_NUMBER_MIN || num > LOTTO_NUMBER_MAX) {
             System.out.println(NOT_LOTTO_NUMBER_RANGE);
             throw new IllegalArgumentException(NOT_LOTTO_NUMBER_RANGE);
         }
+        return true;
     }
 
     public static boolean validIsDigit(String number) {

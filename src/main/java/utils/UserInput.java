@@ -1,6 +1,7 @@
 package utils;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Validation;
 import lotto.domain.LottoNumber;
 
 import static constant.Constant.*;
@@ -12,7 +13,7 @@ public class UserInput {
     public static int inputPrice() {
         System.out.println(INPUT_PRICE_MESSAGE);
         String price = Console.readLine();
-        validIsDigit(price);
+        Validation.validIsDigit(price);
         validMoneyUnit(Integer.parseInt(price));
         return calculateNumOfLotto(Integer.parseInt(price));
     }
