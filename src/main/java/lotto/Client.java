@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Client {
 
     private ClientInput clientInput;
@@ -17,6 +20,37 @@ public class Client {
 
         return moneyAmount;
     }
+
+    public List<Integer> mark() {
+        String markedNumberString = clientInput.get();
+
+        for (int i = 0; i < markedNumberString.length(); i++) {
+            if (i % 2 == 0) {
+                try {
+                    markedNumberString.charAt(i);
+                } catch (Exception e) {
+                    throw new IllegalArgumentException(e);
+                }
+            } else {
+                if (markedNumberString.charAt(i) != ',') {
+                    throw new IllegalArgumentException();
+                }
+            }
+        }
+
+        List<Integer> numbers;
+        try {
+            numbers = List.of(
+                    Arrays.stream(markedNumberString.split(","))
+                            .map(number -> Integer.parseInt(number))
+                            .toArray(Integer[]::new));
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
+        }
+
+        return numbers;
+    }
+
 
     private int parseStringToIntOrElseThrow(String moneyAmountString) {
         int moneyAmount;
