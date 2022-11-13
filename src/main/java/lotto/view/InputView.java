@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import lotto.dto.LottoDto;
 import lotto.dto.PurchaseAmountDto;
 
@@ -14,16 +15,24 @@ public enum InputView {
     public PurchaseAmountDto inputPurchaseAmount() {
         System.out.println(INPUT_PURCHASE_AMOUNT_MESSAGE);
         String purchaseAmount = Console.readLine();
-
-        return InputValidator.validatePurchaseAmount(purchaseAmount);
+        return new PurchaseAmountDto(InputValidator.validatePurchaseAmount(purchaseAmount));
     }
 
     public LottoDto inputLottoNumbers() {
+        List<Integer> winningNumbers = inputWinningNumbers();
+        Integer bonusNumber = inputBonusNumber(winningNumbers);
+        return new LottoDto(winningNumbers, bonusNumber);
+    }
+
+    private List<Integer> inputWinningNumbers() {
         System.out.println(INPUT_WINNING_NUMBERS_MESSAGE);
         String winningNumbers = Console.readLine();
+        return InputValidator.validateWinningNumbers(winningNumbers);
+    }
+
+    private Integer inputBonusNumber(List<Integer> winningNumbers) {
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
         String bonusNumber = Console.readLine();
-
-        return InputValidator.validateLottoNumber(winningNumbers, bonusNumber);
+        return InputValidator.validateBonusNumber(winningNumbers, bonusNumber);
     }
 }

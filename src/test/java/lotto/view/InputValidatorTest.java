@@ -6,11 +6,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
-import lotto.dto.LottoDto;
-import lotto.dto.PurchaseAmountDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -36,50 +35,63 @@ class InputValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1000", "20000", "100000", "47000"})
-    void validatePurchaseAmount_메서드는_허용된_숫자형식의_문자열을_입력하면_PurchaseAmountDto를_반환한다(String amount) {
-        PurchaseAmountDto purchaseAmountDto = InputValidator.validatePurchaseAmount(amount);
-
-        assertThat(purchaseAmountDto.getPurchaseAmount()).isEqualTo(valueOf(amount));
+    void validatePurchaseAmount_메서드는_허용된_숫자형식의_문자열을_입력하면_Integer_형식의_구매금액을_반환한다(String amount) {
+        Integer purchaseAmount = InputValidator.validatePurchaseAmount(amount);
+        assertThat(purchaseAmount).isEqualTo(valueOf(amount));
     }
 
     @ParameterizedTest
-    @MethodSource("InvalidLottoNumbers")
-    void validateLottoNumber_메서드는_올바른_당첨번호와_보너스번호_형식의_문자열을_입력하지_않으면_IllegalArgumentException을_던진다(
-            String winningNumbers,
-            String bonusNumber) {
-        assertThatThrownBy(() -> InputValidator.validateLottoNumber(winningNumbers, bonusNumber))
+    @ValueSource(strings = {
+            "1,2,3,4",
+            "1,2,3,4,5,5",
+            "1,2,3,4,53,5",
+            "1d,2,3,4,5,6",
+            "1,2,3,4,5,6,8",
+            "",
+            "1, 2, 3, 4, 5, 6",
+            "1, 2,3,4,5,6"
+    })
+    void validateWinningNumbers_메서드는_올바른_당첨번호_형식의_문자열을_입력하지_않으면_IllegalArgumentException을_던진다(
+            String winningNumbers
+    ) {
+        assertThatThrownBy(() -> InputValidator.validateWinningNumbers(winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    static List<Arguments> InvalidLottoNumbers() {
-        return Arrays.asList(
-                Arguments.of("1,2,3,4,5", "6"),
-                Arguments.of("1,2,3,4,5,7", "f"),
-                Arguments.of("1,2,3,4,53,4", "6"),
-                Arguments.of("1d,2,3,4,5,6", "7"),
-                Arguments.of("1,2,3,4,5,6", ""),
-                Arguments.of("", "3")
-        );
-    }
-
     @ParameterizedTest
-    @MethodSource("validLottoNumbers")
-    void validateLottoNumber_메서드는_올바른_당첨번호와_보너스_번호를_입력하면_LottoDto를_반환한다(
-            String winningNumbers,
-            String bonusNumber) {
-        LottoDto lottoDto = InputValidator.validateLottoNumber(winningNumbers, bonusNumber);
-
-        assertThat(lottoDto.getWinningNumbers().size()).isEqualTo(6);
-        assertThat(lottoDto.getBonusNumber()).isEqualTo(valueOf(bonusNumber));
+    @MethodSource("invalidBonusNumbers")
+    void validateLottoNumber_메서드는_올바른_당첨번호와_보너스번호_형식의_문자열을_입력하지_않으면_IllegalArgumentException을_던진다(
+            List<Integer> winningNumbers,
+            String bonusNumber
+    ) {
+        assertThatThrownBy(() -> InputValidator.validateBonusNumber(winningNumbers, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    static List<Arguments> validLottoNumbers() {
+    static List<Arguments> invalidBonusNumbers() {
         return Arrays.asList(
-                Arguments.of("1,2,3,4,5,6", "7"),
-                Arguments.of("5,12,22,25,35,42", "8"),
-                Arguments.of("11,12,13,14,15,16", "17"),
-                Arguments.of("1,23,34,42,17,44", "45")
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), "1"),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), "6"),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), "f"),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), "7hello"),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), ""),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), "46"),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), "0")
         );
     }
 
+    @Test
+    void validateWinningNumbers_메서드는_올바른_당첨번호_형식의_문자열을_입력하면_숫자_리스트를_반환한다() {
+        String inputWinningNumbers = "1,2,3,4,5,6";
+        List<Integer> winningNumbers = InputValidator.validateWinningNumbers(inputWinningNumbers);
+        assertThat(winningNumbers).contains(1, 2, 3, 4, 5, 6);
+    }
+
+    @Test
+    void validateBonusNumber_메서드는_올바른_보너스번호_형식의_문자열을_입력하면_보너스번호를_반환한다() {
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        String inputBonusNumber = "45";
+        Integer bonusNumber = InputValidator.validateBonusNumber(winningNumbers, inputBonusNumber);
+        assertThat(bonusNumber).isEqualTo(45);
+    }
 }

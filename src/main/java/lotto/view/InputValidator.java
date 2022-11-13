@@ -5,8 +5,6 @@ import static java.util.stream.Collectors.toList;
 
 import java.util.Arrays;
 import java.util.List;
-import lotto.dto.LottoDto;
-import lotto.dto.PurchaseAmountDto;
 
 class InputValidator {
     private static final int VALID_LOTTO_PRICE = 1000;
@@ -22,10 +20,10 @@ class InputValidator {
     private InputValidator() {
     }
 
-    public static PurchaseAmountDto validatePurchaseAmount(String inputAmount) {
+    public static Integer validatePurchaseAmount(String inputAmount) {
         Integer amount = toInteger(inputAmount);
         validateAmountRange(amount);
-        return new PurchaseAmountDto(amount);
+        return amount;
     }
 
     private static Integer toInteger(String number) {
@@ -42,12 +40,10 @@ class InputValidator {
         }
     }
 
-    public static LottoDto validateLottoNumber(String inputWinningNumbers, String inputBonusNumbers) {
+    public static List<Integer> validateWinningNumbers(String inputWinningNumbers) {
         List<Integer> winningNumbers = getDistinctWinningNumbers(inputWinningNumbers);
-        validateWinningNumbers(winningNumbers);
-        Integer bonusNumber = toInteger(inputBonusNumbers);
-        validateBonusNumber(winningNumbers, bonusNumber);
-        return new LottoDto(winningNumbers, bonusNumber);
+        validateWinningNumbersSize(winningNumbers);
+        return winningNumbers;
     }
 
     private static List<Integer> getDistinctWinningNumbers(String winningNumbers) {
@@ -62,15 +58,28 @@ class InputValidator {
         return VALID_LOTTO_NUMBER_LOWER_BOUND <= number && number <= VALID_LOTTO_NUMBER_UPPER_BOUND;
     }
 
-    private static void validateWinningNumbers(List<Integer> winningNumbers) {
+    private static void validateWinningNumbersSize(List<Integer> winningNumbers) {
         if (winningNumbers.size() != VALID_LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBERS_MESSAGE);
         }
     }
 
-    private static void validateBonusNumber(List<Integer> winningNumbers, Integer bonusNumber) {
+    public static Integer validateBonusNumber(List<Integer> winningNumbers, String inputBonusNumbers) {
+        Integer bonusNumber = toInteger(inputBonusNumbers);
+        validateWinningNumbersNotContainBonusNumber(winningNumbers, bonusNumber);
+        validateBonusNumberRange(bonusNumber);
+        return bonusNumber;
+    }
+
+    private static void validateWinningNumbersNotContainBonusNumber(List<Integer> winningNumbers, Integer bonusNumber) {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(DISTINCT_BONUS_NUMBERS_MESSAGE);
+        }
+    }
+
+    private static void validateBonusNumberRange(Integer bonusNumber) {
+        if (!isValidLottoNumberRange(bonusNumber)) {
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBERS_MESSAGE);
         }
     }
 }
