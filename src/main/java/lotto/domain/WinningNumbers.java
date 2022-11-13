@@ -46,4 +46,8 @@ public enum WinningNumbers {
     public int getMatch() {
         return matches;
     }
+
+    public long getReward() {
+        return reward;
+    }
 }
