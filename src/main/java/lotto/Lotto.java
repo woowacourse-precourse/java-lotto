@@ -38,13 +38,14 @@ public class Lotto {
     }
 
     public String getLottoText() {
-        Collections.sort(numbers);
-        return Arrays.toString(numbers.toArray(new Integer[numbers.size()]));
+        Integer[] numberList = numbers.toArray(new Integer[numbers.size()]);
+        Arrays.sort(numberList);
+        return Arrays.toString(numberList);
     }
 
     public ArrayList<Integer> getLotto(){
-        Collections.sort(numbers);
         ArrayList<Integer> lottos=new ArrayList<>(numbers);
+        Collections.sort(lottos);
         return lottos;
     }
     // TODO: 추가 기능 구현
