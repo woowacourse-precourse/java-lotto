@@ -10,7 +10,7 @@ public class MyLotto {
 
     private List<Lotto> myLotto;
     private int totalPrize;
-    private HashMap<String, Integer> eachLottoPrize;
+    private HashMap<Integer, Integer> eachLottoPrize;
 
     public MyLotto(int purchaseAmount) {
         List<Lotto> tmpMyLotto = createMyLotto(purchaseAmount);
@@ -21,6 +21,10 @@ public class MyLotto {
         for (Lotto lotto : this.myLotto) {
             System.out.println(lotto.getLotto());
         }
+    }
+
+    public void setEachLottoPrize(int rank) {
+        this.eachLottoPrize.put(rank, this.eachLottoPrize.get(rank)+1);
     }
 
     public List<Lotto> getMyLotto() {
@@ -36,5 +40,16 @@ public class MyLotto {
         }
 
         return tmpMyLotto;
+    }
+
+    public void checkEachLotto(Lotto winNumbers, BonusNumber bonusNumber) {
+        for (Lotto lotto : myLotto) {
+            System.out.println(lotto.getLotto());
+            int correctNumbers = lotto.compareWithWinNumber(winNumbers);
+            System.out.println(correctNumbers);
+            if (correctNumbers >= 3) {
+                setEachLottoPrize(correctNumbers);
+            }
+        }
     }
 }
