@@ -6,6 +6,7 @@ public class Application {
         try {
             Controller controller = new Controller();
             controller.inputUserMoney();
+            controller.purchaseLotto();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

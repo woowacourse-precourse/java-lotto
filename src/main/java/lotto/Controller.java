@@ -13,4 +13,12 @@ public class Controller {
         String money = view.inputMoney();
         this.model.setUserMoney(money);
     }
+
+    /**
+     * generate lotto numbers and print that
+     */
+    public void purchaseLotto() {
+        this.model.generateLotto();
+        this.view.printPurchase(this.model.getLottoList());
+    }
 }
