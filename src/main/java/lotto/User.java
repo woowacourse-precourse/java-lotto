@@ -6,6 +6,7 @@ import java.util.List;
 public class User {
     private int amount;
     private List<Lotto> lotto = new ArrayList<>();
+    private int numberOfLotto;
 
     public User(int amount) {
         validate(amount);
@@ -20,5 +21,14 @@ public class User {
 
     public void buyLotto(LottoSeller lottoSeller) {
         lotto = lottoSeller.sellTo(amount);
+        numberOfLotto = lotto.size();
+    }
+
+    public List<Lotto> getLotto() {
+        return lotto;
+    }
+
+    public int getNumberOfLotto() {
+        return numberOfLotto;
     }
 }
