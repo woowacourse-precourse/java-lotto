@@ -16,5 +16,17 @@ public class Lotto {
         }
     }
 
+    public int checkWin() {
+        LottoWin lottoWin = LottoWin.getInstance();
+        List<Integer> winNumber = lottoWin.getLottoNum();
+        int sameCnt = 0;
+        for(int user : this.numbers){
+            if(winNumber.contains(user)){
+                sameCnt += 1;
+            }
+        }
+        return sameCnt;
+    }
+
     // TODO: 추가 기능 구현
 }
