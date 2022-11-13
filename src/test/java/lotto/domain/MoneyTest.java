@@ -1,7 +1,10 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -28,5 +31,19 @@ class MoneyTest {
         assertThatThrownBy(() -> new Money(5555))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1,000원 단위로 입력해야 합니다.");
+    }
+
+    @DisplayName("8000원어치 로또를 사서 5등 하나만 당첨되면 수익률은 62.5%이다.")
+    @Test
+    void calculateYield() {
+        Map<Rank, Integer> statistics = new HashMap<>();
+        statistics.put(Rank.FIFTH, 1);
+        WinningStatistics winningStatistics = new WinningStatistics(statistics);
+        long totalPrize = winningStatistics.calculateTotalPrize();
+        Money money = new Money(8000);
+
+        double yield = money.calculateYield(totalPrize);
+
+        assertThat(yield).isEqualTo(62.5);
     }
 }
