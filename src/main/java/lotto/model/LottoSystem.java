@@ -19,9 +19,9 @@ public class LottoSystem {
         this.usedMoney = usedMoney;
     }
 
-    public String getProfitRage() {
+    public String getProfitRage(Lotto targetLotto, int bonusNumber) {
         return String.format(PROFIT_RATE_FORMAT,
-                ((float) lottoNumbers.getProfitSum() * PERCENTAGE_CONVERSION_NUMBER) / usedMoney);
+                ((float) lottoNumbers.getProfitSum(targetLotto,bonusNumber) * PERCENTAGE_CONVERSION_NUMBER) / usedMoney);
     }
 
     public String getPurchaseDetails() {

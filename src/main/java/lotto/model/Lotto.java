@@ -15,17 +15,17 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public static Lotto CreatRandomLotto(){
+    public static Lotto CreatRandomLotto() {
         return new Lotto(RandomNumbersGenerator.creatSixDifferentNumbers());
     }
 
     private void validate(List<Integer> numbers) {
-        if (!NumbersValidator.isValid(numbers)){
+        if (!NumbersValidator.isValid(numbers)) {
             throw new IllegalArgumentException();
         }
     }
 
-    LottoStatus matchLotto(Lotto targetLotto,int bonusNumber) {
+    LottoStatus matchLotto(Lotto targetLotto, int bonusNumber) {
         int count = countMathNumbers(targetLotto);
         count = checkMatchFiveAddBonus(bonusNumber, count);
         return LottoStatus.checkValue(count);

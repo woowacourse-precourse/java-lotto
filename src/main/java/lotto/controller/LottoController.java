@@ -61,10 +61,10 @@ public class LottoController {
 
     private void printResult(Lotto targetLotto, int bonusNumber) {
         OutputView.printResult(lottoSystem.getResult(targetLotto, bonusNumber));
-        printProfitRate();
+        printProfitRate(targetLotto, bonusNumber);
     }
 
-    private void printProfitRate() {
-        OutputView.printProfitRate(lottoSystem.getProfitRage());
+    private void printProfitRate(Lotto targetLotto, int bonusNumber) {
+        OutputView.printProfitRate(lottoSystem.getProfitRage(targetLotto, bonusNumber));
     }
 }

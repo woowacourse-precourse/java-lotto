@@ -21,7 +21,7 @@ class LottoNumbersTest {
         assertThat(lottoNumbers.contains(lotto)).isTrue();
     }
 
-    @DisplayName("자동 생성 로또를 수량만큼 추가")
+    @DisplayName("자동 생성 로또를 수량 만큼 추가")
     @Test
     void add_random_lotto() {
         LottoNumbers lottoNumbers = new LottoNumbers();
@@ -32,7 +32,7 @@ class LottoNumbersTest {
         assertThat(lottoNumbers.getLottoQuantity()).isEqualTo(8);
     }
 
-    @DisplayName("로또 당첨상태 추가")
+    @DisplayName("로또 당첨 상태 추가")
     @Test
     void add_lotto_status() {
         LottoNumbers lottoNumbers = new LottoNumbers();
@@ -43,7 +43,7 @@ class LottoNumbersTest {
         assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FIVE)).isEqualTo(2);
     }
 
-    @DisplayName("당첨번호와 비교하여 모든 로또 당청상태를 추가")
+    @DisplayName("당첨 번호와 비교하여 모든 로또 당첨 상태를 추가")
     @Test
     void add_all_lotto_status() {
         LottoNumbers lottoNumbers = new LottoNumbers();
