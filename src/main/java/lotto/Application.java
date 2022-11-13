@@ -3,17 +3,41 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
+enum Rank{
+    FIRST(6),SECOND(5),THIRD(5),FOURTH(4),FIFTH(3);
+    final private int correctNumber;
+    public int getCorrectNumber(){
+        return correctNumber;
+    }
+    private Rank(int correctNumber){
+        this.correctNumber = correctNumber;
+    }
+
+    public Rank getRank(final int correctNumber,boolean bonusCheck){
+        if(correctNumber == FIRST.getCorrectNumber())
+            return FIRST;
+        if(correctNumber == SECOND.getCorrectNumber())
+            return SECOND;
+        if(correctNumber == THIRD.getCorrectNumber() && !bonusCheck)
+            return THIRD;
+        if(correctNumber == FOURTH.getCorrectNumber())
+            return FOURTH;
+
+        return FIFTH;
+    }
+}
 public class Application {
     static int pay = 0;
     static int tickets = 0;
     static List<List<Integer>> allLottoNumbers = new ArrayList<>();
-    static List<String> winningNumber = new ArrayList<>();
+    static List<Integer> winningNumber = new ArrayList<>();
     static int bonus = 0;
-    static int rank = 0;
+    static Rank rank;
+    static Rank rankName;
+    static boolean bonusCheck = false;
+    static Map<Rank,Integer> rankMap = new EnumMap<>(Rank.class);
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         buyLotto();
@@ -22,7 +46,7 @@ public class Application {
         sortLottoNumber();
         inputWinningNumber();
         inputBonus();
-        compareNumber(allLottoNumbers,winningNumber);
+        compareNumber(allLottoNumbers);
     }
     public static void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -58,8 +82,10 @@ public class Application {
         processNumber = inputNumber.split(",");
 
         for(int i=0;i<processNumber.length;i++){
-            winningNumber.add(processNumber[i]);
+            winningNumber.add(Integer.parseInt(processNumber[i]));
         }
+
+        Collections.sort(winningNumber);
     }
 
     public static void inputBonus(){
@@ -67,11 +93,20 @@ public class Application {
         bonus = Integer.parseInt(Console.readLine());
     }
 
-    public static void compareNumber(List<List<Integer>> allLottoNumbers, List<String> winningNumber){
+    public static void compareNumber(List<List<Integer>> allLottoNumbers){
+        int count = 0;
         for(int i=0;i<allLottoNumbers.size();i++){
-            for(int j=0;j<6;j++){
-
+            count = 0;
+            bonusCheck = false;
+            Lotto lotto = new Lotto(allLottoNumbers.get(i));
+            count = lotto.compareNumber(winningNumber);
+            if(count==5){
+                bonusCheck = lotto.checkBonus(bonus);
             }
+            rankName = rank.getRank(count,bonusCheck);
+            rankMap.put(rankName, rankMap.getOrDefault(rankName,0)+1);
         }
     }
+
+
 }

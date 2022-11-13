@@ -20,5 +20,22 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public int compareNumber(List<Integer> winningNumber){
+        int count = 0;
+        for(int i=0;i<6;i++){
+            if(numbers.contains(winningNumber.get(i))){
+                count+=1;
+            }
+        }
+        return count;
+    }
+
+    public boolean checkBonus(int bonus){
+        for(int i=0;i<6;i++){
+            if(numbers.contains(bonus))
+                return true;
+        }
+        return false;
+    }
 
 }
