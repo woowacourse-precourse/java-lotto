@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.regex.Pattern;
 
 public class LottoStore {
-	private static final Pattern numberPattern = Pattern.compile(Regex.UNIT.getExpression());
+	private static final Pattern NUMBER_PATTERN = Pattern.compile(Regex.UNIT.getExpression());
 
 	private final int purchaseAmount;
 	private final int numberOfTickets;
@@ -26,7 +26,7 @@ public class LottoStore {
 	}
 
 	private void validateUnit(String userInput) {
-		if (!numberPattern.matcher(userInput).matches()) {
+		if (!NUMBER_PATTERN.matcher(userInput).matches()) {
 			throw new IllegalArgumentException(String.format(Error.UNIT.getMessage(), Number.UNIT.getValue()));
 		}
 	}

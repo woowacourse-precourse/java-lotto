@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class WinningNumbers {
-	private static final Pattern numberPattern = Pattern.compile(Regex.RANGE.getExpression());
+	private static final Pattern NUMBER_PATTERN = Pattern.compile(Regex.RANGE.getExpression());
 
 	private final Lotto lottoNumbers;
 	private final int bonusNumber;
@@ -29,7 +29,7 @@ public class WinningNumbers {
 	}
 
 	private List<Integer> stringToList(String userInput) {
-		String[] splitUserInput = userInput.split(Regex.COMMA.getExpression());
+		String[] splitUserInput = userInput.split(",");
 		List<Integer> list = new ArrayList<>();
 
 		for (String splitString : splitUserInput) {
@@ -40,7 +40,7 @@ public class WinningNumbers {
 	}
 
 	private void validateNumberInRange(String userInput) {
-		if (!numberPattern.matcher(userInput).matches()) {
+		if (!NUMBER_PATTERN.matcher(userInput).matches()) {
 			throw new IllegalArgumentException(
 				String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()));
 		}
