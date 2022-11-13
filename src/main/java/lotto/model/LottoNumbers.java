@@ -1,10 +1,13 @@
 package lotto.model;
 
+import static java.util.stream.Collectors.joining;
+
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -16,13 +19,9 @@ public class LottoNumbers {
     public static final String LOTTO_RESULT_TYPE = "{0} - {1}개";
     public static final String NEXT_LINE = "\n";
     private final List<Lotto> lottoNumbers;
-    private final EnumMap<LottoStatus, Integer> lottoStatusQuantity;
 
     LottoNumbers() {
         this.lottoNumbers = new ArrayList<>();
-        this.lottoStatusQuantity = new EnumMap<>(LottoStatus.class);
-        Arrays.stream(LottoStatus.values())
-                .forEach(lottoStatus -> lottoStatusQuantity.putIfAbsent(lottoStatus, DEFAULT_STATUS_COUNT_VALUE));
     }
 
     void addLotto(Lotto lotto) {
@@ -34,15 +33,6 @@ public class LottoNumbers {
                 .forEach(k -> addLotto(Lotto.CreatRandomLotto()));
     }
 
-    void addAllStatus(Lotto targetLotto, int bonusNumber) {
-        lottoNumbers.stream()
-                .map(lotto -> lotto.matchLotto(targetLotto, bonusNumber))
-                .forEach(this::addStatus);
-    }
-
-    void addStatus(LottoStatus lottoStatus) {
-        lottoStatusQuantity.replace(lottoStatus, lottoStatusQuantity.get(lottoStatus) + ADD_ONE_COUNT);
-    }
 
     int getProfitSum(Lotto targetLotto, int bonusNumber) {
         return lottoNumbers.stream()
@@ -54,26 +44,44 @@ public class LottoNumbers {
     String getPurchaseDetails() {
         return lottoNumbers.stream()
                 .map(Lotto::toString)
-                .collect(Collectors.joining(NEXT_LINE));
+                .collect(joining(NEXT_LINE));
     }
 
     String getResult(Lotto targetLotto, int bonusNumber) {
-        addAllStatus(targetLotto, bonusNumber);
+        EnumMap<LottoStatus, Integer> lottoStatusQuantity = addAllStatus(targetLotto, bonusNumber);
         return lottoStatusQuantity.entrySet().stream()
                 .filter(lottoStatusEntry -> !lottoStatusEntry.getKey().equals(LottoStatus.MATCH_UNSATISFIED))
-                .map(lottoStatusEntry -> MessageFormat.format(LOTTO_RESULT_TYPE,
-                        lottoStatusEntry.getKey().getDescription(),
-                        lottoStatusEntry.getValue()))
+                .map(LottoNumbers::getResultFormat)
                 .collect(Collectors.joining(NEXT_LINE));
     }
+
+    private static String getResultFormat(Entry<LottoStatus, Integer> lottoStatusEntry) {
+        return MessageFormat.format(LOTTO_RESULT_TYPE,
+                lottoStatusEntry.getKey().getDescription(),
+                lottoStatusEntry.getValue());
+    }
+
+    private EnumMap<LottoStatus, Integer> addAllStatus(Lotto targetLotto, int bonusNumber) {
+        EnumMap<LottoStatus, Integer> lottoStatusQuantity = defaultLottoStatusQuantity();
+        lottoNumbers.stream()
+                .map(lotto -> lotto.matchLotto(targetLotto, bonusNumber))
+                .forEach(lottoStatus ->
+                        lottoStatusQuantity.replace(lottoStatus, lottoStatusQuantity.get(lottoStatus) + ADD_ONE_COUNT));
+        return lottoStatusQuantity;
+    }
+
+    private static EnumMap<LottoStatus, Integer> defaultLottoStatusQuantity() {
+        EnumMap<LottoStatus, Integer> lottoStatusQuantity = new EnumMap<>(LottoStatus.class);
+        Arrays.stream(LottoStatus.values())
+                .forEach(lottoStatus -> lottoStatusQuantity.putIfAbsent(lottoStatus, DEFAULT_STATUS_COUNT_VALUE));
+        return lottoStatusQuantity;
+    }
+
 
     int getLottoQuantity() {
         return lottoNumbers.size();
     }
 
-    int getStatusCount(LottoStatus lottoStatus) {
-        return lottoStatusQuantity.getOrDefault(lottoStatus, DEFAULT_STATUS_COUNT_VALUE);
-    }
 
     boolean contains(Lotto lotto) {
         return lottoNumbers.contains(lotto);

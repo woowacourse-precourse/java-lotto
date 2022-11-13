@@ -32,32 +32,6 @@ class LottoNumbersTest {
         assertThat(lottoNumbers.getLottoQuantity()).isEqualTo(8);
     }
 
-    @DisplayName("로또 당첨 상태 추가")
-    @Test
-    void add_lotto_status() {
-        LottoNumbers lottoNumbers = new LottoNumbers();
-        lottoNumbers.addStatus(LottoStatus.MATCH_FIVE);
-        assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FIVE)).isEqualTo(1);
-
-        lottoNumbers.addStatus(LottoStatus.MATCH_FIVE);
-        assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FIVE)).isEqualTo(2);
-    }
-
-    @DisplayName("당첨 번호와 비교하여 모든 로또 당첨 상태를 추가")
-    @Test
-    void add_all_lotto_status() {
-        LottoNumbers lottoNumbers = new LottoNumbers();
-        lottoNumbers.addLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-        lottoNumbers.addLotto(new Lotto(List.of(2, 3, 4, 5, 8, 9)));
-
-        Lotto targetLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        lottoNumbers.addAllStatus(targetLotto, 1);
-        assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_SIX)).isEqualTo(1);
-        assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FIVE)).isEqualTo(0);
-        assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FOUR)).isEqualTo(1);
-    }
-
-
     @DisplayName("당첨 로또와 보너스번호를 받고 수익 계산")
     @Test
     void get_Profit_Sum() {
