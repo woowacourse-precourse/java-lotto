@@ -16,14 +16,12 @@ public class Lotto {
     public static List<Lotto> generateLotteries(int size) {
         List<Lotto> Lotteries = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            Lotteries.add(generateLottery());
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTERY_START_NUMBER, LOTTERY_END_NUMBER, LOTTERY_NUMBER_LENGTH);
+            Lotto lottery = new Lotto(numbers);
+
+            Lotteries.add(lottery);
         }
         return Lotteries;
-    }
-
-    private static Lotto generateLottery() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTERY_START_NUMBER, LOTTERY_END_NUMBER, LOTTERY_NUMBER_LENGTH);
-        return new Lotto(numbers);
     }
 
     private final List<Integer> numbers;
