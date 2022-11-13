@@ -90,4 +90,58 @@ class UserInputTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("당첨 숫자 입력 로직 검증")
+    class ValidateWinningNumber{
+        @Test
+        @DisplayName("숫자가 아닌 값 입력은 예외 발생")
+        void 숫자_아닌_입력(){
+            // given
+            String input = "1,2,3,a,b,c";
+            // when
+            setSetIn(input);
+            // then
+            assertThatThrownBy(() -> userInput.getWinningNumber())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("범위에 벗어난 값 입력은 예외 발생")
+        void 범위에_벗어난_입력(){
+            // given
+            String input = "1,48,-1,9,2,3";
+            // when
+            setSetIn(input);
+            // then
+            assertThatThrownBy(() -> userInput.getWinningNumber())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("중복 숫자 있는 리스트는 예외 발생")
+        void 중복_숫자_입력(){
+            // given
+            String input = "1,1,2,3,4,5";
+            // when
+            setSetIn(input);
+            // then
+            assertThatThrownBy(() -> userInput.getWinningNumber())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("지정 개수의 숫자 아닌 경우 예외 발생")
+        void 잘못된_개수의_숫자_입력(){
+            // given
+            String input = "1,2,3";
+            // when
+            setSetIn(input);
+            // then
+            assertThatThrownBy(() -> userInput.getWinningNumber())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+
+    }
 }
