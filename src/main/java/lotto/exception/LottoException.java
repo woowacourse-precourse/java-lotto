@@ -24,4 +24,11 @@ public class LottoException {
         }
         return false;
     }
+
+    private boolean isAccurateRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if(!(1 <= number && number <= 45)) return false;
+        }
+        return true;
+    }
 }
