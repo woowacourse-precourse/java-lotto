@@ -64,6 +64,10 @@ public class Game {
         if (bonus > maximumLottoNumber || bonus < 1) throw new IllegalArgumentException();
     }
 
+    private void validateBonusByDistinction(Integer bonus){
+        if (winningLotto.contains(bonus)) throw new IllegalArgumentException();
+    }
+
 
 
 
