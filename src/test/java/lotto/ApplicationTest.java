@@ -58,26 +58,36 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @DisplayName("로또 번호 발급 금액으로 1000원이 아니면 예외가 발생한다.")
-    @Test
-    void CreateLottoByWrongMoney() {
-        Application application = new Application();
-        int money = 12345;
-
-        assertThatThrownBy(() -> application.createLotto(money))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @DisplayName("로또를 생성한 번호가 중복이 있는지 확인한다.")
     @Test
-    void CreateLottoByDistinctNumber() {
+    void createLottoByDistinctNumber() {
         Application application = new Application();
-        int money = 1000;
-        List<Integer> number = application.createLotto(money);
+        List<Integer> number = application.createLotto();
         Set<Integer> result = new HashSet<>(number);
 
         assertThat(number.size()).isEqualTo(result.size());
     }
+
+    @DisplayName("로또 번호 발급 금액이 1000원 단위가 아니면 예외가 발생한다.")
+    @Test
+    void saveLottoByWrongMoneyUnit() {
+        Application application = new Application();
+        int money = 12345;
+
+        assertThatThrownBy(() -> application.saveLotto(money))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호 발급 개수가 금액의 개수와 같은지 확인한다.")
+    @Test
+    void saveLottoByLottoCount() {
+        Application application = new Application();
+        int money = 3000;
+        int result = 3;
+
+        assertThat(application.saveLotto(money).size()).isEqualTo(result);
+    }
+
 
     @Override
     public void runMain() {
