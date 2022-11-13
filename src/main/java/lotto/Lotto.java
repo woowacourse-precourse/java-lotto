@@ -2,6 +2,7 @@ package lotto;
 
 import static lotto.LottoNumberRange.*;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -11,6 +12,7 @@ public class Lotto {
         validate(numbers);
         validateRange(numbers);
         validateDuplication(numbers);
+        ascendingOrder(numbers);
         this.numbers = numbers;
     }
 
@@ -36,6 +38,10 @@ public class Lotto {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void ascendingOrder(List<Integer> numbers) {
+        Collections.sort(numbers);
     }
 
     public List<Integer> getNumbers() {
