@@ -39,6 +39,10 @@ public enum Prize {
         return money;
     }
 
+    public boolean getHasBonus() {
+        return hasBonus;
+    }
+
     public long getTotalMoney(int count) {
         return (long) money * count;
     }
@@ -52,7 +56,7 @@ public enum Prize {
     }
 
     private static Prize getOnlyOneWithBonusMatch(List<Prize> prizes, boolean hasBonus) {
-        if (prizes.size()  == 1) {
+        if (prizes.size() == 1) {
             return prizes.get(0);
         }
         return prizes.stream()
