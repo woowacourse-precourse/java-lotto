@@ -3,6 +3,7 @@ package lotto;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Collections;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,6 +14,11 @@ public class Lotto {
         validateCorrectRange(numbers);
 
         this.numbers = numbers;
+    }
+
+    public List<Integer> getNumbers() {
+        Collections.sort(numbers);
+        return numbers;
     }
 
     private void validateSize(List<Integer> numbers) {

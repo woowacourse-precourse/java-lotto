@@ -10,6 +10,10 @@ public class LottoCost {
         this.cost = cost;
     }
 
+    public int getCost() {
+        return cost;
+    }
+
     private void validateDivide(int cost) {
         if (cost % 1000 != 0) {
             throw new IllegalArgumentException();
