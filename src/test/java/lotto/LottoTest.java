@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.Domain.WinningPrize;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -78,6 +79,34 @@ class LottoTest {
         application = new Application();
         application.bonusLotto();
         assertThat(true).isEqualTo(application.getSystemError());
+    }
+
+    @DisplayName("로또 개수와 보너스 여부로 판단")
+    @Test
+    void judgeLottoTest() {
+        LottoMachine lottoMachine = new LottoMachine();
+        assertThat(lottoMachine.judgeLotto(5,true)).isEqualTo(WinningPrize.FIVEWITHBONUS);
+    }
+
+    @DisplayName("로또 정답과 로또 그리고 보너스로 답 판단")
+    @Test
+    void calculateLottoTest() {
+        LottoMachine lottoMachine = new LottoMachine();
+        Lotto lotto = new Lotto(new String[]{"1","3","5","7","8","9"});
+        Lotto answer = new Lotto(new String[]{"1","3","5","7","8","10"});
+        int bonus = 9;
+        assertThat(lottoMachine.calculateLotto(answer,lotto,bonus)).isEqualTo(WinningPrize.FIVEWITHBONUS);
+    }
+
+    @DisplayName("로또 결과물 잘 들어오는지 확인")
+    @Test
+    void makeStatisticsTest() {
+        LottoMachine lottoMachine = new LottoMachine();
+        lottoMachine.makeLottoCount(1000);
+        lottoMachine.makeLottoReceipt();
+        Lotto answer = new Lotto(new String[]{"1","3","5","7","8","10"});
+        int bonus = 9;
+        assertThat(lottoMachine.getLottoReceipt().size()).isEqualTo(1);
     }
 
 
