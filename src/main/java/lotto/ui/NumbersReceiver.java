@@ -39,7 +39,7 @@ public class NumbersReceiver {
         return result;
     }
 
-    public int setBonusNumber() {
+    public int setBonusNumber() throws IllegalArgumentException{
         System.out.println("보너스 번호를 입력해 주세요.");
         try {
             return Integer.parseInt(Console.readLine());
