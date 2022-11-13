@@ -23,6 +23,13 @@ public class Calculator {
         return sum;
     }
 
+    public int CountOfRank(WinningRank wantedRank) {
+        int count = (int) rankResult.stream()
+                .filter(rank -> rank.equals(wantedRank))
+                .count();
+        return count;
+    }
+
 
     public static int divide1000(int num){
         return num / UNIT_OF_MONEY;
