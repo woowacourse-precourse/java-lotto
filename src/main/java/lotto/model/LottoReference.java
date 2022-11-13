@@ -1,6 +1,6 @@
-package lotto.constants;
+package lotto.model;
 
-public enum LottoResult {
+public enum LottoReference {
     THREE(3, 5_000, ""),
     FOUR(4, 50_000, ""),
     FIVE(5, 1_500_000, ""),
@@ -11,15 +11,15 @@ public enum LottoResult {
     private int correctCount;
     private String message;
 
-    LottoResult(int correctCount, int prize, String message) {
+    LottoReference(int correctCount, int prize, String message) {
         this.prize = prize;
         this.correctCount = correctCount;
         this.message = message;
     }
 
     public static int getPrizeByCorrectCount(int correctCount) {
-        LottoResult[] lottoResults = LottoResult.values();
-        for (LottoResult l : lottoResults) {
+        LottoReference[] lottoReferences = LottoReference.values();
+        for (LottoReference l : lottoReferences) {
             if (l.getCorrectCount() == correctCount) {
                 return l.getPrize();
             }
@@ -27,9 +27,9 @@ public enum LottoResult {
         return 0;
     }
 
-    public static LottoResult hasCorrectCount(int correctCount) {
-        LottoResult[] lottoResults = LottoResult.values();
-        for (LottoResult l : lottoResults) {
+    public static LottoReference hasCorrectCount(int correctCount) {
+        LottoReference[] lottoReferences = LottoReference.values();
+        for (LottoReference l : lottoReferences) {
             if (l.getCorrectCount() == correctCount) {
                 return l;
             }

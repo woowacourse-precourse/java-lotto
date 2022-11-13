@@ -1,11 +1,11 @@
 package lotto.domain;
 
-import static lotto.constants.LottoResult.NOPE;
+import static lotto.model.LottoReference.NOPE;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
-import lotto.constants.LottoResult;
+import lotto.model.LottoReference;
 import lotto.model.Lotto;
 import lotto.model.LottoWithBonus;
 
@@ -19,13 +19,13 @@ public class Compare {
         this.lottoWithBonus = lottoWithBonus;
     }
 
-    public void printResult(Map<LottoResult, Integer> result) {
+    public void printResult(Map<LottoReference, Integer> result) {
         DecimalFormat moneyFormat = new DecimalFormat("###,###");
         DecimalFormat floatFormat = new DecimalFormat("###,###.#");
 
         System.out.println("당첨 통계");
         System.out.println("---");
-        for (LottoResult lo : LottoResult.values()) {
+        for (LottoReference lo : LottoReference.values()) {
             if (lo != NOPE) {
                 System.out.printf("%d개 일치%s (%s원) - %d개\n", lo.getCorrectCount(), lo.getMessage(),
                         moneyFormat.format(lo.getPrize()),
@@ -37,16 +37,16 @@ public class Compare {
     }
 
 
-    public float calculateYield(Map<LottoResult, Integer> result) {
+    public float calculateYield(Map<LottoReference, Integer> result) {
         long totalPrize = getTotalPrize(result);
         int price = lottoVendingMachine.getPrice();
 
         return (float) totalPrize / price * 100;
     }
 
-    public long getTotalPrize(Map<LottoResult, Integer> result) {
+    public long getTotalPrize(Map<LottoReference, Integer> result) {
         long totalPrize = 0L;
-        for (LottoResult lo : LottoResult.values()) {
+        for (LottoReference lo : LottoReference.values()) {
             if (lo != NOPE) {
                 totalPrize += (long) lo.getPrize() * result.getOrDefault(lo, 0);
             }
@@ -55,8 +55,8 @@ public class Compare {
     }
 
 
-    public Map<LottoResult, Integer> getResult() {
-        Map<LottoResult, Integer> result = new HashMap<>();
+    public Map<LottoReference, Integer> getResult() {
+        Map<LottoReference, Integer> result = new HashMap<>();
         Lotto myLotto = lottoWithBonus.getLotto();
 
         for (Lotto haveLotto : lottoVendingMachine.getHaveLottoList()) {
@@ -67,18 +67,18 @@ public class Compare {
                         result.getOrDefault(checkBonus(haveLotto, lottoWithBonus), 0) + 1);
             }
             if (count != 5) {
-                result.put(LottoResult.hasCorrectCount(count),
-                        result.getOrDefault(LottoResult.hasCorrectCount(count), 0) + 1);
+                result.put(LottoReference.hasCorrectCount(count),
+                        result.getOrDefault(LottoReference.hasCorrectCount(count), 0) + 1);
             }
         }
         return result;
     }
 
-    private LottoResult checkBonus(Lotto haveLotto, LottoWithBonus lottoWithBonus) {
+    private LottoReference checkBonus(Lotto haveLotto, LottoWithBonus lottoWithBonus) {
         if (haveLotto.getLottoNumbers().contains(lottoWithBonus.getBonusNumber())) {
-            return LottoResult.BONUS;
+            return LottoReference.BONUS;
         }
-        return LottoResult.FIVE;
+        return LottoReference.FIVE;
     }
 
     private int isContains(Lotto haveLotto, Lotto myLotto) {
