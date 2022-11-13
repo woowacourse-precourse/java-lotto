@@ -1,9 +1,10 @@
 # MODEL
 
 ## 1. Lotto
-- 1부터 45까지 예외처리
-- 6를 가지고 있는지
-- 중복 숫자가 있을 시 예외처리
+- 예외 처리
+  - 1부터 45까지 예외처리
+  - 6를 가지고 있는지
+  - 중복 숫자가 있을 시 예외처리
 - play : 각 로또와 WinningNumber를 비교하여 Result를 반환한다.
 
 ## 2. WinningNumber
@@ -19,4 +20,5 @@
 
 ## 5. Result
 - NONE, THREE, FOUR, FIVE, FIVE_BONUS, SIX
+  - THREE 이하의 값은 모두 NONE이다.
 - 각 상수는 당첨값을 갖고 있다.
