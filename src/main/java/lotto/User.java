@@ -1,13 +1,12 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private List<List<Integer>> boughtLotto = new ArrayList<>();
+    private final List<List<Integer>> boughtLotto = new ArrayList<>();
 
     // 로또 구매 개수 구현
     public int buyingLotto(String input) {
