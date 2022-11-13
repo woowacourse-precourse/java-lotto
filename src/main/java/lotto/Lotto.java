@@ -16,5 +16,11 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void setLottoBonusNumber(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException();
+        }
+
+        numbers.add(number);
+    }
 }
