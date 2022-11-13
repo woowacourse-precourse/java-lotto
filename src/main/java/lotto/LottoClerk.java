@@ -34,7 +34,7 @@ public class LottoClerk {
         stringBuffer.append("당첨 통계\n");
         stringBuffer.append("---\n");
         appendResultMessage(result,stringBuffer);
-        stringBuffer.append("총 수익률은 "+getProfitPercent(result,money)+"% 입니다.");
+        stringBuffer.append("총 수익률은 "+getProfitPercent(result,money)+"%입니다.");
         System.out.print(stringBuffer.toString());
     }
 
@@ -45,8 +45,8 @@ public class LottoClerk {
         {
             profit+=winningPrize.getPrize();
         }
-        profit=profit/inputMoney;
-        return String.format("%.2f",profit);
+        profit=profit/inputMoney*100;
+        return String.format("%.1f",profit);
     }
 
     public void appendResultMessage(List<WinningPrize> result,StringBuffer stringBuffer)
@@ -69,7 +69,7 @@ public class LottoClerk {
         NumberFormat numberFormat = NumberFormat.getInstance();
         if(findPrize.equals(WinningPrize.FIVEWITHBONUS))
             return "5개 일치, 보너스 볼 일치 (30,000,000원) - "+count+"개\n";
-        return rankChecker(findPrize)+"개 일치 ("+numberFormat.format(findPrize.getPrize())+") - "+count+"개\n";
+        return rankChecker(findPrize)+"개 일치 ("+numberFormat.format(findPrize.getPrize())+"원) - "+count+"개\n";
     }
 
     public String rankChecker(WinningPrize winningPrize)
