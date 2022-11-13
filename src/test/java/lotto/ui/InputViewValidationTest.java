@@ -78,4 +78,11 @@ class InputViewValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호 입력은 중복된 수가 들어오면 예외처리한다.")
+    @Test
+    void validateByNumberDuplicate() {
+        assertThatThrownBy(() -> InputViewValidation.validateWinningNumbersUnique("1,2,3,4,4,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
