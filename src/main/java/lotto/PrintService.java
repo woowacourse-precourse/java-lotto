@@ -1,7 +1,9 @@
 package lotto;
 
+import java.util.List;
+import java.util.Map;
+
 public interface PrintService {
-    void printLotto();
-    void printWinningResult();
-    void printYield();
+    void printLotto(List<List<Integer>> lottoList);
+    void printWinningResult(Map<Rank, Integer> result, long yield);
 }
