@@ -9,6 +9,16 @@ public class Application {
     private static LottoClerk lottoClerk;
     private static LottoMachine lottoMachine;
 
+    public int getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
+
+    private int bonus=0;
+
     public Application() {
         lottoClerk = new LottoClerk();
         lottoMachine = new LottoMachine();
@@ -23,6 +33,9 @@ public class Application {
         application.giveLotto();
         application.answerLotto();
         if (application.systemError)
+            return;
+        application.bonusLotto();
+        if(application.systemError)
             return;
     }
 
@@ -64,6 +77,18 @@ public class Application {
             String[] answer = lottoClerk.sayPleaseInput(SayMessage.ANSWER).split(",");
             Lotto lotto = new Lotto(answer);
             answerValue = lotto;
+        } catch (Exception e) {
+            errorCatcher(ErrorMessage.NOTONETOFOURTHYFIVE.getErrorMessage());
+        }
+    }
+
+    public void bonusLotto() {
+        try {
+            bonus = Integer.parseInt(lottoClerk.sayPleaseInput(SayMessage.BONUS));
+            if(bonus<1||bonus>45)
+            {
+                throw new IllegalArgumentException();
+            }
         } catch (Exception e) {
             errorCatcher(ErrorMessage.NOTONETOFOURTHYFIVE.getErrorMessage());
         }
