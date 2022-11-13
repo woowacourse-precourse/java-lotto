@@ -69,5 +69,16 @@ class LottoTest {
         assertThat(true).isEqualTo(application.getSystemError());
     }
 
+    @DisplayName("보너스 제대로 입력 안했을 시 메인 시스템 에러 체크")
+    @Test
+    void checkBadBonus() {
+        String testData = "0";
+        InputStream in = new ByteArrayInputStream(testData.getBytes());
+        System.setIn(in);
+        application = new Application();
+        application.bonusLotto();
+        assertThat(true).isEqualTo(application.getSystemError());
+    }
+
 
 }
