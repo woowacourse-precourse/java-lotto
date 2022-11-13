@@ -21,6 +21,6 @@ public enum StatisticMessage {
     }
 
     public String getMessage(int count) {
-        return message + count + SUFFIX;
+        return message + count + SUFFIX.getMessage();
     }
 }
