@@ -8,10 +8,11 @@ import lotto.repository.dto.UserLottoDto;
 
 public class StatisticsService {
 
-	public void updateStatistics(UserLottoDto userLottoDto, WinnerNumberDto winnerNumberDto) {
+	public Double updateStatistics(UserLottoDto userLottoDto, WinnerNumberDto winnerNumberDto, Integer inputPrice) {
 		for (Lotto lotto : userLottoDto.getUserLotto()) {
 			updateRank(winnerNumberDto, lotto);
 		}
+		return Rank.findYield(inputPrice);
 	}
 
 	private void updateRank(WinnerNumberDto winnerNumberDto, Lotto lotto) {

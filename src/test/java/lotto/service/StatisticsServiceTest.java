@@ -43,9 +43,10 @@ class StatisticsServiceTest {
 		UserLottoDto userLottoDto = userLottoRepository.findUserLottoDto();
 		WinnerNumberDto winnerNumberDto = new WinnerNumberDto(List.of(1, 2, 3, 4, 5, 6));
 		winnerNumberDto.setBonusNumber(7);//
+		Integer inputPrice = 1000;
 
 		//when
-		statisticsService.updateStatistics(userLottoDto, winnerNumberDto);
+		statisticsService.updateStatistics(userLottoDto, winnerNumberDto, inputPrice);
 		String userFirstRankStatisticsResult = Rank.firstRank.userStatisticsResultToString();
 		String userSecondRankStatisticsResult = Rank.secondRank.userStatisticsResultToString();
 

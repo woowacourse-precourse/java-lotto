@@ -2,7 +2,6 @@ package lotto.controller;
 
 import lotto.controller.dto.UserPriceDto;
 import lotto.controller.dto.WinnerNumberDto;
-import lotto.domain.Rank;
 import lotto.repository.dto.UserLottoDto;
 import lotto.service.LottoService;
 import lotto.service.StatisticsService;
@@ -44,8 +43,9 @@ public class LottoController {
 			return;
 		}
 
-		statisticsService.updateStatistics(userLottoDto, winnerNumberDto);
-		outputView.printUserStatistics(Rank.findYield(userPriceDto.getInputPrice()));
+		Double yield = statisticsService.updateStatistics(userLottoDto, winnerNumberDto,
+			userPriceDto.getInputPrice());
+		outputView.printUserStatistics(yield);
 
 	}
 
