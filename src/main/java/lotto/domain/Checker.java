@@ -21,7 +21,7 @@ public class Checker {
     private static final String SHOW_RETURN_RATE_FRONT = "총 수익률은 ";
     private static final String SHOW_RETURN_RATE_BACK = "입니다.";
 
-    private List<Integer> winningNumbers;
+    private List<Integer> winningNumbers = new ArrayList<>();
     private List<Integer> winningStats;
     private int bonusNumber;
     private int count;
@@ -29,10 +29,11 @@ public class Checker {
 
     public void insertWinningNumbers() {
         System.out.println(INSERT_WINNING_NUMBER);
-        String numbers = Console.readLine();
 
-        for (int i = 0;i < numbers.length();i+=2) {
-            winningNumbers.add(numbers.charAt(i) - '0');
+        String winningNumber = Console.readLine();
+        int[] numbers = Arrays.stream(winningNumber.split(",")).mapToInt(Integer::parseInt).toArray();
+        for (int number : numbers) {
+            winningNumbers.add(number);
         }
     }
 
