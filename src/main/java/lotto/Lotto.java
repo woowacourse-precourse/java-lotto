@@ -16,5 +16,11 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void display(){
+        System.out.println(this.numbers);
+    }
+
+    public List<Integer> getLotto(){
+        return this.numbers;
+    }
 }

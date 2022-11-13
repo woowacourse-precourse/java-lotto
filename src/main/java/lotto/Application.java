@@ -11,8 +11,9 @@ public class Application {
 
     public static void main(String[] args) {
         Integer numberOfLottoes;
-        List<Lotto> lottoes = createLottoes(numberOfLottoes);
+        List<Lotto> lottoes;
         List<Integer> winningNumbers;
+        Integer bonus;
 
         System.out.println("구입금액을 입력해 주세요.");
         numberOfLottoes =
@@ -21,7 +22,12 @@ public class Application {
                 );
         System.out.println(numberOfLottoes + "개를 구매했습니다.");
 
+        lottoes = createLottoes(numberOfLottoes);
+
+        System.out.println("당첨 번호를 입력해 주세요.");
         winningNumbers = getWinningNumbers(Console.readLine());
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonus = getBonus(Console.readLine());
     }
 
     public static Integer getTheNumberOfLottoesAsMuchThePurchaseAmount(Integer purchaseAmount) {
@@ -55,6 +61,16 @@ public class Application {
         validateDuplicatedNumber(winningNumbers);
 
         return winningNumbers;
+    }
+
+    public static Integer getBonus(String numberText) {
+        List<Integer> bonus = parseIntegerList(numberText);
+
+        validateBonus(bonus);
+        validateNumbers(bonus);
+        validateRanges(bonus);
+
+        return bonus.get(0);
     }
 
     public static void validatePurchaseAmount(Integer purchaseAmount) {
@@ -99,6 +115,15 @@ public class Application {
         }
         if (numbers.size() < 6) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호를 6개 보다 적게 입력할 수 없습니다.");
+        }
+    }
+
+    public static void validateBonus(List<Integer> numbers) {
+        if (numbers.size() > 1) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호를 1개 보다 많이 입력할 수 없습니다.");
+        }
+        if (numbers.size() < 1) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호를 입력하지 않았습니다.");
         }
     }
 
