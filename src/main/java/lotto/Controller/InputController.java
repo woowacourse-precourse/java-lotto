@@ -1,16 +1,15 @@
 package lotto.Controller;
 
 import lotto.Model.Buyer;
-import lotto.Model.Lotto;
+import lotto.Model.WinningLotto;
 import lotto.View.InputView;
-import lotto.View.OutputView;
 
 public class InputController {
     public static Buyer inputPurchaseAmount(){
         return new Buyer(InputView.purchaseAmountInput());
     }
 
-    public static Lotto inputWinningLotto(){
-        return new Lotto(InputView.WinningLottoInput(), InputView.BonusLottoInput());
+    public static WinningLotto inputWinningLotto(){
+        return new WinningLotto(InputView.WinningLottoInput(), InputView.BonusLottoInput());
     }
 }

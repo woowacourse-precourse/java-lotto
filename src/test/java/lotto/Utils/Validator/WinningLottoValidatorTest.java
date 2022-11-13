@@ -5,12 +5,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class LottoValidatorTest {
+public class WinningLottoValidatorTest {
     @DisplayName("입력받은 당첨로또번호가 문자를 포함하면 예외를 발생한다.")
     @Test
     void createLottoByNotInteger() {
         String input = "a,b,2,3,4,5";
-        assertThatThrownBy(() -> new LottoValidator(input))
+        assertThatThrownBy(() -> new WinningLottoValidator(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -18,7 +18,7 @@ public class LottoValidatorTest {
     @Test
     void createLottoByOverSize() {
         String input = "1,2,3,4,5,6,7";
-        assertThatThrownBy(() -> new LottoValidator(input))
+        assertThatThrownBy(() -> new WinningLottoValidator(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -26,7 +26,7 @@ public class LottoValidatorTest {
     @Test
     void createLottoByNotRange() {
         String input = "-2,0,3,4,5,87";
-        assertThatThrownBy(() -> new LottoValidator(input))
+        assertThatThrownBy(() -> new WinningLottoValidator(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -34,7 +34,7 @@ public class LottoValidatorTest {
     @Test
     void createLottoByDuplicatedNumber() {
         String input = "1,2,3,3,5,41";
-        assertThatThrownBy(() -> new LottoValidator(input))
+        assertThatThrownBy(() -> new WinningLottoValidator(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -2,6 +2,7 @@ package lotto.View;
 
 import java.util.List;
 import lotto.Model.Buyer;
+import lotto.Model.Lotto;
 
 public class OutputView {
 
@@ -13,9 +14,9 @@ public class OutputView {
         System.out.println();
         printLottoWallet(buyer.getLottoWallet());
     }
-    public static void printLottoWallet(List<List<Integer>> wallet ){
+    public static void printLottoWallet(List<Lotto> wallet ){
         for(int i = ZERO; i<wallet.size(); i++){
-            System.out.println(wallet.get(i));
+            System.out.println(wallet.get(i).getNumbers());
         }
     }
     public static void printError(String Error){

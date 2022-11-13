@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import lotto.Utils.Util;
 
-public class LottoValidator {
+public class WinningLottoValidator {
 
     public static final int LOTTO_SIZE = 6;
     public static final String ERROR = "[ERROR] ";
@@ -15,7 +15,7 @@ public class LottoValidator {
 
     protected final String WinningLotto;
 
-    public LottoValidator(String WinningLotto){
+    public WinningLottoValidator(String WinningLotto){
         this.WinningLotto = WinningLotto;
         isInteger();
         isValidLottoSize();
