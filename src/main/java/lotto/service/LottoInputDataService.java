@@ -18,12 +18,6 @@ public class LottoInputDataService {
         return setLotto(lottoNumbers, bonusNumber);
     }
 
-    public Lotto setLotto(List<Integer> lottoNumbers, int bonusNumber) {
-        Lotto lotto = new Lotto(lottoNumbers);
-        lotto.setBonusNumber(bonusNumber);
-        return lotto;
-    }
-
     public List<Integer> inputLottoNumbers() {
         outputView.askLottoNumbers();
         List<Integer> lottoNumbers = lottoNumbersParser(inputView.inputLottoNumbersView());
@@ -34,5 +28,11 @@ public class LottoInputDataService {
         outputView.askBonusNumber();
         int bonusNumber = bonusNumberParser(inputView.inputBonusNumberView());
         return bonusNumber;
+    }
+
+    public Lotto setLotto(List<Integer> lottoNumbers, int bonusNumber) {
+        Lotto lotto = new Lotto(lottoNumbers);
+        lotto.setBonusNumber(bonusNumber);
+        return lotto;
     }
 }
