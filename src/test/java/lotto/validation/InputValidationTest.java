@@ -83,6 +83,21 @@ class InputValidationTest {
     }
 
     @Test
+    @DisplayName("enterPurchaseAmount 그룹은 21억 초과로 입력시 IllegalArgumentException과 메시지가 출력되어야한다.")
+    void enterPurchaseAmountGroupInputOver2Point1Billion() {
+        // given
+        String input = "2100001000";
+        String group = "enterPurchaseAmount";
+
+        // expected
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> checkValidation(input, group)
+        );
+        assertEquals("[ERROR] 21억 이하로 입력하세요.", exception.getMessage());
+    }
+
+    @Test
     @DisplayName("enterWinningNumber 그룹은 숫자와 쉼표입력시 exception이 발생하지 않아야한다.")
     void enterWinningNumberGroupInput() {
         // given

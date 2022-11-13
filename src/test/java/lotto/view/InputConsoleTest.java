@@ -76,6 +76,17 @@ class InputConsoleTest extends NsTest{
     }
 
     @Test
+    @DisplayName("구입금액을 21억 초과 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
+    void inputAmountOver2Point1Billion() {
+        // given
+        run("2100001000");
+
+        // expected
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterPurchaseAmount);
+        assertEquals("[ERROR] 21억 이하로 입력하세요.", exception.getMessage());
+    }
+
+    @Test
     @DisplayName("당첨번호를 null 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
     void inputWinningNumberNull() {
         // given
