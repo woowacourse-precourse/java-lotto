@@ -1,5 +1,11 @@
 package lotto.model;
 
+import static lotto.constant.ResultConstants.DEFAULT_VALUE;
+import static lotto.constant.ResultConstants.DELIMITER;
+import static lotto.constant.ResultConstants.INCREASE_AMOUNT;
+import static lotto.constant.ResultConstants.NEW_LINE;
+import static lotto.constant.ResultConstants.UNIT;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +24,7 @@ public class Result {
     }
 
     public long calculateProfit() {
-        long profit=0;
+        long profit=DEFAULT_VALUE;
 
         for (Rank rank : result.keySet()) {
             profit+= rank.calculateTotalPrize(result.get(rank));
@@ -32,7 +38,7 @@ public class Result {
         StringBuilder resultStatics = new StringBuilder();
 
         for (Rank rank : Rank.values()) {
-            resultStatics.append(rank.getDescription()+" - "+result.get(rank)+"개\n");
+            resultStatics.append(rank.getDescription()+DELIMITER+result.get(rank)+UNIT+NEW_LINE);
         }
 
         return resultStatics.toString();
@@ -40,14 +46,14 @@ public class Result {
 
     private void initResult() {
         for (Rank rank : Rank.values()) {
-            result.put(rank, 0);
+            result.put(rank, DEFAULT_VALUE);
         }
     }
 
     private void store(List<Integer> ranks) {
         for (Integer rankValue : ranks) {
             Rank currentRank = Rank.valueOf(Rank.toRankName(rankValue));
-            result.put(currentRank, result.get(currentRank)+1);
+            result.put(currentRank, result.get(currentRank)+INCREASE_AMOUNT);
         }
     }
 }
