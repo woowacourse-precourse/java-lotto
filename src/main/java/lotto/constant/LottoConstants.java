@@ -7,7 +7,7 @@ public class LottoConstants {
     public static final int WINNING_NUMBER_LENGTH = 6;
     public static final int BONUS_NUMBER_LENGTH = 1;
 
-    public static final int LOTTO_PRICE = 1000;
+    public static final int LOTTO_PRICE = 1_000;
 
     public static final int FIFTH_PRIZE = 5_000;
     public static final int FOURTH_PRIZE = 50_000;
