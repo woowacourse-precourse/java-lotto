@@ -25,11 +25,17 @@ public class Application {
 
     //region 생성자
     public static void main(String[] args) {
-        SalesLotto();
-        GetWinningNumber();
-        GetBonusNumber();
-        CheckWinning();
-        CheckEarningRate();
+        try {
+            SalesLotto();
+            GetWinningNumber();
+            GetBonusNumber();
+            CheckWinning();
+            CheckEarningRate();
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+            return;
+        }
     }
 
 
@@ -144,6 +150,7 @@ public class Application {
     }
 
     private static boolean SalesValidate(String userInput) {
+
         String errorMessage;
 
         errorMessage = CheckOnlyNumber(userInput);
@@ -157,6 +164,9 @@ public class Application {
             Error.error(errorMessage);
             return false;
         }
+
+
+
 
         return true;
     }

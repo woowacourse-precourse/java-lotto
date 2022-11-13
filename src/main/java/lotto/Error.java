@@ -11,7 +11,6 @@ public class Error {
 
     public static void error(String errorMessage) {
         String output = ERROR + errorMessage;
-        System.out.println(output);
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(output);
     }
 }
