@@ -11,12 +11,14 @@ public class Application {
     static int tickets = 0;
     static List<List<Integer>> allLottoNumbers = new ArrayList<>();
     static List<String> winningNumber = new ArrayList<>();
+    static int bonus = 0;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         buyLotto();
         tickets = ticketCal(pay);
         getLottoNumber(tickets);
-
+        inputWinningNumber();
+        inputBonus();
 
     }
     public static void buyLotto() {
@@ -49,6 +51,10 @@ public class Application {
         for(int i=0;i<processNumber.length;i++){
             winningNumber.add(processNumber[i]);
         }
+    }
 
+    public static void inputBonus(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonus = Integer.parseInt(Console.readLine());
     }
 }
