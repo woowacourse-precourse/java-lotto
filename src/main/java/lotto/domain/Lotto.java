@@ -2,8 +2,8 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.function.Predicate;
+import java.util.List;
 import java.util.stream.Collectors;
 import camp.nextstep.edu.missionutils.Console;
 
