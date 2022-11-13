@@ -5,6 +5,7 @@ import lotto.Lotto;
 
 public class LottoManager {
     public int inputLottoCount() {
+        System.out.println("구입금액을 입력해 주세요.");
         int purchaseMoney = Integer.parseInt(Console.readLine());
         if (purchaseMoney % 1000 > 0) {
             throw new IllegalArgumentException();
