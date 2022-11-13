@@ -39,6 +39,11 @@ class ValidatorTest {
 		assertThatNoException().isThrownBy(() -> Validator.validateDivisibility(4214000));
 	}
 
+	@Test
+	@DisplayName("1부터 45까지의 숫자인지 검증한다.")
+	void validateNumberRange() {
+		assertThatThrownBy(() -> Validator.validateNumberRange(List.of(2, 5, 3, 15, 32, 54))).isInstanceOf(IllegalArgumentException.class);
+	}
 
 	@Test
 	@DisplayName("숫자 간에 중복이 있는지 검증한다.")
