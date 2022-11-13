@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -48,14 +47,11 @@ public class Player {
         return Integer.parseInt(purchaseAmount);
     }
 
-    public List<Lotto> buyLotto() {
-        List<Lotto> lottos = new ArrayList<>();
-
+    public void buyLotto() {
         while (this.purchaseAmount > 0) {
-            lottos.add(Computer.issueLotto());
+            this.lottos.add(Computer.issueLotto());
             this.purchaseAmount -= LOTTO_PRICE;
         }
-        return lottos;
     }
 
     public void printLotto() {
