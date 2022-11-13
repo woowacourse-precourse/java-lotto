@@ -14,20 +14,24 @@ public class LottoPurchase {
 	this.lottery = lottery;
     }
 
-    public void compareNumberByWinning() {
+    public void compareNumberByWinning(WinningLotto winningLotto) {
         for (Lotto lotto: lottery) {
-            compareRankByNumber(lotto);
+            compareRankByNumber(winningLotto, lotto);
         }
     }
 
-    private void compareRankByNumber(Lotto lotto) {
-        int rank = WinningLotto.prepareWinningLotto(lotto);
+    private void compareRankByNumber(WinningLotto winningLotto, Lotto lotto) {
+        int rank = winningLotto.compareWinningLotto(lotto);
         if (rank <= LOTTO_MINIMUM_RANK) {
-            rankCounts.set(rank - 1, rankCounts.get(rank) + 1);
+            rankCounts.set(rank - 1, rankCounts.get(rank - 1) + 1);
         }
     }
 
     public List<Lotto> getLottery() {
 	return lottery;
+    }
+
+    public LottoStatsDTO getRankCounts() {
+        return new LottoStatsDTO(rankCounts, 1000);
     }
 }

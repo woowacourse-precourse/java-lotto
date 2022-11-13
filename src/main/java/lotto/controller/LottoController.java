@@ -2,6 +2,8 @@ package lotto.controller;
 
 import java.util.List;
 
+import lotto.domain.Lotto;
+import lotto.dto.LottoStatsDTO;
 import lotto.dto.LottoTicketDTO;
 import lotto.service.LottoService;
 import lotto.view.InputView;
@@ -24,7 +26,8 @@ public class LottoController {
 
     public void start() {
         purchaseLotto();
-        prepareLottoNumber();
+        announceLottoNumber();
+        prepareLotto();
     }
 
     private void purchaseLotto() {
@@ -35,7 +38,7 @@ public class LottoController {
         OutputView.printPaidLotto(paidAmount, lottoTicketDTO);
     }
 
-    private void prepareLottoNumber() {
+    private void announceLottoNumber() {
         OutputView.printInputWinningNumber();
         List<Integer> winningLottoNumber = InputView.inputWinningNumber();
 
@@ -43,5 +46,10 @@ public class LottoController {
         Integer bonusLottoNumber = InputView.inputBonusNumber();
 
         lottoService.announceWinningLottoNumber(winningLottoNumber, bonusLottoNumber);
+    }
+
+    private void prepareLotto() {
+        LottoStatsDTO lottoStatsDTO = lottoService.compareLottoNumbers();
+        OutputView.printStatsMessage(lottoStatsDTO);
     }
 }

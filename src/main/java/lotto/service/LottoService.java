@@ -7,6 +7,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoNumberGenerator;
 import lotto.domain.LottoPurchase;
 import lotto.domain.WinningLotto;
+import lotto.dto.LottoStatsDTO;
 import lotto.dto.LottoTicketDTO;
 
 public class LottoService {
@@ -24,6 +25,11 @@ public class LottoService {
     }
 
     public void announceWinningLottoNumber(List<Integer> winningLottoNumber, Integer bonusLottoNumber) {
-	winningLotto = new WinningLotto(winningLottoNumber, bonusLottoNumber);
+	winningLotto = new WinningLotto(new Lotto(winningLottoNumber), bonusLottoNumber);
+    }
+
+    public LottoStatsDTO compareLottoNumbers() {
+	lottery.compareNumberByWinning(winningLotto);
+	return lottery.getRankCounts();
     }
 }

@@ -2,17 +2,17 @@ package lotto.domain;
 
 import java.util.List;
 
-public class WinningLotto extends Lotto{
+public class WinningLotto{
     private static final Integer MINIMUM_RANK = 8;
-    private static List<Integer> lottoNumbers;
+    private static Lotto winningLottoNumber;
     private static Integer bonusNumber;
 
-    public WinningLotto(List<Integer> lottoNumbers, Integer bonusNumber) {
-	super(lottoNumbers);
+    public WinningLotto(Lotto winningLottoNumber, Integer bonusNumber) {
+	this.winningLottoNumber = winningLottoNumber;
 	this.bonusNumber = bonusNumber;
     }
 
-    public static Integer prepareWinningLotto(Lotto lottoNumbers) {
+    public static Integer compareWinningLotto(Lotto lottoNumbers) {
 	int rank = MINIMUM_RANK;
 	for (Integer lottoNumber: lottoNumbers.getLottoNumbers()) {
 	    rank -= isContainWinningNumber(lottoNumber);
@@ -22,7 +22,7 @@ public class WinningLotto extends Lotto{
     }
 
     private static int isContainWinningNumber(Integer lottoNumber) {
-	if (lottoNumbers.contains(lottoNumber)) {
+	if (winningLottoNumber.getLottoNumbers().contains(lottoNumber)) {
 	    return 1;
 	}
 	if (lottoNumber == bonusNumber) {
@@ -40,5 +40,4 @@ public class WinningLotto extends Lotto{
 	}
 	return 0;
     }
-
 }
