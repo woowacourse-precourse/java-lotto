@@ -15,8 +15,7 @@ public class LottoNumbersGenerator {
 
     public List<Integer> create() {
         List<Integer> numbers = createLottoNumbers();
-        Collections.sort(numbers);
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 
     private List<Integer> createLottoNumbers() {
