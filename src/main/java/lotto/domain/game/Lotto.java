@@ -32,4 +32,8 @@ public class Lotto {
         }
     }
 
+    public void setBonusNumber(int number){
+        validateDuplicateBonusAndWinningNumber(number);
+        numbers.add(number);
+    }
 }
