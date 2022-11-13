@@ -9,7 +9,6 @@ public class User {
 
     private int userPrice;
     private int userGameCnt;
-    private List<List<Integer>> randomNumber;
 
     public User() {
         userPrice=0;
@@ -22,9 +21,5 @@ public class User {
 
     public int getUserGameCnt() {
         return userGameCnt;
-    }
-
-    public void setRandomNumber(List<List<Integer>> randomNumber) {
-        this.randomNumber = randomNumber;
     }
 }
