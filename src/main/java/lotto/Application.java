@@ -38,7 +38,8 @@ public class Application {
     static Rank rankName;
     static boolean bonusCheck = false;
     static Map<Rank,Integer> rankMap = new EnumMap<>(Rank.class);
-    static Stack<String> printResult = new Stack<>();
+    static int winMoney = 0;
+    static double winRate = 0.0;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         buyLotto();
@@ -51,6 +52,10 @@ public class Application {
 
         printWinMessage();
         resultLotto();
+
+        calWinMoney();
+        calYield();
+        printYield();
     }
     public static void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -130,6 +135,23 @@ public class Application {
         System.out.println("5개 일치 (1,500,000원) - " + rankMap.get(Rank.THIRD));
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankMap.get(Rank.SECOND));
         System.out.println("6개 일치 (2,000,000,000원) - " + rankMap.get(Rank.FIRST));
+    }
+
+    public static void calWinMoney(){
+        winMoney += 5000 * rankMap.get(Rank.FIFTH);
+        winMoney += 50000 * rankMap.get(Rank.FOURTH);
+        winMoney += 1500000 * rankMap.get(Rank.THIRD);
+        winMoney += 30000000 * rankMap.get(Rank.SECOND);
+        winMoney += 2000000000 * rankMap.get(Rank.FIRST);
+    }
+
+    public static void calYield(){
+        winRate = (double)(pay/winMoney)*100;
+    }
+
+    public static void printYield(){
+        String result = String.format("%.1f",winRate);
+        System.out.println("총 수익률은 " + result + "%입니다.");
     }
 
 
