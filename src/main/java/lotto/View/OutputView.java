@@ -1,13 +1,12 @@
 package lotto.View;
 
 import lotto.Model.LottoSystem;
+import lotto.Model.Money;
 
 import java.util.Collections;
 import java.util.List;
 
-import static lotto.Model.Money.getInputMoney;
 import static lotto.Model.RandomLotto.getBundleOfLottoNumbers;
-import static lotto.Model.Ranking.findRanking;
 
 
 public class OutputView {
@@ -37,17 +36,13 @@ public class OutputView {
     }
 
     public static void printYield() {
-        double sum = 0.0;
-        for(int countOfCase : LottoSystem.getWinningStatics()) {
-            if(countOfCase == COUNT_OF_FIRST) sum+= findRanking(countOfCase).getPrize();
-            if(countOfCase == COUNT_OF_SECOND) sum+= findRanking(countOfCase).getPrize();
-            if(countOfCase == COUNT_OF_THIRD) sum+= findRanking(countOfCase).getPrize();
-            if(countOfCase == COUNT_OF_FOURTH) sum+= findRanking(countOfCase).getPrize();
-            if(countOfCase == COUNT_OF_FIFTH) sum+= findRanking(countOfCase).getPrize();
-        }
-        sum /= getInputMoney();
-        sum *= 100;
-        System.out.println("총 수익률은 " + String.format("%.1f", sum) + "%입니다.");
+        double sum = Money.calcYield();
+        String formatYield = formatting(sum);
+        System.out.println("총 수익률은 " + formatYield + "%입니다.");
+    }
+
+    private static String formatting(double sum) {
+        return String.format("%.1f", sum);
     }
 
 
