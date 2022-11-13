@@ -1,6 +1,7 @@
 package lotto;
 
 import Dto.Lotto;
+import Dto.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,4 +26,10 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("돈이 숫자가 아니면 예외가 발생한다")
+    @Test
+    void createLottoBuyMoney() {
+        assertThatThrownBy(() -> new Money("하이"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
