@@ -1,8 +1,5 @@
 package lotto.domain.game;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
 import lotto.domain.money.Money;
 import lotto.system.AnswerLottoSystem;
 import lotto.system.IoSystem;
@@ -10,6 +7,7 @@ import lotto.system.RandomLottoSystem;
 import lotto.system.SettlementSystem;
 
 public class LottoGame {
+
     private final IoSystem io;
 
     public LottoGame(IoSystem ioSystem) {
@@ -17,29 +15,24 @@ public class LottoGame {
     }
 
     public void execute() {
-        var money = Money.generatePurchaseLottoMoney(io.input());
+        Money money = inputMoneyByUser();
 
         var randomLottoSystem = new RandomLottoSystem(io);
         var answerLottoSystem = new AnswerLottoSystem(io);
-        var settlementSystem = new SettlementSystem();
+        var settlementSystem = new SettlementSystem(io);
 
-        var result = settlementSystem.result(
-                randomLottoSystem.generateLottoBundle(
-                        this.generateRandomNumbers(money.calculateAvailablePurchaseCount())),
-                answerLottoSystem.generateAnswerLotto()
-        );
+        var lottoBundle = randomLottoSystem.generateLottoBundle(money);
+        var answerLotto = answerLottoSystem.generateAnswerLotto();
 
-        var profits = settlementSystem.calculateProfits();
-        io.println(result);
-        io.print(String.format("총 수익률은 %.1f%%입니다.", money.calculateROI(profits)));
+        settlementSystem.result(lottoBundle, answerLotto);
+        settlementSystem.calculateProfits(money);
     }
 
-    private List<List<Integer>> generateRandomNumbers(final Long repeatCount) {
-        List<List<Integer>> numbers = new ArrayList<>();
-
-        for (int i = 0; i < repeatCount; i++) {
-            numbers.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        }
-        return numbers;
+    private Money inputMoneyByUser() {
+        io.println("구입금액을 입력해 주세요.");
+        var money = Money.generatePurchaseLottoMoney(io.input());
+        return money;
     }
+
+
 }
