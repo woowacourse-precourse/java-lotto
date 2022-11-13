@@ -10,8 +10,7 @@ public class MoneyController {
     private final MoneyService moneyService = new MoneyService();
 
     public Money getPurchaseAmount(String purchaseAmount) {
-        if (!isNumber(purchaseAmount))
-            throw new IllegalArgumentException("구매 금액은 숫자여야 합니다.");
+        isNumber(purchaseAmount);
         return moneyService.saveMoney(purchaseAmount);
     }
 
@@ -19,7 +18,9 @@ public class MoneyController {
         return moneyService.getAvailablePurchaseNumber(money);
     }
 
-    public boolean isNumber(String purchaseAmount) {
-        return Pattern.matches(FORMAT, purchaseAmount);
+    public void isNumber(String purchaseAmount) {
+        if (!Pattern.matches(FORMAT, purchaseAmount)) {
+            throw new IllegalArgumentException("구매 금액은 숫자여야 합니다.");
+        }
     }
 }

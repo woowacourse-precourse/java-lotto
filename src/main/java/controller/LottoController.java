@@ -10,12 +10,13 @@ public class LottoController {
     private final LottoService lottoService = new LottoService();
 
     public Lotto createWinningNumber(String winningNumber) {
-        if (!isNumber(winningNumber))
-            throw new IllegalArgumentException("당첨 번호는 쉼표로 구분된 숫자여야 합니다.");
+        isNumber(winningNumber);
         return lottoService.createWinningNumber(winningNumber);
     }
 
-    public boolean isNumber(String winningNumber) {
-        return Pattern.matches(FORMAT, winningNumber);
+    public void isNumber(String winningNumber) {
+        if (!Pattern.matches(FORMAT, winningNumber)) {
+            throw new IllegalArgumentException("당첨 번호는 쉼표로 구분된 6개의 숫자여야 합니다.");
+        }
     }
 }
