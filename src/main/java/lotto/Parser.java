@@ -14,7 +14,11 @@ public class Parser {
 
     private static int number(String input) {
         try {
-            return Integer.parseInt(input);
+            int number = Integer.parseInt(input);
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException();
+            }
+            return number;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
