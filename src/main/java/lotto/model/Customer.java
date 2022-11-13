@@ -3,7 +3,7 @@ package lotto.model;
 import static lotto.constants.LottoConstant.LOTTO_PRICE;
 import static lotto.utils.Calculator.calculateLottoRank;
 import static lotto.utils.LottoNumberGenerator.generateLottoNumber;
-import static lotto.validator.MoneyValidator.hasValidPaidMoney;
+import static lotto.validator.MoneyValidator.hasValidUnit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +15,12 @@ public class Customer {
     public Customer(
             int paidMoney
     ) {
-        hasValidPaidMoney(paidMoney);
+        hasValidUnit(paidMoney);
         this.paidMoney = paidMoney;
-        this.lottos = generateLottosForCustomer(paidMoney);
+        this.lottos = generateLottos(paidMoney);
     }
 
-    private List<Lotto> generateLottosForCustomer(int paidMoney) {
+    private List<Lotto> generateLottos(int paidMoney) {
         List<Lotto> result = new ArrayList<>();
         while (result.size() < (paidMoney / LOTTO_PRICE)) {
             result.add(new Lotto(generateLottoNumber()));
