@@ -6,8 +6,6 @@ import lotto.view.View;
 
 import java.util.List;
 
-import static java.util.Arrays.asList;
-
 public class LottoController {
     private LottoService lottoService;
     public LottoController() {

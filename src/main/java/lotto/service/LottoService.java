@@ -1,6 +1,7 @@
 package lotto.service;
 
 import lotto.Lotto;
+import lotto.comparator.LottoComparator;
 import lotto.repository.LottoRepository;
 import lotto.validator.InputValidator;
 import lotto.utils.RandomUtils;
@@ -65,13 +66,8 @@ public class LottoService {
         List<Lotto> userLottoGroup = LottoRepository.getLastUserLottoGroup();
         Lotto winningLotto = LottoRepository.getLastWinningLotto();
         Integer bonusNumber = LottoRepository.getBonusNumber();
-        List<Integer> winningResult = Arrays.asList(0,0,0,0,0);
+        List<Integer> winningResult = LottoComparator.compareUserLottoAndWinningLotto(userLottoGroup,bonusNumber,winningLotto);
 
-        for (Lotto userLotto : userLottoGroup) {
-            initCount();
-            Integer luckyCount = compareUserAndWinning(userLotto, winningLotto, bonusNumber);
-            createWinningResult(winningResult, luckyCount);
-        }
         saveWinningResult(winningResult);
         return winningResult;
     }
@@ -79,37 +75,9 @@ public class LottoService {
     private void saveWinningResult(List<Integer> winningResult) {
         LottoRepository.saveWinningResult(winningResult);
     }
-
-    private void initCount() {
-        luckyCount = 0;
-        secondaryCount = 0;
-    }
-
-    private Integer compareUserAndWinning(Lotto userLotto, Lotto winningLotto, Integer BonusNumber) {
-        for (Integer userLottoNumber : userLotto.getNumbers()) {
-            if (winningLotto.getNumbers().contains(userLottoNumber)) {
-                luckyCount++;
-            }
-            if (userLottoNumber == BonusNumber) {
-                secondaryCount++;
-            }
-        }
-        if (secondaryCount == 1 && luckyCount == 5) {
-            return 7;
-        }
-        return luckyCount;
-    }
-
-    private void createWinningResult(List<Integer> resultCount, Integer luckyCount) {
-        if (luckyCount >= 3) {
-            resultCount.set(luckyCount-3,resultCount.get(luckyCount-3)+1);
-        }
-    }
-
     public List<Long> getWinningAmount() {
         return LottoRepository.getWinningAmount();
     }
-
 
     public String getProfit() {
         List<Integer> winningResult = LottoRepository.getWinningResult();
