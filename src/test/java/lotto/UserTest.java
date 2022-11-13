@@ -52,7 +52,7 @@ public class UserTest {
         User user = new User(new MockInputReader("1,2,3,4,5"));
         assertThatThrownBy(() -> user.inputWinningNumber())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_WINNING_NUMBER_SIZE_ERROR);
+                .hasMessage(INVALID_LOTTO_NUMBER_SIZE_ERROR);
     }
 
     @DisplayName("당첨 번호에 중복이 존재하는 경우 예외가 발생한다.")
