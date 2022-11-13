@@ -116,8 +116,37 @@ public class Application {
         return numberTypeCheck;
     }
 
-        public static void main(String[] args) {
+    public static void guidePurchasePriceFormat() {
+        System.out.println("구매 금액(원 단위)을 1000의 배수로 입력해 주세요(최대 20억원)");
+    }
+
+    public static void isDividedBy1000(Long purchasePrice) {
+        if(purchasePrice % 1000 != 0)
+            throw new IllegalArgumentException("금액을 1000원 단위로 입력해주세요.");
+    }
+
+    public static void isLargerThan2billion(Long purchasePrice) {
+        if(purchasePrice > 2_000_000_000)
+            throw new IllegalArgumentException("1등 당첨금보다 더 큰 금액으로 복권을 구매할 수 없습니다.");
+    }
+
+    public static int getNoOfLotto() {
+        guidePurchasePriceFormat();
+        String purchasePriceInput = Console.readLine();
+
+        isVoidInput(purchasePriceInput);
+        isInputNumber(purchasePriceInput);
+
+        long purchasePrice = Long.parseLong(purchasePriceInput);
+        isDividedBy1000(purchasePrice);
+        isLargerThan2billion(purchasePrice);
+
+        return (int)(purchasePrice / 1000);
+    }
+
+    public static void main(String[] args) {
         NumberType[] numberTypeCheck = getWinningNumbers();
         numberTypeCheck = getBonusNumber(numberTypeCheck);
+        int noOfLotto = getNoOfLotto();
     }
 }
