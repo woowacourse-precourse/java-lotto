@@ -37,4 +37,10 @@ public class ExceptionHandler {
             throw new IllegalArgumentException(Error.DUPLICATE_NUMBER.getMessage());
         }
     }
+
+    public static void checkOverSize(List<Integer> numbers) throws IllegalArgumentException {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(Error.OVER_SIZE.getMessage());
+        }
+    }
 }
