@@ -2,6 +2,7 @@ package lotto.service;
 
 import java.util.List;
 import java.util.regex.Pattern;
+import lotto.Lotto;
 import lotto.message.Const;
 import lotto.message.ErrorMessage;
 import lotto.util.Util;
@@ -27,9 +28,10 @@ public class LottoGameService {
         }
     }
 
-    public List<Integer> pickWinningNumbers(final String winningNumbers) {
-        validWinningNumbers(winningNumbers);
-        return Util.stringToIntegerList(winningNumbers);
+    public Lotto pickWinningNumbers(final String numbers) {
+        validWinningNumbers(numbers);
+        List<Integer> winningNumbers = Util.stringToIntegerList(numbers);
+        return Lotto.drawLotto(winningNumbers);
     }
 
     private void validWinningNumbers(final String numbers) {

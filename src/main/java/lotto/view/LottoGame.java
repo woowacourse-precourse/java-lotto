@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import lotto.Lotto;
 import lotto.controller.LottoGameController;
 import lotto.message.GameMessage;
 
@@ -10,7 +11,8 @@ public class LottoGame {
     private final LottoGameController lottoGameController;
     private int lottoTicketCount;
     private String userInput;
-    private List<Integer> winningNumbers;
+    private Lotto winningNumbers;
+    private List<Lotto> userLottoTickets;
 
     public LottoGame() {
         this.lottoGameController = new LottoGameController();

@@ -23,7 +23,7 @@ public class LottoGameController {
         }
     }
 
-    public List<Integer> pickWinningNumbers(final String winningNumbers) {
+    public Lotto pickWinningNumbers(final String winningNumbers) {
         return lottoGameService.pickWinningNumbers(winningNumbers);
     }
 }
