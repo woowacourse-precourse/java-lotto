@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.util.number.LottoNumberConst;
 import lotto.util.ranking.LottoRanking;
 
@@ -57,7 +58,8 @@ public class Player {
                 .append(String.format(LOTTO_COUNT_MESSAGE_FORMAT, lottoPurchaseAmount.calculatePurchaseLottoAmount()))
                 .append(LINE_FEED);
 
-        myLottos.forEach(lotto -> playerMessage.append(lotto.toString()).append(LINE_FEED));
+        String myLottosMessage = myLottos.stream().map(Lotto::toString).collect(Collectors.joining(LINE_FEED));
+        playerMessage.append(myLottosMessage);
 
         return playerMessage.toString();
     }
