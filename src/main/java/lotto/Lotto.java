@@ -10,7 +10,8 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        checkOverlap(numbers);
+        DuplicatedNumber(numbers);
+        checkOverRange(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -19,10 +20,15 @@ public class Lotto {
         }
     }
 
-    private void checkOverlap(List<Integer> numbers){
+    private void DuplicatedNumber(List<Integer> numbers){
         Set<Integer> checkNumbers = new HashSet<Integer>(numbers);
         if(checkNumbers.size() != numbers.size()) throw new IllegalArgumentException("[ERROR]");
     }
 
+    private void checkOverRange(List<Integer> numbers){
+        for(int i =0;i<6;i++){
+            if(numbers.get(i) > 46) throw new IllegalArgumentException("[ERROR]");
+        }
+    }
     // TODO: 추가 기능 구현
 }
