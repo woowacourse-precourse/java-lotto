@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.domain.vo.LottoTicketResult;
+
 import java.util.List;
 
 import static lotto.domain.WinningRule.*;
@@ -24,7 +26,7 @@ public class WinningHistory {
         for (LottoTicketResult result : results) {
             WinningRule winningRule = checkWinning(result);
             countWinning(winningRule);
-            winningAmount += winningRule.winningAmount();
+            winningAmount += winningRule.getWinningAmount();
         }
     }
 

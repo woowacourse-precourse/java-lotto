@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.domain.vo.LottoTicketResult;
+
 import java.util.stream.Stream;
 
 public enum WinningRule {
@@ -28,7 +30,7 @@ public enum WinningRule {
                 .orElse(NOT_WINNER);
     }
 
-    public int winningAmount() {
+    public int getWinningAmount() {
         return winningAmount;
     }
 }

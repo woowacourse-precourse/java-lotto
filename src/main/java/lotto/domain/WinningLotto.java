@@ -1,13 +1,15 @@
 package lotto.domain;
 
+import lotto.domain.vo.LottoTicketResult;
 import lotto.utils.ConsoleLog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
+import static java.lang.Integer.parseInt;
+import static java.util.stream.Collectors.toList;
 import static lotto.utils.Constant.ERROR_PREFIX;
 
 public class WinningLotto {
@@ -18,7 +20,7 @@ public class WinningLotto {
 
     public WinningLotto(String numbers, String bonusNumber) {
         List<Integer> refineNumbers = refineNumbers(numbers);
-        int bonus = Integer.parseInt(bonusNumber);
+        int bonus = parseInt(bonusNumber);
         validate(refineNumbers, bonus);
         this.numbers = refineNumbers;
         this.bonusNumber = bonus;
@@ -29,7 +31,7 @@ public class WinningLotto {
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .sorted()
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     public List<LottoTicketResult> confirmWinning(List<Lotto> lottos) {

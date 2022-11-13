@@ -1,7 +1,7 @@
 package lotto.service;
 
 import lotto.domain.Lotto;
-import lotto.domain.LottoTicketResult;
+import lotto.domain.vo.LottoTicketResult;
 import lotto.domain.WinningHistory;
 import lotto.domain.WinningLotto;
 import lotto.view.OutputConsole;
