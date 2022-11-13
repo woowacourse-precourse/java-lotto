@@ -12,6 +12,6 @@ public class ProfitCalculatorTest {
     void 수익률_계산() {
         int pay = 8000;
         int profit = 5000;
-        assertThat(profitCalculator.profitPercent(pay, profit)).isEqualTo("62.5%");
+        assertThat(profitCalculator.profitPercent(pay, profit)).isEqualTo("62.5");
     }
 }
