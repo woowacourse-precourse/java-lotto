@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import lotto.ui.Error;
+import lotto.ui.Ouput;
 
 public class WinnerChecker {
     public int compareLottoNumbers(Lotto purchasedLotto, Lotto winningLotto) {
@@ -54,10 +54,10 @@ public class WinnerChecker {
 
     public void validateBounusNumber(Lotto winningLotto, int bonusNumber) {
         if (bonusNumber > 45 || bonusNumber < 1) {
-            throw new IllegalArgumentException(Error.MUST_BE_NUMBERS_BETWEEN_1_TO_45);
+            throw new IllegalArgumentException(Ouput.MUST_BE_NUMBERS_BETWEEN_1_TO_45_ERROR);
         }
         if (hasBonusNumber(winningLotto, bonusNumber)) {
-            throw new IllegalArgumentException(Error.HAD_DUPLICATE_NUMBER);
+            throw new IllegalArgumentException(Ouput.HAD_DUPLICATE_NUMBER_ERROR);
         }
     }
 }

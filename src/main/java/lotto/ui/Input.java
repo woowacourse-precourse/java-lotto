@@ -12,7 +12,7 @@ public class Input {
             int money = Integer.parseInt(Console.readLine());
             return money;
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(Error.INVAILD_INPUT_VALUE);
+            throw new IllegalArgumentException(Ouput.INVAILD_INPUT_VALUE_ERROR);
         }
     }
 
@@ -26,7 +26,7 @@ public class Input {
             }
             return winningNumbers;
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(Error.INVAILD_INPUT_VALUE);
+            throw new IllegalArgumentException(Ouput.INVAILD_INPUT_VALUE_ERROR);
         }
     }
 
@@ -35,7 +35,7 @@ public class Input {
             int bonusNumber = Integer.parseInt(Console.readLine());
             return bonusNumber;
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(Error.INVAILD_INPUT_VALUE);
+            throw new IllegalArgumentException(Ouput.INVAILD_INPUT_VALUE_ERROR);
         }
     }
 }

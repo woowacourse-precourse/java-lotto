@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.ui.Error;
+import lotto.ui.Ouput;
 
 public class LottoMachine {
     private List<Lotto> lottoTable = new ArrayList<>();
@@ -15,7 +15,7 @@ public class LottoMachine {
 
     public int getAmount(int won) {
         if (won % Lotto.PRICE != 0 || won == 0) {
-            throw new IllegalArgumentException(Error.ENTER_IN_UNITS_OF_1000_WON);
+            throw new IllegalArgumentException(Ouput.ENTER_IN_UNITS_OF_1000_WON_ERROR);
         }
         return won / Lotto.PRICE;
     }

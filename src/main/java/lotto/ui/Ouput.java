@@ -14,6 +14,13 @@ public class Ouput {
     static final String WIN_STATISTICS_NOTICE = "당첨 통계";
     static final String LINE_NOTICE = "---";
 
+    public static final String ERROR = "[ERROR] ";
+    public static final String INVAILD_INPUT_VALUE_ERROR = ERROR + "올바른 입력값이 아닙니다.";
+    public static final String MUST_BE_NUMBERS_BETWEEN_1_TO_45_ERROR = ERROR + "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+    public static final String HAD_DUPLICATE_NUMBER_ERROR = ERROR + "중복된 로또 번호 입니다.";
+    public static final String MUST_BE_SIX_DIGIT_ERROR = ERROR + "로또 번호는 6자리 이어야합니다.";
+    public static final String ENTER_IN_UNITS_OF_1000_WON_ERROR = ERROR + "1000원 단위로 입력해주세요";
+
 
     enum PlaceNotice {
         FIFTH("3개 일치 (5,000원) - %d개" + NEW_LINE),
