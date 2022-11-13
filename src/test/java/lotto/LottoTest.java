@@ -40,6 +40,16 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void InputWinningNumberTest() {
+        /*given*/
+        List<Integer> winningNumberTest = List.of(1,2,3,4,5,6);
+        /*when*/
+        List<Integer> winningNumber = createLotto.winningNumber("1,2,3,4,5,6");
+        /*then*/
+        assertThat(winningNumberTest).isEqualTo(winningNumber);
+    }
+
 
     @Test
     void countTicket() {
