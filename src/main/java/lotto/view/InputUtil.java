@@ -25,13 +25,27 @@ public class InputUtil {
     public List<Integer> inputWinningNumber(){
         System.out.println(INPUT_WINNING_NUMBER.getMessage());
         String input = Console.readLine();
-        return stringArrToIntList(commaSeparation(input));
+        try {
+            List<Integer> winning = stringArrToIntList(commaSeparation(input));
+            checkIsValidWinningNumber(winning);
+            return winning;
+        }catch (IllegalArgumentException e){
+            printErrorMessage(e);
+            return inputWinningNumber();
+        }
     }
 
     public int inputBonusNumber(){
         System.out.println(INPUT_BONUS_NUMBER.getMessage());
         String input = Console.readLine();
-        return Integer.valueOf(input);
+        try {
+            int bonus = Integer.valueOf(input);
+            checkIsValidBonusNumber(bonus);
+            return bonus;
+        }catch (IllegalArgumentException e){
+            printErrorMessage(e);
+            return inputBonusNumber();
+        }
     }
 
     private static void printErrorMessage(IllegalArgumentException e) {
