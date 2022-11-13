@@ -20,7 +20,7 @@ public class PaymentSystem {
         return Integer.parseInt(number);
     }
 
-    public void validateForm(String userInput) {
+    private void validateForm(String userInput) {
         if (!userInput.matches("\\d{1,}")) {
             throw new IllegalArgumentException("[ERROR] 금액은 숫자로 입력해야 합니다.");
         }
