@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.domain.Seller.LOTTO_PRICE;
+
 import lotto.view.Output;
 
 public class Money {
@@ -17,7 +19,7 @@ public class Money {
     }
 
     public int validate(int money) {
-        if (money % 1000 == 0 && money != 0) {
+        if (money % LOTTO_PRICE == 0 && money != 0) {
             return money;
         }
         Output.printExceptionMessage(UNIT_OF_MONEY_ERROR);

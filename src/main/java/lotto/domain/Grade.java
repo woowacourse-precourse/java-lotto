@@ -19,8 +19,8 @@ public enum Grade {
         this.count = count;
     }
 
-    public static Grade of(int hitCount, boolean hasBonusNumber) {
-        if (hitCount == SECOND.count && hasBonusNumber) {
+    public static Grade of(int hitCount, boolean bonusNumber) {
+        if (hitCount == SECOND.count && bonusNumber) {
             return SECOND;
         }
 

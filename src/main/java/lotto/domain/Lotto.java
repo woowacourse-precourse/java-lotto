@@ -10,6 +10,7 @@ public class Lotto {
     private static final String DUPLICATION_NUMBER_EXCEPTION_MESSAGE = "[ERROR] 중복되지 않은 숫자만 입력 가능합니다.";
     public static final int MIN_LOTTO_NUMBER = 1;
     public static final int MAX_LOTTO_NUMBER = 45;
+    public static final int LOTTO_BALL_SIZE = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -19,7 +20,7 @@ public class Lotto {
     }
 
     private void validate(final List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_BALL_SIZE) {
             throw new IllegalArgumentException();
         }
     }
