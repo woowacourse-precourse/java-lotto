@@ -5,10 +5,11 @@
 ### InputView
 
 - [ ] 로또 구입 금액을 입력 받는다. -> inputLotteryPurchaseAmount
-    - [ ] 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. -> isThousandOneUnit
+    - [ ] 입력받은 값이 숫자인지 확인한다.
+
 - [ ] 당첨 번호를 입력받는다. -> inputWinningNumber
-    - [ ] 쉼표를 기준으로 입력받는다. isValidPattern
 - [ ] 보너스 번호를 입력받는다. inputBonusNumber
+    - [ ] 입력받은 값이 숫자인지 확인한다.
 
 ### OutputView
 
@@ -24,12 +25,16 @@
     - [ ] 로또 번호는 오름차순으로 정렬한다.
 - [ ] 당첨내역을 계산한다.
 - [ ] 수익률을 계산한다.
-    
+
 ---
 
 ## Controller
 
 - View에서 값을 받아온다.
+- View에서 받아온 값을 Validate한다.
+    - [ ] 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. -> isThousandOneUnit
+    - [ ] 쉼표를 기준으로 입력받는다. isValidPattern
+
 - View에서 받아온 값을 Service단으로 넘긴다.
 - 가공이 완료된 값을 Service에서 받는다.
 - 가공된 결과값을 View로 넘긴다.
