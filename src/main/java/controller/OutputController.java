@@ -8,9 +8,27 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputController {
-    public HashMap<String,Integer> correctnumber;
+    public HashMap<String,Integer> matchingNumber(List<List<Integer>> lottolist,List<Integer> lottoanswer,int bonusnumber) {
+        HashMap<String,Integer> correctnumber = new HashMap<>();
+        initHashmap(correctnumber);
 
-    public String calCorrectNumber(List<Integer> lottonumber, List<Integer> lottoanswer,int bonusnumber) {
+        for(int i=0; i<lottolist.size(); i++) {
+            String matchingnumber;
+            matchingnumber = calMatchingNumber(lottolist.get(i),lottoanswer,bonusnumber);
+            int eachnum = correctnumber.get(matchingnumber);
+            correctnumber.put(matchingnumber,eachnum+1);
+        }
+        return correctnumber;
+    }
+
+    public void initHashmap(HashMap<String,Integer> correctnumber) {
+        WinNum[] values = WinNum.values();
+        for(int i=0; i< values.length; i++) {
+            correctnumber.put(values[i].toString(),0);
+        }
+    }
+
+    public String calMatchingNumber(List<Integer> lottonumber, List<Integer> lottoanswer,int bonusnumber) {
         String correctnumber;
         lottonumber.retainAll(lottoanswer);
 
@@ -30,5 +48,4 @@ public class OutputController {
         }
         return WinNum.Nothing.toString();
     }
-
 }
