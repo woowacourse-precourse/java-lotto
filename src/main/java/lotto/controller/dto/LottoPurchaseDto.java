@@ -9,12 +9,10 @@ import lotto.domain.Lotto;
 public class LottoPurchaseDto {
 
     private static final int LOTTO_BASIC_AMOUNT = 1000;
-    private final int purchaseNumbers;
     private final List<Lotto> lottos;
 
     public LottoPurchaseDto(int paymentAmount) {
-        this.purchaseNumbers = validDivision(paymentAmount);
-        this.lottos = purchaseLottos(purchaseNumbers);
+        this.lottos = purchaseLottos(validDivision(paymentAmount));
     }
 
     private List<Lotto> purchaseLottos(int purchaseNumbers) {
@@ -34,10 +32,6 @@ public class LottoPurchaseDto {
             throw new IllegalArgumentException("[ERROR] 지불금액이 1000으로 나누어 떨어지지 않습니다.");
         }
         return paymentAmount / LOTTO_BASIC_AMOUNT;
-    }
-
-    public int getPurchaseNumbers() {
-        return this.purchaseNumbers;
     }
 
     public List<Lotto> getLottos() {
