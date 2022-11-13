@@ -1,4 +1,4 @@
-package lotto.YieldMachine;
+package YieldMachine;
 
 public enum Reward {
     FIRST("2,000,000,000원"),

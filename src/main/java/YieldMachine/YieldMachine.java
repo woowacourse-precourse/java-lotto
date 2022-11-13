@@ -1,6 +1,6 @@
-package lotto.YieldMachine;
+package YieldMachine;
 
-import lotto.User.User;
+import User.User;
 import lotto.WinningNumberLotto;
 
 import java.util.List;

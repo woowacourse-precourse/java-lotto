@@ -1,4 +1,4 @@
-package lotto.User;
+package User;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.BoughtLotto;
