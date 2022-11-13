@@ -1,7 +1,8 @@
-package lotto.controller;
+package lotto.domain;
 
-import lotto.Lotto;
-import lotto.service.Service;
+import lotto.model.Check;
+import lotto.model.Lotto;
+import lotto.model.Rank;
 
 import java.util.List;
 
@@ -18,13 +19,15 @@ public class Controller {
         String[] jackpotNumArr = Service.getJackpotNumberToArr(jackpotNum);
         int bonusNum = Service.getBonusNumber();
 
+        Rank rank = new Rank(0,0,0,0,0);
+
         for(int i = 0; i < lottoList.size(); i++) {
             List<Integer> temp = lottoList.get(i);
-            Service.checkLotto(temp, jackpotNumArr, bonusNum);
-            Service.checkRank();
+            List<Check> checkList = Service.checkLotto(temp, jackpotNumArr, bonusNum);
+            Service.checkRank(checkList, rank);
         }
 
-        int winningPrice = Service.getWinningPrice();
+        int winningPrice = Service.getWinningPrice(rank);
         Service.getEarningsRate(winningPrice, money);
     }
 }

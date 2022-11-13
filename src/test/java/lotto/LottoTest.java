@@ -1,8 +1,10 @@
 package lotto;
 
-import lotto.exception.Exception;
-import lotto.rank.Rank;
-import lotto.service.Service;
+import lotto.global.Exception;
+import lotto.model.Check;
+import lotto.model.Rank;
+import lotto.model.Lotto;
+import lotto.domain.Service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -68,21 +70,24 @@ class LottoTest {
     void checkLottoNumber() {
         List<Integer> lotto = List.of(1,2,3,4,5,7);
         String[] jackpotArr = new String[]{"1","2","3","4","5","6"};
+        Check check = new Check(0, false);
         int bonusNum = 7;
-        Service.checkLotto(lotto, jackpotArr, bonusNum);
-        assertThat(Rank.getBonus()).isTrue();
+        List<Check> checkList = Service.checkLotto(lotto, jackpotArr, bonusNum);
+        assertThat(checkList.get(0).getBonus()).isTrue();
     }
 
     @DisplayName("당첨번호와 맞는 숫자가 5개, 보너스번호를 맞췄을 때 2등 횟수 1카운트")
     @Test
     void checkRank() {
-        List<Integer> lotto = List.of(1,2,3,4,5,7);
-        String[] jackpotArr = new String[]{"1","2","3","4","5","6"};
+        List<Integer> lotto = List.of(1, 2, 3, 4, 5, 7);
+        String[] jackpotArr = new String[]{"1", "2", "3", "4", "5", "6"};
         int bonusNum = 7;
-        Service.checkLotto(lotto, jackpotArr, bonusNum);
-        Service.checkRank();
-        assertThat(Rank.getSecond()).isEqualTo(1);
+        Rank rank = new Rank(0, 0, 0, 0, 0);
+        List<Check> checkList = Service.checkLotto(lotto, jackpotArr, bonusNum);
+        Service.checkRank(checkList, rank);
+        assertThat(rank.getSecond()).isEqualTo(1);
     }
+
 
     @DisplayName("당첨금액의 총액이 일치하는지 테스트")
     @Test
@@ -90,9 +95,10 @@ class LottoTest {
         List<Integer> lotto = List.of(1,2,3,4,5,7);
         String[] jackpotArr = new String[]{"1","2","3","4","5","6"};
         int bonusNum = 7;
-        Service.checkLotto(lotto, jackpotArr, bonusNum);
-        Service.checkRank();
-        int winning = Service.getWinningPrice();
+        Rank rank = new Rank(0,0,0,0,0);
+        List<Check> checkList = Service.checkLotto(lotto, jackpotArr, bonusNum);
+        Service.checkRank(checkList, rank);
+        int winning = Service.getWinningPrice(rank);
         assertThat(winning).isEqualTo(30000000);
     }
 

@@ -1,13 +1,13 @@
-package lotto.service;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
-import lotto.exception.Exception;
-import lotto.rank.Rank;
+import lotto.model.Check;
+import lotto.model.Lotto;
+import lotto.global.Exception;
+import lotto.model.Rank;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Service {
@@ -71,50 +71,56 @@ public class Service {
         return temp;
     }
 
-    public static void checkLotto(List<Integer> lotto, String[] jackpotNum, int bonusNum) {
+    public static List<Check> checkLotto(List<Integer> lotto, String[] jackpotNum, int bonusNum) {
+        List<Check> list = new ArrayList<>();
+        Check check = new Check(0, false);
         for(int i = 0; i < jackpotNum.length; i++) {
             int number = Integer.parseInt(jackpotNum[i]);
             if(lotto.contains(number)) {
-                Rank.addCount();
+                check.addCount();
             }
             if(lotto.contains(bonusNum)) {
-                Rank.addBonus();
+                check.isBonus();
             }
         }
+        list.add(check);
+        return list;
     }
 
-    public static void checkRank() {
-        int count = Rank.getCount();
-        boolean bonus = Rank.getBonus();
-        if(count == 3) {
-            Rank.addFifth();
-        }
-        if(count == 4) {
-            Rank.addFourth();
-        }
-        if(count == 5) {
-            if(bonus) {
-                Rank.addSecond();
+    public static Rank checkRank(List<Check> checkList, Rank rank) {
+        for(int i = 0; i < checkList.size(); i++) {
+
+            int count = checkList.get(i).getCount();
+            boolean bonus = checkList.get(i).getBonus();
+            if (count == 3) {
+                rank.addFifth();
             }
-            if(!bonus) {
-                Rank.addThird();
+            if (count == 4) {
+                rank.addFourth();
+            }
+            if (count == 5) {
+                if (bonus) {
+                    rank.addSecond();
+                }
+                if (!bonus) {
+                    rank.addThird();
+                }
+            }
+            if (count == 6) {
+                rank.addFirst();
             }
         }
-        if(count == 6) {
-            Rank.addFirst();
-        }
-        Rank.initCount();
+        return rank;
     }
 
-    public static int getWinningPrice() {
-        int fifth = Rank.getFifth();
-        int fourth = Rank.getFourth();
-        int third = Rank.getThird();
-        int second = Rank.getSecond();
-        int first = Rank.getFirst();
+    public static int getWinningPrice(Rank rank) {
+        int fifth = rank.getFifth();
+        int fourth = rank.getFourth();
+        int third = rank.getThird();
+        int second = rank.getSecond();
+        int first = rank.getFirst();
         int winningPrice = (fifth * 5000) + (fourth * 50000) + (third * 1500000)
                 + (second * 30000000) + (first * 2000000000);
-        Rank.initParam();
 
         System.out.println("당첨 통계");
         System.out.println("---");
