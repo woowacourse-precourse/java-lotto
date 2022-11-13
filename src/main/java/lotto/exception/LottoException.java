@@ -1,6 +1,8 @@
 package lotto.exception;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LottoException {
     private static final String ERROR_MESSAGE = "[ERROR] ";
@@ -13,5 +15,13 @@ public class LottoException {
     private boolean isAccurateSize(List<Integer> numbers) {
         if(numbers.size() != 6) return false;
         return true;
+    }
+
+    private boolean hasDuplication(List<Integer> numbers) {
+        Set<Integer> stack = new HashSet<>();
+        for (Integer number : numbers) {
+            if(!stack.add(number)) return true;
+        }
+        return false;
     }
 }
