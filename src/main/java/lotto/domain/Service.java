@@ -55,16 +55,15 @@ public class Service {
 
     public static String[] getJackpotNumberToArr(String jackpotNumber) {
         String[] jackpotArr = jackpotNumber.split(",");
-        LogicException.verifyJackpotNum(jackpotArr);
 
         return jackpotArr;
     }
 
-    public static int getBonusNumber() {
+    public static int getBonusNumber(String[] jackpotArr) {
         Output.outputBonusNumber();
         int bonusNum = Input.inputBonusNumber();
         LogicException.verifyBonusNum(bonusNum);
-        
+        LogicException.verifyBonusNumAndJackpot(jackpotArr, bonusNum);
         return bonusNum;
     }
 

@@ -111,20 +111,21 @@ class LottoTest {
         assertThat(Service.getEarningsRate(winningPrice, money)).isEqualTo(3000000.0);
     }
 
-    @DisplayName("당첨번호 배열의 길이는 6이어야 한다")
-    @Test
-    void checkJackpot() {
-        String jackpotNum = "1,2,3,4,5";
-        String[] jackpotNumArr = Service.getJackpotNumberToArr(jackpotNum);
-        assertThatThrownBy(() -> LogicException.verifyJackpotNum(jackpotNumArr))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @DisplayName("보너스 번호는 1부터 45까지여야 한다")
     @Test
     void checkBonusNum() {
         int bonusNum = 0;
         assertThatThrownBy(() -> LogicException.verifyBonusNum(bonusNum))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호는 당첨번호에 포함되지 않아야 한다")
+    @Test
+    void checkBonusNumAndJackpotNum() {
+        String jackpotNum = "1,2,3,4,5,6";
+        String[] jackpotNumArr = Service.getJackpotNumberToArr(jackpotNum);
+        int bonusNum = 6;
+        assertThatThrownBy(() -> LogicException.verifyBonusNumAndJackpot(jackpotNumArr, bonusNum))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -27,15 +27,18 @@ public class LogicException {
         }
     }
 
-    public static void verifyJackpotNum(String[] jackpotNumArr) {
-        if(jackpotNumArr.length != 6) {
+    public static void verifyBonusNum(int bonusNum) {
+        if(bonusNum < 1 || bonusNum > 45) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void verifyBonusNum(int bonusNum) {
-        if(bonusNum < 1 || bonusNum > 45) {
-            throw new IllegalArgumentException();
+    public static void verifyBonusNumAndJackpot(String[] jackpotNumArr, int bonusNum) {
+        for(int i = 0; i < jackpotNumArr.length; i++) {
+            int jackpotNum = Integer.parseInt(jackpotNumArr[i]);
+            if(jackpotNum == bonusNum) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }

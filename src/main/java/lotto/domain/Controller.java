@@ -17,7 +17,7 @@ public class Controller {
         List<List<Integer>> lottoList = Service.getLottoList(lotto);
         String jackpotNum = Service.getJackpotNumber();
         String[] jackpotNumArr = Service.getJackpotNumberToArr(jackpotNum);
-        int bonusNum = Service.getBonusNumber();
+        int bonusNum = Service.getBonusNumber(jackpotNumArr);
 
         Rank rank = new Rank(0,0,0,0,0);
 
