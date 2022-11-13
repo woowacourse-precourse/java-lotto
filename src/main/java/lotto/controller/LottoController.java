@@ -14,7 +14,7 @@ public class LottoController {
     public void buyLotto() {
         inputView.printHowMuch();
         inputLotto.inputMoney();
-        lottoData = new LottoData(inputLotto.money);
+        lottoData = inputLotto.makeLottoData();
         outputView.printPurchaseAmount(lottoData.lottoAmount);
         lottoData.makeLotto();
         outputView.printPurchaseLottoNumbers(lottoData.allLotto);
@@ -22,10 +22,10 @@ public class LottoController {
 
     public void checkLottoResult() {
         inputView.printInputWinNumbers();
-        inputLotto.inputWinNumber();
+        inputLotto.inputWinNumber(lottoData);
         inputView.printInputBonusNumber();
-        inputLotto.inputBonusNumber(inputLotto.winNumbers);
-        lottoData.putDataToLotto(inputLotto.winNumbers, inputLotto.bonusNumber);
+        inputLotto.inputBonusNumber(lottoData, lottoData.winNumbers);
+        lottoData.putDataToLotto(lottoData.winNumbers, lottoData.bonusNumber);
         outputView.printPrize(lottoData.prize);
         outputView.printPercentageOfReturn(lottoData.percentageOfReturn());
     }

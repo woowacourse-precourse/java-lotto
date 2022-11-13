@@ -6,9 +6,7 @@ import java.util.List;
 import lotto.ErrorControl;
 
 public class InputLotto {
-    public double money;
-    public List<Integer> winNumbers;
-    public int bonusNumber;
+    private double money;
     ErrorControl errorControl = new ErrorControl();
 
     public void inputMoney() {
@@ -17,9 +15,14 @@ public class InputLotto {
         money = errorControl.validateDivideThousand(Double.parseDouble(input));
     }
 
-    public void inputWinNumber() {
+    public LottoData makeLottoData() {
+        return new LottoData(money);
+    }
+
+    public void inputWinNumber(LottoData lottoData) {
         String input = Console.readLine();
-        winNumbers = convertToWinNumbers(input);
+        List<Integer> winNumbers = convertToWinNumbers(input);
+        lottoData.saveWinNumbers(winNumbers);
     }
 
     List<Integer> convertToWinNumbers(String input) {
@@ -34,9 +37,10 @@ public class InputLotto {
         return winNumbers;
     }
 
-    public void inputBonusNumber(List<Integer> winNumbers) {
+    public void inputBonusNumber(LottoData lottoData, List<Integer> winNumbers) {
         String input = Console.readLine();
-        bonusNumber = convertToBonusNumber(input, winNumbers);
+        int bonusNumber = convertToBonusNumber(input, winNumbers);
+        lottoData.saveBonusNumber(bonusNumber);
     }
 
     int convertToBonusNumber(String input, List<Integer> winNumbers) {

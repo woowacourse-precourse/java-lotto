@@ -10,13 +10,17 @@ import java.util.stream.Collectors;
 import lotto.model.LottoCalculate.LottoPrizeMoneyMatchCount;
 
 public class LottoData {
+    public double money;
+    public int bonusNumber;
     public int lottoAmount;
     public double prizeMoneySum;
-    public Map<Integer, Integer> prize;
+    public List<Integer> winNumbers;
     public List<Lotto> allLotto;
+    public Map<Integer, Integer> prize;
     LottoCalculate lottoCalculate = new LottoCalculate();
 
     public LottoData(double money) {
+        this.money = money;
         this.lottoAmount = (int) (money / 1000);
         allLotto = new ArrayList<>(lottoAmount);
         prize = new HashMap<>();
@@ -55,6 +59,14 @@ public class LottoData {
     }
 
     public double percentageOfReturn() {
-        return lottoCalculate.calculatePercentageOfReturn(lottoAmount * 1000.0, prizeMoneySum);
+        return lottoCalculate.calculatePercentageOfReturn(money, prizeMoneySum);
+    }
+
+    void saveWinNumbers(List<Integer> winNumbers) {
+        this.winNumbers = winNumbers;
+    }
+
+    void saveBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 }
