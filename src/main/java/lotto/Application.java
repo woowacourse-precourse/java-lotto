@@ -4,12 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> numbers;
+        List<List<Integer>> numbers = new ArrayList<>();
         System.out.println("로또 프로그램입니다. \n금액을 입력해 주세요");
         String purchase = Console.readLine();           // 구매 금액
 
@@ -25,11 +26,12 @@ public class Application {
 
         for(int i=0; i<amount; i++){
             // 로또 번호 생성
-            numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);     // 오름차순 정렬
+            numbers.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        }
 
-            Lotto purchasedLotto = new Lotto(numbers);
-            System.out.println(purchasedLotto.getNumbers());
+        for(int i=0; i<numbers.size(); i++){
+            Collections.sort(numbers.get(i));     // 오름차순 정렬
+            System.out.println(numbers.get(i));
         }
 
         // 당첨 번호 입력(콤마로 구분)
@@ -37,13 +39,19 @@ public class Application {
         String winningNumber = Console.readLine();
 
         List<String> winnings = List.of(winningNumber.split(","));
+        List<Integer> win = new ArrayList<>();
 
-        numbers = new ArrayList<>();
         for(int i=0; i<winnings.size(); i++){
-            numbers.add(Integer.parseInt(winnings.get(i)));
+            win.add(Integer.parseInt(winnings.get(i)));
         }
-        Lotto win = new Lotto(numbers);
-        System.out.println(win.getNumbers());
+
+        Lotto winLotto = new Lotto(win);
+        System.out.println(winLotto.getNumbers());
+
+        // 보너스 번호
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumber = Console.readLine();
+
     }
 
     // 구매 금액이 유효한지 확인하고 리턴
