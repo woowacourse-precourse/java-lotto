@@ -38,4 +38,8 @@ public class OutputView {
             System.out.println(rank + "-" + winLottoInfo.get(rank) + "개");
         }
     }
+
+    public static void printYieldResult(long lottoYield) {
+        System.out.println("총 수익률은 " + lottoYield + "%입니다.");
+    }
 }
