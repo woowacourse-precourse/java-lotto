@@ -84,7 +84,7 @@ class LottoTest {
 
     }
 
-    @DisplayName("두 리스트의 중복된 개수를 찾을 수 있다.")
+    @DisplayName("리스트의 중복된 개수를 찾을 수 있다.")
     @Test
     void countDuplcation() {
         List<Integer> gather = new ArrayList<>(Arrays.asList(1,2,3,6,8,10,2,4,6,9,30,45));
@@ -96,5 +96,18 @@ class LottoTest {
 
     }
 
+    @DisplayName("두 리스트를 합칠 수 있다.")
+    @Test
+    void gatherTwoLists() {
+        List<Integer> userNumber = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        List<Integer> winNumber = new ArrayList<>(Arrays.asList(7,8,9,10,5,6));
 
+        List<Integer> gatherList = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10,5,6));
+
+
+        CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
+
+        assertEquals(compareHowManyCorrect.gatherTwoLists(userNumber,winNumber),gatherList);
+
+    }
 }
