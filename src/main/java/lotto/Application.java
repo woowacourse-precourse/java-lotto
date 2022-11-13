@@ -94,18 +94,6 @@ public class Application {
 
 
     }
-
-    public static boolean inputPayException(String checkPay){
-
-        char[] check = checkPay.toCharArray();
-
-        for(int i=0;i<check.length;i++) {
-            if (!Character.isDigit(check[i])) {
-                return true;
-            }
-        }
-        return false;
-    }
     public static void buyException(int pay){
         if(pay%1000!=0)
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.");
@@ -133,7 +121,6 @@ public class Application {
     public static void getLottoNumber(int tickets) {
         for (int i = 0; i < tickets; i++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//            Collections.sort(lottoNumbers);
             allLottoNumbers.add(lottoNumbers);
         }
     }
@@ -151,20 +138,8 @@ public class Application {
             winningNumber.add(Integer.parseInt(processNumber[i]));
         }
         Collections.sort(winningNumber);
-        inputWinningNumberException();
-    }
 
-    public static void inputWinningNumberException(){
-        for(int i=0;i<winningNumber.size();i++){
-            if(winningNumber.get(i)<1||winningNumber.get(i)>45)
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-        }
-        for(int i=0;i<winningNumber.size()-1;i++){
-            if(winningNumber.get(i)==winningNumber.get(i+1))
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복 되어서는 안됩니다.");
-        }
     }
-
     public static void inputNumberException(String[] processNumber){
         for(int i=0;i<processNumber.length;i++){
             for(int j=0;j<processNumber[i].length();j++){
