@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+import lotto.Constants.REGEX;
 import lotto.domain.Buyer;
 import lotto.domain.Generator;
 import lotto.domain.Lotto;
@@ -20,7 +21,7 @@ public class LottoProgram {
     public static void init() throws IllegalArgumentException {
         System.out.println("구입금액을 입력해 주세요.");
         String purchaseAmout = Console.readLine();
-        String purchaseRegex = "^[1-9]*000$";
+        String purchaseRegex = REGEX.PAYMENT;
         if (!Pattern.matches(purchaseRegex, purchaseAmout)) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요");
         }
@@ -36,8 +37,7 @@ public class LottoProgram {
         System.out.println("당첨 번호를 입력해주세요.");
         String winningNumbers = Console.readLine();
 
-        String winningNumberRegex = "^([1-9]{1},{1}|[1-3]{1}[0-9]{1},{1}|4{1}[0-5]{1},{1}){5}"
-                + "([1-9]{1}|[1-3]{1}[0-9]{1}|4{1}[0-5]{1})$";
+        String winningNumberRegex = REGEX.WINNING_NUMBERS;
         if (!Pattern.matches(winningNumberRegex, winningNumbers)) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 1-45사이의 숫자를 콤마로 구분하여 입력해주세요.");
         }
@@ -53,7 +53,7 @@ public class LottoProgram {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
-        String bonusNumberRegex = "^[1-9]{1}|[1-3]{1}[0-9]{1}|4{1}[0-5]{1}$";
+        String bonusNumberRegex = REGEX.BONUS_NUMBER;
         if (!Pattern.matches(bonusNumberRegex, bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1-45사이의 숫자여야 합니다.");
         }
