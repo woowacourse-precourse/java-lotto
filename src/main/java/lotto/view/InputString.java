@@ -25,14 +25,14 @@ public enum InputString {
     NO_NUMBER_INPUT {
         @Override
         public String toString(){
-            return "숫자만 입력해주세요.";
+            return "[ERROR] 숫자만 입력해주세요.";
         }
     },
 
     NO_NUMBER_AND_COMMA_INPUT {
         @Override
         public String toString(){
-            return "숫자와 콤마만 입력해주세요.";
+            return "[ERROR] 숫자와 콤마만 입력해주세요.";
         }
     }
 
