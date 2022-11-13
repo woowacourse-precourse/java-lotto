@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -48,5 +49,22 @@ class LottoTest {
         assertThat(lottoNumbers.stream().distinct().count()).isEqualTo(6);
         assertThat(lottoNumbers.stream().allMatch(number -> 1 <= number && number <= 45)).isTrue();
 
+    }
+
+    @DisplayName("오름차순으로 정렬된 로또 번호가 생성된다.")
+    @Test
+    void createLottoWithAscendingOrder() {
+        // given
+        List<Integer> randomNumbers = Arrays.asList(6, 5, 4, 3, 2, 1);
+
+        // when
+        Lotto lotto = new Lotto(randomNumbers);
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        // then
+        assertThat(lottoNumbers.size()).isEqualTo(6);
+        assertThat(lottoNumbers.stream().distinct().count()).isEqualTo(6);
+        assertThat(lottoNumbers.stream().allMatch(number -> 1 <= number && number <= 45)).isTrue();
+        assertThat(lottoNumbers).containsExactly(1, 2, 3, 4, 5, 6);
     }
 }
