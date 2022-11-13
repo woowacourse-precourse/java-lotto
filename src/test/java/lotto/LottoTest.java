@@ -3,8 +3,11 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -44,5 +47,33 @@ class LottoTest {
         //When
         assertThatThrownBy(() -> lotto.setLottoBonusNumber(46))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("모든 숫자가 일치할 때")
+    @Test
+    void countAllNumbers() throws Exception {
+        //Given
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        lotto.setLottoBonusNumber(7);
+
+        //When
+        int matchCount = lotto.getMatchCountWithLotto(List.of(6, 5, 4, 3, 2, 1));
+
+        //Then
+        assertThat(matchCount).isEqualTo(6);
+    }
+
+    @DisplayName("하나도 일치하지 않을 때")
+    @Test
+    void countNoNumbers() throws Exception {
+        //Given
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        lotto.setLottoBonusNumber(7);
+
+        //When
+        int matchCount = lotto.getMatchCountWithLotto(List.of(9, 10, 11, 12, 13, 14));
+
+        //Then
+        assertThat(matchCount).isEqualTo(0);
     }
 }
