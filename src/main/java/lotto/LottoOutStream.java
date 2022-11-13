@@ -1,6 +1,7 @@
 package lotto;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class LottoOutStream {
@@ -14,7 +15,10 @@ public class LottoOutStream {
     }
 
     public static void showRateOfReturn(BigDecimal rateOfReturn) {
-        System.out.print("총 수익률은 " + rateOfReturn + "%입니다.");
+        DecimalFormat df = new DecimalFormat("###,##0.0");
+        String format = df.format(rateOfReturn);
+
+        System.out.print("총 수익률은 " + format + "%입니다.");
     }
 
     public static void showLottoList(List<Lotto> lottoes) {
