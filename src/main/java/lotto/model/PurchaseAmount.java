@@ -21,4 +21,8 @@ public class PurchaseAmount {
     public int getNumberOfLottos() {
         return amount / Lotto.PRICE;
     }
+
+    public double calculateProfitRate(int winningAmount) {
+        return (double) winningAmount / amount * 100;
+    }
 }

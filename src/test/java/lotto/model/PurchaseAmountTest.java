@@ -34,6 +34,6 @@ class PurchaseAmountTest {
     void 로또_당첨금액으로_수익률_계산_기능() {
         PurchaseAmount purchaseAmount = new PurchaseAmount(4000);
         assertThat(purchaseAmount.calculateProfitRate(2000)).isEqualTo(50D);
-        assertThat(purchaseAmount.calculateProfitRate(4000000)).isEqualTo(100000D);
+        assertThat(purchaseAmount.calculateProfitRate(2500)).isEqualTo(62.5);
     }
 }
