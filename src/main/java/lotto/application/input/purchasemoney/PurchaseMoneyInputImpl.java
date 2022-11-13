@@ -22,6 +22,6 @@ public class PurchaseMoneyInputImpl implements PurchaseMoneyInput {
         }
         System.out.printf("\n%d개를 구매했습니다.\n", inputValue / 1000);
 
-        return inputValue / 1000;
+        return inputValue;
     }
 }
