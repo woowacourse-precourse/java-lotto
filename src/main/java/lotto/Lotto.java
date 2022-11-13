@@ -37,15 +37,27 @@ public class Lotto {
         if (Count==6) return 4;
         return -1;
     }
+    public enum AmountValue{
+        Five(5000),
+        Forth(50000),
+        Three(1500000),
+        Two(30000000),
+        One(2000000000);
+
+        private final int Money;
+        AmountValue(int value) {
+            this.Money = value;
+        }
+    }
 
     public int PrintResult(List<Integer> Result){
         int SumValue = 0;
         String[] amount = {" (5,000원)"," (50,000원)"," (1,500,000원)",", 보너스 볼 일치 (30,000,000원)"," (2,000,000,000원)"};
-        int[] intamount = {5000,50000,1500000,30000000,2000000000};
+        AmountValue[] values = AmountValue.values();
         for (int i=0;i<Result.size();i++) {
             if (i>=3) System.out.printf("%d개 일치%s - %d개\n",i+2,amount[i],Result.get(i));
             else System.out.printf("%d개 일치%s - %d개\n",i+3,amount[i],Result.get(i));
-            SumValue+=intamount[i]*(int)Result.get(i);
+            SumValue+=values[0].Money*(int)Result.get(i);
         }
         return SumValue;
     }
