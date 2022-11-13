@@ -2,8 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,8 +13,10 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        //sort(generated)
-        this.numbers = numbers;
+        List<Integer> sorted = new ArrayList<>(numbers);
+        Collections.sort(sorted);
+        System.out.println(sorted);
+        this.numbers = sorted;
     }
 
     private void validate(List<Integer> numbers) {

@@ -6,7 +6,6 @@ public class Application {
     public static void main(String[] args) {
         Integer ticketsNumber = User.askTicketsNumber();
         List<Lotto> lottos = User.buy(ticketsNumber);
-        // User.printLottos(lottos);
 
         List<Integer> numbers = User.askWinNumbers();
         Lotto winNumbers = new Lotto(numbers);

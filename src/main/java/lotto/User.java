@@ -36,6 +36,9 @@ public class User {
 
     public static List<Lotto> buy(Integer tickets) {
         List<Lotto> lottos = new ArrayList<>();
+
+        System.out.println(tickets + "개를 구매했습니다.");
+
         for (int i = 0; i < tickets; i++) {
             List<Integer> generated = Lotto.generate();
             Lotto lotto = new Lotto(generated);
