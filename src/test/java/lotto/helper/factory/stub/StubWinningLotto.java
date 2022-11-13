@@ -17,6 +17,11 @@ public class StubWinningLotto extends Lotto {
 
     @Override
     public LottoRanking calculateLottoGrade(Lotto playerLotto, LottoNumber bonusNumber) {
-        return returnLottoRanking.get(returnIndex++);
+        if (returnIndex < returnLottoRanking.size()) {
+            return returnLottoRanking.get(returnIndex++);
+        }
+        return LottoRanking.RANKING_NOTHING;
     }
+
+
 }

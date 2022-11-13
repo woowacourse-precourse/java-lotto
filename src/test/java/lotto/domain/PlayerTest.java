@@ -3,11 +3,8 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import lotto.helper.factory.stub.StubWinningLotto;
-import lotto.helper.util.LottoResultTestUtils;
 import lotto.helper.util.PlayerTestUtils;
 import lotto.util.number.LottoNumberFactory;
 import lotto.util.ranking.LottoRanking;
@@ -53,18 +50,13 @@ class PlayerTest {
         @ParameterizedTest
         @MethodSource("lotto.domain.argument.PlayerTestArgument#calculateLottoGradeArgument")
         @DisplayName("만약 당첨 번호와 보너스 번호와 LottoResult가 주어지면 LottoResult에 당첨 결과를 계산한다.")
-        void success_test(List<LottoRanking> rankings, String amountInput, Map<LottoRanking, Integer> expectedMap) {
-            LottoResult lottoResult = new LottoResult();
-            Player player = new Player(new LottoPurchaseAmount(amountInput));
+        void success_test(List<LottoRanking> rankings, String amountInput) {
+            Player player = new Player(new LottoPurchaseAmount("2000"));
+            Lotto winningLotto = new StubWinningLotto(rankings);
 
-            player.calculateLottoRanking(lottoResult, new StubWinningLotto(rankings), dummyBonusNumber);
+            List<LottoRanking> actualRankings = player.calculateLottoRanking(winningLotto, dummyBonusNumber);
 
-            Map<LottoRanking, Integer> actualMap = LottoResultTestUtils.findLottoRankingResult(lottoResult);
-
-            Arrays.stream(LottoRanking.values())
-                    .forEach(lottoRanking ->
-                            assertThat(actualMap.getOrDefault(lottoRanking, 0))
-                                    .isSameAs(expectedMap.get(lottoRanking)));
+            actualRankings.forEach(ranking -> assertThat(rankings).contains(ranking));
         }
     }
 

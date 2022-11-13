@@ -3,95 +3,46 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
-import java.util.EnumMap;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
-import lotto.helper.factory.LottoResultTestFactory;
+import lotto.helper.factory.stub.StubWinningLotto;
 import lotto.helper.util.LottoResultTestUtils;
+import lotto.util.number.LottoNumberFactory;
 import lotto.util.ranking.LottoRanking;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class LottoResultTest {
 
-    @Nested
-    @DisplayName("addRankingCount 메소드는")
-    class AddRankCountMethodTest {
-
-        private static final int ADD_VALUE = 1;
-
-        @ParameterizedTest
-        @EnumSource(
-                names = {
-                    "RANKING_FIRST",
-                    "RANKING_SECOND",
-                    "RANKING_THIRD",
-                    "RANKING_FOURTH",
-                    "RANKING_FIFTH",
-                    "RANKING_NOTHING"
-                }
-        )
-        @DisplayName("만약 해당 등수의 당첨 횟수가 존재하지 않는다면 해당 등수의 당첨 횟수을 1로 초기화한다.")
-        void default_init_count_test(LottoRanking lottoRanking) {
-            LottoResult lottoResult = new LottoResult();
-            lottoResult.addRankingCount(lottoRanking);
-
-            Map<LottoRanking, Integer> lottoRankingResult = LottoResultTestUtils.findLottoRankingResult(lottoResult);
-
-            assertThat(lottoRankingResult.get(lottoRanking)).isSameAs(ADD_VALUE);
-        }
-
-        @ParameterizedTest
-        @CsvSource(
-                value = {
-                    "RANKING_FIRST:1",
-                    "RANKING_SECOND:3",
-                    "RANKING_THIRD:5",
-                    "RANKING_FOURTH:7",
-                    "RANKING_FIFTH:9"
-                },
-                delimiter = ':'
-        )
-        @DisplayName("만약 해당 등수의 당첨 횟수가 존재한다면 기존 당첨 횟수에 1을 더한다.")
-        void add_ranking_count_test(LottoRanking lottoRanking, int numberOfWins) {
-            Map<LottoRanking, Integer> lottoRankingMap = new EnumMap<>(LottoRanking.class);
-            lottoRankingMap.put(lottoRanking, numberOfWins);
-            LottoResult lottoResult = LottoResultTestFactory.lottoRankingResultOf(lottoRankingMap);
-
-            lottoResult.addRankingCount(lottoRanking);
-            Map<LottoRanking, Integer> lottoRankingResult = LottoResultTestUtils.findLottoRankingResult(lottoResult);
-
-            assertThat(lottoRankingResult.get(lottoRanking)).isSameAs(numberOfWins + ADD_VALUE);
-        }
-    }
+    private final LottoNumber dummyBonusNumber = LottoNumberFactory.numberOf(1);
 
     @Nested
-    @DisplayName("calculateTotalReward 메소드는")
-    class CalculateTotalRewardMethodTest {
+    @DisplayName("Player player, Lotto winningLotto, LottoNumber bonusNumber를 매개변수로 받는 생성자는")
+    class PlayerLottoLottoNumberConstructorTest {
 
         @ParameterizedTest
-        @CsvSource(
-                value = {
-                    "RANKING_FIRST:1",
-                    "RANKING_SECOND:3",
-                    "RANKING_THIRD:5",
-                    "RANKING_FOURTH:7",
-                    "RANKING_FIFTH:9"
-                },
-                delimiter = ':'
-        )
-        @DisplayName("만약 호출되면 당첨 등수의 모든 상금 합을 계산해 반환한다.")
-        void test(LottoRanking lottoRanking, int numberOfWins) {
-            Map<LottoRanking, Integer> lottoRankingMap = new EnumMap<>(LottoRanking.class);
-            lottoRankingMap.put(lottoRanking, numberOfWins);
-            LottoResult lottoResult = LottoResultTestFactory.lottoRankingResultOf(lottoRankingMap);
+        @MethodSource("lotto.domain.argument.LottoResultTestArgument#lottoResultConstructorTestArgument")
+        @DisplayName("만약 player, winningLotto, bonusNumber를 입력하면 로또 당첨 등수와 수익률을 계산해 LottoResult로 반환한다.")
+        void success_test(String amountInput,
+                List<LottoRanking> rankings, Map<LottoRanking, Integer> expectedRankingResult, String revenuePercent) {
+            Player player = new Player(new LottoPurchaseAmount(amountInput));
+            StubWinningLotto winningLotto = new StubWinningLotto(rankings);
 
-            BigDecimal totalReward = lottoResult.calculateTotalReward();
+            LottoResult lottoResult = new LottoResult(player, winningLotto, dummyBonusNumber);
 
-            assertThat(totalReward).isEqualTo(lottoRanking.calculateTotalTargetLottoRankingReward(numberOfWins));
+            Map<LottoRanking, Integer> actualRankingResult = LottoResultTestUtils.findLottoRankingResult(lottoResult);
+            BigDecimal actualRevenuePercent = LottoResultTestUtils.findRevenuePercent(lottoResult);
+
+            Arrays.stream(LottoRanking.values())
+                    .filter(lottoRanking -> lottoRanking != LottoRanking.RANKING_NOTHING)
+                    .forEach(lottoRanking -> assertThat(actualRankingResult.getOrDefault(lottoRanking, 0))
+                            .isSameAs(expectedRankingResult.getOrDefault(lottoRanking, 0)));
+
+            assertThat(actualRevenuePercent.toString()).isEqualTo(revenuePercent);
         }
     }
 
@@ -102,16 +53,19 @@ class LottoResultTest {
         @Test
         @DisplayName("만약 호출되면 주어진 순서대로 당첨 통계 문자열을 반환한다.")
         void success_test() {
-            LottoResult lottoResult = new LottoResult();
+            Player player = new Player(new LottoPurchaseAmount("1000"));
+            Lotto winningLotto = new Lotto("1,2,3,4,5,6");
+            LottoResult lottoResult = new LottoResult(player, winningLotto, dummyBonusNumber);
 
-            String actualString = lottoResult.toString();
-            assertThat(actualString).contains("당첨 통계");
-            assertThat(actualString).contains("---");
-            assertThat(actualString).contains("3개 일치 (5,000원) -");
-            assertThat(actualString).contains("4개 일치 (50,000원) -");
-            assertThat(actualString).contains("5개 일치 (1,500,000원) -");
-            assertThat(actualString).contains("5개 일치, 보너스 볼 일치 (30,000,000원) -");
-            assertThat(actualString).contains("6개 일치 (2,000,000,000원) -");
+            String actualMessage = lottoResult.toString();
+
+            assertThat(actualMessage).contains("당첨 통계");
+            assertThat(actualMessage).contains("---");
+            assertThat(actualMessage).contains("3개 일치 (5,000원) -");
+            assertThat(actualMessage).contains("4개 일치 (50,000원) -");
+            assertThat(actualMessage).contains("5개 일치 (1,500,000원) -");
+            assertThat(actualMessage).contains("5개 일치, 보너스 볼 일치 (30,000,000원) -");
+            assertThat(actualMessage).contains("6개 일치 (2,000,000,000원) -");
         }
     }
 }

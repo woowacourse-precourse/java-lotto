@@ -8,8 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import lotto.helper.factory.LottoResultTestFactory;
-import lotto.helper.factory.stub.LottoStoreTestFactory;
+import lotto.helper.factory.LottoStoreTestFactory;
 import lotto.helper.util.LottoResultTestUtils;
 import lotto.helper.util.LottoStoreTestUtils;
 import lotto.helper.util.LottoTestUtils;
@@ -165,15 +164,41 @@ class LottoStoreTest {
     class CalculateRevenuePercentMethodTest {
 
         @ParameterizedTest
-        @MethodSource("lotto.domain.argument.CalculateRevenueArgument#calculateRevenuePercentArgument")
+        @CsvSource(
+                value = {
+                    "8000:5000:62.5",
+                    "2000:10000:500.0",
+                    "3000:55000:1833.3",
+                    "50000:5000:10.0"
+                },
+                delimiter = ':'
+        )
         @DisplayName("만약 LottoResult가 주어지면 수익률을 반환한다.")
-        void success_test(Map<LottoRanking, Integer> lottoRankingResult, String amountInput, String expectedPercent) {
-            LottoResult lottoResult = LottoResultTestFactory.lottoRankingResultOf(lottoRankingResult);
+        void success_test(String amountInput, String totalRevenue, String expectedPercent) {
             LottoStore lottoStore = new LottoStore(new LottoPurchaseAmount(amountInput));
 
-            BigDecimal actualPercent = lottoStore.calculateRevenuePercent(lottoResult);
+            BigDecimal actualPercent = lottoStore.calculateRevenuePercent(new BigDecimal(totalRevenue));
 
             assertThat(actualPercent.toString()).isEqualTo(expectedPercent);
+        }
+    }
+
+    @Nested
+    @DisplayName("findPlayerInfo 메소드는")
+    class FindPlayerInfoMethodTest {
+
+        private final String purchaseLogFormat = "개를 구매했습니다.";
+
+        @ParameterizedTest
+        @ValueSource(strings = {"1000", "2000", "5000", "10000"})
+        @DisplayName("만약 호출된다면 플레이어가 구매한 로또의 장수 및 로또 번호를 반환한다.")
+        void success_test(String input) {
+            Player player = new Player(new LottoPurchaseAmount(input));
+            LottoStore lottoStore = LottoStoreTestFactory.playerOf(player);
+
+            String playerInfo = lottoStore.findPlayerInfo();
+
+            assertThat(playerInfo).contains(purchaseLogFormat);
         }
     }
 }
