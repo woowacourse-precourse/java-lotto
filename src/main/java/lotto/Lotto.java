@@ -15,6 +15,12 @@ public class Lotto {
         this.numbers = copyNumbers;
     }
 
+    public int countMatchingNumbers(Lotto winningLotto) {
+        return (int) this.numbers.stream()
+                .filter(winningLotto.numbers::contains)
+                .count();
+    }
+
     public boolean isExistNumber(int number) {
         return numbers.contains(number);
     }
