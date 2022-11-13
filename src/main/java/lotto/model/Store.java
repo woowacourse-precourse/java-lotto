@@ -49,7 +49,7 @@ public class Store {
         return calculateCountsByRanks(customer.judgeLottoRanks(winningNumber, bonusNumber));
     }
 
-    public String findAllLottosByCustomer() {
+    public String getAllLottoByCustomer() {
         return customer.getAllLottoToString();
     }
 }
