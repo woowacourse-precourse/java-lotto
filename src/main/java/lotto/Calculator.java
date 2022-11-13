@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,5 +44,35 @@ public class Calculator {
      */
     public boolean isBonusCorrect(List<Integer> lotto) {
         return lotto.contains(bonusNum);
+    }
+
+    /**
+     * Return the count of ranks
+     * @param resultList from {@link Calculator#calculateCorrectNum()}
+     * @return linked hashmap containing the count of ranks
+     */
+    public LinkedHashMap<Result, Integer> countResultRank(List<Integer> resultList) {
+        LinkedHashMap<Result, Integer> stats = new LinkedHashMap<>();
+        List<Result> resultEnums = List.of(Result.values());
+        for (Result resultEnum : resultEnums) {
+            List<Integer> rankCount = resultList.stream().filter(x -> x == resultEnum.correctCount()).collect(Collectors.toList());
+            int count = rankCount.size();
+            stats.put(resultEnum, count);
+        }
+        return stats;
+    }
+
+    /**
+     * Calculate the total profit
+     * @param stats result from {@link Calculator#calculateCorrectNum()}
+     * @return profit
+     */
+    public double calcProfit(LinkedHashMap<Result, Integer> stats) {
+        double profit = 0;
+        for (Result keyEnum : stats.keySet()) {
+            profit += keyEnum.prize() * stats.get(keyEnum);
+        }
+        double spent = Manager.COST * purchasedLottos.size();
+        return (profit / spent) * 100;
     }
 }
