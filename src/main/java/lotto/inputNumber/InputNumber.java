@@ -20,6 +20,6 @@ public class InputNumber {
     }
 
     private static void printInputMessage() {
-
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 }
