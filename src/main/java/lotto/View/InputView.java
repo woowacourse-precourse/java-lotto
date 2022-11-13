@@ -7,16 +7,25 @@ public class InputView {
 
     InputValidator inputValidator = new InputValidator();
 
-    public int readInput() {
+    public int readMoney() {
         System.out.println("구입금액을 입력해 주세요.");
 
         String input = Console.readLine();
 
-        inputValidator.validate(input);
-
-        // TODO: validator 안의 변환 코드와 중복
+        inputValidator.validateMoney(input);
+        
         int money = Integer.parseInt(input);
 
         return money;
+    }
+
+    public String readWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+
+        String input = Console.readLine();
+
+        inputValidator.validateNumbers(input);
+
+        return input;
     }
 }
