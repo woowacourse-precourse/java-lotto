@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -53,6 +54,14 @@ public class Emcee {
 
     public void showResultOfLottoGame() {
 
+    }
+
+    private Map<Rank, Integer> tallyUpRank(List<Rank> ranks) {
+        Map<Rank, Integer> rankTally = new HashMap<>();
+        for (Rank rank : ranks) {
+            rankTally.put(rank, rankTally.getOrDefault(rank, 0) + 1);
+        }
+        return rankTally;
     }
 
     private void showStatistics() {
