@@ -78,4 +78,33 @@ public class CustomerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DUPLICATE.toString());
     }
+
+    @DisplayName("사용자가 보너스 번호를 입력")
+    @Test
+    void customerEntersBonusNumber() {
+        // given
+        Customer customer = new Customer();
+
+        // when
+        customer.inputBonusNumber("1");
+
+        // then
+        assertThat(customer.getBounsNumber()).isEqualTo(1);
+    }
+
+    @DisplayName("사용자가 보너스 번호를 잘못 입력")
+    @Test
+    void customerEntersWrongBonusNumber() {
+        // given
+        Customer customer = new Customer();
+
+        // then
+        assertThatThrownBy(() -> customer.inputBounsNumber("46"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(WRONG_RANGE.toString());
+
+        assertThatThrownBy(() -> customer.inputBounsNumber("a"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(WRONG_RANGE.toString());
+    }
 }
