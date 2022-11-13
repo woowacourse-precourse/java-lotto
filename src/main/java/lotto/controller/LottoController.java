@@ -39,5 +39,9 @@ public class LottoController {
 		Winning winning = winningDto.toWinning();
 
 		ScoreInfo scoreInfo = lottoService.makeScoreInfoBy(lottos, winning);
+		outputView.printScoreMessage(scoreInfo);
+
+		Double profit = lottoService.calculateProfitBy(lottoAmount, scoreInfo);
+		outputView.printProfitPercentageMessage(profit);
 	}
 }
