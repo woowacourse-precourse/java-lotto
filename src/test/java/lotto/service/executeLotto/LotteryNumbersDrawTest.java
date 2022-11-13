@@ -22,4 +22,17 @@ public class LotteryNumbersDrawTest {
         System.out.println(result);
         assertThat(result).isEqualTo(EXPECTED_RESULT);
     }
+
+    @DisplayName("string input 값을 ,로 쪼개어 배열로 만듬")
+    @Test
+    void getBonusNumber() {
+        String USER_INPUT = "3,  5,   7,   19,   8,     36";
+        int BONUS_NUMBER = 4;
+        int EXPECTED_RESULT = 4;
+        LotteryNumbersDraw draw = new LotteryNumbersDraw(USER_INPUT);
+        Integer result =  draw.getBonusNumber(BONUS_NUMBER);
+
+        assertThat(result).isEqualTo(EXPECTED_RESULT);
+    }
+
 }
