@@ -10,7 +10,11 @@ public class LottoTicket {
         this.lottoTicket = lottoTicket;
     }
 
-    public List<String> getLottoTicket() {
+    public List<Lotto> getLottoTicket() {
+        return this.lottoTicket;
+    }
+
+    public List<String> printLottoTicket() {
         List<String> issuedLottoTicket = new ArrayList<>();
         for (Lotto lotto : this.lottoTicket) {
             issuedLottoTicket.add(lotto.sortNumbers().toString());

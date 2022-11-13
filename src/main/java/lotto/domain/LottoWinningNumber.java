@@ -11,7 +11,7 @@ public class LottoWinningNumber {
     private final Lotto winningNumbers;
     private final int bonusNumber;
 
-    LottoWinningNumber() {
+    public LottoWinningNumber() {
         List<Integer> winningNumbers = generateWinningNumbers();
         this.winningNumbers = new Lotto(winningNumbers);
 
@@ -29,10 +29,9 @@ public class LottoWinningNumber {
     }
 
     private List<Integer> generateWinningNumbers() {
-        String inputWinningNumbers = inputWinningNumbers();
-        List<String> separatedInputString = separateStringByComma(inputWinningNumbers);
+        List<String> separatedInputString = separateStringByComma(inputWinningNumbers());
         isDigit(separatedInputString);
-        List<Integer> winningNumbers = convertStringToInteger(separatedInputString);
+        List<Integer> winningNumbers = intValueOf(separatedInputString);
         validateFittingInRange(winningNumbers);
         return winningNumbers;
     }
@@ -45,13 +44,12 @@ public class LottoWinningNumber {
         return separatedString;
     }
 
-    private List<Integer> convertStringToInteger(List<String> inputWinningNumbers) {
+    private List<Integer> intValueOf(List<String> inputWinningNumbers) {
         List<Integer> winningNumbers = new ArrayList<>();
 
         for (String number : inputWinningNumbers) {
             winningNumbers.add(Integer.parseInt(number));
         }
-
         return winningNumbers;
     }
 

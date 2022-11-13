@@ -18,6 +18,16 @@ enum Rank {
         this.prize = prize;
     }
 
+    public static Rank getRank(int correctNumberAmount, boolean hasBonus) {
+        Rank[] rankEnums = Rank.values();
+        for (Rank rank : rankEnums) {
+            if (rank.getCorrectNumberAmount() == correctNumberAmount && rank.hasBonus() == hasBonus) {
+                return rank;
+            }
+        }
+        return Rank.LOSE;
+    }
+
     public int getCorrectNumberAmount() {
         return this.correctNumberAmount;
     }
