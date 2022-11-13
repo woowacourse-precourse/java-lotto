@@ -23,7 +23,10 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     private boolean isSizeValid(List<Integer> numbers) {
         return numbers.size() == 6;
     }
