@@ -13,13 +13,14 @@ public class Buyer {
     private static final int LOTTO_SIZE = 6;
     private static final String MESSAGE_COUNT_BUY = "%d개를 구매했습니다.";
 
-
-    private int countLottos;
     private List<Lotto> lottos;
+    private int money;
+    private int countLottos;
     private Validator validator = new Validator();
 
     public Buyer(int money) {
         validator.validateUnit(money);
+        this.money = money;
         this.countLottos = money / MIN_BUY_UNIT;
         buyLottos();
     }
