@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class UserTest {
@@ -99,6 +102,24 @@ class UserTest {
     void validateNotNumber(){
         String userInput = "a,b,c";
         assertThatThrownBy(() -> user.validateUserWinningNumber(userInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("사용자의 보너스 번호에 범위가 넘어가는 숫자를 입력했을때 예외가 발생한다")
+    @Test
+    void validateNotRange2(){
+        String userInput = "47";
+        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+        assertThatThrownBy(() -> user.validateUserBonusNumber(userInput, winningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("사용자의 보너스 번호에 당첨번호와 중복된 숫자를 입력했을때 예외가 발생한다")
+    @Test
+    void validateDuplicate(){
+        String userInput = "1";
+        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+        assertThatThrownBy(() -> user.validateUserBonusNumber(userInput, winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
