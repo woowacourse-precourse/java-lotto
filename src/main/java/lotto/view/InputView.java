@@ -3,9 +3,9 @@ package lotto.view;
 import java.util.List;
 
 public interface InputView {
-    int getPurchaseAmount();
+    int askPurchaseAmount();
 
-    List<Integer> getWinningNumbers();
+    List<Integer> askWinningNumbers();
 
-    Integer getBonusNumber();
+    Integer askBonusNumber();
 }

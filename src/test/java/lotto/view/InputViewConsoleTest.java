@@ -19,7 +19,7 @@ class InputViewConsoleTest {
         System.setIn(is);
 
         //when
-        int purchaseAmount = iv.getPurchaseAmount();
+        int purchaseAmount = iv.askPurchaseAmount();
 
         //then
         Assertions.assertThat(purchaseAmount).isEqualTo(3000);
@@ -35,7 +35,7 @@ class InputViewConsoleTest {
 
         //when
         //then
-        Assertions.assertThatThrownBy(() -> iv.getPurchaseAmount())
+        Assertions.assertThatThrownBy(() -> iv.askPurchaseAmount())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -50,7 +50,7 @@ class InputViewConsoleTest {
 
 
         //when
-        List<Integer> winningNumbers = iv.getWinningNumbers();
+        List<Integer> winningNumbers = iv.askWinningNumbers();
 
         //then
         Assertions.assertThat(winningNumbers).isEqualTo(expectedNumbers);
@@ -65,7 +65,7 @@ class InputViewConsoleTest {
         System.setIn(is);
 
         //when,then
-        Assertions.assertThatThrownBy(()-> iv.getWinningNumbers())
+        Assertions.assertThatThrownBy(()-> iv.askWinningNumbers())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -79,7 +79,7 @@ class InputViewConsoleTest {
         System.setIn(is);
 
         //when
-        Integer bonusNumber = iv.getBonusNumber();
+        Integer bonusNumber = iv.askBonusNumber();
 
         //then
         Assertions.assertThat(bonusNumber).isEqualTo(expectedNumber);
@@ -95,7 +95,7 @@ class InputViewConsoleTest {
         System.setIn(is);
 
         //when,then
-        Assertions.assertThatThrownBy(()-> iv.getBonusNumber())
+        Assertions.assertThatThrownBy(()-> iv.askBonusNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

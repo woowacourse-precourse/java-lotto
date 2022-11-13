@@ -26,15 +26,15 @@ public class LottoController {
 
     private void determineWinningNumbers() {
         outputView.printAskWinningNumbersMessage();
-        List<Integer> numbers = inputView.getWinningNumbers();
+        List<Integer> numbers = inputView.askWinningNumbers();
         outputView.printAskBonusNumberMessage();
-        Integer bonusNumber = inputView.getBonusNumber();
+        Integer bonusNumber = inputView.askBonusNumber();
         lottoService.pickWinningNumbers(numbers, bonusNumber);
     }
 
     private int buyLottery() {
         outputView.printAskPurchaseAmountMessage();
-        int purchaseAmount = inputView.getPurchaseAmount();
+        int purchaseAmount = inputView.askPurchaseAmount();
         lottoService = new LottoService(purchaseAmount);
         outputView.printGeneratedLottery(purchaseAmount, lottoService.getLotteryInfo());
         return purchaseAmount;

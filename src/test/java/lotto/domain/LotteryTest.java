@@ -27,7 +27,7 @@ class LotteryTest extends NsTest {
 
         //then
         ov.printWinningHistory();
-        ov.printProfitRatio();
+        ov.printProfitRatio(10000);
     }
 
     @DisplayName("멤버로 갖는 로또들의 당첨결과를 계산하는 메소드 Assertions")
@@ -60,8 +60,8 @@ class LotteryTest extends NsTest {
     protected void runMain() {
         InputView iv = new InputViewConsole();
         OutputView ov = new OutputViewConsole();
-        Lottery lottery = Lottery.buy(iv.getPurchaseAmount());
-        WinningNumbers winningNumbers = new WinningNumbers(iv.getWinningNumbers(), iv.getBonusNumber());
+        Lottery lottery = Lottery.buy(iv.askPurchaseAmount());
+        WinningNumbers winningNumbers = new WinningNumbers(iv.askWinningNumbers(), iv.askBonusNumber());
 
         lottery.calculateRankWithWinningNumbers(winningNumbers);
 
