@@ -13,7 +13,7 @@
         - [x] 로또 구매 메서드 구현
     - [x] `UserService` 의 `createUser` 메서드 구현
 - [ ] `LotterySellService`를 통해 로또 구매
-    - [ ] 판매된 로또 티켓을 저장하는 `LotteryTicketRepository` 구현
+    - [x] 판매된 로또 티켓을 저장하는 `LotteryTicketRepository` 구현
     - [ ] 로또 번호 생성 구현
     - [ ] User의 구매 금액 만큼 로또 사기
 - [ ] 구매 로또 출력 (`OutputView`)
