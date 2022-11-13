@@ -6,7 +6,7 @@ public class OutputUI {
     }
 
     public void printMessage(String message) {
-
+        System.out.println(message);
     }
 
     public void printLottos() {
