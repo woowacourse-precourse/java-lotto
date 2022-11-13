@@ -107,4 +107,8 @@ public class WinningNumberMaker {
             throw new IllegalArgumentException(ErrorMessage.WINNING_NUM_CONTAINS_BONUS_NUM.message);
         }
     }
+
+    int showBonusNumber(){
+        return bonusNumber;
+    }
 }
