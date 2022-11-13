@@ -66,4 +66,27 @@ public class Validator {
             throw new IllegalArgumentException(INPUT_SIX_NUMBERS);
         }
     }
+
+    public static void isCorrectBonusNumberPattern(String bonusNumber) {
+        if (!bonusNumber.matches(PATTERN)) {
+            throw new IllegalArgumentException(INPUT_NUMBER);
+        }
+    }
+
+    public static void validateBonusNumber(List<Integer> lottoNumbers, int bonusNumber) {
+        isCorrectRangeBonusNumber(bonusNumber);
+        isDuplicatedNumber(lottoNumbers, bonusNumber);
+    }
+
+    private static void isCorrectRangeBonusNumber(int bonusNumber) {
+        if (bonusNumber > LAST_NUMBER || bonusNumber < FIRST_NUMBER) {
+            throw new IllegalArgumentException(FROM_ONE_TO_FORTY_FIVE);
+        }
+    }
+
+    private static void isDuplicatedNumber(List<Integer> lottoNumbers, int bonusNumber) {
+        if (lottoNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATION_NUMBER);
+        }
+    }
 }
