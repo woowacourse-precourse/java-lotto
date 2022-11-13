@@ -1,7 +1,6 @@
 package View;
 
-import static ConstDto.InputOutputConstDto.BUY_LOTTO_MESSAGE;
-import static ConstDto.InputOutputConstDto.INPUT_WINNING_NUMBERS;
+import static ConstDto.InputOutputConstDto.*;
 
 public class InputView {
 
@@ -11,5 +10,9 @@ public class InputView {
 
     public void printWinningNumbers(){
         System.out.println(INPUT_WINNING_NUMBERS);
+    }
+
+    public void printbonusNumber(){
+        System.out.println(INPUT_BONUS_NUMBER);
     }
 }
