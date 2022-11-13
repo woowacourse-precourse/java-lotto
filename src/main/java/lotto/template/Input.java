@@ -35,10 +35,10 @@ public class Input {
     }
 
     private static List<Integer> parseWinningNumbers(String input) {
+        StringValidator.checkSplitSixArgs(input);
         List<Integer> winningNumbers = new ArrayList<>();
         String[] inputs = input.split(",");
 
-        StringValidator.checkSplitSixArgs(inputs);
         for (String string : inputs) {
             NumberValidator.checkNaturalNumber(string);
             winningNumbers.add(Integer.parseInt(string));
