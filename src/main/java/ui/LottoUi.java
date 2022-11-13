@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static values.Constants.Digit.LOTTO_NUMBER_COUNT;
-import static values.Constants.Error.*;
 import static values.Constants.Digit.LOTTO_PRICE;
+import static values.Constants.Error.*;
+import static values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
 
 public class LottoUi {
 
@@ -43,8 +43,7 @@ public class LottoUi {
     }
 
     public static int getLottoCnt() {
-        int lottoCnt = getMoney() / LOTTO_PRICE;
-        return lottoCnt;
+        return getMoney() / LOTTO_PRICE;
     }
 
     private static int getMoney() {
@@ -61,13 +60,11 @@ public class LottoUi {
     }
 
     private static void printLottoNumbers(List<Lotto> lottos) {
-        lottos.forEach(lotto -> {
-            System.out.println(lotto);
-        });
+        lottos.forEach(System.out::println);
     }
 
     public String getTotalRevenueMessage(Double percent) {
-        StringBuffer message = new StringBuffer();
+        StringBuilder message = new StringBuilder();
         String roundedPercent = String.format("%.1f", percent);
 
         message.append("총 수익률은 ");
@@ -75,5 +72,18 @@ public class LottoUi {
         message.append("%입니다.");
 
         return message.toString();
+    }
+
+    public static List<Integer> getWinningNumbers() {
+        List<Integer> winningNumbers = new ArrayList<>();
+        String inputNumbers = Console.readLine();
+        String[] splitNumbers = inputNumbers.split(LOTTO_NUMBER_SEPARATOR);
+
+        for (String splitNumber : splitNumbers) {
+            int number = Integer.parseInt(splitNumber);
+            winningNumbers.add(number);
+        }
+
+        return winningNumbers;
     }
 }

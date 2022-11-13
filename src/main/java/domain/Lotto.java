@@ -1,6 +1,7 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import ui.LottoUi;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,5 +27,10 @@ public class Lotto {
         }
 
         return lottos;
+    }
+
+    public static Lotto generateWinningLotto() {
+        List<Integer> winningNumbers = LottoUi.getWinningNumbers();
+        return new Lotto(winningNumbers);
     }
 }
