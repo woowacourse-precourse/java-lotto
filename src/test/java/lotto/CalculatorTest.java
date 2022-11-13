@@ -35,4 +35,14 @@ public class CalculatorTest {
         calc.printResult();
         assertThat(out.toString()).contains("총 수익률은 500.0%입니다.");
     }
+
+    @Test
+    void 당첨이_없음() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Calculator calc = new Calculator(1000L);
+        Calculator.calculateLottos(2, false);
+        calc.printResult();
+        assertThat(out.toString()).contains("총 수익률은 0.0%입니다.");
+    }
 }
