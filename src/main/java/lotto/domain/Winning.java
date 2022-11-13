@@ -41,8 +41,11 @@ public class Winning {
     }
 
     private void validateInputNumber(String[] splitNumbers) {
-        for (String splitNumber : splitNumbers) {
-            validator.validateInputNumber(splitNumber);
+        List<String> distinctNumbers = getDistinctNumbers(splitNumbers);
+        validator.validateNumbersSize(distinctNumbers);
+
+        for (String number : distinctNumbers) {
+            validator.validateInputNumber(number);
         }
     }
 
@@ -53,6 +56,12 @@ public class Winning {
     private List<Integer> convertStringToInteger(String[] splitNumbers) {
         return Arrays.stream(splitNumbers)
                 .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getDistinctNumbers(String[] splitNumbers) {
+        return Arrays.stream(splitNumbers)
+                .distinct()
                 .collect(Collectors.toList());
     }
 
