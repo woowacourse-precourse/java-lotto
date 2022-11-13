@@ -1,11 +1,10 @@
 package lotto.domain;
 
-import lotto.ui.Error;
-
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import lotto.ui.Error;
 
 public class Lotto {
     public static final int PRICE = 1000;

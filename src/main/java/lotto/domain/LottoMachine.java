@@ -1,10 +1,10 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import lotto.ui.Error;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
+import lotto.ui.Error;
 
 public class LottoMachine {
     private List<Lotto> lottoTable = new ArrayList<>();

@@ -5,20 +5,22 @@ import java.util.List;
 import lotto.domain.Lotto;
 
 public class Ouput {
-    static final String PURCAHSED_N_LOTTOS_NOTICE = "%d개를 구매했습니다.\n";
+    static final String NEW_LINE = "\n";
+    static final String PURCAHSED_N_LOTTOS_NOTICE = "%d개를 구매했습니다." + NEW_LINE;
     static final String ENTER_AMOUNT_OF_MONEY_NOTICE = "구입금액을 입력해 주세요.";
     static final String ENTER_WINNNG_LOTTO_NUMBERS_NOTICE = "당첨 번호를 입력해 주세요.";
     static final String ENTER_BOUNUS_NUMBER_NOTICE = "보너스 번호를 입력해 주세요.";
-    static final String RATE_OF_RETURN_IS_N_NOTICE = "총 수익률은 %.1f%%입니다.\n";
+    static final String RATE_OF_RETURN_IS_N_NOTICE = "총 수익률은 %.1f%%입니다." + NEW_LINE;
     static final String WIN_STATISTICS_NOTICE = "당첨 통계";
     static final String LINE_NOTICE = "---";
 
+
     enum PlaceNotice {
-        FIFTH("3개 일치 (5,000원) - %d개\n"),
-        FOURTH("4개 일치 (50,000원) - %d개\n"),
-        THIRD("5개 일치 (1,500,000원) - 0개\n"),
-        SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - 0개\n"),
-        FIRST("6개 일치 (2,000,000,000원) - 0개\n");
+        FIFTH("3개 일치 (5,000원) - %d개" + NEW_LINE),
+        FOURTH("4개 일치 (50,000원) - %d개" + NEW_LINE),
+        THIRD("5개 일치 (1,500,000원) - 0개" + NEW_LINE),
+        SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - 0개" + NEW_LINE),
+        FIRST("6개 일치 (2,000,000,000원) - 0개" + NEW_LINE);
         private final String notice;
 
         PlaceNotice(String string) {
@@ -56,5 +58,9 @@ public class Ouput {
         for (int order = 0; order < 5; order++) {
             System.out.printf(place[order].notice, sumOfResult.get(order));
         }
+    }
+
+    public void beginNewLine(){
+        System.out.print(NEW_LINE);
     }
 }

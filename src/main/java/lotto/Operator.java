@@ -16,28 +16,30 @@ public class Operator {
     Input input = new Input();
     Ouput ouput = new Ouput();
 
-    public void purchaseLottoTable() {
+    public void purchaseLotto() {
         ouput.notifyHowMuchInput();
         int money = input.getUserMoney();
-        System.out.println();
+        ouput.beginNewLine();
 
         lottoMachine.purchaseLottoTable(money);
+
         ouput.notifyPurchasedLottoTable(lottoMachine.getLottoTable());
-        System.out.println();
+        ouput.beginNewLine();
     }
 
-    public List<Integer> compareWinningLottoNumbers() {
+    public List<Integer> checkLotto() {
         ouput.notifyWinningLottoNumbersInput();
         Lotto winningLotto = new Lotto(input.getWinningLottoNumbers());
-        System.out.println();
+        ouput.beginNewLine();
+
         ouput.notifyBonusNumberInput();
         int bounusNumber = input.getBonusNumber();
-        System.out.println();
+        ouput.beginNewLine();
 
         return winnerChecker.getSumOfResult(lottoMachine.getLottoTable(), winningLotto, bounusNumber);
     }
 
-    public void notifySumOfResult(List<Integer> sumOfResult) {
+    public void notifyResult(List<Integer> sumOfResult) {
         ouput.notifySumOfResult(sumOfResult);
         float rateOfReturn = profitCalculator.getRateOfReturn(sumOfResult);
         ouput.notifyRateOfReturn(rateOfReturn);
