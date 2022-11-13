@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Arrays;
 import java.util.List;
 import lotto.domain.LottoUI;
 import lotto.domain.Lotto;

@@ -60,16 +60,16 @@ public class LottoStatistics {
             String matchingCount = rank.getResult();
             int prize = rank.getPrize();
             int count = results.getOrDefault(rank, 0);
-            String currentResult = String.format("%s (%,d) - %d개", matchingCount, prize, count);
+            String currentResult = String.format("%s (%,d원) - %d개", matchingCount, prize, count);
             result += "\n" + currentResult;
         }
-        result += "\n" + String.format("총 수익률은 %.1f입니다.", profitRate);
+        result += "\n" + String.format("총 수익률은 %.1f%%입니다.", profitRate);
         return result;
     }
 
     private void setProfitRate(long purchasePrice) {
-        profitRate = (totalPrize / purchasePrice) * 100;
-        profitRate = Math.round(profitRate * 10) / 10;
+        profitRate = ((float)totalPrize / purchasePrice) * 100;
+        profitRate = Math.round(profitRate * 10) / 10f;
     }
 
     private List<Rank> sortByPrize(Rank[] rank) {

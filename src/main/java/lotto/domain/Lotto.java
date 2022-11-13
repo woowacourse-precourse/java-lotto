@@ -1,10 +1,6 @@
 package lotto.domain;
 
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 public class Lotto {
     private final int MIN_RANGE = 1;
@@ -13,8 +9,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        this.numbers = sortByValue(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -45,6 +40,16 @@ public class Lotto {
         Set<Integer> deduplication = new HashSet<>(numbers);
         if (deduplication.size() != 6) {
             throw new IllegalArgumentException("숫자가 모두 달라야합니다.");
+        }
+    }
+
+    private List<Integer> sortByValue(List<Integer> numbers) {
+        try {
+            Collections.sort(numbers);
+            return numbers;
+        } catch (UnsupportedOperationException e) {
+            numbers = new ArrayList<>(numbers);
+            return sortByValue(numbers);
         }
     }
 
