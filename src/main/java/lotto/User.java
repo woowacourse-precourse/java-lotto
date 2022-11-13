@@ -8,7 +8,6 @@ import java.util.List;
 
 public class User {
     private List<List<Integer>> boughtLotto = new ArrayList<>();
-    private int lottoCount;
 
     // 로또 구매 개수 구현
     public int buyingLotto(String input) {

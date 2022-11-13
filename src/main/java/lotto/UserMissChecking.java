@@ -37,7 +37,6 @@ public class UserMissChecking {
     public static int bonusNumberChecking(List<Integer> lottoNum, String input) {
         numberChecking(input);
         int bonusNum = Integer.parseInt(input);
-        thousandChecking(bonusNum);
         numberLimitChecking(bonusNum);
         bonusRepeat(lottoNum, bonusNum);
         return bonusNum;
