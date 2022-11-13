@@ -1,9 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+
+import java.util.*;
 
 public class DataProcessing {
     public List<Integer> lottoRandomNumbers() {
@@ -42,12 +41,17 @@ public class DataProcessing {
         return splitNumbers;
     }
 
+    public  List<Integer> countWinLotto(List<Integer> lottoNumber, List<List<Integer>> boxRandomNumber, int count) {
+        List<Integer> countWinLotto = new ArrayList<>();
+        for (int i=0;i<count;++i)
+            countWinLotto.add(winLotto(lottoNumber, boxRandomNumber.get(i)));
+        return countWinLotto;
+    }
     public int winLotto(List<Integer> lottoNumber, List<Integer> randomNumber) {
-        int win = 0;
-        for (int i=0;i<randomNumber.size();++i) {
-            lottoNumber.add(randomNumber.get(i));
-        }
-        win = (int) (6 - (lottoNumber.size() - lottoNumber.stream().distinct().count()));
+        int win;
+        Set<Integer> countWin = new HashSet<>(lottoNumber);
+        countWin.retainAll(randomNumber);
+        win = countWin.size();
         return win;
     }
 }

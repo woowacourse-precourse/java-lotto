@@ -22,9 +22,11 @@ public class Controller {
         OutputView outputView = new OutputView();
         outputView.printInputBonusNumber();
         String bonusNumber = readLine();
-        lottoNumber.add(Integer.parseInt(bonusNumber));
+        List<Integer> temp = lottoNumber;
+        temp.add(Integer.parseInt(bonusNumber));
         errorUtil.errorInputBonusNumber(bonusNumber);
-        errorUtil.errorOverlapLottoNumber(lottoNumber);
+        errorUtil.errorOverlapLottoNumber(temp);
+        System.out.println(lottoNumber);
         return bonusNumber;
     }
 
@@ -33,8 +35,7 @@ public class Controller {
         ErrorUtil errorUtil = new ErrorUtil();
         String[] arrayNumbers = dataProcessing.splitLottoNumber(inputLottoNumber());
         List<Integer> numbers = new ArrayList<>();
-        for (int i=0;i<arrayNumbers.length;++i)
-            numbers.add(Integer.parseInt(arrayNumbers[i]));
+        for (String arrayNumber : arrayNumbers) numbers.add(Integer.parseInt(arrayNumber));
         errorUtil.errorOverlapLottoNumber(numbers);
         return numbers;
     }
@@ -44,9 +45,12 @@ public class Controller {
         OutputView outputView = new OutputView();
         int countLotto = dataProcessing.countLotto(dataProcessing.conversionMoney(inputMoney()));
         outputView.printBuyCountLotto(countLotto);
-        outputView.printRandomLottoNumber(dataProcessing.countCreateRandomNumbers(countLotto));
+        List<List<Integer>> boxRandomNumber = dataProcessing.countCreateRandomNumbers(countLotto);
+        outputView.printRandomLottoNumber(boxRandomNumber);
         List<Integer> lottoNumber = lottoNumber();
         Lotto lotto = new Lotto(lottoNumber);
         inputBonusNumber(lottoNumber);
+        List<Integer> countWin = dataProcessing.countWinLotto(lottoNumber, boxRandomNumber, countLotto);
+        System.out.println(countWin);
     }
 }
