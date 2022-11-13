@@ -87,4 +87,51 @@ class WinningNumberMakerTest {
         assertThat(winningNumbers.size()).isEqualTo(6);
         assertThat(winningNumbers).containsExactlyElementsOf(expected);
     }
+
+    @DisplayName("[오류 테스트] 입력한 보너스 번호가 숫자가 아님")
+    @Test
+    void bonusNumberInputNotANum(){
+        //입력값 정의
+        String input = "1a";
+        ByteArrayInputStream byteInput = new ByteArrayInputStream(input.getBytes());
+        System.setIn(byteInput);
+        //given
+        WinningNumberMaker winningNumberMaker = new WinningNumberMaker();
+        winningNumberMaker.getBonusNumberInput();
+        assertThatThrownBy(() -> winningNumberMaker.validateBonusNumberInput())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.BONUS_NUM_NOT_A_NUMBER.message);
+    }
+
+    @DisplayName("[오류 테스트] 입력한 보너스 번호가 범위를 벗어남")
+    @Test
+    void bonusNumberOutOfRange(){
+        //입력값 정의
+        String input = "47";
+        ByteArrayInputStream byteInput = new ByteArrayInputStream(input.getBytes());
+        System.setIn(byteInput);
+        //given
+        WinningNumberMaker winningNumberMaker = new WinningNumberMaker();
+        //when //then
+        assertThatThrownBy(() -> winningNumberMaker.makeBonusNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.NUMBER_OUT_OF_RANGE.message);
+    }
+
+    @DisplayName("[오류 테스트] 입력한 보너스 번호가 당첨번호에 존재")
+    @Test
+    void winningNumbersContainsBonusNumber(){
+        //입력값 세팅
+        String[] numbers = {"1", "4", "7", "8", "20", "34"};
+        String bonusNumberInput = "20";
+        //when
+        WinningNumberMaker winningNumberMaker = new WinningNumberMaker();
+        System.setIn(new ByteArrayInputStream(String.join(",", numbers).getBytes()));
+        winningNumberMaker.make();
+        System.setIn(new ByteArrayInputStream(bonusNumberInput.getBytes()));
+        //when //then
+        assertThatThrownBy(() -> winningNumberMaker.makeBonusNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.WINNING_NUM_CONTAINS_BONUS_NUM.message);
+    }
 }
