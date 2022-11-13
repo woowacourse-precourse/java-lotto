@@ -1,6 +1,11 @@
 package lotto.model;
 
-import static lotto.constant.MoneyConstants.*;
+import static lotto.constant.MoneyConstants.CHARACTER_IN_MONEY_MSG;
+import static lotto.constant.MoneyConstants.EMPTY_MONEY_MSG;
+import static lotto.constant.MoneyConstants.INVALID_MONEY_MSG;
+import static lotto.constant.MoneyConstants.LOTTO_PRICE;
+import static lotto.constant.MoneyConstants.REMAINDER_IN_MONEY_MSG;
+import static lotto.constant.MoneyConstants.TO_PERCENTAGE;
 
 public class Money {
     private int money;
@@ -26,6 +31,7 @@ public class Money {
     private void validate(String userInput){
         isBlank(userInput);
         isConsistsWithOnlyDigits(userInput);
+        isIntegerRange(userInput);
         isDividedClearlyByLottoPrice(userInput);
     }
 
@@ -44,6 +50,14 @@ public class Money {
     private void isDigit(char piece) {
         if (!Character.isDigit(piece)) {
             throw new IllegalArgumentException(CHARACTER_IN_MONEY_MSG);
+        }
+    }
+
+    private void isIntegerRange(String userInput) {
+        try {
+            Integer.parseInt(userInput);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(INVALID_MONEY_MSG);
         }
     }
 

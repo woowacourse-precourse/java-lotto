@@ -3,7 +3,6 @@ package lotto.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.text.NumberFormat;
 import java.util.List;
 import java.util.stream.Stream;
 import lotto.constant.MoneyConstants;
@@ -67,6 +66,18 @@ public class MoneyTest {
         assertThatThrownBy(() -> Money.from(userInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(MoneyConstants.REMAINDER_IN_MONEY_MSG);
+    }
+
+    @DisplayName("로또 구매 금액이 정수 범위를 넘는 경우 이유를 나타내는 메세지를 포함한 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"21474836478","12345678910","1234567891011","1234567891011121314"})
+    void createMoneyWithInvalidRange(String userInput) {
+        //given
+        //when
+        //then
+        assertThatThrownBy(() -> Money.from(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(MoneyConstants.INVALID_MONEY_MSG);
     }
 
     @DisplayName("로또로 얻은 수익에 대한 수익률을 계산한다")
