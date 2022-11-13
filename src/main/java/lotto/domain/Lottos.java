@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,4 +27,7 @@ public class Lottos {
         return new Numbers().Get_Numbers();
     }
 
+    public Lotto Get_lotto(int index){
+        return lottos.get(index);
+    }
 }

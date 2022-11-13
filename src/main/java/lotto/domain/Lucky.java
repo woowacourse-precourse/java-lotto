@@ -30,4 +30,12 @@ public class Lucky {
         throw new IllegalArgumentException("[ERROR] 당첨 번호는 1 ~ 45사이의 숫자여야합니다.");
     }
 
+    public int Get_size(){
+        return lucky.size();
+    }
+
+    public int Get_val(int index){
+        return lucky.get(index);
+    }
+
 }

@@ -42,4 +42,12 @@ public class Score {
             return 3;
         return count - 3;
     }
+
+    public int Get_size(){
+        return score.size();
+    }
+
+    public int Get_val(int index){
+        return score.get(index);
+    }
 }

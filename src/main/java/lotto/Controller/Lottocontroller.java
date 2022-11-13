@@ -10,6 +10,9 @@ import lotto.domain.Bonusnumber;
 import lotto.domain.Score;
 import lotto.domain.Earning;
 
+import lotto.View.inputview;
+import lotto.View.outputview;
+
 public class Lottocontroller {
     //static final
 
@@ -18,8 +21,8 @@ public class Lottocontroller {
         Money money = inputMoney();
 
         Paper paper = convertMoney(money);
-
         Lottos lottos = new_Lottos(paper.Get_Paper());
+        outputview.Out_lottos(lottos, paper);
 
         Lucky lucky = new_Lucky();
         Bonusnumber bonusnumber = new_Bonus();
@@ -29,10 +32,11 @@ public class Lottocontroller {
 
         Earning earning = new_earning(score);
         earning.Set_percent(money.Get_money());
+        outputview.Out_result(score, earning.Get_percent());
     }
 
     private Money inputMoney(){
-        return new Money(Console.readLine());
+        return new Money(inputview.In_money());
     }
 
     private Paper convertMoney(Money money){
@@ -44,11 +48,11 @@ public class Lottocontroller {
     }
 
     private Lucky new_Lucky(){
-        return new Lucky(Console.readLine());
+        return new Lucky(inputview.In_lucky());
     }
 
     private Bonusnumber new_Bonus(){
-        return new Bonusnumber(Console.readLine());
+        return new Bonusnumber(inputview.In_bonus());
     }
 
     private Score new_score(){

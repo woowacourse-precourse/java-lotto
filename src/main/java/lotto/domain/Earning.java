@@ -33,4 +33,8 @@ public class Earning {
             return price.Two_billion.getValue();
         return -1;
     }
+
+    public String Get_percent(){
+        return earning_percent;
+    }
 }

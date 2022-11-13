@@ -14,4 +14,8 @@ public class Bonusnumber {
             return bonus;
         throw new IllegalArgumentException("[ERROR] 보너스 번호는 1 ~ 45사이의 숫자여야합니다.");
     }
+
+    public int Get_val(){
+        return bonusnumber;
+    }
 }

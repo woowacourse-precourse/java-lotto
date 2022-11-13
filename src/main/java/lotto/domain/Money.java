@@ -21,4 +21,8 @@ public class Money {
             throw new IllegalArgumentException("[ERROR] " + e);
         }
     }
+
+    public int Get_money(){
+        return money;
+    }
 }

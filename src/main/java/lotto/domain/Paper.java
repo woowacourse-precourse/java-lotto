@@ -11,4 +11,8 @@ public class Paper {
     private int How_Many_Paper(int money){
         return money / UNIT;
     }
+
+    public int Get_Paper() {
+        return paper;
+    }
 }

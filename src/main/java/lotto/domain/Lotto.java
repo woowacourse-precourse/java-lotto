@@ -34,5 +34,9 @@ public class Lotto {
     public List<Integer> Get_numbers() {
         return this.numbers;
     }
+
+    public Boolean contains(int val){
+        return numbers.contains(val);
+    }
     // TODO: 추가 기능 구현
 }
