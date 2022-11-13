@@ -13,6 +13,13 @@ public class ConvertPlayerNumbers implements Converter<String, List<Integer>> {
     public ConvertPlayerNumbers() {
         playerNumberValidation = new PlayerNumberValidation();
     }
+    public int toBonusNumber(String inputBonus) {
+        if(!playerNumberValidation.validateBonusNumber(inputBonus)) {
+            throw new IllegalArgumentException(ExceptionPhrase.EXCEPTION_INVALID_RESULT.getMessage());
+
+        }
+        return Integer.parseInt(inputBonus);
+    }
 
     @Override
     public List<Integer> toNumbers(String input) {
