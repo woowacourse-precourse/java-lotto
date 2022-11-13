@@ -2,28 +2,43 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.constant.IntConstant;
+import lotto.constant.StringConstant;
+import lotto.validation.IntegerValidation;
+import lotto.validation.LottoValidation;
 
 public class Lotto {
     private final List<Integer> numbers;
-
+    private int bonusNumber;
     public Lotto() {
         this.numbers = Randoms.pickUniqueNumbersInRange(IntConstant.LOTTO_NUMBER_BIGGER_THAN.getValue(),
                 IntConstant.LOTTO_NUMBER_SMALLER_THAN.getValue(), IntConstant.LOTTO_NUMBER_COUNT.getValue());
     }
 
     public Lotto(List<Integer> numbers) {
+        isLottoLength(numbers);
+        isLottoBetween(numbers);
         this.numbers = numbers;
     }
 
-    @Override
-    public String toString() {
-        return numbers.toString();
+    // TODO: 추가 기능 구현
+
+    private void isLottoLength(List<Integer> numbers) {
+        if (!(IntegerValidation.isBetween(numbers.size(), IntConstant.LOTTO_NUMBER_COUNT.getValue(),
+                IntConstant.LOTTO_NUMBER_COUNT.getValue()))) {
+            throw new IllegalArgumentException(StringConstant.LOTTO_INPUT_LENGTH_ERROR_MESSAGE.getMessage());
+        }
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    private void isLottoBetween(List<Integer> numbers) {
+        if (!(numbers.stream().allMatch(
+                number -> IntegerValidation.isBetween(number, IntConstant.LOTTO_NUMBER_BIGGER_THAN.getValue(),
+                        IntConstant.LOTTO_NUMBER_SMALLER_THAN.getValue())))) {
+            throw new IllegalArgumentException(StringConstant.LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage());
+        }
     }
 
     public int[] compareToWinningLotto(WinningLotto winningLotto) {
@@ -39,5 +54,6 @@ public class Lotto {
         }
         return result;
     }
-    // TODO: 추가 기능 구현
+
+
 }

@@ -16,7 +16,6 @@ import lotto.service.UserLottoService;
 import lotto.service.YieldService;
 import lotto.validation.BonusLottoValidation;
 import lotto.validation.LotteryWinningNumberValidation;
-import lotto.validation.LottoMoneyValidation;
 import lotto.validation.Validation;
 import lotto.view.View;
 
@@ -34,12 +33,14 @@ public class LottoController {
             return;
         }
         Money userMoney = money.get();
-        int lottoCount = userMoney.moneyDivideBy(IntConstant.LOTTO_MONEY_PER_ONE.getValue());
-        printUserLottoCount(lottoCount);
-        List<Lotto> userLotto = createUserLotto(lottoCount);
-        printUserLottoResult(userLotto);
+        int lottoCount = calculateLottoCountWithOutputView(userMoney);
+        List<Lotto> userLotto = createUserLottoWithOutputView(lottoCount);
 
-//        String winningLotto = getWinningLottoWithValidation();
+        Optional<Lotto> winningLotto = getWinningLottoWithValidation();
+        if (winningLotto.isEmpty()) {
+            return;
+        }
+        Lotto lotteryWinningNumber = winningLotto.get();
 //
 //        String bonusLotto = getBonusLottoWithValidation(winningLotto);
 //
@@ -49,7 +50,7 @@ public class LottoController {
     }
 
     private Optional<Money> getUserMoneyWithValidation() {
-        String userMoneyInput = lottoMoneyInputView();
+        String userMoneyInput = View.printViewWithUserInput(StringConstant.MONEY_INPUT_MESSAGE.getMessage());
         try {
             Money lottoMoney = new Money(userMoneyInput);
             return Optional.of(lottoMoney);
@@ -59,33 +60,38 @@ public class LottoController {
         }
     }
 
-    private String lottoMoneyInputView() {
-        return View.printViewWithUserInput(StringConstant.MONEY_INPUT_MESSAGE.getMessage());
-    }
-
-    private void printUserLottoCount(int lottoCount) {
+    private int calculateLottoCountWithOutputView(Money userMoney) {
+        int lottoCount = userMoney.moneyDivideBy(IntConstant.LOTTO_MONEY_PER_ONE.getValue());
         View.printView(lottoCount + "개를 구매했습니다.");
+        return lottoCount;
     }
 
-    private static List<Lotto> createUserLotto(int lottoCount) {
-        return UserLottoService.createLottoNumber(lottoCount);
-    }
-
-    private void printUserLottoResult(List<Lotto> userLotto) {
+    private List<Lotto> createUserLottoWithOutputView(int lottoCount) {
+        List<Lotto> userLotto = UserLottoService.createLottoNumber(lottoCount);
         List<String> userLottoResult = userLotto.stream()
                 .map(Object::toString)
                 .collect(Collectors.toList());
         View.printView(userLottoResult);
+        return userLotto;
     }
 
-    private String getWinningLottoWithValidation() {
-        String userLottoWinningInput = lottoWinningNumberView();
-        winningLottoInputValidation(userLottoWinningInput);
-        return userLottoWinningInput;
+    private Optional<Lotto> getWinningLottoWithValidation() {
+        String userLottoWinningInput = View.printViewWithUserInput(
+                StringConstant.WINNING_LOTTERY_NUMBER_INPUT_MESSAGE.getMessage());
+        try {
+            return Optional.of(new Lotto(ifNumericThenReturnDesirableForm(userLottoWinningInput)));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return Optional.empty();
+        }
     }
 
-    private View createLottoMoneyView() {
-        return new LottoBuyView();
+    private List<Integer> ifNumericThenReturnDesirableForm(String userInput) {
+        try {
+            return Arrays.stream(userInput.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(StringConstant.LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage());
+        }
     }
 
     private void lottoMoneyInputValidation(String userInput) {
