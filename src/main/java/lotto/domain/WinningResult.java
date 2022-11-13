@@ -38,6 +38,11 @@ public class WinningResult {
         return WINNING_RESULT_START_MESSAGE + result;
     }
 
+    public Double calculateTotalPrize() {
+        return winningResult.keySet().stream()
+                .mapToDouble(ranking -> (double) ranking.getPrize() * winningResult.get(ranking)).sum();
+    }
+
     private void makeWinningResultMessageExceptNothing(StringBuilder result, Ranking ranking) {
         if (ranking != Ranking.NOTHING) {
             result.append(String.format(WINNING_RESULT_MESSAGE, ranking.toString(), winningResult.get(ranking)));
