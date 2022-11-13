@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Compare;
 import lotto.domain.Lotto;
 import lotto.domain.Winning;
 
@@ -14,9 +15,12 @@ public class Application {
         int lottoCount = Lotto.calculate(inputMoney);
         countPrint(lottoCount);
 
+        List<List<Integer>> allLotto = new ArrayList<>();
+
         for(int i = 0; i < lottoCount; i++){
             List <Integer> numbers = new ArrayList<>();
             Lotto lotto = new Lotto(numbers);
+            allLotto.add(Lotto.allNumbers);
         }
 
         disableWarning();
@@ -29,6 +33,11 @@ public class Application {
         String inputBonus = Console.readLine();
         Winning.addBonus(inputBonus);
 
+        Compare compare = new Compare();
+        for(int i = 0; i < allLotto.size(); i++){
+            compare.matchCount(allLotto.get(i),Winning.numbers);
+            compare.matchBonus(allLotto.get(i), Winning.numbers);
+        }
     }
 
     public static void inputPrint(){

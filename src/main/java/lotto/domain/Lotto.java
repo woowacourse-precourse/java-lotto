@@ -5,11 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Lotto {
+    public static List<Integer> allNumbers;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         validate(numbers);
+        allNumbers = numbers;
         this.numbers = numbers;
         show(numbers);
     }
