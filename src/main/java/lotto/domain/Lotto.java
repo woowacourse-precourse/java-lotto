@@ -2,19 +2,14 @@ package lotto.domain;
 
 import java.util.Iterator;
 import java.util.List;
+import lotto.aspect.LottoValidator;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) throws IllegalArgumentException {
-        validate(numbers);
+        LottoValidator.validateLottoNumbers(numbers);
         this.numbers = numbers;
-    }
-
-    private void validate(List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] Lotto의 당첨 번호는 6개입니다.");
-        }
     }
 
     public boolean contains(int number) {
