@@ -6,15 +6,11 @@ public class BonusNumber {
     private int bonusNumber;
 
     public BonusNumber() {
-          makeBonusNumber();
+          bonusNumber = readBonusNumber();
     }
     
     public int getBonusNumber() {
         return bonusNumber;
-    }
-
-    private void makeBonusNumber() {
-        bonusNumber = readBonusNumber();
     }
 
     private int readBonusNumber() {
