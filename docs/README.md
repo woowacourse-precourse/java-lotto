@@ -34,8 +34,8 @@
   - [x] 당첨 번호 입력받기 문구 출력 - Guide
   - [x] 보너스 번호 입력받기 문구 출력 - Guide
   - [x] 정수에다가 구두점 표시 후 반환 - Preprocessor
-  - [] 당첨 통계 출력 - Guide
-    - [x] 당첨 통계 메시지 생성 
+  - [x] 당첨 통계 출력 - Guide
+    - [x] 당첨 통계 메시지 생성 - Guide
   - [x] int 형식에 대한 String 형변환 - Preprocessor
   - [ ] 수익률 출력 - Guide
 

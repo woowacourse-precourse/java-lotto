@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.domain.Preprocessor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,5 +45,11 @@ public class Guide {
         return messages;
     }
 
+    public static void printLottoStatistics(List<String> messages) {
+        System.out.println("\n당첨 통계\n---\n");
+        for (int messageIndex = messages.size() - 1; messageIndex >= 0; messageIndex--) {
+            System.out.println(messages.get(messageIndex));
+        }
+    }
 
 }
