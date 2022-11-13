@@ -1,10 +1,13 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.LottoString;
+import lotto.domain.Lotto;
+import lotto.global.ErrorMessage;
 import lotto.service.LottoService;
-import org.junit.platform.commons.util.StringUtils;
 
-import java.util.stream.IntStream;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class LottoController {
@@ -17,11 +20,13 @@ public class LottoController {
 
     public void run(){
         //input price
-        inputPrice();
+        Integer price = inputPrice();
 
         //print guess number
+        List<Lotto> guessNumberSet = printGuessNumber(price);
 
         //input Lotto number
+        List<Integer> lottoNumber = inputLottoNumber();
 
         //input bonus number
 
@@ -29,11 +34,11 @@ public class LottoController {
     }
 
     private Integer inputPrice(){
-        System.out.println(LottoControllerString.INPUT_PURCHASE_PRICE);
+        System.out.println(LottoString.INPUT_PURCHASE_PRICE);
         String userInput = Console.readLine();
         int price = 0;
         try {
-            price = validePrice(userInput);
+            price = lottoService.validePrice(userInput);
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             throw e;
@@ -41,28 +46,42 @@ public class LottoController {
         return price;
     }
 
-    private int validePrice(String price) {
-        IntStream.range(0, price.length()).filter(
-            i -> !Character.isDigit(price.charAt(i))).forEach(i -> {
-            throw new IllegalArgumentException(LottoControllerString.UNMATCH_PRICE_UNIT);
-        });
-        int priceInt = Integer.parseInt(price);
-        if(priceInt % 1000 != 0){
-            throw new IllegalArgumentException(LottoControllerString.UNMATCH_PRICE_UNIT);
+    private List<Lotto> printGuessNumber(int price){
+        try {
+            List<Lotto> guessSet = makeNumbers(price);
+            guessSet.stream().map(Object::toString).forEach(System.out::println);
+            return guessSet;
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            throw e;
+        }catch (Exception e){
+            System.out.println(ErrorMessage.SERVER_INTERNAL_ERROR);
+            throw e;
         }
-        return priceInt;
     }
 
-    public int doValidatePrice(String price){
-        return validePrice(price);
+    private static List<Lotto> makeNumbers(int price) {
+        List<Lotto> guessNumber = new ArrayList<>();
+        while(price > 0){
+            Lotto lotto = new Lotto(lottoService.makeRandomNumber());
+            guessNumber.add(lotto);
+            price -= 1000;
+        }
+        return guessNumber;
     }
 
-    private void printGuessNumber(){
+    private List<Integer> inputLottoNumber(){
+        System.out.println(LottoString.INPUT_LOTTO_NUMBRES);
+        String userInput = Console.readLine();
 
+        lottoService.validateUserInput(userInput);
+
+        List<Integer> numbers = new ArrayList<>();
+
+        return numbers;
     }
-    private String inputLottoNumber(){
-        return "ok";
-    }
+
+
     private String inputBonusNumber(){
         return "ok";
     }
