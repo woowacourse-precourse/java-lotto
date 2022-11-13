@@ -14,12 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LottoGameTest {
 
-    @DisplayName("구입 금액이 1000원 단위가 아니면 예외가 발생한다.")
-    @Test
-    void purchaseLottoByUnit() {
-        LottoGame lottoGame = new LottoGame();
-        assertThatThrownBy(() -> lottoGame.validateUnit(5100))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
+
 
 }
