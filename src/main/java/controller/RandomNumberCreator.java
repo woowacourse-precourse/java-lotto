@@ -29,6 +29,7 @@ public class RandomNumberCreator {
             Lotto.isDifferentEachOther(lotto.getNumbers());
             lotto.sortAscending(lotto.getNumbers());
             view.OutputView.showRandomLottoNumbers(lotto.getNumbers());
+            randomNumbersContainer.add(randomNumbers);
         }
         return randomNumbersContainer;
     }
