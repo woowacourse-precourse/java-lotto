@@ -27,6 +27,11 @@ public enum InputValidation {
             value -> !value.matches("^[1-9]+[0-9]*000$"),
             List.of("enterPurchaseAmount")
     ),
+    UNDER_2_POINT_1_BILLION(
+            "21억 이하로 입력하세요.",
+            value -> Integer.parseInt(value) <= 2_100_000_000,
+            List.of("enterPurchaseAmount")
+    ),
     NOT_NUMBER_OR_COMMA(
             "숫자나 쉼표만 입력 해야 합니다.",
             value -> !value.matches("^[0-9,]*$"),
