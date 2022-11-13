@@ -1,19 +1,32 @@
 package lotto.domain;
 
+import java.util.List;
+
 public class WinningLotto {
-    private Lotto lotto;
+    private Lotto winninglotto;
     private int bonusNumber;
 
     public WinningLotto(Lotto lotto, int bonusNumber) {
-        this.lotto = lotto;
+        winninglotto = lotto;
         this.bonusNumber = bonusNumber;
     }
 
-    public Lotto getLotto() {
-        return lotto;
+    public int countMatchNumber(Lotto lotto) {
+        List<Integer> numbers = lotto.getNumbers();
+        int countMatchNumbers = 0;
+
+        for (int number : numbers) {
+            if (winninglotto.getNumbers().contains(number)) {
+                countMatchNumbers++;
+            }
+        }
+        return countMatchNumbers;
     }
 
-    public int getBonusNumber() {
-        return bonusNumber;
+    public boolean checkBonusNumber(Lotto lotto) {
+        if (lotto.getNumbers().contains(bonusNumber)) {
+            return true;
+        }
+        return false;
     }
 }
