@@ -39,14 +39,14 @@ public class Lotto {
 
     private void validateNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (!isInRange(number)) {
+            if (!isLottoNumber(number)) {
                 System.out.println("[ERROR] 1 ~ 45 사이의 숫자만 입력할 수 있습니다.");
                 throw new IllegalArgumentException();
             }
         }
     }
 
-    public static boolean isInRange(int number) {
+    public static boolean isLottoNumber(int number) {
         return NUMBER_RANGE_START <= number && number <= NUMBER_RANGE_END;
     }
 

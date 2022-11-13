@@ -10,12 +10,12 @@ public class BonusNumber {
     }
 
     private void validate(WinningLotto winningLotto, int bonusNumber) {
-        validateRange(bonusNumber);
+        validateNumber(bonusNumber);
         validateDuplicate(winningLotto, bonusNumber);
     }
 
-    private void validateRange(int bonusNumber) {
-        if (!Lotto.isInRange(bonusNumber)) {
+    private void validateNumber(int bonusNumber) {
+        if (!Lotto.isLottoNumber(bonusNumber)) {
             System.out.println("[ERROR] 1 ~ 45 사이의 숫자만 들어올 수 있습니다.");
             throw new IllegalArgumentException();
         }
