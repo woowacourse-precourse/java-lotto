@@ -2,53 +2,67 @@ package lotto.domain.util;
 
 import java.util.List;
 
-import static lotto.ui.ConsoleOutput.*;
-
 public class Validator {
 
-	public void validateAmount(String amountInput) {
+	public static void validateInputNotEmpty(String input){
+		if (ValidationConfig.isInputEmpty(input)){
+			ExceptionHandler.handlePlayer(ValidationException.EMPTY);
+		}
+	}
+
+	public static void validateAmount(String amountInput) {
 		if (ValidationConfig.isNotANumber(amountInput)) {
-			PrintErrorMessage(AMOUNT_NOT_A_NUMBER);
+			ExceptionHandler.handlePlayer(ValidationException.AMOUNT_NOT_A_NUMBER);
 		}
 
 		if (ValidationConfig.isLessThanMinimumAmount(amountInput)) {
-			PrintErrorMessage(AMOUNT_LESS_THAN_1000);
+			ExceptionHandler.handlePlayer(ValidationException.AMOUNT_LESS_THAN_1000);
 		}
 
 		if (!ValidationConfig.isAssignedCurrencyUnit(amountInput)) {
-			PrintErrorMessage(AMOUNT_NOT_ASSIGNED_CURRENCY_UNIT);
+			ExceptionHandler.handlePlayer(ValidationException.AMOUNT_NOT_ASSIGNED_CURRENCY_UNIT);
 		}
 	}
 
-	public void validateLottoNumber(String winningNumberInput) {
-		if (!ValidationConfig.isLottoNumberCorrectlyFormatted(winningNumberInput)) {
-			PrintErrorMessage(LOTTO_NUMBER_NOT_CORRECTLY_FORMATTED);
+	public static void validateWinningNumber(String winningNumberInput) {
+		if (!ValidationConfig.isWinningNumberCorrectlyFormatted(winningNumberInput)) {
+			ExceptionHandler.handlePlayer(ValidationException.WINNING_NUMBER_NOT_CORRECTLY_FORMATTED);
 		}
 
-		if (!ValidationConfig.isLottoNumberCountCorrectlyProvided(winningNumberInput)) {
-			PrintErrorMessage(LOTTO_NUMBER_NOT_CORRECTLY_COUNTED);
+		if (!ValidationConfig.isWinningNumberCountCorrectlyProvided(winningNumberInput)) {
+			ExceptionHandler.handlePlayer(ValidationException.WINNING_NUMBER_NOT_CORRECTLY_COUNTED);
 		}
 
-		if (!ValidationConfig.isLottoNumberCorrectlyRanged(winningNumberInput)) {
-			PrintErrorMessage(LOTTO_NUMBER_NOT_IN_BETWEEN_1_45);
+		if (!ValidationConfig.isWinningNumberCorrectlyRanged(winningNumberInput)) {
+			ExceptionHandler.handlePlayer(ValidationException.WINNING_NUMBER_NOT_IN_BETWEEN_1_45);
 		}
 
-		if (ValidationConfig.isLottoNumberDuplicateExists(winningNumberInput)) {
-			PrintErrorMessage(LOTTO_NUMBER_DUPLICATED);
+		if (ValidationConfig.isWinningNumberDuplicateExists(winningNumberInput)) {
+			ExceptionHandler.handlePlayer(ValidationException.WINNING_NUMBER_DUPLICATED);
 		}
 	}
 
-	public void validateBonusNumber(String bonusNumberInput, List<Integer> winningNumber) {
+	public static void validateBonusNumber(String bonusNumberInput, List<Integer> winningNumber) {
 		if (!ValidationConfig.isBonusNumberCorrectlyRanged(bonusNumberInput)) {
-			PrintErrorMessage(BONUS_NUMBER_NOT_IN_BETWEEN_1_45);
+			ExceptionHandler.handlePlayer(ValidationException.BONUS_NUMBER_NOT_IN_BETWEEN_1_45);
 		}
 
 		if (!ValidationConfig.isBonusNumberCountCorrectlyProvided(bonusNumberInput)) {
-			PrintErrorMessage(BONUS_NUMBER_NOT_CORRECTLY_COUNTED);
+			ExceptionHandler.handlePlayer(ValidationException.BONUS_NUMBER_NOT_CORRECTLY_COUNTED);
 		}
 
 		if (ValidationConfig.isBonusNumberDuplicateExists(bonusNumberInput, winningNumber)) {
-			PrintErrorMessage(BONUS_NUMBER_DUPLICATED);
+			ExceptionHandler.handlePlayer(ValidationException.BONUS_NUMBER_DUPLICATED);
+		}
+	}
+
+	public static void validateLottoNumber(List<Integer> numbers) {
+		if (numbers.size() != Rule.LOTTO_NUMBER_DIGITS.getValue()) {
+			ExceptionHandler.handleLottoMachine(ValidationException.LOTTO_NUMBER_NOT_CORRECTLY_COUNTED);
+		}
+
+		if (ValidationConfig.isLottoNumberDuplicateExists(numbers)) {
+			ExceptionHandler.handleLottoMachine(ValidationException.LOTTO_NUMBER_DUPLICATED);
 		}
 	}
 }

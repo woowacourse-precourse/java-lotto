@@ -1,6 +1,8 @@
 package lotto.domain.util;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
@@ -13,6 +15,10 @@ public class ValidationConfig {
 	private static final String NUMBER_INPUT_COUNT_REGEX = "^(.+,){5}.+$"; // "(<시작문자><쉼표>)X5<종료문자>" 형식을 표현한다
 	private static final String NUMBER_IN_BETWEEN_1_AND_45 = "(^[1-9]$|^[1-3][0-9]$|^4[0-5]$)"; // "1~45" 숫자 형식을 표현한다
 	private static final String BONUS_NUMBER_INPUT_COUNT_REGEX = "^(.+)$"; // 1개의 문자 형식을 표현한다
+
+	protected static boolean isInputEmpty(String input){
+		return input.isEmpty();
+	}
 
 	public static boolean isNotANumber(String input) {
 		return !input.matches(NUMBER_ONLY_REGEX);
@@ -28,21 +34,21 @@ public class ValidationConfig {
 		return amount % LOTTO_PRICE.getMoney() == 0;
 	}
 
-	public static boolean isLottoNumberCorrectlyFormatted(String input) {
+	public static boolean isWinningNumberCorrectlyFormatted(String input) {
 		return input.matches(NUMBER_INPUT_FORMAT_REGEX);
 	}
 
-	public static boolean isLottoNumberCountCorrectlyProvided(String input) {
+	public static boolean isWinningNumberCountCorrectlyProvided(String input) {
 		return input.matches(NUMBER_INPUT_COUNT_REGEX);
 	}
 
-	public static boolean isLottoNumberCorrectlyRanged(String input) {
+	public static boolean isWinningNumberCorrectlyRanged(String input) {
 		Stream<Integer> numbers = toStreamInteger(input);
 		return numbers.allMatch(number -> number >= LOTTO_FIRST_NUMBER_INCLUSIVE.getValue()
 				&& number <= LOTTO_LAST_NUMBER_INCLUSIVE.getValue());
 	}
 
-	public static boolean isLottoNumberDuplicateExists(String input) {
+	public static boolean isWinningNumberDuplicateExists(String input) {
 		return toStreamInteger(input).distinct().count() != toStreamInteger(input).count();    // 스트림 객체의 개별 소환을 위해 각각 호출한다
 	}
 
@@ -58,7 +64,13 @@ public class ValidationConfig {
 		return winningNumber.contains(Integer.parseInt(bonusInput));
 	}
 
-	public static Stream<Integer> toStreamInteger(String input) {
+	protected static boolean isLottoNumberDuplicateExists(List<Integer> numbers) {
+		Set<Integer> checkDuplicate = new HashSet<>(numbers);
+		checkDuplicate.retainAll(numbers);
+		return checkDuplicate.size() != Rule.LOTTO_NUMBER_DIGITS.getValue();
+	}
+
+	private static Stream<Integer> toStreamInteger(String input) {
 		return Pattern.compile(",").
 				splitAsStream(input).
 				map(Integer::parseInt);
