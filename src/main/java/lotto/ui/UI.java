@@ -17,6 +17,13 @@ public class UI {
 
     private final String NUMBER_OF_PURCHASE_LOTTO_MESSAGE = "%d개를 구매했습니다.";
 
+    private final String WINNING_INFO_MESSAGE_0 = "당첨 통계\n---";
+    private final String WINNING_INFO_MESSAGE_1 = "3개 일치 (5,000원) - %d개";
+    private final String WINNING_INFO_MESSAGE_2 = "4개 일치 (50,000원) - %d개";
+    private final String WINNING_INFO_MESSAGE_3 = "5개 일치 (1,500,000원) - %d개";
+    private final String WINNING_INFO_MESSAGE_4 = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
+    private final String WINNING_INFO_MESSAGE_5 = "6개 일치 (2,000,000,000원) - %d개";
+
     private String input(){
         return Console.readLine();
     }
@@ -111,5 +118,14 @@ public class UI {
             sb.append(']');
             output(sb.toString());
         }
+    }
+
+    public void outputWinningInfo(List<Integer> numberOfWinningLottos){
+        output(WINNING_INFO_MESSAGE_0);
+        output(String.format(WINNING_INFO_MESSAGE_1,numberOfWinningLottos.get(0)));
+        output(String.format(WINNING_INFO_MESSAGE_2,numberOfWinningLottos.get(1)));
+        output(String.format(WINNING_INFO_MESSAGE_3,numberOfWinningLottos.get(2)));
+        output(String.format(WINNING_INFO_MESSAGE_4,numberOfWinningLottos.get(3)));
+        output(String.format(WINNING_INFO_MESSAGE_5,numberOfWinningLottos.get(4)));
     }
 }
