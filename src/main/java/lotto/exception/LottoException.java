@@ -1,5 +1,7 @@
 package lotto.exception;
 
+import lotto.status.lotto.LottoStatus;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -17,13 +19,14 @@ public class LottoException {
         StringBuilder message = new StringBuilder(ERROR_MESSAGE);
 
         if(!isAccurateSize(numbers)) {
-            message.append(6).append(LENGTH_EXCEPTION_MESSAGE);
+            message.append(LottoStatus.count.getValue()).append(LENGTH_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
         }else if(hasDuplication(numbers)) {
             message.append(DUPLICATE_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
         }else if(!isAccurateRange(numbers)) {
-            message.append(1).append("부터 ").append(45).append(RANGE_EXCEPTION_MESSAGE);
+            message.append(LottoStatus.startInclusive.getValue()).append("부터 ")
+                    .append(LottoStatus.endInclusive.getValue()).append(RANGE_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
         }
     }
@@ -39,7 +42,8 @@ public class LottoException {
 
         if(!isAccurateRange(List.of(number))) {
             StringBuilder message = new StringBuilder(ERROR_MESSAGE);
-            message.append(1).append("부터 ").append(45).append(RANGE_EXCEPTION_MESSAGE);
+            message.append(LottoStatus.startInclusive.getValue()).append("부터 ")
+                    .append(LottoStatus.endInclusive.getValue()).append(RANGE_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
         }
 
@@ -76,7 +80,7 @@ public class LottoException {
     }
 
     private static boolean isAccurateSize(List<Integer> numbers) {
-        if(numbers.size() != 6) return false;
+        if(numbers.size() != LottoStatus.count.getValue()) return false;
         return true;
     }
 
@@ -90,7 +94,9 @@ public class LottoException {
 
     private static boolean isAccurateRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if(!(1 <= number && number <= 45)) return false;
+            if(!(LottoStatus.startInclusive.getValue() <= number && number <= LottoStatus.endInclusive.getValue())) {
+                return false;
+            }
         }
         return true;
     }
