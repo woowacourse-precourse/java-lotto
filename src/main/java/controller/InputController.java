@@ -3,6 +3,7 @@ package controller;
 import domain.WinningNumber;
 import view.InputView;
 import camp.nextstep.edu.missionutils.Console;
+import resources.Error;
 
 import java.util.ArrayList;
 import java.util.List;

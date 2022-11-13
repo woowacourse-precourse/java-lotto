@@ -1,5 +1,7 @@
 package domain;
 
+import resources.Error;
+
 import java.util.List;
 
 public class WinningNumber {
