@@ -1,28 +1,39 @@
 package lotto;
 
-import java.util.List;
+import lotto.config.LottoRules;
+
+import java.util.*;
 
 public class LottoRaffler {
 
-    private int first;
-    private int second;
-    private int third;
-    private int fourth;
-    private int fifth;
-
+    private final LottoRaffleRecorder lottoRaffleRecorder;
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
     public LottoRaffler(List<Integer> winningNumbers, int bonusNumber) {
+        this.lottoRaffleRecorder = new LottoRaffleRecorder();
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
 
-    private Long checkWinningNumbers(List<Integer> raffleNumbers) {
-        return raffleNumbers.stream().filter(winningNumbers::contains).count();
+    public Map<String, Integer> raffle(List<Lotto> lottos) {
+        lottos.forEach(lotto -> recordPrize(lotto.getNumbers()));
+        return lottoRaffleRecorder.getPrizeRecord();
     }
 
-    private boolean checkBonusNumber(int raffleNumber) {
-        return bonusNumber == raffleNumber;
+    private void recordPrize(List<Integer> lottoNumbers) {
+        int matchCount = checkWinningNumbers(lottoNumbers);
+        boolean matchBonus = checkBonusNumber(lottoNumbers);
+
+        String prize = LottoRules.findByMatchAndBonus(matchCount, matchBonus).name();
+        lottoRaffleRecorder.updatePrizeRecord(prize);
+    }
+
+    private int checkWinningNumbers(List<Integer> lottoNumbers) {
+        return (int) lottoNumbers.stream().filter(winningNumbers::contains).count();
+    }
+
+    private boolean checkBonusNumber(List<Integer> lottoNumbers) {
+        return lottoNumbers.contains(bonusNumber);
     }
 }
