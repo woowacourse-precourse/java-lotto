@@ -39,8 +39,12 @@ public class LottoStore {
     }
 
     private void validateMoney(int money) {
-        if (money == 0 || money % PRICE_OF_LOTTO != 0) {
+        if (money == 0 || isCorrectUnitOfPrice(money)) {
             throw new IllegalArgumentException(INVALID_VALUE_OF_MONEY);
         }
+    }
+
+    private boolean isCorrectUnitOfPrice(int money) {
+        return money % PRICE_OF_LOTTO != 0;
     }
 }
