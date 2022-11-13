@@ -24,7 +24,13 @@ public class GameController {
 		WinningNumbers winningNumbers = createWinningNumbers();
 
 		LottoReceipt lottoReceipt = new LottoReceipt(lottoTickets, winningNumbers);
-		lottoReceipt.print();
+		lottoReceipt.printResult();
+
+		lottoReceipt.calculateRevenue();
+		lottoReceipt.printYield(money);
+	}
+
+	private void calculateYield(Money money, LottoReceipt lottoReceipt) {
 
 	}
 

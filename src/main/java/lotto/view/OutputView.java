@@ -10,12 +10,14 @@ import java.util.stream.Collectors;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
+import lotto.domain.Money;
 import lotto.exception.ErrorMessage;
 
 public class OutputView {
 	private static final String BUY_LOTTO_MESSAGE = "%d개를 구매했습니다.\n";
 	private static final String WIN_MESSAGE = "%d개 일치 (%s원) - %d개\n";
 	private static final String BONUS_WIN_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+	private static final String LOTTO_YIELD = "총 수익률은 %.1f%%입니다.";
 	private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("###,###");
 
 	public static void printLottos(List<Lotto> lottos) {
@@ -64,4 +66,7 @@ public class OutputView {
 			results.getOrDefault(rank, 0));
 	}
 
+	public static void printLottoYield(int revenue, Money money) {
+		System.out.printf(LOTTO_YIELD, revenue/(float)money.getAmount()*100);
+	}
 }

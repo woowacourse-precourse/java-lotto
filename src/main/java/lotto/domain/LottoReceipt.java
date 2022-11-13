@@ -3,12 +3,14 @@ package lotto.domain;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import lotto.view.OutputView;
 
 public class LottoReceipt {
 
-	Map<LottoRank, Integer> results = new HashMap<>();
+	private final Map<LottoRank, Integer> results = new HashMap<>();
+	private int revenue;
 
 	public LottoReceipt(LottoTickets lottoTickets, WinningNumbers winningNumbers) {
 		compareTickets(lottoTickets, winningNumbers);
@@ -54,7 +56,17 @@ public class LottoReceipt {
 		return 0;
 	}
 
-	public void print() {
+	public void calculateRevenue() {
+		for(LottoRank rank:results.keySet()){
+			revenue+=rank.getReward()*results.get(rank);
+		}
+	}
+
+	public void printResult() {
 		OutputView.printLottoResults(results);
+	}
+
+	public void printYield(Money money){
+		OutputView.printLottoYield(revenue, money);
 	}
 }
