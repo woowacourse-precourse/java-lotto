@@ -36,4 +36,12 @@ public class Lotto {
         lottoNum.sort(Comparator.naturalOrder());
         return lottoNum;
     }
+
+    public void compareWithAnswer(Lotto answer, int bonus) {
+        int correct = 0;
+
+        for(int num : numbers) {
+            // compare
+        }
+    }
 }

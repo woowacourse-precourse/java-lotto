@@ -17,6 +17,8 @@ public class LottoProgramManager {
         generateLotto(lottoNum);
 
         getAnswerAndBonus();
+
+        rankLotto();
     }
 
     private int buyLotto() {
@@ -44,5 +46,9 @@ public class LottoProgramManager {
     private void getAnswerAndBonus() {
         answer = new Lotto(IOManager.scanAnswer());
         bonus = IOManager.scanBonus();
+    }
+
+    private int rankLotto() {
+        return 0;
     }
 }
