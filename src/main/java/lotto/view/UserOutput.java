@@ -7,7 +7,7 @@ import lotto.domain.Result;
 import lotto.domain.WinRank;
 
 public class UserOutput {
-    private static final String OUTPUT_BUY_LOTTOS = " 개를 구매했습니다.";
+    private static final String OUTPUT_BUY_LOTTOS = "개를 구매했습니다.";
     private static final String OUTPUT_WIN_STATISTICS = "당첨 통계\n---";
     private static final String OUTPUT_EARNING_RATE = "총 수익률은 ";
     private static final String OUTPUT_PERCENT = "%입니다.";
@@ -44,7 +44,7 @@ public class UserOutput {
     private static String getEachWinStatistics(WinRank winRank, Map<WinRank, Integer> prizeResult) {
         final String PRIZE_MESSAGE = "개 일치 (";
         final String SECOND_PRIZE_MESSAGE = "5개 일치, 보너스 볼 일치 (";
-        final String WON_MESSAGE = "원)- ";
+        final String WON_MESSAGE = "원) - ";
         final String COUNT_MESSAGE = "개";
 
         if (winRank.equals(WinRank.SECOND)) {
