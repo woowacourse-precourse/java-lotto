@@ -23,4 +23,8 @@ public class LottoGameController {
     public Lotto pickWinningNumbers(final String winningNumbers) {
         return lottoGameService.pickWinningNumbers(winningNumbers);
     }
+
+    public int pickBonusNumber(final String bonusNumber) {
+        return lottoGameService.pickBonusNumber(bonusNumber);
+    }
 }

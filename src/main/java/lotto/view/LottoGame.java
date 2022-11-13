@@ -12,6 +12,7 @@ public class LottoGame {
     private int lottoTicketCount;
     private String userInput;
     private Lotto winningNumbers;
+    private int bonusNumber;
     private List<Lotto> userLottoTickets;
 
     public LottoGame() {
@@ -30,6 +31,10 @@ public class LottoGame {
         System.out.println(GameMessage.WINNING_NUMBER.getMessage());
         userInput = Console.readLine();
         winningNumbers = lottoGameController.pickWinningNumbers(userInput);
+
+        System.out.println(GameMessage.BONNUS_NUMBER.getMessage());
+        userInput = Console.readLine();
+        bonusNumber = lottoGameController.pickBonusNumber(userInput);
     }
 
     private void printLottoTickets() {

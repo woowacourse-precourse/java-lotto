@@ -52,4 +52,21 @@ public class LottoGameService {
         }
         return lottoTickets;
     }
+
+    public int pickBonusNumber(final String bonusNumber) {
+        validBonusNumber(bonusNumber);
+        return Integer.parseInt(bonusNumber);
+    }
+
+    private void validBonusNumber(final String number) {
+        if (!Pattern.matches("^[0-9]*$", number)) {
+            throw new IllegalArgumentException(
+                ErrorMessage.LOTTO_NUMBER_NOT_NUMBER.getErrorMessage());
+        }
+
+        int value = Integer.parseInt(number);
+        if (value < 1 || value > 45) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_RANGE.getErrorMessage());
+        }
+    }
 }
