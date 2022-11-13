@@ -1,17 +1,18 @@
 package lotto.repository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import lotto.domain.Lotto;
 import lotto.repository.dto.UserLottoDto;
 
 public class UserLottoRepository {
 
-	private List<Lotto> userLotto;
+	private Set<Lotto> userLotto;
 
 	public UserLottoRepository() {
-		userLotto = new ArrayList<>();
+		userLotto = new HashSet<>();
 	}
 
 	public void updateLotto(Lotto lotto) {
@@ -19,7 +20,7 @@ public class UserLottoRepository {
 	}
 
 	public UserLottoDto findUserLottoDto() {
-		return new UserLottoDto(userLotto);
+		return new UserLottoDto(userLotto.stream().collect(Collectors.toList()));
 	}
 
 	public void clear() {
