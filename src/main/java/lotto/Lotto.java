@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lotto.system.SystemValid;
 import lotto.type.ErrorType;
@@ -47,9 +49,10 @@ public class Lotto {
 
     public void printNumbers() {
         String print = "";
-
-        for (int number : numbers) {
-            print = print.concat(" " + number);
+        List<Integer> orderNumbers = new ArrayList<>(numbers);
+        Collections.sort(orderNumbers);
+        for (int orderNumber : orderNumbers) {
+            print = print.concat(" " + orderNumber);
         }
 
         print = print.trim();

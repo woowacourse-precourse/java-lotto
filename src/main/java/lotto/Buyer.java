@@ -5,10 +5,12 @@ import java.util.List;
 import lotto.type.Rank;
 
 public class Buyer {
-    private List<Lotto> lottos;
+    private final int purchaseMoney;
+    private final List<Lotto> lottos;
 
-    public Buyer(List<Lotto> lottos) {
+    public Buyer(int purchaseMoney, List<Lotto> lottos) {
         validateForSize(lottos);
+        this.purchaseMoney = purchaseMoney;
         this.lottos = lottos;
     }
 
@@ -24,5 +26,9 @@ public class Buyer {
             lottosRank.add(lotto.getRank(winningNumbers, bonusNumber));
         }
         return lottosRank;
+    }
+
+    public int getPurchaseMoney() {
+        return purchaseMoney;
     }
 }

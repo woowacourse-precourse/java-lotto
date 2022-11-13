@@ -3,12 +3,14 @@ package lotto.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import lotto.Buyer;
 import lotto.Lotto;
 import lotto.Winning;
 import lotto.system.SystemMessage;
 import lotto.system.SystemValue;
+import lotto.type.Rank;
 
 public class LottoService {
 
@@ -20,7 +22,7 @@ public class LottoService {
             purchaseLottos.add(Issuance());
         }
         System.out.println();
-        return new Buyer(purchaseLottos);
+        return new Buyer(money, purchaseLottos);
     }
 
     private int calculationForLotto(int money) {
@@ -38,8 +40,6 @@ public class LottoService {
 
     private Lotto Issuance() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(randomNumbers);
-
         Lotto newLotto = new Lotto(randomNumbers);
         newLotto.printNumbers();
         return newLotto;
@@ -58,6 +58,18 @@ public class LottoService {
         }
 
         return winningNumbers;
+    }
+
+    public double calculatePortfolio(List<Rank> lottosRank, int purchaseMoney){
+        return 100 + ((double)(getProfitMoney(lottosRank) - purchaseMoney) / (double) purchaseMoney) * 100;
+    }
+
+    private int getProfitMoney(List<Rank> lottosRank){
+        int profit = 0;
+        for (Rank rank: lottosRank) {
+            profit += rank.getReward();
+        }
+        return profit;
     }
 
 }

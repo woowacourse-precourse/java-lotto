@@ -18,6 +18,7 @@ public class LottoController {
         Winning winning = Pick();
         List<Rank> lottosRank = buyer.getLottosRank(winning.getNumbers(), winning.getBonusNumber());
         printHistory(lottosRank);
+        printPortfolio(lottosRank, buyer.getPurchaseMoney());
     }
 
     private Buyer buy() {
@@ -49,7 +50,12 @@ public class LottoController {
         return Integer.parseInt(input);
     }
 
-    private void printHistory(List<Rank> lottosRank){
+    private void printHistory(List<Rank> lottosRank) {
         SystemMessage.winningHistory(lottosRank);
+    }
+
+    private void printPortfolio(List<Rank> lottosRank, int purchaseMoney) {
+        double portfolio = lottoService.calculatePortfolio(lottosRank, purchaseMoney);
+        SystemMessage.portfolio(portfolio);
     }
 }
