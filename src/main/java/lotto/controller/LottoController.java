@@ -19,7 +19,14 @@ public class LottoController {
         this.inputController = new InputController(new LottoInput());
     }
 
-
+    public void run(){
+        init();
+        inputController.getPurchaseAmount();
+        createLotto();
+        inputController.inputWinNumber();
+        inputController.inputBonusNumber();
+        printLottoStatistics();
+    }
 
     private void printLottoStatistics() {
         LottoStatistics.calculateRank();
