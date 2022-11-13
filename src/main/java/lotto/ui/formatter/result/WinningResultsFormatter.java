@@ -1,5 +1,6 @@
 package lotto.ui.formatter.result;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import lotto.domain.winningresult.WinningResultType;
 import lotto.domain.winningresult.WinningResults;
@@ -55,8 +56,12 @@ public class WinningResultsFormatter implements OutputFormatter<WinningResults> 
     private void appendRewardRate(StringBuilder winningResultsFormat, WinningResults winningResults) {
         winningResultsFormat
                 .append("총 수익률은 ")
-                .append(winningResults.calculateRewardRate())
+                .append(rateFormat(winningResults.calculateRewardRate()))
                 .append("%")
                 .append("입니다.");
+    }
+
+    private static String rateFormat(double rate) {
+        return String.format("%.1f", BigDecimal.valueOf(rate));
     }
 }
