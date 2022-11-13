@@ -1,7 +1,11 @@
-package lotto.domain;
+package lotto.domain.prize;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
+
+import lotto.domain.lotto.LottoGenerator;
 
 public class PrizeStatistics {
     private final Map<PrizeType, Integer> prizeStatistics = new EnumMap<>(PrizeType.class);
@@ -13,27 +17,29 @@ public class PrizeStatistics {
         }
     }
 
+    public Map<PrizeType, Integer> getPrizeStatistics() {
+        return prizeStatistics;
+    }
+
     public int getCount(PrizeType prizeType) {
         return prizeStatistics.get(prizeType);
     }
 
-    public void increment(PrizeType prizeType) {
-        prizeStatistics.put(prizeType, prizeStatistics.get(prizeType) + 1);
-    }
+    public void calculateStatistics(LottoGenerator lottos, Prize prize) {
+        for (List<Integer> lotto : lottos.getLottos()) {
+            boolean containBonusNumber = false;
+            List<Integer> duplicateNumbers = new ArrayList<>(lotto);
 
-    public void print() {
-        System.out.println("\n당첨 통계\n---");
-
-        for (PrizeType prizeType : prizeStatistics.keySet()) {
-            if (prizeType.equals(PrizeType.NONE)) {
-                continue;
+            if (duplicateNumbers.contains(prize.getBonusNumber())) {
+                containBonusNumber = true;
             }
 
-            System.out.println(prizeType.printNumOfMatched()
-                    + prizeType.printPrizeMoney()
-                    + " - "
-                    + getCount(prizeType)
-                    + "개");
+            duplicateNumbers.retainAll(prize.getPrize());
+            increment(PrizeType.getPrizeType(duplicateNumbers.size(), containBonusNumber));
         }
+    }
+
+    public void increment(PrizeType prizeType) {
+        prizeStatistics.put(prizeType, prizeStatistics.get(prizeType) + 1);
     }
 }
