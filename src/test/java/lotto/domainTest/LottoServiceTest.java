@@ -60,7 +60,4 @@ public class LottoServiceTest {
         //then(검증)
         Assertions.assertThat(rank).isEqualTo(LottoRank.FIRST);
     }
-
-
-
 }

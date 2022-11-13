@@ -5,17 +5,17 @@ import java.util.List;
 
 public class LottoService {
 
-    public List<LottoRank> countWinning(List<Integer> lotto, List<List<Integer>> userLotto) {
-        List<LottoRank> ranking = new ArrayList<>();
+    public List<LottoRank> createLottoResult(List<Integer> lotto, List<List<Integer>> userLotto) {
+        List<LottoRank> lottoResult = new ArrayList<>();
 
         for(List<Integer> numbers : userLotto) {
             int count = countMatchNumber(lotto, numbers);
             boolean bonusNumber = checkBonusNumber(count, numbers);
 
-            ranking.add(rankLotto(count, bonusNumber));
+            lottoResult.add(rankLotto(count, bonusNumber));
         }
 
-        return ranking;
+        return lottoResult;
     }
 
     public int countMatchNumber(List<Integer> lotto, List<Integer> userLotto) {
@@ -52,5 +52,21 @@ public class LottoService {
         }
 
         return LottoRank.BLANK;
+    }
+
+    public int calculateProfit(List<LottoRank> lottoResult) {
+        int profit = 0;
+
+        for(LottoRank rank : lottoResult) {
+            profit += rank.getProfit();
+        }
+
+        return profit;
+    }
+
+    public int getLottoAmount(int money) {
+        int amount = money/1000;
+
+        return amount;
     }
 }

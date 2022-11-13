@@ -42,7 +42,7 @@ public class InputValidator {
         validateStringInputIsNumeric(userInput);
 
         int money = Integer.parseInt(userInput);
-        if(money/1000 != 0) {
+        if(money/1000 != 0 || money < 1000) {
             throw new IllegalArgumentException();
         }
     }

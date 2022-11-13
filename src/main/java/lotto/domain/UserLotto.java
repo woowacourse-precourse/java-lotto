@@ -12,14 +12,6 @@ public class UserLotto {
         createUserLotto(amount);
     }
 
-    //예외사항(입력단위가 1000원이 아니면)
-    public int getLottoAmount(int money) {
-        int amount = money/1000;
-
-        return amount;
-    }
-
-
     public List<Integer> createLotto() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(lottoNumbers);
