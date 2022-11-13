@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public final class Lotto {
 
@@ -17,14 +17,13 @@ public final class Lotto {
         return new Lotto(randomNumbers);
     }
 
-    public List<Integer> getNumbers() {
-        return new ArrayList<>(numbers);
+    public int findLottoWinCount(List<Integer> userLotto) {
+        return (int) IntStream.of(0, 6)
+                .filter(i -> userLotto.contains(numbers.get(i)))
+                .count();
     }
 
-    @Override
-    public String toString() {
-        return numbers.stream()
-                .sorted()
-                .collect(Collectors.toList()).toString();
+    public List<Integer> getNumbers() {
+        return new ArrayList<>(numbers);
     }
 }
