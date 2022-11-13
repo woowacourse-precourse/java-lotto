@@ -13,6 +13,10 @@ public class Money {
         this.amount = amount;
     }
 
+    public double calculateYield(long totalPrize) {
+        return 100D * totalPrize / amount;
+    }
+
     private static void validateMinimumAmount(int money) {
         if (money < MINIMUM_AMOUNT) {
             throw new IllegalArgumentException("[ERROR] 최소 1,000원 이상 구매해야 합니다.");
