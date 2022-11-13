@@ -1,10 +1,9 @@
 package lotto;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -43,5 +42,13 @@ public class Lotto {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public int compareWithWinNumber(Lotto WinNumber) {
+
+        ArrayList<Integer> correctNumbers = new ArrayList<>(WinNumber.getLotto());
+        correctNumbers.retainAll(this.numbers);
+
+        return correctNumbers.size();
     }
 }
