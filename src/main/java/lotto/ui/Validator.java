@@ -1,5 +1,8 @@
 package lotto.ui;
 
+import lotto.exception.IllegalLottoNumberException;
+import lotto.exception.IllegalMoneyException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -35,24 +38,27 @@ public class Validator {
 
     private void validateNotDuplicatedNumber(List<Integer> normalNumbers, Integer bonusNumber) {
         if (normalNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(ERROR_BONUS_NUMBER_DUPLICATED);
+            throw new IllegalLottoNumberException(ERROR_BONUS_NUMBER_DUPLICATED);
         }
     }
 
     private void validateConsistOfNumber(String string) {
         if (!Pattern.matches("[0-9]+", string)) {
-            throw new IllegalArgumentException(ERROR_INPUT_IS_NOT_NUMBER);
+            System.out.println(ERROR_INPUT_IS_NOT_NUMBER);
+            throw new IllegalLottoNumberException(ERROR_INPUT_IS_NOT_NUMBER);
         }
     }
 
     private void validateProperRangeOfNumber(int parseInt) {
         if (parseInt < 1 || parseInt > 45) {
-            throw new IllegalArgumentException(ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE);
+            System.out.println(ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE);
+            throw new IllegalLottoNumberException(ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE);
         }
     }
     private void validateConsistOfSixNumbers(List<Integer> numbersInString) {
         if (numbersInString.size() != 6) {
-            throw new IllegalArgumentException(ERROR_NUMBERS_ARE_NOT_CONSISTS_OF_SIX);
+            System.out.println(ERROR_NUMBERS_ARE_NOT_CONSISTS_OF_SIX);
+            throw new IllegalLottoNumberException(ERROR_NUMBERS_ARE_NOT_CONSISTS_OF_SIX);
         }
     }
 
@@ -67,10 +73,12 @@ public class Validator {
     private void validateProperRangeOfMoney(String money) {
         int moneyInt = Integer.parseInt(money);
         if (moneyInt < 1000) {
-            throw new IllegalArgumentException(ERROR_MONEY_NOT_OVER_THOUSAND);
+            System.out.println(ERROR_MONEY_NOT_OVER_THOUSAND);
+            throw new IllegalMoneyException(ERROR_MONEY_NOT_OVER_THOUSAND);
         }
         if (moneyInt % 1000 != 0) {
-            throw new IllegalArgumentException(ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND);
+            System.out.println(ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND);
+            throw new IllegalMoneyException(ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND);
         }
     }
 }
