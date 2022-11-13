@@ -18,19 +18,14 @@ public class LottoStore {
 
     public void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
-        try {
-            this.money = LottoBuyer.getInstance.getPay();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return;
-        }
+        this.money = LottoBuyer.getInstance.getPay();
 
 
         pages = LottoSeller.getInstance.getSellPages(money);
         System.out.println("\n" + pages + "개를 구매했습니다.");
 
         this.userLotto = LottoGenerator.getInstance.issueLotto(pages);
-        for(int userLottoIndex = 0; userLottoIndex<userLotto.size(); userLottoIndex++) {
+        for (int userLottoIndex = 0; userLottoIndex < userLotto.size(); userLottoIndex++) {
             System.out.println(userLotto.get(userLottoIndex).getLotto());
         }
 
@@ -39,48 +34,38 @@ public class LottoStore {
     public void determiningWinningNumber() {
         System.out.println("\n당첨 번호를 입력해 주세요.");
 
-        try {
-            this.winningNumber = LottoDesignator.getInstance.inputLotto();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return;
-        }
+        this.winningNumber = LottoDesignator.getInstance.inputLotto();
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
 
-        try {
-            this.bonus = LottoDesignator.getInstance.inputBonus();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return;
-        }
+        this.bonus = LottoDesignator.getInstance.inputBonus();
     }
 
     public void judgeLottoNumber() {
         this.lottoResult = new ArrayList<>();
-        for(int i = 0; i<pages; i++) {
+        for (int i = 0; i < pages; i++) {
             lottoResult.add(LottoResultJudge.getInstance.judgeLotto(userLotto.get(i).getLotto(), winningNumber, bonus));
         }
 
 
-        for(int lottoResultIndex = 0; lottoResultIndex<lottoResult.size(); lottoResultIndex++) {
-            if(lottoResult.get(lottoResultIndex).equals(LottoResult.FIRST)) {
+        for (int lottoResultIndex = 0; lottoResultIndex < lottoResult.size(); lottoResultIndex++) {
+            if (lottoResult.get(lottoResultIndex) == LottoResult.FIRST) {
                 count[0]++;
                 profit += LottoResult.FIRST.getPrize();
             }
-            if(lottoResult.get(lottoResultIndex).equals(LottoResult.SECOND)) {
+            if (lottoResult.get(lottoResultIndex) == LottoResult.SECOND) {
                 count[1]++;
                 profit += LottoResult.SECOND.getPrize();
             }
-            if(lottoResult.get(lottoResultIndex).equals(LottoResult.THIRD)) {
+            if (lottoResult.get(lottoResultIndex) == LottoResult.THIRD) {
                 count[2]++;
                 profit += LottoResult.THIRD.getPrize();
             }
-            if(lottoResult.get(lottoResultIndex).equals(LottoResult.FOURTH)) {
+            if (lottoResult.get(lottoResultIndex) == LottoResult.FOURTH) {
                 count[3]++;
                 profit += LottoResult.FOURTH.getPrize();
             }
-            if(lottoResult.get(lottoResultIndex).equals(LottoResult.FIFTH)) {
+            if (lottoResult.get(lottoResultIndex) == LottoResult.FIFTH) {
                 count[4]++;
                 profit += LottoResult.FIFTH.getPrize();
             }

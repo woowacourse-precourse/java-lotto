@@ -19,12 +19,13 @@ public class LottoDesignator {
 
     public List<Integer> inputLotto() {
         lottoInput = Console.readLine();
-        List<Integer> lotto = changeList(lottoInput);
 
         checkOnlyNumber(lottoInput);
         checkSixCipher(lottoInput);
         checkRange(lottoInput);
         checkDuplication(lottoInput);
+
+        List<Integer> lotto = changeList(lottoInput);
 
         return lotto;
     }
@@ -32,13 +33,9 @@ public class LottoDesignator {
     public int inputBonus() {
         String input = Console.readLine();
 
-        try {
-            checkOnlyNumber(input);
-            checkRange(input);
-            checkBonusDuplication(lottoInput, input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        checkOnlyNumber(input);
+        checkRange(input);
+        checkBonusDuplication(lottoInput, input);
 
         return Integer.parseInt(input);
     }
