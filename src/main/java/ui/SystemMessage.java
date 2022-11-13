@@ -26,7 +26,7 @@ public class SystemMessage {
     }
 
     public static void printPublishLottoResult(List<Lotto> lottos) {
-        lottos.forEach(System.out::println);
+        lottos.forEach(lotto -> System.out.println(lotto.getUserLottoNumbers()));
     }
 
     public static void printBuyLotto(int numberOfLotto) {
@@ -34,7 +34,7 @@ public class SystemMessage {
     }
 
     public static void printEarnRate(double earnRate) {
-        System.out.println("총 수익률은 " + earnRate + "입니다.");
+        System.out.println("총 수익률은 " + earnRate + "%입니다.");
     }
 
     public static void askBuyLotto() {
