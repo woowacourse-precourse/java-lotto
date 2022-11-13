@@ -20,13 +20,13 @@ public class BonusNumber {
 
     private void validate(String number, Lotto lottoNumbers) {
         if (isStringEmpty(number)) {
-            throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
+            ExceptionMessage.BONUS_OUT_OF_RANGE.throwException();
         } else if (isSeparatorChar(number)) {
-            throw new IllegalArgumentException(ExceptionMessage.BONUS_IS_SEPARATE_CHAR.getMessage());
+            ExceptionMessage.BONUS_IS_SEPARATE_CHAR.throwException();
         } else if (!isDigit(number) || !isBetweenLottoRange(convertStringToInt(number))) {
-            throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
+            ExceptionMessage.BONUS_OUT_OF_RANGE.throwException();
         } else if (isNumberInLotto(convertStringToInt(number), lottoNumbers)) {
-            throw new IllegalArgumentException(ExceptionMessage.BONUS_DUPLICATE_VALUE.getMessage());
+            ExceptionMessage.BONUS_DUPLICATE_VALUE.throwException();
         }
     }
 

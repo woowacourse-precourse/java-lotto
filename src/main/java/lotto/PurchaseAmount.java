@@ -22,11 +22,11 @@ public class PurchaseAmount {
 
     private void validate(String amount) {
         if (isStringEmpty(amount) || !isStringDigit(amount)) {
-            throw new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_NUMBER.getMessage());
+            ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_NUMBER.throwException();
         } else if (!isExceedZero(amount)) {
-            throw new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_EXCEED_ZERO.getMessage());
+            ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_EXCEED_ZERO.throwException();
         } else if (!isThousandUnits(amount)) {
-            throw new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_THOUSAND_UNITS.getMessage());
+            ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_THOUSAND_UNITS.throwException();
         }
     }
 

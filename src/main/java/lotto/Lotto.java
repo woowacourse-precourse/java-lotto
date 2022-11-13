@@ -30,19 +30,19 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (!isSixNumbers(numbers)) {
-            throw new IllegalArgumentException(ExceptionMessage.LOTTO_WRONG_NUMBER_OF_VALUE.getMessage());
+            ExceptionMessage.LOTTO_WRONG_NUMBER_OF_VALUE.throwException();
         } else if (!isBetweenLottoRange(numbers)) {
-            throw new IllegalArgumentException(ExceptionMessage.LOTTO_OUT_OF_RANGE.getMessage());
+            ExceptionMessage.LOTTO_OUT_OF_RANGE.throwException();
         } else if (isDuplicateNumber(numbers)) {
-            throw new IllegalArgumentException(ExceptionMessage.LOTTO_DUPLICATE_VALUE.getMessage());
+            ExceptionMessage.LOTTO_DUPLICATE_VALUE.throwException();
         }
     }
 
     private void validateString(String numbers) {
         if (isStringEmpty(numbers)) {
-            throw new IllegalArgumentException(ExceptionMessage.LOTTO_WRONG_NUMBER_OF_VALUE.getMessage());
+            ExceptionMessage.LOTTO_WRONG_NUMBER_OF_VALUE.throwException();
         } else if (!isDigit(convertStringToList(numbers))) {
-            throw new IllegalArgumentException(ExceptionMessage.LOTTO_OUT_OF_RANGE.getMessage());
+            ExceptionMessage.LOTTO_OUT_OF_RANGE.throwException();
         }
 
         validate(convertStringListToIntegerList(convertStringToList(numbers)));
