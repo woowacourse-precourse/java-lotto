@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.WinningCount;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -51,5 +52,9 @@ public class View {
         System.out.println("5개 일치 (1,500,000원) - " + winningCount.getCount().get("5") + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningCount.getCount().get("bonus") + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + winningCount.getCount().get("6") + "개");
+    }
+
+    public void showProfitRate(double rate){
+        System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 }
