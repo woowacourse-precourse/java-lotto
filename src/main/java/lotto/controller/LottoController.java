@@ -12,5 +12,6 @@ public class LottoController {
         Money money = InputView.inputMoney();
         List<Lotto> lottos = LottoIssueMachine.issue(money.calculateQuantity());
         OutputView.printLottos(lottos);
+        Lotto winningNumbers = InputView.inputWinningNumbers();
     }
 }
