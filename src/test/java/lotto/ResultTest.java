@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class ResultTest {
 
     @DisplayName("3개 일치하는 경우")
@@ -21,8 +23,8 @@ public class ResultTest {
         result.compare(customer, lotto);
 
         // then
-        assertThat(result.getWinBoard.get(3)).isEqualTo(1);
-        assertThat(result.getWinBoard.get(4)).isEqualTo(0);
+        assertThat(result.getWinBoard().get(3f)).isEqualTo(1);
+        assertThat(result.getWinBoard().get(4f)).isEqualTo(0);
     }
 
     @DisplayName("4개 일치하는 경우")
@@ -39,7 +41,7 @@ public class ResultTest {
         result.compare(customer, lotto);
 
         // then
-        assertThat(result.getWinBoard.get(4)).isEqualTo(1);
+        assertThat(result.getWinBoard().get(4f)).isEqualTo(1);
     }
 
     @DisplayName("4개 일치에 보너스가 일치하는 의미없는 경우")
@@ -56,7 +58,7 @@ public class ResultTest {
         result.compare(customer, lotto);
 
         // then
-        assertThat(result.getWinBoard.get(4)).isEqualTo(1);
+        assertThat(result.getWinBoard().get(4f)).isEqualTo(1);
     }
 
     @DisplayName("5개 일치하는 경우")
@@ -73,7 +75,7 @@ public class ResultTest {
         result.compare(customer, lotto);
 
         // then
-        assertThat(result.getWinBoard.get(5)).isEqualTo(1);
+        assertThat(result.getWinBoard().get(5f)).isEqualTo(1);
     }
 
     @DisplayName("5개와 보너스가 일치하는 경우")
@@ -90,7 +92,7 @@ public class ResultTest {
         result.compare(customer, lotto);
 
         // then
-        assertThat(result.getWinBoard.get(5.5)).isEqualTo(1);
+        assertThat(result.getWinBoard().get(5.5f)).isEqualTo(1);
     }
 
     @DisplayName("6개 일치하는 경우")
@@ -107,6 +109,6 @@ public class ResultTest {
         result.compare(customer, lotto);
 
         // then
-        assertThat(result.getWinBoard.get(6)).isEqualTo(1);
+        assertThat(result.getWinBoard().get(6f)).isEqualTo(1);
     }
 }
