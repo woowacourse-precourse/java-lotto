@@ -32,4 +32,13 @@ class LottoTest {
         Lotto lotto = new Lotto(numbers);
         assertThat(lotto.numberOfMatched(winningNumbers)).isEqualTo(5);
     }
+
+    @DisplayName("보너스 번호와 일치하는 로또 번호의 수를 확인한다.")
+    @Test
+    void testNumberOfBonus(){
+        Integer bonus = 1;
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.numberOfBonus(bonus)).isEqualTo(1);
+
+    }
 }
