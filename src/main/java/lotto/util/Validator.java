@@ -13,7 +13,11 @@ public class Validator {
 			throw new IllegalArgumentException("[ERROR] 1부터 45사이의 숫자만 가능합니다.");
 		}
 	}
-
+	public static void validateNoDuplication(List<Integer> numbers) {
+		if (numbers.size() != 6) {
+			throw new IllegalArgumentException("[ERROR] 숫자 간에 중복이 있으면 안 됩니다.");
+		}
+	}
 	public static void validateDivisibility(int amount) {
 		if (amount % LottoConstant.PRICE_OF_LOTTO != 0) {
 			throw new IllegalArgumentException(ErrorLog.INDIVISIBLE_PURCHASING_AMOUNT_ERROR.log());
