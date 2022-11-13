@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoNumber {
@@ -26,7 +27,12 @@ public class LottoNumber {
 
     private List<Integer> oneLotto() {
         List<Integer> lotto = RandomNumber();
+        sortLotto(lotto);
         return lotto;
+    }
+
+    private void sortLotto(List<Integer> lotto) {
+        Collections.sort(lotto);
     }
 
     private List<Integer> RandomNumber(){
