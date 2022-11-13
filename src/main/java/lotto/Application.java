@@ -1,6 +1,10 @@
 package lotto;
 
 import java.util.List;
+import lotto.domain.Lotto;
+import lotto.domain.LottoGame;
+import lotto.ui.LottoInStream;
+import lotto.ui.LottoOutStream;
 
 public class Application {
     private static final String _error = "[ERROR]";
@@ -20,7 +24,6 @@ public class Application {
     }
 
     public static void lottoError(String error_msg) {
-        System.out.print(_error + " " + error_msg);
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(_error + " " + error_msg);
     }
 }

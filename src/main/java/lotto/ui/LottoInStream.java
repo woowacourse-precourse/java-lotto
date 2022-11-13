@@ -1,9 +1,11 @@
-package lotto;
+package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import lotto.Application;
+import lotto.domain.Lotto;
 
 public class LottoInStream {
     private static final String _input_purchase_amount_msg = "구입금액을 입력해 주세요.\n";

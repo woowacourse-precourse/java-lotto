@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.math.BigDecimal;
@@ -6,6 +6,7 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.Application;
 
 public class LottoGame {
     public enum eLottoPlace {

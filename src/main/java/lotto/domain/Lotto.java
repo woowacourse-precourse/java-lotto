@@ -1,8 +1,9 @@
-package lotto;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.Application;
 
 public class Lotto {
     public static final int _min_lotto_number = 1;

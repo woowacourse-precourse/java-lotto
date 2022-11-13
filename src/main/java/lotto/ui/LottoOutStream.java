@@ -1,8 +1,10 @@
-package lotto;
+package lotto.ui;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
+import lotto.domain.Lotto;
+import lotto.domain.LottoGame;
 
 public class LottoOutStream {
     public static void showLottoResult(int[] matches) {
