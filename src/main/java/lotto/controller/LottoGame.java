@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.LottoRank;
 import lotto.domain.Customer;
 import lotto.domain.Lotto;
+import lotto.domain.LottoCompany;
 import lotto.domain.WinningNumber;
 import lotto.view.LottoGameView;
 
@@ -12,10 +13,12 @@ public class LottoGame {
 
     private final LottoGameView lottoGameView;
     private final Customer customer;
+    private final LottoCompany lottoCompany;
 
-    public LottoGame(LottoGameView lottoGameView, Customer customer) {
+    public LottoGame(LottoGameView lottoGameView, Customer customer, LottoCompany lottoCompany) {
         this.lottoGameView = lottoGameView;
         this.customer = customer;
+        this.lottoCompany = lottoCompany;
     }
 
     public void play() {
@@ -25,9 +28,9 @@ public class LottoGame {
 
             lottoGameView.printLottos(lottos);
 
-            WinningNumber winningNumber = new WinningNumber(lottoGameView.inputWinningNumbers(), lottoGameView.inputBonusNumber());
+            WinningNumber winningNumber = lottoCompany.generate(lottoGameView.inputWinningNumbers(), lottoGameView.inputBonusNumber());
             List<LottoRank> ranks = winningNumber.getRanks(lottos);
-            double rateOfReturn = winningNumber.getRateOfReturn(money, winningNumber.getTotalPrizeMoney(ranks));
+            double rateOfReturn = lottoCompany.getRateOfReturn(money, lottoCompany.getTotalPrizeMoney(ranks));
 
             lottoGameView.printWinningResult(ranks);
             lottoGameView.printRateOfReturn(rateOfReturn);

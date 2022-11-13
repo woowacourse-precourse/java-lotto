@@ -43,16 +43,6 @@ public class WinningNumber {
                 .collect(Collectors.toList());
     }
 
-    public int getTotalPrizeMoney(List<LottoRank> ranks) {
-        return ranks.stream()
-                .mapToInt(LottoRank::getPrizeMoney)
-                .sum();
-    }
-
-    public double getRateOfReturn(int money, int prizeMoney) {
-        return ((double) prizeMoney / money) * 100;
-    }
-
     private void validateNumberCount(List<Integer> winningNumbers) {
         if (winningNumbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT.getMessage());
