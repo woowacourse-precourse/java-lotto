@@ -30,4 +30,23 @@ public class WinningTest {
         winning.setBonus(str);
         assertThat(winning.getBonus()).isEqualTo(6);
     }
+
+    @DisplayName("당첨 갯수 일치하는지 체크")
+    @Test
+    void matchWinningLotto() {
+        String str = "1,2,3,4,5,9";
+        List<Integer> num = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        Winning winning = new Winning();
+        winning.setWinnings(str);
+        assertThat(winning.matchWinningLotto(num)).isEqualTo(5);
+    }
+
+    @DisplayName("당첨 보너스 일치하는지 체크")
+    @Test
+    void matchBounuseLotto() {
+        List<Integer> num = new ArrayList<>(Arrays.asList(1,2,3,4,6,7));
+        Winning winning = new Winning();
+        winning.setBonus("7");
+        assertThat(winning.matchBounsLotto(num)).isEqualTo(true);
+    }
 }
