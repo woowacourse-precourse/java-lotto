@@ -49,10 +49,4 @@ public class Ui {
             throw new IllegalArgumentException("ERROR: 구입금액이 1000으로 나누어 떨어지지 않습니다.");
         }
     }
-
-    public static int getLottoTickets(int purchaseAmount) {
-        int lottoTickets = purchaseAmount / 1000;
-        System.out.printf("\n%d개를 구매했습니다.\n", lottoTickets);
-        return lottoTickets;
-    }
 }

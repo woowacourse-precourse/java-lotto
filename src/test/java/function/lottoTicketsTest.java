@@ -1,6 +1,7 @@
 package function;
 
 import java.io.ByteArrayInputStream;
+import lotto.LottoVendingMachine;
 import lotto.Ui;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,6 @@ public class lottoTicketsTest {
     @Test
     void correctInput() {
         int purchaseAmount = 5000;
-        assertThat(Ui.getLottoTickets(5000)).isEqualTo(5);
+        assertThat(LottoVendingMachine.getLottoTickets(5000)).isEqualTo(5);
     }
 }
