@@ -14,6 +14,18 @@ public class InputView {
         System.out.println(PURCHASE_MONEY_MESSAGE);
         return checkAndConvertToInt(Console.readLine());
     }
+
+    public List<Integer> inputWinningNumber(){
+        System.out.println(WINNING_NUMBER_MESSAGE);
+        String input = Console.readLine();
+        checkIntAndComma(input);
+        return convertToListInt(input);
+    }
+
+    public int inputBonusNumber(){
+        System.out.println(BONUS_NUMBER_MESSAGE);
+        return checkAndConvertToInt(Console.readLine());
+    }
     
     private int checkAndConvertToInt(String input){
         try {
