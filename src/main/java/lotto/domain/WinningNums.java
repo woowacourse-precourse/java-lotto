@@ -33,9 +33,17 @@ public class WinningNums {
             throw new IllegalArgumentException("[ERROR] 1-45까지의 숫자만 입력해야 합니다.");
         }
         if (!isNotContains(winningNums, num)) {
-            throw new IllegalArgumentException("[ERROR] 당첨 숫자와 보너스 숫자가 중복됩니다.");
+            throw new IllegalArgumentException(     );
         }
         return num;
+    }
+
+    public List<Integer> getWinningNums() {
+        return winningNums;
+    }
+
+    public int getBonusNum() {
+        return bonusNum;
     }
 }
 
