@@ -28,7 +28,18 @@ public class Cashier {
     }
 
     public void setWinningRule() {
-        this.winningCalculator.setWinningRule();
+        setWinningNumbers();
+        setBonusNumber();
+    }
+
+    private void setWinningNumbers() {
+        String numbersRaw = UserInterface.getWinningNumbers();
+        this.winningCalculator.setWinningNumbers(numbersRaw);
+    }
+
+    private void setBonusNumber() {
+        String bonusNumberRaw = UserInterface.getBonusNumber();
+        this.winningCalculator.setBonusNumber(bonusNumberRaw);
     }
 
     private int convertStringToInt(String numberRaw) {
