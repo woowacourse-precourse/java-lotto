@@ -32,6 +32,10 @@ public class WinningNumbers {
                 .filter(winningNumber -> numbers.stream()
                         .anyMatch(winningNumber::isSameValue))
                 .count();
+        return convertToString(count);
+    }
+
+    private String convertToString(Long count) {
         return String.valueOf(count);
     }
 }
