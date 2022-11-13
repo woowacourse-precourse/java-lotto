@@ -4,7 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.config.LottoConfig;
 import lotto.message.IOMessage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class IOManager {
     private static void printEmptyLine() {
@@ -37,5 +41,11 @@ public class IOManager {
 
     private static void printLotto(Lotto lotto) {
         System.out.println(lotto.toString());
+    }
+
+    public static List<Integer> scanAnswer() {
+        return Arrays.stream(Console.readLine().split(","))
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
     }
 }
