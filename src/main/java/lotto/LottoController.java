@@ -6,29 +6,27 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class LottoController {
-    private LinkedList<Lotto> lottoPool = new LinkedList<>();
 
     public int readUserMoney(String userMoney) {
         isDigit(userMoney);
         validateUserMoney(userMoney);
 
-        return Integer.parseInt(userMoney) / 1000;
+        return Integer.parseInt(userMoney);
     }
 
-    public void createRandomLotto(int count) {
+    public LinkedList<Lotto> createRandomLotto(int count) {
+        LinkedList<Lotto> lottoPool = new LinkedList<>();
+
         for (int i = 0; i < count; i++) {
             List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(randomNumbers);
             Lotto newLotto = new Lotto(randomNumbers);
             lottoPool.add(newLotto);
         }
+
+        return lottoPool;
     }
 
-    public void printLottoPool() {
-        for (Lotto lotto : lottoPool) {
-            System.out.println(lotto.toString());
-        }
-    }
 
     public Lotto readWinNumber(String userWinNumber) {
         StringTokenizer st = new StringTokenizer(userWinNumber, ",");
