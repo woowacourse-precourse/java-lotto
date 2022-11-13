@@ -42,4 +42,13 @@ public class LottoService {
             throw new IllegalArgumentException(WINNING_INPUT_MESSAGE);
         }
     }
+
+    public int inputBonusNumber(View view) throws IllegalArgumentException {
+        try {
+            view.printInputBonusMessage();
+            return Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(BONUS_INPUT_MESSAGE);
+        }
+    }
 }
