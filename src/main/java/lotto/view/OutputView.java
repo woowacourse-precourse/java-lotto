@@ -24,6 +24,7 @@ public class OutputView {
     }
 
     public static void printLottos(List<Lotto> lottos) {
+        System.out.println();
         printLottoSize(lottos.size());
         lottos.stream().forEach(OutputView::printLotto);
     }
@@ -44,6 +45,7 @@ public class OutputView {
     }
 
     public static void printTotalResult(LottoGameResult lottoGameResult, LottoPurchaseMoney lottoPurchaseMoney) {
+        System.out.println();
         System.out.println(LOTTO_GAME_RESULT_START_MESSAGE);
 
         Map<Rank, Integer> winningResult = lottoGameResult.getWinningResult();

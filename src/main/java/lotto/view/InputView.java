@@ -21,12 +21,14 @@ public class InputView {
     }
 
     public static List<Integer> winningNumbers() {
+        System.out.println();
         System.out.println(WINNING_NUMBER_MESSAGE);
 
         return convertStringToNumbers(Console.readLine());
     }
 
     public static int bonusNumber() {
+        System.out.println();
         System.out.println(BONUS_NUMBER_MESSAGE);
 
         return convertStringToInteger(Console.readLine());
