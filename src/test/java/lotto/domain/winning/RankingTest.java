@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+//TODO methodSource
 class RankingTest {
 
     @DisplayName("6, false를 입력하면 FIRST 랭킹이 조회된다.")

@@ -26,7 +26,7 @@ class WinningLottoTest {
                 new BonusNumber(7)
         );
 
-        LottoResults lottoResults = winningLotto.lotteryResults(new LottoTickets(lottos));
+        LottoResults lottoResults = winningLotto.lottoResults(new LottoTickets(lottos));
         Map<Ranking, Integer> actual = lottoResults.results();
 
         Map<Ranking, Integer> expected = Map.of(

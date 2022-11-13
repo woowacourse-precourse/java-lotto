@@ -57,9 +57,9 @@ public class LottoFormat {
 
     private static String rankingFormat(Ranking ranking) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(ranking.countOfMatchingNumber()).append("개 일치");
+        stringBuilder.append(ranking.matchCounts()).append("개 일치");
 
-        if (ranking.isMatchedBonusNumber()) {
+        if (ranking.isMatchedBonus()) {
             stringBuilder.append(", 보너스 볼 일치");
         }
 

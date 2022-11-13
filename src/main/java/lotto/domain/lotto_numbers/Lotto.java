@@ -30,7 +30,7 @@ public class Lotto {
                 .collect(Collectors.toList());
     }
 
-    public int countsOfMatchingNumber(Lotto lotto) {
+    public int matchCounts(Lotto lotto) {
         return (int) numbers.stream()
                 .filter(lotto::contains)
                 .count();

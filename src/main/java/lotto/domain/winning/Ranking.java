@@ -35,46 +35,45 @@ public enum Ranking {
 
     private static final Map<Integer, Ranking> RANKING_UNRELATED_TO_BONUS_NUMBER =
             Arrays.stream(Ranking.values())
-                    .filter(lottoRanking -> !lottoRanking.isMatchedBonusNumber)
+                    .filter(lottoRanking -> !lottoRanking.isMatchedBonus)
                     .collect(Collectors.toUnmodifiableMap(
-                            lottoRanking -> lottoRanking.countOfMatchingNumber,
+                            lottoRanking -> lottoRanking.matchCounts,
                             lottoRanking -> lottoRanking)
                     );
 
-    private final int countOfMatchingNumber;
-    private final boolean isMatchedBonusNumber;
+    private final int matchCounts;
+    private final boolean isMatchedBonus;
     private final long winnings;
 
-    Ranking(int countOfMatchingNumber, boolean isMatchedBonusNumber, long winnings) {
-        this.countOfMatchingNumber = countOfMatchingNumber;
-        this.isMatchedBonusNumber = isMatchedBonusNumber;
+    Ranking(int matchCounts, boolean isMatchedBonus, long winnings) {
+        this.matchCounts = matchCounts;
+        this.isMatchedBonus = isMatchedBonus;
         this.winnings = winnings;
     }
 
-    static Ranking ranking(int countsOfMatchingNumber, boolean isMatchedBonusNumber) {
-        if (isSecond(countsOfMatchingNumber, isMatchedBonusNumber)) {
+    static Ranking ranking(int matchCounts, boolean isMatchedBonus) {
+        if (isSecond(matchCounts, isMatchedBonus)) {
             return SECOND;
         }
 
-        return RANKING_UNRELATED_TO_BONUS_NUMBER.get(countsOfMatchingNumber);
+        return RANKING_UNRELATED_TO_BONUS_NUMBER.get(matchCounts);
     }
 
-    private static boolean isSecond(int countsOfMatchingNumber, boolean isMatchedBonusNumber) {
+    private static boolean isSecond(int matchCounts, boolean isMatchedBonus) {
         final int MATCH_NUMBER_FOR_SECOND_OR_THIRD = 5;
-        return countsOfMatchingNumber == MATCH_NUMBER_FOR_SECOND_OR_THIRD
-                && isMatchedBonusNumber;
+        return matchCounts == MATCH_NUMBER_FOR_SECOND_OR_THIRD && isMatchedBonus;
     }
 
     long sumOfWinnings(int count) {
         return winnings * count;
     }
 
-    public int countOfMatchingNumber() {
-        return countOfMatchingNumber;
+    public int matchCounts() {
+        return matchCounts;
     }
 
-    public boolean isMatchedBonusNumber() {
-        return isMatchedBonusNumber;
+    public boolean isMatchedBonus() {
+        return isMatchedBonus;
     }
 
     public long winnings() {

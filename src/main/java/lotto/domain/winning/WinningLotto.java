@@ -1,6 +1,5 @@
 package lotto.domain.winning;
 
-import static lotto.domain.winning.Ranking.ranking;
 import static lotto.domain.winning.Ranking.values;
 
 import java.util.Arrays;
@@ -23,10 +22,10 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
-    public LottoResults lotteryResults(LottoTickets lottoTickets) {
+    public LottoResults lottoResults(LottoTickets lottoTickets) {
+        List<Ranking> rankings = lottoTickets.rankings(winningNumber, bonusNumber);
         Map<Ranking, Integer> results = initializedRankingMap();
-        List<Lotto> winningLottoTickets = lottoTickets.winningLottoTickets(winningNumber);
-        judgeRanking(winningLottoTickets, results);
+        addResults(rankings, results);
 
         return new LottoResults(results);
     }
@@ -39,14 +38,9 @@ public class WinningLotto {
         return results;
     }
 
-    private void judgeRanking(List<Lotto> winningLottoTickets, Map<Ranking, Integer> results) {
-        for (Lotto winningLottoTicket : winningLottoTickets) {
-            int countsOfMatchingNumber = winningNumber.countsOfMatchingNumber(winningLottoTicket);
-            boolean isMatchedBonusNumber = bonusNumber.isIn(winningLottoTicket);
-            Ranking ranking = ranking(countsOfMatchingNumber, isMatchedBonusNumber);
-
-            results.put(ranking, results.get(ranking) + 1);
-        }
+    private void addResults(List<Ranking> rankings, Map<Ranking, Integer> results) {
+        rankings.forEach(ranking ->
+                results.put(ranking, results.get(ranking) + 1));
     }
 
     private void validateDuplication(Lotto winningNumber, BonusNumber bonusNumber) {
