@@ -13,16 +13,31 @@ public class Money {
 
         Long money = Long.valueOf(input);
 
-        validateMoneyIsGreaterThanMinNumber(money);
+        //validateMoneyIsGreaterThanMinNumber(money);
         validateMoneyIsDivideMinNUmber(money);
 
         this.amount = money;
     }
 
+    public Money(final Long amount) {
+        //validateMoneyIsGreaterThanMinNumber(amount);
+        validateMoneyIsDivideMinNUmber(amount);
+
+        this.amount = amount;
+    }
+
+    public static Money zero() {
+        return new Money("0");
+    }
+
+    public Long calculateAvailablePurchaseCount() {
+        return this.amount / MIN_NUMBER;
+    }
+
     /**
      * ROI는 투자대비 수익률로 이익금액/원금 * 100을 나타냅니다.
      *
-     * @param money
+     * @param amount
      * @return
      */
     public Double calculateROI(Money amount) {
@@ -51,4 +66,7 @@ public class Money {
     }
 
 
+    public Money plus(Money money) {
+        return new Money(this.amount + money.amount);
+    }
 }
