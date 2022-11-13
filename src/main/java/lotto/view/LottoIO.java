@@ -19,7 +19,7 @@ public class LottoIO {
 
     // 당첨 번호 입력
     public void inputLottoAnswer() {
-        System.out.println("당첨 번호를 입력 주세요.");
+        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         System.out.println();
         if (checkInvalidNumbers(input)) {
@@ -36,7 +36,7 @@ public class LottoIO {
 
     // 보너스 번호 입력
     public void inputBonusAnswer() {
-        System.out.println("보너스 번호를 입력 주세요.");
+        System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         System.out.println();
         if (checkInvalidBonus(input)) {

@@ -34,28 +34,13 @@ public class MatchLogic {
             }
             // 1-5등 로직
             Statistics result = rank.get();
-            Long winnerPrice = result.getPrice();
-            if (result == Statistics.FIRST) {
-                matchNums.set(0, matchNums.get(0) + 1);
-                continue;
-            }
-            if (result == Statistics.SEC) {
-                matchNums.set(1, matchNums.get(1) + 1);
-                continue;
-            }
-            if (result == Statistics.THIRD) {
-                matchNums.set(2, matchNums.get(2) + 1);
-                continue;
-            }
-            if (result == Statistics.FOURTH) {
-                matchNums.set(3, matchNums.get(3) + 1);
-                continue;
-            }
-            if (result == Statistics.FIFTH) {
-                matchNums.set(4, matchNums.get(4) + 1);
-                continue;
-            }
+            setWinner(result.getIndex());
         }
+    }
+
+    // 1-5등 정보 갱신
+    private void setWinner(int index) {
+        matchNums.set(index, matchNums.get(index) + 1);
     }
 
     // 특정 로또와 정답 로또 비교
