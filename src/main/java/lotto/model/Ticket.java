@@ -1,40 +1,48 @@
 package lotto.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Ticket {
     private final List<Lotto> lotteries;
-    private final PurchaseAmount purchaseAmount;
+    private final int purchaseAmount;
 
-    public Ticket(PurchaseAmount purchaseAmount) {
+    public Ticket(int purchaseAmount) {
+        validatePurchaseAmount(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
         this.lotteries = createLotteries(purchaseAmount);
+    }
+
+    public Ticket(List<Lotto> lotteries, int purchaseAmount) {
+        this.lotteries = lotteries;
+        this.purchaseAmount = purchaseAmount;
     }
 
     public List<Lotto> getLotteries() {
         return lotteries;
     }
 
-    public PurchaseAmount getPurchaseAmount() {
+    public int getPurchaseAmount() {
         return purchaseAmount;
     }
 
-    private List<Lotto> createLotteries(PurchaseAmount purchaseAmount) {
+    private List<Lotto> createLotteries(int purchaseAmount) {
         List<Lotto> lotteries = new ArrayList<>();
-        int lottoCount = purchaseAmount.getMoney() / 1000;
+        int lottoCount = purchaseAmount / 1000;
 
         for (int count = 1; count <= lottoCount; count++) {
-            List<Integer> lottoNumbers = createLotto();
-            lotteries.add(new Lotto(lottoNumbers));
+            lotteries.add(Lotto.createLotto());
         }
 
         return lotteries;
     }
 
-    private static List<Integer> createLotto() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    private void validatePurchaseAmount(int money) {
+        if (money < 1000) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 이상이어야 합니다.");
+        }
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위로 입력해야 합니다.");
+        }
     }
 }

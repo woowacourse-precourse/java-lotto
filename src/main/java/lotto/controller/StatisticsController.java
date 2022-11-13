@@ -17,7 +17,7 @@ public class StatisticsController {
         List<Integer> winningNumbers = InputWinningNumbers.input();
         BonusNumber bonusNumber = InputBonusNumber.input();
         WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
-        Map<Prize, Integer> statistics = LottoResultService.getStatistics(ticket.getLotteries(), winningLotto);
+        Map<Prize, Integer> statistics = LottoResultService.getStatistics(ticket, winningLotto);
         StatisticsView.outPut(statistics);
         return statistics;
     }

@@ -25,7 +25,6 @@
 - Model 
   - [x] Lotto
   - [x] Ticket (구입 금액에 맞는 로또 발행)
-  - [x] PurchaseAmount
   - [x] WinningLotto
   - [x] BonusNumber
   - [x] ProfitRate
@@ -65,9 +64,9 @@
 - Lotto
   - [x] 로또 번호의 개수가 6개가 맞는지 검증
   - [x] 로또 번호들이 중복이 없는지 검증
-  
 
-- PurchaseAmount
+
+- Ticket
   - [x] 1000원 단위로 나누어 떨어지는지 검증
 
 
@@ -118,9 +117,6 @@
 
 - Ticket
   - [x] 구입 금액만큼 로또가 발행됐는지 테스트
-
-
-- PurchaseAmount
   - [x] 구입 금액이 1000원 이하이면 예외 발생
   - [x] 구입 금액이 1000원 단위로 나누어 떨어지지 않으면 예외 발생
 
@@ -141,7 +137,6 @@
   - [x] 당첨 내역이 일치하는지 테스트
   - [x] 총 상금이 당첨 내역 상금의 합계와 같은지 테스트
 
-
-
+  
 - ProfitRateService
   - [x] 수익률이 소수점 둘째 자리에서 반올림 하는지 테스트

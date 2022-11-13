@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TicketView {
     public static void outPut(Ticket ticket) {
-        int lottoCount = ticket.getPurchaseAmount().getMoney() / 1000;
+        int lottoCount = ticket.getPurchaseAmount() / 1000;
 
         System.out.println(lottoCount + "개를 구매했습니다.");
         List<Lotto> lotteries = ticket.getLotteries();

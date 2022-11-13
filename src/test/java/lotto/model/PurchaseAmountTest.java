@@ -11,14 +11,14 @@ class PurchaseAmountTest {
     @DisplayName("구입 금액이 1000원 이하이면 예외가 발생한다.")
     @Test
     void createPurchaseAmountByLess1000() {
-        assertThatThrownBy(() -> new PurchaseAmount(999))
+        assertThatThrownBy(() -> new Ticket(999))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("구입 금액이 1000원 단위로 나누어 떨어지지 않으면 예외가 발생한다.")
     @Test
     void createPurchaseAmountByNotDivide1000() {
-        assertThatThrownBy(() -> new PurchaseAmount(13500))
+        assertThatThrownBy(() -> new Ticket(13500))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

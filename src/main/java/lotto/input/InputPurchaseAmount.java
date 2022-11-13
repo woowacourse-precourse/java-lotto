@@ -1,14 +1,13 @@
 package lotto.input;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.model.PurchaseAmount;
 
 public class InputPurchaseAmount {
-    public static PurchaseAmount input() {
+    public static int input() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         validateInteger(input);
-        return new PurchaseAmount(Integer.parseInt(input));
+        return Integer.parseInt(input);
     }
 
     private static void validateInteger(String input) {
