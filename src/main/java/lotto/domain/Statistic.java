@@ -8,22 +8,14 @@ import java.util.Map;
 public class Statistic {
     private final Purchase purchase;
     private final Winning winning;
-    private final Map<Integer, Integer> winningGradeStat;
+    private final Map<Integer, Integer> winningGradeAndCountRepository;
     private final double yield;
 
     public Statistic(Purchase purchase, Winning winning) {
         this.purchase = purchase;
         this.winning = winning;
-        winningGradeStat = calculateWinningGradeStatistic();
+        winningGradeAndCountRepository = calculateWinningGradeStatistic();
         yield = calculateYield();
-    }
-
-    public Map<Integer, Integer> getWinningGradeStat() {
-        return winningGradeStat;
-    }
-
-    public double getYield() {
-        return yield;
     }
 
     public Map<Integer, Integer> calculateWinningGradeStatistic() {
@@ -35,6 +27,7 @@ public class Statistic {
         return winningStatistic;
     }
 
+    // Transform purchased lotteries to winning grades
     public List<Integer> winningGradeResults() {
         List<Integer> results = new ArrayList<>();
         for (Lotto purchasedLotto : purchase.getLotteries()) {
@@ -44,6 +37,7 @@ public class Statistic {
         return results;
     }
 
+    // Calculate each Lottery to winning grade
     public int winningGrade(final Lotto purchasedLotto) {
         int correspondantCountResult = calculateCorrespondNumberCount(purchasedLotto);
         int bonusNumber = this.winning.getBonusNumber();
@@ -56,6 +50,7 @@ public class Statistic {
         return 0;
     }
 
+    // Calculate counts of how many numbers match with winning numbers
     public int calculateCorrespondNumberCount(final Lotto purchasedLotto) {
         return (int)purchasedLotto.getNumbers().stream()
                 .filter(winning.getWinningNumbers()::contains).count();
@@ -63,14 +58,14 @@ public class Statistic {
 
     public double calculateYield() {
         long sum = 0;
-        for (int winningGrade : this.winningGradeStat.keySet()) {
-            long winningReward = gradeToRewardMapping(winningGrade);
-            sum += (winningReward * this.winningGradeStat.get(winningGrade));
+        for (int winningGrade : this.winningGradeAndCountRepository.keySet()) {
+            long winningReward = mapperOfGradeToReward(winningGrade);
+            sum += (winningReward * this.winningGradeAndCountRepository.get(winningGrade));
         }
         return sum / (double)purchase.getPurchaseAmount();
     }
 
-    public long gradeToRewardMapping(int winningGrade) {
+    public long mapperOfGradeToReward(int winningGrade) {
         for (Grade x : Grade.values()) {
             if (x.getGrade() == winningGrade) {
                 return x.getReward();
@@ -79,11 +74,12 @@ public class Statistic {
         return 0;
     }
 
+    // For Print the statistical result with purchased lotteries
     public void printWinningStatisticResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (Grade grade : Grade.values()) {
-            int count = winningGradeStat.getOrDefault(grade.getGrade(), 0);
+            int count = winningGradeAndCountRepository.getOrDefault(grade.getGrade(), 0);
             System.out.println(grade.getResult() + count + "개");
         }
         String format = String.format("총 수익률은 %.1f%%입니다.", this.yield * 100);
