@@ -14,7 +14,7 @@ public class LottoStore {
 
     public static void startLotto() {
         System.out.println("구입금액을 입력해 주세요.");
-        int money = 0;
+        int money;
         try {
             money = lottoBuyer.getPay();
         } catch (IllegalArgumentException e) {
@@ -32,10 +32,24 @@ public class LottoStore {
         }
 
         System.out.println("\n당첨 번호를 입력해 주세요.");
-        List<Integer> winningNumber = lottoDesignator.inputLotto();
+        List<Integer> winningNumber;
+
+        try {
+            winningNumber = lottoDesignator.inputLotto();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
-        int bonus = lottoDesignator.inputBonus();
+        int bonus;
+
+        try {
+            bonus = lottoDesignator.inputBonus();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         List<LottoResult> lottoResult = new ArrayList<>();
         for(int i = 0; i<pages; i++) {

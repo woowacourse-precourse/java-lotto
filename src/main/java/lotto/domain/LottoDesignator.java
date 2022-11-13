@@ -20,14 +20,10 @@ public class LottoDesignator {
         lottoInput = Console.readLine();
         List<Integer> lotto = changeList(lottoInput);
 
-        try {
-            checkOnlyNumber(lottoInput);
-            checkSixCipher(lottoInput);
-            checkRange(lottoInput);
-            checkDuplication(lottoInput);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        checkOnlyNumber(lottoInput);
+        checkSixCipher(lottoInput);
+        checkRange(lottoInput);
+        checkDuplication(lottoInput);
 
         return lotto;
     }
