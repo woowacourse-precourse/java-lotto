@@ -8,6 +8,7 @@ import java.util.List;
 public class LottoGameSimulator {
     private List<Lotto> purchasedLottos;
     private WinningNumbers winningNumbers;
+    private BonusNumber bonusNumber;
     private Money userMoney;
     public LottoGameSimulator() {
     }
@@ -43,7 +44,7 @@ public class LottoGameSimulator {
     }
 
     public void getInputOfBonusNumber() {
-
+        MessagePrinter.printBonusNumberInputRequest();
     }
 
     public void printResult() {

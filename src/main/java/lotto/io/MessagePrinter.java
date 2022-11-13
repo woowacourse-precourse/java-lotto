@@ -22,4 +22,8 @@ public class MessagePrinter {
     public static void printWinningNumbersInputRequest() {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
+
+    public static void printBonusNumberInputRequest() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
 }
