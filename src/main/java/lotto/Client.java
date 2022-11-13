@@ -11,14 +11,14 @@ public class Client {
     public int buy() {
         String moneyAmountString = clientInput.get();
 
-        int moneyAmount = parseStringToInt(moneyAmountString);
+        int moneyAmount = parseStringToIntOrElseThrow(moneyAmountString);
 
         ThousandMultipleOrElseThrow(moneyAmount);
 
         return moneyAmount;
     }
 
-    private int parseStringToInt(String moneyAmountString) {
+    private int parseStringToIntOrElseThrow(String moneyAmountString) {
         int moneyAmount;
         try {
             moneyAmount = Integer.parseInt(moneyAmountString);
