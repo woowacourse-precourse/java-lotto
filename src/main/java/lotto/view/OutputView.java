@@ -16,13 +16,9 @@ public class OutputView {
 
     public static void printLottoTickets(LottoTicket lottoTicket){
         for(Lotto lotto : lottoTicket.getLottoTickets()){
-            System.out.println(convertToString(lotto));
+            System.out.println(lotto.getNumbers().toString());
         }
     }
 
-    private static String convertToString(Lotto lotto){
-        return lotto.getNumbers().toString();
-
-    }
 
 }
