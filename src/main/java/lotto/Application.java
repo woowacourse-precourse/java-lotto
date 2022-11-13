@@ -22,7 +22,8 @@ public class Application {
     public static void main(String[] args) {
         try {
             getPurchaseAmount();
-            makeLottos();
+            lottos = LottoMaker.makeLotto(purchaseAmount);
+            printLottos();
             getWinningNumbers();
             getBonusNumber();
             makeLottoResults();
@@ -38,8 +39,7 @@ public class Application {
         System.out.println();
     }
 
-    private static void makeLottos() throws Exception {
-        lottos = LottoMaker.makeLotto(purchaseAmount);
+    private static void printLottos() {
         ConsoleOutput.printNumOfLotto(purchaseAmount/LottoMaker.ONE_LOTTO_PRICE);
         ConsoleOutput.printLottos(lottos);
         System.out.println();
@@ -65,6 +65,7 @@ public class Application {
     }
 
     private static void printStatistics() {
-        ConsoleOutput.printWinningStatistics(results, ProfitCalculator.getProfit(results, purchaseAmount));
+        ConsoleOutput.printWinningStatistics(results,
+                ProfitCalculator.getProfit(results, purchaseAmount));
     }
 }
