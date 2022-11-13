@@ -15,15 +15,18 @@ public class WinningNumbers {
 	}
 
 	public WinningNumbers(int bonusNumber) {
+		validateBonusNumber(bonusNumber);
 		WinningNumbers.bonusNumber = bonusNumber;
 	}
 
-	void validateWinningNumbers(List<Integer> notYetValidatedWinningNumbers) {
-		Validator.validateSizeOfNumbers(notYetValidatedWinningNumbers);
-		Validator.validateNoDuplication(notYetValidatedWinningNumbers);
-		notYetValidatedWinningNumbers.forEach(Validator::validateNumberRange);
+	void validateWinningNumbers(List<Integer> winningNumbers) {
+		Validator.validateSizeOfNumbers(winningNumbers);
+		Validator.validateNoDuplication(winningNumbers);
+		winningNumbers.forEach(Validator::validateNumberRange);
 	}
 
 	void validateBonusNumber(int bonusNumber) {
+		Validator.validateNumberRange(bonusNumber);
+		Validator.validateExclusion(bonusNumber, winningNumbers);
 	}
 }

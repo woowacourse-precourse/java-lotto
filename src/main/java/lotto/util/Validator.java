@@ -8,6 +8,11 @@ import lotto.constant.ErrorLog;
 import lotto.constant.LottoConstant;
 
 public class Validator {
+	public static void validateExclusion(int number, List<Integer> numbers) {
+		if (numbers.contains(number)) {
+			throw new IllegalArgumentException("[ERROR] 보너스 숫자는 당첨 번호와 중복되면 안 됩니다.");
+		}
+	}
 	public static void validateNumberRange(int number) {
 		if (number < LottoConstant.MINIMUM_LOTTO_NUMBER || number > LottoConstant.MAXIMUM_LOTTO_NUMBER) {
 			throw new IllegalArgumentException("[ERROR] 각각의 숫자는 1부터 45까지의 범위여야 합니다.");
