@@ -1,8 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.BuyLotto;
-import lotto.domain.Lotto;
-
 import java.util.List;
 
 public class Revenue {
