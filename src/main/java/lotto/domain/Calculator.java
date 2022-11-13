@@ -40,8 +40,8 @@ public class Calculator {
 
     public static Rank getRankByMatch(int match, WinningNumbers winningNumbers, Lotto lotto) {
         for (Rank rank : Rank.values()) {
-            if (rank.getMatch() == 2 && hasBonus(winningNumbers, lotto)) {
-                return Rank.SECOND;
+            if (match == 5 && hasNotBonus(winningNumbers, lotto)) {
+                return Rank.THIRD;
             }
             if (rank.getMatch() == match) {
                 return rank;
@@ -50,8 +50,8 @@ public class Calculator {
         return Rank.NOTHING;
     }
 
-    public static boolean hasBonus(WinningNumbers winningNumbers, Lotto lotto) {
-        return lotto.getNumbers().contains(winningNumbers.getBonusNumber());
+    public static boolean hasNotBonus(WinningNumbers winningNumbers, Lotto lotto) {
+        return !lotto.getNumbers().contains(winningNumbers.getBonusNumber());
     }
 
     public int getTotalPrice() {
