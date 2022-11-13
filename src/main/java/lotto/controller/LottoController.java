@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.PurchasedAmount;
 import lotto.domain.PurchasedLottos;
+import lotto.domain.WinningLotto;
 import view.InputView;
 import view.OutputView;
 
@@ -18,6 +19,20 @@ public class LottoController {
         final PurchasedLottos purchasedLottos = new PurchasedLottos(purchasedAmount.getCount());
 
         outputView.printPurchasedLottos(purchasedAmount.getCount(), purchasedLottos);
+
+        final WinningLotto winningLotto = getWinningLotto();
+        if (winningLotto == null) {
+            return;
+        }
+    }
+
+    private WinningLotto getWinningLotto() {
+        try {
+            return inputView.inputWinningLottoNumber();
+        } catch (IllegalArgumentException exception) {
+            outputView.getErrorMessage(exception.getMessage());
+            return null;
+        }
     }
 
     private PurchasedAmount getPurchasedAmount() {
