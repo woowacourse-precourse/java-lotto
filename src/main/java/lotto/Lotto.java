@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
-
+    public static final int LOTTERY_PRICE = 1000;
     public static final int LOTTERY_START_NUMBER = 1;
     public static final int LOTTERY_END_NUMBER = 45;
     public static final int LOTTERY_NUMBER_LENGTH = 6;
@@ -27,11 +27,15 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        // 입력받은 List를 Sort할 때 수정이 불가능한 List가 넘어오는 문제를 해결하기 위해 Copy
-        List<Integer> copiedNumbers = new ArrayList<>(numbers);
-        this.numbers = copiedNumbers;
-        validate(copiedNumbers);
-        Collections.sort(copiedNumbers);
+        List<Integer> sortedNumbers = numbers;
+        try {
+            Collections.sort(sortedNumbers);
+        } catch (UnsupportedOperationException ex) {
+            sortedNumbers = new ArrayList<>(numbers);
+            Collections.sort(sortedNumbers);
+        }
+        this.numbers = sortedNumbers;
+        validate(numbers);
 
     }
 
@@ -68,7 +72,8 @@ public class Lotto {
         StringBuilder lottery = new StringBuilder();
 
         for (Integer number : numbers) {
-            if (!lottery.toString().equals("")) {
+            boolean emptyValue = lottery.toString().equals("");
+            if (!emptyValue) {
                 lottery.append(", ");
             }
             lottery.append(number);
@@ -81,7 +86,7 @@ public class Lotto {
      * 당첨 결과를 비교하는 함수
      *
      * @param winningNumbers 당첨 번호
-     * @param bonus 보너스 번호
+     * @param bonus          보너스 번호
      * @return 당첨 결과
      */
     public LottoResult compareWinningNumbers(List<Integer> winningNumbers, int bonus) {

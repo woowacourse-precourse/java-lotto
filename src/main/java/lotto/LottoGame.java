@@ -8,29 +8,38 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoGame {
-    private static final int LOTTERY_PRICE = 1000;
+
     private static final String NUMERIC_PATTERN = "^\\d*$";
     private static final String SEPARATOR = ",";
 
-    /** 로또 게임을 진행하는 함수 */
+    /**
+     * 로또 게임을 진행하는 함수
+     * 예외 발생 시 예외 메시지를 콘솔에 출력하고 종료
+     *
+     */
     public void play() {
         try {
-            int buyPrice = receiveBuyPrice();
-            int buyNum = buyPrice / LOTTERY_PRICE;
-
-            List<Lotto> lotteries = Lotto.generateLotteries(buyNum);
-
-            printBuyResult(lotteries);
-
-            List<Integer> winningNumbers = receiveWinningNumbers();
-            int bonusNumbers = receiveBonusNumber();
-
-            Map<LottoResult, Integer> result = compareLotteriesResult(lotteries, winningNumbers, bonusNumbers);
-
-            printResult(buyPrice, result);
+            playCore();
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    /** 로또 게임을 실제로 진행하는 함수 */
+    private void playCore() throws IllegalArgumentException {
+        int buyPrice = receiveBuyPrice();
+        int buyNum = buyPrice / Lotto.LOTTERY_PRICE;
+
+        List<Lotto> lotteries = Lotto.generateLotteries(buyNum);
+
+        printBuyResult(lotteries);
+
+        List<Integer> winningNumbers = receiveWinningNumbers();
+        int bonusNumbers = receiveBonusNumber();
+
+        Map<LottoResult, Integer> result = compareLotteriesResult(lotteries, winningNumbers, bonusNumbers);
+
+        printResult(buyPrice, result);
     }
 
     /**
@@ -54,17 +63,24 @@ public class LottoGame {
      */
     public int parseBuyPrice(String userInput) throws IllegalArgumentException {
 
-        if (!userInput.matches(NUMERIC_PATTERN)) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자로 입력해야 합니다.");
-        }
+        checkNumericPattern(userInput, "[ERROR] 구입 금액은 숫자로 입력해야 합니다.");
 
         int price = Integer.parseInt(userInput);
 
-        if (price % LOTTERY_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원으로 나누어 떨어지는 값으로 입력해야 합니다.");
-        }
+        checkBuyPriceUnit(price);
 
         return price;
+    }
+
+    /**
+     * 구입 금액이 로또 가격으로 나누어 떨어지는지 검사하는 함수
+     * 만약 나누어 떨어지지 않으면 IllegalArgumentException 발생
+     * @param price 구입 금액
+     */
+    private void checkBuyPriceUnit(int price) throws IllegalArgumentException {
+        if (price % Lotto.LOTTERY_PRICE != 0) {
+            throw new IllegalArgumentException(String.format("[ERROR] 구입 금액은 %d원 으로 나누어 떨어지는 값으로 입력해야 합니다.", Lotto.LOTTERY_PRICE));
+        }
     }
 
     /**
@@ -102,22 +118,56 @@ public class LottoGame {
 
         List<Integer> winningNumbers = new ArrayList<>();
         for (String splitedUserInput : splitedUserInputs) {
-            if (!splitedUserInput.matches(NUMERIC_PATTERN)) {
-                throw new IllegalArgumentException("[ERROR] 당첨 결과는 공백없이 쉼표를 기준으로 입력해야합니다.");
-            }
+            checkNumericPattern(splitedUserInput, "[ERROR] 당첨 번호는 공백 없이 쉼표(,)로 구분된 숫자를 입력해야 합니다.");
 
             int number = Integer.parseInt(splitedUserInput);
-            if(number > 45 || number < 1) {
-                throw new IllegalArgumentException("[ERROR] 잘못된 값 범위 입니다.");
-            }
+
+            checkLotteryNumberRange(number);
+
             winningNumbers.add(number);
         }
 
+        checkLotteryNumberLength(winningNumbers);
+
+        return winningNumbers;
+    }
+
+    /**
+     * 입력된 로또 당첨 숫자의 갯수가 로또의 숫자 갯수와 일치하는지 검사하는 함수
+     * 만약 일치하지 않은경우 IllegalArgumentException 발생
+     *
+     * @param winningNumbers 파싱된 로또 당첨 번호
+     */
+    private void checkLotteryNumberLength(List<Integer> winningNumbers) throws IllegalArgumentException {
         if (winningNumbers.size() != Lotto.LOTTERY_NUMBER_LENGTH) {
             throw new IllegalArgumentException(String.format("[ERROR] 당첨 결과는 %d개의 숫자로 구성되어야 합니다.", Lotto.LOTTERY_NUMBER_LENGTH));
         }
+    }
 
-        return winningNumbers;
+    /**
+     * 나눠진 사용자 입력이 숫자로만 구성되어있는지 확인하는 함수
+     * 패턴에 일치하지 않는 경우 IllegalArgumentException 발생
+     *
+     * @param splitedUserInput ,로 나눠진 사용자 입력
+     */
+    private void checkNumericPattern(String splitedUserInput, String ExceptionMsg) throws IllegalArgumentException {
+        if (!splitedUserInput.matches(NUMERIC_PATTERN)) {
+            throw new IllegalArgumentException(ExceptionMsg);
+        }
+    }
+
+    /**
+     * 로또 번호의 범위를 검사하는 함수
+     * 범위를 벗어나는 경우 IllegalArgumentException 발생
+     *
+     * @param number 로또 번호
+     */
+    private void checkLotteryNumberRange(int number) throws IllegalArgumentException {
+        boolean numberInRange = number <= Lotto.LOTTERY_END_NUMBER && number >= Lotto.LOTTERY_START_NUMBER;
+
+        if (!numberInRange) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 값 범위 입니다.");
+        }
     }
 
     /**
@@ -129,11 +179,11 @@ public class LottoGame {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String userInput = Console.readLine();
 
-        if (!userInput.matches(NUMERIC_PATTERN)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자로만 입력해야 합니다.");
-        }
+        checkNumericPattern(userInput, "[ERROR] 보너스 번호는 숫자로 입력해야 합니다.");
+        int bonusNumber = Integer.parseInt(userInput);
+        checkLotteryNumberRange(bonusNumber);
 
-        return Integer.parseInt(userInput);
+        return bonusNumber;
     }
 
     /**
