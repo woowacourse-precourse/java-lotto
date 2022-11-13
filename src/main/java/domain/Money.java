@@ -13,7 +13,7 @@ public class Money {
 
     public void validateOneThousandUnit(int money) {
         if (money % UNIT != ZERO) {
-            throw new IllegalArgumentException("구입 금액은 1,000원 단위여야 합니다.");
+            throw new IllegalArgumentException("구매 금액은 1,000원 단위여야 합니다.");
         }
     }
 
