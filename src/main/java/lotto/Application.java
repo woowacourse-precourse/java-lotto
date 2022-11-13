@@ -2,6 +2,10 @@ package lotto;
 
 public class Application {
     public static void main(String[] args) {
-        ConsoleManager.runUI();
+        try {
+            ConsoleManager.runUI();
+        }catch(Exception exception){
+            System.out.println(exception.getMessage());
+        }
     }
 }
