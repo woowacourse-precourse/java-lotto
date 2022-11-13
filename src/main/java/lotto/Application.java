@@ -23,10 +23,12 @@ public class Application {
 
     public static void main(String[] args) {
         int payment = inputPrice();
-        purchaseLotteries(payment);
+        List<Lotto> lotteries = purchaseLotteries(payment);
 
-        inputWinningNumbers();
-        inputBonusNumber();
+        List<Integer> winningNumbers = inputWinningNumbers();
+        int bonus = inputBonusNumber();
+
+
     }
 
     public static int inputPrice() {
@@ -77,5 +79,21 @@ public class Application {
         }
         System.out.println();
         return lotteries;
+    }
+
+    public static List<Integer> checkLottery(Lotto lotto, List<Integer> winningNumbers, int bonus) {
+        List<Integer> numbers = lotto.getNumbers();
+        List<Integer> hitCountAndBonusHitCount = Arrays.asList(0, 0);
+        int cnt = 0;
+        for (Integer number : numbers) {
+            if (winningNumbers.contains(number)) {
+                cnt++;
+            }
+        }
+        hitCountAndBonusHitCount.set(0, cnt);
+        if (numbers.contains(bonus)) {
+            hitCountAndBonusHitCount.set(1, 1);
+        }
+        return hitCountAndBonusHitCount;
     }
 }
