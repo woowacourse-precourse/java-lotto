@@ -10,13 +10,27 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    /**
+     * 로또 번호 개수 적합성 로직
+     */
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR] 로또 번호 개수가 6이 아닙니다.");
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    /**
+     * 로또 번호 중복 체크 로직
+     */
+    private void validateDuplication(List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); ++i) {
+            if (numbers.indexOf(numbers.get(i)) != -1) {
+                System.out.println("[ERROR] 로또 번호 중 중복이 있습니다.");
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 
     @Override
     public String toString() {
