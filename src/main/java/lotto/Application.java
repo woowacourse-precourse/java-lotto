@@ -14,15 +14,27 @@ public class Application {
         }
         return returnData;
     }
+    public static Lotto[] buyLotto (int buyCnt){
+        Lotto[] returnData = new Lotto[buyCnt];
 
-    public static int[] convertStringToInt(String input){
-        String[] inputSplit = input.split(",");
-        int[] returnData = new int[inputSplit.length];
-
-        for(int index = 0; index < inputSplit.length; index++){
-            returnData[index] = Integer.valueOf(inputSplit[index]);
+        for(int i = 0; i < buyCnt; i++){
+            List<Integer> lottoNumber = inputLottoNumber();
+            returnData[i] = new Lotto(lottoNumber);
         }
 
+        return returnData;
+    }
+    public static List<Integer> convertStringToInt(String input){
+        String[] inputSplit = input.split(",");
+        List<Integer> returnData = new ArrayList<Integer>();
+        for(int index = 0; index < inputSplit.length; index++){
+            returnData.add(Integer.valueOf(inputSplit[index]));
+        }
+        return returnData;
+    }
+    public static List<Integer> inputLottoNumber(){
+        String userInput = Console.readLine();
+        List<Integer> returnData = convertStringToInt(userInput);
         return returnData;
     }
 
