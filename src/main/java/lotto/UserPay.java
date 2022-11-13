@@ -18,4 +18,14 @@ public class UserPay {
             }
         }
     }
+
+    public int lottocount() throws IllegalArgumentException{
+        int count = Integer.parseInt(userInput)/1000;
+
+        if(Integer.parseInt(userInput)%1000 != 0){
+            throw new IllegalArgumentException("[ERROR] 천원 단위로 입력해주세요.");
+        }
+
+        return count;
+    }
 }
