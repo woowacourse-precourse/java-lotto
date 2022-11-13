@@ -1,6 +1,7 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.PurchasedAmount;
 import lotto.domain.WinningLotto;
 
 import java.lang.reflect.Array;
@@ -10,8 +11,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static lotto.constant.ConstValue.WINNING_NUMBER_INPUT_PATTERN;
-import static lotto.constant.Message.INVALID_WINNING_LOTTO_INPUT_FORMAT_MESSAGE;
-import static lotto.constant.Message.WINNING_NUMBER_INPUT_MESSAGE;
+import static lotto.constant.Message.*;
 
 public class InputView {
     public WinningLotto inputWinningLottoNumber() {
@@ -35,5 +35,12 @@ public class InputView {
         if (!Pattern.matches(WINNING_NUMBER_INPUT_PATTERN, lottoNumbers)) {
             throw new IllegalArgumentException(INVALID_WINNING_LOTTO_INPUT_FORMAT_MESSAGE);
         }
+    }
+
+    public PurchasedAmount inputPurchasedAmount() {
+        System.out.println(PURCHASE_AMOUNT_INPUT_MESSAGE);
+        String purchasedAmount = Console.readLine();
+
+        return new PurchasedAmount(purchasedAmount);
     }
 }
