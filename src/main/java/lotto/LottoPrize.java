@@ -36,17 +36,19 @@ public class LottoPrize {
         messageUtil.printWinningStatsResult(FIVE_COUNT_WITH_BONUS.getNumber(), FIVE_COUNT_WITH_BONUS.getPrice(), FIVE_COUNT_WITH_BONUS.getMatchCount());
         messageUtil.printWinningStatsResult(SIX_COUNT.getNumber(), SIX_COUNT.getPrice(), SIX_COUNT.getMatchCount());
 
-        int totalWinningAmount = getTotalWinningAmount();
-        Double earningRate = Double.valueOf(computeEarningRate(purchaseAmount, totalWinningAmount));
+        long totalWinningAmount = getTotalWinningAmount();
+        double earningRate = Double.parseDouble(computeEarningRate(purchaseAmount, totalWinningAmount));
+
         messageUtil.printEarningRate(earningRate);
+
     }
 
-    private int getTotalWinningAmount() {
-        return THREE_COUNT.getMatchCount() * THREE_COUNT.getPrice()
-                + FOUR_COUNT.getMatchCount() * FOUR_COUNT.getPrice()
-                + FIVE_COUNT.getMatchCount() * FIVE_COUNT.getPrice()
-                + FIVE_COUNT_WITH_BONUS.getMatchCount() * FIVE_COUNT_WITH_BONUS.getPrice()
-                + SIX_COUNT.getMatchCount() * SIX_COUNT.getPrice();
+    private long getTotalWinningAmount() {
+        return (long) THREE_COUNT.getMatchCount() * THREE_COUNT.getPrice()
+                + (long) FOUR_COUNT.getMatchCount() * FOUR_COUNT.getPrice()
+                + (long) FIVE_COUNT.getMatchCount() * FIVE_COUNT.getPrice()
+                + (long) FIVE_COUNT_WITH_BONUS.getMatchCount() * FIVE_COUNT_WITH_BONUS.getPrice()
+                + (long) SIX_COUNT.getMatchCount() * SIX_COUNT.getPrice();
     }
 
     private void addMatchCount(int matchCount) {
@@ -76,16 +78,19 @@ public class LottoPrize {
     }
 
     private int checkBonusNumber(List<Integer> userNums, int matchCount) {
-        if(matchCount == FIVE_COUNT.getNumber() && userNums.contains(matchCount)) {
+        if(matchCount == FIVE_COUNT.getNumber() && userNums.contains(winningNumInfo.getBonusNum())) {
             return matchCount * 10;
         }
 
         return matchCount;
     }
 
-    public String computeEarningRate(int purchaseAmount, int winningAmount) {
-        double earningRate = (double) (purchaseAmount / winningAmount) * 100;
+    public String computeEarningRate(int purchaseAmount, long winningAmount) {
+        if (winningAmount == 0) {
+            return "0";
+        }
 
+        double earningRate = (double) winningAmount / (double) purchaseAmount * 100;
         return String.format("%.1f", earningRate);
     }
 
