@@ -31,7 +31,7 @@ public class Lotto {
                 .filter(number -> MIN_NUMBER <= number)
                 .filter(number -> number <= MAX_NUMBER)
                 .count()) {
-            throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_EXCEPTION.toString());
+            throw new IllegalArgumentException(RANGE_EXCEPTION.toString());
         }
     }
 
@@ -39,7 +39,7 @@ public class Lotto {
         if (LOTTO_NUMBER_LENGTH != numbers.stream()
                 .distinct()
                 .count()) {
-            throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATED_EXCEPTION.toString());
+            throw new IllegalArgumentException(DUPLICATED_EXCEPTION.toString());
         }
     }
 
