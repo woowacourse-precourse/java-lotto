@@ -31,7 +31,7 @@ public class UserInput {
     private static void validateNumberString(String input) {
         for (Character c : input.toCharArray()) {
             if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("숫자가 아닌 값을 입력하셨습니다. 숫자를 입력해주세요.");
             }
         }
     }
