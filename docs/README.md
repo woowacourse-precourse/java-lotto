@@ -1,6 +1,3 @@
-# Mission - *Lotto*🎱     
-
-
 ## 🚀 프로젝트 소개
 > 이번 주차는 로또 게임 기능을 구현한다.
 
@@ -161,15 +158,17 @@
     <summary> <b>사용할 라이브러리 - camp.nextstep.edu.missionutils</b> </summary>
     <div markdown="1">
 
-- [ &nbsp; ] [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
-  - [ &nbsp; ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
-  - [✔] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+[`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
 
+- [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
 
-- 사용 예시
-  ```java
-  List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-  ```
+- [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+  
+
+  - 사용 예시
+    ```java
+    List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    ```
   
 <br>
 
@@ -199,11 +198,11 @@
       // TODO: 추가 기능 구현
   }
   ```
-  - [ &nbsp; ] `Lotto`에 매개 변수가 없는 생성자를 추가할 수 없다.
-  - [ &nbsp; ] `numbers`의 접근 제어자인 private을 변경할 수 없다.
-  - [ &nbsp; ] `Lotto`에 필드(인스턴스 변수)를 추가할 수 없다.
-  - [ &nbsp; ] `Lotto`의 패키지 변경은 가능하다.
-  - [ &nbsp; ] `제약사항으로 명시된 부분 외에는 자유롭게 코드를 수정할 수 있다.
+  - [x] `Lotto`에 매개 변수가 없는 생성자를 추가할 수 없다.
+  - [x] `numbers`의 접근 제어자인 private을 변경할 수 없다.
+  - [x] `Lotto`에 필드(인스턴스 변수)를 추가할 수 없다.
+  - [x] `Lotto`의 패키지 변경은 가능하다.
+  - [x] `제약사항으로 명시된 부분 외에는 자유롭게 코드를 수정할 수 있다.
 
 <br>
 </details>
@@ -220,7 +219,7 @@
 
 ### 로또 발행
 - [x] `UI` : 로또 구입금액 입력
-- [ ] 로또 구입 금액을 입력받으면, 구입 금액에 해당하는 만큼 로또 발행하기
+- [x] 로또 구입 금액을 입력받으면, 구입 금액에 해당하는 만큼 로또 발행하기
   - [ ] `Exception` : 입력된 금액이 1,000원으로 나누어 떨어지지 않는 경우 예외 처리
 - [ ] 1~45 범위의 숫자 내에서 중복되지 않는 6개의 숫자 생성하기 (로또 번호는 오름차순으로 정렬)
 - [ ] `UI` : 발행한 로또 수량 및 번호 출력
@@ -254,9 +253,11 @@
 &nbsp; &nbsp;   ✔&nbsp; 프로젝트 소개, 요구사항, 도전 과제, 구현할 기능 목록 등을 상세히 작성해본다.
 
 
-&nbsp; &nbsp;   ✔&nbsp; 구현할 기능 목록<br>
-&nbsp; &nbsp; &nbsp; &nbsp;   ✔&nbsp; 예외 처리도 목록으로 정리해본다. (단, 예외 상황은 시작 단계에서 모두 찾기 힘들기 때문에 기능을 구현하면서 계속 추가)<br>
-&nbsp; &nbsp; &nbsp; &nbsp;   ✔&nbsp; 주의 : 클래스, 함수(메서드) 명 등 추후 변경될 수 있는 부분 등을 너무 상세하게 작성하지 않는다.
+&nbsp; &nbsp;   ✔&nbsp; 구현할 기능 목록
+
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; - 예외 처리도 목록으로 정리해본다. (단, 예외 상황은 시작 단계에서 모두 찾기 힘들기 때문에 기능을 구현하면서 계속 추가)
+
+&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; - 주의 : 클래스, 함수(메서드) 명 등 추후 변경될 수 있는 부분 등을 너무 상세하게 작성하지 않는다.
 
 
 &nbsp; &nbsp;   ✔&nbsp; 죽은 문서가 아니라 살아있는 문서를 만들기 위해 노력한다.
@@ -271,7 +272,7 @@
 <br>
 
 ### 3️⃣ Java Code Convention
-- [ ] [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 가이드를 준수하며 프로그래밍한다. 
+&nbsp; &nbsp;   ✔&nbsp; [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 가이드를 준수하며 프로그래밍한다. 
 
 
 &nbsp; &nbsp;   ✔&nbsp; indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
