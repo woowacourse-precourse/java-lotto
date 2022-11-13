@@ -1,5 +1,6 @@
 package controller;
 
+import resources.Error;
 import java.util.Arrays;
 
 public class Validator {
