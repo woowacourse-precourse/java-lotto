@@ -4,6 +4,7 @@ import lotto.controller.dto.UserInputMoneyDto;
 import lotto.controller.dto.WinnerNumberDto;
 import lotto.repository.dto.UserLottoDto;
 import lotto.service.LottoService;
+import lotto.service.StatisticsDto;
 import lotto.service.StatisticsService;
 import lotto.view.OutputView;
 
@@ -53,9 +54,9 @@ public class LottoController {
 
 	private void activateStatisticsService(UserInputMoneyDto userInputMoneyDto, UserLottoDto userLottoDto,
 		WinnerNumberDto winnerNumberDto) {
-		Double yield = statisticsService.updateStatistics(userLottoDto, winnerNumberDto,
+		StatisticsDto statisticsDto = statisticsService.updateStatistics(userLottoDto, winnerNumberDto,
 			userInputMoneyDto.getInputPrice());
-		outputView.printUserStatistics(yield);
+		outputView.printUserStatistics(statisticsDto);
 	}
 
 }

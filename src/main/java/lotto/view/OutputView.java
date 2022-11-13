@@ -1,10 +1,9 @@
 package lotto.view;
 
-import java.util.Arrays;
 import java.util.List;
 
 import lotto.domain.Lotto;
-import lotto.domain.Rank;
+import lotto.service.StatisticsDto;
 import lotto.util.ViewConst;
 
 public class OutputView {
@@ -19,11 +18,11 @@ public class OutputView {
 		System.out.println(lottoCount + ViewConst.LOTTO_COUNT_OUTPUT);
 	}
 
-	public void printUserStatistics(Double yield) {
+	public void printUserStatistics(StatisticsDto statisticsDto) {
 		System.out.println(ViewConst.STATISTICS_OUTPUT);
-		Arrays.stream(Rank.values())
-			.forEach(i -> System.out.println(i.userStatisticsResultToString()));
-		System.out.println("총 수익률은 " + yield + "%입니다.");
+		List<String> userTotalRankResult = statisticsDto.getUserTotalRankResult();
+		userTotalRankResult.stream().forEach(System.out::println);
+		System.out.println("총 수익률은 " + statisticsDto.getYield() + "%입니다.");
 	}
 
 	public void printError(String errorMessage) {

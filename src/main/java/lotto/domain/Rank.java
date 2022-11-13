@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import java.util.Arrays;
-
 import lotto.util.RankConst;
 
 public enum Rank {
@@ -13,30 +11,17 @@ public enum Rank {
 
 	private final Integer price;
 	private final String rankCountDescription;
-	private Integer count;
 
 	Rank(int price, String rankCountDescription) {
 		this.price = price;
 		this.rankCountDescription = rankCountDescription;
-		this.count = 0;
 	}
 
-	public static Double findYield(Integer buyPrice) {
-		double sum = Arrays.stream(Rank.values())
-			.mapToDouble(i -> i.price * i.count)
-			.reduce(0, (total, y) -> total + y);
-		return Double.valueOf(Math.round(sum * 1000d / (double)buyPrice) / 10d);
+	public Integer getPrice() {
+		return price;
 	}
 
-	public void updateCount(Integer number) {
-		this.count += number;
-	}
-
-	public String userStatisticsResultToString() {
-		return this.rankCountDescription + this.count + RankConst.COUNT;
-	}
-
-	public static void clearCount() {
-		Arrays.stream(Rank.values()).forEach(rank -> rank.count = 0);
+	public String getRankCountDescription() {
+		return rankCountDescription;
 	}
 }

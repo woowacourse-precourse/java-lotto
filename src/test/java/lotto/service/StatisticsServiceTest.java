@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import lotto.controller.dto.WinnerNumberDto;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
+import lotto.domain.RankGroup;
 import lotto.repository.UserLottoRepository;
 import lotto.repository.dto.UserLottoDto;
 import lotto.util.RankConst;
@@ -19,17 +20,19 @@ class StatisticsServiceTest {
 
 	private StatisticsService statisticsService;
 	private UserLottoRepository userLottoRepository;
+	private RankGroup rankGroup;
 
 	@BeforeEach
 	void setUp() {
-		statisticsService = new StatisticsService();
+		rankGroup = new RankGroup();
+		statisticsService = new StatisticsService(this.rankGroup);
 		userLottoRepository = new UserLottoRepository();
 	}
 
 	@AfterEach
 	void tearDown() {
 		userLottoRepository.clear();
-		Rank.clearCount();
+		rankGroup.clearRankGroupCount();
 	}
 
 	@DisplayName("사용자가 구매한 로또와 당첨번호의 일치 개수를 체크하여 당첨등수 횟수 확인하는 테스트")
@@ -47,8 +50,8 @@ class StatisticsServiceTest {
 
 		//when
 		statisticsService.updateStatistics(userLottoDto, winnerNumberDto, inputPrice);
-		String userFirstRankStatisticsResult = Rank.firstRank.userStatisticsResultToString();
-		String userSecondRankStatisticsResult = Rank.secondRank.userStatisticsResultToString();
+		String userFirstRankStatisticsResult = rankGroup.userRankResultToString(Rank.firstRank);
+		String userSecondRankStatisticsResult = rankGroup.userRankResultToString(Rank.secondRank);
 
 		//then
 		Assertions.assertThat(userFirstRankStatisticsResult)

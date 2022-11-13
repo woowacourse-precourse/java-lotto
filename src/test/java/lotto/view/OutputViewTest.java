@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import lotto.domain.Lotto;
+import lotto.service.StatisticsDto;
 import lotto.util.ViewConst;
 
 class OutputViewTest {
@@ -56,12 +57,14 @@ class OutputViewTest {
 	void printUserStatisticsTest() {
 		//given
 		Double yield = 100d;
+		StatisticsDto statisticsDto = new StatisticsDto(List.of("empty"), yield);
 
 		//when
-		outputView.printUserStatistics(yield);
+		outputView.printUserStatistics(statisticsDto);
 
 		//then
-		assertThat(outContent.toString()).contains(ViewConst.STATISTICS_OUTPUT, "총 수익률은 " + yield + "%입니다.");
+		assertThat(outContent.toString()).contains(ViewConst.STATISTICS_OUTPUT,
+			"총 수익률은 " + statisticsDto.getYield() + "%입니다.");
 	}
 
 	@Test

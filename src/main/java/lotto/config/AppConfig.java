@@ -2,6 +2,7 @@ package lotto.config;
 
 import lotto.controller.InputController;
 import lotto.controller.LottoController;
+import lotto.domain.RankGroup;
 import lotto.repository.UserLottoRepository;
 import lotto.service.InputValidService;
 import lotto.service.LottoService;
@@ -12,7 +13,9 @@ import lotto.view.OutputView;
 public class AppConfig {
 
 	public LottoController config() {
-		StatisticsService statisticsService = new StatisticsService();
+		RankGroup rankGroup = new RankGroup();
+		StatisticsService statisticsService = new StatisticsService(rankGroup);
+
 		UserLottoRepository userLottoRepository = new UserLottoRepository();
 		LottoService lottoService = new LottoService(userLottoRepository);
 		InputView inputView = new InputView();
