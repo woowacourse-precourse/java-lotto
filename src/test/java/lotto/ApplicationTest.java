@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -54,6 +55,13 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void myTest(){
+        assertSimpleTest(() -> {
+            runException("1000j");
+            System.out.println(output());
+        });
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
