@@ -19,4 +19,9 @@ public class OutputView {
     public static void printLottoNumber(Lotto lotto) {
         System.out.println(lotto);
     }
+
+    public static void printWinningNumber() {
+        System.out.println();
+        System.out.println(INPUT_WINNING_NUMBER);
+    }
 }
