@@ -7,7 +7,8 @@ public enum ErrorMessage {
     WINNING_NUM_NOT_A_NUMBER("[ERROR] 당첨 번호는 숫자여야 합니다."),
     NUMBER_OUT_OF_RANGE("[ERROR] 번호는 1부터 45사이의 숫자여야 합니다."),
     BONUS_NUM_NOT_A_NUMBER("[ERROR] 보너스 번호는 숫자여야 합니다."),
-    WINNING_NUM_CONTAINS_BONUS_NUM("[ERROR] 당첨 번호 중에 보너스 번호가 존재합니다");
+    WINNING_NUM_CONTAINS_BONUS_NUM("[ERROR] 당첨 번호 중에 보너스 번호가 존재합니다"),
+    DUPLICATE_EXIST("[ERROR] 로또 번호에 중복된 숫자가 존재합니다.");
 
 
     final String message;
