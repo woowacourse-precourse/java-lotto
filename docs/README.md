@@ -23,7 +23,7 @@
 - 구입 금액에 따른 로또 수량 계산 및 저장
 
 ###
-### ✔️ LottoNumberGenerate
+### ✔️ LottoNumberGeneration
 
 - 중복되지 않는 6개의 숫자를 뽑아 로또 번호를 생성
 
