@@ -1,5 +1,7 @@
 package lotto.service;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import lotto.domain.Buyer;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
@@ -8,13 +10,10 @@ import lotto.utils.Utils;
 import lotto.validation.Validation;
 import lotto.view.InputMessage;
 import lotto.view.OutputMessage;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Service {
     private static final int LOTTO_START_NUMBER=1;
@@ -22,6 +21,8 @@ public class Service {
     private static final int LOTTO_LENGTH=6;
     private static final int LOTTO_LEAST_AMOUNT=1_000;
     private static final int LOTTO_MAX_AMOUNT = 100_000;
+    private static final int COUNT_ZERO = 0;
+    private static final int COUNT_ONE = 1;
 
     Buyer buyer;
     LottoGame lottoGame;
@@ -120,7 +121,7 @@ public class Service {
         HashMap<Rank,Integer> result = buyer.getLottoResult();
         for(Lotto lotto : buyer.getPurchasedLotteries()){
             Rank rank = determineLottoRank(lotto);
-            result.put(rank,result.getOrDefault(rank,0)+1);
+            result.put(rank,result.getOrDefault(rank,COUNT_ZERO)+COUNT_ONE);
         }
     }
 

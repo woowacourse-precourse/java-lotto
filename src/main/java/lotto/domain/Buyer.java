@@ -8,8 +8,8 @@ public class Buyer {
     private static final double PERCENT = 100;
 
     private final ArrayList<Lotto> purchasedLotteries = new ArrayList<>();
-    private final int purchaseAmount;
     private final HashMap<Rank,Integer> lottoResult = new HashMap<>();
+    private final int purchaseAmount;
 
     public Buyer(int purchaseAmount){
         this.purchaseAmount = purchaseAmount;
