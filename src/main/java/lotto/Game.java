@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.view.InputView.inputMoneyView;
-import static lotto.view.InputView.inputWinningView;
+import static lotto.view.InputView.*;
 import static lotto.view.OutputView.countView;
 import static lotto.view.OutputView.lottoView;
 
@@ -18,6 +17,7 @@ public class Game {
     public static Integer count;
 
     public static List<Integer> winning = new ArrayList<>();
+    private static Integer bonus;
     public Game(){
     }
 
@@ -28,6 +28,7 @@ public class Game {
         countView();
         lottoView();
         makeWinning(inputWinningView());
+        bonus = Integer.parseInt(inputBonusView());
     }
     private static Lotto getRandoms(){
         Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
