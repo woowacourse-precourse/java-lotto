@@ -68,4 +68,17 @@ public class MyLotto {
             }
         }
     }
+
+    public void calculateTotalPrize() {
+
+        int prize;
+        String lottoRank;
+
+        for (Rank rank : Rank.values()) {
+            lottoRank = rank.name();
+            prize = rank.getPrize();
+
+            this.totalPrize += (this.eachLottoRank.get(lottoRank)*prize);
+        }
+    }
 }
