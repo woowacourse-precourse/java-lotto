@@ -1,5 +1,7 @@
 package lotto;
 
+/* 등수에 관한 Enum 입니다 */
+
 public enum Rank {
     FIFTH(5_000, new Match(3)),
     FOURTH(50_000, new Match(4)),

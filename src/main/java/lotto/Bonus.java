@@ -1,5 +1,7 @@
 package lotto;
 
+/* 보너스 번호의 Type으로 사용되는 클래스입니다 */
+
 public class Bonus {
     private int bonus;
 

@@ -3,6 +3,8 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+/* 로또 번호의 Type으로 사용되는 클래스입니다 */
+
 public class Lotto {
     private final List<Integer> numbers;
 
