@@ -5,8 +5,6 @@ import lotto.view.LottoView;
 
 public class LottoController {
 
-    private int purchase;
-
     private LottoController() {
     }
 
