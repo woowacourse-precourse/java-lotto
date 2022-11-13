@@ -26,4 +26,16 @@ public class Application {
         }
         return money/1000;
     }
+
+    public int checkLottoSame(Lotto winningLotto, Lotto lotto){
+        int same = 0;
+        List<Integer> winNum = winningLotto.getNumbers();
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        for(int i : lottoNumbers){
+            if(winNum.contains(i)){
+                same++;
+            }
+        }
+        return same;
+    }
 }
