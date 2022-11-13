@@ -9,8 +9,9 @@ import java.util.List;
 import java.util.Set;
 
 public class WinningNumber {
-    List<Integer> winningNumber = new ArrayList<>();
-    int bonusNumber;
+
+    private Lotto winningLotto;
+    private int bonusNumber;
 
     WinningNumber(String input, String bonusNumber) {
         validateNumber(input, bonusNumber);
@@ -19,9 +20,11 @@ public class WinningNumber {
 
     public void setNumbers(String input, String bonusNumber) {
         String[] splitInput = input.split(",");
+        List<Integer> lottoNumbers = new ArrayList<>();
         for (String num : splitInput) {
-            winningNumber.add(Integer.parseInt(num));
+            lottoNumbers.add(Integer.parseInt(num));
         }
+        winningLotto = new Lotto(lottoNumbers);
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
@@ -42,5 +45,13 @@ public class WinningNumber {
             throw new IllegalArgumentException(ErrorMessages.ERROR_SIGN.getErrorMessage()
                     + " " + ErrorMessages.DUPLICATE_ERROR.getErrorMessage());
         }
+    }
+
+    public Lotto getWinningLotto() {
+        return winningLotto;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
