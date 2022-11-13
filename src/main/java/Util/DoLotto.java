@@ -1,4 +1,4 @@
-package lotto;
+package Util;
 
 import Printer.MessagePrinter;
 import Character.Lotto;
@@ -7,47 +7,47 @@ import Character.User;
 
 public class DoLotto {
 
-    public void play() throws IllegalArgumentException {
+    MessagePrinter messagePrinter = new MessagePrinter();
+    User user = new User();
+    LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
 
-        MessagePrinter messagePrinter = new MessagePrinter();
-        User user = new User();
-        LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
-        int numberOfLotto;
-
+    public void purchaseLotto() {
         messagePrinter.printInputMoneyMessage();
         user.setMoney();
         messagePrinter.printPurchaseConfirmMessage(lotteryTicketingMachine.ticketHowManyLotto(user.getMoney()));
+    }
 
+    public void makeLottoBundle() {
+        int numberOfLotto;
         numberOfLotto = lotteryTicketingMachine.ticketHowManyLotto(user.getMoney());
         user.makeLottoBundle(numberOfLotto);
         messagePrinter.printPurchasedLotto(user.getLottoBundle());
+    }
 
+    public void makeWinningNumber() {
         messagePrinter.printInputWinningNumberMessage();
         user.inputWinningNumber();
-
         messagePrinter.printInputBonusNumberMessage();
         user.inputBonusNumber();
+    }
 
+    public void getPrizeMoney() {
         for (Lotto lotto : user.getLottoBundle()) {
             int howManyWinningNumber = lotteryTicketingMachine.checkWinningNumber(user.getWinningNumber(),lotto);
             boolean isBonusNumberCorrect = lotto.contains(user.getBonusNumber());
             user.countWinningNumber(howManyWinningNumber,isBonusNumberCorrect);
         }
-
         user.calculateEarning();
-
-        messagePrinter.printWinningResult(
-                Integer.toString(user.getWinningNumberCounting().get(3)),
-                Integer.toString(user.getWinningNumberCounting().get(4)),
-                Integer.toString(user.getWinningNumberCounting().get(5)),
-                Integer.toString(user.getWinningNumberCounting().get(6)),
-                Integer.toString(user.getWinningNumberCounting().get(7))
-        );
-
-        user.calculateEarningRate();
-
+        messagePrinter.printWinningResult(user.getWinningNumberCounting());
         messagePrinter.printEarningsRate(user.calculateEarningRate());
+    }
 
+
+    public void play() throws IllegalArgumentException {
+        purchaseLotto();
+        makeLottoBundle();
+        makeWinningNumber();
+        getPrizeMoney();
     }
 
 }
