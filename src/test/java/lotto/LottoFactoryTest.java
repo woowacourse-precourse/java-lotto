@@ -15,10 +15,7 @@ public class LottoFactoryTest {
     @Test
     @DisplayName("로또 팩토리는 랜덤한 숫자를 생성한다.")
     void generateRandomNumber() {
-        //given
-        //when
         List<Integer> lotto = lottoFactory.chooseNumbers().lottoNumbers();
-        //then
         lotto.forEach(lottoNumber -> assertTrue(lottoNumber >= 1 && lottoNumber <= 45));
     }
 
