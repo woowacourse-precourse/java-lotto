@@ -12,5 +12,7 @@ public class Application {
 
         int money = inputOutput.moneyInput();
         List<Lotto> lottos = lottoPublisher.publish(money);
+
+        inputOutput.printLottos(lottos);
     }
 }

@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class InputOutput {
     private final int LOTTERY_PRICE;
@@ -30,5 +31,9 @@ public class InputOutput {
         }
 
         return money;
+    }
+
+    public void printLottos(List<Lotto> lottos) {
+        lottos.forEach(lotto -> System.out.println(lotto.getNumbers()));
     }
 }
