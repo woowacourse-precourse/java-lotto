@@ -10,6 +10,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkDuplicatedNumber(numbers);
+        checkRangeOverNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -25,6 +26,18 @@ public class Lotto {
         if(checkDuplicate.size() < numbers.size()){
             throw new IllegalArgumentException();
         }
+    }
+
+    private void checkRangeOverNumber(List<Integer> numbers){
+
+        for(int i = 0 ; i < numbers.size(); i++){
+            int checkNumber = numbers.get(i);
+
+            if(checkNumber > 0 || 45 < checkNumber){
+                throw new IllegalArgumentException();
+            }
+        }
+
     }
     // TODO: 추가 기능 구현
 }
