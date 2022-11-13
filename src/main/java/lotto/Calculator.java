@@ -97,8 +97,6 @@ public class Calculator {
     }
 
     private void calcYield() {
-        System.out.println(rankCount);
-
         double profit = 0;
         for(Prize prize: Prize.values()) {
             if (rankCount.containsKey(prize.place)) {
