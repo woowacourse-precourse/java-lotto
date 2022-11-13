@@ -25,7 +25,7 @@ public enum LottoPrize {
     public Long calculatePrize(Long count) {
         return prize * count;
     }
-    
+
     public static LottoPrize getEnum(int matchedCount, boolean bonusNumberMatched) {
         LottoPrize lottoPrize = getLottoPrize(matchedCount);
         return checkSecondPrize(lottoPrize, bonusNumberMatched);
@@ -38,7 +38,7 @@ public enum LottoPrize {
                 .orElse(_NOTHING);
     }
 
-    private static List<LottoPrize> lowestPrizeOrder() {
+    public static List<LottoPrize> lowestPrizeOrder() {
         return Arrays.stream(values())
                 .filter(lottoPrize -> !lottoPrize.equals(_NOTHING))
                 .sorted(Comparator.comparingInt(o -> o.prize))
