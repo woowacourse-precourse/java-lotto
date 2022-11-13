@@ -41,17 +41,9 @@ public class Print {
         }
     }
 
-    public static void yield(int lottoTickets, Map<LottoOperator, Integer> winningResult) {
-        int lottoAmount = lottoTickets * 1000;
-        double prizeMoney = 0;
-        for (LottoOperator lottoOperator : winningResult.keySet()) {
-            if (lottoOperator == LottoOperator.NO_LUCK) {
-                continue;
-            }
-            prizeMoney += lottoOperator.getWinningAmount() * winningResult.get(lottoOperator);
-        }
-        String yield = String.format("%,.1f", (prizeMoney / lottoAmount) * 100);
-        System.out.println("총 수익률은 " + yield + "%입니다.");
+    public static void yield(double yield) {
+        String yieldFormat = String.format("%,.1f", yield);
+        System.out.println("총 수익률은 " + yieldFormat + "%입니다.");
     }
 
     private static String numberComma(double number) {
