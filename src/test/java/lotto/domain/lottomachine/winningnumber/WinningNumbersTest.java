@@ -52,7 +52,7 @@ class WinningNumbersTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @DisplayName("contains 메소드에 WinningNumber 리스트가 입력되면 중복 여부를 반환하는지 확인")
+    @DisplayName("countSameValue 메소드에 숫자 리스트를 입력하면 같은 값의 숫자 개수를 세서 반환하는지 확인")
     @ParameterizedTest()
     @MethodSource("provideTwoListForCountTest")
     void countSameValue_test(List<Integer> numbers, List<Integer> inputNumbers, String expected) {
