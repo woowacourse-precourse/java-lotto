@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static lotto.constant.ExceptionConstants.*;
@@ -33,5 +35,15 @@ public class Player {
 
     private int parse(String purchaseAmount) {
         return Integer.parseInt(purchaseAmount);
+    }
+
+    private List<Lotto> buyLotto(int purchaseAmount) {
+        List<Lotto> lottos = new ArrayList<>();
+
+        while (purchaseAmount > 0) {
+            lottos.add(Computer.issueLotto());
+            purchaseAmount -= LOTTO_PRICE;
+        }
+        return lottos;
     }
 }
