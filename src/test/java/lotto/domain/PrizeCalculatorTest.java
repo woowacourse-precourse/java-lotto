@@ -15,7 +15,7 @@ class PrizeCalculatorTest {
                 LottoRank.FORTH, LottoRank.FIFTH, LottoRank.NOTHING,
                 LottoRank.NOTHING, LottoRank.NOTHING));
         PrizeCalculator calculator = new PrizeCalculator();
-        int prize = calculator.calculate(lottoRanks);
+        int prize = calculator.getPrize(lottoRanks);
         assertThat(prize).isEqualTo(2031555000);
     }
 
@@ -24,7 +24,7 @@ class PrizeCalculatorTest {
     void calculateTest2() {
         List<LottoRank> lottoRanks = new ArrayList<>(List.of());
         PrizeCalculator calculator = new PrizeCalculator();
-        int prize = calculator.calculate(lottoRanks);
+        int prize = calculator.getPrize(lottoRanks);
         assertThat(prize).isEqualTo(0);
     }
 }
