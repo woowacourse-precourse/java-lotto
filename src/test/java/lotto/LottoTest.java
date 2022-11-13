@@ -46,4 +46,20 @@ class LottoTest {
             }
         }
     }
+
+    @DisplayName("당첨번호 입력 테스트. ','로 나눴을떄 길이가 6이 나와야한다.")
+    @Test
+    void inputWinningLottoLength(){
+        assertThatThrownBy(
+                ()-> Exception.validateLottoLength(new String[]{"1", "4", "6", "7", "4"})
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨번호 입력 테스트. ','로 나눴을때, 각 문자열은 숫자이고, 1~45사이 수여야한다.")
+    @Test
+    void inputWinningLottoIntegerAndRange(){
+        assertThatThrownBy(
+                ()-> Exception.validateLottoNumberRange(new String[]{"1", "4", "6", "7", "4","0"})
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
 }

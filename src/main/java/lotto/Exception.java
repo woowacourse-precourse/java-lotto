@@ -32,7 +32,6 @@ public class Exception {
     }
 
     public static void validateLottoNumberRange(String[] stringWinningNumbers) {
-
         for (String number: stringWinningNumbers){
             if (Integer.parseInt(number)<1 || Integer.parseInt(number)>45){
                 throw new IllegalArgumentException("[ERROR] 입력 가능한 숫자의 범위는 1~45까지입니다");
