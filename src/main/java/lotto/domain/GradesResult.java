@@ -15,7 +15,7 @@ public class GradesResult {
         return Collections.unmodifiableMap(gradesResult);
     }
 
-    public double calculateYield(Money money) {
+    public double calculateYield(LottoMoney money) {
         return calculateTotalPrizeMoney() / money.getMoney();
     }
 

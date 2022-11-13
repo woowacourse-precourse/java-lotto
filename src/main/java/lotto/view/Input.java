@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
-import lotto.domain.Money;
+import lotto.domain.LottoMoney;
 
 public class Input {
 
@@ -13,7 +13,7 @@ public class Input {
     private static final String REQUST_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String REQUEST_WINNER_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
 
-    public static Money inputMoney() {
+    public static LottoMoney inputMoney() {
         System.out.println(REQUEST_PURCHASE_MONEY_MESSAGE);
         return readLindToMoney();
     }
@@ -34,8 +34,8 @@ public class Input {
         return Console.readLine().split(WINNER_NUMBERS_SPLIT_REGEX);
     }
 
-    private static Money readLindToMoney() {
-        return new Money(Console.readLine());
+    private static LottoMoney readLindToMoney() {
+        return new LottoMoney(Console.readLine());
     }
 
 }

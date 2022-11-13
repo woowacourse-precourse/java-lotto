@@ -12,11 +12,11 @@ public class Seller {
 
     public static final int LOTTO_PRICE = 1000;
 
-    public static LottoTicket buyLottoByMoney(Money money) {
+    public static LottoTicket buyLottoByMoney(LottoMoney money) {
         return new LottoTicket(toLottos(money));
     }
 
-    private static List<Lotto> toLottos(Money money) {
+    private static List<Lotto> toLottos(LottoMoney money) {
         long lottoQuantity = money.getQuantityByUnit(LOTTO_PRICE);
         List<Lotto> lottos = new ArrayList<>();
         while (lottoQuantity-- != 0) {
