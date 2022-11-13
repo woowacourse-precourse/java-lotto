@@ -89,7 +89,7 @@ public class CustomerTest {
         customer.inputBonusNumber("1");
 
         // then
-        assertThat(customer.getBounsNumber()).isEqualTo(1);
+        assertThat(customer.getBonusNumber()).isEqualTo(1);
     }
 
     @DisplayName("사용자가 보너스 번호를 잘못 입력")
@@ -99,12 +99,12 @@ public class CustomerTest {
         Customer customer = new Customer();
 
         // then
-        assertThatThrownBy(() -> customer.inputBounsNumber("46"))
+        assertThatThrownBy(() -> customer.inputBonusNumber("46"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(WRONG_RANGE.toString());
 
-        assertThatThrownBy(() -> customer.inputBounsNumber("a"))
+        assertThatThrownBy(() -> customer.inputBonusNumber("a"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(WRONG_RANGE.toString());
+                .hasMessageContaining(WRONG_INPUT.toString());
     }
 }

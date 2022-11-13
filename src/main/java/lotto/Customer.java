@@ -23,6 +23,7 @@ public class Customer {
     }
 
     public int buy(String input) {
+        input = removeLeadingAndTrailingSpaces(input);
         payValidate(input);
         return Integer.parseInt(input) / BILL.getNumber();
     }
@@ -32,6 +33,12 @@ public class Customer {
         convertInputToLotto(input);
     }
 
+    public void inputBonusNumber(String input) {
+        input = removeLeadingAndTrailingSpaces(input);
+        bonusNumberValidate(input);
+        this.bonusNumber = Integer.parseInt(input);
+    }
+
     private void convertInputToLotto(String input) {
         StringTokenizer delimitedInput = commaDelimited(input);
         winningNumber = new ArrayList<>();
@@ -39,6 +46,11 @@ public class Customer {
         while (delimitedInput.hasMoreTokens()) {
             winningNumber.add(Integer.parseInt(removeLeadingAndTrailingSpaces(delimitedInput.nextToken())));
         }
+    }
+
+    private void bonusNumberValidate(String input) {
+        isContainNumber(input);
+        isNotWrongRange(input);
     }
 
     private void payValidate(String input) {
@@ -69,7 +81,6 @@ public class Customer {
 
     private void duplicateValidate(List<Integer> numbers) {
         Set<Integer> duplicateCheck = new HashSet<>();
-
         duplicateCheck.addAll(numbers);
 
         if (!SIZE.equals(duplicateCheck.size())) {
@@ -125,5 +136,9 @@ public class Customer {
 
     public List<Integer> getWinningNumber() {
         return this.winningNumber;
+    }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
     }
 }
