@@ -70,4 +70,25 @@ class ValidatorTest {
         // expected
         Validator.validatePlayNumbersRange(playerNumbers);
     }
+
+    @DisplayName("당첨 번호에 중복된 값이 있는지 확인 - 따르지 않음")
+    @Test
+    void validatePlayNumbersDuplicationNotFollow() {
+        // given
+        List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 5);
+
+        // expected
+        assertThatThrownBy(() -> Validator.validatePlayNumbersDuplication(playerNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호에 중복된 값이 있는지 확인 - 따름")
+    @Test
+    void validatePlayNumbersDuplicationFollow() {
+        // given
+        List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 45);
+
+        // expected
+        Validator.validatePlayNumbersDuplication(playerNumbers);
+    }
 }
