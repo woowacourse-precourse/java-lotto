@@ -45,7 +45,7 @@
 #### BonusNumber
 - [X] 보너스 번호 생성 - BonusNumber#BonusNumber(int number)
   - [X] 보너스 번호가 1~45 범위 내의 수인지 검증 - BonusNumber#validateNumberInRange(int number)
-- [ ] 보너스 번호 값 반환 - BonusNumber#getNumber()
+- [X] 보너스 번호 값 반환 - BonusNumber#getNumber()
 
 
 #### WinningLotto
