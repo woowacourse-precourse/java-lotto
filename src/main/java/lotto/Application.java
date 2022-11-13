@@ -4,18 +4,18 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        User user = new User();
-        Calculator calculator = new Calculator();
+        Integer ticketsNumber = User.askTicketsNumber();
+        List<Lotto> lottos = User.buy(ticketsNumber);
+        // User.printLottos(lottos);
 
-        Integer tickets = user.askTickets();
+        List<Integer> numbers = User.askWinNumbers();
+        Lotto winNumbers = new Lotto(numbers);
+        Integer bonus = User.askBonusNumbers();
 
-        // Lotto(numbers, tickets)
-
-        List<Integer> numbers = user.askWinNumbers();
-        Lotto lotto = new Lotto(numbers);
-        Integer bonus = user.askBonusNumbers();
-
-        // calculator.doSomething(lotto, bonus);
-        user.getEarning();
+        // Calculator calculator = new Calculator(lotto, bonus);
+        // for (Lotto lotto : lottos) {
+        //     calculator.doSomething2(lotto);
+        // }
+        User.getEarning();
     }
 }

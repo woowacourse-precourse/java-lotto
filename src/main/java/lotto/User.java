@@ -3,10 +3,11 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    public Integer askTickets() {
+    public static Integer askTicketsNumber() {
         Integer tickets;
 
         System.out.println(Constant.ASK_PRICE);
@@ -16,7 +17,7 @@ public class User {
         return tickets;
     }
 
-    public Integer validate(String input) {
+    public static Integer validate(String input) {
         Integer price = 0;
         try {
             price = Integer.valueOf(input);
@@ -33,7 +34,17 @@ public class User {
         return price / Constant.TICKET_PRICE;
     }
 
-    public List<Integer> askWinNumbers() {
+    public static List<Lotto> buy(Integer tickets) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < tickets; i++) {
+            List<Integer> generated = Lotto.generate();
+            Lotto lotto = new Lotto(generated);
+            lottos.add(lotto);
+        }
+        return lottos;
+    }
+
+    public static List<Integer> askWinNumbers() {
         System.out.println(Constant.ASK_WIN_NUMBERS);
         String inputWin = Console.readLine();
         List<Integer> numbers = winNumbers(inputWin);
@@ -41,7 +52,7 @@ public class User {
         return null;
     }
 
-    public Integer askBonusNumbers() {
+    public static Integer askBonusNumbers() {
         System.out.println(Constant.ASK_BONUS_NUMBER);
         String inputBonus = Console.readLine();
         if (!inputBonus.equals("input bonus validate")) {
@@ -55,7 +66,7 @@ public class User {
         return null;
     }
 
-    public void getEarning() {
+    public static void getEarning() {
 
     }
 }
