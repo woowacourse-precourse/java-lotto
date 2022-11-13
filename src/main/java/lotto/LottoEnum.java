@@ -1,4 +1,4 @@
-package lotto.constant;
+package lotto;
 
 public enum LottoEnum {
     START_NUM(1),
