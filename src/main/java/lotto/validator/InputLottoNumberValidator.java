@@ -1,7 +1,7 @@
 package lotto.validator;
 
 
-import java.util.stream.Collectors;
+import static lotto.validator.ExceptionStatus.*;
 
 public class InputLottoNumberValidator {
 
@@ -9,12 +9,7 @@ public class InputLottoNumberValidator {
 
     public static void validate(String lottoNumbers) {
         if (!lottoNumbers.matches(REGEX)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(REGEX_EXCEPTION.getMessage());
         }
-
-        LottoValidator.validate(lottoNumbers.chars().filter(number -> (char) number == ',')
-                .boxed()
-                .collect(Collectors.toList()));
     }
-
 }
