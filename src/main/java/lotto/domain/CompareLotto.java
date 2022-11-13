@@ -12,4 +12,9 @@ public class CompareLotto {
         }
         return matchingNumber;
     }
+
+
+    public boolean checkMatchingBonusNumber(Lotto purchaseLotto, int bonus) {
+        return purchaseLotto.contains(bonus);
+    }
 }
