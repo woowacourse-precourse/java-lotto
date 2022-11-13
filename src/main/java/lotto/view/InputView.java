@@ -17,11 +17,11 @@ public class InputView {
         this.inputViewValidator = new InputViewValidator();
     }
 
-    public int inputPurchaseMoney() {
+    public long inputPurchaseMoney() {
         System.out.println(INPUT_PURCHASE_MONEY_GUIDE);
         String text = Console.readLine();
         inputViewValidator.validateNumber(text);
-        int inputValue = Integer.parseInt(text);
+        long inputValue = Long.parseLong(text);
         inputViewValidator.validateDivideThousand(inputValue);
         return inputValue;
     }

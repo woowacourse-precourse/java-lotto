@@ -10,7 +10,7 @@ public class InputViewValidator {
     private static final int INPUT_MONEY_UNIT = 1000;
     private static final String REST = ",";
 
-    public void validateDivideThousand(int money) {
+    public void validateDivideThousand(long money) {
         if (money == ZERO || money % INPUT_MONEY_UNIT != ZERO) {
             throw new InputPurchaseMoneyException();
         }
