@@ -20,4 +20,20 @@ public class Util {
         return Integer.parseInt(s);
     }
 
+    public static List<Integer> getList(String s) {
+        List<Integer> result = new ArrayList<>();
+        List<String> temporary = Arrays.asList(s.split(","));
+        for (int i =0; i<temporary.size(); i++){
+            result.add(Integer.parseInt(temporary.get(i)));
+        }
+        return result;
+    }
+
+    public static boolean checkRange(List<Integer> input){
+        if(Collections.max(input) <= 45 && Collections.min(input) >=1){
+            return true;
+        }
+        return false;
+    }
+
 }

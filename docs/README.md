@@ -50,12 +50,16 @@
 ### ✔ 이번주 당첨 번호 입력
 
 - 이번주 당첨 로또 생성
-  - 번호 6개 , 구분자 = ","
-  - 보너스 1개
-  - (e) 1~45 사이 정수
-  - (e) 중복 불가
-  - readLine() 사용
+  - ✅ (e) 번호 6개 , 구분자 = "," : isValidLottoSize()
+  - ✅ (e) 문자 입력 불가 : isInteger()
+  - ✅ (e) 1~45 사이 정수 : isValidRange()
+  - ✅ (e) 중복 불가 : isOverlap()
+  - ✅ readLine() 사용
 
+- 보너스 번호 생성
+  - (e) 문자 입력 불가 : isInteger()
+  - (e) 1~45 사이 정수 : isValidRange()
+  - readLine() 사용
 ### ✔ 당첨 내역 출력
 
 - 숫자 일치 개수
