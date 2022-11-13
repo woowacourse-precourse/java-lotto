@@ -1,13 +1,29 @@
 package lotto.system.validator;
 
-public class IntegerToLottoBuyingInfoValidator {
+public class ConvertingToLottoBuyingInfoValidator {
     public static final int LOTTO_PRICE = 1000;
+    public static final String NOT_NATURAL_NUMBER_MESSAGE = "자연수값만 입력해야 합니다.";
     public static final String LOWER_THEN_MIN_VALUE_MESSAGE = "로또를 최소 1장 이상 살 수 있는 금액을 입력해야 합니다.";
     public static final String NOT_DIVIDED_VALUE_MESSAGE = "로또의 금액인 1,000원으로 나누어 떨어지는 금액을 입력해야 합니다.";
+
+    public static void validate(String target) {
+        isOnlyNaturalNumber(target);
+        validate(Integer.parseInt(removeCommaFrom(target)));
+    }
 
     public static void validate(int target) {
         isMoreThanLottoPrice(target);
         isDividedInLottoPrice(target);
+    }
+
+    private static String removeCommaFrom(String target) {
+        return target.replaceAll(",", "");
+    }
+
+    private static void isOnlyNaturalNumber(String target) {
+        if (!target.matches("^[\\d,]+$")) {
+            throw new IllegalArgumentException(NOT_NATURAL_NUMBER_MESSAGE);
+        }
     }
 
     private static void isMoreThanLottoPrice(Integer target) {

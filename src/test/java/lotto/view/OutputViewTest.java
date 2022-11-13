@@ -24,7 +24,7 @@ class OutputViewTest {
         //given
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo(10000, 10);
+        LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo("10000");
 
         //when
         outputView.printLottoBuyingInfo(lottoBuyingInfo);

@@ -18,7 +18,7 @@ class LottoServiceTest {
 	@DisplayName("주어진 LottoBuyingInfo 값만큼 새로운 Lotto 객체를 만들어 반환한다.")
 	void givenLottoBuyingInfo_whenCreatingLotto_thenReturnsListOfLotto() {
 		//given
-		LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo(10000, 10);
+		LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo("10000");
 
 		//when
 		List<Lotto> result = lottoService.createLottos(lottoBuyingInfo);
@@ -82,7 +82,7 @@ class LottoServiceTest {
 	@DisplayName("로또 구매 금액과 점수 정보를 분석하여 수익률을 백분율로 계산한다.")
 	void givenLottoBuyingInfoAndScoreInfo_whenCalculatingProfit_thenReturnsProfitAsPercentage() {
 	    //given
-		LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo(8000, 8);
+		LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo("8000");
 		MockScoreInfo mockScoreInfo = new MockScoreInfo();
 		mockScoreInfo.setMockScore(Score.FIFTH, 1);
 
@@ -97,7 +97,7 @@ class LottoServiceTest {
 	@DisplayName("로또 수익률은 소수점 둘째 자리에서 반올림한다.")
 	void givenLottoBuyingInfoAndScoreInfo_whenCalculatingProfit_thenReturnsProfitRoundedToFirstDigit() {
 	    //given
-		LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo(3000, 3);
+		LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo("3000");
 		MockScoreInfo mockScoreInfo = new MockScoreInfo();
 		mockScoreInfo.setMockScore(Score.FIFTH, 1);
 		mockScoreInfo.setMockScore(Score.THIRD, 1);
