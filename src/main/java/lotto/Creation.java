@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -14,6 +15,8 @@ public class Creation {
     }
 
     private static List<Integer> sortLotto(List<Integer> numbers) {
-        return numbers.stream().sorted().collect(Collectors.toList());
+        numbers = new ArrayList<>(numbers);
+        Collections.sort(numbers);
+        return numbers;
     }
 }
