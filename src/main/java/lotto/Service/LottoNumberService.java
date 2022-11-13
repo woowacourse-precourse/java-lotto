@@ -41,7 +41,8 @@ public class LottoNumberService {
         List<Lotto> lottoList = new ArrayList<>();
 
         while(lottoList.size() < lottoSheetsCount) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = new ArrayList<>
+                    (Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(numbers);
             try{
                 Lotto lotto = new Lotto(numbers);
