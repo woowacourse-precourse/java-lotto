@@ -1,6 +1,6 @@
 # 로또 게임 기능 목록.
 
-## model
+## Domain
 
 ###  **Money**
 
@@ -45,7 +45,6 @@
 
 
 
-## Domain
 
 ### **LottoVendingMachine**
 
