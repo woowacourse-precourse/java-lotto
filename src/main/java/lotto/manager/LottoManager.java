@@ -1,18 +1,14 @@
 package lotto.manager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import lotto.Lotto;
 import lotto.WinningNumber;
 import lotto.generator.NumberGenerator;
 import lotto.result.RewardEnum;
 import lotto.ui.Input.ParameterInput;
-import lotto.ui.text.ErrorText;
-import lotto.ui.text.InputText;
 import lotto.ui.text.DynamicText;
 
 public class LottoManager {
