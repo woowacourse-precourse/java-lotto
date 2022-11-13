@@ -23,14 +23,18 @@ public class Lotto {
         if (numbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ERROR_NUMBERS_COUNT);
         }
-        Set<Integer> numberSet = new HashSet<>(numbers);
-        if (numberSet.size() != numbers.size()) {
-            throw new IllegalArgumentException(ERROR_NUMBER_DUPLICATION);
-        }
+        validateDuplicateNumber(numbers);
         for (Integer number : numbers) {
             if (number > LOTTO_RANGE_MAX || number < LOTTO_RANGE_MIN) {
                 throw new IllegalArgumentException(ERROR_NUMBER_RANGE);
             }
+        }
+    }
+
+    private void validateDuplicateNumber(List<Integer> numbers) {
+        Set<Integer> numberSet = new HashSet<>(numbers);
+        if (numberSet.size() != numbers.size()) {
+            throw new IllegalArgumentException(ERROR_NUMBER_DUPLICATION);
         }
     }
 
