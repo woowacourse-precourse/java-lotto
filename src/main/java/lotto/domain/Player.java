@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.view.InputView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -8,6 +10,13 @@ import static lotto.constant.ExceptionConstants.*;
 import static lotto.constant.GameConstants.*;
 
 public class Player {
+    private List<Lotto> lottos;
+
+    public Player() {
+        String purchaseAmount = InputView.readPurchaseAmount();
+        validate(purchaseAmount);
+        this.lottos = buyLotto(parse(purchaseAmount));
+    }
 
     private void validate(String purchaseAmount) {
         validateNaturalNumber(purchaseAmount);
