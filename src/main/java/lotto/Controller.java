@@ -17,7 +17,9 @@ public class Controller {
     public void start() {
         String amount;
         int lottoTicketNumber;
-        List<Lotto> lottoNumbers = new ArrayList<>();
+        Lotto lotto;
+        LottoNumbers lottoNumbers = new LottoNumbers();
+        List<Lotto> lottoTickets = new ArrayList<>();
 
         amount = InputView.purchaseMessage();
 
@@ -27,7 +29,11 @@ public class Controller {
         lottoTicketNumber = stringToIntegerConvert(amount);
         OutputView.lottoTicketAmountMessage(lottoTicketNumber);
 
-        f
+        for(int i = 0; i < lottoTicketNumber; i++) {
+            lotto = new Lotto(lottoNumbers.start());
+            lottoTickets.add(lotto);
+        }
+
     }
 
     public void isValidatePurchase(String userInput) {
