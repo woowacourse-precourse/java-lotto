@@ -1,12 +1,11 @@
 package lotto;
-
-import camp.nextstep.edu.missionutils.Console;
 import lotto.Domain.ErrorMessage;
+import lotto.Domain.SayMessage;
 
 public class Application {
     private boolean systemError = false;
     private int money = 0;
-    private Lotto answerValue= null;
+    private Lotto answerValue = null;
     private static LottoClerk lottoClerk;
     private static LottoMachine lottoMachine;
 
@@ -42,8 +41,7 @@ public class Application {
 
     public void inputMoney() {
         try {
-            System.out.println("구입금액을 입력해 주세요.");
-            money = Integer.parseInt(Console.readLine());
+            money = Integer.parseInt(lottoClerk.sayPleaseInput(SayMessage.BUY));
             if (money % 1000 != 0)
                 throw new IllegalArgumentException();
         } catch (Exception e) {
@@ -63,13 +61,11 @@ public class Application {
 
     public void answerLotto() {
         try {
-            System.out.println("당첨 번호를 입력해 주세요.");
-            String[] answer = Console.readLine().split(",");
+            String[] answer = lottoClerk.sayPleaseInput(SayMessage.ANSWER).split(",");
             Lotto lotto = new Lotto(answer);
             answerValue = lotto;
         } catch (Exception e) {
             errorCatcher(ErrorMessage.NOTONETOFOURTHYFIVE.getErrorMessage());
         }
-
     }
 }

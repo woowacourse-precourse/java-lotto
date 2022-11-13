@@ -1,5 +1,8 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+import lotto.Domain.SayMessage;
+
 import java.util.ArrayList;
 
 public class LottoClerk {
@@ -13,5 +16,10 @@ public class LottoClerk {
         {
             System.out.println(l.getLottoText());
         }
+    }
+    public String sayPleaseInput(SayMessage sm)
+    {
+        System.out.print(sm.getSayMessage());
+        return Console.readLine();
     }
 }
