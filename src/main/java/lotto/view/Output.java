@@ -7,8 +7,15 @@ import lotto.domain.Lotto;
 
 public class Output {
 
+    private static final String END_MESSAGE = "게임을 종료합니다";
+    private static final String GET_MONEY = "구매금액을 입력해주세요.";
+    private static final String GET_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    private static final String GET_WINNING_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    private static final String LOTTO_RESULT_TITLE = "당첨 통계";
+    private static final String HORIZON = "---";
+
     public void printGetMoney() {
-        System.out.println("구매금액을 입력해주세요.");
+        System.out.println(GET_MONEY);
     }
 
     public void printLottos(List<Lotto> lottos) {
@@ -21,18 +28,18 @@ public class Output {
 
     public void printGetWinningNumbers() {
         System.out.println();
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(GET_WINNING_NUMBERS);
     }
 
     public void pringGetWinningBonusNumber() {
         System.out.println();
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(GET_WINNING_BONUS_NUMBER);
     }
 
     public void printLottoResultTitle() {
         System.out.println();
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(LOTTO_RESULT_TITLE);
+        System.out.println(HORIZON);
     }
 
     public void printLottoResultAboutRank(int matchNumber, int priceMoney, int countOfMatch) {
@@ -52,7 +59,11 @@ public class Output {
 
     public static void printErrorAndExit(String errorMessage) {
         System.out.println(errorMessage);
-        System.out.println("게임을 종료합니다");
+        printExit();
+    }
+
+    public static void printExit() {
+        System.out.println(END_MESSAGE);
     }
 
     private String makeNumberForamt(Object target) {
