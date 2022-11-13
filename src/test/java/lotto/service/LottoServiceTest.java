@@ -4,9 +4,9 @@ import lotto.domain.ScoreInfo;
 import lotto.mock.MockScoreInfo;
 import lotto.system.LottoApplication;
 import lotto.vo.Lotto;
-import lotto.vo.LottoAmount;
+import lotto.vo.LottoBuyingInfo;
 import lotto.vo.Score;
-import lotto.vo.Winning;
+import lotto.vo.WinningInfo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -35,10 +35,10 @@ class LottoServiceTest {
 	@DisplayName("주어진 LottoAmount 값만큼 새로운 Lotto 객체를 만들어 반환한다.")
 	void givenLottoAmount_whenCreatingLotto_thenReturnsListOfLotto() {
 		//given
-		LottoAmount lottoAmount = new LottoAmount(10000, 10);
+		LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo(10000, 10);
 
 		//when
-		List<Lotto> result = lottoService.createLottos(lottoAmount);
+		List<Lotto> result = lottoService.createLottos(lottoBuyingInfo);
 
 		//then
 		assertThat(result).hasSize(10);
@@ -58,10 +58,10 @@ class LottoServiceTest {
 				new Lotto(Arrays.asList(2, 13, 22, 32, 38, 45)),
 				new Lotto(Arrays.asList(1, 3, 5, 14, 22, 45))
 		);
-		Winning winning = new Winning(Arrays.asList(1, 2, 3, 4, 5, 6), 7);
+		WinningInfo winningInfo = new WinningInfo(Arrays.asList(1, 2, 3, 4, 5, 6), 7);
 
 		// when
-		ScoreInfo scoreInfo = lottoService.makeScoreInfoBy(lottos, winning);
+		ScoreInfo scoreInfo = lottoService.makeScoreInfoBy(lottos, winningInfo);
 
 		// then
 		assertThat(scoreInfo.get(Score.FIRST)).isEqualTo(0);
@@ -82,10 +82,10 @@ class LottoServiceTest {
 				new Lotto(Arrays.asList(1, 2, 23, 41, 42, 43)), // 4등
 				new Lotto(Arrays.asList(1, 2, 3, 41, 42, 43)) // 5등
 		);
-		Winning winning = new Winning(Arrays.asList(8, 21, 23, 41, 42, 43), 7);
+		WinningInfo winningInfo = new WinningInfo(Arrays.asList(8, 21, 23, 41, 42, 43), 7);
 
 		//when
-		ScoreInfo scoreInfo = lottoService.makeScoreInfoBy(lottos, winning);
+		ScoreInfo scoreInfo = lottoService.makeScoreInfoBy(lottos, winningInfo);
 
 		//then
 		assertThat(scoreInfo.get(Score.FIRST)).isEqualTo(1);
@@ -99,12 +99,12 @@ class LottoServiceTest {
 	@DisplayName("로또 구매 금액과 점수 정보를 분석하여 수익률을 백분율로 계산한다.")
 	void givenLottoAmountAndScoreInfo_whenCalculatingProfit_thenReturnsProfitAsPercentage() {
 	    //given
-		LottoAmount lottoAmount = new LottoAmount(8000, 8);
+		LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo(8000, 8);
 		MockScoreInfo mockScoreInfo = new MockScoreInfo();
 		mockScoreInfo.setMockScore(Score.FIFTH, 1);
 
 		//when
-		Double profit = lottoService.calculateProfitBy(lottoAmount, mockScoreInfo);
+		Double profit = lottoService.calculateProfitBy(lottoBuyingInfo, mockScoreInfo);
 
 	    //then
 		assertThat(profit).isEqualTo(62.5);
@@ -114,12 +114,12 @@ class LottoServiceTest {
 	@DisplayName("로또 수익률은 소수점 둘째 자리에서 반올림한다.")
 	void givenLottoAmountAndScoreInfo_whenCalculatingProfit_thenReturnsProfitRoundedToFirstDigit() {
 	    //given
-		LottoAmount lottoAmount = new LottoAmount(3000, 3);
+		LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo(3000, 3);
 		MockScoreInfo mockScoreInfo = new MockScoreInfo();
 		mockScoreInfo.setMockScore(Score.FIFTH, 1);
 		mockScoreInfo.setMockScore(Score.THIRD, 1);
 	    //when
-		Double profit = lottoService.calculateProfitBy(lottoAmount, mockScoreInfo);
+		Double profit = lottoService.calculateProfitBy(lottoBuyingInfo, mockScoreInfo);
 
 	    //then
 		assertThat(profit).isEqualTo(50166.7);

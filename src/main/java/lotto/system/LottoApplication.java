@@ -10,7 +10,7 @@ import lotto.system.holder.ConverterHolder;
 import lotto.system.holder.ValidationHolder;
 import lotto.system.validator.IntegerListToLottoValidator;
 import lotto.system.validator.StringToLottoAmountValidator;
-import lotto.system.validator.WinningDtoToWinningValidator;
+import lotto.system.validator.WinningDtoToWinningInfoValidator;
 import lotto.view.InputView;
 import lotto.view.InputViewImpl;
 import lotto.view.OutputView;
@@ -52,7 +52,7 @@ public class LottoApplication {
 		ValidationHolder.initializeValidators(List.of(
 				new StringToLottoAmountValidator(),
 				new IntegerListToLottoValidator(),
-				new WinningDtoToWinningValidator()
+				new WinningDtoToWinningInfoValidator()
 		));
 	}
 

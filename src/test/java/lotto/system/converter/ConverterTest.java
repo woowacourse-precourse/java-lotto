@@ -2,7 +2,7 @@ package lotto.system.converter;
 
 import lotto.system.LottoApplication;
 import lotto.system.holder.ConverterHolder;
-import lotto.vo.LottoAmount;
+import lotto.vo.LottoBuyingInfo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +29,7 @@ class ConverterTest {
 		String money = "14000";
 
 		//when
-		LottoAmount target = ConverterHolder.convert(money, LottoAmount.class);
+		LottoBuyingInfo target = ConverterHolder.convert(money, LottoBuyingInfo.class);
 
 		//then
 		assertThat(target.getAmount()).isEqualTo(14);

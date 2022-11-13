@@ -1,6 +1,6 @@
 package lotto.system.validator;
 
-import lotto.vo.LottoAmount;
+import lotto.vo.LottoBuyingInfo;
 
 public class StringToLottoAmountValidator implements Validator {
 
@@ -10,7 +10,7 @@ public class StringToLottoAmountValidator implements Validator {
 
 	@Override
 	public boolean supports(Object target, Class<?> to) {
-		return target.getClass() == String.class && to == LottoAmount.class;
+		return target.getClass() == String.class && to == LottoBuyingInfo.class;
 	}
 
 	@Override

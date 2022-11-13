@@ -2,12 +2,12 @@ package lotto.view;
 
 import lotto.domain.ScoreInfo;
 import lotto.vo.Lotto;
-import lotto.vo.LottoAmount;
+import lotto.vo.LottoBuyingInfo;
 
 import java.util.List;
 
 public interface OutputView {
-	void printLottoAmount(LottoAmount lottoAmount);
+	void printLottoBuyingInfo(LottoBuyingInfo lottoBuyingInfo);
 
 	void printLottos(List<Lotto> lottos);
 

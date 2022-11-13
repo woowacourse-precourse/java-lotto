@@ -2,7 +2,7 @@ package lotto.view;
 
 import lotto.domain.ScoreInfo;
 import lotto.vo.Lotto;
-import lotto.vo.LottoAmount;
+import lotto.vo.LottoBuyingInfo;
 import lotto.vo.Score;
 
 import java.text.DecimalFormat;
@@ -14,8 +14,8 @@ public class OutputViewImpl implements OutputView {
 	public static final String BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT = "%d개를 구매했습니다.";
 
 	@Override
-	public void printLottoAmount(LottoAmount lottoAmount) {
-		System.out.printf((BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT) + "%n", lottoAmount.getAmount());
+	public void printLottoBuyingInfo(LottoBuyingInfo lottoBuyingInfo) {
+		System.out.printf((BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT) + "%n", lottoBuyingInfo.getAmount());
 	}
 
 	@Override

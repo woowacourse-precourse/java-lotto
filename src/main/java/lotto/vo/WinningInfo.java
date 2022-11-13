@@ -2,11 +2,11 @@ package lotto.vo;
 
 import java.util.List;
 
-public class Winning {
+public class WinningInfo {
     private final List<Integer> winnings;
     private final Integer bonus;
 
-    public Winning(List<Integer> winnings, Integer bonus) {
+    public WinningInfo(List<Integer> winnings, Integer bonus) {
         this.winnings = winnings;
         this.bonus = bonus;
     }

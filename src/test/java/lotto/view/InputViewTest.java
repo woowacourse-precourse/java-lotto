@@ -47,7 +47,7 @@ class InputViewTest {
 		System.setOut(new PrintStream(out));
 
 	    //when
-		inputView.getWinning();
+		inputView.getWinningNumbers();
 
 	    //then
 		assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_WINNING_MESSAGE + "\n");
@@ -57,7 +57,7 @@ class InputViewTest {
 	@DisplayName("당첨 번호 입력을 유도하는 메시지가 출력된다.")
 	void givenNothing_whenRunningInputView_thenReturnsWinning() {
 	    //when & then
-		assertThat(inputView.getWinning()).isEqualTo(MockInputView.MOCK_VALUE);
+		assertThat(inputView.getWinningNumbers()).isEqualTo(MockInputView.MOCK_VALUE);
 	}
 
 	@Test

@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import lotto.vo.Lotto;
 import lotto.system.holder.ValidationHolder;
-import lotto.vo.LottoAmount;
+import lotto.vo.LottoBuyingInfo;
 
 class ValidatorTest {
     @BeforeEach
@@ -33,7 +33,7 @@ class ValidatorTest {
 
     @Nested
     @DisplayName("StringToLottoAmountValidator 테스트")
-    class StringToLottoAmountValidatorTest {
+    class StringToLottoBuyingInfoValidatorTest {
         @Test
         @DisplayName("유효한 String 을 LottoAmount 로 바꾸기 위해 검증 작업을 받으면 검증을 통과한다.")
         void givenValidString_whenValidatingForLottoAmount_thenPassesValidation() {
@@ -41,7 +41,7 @@ class ValidatorTest {
             String input = "14000";
 
             //when & then
-            assertDoesNotThrow(() -> ValidationHolder.validate(input, LottoAmount.class));
+            assertDoesNotThrow(() -> ValidationHolder.validate(input, LottoBuyingInfo.class));
         }
 
         @Test
@@ -51,7 +51,7 @@ class ValidatorTest {
             String input = "0";
 
             //when & then
-            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoAmount.class))
+            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(StringToLottoAmountValidator.LOWER_THEN_MIN_VALUE_MESSAGE);
         }
@@ -63,7 +63,7 @@ class ValidatorTest {
             String input = "14500";
 
             //when & then
-            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoAmount.class))
+            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(StringToLottoAmountValidator.NOT_DIVIDED_VALUE_MESSAGE);
         }
@@ -75,7 +75,7 @@ class ValidatorTest {
             String input = "45.000";
 
             //when & then
-            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoAmount.class))
+            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(StringToLottoAmountValidator.NOT_NATURAL_NUMBER_MESSAGE);
         }
@@ -87,7 +87,7 @@ class ValidatorTest {
             String input = "45,000,000";
 
             //when & then
-            assertDoesNotThrow(() -> ValidationHolder.validate(input, LottoAmount.class));
+            assertDoesNotThrow(() -> ValidationHolder.validate(input, LottoBuyingInfo.class));
         }
     }
 

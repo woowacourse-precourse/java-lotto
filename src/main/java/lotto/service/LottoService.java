@@ -7,14 +7,14 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.ScoreInfo;
 import lotto.vo.Lotto;
-import lotto.vo.LottoAmount;
+import lotto.vo.LottoBuyingInfo;
 import lotto.vo.Score;
-import lotto.vo.Winning;
+import lotto.vo.WinningInfo;
 
 public class LottoService {
-	public List<Lotto> createLottos(LottoAmount lottoAmount) {
+	public List<Lotto> createLottos(LottoBuyingInfo lottoBuyingInfo) {
 		List<Lotto> result = new ArrayList<>();
-		for (int count = 0; count < lottoAmount.getAmount(); count++) {
+		for (int count = 0; count < lottoBuyingInfo.getAmount(); count++) {
 			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 			result.add(new Lotto(numbers));
 		}
@@ -22,20 +22,20 @@ public class LottoService {
 		return result;
 	}
 
-	public ScoreInfo makeScoreInfoBy(List<Lotto> lottos, Winning winning) {
+	public ScoreInfo makeScoreInfoBy(List<Lotto> lottos, WinningInfo winningInfo) {
 		ScoreInfo scoreInfo = new ScoreInfo();
 		for (Lotto lotto : lottos) {
-			scoreInfo.calculateRank(lotto, winning);
+			scoreInfo.calculateRank(lotto, winningInfo);
 		}
 		return scoreInfo;
 	}
 
-	public Double calculateProfitBy(LottoAmount lottoAmount, ScoreInfo scoreInfo) {
+	public Double calculateProfitBy(LottoBuyingInfo lottoBuyingInfo, ScoreInfo scoreInfo) {
 		double sumOfPrice = Arrays.stream(Score.values())
 				.mapToDouble(score -> score.getPrice() * scoreInfo.get(score))
 				.sum();
 
-		double profit = sumOfPrice / lottoAmount.getMoney();
+		double profit = sumOfPrice / lottoBuyingInfo.getMoney();
 		profit = convertToPercentage(profit);
 		profit = roundToFirstDigit(profit);
 		return profit;

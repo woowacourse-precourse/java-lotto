@@ -1,10 +1,10 @@
 package lotto.vo;
 
-public class LottoAmount {
+public class LottoBuyingInfo {
 	private final int money;
 	private final int amount;
 
-	public LottoAmount(int money, int amount) {
+	public LottoBuyingInfo(int money, int amount) {
 		this.money = money;
 		this.amount = amount;
 	}

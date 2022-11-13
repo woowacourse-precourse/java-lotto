@@ -4,13 +4,13 @@ import java.util.List;
 
 import lotto.domain.ScoreInfo;
 import lotto.vo.Lotto;
-import lotto.dto.WinningDto;
+import lotto.dto.WinningInfoDto;
 import lotto.service.LottoService;
 import lotto.system.holder.ConverterHolder;
 import lotto.view.InputView;
 import lotto.view.OutputView;
-import lotto.vo.LottoAmount;
-import lotto.vo.Winning;
+import lotto.vo.LottoBuyingInfo;
+import lotto.vo.WinningInfo;
 
 public class LottoController {
 	private final InputView inputView;
@@ -24,24 +24,23 @@ public class LottoController {
 	}
 
 	public void runLotto() {
-		String money = inputView.getMoney();
+		String moneyInput = inputView.getMoney();
+		LottoBuyingInfo lottoBuyingInfo = ConverterHolder.convert(moneyInput, LottoBuyingInfo.class);
+		outputView.printLottoBuyingInfo(lottoBuyingInfo);
 
-		LottoAmount lottoAmount = ConverterHolder.convert(money, LottoAmount.class);
-		outputView.printLottoAmount(lottoAmount);
-
-		List<Lotto> lottos = lottoService.createLottos(lottoAmount);
+		List<Lotto> lottos = lottoService.createLottos(lottoBuyingInfo);
 		outputView.printLottos(lottos);
 
-		String winningNumber = inputView.getWinning();
-		String bonus = inputView.getBonus();
-		WinningDto winningDto = new WinningDto(winningNumber, bonus);
+		String winningNumbersInput = inputView.getWinningNumbers();
+		String bonusInput = inputView.getBonus();
+		WinningInfoDto winningInfoDto = new WinningInfoDto(winningNumbersInput, bonusInput);
 
-		Winning winning = winningDto.toWinning();
+		WinningInfo winningInfo = winningInfoDto.toWinningInfo();
 
-		ScoreInfo scoreInfo = lottoService.makeScoreInfoBy(lottos, winning);
+		ScoreInfo scoreInfo = lottoService.makeScoreInfoBy(lottos, winningInfo);
 		outputView.printScoreMessage(scoreInfo);
 
-		Double profit = lottoService.calculateProfitBy(lottoAmount, scoreInfo);
+		Double profit = lottoService.calculateProfitBy(lottoBuyingInfo, scoreInfo);
 		outputView.printProfitPercentageMessage(profit);
 	}
 }

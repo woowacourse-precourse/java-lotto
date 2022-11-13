@@ -16,7 +16,7 @@ public class InputViewImpl implements InputView {
 	}
 
 	@Override
-	public String getWinning() {
+	public String getWinningNumbers() {
 		System.out.println(INPUT_WINNING_MESSAGE);
 		return readInput();
 	}

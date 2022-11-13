@@ -3,7 +3,7 @@ package lotto.view;
 import lotto.domain.ScoreInfo;
 import lotto.system.LottoApplication;
 import lotto.vo.Lotto;
-import lotto.vo.LottoAmount;
+import lotto.vo.LottoBuyingInfo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,10 +37,10 @@ class OutputViewTest {
         //given
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        LottoAmount lottoAmount = new LottoAmount(10000, 10);
+        LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo(10000, 10);
 
         //when
-        outputView.printLottoAmount(lottoAmount);
+        outputView.printLottoBuyingInfo(lottoBuyingInfo);
 
         //then
         assertThat(out.toString())
