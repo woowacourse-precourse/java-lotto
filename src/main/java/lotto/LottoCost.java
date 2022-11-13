@@ -1,16 +1,23 @@
 package lotto;
 
-import java.util.List;
-
 public class LottoCost {
     private final int cost;
 
     public LottoCost(int cost) {
+        validateDivide(cost);
+        validateZero(cost);
+
         this.cost = cost;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+    private void validateDivide(int cost) {
+        if (cost % 1000 != 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateZero(int cost) {
+        if (cost == 0) {
             throw new IllegalArgumentException();
         }
     }
