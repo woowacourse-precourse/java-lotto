@@ -12,5 +12,6 @@ public class Application {
         LottoGenerator generator = new LottoGenerator();
         List<Lotto> lottoList = generator.generate(MoneyView.get());
         LottoView.print(lottoList);
+
     }
 }

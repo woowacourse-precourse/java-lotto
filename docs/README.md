@@ -16,10 +16,10 @@
 
 - NumberView
 
-- [ ] 당첨번호 입력 NumberView#getWinNumbers()
-- [ ] 당첨 번호가 유효한 지 확인 NumberView#checkWinNumbers()
-- [ ] 보너스 번호 입력 NumberView#getBonusNumber()
-- [ ] 보너스 번호가 유효한 지 확인 NumberView#checkBonusNumber()
+- [ ] 당첨번호 입력 NumberView.getWinNumbers()
+- [ ] 당첨 번호가 유효한 지 확인 NumberView.checkWinNumbers()
+- [ ] 보너스 번호 입력 NumberView.getBonusNumber()
+- [ ] 보너스 번호가 유효한 지 확인 NumberView.checkBonusNumber()
 
 ### DOMAIN
 
@@ -27,6 +27,8 @@
 
 - [x] 중복되지 않는 6개의 숫자 생성 LottoGenerator#generateNumbers()
 - [x] 금액에 해당하는 개수 만큼 로또 발행 Lotto#generate()
+
+- WinNumber
 
 - Referee
 
