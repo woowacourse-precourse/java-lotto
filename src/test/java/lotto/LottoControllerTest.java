@@ -120,4 +120,49 @@ class LottoControllerTest {
         //then
         assertEquals(true, exceptionCatch);
     }
+
+    @Test
+    void setBonusNumber() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        String inputBonusNumbers = "20";
+        //when
+        lottoController.setBonusNumber(inputBonusNumbers);
+        Field field = lottoService.getClass().getDeclaredField("bonusNumber");
+        field.setAccessible(true);
+        int bonusNumber = (Integer) field.get(lottoService);
+        //then
+        assertEquals(20,bonusNumber);
+    }
+
+    @Test
+    @DisplayName("범위 밖의 문자가 들어갔을 때 에러가 발생하는지 확인한다.")
+    void setBonusNumber_exception1() {
+        //given
+        String inputAmount = "46";
+        boolean exceptionCatch = false;
+        //when
+        try {
+            lottoController.setBonusNumber(inputAmount);
+        } catch (RuntimeException e){
+            exceptionCatch = true;
+        }
+        //then
+        assertEquals(true, exceptionCatch);
+    }
+
+    @Test
+    @DisplayName("문자가 들어갔을 때 에러가 발생하는지 확인한다.")
+    void setBonusNumber_exception2() {
+        //given
+        String inputAmount = "a";
+        boolean exceptionCatch = false;
+        //when
+        try {
+            lottoController.setBonusNumber(inputAmount);
+        } catch (RuntimeException e){
+            exceptionCatch = true;
+        }
+        //then
+        assertEquals(true, exceptionCatch);
+    }
 }
