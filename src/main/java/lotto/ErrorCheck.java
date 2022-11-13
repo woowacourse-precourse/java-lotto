@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.regex.Pattern;
 
 public class ErrorCheck {
@@ -15,6 +17,10 @@ public class ErrorCheck {
     public static void winningNumberErrorCheck(List<String> numbers){
         if(numbers.size() != 6)
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
+
+        Set<String> duplicationCheck = new HashSet<>(numbers);
+        if ( duplicationCheck.size() != numbers.size() )
+            throw new IllegalArgumentException("[ERROR] 당첨 번호 6개는 서로 다른 숫자이어야 합니다.");
 
         String numberPattern = "^[0-9]{1,}$";
         for(int i=0 ; i < numbers.size() ; i++)
