@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.constant.Constant;
 import lotto.constant.Message;
 import lotto.util.Validator;
 
@@ -27,7 +28,7 @@ public class User {
     }
 
     private void setnLottoTickets(int money) {
-        this.nLottoTickets = money / 1000;
+        this.nLottoTickets = money / Constant.LOTTO_PRICE;
     }
 
     public int getMoney() {

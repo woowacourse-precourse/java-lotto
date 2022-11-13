@@ -12,6 +12,6 @@ public class Message {
     }
 
     public static void printInputErrorUserMoney(){
-        System.out.printf(INPUT_ERROR_USER_MONEY_MESSAGE, 1000);
+        System.out.printf(INPUT_ERROR_USER_MONEY_MESSAGE, Constant.LOTTO_PRICE);
     }
 }
