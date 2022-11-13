@@ -41,5 +41,7 @@ public class LottoController {
 
         OutputView.printInputBonusNumber();
         Integer bonusLottoNumber = InputView.inputBonusNumber();
+
+        lottoService.announceWinningLottoNumber(winningLottoNumber, bonusLottoNumber);
     }
 }

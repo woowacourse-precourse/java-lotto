@@ -6,11 +6,7 @@ import java.util.List;
 public class LottoPurchase {
     public List<Lotto> lottery;
 
-    public LottoPurchase() {
-	this.lottery = new ArrayList<>();
-    }
-
-    public void purchaseLottery(List<Lotto> lottery) {
+    public LottoPurchase(List<Lotto> lottery) {
 	this.lottery = lottery;
     }
 
