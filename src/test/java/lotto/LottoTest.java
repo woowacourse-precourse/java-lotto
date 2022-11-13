@@ -47,4 +47,15 @@ class LottoTest {
         boolean actual = lotto.isExistNumber(number);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @DisplayName("5개의 로또 번호가 당첨 번호와 일치한다.")
+    @Test
+    void countMatchingNumbers() {
+        Lotto publishedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 9));
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        int actual = publishedLotto.countMatchingNumbers(winningLotto);
+
+        assertThat(actual).isEqualTo(5);
+    }
 }
