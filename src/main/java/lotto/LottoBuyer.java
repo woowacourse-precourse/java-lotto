@@ -66,7 +66,7 @@ public class LottoBuyer {
             CheckInputException.checkBuyerInputIsNotNumberRange(input);
             CheckInputException.checkBuyerInputIsNotNumber(input);
             bonusNumber = Integer.valueOf(input);
-            List<Integer> tmpNumbers = lotto.getLottoInfo();
+            List<Integer> tmpNumbers = new ArrayList<Integer>(lotto.getLottoInfo());
             tmpNumbers.add(bonusNumber);
             CheckInputException.checkDuplicateNumbers(tmpNumbers);
         }catch(IllegalArgumentException iae){
