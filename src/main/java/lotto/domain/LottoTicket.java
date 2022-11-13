@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static lotto.common.constant.NumberConstant.LOTTO_LENGTH;
 import static lotto.common.constant.NumberConstant.LOTTO_MIN_VALUE;
@@ -13,7 +14,7 @@ public class LottoTicket {
 
     public static Lotto generate(){
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_VALUE, LOTTO_MAX_VALUE, LOTTO_LENGTH);
-        Collections.sort(lottoNumbers);
+        lottoNumbers = lottoNumbers.stream().sorted().collect(Collectors.toList());
         return new Lotto(lottoNumbers);
     }
 
