@@ -112,6 +112,16 @@ class InputValidationTest extends NsTest {
         assertThat(answer).isEqualTo(result);
     }
 
+    @DisplayName("입력받은 당첨번호는 1~45의 범위안에 들어가야 한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1000:1,2,0,4,5,6", "1000:46,1,2,3,4,5"}, delimiter = ':')
+    void checkWinningNumberInRange(String firstInput, String secondInput) {
+        assertSimpleTest(() ->{
+            runException(firstInput, secondInput);
+            assertThat(output()).contains(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
