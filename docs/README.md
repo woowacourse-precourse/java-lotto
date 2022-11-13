@@ -2,9 +2,9 @@
 
 ## 로또 게임 기능 목록
 1. 로또 구입
-   - [] (입력) 구입 금액을 입력 받는다. Input#inputMoney
-   - [] (예외) 1000 단위로 나누어 떨어지지 않는 경우 오류 발생 Error#vaildMoney
-   - [] 1000원당 1장씩 로또 발행 한다. Ticket#getTicket
+   - [x] (입력) 구입 금액을 입력 받는다. Input#inputMoney
+   - [x] (예외) 1000 단위로 나누어 떨어지지 않는 경우 오류 발생 Input#vaildMoney
+   - [] 1000원당 1장씩 로또 발행 한다. Lotto#getLotto
 2. 로또 발행
    - [] (출력) 발행한 로또 수량을 출력한다. Message#ticketCount
    - [] 1개의 로또를 발행할 때 중복되지 않는 6개의 숫자를 뽑는다. Ticket#generateLotto
