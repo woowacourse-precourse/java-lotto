@@ -34,7 +34,6 @@ public class LottoMachine {
         receiveBonusNumber();
         printWinningStatistics();
         printReturnOfRate();
-        printReturnOfRate();
     }
 
     private void receiveMoney() {
