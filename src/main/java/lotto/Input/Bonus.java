@@ -29,4 +29,7 @@ public class Bonus {
         }
     }
 
+    public int getNumber() {
+        return number;
+    }
 }
