@@ -43,4 +43,10 @@ public class ExceptionHandler {
             throw new IllegalArgumentException(Error.OVER_SIZE.getMessage());
         }
     }
+
+    public static void checkNotDivisibleByThousand(int price) throws IllegalArgumentException {
+        if (price % 1000 > 0) {
+            throw new IllegalArgumentException(Error.NOT_DIVISIBLE_BY_THOUSAND.getMessage());
+        }
+    }
 }
