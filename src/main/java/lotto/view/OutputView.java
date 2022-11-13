@@ -4,7 +4,8 @@ import lotto.domain.Lotto;
 
 import java.util.List;
 
-public class OutputView {
+public enum OutputView {
+    INSTANCE;
     private static final String LINE = System.lineSeparator();
     private static final String STATISTICS_MESSAGE = LINE + "당첨 통계" + LINE + "---";
     private static final String STATISTICS_THREE_MATCH = "3개 일치 (5,000원) - %d개";
