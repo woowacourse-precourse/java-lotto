@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
@@ -33,13 +34,14 @@ public class Lotto {
     }
 
     public void compareLotto(List<Integer> lotteries, int bonus) {
-        int count = 0;
+        long income = 0;
+        long count = 0;
         boolean isBonus = numbers.contains(bonus);
         for (int number : lotteries) {
             if (numbers.contains(number)) {
                 count++;
             }
         }
-        final int COUNT = count;
+        Calculator.calculateLottos(count, isBonus);
     }
 }
