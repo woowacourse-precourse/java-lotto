@@ -10,8 +10,7 @@ public class UserInteraction {
 
     public String money() {
         System.out.println("구입금액을 입력해 주세요.");
-        String input = Console.readLine();
-        return input;
+        return Console.readLine();
     }
 
     public void showLotto(int count, List<List<Integer>> numbers) {
@@ -20,4 +19,6 @@ public class UserInteraction {
             System.out.println(numbers.get(i));
         }
     }
+
+   
 }
