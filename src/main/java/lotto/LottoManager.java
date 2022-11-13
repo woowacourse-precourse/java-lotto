@@ -26,6 +26,7 @@ public class LottoManager {
         insertMoneyUI();
         createLottoUI();
         insertWinningNumberUI();
+        insertBonusNumberUI();
     }
 
 
@@ -150,6 +151,9 @@ public class LottoManager {
         for (String stringNumber : splitList) {
             winningNumber.add(Integer.parseInt(stringNumber));
         }
+        
+        // 당첨 번호 오름차순 정렬
+        winningNumber.sort((o1, o2) -> o1 - o2);
     }
 
     // 당첨 번호를 입력받는 UI 메소드
@@ -191,4 +195,6 @@ public class LottoManager {
         String stringBonusNumber = readLine();
         insertBonusNumber(stringBonusNumber);
     }
+
+
 }
