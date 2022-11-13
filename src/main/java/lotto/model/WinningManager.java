@@ -1,5 +1,6 @@
 package lotto.model;
 
+import static lotto.constant.BonusBallConstants.DUPLICATED_BONUSBALL_INPUt_MSG;
 import static lotto.constant.WinningManagerConstants.*;
 
 import java.util.List;
@@ -18,11 +19,18 @@ public class WinningManager {
     }
 
     public void initBonusBall(BonusBall bonusBall) {
+        validate(bonusBall);
         this.bonusBall = bonusBall;
     }
 
     public List<Integer> resultBy(Lottos lottos) {
         return toRankList(lottos);
+    }
+
+    private void validate(BonusBall bonusBall) {
+        if (answer.contains(bonusBall)) {
+            throw new IllegalArgumentException(DUPLICATED_BONUSBALL_INPUt_MSG);
+        }
     }
 
     private List<Integer> toRankList(Lottos lottos) {
