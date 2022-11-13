@@ -18,7 +18,7 @@ public class Lotto {
 
         for (int i = 0; i < numbers.size() - 1; i++) {
             if (hasNumber(i, numbers.get(i), numbers)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR]");
             }
         }
     }
