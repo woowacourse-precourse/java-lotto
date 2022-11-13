@@ -1,12 +1,21 @@
 package lotto.domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
+
+    private static final String SIZE_ERROR_MESSAGE = "[ERROR] 6개의 숫자가 생성되지 않았습니다.";
+    private static final String RANGE_ERROR_MESSAGE = "[ERROR] 지정된 숫자의 범위를 벗어났습니다.";
+    private static final String DUPLICATE_ERROR_MESSAGE = "[ERROR] 중복된 숫자가 있습니다.";
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateSize(numbers);
+        validateRange(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -14,9 +23,24 @@ public class Lotto {
         return numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
+        }
+    }
+
+    private void validateRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        Set<Integer> differentNumbers = new HashSet<>(numbers);
+        if (differentNumbers.size() != numbers.size()) {
+            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
     }
 }
