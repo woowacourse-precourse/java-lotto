@@ -124,7 +124,7 @@
 
 - WinningRecord 모델
     - [ ✔ ] 당첨 기록을 반환한다. `WinningRecord#getWinningHistory`
-    - [  ] 수익률을 반환한다. `WinningRecord#getYield`
+    - [ ✔ ] 수익률을 반환한다. `WinningRecord#getYield`
 
 #### View
 
