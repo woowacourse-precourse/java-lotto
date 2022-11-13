@@ -27,13 +27,13 @@ public class Lotto {
         }
 
         if (checkDuplicated.size() != Number.LOTTO_NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Number.ERROR_NUMBER_DUPLICATED);
         }
     }
 
     private void isValidateNumbersLength(List<Integer> numbers) {
         if (numbers.size() != Number.LOTTO_NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Number.ERROR_NUMBER_LENGTH);
         }
     }
 
@@ -42,13 +42,8 @@ public class Lotto {
         int max = numbers.stream().sorted(Comparator.reverseOrder()).findFirst().get();
 
         if(min < Number.LOTTO_NUMBER_MIN || max > Number.LOTTO_NUMBER_MAX) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Number.ERROR_NUMBER_RANGE);
         }
-
-//        Collections.sort(numbers);
-//        if (numbers.get(0) < Number.LOTTO_NUMBER_MIN || numbers.get(Number.LOTTO_NUMBER_LENGTH - 1) > Number.LOTTO_NUMBER_MAX) {
-//            throw new IllegalArgumentException();
-//        }
     }
 
     public List<Integer> getNumbers() {
