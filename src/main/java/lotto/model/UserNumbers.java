@@ -1,28 +1,28 @@
-package lotto.controller;
+package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.model.Lotto;
-import lotto.model.Utility;
 
-public class UserNumbersController {
+public class UserNumbers {
 
     private final Lotto NUMBERS;
     private final int BONUS_NUMBER;
 
 
-    public UserNumbersController(String usernumbers, String bonusnumber) {
+    public UserNumbers(String usernumbers, String bonusnumber) {
         List<Integer> numbers = new ArrayList<>();
         for (String s : stringSplit(usernumbers)) {
-            Utility.intValidate(s);
-            numbers.add(stringConvertInteger(s));
+            numbers.add(IntegerValidate(s));
         }
         this.NUMBERS = new Lotto(numbers);
+        validate(bonusnumber);
         this.BONUS_NUMBER = IntegerValidate(bonusnumber);
     }
 
-    private Integer stringConvertInteger(String s) {
-        return Integer.parseInt(s);
+    private void validate(String bonusNumber) {
+        if (NUMBERS.getNumbers().contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨번호에 포함되어있습니다.");
+        }
     }
 
     private int IntegerValidate(String s) {
