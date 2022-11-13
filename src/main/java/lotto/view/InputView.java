@@ -22,11 +22,13 @@ public final class InputView {
     }
 
     public static LottoRequest inputLottoNumbers() {
+        OutputUtils.outputLine("당첨 번호를 입력해 주세요.");
         String lottoNumbers = UserInputUtils.readLine();
         return new LottoRequest(lottoNumbers);
     }
 
-    private static LottoNumberRequest inputBonusNumber() {
+    public static LottoNumberRequest inputBonusNumber() {
+        OutputUtils.outputLine("보너스 번호를 입력해 주세요.");
         String bonusNumber = UserInputUtils.readLine();
         validate(bonusNumber);
         return new LottoNumberRequest(Integer.parseInt(bonusNumber));
