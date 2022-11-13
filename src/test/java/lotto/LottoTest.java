@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -80,7 +78,7 @@ class LottoTest {
 
         CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
 
-        assertEquals(compareHowManyCorrect.compareLotto(user,lottoWinNumber),correctNumber);
+        assertEquals(compareHowManyCorrect.correctNumberList(user,lottoWinNumber,0),correctNumber);
 
     }
 
@@ -91,7 +89,7 @@ class LottoTest {
 
         CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
 
-        assertEquals(compareHowManyCorrect.caculateDuplication(gather),2);
+        assertEquals(compareHowManyCorrect.caculateDuplication(gather,0),2);
 
 
     }

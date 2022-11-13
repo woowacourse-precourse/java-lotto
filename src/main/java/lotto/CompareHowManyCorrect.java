@@ -7,22 +7,25 @@ import java.util.List;
 public class CompareHowManyCorrect {
 
 
-    public List<Integer> compareLotto(List<List<Integer>> user, List<Integer> winNumber){
+    public List<Integer> correctNumberList(List<List<Integer>> user, List<Integer> winNumber, int bounsNumber){
         List<Integer> correctNumberEachLotto = new ArrayList<>();
 
         for (int i = 0 ; i < user.size(); i ++) {
             List<Integer> gatherLists = gatherTwoLists(user.get(i),winNumber);
-            correctNumberEachLotto.add(caculateDuplication(gatherLists));
+            correctNumberEachLotto.add(caculateDuplication(gatherLists,bounsNumber));
         }
 
         return correctNumberEachLotto;
     }
 
-    public int caculateDuplication(List<Integer> gather){
+    public int caculateDuplication(List<Integer> gather, int bounsNumber){
 
         int removeDuplicationSize = new HashSet(gather).size();
         int duplicationNumber = gather.size() - removeDuplicationSize;
 
+        if (duplicationNumber == 6 || (duplicationNumber == 5 && checkBonus(gather,bounsNumber))){
+            duplicationNumber ++;
+        }
         return duplicationNumber;
     }
 
