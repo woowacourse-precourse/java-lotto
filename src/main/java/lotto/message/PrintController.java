@@ -20,7 +20,7 @@ public class PrintController {
     }
 
     public void print(EnumMap<WinPrize, Long> map) {
-        System.out.println(OutputMessage.STATISTIC_TITLE_MESSAGE);
+        System.out.println(OutputMessage.STATISTIC_TITLE_MESSAGE.message);
 
         System.out.println(String.format(OutputMessage.THREE_COUNT_MATCH_MESSAGE.message,
                 map.getOrDefault(WinPrize.FIVE_GRADE, 0L)));
