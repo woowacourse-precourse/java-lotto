@@ -106,13 +106,19 @@ class LottoStoreTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = {"0,1,2,3,4,5", "1,2,3,4,5,46"})
+        @CsvSource(
+                value = {
+                    "0,1,2,3,4,5:0",
+                    "1,2,3,4,5,46:46"
+                },
+                delimiter = ':'
+        )
         @DisplayName("만약 입력한 숫자의 범위가 1 ~ 45 사이가 아니라면 IllegalArgumentException 예외가 발생한다.")
-        void invalid_number_range_exception_test(String invalidInput) {
+        void invalid_number_range_exception_test(String invalidInput, String message) {
             assertThatThrownBy(() -> lottoStore.createWinningLotto(invalidInput))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
-                            .findExceptionMessage(invalidInput));
+                            .findExceptionMessage(message));
         }
 
         @ParameterizedTest
