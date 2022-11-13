@@ -5,7 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import lotto.constant.enumtype.LottoNumberInclusive;
 import lotto.constant.enumtype.LottoRule;
+import lotto.constant.enumtype.UserInterfaceMessage;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -19,7 +21,8 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         Set<Integer> lottoNumbers = new HashSet<>(numbers);
         if (numbers.size() != LottoRule.LOTTO_MAX_COUNT.getValue() || lottoNumbers.size() != LottoRule.LOTTO_MAX_COUNT.getValue()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(String.format(UserInterfaceMessage.REQUEST_INPUT_PRICE_INFO.getValue(),
+                    LottoNumberInclusive.START.getValue(), LottoNumberInclusive.END.getValue()));
         }
     }
 
