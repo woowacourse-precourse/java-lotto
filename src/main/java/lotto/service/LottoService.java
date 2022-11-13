@@ -69,4 +69,13 @@ public class LottoService {
         }
         output.winStatistics();
     }
+    //수익률 출력
+    public void revenue() {
+        int revenue = 0;
+        for (CoincideNumber coincideNumber : CoincideNumber.values()){
+            if(coincideNumber.count()!=0)
+                revenue = revenue + coincideNumber.calculateRevenue();
+        }
+        output.revenue(issue.calculate(revenue));
+    }
 }
