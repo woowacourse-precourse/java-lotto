@@ -9,22 +9,23 @@ public class Lottos {
     public static final int PRICE = 1000;
 
     private final List<Lotto> lottos;
+    private final long count;
 
-    public Lottos(long amount) {
+    public Lottos(Money money) {
         lottos = new ArrayList<>();
-        create(amount);
+        count = money.countPurchasable(Lotto.PRICE);
+        createLotto();
     }
 
-    private void create(long amount) {
-        long count = amount / PRICE;
+    private void createLotto() {
         for (long number = 0; number < count; number++) {
             Lotto lotto = new Lotto(LottoNumberGenerator.generateNumbers());
             lottos.add(lotto);
         }
     }
 
-    public int getSize() {
-        return lottos.size();
+    public long getCount() {
+        return count;
     }
 
     public List<Lotto> getLottos() {

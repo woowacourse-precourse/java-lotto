@@ -33,4 +33,8 @@ public class Money {
     public long getMoney() {
         return money;
     }
+
+    public long countPurchasable(int price) {
+        return money / price;
+    }
 }
