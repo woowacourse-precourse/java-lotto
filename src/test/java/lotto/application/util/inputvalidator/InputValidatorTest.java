@@ -1,6 +1,7 @@
-package lotto.application.service.inputvalidator;
+package lotto.application.util.inputvalidator;
 
-import lotto.domain.lotto.Lotto;
+import lotto.application.service.lottonumber.LottoNumberGenerator;
+import lotto.application.service.lottonumber.LottoNumberGeneratorImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,16 +12,19 @@ import static org.assertj.core.api.Assertions.*;
 
 class InputValidatorTest {
 
+    InputValidator inputValidator = InputValidatorImpl.getInputValidatorInstance();
+    LottoNumberGenerator lottoNumberGenerator = new LottoNumberGeneratorImpl();
+
     @DisplayName("사용자가 구매한 값을 0으로 입력했을 때")
     @Test
     void 로또구매금액_실패_1() {
         String lottoPurchaseMoney = "0";
-        assertThatThrownBy(() -> InputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney))
+        assertThatThrownBy(() -> inputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney);
+                    inputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -28,12 +32,12 @@ class InputValidatorTest {
     @Test
     void 로또구매금액_실패_1_2() {
         String lottoPurchaseMoney = "1001";
-        assertThatThrownBy(() -> InputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney))
+        assertThatThrownBy(() -> inputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney);
+                    inputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -41,7 +45,7 @@ class InputValidatorTest {
     @Test
     void 로또구매금액_실패_2() {
         String lottoPurchaseMoney = "2147483648";
-        assertThatThrownBy(() -> InputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney))
+        assertThatThrownBy(() -> inputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -49,12 +53,12 @@ class InputValidatorTest {
     @Test
     void 로또당첨번호입력받기_실패1() {
         List<Integer> inputValue = List.of(1, 2, 0, 4, 5, 6);
-        assertThatThrownBy(() -> InputValidator.validateInputLottoNumber(inputValue))
+        assertThatThrownBy(() -> inputValidator.validateInputLottoNumber(inputValue))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateInputLottoNumber(inputValue);
+                    inputValidator.validateInputLottoNumber(inputValue);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -62,12 +66,12 @@ class InputValidatorTest {
     @Test
     void 로또당첨번호입력받기_실패1_2() {
         List<Integer> inputValue = List.of(1, 2, 3, 4, 46, 6);
-        assertThatThrownBy(() -> InputValidator.validateInputLottoNumber(inputValue))
+        assertThatThrownBy(() -> inputValidator.validateInputLottoNumber(inputValue))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateInputLottoNumber(inputValue);
+                    inputValidator.validateInputLottoNumber(inputValue);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -75,12 +79,12 @@ class InputValidatorTest {
     @Test
     void 보너스로또당첨번호입력받기_실패() {
         String inputValue = "1,2,3,4,5,6";
-        assertThatThrownBy(() -> InputValidator.validateIntegerValue(inputValue))
+        assertThatThrownBy(() -> inputValidator.validateBonusNumberIsInteger(inputValue))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateIntegerValue(inputValue);
+                    inputValidator.validateBonusNumberIsInteger(inputValue);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -88,12 +92,12 @@ class InputValidatorTest {
     @Test
     void 보너스로또당첨번호입력받기_실패2() {
         String inputValue = "j";
-        assertThatThrownBy(() -> InputValidator.validateIntegerValue(inputValue))
+        assertThatThrownBy(() -> inputValidator.validateBonusNumberIsInteger(inputValue))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateIntegerValue(inputValue);
+                    inputValidator.validateBonusNumberIsInteger(inputValue);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -101,12 +105,12 @@ class InputValidatorTest {
     @Test
     void 보너스로또당첨번호입력받기_실패3() {
         String inputValue = " ";
-        assertThatThrownBy(() -> InputValidator.validateIntegerValue(inputValue))
+        assertThatThrownBy(() -> inputValidator.validateBonusNumberIsInteger(inputValue))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateIntegerValue(inputValue);
+                    inputValidator.validateBonusNumberIsInteger(inputValue);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -114,12 +118,12 @@ class InputValidatorTest {
     @Test
     void 로또당첨번호입력받기_실패2() {
         List<Integer> inputValue = List.of(1, 2, 3, 4, 1, 6);
-        assertThatThrownBy(() -> InputValidator.validateInputLottoNumber(inputValue))
+        assertThatThrownBy(() -> inputValidator.validateInputLottoNumber(inputValue))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateInputLottoNumber(inputValue);
+                    inputValidator.validateInputLottoNumber(inputValue);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -127,12 +131,12 @@ class InputValidatorTest {
     @Test
     void 로또당첨번호입력받기_실패2_2() {
         List<Integer> inputValue = List.of(1, 2, 3, 4, 6, 6);
-        assertThatThrownBy(() -> InputValidator.validateInputLottoNumber(inputValue))
+        assertThatThrownBy(() -> inputValidator.validateInputLottoNumber(inputValue))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateInputLottoNumber(inputValue);
+                    inputValidator.validateInputLottoNumber(inputValue);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -140,12 +144,12 @@ class InputValidatorTest {
     @Test
     void 로또당첨번호입력받기_실패2_3() {
         List<Integer> inputValue = List.of(6, 2, 3, 4, 5, 6);
-        assertThatThrownBy(() -> InputValidator.validateInputLottoNumber(inputValue))
+        assertThatThrownBy(() -> inputValidator.validateInputLottoNumber(inputValue))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateInputLottoNumber(inputValue);
+                    inputValidator.validateInputLottoNumber(inputValue);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -153,12 +157,12 @@ class InputValidatorTest {
     @Test
     void 로또당첨번호입력받기_실패2_4() {
         List<Integer> inputValue = List.of(6, 6, 3, 4, 5, 1);
-        assertThatThrownBy(() -> InputValidator.validateInputLottoNumber(inputValue))
+        assertThatThrownBy(() -> inputValidator.validateInputLottoNumber(inputValue))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateInputLottoNumber(inputValue);
+                    inputValidator.validateInputLottoNumber(inputValue);
                 }).withMessageContaining("[ERROR]");
     }
 
@@ -166,7 +170,7 @@ class InputValidatorTest {
     @Test
     void 구매한_로또_갯수와_발급받은_로또_갯수_비교() {
         int purchaseNumber = 11;
-        List<List<Integer>> generateLottoNumber = Lotto.generateLottoNumber(purchaseNumber);
+        List<List<Integer>> generateLottoNumber = lottoNumberGenerator.generateLottoNumber(purchaseNumber);
         assertThat(generateLottoNumber.size()).isEqualTo(11);
     }
 
@@ -174,7 +178,7 @@ class InputValidatorTest {
     @Test
     void 구매한_로또가_6개의_수로_이루어졌는지_체크() {
         int purchaseNumber = 11;
-        List<List<Integer>> generateLottoNumber = Lotto.generateLottoNumber(purchaseNumber);
+        List<List<Integer>> generateLottoNumber = lottoNumberGenerator.generateLottoNumber(purchaseNumber);
         for (List<Integer> lotto : generateLottoNumber) {
             assertThat(lotto.size()).isEqualTo(6);
         }
@@ -184,31 +188,38 @@ class InputValidatorTest {
     @Test
     void 당첨_로또_번호_갯수_검증_보너스_번호_미포함() {
         String[] lottoNumbers = "1,2,3,4,5,6".split(",");
-        List<Integer> convertedLottoNumbers = new ArrayList<>();
-        InputValidator.validateIntegerValue(lottoNumbers);
+        List<Integer> winningLottoNumbers = new ArrayList<>() {{
+            add(1);
+            add(2);
+            add(3);
+            add(4);
+            add(5);
+            add(6);
+        }};
 
-        for (String value : lottoNumbers) {
-            convertedLottoNumbers.add(Integer.parseInt(value));
-        }
-        InputValidator.validateInputLottoNumber(convertedLottoNumbers);
+        inputValidator.validateWinningNumbersLengthIsSix(winningLottoNumbers);
+        inputValidator.validateInputLottoNumber(winningLottoNumbers);
 
-        assertThat(convertedLottoNumbers.size()).isEqualTo(6);
+        assertThat(winningLottoNumbers.size()).isEqualTo(6);
     }
 
     @DisplayName("당첨 로또 번호 갯수 검증, 보너스 번호 포함")
     @Test
     void 당첨_로또_번호_갯수_검증_보너스_번호_포함() {
         String[] lottoNumbers = "1,2,3,4,5,6".split(",");
-        List<Integer> winningLottoNumbers = new ArrayList<>();
-        InputValidator.validateIntegerValue(lottoNumbers);
-
-        for (String value : lottoNumbers) {
-            winningLottoNumbers.add(Integer.parseInt(value));
-        }
-        InputValidator.validateInputLottoNumber(winningLottoNumbers);
+        List<Integer> winningLottoNumbers = new ArrayList<>() {{
+            add(1);
+            add(2);
+            add(3);
+            add(4);
+            add(5);
+            add(6);
+        }};
+        inputValidator.validateWinningNumbersLengthIsSix(winningLottoNumbers);
+        inputValidator.validateInputLottoNumber(winningLottoNumbers);
 
         String inputBonusNumber = "7";
-        InputValidator.validateInputBonusLottoNumber(inputBonusNumber, winningLottoNumbers);
+        inputValidator.validateInputBonusLottoNumber(inputBonusNumber, winningLottoNumbers);
         winningLottoNumbers.add(Integer.valueOf(inputBonusNumber));
 
         assertThat(winningLottoNumbers.size()).isEqualTo(7);
