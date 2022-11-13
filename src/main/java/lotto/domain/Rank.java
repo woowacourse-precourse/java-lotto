@@ -20,6 +20,18 @@ public enum Rank {
         this.isMatchedBonus = isMatchedBonus;
     }
 
+    public int getCountOfMatch() {
+        return countOfMatch;
+    }
+
+    public int getReward() {
+        return reward;
+    }
+
+    public boolean isMatchedBonus() {
+        return isMatchedBonus;
+    }
+
     public static Rank makeRank(int countOfMatch, boolean isMatchedBonus) {
         return Arrays.stream(Rank.values())
                 .filter(rank -> rank.countOfMatch == countOfMatch)
