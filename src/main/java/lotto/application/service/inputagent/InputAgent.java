@@ -3,7 +3,7 @@ package lotto.application.service.inputagent;
 import java.util.List;
 
 public interface InputAgent {
-    int inputUserMoney();
+    int inputUserPurchaseMoney();
 
     List<Integer> inputWinningNumbers();
 

@@ -1,19 +1,19 @@
 package lotto.application.service.inputagent;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.application.service.inputvalidator.InputValidator;
+import lotto.application.service.inputvalidator.InputValidatorImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.application.service.inputvalidator.InputValidator.winningNumberIsNumeric;
+import static lotto.application.service.inputvalidator.InputValidatorImpl.winningNumberIsNumeric;
 
 public class InputAgentImpl implements InputAgent {
 
     @Override
-    public int inputUserMoney() {
+    public int inputUserPurchaseMoney() {
         String lottoPurchaseMoney = Console.readLine();
-        InputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney);
+        InputValidatorImpl.validateLottoPurchaseMoney(lottoPurchaseMoney);
 
         return Integer.parseInt(lottoPurchaseMoney);
     }
@@ -26,13 +26,13 @@ public class InputAgentImpl implements InputAgent {
         String[] lottoNumbers = lottoNumber.split(",");
         List<Integer> convertedLottoNumbers = new ArrayList<>();
 
-        InputValidator.validateIntegerValue(lottoNumbers);
+        InputValidatorImpl.validateIntegerValue(lottoNumbers);
 
         for (String value : lottoNumbers) {
             convertedLottoNumbers.add(Integer.parseInt(value));
         }
 
-        InputValidator.validateInputLottoNumber(convertedLottoNumbers);
+        InputValidatorImpl.validateInputLottoNumber(convertedLottoNumbers);
 
         return convertedLottoNumbers;
     }
@@ -40,7 +40,7 @@ public class InputAgentImpl implements InputAgent {
     @Override
     public int inputBonusNumber(List<Integer> winningLottoNumbers) {
         String inputBonusNumber = Console.readLine();
-        InputValidator.validateInputBonusLottoNumber(inputBonusNumber, winningLottoNumbers);
+        InputValidatorImpl.validateInputBonusLottoNumber(inputBonusNumber, winningLottoNumbers);
 
         return Integer.parseInt(inputBonusNumber);
     }
