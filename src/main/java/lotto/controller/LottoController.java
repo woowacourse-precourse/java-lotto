@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.PurchasedAmount;
 import lotto.domain.PurchasedLottos;
+import lotto.domain.Result;
 import lotto.domain.WinningLotto;
 import view.InputView;
 import view.OutputView;
@@ -24,6 +25,19 @@ public class LottoController {
         if (winningLotto == null) {
             return;
         }
+
+        final Result result = makeResult(winningLotto, purchasedLottos);
+    }
+
+    private Result makeResult(WinningLotto winningLotto, PurchasedLottos purchasedLottos) {
+        final Result tmpResult = new Result();
+
+        purchasedLottos.getPurchasedLottos()
+                .stream()
+                .map(winningLotto::compareLottoNumber)
+                .forEach(tmpResult::add);
+
+        return tmpResult;
     }
 
     private WinningLotto getWinningLotto() {
