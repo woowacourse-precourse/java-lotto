@@ -20,4 +20,8 @@ public class Lotto {
     public Lotto issueLottoTicket () {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
+
+    public Lotto drawLotto(List<Integer> numbers) {
+        return new Lotto(numbers);
+    }
 }
