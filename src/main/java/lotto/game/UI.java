@@ -2,6 +2,7 @@ package lotto.game;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.Map;
 import lotto.Lotto;
 
 public class UI {
