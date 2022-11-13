@@ -3,9 +3,11 @@ package lotto;
 import domain.Lotto;
 import domain.Lottos;
 
+import domain.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.w3c.dom.ls.LSOutput;
 import view.Input;
 import view.Output;
 import view.Valid;
@@ -25,20 +27,20 @@ class LottoTest {
         @Test
         void isNotMultipleOf_1000() {
             //when
-            int price = 6430;
+            String price = "6430";
             // then
-            assertThatThrownBy(() -> input.returnNumber(price))
+            assertThatThrownBy(() -> input.returnPrice(price))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 로또 구입 금액을 1000으로 나누어 떨어져야 합니다.");
+                    .hasMessageContaining("[ERROR] 로또 구입 금액은 1000으로 나누어 떨어져야 합니다.");
         }
 
         @DisplayName("입력받은 금액이 1000원으로 나누어지면 로또 개수가 출력된다.")
         @Test
         void isMultipleOf_1000() {
             //when
-            int price = 6000;
+            String price = "6000";
             // then
-            input.returnNumber(price);
+            input.returnPrice(price);
             assertThat(input.getNumber()).isEqualTo(6);
         }
     }
@@ -48,7 +50,8 @@ class LottoTest {
         //given
         int numberOfLotto = 6;
         domain.Lottos lottos = new Lottos(numberOfLotto);
-        List<Integer> lottoNumber = lottos.getNumberGenerator().getLotto().getNumbers();
+        NumberGenerator numberGenerator = new NumberGenerator();
+        List<Integer> lottoNumber = numberGenerator.getLotto().getNumbers();
         @DisplayName("로또 안의 숫자가 6개인지 확인")
         @Test
         void checkLottoNumber() {
@@ -69,8 +72,6 @@ class LottoTest {
         @DisplayName("저장된 로또의 개수가 주어진 값과 맞는지 확인")
         @Test
         void checkNumberOfLotto() {
-            //when
-            lottos.generateLottos();
             //then
             assertThat(lottos.getLottos().size()).isEqualTo(numberOfLotto);
         }
@@ -188,7 +189,6 @@ class LottoTest {
             output.setRankList(lottos, answer, bonus);
             int lottoPieces = 9;
             //then
-            output.printRank();
             assertThat(output.calcProfitRate(lottoPieces)).isEqualTo(55.6);
         }
     }
