@@ -3,9 +3,9 @@
 - [x] 로또 구입 금액을 입력한다.
   -[x] 구입 금액 예외 처리 - MoneyInputException.java
     - [x] 입력값이 숫자가 아닐경우 예외 처리한다. - moneyTypeError()
-    - [x] 1000원 단위로 나누어 떨어지지 않을 경우 예외 처리한다. - moneyInputError()
+    - [x] 1000원 단위로 나누어 떨어지지 않을 경우 예외 처리한다. - moneyChangeError()
 - [x] 금액에 해당하는 만큼 로또 발행한다. (1장 = 1,000원)
-  - [x] 로또 번호를 생성한다. - buyLotto()
+  - [x] 로또 번호를 생성한다. - Lotto.java -> buyLotto()
     - [x] 중복 값이 나올 경우 예외 처리 - Lotto.java -> validate()
   - [x] 오름 차순으로 정렬한다. - Lotto.java -> Lotto.numSort()
   - [x] 발행한 로또 수량을 출력한다.
@@ -18,10 +18,10 @@
     - [x] 범위를 넘어가는 수 입력 시 예외 처리 - winNumRangeError()
     - [x] 6개의 수가 아닐 경우 예외 처리 - winNumSizeError()
 - [x] 보너스 번호를 입력 한다. - bonusNumInput()
-  - [ ] 예외 시 처리
-    - [ ] 숫자가 아닐 경우 예외 처리
-    - [x] 범위를 넘어가는 수 입력 시 예외 처리 - rangeError()
-    - [ ] 당첨 번호와 중복 시 예외 처리
+  - [x] 보너스 번호 예외 처리 - BonusNumException.java
+    - [x] 숫자가 아닐 경우 예외 처리 - bonusTypeError()
+    - [x] 범위를 넘어가는 수 입력 시 예외 처리 - bonusRangeError()
+    - [x] 당첨 번호와 중복 시 예외 처리 - bonusDuplicate()
 - [ ] 구매 번호와 당첨 번호를 비교한다.
   - [x] 일치하는 번호 갯수를 센다. - Result.java -> matchCnt
   - [x] 해당하는 당첨 금액을 반환한다. - Result.java -> winMoney()

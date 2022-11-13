@@ -8,8 +8,7 @@ import static lotto.Output.printLotto;
 import static lotto.UserInput.*;
 
 public class StartLotto {
-    public static void startLotto() throws IllegalArgumentException{
-
+    public static void startLotto() throws IllegalArgumentException {
         int money = moneyInput();
         List<Lotto> lotto = new ArrayList<>();
         buyLotto(money, lotto);
