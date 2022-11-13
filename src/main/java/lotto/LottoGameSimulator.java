@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.controller.LottoController;
 import lotto.domain.Lotto;
 import lotto.ui.Display;
 import lotto.ui.LottoScanners;
@@ -10,10 +11,12 @@ public class LottoGameSimulator {
 
     private final Display display;
     private final LottoScanners scanners;
+    private final LottoController controller;
 
     public LottoGameSimulator() {
         this.display = new Display();
         this.scanners = new LottoScanners();
+        this.controller = new LottoController();
     }
 
     public void start() {
@@ -28,7 +31,7 @@ public class LottoGameSimulator {
     public List<Lotto> buyLotto() {
         String price = requestPriceProcess();
 
-        return List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        return controller.create(price);
     }
 
     public String requestPriceProcess() {
