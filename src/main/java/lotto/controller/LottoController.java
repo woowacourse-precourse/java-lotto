@@ -19,11 +19,7 @@ public class LottoController {
     private Winner winner;
 
     public void start(){
-        int lottoTicketCount = buyLottoTicket();
-        List<Lotto> lottos = createLotto(lottoTicketCount);
-        showLotto(lottoTicketCount,lottos);
-        List<Integer> winnerNumber = enterLotto();
-        int bonus = enterBonus();
+
 
     }
 
@@ -56,5 +52,20 @@ public class LottoController {
         return bonus.getBonusNumber();
     }
 
+    public Map<LottoRank, Integer> makeLottoResult(List<Lotto> lottoNumbers, List<Integer> winnerNumber, int bonusNum){
+        Referee referee = new Referee();
+        referee.createLottoResult(lottoNumbers,winnerNumber,bonusNum);
+        return referee.getLottoResultCount();
+    }
+
+    public String calculateProfit(int lottoCount, Map<LottoRank, Integer> lottoResultCount){
+        ProfitCalculator profitCalculator = new ProfitCalculator();
+        return profitCalculator.calculate(lottoCount,lottoResultCount);
+    }
+
+    public void showLottoResult(Map<LottoRank, Integer> lottoResultCount,String profit){
+        outputView.printLottoResult(lottoResultCount);
+        outputView.printProfit(profit);
+    }
 
 }

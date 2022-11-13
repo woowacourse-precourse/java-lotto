@@ -21,7 +21,7 @@ public class Referee {
         }
     }
 
-    private void createLottoResultCount(List<Integer> winnerNumber, int bonusNum, List<Integer> lottoNumbers) {
+    public void createLottoResultCount(List<Integer> winnerNumber, int bonusNum, List<Integer> lottoNumbers) {
         int correctCount = correctCountLottoNumberAndWinnerNum(lottoNumbers, winnerNumber);
         boolean foundBonus = isBonusNumberInLottoNumber(winnerNumber, bonusNum);
         putLottoResultCount(correctCount,foundBonus);
@@ -42,9 +42,10 @@ public class Referee {
     }
 
     public void putLottoResultCount(int correctCountLottoAndWinner, boolean foundBonus) {
-        Map<LottoRank, Integer> lottoResultCount = new HashMap<>();
         LottoRank rank = findLottoRank(correctCountLottoAndWinner, foundBonus);
-        addLottoCount(rank);
+        if(rank!=null) {
+            addLottoCount(rank);
+        }
     }
 
     private static LottoRank findLottoRank(int correctCountLottoAndWinner, boolean foundBonus) {
@@ -52,7 +53,7 @@ public class Referee {
                 .filter(lottoRank -> lottoRank.getCorrectCount() == correctCountLottoAndWinner)
                 .filter(lottoRank -> lottoRank.getBonusStatus().isBonus(foundBonus))
                 .findFirst()
-                .get();
+                .orElse(null);
         return rank;
     }
 
