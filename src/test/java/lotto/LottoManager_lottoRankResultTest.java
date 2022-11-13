@@ -70,7 +70,7 @@ public class LottoManager_lottoRankResultTest {
      * @param rank 테스트 등수
      * @return 테스트에 맞춰서 사용자 입력을 변형한 로또 당첨 번호
      */
-    public List<Integer> getUserPredictLottoNumbers_modified(int rank) {
+    public static List<Integer> getUserPredictLottoNumbers_modified(int rank) {
         int sameLottoNumber = LottoManager.LOTTO_LENGTH - rank + 2;
         if (rank == 2) {
             sameLottoNumber = LottoManager.LOTTO_LENGTH - rank + 1;
