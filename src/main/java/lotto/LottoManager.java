@@ -9,21 +9,31 @@ import java.util.Map;
 
 public class LottoManager {
 
-    private List<Lotto> lotties;
+    private final List<Lotto> lottos;
     private final int buyingMoney;
-    private Map<Rank,Integer> ranks;
+    private final Map<Rank,Integer> ranks;
 
     public LottoManager(int buyingMoney) {
         this.buyingMoney = buyingMoney;
-        lotties = new ArrayList<>();
+        lottos = new ArrayList<>();
         for (int i = 0; i < buyingMoney / 1000; i++) {
-            lotties.add(generateRandomLotto());
+            lottos.add(generateRandomLotto());
         }
 
         ranks = new HashMap<>();
         Rank[] allRanks = Rank.values();
         for (Rank rank: allRanks) {
             ranks.put(rank,0);
+        }
+    }
+    
+    public void calculateTotalRanks(Lotto winningLotto, int winningBonus) {
+        for (Lotto lotto: this.lottos) {
+            int matchCount = calculateMatchCount(winningLotto, lotto);
+            boolean matchBonus = calculateMatchBonus(winningBonus, lotto);
+            
+            Rank rank = Rank.getRank(matchCount, matchBonus);
+            this.ranks.put(rank,this.ranks.get(rank) + 1);
         }
     }
 
