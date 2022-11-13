@@ -6,12 +6,16 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LottoRaffleRecorder {
+public class LottoRaffleRecord {
 
     private final Map<String, Integer> prizeRecord;
 
-    public LottoRaffleRecorder() {
+    public LottoRaffleRecord() {
         prizeRecord = new LinkedHashMap<>();
+        initPrizeRecordByLottoRules();
+    }
+
+    private void initPrizeRecordByLottoRules() {
         Arrays.stream(LottoRules.values()).forEach(value -> prizeRecord.put(value.name(), 0));
     }
 
@@ -19,7 +23,7 @@ public class LottoRaffleRecorder {
         prizeRecord.put(key, prizeRecord.get(key) + 1);
     }
 
-    public Map<String, Integer> getPrizeRecord(){
+    public Map<String, Integer> getPrizeRecord() {
         return prizeRecord;
     }
 }

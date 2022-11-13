@@ -21,8 +21,7 @@ class LottoPublisherTest {
     @Test
     void publishLotto10000() {
         LottoPublisher lottoPublisher = new LottoPublisher();
-        lottoPublisher.publish(10000);
 
-        Assertions.assertThat(lottoPublisher.getLottos().size()).isEqualTo(10);
+        Assertions.assertThat(lottoPublisher.publish(10000).size()).isEqualTo(10);
     }
 }
