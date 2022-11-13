@@ -7,11 +7,11 @@ public class CompareLotto {
     private final Map<Rank, Integer> rankByCount;
     private final int originalMoney;
 
-    public CompareLotto(LottoDto lottoDto, Lotto lotto_1st, int bonusNumbers) {
+    public CompareLotto(LottoMachine lottoMachine, Lotto lotto_1st, int bonusNumbers) {
         this.rankByCount = createRankMap();
-        this.originalMoney = 1000 * lottoDto.getLottoList().size();
+        this.originalMoney = 1000 * lottoMachine.getLottoList().size();
 
-        lottoDto.getLottoList()
+        lottoMachine.getLottoList()
                 .forEach(lotto -> addRankMap(lotto.getNumbers(), lotto_1st, bonusNumbers));
     }
 

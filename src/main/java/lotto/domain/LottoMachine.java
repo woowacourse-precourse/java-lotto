@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-public class LottoDto {
+public class LottoMachine {
     private final List<Lotto> lottos;
 
-    public LottoDto(int money) {
+    public LottoMachine(int money) {
         validate(money);
 
         this.lottos = createLottoList(money / 1000);
