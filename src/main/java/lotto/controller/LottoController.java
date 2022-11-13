@@ -1,7 +1,5 @@
 package lotto.controller;
 
-import static lotto.service.LottoService.*;
-
 import java.util.List;
 
 import lotto.dto.LottoTicketDTO;
@@ -28,7 +26,7 @@ public class LottoController {
         OutputView.printInputAmount();
         Integer paidAmount = InputView.inputPaidAmount();
 
-        LottoTicketDTO lottoTicketDTO = issueLottoByPaidAmount(paidAmount);
+        LottoTicketDTO lottoTicketDTO = lottoService.issueLottoByPaidAmount(paidAmount);
         OutputView.printPaidLotto(paidAmount, lottoTicketDTO);
 
         OutputView.printInputWinningNumber();
