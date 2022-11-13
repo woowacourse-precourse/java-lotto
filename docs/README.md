@@ -16,6 +16,12 @@
 - [x] 구매번호와 당첨번호를 비교하여 일치하는 숫자가 몇개인지 구한다. NumberChecker#compareResult()
 - [ ] 수익률을 구한다. LottoResult#getRateOfReturn()
   - [ ] LottoResult enum 을 이용하여 수익률을 계산한다. 
+- [ ] Lotto#
+  - [x] 오름차순 정렬한다. Lotto#sort()
+  - [ ] Lotto#validate()
+    - [x] 6자리 숫자
+    - [x] 중복되지 않는 숫자
+    - [ ] 1~45의 숫자
 ---
 
 ### 로또 구입 - 2 (출력)

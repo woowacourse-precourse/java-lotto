@@ -27,7 +27,7 @@ class LottoTest {
     @Test
     void createLottoByNumbersOutOfRange() {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 46, 5, 8)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

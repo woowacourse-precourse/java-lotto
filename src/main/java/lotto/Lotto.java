@@ -28,7 +28,7 @@ public class Lotto {
 
         if (numbers.get(0) < 1 || numbers.get(5) > 45) {
             throw new IllegalArgumentException(ERROR_RANGE);
-        }
+        } //수정 필요
     }
 
     private void sortNumbers(List<Integer> numbers){
