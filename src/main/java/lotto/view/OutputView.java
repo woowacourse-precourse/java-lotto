@@ -1,6 +1,8 @@
 package lotto.view;
 
 import lotto.domain.Award;
+import lotto.system.Constant;
+import lotto.util.Util;
 
 import java.text.DecimalFormat;
 import java.util.Collections;
@@ -18,13 +20,9 @@ public final class OutputView {
         printIOMessage("6개 일치 (2,000,000,000원) - " + Collections.frequency(awards, Award.SIX) + "개");
     }
 
-    public static void printYield(float rate) {
-        DecimalFormat formatter = new DecimalFormat("###,###.#");
-
-        String roundedRate = String.format("%.1f", rate);
-        String formattedRate = formatter.format(Float.parseFloat(roundedRate));
-
-        printIOMessage("총 수익률은 " + formattedRate + "%입니다.");
+    public static void printYield(float yield) {
+        String formattedYield = Util.formatFloat(yield, Constant.PRECISION);
+        printIOMessage("총 수익률은 " + formattedYield + "%입니다.");
     }
 
     public static void printIOMessage(String message) {
