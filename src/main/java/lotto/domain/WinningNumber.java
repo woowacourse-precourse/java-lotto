@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import lotto.domain.Lotto;
 import lotto.exception.InvalidInputException;
@@ -60,5 +60,13 @@ public class WinningNumber {
         if((number < LOTTO_LOWER_NUMBER) || (number > LOTTO_UPPER_NUMBER))
             throw new InvalidInputException(String.format(OVER_RANGE_NUMBER_EXCEPTION_MESSAGE,
                     LOTTO_LOWER_NUMBER, LOTTO_UPPER_NUMBER));
+    }
+
+    public Lotto getWinningLotto() {
+        return winningLotto;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }

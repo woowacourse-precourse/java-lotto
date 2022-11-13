@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lotteries;
+import lotto.domain.LottoResult;
 import lotto.domain.Money;
 
 public class outputView {
@@ -10,5 +11,11 @@ public class outputView {
 
     public static void printLotteries(Lotteries lotteries) {
         System.out.println(lotteries.toString());
+    }
+
+    public static void printLottoResult(LottoResult lottoResult) {
+        System.out.println("\n당첨 통계");
+        System.out.print("---");
+        System.out.println(lottoResult.toString());
     }
 }

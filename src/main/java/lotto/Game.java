@@ -1,8 +1,6 @@
 package lotto;
 
-import lotto.domain.Lotteries;
-import lotto.domain.LottoStore;
-import lotto.domain.Money;
+import lotto.domain.*;
 import lotto.view.InputView;
 import lotto.view.outputView;
 
@@ -17,6 +15,8 @@ public class Game {
 
         WinningNumber winningNumber = new WinningNumber(InputView.inputWinningLottoNumber(),
                 InputView.inputWinningBonusNumber());
+        LottoResult lottoResult = lotteries.checkLottoResult(winningNumber);
 
+        outputView.printLottoResult(lottoResult);
     }
 }
