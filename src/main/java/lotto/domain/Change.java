@@ -23,10 +23,10 @@ public class Change {
         return result;
     }
 
-    private static void checkManyDot(String winningNumber) {
+    private static void checkManyDot(String input) {
         int dotCount = 0;
-        for (int i = 0; i < winningNumber.length(); i++) {
-            if (!(winningNumber.charAt(i) == ',')) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!(input.charAt(i) == ',')) {
                 dotCount = 0;
                 continue;
             }
@@ -37,20 +37,20 @@ public class Change {
         }
     }
 
-    private static void checkAnyWord(String winningNumber) {
-        if (!(winningNumber.matches(REGEX) || winningNumber.contains(","))) {
+    private static void checkAnyWord(String input) {
+        if (!(input.matches(REGEX) || input.contains(","))) {
             throw new IllegalArgumentException("[ERROR] 당첨번호를 다시 입력해주세요. - 유효하지 않은 문자 입력");
         }
     }
 
-    private static void checkFirstWord(String winningNumber) {
-        if (!String.valueOf(winningNumber.charAt(0)).matches(REGEX)) {
+    private static void checkFirstWord(String input) {
+        if (!String.valueOf(input.charAt(0)).matches(REGEX)) {
             throw new IllegalArgumentException("[ERROR] 당첨번호를 다시 입력해주세요. - 첫번째에 문자 입력");
         }
     }
 
-    private static void checkLastWord(String winningNumber) {
-        if (!String.valueOf(winningNumber.charAt(winningNumber.length() - 1)).matches(REGEX)) {
+    private static void checkLastWord(String input) {
+        if (!String.valueOf(input.charAt(input.length() - 1)).matches(REGEX)) {
             throw new IllegalArgumentException("[ERROR] 당첨번호를 다시 입력해주세요. - 마지막에 문자 입력");
         }
     }
@@ -60,13 +60,14 @@ public class Change {
         return Integer.parseInt(purchaseAmount);
     }
 
-    private static void checkWord(String purchaseAmount){
-        if (!purchaseAmount.matches(REGEX)){
-            throw new IllegalArgumentException("[ERROR] 구입금액을 다시 입력해주세요. - 문자 포함");
+    private static void checkWord(String input){
+        if (!input.matches(REGEX)){
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다. - 문자 포함");
         }
     }
 
     public static int bonusNumber(String bonusNumber){
+        checkWord(bonusNumber);
         return Integer.parseInt(bonusNumber);
     }
 }
