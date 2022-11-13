@@ -47,12 +47,12 @@ public class Player {
         return Integer.parseInt(purchaseAmount);
     }
 
-    private List<Lotto> buyLotto(int purchaseAmount) {
+    public List<Lotto> buyLotto() {
         List<Lotto> lottos = new ArrayList<>();
 
-        while (purchaseAmount > 0) {
+        while (this.purchaseAmount > 0) {
             lottos.add(Computer.issueLotto());
-            purchaseAmount -= LOTTO_PRICE;
+            this.purchaseAmount -= LOTTO_PRICE;
         }
         return lottos;
     }
