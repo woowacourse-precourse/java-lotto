@@ -112,7 +112,7 @@ public class ConsoleUserInputTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 구입을 위해 입력된 돈의 단위가 1000원 이상인지 확인한다.")
+    @DisplayName("로또 구입을 위해 입력한 돈의 단위가 1000원 이상인지 확인한다.")
     @Test
     void checkPaymentInUnitsOfAThousand(){
         InputStream in = testUserInput("17820");
@@ -123,7 +123,7 @@ public class ConsoleUserInputTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 구입을 위해 입력된 돈이 유효한 타입인지 확인한다.")
+    @DisplayName("로또 구입을 위해 입력한 돈이 유효한 타입인지 확인한다.")
     @Test
     void checkPaymentIsValid(){
         InputStream in = testUserInput("정수가 아닌 값 입력 시 오류 발생");
