@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.model.Lotto;
+import lotto.model.LottoMachine;
 import lotto.model.LottoWithBonus;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +24,7 @@ class CompareTest {
         LottoWithBonus lottoWithBonus = new LottoWithBonus(myLotto, 6);
         lottoList.addAll(List.of(lotto, lotto1, lotto2));
 
-        Compare compare = new Compare(new LottoVendingMachine(lottoList), lottoWithBonus);
+        Compare compare = new Compare(new LottoMachine(lottoList), lottoWithBonus);
         assertThat(compare.getTotalPrize(compare.getResult())).isEqualTo(5000L);
     }
 }

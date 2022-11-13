@@ -5,22 +5,23 @@ import static lotto.model.LottoReference.NOPE;
 import java.util.HashMap;
 import java.util.Map;
 import lotto.model.Lotto;
+import lotto.model.LottoMachine;
 import lotto.model.LottoReference;
 import lotto.model.LottoWithBonus;
 
 public class Compare {
 
-    private LottoVendingMachine lottoVendingMachine;
+    private LottoMachine lottoMachine;
     private LottoWithBonus lottoWithBonus;
 
-    public Compare(LottoVendingMachine lottoVendingMachine, LottoWithBonus lottoWithBonus) {
-        this.lottoVendingMachine = lottoVendingMachine;
+    public Compare(LottoMachine lottoMachine, LottoWithBonus lottoWithBonus) {
+        this.lottoMachine = lottoMachine;
         this.lottoWithBonus = lottoWithBonus;
     }
 
     public float calculateYield(Map<LottoReference, Integer> result) {
         long totalPrize = getTotalPrize(result);
-        int price = lottoVendingMachine.getPrice();
+        int price = lottoMachine.getPrice();
 
         return (float) totalPrize / price * 100;
     }
@@ -40,7 +41,7 @@ public class Compare {
         Map<LottoReference, Integer> result = new HashMap<>();
         Lotto myLotto = lottoWithBonus.getLotto();
 
-        for (Lotto haveLotto : lottoVendingMachine.getHaveLottoList()) {
+        for (Lotto haveLotto : lottoMachine.getHaveLottoList()) {
             int count = isContains(haveLotto, myLotto);
             LottoReference lottoReference = NOPE;
             if (count == 5) {

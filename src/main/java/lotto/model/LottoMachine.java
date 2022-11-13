@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -7,15 +7,15 @@ import lotto.constants.LottoConstants;
 import lotto.model.Lotto;
 import lotto.model.Money;
 
-public class LottoVendingMachine {
+public class LottoMachine {
 
     List<Lotto> haveLottoList;
 
-    public LottoVendingMachine(Money money) {
+    public LottoMachine(Money money) {
         buyLottoTicket(money);
     }
 
-    public LottoVendingMachine(List<Lotto> lottoList) {
+    public LottoMachine(List<Lotto> lottoList) {
         this.haveLottoList = lottoList;
     }
 

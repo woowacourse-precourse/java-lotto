@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,7 +9,7 @@ import lotto.Application;
 import org.junit.jupiter.api.Test;
 
 
-class LottoVendingMachineTest extends NsTest {
+class LottoMachineTest extends NsTest {
 
     @Test
     void LottoVendingMachine_Test_good() {
