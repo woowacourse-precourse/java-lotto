@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 import lotto.model.Lotto;
@@ -35,9 +36,23 @@ public class Print {
         out("당첨 통계");
         out("---");
 
+        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+
         for (Map.Entry<Prize, Integer> prizeAndCount : lottoStatics.entrySet()) {
-            out(String.format("%s - %d개", prizeAndCount.getKey().getDescription(), prizeAndCount.getValue()));
+            Prize prize = prizeAndCount.getKey();
+
+            out(String.format("%d개 일치%s (%s원) - %d개",
+                    prize.getMatch(), bonusText(prize), numberFormat.format(prize.getMoney()),
+                    prizeAndCount.getValue()));
         }
+    }
+
+    private String bonusText(Prize prize) {
+        if (prize.isBonus()) {
+            return ", 보너스 볼 일치";
+        }
+
+        return "";
     }
 
     public void yield(double profits) {

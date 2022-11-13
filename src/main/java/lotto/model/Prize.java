@@ -1,6 +1,5 @@
 package lotto.model;
 
-import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,8 +18,6 @@ public enum Prize {
 
     private final int money;
 
-    private final String description;
-
     static final Map<Integer, Map<Boolean, Prize>> matchPrize = new HashMap<>();
 
     static {
@@ -36,19 +33,6 @@ public enum Prize {
         this.match = match;
         this.bonus = bonus;
         this.money = money;
-        this.description = writeDescription();
-    }
-
-    private String writeDescription() {
-        return String.format("%d개 일치%s (%s원)", match, bonusText(), NumberFormat.getNumberInstance().format(money));
-    }
-
-    private String bonusText() {
-        if (bonus) {
-            return ", 보너스 볼 일치";
-        }
-
-        return "";
     }
 
     public static Prize search(int match, boolean bonus) {
@@ -77,9 +61,5 @@ public enum Prize {
 
     public boolean isBonus() {
         return bonus;
-    }
-
-    public String getDescription() {
-        return description;
     }
 }
