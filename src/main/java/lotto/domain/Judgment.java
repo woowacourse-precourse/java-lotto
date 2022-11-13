@@ -13,7 +13,7 @@ public class Judgment {
         return count;
     }
 
-    public static boolean checkBonusNumberCorrect(int bonusNumber, List<Integer> winningLotto) {
-        return winningLotto.contains(bonusNumber);
+    public static boolean checkBonusNumberCorrect(int bonusNumber, List<Integer> lotto) {
+        return lotto.contains(bonusNumber);
     }
 }

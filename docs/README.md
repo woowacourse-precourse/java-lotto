@@ -1,4 +1,4 @@
-# 기능 목록 ver 1.4
+# 기능 목록 ver 1.4.1
 <hr>
 
 ### 예외처리 상황
@@ -53,4 +53,5 @@
 - [x] 구매 리스트 생성(랜덤) - NumberGenerator
 - [x] 몇 개의 번호가 당첨 번호와 일치하는지 확인 - Judgment
 - [x] 보너스 번호 일치 여부 확인 - Judgment
+- [x] 당첨결과 리스트 생성 - UserLotto
 - [ ] 수익률 계산 - UserLotto

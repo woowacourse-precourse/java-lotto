@@ -17,17 +17,21 @@ public enum Prize {
         return this.prizeMoney;
     }
 
+    public int getMatchingCount() {
+        return this.matchingCount;
+    }
+
     Prize(int matchingCount, int prizeMoney) {
         this.matchingCount = matchingCount;
         this.prizeMoney = prizeMoney;
     }
 
-    public static Prize getPrize(int lottoMatchCount, boolean bonusMatching) {
-        if (lottoMatchCount == THIRD.matchingCount && !bonusMatching) {
+    public static Prize getPrize(int lottoMatchingCount, boolean bonusMatching) {
+        if (lottoMatchingCount == THIRD.matchingCount && !bonusMatching) {
             return THIRD;
         }
         return Stream.of(values())
-                .filter(prize -> prize.matchingCount == lottoMatchCount)
+                .filter(prize -> prize.matchingCount == lottoMatchingCount)
                 .findFirst()
                 .orElse(NONE);
     }

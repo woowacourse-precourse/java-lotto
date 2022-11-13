@@ -1,6 +1,9 @@
 package lotto.domain;
 
-import lotto.domain.Guide;
+import java.util.ArrayList;
+import java.util.List;
+
+import static lotto.domain.Judgment.getCorrectLottoNumberCount;
 
 public class UserLotto {
     private final int lottoAmount;
@@ -30,5 +33,21 @@ public class UserLotto {
             System.out.println("[ERROR} 복권 구입 금액은 1000 으로 나누어 떨어져야 합니다.");
             throw new IllegalArgumentException("[ERROR] 잘못된 복권 구입 금액");
         }
+    }
+
+    public static List<Integer> createUserLottoResult(List<Lotto> boughtLotto, List<Integer> winningNumbers,
+                                                        int bonusNumber) {
+        List<Integer> lottoResult = new ArrayList<>(List.of(0,0,0,0,0)); // 1등, 2등 ... 5등
+        for (Lotto lotto : boughtLotto) {
+            int matchingCount = Judgment.getCorrectLottoNumberCount(lotto, winningNumbers);
+            boolean bonusMatching = Judgment.checkBonusNumberCorrect(bonusNumber, lotto.getLotto());
+            Prize prize = Prize.getPrize(matchingCount, bonusMatching);
+            int resultIndex = prize.ordinal();
+            if (resultIndex == 5) { // 꽝은 결과에 필요없음
+                continue;
+            }
+            lottoResult.set(resultIndex, lottoResult.get(resultIndex) + 1);
+        }
+        return lottoResult;
     }
 }
