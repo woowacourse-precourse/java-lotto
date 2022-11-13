@@ -29,9 +29,9 @@ public class Application {
         lottoNumber = new LottoNumber();
         winCalculation = new WinCalculation();
 
-        WinDetail winDetail = WinDetail.findRankBy(5,true);
+        //WinDetail winDetail = WinDetail.findRankBy(5,true);
 
-        System.out.println(winDetail);
+        //System.out.println(winDetail);
 
         String str = inputView.buyLotto();
 
@@ -49,10 +49,15 @@ public class Application {
 
         lotto = new Lotto(win, numbers);
         numbers = lotto.change(win);
-        winCalculation.WinCount(ar,numbers);
+        //winCalculation.WinCount(ar,numbers);
 
         String bonus = inputView.bonusNumber();
-        bonusNumber.checkBonusNumber(numbers, bonus);
+        int bn = bonusNumber.checkBonusNumber(numbers, bonus);
+        int num = winCalculation.WinCount(ar,numbers);
+        boolean check = winCalculation.bonusNumber(bn, ar);
+        System.out.println(check);
+        WinDetail winDetail = WinDetail.findRankBy(num,check);
+        System.out.println(winDetail);
 
 
 

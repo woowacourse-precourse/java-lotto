@@ -8,10 +8,11 @@ public class BonusNumber {
 
     OutputView outputView = new OutputView();
 
-    public void checkBonusNumber(List<Integer>number, String bonus) {
+    public int checkBonusNumber(List<Integer>number, String bonus) {
         isNumber(bonus);
         rangeNumber(bonus);
         isEqualNumber(bonus, number);
+        return Integer.parseInt(bonus);
     }
 
     public boolean rangeNumber(String bonus){

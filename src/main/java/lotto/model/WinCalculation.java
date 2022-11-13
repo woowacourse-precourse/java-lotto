@@ -24,4 +24,19 @@ public class WinCalculation {
         count++;
     }
 
+    public boolean bonusNumber(int bonus, List<Integer>number) {
+        for(Integer numIndex : number) {
+            if(numIndex == bonus) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void checkBonusNumber(int bonus, List<Integer>number) {
+        if(count == 5) {
+            bonusNumber(bonus, number);
+        }
+    }
+
 }
