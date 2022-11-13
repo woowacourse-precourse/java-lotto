@@ -11,11 +11,14 @@ public class LottoGameController {
 
     public void gameStart() {
         relativeLottoService.relativeLottoNumber();
+
         relativeResultService = new RelativeResultService(
                 relativeLottoService.getMyLottoNumbers(),
                 relativeLottoService.getWinningNumbers(),
                 relativeLottoService.getBonusNumber(),
-                relativeLottoService.getMoney());
+                relativeLottoService.getMoney()
+        );
+
         relativeResultService.relativeResult();
     }
 
