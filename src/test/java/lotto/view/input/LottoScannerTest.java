@@ -12,13 +12,13 @@ class LottoScannerTest {
 
     @Nested
     class validateItContainsOnlyNumber {
-        @ParameterizedTest(name = "숫자만 입력하면 예외를 던지지 않는다.")
+        @ParameterizedTest(name = "숫자만 입력하면 예외를 던지지 않는다.(입력: {0})")
         @ValueSource(strings = {"14000", "1300", "1000000"})
         void success(String inputValue) {
             lottoScanner.validateItContainsOnlyNumber(inputValue);
         }
 
-        @ParameterizedTest(name = "숫자가 아닌 값을 입력하면 예외를 던진다")
+        @ParameterizedTest(name = "숫자가 아닌 값을 입력하면 예외를 던진다.(입력: {0})")
         @ValueSource(strings = {"안녕하세요", "money", "백만원", ""})
         void fail(String inputValue) {
             assertThatThrownBy(

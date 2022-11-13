@@ -9,23 +9,18 @@ import org.junit.jupiter.api.Test;
 
 class LottoTicketsTest {
 
-    @DisplayName("8개를 구매하면, 구매한 총 가격인 8000을 반환한다.")
+    @DisplayName("3개를 구매하면, 구매한 총 가격인 3000을 반환한다.")
     @Test
     void returnTotalPricesOfPurchase1() {
         LottoTickets lottoTickets = new LottoTickets(
                 List.of(
                         new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                         new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                         new Lotto(List.of(1, 2, 3, 4, 5, 6))
                 )
         );
         int actual = lottoTickets.totalPayment();
-        int predict = 8_000;
+        int predict = 3_000;
         Assertions.assertThat(actual).isEqualTo(predict);
     }
 

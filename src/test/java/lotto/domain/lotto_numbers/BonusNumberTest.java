@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class BonusNumberTest {
 
-    @ParameterizedTest(name = "1부터 45가 아닌 숫자가 들어오면 예외를 던진다.")
+    @ParameterizedTest(name = "1부터 45가 아닌 숫자가 들어오면 예외를 던진다.(입력: {0})")
     @ValueSource(ints = {0, 46})
     void createBonusNumberByInvalidNumber(int invalidNumber) {
         assertThatThrownBy(() -> new BonusNumber(invalidNumber))

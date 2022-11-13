@@ -18,14 +18,6 @@ public class LottoTickets {
         this.lottoTickets = lottoTickets;
     }
 
-    int totalPayment() {
-        return PRICE_OF_LOTTO * totalCounts();
-    }
-
-    public int totalCounts() {
-        return lottoTickets.size();
-    }
-
     List<Ranking> rankings(Lotto winningNumber, BonusNumber bonusNumber) {
         return winningCandidates(winningNumber)
                 .map(winningCandidate -> {
@@ -41,6 +33,14 @@ public class LottoTickets {
         return lottoTickets.stream()
                 .filter(lotto ->
                         MIN_NUMBER_FOR_WINNING <= lotto.matchCounts(winningNumber));
+    }
+
+    int totalPayment() {
+        return PRICE_OF_LOTTO * totalCounts();
+    }
+
+    public int totalCounts() {
+        return lottoTickets.size();
     }
 
     public List<Lotto> lottoTickets() {

@@ -20,7 +20,7 @@ class WinningNumberParserTest {
         assertThat(numbers).hasSize(6);
     }
 
-    @ParameterizedTest(name = "양식을 지키지 않으면 예외를 던진다.")
+    @ParameterizedTest(name = "입력 양식을 지키지 않으면 예외를 던진다.(입력: {0})")
     @ValueSource(strings = {
             "1,2,3,",
             "123456",
