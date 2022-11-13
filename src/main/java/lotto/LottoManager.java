@@ -1,15 +1,13 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class LottoManager {
+    final static int winningMoney[] = {5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000};
     // 로또 구입 금액
     int money;
     // 로또 갯수
@@ -21,12 +19,15 @@ public class LottoManager {
 
     int bonusNumber;
 
+    Map<Integer, Integer> winningStatistic;
+
     // 전체 동작을 구현하는 메소드
     public void run() {
         insertMoneyUI();
         createLottoUI();
         insertWinningNumberUI();
         insertBonusNumberUI();
+        winningCheckUI();
     }
 
 
@@ -151,7 +152,7 @@ public class LottoManager {
         for (String stringNumber : splitList) {
             winningNumber.add(Integer.parseInt(stringNumber));
         }
-        
+
         // 당첨 번호 오름차순 정렬
         winningNumber.sort((o1, o2) -> o1 - o2);
     }
@@ -196,5 +197,64 @@ public class LottoManager {
         insertBonusNumber(stringBonusNumber);
     }
 
+    // 당첨 통계 처리 메소드
+    public void statisticalProcessing(int winningCount, boolean isBonus) {
+        if (winningCount == 3) {
+            winningStatistic.put(5_000, winningStatistic.get(5_000) + 1);
+            return;
+        }
 
+        if (winningCount == 4) {
+            winningStatistic.put(50_000, winningStatistic.get(50_000) + 1);
+            return;
+        }
+
+        if (winningCount == 5 && isBonus) {
+            winningStatistic.put(30_000_000, winningStatistic.get(30_000_000) + 1);
+            return;
+        }
+
+        if (winningCount == 5) {
+            winningStatistic.put(1_500_000, winningStatistic.get(1_500_000) + 1);
+            return;
+        }
+
+        if (winningCount == 6) {
+            winningStatistic.put(2_000_000_000, winningStatistic.get(2_000_000_000) + 1);
+        }
+    }
+
+    public void winningCheck() {
+        // 통계 생성
+        winningStatistic = new HashMap<>();
+        for (int i = 0; i < winningMoney.length; i++) {
+            winningStatistic.put(winningMoney[i], 0);
+        }
+
+        for (Lotto lotto : lottoList) {
+            // 당첨 번호 갯수 체크
+            int winningCount = lotto.winningCheck(winningNumber);
+            // 보너스 번호 체크
+            boolean isBonus = lotto.bonusCheck(bonusNumber);
+
+            if (isBonus) {
+                winningCount++;
+            }
+
+            // 통계 처리
+            statisticalProcessing(winningCount, isBonus);
+        }
+    }
+
+    public void winningCheckUI() {
+        winningCheck();
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.printf("3개 일치 (5,000원) - %d개\n", winningStatistic.get(5_000));
+        System.out.printf("4개 일치 (50,000원) - %d개\n", winningStatistic.get(50_000));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", winningStatistic.get(1_500_000));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winningStatistic.get(30_000_000));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winningStatistic.get(2_000_000_000));
+    }
 }
