@@ -25,7 +25,9 @@ public class Lotto {
     }
 
     private boolean checkDuplicate() {
-        return numbers.stream().distinct().count() != 6;
+        return numbers.stream()
+                .distinct()
+                .count() == 6;
     }
 
     private boolean checkRange() {
