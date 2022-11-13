@@ -15,7 +15,7 @@ public class JackpotBonus {
         checkDuplicateBonus(jackpotNumbers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
-    public int getRankOf(Lotto lotto) {
+    public Rank getRankOf(Lotto lotto) {
         List<Integer> lottoNumbers = lotto.getNumbers();
         int jackpotCnt = countJackpot(lottoNumbers);
         boolean hasBonus = hasBonus(lottoNumbers);

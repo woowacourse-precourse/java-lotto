@@ -1,36 +1,41 @@
 package lotto.domain;
 
+import java.util.EnumMap;
+
 public enum Rank {
-    FIRST(1, Lotto.NUMBER_SIZE, false),
-    SECOND(2, Lotto.NUMBER_SIZE - 1, true),
-    THIRD(3, Lotto.NUMBER_SIZE - 1, false),
-    FOURTH(4, Lotto.NUMBER_SIZE - 2, false),
-    FIFTH(5, Lotto.NUMBER_SIZE - 3, false);
+    FIRST(1, 2_000_000_000),
+    SECOND(2, 30_000_000),
+    THIRD(3, 1_500_000),
+    FOURTH(4, 50_000),
+    FIFTH(5, 5000),
+    NO_LUCK(0, 0);
 
-    private static final int NO_LUCK = -1;
+    private static final EnumMap<Rank, Integer> jackpotCntMap = new EnumMap<>(Rank.class);
+    static {
+        jackpotCntMap.put(FIRST, Lotto.NUMBER_SIZE);
+        jackpotCntMap.put(SECOND, Lotto.NUMBER_SIZE - 1);
+        jackpotCntMap.put(THIRD, Lotto.NUMBER_SIZE - 1);
+        jackpotCntMap.put(FOURTH, Lotto.NUMBER_SIZE - 2);
+        jackpotCntMap.put(FIFTH, Lotto.NUMBER_SIZE - 3);
+        jackpotCntMap.put(NO_LUCK, 0);
+    }
     private final int rank;
-    private final int jackpotCnt;
-    private final boolean hasBonus;
+    private final int reward;
 
-    Rank(int rank, int jackpotCnt, boolean hasBonus) {
+    Rank(int rank, int reward) {
         this.rank = rank;
-        this.jackpotCnt = jackpotCnt;
-        this.hasBonus = hasBonus;
+        this.reward = reward;
     }
 
-    public static int of(int jackpotCnt, boolean hasBonus) {
-        for (Rank instance : Rank.values()) {
-            if (jackpotCnt == SECOND.jackpotCnt && hasBonus) {
-                return SECOND.rank;
-            } else if (jackpotCnt == THIRD.jackpotCnt) {
-                return THIRD.rank;
+    public static Rank of(int jackpotCnt, boolean hasBonus) {
+        for (Rank rank : Rank.values()) {
+            if (jackpotCntMap.get(THIRD) == jackpotCnt && !hasBonus) {
+                return THIRD;
             }
-
-            if (jackpotCnt == instance.jackpotCnt) {
-                return instance.rank;
+            if (jackpotCntMap.get(rank) == jackpotCnt) {
+                return rank;
             }
         }
-
         return NO_LUCK;
     }
 }
