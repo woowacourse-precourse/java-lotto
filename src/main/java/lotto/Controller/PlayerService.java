@@ -13,7 +13,7 @@ public class PlayerService {
 
     private Player player;
 
-    public PlayerService(Player player, Rank rank) {
+    public PlayerService(Player player) {
         this.player = player;
     }
 

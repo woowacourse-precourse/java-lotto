@@ -13,7 +13,7 @@ public class Controller {
         Player player = new Player();
         Rank rank = new Rank();
         this.lottoService = new LottoService(player);
-        this.playerService = new PlayerService(player, rank);
+        this.playerService = new PlayerService(player);
         this.rankingService = new RankingService(rank, player);
     }
 
