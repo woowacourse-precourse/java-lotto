@@ -15,7 +15,7 @@ class UserInputTest {
     void isValidPurchaseAmount() {
         // given
         String userInput = "2000";
-        int expectAmount = 2_000;
+        int expectAmount = 2;
         int result = new User().lottoPurchaseAmount(() -> userInput);
 
         // when, then
