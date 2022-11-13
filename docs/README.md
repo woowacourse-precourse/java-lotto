@@ -40,7 +40,7 @@
     - [x] String 형식에 대한 int 형변환 - Guide
 
 - [x] 로또 번호 접근자 - Lotto
-- [ ] 보너스 번호 접근자 - Bonus
+- [x] 보너스 번호 접근자 - Bonus
 - [x] 구매 개수 계산 - UserLotto
 - [x] 구매 리스트 생성(랜덤) - NumberGenerator
 - [ ] 몇 개의 번호가 당첨 번호와 일치하는지 확인 - Judgment
