@@ -36,10 +36,12 @@ public class LottoData{
     public void setWinnerNumber(Lotto winnerNumber){
         this.winnerNumber = winnerNumber;
     }
+    public Lotto getWinnerNumber(){return winnerNumber;}
 
     public void setBonusNumber(int bonusNumber){
         this.bonusNumber = bonusNumber;
     }
+    public int getBonusNumber(){return bonusNumber;}
     public List<Lotto> getLottos(){
         return lottos;
     }
