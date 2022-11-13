@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoFactory;
 import lotto.domain.Lottos;
 import lotto.domain.Money;
 import lotto.domain.Result;
@@ -14,24 +15,24 @@ import lotto.view.OutputView;
 public class LottoGameController {
 
     public void run() {
-        Money money = Money.from(InputView.getMoneyInput());
-        Lottos lottos = createLottos(money.getLottoCnt());
+        Money money = getMoney();
+        Lottos lottos = getLottos(money.getLottoCnt());
         OutputView.printLottos(lottos, money.getLottoCnt());
-        WinLotto winLotto = createWinLotto();
+        WinLotto winLotto = getWinLotto();
         Result result = Result.of(lottos, winLotto);
         OutputView.printResult(result);
         OutputView.printProfit(result.getPrize(),money.get());
     }
 
-    private Lottos createLottos(int lottoCnt) {
-        List<Lotto> lottosList = new ArrayList<>();
-        for (int i = 0; i < lottoCnt; i++) {
-            lottosList.add(Lotto.from(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
-        }
-        return Lottos.of(lottosList);
+    private Money getMoney() {
+        return Money.from(InputView.getMoneyInput());
     }
 
-    private WinLotto createWinLotto() {
-        return WinLotto.of(Lotto.from(InputView.getWinLotto()), InputView.getBonus());
+    private Lottos getLottos(int lottoCnt) {
+        return LottoFactory.createRandomLottos(lottoCnt);
+    }
+
+    private WinLotto getWinLotto() {
+        return LottoFactory.createWinLotto(InputView.getWinLotto(),InputView.getBonus());
     }
 }
