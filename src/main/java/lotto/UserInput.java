@@ -11,15 +11,13 @@ import java.util.List;
 public class UserInput {
 
     List<List<Integer>> lotteries = new ArrayList<>();
-    long money;
-    long quantity;
 
-    public void inputMoney() {
+    public Calculator inputMoney() {
         Message.INPUT_MONEY.print();
         String input = Console.readLine();
         validateMoney(input);
-        this.money = Long.parseLong(input);
-        this.quantity = money / 1000;
+        long money = Long.parseLong(input);
+        return new Calculator(money);
     }
 
     private void validateMoney(String input) {
@@ -72,7 +70,6 @@ public class UserInput {
             throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
         }
     }
-
     public int inputBonus() {
         Message.INPUT_BONUS_NUMBER.print();
         String bonus = Console.readLine();
