@@ -1,19 +1,21 @@
-package lotto.application.service.inputagent;
+package lotto.application.util.inputagent;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.application.service.inputvalidator.InputValidatorImpl;
+import lotto.application.util.inputvalidator.InputValidator;
+import lotto.application.util.inputvalidator.InputValidatorImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.application.service.inputvalidator.InputValidatorImpl.winningNumberIsNumeric;
 
 public class InputAgentImpl implements InputAgent {
+
+    private final InputValidator inputValidator = InputValidatorImpl.getInputValidatorInstance();
 
     @Override
     public int inputUserPurchaseMoney() {
         String lottoPurchaseMoney = Console.readLine();
-        InputValidatorImpl.validateLottoPurchaseMoney(lottoPurchaseMoney);
+        inputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney);
 
         return Integer.parseInt(lottoPurchaseMoney);
     }
@@ -21,18 +23,18 @@ public class InputAgentImpl implements InputAgent {
     @Override
     public List<Integer> inputWinningNumbers() {
         String lottoNumber = Console.readLine();
-        winningNumberIsNumeric(lottoNumber.substring(lottoNumber.length() - 1));
+        inputValidator.winningNumbersAreNumeric(lottoNumber.substring(lottoNumber.length() - 1));
 
         String[] lottoNumbers = lottoNumber.split(",");
         List<Integer> convertedLottoNumbers = new ArrayList<>();
 
-        InputValidatorImpl.validateWinningNumbersAreInteger(lottoNumbers);
+        inputValidator.validateWinningNumbersAreInteger(lottoNumbers);
 
         for (String value : lottoNumbers) {
             convertedLottoNumbers.add(Integer.parseInt(value));
         }
 
-        InputValidatorImpl.validateInputLottoNumber(convertedLottoNumbers);
+        inputValidator.validateInputLottoNumber(convertedLottoNumbers);
 
         return convertedLottoNumbers;
     }
@@ -40,7 +42,7 @@ public class InputAgentImpl implements InputAgent {
     @Override
     public int inputBonusNumber(List<Integer> winningLottoNumbers) {
         String inputBonusNumber = Console.readLine();
-        InputValidatorImpl.validateInputBonusLottoNumber(inputBonusNumber, winningLottoNumbers);
+        inputValidator.validateInputBonusLottoNumber(inputBonusNumber, winningLottoNumbers);
 
         return Integer.parseInt(inputBonusNumber);
     }

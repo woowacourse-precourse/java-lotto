@@ -1,4 +1,4 @@
-package lotto.application.service.inputagent;
+package lotto.application.util.inputagent;
 
 import java.util.List;
 
