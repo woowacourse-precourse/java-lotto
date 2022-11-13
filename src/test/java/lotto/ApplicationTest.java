@@ -217,7 +217,28 @@ class ApplicationTest extends NsTest {
         List<Integer> number = List.of(6,4,7,8,1,9);
         int count = winCalculation.WinCount(win,number);
         assertThat(count).isEqualTo(3);
+    }
 
+    @Test
+    void 보너스번호_적용_2등(){
+        WinCalculation winCalculation = new WinCalculation();
+        List<Integer> win = List.of(1,2,3,4,5,6);
+        List<Integer> number = List.of(2,3,4,5,6,7);
+        int bonus = 7;
+        winCalculation.WinCount(win,number);
+        boolean check = winCalculation.bonusNumber(bonus,number);
+        assertThat(check).isEqualTo(true);
+    }
+
+    @Test
+    void 보너스번호_적용_3등(){
+        WinCalculation winCalculation = new WinCalculation();
+        List<Integer> win = List.of(1,2,3,4,5,6);
+        List<Integer> number = List.of(2,3,4,5,6,7);
+        int bonus = 9;
+        winCalculation.WinCount(win,number);
+        boolean check = winCalculation.bonusNumber(bonus,number);
+        assertThat(check).isEqualTo(false);
     }
 
     @Override
