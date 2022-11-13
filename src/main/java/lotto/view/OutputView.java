@@ -39,16 +39,21 @@ public class OutputView {
 
     void printStatisticsByRank(Rank rank, int winCount) {
         try {
-            String raw = RANK_MESSAGE;
-            if (rank.equals(Rank.SECOND)) {
-                raw = SECOND_RANK_MESSAGE;
-            }
-            String formatted = String.format(raw, rank.getCorrectnessCount(), rank.getPrizeMoneyToString(), winCount);
+            String formatted = getMessageFrom(rank, winCount);
             bw.write(formatted);
             bw.newLine();
         } catch (IOException e) {
 
         }
+    }
+
+    private String getMessageFrom(Rank rank, int winCount) {
+        String rawMsg = RANK_MESSAGE;
+        if (rank.equals(Rank.SECOND)) {
+            rawMsg = SECOND_RANK_MESSAGE;
+        }
+        String formatted = String.format(rawMsg, rank.getCorrectnessCount(), rank.getPrizeMoneyToString(), winCount);
+        return formatted;
     }
 
     void printStatisticStart() {
@@ -62,13 +67,17 @@ public class OutputView {
 
     void printAllLotto(List<Lotto> lottoList) {
         try {
-            for (Lotto lotto : lottoList) {
-                bw.write(lotto.toString());
-                bw.newLine();
-            }
+            iterateAndPrintLotto(lottoList);
             bw.newLine();
         } catch (IOException e) {
 
+        }
+    }
+
+    private void iterateAndPrintLotto(List<Lotto> lottoList) throws IOException {
+        for (Lotto lotto : lottoList) {
+            bw.write(lotto.toString());
+            bw.newLine();
         }
     }
 
