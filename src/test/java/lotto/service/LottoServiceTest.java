@@ -4,8 +4,11 @@ import static lotto.domain.Lotto.LOTTO_NUMBERS_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import lotto.domain.Customer;
+import lotto.domain.LottoMachine;
 import lotto.domain.LottoSeller;
+import lotto.dto.LottoDto;
 import lotto.dto.LottoInformationDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -43,5 +46,19 @@ class LottoServiceTest {
 
         assertThatThrownBy(() -> lottoService.buy(customer))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void draw_메서드는_올바르지_않은_당첨번호를_입력받는_경우_IllegalArgumentException을_던진다() {
+        LottoDto lottoDto = new LottoDto(List.of(2, 2, 3, 4, 5, 6), 7);
+        assertThatThrownBy(() -> lottoService.draw(lottoDto))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void draw_메서드는_당첨번호를_입력받아_LottoMachine을_반환한다() {
+        LottoDto lottoDto = new LottoDto(List.of(1, 2, 3, 4, 5, 6), 7);
+        LottoMachine lottoMachine = lottoService.draw(lottoDto);
+        assertThat(lottoMachine).isNotNull();
     }
 }

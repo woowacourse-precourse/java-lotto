@@ -88,6 +88,7 @@
 - [x]  요청을 처리하는 LottoController 클래스 추가
 - [x]  비즈니스 로직을 처리하는 LottoService 클래스 추가
     - [x] 로또 구매 로직을 처리하는 메서드 추가
+    - [x] 당첨번호를 입력받아 LottoMachine을 반환하는 draw 메서드 추가
 - [x]  List<Lotto>의 일급 컬렉션인 LottoTicket 클래스 추가
     - [x] 로또 번호 리스트들을 반환하는 value 메서드 추가
     - [x] 로또 결과 확인하는 check 메서드 추가
