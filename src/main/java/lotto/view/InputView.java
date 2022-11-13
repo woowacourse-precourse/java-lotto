@@ -9,7 +9,13 @@ import static lotto.utils.Message.*;
 public class InputView {
     public static int requestUserAmount(){
         System.out.println(REQUEST_USER_AMOUNT);
-        return StringToInt(Console.readLine());
+        try{
+            return StringToInt(Console.readLine());
+        } catch (IllegalArgumentException e){
+            OutputView.printException(e);
+        }
+        return 0;
+
     }
 
     public static String requestWinNumbers(){
