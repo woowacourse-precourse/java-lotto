@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 public final class Lottos {
     private final List<Lotto> lottos;
@@ -17,7 +18,11 @@ public final class Lottos {
         }
     }
 
-    public List<Lotto> getLottos() {
-        return lottos;
+    public Stream<Lotto> toStream() {
+        return lottos.stream();
+    }
+
+    public int size() {
+        return lottos.size();
     }
 }

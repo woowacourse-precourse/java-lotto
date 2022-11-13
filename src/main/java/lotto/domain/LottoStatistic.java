@@ -26,8 +26,7 @@ final class LottoStatistic {
     }
 
     private List<LottoResult> calculateScore() {
-        return lottos.getLottos()
-                .stream()
+        return lottos.toStream()
                 .map(winningLottery::getResult)
                 .collect(Collectors.toList());
     }
@@ -69,7 +68,7 @@ final class LottoStatistic {
                 fiveBonus * LottoResult.FIVE_BONUS_CORRECT.money() +
                 six * LottoResult.SIX_CORRECT.money();
         int lottoPrice = LottoConstants.LOTTO_PRICE.value();
-        int totalCount = lottos.getLottos().size();
+        int totalCount = lottos.size();
         return (double) total / (lottoPrice * totalCount) * 100;
     }
 }

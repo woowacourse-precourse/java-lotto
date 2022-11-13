@@ -41,8 +41,7 @@ public final class OutputView {
     }
 
     public void printLottos(Lottos lottos) {
-        lottos.getLottos()
-                .forEach(this::printLotto);
+        lottos.toStream().forEach(this::printLotto);
     }
 
     private void printLotto(Lotto lotto) {

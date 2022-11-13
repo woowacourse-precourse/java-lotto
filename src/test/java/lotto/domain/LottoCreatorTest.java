@@ -21,6 +21,6 @@ public class LottoCreatorTest {
     void case1(int input) {
         PickNumbers missionRandom = new RandomPicker();
         LottoCreator lottoCreator = new LottoCreator(missionRandom);
-        assertThat(lottoCreator.createLottos(new Money(input)).getLottos().size()).isEqualTo(input / 1000);
+        assertThat(lottoCreator.createLottos(new Money(input)).size()).isEqualTo(input / 1000);
     }
 }
