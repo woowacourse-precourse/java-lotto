@@ -7,12 +7,11 @@ public class LottoBank {
     private LottoMachine lottoMachine;
     private int containsCount = 0;
 
-    public void LottoNumberCompareResult() {
-        List<List<Integer>> totalLotteries = lottoMachine.sortLottoNumbers();
+    public void LottoNumberCompareResult(List<List<Integer>> totalLotteries, List<Integer> winningNumbers) {
         int[] rankCount = new int[8];
         for (List<Integer> lotto : totalLotteries) {
             for (int number : lotto) {
-                countContainsNumber(number);
+                countContainsNumber(number, winningNumbers);
             }
             for (int i = 0; i < containsCount; i++) {
                 rankCount[containsCount]++;
@@ -24,14 +23,13 @@ public class LottoBank {
         }
     }
 
-    public void countContainsNumber(int number) {
-        if (isContainNumber(number)) {
+    public void countContainsNumber(int number, List<Integer> winningNumbers) {
+        if (isContainNumber(number, winningNumbers)) {
             containsCount++;
         }
     }
 
-    public boolean isContainNumber(int number) {
-        List<Integer> winningNumbers = winningLotto.creteWinningNumbers();
+    public boolean isContainNumber(int number, List<Integer> winningNumbers) {
         if (winningNumbers.contains(number)) {
             return true;
         }

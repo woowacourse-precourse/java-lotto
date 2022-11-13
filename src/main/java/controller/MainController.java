@@ -1,5 +1,6 @@
 package controller;
 
+import lotto.LottoBank;
 import lotto.LottoMachine;
 import lotto.LottoStore;
 import lotto.WinningLotto;
@@ -10,7 +11,8 @@ import java.util.List;
 
 public class MainController {
     private int lottoCount;
-    public List<List<Integer>> totalLotteries;
+    private List<List<Integer>> totalLotteries;
+    private List<Integer> winningNumbers;
 
     public void run() {
         moneyController();
@@ -33,6 +35,11 @@ public class MainController {
     public void makeWinningLottoController() {
         String winningNumber = InputView.inputWinningNumber();
         int bonusNumber = InputView.inputBonusNumber();
-        new WinningLotto().creteWinningNumbers(winningNumber, bonusNumber);
+        winningNumbers = new WinningLotto().creteWinningNumbers(winningNumber, bonusNumber);
+        compareController();
+    }
+
+    public void compareController() {
+        new LottoBank().LottoNumberCompareResult(totalLotteries, winningNumbers);
     }
 }
