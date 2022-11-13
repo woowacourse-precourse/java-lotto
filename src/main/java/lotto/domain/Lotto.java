@@ -20,7 +20,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         List<Integer> tempNumbers = new ArrayList<>(numbers);
         tempNumbers.sort(Comparator.naturalOrder());
-        List<Integer> sortedNumbers = Collections.unmodifiableList(tempNumbers);
+        List<Integer> sortedNumbers = List.copyOf(tempNumbers);
 
         validate(sortedNumbers);
         this.numbers = sortedNumbers;
