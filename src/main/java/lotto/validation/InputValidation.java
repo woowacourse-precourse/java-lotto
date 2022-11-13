@@ -19,7 +19,7 @@ public class InputValidation {
     public void checkFirstNumberIsNotZero(String input, String splitRegex) {
         String[] split = input.split(splitRegex);
 
-        if(split.length > 1 && Integer.parseInt(split[0]) == 0)
+        if (split.length > 1 && Integer.parseInt(split[0]) == 0)
             throw new IllegalArgumentException(ErrorMessage.FIRST_NUMBER_IS_NOT_ZERO);
     }
 
@@ -38,7 +38,15 @@ public class InputValidation {
     public void checkDuplicate(List<Integer> numbers) {
         long eraseDuplicateNumberSize = numbers.stream().distinct().count();
 
-        if(eraseDuplicateNumberSize != numbers.size())
+        if (eraseDuplicateNumberSize != numbers.size())
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_DISTINCT);
+    }
+
+    public void checkNumberInRange(List<Integer> numbers) {
+        boolean inRange = numbers.stream().allMatch(number -> number >= 1 && number <= 45);
+
+        if (inRange == false)
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
+
     }
 }

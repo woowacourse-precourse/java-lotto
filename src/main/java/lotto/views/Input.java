@@ -36,6 +36,7 @@ public class Input {
         List<Integer> result = convertToList(answer);
         inputValidation.checkNumberSize(result);
         inputValidation.checkDuplicate(result);
+        inputValidation.checkNumberInRange(result);
         sortWinningNumber(result);
 
         return result;

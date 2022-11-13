@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.domain.Wallet;
 import lotto.utils.Constant;
 import lotto.views.Input;
@@ -8,6 +9,7 @@ public class GameManager {
 
     private final Input input;
     private Wallet wallet;
+    private Lotto winningNumber;
 
     public GameManager(Input input) {
         this.input = input;
@@ -19,7 +21,8 @@ public class GameManager {
         purchaseLotto(numberOfPurchase);
         wallet.printWallet();
 
-        input.getWinningNumber();
+        winningNumber = new Lotto(input.getWinningNumber());
+
     }
 
     public int changeNumberOfLottoToBuy(int lottoPrice) {
