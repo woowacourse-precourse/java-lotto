@@ -12,4 +12,8 @@ public enum Prize {
     Prize(String reward) {
         this.reward = reward;
     }
+
+    public String getReward() {
+        return reward;
+    }
 }
