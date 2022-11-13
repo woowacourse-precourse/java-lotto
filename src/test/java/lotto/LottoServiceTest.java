@@ -21,5 +21,17 @@ class LottoServiceTest {
             // then
             assertThrows(IllegalStateException.class, () -> LottoService.amountInputToInteger(input));
         }
+
+        @Test
+        @DisplayName("[실패] - 입력 값이 1000보다 작은 경우")
+        void inputIsTooLow() {
+            // given
+            final String input = "999";
+
+            // when
+
+            // then
+            assertThrows(IllegalStateException.class, () -> LottoService.amountInputToInteger(input));
+        }
     }
 }
