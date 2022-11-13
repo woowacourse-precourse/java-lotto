@@ -40,6 +40,16 @@ public class Exception {
         }
     }
 
+    public void checkBonusNumberInput(String str) {
+        if (!isNumberFormat(str)) {
+            throw new IllegalArgumentException(ExceptionType.INVALID_FORMAT.getErrorMsg());
+        }
+
+        if (!isValidNumberRange(str)) {
+            throw new IllegalArgumentException(ExceptionType.INVALID_RANGE.getErrorMsg());
+        }
+    }
+
     private boolean isNumberFormat(String str) {
         for (int i = 0; i < str.length(); i++) {
             if (!isNumber(str.charAt(i))) {
