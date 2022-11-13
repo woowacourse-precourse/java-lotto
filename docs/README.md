@@ -14,6 +14,9 @@
         - [Lotto 클래스 관련 숙지사항](#lotto-클래스-관련-숙지사항)
     - [3. 첫 번째 구현 기능 리스트 💻](#3-첫-번째-구현-기능-리스트-💻)
         - [첫번째 구현 클래스 다이어그램](#첫번째-구현-클래스-다이어그램)
+    - [4. 두 번째 구현 기능 리스트 💻](#4-두-번째-구현-기능-리스트-💻-(MVC를-적용))
+        - [주의 사항](#주의-사항)
+        - [기능 리스트](#기능-리스트)
 
 <!-- TOC -->
 
@@ -85,3 +88,59 @@
 <p align="center">
   <img src="./resource/lotto_first_impl.PNG"/>
 </p>
+
+## 4. 두 번째 구현 기능 리스트 💻 (MVC를 적용)
+
+### 주의 사항
+
+아래 규칙을 만족시키면서, MVC로 재구현한다.
+
+```
+1. Model은 Controller와 View에 의존하지 않아야 한다.
+2. View는 Model에만 의존해야 하고, Controller에는 의존하면 안된다.
+3. View가 Model로부터 데이터를 받을 때는,  사용자마다 다르게 보여주어야 하는 데이터에 대해서만 받아야 한다.
+4. Controller는 Model과 View에 의존해도 된다.
+5. View가 Model로부터 데이터를 받을 때 , 반드시 Controller에서 받아야 한다.
+```
+
+### 기능 리스트
+
+#### Model
+
+- Lotto 모델
+    - [ ] 몇등짜리 로또인지 추첨한다. `Lotto#draw`
+    - [ ] 유효한 로또인지 검사한다. `Lotto#validate`
+    - [ ] 로또 번호를 오름차순으로 정렬해서 출력한다. `Lotto#toString`
+
+- LottoMachine 모델
+    - [ ] 금액에 맞게 로또를 발행한다. `LottoMachine#publish`
+    - [ ] 입력된 모든 로또를 추첨하고 로또의 기록을 반환한다. `LottoMachine#drawAll`
+    - [ ] 당첨 번호와 보너스번호를 저장한다. `LottoMachind#setLuckyNumber`
+
+- WinningRecord 모델
+    - [ ] 당첨 기록을 반환한다. `WinningRecord#getWinningRecord`
+    - [ ] 수익률을 반환한다. `WinningRecord#getYield`
+
+#### View
+
+- CommonView
+    - [ ] 예외 상황 시 에러 문구를 출력해야 한다. `Commontview#printExceptionMessage`
+    - [ ] 당첨 번호 입력 문구를 출력한다. `CommonView#printInputAnswerMessage`
+    - [ ] 보너스 번호 입력 문구를 출력한다. `CommonView#printInputBonusMessage`
+    - [ ] 구입금액 입력 문구를 출력한다. `CommonView#printInputMoneyMessage`
+
+- PublishView
+    - [ ] 발행한 로또 수량 및 번호를 출력한다. `PublishView#printPublishInformation`
+
+- RecordView
+    - [ ] 당첨 내역을 출력한다. `RecordView#printWinningRecord`
+    - [ ] 수익률은 소수점 둘째 자리에서 반올림해서 출력한다. `History#printYeild`
+
+#### Controller
+
+- [ ] 로또 애플리케이션을 시작한다. `LottoController#play`
+- [ ] 로또를 구매하도록 중개한다. `LottoController#buyLotto`
+- [ ] 당첨 번호와 보너스 번호를 입력하도록 중개한다. `Lottocontroller#setAnswer`
+- [ ] 결과를 출력하도록 중개한다. `Lottocontroller#getResult`
+
+
