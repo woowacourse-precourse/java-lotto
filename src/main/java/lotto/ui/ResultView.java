@@ -1,12 +1,14 @@
 package lotto.ui;
 
 import java.util.List;
+import java.util.Map;
+import lotto.model.Rank;
 
 public class ResultView implements View{
-    private List<Integer> result;
+    private Map<Rank, Integer> result;
     private float yield;
 
-    ResultView(List<Integer> result, float yield){
+    ResultView(Map<Rank, Integer> result, float yield){
         this.result = result;
         this.yield = yield;
     }
@@ -17,11 +19,7 @@ public class ResultView implements View{
     }
     private void print(){
         printDefaultMessage();
-        print3Matches();
-        print4Matches();
-        print5Matches();
-        print5AndBonusMatches();
-        printAllMatches();
+        printMatches();
         printYield();
     }
     private void printDefaultMessage(){
@@ -29,22 +27,20 @@ public class ResultView implements View{
         System.out.println("---");
     }
 
-    private void print3Matches(){
-        System.out.println("3개 일치 (5,000원) - "+ result.get(0) +"개");
+    private void printMatches(){
+        List<Rank> rankFormat = Rank.rankFormatter();
+        for(Rank rank: rankFormat){
+            if(rank == Rank.NOT_WINNER){
+                continue;
+            }
+            System.out.println(
+                    rank.getMatchedNumber()
+                    + "개 일치 (" + rank.getPrice() + ") - "
+            + result.get(rank) +"개"
+            );
+        }
     }
 
-    private void print4Matches(){
-        System.out.println("4개 일치 (50,000원) - " + result.get(1) + "개");
-    }
-    private void print5Matches(){
-        System.out.print("5개 일치 (1,500,000원) - " + result.get(2) + "개");
-    }
-    private void print5AndBonusMatches(){
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + result.get(3) + "개");
-    }
-    private void printAllMatches(){
-        System.out.println("6개 일치 (2,000,000,000원) - " + result.get(4) + "개");
-    }
     private void printYield(){
         System.out.println("총 수익률은 " + yield + "입니다.");
     }
