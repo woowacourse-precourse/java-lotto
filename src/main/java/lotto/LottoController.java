@@ -69,4 +69,13 @@ public class LottoController {
         return number;
     }
 
+    /**
+     * 문자열을 파싱하여 보너스 번호를 설정한다.
+     * @param inputBonusNumber : 숫자로 구성된 문자열
+     */
+    public void setBonusNumber(String inputBonusNumber){
+        int bonusNumber = convertInputNumber(inputBonusNumber);
+        lottoService.setBonusNumber(bonusNumber);
+    }
+
 }
