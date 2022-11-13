@@ -43,10 +43,10 @@ public class Lotto {
         }
     }
 
-    public LottoRanking checkWinningResult(Lotto winningNumbers, Number bonusNumber) {
+    public LottoRanking checkWinningResult(List<Integer> winningNumbers, Number bonusNumber) {
         int count = 0;
         for (int i : this.lottoNumbers()) {
-            if (isContain(i, winningNumbers.lottoNumbers())) {
+            if (isContain(i, winningNumbers)) {
                 count++;
             }
         }
