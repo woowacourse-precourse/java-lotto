@@ -13,8 +13,12 @@ public class Application {
         lottoCount = user.buyingLotto(input);
         user.generatingLotto(lottoCount);
         user.printBoughtLotto();
+
         System.out.println("당첨 번호를 입력해 주세요.");
         String inputLottoNum = Console.readLine();
         lotto = new Lotto(user.choosingLottoNumber(inputLottoNum));
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String inputBonusNum = Console.readLine();
     }
 }

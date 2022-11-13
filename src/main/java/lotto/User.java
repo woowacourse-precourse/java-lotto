@@ -12,8 +12,9 @@ public class User {
 
     // 로또 구매 개수 구현
     public int buyingLotto(String input) {
-        int money = UserMissChecking.numberChecking(input);
-        if (money == -1 || !UserMissChecking.thousandChecking(money)) return -1;
+        UserMissChecking.numberChecking(input);
+        int money = Integer.parseInt(input);
+        UserMissChecking.thousandChecking(money);
         return money / 1000;
     }
 
@@ -30,7 +31,9 @@ public class User {
         try {
             String[] tempLottoNum = inputLottoNum.split(",");
             for (String s : tempLottoNum) {
-                lottoNum.add(Integer.parseInt(s));
+                int changedNum = Integer.parseInt(s);
+                UserMissChecking.numberLimitChecking(changedNum);
+                lottoNum.add(changedNum);
             }
         }catch (Exception e){
             System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
