@@ -34,41 +34,38 @@ public class Application {
         for(int i = 0; i < lottoCount; i++){
             int countTmp = 0;
 
-            for(int j = 0; j < 6; j++){
-                for(int k = 0; k < 6; k++) {
-                    if (lottoArray[i][j] == userInputLottoNumber[k]) {
-                        countTmp++;
-                    }
-                }
-            }
-            winningStatisticsMaker(lottoArray[i], userInputBonusNumber, correctCount, countTmp);
+            countTmpCounter(lottoArray[i], userInputLottoNumber, countTmp);
 
+            winningStatisticsMaker(lottoArray[i], userInputBonusNumber, correctCount, countTmp);
         }
         winningStatisticPrinter(correctCount);
         yieldCalculation(correctCount, purchasedValue);
     }
 
+    public static void countTmpCounter(int[] lottoArray, int[] userInputLottoNumber, int countTmp){
+        for (int i = 0; i < 6; i++){
+            for (int j = 0; j < 6; j++){
+                if (lottoArray[i] == userInputLottoNumber[j]){
+                    countTmp++;
+                }
+            }
+        }
+    }
+
     public static void winningStatisticsMaker(int[] lottoArray, int userInputBonusNumber, int[] correctCount, int countTmp){
-        if (countTmp == 3) {
-            correctCount[0]++;
+        for (int i = 3; i <= 6; i++){
+            if (countTmp == i){
+                correctCount[i - 3]++;
+            }
         }
 
-        else if (countTmp == 4) {
-            correctCount[1]++;
-        }
-
-        else if (countTmp == 5) {
+        if (countTmp == 5){
             for (int i = 0; i < 6; i++){
                 if (lottoArray[i] == userInputBonusNumber){
                     correctCount[2]--;
                     correctCount[3]++;
                 }
             }
-            correctCount[2]++;
-        }
-
-        else if (countTmp == 6) {
-            correctCount[4]++;
         }
     }
 
@@ -97,14 +94,7 @@ public class Application {
         System.out.println("%입니다.");
     }
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        int purchasedValue;
-        String userInputLotto = "";
-        String[] userInputLottoTmp;
-        int[] userInputLottoNumber = new int[6];
-        int userInputBonusNumber;
-
+    public static int buyLotto(int purchasedValue){
         System.out.println("구입금액을 입력해 주세요.");
         purchasedValue = Integer.parseInt(Console.readLine());
 
@@ -116,11 +106,10 @@ public class Application {
         int lottoCount = purchasedValue / 1000;
         System.out.println("\n" + lottoCount + "개를 구매했습니다.");
 
+        return lottoCount;
+    }
 
-        int[][] lottoArray = new int[lottoCount][6];
-
-        makeLottoNumber(lottoArray ,lottoCount);
-
+    public static void userInputLottoNumber(String userInputLotto, String[] userInputLottoTmp, int[] userInputLottoNumber, int userInputBonusNumber){
         System.out.println("\n당첨 번호를 입력해 주세요.");
         userInputLotto = Console.readLine();
         userInputLottoTmp = userInputLotto.split(",");
@@ -130,7 +119,26 @@ public class Application {
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
         userInputBonusNumber = Integer.parseInt(Console.readLine());
+    }
 
+    public static void startLotto() {
+        int purchasedValue = 0;
+        String userInputLotto = "";
+        String[] userInputLottoTmp = new String[6];
+        int[] userInputLottoNumber = new int[6];
+        int userInputBonusNumber = 0;
+
+        int lottoCount = buyLotto(purchasedValue);
+
+        int[][] lottoArray = new int[lottoCount][6];
+
+        makeLottoNumber(lottoArray ,lottoCount);
+        userInputLottoNumber(userInputLotto, userInputLottoTmp, userInputLottoNumber, userInputBonusNumber);
         numberCompare(lottoCount, lottoArray, userInputLottoNumber, userInputBonusNumber, purchasedValue);
+    }
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        startLotto();
     }
 }
