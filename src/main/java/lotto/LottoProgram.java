@@ -19,23 +19,30 @@ import lotto.domain.Lotto;
 
 public class LottoProgram {
 
-    private static Buyer buyer = new Buyer();
+    private static final Buyer buyer = new Buyer();
+
     public static void init() throws IllegalArgumentException {
+        inputPayment();
+        inputWinningNumbers();
+        inputBonusNumber();
+        Generator.calculateRank(buyer);
+        Display.winningResults(buyer);
+    }
+
+    private static void inputPayment() {
         Display.inputPayment();
         String paymentInput = Console.readLine();
         Validator.payment(paymentInput);
-
         int payment = Integer.parseInt(paymentInput);
-
         buyer.setTotalPurchaseAmout(payment);
-
         Display.lineChange();
-
         int numbersOfLotto = payment / 1000;
         buyer.setLottoPurchasedCount(numbersOfLotto);
         Display.paidAmout(numbersOfLotto);
-
         purchasedLottoSave();
+    }
+
+    private static void inputWinningNumbers() {
         Display.inputWinningNumbers();
         String winningNumbers = Console.readLine();
         Validator.winningNumberFormat(winningNumbers);
@@ -46,15 +53,12 @@ public class LottoProgram {
 
         Lotto.setWinningNumbers(Arrays.asList(numberArray));
 
+    }
+    private static void inputBonusNumber() {
         Display.inputBonusNumber();
         String bonusNumber = Console.readLine();
         Validator.bonusNumber(bonusNumber);
-
         Lotto.setBonusNumber(Integer.parseInt(bonusNumber));
-
-        Generator.calculateRank(buyer);
-
-        Display.winningResults(buyer);
     }
 
     private static void purchasedLottoSave() {
