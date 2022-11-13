@@ -21,7 +21,7 @@ public class LottoProgram {
 
     private static Buyer buyer = new Buyer();
     public static void init() throws IllegalArgumentException {
-        System.out.println(PRINT.INPUT_PAYMENT);
+        Display.inputPayment();
         String paymentInput = Console.readLine();
         Validator.payment(paymentInput);
 
@@ -29,12 +29,14 @@ public class LottoProgram {
 
         buyer.setTotalPurchaseAmout(payment);
 
+        Display.lineChange();
+
         int numbersOfLotto = payment / 1000;
         buyer.setLottoPurchasedCount(numbersOfLotto);
-        System.out.println(buyer.getLottoPurchasedCount() + PRINT.BUYED_LOTTO);
+        Display.paidAmout(numbersOfLotto);
 
         purchasedLottoSave();
-        System.out.println(PRINT.INPUT_WINNING_NUMBERS);
+        Display.inputWinningNumbers();
         String winningNumbers = Console.readLine();
         Validator.winningNumberFormat(winningNumbers);
 
@@ -44,51 +46,15 @@ public class LottoProgram {
 
         Lotto.setWinningNumbers(Arrays.asList(numberArray));
 
-        System.out.println(PRINT.INPUT_BONUS_NUMBER);
+        Display.inputBonusNumber();
         String bonusNumber = Console.readLine();
-        Validator.bonusNumberRange(bonusNumber);
-        Validator.bonusNumberInWinningNumbers(bonusNumber);
+        Validator.bonusNumber(bonusNumber);
 
         Lotto.setBonusNumber(Integer.parseInt(bonusNumber));
 
         Generator.calculateRank(buyer);
 
-        System.out.println(buyer.getWinningSummary().entrySet());
-
-        System.out.println(PRINT.WINNING_RESULTS);
-        HashMap<String, Integer> winningSummary = buyer.getWinningSummary();
-        List<Ranking> rankings = new ArrayList<Ranking>(
-                Arrays.asList(
-                        Ranking.FIFTH,
-                        Ranking.FOURTH,
-                        Ranking.THIRD,
-                        Ranking.SECOND,
-                        Ranking.FIRST)
-        );
-
-        rankings.stream()
-                .forEach(rank -> {
-                    int rankCount = winningSummary.get(rank.getLabel());
-                    if (rank.getLabel().equals(Lotto.RANK_SECOND)) {
-                        buyer.setTotalWinningPrize(rank.getPrize() * rankCount);
-                        System.out.printf(
-                                PRINT.BONUS_CORRECT_FORMAT,
-                                rank.getWinningCount(), rank.getPrizeLabel(),
-                                rankCount);
-                        return;
-                    }
-                    buyer.setTotalWinningPrize(rank.getPrize() * rankCount);
-                    System.out.printf(
-                            PRINT.GENERAL_CORRECT_FORMAT,
-                            rank.getWinningCount(), rank.getPrizeLabel(),
-                            rankCount);
-                });
-
-        double totalPrize = Generator.profitCalculate(
-                buyer.getTotalPurchaseAmout(), buyer.getTotalWinningPrize());
-
-        System.out.printf(PRINT.PROFIT_FORMAT, totalPrize);
-
+        Display.winningResults(buyer);
     }
 
     private static void purchasedLottoSave() {
