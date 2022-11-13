@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.exception.AmountException;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,6 +10,7 @@ public class Convertor {
     private static final int eachPrice = 1000;
 
     public static int getQuantity(String input) {
+        AmountException.validateAmount(input);
         return Integer.parseInt(input) / eachPrice;
     }
 

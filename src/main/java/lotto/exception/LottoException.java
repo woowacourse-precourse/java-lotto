@@ -19,7 +19,7 @@ public class LottoException {
         }else if(hasDuplication(numbers)) {
             message.append(DUPLICATE_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
-        }else if(isAccurateRange(numbers)) {
+        }else if(!isAccurateRange(numbers)) {
             message.append(1).append("부터 ").append(45).append(RANGE_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
         }
