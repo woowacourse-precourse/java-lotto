@@ -1,5 +1,7 @@
 package lotto;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.Map;
 public class LottoChecker {
     private final List<Integer> WINNING_NUMBERS;
     private final int BONUS_NUMBER;
+    private final int LOTTO_PRICE = 1000;
 
     private List<Lotto> lottos = new ArrayList<>();
     private Map<Prize, Integer> result = new HashMap<>();
@@ -90,5 +93,28 @@ public class LottoChecker {
 
     void printPrizeWinCount(Prize prize){
         System.out.println(Prize.prizeInfo(prize) + " - " + result.get(prize));
+    }
+
+    long getTotalPrizeMoney() {
+        long totalPrizeMoney = 0;
+        for (Prize prize : result.keySet()) {
+            totalPrizeMoney += prize.money * result.get(prize);
+        }
+        return totalPrizeMoney;
+    }
+
+    String getProfitRate(long totalPrizeMoney) {
+        if (totalPrizeMoney == 0) {
+            return "0.0";
+        }
+        DecimalFormat df = new DecimalFormat("#.0");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+        double moneyUsed = (double) lottos.size() * LOTTO_PRICE;
+        double profitRate = totalPrizeMoney / moneyUsed * 100;
+        return df.format(profitRate);
+    }
+
+    void printProfitRate() {
+        System.out.println("총 수익률은 " + getProfitRate(getTotalPrizeMoney()) + "%입니다.");
     }
 }
