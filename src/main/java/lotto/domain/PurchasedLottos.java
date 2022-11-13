@@ -26,9 +26,12 @@ public class PurchasedLottos {
     }
 
     private Lotto generateLotto() {
-        final List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MINIMUM, LOTTO_NUMBER_MAXIMUM, LOTTO_SIZE);
-        Collections.sort(numbers);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MINIMUM, LOTTO_NUMBER_MAXIMUM, LOTTO_SIZE);
+        List<Integer> sortedNumber = new ArrayList<>(numbers);
+        Collections.sort(sortedNumber);
 
-        return new Lotto(numbers);
+        Collections.unmodifiableList(sortedNumber);
+
+        return new Lotto(sortedNumber);
     }
 }
