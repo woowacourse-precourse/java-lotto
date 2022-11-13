@@ -19,4 +19,10 @@ public class Store {
         return money / 1000;
     }
 
+    public static List<Integer> makeNumbers() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(numbers);
+        return numbers;
+    }
+
 }
