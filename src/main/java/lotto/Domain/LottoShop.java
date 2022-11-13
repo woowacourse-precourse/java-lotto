@@ -2,25 +2,28 @@ package lotto.Domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Utils.LottoInspection;
+import lotto.Utils.LottoInspector;
+import lotto.Utils.Printer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.Enum.InformationMessage.*;
-import static lotto.Enum.LottoProperty.*;
+import static lotto.Enum.LottoProperty.LOTTO_NUMBER_LENGTH;
+import static lotto.Enum.LottoProperty.MAX_LOTTO_NUMBER;
+import static lotto.Enum.LottoProperty.MIN_LOTTO_NUMBER;
+import static lotto.Enum.LottoProperty.ONE_LOTTO_COST;
 
 public class LottoShop {
-    public static LottoInspection inspection = new LottoInspection();
-    public static Statistic statistic = new Statistic();
+    public static LottoInspector inspection = new LottoInspector();
+    public static Printer print = new Printer();
 
     public static int money;
     public static List<List<Integer>> soldLottoList = new ArrayList<>();
-    public List<Integer> winningNumbers;
+    public static List<Integer> winningNumbers;
     public int bonusNumber;
 
     public void purchase() {
-        System.out.println(INPUT_AMOUNT_OF_MONEY_TO_BUY.getMessage());
+        print.inputMoney();
         String inputMoney = Console.readLine();
 
         this.money = inspection.moneyToInt(inputMoney);
@@ -39,6 +42,8 @@ public class LottoShop {
             new Lotto(randomLotto);
         }
 
+        print.lottoCount(purchaseAmount);
+        print.everySoldLottoList(soldLottoList);
         result();
     }
 
@@ -46,20 +51,20 @@ public class LottoShop {
         setWinningNumbers();
         setBonusNumber();
 
-        statistic.ShowStatistic();
+        print.statistic();
     }
 
     private void setWinningNumbers() {
-        System.out.println(INPUT_WINNING_NUMBERS.getMessage());
+        print.inputWinningNumbers();
         String inputWinningNumbers = Console.readLine();
 
-        winningNumbers = inspection.winningNumberToList(inputWinningNumbers, ",");
+        winningNumbers = inspection.winningNumberToList(inputWinningNumbers);
     }
 
     private void setBonusNumber() {
-        System.out.println(INPUT_BONUS_WINNING_NUMBER.getMessage());
+        print.inputBonusNumber();
         String inputBonusNumber = Console.readLine();
 
-        bonusNumber = inspection.inputNumberToInt(inputBonusNumber);
+        bonusNumber = inspection.bonusNumberToInt(inputBonusNumber);
     }
 }
