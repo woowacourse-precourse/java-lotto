@@ -13,7 +13,7 @@ public class Purchase {
     public static int validatedAmount(String input) {
         isNumber(input);
         isMultipleOfThousand(input);
-        return Integer.valueOf(input);
+        return Integer.valueOf(input) / 1_000;
     }
 
     private static void isNumber(String input) {
