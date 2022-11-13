@@ -16,12 +16,10 @@ public class LottoController {
     private static final RaffleStaticsCalculator raffleStaticCalculator = new RaffleStaticsCalculator();
 
     public void start() {
-        int money = inputUI.getMoney();
-        List<Lotto> lottos = lottoMachine.createLottoWithMoney(money);
-        outputUI.printLottos(lottos);
+        List<Lotto> lottos = getLottos();
 
         List<Integer> normalNumbers = inputUI.getNormalNumbers();
-        Integer bonusNumbers = inputUI.getBonusNumbers();
+        Integer bonusNumbers = inputUI.getBonusNumbers(normalNumbers);
         List<Integer> lottoResults = new ArrayList<>(Arrays.asList(0,0,0,0,0,0,0));
         for (Lotto lotto : lottos) {
             // 일반 번호, 보너스 번호 몇개 포함되었는지 리스트
@@ -36,5 +34,12 @@ public class LottoController {
         outputUI.printWinnerCounts(lottoResults, returnRate);
 
 
+    }
+
+    private List<Lotto> getLottos() {
+        int money = inputUI.getMoney();
+        List<Lotto> lottos = lottoMachine.createLottoWithMoney(money);
+        outputUI.printLottos(lottos);
+        return lottos;
     }
 }

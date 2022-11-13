@@ -3,6 +3,8 @@ package lotto.UI;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValidatorTest {
@@ -26,10 +28,11 @@ class ValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"100"})
+    @ValueSource(strings = {"100", "6"})
     void 당첨보너스숫자_검증(String bonusNumbers) {
+        List<Integer> normalNumbers = List.of(1, 2, 3, 4, 5, 6);
         assertThrows(IllegalArgumentException.class, () -> {
-            validator.validateBonusNumber(bonusNumbers);
+            validator.validateBonusNumber(normalNumbers,bonusNumbers);
         });
     }
 }
