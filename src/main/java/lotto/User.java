@@ -84,5 +84,6 @@ public class User {
         return Score.getWinValue(count);
     }
     public void printWinningRatio(int correctLottoNum,int purchasePrice){
+        System.out.println("총 수익률은 "+String.format("%.2f",(double)correctLottoNum/purchasePrice*100)+"%입니다.");
     }
 }

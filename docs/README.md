@@ -16,7 +16,7 @@
 
 **3. 로또 당첨 , 수익률 확인** Controller#resultLotto
 - [x] 당첨 내역 출력 User#printWinningResult
-- [ ] 수익률 출력 User#printWinningRatio
+- [x] 수익률 출력 User#printWinningRatio
 
 ---
 ## 기능 요구 사항
