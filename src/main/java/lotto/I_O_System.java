@@ -12,6 +12,7 @@ public class I_O_System {
     public static final String BAGIC_ERROR_MESSAGE = "[ERROR]";
     private static final String Sell_Messge = "개를 구매했습니다.";
     private static final String User_Number_Answer = "당첨 번호를 입력해 주세요.";
+    private static final String Bonus_Number_Answer = "보너스 번호를 입력해 주세요.";
     private static final String ERROR_Code_1 = " 숫자가 아닌 문자가 들어왔습니다.";
     private static final String ERROR_Code_2 = " 돈이 천원 단위로 나누어지지않습니다.";
 
@@ -52,6 +53,7 @@ public class I_O_System {
 
     private boolean left_money() {
         int Base_Number = 0;
+
         try {
             if ((Base_Number = Money_Enter % 1000) > 0) {
                 throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE + ERROR_Code_2);
@@ -66,6 +68,7 @@ public class I_O_System {
 
 
     public void Enter_WinningNumber() {
+        int Bonus_Number =0;
         System.out.println(User_Number_Answer);
         Enter_Number = Console.readLine();
 
@@ -76,9 +79,11 @@ public class I_O_System {
         }
         Lotto lotto = new Lotto(Winning_Number);
 
+        Bonus_Number = Bonus_Number_Enter(Bonus_Number);
     }
     public void User_Lottery_Number(){
         System.out.println(Ticket + Sell_Messge);
+
         for(int i=0;i<Ticket;i++)
         {
             List<Integer> number = Randoms.pickUniqueNumbersInRange(Lottey_min,Lottey_number_max,Lottey_max);
@@ -87,14 +92,17 @@ public class I_O_System {
             mylist.add(number);
         }
     }
-    private void Bonus_Number()
-    {
+    private int Bonus_Number_Enter(int Bonus_Number) {
+        System.out.println(Bonus_Number_Answer);
+        Enter_Number = Console.readLine();
+        Bonus_Number = Integer.parseInt(Enter_Number);
 
+        return Bonus_Number;
     }
 
-    public void Ticket_Print(List<Integer> number)
-    {
+    public void Ticket_Print(List<Integer> number) {
         List<Integer> Print_Number = new ArrayList<>();
+
         Print_Number.addAll(number);
         Collections.sort(Print_Number);
         System.out.println(Print_Number);
