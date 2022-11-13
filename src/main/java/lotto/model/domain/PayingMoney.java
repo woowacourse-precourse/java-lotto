@@ -44,10 +44,8 @@ public class PayingMoney {
         return money < LOTTO_PRICE;
     }
 
-    public Lottos createLottos() {
-        int numberOfLotto = money / LOTTO_PRICE;
-
-        return new Lottos(numberOfLotto);
+    public int countNumberOfLottoBuying() {
+        return money / LOTTO_PRICE;
     }
 
 }

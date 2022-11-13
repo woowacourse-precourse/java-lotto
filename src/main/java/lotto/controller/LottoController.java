@@ -6,10 +6,15 @@ import lotto.model.domain.Lottos;
 import lotto.model.domain.PayingMoney;
 import lotto.model.domain.WinningNumber;
 import lotto.model.domain.WinningStatistics;
+import lotto.utils.Utils;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
+
+    private static final int NUM_MIN = 1;
+    private static final int NUM_MAX = 45;
+    private static final int LOTTO_SIZE = 6;
 
     public void run() {
         Lottos lottos = buyLotto();
@@ -21,7 +26,9 @@ public class LottoController {
     private Lottos buyLotto() {
         String money = InputView.requestMoney();
         PayingMoney payingMoney = new PayingMoney(money);
-        Lottos lottos = payingMoney.createLottos();
+        int numOfLottoBuying = payingMoney.countNumberOfLottoBuying();
+        List<List<Integer>> randomNumbers = Utils.createRandomNumbers(NUM_MIN, NUM_MAX, LOTTO_SIZE, numOfLottoBuying);
+        Lottos lottos = new Lottos(randomNumbers);
 
         OutputView.printLottos(lottos);
         return lottos;
