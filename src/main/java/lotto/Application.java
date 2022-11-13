@@ -10,7 +10,7 @@ public class Application {
         int money = Input.insertMoney();
         Ticket ticket = new Ticket(money);
         // 금액에 따라 로또 수량 및 번호 출력
-        Output.showTicket();
+        Output.showTicket(ticket);
         // 당첨 번호 입력
         Input.insertWinningNumbers();
         // 보너스 번호 입력

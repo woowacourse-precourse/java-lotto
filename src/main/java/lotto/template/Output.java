@@ -1,9 +1,11 @@
 package lotto.template;
 
+import lotto.domain.Ticket;
+
 public class Output {
-    public static void showTicket() {
-        System.out.println("2개를 구매했습니다.");
-        System.out.println("[1,2,3,4,5,6]\n[11,12,13,14,15,16]");
+    public static void showTicket(Ticket ticket) {
+        System.out.println(ticket.getLottoCount() + "개를 구매했습니다.");
+        System.out.println(ticket);
     }
 
     public static void showWinningStatistics() {
