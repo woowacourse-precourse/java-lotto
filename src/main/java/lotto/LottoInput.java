@@ -10,7 +10,7 @@ public class LottoInput {
     public static int numberOfLotto; // 로또 개수
 
     // 구입금액 입력
-    public static List<Integer> inputNumber(){
+    public static int inputNumber() {
         System.out.println(INPUT_MONEY);
         String inputNum = Console.readLine();
         Validator.validateInteger(inputNum); // 정수만 입력되었는지 확인
@@ -18,11 +18,11 @@ public class LottoInput {
         Validator.validateInputMoney(inputMoney); // 1000원 단위로 구입했는지 확인
         Validator.validateNegativePrice(inputMoney); // 음수로 입력했는지 확인
 
-        return inputNumber();
+        return inputMoney;
     }
 
     // 구입한 로또 개수
-    public static int theNumberOfLotto(){
+    public static int theNumberOfLotto() {
         numberOfLotto = inputMoney / 1000;
         System.out.println(numberOfLotto + BOUGHT_LOTTO);
 
