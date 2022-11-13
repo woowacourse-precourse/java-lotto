@@ -9,5 +9,6 @@ public class OutputView {
 
     public static void printException(Exception exception) {
         System.out.println(ERROR_HEAD_MESSAGE + exception.getMessage());
+        throw new IllegalArgumentException();
     }
 }
