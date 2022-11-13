@@ -47,11 +47,12 @@ public class LottoStore {
 
         OutputUi.printInputWinningNumbersInfoMessage();
         List<Integer> winningNumbers = InputUi.readWinningLottoNumbers();
+        Lotto winningNumberLotto = new Lotto(winningNumbers);
 
         OutputUi.printInputBonusNumberInfoMessage();
         int bonusNumber = InputUi.readSingleNumber();
 
-        return new WinningLotto(winningNumbers, bonusNumber);
+        return new WinningLotto(winningNumberLotto, bonusNumber);
     }
 
     private void showWinningStatistic(WinningLotto winningLotto, List<Lotto> lottos) {
