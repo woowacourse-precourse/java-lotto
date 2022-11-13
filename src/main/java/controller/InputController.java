@@ -26,6 +26,7 @@ public class InputController {
                 InputView.pushWinningNumber();
                 String numbers = Console.readLine();
                 String[] pureNumbers = numbers.split(",");
+                Validator.validateWinningNumber(pureNumbers);
             }  catch (IllegalArgumentException e) {
                 System.out.println();
             }
