@@ -7,6 +7,11 @@ import lotto.constants.message.ExceptionMessage;
 
 public class Lotto {
     public static final int LOTTO_COUNT = 6;
+    public static final String START_SYMBOL = "[";
+    public static final int ONE = 1;
+    public static final String COMMA = ",";
+    private static final String END_SYMBOL = "]";
+    private static final String SPACE = " ";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -32,5 +37,19 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder lottoResult = new StringBuilder();
+        lottoResult.append(START_SYMBOL);
+        numbers.stream()
+                .limit(numbers.size() - ONE)
+                .forEach(number -> lottoResult.append(number)
+                        .append(COMMA)
+                        .append(SPACE));
+        return lottoResult.append(numbers.get(numbers.size() - ONE))
+                .append(END_SYMBOL)
+                .toString();
     }
 }
