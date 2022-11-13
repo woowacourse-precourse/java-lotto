@@ -19,6 +19,12 @@ public class LottoUi {
         validateNumbersRange(numbers);
     }
 
+    public static void validate(int bonusNumber){
+        if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
+            throw new IllegalArgumentException(RANGE_ERROR);
+        }
+    }
+
 
     private static void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
@@ -86,4 +92,5 @@ public class LottoUi {
 
         return winningNumbers;
     }
+
 }

@@ -14,7 +14,7 @@
 
 [도메인 로직] 5. 당첨번호 입력받기 ( 숫자는 콤마(,)로 구분 ) ✅ 
 
-[도메인 로직] 6. 보너스 번호 입력받기 ( 숫자 1개 ) 
+[도메인 로직] 6. 보너스 번호 입력받기 ( 숫자 1개 )
 
 [UI 로직]    7. 등수 계산하기 
 
@@ -35,7 +35,7 @@
 - 숫자 6개 모두 1~45 범위 내의 숫자여야 함. 그렇지 않으면 IllegalArgumentException ✅
 - 로또번호가 총 6개가 아니라면 IllegalArgumentException ✅
 - 로또번호에 중복이 있으면 IllegalArgumentException ✅
-- 보너스 번호가 1~45 범위 내의 숫자여야 함. 그렇지 않으면 IllegalArgumentException
+- 보너스 번호가 1~45 범위 내의 숫자여야 함. 그렇지 않으면 IllegalArgumentException ✅
 ```
 <br>
 
