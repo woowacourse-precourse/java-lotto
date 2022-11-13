@@ -13,7 +13,7 @@ public class Game {
     private Integer budget = 0;
     private List<Lotto> lottos = new ArrayList<>();
     private Lotto winningLotto;
-
+    private Integer bonus;
     public Game(){
 
     }
@@ -41,6 +41,14 @@ public class Game {
 
     public void setWinningLotto(List<Integer> winningNumbers){
         winningLotto = new Lotto(winningNumbers);
+    }
+
+    public Integer getBonus(){
+        return bonus;
+    }
+
+    public void setBonus(Integer bonus){
+        this.bonus = bonus;
     }
 
     private void validateBudget(Integer budget){
