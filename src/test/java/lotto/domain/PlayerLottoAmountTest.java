@@ -3,12 +3,13 @@ package lotto.domain;
 import org.junit.jupiter.api.DisplayName;
 
 import java.util.List;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
+import static org.assertj.core.api.Assertions.assertThat;
 class PlayerLottoAmountTest {
 
 
@@ -18,5 +19,12 @@ class PlayerLottoAmountTest {
     void failed(int inputAmount) {
         assertThatThrownBy(() -> new PlayerLottoAmount(inputAmount))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("구매한 로또 티켓 장수")
+    void calculateLottoCount() {
+        PlayerLottoAmount amount = new PlayerLottoAmount(1000);
+        assertThat(amount.calculateLottoCount()).isEqualTo(1);
     }
 }
