@@ -26,4 +26,20 @@ class LottoNumberTest {
     void 로또_숫자는_정상_생성() {
         assertDoesNotThrow(() -> new LottoNumber("45"));
     }
+
+    @DisplayName("각 로또 번호는 크기 비교가 가능하다.")
+    @Test
+    void 크기_비교_가능() {
+        LottoNumber maxLottoNumber = new LottoNumber("45");
+        LottoNumber lowLottoNumber = new LottoNumber("1");
+        assertEquals(44, maxLottoNumber.compareTo(lowLottoNumber));
+    }
+
+    @DisplayName("각 로또 번호는 동등성 비교가 가능하다.")
+    @Test
+    void 동등성_비교_가능() {
+        LottoNumber lottoNumber1 = new LottoNumber("1");
+        LottoNumber lottoNumber2 = new LottoNumber("1");
+        assertEquals(lottoNumber2, lottoNumber1);
+    }
 }
