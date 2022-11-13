@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
-public class MissionRandom implements PickNumbers {
+public class RandomPicker implements PickNumbers {
 
     @Override
     public List<Integer> pickUniquesInRange(int startInclusive, int endInclusive, int count) {

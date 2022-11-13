@@ -5,8 +5,8 @@ import handler.OutputHandler;
 import handler.console.ConsoleInput;
 import handler.console.ConsoleOutput;
 import lotto.domain.LottoMachine;
-import lotto.domain.MissionRandom;
 import lotto.domain.PickNumbers;
+import lotto.domain.RandomPicker;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -19,7 +19,7 @@ public class Application {
 
         OutputHandler outputHandler = new ConsoleOutput();
         OutputView outputView = new OutputView(outputHandler);
-        PickNumbers pickNumbers = new MissionRandom();
+        PickNumbers pickNumbers = new RandomPicker();
 
         try {
             LottoMachine lottoMachine = new LottoMachine(inputView, outputView, pickNumbers);
