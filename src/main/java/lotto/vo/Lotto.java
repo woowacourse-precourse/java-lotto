@@ -9,6 +9,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        numbers = new ArrayList<>(numbers);
         ValidationHolder.validate(numbers, Lotto.class);
         this.numbers = numbers;
     }
