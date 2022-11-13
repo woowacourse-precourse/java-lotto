@@ -9,14 +9,10 @@ public class WinningNumber {
     private List<Integer> winningNum = new ArrayList<>();
     private int bonusNum;
 
-    public WinningNumber(List<Integer> winningNum) {
+    public WinningNumber(List<Integer> winningNum, int bonusNum) {
         validateLottoNum(winningNum);
-        this.winningNum = winningNum;
-
-    }
-
-    public WinningNumber(int bonusNum) {
         validateBonusNum(bonusNum);
+        this.winningNum = winningNum;
         this.bonusNum = bonusNum;
     }
 
