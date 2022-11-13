@@ -61,6 +61,7 @@ public class Input {
         System.out.print('\n' + GameMessage.INPUT_BONUS_NUMBER + '\n');
 
         String answer = Console.readLine();
+        inputValidation.checkNumber(answer, Constant.REGEX_INPUT);
 
         return Integer.parseInt(answer);
     }
