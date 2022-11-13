@@ -10,12 +10,12 @@ public class GenerateLotto {
     private int lottoQuantity;
     private List<Integer> lottoNumbers;
 
-    public GenerateLotto(int lottoQuantity){
+    public GenerateLotto(int lottoQuantity) {
         this.lottoQuantity = lottoQuantity;
         generateLottoGroup();
     }
 
-    private void generateLottoNumber(){
+    private void generateLottoNumber() {
         List<Integer> numbers;
         Set<Integer> checkDuplication;
         do {
@@ -28,8 +28,8 @@ public class GenerateLotto {
         this.lottoNumbers = numbers;
     }
 
-    private void generateLottoGroup(){
-        for (int i=0; i < lottoQuantity; i++){
+    private void generateLottoGroup() {
+        for (int i = 0; i < lottoQuantity; i++) {
             generateLottoNumber();
             this.lottoNumberGroup.add(this.lottoNumbers);
         }
