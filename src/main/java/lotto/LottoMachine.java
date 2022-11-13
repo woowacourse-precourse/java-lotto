@@ -14,12 +14,14 @@ public class LottoMachine {
 
     public void makeLottos(int money) {
         List<Lotto> lottos = new ArrayList<>();
+
         int sheets = money / MONEY_UNIT;
         for (int times = 0; times < sheets; times++) {
             Lotto lotto = makeRandomNumbers();
             lottos.add(lotto);
         }
         Lottos allLottos = new Lottos(lottos);
+
         printer.printLottoNumbers(allLottos);
         lottoCompany.inputWinningNumbers(allLottos);
     }

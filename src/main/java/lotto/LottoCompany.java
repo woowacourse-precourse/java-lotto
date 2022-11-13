@@ -33,24 +33,26 @@ public class LottoCompany {
     public void makeWinningNumbers(String numbers) {
         String[] winningNumbers = numbers.split(",");
         Arrays.sort(winningNumbers);
-        validate(winningNumbers);
+        validateWinningNumbers(winningNumbers);
+
         List<Integer> lottoNumbers = new ArrayList<>();
         for (int order = 0; order < LENGTH; order++) {
             lottoNumbers.add((Integer.parseInt(winningNumbers[order])));
         }
         this.lotto = new Lotto(lottoNumbers);
+
         makeBonusNumber();
     }
 
-    private void validate(String[] winningNumbers) {
-        validateWinningNumbers(winningNumbers);
+    private void validateWinningNumbers(String[] winningNumbers) {
+        validateInputWinningNumbers(winningNumbers);
         validateDuplicate(winningNumbers);
         for (int i = 0; i < winningNumbers.length; i++) {
             forValidateDupWithBonus.add(Integer.parseInt(winningNumbers[i]));
         }
     }
 
-    public void validateWinningNumbers(String[] numbers) {
+    public void validateInputWinningNumbers(String[] numbers) {
         String pattern = "^[0-9]*$";
         String manInput = String.join("", numbers);
         if (!Pattern.matches(pattern, manInput)) {
