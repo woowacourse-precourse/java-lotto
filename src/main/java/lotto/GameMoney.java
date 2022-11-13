@@ -16,6 +16,10 @@ public class GameMoney {
         }
     }
 
+    public long getMoney() {
+        return this.money;
+    }
+
     public int numberOfPurchases() {
         return (int) money / PRICE_PER_LOTTO;
     }

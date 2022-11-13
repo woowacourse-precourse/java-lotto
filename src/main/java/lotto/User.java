@@ -26,6 +26,10 @@ public class User {
         return userLottos.size();
     }
 
+    public long getGameMoney() {
+        return gameMoney.getMoney();
+    }
+
     public Lotto findLotto(int index) {
         return userLottos.get(index);
     }

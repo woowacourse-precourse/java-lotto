@@ -39,7 +39,7 @@ public enum Rank {
         return this.score;
     }
 
-    public long get() {
+    public long getPrizeMoney() {
         return this.prizeMoney;
     }
 

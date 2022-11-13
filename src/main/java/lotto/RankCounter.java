@@ -26,14 +26,14 @@ public class RankCounter {
         }
     }
 
-    public Map<Rank, Integer> getRankCounter() {
-        return this.rankCounter;
+    public int countRank(Rank rank) {
+        return rankCounter.get(rank);
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        List<Rank> sortedRank = sortingRank();
+        List<Rank> sortedRank = Rank.getSortRanks();
         String form;
         Rank rank;
         for (int rankIndex = 1; rankIndex < sortedRank.size(); rankIndex++) {
@@ -42,12 +42,5 @@ public class RankCounter {
             stringBuilder.append(form);
         }
         return stringBuilder.toString();
-    }
-
-    private List<Rank> sortingRank() {
-        List<Rank> sortedRanks = new ArrayList<>(rankCounter.keySet());
-        sortedRanks.sort((rank1, rank2)
-                -> rank1.getScore() - rank2.getScore());
-        return sortedRanks;
     }
 }
