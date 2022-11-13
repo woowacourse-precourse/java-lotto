@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.Calculator;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
+import lotto.resources.Rank;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class LottoController {
     private final int ONE_THOUSAND_WON = 1000;
+    private final int PLUS_COUNT = 1;
     private int purchaseAmount;
     private int lottoIssueCount;
     private int bonusNumber;
@@ -30,12 +32,12 @@ public class LottoController {
 
     public void playLottoProgram() {
         try {
-            savePurchaseAmount();
-            saveLottoIssueCount();
+            setPurchaseAmount();
+            setLottoIssueCount();
             issueLottoSeveralTimes(lottoIssueCount, myLotto);
             outputView.printLottoPurchaseInformation(myLotto, lottoIssueCount);
-            saveWinningNumber();
-            saveBonusNumber();
+            setWinningNumber();
+            setBonusNumber();
             setResult(myLotto, winningNumber, bonusNumber);
             Calculator calculator = new Calculator();
             calculator.calculateTotalEarnings(result);
@@ -45,15 +47,11 @@ public class LottoController {
         }
     }
 
-    private void savePurchaseAmount() {
+    private void setPurchaseAmount() {
         this.purchaseAmount = inputView.enterPurchaseAmount();
     }
 
-    public int getPurchaseAmount() {
-        return purchaseAmount;
-    }
-
-    private void saveLottoIssueCount() {
+    private void setLottoIssueCount() {
         this.lottoIssueCount = purchaseAmount / ONE_THOUSAND_WON;
     }
 
@@ -65,11 +63,11 @@ public class LottoController {
         }
     }
 
-    private void saveWinningNumber() {
+    private void setWinningNumber() {
         this.winningNumber = inputView.enterWinningNumber();
     }
 
-    private void saveBonusNumber() {
+    private void setBonusNumber() {
         this.bonusNumber = inputView.enterBonusNumber(winningNumber);
     }
 
@@ -79,22 +77,18 @@ public class LottoController {
             List<Integer> myLottoNumber = myLotto.get(i).getLottoNumbers();
             int sameNumberCount = compareMyLottoWithWinningNumber(myLottoNumber, winningNumber);
             int rank = getRank(sameNumberCount);
-            if (rank == 3 && checkBonusNumber(myLottoNumber, bonusNumber)) {
-                rank = 2;
+            if (rank == Rank.THIRD_PLACE.getRank() && checkBonusNumber(myLottoNumber, bonusNumber)) {
+                rank = Rank.SECOND_PLACE.getRank();
             }
-            result.set(rank, result.get(rank) + 1);
+            result.set(rank, result.get(rank) + PLUS_COUNT);
         }
         this.result = result;
     }
 
-    public List<Integer> getResult() {
-        return result;
-    }
-
     private int compareMyLottoWithWinningNumber(List<Integer> myLottoNumber, List<Integer> winningNumber) {
         int sameNumberCount = 0;
-        for (int i = 0; i < myLottoNumber.size(); i++) {
-            if (winningNumber.contains(myLottoNumber.get(i))) {
+        for (int index = 0; index < myLottoNumber.size(); index++) {
+            if (winningNumber.contains(myLottoNumber.get(index))) {
                 sameNumberCount++;
             }
         }
@@ -103,18 +97,18 @@ public class LottoController {
 
     private int getRank(int sameNumberCount) {
         if (sameNumberCount == 6) {
-            return 1;
+            return Rank.FIFTH_PLACE.getRank();
         }
         if (sameNumberCount == 5) {
-            return 3;
+            return Rank.THIRD_PLACE.getRank();
         }
         if (sameNumberCount == 4) {
-            return 4;
+            return Rank.FOURTH_PLACE.getRank();
         }
         if (sameNumberCount == 3) {
-            return 5;
+            return Rank.FIFTH_PLACE.getRank();
         }
-        return 0;
+        return Rank.NOTHING.getRank();
     }
 
     private boolean checkBonusNumber(List<Integer> myLottoNumber, int bonusNumber) {
