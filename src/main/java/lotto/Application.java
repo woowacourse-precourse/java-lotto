@@ -9,15 +9,20 @@ import java.util.List;
 public class Application {
     static HashMap<WinningPlace, Integer> winningHistory = new HashMap<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 //        Skeleton code for main
         List<List<Integer>> myLottoTickets = buyLotto();
         printMyLottoTickets(myLottoTickets);
 
         List<Integer> winnerNumber = inputWinnerNumber();
         System.out.println(winnerNumber);
+        System.out.println();
 
         int bonusNumber = inputBonusNumber();
+
+        saveWinningPlaceByTicket(winnerNumber, myLottoTickets, bonusNumber);
+
+        printLottoTicketHistory();
     }
 
     public static int checkUserInputCondition(String input) {
@@ -134,7 +139,7 @@ public class Application {
         return bonusNumber;
     }
 
-    public static void getWinningPlaceByTicket(List<Integer> winnerNumber, List<List<Integer>> lottoTickets, int bonusNumber) throws Exception {
+    public static void saveWinningPlaceByTicket(List<Integer> winnerNumber, List<List<Integer>> lottoTickets, int bonusNumber) throws Exception {
         for (List<Integer> lottoTicket : lottoTickets) {
             WinningPlace winningPlace = Lotto.countCorrespondingNumbers(winnerNumber, lottoTicket, bonusNumber);
             addToHistory(winningPlace);
@@ -148,5 +153,14 @@ public class Application {
 
         Integer prevHistory = winningHistory.get(winningPlace);
         winningHistory.put(winningPlace, prevHistory + 1);
+    }
+
+    private static void printLottoTicketHistory() {
+        System.out.println(WinningPlace.FIFTH_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
+        System.out.println(WinningPlace.FOURTH_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
+        System.out.println(WinningPlace.THIRD_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
+        System.out.println(WinningPlace.SECOND_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
+        System.out.println(WinningPlace.FIRST_PLACE.getMessage()+ winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
+
     }
 }
