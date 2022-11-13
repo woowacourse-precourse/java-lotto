@@ -42,8 +42,8 @@ public class LottoMachine {
     {
         int lottoCount=0;
         boolean getBonus = false;
-        ArrayList<Integer> answerValue=(ArrayList<Integer>) answer.getLotto();
-        ArrayList<Integer> lottoValue=(ArrayList<Integer>) lotto.getLotto();
+        ArrayList<Integer> answerValue= answer.getLotto();
+        ArrayList<Integer> lottoValue= lotto.getLotto();
         for(Integer lottoNumber:lottoValue)
         {
             if(answerValue.contains(lottoNumber))
