@@ -13,12 +13,20 @@ public class LottoService {
     public List<Lotto> issueLotto(int money) {
         List<Lotto> lotteries = new ArrayList<>();
 
-        for (int i = 0; i < getCount(money); i++) {
-            List<Integer> numbers = createLottoNumbers();
+        for (int count = 0; count < getCount(money); count++) {
+            List<Integer> numbers = getNumbers();
             Collections.sort(numbers);
             lotteries.add(new Lotto(numbers));
         }
         return lotteries;
+    }
+
+    private List<Integer> getNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        for (Integer number : createLottoNumbers()) {
+            numbers.add(number);
+        }
+        return numbers;
     }
 
     private List<Integer> createLottoNumbers() {
