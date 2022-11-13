@@ -8,7 +8,7 @@
     - [X] 사용자가 정한 보너스 번호를 입력받는다. view/Input#getBonusNumber
 - [X] 로또 한 장에 해당하는 랜덤한 로또 번호를 만든다. utils/Number#createLottoNumber
 - [X] 사용자의 입력값을 받아 Cashier에 저장한다. model/Cashier#inputPlayerValue
-- [ ] 사용자가 입력한 금액에 맞춰 일정 갯수의 로또를 생성한다. model/Cashier#playLotto
+- [ ] 사용자가 입력한 금액에 맞춰 일정 갯수의 로또를 생성한다. model/Cashier#createLottos
 - [ ] 당첨 통계를 낸다. controller/model#myStat
 
 # 🚀 기능 요구 사항
@@ -32,7 +32,7 @@
 
 # 예외 사항
 
-예외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 "[ERROR]"로 시작해야 한다.
+사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
-- [ ] 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다.
-- [ ] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
+- [ ] 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우, 그리고 음수를 받은경우 예외 처리한다.
+- [ ] 사용자가 입력하는 로또번호의 자릿수가 1~45가 맞는지, 음수는 아닌지 확인한다.
