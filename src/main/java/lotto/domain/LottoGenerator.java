@@ -1,11 +1,13 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGenerator {
-    List<Integer> generateNumbers() {
-        List<Integer> lotto = new ArrayList<>();
+    private List<Integer> generateNumbers() {
+        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return lotto;
     }
     List<Lotto> generate(int money) {

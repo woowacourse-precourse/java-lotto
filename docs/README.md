@@ -25,7 +25,7 @@
 
 - LottoGenerator
 
-- [ ] 중복되지 않는 6개의 숫자 생성 LottoGenerator#generateNumbers()
+- [x] 중복되지 않는 6개의 숫자 생성 LottoGenerator#generateNumbers()
 - [ ] 금액에 해당하는 개수 만큼 로또 발행 Lotto#generate()
 
 - Referee
