@@ -6,7 +6,7 @@ public enum PrintError {
     NO_SIX_NUM("[ERROR] 6개의 숫자를 입력하지 않았습니다."),
     NO_COMMA("[ERROR] ,가 아닌 다른 문자를 입력했습니다."),
     NOT_A_NUMBER("[ERROR] 숫자가 아닌 다른 문자를 입력했습니다."),
-    OVERLAP_WITH_LOTTONUM("[ERROR] 숫자가 아닌 다른 문자를 입력했습니다."),
+    OVERLAP_WITH_LOTTONUM("[ERROR] 로또 번호와 중복된 보너스 번호를 입력하였습니다."),
     OUT_OF_MONEY_UNIT("[ERROR] 1000원 단위가 아닙니다.");
 
     private final String message;

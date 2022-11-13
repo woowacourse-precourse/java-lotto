@@ -10,9 +10,12 @@ public class InputNumber {
     public int insertMoney() {
         PrintInstruction.BUY.printMessage();
         String userMoney = Console.readLine();
-
-        if(Integer.parseInt(userMoney)%1000 != 0) {
-            throw new IllegalArgumentException(PrintError.OUT_OF_MONEY_UNIT.getMessage());
+        try {
+            if (Integer.parseInt(userMoney) % 1000 != 0) {
+                throw new IllegalArgumentException(PrintError.OUT_OF_MONEY_UNIT.getMessage());
+            }
+        }catch (NumberFormatException e) {
+            throw new IllegalArgumentException((PrintError.NOT_A_NUMBER.getMessage()));
         }
         return Integer.parseInt(userMoney)/1000;
     }
