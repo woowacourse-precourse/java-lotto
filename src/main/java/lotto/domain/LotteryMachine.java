@@ -14,8 +14,10 @@ public class LotteryMachine {
     private static final String USER_MONEY_INPUT_MESSAGE = "구입 금액을 입력해 주세요.";
     private static final String PURCHASED_LOTTERY_NUMBER_MESSAGE = "개를 구매했습니다.";
     private static final String WINNING_LOTTERY_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     private Lotto winningLotto;
+    private int bonusNumber;
 
     public void purchaseLottery(User user) {
         user.setMoney(getUserMoneyInput(user));
@@ -65,5 +67,15 @@ public class LotteryMachine {
         }
         winningNumbers.sort(Comparator.naturalOrder());
         this.winningLotto = new Lotto(winningNumbers);
+        this.bonusNumber = drawBonusNumber();
+    }
+
+    private int drawBonusNumber() {
+        System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
+        String bonusNumberInput = readLine();
+
+        InputValidator validator = new InputValidator();
+        validator.validateBonusNumber(bonusNumberInput, winningLotto.getNumbers());
+        return Integer.parseInt(bonusNumberInput);
     }
 }

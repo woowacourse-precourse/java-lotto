@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.List;
+
 public class InputValidator {
 
     private static int LOTTERY_MINIMUM_NUMBER = 1;
@@ -60,5 +62,23 @@ public class InputValidator {
 
     private boolean isNumberOutOfRange(int number) {
         return number < LOTTERY_MINIMUM_NUMBER || number > LOTTERY_MAXIMUM_NUMBER;
+    }
+
+    public void validateBonusNumber(String bonusNumberInput, List<Integer> winningNumbers) {
+        if (includeNotNumericCharacter(bonusNumberInput)) {
+            System.out.println(ErrorMessage.BONUS_NUMBER_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
+
+        int bonusNumber = Integer.parseInt(bonusNumberInput);
+        if (isNumberOutOfRange(bonusNumber)) {
+            System.out.println(ErrorMessage.BONUS_NUMBER_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
+
+        if (winningNumbers.contains(bonusNumber)) {
+            System.out.println(ErrorMessage.BONUS_NUMBER_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
     }
 }
