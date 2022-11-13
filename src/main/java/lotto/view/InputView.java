@@ -23,7 +23,7 @@ public class InputView {
 	private static final int DIVIDE_UNIT = 1000;
 	private static final int ZERO_NUMBER = 0;
 
-	public int inputUserMoney() {
+	public static int inputUserMoney() {
 		System.out.println(INPUT_USER_MONEY_MESSAGE);
 		int money = 0;
 		try {
@@ -34,17 +34,17 @@ public class InputView {
 		return money;
 	}
 
-	public void validMoney(int money) {
+	public static void validMoney(int money) {
 		if (isNotDividedInto1000Units(money)) {
 			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_MONEY_ERROR_MESSAGE);
 		}
 	}
 
-	private boolean isNotDividedInto1000Units (int money) {
+	private static boolean isNotDividedInto1000Units (int money) {
 		return money % DIVIDE_UNIT != ZERO_NUMBER;
 	}
 
-	public List<Integer> inputWinningNumber() {
+	public static List<Integer> inputWinningNumber() {
 		List<Integer> winNumbers = new ArrayList<>();
 		System.out.println();
 		System.out.println(INPUT_WINNING_NUMBER_MESSAGE);
@@ -57,7 +57,7 @@ public class InputView {
 		return winNumbers;
 	}
 
-	public int inputBonusNumber() {
+	public static int inputBonusNumber() {
 		int bonusNumber = 0;
 		System.out.println();
 		System.out.println(INPUT_BONUS_NUMBER_MESSAGE);

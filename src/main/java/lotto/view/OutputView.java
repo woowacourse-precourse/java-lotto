@@ -38,14 +38,14 @@ public class OutputView {
 		System.out.println();
 		System.out.println("당첨 통계");
 		System.out.println("---");
-		System.out.println(PRINT_FIFTH_PRIZE_RESULT + prizeResult.get("fifthPrize")+ PRINT_PRIZE_NUMBER);
-		System.out.println(PRINT_FOURTH_PRIZE_RESULT + prizeResult.get("fourthPrize") + PRINT_PRIZE_NUMBER);
-		System.out.println(PRINT_THIRD_PRIZE_RESULT + prizeResult.get("thirdPrize") + PRINT_PRIZE_NUMBER);
-		System.out.println(PRINT_SECOND_PRIZE_RESULT + prizeResult.get("secondPrize") + PRINT_PRIZE_NUMBER);
-		System.out.println(PRINT_FIRST_PRIZE_RESULT + prizeResult.get("firstPrize") + PRINT_PRIZE_NUMBER);
+		System.out.println(PRINT_FIFTH_PRIZE_RESULT + prizeResult.get("winThree")+ PRINT_PRIZE_NUMBER);
+		System.out.println(PRINT_FOURTH_PRIZE_RESULT + prizeResult.get("winFour") + PRINT_PRIZE_NUMBER);
+		System.out.println(PRINT_THIRD_PRIZE_RESULT + prizeResult.get("winFive") + PRINT_PRIZE_NUMBER);
+		System.out.println(PRINT_SECOND_PRIZE_RESULT + prizeResult.get("winFiveBonus") + PRINT_PRIZE_NUMBER);
+		System.out.println(PRINT_FIRST_PRIZE_RESULT + prizeResult.get("winSix") + PRINT_PRIZE_NUMBER);
 	}
 
 	public static void printRateReturn(double rateReturn){
-		System.out.println("총 수익률은 " + String.format("%.1f", rateReturn) + "%입니다.");
+		System.out.printf("총 수익률은 %.1f%%입니다.%n", rateReturn);
 	}
  }

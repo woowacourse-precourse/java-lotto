@@ -31,4 +31,8 @@ public class WinningNumber {
 	private boolean isWrongSize(List<Integer> winNumbers) {
 		return winNumbers.size() != DEFAULT_SIZE;
 	}
+
+	public List<Integer> getWinningNumber() {
+		return winningNumber;
+	}
 }
