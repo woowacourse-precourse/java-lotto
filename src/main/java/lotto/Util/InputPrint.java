@@ -13,4 +13,9 @@ public class InputPrint {
         System.out.println(TextType.LOTTO_PRIZE_NUMBER);
         return Console.readLine();
     }
+
+    public static String bonusNumberInput(){
+        System.out.println(TextType.LOTTO_BONUS);
+        return Console.readLine();
+    }
 }

@@ -24,6 +24,8 @@ public class Game {
         OutputPrint.moneyToNumberPrint(player.getPurchaseNumber());
         generateNumbers(player.getPurchaseNumber());
         OutputPrint.generatedLottoNumbersPrint(lottos);
+        player.inputBonusNumber();
+
     }
 
     private void startGame(){
