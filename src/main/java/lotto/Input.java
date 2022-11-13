@@ -17,4 +17,11 @@ public class Input {
         InputException.isValidWinningNumberLength(input);
         return input;
     }
+
+    public static int bonusNumberInput() {
+        Output.printBonusNumber();
+        String input = Console.readLine();
+        InputException.isValidWBonusNumber(input);
+        return Integer.valueOf(input);
+    }
 }
