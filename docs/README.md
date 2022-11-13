@@ -27,8 +27,8 @@
 - [ ] 범위 내 번호가 아니면 에러 발생
 
 **발행한 로또 수량 및 번호**
-- [ ] `Randoms.pickUniqueNumbersInRange()`을 이용해 로또 발행
-- [ ] 오름차순으로 각 로또 번호 정렬
+- [x] `Randoms.pickUniqueNumbersInRange()`을 이용해 로또 발행
+- [x] 오름차순으로 각 로또 번호 정렬
 
 **당첨 내역**
 - [ ] 1~5등까지 검사
