@@ -1,7 +1,7 @@
 package lotto.validator;
 
 public enum ExceptionStatus {
-    NO_DIGIT("구매 금액은 숫자만 입력할 수 있습니다."),
+    NO_DIGIT("숫자만 입력할 수 있습니다."),
     NO_THOUSAND_UNIT("구매 금액은 1000단위로 입력할 수 있습니다."),
     NO_DUPLICATE_NUMBER("중복 되는 당첨 번호를 입력할 수 없습니다"),
     NO_OVER_SIX_NUMBERS("6개의 당첨 번호만 입력할 수 있습니다."),

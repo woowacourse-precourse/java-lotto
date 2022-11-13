@@ -7,8 +7,15 @@ import static lotto.validator.ExceptionStatus.*;
 public class BonusNumberValidator {
 
     public static void validate(String bonusNumber, Lotto winLotto) {
+        validateDigit(bonusNumber);
         LottoValidator.validateCorrectRange(Integer.parseInt(bonusNumber));
         validateContainBonusNumber(bonusNumber, winLotto);
+    }
+
+    private static void validateDigit(String bonusNumber) {
+        if (!bonusNumber.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException(NO_DIGIT.getMessage());
+        }
     }
 
     private static void validateContainBonusNumber(String bonusNumber, Lotto winLotto) {

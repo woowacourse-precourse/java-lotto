@@ -1,6 +1,5 @@
 package lotto.validator;
 
-import java.util.HashSet;
 import java.util.List;
 
 import static lotto.validator.ExceptionStatus.*;
@@ -34,7 +33,7 @@ public class LottoValidator {
     }
 
     private static void validateLottoNumberOverlap(List<Integer> numbers) {
-        if (new HashSet<>(numbers).size() != NUMBER_OF_LOTTO_NUMBERS) {
+        if (numbers.stream().distinct().count() != NUMBER_OF_LOTTO_NUMBERS) {
             throw new IllegalArgumentException(NO_DUPLICATE_NUMBER.getMessage());
         }
     }

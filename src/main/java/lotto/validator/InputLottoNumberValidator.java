@@ -1,7 +1,6 @@
 package lotto.validator;
 
-
-import static lotto.validator.ExceptionStatus.*;
+import static lotto.validator.ExceptionStatus.REGEX_EXCEPTION;
 
 public class InputLottoNumberValidator {
 

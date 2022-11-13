@@ -1,6 +1,7 @@
 package lotto.validator;
 
-import static lotto.validator.ExceptionStatus.*;
+import static lotto.validator.ExceptionStatus.NO_DIGIT;
+import static lotto.validator.ExceptionStatus.NO_THOUSAND_UNIT;
 
 public class PurchaseAmountValidator {
     public static void validate(String money) {
