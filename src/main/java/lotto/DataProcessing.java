@@ -1,7 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -32,14 +31,23 @@ public class DataProcessing {
     }
 
     public int countLotto(int money) {
-        int count = money / 1000;
-        return count;
+        return money / 1000;
     }
+
     public String[] splitLottoNumber(String lottoNumbers) {
         ErrorUtil errorUtil = new ErrorUtil();
         String[] splitNumbers = lottoNumbers.split(",");
         errorUtil.errorInputLottoNumber(splitNumbers);
         errorUtil.errorInputCountLottoNumber(splitNumbers);
         return splitNumbers;
+    }
+
+    public int winLotto(List<Integer> lottoNumber, List<Integer> randomNumber) {
+        int win = 0;
+        for (int i=0;i<randomNumber.size();++i) {
+            lottoNumber.add(randomNumber.get(i));
+        }
+        win = (int) (6 - (lottoNumber.size() - lottoNumber.stream().distinct().count()));
+        return win;
     }
 }
