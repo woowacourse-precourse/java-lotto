@@ -6,12 +6,12 @@ import lotto.view.OutputView;
 public class LottoMachine {
     private final InputView inputView;
     private final OutputView outputView;
-    private final RandomUniqueNumbers randomUniqueNumbers;
+    private final PickNumbers pickNumbers;
 
-    public LottoMachine(InputView inputView, OutputView outputView, RandomUniqueNumbers randomUniqueNumbers) {
+    public LottoMachine(InputView inputView, OutputView outputView, PickNumbers pickNumbers) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.randomUniqueNumbers = randomUniqueNumbers;
+        this.pickNumbers = pickNumbers;
     }
 
     public void run() {
@@ -34,7 +34,7 @@ public class LottoMachine {
     }
 
     private Lottos generateLottos(Money money) {
-        Lottos lottos = new LottoCreator(randomUniqueNumbers).createLottos(money);
+        Lottos lottos = new LottoCreator(pickNumbers).createLottos(money);
         outputView.printLottos(lottos);
         return lottos;
     }

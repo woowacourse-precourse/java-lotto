@@ -11,7 +11,7 @@ public class LottoCreatorTest {
     @ValueSource(ints = {1000, 2000, 1234000})
     @ParameterizedTest
     void case1(int input) {
-        RandomUniqueNumbers missionRandom = new MissionRandom();
+        PickNumbers missionRandom = new MissionRandom();
         LottoCreator lottoCreator = new LottoCreator(missionRandom);
         assertThat(lottoCreator.createLottos(new Money(input)).getLottos().size()).isEqualTo(input / 1000);
     }

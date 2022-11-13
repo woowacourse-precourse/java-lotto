@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class LottoCreator {
-    private final RandomUniqueNumbers random;
+    private final PickNumbers random;
 
-    public LottoCreator(RandomUniqueNumbers random) {
+    public LottoCreator(PickNumbers random) {
         this.random = random;
     }
 

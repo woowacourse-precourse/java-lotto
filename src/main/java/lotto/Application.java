@@ -6,7 +6,7 @@ import handler.console.ConsoleInput;
 import handler.console.ConsoleOutput;
 import lotto.domain.LottoMachine;
 import lotto.domain.MissionRandom;
-import lotto.domain.RandomUniqueNumbers;
+import lotto.domain.PickNumbers;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -19,10 +19,10 @@ public class Application {
 
         OutputHandler outputHandler = new ConsoleOutput();
         OutputView outputView = new OutputView(outputHandler);
-        RandomUniqueNumbers randomUniqueNumbers = new MissionRandom();
+        PickNumbers pickNumbers = new MissionRandom();
 
         try {
-            LottoMachine lottoMachine = new LottoMachine(inputView, outputView, randomUniqueNumbers);
+            LottoMachine lottoMachine = new LottoMachine(inputView, outputView, pickNumbers);
             lottoMachine.run();
         } catch (IllegalArgumentException e) {
             outputHandler.println(ERROR_PREFIX + e.getMessage());
