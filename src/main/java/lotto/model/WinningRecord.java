@@ -16,6 +16,18 @@ public class WinningRecord {
     }
 
     public double getYield() {
-        return 0.0;
+        long totalReward = getTotalReward();
+        return totalReward / (double) investment * 100;
+    }
+
+    private long getTotalReward() {
+        Reward[] rewards = Reward.values();
+        long totalReward = 0;
+        for (Reward reward : rewards) {
+            int amount = reward.getAmountAsInteger();
+            int place = reward.getPlace();
+            totalReward += ((long) amount * winningHistory.get(place));
+        }
+        return totalReward;
     }
 }
