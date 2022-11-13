@@ -24,7 +24,7 @@ public class LottoController {
 
 	public List<List<Integer>> chargeLottoPurchaseAmount(int ticketNumber) {
 		LottoTicket lottoTicket = new LottoTicket(ticketNumber);
-		List<List<Integer>> lottoTickets = lottoTicket.createLottoTickets();
+		List<List<Integer>> lottoTickets = lottoTicket.getLottoTickets();
 		OutputView.printLottoNumber(ticketNumber);
 		OutputView.printLottoTickets(lottoTickets);
 		return lottoTickets;

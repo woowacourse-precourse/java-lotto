@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
