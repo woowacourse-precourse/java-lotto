@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface LottoPrinter {
 
-    void getGeneratedLottoNumber(List<List<Integer>> generatedLottoNumber);
+    void showGeneratedLottoNumber(List<List<Integer>> generatedLottoNumber);
 }

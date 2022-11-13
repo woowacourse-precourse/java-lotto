@@ -48,7 +48,7 @@ public class LottoStarter {
         int purchaseMoney = purchaseMoneyInput.inputPurchaseMoney();
 
         List<List<Integer>> generatedLottoNumber = lottoNumberGenerator.generateLottoNumber(purchaseMoney);
-        lottoPrinter.getGeneratedLottoNumber(generatedLottoNumber);
+        lottoPrinter.showGeneratedLottoNumber(generatedLottoNumber);
 
         List<Integer> winningLotto = winningNumberInput.inputWinningLottoNumbers();
         int bonusWinningNumber = bonusNumberInput.inputWinningLottoBonusNumber(winningLotto);
