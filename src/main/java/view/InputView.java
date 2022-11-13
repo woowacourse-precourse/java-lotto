@@ -9,15 +9,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static constant.Config.ERROR;
+
 public class InputView {
     private static final String PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     private static final String WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    private static final String TYPE_ERROR = ERROR + " 숫자를 입력해야 합니다.";
 
     public static Money inputPurchaseAmount() {
         System.out.println(PURCHASE_AMOUNT);
 
-        return new Money(Integer.parseInt(Console.readLine()));
+        return new Money(toInteger(Console.readLine()));
     }
 
     public static Lotto inputWinningNumber() {
@@ -26,15 +29,27 @@ public class InputView {
         return new Lotto(numbers);
     }
 
-    private static List<Integer> toIntegerList(String winningNumbers) {
-        return Arrays.stream(winningNumbers.split(","))
-                .map(Integer::parseInt)
-                .sorted()
-                .collect(Collectors.toList());
-    }
-
     public static BonusNumber inputBonusNumber() {
         System.out.println(BONUS_NUMBER);
-        return new BonusNumber(Integer.parseInt(Console.readLine()));
+        return new BonusNumber(toInteger(Console.readLine()));
     }
-}
+
+    private static int toInteger(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(TYPE_ERROR);
+        }
+    }
+
+    private static List<Integer> toIntegerList(String winningNumbers) {
+        try {
+            return Arrays.stream(winningNumbers.split(","))
+                    .map(Integer::parseInt)
+                    .sorted()
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(TYPE_ERROR);
+        }
+    }
+}    
