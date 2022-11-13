@@ -66,8 +66,7 @@ public class Service {
         }
         return (winningAmount / money) * 100;
     }
-
-    // TODO: 리팩토링 필요
+    
     public static int[] getLottoResult(
             int lottoAmount, List<List<Integer>> lottoNumbers, List<Integer> playerLottoNumbers,
             int playerBonusNumber) {
@@ -77,47 +76,50 @@ public class Service {
 
         for (int i = 0; i < lottoAmount; i++) {
             List<Integer> lotto = Convertor.ExtractList(lottoNumbers, i);
-            int index = getOneLottoResult(lotto, playerLottoNumbers, playerBonusNumber);
+            int ordinal = checkRank(lotto, playerLottoNumbers, playerBonusNumber);
 
-            if (index == 0 || index == -1) {
+            if (ordinal == -1) {
                 continue;
             }
-            result[index - 1]++;
+            result[ordinal]++;
         }
         return result;
     }
 
-    // TODO: 리팩토링 필요
-    private static int getOneLottoResult(
-            List<Integer> lottoNumbers, List<Integer> playerLottoNumbers, int playerBonusNumber) {
+    private static int checkRank(List<Integer> lottoNumbers, List<Integer> playerLottoNumbers, int playerBonusNumber) {
+        int matchedCount = getMatchedCount(lottoNumbers, playerLottoNumbers);
 
+        for (int i = 0; i < WinnerInfo.values().length; i++) {
+            if (matchedCount == Constant.CHECK_BONUS_COUNT) {
+                return checkBonusNumber(lottoNumbers, playerLottoNumbers, playerBonusNumber);
+            }
+
+            if (matchedCount == WinnerInfo.values()[i].getWinningCondition()) {
+                return WinnerInfo.values()[i].ordinal();
+            }
+        }
+        return -1; // Rank 승리 조건과 일치하는 것이 없으면 -1 반환
+    }
+
+    private static int checkBonusNumber(List<Integer> lottoNumbers, List<Integer> playerLottoNumbers,
+                                        int playerBonusNumber) {
+        List<Integer> checkBonusNumber = new ArrayList<>(playerLottoNumbers);
+        checkBonusNumber.removeAll(lottoNumbers);
+
+        if (checkBonusNumber.get(0) == playerBonusNumber) {
+            return WinnerInfo.RANK2.ordinal();
+        }
+        return WinnerInfo.RANK3.ordinal();
+    }
+
+    private static int getMatchedCount(List<Integer> lottoNumbers, List<Integer> playerLottoNumbers) {
         List<Integer> intersection = new ArrayList<>(playerLottoNumbers);
         intersection.retainAll(lottoNumbers);
 
         if (intersection.isEmpty()) {
             return 0;
         }
-
-        if (intersection.size() == Constant.CHECK_BONUS_COUNT) {
-            playerLottoNumbers.removeAll(lottoNumbers);
-
-            if (playerLottoNumbers.get(0) == playerBonusNumber) {
-                return WinnerInfo.RANK2.getRank();
-            }
-            return WinnerInfo.RANK3.getRank();
-        }
-
-        if (intersection.size() == WinnerInfo.RANK1.getWinningCondition()) {
-            return WinnerInfo.RANK1.getRank();
-        }
-
-        if (intersection.size() == WinnerInfo.RANK4.getWinningCondition()) {
-            return WinnerInfo.RANK4.getRank();
-        }
-
-        if (intersection.size() == WinnerInfo.RANK5.getWinningCondition()) {
-            return WinnerInfo.RANK5.getRank();
-        }
-        return -1;
+        return intersection.size();
     }
+
 }
