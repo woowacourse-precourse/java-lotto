@@ -1,4 +1,4 @@
-package lotto;
+package domain;
 
 import domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
@@ -25,4 +25,5 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
 }

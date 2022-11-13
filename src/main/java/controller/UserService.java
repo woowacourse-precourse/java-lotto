@@ -8,5 +8,4 @@ public class UserService {
         String inputUser = Console.readLine();
         return Integer.parseInt(inputUser);
     }
-
 }

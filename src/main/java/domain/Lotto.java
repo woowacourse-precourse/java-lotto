@@ -2,6 +2,7 @@ package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -20,8 +21,4 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private List<Integer> createLotto(){
-        return Randoms.pickUniqueNumbersInRange(1,45,6);
-    }
-
 }
