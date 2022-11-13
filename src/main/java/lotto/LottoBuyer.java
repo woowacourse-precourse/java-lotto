@@ -18,6 +18,10 @@ public class LottoBuyer {
         printController.print(lottoPurchaseInfo.getLottoNumbers());
     }
 
+    public void inputNumber() {
+        lottoSeller.inputNumber();
+    }
+
     public void checkWinStatics() {
 
         lottoPurchaseInfo.getLottoNumbers()

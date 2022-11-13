@@ -24,11 +24,13 @@ public class LottoSeller {
 
         List<Lotto> lottoNumbers = lottoMachine.issueLottoNumbers(Long.parseLong(purchaseMoney) / UNIT);
 
-        lottoMachine.inputWinNumber();
-        lottoMachine.inputBonusNumber();
-
         return new LottoPurchaseInfo(lottoNumbers, Long.parseLong(purchaseMoney));
 
+    }
+
+    public void inputNumber() {
+        lottoMachine.inputWinNumber();
+        lottoMachine.inputBonusNumber();
     }
 
     public WinPrize checkMatchCount(Lotto buyerLotto) {

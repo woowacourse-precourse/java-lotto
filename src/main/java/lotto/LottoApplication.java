@@ -12,6 +12,7 @@ public class LottoApplication {
 
         try {
             lottoBuyer.buyLotto();
+            lottoBuyer.inputNumber();
             lottoBuyer.checkWinStatics();
             lottoBuyer.checkRate();
         } catch (IllegalArgumentException e) {
