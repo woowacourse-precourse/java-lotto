@@ -4,7 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.*;
 
 public class LottoGenerator {
 
@@ -14,11 +17,9 @@ public class LottoGenerator {
 
 
     public static LottoTickets generateTickets(Money money) {
-        List<Lotto> lottoTickets = new ArrayList<>();
-        Stream.generate(LottoGenerator::makeNewLotto)
+        return Stream.generate(LottoGenerator::makeNewLotto)
                 .limit(money.getTicketCount())
-                .forEach(lottoTickets::add);
-        return new LottoTickets(lottoTickets);
+                .collect(collectingAndThen(toList(), LottoTickets::new));
     }
 
     private static Lotto makeNewLotto() {
