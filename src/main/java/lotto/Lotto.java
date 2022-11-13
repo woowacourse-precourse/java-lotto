@@ -30,4 +30,21 @@ public class Lotto {
     public List<Integer> getList() {
         return numbers;
     }
+
+    public static boolean check_bonus(Lotto nums, int bonus) {
+        if (nums.getList().contains(bonus)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static int check_win(List<Integer> win_numbers, Lotto buy_numbers) {
+        int cnt = 0;
+        for (int num : win_numbers) {
+            if (buy_numbers.getList().contains(num)) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
 }

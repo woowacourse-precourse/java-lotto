@@ -41,7 +41,28 @@ public class Application {
 
         bonus = Integer.parseInt(Console.readLine());
 
-        System.out.println("\n당첨 통계\n---\n");
+        for (Lotto nums : buy_numbers) {
+            boolean match = false;
+            match = Lotto.check_bonus(nums, bonus);
+            int match_num = Lotto.check_win(win_numbers, nums);
+            if (match_num == 3) {
+                statistics[0]++;
+            }
+            if (match_num == 4) {
+                statistics[1]++;
+            }
+            if (match_num == 5 && match == false) {
+                statistics[2]++;
+            }
+            if (match_num == 5 && match == true) {
+                statistics[3]++;
+            }
+            if (match_num == 6) {
+                statistics[4]++;
+            }
+        }
+
+        System.out.println("\n당첨 통계\n---");
 
         System.out.println("3개 일치 (5,000원) - " + statistics[0] + "개");
         System.out.println("4개 일치 (50,000원) - " + statistics[1] + "개");
