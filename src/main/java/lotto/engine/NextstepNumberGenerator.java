@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NextstepLottoGenerator implements NumberGenerator {
+public class NextstepNumberGenerator implements NumberGenerator {
     private static final int START_RANGE_NUMBER = 1;
     private static final int END_RANGE_NUMBER = 45;
     private static final int COUNT = 6;
