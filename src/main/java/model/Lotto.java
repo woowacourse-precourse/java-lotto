@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,8 +23,44 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateLotto(numbers);
 
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        this.numbers = getSortNumbers(numbers);
+    }
+
+    private void validateLotto(List<Integer> numbers) {
+        validateSize(numbers);
+        validateDuplicate(numbers);
+        validateRange(numbers);
+    }
+
+    private static void validateSize(List<Integer> numbers) {
+        if (numbers.size() != NUMBER_COUNT) {
+            throw new IllegalArgumentException(SIZE_ERROR);
+        }
+    }
+
+    private static void validateDuplicate(List<Integer> numbers) {
+        if (numbers.size() != new HashSet<>(numbers).size()) {
+            throw new IllegalArgumentException(DUPLICATE_ERROR);
+        }
+    }
+
+    private static void validateRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            validateRange(number);
+        }
+    }
+
+    private static void validateRange(int number) {
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
+            throw new IllegalArgumentException(RANGE_ERROR);
+        }
+    }
+
+    private ArrayList<Integer> getSortNumbers(List<Integer> numbers) {
+        ArrayList<Integer> sortNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortNumbers);
+
+        return sortNumbers;
     }
 
     public List<Integer> getNumbers() {
@@ -64,35 +101,5 @@ public class Lotto {
         }
 
         return win.getMatchCount() == matchCount && numbers.contains(bonusNumber);
-    }
-
-    private void validateLotto(List<Integer> numbers) {
-        validateSize(numbers);
-        validateDuplicate(numbers);
-        validateRange(numbers);
-    }
-
-    private static void validateSize(List<Integer> numbers) {
-        if (numbers.size() != NUMBER_COUNT) {
-            throw new IllegalArgumentException(SIZE_ERROR);
-        }
-    }
-
-    private static void validateDuplicate(List<Integer> numbers) {
-        if (numbers.size() != new HashSet<>(numbers).size()) {
-            throw new IllegalArgumentException(DUPLICATE_ERROR);
-        }
-    }
-
-    private static void validateRange(List<Integer> numbers) {
-        for (int number : numbers) {
-            validateRange(number);
-        }
-    }
-
-    private static void validateRange(int number) {
-        if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new IllegalArgumentException(RANGE_ERROR);
-        }
     }
 }
