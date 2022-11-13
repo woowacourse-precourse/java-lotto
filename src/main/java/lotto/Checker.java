@@ -53,13 +53,34 @@ public class Checker {
         }
         return true;
     }
-    public void chooseBonusNumber(){
+    private void chooseBonusNumber(){
         Scanner scanner = new Scanner(System.in);
-        bonusNumber = scanner.nextInt();
+        try{
+            bonusNumber = scanner.nextInt();
+        }
+        catch(Exception e) {
+            throw new IllegalArgumentException();
+        }
         validateBonusNumber(bonusNumber);
     }
     private void validateBonusNumber(int input){
         if(input < 1 || input > 45)
             throw new IllegalArgumentException();
+    }
+
+    public List<Integer> getWinNumber() {
+        return winNumber;
+    }
+
+    public void setWinNumber(List<Integer> winNumber) {
+        this.winNumber = winNumber;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 }
