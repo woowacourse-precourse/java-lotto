@@ -5,6 +5,8 @@ import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.IntStream;
 
 import static lotto.exception.InputException.*;
 
@@ -22,15 +24,12 @@ public class Buyer {
     }
 
     public void createLottos(int amount) {
-        int count = countOfLottos(amount);
-        for(int i=1; i<=count; i++) {
-            lottos.add(Lotto.generateLotto());
-        }
-
+        int count = countOfBuyLottos(amount);
+        IntStream.range(1, countOfBuyLottos(amount)+1).forEach(value -> lottos.add(Lotto.generateLotto()));
         OutputView.printPurchase(count, lottos);
     }
 
-    private int countOfLottos(int amount) {
+    private int countOfBuyLottos(int amount) {
         return amount/1000;
     }
 }
