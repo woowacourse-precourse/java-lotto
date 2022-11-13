@@ -62,11 +62,11 @@ public final class LottoMachine {
 
     private WinningLottery getWinningLottery() {
         outputView.printInputLotteryMessage();
-        WinningLottery winningLottery = new WinningLottery(new Lotto(inputView.getLotteryNumber()));
+        final Lotto winLotto = new Lotto(inputView.getLotteryNumber());
 
         outputView.printInputBonusMessage();
         BonusNumber bonusNumber = new BonusNumber(inputView.getBonusNumber());
-        winningLottery.setBonusNumber(bonusNumber);
+        WinningLottery winningLottery = new WinningLottery(winLotto, bonusNumber);
 
         return winningLottery;
     }

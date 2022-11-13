@@ -11,8 +11,7 @@ public class LottoStatisticTest {
     @DisplayName("getScore메서드는 계산된 점수를 바탕으로 당첨 횟수, 수익률을 계산한다")
     @Test
     void case1() {
-        WinningLottery winningLottery = new WinningLottery(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-        winningLottery.setBonusNumber(new BonusNumber(7));
+        WinningLottery winningLottery = new WinningLottery(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new BonusNumber(7));
 
         Lottos lottos = new Lottos(
                 List.of(
