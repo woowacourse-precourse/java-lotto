@@ -30,7 +30,7 @@ public class WinningLotto extends Lotto{
     }
 
     private void validateDigit(String inputBonus) {
-        if (Pattern.matches(DIGIT_REGEX, inputBonus)) {
+        if (!Pattern.matches(DIGIT_REGEX, inputBonus)) {
             throw new IllegalArgumentException(INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
         }
     }
