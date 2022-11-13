@@ -15,6 +15,17 @@ class WinningNumbersTest {
             , 7
     );
 
+    @Test
+    void 어떤_숫자가_당첨번호_혹은_보너스인지_확인하는_기능() {
+        CompareResult compareResult = new CompareResult(0, false);
+        compareResult = winningNumbers.judgeMatchOrBonus(1, compareResult);
+        compareResult = winningNumbers.judgeMatchOrBonus(7, compareResult);
+        compareResult = winningNumbers.judgeMatchOrBonus(0, compareResult);
+        compareResult = winningNumbers.judgeMatchOrBonus(9, compareResult);
+        compareResult = winningNumbers.judgeMatchOrBonus(3, compareResult);
+        assertThat(compareResult).isEqualTo(new CompareResult(2, true));
+    }
+
 //    @ParameterizedTest
 //    @CsvSource({"1,true", "2,true", "3,true", "4,true", "5,true", "6,true", "7,false", "0,false"})
 //    void 어떤_숫자가_당첨번호에_포함되는지_확인한다(int number, boolean expected) {
