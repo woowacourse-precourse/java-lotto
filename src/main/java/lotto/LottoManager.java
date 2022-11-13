@@ -97,4 +97,19 @@ public class LottoManager {
             lottoResult.merge(2000000000, 1, Integer::sum);
         }
     }
+
+    public double calculateRevenue(HashMap<Integer, Integer> lottoResult, int amount) {
+        Set<Integer> prizeMoney = lottoResult.keySet();
+        int totalPrize = 0;
+
+        for (Integer prize : prizeMoney) {
+            if (lottoResult.get(prize) > 0) {
+                totalPrize += prize * lottoResult.get(prize);
+            }
+        }
+
+        double revenue = (double) totalPrize / amount;
+
+        return revenue;
+    }
 }
