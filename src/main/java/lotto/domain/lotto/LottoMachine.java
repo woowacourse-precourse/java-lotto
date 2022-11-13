@@ -10,11 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoMachine {
-
-
 	public static List<List<Integer>> issuedLottoes = new ArrayList<>();
-
-	public LottoMachine() {}
 
 	public void issueLotto(PurchaseCount purchaseCount) {
 		for (int i = 0; i < purchaseCount.toLotto(); i++) {
