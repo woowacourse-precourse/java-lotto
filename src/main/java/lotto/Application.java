@@ -19,13 +19,11 @@ public class Application {
         Lotto lotto = new Lotto(numberGenerator.computerLotto);
 
 
-정        System.out.println("\n" + Constant.INPUT_BONUS_NUMBER);
-        numberGenerator.enterBonusNumber();
-        lotto.exceptionBonusNumberByDuplicatedLotto(numberGenerator.bonusNumber);
-        lotto.exceptionBonusNumberOutOfRange(numberGenerator.bonusNumber);
+        System.out.println("\n" + Constant.INPUT_BONUS_NUMBER);
+        lotto.enterBonusNumber();
 
         System.out.println("\n" + Constant.WINNING_STATISTICS);
-        lotto.processLotto(numberGenerator.autoLotto, numberGenerator.bonusNumber, purchasePrice);
+        lotto.processLotto(numberGenerator.autoLotto, purchasePrice);
 
         /**
          * 구입금액을 입력해 주세요.
