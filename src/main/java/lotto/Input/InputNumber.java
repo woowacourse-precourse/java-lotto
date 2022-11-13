@@ -18,11 +18,10 @@ public class InputNumber {
         String[] userInputs = Console.readLine().split(",");
 
         for (String userInput : userInputs) {
-            try {
-                lottoSixNum.add(Integer.parseInt(userInput));
-            } catch (NumberFormatException e) {
+            if(!userInput.matches("[+-]?\\d*(\\.\\d+)?")){
                 throw new IllegalArgumentException(PrintError.NO_COMMA.getMessage());
             }
+            lottoSixNum.add(Integer.parseInt(userInput));
         }
 
         return lottoSixNum;

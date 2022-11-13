@@ -4,23 +4,17 @@ import lotto.Input.PrintError;
 
 public class Money {
     private final int userlottonum;
-    IllegalArgument illegalArgument = new IllegalArgument();
     public Money(String userInput){
-        int convertedUserInput = validate(userInput);
-        this.userlottonum = afterCalculate(convertedUserInput);
+        this.userlottonum = validate(userInput);
     }
 
     public int validate(String userInput) throws IllegalArgumentException {
-        int userInputNum;
-        try {
-            userInputNum = Integer.parseInt(userInput);
-        }catch (NumberFormatException e) {
+        IllegalArgument illegalArgument = new IllegalArgument();
+
+        if(!userInput.matches("[+-]?\\d*(\\.\\d+)?")){
             throw illegalArgument.withMessage(PrintError.NOT_A_NUMBER.getMessage());
         }
-        return userInputNum;
-    }
-
-    public int afterCalculate(int convertedUserInput) throws IllegalArgumentException {
+        int convertedUserInput = Integer.parseInt(userInput);;
 
         if (convertedUserInput % 1000 != 0) {
             throw illegalArgument.withMessage(PrintError.OUT_OF_MONEY_UNIT.getMessage());
