@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.List;
-import lotto.constant.LottoEnum;
 
 public class LottoWin extends Lotto {
     private final Integer bounsNumber;
