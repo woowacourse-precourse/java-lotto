@@ -16,10 +16,10 @@ public class LottoGame {
         List<Lotto> lottos = new Shop(money).buyLotto();
         WinningNumbers winningNumbers = new WinningNumbers(InputView.getWinningInput(), InputView.getBonusInput());
 
-        Calculator rankCountMap = new Calculator(winningNumbers, lottos);
-        PrizeMoney prizeMoney = new PrizeMoney(money, rankCountMap.getTotalPrice());
+        Calculator rankCountMatch = new Calculator(winningNumbers, lottos);
+        PrizeMoney prizeMoney = new PrizeMoney(money, rankCountMatch.getTotalPrice());
 
-        OutputView.printWinningInfo(rankCountMap);
+        OutputView.printWinningInfo(rankCountMatch);
         OutputView.printProfit(prizeMoney.getPrize());
     }
 
