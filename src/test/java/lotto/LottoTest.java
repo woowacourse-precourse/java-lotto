@@ -44,7 +44,7 @@ class LottoTest {
         String expect = "2, 4, 14, 23, 31, 35";
 
         //when
-        String res = lottoTicket.toString();
+        String res = lottoTicket.getSortedNumbers();
 
         //then
         assertThat(res).isEqualTo(expect);

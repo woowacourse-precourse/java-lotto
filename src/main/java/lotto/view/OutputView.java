@@ -16,7 +16,7 @@ public class OutputView {
         List<Lotto> lottoTicketList = lottoTickets.getLottos();
         System.out.println(String.format(LOTTO_TICKET_COUNT, lottoTicketList.size()));
         lottoTicketList.forEach(lottoTicket ->
-                        System.out.println(String.format(LOTTO_TICKET_NUMBERS, lottoTicket)));
+                        System.out.println(String.format(LOTTO_TICKET_NUMBERS, lottoTicket.getSortedNumbers())));
         System.out.println();
     }
 

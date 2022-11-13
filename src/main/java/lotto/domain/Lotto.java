@@ -8,7 +8,7 @@ import static lotto.domain.LottoGenerator.LOTTO_NUMBER_COUNT;
 
 public class Lotto {
     protected static final String DUPLICATED_NUMBER = "중복된 당첨 번호가 존재합니다.";
-    
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -37,12 +37,11 @@ public class Lotto {
         return numbers;
     }
 
-    @Override
-    public String toString() {
-        return String.join(", ", getSortedNumbers());
+    public String getSortedNumbers() {
+        return String.join(", ", toSortedNumbers());
     }
 
-    private List<String> getSortedNumbers() {
+    private List<String> toSortedNumbers() {
         return numbers.stream()
                 .sorted()
                 .map(String::valueOf)
