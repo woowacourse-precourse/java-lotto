@@ -9,7 +9,7 @@
 ### model
 
 1. Lotto
-    - [ ]  로또 번호 오름차순으로 정렬하는 기능 → sortLotto
+    - [ ]  로또 번호 출력하는 기능 → getNumbers
     - [ ]  로또 번호가 중복된 값은 아닌지 검증 기능 → validateDuplicateNumber
     - [ ]  로또 번호가 1~45 사이의 값으로 입력됐는지 검증 기능 → validateBetween1And45
     - [ ]  로또와 당첨 번호 비교 기능 → compareLotto_WinningNumber
@@ -18,7 +18,7 @@
 2. Player
     - [x]  로또 구입 금액 저장 기능 → setPurchaseAmount
     - [x]  구입한 로또 개수 저장 기능 → setLottoCount
-    - [ ]  구매한 로또 번호 저장 기능 → setLottoNumber
+    - [ ]  구매한 로또 번호 저장 기능 → setLottoNumbers
     - [ ]  당첨 내역 저장 기능 → setWinningResult
     - [ ]  수익률 저장 기능 → setLottoYield
 3. Seller
