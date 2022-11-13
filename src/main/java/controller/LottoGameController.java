@@ -1,5 +1,9 @@
-package lotto;
+package controller;
 
+import domain.Lotto;
+import domain.LottoPocket;
+import domain.LottoPublisher;
+import domain.WinningLotto;
 import view.IoView;
 import dto.ScratchResult;
 import java.util.Collections;

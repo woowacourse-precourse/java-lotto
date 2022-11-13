@@ -1,4 +1,4 @@
-package lotto;
+package domain;
 
 import dto.ScratchResult;
 import java.util.Collections;

@@ -2,6 +2,8 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import domain.Lotto;
+import domain.LottoGrade;
 import view.IoView;
 import view.LottoGameView;
 import camp.nextstep.edu.missionutils.test.NsTest;

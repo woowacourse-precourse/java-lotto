@@ -1,7 +1,7 @@
 package view;
 
 import java.util.List;
-import lotto.Lotto;
+import domain.Lotto;
 import dto.ScratchResult;
 
 /**

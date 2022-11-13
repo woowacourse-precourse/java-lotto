@@ -6,8 +6,8 @@ import java.text.Format;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.Lotto;
-import lotto.LottoGrade;
+import domain.Lotto;
+import domain.LottoGrade;
 import dto.ScratchResult;
 
 public class LottoGameView implements IoView {
