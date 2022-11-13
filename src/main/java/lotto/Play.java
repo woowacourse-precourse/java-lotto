@@ -19,17 +19,16 @@ public class Play {
         List<Lotto> lottoTickets = createLottoTickets(numOfLotto);
         Output.showLottoTickets(lottoTickets);
 
-        LottoNumber lottoNumber = UserInput.inputWinningNumbers();
+        LottoNumber lottoNumber = UserInput.inputLottoNumbers();
         Result result = new Result(lottoTickets, lottoNumber);
-        result.calculateReturnOfRate(numOfLotto*MONEY_UNIT);
+        result.calculateReturnOfRate(numOfLotto * MONEY_UNIT);
     }
 
     private List<Lotto> createLottoTickets(int numOfLotto) {
         List<Lotto> lottoTickets = new ArrayList<>();
-        for (int i=INITIAL_NUMBER; i<numOfLotto; i++) {
+        for (int i = INITIAL_NUMBER; i < numOfLotto; i++) {
             lottoTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
         return lottoTickets;
     }
-
 }

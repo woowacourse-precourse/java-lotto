@@ -5,14 +5,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import static constant.Messages.*;
+
 public enum Prize {
 
-    NONE(new MatchCount(0, 0), 0, "없음"),
-    THREE_MATCH(new MatchCount(3, 0), 5000, "3개 일치 (5,000원)"),
-    FOUR_MATCH(new MatchCount(4, 0), 50000, "4개 일치 (50,000원)"),
-    FIVE_MATCH(new MatchCount(5, 0), 1500000, "5개 일치 (1,500,000원)"),
-    FIVE_BONUS_MATCH(new MatchCount(5, 1), 30000000, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
-    SIX_MATCH(new MatchCount(6, 0), 2000000000, "6개 일치 (2,000,000,000원)");
+    NONE(new MatchCount(0, 0), 0, NONE_MESSAGE),
+    THREE_MATCH(new MatchCount(3, 0), 5000, THREE_MATCH_MESSAGE),
+    FOUR_MATCH(new MatchCount(4, 0), 50000, FOUR_MATCH_MESSAGE),
+    FIVE_MATCH(new MatchCount(5, 0), 1500000, FIVE_MATCH_MESSAGE),
+    FIVE_BONUS_MATCH(new MatchCount(5, 1), 30000000, FIVE_BONUS_MATCH_MESSAGE),
+    SIX_MATCH(new MatchCount(6, 0), 2000000000, SIX_MATCH_MESSAGE);
 
     private final MatchCount matchCount;
     private final int prizeMoney;

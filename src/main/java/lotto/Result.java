@@ -24,7 +24,7 @@ public class Result {
 
     private void saveMatchResult(List<Lotto> lottoTickets) {
         for (Lotto lotto : lottoTickets) {
-            Prize prize = Prize.findPrizeType(lottoNumber.getMatchResult(lotto));
+            Prize prize = Prize.findPrizeType(lotto.getMatchResult(lottoNumber));
             totalMatchResult.put(prize, totalMatchResult.getOrDefault(prize, 0) + 1);
         }
     }
@@ -37,7 +37,7 @@ public class Result {
     }
 
     public void calculateReturnOfRate(int price) {
-        double returnOfRate = (double) totalPrizeMoney/price*PERCENT;
+        double returnOfRate = (double) totalPrizeMoney / price * PERCENT;
         Output.showReturnOfRate(returnOfRate);
     }
 }
