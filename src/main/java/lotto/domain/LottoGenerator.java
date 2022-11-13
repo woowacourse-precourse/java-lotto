@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LottoGenerator {
@@ -21,7 +22,11 @@ public class LottoGenerator {
     }
 
     public List<Integer> sortLotto(List<Integer> numbers) {
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> sort = new ArrayList<>();
+        for(int i = 0; i<numbers.size(); i++) {
+            sort.add(numbers.get(i));
+        }
+        sort.sort(Comparator.naturalOrder());
+        return sort;
     }
 }
