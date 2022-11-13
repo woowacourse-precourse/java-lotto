@@ -17,4 +17,10 @@ class LottoCompanyTest {
         Assertions.assertThatThrownBy(() -> makeLottoCompany("1,2,3,4,5,6", "6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호와 당첨 번호가 중복되지 않다면 성공한다.")
+    @Test
+    void createLottoCompany() {
+        org.junit.jupiter.api.Assertions.assertDoesNotThrow(() -> makeLottoCompany("1,2,3,4,5,6", "7"));
+    }
 }
