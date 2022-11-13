@@ -46,7 +46,9 @@ public class Generator {
     }
 
     public static double profitCalculate(int purchased, long totalPrize) {
-        double result = ((double) totalPrize / (long) purchased) * NUMBER.HUNDRED;
-        return result;
+        //TODO 반올림하기
+        double profit = (double) totalPrize / purchased * 100 * 10;
+        double result = Math.round(profit);
+        return result / 10;
     }
 }
