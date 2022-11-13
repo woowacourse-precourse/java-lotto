@@ -7,6 +7,8 @@ public enum ExceptionType {
     LOTTO_INPUT_COUNT_EXCEPTION("[ERROR] 6개의 숫자가 입력되어야 합닌다."),
     LOTTO_RANGE_EXCEPTION("[ERROR] 숫자는 1이상 45이하여야 합니다."),
     LOTTO_DUPLICATE_EXCEPTION("[ERROR] 중복된 숫자는 입력될 수 없습니다."),
+    BONUS_INPUT_TYPE_EXCEPTION("[ERROR] 보너스 넘버에는 숫자를 입력해야 합니다."),
+    BONUS_DUPLICATE_EXCEPTION("[ERROR] 보너스 숫자자 로또 숫자 안에 포함되어있으면 안됩니다."),
     ;
 
     private final String message;
