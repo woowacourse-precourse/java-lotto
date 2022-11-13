@@ -2,10 +2,9 @@ package lotto;
 
 import lotto.domain.Compare;
 import lotto.domain.GenerateLotto;
-import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.WinningResult;
-
 import java.util.*;
+import static lotto.domain.askPlayer.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -35,30 +34,11 @@ public class Application {
             }
         }
         System.out.println(maxCorrect);
-        winningResult.WinningPrice(maxCorrect, maxBonus);
+        System.out.println(maxBonus);
+        int price = winningResult.WinningPrice(maxCorrect, maxBonus);
+        double yield = (double)Math.round(price - (buyLotto*1000))/100;
+        System.out.println("총 수익률은 "+ yield +"%입니다.");
     }
 
-    public static int askLottoPurchase(){
-        System.out.println("구입금액을 입력해 주세요.");
-        String input = Console.readLine();
-        int number = Integer.parseInt(input);
 
-        return number/1000;
-    }
-
-    public static List<Integer> askLottoNum(){
-        List<Integer> result = new ArrayList<>();
-        System.out.println("당첨 번호를 입력해 주세요.");
-        String input = Console.readLine();
-        for(String number : input.split(",")){
-            result.add(Integer.valueOf(number));
-        }
-        return result;
-    }
-
-    public static int askBonusNum(){
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String input = Console.readLine();
-        return Integer.valueOf(input);
-    }
 }
