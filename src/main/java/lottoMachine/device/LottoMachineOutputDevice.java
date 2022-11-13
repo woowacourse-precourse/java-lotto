@@ -7,4 +7,6 @@ interface LottoMachineOutputDevice {
     void printPurchaseAmount();
 
     void printLottoTickets();
+
+    void printReceiveWinningNumberMessage();
 }

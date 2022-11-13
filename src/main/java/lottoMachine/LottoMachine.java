@@ -26,6 +26,8 @@ public class LottoMachine {
         setDevice();
         lottoMachineDevices.printPurchaseAmount();
         lottoMachineDevices.printLottoTickets();
+        lottoMachineDevices.printReceiveWinningNumberMessage();
+        lottoMachineDevices.receiveWinningNumber();
     }
 
     public void createLottoTickets() {
