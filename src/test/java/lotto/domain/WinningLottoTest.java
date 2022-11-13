@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class WinningLottoTest {
@@ -42,5 +43,27 @@ class WinningLottoTest {
     void createWinningLottoByDuplicatedBonusNumber() {
         assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 1))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호와 당첨 번호를 비교하여 1등 당첨 내용을 반환한다.")
+    @Test
+    void compare1() {
+        WinningLotto winningLotto = new WinningLotto(List.of(1,2,3,4,5,6), 7);
+        Lotto playerLotto = new Lotto(List.of(1,2,3,4,5,6));
+
+        Rank rank = winningLotto.compare(playerLotto);
+
+        assertThat(rank).isEqualTo(Rank.FIRST);
+    }
+
+    @DisplayName("로또 번호와 당첨 번호를 비교하여 2등 당첨 내용을 반환한다.")
+    @Test
+    void compare2() {
+        WinningLotto winningLotto = new WinningLotto(List.of(1,2,3,4,5,6), 7);
+        Lotto playerLotto = new Lotto(List.of(1,2,3,4,5,7));
+
+        Rank rank = winningLotto.compare(playerLotto);
+
+        assertThat(rank).isEqualTo(Rank.SECOND);
     }
 }
