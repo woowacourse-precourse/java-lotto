@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoController {
@@ -37,4 +38,35 @@ public class LottoController {
         }
         return purchaseAmount/1000;
     }
+
+    /**
+     * 문자열을 파싱하여 당첨 번호를 설정한다.
+     * @param inputWinningNumbers : 숫자와 쉼표로 구성된 문자열
+     */
+    public void setWinningNumbers(String inputWinningNumbers){
+        List<Integer> winningNumbers = convertInputWinningNumbers(inputWinningNumbers);
+        lottoService.setWinningNumbers(winningNumbers);
+    }
+
+    private List<Integer> convertInputWinningNumbers(String inputWinningNumbers){
+        List<Integer> result = new ArrayList<>();
+        String[] splitInputs = inputWinningNumbers.split(",");
+        if (splitInputs.length != 6){
+            throw new IllegalArgumentException("당첨 번호는 6자리여야 합니다");
+        }
+        for (String splitInput : splitInputs){
+            int winningNumber = convertInputNumber(splitInput);
+            result.add(winningNumber);
+        }
+        return result;
+    }
+
+    private int convertInputNumber(String inputNumber){
+        int number = Integer.parseInt(inputNumber);
+        if (number < 1 || number > 45){
+            throw new IllegalArgumentException("당첨 번호는 1에서 45 사이어야 합니다");
+        }
+        return number;
+    }
+
 }
