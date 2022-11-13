@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 import lotto.view.InputView;
 
 public class LottoController {
@@ -24,6 +26,8 @@ public class LottoController {
         } catch (NumberFormatException nfe) {
             throw new IllegalArgumentException("[ERROR] 음수를 제외한 숫자만 입력해주세요.");
         }
+
+        List<Lotto> lottos = lottoService.buyLottos(money);
     }
 
     private void setWinningNumbers() {
