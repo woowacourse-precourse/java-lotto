@@ -35,6 +35,8 @@ public class Application {
         );
 
         String rateOfReturn = getRateOfReturn(rankCount, payment);
+
+        printStatistics(rankCount, rateOfReturn);
     }
 
     public static int inputPrice() {
@@ -146,5 +148,18 @@ public class Application {
                 + rankCount.get(5) * WinningReward.FIFTH.getPrice();
         double rateOfReturn = (double) priceSum / payment;
         return String.format("%.1f", rateOfReturn);
+    }
+
+    public static void printStatistics(
+            List<Integer> rankCount,
+            String rateOfReturn
+    ) {
+        System.out.println(WINNING_STATISTICS_SENTENCE);
+        System.out.println(FIFTH_PLACE_SENTENCE + rankCount.get(5) + "개");
+        System.out.println(FOURTH_PLACE_SENTENCE + rankCount.get(4) + "개");
+        System.out.println(THIRD_PLACE_SENTENCE + rankCount.get(3) + "개");
+        System.out.println(SECOND_PLACE_SENTENCE + rankCount.get(2) + "개");
+        System.out.println(FIRST_PLACE_SENTENCE + rankCount.get(1) + "개");
+        System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
     }
 }
