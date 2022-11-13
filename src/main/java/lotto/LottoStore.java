@@ -16,6 +16,7 @@ public class LottoStore {
         try {
             PurchaseAmount purchaseAmount = setPurchaseAmount();
             int numberOfLottosPurchased = purchaseAmount.getNumberOfLottoPurchased();
+            int amount = purchaseAmount.getAmount();
 
             PurchaseLottos purchaseLottos = setPurchaseLottos(numberOfLottosPurchased);
             List<Lotto> lottos = purchaseLottos.getPurchaseLottos();
@@ -29,7 +30,7 @@ public class LottoStore {
             winningStatisticsCalculator.calculateNumberOfWins(lottos, winningNumbers, bonusNumber.getBonusNumber());
 
             printWinningStatics(winningStatisticsCalculator.getWinningHistory());
-            printRateOfReturn(winningStatisticsCalculator.getRateOfReturn());
+            printRateOfReturn(winningStatisticsCalculator.calculateRateOfReturn(amount));
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
@@ -63,7 +64,7 @@ public class LottoStore {
         }
     }
 
-    private void printRateOfReturn(double rateOfReturn) {
+    private void printRateOfReturn(String rateOfReturn) {
         outputView.printRateOfReturn(rateOfReturn);
     }
 }

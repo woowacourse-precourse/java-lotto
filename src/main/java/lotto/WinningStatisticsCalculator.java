@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 
 public class WinningStatisticsCalculator {
     private final HashMap<WinningHistory, Integer> winningHistory;
-    private double rateOfReturn;
     private double totalPrizeMoney;
 
     public WinningStatisticsCalculator() {
@@ -19,16 +18,11 @@ public class WinningStatisticsCalculator {
             put(WinningHistory.BLANK, 0);
         }};
 
-        rateOfReturn = 0;
         totalPrizeMoney = 0;
     }
 
     public HashMap<WinningHistory, Integer> getWinningHistory() {
         return winningHistory;
-    }
-
-    public double getRateOfReturn() {
-        return rateOfReturn;
     }
 
     public void calculateNumberOfWins(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
@@ -57,12 +51,12 @@ public class WinningStatisticsCalculator {
         return lotto.getNumbers().contains(bonusNumber);
     }
 
-    public void calculateRateOfReturn(int amount) {
+    public String calculateRateOfReturn(int amount) {
         totalPrizeMoney *= 1.0;
-        rateOfReturn = roundTowDecimalPlaces((totalPrizeMoney / amount) * 100);
+        return roundTowDecimalPlaces((totalPrizeMoney / amount) * 100);
     }
 
-    private double roundTowDecimalPlaces(double rate) {
-        return Double.parseDouble(String.format("%.1f", rate));
+    private String roundTowDecimalPlaces(double rate) {
+        return String.format("%.1f", rate);
     }
 }

@@ -55,7 +55,6 @@ class WinningStatisticsCalculatorTest {
 
         WinningStatisticsCalculator winningStatisticsCalculator = new WinningStatisticsCalculator();
         winningStatisticsCalculator.calculateNumberOfWins(lottos, lotto, bonus);
-        winningStatisticsCalculator.calculateRateOfReturn(amount);
-        assertThat(winningStatisticsCalculator.getRateOfReturn()).isEqualTo(62.5);
+        assertThat(winningStatisticsCalculator.calculateRateOfReturn(amount)).isEqualTo("62.5");
     }
 }
