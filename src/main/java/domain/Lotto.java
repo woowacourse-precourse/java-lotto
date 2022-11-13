@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static ui.LottoUi.validate;
+import static ui.LottoUi.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,6 +15,10 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+    }
+
+    public List<Integer> getLottoNumbers(){
+        return numbers;
     }
 
     public static List<Lotto> generateLotto(int lottoCnt) {
@@ -39,5 +43,15 @@ public class Lotto {
         validate(bonusNumber);
 
         return bonusNumber;
+    }
+
+    public static Rank getRank(){
+        int bonusNumber = generateBonusNumber();
+        Lotto winningLotto = generateWinningLotto();
+        int lottoCnt = getLottoCnt();
+        List<Lotto> lottos = generateLotto(lottoCnt);
+
+        Rank rank = compareLottoNumber(winningLotto, bonusNumber, lottos);
+        return rank;
     }
 }

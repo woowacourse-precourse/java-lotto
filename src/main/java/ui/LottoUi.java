@@ -2,12 +2,14 @@ package ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import domain.Lotto;
+import domain.Rank;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static values.Constants.Digit.LOTTO_PRICE;
+import static values.Constants.Digit.*;
 import static values.Constants.Error.*;
 import static values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
 
@@ -97,4 +99,48 @@ public class LottoUi {
         int bonusNumber = Integer.parseInt(Console.readLine());
         return bonusNumber;
     }
+
+    public static Rank compareLottoNumber(Lotto winningNumber, int bonusNumber, List<Lotto> lottos){
+        LinkedHashMap<Integer, Integer> ranking = new LinkedHashMap<>();
+        List<Integer> winningLottoNumbers = winningNumber.getLottoNumbers();
+        List<Integer> rightNumbers = new ArrayList<>();
+        List<Integer> wrongNumbers = new ArrayList<>();
+        lottos.forEach(lotto -> {
+            List<Integer> lottoNumbers = lotto.getLottoNumbers();
+            for(int i = 0;i < LOTTO_NUMBER_COUNT; i++) {
+                if (lottoNumbers.get(i) == winningLottoNumbers.get(i)) {
+                    rightNumbers.add(lottoNumbers.get(i));
+                    continue;
+                }
+                wrongNumbers.add(lottoNumbers.get(i));
+            }
+            //checkFirstPlace
+            if(rightNumbers.size() == LOTTO_NUMBER_COUNT){
+                if(!ranking.containsKey(FIRST_PLACE)){
+                    ranking.put(FIRST_PLACE, 1);
+                    return;
+                }
+                ranking.put(FIRST_PLACE,ranking.get(FIRST_PLACE)+1);
+            }
+            //checkSecondPlace
+            if(rightNumbers.size() == 5 && wrongNumbers.contains(bonusNumber)){
+                if(!ranking.containsKey(SECOND_PLACE)){
+                    ranking.put(SECOND_PLACE, 1);
+                    return;
+                }
+                ranking.put(SECOND_PLACE,ranking.get(SECOND_PLACE)+1);
+            }
+            //checkOtherPlace
+            int rank = rightNumbers.size();
+
+            if(!ranking.containsKey(rank)){
+                ranking.put(rank, 1);
+                return;
+            }
+            ranking.put(rank, ranking.get(rank)+1);
+        });
+        return new Rank(ranking);
+    }
+
+
 }

@@ -15,6 +15,9 @@ public class Constants {
     public static class Digit {
         public static final int LOTTO_PRICE = 1000;
         public static final int LOTTO_NUMBER_COUNT = 6;
+
+        public static final int FIRST_PLACE = 1;
+        public static final int SECOND_PLACE = 2;
     }
 
     public static class Error {
