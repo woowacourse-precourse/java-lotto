@@ -34,8 +34,17 @@ public class Application {
     }
 
     private static List<Integer> convertStringToList(String winningNumber) {
-        return Arrays.stream(winningNumber.split(","))
+        String[] winningNumbers = validateSeparator(winningNumber);
+        return Arrays.stream(winningNumbers)
                 .map(Integer::parseInt)
                 .collect(toList());
+    }
+
+    private static String[] validateSeparator(String winningNumber) {
+        String[] winningNumbers = winningNumber.split(",");
+        if (winningNumbers.length != 6) {
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 쉼표(,)를 이용하여 구분하여 입력해 주시기 바랍니다");
+        }
+        return winningNumbers;
     }
 }
