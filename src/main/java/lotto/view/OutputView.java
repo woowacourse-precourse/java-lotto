@@ -10,7 +10,7 @@ public class OutputView {
     private final static String LOTTO_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
     private final static String LOTTO_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private final static String START_WINNING_STATISTICS_MESSAGE = "당첨 통계";
-    private final static String[] PRIZE_MONEY = {"5,000", "50,000", "1,500,000", "30,000,000", "2,000,000,000"};
+    private final static int[] PRIZE_MONEY = {5000, 50000, 1500000, 30000000, 2000000000};
 
 
     public static void printLottoPurchaseAmount() {
@@ -40,14 +40,25 @@ public class OutputView {
         System.out.println("---");
         for (int i = 3; i < 8; i++) {
             if (i == 6) {
-                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%s원) - %d개", i - 1, PRIZE_MONEY[i - 3], result.get(i - 3)));
+                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", i - 1, PRIZE_MONEY[i - 3], result.get(i - 3)));
                 continue;
             }
             if (i == 7) {
-                System.out.println(String.format("%d개 일치 (%s원) - %d개", i - 1, PRIZE_MONEY[i - 3], result.get(i - 3)));
+                System.out.println(String.format("%d개 일치 (%,d원) - %d개", i - 1, PRIZE_MONEY[i - 3], result.get(i - 3)));
                 continue;
             }
-            System.out.println(String.format("%d개 일치 (%s원) - %d개", i, PRIZE_MONEY[i - 3], result.get(i - 3)));
+            System.out.println(String.format("%d개 일치 (%,d원) - %d개", i, PRIZE_MONEY[i - 3], result.get(i - 3)));
         }
+    }
+
+    public static void printGrossProfit(List<Integer> result, int purchaseAmount) {
+        int sumTotal = 0;
+        int moneyIndex = 0;
+        for (int count : result) {
+            sumTotal += (PRIZE_MONEY[moneyIndex] * count);
+            moneyIndex++;
+        }
+        double grossProfit = (sumTotal * 1.0) / purchaseAmount * 100;
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", grossProfit));
     }
 }
