@@ -7,7 +7,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    controller();
+    }
+    public static void controller() {
+        int numberOfGame = budgetInput.budgetInput();
+
 
     }
 }
