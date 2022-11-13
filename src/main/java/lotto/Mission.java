@@ -4,6 +4,7 @@ import static lotto.utils.Constant.LOTTO_PRICE;
 
 import java.util.EnumMap;
 import java.util.List;
+import lotto.controller.InputController;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMaker;
 import lotto.domain.Money;
@@ -17,12 +18,14 @@ public class Mission {
 
     Output output;
     Input input;
+    InputController inputController;
     LottoMaker lottoMaker;
     ResultRepository repository;
 
     Mission() {
         output = new Output();
         input = new Input();
+        inputController = new InputController();
         lottoMaker = new LottoMaker();
         repository = new ResultRepository();
 
@@ -59,7 +62,7 @@ public class Mission {
 
     private Money getMoney() {
         output.printGetMoney();
-        return input.getMoney();
+        return inputController.getMoney();
     }
 
     private int calculateHowManyLotto(Money money) {

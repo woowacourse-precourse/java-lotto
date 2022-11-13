@@ -3,15 +3,12 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.Money;
 import lotto.utils.ExceptionType;
 
 public class Input {
 
-    public Money getMoney() {
-        String input = Console.readLine();
-        int convertedInput = stringToInt(input);
-        return new Money(convertedInput);
+    public static String readLine() {
+        return Console.readLine();
     }
 
     public List<Integer> getWinningNumbers() {
