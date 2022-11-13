@@ -16,6 +16,7 @@ import java.util.List;
 public class Service {
 
     private static final int PERCENTAGE = 100;
+    private static final int UNIT_PRICE = 1000;
 
     public static int getMoney() {
         Output.outputPurchaseAmount();
@@ -26,7 +27,7 @@ public class Service {
     }
 
     public static int getVolume(int money) {
-        int volume = money / 1000;
+        int volume = money / UNIT_PRICE;
         Output.outputBoughtNumber(volume);
 
         return volume;
