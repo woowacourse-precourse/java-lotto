@@ -8,7 +8,7 @@ public class LottoStatics {
     private static final int BONUS_SAME_COUNT = 5;
     private static final String MESSAGE_STATICS_START = "당첨 통계\n---\n";
 
-    private static final String MESSAGE_STATICS_INFO = "%s (%d원) - %d개\n";
+    private static final String MESSAGE_STATICS_INFO = "%s (%,d원) - %d개\n";
 
     private HashMap<Winning, Integer> staticsInfo;
 

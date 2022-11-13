@@ -50,4 +50,8 @@ public class Buyer {
     public List<Lotto> getLottos() {
         return lottos;
     }
+
+    public int getMoney() {
+        return money;
+    }
 }
