@@ -54,6 +54,36 @@ class LottoTest {
 
             assertThat(actual).isEqualTo(result);
         }
+
+        @DisplayName("4개 매치")
+        @Test
+        void case5() {
+            Lotto myLotto = new Lotto(List.of(3, 4, 5, 6, 7, 8));
+            int result = 4;
+            int actual = winningLotto.countMatch(myLotto);
+
+            assertThat(actual).isEqualTo(result);
+        }
+
+        @DisplayName("5개 매치")
+        @Test
+        void case6() {
+            Lotto myLotto = new Lotto(List.of(2, 3, 4, 5, 6, 7));
+            int result = 5;
+            int actual = winningLotto.countMatch(myLotto);
+
+            assertThat(actual).isEqualTo(result);
+        }
+
+        @DisplayName("6개 매치")
+        @Test
+        void case7() {
+            Lotto myLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            int result = 6;
+            int actual = winningLotto.countMatch(myLotto);
+
+            assertThat(actual).isEqualTo(result);
+        }
     }
 
     @DisplayName("hasBonusNumber 메소드 테스트")
