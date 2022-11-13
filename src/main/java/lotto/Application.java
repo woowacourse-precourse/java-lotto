@@ -116,15 +116,15 @@ public class Application {
 
     private static String calculateEarningRate(int amount) {
         int price = amount * 1000;
-        int prize = calculatePrize();
+        long prize = calculatePrize();
         return String.format("%.1f", (float) prize / price * 100);
     }
 
-    private static int calculatePrize() {
-        int prize = 0;
+    private static long calculatePrize() {
+        long prize = 0;
         for (int i = 0; i < 5; i++) {
             Integer result = wins.get(i);
-            prize += rankings.get(i).prize * result;
+            prize += (long) rankings.get(i).prize * result;
         }
         return prize;
     }
