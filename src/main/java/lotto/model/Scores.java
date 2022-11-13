@@ -66,6 +66,18 @@ public class Scores {
         this.scores.set(score.ordinal(),before+1);
     }
 
+    public List<Integer> getScores() {
+        return scores;
+    }
+
+    public Integer getSumofScores() {
+        Integer sumOfScores  = 0;
+        for (Score value : Score.values()) {
+            sumOfScores += (this.scores.get(value.ordinal())*value.getMoney());
+        }
+        return sumOfScores;
+    }
+
     @Override
     public String toString() {
         return "Scores{" +

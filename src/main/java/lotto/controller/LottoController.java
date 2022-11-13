@@ -26,6 +26,7 @@ public class LottoController {
         setWinningNum();
         bonus = new Bonus();
         scores.compare(userLottos,winningNum,bonus);
+        Integer sumOfScores = scores.getSumofScores();
 
     }
 
