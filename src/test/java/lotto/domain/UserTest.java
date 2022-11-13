@@ -1,13 +1,12 @@
 package lotto.domain;
 
-import lotto.service.InputService;
+import lotto.service.UserService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -16,7 +15,7 @@ public class UserTest {
 
     User user;
 
-    InputService inputService = new InputService();
+    UserService userService = new UserService();
 
     @Nested
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -25,8 +24,8 @@ public class UserTest {
         @ParameterizedTest
         @MethodSource("data")
         void case1(String inputData, int money) {
-            inputService.setMoneyToUser(inputData);
-            user = inputService.getUser();
+            userService.setMoneyToUser(inputData);
+            user = userService.getUser();
             Assertions.assertThat(user.getMoney()).isEqualTo(money);
         }
 

@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InputService {
+public class UserService {
     User user;
     InputException inputException = new InputException();
 

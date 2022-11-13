@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class InputServiceTest {
-    InputService inputService = new InputService();
+    UserService userService = new UserService();
 
     @Nested
     @DisplayName("구매 금액, 예외 발생")
@@ -27,7 +27,7 @@ public class InputServiceTest {
                 "10!0", "1 00"
         })
         void case1(String inputMoney) {
-            Assertions.assertThatThrownBy(() -> inputService.inputMoneyToInteger(inputMoney))
+            Assertions.assertThatThrownBy(() -> userService.inputMoneyToInteger(inputMoney))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[ERROR] 구매 금액과 로또 번호는 숫자만 입력이 가능합니다.");
         }
@@ -37,7 +37,7 @@ public class InputServiceTest {
                 "1234", "1001", "11111001"
         })
         void case2(String inputMoney) {
-            Assertions.assertThatThrownBy(() -> inputService.inputMoneyToInteger(inputMoney))
+            Assertions.assertThatThrownBy(() -> userService.inputMoneyToInteger(inputMoney))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[ERROR] 구매 금액은 1,000원 단위로 입력이 가능합니다.");
         }
@@ -51,7 +51,7 @@ public class InputServiceTest {
                 "1000", "1234000"
         })
         void case1(String inputMoney) {
-            Assertions.assertThatCode(() -> inputService.inputMoneyToInteger(inputMoney))
+            Assertions.assertThatCode(() -> userService.inputMoneyToInteger(inputMoney))
                     .doesNotThrowAnyException();
         }
     }
@@ -63,10 +63,10 @@ public class InputServiceTest {
         @ParameterizedTest
         @MethodSource("data")
         void case1(String inputNumbers, List<Integer> checkNumbers) {
-            inputService.setMoneyToUser("1000");
-            Assertions.assertThatCode(() -> inputService.setNumbersToUser(inputNumbers))
+            userService.setMoneyToUser("1000");
+            Assertions.assertThatCode(() -> userService.setNumbersToUser(inputNumbers))
                     .doesNotThrowAnyException();
-            Assertions.assertThat(inputService.getUser().getNumbers()).isEqualTo(checkNumbers);
+            Assertions.assertThat(userService.getUser().getNumbers()).isEqualTo(checkNumbers);
         }
 
         Stream<Arguments> data() {
@@ -84,10 +84,10 @@ public class InputServiceTest {
         @ParameterizedTest
         @MethodSource("data")
         void case1(String numbers, String bonusNumber, List<Integer> checkList) {
-            inputService.setMoneyToUser("1000");
-            inputService.setNumbersToUser(numbers);
-            inputService.addBonusNumber(bonusNumber);
-            User user = inputService.getUser();
+            userService.setMoneyToUser("1000");
+            userService.setNumbersToUser(numbers);
+            userService.addBonusNumber(bonusNumber);
+            User user = userService.getUser();
             Assertions.assertThat(user.getNumbers()).isEqualTo(checkList);
         }
 
