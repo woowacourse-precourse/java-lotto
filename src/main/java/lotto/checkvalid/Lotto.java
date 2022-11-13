@@ -1,4 +1,4 @@
-package lotto;
+package lotto.checkvalid;
 
 import java.util.List;
 
