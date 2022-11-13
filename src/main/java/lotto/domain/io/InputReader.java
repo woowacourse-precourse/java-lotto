@@ -3,15 +3,15 @@ package lotto.domain.io;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
-import lotto.domain.PurchaseAmount;
+import lotto.domain.LottoNum;
 
 import java.util.List;
 
 public class InputReader {
 
-  public PurchaseAmount readLottoPurchaseAmount() {
+  public LottoNum readLottoNum() {
     String input = Console.readLine();
-    return new PurchaseAmount(input);
+    return new LottoNum(input);
   }
 
   public Lotto readWinningNumber() {
