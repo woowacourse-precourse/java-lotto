@@ -50,6 +50,28 @@ class LottoTest {
         assertThat(lotto.checkNumberMatch(target, notMatchCase)).isEqualTo(0);
     }
 
+    @DisplayName("입력된 로또 하나의 점수를 계산하여 점수에 해당하는 인덱스를 리턴한다.")
+    @Test
+    void getIndividualLottoScore() {
+
+        List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+
+        List<Integer> threeNumbersMatch = List.of(1, 2, 3, 12, 13, 14);
+        List<Integer> fourNumbersMatch = List.of(1, 2, 3, 4, 10, 11);
+        List<Integer> fiveNumbersMatch = List.of(1, 2, 3, 4, 5, 9);
+        List<Integer> fiveAndBonusNumbersMatch = List.of(1, 2, 3, 4, 5, 7);
+        List<Integer> sixNumbersMatch = List.of(1, 2, 3, 4, 5, 6);
+
+        assertThat(lotto.getIndividualLottoScore(threeNumbersMatch)).isEqualTo(0);
+        assertThat(lotto.getIndividualLottoScore(fourNumbersMatch)).isEqualTo(1);
+        assertThat(lotto.getIndividualLottoScore(fiveNumbersMatch)).isEqualTo(2);
+        assertThat(lotto.getIndividualLottoScore(fiveAndBonusNumbersMatch)).isEqualTo(3);
+        assertThat(lotto.getIndividualLottoScore(sixNumbersMatch)).isEqualTo(4);
+    }
+
     @DisplayName("각 로또의 점수를 계산한 뒤 매칭된 숫자와 보너스 일치 여부를 배열에 담아 리턴한다.")
     @Test
     void calculateLottoResult() {
