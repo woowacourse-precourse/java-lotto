@@ -25,19 +25,21 @@ public class ApplicationController {
         control_CountIssueingLotto();
     }
 
-    public void controlIssueingLotto() {
-        // TODO
-        //  - [x] 발행할 로또 개수 계산
-        //  - [x] 구입한 로또 개수 저장
-        //  - [x] 로또 개수만큼 발행
-        //  - [x] 구매한 로또 번호 저장
-        //  - [x] 구매한 로또 번호 출력
-        //  - [ ] 당첨 번호, 보너스 번호 정하는 과정 제어 기능 호출
+    public void control_CountIssueingLotto() {
         int lottocount = seller.countIssueingLotto(player.getPurchaseAmount());
         player.setLottoCount(lottocount);
         outputView.printLottoCount(player.getLottoCount());
+        control_IssueingLotto();
+    }
+
+    public void control_IssueingLotto() {
         List<Lotto> lottoNumbers = seller.issueLotto(player.getLottoCount());
         player.setLottoNumbers(lottoNumbers);
         outputView.printLottoNumber(player.getLottoNumbers());
+        control_WinningNumber();
+    }
+
+    public void control_WinningNumber() {
+        // TODO: 당첨 번호 저장
     }
 }

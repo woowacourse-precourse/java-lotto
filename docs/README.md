@@ -52,9 +52,11 @@
     - [x]  어플리케이션 시작 기능 → startApplication
 
         구입 금액 입력 호출
-    - [ ]  로또 발행 과정을 제어하는 기능 호출 → controlIssueingLotto
-    - [ ]  당첨 번호, 보너스 번호 정하는 과정을 제어하는 기능 호출 → controlLottoNumber
-    - [ ]  당첨 내역 과정을 제어하는 기능 호출 → controlWinningResult
+    - [x]  로또 발행 개수를 제어하는 기능 호출 → control_CountIssueingLotto
+    - [x]  로또 발행을 제어하는 기능 호출 → control_IssueingLotto
+    - [ ]  당첨 번호 정하는 과정을 제어하는 기능 호출 → control_WinningNumber
+    - [ ]  보너스 번호 정하는 과정을 제어하는 기능 호출 → control_BonusNumber
+    - [ ]  당첨 내역 과정을 제어하는 기능 호출 → control_WinningResult
    
 
 ---
