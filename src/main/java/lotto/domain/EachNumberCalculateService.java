@@ -21,4 +21,8 @@ public class EachNumberCalculateService {
                 .length;
     }
 
+    private boolean isNeedBonusCheck(int matchedNumber){
+        return matchedNumber == 5;
+    }
+
 }
