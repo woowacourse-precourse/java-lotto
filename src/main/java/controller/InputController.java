@@ -24,7 +24,7 @@ public class InputController {
         while (true) {
             try {
                 InputView.pushWinningNumber();
-
+                String numbers = Console.readLine();
             }  catch (IllegalArgumentException e) {
                 System.out.println();
             }
