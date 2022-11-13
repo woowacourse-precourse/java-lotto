@@ -43,7 +43,7 @@ public class User {
     }
 
     private void validateNoSpace(String userInput) {
-        if(userInput!=userInput.trim()){
+        if(userInput!=userInput.trim() || userInput.indexOf(" ")!=-1){
             throw new IllegalArgumentException(changeWord + "은 띄어쓰기 없이 입력하세요.");
         }
     }
