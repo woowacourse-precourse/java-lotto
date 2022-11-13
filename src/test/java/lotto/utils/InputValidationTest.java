@@ -2,6 +2,7 @@ package lotto.utils;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Application;
+import lotto.domain.BonusNumber;
 import lotto.validation.InputValidation;
 import lotto.views.Input;
 import org.junit.jupiter.api.BeforeEach;
@@ -130,6 +131,18 @@ class InputValidationTest extends NsTest {
             runException(firstInput, secondInput, thirdInput);
             assertThat(output()).contains(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
         });
+    }
+
+    @DisplayName("입력받은 보너스 번호가 2자리 이상일 때 앞자리는 0이 될 수 없다.")
+    @Test
+    void checkBounusNumberFirstIsNotZero() {
+        String input = "02";
+
+        assertThatThrownBy(() -> {
+            BonusNumber bonusNumber = new BonusNumber(input);
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.FIRST_NUMBER_IS_NOT_ZERO);
     }
 
     @Override
