@@ -17,6 +17,16 @@ public class LottoController {
     LottoData lottoData = new LottoData();
     OutputView output = new OutputView();
 
+    public void start(){
+        setLottoCount();
+        makeLottoNumber();
+        printLottoNumber();
+        inputWinnerNumber();
+        inputBonusNumber();
+        countLottoPrize();
+        printLottoPrize();
+        calculateYield();
+    }
     private void setLottoCount(){
         output.askPurchasePrice();
         int lottoPurchasePrice = Integer.parseInt(readLine());
