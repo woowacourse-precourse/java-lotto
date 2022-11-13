@@ -6,6 +6,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.util.message.CommonMessageConst;
 import lotto.util.message.LottoRankingMessageUtils;
 import lotto.util.ranking.LottoRanking;
 
@@ -15,7 +16,6 @@ public class LottoResult {
     private static final String LOTTO_RESULT_MESSAGE_PREFIX = "당첨 통계";
     private static final String LOTTO_RESULT_MESSAGE_CONTOUR = "---";
     private static final String REVENUE_PERCENT_MESSAGE_FORMAT = "총 수익률은 %s%%입니다.";
-    private static final String LINE_FEED = "\n";
 
     private final Map<LottoRanking, Integer> lottoRankingResult = new EnumMap<>(LottoRanking.class);
     private final BigDecimal revenuePercent;
@@ -49,18 +49,18 @@ public class LottoResult {
 
     @Override
     public String toString() {
-        StringBuilder lottoResultMessage = new StringBuilder(LINE_FEED);
+        StringBuilder lottoResultMessage = new StringBuilder(CommonMessageConst.LINE_FEED);
 
         lottoResultMessage.append(LOTTO_RESULT_MESSAGE_PREFIX)
-                .append(LINE_FEED)
+                .append(CommonMessageConst.LINE_FEED)
                 .append(LOTTO_RESULT_MESSAGE_CONTOUR)
-                .append(LINE_FEED);
+                .append(CommonMessageConst.LINE_FEED);
 
         String lottoRankingMessage = Arrays.stream(LottoRanking.values())
                 .filter(lottoRanking -> lottoRanking != LottoRanking.RANKING_NOTHING)
                 .map(this::processLottoRankingResultMessage)
-                .collect(Collectors.joining(LINE_FEED));
-        lottoResultMessage.append(lottoRankingMessage).append(LINE_FEED);
+                .collect(Collectors.joining(CommonMessageConst.LINE_FEED));
+        lottoResultMessage.append(lottoRankingMessage).append(CommonMessageConst.LINE_FEED);
 
         String revenuePercentMessage = String.format(REVENUE_PERCENT_MESSAGE_FORMAT, revenuePercent.toString());
         lottoResultMessage.append(revenuePercentMessage);

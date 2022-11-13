@@ -6,13 +6,13 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.util.message.CommonMessageConst;
 import lotto.util.number.LottoNumberConst;
 import lotto.util.ranking.LottoRanking;
 
 public class Player {
 
     private static final String LOTTO_COUNT_MESSAGE_FORMAT = "%d개를 구매했습니다.";
-    private static final String LINE_FEED = "\n";
 
     private final LottoPurchaseAmount lottoPurchaseAmount;
     private final List<Lotto> myLottos;
@@ -52,13 +52,15 @@ public class Player {
 
     @Override
     public String toString() {
-        StringBuilder playerMessage = new StringBuilder(LINE_FEED);
+        StringBuilder playerMessage = new StringBuilder(CommonMessageConst.LINE_FEED);
 
         playerMessage
                 .append(String.format(LOTTO_COUNT_MESSAGE_FORMAT, lottoPurchaseAmount.calculatePurchaseLottoAmount()))
-                .append(LINE_FEED);
+                .append(CommonMessageConst.LINE_FEED);
 
-        String myLottosMessage = myLottos.stream().map(Lotto::toString).collect(Collectors.joining(LINE_FEED));
+        String myLottosMessage = myLottos.stream()
+                .map(Lotto::toString)
+                .collect(Collectors.joining(CommonMessageConst.LINE_FEED));
         playerMessage.append(myLottosMessage);
 
         return playerMessage.toString();
