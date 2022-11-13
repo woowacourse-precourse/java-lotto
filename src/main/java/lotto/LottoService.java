@@ -1,5 +1,6 @@
 package lotto;
 
+import static lotto.LottoConstant.INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE;
 import static lotto.LottoConstant.INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
 import static lotto.LottoConstant.INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE;
 
@@ -15,6 +16,9 @@ public class LottoService {
         int amount = Integer.parseInt(input);
         if (amount < 1000) {
             throw new IllegalStateException(INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE);
+        }
+        if (amount % 1000 != 0) {
+            throw new IllegalStateException(INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE);
         }
 
         return amount;
