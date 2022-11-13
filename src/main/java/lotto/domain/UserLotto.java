@@ -7,7 +7,7 @@ public class UserLotto {
 
     public UserLotto(String lottoAmount) {
         validateIsNumeric(lottoAmount);
-        int tmpLottoAmount = Guide.convertStringToInt(lottoAmount);
+        int tmpLottoAmount = Preprocessor.convertStringToInt(lottoAmount);
         validateCanDivideThousand(tmpLottoAmount);
         this.lottoAmount = tmpLottoAmount;
     }

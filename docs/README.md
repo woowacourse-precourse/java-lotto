@@ -1,4 +1,4 @@
-# 기능 목록 ver 1.3.6
+# 기능 목록 ver 1.4
 <hr>
 
 ### 예외처리 상황
@@ -31,16 +31,16 @@
   - [x] 구매한 복권 번호 목록 출력 - Guide
   - [x] 당첨 번호 입력받기 문구 출력 - Guide
   - [x] 보너스 번호 입력받기 문구 출력 - Guide
-  - [ ] 정수에다가 구두점 표시 후 반환 - Guide
+  - [ ] 정수에다가 구두점 표시 후 반환 - Preprocessor
   - [ ] 당첨 통계 출력 - UserLotto
 - [x] 입력 기능
   - [x] 입력받은 구입금액에 대한 생성자 - UserLotto
-    - [x] String 형식에 대한 int 형변환 - Guide
+    - [x] String 형식에 대한 int 형변환 - Preprocessor
   - [x] 입력받은 당첨 번호에 대한 생성자 - Lotto
-    - [x] String 형식인 당첨 번호를 콤마로 구분하여 List\<String>로 변환 - Guide
-    - [x] List\<String> 을 List\<Integer>로 변환
+    - [x] String 형식인 당첨 번호를 콤마로 구분하여 List\<String>로 변환 - Preprocessor
+    - [x] List\<String> 을 List\<Integer>로 변환 - Preprocessor
   - [x] 입력받은 보너스 번호에 대한 생성자 - Bonus
-    - [x] String 형식에 대한 int 형변환 - Guide
+    - [x] String 형식에 대한 int 형변환 - Preprocessor
 
 - [x] 로또 번호 접근자 - Lotto
 - [x] 보너스 번호 접근자 - Bonus
