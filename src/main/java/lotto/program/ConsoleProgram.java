@@ -1,6 +1,7 @@
-package lotto;
+package lotto.program;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.vo.LottoOfAnswer;
 import lotto.utils.Converter;
 import lotto.utils.Validator;
 

@@ -1,7 +1,8 @@
-package lotto;
+package lotto.program;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.vo.Lotto;
 import lotto.utils.Converter;
 import lotto.utils.Generator;
 

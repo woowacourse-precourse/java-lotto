@@ -1,8 +1,8 @@
-package lotto;
+package lotto.vo;
 
 import java.util.List;
 
-public class LottoOfAnswer extends Lotto{
+public class LottoOfAnswer extends Lotto {
     private final int bonusNumber;
 
     public LottoOfAnswer(List<Integer> numbers, int bonusNumber) {
