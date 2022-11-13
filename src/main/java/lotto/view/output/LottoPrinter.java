@@ -32,12 +32,7 @@ public class LottoPrinter {
     }
 
     public void printLottoTickets(LottoTickets lottoTickets) {
-        System.out.println(
-                purchasedNumberOfLottoTickets(lottoTickets.totalCounts())
-        );
-
-        System.out.println(
-                lottoTickets(lottoTickets.lottoTickets())
-        );
+        System.out.println(purchasedNumberOfLottoTickets(lottoTickets.totalCounts()));
+        System.out.println(lottoTickets(lottoTickets.lottoTickets()));
     }
 }

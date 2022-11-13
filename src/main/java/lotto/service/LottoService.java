@@ -29,10 +29,8 @@ public class LottoService {
             String money = money();
             LottoTickets lottoTickets = lottoTickets(money);
 
-            WinningLotto winningLotto = lottoMachine.winningLotto(
-                    winningNumber(),
-                    bonusNumber()
-            );
+            WinningLotto winningLotto = lottoMachine
+                    .winningLotto(winningNumber(), bonusNumber());
 
             makeWinningResults(lottoTickets, winningLotto);
         } catch (IllegalArgumentException e) {
@@ -63,15 +61,10 @@ public class LottoService {
     }
 
     private void makeWinningResults(LottoTickets lottoTickets, WinningLotto winningLotto) {
-        LottoResults lottoResults = lottoTickets.lotteryResults(winningLotto);
-        WinningStatistics winningStatistics = new WinningStatistics(
-                lottoTickets,
-                lottoResults
-        );
+        LottoResults lottoResults = winningLotto.lotteryResults(lottoTickets);
+        WinningStatistics winningStatistics = new WinningStatistics(lottoTickets, lottoResults);
 
-        lottoPrinter.printWinningStatistics(
-                lottoResults.results(),
-                winningStatistics.rateOfReturn()
-        );
+        lottoPrinter.printWinningStatistics(lottoResults.results(),
+                winningStatistics.rateOfReturn());
     }
 }

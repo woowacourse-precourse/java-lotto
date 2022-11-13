@@ -12,7 +12,6 @@ class LottoScannerTest {
 
     @Nested
     class validateItContainsOnlyNumber {
-
         @ParameterizedTest(name = "숫자만 입력하면 예외를 던지지 않는다.")
         @ValueSource(strings = {"14000", "1300", "1000000"})
         void success(String inputValue) {

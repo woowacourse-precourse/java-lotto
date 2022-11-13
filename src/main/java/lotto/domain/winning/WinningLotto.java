@@ -23,9 +23,10 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
-    LottoResults lotteryResults(List<Lotto> purchasedLottoTickets) {
+    public LottoResults lotteryResults(LottoTickets lottoTickets) {
         Map<Ranking, Integer> results = initializedRankingMap();
-        judgeRanking(purchasedLottoTickets, results);  // TODO 메서드 이름 고민
+        List<Lotto> winningLottoTickets = lottoTickets.winningLottoTickets(winningNumber);
+        judgeRanking(winningLottoTickets, results);
 
         return new LottoResults(results);
     }
@@ -38,15 +39,10 @@ public class WinningLotto {
         return results;
     }
 
-    private void judgeRanking(List<Lotto> purchasedLottoTickets, Map<Ranking, Integer> results) {
-        final int MIN_NUMBER_FOR_WINNING = 3;
-        for (Lotto purchasedLotto : purchasedLottoTickets) {
-            int countsOfMatchingNumber = winningNumber.countsOfMatchingNumber(purchasedLotto);
-            if (countsOfMatchingNumber < MIN_NUMBER_FOR_WINNING) {
-                continue;
-            }
-
-            boolean isMatchedBonusNumber = bonusNumber.isIn(purchasedLotto);
+    private void judgeRanking(List<Lotto> winningLottoTickets, Map<Ranking, Integer> results) {
+        for (Lotto winningLottoTicket : winningLottoTickets) {
+            int countsOfMatchingNumber = winningNumber.countsOfMatchingNumber(winningLottoTicket);
+            boolean isMatchedBonusNumber = bonusNumber.isIn(winningLottoTicket);
             Ranking ranking = ranking(countsOfMatchingNumber, isMatchedBonusNumber);
 
             results.put(ranking, results.get(ranking) + 1);

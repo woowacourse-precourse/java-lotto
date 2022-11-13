@@ -18,7 +18,6 @@ class LottoStoreTest {
 
     @Nested
     class success {
-
         @ParameterizedTest(name = "지불 금액 정보를 전달 받고, 금액에 따라 로또를 여러개 발행한다.")
         @CsvSource({"12000,12", "1000,1", "120000,120"})
         void test(String money, String result) {
@@ -29,7 +28,6 @@ class LottoStoreTest {
 
     @Nested
     class fail {
-
         @ParameterizedTest(name = "1,000원 단위로 나누어 떨어지지 않는 금액이 입력되면 예외를 던진다.")
         @ValueSource(strings = {"1100", "25555", "500"})
         void test(String money) {

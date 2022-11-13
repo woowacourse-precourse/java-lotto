@@ -4,6 +4,7 @@ import static lotto.domain.constants.LottoConstants.PRICE_OF_LOTTO;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.domain.lotto_numbers.Lotto;
 
 public class LottoTickets {
@@ -12,10 +13,6 @@ public class LottoTickets {
 
     public LottoTickets(List<Lotto> lottoTickets) {
         this.lottoTickets = lottoTickets;
-    }
-
-    public LottoResults lotteryResults(WinningLotto winningLotto) {
-        return winningLotto.lotteryResults(lottoTickets);
     }
 
     int totalPayment() {
@@ -28,5 +25,13 @@ public class LottoTickets {
 
     public List<Lotto> lottoTickets() {
         return Collections.unmodifiableList(lottoTickets);
+    }
+
+    List<Lotto> winningLottoTickets(Lotto winningNumber) {
+        final int MIN_NUMBER_FOR_WINNING = 3;
+        return lottoTickets.stream()
+                .filter(lotto ->
+                        MIN_NUMBER_FOR_WINNING <= lotto.countsOfMatchingNumber(winningNumber))
+                .collect(Collectors.toList());
     }
 }

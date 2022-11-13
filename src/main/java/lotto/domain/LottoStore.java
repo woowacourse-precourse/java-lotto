@@ -24,8 +24,7 @@ public class LottoStore {
         return new LottoTickets(
                 IntStream.range(0, quantityToPurchase)
                         .mapToObj(i -> newLotto())
-                        .collect(Collectors.toList())
-        );
+                        .collect(Collectors.toList()));
     }
 
     private Lotto newLotto() {

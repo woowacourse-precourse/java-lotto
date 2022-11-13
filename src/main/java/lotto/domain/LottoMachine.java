@@ -13,9 +13,7 @@ public class LottoMachine {
     }
 
     public WinningLotto winningLotto(String formattedNumber, String strBonusNumber) {
-        Lotto winningNumber = new Lotto(
-                winningNumberParser.winningNumbers(formattedNumber)
-        );
+        Lotto winningNumber = new Lotto(winningNumberParser.winningNumbers(formattedNumber));
         BonusNumber bonusNumber = new BonusNumber(Integer.parseInt(strBonusNumber));
         
         return new WinningLotto(winningNumber, bonusNumber);
