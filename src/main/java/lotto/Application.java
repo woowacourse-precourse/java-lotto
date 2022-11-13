@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -20,14 +21,17 @@ public class Application {
 
         // 구매 개수에 맞게 로또를 발행하는 메서드 호출
         List<Lotto> lottos = purchaseLotto(purchaseNum);
-        for(Lotto l : lottos)
+        for (Lotto l : lottos)
             l.printElements();
 
         // 당첨 번호를 입력받는 메서드 호출
-
+        Lotto winningLotto = getWinningNumber();
+        winningLotto.printElements();
         // 보너스 번호를 입력받는 메서드 호출
+        int bonusNumber = getBonusInput();
 
         // 당첨 통계를 구하는 메서드 호출
+
     }
 
     public static int getInputMoney() {
@@ -51,23 +55,24 @@ public class Application {
     public static Lotto getWinningNumber() {
         String winningNumberInput = Console.readLine();
 
-        if(!winningNumberInput.contains(","))
+        if (!winningNumberInput.contains(","))
             throw new IllegalArgumentException("[ERROR]Winning number error");
 
-        String[] winningNumberSplit = ",".split(winningNumberInput);
-        if(winningNumberSplit.length != 6)
+        String[] winningNumberSplit = winningNumberInput.split(",");
+
+        if (winningNumberSplit.length != 6)
             throw new IllegalArgumentException("[ERROR]Winning number error");
 
-        List<Integer> winningNunmbers = new ArrayList<>();
-        for(String num : winningNumberSplit) {
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (String num : winningNumberSplit) {
             try {
-                winningNunmbers.add(Integer.parseInt(num));
+                winningNumbers.add(Integer.parseInt(num));
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("[ERROR]Winning number error");
             }
         }
 
-        return new Lotto(winningNunmbers);
+        return new Lotto(winningNumbers);
     }
 
     public static int getBonusInput() {
@@ -87,9 +92,10 @@ public class Application {
 
         List<Lotto> lottos = new ArrayList<>();
 
-        for(int i=0; i<purchaseNum; i++) {
+        for (int i = 0; i < purchaseNum; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto l = new Lotto(numbers);
+            l.sortElements();
             lottos.add(l);
         }
 
