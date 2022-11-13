@@ -40,8 +40,7 @@ public class InputView {
 		final String REGEX = "[0-9]+";
 
 		if (!number.matches(REGEX)) {
-			OutputView.printError(ErrorMessage.NOT_NUMBER_ERROR);
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER_ERROR.getMessage());
 		}
 	}
 
@@ -49,8 +48,7 @@ public class InputView {
 		final String REGEX = "[0-9]+";
 
 		if (!toString(numbers).matches(REGEX)) {
-			OutputView.printError(ErrorMessage.NOT_NUMBERS_ERROR);
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.NOT_NUMBERS_ERROR.getMessage());
 		}
 	}
 

@@ -19,15 +19,13 @@ public class Money {
 
 	private void validateNonZero(int amount) {
 		if (amount == 0) {
-			OutputView.printError(ErrorMessage.ZERO_MONEY_ERROR);
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.ZERO_MONEY_ERROR.getMessage());
 		}
 	}
 
 	private void validateDivisible(int amount) {
 		if (amount % 1000 != 0) {
-			OutputView.printError(ErrorMessage.NOT_DIVISIBLE_MONEY_ERROR);
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.NOT_DIVISIBLE_MONEY_ERROR.getMessage());
 		}
 	}
 
