@@ -30,7 +30,11 @@ public class User {
     }
 
     public double getYield() {
-        double yield = (double) winnings / amountOfMoney;
+        double yield = (double) winnings / amountOfMoney * 100;
         return yield;
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 }
