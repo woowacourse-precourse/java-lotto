@@ -21,7 +21,7 @@
     - [ ]  당첨 내역 저장 기능 → setWinningResult
     - [ ]  수익률 저장 기능 → setLottoYield
 3. Validator
-    - [ ]  로또 구입 금액이 1,000원으로 나누어 떨어지는지 검증 기능 → validatePurchaseAmount
+    - [x]  로또 구입 금액이 1,000원으로 나누어 떨어지는지 검증 기능 → validatePurchaseAmount
     - [ ]  당첨 번호를 쉼표 기준으로 입력했는지 검증 기능 → validateWinningNumber_Diveded_Comma
     - [ ]  당첨 번호 6개를 입력했는지 검증 기능 → validateNumberOfWinningNumbers
     - [ ]  각 당첨 번호 및 보너스 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → isBetween1And45
