@@ -8,12 +8,19 @@ import lotto.model.Constant;
 
 public class LottoInputView {
     private final static String INPUT_MONEY_OF_LOTTO = "구입금액을 입력해 주세요.";
+    private final static String INPUT_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
 
     public void getLottoAmount() {
         System.out.println(INPUT_MONEY_OF_LOTTO);
         String lottoMoney = Console.readLine();
         validateMoney(lottoMoney);
         validateMoneyIsDivided(lottoMoney);
+    }
+
+    public String getLottoNumber() {
+        System.out.println(INPUT_LOTTO_NUMBER);
+        String lottoNumbers = Console.readLine();
+        return lottoNumbers;
     }
 
     public void validateMoney(String uncheckedMoney) {
