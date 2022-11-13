@@ -14,8 +14,8 @@ public class LottoMachine {
 
     private final int amountInput;
 
-    public LottoMachine(int amountInput) {
-        this.amountInput = amountInput;
+    public LottoMachine(int validatedMoney) {
+        this.amountInput = validatedMoney;
     }
 
     public List<Lotto> lottoForAmount() {

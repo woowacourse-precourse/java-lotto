@@ -2,6 +2,7 @@ package controller;
 
 import domain.Lotto;
 import domain.LottoMachine;
+import domain.Money;
 import input.MoneyInput;
 import input.NumberInput;
 import view.RequestView;
@@ -16,6 +17,7 @@ public class LottoController {
     private ResultView resultView = new ResultView();
     private NumberInput numberInput = new NumberInput();
 
+    private Money validatedMoney;
     private LottoMachine machine;
     private List<Lotto> lotteries;
     private Lotto winnerNumber;
@@ -23,7 +25,8 @@ public class LottoController {
 
     public void purchase() {
         requestView.displayEnterPurchaseAmount();
-        machine = new LottoMachine(moneyInput.getPurchaseAmount());
+        validatedMoney = new Money(moneyInput.getPurchaseAmount());
+        machine = new LottoMachine(validatedMoney.getMoney());
         lotteries = machine.lottoForAmount();
         resultView.displayAllLotteries(lotteries);
     }
