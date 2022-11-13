@@ -69,8 +69,12 @@ public class Lotto {
         return Math.toIntExact(count);
     }
 
-    public boolean hasLottoNumber(Integer lottoNumber) {
+    private boolean hasLottoNumber(Integer lottoNumber) {
         return numbers.contains(lottoNumber);
+    }
+
+    public boolean hasLottoNumber(LottoNumber lottoNumber) {
+        return hasLottoNumber(lottoNumber.number());
     }
     // TODO: 추가 기능 구현
 }

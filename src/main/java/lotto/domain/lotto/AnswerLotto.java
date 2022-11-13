@@ -1,5 +1,7 @@
 package lotto.domain.lotto;
 
+import lotto.domain.score.Score;
+
 public class AnswerLotto {
     public static final String ERROR_DUPLICATED_BONUS_NUMBER = "[ERROR] 보너스 로또 번호가 기존의 중복된 로또 번호를 가지고 있습니다.";
 
@@ -13,6 +15,22 @@ public class AnswerLotto {
         this.bonusNumber = bonusNumber;
     }
 
+
+    public Score compareLotto(Lotto randomLotto) {
+        var score = Score.generateEmptyScore();
+
+        var correctCount = this.answerLotto.compareCount(randomLotto);
+
+        for (int i = 0; i < correctCount; i++) {
+            score = score.plusNormal();
+        }
+
+        if (randomLotto.hasLottoNumber(bonusNumber)) {
+            score = score.plusBonus();
+        }
+        return score;
+    }
+
     private void validateBonusNumberIsDuplicatedAtLotto(Lotto answerLotto, LottoNumber bonusNumber) {
         var numbers = answerLotto.numbers();
 
@@ -21,11 +39,4 @@ public class AnswerLotto {
         }
     }
 
-    public Lotto getLotto() {
-        return this.answerLotto;
-    }
-
-    public LottoNumber getBonusNumber() {
-        return this.bonusNumber;
-    }
 }

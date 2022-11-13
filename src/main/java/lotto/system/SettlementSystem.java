@@ -1,7 +1,6 @@
 package lotto.system;
 
 import java.util.Map;
-import lotto.domain.compare.CompareLotto;
 import lotto.domain.lotto.AnswerLotto;
 import lotto.domain.lotto.LottoBundle;
 import lotto.domain.money.Money;
@@ -15,10 +14,11 @@ public class SettlementSystem {
     }
 
     private void startRaffle(LottoBundle lottoBundle, AnswerLotto answerLotto) {
-        for (var anyLotto : lottoBundle.getLottoBundle()) {
-            var rank = CompareLotto.compare(answerLotto, anyLotto).generateRank();
-            if (this.settlement.containsKey(rank)) {
-                this.settlement.put(rank, this.settlement.get(rank) + 1);
+        for (var randomLotto : lottoBundle.getLottoBundle()) {
+            var rank = answerLotto.compareLotto(randomLotto)
+                    .generateRank();
+            if (settlement.containsKey(rank)) {
+                settlement.put(rank, settlement.get(rank) + 1);
             }
         }
     }
