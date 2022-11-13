@@ -19,8 +19,8 @@
 
 ## 기능 목록
 - [x] "구입금액을 입력해 주세요."를 출력한다. - ShowMessage#showInputAmountBuy()
-- [x] "n개를 구매했습니다."를 출력한다. - ShowMessage#showHowManyBuy(int number)
-- [x] 발행한 로또 번호를 "[n, n, n, n, n, n]"의 형식으로 출력한다. - ShowMessage#showLottoNumber(List<List<Integer>> lottoNumbers)
+- [x] "n개를 구매했습니다."를 출력한다. - ShowMessage#showHowManyBuy()
+- [x] 발행한 로또 번호를 "[n, n, n, n, n, n]"의 형식으로 출력한다. - ShowMessage#showLottoNumber()
 - [x] "당첨 번호를 입력해 주세요."를 출력한다. - ShowMessage#showInputLottoNumber()
 - [x] "보너스 번호를 입력해 주세요."를 출력한다. - ShowMessage#showInputBonusNumber()
 - [x] "당첨 통계{\n}---"를 출력한다. - ShowMessage#showLottoStatistics()
@@ -28,43 +28,44 @@
 - [x] "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다." - ShowErrorMessage#showOutRangeLottoNumber()
   - [x] "[ERROR] 금액은 1,000으로 나누어 떨어져야 합니다."를 출력한다. - ShowErrorMessage#showNotDivide()
 
-- [x] 구입할 수 있는 로또의 개수를 반환 - int lottoCount = Lotto#lottoCount(int number)
+- [x] 구입할 수 있는 로또의 개수를 반환 - Lotto#lottoCount()
 - [x] 1 ~ 45까지의 숫자 중 6개의 중복되지 않는 숫자를 뽑는다. - Lotto#createLottoNumbers()
-- [x] 구입할 금액만큼 로또 번호를 반복하여 생성하고 오름차순 정렬 - List<List<Integer>> lottoList = Lotto#createLottoList(int numberOfLotto)
-  - [x] 구입할 금액만큼 로또 번호를 반복하여 생성 - List<List<Integer>> lottoList = Lotto#createLottoList(int numberOfLotto)
-  - [x] 발행한 로또 번호를 오름차순으로 정렬한다. - List<Integer> lotto = Lotto#sortLottoNumberAscending(List<Integer> lottoNumber)
+- [x] 구입할 금액만큼 로또 번호를 반복하여 생성하고 오름차순 정렬 - lottoList = Lotto#createLottoList()
+  - [x] 구입할 금액만큼 로또 번호를 반복하여 생성 - Lotto#createLottoList()
+  - [x] 발행한 로또 번호를 오름차순으로 정렬한다. - Lotto#sortLottoNumberAscending()
 
-- [ ] 로또를 구매하기 - Long amount = Lotto#buyLotto()
+- [ ] 로또를 구매하기 - Lotto#buyLotto()
 - [ ] 당첨 확인 - Lotto#lottoCheckWin()
 
 - [x] 구매한 로또 번호들과 당첨 번호를 비교한다. - Lotto#lottoCompare()
+  - [x] 로또 번호와 당첨 번호를 비교한다. -Lotto#compareLotto()
 
-- [x] 사용자에게 입력 받고 long으로 반환 int lottoCount = InputLotto#inputValueToLongs()
-  - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
-  - [x] 문자열을 long으로 변환 - int number = InputLotto#toLongs(String number)
-- [ ] 사용자에게 입력을 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputValueToLst()
-- [ ] String형식의 번호를 입력 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputStringsToLst()
-  - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
-  - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - List<Integer> numbers = InputLotto#splitCommas(String numbers)
-    - [x] 문자열을 long으로 변환 - int number = InputLotto#toLongs(String number)
+- [x] 사용자에게 입력 받고 long으로 반환 - InputLotto#inputValueToLongs()
+  - [x] 사용자에게 값을 입력 받는다. - InputLotto#inputValueOfUser()
+  - [x] 문자열을 long으로 변환 - InputLotto#toLongs()
+- [ ] 사용자에게 입력을 받고 List로 변환 - InputLotto#InputValueToLst()
+- [ ] String형식의 번호를 입력 받고 List로 변환 - InputLotto#InputStringsToLst()
+  - [x] 사용자에게 값을 입력 받는다. - InputLotto#inputValueOfUser()
+  - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - InputLotto#splitCommas()
+    - [x] 문자열을 long으로 변환 - InputLotto#toLongs()
 
-- [x] 당첨 번호를 입력받고 List<Integer> 형으로 반환 List<Integer> = InputValueSplitCommas()
-  - [x] String을 int형으로 변환하는 toInts 메서드 구현 int = toInts(String value)
-  - [x] List<String>형을 List<Integer>형으로 반환 List<Integer> = toIntList(List<String> stringsNubmerList)
+- [x] 당첨 번호를 입력받고 List<Integer> 형으로 반환 - InputLotto#InputValueSplitCommas()
+  - [x] String을 int형으로 변환하는 toInts 메서드 구현 - InputLotto#toInts()
+  - [x] List<String>형을 List<Integer>형으로 반환 - InputLotto#toIntList()
 
-- [x] 숫자만 입력되었는지 검사한다. - ExceptionHandling#isNumeric(String value)
-- [x] 입력한 금액이 1,000원 단위로 나누어떨어지는지 검사한다. - ExceptionHandling#notDivide(long amount)
-  - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = InputLotto#splitStrings(String numbers)
-  - [x] 문자열을 long으로 변환 - int number = InputLotto#toLongs(String number)
-- [x] 입력한 숫자가 1 ~ 45의 숫자인지 검사한다. - ExceptionHandling#outRangeLottoNumber(int bonusNumber)
-- [x] 입력한 당첨 번호가 중복인지 검사한다. - ExceptionHandling#removeDuplicateNumber(List<Integer> winNumber);
+- [x] 숫자만 입력되었는지 검사한다. - ExceptionHandling#isNumeric()
+- [x] 입력한 금액이 1,000원 단위로 나누어떨어지는지 검사한다. - ExceptionHandling#notDivide()
+  - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - InputLotto#splitStrings()
+  - [x] 문자열을 long으로 변환 - InputLotto#toLongs()
+- [x] 입력한 숫자가 1 ~ 45의 숫자인지 검사한다. - ExceptionHandling#outRangeLottoNumber()
+- [x] 입력한 당첨 번호가 중복인지 검사한다. - ExceptionHandling#removeDuplicateNumber();
 
 ### enum으로 처리
-- [ ] "3개 일치 (5,000원) - n개"를 출력한다. - WinStatistics#showWinMessage(int number)
-- [ ] "4개 일치 (50,000원) - n개"를 출력한다. - WinStatistics#showWinMessage(int number)
-- [ ] "5개 일치 (1,500,000원) - n개"를 출력한다. - WinStatistics#showWinMessage(int number)
-- [ ] "5개 일치, 보너스 볼 일치 (30,000,000원) - n개"를 출력한다. - WinStatistics#showWinMessage(int number)
-- [ ] "6개 일치 (2,000,000,000원) - n개"를 출력한다. - WinStatistics#showWinMessage(int number)
+- [ ] "3개 일치 (5,000원) - n개"를 출력한다. - WinStatistics#showWinMessage()
+- [ ] "4개 일치 (50,000원) - n개"를 출력한다. - WinStatistics#showWinMessage()
+- [ ] "5개 일치 (1,500,000원) - n개"를 출력한다. - WinStatistics#showWinMessage()
+- [ ] "5개 일치, 보너스 볼 일치 (30,000,000원) - n개"를 출력한다. - WinStatistics#showWinMessage()
+- [ ] "6개 일치 (2,000,000,000원) - n개"를 출력한다. - WinStatistics#showWinMessage()
 
 ## 예외 처리
 - [x] 로또를 구매하는 금액이 1000으로 나누어지지 않는 경우
