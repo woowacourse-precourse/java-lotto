@@ -25,7 +25,7 @@ public class Lotto {
     // TODO: 추가 기능 구현
     private void validateDuplication(List<Integer> numbers) {
         HashSet<Integer> duplication = new HashSet<>(numbers);
-        if(duplication.size() != numbers.size()) {
+        if (duplication.size() != numbers.size()) {
             throw new IllegalArgumentException();
         }
     }
