@@ -12,6 +12,19 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public static List<Integer> validateInput(List<Integer> lottoAnswer, String inputAnswer) throws IllegalArgumentException {
+        String[] inputSplitAnswer = inputAnswer.split(",");
+        for(int i=0; i<inputSplitAnswer.length; i++){
+            int num = Integer.parseInt(inputSplitAnswer[i]);
+            if(num>=0 && num<=45) {
+                lottoAnswer.add(Integer.parseInt(inputSplitAnswer[i]));
+                continue;
+            }
+            throw new IllegalArgumentException("[ERROR] 범위 외의 값 입력");
+        }
+        return lottoAnswer;
+    }
+
     private void validateCount(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 6개 이하 수 입력");
