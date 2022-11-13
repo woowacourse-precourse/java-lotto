@@ -26,6 +26,21 @@ public class Model {
     }
 
     /**
+     * 1에서 45까지 수 중 로또 숫자와 중복되지 않는 보너스 번호 1개를 생성한다.
+     * @return 로또 숫자를 Integer로 return 한다.
+     */
+    private static Integer CreateLottoBonusNumber(ArrayList<Integer> lottoNumber) {
+        // 1에서 45까지 로또 숫자와 중복되지 않는 보너스 번호 1개를 생성한다.
+        Integer randomNumber = Randoms.pickNumberInRange(1, 45);
+
+        while (lottoNumber.contains(randomNumber)) {
+            randomNumber = Randoms.pickNumberInRange(1, 45);
+        }
+        
+        return randomNumber;
+    }
+
+    /**
      * 집합에 사용자가가 입력한 숫자를 넣는다.
      * @param playerNumbers 사용자가가 입력한 숫자
      * @return 입력한 숫자를 HashSet로 return 한다.
