@@ -12,7 +12,7 @@ import lotto.constants.RankingInformation;
 import lotto.domain.LottoGameExample;
 import lotto.domain.LottoGameExample.ExampleLottosAndRanks;
 import lotto.domain.model.Lotto;
-import lotto.domain.model.WinningNumber;
+import lotto.domain.model.WinningLotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -96,14 +96,14 @@ public class LottoIssuerTest {
     Map<RankingInformation, Integer> statisticsActual;
 
     Map<RankingInformation, Integer> statisticsExpected;
-    WinningNumber winningNumberExample = LottoGameExample.getWinningNumber();
+    WinningLotto winningLottoExample = LottoGameExample.getWinningNumber();
 
     @Test
     @DisplayName("당첨통계 - 3개 미만으로 일치하면 통계가 모두 0의 값을 갖는다.")
     void makeWinningStatistics_UnderFifthRankTest() {
         lottos.add(LottoGameExample.getNotWinNumber());
 
-        statisticsActual = lottoIssuer.makeWinningStatistics(lottos, winningNumberExample);
+        statisticsActual = lottoIssuer.makeWinningStatistics(lottos, winningLottoExample);
 
         assertThat(statisticsActual).isEqualTo(statisticsExpected);
     }
@@ -145,7 +145,7 @@ public class LottoIssuerTest {
         lottos.add(exampleLotto);
         statisticsExpected.put(exampleRank, 1);
 
-        statisticsActual = lottoIssuer.makeWinningStatistics(lottos, winningNumberExample);
+        statisticsActual = lottoIssuer.makeWinningStatistics(lottos, winningLottoExample);
 
         assertThat(statisticsActual).isEqualTo(statisticsExpected);
     }
