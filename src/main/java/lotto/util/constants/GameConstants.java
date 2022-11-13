@@ -13,6 +13,8 @@ public final class GameConstants {
     public static final String ERROR_IS_NOT_DIVISIBLE_BY_1000 =
             "[ERROR] 구입 금액은 " + LottoConstants.LOTTO_TICKET_PRICE + "원으로 나누어 떨어져야 합니다.";
 
+    public static final String ERROR_IS_NOT_NUMBER_OR_COMMA = "[ERROR] 당첨 번호는 공백 없이 숫자와 콤마로만 이루어져야 합니다.";
+
 
     private GameConstants() {
 
