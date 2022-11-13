@@ -14,7 +14,7 @@
 [] 로또 번호 중복 확인 - Lotto#validate<br>
 [✅] 로또 숫자 6개 확인 - Lotto#validate<br>
 [✅] 로또 번호 범위 1~45 확인 - Lotto#validate<br>
-[] 발행한 로또 번호 오름차순 정렬 - Lotto#sortAscending<br>
+[✅] 발행한 로또 번호 오름차순 정렬 - Lotto#sortAscending<br>
 [] 예외 발생 시 IllegalArgumentException 발생 <br>
 
 <hr>
