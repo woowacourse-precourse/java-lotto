@@ -1,17 +1,37 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Application {
+    final static int AMOUNT_PER_LOTTO = 1000;
 
     /**
      * 입력한 금액을 바탕으로 구매한 로또의 개수를 반환(로또 1장 당 1000원)
      * @return 구매한 로또의 개수
      */
     public static int buyLotto(){
-        // TODO: 구입 금액을 입력 받고, 입력한 금액으로 살 수 있는 로또의 개수 반환
-        // TODO: 구입 금액이 1000 단위로 떨어지지 않을 경우 예외처리
-        return 0;
+        System.out.println("구입금액을 입력해 주세요.");
+        // 구입 금액을 로또 한 장 가격으로 나누면 몇 장을 사는 지 알 수 있음
+        int count = validatedAmountInput() / AMOUNT_PER_LOTTO;
+        return count;
+    }
+
+    /**
+     * 구입 금액을 AMOUNT_PER_LOTTO 로 나눴을 때 나누어 떨어지는 않을 시 예외 처리
+     */
+    public static int validatedAmountInput(){
+        int amount;
+        try{
+            amount = Integer.parseInt(Console.readLine());
+        } catch(NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 숫자 이외의 값을 입력할 수 없습니다.");
+        }
+        if (amount % 1000 != 0){
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위로 입력해야 합니다.");
+        }
+        return amount;
     }
 
     /**
