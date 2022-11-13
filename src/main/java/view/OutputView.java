@@ -1,5 +1,6 @@
 package view;
 
+import model.EarningsRate;
 import model.Lotto;
 import model.Lottos;
 import model.Money;
@@ -50,7 +51,7 @@ public class OutputView {
         return result.toString();
     }
 
-    public static void printEarningsRate(WinningResult winningResult, Money money) {
-        System.out.println(String.format(EARNINGS_RATE, winningResult.getEarningsRate(money)));
+    public static void printEarningsRate(EarningsRate earningsRate) {
+        System.out.println(String.format(EARNINGS_RATE, earningsRate.getEarningRate()));
     }
 }

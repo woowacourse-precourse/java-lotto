@@ -27,7 +27,7 @@ class WinningResultTest {
         }};
 
         WinningResult result = new WinningResult(winningResult);
-        double earningsRate = result.getEarningsRate(new Money(money));
-        assertEquals(earningsRate, rate);
+        EarningsRate earningsRate = result.getEarningsRate(new Money(money));
+        assertEquals(earningsRate.getEarningRate(), rate);
     }
 }

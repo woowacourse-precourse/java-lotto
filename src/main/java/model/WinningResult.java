@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class WinningResult {
@@ -12,11 +13,12 @@ public class WinningResult {
     }
 
     public Map<Win, Integer> getWinningResult() {
-        return winningResult;
+        return Collections.unmodifiableMap(winningResult);
     }
 
-    public double getEarningsRate(Money money) {
-        return round(getWinningAmountSum() * RATIO / money.getMoney());
+    public EarningsRate getEarningsRate(Money money) {
+        double earningsRate = round(getWinningAmountSum() * RATIO / money.getMoney());
+        return new EarningsRate(earningsRate);
     }
 
     private double round(double rate) {
