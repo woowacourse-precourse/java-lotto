@@ -1,9 +1,10 @@
 package lotto.domain;
 
+import lotto.util.Validator;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.constant.ExceptionConstants.*;
 import static lotto.constant.GameConstants.*;
 
 public class Lotto {
@@ -15,32 +16,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        validateLength(numbers);
-        validateRange(numbers);
-        validateDuplication(numbers);
-    }
-
-    private void validateLength(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBER_LENGTH) {
-            throw new IllegalArgumentException(LOTTO_NUMBER_LENGTH_EXCEPTION.toString());
-        }
-    }
-
-    private void validateRange(List<Integer> numbers) {
-        if (LOTTO_NUMBER_LENGTH != numbers.stream()
-                .filter(number -> MIN_NUMBER <= number)
-                .filter(number -> number <= MAX_NUMBER)
-                .count()) {
-            throw new IllegalArgumentException(RANGE_EXCEPTION.toString());
-        }
-    }
-
-    private void validateDuplication(List<Integer> numbers) {
-        if (LOTTO_NUMBER_LENGTH != numbers.stream()
-                .distinct()
-                .count()) {
-            throw new IllegalArgumentException(DUPLICATED_EXCEPTION.toString());
-        }
+        Validator.validateLength(numbers, LOTTO_NUMBER_LENGTH);
+        Validator.validateRange(numbers);
+        Validator.validateDuplication(numbers, LOTTO_NUMBER_LENGTH);
     }
 
     @Override
