@@ -38,11 +38,8 @@ public class Lotto {
         List<Lotto> lottos = new ArrayList<>();
         int lottoNum = purchaseMoney / 1000;
 
-        System.out.println(String.format("%d개를 구매했습니다.",lottoNum));
-
         for (int i = 0; i < lottoNum; i++) {
             Lotto tempLotto = new Lotto(createSortedLottoNumbers(6));
-            System.out.println(tempLotto);
             lottos.add(tempLotto);
         }
 
