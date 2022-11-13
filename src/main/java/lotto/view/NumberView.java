@@ -1,19 +1,16 @@
 package lotto.view;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class NumberView {
-    static Map map = new HashMap<Integer, Boolean>();
 
     public static List<Integer> getWinNumbers() {
         List<Integer> winNumbers;
         System.out.println("당첨 번호를 입력해 주세요.");
         winNumbers = getWinNumbersFormat(readLine());
+        checkWinNumbers(winNumbers);
         return winNumbers;
     }
     private static List<Integer> getWinNumbersFormat(String input) {
@@ -28,12 +25,19 @@ public class NumberView {
 
         return result;
     }
-    private static List<Integer> checkWinNumbers(String input) {
-        List<Integer> result = new ArrayList<Integer>();
-        for (String num : input.split(",")) {
-            result.add(Integer.valueOf(num));
+    private static void checkWinNumbers(List<Integer> winNumbers) {
+        if (winNumbers.size() != 6) {
+            throw new IllegalArgumentException("[Error] 당첨번호는 6개입니다.");
         }
-        return result;
+        Set set = new HashSet<Integer>(winNumbers);
+        if (set.size() != winNumbers.size()) {
+            throw new IllegalArgumentException("[Error] 당첨번호는 중복될 수 없습니다.");
+        }
+        for (int num : winNumbers) {
+            if (num > 45) {
+                throw new IllegalArgumentException("[Error] 당첨번호의 범위는 1~45 입니다.");
+            }
+        }
     }
 
     public static int getBonusNumber() {

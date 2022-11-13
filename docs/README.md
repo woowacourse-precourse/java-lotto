@@ -18,7 +18,7 @@
 
 - [x] 당첨번호 입력 NumberView.getWinNumbers()
 - [x] 당첨번호 입력의 형식 확인 NumberView.getWinNumbersFormat()
-- [ ] 당첨 번호가 유효한 지 확인 NumberView.checkWinNumbers()
+- [x] 당첨 번호가 유효한 지 확인 NumberView.checkWinNumbers()
 - [ ] 보너스 번호 입력 NumberView.getBonusNumber()
 - [ ] 보너스 번호가 유효한 지 확인 NumberView.checkBonusNumber()
 
