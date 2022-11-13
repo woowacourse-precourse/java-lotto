@@ -44,4 +44,20 @@ public class LottoMachine {
         return numbers;
     }
 
+    public LottoContainer buy() {
+        String input = getMoney();
+        validate(input);
+        int lottoCount = getLottoCount(input);
+
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < lottoCount; i++) {
+            List<Integer> numbers = getLottoNumbers();
+            Lotto lotto = new Lotto(numbers);
+            lottos.add(lotto);
+        }
+        LottoContainer lottoContainer = new LottoContainer(lottos);
+
+        return lottoContainer;
+    }
+
 }
