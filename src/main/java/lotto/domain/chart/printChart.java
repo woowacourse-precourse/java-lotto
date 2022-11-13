@@ -18,7 +18,6 @@ public enum printChart {
     PRINT_PERCENT("%입니다.");
 
 
-
     private final String value;
 
     printChart(String value) {
