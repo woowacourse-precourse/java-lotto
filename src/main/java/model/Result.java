@@ -42,4 +42,7 @@ public enum Result {
         return this.coincideCount == coincideCount && this.bonus == bonus;
     }
 
+    public int getPriceNum() {
+        return priceNum;
+    }
 }

@@ -8,6 +8,7 @@ import model.Purchase;
 import model.Result;
 import model.User;
 import model.WinLotto;
+import model.WinningStatic;
 import view.PrintView;
 import view.ReceiveView;
 
@@ -19,10 +20,18 @@ public class MainController {
             User user = purchaseInfo(usersPurchase);
             WinLotto winLotto = winLottoWithBonus();
             List<Result> results = getResults(user, winLotto);
+            WinningStatic winningStatic = getWinningStatic(usersPurchase, results);
+
         } catch (IllegalArgumentException exception) {
             PrintView.error(exception.getMessage());
         }
 
+    }
+
+    private WinningStatic getWinningStatic(Purchase usersPurchase, List<Result> results) {
+        WinningStatic winningStatic = new WinningStatic();
+        WinningStatic resultStatic = winningStatic.compute(usersPurchase.getMoney(), results);
+        return resultStatic;
     }
 
     private List<Result> getResults(User user, WinLotto winLotto) {
