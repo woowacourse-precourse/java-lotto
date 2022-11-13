@@ -27,6 +27,8 @@ public class LottoController {
         bonus = new Bonus();
         scores.compare(userLottos,winningNum,bonus);
         Integer sumOfScores = scores.getSumofScores();
+        double yield = sumOfScores.doubleValue() / price.getPrice().doubleValue();
+        double roundYield = Math.round(yield*100)/100.0;
 
     }
 
