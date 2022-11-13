@@ -41,6 +41,12 @@ public class Lotto {
         }
     }
 
+    private void printPurchasedLotto() {
+        for (int lotto = 0; lotto < purchased_lotto_numbers.size(); lotto++){
+            System.out.println(purchased_lotto_numbers.get(lotto));
+        }
+    }
+
 
 
 
