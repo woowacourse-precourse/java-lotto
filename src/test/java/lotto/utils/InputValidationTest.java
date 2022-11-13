@@ -145,6 +145,17 @@ class InputValidationTest extends NsTest {
                 .hasMessageContaining(ErrorMessage.FIRST_NUMBER_IS_NOT_ZERO);
     }
 
+    @DisplayName("입력받은 보너스 번호가 1~45 안의 값인지")
+    @ParameterizedTest
+    @ValueSource(strings = {"46", "0"})
+    void checkBounusNumberInRange(String input) {
+        assertThatThrownBy(() -> {
+            BonusNumber bonusNumber = new BonusNumber(input);
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

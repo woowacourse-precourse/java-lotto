@@ -11,6 +11,7 @@ public class BonusNumber {
     public BonusNumber(String input) {
         validateCheckNumeric(input);
         validateFirstNumberIsNotZero(input);
+        validateNumberInRange(input);
         bonusNumber = Integer.parseInt(input);
     }
 
@@ -30,5 +31,11 @@ public class BonusNumber {
 
         if (split.length > 1 && split[0].equals("0"))
             throw new IllegalArgumentException(ErrorMessage.FIRST_NUMBER_IS_NOT_ZERO);
+    }
+
+    private void validateNumberInRange(String input) {
+        int result = Integer.parseInt(input);
+        if (result < 1 || result > 45)
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
     }
 }
