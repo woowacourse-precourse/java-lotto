@@ -36,4 +36,8 @@ public class LottoLogic {
     private List<Integer> createLottoNumber() {
         return Randoms.pickUniqueNumbersInRange(START_LOTTO, END_LOTTO, LOTTO_NUMBER);
     }
+
+    public List<Lotto> getBuyLottoList() {
+        return this.buyLottoList;
+    }
 }

@@ -11,6 +11,7 @@ public class UI {
     public UI() {
         lottoLogic = new LottoLogic(moneyInput());
         printNumberOfLotto();
+        printLottoNumber();
     }
 
     private int moneyInput() {
@@ -23,5 +24,11 @@ public class UI {
 
     private void printNumberOfLotto() {
         System.out.println(this.lottoLogic.getNumberOfLotto() + PURCHASE_LOTTO_MESSAGE);
+    }
+
+    private void printLottoNumber() {
+        for (int i = 0; i < this.lottoLogic.getBuyLottoList().size(); i++) {
+            System.out.println(this.lottoLogic.getBuyLottoList().get(i).getNumbers());
+        }
     }
 }
