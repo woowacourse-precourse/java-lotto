@@ -6,6 +6,7 @@ import lotto.utils.GameMessage;
 import lotto.validation.InputValidation;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Input {
@@ -34,6 +35,7 @@ public class Input {
         List<Integer> result = convertToList(answer);
         inputValidation.checkNumberSize(result);
         inputValidation.checkDuplicate(result);
+        sortWinningNumber(result);
 
         return result;
     }
@@ -49,4 +51,7 @@ public class Input {
         return result;
     }
 
+    public void sortWinningNumber(List<Integer> numbers) {
+        Collections.sort(numbers);
+    }
 }
