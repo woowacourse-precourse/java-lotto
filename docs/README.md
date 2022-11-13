@@ -16,15 +16,15 @@
   - [x] 로또 번호 출력기를 만든다. 그것은 오름차순으로 정렬하여 보여준다.<2><>  Printer#printUserLottoNumber
 
 - 사용자가 구매한 로또 번호와 당첨 번호를 비교한다.
-  - [] 숫자를 비교할 수 있는 기능을 구현하고, 그것을 정수형(일반 맞춘 개수, 보너스 맞춘 개수)로 반환한다. <3><4,5> Comparator#compareLotto
+  - [x] 숫자를 비교할 수 있는 기능을 구현하고, 그것을 정수형(일반 맞춘 개수, 보너스 맞춘 개수)로 반환한다. <3><4,5> Comparator#compareLotto
 
 - 당첨 내역에 따른 수익률 계산기를 만든다.
-  - [] 수익률을 계산하기 위해, 수익을 먼저 계산한다. 그리고 수익을 반환한다.<5><7> Calculater#caculateRevenue
-  - [] 당첨된 숫자에 따른, 수익률을 계산하고 정수형(수익률)로 반환한다. <7><6> Calculater#caculateRevenuePercent
+  - [x] 수익률을 계산하기 위해, 수익을 먼저 계산한다. 그리고 수익을 반환한다.<5><7> Calculater#caculateRevenue
+
 
 - 당첨 내역과 수익률을 출력한다. 
   - [] 당첨 내역 출력기를 만든다. <4><> Printer#printWinList
-  - [] 수익률 출력기를 만든다. <6><> Printer#printRevenue
+  - [x] 수익률 출력기를 만든다. <6><> Printer#printRevenue
 
 - 예외사항에 대한 부분을 구현한다.
 
