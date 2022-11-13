@@ -15,4 +15,17 @@ public class calculateLotto {
         String bonusLotto = Console.readLine();
         this.bonusLotto = convertBonus(bonusLotto);
     }
+    Lotto convertLottos(String inputLotto){
+        String[] inputLottosTemp = inputLotto.split(",");
+        List<Integer> lottos = new ArrayList<>();
+        for (String stringToint : inputLottosTemp){
+            lottos.add(Integer.valueOf(stringToint));
+        }
+        Lotto lotto = new Lotto(lottos);
+        return lotto;
+    }
+    int convertBonus(String bonusLotto){
+        return Integer.valueOf(bonusLotto);
+    }
+
 }
