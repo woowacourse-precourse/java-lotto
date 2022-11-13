@@ -1,4 +1,4 @@
 package lotto;
 
-public class LottoKioskTest {
+public class KioskTest {
 }
