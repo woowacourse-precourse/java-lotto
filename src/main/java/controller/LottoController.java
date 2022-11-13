@@ -22,6 +22,7 @@ public class LottoController {
     public void lottoStart(){
         userOutput.printRandomLottoList(makeRandomLottoNumber(buyLotto()));
         makeLottoWinningNumber();
+        makeLottoBonusNumber();
 
     }
 
@@ -49,6 +50,11 @@ public class LottoController {
             randomLottoNumber.add(numbers);
         }
         return randomLottoNumber;
+    }
+    //보너스 번호 입력 로직 실행
+    public int makeLottoBonusNumber(){
+        lottoBonus = new LottoBonus(userInput.inputBonusNumber(),winningLotto.getWinningNumbers());
+        return lottoBonus.getBonusNumber();
     }
 
 

@@ -1,11 +1,13 @@
 package lotto;
 
-public class LottoBonus {
+import java.util.List;
 
+public class LottoBonus {
     private int bonusNumber;
 
-    LottoBonus(String input){
+    public LottoBonus(String input,List<Integer> winningNumber){
         validateRange(input);
+        validateDuplication(input,winningNumber);
         this.bonusNumber = bonusNumber;
     }
 
@@ -14,6 +16,14 @@ public class LottoBonus {
 
         if(bonusNumber > 45 || bonusNumber < 0){
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45사이 숫자만 입력 가능합니다.");
+        }
+    }
+
+    public void validateDuplication(String input, List<Integer> winningNumber){
+        bonusNumber = Integer.parseInt(input);
+
+        if(winningNumber.contains(bonusNumber)){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복 불가능합니다.");
         }
     }
 
