@@ -7,13 +7,16 @@ import lotto.view.OutputView;
 public class Controller {
     private final InputView inputView;
     private final OutputView outputView;
+    private final LottoService lottoService;
 
     public Controller() {
         inputView = new InputView();
         outputView = new OutputView();
+        lottoService = new LottoService();
     }
 
     public void play() {
+        Long purchaserId = lottoService.generatePurchaser();
         int money = 0;
 
         try {
@@ -23,6 +26,5 @@ public class Controller {
             return;
         }
     }
-
 
 }
