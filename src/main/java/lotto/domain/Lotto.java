@@ -49,9 +49,4 @@ public class Lotto {
         return numbers;
     }
 
-    public int compareNumbers(List<Integer> numbers) {
-        List<Integer> retainedNumbers = new ArrayList<>(numbers);
-        retainedNumbers.retainAll(this.numbers);
-        return retainedNumbers.size();
-    }
 }
