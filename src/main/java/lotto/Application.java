@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoStore;
+import lotto.domain.WinningNumberParser;
 import lotto.service.LottoService;
 import lotto.view.input.LottoScanner;
 import lotto.view.output.LottoPrinter;
@@ -11,7 +12,7 @@ public class Application {
         // TODO: 프로그램 구현
         LottoService lottoService = new LottoService(
                 new LottoStore(),
-                new LottoMachine(),
+                new LottoMachine(new WinningNumberParser()),
                 new LottoScanner(),
                 new LottoPrinter()
         );
