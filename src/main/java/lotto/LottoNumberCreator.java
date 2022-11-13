@@ -15,12 +15,12 @@ public class LottoNumberCreator {
         if (instance == null) {
             instance = new LottoNumberCreator();
         }
-
         return instance;
     }
 
     public List<Integer> getNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        return Randoms
+            .pickUniqueNumbersInRange(1, 45, 6)
             .stream()
             .sorted()
             .collect(Collectors.toList());
