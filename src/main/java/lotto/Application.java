@@ -1,6 +1,8 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.math.BigInteger;
 import java.util.*;
 public class Application {
     private static final int STOP_VALUE = -1;
@@ -56,6 +58,9 @@ public class Application {
             lotteryBundleArray.add(createAndPrintLottery());
             cntForCreateLottery++;
         }
+        callLottoMethods(lotteryBundleArray, buyingAmount);
+    }
+    private static void callLottoMethods(ArrayList<ArrayList<Integer>> lotteryBundleArray, int buyingAmount) {
         Lotto lotto;
         try{
             lotto = new Lotto(inputWinningNumbers());
@@ -63,8 +68,10 @@ public class Application {
         catch(Exception e) {
             throw e;
         }
-        lotto.printLottoWinningsResult(lotto.checkLottoWinnings(lotteryBundleArray, inputBonusWinningNumber()), buyingAmount);
+        ArrayList<BigInteger> checkLottoWinnings = lotto.checkLottoWinnings(lotteryBundleArray, inputBonusWinningNumber());
+        lotto.printLottoWinningsResult(checkLottoWinnings, buyingAmount);
     }
+
     private static ArrayList<Integer> createAndPrintLottery(){
         List<Integer> tempLotteryArray = Randoms.pickUniqueNumbersInRange(1, 45, LOTTERY_NUMBER_LIMIT);
         ArrayList<Integer> lotteryNumberArray = new ArrayList<>();
