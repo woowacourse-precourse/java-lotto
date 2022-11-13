@@ -30,14 +30,14 @@ public class LottoInputView {
         }
     }
 
-    public boolean isNumberString(String uncheckedMoney) {
-        for (int i = 0; i < uncheckedMoney.length(); i++) {
-            char uncheckedCharacter = uncheckedMoney.charAt(i);
+    public boolean isNumberString(String uncheckedInput) {
+        for (int i = 0; i < uncheckedInput.length(); i++) {
+            char uncheckedCharacter = uncheckedInput.charAt(i);
             if(!Character.isDigit(uncheckedCharacter)) {
                 return false;
             }
         }
-        return false;
+        return true;
     }
 
     public void validateMoneyIsDivided(String uncheckedMoney) {
