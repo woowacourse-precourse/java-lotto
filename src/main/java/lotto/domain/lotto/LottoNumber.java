@@ -21,6 +21,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
         validateInputIsNumber(input);
 
         var number = Integer.parseInt(input);
+        
         validateNumberLessThanMaxSize(number);
         validateNumberMoreThanMinSize(number);
         this.number = number;
