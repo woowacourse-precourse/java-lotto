@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,5 +56,13 @@ public class Player {
             this.purchaseAmount -= LOTTO_PRICE;
         }
         return lottos;
+    }
+
+    public void printLotto() {
+        OutputView.printPurchaseQuantity(lottos.size());
+
+        for (Lotto lotto: lottos) {
+            OutputView.printLottoNumber(lotto);
+        }
     }
 }
