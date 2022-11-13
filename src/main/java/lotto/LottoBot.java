@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoBot {
-    private final int[] result = new int[Lotto.LOTTO_NUMBER_SIZE];
+    private final int[] ranks = new int[Lotto.LOTTO_NUMBER_SIZE];
     private String[] winningNumbers;
     private String bonusNumber;
 
@@ -18,16 +18,16 @@ public class LottoBot {
         return Randoms.pickUniqueNumbersInRange(Lotto.MIN_LOTTO_NUMBER, Lotto.MAX_LOTTO_NUMBER, Lotto.LOTTO_NUMBER_SIZE);
     }
 
-    public int[] calculateResult(ArrayList<Lotto> purchasedLotto) {
+    public int[] calculateRanks(ArrayList<Lotto> purchasedLotto) {
         for (Lotto lotto : purchasedLotto) {
             int rank = lotto.getRank(winningNumbers, bonusNumber);
 
             if (isInRank(rank)) {
-                result[rank]++;
+                ranks[rank]++;
             }
         }
         
-        return result;
+        return ranks;
     }
 
     private static boolean isInRank(int rank) {
