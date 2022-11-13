@@ -10,4 +10,5 @@ public class InputView {
         String money = Console.readLine();
         return Integer.parseInt(money);
     }
+
 }
