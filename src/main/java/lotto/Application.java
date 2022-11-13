@@ -44,6 +44,8 @@ public class Application {
     static double winRate = 0.0;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        initVariable();
+        System.out.println("구입금액을 입력해 주세요.");
         buyLotto();
 
         tickets = ticketCal(pay);
@@ -62,14 +64,52 @@ public class Application {
         winRate = calYield();
         printYield();
     }
+
+    private static void initVariable() {
+        pay = 0;
+        tickets = 0;
+        List<List<Integer>> allLottoNumbers = new ArrayList<>();
+        List<Integer> winningNumber = new ArrayList<>();
+        int bonus = 0;
+        Rank rank;
+        Rank rankName;
+        bonusCheck = false;
+        Map<Rank,Integer> rankMap = new EnumMap<>(Rank.class);
+        winMoney = 0;
+        winRate = 0.0;
+    }
+
     public static void buyLotto() {
-        System.out.println("구입금액을 입력해 주세요.");
-        pay = Integer.parseInt(Console.readLine());
-        buyException(pay);
+
+        String checkPay = Console.readLine();
+        if(checkPay.equals(""))
+            throw new IllegalArgumentException("[ERROR] 입력값이 없습니다.");
+
+        try {
+            pay = Integer.parseInt(checkPay);
+            buyException(pay);
+        }catch(IllegalArgumentException e){
+            System.out.println("[ERROR] 정수형 입력을 해야합니다.");
+        }
+
+
+    }
+
+    public static boolean inputPayException(String checkPay){
+
+        char[] check = checkPay.toCharArray();
+
+        for(int i=0;i<check.length;i++) {
+            if (!Character.isDigit(check[i])) {
+                return true;
+            }
+        }
+        return false;
     }
     public static void buyException(int pay){
         if(pay%1000!=0)
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.");
+
     }
 
     public static int ticketCal(int pay){
