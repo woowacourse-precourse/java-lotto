@@ -16,7 +16,8 @@ class LottoBonusTest {
         List<Integer> lottoNumber = List.of(1, 2, 3, 4, 5, 6);
         assertThatThrownBy(() -> new LottoBonus(bonusNumber, lottoNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(String.format(UserInterfaceMessage.ERROR_NUMBER_INCLUSIVE.getValue(),
+                .hasMessageContaining(UserInterfaceMessage.ERROR_PREFIX.getValue()
+                        + String.format(UserInterfaceMessage.ERROR_NUMBER_INCLUSIVE.getValue(),
                         LottoNumberInclusive.START.getValue(), LottoNumberInclusive.END.getValue()));
     }
 
@@ -26,6 +27,7 @@ class LottoBonusTest {
         List<Integer> lottoNumber = List.of(1, 2, 3, 4, 5, 6);
         assertThatThrownBy(() -> new LottoBonus(bonusNumber, lottoNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(UserInterfaceMessage.ERROR_INPUT_BONUS_NUMBER_DUPLICATED.getValue());
+                .hasMessageContaining(UserInterfaceMessage.ERROR_PREFIX.getValue()
+                        + UserInterfaceMessage.ERROR_INPUT_BONUS_NUMBER_DUPLICATED.getValue());
     }
 }
