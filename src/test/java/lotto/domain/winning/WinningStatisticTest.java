@@ -50,4 +50,16 @@ public class WinningStatisticTest {
         Integer purchaseAmount = 2000000000;
         assertThat(winningStatistic.getTextByRateOfReturn(purchaseAmount)).isEqualTo("100.0%");
     }
+    
+    @DisplayName("등수가 낮은 순으로 맞힌 개수를 포함한 내역 리스트를 반환한다.")
+    @Test
+    void getAllWinningTextList() {
+        assertThat(winningStatistic.getWinningTextList()).isEqualTo(List.of(
+                "3개 일치 (5,000원) - 0개",
+                "4개 일치 (50,000원) - 0개",
+                "5개 일치 (1,500,000원) - 0개",
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                "6개 일치 (2,000,000,000원) - 1개"
+        ));
+    }
 }
