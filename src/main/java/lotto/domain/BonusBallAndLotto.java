@@ -9,6 +9,8 @@ import lotto.domain.subaction.BonusNumberCase;
  * 보너스 번호가 해당 되는 로또 찾기 구현
  */
 public class BonusBallAndLotto {
+    private static final int BONUS_CONDITIONS = 5;
+
     private final BonusNumberCase bonusNumberCase;
 
     public BonusBallAndLotto(BonusNumberCase bonusNumberCase) {
@@ -23,7 +25,7 @@ public class BonusBallAndLotto {
             int bonusCaseCount = 0;
             int correctNumberCheck = 0;
 
-            if (resultNumber.get(sameNumber) == 5) {
+            if (resultNumber.get(sameNumber) == BONUS_CONDITIONS) {
                 bonusCaseCount = bonusNumberCase.getBonusCount(random, bonus, WinningNumbers, bonusCaseCount, correctNumberCheck);
             }
             result.add(bonusCaseCount);
