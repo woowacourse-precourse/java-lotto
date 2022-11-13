@@ -2,7 +2,7 @@ package lotto;
 
 import java.util.List;
 
-public class output {
+public class Output {
 
     public void printLotto(List<List<Integer>> allLotto ){
         int lottoCount=allLotto.size();
