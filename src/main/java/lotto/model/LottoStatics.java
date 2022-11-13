@@ -24,6 +24,14 @@ public class LottoStatics {
         this.staticsInfo = staticsInfo;
     }
 
+    public int calculatePrize() {
+        int totalPrize = 0;
+        for (Winning value : Winning.values()) {
+            totalPrize += value.getPrize() * staticsInfo.get(value);
+        }
+        return totalPrize;
+    }
+
     public void calculateStatics(Buyer buyer, LottoStore store) {
         for (Lotto lotto : buyer.getLottos()) {
             calculatePrize(lotto, store);
@@ -58,7 +66,7 @@ public class LottoStatics {
     private boolean isBonusNumber(Lotto lotto, LottoStore store) {
         return lotto.getNumbers().contains(store.getBonusNumber());
     }
-
+    
     private void printStatics() {
         System.out.printf(MESSAGE_STATICS_START);
         for (Winning value : Winning.values()) {
