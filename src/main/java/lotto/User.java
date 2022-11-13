@@ -16,16 +16,14 @@ public class User {
     private int lotteryCount;
     private int winnings;
 
-    public User(){
+    public User(String input){
         checker=new Checker();
-        System.out.println(Texts.LOTTO_USER_INPUT_PURCHASE_AMOUNT);
-        setAmount();
+
+        setAmount(input);
         setLotteries();
-        System.out.println(String.format(LOTTO_USER_PURCHASE_RESULT,lotteryCount,getLotteryList()));
     }
-    private void setAmount(){
-        String input = camp.nextstep.edu.missionutils.Console.readLine();
-        int amount = checker.checkAmountInput(input);
+    private void setAmount(String input){
+        int amount = checker.checkInputNumber(input);
         this.lotteryCount=amount/1000;
     }
     private void setLotteries(){
@@ -42,4 +40,7 @@ public class User {
         return resultBuffer.toString();
     }
 
+    public int getLotteryCount() {
+        return lotteryCount;
+    }
 }
