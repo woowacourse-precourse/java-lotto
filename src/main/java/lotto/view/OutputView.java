@@ -24,6 +24,7 @@ public class OutputView {
     public void printWinStatics(HashMap<LottoRank, Integer> lottoRankStatics) {
         System.out.println(WIN_STATICS);
         DecimalFormat formatter = new DecimalFormat("###,###");
+
         for (LottoRank lottoRank : LottoRank.values()) {
             String winResultFormat = WIN_RESULT;
             if (lottoRank == LottoRank.SECOND_PLACE) {

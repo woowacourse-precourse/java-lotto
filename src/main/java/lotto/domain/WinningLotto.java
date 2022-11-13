@@ -6,6 +6,7 @@ public class WinningLotto {
 
     public WinningLotto(Lotto winningLotto, int bonusNumber) {
         this.lotto = winningLotto;
+        winningLotto.validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
