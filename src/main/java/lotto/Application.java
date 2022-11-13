@@ -11,7 +11,7 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    public static Input inputPurchaseAmount() {
+    public static Input inputValues() {
         System.out.println("구입금액을 입력해 주세요.");
         int purchaseMoney = Integer.parseInt(Console.readLine());
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -20,5 +20,7 @@ public class Application {
         int bonusNumber = Integer.parseInt(Console.readLine());
         Input input = new Input(purchaseMoney, winningNumbers, bonusNumber);
     }
+
+    private static int inputWinningNumber
 
 }
