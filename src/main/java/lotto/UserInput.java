@@ -11,12 +11,15 @@ import java.util.List;
 public class UserInput {
 
     List<List<Integer>> lotteries = new ArrayList<>();
+    long money;
+    long quantity;
 
-    public long inputMoney() {
+    public void inputMoney() {
         Message.INPUT_MONEY.print();
         String input = Console.readLine();
         validateMoney(input);
-        return Long.parseLong(input);
+        this.money = Long.parseLong(input);
+        this.quantity = money / 1000;
     }
 
     private void validateMoney(String input) {
