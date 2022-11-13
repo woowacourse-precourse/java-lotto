@@ -112,4 +112,27 @@ class ValidatorTest {
         // expected
         Validator.validateBonusNumberRange(bonusNumber);
     }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복되는지 확인 - 중복됨")
+    @Test
+    void validateBonusNumberDuplicationInPlayerNumbersNotFollow() {
+        // given
+        int bonusNumber = 6;
+        List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 6);
+
+        // expected
+        assertThatThrownBy(() -> Validator.validateBonusNumberDuplicationInPlayerNumbers(bonusNumber, playerNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복되는지 확인 - 중복되지 않음")
+    @Test
+    void validateBonusNumberDuplicationInPlayerNumbersFollow() {
+        // given
+        int bonusNumber = 7;
+        List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 6);
+
+        // expected
+        Validator.validateBonusNumberDuplicationInPlayerNumbers(bonusNumber, playerNumbers);
+    }
 }
