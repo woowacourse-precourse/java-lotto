@@ -34,12 +34,14 @@ class LottoTest {
         assertThat(createLotto.numbers.size()).isEqualTo(6);
     }
 
+    @DisplayName("1000원으로 나누어지지 않으면 에러가 발생한다.")
     @Test
     void ValidateUserPayDivide1000() {
         assertThatThrownBy(() -> new User(9800))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("문자열 당첨번호를 넣었을 때 숫자 리스트로 리턴된다.")
     @Test
     void InputWinningNumberTest() {
         /*given*/
@@ -50,7 +52,7 @@ class LottoTest {
         assertThat(winningNumberTest).isEqualTo(winningNumber);
     }
 
-
+    @DisplayName("금액을 입력하면 티켓 갯수를 출력한다.")
     @Test
     void countTicket() {
         User user = new User(8000);
