@@ -37,7 +37,7 @@ public class User {
             UserMissChecking.numberLimitChecking(changedNum);
             lottoNum.add(changedNum);
         }
-        UserMissChecking.numRepetCheck(lottoNum);
+        UserMissChecking.numRepeatCheck(lottoNum);
         return lottoNum;
     }
 

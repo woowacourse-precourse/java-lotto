@@ -33,20 +33,30 @@ public class UserMissChecking {
         }
     }
 
-    public static int bonusNumberChecking(String input) {
+    // 보너스 숫자 확인 메서드
+    public static int bonusNumberChecking(List<Integer> lottoNum, String input) {
         numberChecking(input);
         int bonusNum = Integer.parseInt(input);
         thousandChecking(bonusNum);
         numberLimitChecking(bonusNum);
+        bonusRepeat(lottoNum, bonusNum);
         return bonusNum;
     }
 
-    public static void numRepetCheck(List<Integer> lottoNum) {
+    // 로또 구매 시 반복 되는 숫자 기입 여부 확인 메소드
+    public static void numRepeatCheck(List<Integer> lottoNum) {
         for (int i = 0; i < lottoNum.size() - 1; i++) {
             if (Collections.frequency(lottoNum,lottoNum.get(i)) > 1) {
                 System.out.println("[ERROR] 같은 숫자를 두 번 입력할 수 없습니다.");
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    public static void bonusRepeat(List<Integer> lottoNum, int bonusNum){
+        if(lottoNum.contains(bonusNum)){
+            System.out.println("[ERROR] 같은 숫자를 두 번 입력할 수 없습니다.");
+            throw new IllegalArgumentException();
         }
     }
 }
