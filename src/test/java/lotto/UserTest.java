@@ -21,12 +21,12 @@ class UserTest {
 
     @Test
     void winningNumber() {
-        String input = "1,2,3,4,5,6";
+        String input = "1,2,3,4,57,6";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         User user = new User();
 
-        assertThat(user.winningNumber()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(user.winningNumber()).isEqualTo(List.of(1, 2, 3, 4, 57, 6));
 
 
     }

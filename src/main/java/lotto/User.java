@@ -29,10 +29,23 @@ public class User {
         String[] splitInput = input.split(",");
         List<Integer> winningNumber = new ArrayList<Integer>();
         for (String number : splitInput) {
-            winningNumber.add(Integer.parseInt(number));
+            int lottoNumber = Integer.parseInt(number);
+            if (lottoNumber < 1 || lottoNumber > 45){
+                throw new IllegalArgumentException();
+            }
+            winningNumber.add(lottoNumber);
         }
         return winningNumber;
+    }
 
+    int bonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        int bonusNumber = Integer.parseInt(input);
+        if (bonusNumber < 1 || bonusNumber > 45){
+            throw new IllegalArgumentException();
+        }
+        return (bonusNumber);
     }
 
 }
