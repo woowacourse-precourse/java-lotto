@@ -20,6 +20,12 @@ public class Lotto {
         }
     }
 
+    // TODO: 추가 기능 구현
+
+    public List<Integer> getNumbers(){
+        return numbers;
+    }
+
     public static void inputBuyPirce1() {
         System.out.println("구입금액을 입력해주세요");
     }
@@ -54,13 +60,23 @@ public class Lotto {
         // [] 랜덤으로 나오는 숫자
         List<List<Integer>> lottoRandomNumber = user.lottoRandomNumber((Integer) (Countlotto));  //숫자에서 숫자로 형변환시킬때
         // [1,2,3,4,5,6] == []랜덤 으로 비교해서 안에없으면 넣어주기 카운트 또한 증가
-
+        int cnt = 0;
         for (int i = 0; i < number; i++) {
             if (!lottoRandomNumber.contains(lottoToList))
                 lottoRandomNumber.contains(lottoToList);
-
+                cnt++;
         }
     }
+
+
+    public boolean BonusChoose(List<Lotto> listchoose, int intchoose){
+        for(Lotto lotto : listchoose){
+            if(lotto.getNumbers().contains(intchoose))
+                return true;
+        }
+        return false;
+    }
+
 
     // 해당하는 숫자에 도착하면 나오는 결과값 한번에 출력
     public int[] ScoreNumber(List<Integer> correct, List<Boolean> BonusBoolean) {
@@ -144,5 +160,5 @@ public class Lotto {
 
 
 
-    // TODO: 추가 기능 구현
+
 
