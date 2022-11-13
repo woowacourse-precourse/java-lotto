@@ -10,7 +10,7 @@ import lotto.ui.Ouput;
 import java.util.List;
 
 public class Operator {
-    ProfitCalculator manager = new ProfitCalculator();
+    ProfitCalculator profitCalculator = new ProfitCalculator();
     LottoMachine lottoMachine = new LottoMachine();
     WinnerChecker winnerChecker = new WinnerChecker();
     Input input = new Input();
@@ -33,13 +33,13 @@ public class Operator {
         ouput.notifyBonusNumberInput();
         int bounusNumber = input.getBonusNumber();
         System.out.println();
-        List<Integer> result = winnerChecker.compareLottoTable(lottoMachine.getLottoTable(), winningLotto, bounusNumber);
-        return winnerChecker.sumUpResult(result);
+
+        return winnerChecker.getSumOfResult(lottoMachine.getLottoTable(), winningLotto, bounusNumber);
     }
 
     public void notifySumOfResult(List<Integer> sumOfResult) {
         ouput.notifySumOfResult(sumOfResult);
-        float rateOfReturn = manager.getRateOfReturn(sumOfResult);
+        float rateOfReturn = profitCalculator.getRateOfReturn(sumOfResult);
         ouput.notifyRateOfReturn(rateOfReturn);
     }
 }

@@ -17,19 +17,6 @@ public class WinnerChecker {
         return numberOfMatches;
     }
 
-    public boolean hasBonusNumber(Lotto lotto, int bonunsNumber) {
-        return lotto.getNumbers().contains(bonunsNumber);
-    }
-
-    public void validateBounusNumber(Lotto winningLotto, int bonusNumber) {
-        if (bonusNumber > 45 || bonusNumber < 1) {
-            throw new IllegalArgumentException(Error.MUST_BE_NUMBERS_BETWEEN_1_TO_45);
-        }
-        if (hasBonusNumber(winningLotto, bonusNumber)) {
-            throw new IllegalArgumentException(Error.HAD_DUPLICATE_NUMBER);
-        }
-    }
-
     public List<Integer> compareLottoTable(List<Lotto> lottoTable, Lotto winningLotto, int bonusNumber) {
         validateBounusNumber(winningLotto, bonusNumber);
         List<Integer> result = new ArrayList<>();
@@ -43,6 +30,7 @@ public class WinnerChecker {
         }
         return result;
     }
+
     public List<Integer> sumUpResult(List<Integer> result) {
         List<Integer> sumOfResult = new ArrayList<>();
         for (int i = 3; i <= 6; i++) {
@@ -52,5 +40,24 @@ public class WinnerChecker {
             }
         }
         return sumOfResult;
+    }
+
+    public List<Integer> getSumOfResult(List<Lotto> lottoTable, Lotto winningLotto, int bonusNumber) {
+        List<Integer> sumOfResult = sumUpResult(compareLottoTable(lottoTable, winningLotto, bonusNumber));
+        sumOfResult.add(lottoTable.size());
+        return sumOfResult;
+    }
+
+    public boolean hasBonusNumber(Lotto lotto, int bonunsNumber) {
+        return lotto.getNumbers().contains(bonunsNumber);
+    }
+
+    public void validateBounusNumber(Lotto winningLotto, int bonusNumber) {
+        if (bonusNumber > 45 || bonusNumber < 1) {
+            throw new IllegalArgumentException(Error.MUST_BE_NUMBERS_BETWEEN_1_TO_45);
+        }
+        if (hasBonusNumber(winningLotto, bonusNumber)) {
+            throw new IllegalArgumentException(Error.HAD_DUPLICATE_NUMBER);
+        }
     }
 }
