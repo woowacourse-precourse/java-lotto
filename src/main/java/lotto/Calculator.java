@@ -35,6 +35,6 @@ public class Calculator {
         Message.CORRECT_FIVE_BONUS.printResult(placesCount[2]);
         Message.CORRECT_SIX.printResult(placesCount[1]);
         double profit = (double) income / money * 100;
-        System.out.printf("총 수익률은 %.1f%%입니다", profit);
+        System.out.printf("총 수익률은 %.1f%%입니다.", profit);
     }
 }
