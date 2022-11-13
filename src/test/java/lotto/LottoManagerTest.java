@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,10 +36,9 @@ class LottoManagerTest {
         List<Lotto> lottos = lottoManager.getLottos();
         Lotto lotto = lottos.get(0);
         lottoManager.calculateTotalRanks(lotto,0);
-        System.out.println("lottoManager = " + lottoManager.getRanks());
         float earningRate = lottoManager.calculateEarningRate();
 
-        assertThat(earningRate).isEqualTo(2000000F);
+        assertThat(earningRate).isEqualTo(200000000F);
     }
 
 }
