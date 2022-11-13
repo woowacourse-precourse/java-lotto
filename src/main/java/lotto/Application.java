@@ -16,5 +16,9 @@ public class Application {
 
         List<Lotto> lottos = Lotto.buyLottosByPurchaseMoney( PURCHASE_MONEY );
         output.printLottos(lottos);
+
+        List<Integer> winningLottoNumbers = userScanner.askWinningLottoNumber();
+        if (winningLottoNumbers == ERROR) return;
+
     }
 }
