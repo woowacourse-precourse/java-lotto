@@ -1,97 +1,80 @@
 package lotto.controller;
 
-import lotto.domain.User;
-import lotto.domain.ValidUserInput;
+import lotto.domain.Lotto;
+import lotto.service.LottoGenerator;
 import lotto.service.UserBonusNumberService;
 import lotto.service.UserLottoNumberService;
 import lotto.service.UserMoneyService;
-import lotto.utils.OutputEnumMessage;
-import lotto.utils.OutputNonEnumMessage;
+import lotto.utils.Rank;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
-import java.util.*;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
 public class LotteryDraw {
 
-    UserLottoNumberService userLottoNumber = new UserLottoNumberService();
     UserMoneyService userMoney = new UserMoneyService();
+    UserLottoNumberService userLottoNumber = new UserLottoNumberService();
     UserBonusNumberService userBonusNumber = new UserBonusNumberService();
+    LottoGenerator lottoGenerator = new LottoGenerator();
+    InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
+    Rank rank;
 
-    private static final int MIN_WIN_NUMBER = 3; // 당첨 최소 갯수
-    private static final int MAX_WIN_NUMBER = 6;
-    private static final int BONUS_BALL = 7;
-    private static final int WIN_BONUS_BALL = 1;
-    private static final int LOSE_BONUS_BALL = 0;
+    int Money = userMoney.getUserMoney();
+    int lottoCount = Money / 10;
+    List<Lotto> autoLotto = lottoGenerator.AutoCreateLotto(lottoCount);
+    List<Integer> winLottoNumber = userLottoNumber.getLottoNumber();
+    int bonusNumber = userBonusNumber.getBonusNumber();
 
-    public void drawLottery(){ // 로또 갯수 만큼 로또 만들기
-        LottoService lottoService = new LottoService();
-        UserService userService = new UserService();
-
-        List<List<Integer>> autoCreateLottoNumbers = lottoService.LottoComp();
-        List<Integer> userLottoNumber = userService.getLottoNumber();
-        List<Integer> winLotteryNumber = new ArrayList<>(Collections.emptyList()); // 5개
-
-        int bonusNumber = userService.getBonusNumber();
-        ValidUserInput.isBonusNumberNotSameRandomNumber(bonusNumber,userLottoNumber);
-
-        for(List<Integer> autoLotto : autoCreateLottoNumbers){
-            int winNumberCount = getWinNumberCount(autoLotto,userLottoNumber);
-            if(winNumberCount > MIN_WIN_NUMBER){
-                winLotteryNumber.add(winNumberCount);
-            }
-        }//보너스 볼이랑 로또 번호랑 같은지도 체크
-        int bonusCount = bonusNumberCheck(bonusNumber, winLotteryNumber);
-        printResult(winLotteryNumber, bonusCount);
+    public void lotto() {
+        inputView.printUserInputMoney(Money);
+        outputView.printLottoCount(lottoCount);
+        outputView.printAutoCreateLotto(autoLotto);
+        inputView.printUserInputLottoNumber(winLottoNumber);
+        inputView.printUserInputBonusNumber(bonusNumber);
+        outputView.printLottoResult(TotalCountMap());
+        int winningMoney = rank.winnings(TotalCountMap());
+        outputView.printProfitResult(winningMoney, Money);
     }
 
-    private int getWinNumberCount(List<Integer> autoNumber, List<Integer> inputNumber){
-        int count = 0;
+    public Map<Rank, Integer> TotalCountMap() {
+        Map<Rank, Integer> countMap = new EnumMap<>(Rank.class);
+        for (Lotto lotto : autoLotto) {
+            int digit = count(lotto);
+            countMap = TotalMap(countMap,digit);
+        }
+        return countMap;
+    }
 
-        for(int i : inputNumber){ // 숫자가 포함되어 있으면 count+1;
-            if(autoNumber.contains(inputNumber.get(i))){
+    public int count(Lotto lotto) {
+        int count = 0;
+        for (int i = 0; i < winLottoNumber.size(); i++) {
+            if (winLottoNumber.contains(lotto.getAutoNumbers().get(i))) {
                 count++;
             }
         }
         return count;
     }
 
-    private int bonusNumberCheck(int bonusNumber, List<Integer> winLotteryNumber) {
-        if(winLotteryNumber.contains(bonusNumber)){
-            return WIN_BONUS_BALL;
+    public Map<Rank, Integer> TotalMap(Map<Rank, Integer> map, int count) {
+        if (count == 3) {
+            map.put(Rank.CATCH_THREE_NUMBER, map.get(Rank.CATCH_THREE_NUMBER) + 1);
         }
-        return LOSE_BONUS_BALL;
-    }
-
-    private void printResult(List<Integer> winLotteryNumber, int bonusNumber) {
-        OutputEnumMessage outputMessage;
-        System.out.println(OutputNonEnumMessage.WIN_A_LOTTERY_STATUS);
-        System.out.println(OutputNonEnumMessage.SEPARATION);
-
-        Map<OutputEnumMessage, Integer> winCount = new EnumMap<>(OutputEnumMessage.class);
-
-        //3 == 당첨 최소 개수 6 == 당첨 최대 개수
-        for(int i = MIN_WIN_NUMBER; i <= MAX_WIN_NUMBER; i++) { // 해쉬맵에 각 맞은 숫자의 갯수를 정함
-            winCount.put(i, Collections.frequency(winLotteryNumber, i));
+        if (count == 4) {
+            map.put(Rank.CATCH_FOUR_NUMBER, map.get(Rank.CATCH_FOUR_NUMBER) + 1);
         }
-
-        winCount.put(BONUS_BALL, bonusNumber); // 7 == 보너스볼 KEY
-
-        //enum돌면서 3부터 wincount.get(i)
-        for(int key : winCount.keySet()){ //int로 바꿔야 enum이랑 같이 출력가능
-            int value = winCount.get(key);
-            System.out.println(); // enum 갯수 문장 + value
+        if (count == 5 && userBonusNumber.isBonusNumberSameLottoNumber()) {
+            map.put(Rank.CATCH_FIVE_AND_BONUS_NUMBER, map.get(Rank.CATCH_FIVE_AND_BONUS_NUMBER) + 1);
         }
-
-        getLottoEarningRatio(winCount);
-    }
-
-    private void getLottoEarningRatio(Map<Integer, Integer> winCount) {
-        User userMoney = new User();
-
-    }
-
-    private Map<OutputEnumMessage, Integer> getWinCount(List<Integer> winLotteryNumber){
-        for(int i = MIN_WIN_NUMBER; i <= MAX_WIN_NUMBER; i++){
-            System.out.println(i + "개 일치");
+        if (count == 5 && !userBonusNumber.isBonusNumberSameLottoNumber()) {
+            map.put(Rank.CATCH_FIVE_NUMBER, map.get(Rank.CATCH_FIVE_NUMBER) + 1);
         }
+        if (count == 6) {
+            map.put(Rank.CONGRATULATIONS, map.get(Rank.CONGRATULATIONS) + 1);
+        }
+        return map;
     }
 }
