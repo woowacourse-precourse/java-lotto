@@ -1,7 +1,6 @@
 package lotto.controller;
 
 import lotto.service.LottoService;
-import lotto.service.PurchaserService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -15,14 +14,15 @@ public class Controller {
     }
 
     public void play() {
-        int money = inputPurchaserMoney();
-    }
+        int money = 0;
 
-    private int inputPurchaserMoney() {
         try {
-            return inputView.inputMoney();
+            money = inputView.inputMoney();
         } catch (IllegalArgumentException e) {
             outputView.printException(e.getMessage());
+            return;
         }
     }
+
+
 }
