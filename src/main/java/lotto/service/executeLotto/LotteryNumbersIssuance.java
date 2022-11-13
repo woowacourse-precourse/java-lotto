@@ -2,6 +2,7 @@ package lotto.service.executeLotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.List;
 
 public class LotteryNumbersIssuance {
@@ -12,6 +13,7 @@ public class LotteryNumbersIssuance {
 
     public List<Integer> issueLotteryNumbers() {
         List<Integer> LotteryNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, COUNT_LOTTERY_NUMBER_NUMBERS);
+        Collections.sort(LotteryNumbers);
         // TODO: Validation 로직 추가하기 (유틸 툴 오류날 경우 대비)
         return LotteryNumbers;
     }
