@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.domain.Lotto;
 import lotto.domain.Prize;
 
 import java.util.ArrayList;
@@ -25,5 +26,16 @@ public class UserService {
             totalPrizeMoney += PRIZE_TYPE.get(i).getPrizeMoney() * numberOfWins.get(i);
         }
         return totalPrizeMoney;
+    }
+
+    public int checkTheNumberOfWinsInOne(Lotto winningNumbers,
+                                         Lotto checkingNumbers){
+        int count = 0;
+        for (int number : checkingNumbers.getNumbers()){
+            if (winningNumbers.getNumbers().contains(number)){
+                count += 1;
+            }
+        }
+        return count;
     }
 }
