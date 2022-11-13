@@ -4,16 +4,16 @@ import java.util.List;
 
 public class WinningLotto {
     private final Lotto winningLotto;
-    private final BonusNumber bonusNumber;
+    private final Bonus bonus;
 
-    public WinningLotto(Lotto winningLotto, BonusNumber bonusNumber) {
-        validateWinningLottoContainsBonusNumber(winningLotto, bonusNumber);
+    public WinningLotto(Lotto winningLotto, Bonus bonus) {
+        validateWinningLottoContainsBonusNumber(winningLotto, bonus);
         this.winningLotto = winningLotto;
-        this.bonusNumber = bonusNumber;
+        this.bonus = bonus;
     }
 
-    private void validateWinningLottoContainsBonusNumber(Lotto winningLotto, BonusNumber bonusNumber) {
-        if (winningLotto.containsBonusNumber(bonusNumber.getNumber())) {
+    private void validateWinningLottoContainsBonusNumber(Lotto winningLotto, Bonus bonus) {
+        if (winningLotto.containsBonusNumber(bonus.getNumber())) {
             throw new IllegalArgumentException();
         }
     }
@@ -22,7 +22,7 @@ public class WinningLotto {
         return winningLotto.getNumbers();
     }
 
-    public BonusNumber getBonusNumber() {
-        return bonusNumber;
+    public int getBonusNumber() {
+        return bonus.getNumber();
     }
 }
