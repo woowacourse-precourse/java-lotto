@@ -24,6 +24,16 @@ public class Valid {
         return isNotMultiple;
     }
 
+    public static boolean hasNoNumber(String[] answer) {
+        boolean hasNoNumber = false;
+        for(String s : answer) {
+            if(isNotNumber(s)) {
+                hasNoNumber = true;
+            }
+        }
+        return hasNoNumber;
+    }
+
     public static boolean hasRepeatNumber(String[] answer) {
         boolean hasRepeatNumber = false;
         HashSet<String> answerSet = new HashSet<>(Arrays.asList(answer));
@@ -54,8 +64,8 @@ public class Valid {
 
     public static boolean checkValidAnswer(String[] enterAnswer) {
         boolean isValid = false;
-        if (hasRepeatNumber(enterAnswer) || enterNumberOverLength(enterAnswer)
-                || isOverRange(enterAnswer)) {
+        if (hasNoNumber(enterAnswer) || hasRepeatNumber(enterAnswer)
+                || enterNumberOverLength(enterAnswer) || isOverRange(enterAnswer)) {
             isValid = true;
         }
         return isValid;
@@ -89,8 +99,8 @@ public class Valid {
 
     public static boolean checkValidBonus(String bonus, String[] answer) {
         boolean isValid = false;
-        if (numberOverLength(bonus) || isRepeatWithAnswer(bonus, answer)
-                || isOverRangeValue(bonus)) {
+        if (isNotNumber(bonus) || numberOverLength(bonus)
+                || isRepeatWithAnswer(bonus, answer) || isOverRangeValue(bonus)) {
             isValid = true;
         }
         return isValid;
