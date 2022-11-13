@@ -1,5 +1,9 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class ExceptionHandling {
@@ -24,6 +28,15 @@ public class ExceptionHandling {
     public void outRangeLottoNumber(String value){
         if(!Pattern.matches(LOTTO_NUMBER_REGEX, value)){ // 로또 번호의 범위가 아니라면
             ShowErrorMessage.showOutRangeLottoNumber();
+            throw new IllegalArgumentException();
+        }
+    }
+
+    // TODO
+    public void removeDuplicateNumber(List<Integer> winNumber){
+        Set<Integer> winNumberSet = new HashSet<>(winNumber);
+        if(winNumberSet.size() != winNumber.size()){
+            ShowErrorMessage.showDuplicateLottoNumber();
             throw new IllegalArgumentException();
         }
     }
