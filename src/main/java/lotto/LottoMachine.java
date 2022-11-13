@@ -33,6 +33,10 @@ public class LottoMachine {
         return new Lotto(convertToList(winningNumbers));
     }
 
+    public Bonus publishBonus(int bonusNumber, Lotto winningLotto) {
+        return new Bonus(bonusNumber, winningLotto);
+    }
+
     private List<Integer> convertToList(String numbers) {
         List<Integer> convertedNumbers = new ArrayList<>();
 
