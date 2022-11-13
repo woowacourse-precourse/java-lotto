@@ -106,16 +106,16 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 유효한_당첨번호_중복_입력() {
-        Lotto lotto = new Lotto();
         List<Integer> num = List.of(1,2,3,4,5,6);
+        Lotto lotto = new Lotto(num);
         boolean result = lotto.isEqualNumber(num);
         assertThat(result).isEqualTo(true);
     }
 
     @Test
     void 유효하지않은_당첨번호_중복_입력() {
-        Lotto lotto = new Lotto();
         List<Integer> num = List.of(1,2,3,4,5,5);
+        Lotto lotto = new Lotto(num);
         assertThatThrownBy(() -> {
             lotto.isEqualNumber(num);
         }).isInstanceOf(IllegalArgumentException.class)
@@ -124,16 +124,16 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 유효한_당첨번호_범위_입력() {
-        Lotto lotto = new Lotto();
         List<Integer> num = List.of(1,2,3,4,5,6);
+        Lotto lotto = new Lotto(num);
         boolean result = lotto.isRangeNumber(num);
         assertThat(result).isEqualTo(true);
     }
 
     @Test
     void 유효하지않은_당첨범호_범위_입력(){
-        Lotto lotto = new Lotto();
         List<Integer> num = List.of(1,2,3,4,5,67);
+        Lotto lotto = new Lotto(num);
         assertThatThrownBy(() -> {
             lotto.isRangeNumber(num);
         }).isInstanceOf(IllegalArgumentException.class)

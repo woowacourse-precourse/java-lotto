@@ -6,15 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
+
     OutputView outputView = new OutputView();
-//    private final List<Integer> numbers;
-//
-//    public Lotto(List<Integer> numbers) {
-//        validate(numbers);
-//        this.numbers = numbers;
-//    }
 
+    private final List<Integer> numbers;
 
+    public Lotto(List<Integer> numbers) {
+        validate(numbers);
+        this.numbers = numbers;
+    }
+
+    public Lotto(String str, List<Integer> numbers) {
+         numbers = change(str);
+         checkInput(numbers);
+         this.numbers = numbers;
+
+    }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {

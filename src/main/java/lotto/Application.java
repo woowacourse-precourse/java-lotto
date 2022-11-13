@@ -7,6 +7,7 @@ import lotto.model.User;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -28,11 +29,11 @@ public class Application {
         user = new User();
         bonusNumber = new BonusNumber();
 
-        lotto = new Lotto();
         lottoNumber = new LottoNumber();
 
 
         String str = inputView.buyLotto();
+
         user.checkError(str);
         int count = user.lottoCount(str);
         outputView.lottoCountMsg(count);
@@ -41,11 +42,12 @@ public class Application {
         lottoNumber.printUserLotto(lottos);
 
         String win = inputView.winningLotto();
-        List<Integer> ar = lotto.change(win);
-        lotto.checkInput(ar);
-
+        List<Integer> numbers = new ArrayList<>();
+        lotto = new Lotto(win, numbers);
+        numbers = lotto.change(win);
+        
         String bonus = inputView.bonusNumber();
-        bonusNumber.checkBonusNumber(ar, bonus);
+        bonusNumber.checkBonusNumber(numbers, bonus);
 
 
 
