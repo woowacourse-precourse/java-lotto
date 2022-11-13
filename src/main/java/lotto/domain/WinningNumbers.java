@@ -5,7 +5,8 @@ public enum WinningNumbers {
     FOUR(4, 50000L),
     FIVE(5, 1500000L),
     FIVE_BONUS(5, 30000000L),
-    SIX(6, 2000000000L);
+    SIX(6, 2000000000L),
+    NOTHING(2,0L);
 
     private final int matches;
     private final long reward;
@@ -14,7 +15,6 @@ public enum WinningNumbers {
         this.matches = matches;
         this.reward = reward;
     }
-
 
     public static long getReward(int matches, boolean bonusCheck) {
         if (matches == 5 && bonusCheck) {

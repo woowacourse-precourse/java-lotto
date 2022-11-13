@@ -1,9 +1,6 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -49,6 +46,18 @@ public class Lotto {
         }
 
         return result;
+    }
+
+    public double calculateRewardRate(List<Integer> normalNumbers, List<Boolean> bonusNumbers, long totalMoney) {
+        double sum = 0;
+
+        for (int singleLotto = 0; singleLotto < normalNumbers.size(); singleLotto++){
+            int match = normalNumbers.get(singleLotto);
+            boolean bonus = bonusNumbers.get(singleLotto);
+            sum += WinningNumbers.getReward(match, bonus);
+        }
+
+        return sum/totalMoney;
     }
 
     private void checkNumberLength(List<Integer> numbers) throws IllegalArgumentException {
