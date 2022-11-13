@@ -1,5 +1,7 @@
 package controller;
 
+import domain.MatchingNumber;
+import util.ResultView;
 import util.WinNum;
 
 import java.util.ArrayList;
@@ -47,5 +49,18 @@ public class OutputController {
             case 6: return WinNum.Six.toString();
         }
         return WinNum.Nothing.toString();
+    }
+
+    public int winningAmount(MatchingNumber matchingNumber) {
+        int price = 0;
+        WinNum[] values = WinNum.values();
+        HashMap<String,Integer> matchingnumbers = matchingNumber.getMatchingNumber();
+
+        for(int i=0; i< values.length; i++) {
+            String money = WinNum.valueOf(values[i].toString()).label();
+            int winnumber = matchingnumbers.get(values[i].toString());
+            price += Integer.parseInt(money) * winnumber;
+        }
+        return price;
     }
 }
