@@ -14,6 +14,22 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public Lotto(String numbers) {
+        List<Integer> winningNumbers = new ArrayList<>();
+
+        for(String number: numbers.split(",")) {
+            try {
+                winningNumbers.add(Integer.parseInt(number));
+            } catch (Exception e) {
+                throw new IllegalArgumentException("숫자를 입력해야 합니다.");
+            }
+        }
+
+        winningNumbers.sort(Comparator.naturalOrder());
+        validate(winningNumbers);
+        this.numbers = winningNumbers;
+    }
+
     public void printNumbers() {
         System.out.println(this.numbers);
     }
