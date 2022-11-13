@@ -17,6 +17,6 @@
     - public boolean checkIllegalArgument
     - public int checkCoincide
     - public float checkLotteryReturn
-- Result 클래스 정의
+- ~~Result 클래스 정의~~
     - Lotto lottery
     - Integer winningCount
