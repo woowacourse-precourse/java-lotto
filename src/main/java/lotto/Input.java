@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Input {
 
     private static final int THOUSAND=1000;
+    private static final int LOTTONUMCOUNT=6;
 
     public int setMoney(){
         String inputMoney=Console.readLine();
@@ -25,15 +26,19 @@ public class Input {
 
     public String setWinningLotto(){
         String inputWinningLotto=Console.readLine();
-        checkLotto(inputWinningLotto);
         checkWinningLotto(inputWinningLotto);
+        String[] lottoNumArray=inputWinningLotto.split(",");
+        for(int index=0;index<LOTTONUMCOUNT;index++){
+            checkLotto(lottoNumArray[index]);
+        }
+
         return inputWinningLotto;
     }
 
     public int setBonusNumber(){
         String inputBonusNumber=Console.readLine();
         checkLotto(inputBonusNumber);
-        int bonusNumber=Integer.parseInt(inputBonusNumber)
+        int bonusNumber=Integer.parseInt(inputBonusNumber);
         return bonusNumber;
     }
 
