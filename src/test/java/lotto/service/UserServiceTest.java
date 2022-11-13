@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class InputServiceTest {
+public class UserServiceTest {
     UserService userService = new UserService();
 
     @Nested
@@ -72,7 +72,8 @@ public class InputServiceTest {
         Stream<Arguments> data() {
             return Stream.of(
                     Arguments.of("1,2,3,4,5,6", List.of(1, 2, 3, 4, 5, 6)),
-                    Arguments.of("1, 2, 3, 4, 5, 6", List.of(1, 2, 3, 4, 5, 6))
+                    Arguments.of("1, 2, 3, 4, 5, 6", List.of(1, 2, 3, 4, 5, 6)),
+                    Arguments.of("1, 3, 2, 5, 4, 6", List.of(1, 2, 3, 4, 5, 6))
             );
         }
     }

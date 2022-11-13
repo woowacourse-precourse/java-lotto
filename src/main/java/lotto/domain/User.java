@@ -5,6 +5,7 @@ import java.util.List;
 public class User {
     private final int money;
     private List<Integer> numbers;
+    private int bonusNumber;
 
     public User(int money) {
         this.money = money;
@@ -22,7 +23,11 @@ public class User {
         this.numbers = numbers;
     }
 
-    public void addNumber(Integer number) {
-        this.numbers.add(number);
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 }

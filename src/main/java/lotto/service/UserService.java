@@ -24,7 +24,10 @@ public class UserService {
     }
 
     public void setNumbersToUser(String inputNumbers) {
-        user.setNumbers(inputNumbersToList(inputNumbers));
+        user.setNumbers(inputNumbersToList(inputNumbers)
+                .stream()
+                .sorted()
+                .collect(Collectors.toList()));
     }
 
     public List<Integer> inputNumbersToList(String inputNumbers) {
@@ -48,7 +51,7 @@ public class UserService {
         inputException.notDigitException(inputBonusNumber);
         // 1 ~ 45 확인후 아니면 예외처리
         // 중복 숫자가 있으면 예외처리
-        user.addNumber(Integer.parseInt(inputBonusNumber));
+        user.setBonusNumber(Integer.parseInt(inputBonusNumber));
     }
 
 
