@@ -19,4 +19,8 @@ public class WinningLotto {
     public Lotto getWinningLotto() {
         return winningLotto;
     }
+
+    public BonusNumber getBonusNumber() {
+        return bonusNumber;
+    }
 }
