@@ -8,7 +8,10 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
+
+
     public Lotto(List<Integer> numbers) {
+        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         validate(numbers);
         this.numbers = numbers;
     }
@@ -18,5 +21,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+
     // TODO: 추가 기능 구현
 }
