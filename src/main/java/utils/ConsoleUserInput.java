@@ -40,17 +40,14 @@ public class ConsoleUserInput {
         return sixWinningNumbers;
     }
 
-    public int inputBonusNumber(String bonusNumber){
-        int bonus;
+    public int inputBonusNumber(){
+        String bonusNumber = Console.readLine();
         if(bonusNumber.length()>2){
             Validator.isValidLength(bonusNumber,2);
         }
         Validator.isValidInput(bonusNumber);
-        if(bonusNumber.length()==2) {
-            bonus = Integer.parseInt(bonusNumber);
-        }
         Validator.isInValidRange(Integer.parseInt(bonusNumber));
-        bonus = Integer.parseInt(bonusNumber);
+        int bonus = Integer.parseInt(bonusNumber);
         return bonus;
     }
 
