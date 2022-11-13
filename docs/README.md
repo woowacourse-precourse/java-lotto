@@ -1,26 +1,26 @@
-- [ ] 구입 금액 입력 받기
-  - [ ] 로또를 몇개 구입했는지 알 수 있다.
-  - [ ] e) 자연수 숫자가 아닌 경우 IllegalArgumentException을 발생시킨다. 
-  - [ ] e) 금액이 1000원으로 나누어 떠러지지 않는 경우 IllegalArgumentException을 발생시킨다.
+- [x] 구입 금액 입력 받기
+  - [x] 로또를 몇개 구입했는지 알 수 있다.
+  - [x] e) 자연수 숫자가 아닌 경우 IllegalArgumentException을 발생시킨다. 
+  - [x] e) 금액이 1000원으로 나누어 떨어지지 않는 경우 IllegalArgumentException을 발생시킨다.
 ---
-- [ ] 구입한 로또 개수대로 로또 번호를 생성
-  - [ ] 각 로또의 6개의 숫자는 중복되면 안된다.
-  - [ ] 각 번호의 범위는 1~45사이의 자연수이다.
-  - [ ] 각 로또의 번호를 오름차순으로 정렬하여 출력한다.
+- [x] 구입한 로또 개수대로 로또 번호를 생성
+  - [x] 각 로또의 6개의 숫자는 중복되면 안된다.
+  - [x] 각 번호의 범위는 1~45사이의 자연수이다.
+  - [x] 각 로또의 번호를 오름차순으로 정렬하여 출력한다.
 ---
-- [ ] 당첨 번호 입력받기
-  - [ ] 6개의 수를 입력받는다.
-  - [ ] e) 숫자 6개가 아닐 경우 IllegalArgumentException을 발생시킨다.
-  - [ ] e) 서로 다른 수가 아닐 경우 IllegalArgumentException을 발생시킨다.
-  - [ ] e) 각 번호가 1~45 사이의 자연수가 아닐 경우 IllegalArgumentException을 발생시킨다.
+- [x] 당첨 번호 입력받기
+  - [x] 6개의 수를 입력받는다.
+  - [x] e) 숫자 6개가 아닐 경우 IllegalArgumentException을 발생시킨다.
+  - [x] e) 서로 다른 수가 아닐 경우 IllegalArgumentException을 발생시킨다.
+  - [x] e) 각 번호가 1~45 사이의 자연수가 아닐 경우 IllegalArgumentException을 발생시킨다.
 ---
-- [ ] 보너스 번호 입력받기
-  - [ ] 1개의 수를 입력받는다.
-  - [ ] e) 숫자 1개가 아닐 경우 IllegalArgumentException을 발생시킨다.
-  - [ ] e) 당첨 번호와 다른 수가 아닐 경우 IllegalArgumentException을 발생시킨다.
-  - [ ] e) 1~45 사이의 자연수가 아닐 경우 IllegalArgumentException을 발생시킨다.
+- [x] 보너스 번호 입력받기
+  - [x] 1개의 수를 입력받는다.
+  - [x] e) 당첨 번호와 다른 수가 아닐 경우 IllegalArgumentException을 발생시킨다.
+  - [x] e) 1~45 사이의 자연수가 아닐 경우 IllegalArgumentException을 발생시킨다.
 ---
 - [ ] 당첨 번호와 일치하는 개수를 알 수 있다.
+  - [ ] 보너스 번호와 일치하는 것이 있는지 알 수 있다.
   - [ ] 당첨 개수를 다음과 같은 형식으로 출력한다.
   ```
     3개 일치 (5,000원) - a개
