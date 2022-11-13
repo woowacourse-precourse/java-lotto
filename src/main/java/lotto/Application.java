@@ -1,9 +1,6 @@
 package lotto;
 
-import lotto.model.BonusNumber;
-import lotto.model.Lotto;
-import lotto.model.LottoNumber;
-import lotto.model.User;
+import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -16,7 +13,6 @@ public class Application {
     private static User user;
     private static OutputView outputView;
     private static Lotto lotto;
-    //private static List<Integer> numbers;
     private static BonusNumber bonusNumber;
     private static LottoNumber lottoNumber;
 
@@ -30,7 +26,9 @@ public class Application {
         bonusNumber = new BonusNumber();
 
         lottoNumber = new LottoNumber();
+        WinDetail winDetail = WinDetail.findRankBy(5,true);
 
+        System.out.println(winDetail);
 
         String str = inputView.buyLotto();
 
@@ -48,6 +46,8 @@ public class Application {
         
         String bonus = inputView.bonusNumber();
         bonusNumber.checkBonusNumber(numbers, bonus);
+
+
 
 
 
