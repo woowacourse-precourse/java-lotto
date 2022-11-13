@@ -47,7 +47,7 @@ class WinningLottoTest {
 
     @DisplayName("로또 번호와 당첨 번호를 비교하여 1등 당첨 내용을 반환한다.")
     @Test
-    void compare1() {
+    void compareWithFirstPlaceLotto() {
         WinningLotto winningLotto = new WinningLotto(List.of(1,2,3,4,5,6), 7);
         Lotto playerLotto = new Lotto(List.of(1,2,3,4,5,6));
 
@@ -58,7 +58,7 @@ class WinningLottoTest {
 
     @DisplayName("로또 번호와 당첨 번호를 비교하여 2등 당첨 내용을 반환한다.")
     @Test
-    void compare2() {
+    void compareWithSecondPlaceLotto() {
         WinningLotto winningLotto = new WinningLotto(List.of(1,2,3,4,5,6), 7);
         Lotto playerLotto = new Lotto(List.of(1,2,3,4,5,7));
 

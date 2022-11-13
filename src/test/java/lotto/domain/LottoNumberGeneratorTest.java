@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LottoNumberGeneratorTest {
     @DisplayName("LottoNumberGenerator가 1~45 범위의 중복되지 않은 숫자 6개를 생성하는지 검증")
     @Test
-    void generate() {
+    void generateNumbers() {
         List<Integer> result = LottoNumberGenerator.generate();
 
         for (int number : result) {
