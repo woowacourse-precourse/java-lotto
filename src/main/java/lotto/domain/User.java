@@ -7,6 +7,6 @@ import lotto.io.OutputControl;
 public class User {
 
     public PurchaseAmount inputPurchaseAmount() {
-        return new PurchaseAmount(InputControl.readLong());
+        return new PurchaseAmount(InputControl.readInt());
     }
 }

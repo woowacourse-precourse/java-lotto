@@ -13,8 +13,8 @@ class PurchaseAmountTest {
 
     @Test
     void 유효성_예외_검증() {
-        long missUnitVal = 1001L;
-        long overSizeVal = 228713284900000L;
+        int missUnitVal = 1001;
+        int overSizeVal = -1000;
 
         assertThatThrownBy(() -> new PurchaseAmount(missUnitVal)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new PurchaseAmount(overSizeVal)).isInstanceOf(IllegalArgumentException.class);
@@ -22,10 +22,10 @@ class PurchaseAmountTest {
 
     @ParameterizedTest
     @CsvSource({"0, 0","1000, 1", "123000, 123"})
-    void 수량_확인(long inputAmount, long expected) {
+    void 수량_확인(int inputAmount, int expected) {
         PurchaseAmount purchaseAmount = new PurchaseAmount(inputAmount);
 
-        long actual = purchaseAmount.quantity();
+        int actual = purchaseAmount.quantity();
 
         assertThat(actual).isEqualTo(expected);
     }
