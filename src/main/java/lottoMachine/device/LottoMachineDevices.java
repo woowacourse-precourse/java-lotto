@@ -1,5 +1,9 @@
 package lottoMachine.device;
 
+import static lottoMachine.enums.Format.DECIMAL_FORMAT;
+import static lottoMachine.enums.Format.DECIMAL_PRINT_FORMAT;
+import static lottoMachine.enums.Format.NUMBER_FORMAT;
+import static lottoMachine.enums.Format.WINNING_NUMBER_FORMAT;
 import static lottoMachine.enums.Messages.BONUS_NUMBER_COUNT_ERROR_MESSAGE;
 import static lottoMachine.enums.Messages.BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE;
 import static lottoMachine.enums.Messages.ERROR_MESSAGE_PREFIX;
@@ -15,8 +19,6 @@ import static lottoMachine.enums.Messages.WINNING_STATISTICS_MESSAGE;
 import static lottoMachine.enums.Numbers.LOTTO_NUMBER_END;
 import static lottoMachine.enums.Numbers.LOTTO_NUMBER_START;
 import static lottoMachine.enums.Numbers.WINNING_NUMBER_SIZE;
-import static lottoMachine.enums.Regex.NUMBER_REGEX;
-import static lottoMachine.enums.Regex.WINNING_NUMBER_REGEX;
 import static lottoMachine.enums.Separator.WINNING_NUMBER_SEPARATOR;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -96,9 +98,9 @@ public class LottoMachineDevices implements LottoMachineOutputDevice, LottoMachi
     @Override
     public void printReturnOfRate(long totalWinningMoney, int purchaseMoney) {
         double number = (double) totalWinningMoney / purchaseMoney;
-        String format = String.format("%.1f", number * 100);
+        String format = String.format(DECIMAL_FORMAT.toString(), number * 100);
 
-        DecimalFormat decimalFormat = new DecimalFormat("#,###.0");
+        DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_PRINT_FORMAT.toString());
         String rate = decimalFormat.format(Double.valueOf(format));
         String rateOfReturnMessage = MessageFormat.format(RATE_OF_RETURN_MESSAGE.toString(), rate);
         System.out.println(rateOfReturnMessage);
@@ -139,7 +141,7 @@ public class LottoMachineDevices implements LottoMachineOutputDevice, LottoMachi
     }
 
     private boolean isValidateBonusNumberFormat(String bonusNumber) {
-        return Pattern.matches(NUMBER_REGEX.toString(), bonusNumber);
+        return Pattern.matches(NUMBER_FORMAT.toString(), bonusNumber);
     }
 
     private void setWinningNumbers(String winningNumber) {
@@ -165,7 +167,7 @@ public class LottoMachineDevices implements LottoMachineOutputDevice, LottoMachi
     }
 
     private boolean isValidateWinningNumberFormat(String winningNumber) {
-        return Pattern.matches(WINNING_NUMBER_REGEX.toString(), winningNumber);
+        return Pattern.matches(WINNING_NUMBER_FORMAT.toString(), winningNumber);
     }
 
     private boolean containDuplicatedNumber(String winningNumber) {

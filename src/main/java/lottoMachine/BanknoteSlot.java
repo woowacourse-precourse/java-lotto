@@ -6,7 +6,7 @@ import static lottoMachine.enums.Messages.PRICE_RANGE_ERROR_MESSAGE;
 import static lottoMachine.enums.Numbers.LOTTO_PRICE;
 import static lottoMachine.enums.Numbers.LOTTO_PRICE_MAX;
 import static lottoMachine.enums.Numbers.LOTTO_PRICE_MIN;
-import static lottoMachine.enums.Regex.NUMBER_REGEX;
+import static lottoMachine.enums.Format.NUMBER_FORMAT;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
@@ -42,7 +42,7 @@ public class BanknoteSlot {
     }
 
     private boolean isValidateRegex(String money) {
-        return (Pattern.matches(NUMBER_REGEX.toString(), money));
+        return (Pattern.matches(NUMBER_FORMAT.toString(), money));
     }
 
     private boolean isValidateUnit(String money) {

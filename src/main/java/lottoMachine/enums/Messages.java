@@ -3,9 +3,9 @@ package lottoMachine.enums;
 public enum Messages {
     RECEIVE_PRICE_MESSAGE("구입 금액을 입력해 주세요."),
     RECEIVE_WINNING_NUMBER_MESSAGE("\n당첨 번호를 입력해 주세요."),
-    RECEIVE_BONUS_NUMBER_MESSAGE("보너스 번호를 입력해 주세요."),
+    RECEIVE_BONUS_NUMBER_MESSAGE("\n보너스 번호를 입력해 주세요."),
     RESULT_OF_PURCHASE_MESSAGE("\n{0}개를 구매했습니다."),
-    WINNING_STATISTICS_MESSAGE("당첨 통계\n"
+    WINNING_STATISTICS_MESSAGE("\n당첨 통계\n"
             + "---\n"
             + "3개 일치 (5,000원) - {4}개\n"
             + "4개 일치 (50,000원) - {3}개\n"
