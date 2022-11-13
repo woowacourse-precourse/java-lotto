@@ -7,7 +7,7 @@ import service.BonusService;
 import java.util.regex.Pattern;
 
 public class BonusController {
-    private static final String FORMAT = "^[0-9]$";
+    private static final String FORMAT = "^[0-9]*$";
     private final BonusService bonusService = new BonusService();
 
     public Bonus createBonusNumber(String bonusNumber, Lotto lotto) {
