@@ -29,7 +29,7 @@ public class LottoIOHandler extends IOHandler{
     // 4[0-6]or[1-3][0-9]or[0-9]가 5번 반복 이후 4[0-6]or[1-3][0-9]or[0-9] 오는지 확인
     @Override
     public String validateInput(String input) {
-        Pattern pass = Pattern.compile("^(?:4[0-6][,]|[1-3][0-9][,]|[1-9][,]){5}(?:[4][0-6]|[1-3][0-9]|[1-9])$");
+        Pattern pass = Pattern.compile("^(?:4[0-5][,]|[1-3][0-9][,]|[1-9][,]){5}(?:[4][0-6]|[1-3][0-9]|[1-9])$");
         Matcher matcher = pass.matcher(input);
         if (!matcher.find()) {
             throw new IllegalArgumentException("[ERROR] \',\' 구분자를 통해 1~45사이의 수 6개를 입력해주세요");

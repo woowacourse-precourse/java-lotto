@@ -11,7 +11,7 @@ public class BonusIOHandler extends IOHandler{
 
     @Override
     public String validateInput(String input) {
-        Pattern pass = Pattern.compile("^[4][0-6]|[1-3][0-9]|[1-9]$");
+        Pattern pass = Pattern.compile("^([4][0-5]|[1-3][0-9]|[1-9])$");
         Matcher matcher = pass.matcher(input);
         if (!matcher.find()) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호 또한 1~45 사이로 입력해주세요");
