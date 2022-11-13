@@ -1,10 +1,15 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) {
+        List<Lotto> lottoList;
+
         try {
+            lottoList = buyLotteries(getLottoBuyCount());
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
@@ -30,5 +35,14 @@ public class Application {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
         return new Lotto(numbers);
+    }
+
+    private static List<Lotto> buyLotteries(Integer count) {
+        List<Lotto> lottoList = new ArrayList<>();
+
+        for (int num = 0;num < count;num++)
+            lottoList.add(buyLotto());
+
+        return lottoList;
     }
 }
