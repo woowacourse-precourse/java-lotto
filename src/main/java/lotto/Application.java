@@ -4,22 +4,22 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Application {
 
     public static void main(String[] args) {
         int money = getMoneyInput();
-        int lottoTicketNum = calculateHowManyTicketUserCanBuy(money);
-        List<Lotto> lottoList = new ArrayList<>();
-        for (int i = 0; i < lottoTicketNum; i++) {
-            lottoList.add(new Lotto(pickLottoNumbersByRandom()));
-        }
-        List<WinningStatistic> statistics = new ArrayList<>();
-//        for (int i = 0; i < lottoTicketNum; i++) {
-//            statistics.add(LottoMarker.produceWinningStatistic())
-//        }
+        int lottoTicketNumber = calculateHowManyTicketUserCanBuy(money);
+        List<Lotto> lottoList = buyManyLotto(lottoTicketNumber);
+        LottoWinNumber lottoWinNumber = new LottoWinNumber(getLottoNumbersInput(),
+            getBonusNumberInput());
+        Map<LottoResult, Integer> statistics = compileStatistics(lottoList, lottoWinNumber);
+        double rateOfReturn = calculateRateOfReturn(statistics,lottoTicketNumber);
+        printStatistics(statistics,rateOfReturn);
     }
 
     private static int getMoneyInput() {
@@ -39,7 +39,19 @@ public class Application {
     }
 
     private static int calculateHowManyTicketUserCanBuy(int money) {
-        return money / LottoWinNo.price;
+        return money / LottoWinNumber.price;
+    }
+
+    private static List<Lotto> buyManyLotto(int lottoTicketNumber) {
+        List<Lotto> lottoList = new ArrayList<>();
+        for (int i = 0; i < lottoTicketNumber; i++) {
+            lottoList.add(buyLotto());
+        }
+        return lottoList;
+    }
+
+    private static Lotto buyLotto() {
+        return new Lotto(pickLottoNumbersByRandom());
     }
 
     private static List<Integer> pickLottoNumbersByRandom() {
@@ -51,9 +63,55 @@ public class Application {
         try {
             return Arrays.stream(oneLine.split(",")).map(Integer::parseInt)
                 .collect(Collectors.toList());
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static int getBonusNumberInput() {
+        return getIntegerInput();
+    }
+
+    private static Map<LottoResult, Integer> compileStatistics(List<Lotto> lottoList,
+        LottoWinNumber answer) {
+        Map<LottoResult, Integer> statistics = prepareStatistics();
+        for (Lotto lotto : lottoList) {
+            LottoResult key = LottoMarker.produceWinningStatistic(answer, lotto);
+            statistics.put(key, statistics.get(key) + 1);
+        }
+        return statistics;
+    }
+
+    private static double calculateRateOfReturn(Map<LottoResult, Integer> statistics,
+        int lottoTicketNumber) {
+        int cashPrizeSum = 0;
+        for (Map.Entry<LottoResult, Integer> entry : statistics.entrySet()) {
+            cashPrizeSum += entry.getKey().getCashPrize() * entry.getValue();
+        }
+        return Math.round(cashPrizeSum * 10 / (double) lottoTicketNumber) / 10.0;
+    }
+
+    private static Map<LottoResult, Integer> prepareStatistics() {
+        Map<LottoResult, Integer> statistics = new HashMap<>();
+        for (LottoResult lottoResult : LottoResult.values()) {
+            statistics.put(lottoResult, 0);
+        }
+        return statistics;
+    }
+
+
+    private static void printStatistics(Map<LottoResult, Integer> statistics, double rateOfReturn) {
+        System.out.printf("당첨 통계\n"
+                + "---\n"
+                + "3개 일치 (5,000원) - %d개\n"
+                + "4개 일치 (50,000원) - %d개\n"
+                + "5개 일치 (1,500,000원) - %d개\n"
+                + "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n"
+                + "6개 일치 (2,000,000,000원) - %d개\n"
+                + "총 수익률은 %.01f%%입니다.\n", statistics.get(LottoResult.RANK_FIVE),
+            statistics.get(LottoResult.RANK_FOUR), statistics.get(LottoResult.RANK_THREE),
+            statistics.get(LottoResult.RANK_TWO), statistics.get(LottoResult.RANK_ONE), rateOfReturn
+        );
     }
 
 }
