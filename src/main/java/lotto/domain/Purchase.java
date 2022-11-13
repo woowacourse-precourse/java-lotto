@@ -48,8 +48,18 @@ public class Purchase {
         }
     }
 
+    /**
+     * 당첨 번호를 입력받는 메서드
+     */
     private static void inputNumbers() {
         printInputWinningNumber();
         winningNumber = new WinningNumber(inputWinningNumbers());
+    }
+
+    /**
+     * 보너스 번호를 입력받는 메서드
+     */
+    private static void inputBonusNumber() {
+        printInputBonusNumber();
     }
 }
