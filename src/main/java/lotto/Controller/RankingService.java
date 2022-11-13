@@ -32,4 +32,9 @@ public class RankingService {
         this.rank.setEarningRate(player.getMoney());
     }
 
+    public void printResult() {
+        OutputView.printWinningStatistics();
+        OutputView.printRanking(rank.getRank());
+        OutputView.printEarningRate(rank.getEarningRate());
+    }
 }
