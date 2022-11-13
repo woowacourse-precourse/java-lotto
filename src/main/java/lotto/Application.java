@@ -2,9 +2,11 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.Output;
+import lotto.domain.Ranking;
 import lotto.domain.UserInputScanner;
 
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     static UserInputScanner userScanner = new UserInputScanner();
@@ -20,5 +22,6 @@ public class Application {
         List<Integer> winningLottoNumbers = userScanner.askWinningLottoNumber();
         if (winningLottoNumbers == ERROR) return;
 
+        Map<Ranking,Integer> rankResult = Lotto.compareLottosWithLottoNumbers(lottos, winningLottoNumbers);
     }
 }
