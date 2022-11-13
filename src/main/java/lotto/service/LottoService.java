@@ -6,10 +6,13 @@ import lotto.ui.Input;
 import lotto.ui.Output;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class LottoService {
     List<Lotto> history;
+    Lotto win;
     Output output;
     Input input;
     Issue issue;
@@ -36,9 +39,18 @@ public class LottoService {
 
     //당첨 번호 안내 문구 출력
     //당첨 번호 입력
+    public void createWinNum(){
+        output.winningNum();
+        Integer[] numbers = Stream.of(input.winningNum()
+                .split(","))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .toArray(Integer[]::new);
+        win = new Lotto(Arrays.asList(numbers));
+    }
 
     //보너스 번호 안내 문구 출력
     //보너스 번호 입력
-
+    
     //당첨통계 출력
 }
