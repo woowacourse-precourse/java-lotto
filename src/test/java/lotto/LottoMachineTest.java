@@ -1,26 +1,24 @@
 package lotto;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.List;
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-public class LottoMachineTest {
-
-    private static final LottoMachine lottoMachine = new LottoMachine();
+public class LottoMachineTest extends NsTest {
 
     @Test
     void 입력받은_금액만큼_로또를_생성합니다() {
-        String testInput = "8000";
-        InputStream in = new ByteArrayInputStream(testInput.getBytes());
-        System.setIn(in);
+        assertSimpleTest(() -> {
+            run("8000");
+        });
 
-        lottoMachine.receiveMoney();
-        lottoMachine.createLottoTickets();
-        List<Lotto> lottoTickets = lottoMachine.getLottoTickets();
-
-        Assertions.assertThat(lottoTickets.size()).isEqualTo(8);
+        assertThat(output()).contains("8개를 구매했습니다.");
     }
 
+    @Override
+    protected void runMain() {
+        Application.main(new String[]{});
+    }
 }
