@@ -4,7 +4,6 @@ import constants.LottoConstant;
 import models.BoughtLottos;
 import system.process.exception.IllegalArgument;
 import utils.Input;
-import utils.IsCollection;
 
 public class Buying {
 
@@ -27,18 +26,25 @@ public class Buying {
             IllegalArgument.handleException(IllegalArgument.NOT_DIGIT_TEXT.getMessage());
         }
 
+        if(amountPaidInput.length() > LottoConstant.MAX_LOTTO_PRICE_LENGTH){
+            IllegalArgument.handleException(IllegalArgument.OUT_OF_AMOUNT_PAID.getMessage());
+        }
+
         return amountPaidInput;
     }
 
     int calculateAvailableAmount(String amountPaidInput) {
         int amountPaid = Integer.parseInt(amountPaidInput);
 
-        if (amountPaid % LottoConstant.LOTTO_PRICE == 0) {
-            return amountPaid / LottoConstant.LOTTO_PRICE;
+        if(amountPaid > LottoConstant.MAX_LOTTO_PRICE){
+            IllegalArgument.handleException(IllegalArgument.OUT_OF_AMOUNT_PAID.getMessage());
         }
 
-        IllegalArgument.handleException(IllegalArgument.NOT_DIVISION.getMessage());
-        return -1;
+        if (amountPaid % LottoConstant.LOTTO_PRICE != 0) {
+            IllegalArgument.handleException(IllegalArgument.NOT_DIVISION.getMessage());
+
+        }
+        return amountPaid / LottoConstant.LOTTO_PRICE;
     }
 
     public BoughtLottos getBoughtLottos() {

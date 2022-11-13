@@ -21,7 +21,14 @@ public class WinningLottoRegister {
 
     private String inputSixLottoNumbers() {
         printInputNumbers();
-        return Input.input();
+
+        String inputNumbers = Input.input();
+
+        if(inputNumbers.length() > LottoConstant.MAX_WINNING_LOTTO_NUMBERS_LENGTH){
+            IllegalArgument.handleException(IllegalArgument.OUT_OF_NUMBERS_LENGTH.getMessage());
+        }
+
+        return inputNumbers;
     }
 
     private List<Integer> changeLottoNumbersInputToIntegers(String numbersInput) {
@@ -65,7 +72,14 @@ public class WinningLottoRegister {
 
     private String inputBonusNumber() {
         printInputBonusNumberText();
-        return Input.input();
+
+        String inputNumber = Input.input();
+
+        if(inputNumber.length() > LottoConstant.MAX_WINNING_LOTTO_BONUS_NUMBERS_LENGTH){
+            IllegalArgument.handleException(IllegalArgument.OUT_OF_BONUS_NUMBER_LENGTH.getMessage());
+        }
+
+        return inputNumber;
     }
 
     private int changeBonusNumberInputToInteger(String numberInput) {
