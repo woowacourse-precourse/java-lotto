@@ -139,7 +139,14 @@ public class Application {
         return bonusNumber;
     }
 
+    private static void initWinningHistory() {
+        for (WinningPlace value : WinningPlace.values()) {
+            winningHistory.put(value, 0);
+        }
+    }
+
     public static void saveWinningPlaceByTicket(List<Integer> winnerNumber, List<List<Integer>> lottoTickets, int bonusNumber) throws Exception {
+        initWinningHistory();
         for (List<Integer> lottoTicket : lottoTickets) {
             WinningPlace winningPlace = Lotto.countCorrespondingNumbers(winnerNumber, lottoTicket, bonusNumber);
             addToHistory(winningPlace);
@@ -147,10 +154,6 @@ public class Application {
     }
 
     private static void addToHistory(WinningPlace winningPlace) {
-        if (!winningHistory.containsKey(winningPlace)) {
-            winningHistory.put(winningPlace, 0);
-        }
-
         Integer prevHistory = winningHistory.get(winningPlace);
         winningHistory.put(winningPlace, prevHistory + 1);
     }
