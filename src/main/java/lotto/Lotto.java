@@ -34,7 +34,6 @@ public class Lotto {
     }
 
     public void compareLotto(List<Integer> lotteries, int bonus) {
-        long income = 0;
         long count = 0;
         boolean isBonus = numbers.contains(bonus);
         for (int number : lotteries) {
