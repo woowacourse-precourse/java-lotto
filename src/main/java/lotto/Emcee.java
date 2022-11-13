@@ -69,4 +69,14 @@ public class Emcee {
     private void showYield() {
 
     }
+
+    private double calculateYield(Map<Rank, Integer> tallyOfRanks, int payment) {
+        double totalProfit = tallyOfRanks.get(FIRST_SIX_MATCHED) * prize.get(FIRST_SIX_MATCHED)
+                + tallyOfRanks.get(SECOND_FIVE_WITH_BONUS) * prize.get(SECOND_FIVE_WITH_BONUS)
+                + tallyOfRanks.get(THIRD_FIVE_MATCHED) * prize.get(THIRD_FIVE_MATCHED)
+                + tallyOfRanks.get(FOURTH_FOUR_MATCHED) * prize.get(FOURTH_FOUR_MATCHED)
+                + tallyOfRanks.get(FIFTH_THREE_MATCHED) * prize.get(FIFTH_THREE_MATCHED);
+        totalProfit /= payment * 100;
+        return Math.round(totalProfit * 10) / 10.0;
+    }
 }
