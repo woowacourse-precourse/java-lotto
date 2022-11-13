@@ -13,12 +13,8 @@ public class Application {
             Lotto.enterPriceOfLotto();
             Lotto.createRandomNumbers();
             Lotto.printPurchasedLotto();
-            // 로또 당첨 번호 입력
-            System.out.println("당첨 번호를 입력해 주세요.");
-            String[] s = Console.readLine().split(",");
-            for (int i = 0; i < 6; i++) {
-                numbers.add(Integer.valueOf(s[i]));
-            }
+
+            inputNumbers(numbers);                              // 로또 당첨 번호 입력
             Lotto mylotto = new Lotto(numbers);
             mylotto.enterBonusNumber();
             mylotto.calculatePrize();
@@ -26,5 +22,21 @@ public class Application {
             mylotto.calculateRateOfEarning();
             mylotto.printRateOfEarning();
         } catch (IllegalArgumentException e){}
+    }
+
+    private static void inputNumbers(List<Integer> numbers) {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String[] s = Console.readLine().split(",");
+        determineNumbers(numbers, s);
+    }
+
+    private static void determineNumbers(List<Integer> numbers, String[] s) {
+        if (s.length!=6) {
+            System.out.println("[ERROR] 6개의 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < 6; i++) {
+            numbers.add(Integer.valueOf(s[i]));
+        }
     }
 }
