@@ -47,6 +47,18 @@ class UserInteractionTest {
     void tryParseIntegers_test(){
         String testInput="1,2, 3, 4,5,6";
         List<Integer> result = testUserInteraction.tryParseIntegers(testInput);
-        assertThat(result).isEqualTo(List.of(1,2,3,4,5,46));
+        assertThat(result).isEqualTo(List.of(1,2,3,4,5,6));
+    }
+    @DisplayName("(checkNumbers) 중복 없이 6개의 숫자가 아닌경우 에러 확인")
+    @Test
+    void checkNumbers_exception_test_1(){
+        assertThatThrownBy(() -> testUserInteraction.checkNumbers(List.of(1,1,1,4,5,6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("(checkNumbers) 1~45 사이를 벗어나는 숫자를 입력으로 받은 경우 에러 확인")
+    @Test
+    void checkNumbers_exception_test_2(){
+        assertThatThrownBy(() -> testUserInteraction.checkNumbers(List.of(-1,1,1,4,5,46)))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
