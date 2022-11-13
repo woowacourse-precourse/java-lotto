@@ -1,7 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.domain.LottoNumberGenerator;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -17,21 +17,19 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 로또_번호_만드는_메서드의_리턴_길이_확인() {
-        LottoNumberGenerator lottoNumberGen = new LottoNumberGenerator();
         int lottoNumCount = 6;
 
-        assertThat(lottoNumberGen.createSortedLottoNumbers(lottoNumCount).size()).isEqualTo(lottoNumCount);
+        assertThat(Lotto.createSortedLottoNumbers(lottoNumCount).size()).isEqualTo(lottoNumCount);
     }
 
     @ParameterizedTest
     @CsvSource({"0,1","1,2","2,3","3,4","4,5"})
     void 로또_번호가_오름차순_정렬이_맞는지_확인(int smallIdx, int bigIdx) {
-        LottoNumberGenerator lottoNumberGen = new LottoNumberGenerator();
         int lottoNumCount = 6;
 
-        List<Integer> lottoList = lottoNumberGen.createSortedLottoNumbers(lottoNumCount);
+        List<Integer> lottos = Lotto.createSortedLottoNumbers(lottoNumCount);
 
-        assertThat(lottoList.get(smallIdx) < lottoList.get(bigIdx)).isEqualTo(true);
+        assertThat(lottos.get(smallIdx) < lottos.get(bigIdx)).isEqualTo(true);
     }
 
     @ParameterizedTest
