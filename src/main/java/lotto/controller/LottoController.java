@@ -16,12 +16,15 @@ public class LottoController {
     }
 
     public void run() {
-        int purchaseAmount = buyLottery();
-        determineWinningNumbers();
-
-        lottoService.calculateRank();
-        outputView.printWinningHistory();
-        outputView.printProfitRatio(purchaseAmount);
+        try {
+            int purchaseAmount = buyLottery();
+            determineWinningNumbers();
+            lottoService.calculateRank();
+            outputView.printWinningHistory();
+            outputView.printProfitRatio(purchaseAmount);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
     private void determineWinningNumbers() {
