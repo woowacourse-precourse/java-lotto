@@ -1,5 +1,5 @@
 package lotto.view;
 
 public interface View {
-  void print(String message);
+  void print(String output);
 }
