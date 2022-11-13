@@ -113,7 +113,7 @@ public class Input {
     }
 
     private static boolean isValidBonusNumber(String number, List<Integer> winningNumbers) {
-        return isNumeric(number) && isValidRange(number) && duplicatedWithWinningNumber(number, winningNumbers);
+        return isNumeric(number) && isValidRange(number) && !duplicatedWithWinningNumber(number, winningNumbers);
     }
 
     /**
