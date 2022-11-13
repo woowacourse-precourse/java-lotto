@@ -23,6 +23,14 @@ public class LottoFactory {
         return new Lotto(lottoNumbers);
     }
 
+    private List<Integer> createLottoNumbers() {
+        return Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBER_COUNT);
+    }
+
+    private void sortInAscending(List<Integer> numbers) {
+        Collections.sort(numbers);
+    }
+
     public List<Lotto> createLottos(int quantity) {
         List<Lotto> lottos = new ArrayList<>();
 
@@ -31,13 +39,5 @@ public class LottoFactory {
             lottos.add(lotto);
         }
         return lottos;
-    }
-
-    private List<Integer> createLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBER_COUNT);
-    }
-
-    private void sortInAscending(List<Integer> numbers) {
-        Collections.sort(numbers);
     }
 }
