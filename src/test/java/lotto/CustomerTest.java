@@ -107,4 +107,19 @@ public class CustomerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(WRONG_INPUT.toString());
     }
+
+    @DisplayName("사용자가 기존 로또 번호와 보너스 번호를 중복으로 입력")
+    @Test
+    void customerEntersDuplicateBonusNumber() {
+        // given
+        Customer customer = new Customer();
+
+        // when
+        customer.inputWinningNumber("1,2,3,4,5,6");
+
+        // then
+        assertThatThrownBy(() -> customer.inputBonusNumber("6"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DUPLICATE.toString());
+    }
 }
