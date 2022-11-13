@@ -3,8 +3,11 @@ package lotto.game;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
-import lotto.Lotto;
-import lotto.WinningLotto;
+import lotto.game.domain.Lotto;
+import lotto.game.domain.LottoGrade;
+import lotto.game.domain.Money;
+import lotto.game.domain.WinningLotto;
+import lotto.game.service.LottoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

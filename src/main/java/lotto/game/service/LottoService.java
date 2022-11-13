@@ -1,12 +1,14 @@
-package lotto.game;
+package lotto.game.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import lotto.Lotto;
-import lotto.WinningLotto;
+import lotto.game.domain.Lotto;
+import lotto.game.domain.LottoGrade;
+import lotto.game.domain.Money;
+import lotto.game.domain.WinningLotto;
 
 public class LottoService {
     public List<Lotto> buyLotto(Money money) {

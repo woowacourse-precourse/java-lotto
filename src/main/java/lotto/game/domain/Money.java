@@ -1,4 +1,4 @@
-package lotto.game;
+package lotto.game.domain;
 
 import static lotto.game.ExceptionHandler.*;
 

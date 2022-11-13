@@ -1,11 +1,14 @@
-package lotto.game;
+package lotto.game.controller;
 
-import static lotto.game.UI.*;
+import static lotto.game.view.UI.*;
 
 import java.util.List;
 import java.util.Map;
-import lotto.Lotto;
-import lotto.WinningLotto;
+import lotto.game.domain.Lotto;
+import lotto.game.domain.WinningLotto;
+import lotto.game.domain.LottoGrade;
+import lotto.game.service.LottoService;
+import lotto.game.domain.Money;
 
 public class Game {
     private final LottoService lottoService;

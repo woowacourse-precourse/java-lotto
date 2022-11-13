@@ -1,10 +1,11 @@
-package lotto.game;
+package lotto.game.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import lotto.Lotto;
+import lotto.game.domain.Lotto;
+import lotto.game.domain.LottoGrade;
 
 public class UI {
     public static final String MESSAGE_PURCHASE_MONEY = "구입금액을 입력해 주세요.";

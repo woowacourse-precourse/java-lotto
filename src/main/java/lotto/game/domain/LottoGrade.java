@@ -1,4 +1,4 @@
-package lotto.game;
+package lotto.game.domain;
 
 public enum LottoGrade {
     FIRST(Money.of(2_000_000_000L)),
