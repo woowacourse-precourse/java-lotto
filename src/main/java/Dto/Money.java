@@ -1,11 +1,15 @@
 package Dto;
 
 public class Money {
-    private int money;
+    private final int money;
 
     public Money(String money){
         validValue(money);
         this.money = Integer.valueOf(money) ;
+    }
+
+    public int getMoney() {
+        return money;
     }
 
     private void validValue(String money){
