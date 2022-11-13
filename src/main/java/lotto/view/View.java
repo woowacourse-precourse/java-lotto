@@ -66,7 +66,7 @@ public class View {
                     String.format(
                             " (%d원) - %d개%n",
                             current.getWinnings(),
-                            countOfRank.get(current)
+                            countOfRank.getOrDefault(current, 0)
                     )
             );
         }
