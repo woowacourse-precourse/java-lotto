@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.Lotto.lottoEA;
+
 public class LotteryMachine {
-    private User user;
     private List<Integer> winningNumbers;
     private ArrayList<List<Integer>> userNumbers;
     private List<Integer> winningCase;
     public static List<Integer> winningPriceByCase;
 
     public LotteryMachine(User user, Lotto lotto){
-        this.user = user;
         this.winningNumbers = user.getUserNumbers();
         this.userNumbers = lotto.getLotteryOfUser();
     }
@@ -49,7 +49,7 @@ public class LotteryMachine {
         for(int a: winningPriceByCase){
             sum += a;
         }
-        sum/=user.getLottoPrice();
+        sum /= lottoEA*1000;
         String rate = String.format("%.2f", sum);
         System.out.println("총 수익률은 " + rate + "입니다.");
     }
