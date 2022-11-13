@@ -42,30 +42,23 @@ public class LottoApplication {
         bonusNumber = Integer.parseInt(Console.readLine());
         winningLotto = new WinningLotto(inputLotto, bonusNumber);
 
+        // 총 상금
         int sum = 0;
-        for (Lotto lotto : randomNumbers) {
-            int cnt = winningLotto.matchCount(lotto);
-            winningLotto.matchCount(lotto);
+        sum = getSum(sum);
 
-            if (cnt < 3) continue;
+        // 결과 출력
+        printResult();
 
-            boolean containsBonusNumber = false;
-            if (cnt == 5) {
-                if (winningLotto.isContainsBonusNumber(lotto, bonusNumber)) {
-                    containsBonusNumber = true;
-                }
-            }
+        // 수익률 출력
+        printYield((double) money, (double) sum);
+    }
 
-            /**
-             * FIRST, SECOND, THIRD, FOURTH, FIFTH
-             */
-            LottoReward rank = LottoReward.getRank(cnt, containsBonusNumber);
-            // 해당 rank 의 숫자를 더해준다
-            rank.plusCount();
-            // 해당 rank 의 상금을 더해준다
-            sum += rank.getReward();
-        }
+    private void printYield(double money, double sum) {
+        double yield = sum / money * 100;
+        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
+    }
 
+    private void printResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (LottoReward lottoReward : LottoReward.values()) {
@@ -77,8 +70,34 @@ public class LottoApplication {
             System.out.println(String.format("%d개 일치 (%,d원) - %d개",
                     lottoReward.getMatchingNumbers(), lottoReward.getReward(), lottoReward.getCount()));
         }
+    }
 
-        double yield = (double) sum / (double) money * 100;
-        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
+    private int getSum(int sum) {
+        for (Lotto lotto : randomNumbers) {
+            int cnt = winningLotto.matchCount(lotto);
+            winningLotto.matchCount(lotto);
+
+            if (cnt < 3) continue;
+
+            /**
+             * FIRST, SECOND, THIRD, FOURTH, FIFTH
+             */
+            LottoReward rank = LottoReward.getRank(cnt, isContainsBonusNumber(lotto, cnt));
+            // 해당 rank 의 숫자를 더해준다
+            rank.plusCount();
+            // 해당 rank 의 상금을 더해준다
+            sum += rank.getReward();
+        }
+        return sum;
+    }
+
+    private boolean isContainsBonusNumber(Lotto lotto, int cnt) {
+        boolean containsBonusNumber = false;
+        if (cnt == 5) {
+            if (winningLotto.isContainsBonusNumber(lotto, bonusNumber)) {
+                containsBonusNumber = true;
+            }
+        }
+        return containsBonusNumber;
     }
 }
