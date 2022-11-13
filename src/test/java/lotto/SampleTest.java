@@ -34,7 +34,8 @@ class SampleTest {
     @Test
     void getLottosTest1(){
         assertRandomUniqueNumbersInRangeTest(
-                () -> assertThat(sample.getLottos(8)).contains(
+                () -> assertThat(sample.getLottos(8))
+                        .contains(
                         new Lotto(new ArrayList<>(List.of(8, 21, 23, 41, 42, 43))),
                         new Lotto(new ArrayList<>(List.of(3, 5, 11, 16, 32, 38))),
                         new Lotto(new ArrayList<>(List.of(7, 11, 16, 35, 36, 44))),
@@ -43,7 +44,7 @@ class SampleTest {
                         new Lotto(new ArrayList<>(List.of(7, 11, 30, 40, 42, 43))),
                         new Lotto(new ArrayList<>(List.of(2, 13, 22, 32, 38, 45))),
                         new Lotto(new ArrayList<>(List.of(1, 3, 5, 14, 22, 45)))
-                ),
+                        ),
                 new ArrayList<>(List.of(8, 21, 23, 41, 42, 43)),
                 new ArrayList<>(List.of(3, 5, 11, 16, 32, 38)),
                 new ArrayList<>(List.of(7, 11, 16, 35, 36, 44)),
@@ -77,5 +78,23 @@ class SampleTest {
                 "[7, 11, 30, 40, 42, 43]",
                 "[2, 13, 22, 32, 38, 45]",
                 "[1, 3, 5, 14, 22, 45]");
+    }
+
+    @Test
+    void getWinningNumberTest1(){
+        assertThat(sample.getWinningNumber("1,2,3,4,5,6"))
+                .contains(1,2,3,4,5,6);
+    }
+
+    @Test
+    void getWinningNumberTest2(){
+        assertThatThrownBy(() -> sample.getWinningNumber("1,2,3,4,5,a6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void getWinningNumberTest3(){
+        assertThatThrownBy(() -> sample.getWinningNumber("1,2,3,4,6"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
