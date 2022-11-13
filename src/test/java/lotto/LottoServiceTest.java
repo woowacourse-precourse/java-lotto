@@ -19,10 +19,11 @@ class LottoServiceTest {
     @Test
     void generateLottoTest() {
         //given
-        Lotto lotto = lottoService.generateLotto();
+        List<Lotto> lottos = lottoService.generateLottoList(1);
         //when
-        Set<Integer> uniqueLottoNumbers = new HashSet(lotto.getNumbers());
+        Set<Integer> uniqueLottoNumbers = new HashSet(lottos.get(0).getNumbers());
         //then
+        assertEquals(1, lottos.size());
         assertEquals(6, uniqueLottoNumbers.size());
     }
 
