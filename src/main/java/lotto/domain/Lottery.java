@@ -15,7 +15,6 @@ public class Lottery {
         for (Rank rank : Rank.values()) {
             rankResult.put(rank, Collections.frequency(ranks, rank));
         }
-
         return rankResult;
     }
 
@@ -26,11 +25,10 @@ public class Lottery {
                 .collect(Collectors.toList());
     }
 
-    public List<Rank> ranks(WinningLotto winningLotto, List<Lotto> lottos) {
+    private List<Rank> ranks(WinningLotto winningLotto, List<Lotto> lottos) {
         return lottos.stream()
                 .map(lotto -> Rank.findRank(winningLotto.countMatch(lotto), winningLotto.bonus(lotto)))
                 .collect(Collectors.toList());
     }
-
 
 }

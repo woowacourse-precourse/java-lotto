@@ -14,7 +14,7 @@ public class RankResultTest {
         Map<Rank, Integer> rankResult = new EnumMap<>(Rank.class);
         rankResult.put(Rank.FIFTH, 1);
         rankResult.put(Rank.NONE, 7);
-        BigDecimal yield = new RankResult().getYield(rankResult);
+        BigDecimal yield = new RankResult().yield(rankResult);
         BigDecimal bigDecimal = new BigDecimal("62.5");
         assertEquals(0,bigDecimal.compareTo(yield));
     }
