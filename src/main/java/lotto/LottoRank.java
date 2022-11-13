@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public enum LottoRank {
                     new LottoHitsCountVO(6, false)
             ),
             "6개 일치 (2,000,000,000원)"),
-    NOTHING(0L, null, "");
+    NOTHING(0L, new ArrayList<>(), "");
 
     private Long prize;
     private List<LottoHitsCountVO> availableHitsCounts;
