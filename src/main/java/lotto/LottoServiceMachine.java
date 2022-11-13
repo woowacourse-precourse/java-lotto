@@ -2,7 +2,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -17,16 +16,25 @@ public class LottoServiceMachine {
     private List<Integer> bonusNumber;
 
     public LottoServiceMachine(){
-        winningNumber = new ArrayList<>();
-        bonusNumber = new ArrayList<>();
     }
-    public void createWinningNumber(){
-        String lottoNumberString = Console.readLine();
+    public String toString(){
 
+        System.out.println(winningNumber);
+        System.out.println(bonusNumber);
+        return null;
     }
-    public List<Integer> splitLottoInput(String lottoNumbers){
+    public void getWinningLottoNumber(){
+        winningNumber = getWinningNumberByCount(REQUIRE_LOTTO_NUMBER_COUNT.getValue());
+        bonusNumber = getWinningNumberByCount(AVAIL_BONUS_NUMBER_COUNT.getValue());
+    }
+    public List<Integer> getWinningNumberByCount(int requireCount){
+        String lottoNumberString = Console.readLine();
+        List<Integer> splitWinningNumber = splitLottoInput(lottoNumberString, requireCount);
+        return splitWinningNumber;
+    }
+    public List<Integer> splitLottoInput(String lottoNumbers, int requireCount){
         String[] splitInput = lottoNumbers.split(",");
-        isValidLength(splitInput, REQUIRE_LOTTO_NUMBER_COUNT.getValue());
+        isValidLength(splitInput, requireCount);
         isAllDigit(splitInput);
         List<Integer> splitNumber = convertSplitInput(splitInput);
         isValidRange(splitNumber);
@@ -38,11 +46,14 @@ public class LottoServiceMachine {
                throw new IllegalArgumentException("ERROR : ,로 분리되는 인자의 수가 잘못됐습니다");
            }
     }
+    private void isDigit(String input){
+        if(!input.chars().allMatch(Character::isDigit)){
+            throw new IllegalArgumentException("ERROR : 분리된 문자열이 숫자가 아닙니다.");
+        }
+    }
     private void isAllDigit(String[] splitInput){
         for(String number : splitInput){
-            if(!number.chars().allMatch(Character::isDigit)){
-                throw new IllegalArgumentException("ERROR : 분리된 문자열이 숫자가 아닙니다.");
-            }
+            isDigit(number);
         }
     }
     private List<Integer> convertSplitInput(String[] splitInput){
