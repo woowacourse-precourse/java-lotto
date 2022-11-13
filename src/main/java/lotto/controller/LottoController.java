@@ -23,8 +23,7 @@ public class LottoController {
 
 		LottoResult lottoResult = createLottoResult(lottoTickets, winningNumber, bonusNumber);
 
-		OutputView.printPrizeResult(lottoResult);
-		OutputView.printRateReturn(lottoAmount.calculatePrizeResult(lottoResult));
+		printResult(lottoResult, lottoAmount);
 	}
 
 	private LottoAmount createLottoAmount() {
@@ -47,5 +46,10 @@ public class LottoController {
 
 	private BonusNumber createBonusNumber(WinningNumber winningNumber) {
 		return new BonusNumber(InputView.inputBonusNumber(), winningNumber.getWinningNumber());
+	}
+
+	private void printResult(LottoResult lottoResult, LottoAmount lottoAmount) {
+		OutputView.printPrizeResult(lottoResult);
+		OutputView.printRateReturn(lottoAmount.calculatePrizeResult(lottoResult));
 	}
 }

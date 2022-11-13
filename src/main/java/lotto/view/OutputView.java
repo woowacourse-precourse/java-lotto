@@ -13,6 +13,8 @@ import lotto.domain.LottoTicket;
 
 public class OutputView {
 	private static final String PRINT_LOTTO_NUMBER = "개를 구매했습니다.";
+	private static final String PRINT_PRIZE_RESULT_INTRO = "\n당첨 통계";
+	private static final String PRINT_PRIZE_RESULT_BORDER_LINE = "---";
 	private static final String PRINT_PRIZE_RESULT_FRONT = "%d개 일치";
 	private static final String PRINT_PRIZE_RESULT_BONUS = ", 보너스 볼 일치";
 	private static final String PRINT_PRIZE_RESULT_LAST = " (%d) - %d개";
@@ -56,8 +58,8 @@ public class OutputView {
 	}
 
 	private static void printPrizeResultIntro() {
-		System.out.println("\n당첨 통계");
-		System.out.println("---");
+		System.out.println(PRINT_PRIZE_RESULT_INTRO);
+		System.out.println(PRINT_PRIZE_RESULT_BORDER_LINE);
 	}
 
 	public static void printRateReturn(double rateReturn) {
