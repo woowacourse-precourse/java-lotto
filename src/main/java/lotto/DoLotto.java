@@ -2,7 +2,7 @@ package lotto;
 
 public class DoLotto {
 
-    public void play() {
+    public void play() throws IllegalArgumentException {
 
         MessagePrinter messagePrinter = new MessagePrinter();
         User user = new User();

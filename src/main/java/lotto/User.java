@@ -22,10 +22,15 @@ public class User {
 
     LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
 
-    public void setMoney() {
+    public void setMoney() throws IllegalArgumentException {
         int money;
-        money = Integer.parseInt(Console.readLine());
-        this.money = money;
+        try {
+            money = Integer.parseInt(Console.readLine());
+            this.money=money;
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR]");
+            //throw new IllegalStateException();
+        }
     }
 
     public int getMoney() {
@@ -47,15 +52,17 @@ public class User {
     public Map<String,Integer> getWinningNumberCounting() {
         return winningNumberCounting;
     }
+
     public void makeLottoBundle(int howManyLotto) {
         for (int lottoBundleIndex=0; lottoBundleIndex<howManyLotto; lottoBundleIndex++) {
             lottoBundle.add(lotteryTicketingMachine.ticketLotto());
         }
     }
 
-    public void inputWinningNumber() {
+    public void inputWinningNumber() throws IllegalArgumentException  {
         int convertedWinningNumber;
         String inputtedWinningNumber;
+        try {
         inputtedWinningNumber = Console.readLine();
         List<Integer> winningNumber = new ArrayList<>();
         String[] unconvertedWinningNumber = inputtedWinningNumber.split(",");
@@ -64,8 +71,12 @@ public class User {
             winningNumber.add(convertedWinningNumber);
         }
         this.winningNumber = winningNumber;
+        } catch(NumberFormatException e) {
+            System.out.println("[ERROR]");
+            throw new IllegalArgumentException();
+        }
     }
-
+    
     public void inputBonusNumber() {
         String inputtedBonusNumber;
         inputtedBonusNumber = Console.readLine();
