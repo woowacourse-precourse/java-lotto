@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public enum Prize {
+public enum Rank {
     FIRST_PLACE("6개 일치 (2,000,000,000원)"),
     SECOND_PLACE("5개 일치, 보너스 볼 일치 (30,000,000원)"),
     THIRD_PLACE("5개 일치 (1,500,000원)"),
@@ -9,7 +9,7 @@ public enum Prize {
 
     private final String reward;
 
-    Prize(String reward) {
+    Rank(String reward) {
         this.reward = reward;
     }
 
