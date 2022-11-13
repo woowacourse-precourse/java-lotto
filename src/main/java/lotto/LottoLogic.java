@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class LottoLogic {
     private int money;
     private int numberOfLotto;
     private List<Lotto> buyLottoList;
+    private List<Integer> prizeNumbers;
 
     public LottoLogic(int money) {
         this.money = money;
@@ -33,11 +35,16 @@ public class LottoLogic {
             this.buyLottoList.add(new Lotto(createLottoNumber()));
         }
     }
+
     private List<Integer> createLottoNumber() {
         return Randoms.pickUniqueNumbersInRange(START_LOTTO, END_LOTTO, LOTTO_NUMBER);
     }
 
     public List<Lotto> getBuyLottoList() {
         return this.buyLottoList;
+    }
+
+    public void setPrizeNumbers(List<Integer> prizeNumbers) {
+        this.prizeNumbers = prizeNumbers;
     }
 }
