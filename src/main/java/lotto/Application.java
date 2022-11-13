@@ -1,14 +1,14 @@
 package lotto;
 
-import lotto.veiw.ViewHandler;
+import lotto.controller.LottoController;
 
 public class Application {
 
     public static void main(String[] args) {
-        ViewHandler viewHandler = new ViewHandler();
+        LottoController lottoController = new LottoController();
+
         try {
-            viewHandler.inputMoney();
-            viewHandler.inputLottoWithBonus();
+            lottoController.run();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

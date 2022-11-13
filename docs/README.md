@@ -128,27 +128,25 @@ view 와 domain 을 연결시키는 부분입니다.
 
 view 를 통해 사용자에게 입력 및 출력합니다. 입력 받은 값을 domain에게 전달해 값을 받습니다.
 
-- [ ] run()
+- [x] run()
 
 	- view 와 domain 을 연결
 
-- [ ] inputMoney 
+- [x] inputMoney 
 
 	- view 를 통해 사용자로부터 금액 입력
 	- domain의 Money에게 금액 입력
 
-- [ ] inputLotto
+- [x] inputLotto
 
 	- view 를 통해 사용자로부터 로또번호 입력
 
 	- domain의 Lotto에게 번호 입력
 
-- [ ] inputBonus
+- [x] inputBonus
 
 	- view 를 통해 사용자로부터 보너스 번호 입력
 	- domain의 LottoWithBonus에게 금액 입력
-
-- [ ] 
 
 
 

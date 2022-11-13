@@ -2,11 +2,10 @@ package lotto.domain;
 
 import static lotto.model.LottoReference.NOPE;
 
-import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
-import lotto.model.LottoReference;
 import lotto.model.Lotto;
+import lotto.model.LottoReference;
 import lotto.model.LottoWithBonus;
 
 public class Compare {
@@ -18,24 +17,6 @@ public class Compare {
         this.lottoVendingMachine = lottoVendingMachine;
         this.lottoWithBonus = lottoWithBonus;
     }
-
-    public void printResult(Map<LottoReference, Integer> result) {
-        DecimalFormat moneyFormat = new DecimalFormat("###,###");
-        DecimalFormat floatFormat = new DecimalFormat("###,###.#");
-
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        for (LottoReference lo : LottoReference.values()) {
-            if (lo != NOPE) {
-                System.out.printf("%d개 일치%s (%s원) - %d개\n", lo.getCorrectCount(), lo.getMessage(),
-                        moneyFormat.format(lo.getPrize()),
-                        result.getOrDefault(lo, 0));
-            }
-        }
-
-        System.out.printf("총 수익률은 %s%%입니다.\n", floatFormat.format(calculateYield(result)));
-    }
-
 
     public float calculateYield(Map<LottoReference, Integer> result) {
         long totalPrize = getTotalPrize(result);
