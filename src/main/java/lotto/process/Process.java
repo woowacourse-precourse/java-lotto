@@ -28,18 +28,18 @@ public class Process {
     }
 
     public void compareNumbers(User user, List<Integer> winningNumbers, Integer bonusNumber) {
-        user.getLottos().stream().forEach(lotto -> {
+        userLogic.userLottos(user).stream().forEach(lotto -> {
             Result result = lottoLogic.compareNumbers(lotto.getNumbers(), winningNumbers, bonusNumber);
             lottoLogic.addWinCount(result);
             Integer prize = lottoLogic.getPrize(result);
-            user.increasePrize(prize);
+            userLogic.increasePrize(user,prize);
         });
     }
 
     public Integer makeLottoNumbers(User user) {
-        Integer lottoCount = user.getLottoCount();
+        Integer lottoCount = userLogic.userLottoCounts(user);
         for (int i = 0; i < lottoCount; i++) {
-            user.addLotto(lottoLogic.makeLotto());
+            userLogic.addLotto(user,lottoLogic.makeLotto());
         }
         return lottoCount;
     }
@@ -52,7 +52,7 @@ public class Process {
                 String.format("5개 일치 (1,500,000원) - %d 개\n", history.get(3)),
                 String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d 개\n", history.get(2)),
                 String.format("6개 일치 (2,000,000,000원) - %d 개\n", history.get(1)),
-                String.format("총 수익률은 %.2f%%입니다.\n", user.getYield()));
+                String.format("총 수익률은 %.2f%%입니다.\n", userLogic.userYield(user)));
     }
 
     public String lottoNumbers(User user) {
