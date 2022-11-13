@@ -1,4 +1,4 @@
-package lotto.money;
+package lotto.domain.money;
 
 import lotto.exception.ExceptionPhrase;
 
@@ -7,11 +7,12 @@ import static lotto.exception.ExceptionPhrase.EXCEPTION_INVALID_MONEY_UNIT;
 public class Money {
     private static final int TEN_THOUSAND_WON = 1000;
 
-    private int money;
+    public Money() {
+    }
 
-    public Money(int money) {
+    public int money(int money) {
         validateUnit(money);
-        this.money = money;
+        return money;
     }
 
     private void validateUnit(int money) {
@@ -20,7 +21,7 @@ public class Money {
         }
     }
 
-    public int lottoCount() {
+    public int lottoCount(int money) {
         return money / TEN_THOUSAND_WON;
     }
 }
