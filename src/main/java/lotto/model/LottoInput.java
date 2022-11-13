@@ -23,4 +23,31 @@ public class LottoInput {
         return purchaseAmount;
     }
 
+    public List<Integer> inputWinNumber(){
+        InputView.showAnswerNumberMessage();
+        String answer = Console.readLine();
+
+        List<Integer> winNumbers = tokenizeNumber(answer);
+        InputView.newLine();
+        return winNumbers;
+    }
+
+    public static int inputBonusNumber() {
+        InputView.showBonusNumberMessage();
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        InputValidator.validateLottoNumberRange(bonusNumber);
+        InputView.newLine();
+        return bonusNumber;
+    }
+
+    private static List<Integer> tokenizeNumber(String answer){
+        StringTokenizer st = new StringTokenizer(answer, ",");
+        List<Integer> answerList = new ArrayList<>();
+
+        while(st.hasMoreTokens()){
+            answerList.add(Integer.parseInt(st.nextToken()));
+        }
+        return answerList;
+    }
+
 }
