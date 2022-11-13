@@ -12,6 +12,7 @@ public class LottoMachine {
     private final int LOTTO_PRICE = 1000;
     private int paid;
     private ArrayList<Lotto> lottos = new ArrayList<>();
+    private int[] result;
 
     public LottoMachine() {}
 
@@ -35,9 +36,37 @@ public class LottoMachine {
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
-        paid = 0;
         return lottos;
     }
+    public void printLottos(){
+        for(Lotto lotto:lottos){
+            System.out.println(lotto.getNumbers());
+        }
+    }
+
+    public void getResult(List<Integer> winningNum, int bonusNum){
+        result = new int[6];
+        for(Lotto lotto:lottos){
+            int rank =0;
+            List<Integer> numbers = lotto.getNumbers();
+            if(numbers.contains(bonusNum)) {
+                rank -= 1;
+            }
+
+            numbers.retainAll(winningNum);
+            rank += 8-numbers.size();
+            if(numbers.size()==6){
+                rank =1;
+            }
+            result[rank] += 1;
+        }
+
+    }
+
+
+
+
+
 
 
 }
