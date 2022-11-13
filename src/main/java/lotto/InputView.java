@@ -31,6 +31,7 @@ public class InputView {
 
     public static int getBonusNumber(Lotto winningNumber) {
         int BonusNumber = Integer.parseInt(Console.readLine());
+        LottoValidator.validateBonusNumber(winningNumber, BonusNumber);
 
         return BonusNumber;
     }
