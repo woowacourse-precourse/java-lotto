@@ -12,10 +12,7 @@ public class WinningLotto {
 
     public WinningLotto(String winningLotto) {
         isValidInputPattern(winningLotto);
-        convert(winningLotto);
-        this.winningLotto = new Lotto(Arrays.stream(winningLotto.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList()));
+        this.winningLotto = convert(winningLotto);
     }
 
     private void isValidInputPattern(String winningLotto) {
