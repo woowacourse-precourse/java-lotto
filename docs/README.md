@@ -13,9 +13,15 @@
         * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
     * 1~45 이외의 번호 입력시 에러 발생(enum)
         * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+    * 6개가 아닌 번호 입력시 에러 발생(enum)
+      * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+    * 숫자 구분을 ,로 하지 않으면 에러 발생(enum)
+      * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
 * 보너스 번호 입력
     * 당첨 번호와 숫자 겹칠 시 에러 발생(enum)
         * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+    * 1개가 아닌 숫자 입력시 에러 발생(enum)
+      * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
     * 1~45 이외의 번호 입력시 에러 발생(enum)
         * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
           <br><br>
