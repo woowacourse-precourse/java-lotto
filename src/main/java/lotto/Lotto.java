@@ -23,14 +23,14 @@ public class Lotto {
     // TODO: 추가 기능 구현
     private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
-        if(nonDuplicateNumbers.size() != 6) {
+        if (nonDuplicateNumbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR]: lotto numbers duplicated error");
         }
     }
 
     private void validateRange(List<Integer> numbers) {
-        for(int number : numbers) {
-            if(number < 1 || number > 45) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
                 throw new IllegalArgumentException("[ERROR]: lotto number range error");
             }
         }
