@@ -8,16 +8,12 @@ public class LottoGame {
 
 
     public LottoGame() {
-    }
-
-    public void startLotto(){
         printPurchaseAmount();
 
         int input = user.setPurchaseAmount();
         user.validateUnit(input);
 
         setPurchaseAmountLotto(input/1000);
-
     }
 
     public void setPurchaseAmountLotto(int input){
