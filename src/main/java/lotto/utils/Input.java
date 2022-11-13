@@ -2,8 +2,11 @@ package lotto.utils;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Amount;
+import lotto.domain.Lotto;
 
 import java.util.NoSuchElementException;
+
+import static lotto.utils.StringParser.parseInputToIntegerList;
 
 public final class Input {
     private Input() {}
@@ -12,6 +15,11 @@ public final class Input {
         String input = Console.readLine();
         validateParseStringToInteger(input);
         return new Amount(Integer.parseInt(input));
+    }
+
+    public static Lotto inputWinningNumbers() {
+        String input = Console.readLine();
+        return new Lotto(parseInputToIntegerList(input));
     }
 
     private static void validateParseStringToInteger(String input) {
