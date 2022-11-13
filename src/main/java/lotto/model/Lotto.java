@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import java.util.List;
 
@@ -16,5 +16,8 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public Integer countIssueingLotto(int PurchaseAmount) {
+        // TODO: 로또 구입 금액 검증
+        return PurchaseAmount / 1000;
+    }
 }

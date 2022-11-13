@@ -9,7 +9,7 @@
 ### model
 
 1. Lotto
-    - [ ]  발행할 로또 개수 계산 기능 → countIssueingLotto
+    - [x]  발행할 로또 개수 계산 기능 → countIssueingLotto
     - [ ]  로또 개수만큼 발행 기능 → issueLotto
     - [ ]  당첨 번호 저장 기능 → setWinningNumber
     - [ ]  보너스 번호 저장 기능 → setBonusNumber
