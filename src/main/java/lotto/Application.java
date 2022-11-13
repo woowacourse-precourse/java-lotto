@@ -3,6 +3,7 @@ package lotto;
 public class Application {
 
     public static void main(String[] args) {
-        Ui.inputPurchaseAmount();
+        int purchaseAmount = Ui.inputPurchaseAmount();
+        int lottoTickets = Ui.getLottoTickets(purchaseAmount);
     }
 }
