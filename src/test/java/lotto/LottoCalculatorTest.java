@@ -16,4 +16,12 @@ class LottoCalculatorTest {
 
         assertThat(input).isEqualTo(result);
     }
+
+    @Test
+    void addRankCount() {
+        LottoCalculator lottoCalculator = new LottoCalculator();
+        int count = lottoCalculator.compare(Arrays.asList(1, 2, 3, 4, 5, 6), Arrays.asList(1, 2, 3, 4, 5, 6), 10);
+        lottoCalculator.addRankCount(count);
+        assertThat(lottoCalculator.getRankCount()).isEqualTo(Arrays.asList(0, 0, 0, 0, 1));
+    }
 }
