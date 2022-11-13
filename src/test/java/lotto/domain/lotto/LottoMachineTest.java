@@ -1,7 +1,5 @@
 package lotto.domain.lotto;
 
-import lotto.domain.player.PurchaseAmount;
-import lotto.domain.player.PurchaseCount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -17,7 +15,7 @@ public class LottoMachineTest {
 	LottoMachine lottoMachine;
 
 	@BeforeEach
-	void LottoMachineTestSetUp(){
+	void LottoMachineTestSetUp() {
 		lottoMachine = new LottoMachine();
 	}
 
@@ -52,17 +50,5 @@ public class LottoMachineTest {
 
 		// condition 2
 		assertThat(actuals).doesNotContain(firstNumberInclusive - 1, lastNumberInclusive + 1);
-	}
-
-	@DisplayName("컴퓨터 생성 로또의 개수가 제시된 금액에 따라 계산된 개수와 일치하는 것을 확인한다")
-	@Test
-	void verifyIssuedLottoSameAsDesignatedCount() {
-		PurchaseCount purchaseCount = PurchaseCount.from(PurchaseAmount.from("1000"));
-		lottoMachine.issueLotto(purchaseCount);
-
-		int actual = LottoMachine.issuedLottoes.size();
-		int expected = 1;
-
-		assertThat(actual).isEqualTo(expected);
 	}
 }
