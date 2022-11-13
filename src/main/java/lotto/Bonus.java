@@ -3,16 +3,18 @@ package lotto;
 import java.util.List;
 
 public class Bonus {
+    public List<Integer> bonusNum;
 
-    private final List<Integer> bonusNum;
-
-
-    public Bonus(List<Integer> bonusNum) {
+    public Bonus() {
         this.bonusNum = bonusNum;
     }
 
+    //    while (bonusNum.contains(Lotto.getNumbers())) {
+//        bonusNum=Randoms.pickUniqueNumbersInRange(1, 45, 1);
+//    }
+//    return bonusNum;
     public List<Integer> getBonusNum() {
-//        System.out.println(bonusNum);
+
         return bonusNum;
     }
 }
