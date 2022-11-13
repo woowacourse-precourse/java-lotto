@@ -50,4 +50,11 @@ public class CommonExceptionTest {
         );
     }
 
+    @DisplayName("중복되는 숫자는 예외 처리한다.")
+    @Test
+    void 당첨_번호_중복_테스트() {
+        assertThatIllegalArgumentException().isThrownBy(
+                () -> CommonException.hasSameNumber(List.of(1, 2, 3, 4, 5, 6), 6)
+        );
+    }
 }
