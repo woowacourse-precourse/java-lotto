@@ -27,6 +27,7 @@ public class UI {
 
     public List<Integer> Answer_Number() {
         List<Integer> Answer_numbers = new ArrayList();
+        System.out.println("당첨 번호를 입력해 주세요.");
 
         String Input = Console.readLine();
         String[] Input_Array = Input.split(",");
