@@ -13,7 +13,7 @@ public class Cash {
     private void isValidData(int cash) throws IllegalArgumentException {
         final int UNIT = 1000;
 
-        if(cash <= 0){
+        if (cash <= 0) {
             throw new IllegalArgumentException("양수만 허용합니다");
         }
         if ((cash % UNIT) != 0) {

@@ -6,8 +6,8 @@ public enum Rank {
     FIFTH(5_000, new Match(3)),
     FOURTH(50_000, new Match(4)),
     THIRD(1_500_000, new Match(5)),
-    SECOND( 30_000_000,new Match(5)),
-    FIRST(2_000_000_000,new Match(6)),
+    SECOND(30_000_000, new Match(5)),
+    FIRST(2_000_000_000, new Match(6)),
     LAST(0, new Match(Match.NOTHING));
 
     private final int prize;
@@ -20,15 +20,15 @@ public enum Rank {
     }
 
     public static Rank getMyRank(Match match, boolean bonus) {
-        if(match.getMatch() == 5){
-            if(bonus){
+        if (match.getMatch() == 5) {
+            if (bonus) {
                 return Rank.SECOND;
             }
             return Rank.THIRD;
         }
 
-        for(Rank rank: Rank.values()){
-            if(rank.getMatch() == match.getMatch()){
+        for (Rank rank : Rank.values()) {
+            if (rank.getMatch() == match.getMatch()) {
                 return rank;
             }
         }
@@ -40,7 +40,7 @@ public enum Rank {
         return this.prize;
     }
 
-    private int getMatch(){
+    private int getMatch() {
         return this.match.getMatch();
     }
 }

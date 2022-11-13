@@ -47,7 +47,7 @@ public class MainController {
         myLottos = lottoGenerator.createMyLottos(lottoNumber);
     }
 
-    private int countLottoNumber(Cash cash){
+    private int countLottoNumber(Cash cash) {
         CalculatorModel calculator = new CalculatorModel();
         return calculator.countLottoNumber(cash);
     }
