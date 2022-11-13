@@ -5,7 +5,7 @@ import lotto.Message.NormalMessage;
 
 public class Application {
     public static void main(String[] args) {
-
+        try{
         // 구입금액 입력 메시지 출력
         NormalMessage.printMoneyInputMessage();
         User user= new User(Console.readLine().trim());
@@ -26,6 +26,9 @@ public class Application {
         // 당첨 결과 출력
         WinningResult winningResult = new WinningResult(user, winningNumber);
         winningResult.makeWinningResult();
-        NormalMessage.printResultMessage(winningResult);
+        NormalMessage.printResultMessage(winningResult);}
+        catch (IllegalArgumentException e){
+
+        }
     }
 }
