@@ -4,7 +4,8 @@ public enum BoundaryValue {
   LOTTO_MIN_NUMBER(1),
   LOTTO_MAX_NUMBER(45),
   LOTTO_LESS_THAN_NUMBER(0),
-  LOTTO_EXCEEDED_NUMBER(46);
+  LOTTO_EXCEEDED_NUMBER(46),
+  LOTTO_PRICE(1000);
 
   private int value;
 
