@@ -1,5 +1,7 @@
 package lotto.game;
 
+import static lotto.game.ExceptionHandler.*;
+
 import java.util.regex.Pattern;
 
 public class Money {
@@ -19,7 +21,7 @@ public class Money {
 
     public static Money of(String input) {
         if (!moneyPattern.matcher(input).matches()) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+            throwException("숫자만 입력해주세요.");
         }
         return Money.of(Long.parseLong(input));
     }
@@ -32,7 +34,7 @@ public class Money {
         if (value % 1000 == 0) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] 1000으로 나눠 떨어지는 금액만 입력해주세요.");
+        throwException("1000으로 나눠 떨어지는 금액만 입력해주세요.");
     }
 
     public long getValue() {

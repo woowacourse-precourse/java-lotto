@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.game.ExceptionHandler.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -37,7 +39,7 @@ public class WinningLotto {
 
     public void validateDuplicate(List<Integer> numbers, Integer bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호와 중복이 있습니다.");
+            throwException("보너스 번호와 중복이 있습니다.");
         }
     }
 
@@ -45,12 +47,12 @@ public class WinningLotto {
         if (number >= 1 && number <= 45) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] 올바른 로또 번호가 아닙니다.");
+        throwException("올바른 로또 번호가 아닙니다.");
     }
 
     private static Integer convertInputToBonusNumber(String bonusNumber) {
         if (!bonusNumberPattern.matcher(bonusNumber).matches()) {
-            throw new IllegalArgumentException("[ERROR] 올바른 로또 번호가 아닙니다.");
+            throwException("올바른 로또 번호가 아닙니다.");
         }
         return Integer.parseInt(bonusNumber);
     }
