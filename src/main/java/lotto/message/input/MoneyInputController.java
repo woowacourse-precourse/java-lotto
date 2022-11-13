@@ -19,7 +19,7 @@ public class MoneyInputController extends InputController {
             throw new IllegalArgumentException(ErrorMessage.NOT_CORRECT_NUMBER_MESSAGE.message);
         }
 
-        if (price == 0 || price % 1000 != 0) {
+        if (price == 0 || price % LOTTO_PER_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessage.ONE_THOUSAND_UNIT_MONEY_MESSAGE.message);
         }
     }

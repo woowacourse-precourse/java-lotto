@@ -34,7 +34,7 @@ public class BonusNumberInputController extends InputController {
 
         int bonusNumber = Integer.parseInt(input);
 
-        if (bonusNumber < 1 || bonusNumber > 45) {
+        if (bonusNumber < MIN_NUMBER || bonusNumber > MAX_NUMBER) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE_MESSAGE.message);
         }
     }
