@@ -44,6 +44,7 @@ public class InputController {
         while (true) {
             try {
                 InputView.pushBonusNumber();
+                String number = Console.readLine();
 
             } catch (IllegalArgumentException e) {
                 System.out.println();
