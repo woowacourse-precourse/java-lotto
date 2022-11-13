@@ -126,7 +126,7 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        if (user_bonus_number < 0 || user_bonus_number > 45) {
+        if (user_bonus_number < 1 || user_bonus_number > 45) {
             throw new IllegalArgumentException();
         }
 

@@ -21,7 +21,7 @@ public class Lotto {
             if (check_duplicate.contains(number)) {
                 throw new IllegalArgumentException();
             }
-            if (number < 0 || number > 45) {
+            if (number < 1 || number > 45) {
                 throw new IllegalArgumentException();
             }
 
