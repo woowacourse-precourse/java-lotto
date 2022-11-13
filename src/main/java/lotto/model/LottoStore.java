@@ -15,22 +15,4 @@ public class LottoStore {
         validator.validateBonusNumber(numbers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
-
-    public void compareLotto(Lotto inputLotto) {
-        int sameNumbers = countSameNumbers(inputLotto.getNumbers());
-        inputLotto.setSameNumbers(sameNumbers);
-
-        boolean sameBonusNumber = inputLotto.getNumbers().contains(bonusNumber);
-        inputLotto.setSameBonusNumber(sameBonusNumber);
-    }
-
-    public int countSameNumbers(List<Integer> numbers) {
-        int count = 0;
-        for (int number : numbers) {
-            if (lotteryNumbers.contains(number)) {
-                count++;
-            }
-        }
-        return count;
-    }
 }

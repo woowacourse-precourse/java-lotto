@@ -45,10 +45,4 @@ public class Buyer {
             System.out.println(lotto.getNumbers());
         }
     }
-
-    public void compareAllLottos(LottoStore store) {
-        for (Lotto lotto : lottos) {
-            store.compareLotto(lotto);
-        }
-    }
 }
