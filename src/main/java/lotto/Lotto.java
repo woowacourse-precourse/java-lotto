@@ -78,7 +78,7 @@ public class Lotto {
 
 class LottoSystem {
 
-    private static List<Lotto> lottos;
+    private static List<Lotto> purchasedLottos;
 
     public static void purchaseLotto(int paymentMoney) {
         if (paymentMoney % 1000 != 0) {
@@ -86,10 +86,10 @@ class LottoSystem {
                     "지불 금액을 다시확인해 주세요.");
         }
 
-        lottos = new ArrayList<>();
+        purchasedLottos = new ArrayList<>();
         int purchasedLottoCount = paymentMoney/1000;
         for (int i = 0; i < purchasedLottoCount; i++) {
-            lottos.add(makeLotto());
+            purchasedLottos.add(makeLotto());
         }
     }
 
@@ -139,6 +139,35 @@ class UserInput {
     }
 }
 
+class PrintedGuidance {
+
+    private final static String REQUEST_PAYMENT = "구입금액을 입력해 주세요.";
+    private final static String REQUEST_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
+    private final static String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    private final static String GUIDE_LOTTO_COUNT = "개를 구매했습니다.";
+
+    public static void requestPayment() {
+        System.out.println(REQUEST_PAYMENT);
+    }
+    public static void requestWinningNumber() {
+        System.out.println(REQUEST_WINNING_NUMBER);
+    }
+    public static void requestBonusNumber() {
+        System.out.println(REQUEST_BONUS_NUMBER);
+    }
+    public static void guideLottoPurchaseCount(int count) {
+        System.out.println(count + GUIDE_LOTTO_COUNT);
+    }
+
+    public static void printResult(int three, int four, int five, int five_b, int six, int totalRate) {
+        System.out.println("3개 일치 (5,000원) - " + three + "개");
+        System.out.println("4개 일치 (50,000원) - " + four + "개");
+        System.out.println("5개 일치 (150,000원) - " + five + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + five_b + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + six + "개");
+        System.out.println("총 수익률은 " + totalRate + "%입니다.");
+    }
+}
 
 
 
