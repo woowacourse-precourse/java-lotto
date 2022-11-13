@@ -41,7 +41,7 @@ public class Lotto {
         int min = numbers.stream().sorted().findFirst().get();
         int max = numbers.stream().sorted(Comparator.reverseOrder()).findFirst().get();
 
-        if(min < Number.LOTTO_NUMBER_MIN || max > Number.LOTTO_NUMBER_MAX) {
+        if (min < Number.LOTTO_NUMBER_MIN || max > Number.LOTTO_NUMBER_MAX) {
             throw new IllegalArgumentException(Number.ERROR_NUMBER_RANGE);
         }
     }

@@ -19,7 +19,7 @@ public class Result {
             result.put(ranking, result.getOrDefault(ranking, 0) + 1);
         }
         for (Ranking ranking : rankingList) {
-            if(!result.containsKey(ranking)) {
+            if (!result.containsKey(ranking)) {
                 result.put(ranking, 0);
             }
         }

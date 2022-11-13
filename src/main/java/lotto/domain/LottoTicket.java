@@ -16,7 +16,7 @@ public class LottoTicket {
     }
 
     private void generateTickets(int ticketNumber) {
-        for(int i=0; i<ticketNumber; i++){
+        for (int i = 0; i < ticketNumber; i++) {
             List<Integer> numbers = Number.generateRandomLottoNumbers();
             numbers = sortList(numbers);
             lottoTickets.add(new Lotto(numbers));
@@ -25,7 +25,7 @@ public class LottoTicket {
 
     private List<Integer> sortList(List<Integer> numbers) {
         List<Integer> list = new ArrayList<>();
-        for(int i : numbers) {
+        for (int i : numbers) {
             list.add(i);
         }
 

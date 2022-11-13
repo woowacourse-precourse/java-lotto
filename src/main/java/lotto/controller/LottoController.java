@@ -54,7 +54,7 @@ public class LottoController {
         List<Integer> numbers = new ArrayList<>();
         String[] inputNumbers = inputWinningNumbers.split(",");
 
-        for(int index=0; index<inputNumbers.length; index++){
+        for (int index = 0; index < inputNumbers.length; index++) {
             int number = Integer.parseInt(inputNumbers[index]);
             numbers.add(number);
         }

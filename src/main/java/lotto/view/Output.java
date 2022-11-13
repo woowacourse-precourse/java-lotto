@@ -23,7 +23,7 @@ public class Output {
         System.out.println(OUTPUT_RESULT_LINE);
     }
 
-    public static void printWinningStatistic(Result result){
+    public static void printWinningStatistic(Result result) {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Map.Entry<Ranking, Integer> entry : getResultEntryList(result)) {
