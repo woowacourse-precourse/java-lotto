@@ -19,4 +19,20 @@ public class LottoController extends Controller {
         outputView.printLottos(lottos);
         return lottos;
     }
+
+    public WinningLotto createWinningLotto() {
+        List<Integer> winningNumbers = createWinningNumbers();
+        outputView.printNewLine();
+        int bonusNumber = createBonusNumber();
+
+        return new WinningLotto(winningNumbers, bonusNumber);
+    }
+
+    private List<Integer> createWinningNumbers() {
+        return null;
+    }
+
+    private int createBonusNumber() {
+        return 0;
+    }
 }
