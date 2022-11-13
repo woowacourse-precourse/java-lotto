@@ -12,6 +12,9 @@ public class OutputView {
         for (List<Integer> lottoNumber : lottoNumberList) {
             System.out.println(lottoNumber);
         }
+    }
 
+    public static void winningNumberMsg() {
+        System.out.println("당첨 번호를 입력해주세요");
     }
 }

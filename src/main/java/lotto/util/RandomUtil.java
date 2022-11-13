@@ -39,6 +39,7 @@ public class RandomUtil {
 
     private static boolean validateLottoNumbers(List<Integer> lottoNumbers) {
         Collections.sort(lottoNumbers);
+        // 여기서 lotto 객체를 만드는 방향으로 수정할 것
         for (int i=0; i<LENGTH_OF_LOTTO_NUMBERS; i++) {
             if (isDuplicate(lottoNumbers, i)) {
                 return false;
