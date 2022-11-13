@@ -29,7 +29,7 @@ public class UserManagerTest {
     }
 
     @Test
-    void getPrice_0_시작_예외_테스트() {
+    void getPrice_시작값_0_예외_테스트() {
         String price = "0" + ProgramManager.LOTTO_PRICE;
         putSystemInput(price);
 
@@ -55,6 +55,70 @@ public class UserManagerTest {
 
         assertSimpleTest(() ->
                 assertThatThrownBy(UserManager::getInput_price)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    /**
+     * getInput_predictLottoNumber - 당첨 번호 입력
+     */
+    @Test
+    void getInput_predictLottoNumber_테스트() {
+        String userPredictLottoNumber = "1,2,3,4,5,6";
+        putSystemInput(userPredictLottoNumber);
+        assertThat(UserManager.convertStringToIntegerList(userPredictLottoNumber)).isEqualTo(UserManager.getInput_predictLottoNumber());
+    }
+
+    @Test
+    void getInput_predictLottoNumber_숫자_쉼표_이외_입력값_예외_테스트() {
+        String userPredictLottoNumber = "1,앍,3,4,5,6";
+        putSystemInput(userPredictLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getInput_predictLottoNumber_공백_예외_테스트1() {
+        String userPredictLottoNumber = "1,2, ,4,5,6";
+        putSystemInput(userPredictLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getInput_predictLottoNumber_공백_예외_테스트2() {
+        String userPredictLottoNumber = "1,2,3, 4,5,6";
+        putSystemInput(userPredictLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getInput_predictLottoNumber_길이_예외_테스트() {
+        String userPredictLottoNumber = "1,23,4,5,6";
+        putSystemInput(userPredictLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getInput_predictLottoNumber_범위_초과_예외_테스트() {
+        String userPredictLottoNumber = "1,2,46,4,5,6";
+        putSystemInput(userPredictLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getInput_predictLottoNumber_범위_미만_예외_테스트() {
+        String userPredictLottoNumber = "1,2,0,4,5,6";
+        putSystemInput(userPredictLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
