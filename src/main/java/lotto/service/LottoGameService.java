@@ -7,7 +7,8 @@ public class LottoGameService {
 
     public int inputMoney(final String money) {
         validMoney(money);
-        return 0;
+        int lottoTickets = Integer.parseInt(money) / 1000;
+        return lottoTickets;
     }
 
     private void validMoney(final String money) {
@@ -16,14 +17,10 @@ public class LottoGameService {
                 ErrorMessage.PURCHASE_AMOUNT_NOT_NUMBER.getErrorMessage());
         }
 
-        Integer value = Integer.valueOf(money);
-        if (value / 1000 != 0) {
+        int value = Integer.parseInt(money);
+        if (value % 1000 != 0) {
             throw new IllegalArgumentException(
                 ErrorMessage.PURCHASE_AMOUNT_DIVIDE_1000WON.getErrorMessage());
-        }
-        if (value < 1000) {
-            throw new IllegalArgumentException(
-                ErrorMessage.PURCHASE_AMOUNT_AT_LEAST_1000WON.getErrorMessage());
         }
     }
 }
