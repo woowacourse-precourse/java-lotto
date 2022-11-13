@@ -1,11 +1,13 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
 public class Lotto {
     private static int number_of_lotto;
+    private static List<List<Integer>> purchased_lotto_numbers;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -31,7 +33,17 @@ public class Lotto {
         number_of_lotto = price_of_lotto / 1000;
         System.out.println("\n" + number_of_lotto + "개를 구매했습니다.");
     }
-    
+
+    private void createRandomNumbers() {
+        for (int count = 0; count < number_of_lotto; count++) {
+            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1,45,6);
+            purchased_lotto_numbers.add(lotto);
+        }
+    }
+
+
+
+
 
 
 
