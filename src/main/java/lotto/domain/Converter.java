@@ -5,6 +5,8 @@ import static lotto.domain.ErrorMessage.MONEY_LIMIT_ERROR;
 import static lotto.domain.ErrorMessage.MONEY_NUMBER_ERROR;
 import static lotto.domain.ErrorMessage.SEPARATOR_ERROR;
 
+import java.util.List;
+
 public class Converter {
     public static int changeToMoney(String input) {
         if (InputValidator.isEmpty(input)) {
@@ -26,6 +28,6 @@ public class Converter {
         if (InputValidator.isCorrectSeparator(input)) {
             throw new IllegalArgumentException(SEPARATOR_ERROR.toString());
         }
-        //TODO: return split list
+        return WinningNumberSplit.splitWinningNumber(input);
     }
 }

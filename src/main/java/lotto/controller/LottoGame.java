@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import java.util.List;
+import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.Lottos;
 import lotto.domain.Money;
@@ -31,6 +32,7 @@ public class LottoGame {
 
     private void drawLottery() {
         OutputView.printInputWinningLotto();
-        List<Integer> winningLottoNumber =  InputView.inputWinningLotto();
+        Lotto winninglotto = new Lotto(InputView.inputWinningLotto());
+        System.out.println(winninglotto.getNumbers());
     }
 }

@@ -12,6 +12,10 @@ public class InputValidator {
         return input.isEmpty();
     }
 
+    public static boolean isBlank(String input) {
+        return input.isBlank();
+    }
+
     public static boolean isNumber(String input) {
         for (char number : input.toCharArray()) {
             if (!Character.isDigit(number)) {
