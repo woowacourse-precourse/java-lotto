@@ -15,7 +15,7 @@
 - [ ] 설정값이 적절하게 지정되어 있는지 확인 - validate
     - [x] 숫자 범위가 올바르게 되어있는지 확인 - checkRangeNumber
     - [x] 자연수로 지정된 설정 중에 올바르게 되어있는지 확인 - checkNaturalNumber
-    - [ ] 0이 포함된 자연수로 지정된 설정 중에 올바르게 되어있는지 확인 - checkZeroAndNaturalNumber
+    - [ ] 0이 포함된 자연수로 지정된 설정 중에 올바르게 되어있는지 확인 - checkZeroOrNaturalNumber
     - [ ] 논리적 오류 확인 - checkIllegalLotto
       - [ ] 로또 길이보다 보너스 번호 길이가 긴지 확인 - checkLongerLottoThanBonus
       - [ ] 로또 길이 + 보너스 번호 길이가 숫자 범위 길이보다 큰지 확인 - checkLongerTotalThenNumber
