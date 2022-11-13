@@ -17,4 +17,13 @@ public class MoneyTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(MONEY_NOT_INTEGER);
     }
+
+    @DisplayName("구입 금액이 1000보다 작으면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1000", "-2000"})
+    void createMoneyByOutOfRange(String money) {
+        assertThatThrownBy(() -> new Money(money))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(MONEY_OUT_OF_RANGE);
+    }
 }
