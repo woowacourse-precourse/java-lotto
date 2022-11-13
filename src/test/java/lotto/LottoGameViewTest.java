@@ -2,15 +2,25 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import View.IoView;
+import View.LottoGameView;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import dto.ScratchResult;
 import java.util.List;
 import java.util.Map;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class IOManagerTest extends NsTest {
+public class LottoGameViewTest extends NsTest {
+    private static IoView lottoGameView;
+
+    @BeforeAll
+    private static void initialize(){
+        lottoGameView = LottoGameView.getInstance();
+    }
 
     @Override
     protected void runMain() {
@@ -30,10 +40,10 @@ public class IOManagerTest extends NsTest {
             @DisplayName("알맞은 입력인 경우 이를 리스트로 반환한다")
             void return_numberList_when_receive_right_input() {
                 run("1,2,3,4,5");
-                assertThat(IoManager.getWinningNumbersFromUser().equals(List.of(1, 2, 3, 4, 5)));
+                assertThat(lottoGameView.getWinningNumbersFromUser().equals(List.of(1, 2, 3, 4, 5)));
 
                 run("1");
-                assertThat(IoManager.getWinningNumbersFromUser().equals(List.of(1)));
+                assertThat(lottoGameView.getWinningNumbersFromUser().equals(List.of(1)));
             }
 
             @Test
@@ -41,27 +51,27 @@ public class IOManagerTest extends NsTest {
             void throw_Exception_when_input_is_wrong() {
                 Assertions.assertThatThrownBy(() -> {
                     run(",12");
-                    IoManager.getWinningNumbersFromUser();
+                    lottoGameView.getWinningNumbersFromUser();
                 }).isInstanceOf(IllegalArgumentException.class);
 
                 Assertions.assertThatThrownBy(() -> {
                     run("");
-                    IoManager.getWinningNumbersFromUser();
+                    lottoGameView.getWinningNumbersFromUser();
                 }).isInstanceOf(IllegalArgumentException.class);
 
                 Assertions.assertThatThrownBy(() -> {
                     run("3,2,");
-                    IoManager.getWinningNumbersFromUser();
+                    lottoGameView.getWinningNumbersFromUser();
                 }).isInstanceOf(IllegalArgumentException.class);
 
                 Assertions.assertThatThrownBy(() -> {
                     run("1,2,a,");
-                    IoManager.getWinningNumbersFromUser();
+                    lottoGameView.getWinningNumbersFromUser();
                 }).isInstanceOf(IllegalArgumentException.class);
 
                 Assertions.assertThatThrownBy(() -> {
                     run("1,,2");
-                    IoManager.getWinningNumbersFromUser();
+                    lottoGameView.getWinningNumbersFromUser();
                 }).isInstanceOf(IllegalArgumentException.class);
             }
         }
@@ -79,10 +89,10 @@ public class IOManagerTest extends NsTest {
             @DisplayName("알맞은 입력인 경우 이를 Integer 형태로 반환한다.")
             void return_number_when_receive_right_input() {
                 run("1");
-                assertThat(IoManager.getBonusNumberFromUser()).isEqualTo(1);
+                assertThat(lottoGameView.getBonusNumberFromUser()).isEqualTo(1);
 
                 run("52");
-                assertThat(IoManager.getBonusNumberFromUser()).isEqualTo(52);
+                assertThat(lottoGameView.getBonusNumberFromUser()).isEqualTo(52);
             }
 
             @Test
@@ -90,27 +100,27 @@ public class IOManagerTest extends NsTest {
             void throw_Exception_when_input_is_wrong() {
                 Assertions.assertThatThrownBy(() -> {
                     run(",");
-                    IoManager.getBonusNumberFromUser();
+                    lottoGameView.getBonusNumberFromUser();
                 }).isInstanceOf(IllegalArgumentException.class);
 
                 Assertions.assertThatThrownBy(() -> {
                     run("abc");
-                    IoManager.getBonusNumberFromUser();
+                    lottoGameView.getBonusNumberFromUser();
                 }).isInstanceOf(IllegalArgumentException.class);
 
                 Assertions.assertThatThrownBy(() -> {
                     run("");
-                    IoManager.getBonusNumberFromUser();
+                    lottoGameView.getBonusNumberFromUser();
                 }).isInstanceOf(IllegalArgumentException.class);
 
                 Assertions.assertThatThrownBy(() -> {
                     run("a");
-                    IoManager.getBonusNumberFromUser();
+                    lottoGameView.getBonusNumberFromUser();
                 }).isInstanceOf(IllegalArgumentException.class);
 
                 Assertions.assertThatThrownBy(() -> {
                     run("1,,2");
-                    IoManager.getBonusNumberFromUser();
+                    lottoGameView.getBonusNumberFromUser();
                 }).isInstanceOf(IllegalArgumentException.class);
             }
         }
@@ -131,7 +141,7 @@ public class IOManagerTest extends NsTest {
                 long totalEarning = LottoGrade.FIRST.prize + LottoGrade.SECOND.prize * 2;
                 double earningRate = 10;
                 ScratchResult result = new ScratchResult(lottoGradeIntegerMap, totalEarning, earningRate);
-                IoManager.printScratchResult(result);
+                lottoGameView.printScratchResult(result);
 
                 assertThat(output()).contains(
                         "당첨 통계",
@@ -160,7 +170,7 @@ public class IOManagerTest extends NsTest {
                 Lotto LottoC = new Lotto(List.of(1, 2, 16, 4, 5, 6));
 
                 List<Lotto> lottos = List.of(LottoA, LottoB, LottoC);
-                IoManager.printLottoPublishInfo(lottos);
+                lottoGameView.printLottoPublishInfo(lottos);
                 assertThat(output()).contains("3개를 구매했습니다.", "[1, 2, 3, 4, 5, 6]", "[1, 2, 4, 5, 6, 9]",
                         "[1, 2, 4, 5, 6, 16]");
             }
@@ -178,7 +188,7 @@ public class IOManagerTest extends NsTest {
             @Test
             @DisplayName("[ERROR] 에러 메시지 형태로 출력한다")
             void return_number_when_receive_right_input() {
-                IoManager.printException(new IllegalArgumentException("에러메시지"));
+                lottoGameView.printException(new IllegalArgumentException("에러메시지"));
                 assertThat(output()).contains("[ERROR] 에러메시지");
             }
         }

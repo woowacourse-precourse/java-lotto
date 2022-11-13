@@ -1,6 +1,7 @@
-package lotto;
+package dto;
 
 import java.util.Map;
+import lotto.LottoGrade;
 
 public class ScratchResult {
     private final Map<LottoGrade, Integer> countOfEachGrade;
