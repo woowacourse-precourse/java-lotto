@@ -1,10 +1,13 @@
 package lotto.template;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.utils.validator.MoneyValidator;
+import lotto.utils.validator.NumberValidator;
 
 public class Input {
-    public static void insertMoney() {
+    public static int insertMoney() {
         String input = readAfterPrint("구입금액을 입력해 주세요.");
+        return parseMoney(input);
     }
 
     public static void insertWinningNumbers() {
@@ -18,5 +21,10 @@ public class Input {
     private static String readAfterPrint(String out) {
         System.out.println(out);
         return Console.readLine();
+    }
+
+    private static int parseMoney(String input) {
+        NumberValidator.checkNaturalNumber(input);
+        return Integer.parseInt(input);
     }
 }
