@@ -1,6 +1,9 @@
 package lotto.view;
 
 public class GameOutput {
+    public static void getLottoNum(int n){
+        System.out.println("${n}개를 구매했습니다.");
+    }
     public static void getResult(){
         System.out.println("당첨 통계")
     }
