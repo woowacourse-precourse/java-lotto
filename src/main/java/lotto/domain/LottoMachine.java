@@ -13,10 +13,16 @@ public class LottoMachine {
 
     public List<Lotto> issueLottos(int lottoNum) {
         List<Lotto> lottos = new ArrayList<>();
-        List<Integer> numbers = getRandomNumbers();
-        lottos.add(new Lotto(numbers));
+        for (int i = 0; i < lottoNum; i++) {
+            addLotto(lottos);
+        }
 
         return null;
+    }
+
+    private void addLotto(List<Lotto> lottos) {
+        List<Integer> numbers = getRandomNumbers();
+        lottos.add(new Lotto(numbers));
     }
 
     private List<Integer> getRandomNumbers() {
@@ -24,4 +30,5 @@ public class LottoMachine {
         Collections.sort(numbers);
         return numbers;
     }
+
 }
