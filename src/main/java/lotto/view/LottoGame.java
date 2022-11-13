@@ -1,6 +1,8 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import lotto.Lotto;
 import lotto.LottoAnalyzer;
@@ -51,7 +53,9 @@ public class LottoGame {
 
     private void printLottoTickets() {
         for (Lotto lotto : userLottoTickets) {
-            System.out.println(lotto.getNumbers());
+            List<Integer> lottoNumbers = new ArrayList<>(lotto.getNumbers());
+            lottoNumbers.sort(Comparator.naturalOrder());
+            System.out.println(lottoNumbers);
         }
     }
 
