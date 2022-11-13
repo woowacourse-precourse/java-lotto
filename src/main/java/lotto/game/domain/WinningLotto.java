@@ -37,7 +37,6 @@ public class WinningLotto extends Lotto {
 
     private static List<Integer> parseStringNumbers(String numbersInput) {
         return Arrays.stream(numbersInput.split(","))
-                .sequential()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
