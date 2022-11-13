@@ -13,6 +13,13 @@ public abstract class Utility {
     public static final int minLottoNumber = 1;
     public static final int maxLottoNumber = 45;
 
+    public static final String inputAmountMessage = "구입금액을 입력해 주세요.";
+    public static final String purchaseLottoMessage = "개를 구매했습니다.";
+    public static final String inputWinningNumbers = "당첨 번호를 입력해 주세요.";
+    public static final String inputBonusNumber = "보너스 번호를 입력해 주세요.";
+    public static final String winningStatistics = "당첨 통계";
+    public static final String separateLine = "---";
+
     public void printMessage(String message){
         System.out.println(message);
     }
