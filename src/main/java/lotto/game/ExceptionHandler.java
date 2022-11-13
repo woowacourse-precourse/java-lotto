@@ -6,6 +6,8 @@ public class ExceptionHandler {
     public static final String NUMBER_ONLY_MESSAGE = "숫자만 입력해주세요.";
     public static final String BONUS_NUMBER_DUPLICATE_MESSAGE = "보너스 번호와 중복이 있습니다.";
     public static final String ILLEGAL_LOTTO_NUMBER_MESSAGE = "올바른 로또 번호가 아닙니다.";
+    public static final String NOT_SIX_NUMBER_MESSAGE = "로또의 숫자가 6개가 아닙니다.";
+    public static final String DUPLICATE_NUMBER_MESSAGE = "중복된 숫자가 있습니다.";
 
     public static void throwException(String message) {
         System.out.println(ERROR + message);

@@ -1,5 +1,7 @@
 package lotto.game.domain;
 
+import static lotto.game.ExceptionHandler.*;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +16,7 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또의 숫자가 6개가 아닙니다.");
+            throwException(NOT_SIX_NUMBER_MESSAGE);
         }
     }
 
@@ -23,7 +25,7 @@ public class Lotto {
                 .distinct()
                 .count();
         if (noDuplicateCount != 6) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+            throwException(DUPLICATE_NUMBER_MESSAGE);
         }
     }
 
