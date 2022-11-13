@@ -1,10 +1,11 @@
-package lotto;
+package lotto.domain.lottoMachine;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.Lotto;
 
 public class LottoMachine {
 
@@ -21,7 +22,7 @@ public class LottoMachine {
 
 
     private Lotto createLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(numbers);
         return new Lotto(numbers);
     }
