@@ -52,7 +52,7 @@ public class LottoGame {
         return matches;
     }
 
-    public static eLottoPlace matchLotto(Lotto l1, Lotto l2, int bonus) {
+    private static eLottoPlace matchLotto(Lotto l1, Lotto l2, int bonus) {
         int matches = 0;
 
         for (int num : l1.getNumbers()) {
