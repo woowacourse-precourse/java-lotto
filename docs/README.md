@@ -5,19 +5,17 @@
 - [x] 1부터 ~ 45사이의 숫자인지 확인한다. Lotto#validateNumbersInRange
 - [x] 로또 번호를 오름차순으로 정렬한다. Lotto#sortAscend()
 - [ ] 발행한 로또 번호를 가능한 당첨 번호와 가장 많이 일치하는 갯수와 일치 금액을 계산 한다. Lotto#matchWinner()
-- [ ] 로또의 결과 추가한다. Lotto#addResult()
-- [ ] 로또의 결과를 가져온다. Lotto#getResult()
 - [ ] 로또 구입 금액만큼 로또를 발행한다. LottoMachine#LottoForAmount()
 - [x] 로또 구입 금액을 입력 받는다. MoneyInput#getPurchaseAmount()
 - [x] 숫자만으로 이루어져 있는지 판별한다. MoneyInput#validateConvertingMoney()
 - [x] 1,000원으로 나누어 떨어지는지 검증한다. Money#validatePurchaseAmount()
 - [x] 로또 구입 금액을 가져온다. Money#getMoney()
 - [x] 로또를 발행한다. LottoMachine#issue()
-- [ ] 발행한 모든 로또를 가져온다. LottoMachine#getAllLottoes()
 - [ ] 당첨 번호를 입력 받는다. NumberInput#getWinningNumbers()
 - [ ] 보너스 번호를 입력 받는다. NumberInput#getBonusNumber()
-- [ ] 발행 로또가 로또 당첨 번호를 몇 개 가지고 있는지 확인한다. NumberComparison#numberOfSameNumbers()
-- [ ] 발행 로또가 보너스 번호를 포함하는지 확인한다. NumberComparison#isContainBonusNumber()
+- [ ] 발행 로또가 로또 당첨 번호를 몇 개 가지고 있는지 확인한다. WinLotto#numberOfSameNumbers()
+- [ ] 발행 로또가 보너스 번호를 포함하는지 확인한다. WinLotto#isContainBonusNumber()
+- [ ] 로또 결과를 가져온다. WinLotto#getAllResult();
 - [ ] 수익률을 가져온다. LottoStatistics#getPercentageOfProfit()
   - [ ] 수익률을 계산한다. LottoStatistics#calculatePercentageOfProfit()
 - [x] "구입금액을 입력해 주세요." 출력한다. RequestView#displayEnterPurchaseAmount()
@@ -34,7 +32,6 @@
 - Lotto: 로또 검증
 - LottoMachine: 로또 발행
 - WinLotto: 당첨 관련
-- NumberComparison: 숫자 비교
 - Profit: 통계 관련
 - Money: 돈
 - MoneyInput: 돈 입력
