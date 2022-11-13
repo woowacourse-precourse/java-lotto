@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.List;
-
 public class LottoNumber {
     private final int MIN = 1;
     private final int MAX = 45;
