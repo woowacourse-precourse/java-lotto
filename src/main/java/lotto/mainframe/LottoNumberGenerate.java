@@ -1,6 +1,7 @@
 package lotto.mainframe;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Comparator;
 import java.util.List;
 
 public class LottoNumberGenerate {
@@ -15,6 +16,7 @@ public class LottoNumberGenerate {
         List<Integer> lottoNumbers;
         for (int i = 0; i < lottoAmount; i++) {
             lottoNumbers = generateLottoNumbers();
+            lottoNumbers.sort(Comparator.naturalOrder());
             lotto = new Lotto(lottoNumbers);
             lotto.addLotto();
         }
