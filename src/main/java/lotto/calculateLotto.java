@@ -57,4 +57,15 @@ public class calculateLotto {
         }
         System.out.println("총 수익률은 "+rateLotto+"%입니다.");
     }
+    double rateLotto(int numberOflottos, List<Integer> winLottos){
+        // 계산하자 현재 가격을
+        int [] prizeMoney = {5000, 50000, 1500000, 30000000, 2000000000};
+        int getPrizeMoney = 0;
+        for(int i =0; i<winLottos.size();i++){
+            getPrizeMoney+=prizeMoney[i]*winLottos.get(i);
+        }
+        System.out.println(getPrizeMoney);
+        return (getPrizeMoney / (numberOflottos*1000))*100;
+    }
+    
 }
