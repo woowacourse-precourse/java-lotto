@@ -1,16 +1,21 @@
-package lotto.domain;
+package lotto.domain.prize;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Prize {
-    private static final String INPUT_PRIZE_NUMBER = "당첨 번호를 입력해 주세요.";
-    private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-
+    private static final String INPUT_BONUS_NUMBER_ERROR = "[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.";
     private final List<Integer> numbers = new ArrayList<>();
-    private int bonusNumber = 0;
+    private final int bonusNumber;
+
+    public Prize(String numbers, int bonusNumber) {
+        //TODO: 입력 값에 대한 validation
+
+        setNumbers(numbers);
+
+        validateBonusNumber(bonusNumber);
+        this.bonusNumber = bonusNumber;
+    }
 
     public List<Integer> getPrize() {
         return numbers;
@@ -18,22 +23,6 @@ public class Prize {
 
     public int getBonusNumber() {
         return bonusNumber;
-    }
-
-    public void inputPrize() {
-        System.out.println("\n" + INPUT_PRIZE_NUMBER);
-        String input = Console.readLine();
-
-        //TODO: 입력 값에 대한 validation
-        setNumbers(input);
-    }
-
-    public void inputBonus() {
-        System.out.println("\n" + INPUT_BONUS_NUMBER);
-        int input = Integer.parseInt(Console.readLine());
-
-        //TODO: 입력 값에 대한 validation
-        setBonusNumber(input);
     }
 
     private void setNumbers(String input) {
@@ -44,7 +33,10 @@ public class Prize {
         }
     }
 
-    private void setBonusNumber(int input) {
-        this.bonusNumber = input;
+    private void validateBonusNumber(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            System.out.println(INPUT_BONUS_NUMBER_ERROR);
+            throw new IllegalArgumentException(INPUT_BONUS_NUMBER_ERROR);
+        }
     }
 }
