@@ -13,6 +13,9 @@ public class Winning {
 
     private Integer bonus;
 
+    //당첨 통계 갯수 저장소
+    private List<Integer> countWin = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+
     public void setWinnings(String input) {
         List<Integer> check = new ArrayList<>();
         String[] str = input.split(",");
@@ -84,8 +87,7 @@ public class Winning {
     }
 
     public List<Integer> getTotalWinning(List<Lotto> user){
-        //당첨 통계 갯수 저장소
-        List<Integer> countWin = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+
         for(Lotto lotto: user){
             int sussecc = matchWinningLotto(lotto.getLotto());
             if(sussecc==3){
@@ -128,5 +130,27 @@ public class Winning {
             if(integer.equals(bonus)) return true;
         }
         return false;
+    }
+
+    public Double getToTalRate(int value){
+        double total =0;
+        for(int i=0 ; i<5 ; i++){
+            if(i == 0){
+                total +=(countWin.get(0) * 5000);
+            }
+            if(i == 1){
+                total += (countWin.get(1) * 50000);
+            }
+            if(i == 2) {
+                total += (countWin.get(2) * 1500000 );
+            }
+            if(i == 3){
+                total += (countWin.get(3) * 30000000 );
+            }
+            if(i == 4){
+                total += (countWin.get(4) * 2000000000);
+            }
+        }
+        return total/value;
     }
 }
