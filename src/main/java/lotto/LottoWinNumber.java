@@ -2,13 +2,13 @@ package lotto;
 
 import java.util.List;
 
-public class LottoWinNo {
+public class LottoWinNumber {
 
     private final List<Integer> numbers;
     private final int bonusNum;
     public static final int price=1000;
 
-    public LottoWinNo(List<Integer> numbers, int bonusNum) {
+    public LottoWinNumber(List<Integer> numbers, int bonusNum) {
         validate(numbers, bonusNum);
         this.numbers = numbers;
         this.bonusNum = bonusNum;
