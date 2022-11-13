@@ -90,7 +90,7 @@ public class LottoMachine {
             return WinPrize.TWO_GRADE;
         }
 
-        if (matchingCount >= WinPrize.THREE_GRADE.matchCount) {
+        if (matchingCount >= WinPrize.FIVE_GRADE.matchCount) {
             return buyerWinPrize;
         }
 
