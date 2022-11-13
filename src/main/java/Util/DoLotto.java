@@ -42,7 +42,6 @@ public class DoLotto {
         messagePrinter.printEarningsRate(user.calculateEarningRate());
     }
 
-
     public void play() throws IllegalArgumentException {
         purchaseLotto();
         makeLottoBundle();

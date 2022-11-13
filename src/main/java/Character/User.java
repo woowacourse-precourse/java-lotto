@@ -8,11 +8,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class User {
     private int money;
+    private int bonusNumber;
     private double earning = 0;
     private List<Lotto> lottoBundle = new ArrayList<>();
     private List<Integer> winningNumber = new ArrayList<>();
-    private int bonusNumber;
     private List<Integer> winningNumberCounting= new ArrayList<>(8);
+    LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
 
     public User() {
         for (int i=0; i<8; i++) {
@@ -20,15 +21,13 @@ public class User {
         }
     }
 
-    LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
-
     public void setMoney() throws IllegalArgumentException {
         int money;
         try {
             money = Integer.parseInt(Console.readLine());
             this.money=money;
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR]");
+            System.out.println("[ERROR] 잘못된 입력입니다.");
         }
     }
 
@@ -59,19 +58,15 @@ public class User {
     }
 
     public void inputWinningNumber() throws IllegalArgumentException  {
-        int convertedWinningNumber;
-        String inputtedWinningNumber;
+        List<Integer> winningNumber = new ArrayList<>();
         try {
-            inputtedWinningNumber = Console.readLine();
-            List<Integer> winningNumber = new ArrayList<>();
-            String[] unconvertedWinningNumber = inputtedWinningNumber.split(",");
+            String[] unconvertedWinningNumber = Console.readLine().split(",");
             for (String unconvertedWinningNumberContent : unconvertedWinningNumber) {
-                convertedWinningNumber = Integer.parseInt(unconvertedWinningNumberContent);
-                winningNumber.add(convertedWinningNumber);
+               winningNumber.add(Integer.parseInt(unconvertedWinningNumberContent));
             }
             this.winningNumber = winningNumber;
         } catch(NumberFormatException e) {
-            System.out.println("[ERROR]");
+            System.out.println("[ERROR] 잘못된 입력입니다.");
             throw new IllegalArgumentException();
         }
     }
