@@ -48,7 +48,7 @@ public class Money {
     }
 
     private static boolean isMoneyInputThousand(String moneyInput){
-        if(moneyInput.equals("000")){
+        if(moneyInput.contains("000")){
             return true;
         }
         return false;
