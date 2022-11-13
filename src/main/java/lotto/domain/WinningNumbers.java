@@ -9,7 +9,14 @@ public class WinningNumbers {
 	List<Integer> winningNumbers;
 
 	public WinningNumbers(String winningNumbers) {
-		List<Integer> NotYetValidatedWinningNumbers = Converter.convertStringWithCommaToIntegerList(winningNumbers);
-		this.winningNumbers = NotYetValidatedWinningNumbers;
+		List<Integer> notYetValidatedWinningNumbers = Converter.convertStringWithCommaToIntegerList(winningNumbers);
+		validate(notYetValidatedWinningNumbers);
+		this.winningNumbers = notYetValidatedWinningNumbers;
+	}
+
+	void validate(List<Integer> notYetValidatedWinningNumbers) {
+		Validator.validateSizeOfNumbers(notYetValidatedWinningNumbers);
+		Validator.validateNoDuplication(notYetValidatedWinningNumbers);
+		Validator.validateNumberRange(notYetValidatedWinningNumbers);
 	}
 }
