@@ -21,6 +21,9 @@ public class LottoManager {
 
     Map<Integer, Integer> winningStatistic;
 
+    // 수익률
+    double rateOfReturn;
+
     // 전체 동작을 구현하는 메소드
     public void run() {
         insertMoneyUI();
@@ -28,6 +31,7 @@ public class LottoManager {
         insertWinningNumberUI();
         insertBonusNumberUI();
         winningCheckUI();
+        rateOfReturnUI();
     }
 
 
@@ -246,6 +250,7 @@ public class LottoManager {
         }
     }
 
+    // 당첨 통계, 내역 출력 UI 메소드
     public void winningCheckUI() {
         winningCheck();
 
@@ -256,5 +261,23 @@ public class LottoManager {
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", winningStatistic.get(1_500_000));
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winningStatistic.get(30_000_000));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winningStatistic.get(2_000_000_000));
+    }
+
+    // 수익률 계산 메소드
+    public void calcRateOfReturn() {
+        long totalReturn = 0;
+
+        for (Integer key : winningStatistic.keySet()) {
+            totalReturn += (long) key * winningStatistic.get(key);
+        }
+
+        this.rateOfReturn = (totalReturn / (double) money) * 100;
+    }
+
+    // 수익률 UI 메소드
+    public void rateOfReturnUI() {
+        calcRateOfReturn();
+
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", this.rateOfReturn);
     }
 }
