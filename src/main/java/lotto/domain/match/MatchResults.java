@@ -3,6 +3,7 @@ package lotto.domain.match;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class MatchResults {
 
@@ -35,5 +36,24 @@ public class MatchResults {
 
     public int getCount(Reward reward) {
         return counts.getOrDefault(reward, 0);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof MatchResults)) {
+            return false;
+        }
+
+        MatchResults results = (MatchResults) o;
+
+        return Objects.equals(counts, results.counts);
+    }
+
+    @Override
+    public int hashCode() {
+        return counts != null ? counts.hashCode() : 0;
     }
 }

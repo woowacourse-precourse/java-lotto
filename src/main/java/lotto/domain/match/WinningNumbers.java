@@ -71,4 +71,28 @@ public class WinningNumbers {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList()));
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof WinningNumbers)) {
+            return false;
+        }
+
+        WinningNumbers that = (WinningNumbers) o;
+
+        if (bonusNumber != that.bonusNumber) {
+            return false;
+        }
+        return Objects.equals(standardNumbers, that.standardNumbers);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = standardNumbers != null ? standardNumbers.hashCode() : 0;
+        result = 31 * result + bonusNumber;
+        return result;
+    }
 }
