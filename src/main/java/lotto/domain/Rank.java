@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public enum Rank {
     FIRST(6, 2_000_000_000, false),
@@ -25,6 +29,13 @@ public enum Rank {
                 .filter(rank -> rank.matchCount == matchCount && rank.hitBonusNumber == hitBonusNumber)
                 .findFirst()
                 .orElse(NONE);
+    }
+
+    public static List<Rank> getSortedRank() {
+        return new ArrayList<>(Arrays.stream(Rank.values())
+                .filter(rank -> rank != NONE)
+                .sorted(Comparator.comparing(Rank::getReward))
+                .collect(Collectors.toList()));
     }
 
     public int getMatchCount() {
