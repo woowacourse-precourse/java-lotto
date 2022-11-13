@@ -2,28 +2,27 @@ package lotto.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import lotto.Constants;
 
 public class PrizeData {
-    private final Map<Integer, Integer> prize;
+    private final Map<Integer, Integer> prizeCount;
 
     PrizeData() {
-        prize = new HashMap<>();
+        prizeCount = new HashMap<>();
         putInitialPrizeData();
     }
 
-    void putInitialPrizeData() {
-        int END_PRIZE = 5;
-        int START_PRIZE = 1;
-        for (int initialData = START_PRIZE; initialData <= END_PRIZE; initialData++) {
-            prize.put(initialData, 0);
+    private void putInitialPrizeData() {
+        for (int prizeNumber = Constants.FIRST_PRIZE; prizeNumber <= Constants.END_PRIZE; prizeNumber++) {
+            prizeCount.put(prizeNumber, Constants.INITIAL_DATA_FOR_PRIZE_COUNT);
         }
     }
 
-    public void addPrizeCount(int prizeNumber) {
-        prize.merge(prizeNumber, 1, Integer::sum);
+    void addPrizeCount(int prizeNumber) {
+        prizeCount.merge(prizeNumber, 1, Integer::sum);
     }
 
-    public Map<Integer, Integer> getPrize() {
-        return prize;
+    public Map<Integer, Integer> getPrizeCount() {
+        return prizeCount;
     }
 }

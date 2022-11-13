@@ -18,12 +18,12 @@ public enum LottoInformation {
                     put(5, FIFTH);
                 }
             };
-    public final int prize;
+    public final int prizeNumber;
     public final int prizeMoney;
     public final int matchCount;
 
-    LottoInformation(int prize, int prizeMoney, int matchCount) {
-        this.prize = prize;
+    LottoInformation(int prizeNumber, int prizeMoney, int matchCount) {
+        this.prizeNumber = prizeNumber;
         this.prizeMoney = prizeMoney;
         this.matchCount = matchCount;
     }

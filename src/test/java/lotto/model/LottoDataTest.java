@@ -36,7 +36,7 @@ class LottoDataTest {
         lottoData.bonusNumber = 52;
 
         lottoData.makeLotto();
-        lottoData.calculateAllData();
+        lottoData.calculateAllLotto();
 
         assertThat(lottoData.prizeMoneySum).isEqualTo(0d);
     }
@@ -50,7 +50,7 @@ class LottoDataTest {
         lottoData.bonusNumber = 52;
 
         lottoData.makeLotto();
-        lottoData.calculateAllData();
+        lottoData.calculateAllLotto();
 
         assertThat(lottoData.prizeMoneySum).isEqualTo(24000000000d);
     }
@@ -62,8 +62,8 @@ class LottoDataTest {
         lottoData.bonusNumber = 52;
 
         lottoData.makeLotto();
-        lottoData.calculateAllData();
-        assertThat(lottoData.prize.getPrize().get(0)).isEqualTo(12);
+        lottoData.calculateAllLotto();
+        assertThat(lottoData.prizeCount.getPrizeCount().get(0)).isEqualTo(12);
         assertThat(lottoData.prizeMoneySum).isEqualTo(0);
     }
 
@@ -76,8 +76,8 @@ class LottoDataTest {
         lottoData.bonusNumber = 52;
 
         lottoData.makeLotto();
-        lottoData.calculateAllData();
-        assertThat(lottoData.prize.getPrize().get(1)).isEqualTo(12);
+        lottoData.calculateAllLotto();
+        assertThat(lottoData.prizeCount.getPrizeCount().get(1)).isEqualTo(12);
         assertThat(lottoData.prizeMoneySum).isEqualTo(24000000000d);
     }
 }

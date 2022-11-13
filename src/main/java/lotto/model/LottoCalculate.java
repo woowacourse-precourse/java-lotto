@@ -36,12 +36,12 @@ public class LottoCalculate {
         return 0;
     }
 
-    void totalCalculate(Lotto lotto, LottoData lottoData) {
+    void calculateOverall(Lotto lotto, LottoData lottoData) {
         int matchCount = checkMatches(lotto.getNumbers(), lottoData.winNumbers);
         boolean matchBonusNumber = checkBonusNumber(lotto.getNumbers(), lottoData.bonusNumber);
         int prizeNumber = calculatePrize(matchCount, matchBonusNumber);
         LottoInformation lottoInformation = convertPrizeNumberToLottoInfo.get(prizeNumber);
-        lottoData.prize.addPrizeCount(lottoInformation.prize);
+        lottoData.prizeCount.addPrizeCount(lottoInformation.prizeNumber);
         lottoData.prizeMoneySum += lottoInformation.prizeMoney;
     }
 

@@ -3,16 +3,16 @@ package lotto.model;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.Constants;
 import lotto.ErrorControl;
 
 public class InputLotto {
     private double money;
-    ErrorControl errorControl = new ErrorControl();
 
     public void inputMoney() {
         String input = Console.readLine();
-        errorControl.validateNumber(input);
-        money = errorControl.validateDivideThousand(Double.parseDouble(input));
+        ErrorControl.validateNumber(input);
+        money = ErrorControl.validateDivideThousand(Double.parseDouble(input));
     }
 
     public LottoData makeLottoData() {
@@ -25,14 +25,14 @@ public class InputLotto {
         lottoData.saveWinNumbers(winNumbers);
     }
 
-    List<Integer> convertToWinNumbers(String input) {
-        List<Integer> winNumbers = new ArrayList<>(6);
-        String[] splitInput = input.split(",");
-        errorControl.validateSeparatorAndSize(splitInput);
+    private List<Integer> convertToWinNumbers(String input) {
+        List<Integer> winNumbers = new ArrayList<>(Constants.LOTTO_SIZE);
+        String[] splitInput = input.split(Constants.NUMBER_SEPARATOR);
+        ErrorControl.validateSeparatorAndSize(splitInput);
 
         for (String number : splitInput) {
-            errorControl.validateNumberInRange(number);
-            winNumbers.add(errorControl.validateDuplicateNumber(winNumbers, Integer.parseInt(number)));
+            ErrorControl.validateNumberInRange(number);
+            winNumbers.add(ErrorControl.validateDuplicateNumber(winNumbers, Integer.parseInt(number)));
         }
         return winNumbers;
     }
@@ -43,10 +43,10 @@ public class InputLotto {
         lottoData.saveBonusNumber(bonusNumber);
     }
 
-    int convertToBonusNumber(String input, List<Integer> winNumbers) {
-        errorControl.validateNumberInRange(input);
+    private int convertToBonusNumber(String input, List<Integer> winNumbers) {
+        ErrorControl.validateNumberInRange(input);
         int bonusNumber = Integer.parseInt(input);
-        errorControl.validateDuplicateNumber(winNumbers, bonusNumber);
+        ErrorControl.validateDuplicateNumber(winNumbers, bonusNumber);
         return bonusNumber;
     }
 }

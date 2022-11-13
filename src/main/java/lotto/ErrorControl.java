@@ -6,57 +6,56 @@ import java.util.Set;
 
 public class ErrorControl {
 
-
-    public void validateSeparatorAndSize(String[] input) {
-        if (input.length != 6) {
-            throw new MyIllegalArgumentException("[ERROR] 6개의 숫자를 ',' 로 구분해 입력해주세요.");
+    public static void validateSeparatorAndSize(String[] input) {
+        if (input.length != Constants.LOTTO_SIZE) {
+            throw new MyIllegalArgumentException(Constants.ERROR_MESSAGE_INPUT_SIX_NUMBER_WITH_SEPARATOR);
         }
     }
 
-    public void validateNumberInRange(String number) {
+    public static void validateNumberInRange(String number) {
         int convertNumber;
         try {
             convertNumber = Integer.parseInt(number);
         } catch (IllegalArgumentException e) {
-            throw new MyIllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
+            throw new MyIllegalArgumentException(Constants.ERROR_MESSAGE_INPUT_NUMBER);
         }
-        if (convertNumber < 1 | convertNumber > 45) {
-            throw new MyIllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력해 주세요.");
+        if (convertNumber < Constants.MIN_LOTTO_NUMBER | convertNumber > Constants.MAX_LOTTO_NUMBER) {
+            throw new MyIllegalArgumentException(Constants.ERROR_MESSAGE_INPUT_NUMBER_IN_RANGE);
         }
     }
 
-    public int validateDuplicateNumber(List<Integer> winNumbers, int number) {
+    public static int validateDuplicateNumber(List<Integer> winNumbers, int number) {
         if (winNumbers.contains(number)) {
-            throw new MyIllegalArgumentException("[ERROR] 당첨 번호는 중복된 값을 가질 수 없습니다.");
+            throw new MyIllegalArgumentException(Constants.ERROR_MESSAGE_NO_DUPLICATE_IN_WIN_NUMBER);
         }
         return number;
     }
 
-    public void validateNumber(String money) {
+    public static void validateNumber(String money) {
         try {
             Double.parseDouble(money);
         } catch (IllegalArgumentException e) {
-            throw new MyIllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
+            throw new MyIllegalArgumentException(Constants.ERROR_MESSAGE_INPUT_NUMBER);
         }
     }
 
-    public double validateDivideThousand(double money) {
-        if (money % 1000 != 0) {
-            throw new MyIllegalArgumentException("[ERROR] 1000단위의 숫자를 입력해 주세요.");
+    public static double validateDivideThousand(double money) {
+        if (money % Constants.LOTTO_PRICE != 0) {
+            throw new MyIllegalArgumentException(Constants.ERROR_MESSAGE_INPUT_THOUSANDS_NUMBER);
         }
         return money;
     }
 
-    public void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new MyIllegalArgumentException("[ERROR] 로또 번호 개수는 6개여야 합니다.");
+    public static void validate(List<Integer> numbers) {
+        if (numbers.size() != Constants.LOTTO_SIZE) {
+            throw new MyIllegalArgumentException(Constants.ERROR_MESSAGE_NOT_LOTTO_SIZE);
         }
     }
 
-    public void validateDuplicateNumber(List<Integer> numbers) {
+    public static void validateDuplicateNumber(List<Integer> numbers) {
         Set<Integer> numbersToCheck = new HashSet<>(numbers);
         if (numbers.size() != numbersToCheck.size()) {
-            throw new MyIllegalArgumentException("[ERROR] 로또 번호는 중복된 값을 가질 수 없습니다.");
+            throw new MyIllegalArgumentException(Constants.ERROR_MESSAGE_NO_DUPLICATE_IN_LOTTO_NUMBER);
         }
     }
 

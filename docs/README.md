@@ -71,8 +71,8 @@
 - [x] enum 사용을 위한 LottoCalculate#calculatePrize() 메서드 간소화하기
 - [x] LottoData 클래스에서 map 초기값 입력 간소화 혹은 map 말고 다른 자료형 사용하기
 - [x] OutputView#printPercentageOfReturn() 에서 퍼센트 값이 클 때 E사용 안하고 출력하기
-- [ ] 하드코딩 제거, 상수 이름에 정보 추가하기
+- [x] 하드코딩 제거, 상수 이름에 정보 추가하기
   - [x] OutputView
 - [ ] 당첨금을 1,2,3,4,5,6, 처럼 끝에 콤마를 추가로 입력했을 때 에러 발생시키기
-- [ ] public ,private, 상수 정리 및 Java 컨벤선에 따라 위치 조정하기
+- [x] public ,private, 상수 정리 및 Java 컨벤선에 따라 위치 조정하기
 

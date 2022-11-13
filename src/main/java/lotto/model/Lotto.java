@@ -6,10 +6,9 @@ import lotto.ErrorControl;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        ErrorControl errorControl = new ErrorControl();
-        errorControl.validate(numbers);
-        errorControl.validateDuplicateNumber(numbers);
+    Lotto(List<Integer> numbers) {
+        ErrorControl.validate(numbers);
+        ErrorControl.validateDuplicateNumber(numbers);
         this.numbers = numbers;
     }
 

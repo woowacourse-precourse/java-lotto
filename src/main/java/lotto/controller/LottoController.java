@@ -6,10 +6,10 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
-    InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
-    InputLotto inputLotto = new InputLotto();
-    LottoData lottoData;
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+    private final InputLotto inputLotto = new InputLotto();
+    private LottoData lottoData;
 
     public void buyLotto() {
         inputView.printHowMuch();
@@ -25,8 +25,8 @@ public class LottoController {
         inputLotto.inputWinNumber(lottoData);
         inputView.printInputBonusNumber();
         inputLotto.inputBonusNumber(lottoData, lottoData.winNumbers);
-        lottoData.calculateAllData();
-        outputView.printPrize(lottoData.prize.getPrize());
+        lottoData.calculateAllLotto();
+        outputView.printPrize(lottoData.prizeCount.getPrizeCount());
         outputView.printPercentageOfReturn(lottoData.percentageOfReturn);
     }
 }

@@ -76,8 +76,8 @@ class LottoCalculateTest {
         List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(2, 3, 4, 5, 6, 7));
         Lotto lotto = new Lotto(lottoNumbers);
         lottoData.allLotto.add(lotto);
-        lottoData.calculateAllData();
-        assertThat(lottoData.prize.getPrize().get(2)).isEqualTo(1);
+        lottoData.calculateAllLotto();
+        assertThat(lottoData.prizeCount.getPrizeCount().get(2)).isEqualTo(1);
         assertThat(lottoData.prizeMoneySum).isEqualTo(30000000);
     }
 
@@ -90,8 +90,8 @@ class LottoCalculateTest {
         List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 9, 10));
         Lotto lotto = new Lotto(lottoNumbers);
         lottoData.allLotto.add(lotto);
-        lottoData.calculateAllData();
-        assertThat(lottoData.prize.getPrize().get(4)).isEqualTo(1);
+        lottoData.calculateAllLotto();
+        assertThat(lottoData.prizeCount.getPrizeCount().get(4)).isEqualTo(1);
         assertThat(lottoData.prizeMoneySum).isEqualTo(50000);
     }
 
@@ -104,8 +104,8 @@ class LottoCalculateTest {
         List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 10));
         Lotto lotto = new Lotto(lottoNumbers);
         lottoData.allLotto.add(lotto);
-        lottoData.calculateAllData();
-        assertThat(lottoData.prize.getPrize().get(3)).isEqualTo(1);
+        lottoData.calculateAllLotto();
+        assertThat(lottoData.prizeCount.getPrizeCount().get(3)).isEqualTo(1);
         assertThat(lottoData.prizeMoneySum).isEqualTo(1500000);
     }
 
