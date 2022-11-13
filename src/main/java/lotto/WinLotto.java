@@ -2,12 +2,12 @@ package lotto;
 
 import java.util.List;
 
-public class WinLottoNumber {
+public class WinLotto {
 
     private List<Integer> winLottoCount;
     private int bonusNumber = 0;
 
-    public WinLottoNumber(List<Integer> winLottoCount) {
+    public WinLotto(List<Integer> winLottoCount) {
         this.winLottoCount = winLottoCount;
     }
 

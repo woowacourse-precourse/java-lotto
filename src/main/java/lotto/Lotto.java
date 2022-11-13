@@ -61,16 +61,16 @@ public class Lotto {
     public List<Integer> compareLottos(List<Lotto> lottoNumber, List<Integer> winNumber) {
         List<Integer> compareNumber = new ArrayList<>();
         for (int i = 0; i < lottoNumber.size(); i++) {
-            WinLottoNumber winLottoNumber = compareLotto(lottoNumber.get(i), winNumber);
-            compareNumber.add(winLottoNumber.getWinLottoNumber().size());
+            WinLotto winLotto = compareLotto(lottoNumber.get(i), winNumber);
+            compareNumber.add(winLotto.getWinLottoNumber().size());
             System.out.println("당첨 번호의 개수:" + compareNumber.get(i) + ":");
         }
         return compareNumber;
     }
 
     // 로또 번호와 당첨 번호를 비교하여 같은 번호인 것을 WinLottoNumber에 저장하여 반환
-    public WinLottoNumber compareLotto(Lotto lottoNumber, List<Integer> winNumber){
-        WinLottoNumber winLottoNumber = new WinLottoNumber(lottoNumber.getLottoNumbers().stream()
+    public WinLotto compareLotto(Lotto lottoNumber, List<Integer> winNumber){
+        WinLotto winLottoNumber = new WinLotto(lottoNumber.getLottoNumbers().stream()
                 .filter(number -> winNumber.stream().anyMatch(Predicate.isEqual(number)))
                 .collect(Collectors.toList()));
         return winLottoNumber;
