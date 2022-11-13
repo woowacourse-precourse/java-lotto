@@ -29,6 +29,11 @@ public class LottoNumber {
         return Objects.hash(number);
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(number);
+    }
+
     private void validateRange(int number) {
         if (number < RANGE_BEGIN || number > RANGE_END) {
             throw new IllegalArgumentException("[ERROR] 1~45 범위 밖의 숫자가 포함되어 있습니다.");

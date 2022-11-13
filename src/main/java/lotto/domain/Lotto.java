@@ -28,6 +28,11 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
+
     private void validateSize(List<LottoNumber> numbers) {
         if (numbers.size() != SIZE) {
             throw new IllegalArgumentException("[ERROR] 로또는 숫자가 6개이어야 합니다.");
