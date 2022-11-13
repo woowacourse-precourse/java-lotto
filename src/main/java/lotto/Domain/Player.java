@@ -13,6 +13,30 @@ public class Player {
     private int playerBonusNumber;
     private List<Lotto> lottos;
 
+    public int getMoney() {
+        return this.money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public List<Integer> getPlayerLotto() {
+        return this.playerLotto.getLottoNumbers();
+    }
+
+    public void setPlayerLotto(List<Integer> playerLotto) {
+        this.playerLotto = new Lotto(playerLotto);
+    }
+
+    public int getPlayerBonusNumber() {
+        return this.playerBonusNumber;
+    }
+
+    public void setPlayerBonusNumber(int bonusBall) {
+        this.playerBonusNumber = bonusBall;
+    }
+
     public int getLottoCount() {
         return this.lottoCount;
     }
@@ -30,9 +54,13 @@ public class Player {
         this.lottos = lottos;
     }
 
-    public List<String> getLottos() {
+    public List<String> getLottosList() {
         return this.lottos.stream()
                 .map(value -> value.getLottoNumbers().toString())
                 .collect(Collectors.toList());
+    }
+
+    public List<Lotto> getLottos() {
+        return this.lottos;
     }
 }
