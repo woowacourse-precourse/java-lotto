@@ -28,4 +28,16 @@ public class Lotto {
             throw new IllegalArgumentException(ERROR_DUPLICATED);
         }
     }
+
+    private void validateNumbersRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            validateNumberRange(number);
+        }
+    }
+
+    private void validateNumberRange(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(ERROR_OVER_RANGE);
+        }
+    }
 }
