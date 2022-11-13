@@ -20,16 +20,16 @@ public class InputValidator {
         }
     }
 
-    public boolean isNumber(String purchaseAmount) {
-        return purchaseAmount.chars().allMatch(Character::isDigit);
+    public boolean isNumber(String number) {
+        return number.chars().allMatch(Character::isDigit);
     }
 
-    public boolean isPositiveNumber(String purchaseAmount) {
-        return Integer.parseInt(purchaseAmount) > 0;
+    public boolean isPositiveNumber(String number) {
+        return Integer.parseInt(number) > 0;
     }
 
-    public boolean isDivisibleBy1000(String purchaseAmount) {
-        return Integer.parseInt(purchaseAmount) % LottoConstants.LOTTO_TICKET_PRICE == 0;
+    public boolean isDivisibleBy1000(String number) {
+        return Integer.parseInt(number) % LottoConstants.LOTTO_TICKET_PRICE == 0;
     }
 
     public void validateWinningNumber(String winningNumber) {
@@ -43,4 +43,9 @@ public class InputValidator {
         return Pattern.matches(pattern, winningNumber);
     }
 
+    public void validateBonusNumber(String bonusNumber) {
+        if (!isNumber(bonusNumber)) {
+            throw new IllegalArgumentException(GameConstants.ERROR_IS_NOT_NUMBER_BONUS);
+        }
+    }
 }

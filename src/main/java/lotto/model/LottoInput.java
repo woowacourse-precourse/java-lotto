@@ -29,4 +29,10 @@ public class LottoInput {
         String[] numbers = winningNumber.split(",");
         return Arrays.stream(numbers).map(Integer::parseInt).collect(Collectors.toList());
     }
+
+    public int inputBonusNumber() {
+        String bonusNumber = inputLottoGame();
+        inputValidator.validateBonusNumber(bonusNumber);
+        return Integer.parseInt(bonusNumber);
+    }
 }

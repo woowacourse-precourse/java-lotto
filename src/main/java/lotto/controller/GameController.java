@@ -44,5 +44,6 @@ public class GameController {
 
     public void assignBonusNumber() {
         gameMessage.printInputBonusNumber();
+        int bonusNumber = lottoInput.inputBonusNumber();
     }
 }
