@@ -7,8 +7,6 @@ import java.util.List;
 import lotto.Constants.PRINT;
 import lotto.domain.Buyer;
 import lotto.domain.Generator;
-import lotto.domain.Lotto;
-import lotto.domain.Ranking;
 
 public class Display {
     private Display() {
@@ -34,21 +32,14 @@ public class Display {
         System.out.println(PRINT.INPUT_BONUS_NUMBER);
     }
 
-    public static void winningResults(Buyer buyer) {
+    private static void countRanking(Buyer buyer) {
         System.out.println(PRINT.WINNING_RESULTS);
+        List<Ranking> rankings = Ranking.getAll();
         HashMap<String, Integer> winningSummary = buyer.getWinningSummary();
-        List<Ranking> rankings = new ArrayList<Ranking>(
-                Arrays.asList(
-                        Ranking.FIFTH,
-                        Ranking.FOURTH,
-                        Ranking.THIRD,
-                        Ranking.SECOND,
-                        Ranking.FIRST));
-
         rankings.stream()
                 .forEach(rank -> {
                     int rankCount = winningSummary.get(rank.getLabel());
-                    if (rank.getLabel().equals(Lotto.RANK_SECOND)) {
+                    if (rank.getLabel().equals(Ranking.SECOND.getLabel())) {
                         buyer.setTotalWinningPrize(rank.getPrize() * rankCount);
                         System.out.printf(
                                 PRINT.BONUS_CORRECT_FORMAT,
@@ -62,12 +53,16 @@ public class Display {
                             rank.getWinningCount(), rank.getPrizeLabel(),
                             rankCount);
                 });
+    }
 
+    public static void winningResults(Buyer buyer) {
+        countRanking(buyer);
+    }
+
+    public static void profitResult(Buyer buyer) {
         double totalPrize = Generator.profitCalculate(
                 buyer.getTotalPurchaseAmout(), buyer.getTotalWinningPrize());
-
         System.out.printf(PRINT.PROFIT_FORMAT, totalPrize);
-
     }
 
     public static void lottoNumbers(List<Integer> lotto) {
