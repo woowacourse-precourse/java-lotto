@@ -61,8 +61,8 @@ public class Service {
 
     private int checkBonusNumber(List<Integer> lottoNumbers, List<Integer> playerLottoNumbers,
                                  int playerBonusNumber) {
-        List<Integer> checkBonusNumber = new ArrayList<>(playerLottoNumbers);
-        checkBonusNumber.removeAll(lottoNumbers);
+        List<Integer> checkBonusNumber = new ArrayList<>(lottoNumbers);
+        checkBonusNumber.removeAll(playerLottoNumbers);
 
         if (checkBonusNumber.get(0) == playerBonusNumber) {
             return WinnerInfo.RANK2.ordinal();
