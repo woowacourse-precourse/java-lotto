@@ -1,16 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserInput {
-
-    static final private int MAX_NUMBER = 45;
-    static final private int MIN_NUMBER = 1;
-    static final private int NUMBER_COUNT = 6;
-    List<List<Integer>> lotteries = new ArrayList<>();
 
     public Calculator inputMoney() {
         Message.INPUT_MONEY.print();
@@ -31,20 +26,6 @@ public class UserInput {
         if (money % 1000 != 0 || money == 0) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_1000.printError());
         }
-    }
-
-    void generateRandomLotto(long quantity) {
-        for (int i = 0; i < quantity; i++) {
-            List<Integer> randomLotto =
-                    new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT));
-            randomLotto.sort(Comparator.naturalOrder());
-            lotteries.add(randomLotto);
-            printLotto(randomLotto);
-        }
-    }
-
-    void printLotto(List randomLotto) {
-        System.out.println(randomLotto);
     }
 
     public Lotto inputWinningNumber() {
