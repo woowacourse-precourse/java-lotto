@@ -1,2 +1,36 @@
-package lotto.domain;public enum WinningNumbers {
+package lotto.domain;
+
+public enum WinningNumbers {
+    THREE(3, 5000L),
+    FOUR(4, 50000L),
+    FIVE(5, 1500000L),
+    FIVE_BONUS(5, 30000000L),
+    SIX(6, 2000000000L);
+
+    private final int matches;
+    private final long reward;
+
+    WinningNumbers(int matches,long reward) {
+        this.matches = matches;
+        this.reward = reward;
+    }
+
+
+    public static long getReward(int matches, boolean bonusCheck) {
+        if (matches == 5 && bonusCheck) {
+            return FIVE_BONUS.reward;
+        }
+
+        for (WinningNumbers winningNumbers : WinningNumbers.values()) {
+            if (matches == winningNumbers.matches) {
+                return winningNumbers.reward;
+            }
+        }
+
+        return 0L;
+    }
+
+    public int getMatch() {
+        return matches;
+    }
 }

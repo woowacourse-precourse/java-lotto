@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +27,28 @@ public class Lotto {
         checkNumberRange(bonusNumer);
 
         makeSureUniqueNumber(bonusNumer, numbers);
+    }
+
+    public List<Integer> countMatches(List<List<Integer>> lottoBundle) {
+        Set<Integer> winningNumbers = new HashSet<>(numbers);
+        List<Integer> result = new ArrayList<>();
+
+        for (List<Integer> singleLotto : lottoBundle) {
+            Set<Integer> mySingleLotto = new HashSet<>(singleLotto);
+            mySingleLotto.retainAll(winningNumbers);
+            result.add(mySingleLotto.size());
+        }
+
+        return result;
+    }
+
+    public List<Boolean> checkBonusMatch(int bonusNumber, List<List<Integer>> lottoBundle) {
+        List<Boolean> result = new ArrayList<>();
+        for (List<Integer> singleLotto : lottoBundle) {
+            result.add(singleLotto.contains(bonusNumber));
+        }
+
+        return result;
     }
 
     private void checkNumberLength(List<Integer> numbers) throws IllegalArgumentException {
