@@ -40,6 +40,17 @@ class CalculatorTest {
             double result = 33.3;
             assertThat(actual).isEqualTo(result);
         }
+
+        @DisplayName("올리는 경우")
+        @Test
+        void case3() {
+            int total = 5000;
+            int cash = 9000;
+
+            double actual = calculator.getProfit(total, cash);
+            double result = 55.6;
+            assertThat(actual).isEqualTo(result);
+        }
     }
 
     @DisplayName("countLottoNumber 메소드 테스트")
