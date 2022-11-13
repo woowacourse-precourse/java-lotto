@@ -116,9 +116,13 @@ public class Application {
     }
 
     static List<Integer> count_result (List<Integer> count_rank, float result){
+        int index_temp;
+        int count_temp;
         for(RankType r: RankType.values()){
             if(r.getNum()==result){
-                count_rank.set(r.check,count_rank.get(r.check)+1);
+                index_temp = r.getCheck();
+                count_temp = count_rank.get(index_temp);
+                count_rank.set(index_temp, count_temp + 1);
             }
         }
         return count_rank;
