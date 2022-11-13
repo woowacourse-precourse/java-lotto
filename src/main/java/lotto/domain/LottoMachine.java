@@ -8,4 +8,8 @@ public class LottoMachine {
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
+    
+    public LottoResult check(LottoTicket lottoTicket) {
+        return lottoTicket.check(winningNumbers, bonusNumber);
+    }
 }
