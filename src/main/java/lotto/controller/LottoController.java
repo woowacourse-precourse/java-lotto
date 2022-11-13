@@ -12,11 +12,16 @@ public class LottoController {
     }
 
     public void run() {
-        OutputView.printInputAmount();
         try{
-            Integer paidAmount = InputView.inputPaidAmount();
+            start();
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
+    }
+
+    public void start() {
+        OutputView.printInputAmount();
+        Integer paidAmount = InputView.inputPaidAmount();
+
     }
 }
