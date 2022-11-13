@@ -1,12 +1,26 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
+import lotto.strategy.LottoGenerateStrategy;
 
 public class Lottos {
 
-    private final List<Lotto> lottos ;
+    public List<Lotto> lottos = new ArrayList<>();
 
-    public Lottos(List<Lotto> lottos) {
-        this.lottos = lottos;
+    public Lottos(int pieces, LottoGenerateStrategy lottoGenerateStrategy) {
+        this.lottos = makeLottos(pieces, lottoGenerateStrategy);
+    }
+
+    private List<Lotto> makeLottos(int pieces, LottoGenerateStrategy lottoGenerateStrategy) {
+        for (int i = 0; i < pieces; i++) {
+            Lotto lotto = new Lotto(lottoGenerateStrategy.generateLotto());
+            lottos.add(lotto);
+        }
+        return lottos;
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 }
