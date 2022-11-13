@@ -17,8 +17,6 @@ class LotteryDrawMachineTest {
         LotteryDrawMachine ldm = new LotteryDrawMachine(user);
         List<Lotto> lottos = ldm.generateLotto();
 
-        System.out.println(lottos);
-
         assertThat(lottos.size()).isEqualTo(8);
     }
 

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.ENUMS;
 
 public enum ErrorMessages {
     ERROR_SIGN("[ERROR]"),
