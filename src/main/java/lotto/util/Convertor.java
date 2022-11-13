@@ -6,6 +6,7 @@ import lotto.constant.Constant;
 
 public class Convertor {
 
+    // 이중 리스트에서 리스트 한 개씩 추출하는 기능
     public static List<Integer> ExtractList(List<List<Integer>> list, int index) {
         List<Integer> result = new ArrayList<>();
 
@@ -15,6 +16,7 @@ public class Convertor {
         return result;
     }
 
+    // String 타입 List를 Integer 타입 List로 변환하는 기능
     public static List<Integer> StringToInteger(List<String> numbers) {
         List<Integer> result = new ArrayList<>();
 

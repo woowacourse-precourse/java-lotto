@@ -7,6 +7,7 @@ import lotto.view.View;
 
 /*
  * player의 입력을 담당하는 클래스
+ * (최소한의 입력 값 유효성 검증 담당: 공백 여부, 정수 여부 검증)
  */
 
 public class PlayerInput {

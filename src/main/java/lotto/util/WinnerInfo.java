@@ -1,5 +1,9 @@
 package lotto.util;
 
+/*
+ * 로또 당첨 조건 및 상금 등의 정보를 담당하는 enum 클래스
+ */
+
 public enum WinnerInfo {
 
     RANK1(1, 6, "6개 일치 (2,000,000,000원)", 2_000_000_000),
