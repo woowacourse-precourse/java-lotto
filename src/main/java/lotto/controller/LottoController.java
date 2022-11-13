@@ -19,15 +19,15 @@ public class LottoController {
     public void run() {
 
         Money money = inputMoney();
-        LottoMachine lottoMachine = new LottoMachine(money);
-        LottoWithBonus lottoWithBonus = inputBonus(inputLotto());
+        LottoMachine haveLotto = new LottoMachine(money);
+        LottoWithBonus winningLotto = inputBonus(inputLotto());
 
-        Compare compare = new Compare(lottoMachine, lottoWithBonus);
+        Compare compare = new Compare(haveLotto, winningLotto);
 
         Map<LottoReference, Integer> result = compare.getResult();
-        float yield = compare.getYield(result);
 
-        outputHandler.winningStatistics(result, yield);
+        outputHandler.winningStatistics(result);
+        outputHandler.printYield(compare.getYield(result));
     }
 
     private Money inputMoney() {

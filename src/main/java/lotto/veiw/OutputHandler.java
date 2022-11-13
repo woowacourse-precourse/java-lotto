@@ -8,9 +8,8 @@ import lotto.domain.LottoReference;
 
 public class OutputHandler {
 
-    public void winningStatistics(Map<LottoReference, Integer> result, float yield) {
+    public void winningStatistics(Map<LottoReference, Integer> result) {
         DecimalFormat moneyFormat = new DecimalFormat("###,###");
-        DecimalFormat floatFormat = new DecimalFormat("###,###.#");
 
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -21,8 +20,10 @@ public class OutputHandler {
                         result.getOrDefault(lo, 0));
             }
         }
-
-        System.out.printf("총 수익률은 %s%%입니다.\n", floatFormat.format(yield));
     }
 
+    public void printYield(float yield) {
+        DecimalFormat floatFormat = new DecimalFormat("###,###.#");
+        System.out.printf("총 수익률은 %s%%입니다.\n", floatFormat.format(yield));
+    }
 }
