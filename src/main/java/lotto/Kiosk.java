@@ -12,12 +12,12 @@ public class Kiosk {
     static protected List<Integer> winningNumbers;
     static protected int bonusNumber;
     static protected Integer[] resultStatistics = {0, 0, 0, 0, 0};
-    static protected Buyer buyer;
+    static int payment;
 
     static public void start(Buyer buyer) {
-        int payment = getPurchaseAmount();
+        payment = getPurchaseAmount();
         int numberOfLottos = countLottos(payment);
-        buyer = new Buyer(Generator.generate(numberOfLottos));
+        buyer.buy(Generator.generate(numberOfLottos));
     }
 
     static private int getPurchaseAmount() {
