@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class LottoVendorTest {
+class LottoServiceTest {
 
     @Test
     void 로또3장구매() {
@@ -19,8 +19,8 @@ class LottoVendorTest {
         Context.setLottoNumberGenerator(new LottoNumberGeneratorSequenceImpl(
                 List.of(lotto1, lotto2, lotto3)
         ));
-        LottoVendor lottoVendor = new LottoVendor();
-        List<Lotto> lottos = lottoVendor.purchase(3000);
+        LottoService lottoService = new LottoService();
+        List<Lotto> lottos = lottoService.purchase(3000);
         assertThat(lottos).contains(new Lotto(lotto1), new Lotto(lotto2), new Lotto(lotto3));
     }
 
@@ -32,8 +32,8 @@ class LottoVendorTest {
         Context.setLottoNumberGenerator(new LottoNumberGeneratorSequenceImpl(
                 List.of(lotto1, lotto2, lotto3)
         ));
-        LottoVendor lottoVendor = new LottoVendor();
-        assertThatThrownBy(()-> lottoVendor.purchase(3001))
+        LottoService lottoService = new LottoService();
+        assertThatThrownBy(()-> lottoService.purchase(3001))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
