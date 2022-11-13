@@ -39,6 +39,6 @@ public class Issue {
         return history;
     }
     public double calculate(int winRevenue){
-        return winRevenue/amount*1000;
+        return winRevenue/(amount*1000);
     }
 }
