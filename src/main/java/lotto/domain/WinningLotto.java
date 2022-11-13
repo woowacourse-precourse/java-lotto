@@ -17,8 +17,11 @@ public class WinningLotto{
 	int rank = 0;
 	for (Integer lottoNumber: lottoNumbers.getLottoNumbers()) {
 	    rank += isContainWinningNumber(lottoNumber);
+	    rank += isContainBonusNumber(lottoNumber);
 	}
-	rank += isNotContainBonusNumber(rank, lottoNumbers.getLottoNumbers());
+	if (rank == MAXIMUM_RANK) {
+	    rank += isNotContainBonusNumber(rank, lottoNumbers.getLottoNumbers());
+	}
 	return rank - RANK_TO_LIST;
     }
 
@@ -26,6 +29,10 @@ public class WinningLotto{
 	if (winningLottoNumber.getLottoNumbers().contains(lottoNumber)) {
 	    return 1;
 	}
+	return 0;
+    }
+
+    private static int isContainBonusNumber(Integer lottoNumber) {
 	if (lottoNumber == bonusNumber) {
 	    return 1;
 	}
@@ -33,9 +40,6 @@ public class WinningLotto{
     }
 
     private static int isNotContainBonusNumber(int rank, List<Integer> lottoNumbers) {
-	if (rank != MAXIMUM_RANK) {
-	    return 0;
-	}
 	if (!lottoNumbers.contains(bonusNumber)) {
 	    return 1;
 	}
