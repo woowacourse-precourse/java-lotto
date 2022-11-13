@@ -80,4 +80,16 @@ class LottoTest {
         /*then*/
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("8개를 구매했습니다.");
     }
+
+    PlayLotto playLotto = new PlayLotto();
+    @DisplayName("티켓 갯수만큼 로또번호 생성한다.")
+    @Test
+    void playLottoTicketCountTest() {
+        /*given*/
+        Integer playLottoTicketCountSizeTest = 8;
+        /*when*/
+        Integer playLottoTicketCountSize = playLotto.playLottoTicketCount(8).size();
+        /*then*/
+        assertThat(playLottoTicketCountSizeTest).isEqualTo(playLottoTicketCountSize);
+    }
 }
