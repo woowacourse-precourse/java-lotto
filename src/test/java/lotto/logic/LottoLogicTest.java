@@ -2,7 +2,9 @@ package lotto.logic;
 
 import lotto.domain.Lotto;
 import lotto.domain.Result;
+import lotto.domain.Win;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -30,6 +32,11 @@ class LottoLogicTest {
 
     List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
     Integer bonusNumber = 7;
+
+    @BeforeEach
+    void setUp() {
+        Win.initializeCount();
+    }
 
     @Test
     void 여섯개의_임의의_중복없는_숫자조합으로_된_로또_생성() {
