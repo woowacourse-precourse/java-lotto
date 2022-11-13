@@ -8,6 +8,12 @@ import org.junit.jupiter.api.Test;
 class ValidatorTest {
 
 	@Test
+	@DisplayName("당첨 번호 입력의 형식이 올바른지 검증한다.")
+	void v1alidateIntegerInput() {
+		assertThatThrownBy(() -> Validator.validateWinningNumbers("12,3,4,5,5")).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
 	@DisplayName("정수인 입력을 검증한다.")
 	void validateIntegerInput() {
 		assertThatNoException().isThrownBy(() -> Validator.validateIntegerOrNot("1234"));
