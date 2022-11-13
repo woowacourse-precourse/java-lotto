@@ -42,8 +42,8 @@ public class MessageUtil {
         System.out.println(WINNING_STATS.getMessage());
     }
 
-    public void printWinningStatsResult(int matchCount, int amount, int lottoCount) {
-        System.out.printf(WINNING_STATS_RESULT.getMessage(), matchCount, amount, lottoCount);
+    public void printWinningStatsResult(int number, int price, int matchCount) {
+        System.out.printf(WINNING_STATS_RESULT.getMessage(), number, price, matchCount);
     }
 
     public void printEarningRate(Double rate) {
