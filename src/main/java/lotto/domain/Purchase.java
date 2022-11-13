@@ -25,6 +25,7 @@ public class Purchase {
         printLottos(lottos);
 
         inputNumbers();
+        inputBonusNumber();
     }
 
     /**
@@ -61,5 +62,6 @@ public class Purchase {
      */
     private static void inputBonusNumber() {
         printInputBonusNumber();
+        System.out.println(Input.inputBonusNumber());
     }
 }

@@ -91,4 +91,9 @@ public class Input {
     private static boolean isValidCount(String numbers) {
         return numbers.split(",").length == LOTTO_COUNT;
     }
+
+    public static int inputBonusNumber() {
+        String number = Console.readLine();
+        return Integer.parseInt(number);
+    }
 }
