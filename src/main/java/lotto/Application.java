@@ -26,6 +26,11 @@ public class Application {
             buy_numbers.add(new Lotto(Lotto.buy_lotto()));
         }
 
+        for (Lotto list : buy_numbers) {
+            list.sort();
+            System.out.println(list.getList());
+        }
+
         System.out.println("\n당첨 번호를 입력해 주세요.");
 
         win_numbers = Arrays.stream(Console.readLine().split(","))
