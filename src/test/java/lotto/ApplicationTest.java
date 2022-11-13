@@ -52,8 +52,8 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("1000j"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
 
