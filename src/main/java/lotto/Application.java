@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.model.LottoGroup;
-import lotto.model.WinningNumber;
+import lotto.domain.LottoGroup;
+import lotto.domain.WinningNumber;
 import lotto.view.input.Generator;
 import lotto.view.input.UserInput;
 import lotto.view.output.Guide;

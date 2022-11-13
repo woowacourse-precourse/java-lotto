@@ -1,6 +1,6 @@
 package lotto.view.output;
 
-import lotto.model.LottoGroup;
+import lotto.domain.LottoGroup;
 
 public class Guide {
 

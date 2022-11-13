@@ -1,7 +1,7 @@
 package lotto.view.input;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.model.Lotto;
+import lotto.domain.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;

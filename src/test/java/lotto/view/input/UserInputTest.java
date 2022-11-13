@@ -141,7 +141,5 @@ class UserInputTest {
             assertThatThrownBy(() -> userInput.getWinningNumber())
                     .isInstanceOf(IllegalArgumentException.class);
         }
-
-
     }
 }
