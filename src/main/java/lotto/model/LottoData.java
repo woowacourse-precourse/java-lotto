@@ -14,6 +14,7 @@ public class LottoData {
     public List<Integer> winNumbers;
     public List<Lotto> allLotto;
     public PrizeData prize;
+    public float percentageOfReturn;
     private final LottoCalculate lottoCalculate = new LottoCalculate();
 
     public LottoData(double money) {
@@ -39,10 +40,7 @@ public class LottoData {
         for (Lotto lotto : allLotto) {
             lottoCalculate.totalCalculate(lotto, this);
         }
-    }
-
-    public float percentageOfReturn() {
-        return lottoCalculate.calculatePercentageOfReturn(money, prizeMoneySum);
+        lottoCalculate.calculatePercentageOfReturn(this);
     }
 
     void saveWinNumbers(List<Integer> winNumbers) {
