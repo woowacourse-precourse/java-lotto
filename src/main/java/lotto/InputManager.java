@@ -26,7 +26,10 @@ public class InputManager {
 
     public void inputAnswerNumbers() {
         String answerStrings = Console.readLine();
-        String[] answerList = answerStrings.split(",");
+        List<String> answerList = Arrays.asList(answerStrings.split(","));
+        if(answerList.size() != answerList.stream().distinct().count()){
+            throw new IllegalArgumentException();
+        }
         for (String stringIndex : answerList) {
             answerNumbers.add(Integer.parseInt(stringIndex));
         }
