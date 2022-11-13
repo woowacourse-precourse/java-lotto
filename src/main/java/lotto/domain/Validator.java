@@ -55,7 +55,8 @@ public class Validator {
 
     private void verifyUserInputIsMultipleOf1000(String verifiedUserInput) {
         try {
-            if (Integer.parseInt(verifiedUserInput) % 1000 != 0) {
+            int userInputMoney = Integer.parseInt(verifiedUserInput);
+            if (userInputMoney == 0 || userInputMoney % 1000 != 0) {
                 throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력을 해주세요.");
             }
         }catch (NumberFormatException e) {
