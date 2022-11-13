@@ -51,4 +51,8 @@ public class User {
     public static int getLottoAmount() {
         return lottoAmount;
     }
+
+    public static List<List<Integer>> getLotteries() {
+        return lotteries;
+    }
 }
