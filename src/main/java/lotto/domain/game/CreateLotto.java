@@ -20,4 +20,8 @@ public class CreateLotto {
     public void sortNatural(){
         lotto.sort(Comparator.naturalOrder());
     }
+
+    public List<Integer> getLotto(){
+        return lotto;
+    }
 }
