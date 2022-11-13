@@ -14,7 +14,7 @@ public class Buyer {
         validateSeedMoney();
     }
 
-    private void inputSeedMoney(int seedMoney) {
+    private void inputSeedMoney() {
         this.seedMoney = seedMoney;
     }
 
@@ -22,14 +22,14 @@ public class Buyer {
         System.out.println("");
     }
 
-    private void validateSeedMoney(int seedMoney) {
+    private void validateSeedMoney() {
     }
 
     public void checkPrize() {
         requestPrizeToStore();
     }
 
-    private void requestPrizeToStore(List<Lotto> myLottos) {
+    private void requestPrizeToStore() {
     }
 
     private void printPrize() {

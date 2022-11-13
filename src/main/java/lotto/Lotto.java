@@ -21,6 +21,7 @@ public class Lotto {
     private void validateSize() {}
 
     public List<Integer> generateRandomNumbers() {
-        return List<Integer> = null;
+        //return List<Integer> = null;
+        return null;
     }
 }

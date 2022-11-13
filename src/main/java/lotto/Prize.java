@@ -13,9 +13,9 @@ public enum Prize {
     private boolean bonus;
     private int prizeMoney;
 
-    public Prize(int matching, boolean bouns, int prizeMoney) {
-        this.matching = matching;
-        this.bouns = bouns;
+    Prize(int count, boolean bonus, int prizeMoney) {
+        this.matching = count;
+        this.bonus = bonus;
         this.prizeMoney = prizeMoney;
     }
 }
