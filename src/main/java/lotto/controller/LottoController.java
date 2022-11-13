@@ -24,22 +24,44 @@ public class LottoController {
 	}
 
 	public void runLotto() {
+		LottoBuyingInfo lottoBuyingInfo = getLottoBuyingInfo();
+
+		List<Lotto> lottos = createLottos(lottoBuyingInfo);
+
+		WinningInfo winningInfo = getWinningInfo();
+
+		ScoreInfo scoreInfo = getScoreInfo(lottos, winningInfo);
+
+		calculateProfit(lottoBuyingInfo, scoreInfo);
+	}
+
+	private LottoBuyingInfo getLottoBuyingInfo() {
 		String moneyInput = inputView.getMoney();
 		LottoBuyingInfo lottoBuyingInfo = ConverterHolder.convert(moneyInput, LottoBuyingInfo.class);
 		outputView.printLottoBuyingInfo(lottoBuyingInfo);
+		return lottoBuyingInfo;
+	}
 
+	private List<Lotto> createLottos(LottoBuyingInfo lottoBuyingInfo) {
 		List<Lotto> lottos = lottoService.createLottos(lottoBuyingInfo);
 		outputView.printLottos(lottos);
+		return lottos;
+	}
 
+	private WinningInfo getWinningInfo() {
 		String winningNumbersInput = inputView.getWinningNumbers();
 		String bonusInput = inputView.getBonus();
 		WinningInfoDto winningInfoDto = new WinningInfoDto(winningNumbersInput, bonusInput);
+		return winningInfoDto.toWinningInfo();
+	}
 
-		WinningInfo winningInfo = winningInfoDto.toWinningInfo();
-
+	private ScoreInfo getScoreInfo(List<Lotto> lottos, WinningInfo winningInfo) {
 		ScoreInfo scoreInfo = lottoService.makeScoreInfoBy(lottos, winningInfo);
 		outputView.printScoreMessage(scoreInfo);
+		return scoreInfo;
+	}
 
+	private void calculateProfit(LottoBuyingInfo lottoBuyingInfo, ScoreInfo scoreInfo) {
 		Double profit = lottoService.calculateProfitBy(lottoBuyingInfo, scoreInfo);
 		outputView.printProfitPercentageMessage(profit);
 	}

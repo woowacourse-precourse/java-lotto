@@ -7,6 +7,7 @@ public class StringToLottoAmountValidator implements Validator {
 	public static final String NOT_NATURAL_NUMBER_MESSAGE = "자연수값만 입력해야 합니다.";
 	public static final String LOWER_THEN_MIN_VALUE_MESSAGE = "로또를 최소 1장 이상 살 수 있는 금액을 입력해야 합니다.";
 	public static final String NOT_DIVIDED_VALUE_MESSAGE = "로또의 금액인 1,000원으로 나누어 떨어지는 금액을 입력해야 합니다.";
+	public static final int LOTTO_PRICE = 1000;
 
 	@Override
 	public boolean supports(Object target, Class<?> to) {
@@ -16,8 +17,8 @@ public class StringToLottoAmountValidator implements Validator {
 	@Override
 	public void validate(Object target) {
 		Integer targetNumber = isOnlyNaturalNumber((String)target);
-		isMoreThan0(targetNumber);
-		isDividedIn1000(targetNumber);
+		isMoreThanLottoPrice(targetNumber);
+		isDividedInLottoPrice(targetNumber);
 	}
 
 	private Integer isOnlyNaturalNumber(String target) {
@@ -29,14 +30,14 @@ public class StringToLottoAmountValidator implements Validator {
 		}
 	}
 
-	private void isMoreThan0(Integer target) {
-		if (target < 1000) {
+	private void isMoreThanLottoPrice(Integer target) {
+		if (target < LOTTO_PRICE) {
 			throw new IllegalArgumentException(LOWER_THEN_MIN_VALUE_MESSAGE);
 		}
 	}
 
-	private void isDividedIn1000(Integer target) {
-		if (target % 1000 != 0) {
+	private void isDividedInLottoPrice(Integer target) {
+		if (target % LOTTO_PRICE != 0) {
 			throw new IllegalArgumentException(NOT_DIVIDED_VALUE_MESSAGE);
 		}
 	}

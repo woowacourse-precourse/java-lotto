@@ -31,14 +31,17 @@ public class LottoService {
 	}
 
 	public Double calculateProfitBy(LottoBuyingInfo lottoBuyingInfo, ScoreInfo scoreInfo) {
-		double sumOfPrice = Arrays.stream(Score.values())
-				.mapToDouble(score -> score.getPrice() * scoreInfo.get(score))
-				.sum();
 
-		double profit = sumOfPrice / lottoBuyingInfo.getMoney();
+		double profit = countSumOfPrice(scoreInfo) / lottoBuyingInfo.getMoney();
 		profit = convertToPercentage(profit);
 		profit = roundToFirstDigit(profit);
 		return profit;
+	}
+
+	private double countSumOfPrice(ScoreInfo scoreInfo) {
+		return Arrays.stream(Score.values())
+				.mapToDouble(score -> score.getPrice() * scoreInfo.get(score))
+				.sum();
 	}
 
 

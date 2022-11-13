@@ -50,7 +50,7 @@ class InputViewTest {
 		inputView.getWinningNumbers();
 
 	    //then
-		assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_WINNING_MESSAGE + "\n");
+		assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_WINNING_NUMBERS_MESSAGE + "\n");
 	}
 
 	@Test

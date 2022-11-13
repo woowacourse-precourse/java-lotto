@@ -26,8 +26,10 @@ public class WinningDtoToWinningInfoValidator implements Validator {
     @Override
     public void validate(Object target) {
         WinningInfoDto winningInfoDto = (WinningInfoDto) target;
+
         List<Integer> winningNumbers = validateWinningNumbers(winningInfoDto.getWinningNumbers());
         Integer bonus = validateBonus(winningInfoDto.getBonus());
+
         isWinningNumbersContainingBonus(winningNumbers, bonus);
     }
 

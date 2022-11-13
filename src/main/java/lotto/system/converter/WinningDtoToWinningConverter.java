@@ -19,13 +19,21 @@ public class WinningDtoToWinningConverter implements Converter {
         ValidationHolder.validate(target, WinningInfo.class);
         WinningInfoDto winningInfoDto = (WinningInfoDto) target;
 
-        List<Integer> winning = Arrays.stream(winningInfoDto.getWinningNumbers()
+        List<Integer> winningNumbers = convertStringToIntegerList(winningInfoDto);
+        int bonus = convertStringToInteger(winningInfoDto);
+
+        return new WinningInfo(winningNumbers, bonus);
+    }
+
+    private static int convertStringToInteger(WinningInfoDto winningInfoDto) {
+        return Integer.parseInt(winningInfoDto.getBonus());
+    }
+
+    private static List<Integer> convertStringToIntegerList(WinningInfoDto winningInfoDto) {
+        return Arrays.stream(winningInfoDto.getWinningNumbers()
                         .replace(" ", "")
                         .split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        int bonus = Integer.parseInt(winningInfoDto.getBonus());
-
-        return new WinningInfo(winning, bonus);
     }
 }
