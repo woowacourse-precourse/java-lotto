@@ -19,7 +19,7 @@ public class User {
         return lottos;
     }
 
-    public void buyLotto(int price) {
+    public void buyLotto(long price) {
         while (price >= 1000) {
             lottos.add(lottoGenerator.publish());
             price -= 1000;
@@ -35,9 +35,10 @@ public class User {
         return Arrays.stream(history).boxed().collect(Collectors.toList());
     }
 
-    public double getYield(List<Integer> winningHistory, int investment) {
+    public double getYield(List<Integer> winningHistory, long investment) {
         long totalMoney = getTotalMoney(winningHistory);
-        return Math.round((totalMoney / (double) investment) * 100.0);
+        if(investment == 0) return investment;
+        return Double.parseDouble(String.format("%.1f", (totalMoney / (double) investment) * 100.0));
     }
 
     private long getTotalMoney(List<Integer> winningHistory) {
