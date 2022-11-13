@@ -17,5 +17,6 @@ public class MainProgram {
         int money = consoleProgram.requestMoney();
         List<Lotto> userLotto = businessProgram.generateUserLotto(money);
         LottoOfAnswer answerLotto = consoleProgram.requestAnswerLottoWithBonusNumber();
+//        businessProgram.printUserLottoResults(userLotto,answerLotto);
     }
 }
