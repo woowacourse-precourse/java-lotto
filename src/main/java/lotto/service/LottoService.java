@@ -1,4 +1,4 @@
-package lotto;
+package lotto.service;
 
 import static lotto.LottoConstant.INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE;
 import static lotto.LottoConstant.INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
