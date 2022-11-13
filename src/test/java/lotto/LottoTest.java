@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.global.Exception;
+import lotto.global.LogicException;
 import lotto.model.Check;
 import lotto.model.Rank;
 import lotto.model.Lotto;
@@ -35,16 +35,16 @@ class LottoTest {
     @DisplayName("구입 금액에 숫자가 아닌 문자가 섞여있을 때 예외 발생")
     @Test
     void verifyMoneyNumberFormat() {
-        assertThatThrownBy(() -> Exception.verifyMoney("1000q"))
+        assertThatThrownBy(() -> LogicException.verifyMoney("1000q"))
                 .isInstanceOf(NoSuchElementException.class);
     }
 
     @DisplayName("구입 금액이 0이나 1000으로 나누어 떨어지지 않을 때")
     @Test
     void verifyMoney() {
-        assertThatThrownBy(() -> Exception.verifyMoney("0"))
+        assertThatThrownBy(() -> LogicException.verifyMoney("0"))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Exception.verifyMoney("10001"))
+        assertThatThrownBy(() -> LogicException.verifyMoney("10001"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -53,7 +53,7 @@ class LottoTest {
     void verifyLottoListLength() {
         int volume = 5;
         List<Lotto> lottoList = Service.getLotto(volume);
-        assertThatThrownBy(() -> Exception.verifyLottoListVolume(lottoList, 3))
+        assertThatThrownBy(() -> LogicException.verifyLottoListVolume(lottoList, 3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

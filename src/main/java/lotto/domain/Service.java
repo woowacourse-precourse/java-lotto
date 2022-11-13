@@ -3,7 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.Check;
 import lotto.model.Lotto;
-import lotto.global.Exception;
+import lotto.global.LogicException;
 import lotto.model.Rank;
 import lotto.view.Input;
 import lotto.view.Output;
@@ -16,7 +16,7 @@ public class Service {
     public static int getMoney() {
         Output.outputPurchaseAmount();
         String money = Input.inputMoney();
-        Exception.verifyMoney(money);
+        LogicException.verifyMoney(money);
 
         return Integer.parseInt(money);
     }
@@ -37,7 +37,7 @@ public class Service {
             lottoList.add(lotto);
             System.out.println(numbers);
         }
-        Exception.verifyLottoListVolume(lottoList, volume);
+        LogicException.verifyLottoListVolume(lottoList, volume);
 
         return lottoList;
     }
@@ -87,7 +87,7 @@ public class Service {
         return checkList;
     }
 
-    public static Rank checkRank(List<Check> checkList, Rank rank) {
+    public static void checkRank(List<Check> checkList, Rank rank) {
         for(int i = 0; i < checkList.size(); i++) {
 
             int count = checkList.get(i).getCount();
@@ -108,7 +108,6 @@ public class Service {
                 rank.addFirst();
             }
         }
-        return rank;
     }
 
     public static int getWinningPrice(Rank rank) {
