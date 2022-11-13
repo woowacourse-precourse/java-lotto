@@ -27,7 +27,7 @@ public class LottoService {
     }
 
     public int getAndPrintLottoPurchaseCount(int money) {
-        int lottoCount = LottoPurchaseCount.getLottoCount(money);
+        int lottoCount = LottoPurchaseCount.getLottoPurchaseCount(money);
         InputView.printLottoPurchaseCount(lottoCount);
         return lottoCount;
     }
