@@ -5,7 +5,9 @@ public enum Numbers {
     LOTTO_NUMBER_END(45),
     LOTTO_PRICE(1000),
     WINNING_NUMBER_SIZE(6),
-    BONUS_NUMBER_SIZE(1);
+    BONUS_NUMBER_SIZE(1),
+    LOTTO_PRICE_MIN(1000),
+    LOTTO_PRICE_MAX(2_147_483_000);
 
     private final int value;
 
