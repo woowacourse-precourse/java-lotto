@@ -19,19 +19,20 @@ public class LottoBuyer {
     private List<Lotto> lottos;
     public LottoBuyer() throws IllegalArgumentException {
         try {
-            lottos = new ArrayList<Lotto>();
             setMoney();
-            LottoMachine.buyLotto(lottos, money);
+            lottos = new ArrayList<Lotto>();
+            int buyCount = LottoMachine.buyLotto(lottos, money);
+            System.out.println(buyCount + "개를 구매했습니다.");
             LottoMachine.printLottoLog(lottos);
+            System.out.println("당첨 번호를 입력해주세요.");
             setLottoNumbers();
+            System.out.println("보너스 번호를 입력해 주세요.");
             setBonusNumber();
         } catch(IllegalArgumentException iae){
             throw iae;
         }
-
     }
     public void setMoney() throws IllegalArgumentException{
-        System.out.println("구입금액을 입력해주세요.");
         final String input = Console.readLine();
 
         try {
@@ -45,7 +46,6 @@ public class LottoBuyer {
     }
 
     public void setLottoNumbers() throws IllegalArgumentException{
-        System.out.println("당첨 번호를 입력해주세요.");
         final String input = Console.readLine();
         List<Integer> inputNumbers;
 
@@ -60,7 +60,6 @@ public class LottoBuyer {
     }
 
     public void setBonusNumber() throws IllegalArgumentException{
-        System.out.println("보너스 번호를 입력해 주세요.");
         final String input = Console.readLine();
 
         try{
