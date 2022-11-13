@@ -37,4 +37,8 @@ public class Purchase {
     public int getLottoAmount(int money) {
         return money / 1000;
     }
+
+    public List<Lotto> getLottoes() {
+        return lottoes;
+    }
 }
