@@ -37,11 +37,4 @@ class LottosTest {
         assertThat(lottos.result(new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.of(7))))
                 .isEqualTo(lottoResult);
     }
-
-    @DisplayName("로또 번호들을 반환한다.")
-    @Test
-    void numbers() {
-        assertThat(new Lotto(List.of(1, 6, 15, 27, 37, 42)).numbers())
-                .containsExactly(1, 6, 15, 27, 37, 42);
-    }
 }

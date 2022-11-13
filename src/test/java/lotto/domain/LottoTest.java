@@ -59,4 +59,11 @@ class LottoTest {
 
         assertThat(lotto.matchCount(matchLotto)).isEqualTo(count);
     }
+
+    @DisplayName("로또 번호들을 반환한다.")
+    @Test
+    void numbers() {
+        assertThat(new Lotto(List.of(1, 6, 15, 27, 37, 42)).numbers())
+                .containsExactly(1, 6, 15, 27, 37, 42);
+    }
 }
