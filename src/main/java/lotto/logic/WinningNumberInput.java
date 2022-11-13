@@ -9,6 +9,7 @@ import java.util.List;
 
 public class WinningNumberInput {
     private List<Integer> WinningNum;
+    private int BonusNum;
 
     private String inputWinningNum() {
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -37,5 +38,12 @@ public class WinningNumberInput {
         List<Integer> winningnum = convertoInt();
         ExceptionValidation.inputException(winningnum);
         return WinningNum;
+    }
+
+    private int inputBonusNum() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        BonusNum = Integer.parseInt(input);
+        return BonusNum;
     }
 }
