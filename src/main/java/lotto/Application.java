@@ -114,7 +114,7 @@ public class Application {
         List<Integer> winningNumber = new ArrayList<>();
         for(String commaSplit : commaSplits){
             String errorMessage = CheckOnlyNumber(commaSplit);
-            if(errorMessage.isEmpty()) {
+            if(!errorMessage.isEmpty()) {
                 Error.error(errorMessage);
                 return;
             }
