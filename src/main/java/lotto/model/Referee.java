@@ -14,6 +14,22 @@ public class Referee {
         return lottoResultCount;
     }
 
+
+
+    public int correctCountLottoNumberAndWinnerNum(List<Integer> lottoNumber, List<Integer> winnerNumber) {
+        int count = 0;
+        for (int i = 0; i < 6; i++) {
+            if (winnerNumber.contains(lottoNumber.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public boolean isBonusNumberInLottoNumber(List<Integer> winningNumber, int bonusNum) {
+        return winningNumber.contains(bonusNum);
+    }
+
     public void createLottoResult(int correctCountLottoAndWinner, boolean foundBonus) {
         Map<LottoRank, Integer> lottoResultCount = new HashMap<>();
         LottoRank rank = findLottoRank(correctCountLottoAndWinner, foundBonus);
