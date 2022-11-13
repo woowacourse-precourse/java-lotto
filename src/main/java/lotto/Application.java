@@ -10,6 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    // num개의 lotto를 발행하는 함수
     public List<Lotto> makeLottoNumber(List<Lotto> lottos, int num){
         for(int i = 0; i < num; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -17,5 +18,12 @@ public class Application {
             lottos.add(lotto);
         }
         return lottos;
+    }
+
+    public int checkPayMoney(int money){
+        if(money%1000 != 0){
+            throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액만 가능합니다.");
+        }
+        return money/1000;
     }
 }
