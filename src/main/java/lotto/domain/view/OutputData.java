@@ -13,9 +13,9 @@ import lotto.domain.model.UserLotto;
 
 public abstract class OutputData {
 
-    public static void printUserLotto(UserLotto userLotto) {
+    public static void printUserLotto(UserLotto userLotto, Pay pay) {
         System.out.println();
-        System.out.println(userLotto.getUserLottoSize() + OUTPUT_PURCHASE_LOTTO.getMessage());
+        System.out.println(pay.calculateQuantity() + OUTPUT_PURCHASE_LOTTO.getMessage());
         for (String lotto : userLotto.getUserLotto()) {
             System.out.println(lotto);
         }

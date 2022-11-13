@@ -18,7 +18,7 @@ public class LottoController {
     public void purchaseLotto(String pay) {
         this.pay = new Pay(pay);
         this.userLotto = new UserLotto(this.pay);
-        OutputData.printUserLotto(this.userLotto);
+        OutputData.printUserLotto(this.userLotto, this.pay);
     }
 
     public void designateFirstPlace(String firstPlace) {
