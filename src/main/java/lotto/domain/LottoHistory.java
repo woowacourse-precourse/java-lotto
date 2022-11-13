@@ -1,11 +1,11 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoHistory {
     private final List<LottoRanking> winningHistory = new ArrayList<>();
-    private LottoRanking lottoRanking;
 
     public LottoHistory() {
     }
@@ -34,5 +34,9 @@ public class LottoHistory {
 
     public String getYield(long total, String amount) {
         return String.format("%.1f", (total * 100 / Double.parseDouble(amount)));
+    }
+
+    public int getWinningCount(List<LottoRanking> winningHistory, LottoRanking ranking) {
+        return Collections.frequency(winningHistory, ranking);
     }
 }
