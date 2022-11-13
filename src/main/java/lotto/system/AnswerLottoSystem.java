@@ -17,9 +17,17 @@ public class AnswerLottoSystem {
     }
 
     public AnswerLotto generateAnswerLotto() {
+        io.printBeforeNextLine("당첨 번호를 입력해 주세요.");
+
+        var lottoInput = io.input();
+
+        io.printBeforeNextLine("보너스 번호를 입력해 주세요");
+
+        var bonusInput = io.input();
+
         return new AnswerLotto(
-                this.generateLotto(io.input()),
-                new LottoNumber(io.input())
+                this.generateLotto(lottoInput),
+                new LottoNumber(bonusInput)
         );
     }
 
