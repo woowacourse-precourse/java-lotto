@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.numbers.WinningNumber;
+import org.assertj.core.api.ListAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,10 +32,10 @@ public class WinningNumberTest {
 
   @Test
   void 유효한_숫자_테스트() {
-    String test1 = "1,2,3,4,5,6,7";
+    String test1 = "1,2,3,4,5,6";
+    List<Integer> integers = List.of(1,2,3,4,5,6);
     WinningNumber winningNumber = new WinningNumber(test1);
 
-    assertThatThrownBy(() -> winningNumber.validWinningNumber(test1))
-            .isInstanceOf(IllegalArgumentException.class);
+    assertThat(winningNumber.validWinningNumber(test1)).isEqualTo(integers);
   }
 }
