@@ -49,4 +49,25 @@ class ValidatorTest {
         // expected
         Validator.validatePlayNumbersCount(playerNumbers);
     }
+
+    @DisplayName("당첨 번호가 범위 안에 값인지 확인 - 따르지 않음")
+    @Test
+    void validatePlayNumbersRangeNotFollow() {
+        // given
+        List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 46);
+
+        // expected
+        assertThatThrownBy(() -> Validator.validatePlayNumbersRange(playerNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호가 범위 안에 값인지 확인 - 따름")
+    @Test
+    void validatePlayNumbersRangeFollow() {
+        // given
+        List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 45);
+
+        // expected
+        Validator.validatePlayNumbersRange(playerNumbers);
+    }
 }
