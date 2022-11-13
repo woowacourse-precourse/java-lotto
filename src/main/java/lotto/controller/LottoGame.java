@@ -12,10 +12,11 @@ public class LottoGame {
 
         int input = user.setPurchaseAmount();
         user.validateUnit(input);
+        input = setPurchaseAmount(input);
 
-        System.out.println();
-        System.out.println(input/1000+"개를 구매했습니다.");
-        setPurchaseAmountLotto(input/1000);
+        printNewLine();
+        System.out.println(input+"개를 구매했습니다.");
+        setPurchaseAmountLotto(input);
 
         user.getPurchaseLottoNumbers();
     }
@@ -27,9 +28,17 @@ public class LottoGame {
         }
     }
 
+    public int setPurchaseAmount(int input){
+        return input/1000;
+    }
+
 
     public void printPurchaseAmount(){
         System.out.println("구입 금액을 입력해주세요.");
+    }
+
+    public void printNewLine(){
+        System.out.println();
     }
 
 
