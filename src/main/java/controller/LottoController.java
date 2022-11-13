@@ -72,6 +72,11 @@ public class LottoController {
         OutputUtils.printWinningStats(Wins.getWinningStats());
     }
 
+    private void calculateProfitRate() {
+        double profitRate = Wins.getProfitRate(purchaseAmount.getPurchaseAmount());
+        OutputUtils.printCalculatedProfitRate(profitRate);
+    }
+
     public void start() {
         getLottoPurchaseAmountFromUser();
 
@@ -87,5 +92,6 @@ public class LottoController {
         getBonusNumberFromUser();
 
         calculateWinningRate();
+        calculateProfitRate();
     }
 }

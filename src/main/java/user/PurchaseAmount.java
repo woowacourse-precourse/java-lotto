@@ -10,6 +10,10 @@ public class PurchaseAmount {
         this.purchaseAmount = purchaseAmount;
     }
 
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
     public int getPurchaseCount() {
         return purchaseAmount / LottoConstants.MONEY_UNIT;
     }

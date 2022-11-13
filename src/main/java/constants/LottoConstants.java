@@ -7,6 +7,7 @@ public abstract class LottoConstants {
     public static final int LOTTO_NUM = 6;
     public static final int MONEY_UNIT = 1000;
     public static final String SEPARATOR = ",";
+    public static final int PERCENTAGE_UNIT = 100;
 
     private LottoConstants() {}
 }
