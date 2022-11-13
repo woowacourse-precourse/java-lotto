@@ -24,10 +24,9 @@ public class Application {
         try {
             String priceInput = io.getPrice();
             Price price = new Price(priceInput);
-            int amount = price.amount;
 
-            List<Lotto> lottos = getRandomLottos(amount);
-            io.printLottos(amount, lottos);
+            List<Lotto> lottos = getRandomLottos(price.amount);
+            io.printLottos(price.amount, lottos);
 
             String lukcyNumber = io.getLukcyNumber();
             Lotto lucky = makeLotto(lukcyNumber);
@@ -39,7 +38,7 @@ public class Application {
             getResult(lottos, lucky, bonus);
 
             io.printResult(wins);
-            io.printEarningRate(calculateEarningRate(amount));
+            io.printEarningRate(calculateEarningRate(price.price));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -87,8 +86,7 @@ public class Application {
         }
     }
 
-    private static String calculateEarningRate(int amount) {
-        int price = amount * 1000;
+    private static String calculateEarningRate(int price) {
         long prize = calculatePrize();
         return String.format("%.1f", (float) prize / price * 100);
     }
