@@ -19,14 +19,14 @@ public class OutputView {
     public void askBonusNumber(){System.out.print("보너스 번호를 입력해 주세요.");}
 
     public void showLottoPrize(List<Integer> prize, List<Integer> winCount){
-        final int FIRSTRANK = 0, SECONDRANK = 1, THIRDRANK = 2, FOURTHRANK = 3, FIFTHRANK = 4;
+        final int FIRSTRANK = 4, SECONDRANK = 3, THIRDRANK = 2, FOURTHRANK = 1, FIFTHRANK = 0;
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.print("3개 일치 (" + prize.get(FIFTHRANK) + ") - " + winCount.get(FIFTHRANK));
-        System.out.print("4개 일치 (" + prize.get(FOURTHRANK) + ") - " + winCount.get(FOURTHRANK));
-        System.out.print("5개 일치 (" + prize.get(THIRDRANK) + ") - " + winCount.get(THIRDRANK));
-        System.out.print("5개 일치, 보너스 볼 일치 (" + prize.get(SECONDRANK) + ") - " + winCount.get(SECONDRANK));
-        System.out.print("6개 일치 (" + prize.get(FIRSTRANK) + ") - " + winCount.get(FIRSTRANK));
+        System.out.println("3개 일치 (" + prize.get(FIFTHRANK) + ") - " + winCount.get(FIFTHRANK));
+        System.out.println("4개 일치 (" + prize.get(FOURTHRANK) + ") - " + winCount.get(FOURTHRANK));
+        System.out.println("5개 일치 (" + prize.get(THIRDRANK) + ") - " + winCount.get(THIRDRANK));
+        System.out.println("5개 일치, 보너스 볼 일치 (" + prize.get(SECONDRANK) + ") - " + winCount.get(SECONDRANK));
+        System.out.println("6개 일치 (" + prize.get(FIRSTRANK) + ") - " + winCount.get(FIRSTRANK));
     }
 
     public void showYield(double yield){
