@@ -24,4 +24,25 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("보너스 번호 추가 - 중복 숫자")
+    @Test
+    void addBonusNumber() throws Exception {
+        //Given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        //When
+        assertThatThrownBy(() -> lotto.setLottoBonusNumber(6))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호 추가 - 범위를 넘어감")
+    @Test
+    void addBonusNumberOverRange() throws Exception {
+        //Given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        //When
+        assertThatThrownBy(() -> lotto.setLottoBonusNumber(46))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
