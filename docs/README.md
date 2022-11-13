@@ -8,7 +8,7 @@
 - [ ] 로또의 결과를 가져온다. Lotto#getResult()
 - [ ] 로또 구입 금액만큼 로또를 발행한다. LottoMachine#LottoForAmount()
 - [ ] 로또 구입 금액을 입력 받는다. MoneyInput#readLottoPurchaseAmount()
-- [ ] 1,000원으로 나누어 떨어지는지 검증한다. Money#validatePurchaseAmount()
+- [x] 1,000원으로 나누어 떨어지는지 검증한다. Money#validatePurchaseAmount()
 - [ ] 로또 구입 금액을 가져온다. Money#getMoney()
 - [ ] 구입 금액에 해당하는 만큼 로또를 발행한다. LottoMachine#issue()
   - [ ] 로또 번호를 오름차순으로 정렬한다. LottoMachine#sortAscend()
@@ -44,6 +44,7 @@
   - [x] 로또 번호의 하한: 1
   - [x] 로또 번호의 상한: 45
   - [x] 발행 로또 번호의 갯수: 6 => NUMBER_OF_SIZE
+  - [x] 로또 구매 금액 단위: 1,000 => PURCHASE_UNIT
 - LottoRank: 로또 순위 정보 관련
   - 1등: 6개 일치 / 2,000,000,000원
   - 2등: 5개가 일치하고, 보너스 번호가 일치 / 30,000,000원
