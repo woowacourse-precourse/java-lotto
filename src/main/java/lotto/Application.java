@@ -10,7 +10,14 @@ public class Application {
     }
 
     public List<Integer> createLotto(int money) {
+        if (isValidMoney(money)) {
+
+        }
         return null;
+    }
+
+    private boolean isValidMoney(int money) {
+        return money==moneyUnit;
     }
 
     private void validMoney(int money) {
