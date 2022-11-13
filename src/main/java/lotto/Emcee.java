@@ -7,13 +7,6 @@ import static lotto.Rank.*;
 
 public class Emcee {
 
-    private final Map<Rank, Integer> prize = Map.of(
-            FIRST_SIX_MATCHED, 2_000_000_000,
-            SECOND_FIVE_WITH_BONUS, 30_000_000,
-            THIRD_FIVE_MATCHED, 1_500_000,
-            FOURTH_FOUR_MATCHED, 50_000,
-            FIFTH_THREE_MATCHED, 5_000);
-
     public void guideGame() {
         String startingGuide = "Lotto game 에 오신 것을 환영합니다.\n" +
                 "원하시는 만큼의 lotto 를 구매할 수 있으며 lotto 는 자동 발행됩니다.\n" +
@@ -64,15 +57,5 @@ public class Emcee {
 
     public void rateOfReturn(double rateOfReturn) {
         System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
-    }
-
-    private double calculateRateOfReturn(Map<Rank, Integer> tallyOfRanks, int payment) {
-        double totalProfit = tallyOfRanks.get(FIRST_SIX_MATCHED) * prize.get(FIRST_SIX_MATCHED)
-                + tallyOfRanks.get(SECOND_FIVE_WITH_BONUS) * prize.get(SECOND_FIVE_WITH_BONUS)
-                + tallyOfRanks.get(THIRD_FIVE_MATCHED) * prize.get(THIRD_FIVE_MATCHED)
-                + tallyOfRanks.get(FOURTH_FOUR_MATCHED) * prize.get(FOURTH_FOUR_MATCHED)
-                + tallyOfRanks.get(FIFTH_THREE_MATCHED) * prize.get(FIFTH_THREE_MATCHED);
-        totalProfit /= payment * 100;
-        return Math.round(totalProfit * 10) / 10.0;
     }
 }

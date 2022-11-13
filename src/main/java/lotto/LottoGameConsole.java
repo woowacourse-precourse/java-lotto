@@ -2,9 +2,19 @@ package lotto;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+import static lotto.Rank.*;
+
 public class LottoGameConsole {
+
+    private final Map<Rank, Integer> prize = Map.of(
+            FIRST_SIX_MATCHED, 2_000_000_000,
+            SECOND_FIVE_WITH_BONUS, 30_000_000,
+            THIRD_FIVE_MATCHED, 1_500_000,
+            FOURTH_FOUR_MATCHED, 50_000,
+            FIFTH_THREE_MATCHED, 5_000);
 
     private final Emcee emcee = new Emcee();
     private final Player player = new Player();
@@ -55,5 +65,15 @@ public class LottoGameConsole {
     private void handlePrizeOfLottoGame() {
         // 당첨 결과 처리
         // 당첨 결과 출력
+    }
+
+    private double calculateRateOfReturn(Map<Rank, Integer> tallyOfRanks, int payment) {
+        double totalProfit = tallyOfRanks.get(FIRST_SIX_MATCHED) * prize.get(FIRST_SIX_MATCHED)
+                + tallyOfRanks.get(SECOND_FIVE_WITH_BONUS) * prize.get(SECOND_FIVE_WITH_BONUS)
+                + tallyOfRanks.get(THIRD_FIVE_MATCHED) * prize.get(THIRD_FIVE_MATCHED)
+                + tallyOfRanks.get(FOURTH_FOUR_MATCHED) * prize.get(FOURTH_FOUR_MATCHED)
+                + tallyOfRanks.get(FIFTH_THREE_MATCHED) * prize.get(FIFTH_THREE_MATCHED);
+        totalProfit /= payment * 100;
+        return Math.round(totalProfit * 10) / 10.0;
     }
 }
