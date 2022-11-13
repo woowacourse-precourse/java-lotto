@@ -69,4 +69,19 @@ class LotteryMachineTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 번호와 당첨 번호 비교 후 일치 개수 반환")
+    @Test
+    void compareLottoNumAndWinningNum() {
+        String inputWinningNum = "1,2,3,4,5,6";
+        LotteryMachine lotteryMachine = new LotteryMachine();
+        String[] splitWinningNum = inputWinningNum.split(",");
+        lotteryMachine.makeWinningLottoNum(splitWinningNum);
+        lotteryMachine.makeBonusNum(lotteryMachine.getLotto().getNumbers(),"7");
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Assertions.assertThat(lotteryMachine.compareLotto(lotto))
+                .isEqualTo(6);
+    }
+
+
 }
