@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
     static int bonusNumber;
+    private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -26,8 +26,8 @@ public class Lotto {
     }
 
     public void enterBonusNumber() {
-        String bonusNumberString = Console.readLine();
-        bonusNumber = exceptionInvalidBonusNumber(bonusNumberString);
+        String bonusNumberInput = Console.readLine();
+        bonusNumber = exceptionInvalidBonusNumber(bonusNumberInput);
         exceptionBonusNumberOutOfRange(bonusNumber);
         exceptionBonusNumberByDuplicatedLotto(bonusNumber);
     }
@@ -39,7 +39,7 @@ public class Lotto {
         printWinningStatistics(matchingPair, purchasePrice);
     }
 
-    private HashMap<Integer, Integer> createLottoHashSet() {
+    public HashMap<Integer, Integer> createLottoHashSet() {
         return new HashMap<>(Constant.LOTTO_WINNING_SIZE) {
             {
                 for (int i = 3; i <= 7; i++) {
@@ -100,8 +100,8 @@ public class Lotto {
     }
 
     private void exceptionLottoByDuplicatedNumber(List<Integer> numbers) {
-        HashSet<Integer> lottoHashSet = new HashSet<Integer>(numbers);
-        if (lottoHashSet.size() != 6) {
+        HashSet<Integer> lottoNoneDuplicated = new HashSet<Integer>(numbers);
+        if (lottoNoneDuplicated.size() != 6) {
             IllegalArgumentException e = new IllegalArgumentException();
             System.out.println(Constant.ERROR_MESSAGE + "로또 번호는 중복될 수 없습니다.");
             throw e;
@@ -116,7 +116,7 @@ public class Lotto {
         }
     }
 
-    private void exceptionLottoNumberOutOfRange(List<Integer> numbers) {
+    public void exceptionLottoNumberOutOfRange(List<Integer> numbers) {
         for (Integer lottoNumber : numbers) {
             if (lottoNumber > Constant.LOTTO_MAX_RANGE || lottoNumber < Constant.LOTTO_MIN_RANGE) {
                 IllegalArgumentException e = new IllegalArgumentException();
