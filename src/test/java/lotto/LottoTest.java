@@ -3,6 +3,8 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -38,6 +40,16 @@ class LottoTest {
     @Test
     void 숫자가_범위를_벗엇남_2() {
         assertThatThrownBy(() -> new Lotto(List.of(0, 1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 보너스_숫자_중복() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        String input = "6";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> lotto.inputBonus())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
