@@ -1,5 +1,6 @@
 package lotto;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -54,5 +55,18 @@ class LottoTest {
         assertThatThrownBy(() -> new LottoPurchase("abc"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+    @DisplayName("구매한 금액에 따른 티켓 개수가 맞는지 확인한다.")
+    @Test
+    void checkPurchaseByTicketNumber() {
+        LottoPurchase lottopurchase = new LottoPurchase("8000");
+        lottopurchase.calculateTicketNumber();
+        Assertions.assertEquals(lottopurchase.calculateTicketNumber(),8);
+    }
+    @DisplayName("구매한 금액과 당첨금의 마진률이 맞는지 확인한다.")
+    @Test
+    void checkPurchaseByMargin() {
+        LottoPurchase lottopurchase = new LottoPurchase("8000");
+        double margin = lottopurchase.calculateMargin(5000);
+        Assertions.assertEquals(margin,62.5);
+    }
 }
