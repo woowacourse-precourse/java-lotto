@@ -13,14 +13,11 @@ public class WinningNumbers {
         this.numbers = numbers;
     }
 
-    //TODO : refactoring indent -1
     public int countWinning(List<Integer> lottoNumbers) {
         int count = 0;
 
         for (int lottoNumber : lottoNumbers) {
-            if (numbers.contains(lottoNumber)) {
-                count += 1;
-            }
+            count += getCountForPlus(lottoNumber);
         }
 
         return count;
@@ -32,5 +29,12 @@ public class WinningNumbers {
         for (int number : numbers) {
             Validator.isInRange(number);
         }
+    }
+
+    private int getCountForPlus(int lottoNumber) {
+        if (numbers.contains(lottoNumber)) {
+           return 1;
+        }
+        return 0;
     }
 }
