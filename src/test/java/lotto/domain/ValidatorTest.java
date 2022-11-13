@@ -16,4 +16,12 @@ public class ValidatorTest {
         assertThatThrownBy(() -> validator.validateAmount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 구매 금액이 1,000원 단위가 아니면 예외가 발생한다.")
+    @Test
+    void inputAmountWithNonThousandUnit() {
+        String input = "1200";
+        assertThatThrownBy(() -> validator.validateAmount(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
