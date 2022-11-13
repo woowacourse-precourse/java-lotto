@@ -2,9 +2,14 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import lotto.message.ErrorMessage;
+import org.assertj.core.util.Sets;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -15,7 +20,10 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_SIZE.getErrorMessage());
+        }
+        if (new HashSet<>(numbers).size() != 6) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_OVERLAP.getErrorMessage());
         }
     }
 
@@ -23,7 +31,7 @@ public class Lotto {
         return this.numbers;
     }
 
-    public static Lotto issueLottoTicket () {
+    public static Lotto issueLottoTicket() {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
