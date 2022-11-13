@@ -29,8 +29,7 @@ public class Revenue {
         List<List<Integer>> userLottoNumber = buy.lottoNumberMaker();
         this.price = userLottoNumber.size()*1000;
         List<Integer> winLottoNumber = buy.numbers();
-        Lotto lotto = new Lotto(winLottoNumber);
-        List<Integer> sameNumberCount = lotto.compareList(userLottoNumber, winLottoNumber);
+        List<Integer> sameNumberCount = Lotto.compareList(userLottoNumber, winLottoNumber);
         for (int i = 0; i < sameNumberCount.size(); i++) {
             if (sameNumberCount.get(i) == 3) {
                 this.threeCount += 1;
