@@ -18,5 +18,7 @@ public class PickNumber {
             sb.append(page_of_lotto).append('\n');
         }
 
+        System.out.println(sb);
+        Jackpot.input_jackpot_number();
     }
 }
