@@ -60,4 +60,12 @@ public class View {
             );
         }
     }
+
+    /**
+     * print return rate
+     * @param returnRate rate of return
+     */
+    public void printReturnRate(double returnRate) {
+        System.out.println("총 수익률은 " + returnRate + "%입니다.");
+    }
 }

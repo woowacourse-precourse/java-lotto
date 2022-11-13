@@ -100,5 +100,25 @@ public class Model {
             }
         }
     }
+
+    /**
+     * calculate rate of return
+     */
+    public void calculateReturn() {
+        long returnPrize = 0;
+        for(PrizeNumber prizeNumber : PrizeNumber.values()) {
+            returnPrize += prizeNumber.numbers() * prizeNumber.prize();
+        }
+
+        this.returnRate = (returnPrize/(double)this.userMoney)*100;
+    }
+
+    /**
+     * get return rate
+     * @return double
+     */
+    public double getReturnRate() {
+        return this.returnRate;
+    }
 }
 

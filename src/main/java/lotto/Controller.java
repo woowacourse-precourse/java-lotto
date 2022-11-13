@@ -52,4 +52,13 @@ public class Controller {
         this.model.compare();
         this.view.printStatistic();
     }
+
+    /**
+     * calculate rate of return and print that
+     */
+    public void printReturnRate() {
+        this.model.calculateReturn();
+        double returnRate = this.model.getReturnRate();
+        this.view.printReturnRate(returnRate);
+    }
 }

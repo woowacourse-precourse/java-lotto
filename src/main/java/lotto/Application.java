@@ -11,6 +11,7 @@ public class Application {
             controller.inputWinningNumber();
             controller.inputBonusNumber();
             controller.printStatistics();
+            controller.printReturnRate();
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
