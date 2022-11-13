@@ -20,47 +20,47 @@ class LottoTest {
     @DisplayName("랭킹 1 당첨 통계 계산 테스트")
     @Test
     void 랭킹_1_당첨_통계_계산_테스트() {
-        Lotto answer = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        LottoTicket ex = new LottoTicket(List.of(1, 2, 3, 4, 5, 6), 7);
+        LottoWinNo answer = new LottoWinNo(List.of(1, 2, 3, 4, 5, 6), 7);
+        Lotto ex = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Assertions.assertEquals(WinningStatistic.RANK_ONE,
-            answer.produceWinningStatistic(ex)
+            LottoMarker.produceWinningStatistic(answer, ex)
         );
     }
 
     @DisplayName("랭킹 2 당첨 통계 계산 테스트")
     @Test
     void 랭킹_2_당첨_통계_계산_테스트() {
-        Lotto answer = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        LottoTicket ex = new LottoTicket(List.of(1, 2, 3, 4, 5, 8), 6);
+        LottoWinNo answer = new LottoWinNo(List.of(1, 2, 3, 4, 5, 6), 8);
+        Lotto ex = new Lotto(List.of(1, 2, 3, 4, 5, 8));
         Assertions.assertEquals(WinningStatistic.RANK_TWO,
-            answer.produceWinningStatistic(ex));
+            LottoMarker.produceWinningStatistic(answer, ex));
     }
 
     @DisplayName("랭킹 3 당첨 통계 계산 테스트")
     @Test
     void 랭킹_3_당첨_통계_계산_테스트() {
-        Lotto answer = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        LottoTicket ex = new LottoTicket(List.of(1, 2, 3, 4, 5, 8), 9);
+        LottoWinNo answer = new LottoWinNo(List.of(1, 2, 3, 4, 5, 6), 9);
+        Lotto ex = new Lotto(List.of(1, 2, 3, 4, 5, 8));
         Assertions.assertEquals(WinningStatistic.RANK_THREE,
-            answer.produceWinningStatistic(ex));
+            LottoMarker.produceWinningStatistic(answer, ex));
     }
 
     @DisplayName("랭킹 4 당첨 통계 계산 테스트")
     @Test
     void 랭킹_4_당첨_통계_계산_테스트() {
-        Lotto answer = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        LottoTicket ex = new LottoTicket(List.of(1, 2, 3, 4, 9, 8), 10);
+        LottoWinNo answer = new LottoWinNo(List.of(1, 2, 3, 4, 5, 6),10);
+        Lotto ex = new Lotto(List.of(1, 2, 3, 4, 9, 8));
         Assertions.assertEquals(WinningStatistic.RANK_FOUR,
-            answer.produceWinningStatistic(ex));
+            LottoMarker.produceWinningStatistic(answer,ex));
     }
 
     @DisplayName("랭킹 5 당첨 통계 계산 테스트")
     @Test
     void 랭킹_5_당첨_통계_계산_테스트() {
-        Lotto answer = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        LottoTicket ex = new LottoTicket(List.of(1, 2, 3, 10, 9, 8), 11);
+        LottoWinNo answer = new LottoWinNo(List.of(1, 2, 3, 4, 5, 6),11);
+        Lotto ex = new Lotto(List.of(1, 2, 3, 10, 9, 8));
         Assertions.assertEquals(WinningStatistic.RANK_FIVE,
-            answer.produceWinningStatistic(ex));
+            LottoMarker.produceWinningStatistic(answer,ex));
     }
 
 

@@ -1,15 +1,14 @@
 package lotto;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class LottoTicket {
+public class LottoWinNo {
 
     private final List<Integer> numbers;
     private final int bonusNum;
+    public static final int price=1000;
 
-    public LottoTicket(List<Integer> numbers, int bonusNum) {
+    public LottoWinNo(List<Integer> numbers, int bonusNum) {
         validate(numbers, bonusNum);
         this.numbers = numbers;
         this.bonusNum = bonusNum;

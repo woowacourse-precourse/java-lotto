@@ -39,7 +39,7 @@ public enum WinningStatistic {
     }
 
     void validate() {
-        if (numOfCorrectLottoNum < 1 || numOfCorrectLottoNum > 6) {
+        if (numOfCorrectLottoNum < 0 || numOfCorrectLottoNum > 6) {
             throw new IllegalArgumentException();
         }
     }
