@@ -48,6 +48,16 @@ class InputValidationTest extends NsTest {
         });
     }
 
+    @DisplayName("입력받은 2자리수 이상의 금액은 맨 앞자리가 0이될 수 없다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"01", "01000"})
+    void checkFirstNumberIsNotZero(String input) {
+        assertSimpleTest(() -> {
+            runException(input);
+            assertThat(output()).contains(ErrorMessage.FIRST_NUMBER_IS_NOT_ZERO);
+        });
+    }
+
     @DisplayName("입력받은 당첨번호는 숫자여야한다.")
     @ParameterizedTest
     @CsvSource(value = {"1000:1,2,3,4,5,a", "1000:a,b,c,d"}, delimiter = ':')
