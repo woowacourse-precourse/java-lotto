@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -44,7 +43,7 @@ class LottoTest {
     @Test
     void 투입_금액_만큼_로또가_구매되는지_테스트() {
         Player player = new Player(6000);
-        assertThat(player.playerLotto.size()).isEqualTo(6);
+        assertThat(player.getLottery().size()).isEqualTo(6);
     }
 
     @Test
@@ -52,7 +51,7 @@ class LottoTest {
         String winningNumbersInput = "1,2,3,4,5,6";
         String winningBonusNumber = "7";
         WinningNumbers winningNumbers = new WinningNumbers(winningNumbersInput, winningBonusNumber);
-        assertThat(winningNumbers.winningNumbers.contains(3));
+        assertThat(winningNumbers.getWinningNumbers().contains(3));
     }
 
     @Test
@@ -60,7 +59,7 @@ class LottoTest {
         String winningNumbersInput = "1,2,3,4,5,6";
         String winningBonusNumber = "7";
         WinningNumbers winningNumbers = new WinningNumbers(winningNumbersInput, winningBonusNumber);
-        assertThat(winningNumbers.winningBonusNumber).isEqualTo(7);
+        assertThat(winningNumbers.getWinningBonusNumber()).isEqualTo(7);
     }
 
     @Test
@@ -70,7 +69,7 @@ class LottoTest {
         WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,7", "9");
         RewardsMapper rewardsMapper = new RewardsMapper(winningNumbers);
         Rewards rewards = rewardsMapper.getReward(lotto);
-        assertThat(rewards.reward).isEqualTo(30000000);
+        assertThat(rewards.getReward()).isEqualTo(30000000);
     }
 
     @Test
@@ -80,7 +79,6 @@ class LottoTest {
         WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "9");
         RewardsMapper rewardsMapper = new RewardsMapper(winningNumbers);
         Rewards rewards = rewardsMapper.getReward(lotto);
-        assertThat(rewards.reward).isEqualTo(2000000000);
+        assertThat(rewards.getReward()).isEqualTo(2000000000);
     }
-
 }
