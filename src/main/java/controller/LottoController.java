@@ -6,24 +6,22 @@ import lotto.LottoBonus;
 import lotto.Money;
 import view.UserOutput;
 import view.UserInput;
+import lotto.WinningLotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class LottoController {
-    private UserInput userInput = new UserInput();
-    private UserOutput userOutput = new UserOutput();
+    private final UserInput userInput = new UserInput();
+    private final UserOutput userOutput = new UserOutput();
     private Lotto lotto;
     private LottoBonus lottoBonus;
-    private List<String> winningNumbers;
+    private WinningLotto winningLotto;
 
     //로또 시작하기
     public void lottoStart(){
         userOutput.printRandomLottoList(makeRandomLottoNumber(buyLotto()));
         makeLottoWinningNumber();
-        makeLottoBonusNumber();
 
     }
 
@@ -34,22 +32,11 @@ public class LottoController {
         return money.getTicketCount();
     }
 
-    //당첨번호를 리스트로 넣기
-    public List<Integer> setWinningNumberBasedOnComma(String input){
-        winningNumbers = Stream.of(input.split("\\s*,\\s*"))
-                .collect(Collectors.toList());
-
-        List<Integer> winningNumbersConvert = winningNumbers.stream()
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
-
-        return winningNumbersConvert;
-    }
-
     //당첨번호 입력 시 로또 검증해야 함
     public void makeLottoWinningNumber(){
+        winningLotto = new WinningLotto(userInput.inputWinningNumber());
         lotto = new Lotto
-                (setWinningNumberBasedOnComma(userInput.inputWinningNumber()));
+                (winningLotto.getWinningNumbers());
     }
 
     //구매한 장수만큼 로또 랜덤 생성하기
@@ -64,10 +51,6 @@ public class LottoController {
         return randomLottoNumber;
     }
 
-    //보너스 번호 입력 로직 실행
-    public int makeLottoBonusNumber(){
-        lottoBonus = new LottoBonus(userInput.inputBonusNumber());
-        return lottoBonus.getBonusNumber();
-    }
+
 
 }
