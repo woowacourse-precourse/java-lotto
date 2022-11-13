@@ -10,7 +10,7 @@ public class LottoNumberGeneratorImpl implements LottoNumberGenerator {
     public List<List<Integer>> generateLottoNumber(int purchaseNumber) {
         List<List<Integer>> generatedLottoNumber = new ArrayList<>();
 
-        for (int number = 0; number < purchaseNumber; number++) {
+        for (int number = 0; number < purchaseNumber / 1000; number++) {
             generatedLottoNumber.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         }
 
