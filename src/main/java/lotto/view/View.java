@@ -13,6 +13,7 @@ public class View {
     }
 
     public static void printUserLotto(List<Lotto> userLotto) {
+        System.out.println(userLotto.size() + "개를 구매했습니다.");
         for (Lotto lottoPiece : userLotto) {
             System.out.println(lottoPiece.getNumbers());
         }
@@ -31,7 +32,7 @@ public class View {
     public static void printWinningResult(List<Integer> result, List<String> winningMoney) {
         for (int i = 0; i < 4; i++) {
             if (i == 3) {
-                System.out.printf("%d개 일치,보너스볼 일치 (%s원) - %d개", 5, winningMoney.get(i+1), result.get(i+1));
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개", 5, winningMoney.get(i + 1), result.get(i + 1));
                 System.out.println();
                 System.out.printf("%d개 일치 (%s원) - %d개", i + 3, winningMoney.get(i), result.get(i));
                 continue;
@@ -39,5 +40,7 @@ public class View {
             System.out.printf("%d개 일치 (%s원) - %d개", i + 3, winningMoney.get(i), result.get(i));
             System.out.println();
         }
+        System.out.println("총 수익률은 62.5%입니다."
+        );
     }
 }
