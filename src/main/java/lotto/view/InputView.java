@@ -1,14 +1,36 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 import lotto.view.message.ExceptionMessage;
 import lotto.view.message.FixedMessage;
 
 public class InputView {
+    private static final String COMMA = ",";
+
     public Integer askPrice() {
         System.out.println(FixedMessage.INPUT_PRICE.getMessage());
         String inputValue = Console.readLine();
         return validateValue(inputValue);
+    }
+
+    public List<Integer> askWinningNumbers() {
+        System.out.println(FixedMessage.INPUT_WINNING_NUMBERS.getMessage());
+        String inputValue = Console.readLine();
+        return getWinningNumbers(inputValue);
+    }
+
+    private List<Integer> getWinningNumbers(String inputValue) {
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (String splitValue : inputValue.split(COMMA)) {
+            winningNumbers.add(validateValue(splitValue));
+        }
+        return winningNumbers;
+    }
+
+    public Integer askBonusNumber() {
+        return null;
     }
 
     public Integer validateValue(String inputValue) {
