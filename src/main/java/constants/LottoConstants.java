@@ -1,7 +1,10 @@
 package constants;
 
+import java.util.regex.Pattern;
+
 public abstract class LottoConstants {
 
+    public static final Pattern REGEX = Pattern.compile("[0-9]+");
     public static final int MIN_LOTTO_VALUE = 1;
     public static final int MAX_LOTTO_VALUE = 45;
     public static final int LOTTO_NUM = 6;

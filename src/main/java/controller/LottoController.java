@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 
 public class LottoController {
 
-    private PurchaseAmount purchaseAmount;
     private List<Lotto> lottos;
     private List<Integer> winNumbers;
     private int bonusNumber;
@@ -26,21 +25,20 @@ public class LottoController {
         winNumbers = new ArrayList<>();
     }
 
-    private void getLottoPurchaseAmountFromUser() {
+    private PurchaseAmount getLottoPurchaseAmountFromUser() {
         try {
             String userInput = InputUtils.getMoneyFromUser();
 
-            Validator.checkLottoPurchaseAmountIsValid(userInput);
-
-            purchaseAmount = new PurchaseAmount(Integer.parseInt(userInput));
+            return new PurchaseAmount(userInput);
         } catch (IllegalArgumentException e) {
             OutputUtils.printException(e);
-            getLottoPurchaseAmountFromUser();
+            return getLottoPurchaseAmountFromUser();
         }
     }
 
-    private void generateLotteryNumbers() {
+    private void generateLotteryNumbers(PurchaseAmount purchaseAmount) {
         int purchaseCount = purchaseAmount.getPurchaseCount();
+        OutputUtils.printLottoPurchaseCount(purchaseCount);
 
         while (purchaseCount > 0) {
             List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(
@@ -55,7 +53,6 @@ public class LottoController {
     }
 
     private void printPurchasedLottoNumbers() {
-        OutputUtils.printLottoPurchaseCount(purchaseAmount.getPurchaseCount());
         OutputUtils.printPurchasedLottoNumbers(lottos);
     }
 
@@ -82,7 +79,7 @@ public class LottoController {
         return Wins.getWinningStats();
     }
 
-    private double calculateProfitRate() {
+    private double calculateProfitRate(PurchaseAmount purchaseAmount) {
         return Wins.getProfitRate(purchaseAmount.getPurchaseAmount());
     }
 
@@ -92,9 +89,9 @@ public class LottoController {
     }
 
     public void start() {
-        getLottoPurchaseAmountFromUser();
+        PurchaseAmount purchaseAmount = getLottoPurchaseAmountFromUser();
 
-        generateLotteryNumbers();
+        generateLotteryNumbers(purchaseAmount);
 
         try {
             getWinNumbersFromUser();
@@ -105,7 +102,7 @@ public class LottoController {
         }
 
         String winningStats = calculateWinningRate();
-        double profitRate = calculateProfitRate();
+        double profitRate = calculateProfitRate(purchaseAmount);
 
         printResult(winningStats, profitRate);
     }

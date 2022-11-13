@@ -12,18 +12,6 @@ public class Validator {
 
     private static final Pattern REGEX = Pattern.compile("[0-9]+");
 
-    public static void checkLottoPurchaseAmountIsValid(String userInput) {
-        if (!userInput.matches(REGEX.pattern())) {
-            throw new IllegalArgumentException(UIConstants.INVALID_PURCHASE_AMOUNT);
-        }
-
-        int purchaseAmount = Integer.parseInt(userInput);
-        if (purchaseAmount <= 0 ||
-                purchaseAmount % LottoConstants.MONEY_UNIT != 0) {
-            throw new IllegalArgumentException(UIConstants.INVALID_PURCHASE_AMOUNT);
-        }
-    }
-
     public static void checkWinsNumberIsValid(String userInput) {
         String[] tokens = userInput.split(LottoConstants.SEPARATOR);
 
