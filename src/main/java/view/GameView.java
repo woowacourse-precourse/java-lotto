@@ -1,12 +1,11 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import controller.BonusController;
 import controller.LottoController;
 import controller.MoneyController;
 import controller.UserLottoController;
-import domain.Lotto;
-import domain.Money;
-import domain.UserLotto;
+import domain.*;
 
 public class GameView {
     private static final String INPUT_PURCHASE_AMOUNT = "구매 금액 입력해 주세요.";
@@ -22,13 +21,14 @@ public class GameView {
     MoneyController moneyController = new MoneyController();
     UserLottoController userLottoController = new UserLottoController();
     LottoController lottoController = new LottoController();
+    BonusController bonusController = new BonusController();
 
     public void start() {
         Money money = moneyController.getPurchaseAmount(inputPurchaseAmount());
 
         // 몇 장의 로또를 발행할 것인지 계산
         int purchaseNumber = moneyController.getAvailablePurchaseNumber(money);
-        System.out.println("\n" + purchaseNumber + NUMBER_OF_PURCHASE + "\n");
+        System.out.println("\n" + purchaseNumber + NUMBER_OF_PURCHASE);
 
         // 사용자에게 랜덤으로 로또 번호를 발행한다
         UserLotto userLotto = userLottoController.createUserLotto(purchaseNumber);
@@ -38,6 +38,9 @@ public class GameView {
 
         // 당첨 번호를 입력 한다
         Lotto lotto = lottoController.createWinningNumber(inputWinningNumber());
+
+        // 보너스 번호를 입력한다
+        Bonus bonus = bonusController.createBonusNumber(inputBonusNumber(), lotto);
     }
 
     public String inputPurchaseAmount() {
@@ -51,6 +54,7 @@ public class GameView {
     }
 
     public String inputBonusNumber() {
+        System.out.println("\n" + INPUT_BOUNUS_NUMBER);
         return Console.readLine();
     }
 }
