@@ -57,7 +57,7 @@ public class Output {
         StringBuilder stringBuilder = new StringBuilder();
 
         int ticketCount = purchaseAmount.getPurchaseAmount();
-        String ticketCountSentence = String.format("%d개를 구매했습니다.", ticketCount);
+        String ticketCountSentence = String.format("%d개를 구매했습니다.", ticketCount / 1000);
         stringBuilder.append(ticketCountSentence).append("\n");
 
         List<Lotto> tickets = lottoTicket.getLottoTickets();
