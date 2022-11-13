@@ -11,17 +11,25 @@ public class LottoFactory {
     private final int LOTTO_END_NUMBER = 45;
     private final int LOTTO_NUMBER_COUNT = 6;
 
+    public Lotto createLotto() {
+        List<Integer> lottoNumbers = createLottoNumbers();
+        sortInAscending(lottoNumbers);
+        return new Lotto(lottoNumbers);
+    }
+
+    // overload
+    public Lotto createLotto(List<Integer> lottoNumbers) {
+        sortInAscending(lottoNumbers);
+        return new Lotto(lottoNumbers);
+    }
+
     public List<Lotto> createLottos(int quantity) {
         List<Lotto> lottos = new ArrayList<>();
 
         while (lottos.size() < quantity) {
-            List<Integer> lottoNumbers = createLottoNumbers();
-            this.sortInAscending(lottoNumbers);
-            
-            Lotto lotto = new Lotto(lottoNumbers);
+            Lotto lotto = createLotto();
             lottos.add(lotto);
         }
-
         return lottos;
     }
 
