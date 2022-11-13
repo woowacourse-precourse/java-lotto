@@ -22,10 +22,13 @@ public class InputLotto {
         return Long.parseLong(value);
     }
 
-    public List<Integer> IntputValueSplitCommas(){
+    public List<Integer> inputValueSplitCommas(){
         String value = inputValueOfUser();
+        ExceptionHandling exceptionHandling = new ExceptionHandling();
+
         List<String> stringsNumberList = splitCommas(value);
         List<Integer> numberList = toIntList(stringsNumberList);
+        exceptionHandling.removeDuplicateNumber(numberList);
         return numberList;
     }
 
