@@ -46,6 +46,7 @@ public class LottoGameSimulator {
     public void getInputOfBonusNumber() {
         MessagePrinter.printBonusNumberInputRequest();
         String bonusNumberInput = Inputter.readLine();
+        BonusNumberValidator.validate(bonusNumberInput);
     }
 
     public void printResult() {
