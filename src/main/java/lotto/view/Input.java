@@ -9,18 +9,13 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class Input {
-    private static final String ENTER_PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String ENTER_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
-    private static final String ENTER_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
-
-    public static int getAmount() {
-        System.out.println(ENTER_PURCHASE_AMOUNT_MESSAGE);
+    public static int getPrice() {
+        System.out.println(Message.PURCHASE_AMOUNT.print());
         return getNumber();
     }
 
     public static List<Integer> getWinningNumber() {
-        System.lineSeparator();
-        System.out.println(ENTER_WINNING_NUMBER_MESSAGE);
+        System.out.println(System.lineSeparator() + Message.WINNING_NUMBER.print());
         try {
             return stringToList(Console.readLine());
         } catch (Exception e) {
@@ -28,14 +23,11 @@ public class Input {
         }
     }
 
-    public static List<Integer> getBonusNumber(List<Integer> winningNumber) {
-        System.lineSeparator();
-        System.out.println(ENTER_BONUS_NUMBER_MESSAGE);
+    public static List<Integer> getBonusNumber() {
+        System.out.println(System.lineSeparator() + Message.BONUS_NUMBER.print());
         try {
-            int number = getNumber();
-            List<Integer> bonusNumber = new ArrayList<>(number);
-            validateDuplicateWinning(winningNumber, number);
-            return bonusNumber;
+            int bonusNumber = getNumber();
+            return new ArrayList<>(bonusNumber);
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] Only enter numbers.");
         }
@@ -54,11 +46,5 @@ public class Input {
         return Arrays.stream(numbers.split(","))
                 .map(Integer::parseInt)
                 .collect(toList());
-    }
-
-    private static void validateDuplicateWinning(List<Integer> winningNumber, int bonusNumber) {
-        if (winningNumber.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] Must enter a number that does not overlap with the winning number.");
-        }
     }
 }
