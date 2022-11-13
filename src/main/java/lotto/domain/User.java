@@ -5,6 +5,7 @@ import java.util.List;
 import lotto.Notice;
 
 public class User {
+	private int LOTTO_PRICE = 1000;
 	private int money;
 	private List<Integer> prizeMoney;
 	private String rateOfReturn;
@@ -34,9 +35,9 @@ public class User {
 	}
 
 	private void checkMoney(int money) {
-		if (money % 1000 != 0) {
+		if ((money % LOTTO_PRICE) != 0 || money == 0) {
 			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + "1000원 단위로 입력해 주세요");
 		}
-		this.money = money / 1000;
+		this.money = (money / LOTTO_PRICE);
 	}
 }
