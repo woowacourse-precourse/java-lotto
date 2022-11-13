@@ -25,7 +25,7 @@ public class LottoService {
 	public ScoreInfo makeScoreInfoBy(List<Lotto> lottos, WinningInfo winningInfo) {
 		ScoreInfo scoreInfo = new ScoreInfo();
 		for (Lotto lotto : lottos) {
-			scoreInfo.calculateRank(lotto, winningInfo);
+			calculateRank(lotto, winningInfo, scoreInfo);
 		}
 		return scoreInfo;
 	}
@@ -39,6 +39,36 @@ public class LottoService {
 		profit = convertToPercentage(profit);
 		profit = roundToFirstDigit(profit);
 		return profit;
+	}
+
+
+	public void calculateRank(Lotto lotto, WinningInfo winningInfo, ScoreInfo scoreInfo) {
+		int matchCount = getMatchCount(lotto, winningInfo);
+
+		if (matchCount == 6) {
+			scoreInfo.addScore(Score.FIRST);
+		} else if (matchCount == 5) {
+			if (isBonusMatching(lotto, winningInfo)) {
+				scoreInfo.addScore(Score.SECOND);
+				return;
+			}
+			scoreInfo.addScore(Score.THIRD);
+		} else if (matchCount == 4) {
+			scoreInfo.addScore(Score.FORTH);
+		} else if (matchCount == 3) {
+			scoreInfo.addScore(Score.FIFTH);
+		}
+	}
+
+	private static int getMatchCount(Lotto lotto, WinningInfo winningInfo) {
+		return (int) lotto.getNumbers()
+				.stream()
+				.filter(number -> winningInfo.contains(number))
+				.count();
+	}
+
+	private boolean isBonusMatching(Lotto lotto, WinningInfo winningInfo) {
+		return lotto.contains(winningInfo.getBonus());
 	}
 
 	private double convertToPercentage(double profit) {
