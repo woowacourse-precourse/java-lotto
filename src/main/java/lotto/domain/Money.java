@@ -36,4 +36,8 @@ public class Money {
     public int getQuantityByUnit(int unit) {
         return money / unit;
     }
+
+    public double getMoney() {
+        return this.money;
+    }
 }

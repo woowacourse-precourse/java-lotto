@@ -9,6 +9,7 @@ public class GradingMachine {
     private final int bonusNumber;
 
     public GradingMachine(Lotto winnerLotto, int bonusNumber) {
+        validate(winnerLotto, bonusNumber);
         this.winnerLotto = winnerLotto;
         this.bonusNumber = bonusNumber;
     }
@@ -20,6 +21,13 @@ public class GradingMachine {
             gradeResult.put(grade, gradeResult.getOrDefault(grade, 0) + 1);
         }
         return new GradesResult(gradeResult);
+    }
+
+    private int validate(Lotto winnerLotto, int bonusNumber) {
+        if (winnerLotto.getLotto().contains(bonusNumber)) {
+            throw new IllegalArgumentException();
+        }
+        return bonusNumber;
     }
 
     private Grade findGrade(Lotto buyingLotto) {

@@ -7,4 +7,8 @@ public class PrizeMoney {
     public PrizeMoney(int prizeMoney) {
         this.prizeMoney = prizeMoney;
     }
+
+    public int getMoney() {
+        return prizeMoney;
+    }
 }

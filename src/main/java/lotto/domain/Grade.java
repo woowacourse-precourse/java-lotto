@@ -8,7 +8,7 @@ public enum Grade {
     THIRD(new PrizeMoney(1_500_000), 5),
     FORTH(new PrizeMoney(50_000), 4),
     FIFTH(new PrizeMoney(5_000), 3),
-    PASS(new PrizeMoney(0),0);
+    PASS(new PrizeMoney(0), 0);
 
     private final PrizeMoney prizeMoney;
     private final int count;
@@ -28,5 +28,9 @@ public enum Grade {
                 .filter(grade -> grade.count == hitCount)
                 .findFirst()
                 .orElse(PASS);
+    }
+
+    public PrizeMoney getPrizeMoney() {
+        return prizeMoney;
     }
 }
