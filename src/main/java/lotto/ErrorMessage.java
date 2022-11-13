@@ -11,11 +11,10 @@ public enum ErrorMessage {
     final private String errorLog;
 
     public String getErrorLog() {
-        String message = "[ERROR] " + this.errorLog;
-        return message;
+        return "[ERROR] " + this.errorLog;
     }
 
-    private ErrorMessage(String errorLog) {
+    ErrorMessage(String errorLog) {
         this.errorLog = errorLog;
     }
 
