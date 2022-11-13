@@ -2,9 +2,9 @@ package lotto.domain;
 
 public enum Rank {
     NO_RANK(0, false, 0L, "0"),
-    FIFTH(3, false,5_000L, "5,000"),
-    FOURTH(4, false,50_000L, "50,000"),
-    THIRD(5, false,1_500_000L, "1,500,000"),
+    FIFTH(3, false, 5_000L, "5,000"),
+    FOURTH(4, false, 50_000L, "50,000"),
+    THIRD(5, false, 1_500_000L, "1,500,000"),
     SECOND(5, true, 30_000_000L, "30,000,000"),
     FIRST(6, false, 2_000_000_000L, "2,000,000,000");
 
@@ -13,7 +13,7 @@ public enum Rank {
     final private long prize;
     final private String convertPrize;
 
-    Rank(int count, boolean isBonus, long prize, String convertPrize){
+    Rank(int count, boolean isBonus, long prize, String convertPrize) {
         this.count = count;
         this.isBonus = isBonus;
         this.prize = prize;
@@ -28,11 +28,11 @@ public enum Rank {
         return isBonus;
     }
 
-    public long getPrize(){
+    public long getPrize() {
         return prize;
     }
 
-    public String getConvertPrize(){
+    public String getConvertPrize() {
         return convertPrize;
     }
 }

@@ -4,9 +4,9 @@ import lotto.validation.Validation;
 import java.util.List;
 
 public class Lotto {
-    private static final int LOTTO_START_NUMBER=1;
-    private static final int LOTTO_LAST_NUMBER=45;
-    private static final int LOTTO_LENGTH=6;
+    private static final int LOTTO_START_NUMBER = 1;
+    private static final int LOTTO_LAST_NUMBER = 45;
+    private static final int LOTTO_LENGTH = 6;
 
     private final List<Integer> numbers;
 
@@ -15,7 +15,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
