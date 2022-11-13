@@ -25,10 +25,10 @@ public class UserInput {
         try {
             money = Long.parseLong(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
+            throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
         }
         if (money % 1000 != 0 || money == 0) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_1000.printError());
+            throw new IllegalArgumentException(ErrorMessage.INPUT_1000.printError());
         }
     }
 
@@ -69,7 +69,7 @@ public class UserInput {
                 numbers.add(Integer.parseInt(splitInput[i].trim()));
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
+            throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
         }
     }
 }
