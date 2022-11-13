@@ -14,7 +14,7 @@ public class Convert {
         return purchasePrice / UNIT_LOTTO_PRICE;
     }
 
-    public int toInt(String input) throws IllegalArgumentException {
+    public int toInt(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {

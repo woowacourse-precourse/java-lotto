@@ -29,7 +29,7 @@ public class LottoSimulate {
         }
     }
 
-    private int inputPurchasePrice() throws IllegalArgumentException {
+    private int inputPurchasePrice() {
         print.requestPurchasePrice();
         String input = Console.readLine();
         return convert.toInt(input);
