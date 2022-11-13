@@ -2,7 +2,6 @@ package lotto;
 
 import lotto.numbers_generator.Context;
 import lotto.numbers_generator.LottoNumberGeneratorSequenceImpl;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -21,8 +20,8 @@ class LottoVendorTest {
                 List.of(lotto1, lotto2, lotto3)
         ));
         LottoVendor lottoVendor = new LottoVendor();
-        List<List<Integer>> lottos = lottoVendor.purchase(3000);
-        assertThat(lottos).contains(lotto1, lotto2, lotto3);
+        List<Lotto> lottos = lottoVendor.purchase(3000);
+        assertThat(lottos).contains(new Lotto(lotto1), new Lotto(lotto2), new Lotto(lotto3));
     }
 
     @Test

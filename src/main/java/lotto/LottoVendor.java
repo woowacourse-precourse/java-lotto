@@ -10,13 +10,13 @@ public class LottoVendor {
     private final LottoNumbersGenerator lottoNumbersGenerator = Context.getLottoNumbersGenerator();
     private final Integer lottoPrice = 1000;
 
-    List<List<Integer>> purchase(Integer amount){
-        List<List<Integer>> ret = new ArrayList<>();
+    List<Lotto> purchase(Integer amount){
+        List<Lotto> ret = new ArrayList<>();
         if(amount % lottoPrice != 0)
             throw new IllegalArgumentException();
         int lottoQuantity = amount / lottoPrice;
         while(lottoQuantity-- != 0)
-            ret.add(lottoNumbersGenerator.generate());
+            ret.add(new Lotto(lottoNumbersGenerator.generate()));
         return ret;
     }
 }
