@@ -17,6 +17,7 @@ public class WinningNumbers {
     public WinningNumbers(List<Integer> standardNumbers, int bonusNumber) {
         validateStandardNumbers(standardNumbers);
         validateBonusNumber(bonusNumber);
+        validateDuplicateAllNumbers(standardNumbers, bonusNumber);
 
         this.standardNumbers = standardNumbers;
         this.bonusNumber = bonusNumber;
@@ -40,6 +41,12 @@ public class WinningNumbers {
     private void validateBonusNumber(int bonusNumber) {
         if (!(MIN_NUMBER <= bonusNumber && bonusNumber <= MAX_NUMBER)) {
             throw new IllegalArgumentException("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    private void validateDuplicateAllNumbers(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("당첨 번호와 보너스 번호는 중복되면 안됩니다.");
         }
     }
 
