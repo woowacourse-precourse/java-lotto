@@ -14,16 +14,15 @@ public class LotteryMachineTest {
     public void generateUniqueNumbers() {
         User user = new User();
         LotteryMachine lotteryMachine = new LotteryMachine();
-        String userInput = "3000";
-        InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(inputStream);
+//        String userInput = "3000";
+//        InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+//        System.setIn(inputStream);
 
-        user.setLotteries(lotteryMachine);
-        List<Lotto> userLotteries = user.getLotteries();
-        for (int i = 0; i < user.getNumOfLotteries(); ++i) {
+        List<Lotto> userLotteries = lotteryMachine.generateLotteries(3);
+        assertThat(3).isEqualTo(userLotteries.size());
+        for (int i = 0; i < 3; ++i) {
             Lotto lotto = userLotteries.get(i);
             assertThat(hasUniqueNumbers(lotto)).isTrue();
-            System.out.println(lotto.getNumbers());
         }
     }
 
