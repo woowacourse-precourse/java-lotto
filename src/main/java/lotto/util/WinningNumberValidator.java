@@ -4,7 +4,6 @@ import org.junit.platform.commons.util.StringUtils;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class WinningNumberValidator implements Validator {
     private final static String WINNING_NUM_PATTERN = "(^[1-9]|^[1-3][0-9]|^4[0-5])(,[1-9]|,[1-3][0-9]|,4[0-5]){5}$";
