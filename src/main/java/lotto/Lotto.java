@@ -46,7 +46,6 @@ public class Lotto {
         String bonus = Console.readLine();
         try{
         bonusNum = Integer.parseInt(bonus);
-            System.out.println(bonusNum);
         }catch(Exception e){
             throw new IllegalArgumentException(NOT_INTEGER_ERROR);
         }
