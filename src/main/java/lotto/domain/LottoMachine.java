@@ -2,11 +2,10 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.model.Lotto;
+import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class LottoMachine {
     private final int LOTTO_PRICE = 1000;
@@ -20,13 +19,18 @@ public class LottoMachine {
 
     public void getInputMoney(){
         System.out.println("구입 금액을 입력해 주세요");
-        int money = Integer.parseInt(Console.readLine());
+        String money = Console.readLine();
         validateMoney(money);
         this.paid = Integer.parseInt(Console.readLine());
     }
 
-    private void validateMoney(int money){
-        if(money % LOTTO_PRICE != 0){
+    private void validateMoney(String input){
+        if(input.matches("[^0-9]")){
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요");
+        }
+        int money = Integer.parseInt(input);
+
+        if(money != 0 && money % LOTTO_PRICE != 0){
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해 주세요");
         }
     }
