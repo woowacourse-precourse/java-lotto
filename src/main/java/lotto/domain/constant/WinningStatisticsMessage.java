@@ -1,6 +1,8 @@
 package lotto.domain.constant;
 
-public enum WinningStatisticsMessage {
+import lotto.view.ViewType;
+
+public enum WinningStatisticsMessage implements ViewType {
 
   WINNING_STATISTICS("당첨 통계\n---"),
   SAME_THREE_NUMBER("3개 일치 (5,000원) - "),
