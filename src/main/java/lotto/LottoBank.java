@@ -22,10 +22,21 @@ public class LottoBank {
                 containsCount++;
             }
         }
+        if (isContainBonusNumber(lotto, winningNumbers)) {
+            containsCount++;
+        }
     }
 
     public boolean isContainNumber(int number, List<Integer> winningNumbers) {
         if (winningNumbers.contains(number)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isContainBonusNumber(List<Integer> lotto, List<Integer> winningNumbers) {
+        int bonusNumber = winningNumbers.get(-1);
+        if (containsCount == 6 && lotto.contains(bonusNumber)) {
             return true;
         }
         return false;
