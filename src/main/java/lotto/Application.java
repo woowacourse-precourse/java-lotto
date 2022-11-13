@@ -1,11 +1,13 @@
 package lotto;
 
 
-import static lotto.InputOutput.moneyInput;
-
 public class Application {
+    public static int LOTTERY_PRICE = 1000;
+
     public static void main(String[] args) {
-        int money = moneyInput();
+        InputOutput inputOutput = new InputOutput(LOTTERY_PRICE);
+
+        int money = inputOutput.moneyInput();
 
 
     }

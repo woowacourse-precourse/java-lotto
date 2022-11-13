@@ -3,7 +3,13 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputOutput {
-    public static int moneyInput() {
+    private final int LOTTERY_PRICE;
+
+    public InputOutput(int lotteryPrice) {
+        LOTTERY_PRICE = lotteryPrice;
+    }
+
+    public int moneyInput() {
         int money;
 
         try {
@@ -13,13 +19,13 @@ public class InputOutput {
             throw new IllegalArgumentException();
         }
 
-        if (money % 1000 != 0) {
-            System.out.println("[ERROR] 구입 금액은 1000단위 이어야 합니다.");
+        if (money % LOTTERY_PRICE != 0) {
+            System.out.println("[ERROR] 구입 금액은 " + LOTTERY_PRICE + "단위 이어야 합니다.");
             throw new IllegalArgumentException();
         }
 
         if (money <= 0) {
-            System.out.println("[ERROR] 구입 금액은 1000이상만 가능합니다.");
+            System.out.println("[ERROR] 구입 금액은 " + LOTTERY_PRICE + "이상만 가능합니다.");
             throw new IllegalArgumentException();
         }
 
