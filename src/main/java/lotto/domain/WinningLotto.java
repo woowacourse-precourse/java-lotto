@@ -34,4 +34,18 @@ public class WinningLotto extends Lotto{
             throw new IllegalArgumentException(INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
         }
     }
+
+    public Rank compareLottoNumber(Lotto lotto) {
+        int countOfMatch = getCountOfMatch(lotto);
+    }
+
+    private int getCountOfMatch(Lotto lotto) {
+        return (int) this.getNumbers()
+                .stream()
+                .filter(
+                        number ->
+                                lotto.getNumbers().contains(number)
+                )
+                .count();
+    }
 }
