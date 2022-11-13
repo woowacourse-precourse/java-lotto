@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import lotto.domain.Buyer;
+import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
 
@@ -19,9 +20,12 @@ public class MachineSystem {
 	public List<Rank> matchLottos() {
 		return buyer.getLotto()
 			.stream()
-			.map(lotto -> Rank.getRank(MachineSystem.this.checkWinningNumber(lotto.getNumbers()),
-				MachineSystem.this.checkBonusNumber(lotto.getNumbers())))
+			.map(this::matchLotto)
 			.collect(Collectors.toList());
+	}
+
+	public Rank matchLotto(Lotto lotto) {
+		return Rank.getRank(checkWinningNumber(lotto.getNumbers()), checkBonusNumber(lotto.getNumbers()));
 	}
 
 	private boolean checkBonusNumber(List<Integer> lottoNumbers) {
