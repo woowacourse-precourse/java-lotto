@@ -1,23 +1,19 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void makeLottoNumber(int lottoCount){
         int[][] lottoArray = new int[lottoCount][6];
 
-        for(int i = 0; i < lottoCount; i++){
-            for(int j = 0; j < lottoArray[i].length; j++){
-                int number = (int)(Math.random() * 45) + 1;
-                lottoArray[i][j] = number;
-
-                for(int k = 0; k < j; k++){
-                    if (lottoArray[i][k] == number){
-                        j--;
-                        break;
-                    }
-                }
+        for (int i = 0; i < lottoCount; i++){
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            for (int j = 0; j < lottoArray[i].length; j++){
+                lottoArray[i][j] = numbers.get(j);
             }
 
             Arrays.sort(lottoArray[i]);
@@ -40,7 +36,6 @@ public class Application {
             int countTmp = 0;
 
             for(int j = 0; j < 6; j++){
-
 
                 for(int k = 0; k < 6; k++) {
                     if (lottoArray[i][j] == userInputLottoNumber[k]) {
@@ -71,7 +66,6 @@ public class Application {
                     correctCount[3]++;
                 }
             }
-
             correctCount[2]++;
         }
 
@@ -109,29 +103,31 @@ public class Application {
         // TODO: 프로그램 구현
         Scanner scanner = new Scanner(System.in);
         int purchasedValue;
-        String userInputLotto;
+        String userInputLotto = "";
         String[] userInputLottoTmp;
         int[] userInputLottoNumber = new int[6];
         int userInputBonusNumber;
-        int[][] lottoArray = new int[][];
 
         System.out.println("구입금액을 입력해 주세요.");
         purchasedValue = scanner.nextInt();
 
-        if (purchasedValue % 1000 != 0){
+        if (purchasedValue % 1000 != 0) {
             System.out.println("[ERROR] 로또 구입 금액은 1000원으로 나누어 떨어져야 합니다.");
             throw new IllegalArgumentException();
         }
 
         int lottoCount = purchasedValue / 1000;
-        System.out.println("\n" +lottoCount+ "개를 구매했습니다.");
+        System.out.println("\n" + lottoCount + "개를 구매했습니다.");
+
+
+        int[][] lottoArray = new int[lottoCount][6];
 
         makeLottoNumber(lottoCount);
 
         System.out.println("당첨 번호를 입력해 주세요.");
         userInputLotto = scanner.nextLine();
         userInputLottoTmp = userInputLotto.split(",");
-        for (int i = 0; i < userInputLottoTmp.length; i++){
+        for (int i = 0; i < userInputLottoTmp.length; i++) {
             userInputLottoNumber[i] = Integer.parseInt(userInputLottoTmp[i]);
         }
 
