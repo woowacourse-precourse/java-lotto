@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WinningNumber extends Lotto {
+public class WinningNumber {
     private static final String NUMBER_INPUT_REGEX = "^(\\d{1,2},){5}(\\d{1,2}$)";
     private static final String BONUS_INPUT_REGEX = "^(\\d{1,2})$";
     private static final String EMPTY_INPUT_ERROR_MESSAGE =
@@ -19,10 +19,11 @@ public class WinningNumber extends Lotto {
     private static final String BONUS_FORMAT_ERROR_MESSAGE =
             ERROR_PREFIX + "보너스 숫자는 1~45 숫자를 당첨 숫자와 중복되지 않게 입력해주세요";
 
+    private final List<Integer> numbers;
     private final int bonusNumber;
 
     private WinningNumber(List<Integer> numbers, int bonusNumber) {
-        super(numbers);
+        this.numbers = numbers;
         this.bonusNumber = bonusNumber;
     }
 
