@@ -15,10 +15,9 @@ public class Application {
         Lotto winningLotto = controller.issueWinningNumber(numbers);
         int plusNumber = console.inputPlusNumber();
         winningLotto.checkPlusNumber(plusNumber);
-
         List<Integer>[] resultList = winningLotto.getResult(issuedList, plusNumber);
 
-//        List<Rank> rankList = Rank.getStringResult(resultList);
-//        console.outputResult(rankList);
+        List<Rank> rankList = Rank.getResult(resultList);
+        
     }
 }
