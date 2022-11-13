@@ -11,14 +11,12 @@ public class InputView {
 
     public Integer askPrice() {
         System.out.println(FixedMessage.INPUT_PRICE.getMessage());
-        String inputValue = Console.readLine();
-        return validateValue(inputValue);
+        return validateValue(Console.readLine());
     }
 
     public List<Integer> askWinningNumbers() {
         System.out.println(FixedMessage.INPUT_WINNING_NUMBERS.getMessage());
-        String inputValue = Console.readLine();
-        return getWinningNumbers(inputValue);
+        return getWinningNumbers(Console.readLine());
     }
 
     private List<Integer> getWinningNumbers(String inputValue) {
@@ -31,8 +29,7 @@ public class InputView {
 
     public Integer askBonusNumber() {
         System.out.println(FixedMessage.INPUT_BONUS_NUMBER.getMessage());
-        String inputValue = Console.readLine();
-        return validateValue(inputValue);
+        return validateValue(Console.readLine());
     }
 
     public Integer validateValue(String inputValue) {
