@@ -16,5 +16,13 @@ public class Lotto {
         }
     }
 
+    public boolean containNumber(int number) {
+        if (this.numbers.contains(number)) {
+            return true;
+        }
+
+        return false;
+    }
+
     // TODO: 추가 기능 구현
 }
