@@ -6,9 +6,17 @@ import java.util.List;
 
 public class EnterWinningNumber {
     public static final int LOTTO_SIZE = 6;
-    
+
     private String getWinningNumberInput() {
         return Console.readLine();
+    }
+
+    private int inputIsNumber(String userInput) {
+        if (!userInput.matches("[0-9]{1,2}")) {
+            throw new IllegalArgumentException("[ERROR] 값은 ,와 숫자만 입력 가능합니다.");
+        }
+
+        return Integer.valueOf(userInput);
     }
 
     private void isEachNumberBetween1AND45(int number) {
