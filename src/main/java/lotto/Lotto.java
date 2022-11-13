@@ -1,10 +1,8 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * 한장의 로또 티켓 정보를 관리하는 클래스
