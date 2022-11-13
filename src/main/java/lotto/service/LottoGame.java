@@ -1,15 +1,22 @@
 package lotto.service;
 
+import java.util.List;
+import lotto.domain.Lotto;
+import lotto.repository.LottoAutomatonRepository;
+
 public class LottoGame {
+    private LottoAutomatonRepository automatonRepository;
+
     public LottoGame() {
     }
 
-    public void calculateCount() {
-        // 입력받은 금액을 통해 발행수를 계산
+    public int calculateQuantity(String amount) {
+        return automatonRepository.getCount(amount);
     }
 
-    public void createLottoTickets() {
-        // 로또 자동발행
+    public List<Lotto> createLottoTickets(String amount) {
+        automatonRepository = new LottoAutomatonRepository();
+        return automatonRepository.createTickets(calculateQuantity(amount));
     }
 
     public void compare() {

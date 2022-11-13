@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import java.util.List;
+import lotto.domain.Lotto;
 import lotto.service.LottoGame;
 import lotto.view.input.AmountInput;
 import lotto.view.print.PrintGuideMessage;
@@ -12,17 +14,22 @@ public class LottoGameController {
     }
 
     public void startGame() {
-        getAmount();
+        String amount = getAmount();
+        List<Lotto> tickets = game.createLottoTickets(amount);
+        printTickets(amount, tickets);
     }
 
-    public void getAmount() {
+    public String getAmount() {
         PrintGuideMessage.printStartGuide();
         AmountInput input = new AmountInput();
-        String amount = input.getInput();
+        return input.getInput();
     }
 
-    public void printTickets() {
-        // 자동 발행된 로또 번호를 출력
+    public void printTickets(String amount, List<Lotto> tickets) {
+        PrintGuideMessage.printPurchaseGuide(game.calculateQuantity(amount));
+        for (Lotto ticket : tickets) {
+            System.out.println(ticket.getNumbers().toString());
+        }
     }
 
     public void getWinnings() {
