@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.domain.LottoProfitRate;
 import lotto.domain.LottoResult;
+import lotto.model.Lotto;
 import lotto.model.LottoBuyer;
 import lotto.model.LottoWinningNumber;
 
@@ -24,10 +25,9 @@ public class LottoOutputView {
     }
 
     public void printLottoInfo(LottoBuyer lottoBuyer) {
-        lottoBuyer.getLottoTickets().forEach(lotto -> {
-            List<Integer> lottoInfo = lotto.getLotto();
-            System.out.println(lottoInfo);
-        });
+        lottoBuyer.getLottoTickets().stream().
+                map(Lotto::getLotto).
+                forEach(System.out::println);
     }
 
 
