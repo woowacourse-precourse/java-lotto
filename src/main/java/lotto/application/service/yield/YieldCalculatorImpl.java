@@ -2,7 +2,7 @@ package lotto.application.service.yield;
 
 import java.util.Map;
 
-import static lotto.application.service.yield.WinningMoney.*;
+import static lotto.application.service.statistic.WinningMoney.*;
 
 public class YieldCalculatorImpl implements YieldCalculator {
 

@@ -1,4 +1,4 @@
-package lotto.application.service.yield;
+package lotto.application.service.statistic;
 
 public enum WinningMoney {
 
