@@ -1,13 +1,24 @@
 package lotto.util;
 
+import lotto.config.InputConfig;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class InputMapper {
+    private static final String ERROR_MESSAGE = InputConfig.ERROR_MESSAGE;
+    private final String ERROR_INVALID_SPLIT_REGEX = ERROR_MESSAGE+"(%s)로 구분된 입력을 해주세요.";
+    private final String SPLIT_REGEX = ",";
 
-    public List<Integer> splitBy(String input, String regex) throws NumberFormatException {
-        return Arrays.stream(input.split(regex)).map(String::trim).map(Integer::parseInt).collect(Collectors.toList());
+
+    public List<Integer> splitByComma(String input) {
+        try {
+            return Arrays.stream(input.split(SPLIT_REGEX)).map(String::trim).map(Integer::parseInt).collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            String errMsg = String.format(ERROR_INVALID_SPLIT_REGEX,SPLIT_REGEX);
+            System.out.println(errMsg);
+            throw new IllegalArgumentException(errMsg);
+        }
     }
 }

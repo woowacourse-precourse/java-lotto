@@ -11,7 +11,6 @@ import java.util.Map;
 
 public class ViewController {
     private final long LOTTO_PRICE = InputConfig.LOTTO_PRICE;
-    private final String SPLIT_REGEX = ",";
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -64,7 +63,7 @@ public class ViewController {
         inputView.printInputPrizeLottoNumber();
         String input = Console.readLine();
 
-        List<Integer> prize = inputMapper.splitBy(input, SPLIT_REGEX);
+        List<Integer> prize = inputMapper.splitByComma(input);
         InputConfig.checkPrizeLotto(prize);
 
         inputView.printNewLine();
