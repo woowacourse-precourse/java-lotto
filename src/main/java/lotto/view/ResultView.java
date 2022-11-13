@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.RandomLotto;
+import lotto.domain.WinningResult;
 
 import java.util.List;
 
@@ -16,8 +17,11 @@ public class ResultView {
     }
 
     public void showAllRandomLottoNumbers(RandomLotto randomLotto) {
-        for (List<Integer> list : randomLotto.getRandomLottoNumbersList()) {
+        for (List<Integer> list : randomLotto.getRandomLottoNumbers()) {
             System.out.println(list);
         }
+    }
+
+    public void showWinningResult(WinningResult winningResult) {
     }
 }

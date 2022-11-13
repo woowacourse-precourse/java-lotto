@@ -1,13 +1,11 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
-import lotto.domain.Money;
-import lotto.domain.RandomLotto;
+import lotto.domain.*;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.ResultView;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class LottoController {
 
@@ -28,7 +26,8 @@ public class LottoController {
         resultView.showAllRandomLottoNumbers(randomLotto);
 
         Lotto lotto = new Lotto(inputView.getWinningNums(), inputView.getBonusNum());
-        lottoService.makeWinningResult(randomLotto, lotto);
+        WinningResult winningResult = new WinningResult(lottoService.confirmWinningResult(randomLotto, lotto));
+        resultView.showWinningResult(winningResult);
 
     }
 }

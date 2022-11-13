@@ -1,31 +1,15 @@
 package lotto.domain;
 
-public enum WinningResult {
-    FIFTH(3, 5000, "5등"),
-    FOURTH(4, 50000, "4등"),
-    THIRD(5, 1500000, "3등"),
-    SECOND(5, 30000000, "2등(보너스 볼 일치)"),
-    FIRST(6, 2000000000, "1등");
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-    private final int matchNum;
-    private final int prizeMoney;
-    private final String rank;
+public class WinningResult {
 
-    WinningResult(int matchNum, int prizeMoney, String rank) {
-        this.matchNum = matchNum;
-        this.prizeMoney = prizeMoney;
-        this.rank = rank;
-    }
+    private Map<Winning, Integer> winningResultMap;
 
-    public int getMatchNum() {
-        return matchNum;
-    }
-
-    public int getPrizeMoney() {
-        return prizeMoney;
-    }
-
-    public String getRank() {
-        return rank;
+    public WinningResult(Map<Winning, Integer> winningResultMap) {
+        this.winningResultMap = winningResultMap;
     }
 }
