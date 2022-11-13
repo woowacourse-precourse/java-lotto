@@ -33,7 +33,7 @@ public class View {
     public void printStartFeedback(List<Lotto> lottos) {
         StringBuilder feedback = new StringBuilder();
         feedback.append(lottos.size()).append(GAME_START_FEEDBACK).append(LINE_SEPARATOR);
-        lottos.forEach(lotto -> feedback.append(lotto.toString()).append(LINE_SEPARATOR));
+        lottos.forEach(lotto ->feedback.append(lotto.toString()).append(LINE_SEPARATOR));
         System.out.println(feedback);
     }
 
@@ -64,12 +64,17 @@ public class View {
 
             printer.append(
                     String.format(
-                            " (%d원) - %d개%n",
-                            current.getWinnings(),
+                            " (%s원) - %d개%n",
+                            convertToCurrency(current.getWinnings()),
                             countOfRank.getOrDefault(current, 0)
                     )
             );
         }
+    }
+
+    private String convertToCurrency(long number) {
+        String amount = String.valueOf(number);
+        return amount.replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",");
     }
 
 }
