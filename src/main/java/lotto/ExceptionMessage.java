@@ -23,7 +23,6 @@ public enum ExceptionMessage {
     }
 
     public void throwException() {
-        System.out.println(message);
         throw new IllegalArgumentException(message);
     }
 }
