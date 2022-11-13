@@ -10,12 +10,16 @@ import java.util.stream.Collectors;
 public class Application {
 
     public static void main(String[] args) {
-        Integer numberOfLottoes =
+        Integer numberOfLottoes;
+        List<Lotto> lottoes = createLottoes(numberOfLottoes);
+        List<Integer> winningNumbers;
+
+        System.out.println("구입금액을 입력해 주세요.");
+        numberOfLottoes =
                 getTheNumberOfLottoesAsMuchThePurchaseAmount(
                         Integer.parseInt(Console.readLine())
                 );
-        List<Lotto> lottoes = createLottoes(numberOfLottoes);
-        List<Integer> winningNumbers;
+        System.out.println(numberOfLottoes + "개를 구매했습니다.");
 
         winningNumbers = getWinningNumbers(Console.readLine());
     }
