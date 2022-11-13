@@ -11,6 +11,7 @@ import lotto.utility.Exception;
 public class UI {
     private final String INPUT_PURCHASE_PRICE_MESSAGE = "구입금액을 입력해 주세요.";
     private final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     private String input(){
         return Console.readLine();
@@ -72,5 +73,22 @@ public class UI {
             return inputWinningNumbers();
         }
         return winningNumbers;
+    }
+
+    public int inputBonusNumber(){
+        output(INPUT_BONUS_NUMBER_MESSAGE);
+        String bonusNumberString = input();
+        try{Exception.checkInputIsNum(bonusNumberString);}
+        catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return inputBonusNumber();
+        }
+        int bonusNumber = Integer.valueOf(bonusNumberString);
+        try{Exception.checkWinningNumberRange(bonusNumber);}
+        catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return inputBonusNumber();
+        }
+        return bonusNumber;
     }
 }
