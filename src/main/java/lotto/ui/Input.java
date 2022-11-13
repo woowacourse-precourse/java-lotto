@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
+    private InputValidator inputValidator = new InputValidator();
 
     private String readInput() {
         String userInput = Console.readLine();
@@ -14,27 +15,35 @@ public class Input {
         return userInput;
     }
 
-    private int readMoney() {
+    public int readMoney() {
         Messages.INPUT_MONEY.printMessage();
         String userInput = readInput();
+
+        inputValidator.validateInputMoney(userInput);
 
         return Integer.parseInt(userInput);
     }
 
     //예외사항 검사
-    private List<Integer> readWinningNumber() {
+    public List<String> readWinningNumber() {
         Messages.INPUT_LOTTE_NUMBER.printMessage();
         String userInput = readInput();
 
-        List<Integer> numbers = Arrays.stream(userInput.split(","))
-                .map(s -> Integer.parseInt(s))
+        List<String> winningNumber = splitUserInput(userInput);
+        inputValidator.validateInputWinningNumber(winningNumber);
+
+        return winningNumber;
+    }
+
+    public List<String> splitUserInput(String userInput) {
+        List<String> numbers = Arrays.stream(userInput.split(","))
                 .collect(Collectors.toList());
 
         return numbers;
     }
 
     //예외사항 검사
-    private int readBonusNumber() {
+    public int readBonusNumber() {
         Messages.INPUT_BONUS_NUMBER.printMessage();
         String userInput = readInput();
 
