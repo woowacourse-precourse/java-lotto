@@ -39,7 +39,7 @@ public class Lotto {
     private boolean checkRange(List<Integer> numbers) {
         return numbers.stream()
                 .filter(number -> number >= 1)
-                .filter(number -> number <= 46)
+                .filter(number -> number <= 45)
                 .count() == 6;
     }
 }
