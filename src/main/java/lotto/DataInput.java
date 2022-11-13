@@ -7,7 +7,6 @@ import java.util.List;
 
 public class DataInput {
     private static final String VALID_INPUT_PATTERN = "[^0-9]";
-    private static final String VALID_UNIT_PATTERN = "0{3}$";
     private static final String VALID_FORMAT_PATTERN = "[^0-9,]";
     private static final String ERROR_MESSAGE_NUMBER = "[ERROR] 숫자를 입력해주세요";
     private static final String ERROR_MESSAGE_UNIT = "[ERROR] 1000원 단위로 입력해주세요";
@@ -46,7 +45,7 @@ public class DataInput {
         System.out.println(Message);
         String input = Console.readLine();
 
-        return input;
+        return input.replace("\n", "");
     }
 
     private static void ValidateNumber(String input) {
@@ -57,7 +56,7 @@ public class DataInput {
     }
 
     private static void ValidateAmountUnit(String input) {
-        if (input.matches(VALID_UNIT_PATTERN)) {
+        if (!input.substring(input.length()-3, input.length()).equals("000")) {
             System.out.println(ERROR_MESSAGE_UNIT);
             throw new IllegalArgumentException();
         }
