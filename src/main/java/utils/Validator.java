@@ -38,4 +38,12 @@ public class Validator {
         }
     }
 
+    public static void isValidLength(String input, int length){
+        IllegalArgumentException exit_Program
+                = new IllegalArgumentException(ErrorStatements.SHOUT_INVALID_LENGTH_ERROR.alarmed());
+        if(input.length()!=length){
+            throw exit_Program;
+        }
+    }
+
 }

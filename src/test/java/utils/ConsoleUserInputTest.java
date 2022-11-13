@@ -16,16 +16,27 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConsoleUserInputTest {
+    ConsoleUserInput consoleUserInput = new ConsoleUserInput();
     Scanner scanner = new Scanner(System.in);
     public static InputStream testUserInput(String userInput){
         return new ByteArrayInputStream(userInput.getBytes());
     }
 
+    @DisplayName("입력한 인자의 개수가 ','를 제외하고 6개인지 확인한다.")
+    @Test
+    void checkValidLength(){
+        InputStream in = testUserInput("1,2,3,4,5,6 7");
+        System.setIn(in);
+        scanner = new Scanner(System.in);
+
+        assertThatThrownBy(()->
+                consoleUserInput.inputWinningNumbers())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @DisplayName("6개의 숫자가 ','로 제대로 구별되어 입력됐는지 확인한다.")
     @Test
     void checkValidFormat() {
-        var consoleUserInput = new ConsoleUserInput();
         InputStream in = testUserInput("1,2,7,4,3 6");
         System.setIn(in);
         scanner = new Scanner(System.in);
@@ -38,7 +49,6 @@ public class ConsoleUserInputTest {
     @DisplayName("6개의 숫자가 1~45 범위 내에서 입력됐는지 확인한다.")
     @Test
     void checkRangeOfSixWinningNumbers(){
-        var consoleUserInput = new ConsoleUserInput();
         String input = "1,2,3,4,0,5";
 
         assertThatThrownBy(()-> consoleUserInput.toIntegerNumbersWithoutComma(input))
@@ -49,7 +59,6 @@ public class ConsoleUserInputTest {
     @DisplayName("6개의 숫자가 숫자가 아닌 다른 문자로 입력됐는지 확인한다.")
     @Test
     void checkInvalidInput(){
-        var consoleUserInput = new ConsoleUserInput();
         InputStream in = testUserInput("나,는,숫,자,가, 아니야~:) 😗 ");
         System.setIn(in);
         scanner = new Scanner(System.in);

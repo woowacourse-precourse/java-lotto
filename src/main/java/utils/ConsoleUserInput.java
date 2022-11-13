@@ -18,6 +18,7 @@ public class ConsoleUserInput {
 
     public String inputWinningNumbers(){
         String userInput = Console.readLine();
+        Validator.isValidLength(userInput, 6);
         Validator.isValidFormatWithComma(userInput);
         Validator.isValidInput(userInput);
         return userInput;
@@ -36,4 +37,5 @@ public class ConsoleUserInput {
         sixWinningNumbers.add(winningNumbers);
         return sixWinningNumbers;
     }
+
 }
