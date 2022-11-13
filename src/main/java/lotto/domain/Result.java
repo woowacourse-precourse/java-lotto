@@ -13,8 +13,15 @@ public class Result {
     }
 
     private void makeWinningResult(List<Ranking> rankings) {
+        List<Ranking> rankingList = Ranking.makeRankingList();
+
         for (Ranking ranking : rankings) {
             result.put(ranking, result.getOrDefault(ranking, 0) + 1);
+        }
+        for (Ranking ranking : rankingList) {
+            if(!result.containsKey(ranking)) {
+                result.put(ranking, 0);
+            }
         }
     }
 

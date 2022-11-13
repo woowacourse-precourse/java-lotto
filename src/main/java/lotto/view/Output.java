@@ -23,13 +23,15 @@ public class Output {
         System.out.println(OUTPUT_RESULT_LINE);
     }
 
-    public static void printWinningStatistic(Result result) {
+    public static void printWinningStatistic(Result result){
         StringBuilder stringBuilder = new StringBuilder();
-        for(Map.Entry<Ranking, Integer> entry : getResultEntryList(result)) {
-            Ranking nowRanking = entry.getKey();
+
+        for (Map.Entry<Ranking, Integer> entry : getResultEntryList(result)) {
+            Ranking ranking = entry.getKey();
             int count = entry.getValue();
-            makeWinningResult(nowRanking, count, stringBuilder);
+            makeWinningResult(ranking, count, stringBuilder);
         }
+
         System.out.println(stringBuilder);
     }
 
@@ -44,12 +46,12 @@ public class Output {
         String winningTitle = String.format("%d개 일치", ranking.getCount());
         stringBuilder.append(winningTitle);
 
-        if(ranking.isHasBonusNumber()) {
+        if (ranking.isHasBonusNumber()) {
             String hasBonus = ", 보너스 볼 일치";
             stringBuilder.append(hasBonus);
         }
 
-        String winningMoney = String.format(" (%d원) - %d개", ranking.getMoney(), count);
+        String winningMoney = String.format(" (%s원) - %d개", ranking.getOutputMoney(), count);
         stringBuilder.append(winningMoney).append("\n");
     }
 
@@ -61,7 +63,7 @@ public class Output {
         stringBuilder.append(ticketCountSentence).append("\n");
 
         List<Lotto> tickets = lottoTicket.getLottoTickets();
-        for(Lotto lotto : tickets) {
+        for (Lotto lotto : tickets) {
             makeTicketResult(lotto, stringBuilder);
         }
         System.out.println(stringBuilder);
@@ -69,14 +71,18 @@ public class Output {
 
     private static void makeTicketResult(Lotto lotto, StringBuilder stringBuilder) {
         List<Integer> numbers = lotto.getNumbers();
-        Collections.sort(numbers);
         stringBuilder.append(OUTPUT_OPEN_PARENTHESIS);
         stringBuilder.append(numbers.get(0));
-        for(int i=1; i<numbers.size(); i++) {
+        for (int i = 1; i < numbers.size(); i++) {
             String number = String.format(", %d", numbers.get(i));
             stringBuilder.append(number);
         }
         stringBuilder.append(OUTPUT_CLOSE_PARENTHESIS).append("\n");
+    }
+
+    public static void printYield(double yield) {
+        String yieldSentence = String.format("총 수익률은 %.1f%%입니다.", yield * 100);
+        System.out.println(yieldSentence);
     }
 
 }
