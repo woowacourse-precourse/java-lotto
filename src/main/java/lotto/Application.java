@@ -33,6 +33,8 @@ public class Application {
                 winningNumbers,
                 bonus
         );
+
+        double rateOfReturn = getRateOfReturn(rankCount, payment);
     }
 
     public static int inputPrice() {
@@ -122,14 +124,23 @@ public class Application {
             List<Integer> winningNumbers,
             int bonus
     ) {
-        List<Integer> rankCountList = Arrays.asList(0,0,0,0,0,0);
+        List<Integer> rankCountList = Arrays.asList(0, 0, 0, 0, 0, 0);
         lotteries.forEach(lotto -> {
             List<Integer> hitCountAndBonusHitCount = checkLottery(lotto, winningNumbers, bonus);
             int hitCount = hitCountAndBonusHitCount.get(0);
             int bonusHitCount = hitCountAndBonusHitCount.get(1);
             int rankIndex = getRankIndex(hitCount, bonusHitCount);
-            rankCountList.set(rankIndex, rankCountList.get(rankIndex)+1);
+            rankCountList.set(rankIndex, rankCountList.get(rankIndex) + 1);
         });
         return rankCountList;
+    }
+
+    public static double getRateOfReturn(List<Integer> rankCount, int payment) {
+        int priceSum = rankCount.get(1) * WinningReward.FIRST.getPrice()
+                + rankCount.get(2) * WinningReward.SECOND.getPrice()
+                + rankCount.get(3) * WinningReward.THIRD.getPrice()
+                + rankCount.get(4) * WinningReward.FOURTH.getPrice()
+                + rankCount.get(5) * WinningReward.FIFTH.getPrice();
+        return Math.round((double) priceSum / payment);
     }
 }
