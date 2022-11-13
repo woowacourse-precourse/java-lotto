@@ -17,7 +17,7 @@ public class GameController {
     public void run() {
 
         final Payment payment = makePayment();
-        final List<Lotto> userLotto = issueLotto(Payment.getTicket());
+        final List<Lotto> userLotto = issueLotto(payment.getTicket());
         outputView.showLotto(userLotto);
 
         final LuckyNumbers luckyNumbers = makeLuckyNumbers();
@@ -27,7 +27,7 @@ public class GameController {
 
 
     private Payment makePayment() {
-        return new Payment.createPayment(inputView.inputPayment());
+        return new Payment(inputView.inputPayment());
     }
 
     private LuckyNumbers makeLuckyNumbers() {
