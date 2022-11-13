@@ -1,6 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class InputView {
     public static int getAmount() {
@@ -15,5 +17,14 @@ public class InputView {
         System.out.println();
 
         return money / 1000;
+    }
+
+    public static Lotto getWinningNumber() {
+        String inputNumber = Console.readLine();
+        Lotto lotto = new Lotto(Stream.of(inputNumber.split("\\s*,\\s*"))
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList()));
+
+        return lotto;
     }
 }
