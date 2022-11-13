@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -14,10 +13,10 @@ public class Lotto {
 
     public static List<Integer> validateInput(List<Integer> lottoAnswer, String inputAnswer) throws IllegalArgumentException {
         String[] inputSplitAnswer = inputAnswer.split(",");
-        for(int i=0; i<inputSplitAnswer.length; i++){
-            int num = Integer.parseInt(inputSplitAnswer[i]);
-            if(num>=0 && num<=45) {
-                lottoAnswer.add(Integer.parseInt(inputSplitAnswer[i]));
+        for (String inputNumber : inputSplitAnswer) {
+            int number = Integer.parseInt(inputNumber);
+            if (number >= 0 && number <= 45) {
+                lottoAnswer.add(number);
                 continue;
             }
             throw new IllegalArgumentException("[ERROR] 범위 외의 값 입력");
@@ -30,38 +29,37 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 6개 이하 수 입력");
         }
     }
+
     private void validateDup(List<Integer> numbers) throws IllegalArgumentException {
-        for(int i=0; i<numbers.size(); i++){
-            int check = numbers.get(i);
-            if(numbers.contains(check)&& numbers.indexOf(check)!=i){
+        for (int number : numbers) {
+            if (numbers.contains(number) && numbers.indexOf(number) != numbers.lastIndexOf(number)) {
                 throw new IllegalArgumentException("[ERROR] 중복 입력 불가");
             }
         }
     }
 
-    // TODO: 추가 기능 구현
-    public void getLottoBonusNumber(String bonusNumber)throws IllegalArgumentException{
+    public void getLottoBonusNumber(String bonusNumber) throws IllegalArgumentException {
         validateBonusNumberRange(bonusNumber);
         validateBonusNumberDup(bonusNumber);
-        this.numbers.add(Integer.parseInt(bonusNumber));
+        numbers.add(Integer.parseInt(bonusNumber));
     }
 
-    private void validateBonusNumberRange(String bonusNumber)throws IllegalArgumentException{
-        for(int i=0; i<bonusNumber.length(); i++){
-            if(bonusNumber.charAt(i)>=48 && bonusNumber.charAt(i)<=57){
+    private void validateBonusNumberRange(String bonusNumber) throws IllegalArgumentException {
+        for (int i = 0; i < bonusNumber.length(); i++) {
+            if (bonusNumber.charAt(i) >= 48 && bonusNumber.charAt(i) <= 57) {
                 continue;
             }
             throw new IllegalArgumentException("[ERROR] 잘못된 입력 값 숫자로만 입력");
         }
     }
 
-    private void validateBonusNumberDup(String bonusNumber)throws IllegalArgumentException{
-        if(numbers.contains(Integer.parseInt(bonusNumber))) {
+    private void validateBonusNumberDup(String bonusNumber) throws IllegalArgumentException {
+        if (numbers.contains(Integer.parseInt(bonusNumber))) {
             throw new IllegalArgumentException("[ERROR] 잘못된 입력 값 로또 번호 중복");
         }
     }
 
-    public List<Integer> printLottoNumber(){
+    public List<Integer> printLottoNumber() {
         return numbers;
     }
 
