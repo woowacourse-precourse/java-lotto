@@ -11,9 +11,6 @@ import lotto.domain.UserLottoInfo;
 import lotto.ui.LottoConsole;
 
 public class LottoService {
-    public static final int START_IDX = 1;
-    public static final int END_IDX = 45;
-    public static final int NUMBER_COUNT = 6;
 
     private final UserLottoInfo userLottoInfo;
     private final LottoConsole lottoConsole;
@@ -42,7 +39,7 @@ public class LottoService {
     }
 
     private void publishSingleLotto() {
-        List<Integer> lottoNumbers = generateRandomNumbers(START_IDX, END_IDX, NUMBER_COUNT);
+        List<Integer> lottoNumbers = generateLottoNumbers();
         userLottoInfo.addSingleLotto(new Lotto(lottoNumbers));
     }
 
