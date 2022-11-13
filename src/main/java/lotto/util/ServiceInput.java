@@ -26,7 +26,7 @@ public class ServiceInput {
         return numbers;
     }
 
-    public static String getInputWinningNumbers() {
+    private static String getInputWinningNumbers() {
 
         String inputWinningNumbers = Console.readLine();
 
