@@ -10,10 +10,9 @@ import java.util.TreeSet;
 
 public class LottoTicketing {
 
-    public static int countTheNumberOfTickets(){
+    public static int countTheNumberOfTickets(int moneyForLottos){
         int theNumberOfTickets;
-        ConsoleUserInput consoleUserInput = new ConsoleUserInput();
-        theNumberOfTickets = ((consoleUserInput.inputMoneyForLottos())/1000);
+        theNumberOfTickets = (moneyForLottos/1000);
         return theNumberOfTickets;
     }
 
