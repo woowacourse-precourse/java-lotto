@@ -2,7 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -24,12 +26,18 @@ public class Application {
         return winnings;
     }
 
-    public static void lotteryValidationCheck(List<Integer> lotteryNumbers){
-        for(Integer i : lotteryNumbers){
-            if(i < 1 || i > 45)
-                throw new IllegalArgumentException("[ERROR] 숫자는 1 ~ 45 중 하나의 숫자여야 합니다.");
+    public static void lotteryValidationCheck(List<Integer> lotteryNumbers) {
+        for (Integer chosen : lotteryNumbers) {
+            if (chosen < 1 || chosen > 45) {
+                throw new IllegalArgumentException("[ERROR] 숫자는 1 ~ 45 중 하나의 숫자여야 합니다." + chosen);
+            }
         }
-        if(lotteryNumbers.size() != 6)
+        if (lotteryNumbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 숫자는 6개 이어야 합니다.");
+        }
+        Set<Integer> lotteryNumberSet = new HashSet<>(lotteryNumbers);
+        if (lotteryNumberSet.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 중복되면 안됩니다.");
+        }
     }
 }
