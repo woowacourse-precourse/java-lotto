@@ -16,7 +16,7 @@ public class GameController {
         try {
             createMoney();
             generateLottosByMoney();
-            createWinningInformation();
+            createWinningManager();
         } catch (IllegalArgumentException e) {
             OutputView.announceError(e.getMessage());
             return;
@@ -34,7 +34,7 @@ public class GameController {
         OutputView.announceLottos(gameService.generateLottosByMoney());
     }
 
-    private void createWinningInformation() {
+    private void createWinningManager() {
         createWinningLotto();
         createBonusBall();
     }
