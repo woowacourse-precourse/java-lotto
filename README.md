@@ -5,7 +5,8 @@
 - [v] 받은 돈을 계산하여 몇 개의 6자리 수열을 만들지 계산한다. - Store#countLines 
   - [v] 받은 돈이 1000원 단위로 떨어지는지 확인한다. - Store#validate
   - [v] 6자리의 중복이 없는 수열들을 생성한다. - Store#makeNumbers
-- [ ] 구매한 로또의 당첨내역을 계산한다. - Lotto#confirmNumbers
+- [v] 구매한 로또의 당첨내역을 계산한다. - Lotto#confirmNumbers
+  - [v] 만든 로또 번호가 중복이 있는 지 검사한다. -Lotto#checkRedundancy
 - [ ] 입력받은 당첨번호로 구매한 로또의 당첨내역을 판단하고 수익률을 계산한다. - Judge#countTotal
      - [ ] 당첨내역으로 총 당첨금을 계산한다. - Judge#countPrizeMoney
      - [ ] 당청금과 구매금으로 수익률을 계산한다. - Judge#countEarningsRate
