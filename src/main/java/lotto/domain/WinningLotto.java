@@ -20,13 +20,6 @@ public class WinningLotto {
         }
     }
 
-    public List<Integer> getWinningNumber() {
-        return winningNumbers;
-    }
-    public int getBonusNumber() {
-        return bonusNumber;
-    }
-
     public Rank getRankof(Lotto lotto) {
         int matchCount = lotto.calculateMatchCount(winningNumbers);
         boolean hasBonusNumber = lotto.hasBonusNumber(bonusNumber);
