@@ -1,8 +1,12 @@
 package lotto.domain;
 
+import lotto.constant.Status;
+import lotto.domain.constant.LottoProperty;
+import lotto.constant.ValidationErrorMessage;
 import lotto.domain.LotteryTicket;
 import lotto.domain.LotteryResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -11,8 +15,19 @@ public class User {
     private LotteryResult lotteryResult;
 
     public User (int money) {
+        validate(money);
         this.money = money;
         lotteryTickets = new ArrayList<>();
+    }
+
+    public void validate (int money) {
+        if (!isMultipleOfThousand(money)) {
+            throw new IllegalArgumentException(ValidationErrorMessage.INVALID_MONEY_AMOUNT.getErrorMessage());
+        }
+    }
+
+    private boolean isMultipleOfThousand (int money) {
+        return money % LottoProperty.PRICE.getProperty() == Status.EMPTY.getStatus();
     }
 
     public int getMoney() {
