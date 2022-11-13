@@ -7,23 +7,25 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LottoResult {
+	private static final int BASE_NUMBER = 0;
+	private static final int UPDATE_ONE = 1;
 	private final Map<LottoRanking, Integer> LottoResult = new EnumMap<>(LottoRanking.class);
 
 	public LottoResult(List<LottoRanking> lottoRankings) {
 		settingLottoResult();
-		makeLottoResult(lottoRankings);
+		createLottoResult(lottoRankings);
 	}
 
 	private void settingLottoResult() {
 		List<LottoRanking> rank = Arrays.stream(LottoRanking.values()).collect(Collectors.toList());
 		for (LottoRanking lottoRank : rank) {
-			LottoResult.put(lottoRank, 0);
+			LottoResult.put(lottoRank, BASE_NUMBER);
 		}
 	}
 
-	private void makeLottoResult(List<LottoRanking> lottoRankings) {
+	private void createLottoResult(List<LottoRanking> lottoRankings) {
 		for (LottoRanking lottoRanking : lottoRankings) {
-			int winLottoCount = LottoResult.get(lottoRanking) + 1;
+			int winLottoCount = LottoResult.get(lottoRanking) + UPDATE_ONE;
 			LottoResult.put(lottoRanking, winLottoCount);
 		}
 	}
