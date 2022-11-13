@@ -24,6 +24,8 @@ public class UI {
     private final String WINNING_INFO_MESSAGE_4 = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
     private final String WINNING_INFO_MESSAGE_5 = "6개 일치 (2,000,000,000원) - %d개";
 
+    private final String EARNNING_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.";
+
     private String input(){
         return Console.readLine();
     }
@@ -127,5 +129,9 @@ public class UI {
         output(String.format(WINNING_INFO_MESSAGE_3,numberOfWinningLottos.get(2)));
         output(String.format(WINNING_INFO_MESSAGE_4,numberOfWinningLottos.get(3)));
         output(String.format(WINNING_INFO_MESSAGE_5,numberOfWinningLottos.get(4)));
+    }
+
+    public void outputEarningRate(double earningRate){
+        output(String.format(EARNNING_RATE_MESSAGE, earningRate));
     }
 }
