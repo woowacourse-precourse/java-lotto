@@ -3,9 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Application {
     private static final String INPUT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -16,6 +14,7 @@ public class Application {
     private static final String LUCKY_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String OUT_OF_RANGE_MESSAGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다";
     private static final String SHOP_RESULT = "개를 구매했습니다.";
+    private static final String IS_DUPLICATED_MESSAGE = "숫자가 중복되었습니다.";
 
     public static void main(String[] args) {
         int myPrice = priceInput();
@@ -32,6 +31,7 @@ public class Application {
         for (int loop=0;loop<count;loop++){
             numbers=Randoms.pickUniqueNumbersInRange(1, 45, 6);
             isValidateNumbers(numbers);
+            isDuplicated(numbers);
         }
         return totalLottos;
 
@@ -87,7 +87,13 @@ public class Application {
         isValidateNumber(luckyNum);
         return luckyNum;
     }
-
+    public static void isDuplicated(List<Integer> numbers){
+        for(Integer num : numbers){
+            if(Collections.frequency(numbers,num)!=1){
+                throw new IllegalArgumentException(ERROR_MESSAGE + IS_DUPLICATED_MESSAGE);
+            }
+        }
+    }
     public static void isValidateNumber(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
