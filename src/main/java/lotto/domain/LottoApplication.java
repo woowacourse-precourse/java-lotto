@@ -5,19 +5,22 @@ import lotto.utils.InputUtil;
 
 import java.util.List;
 
-public class LottoApplication2 {
-    private LottoStore lottoStore = new LottoStore();
+public class LottoApplication {
+    private final LottoStore lottoStore = new LottoStore();
 
     public void run() {
-        LottoViewer.showEnterPurchaseAmount();
-        int purchaseAmount = InputUtil.purchaseAmount();
-        List<Lotto> boughtLottos = lottoStore.buy(purchaseAmount);
-        LottoViewer.showLottoNumberList(boughtLottos);
-        LottoViewer.showEnterLottoNumber();
-        Lotto winLotto = new Lotto(InputUtil.lottoNumber());
-        LottoViewer.showEnterLottoBonusNumber();
-        int bonusNumber = InputUtil.getBonusNumber();
-        LottoGame lottoGame = new LottoGame(winLotto, bonusNumber);
-        lottoGame.checkMatchLotto(boughtLottos);
+        LottoViewer.showPurchaseAmountInputText();
+        int purchaseAmount = InputUtil.readPurchaseAmount();
+        List<Lotto> lottoTickets = lottoStore.buy(purchaseAmount);
+        LottoViewer.showCountOfLottoTickets(lottoTickets.size());
+        LottoViewer.showLottoTickets(lottoTickets);
+        LottoViewer.showWinningLottoNumberInputText();
+        Lotto winningLotto = new Lotto(InputUtil.readWinningLottoNumber());
+        LottoViewer.showBonusLottoNumberInputText();
+        int bonusNumber = InputUtil.readBonusNumber(winningLotto);
+        LottoGame lottoGame = new LottoGame(winningLotto, bonusNumber, lottoTickets);
+        LottoCount lottoCount = lottoGame.checkMatchLotto();
+        LottoViewer.showWinningStatisticsText(lottoCount);
+        LottoViewer.showYield(lottoCount.getYield(purchaseAmount));
     }
 }
