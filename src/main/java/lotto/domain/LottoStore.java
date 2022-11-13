@@ -1,10 +1,10 @@
 package lotto.domain;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-import static lotto.domain.policy.LottoPolicy.COUNTS_OF_LOTTO_NUMBERS;
-import static lotto.domain.policy.LottoPolicy.MAX_NUMBER_OF_LOTTO;
-import static lotto.domain.policy.LottoPolicy.MIN_NUMBER_OF_LOTTO;
-import static lotto.domain.policy.LottoPolicy.PRICE_OF_LOTTO;
+import static lotto.domain.constants.LottoConstants.COUNTS_OF_LOTTO_NUMBERS;
+import static lotto.domain.constants.LottoConstants.MAX_NUMBER_OF_LOTTO;
+import static lotto.domain.constants.LottoConstants.MIN_NUMBER_OF_LOTTO;
+import static lotto.domain.constants.LottoConstants.PRICE_OF_LOTTO;
 
 import java.util.List;
 import java.util.stream.Collectors;

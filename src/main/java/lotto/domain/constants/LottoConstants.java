@@ -1,8 +1,8 @@
-package lotto.domain.policy;
+package lotto.domain.constants;
 
-public class LottoPolicy {
+public class LottoConstants {
 
-    private LottoPolicy() {
+    private LottoConstants() {
     }
 
     public static final int MIN_NUMBER_OF_LOTTO = 1;

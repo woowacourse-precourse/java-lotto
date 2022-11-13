@@ -1,6 +1,6 @@
 package lotto.domain.winning;
 
-import static lotto.domain.policy.LottoPolicy.PRICE_OF_LOTTO;
+import static lotto.domain.constants.LottoConstants.PRICE_OF_LOTTO;
 
 import java.util.Collections;
 import java.util.List;
