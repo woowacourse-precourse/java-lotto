@@ -2,7 +2,8 @@ package lotto.Input;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import javax.print.PrintException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputNumber {
 
@@ -15,4 +16,21 @@ public class InputNumber {
         }
         return Integer.parseInt(userMoney)/1000;
     }
+
+    public List<Integer> insertSixNum() {
+        String[] userInputs = Console.readLine().split(",");
+        List<Integer> lottoSixNum = new ArrayList<>();
+
+        for (String userInput : userInputs) {
+            try {
+                lottoSixNum.add(Integer.parseInt(userInput));
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException(PrintError.NO_COMMA.getMessage());
+            }
+        }
+
+        return lottoSixNum;
+    }
+
+
 }
