@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Application {
@@ -18,6 +19,8 @@ public class Application {
                     }
                 }
             }
+
+            Arrays.sort(lottoArray[i]);
 
             System.out.print("[");
             for(int j = 0; j < lottoArray[i].length - 1; j++){
@@ -133,9 +136,5 @@ public class Application {
         userInputBonusNumber = scanner.nextInt();
 
         numberCompare(lottoCount, lottoArray, userInputLottoNumber, userInputBonusNumber, purchasedValue);
-
-        // TODO: 비교값에 따라 당첨 내역 출력
-
-        // TODO: 수익률 계산 및 출력
     }
 }
