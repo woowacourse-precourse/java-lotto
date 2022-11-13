@@ -8,6 +8,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.List;
+import lotto.domain.Lotto;
 import lotto.lottomachine.LottoMachine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -54,5 +56,17 @@ public class LottoMachineInputViewBonusTest {
 
         // when then
         assertThat(out.toString()).contains(ERROR);
+    }
+
+    @DisplayName("보너스 번호는 로또 번호와 중복되면 예외가 발생한다.")
+    @Test
+    void InputBonusByDuplicateNumber() {
+        // given
+        String userBonus = "22";
+        List<Integer> userNumbers = List.of(1, 22, 23, 24, 25, 26);
+
+        // when then
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }
