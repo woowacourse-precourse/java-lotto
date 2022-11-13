@@ -23,7 +23,7 @@ public enum Rank {
     }
 
     public int getMoney(int count) {
-        return money*count;
+        return money * count;
     }
 
     public String getMessage(int count) {

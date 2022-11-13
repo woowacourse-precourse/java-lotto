@@ -4,8 +4,6 @@ import lotto.domain.LottoMachine;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-import java.util.List;
-
 public class Game {
 
     private static final int LOTTO_UNIT = 1000;
@@ -29,8 +27,8 @@ public class Game {
                     inputView.inputBonusNumber());
             outputView.printWinningList(lottoMachine.getWinningList());
             outputView.printYield(lottoMachine.getYield());
-        } catch (Exception e){
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            OutputView.printErrorMessage(e.getMessage());
         }
     }
 
