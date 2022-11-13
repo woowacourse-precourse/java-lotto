@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,7 +11,16 @@ public class LottoSeller {
     int money;
     int piece;
     int change;
-    List<Lotto> bundle;
+    List<Lotto> bundle = new ArrayList<Lotto>();
+
+    LottoSeller() {
+    }
+
+    LottoSeller(int money) {
+        this.money = money;
+        this.piece = money/1000;
+        this.change = money%1000;
+    }
 
     void takeMoney() {
         System.out.println("구입금액을 입력해 주세요.");
