@@ -12,6 +12,6 @@ class lottoTicketTest {
     @DisplayName("Throw Exception when there is change after buy Lottery.")
     @Test
     void changesLeftAfterBuyLottery() {
-        assertThatThrownBy(() -> lottoTicket.countLotteryTickets(3050)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> lottoTicket.countPaidLotteryTickets(3050)).isInstanceOf(IllegalArgumentException.class);
     }
 }
