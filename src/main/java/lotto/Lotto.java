@@ -21,10 +21,29 @@ public class Lotto {
         System.out.println("\n당첨 번호를 입력해 주세요.");
         List<Integer> winningLotto = new ArrayList<>();
         String input = Console.readLine().replaceAll("\\s","");
+
+        try {
+            validateWinningNumberInputString(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
         for (String num : input.split(",")) {
             winningLotto.add(Integer.parseInt(num));
         }
+
         return winningLotto;
+    }
+
+    /**
+     * Check if user input string is valid
+     * @param input user input of winning numbers in String format
+     * @throws IllegalArgumentException if comma is not included
+     */
+    public static void validateWinningNumberInputString(String input) throws IllegalArgumentException {
+        if (!input.contains(",")) {
+            throw new IllegalArgumentException("[ERROR] 당첨번호는 쉽표로 구분되어야 합니다.");
+        }
     }
 
     /**
