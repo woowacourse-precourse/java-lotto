@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Calculator {
 
-    static long income = 0;
-    static long[] placesCount = new long[6];
+    static private long income = 0;
+    static private long[] placesCount = new long[6];
 
     private Calculator(){}
 
