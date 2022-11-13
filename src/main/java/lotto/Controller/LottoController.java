@@ -100,7 +100,7 @@ public class LottoController {
         List<Integer> winnerNumber = winnerNumberLotto.getLottoNumber();
         int matchedNumber = 0;
         for(int number : winnerNumber){
-            if(userNumber.contains(winnerNumber)){
+            if(userNumber.contains(number)){
                 matchedNumber += 1;
             }
         }
