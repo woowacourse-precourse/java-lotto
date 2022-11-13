@@ -35,4 +35,14 @@ public class UserInteraction {
         }
         return winNumbers;
     }
+
+    public int bonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        return bonusTransform(input);
+    }
+
+    private int bonusTransform(String input) {
+        return Integer.parseInt(input);
+    }
 }
