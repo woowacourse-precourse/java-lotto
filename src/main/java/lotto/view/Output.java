@@ -1,8 +1,8 @@
 package lotto.view;
 
-import lotto.domain.Ranking;
-import lotto.domain.Result;
+import lotto.domain.*;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +12,8 @@ public class Output {
 
     static final String OUTPUT_RESULT_TITLE = "당첨 통계";
     static final String OUTPUT_RESULT_LINE = "---";
+    static final String OUTPUT_OPEN_PARENTHESIS = "[";
+    static final String OUTPUT_CLOSE_PARENTHESIS = "]";
 
     public Output() {
     }
@@ -49,6 +51,32 @@ public class Output {
 
         String winningMoney = String.format(" (%d원) - %d개", ranking.getMoney(), count);
         stringBuilder.append(winningMoney).append("\n");
+    }
+
+    public static void printTicketsList(PurchaseAmount purchaseAmount, LottoTicket lottoTicket) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        int ticketCount = purchaseAmount.getPurchaseAmount();
+        String ticketCountSentence = String.format("%d개를 구매했습니다.", ticketCount);
+        stringBuilder.append(ticketCountSentence).append("\n");
+
+        List<Lotto> tickets = lottoTicket.getLottoTickets();
+        for(Lotto lotto : tickets) {
+            makeTicketResult(lotto, stringBuilder);
+        }
+        System.out.println(stringBuilder);
+    }
+
+    private static void makeTicketResult(Lotto lotto, StringBuilder stringBuilder) {
+        List<Integer> numbers = lotto.getNumbers();
+        Collections.sort(numbers);
+        stringBuilder.append(OUTPUT_OPEN_PARENTHESIS);
+        stringBuilder.append(numbers.get(0));
+        for(int i=1; i<numbers.size(); i++) {
+            String number = String.format(", %d", numbers.get(i));
+            stringBuilder.append(number);
+        }
+        stringBuilder.append(OUTPUT_CLOSE_PARENTHESIS).append("\n");
     }
 
 }
