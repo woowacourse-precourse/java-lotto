@@ -4,12 +4,10 @@ public final class Constants {
     public final class NUMBER {
         public static final int ZERO = 0;
         public static final int ONE = 1;
-        public static final int TWO = 2;
-        public static final int THREE = 3;
-        public static final int FOUR = 4;
-        public static final int FIVE = 5;
-        public static final int SIX = 6;
         public static final int HUNDRED = 100;
+
+        private NUMBER() {
+        }
 
 
     }
@@ -39,6 +37,9 @@ public final class Constants {
         public static final String WINNING_NUMBER_DUPLICATE = "[ERROR] 당첨 번호는 중복 숫자가 존재하지 않아야 합니다.";
         public static final String BONUS_NUMBER_RANGE = "[ERROR] 보너스 번호는 1-45사이의 숫자여야 합니다.";
         public static final String BONUS_NUMBER_IN_WINNING_NUMBER = "[ERROR] 보너스 번호는 당첨 번호에 존재할 수 없습니다.";
+
+        private ERROR() {
+        }
     }
 
     public final class PRINT {
@@ -50,5 +51,8 @@ public final class Constants {
         public static final String BONUS_CORRECT_FORMAT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
         public static final String GENERAL_CORRECT_FORMAT = "%d개 일치 (%s원) - %d개\n";
         public static final String PROFIT_FORMAT = "총 수익률은 %.1f%%입니다.";
+
+        private PRINT() {
+        }
     }
 }
