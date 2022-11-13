@@ -14,19 +14,15 @@ public class Lotto {
         prize4(4,1,"50,000"),
         prize5(3,0,"5,000"),
         noprize(0,-1,"0");
-
-        // 상금
-        private String money;
         // 일치하는 번호 개수
-        private int count;
+        private final int count;
         // 통계를 저장할 통계 리스트 인덱스
-        private int index;
-
+        private final int index;
+        private String money;
         statistics( int count,int index, String money){
-
-            this.money = money;
             this.count = count;
             this.index = index;
+            this.money = money;
         }
     }
     private static int number_of_lotto;
@@ -55,7 +51,6 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
 
-
     }
 
     // TODO: 추가 기능 구현
@@ -69,7 +64,6 @@ public class Lotto {
             System.out.println("[ERROR] 문자열을 포함하지 않은 숫자를 입력해야 합니다.");
             throw new IllegalArgumentException();
         }
-
 
     }
 
@@ -88,11 +82,8 @@ public class Lotto {
     }
 
     public static void printPurchasedLotto() {
-        for (int lotto = 0; lotto < purchased_lotto_numbers.size(); lotto++){
-            List<Integer> arr = new ArrayList<Integer>();
-            for (Integer i:purchased_lotto_numbers.get(lotto)){
-                arr.add(i);
-            }
+        for (List<Integer> purchased_lotto : purchased_lotto_numbers) {
+            List<Integer> arr = new ArrayList<>(purchased_lotto);
             Collections.sort(arr);
             System.out.println(arr);
         }
@@ -100,8 +91,7 @@ public class Lotto {
 
 
     public void enterBonusNumber() {
-        System.out.println();
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         bonus_number = Integer.parseInt(Console.readLine());
 
         if (bonus_number>45 || bonus_number<1) {
@@ -119,34 +109,38 @@ public class Lotto {
 
 
     public void calculatePrize() {
-        win_lotto = new ArrayList<statistics>(number_of_lotto);
+        win_lotto = new ArrayList<>(number_of_lotto);
 
-        int count = 0;
         for (int i = 0;i<number_of_lotto;i++){
-            count = 0;
-            for (int j = 0; j < 6;j++){
-                if (numbers.contains(purchased_lotto_numbers.get(i).get(j))){
-                    count++;
-                }
-            }
+            int count = getCountOfSameNumbers(0, i);
             setPrize(count, purchased_lotto_numbers.get(i));
 
             int index = win_lotto.get(i).index;
             if (index != -1){
-                // 로또 당첨 통계를 계산해 status_of_win 리스트에 저장
+                // 로또 당첨 통계를 계산해 status_of_win 배열에 저장
                 status_of_win[index] = status_of_win[index] + 1;
             }
         }
     }
 
+    private int getCountOfSameNumbers(int count, int i) {
+        for (int j = 0; j < 6;j++){
+            if (numbers.contains(purchased_lotto_numbers.get(i).get(j))){
+                count++;
+            }
+        }
+        return count;
+    }
+
     public void setPrize(int count, List<Integer> my_lotto) {
-        if (count==5){
+        if (count == 5){
             if (my_lotto.contains(bonus_number)){
                 win_lotto.add(statistics.prize2);
             }
             if (!my_lotto.contains(bonus_number)){
                 win_lotto.add(statistics.prize3);
             }
+            return;
         }
         if (count == 6){
             win_lotto.add(statistics.prize1);
@@ -163,25 +157,27 @@ public class Lotto {
 
     }
 
-
     public void printStatisticsForLotto(){
-        System.out.println("\n당첨 통계");
-        System.out.println("---");
-
-        System.out.println(statistics.prize5.count + "개 일치 (5,000원) - "+status_of_win[0]+"개");
-        System.out.println(statistics.prize4.count + "개 일치 (50,000원) - "+status_of_win[1]+"개");
-        System.out.println(statistics.prize3.count + "개 일치 (1,500,000원) - "+status_of_win[2]+"개");
-        System.out.println(statistics.prize2.count + "개 일치, 보너스 볼 일치 (30,000,000원) - "+status_of_win[3]+"개");
-        System.out.println(statistics.prize1.count + "개 일치 (2,000,000,000원) - "+status_of_win[4]+"개");
+        System.out.println("\n당첨 통계\n---");
+        System.out.println(statistics.prize5.count + "개 일치 ("+statistics.prize5.money + "원) - "+status_of_win[0]+"개");
+        System.out.println(statistics.prize4.count + "개 일치 ("+statistics.prize4.money + "원) - "+status_of_win[1]+"개");
+        System.out.println(statistics.prize3.count + "개 일치 ("+statistics.prize3.money + "원) - "+status_of_win[2]+"개");
+        System.out.println(statistics.prize2.count + "개 일치, 보너스 볼 일치 ("+statistics.prize2.money + "원) - "+status_of_win[3]+"개");
+        System.out.println(statistics.prize1.count + "개 일치 ("+statistics.prize1.money + "원) - "+status_of_win[4]+"개");
     }
 
     public void calculateRateOfEarning(){
         double total_money = 0.0;
+        total_money += status_of_win[0]*getMoney(statistics.prize5);
+        total_money += status_of_win[1]*getMoney(statistics.prize4);
+        total_money += status_of_win[2]*getMoney(statistics.prize3);
+        total_money += status_of_win[3]*getMoney(statistics.prize2);
+        total_money += status_of_win[4]*getMoney(statistics.prize1);
+        rate_of_earning = (total_money / (number_of_lotto * 1000.0)) * 100.0;
+    }
 
-        total_money += status_of_win[0]*5000 + status_of_win[1]*50000 + status_of_win[2]*1500000 + status_of_win[3]*30000000 + status_of_win[4]*2000000000;
-
-
-       rate_of_earning = (total_money / (number_of_lotto * 1000.0)) * 100.0;
+    private static Integer getMoney(statistics prize) {
+        return Integer.parseInt(prize.money.replace(",", ""));
     }
 
     public void printRateOfEarning() {
