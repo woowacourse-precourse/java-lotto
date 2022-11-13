@@ -34,6 +34,10 @@ public class CompareHowManyCorrect {
         return gatherLists;
     }
 
+    public boolean checkBonus(List<Integer> user, int bounsNumber){
+        return user.contains(bounsNumber);
+    }
+
 
 
 
