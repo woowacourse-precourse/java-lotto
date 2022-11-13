@@ -29,11 +29,9 @@ public class Customer {
     private void getWillingToPay() {
         System.out.print("구입금액을 입력해 주세요: ");
         String willingToPay = readLine();
-        validateNumeric(willingToPay);
-        validateMultiplesOf1000(willingToPay);
+        validate(willingToPay);
         this.willingToPay = Integer.parseInt(willingToPay);
     }
-
 
     private void checkNumbersOfLottos(List<Lotto> lottos) {
         System.out.println(lottos.size() + "개를 구매했습니다.");
@@ -42,19 +40,14 @@ public class Customer {
         }
     }
 
-    private void validateNumeric(String stringNumber) {
-        if (!stringNumber.matches("^[0-9]+$")) {
+    private void validate(String number) {
+        if (!number.matches("^[0-9]+$")) {
             System.out.println("[ERROR] 구매 금액은 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }
-    }
-
-    private void validateMultiplesOf1000(String stringNumber) {
-        int number = Integer.parseInt(stringNumber);
-        if (number % 1000 != 0) {
+        if (Integer.parseInt(number) % 1000 != 0) {
             System.out.println("[ERROR] 구매 금액은 1000원 단위여야 합니다.");
             throw new IllegalArgumentException();
         }
     }
-
 }
