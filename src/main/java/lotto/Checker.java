@@ -6,10 +6,18 @@ import java.util.Scanner;
 public class Checker {
     private List<Integer> winNumber;
     private int bonusNumber;
-    public void chooseWinNumber(){
+    public void chooseNumber(){
+        chooseWinNumber();
+        chooseBonusNumber();
+    }
+    private void chooseWinNumber(){
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         validateWinNumber(input);
+        String[] splitInput = input.split(",");
+        for(String i: splitInput){
+            winNumber.add(Integer.parseInt(i));
+        }
     }
     private void validateWinNumber(String input){
         isProperComma(input);
@@ -46,6 +54,12 @@ public class Checker {
         return true;
     }
     public void chooseBonusNumber(){
-
+        Scanner scanner = new Scanner(System.in);
+        bonusNumber = scanner.nextInt();
+        validateBonusNumber(bonusNumber);
+    }
+    private void validateBonusNumber(int input){
+        if(input < 1 || input > 45)
+            throw new IllegalArgumentException();
     }
 }
