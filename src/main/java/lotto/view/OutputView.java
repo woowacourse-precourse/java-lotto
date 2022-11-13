@@ -4,7 +4,6 @@ import lotto.domain.Award;
 import lotto.system.Constant;
 import lotto.util.Util;
 
-import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.List;
 

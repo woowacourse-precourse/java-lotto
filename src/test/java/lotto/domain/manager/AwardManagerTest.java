@@ -1,5 +1,8 @@
 package lotto.domain.manager;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
+
 import lotto.domain.Award;
 import lotto.domain.BonusNumber;
 import lotto.domain.UserLotto;
@@ -15,9 +18,6 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 
 class AwardManagerTest {
     OutputStream out = new ByteArrayOutputStream();

@@ -2,8 +2,6 @@ package lotto.domain;
 
 import lotto.view.InputView;
 
-import java.util.Arrays;
-
 public class WinningLotto {
     private Lotto winningLotto;
 

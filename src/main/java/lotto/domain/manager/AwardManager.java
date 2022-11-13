@@ -1,6 +1,10 @@
 package lotto.domain.manager;
 
-import lotto.domain.*;
+import lotto.domain.Award;
+import lotto.domain.BonusNumber;
+import lotto.domain.Lotto;
+import lotto.domain.UserLotto;
+import lotto.domain.WinningLotto;
 
 import java.util.ArrayList;
 import java.util.List;

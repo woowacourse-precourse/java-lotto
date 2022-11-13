@@ -2,7 +2,6 @@ package lotto.verifier;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-
 import lotto.system.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

@@ -1,7 +1,5 @@
 package lotto.util;
 
-import lotto.system.Constant;
-
 import java.text.DecimalFormat;
 
 public final class Util {

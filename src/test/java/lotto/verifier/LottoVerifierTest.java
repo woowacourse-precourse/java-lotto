@@ -1,12 +1,12 @@
 package lotto.verifier;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import lotto.system.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoVerifierTest {
     LottoVerifier lottoVerifier = new LottoVerifier();
