@@ -26,8 +26,8 @@ public class InputViewValidation {
     }
 
     public static void validateWinningNumbersFormat(String input) {
-        if (Objects.equals(input.charAt(0), ',') ||
-                Objects.equals(input.charAt(input.length()-1), ',')) {
+        if (!NUMBER_PATTERN.matcher(String.valueOf(input.charAt(0))).find() ||
+                !NUMBER_PATTERN.matcher(String.valueOf(input.charAt(input.length()-1))).find()) {
             throw new IllegalArgumentException(ERROR_INPUT_FORMAT);
         }
         for (int i = 1; i < input.length()-1; i++) {
