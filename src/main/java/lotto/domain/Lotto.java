@@ -50,5 +50,12 @@ public class Lotto {
         return this.numbers;
     }
 
-    // TODO: 추가 기능 구현
+    public boolean contains(int number) {
+        return this.numbers.contains(number);
+    }
+
+    public boolean add(int number) {
+        return this.numbers.add(number);
+    }
+
 }

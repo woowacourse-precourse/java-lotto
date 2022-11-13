@@ -30,7 +30,7 @@ public class Calculator {
 
     private static int getWinningNumberMatch(WinningNumbers winningNumbers, Lotto lotto) {
         int count = 0;
-        for (Integer number : winningNumbers.getWinningNumbers()) {
+        for (Integer number : winningNumbers.getWinningNumbers().getNumbers()) {
             if (lotto.getNumbers().contains(number)) {
                 count += 1;
             }

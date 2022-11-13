@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import lotto.domain.Lotto;
 
 public class InputView {
     private static final String NUMBER_REGEX = "^[0-9]+$";
@@ -26,18 +27,18 @@ public class InputView {
         return Integer.parseInt(moneyInput);
     }
 
-    public static List<Integer> getWinningInput() {
+    public static Lotto getWinningInput() {
         OutputView.printString(MESSAGE_WINNING_INPUT);
         String winningInput = Console.readLine();
         List<String> tempLotto = Arrays.asList(winningInput.split(COMMA));
-        List<Integer> lotto = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         for (String tempNumber : tempLotto) {
-            if (!tempNumber.matches(NUMBER_REGEX)){
+            if (!tempNumber.matches(NUMBER_REGEX)) {
                 throw new IllegalArgumentException(ERROR_WINNING_NUMBER_INPUT);
             }
-            lotto.add(Integer.parseInt(tempNumber));
+            numbers.add(Integer.parseInt(tempNumber));
         }
-        return lotto;
+        return new Lotto(numbers);
     }
 
     public static int getBonusInput() {
