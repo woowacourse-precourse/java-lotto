@@ -42,7 +42,7 @@ class WinningPrizeTest {
             int output = 1;
             assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
         }
-
+        
         @Test
         void findRanking_case2(){
             int amountOfCorrectNumbers = 5;
