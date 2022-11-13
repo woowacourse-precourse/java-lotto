@@ -1,16 +1,17 @@
 package lotto.domain;
 
 import lotto.domain.constant.BoundaryValue;
+import lotto.domain.constant.LottoPrice;
 import lotto.domain.io.Multiple1000Validator;
 import lotto.domain.io.NumberValidator;
 
-public class PurchaseAmount {
+public class LottoNum {
 
-  private final int amount;
+  private final int lottoNum;
 
-  public PurchaseAmount(String amount) {
-    validate(amount);
-    this.amount = getLottoNum(amount);
+  public LottoNum(String purchaseAmount) {
+    validate(purchaseAmount);
+    this.lottoNum = getLottoNum(purchaseAmount);
   }
 
   private void validate(String amount) {
@@ -23,7 +24,7 @@ public class PurchaseAmount {
 
   private int getLottoNum(String input) {
     int money = Integer.parseInt(input);
-    money /= BoundaryValue.LOTTO_PRICE.getBoundaryValue();
+    money /= LottoPrice.LOTTO_PRICE.getLottoPrice();
     return money;
   }
 }
