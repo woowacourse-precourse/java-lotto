@@ -1,32 +1,57 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import static lotto.constants.LottoResult.NOPE;
+
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
+import lotto.constants.LottoResult;
 import lotto.model.Lotto;
 import lotto.model.LottoWithBonus;
 
 public class Compare {
 
-    private List<Lotto> haveLottoList;
+    private LottoVendingMachine lottoVendingMachine;
     private LottoWithBonus lottoWithBonus;
 
-    public Compare(List<Lotto> haveLottoList, LottoWithBonus lottoWithBonus) {
-        this.haveLottoList = haveLottoList;
+    public Compare(LottoVendingMachine lottoVendingMachine, LottoWithBonus lottoWithBonus) {
+        this.lottoVendingMachine = lottoVendingMachine;
         this.lottoWithBonus = lottoWithBonus;
     }
 
-    public List<Integer> countCorrect() {
-        List<Integer> countList = new ArrayList<>();
-        int count = 0;
+    public long getTotalPrize(Map<LottoResult, Integer> result) {
+        long totalPrize = 0L;
+        for (LottoResult lo : LottoResult.values()) {
+            if (lo != NOPE) {
+                totalPrize += (long) lo.getPrize() * result.getOrDefault(lo, 0);
+            }
+        }
+        return totalPrize;
+    }
 
+
+    public Map<LottoResult, Integer> getResult() {
+        Map<LottoResult, Integer> result = new HashMap<>();
         Lotto myLotto = lottoWithBonus.getLotto();
 
-        for (Lotto haveLotto : haveLottoList) {
+        for (Lotto haveLotto : lottoVendingMachine.getHaveLottoList()) {
+            int count = 0;
             count += isContains(haveLotto, myLotto);
-            countList.add(count);
-            count = 0;
+            if (count == 5) {
+                result.put(checkBonus(haveLotto, lottoWithBonus), result.getOrDefault(checkBonus(haveLotto, lottoWithBonus), 0) + 1);
+            }
+            if (count != 5) {
+                result.put(LottoResult.hasCorrectCount(count), result.getOrDefault(LottoResult.hasCorrectCount(count), 0) + 1);
+            }
         }
-        return countList;
+        return result;
+    }
+
+    private LottoResult checkBonus(Lotto haveLotto, LottoWithBonus lottoWithBonus) {
+        if (haveLotto.getLottoNumbers().contains(lottoWithBonus.getBonusNumber())) {
+            return LottoResult.BONUS;
+        }
+        return LottoResult.FIVE;
     }
 
     private int isContains(Lotto haveLotto, Lotto myLotto) {
@@ -37,13 +62,5 @@ public class Compare {
             }
         }
         return count;
-    }
-
-    public void getAll() {
-        for (Lotto lotto : haveLottoList) {
-            System.out.println(lotto.getLottoNumbers());
-        }
-        System.out.println(lottoWithBonus.getLotto().getLottoNumbers());
-        System.out.println(lottoWithBonus.getBonusNumber());
     }
 }
