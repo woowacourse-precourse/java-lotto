@@ -44,13 +44,8 @@ public class LottoService {
         return newLotto;
     }
 
-    public void pick(List<Integer> winningNumbers, int bonusNumber) {
-        Winning winning = new Winning(winningNumbers, bonusNumber);
-        for (int number : winning.getNumbers()) {
-            System.out.println(number);
-        }
-        System.out.println();
-        System.out.println(winning.getBonusNumber());
+    public Winning pick(List<Integer> winningNumbers, int bonusNumber) {
+        return new Winning(winningNumbers, bonusNumber);
     }
 
     public List<Integer> winningInputParseToList(String input) {
