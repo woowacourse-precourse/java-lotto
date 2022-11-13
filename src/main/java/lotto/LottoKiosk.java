@@ -34,7 +34,7 @@ public class LottoKiosk {
     void validateMoneyInput() {
         this.moneyInput.chars().forEach(o -> {
             if (!Character.isDigit(o)) {
-                throw new IllegalArgumentException(ErrorMessage.NOT_A_NUMBER.message);
+                throw new IllegalArgumentException(ErrorMessage.MONEY_NOT_A_NUMBER.message);
             }
         });
     }
