@@ -13,4 +13,10 @@ public class Store {
             throw new IllegalArgumentException();
         }
     }
+
+    public static int countLines(int money) {
+        validate(money);
+        return money / 1000;
+    }
+
 }

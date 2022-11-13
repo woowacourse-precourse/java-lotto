@@ -17,4 +17,12 @@ class StoreTest {
         });
     }
 
+    @DisplayName("돈이 입력되었을 때 복권의 개수가 잘 출력된다.")
+    @Test
+    void countLotto() {
+        int money = 12000;
+        int result = Store.countLines(12000);
+        assertThat(result).isEqualTo(12);
+    }
+
 }
