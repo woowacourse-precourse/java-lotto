@@ -18,16 +18,17 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessages.LOTTO_NUM_NUMBER_ERROR.get());
+            System.out.println(ErrorMessages.LOTTO_NUM_NUMBER_ERROR.get());
+            throw new IllegalArgumentException();
         }
-
         for (Integer num: numbers) {
             if (num > 45 || num < 1) {
-                throw new IllegalArgumentException(ErrorMessages.LOTTO_NUM_RANGE_ERROR.get());
+                System.out.println(ErrorMessages.LOTTO_NUM_RANGE_ERROR.get());
+                throw new IllegalArgumentException();
             }
-
             if (numbers.indexOf(num) != numbers.lastIndexOf(num)) {
-                throw new IllegalArgumentException(ErrorMessages.LOTTO_NUM_DUPLICATE_ERROR.get());
+                System.out.println(ErrorMessages.LOTTO_NUM_DUPLICATE_ERROR.get());
+                throw new IllegalArgumentException();
             }
         }
     }

@@ -18,23 +18,29 @@ public class WinLotto{
     }
 
     public int validateBonus(String input) {
-        int bonus;
-
-        try {
-            bonus = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessages.BONUS_NUM_FORMAT_ERROR.get());
+        if (!isNumeric(input)) {
+            System.out.println(ErrorMessages.BONUS_NUM_FORMAT_ERROR.get());
+            throw new IllegalArgumentException();
         }
-
+        int bonus = Integer.parseInt(input);
         if (bonus < 1 || bonus > 45) {
-            throw new IllegalArgumentException(ErrorMessages.BONUS_NUM_RANGE_ERROR.get());
+            System.out.println(ErrorMessages.BONUS_NUM_RANGE_ERROR.get());
+            throw new IllegalArgumentException();
         }
-
         if (lotto.getNumbers().contains(bonus)) {
-            throw new IllegalArgumentException(ErrorMessages.BONUS_NUM_DUPLICATE_ERROR.get());
+            System.out.println(ErrorMessages.BONUS_NUM_DUPLICATE_ERROR.get());
+            throw new IllegalArgumentException();
         }
-
         return bonus;
+    }
+
+    private static boolean isNumeric(String s) {
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
+        }
     }
 
     private List<Integer> validate(String input) {
