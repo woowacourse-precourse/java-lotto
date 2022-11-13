@@ -2,6 +2,7 @@ package lotto.domain.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class CreateLotto {
@@ -9,9 +10,14 @@ public class CreateLotto {
 
     CreateLotto(){
         lotto = generateLotto();
+        sortNatural();
     }
 
     public List<Integer> generateLotto(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
+    public void sortNatural(){
+        lotto.sort(Comparator.naturalOrder());
     }
 }
