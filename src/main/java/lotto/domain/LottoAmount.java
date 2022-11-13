@@ -1,5 +1,11 @@
 package lotto.domain;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public class LottoAmount {
 	private static final String INPUT_MONEY_ERROR_MESSAGE = "[ERROR] 구입 금액은 1000원 단위로 입력하셔야 합니다.";
 	private final int purchaseMoney;
@@ -21,6 +27,13 @@ public class LottoAmount {
 
 	public int calculateLottoCount() {
 		return purchaseMoney / 1000;
+	}
+
+	public double calculatePrizeResult(LottoResult lottoResult) {
+		return lottoResult.getLottoResult().entrySet().stream()
+			.filter(entry -> LottoRanking.noWin != entry.getKey())
+			.map(entry -> entry.getKey().getPrizeMoney() * entry.getValue())
+			.mapToLong(Integer::longValue).sum();
 	}
 
 	public int getPurchaseMoney() {

@@ -45,7 +45,7 @@ public class OutputView {
 		}
 	}
 
-	public static void printPrize(LottoResult lottoResult) {
+	public static void printPrizeResult(LottoResult lottoResult) {
 		System.out.println();
 		System.out.println("당첨 통계");
 		System.out.println("---");
@@ -65,11 +65,7 @@ public class OutputView {
 			}
 			printResult.append(String.format(PRINT_PRIZE_RESULT_LAST, lottoRanking.getPrizeMoney(), prizeCount));
 			System.out.println(printResult);
-
-			sum += (long)prizeCount * lottoRanking.getPrizeMoney();
 		}
-		double result = (double)sum / 8000 * REQUIRE_FOR_YIELD_NUMBER;
-		printRateReturn(result);
 	}
 
 	public static void printRateReturn(double rateReturn){

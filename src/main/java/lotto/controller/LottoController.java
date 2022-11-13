@@ -17,27 +17,22 @@ public class LottoController {
 	public void run() {
 		LottoAmount lottoAmount = new LottoAmount(InputView.inputUserMoney());
 		LottoTicket lottoTickets = buyLotto(lottoAmount);
-		WinningNumber winningNumber = new WinningNumber(InputView.inputWinningNumber());
-		BonusNumber bonusNumber = new BonusNumber(InputView.inputBonusNumber(), winningNumber.getWinningNumber());
-		LottoResult lottoResult = makeLottoResult(lottoTickets, winningNumber, bonusNumber);
-		calculatePrize(lottoResult);
+		OutputView.printLottoTickets(lottoTickets);
+		LottoResult lottoResult = makeLottoResult(lottoTickets);
+		OutputView.printPrizeResult(lottoResult);
+		double moneyResult = lottoAmount.calculatePrizeResult(lottoResult);
+		OutputView.printRateReturn(moneyResult);
 	}
 
 	private LottoTicket buyLotto(LottoAmount lottoAmount) {
 		int lottoCount = lottoAmount.calculateLottoCount();
-		LottoTicket lottoTicket = new LottoTicket(lottoCount);
 		OutputView.printLottoNumber(lottoCount);
-		OutputView.printLottoTickets(lottoTicket);
-		return lottoTicket;
+		return new LottoTicket(lottoCount);
 	}
 
-	private LottoResult makeLottoResult(LottoTicket lottoTickets, WinningNumber winningNumbers, BonusNumber bonusNumber) {
-		LottoResult lottoResult = lottoTickets.calculateRank(winningNumbers, bonusNumber);
-		OutputView.printPrize(lottoResult);
-		return lottoResult;
-	}
-
-	private void calculatePrize(LottoResult lottoResult) {
-
+	private LottoResult makeLottoResult(LottoTicket lottoTickets) {
+		WinningNumber winningNumber = new WinningNumber(InputView.inputWinningNumber());
+		BonusNumber bonusNumber = new BonusNumber(InputView.inputBonusNumber(), winningNumber.getWinningNumber());
+		return lottoTickets.calculateRank(winningNumber, bonusNumber);
 	}
 }
