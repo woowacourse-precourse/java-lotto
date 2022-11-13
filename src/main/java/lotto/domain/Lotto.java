@@ -15,6 +15,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         validateNumberSize(numbers);
+        validateDuplicateNumbers(numbers);
     }
 
     private void validateNumberSize(List<Integer> numbers) {
@@ -23,6 +24,17 @@ public class Lotto {
 
         if (numbers.size() != LOTTO_NUMBER_SIZE) {
             throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
+        }
+    }
+
+    private void validateDuplicateNumbers(List<Integer> numbers) {
+        final String DUPLICATION_ERROR_MESSAGE = "[ERROR] 로또 번호에 중복된 숫자가 있으면 안 됩니다.";
+        if (
+                numbers.size() != numbers.stream()
+                        .distinct()
+                        .count()
+        ) {
+            throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
         }
     }
 
