@@ -33,7 +33,9 @@ public class LottoMachine {
 
         while (lottosIter.hasNext()){
             Lotto lotto = lottosIter.next();
-            System.out.println(lotto);
+            List<Integer>tmpLotto = new ArrayList<>(lotto.getLottoInfo());
+            Collections.sort(tmpLotto);
+            System.out.println(tmpLotto);
         }
     }
 
