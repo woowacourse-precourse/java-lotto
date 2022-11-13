@@ -1,5 +1,6 @@
-package lotto.Domain;
+package lotto;
 
+import lotto.Domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,6 @@ class LottoTest {
     @Test
     void createLottoByOverSize() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
-                .hasMessageContaining("ERROR")
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -20,8 +20,8 @@ class LottoTest {
     @Test
     void createLottoByDuplicatedNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
-                .hasMessageContaining("ERROR")
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    // 아래에 추가 테스트 작성 가능
 }
