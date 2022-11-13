@@ -28,11 +28,18 @@ public class Lotto {
     public void generateBonusNumber() {
         this.bonusNumber = lottoNumberGenerator.generateBonusNumber(numbers);
     }
+    public void generateBonusNumber(String number) {
+        this.bonusNumber = Integer.parseInt(number);
+    }
 
     public String getLottoNumbers() {
         List<Integer> copiedNumbers = new ArrayList<>(numbers);
         Collections.sort(copiedNumbers);
         return copiedNumbers.toString();
+    }
+
+    public int getLottoNumber(int idx) {
+        return numbers.get(idx);
     }
 
     public int getBonusNumber() {

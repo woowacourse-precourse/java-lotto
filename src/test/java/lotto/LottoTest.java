@@ -63,5 +63,24 @@ class LottoTest {
         assertThat(winningNumbers.winningBonusNumber).isEqualTo(7);
     }
 
+    @Test
+    void 당첨금액_잘_매핑되는지_테스트() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        lotto.generateBonusNumber("9");
+        WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,7", "9");
+        RewardsMapper rewardsMapper = new RewardsMapper(winningNumbers);
+        Rewards rewards = rewardsMapper.getReward(lotto);
+        assertThat(rewards.reward).isEqualTo(30000000);
+    }
+
+    @Test
+    void 당첨금액_잘_매핑되는지_테스트2() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        lotto.generateBonusNumber("9");
+        WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "9");
+        RewardsMapper rewardsMapper = new RewardsMapper(winningNumbers);
+        Rewards rewards = rewardsMapper.getReward(lotto);
+        assertThat(rewards.reward).isEqualTo(2000000000);
+    }
 
 }
