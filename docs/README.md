@@ -40,6 +40,9 @@
       - ```validateInputLottoNumberIsTotal``` : N개의 로또 번호 입력했는지 검증
       - ```validateInputLottoNumberIsRightSeparator``` : 쉼표를 기준으로 숫자를 입력했는지 검증 
       - ```validateInputLottoNumberIsBetween``` : 로또 추첨 번호 사이의 숫자를 입력했는지 검증
+    - ```bonusNumber``` : 보너스 로또 번호 반환
+    - ```inputBonusNumber``` : 보너스 로또 번호 입력
+    - ```validateBonusNumberIsRightNumber``` : 입력한 보너스 번호 검증 및 예외처리
     
 
 
