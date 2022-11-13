@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Model.Lotto;
 import lotto.Model.LottoData;
 import lotto.View.OutputView;
+import lotto.View.UserException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,20 +17,27 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class LottoController {
     LottoData lottoData = new LottoData();
     OutputView output = new OutputView();
+    UserException exception = new UserException();
 
     public void start(){
-        setLottoCount();
-        makeLottoNumber();
-        printLottoNumber();
-        inputWinnerNumber();
-        inputBonusNumber();
-        countLottoPrize();
-        printLottoPrize();
-        calculateYield();
+        try {
+            setLottoCount();
+            makeLottoNumber();
+            printLottoNumber();
+            inputWinnerNumber();
+            inputBonusNumber();
+            countLottoPrize();
+            printLottoPrize();
+            calculateYield();
+        }catch(IllegalArgumentException e){
+            System.out.println("[ERROR]잘못된 입력");
+        }
     }
     private void setLottoCount(){
         output.askPurchasePrice();
-        int lottoPurchasePrice = Integer.parseInt(readLine());
+        String purchasePriceInput = readLine();
+        exception.IsIllegalArgumentException(purchasePriceInput);
+        int lottoPurchasePrice = Integer.parseInt(purchasePriceInput);
         lottoData.setCountOfLotto(lottoPurchasePrice);
     }
 
@@ -54,7 +62,9 @@ public class LottoController {
 
     private void inputWinnerNumber(){
         output.askWinnerNumber();
-        List<Integer> winnerNumber = Arrays.stream(readLine().split(","))
+        String winnerNumberInput = readLine();
+        exception.IsIllegalArgumentException(winnerNumberInput);
+        List<Integer> winnerNumber = Arrays.stream(winnerNumberInput.split(","))
                                             .mapToInt(Integer::parseInt)
                                             .boxed()
                                             .collect(Collectors.toList());
@@ -64,7 +74,9 @@ public class LottoController {
 
     private void inputBonusNumber(){
         output.askBonusNumber();
-        int bonusNumber = Integer.parseInt(readLine());
+        String bonusNumberInput = readLine();
+        exception.IsIllegalArgumentException(bonusNumberInput);
+        int bonusNumber = Integer.parseInt(bonusNumberInput);
         lottoData.setBonusNumber(bonusNumber);
     }
 
