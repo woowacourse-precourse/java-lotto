@@ -13,13 +13,13 @@ public class MatchCount {
     }
 
     private void valid(int winningCount, int bonusCount) {
-        if (winningCount<INITIAL_NUMBER || winningCount>LOTTO_SIZE) {
+        if (winningCount < INITIAL_NUMBER || winningCount > LOTTO_SIZE) {
             throw new IllegalArgumentException();
         }
-        if (bonusCount<INITIAL_NUMBER || bonusCount>BONUS_SIZE) {
+        if (bonusCount < INITIAL_NUMBER || bonusCount > BONUS_SIZE) {
             throw new IllegalArgumentException();
         }
-        if (winningCount+bonusCount>LOTTO_SIZE) {
+        if (winningCount + bonusCount > LOTTO_SIZE) {
             throw new IllegalArgumentException();
         }
     }
@@ -28,7 +28,7 @@ public class MatchCount {
         if (winningCount != o.winningCount) {
             return false;
         }
-        if (winningCount!=5 || bonusCount==o.bonusCount) {
+        if (winningCount != 5 || bonusCount == o.bonusCount) {
             return true;
         }
         return false;

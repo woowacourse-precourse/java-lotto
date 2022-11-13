@@ -27,7 +27,7 @@ public class Validation {
                 .allMatch(num -> validNumberRange(num));
     }
 
-    public static Boolean validNumberRange(int num) {;
+    public static Boolean validNumberRange(int num) {
         if (num < LOTTO_NUMBER_MIN || num > LOTTO_NUMBER_MAX) {
             System.out.println(NOT_LOTTO_NUMBER_RANGE);
             throw new IllegalArgumentException(NOT_LOTTO_NUMBER_RANGE);

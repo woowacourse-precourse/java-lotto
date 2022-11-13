@@ -7,7 +7,7 @@ import java.util.List;
 public class Output {
 
     public static void showLottoTickets(List<Lotto> lottoTickets) {
-        System.out.println(lottoTickets.size()+"개를 구매했습니다.");
+        System.out.println(lottoTickets.size() + "개를 구매했습니다.");
         lottoTickets.stream().forEach(System.out::println);
     }
 
@@ -16,6 +16,6 @@ public class Output {
     }
 
     public static void showReturnOfRate(double returnOfRate) {
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.",returnOfRate));
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", returnOfRate));
     }
 }

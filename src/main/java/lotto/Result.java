@@ -37,7 +37,7 @@ public class Result {
     }
 
     public void calculateReturnOfRate(int price) {
-        double returnOfRate = (double) totalPrizeMoney/price*PERCENT;
+        double returnOfRate = (double) totalPrizeMoney / price * PERCENT;
         Output.showReturnOfRate(returnOfRate);
     }
 }
