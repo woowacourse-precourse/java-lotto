@@ -19,7 +19,7 @@ public class Buyer {
             {
                 put("1ST", 0);
                 put("2ND", 0);
-                put("3ND", 0);
+                put("3RD", 0);
                 put("4TH", 0);
                 put("5TH", 0);
                 put("LOSE", 0);
