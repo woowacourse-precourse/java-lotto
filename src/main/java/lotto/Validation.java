@@ -44,6 +44,18 @@ public class Validation {
 		List<String> jackpot_number_list = Arrays.asList(jackpot_number.split(","));
 
 		if(jackpot_number_list.size()==6){
+			if (jackpot_number_regex_validation(jackpot_number,jackpot_number_list)){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private static boolean jackpot_number_regex_validation(String jackpot_number,List<String> jackpot_number_list){
+		String eliminate_comma = jackpot_number.replaceAll(",", "");
+
+		if (eliminate_comma.matches("^[0-9]*$")){
 			if (jackpot_number_range_validation(jackpot_number_list)){
 				return true;
 			}
@@ -64,6 +76,7 @@ public class Validation {
 				break;
 			}
 		}
+
 		return RANGE_FLAG;
 	}
 

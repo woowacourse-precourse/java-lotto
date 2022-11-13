@@ -9,7 +9,7 @@ public class Jackpot {
         jackpot_number_output_and_validate(ReadLine());
     }
 
-    private static void jackpot_number_output_and_validate(String jackpot_number){
+    public static void jackpot_number_output_and_validate(String jackpot_number){
 
 
         if (!Validation.jackpot_number_validation(jackpot_number)){
