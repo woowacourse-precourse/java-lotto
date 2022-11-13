@@ -2,7 +2,6 @@ package lotto.domain;
 
 import java.util.HashMap;
 import java.util.List;
-import lotto.Ranking;
 
 public class Generator {
     private static final String WINNINGCOUNT = "winningCount";

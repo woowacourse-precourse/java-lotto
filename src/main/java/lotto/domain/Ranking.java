@@ -1,7 +1,6 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Arrays;
-import lotto.domain.Lotto;
 
 public enum Ranking {
     FIRST(Lotto.RANK_FIRST, 6, 0, 2_000_000_000L, "2,000,000,000"),

@@ -1,21 +1,13 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.regex.Pattern;
 import java.util.stream.Stream;
-import lotto.Constants.ERROR;
-import lotto.Constants.PRINT;
-import lotto.Constants.REGEX;
-import lotto.domain.Buyer;
-import lotto.domain.Generator;
-import lotto.domain.Lotto;
+import lotto.Display;
 
 public class LottoProgram {
 

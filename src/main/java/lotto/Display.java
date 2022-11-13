@@ -8,6 +8,7 @@ import lotto.Constants.PRINT;
 import lotto.domain.Buyer;
 import lotto.domain.Generator;
 import lotto.domain.Lotto;
+import lotto.domain.Ranking;
 
 public class Display {
     private Display() {
