@@ -6,6 +6,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import java.lang.reflect.Field;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
 import lotto.utils.ExceptionType;
 import org.junit.jupiter.api.DisplayName;
@@ -51,7 +52,7 @@ public class WinningLottoTest {
         WinningLotto winning = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
         Lotto userLotto = new Lotto(List.of(2, 4, 6, 7, 15, 37));
 
-        assertThat(winning.match(userLotto)).isEqualTo(List.of(3, true));
+        assertThat(winning.match(userLotto)).isEqualTo(Rank.FIFTH);
     }
 
     @DisplayName("사용자가 구매한 로또 번호와 당첨 번호를 비교한다. (보너스 번호 미 일치 시)")
@@ -60,7 +61,7 @@ public class WinningLottoTest {
         WinningLotto winning = new WinningLotto(List.of(11, 15, 22, 26, 33, 44), 7);
         Lotto userLotto = new Lotto(List.of(2, 15, 26, 32, 37, 43));
 
-        assertThat(winning.match(userLotto)).isEqualTo(List.of(2, false));
+        assertThat(winning.match(userLotto)).isEqualTo(Rank.ZERO);
     }
 
 }
