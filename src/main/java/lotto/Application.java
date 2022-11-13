@@ -14,11 +14,10 @@ public class Application {
         Buy userBuy = new Buy(userPrice);
         userBuy.printRandomLotto();
 
-        List<String> userNumbers = inputNumbers();
+        List<Integer> userNumbers = inputNumbers();
+        Lotto userLotto = new Lotto(userNumbers);
 
-        for(String a : userNumbers) System.out.println(a);
-//        System.out.println(userNumbers.get(2));
-//        Lotto userLotto = new Lotto(userNumbers);
+        int bouns = inputBouns();
     }
 
     private static int inputUserPrice(){
@@ -28,12 +27,24 @@ public class Application {
 
         return userPrice;
     }
-    private static List<String> inputNumbers(){
-        System.out.println("당첨 번호를 입력해 주세요.");
+
+    private static List<Integer> inputNumbers(){
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         String userSelecteNumbers = Console.readLine();
         String[] numbers = userSelecteNumbers.split(",");
-        List<String> userNumbers = new ArrayList<String>(Arrays.asList(numbers)); // 로또 클래스의 생성자의 매게변수가 List<String>이므로 정답을 비교할때 자료형을 변환한다.
+        List<Integer> userNumbers = new ArrayList<>();
+        for(int i =0;i<numbers.length;i++){
+            int tempnumber = Integer.valueOf(numbers[i]);
+            userNumbers.add(tempnumber);
+        }
 
         return userNumbers;
+    }
+    private static int inputBouns(){
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        String temp = Console.readLine();
+        int bouns = Integer.valueOf(temp);
+
+        return bouns;
     }
 }

@@ -50,7 +50,6 @@ public class Buy {
             System.out.print("[");
             printSixRange(i);
         }
-        System.out.println();
     }
 
     public void printSixRange(int row){
