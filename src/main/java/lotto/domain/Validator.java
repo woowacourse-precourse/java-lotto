@@ -8,6 +8,14 @@ import lotto.Constants.REGEX;
 import lotto.domain.Lotto;
 
 public class Validator {
+    public static void lottoFormat(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(ERROR.LOTTO_SIZE);
+        }
+        if (new HashSet<Integer>(numbers).size() != 6) {
+            throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATE);
+        }
+    }
     public static void payment(String paymentInput) {
         if (!Pattern.matches(REGEX.PAYMENT, paymentInput)) {
             throw new IllegalArgumentException(ERROR.PURCHASE_FORMAT);
@@ -26,6 +34,7 @@ public class Validator {
             throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATE);
         }
     }
+
 
     public static void bonusNumber(String bonusNumber) {
         if (!Pattern.matches(REGEX.BONUS_NUMBER, bonusNumber)) {

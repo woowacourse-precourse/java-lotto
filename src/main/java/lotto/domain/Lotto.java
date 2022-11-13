@@ -6,7 +6,6 @@ import java.util.List;
 public class Lotto {
     private static List<Integer> winningNumbers;
     private static int bonusNumber;
-    public static final int PRICE = 1000;
 
     private final List<Integer> numbers;
 
@@ -32,12 +31,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또는 6개의 숫자를 필요로 합니다.");
-        }
-        if (new HashSet<Integer>(numbers).size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호에 중복이 없어야 합니다.");
-        }
+        Validator.lottoFormat(numbers);
     }
 
     public List<Integer> getNumbers() {
