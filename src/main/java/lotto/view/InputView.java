@@ -11,18 +11,16 @@ public class InputView {
 	private static final String DEFAULT_ERROR_MESSAGE = "[ERROR] ";
 	private static final String INPUT_USER_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
 	private static final String INPUT_MONEY_ERROR_MESSAGE = "구입금액은 숫자여야 합니다.";
-	private static final String VALID_MONEY_ERROR_MESSAGE = "구입 금액은 1000원 단위로 입력하셔야 합니다.";
-	private static final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+	private static final String INPUT_WINNING_NUMBER_MESSAGE = "\n당첨 번호를 입력해 주세요.";
 	private static final String INPUT_WIN_NUMBER_ERROR_MESSAGE = "당첨 번호는 ,로 구분된 숫자(1,2,3,4,5,6)여야 합니다.";
-	private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해주세요";
+	private static final String INPUT_BONUS_NUMBER_MESSAGE = "\n보너스 번호를 입력해주세요";
 	private static final String INPUT_BONUS_NUMBER_ERROR_MESSAGE = "보너스 번호는 숫자여야 합니다.";
 	private static final String INPUT_WIN_NUMBER_DIVIDE_STRING = ",";
-	private static final int DIVIDE_UNIT = 1000;
 	private static final int ZERO_NUMBER = 0;
 
 	public static int inputUserMoney() {
 		System.out.println(INPUT_USER_MONEY_MESSAGE);
-		int money = 0;
+		int money = ZERO_NUMBER;
 		try {
 			money = Integer.parseInt(Console.readLine());
 		} catch (IllegalArgumentException e) {
@@ -45,7 +43,7 @@ public class InputView {
 	}
 
 	public static int inputBonusNumber() {
-		int bonusNumber = 0;
+		int bonusNumber = ZERO_NUMBER;
 		System.out.println();
 		System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
 		try {
