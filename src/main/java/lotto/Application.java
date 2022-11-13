@@ -9,10 +9,10 @@ public class Application {
     public static void controller() {
         int numberOfGame = Input.budgetInput();
         ArrayList<Object> userNumber = Lotto.randomNumberGenerate(numberOfGame);
-        System.out.println(userNumber);
         ArrayList<Integer> winningNumber=Input.winningNumberInput();
-        System.out.println(winningNumber);
         int bonusNumber = Input.bonusNumberInput(winningNumber);
-        System.out.println(bonusNumber);
+        Output.output(numberOfGame, userNumber, winningNumber, bonusNumber);
+
+
     }
 }
