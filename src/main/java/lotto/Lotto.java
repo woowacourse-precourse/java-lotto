@@ -18,6 +18,9 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    public List<Integer> getNumbers(){
+        return numbers;
+    }
 
     public void isValidateNumber(List<Integer> numbers){
         for(Integer num : numbers){
