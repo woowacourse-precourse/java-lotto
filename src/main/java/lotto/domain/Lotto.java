@@ -19,7 +19,7 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public int compareLotto(List<Integer> playerLotto, int bonusNumber) {
+    private int compareLotto(List<Integer> playerLotto, int bonusNumber) {
         int matchCount = 0;
         boolean matchBonus = numbers.contains(bonusNumber);
         for (Integer lotto : playerLotto) {
@@ -50,6 +50,14 @@ public class Lotto {
                 continue;
             }
             rank[rankIndex]++;
+        }
+    }
+
+    public void showWinningStatistics() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (Rank value : Rank.values()) {
+            System.out.println(value.getText() + rank[value.getIndex()] + "개");
         }
     }
 }

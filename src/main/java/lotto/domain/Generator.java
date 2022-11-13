@@ -29,5 +29,6 @@ public class Generator {
         for (List<Integer> lotto : playerLotto) {
             System.out.println(lotto);
         }
+        System.out.println();
     }
 }
