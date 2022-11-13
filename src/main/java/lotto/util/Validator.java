@@ -8,9 +8,9 @@ import lotto.constant.ErrorLog;
 import lotto.constant.LottoConstant;
 
 public class Validator {
-	public static void validateNumberRange(List<Integer> numbers) {
-		if (numbers.stream().anyMatch(number -> number < LottoConstant.MINIMUM_LOTTO_NUMBER || number > LottoConstant.MAXIMUM_LOTTO_NUMBER)) {
-			throw new IllegalArgumentException("[ERROR] 1부터 45사이의 숫자만 가능합니다.");
+	public static void validateNumberRange(int number) {
+		if (number < LottoConstant.MINIMUM_LOTTO_NUMBER || number > LottoConstant.MAXIMUM_LOTTO_NUMBER) {
+			throw new IllegalArgumentException("[ERROR] 각각의 숫자는 1부터 45까지의 범위여야 합니다.");
 		}
 	}
 

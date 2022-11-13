@@ -6,17 +6,24 @@ import lotto.util.Converter;
 import lotto.util.Validator;
 
 public class WinningNumbers {
-	List<Integer> winningNumbers;
-
+	private static List<Integer> winningNumbers;
+	private static int bonusNumber;
 	public WinningNumbers(String winningNumbers) {
 		List<Integer> notYetValidatedWinningNumbers = Converter.convertStringWithCommaToIntegerList(winningNumbers);
-		validate(notYetValidatedWinningNumbers);
-		this.winningNumbers = notYetValidatedWinningNumbers;
+		validateWinningNumbers(notYetValidatedWinningNumbers);
+		WinningNumbers.winningNumbers = notYetValidatedWinningNumbers;
 	}
 
-	void validate(List<Integer> notYetValidatedWinningNumbers) {
+	public WinningNumbers(int bonusNumber) {
+		WinningNumbers.bonusNumber = bonusNumber;
+	}
+
+	void validateWinningNumbers(List<Integer> notYetValidatedWinningNumbers) {
 		Validator.validateSizeOfNumbers(notYetValidatedWinningNumbers);
 		Validator.validateNoDuplication(notYetValidatedWinningNumbers);
-		Validator.validateNumberRange(notYetValidatedWinningNumbers);
+		notYetValidatedWinningNumbers.forEach(Validator::validateNumberRange);
+	}
+
+	void validateBonusNumber(int bonusNumber) {
 	}
 }

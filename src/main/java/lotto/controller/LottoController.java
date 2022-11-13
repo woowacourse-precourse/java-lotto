@@ -21,6 +21,7 @@ public class LottoController {
 		calculateNumberOfTickets();
 		issueLotteries();
 		receiveWinningNumbers();
+		receiveBonusNumbers();
 	}
 
 	void calculateNumberOfTickets() {
@@ -42,6 +43,9 @@ public class LottoController {
 		winningNumbers = new WinningNumbers(inputView.getWinningNumbers());
 	}
 
+	void receiveBonusNumbers() {
+		winningNumbers = new WinningNumbers(inputView.getBonusNumber());
+	}
 	List<Lotto> getLotteries() {
 		return lotteries;
 	}

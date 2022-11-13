@@ -43,7 +43,7 @@ class ValidatorTest {
 	@Test
 	@DisplayName("1부터 45까지의 숫자인지 검증한다.")
 	void validateNumberRange() {
-		assertThatThrownBy(() -> Validator.validateNumberRange(List.of(2, 5, 3, 15, 32, 54))).isInstanceOf(
+		assertThatThrownBy(() -> Validator.validateNumberRange(47)).isInstanceOf(
 			IllegalArgumentException.class);
 	}
 
