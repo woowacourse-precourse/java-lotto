@@ -1,13 +1,12 @@
 package lotto.type;
 
 public enum RankType {
-
-    FIRST(200000000, 1, "6개 일치"),
-    SECOND(30000000, 2, "5개 일치, 보너스 볼 일치"),
-    THIRD(1500000, 3, "5개 일치"),
-    FOURTH(50000, 4, "4개 일치"),
+    NOTHING(0, 0, "일치하는 수가 없음"),
     FIFTH(5000, 5, "3개 일치"),
-    NOTHING(0, 0, "일치하는 수가 없음");
+    FOURTH(50000, 4, "4개 일치"),
+    THIRD(1500000, 3, "5개 일치"),
+    SECOND(30000000, 2, "5개 일치, 보너스 볼 일치"),
+    FIRST(200000000, 1, "6개 일치");
 
     private int prizeMoney;
     private int rank;
