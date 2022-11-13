@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +10,8 @@ public class Application {
     enum NumberType { WINNING, BONUS, NONE };
 
     static NumberType[] numberTypeCheck = new NumberType[46];
+    static int noOfLottos;
 
-    static List<Lotto> generatedLottos = new ArrayList<>();
 
     public static void guideWinningNumberFormat() { System.out.print("당첨 번호 6개를 쉼표로 구분해 입력해주세요: "); }
 
@@ -100,7 +101,7 @@ public class Application {
 
     public static void isDuplicatedWithWinningNumbers(NumberType[] numberTypeCheck, List<Integer> bonusNumber) {
         int bonus = bonusNumber.get(0);
-        if(numberTypeCheck[bonus] == NumberType.WINNING)
+        if (numberTypeCheck[bonus] == NumberType.WINNING)
             throw new IllegalArgumentException("당첨번호가 아닌 다른 보너스 번호를 입력하십시오.");
     }
 
@@ -123,16 +124,16 @@ public class Application {
     }
 
     public static void isDividedBy1000(Long purchasePrice) {
-        if(purchasePrice % 1000 != 0)
+        if (purchasePrice % 1000 != 0)
             throw new IllegalArgumentException("금액을 1000원 단위로 입력해주세요.");
     }
 
     public static void isLargerThan2billion(Long purchasePrice) {
-        if(purchasePrice > 2_000_000_000)
+        if (purchasePrice > 2_000_000_000)
             throw new IllegalArgumentException("1등 당첨금보다 더 큰 금액으로 복권을 구매할 수 없습니다.");
     }
 
-    public static int getNoOfLotto() {
+    public static void getNoOfLotto() {
         guidePurchasePriceFormat();
         String purchasePriceInput = Console.readLine();
 
@@ -143,15 +144,22 @@ public class Application {
         isDividedBy1000(purchasePrice);
         isLargerThan2billion(purchasePrice);
 
-        return (int)(purchasePrice / 1000);
+        noOfLottos = (int)(purchasePrice / 1000);
     }
 
-    public static void generateLottoNumbers(int noOfLotto) {
-        // TODO: implement method to purchased Lottos
+    public static void generateLottoNumbers() {
+        for (int no = 0; no < noOfLottos; no++) {
+            List<Integer> pickedNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            new Lotto(pickedNumbers);
+        }
     }
 
     public static void printPurchasedLottos() {
         // TODO: implement method to purchased Lottos
+    }
+
+    public static void getComparisonResults() {
+        // TODO: implement method to compare purchased Lottos and winning & bonus numbers
     }
 
     public static void printLottoResults() {
@@ -165,8 +173,10 @@ public class Application {
     public static void main(String[] args) {
         getWinningNumbers();
         getBonusNumber();
-        generateLottoNumbers(getNoOfLotto());
+        getNoOfLotto();
+        generateLottoNumbers();
         printPurchasedLottos();
+        getComparisonResults();
         printLottoResults();
         printEarningsRate();
     }
