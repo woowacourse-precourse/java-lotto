@@ -53,4 +53,11 @@ public class ConsoleUserInput {
         bonus = Integer.parseInt(bonusNumber);
         return bonus;
     }
+
+    public int inputMoneyForLottos(){
+        String moneyForLottos = Console.readLine();
+        Validator.isValidUnitForPayment(moneyForLottos);
+        Validator.isValidInputForPayment(moneyForLottos);
+        return Integer.parseInt(moneyForLottos);
+    }
 }
