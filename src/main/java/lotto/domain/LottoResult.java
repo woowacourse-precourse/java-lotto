@@ -2,13 +2,11 @@ package lotto.domain;
 
 import java.util.Arrays;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LottoResult {
-	private static final int RATE_MULTIPLE_NUMBER = 100;
 	private final Map<LottoRanking, Integer> LottoResult = new EnumMap<>(LottoRanking.class);
 
 	public LottoResult(List<LottoRanking> lottoRankings) {

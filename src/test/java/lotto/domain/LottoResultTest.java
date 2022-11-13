@@ -15,7 +15,7 @@ class LottoResultTest {
 	@Test
 	void countPrizeTest() {
 		int bonusNumber = 7;
-		List<Integer> winningNumber = new ArrayList<>(List.of(1,2,3,4,5,6));
+		List<Integer> winningNumber = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
 		List<List<Integer>> lottoTickets = new ArrayList<>();
 
 		lottoTickets.add(List.of(4, 3, 2, 1, 7, 6));
@@ -31,7 +31,7 @@ class LottoResultTest {
 		lottoResult.calculateRateReturn(8000);
 		HashMap<String, Integer> result = lottoResult.getPrizeResult();
 
-		HashMap <String, Integer> test = new HashMap<>() {{
+		HashMap<String, Integer> test = new HashMap<>() {{
 			put("winThree", 1);
 			put("winFour", 0);
 			put("winFive", 0);

@@ -3,7 +3,6 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -25,7 +24,7 @@ public class LottoTicket {
 	}
 
 	public LottoResult calculateRank(WinningNumber winningNumber, BonusNumber bonusNumber) {
-		List<LottoRanking> rank =  lottoTickets.stream()
+		List<LottoRanking> rank = lottoTickets.stream()
 			.map(lotto -> winningNumber.calculateMatchCount(lotto, bonusNumber.getBonusNumber()))
 			.collect(Collectors.toUnmodifiableList());
 		return new LottoResult(rank);
