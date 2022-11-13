@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoMachine {
-    public void draw(List<Integer> wins, List<Integer> bonuses) {
-        List<String> inputs = inputNumber();
+    public List<Integer> draw(int length) {
+        if(length > 0) {
+            List<String> inputs = inputNumber();
+        }
+        return List.of();
     }
 
     private List<String> inputNumber() {
