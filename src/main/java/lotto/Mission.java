@@ -26,7 +26,10 @@ public class Mission {
         lottoMaker = new LottoMaker();
         repository = new ResultRepository();
 
-        play();
+        try {
+            play();
+        } catch (IllegalArgumentException e) {
+        }
     }
 
     private void play() {

@@ -20,9 +20,13 @@ public class Input {
     }
 
     private int stringToInt(String target) {
-        try {
-            return Integer.parseInt(target);
-        } catch (NumberFormatException e) {
+        validateIsNumber(target);
+        return Integer.parseInt(target);
+    }
+
+    private void validateIsNumber(String target) throws IllegalArgumentException {
+        String numberRegex = "^[0-9]*$";
+        if (!target.matches(numberRegex)) {
             Output.printErrorAndExit(ExceptionType.IS_NOT_NUMBER.getMessage());
             throw new IllegalArgumentException(ExceptionType.IS_NOT_NUMBER.getMessage());
         }
