@@ -4,6 +4,8 @@ import lotto.constants.message.ExceptionMessage;
 
 public class InputValidator {
     public static final String ONLY_NUMBER = "^[0-9]*$";
+    public static final String WINNING_NUMBER = "^([0-9],){5}[0-9]$";
+
     public static final int NOTHING = 0;
     public static final int LOTTO_PRICE = 1000;
     public static final int ZERO = 0;
@@ -32,5 +34,11 @@ public class InputValidator {
 
     private boolean isNotValidPrice(int inputPrice) {
         return inputPrice % LOTTO_PRICE != NOTHING;
+    }
+
+    public void validateInputWinningNumber(String inputWinningNumber) {
+        if (!inputWinningNumber.matches(WINNING_NUMBER)) {
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.WINNING_FORMAT_ERROR);
+        }
     }
 }

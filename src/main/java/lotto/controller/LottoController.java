@@ -44,6 +44,11 @@ public class LottoController {
 
     private void requestWinningNumber() {
         String inputWinningNumber = inputView.inputWinningNumber();
+        try {
+            inputValidator.validateInputWinningNumber(inputWinningNumber);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
 
