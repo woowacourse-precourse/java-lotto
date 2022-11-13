@@ -71,12 +71,10 @@ public class RunController {
 		Output.printNotice(Notice.WINNING_NUMBERS.getNoticeMessage());
 		String winningNumbers = Input.numbers();
 
-		Lotto lotto = new Lotto(pickWinningNumbers(winningNumbers));
-
 		Output.printNotice(Notice.BONUS_NUMBER.getNoticeMessage());
 		String bonusNumber = Input.numbers();
 
-		return new LottoMachine(lotto.getNumbers(), pickBonusNumbers(bonusNumber));
+		return new LottoMachine(winningNumbers, bonusNumber);
 	}
 
 	private static int getCurrentMoney() {

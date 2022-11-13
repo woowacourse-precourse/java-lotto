@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.ExceptionHandler;
 import lotto.Ranking;
 import lotto.domain.Lotto;
 
@@ -24,16 +22,6 @@ public class LottoService {
 		}
 
 		return candidate;
-	}
-
-	public static List<Integer> pickWinningNumbers(String winningNumbers) {
-		return convertStringToList(winningNumbers);
-	}
-
-	public static int pickBonusNumbers(String bonusNumber) {
-		ExceptionHandler.checkBonus(bonusNumber);
-
-		return Integer.parseInt(bonusNumber);
 	}
 
 	public static List<Integer> getWinningRanking(List<List<Integer>> candidate, List<Integer> winningNumbers,
@@ -56,17 +44,6 @@ public class LottoService {
 
 	private static void publishLotto(List<List<Integer>> candidateLotto, List<Integer> candidate) {
 		candidateLotto.add(candidate);
-	}
-
-	private static List<Integer> convertStringToList(String numbers) {
-		List<String> lotto;
-
-		lotto = Arrays.asList(numbers.split(","));
-		ExceptionHandler.checkInput(lotto);
-
-		return lotto.stream()
-				.map(Integer::parseInt)
-				.collect(Collectors.toList());
 	}
 
 	private static List<Integer> countWinningNumber(List<List<Integer>> candidate, List<Integer> winningNumbers, int bonusNumber) {
