@@ -72,7 +72,7 @@ public class MatchLogic {
             yields += value;
         }
         result = yields / (double) budget * 100;
-        return Math.round(result * 100.0) / 100.0;
+        return Math.round(result * 10.0) / 10.0;
     }
 
     public List<Integer> getMatchNums() {
