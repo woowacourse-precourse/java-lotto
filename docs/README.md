@@ -6,23 +6,23 @@
 
 ### ✅ 구매 금액  입력
 
--  ✅ (e) 양의 정수 형태 이외 입력
+-  ✅ (e) 양의 정수 형태 이외 입력 : <BuyerValidator> isInteger(), isNatural()
 
 ```
 "1000원", "$1000", "1,000", "-1000" 등 문자열이 있는 경우
 ```
 
--  ✅ (e) 1000 단위 이하 입력
+-  ✅ (e) 1000 단위 이하 입력 : <BuyerValidator> is1000Unit()
 
 ```
 15700, 24620 과 같이 1000으로 나눈 나머지가 있는 경우
 ```
 
--  ✅ 입력 후, 정수형 변환
+-  ✅ 입력 후, 정수형 변환 : <Util> getInput() -> getInt()
 
 ### ✅ 구매 개수 계산
 
--  ✅ 구매금액 / 1000
+-  ✅ 구매금액 / 1000 : <Calculator> divide1000()
 
 ```
 구매 금액 = 24000 , 구매 개수 = 24000/1000 = 24
@@ -30,8 +30,8 @@
 
 ### ✅ 로또 지갑 생성
 
-- ✅ 로또 생성
-  - ✅ 1~45 사이 정수
+- ✅ 로또 생성 : <Buyer> addLotto(), <Util> generateRandomNum();
+  - ✅ 1~45 사이 정수 
   - ✅ pickUniqueNumbersInRange() 활용
   - ✅ 중복 불가
   
@@ -44,23 +44,24 @@
 [1,1,2,2,3,3], [20,24,24,42,43,44]
 ```
 
-- ✅ 로또 번호 출력
+- ✅ 로또 번호 출력 : <OutputView> printBuyerLotto();
   - ✅ 오름차순 정렬
 
 ### ✔ 이번주 당첨 번호 입력
 
-- ✅ 이번주 당첨 로또 생성
-  - ✅ (e) 번호 6개 , 구분자 = "," : isValidLottoSize()
-  - ✅ (e) 문자 입력 불가 : isInteger()
-  - ✅ (e) 1~45 사이 정수 : isValidRange()
-  - ✅ (e) 중복 불가 : isOverlap()
+- ✅ 이번주 당첨 로또 생성 : <Lotto> Constructor
+  - ✅ (e) 번호 6개 , 구분자 = "," : <LottoValidator> isValidLottoSize()
+  - ✅ (e) 문자 입력 불가 : <LottoValidator> isInteger()
+  - ✅ (e) 1~45 사이 정수 : <LottoValidator> isValidRange()
+  - ✅ (e) 중복 불가 : <LottoValidator> isOverlap()
   - ✅ readLine() 사용
 
 - ✅ 보너스 번호 생성
-  - ✅ (e) 문자 입력 불가 : isInteger()
-  - ✅ (e) 1~45 사이 정수 : isValidRange()
-  - ✅ (e) 중복 불가 : isOverlap()
+  - ✅ (e) 문자 입력 불가 : <BonusValidator> isInteger()
+  - ✅ (e) 1~45 사이 정수 : <BonusValidator> isValidRange()
+  - ✅ (e) 중복 불가 : <BonusValidator> isOverlap()
   - ✅ readLine() 사용
+
 ### ✔ 당첨 내역 출력
 
 - 숫자 일치 개수
