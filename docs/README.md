@@ -92,3 +92,41 @@ flowchart
 
 - 하나의 객체는 한 가지 책임을 가지도록 함
 - 뷰 역할을 하는 객체이외에는 getter를 가지지 않도록 함
+
+## 의문점
+
+### CompareLotto class
+
+```java
+public class CompareLotto {
+
+    public static Score compare(AnswerLotto answerLotto, Lotto randomLotto) {
+
+        var lotto = answerLotto.getLotto();
+
+        var score = compare(lotto, randomLotto);
+
+        var bonusNumber = answerLotto.getBonusNumber();
+
+        if (randomLotto.hasLottoNumber(bonusNumber.number())) {
+            score = score.plusBonus();
+        }
+        return score;
+    }
+
+    private static Score compare(Lotto answerLotto, Lotto randomLotto) {
+        var score = Score.generateEmptyScore();
+
+        var count = answerLotto.compareCount(randomLotto);
+
+        for (int i = 0; i < count; i++) {
+            score = score.plusNormal();
+        }
+        return score;
+    }
+}
+```
+
+> 현재 로또A와 로또B를 비교하는 클래스가 존재한다.
+> 비교하는 클래스의 존재로 각 로또는 getter를 가져야만 비교가 가능해졌는데 그냥 로또를 바로 비교해서 해당 스코어를
+> 넘겨 줘도 무방하다고 생각된다.
