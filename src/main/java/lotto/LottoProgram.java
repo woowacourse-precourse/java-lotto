@@ -49,6 +49,15 @@ public class LottoProgram {
 
         Lotto.setWinningNumbers(Arrays.asList(numberArray));
 
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumber = Console.readLine();
+        String bonusNumberRegex = "^[1-9]{1}|[1-3]{1}[0-9]{1}|4{1}[0-5]{1}$";
+        if (!Pattern.matches(bonusNumberRegex, bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1-45사이의 숫자여야 합니다.");
+        }
+        if (Lotto.getWinningNumbers().contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호에 존재할 수 없습니다.");
+        }
     }
 
     private static void purchasedLottoSave() {
