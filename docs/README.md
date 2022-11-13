@@ -7,7 +7,7 @@
 - Money
 
 - [x] 구입금액을 입력 Money#get()
-- [ ] 구입금액이 유효한 지 확인 Money#check()
+- [x] 구입금액이 유효한 지 확인 Money#check()
 
 - Lotto
 
