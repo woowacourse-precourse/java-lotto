@@ -14,7 +14,7 @@ public class User {
         }
     }
 
-    public void countTicket() {
-
+    public int countTicket() {
+        return pay / TicketPrice.TICKET_PRICE.getTicketPrice();
     }
 }
