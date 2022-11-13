@@ -30,10 +30,10 @@ class PurchaseAmountTest {
                 .hasMessageContaining("[ERROR]");
     }
 
-    @Test
-    void 로또_당첨금액으로_수익률_계산_기능() {
+    @ParameterizedTest(name = "구매금액 4000원 상금은 {0}원, 수익률은 {1}%")
+    @CsvSource({"2000,50", "2500,62.5"})
+    void 로또_당첨금액으로_수익률_계산_기능(int winningAmount, double profitRate) {
         PurchaseAmount purchaseAmount = new PurchaseAmount(4000);
-        assertThat(purchaseAmount.calculateProfitRate(2000)).isEqualTo(50D);
-        assertThat(purchaseAmount.calculateProfitRate(2500)).isEqualTo(62.5);
+        assertThat(purchaseAmount.calculateProfitRate(winningAmount)).isEqualTo(profitRate);
     }
 }
