@@ -2,6 +2,7 @@ package input;
 
 import camp.nextstep.edu.missionutils.Console;
 import util.ExceptionMessage;
+import util.LottoRule;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,6 +36,12 @@ public class NumberInput {
         }
 
         return number;
+    }
+
+    private void validateNumberInRange(int number) {
+        if (LottoRule.START_INCLUSIVE < number || number > LottoRule.END_INCLUSIVE) {
+            throw new IllegalArgumentException(ExceptionMessage.OUT_OF_RANGE);
+        }
     }
 
 }
