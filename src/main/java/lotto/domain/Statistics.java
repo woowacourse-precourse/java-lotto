@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.utils.Ranking;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class Statistics {
     private final Ticket ticket;
     private final Answer answer;
     private final Map<Ranking, Integer> counter = new HashMap<>();
-    private double returnRate;
+    private BigDecimal returnRate;
 
     public Statistics(Ticket ticket, Answer answer) {
         counter.put(Ranking.RANK6, 0);
@@ -52,7 +53,7 @@ public class Statistics {
             sumPrize += ranking.getPrize() * counter.get(ranking);
         }
         rate = sumPrize / (double) ticket.getPrice() * 100;
-        returnRate = Double.parseDouble(String.format("%.1f", rate));
+        returnRate = new BigDecimal(String.format("%.1f", rate));
     }
 
     private int countMatch(List<Integer> expected, List<Integer> actual) {
@@ -69,7 +70,7 @@ public class Statistics {
         return numbers.contains(number);
     }
 
-    public double getReturnRate() {
+    public BigDecimal getReturnRate() {
         return returnRate;
     }
 

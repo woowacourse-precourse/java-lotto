@@ -43,8 +43,8 @@ class StatisticsTest {
     @DisplayName("로또 1개 구매 후 1개 당첨의 수익률이 나오면 성공한다.")
     @Test
     void getReturnRate() {
-        assertThat(statistics.getReturnRate())
-                .isEqualTo(1500000 / 1000.0 * 100);
+        assertThat(statistics.getReturnRate().toString())
+                .isEqualTo(String.valueOf(1500000 / 1000.0 * 100));
     }
 
     private List<Integer> anyTwoLottoNumberNotInNumbers(List<Integer> sixNumbers) {
