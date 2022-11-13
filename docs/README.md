@@ -12,7 +12,7 @@
 - LottoView
 
 - [x] 발행된 로또 출력 LottoView.print()
-- [ ] 당첨 결과 출력 LottoView.printResult()
+- [x] 당첨 결과 출력 LottoView.printResult()
 
 - NumberView
 

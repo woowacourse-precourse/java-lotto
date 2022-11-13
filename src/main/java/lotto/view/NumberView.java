@@ -1,6 +1,7 @@
 package lotto.view;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -24,6 +25,7 @@ public class NumberView {
                 result.add(Integer.valueOf(num));
             }
         } catch (Exception e) {
+            System.out.println("[ERROR] 당첨 번호는 숫자로만 입력 가능하며, 쉽표(,)로 구분해주세요.");
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자로만 입력 가능하며, 쉽표(,)로 구분해주세요.");
         }
 
@@ -31,13 +33,6 @@ public class NumberView {
     }
 
     private static void checkWinNumbers(List<Integer> winNumbers) {
-        if (winNumbers.size() != 6) {
-            throw new IllegalArgumentException("[Error] 당첨번호는 6개입니다.");
-        }
-        Set set = new HashSet<Integer>(winNumbers);
-        if (set.size() != winNumbers.size()) {
-            throw new IllegalArgumentException("[Error] 당첨번호는 중복될 수 없습니다.");
-        }
         for (int num : winNumbers) {
             checkRange(num);
         }
@@ -57,11 +52,11 @@ public class NumberView {
         try {
             result = Integer.parseInt(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[Error] 보너스 번호는 숫자로만 입력 가능합니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자로만 입력 가능합니다.");
         }
         checkRange(result);
         if (winNumbers.contains(result)) {
-            throw new IllegalArgumentException("[Error] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
 
         return result;
@@ -69,7 +64,7 @@ public class NumberView {
 
     private static void checkRange(int num) {
         if (num > 45) {
-            throw new IllegalArgumentException("[Error] 로또 번호의 범위는 1~45 입니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호의 범위는 1~45 입니다.");
         }
     }
 }
