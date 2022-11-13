@@ -57,9 +57,7 @@ public class Printer {
     public void totalYield(long winningMoney) {
         int money = LottoShop.money;
 
-        // TODO: 구매했던 금액과 누적상금으로 수익률 계산
-
-        double yield = 0;
+        double yield = money / winningMoney * 100;
 
         String message = TOTAL_YIELD.getMessage();
         System.out.printf(message, yield);
