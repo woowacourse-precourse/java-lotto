@@ -47,6 +47,9 @@
     - [x]  어플리케이션 시작 기능 → startApplication
 
         구입 금액 입력 호출
+    - [ ]  로또 발행 과정을 제어하는 기능 호출 → controlIssueingLotto
+    - [ ]  당첨 번호, 보너스 번호 정하는 과정을 제어하는 기능 호출 → controlLottoNumber
+    - [ ]  당첨 내역 과정을 제어하는 기능 호출 → controlWinningResult
    
 
 ---
