@@ -69,7 +69,7 @@ public class Lotto {
     }
 
 
-    public boolean BonusChoose(List<Lotto> listchoose, int intchoose){
+    public boolean BonuseChoose(List<Lotto> listchoose, int intchoose){
         for(Lotto lotto : listchoose){
             if(lotto.getNumbers().contains(intchoose))
                 return true;
@@ -77,6 +77,14 @@ public class Lotto {
         return false;
     }
 
+    public List<Integer> BonusChooseList(List<Lotto> listchoose, int intchoose){
+        List<Integer> Bonuse = new ArrayList<>();
+
+        if(!Bonuse.contains(BonuseChoose(listchoose, intchoose))){
+            Bonuse.contains(BonuseChoose(listchoose, intchoose));
+        }
+        return Bonuse;
+    }
 
     // 해당하는 숫자에 도착하면 나오는 결과값 한번에 출력
     public int[] ScoreNumber(List<Integer> correct, List<Boolean> BonusBoolean) {
