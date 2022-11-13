@@ -16,10 +16,13 @@ public class MainController {
         Money money = new Money(InputView.inputMoney());
         List<Lotto> lottoList = makeLotto(money.getLottoCount());
         OutputView.printLottoList(lottoList);
+
         WinLotto winLotto = makeWinLotto();
         int bonusNum = winLotto.validateBonus(InputView.inputBonusNum());
+
         Result result = new Result(winLotto, bonusNum, lottoList);
         OutputView.printWinList(result.getWinResult());
+        OutputView.printBenefitRatio(result.getBenefitRatio(money.getMoney()));
     }
 
     private static List<Lotto> makeLotto(int count) {

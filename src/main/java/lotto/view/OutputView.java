@@ -17,4 +17,8 @@ public class OutputView {
         System.out.printf(Messages.OUTPUT_WIN_LIST.get(),
                 winList.get("5등"), winList.get("4등"), winList.get("3등"), winList.get("2등"), winList.get("1등"));
     }
+
+    public static void printBenefitRatio(String ratio) {
+        System.out.printf(Messages.OUTPUT_BENEFIT_RATIO.get(), ratio);
+    }
 }

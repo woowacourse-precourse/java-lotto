@@ -12,7 +12,8 @@ public enum Messages {
             "4개 일치 (50,000원) - %d개\n" +
             "5개 일치 (1,500,000원) - %d개\n" +
             "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n" +
-            "6개 일치 (2,000,000,000원) - %d개\n");
+            "6개 일치 (2,000,000,000원) - %d개\n"),
+    OUTPUT_BENEFIT_RATIO("총 수익률은 %s%%입니다.\n");
 
     final private String message;
 
