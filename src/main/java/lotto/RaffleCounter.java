@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RaffleCounter {
@@ -8,8 +9,18 @@ public class RaffleCounter {
     public RaffleCounter() {
     }
 
+    public List<Integer> getResultOfLottos(List<Lotto> lottos, List<Integer> normalNumbers, Integer bonusNumbers) {
+        List<Integer> resultOfLottos = new ArrayList<>(Arrays.asList(0,0,0,0,0,0,0));
+
+        for (Lotto lotto : lottos) {
+            Integer rank = countWinner(lotto, normalNumbers, bonusNumbers);
+            int rankCount = resultOfLottos.get(rank)+1;
+            resultOfLottos.set(rank, rankCount);
+        }
+        return resultOfLottos;
+    }
+
     public Integer countWinner(Lotto lotto, List<Integer> normalNumbers, Integer bonusNumber) {
-        // TODO: Winner 반환 리팩터 필요
         int normalNumberCount = 0;
         int bonusNumberCount = 0;
 
@@ -72,5 +83,4 @@ public class RaffleCounter {
         }
         return 0;
     }
-
 }
