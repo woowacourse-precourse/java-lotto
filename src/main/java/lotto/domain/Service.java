@@ -7,11 +7,15 @@ import lotto.global.LogicException;
 import lotto.model.Rank;
 import lotto.view.Input;
 import lotto.view.Output;
+import lotto.view.WinningPrice;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Service {
+
+    private static final int PERCENTAGE = 100;
 
     public static int getMoney() {
         Output.outputPurchaseAmount();
@@ -31,11 +35,11 @@ public class Service {
     public static List<Lotto> getLotto(int volume) {
         List<Lotto> lottoList = new ArrayList<>();
         for(int i = 0; i < volume; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-//            Collections.sort(numbers);
+            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45,6));
+            Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottoList.add(lotto);
-            System.out.println(numbers);
+            Output.lottoNumbers(numbers);
         }
         LogicException.verifyLottoListVolume(lottoList, volume);
 
@@ -89,7 +93,6 @@ public class Service {
 
     public static void checkRank(List<Check> checkList, Rank rank) {
         for(int i = 0; i < checkList.size(); i++) {
-
             int count = checkList.get(i).getCount();
             boolean bonus = checkList.get(i).getBonus();
             if (count == 3) {
@@ -116,8 +119,11 @@ public class Service {
         int third = rank.getThird();
         int second = rank.getSecond();
         int first = rank.getFirst();
-        int winningPrice = (fifth * 5000) + (fourth * 50000) + (third * 1500000)
-                + (second * 30000000) + (first * 2000000000);
+        int winningPrice = (fifth * WinningPrice.FIFTH_PRICE.getWinPrice())
+                + (fourth * WinningPrice.FOURTH_PRICE.getWinPrice())
+                + (third * WinningPrice.THIRD_PRICE.getWinPrice())
+                + (second * WinningPrice.SECOND_PRICE.getWinPrice())
+                + (first * WinningPrice.FIRST_PRICE.getWinPrice());
 
         Output.outputResult(fifth, fourth, third, second, first);
 
@@ -125,7 +131,7 @@ public class Service {
     }
 
     public static double getEarningsRate(int winningPrice, int money) {
-        double earningRate = ((double) winningPrice / money) * 100;
+        double earningRate = ((double) winningPrice / money) * PERCENTAGE;
         Output.outputEarningRate(earningRate);
 
         return earningRate;

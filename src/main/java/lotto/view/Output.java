@@ -1,5 +1,7 @@
 package lotto.view;
 
+import java.util.List;
+
 public class Output {
 
     public static final String PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
@@ -45,5 +47,9 @@ public class Output {
 
     public static void outputEarningRate(double earningRate) {
         System.out.println(TOTAL_EARN + earningRate + PERCENT);
+    }
+
+    public static void lottoNumbers(List<Integer> numbers) {
+        System.out.println(numbers);
     }
 }
