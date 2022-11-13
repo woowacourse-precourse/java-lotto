@@ -5,6 +5,7 @@ import utils.Validator;
 import view.InputView;
 import view.OutputView;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class LottoController {
@@ -23,10 +24,11 @@ public class LottoController {
     }
 
     public void start() {
-        String money = inputView.inputMoney();
-        validatePurchasingAmount(money);
+        String moneyInput = inputView.inputMoney();
+        validatePurchasingAmount(moneyInput);
+        int purchasingAmount = Integer.parseInt(moneyInput);
 
-        List<Lotto> issuedLotteries = lottoService.issueLotto(Integer.parseInt(money));
+        List<Lotto> issuedLotteries = lottoService.issueLotto(purchasingAmount);
         outputView.outputLotto(issuedLotteries);
 
         String luckyNumberInput = inputView.inputLuckyNumber();
@@ -37,7 +39,10 @@ public class LottoController {
         validateBonusNumber(luckyNumber, bonusNumberInput);
 
         WinningNumber winningNumber = new WinningNumber(new Lotto(luckyNumber), Integer.parseInt(bonusNumberInput));
-        outputView.outputWinningStatistics(winningNumber.checkLotto(issuedLotteries));
+        HashMap<Integer, Integer> result = winningNumber.checkLotto(issuedLotteries);
+        outputView.outputWinningStatistics(result);
+
+        outputView.outputEarningRate(lottoService.getEarningRate(purchasingAmount, lottoService.getEarning(result)));
     }
 
     private void validateBonusNumber(List<Integer> luckyNumber, String bonusNumber) {
@@ -58,10 +63,5 @@ public class LottoController {
         validator.validateSize(input);
         validator.validateNumber(input);
         validator.validateMonetaryUnit(input);
-    }
-
-    public static void main(String[] args) {
-        LottoController lottoController = new LottoController();
-        lottoController.start();
     }
 }
