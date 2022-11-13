@@ -7,9 +7,7 @@ public enum Regex {
 		Number.MAX.getValue() / 10,
 		Number.MAX.getValue() % 10
 	)),
-	UNIT("^[0-9]*000$"),
-	CURRENCY("\\B(?=(\\d{3})+(?!\\d))"),
-	COMMA(",");
+	UNIT("^[0-9]*000$");
 
 	private final String expression;
 
