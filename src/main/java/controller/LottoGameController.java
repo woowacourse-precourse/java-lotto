@@ -9,6 +9,6 @@ public class LottoGameController {
         int chanceNumber = RandomNumberCreator.DivideMoneyBy1000(purchasingMoney);
         List<List<Integer>> randomNumbersContainer = RandomNumberCreator.MakeRandomNumber(chanceNumber);
         List<Integer> winningNumber = inputController.inputWinningNumber();
-
+        int bonusNumber = inputController.inputBonusNumber();
     }
 }

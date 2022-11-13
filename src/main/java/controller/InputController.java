@@ -40,7 +40,16 @@ public class InputController {
         }
     }
 
+    public int inputBonusNumber() {
+        while (true) {
+            try {
+                InputView.pushBonusNumber();
 
+            } catch (IllegalArgumentException e) {
+                System.out.println();
+            }
+        }
+    }
 
     public List<Integer> splitOneByOne(String[] pureNumbers) {
         List<Integer> pureWinningNumbers = new ArrayList<>();
