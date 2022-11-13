@@ -5,6 +5,7 @@ import lotto.service.LottoService;
 import lotto.view.View;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoController {
     private LottoService lottoService;
@@ -40,10 +41,13 @@ public class LottoController {
     private void getBonusNumber() {
         String bonusNumber = View.printUserInputBonusNumber();
         lottoService.createBonusNumber(bonusNumber);
-
+        compareLotto();
     }
 
-
+    private void compareLotto() {
+        Map<Integer,Integer> result = lottoService.compareLotto();
+        View.printWinningResult(result);
+    }
 
 
 }

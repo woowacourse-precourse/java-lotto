@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class View {
     public static String printUserInputMoney() {
@@ -25,5 +26,9 @@ public class View {
     public static String printUserInputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         return Console.readLine();
+    }
+
+    public static void printWinningResult(Map<Integer, Integer> result) {
+
     }
 }

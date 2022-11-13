@@ -29,4 +29,8 @@ public class LottoRepository {
     public static void saveBonusNumber(int bonusNumber) {
         lastBonusNumber = bonusNumber;
     }
+
+    public static Integer getBonusNumber() {
+        return lastBonusNumber;
+    }
 }
