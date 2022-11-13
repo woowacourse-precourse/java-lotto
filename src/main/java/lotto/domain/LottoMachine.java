@@ -1,8 +1,6 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.Lotto;
-import lotto.domain.WinPrize;
 import lotto.message.input.BonusNumberInputController;
 import lotto.message.input.InputController;
 import lotto.message.input.WinNumberInputController;
