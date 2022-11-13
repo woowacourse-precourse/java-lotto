@@ -18,5 +18,4 @@ class BoughtLottoTest {
     void BoughtLottoTest() {
         new BoughtLotto();
     }
-
 }
