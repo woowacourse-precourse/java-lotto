@@ -1,6 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserInteraction {
 
@@ -25,5 +27,19 @@ public class UserInteraction {
         }
         return changedInput;
     }
+    public List<Integer> tryParseIntegers(String input){
+        List<String> splitInput = List.of(input.split(","));
+        List<Integer> resultNumbers = new ArrayList<>();
+        for (String numStr: splitInput) {
+            try {
+                numStr = numStr.trim();
+                resultNumbers.add(tryParseInt(numStr));
+            }catch (Exception e){
+                throw new IllegalArgumentException("[ERROR] 숫자를 입력해야만 합니다.");
+            }
+        }
+        return resultNumbers;
+    }
+
 
 }
