@@ -2,8 +2,6 @@ package lotto;
 
 import lotto.util.MessageUtil;
 
-import java.util.List;
-
 public class LottoPlay {
 
     private final MessageUtil messageUtil = new MessageUtil();
@@ -14,11 +12,10 @@ public class LottoPlay {
 
     public void play() {
         messageUtil.printPurchaseInput();
-        List<Lotto> userLottos = lottoPurchase.getPurchaseInfo();
+        LottoPurchase purchaseInfo = lottoPurchase.getPurchaseInfo();
         LottoWinningNumber winningNumbersInfo = lottoWinningNumber.getWinningNumbersInfo();
         LottoPrize lottoPrize = new LottoPrize(winningNumbersInfo);
-
+        lottoPrize.getLottoStats(purchaseInfo.getUserLottos(), purchaseInfo.getPurchaseAmount());
     }
-
 }
 
