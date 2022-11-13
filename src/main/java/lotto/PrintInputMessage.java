@@ -10,14 +10,17 @@ public class PrintInputMessage {
     private static final String INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     private static final String INPUT_WINNING_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_LOTTO_NUMBER = "보너스 번호를 입력해 주세요.";
+    private static final String INPUT_WRONG_DATA_TYPE = "[ERROR] 입력한 값이 숫자가 아닙니다.";
 
-    private PrintInputMessage() {
-    }
 
-    private static int getPurchaseAmount() {
+      private static int getPurchaseAmount() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
-        String inputMoney = Console.readLine();
-        return Integer.parseInt(inputMoney);
+        try {
+            String inputMoney = Console.readLine();
+            return Integer.parseInt(inputMoney);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INPUT_WRONG_DATA_TYPE);
+        }
     }
 
     private static List<String> getWinningLottoNumber() {
@@ -26,9 +29,12 @@ public class PrintInputMessage {
         return Arrays.asList(inputTmpNum.split(","));
     }
 
-    private static String getBonusLottoNumber() {
+    private static int getBonusLottoNumber() {
         System.out.println(INPUT_BONUS_LOTTO_NUMBER);
-        return Console.readLine();
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException ei) {
+            throw new IllegalArgumentException(INPUT_WRONG_DATA_TYPE);
+        }
     }
-
 }
