@@ -20,7 +20,7 @@ public class MoneyTest {
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
     }
 
-    @DisplayName("로또 개수 테스트")
+    @DisplayName("로또 개수 세기 테스트")
     @ParameterizedTest
     @ValueSource(ints = {55000})
     void lottoCountByMoneyTest(int input) {

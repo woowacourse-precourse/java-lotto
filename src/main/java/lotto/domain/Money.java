@@ -1,8 +1,7 @@
 package lotto.domain;
 
 import static lotto.domain.ErrorMessage.MONEY_UNIT_ERROR;
-import static lotto.domain.ErrorMessage.NEGATIVE_NUMBER_ERROR;
-import static lotto.domain.ErrorMessage.ZERO_NUMBER_ERROR;
+import static lotto.domain.ErrorMessage.UNDER_MONEY_ERROR;
 
 public class Money {
     private static final int UNIT_MONEY = 1_000;
@@ -14,20 +13,13 @@ public class Money {
     }
 
     private void validate(int money) {
-        isZeroMoney(money);
-        isPositiveMoney(money);
+        isUnderMoney(money);
         isValidUnitMoney(money);
     }
 
-    private void isZeroMoney(int money) {
-        if (money == 0) {
-            throw new IllegalArgumentException(ZERO_NUMBER_ERROR.toString());
-        }
-    }
-
-    private void isPositiveMoney(int money) {
-        if (money < 0) {
-            throw new IllegalArgumentException(NEGATIVE_NUMBER_ERROR.toString());
+    private void isUnderMoney(int money) {
+        if (money < UNIT_MONEY) {
+            throw new IllegalArgumentException(UNDER_MONEY_ERROR.toString());
         }
     }
 
