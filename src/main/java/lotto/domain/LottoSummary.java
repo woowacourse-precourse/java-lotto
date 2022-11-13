@@ -14,19 +14,19 @@ public class LottoSummary {
     private final static String BONUS_MATCH = ", 보너스 볼 일치";
     private final static String PRICE = " (%s원)";
     private final static String MATCH_COUNT = " - %d개\n";
-    private static final String PROFIT = "총 수익률은 %s%%입니다.";
-    private static final String PROFIT_PATTERN = "#,###.0";
+    private static final String YIELD = "총 수익률은 %s%%입니다.";
+    private static final String YIELD_PATTERN = "#,###.0";
     private static final String MONEY_PATTERN = "#,###";
 
-    private final double profit;
+    private final double yield;
     private final String summary;
 
     public LottoSummary(List<Rank> ranks, Money money) {
-        profit = calculateProfit(ranks, money);
+        yield = calculateYield(ranks, money);
         summary = summaryResult(ranks);
     }
 
-    private double calculateProfit(List<Rank> ranks, Money money) {
+    private double calculateYield(List<Rank> ranks, Money money) {
         AtomicLong sum = new AtomicLong();
 
         ranks.forEach(rank -> sum.addAndGet(rank.getPrice()));
@@ -36,7 +36,7 @@ public class LottoSummary {
     private String summaryResult(List<Rank> ranks) {
         StringBuilder sb = new StringBuilder();
         addRankSummary(ranks, sb);
-        addProfitSummary(sb);
+        addYieldSummary(sb);
         return sb.toString();
     }
 
@@ -59,21 +59,20 @@ public class LottoSummary {
         return sb.toString();
     }
 
-    private static void addBonusMessageIfSecondPlace(Rank rank, StringBuilder sb) {
+    private void addBonusMessageIfSecondPlace(Rank rank, StringBuilder sb) {
         if (SECOND.equals(rank)) {
             sb.append(BONUS_MATCH);
         }
     }
 
-    private void addProfitSummary(StringBuilder sb) {
-        DecimalFormat format = new DecimalFormat(PROFIT_PATTERN);
-        String profitSummary = format.format(profit);
+    private void addYieldSummary(StringBuilder sb) {
+        DecimalFormat format = new DecimalFormat(YIELD_PATTERN);
+        String formattedYield = format.format(yield);
 
-        sb.append(String.format(PROFIT, profitSummary));
+        sb.append(String.format(YIELD, formattedYield));
     }
 
     public String summaryLottoResult() {
-    public String toString() {
         return summary;
     }
 }
