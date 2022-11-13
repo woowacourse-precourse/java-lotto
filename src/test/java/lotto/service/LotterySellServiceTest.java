@@ -1,6 +1,9 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.User;
+import lotto.repository.LotteryTicketRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -16,6 +19,29 @@ public class LotterySellServiceTest {
     static final int LOTTERY_NUMBER_LENGTH = 6;
     static final int MIN_NUMBER = 1;
     static final int MAX_NUMBER = 45;
+
+    @AfterEach
+    void afterEach() {
+        LotteryTicketRepository repository = LotteryTicketRepository.getInstance();
+        repository.clearStore();
+    }
+
+    @DisplayName("User가 가진 돈만큼 로또 티켓을 구입한다.")
+    @Test
+    void sellLotteryTicket() {
+        User user = new User(5000);
+        lotterySellService.sell(user);
+        assertThat(user.getLotteryTickets()).hasSize(5);
+    }
+
+    @DisplayName("판매된 로또 티켓 모두 LotteryTicketRepository에 저장된다.")
+    @Test
+    void registerSoldLotteryTicket() {
+        LotteryTicketRepository repository = LotteryTicketRepository.getInstance();
+        User user = new User(5000);
+        lotterySellService.sell(user);
+        assertThat(repository.getSize()).isEqualTo(5);
+    }
 
     @DisplayName("유효한 " + LOTTERY_NUMBER_LENGTH + "개의 로또 번호로 로또 티켓을 생성한다.")
     @Test
