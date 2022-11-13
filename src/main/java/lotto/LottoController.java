@@ -3,6 +3,7 @@ package lotto;
 import java.util.List;
 
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -28,6 +29,7 @@ public class LottoController {
         }
 
         List<Lotto> lottos = lottoService.buyLottos(money);
+        OutputView.printBuyHistory(lottos);
     }
 
     private void setWinningNumbers() {
