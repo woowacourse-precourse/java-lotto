@@ -28,6 +28,23 @@ public class RankTest {
         assertThat(Rank.result(matchCount, matchBonusNumber)).isEqualTo(rank);
     }
 
+    private static Stream<Arguments> provideForMatchCount() {
+        return Stream.of(
+                Arguments.of(Rank.FIRST, 6),
+                Arguments.of(Rank.SECOND, 5),
+                Arguments.of(Rank.THIRD, 5),
+                Arguments.of(Rank.FOURTH, 4),
+                Arguments.of(Rank.FIFTH, 3),
+                Arguments.of(Rank.MISS, 0)
+        );
+    }
+
+    @ParameterizedTest(name = "순위의 일치하는 번호 개수를 반환한다.")
+    @MethodSource("provideForMatchCount")
+    void matchCount(Rank rank, int matchCount) {
+        assertThat(rank.matchCount()).isEqualTo(matchCount);
+    }
+
     private static Stream<Arguments> provideForReward() {
         return Stream.of(
                 Arguments.of(Rank.FIRST, new Money(2_000_000_000)),
