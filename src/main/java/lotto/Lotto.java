@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,7 +14,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public boolean contains(Integer number){
+    public boolean contains(Integer number) {
         return numbers.contains(number);
     }
 
@@ -34,5 +35,13 @@ public class Lotto {
     @Override
     public int hashCode() {
         return Objects.hash(new HashSet<>(numbers));
+    }
+
+    @Override
+    public String toString() {
+        String collect = numbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
+        return "[" + collect + "]";
     }
 }
