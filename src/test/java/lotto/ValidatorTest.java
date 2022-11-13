@@ -25,7 +25,7 @@ public class ValidatorTest {
 
     @DisplayName("당첨 번호 중 0 이하 또는 46 이상의 번호가 존재하면 예외가 발생한다.")
     @Test
-    void createWinningNumbersByWrongNumber() {
+    void createWinningNumbersByOutsideRange() {
         assertThatThrownBy(() -> inputValidator.validateWinningNumbers("1,2,3,46,4,6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
