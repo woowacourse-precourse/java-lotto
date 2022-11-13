@@ -26,6 +26,7 @@
     - [ ]  당첨 번호 6개를 입력했는지 검증 기능 → validateNumberOfWinningNumbers
     - [ ]  각 당첨 번호 및 보너스 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → isBetween1And45
     - [ ]  로또 구입 금액과 각 당첨 번호 및 보너스 번호가 숫자 형식인지 검증 기능 → isCorrectTypeOfInput
+    - [x]  문자열을 숫자로 변환해주는 기능 → convertStringIntoInt
 
 ### view
 
