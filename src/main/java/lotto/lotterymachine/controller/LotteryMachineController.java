@@ -2,6 +2,7 @@ package lotto.lotterymachine.controller;
 
 import lotto.lotterymachine.domain.LotteryMachine;
 import lotto.lotterymachine.repository.LotteryMachineRepository;
+import lotto.lotterymachine.service.LotteryMachineService;
 import lotto.user.domain.User;
 import lotto.user.repository.UserRepository;
 
@@ -9,10 +10,12 @@ public class LotteryMachineController {
     private final LotteryMachineRepository lotteryMachineRepository;
     private final User user;
     private final LotteryMachine lotteryMachine;
+    private final LotteryMachineService lotteryMachineService;
 
     public LotteryMachineController() {
         this.lotteryMachine = new LotteryMachine();
         this.lotteryMachineRepository = new LotteryMachineRepository();
+        this.lotteryMachineService = new LotteryMachineService();
         this.user = new User();
     }
 
@@ -20,6 +23,7 @@ public class LotteryMachineController {
         User user = initUser();
         System.out.println(user.getLottos()); //  need view
         LotteryMachine lotteryMachine = initLotteryMachine();
+        lotteryMachineService.matchNumber(user,lotteryMachine);
     }
 
     public User initUser() {
