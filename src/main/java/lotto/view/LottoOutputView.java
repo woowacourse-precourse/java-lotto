@@ -3,7 +3,7 @@ package lotto.view;
 import lotto.domain.LottoProfitRate;
 import lotto.domain.LottoStatistics;
 import lotto.domain.LottoTotalWinnings;
-import lotto.enums.LottoRanking;
+import lotto.utils.LottoRanking;
 import lotto.model.Lotto;
 import lotto.model.LottoBuyer;
 import lotto.model.LottoResults;

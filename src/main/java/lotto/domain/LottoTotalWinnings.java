@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.enums.LottoRanking;
+import lotto.utils.LottoRanking;
 import lotto.model.LottoBuyer;
 import lotto.model.LottoResults;
 
