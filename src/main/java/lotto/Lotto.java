@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import org.w3c.dom.ls.LSOutput;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,7 +14,8 @@ public class Lotto {
     private static final String WINNING_LOTTO = "당첨 번호를 입력해주세요.";
     private static final String NEGATIVE_PRICE_ERROR = "음수인 금액은 입력할 수 없습니다.";
     private static final String NOT_INTEGER_ERROR = "정수가 아닌 문자열이 입력되었습니다.";
-
+    private static final String PUT_BONUS_NUMBER = "보너스 번호를 입력해주세요";
+    public static int bonusNum;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -37,6 +39,20 @@ public class Lotto {
         return lotto;
     }
 
+
+    // 보너스 번호 입력받기
+    public static int bonusNum(){
+        System.out.println(PUT_BONUS_NUMBER);
+        String bonus = Console.readLine();
+        try{
+        bonusNum = Integer.parseInt(bonus);
+            System.out.println(bonusNum);
+        }catch(Exception e){
+            throw new IllegalArgumentException(NOT_INTEGER_ERROR);
+        }
+
+        return bonusNum;
+    }
     private void validate(List<Integer> numbers) {
         if (numbers.size() != Set.copyOf(numbers).size()) {
             throw new IllegalArgumentException(ERROR + INVALID_WINNING_NUMBER_LENGTH_ERROR);
