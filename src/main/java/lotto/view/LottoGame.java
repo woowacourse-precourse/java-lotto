@@ -41,11 +41,20 @@ public class LottoGame {
         System.out.println(GameMessage.WINNIG_STATISTICS.getMessage());
         System.out.println(GameMessage.LINE.getMessage());
         lottoAnalyzer = lottoGameController.lookUpLotto();
+        printWinningDetails();
     }
 
     private void printLottoTickets() {
         for (Lotto lotto : userLottoTickets) {
             System.out.println(lotto.getNumbers());
         }
+    }
+
+    private void printWinningDetails() {
+        System.out.println(GameMessage.FIFTH_OPTION.getMessage()+lottoAnalyzer.getFifthCount()+"개");
+        System.out.println(GameMessage.FOURTH_OPTION.getMessage()+lottoAnalyzer.getFourthCount()+"개");
+        System.out.println(GameMessage.THIRD_OPTION.getMessage()+lottoAnalyzer.getThirdCount()+"개");
+        System.out.println(GameMessage.SECOND_OPTION.getMessage()+lottoAnalyzer.getSecondCount()+"개");
+        System.out.println(GameMessage.FIRST_OPTION.getMessage()+lottoAnalyzer.getFirstCount()+"개");
     }
 }
