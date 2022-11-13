@@ -78,4 +78,13 @@ public class LottoController {
         lottoService.setBonusNumber(bonusNumber);
     }
 
+    /**
+     * Lotto 게임의 당첨 결과 리스트를 반환한다.
+     * @return 5등부터 1등까지 당첨 개수가 포함된 리스트
+     */
+    public List<Integer> getLottoRankResults(){
+        List<Lotto> lottos = lottoStore.getLottos();
+        return lottoService.getLottoRankResultsByLottos(lottos);
+    }
+
 }
