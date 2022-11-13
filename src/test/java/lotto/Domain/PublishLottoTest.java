@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Set;
 
-public class IssuanceLottoTest {
+public class PublishLottoTest {
     SoftAssertions softAssertions = new SoftAssertions();
-    IssuanceLotto issuanceLotto = new IssuanceLotto(5);
-    List<Set<Integer>> lottos = issuanceLotto.getIssuanceLotto();
+    PublishLotto publishLotto = new PublishLotto(5);
+    List<Set<Integer>> lottos = publishLotto.getPublishedLotto();
 
     @DisplayName("로또 발행 개수가 정확한지 테스트")
     @Test

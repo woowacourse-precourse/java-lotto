@@ -7,20 +7,20 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class IssuanceLotto {
-    private final List<Set<Integer>> issuancedLotto;
+public class PublishLotto {
+    private final List<Set<Integer>> publishedLotto;
 
-    public IssuanceLotto(int issuanceLottoNum) {
-        this.issuancedLotto = createLotto(issuanceLottoNum);
+    public PublishLotto(int publishLottosNum) {
+        this.publishedLotto = createLotto(publishLottosNum);
     }
 
-    public List<Set<Integer>> getIssuanceLotto() {
-        return issuancedLotto;
+    public List<Set<Integer>> getPublishedLotto() {
+        return publishedLotto;
     }
 
-    public List<Set<Integer>> createLotto(int issuanceLottoNum) {
+    public List<Set<Integer>> createLotto(int publishLottosNum) {
         List<Set<Integer>> lottos = new ArrayList<>();
-        for(int count=0; count<issuanceLottoNum; count++) {
+        for(int count=0; count<publishLottosNum; count++) {
             Set<Integer> oneLotto = new TreeSet<>();
             while(oneLotto.size() != Values.LOTTO_NUM.getValue()) {
                 oneLotto.add(Randoms.pickNumberInRange(1, 45));
@@ -30,6 +30,7 @@ public class IssuanceLotto {
 
         return lottos;
     }
+
 }
 
 
