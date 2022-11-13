@@ -20,7 +20,7 @@ public class Lotto {
     public static List<Integer> inputWinningNumber(){
         System.out.println("\n당첨 번호를 입력해 주세요.");
         List<Integer> winningLotto = new ArrayList<>();
-        String input = Console.readLine().trim(); // TODO: 전체 공백 잡기
+        String input = Console.readLine().replaceAll("\\s","");
         for (String num : input.split(",")) {
             winningLotto.add(Integer.parseInt(num));
         }
