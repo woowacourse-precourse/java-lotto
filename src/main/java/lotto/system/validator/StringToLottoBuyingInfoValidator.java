@@ -16,11 +16,8 @@ public class StringToLottoBuyingInfoValidator implements Validator {
 		isOnlyNaturalNumber((String)target);
 	}
 
-	private Integer isOnlyNaturalNumber(String target) {
-		try {
-			target = target.replace(",", "");
-			return Integer.valueOf(target);
-		} catch (NumberFormatException e) {
+	private void isOnlyNaturalNumber(String target) {
+		if (!target.matches("^[\\d,]+$")) {
 			throw new IllegalArgumentException(NOT_NATURAL_NUMBER_MESSAGE);
 		}
 	}
