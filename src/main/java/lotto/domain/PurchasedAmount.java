@@ -18,6 +18,10 @@ public class PurchasedAmount {
         return price;
     }
 
+    public int getCount() {
+        return this.price / PURCHASED_AMOUNT_UNIT;
+    }
+
     private void validate(String inputPrice) {
         /*숫자 검사*/
         validateDigit(inputPrice);
@@ -46,5 +50,4 @@ public class PurchasedAmount {
             throw new IllegalArgumentException(INVALID_MONEY_INPUT_FORMAT_MESSAGE);
         }
     }
-
 }
