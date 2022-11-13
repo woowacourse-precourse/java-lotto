@@ -6,7 +6,7 @@ public enum LottoConstant {
     END_NUMBER(45),
     PRICE(1000);
 
-    private int value;
+    private final int value;
 
     LottoConstant(int value) {
         this.value = value;

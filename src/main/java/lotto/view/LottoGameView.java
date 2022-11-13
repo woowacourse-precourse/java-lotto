@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class LottoGameView {
-
     private final ViewValidator viewValidator;
 
     public LottoGameView(ViewValidator viewValidator) {
