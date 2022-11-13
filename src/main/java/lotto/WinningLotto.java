@@ -55,8 +55,8 @@ public class WinningLotto {
         return Integer.parseInt(bonusNumber);
     }
 
-    public Lotto getLotto() {
-        return lotto;
+    public List<Integer> getNumbers() {
+        return lotto.getNumbers();
     }
 
     public Integer getBonusNumber() {
