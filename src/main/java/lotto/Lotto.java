@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -14,6 +15,12 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public List<Integer> getNumbers() {
+        List<Integer> copyNumbers = new ArrayList<>();
+        for (int n : numbers) copyNumbers.add(n);
+        return copyNumbers;
     }
 
     @Override
