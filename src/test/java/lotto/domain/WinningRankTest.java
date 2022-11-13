@@ -4,6 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class WinningRankTest {
 
@@ -36,6 +37,14 @@ class WinningRankTest {
     void findByWinningConditionTest(int duplicatedNumberCount, boolean isContainBonusNumber, WinningRank expectedRank) {
         WinningRank actualRank = WinningRank.findByWinningCondition(duplicatedNumberCount, isContainBonusNumber);
         assertThat(actualRank).isEqualTo(expectedRank);
+    }
+
+    @ParameterizedTest(name = "잘못된 당첨 조건 테스트 {index}: {0}개 일치")
+    @CsvSource(value = {"7,false", "-1,true"})
+    void wrongWinningConditionTest(int duplicatedNumberCount, boolean isContainBonusNumber) {
+        assertThatThrownBy(() -> WinningRank.findByWinningCondition(duplicatedNumberCount, isContainBonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(WinningRank.RANK_NOT_FOUND_ERROR_MESSAGE);
     }
 
 }
