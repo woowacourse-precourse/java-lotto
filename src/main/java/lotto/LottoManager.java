@@ -23,7 +23,7 @@ public class LottoManager {
     // 로또 구입 금액 입력이 유효한지 확인
     // 1. 숫자가 아닌 값 입력 시
     // 2. 1,000원 단위가 아닌 값 입력 시
-    public boolean validateInsertMoney(String stringMoney) {
+    public void validateInsertMoney(String stringMoney) {
         try {
             money = Integer.parseInt(stringMoney);
         } catch (IllegalArgumentException e) {
@@ -37,15 +37,11 @@ public class LottoManager {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해야 합니다.");
         }
-
-        return true;
     }
 
     // 로또 구입 금액 입력받기
     public void insertMoney(String stringMoney) {
-        if (!validateInsertMoney(stringMoney)) {
-            throw new IllegalArgumentException("[ERROR] 입력 금액 유효성 검사 오류");
-        }
+        validateInsertMoney(stringMoney);
 
         this.money = Integer.parseInt(stringMoney);
     }
