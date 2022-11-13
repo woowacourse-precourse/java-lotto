@@ -98,8 +98,8 @@ public class Application {
             earning += lottoResult.get(i) * LottoInformation.valueOf(rank).getPrizeMoney();
         }
 
-        double earningRate = earning / purchaseAmount;
-        earningRate = Math.round(earningRate*10) * 100 / 10.0;
+        double earningRate = earning / purchaseAmount * 100;
+        earningRate = Math.round(earningRate*10) / 10.0;
 
         return earningRate;
     }
