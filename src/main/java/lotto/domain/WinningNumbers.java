@@ -16,7 +16,8 @@ public class WinningNumbers {
     }
 
     private void validateSeparator(String numbers) {
-        if(!numbers.contains(SEPARATOR)) {
+        String [] winningNumbers = numbers.split(SEPARATOR);
+        if(winningNumbers.length != 6) {
             throw new IllegalArgumentException(WINNING_NUMBERS_SEPARATOR);
         }
     }

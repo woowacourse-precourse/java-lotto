@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -17,9 +18,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinningNumbersTest {
     @DisplayName("로또 당첨 번호가 쉼표로 구분되어 있지 않으면 예외가 발생한다.")
-    @Test
-    void createWinningNumbersBySeparator() {
-        assertThatThrownBy(() -> new WinningNumbers("123456"))
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2:3,4,5", "1,2,3 4,5"})
+    void createWinningNumbersBySeparator(String numbers) {
+        assertThatThrownBy(() -> new WinningNumbers(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(WINNING_NUMBERS_SEPARATOR);
     }
