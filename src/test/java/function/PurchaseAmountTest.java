@@ -25,7 +25,7 @@ public class PurchaseAmountTest {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> Ui.inputPurchaseAmount())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("ERROR: 구입금액은 숫자만 입력이 가능합니다.");
+                .hasMessageContaining("[ERROR]: 구입금액은 숫자만 입력이 가능합니다.");
     }
 
     @DisplayName("1000으로 나누어 떨어지지 않는 경우")
@@ -35,6 +35,6 @@ public class PurchaseAmountTest {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> Ui.inputPurchaseAmount())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("ERROR: 구입금액이 1000으로 나누어 떨어지지 않습니다.");
+                .hasMessageContaining("[ERROR]: 구입금액이 1000으로 나누어 떨어지지 않습니다.");
     }
 }

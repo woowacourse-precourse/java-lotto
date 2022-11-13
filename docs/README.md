@@ -11,11 +11,11 @@
 3. 정상적인 입력이 아닐 경우 예외처리
     - 숫자로 이루어져 있지 않은 경우
    ```
-   IllegalArgumentException 발생시키고 ["ERROR: 구입금액은 숫자만 입력이 가능합니다."] 출력 후 종료한다.
+   IllegalArgumentException 발생시키고 ["[ERROR]: 구입금액은 숫자만 입력이 가능합니다."] 출력 후 종료한다.
    ```
     - 1000으로 나누어 떨어지지 않는 경우
    ```
-   IllegalArgumentException 발생시키고 ["ERROR: 구입금액이 1000으로 나누어 떨어지지 않습니다."] 출력 후 종료한다.
+   IllegalArgumentException 발생시키고 ["[ERROR]: 구입금액이 1000으로 나누어 떨어지지 않습니다."] 출력 후 종료한다.
    ```
 
 ### 구입금액에 따른 로또 수량
@@ -44,23 +44,23 @@
 3. 정상적인 입력이 아닐 경우 예외처리
     - 숫자와 ','가 아닌 다른 값이 들어왔을 경우
    ```
-   IllegalArgumentException 발생시키고 ["ERROR: 당첨 번호는 숫자와 ','만 입력이 가능홥니다."] 출력 후 종료한다.
+   IllegalArgumentException 발생시키고 ["[ERROR]: 당첨 번호는 숫자와 ','만 입력이 가능홥니다."] 출력 후 종료한다.
    ```
     - 빈 값('')이 존재할 경우
    ```
-   IllegalArgumentException 발생시키고 ["ERROR: ',' 사이 빈 공간이 존재합니다."] 출력 후 종료한다.
+   IllegalArgumentException 발생시키고 ["[ERROR]: ',' 사이 빈 공간이 존재합니다."] 출력 후 종료한다.
    ```
     - 6개의 숫자가 아닐 경우
    ```
-   IllegalArgumentException 발생시키고 ["ERROR: 당첨 번호는 6개의 숫자여야 합니다."] 출력 후 종료한다.
+   IllegalArgumentException 발생시키고 ["[ERROR]: 당첨 번호는 6개의 숫자여야 합니다."] 출력 후 종료한다.
    ```
     - 숫자의 범위가 1 ~ 45까지가 아닐 경우
    ```
-   IllegalArgumentException 발생시키고 ["ERROR: 숫자의 범위는 1 ~ 45까지여야 합니다."] 출력 후 종료한다.
+   IllegalArgumentException 발생시키고 ["[ERROR]: 숫자의 범위는 1 ~ 45까지여야 합니다."] 출력 후 종료한다.
    ```
     - 중복되는 숫자가 존재할 경우
    ```
-   IllegalArgumentException 발생시키고 ["ERROR: 중복되는 숫자가 존재합니다."] 출력 후 종료한다.
+   IllegalArgumentException 발생시키고 ["[ERROR]: 중복되는 숫자가 존재합니다."] 출력 후 종료한다.
    ```
 
 ### 보너스 번호 입력
@@ -75,15 +75,15 @@
 3. 정상적인 입력이 아닐 경우 예외처리
     - 1개의 숫자가 아닐 경우
    ```
-   IllegalArgumentException 발생시키고 ["ERROR: 보너스 번호는 1개의 숫자만 입력 가능합니다."] 출력 후 종료한다.
+   IllegalArgumentException 발생시키고 ["[ERROR]: 보너스 번호는 1개의 숫자만 입력 가능합니다."] 출력 후 종료한다.
    ```
     - 숫자의 범위가 1 ~ 45까지가 아닐 경우
    ```
-   IllegalArgumentException 발생시키고 ["ERROR: 숫자의 범위는 1 ~ 45까지여야 합니다."] 출력 후 종료한다.
+   IllegalArgumentException 발생시키고 ["[ERROR]: 숫자의 범위는 1 ~ 45까지여야 합니다."] 출력 후 종료한다.
    ```
     - 당첨 번호들 중 중복값이 존재할 경우
    ```
-   IllegalArgumentException 발생시키고 ["ERROR: 보너스 번호는 당첨 번호와 중복되면 안됩니다."] 출력 후 종료한다.
+   IllegalArgumentException 발생시키고 ["[ERROR]: 보너스 번호는 당첨 번호와 중복되면 안됩니다."] 출력 후 종료한다.
    ```
 
 ### 당첨 통계

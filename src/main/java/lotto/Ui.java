@@ -23,7 +23,7 @@ public class Ui {
 
     private static void throwExceptionIfNotNumber(String str) {
         if (!isAllNumber(str)) {
-            throw new IllegalArgumentException("ERROR: 구입금액은 숫자만 입력이 가능합니다.");
+            throw new IllegalArgumentException("[ERROR]: 구입금액은 숫자만 입력이 가능합니다.");
         }
     }
 
@@ -46,7 +46,7 @@ public class Ui {
 
     private static void throwExceptionIfNotDivisibleBy1000(int number) {
         if (number % 1000 != 0) {
-            throw new IllegalArgumentException("ERROR: 구입금액이 1000으로 나누어 떨어지지 않습니다.");
+            throw new IllegalArgumentException("[ERROR]: 구입금액이 1000으로 나누어 떨어지지 않습니다.");
         }
     }
 }
