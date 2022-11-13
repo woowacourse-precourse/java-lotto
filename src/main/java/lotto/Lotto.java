@@ -7,14 +7,21 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkDuplicate(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoEnum.LOTTO.getCount()) {
             throw new IllegalArgumentException();
         }
     }
 
     // TODO: 추가 기능 구현
+    //중복이 있는지 확인하는 메서드
+    private void checkDuplicate(List<Integer> numbers) {
+        if (numbers.stream().distinct().count() != LottoEnum.LOTTO.getCount()) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
