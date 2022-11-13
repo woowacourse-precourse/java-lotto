@@ -20,4 +20,16 @@ class InputCheckerTest{
         assertThatThrownBy(()->inputChecker.isDigit("1000j"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @DisplayName("입력한 숫자가 1000으로 나누어떨어지지 않으면 예외 발생하는지 확인")
+    @Test
+    void isMultipleThousandTest1(){
+        assertThatThrownBy(()->inputChecker.isMultipleThousand(1004))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(inputChecker.isMultipleThousand(1000)).isTrue();
+    }
+    @DisplayName("입력한 숫자가 1000으로 나누어떨어지면 true 반환하는지 확인")
+    @Test
+    void isMultipleThousandTest2(){
+        assertThat(inputChecker.isMultipleThousand(1000)).isTrue();
+    }
 }
