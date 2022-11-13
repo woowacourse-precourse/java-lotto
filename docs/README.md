@@ -23,7 +23,7 @@
 
 - WinningNumber
     - [x] 당첨 숫자가 제대로 입력되었는지 판단함
-    - [ ] 로또 숫자가 몇개 당첨되었는지 판단함
+    - [x] 로또 숫자가 몇개 당첨되었는지 판단함
 
 
 - LottoApplicationSetting
