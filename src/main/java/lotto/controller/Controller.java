@@ -1,5 +1,6 @@
-package lotto.domain;
+package lotto.controller;
 
+import lotto.domain.Service;
 import lotto.model.Check;
 import lotto.model.Lotto;
 import lotto.model.Rank;
