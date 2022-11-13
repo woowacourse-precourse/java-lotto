@@ -1,5 +1,6 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +31,19 @@ class LottoTest {
         assertThatThrownBy(
                 ()-> Exception.UserMoneyDivide1000(8500)
         ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구입한 로또 갯수에 맞게끔 발행이 잘 되었는지 확인한다")
+    @Test
+    void checkUserLotto(){
+        UserLotto userLotto = new UserLotto(5);
+        Assertions.assertThat(userLotto.getUserLottoes().size()).isEqualTo(5);
+        for (Lotto lotto : userLotto.getUserLottoes()){
+            List<Integer> numbers = lotto.getNumbers();
+            Assertions.assertThat(numbers.size()).isEqualTo(6);
+            for (Integer number : numbers){
+                Assertions.assertThat(number).isBetween(1,45);
+            }
+        }
     }
 }
