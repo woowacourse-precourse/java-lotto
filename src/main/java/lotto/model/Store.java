@@ -8,6 +8,7 @@ import static lotto.utils.NumberAdapter.fitWinningNumber;
 import static lotto.utils.NumberAdapter.fitWinningNumberWithBonusNumber;
 import static lotto.validator.BonusNumberValidator.hasValidBonusNumber;
 import static lotto.validator.LottoNumberValidator.hasValidLotteryNumber;
+import static lotto.validator.NumberValidator.hasValidType;
 
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ public class Store {
     }
 
     public void sellLottoToCustomer(String beforePaidMoney) {
+        hasValidType(beforePaidMoney);
         int paidMoney = fitPaidMoney(beforePaidMoney);
         this.customer = new Customer(paidMoney);
     }
