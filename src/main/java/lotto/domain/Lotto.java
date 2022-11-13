@@ -1,40 +1,21 @@
 package lotto.domain;
 
-import java.util.List;
+import lotto.LottoValidation;
 
-import static constant.Constant.*;
-import static constant.ErrorMessage.NOT_LOTTO_NUMBER_RANGE;
+import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        validDuplicate(numbers);
-        validNumberRange(numbers);
+        validLotto(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validDuplicate(List<Integer> numbers) {
-        long delDuplicateSize = numbers.stream().distinct().count();
-        if (numbers.size() != delDuplicateSize) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void validNumberRange(List<Integer> numbers) {
-        boolean isValid = numbers.stream()
-                .noneMatch(num -> num < LOTTO_NUMBER_MIN || num > LOTTO_NUMBER_MAX);
-        if (!isValid) {
-            System.out.println(NOT_LOTTO_NUMBER_RANGE);
-            throw new IllegalArgumentException(NOT_LOTTO_NUMBER_RANGE);
-        }
+    private void validLotto(List<Integer> numbers) {
+        LottoValidation.validateLottoSize(numbers);
+        LottoValidation.validLottoNumberDuplicate(numbers);
+        LottoValidation.validNumberRange(numbers);
     }
 
     @Override
