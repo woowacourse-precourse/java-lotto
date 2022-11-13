@@ -3,15 +3,19 @@ package lotto.ui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
 import lotto.utility.Exception;
 
 public class UI {
     private final String INPUT_PURCHASE_PRICE_MESSAGE = "구입금액을 입력해 주세요.";
     private final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
     private final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+
+    private final String NUMBER_OF_PURCHASE_LOTTO_MESSAGE = "%d개를 구매했습니다.";
 
     private String input(){
         return Console.readLine();
@@ -90,5 +94,22 @@ public class UI {
             return inputBonusNumber();
         }
         return bonusNumber;
+    }
+
+    public void outputPurchaseLotto(List<Lotto> lottos){
+        output(String.format(NUMBER_OF_PURCHASE_LOTTO_MESSAGE, lottos.size()));
+        for(Lotto lotto : lottos){
+            StringBuilder sb = new StringBuilder();
+            sb.append('[');
+            List<Integer> lottoNumbers = new ArrayList<>(6);
+            lottoNumbers.addAll(lotto.getNumbers());
+            lottoNumbers.sort(Comparator.naturalOrder());
+            for(int numberIndex = 0; numberIndex < 6; ++numberIndex){
+                sb.append(String.valueOf(lottoNumbers.get(numberIndex)));
+                if(numberIndex < 5) sb.append(", ");
+            }
+            sb.append(']');
+            output(sb.toString());
+        }
     }
 }
