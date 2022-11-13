@@ -21,7 +21,7 @@ public class OutputUI {
         }
     }
 
-    public void printWinnerCounts(List<Integer> winnerCounts, String returnRate) {
+    public void printWinnerCounts(List<Integer> winnerCounts, double returnRate) {
         printWinnerResult(winnerCounts);
         printReturnReate(returnRate);
     }
@@ -36,7 +36,7 @@ public class OutputUI {
                 "총 수익률은 62.5%입니다.");
     }
 
-    private void printReturnReate(String returnRate) {
+    private void printReturnReate(double returnRate) {
         System.out.println("총 수익률은 " + returnRate +"%입니다.");
     }
 }
