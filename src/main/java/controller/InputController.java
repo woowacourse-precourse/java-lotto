@@ -35,7 +35,8 @@ public class InputController {
                 winningNumber = new WinningNumber(winningNumbers);
                 return winningNumber.getWinningNumbers();
             }  catch (IllegalArgumentException e) {
-                System.out.println();
+                System.out.println(e);
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -46,8 +47,11 @@ public class InputController {
                 InputView.pushBonusNumber();
                 String number = Console.readLine();
                 int bonusNumber = Validator.validateBonusNumber(number);
+                winningNumber.hasBeenBonusNumber(bonusNumber, Error.ONLY_ONE);
+                return bonusNumber;
             } catch (IllegalArgumentException e) {
-                System.out.println();
+                System.out.println(e);
+                throw new IllegalArgumentException();
             }
         }
     }

@@ -12,4 +12,10 @@ public class WinningNumber {
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
     }
+
+    public void hasBeenBonusNumber(int bonusNumber, Error error) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(error.getMsg());
+        }
+    }
 }
