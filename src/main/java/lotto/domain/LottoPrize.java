@@ -22,6 +22,10 @@ public enum LottoPrize {
         this.prize = prize;
     }
 
+    public Long calculatePrize(Long count) {
+        return prize * count;
+    }
+    
     public static LottoPrize getEnum(int matchedCount, boolean bonusNumberMatched) {
         LottoPrize lottoPrize = getLottoPrize(matchedCount);
         return checkSecondPrize(lottoPrize, bonusNumberMatched);
@@ -46,5 +50,13 @@ public enum LottoPrize {
             return _2ND_PRIZE;
         }
         return lottoPrize;
+    }
+
+    public Integer getMatch() {
+        return match;
+    }
+
+    public Integer getPrize() {
+        return prize;
     }
 }

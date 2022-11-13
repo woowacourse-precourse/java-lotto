@@ -14,6 +14,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -40,5 +41,11 @@ public class LottoPrizeTest {
                 Arguments.of(3, false, _5TH_PRIZE),
                 Arguments.of(2, false, _NOTHING)
         );
+    }
+
+    @Test
+    void calculatePrize_메서드는_맞춘개수를_입력받아_당첨금의_합을_반환한다() {
+        LottoPrize lottoPrize = _1ST_PRIZE;
+        assertThat(lottoPrize.calculatePrize(2L)).isEqualTo(lottoPrize.getPrize() * 2L);
     }
 }

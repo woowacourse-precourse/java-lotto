@@ -72,6 +72,7 @@
     - [x] 로또 결과 확인하는 check 메서드 추가
 - [x]  로또 등수 및 상금에 대한 정보를 가지고 있는 LottoPrize Enum 추가
     - [x] 맞춘개수를 입력받아 LottoPrize를 반환하는 메서드 추가
+    - [x] 맞춘개수를 입력받아 해당 등수의 총 당첨금액을 계산하는 calculatePrize 메서드 추가
 - [x]  로또 결과에 대한 정보를 가지고 있는 LottoResult 클래스 추가 EnumMap<LottoPrize, Integer>의 일급 컬렉션
     - [x] LottoPrize에 대한 값을 반환하는 getCount 메서드 추가
 - [x]  당첨 로또 번호를 가지고 있고, 로또를 검증하는 LottoMachine 클래스 추가
