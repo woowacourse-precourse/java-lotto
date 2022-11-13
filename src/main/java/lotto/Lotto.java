@@ -18,7 +18,7 @@ public class Lotto {
         private final int count;
         // 통계를 저장할 통계 리스트 인덱스
         private final int index;
-        private String money;
+        private final String money;
         statistics( int count,int index, String money){
             this.count = count;
             this.index = index;
