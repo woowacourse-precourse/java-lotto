@@ -1,4 +1,8 @@
-package lotto.domain;
+package lotto.view;
+
+import lotto.domain.Lotto;
+import lotto.domain.LottoResult;
+import lotto.domain.UserLottos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +40,14 @@ public class Output {
     }
 
     //출력 위해 로또 정렬하기 - 서비스 로직
-    public Set<Lotto> printSortedLottos(UserLottos userLottos) {
+    public void printSortedLottos(UserLottos userLottos) {
         Set<Lotto> lottoSet = userLottos.getUserLottos();
 
         for (Lotto lotto : lottoSet) {
             List<Integer> copyLotto = new ArrayList<>(lotto.getNumbers());
+            copyLotto.sort(Integer::compareTo);
             System.out.println(copyLotto);
         }
-        return lottoSet;
     }
 
 }
