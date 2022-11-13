@@ -122,4 +122,15 @@ public class ConsoleUserInputTest {
         assertThatThrownBy(()-> consoleUserInput.inputMoneyForLottos())
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 구입을 위해 입력된 돈이 유효한 타입인지 확인한다.")
+    @Test
+    void checkPaymentIsValid(){
+        InputStream in = testUserInput("정수가 아닌 값 입력 시 오류 발생");
+        System.setIn(in);
+        scanner = new Scanner(System.in);
+
+        assertThatThrownBy(()-> consoleUserInput.inputMoneyForLottos())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
