@@ -2,13 +2,14 @@ package lotto.domain;
 
 import lotto.exception.AmountException;
 import lotto.exception.LottoException;
+import lotto.status.lotto.LottoStatus;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Convertor {
-    private static final int eachPrice = 1000;
+    private static final int eachPrice = LottoStatus.eachPrice.getValue();
 
     public static int getQuantity(String input) {
         AmountException.validateAmount(input);
