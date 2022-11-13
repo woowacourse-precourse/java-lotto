@@ -1,10 +1,6 @@
 package lotto.valid;
 
-import lotto.domain.LottoSalesman;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import lotto.domain.LottoIssuer;
 
 public enum InputValidator {
     INSTANCE;
@@ -17,7 +13,7 @@ public enum InputValidator {
     public static void validateMoney(String moneyInput) {
         checkNonDigit(moneyInput);
         int money = Integer.parseInt(moneyInput);
-        if (money < 0 || money % LottoSalesman.MONEY_UNIT != 0) {
+        if (money < 0 || money % LottoIssuer.MONEY_UNIT != 0) {
             throw new IllegalArgumentException(MONEY_ERROR_MESSAGE);
         }
     }

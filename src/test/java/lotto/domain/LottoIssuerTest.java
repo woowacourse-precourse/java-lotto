@@ -2,6 +2,10 @@ package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 
@@ -11,5 +15,11 @@ public class LottoIssuerTest {
     void issueCorrectLotto(){
         assertThatNoException()
                 .isThrownBy(() -> LottoIssuer.issue());
+    }
+    @DisplayName("로또 구매 수량만큼의 로또를 발행한다")
+    @Test
+    void issueLottoByCorrectQuantity() {
+        List<Lotto> lotteries = LottoIssuer.issue(14000);
+        assertThat(lotteries.size()).isEqualTo(14);
     }
 }
