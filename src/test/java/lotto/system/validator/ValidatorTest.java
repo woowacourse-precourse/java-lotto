@@ -32,11 +32,11 @@ class ValidatorTest {
     }
 
     @Nested
-    @DisplayName("StringToLottoAmountValidator 테스트")
+    @DisplayName("StringToLottoBuyingInfoValidator 테스트")
     class StringToLottoBuyingInfoValidatorTest {
         @Test
-        @DisplayName("유효한 String 을 LottoAmount 로 바꾸기 위해 검증 작업을 받으면 검증을 통과한다.")
-        void givenValidString_whenValidatingForLottoAmount_thenPassesValidation() {
+        @DisplayName("유효한 String 을 LottoBuyingInfo 로 바꾸기 위해 검증 작업을 받으면 검증을 통과한다.")
+        void givenValidString_whenValidatingForLottoBuyingInfo_thenPassesValidation() {
             //given
             String input = "14000";
 
@@ -45,49 +45,63 @@ class ValidatorTest {
         }
 
         @Test
-        @DisplayName("한 장도 살 수 없는 금액의 String 을 LottoAmount 로 바꾸기 위해 검증 작업을 받으면 예외가 발생한다.")
-        void givenStringLowerThanLotto_whenValidatingForLottoAmount_thenThrowsException() {
+        @DisplayName("입력한 숫자 사이에 , 을 넣는 것은 예외적으로 입력을 허용해준다.")
+        void givenStringWithRest_whenValidatingForLottoBuyingInfo_thenPassesValidation() {
             //given
-            String input = "0";
+            String input = "45,000,000";
 
             //when & then
-            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(StringToLottoAmountValidator.LOWER_THEN_MIN_VALUE_MESSAGE);
+            assertDoesNotThrow(() -> ValidationHolder.validate(input, LottoBuyingInfo.class));
         }
 
         @Test
-        @DisplayName("1,000 으로 나누어지지 않는 금액의 String 을 LottoAmount 로 바꾸기 위해 검증 작업을 받으면 예외가 발생한다.")
-        void givenStringNotDividedIn1000_whenValidatingForLottoAmount_thenThrowsException() {
-            //given
-            String input = "14500";
-
-            //when & then
-            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(StringToLottoAmountValidator.NOT_DIVIDED_VALUE_MESSAGE);
-        }
-
-        @Test
-        @DisplayName("정수가 아닌 값이 적힌 String 을 LottoAmount 로 바꾸기 위해 검증 작업을 받으면 예외가 발생한다.")
-        void givenStringNotOnlyInteger_whenValidatingForLottoAmount_thenThrowsException() {
+        @DisplayName("정수가 아닌 값이 적힌 String 을 LottoBuyingInfo 로 바꾸기 위해 검증 작업을 받으면 예외가 발생한다.")
+        void givenStringNotOnlyInteger_whenValidatingForLottoBuyingInfo_thenThrowsException() {
             //given
             String input = "45.000";
 
             //when & then
             assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(StringToLottoAmountValidator.NOT_NATURAL_NUMBER_MESSAGE);
+                    .hasMessage(StringToLottoBuyingInfoValidator.NOT_NATURAL_NUMBER_MESSAGE);
         }
+    }
 
+    @Nested
+    @DisplayName("IntegerToLottoBuyingInfoValidator 테스트")
+    class IntegerToLottoBuyingInfoValidatorTest {
         @Test
-        @DisplayName("숫자 사이에 , 을 넣는 것은 예외적으로 입력을 허용해준다.")
-        void givenStringWithRest_whenValidatingForLottoAmount_thenPassesValidation() {
+        @DisplayName("유효한 Integer 값을 LottoBuyingInfo 로 바꾸기 위해 검증 작업을 받으면 검증을 통과한다.")
+        void givenValidInteger_whenValidatingForLottoBuyingInfo_thenPassesValidation() {
             //given
-            String input = "45,000,000";
+            int input = 14000;
 
             //when & then
             assertDoesNotThrow(() -> ValidationHolder.validate(input, LottoBuyingInfo.class));
+        }
+
+        @Test
+        @DisplayName("한 장도 살 수 없는 금액의 Integer 값을 LottoBuyingInfo 로 바꾸기 위해 검증 작업을 받으면 예외가 발생한다.")
+        void givenIntegerLowerThanLotto_whenValidatingForLottoBuyingInfo_thenThrowsException() {
+            //given
+            int input = 500;
+
+            //when & then
+            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(IntegerToLottoBuyingInfoValidator.LOWER_THEN_MIN_VALUE_MESSAGE);
+        }
+
+        @Test
+        @DisplayName("1,000 으로 나누어지지 않는 금액의 Integer 값을 LottoBuyingInfo 로 바꾸기 위해 검증 작업을 받으면 예외가 발생한다.")
+        void givenIntegerNotDividedIn1000_whenValidatingForLottoBuyingInfo_thenThrowsException() {
+            //given
+            int input = 14500;
+
+            //when & then
+            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(IntegerToLottoBuyingInfoValidator.NOT_DIVIDED_VALUE_MESSAGE);
         }
     }
 
