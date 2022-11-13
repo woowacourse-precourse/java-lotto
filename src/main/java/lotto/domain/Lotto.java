@@ -3,15 +3,19 @@ package lotto.domain;
 import lotto.constant.LottoConstants;
 
 import java.text.MessageFormat;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-final class Lotto {
+public final class Lotto {
     private static final String LOTTO_FORMAT = "[{0}, {1}, {2}, {3}, {4}, {5}]";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream()
+                .sorted(Comparator.naturalOrder())
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private void validate(List<Integer> numbers) {
