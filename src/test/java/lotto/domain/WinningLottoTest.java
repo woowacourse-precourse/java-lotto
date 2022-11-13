@@ -105,4 +105,35 @@ class WinningLottoTest {
             );
         }
     }
+
+    @Nested
+    @DisplayName("보너스 번호 있는지 테스트")
+    class IsMatchedBonusNumber {
+
+        @Test
+        void 보너스_번호가_있으면_true를_반환한다() {
+            //given
+            List<Integer> numbers = List.of(3, 21, 25, 28, 4, 9);
+            WinningLotto winningLotto = new WinningLotto(List.of(21, 25, 3, 28, 4, 6), 9);
+
+            //when
+            boolean res = winningLotto.isMatchedBonusNumber(numbers);
+
+            //then
+            assertThat(res).isTrue();
+        }
+
+        @Test
+        void 보너스_번호가_없으면_false를_반환한다() {
+            //given
+            List<Integer> numbers = List.of(3, 21, 25, 28, 4, 9);
+            WinningLotto winningLotto = new WinningLotto(List.of(21, 25, 3, 28, 4, 6), 45);
+
+            //when
+            boolean res = winningLotto.isMatchedBonusNumber(numbers);
+
+            //then
+            assertThat(res).isFalse();
+        }
+    }
 }
