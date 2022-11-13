@@ -11,6 +11,5 @@ public class Application {
         lottoDraw.calculatePrizeMoney();
 
         UI.printWinningHistory(lottoDraw.getNumberOfMatching(), lottoDraw.calculateProfit());
-
     }
 }
