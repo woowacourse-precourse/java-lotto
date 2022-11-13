@@ -3,6 +3,8 @@
 
 ## 설계구조
 - UI
+  - InputView.class
+  - Message.class
 - Domain
 ---
 
