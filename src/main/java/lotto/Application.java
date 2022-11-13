@@ -25,9 +25,11 @@ public class Application {
         return Console.readLine();
     }
 
-    private static String winningNumberInput() {
+    private static List<Integer> winningNumberInput() throws IllegalArgumentException {
         Print.enterWinningNumberMessage();
-        return Console.readLine();
+        String winningNumber = Console.readLine();
+        List<String> splitWinningNumbers = Winning.splitInputByComma(winningNumber);
+        return Winning.convertToNumbers(splitWinningNumbers);
     }
 
     private static String bonusNumberInput() {
