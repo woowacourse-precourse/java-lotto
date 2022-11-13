@@ -33,6 +33,10 @@ public class Numbers {
 		return builder.toString();
 	}
 	
+	public List<List<Integer>> getNumbers() {
+		return numbers;
+	}
+	
 	public static void main(String[] args) {
 		Numbers numbers = new Numbers(6);
 		System.out.println(numbers.toString());
