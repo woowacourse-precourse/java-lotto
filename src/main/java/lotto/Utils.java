@@ -21,6 +21,12 @@ public class Utils {
         return price / LOTTO_PRICE;
     }
 
+    public static void initializeMap() {
+        for (Result result : Result.values()) {
+            WINNING_DATA.put(result, 0);
+        }
+    }
+
     public static List<Lotto> issueLotto(int price) {
         List<Lotto> issuedLottos = new ArrayList<>();
         for (int count = 0; count < price ; count++) {
@@ -68,6 +74,7 @@ public class Utils {
     private static void getEachResult(Lotto lotto, List<Integer> winningNums, int bonusNum) {
         List<Integer> numbers = lotto.getNumbers();
         int numOfMatching = (int) numbers.stream().filter(winningNums::contains).count();
+
         if (numOfMatching == FIRST_PLACE_STANDARD) {
             WINNING_DATA.merge(FIRST, 1, Integer::sum);
         } else if (numOfMatching == SECOND_THIRD_PLACE_STANDARD && numbers.contains(bonusNum)) {
@@ -78,13 +85,6 @@ public class Utils {
             WINNING_DATA.merge(FOURTH, 1, Integer::sum);
         } else if (numOfMatching == FIFTH_PLACE_STANDARD) {
             WINNING_DATA.merge(FIFTH, 1, Integer::sum);
-        }
-        setZeroForNull();
-    }
-
-    private static void setZeroForNull() {
-        for (Result result : Result.values()) {
-            WINNING_DATA.putIfAbsent(result, 0);
         }
     }
 

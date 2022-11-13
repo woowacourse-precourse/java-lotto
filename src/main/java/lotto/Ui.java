@@ -4,11 +4,16 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.Result.*;
-
 public class Ui {
     public static void printMsgToGetPrice() {
         System.out.println("구입 금액을 입력해주세요.");
+    }
+    public static void printMsgToGetWinningNums() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
+    public static void printMsgToGetBonusNum() {
+        System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     public static void printLottoNumbers(int amount, List<Lotto> issuedLottos) {
@@ -18,20 +23,11 @@ public class Ui {
         }
     }
 
-    public static void printMsgToGetWinningNums() {
-        System.out.println("당첨 번호를 입력해 주세요.");
-    }
-
-    public static void printMsgToGetBonusNum() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-    }
-
     public static void printStatistics(String ratio, Map<Result, Integer> winningData) {
         System.out.println("당첨 통계");
         System.out.println("---");
 
-        Result[] results = values();
-        for (Result result : results) {
+        for (Result result : Result.values()) {
             System.out.println(getStatisticsFormat(result, winningData.get(result)));
         }
         System.out.print("총 수익률은 " + ratio +"%입니다.");
