@@ -11,6 +11,6 @@ public class InputController {
     }
 
     public static Lotto inputWinningLotto(){
-        return new Lotto(InputView.WinningLottoInput());
+        return new Lotto(InputView.WinningLottoInput(), InputView.BonusLottoInput());
     }
 }

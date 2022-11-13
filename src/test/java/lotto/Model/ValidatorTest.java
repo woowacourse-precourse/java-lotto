@@ -3,6 +3,7 @@ package lotto.Model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import lotto.Utils.Validator.BonusValidator;
 import lotto.Utils.Validator.BuyerValidator;
 import lotto.Utils.Validator.LottoValidator;
@@ -47,12 +48,18 @@ public class ValidatorTest {
 
     @Test
     void BonusValidator_입력받은_보너스번호가_예외인지_판별() {
+        List<Integer> lotto = List.of(1,2,3,4,5,6);
+
         String input1 = "a";
-        assertThatThrownBy(() -> new BonusValidator(input1))
+        assertThatThrownBy(() -> new BonusValidator(lotto, input1))
                 .isInstanceOf(IllegalArgumentException.class);
 
         String input2 = "-1";
-        assertThatThrownBy(() -> new BonusValidator(input2))
+        assertThatThrownBy(() -> new BonusValidator(lotto, input2))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String input3 = "6";
+        assertThatThrownBy(() -> new BonusValidator(lotto, input3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
