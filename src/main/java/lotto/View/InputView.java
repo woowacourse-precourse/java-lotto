@@ -13,6 +13,16 @@ public class InputView {
         return validateNumber(Console.readLine());
     }
 
+    public Lotto getLottoNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        return new Lotto(validateNumbers(Console.readLine()));
+    }
+
+    public int getBonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return validateNumber(Console.readLine());
+    }
+
     private int validateNumber(String input) {
         try {
             return Integer.parseInt(input);
@@ -21,12 +31,7 @@ public class InputView {
         }
     }
 
-    public Lotto getLottoNumber(){
-        System.out.println("당첨 번호를 입력해 주세요.");
-        return new Lotto(validateNumbers(Console.readLine()));
-    }
-
-    private List<Integer> validateNumbers(String input){
+    private List<Integer> validateNumbers(String input) {
         return Arrays.stream(input.split(","))
                 .map(this::validateNumber)
                 .collect(Collectors.toList());
