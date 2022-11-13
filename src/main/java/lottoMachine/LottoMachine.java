@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.Lotto;
 import lottoMachine.device.LottoMachineDevices;
-import lottoMachine.enums.Reward;
 
 public class LottoMachine {
 
