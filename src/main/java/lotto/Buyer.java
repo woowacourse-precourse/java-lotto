@@ -16,18 +16,20 @@ public class Buyer {
         int amount = stringToInt(buyAmount);
         int count = countCalculation(amount);
         listOfNumbers = new ArrayList<>();
-        for(int i=0 ; i<count; i++){
-            addLottoNumbers();
-        }
+        addLottoNumbers(count);
+
     }
 
     public ArrayList<ArrayList<Integer>> getListOfNumbers() {
         return listOfNumbers;
     }
 
-    private void addLottoNumbers() {
-        ArrayList<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        listOfNumbers.add(lotto);
+    private void addLottoNumbers(int count) {
+        for(int i=0 ; i<count; i++){
+            ArrayList<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Collections.sort(lotto);
+            listOfNumbers.add(lotto);
+        }
     }
 
     private int stringToInt(String buyAmount) {
