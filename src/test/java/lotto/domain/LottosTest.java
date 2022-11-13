@@ -2,6 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,8 +12,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottosTest {
+    @DisplayName("구매한 수량에 맞게 총 로또 수가 잘 생성되는지 테스트")
     @Test
-    void generateLottos_구매한_수량에_맞게_총_로또_수가_잘_생성되는지_테스트() {
+    void generateLottos() {
         //given
         int lottoCount = 8;
         List<Lotto> lottos = new ArrayList<>();
@@ -25,8 +27,9 @@ class LottosTest {
                   .isEqualTo(lottoCount);
     }
 
+    @DisplayName("구매한 로또들이 정렬되어서 반환되는지 테스트")
     @Test
-    void checkLottos_구매한_로또들이_정렬되어서_반환되는지_테스트() {
+    void checkLottos() {
         //given
         List<Lotto> lottos = new ArrayList<>(List.of(new Lotto(List.of(6, 5, 4, 3, 2, 1))));
         Lottos purchasedLottos = new Lottos();

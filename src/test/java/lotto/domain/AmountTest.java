@@ -1,13 +1,15 @@
 package lotto.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class AmountTest {
+    @DisplayName("구매 금액이 1000으로 나누어 떨어지지 않으면 예외를 던지는지 테스트한다")
     @Test
-    void validateCanDivideIntoOneThousand_구매_금액이_1000으로_나누어_떨어지지_않으면_예외를_던지는지_테스트() {
+    void validateCanDivideIntoOneThousand() {
         //given
         int value = 1200;
         int price = 1000;
@@ -24,8 +26,9 @@ class AmountTest {
                   .hasMessageContaining("[ERROR]");
     }
 
+    @DisplayName("구매금액을 로또 금액으로 나누었을때 로또 수량이 잘 반환되는지 테스트")
     @Test
-    void calculateLottoCount_구매_금액을_로또_금액으로_나누었을때_로또_수량이_잘_반환되는지_테스트() {
+    void calculateLottoCount() {
         //given
         int value = 2000;
         int price = 1000;
