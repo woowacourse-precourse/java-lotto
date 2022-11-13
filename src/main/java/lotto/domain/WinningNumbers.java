@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 
 import static lotto.utils.ErrorMessages.WINNING_NUMBERS_SEPARATOR;
 
-public class LottoWinningNumbers {
+public class WinningNumbers {
     private static final String SEPARATOR = ",";
     private final Lotto winningNumbers;
 
-    public LottoWinningNumbers(String numbers) {
+    public WinningNumbers(String numbers) {
         validateSeparator(numbers);
         this.winningNumbers = generateLotto(numbers);
     }
