@@ -5,6 +5,7 @@ import lotto.domain.LottoGameResult;
 import lotto.domain.LottoPurchaseMoney;
 import lotto.domain.Rank;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -56,11 +57,13 @@ public class OutputView {
     }
 
     private static void printWinningResult(Map<Rank, Integer> winningResult) {
-        System.out.println(Rank.FIFTH.getCount()+ "개 일치 (" + Rank.FIFTH.getReward() + "원) - " + winningResult.getOrDefault(Rank.FIFTH, 0) + "개");
-        System.out.println(Rank.FOURTH.getCount()+ "개 일치 (" + Rank.FOURTH.getReward() + "원) - " + winningResult.getOrDefault(Rank.FOURTH, 0) + "개");
-        System.out.println(Rank.THIRD.getCount()+ "개 일치 (" + Rank.THIRD.getReward() + "원) - " + winningResult.getOrDefault(Rank.THIRD, 0) + "개");
-        System.out.println(Rank.SECOND.getCount()+ "개 일치, 보너스 볼 일치 (" + Rank.SECOND.getReward() + "원) - " + winningResult.getOrDefault(Rank.SECOND, 0) + "개");
-        System.out.println(Rank.FIRST.getCount()+ "개 일치 (" + Rank.FIRST.getReward() + "원) - " + winningResult.getOrDefault(Rank.FIRST, 0) + "개");
+        DecimalFormat df = new DecimalFormat("###,###");
+        
+        System.out.println(Rank.FIFTH.getCount()+ "개 일치 (" + df.format(Rank.FIFTH.getReward()) + "원) - " + winningResult.getOrDefault(Rank.FIFTH, 0) + "개");
+        System.out.println(Rank.FOURTH.getCount()+ "개 일치 (" + df.format(Rank.FOURTH.getReward()) + "원) - " + winningResult.getOrDefault(Rank.FOURTH, 0) + "개");
+        System.out.println(Rank.THIRD.getCount()+ "개 일치 (" + df.format(Rank.THIRD.getReward()) + "원) - " + winningResult.getOrDefault(Rank.THIRD, 0) + "개");
+        System.out.println(Rank.SECOND.getCount()+ "개 일치, 보너스 볼 일치 (" + df.format(Rank.SECOND.getReward()) + "원) - " + winningResult.getOrDefault(Rank.SECOND, 0) + "개");
+        System.out.println(Rank.FIRST.getCount()+ "개 일치 (" + df.format(Rank.FIRST.getReward()) + "원) - " + winningResult.getOrDefault(Rank.FIRST, 0) + "개");
     }
 
     private static void printProfitLate(Map<Rank, Integer> winningResult, int money) {
