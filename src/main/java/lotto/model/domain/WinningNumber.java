@@ -16,44 +16,44 @@ public class WinningNumber {
     private static final String INVALID_BONUS_NUMBER_RANGE = "보너스 번호는 1이상 45 이어야 합니다.";
     private static final String DUPLICATED_BONUS_NUMBER = "보너스 번호는 당첨 번호와 중복되지 않아야 합니다.";
 
-
     private static final int LOTTO_NUM_MIN = 1;
     private static final int LOTTO_NUM_MAX = 45;
     private static final int FIFTH_SCORE = 3;
     private static final int FOURTH_SCORE = 4;
     private static final int THIRD_SCORE = 5;
     private static final int FIRST_SCORE = 6;
-    private static final int LOTTO_NUM_SIZE = 6;
 
     private final Lotto lotto;
     private final int bonusNumber;
 
     public WinningNumber(String winningNumber, String bonusNumber) {
         winningNumber = validateWinningNumber(winningNumber);
-        List<Integer> numbers = parseWinningNumber(winningNumber);
+        List<Integer> parsedWinningNumber  = parseWinningNumber(winningNumber);
 
-        lotto = new Lotto(numbers);
-        this.bonusNumber = validateBonusNumber(bonusNumber, numbers);
+        lotto = new Lotto(parsedWinningNumber);
+        this.bonusNumber = validateBonusNumber(bonusNumber, parsedWinningNumber);
     }
 
-    private int validateBonusNumber(String bonusNumber, List<Integer> numbers) {
+    private int validateBonusNumber(String bonusNumber, List<Integer> winningNumber) {
         bonusNumber = Utils.deleteAllString(bonusNumber);
         if (!Pattern.matches(BONUS_NUMBER_REGEX, bonusNumber)) {
             throw new IllegalArgumentException(BONUS_NUMBER_IS_NOT_NUMBER);
         }
-        int parsedBonusNumber = Integer.parseInt(bonusNumber);
-
-        if (!isValidLottoNumberRange(parsedBonusNumber)) {
-            throw new IllegalArgumentException(INVALID_BONUS_NUMBER_RANGE);
-        }
-        if (isDuplicatedWithWinningNumber(parsedBonusNumber, numbers)) {
-            throw new IllegalArgumentException(DUPLICATED_BONUS_NUMBER);
-        }
-        return parsedBonusNumber;
+        return validateBonusNumber(Integer.parseInt(bonusNumber), winningNumber);
     }
 
-    private boolean isDuplicatedWithWinningNumber(int parsedBonusNumber, List<Integer> numbers) {
-        return numbers.contains(parsedBonusNumber);
+    private int validateBonusNumber(int bonusNumber, List<Integer> winningNumber) {
+        if (!isValidLottoNumberRange(bonusNumber)) {
+            throw new IllegalArgumentException(INVALID_BONUS_NUMBER_RANGE);
+        }
+        if (isDuplicatedWithWinningNumber(bonusNumber, winningNumber)) {
+            throw new IllegalArgumentException(DUPLICATED_BONUS_NUMBER);
+        }
+        return bonusNumber;
+    }
+
+    private boolean isDuplicatedWithWinningNumber(int bonusNumber, List<Integer> winningNumber) {
+        return winningNumber.contains(bonusNumber);
     }
 
     private String validateWinningNumber(String winningNumber) {
@@ -67,8 +67,7 @@ public class WinningNumber {
     private boolean isValidLottoNumberRange(int num) {
         return num >= LOTTO_NUM_MIN && num <= LOTTO_NUM_MAX;
     }
-
-
+    
     private List<Integer> parseWinningNumber(String winningNumber) {
         return Arrays.stream(winningNumber.split(NUMBER_SEPARATOR))
                 .map(Integer::parseInt)
@@ -77,18 +76,18 @@ public class WinningNumber {
 
     public List<Rank> collectRanks(List<Lotto> lottos) {
         return lottos.stream()
-                .map(lotto -> computeRank(lotto))
+                .map(lotto -> createRank(lotto))
                 .collect(Collectors.toList());
     }
 
-    private Rank computeRank(Lotto lotto) {
+    private Rank createRank(Lotto lotto) {
         int numOfMatch = this.lotto.countMatch(lotto);
         boolean isBonusMatch = lotto.contains(bonusNumber);
 
-        return computeRank(numOfMatch, isBonusMatch);
+        return createRank(numOfMatch, isBonusMatch);
     }
 
-    private Rank computeRank(int numOfMatch, boolean isBonusMatch) {
+    private Rank createRank(int numOfMatch, boolean isBonusMatch) {
         if (numOfMatch == FIFTH_SCORE) {
             return Rank.FIFTH;
         }
