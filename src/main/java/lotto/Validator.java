@@ -17,6 +17,7 @@ public class Validator {
     private static final String DIGIT_COMMA_ERROR_MESSAGE = PREFIX + "숫자와 콤마(,)만 입력 가능합니다.";
     private static final String MIN_MONEY_ERROR_MESSAGE = PREFIX + "구입금액은 1000원 이상부터 가능합니다.";
     private static final String MONEY_UNIT_ERROR_MESSAGE = PREFIX + "구입금액은 1000원 단위만 가능합니다.";
+    private static final String BONUS_ERROR_MESSAGE = PREFIX + "보너스 번호는 당첨 번호와 중복될 수 없습니다.";
 
     public void validateNumberSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_SIZE) {
@@ -77,6 +78,12 @@ public class Validator {
     public void validateMoneyUnit(int money) {
         if (isNotValidMoneyUnit(money)) {
             throw new IllegalArgumentException(MONEY_UNIT_ERROR_MESSAGE);
+        }
+    }
+
+    public void validateBonusNumber(int bonusNumber, Lotto winningLotto) {
+        if (winningLotto.isExistNumber(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_ERROR_MESSAGE);
         }
     }
 
