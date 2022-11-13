@@ -1,5 +1,6 @@
 package lotto.domain.lotto;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +22,12 @@ public class Lotto {
         this.numbers = generatedLotto.stream()
                 .sorted()
                 .map(LottoNumber::number)
+                .collect(Collectors.toList());
+    }
+
+    public Lotto(final String input) {
+        var generatedLotto = Arrays.stream(input.split(",")).map(LottoNumber::new).collect(Collectors.toList());
+        this.numbers = generatedLotto.stream().sorted().map(LottoNumber::number)
                 .collect(Collectors.toList());
     }
 
