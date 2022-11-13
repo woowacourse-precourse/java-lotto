@@ -39,17 +39,17 @@ public class MainController {
             throw new IllegalArgumentException("입력 값이 올바르지 않습니다.");
         }
         cash = new Cash(integer);
+    }
+
+    public void createMyLottos() {
         lottoNumber = countLottoNumber(cash);
+        LottoGeneratorModel lottoGenerator = new LottoGeneratorModel();
+        myLottos = lottoGenerator.createMyLottos(lottoNumber);
     }
 
     private int countLottoNumber(Cash cash){
         CalculatorModel calculator = new CalculatorModel();
         return calculator.countLottoNumber(cash);
-    }
-
-    public void createMyLottos() {
-        LottoGeneratorModel lottoGenerator = new LottoGeneratorModel();
-        myLottos = lottoGenerator.createMyLottos(lottoNumber);
     }
 
     public void printMyLottos() {
