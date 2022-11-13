@@ -27,13 +27,15 @@ public class ControlLottoGame {
     public int calculateEarningRate(List<Integer> winningCount, int quantity) {
         int payedPrice = quantity * 1000;
         int earnedPrice = 0;
+        String earnedRate;
 
         earnedPrice += winningCount.get(0) * THREE_CORRECT;
         earnedPrice += winningCount.get(1) * FOUR_CORRECT;
         earnedPrice += winningCount.get(2) * FIVE_CORRECT;
         earnedPrice += winningCount.get(3) * SIX_CORRECT;
         earnedPrice += winningCount.get(4) * FIVE_BONUS_CORRECT;
+        earnedRate = String.format(".1f", (earnedPrice/payedPrice)*100);
 
-        return earnedPrice;
+        return Integer.parseInt(earnedRate);
     }
 }
