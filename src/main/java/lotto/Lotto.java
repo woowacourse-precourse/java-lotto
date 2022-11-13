@@ -2,7 +2,6 @@ package lotto;
 
 import lotto.ui.InputViewValidation;
 
-import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -10,8 +9,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        validateUniqueNumbers(numbers);
-        validateRange(numbers);
+        LottoValidation.validateUniqueNumbers(numbers);
+        LottoValidation.validateRange(numbers);
         this.numbers = numbers;
     }
 
@@ -22,20 +21,6 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private void validateUniqueNumbers(List<Integer> numbers){
-        HashSet<Integer> numberSet = new HashSet<>(numbers);
-        if (numberSet.size() != 6){
-            throw new IllegalArgumentException(InputViewValidation.ERROR_DUPLICATE_NUMBER);
-        }
-    }
-
-    private void validateRange(List<Integer> numbers){
-        for (int number: numbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException(InputViewValidation.ERROR_LOTTO_NUMBER_RANGE);
-            }
-        }
-    }
 
 
     public List<Integer> getNumbers() {
