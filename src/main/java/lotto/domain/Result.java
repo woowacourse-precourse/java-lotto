@@ -23,4 +23,7 @@ public enum Result {
                 .orElse(NONE);
     }
 
+    public double calculateProfit(int count) {
+        return count * this.prize;
+    }
 }

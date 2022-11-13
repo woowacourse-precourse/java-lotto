@@ -12,4 +12,5 @@ public class Buyer {
     public void buy(List<Integer> lotto) {
         lottos.add(Lotto.from(lotto));
     }
+
 }

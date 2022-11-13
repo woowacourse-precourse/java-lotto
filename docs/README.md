@@ -14,11 +14,11 @@
 - buyLotto : Lotto 혹은 List를 입력받는다.
 - play : 각 Lotto와 WinningNumber의 모든 결과를 History에 반영한다.
 
-## 4. History
-- Buyer의 play의 결과로 당첨 내역을 HashTable로 갖는다.
-- calculateProfit : 수익률을 반환한다. 
-
-## 5. Result
+## 4. Result
 - NONE, THREE, FOUR, FIVE, FIVE_BONUS, SIX
   - THREE 이하의 값은 모두 NONE이다.
 - 각 상수는 당첨값을 갖고 있다.
+
+## 5. History
+- Buyer의 play의 결과로 당첨 내역을 HashTable로 갖는다.
+- calculateProfit : 수익률을 반환한다. 
