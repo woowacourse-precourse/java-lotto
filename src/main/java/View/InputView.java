@@ -1,6 +1,6 @@
 package View;
 
-import static ConstDto.InputOutputConstDto.*;
+import static Dto.ConstDto.InputOutputConstDto.*;
 
 public class InputView {
 

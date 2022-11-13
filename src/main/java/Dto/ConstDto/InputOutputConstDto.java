@@ -1,4 +1,4 @@
-package ConstDto;
+package Dto.ConstDto;
 
 public class InputOutputConstDto {
 
