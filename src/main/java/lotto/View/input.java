@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class input {
-    final static String NoticeInputBonus = "보너스 번호를 입력해 주세요.";
     final static String NoticeWinStats = "당첨 통계";
 
     public static int inputMoney() {
@@ -30,7 +29,31 @@ public class input {
     public static List<Integer> inputWinNum() {
         List<Integer> numbers = new ArrayList<>();
         String[] inputNum = Console.readLine().split(",");
+
+        for (String s : inputNum) {
+            numbers.add(Integer.valueOf(s));
+        }
         return numbers;
+    }
+
+    public static int inputBonus(List<Integer> numbers) {
+        int bonusNum = 0;
+        try {
+            bonusNum = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        validate(numbers,bonusNum);
+        return bonusNum;
+    }
+
+    private static void validate(List<Integer> numbers, int bonusNum) {
+        if ((bonusNum < 1) || (bonusNum > 45)) {
+            throw new IllegalArgumentException();
+        }
+        if (numbers.contains(bonusNum)) {
+            throw new IllegalArgumentException();
+        }
     }
 
 
