@@ -52,4 +52,8 @@ public class Store {
     public String getAllLottoByCustomer() {
         return customer.getAllLottoToString();
     }
+
+    public float getRateOfProfitByCustomer(Map<Rank, Integer> customerRanks) {
+        return customer.getRateOfProfit(customerRanks);
+    }
 }

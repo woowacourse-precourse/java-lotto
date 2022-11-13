@@ -9,6 +9,7 @@ import static lotto.model.Rank.SECOND_PLACE;
 import static lotto.model.Rank.THIRD_PLACE;
 import static lotto.model.Rank.findCountWithRank;
 import static lotto.model.Rank.findRankWithCount;
+import static lotto.model.Rank.findRewardWithRank;
 
 import java.util.List;
 import java.util.Map;
@@ -53,6 +54,19 @@ public class Calculator {
             }
         }
         return countsByRanks;
+    }
+
+    public static float calculateRateOfProfit(Map<Rank, Integer> lottoRanks, int paidMoney) {
+        return calculateProfit(lottoRanks) / (float)paidMoney * 100;
+    }
+
+    private static int calculateProfit(Map<Rank, Integer> lottoRanks) {
+        int profit = 0;
+        for (Rank rank : lottoRanks.keySet()) {
+            profit += (findRewardWithRank(rank) * lottoRanks.get(rank));
+            System.out.println("profit = " + profit);
+        }
+        return profit;
     }
 }
 

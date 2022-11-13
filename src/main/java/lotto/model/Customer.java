@@ -2,11 +2,13 @@ package lotto.model;
 
 import static lotto.constants.LottoConstant.LOTTO_PRICE;
 import static lotto.utils.Calculator.calculateLottoRank;
+import static lotto.utils.Calculator.calculateRateOfProfit;
 import static lotto.utils.LottoNumberGenerator.generateLottoNumber;
 import static lotto.validator.MoneyValidator.hasValidUnit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Customer {
     private final int paidMoney;
@@ -42,5 +44,9 @@ public class Customer {
             buffer.append(lotto.toString()).append("\n");
         }
         return buffer.toString();
+    }
+
+    public float getRateOfProfit(Map<Rank, Integer> lottoRanks) {
+        return calculateRateOfProfit(lottoRanks, paidMoney);
     }
 }

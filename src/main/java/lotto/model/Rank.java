@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
@@ -47,5 +48,9 @@ public enum Rank {
 
     public static String findIntroMessageWithRank(Rank rank) {
         return rank.introMessage;
+    }
+
+    public static List<Rank> getRankOrder() {
+        return List.of(FIFTH_PLACE, FOURTH_PLACE, THIRD_PLACE, SECOND_PLACE, FIRST_PLACE);
     }
 }
