@@ -4,7 +4,7 @@ import lotto.domain.GradesResult;
 import lotto.domain.GradingMachine;
 import lotto.domain.LottoTicket;
 import lotto.domain.LottoMoney;
-import lotto.domain.Seller;
+import lotto.domain.LottoTicketSeller;
 import lotto.view.Input;
 import lotto.view.Output;
 
@@ -24,7 +24,7 @@ public class LottoController {
     }
 
     private void buyLotto(LottoMoney money) {
-        lottoTicket = Seller.buyLottoByMoney(money);
+        lottoTicket = LottoTicketSeller.buyLottoByMoney(money);
         output.printPurchaseInfo(lottoTicket);
     }
 

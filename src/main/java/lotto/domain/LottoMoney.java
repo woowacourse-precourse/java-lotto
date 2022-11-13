@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.domain.Seller.LOTTO_PRICE;
+import static lotto.domain.LottoTicketSeller.LOTTO_PRICE;
 
 import lotto.view.Output;
 
