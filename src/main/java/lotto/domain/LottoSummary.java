@@ -17,6 +17,7 @@ public class LottoSummary {
     private static final String YIELD = "총 수익률은 %s%%입니다.";
     private static final String YIELD_PATTERN = "#,###.0";
     private static final String MONEY_PATTERN = "#,###";
+    private static final int PERCENT = 100;
 
     private final double yield;
     private final String summary;
@@ -30,7 +31,7 @@ public class LottoSummary {
         AtomicLong sum = new AtomicLong();
 
         ranks.forEach(rank -> sum.addAndGet(rank.getPrice()));
-        return sum.get() / (double) money.getMoney() * 100;
+        return sum.get() / (double) money.getMoney() * PERCENT;
     }
 
     private String summaryResult(List<Rank> ranks) {
