@@ -108,8 +108,8 @@ class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("로또를 10000원치 구매하고 수익금이 5,000원이면 수익률은 50.0% 여야한다")
-    void buyLotto10000WonAnd5_000ProfitThenProfitRateMust_50Percent() {
+    @DisplayName("로또를 10,000원치 구매하고 수익금이 5,000원이면 수익률은 50.0% 여야한다")
+    void buyLotto10_000WonAnd5_000ProfitThenProfitRateMust_50Percent() {
         // given
         Money spentMoney = Money.of(10_000L);
         Money totalProfit = Money.of(5_000L);
@@ -120,8 +120,8 @@ class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("로또를 만원치 구매하고 수익금이 20억이면 수익률은 20,000,000.0% 여야한다")
-    void buyLotto10000WonAnd20BillionProfitThenProfitRateMust_2_000_000Percent() {
+    @DisplayName("로또를 10,000원치 구매하고 수익금이 20억이면 수익률은 20,000,000.0% 여야한다")
+    void buyLotto10_000WonAnd20BillionProfitThenProfitRateMust_2_000_000Percent() {
         // given
         Money spentMoney = Money.of(10_000L);
         Money totalProfit = Money.of(2_000_000_000L);
