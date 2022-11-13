@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private List<List<Integer>> boughtLotto;
+    private List<List<Integer>> boughtLotto = new ArrayList<>();
     private int lottoCount;
 
     // 로또 구매 개수 구현
@@ -18,11 +18,10 @@ public class User {
     }
 
     // 구매한 크기만큼의 로또 제공 메소드
-    public List<List<Integer>> generatingLotto(List<List<Integer>> boughtLotto, int lottoCount) {
+    public void generatingLotto(int lottoCount) {
         for (int i = 0; i < lottoCount; i++) {
-            boughtLotto.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            this.boughtLotto.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         }
-        return boughtLotto;
     }
 
     // 유저의 로또 번호 선택
@@ -41,8 +40,8 @@ public class User {
     }
 
     // 구입한 로또 목록 출력
-    public static void printBoughtLotto(List<List<Integer>> lottoList){
-        for (List<Integer> integers : lottoList) {
+    public void printBoughtLotto(){
+        for (List<Integer> integers : this.boughtLotto) {
             System.out.println(integers);
         }
     }
