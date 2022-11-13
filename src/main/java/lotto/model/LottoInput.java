@@ -1,6 +1,9 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import lotto.util.InputValidator;
 
 public class LottoInput {
@@ -12,11 +15,18 @@ public class LottoInput {
 
     public int inputPurchaseAmount() {
         String purchaseAmount = inputLottoGame();
-        validatePurchaseAmount(purchaseAmount);
+        inputValidator.validatePurchaseAmount(purchaseAmount);
         return Integer.parseInt(purchaseAmount);
     }
 
-    private void validatePurchaseAmount(String purchaseAmount) {
-        inputValidator.validatePurchaseAmount(purchaseAmount);
+    public List<Integer> inputWinningNumber() {
+        String winningNumber = inputLottoGame();
+        inputValidator.validateWinningNumber(winningNumber);
+        return toIntegerNumberList(winningNumber);
+    }
+
+    public List<Integer> toIntegerNumberList(String winningNumber) {
+        String[] numbers = winningNumber.split(",");
+        return Arrays.stream(numbers).map(Integer::parseInt).collect(Collectors.toList());
     }
 }

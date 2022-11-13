@@ -38,5 +38,6 @@ public class GameController {
 
     public void assignWinningNumber() {
         gameMessage.printInputWinningNumber();
+        List<Integer> winningNumber = lottoInput.inputWinningNumber();
     }
 }
