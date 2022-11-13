@@ -41,15 +41,15 @@ class LottoTest {
 //        assertThat(lotto.compareWith(winningNumbers))
 //                .isEqualTo(new CompareResult(numberOfMatches, hasBonus));
 //    }
-
-    static Stream<Arguments> lottoAndCompareResult() {
-        return Stream.of(
-            Arguments.of(new Lotto(List.of(1,2,3,4,5,6)), 6, false)
-                , Arguments.of(new Lotto(List.of(1,3,7,4,5,6)), 5, true)
-                , Arguments.of(new Lotto(List.of(1,2,3,13,5,6)), 5, false)
-                , Arguments.of(new Lotto(List.of(1,28,13,4,5,6)), 4, false)
-                , Arguments.of(new Lotto(List.of(21,2,3,4,7,12)), 3, true)
-                , Arguments.of(new Lotto(List.of(1,12,23,4,35,7)), 2, true)
-        );
-    }
+//
+//    static Stream<Arguments> lottoAndCompareResult() {
+//        return Stream.of(
+//            Arguments.of(new Lotto(List.of(1,2,3,4,5,6)), 6, false)
+//                , Arguments.of(new Lotto(List.of(1,3,7,4,5,6)), 5, true)
+//                , Arguments.of(new Lotto(List.of(1,2,3,13,5,6)), 5, false)
+//                , Arguments.of(new Lotto(List.of(1,28,13,4,5,6)), 4, false)
+//                , Arguments.of(new Lotto(List.of(21,2,3,4,7,12)), 3, true)
+//                , Arguments.of(new Lotto(List.of(1,12,23,4,35,7)), 2, true)
+//        );
+//    }
 }
