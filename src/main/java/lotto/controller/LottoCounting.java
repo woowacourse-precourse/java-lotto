@@ -10,7 +10,7 @@ public class LottoCounting {
     public Map<Lotto, Integer> countedLotto(Lotto[] lottoPapers, Lotto winningLotto){
         Map<Lotto, Integer> lottoBox = new HashMap<>();
         for (Lotto oneLottoPaper : lottoPapers) {
-            storeLottoInBox(lottoBox, oneLottoPaper, winningLotto);
+            countLottoAndStore(lottoBox, oneLottoPaper, winningLotto);
         }
 
         return lottoBox;
@@ -36,7 +36,7 @@ public class LottoCounting {
     }
 
     // 한 장의 로또가 몇개 맞췄는지, 세어서 로또박스에 매핑해야 한다.
-    private void storeLottoInBox(Map<Lotto, Integer> lottoBox, Lotto oneLottoPaper, Lotto winningLotto){
+    private void countLottoAndStore(Map<Lotto, Integer> lottoBox, Lotto oneLottoPaper, Lotto winningLotto){
         int howManyNumbersCorrect = compareLottoAndCount(oneLottoPaper, winningLotto);
         lottoBox.put(oneLottoPaper,howManyNumbersCorrect);
     }
