@@ -25,12 +25,6 @@ public class InputUI {
         return Integer.parseInt(money);
     }
 
-    public void getWinningNumbers() {
-        List<Integer> normalNumbers = getNormalNumbers();
-        Integer bonusNumbers = getBonusNumbers(normalNumbers);
-
-    }
-
     public List<Integer> getNormalNumbers() {
         outputUI.printMessage(NORMAL_NUMBER_INPUT_MESSAGE);
         String normalNumbers = Console.readLine();
@@ -41,7 +35,6 @@ public class InputUI {
         for (String normalNumberString : normalNumbersString) {
             normalNumberInteger.add(Integer.parseInt(normalNumberString));
         }
-
         return normalNumberInteger;
     }
 

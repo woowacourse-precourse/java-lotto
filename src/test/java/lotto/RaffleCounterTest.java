@@ -20,7 +20,7 @@ class RaffleCounterTest {
 
         Integer winnerResult = raffleCounter.countWinner(lotto, winningNumbers, bonusNumber);
 
-        Assertions.assertThat(winnerResult).isEqualTo(List.of(6, 0));
+        Assertions.assertThat(winnerResult).isEqualTo(1);
     }
 
 }

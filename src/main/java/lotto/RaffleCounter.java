@@ -10,7 +10,7 @@ public class RaffleCounter {
     }
 
     public List<Integer> getResultOfLottos(List<Lotto> lottos, List<Integer> normalNumbers, Integer bonusNumbers) {
-        List<Integer> resultOfLottos = new ArrayList<>(Arrays.asList(0,0,0,0,0,0,0));
+        List<Integer> resultOfLottos = new ArrayList<>(Arrays.asList(0,0,0,0,0,0));
 
         for (Lotto lotto : lottos) {
             Integer rank = countWinner(lotto, normalNumbers, bonusNumbers);
