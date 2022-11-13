@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         User user = new User();
@@ -9,7 +11,7 @@ public class Application {
 
         user.inputPurchaseMoney();
         user.purchaseLotto();
-        lottoMachine.inputWinningNumber();
-        lottoMachine.inputBonusNumber();
+        List<Integer> winningNumber = lottoMachine.inputWinningNumber();
+        int bonusNumber = lottoMachine.inputBonusNumber();
     }
 }
