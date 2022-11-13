@@ -6,7 +6,7 @@ import service.LottoService;
 import java.util.regex.Pattern;
 
 public class LottoController {
-    private static final String FORMAT = "^[0-9],[0-9],[0-9],[0-9],[0-9],[0-9]$";
+    private static final String FORMAT = "^[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*$";
     private final LottoService lottoService = new LottoService();
 
     public Lotto createWinningNumber(String winningNumber) {
