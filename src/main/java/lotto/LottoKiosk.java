@@ -15,7 +15,7 @@ public class LottoKiosk {
     private long howMany;
     private List<Lotto> lottos;
 
-    public void insertMoney() {
+    public void insertMoney() throws IllegalArgumentException{
         askHowMuch();
         moneyInserted();
         validateMoneyInput();
