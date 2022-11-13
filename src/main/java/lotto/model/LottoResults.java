@@ -1,16 +1,17 @@
 package lotto.model;
 
+import lotto.enums.LottoRanking;
+
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class LottoResults {
+    private static final int START_COUNT = 0;
     HashMap<String, Integer> lottoResults = new HashMap<>();
 
     public LottoResults() {
-        lottoResults.put("FIRST_PLACE", 0);
-        lottoResults.put("SECOND_PLACE", 0);
-        lottoResults.put("THIRD_PLACE", 0);
-        lottoResults.put("FOURTH_PLACE", 0);
-        lottoResults.put("FIFTH_PLACE", 0);
+        Arrays.stream(LottoRanking.values())
+                .forEach(prize -> lottoResults.put(prize.toString(), START_COUNT));
     }
 
     public void add(String place, int i) {
@@ -22,16 +23,10 @@ public class LottoResults {
     }
 
     public void addLottoCount(int lottoCount, boolean isBonus) {
-        if (lottoCount == 3) {
-            add("FIFTH_PLACE", 1);
-        } else if (lottoCount == 4) {
-            add("FOURTH_PLACE", 1);
-        } else if (lottoCount == 5 && !isBonus) {
-            add("THIRD_PLACE", 1);
-        } else if (lottoCount == 5 && isBonus) {
-            add("SECOND_PLACE", 1);
-        } else if (lottoCount == 6) {
-            add("FIRST_PLACE", 1);
+        for (LottoRanking rank : LottoRanking.values()) {
+            if (lottoCount == rank.getMatchCount() && isBonus == rank.getBonus()) {
+                add(rank.toString(), 1);
+            }
         }
     }
 }
