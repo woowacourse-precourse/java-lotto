@@ -26,7 +26,10 @@ public class LottoStatistic {
     }
 
     private List<LottoResult> calculateScore() {
-        return lottos.getLottos().stream().map(lotto -> winningLottery.getResult(lotto)).collect(Collectors.toList());
+        return lottos.getLottos()
+                .stream().
+                map(winningLottery::getResult)
+                .collect(Collectors.toList());
     }
 
     private long getThree(List<LottoResult> scores) {
@@ -65,8 +68,10 @@ public class LottoStatistic {
                 five * LottoResult.FIVE_CORRECT.money() +
                 fiveBonus * LottoResult.FIVE_BONUS_CORRECT.money() +
                 six * LottoResult.SIX_CORRECT.money();
-        int lottoPrice = LottoConstants.LOTTO_PRICE.value();
-        int totalCount = lottos.getLottos().size();
+        int lottoPrice = LottoConstants.LOTTO_PRICE
+                .value();
+        int totalCount = lottos.getLottos()
+                .size();
         return (double) total / (lottoPrice * totalCount) * 100;
     }
 }

@@ -24,9 +24,6 @@ public class BonusNumber {
     }
 
     public boolean isBonusNumber(int other) {
-        if (other == number) {
-            return true;
-        }
-        return false;
+        return other == number;
     }
 }
