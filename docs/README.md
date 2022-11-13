@@ -1,9 +1,9 @@
 ## 기능 구현 목록
 
 ### 입력
-[] 로또 구입 금액 입력. 1000으로 나눠떨어지지 않는 경우 예외 처리 - User#lotteryPurchaseAmount<br>
-[] 당첨번호 입력. 쉼표 기준 - User.winningNumber<br>
-[] 보너스 번호 입력 - User.bonusNumber <br>
+[✅] 로또 구입 금액 입력. 1000으로 나눠떨어지지 않는 경우 예외 처리 - User#lotteryPurchaseAmount<br>
+[] 당첨번호 입력. 쉼표 기준 - User#winningNumber<br>
+[] 보너스 번호 입력 - User#bonusNumber <br>
 [] 입력값들 숫자 아닐때 예외처리 <br>
 [] 로또 번호 1~45 사이 아니면 예외처리 <br>
 [] 예외 발생 시 IllegalArgumentException 발생<br>
