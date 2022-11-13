@@ -4,42 +4,48 @@ import domain.Lotto;
 import domain.LottoPocket;
 import domain.LottoPublisher;
 import domain.WinningLotto;
-import view.IoView;
 import dto.ScratchResult;
 import java.util.Collections;
 import java.util.List;
+import view.InputView;
+import view.OutputView;
 
 /**
  * 로또 게임을 진행하는 클래스
  */
 public class LottoGameController {
 
-    private IoView lottoGameView;
+    private InputView inputView;
+    private OutputView outputView;
     private LottoPocket lottoPocket;
 
-    public LottoGameController(IoView ioView) {
-        this.lottoGameView = ioView;
+    public LottoGameController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
         try {
-            int bill = lottoGameView.getBillFromUser();
+            List<Lotto> lottos = publishLotto(inputView.getBillFromUser());
+            lottoPocket = new LottoPocket(lottos);
+            outputView.printLottoPublishInfo(lottos);
 
-            List<Lotto> lottos = Collections.unmodifiableList(LottoPublisher.publishLottos(bill));
-            lottoGameView.printLottoPublishInfo(lottos);
+            List<Integer> winningNumber = inputView.getWinningNumbersFromUser();
+            int bonusNumber = inputView.getBonusNumberFromUser();
 
-            LottoPocket pocket = new LottoPocket(lottos);
-
-            List<Integer> winningNumber = lottoGameView.getWinningNumbersFromUser();
-            int bonusNumber = lottoGameView.getBonusNumberFromUser();
-            WinningLotto winningLotto = new WinningLotto(winningNumber, bonusNumber);
-
-            ScratchResult scratchResult = pocket.getScratchResult(winningLotto);
-            lottoGameView.printScratchResult(scratchResult);
-
+            ScratchResult scratchResult = getScratchResult(winningNumber, bonusNumber);
+            outputView.printScratchResult(scratchResult);
         } catch (IllegalArgumentException e) {
-            lottoGameView.printException(e);
+            outputView.printException(e);
         }
     }
 
+    private List<Lotto> publishLotto(int money) {
+        return Collections.unmodifiableList(LottoPublisher.publishLottos(money));
+    }
+
+    private ScratchResult getScratchResult(List<Integer> winningNumbers, int bonusNumber) {
+        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+        return lottoPocket.getScratchResult(winningLotto);
+    }
 }
