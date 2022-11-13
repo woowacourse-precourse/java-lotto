@@ -75,14 +75,7 @@ public class LottoProgram {
 
     private static Integer[] convertToInteger(String inputNumber) {
         return Stream.of(inputNumber.split(","))
-                .mapToInt((number) -> {
-                    try {
-                        int parsedInt = Integer.parseInt(number);
-                        return parsedInt;
-                    } catch (NumberFormatException e) {
-                        throw new IllegalArgumentException();
-                    }
-                })
+                .mapToInt(Integer::parseInt)
                 .boxed()
                 .toArray(Integer[]::new);
     }
