@@ -1,7 +1,7 @@
 package lotto.model;
 
-import static lotto.model.Constants.LottoStatus.MATCH_FIVE_ADD_BONUS_VALUE;
-import static lotto.model.Constants.LottoStatus.MATCH_FIVE_VALUE;
+import static lotto.model.LottoStatus.Constants.MATCH_FIVE_ADD_BONUS_VALUE;
+import static lotto.model.LottoStatus.Constants.MATCH_FIVE_VALUE;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +20,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (!NumbersValidator.isValid(numbers)) {
+        if (!LottoValidator.isValid(numbers)) {
             throw new IllegalArgumentException();
         }
     }

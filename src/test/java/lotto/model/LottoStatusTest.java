@@ -1,12 +1,18 @@
 package lotto.model;
 
-import static lotto.model.Constants.LottoStatus.MATCH_FIVE_ADD_BONUS_PROFIT;
-import static lotto.model.Constants.LottoStatus.MATCH_FIVE_PROFIT;
-import static lotto.model.Constants.LottoStatus.MATCH_FOUR_PROFIT;
-import static lotto.model.Constants.LottoStatus.MATCH_THREE_PROFIT;
-import static lotto.model.Constants.LottoStatus.MATH_SIX_PROFIT;
-import static lotto.model.Constants.LottoStatus.MATH_UNSATISFIED_PROFIT;
-import static lotto.model.LottoStatus.*;
+import static lotto.model.LottoStatus.Constants.MATCH_FIVE_ADD_BONUS_PROFIT;
+import static lotto.model.LottoStatus.Constants.MATCH_FIVE_PROFIT;
+import static lotto.model.LottoStatus.Constants.MATCH_FOUR_PROFIT;
+import static lotto.model.LottoStatus.Constants.MATCH_THREE_PROFIT;
+import static lotto.model.LottoStatus.Constants.MATH_SIX_PROFIT;
+import static lotto.model.LottoStatus.Constants.MATH_UNSATISFIED_PROFIT;
+import static lotto.model.LottoStatus.MATCH_FIVE;
+import static lotto.model.LottoStatus.MATCH_FIVE_ADD_BONUS;
+import static lotto.model.LottoStatus.MATCH_FOUR;
+import static lotto.model.LottoStatus.MATCH_SIX;
+import static lotto.model.LottoStatus.MATCH_THREE;
+import static lotto.model.LottoStatus.MATCH_UNSATISFIED;
+import static lotto.model.LottoStatus.checkValue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
@@ -38,7 +44,7 @@ class LottoStatusTest {
 
     @DisplayName("숫자를 받고 상태 반환")
     @Test
-    void get_count_return_status(){
+    void get_count_return_status() {
         assertThat(checkValue(0)).isEqualTo(MATCH_UNSATISFIED);
         assertThat(checkValue(1)).isEqualTo(MATCH_UNSATISFIED);
         assertThat(checkValue(2)).isEqualTo(MATCH_UNSATISFIED);

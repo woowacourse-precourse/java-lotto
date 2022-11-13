@@ -1,9 +1,9 @@
 package lotto.model;
 
-import static lotto.model.Constants.MONEY_MIN_UNIT;
-import static lotto.model.Constants.NUMBER;
-import static lotto.model.NumbersValidator.NUMBER_MAX_VALUE;
-import static lotto.model.NumbersValidator.NUMBER_MIN_VALUE;
+import static lotto.model.CommonConstants.MONEY_MIN_UNIT;
+import static lotto.model.CommonConstants.NUMBER;
+import static lotto.model.LottoValidator.NUMBER_MAX_VALUE;
+import static lotto.model.LottoValidator.NUMBER_MIN_VALUE;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class InputValidator {
         try {
             isValidTargetLottoType(inputTargetLottoNumbers);
             List<Integer> targetLottoNumbers = Changer.stringToIntegers(inputTargetLottoNumbers);
-            return NumbersValidator.isValid(targetLottoNumbers);
+            return LottoValidator.isValid(targetLottoNumbers);
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
             return false;

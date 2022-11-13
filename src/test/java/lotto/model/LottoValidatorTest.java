@@ -1,11 +1,11 @@
 package lotto.model;
 
-import static lotto.model.NumbersValidator.NUMBER_RANGE_ERROR;
-import static lotto.model.NumbersValidator.NUMBER_REPEAT_ERROR;
-import static lotto.model.NumbersValidator.isValidRange;
-import static lotto.model.NumbersValidator.isValidRepeat;
-import static lotto.model.NumbersValidator.NUMBERS_SIZE_ERROR;
-import static lotto.model.NumbersValidator.isValidSize;
+import static lotto.model.LottoValidator.NUMBER_RANGE_ERROR;
+import static lotto.model.LottoValidator.NUMBER_REPEAT_ERROR;
+import static lotto.model.LottoValidator.isValidRange;
+import static lotto.model.LottoValidator.isValidRepeat;
+import static lotto.model.LottoValidator.NUMBERS_SIZE_ERROR;
+import static lotto.model.LottoValidator.isValidSize;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -14,7 +14,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class NumbersValidatorTest {
+class LottoValidatorTest {
 
     @DisplayName("중복 숫자가 있으면 예외가 발생 한다.")
     @Test

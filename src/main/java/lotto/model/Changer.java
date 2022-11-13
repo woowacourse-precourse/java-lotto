@@ -1,6 +1,6 @@
 package lotto.model;
 
-import static lotto.model.Constants.MONEY_MIN_UNIT;
+import static lotto.model.CommonConstants.MONEY_MIN_UNIT;
 
 import java.util.Arrays;
 import java.util.List;

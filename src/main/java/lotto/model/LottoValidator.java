@@ -2,7 +2,7 @@ package lotto.model;
 
 import java.util.List;
 
-class NumbersValidator {
+class LottoValidator {
     public static final int NUMBER_REQUIRED_SIZE = 6;
     public static final int NUMBER_MIN_VALUE = 1;
     public static final int NUMBER_MAX_VALUE = 45;
@@ -12,7 +12,7 @@ class NumbersValidator {
             "[ERROR] 모든 수가 범위(" + NUMBER_MIN_VALUE + "~" + NUMBER_MAX_VALUE + ")안에 있어야 합니다.";
 
 
-    private NumbersValidator() {
+    private LottoValidator() {
     }
 
     static boolean isValid(List<Integer> numbers) {
