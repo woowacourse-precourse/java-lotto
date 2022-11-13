@@ -2,6 +2,7 @@ package lotto.controller;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.Result;
@@ -52,8 +53,8 @@ public class LottoGameController {
     }
 
     private Lotto publishLotto() {
-        final List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        numbers = numbers.stream().sorted().collect(Collectors.toList());
 
         return new Lotto(numbers);
     }
