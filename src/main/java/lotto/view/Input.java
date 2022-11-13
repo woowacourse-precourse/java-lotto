@@ -41,8 +41,6 @@ public class Input {
         }
         List<Integer> prizeNumbers = parsePrizeNumbers(splitedInput);
 
-        validatePrizeNumbers(prizeNumbers);
-
         return prizeNumbers;
     }
 
