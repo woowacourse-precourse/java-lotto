@@ -1,4 +1,10 @@
 package lotto;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  로또 번호의 숫자 범위는 1~45까지이다.
 - 1개의 로또를 발행할 때 중복되지 않는 6개의 숫자를 뽑는다.
@@ -12,6 +18,6 @@ package lotto;
  */
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
     }
 }
