@@ -23,14 +23,14 @@ public class WinningNums {
         if (!isNotDuplicate(nums)) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
         }
-        if(!isInRangeAll(nums)) {
+        if (!isInRangeAll(nums)) {
             throw new IllegalArgumentException("[ERROR] 1-45까지의 숫자만 입력해야 합니다.");
         }
         return nums;
     }
 
     public int validateBonusNum(String bonusNum) {
-        int num = Integer.parseInt(bonusNum);
+        int num = Utils.textToNumber(bonusNum);
         if (!isInRange(num)) {
             throw new IllegalArgumentException("[ERROR] 1-45까지의 숫자만 입력해야 합니다.");
         }

@@ -3,10 +3,12 @@ package lotto.domain;
 import java.util.List;
 
 import static lotto.domain.Lotto.LOTTO_NUMS_SIZE;
+import static lotto.domain.Lotto.MAX_LOTTO_NUM;
+import static lotto.domain.Lotto.MIN_LOTTO_NUM;
 
 public class Validate {
     public static boolean isInRange(int number) {
-        return 1 <= number && number <= 45;
+        return MAX_LOTTO_NUM <= number && number <= MIN_LOTTO_NUM;
     }
 
     public static boolean isInRangeAll(List<Integer> nums) {

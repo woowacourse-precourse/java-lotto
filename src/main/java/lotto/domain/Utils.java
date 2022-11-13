@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class Utils {
     public static final Pattern PATTERN = Pattern.compile("^[\\d]+, [\\d]+, [\\d]+, [\\d]+, [\\d]+, [\\d]+$");
+    private static final String REGEX = ", ";
 
     public static int textToNumber(String input) {
         try {
@@ -17,7 +18,7 @@ public class Utils {
     }
 
     public static List<Integer> separateNums(String input) {
-        return Arrays.asList(input.split(", "))
+        return Arrays.asList(input.split(REGEX))
                 .stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
