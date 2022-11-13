@@ -10,8 +10,14 @@ public class LottoGenerator {
         List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return lotto;
     }
-    List<Lotto> generate(int money) {
-        List<Lotto> lottos = new ArrayList<Lotto>();
-        return lottos;
+
+    public List<Lotto> generate(int money) {
+        List<Lotto> lottoList = new ArrayList<Lotto>();
+        int count = money / 1000;
+        while (count-- > 0) {
+            lottoList.add(new Lotto(generateNumbers()));
+        }
+
+        return lottoList;
     }
 }
