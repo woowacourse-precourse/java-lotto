@@ -39,7 +39,7 @@ public class User {
     }
     public void printUserLotto(int price){
         int lottoCount = price/1000;
-        System.out.println(lottoCount+"개를 구매했습니다.");
+        System.out.println("\n"+lottoCount+"개를 구매했습니다.");
         for(int i=0; i<lottoCount; i++){
             System.out.println(userLotto.get(i).printLottoNumber());
         }
@@ -61,7 +61,8 @@ public class User {
                 correctLottoNum += score.getMoney();
             }
         }
-
+        System.out.println("\n당첨 통계");
+        System.out.println("---");
         System.out.println("3개 일치 (5,000원) - "+ hm.get(Score.third) +"개");
         System.out.println("4개 일치 (50,000원) - "+ hm.get(Score.fourth) +"개");
         System.out.println("5개 일치 (1,500,000원) - "+ hm.get(Score.fifth) +"개");

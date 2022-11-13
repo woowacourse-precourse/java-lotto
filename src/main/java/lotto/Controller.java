@@ -13,8 +13,10 @@ public class Controller {
     String bonusNumber;
 
     public void buyLotto(){
+        System.out.println("구입 금액을 입력해주세요.");
         purchase = new Purchase(Console.readLine());
 
+        System.out.println("\n당첨번호를 입력해주세요.");
         String inputAnswer = Console.readLine();
         for(int i=0; i<inputAnswer.length(); i++){
             if(inputAnswer.charAt(i)>=48 && inputAnswer.charAt(i)<=57) {
@@ -23,6 +25,7 @@ public class Controller {
         }
 
         Lotto lotto = new Lotto(lottoAnswer);
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         bonusNumber = Console.readLine();
         lotto.getLottoBonusNumber(bonusNumber);
     }
