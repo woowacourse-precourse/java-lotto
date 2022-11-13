@@ -6,15 +6,15 @@ import java.util.List;
 
 public class MakeLottoNumber {
 
-    private final List<Integer> Lottos;
+    private final List<Integer> Lotto;
 
-    public MakeLottoNumber(List<Integer> Lottos) {
-        this.Lottos = Lottos;
+    public MakeLottoNumber(List<Integer> Lotto) {
+        this.Lotto = Lotto;
     }
 
     private List<Integer> getLottoNumber() {
-        List<Integer> Lottos = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return Lottos;
+        List<Integer> Lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Lotto;
     }
 
 }
