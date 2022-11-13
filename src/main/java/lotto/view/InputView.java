@@ -11,8 +11,13 @@ public class InputView {
         return money;
     }
 
-    public static List<Integer> inputWinningLotto() {
+    public static List<Integer> inputWinningNumber() {
         List<Integer> winningLotto = Converter.changeToWinningNumber(readLine());
         return winningLotto;
+    }
+
+    public static int inputBonusNumber() {
+        int bonusNumber = Converter.changeToBonusNumber(readLine());
+        return bonusNumber;
     }
 }

@@ -6,8 +6,8 @@ import lotto.domain.Lotto;
 
 public class OutputView {
     private static final String ENTER_PURCHASE_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
-
-    private static final String ENTER_WINNING_LOTTO_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String ENTER_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String ENTER_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String PURCHASE_LOTTO_COUNT_MESSAGE = "{0}개를 구매했습니다.";
 
     public static void printErrorMessage(String message) {
@@ -21,8 +21,8 @@ public class OutputView {
     public static void printBlank() {
         System.out.print("\n");
     }
-    public static void printInputWinningLotto() {
-        System.out.println(ENTER_WINNING_LOTTO_MESSAGE);
+    public static void printInputWinningNumber() {
+        System.out.println(ENTER_WINNING_NUMBER_MESSAGE);
     }
 
     public static void printPurchaseLotto(List<Lotto> lottos) {
@@ -31,5 +31,9 @@ public class OutputView {
             System.out.println(lotto.getNumbers());
         }
         OutputView.printBlank();
+    }
+
+    public static void printInputBonusNumber() {
+        System.out.println(ENTER_BONUS_NUMBER_MESSAGE);
     }
 }

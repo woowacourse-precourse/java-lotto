@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.domain.ErrorMessage.BONUS_NOT_NUMBER_ERROR;
 import static lotto.domain.ErrorMessage.INPUT_EMPTY_ERROR;
 import static lotto.domain.ErrorMessage.MONEY_LIMIT_ERROR;
 import static lotto.domain.ErrorMessage.MONEY_NUMBER_ERROR;
@@ -29,5 +30,15 @@ public class Converter {
             throw new IllegalArgumentException(SEPARATOR_ERROR.toString());
         }
         return WinningNumberSplit.splitWinningNumber(input);
+    }
+
+    public static int changeToBonusNumber(String input) {
+        if (InputValidator.isEmpty(input)) {
+            throw new IllegalArgumentException(INPUT_EMPTY_ERROR.toString());
+        }
+        if (InputValidator.isNumber(input)) {
+            throw new IllegalArgumentException(BONUS_NOT_NUMBER_ERROR.toString());
+        }
+        return  Integer.parseInt(input);
     }
 }

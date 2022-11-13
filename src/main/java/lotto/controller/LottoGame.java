@@ -31,8 +31,10 @@ public class LottoGame {
     }
 
     private void drawLottery() {
-        OutputView.printInputWinningLotto();
-        Lotto winninglotto = new Lotto(InputView.inputWinningLotto());
-        System.out.println(winninglotto.getNumbers());
+        OutputView.printInputWinningNumber();
+        Lotto winningLotto = new Lotto(InputView.inputWinningNumber());
+        OutputView.printBlank();
+
+        OutputView.printInputBonusNumber();
     }
 }
