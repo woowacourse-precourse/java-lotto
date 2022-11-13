@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.utils;
 
 public class ErrorMessage {
     public static final String ERROR_OVER_SIZE = "[ERROR] 로또 번호는 6개여야 합니다.";
