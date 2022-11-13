@@ -14,7 +14,8 @@ public enum ErrorMessage {
     WINNING_INPUT_NUMBER_ERROR("당첨 번호는 [1,2,3,4,5,6]와 같이 입력해주세요."),
     SEPARATOR_ERROR("당첨 번호는 쉼표(,)를 구분자로 5개 넣어주셔야 합니다."),
     BONUS_NUMBER_SIZE_ERROR("보너스 번호 숫자는 1개여야 합니다."),
-    BONUS_NOT_NUMBER_ERROR("보너스 번호는 숫자여야 합니다.");
+    BONUS_NOT_NUMBER_ERROR("보너스 번호는 숫자여야 합니다."),
+    BONUS_NUMBER_DUPLICATED_ERROR("보너스 번호는 당첨 번호와 중복되지 않아야 합니다.");
 
     private final String message;
 

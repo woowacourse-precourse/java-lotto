@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.Lottos;
 import lotto.domain.Money;
+import lotto.domain.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -32,9 +33,11 @@ public class LottoGame {
 
     private void drawLottery() {
         OutputView.printInputWinningNumber();
-        Lotto winningLotto = new Lotto(InputView.inputWinningNumber());
+        Lotto winningLottoNumber = new Lotto(InputView.inputWinningNumber());
         OutputView.printBlank();
 
         OutputView.printInputBonusNumber();
+        WinningLotto winningLotto = new WinningLotto(winningLottoNumber, InputView.inputBonusNumber());
+        OutputView.printBlank();
     }
 }
