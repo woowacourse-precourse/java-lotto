@@ -16,8 +16,7 @@ public class LottoMachine {
         for (int i = 0; i < lottoNum; i++) {
             addLotto(lottos);
         }
-
-        return null;
+        return lottos;
     }
 
     private void addLotto(List<Lotto> lottos) {
