@@ -79,4 +79,33 @@ public class ConfigTest {
                 .getCause()
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("0을 포함한 자연수 형식에 맞는 설정값일 때 정상적으로 작동되는지 확인한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1})
+    void testZeroOrNaturalNumber(int number) throws Exception {
+        Method checkZeroOrNaturalNumberMethod = Config.class
+                .getDeclaredMethod("checkZeroOrNaturalNumber", int.class);
+        checkZeroOrNaturalNumberMethod.setAccessible(true);
+
+        assertSimpleTest(() -> {
+            checkZeroOrNaturalNumberMethod.invoke(config, number);
+        });
+    }
+
+    @DisplayName("0을 포함한 자연수 형식에 맞는 설정값이 아닐 때 예외가 발생한다.")
+    @Test
+    void testNotZeroOrNaturalNumber() throws Exception {
+        Method checkZeroOrNaturalNumberMethod = Config.class
+                .getDeclaredMethod("checkZeroOrNaturalNumber", int.class);
+        checkZeroOrNaturalNumberMethod.setAccessible(true);
+
+        int number = -1;
+
+        assertThatThrownBy(() ->
+                checkZeroOrNaturalNumberMethod.invoke(config, number)
+        )
+                .getCause()
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
