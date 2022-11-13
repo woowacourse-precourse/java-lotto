@@ -51,8 +51,7 @@ public class InputView {
 
     private List<Integer> toNumbers(String winningNumbers) {
         List<Integer> numbers = Arrays.stream(winningNumbers.split(","))
-                .mapToInt(Integer::parseInt)
-                .boxed()
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
         Validator.validateWinningNumbersRange(numbers);
