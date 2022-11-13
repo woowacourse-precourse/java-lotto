@@ -1,6 +1,7 @@
 package lotto;
 
 import static lotto.LottoConstant.INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
+import static lotto.LottoConstant.INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE;
 
 public class LottoService {
 
@@ -11,6 +12,11 @@ public class LottoService {
         if (!input.chars().allMatch((Character::isDigit))) {
             throw new IllegalStateException(INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
-        return Integer.parseInt(input);
+        int amount = Integer.parseInt(input);
+        if (amount < 1000) {
+            throw new IllegalStateException(INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE);
+        }
+
+        return amount;
     }
 }
