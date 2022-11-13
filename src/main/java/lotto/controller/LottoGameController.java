@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
+import lotto.domain.Result;
 import lotto.view.UserInput;
 import lotto.view.UserOutput;
 
@@ -16,6 +17,8 @@ public class LottoGameController {
 
         final Lotto winLotto = getWinLotto();
         final Integer bonusNumber = getBonusNumber(winLotto);
+
+        UserOutput.outputWinStatistics(new Result(boughtLottos, winLotto, bonusNumber));
     }
 
     private Integer getBonusNumber(Lotto winLotto) {

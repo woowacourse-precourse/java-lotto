@@ -1,10 +1,14 @@
 package lotto.view;
 
+import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
+import lotto.domain.Result;
+import lotto.domain.WinRank;
 
 public class UserOutput {
     private static final String OUTPUT_BUY_LOTTOS = " 개를 구매했습니다.";
+    private static final String OUTPUT_WIN_STATISTICS = "당첨 통계\n---";
 
     public static void outputBuyLottos(Lottos lottos) {
         System.out.println("\n" + lottos.getNumberOfLottos().toString() + OUTPUT_BUY_LOTTOS);
@@ -14,5 +18,28 @@ public class UserOutput {
         }
 
         System.out.println();
+    }
+
+    public static void outputWinStatistics(Result result) {
+        System.out.println(OUTPUT_WIN_STATISTICS);
+        final Map<WinRank, Integer> prizeResult = result.getPrizeResult();
+
+        for (WinRank winRank : WinRank.getWinnerRanksExceptFail()) {
+            System.out.println(getEachWinStatistics(winRank, prizeResult));
+        }
+    }
+
+    private static String getEachWinStatistics(WinRank winRank, Map<WinRank, Integer> prizeResult) {
+        final String PRIZE_MESSAGE = "개 일치 (";
+        final String SECOND_PRIZE_MESSAGE = "5개 일치, 보너스 볼 일치 (";
+        final String WON_MESSAGE = "원)- ";
+        final String COUNT_MESSAGE = "개";
+
+        if (winRank.equals(WinRank.SECOND)) {
+            return SECOND_PRIZE_MESSAGE + winRank.getPrize() + WON_MESSAGE
+                    + prizeResult.get(winRank) + COUNT_MESSAGE;
+        }
+        return winRank.getMatched() + PRIZE_MESSAGE + winRank.getPrize() + WON_MESSAGE
+                + prizeResult.get(winRank) + COUNT_MESSAGE;
     }
 }

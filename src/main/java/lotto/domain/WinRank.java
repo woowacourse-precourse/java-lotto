@@ -1,6 +1,9 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public enum WinRank {
     FIRST(2_000_000_000, 6),
@@ -41,5 +44,18 @@ public enum WinRank {
     private static Integer getMatchedOfLotto(Lotto lotto, Lotto winLotto) {
         return (int) winLotto.getLotto().stream()
                 .filter(lotto.getLotto()::contains).count();
+    }
+
+    public static List<WinRank> getWinnerRanks() {
+        return Arrays.stream(WinRank.values())
+                .sequential()
+                .collect(Collectors.toList());
+    }
+
+    public static List<WinRank> getWinnerRanksExceptFail() {
+        return Arrays.stream(WinRank.values())
+                .filter(rank -> rank != WinRank.FAIL)
+                .sorted(Comparator.comparing(WinRank::getPrize))
+                .collect(Collectors.toList());
     }
 }
