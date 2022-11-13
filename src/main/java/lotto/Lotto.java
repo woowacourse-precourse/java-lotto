@@ -23,4 +23,8 @@ public class Lotto {
     private boolean checkSize() {
         return numbers.size() == 6;
     }
+
+    private boolean checkDuplicate() {
+        return numbers.stream().distinct().count() != 6;
+    }
 }
