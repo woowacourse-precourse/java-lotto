@@ -28,4 +28,10 @@ public class InputView {
         LottoValidator.validateWinningNumber(lotto);
         return lotto;
     }
+
+    public static int getBonusNumber(Lotto winningNumber) {
+        int BonusNumber = Integer.parseInt(Console.readLine());
+
+        return BonusNumber;
+    }
 }
