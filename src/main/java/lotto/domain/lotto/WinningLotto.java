@@ -1,8 +1,8 @@
 package lotto.domain.lotto;
 
 import java.util.List;
-import lotto.domain.statistics.MatchResult;
-import lotto.domain.statistics.PlaceCondition;
+import lotto.domain.place.MatchResult;
+import lotto.domain.place.PlaceCondition;
 
 public class WinningLotto extends LottoWithBonusNum {
 

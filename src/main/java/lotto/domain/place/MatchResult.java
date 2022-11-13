@@ -1,11 +1,11 @@
-package lotto.domain.statistics;
+package lotto.domain.place;
 
-import static lotto.domain.statistics.PlaceCondition.FIFTH_PLACE_CONDITION;
-import static lotto.domain.statistics.PlaceCondition.FIRST_PLACE_CONDITION;
-import static lotto.domain.statistics.PlaceCondition.FOURTH_PLACE_CONDITION;
-import static lotto.domain.statistics.PlaceCondition.NONE_CONDITION;
-import static lotto.domain.statistics.PlaceCondition.SECOND_PLACE_CONDITION;
-import static lotto.domain.statistics.PlaceCondition.THIRD_PLACE_CONDITION;
+import static lotto.domain.place.PlaceCondition.FIFTH_PLACE_CONDITION;
+import static lotto.domain.place.PlaceCondition.FIRST_PLACE_CONDITION;
+import static lotto.domain.place.PlaceCondition.FOURTH_PLACE_CONDITION;
+import static lotto.domain.place.PlaceCondition.NONE_CONDITION;
+import static lotto.domain.place.PlaceCondition.SECOND_PLACE_CONDITION;
+import static lotto.domain.place.PlaceCondition.THIRD_PLACE_CONDITION;
 
 import java.util.Arrays;
 
