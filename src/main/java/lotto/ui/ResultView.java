@@ -1,19 +1,19 @@
 package lotto.ui;
 
 import lotto.domain.lotto.Lottos;
-import lotto.domain.winningresult.WinningResults;
+import lotto.domain.winningresult.LottoStatistics;
 import lotto.ui.formatter.OutputFormatter;
 
 public class ResultView {
     private static final String LINE_BREAK = "\n";
 
     private final OutputFormatter<Lottos> lottosOutputFormatter;
-    private final OutputFormatter<WinningResults> resultOutputFormatter;
+    private final OutputFormatter<LottoStatistics> lottoStatisticsFormatter;
 
     public ResultView(OutputFormatter<Lottos> lottosOutputFormatter,
-                      OutputFormatter<WinningResults> resultOutputFormatter) {
+                      OutputFormatter<LottoStatistics> lottoStatisticsFormatter) {
         this.lottosOutputFormatter = lottosOutputFormatter;
-        this.resultOutputFormatter = resultOutputFormatter;
+        this.lottoStatisticsFormatter = lottoStatisticsFormatter;
     }
 
     public void printDrawnLottos(Lottos lottos) {
@@ -21,8 +21,8 @@ public class ResultView {
         System.out.println(lottosOutputFormatter.outputFormat(lottos));
     }
 
-    public void printWinningResult(WinningResults winningResults) {
+    public void printWinningResult(LottoStatistics lottoStatistics) {
         System.out.print(LINE_BREAK);
-        System.out.println(resultOutputFormatter.outputFormat(winningResults));
+        System.out.println(lottoStatisticsFormatter.outputFormat(lottoStatistics));
     }
 }

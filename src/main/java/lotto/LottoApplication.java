@@ -2,7 +2,7 @@ package lotto;
 
 import lotto.domain.lotto.LottoDraw;
 import lotto.domain.lotto.Lottos;
-import lotto.domain.winningresult.WinningResults;
+import lotto.domain.winningresult.LottoStatistics;
 import lotto.ui.InputView;
 import lotto.ui.ResultView;
 import lotto.ui.dto.LottoPurchasedAmount;
@@ -22,9 +22,9 @@ public class LottoApplication {
 
         resultView.printDrawnLottos(lottos);
         LottoDraw lottoDraw = inputView.getLottoDraw();
-        WinningResults winningResults = WinningResults.of(lottos, lottoDraw);
+        LottoStatistics lottoStatistics = LottoStatistics.of(lottos, lottoDraw);
 
-        resultView.printWinningResult(winningResults);
+        resultView.printWinningResult(lottoStatistics);
     }
 
     private Lottos generateLottos(int purchasedAmount) {

@@ -4,15 +4,15 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class WinningResultTypeTest {
+class WinningTypeTest {
     @Test
     public void 당첨_결과_생성_테스트() {
         int matchedCount = 4;
         boolean isBonusMatched = false;
 
-        WinningResultType winningResultType = WinningResultType.of(matchedCount, isBonusMatched);
+        WinningType winningType = WinningType.of(matchedCount, isBonusMatched);
 
-        Assertions.assertThat(winningResultType).isEqualTo(WinningResultType.FOURTH_PLACE);
+        Assertions.assertThat(winningType).isEqualTo(WinningType.FOURTH_PLACE);
     }
 
     @DisplayName("당첨 번호 5개만 일치하면 3등")
@@ -22,9 +22,9 @@ class WinningResultTypeTest {
         int matchedCount = 5;
         boolean isBonusMatched = false;
 
-        WinningResultType winningResultType = WinningResultType.of(matchedCount, isBonusMatched);
+        WinningType winningType = WinningType.of(matchedCount, isBonusMatched);
 
-        Assertions.assertThat(winningResultType).isEqualTo(WinningResultType.THIRD_PLACE);
+        Assertions.assertThat(winningType).isEqualTo(WinningType.THIRD_PLACE);
     }
 
     @DisplayName("당첨 번호 5개와 보너스 번호가 일치하면 2등")
@@ -33,9 +33,9 @@ class WinningResultTypeTest {
         int matchedCount = 5;
         boolean isBonusMatched = true;
 
-        WinningResultType winningResultType = WinningResultType.of(matchedCount, isBonusMatched);
+        WinningType winningType = WinningType.of(matchedCount, isBonusMatched);
 
-        Assertions.assertThat(winningResultType).isEqualTo(WinningResultType.SECOND_PLACE);
+        Assertions.assertThat(winningType).isEqualTo(WinningType.SECOND_PLACE);
     }
 
     @DisplayName("일치하는 당첨 번호가 없으면 반환하지 않음")
@@ -45,7 +45,7 @@ class WinningResultTypeTest {
         boolean isBonusMatched = false;
 
         Assertions.assertThatThrownBy(() ->
-                WinningResultType.of(matchedCount, isBonusMatched))
+                WinningType.of(matchedCount, isBonusMatched))
                 .isInstanceOf(Exception.class);
     }
 

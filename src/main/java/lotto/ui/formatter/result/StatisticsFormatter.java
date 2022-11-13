@@ -2,30 +2,30 @@ package lotto.ui.formatter.result;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
-import lotto.domain.winningresult.WinningResultType;
-import lotto.domain.winningresult.WinningResults;
+import lotto.domain.winningresult.WinningType;
+import lotto.domain.winningresult.LottoStatistics;
 import lotto.ui.formatter.OutputFormatter;
 
-public class WinningResultsFormatter implements OutputFormatter<WinningResults> {
+public class StatisticsFormatter implements OutputFormatter<LottoStatistics> {
     private static final String WINNING_RESULT_PREFIX = "당첨 통계";
     private static final String RESULT_START_DIVIDER = "---";
     private static final String LINE_BREAK = "\n";
     private static final String COUNT_DASH = " - ";
     private static final String COUNT_UNIT = "개";
 
-    private final OutputFormatter<WinningResultType> winningResultTypeFormatter;
+    private final OutputFormatter<WinningType> winningTypeFormatter;
 
-    public WinningResultsFormatter(OutputFormatter<WinningResultType> winningResultTypeFormatter) {
-        this.winningResultTypeFormatter = winningResultTypeFormatter;
+    public StatisticsFormatter(OutputFormatter<WinningType> winningTypeFormatter) {
+        this.winningTypeFormatter = winningTypeFormatter;
     }
 
     @Override
-    public String outputFormat(WinningResults winningResults) {
+    public String outputFormat(LottoStatistics lottoStatistics) {
         StringBuilder winningResultsFormat = new StringBuilder();
 
         appendResultPrefix(winningResultsFormat);
-        appendResultAmount(winningResultsFormat, winningResults);
-        appendRewardRate(winningResultsFormat, winningResults);
+        appendResultAmount(winningResultsFormat, lottoStatistics);
+        appendRewardRate(winningResultsFormat, lottoStatistics);
 
         return winningResultsFormat.toString();
     }
@@ -38,26 +38,26 @@ public class WinningResultsFormatter implements OutputFormatter<WinningResults> 
                 .append(LINE_BREAK);
     }
 
-    private void appendResultAmount(StringBuilder winningResultsFormat, WinningResults winningResults) {
-        Arrays.stream(WinningResultType.values())
+    private void appendResultAmount(StringBuilder winningResultsFormat, LottoStatistics lottoStatistics) {
+        Arrays.stream(WinningType.values())
                 .forEach(o -> {
-                    int count = winningResults.count(o);
+                    int count = lottoStatistics.count(o);
                     winningResultsFormat.append(getSingleResultFormatWithCount(count, o));
                 });
     }
 
-    private StringBuilder getSingleResultFormatWithCount(int count, WinningResultType o) {
-        return new StringBuilder(winningResultTypeFormatter.outputFormat(o))
+    private StringBuilder getSingleResultFormatWithCount(int count, WinningType o) {
+        return new StringBuilder(winningTypeFormatter.outputFormat(o))
                 .append(COUNT_DASH)
                 .append(count)
                 .append(COUNT_UNIT)
                 .append(LINE_BREAK);
     }
 
-    private void appendRewardRate(StringBuilder winningResultsFormat, WinningResults winningResults) {
+    private void appendRewardRate(StringBuilder winningResultsFormat, LottoStatistics lottoStatistics) {
         winningResultsFormat
                 .append("총 수익률은 ")
-                .append(rateFormat(winningResults.calculateRewardRate()))
+                .append(rateFormat(lottoStatistics.calculateRewardRate()))
                 .append("%")
                 .append("입니다.");
     }

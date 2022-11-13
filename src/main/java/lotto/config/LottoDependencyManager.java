@@ -4,8 +4,8 @@ import lotto.ui.InputView;
 import lotto.ui.ResultView;
 import lotto.ui.formatter.lottos.LottoFormatter;
 import lotto.ui.formatter.lottos.LottosFormatter;
-import lotto.ui.formatter.result.WinningResultFormatter;
-import lotto.ui.formatter.result.WinningResultsFormatter;
+import lotto.ui.formatter.result.WinningTypeFormatter;
+import lotto.ui.formatter.result.StatisticsFormatter;
 
 public class LottoDependencyManager {
     private InputView inputView;
@@ -21,7 +21,7 @@ public class LottoDependencyManager {
 
     public ResultView resultView() {
         if (resultView == null) {
-            this.resultView = new ResultView(lottosFormatter(), winningResultsFormatter());
+            this.resultView = new ResultView(lottosFormatter(), statisticsFormatter());
         }
 
         return resultView;
@@ -35,11 +35,11 @@ public class LottoDependencyManager {
         return new LottoFormatter();
     }
 
-    private WinningResultsFormatter winningResultsFormatter() {
-        return new WinningResultsFormatter(winningResultFormatter());
+    private StatisticsFormatter statisticsFormatter() {
+        return new StatisticsFormatter(winningTypeFormatter());
     }
 
-    private WinningResultFormatter winningResultFormatter() {
-        return new WinningResultFormatter();
+    private WinningTypeFormatter winningTypeFormatter() {
+        return new WinningTypeFormatter();
     }
 }

@@ -6,29 +6,29 @@ import java.util.stream.Collectors;
 import lotto.domain.lotto.LottoDraw;
 import lotto.domain.lotto.Lottos;
 
-public class WinningResults {
-    private final List<WinningResultType> winningResultTypes;
+public class LottoStatistics {
+    private final List<WinningType> winningTypes;
     private final int purchasedAmount;
 
-    private WinningResults(List<WinningResultType> winningResultTypes, int purchasedAmount) {
-        this.winningResultTypes = winningResultTypes;
+    private LottoStatistics(List<WinningType> winningTypes, int purchasedAmount) {
+        this.winningTypes = winningTypes;
         this.purchasedAmount = purchasedAmount;
     }
 
-    public static WinningResults of(Lottos lottos, LottoDraw lottoDraw) {
-        List<WinningResultType> winningResultTypes = lottos.lottoStream()
+    public static LottoStatistics of(Lottos lottos, LottoDraw lottoDraw) {
+        List<WinningType> winningTypes = lottos.lottoStream()
                 .map(lottoDraw::match)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
         int purchasedAmount = lottos.purchasedLottosAmount();
 
-        return new WinningResults(winningResultTypes, purchasedAmount);
+        return new LottoStatistics(winningTypes, purchasedAmount);
     }
 
-    public int count(WinningResultType winningResultType) {
-        return (int) winningResultTypes.stream()
-                .filter(o -> o == winningResultType)
+    public int count(WinningType winningType) {
+        return (int) winningTypes.stream()
+                .filter(o -> o == winningType)
                 .count();
     }
 
@@ -38,8 +38,8 @@ public class WinningResults {
     }
 
     private int calculateTotalRewardAmount() {
-        return winningResultTypes.stream()
-                .map(WinningResultType::getReward)
+        return winningTypes.stream()
+                .map(WinningType::getReward)
                 .mapToInt(o -> o)
                 .sum();
     }

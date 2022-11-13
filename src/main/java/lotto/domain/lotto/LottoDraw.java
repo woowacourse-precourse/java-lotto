@@ -3,7 +3,7 @@ package lotto.domain.lotto;
 import java.util.List;
 import java.util.NoSuchElementException;
 import lotto.common.InputErrors;
-import lotto.domain.winningresult.WinningResultType;
+import lotto.domain.winningresult.WinningType;
 
 public class LottoDraw {
     private final List<Integer> winNumbers;
@@ -19,12 +19,12 @@ public class LottoDraw {
         return new LottoDraw(winNumbers, bonusNumber);
     }
 
-    public WinningResultType match(Lotto lotto) {
+    public WinningType match(Lotto lotto) {
         int matchedCount = calculateMatchedCount(lotto);
         boolean isBonusMatched = isBonusNumberMatched(lotto);
 
         try {
-            return WinningResultType.of(matchedCount, isBonusMatched);
+            return WinningType.of(matchedCount, isBonusMatched);
         } catch (NoSuchElementException e) {
             return null;
         }

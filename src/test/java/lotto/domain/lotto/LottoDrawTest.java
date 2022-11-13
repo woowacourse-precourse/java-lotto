@@ -2,7 +2,7 @@ package lotto.domain.lotto;
 
 import java.util.List;
 import lotto.common.InputErrors;
-import lotto.domain.winningresult.WinningResultType;
+import lotto.domain.winningresult.WinningType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -28,10 +28,10 @@ class LottoDrawTest {
         LottoDraw lottoDraw = LottoDraw.of(List.of(1, 3, 5, 7, 9, 11), 4);
 
         //when
-        WinningResultType winningResultType = lottoDraw.match(lotto);
+        WinningType winningType = lottoDraw.match(lotto);
 
         //then
-        Assertions.assertThat(winningResultType).isEqualTo(WinningResultType.FIFTH_PLACE);
+        Assertions.assertThat(winningType).isEqualTo(WinningType.FIFTH_PLACE);
     }
 
     @Test
@@ -41,10 +41,10 @@ class LottoDrawTest {
         LottoDraw lottoDraw = LottoDraw.of(List.of(1, 2, 3, 4, 5, 7), 8);
 
         //when
-        WinningResultType winningResultType = lottoDraw.match(lotto);
+        WinningType winningType = lottoDraw.match(lotto);
 
         //then
-        Assertions.assertThat(winningResultType).isEqualTo(WinningResultType.THIRD_PLACE);
+        Assertions.assertThat(winningType).isEqualTo(WinningType.THIRD_PLACE);
     }
 
     @Test
@@ -54,10 +54,10 @@ class LottoDrawTest {
         LottoDraw lottoDraw = LottoDraw.of(List.of(1, 2, 3, 4, 5, 7), 6);
 
         //when
-        WinningResultType winningResultType = lottoDraw.match(lotto);
+        WinningType winningType = lottoDraw.match(lotto);
 
         //then
-        Assertions.assertThat(winningResultType).isEqualTo(WinningResultType.SECOND_PLACE);
+        Assertions.assertThat(winningType).isEqualTo(WinningType.SECOND_PLACE);
     }
 
 
