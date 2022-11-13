@@ -41,4 +41,8 @@ public abstract class Utility {
         }
         return _winningNumbers;
     }
+
+    public double profitPercentage(long spentAmount, long totalPrizeAmount){
+        return Math.round((totalPrizeAmount/spentAmount)*100)/100.0;
+    }
 }
