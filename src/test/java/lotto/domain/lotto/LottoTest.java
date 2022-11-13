@@ -19,6 +19,9 @@ class LottoTest {
     void 로또_번호의_개수가_6개가_넘어가면_예외가_발생한다() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> new Lotto("1,2,3,4,5,6,7"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -39,8 +42,11 @@ class LottoTest {
                         .map(Integer::parseInt)
                         .collect(Collectors.toList())
         );
-
+        var lotto1 = new Lotto(input);
         assertThat(lotto.numbers()).isSorted();
+        assertThat(lotto1.numbers()).isSorted();
+
     }
+
 
 }
