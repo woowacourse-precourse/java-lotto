@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class ExceptionTest extends NsTest {
 
     @Test
-    void allWinningCaseTest() {
+    void notThousandException() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
 
@@ -22,7 +22,31 @@ public class ExceptionTest extends NsTest {
         );
     }
 
+    @Test
+    void winnerOutOfRangeException(){
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    assertThatThrownBy(()->run("1000","1,2,3,4,5,46")).isInstanceOf(IllegalArgumentException.class);
+                },
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    assertThatThrownBy(()->run("1000","0,2,3,4,5,6")).isInstanceOf(IllegalArgumentException.class);
+                },
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+    }
+    @Test
+    void duplicatedInputException() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
 
+                    assertThatThrownBy(()->run("1500","1,1,3,4,5,6")).isInstanceOf(IllegalArgumentException.class);
+                },
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+    }
     @Override
     protected void runMain() {
         Application.main(new String[]{});
