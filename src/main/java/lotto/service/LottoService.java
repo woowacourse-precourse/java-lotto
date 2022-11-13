@@ -33,6 +33,14 @@ public class LottoService {
         return amount / 1000;
     }
 
+    public List<Lotto> getLottoNumbers(int purchaseCount) {
+        List<Lotto> lottos = new ArrayList<>();
+        while (lottos.size() < purchaseCount) {
+            lottos.add(generateLottoNumber());
+        }
+        return lottos;
+    }
+
     private Lotto generateLottoNumber() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 6) {
