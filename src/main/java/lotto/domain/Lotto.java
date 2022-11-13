@@ -43,19 +43,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         validateSize(numbers);
-        validateRange(numbers);
         validateDuplication(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
-        }
-    }
-
-    private void validateRange(List<Integer> numbers) {
-        for (int number : numbers) {
-            new LottoNumber(number);
         }
     }
 
