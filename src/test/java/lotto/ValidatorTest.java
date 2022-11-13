@@ -29,4 +29,11 @@ public class ValidatorTest {
         assertThatThrownBy(() -> inputValidator.validateWinningNumbers("1,2,3,46,4,6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호에 숫자 외의 문자가 존재하면 예외가 발생한다.")
+    @Test
+    void createBonusNumbersByString() {
+        assertThatThrownBy(() -> inputValidator.validateBonusNumber("fff"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
