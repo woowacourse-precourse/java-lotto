@@ -97,10 +97,10 @@ class LottoTest {
     @DisplayName("입력한 가격에 상응하는 로또를 발행한다.")
     @Test
     void lottoPurchase() {
-        Integer money = 3000;
+        Integer money = LottoEnum.PURCHASE_UNIT.getValue() * 3;
 
-        List<Lotto> purchasedLottos = Lotto.purchase(3000);
-        assertThat(purchasedLottos.size()).isEqualTo(3000 / LottoEnum.PURCHASE_UNIT.getValue());
+        List<Lotto> purchasedLottos = Lotto.purchase(money);
+        assertThat(purchasedLottos.size()).isEqualTo(money / LottoEnum.PURCHASE_UNIT.getValue());
     }
 
     @DisplayName("로또 구매의 단위가 맞지 않는 경우 에러가 발생한다.")
