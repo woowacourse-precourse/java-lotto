@@ -15,6 +15,11 @@ public class LottoLogic {
     private List<Lotto> buyLottoList;
     private List<Integer> prizeNumbers;
     private int bonusNumber;
+    private int threeHit = 0;
+    private int fourHit = 0;
+    private int fiveHit = 0;
+    private int fiveHitAndBonus = 0;
+    private int sixHit = 0;
 
     public LottoLogic(int money) {
         this.money = money;
@@ -55,5 +60,47 @@ public class LottoLogic {
 
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
+    }
+
+    private int comparePrizeNumber(Lotto lotto) {
+        int count = 0;
+        for (int prizeNumber : this.prizeNumbers) {
+            if (lotto.getNumbers().contains(prizeNumber)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private boolean compareBonusNumber(Lotto lotto) {
+        return lotto.getNumbers().contains(this.bonusNumber);
+    }
+
+    private void calculateCountHit() {
+        for (Lotto lotto : this.buyLottoList) {
+            int hitCount = comparePrizeNumber(lotto);
+            if (hitCount >= 3) {
+                boolean bonusHit = compareBonusNumber(lotto);
+                countLottoHit(hitCount, bonusHit);
+            }
+        }
+    }
+
+    private void countLottoHit(int hitCount, boolean bonusHit) {
+        if (hitCount == 3) {
+            this.threeHit++;
+        }
+        if (hitCount == 4) {
+            this.fourHit++;
+        }
+        if (hitCount == 5 && bonusHit) {
+            this.fiveHitAndBonus++;
+        }
+        if (hitCount == 5 && !bonusHit) {
+            this.fiveHitAndBonus++;
+        }
+        if (hitCount == 6) {
+            this.sixHit++;
+        }
     }
 }
