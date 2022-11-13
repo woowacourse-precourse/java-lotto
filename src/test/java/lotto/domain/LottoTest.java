@@ -35,4 +35,34 @@ class LottoTest {
             assertThat(lottoWinCount).isEqualTo(4);
         }
     }
+
+    @DisplayName("보너스 번호가 당첨되지 않은 경우 0 을 반환한다.")
+    @Test
+    void getBonusNumNotMatch() {
+        try (MockedStatic<LottoGenerator> randoms = Mockito.mockStatic(LottoGenerator.class)) {
+            randoms.when(verification).thenReturn(expected);
+
+            Lotto lotto = Lotto.create();
+            int bonusNum = 7;
+
+            int bonusWinCount = lotto.findBonusNumberWinCount(bonusNum);
+
+            assertThat(bonusWinCount).isEqualTo(0);
+        }
+    }
+
+    @DisplayName("보너스 번호가 당첨된 경우 1을 반환한다.")
+    @Test
+    void getBonusNumMatch() {
+        try (MockedStatic<LottoGenerator> randoms = Mockito.mockStatic(LottoGenerator.class)) {
+            randoms.when(verification).thenReturn(expected);
+
+            Lotto lotto = Lotto.create();
+            int bonusNum = 32;
+
+            int bonusWinCount = lotto.findBonusNumberWinCount(bonusNum);
+
+            assertThat(bonusWinCount).isEqualTo(1);
+        }
+    }
 }
