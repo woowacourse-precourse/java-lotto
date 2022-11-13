@@ -52,7 +52,6 @@ public class CalculateResultService {
             }
             profit += lottoResult.get(rank) * rank.getPrizeMoney();
         }
-        System.out.println("profit = " + profit);
         return profit;
     }
 }
