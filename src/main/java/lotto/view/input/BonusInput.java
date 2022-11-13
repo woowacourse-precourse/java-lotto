@@ -2,21 +2,22 @@ package lotto.view.input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import java.util.ArrayList;
 import java.util.List;
 import lotto.validation.WinningValidation;
 
 public class BonusInput extends Input {
     private final WinningValidation validation = new WinningValidation();
+    private final List<Integer> winnings;
     private String input;
-    // 당첨 번호 입력을 List<Integer> 형태로 가져오기 필요
-    private List<Integer> winnings;
+
+    public BonusInput(List<Integer> winnings) {
+        this.winnings = winnings;
+    }
 
     @Override
     public String getInput() {
         input = readLine();
-        winnings = new ArrayList<>();
-        validation.isValidBonus(input, winnings);
+        validation.isValidBonus(input, this.winnings);
         return input;
     }
 }
