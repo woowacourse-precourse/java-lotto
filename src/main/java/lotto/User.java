@@ -20,10 +20,7 @@ public class User {
     // 구매한 크기만큼의 로또 제공 메소드
     public List<List<Integer>> generatingLotto(List<List<Integer>> boughtLotto, int lottoCount){
         for(int i = 0; i <lottoCount; i++){
-            while (boughtLotto.get(i).size() < 6){
-                int lottoNum = Randoms.pickNumberInRange(1,45);
-                if(!boughtLotto.get(i).contains(lottoNum)) boughtLotto.get(i).add(lottoCount);
-            }
+            boughtLotto.add(Randoms.pickUniqueNumbersInRange(1,45,6));
         }
         return boughtLotto;
     }
