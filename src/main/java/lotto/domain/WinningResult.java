@@ -12,4 +12,8 @@ public class WinningResult {
     public WinningResult(Map<Winning, Integer> winningResultMap) {
         this.winningResultMap = winningResultMap;
     }
+
+    public Map<Winning, Integer> getWinningResultMap() {
+        return winningResultMap;
+    }
 }

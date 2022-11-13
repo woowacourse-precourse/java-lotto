@@ -28,6 +28,5 @@ public class LottoController {
         Lotto lotto = new Lotto(inputView.getWinningNums(), inputView.getBonusNum());
         WinningResult winningResult = new WinningResult(lottoService.confirmWinningResult(randomLotto, lotto));
         resultView.showWinningResult(winningResult);
-
     }
 }
