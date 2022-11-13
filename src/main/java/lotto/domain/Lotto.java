@@ -8,7 +8,9 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateSize(numbers);
+        validateDuplicate(numbers);
+        validateRange(numbers);
         this.numbers = numbers;
     }
 
@@ -16,7 +18,27 @@ public class Lotto {
         return numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (1 > number || number > 45) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        if (deDuplication(numbers) != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private long deDuplication(List<Integer> numbers) {
+        return numbers.stream()
+                .distinct()
+                .count();
+    }
+
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }

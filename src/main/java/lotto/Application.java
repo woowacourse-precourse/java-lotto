@@ -8,5 +8,6 @@ public class Application {
         LottoController lottoController = new LottoController();
         lottoController.purchase();
         lottoController.showPurchaseLotteries();
+        lottoController.inputWinningNumber();
     }
 }
