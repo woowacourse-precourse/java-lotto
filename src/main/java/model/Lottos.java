@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static constant.Config.MAX_NUMBER;
 import static constant.Config.MIN_NUMBER;
@@ -40,5 +42,16 @@ public class Lottos {
     private List<Integer> getNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT);
         return numbers;
+    }
+
+    public WinningResult getTotalWinningResult(WinningLotto winningLotto) {
+        Map<Win, Integer> winningResults = new HashMap<>();
+
+        for (Lotto lotto : lottos) {
+            WinningResult winningResult = lotto.getWinningResult(winningLotto);
+            winningResults.putAll(winningResult.getWinningResult());
+        }
+
+        return new WinningResult(winningResults);
     }
 }
