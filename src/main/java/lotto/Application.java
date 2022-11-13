@@ -13,7 +13,6 @@ public class Application {
         user.printLotto();
 
         Lotto lotto = user.inputWinningNumber();
-
         int bonus = lotto.inputBonus();
 
         for (List numbers : user.lotteries) {
