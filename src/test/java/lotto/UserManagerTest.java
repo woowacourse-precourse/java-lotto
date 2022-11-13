@@ -39,8 +39,18 @@ public class UserManagerTest {
     }
 
     @Test
-    void getPrice_숫자_이외_값_예외_테스트() {
+    void getPrice_숫자_이외_값_예외_테스트1() {
         String price = "10아랄라000";
+        putSystemInput(price);
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_price)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getPrice_숫자_이외_값_예외_테스트2() {
+        String price = "10000j";
         putSystemInput(price);
 
         assertSimpleTest(() ->
