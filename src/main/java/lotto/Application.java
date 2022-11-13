@@ -33,7 +33,8 @@ public class Application {
         int FiveS = count.CheckFiveS(result);
         int six = count.CheckSix(result);
         ResultImpl UserResult = new ResultImpl();
-        UserResult.ReturnResult(three, four, five, FiveS, six);
+        UserResult.ReturnResult(three, four, five, FiveS, six,money);
+
 
 
 
