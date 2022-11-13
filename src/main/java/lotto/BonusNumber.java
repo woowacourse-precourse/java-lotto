@@ -10,11 +10,15 @@ public class BonusNumber {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public BonusNumber(String bonusNumber, List<Integer> winNumber) {
+    public BonusNumber(String bonusNumber, Lotto winNumber) {
         int tmpBonusNumber = validateBonusNumberType(bonusNumber);
         validateBonusNumberRange(tmpBonusNumber);
         validateBonusNumberReplicate(tmpBonusNumber, winNumber);
         this.bonusNumber = tmpBonusNumber;
+    }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
     }
 
     public int validateBonusNumberType(String bonusNumber) {
@@ -35,8 +39,8 @@ public class BonusNumber {
         }
     }
 
-    public void validateBonusNumberReplicate(int bonusNumber, List<Integer> numbers) {
-        if (numbers.contains(bonusNumber)) {
+    public void validateBonusNumberReplicate(int bonusNumber, Lotto numbers) {
+        if (numbers.getLotto().contains(bonusNumber)) {
             System.out.println("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
             throw new IllegalArgumentException();
         }

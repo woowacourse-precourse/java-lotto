@@ -51,4 +51,15 @@ public class Lotto {
 
         return correctNumbers.size();
     }
+
+    public boolean compareWithBonusNumber(BonusNumber bonusNumber) {
+
+        boolean containBonusNumber = false;
+
+        if (this.numbers.contains(bonusNumber.getBonusNumber())) {
+            containBonusNumber = true;
+        }
+
+        return containBonusNumber;
+    }
 }

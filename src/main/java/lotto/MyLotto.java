@@ -3,15 +3,14 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 public class MyLotto {
 
     private List<Lotto> myLotto;
     private int totalPrize;
-    private List<Integer> eachLottoPrize;
+    private HashMap<String, Integer> eachLottoPrize;
 
     public MyLotto(int purchaseAmount) {
         List<Lotto> tmpMyLotto = createMyLotto(purchaseAmount);
