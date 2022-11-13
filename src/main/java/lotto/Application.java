@@ -1,14 +1,13 @@
 package lotto;
 
 import lotto.input.NextStepInputReader;
+import lotto.random.NextStepLottoNumberGenerator;
+import lotto.view.MainView;
 
 public class Application {
     public static void main(String[] args) {
-        try {
-            User user = new User(new NextStepInputReader());
-            user.askPurchaseAmount();
-        } catch (IllegalArgumentException e) {
-            Logger.printError(e.getMessage());
-        }
+        User user = new User(new NextStepInputReader());
+        LotteryPublisher publisher = new LotteryPublisher(new NextStepLottoNumberGenerator());
+        new MainView(user, publisher).run();
     }
 }
