@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Comparator;
 import java.util.List;
 
 import static lotto.domain.Utils.PATTERN;
@@ -20,6 +21,8 @@ public class WinningNums {
             throw new IllegalArgumentException("[ERROR] 입력하신 문자열의 패턴이 올바르지 않습니다.");
         }
         List<Integer> nums = separateNums(winNums);
+        nums.sort(Comparator.naturalOrder());
+
         if (!isNotDuplicate(nums)) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
         }
