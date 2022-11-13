@@ -22,6 +22,10 @@ public class LottoManager {
             throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값을 입력했습니다.");
         }
 
+        if(money<=0){
+            throw new IllegalArgumentException("[ERROR] 자연수 값이여야 합니다.");
+        }
+
         if(money%1000!=0){
             throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해야 합니다.");
         }
