@@ -31,9 +31,11 @@ public enum Rank {
                 .findFirst()
                 .orElse(NOTHING);
     }
+    
     private static boolean isSecondPlace(WinningLotto winningLotto, List<Integer> lottoNumbers, int matchCount) {
         return isSecondMatchCount(matchCount) && winningLotto.isMatchedBonusNumber(lottoNumbers);
     }
+
     private static boolean isSecondMatchCount(int matchCount) {
         return Rank.SECOND.getMatchCount() == matchCount;
     }
