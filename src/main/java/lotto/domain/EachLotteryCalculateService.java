@@ -5,14 +5,14 @@ import lotto.model.Bonus;
 import lotto.model.Lotto;
 import lotto.model.Rank;
 
-public class EachNumberCalculateService {
+public class EachLotteryCalculateService {
 
     private final static int BONUSNUMBER = 5;
 
     private final Lotto winningLottery;
     private final int bonusNumber;
 
-    public EachNumberCalculateService(Lotto lottery, int bonusNumber){
+    public EachLotteryCalculateService(Lotto lottery, int bonusNumber){
         winningLottery = lottery;
         this.bonusNumber = bonusNumber;
     }

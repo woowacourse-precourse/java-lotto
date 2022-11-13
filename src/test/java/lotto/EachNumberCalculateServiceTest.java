@@ -2,7 +2,7 @@ package lotto;
 
 import java.util.LinkedList;
 import java.util.List;
-import lotto.domain.EachNumberCalculateService;
+import lotto.domain.EachLotteryCalculateService;
 import lotto.model.Lotto;
 import lotto.model.Rank;
 import org.junit.jupiter.api.DisplayName;
@@ -12,12 +12,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EachNumberCalculateServiceTest {
-    EachNumberCalculateService eachNumberCalculateService;
+    EachLotteryCalculateService eachNumberCalculateService;
 
     EachNumberCalculateServiceTest(){
         List<Integer> lotteryNumbers = new LinkedList<>(List.of(1, 2, 3, 4, 5, 6));
         Lotto lottery = new Lotto(lotteryNumbers);
-        eachNumberCalculateService = new EachNumberCalculateService(lottery, 45);
+        eachNumberCalculateService = new EachLotteryCalculateService(lottery, 45);
     }
 
     @DisplayName("로또 숫자 0개 일치 테스트")

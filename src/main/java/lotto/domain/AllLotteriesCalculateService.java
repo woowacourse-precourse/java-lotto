@@ -7,12 +7,12 @@ import java.util.Map;
 import lotto.model.Lotto;
 import lotto.model.Rank;
 
-public class CalculateAllWinningService {
+public class AllLotteriesCalculateService {
 
-    private final EachNumberCalculateService eachNumberCalculateService;
+    private final EachLotteryCalculateService eachNumberCalculateService;
 
-    public CalculateAllWinningService(Lotto winningLottery, int bonus){
-        eachNumberCalculateService = new EachNumberCalculateService(winningLottery, bonus);
+    public AllLotteriesCalculateService(Lotto winningLottery, int bonus){
+        eachNumberCalculateService = new EachLotteryCalculateService(winningLottery, bonus);
     }
 
     public Map<Rank, Integer> calculate(List<Lotto> lotteries){
