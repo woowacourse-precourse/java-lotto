@@ -45,6 +45,23 @@ public class RankTest {
         assertThat(rank.matchCount()).isEqualTo(matchCount);
     }
 
+    private static Stream<Arguments> provideForMatchBonusNumber() {
+        return Stream.of(
+                Arguments.of(Rank.FIRST, false),
+                Arguments.of(Rank.SECOND, true),
+                Arguments.of(Rank.THIRD, false),
+                Arguments.of(Rank.FOURTH, false),
+                Arguments.of(Rank.FIFTH, false),
+                Arguments.of(Rank.MISS, false)
+        );
+    }
+
+    @ParameterizedTest(name = "보너스 번호가 일치해야 하는지 반환한다.")
+    @MethodSource("provideForMatchBonusNumber")
+    void matchBonusNumber(Rank rank, boolean matchBonusNumber) {
+        assertThat(rank.matchBonusNumber()).isEqualTo(matchBonusNumber);
+    }
+
     private static Stream<Arguments> provideForReward() {
         return Stream.of(
                 Arguments.of(Rank.FIRST, new Money(2_000_000_000)),
