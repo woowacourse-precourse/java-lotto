@@ -12,26 +12,30 @@
     - ~~담첨 금액~~
     - ~~당첨 금액 Format~~
 - ~~Game 클래스 정의~~
-  - public void run
-  - private void play
+  - ~~public void run~~
+  - ~~private void play~~
 - ~~User 클래스 정의~~
-    - List<Lotto> lotteries
-    - List<List<Result>> results
-    - Integer lotteryCount
-    - Integer winnings
+    - ~~List<Lotto> lotteries~~
+    - ~~List<List<Result>> results~~
+    - ~~Integer lotteryCount~~
+    - ~~Integer winnings~~
 - ~~Checker 클래스 정의~~
     - ~~public void checkAmountInput~~
         - ~~public int checkNumeric~~
         - ~~public void checkNegative~~
         - ~~public void checkAmount~~
         - ~~public void checkRemain~~
-    - public boolean checkIllegalArgument
-    - public int checkCoincide
-    - public float checkLotteryReturn
+    - ~~public boolean checkIllegalArgument~~
+    - ~~public int checkCoincide~~
+    - ~~public float checkLotteryReturn~~
 - ~~Result 클래스 정의~~
-    - Lotto lottery
-    - Integer coincideCount
+    - ~~Lotto lottery~~
+    - ~~Integer coincideCount~~
 - ~~WinningLotto 클래스 정의~~
-    - extends Lotto
+    - ~~extends Lotto~~
 - ~~Application 클래스~~
     - ~~Create Game > run Game~~
+* * *
+## TEST 구현
+#### 단위 테스트 -
+#### 통합 테스트 -
