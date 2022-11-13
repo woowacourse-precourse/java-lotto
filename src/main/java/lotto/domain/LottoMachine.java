@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import static lotto.Config.BONUS_LOTTO_LENGTH;
+import static lotto.Config.LOTTO_LENGTH;
+
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +17,25 @@ public class LottoMachine {
     private static final String ALREADY_EXISTED_NUMBER_ERROR_MESSAGE = "번호가 중복되어 입력되었습니다.";
 
     public void draw(List<Integer> wins, List<Integer> bonuses) {
+        List<Integer> numbers = new ArrayList<>();
+
+        List<String> winInputs = inputNumber(LOTTO_LENGTH);
+        List<Integer> winNumbers = formatStringToNumber(winInputs);
+        winNumbers.stream().forEach(number -> {
+            checkAlreadyExistedNumber(numbers, number);
+            numbers.add(number);
+            wins.add(number);
+        });
+
+        if(BONUS_LOTTO_LENGTH > 0) {
+            List<String> bonusInputs = inputNumber(BONUS_LOTTO_LENGTH);
+            List<Integer> bonusNumbers = formatStringToNumber(bonusInputs);
+            bonusNumbers.stream().forEach(number -> {
+                checkAlreadyExistedNumber(numbers, number);
+                numbers.add(number);
+                bonuses.add(number);
+            });
+        }
     }
 
     private List<String> inputNumber(int length) {

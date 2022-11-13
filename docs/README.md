@@ -55,7 +55,7 @@
 
 ### 기능
 
-- [ ] 당첨과 보너스 번호 추첨 - draw
+- [x] 당첨과 보너스 번호 추첨 - draw
     - [x] 번호 리스트 혹은 번호 입력 - inputNumber
     - [x] 문자열 번호를 숫자 형식으로 변환 - formatStringToNumber
         - [x] 숫자 문자열인지 확인 - checkNumericString
