@@ -12,6 +12,21 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
+    public static int buyTicket(String money) {
+        try {
+            int intMoney = Integer.parseInt(money);
+            if (intMoney < 1000) {
+                throw new IllegalArgumentException("[ERROR] 금액은 1000원 이상으로 입력해 주세요.");
+            }
+            if (intMoney % 1000 != 0) {
+                throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위로 입력해 주세요.");
+            }
+            return intMoney / 1000;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 금액은 숫자로 입력해주세요.");
+        }
+    }
+
     public static List<Lotto> generateLottos(int nLotto) {
         List<Lotto> tickets = new ArrayList<>();
         for (int i = 0; i < nLotto; i++) {
