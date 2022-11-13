@@ -3,16 +3,21 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
-public abstract class View {
+public class View {
 
-    public abstract void show();
-
-    public String getResponse() {
-        return "";
+    public static void printView(String output) {
+        OutputView.printEndsWithEnter(output);
     }
 
-    public void setPrintElement(List<String> elements) {
-        return;
+    public static void printView(List<String> outputs) {
+        for (String output : outputs) {
+            OutputView.printEndsWithEnter(output);
+        }
+    }
+
+    public static String printViewWithUserInput(String output) {
+        OutputView.printEndsWithEnter(output);
+        return InputView.input();
     }
 
 }

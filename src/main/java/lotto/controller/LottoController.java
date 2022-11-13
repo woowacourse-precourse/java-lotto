@@ -18,11 +18,6 @@ import lotto.validation.BonusLottoValidation;
 import lotto.validation.LotteryWinningNumberValidation;
 import lotto.validation.LottoMoneyValidation;
 import lotto.validation.Validation;
-import lotto.view.BonusLottoView;
-import lotto.view.InputView;
-import lotto.view.LotteryWinningNumberView;
-import lotto.view.LottoBuyView;
-import lotto.view.PrintResultView;
 import lotto.view.View;
 
 public class LottoController {
@@ -65,16 +60,11 @@ public class LottoController {
     }
 
     private String lottoMoneyInputView() {
-        View lottoMoneyView = createLottoMoneyView();
-        lottoMoneyView.show();
-        return lottoMoneyView.getResponse();
+        return View.printViewWithUserInput(StringConstant.MONEY_INPUT_MESSAGE.getMessage());
     }
 
     private void printUserLottoCount(int lottoCount) {
-        View printUserLottoCountView = new PrintResultView();
-        List<String> lotto = new ArrayList<>(List.of(lottoCount + "개를 구매했습니다."));
-        printUserLottoCountView.setPrintElement(lotto);
-        printUserLottoCountView.show();
+        View.printView(lottoCount + "개를 구매했습니다.");
     }
 
     private static List<Lotto> createUserLotto(int lottoCount) {
@@ -83,12 +73,10 @@ public class LottoController {
     }
 
     private void printUserLottoResult(List<Lotto> userLotto) {
-        View userLottoView = new PrintResultView();
         List<String> userLottoResult = userLotto.stream()
                 .map(Object::toString)
                 .collect(Collectors.toList());
-        userLottoView.setPrintElement(userLottoResult);
-        userLottoView.show();
+        View.printView(userLottoResult);
     }
 
     private String getWinningLottoWithValidation() {

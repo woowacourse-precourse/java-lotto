@@ -1,7 +1,6 @@
 package lotto.validation;
 
 import java.util.List;
-import lotto.view.ErrorView;
 
 public abstract class Validation {
 
