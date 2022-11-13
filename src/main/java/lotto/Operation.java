@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Operation {
-    public static List<Lotto> buyLotto(int amount) {
+    static List<Lotto> buyLotto(int amount) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i=0; i<(amount/1000); i++){
             Lotto lotto= new Lotto(generateNumbers());
@@ -15,7 +15,7 @@ public class Operation {
         return lottos;
     }
 
-    public static List<Integer> generateNumbers() {
+    static List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 6) {
             int random = Randoms.pickNumberInRange(1, 45);
