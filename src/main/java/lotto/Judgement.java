@@ -25,23 +25,11 @@ public class Judgement {
     }
     public int checkPlaceWin(Set<Integer> tempwinner,Set<Integer> transformLotto,String bonusNumber){
         tempwinner.retainAll(transformLotto);
-        int place=0;
-        if(tempwinner.size()==6){
-            place= 1;
-        }
-        if(tempwinner.size()==5&&tempwinner.contains(Integer.parseInt(bonusNumber))){
-            place= 2;
-        }
-        if(tempwinner.size()==5&&!tempwinner.contains(Integer.parseInt(bonusNumber))){
-            place= 3;
-        }
-        if(tempwinner.size()==4){
-            place= 4;
-        }
-        if(tempwinner.size()==3){
-            place= 5;
-        }
-        return place;
+        Rank rank=Rank.getRank(tempwinner.size(),isContainsBonus(tempwinner,bonusNumber));
+        return rank.getRank();
+    }
+    public boolean isContainsBonus(Set<Integer> tempwinner,String bonusNumber){
+        return tempwinner.contains(Integer.parseInt(bonusNumber));
     }
     public void resultUpdate(int[] result,int place){
         result[place]++;
