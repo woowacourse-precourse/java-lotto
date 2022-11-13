@@ -6,13 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.practice.InputView.inputPurchase;
-import static lotto.practice.InputView.inputWinLotto;
-
 public class InputView {
 
     private static final String INPUT_PURCHASE_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String INPUT_WIN_LOTTO_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     public static int inputPurchase() {
         System.out.println(INPUT_PURCHASE_MESSAGE);
@@ -26,5 +24,11 @@ public class InputView {
         return Arrays.stream(lottoNumbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public static int inputBonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
+        String bonus = Console.readLine();
+        return Integer.parseInt(bonus);
     }
 }
