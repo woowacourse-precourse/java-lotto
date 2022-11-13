@@ -12,8 +12,7 @@ public class Application {
     }
 
     public static Input inputValues() {
-        System.out.println("구입금액을 입력해 주세요.");
-        int purchaseMoney = Integer.parseInt(Console.readLine());
+        int inputPurchaseAmount = inputPurchaseAmount();
         System.out.println("당첨 번호를 입력해 주세요.");
         List<String> winningNumbers = Arrays.asList(Console.readLine().split(","));
         System.out.println("보너스 번호를 입력해 주세요.");
@@ -21,6 +20,9 @@ public class Application {
         Input input = new Input(purchaseMoney, winningNumbers, bonusNumber);
     }
 
-    private static int inputWinningNumber
+    private static int inputPurchaseAmount() {
+        System.out.println("구입금액을 입력해 주세요.");
+        return Integer.parseInt(Console.readLine());
+    }
 
 }
