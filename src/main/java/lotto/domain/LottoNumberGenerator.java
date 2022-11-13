@@ -2,7 +2,6 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Collections;
 import java.util.List;
 
 public class LottoNumberGenerator {
