@@ -32,9 +32,9 @@ class YieldManagerTest {
 
         private Stream<Arguments> parameterProvider() {
             return Stream.of(
-                    Arguments.of(List.of(Award.FIVE_BONUS), Util.calculateYield(30_001_000, 1000)),
-                    Arguments.of(List.of(Award.THREE, Award.THREE), Util.calculateYield(12_000, 2000)),
-                    Arguments.of(List.of(Award.ZERO, Award.ZERO, Award.ZERO), Util.calculateYield(0, 3000))
+                    Arguments.of(List.of(Award.FIVE_BONUS), 30_000_00f),
+                    Arguments.of(List.of(Award.THREE, Award.THREE), 500.0f),
+                    Arguments.of(List.of(Award.ZERO, Award.ZERO, Award.ZERO), 0.0f)
             );
         }
     }
