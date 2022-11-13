@@ -62,6 +62,6 @@ public class Purchase {
      */
     private static void inputBonusNumber() {
         printInputBonusNumber();
-        System.out.println(Input.inputBonusNumber());
+        System.out.println(Input.inputBonusNumber(winningNumber.getNumbers()));
     }
 }

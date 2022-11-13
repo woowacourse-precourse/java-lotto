@@ -10,6 +10,8 @@ public class Input {
     private static final int LOTTO_PRICE = 1000;
     private static final int COMMA_COUNT = 5;
     private static final int LOTTO_COUNT = 6;
+    private static final int START_NUMBER = 1;
+    private static final int END_NUMBER = 45;
 
     /**
      * 구입 금액을 입력받는 메소드
@@ -18,7 +20,7 @@ public class Input {
         String amount = Console.readLine();
 
         if (!isValidAmount(amount)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 구매 금액 입니다.");
+            throw new IllegalArgumentException("[ERROR] 잘못된 구매 금액입니다.");
         }
 
         return Integer.parseInt(amount);
@@ -56,7 +58,7 @@ public class Input {
         String numbers = Console.readLine();
 
         if (!isValidWinningNumbers(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 당첨 번호 입니다.");
+            throw new IllegalArgumentException("[ERROR] 잘못된 당첨 번호입니다.");
         }
 
         return Arrays.stream(numbers.split(","))
@@ -92,8 +94,31 @@ public class Input {
         return numbers.split(",").length == LOTTO_COUNT;
     }
 
-    public static int inputBonusNumber() {
+    public static int inputBonusNumber(List<Integer> winningNumbers) {
         String number = Console.readLine();
+
+        if (!isValidBonusNumber(number, winningNumbers)) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 보너스 번호입니다.");
+        }
+
         return Integer.parseInt(number);
+    }
+
+    private static boolean isValidBonusNumber(String number, List<Integer> winningNumbers) {
+        return isNumeric(number) && isValidRange(number) && duplicatedWithWinningNumber(number, winningNumbers);
+    }
+
+    /**
+     * 숫자의 범위가 1~ 45 인지 확인하는 메소드
+     */
+    private static boolean isValidRange(String number) {
+        return Integer.parseInt(number) >= START_NUMBER && Integer.parseInt(number) <= END_NUMBER;
+    }
+
+    /**
+     * 보너스 번호가 당첨 번호와 중복되는지 확인하는 메소드
+     */
+    private static boolean duplicatedWithWinningNumber(String number, List<Integer> winningNumbers) {
+        return winningNumbers.contains(Integer.parseInt(number));
     }
 }
