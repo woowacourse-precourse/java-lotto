@@ -4,13 +4,14 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = numbersSort(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -30,5 +31,18 @@ public class Lotto {
         }
     }
 
+    private List<Integer> numbersSort(List<Integer> numbers) {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public String toString() {
+        return numbers.toString();
+    }
     // TODO: 추가 기능 구현
 }
