@@ -7,6 +7,16 @@ import java.util.StringTokenizer;
 
 public class LottoParser {
 
+    public static int parseToMoney(String rawString) {
+        int money;
+        try {
+            money = Integer.parseUnsignedInt(rawString);
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("[ERROR] 음수를 제외한 정수만 입력해주세요.");
+        }
+        return money;
+    }
+
     public static List<Integer> parseToIntegers(String rawInput) {
         final String splitter = ",";
         StringTokenizer st = new StringTokenizer(rawInput, splitter);

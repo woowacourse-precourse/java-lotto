@@ -22,12 +22,7 @@ public class LottoController {
 
     private void buyLottos() {
         String inputMoney = InputView.inputMoney();
-        int money;
-        try {
-            money = Integer.parseUnsignedInt(inputMoney);
-        } catch (NumberFormatException nfe) {
-            throw new IllegalArgumentException("[ERROR] 음수를 제외한 정수만 입력해주세요.");
-        }
+        int money = LottoParser.parseToMoney(inputMoney);
 
         List<Lotto> lottos = lottoService.buyLottos(money);
         OutputView.printBuyHistory(lottos);
