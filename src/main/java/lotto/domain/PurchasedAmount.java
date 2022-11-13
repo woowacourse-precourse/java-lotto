@@ -32,7 +32,7 @@ public class PurchasedAmount {
     private void validateUnit(String inputPrice) {
         int price = Integer.parseInt(inputPrice);
 
-        if (price % PURCHASED_AMOUNT_UNIT == 0) {
+        if (price % PURCHASED_AMOUNT_UNIT != 0) {
             throw new IllegalArgumentException(INVALID_MONEY_UNIT_INPUT_MESSAGE);
         }
     }
