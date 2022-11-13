@@ -6,7 +6,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.TooManyListenersException;
 
 public class I_O_System {
     public static final String BAGIC_ERROR_MESSAGE = "[ERROR]";
@@ -46,6 +45,9 @@ public class I_O_System {
         User_Lottery_Number(mylist);
         Enter_WinningNumber(Winning_Number);
         Bonus_Number = Bonus_Number_Enter(Bonus_Number);
+
+        Lotto lotto = new Lotto(Winning_Number);
+        lotto.Check_Lottey(Bonus_Number, Winning_Number, mylist);
     }
 
     private boolean Differnet_Error() {
@@ -84,7 +86,6 @@ public class I_O_System {
         for (int i = 0; i < arrayIn.length; i++) {
             Winning_Number.add(Integer.parseInt(arrayIn[i]));
         }
-        Lotto lotto = new Lotto(Winning_Number);
     }
 
     public void User_Lottery_Number(List<List<Integer>> mylist) {
