@@ -25,13 +25,15 @@ public class Application {
             l.printElements();
 
         // 당첨 번호를 입력받는 메서드 호출
+        System.out.println("당첨 번호를 입력해 주세요.");
         Lotto winningLotto = getWinningNumber();
-        winningLotto.printElements();
+
+        System.out.println("보너스 번호를 입력해 주세요.");
         // 보너스 번호를 입력받는 메서드 호출
         int bonusNumber = getBonusInput();
 
         // 당첨 통계를 구하는 메서드 호출
-
+        printResult(winningLotto, lottos, bonusNumber);
     }
 
     public static int getInputMoney() {
@@ -100,5 +102,49 @@ public class Application {
         }
 
         return lottos;
+    }
+
+
+    public static void printResult(Lotto winningLotto, List<Lotto> lottos, int bonusNumber) {
+        System.out.println("당첨 통계\n" + "---");
+
+        Result history = getEqualNumber(winningLotto, lottos, bonusNumber);
+    }
+
+    public static Result getEqualNumber(Lotto winningLotto, List<Lotto> lottos, int bonusNumber) {
+
+        Result history = new Result();
+
+        for(Lotto lotto : lottos) {
+            int equalCount = equalNumberCounter(winningLotto, lotto, bonusNumber);
+            lotto.printElements();
+            winningLotto.printElements();
+
+            if(equalCount == 3)
+                history.setEqualThree();
+            if(equalCount == 4)
+                history.setEqualFour();
+            if(equalCount == 5)
+                history.setEqualFive();
+            if(equalCount == 6)
+                history.setEqualSix();
+            if(equalCount == 7)
+                history.setEqualFiveWithBonus();
+        }
+
+        return history;
+    }
+
+    public static int equalNumberCounter(Lotto winningLotto, Lotto userLotto, int bonusNumber) {
+
+        int count = 0;
+        for(Integer num : winningLotto.getElements())
+            if (userLotto.getElements().contains(num))
+                count += 1;
+
+        if(count == 5)
+            if(userLotto.getElements().contains(bonusNumber)) count = 7;
+
+        return count;
     }
 }
