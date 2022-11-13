@@ -48,4 +48,8 @@ public class Store {
 
         return calculateCountsByRanks(customer.judgeLottoRanks(winningNumber, bonusNumber));
     }
+
+    public String findAllLottosByCustomer() {
+        return customer.getAllLottoToString();
+    }
 }

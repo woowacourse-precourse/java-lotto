@@ -35,4 +35,12 @@ public class Customer {
         }
         return lottoRanks;
     }
+
+    public String getAllLottoToString() {
+        StringBuilder buffer = new StringBuilder("");
+        for (Lotto lotto : lottos) {
+            buffer.append(lotto.toString()).append("\n");
+        }
+        return buffer.toString();
+    }
 }
