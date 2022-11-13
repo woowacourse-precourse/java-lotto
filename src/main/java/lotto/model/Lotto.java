@@ -34,7 +34,7 @@ public class Lotto {
     private void validateLottoRange(List<Integer> numbers){
         for(int number : numbers){
             if(number>45||number<1){
-                throw new IllegalArgumentException(LOTTO_NUMBERS_ARRANGE_EXCEPTION);
+                throw new IllegalArgumentException(LOTTO_NUMBERS_RANGE_EXCEPTION);
             }
         }
     }
