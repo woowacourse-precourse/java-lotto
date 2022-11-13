@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +12,12 @@ public class LottoResult {
         this.lottoResult = drawLotto(lottoTicket, lottoWinningNumber);
     }
 
+    public Map<Rank, Integer> getLottoResult() {
+        return this.lottoResult;
+    }
+
     private static Map<Rank, Integer> drawLotto(LottoTicket lottoTicket, LottoWinningNumber lottoWinningNumber) {
-        Map<Rank, Integer> lottoResult = new HashMap<>();
+        Map<Rank, Integer> lottoResult = new EnumMap<>(Rank.class);
         int winningNumberAmount;
         boolean hasBonusNumber;
         for (Lotto lotto : lottoTicket.getLottoTicket()) {

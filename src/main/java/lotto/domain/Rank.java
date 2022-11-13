@@ -1,12 +1,12 @@
 package lotto.domain;
 
-enum Rank {
-    RANK1(6, false, 2_000_000_000),
-    RANK2(5, true, 30_000_000),
-    RANK3(5, false, 1_500_000),
-    RANK4(4, false, 50_000),
-    RANK5(3, false, 5_000),
-    LOSE(0, false, 0);
+public enum Rank {
+    LOSE(0, false, 0),
+    W1(3, false, 5_000),
+    W2(4, false, 50_000),
+    W3(5, false, 1_500_000),
+    W4(5, true, 30_000_000),
+    W5(6, false, 2_000_000_000);
 
     private final int correctNumberAmount;
     private final boolean hasBonus;
