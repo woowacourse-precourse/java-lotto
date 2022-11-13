@@ -12,6 +12,7 @@ public class Config {
     public static final int LOTTO_TICKET_PRICE = 1_000;
 
     private static final String RANGE_NUMBER_ERROR_MESSAGE = "범위를 표현한 설정값 중에 올바르지 않은 것이 존재합니다.";
+    private static final String NATURAL_NUMBER_ERROR_MESSAGE = "자연수 입력이 필요한 설정값 중에 올바르지 않은 것이 존재합니다.";
 
     private Config() {
     }
@@ -27,6 +28,10 @@ public class Config {
     }
 
     private static void checkNaturalNumber(int number) {
+        if (number <= 0) {
+            Logger.log(NATURAL_NUMBER_ERROR_MESSAGE, LogType.ERROR);
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void checkZeroAndNaturalNumber(int number) {

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class ConfigTest {
     private static Config config;
@@ -45,6 +46,35 @@ public class ConfigTest {
 
         assertThatThrownBy(() ->
                 checkRangeNumberMethod.invoke(config, start, end)
+        )
+                .getCause()
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("자연수 형식에 맞는 설정값일 때 정상적으로 작동되는지 확인한다.")
+    @Test
+    void testNaturalNumber() throws Exception {
+        Method checkNaturalNumberMethod = Config.class
+                .getDeclaredMethod("checkNaturalNumber", int.class);
+        checkNaturalNumberMethod.setAccessible(true);
+
+        int number = 1;
+
+        assertSimpleTest(() -> {
+            checkNaturalNumberMethod.invoke(config, number);
+        });
+    }
+
+    @DisplayName("자연수 형식에 맞는 설정값이 아닐 때 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0})
+    void testNotNaturalNumber(int number) throws Exception {
+        Method checkNaturalNumberMethod = Config.class
+                .getDeclaredMethod("checkNaturalNumber", int.class);
+        checkNaturalNumberMethod.setAccessible(true);
+
+        assertThatThrownBy(() ->
+                checkNaturalNumberMethod.invoke(config, number)
         )
                 .getCause()
                 .isInstanceOf(IllegalArgumentException.class);
