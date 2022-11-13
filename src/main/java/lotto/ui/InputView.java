@@ -22,6 +22,9 @@ public class InputView {
     public static List<Integer> inputWinningNumbers() {
         System.out.println(REQUEST_WINNING_NUMBERS);
         String winningNumbers = Console.readLine();
+        InputViewValidation.validateWinningNumbersSize(winningNumbers);
+        InputViewValidation.validateWinningNumbersInteger(winningNumbers);
+        InputViewValidation.validateWinningNumbersRange(winningNumbers);
 
         return Arrays.stream(winningNumbers.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
