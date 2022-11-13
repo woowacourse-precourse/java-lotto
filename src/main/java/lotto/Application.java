@@ -1,10 +1,10 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
-
         User user = new User();
 
         Print.printInsertMoney();
@@ -24,5 +24,9 @@ public class Application {
         Print.printBonusNumber();
         int newBonusNumber = Input.readInteger();
         winningNumbers.newBonusNumber(newBonusNumber);
+
+        Judgment judgment = new Judgment(user, winningNumbers);
+        RankCounter rankCounter = judgment.calculateRank();
+        Print.printRankCounter(rankCounter);
     }
 }

@@ -1,13 +1,16 @@
 package lotto;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class RankCounter {
-    private HashMap<Rank, Integer> rankCounter;
+    private static String FORM_RANK_COUNTER = "%s - $d개";
+
+    private Map<Rank, Integer> rankCounter;
 
     public RankCounter() {
         rankCounter = new HashMap<>();
         for (Rank rank : Rank.values()) {
+            System.out.println("rank.getScore() = " + rank.getScore());
             rankCounter.put(rank, 0);
         }
     }
@@ -24,7 +27,26 @@ public class RankCounter {
         }
     }
 
-    public HashMap<Rank, Integer> getRankCounter() {
+    public Map<Rank, Integer> getRankCounter() {
         return this.rankCounter;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        List<Rank> sortedRank = sortingRank();
+        String form;
+        for (Rank rank : sortedRank) {
+            form = String.format(FORM_RANK_COUNTER, rank.getWinningContent(), rankCounter.get(rank));
+            stringBuilder.append(form);
+        }
+        return stringBuilder.toString();
+    }
+
+    private List<Rank> sortingRank() {
+        List<Rank> sortedRanks = new ArrayList<>(rankCounter.keySet());
+        sortedRanks.sort((rank1, rank2)
+                -> rank2.getScore() - rank1.getScore());
+        return sortedRanks;
     }
 }

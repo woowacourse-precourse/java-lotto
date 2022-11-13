@@ -31,7 +31,7 @@ public enum Rank {
         return this.winningContent;
     }
 
-    private int getScore() {
+    public int getScore() {
         return this.score;
     }
 

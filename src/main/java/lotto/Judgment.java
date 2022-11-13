@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Judgment {
     private User user;
@@ -11,10 +12,10 @@ public class Judgment {
         this.winningNumbers = winningNumbers;
     }
 
-    public HashMap<Rank, Integer> calculateRank() {
+    public RankCounter calculateRank() {
         RankCounter rankCounter = new RankCounter();
         rankCounter.drawLotto(user, winningNumbers);
-        return rankCounter.getRankCounter();
+        return rankCounter;
     }
 
 }
