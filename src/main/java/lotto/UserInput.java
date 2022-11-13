@@ -7,10 +7,10 @@ import java.util.*;
 
 public class UserInput {
 
-    List<List<Integer>> lotteries = new ArrayList<>();
     static final private int MAX_NUMBER = 45;
     static final private int MIN_NUMBER = 1;
     static final private int NUMBER_COUNT = 6;
+    List<List<Integer>> lotteries = new ArrayList<>();
 
     public Calculator inputMoney() {
         Message.INPUT_MONEY.print();
