@@ -1,9 +1,9 @@
-package InputOutput;
+package lotto.Machine;
 
 import java.util.Collections;
 import java.util.List;
 
-public class Print {
+public class PrintMachine {
 
     public static void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
