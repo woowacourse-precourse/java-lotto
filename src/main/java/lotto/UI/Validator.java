@@ -29,10 +29,10 @@ public class Validator {
         List<String> numbersInString = List.of(normalNumbers.split(","));
 
         for (String number : numbersInString) {
-            validateConsistOfNumber(number);
+            validateConsistOfNumber(number.strip());
             validateProperRangeOfNumber(Integer.parseInt(number));
         }
-        validateConsistOfSixNumbers(normalNumbers);
+        validateConsistOfSixNumbers(numbersInString);
     }
 
 
@@ -52,8 +52,8 @@ public class Validator {
             throw new IllegalArgumentException(ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE);
         }
     }
-    private void validateConsistOfSixNumbers(String normalNumbers) {
-        if (normalNumbers.length() != 6) {
+    private void validateConsistOfSixNumbers(List<String> numbersInString) {
+        if (numbersInString.size() != 6) {
             throw new IllegalArgumentException(ERROR_NUMBERS_ARE_NOT_CONSISTS_OF_SIX);
         }
     }
