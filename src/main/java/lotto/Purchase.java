@@ -4,10 +4,10 @@ package lotto;
 public class Purchase {
     public int price;
     public Purchase(String price) throws IllegalArgumentException{
-        System.out.println(validatePurchase(price));
+        validatePurchase(price);
         this.price = Integer.parseInt(price);
     }
-    private boolean validatePurchase(String price) throws IllegalArgumentException{
+    private void validatePurchase(String price) throws IllegalArgumentException{
         for(int i=0; i<price.length(); i++){
             if(price.charAt(i)>=48 && price.charAt(i)<=57){
                 continue;
