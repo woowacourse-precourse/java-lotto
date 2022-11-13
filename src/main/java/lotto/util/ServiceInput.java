@@ -6,6 +6,7 @@ import lotto.constant.Constant;
 import lotto.constant.Message;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,5 +42,16 @@ public class ServiceInput {
         }
 
         return inputWinningNumbers;
+    }
+
+    private static List<String> getSplitInputWinningNumbers(){
+
+        String inputWinningNumbers = getInputWinningNumbers();
+
+        List<String> splitInputWinningNumbers = Arrays.asList(inputWinningNumbers.split("\\s*,\\s*"));
+
+        // TODO: 예외처리
+        
+        return splitInputWinningNumbers;
     }
 }
