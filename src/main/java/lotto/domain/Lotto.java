@@ -15,6 +15,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public int calculateSameNumber(List<Integer> winningNumber) {
+        return (int)numbers.stream().filter(winningNumber::contains).count();
+    }
+
     private void validateNumberSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");

@@ -15,6 +15,11 @@ public class WinningNumber {
 		this.winningNumber = winNumbers;
 	}
 
+	public LottoRanking calculateMatchCount(Lotto lotto, int bonusNumber) {
+		int cnt = lotto.calculateSameNumber(winningNumber);
+		return LottoRanking.findLottoRank(cnt, winningNumber.contains(bonusNumber));
+	}
+
 	private void validWinningNumber(List<Integer> winningNumber) {
 		if (isWrongSize(winningNumber) || isDuplicateNumber(winningNumber) || isWrongRangeWinningNumber(winningNumber)) {
 			throw new IllegalArgumentException(VALID_WIN_NUMBER_ERROR_MESSAGE);
