@@ -20,6 +20,7 @@ public class BonusNumber {
 		return !(MIN_VALUE <= bonusNumber && bonusNumber <= MAX_VALUE);
 	}
 
+
 	public int getBonusNumber() {
 		return bonusNumber;
 	}

@@ -10,11 +10,11 @@ public class WinningNumber {
 	private static final int MIN_VALUE = 1;
 	private final List<Integer> winningNumber;
 
-	public WinningNumber(List<Integer> number) {
-		this.winningNumber = number;
+	public WinningNumber(List<Integer> winNumbers) {
+		validWinningNumber(winNumbers);
+		this.winningNumber = winNumbers;
 	}
-
-	public void validWinningNumber() {
+	private void validWinningNumber(List<Integer> winningNumber) {
 		if (isWrongSize(winningNumber) || isDuplicateNumber(winningNumber) || isWrongRangeWinningNumber(winningNumber)) {
 			throw new IllegalArgumentException(VALID_WIN_NUMBER_ERROR_MESSAGE);
 		}

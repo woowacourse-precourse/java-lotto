@@ -15,35 +15,27 @@ public class LottoController {
 
 	public void run() {
 		LottoAmount lottoAmount = new LottoAmount(InputView.inputUserMoney());
-		List<List<Integer>> lottoTickets = chargeLottoPurchaseAmount();
-		List<Integer> winningNumbers = receiveWinningNumbers();
-		int bonusNumber = receiveBonusNumber();
-		winningNumberCount(lottoTickets, winningNumbers, bonusNumber);
+		LottoTicket lottoTickets = buyLotto(lottoAmount);
+		WinningNumber winningNumber = makeWinningNumber();
+		winningNumberCount(lottoAmount, winningNumbers, bonusNumber);
 	}
 
-	public List<List<Integer>> chargeLottoPurchaseAmount(int ticketNumber) {
-		LottoTicket lottoTicket = new LottoTicket(ticketNumber);
-		List<List<Integer>> lottoTickets = lottoTicket.getLottoTickets();
-		OutputView.printLottoNumber(ticketNumber);
-		OutputView.printLottoTickets(lottoTickets);
-		return lottoTickets;
+	public LottoTicket buyLotto(LottoAmount lottoAmount) {
+		int lottoCount = lottoAmount.calculateLottoCount();
+		LottoTicket lottoTicket = new LottoTicket(lottoCount);
+		OutputView.printLottoNumber(lottoCount);
+		OutputView.printLottoTickets(lottoTicket);
+		return lottoTicket;
 	}
 
-	public List<Integer> receiveWinningNumbers() {
-		WinningNumber winningNumber = new WinningNumber(InputView.inputWinningNumber());
-		winningNumber.validWinningNumber();
-		return winningNumber.getWinningNumber();
-	}
-
-	private int receiveBonusNumber() {
+	public WinningNumber makeWinningNumber() {
+		WinningNumber inputWinningNumber = new WinningNumber(InputView.inputWinningNumber());
 		BonusNumber bonusNumber = new BonusNumber(InputView.inputBonusNumber());
-		bonusNumber.validBonusNumber();
-		return bonusNumber.getBonusNumber();
 	}
 
-	public void winningNumberCount(List<List<Integer>> lottoTickets, List<Integer> winningNumbers, int bonusNumber) {
+	public void winningNumberCount(LottoAmount lottoAmount, List<Integer> winningNumbers, int bonusNumber) {
 		LottoResult lottoResult = new LottoResult(lottoTickets, winningNumbers, bonusNumber);
-		double result = lottoResult.calculateRateReturn(userMoney);
+		double result = lottoResult.calculateRateReturn();
 		HashMap<String, Integer> prizeResult = lottoResult.getPrizeResult();
 		OutputView.printPrize(prizeResult);
 		OutputView.printRateReturn(result);

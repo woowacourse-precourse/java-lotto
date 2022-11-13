@@ -22,10 +22,11 @@ public class OutputView {
 
 
 
-	public static void printLottoTickets(List<List<Integer>> lottoTickets) {
-		for (List<Integer> lottoTicket : lottoTickets) {
+	public static void printLottoTickets(LottoTicket lottoTicket) {
+		List<List<Integer>> lottoTickets = lottoTicket.getLottoTickets();
+		for (List<Integer> lotto : lottoTickets) {
 			StringBuilder lottoNumbers = new StringBuilder("[");
-			for (Integer integer : lottoTicket) {
+			for (Integer integer : lotto) {
 				lottoNumbers.append(integer).append(", ");
 			}
 			lottoNumbers.delete(lottoNumbers.length()-2, lottoNumbers.length());
