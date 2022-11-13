@@ -58,6 +58,8 @@ public class LottoProgram {
         if (Lotto.getWinningNumbers().contains(Integer.parseInt(bonusNumber))) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호에 존재할 수 없습니다.");
         }
+
+        Lotto.setBonusNumber(Integer.parseInt(bonusNumber));
     }
 
     private static void purchasedLottoSave() {
