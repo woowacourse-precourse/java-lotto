@@ -11,7 +11,7 @@
 - [x] 숫자만으로 이루어져 있는지 판별한다. MoneyInput#validateConvertingMoney()
 - [x] 1,000원으로 나누어 떨어지는지 검증한다. Money#validatePurchaseAmount()
 - [x] 로또 구입 금액을 가져온다. Money#getMoney()
-- [ ] 구입 금액에 해당하는 만큼 로또를 발행한다. LottoMachine#issue()
+- [x] 로또를 발행한다. LottoMachine#issue()
   - [ ] 로또 번호를 오름차순으로 정렬한다. LottoMachine#sortAscend()
 - [ ] 발행한 모든 로또를 가져온다. LottoMachine#getAllLottoes()
 - [ ] 당첨 번호를 입력 받는다. NumberInput#getWinningNumbers()
