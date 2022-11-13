@@ -10,6 +10,7 @@ public class Application {
 
         try {
             lottoList = buyLotteries(getLottoBuyCount());
+            startLottery(lottoList);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
@@ -74,5 +75,14 @@ public class Application {
             throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
 
         return bonusNumber;
+    }
+
+    private static void startLottery(List<Lotto> lottoList) {
+        Integer[] result;
+        Lotto winningNumbers = getWinningNumbers();
+        Integer bonusNumber = getBonusNumber();
+
+        if (winningNumbers.contains(bonusNumber))
+            throw new IllegalArgumentException("중복되지 않는 숫자를 입력해야 합니다.");
     }
 }
