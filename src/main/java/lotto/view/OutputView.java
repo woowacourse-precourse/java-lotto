@@ -2,8 +2,8 @@ package lotto.view;
 
 import java.util.List;
 
-import lotto.domain.Lotto;
 import lotto.dto.LottoStatsDTO;
+import lotto.dto.LottoTicketDTO;
 
 public class OutputView {
     private static final String INPUT_PAID_AMOUNT = "구입금액을 입력해 주세요.";
@@ -17,14 +17,14 @@ public class OutputView {
         System.out.println(INPUT_PAID_AMOUNT);
     }
 
-    public static void printPaidLotto(Integer lottoCount, List<Lotto> paidLotto) {
+    public static void printPaidLotto(Integer lottoCount, LottoTicketDTO lottoTicketDTO) {
         System.out.printf(INFO_LOTTO_COUNT, lottoCount);
-        printLottoNumbers(paidLotto);
+        printLottoNumbers(lottoTicketDTO);
     }
 
-    private static void printLottoNumbers(List<Lotto> paidLotto) {
-        for (Lotto lottoNumber: paidLotto) {
-            System.out.println(lottoNumber.getLottoNumbers());
+    private static void printLottoNumbers(LottoTicketDTO paidLotto) {
+        for (List<Integer> lottoNumber: paidLotto.getLottoTicket()) {
+            System.out.println(lottoNumber);
         }
     }
 
