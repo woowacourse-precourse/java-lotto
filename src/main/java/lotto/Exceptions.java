@@ -21,13 +21,25 @@ public class Exceptions {
         if (winningNumbers.size() != LOTTOLENGTH) {
             throw new IllegalArgumentException("[ERROR] 양의 정수 6개를 입력해야 합니다.");
         }
+        if (winningNumbers.size() != winningNumbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("[ERROR] 중복되는 숫자가 입력되었습니다.");
+        }
         for (int i = 0; i < LOTTOLENGTH; i++) {
             if (!winningNumbers.get(i).matches("-?\\d+")) {
-                throw new IllegalArgumentException("[ERROR] 1~45사이의 양의 정수를 입력해야 합니다.");
+                throw new IllegalArgumentException("[ERROR] 1~45사이의 정수를 입력해야 합니다.");
             }
             if (Integer.parseInt(winningNumbers.get(i)) < 1 || Integer.parseInt(winningNumbers.get(i)) > 45) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
             }
+        }
+    }
+
+    public static void excludeNoBonusNumber(String bonusNumber) {
+        if (!bonusNumber.matches("-?\\d+")) {
+            throw new IllegalArgumentException("[ERROR] 1~45사이의 정수를 입력해야 합니다.");
+        }
+        if (Integer.parseInt(bonusNumber) < 1 || Integer.parseInt(bonusNumber) > 45) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
         }
     }
 
