@@ -1,6 +1,7 @@
 package lotto.domain.winningresult;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lotto.domain.lotto.LottoDraw;
@@ -18,7 +19,9 @@ public class WinningResults {
     public static WinningResults of(Lottos lottos, LottoDraw lottoDraw) {
         List<WinningResultType> winningResultTypes = lottos.lottoStream()
                 .map(lottoDraw::match)
+                .filter(Objects::nonNull)
                 .collect(Collectors.toList());
+
         int purchasedAmount = lottos.purchasedLottosAmount();
 
         return new WinningResults(winningResultTypes, purchasedAmount);

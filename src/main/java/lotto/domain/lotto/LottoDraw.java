@@ -1,6 +1,7 @@
 package lotto.domain.lotto;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import lotto.common.InputErrors;
 import lotto.domain.winningresult.WinningResultType;
 
@@ -21,7 +22,12 @@ public class LottoDraw {
     public WinningResultType match(Lotto lotto) {
         int matchedCount = calculateMatchedCount(lotto);
         boolean isBonusMatched = isBonusNumberMatched(lotto);
-        return WinningResultType.of(matchedCount, isBonusMatched);
+
+        try {
+            return WinningResultType.of(matchedCount, isBonusMatched);
+        } catch (NoSuchElementException e) {
+            return null;
+        }
     }
 
     private void validate(List<Integer> winNumbers, int bonusNumber) {
