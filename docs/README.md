@@ -22,14 +22,14 @@
 <hr>
 
 ## WinningNumbers 클래스 : 당첨 번호와 보너스 번호를 입력받는다.
-- 인스턴스 변수
-  - lotto
-  - bonus
-- 당첨 번호를 입력받는다
-- 번호는 쉼표(,)를 기준으로 구분한다.
-- Lotto 클래스의 validate() 메서드로 lotto 유효성 검사
-- Bonus 클래스의 validate() 메서드로 bonus 유효성 검사
-- bonus 번호가 lotto 리스트에 없는 번호인지 유효성 검사
+- 인스턴스 변수 [O]
+  - lotto [O]
+  - bonus [O]
+- 당첨 번호를 입력받는다 [O]
+- 번호는 쉼표(,)를 기준으로 구분한다. [O]
+- Lotto 클래스의 validate() 메서드로 lotto 유효성 검사 [O]
+- Bonus 클래스의 validate() 메서드로 bonus 유효성 검사 [O]
+- bonus 번호가 lotto 리스트에 없는 번호인지 유효성 검사 [O]
 
 ### Lotto 클래스 [O]
 - 로또 번호 유효성 검사 [O]
