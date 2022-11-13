@@ -90,9 +90,12 @@ public class UserInterface {
      */
     public static void printBoughtLotteries(List<Lotto> lotteries) {
         System.out.println("\n" + String.format(PrintConstants.BUY_COMPLETE, lotteries.size()));
+        StringBuffer sb = new StringBuffer();
         for (Lotto lotto : lotteries) {
-            System.out.println(lotto.getNumbers());
+            sb.append(lotto.getNumbers());
+            sb.append("\n");
         }
+        System.out.println(sb);
     }
 
     /**
