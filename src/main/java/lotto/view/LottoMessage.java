@@ -5,10 +5,6 @@ public enum LottoMessage {
 
     private final String message;
 
-    LottoMessage(String message) {
-        this.message = message;
-    }
-    public String getMessage() {
-        return this.message;
-    }
+    LottoMessage(String message) { this.message = message; }
+    public String getMessage() { return this.message; }
 }

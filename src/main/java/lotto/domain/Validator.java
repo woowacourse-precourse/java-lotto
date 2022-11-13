@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.view.ErrorMessage;
+
 public class Validator {
     public static void validateAmount(String amount) {
         isNumber(amount);
@@ -8,13 +10,13 @@ public class Validator {
 
     private static void isNumber(String amount) {
         if (amount.matches("^[^0-9]*$")) {
-            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(ErrorMessage.ONLY_NUMBER_POSSIBLE.getMessage());
         }
     }
 
     private static void isUnitOfThousand(int amount) {
         if (amount % 1000 != 0) {
-            throw new IllegalArgumentException("1,000원 단위로 입력 가능합니다.");
+            throw new IllegalArgumentException(ErrorMessage.ONLY_THOUSAND_UNIT_POSSIBLE.getMessage());
         }
     }
 
