@@ -11,7 +11,7 @@ class WinningNumberTest {
     @Test
     void createWinningNumSizeBiggerThan6() {
         List<Integer> winningNum = List.of(1, 2, 3, 4, 5, 6, 7);
-        assertThatThrownBy(() -> new WinningNumber(winningNum))
+        assertThatThrownBy(() -> new WinningNumber(winningNum, 8))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -19,7 +19,7 @@ class WinningNumberTest {
     @Test
     void createWinningNumSizeSmallerThan6() {
         List<Integer> winningNum = List.of(1, 2, 3, 4, 5);
-        assertThatThrownBy(() -> new WinningNumber(winningNum))
+        assertThatThrownBy(() -> new WinningNumber(winningNum, 8))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -27,7 +27,7 @@ class WinningNumberTest {
     @Test
     void createWinningNumNotInRange() {
         List<Integer> winningNum = List.of(1, 2, 3, 46, 5, 6);
-        assertThatThrownBy(() -> new WinningNumber(winningNum))
+        assertThatThrownBy(() -> new WinningNumber(winningNum, 8))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -35,7 +35,7 @@ class WinningNumberTest {
     @Test
     void createWinningNumNotUnique() {
         List<Integer> winningNum = List.of(1, 2, 3, 3, 5, 6);
-        assertThatThrownBy(() -> new WinningNumber(winningNum))
+        assertThatThrownBy(() -> new WinningNumber(winningNum, 8))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -43,7 +43,7 @@ class WinningNumberTest {
     @Test
     void createBonusNumNotInRange() {
         int bonusNum = 98;
-        assertThatThrownBy(() -> new WinningNumber(bonusNum))
+        assertThatThrownBy(() -> new WinningNumber(List.of(1, 2, 3, 4, 5, 6), bonusNum))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
