@@ -1,9 +1,14 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private final int LOTTO_SIZE = 6;
+    private final int MIN_NUMBER = 1;
+    private final int MAX_NUMBER = 45;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -11,10 +16,21 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        validateInputSize(numbers);
+        validateRangeOfNumbers(numbers);
+    }
+
+    private void validateRangeOfNumbers(List<Integer> numbers) {
+        numbers.forEach(number -> {
+            if (number < MIN_NUMBER || number > MAX_NUMBER) {
+                throw new IllegalArgumentException();
+            }
+        });
+    }
+
+    private void validateInputSize(List<Integer> numbers) {
+        if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException();
         }
     }
-
-    // TODO: 추가 기능 구현
 }
