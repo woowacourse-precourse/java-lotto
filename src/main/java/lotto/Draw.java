@@ -25,8 +25,8 @@ public class Draw {
                 throw new IllegalArgumentException();
             }
             publish(payAmount / 1_000);
-            // Lotto lotto = new Lotto(pickWinnerNumbers());
-            // lotto.getResult(payAmount, pickBonusNumber(), publishedLottos);
+            Lotto lotto = new Lotto(pickWinnerNumbers());
+            lotto.getResult(payAmount, pickBonusNumber(), publishedLottos);
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 구입 금액은 1,000원 단위의 숫자로 이뤄져야 합니다.");
         }
