@@ -107,6 +107,9 @@
 
 #### Model
 
+- Reward 모델
+    - [ ✔ ] 문자열로 가지고 있는 보상 데이터를 숫자로 반환한다. `Reward#getAmountAsInteger`
+
 - Lotto 모델
     - [ ✔ ] 몇등짜리 로또인지 추첨한다. `Lotto#draw`
     - [ ✔ ] 로또 번호 리스트의 문자열을 반환한다. `Lotto#toString`
