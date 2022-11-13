@@ -11,7 +11,7 @@ public class Application {
         int money;
         System.out.println("구입금액을 입력해 주세요");
         input_money = Console.readLine();
-        if (input_money.isBlank()) throw new IllegalArgumentException("[ERROR] 구입금액은 0원일 수 없습니다.");
+        if (input_money.isBlank()) throw new IllegalArgumentException("[ERROR] 구입금액을 입력해야 합니다.");
         try {
             money = Integer.parseInt(input_money);
         } catch (NumberFormatException ex) {
@@ -39,7 +39,6 @@ public class Application {
             lotto_nums.add(lotto);
             System.out.println(lotto);
         }
-
         return lotto_nums;
     }
 
