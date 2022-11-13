@@ -4,6 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import static lotto.validation.*;
+import static lotto.calculation.*;
 
 public class Application {
 
@@ -11,19 +15,19 @@ public class Application {
         System.out.println("구입금액을 입력해 주세요.");
         int lottoCount = validateBudget(Console.readLine());
         List<Lotto> lottoArray = generateLottoNumbers(lottoCount);
+        System.out.println("당첨 번호를 입력해 주세요.");
         Lotto lottoAnswer = validateLottoAnswers(Console.readLine());
+        System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = validateBonusNumber(lottoAnswer.getNumbers(), Console.readLine());
-
+        printLottoResult(lottoCount, lottoArray, lottoAnswer.getNumbers(), bonusNumber);
     }
 
-    public static int validateBudget(String input){
-        int budget = 0;
-        try{
-            budget = Integer.parseInt(input);
-        }catch(NumberFormatException e){throwException("구입 금액은 숫자이어야 합니다.");}
-        if (budget % 1000 != 0) throwException("구입 금액은 1000의 배수여야 합니다.");
-        System.out.println("\n" + (budget/1000) + "개를 구매했습니다.");
-        return (budget / 1000);
+    public static void printLottoResult(int budget, List<Lotto> lottoArray, List<Integer> lottoAnswer, int bonusNumber){
+        List<WinningType> result = calculateResultAll(lottoArray, lottoAnswer, bonusNumber);
+        double returnRate = calculateReturnRate(budget, result);
+        System.out.println("당첨 통계\n---");
+        for(WinningType wt : WinningType.values()) System.out.println(wt.printMessage());
+        System.out.println("총 수익률은 " + returnRate + "%입니다.");
     }
 
     public static List<Lotto> generateLottoNumbers(int count){
@@ -37,34 +41,12 @@ public class Application {
         return lottoArray;
     }
 
-    public static Lotto validateLottoAnswers(String input){
-        List<Integer> numberList = new ArrayList<>();
-        String[] strings = input.split(",");
-        for(int i=0; i<strings.length; i++){
-            try{
-                int elem = Integer.parseInt(strings[i]);
-                numberList.add(elem);
-            }catch(NumberFormatException e){throwException("당첨 번호는 모두 숫자이어야 합니다.");}
-        }
-        if(!isUniqueList(numberList)) throwException("당첨 번호는 중복되지 않아야 합니다.");
-        return new Lotto(numberList);
-    }
-
     public static boolean isUniqueList(List<Integer> numberList){
         for(int i=0; i<numberList.size(); i++){
             int elem = numberList.get(i);
             if(numberList.indexOf(elem) != numberList.lastIndexOf(elem)) return false;
         }
         return true;
-    }
-
-    public static int validateBonusNumber(List<Integer> numberList, String input){
-        int bonusNumber = 0;
-        try{
-            bonusNumber = Integer.parseInt(input);
-        }catch(NumberFormatException e){throwException("보너스 번호는 숫자이어야 합니다.");}
-        if(numberList.contains(bonusNumber)) throwException("보너스 번호는 당첨 번호와 중복되지 않아야 합니다.");
-        return bonusNumber;
     }
 
     public static void throwException(String message){
