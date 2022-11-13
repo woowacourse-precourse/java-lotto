@@ -35,7 +35,7 @@
 
   콘솔로부터 쉽표로 구분된 여러 개의 정수를 한 번에 입력받는 기능
 
-### `class ConsoleOutput` [ - ]
+### `class ConsoleOutputView` [ - ]
 
 콘솔 출력 관련 기능
 
