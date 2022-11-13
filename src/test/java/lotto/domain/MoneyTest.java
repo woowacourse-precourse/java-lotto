@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class MoneyTest {
 
@@ -44,5 +46,11 @@ public class MoneyTest {
         Money money = new Money(5000);
 
         assertThatThrownBy(() -> money.divideValue(new Money(0))).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest(name = "Money 값을 반환한다.")
+    @ValueSource(longs = {1000L, 124000L, 12345678900L})
+    void value(long value) {
+        assertThat(new Money(value).value()).isEqualTo(value);
     }
 }
