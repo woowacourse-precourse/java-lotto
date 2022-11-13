@@ -28,7 +28,7 @@ public class User {
             System.out.println("[Error]1,000 단위의 금액을 입력하세요");
             throw new IllegalArgumentException();
         }
-        System.out.println(num +"개를 구입했습니다.");
+        System.out.println(num +"개를 구매했습니다.");
         return num;
     }
 
@@ -47,6 +47,10 @@ public class User {
         List<List<Integer>> all_lotto = new ArrayList<>();
         while (all_lotto.size() < num) {
             all_lotto.add(lotto());
+        }
+
+        for(int i = 0; i < all_lotto.size(); i++) {
+            System.out.println(all_lotto.get(i));
         }
         return all_lotto;
     }
