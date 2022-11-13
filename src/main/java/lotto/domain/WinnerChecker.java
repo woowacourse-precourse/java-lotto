@@ -1,9 +1,10 @@
 package lotto.domain;
 
-import lotto.ui.Error;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import lotto.ui.Error;
 
 public class WinnerChecker {
     public int compareLottoNumbers(Lotto purchasedLotto, Lotto winningLotto) {
@@ -42,6 +43,14 @@ public class WinnerChecker {
         }
         return result;
     }
-
-
+    public List<Integer> sumUpResult(List<Integer> result) {
+        List<Integer> sumOfResult = new ArrayList<>();
+        for (int i = 3; i <= 6; i++) {
+            sumOfResult.add(Collections.frequency(result, i));
+            if (i == 5) {
+                sumOfResult.add(Collections.frequency(result, 15));
+            }
+        }
+        return sumOfResult;
+    }
 }

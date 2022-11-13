@@ -2,7 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
-import lotto.domain.Manager;
+import lotto.domain.ProfitCalculator;
 import lotto.domain.WinnerChecker;
 import lotto.ui.Input;
 import lotto.ui.Ouput;
@@ -10,7 +10,7 @@ import lotto.ui.Ouput;
 import java.util.List;
 
 public class Operator {
-    Manager manager = new Manager();
+    ProfitCalculator manager = new ProfitCalculator();
     LottoMachine lottoMachine = new LottoMachine();
     WinnerChecker winnerChecker = new WinnerChecker();
     Input input = new Input();
@@ -34,7 +34,7 @@ public class Operator {
         int bounusNumber = input.getBonusNumber();
         System.out.println();
         List<Integer> result = winnerChecker.compareLottoTable(lottoMachine.getLottoTable(), winningLotto, bounusNumber);
-        return manager.sumUpResult(result);
+        return winnerChecker.sumUpResult(result);
     }
 
     public void notifySumOfResult(List<Integer> sumOfResult) {
