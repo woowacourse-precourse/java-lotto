@@ -39,6 +39,20 @@ class LottoTest {
         assertThatThrownBy(() -> new User(9800))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+
+    @Test
+    void countTicket() {
+        User user = new User(8000);
+        /*given*/
+        int countTicketTest = 8;
+        /*when*/
+        int countTicket = user.countTicket();
+        /*then*/
+        assertThat(countTicketTest).isEqualTo(countTicket);
+
+
+    }
 }
 
 /*class RefereeTest{
