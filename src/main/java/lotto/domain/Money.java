@@ -13,6 +13,10 @@ public class Money {
         this.amount = amount;
     }
 
+    public int calculateQuantity() {
+        return amount / UNIT_AMOUNT;
+    }
+
     public double calculateYield(long totalPrize) {
         return 100D * totalPrize / amount;
     }
