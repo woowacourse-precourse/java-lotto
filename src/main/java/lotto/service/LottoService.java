@@ -4,9 +4,10 @@ public class LottoService {
 
     final static int LOTTO_PAYMENT = 1000;
 
-    public void buyLotto(String inputPayment){
+    public int buyLotto(String inputPayment){
         int payment = inputPaymentToNumber(inputPayment);
-        checkPaymentUnits(payment);
+        int amount = getLottoAmount(payment);
+        return amount;
     }
 
     public int inputPaymentToNumber(String inputPayment){
@@ -20,9 +21,10 @@ public class LottoService {
         }
     }
 
-    public void checkPaymentUnits(int payment) {
+    public int getLottoAmount(int payment) {
         if(payment % LOTTO_PAYMENT != 0){
             throw new IllegalArgumentException();
         }
+        return payment/LOTTO_PAYMENT;
     }
 }
