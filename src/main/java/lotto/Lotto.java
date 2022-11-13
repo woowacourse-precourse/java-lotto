@@ -19,17 +19,24 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessages.COUNT_ERROR.getErrorMessage());
         }
-        if(checkDup.size() != numbers.size()) {
+        if (checkDup.size() != numbers.size()) {
             throw new IllegalArgumentException(ErrorMessages.DUPLICATE_ERROR.getErrorMessage());
         }
     }
+
     // TODO: 추가 기능 구현
     public Lotto retainAll(Lotto lotto) {
         return this.retainAll(lotto);
     }
+
     public int size() {
         return numbers.size();
     }
+
+    public boolean contains(int num) {
+        return numbers.contains(num);
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
