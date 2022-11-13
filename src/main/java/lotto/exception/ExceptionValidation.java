@@ -43,4 +43,25 @@ public class ExceptionValidation {
         }
         return false;
     }
+
+    public static void bonusException(int bonus, List<Integer> Winning) {
+        checkDuplication(bonus, Winning);
+        checkBonusSize(bonus);
+    }
+
+    private static boolean checkDuplication(int bonus, List<Integer> Winning) {
+        for(int i=0; i<Winning.size(); i++){
+            if(Winning.contains(bonus)){
+                throw new IllegalArgumentException("[ERROR] 당첨 번호 6자리와 다른 수를 입력해주세요.");
+            }
+        }
+        return false;
+    }
+
+    private static boolean checkBonusSize(int bonus) {
+        if(bonus>45 || bonus<1){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+        return false;
+    }
 }

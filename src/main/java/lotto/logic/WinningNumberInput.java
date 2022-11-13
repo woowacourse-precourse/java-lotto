@@ -46,4 +46,10 @@ public class WinningNumberInput {
         BonusNum = Integer.parseInt(input);
         return BonusNum;
     }
+
+    public int getBonusNum(List<Integer> WinningNum) {
+        int BonusNum = inputBonusNum();
+        ExceptionValidation.bonusException(BonusNum, WinningNum);
+        return BonusNum;
+    }
 }
