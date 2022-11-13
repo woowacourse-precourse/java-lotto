@@ -4,16 +4,18 @@ import java.util.List;
 
 public class Grade {
 
-    List<Integer> winningNumbers;
+    private List<Integer> winningNumbers;
+    private int bonusNumber;
 
-    public Grade(List<Integer> winningNumbers) {
+    public Grade(List<Integer> winningNumbers, int bonusNumber) {
         this.winningNumbers = winningNumbers;
+        this.bonusNumber = bonusNumber;
     }
 
-    public String returnLottoGrade(List<Integer> lottoNumbers, int bonusNumber) {
+    public String returnLottoGrade(List<Integer> lottoNumbers) {
         int correctNumbers = countCorrectNumbers(lottoNumbers);
         if (correctNumbers == 5) {
-            return checkLottoNumbersContainBonusNumber(lottoNumbers, bonusNumber);
+            return checkLottoNumbersContainBonusNumber(lottoNumbers);
         }
         return checkLottoGrade(correctNumbers);
     }
@@ -31,7 +33,7 @@ public class Grade {
         return null;
     }
 
-    public String checkLottoNumbersContainBonusNumber(List<Integer> lottoNumbers, int bonusNumber) {
+    public String checkLottoNumbersContainBonusNumber(List<Integer> lottoNumbers) {
         if (lottoNumbers.contains(bonusNumber)) {
             return "SECOND";
         }
