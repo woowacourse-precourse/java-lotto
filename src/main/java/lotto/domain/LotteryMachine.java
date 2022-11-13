@@ -54,9 +54,16 @@ public class LotteryMachine {
 
     public void drawLottery() {
         System.out.println(WINNING_LOTTERY_INPUT_MESSAGE);
-        String winningNumbersInput = readLine();
+        String[] winningNumbersInput = readLine().split(",");
 
         InputValidator validator = new InputValidator();
         validator.validateWinningNumbers(winningNumbersInput);
+
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (int i = 0; i < winningNumbersInput.length; ++i) {
+            winningNumbers.add(Integer.parseInt(winningNumbersInput[i]));
+        }
+        winningNumbers.sort(Comparator.naturalOrder());
+        this.winningLotto = new Lotto(winningNumbers);
     }
 }

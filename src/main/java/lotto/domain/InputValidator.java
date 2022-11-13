@@ -34,8 +34,7 @@ public class InputValidator {
         return false;
     }
 
-    public void validateWinningNumbers(String winningNumbersInput) {
-        String[] winningNumbers = winningNumbersInput.split(",");
+    public void validateWinningNumbers(String[] winningNumbers) {
         if (!isCorrectCountOfNumbers(winningNumbers)) {
             System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE);
             throw new IllegalArgumentException();
