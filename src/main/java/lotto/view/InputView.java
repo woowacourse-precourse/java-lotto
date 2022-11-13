@@ -1,5 +1,10 @@
 package lotto.view;
 
+import static java.util.stream.Collectors.toList;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 import lotto.domain.model.request.LottoNumberRequest;
 import lotto.domain.model.request.LottoRequest;
@@ -23,8 +28,19 @@ public final class InputView {
 
     public static LottoRequest inputLottoNumbers() {
         OutputUtils.outputLine("당첨 번호를 입력해 주세요.");
-        String lottoNumbers = UserInputUtils.readLine();
+        List<Integer> lottoNumbers = new ArrayList<>();
+        try {
+            lottoNumbers = stringToList(UserInputUtils.readLine());
+        } catch (Exception exception) {
+            OutputView.printException(new IllegalArgumentException("입력 형식은 숫자,숫자,숫자, ... 입니다"));
+        }
         return new LottoRequest(lottoNumbers);
+    }
+
+    private static List<Integer> stringToList(String lottoNumbers) {
+        return Arrays.stream(lottoNumbers.split(","))
+                .map(Integer::parseInt)
+                .collect(toList());
     }
 
     public static LottoNumberRequest inputBonusNumber() {
