@@ -1,8 +1,8 @@
 package lotto.domain;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Optional;
+
+import static lotto.domain.WinningRule.checkWinning;
 
 public class WinningHistory {
     private int firstCount;
@@ -13,37 +13,36 @@ public class WinningHistory {
     private int winningAmount;
     private final double yield;
 
-    public WinningHistory(ArrayList<Map<String, Object>> results) {
+    public WinningHistory(ArrayList<LottoTicketResult> results) {
         analysis(results);
         double yield = (double) winningAmount / (1_000 * results.size()) * 100;
         this.yield = (double) Math.round(yield * 10) / 10;
     }
 
-    private void analysis(ArrayList<Map<String, Object>> results) {
-        for (Map<String, Object> result : results) {
+    private void analysis(ArrayList<LottoTicketResult> results) {
+        for (LottoTicketResult result : results) {
             WinningRule winningRule = checkWinning(result);
-            if (winningRule == WinningRule.FIRST) {
-                firstCount++;
-            }
-            if (winningRule == WinningRule.SECOND) {
-                secondCount++;
-            }
-            if (winningRule == WinningRule.THIRD) {
-                thirdCount++;
-            }
-            if (winningRule == WinningRule.FOURTH) {
-                fourthCount++;
-            }
-            if (winningRule == WinningRule.FIFTH) {
-                fifthCount++;
-            }
+            countWinning(winningRule);
             winningAmount += winningRule.winningAmount();
         }
     }
 
-    private WinningRule checkWinning(Map<String, Object> result) {
-        Optional<WinningRule> checkResult = WinningRule.check(result);
-        return checkResult.orElse(WinningRule.NOT_WINNER);
+    private void countWinning(WinningRule winningRule) {
+        if (winningRule == WinningRule.FIRST) {
+            firstCount++;
+        }
+        if (winningRule == WinningRule.SECOND) {
+            secondCount++;
+        }
+        if (winningRule == WinningRule.THIRD) {
+            thirdCount++;
+        }
+        if (winningRule == WinningRule.FOURTH) {
+            fourthCount++;
+        }
+        if (winningRule == WinningRule.FIFTH) {
+            fifthCount++;
+        }
     }
 
     public int getFirstCount() {

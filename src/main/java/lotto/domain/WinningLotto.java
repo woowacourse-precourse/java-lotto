@@ -1,6 +1,8 @@
 package lotto.domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -24,8 +26,8 @@ public class WinningLotto {
                 .collect(Collectors.toList());
     }
 
-    public ArrayList<Map<String, Object>> confirmWinning(List<Lotto> lottos) {
-        ArrayList<Map<String, Object>> result = new ArrayList<>();
+    public ArrayList<LottoTicketResult> confirmWinning(List<Lotto> lottos) {
+        ArrayList<LottoTicketResult> result = new ArrayList<>();
         for (Lotto lotto : lottos) {
             int count = matchesCount(lotto);
             result.add(confirmSecondWinning(lotto, count));
@@ -43,11 +45,11 @@ public class WinningLotto {
         return count.get();
     }
 
-    private Map<String, Object> confirmSecondWinning(Lotto lotto, int count) {
+    private LottoTicketResult confirmSecondWinning(Lotto lotto, int count) {
         if (count == 5 && lotto.getNumbers().contains(bonusNumber)) {
-            return Map.of("count", count, "bonus", true);
+            return new LottoTicketResult(count, true);
         }
-        return Map.of("count", count, "bonus", false);
+        return new LottoTicketResult(count, false);
     }
 
     private void validate(List<Integer> numbers, int bonusNumber) {

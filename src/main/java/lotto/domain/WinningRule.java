@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 public enum WinningRule {
@@ -22,11 +20,12 @@ public enum WinningRule {
         this.winningAmount = winningAmount;
     }
 
-    public static Optional<WinningRule> check(Map<String, Object> result) {
+    public static WinningRule checkWinning(LottoTicketResult result) {
         return Stream.of(values())
-                .filter(enumType -> enumType.matchesCount == (int) result.get("count"))
-                .filter(enumType -> enumType.isRequiredBonusNumber == (boolean) result.get("bonus"))
-                .findAny();
+                .filter(enumType -> enumType.matchesCount == result.getMatchingCount())
+                .filter(enumType -> enumType.isRequiredBonusNumber == result.matchBonus())
+                .findAny()
+                .orElse(NOT_WINNER);
     }
 
     public int winningAmount() {
