@@ -2,11 +2,13 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LotteryMachine {
     private List<Integer> winningNumbers;
     private ArrayList<List<Integer>> userNumbers;
-    public static List<Integer> winningCase;
+    private List<Integer> winningCase;
+    public static List<Integer> winningPriceByCase;
 
     public LotteryMachine(User user, Lotto lotto){
         this.winningNumbers = user.getUserNumbers();
@@ -32,6 +34,11 @@ public class LotteryMachine {
     }
 
     public void matchWinningCase(){
-
+        for(WinningStatus status: WinningStatus.values()){
+            winningPriceByCase = winningCase.stream()
+                            .filter(count -> count == status.getMatchNumber())
+                            .map(count -> count * status.getWinningPrice())
+                            .collect(Collectors.toList());
+        }
     }
 }
