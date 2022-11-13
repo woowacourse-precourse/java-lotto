@@ -28,4 +28,8 @@ public class Buyer {
         return money;
     }
 
+    public List<Lotto> getLottoNumbers() {
+        return lottoNumbers;
+    }
+
 }
