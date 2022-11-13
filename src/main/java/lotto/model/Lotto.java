@@ -6,19 +6,20 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateSize(numbers);
-        validateDuplicate(numbers);
-        validateRange(numbers);
         this.numbers = numbers;
+        validateSize();
+        validateDuplicate();
+        validateRange();
+
     }
 
-    private void validateSize(List<Integer> numbers) {
+    private void validateSize() {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("당첨번호는 6개의 숫자를 입력하셔야 합니다.");
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers) {
+    private void validateDuplicate() {
         int numbersLength = (int) numbers.stream()
                 .distinct()
                 .count();
@@ -27,7 +28,7 @@ public class Lotto {
         }
     }
 
-    private void validateRange(List<Integer> numbers) {
+    private void validateRange() {
         for (int number : numbers) {
             if (number < 1 || number > 45) {
                 throw new IllegalArgumentException("당첨번호는 1부터 45까지의 수여야 합니다.");

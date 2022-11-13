@@ -29,6 +29,16 @@ public class User {
         validateNumberList(userInput);
     }
 
+    public void validateUserBonusNumber(String userInput, List<Integer> winningNumbers) {
+        validateNotNull(userInput);
+        validateNotZero(userInput);
+        validateNoSpace(userInput);
+        validateNumber(userInput);
+        validateRange(Integer.parseInt(userInput));
+        validateDuplicate(Integer.parseInt(userInput), winningNumbers);
+    }
+
+
 
     private void validateNotNull(String userInput) {
         if (userInput == null || userInput == "") {
@@ -75,6 +85,23 @@ public class User {
         }
     }
 
+    private void validateRange(int userInput) {
+        if(userInput<1 || userInput>45){
+            throw new IllegalArgumentException(changeWord + "는 1 ~ 45 사이의 수여야 합니다");
+        }
+    }
+
+    /*private void validateDuplicate(int parseInt) {
+        if(Auto.WINNING_NUMBERS.contains(parseInt)){
+            throw new IllegalArgumentException(changeWord + "는 당첨번호와 중복값을 쓸 수 없습니다.");
+        }
+    }*/
+
+    private void validateDuplicate(int userInput, List<Integer> winningNumbers) {
+        if(winningNumbers.contains(userInput)){
+            throw new IllegalArgumentException(changeWord + "는 당첨번호와 중복값을 쓸 수 없습니다.");
+        }
+    }
 
 
 
