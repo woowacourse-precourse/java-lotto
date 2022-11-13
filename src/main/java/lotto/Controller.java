@@ -13,8 +13,8 @@ public class Controller {
         Set<List<Integer>> lottoNumbers = lottoGenerator(lottoCount);
         lottoNumbers.forEach(System.out::println);
 
-        Game game = new Game();
-        game.play(lottoNumbers);
+        GameStart gameStart = new GameStart();
+        gameStart.play(lottoNumbers);
     }
 
     private Set<List<Integer>> isValidCntLottoNumbers(int lottoCount, Set<List<Integer>> lottoNumbers) {
