@@ -49,4 +49,8 @@ public enum LottoReward {
     private String shipShapedPrice() {
         return new DecimalFormat("###,###").format(prize);
     }
+
+    public boolean isSatisfyMatchingCondition(int currentMatch, int currentBonusMatch) {
+        return currentMatch >= countMatch && currentBonusMatch >= bonusMatch;
+    }
 }
