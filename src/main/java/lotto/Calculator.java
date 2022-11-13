@@ -64,7 +64,7 @@ public class Calculator {
 
     /**
      * Calculate the total profit
-     * @param stats result from {@link Calculator#calculateCorrectNum()}
+     * @param stats result from {@link Calculator#countResultRank(List)}
      * @return profit
      */
     public double calcProfit(LinkedHashMap<Result, Integer> stats) {
@@ -74,5 +74,33 @@ public class Calculator {
         }
         double spent = Manager.COST * purchasedLottos.size();
         return (profit / spent) * 100;
+    }
+
+    /**
+     * Print the statistic result of purchased lottos
+     * @param stats result from {@link Calculator#countResultRank(List)}
+     */
+    public void showStats(LinkedHashMap<Result, Integer> stats) {
+        System.out.println("\n당첨 통계\n---");
+        for (Result keyEnum : stats.keySet()) {
+            int correctCount = keyEnum.correctCount();
+            if (correctCount == -1) {
+                correctCount = 5;
+            }
+            String bonus = "";
+            if (keyEnum.correctCount() == -1) {
+                bonus = ", 보너스 볼 일치";
+            }
+            System.out.println(correctCount + "개 일치" + bonus + " (" + keyEnum.prizeString() + "원)" + " - " + stats.get(keyEnum) + "개");
+        }
+        System.out.println("총 수익률은 " + calcProfit(stats) + "%입니다.");
+    }
+
+    /**
+     * Starts the process of calculating
+     */
+    public void calculate() {
+        LinkedHashMap<Result, Integer> stats = countResultRank(calculateCorrectNum());
+        showStats(stats);
     }
 }
