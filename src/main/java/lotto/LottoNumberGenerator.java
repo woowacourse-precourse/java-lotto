@@ -12,7 +12,7 @@ public class LottoNumberGenerator {
     public int generateBonusNumber(List<Integer> numbers) {
         int bonusNumber = 0;
         while (bonusNumber == 0) {
-            int candidate = Randoms.pickNumberInRange(1, 45);
+            int candidate = (int) (Math.random() * 45) + 1;
             if (!numbers.contains(candidate)) {
                 bonusNumber = candidate;
             }
