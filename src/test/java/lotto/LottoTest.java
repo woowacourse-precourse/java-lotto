@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Customer;
 import lotto.domain.Lotto;
+import lotto.domain.LottoCompany;
 import lotto.domain.WinningNumber;
 import lotto.view.LottoGameView;
 import lotto.view.ViewValidator;
@@ -43,7 +44,7 @@ class LottoTest {
 
     @DisplayName("숫자가 들어가면 예외가 발생하지 않는다")
     @Test
-    void createMoneyByNumber() throws NoSuchMethodException {
+    void createMoneyByNumber() {
         ViewValidator viewValidator = new ViewValidator();
 
         assertThatNoException()
@@ -52,7 +53,7 @@ class LottoTest {
 
     @DisplayName("숫자 예외가 발생 시 메시지에 접두어로 [ERROR]가 들어간다")
     @Test
-    void errorMessageByNotNumber() throws NoSuchMethodException {
+    void errorMessageByNotNumber() {
         ViewValidator viewValidator = new ViewValidator();
 
         assertThatThrownBy(() -> viewValidator.validateNumberType("a1000"))
@@ -118,16 +119,14 @@ class LottoTest {
 
     @DisplayName("로또 번호를 입력하면 오름차순으로 정렬한다")
     @Test
-    void sortLottoNumber() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        LottoGameView lottoGameView = new LottoGameView(new ViewValidator());
-        List<Integer> lotto = List.of(34, 24, 40, 41, 10, 7);
+    void sortLottoNumber() {
+        List<Integer> numbers = List.of(34, 24, 40, 41, 10, 7);
         List<Integer> result = List.of(7, 10, 24, 34, 40, 41);
+        Lotto lotto = new Lotto(numbers);
 
-        Method method = lottoGameView.getClass().getDeclaredMethod("getSortedByAscend", List.class);
-        method.setAccessible(true);
-        List<Integer> sortedLotto = (List<Integer>) method.invoke(lottoGameView, lotto);
+        List<Integer> sortedByAscend = lotto.getSortedByAscend();
 
-        assertThat(sortedLotto).isEqualTo(result);
+        assertThat(sortedByAscend).isEqualTo(result);
     }
 
     @DisplayName("금액을 입력하면 로또 개수를 반환한다")
@@ -396,13 +395,11 @@ class LottoTest {
     @DisplayName("랭크 결과 리스트를 입력하면 총 당첨금을 반환한다")
     @Test
     void getTotalPrizeMoneyByRanks() {
+        LottoCompany lottoCompany = new LottoCompany();
         List<LottoRank> ranks = List.of(LottoRank.SECOND_PLACE, LottoRank.SECOND_PLACE, LottoRank.THIRD_PLACE);
-        List<Integer> winningNumbers = List.of(1, 10, 12, 24, 33, 45);
-        int bonusNumber = 43;
-        WinningNumber winningNumber = new WinningNumber(winningNumbers, bonusNumber);
         int result = 61_500_000;
 
-        int totalPrizeMoney = winningNumber.getTotalPrizeMoney(ranks);
+        int totalPrizeMoney = lottoCompany.getTotalPrizeMoney(ranks);
 
         assertThat(totalPrizeMoney).isEqualTo(result);
     }
@@ -410,12 +407,10 @@ class LottoTest {
     @DisplayName("지불한 금액과 상금을 입력하면 수익률이 반환된다")
     @Test
     void getRateOfReturnByMoneyAndPrizeMoney() {
-        List<Integer> winningNumbers = List.of(1, 10, 12, 24, 33, 45);
-        int bonusNumber = 43;
-        WinningNumber winningNumber = new WinningNumber(winningNumbers, bonusNumber);
+        LottoCompany lottoCompany = new LottoCompany();
         double result = 62.5;
 
-        double rateOfReturn = winningNumber.getRateOfReturn(8000, 5000);
+        double rateOfReturn = lottoCompany.getRateOfReturn(8000, 5000);
 
         assertThat(rateOfReturn).isEqualTo(result);
     }
