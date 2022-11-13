@@ -19,7 +19,6 @@ public class Input {
         checkContainSeparator(input);
         return Stream.of(input.split(SEPARATOR))
                 .map(Input::changeNumber)
-                .sorted()
                 .collect(Collectors.toList());
     }
 
