@@ -5,7 +5,6 @@ import lotto.domain.Lotto;
 import lotto.ui.Input;
 import lotto.ui.Output;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -20,6 +19,7 @@ public class LottoService {
         output = new Output();
         input = new Input();
     }
+
     //구입 금액 안내 문구 출력
     //구입 금액 입력
     public void create(){
@@ -53,5 +53,20 @@ public class LottoService {
         output.bonusNum();
         win.addBonusNum(input.bounsNum());
     }
+
     //당첨통계 출력
+    public void winStaticics(){
+        for(Lotto numbers : history) {
+            int count = win.compare(numbers);
+            if(count == 5 && numbers.hasBonusNum(win)){
+                CoincideNumber.plusCountOfRank(2);
+                continue;
+            }
+            int rank = 7-count;
+            if(rank < 6) {
+                CoincideNumber.plusCountOfRank(rank);
+            }
+        }
+        output.winStatistics();
+    }
 }
