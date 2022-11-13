@@ -17,6 +17,7 @@ public class LottoGameController {
     public void start() {
         int money = InputView.inputMoney();
         int ticketCnt = new Ticket().count(money);
+        OutputView.printPurchaseLotto(ticketCnt);
         List<Lotto> lottoList = lottoGameService.pickLottos(ticketCnt);
         Lotto winningNumbers = new Lotto(InputView.inputWinningNumbers());
         int bonusNumber = InputView.inputBonusNumber();

@@ -10,14 +10,12 @@ import java.util.stream.Collectors;
 
 public class LottoGameService {
 
-    private OutputView outputView;
-    private Prize prize;
     public List<Lotto> pickLottos(int ticketCnt) {
         List<Lotto> lottoList = new ArrayList<>();
         for (int i=0; i<ticketCnt; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottoList.add(new Lotto(numbers));
-            outputView.printLottoNumbers(sortAscending(numbers));
+            OutputView.printLottoNumbers(sortAscending(numbers));
         }
         return lottoList;
     }
@@ -28,10 +26,10 @@ public class LottoGameService {
     }
 
     public Map<Prize, Integer> compareWinningLotto(List<Lotto> lottoList, Lotto winningLotto, int bonusNumber) {
-        Map<Prize, Integer> prizeMap = new EnumMap<>(Prize.class);
+        Map<Prize, Integer> prizeMap = Prize.initializeMap();
         for (Lotto userLotto : lottoList) {
             int binggoCnt = sizeIntersection(userLotto.getNumbers(), winningLotto.getNumbers());
-            Prize prizeType = prize.getMatchPrize(binggoCnt, checkBonusBinggo(userLotto, bonusNumber));
+            Prize prizeType = Prize.getMatchPrize(binggoCnt, checkBonusBinggo(userLotto, bonusNumber));
             plusPrizeCount(prizeMap, prizeType);
         }
         return prizeMap;
@@ -52,7 +50,7 @@ public class LottoGameService {
     }
 
     private void plusPrizeCount(Map<Prize, Integer> prizeCountMap, Prize prize) {
-        int count = prizeCountMap.getOrDefault(prize, 0);
+        int count = prizeCountMap.get(prize);
         prizeCountMap.put(prize, count+1);
     }
 

@@ -10,15 +10,15 @@ import java.util.stream.Stream;
 
 public class OutputView {
 
-    private final String PURCHASE_COUNT = "개를 구매했습니다.";
+    private static final String PURCHASE_COUNT = "개를 구매했습니다.";
     private static final String HISTORY = "%d개 일치 (%s원) - %d개";
     private static final String SECOND_HISTORY = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
 
-    public void printPurchaseLotto(int ticketCnt) {
+    public static void printPurchaseLotto(int ticketCnt) {
         System.out.println(ticketCnt + PURCHASE_COUNT);
     }
 
-    public void printLottoNumbers(List<Integer> numbers) {
+    public static void printLottoNumbers(List<Integer> numbers) {
         System.out.println(numbers);
     }
 

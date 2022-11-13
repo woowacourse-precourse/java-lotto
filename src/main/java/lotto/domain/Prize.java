@@ -1,7 +1,9 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.Map;
 
 public enum Prize {
     FAIL(0, false, ""),
@@ -21,7 +23,7 @@ public enum Prize {
         this.applyBounus = applyBounus;
     }
 
-    public Prize getMatchPrize(int binggoCnt, boolean isApplyBounus) {
+    public static Prize getMatchPrize(int binggoCnt, boolean isApplyBounus) {
         if (SECOND.isMatch(binggoCnt) || THIRD.isMatch(binggoCnt)) {
             return determineSecondOrThird(isApplyBounus);
         }
@@ -53,6 +55,17 @@ public enum Prize {
 
     public boolean isApplyBounus() {
         return this.applyBounus;
+    }
+
+    public static Map<Prize, Integer> initializeMap() {
+        Map<Prize, Integer> prizeMap = new EnumMap<>(Prize.class);
+        prizeMap.put(Prize.FAIL, 0);
+        prizeMap.put(Prize.FIFTH, 0);
+        prizeMap.put(Prize.FORTH, 0);
+        prizeMap.put(Prize.THIRD, 0);
+        prizeMap.put(Prize.SECOND, 0);
+        prizeMap.put(Prize.FIRST, 0);
+        return prizeMap;
     }
 
 }
