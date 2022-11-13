@@ -38,4 +38,7 @@ public class OutputView {
         System.out.printf(PROFIT_MESSAGE, (prize/money) * 100);
     }
 
+    public static void printYield(double yield) {
+        System.out.printf(PROFIT_MESSAGE,yield);
+    }
 }
