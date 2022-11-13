@@ -11,7 +11,7 @@ public class WinningResult {
     public HashMap<Integer, Integer> cntwinning;
 
     public Map<Integer, Integer> getwinningResult(List<Lotto> lotto, List<Integer> winning, int bonus) {
-
+        return inputMap(lotto, winning, bonus);
     }
 
     private int rankFive(List<Lotto> lotto, List<Integer> winning) {
@@ -79,5 +79,13 @@ public class WinningResult {
         return winningcnt;
     }
 
-
+    private Map<Integer, Integer> inputMap(List<Lotto> lotto, List<Integer> winning, int bonus) {
+        cntwinning = new HashMap<>();
+        cntwinning.put(5, rankFive(lotto, winning));
+        cntwinning.put(4, rankFour(lotto, winning));
+        cntwinning.put(3, rankThree(lotto, winning));
+        cntwinning.put(2, rankTwo(lotto, winning, bonus));
+        cntwinning.put(1, rankOne(lotto, winning));
+        return cntwinning;
+    }
 }
