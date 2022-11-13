@@ -7,6 +7,7 @@ public class OutputView {
     private static final String ERRORINPUTLOTTONUMBER = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String ERRORINPUTCOUNTLOTTONUMBER = "[ERROR] 로또 번호는 6개의 숫자여야 합니다.";
     private static final String ERRORINPUTBONUSNUMBER = "[ERROR] 보너스 번호는 1개의 숫자여야 합니다.";
+    private static final String ERRORINPUTOVERLAPNUMBER ="[ERROR] 중복 번호는 입력할 수 없습니다.";
     private static final String COUNTLOTTO = "개를 구매했습니다.";
     private static final String INPUTMONEY = "구입금액을 입력해 주세요.";
     private static final String INPUTLOTTONUMBER = "당첨 번호를 입력해 주세요.";
@@ -26,6 +27,10 @@ public class OutputView {
 
     public void printErrorInputLottoNumber() {
         System.out.println(ERRORINPUTLOTTONUMBER);
+    }
+
+    public void printErrorInputOverlapNumber() {
+        System.out.println(ERRORINPUTOVERLAPNUMBER);
     }
 
     public void printErrorInputCountLottoNumber() {

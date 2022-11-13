@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class ErrorUtil {
     OutputView outputView = new OutputView();
     public void errorInputMoney(int money) {
@@ -17,6 +19,13 @@ public class ErrorUtil {
             }
         }
     }
+
+    public void errorOverlapLottoNumber(List<Integer> lottoNumbers) {
+        if(lottoNumbers.size() != lottoNumbers.stream().distinct().count()) {
+            outputView.printErrorInputOverlapNumber();
+            throw new IllegalArgumentException();
+        }
+    }
     public void errorInputCountLottoNumber(String[] lottoNumbers) {
         if (lottoNumbers.length != 6) {
             outputView.printErrorInputCountLottoNumber();
@@ -27,12 +36,6 @@ public class ErrorUtil {
     public void errorInputBonusNumber(String bonusNumber) {
         if (Integer.parseInt(bonusNumber) < 1 || Integer.parseInt(bonusNumber) > 45) {
             outputView.printErrorInputLottoNumber();
-            throw new IllegalArgumentException();
-        }
-    }
-    public void errorInputCountBonusNumber(String bonusNumber) {
-        if (bonusNumber.length() != 1) {
-            outputView.printErrorInputCountBonusNumber();
             throw new IllegalArgumentException();
         }
     }
