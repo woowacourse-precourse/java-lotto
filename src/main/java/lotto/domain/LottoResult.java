@@ -33,4 +33,8 @@ public class LottoResult {
     public Long getCount(LottoPrize lottoPrize) {
         return result.getOrDefault(lottoPrize, ZERO);
     }
+
+    public EnumMap<LottoPrize, Long> value() {
+        return new EnumMap<>(result);
+    }
 }

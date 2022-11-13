@@ -9,6 +9,7 @@ import static lotto.domain.LottoPrize._NOTHING;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
@@ -60,5 +61,14 @@ public class LottoResultTest {
                 Arguments.of(Map.of(_5TH_PRIZE, 2L, _NOTHING, 1L), 10000L / 3000.0 * 100),
                 Arguments.of(Map.of(_NOTHING, 3L), 0.0)
         );
+    }
+
+    @Test
+    void value_메서드는_당첨_결과의_EnumMap을_반환한다() {
+        LottoResult lottoResult = new LottoResult(Map.of(_4TH_PRIZE, 1L, _5TH_PRIZE, 2L));
+        EnumMap<LottoPrize, Long> result = lottoResult.value();
+
+        assertThat(result.get(_4TH_PRIZE)).isEqualTo(1L);
+        assertThat(result.get(_5TH_PRIZE)).isEqualTo(2L);
     }
 }
