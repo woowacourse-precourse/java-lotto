@@ -28,5 +28,10 @@ public class Lotto {
         }
     }
     
-    public Integer numOfTickets
+    public Integer numOfTickets(int money){
+        if (money > 1000){
+            return money / 1000;
+        }
+        return 0;
+    }
 }
