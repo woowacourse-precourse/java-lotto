@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.NoSuchElementException;
@@ -23,11 +24,25 @@ public class UserTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("금액이 1000원단위가 아니면 예외가 발생한다.")
+    @DisplayName("금액이 1000원단위가 아니 예외가 발생한다.")
     @Test
     void createBuyAmountByWrongSize() {
         User user = new User();
         assertThatThrownBy(() -> user.setBuyAmount("1200"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("금액 설정하기.")
+    @Test
+    void setBuyAmount() {
+        //given
+        User user = new User();
+        int buyAmount = 1000;
+
+        //when
+        user.setBuyAmount(String.valueOf(buyAmount));
+
+        //then
+        assertThat(buyAmount).isEqualTo(user.getBuyAmount());
     }
 }
