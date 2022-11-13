@@ -25,12 +25,12 @@
     - [ ]  당첨 번호를 쉼표 기준으로 입력했는지 검증 기능 → validateWinningNumber_Diveded_Comma
     - [ ]  당첨 번호 6개를 입력했는지 검증 기능 → validateNumberOfWinningNumbers
     - [ ]  각 당첨 번호 및 보너스 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → isBetween1And45
-    - [ ]  각 당첨 번호 및 보너스 번호가 숫자 형식인지 검증 기능 → isCorrectTypeOfInput
+    - [ ]  로또 구입 금액과 각 당첨 번호 및 보너스 번호가 숫자 형식인지 검증 기능 → isCorrectTypeOfInput
 
 ### view
 
 1. InputView
-    - [ ]  로또를 구입할 금액 입력 기능 → inputPurchaseAmount
+    - [x]  로또를 구입할 금액 입력 기능 → inputPurchaseAmount
     - [ ]  당첨 번호 입력 기능 → inputWinningNumber
     - [ ]  보너스 번호 입력 기능 → inputBonusNumber
 2. OutputView
@@ -42,7 +42,10 @@
 ### controller
 
 1. ApplicationController
-    - [ ]  ...
+    - [ ]  어플리케이션 시작 기능 → startApplication
+
+        구입 금액 입력 호출
+   
 
 ---
 
