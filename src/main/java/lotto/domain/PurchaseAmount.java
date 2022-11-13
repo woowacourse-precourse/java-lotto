@@ -44,5 +44,7 @@ public class PurchaseAmount {
         }
     }
 
-
+    public double divideTotalMoneyByAmount(long totalMoney) {
+        return 1.0 * totalMoney / purchaseAmount;
+    }
 }

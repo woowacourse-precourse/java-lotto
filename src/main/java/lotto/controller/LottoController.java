@@ -20,7 +20,7 @@ public class LottoController {
         // 결과 생성
         Result result = getResult(lottoTicket, winningBonusNumber);
         // 결과 출력
-        printResult(result);
+        printResult(result, purchaseAmount);
     }
 
     private PurchaseAmount inputPurchaseAmount() {
@@ -69,9 +69,10 @@ public class LottoController {
         return result;
     }
 
-    private void printResult(Result result) {
+    private void printResult(Result result, PurchaseAmount purchaseAmount) {
         Output.printTitle();
         Output.printWinningStatistic(result);
+        Output.printYield(purchaseAmount.divideTotalMoneyByAmount(result.calculateTotalMoney()));
     }
 
 }

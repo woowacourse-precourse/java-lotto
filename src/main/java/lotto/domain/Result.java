@@ -18,6 +18,21 @@ public class Result {
         }
     }
 
+    public long calculateTotalMoney() {
+        List<Ranking> rankingList = Ranking.makeRankingList();
+        long sum = 0;
+
+        for (Ranking ranking : rankingList) {
+            if (result.containsKey(ranking)) {
+                int money = ranking.getMoney();
+                int count = result.get(ranking);
+                sum += Integer.valueOf(money * count);
+            }
+        }
+
+        return sum;
+    }
+
     public Map<Ranking, Integer> getResult() {
         return result;
     }
