@@ -4,12 +4,17 @@ import lotto.domain.User;
 import lotto.exception.InputException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
 public class InputService {
     User user;
+
+    public void setMoneyToUser(String inputMoney) {
+        user = new User(inputMoneyToInteger(inputMoney));
+    }
 
     public int inputMoneyToInteger(String inputMoney) {
         InputException inputException = new InputException();
@@ -18,28 +23,24 @@ public class InputService {
         return Integer.parseInt(inputMoney);
     }
 
+    public void setNumbersToUser(String inputNumbers) {
+        user.setNumbers(inputNumbersToList(inputNumbers));
+    }
+
     public List<Integer> inputNumbersToList(String inputNumbers) {
         List<Integer> numbers = new ArrayList<>(Collections.emptyList());
         numbers = toList(inputNumbers);
         return numbers;
     }
 
-    private List<Integer> toList(String inputNumbers) {
+    public List<Integer> toList(String inputNumbers) {
         List<Integer> numbers = new ArrayList<>(Collections.emptyList());
-
-        StringTokenizer st = new StringTokenizer(inputNumbers, ",");
-        while (st.hasMoreTokens()) {
-            numbers.add(Integer.parseInt(st.nextToken()));
-        }
+        numbers = Arrays.stream(
+                        inputNumbers.replace(" ", "")
+                                .split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
         return numbers;
-    }
-
-    public void setMoneyToUser(String inputMoney) {
-        user = new User(inputMoneyToInteger(inputMoney));
-    }
-
-    public void setNumbersToUser(String inputNumbers) {
-        user.setNumbers(inputNumbersToList(inputNumbers));
     }
 
     public User getUser() {
