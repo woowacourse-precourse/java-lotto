@@ -7,6 +7,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        reduplication(numbers);
+        range(numbers);
         this.numbers = numbers;
     }
 
@@ -15,6 +17,19 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    private void reduplication(List<Integer> numbers){
+        if(numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
+    }
 
-    // TODO: 추가 기능 구현
+    private void range(List<Integer> numbers) {
+        for(int i = 0; i < numbers.size(); i++){
+            if (numbers.get(i) < 1 || numbers.get(i) >= 45) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+
 }
