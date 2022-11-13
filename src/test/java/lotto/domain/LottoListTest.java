@@ -27,7 +27,7 @@ class LottoListTest {
     @Test
     void createLottoListToStringBy0() {
         LottoMachine result = new LottoMachine(0);
-        String resultString = "0개 구매하셨습니다.";
+        String resultString = "0개를 구매했습니다.";
 
         assertThat(resultString).isEqualTo(result.toString());
     }
@@ -35,7 +35,7 @@ class LottoListTest {
     @Test
     void createLottoListToStringBy1() {
         LottoMachine result = new LottoMachine(1000);
-        String resultString = "1개 구매하셨습니다."
+        String resultString = "1개를 구매했습니다."
                 + "\n" + result.getLottoList().get(0).getNumbers();
 
         assertThat(resultString).isEqualTo(result.toString());
@@ -44,7 +44,7 @@ class LottoListTest {
     @Test
     void createLottoListToStringBy2() {
         LottoMachine result = new LottoMachine(2000);
-        String resultString = "2개 구매하셨습니다."
+        String resultString = "2개를 구매했습니다."
                 + "\n" + result.getLottoList().get(0).getNumbers()
                 + "\n" + result.getLottoList().get(1).getNumbers();
 
