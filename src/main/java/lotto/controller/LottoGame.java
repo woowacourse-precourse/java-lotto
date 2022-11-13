@@ -24,6 +24,9 @@ public class LottoGame {
 
         printWinningNumbers();
         winLotto.setWinningNumbers();
+
+        printNewLine();
+        printBounsNumbers();
     }
 
     public void setPurchaseAmountLotto(int input){
@@ -44,6 +47,10 @@ public class LottoGame {
 
     public void printWinningNumbers(){
         System.out.println("당첨 번호를 입력해주세요.");
+    }
+
+    public void printBounsNumbers(){
+        System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     public void printNewLine(){
