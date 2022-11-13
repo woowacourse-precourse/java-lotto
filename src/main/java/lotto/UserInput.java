@@ -17,6 +17,10 @@ public class UserInput {
     public final static int START_RANGE = 1;
     public final static int END_RANGE = 45;
 
+    public int getAmount(int money) {
+        return money / MONEY_UNIT;
+    }
+
     public int BonusNumber(List<Integer> winningNumbers) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String numberString = Console.readLine();
