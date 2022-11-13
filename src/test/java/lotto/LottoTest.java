@@ -58,4 +58,34 @@ class LottoTest {
         }
         assertThat(true).isEqualTo(result);
     }
+
+    @DisplayName("containNumber 함수가 정상적으로 작동한다")
+    @ParameterizedTest
+    @CsvSource({"1, 17, 9, 23, 6, 43, 2, false", "44, 43, 10, 20, 30, 45, 10, true"})
+    void runContainNumber(int number1, int number2, int number3,
+                          int number4, int number5, int number6,
+                          int compareNumber, boolean result) {
+        Lotto lotto = new Lotto(List.of(number1, number2, number3, number4, number5, number6));
+        boolean hasNumber = lotto.containNumber(compareNumber);
+        assertThat(result).isEqualTo(hasNumber);
+    }
+
+    @DisplayName("countMatchingNumber 함수가 정상적으로 작동한다")
+    @ParameterizedTest
+    @CsvSource({"1, 2, 3, 4, 5, 6, 11, 10, 9, 8, 7, 1, 1",
+            "1, 2, 3, 4, 5, 6, 11, 2, 9, 8, 7, 1, 2",
+            "1, 2, 3, 4, 5, 6, 11, 2, 9, 3, 7, 1, 3",
+            "1, 2, 3, 4, 5, 6, 4, 2, 9, 3, 7, 1, 4",
+            "1, 2, 3, 4, 5, 6, 4, 2, 9, 3, 5, 1, 5",
+            "1, 2, 3, 4, 5, 6, 4, 2, 6, 3, 5, 1, 6"})
+    void runCountMatchingNumber(int number1, int number2, int number3,
+                                int number4, int number5, int number6,
+                                int compareNumber1, int compareNumber2, int compareNumber3,
+                                int compareNumber4, int compareNumber5, int compareNumber6,
+                                int result) {
+        Lotto lotto = new Lotto(List.of(number1, number2, number3, number4, number5, number6));
+        int countNumber = lotto.countMatchingNumber(new Lotto(List.of(compareNumber1, compareNumber2, compareNumber3,
+                compareNumber4, compareNumber5, compareNumber6)));
+        assertThat(result).isEqualTo(countNumber);
+    }
 }

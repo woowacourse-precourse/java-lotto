@@ -17,6 +17,11 @@ public class WinningNumber {
     private final Lotto winningLotto;
     private final int bonusNumber;
 
+    public WinningNumber(Lotto winningLotto, int bonusNumber) {
+        this.winningLotto = winningLotto;
+        this.bonusNumber = bonusNumber;
+    }
+
     public WinningNumber(String winningLotto, String bonusNumber) {
         this.winningLotto = convertStringToWinningLotto(winningLotto);
         this.bonusNumber = convertStringToBonusNumber(bonusNumber);
