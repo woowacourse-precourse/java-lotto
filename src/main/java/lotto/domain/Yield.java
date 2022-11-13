@@ -2,17 +2,17 @@ package lotto.domain;
 
 public class Yield {
 
-    private final int yield;
+    private String yield;
 
-    public Yield(int totalPurchase) {
-        int totalRevenue = 0;
+    public Yield(double totalPurchase) {
+        double totalRevenue = 0;
         for (Rank rank : Rank.values()) {
             totalRevenue += rank.getCount() * rank.getCashPrize();
         }
-        yield = totalRevenue / totalPurchase * 100;
+        yield = String.format("%.1f", totalRevenue / totalPurchase * 100);
     }
 
-    public int getYield() {
+    public String getYield() {
         return yield;
     }
 }

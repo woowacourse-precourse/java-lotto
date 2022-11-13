@@ -2,6 +2,7 @@ package lotto.view;
 
 import java.util.List;
 import lotto.domain.Rank;
+import lotto.domain.Yield;
 
 public class OutputView {
 
@@ -42,5 +43,9 @@ public class OutputView {
             System.out.print(rank.getPrintMessage());
             System.out.println(rank.getCount() + "개");
         }
+    }
+
+    public static void printYield(String yield){
+        System.out.println("총 수익률은 " + yield + "%입니다.");
     }
 }
