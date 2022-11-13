@@ -37,7 +37,8 @@ class UserInputTest {
         String input = "2000";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThat(user.money).isEqualTo(2000);
+        Calculator calc = user.inputMoney();
+        assertThat(calc.money).isEqualTo(2000);
     }
 
     @Test
