@@ -7,9 +7,22 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoFactory {
-    private static List<Integer> randomLottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    private static Money money;
 
-    public List<Integer> randomLottoNumbers() {
-        return Collections.unmodifiableList(randomLottoNumbers);
+    public LottoFactory(Money money) {
+        this.money = money;
+    }
+
+    public Lotto chooseNumbers() {
+        List<Integer> chosenNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new Lotto(chosenNumbers);
+    }
+
+    public List<Lotto> purchaseLottoTicket() {
+        List<Lotto> lottoTicket = new ArrayList<>();
+        for (int i = 0; i < money.numberOfTickets(); i++) {
+            lottoTicket.add(chooseNumbers());
+        }
+        return lottoTicket;
     }
 }

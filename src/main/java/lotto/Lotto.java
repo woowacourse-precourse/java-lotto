@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -40,5 +41,9 @@ public class Lotto {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public List<Integer> lottoNumbers() {
+        return Collections.unmodifiableList(this.numbers);
     }
 }

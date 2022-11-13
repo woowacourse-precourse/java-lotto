@@ -35,4 +35,8 @@ public class Money {
     private int convertToMoney(String input) {
         return Integer.parseInt(input);
     }
+
+    public int numberOfTickets() {
+        return this.money / PRICE_OF_LOTTO;
+    }
 }
