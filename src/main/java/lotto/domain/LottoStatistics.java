@@ -9,13 +9,15 @@ import java.util.List;
 
 public class LottoStatistics {
     public void getLottoStatistics(LottoBuyer lottoBuyer, LottoWinningNumber lottoWinningNumber) {
-        List<Lotto> lottoTickets = lottoBuyer.getLottoTickets();
         LottoResults lottoResults = lottoBuyer.getLottoResults();
+        List<Lotto> lottoTickets = lottoBuyer.getLottoTickets();
+        List<Integer> winningNumbers = lottoWinningNumber.getLottoWinningNumbers();
+        int bonusNumber = lottoWinningNumber.getBonusNumber();
 
         for (Lotto lotto : lottoTickets) {
             List<Integer> lottoNumbers = lotto.getLotto();
-            int lottoCount = countLottoNumber(lottoNumbers, lottoWinningNumber.getLottoWinningNumbers());
-            boolean isBonus = checkIsBonus(lottoNumbers, lottoWinningNumber.getBonusNumber());
+            int lottoCount = countLottoNumber(lottoNumbers, winningNumbers);
+            boolean isBonus = checkIsBonus(lottoNumbers, bonusNumber);
             lottoResults.addLottoCount(lottoCount, isBonus);
         }
     }
