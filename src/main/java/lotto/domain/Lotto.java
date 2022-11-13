@@ -2,7 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
-import static constant.Constant.LOTTO_SIZE;
+import static constant.Constant.*;
+import static constant.ErrorMessage.NOT_LOTTO_NUMBER_RANGE;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -10,6 +11,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validDuplicate(numbers);
+        validNumberRange(numbers);
         this.numbers = numbers;
     }
 
@@ -23,6 +25,15 @@ public class Lotto {
         long delDuplicateSize = numbers.stream().distinct().count();
         if (numbers.size() != delDuplicateSize) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validNumberRange(List<Integer> numbers) {
+        boolean isValid = numbers.stream()
+                .noneMatch(num -> num < LOTTO_NUMBER_MIN || num > LOTTO_NUMBER_MAX);
+        if (!isValid) {
+            System.out.println(NOT_LOTTO_NUMBER_RANGE);
+            throw new IllegalArgumentException(NOT_LOTTO_NUMBER_RANGE);
         }
     }
 
