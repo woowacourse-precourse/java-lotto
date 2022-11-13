@@ -5,38 +5,17 @@
 
 ### [입력 관련]
 * 로또 구입 금액 입력
-  * 1000원 단위로 입력하지 않으면 에러 발생(enum)
-    * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
-  * 숫자가 아닌 문자 입력하면 에러 발생(enum)
-    * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
 * 당첨 번호 입력
     * Lotto 클래스 사용
-    * 중복 번호 입력시 에러 발생(enum)
-        * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
-    * 1~45 이외의 번호 입력시 에러 발생(enum)
-        * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
-    * 6개가 아닌 번호 입력시 에러 발생(enum)
-      * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
-    * ,가 아닌 다른 문자 입력시 에러 발생(enum)
-      * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
 * 보너스 번호 입력
-    * 당첨 번호와 숫자 겹칠 시 에러 발생(enum)
-        * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
-    * 숫자가 아닌 문자 입력시 에러 발생(enum)
-      * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
-    * 1~45 이외의 번호 입력시 에러 발생(enum)
-        * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
           <br><br>
 
 ### [출력 관련]
 * 발행한 로또 수량 출력
-    * enum 클래스 사용
-    *
-    ```
-    %d개를 구매했습니다. 
-    ```
+    * ```
+      %d개를 구매했습니다. 
+      ```
 * 발행한 로또 번호 출력
-    * toString 오버라이딩 하여 구현
     * ```
       [8, 21, 23, 41, 42, 43]
       [3, 5, 11, 16, 32, 38]
@@ -48,7 +27,6 @@
       [1, 3, 5, 14, 22, 45]
       ```
 * 당첨 내역 출력
-    * enum 클래스 사용
     * ```
       3개 일치 (5,000원) - %d개
       4개 일치 (50,000원) - %d개
@@ -57,7 +35,6 @@
       6개 일치 (2,000,000,000원) - %d개
       ```
 * 수익률 출력
-  * enum 클래스 사용 
   * ```총 수익률은 %f%입니다.```
     <br><br>
 ---
@@ -65,10 +42,35 @@
 ## <도메인 로직>
 
 ### [발행 관련]
+* 로또 구입 금액 산정
+  * * 1000원 단위로 입력하지 않으면 에러 발생(enum)
+    * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+  * 숫자가 아닌 문자 입력하면 에러 발생(enum)
+      * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+<br><br>
+* 로또 번호 저장 (6개)
+  * 중복 번호 입력시 에러 발생(enum)
+    * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+  * 1~45 이외의 번호 입력시 에러 발생(enum)
+    * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+  * 6개가 아닌 번호 입력시 에러 발생(enum)
+    * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+  * ,가 아닌 다른 문자 입력시 에러 발생(enum)
+    * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+<br><br>
+* 보너스 번호 저장 (1개)
+    * 당첨 번호와 숫자 겹칠 시 에러 발생(enum)
+        * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+    * 숫자가 아닌 문자 입력시 에러 발생(enum)
+        * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+    * 1~45 이외의 번호 입력시 에러 발생(enum)
+        * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
+<br><br>
 * 로또 번호 자동 발행
     * 로또 번호 오름차순으로 정렬하여 저장
     * 중복된 번호가 없게 발행해야 함
       <br><br>
+
 
 ### [당첨 관련]
 * 3개 일치 개수
