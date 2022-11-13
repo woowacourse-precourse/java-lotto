@@ -19,6 +19,7 @@ public class ValidatorTest {
         assertThatThrownBy(() -> payment("123456"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
     @DisplayName("당첨 번호를 형식에 맞게 입력하지 않으면 예외가 발생한다")
     @Test
     void winningNumberFormatValidation() {
