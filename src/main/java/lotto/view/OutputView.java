@@ -18,11 +18,11 @@ public class OutputView {
     }
 
     public static void printWinningOverview(Lottos lottos, Lotto winningLotto, int bounsNumber) {
-        Map<LottoResult, Integer> winningCounts = lottos.countWinningPrize(winningLotto, bounsNumber);
+        Map<LottoResult, Integer> totalResult = lottos.getWinningCounts(winningLotto, bounsNumber);
         double profit = lottos.calculateProfit(winningLotto, bounsNumber);
 
         printOverViewIntro();
-        printWinningCounts(winningCounts);
+        printWinningCounts(totalResult);
         printProfit(profit);
     }
 

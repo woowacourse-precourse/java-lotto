@@ -54,22 +54,22 @@ public class Lottos {
         return (double) winningAmount / money * 100;
     }
 
-    public Map<LottoResult, Integer> countWinningPrize(Lotto winningLotto, int bonusNumber) {
-        HashMap<LottoResult, Integer> winningPrizeCounts = getDefaultWinningPrizeCounts();
+    public Map<LottoResult, Integer> getWinningCounts(Lotto winningLotto, int bonusNumber) {
+        HashMap<LottoResult, Integer> winningCounts = getEmptyWinningCounts();
         for (Lotto lotto : lottos) {
             LottoResult lottoResult = lotto.getResult(winningLotto, bonusNumber);
-            Integer winningPrizeCount = winningPrizeCounts.getOrDefault(lottoResult, 0) + 1;
-            winningPrizeCounts.put(lottoResult, winningPrizeCount);
+            Integer winningCount = winningCounts.getOrDefault(lottoResult, 0) + 1;
+            winningCounts.put(lottoResult, winningCount);
         }
-        return winningPrizeCounts;
+        return winningCounts;
     }
 
-    private HashMap<LottoResult, Integer> getDefaultWinningPrizeCounts() {
-        HashMap<LottoResult, Integer> winningPrizeCounts = new HashMap<>();
+    private HashMap<LottoResult, Integer> getEmptyWinningCounts() {
+        HashMap<LottoResult, Integer> emptyWinningCounts = new HashMap<>();
         for (LottoResult lottoResult : LottoResult.values()) {
-            winningPrizeCounts.put(lottoResult, DEFAULT_COUNT);
+            emptyWinningCounts.put(lottoResult, DEFAULT_COUNT);
         }
-        return winningPrizeCounts;
+        return emptyWinningCounts;
     }
 
     private int getMoney() {
