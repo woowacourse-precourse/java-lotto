@@ -9,10 +9,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 class LottoGameTest {
-
     @Test
-    void translateNumbers() {
-
+    void 로또_세트_결과_확인(){
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        Lotto lotto1 = new Lotto(List.of(8, 9, 10, 11, 12, 13));
+        Lotto lotto2 = new Lotto(List.of(7, 15, 16, 17, 18, 19));
+        Lotto lotto3 = new Lotto(List.of(4, 5, 6, 3, 7, 2));
+        Lotto lotto4 = new Lotto(List.of(26, 27, 28, 29, 1, 2));
+        Lotto lotto5 = new Lotto(List.of(1, 2, 3, 20, 12, 11));
+        Lotto lotto6 = new Lotto(List.of(1, 2, 3, 4, 5, 11));
+        List<Lotto> lottos = List.of(lotto1, lotto2, lotto3, lotto4, lotto5, lotto6);
+        LottoSet lottoSet = new LottoSet(lottos);
+        List<Integer> output = lottoSet.checkWinning(winningNumbers, bonusNumber);
+        List<Integer> result = List.of(0, 1, 1, 0, 1);
+        assertThat(output).isEqualTo(result);
     }
 
     @Test
