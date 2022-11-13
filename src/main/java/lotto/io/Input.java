@@ -1,11 +1,22 @@
 package lotto.io;
 
+import lotto.util.Validator;
+
 import java.util.LinkedList;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Input {
+    private final Validator purchaseValidator;
+    private final Validator winningValidator;
+    private final Validator bonusValidator;
     private final int MIN_UNIT = 1000;
+
+    public Input(Validator purchaseValidator, Validator winningValidator, Validator bonusValidator) {
+        this.purchaseValidator = purchaseValidator;
+        this.winningValidator = winningValidator;
+        this.bonusValidator = bonusValidator;
+    }
 
     public int enterPurchaseAmt() {
         System.out.println("구입금액을 입력해 주세요.");
