@@ -16,8 +16,11 @@
 - [ ] 당첨 내역 출력
 
 ### LottoHandler
+- [ ] 입력 받은 당첨 번호를 적절하게 변환 (문자열 >> 리스트)
 - [ ] 수익률 계산
 - [ ] Lotto, LottoMachine, View 기능을 핸들링
+  - [x] Lotto, LottoMachine 기능을 이용하여 메인 로직 구현
+  - [ ] View 기능을 이용하여 출력 구현
 
 ### InputException
 - [ ] 구입 금액에 대한 예외 처리
