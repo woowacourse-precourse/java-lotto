@@ -39,6 +39,11 @@ public class LottoController {
 
     private void printBroughtLottoMessage(int inputPrice) {
         outputView.outputLottoBuyingResult(lottoService.buyLottos(inputPrice));
+        requestWinningNumber();
+    }
+
+    private void requestWinningNumber() {
+        String inputWinningNumber = inputView.inputWinningNumber();
     }
 
 

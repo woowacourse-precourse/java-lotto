@@ -13,4 +13,9 @@ public class InputView {
     public void printInputPriceAgain() {
         System.out.println(InputMessage.INVALID_INPUT_PRICE);
     }
+
+    public String inputWinningNumber() {
+        System.out.println(InputMessage.INPUT_WINNING_NUMBER);
+        return Console.readLine();
+    }
 }
