@@ -15,6 +15,19 @@ public class Score {
         return new Score(0, 0);
     }
 
+    public Ranking generateRank() {
+        return Ranking.calculateScore(this);
+    }
+
+    public Score plusNormal(final Integer count) {
+        return new Score(this.normal + count, this.bonus);
+    }
+
+    public Score plusBonus() {
+        return new Score(this.normal, this.bonus + 1);
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -32,16 +45,5 @@ public class Score {
         return Objects.hash(normal, bonus);
     }
 
-    public Ranking generateRank() {
-        return Ranking.calculateScore(this);
-    }
 
-    public Score plusNormal() {
-        return new Score(this.normal + 1, this.bonus);
-    }
-
-
-    public Score plusBonus() {
-        return new Score(this.normal, this.bonus + 1);
-    }
 }

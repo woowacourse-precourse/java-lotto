@@ -19,12 +19,9 @@ public class AnswerLotto {
     public Score compareLotto(Lotto randomLotto) {
         var score = Score.generateEmptyScore();
 
-        var correctCount = this.answerLotto.compareCount(randomLotto);
+        var correctCount = answerLotto.compareCount(randomLotto);
 
-        for (int i = 0; i < correctCount; i++) {
-            score = score.plusNormal();
-        }
-
+        score = score.plusNormal(correctCount);
         if (randomLotto.hasLottoNumber(bonusNumber)) {
             score = score.plusBonus();
         }
