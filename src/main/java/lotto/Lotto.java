@@ -27,4 +27,13 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 입력된 당첨 번호와 보너스 번호가 유효하지 않습니다.");
         }
     }
+
+    private static void ValidatePurchaseAmount(Integer purchaseAmount) {
+        if (purchaseAmount / 1000 < 1) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
+        }
+        if (purchaseAmount % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
+        }
+    }
 }
