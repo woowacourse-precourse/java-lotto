@@ -2,9 +2,7 @@ package lotto.game.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import lotto.game.domain.Lotto;
 import lotto.game.domain.LottoGrade;
 import lotto.game.domain.Money;
@@ -44,29 +42,13 @@ public class LottoService {
         return LottoGrade.confirmWinning(matchCount, bonusMatch);
     }
 
-    public Map<LottoGrade, Integer> getTotalWinning(List<LottoGrade> grades) {
-        Map<LottoGrade, Integer> totalWinnings = new HashMap<>();
-        for (LottoGrade grade : grades) {
-            addWinning(totalWinnings, grade);
-        }
-        return totalWinnings;
-    }
-
-    private void addWinning(Map<LottoGrade, Integer> totalWinnings, LottoGrade grade) {
-        if (totalWinnings.containsKey(grade)) {
-            totalWinnings.put(grade, totalWinnings.get(grade) + 1);
-            return;
-        }
-        totalWinnings.put(grade, 1);
-    }
-
     public String calculateProfitPercent(Money money, List<LottoGrade> totalWinnings) {
         Money profit = calculateTotalProfit(totalWinnings);
         return String.format("%,.1f%%", (double) profit.getValue() / money.getValue() * 100);
     }
 
-    private Money calculateTotalProfit(List<LottoGrade> totalWinnings) {
-        return totalWinnings.stream()
+    private Money calculateTotalProfit(List<LottoGrade> grades) {
+        return grades.stream()
                 .map(Money::of)
                 .reduce(Money::add)
                 .orElse(Money.NO_MONEY);

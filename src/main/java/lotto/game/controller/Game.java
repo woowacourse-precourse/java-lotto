@@ -3,8 +3,8 @@ package lotto.game.controller;
 import static lotto.game.view.UI.*;
 
 import java.util.List;
-import java.util.Map;
 import lotto.game.domain.Lotto;
+import lotto.game.domain.TotalWinning;
 import lotto.game.domain.WinningLotto;
 import lotto.game.domain.LottoGrade;
 import lotto.game.service.LottoService;
@@ -34,7 +34,7 @@ public class Game {
         WinningLotto winningLotto = WinningLotto.of(winningNumbersInput, bonusNumberInput);
 
         List<LottoGrade> lottoGrades = lottoService.confirmAllLottos(winningLotto, lottos);
-        Map<LottoGrade, Integer> totalWinning = lottoService.getTotalWinning(lottoGrades);
+        TotalWinning totalWinning = TotalWinning.of(lottoGrades);
 
         ui.printTotalResult(totalWinning);
         ui.printProfitRate(lottoService.calculateProfitPercent(money, lottoGrades));
