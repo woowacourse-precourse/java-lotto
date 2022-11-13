@@ -16,6 +16,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        numberRangeValidate(numbers);
         sixLetterValidate(numbers);
         duplicateValidate(numbers);
     }
@@ -33,6 +34,15 @@ public class Lotto {
 
         if (!SIZE.equals(duplicateCheck.size())) {
             throw new IllegalArgumentException(DUPLICATE.toString());
+        }
+    }
+
+    private void numberRangeValidate(List<Integer> numbers) {
+        boolean illegal = !numbers.stream()
+                .allMatch((number) -> 1 <= number && number <= 45);
+
+        if (illegal) {
+            throw new IllegalArgumentException(WRONG_RANGE.toString());
         }
     }
 }
