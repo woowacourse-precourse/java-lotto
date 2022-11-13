@@ -16,6 +16,9 @@ public class PurchaseController extends Controller{
     }
 
     private void validate(String input) {
-        // TODO: 검증 기능
+        String regex = "^[0-9]{1,}000$";
+        if (!input.matches(regex)) {
+            throw new IllegalArgumentException(FORMAT_ERROR_MESSAGE);
+        }
     }
 }
