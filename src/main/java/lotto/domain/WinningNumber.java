@@ -14,6 +14,7 @@ public class WinningNumber {
 		validWinningNumber(winNumbers);
 		this.winningNumber = winNumbers;
 	}
+
 	private void validWinningNumber(List<Integer> winningNumber) {
 		if (isWrongSize(winningNumber) || isDuplicateNumber(winningNumber) || isWrongRangeWinningNumber(winningNumber)) {
 			throw new IllegalArgumentException(VALID_WIN_NUMBER_ERROR_MESSAGE);
