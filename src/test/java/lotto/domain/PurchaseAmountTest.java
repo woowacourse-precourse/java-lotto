@@ -2,9 +2,7 @@ package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.InputMismatchException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -21,7 +19,7 @@ class PurchaseAmountTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"0, 0","1000, 1", "123000, 123"})
+    @CsvSource({"0, 0", "1000, 1", "123000, 123"})
     void 수량_확인(int inputAmount, int expected) {
         PurchaseAmount purchaseAmount = new PurchaseAmount(inputAmount);
 
