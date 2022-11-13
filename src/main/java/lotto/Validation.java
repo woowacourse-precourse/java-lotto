@@ -131,4 +131,7 @@ public class Validation {
 		return true;
 	}
 
+	public static void setJackpot_number_list_compare(List<String> jackpot_number_list){
+		jackpot_number_list_compare=jackpot_number_list;
+	}
 }
