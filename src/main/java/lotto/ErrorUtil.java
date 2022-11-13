@@ -3,7 +3,7 @@ package lotto;
 public class ErrorUtil {
     OutputView outputView = new OutputView();
     public void errorInputMoney(int money) {
-        if (money % 1000 != 0) {
+        if (money % 1000 != 0 || money == 0) {
             outputView.printErrorInputMoney();
             throw new IllegalArgumentException();
         }

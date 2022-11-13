@@ -5,7 +5,7 @@ public class OutputView {
     private static final String ERRORINPUTLOTTONUMBER = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String ERRORINPUTCOUNTLOTTONUMBER = "[ERROR] 로또 번호는 6개의 숫자여야 합니다.";
     private static final String ERRORINPUTBONUSNUMBER = "[ERROR] 보너스 번호는 1개의 숫자여야 합니다.";
-
+    private static final String COUNTLOTTO = "개를 구매했습니다.";
     public void printErrorInputMoney() {
         System.out.println(ERRORINPUTMONEY);
     }
@@ -20,5 +20,9 @@ public class OutputView {
 
     public void printErrorInputCountBonusNumber() {
         System.out.println(ERRORINPUTBONUSNUMBER);
+    }
+
+    public void printBuyCountLotto(int countLotto) {
+        System.out.println(countLotto + COUNTLOTTO);
     }
 }

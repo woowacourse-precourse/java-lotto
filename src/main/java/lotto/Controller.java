@@ -30,5 +30,12 @@ public class Controller {
         return numbers;
     }
 
-
+    public void lottoRaffle() {
+        DataProcessing dataProcessing = new DataProcessing();
+        OutputView outputView = new OutputView();
+        int countLotto = dataProcessing.countLotto(dataProcessing.conversionMoney(inputMoney()));
+        lottoNumber();
+        inputBonusNumber();
+        outputView.printBuyCountLotto(countLotto);
+    }
 }

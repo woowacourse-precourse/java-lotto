@@ -22,6 +22,10 @@ public class DataProcessing {
         return conversion;
     }
 
+    public int countLotto(int money) {
+        int count = money / 1000;
+        return count;
+    }
     public String[] splitLottoNumber(String lottoNumbers) {
         ErrorUtil errorUtil = new ErrorUtil();
         String[] splitNumbers = lottoNumbers.split(",");
