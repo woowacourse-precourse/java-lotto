@@ -2,7 +2,6 @@ package lotto.domain;
 
 import lotto.system.Constant;
 import lotto.system.IOMessage;
-import lotto.util.RandomNumGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
