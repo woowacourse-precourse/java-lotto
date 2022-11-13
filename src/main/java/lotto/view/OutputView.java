@@ -10,6 +10,12 @@ public class OutputView {
     private final String LOTTO_PURCHASE_COMPLETE_MESSAGE = "개를 구매했습니다.";
     private final String NUMBER_OF_THING = "개";
 
+    private final int FIRST_PLACE = 0;
+    private final int SECOND_PLACE = 1;
+    private final int THIRD_PLACE = 2;
+    private final int FOURTH_PLACE = 3;
+    private final int FIFTH_PLACE = 4;
+
     public LottoRank lottoRank;
     public void printPriceInputMessage() {
         System.out.println(LOTTO_PURCHASE_PRICE_INPUT_MESSAGE);
@@ -25,11 +31,11 @@ public class OutputView {
         }
     }
     public void printLottoRankResult(List<Integer> lottoResult) {
-        System.out.println(LottoRank.FIFTH.getResultMessage() + lottoResult.get(4) + NUMBER_OF_THING);
-        System.out.println(LottoRank.FOURTH.getResultMessage() + lottoResult.get(3) + NUMBER_OF_THING);
-        System.out.println(LottoRank.THIRD.getResultMessage() + lottoResult.get(2) + NUMBER_OF_THING);
-        System.out.println(LottoRank.SECOND.getResultMessage() + lottoResult.get(1) + NUMBER_OF_THING);
-        System.out.println(LottoRank.FIRST.getResultMessage() + lottoResult.get(0) + NUMBER_OF_THING);
+        System.out.println(LottoRank.FIFTH.getResultMessage() + lottoResult.get(FIFTH_PLACE) + NUMBER_OF_THING);
+        System.out.println(LottoRank.FOURTH.getResultMessage() + lottoResult.get(FOURTH_PLACE) + NUMBER_OF_THING);
+        System.out.println(LottoRank.THIRD.getResultMessage() + lottoResult.get(THIRD_PLACE) + NUMBER_OF_THING);
+        System.out.println(LottoRank.SECOND.getResultMessage() + lottoResult.get(SECOND_PLACE) + NUMBER_OF_THING);
+        System.out.println(LottoRank.FIRST.getResultMessage() + lottoResult.get(FIRST_PLACE) + NUMBER_OF_THING);
     }
 
     public void printLottoEarningRate(String earningRate) {
