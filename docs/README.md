@@ -13,7 +13,7 @@
     - [ ] 입력받은 숫자가 0인 경우 예외 처리(IllegalArgumentException)
     - [ ] 입력받은 숫자가 1000으로 나누어 떨어지지 않는 경우 예외 처리(IllegalArgumentException)
 - [ ] 당첨 번호를 쉼표(,) 기준으로 입력 받는 기능
-    - [ ] 구분자가 쉼표가 아니며 
+    - [ ] 구분자가 쉼표가 아니면 예외 처리
     - [ ] 로또 번호의 숫자 범위는 1~45까지가 아닐 경우 예외 처리(IllegalArgumentException)
     - [ ] 입력 받은 당첨 번호의 수가 서로 중복되는 경우 예외 처리(IllegalArgumentException)
 - [ ] 보너스 번호 입력 받는 기능
