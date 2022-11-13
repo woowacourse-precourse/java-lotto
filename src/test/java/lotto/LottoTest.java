@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -88,7 +89,24 @@ class LottoTest {
         List<Integer> threeNumbersMatch = List.of(1, 2, 3, 12, 13, 14);
         List<List<Integer>> purchaseRecord = List.of(sixNumbersMatch, fiveNumbersMatch, fiveAndBonusNumbersMatch, fourNumbersMatch, threeNumbersMatch);
 
-        List<Integer> winningRecord = List.of(0, 0, 0, 0, 0); // 3, 4, 5, 5 + bonus, 6
+        List<Integer> winningRecord = new ArrayList<>(); // 3, 4, 5, 5 + bonus, 6
+
+        winningRecord.add(0);
+        winningRecord.add(0);
+        winningRecord.add(0);
+        winningRecord.add(0);
+        winningRecord.add(0);
+
+        for (List<Integer> currentLotto : purchaseRecord) {
+            int indexToIncrease = lotto.getIndividualLottoScore(currentLotto);
+
+            if (indexToIncrease < 0) {
+                continue;
+            }
+
+            int currentIndexCount = winningRecord.get(indexToIncrease);
+            winningRecord.set(indexToIncrease, currentIndexCount + 1);
+        }
 
         assertThat(lotto.calculateLottoResult(purchaseRecord, winningRecord)).isEqualTo(List.of(1, 1, 1, 1, 1));
 
