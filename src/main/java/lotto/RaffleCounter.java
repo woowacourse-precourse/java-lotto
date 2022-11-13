@@ -70,6 +70,7 @@ public class RaffleCounter {
         if (winnerResult.get(0) == 3) {
             return 5;
         }
+        return 0;
     }
 
 }
