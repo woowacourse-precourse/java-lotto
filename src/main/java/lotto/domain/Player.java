@@ -10,12 +10,13 @@ import static lotto.constant.ExceptionConstants.*;
 import static lotto.constant.GameConstants.*;
 
 public class Player {
+    private int purchaseAmount;
     private List<Lotto> lottos;
 
     public Player() {
         String purchaseAmount = InputView.readPurchaseAmount();
         validate(purchaseAmount);
-        this.lottos = buyLotto(parse(purchaseAmount));
+        this.purchaseAmount = parse(purchaseAmount);
     }
 
     private void validate(String purchaseAmount) {
