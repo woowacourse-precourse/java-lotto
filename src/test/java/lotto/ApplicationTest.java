@@ -176,6 +176,32 @@ class ApplicationTest extends NsTest {
             }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    void startLottery(List<Lotto> lottoList) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Class app = Application.class;
+        Class args[] = new Class[1];
+        args[0] = List.class;
+
+        Object[] params = new Object[1];
+        params[0] = lottoList;
+
+        Method method = app.getDeclaredMethod("startLottery", args);
+        method.setAccessible(true);
+        method.invoke(null, params);
+    }
+
+    @Test
+    void 보너스_번호_중복_예외_테스트() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        stdInput("1,2,3,4,5,6", "1");
+        assertThatThrownBy(
+            () -> {
+                try {
+                    startLottery(List.of());
+                } catch (InvocationTargetException e) {
+                    throw e.getTargetException();
+                }
+            }).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
