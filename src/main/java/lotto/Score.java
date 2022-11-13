@@ -1,8 +1,8 @@
 package lotto;
 
 public class Score implements Comparable<Score> {
-    private final int winningNumberCount;
-    private final int bonusNumberCount;
+    public final int winningNumberCount;
+    public final int bonusNumberCount;
 
     public Score(int winningNumberCount, int bonusNumberCount) {
         this.winningNumberCount = winningNumberCount;
