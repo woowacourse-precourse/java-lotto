@@ -19,6 +19,16 @@ public class InputView {
 		return winningNumbers;
 	}
 
+	public String getBonusNumber() {
+		printAskingBonusNumberMessage();
+		String bonusNumber = Console.readLine();
+		Validator.validateIntegerOrNot(bonusNumber);
+		return bonusNumber;
+	}
+
+	private void printAskingBonusNumberMessage() {
+		System.out.println(OutputMessage.ASKING_BONUS_NUMBER);
+	}
 	private void printAskingWinningNumbersMessage() {
 		System.out.println(OutputMessage.ASKING_WINNING_NUMBERS);
 	}
