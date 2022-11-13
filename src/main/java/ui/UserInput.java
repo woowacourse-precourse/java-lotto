@@ -4,15 +4,15 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
 
-    public String buyLotto() {
+    public static String buyLotto() {
         return Console.readLine();
     }
 
-    public String enterWinningLottoNumber() {
+    public static String enterWinningLottoNumber() {
         return Console.readLine();
     }
 
-    public String enterBonusNumber() {
+    public static String enterBonusNumber() {
         return Console.readLine();
     }
 }
