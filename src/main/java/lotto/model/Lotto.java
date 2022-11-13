@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,6 +15,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateByRange(numbers);
         validateBySize(numbers);
+        validateByDistinction(numbers);
     }
 
     private void validateByRange(List<Integer> numbers){
