@@ -32,11 +32,12 @@ public class DoLotto {
         user.calculateEarning();
 
         messagePrinter.printWinningResult(
-                Integer.toString(user.getWinningNumberCounting().get("fifth")),
-                Integer.toString(user.getWinningNumberCounting().get("fourth")),
-                Integer.toString(user.getWinningNumberCounting().get("third")),
-                Integer.toString(user.getWinningNumberCounting().get("second")),
-                Integer.toString(user.getWinningNumberCounting().get("first")));
+                Integer.toString(user.getWinningNumberCounting().get(3)),
+                Integer.toString(user.getWinningNumberCounting().get(4)),
+                Integer.toString(user.getWinningNumberCounting().get(5)),
+                Integer.toString(user.getWinningNumberCounting().get(6)),
+                Integer.toString(user.getWinningNumberCounting().get(7))
+        );
 
         user.calculateEarningRate();
 
