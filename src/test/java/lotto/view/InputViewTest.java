@@ -39,4 +39,31 @@ public class InputViewTest {
             int answer = inputView.inputMoney();
         });
     }
+
+    @Test
+    void 보너스번호_정상_입력() {
+        String inputNumber = "10";
+        int answer = 10;
+        int bonusNumber = inputView.inputBonusNumber();
+        Assertions.assertEquals(answer,bonusNumber);
+    }
+
+    @Test
+    void 보너스번호_숫자_이외에_입력시_에러_테스트() {
+        String inputNumber = "10a";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            System.setIn(new ByteArrayInputStream(inputNumber.getBytes()));
+            int answer = inputView.inputBonusNumber();
+        });
+    }
+
+    @Test
+    void 보너스번호_범위밖_숫자_입력시_에러_테스트() {
+        String inputNumber = "46";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            System.setIn(new ByteArrayInputStream(inputNumber.getBytes()));
+            int answer = inputView.inputBonusNumber();
+        });
+    }
+
 }

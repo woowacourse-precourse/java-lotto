@@ -24,6 +24,8 @@ public class Game {
         lottoMachine = new LottoMachine(lottoCount);
         outputView.printLottoCount(lottoCount);
         outputView.printLottoNumbers(lottoMachine.getLottosNumberList());
+        lottoMachine.saveWinningNumber(inputView.inputWinningNumber(),
+                inputView.inputBonusNumber());
     }
 
 }

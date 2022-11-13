@@ -32,7 +32,6 @@ public class LottoMachine {
     }
 
     public void saveWinningNumber(List<Integer> numbers, int bonusNumber) {
-
     }
 
     private Lotto createRandomNumbers() {
