@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Maker {
@@ -14,6 +15,9 @@ public class Maker {
         for (int i = 0; i < lottoWinArray.length; i++) {
             lottoWinList.add(Integer.parseInt(lottoWinArray[i]));
         }
+
+        Collections.sort(lottoWinList);
+
         return lottoWinList;
     }
 }

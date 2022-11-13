@@ -13,7 +13,7 @@
     - [x] 보너스 번호를 입력기를 만들고, 그것을 정수형`으로 반환한다.<><3> Inputer#createLottoBonusNumber
 
 - 발행한 로또 수량 및 번호를 출력한다. 로또 번호는 오름차순으로 정렬하여 보여준다.
-  - [] 로또 번호 출력기를 만든다. 그것은 오름차순으로 정렬하여 보여준다.<2><>  Printer#printUserLottoNumber
+  - [x] 로또 번호 출력기를 만든다. 그것은 오름차순으로 정렬하여 보여준다.<2><>  Printer#printUserLottoNumber
 
 - 사용자가 구매한 로또 번호와 당첨 번호를 비교한다.
   - [] 숫자를 비교할 수 있는 기능을 구현하고, 그것을 정수형(일반 맞춘 개수, 보너스 맞춘 개수)로 반환한다. <3><4,5> Comparator#compareLotto

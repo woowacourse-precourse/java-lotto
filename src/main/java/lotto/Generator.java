@@ -3,6 +3,7 @@ package lotto;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -16,6 +17,7 @@ public class Generator {
 
         for (int i = 0; i<lottoAmount; i++) {
             List<Integer> randomLottoNumber = pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(randomLottoNumber);
             twoDimensionLottoNumberList.add(randomLottoNumber);
         }
 
