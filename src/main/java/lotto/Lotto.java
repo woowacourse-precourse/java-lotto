@@ -3,6 +3,8 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -22,7 +24,7 @@ public class Lotto {
         }
     }
 
-    public List<Integer> getLottoNumbers(){
+    public List<Integer> getLottoNumbers() {
         return numbers;
     }
 
@@ -40,7 +42,7 @@ public class Lotto {
         return lottos;
     }
 
-    public List<Integer> createLottoList(){
+    public List<Integer> createLottoList() {
         List<Integer> lotto = createLottoNumber();
         sortLottoNumberAscending(lotto);
         return lotto;
@@ -56,5 +58,15 @@ public class Lotto {
         return lotto;
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> lottoCompare(List<Lotto> lottoNumber, List<Integer> winNumber) {
+        List<Integer> compareNumber = new ArrayList<>();
+        for (int i = 0; i < lottoNumber.size(); i++) {
+            compareNumber = lottoNumber.get(i).getLottoNumbers().stream()
+                    .filter(number -> winNumber.stream().anyMatch(Predicate.isEqual(number)))
+                    .collect(Collectors.toList());
+            System.out.println("당첨 번호:" + compareNumber + ":");
+        }
+        return compareNumber;
+    }
+
 }
