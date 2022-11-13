@@ -16,6 +16,13 @@ public class InputValidation {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
     }
 
+    public void checkFirstNumberIsNotZero(String input, String splitRegex) {
+        String[] split = input.split(splitRegex);
+
+        if(split.length > 1 && Integer.parseInt(split[0]) == 0)
+            throw new IllegalArgumentException(ErrorMessage.FIRST_NUMBER_IS_NOT_ZERO);
+    }
+
     public void checkThousandMoney(String input) {
         int price = Integer.parseInt(input);
 

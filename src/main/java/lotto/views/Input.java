@@ -22,6 +22,7 @@ public class Input {
 
         String question = Console.readLine();
         inputValidation.checkNumber(question, Constant.REGEX_INPUT);
+        inputValidation.checkFirstNumberIsNotZero(question, Constant.REGEX_INPUT);
         inputValidation.checkThousandMoney(question);
 
         return Integer.parseInt(question);
