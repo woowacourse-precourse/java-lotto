@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.domain.User;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -72,6 +73,29 @@ public class InputServiceTest {
             return Stream.of(
                     Arguments.of("1,2,3,4,5,6", List.of(1, 2, 3, 4, 5, 6)),
                     Arguments.of("1, 2, 3, 4, 5, 6", List.of(1, 2, 3, 4, 5, 6))
+            );
+        }
+    }
+
+    @Nested
+    @DisplayName("보너스 번호, 정상 실행")
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    class bonusNumberTest {
+        @ParameterizedTest
+        @MethodSource("data")
+        void case1(String numbers, String bonusNumber, List<Integer> checkList) {
+            inputService.setMoneyToUser("1000");
+            inputService.setNumbersToUser(numbers);
+            inputService.addBonusNumber(bonusNumber);
+            User user = inputService.getUser();
+            Assertions.assertThat(user.getNumbers()).isEqualTo(checkList);
+        }
+
+        Stream<Arguments> data() {
+            return Stream.of(
+                    Arguments.of("1,2,3,4,5,6", "7", List.of(1, 2, 3, 4, 5, 6, 7)),
+                    Arguments.of("1,2,3,4,5,6", "8", List.of(1, 2, 3, 4, 5, 6, 8)),
+                    Arguments.of("1,2,3,4,45,6", "8", List.of(1, 2, 3, 4, 45, 6, 8))
             );
         }
     }
