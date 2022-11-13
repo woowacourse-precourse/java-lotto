@@ -36,20 +36,20 @@ public class Validator {
     }
 
     public static void validateLottoFormat(List<String> lottos) {
-        validateLottoCount(lottos);
         validateLottoType(lottos);
+        validateLottoCount(lottos);
     }
 
     public static void validateLottoCount(List<String> lotto) {
         if (lotto.size() != 6) {
-            throw new IllegalArgumentException(ExceptionType.LOTTO_INPUT_COUNT_EXCEPTION.getMessage());
+            throw new IllegalArgumentException(ExceptionType.LOTTO_INPUT_FORMAT_EXCEPTION.getMessage());
         }
     }
 
     public static void validateLottoType(List<String> lotto) {
         for (String value : lotto) {
             if (!isInteger(value)) {
-                throw new IllegalArgumentException(ExceptionType.MONEY_TYPE_EXCEPTION.getMessage());
+                throw new IllegalArgumentException(ExceptionType.LOTTO_INPUT_FORMAT_EXCEPTION.getMessage());
             }
         }
     }
