@@ -8,6 +8,11 @@ public class Raffle {
         result();
     }
 
+    public static void lottoCheck(){
+
+    }
+
+
     public static void result(){
         System.out.println(Winning.getReward("3"));
     }

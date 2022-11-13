@@ -9,7 +9,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try{
-            createNum();
             User.buyLotto();
             Lotto.lottoMaking(User.lottoAmount);
             User.guessLotto();
@@ -18,13 +17,5 @@ public class Application {
         }catch(IllegalArgumentException e){
             System.err.println("[ERROR] "+e);
         }
-
     }
-
-    // create success numbers
-    public static void createNum(){
-        List<Integer> winningLotto = Randoms.pickUniqueNumbersInRange(1,45,6);
-        System.out.println(winningLotto);
-    }
-
 }
