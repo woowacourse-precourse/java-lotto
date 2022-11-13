@@ -32,6 +32,10 @@ public class LottoMachine {
     }
 
     public void saveWinningNumber(List<Integer> numbers, int bonusNumber) {
+        if (checkDuplication(numbers,bonusNumber) == false){
+            throw new IllegalArgumentException();
+        }
+        winningLotto = new WinningLotto(new Lotto(numbers),bonusNumber);
     }
 
     private Lotto createRandomNumbers() {
