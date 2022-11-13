@@ -5,7 +5,7 @@ import lotto.constants.message.ExceptionMessage;
 
 public class InputValidator {
     public static final String ONLY_NUMBER = "^[0-9]*$";
-    public static final String WINNING_NUMBER = "^([0-9],){5}[0-9]$";
+    public static final String WINNING_NUMBER = "^([0-9]*,){5}[0-9]*$";
 
     public static final int NOTHING = 0;
     public static final int LOTTO_PRICE = 1000;
