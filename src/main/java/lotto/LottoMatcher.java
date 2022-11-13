@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,10 +8,10 @@ import static lotto.Rank.*;
 
 public class LottoMatcher {
 
-    private List<Rank> results;
+    private Map<Rank, Integer> results;
 
-    public List<Rank> matchAllLottos(List<Lotto> publishedLottos, WinningLotto winningLotto) {
-        results = new ArrayList<>();
+    public Map<Rank, Integer> matchAllLottos(List<Lotto> publishedLottos, WinningLotto winningLotto) {
+        results = new HashMap<>();
         for (Lotto publishedLotto : publishedLottos) {
             matchLotto(publishedLotto, winningLotto);
         }
@@ -39,17 +39,15 @@ public class LottoMatcher {
 
     private void saveResult(int numberOfMatchedLottoNumber, boolean bonus) {
         if (numberOfMatchedLottoNumber == 6) {
-            results.add(FIRST_SIX_MATCHED);
+            results.put(FIRST_SIX_MATCHED, results.getOrDefault(FIRST_SIX_MATCHED, 0) + 1);
         } else if (numberOfMatchedLottoNumber == 5 && bonus) {
-            results.add(SECOND_FIVE_WITH_BONUS);
+            results.put(SECOND_FIVE_WITH_BONUS, results.getOrDefault(SECOND_FIVE_WITH_BONUS, 0) + 1);
         } else if (numberOfMatchedLottoNumber == 5) {
-            results.add(THIRD_FIVE_MATCHED);
+            results.put(THIRD_FIVE_MATCHED, results.getOrDefault(THIRD_FIVE_MATCHED, 0) + 1);
         } else if (numberOfMatchedLottoNumber == 4) {
-            results.add(FOURTH_FOUR_MATCHED);
+            results.put(FOURTH_FOUR_MATCHED, results.getOrDefault(FOURTH_FOUR_MATCHED, 0) + 1);
         } else if (numberOfMatchedLottoNumber == 3) {
-            results.add(FIFTH_THREE_MATCHED);
-        } else if (numberOfMatchedLottoNumber < 3) {
-            results.add(NONE);
+            results.put(FIFTH_THREE_MATCHED, results.getOrDefault(FIFTH_THREE_MATCHED, 0) + 1);
         }
     }
 }
