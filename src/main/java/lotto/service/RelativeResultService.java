@@ -31,8 +31,6 @@ public class RelativeResultService {
         totalYield = new TotalYield(money, gain);
 
         myYield = totalYield.getYield();
-        System.out.println("당첨 통계");
-        System.out.println("--");
         grades = winningMoney.getGrade(winningNumbers, myLottoNumbers, bonusNumber);
         inputOutputView.saveResult(grades);
         inputOutputView.totalYield(myYield);
