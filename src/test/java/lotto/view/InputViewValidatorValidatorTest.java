@@ -56,7 +56,7 @@ public class InputViewValidatorValidatorTest {
     }
 
     @ParameterizedTest(name = "쉼표로 구분한 문자가 숫자 이외의 값이면 에러를 반환한다..")
-    @ValueSource(strings = {"a,b,c", "1,2,a", "1,", "1, ", "1,2,!"})
+    @ValueSource(strings = {"a,b,c", "1,2,a", "1, ", ",", " ,", "1,2,!"})
     void inputSplitCommaNotNumber(String text) {
         assertThatThrownBy(() -> inputViewValidator.validateSplitByRestNumber(text))
                 .isInstanceOf(IllegalArgumentException.class);

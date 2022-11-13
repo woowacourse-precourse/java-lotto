@@ -23,8 +23,10 @@ public class InputViewValidator {
     }
 
     public void validateSplitByRestNumber(String text) {
+        if (text.equals(REST)) {
+            throw new InputNotNumberException();
+        }
         Arrays.stream(text.split(REST))
-                .map(String::trim)
                 .forEach(this::validateNumber);
     }
 
