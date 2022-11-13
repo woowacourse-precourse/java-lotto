@@ -25,30 +25,33 @@ class InputValidationTest extends NsTest {
     }
 
     @DisplayName("입력한 값은 숫자여야만 한다.")
-    @Test
-    void checkInputIsNumber() {
-        String input = "1000a";
-
-        assertThatThrownBy(() -> inputValidation.checkNumber(input, Constant.REGEX_INPUT))
-                .isInstanceOf(IllegalArgumentException.class);
+    @ParameterizedTest
+    @ValueSource(strings = {" ", "1234a"})
+    void checkInputIsNumber(String input) {
+        assertSimpleTest(() -> {
+            runException(input);
+            assertThat(output()).contains(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
+        });
     }
 
     @DisplayName("입력받은 값은 1000원 단위여야 한다.")
-    @Test
-    void checkInputIsThousand() {
-        String input = "1200";
-
-        assertThatThrownBy(() -> inputValidation.checkThousandMoney(input))
-                .isInstanceOf(IllegalArgumentException.class);
+    @ParameterizedTest
+    @ValueSource(strings = {"10", "9998", "1002"})
+    void checkInputIsThousand(String input) {
+        assertSimpleTest(() -> {
+            runException(input);
+            assertThat(output()).contains(ErrorMessage.LOTTO_MUST_THOUSAND_PRICE);
+        });
     }
 
     @DisplayName("입력받은 당첨번호는 숫자여야한다.")
-    @Test
-    void checkWinningNumberIsNumeric() {
-        String input = "1,2,3,4,a,6";
-
-        assertThatThrownBy(() -> inputValidation.checkNumber(input, Constant.REGEX_WINNING_NUMBER_INPUT))
-                .isInstanceOf(IllegalArgumentException.class);
+    @ParameterizedTest
+    @CsvSource(value = {"1000:1,2,3,4,5,a", "1000:a,b,c,d"}, delimiter = ':')
+    void checkWinningNumberIsNumeric(String firstInput, String secondInput) {
+        assertSimpleTest(() -> {
+            runException(firstInput, secondInput);
+            assertThat(output()).contains(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
+        });
     }
 
     @DisplayName("입력받은 당첨번호는 List<Integer>로 변환되서 받아져야한다.")
@@ -64,7 +67,7 @@ class InputValidationTest extends NsTest {
 
     @DisplayName("입력받은 당첨번호는 개수가 총 6개여야 한다.")
     @ParameterizedTest
-    @CsvSource(value = {"1000:1,2,3,4,5,6,7", "1000:1,2,3,4"} ,delimiter = ':')
+    @CsvSource(value = {"1000:1,2,3,4,5,6,7", "1000:1,2,3,4"}, delimiter = ':')
     void checkWinningNumberSize(String firstInput, String secondInput) {
         assertSimpleTest(() -> {
             runException(firstInput, secondInput);
