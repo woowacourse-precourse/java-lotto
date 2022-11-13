@@ -17,6 +17,7 @@ public class WinningTicket {
             validateNumberRange(winnings);
             validateLength(winnings);
             validateOverlap(winnings);
+            checkRange(bonusNumber);
             validateBonusNumberOverlap(winnings, bonusNumber);
             this.winnings = winnings;
             this.bonusNumber = bonusNumber;
