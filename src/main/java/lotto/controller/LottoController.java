@@ -44,6 +44,18 @@ public class LottoController extends Controller {
     }
 
     private int createBonusNumber() {
-        return 0;
+        outputView.printInputBonusNumberSentence();
+        String bonusNumberInput = inputView.input();
+        validateBonusNumberInput(bonusNumberInput);
+
+        int bonusNumber = Integer.parseInt(bonusNumberInput);
+        return bonusNumber;
+    }
+
+    private void validateBonusNumberInput(String bonusNumberInput) {
+        String validateFormat = "^\\d{1,2}$";
+        if (!bonusNumberInput.matches(validateFormat)) {
+            throw new IllegalArgumentException(FORMAT_ERROR_MESSAGE);
+        }
     }
 }
