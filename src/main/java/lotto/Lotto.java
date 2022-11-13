@@ -1,13 +1,12 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
+
     LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
     private final List<Integer> numbers;
     private int bonusNumber;

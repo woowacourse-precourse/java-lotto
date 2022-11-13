@@ -1,7 +1,8 @@
 package lotto;
 
 public class RewardsMapper {
-    WinningNumbers winningNumbers;
+
+    private WinningNumbers winningNumbers;
 
     private final int SECOND_OR_THIRD_PlACE_MATCHING_NUMBER = 5;
 
@@ -20,8 +21,8 @@ public class RewardsMapper {
 
     private int getMatchingNumberCount(Lotto lotto) {
         int matchingNumberCounts = 0;
-        for (int idx=0; idx<winningNumbers.winningNumbers.size(); idx++) {
-            if (this.winningNumbers.winningNumbers.contains(lotto.getLottoNumber(idx))) {
+        for (int idx = 0; idx < winningNumbers.getWinningNumbers().size(); idx++) {
+            if (this.winningNumbers.getWinningNumbers().contains(lotto.getLottoNumber(idx))) {
                 matchingNumberCounts++;
             }
         }
@@ -29,6 +30,6 @@ public class RewardsMapper {
     }
 
     private boolean isBonusNumberMatches(Lotto lotto) {
-        return this.winningNumbers.winningBonusNumber == lotto.getBonusNumber();
+        return this.winningNumbers.getWinningBonusNumber() == lotto.getBonusNumber();
     }
 }

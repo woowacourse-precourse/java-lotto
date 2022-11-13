@@ -5,15 +5,35 @@ import java.util.List;
 
 public class Player {
 
-    public int firstPlace = 0;
-    public int secondPlace = 0;
-    public int thirdPlace = 0;
-    public int fourthPlace = 0;
-    public int fifthPlace = 0;
+    private int firstPlace = 0;
+    private int secondPlace = 0;
+    private int thirdPlace = 0;
+    private int fourthPlace = 0;
+    private int fifthPlace = 0;
+    private List<Lotto> lottery = new ArrayList<>();
+
+    public int getFirstPlace() {
+        return firstPlace;
+    }
+
+    public int getSecondPlace() {
+        return secondPlace;
+    }
+
+    public int getThirdPlace() {
+        return thirdPlace;
+    }
+
+    public int getFourthPlace() {
+        return fourthPlace;
+    }
+
     private final int money;
     private final int LOTTO_PRICE = 1000;
 
-    public List<Lotto> playerLotto = new ArrayList<>();
+    public int getFifthPlace() {
+        return fifthPlace;
+    }
 
     public Player(int money) {
         this.money = money;
@@ -22,10 +42,7 @@ public class Player {
 
     public void playTheLottery(WinningNumbers winningNumbers) {
         RewardsMapper rewardsMapper = new RewardsMapper(winningNumbers);
-        int lottoSize = playerLotto.size();
-
-        for (int idx=0; idx<lottoSize; idx++) {
-            Lotto lotto = playerLotto.get(idx);
+        for (Lotto lotto : lottery) {
             Rewards matchedReward = rewardsMapper.getReward(lotto);
             if (matchedReward == Rewards.FIRST_PLACE) firstPlace++;
             if (matchedReward == Rewards.SECOND_PLACE) secondPlace++;
@@ -38,7 +55,7 @@ public class Player {
     public double getLotteryYield() {
         double totalRevenue = getRevenue();
         double investment = getMoney();
-        double lotteryYield = (totalRevenue / investment)*100;
+        double lotteryYield = (totalRevenue / investment) * 100;
         return lotteryYield;
     }
 
@@ -49,22 +66,26 @@ public class Player {
             List<Integer> randomNumber = lottoNumberGenerator.generateLottoNumbers();
             Lotto lotto = new Lotto(randomNumber);
             lotto.generateBonusNumber();
-            this.playerLotto.add(lotto);
+            this.lottery.add(lotto);
             count++;
         }
     }
 
     private int getRevenue() {
         Rewards.values();
-        int fifthRevenue = Rewards.FIFTH_PLACE.reward * fifthPlace;
-        int fourthRevenue = Rewards.FOURTH_PLACE.reward * fourthPlace;
-        int thirdRevenue = Rewards.THIRD_PLACE.reward * thirdPlace;
-        int secondRevenue = Rewards.SECOND_PLACE.reward * secondPlace;
-        int firstRevenue = Rewards.FIRST_PLACE.reward * firstPlace;
+        int fifthRevenue = Rewards.FIFTH_PLACE.getReward() * fifthPlace;
+        int fourthRevenue = Rewards.FOURTH_PLACE.getReward() * fourthPlace;
+        int thirdRevenue = Rewards.THIRD_PLACE.getReward() * thirdPlace;
+        int secondRevenue = Rewards.SECOND_PLACE.getReward() * secondPlace;
+        int firstRevenue = Rewards.FIRST_PLACE.getReward() * firstPlace;
         return fifthRevenue + fourthRevenue + thirdRevenue + secondRevenue + firstRevenue;
     }
 
     private int getMoney() {
         return this.money;
+    }
+
+    public List<Lotto> getLottery() {
+        return lottery;
     }
 }

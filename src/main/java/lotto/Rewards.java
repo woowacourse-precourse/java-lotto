@@ -8,9 +8,27 @@ public enum Rewards {
     FIFTH_PLACE(3, false, 5000),
     NO_PLACE(0, false, 0);
 
-    public final int matchingNumberCount;
-    public final boolean isBonusNumberMatches;
-    public final int reward;
+    private final int matchingNumberCount;
+    private final boolean isBonusNumberMatches;
+    private final int reward;
+
+    public static Rewards getReward(int matchingNumber, boolean isBonusNumberMatches) {
+        for (int idx = 0; idx < Rewards.values().length; idx++) {
+            Rewards[] rewards = Rewards.values();
+            if (matchingNumber == rewards[idx].matchingNumberCount && isBonusNumberMatches == rewards[idx].isBonusNumberMatches) {
+                return rewards[idx];
+            }
+        }
+        return NO_PLACE;
+    }
+
+    public int getMatchingNumberCount() {
+        return matchingNumberCount;
+    }
+
+    public boolean isBonusNumberMatches() {
+        return isBonusNumberMatches;
+    }
 
     Rewards(int matchingNumberCount, boolean isBonusNumberMatches, int reward) {
         this.matchingNumberCount = matchingNumberCount;
@@ -18,13 +36,7 @@ public enum Rewards {
         this.isBonusNumberMatches = isBonusNumberMatches;
     }
 
-    public static Rewards getReward(int matchingNumber, boolean isBonusNumberMatches) {
-        for (int idx = 0; idx< Rewards.values().length; idx++) {
-            Rewards[] rewards = Rewards.values();
-            if (matchingNumber == rewards[idx].matchingNumberCount && isBonusNumberMatches == rewards[idx].isBonusNumberMatches) {
-                return rewards[idx];
-            }
-        }
-        return NO_PLACE;
+    public int getReward() {
+        return reward;
     }
 }

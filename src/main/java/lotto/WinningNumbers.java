@@ -4,8 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinningNumbers {
-    List<Integer> winningNumbers = new ArrayList<>();
-    int winningBonusNumber;
+
+    private List<Integer> winningNumbers = new ArrayList<>();
+    private int winningBonusNumber;
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getWinningBonusNumber() {
+        return winningBonusNumber;
+    }
 
     private static String SPLIT_DELIMITER = ",";
 
