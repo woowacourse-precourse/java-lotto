@@ -3,13 +3,13 @@ package lotto.domain;
 import static lotto.exception.ValidatorTest.WINNING_NUMBERS;
 import static lotto.service.LottoServiceTest.BONUS_NUMBER;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoResultTest {
-
 
     @DisplayName("로또 번호가 6개 일치")
     @Test
@@ -78,8 +78,19 @@ class LottoResultTest {
         assertThat(result).isEqualTo(LottoResult.ZERO);
     }
 
+    @DisplayName("잘못된 당첨번호 일치 갯수를 제공하면 예외반환")
+    @Test
+    void test9() {
+        assertThatThrownBy(() -> LottoResult.of(-1, true))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("당첨번호 일치 갯수는 0~6개 입니다");
+    }
+
     private LottoResult getLottoResult(Lotto lotto) {
         return LottoResult.of(lotto.getNumberOfMatchesByWinningNumbers(WINNING_NUMBERS),
                 lotto.containBonusNumber(BONUS_NUMBER));
     }
+
+
+
 }
