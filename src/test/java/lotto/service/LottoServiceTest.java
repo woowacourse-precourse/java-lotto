@@ -27,6 +27,21 @@ class LottoServiceTest {
         assertThat(lottos.size()).isEqualTo(countOfLotto);
     }
 
+    @DisplayName("구매한 로또의 개수를 구하는 기능 테스트")
+    @ParameterizedTest
+    @CsvSource({"1,1", "2,2", "3,3", "4,4", "5,5"})
+    void 구매한_로또_개수_검증(int inputCountToGenerate, int expectedCount) {
+        // given
+        LottoRepository.getInstance()
+                .generateLottos(inputCountToGenerate);
+
+        // when
+        int countOfLotto = lottoService.getCountOfLotto();
+
+        // then
+        assertThat(countOfLotto).isEqualTo(expectedCount);
+    }
+
     @DisplayName("구매한 로또의 결과 리스트를 만드는 기능 테스트")
     @Test
     void 구매한_로또_결과_리스트_검증() {
