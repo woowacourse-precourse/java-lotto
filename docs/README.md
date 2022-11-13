@@ -59,6 +59,9 @@
        + getSameNum()
          * input: List<Integer> 다른 로또의 번호
          * output: int 해당 로또와 같은 숫자 갯수
+       + checkBonus()
+           * input: int 보너스 번호
+           * output: boolean 보너스 일치 여부
    
    * winLotto
      - 당첨번호를 담고 있는 로또
