@@ -11,6 +11,9 @@ import java.util.List;
 public class UserInput {
 
     List<List<Integer>> lotteries = new ArrayList<>();
+    final private int MAX_NUMBER = 45;
+    final private int MIN_NUMBER = 1;
+    final private int NUMBER_COUNT = 6;
 
     public Calculator inputMoney() {
         Message.INPUT_MONEY.print();
@@ -35,7 +38,7 @@ public class UserInput {
     void generateRandomLotto(long quantity) {
         for (int i = 0; i < quantity; i++) {
             List<Integer> tmpLotto =
-                    new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+                    new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT));
             tmpLotto.sort(Comparator.naturalOrder());
             lotteries.add(tmpLotto);
         }
