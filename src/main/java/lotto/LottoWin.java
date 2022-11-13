@@ -51,6 +51,16 @@ public class LottoWin {
         profitRate = ((double)profitSum / expenseSum) * 100;
         System.out.println(String.format("총 수익률은 %.2f입니다.", profitRate));
     }
+    public int[] countWinLotto(){
+        List<Integer> profitTable = List.of(0,5000,50000,1500000,30000000,2000000000);
+        int[] returnData = new int[profitTable.size()];
+        final int profitIndex = 1;
+        for(int i = 0; i < this.expenseWithprofit.size(); i++){
+            int addIndex = profitTable.indexOf(this.expenseWithprofit.get(i)[profitIndex]);
+            returnData[addIndex] += 1;
+        }
+        return returnData;
+    }
 
     public List<Integer> getLottoNum() {
         return lottoNum;
