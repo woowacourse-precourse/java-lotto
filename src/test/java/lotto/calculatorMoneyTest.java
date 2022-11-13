@@ -12,17 +12,19 @@ class calculatorMoneyTest {
         result[3]=1;
         result[5]=1;
         CalculatorMoney cal=new CalculatorMoney("8000");
-        cal.sumWinningMoney(result);
+        cal.sumWinningMoney(Rank.THIRD);
+        cal.sumWinningMoney(Rank.FIFTH);
         assertThat(cal.getWinningMoney()==1550000);
     }
     @DisplayName("반올림 테스트")
     @Test
     void profitRate_test(){
+        CalculatorMoney cal=new CalculatorMoney("8000");
         int[] result=new int[6];
         result[3]=1;
+        cal.sumWinningMoney(Rank.THIRD);
         result[5]=1;
-        CalculatorMoney cal=new CalculatorMoney("8000");
-        cal.sumWinningMoney(result);
+        cal.sumWinningMoney(Rank.FIFTH);
        double profitrate= cal.profitRate();
        cal.printProfitRate();
        assertThat(profitrate==193.8);

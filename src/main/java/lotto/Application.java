@@ -5,9 +5,9 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         try{
-        String money=makeNumber.getAmountInput();
-        CalculatorMoney calculatorMoney=new CalculatorMoney(money);
-        int lottoCount=makeNumber.buyLotto(money);
+        String amountMoney=makeNumber.getAmountInput();
+        CalculatorMoney money=new CalculatorMoney(amountMoney);
+        int lottoCount=makeNumber.buyLotto(amountMoney);
         allLotto alllotto=new allLotto();
         for(int i=0;i<lottoCount;i++){
         alllotto.addLotto(new Lotto(makeNumber.randomLotto()));}
@@ -16,9 +16,8 @@ public class Application {
         String bonusNumber=makeNumber.getBonusNumber();
         Set<Integer> winner=makeNumber.makeWinningNumber(winningNumber,bonusNumber);
         Judgement judgement=new Judgement();
-        judgement.checkWin(winner,alllotto,bonusNumber);
-        calculatorMoney.sumWinningMoney(judgement.getResult());
-        calculatorMoney.printProfitRate();
+        judgement.checkWin(winner,alllotto,bonusNumber,money);
+        money.printProfitRate();
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

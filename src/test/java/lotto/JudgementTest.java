@@ -35,8 +35,9 @@ class JudgementTest {
         lotto.add(8);
         lotto.add(9);
         Judgement jud=new Judgement();
+        CalculatorMoney money=new CalculatorMoney("0");
         String bonusNumber="7";
-        assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber)==2);
+        assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber,money)==2);
     }
     @DisplayName("3등 확인 테스트")
     @Test
@@ -58,8 +59,9 @@ class JudgementTest {
         lotto.add(8);
         lotto.add(9);
         Judgement jud=new Judgement();
+        CalculatorMoney money=new CalculatorMoney("0");
         String bonusNumber="7";
-        assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber)==3);
+        assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber,money)==3);
     }
     @DisplayName("1등 확인 테스트")
     @Test
@@ -82,7 +84,8 @@ class JudgementTest {
         lotto.add(9);
         Judgement jud=new Judgement();
         String bonusNumber="7";
-        assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber)==1);
+        CalculatorMoney money=new CalculatorMoney("0");
+        assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber,money)==1);
     }
     @DisplayName("미당첨 확인 테스트")
     @Test
@@ -105,7 +108,8 @@ class JudgementTest {
         lotto.add(12);
         Judgement jud=new Judgement();
         String bonusNumber="7";
-        assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber)==0);
+        CalculatorMoney money=new CalculatorMoney("0");
+        assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber,money)==0);
     }
 
 }

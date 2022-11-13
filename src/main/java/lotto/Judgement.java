@@ -13,19 +13,20 @@ public class Judgement {
     public int[] getResult(){
         return this.result;
     }
-    public void checkWin(Set<Integer> winner,allLotto alllotto,String bonusNumber){
+    public void checkWin(Set<Integer> winner,allLotto alllotto,String bonusNumber,CalculatorMoney money){
     for(int i=0;i<alllotto.sizeLotto();i++){
         Set<Integer> tempWinner=new HashSet<>();
         tempWinner.addAll(winner);
          Set<Integer> transfromLotto=alllotto.transformSet(alllotto.get(i));
-         resultUpdate(result,checkPlaceWin(tempWinner,transfromLotto,bonusNumber));
+         resultUpdate(result,checkPlaceWin(tempWinner,transfromLotto,bonusNumber,money));
 
     }
     printResult(this.result);
     }
-    public int checkPlaceWin(Set<Integer> tempwinner,Set<Integer> transformLotto,String bonusNumber){
+    public int checkPlaceWin(Set<Integer> tempwinner,Set<Integer> transformLotto,String bonusNumber,CalculatorMoney money){
         tempwinner.retainAll(transformLotto);
         Rank rank=Rank.getRank(tempwinner.size(),isContainsBonus(tempwinner,bonusNumber));
+        money.sumWinningMoney(rank);
         return rank.getRank();
     }
     public boolean isContainsBonus(Set<Integer> tempwinner,String bonusNumber){

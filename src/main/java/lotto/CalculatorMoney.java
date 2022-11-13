@@ -27,12 +27,8 @@ public class CalculatorMoney {
             throw new IllegalArgumentException(ERROR_LOTTO_ISDIGIT);
         }
     }
-    public void sumWinningMoney(int[] result){
-       this.winningMoney+= result[1]*2000000000;
-        this.winningMoney+= result[2]*30000000;
-        this.winningMoney+= result[3]*1500000;
-        this.winningMoney+= result[4]*50000;
-        this.winningMoney+= result[5]*5000;
+    public void sumWinningMoney(Rank rank){
+       this.winningMoney+= rank.getValue();
 
     }
     public int getAmountInput(){
