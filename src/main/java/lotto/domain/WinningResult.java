@@ -1,30 +1,29 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class WinningResult {
 
     public static final String WINNING_RESULT_MESSAGE = "%s - %d개\n";
     public static final String WINNING_RESULT_START_MESSAGE = "당첨금액\n---\n";
-    private WinningNumbers winningNumbers;
 
-    private Map<Ranking, Integer> winningResult = new EnumMap<>(Ranking.class);
+    private Map<Ranking, Integer> winningResult;
 
-    public WinningResult(Lottos lottos) {
-        this.winningNumbers = new WinningNumbers();
-        initialWinningResult();
-        putWinningResult(lottos);
+    public WinningResult(Lottos lottos, WinningNumbers winningNumbers) {
+        this.winningResult = initialWinningResult();
+        putWinningResult(lottos, winningNumbers);
     }
 
-    private void initialWinningResult() {
-        for (Ranking ranking : Ranking.values()) {
-            winningResult.put(ranking, 0);
-        }
+    private Map<Ranking, Integer> initialWinningResult() {
+        return Arrays.stream(Ranking.values())
+                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b, () -> new EnumMap<>(Ranking.class)));
     }
 
-    public void putWinningResult(Lottos lottos) {
+    public void putWinningResult(Lottos lottos, WinningNumbers winningNumbers) {
         List<Ranking> rankings = winningNumbers.calculateRanking(lottos);
         for (Ranking ranking : rankings) {
             winningResult.put(ranking, winningResult.get(ranking) + 1);
@@ -43,7 +42,7 @@ public class WinningResult {
         if (ranking != Ranking.NOTHING) {
             return String.format(WINNING_RESULT_MESSAGE, ranking.toString(), winningResult.get(ranking));
         }
-        throw new IllegalArgumentException("[ERROR] 올바른 당첨 기준을 찾을 수 없습니다.");
+        return "";
     }
 
     @Override
