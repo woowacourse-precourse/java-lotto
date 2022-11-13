@@ -14,7 +14,8 @@ public enum Rank {
     SECOND_CLASS("5개 일치, 보너스 볼 일치 (30,000,000원)", 11),
     THIRD_CLASS("5개 일치 (1,500,000원)", 10),
     FIRTH_CLASS("4개 일치 (50,000원)", 8),
-    FIFTH_CLASS("3개 일치 (5,0000원)", 6);
+    FIFTH_CLASS("3개 일치 (5,0000원)", 6),
+    LOSE_LOTTO("낙첨", 0);
 
     private final static Map<Integer, Rank> BY_SCORE = Stream.of(values())
             .collect(Collectors.toMap(Rank::getScore, Function.identity()));
@@ -35,7 +36,10 @@ public enum Rank {
         return this.score;
     }
 
-    public static Rank findByScore(int Score) {
-        return BY_SCORE.get(Score);
+    public static Rank findByScore(int score) {
+        if (score < 6) {
+            return BY_SCORE.get(0);
+        }
+        return BY_SCORE.get(score);
     }
 }

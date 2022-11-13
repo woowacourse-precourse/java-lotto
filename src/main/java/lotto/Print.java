@@ -9,7 +9,6 @@ public class Print {
     private static String MESSAGE_WINNING_NUMBER = "당첨 번호를 입력해주세요.";
     private static String MESSAGE_BONUS_NUMBER = "보너스 번호를 입력해주세요.";
     private static String MESSAGE_RANK_COUNTER_START = "당첨 통계\n---";
-    private static String MESSAGE_RANK_COUNTER = "%s - $d개";
 
     public static void printInsertMoney() {
         System.out.println(MESSAGE_INSERT_MONEY);

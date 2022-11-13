@@ -8,6 +8,7 @@ public class WinningNumbers {
     private static final int SCORE_PER_LOTTO_NUMBER = 2;
     private static final int SCORE_BONUS_NUMBER = 1;
     private static final int SECOND_CLASS_COUNT = 5;
+    private static final int FIFTH_CLASS_COUNT = 3;
 
     private Lotto winningNumbers;
     private int bonusNumber;
@@ -71,14 +72,7 @@ public class WinningNumbers {
     }
 
     private boolean includeBonusNumber(Lotto lotto) {
-        int lottoNumber;
-        for (int lottoIndex = 0; lottoIndex < LOTTO_SIZE; lottoIndex++) {
-            lottoNumber = lotto.findLottoNumber(lottoIndex);
-            if (winningNumbers.containNumber(lottoNumber)) {
-                return true;
-            }
-        }
-        return false;
+        return lotto.containNumber(bonusNumber);
     }
 
     private int calculateScore(int includeNumberCount, boolean includeBonusNumber) {
