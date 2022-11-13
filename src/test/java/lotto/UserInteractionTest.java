@@ -61,4 +61,10 @@ class UserInteractionTest {
         assertThatThrownBy(() -> testUserInteraction.checkNumbers(List.of(-1,1,1,4,5,46)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @DisplayName("(checkBonusNumber) 당첨 번호와 보너스 번호가 중복되는 경우 에러 확인")
+    @Test
+    void checkBonusNumber_exception_test(){
+        assertThatThrownBy(() -> testUserInteraction.checkBonusNumber(List.of(1,2,3,4,5,6), 2))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
