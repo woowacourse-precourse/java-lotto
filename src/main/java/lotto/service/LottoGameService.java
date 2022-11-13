@@ -86,8 +86,8 @@ public class LottoGameService {
         return lottoAnalyzer;
     }
 
-    public String calculateRate() {
-        float rate = lottoAnalyzer.getWholePrizeMoney() / purchaseAmount;
+    public String calculateRate(LottoAnalyzer lottoAnalyzer) {
+        float rate = (float) lottoAnalyzer.getWholePrizeMoney() / purchaseAmount * 100;
         return String.format("%,.1f",rate)+"%";
     }
 }

@@ -33,7 +33,7 @@ public class LottoGameController {
         return lottoGameService.lookUpLotto();
     }
 
-    public String calculateRate() {
-        return lottoGameService.calculateRate();
+    public String calculateRate(LottoAnalyzer lottoAnalyzer) {
+        return lottoGameService.calculateRate(lottoAnalyzer);
     }
 }
