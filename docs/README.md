@@ -61,6 +61,8 @@
 ### dto
 - LottoStatsDTO
 - [x] 로또 통계값 저장
+- LottoTicketDTO
+- [x] 발행된 로또 숫자 저장
 
 ---
 ## 테스트 코드 
