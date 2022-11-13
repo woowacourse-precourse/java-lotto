@@ -1,4 +1,4 @@
-package lotto.Domain;
+package lotto.Input;
 
 public class IllegalArgument {
     public IllegalArgumentException withMessage(String message) {

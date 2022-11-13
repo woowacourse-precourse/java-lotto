@@ -5,8 +5,6 @@ import lotto.Output.PrintOutput;
 import java.util.Map;
 
 public class Profit {
-
-
     public void printProfit(Map<String, Integer> winningMap, int userMoney) {
         double total =
                 winningMap.get("three") * 5000 +

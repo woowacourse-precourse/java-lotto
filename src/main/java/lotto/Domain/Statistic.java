@@ -8,10 +8,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class Statistic {
-    private List<Integer> lottoSix;
-    private int bonus;
-    private List<Set<Integer>> publishedLotto;
-    Statistic statistic = new Statistic();
+    public List<Integer> lottoSix;
+    public int bonus;
+    public List<Set<Integer>> publishedLotto;
 
     private Statistic(){}
     public Statistic(List<Integer> lottoSix, int bonus, List<Set<Integer>> publishedLotto) {
@@ -21,6 +20,7 @@ public class Statistic {
     }
 
     public Map<String, Integer> getStatistic() {
+        Statistic statistic = new Statistic();
         int three = 0, four = 0, five = 0, six_YesBonus = 0, six = 0;
         for(Set<Integer> publishedOneLotto : publishedLotto) {
             List<Integer> userlotto = lottoSix;
@@ -30,10 +30,7 @@ public class Statistic {
             if(userlotto.size() == 1) { five++; }
             if(userlotto.size() == 0) { six++; }
             userlotto.removeAll(List.of(bonus));
-            if(userlotto.size() == 0) {
-                six_YesBonus++;
-                five--;
-            }
+            if(userlotto.size() == 0) { six_YesBonus++; five--; }
         }
         return statistic.getWinningMap(three, four, five, six_YesBonus, six);
     }

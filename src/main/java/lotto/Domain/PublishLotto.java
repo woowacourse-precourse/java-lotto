@@ -1,6 +1,7 @@
 package lotto.Domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.Input.LottoValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,6 @@ import java.util.TreeSet;
 
 public class PublishLotto {
     private final List<Set<Integer>> publishedLotto;
-    private final int LOTTO_NUM = 6;
 
     public PublishLotto(int publishLottosNum) {
         this.publishedLotto = createLotto(publishLottosNum);
@@ -21,10 +21,11 @@ public class PublishLotto {
 
     public List<Set<Integer>> createLotto(int publishLottosNum) {
         List<Set<Integer>> lottos = new ArrayList<>();
+
         for(int count=0; count<publishLottosNum; count++) {
             Set<Integer> oneLotto = new TreeSet<>();
-            while(oneLotto.size() != LOTTO_NUM) {
-                oneLotto.add(Randoms.pickNumberInRange(1, 45));
+            while(oneLotto.size() != LottoValue.SIZE.getNum()) {
+                oneLotto.add(Randoms.pickNumberInRange(LottoValue.MIN.getNum(), LottoValue.MAX.getNum()));
             }
             lottos.add(oneLotto);
         }

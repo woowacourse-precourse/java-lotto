@@ -1,6 +1,6 @@
 package lotto.Domain;
 
-import lotto.Input.PrintError;
+import lotto.Input.CheckException;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,20 +15,14 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) throws IllegalArgumentException {
-        IllegalArgument illegalArgument = new IllegalArgument();
-        if (numbers.size() != 6) {
-            throw illegalArgument.withMessage(PrintError.NO_SIX_NUM.getMessage());
-        }
+        CheckException checkException = new CheckException();
+        checkException.check_LottoSize(numbers.size());
 
         Set<Integer> compareNum = new HashSet<>(numbers);
-        if(numbers.size() != compareNum.size()) {
-            throw illegalArgument.withMessage(PrintError.OVERLAP.getMessage());
-        }
+        checkException.check_RelativeLottoSize(numbers.size(), compareNum.size());
 
         for(Integer number : numbers) {
-            if(number<1 || 45<number) {
-                throw illegalArgument.withMessage(PrintError.OUT_OF_NUMBER_RANGE.getMessage());
-            }
+            checkException.check_OutOfRange(number);
         }
     }
 

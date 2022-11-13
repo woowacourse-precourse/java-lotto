@@ -14,14 +14,13 @@ public class InputNumber {
 
     public List<Integer> insertSixNum() throws IllegalArgumentException {
         List<Integer> lottoSixNum = new ArrayList<>();
+
         PrintInstruction.ENTER_NUM.printMessage();
         String[] userInputs = Console.readLine().split(",");
 
+        CheckException checkException = new CheckException();
         for (String userInput : userInputs) {
-            if(!userInput.matches("[+-]?\\d*(\\.\\d+)?")){
-                throw new IllegalArgumentException(PrintError.NO_COMMA.getMessage());
-            }
-            lottoSixNum.add(Integer.parseInt(userInput));
+            lottoSixNum.add(checkException.check_HaveChar(userInput));
         }
 
         return lottoSixNum;

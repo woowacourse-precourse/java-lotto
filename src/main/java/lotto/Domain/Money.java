@@ -1,6 +1,6 @@
 package lotto.Domain;
 
-import lotto.Input.PrintError;
+import lotto.Input.CheckException;
 
 public class Money {
     private final int userlottonum;
@@ -9,16 +9,10 @@ public class Money {
     }
 
     public int validate(String userInput) throws IllegalArgumentException {
-        IllegalArgument illegalArgument = new IllegalArgument();
+        CheckException checkException = new CheckException();
+        int convertedUserInput = checkException.check_HaveChar(userInput);
 
-        if(!userInput.matches("[+-]?\\d*(\\.\\d+)?")){
-            throw illegalArgument.withMessage(PrintError.NOT_A_NUMBER.getMessage());
-        }
-        int convertedUserInput = Integer.parseInt(userInput);;
-
-        if (convertedUserInput % 1000 != 0) {
-            throw illegalArgument.withMessage(PrintError.OUT_OF_MONEY_UNIT.getMessage());
-        }
+        checkException.check_Thousand(convertedUserInput);
         return convertedUserInput/1000;
     }
 

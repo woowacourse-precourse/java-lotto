@@ -1,8 +1,9 @@
 package lotto.Domain;
 
 
-import lotto.Input.PrintError;
+import lotto.Input.CheckException;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Bonus {
@@ -13,19 +14,15 @@ public class Bonus {
     }
 
     private int convertAndValidate(String bonus, List<Integer> sixNum) throws IllegalArgumentException{
-        IllegalArgument illegalArgument = new IllegalArgument();
+        CheckException checkException = new CheckException();
 
-        if(!bonus.matches("[+-]?\\d*(\\.\\d+)?")){
-            throw illegalArgument.withMessage(PrintError.NOT_A_NUMBER.getMessage());
-        }
+        int number = checkException.check_HaveChar(bonus);
 
-        int number = Integer.parseInt(bonus);
+        sixNum.add(number);
+        HashSet<Integer> compareNum = new HashSet<>(sixNum);
+        checkException.check_RelativeLottoSize(sixNum.size(), compareNum.size());
 
-        for(Integer lottoNum : sixNum) {
-            if(number == lottoNum) { throw illegalArgument.withMessage(PrintError.OVERLAP_WITH_LOTTONUM.getMessage()); }
-        }
-
-        if(number<1 || 45<number) { throw illegalArgument.withMessage(PrintError.OUT_OF_NUMBER_RANGE.getMessage()); }
+        checkException.check_OutOfRange(number);
         return number;
     }
 
