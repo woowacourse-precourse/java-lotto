@@ -14,6 +14,7 @@ public class Lotto {
         validateLottoSize(numbers);
         validateLottoNumberRange(numbers);
         validateLottoNumberDuplicated(numbers);
+        validateLottoSorted(numbers);
     }
 
     public void validateLottoSize(List<Integer> numbers){
@@ -35,6 +36,14 @@ public class Lotto {
     public void validateLottoNumberDuplicated(List<Integer> numbers){
         if(numbers.size() != numbers.stream().distinct().count()){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되서는 안됩니다");
+        }
+    }
+
+    public void validateLottoSorted(List<Integer> numbers){
+        for(int i = 0; i < numbers.size()-1; i++){
+            if(numbers.get(i) > numbers.get(i+1)){
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 오름차순으로 정렬되어야 합니다.");
+            }
         }
     }
 
