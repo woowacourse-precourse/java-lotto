@@ -7,12 +7,17 @@ import lotto.domain.WinningCount;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class View {
     public int askPrice() {
         System.out.println("구입금액을 입력해 주세요.");
-        String price = Console.readLine();
-        return Integer.parseInt(price);
+        try {
+            int price = Integer.parseInt(Console.readLine());
+            return price;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Error.WRONG_MONEY_TYPE.getMessage());
+        }
     }
 
     public void buyLottoList(int price, List<Lotto> lottoBundle) {
@@ -57,7 +62,7 @@ public class View {
         System.out.println("6개 일치 (2,000,000,000원) - " + winningCount.getCount().get("6") + "개");
     }
 
-    public void showProfitRate(double rate){
+    public void showProfitRate(double rate) {
         System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 }
