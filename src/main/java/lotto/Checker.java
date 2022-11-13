@@ -106,10 +106,10 @@ public class Checker {
     }
 
     public int checkCoincide(List<Integer> userNumbers, List<Integer> winningNumbers) {
-        System.out.println(String.format("!--User:%s\n!--Winning%s",userNumbers,winningNumbers));
+        System.out.println(String.format("!--User:%s\n!--Winning%s", userNumbers, winningNumbers));
         int coincideCount = 0;
         for (int winningNumber : winningNumbers) {
-            System.out.println(String.format("!--winningNumber:%d\n!--user contains wN?%b",winningNumber,userNumbers.contains(winningNumber)));
+            System.out.println(String.format("!--winningNumber:%d\n!--user contains wN?%b", winningNumber, userNumbers.contains(winningNumber)));
             if (userNumbers.contains(winningNumber)) {
                 coincideCount += 1;
             }
@@ -141,9 +141,9 @@ public class Checker {
     }
 
     public List<Result> checkResults(List<Lotto> lotteries, WinningLotto winningLotto) {
-        List<Result> results=new ArrayList<>();
-        for(Lotto lotto:lotteries) {
-            Result result=checkResult(lotto,winningLotto);
+        List<Result> results = new ArrayList<>();
+        for (Lotto lotto : lotteries) {
+            Result result = checkResult(lotto, winningLotto);
             results.add(result);
         }
         return results;
@@ -154,28 +154,28 @@ public class Checker {
         int coincideCount;
         int winningBonus;
 
-        coincideCount=result.getCoincideCount();
-        winningBonus=result.getBonus();
-        if(winningBonus!=0) {
-            winningBonus=2;
+        coincideCount = result.getCoincideCount();
+        winningBonus = result.getBonus();
+        if (winningBonus != 0) {
+            winningBonus = 2;
         }
 
-        winning=WINNINGS[coincideCount+winningBonus];
+        winning = WINNINGS[coincideCount + winningBonus];
         return winning;
     }
 
     public int checkWinnings(List<Result> results) {
-        int winnings =0;
+        int winnings = 0;
         int winning;
-        for(Result result:results) {
-            winning=checkWinning(result);
-            winnings+=winning;
+        for (Result result : results) {
+            winning = checkWinning(result);
+            winnings += winning;
         }
         return winnings;
     }
 
-    public float checkLotteryStat(int winnings,int lotteryCount) {
-        float lotteryStat = (float) winnings / (float) lotteryCount;
+    public float checkLotteryStat(int winnings, int lotteryCount) {
+        float lotteryStat = (float) winnings / (float) (lotteryCount * 1000) * 100;
         return lotteryStat;
     }
 
