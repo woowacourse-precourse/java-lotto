@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.exception.InputException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +14,7 @@ public final class UserLotto {
     private final String SPLIT_STANDARD = ",";
 
     private final List<Integer> winNumbers;
+
     private final int bonusNumber;
 
     public UserLotto(String winNumbers, String bonusNumber) {
@@ -65,5 +67,9 @@ public final class UserLotto {
                 || ( 1 > Integer.parseInt(bonusNumber) && Integer.parseInt(bonusNumber) > 45 )) {
             throw new IllegalArgumentException(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
+    }
+
+    public List<Integer> getLotto() {
+        return new ArrayList<>(winNumbers);
     }
 }
