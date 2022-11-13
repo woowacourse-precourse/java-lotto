@@ -45,5 +45,17 @@ public class Model {
             this.lottoList.add(new Lotto(numbers));
         }
     }
+
+    /**
+     * set win lotto
+     * @param stringList string list
+     */
+    public void setWinningLotto(List<String> stringList) {
+        List<Integer> winNumbers = new ArrayList<>();
+        for(String item : stringList) {
+            winNumbers.add(Integer.parseInt(item));
+        }
+        this.winningLotto = new Lotto(winNumbers);
+    }
 }
 

@@ -11,7 +11,6 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -106,6 +105,49 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
+
+
+
+    @ParameterizedTest
+    @DisplayName("로또 승리 조건 예외 테스트 ( 개수 )")
+    @ValueSource(strings = {"1,2,3,4,5,6,7", "1,2,3,4,5"})
+    void 승리_로또_개수_테스트(String numbers) {
+        run("8000", numbers);
+        assertThat(output()).contains(
+                "[ERROR] Please input 6 numbers only"
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("로또 승리 조건 예외 테스트 ( 숫자 )")
+    @ValueSource(strings = {"1,2,3,4,5,a", "a,b,c,d,e,f"})
+    void 승리_로또_숫자_테스트(String numbers) {
+        run("8000", numbers);
+        assertThat(output()).contains(
+                "[ERROR] Please input Numbers only"
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("로또 승리 조건 예외 테스트 ( 중복 )")
+    @ValueSource(strings = {"1,2,3,4,5,5", "1,1,2,3,3,5"})
+    void 승리_로또_중복_테스트(String numbers) {
+        run("8000", numbers);
+        assertThat(output()).contains(
+                "[ERROR] Please input not duplicated numbers"
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("로또 승리 조건 예외 테스트 ( 범위 )")
+    @ValueSource(strings = {"1,2,3,4,5,0", "500,1,2,3,4,5"})
+    void 승리_로또_범위_테스트(String numbers) {
+        run("8000", numbers);
+        assertThat(output()).contains(
+                "[ERROR] Please input 1~45 numbers"
+        );
+    }
+
 
     @Override
     public void runMain() {

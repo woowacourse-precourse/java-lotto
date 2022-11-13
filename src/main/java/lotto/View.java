@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class View {
@@ -15,7 +16,7 @@ public class View {
      * @return user input value
      */
     public String inputMoney() {
-        System.out.println("구입 금액을 입력해 주세요");
+        System.out.println("구입금액을 입력해 주세요.");
         return Console.readLine();
     }
 
@@ -28,5 +29,14 @@ public class View {
         for (Lotto lotto : lottoList) {
             System.out.println(lotto);
         }
+    }
+
+    /**
+     * @return List<String> input winning number and return list split
+     */
+    public List<String> inputWinNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        return Arrays.asList(input.split(","));
     }
 }

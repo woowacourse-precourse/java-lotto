@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class Controller {
     private final Model model = new Model();
     private final View view = new View();
@@ -23,5 +25,14 @@ public class Controller {
     public void purchaseLotto() {
         this.model.generateLotto();
         this.view.printPurchase(this.model.getLottoList());
+    }
+
+    /**
+     * input winning lotto numbers
+     */
+    public void inputWinningNumber() {
+        List<String> input = view.inputWinNumber();
+        this.exceptionController.validateWinNumber(input);
+        this.model.setWinningLotto(input);
     }
 }
