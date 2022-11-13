@@ -22,6 +22,7 @@ public class OutputView {
         System.out.println("당첨 통계");
         System.out.println("---");
         printResult(result);
+        printYield(amount, result);
     }
 
     public static void printResult(Map<Reward, Integer> result) {
@@ -37,5 +38,14 @@ public class OutputView {
             System.out.println(
                     r.getCount() + "개 일치 (" + decimalFormat.format(r.getReward()) + "원) - " + result.get(r) + "개");
         }
+    }
+
+    public static void printYield(int amount, Map<Reward, Integer> result) {
+        int sum = 0;
+        for (Reward r : result.keySet()) {
+            sum += r.getReward() * result.get(r);
+        }
+        String yield = String.format("%.1f", (double) sum / (double) (amount * 1000) * 100.0);
+        System.out.println("총 수익률은 " + yield + "%입니다.");
     }
 }
