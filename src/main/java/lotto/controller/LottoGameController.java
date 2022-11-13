@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import java.util.List;
 import lotto.Lotto;
 import lotto.service.LottoGameService;
 
@@ -15,10 +16,14 @@ public class LottoGameController {
         return lottoGameService.buyLottoTickets(purchaseAmount);
     }
 
-    public void printLottoTickets(int lottoTicketCount) {
+    public void printLottoTickets(final int lottoTicketCount) {
         for (int i = 0; i < lottoTicketCount; i++) {
             Lotto lotto = Lotto.issueLottoTicket();
             System.out.println(lotto.getNumbers());
         }
+    }
+
+    public List<Integer> pickWinningNumbers(final String winningNumbers) {
+        return lottoGameService.pickWinningNumbers(winningNumbers);
     }
 }

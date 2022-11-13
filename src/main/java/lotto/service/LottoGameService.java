@@ -1,5 +1,6 @@
 package lotto.service;
 
+import java.util.List;
 import java.util.regex.Pattern;
 import lotto.message.Const;
 import lotto.message.ErrorMessage;
@@ -23,5 +24,9 @@ public class LottoGameService {
             throw new IllegalArgumentException(
                 ErrorMessage.PURCHASE_AMOUNT_DIVIDE_1000WON.getErrorMessage());
         }
+    }
+
+    public List<Integer> pickWinningNumbers(String winningNumbers) {
+
     }
 }

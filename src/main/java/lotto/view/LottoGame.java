@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import lotto.controller.LottoGameController;
 import lotto.message.GameMessage;
 
@@ -8,8 +9,8 @@ public class LottoGame {
 
     private final LottoGameController lottoGameController;
     private int lottoTicketCount;
-
     private String userInput;
+    private List<Integer> winningNumbers;
 
     public LottoGame() {
         this.lottoGameController = new LottoGameController();
@@ -22,5 +23,9 @@ public class LottoGame {
 
         System.out.println(lottoTicketCount + GameMessage.NUMBER_OF_PURCHASES.getMessage());
         lottoGameController.printLottoTickets(lottoTicketCount);
+
+        System.out.println(GameMessage.WINNING_NUMBER.getMessage());
+        userInput = Console.readLine();
+        winningNumbers = lottoGameController.pickWinningNumbers(userInput);
     }
 }
