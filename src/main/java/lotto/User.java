@@ -39,4 +39,11 @@ public class User {
         }
         return lottoNum;
     }
+
+    // 구입한 로또 목록 출력
+    public static void printBoughtLotto(List<List<Integer>> lottoList){
+        for (List<Integer> integers : lottoList) {
+            System.out.println(integers);
+        }
+    }
 }
