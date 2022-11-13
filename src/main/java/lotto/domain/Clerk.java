@@ -3,15 +3,9 @@ package lotto.domain;
 import java.util.List;
 
 public class Clerk {
-    LottoGenerator lottoGenerator;
-
-    public Clerk() {
-        this.lottoGenerator = new LottoGenerator();
-    }
-
     public List<Lotto> issueLottos(int money) {
         int numberOfLottos = calculateNumberOfLottos(money);
-        return lottoGenerator.generateLottos(numberOfLottos);
+        return LottoGenerator.generateLottos(numberOfLottos);
     }
 
     public int calculateNumberOfLottos(int money) {
