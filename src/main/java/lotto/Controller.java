@@ -34,6 +34,7 @@ public class Controller {
             lottoTickets.add(lotto);
         }
 
+        OutputView.printLottoTickets(lottoTickets);
     }
 
     public void isValidatePurchase(String userInput) {
