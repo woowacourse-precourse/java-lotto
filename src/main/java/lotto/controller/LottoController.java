@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import lotto.exception.LottoException;
 import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -14,7 +13,7 @@ public class LottoController {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
 
-    private final LottoException lottoException = new LottoException();
+    private Money money;
 
     private Winner winner;
 
@@ -31,7 +30,7 @@ public class LottoController {
     public int buyLottoTicket(){
         LottoTicket lottoTicket = new LottoTicket();
         String moneyInput = inputView.enterMoneyInput();
-        lottoException.checkMoneyInput(moneyInput);
+        money = new Money(moneyInput);
         return lottoTicket.countLotto(moneyInput);
     }
 

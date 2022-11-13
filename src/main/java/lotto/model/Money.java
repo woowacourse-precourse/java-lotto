@@ -1,14 +1,21 @@
-package lotto.exception;
+package lotto.model;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static lotto.constValue.Constants.ExceptionMessage.*;
+import static lotto.constValue.Constants.ExceptionMessage.MONEY_Input_Number_ERROR_MESSAGE;
+import static lotto.constValue.Constants.ExceptionMessage.MONEY_Input_THOUSAND_ERROR_MESSAGE;
 
-public class LottoException {
+public class Money {
 
+    private final String money;
 
-    public void checkMoneyInput(String moneyInput){
+    public Money(String money){
+        validateMoneyInput(money);
+        this.money = money;
+    }
+
+    public void validateMoneyInput(String moneyInput){
         checkMoneyInputNumber(moneyInput);
         checkMoneyInputThousand(moneyInput);
     }
@@ -46,5 +53,4 @@ public class LottoException {
         }
         return false;
     }
-
 }
