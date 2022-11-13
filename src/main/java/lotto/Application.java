@@ -6,26 +6,28 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 enum Rank{
-    FIRST(6),SECOND(5),THIRD(5),FOURTH(4),FIFTH(3);
-    final private int correctNumber;
+    FIRST(6),SECOND(5),THIRD(5),FOURTH(4),FIFTH(3),MISS(0);
+    private int correctNumber;
     public int getCorrectNumber(){
         return correctNumber;
     }
-    private Rank(int correctNumber){
+    Rank(int correctNumber){
         this.correctNumber = correctNumber;
     }
 
-    public Rank getRank(final int correctNumber,boolean bonusCheck){
+    public static Rank getRank(int correctNumber,boolean bonusCheck){
+
         if(correctNumber == FIRST.getCorrectNumber())
             return FIRST;
-        if(correctNumber == SECOND.getCorrectNumber())
+        if(correctNumber == SECOND.getCorrectNumber() && bonusCheck)
             return SECOND;
         if(correctNumber == THIRD.getCorrectNumber() && !bonusCheck)
             return THIRD;
         if(correctNumber == FOURTH.getCorrectNumber())
             return FOURTH;
-
-        return FIFTH;
+        if(correctNumber == FIFTH.getCorrectNumber())
+            return FIFTH;
+        return MISS;
     }
 }
 public class Application {
@@ -43,9 +45,12 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         buyLotto();
+
         tickets = ticketCal(pay);
+
         getLottoNumber(tickets);
-        sortLottoNumber();
+        printLotto();
+
         inputWinningNumber();
         inputBonus();
         compareNumber(allLottoNumbers);
@@ -54,7 +59,7 @@ public class Application {
         resultLotto();
 
         calWinMoney();
-        calYield();
+        winRate = calYield();
         printYield();
     }
     public static void buyLotto() {
@@ -69,16 +74,17 @@ public class Application {
         return pay/1000;
     }
 
-    public static void getLottoNumber(int tickets){
-        for(int i=0;i<tickets;i++){
-            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            allLottoNumbers.add(lottoNumbers);
+    public static void printLotto(){
+        for(int i=0;i<allLottoNumbers.size();i++){
+            System.out.println(allLottoNumbers.get(i));
         }
     }
 
-    public static void sortLottoNumber(){
-        for(int i=0;i<allLottoNumbers.size();i++){
-            Collections.sort(allLottoNumbers.get(i));
+    public static void getLottoNumber(int tickets) {
+        for (int i = 0; i < tickets; i++) {
+            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+//            Collections.sort(lottoNumbers);
+            allLottoNumbers.add(lottoNumbers);
         }
     }
 
@@ -130,11 +136,11 @@ public class Application {
     }
 
     public static void resultLotto(){
-        System.out.println("3개 일치 (5,000원) - " + rankMap.get(Rank.FIFTH));
-        System.out.println("4개 일치 (50,000원) - " + rankMap.get(Rank.FOURTH));
-        System.out.println("5개 일치 (1,500,000원) - " + rankMap.get(Rank.THIRD));
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankMap.get(Rank.SECOND));
-        System.out.println("6개 일치 (2,000,000,000원) - " + rankMap.get(Rank.FIRST));
+        System.out.println("3개 일치 (5,000원) - " + rankMap.get(Rank.FIFTH)+"개");
+        System.out.println("4개 일치 (50,000원) - " + rankMap.get(Rank.FOURTH)+"개");
+        System.out.println("5개 일치 (1,500,000원) - " + rankMap.get(Rank.THIRD)+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankMap.get(Rank.SECOND)+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + rankMap.get(Rank.FIRST)+"개");
     }
 
     public static void calWinMoney(){
@@ -145,8 +151,8 @@ public class Application {
         winMoney += 2000000000 * rankMap.get(Rank.FIRST);
     }
 
-    public static void calYield(){
-        winRate = (double)(pay/winMoney)*100;
+    public static double calYield(){
+        return ((double)winMoney/pay)*100.0;
     }
 
     public static void printYield(){
