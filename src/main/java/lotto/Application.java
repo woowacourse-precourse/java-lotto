@@ -58,36 +58,24 @@ public class Application {
     private static void GetBonusNumber() {
         System.out.println(InputBonusNumber);
         String userInput = getUserInputData();
-        if(!BonusValidate(userInput))
-            return;
+        BonusValidate(userInput);
         bonusNumber = Integer.parseInt(userInput);
     }
 
-    private static boolean BonusValidate(String userInput) {
+    private static void BonusValidate(String userInput) {
         String errorMessage = "";
 
         errorMessage = CheckOnlyNumber(userInput);
         if(!errorMessage.isEmpty())
-        {
             Error.error(errorMessage);
-            return false;
-        }
 
         errorMessage = CheckNumberSize(userInput);
         if(!errorMessage.isEmpty())
-        {
             Error.error(errorMessage);
-            return false;
-        }
 
         errorMessage = CheckSameNumber(userInput);
         if(!errorMessage.isEmpty())
-        {
             Error.error(errorMessage);
-            return false;
-        }
-
-        return true;
     }
 
     private static String CheckSameNumber(String userInput) {
@@ -149,26 +137,16 @@ public class Application {
         lottoNumber = userPay / lottoPrice;
     }
 
-    private static boolean SalesValidate(String userInput) {
-
+    private static void SalesValidate(String userInput) {
         String errorMessage;
 
         errorMessage = CheckOnlyNumber(userInput);
-        if(!errorMessage.isEmpty()) {
+        if(!errorMessage.isEmpty())
             Error.error(errorMessage);
-            return false;
-        }
 
         errorMessage = CheckPrice(userInput);
-        if(!errorMessage.isEmpty()) {
+        if(!errorMessage.isEmpty())
             Error.error(errorMessage);
-            return false;
-        }
-
-
-
-
-        return true;
     }
 
     private static String CheckPrice(String userInput) {
