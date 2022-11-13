@@ -19,7 +19,7 @@ class TicketTest {
         ticket = Ticket.purchase(money);
     }
 
-    @DisplayName("로또 구매하는 기능 테스트입니다.")
+    @DisplayName("정상적으로 로또를 구매한다.")
     @Test
     public void purchaseTicket() {
         assertThat(ticket).isInstanceOf(Ticket.class);
