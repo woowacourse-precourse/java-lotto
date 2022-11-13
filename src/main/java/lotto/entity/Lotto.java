@@ -14,24 +14,32 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        ArrayList<Integer> validNumbers = new ArrayList<>(numbers);
+        Collections.sort(validNumbers);
+        this.numbers = validNumbers;
     }
 
     private void validate(List<Integer> numbers) {
+        validateCount(numbers);
+        validateRange(numbers);
+        validateDuplication(numbers);
+    }
+
+    // TODO: 추가 기능 구현
+
+    private void validateCount(List<Integer> numbers) {
         if (numbers.size() != COUNT) {
             throw new IllegalArgumentException(
-                "로또는 " + COUNT + "개를 가져야 합니다. 입력 : " + numbers.size());
+                "로또는 " + COUNT + "개를 가져야 합니다. 입력 : " + numbers);
         }
+    }
+
+    private void validateRange(List<Integer> numbers) {
         if (hasOutOfRangeNumber(numbers)) {
             throw new IllegalArgumentException(
                 "로또 번호는 " + RANGE_START + "부터 " + RANGE_END + " 사이의 숫자여야 합니다. 입력 : " + numbers);
         }
-        if (hasDuplication(numbers)) {
-            throw new IllegalArgumentException("로또 번호는 중복된 숫자를 가지면 안됩니다. 입력 : " + numbers);
-        }
     }
-
-    // TODO: 추가 기능 구현
 
     private boolean hasOutOfRangeNumber(List<Integer> numbers) {
         return numbers.stream()
@@ -40,6 +48,12 @@ public class Lotto {
 
     private boolean outOfRange(int number) {
         return RANGE_START > number || RANGE_END < number;
+    }
+
+    private void validateDuplication(List<Integer> numbers) {
+        if (hasDuplication(numbers)) {
+            throw new IllegalArgumentException("로또 번호는 중복된 숫자를 가지면 안됩니다. 입력 : " + numbers);
+        }
     }
 
     private boolean hasDuplication(List<Integer> numbers) {
@@ -58,8 +72,6 @@ public class Lotto {
 
     @Override
     public String toString() {
-        List<Integer> numbers = cloneNumbers();
-        Collections.sort(numbers);
         return numbers.toString();
     }
 
