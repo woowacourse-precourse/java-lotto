@@ -21,16 +21,16 @@ public class StatisticsFormatter implements OutputFormatter<LottoStatistics> {
 
     @Override
     public String outputFormat(LottoStatistics lottoStatistics) {
-        StringBuilder winningResultsFormat = new StringBuilder();
+        StringBuilder format = new StringBuilder();
 
-        appendResultPrefix(winningResultsFormat);
-        appendResultAmount(winningResultsFormat, lottoStatistics);
-        appendRewardRate(winningResultsFormat, lottoStatistics);
+        appendStatisticsPrefix(format);
+        appendWinningTypes(format, lottoStatistics);
+        appendRewardRate(format, lottoStatistics);
 
-        return winningResultsFormat.toString();
+        return format.toString();
     }
 
-    private void appendResultPrefix(StringBuilder winningResultsFormat) {
+    private void appendStatisticsPrefix(StringBuilder winningResultsFormat) {
         winningResultsFormat
                 .append(WINNING_RESULT_PREFIX)
                 .append(LINE_BREAK)
@@ -38,7 +38,7 @@ public class StatisticsFormatter implements OutputFormatter<LottoStatistics> {
                 .append(LINE_BREAK);
     }
 
-    private void appendResultAmount(StringBuilder winningResultsFormat, LottoStatistics lottoStatistics) {
+    private void appendWinningTypes(StringBuilder winningResultsFormat, LottoStatistics lottoStatistics) {
         Arrays.stream(WinningType.values())
                 .forEach(o -> {
                     int count = lottoStatistics.count(o);
@@ -58,8 +58,7 @@ public class StatisticsFormatter implements OutputFormatter<LottoStatistics> {
         winningResultsFormat
                 .append("총 수익률은 ")
                 .append(rateFormat(lottoStatistics.getRewardRate()))
-                .append("%")
-                .append("입니다.");
+                .append("%입니다.");
     }
 
     private static String rateFormat(double rate) {

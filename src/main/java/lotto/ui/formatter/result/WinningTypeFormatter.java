@@ -10,15 +10,22 @@ public class WinningTypeFormatter implements OutputFormatter<WinningType> {
 
     @Override
     public String outputFormat(WinningType winningType) {
-        StringBuilder format = new StringBuilder(winningType.getContent());
-
-        String numberWithComma = convertNumberWithComma(winningType);
-        format.append(OPEN_BRACE)
-                .append(numberWithComma)
-                .append(MONEY_UNIT)
-                .append(CLOSE_BRACE);
+        StringBuilder format = new StringBuilder();
+        appendWinningContent(format, winningType);
+        appendWinningPrice(format, winningType);
 
         return format.toString();
+    }
+
+    private void appendWinningContent(StringBuilder format, WinningType winningType) {
+        format.append(winningType.getContent());
+    }
+
+    private void appendWinningPrice(StringBuilder format, WinningType winningType) {
+        format.append(OPEN_BRACE)
+                .append(convertNumberWithComma(winningType))
+                .append(MONEY_UNIT)
+                .append(CLOSE_BRACE);
     }
 
     private static String convertNumberWithComma(WinningType winningType) {
