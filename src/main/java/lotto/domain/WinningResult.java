@@ -44,6 +44,14 @@ public class WinningResult {
         showParamMessage(RankUtil.FIRST.getMessage(), RewardUtil.FIRST.getReward(), first);
     }
 
+    public long getProfit() {
+        return (long) first * RewardUtil.FIRST.getReward()
+                + (long) second * RewardUtil.SECOND.getReward()
+                + (long) third * RewardUtil.THIRD.getReward()
+                + (long) fourth * RewardUtil.FOURTH.getReward()
+                + (long) fifth * RewardUtil.FIFTH.getReward();
+    }
+
     private void showParamMessage(String message, int reward, int rank) {
         ConsoleUtil.showParamMessage(message, reward, rank);
     }

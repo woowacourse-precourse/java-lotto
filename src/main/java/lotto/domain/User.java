@@ -64,6 +64,20 @@ public class User {
         }
 
         result.show();
+        showProfit(result);
+    }
+
+    public void showProfit(WinningResult result) {
+        long profit = result.getProfit();
+
+        String message = PROFIT.getMessage();
+        double profitRate = getProfitRate(profit);
+
+        ConsoleUtil.showParamMessage(message, profitRate);
+    }
+
+    private double getProfitRate(long profit) {
+        return profit*100 / (double)money;
     }
 
     public RankUtil compare(Lotto lotto, Winning winning) {

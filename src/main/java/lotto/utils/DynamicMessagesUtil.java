@@ -1,8 +1,9 @@
 package lotto.utils;
 
 public enum DynamicMessagesUtil {
-    BUY_AMOUNT("%s개를 구매했습니다."),
-    LOTTO_NUMBERS("[%s]");
+    BUY_AMOUNT("\n%s개를 구매했습니다."),
+    LOTTO_NUMBERS("[%s]"),
+    PROFIT("총 수익률은 %.1f%%입니다.");
 
     private final String message;
 

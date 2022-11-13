@@ -21,6 +21,10 @@ public class ConsoleUtil {
         System.out.println(String.format(message, amount, rank));
     }
 
+    public static void showParamMessage(String message, double rate) {
+        System.out.println(String.format(message, rate));
+    }
+
     public static void showParamMessage(String message, String param) {
         System.out.println(String.format(message, param));
     }
