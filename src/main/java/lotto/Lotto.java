@@ -14,7 +14,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-    }d
+    }
 
     public Integer countMatched(List<Integer> winningNumbers){
         Integer number = 0;
