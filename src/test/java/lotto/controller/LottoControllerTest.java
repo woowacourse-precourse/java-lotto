@@ -26,5 +26,17 @@ class LottoControllerTest {
         assertThat(result).isEqualTo(size);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"12000\n1,2,3,4,5,6\n43\n"})
+    void 로또_테스트(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        LottoController lottoController = new LottoController();
+        lottoController.doLotto();
+        System.out.println(lottoController.getWinningNum().getNumbers());
+        System.out.println(lottoController.getBonus().getNum());
+        System.out.println(lottoController.getScores().toString());
+    }
+
 
 }
