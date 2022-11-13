@@ -7,7 +7,7 @@ public class LottoTickets {
     private final List<Lotto> lottos;
 
     public LottoTickets(List<Lotto> lottos) {
-        this.lottos = lottos;
+        this.lottos = List.copyOf(lottos);
     }
 
     public List<Lotto> getLottos() {
