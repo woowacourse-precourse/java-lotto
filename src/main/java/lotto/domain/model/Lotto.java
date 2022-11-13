@@ -45,7 +45,7 @@ public class Lotto {
 
     public void duplicateCheckBonusNumber(String bonus) {
         if (this.numbers.contains(Integer.parseInt(bonus))) {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + BONUS_NUMBER_DUPLICATION.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.getErrorMessage(BONUS_NUMBER_DUPLICATION) + this.numbers);
         }
     }
 

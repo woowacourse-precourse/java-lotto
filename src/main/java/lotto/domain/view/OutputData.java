@@ -4,7 +4,6 @@ import static lotto.domain.view.IOMessage.OUTPUT_LOTTO_RESULT_HEAD;
 import static lotto.domain.view.IOMessage.OUTPUT_PURCHASE_LOTTO;
 import static lotto.domain.view.IOMessage.OUTPUT_YIELD_MESSAGE;
 
-import java.util.List;
 import java.util.Map;
 import lotto.domain.model.LottoRank;
 import lotto.domain.model.LottoResult;
@@ -38,7 +37,8 @@ public abstract class OutputData {
     }
 
     private static void printYield(LottoResult lottoResult, Pay pay) {
-        System.out.printf((OUTPUT_YIELD_MESSAGE.getMessage()) + "%n", Math.round(lottoResult.calculateYield(pay) * 10) / 10.0);
+        System.out.printf((OUTPUT_YIELD_MESSAGE.getMessage()) + "%n",
+                Math.round(lottoResult.calculateYield(pay) * 10) / 10.0);
 
     }
 }

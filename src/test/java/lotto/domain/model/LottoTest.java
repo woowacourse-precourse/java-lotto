@@ -196,7 +196,7 @@ class LottoTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> new Lotto(firstPlace).duplicateCheckBonusNumber(bonus));
         assertThat(exception.getMessage())
-                .isEqualTo("[ERROR] Lotte Has A Duplicate Value With The Bonus Number.");
+                .isEqualTo("[ERROR] 당첨번호에 속한 보너스 번호를 입력하였습니다 | 당첨 번호: [1, 2, 3, 4, 5, 6]");
     }
 
 }

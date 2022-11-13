@@ -12,13 +12,13 @@ public abstract class PurchaseValidator {
 
     public static void checkConsistNumber(String pay) {
         if (!pay.matches(NUMBER_REG_EXP)) {
-            throw new IllegalArgumentException(getErrorMessage(PURCHASE_PAY_CONSISTENCE));
+            throw new IllegalArgumentException(getErrorMessage(PURCHASE_PAY_CONSISTENCE) + pay);
         }
     }
 
     public static void checkReminder(String pay) {
         if (STANDARD_REMINDER != Integer.parseInt(pay) % MINIMUM_ORDER) {
-            throw new IllegalArgumentException(getErrorMessage(PURCHASE_PAY_REMINDER));
+            throw new IllegalArgumentException(getErrorMessage(PURCHASE_PAY_REMINDER) + pay);
         }
     }
 

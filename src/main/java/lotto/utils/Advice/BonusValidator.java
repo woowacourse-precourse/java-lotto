@@ -11,7 +11,7 @@ public abstract class BonusValidator {
     private static final String BONUS_REG_EXP = "\\d{1,2}";
     public static void checkSizeAndNumber(String bonus) {
         if (!bonus.matches(BONUS_REG_EXP)) {
-            throw new IllegalArgumentException(getErrorMessage(BONUS_NUMBER_INVALID));
+            throw new IllegalArgumentException(getErrorMessage(BONUS_NUMBER_INVALID) + bonus);
         }
     }
 
