@@ -1,7 +1,9 @@
 package lotto;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -20,6 +22,14 @@ public class Lotto {
 
     public void sort() {
         Collections.sort(numbers);
+    }
+
+    public void checkDuplication() {
+        Set<Integer> removedDuplication = new HashSet<Integer>(numbers);
+
+        if (removedDuplication.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 중복된 수를 입력할 수 없습니다.");
+        }
     }
 
     public String toString() {

@@ -17,6 +17,8 @@ public class WinningLotto {
         String input = Console.readLine();
         String[] numbers = input.split(",");
         winningNumber = new Lotto(stringArrayToIntegerList(numbers));
+
+        winningNumber.checkDuplication();
     }
 
     private List<Integer> stringArrayToIntegerList(String[] words) {
