@@ -51,10 +51,24 @@ public class Application {
     public static List<Integer> winNumInput() {
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> winNums = new ArrayList<>();
-        String[] tmpNums = Console.readLine().split(",");
-        for (String e : tmpNums)
-            winNums.add(Integer.parseInt(e));
+        String input = Console.readLine();
+        winNumInputError(input);
+        String[] tmpNums = input.split(",");
+        for (String e : tmpNums) {
+            inputTypeError(e);
+            int num = Integer.parseInt(e);
+            rangeError(num);
+            duplicate(winNums, num);
+            winNums.add(num);
+        }
         return winNums;
+    }
+
+    public static void winNumInputError(String input) {
+        if (!input.contains(",")) {
+            System.out.println("[ERROR] 잘못된 입력입니다.");
+            throw new IllegalArgumentException();
+        }
     }
 
     public static Integer bonusNumInput(List<Integer> winNums) {
@@ -76,16 +90,16 @@ public class Application {
             }
     }
 
-    public static void rangeError(int bonus) {
-        if (bonus < 0 || bonus > 45) {
-            System.out.println("[ERROR] 보너스 번호 입력 오류입니다.");
+    public static void rangeError(int number) {
+        if (number < 0 || number > 45) {
+            System.out.println("[ERROR] 1~45의 숫자를 입력해야 합니다.");
             throw new IllegalArgumentException();
         }
     }
 
-    public static void duplicate(List<Integer> winNums, int bonus) {
-        if (winNums.contains(bonus)) {
-            System.out.println("[ERROR] 보너스 번호 입력 오류입니다.");
+    public static void duplicate(List<Integer> winNums, int number) {
+        if (winNums.contains(number)) {
+            System.out.println("[ERROR] 중복된 수를 입력하였습니다.");
             throw new IllegalArgumentException();
         }
     }
