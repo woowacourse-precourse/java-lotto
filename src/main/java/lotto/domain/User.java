@@ -10,4 +10,8 @@ public class User {
 	public List<Lotto> getLotties() {
 		return lotties;
 	}
+
+	public void addLotto(Lotto lotto) {
+		lotties.add(lotto);
+	}
 }
