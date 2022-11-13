@@ -7,25 +7,25 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class PurchaseAmountValidatorTest {
-    private PurchaseAmountValidator validator = new PurchaseAmountValidator();
+class InputValidatorTest {
+    private InputValidator inputValidator = new InputValidator();
 
     @Nested
     @DisplayName("구입 금액은 숫자이다.")
     class IsNumberTest {
         @Test
         void 숫자일_경우() {
-            assertThat(validator.isNumber("123")).isEqualTo(true);
+            assertThat(inputValidator.isNumber("123")).isEqualTo(true);
         }
 
         @Test
         void 숫자와_문자가_함께일_경우() {
-            assertThat(validator.isNumber("123a")).isEqualTo(false);
+            assertThat(inputValidator.isNumber("123a")).isEqualTo(false);
         }
 
         @Test
         void 문자일_경우() {
-            assertThat(validator.isNumber("aaa")).isEqualTo(false);
+            assertThat(inputValidator.isNumber("aaa")).isEqualTo(false);
         }
     }
 
@@ -34,17 +34,17 @@ class PurchaseAmountValidatorTest {
     class IsPositiveNumberTest {
         @Test
         void 양수일_경우() {
-            assertThat(validator.isPositiveNumber("123")).isEqualTo(true);
+            assertThat(inputValidator.isPositiveNumber("123")).isEqualTo(true);
         }
 
         @Test
         void 음수일_경우() {
-            assertThat(validator.isPositiveNumber("-1000")).isEqualTo(false);
+            assertThat(inputValidator.isPositiveNumber("-1000")).isEqualTo(false);
         }
 
         @Test
         void 값이_0일_경우() {
-            assertThat(validator.isPositiveNumber("0")).isEqualTo(false);
+            assertThat(inputValidator.isPositiveNumber("0")).isEqualTo(false);
         }
     }
 
@@ -53,22 +53,22 @@ class PurchaseAmountValidatorTest {
     class isDivisibleBy1000Test {
         @Test
         void 나누어_떨어질_경우_1() {
-            assertThat(validator.isDivisibleBy1000("1000")).isEqualTo(true);
+            assertThat(inputValidator.isDivisibleBy1000("1000")).isEqualTo(true);
         }
 
         @Test
         void 나누어_떨어질_경우_2() {
-            assertThat(validator.isDivisibleBy1000("15000")).isEqualTo(true);
+            assertThat(inputValidator.isDivisibleBy1000("15000")).isEqualTo(true);
         }
 
         @Test
         void 나누어_떨어지지_않을_경우_1() {
-            assertThat(validator.isDivisibleBy1000("1234")).isEqualTo(false);
+            assertThat(inputValidator.isDivisibleBy1000("1234")).isEqualTo(false);
         }
 
         @Test
         void 나누어_떨어지지_않을_경우_2() {
-            assertThat(validator.isDivisibleBy1000("999")).isEqualTo(false);
+            assertThat(inputValidator.isDivisibleBy1000("999")).isEqualTo(false);
         }
     }
 
@@ -77,19 +77,19 @@ class PurchaseAmountValidatorTest {
     class isValidatePurchaseAmountTest {
         @Test
         void 숫자가_아닌_경우_예외_테스트() {
-            assertThatThrownBy(() -> validator.validatePurchaseAmount("1000aa"))
+            assertThatThrownBy(() -> inputValidator.validatePurchaseAmount("1000aa"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 양수가_아닌_경우_예외_테스트() {
-            assertThatThrownBy(() -> validator.validatePurchaseAmount("-1000"))
+            assertThatThrownBy(() -> inputValidator.validatePurchaseAmount("-1000"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 나누어_떨어지지_않을_경우_예외_테스트() {
-            assertThatThrownBy(() -> validator.validatePurchaseAmount("1234"))
+            assertThatThrownBy(() -> inputValidator.validatePurchaseAmount("1234"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }

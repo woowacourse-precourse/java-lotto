@@ -10,7 +10,8 @@ public final class GameConstants {
 
     public static final String ERROR_IS_NOT_NUMBER = "[ERROR] 구입 금액은 숫자여야 합니다.";
     public static final String ERROR_IS_NOT_POSITIVE_NUMBER = "[ERROR] 구입 금액은 양수여야 합니다.";
-    public static final String ERROR_IS_NOT_DIVISIBLE_BY_1000 = "[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.";
+    public static final String ERROR_IS_NOT_DIVISIBLE_BY_1000 =
+            "[ERROR] 구입 금액은 " + LottoConstants.LOTTO_TICKET_PRICE + "원으로 나누어 떨어져야 합니다.";
 
 
     private GameConstants() {

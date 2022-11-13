@@ -13,16 +13,15 @@ public class LottoMachine {
         List<Lotto> lottoTickets = new ArrayList<>();
 
         for (int ticketCount = 0; ticketCount < countLottoTickets; ticketCount++) {
-            Lotto lottoTicket = getLottoTicket();
+            Lotto lottoTicket = createLottoTicket();
             lottoTickets.add(lottoTicket);
         }
 
         return lottoTickets;
     }
 
-    public Lotto getLottoTicket() {
+    public Lotto createLottoTicket() {
         LottoRandom lottoRandom = new LottoRandom();
-        Lotto lotto = new Lotto(lottoRandom.pickNumbers());
-        return lotto;
+        return new Lotto(lottoRandom.pickNumbers());
     }
 }

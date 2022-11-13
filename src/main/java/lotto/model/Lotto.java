@@ -28,7 +28,7 @@ public class Lotto {
     }
 
     private boolean isSameSizeAsLotto(int numberSize) {
-        return numberSize != LottoConstants.LOTTO_TICKET_SIZE;
+        return numberSize == LottoConstants.LOTTO_TICKET_SIZE;
     }
 
     private void validateRange(List<Integer> numbers) {

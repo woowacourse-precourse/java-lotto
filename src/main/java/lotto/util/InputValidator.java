@@ -3,7 +3,7 @@ package lotto.util;
 import lotto.util.constants.GameConstants;
 import lotto.util.constants.LottoConstants;
 
-public class PurchaseAmountValidator {
+public class InputValidator {
 
     public void validatePurchaseAmount(String purchaseAmount) {
         if (!isNumber(purchaseAmount)) {

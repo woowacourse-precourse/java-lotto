@@ -1,10 +1,10 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.util.PurchaseAmountValidator;
+import lotto.util.InputValidator;
 
 public class LottoInput {
-    private final PurchaseAmountValidator purchaseAmountValidator = new PurchaseAmountValidator();
+    private final InputValidator inputValidator = new InputValidator();
 
     public String inputLottoGame() {
         return Console.readLine();
@@ -17,6 +17,6 @@ public class LottoInput {
     }
 
     private void validatePurchaseAmount(String purchaseAmount) {
-        purchaseAmountValidator.validatePurchaseAmount(purchaseAmount);
+        inputValidator.validatePurchaseAmount(purchaseAmount);
     }
 }
