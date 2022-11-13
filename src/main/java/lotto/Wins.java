@@ -34,15 +34,6 @@ public enum Wins {
         return bonus;
     }
 
-    public static double getProfitRate(int purchaseAmount) {
-        int profit = Arrays.stream(Wins.values())
-                .map(win -> win.winnings * win.count)
-                .mapToInt(Integer::valueOf)
-                .sum();
-
-        return ((double) profit / purchaseAmount) * LottoConstants.PERCENTAGE_UNIT;
-    }
-
     public static Wins getWins(int matchingCount, boolean bonus) {
         return Arrays.stream(Wins.values())
                 .filter(win -> win.getCount() == matchingCount && win.isBonus() == bonus)

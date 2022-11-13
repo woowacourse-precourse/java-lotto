@@ -2,7 +2,6 @@ package controller;
 
 import lotto.Lottos;
 import lotto.WinningStatistic;
-import lotto.Wins;
 import user.BonusNumber;
 import user.WinNumber;
 import utils.InputUtils;
@@ -52,10 +51,6 @@ public class LottoController {
         return lottos.calculateWinningStatus(winNumber, bonusNumber);
     }
 
-    private double calculateProfitRate(PurchaseAmount purchaseAmount) {
-        return Wins.getProfitRate(purchaseAmount.getPurchaseAmount());
-    }
-
     private void printResult(WinningStatistic winningStat, double profitRate) {
         OutputUtils.printWinningStats(winningStat);
         OutputUtils.printCalculatedProfitRate(profitRate);
@@ -71,9 +66,8 @@ public class LottoController {
             BonusNumber bonusNumber = getBonusNumberFromUser(winNumber.getWinNumber());
 
             WinningStatistic winningStat = calculateWinningRate(lottos, winNumber, bonusNumber);
-            double profitRate = calculateProfitRate(purchaseAmount);
 
-            printResult(winningStat, profitRate);
+            printResult(winningStat, winningStat.calculateProfitRate(purchaseAmount));
         } catch (IllegalArgumentException e) {
             OutputUtils.printException(e);
         }
