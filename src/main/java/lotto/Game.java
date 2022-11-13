@@ -6,6 +6,6 @@ public class Game {
     }
 
     public void play(){
-
+        User user=new User();
     }
 }
