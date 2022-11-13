@@ -8,10 +8,11 @@ import java.util.*;
 public class Application {
     static int check_money(){
         String input_money;
-        int money;
+        int money = 0;
         System.out.println("구입금액을 입력해 주세요");
         input_money = Console.readLine();
         if (input_money.isBlank()) throw new IllegalArgumentException("[ERROR] 구입금액을 입력해야 합니다.");
+        if(money == 0) throw new IllegalArgumentException("[ERROR] 구입금액이 0원일 수 없습니다.");
         try {
             money = Integer.parseInt(input_money);
         } catch (NumberFormatException ex) {
