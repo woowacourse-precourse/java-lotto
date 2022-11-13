@@ -2,7 +2,7 @@ package lotto.view;
 
 import java.text.DecimalFormat;
 import lotto.domain.Lottery;
-import lotto.domain.Rank;
+import lotto.dto.Rank;
 
 public class OutputViewConsole implements OutputView {
     private static final String ASK_PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -10,25 +10,31 @@ public class OutputViewConsole implements OutputView {
     private static final String ASK_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     @Override
-    public void printGeneratedLottery(Lottery lottery) {
-
+    public void printGeneratedLottery(Integer purchaseAmount, String lotteryInfo) {
+        System.out.println(purchaseAmount / Lottery.LOTTO_PRICE + "개를 구매했습니다.");
+        System.out.println(lotteryInfo);
     }
 
     @Override
     public void printWinningHistory() {
-
-    }
-
-    @Override
-    public void printProfitRatio() {
-        DecimalFormat df = new DecimalFormat("###,###");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
         for (Rank rank : Rank.values()) {
             System.out.print(rank.getMatchCount() + "개 일치");
             if (rank.isBonusMatch()) {
                 System.out.print(", 보너스 볼 일치");
             }
-            System.out.println(" (" + df.format(rank.getPrize()) + "원) - " + rank.getCount() + "개");
+            System.out.println(" (" + decimalFormat.format(rank.getPrize()) + "원) - " + rank.getCount() + "개");
         }
+    }
+
+    @Override
+    public void printProfitRatio(Integer purchaseAmount) {
+        DecimalFormat ratioFormat = new DecimalFormat("###,###.#%");
+        double profit = 0;
+        for (Rank rank : Rank.values()) {
+            profit += rank.getCount() * rank.getPrize();
+        }
+        System.out.println("총 수익률은 " + ratioFormat.format(profit / purchaseAmount) + "입니다.");
     }
 
     @Override

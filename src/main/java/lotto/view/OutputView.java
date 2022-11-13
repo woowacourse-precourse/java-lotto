@@ -1,13 +1,11 @@
 package lotto.view;
 
-import lotto.domain.Lottery;
-
 public interface OutputView {
-    void printGeneratedLottery(Lottery lottery);
+    void printGeneratedLottery(Integer purchaseAmount, String LotteryInfo);
 
     void printWinningHistory();
 
-    void printProfitRatio();
+    void printProfitRatio(Integer purchaseAmount);
 
     void printAskPurchaseAmountMessage();
 
