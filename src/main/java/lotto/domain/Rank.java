@@ -12,6 +12,8 @@ public enum Rank {
     private final int prize;
     private final String sentence;
 
+    private final int SECOND_AND_THIRD_MATCH_COUNT = 5;
+
     Rank(int matchCount, boolean hasBonusNumber, int prize, String sentence) {
         this.matchCount = matchCount;
         this.hasBonusNumber = hasBonusNumber;
@@ -24,7 +26,10 @@ public enum Rank {
     }
 
     public boolean hasSameRankBy(int matchCount, boolean hasBonusNumber) {
-        return this.matchCount == matchCount && this.hasBonusNumber == hasBonusNumber;
+        if(matchCount == SECOND_AND_THIRD_MATCH_COUNT) {
+            return this.hasBonusNumber == hasBonusNumber;
+        }
+        return this.matchCount == matchCount ;
     }
 
     @Override
