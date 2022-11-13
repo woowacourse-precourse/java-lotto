@@ -16,11 +16,12 @@ public class Controller {
     }
 
     public void play() {
-        Long purchaserId = lottoService.generatePurchaser();
+        Long purchaserId = -1L;
         int money = 0;
 
         try {
             money = inputView.inputMoney();
+            purchaserId = lottoService.generatePurchaser(money);
         } catch (IllegalArgumentException e) {
             outputView.printException(e.getMessage());
             return;

@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.domain.Purchaser;
 import lotto.repository.PurchaserRepository;
 
 public class LottoService {
@@ -9,7 +10,9 @@ public class LottoService {
         purchaserRepository = new PurchaserRepository();
     }
 
-    public Long generatePurchaser() {
-        return purchaserRepository.insertPurchaser();
+    public Long generatePurchaser(int money) {
+        Purchaser purchaser = new Purchaser(money);
+        return purchaserRepository.insert(purchaser);
     }
+
 }
