@@ -43,4 +43,10 @@ public class WinningCalculator {
         }
         return count;
     }
+
+    private boolean checkIsContainBonusNumber(Lotto lotto) {
+        List<Integer> numbersOfLotto = lotto.getNumbers();
+        boolean isContainBonusNumber = numbersOfLotto.contains(this.bonusNumber);
+        return isContainBonusNumber;
+    }
 }
