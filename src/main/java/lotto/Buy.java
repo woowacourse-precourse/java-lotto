@@ -7,12 +7,12 @@ import java.util.List;
 
 public class Buy {
     private final int price;
-    private List<Integer> numbers =new ArrayList<>();
+    private List<Integer> randomLottos =new ArrayList<>();
 
     public Buy(int price) {
         this.price = price;
         validata(price);
-        randomNumbers(price);
+        pickRandomLotto(price);
     }
 
     private void validata(int price){
@@ -21,16 +21,19 @@ public class Buy {
         }
     }
 
-    private void randomNumbers(int price){
+    private void pickRandomLotto(int price){
         int lottoCount = priceToCount(price);
         for(int i =0;i<lottoCount;i++){
-            List<Integer> addNumber = Randoms.pickUniqueNumbersInRange(1,45,6);
+            List<Integer> selectionNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+            //System.out.println(selectionNumbers);
+            storeNumbers(selectionNumbers);
         }
-        //메소드를 분리하여 구현한다.
-        // 자바컨벤션을 지키기 위해.
+
+    }
+
+    private void storeNumbers(List<Integer> selectionNumbers){
         for(int i =0;i<6;i++){
-            this.numbers.add(addNumber.get(i));
-            printRandomLotto(numbers,i,lottoCount);
+            this.randomLottos.add(selectionNumbers.get(i));
         }
     }
 
@@ -40,11 +43,20 @@ public class Buy {
         return randomLottoCount;
     }
 
-
-
-    private void printRandomLotto(List<Integer> numbers,int count,int totalCount){
-        if(count == 1 ) System.out.println(totalCount+"개를 구매했습니다.");
-        System.out.println(numbers);
+    public void printRandomLotto(){
+        System.out.println(randomLottos.size()/6+"개룰 구매했습니다.");
+        for(int i = 0 ; i< randomLottos.size()/6 ; i++){
+            System.out.print("[");
+            printSixRange(i);
+        }
+        System.out.println();
     }
 
+    public void printSixRange(int row){
+        for(int j=row*6 ; j<(row+1)*6 ; j++){
+            System.out.print(randomLottos.get(j));
+            if(j%6 < 5) System.out.print(",");
+        }
+        System.out.println("]");
+    }
 }
