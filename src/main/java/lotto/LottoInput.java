@@ -4,13 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class LottoInput {
-    static final String BOUGHT_LOTTO = "개를 구매했습니다.";
+    private static final String BOUGHT_LOTTO = "개를 구매했습니다.";
+    private static final String INPUT_MONEY = "구입 금액을 입력하세요.";
     public static int inputMoney; // 구입금액
-    public static int numberOfLotto;
+    public static int numberOfLotto; // 로또 개수
 
     // 구입금액 입력
     public static List<Integer> inputNumber(){
-        System.out.println("구입 금액을 입력하세요.");
+        System.out.println(INPUT_MONEY);
         String inputNum = Console.readLine();
         Validator.validateInteger(inputNum); // 정수만 입력되었는지 확인
         inputMoney = Integer.parseInt(inputNum);
