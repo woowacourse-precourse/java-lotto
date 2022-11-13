@@ -11,5 +11,12 @@ public class Player {
 
         return input;
     }
+
+    public String getWinningNumberInput() {
+        String input = Console.readLine();
+        exception.checkWinningNumberInput(input);
+
+        return input;
+    }
 }
 
