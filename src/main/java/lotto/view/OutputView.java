@@ -18,18 +18,18 @@ public class OutputView {
         String purchaseLog = String.format(PURCHASE_LOG, lotteries.size());
         System.out.println(purchaseLog);
         lotteries.forEach(lotto -> System.out.println(lotto.toString()));
+        printNewLine();
     }
 
     public void printWinStatics(HashMap<LottoRank, Integer> lottoRankStatics) {
         System.out.println(WIN_STATICS);
         DecimalFormat formatter = new DecimalFormat("###,###");
         for (LottoRank lottoRank : LottoRank.values()) {
+            String winResultFormat = WIN_RESULT;
             if (lottoRank == LottoRank.SECOND_PLACE) {
-                System.out.printf(SECOND_PLACE_RESULT, lottoRank.matchNumberCount, formatter.format(lottoRank.price), lottoRankStatics.get(lottoRank));
-                printNewLine();
-                continue;
+                winResultFormat = SECOND_PLACE_RESULT;
             }
-            System.out.printf(WIN_RESULT, lottoRank.matchNumberCount, formatter.format(lottoRank.price), lottoRankStatics.get(lottoRank));
+            System.out.printf(winResultFormat, lottoRank.matchNumberCount, formatter.format(lottoRank.price), lottoRankStatics.get(lottoRank));
             printNewLine();
         }
     }
