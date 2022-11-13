@@ -65,11 +65,11 @@ public class Application {
         try{
             lotto = new Lotto(inputWinningNumbers());
         }
-        catch(Exception e) {
+        catch(Exception e){
             throw e;
         }
-        ArrayList<BigInteger> checkLottoWinnings = lotto.checkLottoWinnings(lotteryBundleArray, inputBonusWinningNumber());
-        lotto.printLottoWinningsResult(checkLottoWinnings, buyingAmount);
+        ArrayList<BigInteger> countLottoWinnings = lotto.countLottoWinnings(lotteryBundleArray, inputBonusWinningNumber());
+        lotto.printLottoWinningsResult(countLottoWinnings, buyingAmount);
     }
 
     private static ArrayList<Integer> createAndPrintLottery(){

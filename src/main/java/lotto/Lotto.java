@@ -5,13 +5,13 @@ import java.util.Iterator;
 import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers){
         validate(numbers);
         this.numbers = numbers;
     }
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers){
         final int LIMIT_OF_SIZE = 6;
-        if (numbers.size() != LIMIT_OF_SIZE) {
+        if (numbers.size() != LIMIT_OF_SIZE){
             System.out.println("[ERROR] 당첨 번호는 정확히 6개를 입력하셔야 합니다.");
             throw new IllegalArgumentException();
         }
@@ -29,17 +29,14 @@ public class Lotto {
             arrayForCheckOverLap[checkIndex] = true;
         }
     }
-    private boolean[] initializeBooleanArray(int limitOfArray) {
+    private boolean[] initializeBooleanArray(int limitOfArray){
         boolean[] tempArray = new boolean[limitOfArray];
         for (int index = 0; index < limitOfArray; index++){
             tempArray[index] = false;
         }
         return tempArray;
     }
-    public ArrayList<BigInteger> checkLottoWinnings(ArrayList<ArrayList<Integer>> lotteryBundleArray, int bonusWinningNumber){
-        return countLotteryWinningNumber(lotteryBundleArray, bonusWinningNumber);
-    }
-    private ArrayList<BigInteger> countLotteryWinningNumber(ArrayList<ArrayList<Integer>> lotteryBundleArray ,int bonusWinningNumber){
+    public ArrayList<BigInteger> countLottoWinnings(ArrayList<ArrayList<Integer>> lotteryBundleArray, int bonusWinningNumber){
         final int SET_TO_INDEX_VALUE = 3;
         ArrayList<BigInteger> countWinningNumbersCaseArray = initializeArray();
         BigInteger add1 = new BigInteger("1");
@@ -52,7 +49,7 @@ public class Lotto {
         }
         return countWinningNumbersCaseArray;
     }
-    private ArrayList<BigInteger> initializeArray() {
+    private ArrayList<BigInteger> initializeArray(){
         ArrayList<BigInteger> countWinningNumbersCaseArray = new ArrayList<>();
         for (int index = 0; index < 5; index++){
             countWinningNumbersCaseArray.add(new BigInteger("0"));
