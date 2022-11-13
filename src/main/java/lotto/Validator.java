@@ -3,6 +3,11 @@ package lotto;
 import lotto.Exception.ExceptionType;
 
 public class Validator {
+    public static void validateMoney(String money) {
+        validateMoneyType(money);
+        validateMoneyValue(Integer.parseInt(money));
+    }
+
     public static void validateMoneyType(String money) {
         try {
             Integer.parseInt(money);
