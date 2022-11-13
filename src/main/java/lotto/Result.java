@@ -16,10 +16,17 @@ enum Winning {
         this.prize = prize;
         this.cnt = cnt;
     }
+
+    public int multiple() {
+        return cnt * prize;
+    }
 }
 
 public class Result {
-    public static void compareLottoNumber(List<Lotto> myLotto, List<Integer> winningNumber, int bonusNumber) {
+    public static void compareLottoNumber(List<Lotto> myLotto,
+                                          List<Integer> winningNumber,
+                                          int bonusNumber,
+                                          int purchaseMoney) {
         for (Lotto lotto : myLotto) {
             int winning = countWinningNumber(lotto, winningNumber);
             boolean bonus = containBonusNumber(lotto, bonusNumber);
@@ -27,6 +34,7 @@ public class Result {
         }
 
         printTheResult();
+        calculateTheProfit(purchaseMoney);
     }
 
     public static int countWinningNumber(Lotto lotto, List<Integer> winningNumber) {
@@ -73,6 +81,22 @@ public class Result {
         System.out.println("5개 일치 (1,500,000원) -  " + Winning.THIRD.cnt + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) -  " + Winning.SECOND.cnt + "개");
         System.out.println("6개 일치 (2,000,000,000원) -  " + Winning.FIRST.cnt + "개");
+    }
+
+    public static void calculateTheProfit(int purchaseMoney) {
+        double prize = 0;
+
+        for (Winning winning : Winning.values()) {
+            prize += winning.multiple();
+        }
+
+        double profit = prize * 100 / purchaseMoney;
+
+        printTheProfit(profit);
+    }
+
+    public static void printTheProfit(double profit) {
+        System.out.println("총 수익률은 " + String.format(" %.1f", profit) + "%입니다.");
     }
 
 }

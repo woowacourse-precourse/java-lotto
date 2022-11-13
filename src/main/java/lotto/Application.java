@@ -13,5 +13,6 @@ public class Application {
         user.purchaseLotto();
         lottoMachine.inputWinningNumber();
         lottoMachine.inputBonusNumber();
+        Result.compareLottoNumber(user.myLotto, lottoMachine.winningNumber, lottoMachine.bonusNumber, user.money);
     }
 }
