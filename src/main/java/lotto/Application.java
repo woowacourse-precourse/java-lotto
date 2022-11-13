@@ -54,4 +54,9 @@ public class Application {
         for (Lotto lotto: lottoList)
             lotto.printNumbers();
     }
+
+    private static Lotto getWinningNumbers() {
+        System.out.println("\n" + "당첨 번호를 입력해 주세요.");
+        return new Lotto(Console.readLine());
+    }
 }
