@@ -14,10 +14,10 @@ public class InputWinningNumber {
         verifyBetween1and45(numbers);
         verifyDuplicateNumber(numbers);
         verifySixNumber(numbers);
+        verifyNumber(numbers);
 
         return numbers;
     }
-
 
     private List<Integer> getWinningNumber() {
         return parseWinningNumber(Console.readLine());
@@ -32,20 +32,29 @@ public class InputWinningNumber {
     private void verifyBetween1and45(List<Integer> winningNumbers) {
         for (int number : winningNumbers) {
             if (!(NumberChart.MIN_NUMBER.getValue() <= number && number <= NumberChart.MAX_NUMBER.getValue())) {
-                throw new RuntimeException("[ERROR] 1 ~ 45 사이의 숫자만 입력해 주세요");
+                throw new IllegalArgumentException(" 1 ~ 45 사이의 숫자만 입력해 주세요");
             }
         }
     }
 
     private void verifyDuplicateNumber(List<Integer> winningNumbers) {
         if (!(winningNumbers.size() == winningNumbers.stream().distinct().count())) {
-            throw new RuntimeException("[ERROR] 중복인 숫자가 있습니다.");
+            throw new IllegalArgumentException(" 중복인 숫자가 있습니다.");
         }
     }
 
     private void verifySixNumber(List<Integer> winningNumbers) {
         if (!(winningNumbers.size() == NumberChart.LOTTO_SIZE.getValue())) {
-            throw new RuntimeException("[ERROR] 6개의 숫자를 입력하세여");
+            throw new IllegalArgumentException(" 6개의 숫자를 입력하세여");
+        }
+    }
+    private void verifyNumber(List<Integer> winningNumbers){
+        String regex = "[0-9]+";
+        for(int number : winningNumbers){
+            String num = Integer.toString(number);
+            if(!(num.matches(regex))){
+                throw new IllegalArgumentException(" 숫자만 입력하세여");
+            }
         }
     }
 
