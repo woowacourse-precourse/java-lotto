@@ -37,16 +37,13 @@ public class InputConfig {
 
     public static void isBonusNumberInLotto(Set<Integer> lotto, int bonus) {
         if (lotto.contains(bonus)) {
-            System.out.println(ERROR_OVERLAPPED_BONUS_NUMBER);
             throw new IllegalArgumentException(ERROR_OVERLAPPED_BONUS_NUMBER);
         }
     }
 
     private static void hasCorrectSize(Set<Integer> set) {
         if (set.size() != LOTTO_NUMBER_COUNT) {
-            String errMsg = String.format(ERROR_NOT_LOTTO_LENGTH, LOTTO_NUMBER_COUNT);
-            System.out.println(errMsg);
-            throw new IllegalArgumentException(errMsg);
+            throw new IllegalArgumentException(String.format(ERROR_NOT_LOTTO_LENGTH, LOTTO_NUMBER_COUNT));
         }
     }
 
@@ -57,9 +54,7 @@ public class InputConfig {
 
     private static void isInRange(int value) {
         if (!(START_INCLUSIVE <= value && value <= END_INCLUSIVE)) {
-            String errMsg = String.format(ERROR_RANGE_OVERFLOW, START_INCLUSIVE, END_INCLUSIVE);
-            System.out.println(errMsg);
-            throw new IllegalArgumentException(errMsg);
+            throw new IllegalArgumentException(String.format(ERROR_RANGE_OVERFLOW, START_INCLUSIVE, END_INCLUSIVE));
         }
     }
 
@@ -73,24 +68,19 @@ public class InputConfig {
 
     private static void isNumber(String input) {
         if (!Pattern.matches(NUMBER_PATTERN, input)) {
-            System.out.println(ERROR_NOT_POSITIVE_NUMBER);
             throw new IllegalArgumentException(ERROR_NOT_POSITIVE_NUMBER);
-            //throw new NoSuchElementException(ERROR_NOT_POSITIVE_NUMBER);
         }
     }
 
     private static void isMoreThanZero(long value) {
         if (value < 0) {
-            System.out.println(ERROR_NOT_POSITIVE_NUMBER);
             throw new IllegalArgumentException(ERROR_NOT_POSITIVE_NUMBER);
         }
     }
 
     private static void isDividedByPrice(long value) {
         if (value % LOTTO_PRICE != 0) {
-            String errMsg = String.format(ERROR_INVALID_PRICE, LOTTO_PRICE);
-            System.out.println(errMsg);
-            throw new IllegalArgumentException(errMsg);
+            throw new IllegalArgumentException(String.format(ERROR_INVALID_PRICE, LOTTO_PRICE));
         }
     }
 

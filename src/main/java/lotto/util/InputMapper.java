@@ -16,9 +16,7 @@ public class InputMapper {
         try {
             return Arrays.stream(input.split(SPLIT_REGEX)).map(String::trim).map(Integer::parseInt).collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            String errMsg = String.format(ERROR_INVALID_SPLIT_REGEX,SPLIT_REGEX);
-            System.out.println(errMsg);
-            throw new IllegalArgumentException(errMsg);
+            throw new IllegalArgumentException(String.format(ERROR_INVALID_SPLIT_REGEX,SPLIT_REGEX));
         }
     }
 }
