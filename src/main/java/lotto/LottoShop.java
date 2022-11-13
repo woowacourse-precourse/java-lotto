@@ -50,7 +50,9 @@ public class LottoShop {
             int int1 = Integer.parseInt(str1);
             return int1;
         } catch (NumberFormatException exception) {
-            throw new NumberFormatException("[ERROR] 입력된 값이 숫자가 아닙니다.");
+//            throw new NumberFormatException("[ERROR] 입력된 값이 숫자가 아닙니다.");
+            System.out.println("[ERROR] 입력된 값이 숫자가 아닙니다.");
+            return 0;
         }
     }
 }

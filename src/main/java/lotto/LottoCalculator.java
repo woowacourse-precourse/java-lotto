@@ -2,11 +2,23 @@ package lotto;
 
 import java.net.Inet4Address;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LottoCalculator {
 
-    public List<List<Integer>> checkNumbers(List<Lotto> lottoList, List<List<Integer>> userLottoList) {
+    LottoConsole lottoConsole = new LottoConsole();
+
+    public List<Integer> checkWinningLotto(List<List<Integer>> totalList) {
+        List<Integer> winningList = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+        for (int i = 0; i < totalList.get(0).size(); i++) {
+            matchLottoCondition(totalList.get(0).get(i),totalList.get(1).get(i), winningList);
+        }
+        lottoConsole.outputResult(winningList);
+        return winningList;
+    }
+
+    public void checkNumbers(List<Lotto> lottoList, List<List<Integer>> userLottoList) {
         List<Integer> luckyList = new ArrayList<>();
         List<Integer> bonusList = new ArrayList<>();
         List<List<Integer>> totalList = new ArrayList<>();
@@ -19,7 +31,26 @@ public class LottoCalculator {
 
         totalList.add(luckyList);
         totalList.add(bonusList);
-        return totalList;
+        checkWinningLotto(totalList);
+    }
+
+    private List<Integer> matchLottoCondition(int luckyNumber,int bonusNumber, List<Integer> winningList) {
+        if (luckyNumber == 3) {
+            winningList.set(0,winningList.get(0)+1);
+        }
+        if (luckyNumber == 4) {
+            winningList.set(1,winningList.get(1)+1);
+        }
+        if (luckyNumber == 5 && bonusNumber == 0) {
+            winningList.set(2,winningList.get(2)+1);
+        }
+        if (luckyNumber == 5 && bonusNumber == 1) {
+            winningList.set(3,winningList.get(3)+1);
+        }
+        if (luckyNumber == 6) {
+            winningList.set(4,winningList.get(4)+1);
+        }
+        return winningList;
     }
 
     private int checkEqualNumbers(int number1, int number2) {
@@ -44,4 +75,6 @@ public class LottoCalculator {
 
         return winningList;
     }
+
+
 }

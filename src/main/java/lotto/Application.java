@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -16,6 +17,6 @@ public class Application {
         List<List<Integer>> userLottoList = lottoUser.generateUser();
 
         LottoCalculator lottoCalculator = new LottoCalculator();
-        System.out.println(lottoCalculator.checkNumbers(lottoList, userLottoList));
+        lottoCalculator.checkNumbers(lottoList, userLottoList);
     }
 }
