@@ -83,16 +83,17 @@ public class LottoChecker {
         return Prize.NONE;
     }
 
-    void printEachPrizeWinCount(){
-        printPrizeWinCount(Prize.FIRST);
-        printPrizeWinCount(Prize.SECOND);
-        printPrizeWinCount(Prize.THIRD);
-        printPrizeWinCount(Prize.FOURTH);
+    void printEachPrizeWinCount() {
+        System.out.println(Messages.PRIZE_RESULT.message);
         printPrizeWinCount(Prize.FIFTH);
+        printPrizeWinCount(Prize.FOURTH);
+        printPrizeWinCount(Prize.THIRD);
+        printPrizeWinCount(Prize.SECOND);
+        printPrizeWinCount(Prize.FIRST);
     }
 
-    void printPrizeWinCount(Prize prize){
-        System.out.println(Prize.prizeInfo(prize) + " - " + result.get(prize));
+    void printPrizeWinCount(Prize prize) {
+        System.out.println(Prize.prizeInfo(prize) + " - " + result.get(prize) + "개");
     }
 
     long getTotalPrizeMoney() {
