@@ -17,18 +17,6 @@ public class LottoNumber {
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
-    public MatchCount getMatchResult(Lotto lotto) {
-        int match = 0;
-        int bonusMatch = 0;
-        for (int idx = INITIAL_NUMBER; idx < LOTTO_SIZE; idx++) {
-            if (lotto.getNumbers().contains(winningNumbers.get(idx))) {
-                match++;
-            }
-        }
-        if (lotto.getNumbers().contains(bonusNumber)) {
-            bonusMatch++;
-        }
-        return new MatchCount(match, bonusMatch);
     private void validBonusNumber(String number) {
         LottoValidation.validIsDigit(number);
         LottoValidation.validNumberRange(Integer.parseInt(number));

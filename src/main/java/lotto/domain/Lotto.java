@@ -26,4 +26,15 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public MatchCount getMatchResult(LottoNumber lottoNumber) {
+        int match = (int) lottoNumber.winningNumbers.getNumbers().stream()
+                .filter(num -> numbers.contains(num))
+                .count();
+        int bonusMatch = 0;
+        if (numbers.contains(lottoNumber.bonusNumber)) {
+            bonusMatch++;
+        }
+        return new MatchCount(match, bonusMatch);
+    }
 }
