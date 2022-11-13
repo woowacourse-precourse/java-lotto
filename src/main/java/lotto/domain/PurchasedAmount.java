@@ -4,8 +4,7 @@ import java.util.regex.Pattern;
 
 import static lotto.constant.ConstValue.DIGIT_REGEX;
 import static lotto.constant.ConstValue.PURCHASED_AMOUNT_UNIT;
-import static lotto.constant.Message.INVALID_MONEY_INPUT_FORMAT_MESSAGE;
-import static lotto.constant.Message.LESS_THAN_MINIMUM_MONEY_INPUT_MESSAGE;
+import static lotto.constant.Message.*;
 
 public class PurchasedAmount {
     private int price;
@@ -26,8 +25,17 @@ public class PurchasedAmount {
         }
 
         if (!validateUnit(inputPrice)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_MONEY_UNIT_INPUT_MESSAGE);
         }
+    }
+
+    private boolean validateUnit(String inputPrice) {
+        int price = Integer.parseInt(inputPrice);
+
+        if (price % PURCHASED_AMOUNT_UNIT == 0) {
+            return true;
+        }
+        return false;
     }
 
     private boolean validateMinimum(String inputPrice) {
