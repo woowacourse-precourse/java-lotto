@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,6 +24,13 @@ public class Lotto {
             throw new IllegalArgumentException();
     }
 
+    public static void buyLotto(int money, List<Lotto> lotto) {
+        int lottoQTY = money / 1000;
+        for (int i = 0; i < lottoQTY; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lotto.add(new Lotto(numbers));
+        }
+    }
     private void numSort(List<Integer> numbers) {
         Collections.sort(numbers);
     }
