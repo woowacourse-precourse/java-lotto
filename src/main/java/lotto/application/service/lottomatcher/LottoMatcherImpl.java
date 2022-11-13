@@ -1,10 +1,11 @@
-package lotto.application.service.lottohost;
+package lotto.application.service.lottomatcher;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoHost {
+public class LottoMatcherImpl implements LottoMatcher {
 
+    @Override
     public List<List<Integer>> matchWinningLotto(
             List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers, int bonusWinningNumber) {
         winningLottoNumbers.add(bonusWinningNumber);
@@ -29,6 +30,7 @@ public class LottoHost {
         }};
     }
 
+    @Override
     public List<Integer> countContainBonusNumber(
             List<Integer> matchedWinningLotto, List<List<Integer>> generatedLottoNumbers, int bonusWinningNumber) {
         List<Integer> result = new ArrayList<>();
