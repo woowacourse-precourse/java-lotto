@@ -69,7 +69,7 @@ public class PlayLotto extends Input {
         print_lottery_nums();
         create_lotto();
         create_bonus();
-        compare_lottery();
+        compare_lottery(this.user);
         print_result(win_count);
         print_yeild();
 
@@ -95,7 +95,7 @@ public class PlayLotto extends Input {
         this.bonus = returnInt();
     }
 
-    public void compare_lottery(){
+    public void compare_lottery(User user){
         for(List<Integer> user_lottery : user.return_lottery_nums()){ //사용자 번호와 당첨 번호 비교
             equal_count(lotto.returnNumbers(), user_lottery);
         }
