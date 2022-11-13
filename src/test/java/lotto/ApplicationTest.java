@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Arrays;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -200,6 +201,34 @@ class ApplicationTest extends NsTest {
                     throw e.getTargetException();
                 }
             }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    Integer[] getResult(List<Lotto> lottoList, Lotto winning, Integer bonusNumber) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Class app = Application.class;
+        Class args[] = new Class[3];
+        args[0] = List.class;
+        args[1] = Lotto.class;
+        args[2] = Integer.class;
+
+        Object[] params = new Object[3];
+        params[0] = lottoList;
+        params[1] = winning;
+        params[2] = bonusNumber;
+
+        Method method = app.getDeclaredMethod("getResult", args);
+        method.setAccessible(true);
+        return (Integer[]) method.invoke(null, params);
+    }
+
+    @Test
+    void 추첨_결과_테스트() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Integer[] result = getResult(List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 17))
+            ), new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+
+        assertThat(result).containsExactly(1, 1, 0, 0, 0, 1);
     }
 
     @Override
