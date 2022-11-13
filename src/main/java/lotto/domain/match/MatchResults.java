@@ -16,6 +16,10 @@ public class MatchResults {
         Map<Reward, Integer> counts = new EnumMap<>(Reward.class);
 
         for (Reward reward : rewardList) {
+            if (reward == null) {
+                continue;
+            }
+
             int currentCount = counts.getOrDefault(reward, 0);
             counts.put(reward, currentCount + 1);
         }
