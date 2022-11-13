@@ -23,11 +23,15 @@ public class Game {
             return;
         }
 
-        getLottoNumbers(validAmount / 1000);
-        printLottoNumbers();
-        getWinningNumbers();
-        getBonusNumber();
-        calculateWin();
+        try {
+            getLottoNumbers(validAmount / 1000);
+            printLottoNumbers();
+            getWinningNumbers();
+            getBonusNumber();
+            calculateWin();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
