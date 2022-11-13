@@ -14,4 +14,8 @@ public class BonusLotto {
             throw  new IllegalArgumentException("[ERROR] 알맞은 숫자를 입력해주세요.");
         }
     }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }

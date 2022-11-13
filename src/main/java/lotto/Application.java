@@ -1,9 +1,6 @@
 package lotto;
 
-import lotto.model.BonusLotto;
-import lotto.model.Lotto;
-import lotto.model.LottoFactory;
-import lotto.model.Money;
+import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -23,6 +20,8 @@ public class Application {
             Lotto lotto = new Lotto(inputView.inputLotto());
             BonusLotto bonusLotto = new BonusLotto(inputView.inputBonusLotto());
 
+            LottoResult lottoResult = new LottoResult(money.getMoney(), lottoFactory.getLottos(), lotto.getNumbers(), bonusLotto.getBonusNumber());
+            outputView.lottoResult(lottoResult.getLottoCount(), lottoResult.getYield());
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
