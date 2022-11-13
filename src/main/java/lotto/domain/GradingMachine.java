@@ -17,7 +17,7 @@ public class GradingMachine {
     public GradingMachine(Lotto winnerLotto, int bonusNumber) {
         validateContainBonusNumber(winnerLotto, bonusNumber);
         this.winnerLotto = winnerLotto;
-        this.bonusNumber = validateBonusBallRange(bonusNumber);
+        this.bonusNumber = validateBonusNumberRange(bonusNumber);
     }
 
     private void validateContainBonusNumber(Lotto winnerLotto, int bonusNumber) {
@@ -27,7 +27,7 @@ public class GradingMachine {
         }
     }
 
-    private int validateBonusBallRange(int bonusNumber) {
+    private int validateBonusNumberRange(int bonusNumber) {
         if (bonusNumber >= MIN_LOTTO_NUMBER && MAX_LOTTO_NUMBER >= bonusNumber) {
             return bonusNumber;
         }
