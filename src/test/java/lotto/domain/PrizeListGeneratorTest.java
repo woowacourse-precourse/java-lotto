@@ -20,10 +20,12 @@ class PrizeListGeneratorTest {
     private List<Lotto> lottoMaker() {
         List<Integer> lottoNumbers = new ArrayList<Integer>(List.of(1,3,5,14,22,45));
         List<Integer> lottoNumbers2 = new ArrayList<Integer>(List.of(1,2,3,4,5,45));
+        List<Integer> lottoNumbers3 = new ArrayList<Integer>(List.of(10,11,12,13,14,45));
         Lotto lotto  = new Lotto(lottoNumbers);
         Lotto lotto2 = new Lotto(lottoNumbers2);
+        Lotto lotto3 = new Lotto(lottoNumbers3);
 
-        List<Lotto> lottoList = new ArrayList<Lotto>(List.of(lotto, lotto2));
+        List<Lotto> lottoList = new ArrayList<Lotto>(List.of(lotto, lotto2, lotto3));
 
         return lottoList;
     }
@@ -55,7 +57,7 @@ class PrizeListGeneratorTest {
                 () ->Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(FIVEMATCH)).isEqualTo(1),
                 () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(FIVEBONUS)).isEqualTo(0),
                 () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(SIXMATCH)).isEqualTo(0),
-                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(UNDERPRIZE)).isEqualTo(0)
+                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(UNDERPRIZE)).isEqualTo(1)
         );
     }
 }
