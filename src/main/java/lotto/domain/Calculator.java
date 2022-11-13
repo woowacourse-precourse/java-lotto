@@ -14,7 +14,7 @@ public class Calculator {
         return winningAmount;
     }
 
-    public static float getEarningRate(List<Integer> results) {
-        return Math.round(getWinningAmount(results) / results.size());
+    public static double getEarningRate(List<Integer> results) {
+        return Math.round(getWinningAmount(results) / results.size() * 10) / 10.0;
     }
 }
