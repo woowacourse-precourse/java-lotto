@@ -30,4 +30,9 @@ public class InputView {
         }
     }
 
+    private List<Integer> convertToListInt(String input){
+        List<String> temp = Stream.of(input.split("\\s*,\\s*")).collect(Collectors.toList());
+        List<Integer> conversion = temp.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+        return conversion;
+    }
 }
