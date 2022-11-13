@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -19,6 +20,7 @@ public class Lotto {
         validateCntNumber(numbers);
         validateDuplicate(numbers);
         validateNumberCondition(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
