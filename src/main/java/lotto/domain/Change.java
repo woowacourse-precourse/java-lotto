@@ -68,6 +68,14 @@ public class Change {
 
     public static int bonusNumber(String bonusNumber){
         checkWord(bonusNumber);
+        checkNumberRange(bonusNumber);
         return Integer.parseInt(bonusNumber);
+    }
+
+    private static void checkNumberRange(String input){
+        int number = Integer.parseInt(input);
+        if (!(1 <= number && number <= 45)){
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다. - 숫자 범위");
+        }
     }
 }
