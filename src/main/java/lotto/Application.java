@@ -10,6 +10,8 @@ public class Application {
 
     static NumberType[] numberTypeCheck = new NumberType[46];
 
+    static List<Lotto> generatedLottos = new ArrayList<>();
+
     public static void guideWinningNumberFormat() { System.out.print("당첨 번호 6개를 쉼표로 구분해 입력해주세요: "); }
 
     public static void isVoidInput(String numberInput) {
@@ -18,6 +20,7 @@ public class Application {
     }
 
     public static boolean isComma(char charAtIndex) { return charAtIndex == ','; }
+
     public static boolean isNumber(char charAtIndex) { return (charAtIndex >= '0' && charAtIndex <= '9'); }
 
     public static void isInputCommaAndNumber(String numberInput) {
@@ -143,16 +146,28 @@ public class Application {
         return (int)(purchasePrice / 1000);
     }
 
+    public static void generateLottoNumbers(int noOfLotto) {
+        // TODO: implement method to purchased Lottos
+    }
+
+    public static void printPurchasedLottos() {
+        // TODO: implement method to purchased Lottos
+    }
+
+    public static void printLottoResults() {
+        // TODO: implement method to print result of comparison between winning numbers and purchased Lottos
+    }
+
+    public static void printEarningsRate() {
+        // TODO: implement method to print earnings rate
+    }
+
     public static void main(String[] args) {
         getWinningNumbers();
         getBonusNumber();
-
-        // TODO: implement following methods
-        /*
         generateLottoNumbers(getNoOfLotto());
-        printLottos();
+        printPurchasedLottos();
         printLottoResults();
         printEarningsRate();
-        */
     }
 }
