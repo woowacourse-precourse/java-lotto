@@ -6,6 +6,8 @@ import lotto.model.LottoMachine;
 import lotto.view.CommonView;
 import lotto.view.PublishView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LottoController {
@@ -19,6 +21,8 @@ public class LottoController {
     public void play() {
         try {
             buyLotto();
+            setAnswer();
+
         } catch (Exception err) {
             CommonView.printExceptionMessage(err);
         }
@@ -26,14 +30,29 @@ public class LottoController {
 
     private void buyLotto() {
         CommonView.printInputMoneyMessage();
-        String input = Console.readLine().replace(" ", "");
-        validateNumberInput(input);
-        lottos = lottoMachine.publish(Integer.parseInt(input));
+        String money = Console.readLine().replace(" ", "");
+        validateNumberInput(money);
+        lottos = lottoMachine.publish(Integer.parseInt(money));
         PublishView.printPublishInformation(lottos);
     }
 
     private void setAnswer() {
+        CommonView.printInputAnswerMessage();
+        String answerInput = Console.readLine().replace(" ", "");
+        validateAnswerInput(answerInput);
 
+        CommonView.printInputBonusMessage();
+        String bonusInput = Console.readLine().replace(" ", "");
+        validateNumberInput(bonusInput);
+
+        int bonus = Integer.parseInt(bonusInput);
+        lottoMachine.setLuckyNumber(makeAnswerIntoList(answerInput), bonus);
+    }
+
+    private List<Integer> makeAnswerIntoList(String answer) {
+        List<Integer> ilist = new ArrayList<>();
+        Arrays.stream(answer.split(",")).mapToInt(Integer::parseInt).forEach(ilist::add);
+        return ilist;
     }
 
     private void getResult() {
