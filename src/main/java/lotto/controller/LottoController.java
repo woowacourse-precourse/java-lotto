@@ -30,7 +30,7 @@ public class LottoController {
 		while (lotteries.size() != numberOfTickets) {
 			lotteries.add(new Lotto(lottoGenerator.getNumbers()));
 		}
-		outputView.printIssuedLotteries(lotteries);
+		lotteries.forEach(lotto -> System.out.println(lotto.getNumbers()));
 	}
 
 	List<Lotto> getLotteries() {

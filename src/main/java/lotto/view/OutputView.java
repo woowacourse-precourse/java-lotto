@@ -10,8 +10,4 @@ public class OutputView {
 		System.out.printf(OutputMessage.DISPLAYING_PURCHASING_QUANTITY.message(), numberOfTickets);
 		System.out.println();
 	}
-
-	public void printIssuedLotteries(List lotteries) {
-		lotteries.forEach(System.out::println);
-	}
 }
