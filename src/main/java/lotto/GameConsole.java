@@ -60,7 +60,7 @@ public class GameConsole {
         System.out.println("당첨 통계\n---");
         List<Entry<Rank, Integer>> entries = rankInfo.entrySet()
                 .stream()
-                .sorted(Comparator.comparingInt(r -> r.getKey().getMatchCount()))
+                .sorted(Comparator.comparingInt(r -> r.getKey().getPrize()))
                 .collect(Collectors.toList());
 
         for (Entry<Rank, Integer> entry : entries) {
