@@ -17,7 +17,7 @@ public class LottoPlayer {
         printManager.printRequestPrice();
         int lottoCount = inputManager.inputPurchaseAmount();
         List<Lotto> lottos = lottoFactory.create(lottoCount);
-        printPurchaseList(lottos);
+        printManager.printLottoList(lottos);
         printManager.printRequestWinningNumber();
         Lotto winningNumber = inputManager.inputWinningNumbers();
         printManager.printRequestBonusNumber();
@@ -34,10 +34,4 @@ public class LottoPlayer {
         System.out.printf(String.valueOf(ConsoleMessage.RESPONSE_YIELD), Math.round(yield*100)/100.0);
     }
 
-    private void printPurchaseList(List<Lotto> lottos) {
-        System.out.printf(String.valueOf(ConsoleMessage.RESPONSE_PURCHASE), lottos.size());
-        System.out.print(ConsoleMessage.NEW_LINE);
-        lottos.forEach(System.out::println);
-        System.out.print(ConsoleMessage.NEW_LINE);
-    }
 }
