@@ -10,20 +10,16 @@ import static constance.Texts.LOTTO_USER_PURCHASE_RESULT;
 
 public class User {
 
-    private Checker checker;
     private List<Lotto> lotteries;
     private List<List<Result>> results;
     private int lotteryCount;
     private int winnings;
 
-    public User(String input){
-        checker=new Checker();
-
-        setAmount(input);
-        setLotteries();
+    public User(int amount){
+        this.setLotteryCount(amount);
+        this.setLotteries();
     }
-    private void setAmount(String input){
-        int amount = checker.checkAmountInput(input);
+    private void setLotteryCount(int amount){
         this.lotteryCount=amount/1000;
     }
     private void setLotteries(){
