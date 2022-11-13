@@ -1,14 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.config.LottoConfig;
 import lotto.message.IOMessage;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class IOManager {
     private static void printEmptyLine() {
@@ -30,7 +27,7 @@ public class IOManager {
         try {
             System.out.println(IOMessage.ASK_ANSWER.getMessage());
             return Arrays.stream(Console.readLine().split(","))
-                    .map(s -> Integer.parseInt(s))
+                    .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {
             throw new IllegalArgumentException();
@@ -51,7 +48,7 @@ public class IOManager {
     }
 
     public static void printLottoBought(int num) {
-        System.out.println(String.valueOf(num) + IOMessage.LOTTO_BUY_NUM.getMessage());
+        System.out.println(num + IOMessage.LOTTO_BUY_NUM.getMessage());
     }
 
     public static void printLottoList(List<Lotto> lottoList) {
