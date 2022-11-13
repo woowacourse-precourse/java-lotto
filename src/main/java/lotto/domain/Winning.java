@@ -20,7 +20,7 @@ public enum Winning {
         this.winnings = winnings;
     }
 
-    public Optional<Winning> getWinning(int sameCount, int bonusCount) {
+    public static Optional<Winning> getWinning(int sameCount, int bonusCount) {
         for (Winning current : Winning.values()) {
             if (current.sameCount == sameCount && current.bonusCount == bonusCount) {
                 return Optional.of(current);
