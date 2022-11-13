@@ -47,7 +47,7 @@
 - ✅ 로또 번호 출력 : <OutputView> printBuyerLotto();
   - ✅ 오름차순 정렬
 
-### ✔ 이번주 당첨 번호 입력
+### ✅ 이번주 당첨 번호 입력
 
 - ✅ 이번주 당첨 로또 생성 : <WinningLotto> Constructor
   - ✅ (e) 번호 6개 , 구분자 = "," : <WinningLottoValidator> isValidLottoSize()
@@ -62,21 +62,19 @@
   - ✅ (e) 중복 불가 : <BonusValidator> isOverlap()
   - ✅ readLine() 사용
 
-### ✔ 당첨 내역 출력 by Enum
+### ✅ 당첨 내역 출력 by Enum
 
 - ✅ 숫자 일치 개수 
   - ✅ 번호 1개씩 당첨로또에 포함되어있는지 확인 : <WinningLotto> matchNumberCount()
   - ✅ 보너스는 따로 확인 : <WinningLotto> isMatchBonusNumber()
-- ✅ 당첨 금액
-  - ✅ 경우 별 당첨금액 저장 : <Calculator> getSumOfWinningAmount()
 - ✅ 당첨 로또 개수
   - ✅ 경우 별 당첨로또 개수 저장 : <Calculator> CountOfRank()
 
 ### ✔ 수익률 출력
 
-- 총 당첨 금액 : 총합(경우별 당첨금액 * 경우별 당첨 로또 개수)
-- 수익률 : 총 당첨 금액 / 구매 금액
-- 소수점 둘째자리 반올림
+- ✅ 총 당첨 금액 : 총합(경우별 당첨금액 * 경우별 당첨 로또 개수) : <Calculator> getSumOfWinningAmount()
+- ✅ 수익률 : 총 당첨 금액 / 구매 금액 : <Calculator> earnedRatio()
+- ✅ 소수점 둘째자리 반올림 Math.round()
 
 ---
 

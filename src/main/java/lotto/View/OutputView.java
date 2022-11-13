@@ -7,6 +7,7 @@ import lotto.Model.Lotto;
 public class OutputView {
 
     public static final String PRINT_NUMBER_OF_LOTTO = "%d개를 구매했습니다.";
+
     public static final int ZERO = 0;
     public static void printBuyerLotto(Buyer buyer){
         int count = buyer.getPurchaseCount();

@@ -9,6 +9,7 @@ public class Buyer {
     public final int ZERO = 0;
     public final int START_NUM = 1;
     public final int END_NUM = 45;
+
     private int purchaseAmount;
     private int purchaseCount;
     private int winningAmount;
@@ -20,6 +21,10 @@ public class Buyer {
         this.purchaseAmount = Util.getInt(purchaseAmount);
         this.purchaseCount = Calculator.divide1000(this.purchaseAmount);
         this.lottoWallet = new ArrayList<>();
+    }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
     }
     public int getPurchaseCount() {
         return purchaseCount;
