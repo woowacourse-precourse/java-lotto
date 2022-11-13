@@ -1,13 +1,10 @@
 package lotto.mainframe;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LottoNumberGenerate {
+public class LottoNumberGeneration {
 
     private Lotto lotto;
 

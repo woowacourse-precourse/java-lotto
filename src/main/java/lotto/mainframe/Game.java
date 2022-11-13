@@ -7,12 +7,12 @@ public class Game {
 
     private User user;
     private Calculation calculation;
-    private LottoNumberGenerate generation;
+    private LottoNumberGeneration generation;
 
     public Game() {
         user = new User();
         calculation = new Calculation();
-        generation = new LottoNumberGenerate();
+        generation = new LottoNumberGeneration();
     }
 
     public void start() {

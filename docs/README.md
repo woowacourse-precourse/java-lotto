@@ -24,7 +24,7 @@
 - 생성한 로또 번호 저장
 
 ###
-### ✔️ LottoNumberGenerate
+### ✔️ LottoNumberGeneration
 
 - 중복되지 않는 6개의 숫자를 뽑아 로또 번호를 생성
 - 생성한 로또 번호를 User 통해 저장
