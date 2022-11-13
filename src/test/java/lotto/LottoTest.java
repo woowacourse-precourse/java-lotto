@@ -5,10 +5,7 @@ import lotto.Utils.LottoInspector;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.List;
-import java.util.Scanner;
 
 import static lotto.Enum.ErrorMessage.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -51,14 +48,11 @@ class LottoTest {
                 .hasMessage(NOT_PROPER_WINNING_NUMBER_LENGTH.toMessage());
 
         String input04 ="1,2,삼,4,5,6";
-        assertThatThrownBy(() -> inspector.winningNumberToList(input03))
+        assertThatThrownBy(() -> inspector.winningNumberToList(input04))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(NOT_INPUT_INTEGER_MONEY_VALUE.toMessage());
+                .hasMessage(NOT_INPUT_INTEGER_VALUE.toMessage());
 
 
     }
 
-    public static InputStream createUserInput(String input) {
-        return new ByteArrayInputStream(input.getBytes());
-    }
 }

@@ -44,7 +44,7 @@ public class Validation {
         try {
             parsedNumber = Integer.parseInt(stringNumber);
         } catch (Exception e) {
-            throw new IllegalArgumentException(NOT_INPUT_INTEGER_MONEY_VALUE.toMessage());
+            throw new IllegalArgumentException(NOT_INPUT_INTEGER_VALUE.toMessage());
         }
 
         return parsedNumber;
