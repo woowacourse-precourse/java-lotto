@@ -75,4 +75,19 @@ public class Lotto {
         }
     }
 
+    /**
+     * Receives user input of winning numbers/bonus number and calculates result
+     * @param purchasedLottos purchases lottos from Manager class
+     */
+    public void result(List<List<Integer>> purchasedLottos) {
+        int bonusNum;
+        try {
+            bonusNum = getBonusNumber();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        Calculator calculator = new Calculator(purchasedLottos, numbers, bonusNum);
+        calculator.calculate();
+    }
 }
