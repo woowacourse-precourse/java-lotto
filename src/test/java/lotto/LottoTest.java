@@ -58,7 +58,31 @@ class LottoTest {
         );
     }
 
+    @DisplayName("맞춘 개수 세기")
+    @Test
+    void compareHowManyCorrectExist() {
 
+        List<List<Integer>> user = new ArrayList<>();
+
+        List<Integer> lottoUsers1 = new ArrayList<>(Arrays.asList(4,6,10,41,42,45));
+        List<Integer> lottoUsers2 = new ArrayList<>(Arrays.asList(5,6,21,36,42,45));
+        List<Integer> lottoUsers3 = new ArrayList<>(Arrays.asList(1,2,10,29,30,44));
+        List<Integer> lottoUsers4 = new ArrayList<>(Arrays.asList(4,7,10,15,32,45));
+
+        user.add(lottoUsers1);
+        user.add(lottoUsers2);
+        user.add(lottoUsers3);
+        user.add(lottoUsers4);
+
+        List<Integer> lottoWinNumber = new ArrayList<>(Arrays.asList(3,6,10,36,42,45));
+
+        List<Integer> correctNumber = new ArrayList<>(Arrays.asList(4,4,1,2));
+
+        CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
+
+        assertEquals(compareHowManyCorrect.compareLotto(user,lottoWinNumber),correctNumber);
+
+    }
 
 
 }
