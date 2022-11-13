@@ -39,16 +39,25 @@ public class Lotto {
     public ArrayList<BigInteger> countLottoWinnings(ArrayList<ArrayList<Integer>> lotteryBundleArray, int bonusWinningNumber){
         final int SET_TO_INDEX_VALUE = 3;
         ArrayList<BigInteger> countWinningNumbersCaseArray = initializeArray();
-        BigInteger add1 = new BigInteger("1");
         for (ArrayList<Integer> lottery : lotteryBundleArray){
-            int settedIndex = countWinningNumbers(lottery,bonusWinningNumber)-SET_TO_INDEX_VALUE;
-            if (settedIndex >= 0) {
-                countWinningNumbersCaseArray.set(settedIndex, countWinningNumbersCaseArray.get(settedIndex).add(add1));
-                System.out.println(countWinningNumbersCaseArray.get(settedIndex));
+            int settedIndex = 0;
+            try{
+                settedIndex = countWinningNumbers(lottery,bonusWinningNumber)-SET_TO_INDEX_VALUE;
             }
+            catch(Exception e){
+                throw e;
+            }
+            setArrayValue(countWinningNumbersCaseArray, settedIndex);
         }
         return countWinningNumbersCaseArray;
     }
+    private void setArrayValue(ArrayList<BigInteger> countWinningNumbersCaseArray, int settedIndex) {
+        if (settedIndex >= 0){
+            countWinningNumbersCaseArray.set(settedIndex, countWinningNumbersCaseArray.get(settedIndex).add(new BigInteger("1")));
+            System.out.println(countWinningNumbersCaseArray.get(settedIndex));
+        }
+    }
+
     private ArrayList<BigInteger> initializeArray(){
         ArrayList<BigInteger> countWinningNumbersCaseArray = new ArrayList<>();
         for (int index = 0; index < 5; index++){
@@ -57,7 +66,21 @@ public class Lotto {
         return countWinningNumbersCaseArray;
     }
     private int countWinningNumbers(ArrayList<Integer> lottery, int bonusWinningNumber){
-        int countOfWinningNumbers = 0;
+        try{
+            validateOverlap(bonusWinningNumber);
+        }
+        catch (Exception e){
+            throw e;
+        }
+        return getcountWinningNumbers(lottery,bonusWinningNumber,0);
+    }
+    private void validateOverlap(int bonusWinningNumber) {
+        if (numbers.contains(bonusWinningNumber)){
+            System.out.println("[ERROR] 당첨 번호는 중복이 없어야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+    private int getcountWinningNumbers(ArrayList<Integer> lottery, int bonusWinningNumber, int countOfWinningNumbers) {
         for (int index = 0; index < lottery.size(); index++){
             if (numbers.contains(lottery.get(index))){
                 countOfWinningNumbers++;
