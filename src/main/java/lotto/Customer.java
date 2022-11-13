@@ -7,7 +7,11 @@ public class Customer {
     final int price;
     Customer() {
         String tmp = Console.readLine();
-        price = Integer.parseInt(tmp);
+        try {
+            price = Integer.parseInt(tmp);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+        }
         validate(price);
         this.count = price / 1000;
     }
