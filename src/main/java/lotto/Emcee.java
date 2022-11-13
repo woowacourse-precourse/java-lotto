@@ -51,8 +51,9 @@ public class Emcee {
         System.out.println("하나의 보너스 번호만 입력해 주세요.");
     }
 
-    public void showResultOfLottoGame(Map<Rank, Integer> tallyOfRanks) {
-
+    public void showResultOfLottoGame(Map<Rank, Integer> tallyOfRanks, int payment) {
+        showStatistics(tallyOfRanks);
+        showYield(tallyOfRanks, payment);
     }
 
     private void showStatistics(Map<Rank, Integer> tallyOfRanks) {
