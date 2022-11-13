@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
-    public static int purchaseAmount() {
+    public static int inputPurchaseAmount() {
         String amount = Console.readLine();
 
         if (!isValidAmount(amount)) {
@@ -18,14 +18,23 @@ public class Input {
         return isNumeric(number) && isPositive(number) && isDividedBy1000(number);
     }
 
+    /**
+     * 입력한 문자열이 숫자로만 이루어진 것인지 확인하는 메소드
+     */
     private static boolean isNumeric(String number) {
         return number.chars().allMatch(Character::isDigit);
     }
 
+    /**
+     * 입력한 문자열이 양수인지 확인하는 메소드
+     */
     private static boolean isPositive(String number) {
         return Integer.parseInt(number) > 0;
     }
 
+    /**
+     * 입력한 문자열이 1000원으로 나누어 떨어지는지 확인하는 메소드
+     */
     private static boolean isDividedBy1000(String number) {
         return Integer.parseInt(number) % 1000 == 0;
     }
