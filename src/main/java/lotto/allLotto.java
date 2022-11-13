@@ -12,7 +12,9 @@ public class allLotto {
     }
 
     public void addLotto(Lotto lotto){
-        this.lottos.add(lotto.getLottoNumber());}
+        List<Integer> lottoNumber=new ArrayList<>();
+        lottoNumber.addAll(lotto.getLottoNumber());
+        this.lottos.add(lottoNumber);}
 
     public int sizeLotto(){
         return this.lottos.size();
@@ -28,6 +30,7 @@ public class allLotto {
 
     public void printAllLotto(){
         for(int i=0;i<lottos.size();i++){
+            Collections.sort(lottos.get(i));
             System.out.println(lottos.get(i));
         }
     }

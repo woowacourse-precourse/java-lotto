@@ -1,9 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Logger;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -68,7 +65,8 @@ public class makeNumber {
 
     public static List<Integer> randomLotto(){
         List<Integer> number=new ArrayList<>();
-    return number= Randoms.pickUniqueNumbersInRange(1,45,6);
+       return  number= Randoms.pickUniqueNumbersInRange(1,45,6);
+
     }
 
 
