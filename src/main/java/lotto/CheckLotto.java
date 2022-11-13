@@ -44,7 +44,7 @@ public class CheckLotto {
     public long getWinningCount(Lotto lotto) {
         return lotto.getNumbers()
                 .stream()
-                .filter(number -> winningNumbers.contains(number))
+                .filter(winningNumbers::contains)
                 .count();
     }
 
