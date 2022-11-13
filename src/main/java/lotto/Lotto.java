@@ -2,10 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -14,6 +11,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkWinNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -42,6 +40,12 @@ public class Lotto {
         List<Integer> Lotto = Randoms.pickUniqueNumbersInRange(1,45,6);
         Collections.sort(Lotto);
         return Lotto;
+    }
+    public static void checkWinNumber(List<Integer> winNumber){
+        Set<Integer> numSet = new HashSet<>(winNumber);
+        if(numSet.size() != winNumber.size()){
+            throw new IllegalArgumentException("[ERROR] 당첨 번호의 숫자가 6개가 아닙니다.");
+        }
     }
     public static List<Integer> winner(){
         String winNum = readLine();
