@@ -39,7 +39,7 @@ public class UI {
         return Answer_numbers;
     }
 
-    private void number_validate(String Input) {
+    private void Answer_number_validate(String Input) {
         try {
             Integer number = Integer.valueOf(Input);
             if (number < 1 || number > 45) {
@@ -50,13 +50,20 @@ public class UI {
 
     }
 
+    public Integer Bonus_Number() {
+        String Input = Console.readLine();
+        Bonus_number_validate(Input);
+        Integer Bonus_Number = Integer.valueOf(Input);
+        return Bonus_Number;
+    }
+
 
 
 
 
 //    public static void main(String[] args) {
 //        UI UI = new UI();
-//        UI.Answer_Number();
+//        UI.Bonus_Number();
 //    }
 //
 //}
