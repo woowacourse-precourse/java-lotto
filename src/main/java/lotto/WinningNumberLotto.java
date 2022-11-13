@@ -14,8 +14,8 @@ public class WinningNumberLotto extends Lotto {
         return bonusNumber;
     }
 
-    private void setBonusNumber() {
-
+    private void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 
     private void inputBonusNumber() {
