@@ -40,6 +40,10 @@ public class Model {
     }
 
     public static Integer MakeStringToInteger(String string) {
-        return Integer.parseInt(string);
+        try {
+            return Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
+        }
     }
 }
