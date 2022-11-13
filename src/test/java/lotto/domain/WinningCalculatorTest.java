@@ -6,19 +6,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import lotto.constant.WinningResult;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class WinningCalculatorTest {
+    WinningCalculator winningCalculator = new WinningCalculator();
+
+    @BeforeEach
+    void initWinningCalculator() {
+        winningCalculator.setWinningNumbers("1,2,3,4,5,6");
+        winningCalculator.setBonusNumber("7");
+    }
 
     @DisplayName("당첨 번호를 설정한다.")
     @Test
     void ShouldBeRank1WhenSetWinningNumbers() {
         // given
-        WinningCalculator winningCalculator = new WinningCalculator();
-        winningCalculator.setWinningNumbers("1,2,3,4,5,6");
-        winningCalculator.setBonusNumber("7");
         List<Integer> numbers = new ArrayList<>(Arrays.asList(6, 7, 8, 9, 10, 11));
         Lotto lottoBeforeResetWinningNumbers = new Lotto(numbers);
         // when
@@ -32,9 +37,6 @@ class WinningCalculatorTest {
     @Test
     void ShouldBeRank2WhenSetBonusNumber() {
         // given
-        WinningCalculator winningCalculator = new WinningCalculator();
-        winningCalculator.setWinningNumbers("1,2,3,4,5,6");
-        winningCalculator.setBonusNumber("7");
         List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 8));
         Lotto lottoBeforeResetWinningNumbers = new Lotto(numbers);
         // when
@@ -52,9 +54,6 @@ class WinningCalculatorTest {
         @Test
         void getClassNone() {
             // given
-            WinningCalculator winningCalculator = new WinningCalculator();
-            winningCalculator.setWinningNumbers("1,2,3,4,5,6");
-            winningCalculator.setBonusNumber("7");
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 7, 8, 9, 10, 30));
             Lotto lotto = new Lotto(numbers);
@@ -66,9 +65,6 @@ class WinningCalculatorTest {
         @Test
         void getClass5() {
             // given
-            WinningCalculator winningCalculator = new WinningCalculator();
-            winningCalculator.setWinningNumbers("1,2,3,4,5,6");
-            winningCalculator.setBonusNumber("7");
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 9, 10, 30));
             Lotto lotto = new Lotto(numbers);
@@ -80,9 +76,6 @@ class WinningCalculatorTest {
         @Test
         void getClass4() {
             // given
-            WinningCalculator winningCalculator = new WinningCalculator();
-            winningCalculator.setWinningNumbers("1,2,3,4,5,6");
-            winningCalculator.setBonusNumber("7");
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 10, 30));
             Lotto lotto = new Lotto(numbers);
@@ -94,9 +87,6 @@ class WinningCalculatorTest {
         @Test
         void getClass3() {
             // given
-            WinningCalculator winningCalculator = new WinningCalculator();
-            winningCalculator.setWinningNumbers("1,2,3,4,5,6");
-            winningCalculator.setBonusNumber("7");
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 30));
             Lotto lotto = new Lotto(numbers);
@@ -108,9 +98,6 @@ class WinningCalculatorTest {
         @Test
         void getClass2() {
             // given
-            WinningCalculator winningCalculator = new WinningCalculator();
-            winningCalculator.setWinningNumbers("1,2,3,4,5,6");
-            winningCalculator.setBonusNumber("7");
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 2, 3, 4, 5, 6));
             Lotto lotto = new Lotto(numbers);
@@ -122,9 +109,6 @@ class WinningCalculatorTest {
         @Test
         void getClass1() {
             // given
-            WinningCalculator winningCalculator = new WinningCalculator();
-            winningCalculator.setWinningNumbers("1,2,3,4,5,6");
-            winningCalculator.setBonusNumber("7");
             // when
             List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
             Lotto lotto = new Lotto(numbers);
