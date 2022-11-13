@@ -61,19 +61,15 @@ public class GameController {
     }
 
     public void run() {
-        try {
-            User user  = new User(inputAmount());
-            LottoSeller lottoSeller = new LottoSeller();
-            user.buyLotto(lottoSeller);
-            printLotto(user);
+        User user = new User(inputAmount());
+        LottoSeller lottoSeller = new LottoSeller();
+        user.buyLotto(lottoSeller);
+        printLotto(user);
 
-            WinningNumber winningNumber = inputWinningNumAndBonusNum();
+        WinningNumber winningNumber = inputWinningNumAndBonusNum();
 
-            Calculator calc = new Calculator(winningNumber.getWinningNum(), winningNumber.getBonusNum(),user.getLotto());
-            printWinningStat(calc);
-            printYield(calc);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        Calculator calc = new Calculator(winningNumber.getWinningNum(), winningNumber.getBonusNum(), user.getLotto());
+        printWinningStat(calc);
+        printYield(calc);
     }
 }
