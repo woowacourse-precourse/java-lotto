@@ -4,15 +4,13 @@ import lotto.validation.Validator;
 
 public class LottoPurchaseCount {
 
-    public static int getLottoCount(int money) {
+    public static int getLottoPurchaseCount(int money) {
         Validator.isDividedByThousand(money);
-        return getMoney(money);
+        return calculateLottoPurchaseCount(money);
     }
 
-    private static int getMoney(int money) {
-        if (money % 1000 == 0) {
-            money /= 1000;
-        }
-        return money;
+    private static int calculateLottoPurchaseCount(int money) {
+        int lottoPurchaseCount = money/1000;
+        return lottoPurchaseCount;
     }
 }
