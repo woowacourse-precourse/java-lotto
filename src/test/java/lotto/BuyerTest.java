@@ -11,21 +11,21 @@ public class BuyerTest {
 
     @DisplayName("금액이 1000원 미만이면 예외 발생.")
     @Test
-    void 금액미달() {
+    void checkLessMoney() {
         assertThatThrownBy(() ->  buyer.validateMoneyRange(500))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("금액이 1000원 단위가 아니면 예외 발생.")
     @Test
-    void 단위오류() {
-        assertThatThrownBy(() -> buyer.validateMoneyUnit(500))
+    void checkMoneyUnit() {
+        assertThatThrownBy(() -> buyer.validateMoneyUnit(3500))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력 금액에 숫자가 아닌 문자가 입력되면 예외 발생.")
     @Test
-    void 금액입력오류() {
+    void checkMoneyType() {
         assertThatThrownBy(() ->  buyer.validateMoneyOnlyNumber("1000a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
