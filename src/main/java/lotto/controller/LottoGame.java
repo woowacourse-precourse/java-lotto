@@ -16,15 +16,16 @@ public class LottoGame {
         int input = user.setPurchaseAmount();
         user.validateUnit(input);
 
-        input /= 1000;
+        setPurchaseAmountLotto(input/1000);
 
+    }
+
+    public void setPurchaseAmountLotto(int input){
         while(input>0){
             user.setRandomNumber();
             input--;
         }
-
     }
-
 
 
     public void printPurchaseAmount(){
