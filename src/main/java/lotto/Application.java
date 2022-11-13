@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    public static void makeLottoNumber(int lottoCount){
-        int[][] lottoArray = new int[lottoCount][6];
-
+    public static void makeLottoNumber(int[][] lottoArray ,int lottoCount){
         for (int i = 0; i < lottoCount; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             for (int j = 0; j < lottoArray[i].length; j++){
@@ -36,18 +35,17 @@ public class Application {
             int countTmp = 0;
 
             for(int j = 0; j < 6; j++){
-
                 for(int k = 0; k < 6; k++) {
                     if (lottoArray[i][j] == userInputLottoNumber[k]) {
                         countTmp++;
                     }
                 }
             }
-
             winningStatisticsMaker(lottoArray[i], userInputBonusNumber, correctCount, countTmp);
-            winningStatisticPrinter(correctCount);
-            yieldCalculation(correctCount, purchasedValue);
+
         }
+        winningStatisticPrinter(correctCount);
+        yieldCalculation(correctCount, purchasedValue);
     }
 
     public static void winningStatisticsMaker(int[] lottoArray, int userInputBonusNumber, int[] correctCount, int countTmp){
@@ -75,7 +73,7 @@ public class Application {
     }
 
     public static void winningStatisticPrinter(int[] correctCount){
-        System.out.println("당첨 통계\n---");
+        System.out.println("\n당첨 통계\n---");
 
         System.out.println("3개 일치 (5,000원) - " +correctCount[0]+ "개");
         System.out.println("4개 일치 (50,000원) - " +correctCount[1]+ "개");
@@ -92,7 +90,7 @@ public class Application {
             grossIncome += profit[i] * correctCount[i];
         }
 
-        double yield = (double) grossIncome / (double) purchasedValue;
+        double yield = (double) grossIncome * 100 / (double) purchasedValue;
 
         System.out.print("총 수익률은 ");
         System.out.print(String.format("%.1f", yield));
@@ -101,7 +99,6 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Scanner scanner = new Scanner(System.in);
         int purchasedValue;
         String userInputLotto = "";
         String[] userInputLottoTmp;
@@ -109,7 +106,7 @@ public class Application {
         int userInputBonusNumber;
 
         System.out.println("구입금액을 입력해 주세요.");
-        purchasedValue = scanner.nextInt();
+        purchasedValue = Integer.parseInt(Console.readLine());
 
         if (purchasedValue % 1000 != 0) {
             System.out.println("[ERROR] 로또 구입 금액은 1000원으로 나누어 떨어져야 합니다.");
@@ -122,17 +119,17 @@ public class Application {
 
         int[][] lottoArray = new int[lottoCount][6];
 
-        makeLottoNumber(lottoCount);
+        makeLottoNumber(lottoArray ,lottoCount);
 
-        System.out.println("당첨 번호를 입력해 주세요.");
-        userInputLotto = scanner.nextLine();
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        userInputLotto = Console.readLine();
         userInputLottoTmp = userInputLotto.split(",");
         for (int i = 0; i < userInputLottoTmp.length; i++) {
             userInputLottoNumber[i] = Integer.parseInt(userInputLottoTmp[i]);
         }
 
-        System.out.println("보너스 번호를 입력해 주세요.");
-        userInputBonusNumber = scanner.nextInt();
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        userInputBonusNumber = Integer.parseInt(Console.readLine());
 
         numberCompare(lottoCount, lottoArray, userInputLottoNumber, userInputBonusNumber, purchasedValue);
     }
