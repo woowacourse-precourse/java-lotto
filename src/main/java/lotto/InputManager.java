@@ -8,7 +8,7 @@ import java.util.List;
 
 public class InputManager {
 
-    private int playerMoney;
+    private static int playerMoney;
     private final List<Integer> answerNumbers = new ArrayList<>();
 
     public int getMoney() {
@@ -25,10 +25,10 @@ public class InputManager {
     }
 
     public void inputAnswerNumbers() {
-        String AnswerStrings = Console.readLine();
-        List<String> answerList = Arrays.asList(AnswerStrings.split(","));
-        for (int i = 0; i < 6; i++) {
-            answerNumbers.add(Integer.parseInt(answerList.get(i)));
+        String answerStrings = Console.readLine();
+        String[] answerList = answerStrings.split(",");
+        for (String stringIndex : answerList) {
+            answerNumbers.add(Integer.parseInt(stringIndex));
         }
     }
 }
