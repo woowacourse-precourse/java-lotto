@@ -7,7 +7,7 @@
         - [x] 6개의 숫자인지 확인
         - [x] 1 ~ 45 사이의 숫자인지 확인
         - [x] 중복된 숫자가 있는지 확인
-    - [ ] `Lotto` 를 상속받은 `LotteryTicket` 클래스 구현
+    - [x] `Lotto` 를 상속받은 `LotteryTicket` 클래스 구현
     - [ ] `User` 클래스 구현
     - [ ] `UserService` 의 `createUser` 메서드 구현
 - [ ] `LotterySellService`를 통해 로또 구매
