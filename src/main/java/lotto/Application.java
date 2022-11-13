@@ -59,4 +59,20 @@ public class Application {
         System.out.println("\n" + "당첨 번호를 입력해 주세요.");
         return new Lotto(Console.readLine());
     }
+
+    private static Integer getBonusNumber() {
+        Integer bonusNumber;
+
+        System.out.println("\n" + "보너스 번호를 입력해 주세요.");
+        try {
+            bonusNumber = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자를 입력해야 합니다.");
+        }
+
+        if (bonusNumber < 1 || bonusNumber > 45)
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+
+        return bonusNumber;
+    }
 }
