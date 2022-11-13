@@ -29,7 +29,7 @@ public class InputView {
         return lottoPurchaseMoney;
     }
 
-    public int getLottoChance(int money) {
+    public int getLottoTickets(int money) {
         return lottoPurchaseMoney / PRICE_PER_LOTTO;
     }
 
@@ -53,9 +53,9 @@ public class InputView {
         return oneGameNumbers;
     }
 
-    public List<List<Integer>> createAllGameLottoNumber(int chance) {
+    public List<List<Integer>> createAllGameLottoNumber(int ticket) {
         allLottoNumber = new ArrayList<>();
-        for (int i = 0; i < chance; i++) {
+        for (int i = 0; i < ticket; i++) {
             allLottoNumber.add(createLottoOneGameNumber());
         }
         return allLottoNumber;
