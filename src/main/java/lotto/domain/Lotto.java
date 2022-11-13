@@ -17,11 +17,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateLength(numbers);
         validateRange(numbers);
-        if (LOTTO_NUMBER_LENGTH != numbers.stream()
-                .distinct()
-                .count()) {
-            throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATED_EXCEPTION.toString());
-        }
+        validateDuplication(numbers);
     }
 
     private void validateLength(List<Integer> numbers) {
@@ -36,6 +32,14 @@ public class Lotto {
                 .filter(number -> number <= MAX_NUMBER)
                 .count()) {
             throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_EXCEPTION.toString());
+        }
+    }
+
+    private void validateDuplication(List<Integer> numbers) {
+        if (LOTTO_NUMBER_LENGTH != numbers.stream()
+                .distinct()
+                .count()) {
+            throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATED_EXCEPTION.toString());
         }
     }
 
