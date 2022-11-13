@@ -1,5 +1,6 @@
-package lotto;
+package lotto.IOTest;
 
+import lotto.IO.CashIOHandler;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,23 +14,23 @@ public class CashIOHandlerTest extends IOTest {
     static void initAll(){
         cashier = new CashIOHandler();
     }
-    @Test
     @DisplayName("사용자의 입력이 제대로 입력되는지")
+    @Test
     void getUserInputTest(){
         systemIn("1124124");
         assertThat(cashier.getUserInput()).isEqualTo("1124124");
     }
 
-    @Test
     @DisplayName(",000 입력에 대한 처리가 되는지")
+    @Test
     void validateInput_comma(){
         String input = "168,219,000";
         String comma = cashier.validateInput(input);
         assertThat(comma).isEqualTo("168219000");
     }
 
-    @Test
     @DisplayName(",000 입력에 대한 예외 처리가 되는지")
+    @Test
     void validateInput_comma_IllegalArgumentException(){
         String input = "168,219,125";
         assertThatThrownBy(()->cashier.validateInput(input))
@@ -37,16 +38,16 @@ public class CashIOHandlerTest extends IOTest {
                 .hasMessageContaining("[ERROR] 천원 단위로 입력해주세요");
     }
 
-    @Test
     @DisplayName("000 단위에 대한 검증이 정상 처리되는지")
+    @Test
     void validateInputTest_thousand(){
         String input2 = "168219000";
         String normal = cashier.validateInput(input2);
         assertThat(normal).isEqualTo("168219000");
     }
 
-    @Test
     @DisplayName("000 단위에 대한 예외 처리가 되는지")
+    @Test
     void validateInput_thousand_IllegalArgumentException(){
         String input = "168219125";
         assertThatThrownBy(()->cashier.validateInput(input))
@@ -54,8 +55,8 @@ public class CashIOHandlerTest extends IOTest {
                 .hasMessageContaining("[ERROR] 천원 단위로 입력해주세요");
     }
 
-    @Test
     @DisplayName("금액 입력에 대한 로또 갯수가 제대로 나오는지")
+    @Test
     void getLotteryAmountTest(){
         systemIn("125000");
         cashier.setUserCash();

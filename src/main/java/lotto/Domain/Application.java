@@ -1,4 +1,8 @@
-package lotto;
+package lotto.Domain;
+
+import lotto.IO.BonusIOHandler;
+import lotto.IO.CashIOHandler;
+import lotto.IO.LottoIOHandler;
 
 import java.util.List;
 
@@ -9,6 +13,12 @@ public class Application {
         CashIOHandler cashier = new CashIOHandler();
         cashier.setUserCash();
 
+        // 금액만큼의 로또를 발행한다.
+        int lotteryAmount = cashier.getLotteryAmount();
+        LotteryMaker lotteryMaker = new LotteryMaker();
+        lotteryMaker.issueLotteryTickets(lotteryAmount);
+
+
         // 당첨 번호를 입력받는다.
         LottoIOHandler lottoIOHandler = new LottoIOHandler();
         List<Integer> lottoAnswer = lottoIOHandler.getLottoAnswer();
@@ -18,10 +28,5 @@ public class Application {
         BonusIOHandler bonusIOHandler = new BonusIOHandler();
         int number = bonusIOHandler.getBonus();
         Bonus bonus = new Bonus(number);
-
-        // 금액만큼의 로또를 발행한다.
-        int lotteryAmount = cashier.getLotteryAmount();
-        LotteryMaker lotteryMaker = new LotteryMaker(lotteryAmount);
-
     }
 }

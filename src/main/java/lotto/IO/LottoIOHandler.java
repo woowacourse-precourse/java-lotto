@@ -1,23 +1,23 @@
-package lotto;
+package lotto.IO;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LottoIOHandler extends IOHandler{
+public class LottoIOHandler extends IOHandler {
     // 로또 당첨 번호를 입력한다.
     public List<Integer> getLottoAnswer(){
         // "~,~" 형식의 입력 강제화
         String input = validateInput(getUserInput());
         // 문자열을 리스트 변환
-        List<Integer> list = convertStringToIntList(input);
-        return list;
+        List<Integer> answer = convertStringToIntList(input);
+        return answer;
     }
 
     // "~,~" 형식의 문자열을 리스트로 변환한다.
     public List<Integer> convertStringToIntList(String input){
-        List<Integer> numbers = new ArrayList<Integer>();
+        List<Integer> numbers = new ArrayList<>();
         String[] num = input.split(",");
         for(int i=0;i<num.length;i++){
             numbers.add(Integer.parseInt(num[i]));

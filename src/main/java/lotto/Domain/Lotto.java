@@ -1,6 +1,8 @@
-package lotto;
+package lotto.Domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto{
     private final List<Integer> numbers;
@@ -11,7 +13,7 @@ public class Lotto{
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        duplicationCheck(numbers);
+        DuplicationCheck(numbers);
         this.numbers = numbers;
     }
 
@@ -23,9 +25,10 @@ public class Lotto{
     }
 
     // 중복 수가 있는지 체크한다.
-    private void duplicationCheck(List<Integer> numbers){
+    private void DuplicationCheck(List<Integer> numbers){
+        final Set<Integer> yetExist = new HashSet<>();
         for (Integer number:numbers) {
-            if(numbers.contains(number)) {
+            if (!yetExist.add(number)) {
                 throw new IllegalArgumentException("[ERROR] 중복 수가 존재합니다.");
             }
         }

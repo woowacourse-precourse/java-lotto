@@ -1,4 +1,6 @@
-package lotto;
+package lotto.IO;
+
+import lotto.Domain.Constants;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,6 +22,7 @@ public class CashIOHandler extends IOHandler {
 
     // get user's cash
     public void setUserCash() throws IllegalArgumentException{
+        System.out.println("구입금액을 입력해 주세요.");
         String input = getUserInput();
         input = validateInput(input);
         setPurchaseAmount(Integer.parseInt(input));
@@ -28,7 +31,7 @@ public class CashIOHandler extends IOHandler {
 
     // get lotteryAmount from purchaseAmount
     public void convertPurchaseAmount(String purchaseAmount){
-        setLotteryAmount((Integer.parseInt(purchaseAmount))/Constants.WON);
+        setLotteryAmount((Integer.parseInt(purchaseAmount))/ Constants.WON);
     }
 
     @Override

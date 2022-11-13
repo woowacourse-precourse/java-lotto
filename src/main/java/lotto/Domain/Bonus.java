@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Domain;
 
 public class Bonus{
     private final int bonus;

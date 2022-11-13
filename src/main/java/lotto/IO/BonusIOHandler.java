@@ -1,9 +1,9 @@
-package lotto;
+package lotto.IO;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BonusIOHandler extends IOHandler{
+public class BonusIOHandler extends IOHandler {
     public int getBonus(){
         String input = validateInput(getUserInput());
         return Integer.parseInt(input);

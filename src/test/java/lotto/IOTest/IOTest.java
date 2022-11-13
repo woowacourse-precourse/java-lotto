@@ -1,4 +1,4 @@
-package lotto;
+package lotto.IOTest;
 
 import java.io.ByteArrayInputStream;
 

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Domain;
 
 public class Constants {
     public static final int WON = 1000;

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Domain;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
