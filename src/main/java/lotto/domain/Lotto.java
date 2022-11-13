@@ -3,6 +3,9 @@ package lotto.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.constant.ExceptionConstants.*;
+import static lotto.constant.LottoConstants.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -12,8 +15,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        if (numbers.size() != LOTTO_NUMBER_LENGTH) {
+            throw new IllegalArgumentException(LOTTO_NUMBER_LENGTH_EXCEPTION.toString());
         }
     }
 
