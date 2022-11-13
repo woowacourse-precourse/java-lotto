@@ -3,7 +3,9 @@ package lotto.inputNumber;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputNumber {
 
@@ -12,7 +14,12 @@ public class InputNumber {
     }
 
     private static List<Integer> inputNumber() {
-        return new ArrayList<>();
+        String input = Console.readLine();
+        validate(input);
+        List<Integer> numbers = Arrays.stream(input.split(","))
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
+        return numbers;
     }
 
     private static void validate(String numbers) {
