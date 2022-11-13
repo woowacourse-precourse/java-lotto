@@ -11,7 +11,7 @@
 - Generate lotto cases
 - return type: List<List<Integer>>
 
-#### Number match
+#### Check number match
 
 - confirm if two number match
 - return type: int
