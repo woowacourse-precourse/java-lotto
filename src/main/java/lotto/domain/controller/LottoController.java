@@ -1,7 +1,7 @@
 package lotto.domain.controller;
 
 import lotto.domain.model.Bonus;
-import lotto.domain.model.FirstPlace;
+import lotto.domain.model.Lotto;
 import lotto.domain.model.WinningLotto;
 import lotto.domain.model.LottoResult;
 import lotto.domain.model.Pay;
@@ -11,7 +11,7 @@ import lotto.domain.view.OutputData;
 public class LottoController {
     private Pay pay;
     private UserLotto userLotto;
-    private FirstPlace firstPlace;
+    private Lotto firstPlace;
     private Bonus bonus;
 
 
@@ -22,7 +22,7 @@ public class LottoController {
     }
 
     public void designateFirstPlace(String firstPlace) {
-        this.firstPlace = new FirstPlace(firstPlace);
+        this.firstPlace = new Lotto(firstPlace);
     }
 
     public void designateBonus(String bonus) {

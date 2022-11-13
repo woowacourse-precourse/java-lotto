@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
-import lotto.domain.model.FirstPlace;
 import lotto.domain.model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -56,7 +55,7 @@ class LottoValidatorTest {
     void createFirstPlaceByNotDivideCommas1(){
         String firstPlace = "1,2,3,4,5,6,,,";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace));
+                () -> new Lotto(firstPlace));
         assertThat(exception.getMessage()).isEqualTo("[ERROR] Please DIVIDE Number With Commas");
     }
 
@@ -65,7 +64,7 @@ class LottoValidatorTest {
     void createFirstPlaceByNotDivideCommas2() {
         String firstPlace = "1,2,3,4/5/6";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace));
+                () -> new Lotto(firstPlace));
         assertThat(exception.getMessage()).isEqualTo("[ERROR] Please DIVIDE Number With Commas");
     }
 
@@ -74,7 +73,7 @@ class LottoValidatorTest {
     void createFirstPlaceByNotExistCommas() {
         String firstPlace = "1/2/3/4/5/6";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace));
+                () -> new Lotto(firstPlace));
         assertThat(exception.getMessage()).isEqualTo("[ERROR] Please DIVIDE Number With Commas");
     }
 
@@ -83,7 +82,7 @@ class LottoValidatorTest {
     void createFirstPlaceByNotExistSpace() {
         String firstPlace = "1, 2, 3, 4, 5, 6";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace));
+                () -> new Lotto(firstPlace));
         assertThat(exception.getMessage()).isEqualTo("[ERROR] Please DIVIDE Number With Commas");
     }
 }

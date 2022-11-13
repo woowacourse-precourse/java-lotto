@@ -3,15 +3,15 @@ package lotto.domain.model;
 import java.util.List;
 
 public class WinningLotto {
-    private final FirstPlace firstPlace;
+    private final Lotto firstPlace;
     private final Bonus bonus;
 
     public WinningLotto(final String firstPlace, final String bonus) {
-        this.firstPlace = new FirstPlace(firstPlace);
+        this.firstPlace = new Lotto(firstPlace);
         this.bonus = new Bonus(Integer.parseInt(bonus));
     }
 
-    public WinningLotto(FirstPlace firstPlace, Bonus bonus) {
+    public WinningLotto(Lotto firstPlace, Bonus bonus) {
         this.firstPlace = firstPlace;
         this.bonus = bonus;
     }

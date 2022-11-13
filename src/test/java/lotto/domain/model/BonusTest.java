@@ -15,13 +15,13 @@ class BonusTest {
     @DisplayName("보너스 번호 객체 생성 테스트")
     @Test
     void createBonus() {
-        assertThat(new Bonus(new FirstPlace("1,2,3,4,5,6"), "7")).isEqualTo(new Bonus(7));
+        assertThat(new Bonus(new Lotto("1,2,3,4,5,6"), "7")).isEqualTo(new Bonus(7));
     }
 
     @DisplayName("보너스 번호가 로또번호랑 겹치면 예외가 발생한다.")
     @Test
     void createBonusDuplicateByFirstPlace() {
-        assertThatThrownBy(() -> new Bonus(new FirstPlace("1,2,3,4,5,6"), "5"))
+        assertThatThrownBy(() -> new Bonus(new Lotto("1,2,3,4,5,6"), "5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

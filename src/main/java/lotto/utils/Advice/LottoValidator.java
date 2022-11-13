@@ -1,7 +1,6 @@
 package lotto.utils.Advice;
 
 import static lotto.domain.model.ErrorMessage.LOTTE_NUMBER_DUPLICATION;
-import static lotto.domain.model.ErrorMessage.LOTTE_NUMBER_NOT_ASC;
 import static lotto.domain.model.ErrorMessage.LOTTE_NUMBER_OUT_BOUND;
 import static lotto.domain.model.ErrorMessage.LOTTE_SIZE_INVALID;
 import static lotto.domain.model.ErrorMessage.NOT_DIVIDE_COMMAS;

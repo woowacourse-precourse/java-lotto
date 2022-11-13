@@ -1,7 +1,5 @@
 package lotto.domain.model;
 
-import static lotto.utils.Advice.PurchaseValidator.MINIMUM_ORDER;
-
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -35,6 +33,7 @@ public class UserLotto {
         validateLottoRankSize(rankCollection);
         return rankCollection;
     }
+
     private void validateLottoRankSize(List<LottoRank> rankCollection) {
         if (this.userLotto.size() < rankCollection.size()) {
             throw new IllegalArgumentException();
