@@ -15,19 +15,15 @@ public class LottoController {
         LottoCount amount = requestUserAmount();
         LottoTicket lottoTicket = buyTickets(amount);
         LuckyNumbers luckyNumbers = getInputLuckyNumbers();
+
     }
 
     private LottoCount requestUserAmount(){
-        try{
-            return new LottoCount(InputView.requestUserAmount());
-        } catch (IllegalArgumentException e){
-            OutputView.printException(e);
-        }
-        return null;
+        return new LottoCount(InputView.requestUserAmount());
     }
 
     private LottoTicket buyTickets(LottoCount amount){
-        long ticketCount = amount.calculateLottoCount();
+        int ticketCount = amount.calculateLottoCount();
         OutputView.printTicketCount(ticketCount);
         LottoTicket lottoTicket = new LottoTicket(ticketCount);
         OutputView.printLottoTickets(lottoTicket);
@@ -39,7 +35,8 @@ public class LottoController {
             return new LuckyNumbers(new Lotto(InputView.requestWinNumbers()), requestBonusNumber());
         } catch(IllegalArgumentException e){
             OutputView.printException(e);
+            throw new IllegalArgumentException();
         }
-        return null;
+
     }
 }

@@ -2,8 +2,6 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -15,25 +13,28 @@ public class InputView {
     public static int requestUserAmount(){
         System.out.println(REQUEST_USER_AMOUNT);
         try{
-            return StringToInt(Console.readLine());
+            return stringToInt(Console.readLine());
         } catch (IllegalArgumentException e){
             OutputView.printException(e);
+            throw new IllegalArgumentException();
         }
-        return 0;
 
     }
 
     public static List<Integer> requestWinNumbers(){
         System.out.println(REQUEST_WIN_NUMBERS);
-        return StringToIntegerList(Console.readLine());
+        return stringToIntegerList(Console.readLine());
     }
 
     public static int requestBonusNumber(){
         System.out.println(REQUEST_BONUS_NUMBER);
-        return StringToInt(Console.readLine());
+        return stringToInt(Console.readLine());
     }
 
-    private static int StringToInt(String input){
+    private static int stringToInt(String input){
+        if(input.isEmpty()){
+            throw new IllegalArgumentException(USER_INPUT_NULL_EXCEPTION);
+        }
         try{
             return Integer.parseInt(input);
         } catch (NumberFormatException e){
@@ -41,7 +42,7 @@ public class InputView {
         }
     }
 
-    private static List<Integer> StringToIntegerList(String input){
+    private static List<Integer> stringToIntegerList(String input){
         return Stream.of(input.split(",")).
                 map(x-> {
                     try {

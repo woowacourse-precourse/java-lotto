@@ -5,18 +5,18 @@ import static lotto.utils.ExceptionMessage.AMOUNT_NOT_DIVISIBLE_EXCEPTION;
 public class LottoCount {
     private static final int LOTTO_PRICE = 1000;
 
-    private final long amount;
+    private final int amount;
 
-    public LottoCount(long amount) {
+    public LottoCount(int amount) {
         validateAmount(amount);
         this.amount = amount;
     }
 
-    public long calculateLottoCount(){
+    public int calculateLottoCount(){
         return amount / LOTTO_PRICE;
     }
 
-    private void validateAmount(long amount){
+    private void validateAmount(int amount){
         if(amount % LOTTO_PRICE !=0){
             throw new IllegalArgumentException(AMOUNT_NOT_DIVISIBLE_EXCEPTION);
         }
