@@ -30,6 +30,7 @@ public class Application {
     }
     static List<Integer> make_lotto_num(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+        numbers.sort(Comparator.naturalOrder());
         return numbers;
     }
     static List<List<Integer>> buy_lotto(int chance){
