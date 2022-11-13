@@ -19,7 +19,7 @@ public class User {
     public void isNum(String answer) {
         for (char c : answer.toCharArray()) {
             if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
+                throw new IllegalArgumentException("[ERROR] 숫자만 입력할 수 있습니다.");
             }
         }
     }

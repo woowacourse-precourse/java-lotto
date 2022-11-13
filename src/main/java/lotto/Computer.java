@@ -40,7 +40,7 @@ public class Computer {
         }
     }
 
-    public List inputWinningNumber () {
+    public List inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> winnigNumberList = new ArrayList<>();
         String number = inputNumber();
@@ -55,11 +55,11 @@ public class Computer {
 
     public int[] splitNumber(String number) {
         String[] numberArray = number.split(",");
-        int[] intArray = isValid(numberArray);
+        int[] intArray = isValidNumber(numberArray);
         return intArray;
     }
 
-    public int[] isValid(String[] numberArray) {
+    public int[] isValidNumber(String[] numberArray) {
         isNum(numberArray);
         int[] intArray = isCorrectRange(numberArray);
         isCorrectSize(intArray);
@@ -67,23 +67,23 @@ public class Computer {
     }
 
     public void isNum(String[] numberArray) {
-        for(String number : numberArray){
+        for (String number : numberArray) {
             findText(number);
         }
     }
 
     public void findText(String number) {
-        for(char item : number.toCharArray()) {
-            if(!Character.isDigit(item)) {
+        for (char item : number.toCharArray()) {
+            if (!Character.isDigit(item)) {
                 throw new IllegalArgumentException("[ERROR] 숫자만 입력할 수 있습니다.");
             }
         }
     }
 
-    public int[] isCorrectRange(String[] numberArray){
+    public int[] isCorrectRange(String[] numberArray) {
         int[] intArray = Arrays.stream(numberArray).mapToInt(Integer::parseInt).toArray();
-        for(int number : intArray){
-            if(!(number >= 1 && number <= 45)){
+        for (int number : intArray) {
+            if (!(number >= 1 && number <= 45)) {
                 throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력할 수 있습니다.");
             }
         }
@@ -92,19 +92,40 @@ public class Computer {
 
     public void isCorrectSize(int[] intArray) {
         Set sizeAndDupCheck = new HashSet<>();
-        for(int number : intArray){
+        for (int number : intArray) {
             sizeAndDupCheck.add(number);
         }
-        if(sizeAndDupCheck.size() != 6) {
+        if (sizeAndDupCheck.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 중복되는 숫자를 입력할 수 없고, 6개의 숫자만 입력할 수 있습니다.");
         }
     }
 
     public List convertToList(int[] numberArray) {
         List<Integer> numberList = new ArrayList<>();
-        for(int number : numberArray){
+        for (int number : numberArray) {
             numberList.add(number);
         }
         return numberList;
     }
+
+    public void inputBonus() {
+        System.out.println("보너스 번호를 입력해주세요.");
+        String input = Console.readLine();
+        int bonusNumber = isValidBonus(input);
+    }
+
+    public int isValidBonus(String input) {
+        findText(input);
+        int bonusNumber = isValidRange(input);
+        return bonusNumber;
+    }
+
+    public int isValidRange(String input) {
+        int number = Integer.parseInt(input);
+        if(!(number >= 1 && number <= 45)){
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력할 수 있습니다.");
+        }
+        return number;
+    }
+
 }
