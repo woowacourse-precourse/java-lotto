@@ -33,7 +33,7 @@ public class Validate {
         if(winningNumber.contains(bonusNumber))
             throw new IllegalArgumentException("[ERROR] 당첨번호와 겹치지 않는 숫자를 입력하세요.");
     }
-    public void validUserWinningNumber(List<Integer> winningNumber) {
+    public void validUserWinningNumber(List<Integer> winningNumber)throws IllegalArgumentException{
         Set<Integer> overlapCheck = new HashSet<>(winningNumber);
         if (overlapCheck.size() != winningNumber.size()) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
@@ -42,7 +42,7 @@ public class Validate {
             correctNumberRange(lottoNumber);
         }
     }
-    public void correctNumberRange(int number){
+    public void correctNumberRange(int number)throws IllegalArgumentException{
         if(number < 1 || number > 45) {
             throw new IllegalArgumentException("[ERROR] 1 ~ 45 사이의 숫자를 입력하세요.");
             }
