@@ -13,33 +13,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class LottoWinTest {
+public class LottoCompareTest {
 
     @DisplayName("중복된 보너스 번호가 들어오면 에러가 발생한다")
     @Test
     void duplicatedBonusNumber() {
-        assertThatThrownBy(() -> new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 6))
+        assertThatThrownBy(() -> new LottoCompare(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 6))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @DisplayName("1~45 범위에서 벗어난 보너스 번호가 들어오면 에러가 발생한다")
     @Test
     void outOfBoundBonusNumber() {
-        assertThatThrownBy(() -> new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 0))
+        assertThatThrownBy(() -> new LottoCompare(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 0))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 46))
+        assertThatThrownBy(() -> new LottoCompare(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 46))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @DisplayName("1등 확인")
     @Test
     void firstPrize() {
-        LottoWin lottoPrizes = new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 7);
+        LottoCompare lottoPrizes = new LottoCompare(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 7);
         assertThat(lottoPrizes.getPrizesMap()).contains(entry("FIRST", 1));
 
     }
     @DisplayName("1등 2명 확인")
     @Test
     void twoFirstPrize() {
-        LottoWin lottoPrizes = new LottoWin(
+        LottoCompare lottoPrizes = new LottoCompare(
                 List.of(List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 6)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
         assertThat(lottoPrizes.getPrizesMap()).contains(entry("FIRST", 2));
@@ -47,7 +47,7 @@ public class LottoWinTest {
     @DisplayName("2등 확인")
     @Test
     void secondPrize() {
-        LottoWin lottoPrizes = new LottoWin(
+        LottoCompare lottoPrizes = new LottoCompare(
                 List.of(List.of(1, 2, 3, 4, 5, 7), List.of(1, 2, 3, 4, 5, 6)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
         assertThat(lottoPrizes.getPrizesMap()).contains(entry("SECOND", 1));
@@ -55,7 +55,7 @@ public class LottoWinTest {
     @DisplayName("3등 확인")
     @Test
     void thirdPrize() {
-        LottoWin lottoPrizes = new LottoWin(
+        LottoCompare lottoPrizes = new LottoCompare(
                 List.of(List.of(1, 2, 3, 4, 5, 8), List.of(1, 2, 3, 4, 5, 9)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
         assertThat(lottoPrizes.getPrizesMap()).contains(entry("THIRD", 2));
@@ -63,7 +63,7 @@ public class LottoWinTest {
     @DisplayName("4등 확인")
     @Test
     void fourthPrize() {
-        LottoWin lottoPrizes = new LottoWin(
+        LottoCompare lottoPrizes = new LottoCompare(
                 List.of(List.of(1, 2, 3, 4, 9, 10), List.of(1, 2, 3, 4, 7, 9)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
         assertThat(lottoPrizes.getPrizesMap()).contains(entry("FOURTH", 2));
@@ -71,7 +71,7 @@ public class LottoWinTest {
     @DisplayName("5등 확인")
     @Test
     void fifthPrize() {
-        LottoWin lottoPrizes = new LottoWin(
+        LottoCompare lottoPrizes = new LottoCompare(
                 List.of(List.of(1, 2, 3, 8, 9, 10), List.of(3, 4, 5, 7, 8, 9)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
         assertThat(lottoPrizes.getPrizesMap()).contains(entry("FIFTH", 2));
@@ -81,7 +81,7 @@ public class LottoWinTest {
     void duplicatedBonusNumberForPrint() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        assertThatThrownBy(() -> new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 6))
+        assertThatThrownBy(() -> new LottoCompare(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 6))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThat(out.toString()).isEqualTo("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
     }
@@ -90,7 +90,7 @@ public class LottoWinTest {
     void outOfBoundBonusNumberForPrint() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        assertThatThrownBy(() -> new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 47))
+        assertThatThrownBy(() -> new LottoCompare(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 47))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThat(out.toString()).isEqualTo("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
     }

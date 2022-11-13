@@ -5,15 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LottoWin {
+public class LottoCompare {
 
     private int[] count;
 
-    public LottoWin(List<List<Integer>> quickPicks, List<Integer> lotto, int bonus) {
+    public LottoCompare(List<List<Integer>> quickPicks, List<Integer> lotto, int bonus) {
         validate(lotto, bonus);
         count = new int[LottoPrizes.values().length];
         for (List<Integer> quickPick : quickPicks) {
-            matchingNumber(quickPick, lotto, bonus);
+            checkingNumber(quickPick, lotto, bonus);
         }
     }
     private void validate(List<Integer> lotto, int bonus) {
@@ -24,7 +24,7 @@ public class LottoWin {
             LottoError.DUPLICATION.createError();
         }
     }
-    private void matchingNumber(List<Integer> quickPick, List<Integer> lotto, int bonus) {
+    private void checkingNumber(List<Integer> quickPick, List<Integer> lotto, int bonus) {
         ArrayList<Integer> matchingNumbers = new ArrayList<>(quickPick);
         matchingNumbers.retainAll(lotto);
         LottoPrizes prize = LottoPrizes.prizes(matchingNumbers.size(), quickPick.contains(bonus));
