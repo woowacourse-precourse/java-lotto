@@ -46,6 +46,15 @@ public class LottoException {
         return number;
     }
 
+    public static void validDuplication(List<Integer> numbers, int number) {
+        numbers.add(number);
+        if(hasDuplication(numbers)) {
+            StringBuilder message = new StringBuilder(ERROR_MESSAGE);
+            message.append(DUPLICATE_EXCEPTION_MESSAGE);
+            throw new IllegalArgumentException(message.toString());
+        }
+    }
+
     private static int getNumber(String input) {
         try {
             return Integer.parseInt(input);

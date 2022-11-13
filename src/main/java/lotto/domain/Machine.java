@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.exception.LottoException;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -15,6 +16,7 @@ public class Machine {
 
             List<Integer> winningNumbers = Convertor.getNumbers(InputView.winningNumbers());
             int bonusNumber = Convertor.getNumber(InputView.bonusNumber());
+            LottoException.validDuplication(winningNumbers, bonusNumber);
 
             List<Rank> ranks = RankGenerator.getRanks();
             CompareLotto.compare(ranks, lottos, winningNumbers, bonusNumber);
