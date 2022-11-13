@@ -45,8 +45,8 @@ public enum Rank {
 	}
 
 	private static int convertIndex(int hitNumberCount) {
-		if (hitNumberCount < 3) {
-			return 0;
+		if (hitNumberCount < FIFTH.hitNumberCount) {
+			return MISS.hitNumberCount;
 		}
 		return hitNumberCount - 2;
 	}
