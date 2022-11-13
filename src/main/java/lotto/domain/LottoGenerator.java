@@ -7,7 +7,7 @@ import lotto.domain.constant.LottoInfo;
 import java.util.List;
 
 public class LottoGenerator {
-  public List<Integer> generate(int num) {
+  public List<Integer> generate() {
     return Randoms.pickUniqueNumbersInRange(BoundaryValue.LOTTO_MIN_NUMBER.getBoundaryValue(),
                                             BoundaryValue.LOTTO_MAX_NUMBER.getBoundaryValue(),
                                             LottoInfo.LOTTO_LENGTH.getValue());
