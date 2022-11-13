@@ -1,6 +1,7 @@
 package lotto.view;
 
 import java.util.List;
+import lotto.domain.Rank;
 
 public class OutputView {
 
@@ -30,9 +31,17 @@ public class OutputView {
         System.out.println(playerNumbers);
     }
 
-    public static void printStatistics(List<Integer> statistics) {
+    public static void printStatistics() {
         System.out.println("당첨 통계");
         System.out.println("---");
+
+        for(Rank rank: Rank.values()) {
+            if(rank==Rank.NONE){
+                continue;
+            }
+            System.out.print(rank.getPrintMessage());
+            System.out.println(rank.getCount() + "개");
+        }
 
     }
 }

@@ -39,5 +39,9 @@ public enum Rank {
         return count;
     }
 
+    public String getPrintMessage() {
+        return printMessage;
+    }
+
 }
 

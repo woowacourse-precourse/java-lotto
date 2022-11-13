@@ -10,9 +10,6 @@ class StatisticsTest {
     @Test
     void 당첨_통계_구하기() {
         Statistics statistics = new Statistics(List.of(Rank.FIFTH, Rank.NONE, Rank.SECOND, Rank.THIRD, Rank.FIFTH));
-        for(Rank rank:Rank.values()){
-            System.out.println(rank);
-            System.out.println(rank.getCount());
-        }
+        OutputView.printStatistics();
     }
 }
