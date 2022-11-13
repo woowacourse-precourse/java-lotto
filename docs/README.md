@@ -1,6 +1,7 @@
 # 기능 분류서
 - ### 로또 프로그램을 실행시킬 수 있다. [ # LottoProgram.run() ]
 - ### 로또 구매 금액을 입력 받을 수 있다. [ # LottoProgram.getOrderPrice() ]
+- ### 로또 구매 금액으로 로또 구매 수량을 구할 수 있다. [ # LottoService.getOrderQuantity(int orderPrice)]
   - 로또 1장은 1000원이다. [ # LottoService.LOTTO_PRICE ]
 - ### 로또 번호를 생성할 수 있다. [ # LottoFactory.createLottoNumbers() ]
   - 로또 번호는 랜덤으로 선택된다. [ # Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBER_COUNT) ]
