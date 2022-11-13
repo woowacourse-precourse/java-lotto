@@ -26,22 +26,22 @@
 
 <br/>
 
-- [ ] 당첨 번호를 입력받는 기능.　　　　　　　　　　　　　　　　　"getWinningNum"
-    - [ ] ‘당첨번호를 입력해 주세요’ 출력　　　　　　　　　　　　"printWinningLottoInput"
-    - [ ] 구분자(,) 를 기준으로 나누어 준다.　　　　　　　　　　　"seperateByComma"
-    - [ ] 당첨 번호 입력 예외 사항　　
-        - [ ] 구분자 ‘,’ 과 숫자가 아닌 다른 값이 있지 않은가?　　"checkInputValidity"
-        - [ ] 입력이 6개의 숫자가 들어왔는가?　　　　　　　　　"checkContainSix"
-        - [ ] 숫자들이 1~45 내에 있는가?　　　　　　　　　　　"checkMoneyInRange"
-        - [ ] ',' 가 겹쳐서 들어오는 경우
+- [x] 당첨 번호를 입력받는 기능.　　　　　　　　　　　　　　　　　"getWinningNum"
+    - [x] ‘당첨번호를 입력해 주세요’ 출력　　　　　　　　　　　　"printWinningLottoInput"
+    - [x] 구분자(,) 를 기준으로 나누어 준다.　　　　　　　　　　　"seperateByComma"
+    - [x] 당첨 번호 입력 예외 사항　　
+        - [x] 구분자 ‘,’ 과 숫자가 아닌 다른 값이 있지 않은가?　　"checkInputValidity"
+        - [x] 입력이 6개의 숫자가 들어왔는가?　　　　　　　　　"checkContainSix"ㄴ
+        - [x] 숫자들이 1~45 내에 있는가?　　　　　　　　　　　"checkMoneyInRange"
+        - [x] ',' 가 겹쳐서 들어오는 경우
 <br/>
 
-- [ ] 보너스 번호를 입력받는다.　　　　　　　　　　　　　　　　　"getBonusNum"
-    - [ ] ‘보너스 번호를 입력해 주세요’ 출력　　　　　　　　　　　"printBonusInput"
-    - [ ] 보너스 번호 입력 예외 사항　
-        - [ ] 입력된 보너스 번호가 숫자가 맞는가?　　　　　　　"checkBonusIsNum"
-        - [ ] 당첨 번호에서 사용된 숫자는 아닌가?　　　　　　　"checkBonusNotInWinning"
-        - [ ] 보너스가 1~45 내에 있는가?
+- [x] 보너스 번호를 입력받는다.　　　　　　　　　　　　　　　　　"getBonusNum"
+    - [x] ‘보너스 번호를 입력해 주세요’ 출력　　　　　　　　　　　"printBonusInput"
+    - [x] 보너스 번호 입력 예외 사항　
+        - [x] 입력된 보너스 번호가 숫자가 맞는가?　　　　　　　"checkBonusIsNum"
+        - [x] 당첨 번호에서 사용된 숫자는 아닌가?　　　　　　　"checkBonusNotInWinning"
+        - [x] 보너스가 1~45 내에 있는가?
 <br/>
 
 - [ ] 당첨 통계를 보여준다.　　　　　　　　　　　　　　　　　　　"showLottoResult"
