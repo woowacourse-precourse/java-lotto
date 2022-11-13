@@ -12,7 +12,9 @@ import static camp.nextstep.edu.missionutils.Console.*;
 public class Application {
     public static void main(String[] args) {
         System.out.println("구입금액을 입력해 주세요.");
-        UserMoney userMoney = userInputMoney();
+        String userInput=readLine();
+        if (!checkErrorInput(userInput))return;
+        UserMoney userMoney = userInputMoney(userInput);
 
         List<Lotto> lottos = makeLotto(userMoney.getLottoNumber());
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -23,15 +25,29 @@ public class Application {
         calculateEarnings(ranking, userMoney.getUserInputMoney());
     }
 
+    private static boolean checkErrorInput(String userInput) {
+        for (int i = 0; i < userInput.length(); i++) {
+            if (userInput.charAt(i) < 48 || userInput.charAt(i) > 57) {
+                System.out.println("[ERROR]");
+                return false;
+            }
+        }
+        if (Integer.parseInt(userInput) % 1000 != 0) {
+            System.out.println("[ERROR]");
+            return false;
+        }
+        return true;
+    }
+
     private static void calculateEarnings(int[] ranking, int userInputMoney) {
-        int total=ranking[3]*5000
-                +ranking[4]*50000
-                +ranking[5]*150000
-                +ranking[7]*30000000
-                +ranking[6]*2000000000;
-        double earnings=total/(double)userInputMoney*100;
-        double roundedEarnings=(double)Math.round(earnings*10)/10;
-        System.out.println("총 수익률은 "+roundedEarnings+"%입니다.");
+        int total = ranking[3] * 5000
+                + ranking[4] * 50000
+                + ranking[5] * 150000
+                + ranking[7] * 30000000
+                + ranking[6] * 2000000000;
+        double earnings = total / (double) userInputMoney * 100;
+        double roundedEarnings = (double) Math.round(earnings * 10) / 10;
+        System.out.println("총 수익률은 " + roundedEarnings + "%입니다.");
     }
 
     private static int[] compareUserInputLottos(List<Lotto> lottos, List<Integer> numbers) {
@@ -51,10 +67,10 @@ public class Application {
     }
 
     private static void printRanking(int[] ranking) {
-        System.out.println("3개 일치 (5,000원) - "+ranking[3]+"개");
-        System.out.println("4개 일치 (50,000원) - "+ranking[4]+"개");
+        System.out.println("3개 일치 (5,000원) - " + ranking[3] + "개");
+        System.out.println("4개 일치 (50,000원) - " + ranking[4] + "개");
         System.out.println("5개 일치 (1,500,000원) - " + ranking[5] + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ranking[7]+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + ranking[7] + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + ranking[6] + "개");
     }
 
@@ -82,13 +98,13 @@ public class Application {
         ArrayList<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoNum; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            ArrayList<Integer> a=new ArrayList<>();
+            ArrayList<Integer> list = new ArrayList<>();
             for (int j = 0; j < numbers.size(); j++) {
-                a.add(numbers.get(j));
+                list.add(numbers.get(j));
             }
-            Collections.sort(a);
-            Lotto lotto = new Lotto(a);
-            printLotto(a);
+            Collections.sort(list);
+            Lotto lotto = new Lotto(list);
+            printLotto(list);
             lottos.add(lotto);
         }
         return lottos;
@@ -107,11 +123,9 @@ public class Application {
     }
 
     //사용자 금액 입력
-    private static UserMoney userInputMoney() {
-        UserMoney userMoney = new UserMoney(readLine());
+    private static UserMoney userInputMoney(String userinput) {
+        UserMoney userMoney = new UserMoney(userinput);
         System.out.println(userMoney.getLottoNumber() + "개를 구매했습니다.");
         return userMoney;
     }
-
-
 }

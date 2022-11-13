@@ -9,21 +9,18 @@ public class UserMoney {
     }
 
     private void checkError(String userInputMoney) {
-        try{
-            for (int i = 0; i < userInputMoney.length(); i++) {
-                if(userInputMoney.charAt(i)<48||userInputMoney.charAt(i)>57){
-                    throw new IllegalArgumentException();
-                }
+        for (int i = 0; i < userInputMoney.length(); i++) {
+            if (userInputMoney.charAt(i) < 48 || userInputMoney.charAt(i) > 57) {
+                throw new IllegalArgumentException("[ERROR]");
             }
-            if(Integer.parseInt(userInputMoney)%1000!=0){
-                throw new IllegalArgumentException();
-            }
-        }catch (IllegalArgumentException e){
-            System.out.println("[ERROR] ");
+        }
+        if (Integer.parseInt(userInputMoney) % 1000 != 0) {
+            throw new IllegalArgumentException();
         }
     }
-    public int getLottoNumber(){
-        return this.userInputMoney/1000;
+
+    public int getLottoNumber() {
+        return this.userInputMoney / 1000;
     }
 
     public int getUserInputMoney() {
