@@ -18,7 +18,7 @@ class LottoNumbersGeneratorRandomImplTest {
         List<Integer> numbers = lottoNumbersGenerator.generate();
 
         for(var number : numbers)
-            assertThat(number).isGreaterThan(1).isLessThan(45);
+            assertThat(number).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(45);
 
         Set<Integer> set = new HashSet<>(numbers);
         assertThat(set.size()).isEqualTo(6);
