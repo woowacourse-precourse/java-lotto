@@ -67,8 +67,8 @@ public class LottoService {
 
     private Money calculateTotalProfit(List<LottoGrade> totalWinnings) {
         return totalWinnings.stream()
-                .map(grade -> Money.of(grade.getPrize()))
+                .map(Money::of)
                 .reduce(Money::add)
-                .orElse(Money.of(0));
+                .orElse(Money.NO_MONEY);
     }
 }
