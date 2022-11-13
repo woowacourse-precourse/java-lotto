@@ -38,7 +38,11 @@ public class Lotto {
 
     private static boolean isInvalidNumberRange(List<Integer> numbers) {
         return numbers.stream()
-                .anyMatch(number -> START_LOTTO_NUMBER > number || number > END_LOTTO_NUMBER);
+                .anyMatch(Lotto::isOutOfRange);
+    }
+
+    private static boolean isOutOfRange(Integer number) {
+        return START_LOTTO_NUMBER > number || number > END_LOTTO_NUMBER;
     }
 
     private static boolean hasDuplicateNumber(List<Integer> numbers) {
