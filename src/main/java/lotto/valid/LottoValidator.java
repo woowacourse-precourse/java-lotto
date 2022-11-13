@@ -11,14 +11,23 @@ public enum LottoValidator {
     private static final int LOTTO_SIZE = 6;
 
     private static final String LOTTO_SIZE_ERROR_MESSAGE = "[ERROR] 로또 번호의 개수는 6개여야 합니다.";
+    private static final String DUPLICATE_ERROR_MESSAGE = "[ERROR] 로또 번호는 중복되지 않아야 합니다.";
 
     public static void validate(List<Integer> numbers) {
         checkSize(numbers);
+        checkDuplicate(numbers);
     }
 
     private static void checkSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(LOTTO_SIZE_ERROR_MESSAGE);
+        }
+    }
+
+    private static void checkDuplicate(List<Integer> numbers) {
+        Set<Integer> distinctNumbers = new HashSet<>(numbers);
+        if(distinctNumbers.size() != numbers.size()){
+            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
     }
 }
