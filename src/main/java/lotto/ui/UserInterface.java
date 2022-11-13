@@ -12,7 +12,7 @@ public class UserInterface {
     private static final String INPUT_WINNING_NUMBERS_ANNOUNCEMENT = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_NUMBER_ANNOUNCEMENT = "보너스 번호를 입력해 주세요.";
     private static final String WINNING_STATISTICS_ANNOUNCEMENT = "당첨 통계\n---";
-    private static final String YIELD_FORMAT_ANNOUNCEMENT =  "총 수익률은 %,d입니다.";
+    private static final String YIELD_FORMAT_ANNOUNCEMENT =  "총 수익률은 %s%%입니다.";
 
     public static String getInputMoney() {
         System.out.println(INPUT_MONEY_ANNOUNCEMENT);
