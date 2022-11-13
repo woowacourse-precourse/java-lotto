@@ -18,7 +18,7 @@ public class InputUI {
     public int getMoney() {
         outputUI.printMessage(MONEY_INPUT_MESSAGE);
         String money = Console.readLine();
-        validator.validatedMoney(money);
+        validator.validateMoney(money);
         return Integer.parseInt(money);
     }
 
