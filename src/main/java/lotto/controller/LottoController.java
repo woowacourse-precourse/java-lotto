@@ -37,13 +37,13 @@ public class LottoController {
     }
 
     public WinningRank judgeRank(WinningLotto winningLotto, Lotto lotto) {
-        int duplicatedNumberCount = countMatchedNumbers(winningLotto, lotto);
+        int duplicatedNumberCount = countDuplicatedNumbers(winningLotto, lotto);
         boolean isContainBonusNumber = winningLotto.containBonusNumber(lotto);
 
         return WinningRank.findByWinningCondition(duplicatedNumberCount, isContainBonusNumber);
     }
 
-    private int countMatchedNumbers(WinningLotto winningLotto, Lotto lotto) {
+    private int countDuplicatedNumbers(WinningLotto winningLotto, Lotto lotto) {
         List<Integer> myLottoNumbers = lotto.getNumbers();
         int count = 0;
         for (Integer number : myLottoNumbers) {
