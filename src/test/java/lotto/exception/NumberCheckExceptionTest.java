@@ -10,8 +10,8 @@ public class NumberCheckExceptionTest {
     @Test
     public void isNumericTest() {
         assertThat(NumberCheckException.isNumeric("123")).isTrue();
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> NumberCheckException.isNumeric("abc"));
+        assertThat(NumberCheckException.isNumeric("abc")).isFalse();
+
     }//isNumericTest
 
     @Test
