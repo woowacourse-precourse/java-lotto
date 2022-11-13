@@ -14,5 +14,7 @@ public class Application {
         List<Lotto> lottos = lottoPublisher.publish(money);
 
         inputOutput.printLottos(lottos);
+
+        List<Integer> winningNums = inputOutput.getWinningNums();
     }
 }

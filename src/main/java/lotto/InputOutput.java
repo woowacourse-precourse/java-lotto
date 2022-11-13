@@ -1,8 +1,12 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class InputOutput {
     private final int LOTTERY_PRICE;
@@ -36,11 +40,53 @@ public class InputOutput {
             System.out.println("[ERROR] 구입 금액은 " + LOTTERY_PRICE + "이상만 가능합니다.");
             throw new IllegalArgumentException();
         }
-
-        return money;
     }
 
     public void printLottos(List<Lotto> lottos) {
         lottos.forEach(lotto -> System.out.println(lotto.getNumbers()));
+    }
+
+    public List<Integer> getWinningNums() {
+        List<Integer> winningNums;
+        String[] nums = getSplittedStr();
+
+        try {
+            winningNums = Arrays.stream(nums)
+                    .map(Integer::valueOf)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 당첨 번호는 숫자이어야 합니다.");
+            throw new IllegalArgumentException();
+        }
+        validateWinningNums(winningNums);
+        winningNums.sort(Comparator.naturalOrder());
+        return winningNums;
+    }
+
+    private String[] getSplittedStr() {
+        String[] splittedStr = Console.readLine().split(",");
+
+        if (splittedStr.length != 6) {
+            System.out.println("[ERROR] 당첨 번호는 6개이어야 합니다.");
+            throw new IllegalArgumentException();
+        }
+
+        return splittedStr;
+    }
+
+    private void validateWinningNums(List<Integer> winningNums) {
+        winningNums.forEach(integer -> {
+            if (integer < 1 || 45 < integer) {
+                System.out.println("[ERROR] 당첨 번호는 1부터 45사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException();
+            }
+        });
+
+        Set<Integer> uniqueWinningNums = new TreeSet<>(winningNums);
+
+        if (uniqueWinningNums.size() != winningNums.size()) {
+            System.out.println("[ERROR] 당첨 번호는 중복되는 숫자가 있어서는 안됩니다.");
+            throw new IllegalArgumentException();
+        }
     }
 }
