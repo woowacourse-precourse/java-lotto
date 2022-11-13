@@ -38,6 +38,17 @@ public class Lotto {
         return this.numbers.contains(number);
     }
 
+    private Integer getMatchCount(Lotto winning) {
+        Integer matchCount = 0;
+
+        for (Integer number: winning.numbers) {
+            if (this.contains(number))
+                matchCount++;
+        }
+
+        return matchCount;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6)
             throw new IllegalArgumentException("6개의 숫자를 입력해야 합니다.");
