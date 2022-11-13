@@ -43,6 +43,23 @@ public class Lotto {
         }
     }
 
+    public LottoRanking checkWinningResult(Lotto winningNumbers, Number bonusNumber) {
+        int count = 0;
+        for (int i : this.lottoNumbers()) {
+            if (isContain(i, winningNumbers.lottoNumbers())) {
+                count++;
+            }
+        }
+        return LottoRanking.findRank(count, numbers.contains(bonusNumber));
+    }
+
+    public boolean isContain(int i, List<Integer> numbers) {
+        if (numbers.contains(i)) {
+            return true;
+        }
+        return false;
+    }
+
     public List<Integer> lottoNumbers() {
         return Collections.unmodifiableList(this.numbers);
     }

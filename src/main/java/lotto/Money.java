@@ -39,4 +39,8 @@ public class Money {
     public int numberOfTickets() {
         return this.money / PRICE_OF_LOTTO;
     }
+
+    public int money() {
+        return this.money;
+    }
 }
