@@ -16,11 +16,11 @@ public class Ticket {
     public Ticket(int money) {
         MoneyValidator.checkUnitOf1000Won(money);
         price = money;
-        lottoCount = getLottoCount(money);
+        lottoCount = setLottoCount(money);
         getLottos(lottoCount);
     }
 
-    private int getLottoCount(int money) {
+    private int setLottoCount(int money) {
         return money / LOTTO_PRICE;
     }
 
