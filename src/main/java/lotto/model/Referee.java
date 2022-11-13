@@ -14,7 +14,18 @@ public class Referee {
         return lottoResultCount;
     }
 
+    public void createLottoResult(List<Lotto> lottos, List<Integer> winnerNumber, int bonusNum){
+        for (Lotto lotto : lottos) {
+            List<Integer> lottoNumbers = lotto.getNumbers();
+            createLottoResultCount(winnerNumber, bonusNum, lottoNumbers);
+        }
+    }
 
+    private void createLottoResultCount(List<Integer> winnerNumber, int bonusNum, List<Integer> lottoNumbers) {
+        int correctCount = correctCountLottoNumberAndWinnerNum(lottoNumbers, winnerNumber);
+        boolean foundBonus = isBonusNumberInLottoNumber(winnerNumber, bonusNum);
+        putLottoResultCount(correctCount,foundBonus);
+    }
 
     public int correctCountLottoNumberAndWinnerNum(List<Integer> lottoNumber, List<Integer> winnerNumber) {
         int count = 0;
@@ -30,7 +41,7 @@ public class Referee {
         return winningNumber.contains(bonusNum);
     }
 
-    public void createLottoResult(int correctCountLottoAndWinner, boolean foundBonus) {
+    public void putLottoResultCount(int correctCountLottoAndWinner, boolean foundBonus) {
         Map<LottoRank, Integer> lottoResultCount = new HashMap<>();
         LottoRank rank = findLottoRank(correctCountLottoAndWinner, foundBonus);
         addLottoCount(rank);
