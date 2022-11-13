@@ -20,7 +20,12 @@ public class PurchaserRepository {
         return repository.get(id);
     }
 
+    public void save(Long purchaserId, Purchaser purchaser) {
+        repository.put(purchaserId, purchaser);
+    }
+
     private void incrementId() {
         id = id + 1;
     }
+
 }

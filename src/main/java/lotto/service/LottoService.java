@@ -15,4 +15,10 @@ public class LottoService {
         return purchaserRepository.insert(purchaser);
     }
 
+    public void buyLotto(Long purchaserId) {
+        Purchaser purchaser = purchaserRepository.findById(purchaserId);
+        purchaser.generateLotto();
+        purchaserRepository.save(purchaserId, purchaser);
+    }
+
 }

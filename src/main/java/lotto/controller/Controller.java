@@ -22,6 +22,7 @@ public class Controller {
         try {
             money = inputView.inputMoney();
             purchaserId = lottoService.generatePurchaser(money);
+            lottoService.buyLotto(purchaserId);
         } catch (IllegalArgumentException e) {
             outputView.printException(e.getMessage());
             return;
