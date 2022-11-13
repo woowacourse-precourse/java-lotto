@@ -8,6 +8,7 @@ import java.util.List;
 
 public class WinningLotto {
     Lotto winningNumber = null;
+    int bonusNumber;
 
     public Lotto getWinningNumber() {
         return winningNumber;
@@ -19,6 +20,14 @@ public class WinningLotto {
         winningNumber = new Lotto(stringArrayToIntegerList(numbers));
 
         winningNumber.checkDuplication();
+    }
+
+    public void receiveBonusNumber() {
+        String input = Console.readLine();
+        judgeIsDigitOfString(input);
+        checkRangeOfNumber(input);
+
+        bonusNumber = Integer.parseInt(input);
     }
 
     private List<Integer> stringArrayToIntegerList(String[] words) {

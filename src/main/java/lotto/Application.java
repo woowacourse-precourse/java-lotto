@@ -29,6 +29,8 @@ public class Application {
         WinningLotto winningLotto = new WinningLotto();
         System.out.println("당첨 번호를 입력해 주세요.");
         winningLotto.receiveWinningNumber();
-        System.out.println(winningLotto.getWinningNumber());
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        winningLotto.receiveBonusNumber();
     }
 }
