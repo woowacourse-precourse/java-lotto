@@ -24,11 +24,16 @@ public class Lotto {
     private void enterPriceOfLotto(){
         System.out.println("구입금액을 입력해주세요.");
         int price_of_lotto = Integer.parseInt(Console.readLine());
+        calculateNumOfLotto(price_of_lotto);
     }
 
     private void calculateNumOfLotto(int price_of_lotto){
         number_of_lotto = price_of_lotto / 1000;
+        System.out.println("\n" + number_of_lotto + "개를 구매했습니다.");
     }
+    
+
+
 
 
 }
