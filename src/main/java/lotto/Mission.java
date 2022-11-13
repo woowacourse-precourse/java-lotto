@@ -12,15 +12,15 @@ import lotto.view.Output;
 
 public class Mission {
     
-    MoneyController moneyController;
-    WinningController winningController;
-    LottoController lottoController;
-    ResultController resultController;
+    MoneyController money;
+    WinningController winning;
+    LottoController lotto;
+    ResultController result;
 
     Mission() {
-        moneyController = new MoneyController();
-        winningController = new WinningController();
-        lottoController = new LottoController();
+        money = new MoneyController();
+        winning = new WinningController();
+        lotto = new LottoController();
 
         try {
             play();
@@ -30,15 +30,15 @@ public class Mission {
     }
 
     private void play() {
-        Money money = moneyController.getMoney();
+        Money money = this.money.getMoney();
 
-        List<Lotto> lottos = lottoController.getLottos(money);
+        List<Lotto> lottos = lotto.getLottos(money);
 
-        WinningLotto winningLotto = winningController.getWinningLotto();
+        WinningLotto winningLotto = winning.getWinningLotto();
 
-        resultController = new ResultController(winningLotto, lottos);
-        resultController.sratchLottos();
-        resultController.printResult();
-        resultController.printRate(money);
+        result = new ResultController(winningLotto, lottos);
+        result.sratchLottos();
+        result.printResult();
+        result.printRate(money);
     }
 }
