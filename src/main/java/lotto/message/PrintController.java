@@ -13,7 +13,6 @@ public class PrintController {
     static final int PERCENT_UNIT = 100;
 
     public void print(List<Lotto> lottoNumbers) {
-
         System.out.println(String.format(OutputMessage.PURCHASE_COUNT_MESSAGE.message,
                 lottoNumbers.size()));
 
@@ -22,6 +21,7 @@ public class PrintController {
 
     public void print(EnumMap<WinPrize, Long> map) {
         System.out.println(OutputMessage.STATISTIC_TITLE_MESSAGE);
+
         System.out.println(String.format(OutputMessage.THREE_COUNT_MATCH_MESSAGE.message,
                 map.getOrDefault(WinPrize.FIVE_GRADE, 0L)));
         System.out.println(String.format(OutputMessage.FOUR_COUNT_MATCH_MESSAGE.message,

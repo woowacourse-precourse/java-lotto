@@ -11,7 +11,6 @@ public class LottoPurchaseInfo {
     private long purchaseMoney;
 
     public LottoPurchaseInfo(List<Lotto> lottoNumbers, long purchaseMoney) {
-
         this.lottoNumbers = lottoNumbers;
         this.purchaseMoney = purchaseMoney;
         lottoNumbers.stream().forEach(lottoNumber -> Collections.sort(lottoNumber.getLotto()));

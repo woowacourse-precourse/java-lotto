@@ -23,18 +23,15 @@ public class LottoMachine {
     public HashMap<Long, WinPrize> winPrizeRecording;
 
     public LottoMachine() {
-
         winPrizeRecording = new HashMap<>();
 
         winPrizeRecording.put(WinPrize.ONE_GRADE.matchCount, WinPrize.ONE_GRADE);
         winPrizeRecording.put(WinPrize.THREE_GRADE.matchCount, WinPrize.THREE_GRADE);
         winPrizeRecording.put(WinPrize.FOUR_GRADE.matchCount, WinPrize.FOUR_GRADE);
         winPrizeRecording.put(WinPrize.FIVE_GRADE.matchCount, WinPrize.FIVE_GRADE);
-
     }
 
     public List<Lotto> issueLottoNumbers(long count) {
-
         List<Lotto> lottoNumbers = Stream.generate(() -> new Lotto(new ArrayList<>(getLottoNumber())))
                 .limit(count)
                 .collect(Collectors.toList());
@@ -47,21 +44,18 @@ public class LottoMachine {
     }
 
     public void inputWinNumber() {
-
         List<String> inputLottoNumber = Arrays.asList(winNumberInputController.input().split(","));
 
         setWinNumber(inputLottoNumber);
     }
 
     public void setWinNumber(List<String> inputLottoNumber) {
-
         winNumberInputController.validate(inputLottoNumber);
 
         winNumber = new Lotto(convertInteger(inputLottoNumber));
     }
 
     public void inputBonusNumber() {
-
         String inputBonusNumber = bonusNumberInputController.input();
 
         bonusNumberInputController.validate(inputBonusNumber);
@@ -70,7 +64,6 @@ public class LottoMachine {
     }
 
     public List<Integer> convertInteger(List<String> inputLottoNumber) {
-
         return inputLottoNumber.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -81,7 +74,6 @@ public class LottoMachine {
     }
 
     public void setBonusNumber(String inputBonusNumber) {
-
         bonusNumberInputController.validate(inputBonusNumber);
 
         bonusNumber = Integer.parseInt(inputBonusNumber);
@@ -92,18 +84,15 @@ public class LottoMachine {
     }
 
     public WinPrize getWinPrize(Lotto buyerLotto) {
-
         long matchingCount = getMatchingCount(buyerLotto);
-
         boolean isBonusNumberMatching = checkBonusNumberMatching(buyerLotto);
-
         WinPrize buyerWinPrize = winPrizeRecording.get(matchingCount);
 
-        if(matchingCount == WinPrize.THREE_GRADE.matchCount && isBonusNumberMatching) {
+        if (matchingCount == WinPrize.THREE_GRADE.matchCount && isBonusNumberMatching) {
             return WinPrize.TWO_GRADE;
         }
 
-        if(matchingCount >= WinPrize.THREE_GRADE.matchCount) {
+        if (matchingCount >= WinPrize.THREE_GRADE.matchCount) {
             return buyerWinPrize;
         }
 
@@ -111,19 +100,14 @@ public class LottoMachine {
     }
 
     public long getMatchingCount(Lotto buyerLotto) {
-
         return buyerLotto.getLotto().stream()
                 .filter(
-                number -> winNumber.getLotto().contains(number))
+                        number -> winNumber.getLotto().contains(number))
                 .count();
     }
 
     public boolean checkBonusNumberMatching(Lotto buyerLotto) {
-
         return buyerLotto.getLotto().stream()
                 .anyMatch(number -> number == getBonusNumber());
     }
-
-
-
 }

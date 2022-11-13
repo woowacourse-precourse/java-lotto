@@ -11,7 +11,6 @@ public abstract class InputController {
     static final int LOTTO_NUMBER_LENGTH = 6;
     PrintController printController = new PrintController();
 
-
     public String readLine() {
         return Console.readLine();
     }

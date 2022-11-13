@@ -26,7 +26,7 @@ public class LottoPrizeRecordingService {
 
     public void setTotalPrizeMoney() {
         totalPrizeMoney = prizeRecording.keySet().stream().map(
-                (key) -> key.price * prizeRecording.get(key))
+                        (key) -> key.price * prizeRecording.get(key))
                 .collect(Collectors.toList())
                 .stream()
                 .reduce(0L, Long::sum);
@@ -35,7 +35,7 @@ public class LottoPrizeRecordingService {
     public double getPrizeRate(long purchaseMoney) {
         setTotalPrizeMoney();
 
-        return (double)totalPrizeMoney / purchaseMoney;
+        return (double) totalPrizeMoney / purchaseMoney;
     }
 
 

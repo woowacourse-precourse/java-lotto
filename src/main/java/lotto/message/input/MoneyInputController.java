@@ -10,7 +10,6 @@ public class MoneyInputController extends InputController {
     }
 
     public void validate(Object input) {
-
         long price;
 
         try {

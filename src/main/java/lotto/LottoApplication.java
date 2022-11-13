@@ -14,7 +14,6 @@ public class LottoApplication {
     }
 
     public void run() {
-
         try {
             lottoBuyService.buyLotto();
             lottoBuyService.inputNumber();
@@ -24,6 +23,4 @@ public class LottoApplication {
             printController.print(illegalArgumentException.getMessage());
         }
     }
-
-
 }

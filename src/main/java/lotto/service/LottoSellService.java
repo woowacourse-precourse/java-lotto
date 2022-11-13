@@ -14,7 +14,6 @@ public class LottoSellService {
     private final int LOTTO_PER_PRICE = 1000;
     private MoneyInputController moneyInputController;
 
-
     public LottoSellService() {
         lottoMachine = new LottoMachine();
         moneyInputController = new MoneyInputController();
@@ -22,14 +21,12 @@ public class LottoSellService {
 
 
     public LottoPurchaseInfo sellLotto() {
-
         String purchaseMoney = moneyInputController.input();
         moneyInputController.validate(purchaseMoney);
 
         List<Lotto> lottoNumbers = lottoMachine.issueLottoNumbers(Long.parseLong(purchaseMoney) / LOTTO_PER_PRICE);
 
         return new LottoPurchaseInfo(lottoNumbers, Long.parseLong(purchaseMoney));
-
     }
 
     public void inputNumber() {
@@ -38,7 +35,6 @@ public class LottoSellService {
     }
 
     public WinPrize checkMatchCount(Lotto buyerLotto) {
-
         WinPrize winPrize = lottoMachine.getWinPrize(buyerLotto);
 
         return winPrize;

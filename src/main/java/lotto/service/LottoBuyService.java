@@ -26,14 +26,12 @@ public class LottoBuyService {
     }
 
     public void checkWinStatics() {
-
         lottoPurchaseInfo.getLottoNumbers()
                 .forEach(
                         (lotto) -> lottoPrizeRecordingService.setPrizeRecording(lottoSellService.checkMatchCount(lotto))
                 );
 
         printController.print(lottoPrizeRecordingService.getPrizeRecording());
-
     }
 
     public void checkRate() {

@@ -13,15 +13,12 @@ public class BonusNumberInputController extends InputController {
     }
 
     public void validate(Object input) {
-
         validateNumber((String) input);
         validateRange((String) input);
         validateDuplicate((String) input);
-
     }
 
     public void validateNumber(String input) {
-
         try {
             Integer.parseInt(input);
 
@@ -31,7 +28,6 @@ public class BonusNumberInputController extends InputController {
     }
 
     public void validateRange(String input) {
-
         int bonusNumber = Integer.parseInt(input);
 
         if (bonusNumber < MIN_NUMBER || bonusNumber > MAX_NUMBER) {
@@ -40,7 +36,6 @@ public class BonusNumberInputController extends InputController {
     }
 
     public void validateDuplicate(String input) {
-
         int bonusNumber = Integer.parseInt(input);
 
         List<Integer> winNumber = new LottoMachine().getWinNumber().getLotto();
