@@ -32,4 +32,11 @@ public class IOManage {
             System.out.println(lottoNumbers.get(i));
         }
     }
+
+    public void inputWinningNumbers() {
+        ControlLottoGame control = new ControlLottoGame();
+        System.out.println(Message.INPUT_WINNING_NUMBER.get());
+        String inputString = Console.readLine();
+        List<Integer> winningNumbers = control.inputToWinningNumbers(inputString);
+    }
 }

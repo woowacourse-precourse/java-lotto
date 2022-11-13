@@ -12,16 +12,27 @@ public class ControlLottoGame {
     private final int FIVE_CORRECT = 1500000;
     private final int FIVE_BONUS_CORRECT = 30000000;
     private final int SIX_CORRECT = 2000000000;
-    private int quantity;
 
     ControlLottoGame() {
     }
 
-    public void priceToQuantity(int input) {
+    public int priceToQuantity(int input) {
         if (input % 1000 != 0) {
             throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_PRICE.get());
         }
-        this.quantity = input / 1000;
+        return input / 1000;
+    }
+
+    public List<Integer> inputToWinningNumbers(String input) {
+        List<Integer> winningNumbers = new ArrayList<>();
+        String[] inputNumbers = input.split(",");
+
+        for(int i = 0; i<inputNumbers.length; i++){
+            String noSpace = inputNumbers[i].trim();
+            winningNumbers.add(Integer.parseInt(noSpace));
+        }
+
+        return winningNumbers;
     }
 
     public int calculateEarningRate(List<Integer> winningCount, int quantity) {
