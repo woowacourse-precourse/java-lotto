@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static lotto.constants.LottoConstant.LOTTO_PRICE;
+import static lotto.utils.Calculator.calculateLottoRank;
 import static lotto.utils.LottoNumberGenerator.generateLottoNumber;
 import static lotto.validator.MoneyValidator.hasValidPaidMoney;
 
@@ -25,5 +26,13 @@ public class Customer {
             result.add(new Lotto(generateLottoNumber()));
         }
         return result;
+    }
+
+    public List<Rank> judgeLottoRanks(List<Integer> winningNumber, int bonusNumber) {
+        List<Rank> lottoRanks = new ArrayList<>();
+        for (Lotto lotto : lottos) {
+            lottoRanks.add(calculateLottoRank(lotto, winningNumber, bonusNumber));
+        }
+        return lottoRanks;
     }
 }

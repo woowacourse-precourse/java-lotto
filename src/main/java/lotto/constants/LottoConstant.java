@@ -7,4 +7,5 @@ public class LottoConstant {
     public static final int VALID_BONUS_NUMBER_LENGTH = 1;
     public static final String LOTTERY_NUMBER_SEPARATOR = ",";
     public static final int LOTTO_PRICE = 1000;
+    public static final int BONUS_NUMBER_INDEX = 6;
 }

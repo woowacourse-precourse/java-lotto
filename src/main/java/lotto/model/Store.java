@@ -1,5 +1,7 @@
 package lotto.model;
 
+import static lotto.constants.LottoConstant.BONUS_NUMBER_INDEX;
+import static lotto.utils.Calculator.calculateCountsByRanks;
 import static lotto.utils.NumberAdapter.fitBonusNumber;
 import static lotto.utils.NumberAdapter.fitWinningNumber;
 import static lotto.utils.NumberAdapter.fitWinningNumberWithBonusNumber;
@@ -9,6 +11,7 @@ import static lotto.validator.LottoNumberValidator.hasValidLotteryNumber;
 import static lotto.view.InputView.readUserPaidMoney;
 
 import java.util.List;
+import java.util.Map;
 
 public class Store {
     private Customer customer;
@@ -38,5 +41,12 @@ public class Store {
         int bonusNumber = fitBonusNumber(beforeBonusNumber);
         hasValidBonusNumber(winningNumber, bonusNumber);
         return bonusNumber;
+    }
+
+    public Map<Rank, Integer> judgeCustomerRanks() {
+        List<Integer> winningNumber = winningNumberWithBonusNumber.subList(0, BONUS_NUMBER_INDEX);
+        int bonusNumber = winningNumberWithBonusNumber.get(BONUS_NUMBER_INDEX);
+
+        return calculateCountsByRanks(customer.judgeLottoRanks(winningNumber, bonusNumber));
     }
 }
