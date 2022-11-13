@@ -19,15 +19,30 @@ public class MainView {
     public void run() {
         try {
             printInputPurchaseAmountMessage();
-            Integer purchaseAmount = user.askPurchaseAmount();
+            Integer purchaseAmount = user.inputPurchaseAmount();
             printPublishCountMessage(purchaseAmount);
 
             List<Lotto> purchasedLotto = publisher.publishByPurchaseAmount(purchaseAmount);
             printPurchasedLotto(purchasedLotto);
 
+            printInputWinningNumberMessage();
+            List<Integer> winningNumber = user.inputWinningNumber();
+
+            printInputBonusNumber();
+            int bonusNumber = user.inputBonusNumber();
         } catch (IllegalArgumentException e) {
             Logger.printError(e.getMessage());
         }
+    }
+
+    private void printInputBonusNumber() {
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    private void printInputWinningNumberMessage() {
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 
     private void printPurchasedLotto(List<Lotto> purchasedLotto) {
