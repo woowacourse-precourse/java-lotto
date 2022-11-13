@@ -33,12 +33,7 @@ public class Money {
         }
     }
 
-
-    public boolean hasMoney() {
-        return money != 0;
-    }
-
-    public void buyLotto(int price) {
-        this.money -= price;
+    public int getQuantityByUnit(int unit) {
+        return money / unit;
     }
 }

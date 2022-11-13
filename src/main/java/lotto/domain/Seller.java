@@ -11,10 +11,10 @@ public class Seller {
     }
 
     private static List<Lotto> toLottos(Money money) {
+        int lottoQuantity = money.getQuantityByUnit(1000);
         List<Lotto> lottos = new ArrayList<>();
-        while (money.hasMoney()) {
+        while (lottoQuantity-- != 0) {
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
-            money.buyLotto(1000);
         }
         return lottos;
     }
