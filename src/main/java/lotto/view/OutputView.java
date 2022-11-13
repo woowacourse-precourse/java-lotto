@@ -10,7 +10,7 @@ public final class OutputView {
     private static final String INPUT_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String LOTTO_AMOUNT_MESSAGE = "\n%d개를 구매했습니다.\n";
     private static final String INPUT_LOTTERY_MESSAGE = "\n 당첨 번호를 입력해 주세요.";
-    private static final String INPUT_BONUS_MESSAGE = "\n 당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_MESSAGE = "\n 보너스 번호를 입력해 주세요.";
     private static final String STATISTIC_TITLE = "\n당첨 통계";
     private static final String LINE_FEED = "---";
     private static final String THREE_CORRECT = "3개 일치 (5,000원) - %d개\n";
