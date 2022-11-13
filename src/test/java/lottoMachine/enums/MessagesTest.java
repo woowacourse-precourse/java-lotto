@@ -31,7 +31,7 @@ public class MessagesTest {
         String format = MessageFormat.format(WINNING_STATISTICS_MESSAGE.toString(),
                 arguments.toArray());
 
-        assertThat(format).isEqualTo("당첨 통계\n"
+        assertThat(format).isEqualTo("\n당첨 통계\n"
                 + "---\n"
                 + "3개 일치 (5,000원) - 4개\n"
                 + "4개 일치 (50,000원) - 3개\n"
