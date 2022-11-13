@@ -21,9 +21,7 @@ public class OutputView {
     }
 
     private static String convertToString(Lotto lotto){
-        return lotto.getNumbers().stream()
-                .sorted()
-                .toString();
+        return lotto.getNumbers().toString();
 
     }
 
