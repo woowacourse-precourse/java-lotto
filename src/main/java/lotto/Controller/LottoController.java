@@ -11,11 +11,12 @@ public class LottoController {
     lottoGenerator lottogenerator = new lottoGenerator();
 
     public void start() {
+        output.printInputMoney();
         int amountLotto = input.inputMoney();
         output.printAmount(amountLotto);
         groupLotto = lottogenerator.getGroupLotto(amountLotto);
         output.printAmountLotto(groupLotto);
-
+        output.printInputWin();
     }
 
 

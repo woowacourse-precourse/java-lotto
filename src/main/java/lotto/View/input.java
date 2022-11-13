@@ -2,14 +2,14 @@ package lotto.View;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class input {
-    final static String NoticeInputMoney = "구입금액을 입력해 주세요.";
-    final static String NoticeInputWin = "당첨 번호를 입력해 주세요.";
     final static String NoticeInputBonus = "보너스 번호를 입력해 주세요.";
     final static String NoticeWinStats = "당첨 통계";
 
     public static int inputMoney() {
-        System.out.println(NoticeInputMoney);
         int getMoney = 0;
         try {
             getMoney = Integer.parseInt(Console.readLine());
@@ -26,4 +26,12 @@ public class input {
         }
         return count;
     }
+
+    public static List<Integer> inputWinNum() {
+        List<Integer> numbers = new ArrayList<>();
+        String[] inputNum = Console.readLine().split(",");
+        return numbers;
+    }
+
+
 }
