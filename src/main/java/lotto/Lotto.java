@@ -19,6 +19,13 @@ public class Lotto {
             if (number > 45 || number < 1) throw new IllegalArgumentException();
         }
     }
+
+    private void validateBySize(List<Integer> numbers){
+        if (numbers.size() != 6){
+            throw new IllegalArgumentException();
+        }
+    }
+
     public Integer countMatched(List<Integer> winningNumbers){
         Integer number = 0;
         for (Integer winningNumber : winningNumbers){
