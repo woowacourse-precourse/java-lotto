@@ -1,8 +1,8 @@
 package lotto.domain;
 
-import static lotto.domain.ErrorMessages.MONEY_UNIT_ERROR;
-import static lotto.domain.ErrorMessages.NEGATIVE_NUMBER_ERROR;
-import static lotto.domain.ErrorMessages.ZERO_NUMBER_ERROR;
+import static lotto.domain.ErrorMessage.MONEY_UNIT_ERROR;
+import static lotto.domain.ErrorMessage.NEGATIVE_NUMBER_ERROR;
+import static lotto.domain.ErrorMessage.ZERO_NUMBER_ERROR;
 
 public class Money {
     private static final int UNIT_MONEY = 1_000;
