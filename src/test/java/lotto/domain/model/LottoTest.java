@@ -40,49 +40,49 @@ class LottoTest {
     @DisplayName("로또 계산 결과를 리턴한다. : 6개 일치")
     @Test
     void compareLottoToLottoNumber_ResultSix() {
-        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        WinningLotto winningLotto = new WinningLotto("8,18,21,45,15,36", "13");
         Lotto lotto = new Lotto(List.of(8, 15, 18, 21, 36, 45));
-        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.SIX_MATCHES);
+        assertThat(lotto.compareLottoNumber(winningLotto)).isEqualTo(LottoRank.SIX_MATCHES);
     }
 
     @DisplayName("로또 계산 결과를 리턴한다. : 5개 + 보너스 일치")
     @Test
     void compareLottoToLottoNumber_ResultFiveBonus() {
-        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        WinningLotto winningLotto = new WinningLotto("8,18,21,45,15,36", "13");
         Lotto lotto = new Lotto(List.of(8, 13, 18, 21, 36, 45));
-        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.FIVE_BONUS_MATCHES);
+        assertThat(lotto.compareLottoNumber(winningLotto)).isEqualTo(LottoRank.FIVE_BONUS_MATCHES);
     }
 
     @DisplayName("로또 계산 결과를 리턴한다. : 5개 일치")
     @Test
     void compareLottoToLottoNumber_ResultFive() {
-        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        WinningLotto winningLotto = new WinningLotto("8,18,21,45,15,36", "13");
         Lotto lotto = new Lotto(List.of(8, 14, 18, 21, 36, 45));
-        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.FIVE_MATCHES);
+        assertThat(lotto.compareLottoNumber(winningLotto)).isEqualTo(LottoRank.FIVE_MATCHES);
     }
 
     @DisplayName("로또 계산 결과를 리턴한다. : 4개 일치")
     @Test
     void compareLottoToLottoNumber_ResultFour() {
-        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        WinningLotto winningLotto = new WinningLotto("8,18,21,45,15,36", "13");
         Lotto lotto = new Lotto(List.of(7, 14, 18, 21, 36, 45));
-        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.FOUR_MATCHES);
+        assertThat(lotto.compareLottoNumber(winningLotto)).isEqualTo(LottoRank.FOUR_MATCHES);
     }
 
     @DisplayName("로또 계산 결과를 리턴한다. : 3개 일치")
     @Test
     void compareLottoToLottoNumber_ResultThree() {
-        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        WinningLotto winningLotto = new WinningLotto("8,18,21,45,15,36", "13");
         Lotto lotto = new Lotto(List.of(7, 14, 18, 22, 36, 45));
-        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.THREE_MATCHES);
+        assertThat(lotto.compareLottoNumber(winningLotto)).isEqualTo(LottoRank.THREE_MATCHES);
     }
 
     @DisplayName("로또 계산 결과를 리턴한다. : 3개 이하 일치")
     @Test
     void compareLottoToLottoNumber_ResultUnderTree() {
-        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        WinningLotto winningLotto = new WinningLotto("8,18,21,45,15,36", "13");
         Lotto lotto = new Lotto(List.of(7, 14, 18, 22, 33, 45));
-        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.NO_MATCH);
+        assertThat(lotto.compareLottoNumber(winningLotto)).isEqualTo(LottoRank.NO_MATCH);
     }
 
 }

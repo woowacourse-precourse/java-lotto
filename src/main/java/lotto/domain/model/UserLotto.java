@@ -30,9 +30,9 @@ public class UserLotto {
                 .collect(Collectors.toList());
     }
 
-    public List<LottoRank> compareLottoNumber(LottoNumber lottoNumber) {
+    public List<LottoRank> compareLottoNumber(WinningLotto winningLotto) {
         List<LottoRank> rankCollection = userLotto.stream()
-                .map(lotto -> lotto.compareLottoNumber(lottoNumber))
+                .map(lotto -> lotto.compareLottoNumber(winningLotto))
                 .filter(lottoRank -> lottoRank != LottoRank.NO_MATCH)
                 .collect(Collectors.toList());
         validateLottoRankSize(rankCollection);

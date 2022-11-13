@@ -24,9 +24,9 @@ class UserLottoTest {
                 new Lotto(List.of(2, 13, 22, 32, 38, 45)),
                 new Lotto(List.of(1, 3, 5, 14, 22, 45))
         );
-        LottoNumber lottoNumber = new LottoNumber("1,2,3,4,5,6", "7");
+        WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,6", "7");
         List<LottoRank> result = List.of(LottoRank.THREE_MATCHES);
-        Assertions.assertThat(new UserLotto(lottos).compareLottoNumber(lottoNumber)).isEqualTo(result);
+        Assertions.assertThat(new UserLotto(lottos).compareLottoNumber(winningLotto)).isEqualTo(result);
     }
 
     @DisplayName("구매한 수량의 로또의 결과를 계산하여 리턴한다.: 6개 일치 8개")
@@ -42,11 +42,11 @@ class UserLottoTest {
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 6))
         );
-        LottoNumber lottoNumber = new LottoNumber("1,2,3,4,5,6", "7");
+        WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,6", "7");
         List<LottoRank> result = List.of(LottoRank.SIX_MATCHES, LottoRank.SIX_MATCHES, LottoRank.SIX_MATCHES,
                 LottoRank.SIX_MATCHES, LottoRank.SIX_MATCHES, LottoRank.SIX_MATCHES, LottoRank.SIX_MATCHES,
                 LottoRank.SIX_MATCHES);
-        Assertions.assertThat(new UserLotto(lottos).compareLottoNumber(lottoNumber)).isEqualTo(result);
+        Assertions.assertThat(new UserLotto(lottos).compareLottoNumber(winningLotto)).isEqualTo(result);
     }
 
     @DisplayName("구매한 수량의 로또의 결과를 계산하여 리턴한다. : 모든 결과")
@@ -60,13 +60,13 @@ class UserLottoTest {
                 new Lotto(List.of(2, 5, 6, 7, 8, 13)),
                 new Lotto(List.of(6, 7, 8, 9, 10, 13))
         );
-        LottoNumber lottoNumber = new LottoNumber("1,2,3,4,5,6", "13");
+        WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,6", "13");
         List<LottoRank> result = List.of(LottoRank.SIX_MATCHES,
                 LottoRank.FIVE_BONUS_MATCHES,
                 LottoRank.FIVE_MATCHES,
                 LottoRank.FOUR_MATCHES,
                 LottoRank.THREE_MATCHES);
-        Assertions.assertThat(new UserLotto(lottos).compareLottoNumber(lottoNumber)).isEqualTo(result);
+        Assertions.assertThat(new UserLotto(lottos).compareLottoNumber(winningLotto)).isEqualTo(result);
     }
 
     @Test

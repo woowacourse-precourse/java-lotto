@@ -33,7 +33,7 @@ class LottoResultTest {
                 new Lotto(List.of(6, 7, 8, 9, 10, 13))
         );
         UserLotto userLotto = new UserLotto(lottos);
-        LottoNumber lottoNumber = new LottoNumber("1,2,3,4,5,6", "13");
+        WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,6", "13");
 
         EnumMap<LottoRank, Long> result = new EnumMap<>(LottoRank.class);
         result.put(LottoRank.THREE_MATCHES, 1L);
@@ -42,7 +42,7 @@ class LottoResultTest {
         result.put(LottoRank.FIVE_BONUS_MATCHES, 1L);
         result.put(LottoRank.SIX_MATCHES, 1L);
 
-        assertThat(new LottoResult(userLotto, lottoNumber)).isEqualTo(new LottoResult(result));
+        assertThat(new LottoResult(userLotto, winningLotto)).isEqualTo(new LottoResult(result));
     }
 
     @DisplayName("로또 수익율을 계산한다.")

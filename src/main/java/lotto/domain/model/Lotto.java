@@ -22,8 +22,8 @@ public class Lotto {
         checkRange(numbers);
     }
 
-    public LottoRank compareLottoNumber(LottoNumber lottoNumber) {
-        return lottoNumber.calculateMatch(this.numbers);
+    public LottoRank compareLottoNumber(WinningLotto winningLotto) {
+        return winningLotto.calculateMatch(this.numbers);
     }
 
     @Override

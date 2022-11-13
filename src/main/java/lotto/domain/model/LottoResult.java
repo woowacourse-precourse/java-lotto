@@ -14,8 +14,8 @@ public class LottoResult {
         this.lottoResult = initLottoResult();
     }
 
-    public LottoResult(final UserLotto userLotto, final LottoNumber lottoNumber) {
-        this.lottoResult = createLottoResult(userLotto.compareLottoNumber(lottoNumber));
+    public LottoResult(final UserLotto userLotto, final WinningLotto winningLotto) {
+        this.lottoResult = createLottoResult(userLotto.compareLottoNumber(winningLotto));
     }
     public LottoResult(final Map<LottoRank, Long> lottoResult) {
         this.lottoResult = lottoResult;

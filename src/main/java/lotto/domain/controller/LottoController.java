@@ -2,7 +2,7 @@ package lotto.domain.controller;
 
 import lotto.domain.model.Bonus;
 import lotto.domain.model.FirstPlace;
-import lotto.domain.model.LottoNumber;
+import lotto.domain.model.WinningLotto;
 import lotto.domain.model.LottoResult;
 import lotto.domain.model.Pay;
 import lotto.domain.model.UserLotto;
@@ -30,7 +30,7 @@ public class LottoController {
     }
 
     public void calculateStatisticsByUserLotto() {
-        LottoResult lottoResult = new LottoResult(this.userLotto, new LottoNumber(firstPlace, bonus));
+        LottoResult lottoResult = new LottoResult(this.userLotto, new WinningLotto(firstPlace, bonus));
         OutputData.printLottoResult(lottoResult, this.pay);
     }
 

@@ -15,12 +15,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public abstract class LottoValidator {
+public abstract class LottoValidator{
 
     public static final List<Integer> STANDARD_LOTTO_NUMBER = IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE)
             .boxed().collect(Collectors.toList());
     private static final String FIRST_PLACE_REG_EXP =
             "([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})";
+
 
     public static void checkSize(List<Integer> numbers){
         if (COUNT != numbers.size()) {
