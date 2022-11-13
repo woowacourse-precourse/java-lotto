@@ -21,20 +21,20 @@ public class Lotto {
 
     private void verifyNumberOverlap(List<Integer> numbers) {
         if (!(numbers.size() == numbers.stream().distinct().count())) {
-            throw new RuntimeException("[ERROR] 중복인 숫자가 있습니다.");
+            throw new IllegalArgumentException("[ERROR] 중복인 숫자가 있습니다.");
         }
     }
 
     private void verifySixNumber(List<Integer> numbers) {
         if (!(numbers.size() == NumberChart.LOTTO_SIZE.getValue())) {
-            throw new RuntimeException("[ERROR] 6개의 숫자를 입력하세여");
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력하세여");
         }
     }
 
     private void verifyBetween1and45(List<Integer> numbers) {
         for (int number : numbers) {
             if (!(NumberChart.MIN_NUMBER.getValue() <= number && number <= NumberChart.MAX_NUMBER.getValue())) {
-                throw new RuntimeException("[ERROR] 1 ~ 45 사이의 숫자만 입력해 주세요");
+                throw new IllegalArgumentException("[ERROR] 1 ~ 45 사이의 숫자만 입력해 주세요");
             }
         }
     }
