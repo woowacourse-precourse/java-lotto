@@ -82,8 +82,39 @@
     3. printLotto()
         로또들 출력
 -----------------
-- [ ] 당첨 번호, 보너스 번호 입력 + 예외 처리
-- [ ] 예외 문구 출력
+
+- [X] 당첨 번호, 보너스 번호 입력 + 예외 처리
+    #### 당첨 번호를 입력받아, 당첨번호를 가진 Lotto 객체를 만들어 winningNumber에 저장
+    #### 보너스 번호를 입력하여 bonusNumber에 저장
+-----------------
+    예)
+        당첨 번호를 입력해 주세요.
+        1,2,3,4,5,6
+
+        보너스 번호를 입력해 주세요.
+        7
+-----------------
+    메소드 목록
+    1. setLottoWinningNumber()
+        당첨 로또번호를 가진 Lotto 객체를 winningNumber에 저장
+        보너스 번호를 bonusNumber에 저장
+        1-1. askWinningNumber()
+            당첨 번호를 입력받아 예외 처리 후, Lotto 객체를 만들어 반환.
+            1-1-1. checkArrayOnlyNumber()
+            배열 안 문자열이 오직 숫자로만 이루어져있는지 체크
+            1-1-2. makeWinningLotto()
+            당첨 로또 번호를 가지고, Lotto 객체 생성
+        1-2. askBonusNumber()
+            보너스 번호를 입력받아 예외 처리 후, 반환
+            1-2. validateBonusNumber()
+            보너스 번호 예외 처리
+                1-2-1. checkOutOfRange()
+                보너스 번호가 1~45 범위 안에 있는지 확인
+                1-2-2. checkOverlapWinningNumber()
+                보너스 번호가 당첨 로또 번호와 중복되지 않는지 확인
+-----------------
+
+- [ ] 예외 문구 출력 (열거체 이용)
 - [ ] 당첨 번호와 로또 비교
 - [ ] 획득 금액 계산
 - [ ] 결과 출력
