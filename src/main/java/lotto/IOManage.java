@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.ControlLottoGame;
+import lotto.Lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -36,7 +37,11 @@ public class IOManage {
     public void inputWinningNumbers() {
         ControlLottoGame control = new ControlLottoGame();
         System.out.println(Message.INPUT_WINNING_NUMBER.get());
+
         String inputString = Console.readLine();
         List<Integer> winningNumbers = control.inputToWinningNumbers(inputString);
+
+        Lotto lotto = new Lotto(winningNumbers);
+        winningNumbers = lotto.getNumbers();
     }
 }
