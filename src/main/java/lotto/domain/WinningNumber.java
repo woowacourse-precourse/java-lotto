@@ -8,7 +8,7 @@ public class WinningNumber {
 
     public void inputWinningNumber(String input) {
         if (!isSixStrings(input)) {
-            throw new IllegalArgumentException(Error.IS_NOT_SIX_TOKEN.getMessage());
+            throw new IllegalArgumentException(Error.IS_NOT_SIX.getMessage());
         }
         if (!isNumber(input)) {
             throw new IllegalArgumentException(Error.IS_NOT_NUMBER.getMessage());
