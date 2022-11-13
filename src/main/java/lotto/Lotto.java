@@ -27,9 +27,9 @@ public class Lotto {
         }
     }
 
-    private void validateLottoDuplicate(List<Integer> result) {
-        long count = result.stream().distinct().count();
-        if (count != result.size()) {
+    private void validateLottoDuplicate(List<Integer> numbers) {
+        long count = numbers.stream().distinct().count();
+        if (count != numbers.size()) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_DUPLICATE.printError());
         }
     }
