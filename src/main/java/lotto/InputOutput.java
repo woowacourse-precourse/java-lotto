@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class InputOutput {
@@ -20,6 +21,12 @@ public class InputOutput {
             throw new IllegalArgumentException();
         }
 
+        validateMoney(money);
+
+        return money;
+    }
+
+    private void validateMoney(int money) {
         if (money % LOTTERY_PRICE != 0) {
             System.out.println("[ERROR] 구입 금액은 " + LOTTERY_PRICE + "단위 이어야 합니다.");
             throw new IllegalArgumentException();
