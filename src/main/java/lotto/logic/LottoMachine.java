@@ -22,11 +22,11 @@ public class LottoMachine {
         return LottoMachineHolder.INSTANCE;
     }
 
-    public List<Lotto> generateLottos(int payment) throws IllegalArgumentException {
-        Validator.checkDivisiblePayment(payment, PRICE);
+    public List<Lotto> generateLottos(long payment) throws IllegalArgumentException {
+        Validator.validateDivisiblePayment(payment, PRICE);
         List<Lotto> lottos = new ArrayList<>();
 
-        for (int i = payment / PRICE; i > 0; i--) {
+        for (long i = payment / PRICE; i > 0; i--) {
             lottos.add(generateLotto());
         }
 
