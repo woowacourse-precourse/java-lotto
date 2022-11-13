@@ -21,5 +21,6 @@ public class LottoGame {
         lottoTickets = lottoGameController.inputMoney(userInput);
 
         System.out.println(lottoTickets + GameMessage.NUMBER_OF_PURCHASES.getMessage());
+        lottoGameController.printLottoTickets(lottoTickets);
     }
 }
