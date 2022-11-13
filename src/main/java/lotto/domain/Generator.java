@@ -15,8 +15,8 @@ public class Generator {
         List<Integer> winningNumbers = Lotto.getWinningNumbers();
         int bonusNumber = Lotto.getBonusNumber();
 
-        final int[] winningCount = { 0 };
-        final int[] bonusCount = { 0 };
+        final int[] winningCount = {0};
+        final int[] bonusCount = {0};
         lotto.getNumbers()
                 .stream()
                 .mapToInt(Integer::intValue)
