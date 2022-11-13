@@ -20,6 +20,15 @@ public class LottoResult {
         result.put(rank.name(), count + 1);
     }
 
+    public long calculateProfits() {
+        long profits = 0;
+        for (String grade : result.keySet()) {
+            int count = result.get(grade);
+            profits += ((long) Rank.valueOf(grade).getPrize() * count);
+        }
+        return profits;
+    }
+
     public int get(String rankName) {
         Integer count = result.get(rankName);
 

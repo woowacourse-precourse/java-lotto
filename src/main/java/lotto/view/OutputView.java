@@ -3,6 +3,7 @@ package lotto.view;
 import lotto.LottoResult;
 import lotto.Lottos;
 import lotto.Rank;
+import lotto.Stats;
 
 public class OutputView {
 
@@ -20,4 +21,9 @@ public class OutputView {
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", lottoResult.get(Rank.SECOND.name()));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", lottoResult.get(Rank.FIRST.name()));
     }
+
+    public static void printRateOfProfit(Stats stats) {
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", stats.getRateOfProfit());
+    }
+
 }
