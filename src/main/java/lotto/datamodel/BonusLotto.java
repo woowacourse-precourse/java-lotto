@@ -1,4 +1,4 @@
-package lotto.checkvalid;
+package lotto.datamodel;
 
 public class BonusLotto {
 }
