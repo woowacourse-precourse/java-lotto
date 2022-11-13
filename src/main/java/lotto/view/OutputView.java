@@ -50,15 +50,13 @@ public class OutputView {
 
     private static void printLottoInformation(List<Integer> lottonumbers) {
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < lottonumbers.size(); i++) {
+        for (int i = 0; i < lottonumbers.size() - 1; i++) {
             int number = lottonumbers.get(i);
-            if (i == lottonumbers.size() - 1) {
-                result.append(number);
-                continue;
-            }
             result.append(number);
             result.append(", ");
         }
+        int lastNumber = lottonumbers.get(lottonumbers.size() - 1);
+        result.append(lastNumber);
         System.out.println(String.format(LOTTO_FRAME, result));
     }
 
@@ -69,11 +67,7 @@ public class OutputView {
     private static void printOrderLottoResult(Map<LottoRanking, Integer> lottoResult) {
         List<LottoRanking> orderedLottoRanking = getOrderedLottoRanking();
         for (LottoRanking ranking : orderedLottoRanking) {
-            Integer count = lottoResult.get(ranking);
-            if (count == null) {
-                printLotto(ranking, 0);
-                continue;
-            }
+            Integer count = lottoResult.getOrDefault(ranking, 0);
             printLotto(ranking, count);
         }
     }
