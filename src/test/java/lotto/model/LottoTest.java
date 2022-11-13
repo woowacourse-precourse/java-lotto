@@ -35,12 +35,12 @@ class LottoTest {
 
     // 아래에 추가 테스트 작성 가능
 
-    @ParameterizedTest(name = "당첨 번호 일치 개수: {1}, 보너스 번호 가지고 있어?: {2}")
-    @MethodSource("lottoAndCompareResult")
-    void 로또가_당첨번호를_몇개_가지는지_확인하는_기능(Lotto lotto, int numberOfMatches, boolean hasBonus) {
-        assertThat(lotto.compareWith(winningNumbers))
-                .isEqualTo(new CompareResult(numberOfMatches, hasBonus));
-    }
+//    @ParameterizedTest(name = "당첨 번호 일치 개수: {1}, 보너스 번호 가지고 있어?: {2}")
+//    @MethodSource("lottoAndCompareResult")
+//    void 로또가_당첨번호를_몇개_가지는지_확인하는_기능(Lotto lotto, int numberOfMatches, boolean hasBonus) {
+//        assertThat(lotto.compareWith(winningNumbers))
+//                .isEqualTo(new CompareResult(numberOfMatches, hasBonus));
+//    }
 
     static Stream<Arguments> lottoAndCompareResult() {
         return Stream.of(
