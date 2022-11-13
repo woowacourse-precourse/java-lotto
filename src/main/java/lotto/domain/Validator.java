@@ -16,6 +16,7 @@ public class Validator {
             throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATE);
         }
     }
+
     public static void payment(String paymentInput) {
         if (!Pattern.matches(REGEX.PAYMENT, paymentInput)) {
             throw new IllegalArgumentException(ERROR.PURCHASE_FORMAT);
