@@ -21,5 +21,9 @@ public class LottoGameService {
             throw new IllegalArgumentException(
                 ErrorMessage.PURCHASE_AMOUNT_DIVIDE_1000WON.getErrorMessage());
         }
+        if (value < 1000) {
+            throw new IllegalArgumentException(
+                ErrorMessage.PURCHASE_AMOUNT_AT_LEAST_1000WON.getErrorMessage());
+        }
     }
 }
