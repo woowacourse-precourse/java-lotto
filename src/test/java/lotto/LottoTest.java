@@ -37,7 +37,7 @@ class LottoTest {
         );
     }
 
-    @DisplayName("로또 구입 금액이 1,000원 단위로 나누어 떨어질 경우")
+    @DisplayName("로또 구입 금액이 1,000원 단위로 나누어 떨어질 경우 몇 장을 구매했는지 확인한다.")
     @Test
     void rightOfLottoAmount() {
        int amount = 15000;
