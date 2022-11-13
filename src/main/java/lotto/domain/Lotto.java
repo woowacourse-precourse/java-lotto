@@ -17,4 +17,7 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public void printNumbers() {
+        System.out.println(numbers);
+    }
 }
