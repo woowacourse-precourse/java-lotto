@@ -53,7 +53,7 @@ public class Statistic {
     // Calculate counts of how many numbers match with winning numbers
     public int calculateCorrespondNumberCount(final Lotto purchasedLotto) {
         return (int)purchasedLotto.getNumbers().stream()
-                .filter(winning.getWinningNumbers()::contains).count();
+                .filter(winning.getWinningNumber()::contains).count();
     }
 
     public double calculateYield() {

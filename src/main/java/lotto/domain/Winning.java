@@ -5,20 +5,20 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class Winning {
-    private final List<Integer> winningNumbers;
+    private final List<Integer> winningNumber;
     private final int bonusNumber;
 
     private static Set<String> forDuplicateCheck = new HashSet<>();
 
     public Winning(String winningNumberInput, String bonusNumberInput) {
-        this.winningNumbers = new ArrayList<>();
+        this.winningNumber = new ArrayList<>();
         Arrays.stream(winningNumberInput.split(",")).
-                mapToInt(Integer::parseInt).forEach(winningNumbers::add);
+                mapToInt(Integer::parseInt).forEach(winningNumber::add);
         this.bonusNumber = Integer.parseInt(bonusNumberInput);
     }
 
-    public List<Integer> getWinningNumbers() {
-        return winningNumbers;
+    public List<Integer> getWinningNumber() {
+        return winningNumber;
     }
     public int getBonusNumber() {
         return bonusNumber;
@@ -78,6 +78,7 @@ public class Winning {
 
     public static void validateUniqueNumber(final String input) {
         if (forDuplicateCheck.contains(input)) {
+            System.out.println();
             throw new IllegalArgumentException();
         }
         forDuplicateCheck.add(input);
