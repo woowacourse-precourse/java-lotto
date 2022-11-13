@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.Lotto;
 import lotto.service.LottoGameService;
 
 public class LottoGameController {
@@ -15,6 +16,9 @@ public class LottoGameController {
     }
 
     public void printLottoTickets(int lottoTicketCount) {
-
+        for (int i = 0; i < lottoTicketCount; i++) {
+            Lotto lotto = Lotto.issueLottoTicket();
+            System.out.println(lotto.getNumbers());
+        }
     }
 }

@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -8,6 +9,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        numbers.sort(Comparator.naturalOrder());
         this.numbers = numbers;
     }
 
@@ -17,11 +19,15 @@ public class Lotto {
         }
     }
 
-    public Lotto issueLottoTicket () {
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
+    public static Lotto issueLottoTicket () {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
-    public Lotto drawLotto(List<Integer> numbers) {
+    public static Lotto drawLotto(List<Integer> numbers) {
         return new Lotto(numbers);
     }
 }
