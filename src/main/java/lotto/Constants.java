@@ -1,6 +1,25 @@
 package lotto;
 
 public final class Constants {
+    public final class NUMBER {
+        public static final int ZERO = 0;
+        public static final int ONE = 1;
+        public static final int TWO = 2;
+        public static final int THREE = 3;
+        public static final int FOUR = 4;
+        public static final int FIVE = 5;
+        public static final int SIX = 6;
+        public static final int HUNDRED = 100;
+
+
+    }
+
+    public final class LOTTO {
+        public static final int PRICE = 1000;
+        public static final int START = 1;
+        public static final int END = 45;
+        public static final int SIZE = 6;
+    }
     public final class REGEX {
         public static final String WINNING_NUMBERS = "^([1-9]{1},{1}|[1-3]{1}[0-9]{1},{1}|4{1}[0-5]{1},{1}){5}"
                 + "([1-9]{1}|[1-3]{1}[0-9]{1}|4{1}[0-5]{1})$";
