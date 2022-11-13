@@ -36,12 +36,12 @@ public class BuyLotto {
         }
     }
 
-    static void validateUserPrice(String userPrice) throws IllegalArgumentException {
+    static void validateUserPrice(String userPrice) {
         boolean isNumeric = userPrice.chars().allMatch( Character::isDigit );
         if (userPrice.charAt(userPrice.length()-1) != '0' || userPrice.charAt(userPrice.length()-2) != '0' || userPrice.charAt(userPrice.length()-3) != '0'
                 ||isNumeric != true) {
             throw new IllegalArgumentException(WRONG_NUMBER_ERROR);
-        }
+        };
     }
 
     private int buyLottoCount() {
@@ -56,7 +56,8 @@ public class BuyLotto {
         List<List<Integer>> lottoNumbers = new ArrayList<>();
         int lottoCount = buyLottoCount();
         for(int i=0; i<lottoCount; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = new ArrayList<>();
+            numbers.addAll(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(numbers);
             System.out.println(numbers);
             lottoNumbers.add(numbers);
