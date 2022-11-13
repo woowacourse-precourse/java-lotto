@@ -2,10 +2,9 @@
 ## 기능 목록
 - [  ] 로또 구입 금액만큼 로또를 발행한다. Buy#buyLotto
     - [X] 가격에 따라 구입하는 로또 개수 구하기 Buy#buyLotto
-      [ ] 로또 1장의 가격은 1,000원. (1,000원으로 나누어지지 않는 경우 예외) Buy#isRightMoney
-    - [X] 로또 번호 발행 Buy#issueLotto
-      : 1~45까지, 중복되지 않는 6개의 숫자.
-- [  ] 당첨 번호와 보너스 번호를 입력받기 #askNumber
+      [X] 로또 1장의 가격은 1,000원. (1,000원으로 나누어지지 않는 경우 예외) Buy#isRightMoney
+    - [X] 로또 번호 발행 Buy#issueLotto: 1~45까지, 중복되지 않는 6개의 숫자.
+- [  ] 당첨 번호와 보너스 번호를 입력받기 #askWinLotto
     - [  ] 당첨 번호 숫자: 1~45까지, 중복되지 않는 숫자 6개 + 보너스. (그외 예외)
 - [  ] 사용자가 구매한 로또 번호 1개와 당첨 번호를 비교 Analyse#containNumber
 - [  ] 당첨 내역 및 수익률을 출력 #printResult, #printProfit (enum 사용)
