@@ -1,9 +1,12 @@
 package lotto.game;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import lotto.constant.LottoWinningRanking;
 import lotto.domain.Lotto;
+import lotto.domain.LottoWinningResult;
 import lotto.domain.WinningLotto;
 
 public class LottoWinningChecker {
@@ -14,10 +17,15 @@ public class LottoWinningChecker {
         this.winningLotto = winningLotto;
     }
 
-    public List<LottoWinningRanking> checkWinning(List<Lotto> lottos) {
-        return lottos.stream()
-                .map(this::checkWinning)
-                .collect(Collectors.toList());
+    public LottoWinningResult checkWinning(List<Lotto> lottos) {
+        Map<LottoWinningRanking, Integer> numberOfWinningEachRank = Arrays.stream(LottoWinningRanking.values())
+                .collect(Collectors.toMap(ranking -> ranking, init -> 0));
+
+        for (Lotto lotto : lottos) {
+            LottoWinningRanking winningResult = checkWinning(lotto);
+            numberOfWinningEachRank.compute(winningResult, (rank, numberOfWinning) -> numberOfWinning + 1);
+        }
+        return new LottoWinningResult(numberOfWinningEachRank);
     }
 
     public LottoWinningRanking checkWinning(Lotto lotto) {
