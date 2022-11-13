@@ -2,7 +2,6 @@ package lotto.template;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.utils.validator.LottoValidator;
-import lotto.utils.validator.MoneyValidator;
 import lotto.utils.validator.NumberValidator;
 import lotto.utils.validator.StringValidator;
 

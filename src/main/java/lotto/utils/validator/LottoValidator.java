@@ -9,6 +9,13 @@ import java.util.Set;
 import static lotto.utils.LottoInformation.*;
 
 public class LottoValidator {
+    public static void checkSixNumbers(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            System.out.println(Error.NOT_SIX_NUMBERS);
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void checkLottoNumbers(List<Integer> numbers) {
         for (int number : numbers) {
             checkLottoNumber(number);

@@ -10,10 +10,12 @@ import static lotto.utils.LottoInformation.*;
 
 public class Ticket {
     private final int lottoCount;
+    private final int price;
     private List<Lotto> lottos;
 
     public Ticket(int money) {
         MoneyValidator.checkUnitOf1000Won(money);
+        price = money;
         lottoCount = getLottoCount(money);
         getLottos(lottoCount);
     }
@@ -41,6 +43,10 @@ public class Ticket {
         return lottoCount;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public List<Lotto> getLottos() {
         return lottos;
     }
@@ -49,7 +55,7 @@ public class Ticket {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Lotto lotto : lottos) {
-            stringBuilder.append(lotto).append('\n');
+            stringBuilder.append(lotto.toString()).append('\n');
         }
         return stringBuilder.toString();
     }

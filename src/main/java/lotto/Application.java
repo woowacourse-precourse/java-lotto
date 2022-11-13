@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Answer;
+import lotto.domain.Statistics;
 import lotto.domain.Ticket;
 import lotto.template.Input;
 import lotto.template.Output;
@@ -23,6 +24,7 @@ public class Application {
         int bonusNumber = Input.insertBonusNumber(winningNumbers);
         answer.setBonusNumber(bonusNumber);
         // 당첨 통계 출력
-        Output.showWinningStatistics();
+        Statistics statistics = new Statistics(ticket, answer);
+        Output.showWinningStatistics(statistics);
     }
 }
