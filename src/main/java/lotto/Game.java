@@ -79,7 +79,8 @@ public class Game {
         HashMap<String, Integer> prize = new HashMap<>();
 
         prize = winCalculator.getEachPrize(lottoTickets, winningNumbers, bonusNumber);
-
+        view.printPrize(prize);
+        view.printYield(prize, validAmount);
     }
 
 }
