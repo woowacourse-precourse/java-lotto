@@ -51,6 +51,7 @@ public class UI {
     }
 
     public Integer Bonus_Number() {
+        System.out.println("보너스 번호를 입력해 주세요.");
         String Input = Console.readLine();
         Bonus_number_validate(Input);
         Integer Bonus_Number = Integer.valueOf(Input);
