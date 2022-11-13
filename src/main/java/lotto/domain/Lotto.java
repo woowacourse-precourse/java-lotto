@@ -18,22 +18,28 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateCount(numbers);
+        validateRange(numbers);
+        validateDuplication(numbers);
+    }
+
+    private static void validateCount(List<Integer> numbers) {
         if (isInvalidNumberSize(numbers)) {
             String errorMessage = String.format("%d개의 숫자를 입력하셨습니다. 로또는 %d개의 숫자를 가져야 합니다.", numbers.size(),
                     LOTTO_NUMBER_COUNT);
             throw new IllegalArgumentException(errorMessage);
         }
-        if (isInvalidNumberRange(numbers)) {
-            String errorMessage = String.format("로또 번호는 %d부터 %d 사이의 숫자여야 합니다.", START_LOTTO_NUMBER, END_LOTTO_NUMBER);
-            throw new IllegalArgumentException(errorMessage);
-        }
-        if (hasDuplicateNumber(numbers)) {
-            throw new IllegalArgumentException("로또 번호는 서로 달라야 합니다.");
-        }
     }
 
     private static boolean isInvalidNumberSize(List<Integer> numbers) {
         return numbers.size() != LOTTO_NUMBER_COUNT;
+    }
+
+    private static void validateRange(List<Integer> numbers) {
+        if (isInvalidNumberRange(numbers)) {
+            String errorMessage = String.format("로또 번호는 %d부터 %d 사이의 숫자여야 합니다.", START_LOTTO_NUMBER, END_LOTTO_NUMBER);
+            throw new IllegalArgumentException(errorMessage);
+        }
     }
 
     private static boolean isInvalidNumberRange(List<Integer> numbers) {
@@ -43,6 +49,12 @@ public class Lotto {
 
     private static boolean isOutOfRange(Integer number) {
         return START_LOTTO_NUMBER > number || number > END_LOTTO_NUMBER;
+    }
+
+    private static void validateDuplication(List<Integer> numbers) {
+        if (hasDuplicateNumber(numbers)) {
+            throw new IllegalArgumentException("로또 번호는 서로 달라야 합니다.");
+        }
     }
 
     private static boolean hasDuplicateNumber(List<Integer> numbers) {
