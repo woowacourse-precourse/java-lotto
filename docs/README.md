@@ -69,7 +69,7 @@
 - [x]  로또를 판매하는 LottoSeller 클래스 추가
     - [x] 자동으로 생성하는 로또의 경우 정렬된 순서로 반환한다.
 - [x]  입력받은 돈을 가지고 로또를 구매하는 Customer 클래스 추가
-    - [ ] 로또 결과 확인하는 check 메서드 추가
+    - [x] 로또 결과 확인하는 check 메서드 추가
 - [x]  로또 등수 및 상금에 대한 정보를 가지고 있는 LottoPrize Enum 추가
     - [x] 맞춘개수를 입력받아 LottoPrize를 반환하는 메서드 추가
 - [x]  로또 결과에 대한 정보를 가지고 있는 LottoResult 클래스 추가 EnumMap<LottoPrize, Integer>의 일급 컬렉션
