@@ -64,12 +64,7 @@
     - [예외사항] bonusNumber 이 범위에서 벗어남
     - [예외사항] bonusNumber 이 lotto 와 중복이 있음
     - LottoResult getResult(Lotto)
-8. LottoStatistic
-    - 로또 통계 계산을 담당함
-    - WinningLottery 와 Lottos 가 필요함
-    - LottoStatistic(WinningLottery,Lottos);
-    - public LottoScoreDto getScore();
-9. LottoScoreDto
+8. LottoScoreDto
     - 로또 점수를 전달함
     - 3개, 4개, 5개, 5개+보너스, 6개, 수익률이 필요함
     - long getThree()
@@ -77,6 +72,11 @@
     - long getFive()
     - long getFiveBonus()
     - double getRate() 가 필요함
+9. LottoStatistic
+    - 로또 통계 계산을 담당함
+    - WinningLottery 와 Lottos 가 필요함
+    - LottoStatistic(WinningLottery,Lottos);
+    - public LottoScoreDto getScore();
 10. InputHandler
     - InputView 와 System 과의 의존성을 낮추는 중간 객체
     - String readLine() 가 필요함
