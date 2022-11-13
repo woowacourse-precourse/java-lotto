@@ -55,7 +55,7 @@ public class WinningLotto {
 
     private void isInRange(String piece) {
         isNumeric(piece);
-        int pieceToInt = Integer.parseInt(piece);
+        int pieceToInt = isIntegerRange((piece));
         if (pieceToInt < MIN_VALID_LOTTO_VALUE || pieceToInt > MAX_VALID_LOTTO_VALUE) {
             throw new IllegalArgumentException(INVALID_RANGED_WINNING_LOTTO_INPUT_MSG);
         }
@@ -70,6 +70,15 @@ public class WinningLotto {
 
     private void isDigit(char characterInPiece) {
         if (!Character.isDigit(characterInPiece)) {
+            throw new IllegalArgumentException(INVALID_RANGED_WINNING_LOTTO_INPUT_MSG);
+        }
+    }
+
+    private int isIntegerRange(String piece) {
+        try {
+            int pieceToInt = Integer.parseInt(piece);
+            return pieceToInt;
+        } catch (Exception e) {
             throw new IllegalArgumentException(INVALID_RANGED_WINNING_LOTTO_INPUT_MSG);
         }
     }
