@@ -12,6 +12,10 @@ public class LottoPurchaseAmount {
         this.amount = amount; 
     }
 
+    public double calculateNumberOfLottoTickets() {
+        return amount / MIN_COST;
+    }
+
     private void validateInputMoney(int amount) {
         isAmountEqualsWithZero(amount);
         isDivisibleByThousand(amount);
