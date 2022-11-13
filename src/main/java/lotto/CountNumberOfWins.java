@@ -8,6 +8,7 @@ public class CountNumberOfWins {
     private int thirdPlace;
     private int fourthPlace;
     private int fifthPlace;
+    private int sumOfPrize;
     private final BuyLotto buyLotto;
     private final WinningNumbers winningNumbers;
 
@@ -17,6 +18,7 @@ public class CountNumberOfWins {
         this.thirdPlace = 0;
         this.fourthPlace = 0;
         this.fifthPlace = 0;
+        this.sumOfPrize = 0;
         this.buyLotto = buyLotto;
         this.winningNumbers = winningNumbers;
     }
@@ -60,6 +62,9 @@ public class CountNumberOfWins {
             CountMatchNumber countMatchNumber = new CountMatchNumber();
             numberOfWins(Grade.findingRank(countMatchNumber.setWinningNumberMatchCount(lottoNumbers, winningNumber)
                     , countMatchNumber.setBonusNumberMatchCount(lottoNumbers, bonusNumber)).getRanking());
+
+            sumOfPrize += Grade.findingRank(countMatchNumber.setWinningNumberMatchCount(lottoNumbers, winningNumber)
+                    , countMatchNumber.setBonusNumberMatchCount(lottoNumbers, bonusNumber)).getPrizeMoney();
         }
     }
 
@@ -81,5 +86,9 @@ public class CountNumberOfWins {
 
     public int getFifthPlace() {
         return fifthPlace;
+    }
+
+    public double rateOfReturn() {
+        return Math.round((sumOfPrize / buyLotto.getPrice()) * 100) / 10.0;
     }
 }
