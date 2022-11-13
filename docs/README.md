@@ -55,10 +55,10 @@
 
 - [x] 숫자만 입력되었는지 검사한다. - ExceptionHandling#isNumeric(String value)
 - [x] 입력한 금액이 1,000원 단위로 나누어떨어지는지 검사한다. - ExceptionHandling#notDivide(long amount)
-- [ ] 입력한 당첨 번호가 입력 규칙에 유효한지 검사한다. - ExceptionHandling#lottoNumberRuleException(String lottoNumber)
   - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = InputLotto#splitStrings(String numbers)
   - [x] 문자열을 long으로 변환 - int number = InputLotto#toLongs(String number)
 - [x] 입력한 숫자가 1 ~ 45의 숫자인지 검사한다. - ExceptionHandling#outRangeLottoNumber(int bonusNumber)
+- [x] 입력한 당첨 번호가 중복인지 검사한다. - ExceptionHandling#removeDuplicateNumber(List<Integer> winNumber);
 
 ### enum으로 처리
 - [ ] "3개 일치 (5,000원) - n개"를 출력한다. - WinStatistics#showWinMessage(int number)
@@ -74,4 +74,4 @@
 - [x] 로또(보너스) 번호를 입력 받을 때 숫자 범위(1 ~ 45)를 벗어나는 입력을 한 경우 
 - [x] 로또(보너스) 숫자가 아닌 경우
 - [x] 로또(보너스) 숫자가 6개가 아닌 경우
-- [ ] 당첨 번호를 입력 받을 때 중복 숫자가 있는 경우
+- [x] 당첨 번호를 입력 받을 때 중복 숫자가 있는 경우
