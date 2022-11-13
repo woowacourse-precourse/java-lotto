@@ -1,5 +1,7 @@
 package lotto.view;
 
+import java.util.List;
+
 public class GameOutput {
 
     private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -56,5 +58,10 @@ public class GameOutput {
 
     public static void printTotalRate(int rate) {
         System.out.printf(TOTAL_RATE_OF_RETURN, rate);
+    }
+
+    public static void printLottoNumbers(List<List<Integer>> lotto){
+        lotto.stream()
+                .forEach(System.out::println);
     }
 }
