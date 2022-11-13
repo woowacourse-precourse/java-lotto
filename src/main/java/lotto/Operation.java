@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Operation {
+    static int buyAmount(int purchaseAmount){
+        return purchaseAmount / 1000;
+    }
 
-    static List<Lotto> buyLotto(int amount) {
+    static List<Lotto> buyLotto(int purchaseAmount) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < (amount / 1000); i++) {
+        for (int i = 0; i < buyAmount(purchaseAmount); i++) {
             Lotto lotto = new Lotto(generateNumbers());
             lottos.add(lotto);
         }
