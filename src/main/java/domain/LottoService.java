@@ -3,7 +3,9 @@ package domain;
 import lotto.Lotto;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static util.Constant.LOTTO_PRICE;
 
@@ -11,7 +13,7 @@ public class LottoService {
 
     private int totalEarning;
     private List<Prize> userPrizes;
-    private int money=0;
+    private int money = 0;
 
     public LottoService() {
         this.totalEarning = 0;
@@ -39,7 +41,10 @@ public class LottoService {
     public List<Lotto> publishLotto(int numberOfLotto) {
         List<Lotto> publishedLotto = new ArrayList<>();
         while (numberOfLotto > 0) {
-            List<Integer> userLottoNumbers = NumberGenerator.createUniqueRandomNumbers();
+            List<Integer> randomNumbers = NumberGenerator.createUniqueRandomNumbers();
+            List<Integer> userLottoNumbers = randomNumbers.stream()
+                    .sorted(Comparator.comparing(Math::abs))
+                    .collect(Collectors.toList());
             Lotto lotto = new Lotto(userLottoNumbers);
 
             publishedLotto.add(lotto);
