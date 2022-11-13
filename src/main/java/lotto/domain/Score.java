@@ -22,7 +22,6 @@ public class Score {
             if (index >= 0 && index <= 4)
                 score.set(index, score.get(index) + 1);
         }
-        System.out.println(score);
     }
 
     private int Rating_lucky(Lotto lotto, Lucky lucky, Bonusnumber bonusnumber){

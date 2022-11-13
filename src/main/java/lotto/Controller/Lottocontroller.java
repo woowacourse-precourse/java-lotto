@@ -8,6 +8,7 @@ import lotto.domain.Lottos;
 import lotto.domain.Lucky;
 import lotto.domain.Bonusnumber;
 import lotto.domain.Score;
+import lotto.domain.Earning;
 
 public class Lottocontroller {
     //static final
@@ -25,6 +26,8 @@ public class Lottocontroller {
 
         Score score = new_score();
         Rating_start(score, paper, lottos, lucky, bonusnumber);
+
+        Earning earning = new_earning(score);
     }
 
     private Money inputMoney(){
@@ -53,6 +56,10 @@ public class Lottocontroller {
 
     private void Rating_start(Score score, Paper paper,Lottos lottos,Lucky lucky,Bonusnumber bonusnumber){
         score.Rating_start(paper, lottos, lucky, bonusnumber);
+    }
+
+    private Earning new_earning(Score score){
+        return new Earning(score);
     }
     //method
 }
