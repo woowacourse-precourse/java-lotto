@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class LottoPlayer {
     private final InputManager inputManager = new InputManager();
+    private final PrintManager printManager = new PrintManager();
     private final LottoFactory lottoFactory = new LottoFactory();
     private final LottoAnalyst lottoAnalyst= new LottoAnalyst();
 
@@ -13,11 +14,14 @@ public class LottoPlayer {
     }
 
     private void inputAll() {
-        int lottoCount = requestInputPurchaseMoney();
+        printManager.printRequestPrice();
+        int lottoCount = inputManager.inputPurchaseAmount();
         List<Lotto> lottos = lottoFactory.create(lottoCount);
         printPurchaseList(lottos);
-        Lotto winningNumber = requestInputWinningNumbers();
-        int bonusNumber = requestInputBonusNumber(winningNumber);
+        printManager.printRequestWinningNumber();
+        Lotto winningNumber = inputManager.inputWinningNumbers();
+        printManager.printRequestBonusNumber();
+        int bonusNumber = inputManager.inputBonusNumber(winningNumber);
         LottoMatcher lottoMatcher = new LottoMatcher(winningNumber, bonusNumber);
         List<LottoGrade> lottoResults = lottoMatcher.matchAll(lottos);
         Map<LottoGrade, Integer> analyze = lottoAnalyst.analyze(lottoResults);
@@ -35,19 +39,5 @@ public class LottoPlayer {
         System.out.print(ConsoleMessage.NEW_LINE);
         lottos.forEach(System.out::println);
         System.out.print(ConsoleMessage.NEW_LINE);
-    }
-
-    private int requestInputPurchaseMoney() {
-        System.out.println(ConsoleMessage.REQUEST_PURCHASE);
-        return inputManager.inputPurchaseAmount();
-    }
-    private Lotto requestInputWinningNumbers() {
-        System.out.println(ConsoleMessage.REQUEST_WINNING_NUMBERS);
-        return inputManager.inputWinningNumbers();
-    }
-
-    private int requestInputBonusNumber(Lotto winningNumber) {
-        System.out.println(ConsoleMessage.REQUEST_BONUS_NUMBER);
-        return inputManager.inputBonusNumber(winningNumber);
     }
 }
