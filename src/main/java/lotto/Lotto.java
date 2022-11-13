@@ -65,4 +65,11 @@ public class Lotto {
         }
         return checkWin;
     }
+    public boolean getBonus(int bonus, List<Integer> LottoNum){
+        boolean flag = false;
+        if(LottoNum.contains(bonus)){
+            flag = true;
+        }
+        return flag;
+    }
 }
