@@ -9,8 +9,7 @@ public class Application {
         Controller controller = new Controller();
         int money = console.inputMoney();
         int count = controller.getCount(money);
-        ArrayList<Lotto> issuedList = controller.issueLotto(count);
-        
+        List<Lotto> issuedList = controller.issueLotto(count);
         // 금액 100
     }
 }
