@@ -3,10 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.exception.LottoError;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class User {
     private int purchaseAmount;
@@ -14,12 +11,8 @@ public class User {
     private final List<Lotto> lottos = new ArrayList<>();
 
     public User() {
-        prizes.put(Prize.FIFTH, 0);
-        prizes.put(Prize.FOURTH, 0);
-        prizes.put(Prize.THIRD, 0);
-        prizes.put(Prize.SECOND, 0);
-        prizes.put(Prize.FIRST, 0);
-        prizes.put(Prize.NOTHING, 0);
+        Arrays.stream(Prize.values())
+                .forEach(o -> prizes.put(o, 0));
     }
 
     public List<Lotto> getLottos() {

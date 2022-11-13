@@ -3,9 +3,11 @@ package lotto.view;
 import lotto.domain.Lotto;
 import lotto.domain.Prize;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class LottoView {
     public void purchase() {
@@ -33,11 +35,10 @@ public class LottoView {
 
     public void result(Map<Prize, Integer> prizes) {
         System.out.println("\n" + "당첨 통계\n" + "---" +
-                prizeToString(Prize.FIFTH, prizes.get(Prize.FIFTH)) +
-                prizeToString(Prize.FOURTH, prizes.get(Prize.FOURTH)) +
-                prizeToString(Prize.THIRD, prizes.get(Prize.THIRD)) +
-                prizeToString(Prize.SECOND, prizes.get(Prize.SECOND)) +
-                prizeToString(Prize.FIRST, prizes.get(Prize.FIRST)));
+                Arrays.stream(Prize.values())
+                        .filter(o -> !(o == Prize.NOTHING))
+                        .map(o -> prizeToString(o, prizes.get(o)))
+                        .collect(Collectors.joining()));
     }
 
     public void yield(String yield) {
@@ -45,6 +46,6 @@ public class LottoView {
     }
 
     private String prizeToString(Prize prize, int count) {
-        return "\n"+prize.toString()+count+"개";
+        return "\n" + prize.toString() + count + "개";
     }
 }

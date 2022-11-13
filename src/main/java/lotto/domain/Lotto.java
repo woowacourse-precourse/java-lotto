@@ -22,16 +22,20 @@ public class Lotto {
      */
     private void validate(List<Integer> numbers) throws RuntimeException {
         if (numbers.size() != 6)
-            throw new IllegalArgumentException(LottoError.INVALID_NUMBERS_LENGTH.getErrorMessage());
+            throw new IllegalArgumentException(
+                    LottoError.INVALID_NUMBERS_LENGTH.getErrorMessage());
 
         int count = (int) numbers.stream()
                 .distinct()
                 .count();
         if (count != numbers.size())
-            throw new IllegalArgumentException(LottoError.DISTINCT_NUMBERS.getErrorMessage());
+            throw new IllegalArgumentException(
+                    LottoError.DISTINCT_NUMBERS.getErrorMessage());
     }
 
     public List<Integer> sorted() {
-        return numbers.stream().sorted().collect(Collectors.toList());
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
