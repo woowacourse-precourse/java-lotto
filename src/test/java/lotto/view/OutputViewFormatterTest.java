@@ -52,4 +52,10 @@ public class OutputViewFormatterTest {
     void outputRank(long number, String expected) {
         assertThat(outputViewFormatter.outputMoneyFormat(new Money(number))).isEqualTo(expected);
     }
+
+    @ParameterizedTest(name = "수익률은 소수점 둘째 자리에서 반올림한다")
+    @CsvSource(value = {"100.02:100.0%", "51.54:51.5%", "51.56:51.6%", "1000000.02:1,000,000.0%"}, delimiter = ':')
+    void outputYield(Double value, String expected) {
+        assertThat(outputViewFormatter.outputYieldFormat(value)).isEqualTo(expected);
+    }
 }

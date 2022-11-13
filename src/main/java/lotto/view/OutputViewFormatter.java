@@ -14,7 +14,6 @@ public class OutputViewFormatter {
     private static final String REWARD_FORMAT = " (%s원)";
     private static final String COUNT_FORMAT = " - %s개";
 
-
     public String outputLottoFormat(Lotto lotto) {
         return lotto.numbers().stream()
                 .sorted()
@@ -35,5 +34,9 @@ public class OutputViewFormatter {
 
     public String outputMoneyFormat(Money money) {
         return MONEY_DECIMAL_FORMAT.format(money.value());
+    }
+
+    public String outputYieldFormat(double yield) {
+        return String.format("%,.1f", yield) + "%";
     }
 }

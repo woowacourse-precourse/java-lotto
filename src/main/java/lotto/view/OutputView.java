@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.LottoResult;
 import lotto.domain.Lottos;
+import lotto.domain.Money;
 import lotto.domain.Rank;
 
 public class OutputView {
@@ -41,5 +42,9 @@ public class OutputView {
         Rank[] ranks = Rank.values();
         Arrays.sort(ranks, (o1, o2) -> Long.valueOf(o1.reward().value() - o2.reward().value()).intValue());
         return ranks;
+    }
+
+    public void outputYield(Money investmentPrincipal, Money revenue) {
+        System.out.println(outputViewFormatter.outputYieldFormat(Money.yield(investmentPrincipal, revenue)));
     }
 }
