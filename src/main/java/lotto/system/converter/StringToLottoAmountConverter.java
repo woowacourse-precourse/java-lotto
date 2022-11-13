@@ -12,7 +12,8 @@ public class StringToLottoAmountConverter implements Converter {
 	@Override
 	public Object convert(Object target) {
 		ValidationHolder.validate(target, LottoAmount.class);
-		target = ((String)target).replaceAll(",", "");
-		return new LottoAmount(Integer.parseInt((String)target) / 1000);
+		String targetCommaRemoved = ((String) target).replaceAll(",", "");
+		int money = Integer.parseInt(targetCommaRemoved);
+		return new LottoAmount(money, money / 1000);
 	}
 }

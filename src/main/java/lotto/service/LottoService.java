@@ -35,7 +35,7 @@ public class LottoService {
 				.mapToDouble(score -> score.getPrice() * scoreInfo.get(score))
 				.sum();
 
-		double profit = sumOfPrice / lottoAmount.getAmount();
+		double profit = sumOfPrice / lottoAmount.getMoney();
 		profit = convertToPercentage(profit);
 		profit = roundToFirstDigit(profit);
 		return profit;

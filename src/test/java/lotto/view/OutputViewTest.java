@@ -37,7 +37,7 @@ class OutputViewTest {
         //given
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        LottoAmount lottoAmount = new LottoAmount(10);
+        LottoAmount lottoAmount = new LottoAmount(10000, 10);
 
         //when
         outputView.printLottoAmount(lottoAmount);
