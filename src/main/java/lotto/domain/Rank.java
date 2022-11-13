@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 public enum Rank {
@@ -9,6 +10,8 @@ public enum Rank {
 	FOURTH(4, 50_000),
 	FIFTH(3, 5_000),
 	MISS(0, 0);
+
+	private static final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance();
 
 	private final int hitNumberCount;
 	private final int prizeMoney;
@@ -36,8 +39,7 @@ public enum Rank {
 	}
 
 	public String getPrizeMoneyWithComma() {
-		String money = Integer.toString(prizeMoney);
-		return money.replaceAll(Regex.CURRENCY.getExpression(), Regex.COMMA.getExpression());
+		return NUMBER_FORMAT.format(prizeMoney);
 	}
 
 	private static boolean isSecond(int hitNumberCount, boolean isContainsBonusNumber) {
