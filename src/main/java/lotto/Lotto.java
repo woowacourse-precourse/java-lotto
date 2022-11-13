@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Lotto {
@@ -15,6 +17,16 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
-    // TODO: 추가 기능 구현
+    
+    public Integer read() throws IllegalArgumentException{
+        try{
+            int purchaseAmount = Integer.valueOf(Console.readLine().strip());
+            return purchaseAmount;
+        }
+        catch(Exception e){
+            throw e;
+        }
+    }
+    
+    
 }
