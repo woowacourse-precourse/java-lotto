@@ -75,4 +75,10 @@ public class LottoService {
     public void initLotto(List<Integer> winningNumber) {
         lotto = new Lotto(winningNumber);
     }
+
+    public void initUserLotto(int money) {
+        int lottoAmount = getLottoAmount(money);
+
+        userLotto = new UserLotto(lottoAmount);
+    }
 }
