@@ -7,6 +7,7 @@ import lotto.repository.LottoRepository;
 public class LottoService {
     public static final int LOTTO_PRICE = 1000;
     public static final String NEXT_LINE = "\n";
+    public static final int ONE = 1;
     private final LottoRepository lottoRepository = LottoRepository.getInstance();
 
     public List<String> buyLottos(int inputPrice) {
@@ -25,8 +26,11 @@ public class LottoService {
         List<Lotto> lottos = lottoRepository.findAll();
         lottos.stream()
                 .map(Lotto::toString)
+                .limit(lottos.size() - ONE)
                 .forEach(lotto -> allLottoNumber.append(lotto)
                         .append(NEXT_LINE));
+        allLottoNumber.append(lottos.get(lottos.size() - ONE)
+                .toString());
         return List.of(String.valueOf(getCountOfLotto()), allLottoNumber.toString());
     }
 }
