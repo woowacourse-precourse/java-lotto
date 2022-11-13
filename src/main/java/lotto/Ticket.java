@@ -20,6 +20,11 @@ public class Ticket {
         this.tickets = tickets;
     }
 
+    public Ticket(int count, List<Lotto> tickets) {
+        this.count = count;
+        this.tickets = tickets;
+    }
+
     public Ticket(List<Lotto> tickets) {
         this.tickets = tickets;
     }
