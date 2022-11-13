@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static lotto.Result.calculate;
+
 
 public class Output {
 
@@ -30,8 +32,6 @@ public class Output {
     }
 
     public static void printEnd() {
-        double revenue = Result.getTotalPrize() / (double) StartLotto.payment;
-
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + Result.fifth + "개");
@@ -39,6 +39,6 @@ public class Output {
         System.out.println("5개 일치 (1,500,000원) - " + Result.third + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Result.second + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + Result.first + "개");
-        System.out.println("총 수익률은 " + Math.round(revenue * 1000) / 10.0 + "%입니다.");
+        System.out.println("총 수익률은 " + calculate() + "%입니다.");
     }
 }
