@@ -11,6 +11,7 @@ import java.util.TooManyListenersException;
 public class I_O_System {
     public static final String BAGIC_ERROR_MESSAGE = "[ERROR]";
     private static final String Sell_Messge = "개를 구매했습니다.";
+    private static final String User_Number_Answer = "당첨 번호를 입력해 주세요.";
     private static final String ERROR_Code_1 = " 숫자가 아닌 문자가 들어왔습니다.";
     private static final String ERROR_Code_2 = " 돈이 천원 단위로 나누어지지않습니다.";
 
@@ -18,7 +19,7 @@ public class I_O_System {
     private static final int Lottey_max = 6;
     private static final int Lottey_number_max = 45;
     static final int lottey_price = 1000;
-    
+
     private String Enter_Number = "0";
     private int Money_Enter = 0;
     private int Ticket =0;
@@ -33,7 +34,6 @@ public class I_O_System {
             return false;
         }
         Ticket =Money_Enter / lottey_price;
-        User_Lottery_Number();
         return true;
     }
 
@@ -66,6 +66,7 @@ public class I_O_System {
 
 
     public void Enter_WinningNumber() {
+        System.out.println(User_Number_Answer);
         Enter_Number = Console.readLine();
 
         String[] arrayIn = Enter_Number.split(",");
@@ -73,9 +74,7 @@ public class I_O_System {
         for (int i = 0; i < arrayIn.length; i++) {
             Winning_Number.add(Integer.parseInt(arrayIn[i]));
         }
-
         Lotto lotto = new Lotto(Winning_Number);
-        System.out.println(Winning_Number);
 
     }
     public void User_Lottery_Number(){
@@ -87,6 +86,10 @@ public class I_O_System {
             List<List<Integer>> mylist = new ArrayList<>();
             mylist.add(number);
         }
+    }
+    private void Bonus_Number()
+    {
+
     }
 
     public void Ticket_Print(List<Integer> number)
