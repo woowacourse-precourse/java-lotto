@@ -33,6 +33,10 @@ public class Customer {
         return bag.getLottos();
     }
 
+    public int getReceiptFee() {
+        return bag.getReceipt().getFee();
+    }
+
     public void earn(int money) {
         bag.setAmount(money);
     }
