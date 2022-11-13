@@ -46,4 +46,8 @@ public class Model {
             throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
         }
     }
+
+    public static Integer CountLottoAmount(Integer purchaseAmount) {
+        return purchaseAmount / 1000;
+    }
 }
