@@ -16,5 +16,9 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public Integer countNumbersIncluded(List<Integer> winningNumbers) {
+        return (int) winningNumbers.stream()
+                .filter(numbers::contains)
+                .count();
+    }
 }
