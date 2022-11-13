@@ -4,9 +4,6 @@ import java.util.List;
 
 import lotto.controller.LottoController;
 import lotto.service.LottoService;
-import lotto.system.converter.StringToLottoBuyingInfoConverter;
-import lotto.system.converter.WinningDtoToWinningConverter;
-import lotto.system.holder.ConverterHolder;
 import lotto.system.holder.ValidationHolder;
 import lotto.system.validator.IntegerListToLottoValidator;
 import lotto.system.validator.IntegerToLottoBuyingInfoValidator;
@@ -39,14 +36,6 @@ public class LottoApplication {
 		lottoService = new LottoService();
 		lottoController = new LottoController(inputView, outputView, lottoService);
 		initializeValidators();
-		initializeConverters();
-	}
-
-	public static void initializeConverters() {
-		ConverterHolder.initializeConverters(List.of(
-				new StringToLottoBuyingInfoConverter(),
-				new WinningDtoToWinningConverter()
-		));
 	}
 
 	public static void initializeValidators() {
@@ -60,6 +49,5 @@ public class LottoApplication {
 
 	public static void doAfter() {
 		ValidationHolder.clearHolder();
-		ConverterHolder.clearHolder();
 	}
 }

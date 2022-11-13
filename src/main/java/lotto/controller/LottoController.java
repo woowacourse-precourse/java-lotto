@@ -1,17 +1,16 @@
 package lotto.controller;
 
-import java.util.List;
-
 import lotto.domain.ScoreInfo;
-import lotto.vo.Lotto;
 import lotto.dto.WinningInfoDto;
 import lotto.service.LottoService;
-import lotto.system.holder.ConverterHolder;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+import lotto.vo.Lotto;
 import lotto.vo.LottoBuyingInfo;
 import lotto.vo.Profit;
 import lotto.vo.WinningInfo;
+
+import java.util.List;
 
 public class LottoController {
 	private final InputView inputView;
@@ -38,7 +37,7 @@ public class LottoController {
 
 	private LottoBuyingInfo getLottoBuyingInfo() {
 		String moneyInput = inputView.getMoney();
-		LottoBuyingInfo lottoBuyingInfo = ConverterHolder.convert(moneyInput, LottoBuyingInfo.class);
+		LottoBuyingInfo lottoBuyingInfo = new LottoBuyingInfo(moneyInput);
 		outputView.printLottoBuyingInfo(lottoBuyingInfo);
 		return lottoBuyingInfo;
 	}

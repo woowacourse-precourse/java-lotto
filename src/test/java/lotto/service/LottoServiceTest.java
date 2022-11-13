@@ -20,7 +20,6 @@ class LottoServiceTest {
 	@BeforeEach
 	void setup() {
 		LottoApplication.initializeValidators();
-		LottoApplication.initializeConverters();
 	}
 
 	@AfterEach

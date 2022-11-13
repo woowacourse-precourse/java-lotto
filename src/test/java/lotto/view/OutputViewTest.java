@@ -24,7 +24,6 @@ class OutputViewTest {
     @BeforeEach
     void setup() {
         LottoApplication.initializeValidators();
-        LottoApplication.initializeConverters();
     }
 
     @AfterEach

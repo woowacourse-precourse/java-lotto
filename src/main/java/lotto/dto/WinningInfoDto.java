@@ -1,7 +1,11 @@
 package lotto.dto;
 
-import lotto.system.holder.ConverterHolder;
+import lotto.system.holder.ValidationHolder;
 import lotto.vo.WinningInfo;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinningInfoDto {
     private String winningNumbers;
@@ -13,7 +17,24 @@ public class WinningInfoDto {
     }
 
     public WinningInfo toWinningInfo() {
-        return ConverterHolder.convert(this, WinningInfo.class);
+        ValidationHolder.validate(this, WinningInfo.class);
+
+        List<Integer> winningNumbers = convertWinningNumbersToIntegerList();
+        int bonus = convertBonusToInteger();
+
+        return new WinningInfo(winningNumbers, bonus);
+    }
+
+    private int convertBonusToInteger() {
+        return Integer.parseInt(bonus);
+    }
+
+    private List<Integer> convertWinningNumbersToIntegerList() {
+        return Arrays.stream(winningNumbers
+                        .replace(" ", "")
+                        .split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public String getWinningNumbers() {

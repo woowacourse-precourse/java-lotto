@@ -18,7 +18,6 @@ class WinningInfoTest {
     @BeforeEach
     void setup() {
         LottoApplication.initializeValidators();
-        LottoApplication.initializeConverters();
     }
 
     @AfterEach
