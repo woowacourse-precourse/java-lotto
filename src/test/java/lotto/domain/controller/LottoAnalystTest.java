@@ -113,7 +113,7 @@ public class LottoAnalystTest {
     @Test
     @DisplayName("수익률 - 100% 미만 테스트")
     void calculateRateOfReturn_UnderHundredPercentTest() {
-        int purchaseAmount = 6000;
+        int purchaseAmount = 8000;
         int numberOfNotWin = (purchaseAmount / LottoIssuer.PRICE_OF_LOTTO) - 1;
         int fifthRankReturn = RankingInformation.FIFTH_PLACE.getAmountOfReturn();
 
@@ -121,7 +121,7 @@ public class LottoAnalystTest {
 
         lottoAnalyst.makeWinningStatistics(lottos, winningLottoExample);
 
-        double expected = (double)fifthRankReturn / (double)purchaseAmount;
+        double expected = (double)fifthRankReturn / (double)purchaseAmount * 100;
         expected = Math.round(expected * 10) / 10.0;
 
         double actual = lottoAnalyst.calculateRateOfReturn();
@@ -140,7 +140,7 @@ public class LottoAnalystTest {
 
         lottoAnalyst.makeWinningStatistics(lottos, winningLottoExample);
 
-        double expected = (double)fifthRankReturn / (double)purchaseAmount;
+        double expected = (double)fifthRankReturn / (double)purchaseAmount * 100;
         expected = Math.round(expected * 10) / 10.0;
 
         double actual = lottoAnalyst.calculateRateOfReturn();
@@ -159,7 +159,7 @@ public class LottoAnalystTest {
 
         lottoAnalyst.makeWinningStatistics(lottos, winningLottoExample);
 
-        double expected = (double)fifthRankReturn / (double)purchaseAmount;
+        double expected = (double)fifthRankReturn / (double)purchaseAmount * 100;
         expected = Math.round(expected * 10) / 10.0;
 
         double actual = lottoAnalyst.calculateRateOfReturn();
