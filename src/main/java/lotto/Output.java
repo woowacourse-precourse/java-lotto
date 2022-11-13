@@ -31,6 +31,14 @@ public class Output {
 
 		for(int i=0;userNumber.size()>i;i++){
 
+			if (!userNumber.get(i).contains(bonusNumber)) {
+				userNumber.get(i).retainAll(winningNumber);
+			}
+			if (userNumber.get(i).contains(bonusNumber)) {
+				userNumber.get(i).retainAll(winningNumber);
+				userNumber.get(i).add(bonusNumber);
+			}
+
 			if (userNumber.get(i).size() == 3){
 				result.put("three",result.get("three")+1);
 			}
@@ -38,14 +46,12 @@ public class Output {
 				result.put("four",result.get("four")+1);
 			}
 			if (userNumber.get(i).size() == 5){
-				System.out.println(userNumber.get(i)+"가"+bonusNumber+"를포함하는가");
-				System.out.println(userNumber.get(i).contains(bonusNumber));
 				result.put("five",result.get("five")+1);
 			}
-			if (userNumber.get(i).size() == 5 && userNumber.get(i).contains(bonusNumber)){
+			if (userNumber.get(i).size() == 6 && userNumber.get(i).contains(bonusNumber)){
 				result.put("bonus",result.get("bonus")+1);
 			}
-			if (userNumber.get(i).size() == 6){
+			if (userNumber.get(i).size() == 6 && !userNumber.get(i).contains(bonusNumber)){
 				result.put("six",result.get("six")+1);
 			}
 		}
