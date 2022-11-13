@@ -18,7 +18,7 @@ public class InputUI {
     public int getMoney() {
         outputUI.printMessage(MONEY_INPUT_MESSAGE);
         String money = Console.readLine();
-        validator.isValidatedMoney(money);
+        validator.validatedMoney(money);
         return Integer.parseInt(money);
     }
 
@@ -30,14 +30,14 @@ public class InputUI {
     private String getNormalNumbers() {
         outputUI.printMessage(NORMAL_NUMBER_INPUT_MESSAGE);
         String normalNumbers = Console.readLine();
-        validator.isValidatedNormalNumbers(normalNumbers);
+        validator.validateNormalNumbers(normalNumbers);
         return normalNumbers;
     }
 
     private String getBonusNumbers() {
         outputUI.printMessage(BONUS_NUMBER_INPUT_MESSAGE);
         String bonusNumber = Console.readLine();
-        validator.isValidatedBonusNumber(bonusNumber);
+        validator.validateBonusNumber(bonusNumber);
         return bonusNumber;
     }
 }

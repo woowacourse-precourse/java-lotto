@@ -11,7 +11,7 @@ public class Validator {
     private static final String ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE = "[ERROR] 숫자의 범위는 1에서 45 사이여야합니다.";
 
 
-    public void isValidatedMoney(String money) {
+    public void validatedMoney(String money) {
 
         validateConsistOfNumber(money);
 
@@ -24,7 +24,7 @@ public class Validator {
         }
     }
 
-    public void isValidatedNormalNumbers(String normalNumbers) {
+    public void validateNormalNumbers(String normalNumbers) {
         List<String> numbersInString = List.of(normalNumbers.split(","));
         List<Integer> numbersInInteger = List.of();
 
@@ -34,7 +34,7 @@ public class Validator {
         }
     }
 
-    public void isValidatedBonusNumber(String bonusNumber) {
+    public void validatedBonusNumber(String bonusNumber) {
         validateConsistOfNumber(bonusNumber);
         validateProperRangeOfNumber(Integer.parseInt(bonusNumber));
     }
