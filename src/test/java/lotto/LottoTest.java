@@ -3,6 +3,7 @@ package lotto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.ArrayList;
 import java.util.List;
 import lotto.entity.Lotto;
 import org.junit.jupiter.api.DisplayName;
@@ -67,6 +68,20 @@ class LottoTest {
 
         //then
         assertThat(result).isFalse();
+    }
+
+    @DisplayName("로또를 정렬된 형식으로 출력하는지 확인한다.")
+    @Test
+    void printLotto() {
+        //given
+        Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
+        List<Integer> output = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+
+        //when
+        String result = lotto.toString();
+
+        //then
+        assertThat(result).isEqualTo(output.toString());
     }
 
 }
