@@ -5,14 +5,15 @@ import lotto.model.Lotto;
 import lotto.model.Rank;
 
 public class EachNumberCalculateService {
-    Lotto winningLottery;
+
+    private final static int BONUSNUMBER = 5;
+
+    private Lotto winningLottery;
 
     public EachNumberCalculateService(Lotto lottery){
         winningLottery = lottery;
     }
-    public void calculate(){
 
-    }
 
     public int howManyMatchesNumber(Lotto lottery){
         return lottery.getNumbers().stream()
@@ -22,7 +23,7 @@ public class EachNumberCalculateService {
     }
 
     private boolean isNeedBonusCheck(int matchedNumber){
-        return matchedNumber == 5;
+        return matchedNumber == BONUSNUMBER;
     }
 
 }
