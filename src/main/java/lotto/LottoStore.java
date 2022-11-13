@@ -13,22 +13,26 @@ public class LottoStore {
     }
 
     public void playLottoGame() {
-        PurchaseAmount purchaseAmount = setPurchaseAmount();
-        int numberOfLottosPurchased = purchaseAmount.getNumberOfLottoPurchased();
+        try {
+            PurchaseAmount purchaseAmount = setPurchaseAmount();
+            int numberOfLottosPurchased = purchaseAmount.getNumberOfLottoPurchased();
 
-        PurchaseLottos purchaseLottos = setPurchaseLottos(numberOfLottosPurchased);
-        List<Lotto> lottos = purchaseLottos.getPurchaseLottos();
+            PurchaseLottos purchaseLottos = setPurchaseLottos(numberOfLottosPurchased);
+            List<Lotto> lottos = purchaseLottos.getPurchaseLottos();
 
-        printPurchaseInform(numberOfLottosPurchased, lottos);
+            printPurchaseInform(numberOfLottosPurchased, lottos);
 
-        Lotto winningNumbers = enterWinningNumbers();
-        BonusNumber bonusNumber = enterBonusNumbers(winningNumbers);
+            Lotto winningNumbers = enterWinningNumbers();
+            BonusNumber bonusNumber = enterBonusNumbers(winningNumbers);
 
-        WinningStatisticsCalculator winningStatisticsCalculator = new WinningStatisticsCalculator();
-        winningStatisticsCalculator.calculateNumberOfWins(lottos, winningNumbers, bonusNumber.getBonusNumber());
+            WinningStatisticsCalculator winningStatisticsCalculator = new WinningStatisticsCalculator();
+            winningStatisticsCalculator.calculateNumberOfWins(lottos, winningNumbers, bonusNumber.getBonusNumber());
 
-        printWinningStatics(winningStatisticsCalculator.getWinningHistory());
-        printRateOfReturn(winningStatisticsCalculator.getRateOfReturn());
+            printWinningStatics(winningStatisticsCalculator.getWinningHistory());
+            printRateOfReturn(winningStatisticsCalculator.getRateOfReturn());
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
     private PurchaseAmount setPurchaseAmount() {
