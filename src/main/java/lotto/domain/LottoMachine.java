@@ -19,7 +19,7 @@ public class LottoMachine {
 
     private List<String> inputNumber(int length) {
         List<String> inputs = Arrays.asList(Console.readLine().split(","));
-        inputs = inputs.stream().filter(s -> !s.isBlank()).collect(Collectors.toList());
+        inputs = inputs.stream().filter(s -> !s.isBlank()).map(s -> s.trim()).collect(Collectors.toList());
 
         if(inputs.size() != length){
             Logger.log(INPUT_NUMBER_SIZE_ERROR_MESSAGE, LogType.ERROR);
@@ -34,7 +34,7 @@ public class LottoMachine {
     }
 
     private void checkNumericString(String number) {
-        if(!number.trim().chars().allMatch(Character::isDigit)){
+        if(!number.chars().allMatch(Character::isDigit)){
             Logger.log(NUMERIC_STRING_ERROR_MESSAGE, LogType.ERROR);
             throw new IllegalArgumentException();
         }
