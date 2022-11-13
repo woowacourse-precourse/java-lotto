@@ -38,4 +38,8 @@ public class User {
     public int getMoney() {
         return money;
     }
+
+    public List<LotteryTicket> getLotteryTickets() {
+        return new ArrayList<>(lotteryTickets);
+    }
 }
