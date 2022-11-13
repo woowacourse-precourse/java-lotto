@@ -4,40 +4,50 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LottoStore {
-    private static InputView inputView;
-    private static OutputView outputView;
-
-    public LottoStore() {
-        inputView = new InputView();
-        outputView = new OutputView();
-    }
+    private static int amount;
+    private static List<Lotto> lottos;
+    private static Lotto winningNumbers;
+    private static BonusNumber bonusNumber;
 
     public void playLottoGame() {
         try {
-            PurchaseAmount purchaseAmount = setPurchaseAmount();
-            int numberOfLottosPurchased = purchaseAmount.getNumberOfLottoPurchased();
-            int amount = purchaseAmount.getAmount();
-
-            PurchaseLottos purchaseLottos = setPurchaseLottos(numberOfLottosPurchased);
-            List<Lotto> lottos = purchaseLottos.getPurchaseLottos();
-
-            printPurchaseInform(numberOfLottosPurchased, lottos);
-
-            Lotto winningNumbers = enterWinningNumbers();
-            BonusNumber bonusNumber = enterBonusNumbers(winningNumbers);
-
-            WinningStatisticsCalculator winningStatisticsCalculator = new WinningStatisticsCalculator();
-            winningStatisticsCalculator.calculateNumberOfWins(lottos, winningNumbers, bonusNumber.getBonusNumber());
-
-            printWinningStatics(winningStatisticsCalculator.getWinningHistory());
-            printRateOfReturn(winningStatisticsCalculator.calculateRateOfReturn(amount));
+            purchaseLotto();
+            setWinningNumbers();
+            showWinningStatics();
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
     }
 
+    private void purchaseLotto() {
+        PurchaseAmount purchaseAmount = setPurchaseAmount();
+        int numberOfLottosPurchased = purchaseAmount.getNumberOfLottoPurchased();
+        amount = purchaseAmount.getAmount();
+
+        PurchaseLottos purchaseLottos = setPurchaseLottos(numberOfLottosPurchased);
+        lottos = purchaseLottos.getPurchaseLottos();
+
+        printPurchaseInform(numberOfLottosPurchased, lottos);
+    }
+
+    private void setWinningNumbers() {
+        winningNumbers = setWinningNumber();
+        bonusNumber = setBonusNumbers(winningNumbers);
+    }
+
+    private void showWinningStatics() {
+        WinningStatisticsCalculator winningStatisticsCalculator = new WinningStatisticsCalculator();
+        winningStatisticsCalculator.calculateNumberOfWins(lottos, winningNumbers, bonusNumber.getBonusNumber());
+
+        HashMap<WinningHistory, Integer> winningHistories = winningStatisticsCalculator.getWinningHistory();
+        String rateOfReturn = winningStatisticsCalculator.calculateRateOfReturn(amount);
+
+        printWinningStatics(winningHistories);
+        OutputView.printRateOfReturn(rateOfReturn);
+    }
+
     private PurchaseAmount setPurchaseAmount() {
-        return new PurchaseAmount(inputView.enterAmount());
+        return new PurchaseAmount(InputView.enterAmount());
     }
 
     private PurchaseLottos setPurchaseLottos(int numberOfLottoPurchased) {
@@ -45,26 +55,22 @@ public class LottoStore {
     }
 
     private void printPurchaseInform(int numberOfLottosPurchased, List<Lotto> lottos) {
-        outputView.printNumberOfLottosPurchased(numberOfLottosPurchased);
-        outputView.printLottosList(lottos);
+        OutputView.printNumberOfLottosPurchased(numberOfLottosPurchased);
+        OutputView.printLottosList(lottos);
     }
 
-    private Lotto enterWinningNumbers() {
-        return new Lotto(inputView.enterWinningNumber());
+    private Lotto setWinningNumber() {
+        return new Lotto(InputView.enterWinningNumber());
     }
 
-    private BonusNumber enterBonusNumbers(Lotto winningNumbers) {
-        return new BonusNumber(inputView.enterBonusNumber(), winningNumbers);
+    private BonusNumber setBonusNumbers(Lotto winningNumbers) {
+        return new BonusNumber(InputView.enterBonusNumber(), winningNumbers);
     }
 
     private void printWinningStatics(HashMap<WinningHistory, Integer> winningHistories) {
-        outputView.printStartStatics();
+        OutputView.printStartStatics();
         for (WinningHistory winningHistory : WinningHistory.getValues()) {
-            outputView.printStatics(winningHistory.getStaticsMessage(winningHistories.get(winningHistory)));
+            OutputView.printStatics(winningHistory.getStaticsMessage(winningHistories.get(winningHistory)));
         }
-    }
-
-    private void printRateOfReturn(String rateOfReturn) {
-        outputView.printRateOfReturn(rateOfReturn);
     }
 }
