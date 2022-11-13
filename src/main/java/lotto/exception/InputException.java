@@ -13,14 +13,14 @@ public class InputException {
     private InputException() {}
 
     public static void validatesLottoAmount(String amount) {
-        validateNumber(amount);
+        validateNumberByValue(amount, LOTTO_AMOUNT);
         validateSplit(amount);
         validateUnder(amount);
     }
 
     public static List<Integer> validatesWinLottoNumber(String number) {
         validateLength(number, NUMBER_LENGTH);
-        validateNumber(number);
+        validateNumberByValue(number, WIN_LOTTO_NUMBER);
         validateSplitComma(number);
         validateDuplicate(number);
         validateNotExceed(number);
@@ -28,10 +28,17 @@ public class InputException {
     }
 
     public static int validatesBonusNumber(String number) {
-        validateNumber(number);
+        validateNumberByValue(number, BONUS_NUMBER);
         validateLength(number, BONUS_NUMBER_LENGTH);
         validateNotExceed(number);
         return Integer.parseInt(number);
+    }
+
+    private static void validateNumberByValue(String number, String value) {
+        if(value.equals(WIN_LOTTO_NUMBER)) {
+            number = toString(toList(number));
+        }
+        validateNumber(number);
     }
 
     private static void validateNumber(String number) {
@@ -53,7 +60,8 @@ public class InputException {
     }
 
     private static void validateLength(String number, int length) {
-        if(number.length() != length) {
+        List<Integer> numbers = toList(number);
+        if(numbers.size() != length) {
             exception(NOT_LENGTH);
         }
     }
@@ -72,8 +80,11 @@ public class InputException {
     }
 
     private static void validateNotExceed(String number) {
-        if(Integer.parseInt(number) > 45) {
-            exception(NOT_EXCEEDING_45);
+        List<Integer> numbers = toList(number);
+        for(Integer num : numbers) {
+            if(num > 45) {
+                exception(NOT_EXCEEDING_45);
+            }
         }
     }
 
@@ -81,14 +92,20 @@ public class InputException {
         throw new IllegalArgumentException(ERROR_FORM + message);
     }
 
-    public static int[] toIntArray(String inputNumbers) {
+    private static int[] toIntArray(String inputNumbers) {
         return Stream.of(inputNumbers.split(",")).mapToInt(Integer::parseInt).toArray();
     }
 
-    public static List<Integer> toList(String inputNumbers) {
+    private static List<Integer> toList(String inputNumbers) {
         int[] numbers = toIntArray(inputNumbers);
         return Arrays.stream(numbers)
                 .boxed()
                 .collect(Collectors.toList());
+    }
+
+    private static String toString(List<Integer> numbers) {
+        StringBuilder sb = new StringBuilder();
+        numbers.forEach(sb::append);
+        return sb.toString();
     }
 }
