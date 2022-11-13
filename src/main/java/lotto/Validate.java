@@ -12,7 +12,7 @@ public class Validate {
             throw new IllegalArgumentException("[ERROR] 유효한 값을 입력하세요.");
         return money;
     }
-    public void isContainOthers(String input)throws IllegalArgumentException{
+    public void containOthers(String input)throws IllegalArgumentException{
         for(int i = 0; i < input.length(); i++){
             if(!Character.isDigit(input.charAt(i)))
                 throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
@@ -21,11 +21,11 @@ public class Validate {
     public void validateUserInput(String input)throws IllegalArgumentException{
         String [] checkInput = input.split(",");
         for (String num : checkInput) {
-            isContainOthers(num);
+            containOthers(num);
         }
     }
     public void validateBonusNumber(List<Integer> winningNumber, String userInput)throws IllegalArgumentException{
-        isContainOthers(userInput);
+        containOthers(userInput);
         int bonusNumber = Integer.parseInt(userInput);
         if(userInput.length() > 2)
             throw new IllegalArgumentException("[ERROR] 올바른 숫자를 입력하세요.");

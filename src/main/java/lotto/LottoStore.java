@@ -15,7 +15,7 @@ public class LottoStore {
     }
     public void lottoTries(String money) {
         Validate checkMoney = new Validate();
-        checkMoney.isContainOthers(money);
+        checkMoney.containOthers(money);
         validMoney = checkMoney.validMoney(Long.parseLong(money));
         PrintMessenger.volumeBuying(validMoney / lottoPrice);
     }
