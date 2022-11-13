@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +24,12 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("당첨 번호와 일치하는 번호의 수를 확인한다.")
+    @Test
+    void testNumberOfMatched(){
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 7);
+        Lotto lotto = new Lotto(numbers);
+        assertThat(lotto.numberOfMatched(winningNumbers)).isEqualTo(5);
+    }
 }
