@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Referee {
-    private static final int LOTTOLENGTH = 6;
+    private static final int LOTTO_LENGTH = 6;
 
     public static List<List<Integer>> Compare(List<List<Integer>> lottos, List<List<String>> winningNumbers) {
         List<List<Integer>> totalResult = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Referee {
     public static List<Integer> compareOne(List<Integer> lotto, List<List<String>> winningNumbers) {
         int countWinningNumHits = 0;
         int countBonusNumHits = 0;
-        for (int i = 0; i < LOTTOLENGTH; i++) {
+        for (int i = 0; i < LOTTO_LENGTH; i++) {
             if (lotto.contains(Integer.parseInt(winningNumbers.get(0).get(i)))) {
                 countWinningNumHits++;
             }
@@ -45,11 +45,11 @@ public class Referee {
             hitResult.set(3, 1);
             return hitResult;
         }
-        if (countWinningNumHits == 6) {
+        if (countWinningNumHits == LOTTO_LENGTH) {
             hitResult.set(4, 1);
             return hitResult;
         }
-        for (int i = 3; i < LOTTOLENGTH; i++) {
+        for (int i = 3; i < LOTTO_LENGTH; i++) {
             if (countWinningNumHits == i) {
                 hitResult.set(i - 3, 1);
             }
