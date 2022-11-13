@@ -13,11 +13,10 @@ public class Judgement {
         return result;
     }
 
-    public int correctBonus(List<Integer> computer, int number) {
-        int bonus = 0;
-        if(computer.contains(number)){
-            bonus++;
+    public boolean correctBonus(List<Integer> computer, int number) {
+        if (computer.contains(number)) {
+            return true;
         }
-        return bonus;
+        return false;
     }
 }
