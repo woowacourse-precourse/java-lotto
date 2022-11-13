@@ -21,6 +21,12 @@ public class UserLotto {
         return input;
     }
 
+    public void getPurchaseLottoNumbers(){
+        for(int i=0;i<userLotto.size();i++){
+            List<Integer> numbers = new ArrayList<>(userLotto.get(i));
+        }
+    }
+
     public void validateUnit(int input){
         if(input % 1000 != 0){
             throw new IllegalArgumentException("[ERROR] 구입 금액이 1000원 단위가 아닙니다.");
