@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+enum Prize { FIRST, SECOND, THIRD, FOURTH, FIFTH, NONE };
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -36,6 +38,22 @@ public class Lotto {
 
     public boolean contains(Integer number) {
         return this.numbers.contains(number);
+    }
+
+    public Prize getResult(Lotto winning, Integer bonusNumber) {
+        Integer matchCount = this.getMatchCount(winning);
+
+        if(matchCount == 6)
+            return Prize.FIRST;
+        else if(matchCount == 5 && this.contains(bonusNumber))
+            return Prize.SECOND;
+        else if(matchCount == 5)
+            return Prize.THIRD;
+        else if(matchCount == 4)
+            return Prize.FOURTH;
+        else if(matchCount == 3)
+            return Prize.FIFTH;
+        return Prize.NONE;
     }
 
     private Integer getMatchCount(Lotto winning) {
