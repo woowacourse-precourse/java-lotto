@@ -10,25 +10,24 @@ import org.junit.jupiter.api.Test;
 class StatisticsTest {
 
     private final Statistics statistics = new Statistics();
-    private WinningLotto winningLotto;
-    private List<Lotto> lottos;
 
     @BeforeEach
     void init() {
-        winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
+        WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
         Lotto lotto1 = new Lotto(List.of(1, 2, 3, 41, 42, 43));
         Lotto lotto2 = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-        lottos = List.of(lotto1, lotto2);
+        List<Lotto> lottos = List.of(lotto1, lotto2);
         statistics.makeStatistics(winningLotto, lottos);
     }
 
     @Test
     void rankings초기화_테스트() {
+        System.out.println(statistics.getYield());
         assertThat(statistics.getRankings()).hasSize(5);
     }
 
     @Test
-    void rankins순위_테스트() {
+    void rankings순위_테스트() {
         Map<Integer, Integer> rankings = statistics.getRankings();
 
         assertThat(rankings.get(1)).isEqualTo(0);
@@ -38,4 +37,8 @@ class StatisticsTest {
         assertThat(rankings.get(5)).isEqualTo(1);
     }
 
+    @Test
+    void 수익률_계산_테스트() {
+        assertThat(statistics.getYield()).isEqualTo(1500250.0);
+    }
 }

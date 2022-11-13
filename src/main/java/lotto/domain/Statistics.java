@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class Statistics {
 
-    private Map<Integer, Integer> rankings = new HashMap<>();
-    private long yield;
+    private Map<Integer, Integer> rankings;
+    private double yield;
 
     public Statistics() {
     }
@@ -16,7 +16,7 @@ public class Statistics {
         return rankings;
     }
 
-    public long getYield() {
+    public double getYield() {
         return yield;
     }
 
@@ -26,15 +26,15 @@ public class Statistics {
     }
 
     private void makeYield(List<Lotto> lottos) {
-        int lottoQuantity = lottos.size();
-        int totalIncome = 0;
+        double lottoQuantity = lottos.size();
+        double totalIncome = 0;
 
-        List<Integer> temp = List.of(0, 2000000000, 30000000, 1500000, 50000, 5000);
+        List<Integer> prizeList = List.of(0, 2000000000, 30000000, 1500000, 50000, 5000);
         for (int i = 1; i <= 5; i++) {
-            totalIncome += rankings.get(i) * temp.get(i);
+            totalIncome += rankings.get(i) * prizeList.get(i);
         }
 
-        yield = totalIncome / lottoQuantity;
+        yield = Math.round((totalIncome / (lottoQuantity * 1000) * 100) * 10) / 10.0;
     }
 
     private void makeRankings(WinningLotto winningLotto, List<Lotto> lottos) {
@@ -64,6 +64,7 @@ public class Statistics {
     }
 
     private void initRankings() {
+        rankings = new HashMap<>();
         for (int i = 5; i > 0; i--) {
             rankings.put(i, 0);
         }
