@@ -31,4 +31,9 @@ public class Lotto {
         return result;
     }
 
+    public int getWinningAmount(WinningNumbers winningNumbers) {
+        CompareResult compareResult = compareWith(winningNumbers);
+
+        return Prize.toPrize(compareResult).getMoney();
+    }
 }

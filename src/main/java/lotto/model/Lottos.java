@@ -11,4 +11,10 @@ public class Lottos {
     public int getSize() {
         return lottos.size();
     }
+
+    public int getWinningAmount(WinningNumbers winningNumbers) {
+        return lottos.stream()
+                .mapToInt(lotto -> lotto.getWinningAmount(winningNumbers))
+                .sum();
+    }
 }
