@@ -26,4 +26,16 @@ class WinningRankTest {
         assertThat(rank.isWin(duplicatedCount, isContainBonusNumber)).isEqualTo(expected);
     }
 
+    @ParameterizedTest(name = "findByWinningCondition 테스트 {index} : {2}")
+    @CsvSource(value = {"6,false,FIRST_RANK",
+            "5,true,SECOND_RANK",
+            "5,false,THIRD_RANK",
+            "4,true,FOURTH_RANK",
+            "3,false,FIFTH_RANK",
+            "1,false,NONE_RANKED"})
+    void findByWinningConditionTest(int duplicatedNumberCount, boolean isContainBonusNumber, WinningRank expectedRank) {
+        WinningRank actualRank = WinningRank.findByWinningCondition(duplicatedNumberCount, isContainBonusNumber);
+        assertThat(actualRank).isEqualTo(expectedRank);
+    }
+
 }
