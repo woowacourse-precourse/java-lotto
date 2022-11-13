@@ -60,13 +60,36 @@ public class LottoTicketTest {
 
     static List<Arguments> winningNumbersAndBonusNumber() {
         return Arrays.asList(
-                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.valueOf(7), List.of(1, 0, 0, 0, 1)),
-                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 43)), LottoNumber.valueOf(6), List.of(0, 1, 0, 0, 1)),
-                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 8)), LottoNumber.valueOf(7), List.of(0, 0, 1, 1, 0)),
-                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 40, 41)), LottoNumber.valueOf(7), List.of(0, 0, 0, 1, 1)),
-                Arguments.of(new Lotto(List.of(1, 2, 3, 40, 41, 42)), LottoNumber.valueOf(7), List.of(0, 0, 0, 0, 2)),
-                Arguments.of(new Lotto(List.of(37, 38, 39, 40, 41, 42)), LottoNumber.valueOf(7), List.of(0, 0, 0, 0, 0))
+                Arguments.of(
+                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                        LottoNumber.valueOf(7),
+                        List.of(1L, 0L, 0L, 0L, 1L)
+                ),
+                Arguments.of(
+                        new Lotto(List.of(1, 2, 3, 4, 5, 43)),
+                        LottoNumber.valueOf(6),
+                        List.of(0L, 1L, 0L, 0L, 1L)
+                ),
+                Arguments.of(
+                        new Lotto(List.of(1, 2, 3, 4, 5, 8)),
+                        LottoNumber.valueOf(7),
+                        List.of(0L, 0L, 1L, 1L, 0L)
+                ),
+                Arguments.of(
+                        new Lotto(List.of(1, 2, 3, 4, 40, 41)),
+                        LottoNumber.valueOf(7),
+                        List.of(0L, 0L, 0L, 1L, 1L)
+                ),
+                Arguments.of(
+                        new Lotto(List.of(1, 2, 3, 40, 41, 42)),
+                        LottoNumber.valueOf(7),
+                        List.of(0L, 0L, 0L, 0L, 2L)
+                ),
+                Arguments.of(
+                        new Lotto(List.of(37, 38, 39, 40, 41, 42)),
+                        LottoNumber.valueOf(7),
+                        List.of(0L, 0L, 0L, 0L, 0L)
+                )
         );
     }
-
 }
