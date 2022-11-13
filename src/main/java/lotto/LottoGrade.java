@@ -5,7 +5,8 @@ public enum LottoGrade {
     SECOND(5, 30_000_000, true),
     THIRD(5, 1_500_000, false),
     FOURTH(4, 50_000, false),
-    FIFTH(3, 5_000, false);
+    FIFTH(3, 5_000, false),
+    BANG(0, 0, false);
 
     private final int matchCount;
     private final int price;
@@ -17,11 +18,18 @@ public enum LottoGrade {
         this.isMatchBonus = isMatchBonus;
     }
 
-    //3개 일치 (5,000원) - 1개
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public boolean isMatchBonus() {
+        return isMatchBonus;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(price).append("개 일치");
+        stringBuilder.append(matchCount).append("개 일치");
         if (isMatchBonus) {
             stringBuilder.append(", 보너스 볼 일치");
         }
