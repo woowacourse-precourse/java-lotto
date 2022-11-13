@@ -23,6 +23,12 @@ public final class Lotto {
                 .count();
     }
 
+    public int findBonusNumberWinCount(int bonusNumber) {
+        return (int) IntStream.range(0, 6)
+                .filter(i -> numbers.get(i).equals(bonusNumber))
+                .count();
+    }
+
     public List<Integer> getNumbers() {
         return new ArrayList<>(numbers);
     }
