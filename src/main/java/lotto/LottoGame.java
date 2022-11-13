@@ -102,15 +102,17 @@ public class LottoGame {
 
         List<Integer> winningNumbers = new ArrayList<>();
         for (String splitedUserInput : splitedUserInputs) {
-            if (!splitedUserInput.matches(NUMERIC_PATTERN))
+            if (!splitedUserInput.matches(NUMERIC_PATTERN)) {
                 throw new IllegalArgumentException("[ERROR] 당첨 결과는 공백없이 쉼표를 기준으로 입력해야합니다.");
+            }
 
             int number = Integer.parseInt(splitedUserInput);
             winningNumbers.add(number);
         }
 
-        if (winningNumbers.size() != Lotto.LOTTERY_NUMBER_LENGTH)
+        if (winningNumbers.size() != Lotto.LOTTERY_NUMBER_LENGTH) {
             throw new IllegalArgumentException(String.format("[ERROR] 당첨 결과는 %d개의 숫자로 구성되어야 합니다.", Lotto.LOTTERY_NUMBER_LENGTH));
+        }
 
         return winningNumbers;
     }
@@ -144,7 +146,9 @@ public class LottoGame {
         for (Lotto lottery : lotteries) {
             LottoResult result = lottery.compareWinningNumbers(winningNumbers, bonus);
 
-            if (result == LottoResult.None) continue;
+            if (result == LottoResult.None) {
+                continue;
+            }
 
             int count = compareResult.getOrDefault(result, 0);
             compareResult.put(result, count + 1);
@@ -163,12 +167,16 @@ public class LottoGame {
 
         long amount = 0;
         for (LottoResult lottoResult : LottoResult.values()) {
-            if (lottoResult == LottoResult.None) continue;
+            if (lottoResult == LottoResult.None) {
+                continue;
+            }
 
             int count = result.getOrDefault(lottoResult, 0);
             System.out.printf("%s - %d개\n", lottoResult.toString(), count);
 
-            if (count > 0) amount += lottoResult.getAmount() * count;
+            if (count > 0) {
+                amount += lottoResult.getAmount() * count;
+            }
         }
         double yield = ((double) amount / buyPrice) * 100;
         System.out.printf("총 수익률은 %.1f%%입니다.\n", yield);

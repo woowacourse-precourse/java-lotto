@@ -68,7 +68,9 @@ public class Lotto {
         StringBuilder lottery = new StringBuilder();
 
         for (Integer number : numbers) {
-            if (!lottery.toString().equals("")) lottery.append(", ");
+            if (!lottery.toString().equals("")) {
+                lottery.append(", ");
+            }
             lottery.append(number);
         }
 
@@ -86,7 +88,9 @@ public class Lotto {
         int matchCount = 0;
         boolean bonusMatched = numbers.contains(bonus);
         for (int number : winningNumbers) {
-            if (numbers.contains(number)) matchCount++;
+            if (numbers.contains(number)) {
+                matchCount++;
+            }
         }
 
         return LottoResult.find(matchCount, bonusMatched);
