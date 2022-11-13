@@ -110,4 +110,16 @@ public class LottoController {
         }
         output.showLottoPrize(prizeList, winCount);
     }
+
+    private void calculateYield(){
+        HashMap<Integer, Integer> numberOfWins = lottoData.getNumberOfWins();
+        List<Integer> prizeList = new ArrayList<>(numberOfWins.keySet());
+        double yield = 0;
+        double earning = 0;
+        for(int prize : prizeList){
+            earning += (prize * numberOfWins.get(prize));
+        }
+        yield = earning/(lottoData.getCountOfLotto() * lottoData.LOTTOPRICE);
+        output.showYield(yield);
+    }
 }

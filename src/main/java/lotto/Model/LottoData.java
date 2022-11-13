@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LottoData{
+    public final int LOTTOPRICE = 1000;
     public enum LottoPrize{
         FIRSTPRIZE(2000000000),
         SECONDPRIZE(30000000),

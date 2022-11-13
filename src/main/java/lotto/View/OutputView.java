@@ -28,4 +28,8 @@ public class OutputView {
         System.out.print("5개 일치, 보너스 볼 일치 (" + prize.get(SECONDRANK) + ") - " + winCount.get(SECONDRANK));
         System.out.print("6개 일치 (" + prize.get(FIRSTRANK) + ") - " + winCount.get(FIRSTRANK));
     }
+
+    public void showYield(double yield){
+        System.out.println("총 수익률은 " + yield + "%입니다.");
+    }
 }
