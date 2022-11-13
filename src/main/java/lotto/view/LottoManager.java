@@ -1,15 +1,15 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
 import lotto.Lotto;
 import lotto.LottoCalculator;
-import lotto.Rank;
 
 public class LottoManager {
+    private int purchaseMoney;
+
     public int inputLottoCount() {
         System.out.println("구입금액을 입력해 주세요.");
-        int purchaseMoney = Integer.parseInt(Console.readLine());
+        purchaseMoney = Integer.parseInt(Console.readLine());
         if (purchaseMoney % 1000 > 0) {
             throw new IllegalArgumentException();
         }
@@ -38,5 +38,9 @@ public class LottoManager {
         System.out.printf("5개 일치 (1,500,000원) - " + lottoCalculator.getRankCount().get(2) + "개");
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoCalculator.getRankCount().get(3) + "개");
         System.out.printf("6개 일치 (2,000,000,000원) - " + lottoCalculator.getRankCount().get(4) + "개");
+    }
+
+    public void printRateOfReturn(LottoCalculator lottoCalculator) {
+        System.out.println("총 수익률은 " + lottoCalculator.getRateOfReturn(purchaseMoney) + "%입니다.");
     }
 }
