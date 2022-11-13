@@ -1,10 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.model.BonusNumber;
-import lotto.model.Lotto;
-import lotto.model.LottoNumber;
-import lotto.model.User;
+import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import org.junit.jupiter.api.Assertions;
@@ -181,6 +178,36 @@ class ApplicationTest extends NsTest {
         LottoNumber lottoNumber = new LottoNumber();
         List<List<Integer>> lotto = lottoNumber.userLotto(2);
         assertThat(lotto.size()).isEqualTo(2);
+    }
+
+    @Test
+    void 당첨등수_1등_출력(){
+        WinDetail winDetail = WinDetail.findRankBy(6,true);
+        assertThat(winDetail).isEqualTo(WinDetail.First);
+    }
+
+    @Test
+    void 당첨등수_2등_출력(){
+        WinDetail winDetail = WinDetail.findRankBy(5,true);
+        assertThat(winDetail).isEqualTo(WinDetail.Second);
+    }
+
+    @Test
+    void 당첨등수_3등_출력(){
+        WinDetail winDetail = WinDetail.findRankBy(5,false);
+        assertThat(winDetail).isEqualTo(WinDetail.Third);
+    }
+
+    @Test
+    void 당첨등수_4등_출력(){
+        WinDetail winDetail = WinDetail.findRankBy(4,true);
+        assertThat(winDetail).isEqualTo(WinDetail.Fourth);
+    }
+
+    @Test
+    void 당첨등수_5등_출력(){
+        WinDetail winDetail = WinDetail.findRankBy(3,true);
+        assertThat(winDetail).isEqualTo(WinDetail.Fifth);
     }
 
     @Override
