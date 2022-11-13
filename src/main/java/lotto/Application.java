@@ -86,4 +86,17 @@ public class Application {
             existentNumber.add(eachNumber);
         }
     }
+
+    static int inputBonusNumber(String number) {
+        number = Console.readLine();
+        return convertBonusNumber(number);
+    }
+
+    static int convertBonusNumber(String bonusNumber) {
+        try {
+            return Integer.parseInt(bonusNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 정수여야 합니다.");
+        }
+    }
 }
