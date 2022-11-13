@@ -11,7 +11,7 @@ public class LottoNumberGenerator {
     }
 
     private Set<LottoNumber> createLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6).stream()
-                .map(LottoNumber::new).collect(Collectors.toCollection(TreeSet::new));
+        return Randoms.pickUniqueNumbersInRange(LottoNumber.MIN_NUMBER, LottoNumber.MAX_NUMBER, Lotto.NUMBERS_SIZE)
+                .stream().map(LottoNumber::new).collect(Collectors.toCollection(TreeSet::new));
     }
 }
