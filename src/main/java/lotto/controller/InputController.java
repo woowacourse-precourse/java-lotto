@@ -3,7 +3,6 @@ package lotto.controller;
 import lotto.domain.Money;
 import lotto.utils.ExceptionType;
 import lotto.view.Input;
-import lotto.view.Output;
 
 public class InputController {
 
@@ -21,7 +20,6 @@ public class InputController {
     private void validateIsNumber(String target) throws IllegalArgumentException {
         String numberRegex = "^[0-9]*$";
         if (!target.matches(numberRegex)) {
-            Output.printErrorAndExit(ExceptionType.IS_NOT_NUMBER.getMessage());
             throw new IllegalArgumentException(ExceptionType.IS_NOT_NUMBER.getMessage());
         }
     }

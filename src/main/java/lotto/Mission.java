@@ -32,6 +32,7 @@ public class Mission {
         try {
             play();
         } catch (IllegalArgumentException e) {
+            Output.printErrorAndExit(e.getMessage());
         }
     }
 
