@@ -30,4 +30,8 @@ public class WinningNumber extends Lotto{
     public boolean contains(int number) {
         return super.contains(number) || number == bonusNumber;
     }
+
+    public boolean sameBonusNumber(int number) {
+        return number == bonusNumber;
+    }
 }

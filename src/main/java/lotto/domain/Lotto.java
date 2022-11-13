@@ -45,8 +45,19 @@ public class Lotto {
     }
 
     public Result play(WinningNumber winningNumber) {
+        if (count(winningNumber) == 5 && hasSameBonusNumber(winningNumber))
+            return Result.FIVE_BONUS;
         return Result.valueOf(numbers.stream()
                 .filter(winningNumber::contains)
                 .count());
+    }
+    private boolean hasSameBonusNumber(WinningNumber winningNumber) {
+        return numbers.stream()
+                .anyMatch(winningNumber::sameBonusNumber);
+    }
+    private int count(WinningNumber winningNumber) {
+        return (int) numbers.stream()
+                .filter(winningNumber::contains)
+                .count();
     }
 }
