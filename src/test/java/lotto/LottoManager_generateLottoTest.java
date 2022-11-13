@@ -11,7 +11,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class LottoManagerTest {
+public class LottoManager_generateLottoTest {
 
     private static final ProgramManager programManager = new ProgramManager();
     private static final int price = 3000;
