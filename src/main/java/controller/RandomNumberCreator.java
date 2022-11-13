@@ -26,6 +26,7 @@ public class RandomNumberCreator {
             List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(randomNumbers);
             randomNumbersContainer.add(randomNumbers);
+            lotto.isDifferentEachOther(lotto.getNumbers());
         }
         return randomNumbersContainer;
     }
