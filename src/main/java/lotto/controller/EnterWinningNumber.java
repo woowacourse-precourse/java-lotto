@@ -1,12 +1,23 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.WinningLotto;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EnterWinningNumber {
     public static final int LOTTO_SIZE = 6;
+
+    private List<Integer> winningLotto;
+    private int bonusNumber;
+
+    public WinningLotto enterWinngLottoNumber() {
+        winningLotto = getWinningNumberInput();
+        bonusNumber = getBonusNumberInput();
+
+        return new WinningLotto(winningLotto, bonusNumber);
+    }
 
     private List<Integer> getWinningNumberInput() {
         return convert(Console.readLine());
