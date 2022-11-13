@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private static final int LOTTO_NUMBER = 6;
+    private static final int LOTTO_MIN = 1;
+    private static final int LOTTO_MAX = 45;
 
-    private final int LOTTO_NUMBER = 6;
-    private final int LOTTO_MIN = 1;
-    private final int LOTTO_MAX = 45;
+    private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -27,8 +27,8 @@ public class Lotto {
 
     public int calculateMatchCount(List<Integer> winningNumbers) {
         int matchCount = 0;
-        for(Integer lottoNumber : numbers){
-            if(winningNumbers.contains(lottoNumber)){
+        for (Integer lottoNumber : numbers) {
+            if (winningNumbers.contains(lottoNumber)) {
                 matchCount++;
             }
         }
@@ -36,10 +36,8 @@ public class Lotto {
     }
 
     public boolean hasBonusNumber(int bonusNumber) {
-
         return numbers.contains(bonusNumber);
     }
-
 
     //로또의 유효성 검사
     private boolean isValidLotto(List<Integer> numbers) {
