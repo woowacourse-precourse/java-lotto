@@ -15,8 +15,8 @@ public class WinningLotto {
             int number = Integer.parseInt(winningStringNumbers.get(i));
             winningNumbers.add(number);
         }
+        int bonusNumber = inputView.inputBonusNumber();
+        winningNumbers.add(bonusNumber);
         return winningNumbers;
     }
-
-
 }
