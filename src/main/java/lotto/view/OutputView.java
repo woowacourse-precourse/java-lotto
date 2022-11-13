@@ -6,6 +6,7 @@ import lotto.dto.LottoStatsDTO;
 import lotto.dto.LottoTicketDTO;
 
 public class OutputView {
+    private static final Integer LOTTO_PRICE = 1000;
     private static final String INPUT_PAID_AMOUNT = "구입금액을 입력해 주세요.";
     private static final String INFO_LOTTO_COUNT = "\n%d개를 구매했습니다.\n";
     private static final String INPUT_WINNING_NUMBER = "\n당첨 번호를 입력해 주세요.";
@@ -18,7 +19,7 @@ public class OutputView {
     }
 
     public static void printPaidLotto(Integer lottoCount, LottoTicketDTO lottoTicketDTO) {
-        System.out.printf(INFO_LOTTO_COUNT, lottoCount);
+        System.out.printf(INFO_LOTTO_COUNT, lottoCount / LOTTO_PRICE);
         printLottoNumbers(lottoTicketDTO);
     }
 
