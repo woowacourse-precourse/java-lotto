@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.validator.LottoNumberValidator;
+
 import java.util.List;
 
 public class LottoWinningNumber {
@@ -9,12 +11,14 @@ public class LottoWinningNumber {
     int bonusNumber;
 
     public LottoWinningNumber(List<Integer> winningNumbers, int bonusNumber) {
-        validateLottoNumbersContainBonusNumber(winningNumbers, bonusNumber);
+        new LottoNumberValidator().validateLottoNumbers(winningNumbers);
+        validateBonusNumber(winningNumbers, bonusNumber);
+        
         this.lottoWinningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
 
-    private void validateLottoNumbersContainBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
+    private void validateBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATED_MESSAGE);
         }

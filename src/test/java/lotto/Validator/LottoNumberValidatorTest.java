@@ -31,12 +31,4 @@ public class LottoNumberValidatorTest {
         assertThatThrownBy(() -> lottoNumberValidator.validateNumberRange(List.of(1, 2, 3, 4, 5, 51)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @DisplayName("보너스 번호가 당첨 번호에 포함되어 있을 경우 예외 처리한다.")
-    @Test
-    void validateTest4() {
-        assertThatThrownBy(() ->
-                lottoNumberValidator.validateLottoNumbersContainBonusNumber(List.of(1, 2, 3, 4, 5, 5), 5))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
 }

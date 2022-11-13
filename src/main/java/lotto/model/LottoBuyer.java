@@ -3,6 +3,7 @@ package lotto.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.utils.LottoConstant.ERROR_MESSAGE_PREFIX;
 import static lotto.utils.LottoConstant.LOTTO_PRICE;
 
 public class LottoBuyer {
