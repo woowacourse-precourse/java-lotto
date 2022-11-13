@@ -7,7 +7,7 @@ import java.util.List;
 
 public class LottoProgram {
     private final String ORDER_QUANTITY_ALERT_MESSAGE = "%d개를 구매했습니다.\n";
-
+    
     private LottoController lottoController;
 
     public LottoProgram(LottoController lottoController) {
@@ -18,6 +18,12 @@ public class LottoProgram {
     public void run() {
         List<Lotto> userLottos = createUserLottos();
         WinningLotto winningLotto = createWinningLotto();
+    }
+
+    private void alertUserLottos(List<Lotto> userLottos) {
+        for (Lotto userLotto : userLottos) {
+            System.out.println(userLotto.getNumbers());
+        }
     }
 
     public List<Lotto> createUserLottos() {
