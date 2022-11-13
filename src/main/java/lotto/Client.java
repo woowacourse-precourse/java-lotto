@@ -5,6 +5,11 @@ import java.util.List;
 
 public class Client {
 
+    private static final String MONEY_NOT_INTEGER_ERROR_MESSAGE = "[ERROR] 금액 입력은 숫자여야 합니다.";
+    private static final String MONEY_NOT_THOUSANDS_ERROR_MESSAGE = "[ERROR] 금액 입력은 1,000의 배수여야 합니다.";
+    private static final String COMMA_SPLIT_ERROR_MESSAGE = "[ERROR] 로또 입력 번호는 ,를 기준으로 구분되어야 합니다.";
+    private static final String NUMBERS_NOT_INTEGER_ERROR_MESSAGE = "[ERROR] 로또 입력 번호는 숫자여야 합니다.";
+
     private ClientInput clientInput;
 
     Client(ClientInput clientInput) {
@@ -34,22 +39,20 @@ public class Client {
     private void validateIsSplittedByComma(String target) {
         for (int i = 1; i < target.length(); i += 2) {
             if (target.charAt(i) != ',') {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(COMMA_SPLIT_ERROR_MESSAGE);
             }
         }
     }
 
     private List<Integer> parseStringToIntegerListOrElseThrow(String markedNumberString) {
-        List<Integer> numbers;
         try {
-            numbers = List.of(
+            return List.of(
                     Arrays.stream(markedNumberString.split(","))
                             .map(number -> Integer.parseInt(number))
                             .toArray(Integer[]::new));
         } catch (Exception e) {
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException(NUMBERS_NOT_INTEGER_ERROR_MESSAGE);
         }
-        return numbers;
     }
 
 
@@ -58,14 +61,14 @@ public class Client {
         try {
             moneyAmount = Integer.parseInt(moneyAmountString);
         } catch (Exception e) {
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException(MONEY_NOT_INTEGER_ERROR_MESSAGE);
         }
         return moneyAmount;
     }
 
     private void ThousandMultipleOrElseThrow(int moneyAmount) {
         if (moneyAmount % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MONEY_NOT_THOUSANDS_ERROR_MESSAGE);
         }
     }
 }
