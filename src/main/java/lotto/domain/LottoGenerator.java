@@ -15,6 +15,7 @@ public class LottoGenerator {
 
 	public List<Integer> getNumbers() {
 		generateLotto();
+		numbers.sort(null);
 		return numbers;
 	}
 }
