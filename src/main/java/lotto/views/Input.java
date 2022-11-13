@@ -6,7 +6,6 @@ import lotto.utils.GameMessage;
 import lotto.utils.InputValidation;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Input {
@@ -32,8 +31,8 @@ public class Input {
 
         String answer = Console.readLine();
         inputValidation.checkNumber(answer, Constant.REGEX_WINNING_NUMBER_INPUT);
-
         List<Integer> result = convertToList(answer);
+        inputValidation.checkNumberSize(result);
 
         return result;
     }

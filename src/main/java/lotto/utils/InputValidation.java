@@ -1,6 +1,7 @@
 package lotto.utils;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class InputValidation {
 
@@ -19,4 +20,8 @@ public class InputValidation {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_MUST_THOUSAND_PRICE);
     }
 
+    public void checkNumberSize(List<Integer> numbers) {
+        if (numbers.size() != 6)
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_SIX);
+    }
 }
