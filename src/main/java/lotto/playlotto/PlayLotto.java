@@ -1,7 +1,6 @@
 package lotto.playlotto;
 
 import lotto.enums.Reward;
-import lotto.enums.Size;
 import lotto.enums.WinCondition;
 import lotto.input_output.Input;
 import lotto.input_output.Output;
@@ -19,6 +18,7 @@ public class PlayLotto extends Input {
     private final Output out;
     private List<Integer> win_count;
     private int bonus;
+    private static Integer NUMBER_SIZE = 6;
 
     public PlayLotto() {
 
@@ -69,7 +69,7 @@ public class PlayLotto extends Input {
 
         int count = 0;
         int bonus = 0;
-        for(int i = 0; i < Size.LOTTERY_SIZE.getSize(); i++){
+        for(int i = 0; i < NUMBER_SIZE; i++){
 
             if(check_num(win_lottery, user_lottery.get(i))){ //기본 번호 체크
                 count += 1;
