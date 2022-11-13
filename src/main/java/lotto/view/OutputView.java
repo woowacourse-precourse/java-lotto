@@ -8,6 +8,8 @@ import java.util.List;
 public class OutputView {
 
     private static final String PRINT_LOTTO_COUNT = "개를 구매했습니다.";
+    private static final String FIRST_YIELD_MESSAGE = "총 수익률은 ";
+    private static final String SECOND_YIELD_MESSAGE = "%입니다.";
 
     public void printLottoCount(int count){
         System.out.println(count+PRINT_LOTTO_COUNT);
@@ -28,8 +30,11 @@ public class OutputView {
             System.out.println(Rank.findMoney(i).getMessage(winningList.get(i)));
         }
     }
+    
+    public void printYield(double percent){
+        System.out.println(FIRST_YIELD_MESSAGE + String.format("%.1f", percent) + SECOND_YIELD_MESSAGE);
+    }
 
     public void printErrorMessage(String message) {
-
     }
 }

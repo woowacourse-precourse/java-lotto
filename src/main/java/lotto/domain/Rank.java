@@ -22,8 +22,8 @@ public enum Rank {
         this.message = message;
     }
 
-    public int getMoney() {
-        return money;
+    public int getMoney(int count) {
+        return money*count;
     }
 
     public String getMessage(int count) {

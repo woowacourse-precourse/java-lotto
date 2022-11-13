@@ -23,6 +23,7 @@ public class LottoMachine {
     private int count;
 
     public LottoMachine(int count) {
+        this.count = count;
         lottoGroups = new LottoGroups(createLottos(count));
     }
 
@@ -102,7 +103,11 @@ public class LottoMachine {
     }
 
     public double getYield() {
-        return 1.0;
+        int moneyAll = 0;
+        for (int i=0;i<=7;i++){
+            moneyAll += Rank.findMoney(i).getMoney(winningList.get(i));
+        }
+        return (double) moneyAll / (1000.0 * (double) count/100.0);
     }
 
 }

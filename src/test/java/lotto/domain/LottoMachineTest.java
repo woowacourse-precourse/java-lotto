@@ -38,4 +38,14 @@ public class LottoMachineTest {
         lottoMachine.saveWinningNumber(winningNumber,bonusNumber);
         lottoMachine.getWinningList();
     }
+
+    @Test
+    void 당첨_금액_확인() {
+        lottoMachine = new LottoMachine(101);
+        List<Integer> winningNumber = List.of(1,2,3,4,5,6);
+        int bonusNumber = 7;
+        lottoMachine.saveWinningNumber(winningNumber,bonusNumber);
+        lottoMachine.getWinningList();
+        System.out.println(String.format("%.1f", lottoMachine.getYield()));
+    }
 }

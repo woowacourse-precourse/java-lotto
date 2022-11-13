@@ -26,6 +26,8 @@ public class Game {
         outputView.printLottoNumbers(lottoMachine.getLottosNumberList());
         lottoMachine.saveWinningNumber(inputView.inputWinningNumber(),
                 inputView.inputBonusNumber());
+        outputView.printWinningList(lottoMachine.getWinningList());
+        outputView.printYield(lottoMachine.getYield());
     }
 
 }
