@@ -14,7 +14,6 @@ public class Lotto {
         checkWinNumber(numbers);
         this.numbers = numbers;
     }
-
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
@@ -52,5 +51,10 @@ public class Lotto {
         List<String> winner = Arrays.asList(winNum.split(","));
         List<Integer> winNumber = winner.stream().map(s-> Integer.parseInt(s)).collect(Collectors.toList());
         return winNumber;
+    }
+    public static int bonusNum(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonus = Integer.parseInt(readLine());
+        return bonus;
     }
 }
