@@ -13,6 +13,11 @@ public class LottoPurchase {
         return purchaseAmount;
     }
 
+    private int purchaseAmountDividedByLottoPrice(int purchaseAmount) {
+        lottoPriceUnitsValidate(purchaseAmount);
+        return purchaseAmount / LOTTO_PRICE;
+    }
+
     private int userInputIsNumber(String userInput) {
         if (!userInput.matches("[0-9]*")) {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자만 입력할수 있습니다.");
