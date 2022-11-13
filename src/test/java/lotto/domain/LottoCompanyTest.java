@@ -28,14 +28,14 @@ class LottoCompanyTest {
         @DisplayName("로또 번호를 정상적으로 6개 뽑는 경우")
         @Test
         void draw6Numbers() {
-            run("1,2,3,4,5,6");
+            run("1,2,3,4,5,6", "7");
             assertThat(output()).contains("당첨 번호를 입력해 주세요.", "[1, 2, 3, 4, 5, 6]");
         }
 
         @Override
         protected void runMain() {
             LottoCompany lottoCompany = new LottoCompany();
-            lottoCompany.drawWinningNumbers();
+            lottoCompany.draw();
             System.out.print(lottoCompany.getWinningNumbers().getNumbers());
         }
     }
@@ -66,8 +66,7 @@ class LottoCompanyTest {
         @Override
         protected void runMain() {
             LottoCompany lottoCompany = new LottoCompany();
-            lottoCompany.drawWinningNumbers();
-            lottoCompany.drawBonusNumber();
+            lottoCompany.draw();
         }
     }
 }

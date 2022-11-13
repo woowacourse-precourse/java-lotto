@@ -10,34 +10,39 @@ import java.util.stream.Collectors;
  * 로또 당첨 번호 발표
  */
 public class LottoCompany {
-    private Lotto winningNumbers;
+    private Lotto winningLotto;
     private int bonusNumber;
 
-    public void drawWinningNumbers() {
+    public void draw() {
         System.out.println("당첨 번호를 입력해 주세요.");
+        drawWinningNumbers();
+        System.out.println("보너스 번호를 입력해 주세요.");
+        drawBonusNumber();
+    }
+
+    public Lotto getWinningNumbers() {
+        return winningLotto;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
+    private void drawWinningNumbers() {
         List<String> winningNumbers = Arrays.asList(readLine().split(","));
         validateNumericWinningNumbers(winningNumbers);
-        this.winningNumbers = new Lotto(winningNumbers.stream()
+        this.winningLotto = new Lotto(winningNumbers.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList()));
     }
 
-    public void drawBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+    private void drawBonusNumber() {
         String number = readLine();
         validateNumericBonusNumber(number);
         int bonusNumber = Integer.parseInt(number);
         validateRange(bonusNumber);
         validateDuplicate(bonusNumber);
         this.bonusNumber = bonusNumber;
-    }
-
-    public Lotto getWinningNumbers() {
-        return winningNumbers;
-    }
-
-    public int getBonusNumber() {
-        return bonusNumber;
     }
 
     private void validateNumericWinningNumbers(List<String> numbers) {
@@ -64,7 +69,7 @@ public class LottoCompany {
     }
 
     private void validateDuplicate(int number) {
-        if (this.winningNumbers.getNumbers().contains(number)) {
+        if (this.winningLotto.getNumbers().contains(number)) {
             System.out.println("[ERROR] 당첨 번호는 로또 번호와 다른 번호를 입력해야 합니다.");
             throw new IllegalArgumentException();
         }
