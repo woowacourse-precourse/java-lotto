@@ -1,9 +1,11 @@
 package lotto.domain;
 
+import lotto.validation.Validator;
+
 public class LottoPurchaseCount {
 
     public static int getLottoCount(int money) {
-        isCorrectMoney(money);
+        Validator.isDividedByThousand(money);
         return getMoney(money);
     }
 
@@ -12,11 +14,5 @@ public class LottoPurchaseCount {
             money /= 1000;
         }
         return money;
-    }
-
-    private static void isCorrectMoney(int money) {
-        if (money % 1000 != 0) {
-            throw new IllegalArgumentException("1000원 단위로 입력해주세요.");
-        }
     }
 }

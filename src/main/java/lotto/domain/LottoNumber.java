@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.validation.Validator;
 import lotto.console.Input;
 
 import java.util.ArrayList;
@@ -20,20 +21,7 @@ public class LottoNumber {
 
     public static int getBonusNumber() {
         int bonusNumber = Input.inputBonusNumber();
-        isDuplicatedNumber(bonusNumber);
-        isCorrectNumber(bonusNumber);
+        Validator.validateBonusNumber(lottoNumbers, bonusNumber);
         return bonusNumber;
-    }
-
-    private static void isCorrectNumber(int bonusNumber) {
-        if (bonusNumber > 45 || bonusNumber < 1) {
-            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-        }
-    }
-
-    private static void isDuplicatedNumber(int bonusNumber) {
-        if (lottoNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
-        }
     }
 }
