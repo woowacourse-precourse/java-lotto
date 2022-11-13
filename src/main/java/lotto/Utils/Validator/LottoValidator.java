@@ -8,7 +8,7 @@ public class LottoValidator {
 
     public static final int LOTTO_SIZE = 6;
     public static final String ERROR = "[ERROR] ";
-    public static final String NOT_NUMBER_STATE = "로또 번호는 숫자로 입력되어야 합니다.";
+    public static final String NOT_INTEGER_STATE = "로또 번호는 숫자로 입력되어야 합니다.";
     public static final String NOT_SIZE_STATE = "로또 번호는 6개 숫자입니다.";
     public static final String NOT_RANGE_STATE = "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     public static final String NOT_OVERLAP_STATE = "로또 번호는 중복되지 않아야 합니다.";
@@ -27,7 +27,7 @@ public class LottoValidator {
         try{
             Util.getList(WinningLotto);
         }catch (NumberFormatException e){
-            throw new IllegalArgumentException(ERROR + NOT_NUMBER_STATE);
+            throw new IllegalArgumentException(ERROR + NOT_INTEGER_STATE);
         }
     }
 
