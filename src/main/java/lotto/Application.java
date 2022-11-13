@@ -10,6 +10,8 @@ public class Application {
         int money = console.inputMoney();
         int count = controller.getCount(money);
         List<Lotto> issuedList = controller.issueLotto(count);
-        // 금액 100
+        List<Integer> numbers = console.inputWinningNumber();
+        Lotto winningNumber = controller.issueWinningNumber(numbers);
+
     }
 }

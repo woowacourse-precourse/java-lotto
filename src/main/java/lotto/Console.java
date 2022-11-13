@@ -13,14 +13,13 @@ public class Console {
         return money;
     }
 
-    public Lotto inputWinningNumber() {
+    public List<Integer> inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String[] strNumbers = readLine().split(",");
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < strNumbers.length; i++) {
             numbers.add(Integer.parseInt(strNumbers[i]));
         }
-        Lotto winningNumber = new Lotto(numbers);
-        return winningNumber;
+        return numbers;
     }
 }
