@@ -7,12 +7,15 @@ import lotto.message.IOMessage;
 import java.util.List;
 
 public class IOManager {
+    private static void printEmptyLine() {
+        System.out.println(IOMessage.EMPTY_LINE.getMessage());
+    }
     public static int buyLotto() throws IllegalArgumentException {
         System.out.println(IOMessage.ASK_PRICE.getMessage());
 
         try {
             int price = Integer.parseInt(Console.readLine());
-            System.out.println(IOMessage.EMPTY_LINE.getMessage());
+            printEmptyLine();
 
             return price;
         } catch(Exception e) {
@@ -29,7 +32,7 @@ public class IOManager {
         for(Lotto lotto : lottoList) {
             printLotto(lotto);
         }
-        System.out.println(IOMessage.EMPTY_LINE);
+        printEmptyLine();
     }
 
     private static void printLotto(Lotto lotto) {
