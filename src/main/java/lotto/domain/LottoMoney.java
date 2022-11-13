@@ -14,7 +14,7 @@ public class LottoMoney {
         this.money = validate(parseLong(money));
     }
 
-    public long validate(long money) {
+    private long validate(long money) {
         if (money % LOTTO_PRICE == 0 && money != 0) {
             return money;
         }
@@ -22,7 +22,7 @@ public class LottoMoney {
         throw new IllegalArgumentException();
     }
 
-    public long parseLong(String money) {
+    private long parseLong(String money) {
         try {
             return Long.parseLong(money);
         } catch (IllegalArgumentException e) {
