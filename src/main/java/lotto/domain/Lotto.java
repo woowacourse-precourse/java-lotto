@@ -50,4 +50,8 @@ public class Lotto {
     public boolean containsBonusNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
