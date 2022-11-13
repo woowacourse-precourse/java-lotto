@@ -1,9 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
+import java.util.*;
 
 public class LottoGame {
     private final String seperator = ",";
@@ -31,6 +30,7 @@ public class LottoGame {
         System.out.println("보너스 번호를 입력해 주세요");
         String bonusInput = Console.readLine();
         bonusNumber = Integer.parseInt(bonusInput);
+        checkBonus();
 
     }
 
@@ -46,12 +46,29 @@ public class LottoGame {
             winningNumber.add(Integer.parseInt(s));
 
         validate(winningNumber);
+        checkSame();
     }
 
-    // 입력한 번호가 6개인지 확인하는 함수
+    // 당첨 번호가 6개인지 확인하는 함수
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    // 당첨 번호에 중복이 있는지 확인하는 함수
+    private void checkSame() {
+        Set<Integer> checkSet = new HashSet<>(winningNumber);
+
+        if(winningNumber.size() != checkSet.size())
+            throw new IllegalArgumentException();
+    }
+
+    // 보너스 번호가 당첨 번호와 중복되는지 확인하는 함수
+    private void checkBonus() {
+        for(int n : winningNumber) {
+            if(n == bonusNumber)
+                throw new IllegalArgumentException();
         }
     }
 }
