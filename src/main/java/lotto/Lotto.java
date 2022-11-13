@@ -19,6 +19,7 @@ public class Lotto {
             throw new IllegalArgumentException("6개의 숫자를 입력해야 합니다.");
 
         checkNumberDuplicated(numbers);
+        checkNumberInRange(numbers);
     }
 
     private void checkNumberDuplicated(List<Integer> numbers) {
@@ -28,6 +29,13 @@ public class Lotto {
             if (beforeNumber == number)
                 throw new IllegalArgumentException("중복되지 않는 숫자를 입력해야 합니다.");
             beforeNumber = number;
+        }
+    }
+
+    private void checkNumberInRange(List<Integer> numbers) {
+        for (Integer number: numbers) {
+            if (number < 0 || number > 46)
+                throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 }
