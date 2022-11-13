@@ -3,6 +3,7 @@ package lotto;
 
 import lotto.Controller.InputController;
 import lotto.Model.Buyer;
+import lotto.Model.Lotto;
 import lotto.View.OutputView;
 
 public class Application {
@@ -12,5 +13,6 @@ public class Application {
         Buyer buyer = InputController.inputPurchaseAmount();
         buyer.addLotto();
         OutputView.printBuyerLotto(buyer);
+        Lotto lotto = InputController.inputWinningLotto();
     }
 }
