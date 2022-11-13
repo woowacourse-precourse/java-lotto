@@ -19,7 +19,7 @@
 
 ### controller
 - LottoController
-- [ ] 구입 금액 입력 받기
+- [x] 구입 금액 입력 받기
 - [ ] 랜덤 로또 번호 생성하기
 - [ ] 당첨 번호 입력 받기
 - [ ] 보너스 번호 입력 받기
@@ -29,7 +29,7 @@
 
 ### view
 - InputView
-- [ ] 로또 구입 금액 입력 받기
+- [x] 로또 구입 금액 입력 받기
 - [ ] 당첨 번호 입력 받기
 - [ ] 보너스 번호 입력 받기
 - OutputView
@@ -45,8 +45,8 @@
 - LottoNumberGenerator
 - [x] 로또 번호 생성하기
 - WinningLotto extends Lotto
-- [ ] 당첨 로또 번호 저장받기
-- [ ] 보너스 번호 저장받기
+- [x] 당첨 로또 번호 저장받기
+- [x] 보너스 번호 저장받기
 - LottoResult
 - [ ] 로또 당첨 비교하기
 
