@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Cash {
     int cnt = 0;
+    int money = 0;
 
     public void Input(String inputCash) {
-        int money = 0;
         // String inputCash = Console.readLine();
         if(isNumeric(inputCash)) {
             money = Integer.parseInt(inputCash);

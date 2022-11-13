@@ -3,27 +3,29 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class WinningNumber {
 
-    public void inputWinningNum(String winningString) {
+    public int[] inputWinningNum(String winningString) {
         String[] strArray = winningString.split(",");
         int[] winningNumbers = changeIntArr(strArray);
         winningSize(winningNumbers);
+        return winningNumbers;
     }
 
-    public void inputBonusNum(String BonusStr) {
+    public int inputBonusNum(String BonusStr) {
         int bonusNum = 0;
         if (isNumeric(BonusStr) && inRange(Integer.parseInt(BonusStr))) {
             bonusNum = Integer.parseInt(BonusStr);
         }
+        return bonusNum;
     }
 
     public int[] changeIntArr(String[] strArray) {
-        int[] intArr = new int[strArray.length];
+        int[] winningArray = new int[strArray.length];
         for(int i = 0; i < strArray.length; i++) {
             if(isNumeric(strArray[i]) && inRange(Integer.parseInt(strArray[i]))) {
-                intArr[i] = Integer.parseInt(strArray[i]);
+                winningArray[i] = Integer.parseInt(strArray[i]);
             }
         }
-        return intArr;
+        return winningArray;
     }
 
     private boolean isNumeric(String s) {
