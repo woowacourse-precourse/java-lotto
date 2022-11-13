@@ -15,4 +15,9 @@ public class InputView {
         printWinningNumber();
         return Console.readLine();
     }
+
+    public static String getBonusNumber() {
+        printBonusNumber();
+        return Console.readLine();
+    }
 }
