@@ -1,6 +1,13 @@
 package lotto.Utils;
 
+import lotto.Domain.LottoShop;
+import lotto.Domain.Statistic;
+
+import java.util.List;
+
 import static lotto.Enum.InformationMessage.*;
+import static lotto.Enum.LottoProperty.HIGHEST_WINNING_RANK;
+import static lotto.Enum.LottoProperty.LOWEST_WINNING_RANK;
 import static lotto.Enum.StatisticMessage.STATISTIC;
 import static lotto.Enum.StatisticMessage.*;
 
@@ -17,40 +24,43 @@ public class Printer {
         System.out.println(INPUT_BONUS_WINNING_NUMBER.getMessage());
     }
 
-    public void lottoCount() {
-        System.out.println(COUNT_OF_LOTTO.getMessage());
+    public void lottoCount(int count) {
+        System.out.println(count + COUNT_OF_LOTTO.getMessage());
     }
 
     public void statistic() {
+        Statistic statistic = new Statistic();
+
         System.out.println(STATISTIC.getMessage());
+        statistic.analyze();
+
+        List<String> rankMessageList = List.of(
+                null,
+                WINNING_1RANK.getMessage(),
+                WINNING_2RANK.getMessage(),
+                WINNING_3RANK.getMessage(),
+                WINNING_4RANK.getMessage(),
+                WINNING_5RANK.getMessage()
+        );
+        String suffix = SUFFIX.getMessage();
+
+        for (int rank = LOWEST_WINNING_RANK.getValue(); rank > HIGHEST_WINNING_RANK.getValue(); rank--) {
+            String message = rankMessageList.get(rank);
+            int count = statistic.getRankCount(rank);
+
+            System.out.println(message + count + suffix);
+        }
+
+        totalYield(statistic.accumulatedWinningMoney);
     }
 
-    public void winning5(int count) {
-        String message = WINNING_5RANK.getMessage() + count;
-        System.out.println(message + SUFFIX);
-    }
+    public void totalYield(long winningMoney) {
+        int money = LottoShop.money;
 
-    public void winning4(int count) {
-        String message = WINNING_4RANK.getMessage() + count;
-        System.out.println(message + SUFFIX);
-    }
+        // TODO: 구매했던 금액과 누적상금으로 수익률 계산
 
-    public void winning3(int count) {
-        String message = WINNING_3RANK.getMessage() + count;
-        System.out.println(message + SUFFIX);
-    }
+        double yield = 0;
 
-    public void winning2(int count) {
-        String message = WINNING_2RANK.getMessage() + count;
-        System.out.println(message + SUFFIX);
-    }
-
-    public void winning1(int count) {
-        String message = WINNING_1RANK.getMessage() + count;
-        System.out.println(message + SUFFIX);
-    }
-
-    public void totalYield(double yield) {
         String message = TOTAL_YIELD.getMessage();
         System.out.printf(message, yield);
     }
