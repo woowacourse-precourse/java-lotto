@@ -3,6 +3,7 @@ package lotto.logic;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.aspect.Validator;
 import lotto.domain.Lotto;
 
 public class LottoMachine {
@@ -21,12 +22,15 @@ public class LottoMachine {
         return LottoMachineHolder.INSTANCE;
     }
 
-    public List<Lotto> generateLottos(int payment) {
-
+    public List<Lotto> generateLottos(int payment) throws IllegalArgumentException {
+        Validator.checkDivisiblePayment(payment, PRICE);
         List<Lotto> lottos = new ArrayList<>();
 
+        for (int i = payment / PRICE; i > 0; i--) {
+            lottos.add(generateLotto());
+        }
 
-
+        return lottos;
     }
 
     public Lotto generateLotto() {
