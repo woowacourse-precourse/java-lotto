@@ -2,7 +2,9 @@ package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Server {
     private static final int START_INCLUSIVE = 1;
@@ -16,5 +18,11 @@ public class Server {
 
     public int decideToBuyLotto(int money){
         return money / LOTTO_PRICE;
+    }
+
+    public Set<Integer> compareLottoNumber(List<Integer> lottoNumber, List<Integer> winLottoNumber, int winBonusNumber){
+        Set<Integer> common = new HashSet<>(lottoNumber);
+        common.retainAll(winLottoNumber);
+        return common;
     }
 }
