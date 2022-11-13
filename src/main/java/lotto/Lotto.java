@@ -42,6 +42,6 @@ public class Lotto {
     }
 
     private boolean isOutOfRange(Integer value) {
-        return value < 1 || value > 45;
+        return value < LottoSetting.MIN_NUMBER.getValue() || value > LottoSetting.MAX_NUMBER.getValue();
     }
 }

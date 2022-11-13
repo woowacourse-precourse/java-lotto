@@ -16,7 +16,9 @@ public class LottoFactory {
     }
 
     private Lotto createOne() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(LottoSetting.MIN_NUMBER.getValue(),
+                LottoSetting.MAX_NUMBER.getValue(),
+                LottoSetting.COUNT.getValue());
 
         return new Lotto(lottoNumbers);
     }

@@ -23,7 +23,7 @@ public class LottoAnalyst {
         AtomicInteger atomicInvest = new AtomicInteger();
         AtomicInteger atomicProfit = new AtomicInteger();
         lotto.forEach((key, value) -> {
-            atomicInvest.addAndGet(value * 1000);
+            atomicInvest.addAndGet(value * LottoSetting.PRICE.getValue());
             atomicProfit.addAndGet(value * key.getPrice());
         });
 

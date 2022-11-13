@@ -8,13 +8,12 @@ import java.util.stream.Collectors;
 
 public class InputManager {
     private final InputValidator inputValidator = new InputValidator();
-    public static final int LOTTO_PRICE = 1_000;
 
     public int inputPurchaseAmount() {
         String input = Console.readLine();
         inputValidator.validateInputPurchaseAmount(input);
 
-        return Integer.parseInt(input) / LOTTO_PRICE;
+        return Integer.parseInt(input) / LottoSetting.PRICE.getValue();
     }
 
     public Lotto inputWinningNumbers() {

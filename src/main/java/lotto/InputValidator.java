@@ -51,13 +51,14 @@ public class InputValidator {
     }
 
     private void validateIsThousand(int input) {
-        if(input < InputManager.LOTTO_PRICE || input % InputManager.LOTTO_PRICE != 0) {
+        if(input < LottoSetting.PRICE.getValue() || input % LottoSetting.PRICE.getValue() != 0) {
             throw new NotThousandException();
         }
     }
 
     private void validateOutOfRange(Integer value) {
-        if(value < 1 || value > 45) {
+        if(value < LottoSetting.MIN_NUMBER.getValue() ||
+                value > LottoSetting.MAX_NUMBER.getValue()) {
             throw new IllegalArgumentException("숫자 범위가 초과되었습니다.");
         }
     }
