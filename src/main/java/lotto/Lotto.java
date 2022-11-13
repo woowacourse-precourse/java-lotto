@@ -48,4 +48,9 @@ public class Lotto {
     private void ascendingLotto(List<Integer> numbers) {
         numbers.sort(Comparator.naturalOrder());
     }
+
+    // 로또 번호를 가져오는 기능
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
