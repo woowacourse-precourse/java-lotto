@@ -14,9 +14,7 @@ public class OutputView {
         changeLine();
     }
     public static void lottoView(){
-        lottos.stream().forEach(lotto -> {
-            System.out.println(lotto);
-        });
+        lottos.stream().forEach(lotto -> lotto.printNumbers());
         changeLine();
     }
 }
