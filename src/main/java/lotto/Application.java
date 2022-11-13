@@ -1,10 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Lotto;
-import lotto.domain.LottoGenerator;
-import lotto.domain.Money;
-import lotto.domain.Ticket;
+import lotto.domain.*;
 
 import java.util.List;
 
@@ -18,6 +15,7 @@ public class Application {
         List<Lotto> lottos = generator.createLottos(tickets);
         printPurchasedLottos(lottos);
 
+        WinLotto winLotto = new WinLotto(askWinNumbers(), askBonusNumber());
     }
 
     public static String askPurchasePrice() {
@@ -25,6 +23,20 @@ public class Application {
         String purchasePrice = Console.readLine();
         System.out.println();
         return purchasePrice;
+    }
+
+    public static String askWinNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String winNumbers = Console.readLine();
+        System.out.println();
+        return winNumbers;
+    }
+
+    public static String askBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumber = Console.readLine();
+        System.out.println();
+        return bonusNumber;
     }
 
     public static void printPurchasedLottos(List<Lotto> lottos) {
