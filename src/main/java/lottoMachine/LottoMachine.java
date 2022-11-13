@@ -28,6 +28,8 @@ public class LottoMachine {
         lottoMachineDevices.printLottoTickets();
         lottoMachineDevices.printReceiveWinningNumberMessage();
         lottoMachineDevices.receiveWinningNumber();
+        lottoMachineDevices.printReceiveBonusNumberMessage();
+        lottoMachineDevices.receiveBonusNumber();
     }
 
     public void createLottoTickets() {

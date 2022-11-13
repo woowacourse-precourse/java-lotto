@@ -1,8 +1,10 @@
 package lottoMachine.device;
 
+import static lottoMachine.enums.Messages.BONUS_NUMBER_COUNT_ERROR_MESSAGE;
 import static lottoMachine.enums.Messages.ERROR_MESSAGE_PREFIX;
 import static lottoMachine.enums.Messages.LOTTO_NUMBER_COUNT_ERROR_MESSAGE;
 import static lottoMachine.enums.Messages.NUMBER_RANGE_ERROR_MESSAGE;
+import static lottoMachine.enums.Messages.RECEIVE_BONUS_NUMBER_MESSAGE;
 import static lottoMachine.enums.Messages.RECEIVE_PRICE_MESSAGE;
 import static lottoMachine.enums.Messages.RECEIVE_WINNING_NUMBER_MESSAGE;
 import static lottoMachine.enums.Messages.RESULT_OF_PURCHASE_MESSAGE;
@@ -10,6 +12,7 @@ import static lottoMachine.enums.Messages.WINNING_NUMBER_FORMAT_ERROR_MESSAGE;
 import static lottoMachine.enums.Numbers.LOTTO_NUMBER_END;
 import static lottoMachine.enums.Numbers.LOTTO_NUMBER_START;
 import static lottoMachine.enums.Numbers.WINNING_NUMBER_SIZE;
+import static lottoMachine.enums.Regex.NUMBER_REGEX;
 import static lottoMachine.enums.Regex.WINNING_NUMBER_REGEX;
 import static lottoMachine.enums.Separator.WINNING_NUMBER_SEPARATOR;
 
@@ -62,9 +65,39 @@ public class LottoMachineDevices implements LottoMachineOutputDevice, LottoMachi
     }
 
     @Override
+    public void printReceiveBonusNumberMessage() {
+        System.out.println(RECEIVE_BONUS_NUMBER_MESSAGE);
+    }
+
+    @Override
     public void receiveWinningNumber() {
         String winningNumber = Console.readLine();
         setWinningNumbers(winningNumber);
+    }
+
+    @Override
+    public void receiveBonusNumber() {
+        String bonusNumber = Console.readLine();
+        setBonusNumber(bonusNumber);
+    }
+
+    private void setBonusNumber(String bonusNumber) {
+        validateBonusNumber(bonusNumber);
+        this.bonusNumber = toInt(bonusNumber);
+    }
+
+    private void validateBonusNumber(String bonusNumber) {
+        String prefix = ERROR_MESSAGE_PREFIX.toString();
+        if (!isValidateBonusNumberFormat(bonusNumber)) {
+            throw new IllegalArgumentException(prefix + BONUS_NUMBER_COUNT_ERROR_MESSAGE);
+        }
+        if (!isValidateNumber(toInt(bonusNumber))) {
+            throw new IllegalArgumentException(prefix + NUMBER_RANGE_ERROR_MESSAGE);
+        }
+    }
+
+    private boolean isValidateBonusNumberFormat(String bonusNumber) {
+        return Pattern.matches(NUMBER_REGEX.toString(), bonusNumber);
     }
 
     private void setWinningNumbers(String winningNumber) {
