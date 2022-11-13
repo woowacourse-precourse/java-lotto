@@ -18,7 +18,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        duplicateNumbersRange(numbers);
+        validateNumbersRange(numbers);
         this.numbers = duplicateValidate(numbers);
     }
 
@@ -38,7 +38,7 @@ public class Lotto {
         throw new IllegalArgumentException();
     }
 
-    private static void duplicateNumbersRange(List<Integer> numbers) {
+    private static void validateNumbersRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < MIN_LOTTO_NUMBER && MAX_LOTTO_NUMBER < number) {
                 Output.printExceptionMessage(LOTTO_NUMBER_RANGE_EXCEPTION);
