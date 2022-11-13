@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.Result;
 import lotto.domain.WinRank;
+import lotto.view.util.OutputUtil;
 
 public class UserOutput {
     private static final String OUTPUT_BUY_LOTTOS = "개를 구매했습니다.";
@@ -46,12 +47,13 @@ public class UserOutput {
         final String SECOND_PRIZE_MESSAGE = "5개 일치, 보너스 볼 일치 (";
         final String WON_MESSAGE = "원) - ";
         final String COUNT_MESSAGE = "개";
+        final String PRIZE_WITH_COMMA = OutputUtil.IntegerToStringWithComma(winRank.getPrize());
 
         if (winRank.equals(WinRank.SECOND)) {
-            return SECOND_PRIZE_MESSAGE + winRank.getPrize() + WON_MESSAGE
+            return SECOND_PRIZE_MESSAGE + PRIZE_WITH_COMMA + WON_MESSAGE
                     + prizeResult.get(winRank) + COUNT_MESSAGE;
         }
-        return winRank.getMatched() + PRIZE_MESSAGE + winRank.getPrize() + WON_MESSAGE
+        return winRank.getMatched() + PRIZE_MESSAGE + PRIZE_WITH_COMMA + WON_MESSAGE
                 + prizeResult.get(winRank) + COUNT_MESSAGE;
     }
 }
