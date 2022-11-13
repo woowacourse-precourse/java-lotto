@@ -63,7 +63,7 @@ public class UserInput {
     private void validateLottoType(String[] splitInput, List<Integer> numbers) {
         try {
             for (int i = 0; i < splitInput.length; i++) {
-                numbers.add(Integer.parseInt(splitInput[i]));
+                numbers.add(Integer.parseInt(splitInput[i].trim()));
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
@@ -80,7 +80,7 @@ public class UserInput {
     private int validateBonus(String bonus) {
         int result;
         try {
-            result = Integer.parseInt(bonus);
+            result = Integer.parseInt(bonus.trim());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
         }
