@@ -10,15 +10,21 @@ import java.util.Map;
 
 public class LottoManager {
     private static final int LOTTO_PRICE = 1000;
-    private static final String WINNING_MESSAGE_3 = "3개 일치 (5,000원) - ";
-    private static final String WINNING_MESSAGE_4 = "4개 일치 (50,000원) - ";
-    private static final String WINNING_MESSAGE_5 = "5개 일치 (1,500,000원) - ";
-    private static final String WINNING_MESSAGE_5BONUS = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-    private static final String WINNING_MESSAGE_6 = "6개 일치 (2,000,000,000원) - ";
-    private static final String[] MESSAGE = {WINNING_MESSAGE_3,
-            WINNING_MESSAGE_4, WINNING_MESSAGE_5,
-            WINNING_MESSAGE_5BONUS, WINNING_MESSAGE_6};
     private static final int[] PROFIT = {5000, 50000, 1500000, 30000000, 2000000000};
+
+    public enum StatisticMessage {
+        WIN_5("3개 일치 (5,000원) - "),
+        WIN_4("4개 일치 (50,000원) - "),
+        WIN_3("5개 일치 (1,500,000원) - "),
+        WIN_2("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+        WIN_1("6개 일치 (2,000,000,000원) - ");
+
+        private final String message;
+
+        StatisticMessage(String message) {
+            this.message = message;
+        }
+    }
 
     public List<Integer> GenerateLottoNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -88,10 +94,13 @@ public class LottoManager {
     }
 
     public void  printWinningMessage(Map<Integer, Integer> result) {
-        //{0=3, 1=4, 2=1, 3=0, 4=0, 5=0, 6=0, 7=0}
+        //{0=3, 1=4, 2=1, 3=0, 4=0, 5=0, 6=0, 7=0} = {-,-,-,5등, 4등, 3등, 2등, 1등}
         System.out.println("\n당첨 통계\n---");
-        for (int i = 3; i < 8; i++) {
-            System.out.println(MESSAGE[i-3] + result.get(i) + "개");
+
+        int index = 3;
+        for (StatisticMessage win : StatisticMessage.values()) {
+            System.out.println(win.message + result.get(index) + "개");
+            index++;
         }
     }
 
