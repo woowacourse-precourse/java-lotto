@@ -40,7 +40,7 @@ public class Application {
         inputBonus = Console.readLine();
         if (!checkInputBonus(winNumbers, inputBonus))
             return;
-
+        bonus = Integer.parseInt(inputBonus);
         for (Lotto purchasedLotto : purchasedLotteries) {
             int rank = Calculation.compareLotto(winNumbers, bonus, purchasedLotto.getLotto());
             counts[rank]++;
