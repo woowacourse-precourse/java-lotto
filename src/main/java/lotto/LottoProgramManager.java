@@ -49,6 +49,9 @@ public class LottoProgramManager {
     }
 
     private int rankLotto() {
+        for(Lotto lotto : lottoBought) {
+            lotto.compareWithAnswer(answer, bonus);
+        }
         return 0;
     }
 }

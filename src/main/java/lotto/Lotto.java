@@ -41,7 +41,7 @@ public class Lotto {
         return lottoNum;
     }
 
-    public void compareWithAnswer(Lotto answer, int bonus) {
+    public int compareWithAnswer(Lotto answer, int bonus) {
         int correct = 0;
 
         for(int num : numbers) {
@@ -49,7 +49,7 @@ public class Lotto {
                 correct++;
         }
 
-        //
+        return rank(correct, numbers.contains(bonus));
     }
 
     public static int rank(int correct, boolean bonus) {
