@@ -15,6 +15,10 @@ public class Lotto {
         this.numbers = copyNumbers;
     }
 
+    public boolean isMatch(Bonus bonus) {
+        return bonus.isMatch(numbers);
+    }
+
     public int countMatchingNumbers(Lotto winningLotto) {
         return (int) this.numbers.stream()
                 .filter(winningLotto.numbers::contains)

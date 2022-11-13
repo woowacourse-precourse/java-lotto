@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class Bonus {
 
     private final int bonusNumber;
@@ -7,6 +9,10 @@ public class Bonus {
     public Bonus(int bonusNumber, Lotto winningLotto) {
         validate(bonusNumber, winningLotto);
         this.bonusNumber = bonusNumber;
+    }
+
+    public boolean isMatch(List<Integer> numbers) {
+        return numbers.contains(bonusNumber);
     }
 
     private void validate(int bonusNumber, Lotto winningLotto) {
