@@ -58,20 +58,39 @@ public class Application {
             lotteryBundleArray.add(createAndPrintLottery());
             cntForCreateLottery++;
         }
-        callLottoMethods(lotteryBundleArray, buyingAmount);
+        try{
+            callLottoMethods(null, lotteryBundleArray, buyingAmount);
+        }
+        catch(Exception e){
+            throw e;
+        }
     }
-    private static void callLottoMethods(ArrayList<ArrayList<Integer>> lotteryBundleArray, int buyingAmount) {
-        Lotto lotto;
+    private static void callLottoMethods(Lotto lotto, ArrayList<ArrayList<Integer>> lotteryBundleArray, int buyingAmount) {
         try{
             lotto = new Lotto(inputWinningNumbers());
         }
         catch(Exception e){
             throw e;
         }
-        ArrayList<BigInteger> countLottoWinnings = lotto.countLottoWinnings(lotteryBundleArray, inputBonusWinningNumber());
+        ArrayList<BigInteger> countLottoWinnings;
+        try{
+           countLottoWinnings = lotto.countLottoWinnings(lotteryBundleArray, inputBonusWinningNumber());
+        }
+        catch (Exception e){
+            throw e;
+        }
         lotto.printLottoWinningsResult(countLottoWinnings, buyingAmount);
     }
-
+    private static int inputBonusWinningNumber(){
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        try{
+            return Integer.parseInt(Console.readLine());
+        }
+        catch (Exception e){
+            System.out.println("[ERROR] 보너스 번호는 숫자 하나만 입력하셔야 합니다.");
+            throw e;
+        }
+    }
     private static ArrayList<Integer> createAndPrintLottery(){
         List<Integer> tempLotteryArray = Randoms.pickUniqueNumbersInRange(1, 45, LOTTERY_NUMBER_LIMIT);
         ArrayList<Integer> lotteryNumberArray = new ArrayList<>();
@@ -98,8 +117,5 @@ public class Application {
         }
         return winningNumbersArray;
     }
-    private static int inputBonusWinningNumber(){
-        System.out.println("\n보너스 번호를 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
-    }
+
 }
