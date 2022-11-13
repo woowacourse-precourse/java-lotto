@@ -1,7 +1,6 @@
 package lotto.template;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.utils.validator.LottoValidator;
 import lotto.utils.validator.NumberValidator;
 import lotto.utils.validator.StringValidator;
 
@@ -19,9 +18,9 @@ public class Input {
         return parseWinningNumbers(input);
     }
 
-    public static int insertBonusNumber(List<Integer> winningNumbers) {
+    public static int insertBonusNumber() {
         String input = readAfterPrint("보너스 번호를 입력해 주세요.");
-        return parseBonusNumber(input, winningNumbers);
+        return parseBonusNumber(input);
     }
 
     private static String readAfterPrint(String out) {
@@ -43,16 +42,11 @@ public class Input {
             NumberValidator.checkNaturalNumber(string);
             winningNumbers.add(Integer.parseInt(string));
         }
-        LottoValidator.checkLottoNumbers(winningNumbers);
-        LottoValidator.checkDuplicateNumber(winningNumbers);
         return winningNumbers;
     }
 
-    private static int parseBonusNumber(String input, List<Integer> winningNumbers) {
+    private static int parseBonusNumber(String input) {
         NumberValidator.checkNaturalNumber(input);
-        int number = Integer.parseInt(input);
-        LottoValidator.checkLottoNumber(number);
-        LottoValidator.checkContainNumber(winningNumbers, number);
-        return number;
+        return Integer.parseInt(input);
     }
 }
