@@ -1,6 +1,7 @@
 package lottoMachine.device;
 
 import static lottoMachine.enums.Messages.BONUS_NUMBER_COUNT_ERROR_MESSAGE;
+import static lottoMachine.enums.Messages.BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE;
 import static lottoMachine.enums.Messages.ERROR_MESSAGE_PREFIX;
 import static lottoMachine.enums.Messages.LOTTO_NUMBER_COUNT_ERROR_MESSAGE;
 import static lottoMachine.enums.Messages.NUMBER_RANGE_ERROR_MESSAGE;
@@ -91,9 +92,16 @@ public class LottoMachineDevices implements LottoMachineOutputDevice, LottoMachi
         if (!isValidateBonusNumberFormat(bonusNumber)) {
             throw new IllegalArgumentException(prefix + BONUS_NUMBER_COUNT_ERROR_MESSAGE);
         }
-        if (!isValidateNumber(toInt(bonusNumber))) {
+        if (isNotValidateNumber(toInt(bonusNumber))) {
             throw new IllegalArgumentException(prefix + NUMBER_RANGE_ERROR_MESSAGE);
         }
+        if (winningNumbersContainsBonusNumber(toInt(bonusNumber))) {
+            throw new IllegalArgumentException(prefix + BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE);
+        }
+    }
+
+    private boolean winningNumbersContainsBonusNumber(int bonusNumber) {
+        return winningNumbers.contains(bonusNumber);
     }
 
     private boolean isValidateBonusNumberFormat(String bonusNumber) {
@@ -134,15 +142,15 @@ public class LottoMachineDevices implements LottoMachineOutputDevice, LottoMachi
 
     private boolean isValidateRangeOfNumbers(String winningNumber) {
         for (String number : winningNumber.split(WINNING_NUMBER_SEPARATOR.toString())) {
-            if (!isValidateNumber(toInt(number))) {
+            if (isNotValidateNumber(toInt(number))) {
                 return false;
             }
         }
         return true;
     }
 
-    private boolean isValidateNumber(int number) {
-        return number >= LOTTO_NUMBER_START.getValue() && number <= LOTTO_NUMBER_END.getValue();
+    private boolean isNotValidateNumber(int number) {
+        return number < LOTTO_NUMBER_START.getValue() || number > LOTTO_NUMBER_END.getValue();
     }
 
     private int toInt(String number) {

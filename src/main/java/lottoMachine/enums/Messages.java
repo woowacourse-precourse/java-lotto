@@ -19,6 +19,7 @@ public enum Messages {
     PRICE_RANGE_ERROR_MESSAGE("금액은 1000 ~ 2147483000 사이의 숫자여야 합니다."),
     LOTTO_NUMBER_COUNT_ERROR_MESSAGE("로또 번호는 6개의 서로 다른 숫자여야 합니다."),
     BONUS_NUMBER_COUNT_ERROR_MESSAGE("보너스 번호는 1개의 숫자여야 합니다."),
+    BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE("보너스 번호는 당첨 번호와 중복될 수 없습니다."),
     WINNING_NUMBER_FORMAT_ERROR_MESSAGE("당첨 번호 입력 형식은 1,2,3,4,5,6 입니다.");
 
     private final String message;
