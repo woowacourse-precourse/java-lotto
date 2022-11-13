@@ -14,14 +14,16 @@ public class Application {
     }
 
     public List<Integer> createLotto(int money) {
-        if (isValidMoney(money)) {
+        List<Integer> lottoNumber;
 
+        while (true) {
+            lottoNumber = createLottoNumber();
+
+            if (isDistinctNumber(lottoNumber)) {
+                break;
+            }
         }
-        return null;
-    }
-
-    private boolean isValidMoney(int money) {
-        return money == moneyUnit;
+        return lottoNumber;
     }
 
     private List<Integer> createLottoNumber() {
