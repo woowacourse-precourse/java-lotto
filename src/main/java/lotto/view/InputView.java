@@ -23,4 +23,11 @@ public class InputView {
         }
     }
 
+    private void checkIntAndComma(String input){
+        String pattern = "[0-9,]+";
+        if (!Pattern.matches(pattern, input)){
+            throw new IllegalArgumentException(NO_NUMBER_AND_COMMA_INPUT.toString());
+        }
+    }
+
 }
