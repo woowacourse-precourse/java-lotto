@@ -54,7 +54,7 @@ public class User {
 
 	public static List<Integer> transformNumbers(String[] numbers) {
 
-		List<Integer> winningNumbers = new ArrayList<Integer>(Constant.LOTTO_NUMBER_LENGTH.value);
+		List<Integer> winningNumbers = new ArrayList<Integer>(Constant.LOTTO_NUMBERS_LENGTH.value);
 
 		for (String number : numbers) {
 
@@ -80,7 +80,7 @@ public class User {
 
 	public static void verifyLength(List<Integer> winningNumbers) {
 
-		boolean isValid = winningNumbers.size() == Constant.LOTTO_NUMBER_LENGTH.value;
+		boolean isValid = winningNumbers.size() == Constant.LOTTO_NUMBERS_LENGTH.value;
 		if (!isValid) {
 
 			String message = "[ERROR] '1,2,3,4,5,6' 형식으로 번호 6개를 입력해야 합니다.";
@@ -106,7 +106,7 @@ public class User {
 
 	public static void verifyOverlap(List<Integer> winningNumbers) {
 
-		List<Integer> uniqueNumbers = new ArrayList<Integer>(Constant.LOTTO_NUMBER_LENGTH.value);
+		List<Integer> uniqueNumbers = new ArrayList<Integer>(Constant.LOTTO_NUMBERS_LENGTH.value);
 
 		for (Integer number : winningNumbers) {
 
