@@ -6,12 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class View {
-    View(){
+    private static final String INPUT_AMOUNT_STRING = "구입 금액을 입력해 주세요.";
+    private static final String PURCAHSED_STRING = "개를 구매했습니다.";
+    private static final String INPUT_NUMBER_STRING = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUSNUM_STRING = "보너스 번호를 입력해 주세요.";
+    private static final String STATISTICS_STRING = "당첨 통계";
+    private static final String SAME_STRING = "개 일치";
+    private static final String LAST_STRING = "개";
 
+    View(){
     }
 
     int inputMoneyAmount() {
-        System.out.println("구입 금액을 입력해 주세요.");
+        System.out.println(INPUT_AMOUNT_STRING);
         int money = Integer.parseInt(Console.readLine());
         System.out.println();
 
@@ -19,7 +26,7 @@ public class View {
     }
 
     void printPurchasedLottoCount(int number) {
-        System.out.println(number + "개를 구매했습니다.");
+        System.out.println(number + PURCAHSED_STRING);
     }
 
     void printPurchasedLotto(List<Integer> lottogather) {
@@ -28,7 +35,7 @@ public class View {
 
     List<Integer> inputWinningNum() {
         System.out.println();
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(INPUT_NUMBER_STRING);
         String[] winningnums = Console.readLine().split(",");
         System.out.println();
 
@@ -46,7 +53,7 @@ public class View {
     }
 
     int inputBonusNum() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(INPUT_BONUSNUM_STRING);
         int bonusnumber = Integer.parseInt(Console.readLine());
         System.out.println();
 
@@ -54,13 +61,13 @@ public class View {
     }
 
     void printResult(int thrmatch, int fourmatch, int fivematch, int fivebonusmatch, int sixmatch, String earningrate) {
-        System.out.println("당첨 통계");
+        System.out.println(STATISTICS_STRING);
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + thrmatch + "개");
-        System.out.println("4개 일치 (50,000원) - " + fourmatch + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + fivematch + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + fivebonusmatch + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + sixmatch + "개");
+        System.out.println(3 + SAME_STRING + " (5,000원) - " + thrmatch + LAST_STRING);
+        System.out.println(4 + SAME_STRING + " (50,000원) - " + fourmatch + LAST_STRING);
+        System.out.println(5 + SAME_STRING + " (1,500,000원) - " + fivematch + LAST_STRING);
+        System.out.println(5 + SAME_STRING + ", 보너스 볼 일치 (30,000,000원) - " + fivebonusmatch + LAST_STRING);
+        System.out.println(6 + SAME_STRING + " (2,000,000,000원) - " + sixmatch + LAST_STRING);
         System.out.println("총 수익률은 " + earningrate + "%입니다.");
     }
 }
