@@ -18,7 +18,7 @@ public class Controller {
         int count = money / MONEY_UNIT;
         Set<Lotto> lottoSet = new HashSet<>();
 
-        while (lottoSet.size() == count) {
+        while (lottoSet.size() != count) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             lottoSet.add(lotto);
         }
@@ -33,7 +33,7 @@ public class Controller {
 
         for (Lotto eachLotto : lottoSet) {
             eachLotto.setRank(winningLotto, bonusNumber);
-            String rank = eachLotto.getRank();
+            String rank = eachLotto.getRank(); //getRank로 한번에
             addToResultMap(resultMap, rank);
         }
         return resultMap;
@@ -46,8 +46,9 @@ public class Controller {
         resultMap.put(rank, winningCount + 1);
     }
 
+
     //수익률 계산하기
-    private final List<String> ranks = List.of("FITFH","FOURTH","THIRD","SECOND","FIRST");
+    private final List<String> ranks = List.of("FIFTH","FOURTH","THIRD","SECOND","FIRST");
     public double calculateYield(double money, Map<String, Integer> resultMap) {
         int totalPrize = 0;
         for(String rank : ranks) {
@@ -58,13 +59,20 @@ public class Controller {
         return Math.round(totalPrize/money*1000)/10.0;
     }
 
+
     //당첨 내역 출력하기
     public void printResult(int money, Map<String, Integer> resultMap) {
-        for(int i = ranks.size()-1 ; i > 0 ; i--) {
-            String rank = ranks.get(i);
+        System.out.println("\n당첨 통계\n---");
+
+        for(String rank : ranks) {
             int count = resultMap.getOrDefault(rank, 0);
             System.out.println(Rank.valueOf(rank).toString()+count+"개");
         }
+    }
+
+    //수익률 출력하기
+    public void printYield(double yield) {
+        System.out.println("총 수익률은 "+yield+"%입니다.");
     }
 
 }
