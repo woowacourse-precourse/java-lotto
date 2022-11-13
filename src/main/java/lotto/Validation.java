@@ -38,9 +38,7 @@ public class Validation {
         try {
             return Integer.parseInt(costInput);
         } catch (NumberFormatException e) {
-            IllegalArgumentException illegalArgumentException = new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
-            System.out.println(illegalArgumentException.getMessage());
-            throw new NoSuchElementException("프로그램 종료");
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
     }
 }

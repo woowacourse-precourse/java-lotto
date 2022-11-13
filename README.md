@@ -227,7 +227,7 @@ public class Lotto {
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
 
-## 구현할 기능 목록
+## 구현 기능 목록
 - LottoBuyer 클래스
   - 로또 번호를 랜덤으로 생성하고, 오름차순 정렬 후 Lotto 클래스 생성
   - UI 클래스를 통해 지불할 돈 입력

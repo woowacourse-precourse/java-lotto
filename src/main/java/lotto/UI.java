@@ -18,7 +18,7 @@ public class UI {
         return Arrays.asList(numbers);
     }
 
-    public static int enterCost() {
+    public static int enterCost(){
         System.out.println("구입금액을 입력해 주세요.");
         return Validation.validateCostType(Console.readLine());
     }
