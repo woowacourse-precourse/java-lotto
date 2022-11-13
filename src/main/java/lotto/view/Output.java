@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import lotto.domain.Lotto;
 
@@ -34,11 +35,13 @@ public class Output {
     }
 
     public void printLottoResultAboutRank(int matchNumber, int priceMoney, int countOfMatch) {
-        System.out.println(matchNumber + "개 일치 (" + priceMoney + ") - " + countOfMatch + "개");
+        String money = makeNumberForamt(priceMoney);
+        System.out.println(matchNumber + "개 일치 (" + money + ") - " + countOfMatch + "개");
     }
 
     public void printLottoResultAboutRankWithBonus(int matchNumber, int priceMoney, int countOfMatch) {
-        System.out.println(matchNumber + "개 일치, 보너스 볼 일치 (" + priceMoney + ") - " + countOfMatch + "개");
+        String money = makeNumberForamt(priceMoney);
+        System.out.println(matchNumber + "개 일치, 보너스 볼 일치 (" + money + ") - " + countOfMatch + "개");
     }
 
     public void printTotalRate(double totalRate) {
@@ -48,5 +51,10 @@ public class Output {
     public static void printErrorAndExit(String errorMessage) {
         System.out.println(errorMessage);
         System.out.println("게임을 종료합니다");
+    }
+
+    private String makeNumberForamt(int money) {
+        DecimalFormat format = new DecimalFormat("###,###");
+        return format.format(money);
     }
 }
