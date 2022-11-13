@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningManager {
-    private Lotto answer;
+    private WinningLotto winningLotto;
     private BonusBall bonusBall;
 
-    public static WinningManager from(String userInputForAnswer) {
-        return new WinningManager(userInputForAnswer);
+    public static WinningManager from(String userInput) {
+        return new WinningManager(userInput);
     }
 
-    private WinningManager(String userInputForAnswer) {
-        this.answer = new Lotto(userInputForAnswer);
+    private WinningManager(String userInput) {
+        this.winningLotto = WinningLotto.from(userInput);
     }
 
     public void initBonusBall(BonusBall bonusBall) {
@@ -28,7 +28,7 @@ public class WinningManager {
     }
 
     private void validate(BonusBall bonusBall) {
-        if (answer.contains(bonusBall)) {
+        if (winningLotto.getLotto().contains(bonusBall)) {
             throw new IllegalArgumentException(DUPLICATED_BONUSBALL_INPUt_MSG);
         }
     }
@@ -42,7 +42,7 @@ public class WinningManager {
     }
 
     private int toRank(Lotto lotto) {
-        int matchedNumberCount = lotto.countContainedNumbersIn(answer);
+        int matchedNumberCount = lotto.countContainedNumbersIn(winningLotto.getLotto());
 
         if (matchedNumberCount == MATCHED_ALL) {
             return FIRST_RANK;

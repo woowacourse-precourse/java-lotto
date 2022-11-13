@@ -1,16 +1,13 @@
 package lotto.model;
 
 import static lotto.constant.LottoConstants.DUPLICATE_NUMBER_EXIST_MSG;
-import static lotto.constant.LottoConstants.EMPTY_LOTTO_VALUE_MSG;
-import static lotto.constant.LottoConstants.INVALID_LOTTO_INPUT_FORM;
 import static lotto.constant.LottoConstants.INVALID_LOTTO_SIZE_MSG;
-import static lotto.constant.LottoConstants.INVALID_RANGED_LOTTO_INPUT;
+import static lotto.constant.LottoConstants.INVALID_RANGED_LOTTO_MSG;
 import static lotto.constant.LottoConstants.LOTTO_SIZE;
 import static lotto.constant.LottoConstants.MAX_VALID_LOTTO_VALUE;
 import static lotto.constant.LottoConstants.MIN_VALID_LOTTO_VALUE;
 import static lotto.constant.LottoConstants.TO_STRING;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,14 +17,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = sort(numbers);
-    }
-
-    public Lotto(String userInput) {
-        validate(userInput);
-        List<Integer> numbers = toList(userInput);
-
-        hasDuplicateNumber(numbers);
         this.numbers = sort(numbers);
     }
 
@@ -55,27 +44,8 @@ public class Lotto {
         isInProperRange(numbers);
     }
 
-    private void validate(String userInput) {
-        isBlank(userInput);
-        canSplit(userInput);
-        isConsistWithProperRange(userInput);
-    }
-
-    private List<Integer> toList(String userInput) {
-        return Arrays.stream(userInput.split(","))
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .collect(Collectors.toList());
-    }
-
-    private List<Integer> sort(List<Integer> numbers) {
-        return numbers.stream()
-                .sorted(Comparator.naturalOrder())
-                .collect(Collectors.toList());
-    }
-
     private void isValidSize(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_SIZE) {
+        if (numbers == null || numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(INVALID_LOTTO_SIZE_MSG);
         }
     }
@@ -92,46 +62,13 @@ public class Lotto {
         if (numbers.stream()
                 .filter(number -> MIN_VALID_LOTTO_VALUE <= number && number <= MAX_VALID_LOTTO_VALUE)
                 .count() != numbers.size()) {
-            throw new IllegalArgumentException(INVALID_RANGED_LOTTO_INPUT);
+            throw new IllegalArgumentException(INVALID_RANGED_LOTTO_MSG);
         }
     }
 
-    private void isBlank(String userInput) {
-        if (userInput.isBlank()) {
-            throw new IllegalArgumentException(EMPTY_LOTTO_VALUE_MSG);
-        }
-    }
-
-    private void canSplit(String userInput) {
-        if (userInput.split(",").length != LOTTO_SIZE) {
-            throw new IllegalArgumentException(INVALID_LOTTO_INPUT_FORM);
-        }
-    }
-
-    private void isConsistWithProperRange(String userInput) {
-        for (String piece : userInput.split(",")) {
-            isInRange(piece);
-        }
-    }
-
-    private void isInRange(String piece) {
-        isNumeric(piece);
-        int pieceToInt = Integer.parseInt(piece);
-        if (pieceToInt < MIN_VALID_LOTTO_VALUE || pieceToInt > MAX_VALID_LOTTO_VALUE) {
-            throw new IllegalArgumentException(INVALID_RANGED_LOTTO_INPUT);
-        }
-    }
-
-    private void isNumeric(String piece) {
-        isBlank(piece);
-        for (char characterInPiece : piece.toCharArray()) {
-            isDigit(characterInPiece);
-        }
-    }
-
-    private void isDigit(char characterInPiece) {
-        if (!Character.isDigit(characterInPiece)) {
-            throw new IllegalArgumentException(INVALID_RANGED_LOTTO_INPUT);
-        }
+    private List<Integer> sort(List<Integer> numbers) {
+        return numbers.stream()
+                .sorted(Comparator.naturalOrder())
+                .collect(Collectors.toList());
     }
 }
