@@ -1,10 +1,10 @@
 package lotto;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 import java.util.List;
 import java.util.Map;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -23,7 +23,7 @@ class LottoCheckerTest {
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 34)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 7))
-                );
+        );
         lottoChecker.insertLottos(lottos);
         lottoChecker.saveAllResult();
         //when
@@ -39,7 +39,7 @@ class LottoCheckerTest {
 
     @DisplayName("당첨번호와 일치하는 숫자 구하기")
     @Test
-    void howManyMatches(){
+    void howManyMatches() {
         //given
         LottoChecker lottoChecker = new LottoChecker(winningNumbers, bonusNumber);
         //when
@@ -50,7 +50,7 @@ class LottoCheckerTest {
 
     @DisplayName("보너스 숫자 포함 여부 구하기")
     @Test
-    void checkBonusNumber(){
+    void checkBonusNumber() {
         //given
         LottoChecker lottoChecker = new LottoChecker(winningNumbers, bonusNumber);
         //when
@@ -64,7 +64,7 @@ class LottoCheckerTest {
 
     @DisplayName("일치하는 숫자의 갯수, 보너스 숫자 체크 여부로 등수 구하기")
     @Test
-    void getPrize(){
+    void getPrize() {
         //given
         LottoChecker lottoChecker = new LottoChecker(winningNumbers, bonusNumber);
         //when
@@ -79,5 +79,45 @@ class LottoCheckerTest {
         assertThat(third).isEqualTo(Prize.THIRD);
         assertThat(fourth).isEqualTo(Prize.FOURTH);
         assertThat(fifth).isEqualTo(Prize.FIFTH);
+    }
+
+    @DisplayName("총 당첨된 금액 구하기")
+    @Test
+    void getTotalPrizeMoney() {
+        //given
+        LottoChecker lottoChecker = new LottoChecker(winningNumbers, bonusNumber);
+        List<Lotto> lottos = List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 34)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 17)),
+                new Lotto(List.of(1, 2, 3, 4, 22, 23))
+        );
+        //when
+        lottoChecker.insertLottos(lottos);
+        lottoChecker.saveAllResult();
+        long totalPrizeMoney = lottoChecker.getTotalPrizeMoney();
+        //then
+        long expected = Prize.FIRST.money + Prize.SECOND.money + Prize.THIRD.money + Prize.FOURTH.money;
+        assertThat(totalPrizeMoney).isEqualTo(expected);
+    }
+
+    @DisplayName("총 수익률 구하기")
+    @Test
+    void getProfitRate() {
+        LottoChecker lottoChecker = new LottoChecker(winningNumbers, bonusNumber);
+        List<Lotto> lottos = List.of(
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(1, 2, 3, 20, 21, 23))
+        );
+        lottoChecker.insertLottos(lottos);
+        lottoChecker.saveAllResult();
+        String profitRate = lottoChecker.getProfitRate(lottoChecker.getTotalPrizeMoney());
+        assertThat(profitRate).isEqualTo("62.5");
     }
 }
