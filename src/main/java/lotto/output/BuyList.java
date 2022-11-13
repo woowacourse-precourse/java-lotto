@@ -11,7 +11,6 @@ public class BuyList {
         System.out.println(purchaseAmount + "개를 구매했습니다.");
         for (Lotto lotto : lotteryNumbers) {
             List<Integer> lottoNumbers = lotto.getLottoNumbers();
-            Collections.sort(lottoNumbers);
             System.out.println(lottoNumbers);
         }
     }

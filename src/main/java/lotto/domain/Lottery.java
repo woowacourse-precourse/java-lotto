@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -20,7 +21,10 @@ public class Lottery {
         List<Lotto> lottoNumbers = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Lotto lotto = new Lotto(numbers);
+            List<Integer> unmodifiableList = Collections.unmodifiableList(numbers);
+            List<Integer> newList = new ArrayList<>(unmodifiableList);
+            Collections.sort(newList);
+            Lotto lotto = new Lotto(newList);
             lottoNumbers.add(lotto);
         }
         return lottoNumbers;
