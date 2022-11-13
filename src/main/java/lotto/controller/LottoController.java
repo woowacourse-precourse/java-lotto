@@ -34,5 +34,6 @@ public class LottoController {
         userInput = userInterface.getUserInput(BONUS_NUMBER);
         user = new User("보너스 번호");
         user.validateUserBonusNumber(userInput, Auto.WINNING_NUMBERS);
+        auto.checkWining(Integer.parseInt(userInput));
     }
 }
