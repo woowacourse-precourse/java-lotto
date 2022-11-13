@@ -37,6 +37,6 @@ public class Game {
         TotalResult totalResult = TotalResult.of(lottoGrades);
 
         ui.printTotalResult(totalResult);
-        ui.printProfitRate(lottoService.calculateProfitPercent(money, lottoGrades));
+        ui.printProfitRate(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()));
     }
 }

@@ -42,15 +42,7 @@ public class LottoService {
         return LottoGrade.confirmWinning(matchCount, bonusMatch);
     }
 
-    public String calculateProfitPercent(Money money, List<LottoGrade> totalWinnings) {
-        Money profit = calculateTotalProfit(totalWinnings);
-        return String.format("%,.1f%%", (double) profit.getValue() / money.getValue() * 100);
-    }
-
-    private Money calculateTotalProfit(List<LottoGrade> grades) {
-        return grades.stream()
-                .map(Money::of)
-                .reduce(Money::add)
-                .orElse(Money.NO_MONEY);
+    public String calculateProfitPercent(Money spentMoney, Money profit) {
+        return String.format("%,.1f%%", (double) profit.getValue() / spentMoney.getValue() * 100);
     }
 }

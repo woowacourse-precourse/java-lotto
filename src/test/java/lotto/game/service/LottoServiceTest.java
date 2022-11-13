@@ -6,6 +6,7 @@ import java.util.List;
 import lotto.game.domain.Lotto;
 import lotto.game.domain.LottoGrade;
 import lotto.game.domain.Money;
+import lotto.game.domain.TotalResult;
 import lotto.game.domain.WinningLotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -111,10 +112,10 @@ class LottoServiceTest {
     void buyLotto10000WonAndFifthGradeThenProfitRateMust_50Percent() {
         // given
         Money money = Money.of(10000);
-        List<LottoGrade> winnings = List.of(LottoGrade.FIFTH);
+        TotalResult totalResult = TotalResult.of(List.of(LottoGrade.FIFTH));
 
         // expect
-        assertThat(lottoService.calculateProfitPercent(money, winnings))
+        assertThat(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()))
                 .isEqualTo("50.0%");
     }
 
@@ -123,10 +124,10 @@ class LottoServiceTest {
     void buyLotto10000WonAndFirstGradeThenProfitRateMust_2_000_000Percent() {
         // given
         Money money = Money.of(10000);
-        List<LottoGrade> winnings = List.of(LottoGrade.FIRST);
+        TotalResult totalResult = TotalResult.of(List.of(LottoGrade.FIRST));
 
         // expect
-        assertThat(lottoService.calculateProfitPercent(money, winnings))
+        assertThat(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()))
                 .isEqualTo("20,000,000.0%");
     }
 
@@ -135,10 +136,10 @@ class LottoServiceTest {
     void buyLotto1000000WonAndFirstGradeThenProfitRateMust_2_000_000Percent() {
         // given
         Money money = Money.of(1_000_000);
-        List<LottoGrade> winnings = List.of(LottoGrade.FIFTH);
+        TotalResult totalResult = TotalResult.of(List.of(LottoGrade.FIFTH));
 
         // expect
-        assertThat(lottoService.calculateProfitPercent(money, winnings))
+        assertThat(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()))
                 .isEqualTo("0.5%");
     }
 
@@ -147,10 +148,10 @@ class LottoServiceTest {
     void buyLotto10000WonAndNothingThenProfitRateMust_0Percent() {
         // given
         Money money = Money.of(10000);
-        List<LottoGrade> winnings = List.of();
+        TotalResult totalResult = TotalResult.of(List.of());
 
         // expect
-        assertThat(lottoService.calculateProfitPercent(money, winnings))
+        assertThat(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()))
                 .isEqualTo("0.0%");
     }
 
@@ -159,16 +160,18 @@ class LottoServiceTest {
     void buyLotto10000WonAndMixGradeThenProfitRateMust_0Percent() {
         // given
         Money money = Money.of(10000);
-        List<LottoGrade> winnings = List.of(
-                LottoGrade.FIFTH,
-                LottoGrade.FIFTH,
-                LottoGrade.FIFTH,
-                LottoGrade.FOURTH,
-                LottoGrade.THIRD
+        TotalResult totalResult = TotalResult.of(
+                List.of(
+                        LottoGrade.FIFTH,
+                        LottoGrade.FIFTH,
+                        LottoGrade.FIFTH,
+                        LottoGrade.FOURTH,
+                        LottoGrade.THIRD
+                )
         );
 
         // expect
-        assertThat(lottoService.calculateProfitPercent(money, winnings))
+        assertThat(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()))
                 .isEqualTo("15,650.0%");
     }
 }
