@@ -2,7 +2,7 @@ package lotto.view;
 
 import java.text.DecimalFormat;
 import lotto.domain.Lottery;
-import lotto.dto.Rank;
+import lotto.domain.Rank;
 
 public class OutputViewConsole implements OutputView {
     private static final String ASK_PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -23,7 +23,7 @@ public class OutputViewConsole implements OutputView {
             if (rank.isBonusMatch()) {
                 System.out.print(", 보너스 볼 일치");
             }
-            System.out.println(" (" + decimalFormat.format(rank.getPrize()) + "원) - " + rank.getCount() + "개");
+            System.out.printf(" (%s원) - %d개\n", decimalFormat.format(rank.getPrize()), rank.getCount());
         }
     }
 
@@ -34,7 +34,7 @@ public class OutputViewConsole implements OutputView {
         for (Rank rank : Rank.values()) {
             profit += rank.getCount() * rank.getPrize();
         }
-        System.out.println("총 수익률은 " + ratioFormat.format(profit / purchaseAmount) + "입니다.");
+        System.out.printf("총 수익률은 %s입니다.",ratioFormat.format(profit / purchaseAmount));
     }
 
     @Override
