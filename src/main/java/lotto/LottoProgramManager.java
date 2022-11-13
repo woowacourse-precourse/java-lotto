@@ -11,6 +11,7 @@ public class LottoProgramManager {
 
     public void runProgram() {
         int lottoNum = buyLotto();
+
         generateLotto(lottoNum);
     }
 
@@ -22,6 +23,7 @@ public class LottoProgramManager {
         if(price % LottoConfig.LOTTO_PRICE != 0)
             throw new IllegalArgumentException();
 
+        IOManager.printLottoBought(price / LottoConfig.LOTTO_PRICE);
         return price / LottoConfig.LOTTO_PRICE;
     }
 
@@ -31,5 +33,7 @@ public class LottoProgramManager {
         for(int lottoIdx = 0; lottoIdx < lottoNum; lottoIdx++) {
             lottoBought.add(new Lotto(Lotto.generateRandomLottoNumbers()));
         }
+
+        IOManager.printLottoList(lottoBought);
     }
 }
