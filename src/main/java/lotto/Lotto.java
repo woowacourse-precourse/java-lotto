@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -13,8 +14,24 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validateLotto(numbers);
-        this.numbers = numbers;
+        this.numbers = sortLottoNumbers(numbers);
     }
+
+    public int checkWinning(Lotto winningLotto){
+        int winningCount = 0;
+        for (int number : numbers) {
+            if (winningLotto.numbers.contains(number)) {
+                winningCount++;
+            }
+        }
+        return winningCount;
+    }
+
+    public void printLottoNumber() {
+        System.out.println(numbers);
+    }
+
+
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
@@ -43,6 +60,16 @@ public class Lotto {
             }
         }
         return count;
+    }
+
+    private List<Integer> sortLottoNumbers(List<Integer> numbers){
+        List<Integer> sortedNumbers = new ArrayList<>();
+        for (Integer number : numbers) {
+            sortedNumbers.add(number);
+        }
+        Collections.sort(sortedNumbers);
+
+        return sortedNumbers;
     }
 }
 
