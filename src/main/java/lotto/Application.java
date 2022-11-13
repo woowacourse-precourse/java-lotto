@@ -156,7 +156,7 @@ public class Application {
     public static void isNumber(String price){
         for(int loop=0;loop<price.length();loop++){
             if(!Character.isDigit(price.charAt(loop))){
-                throw new IllegalArgumentException(ERROR_MESSAGE + NOT_NUMBER_MESSAGE);
+                throw new IllegalArgumentException(ERROR_MESSAGE);
             }
         }
     }
