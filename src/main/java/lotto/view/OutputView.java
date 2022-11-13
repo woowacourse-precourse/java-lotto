@@ -6,6 +6,7 @@ import lotto.domain.LottoResult;
 import lotto.utils.ErrorMessage;
 import lotto.utils.Numbers;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public class OutputView {
@@ -28,12 +29,12 @@ public class OutputView {
         System.out.println(lottos);
     }
 
-    public static void printWinningOverview(Lottos lottos, Lotto winningLotto, int bounsNumber) {
-        Map<LottoResult, Integer> totalResult = lottos.getWinningCounts(winningLotto, bounsNumber);
-        double profit = lottos.calculateProfit(winningLotto, bounsNumber);
+    public static void printWinningOverview(Lottos lottos, Lotto winningLotto, int bonusNumber) {
+        Map<LottoResult, Integer> totalResult = lottos.getWinningCounts(winningLotto, bonusNumber);
+        double profit = lottos.calculateProfit(winningLotto, bonusNumber);
 
         printOverViewIntro();
-        printWinningCounts(totalResult);
+        printTotalResults(totalResult);
         printProfit(profit);
     }
 
@@ -41,15 +42,17 @@ public class OutputView {
         System.out.print(String.format(INFORM_PROFIT, profit));
     }
 
-    private static void printWinningCounts(Map<LottoResult, Integer> winningCounts) {
-        for (LottoResult lottoResult : LottoResult.values()) {
-            if (lottoResult.win()) {
-                System.out.println(getWinningStatistcMessages(winningCounts, lottoResult));
-            }
-        }
+    private static void printTotalResults(Map<LottoResult, Integer> winningCounts) {
+        Arrays.stream(LottoResult.values())
+                .filter(result -> result.win())
+                .forEach(result -> printResult(winningCounts, result));
     }
 
-    private static String getWinningStatistcMessages(Map<LottoResult, Integer> winningCounts, LottoResult result) {
+    private static void printResult(Map<LottoResult, Integer> winningCounts, LottoResult result) {
+        System.out.println(getResultMessage(winningCounts, result));
+    }
+
+    private static String getResultMessage(Map<LottoResult, Integer> winningCounts, LottoResult result) {
         StringBuilder message = new StringBuilder();
 
         message.append(String.format(INFORM_MATCHING_COUNT, result.getMatchingCount()));
