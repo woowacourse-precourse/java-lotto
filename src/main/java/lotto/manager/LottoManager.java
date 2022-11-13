@@ -48,17 +48,20 @@ public class LottoManager {
         return lottoList;
     }
 
-    public Map<RewardEnum, Integer> makeStatistics(List<Lotto> lottoList, WinningNumber winningNumber) {
-        Map<RewardEnum, Integer> statistics = new HashMap<>();
-        for (RewardEnum reward : RewardEnum.values()) {
-            statistics.put(reward, 0);
-        }
-
+    private Map<RewardEnum, Integer> makeStatistics(List<Lotto> lottoList, WinningNumber winningNumber) {
+        Map<RewardEnum, Integer> statistics = initStatistics();
         for (Lotto lotto : lottoList) {
             RewardEnum matchResult = lotto.match(winningNumber);
             statistics.put(matchResult, statistics.get(matchResult) + 1);
         }
+        return statistics;
+    }
 
+    private Map<RewardEnum, Integer> initStatistics() {
+        Map<RewardEnum, Integer> statistics = new HashMap<>();
+        for (RewardEnum reward : RewardEnum.values()) {
+            statistics.put(reward, 0);
+        }
         return statistics;
     }
 }
