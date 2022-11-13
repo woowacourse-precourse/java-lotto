@@ -46,7 +46,7 @@ public class LottoServiceMachine {
     private void isValidLottoRange(List<Integer> splitNumber){
         for(Integer number : splitNumber){
             if(number<MIN_LOTTO_NUMBER.getValue() || number>MAX_LOTTO_NUMBER.getValue())
-                throw new IllegalArgumentException("ERROR : 로또 번호의 범위가 "
+                throw new IllegalArgumentException("[ERROR] : 로또 번호의 범위가 "
                         +MIN_LOTTO_NUMBER.getValue()+" ~ "
                         +MAX_LOTTO_NUMBER.getValue()+"를 벗어났습니다.");
         }
