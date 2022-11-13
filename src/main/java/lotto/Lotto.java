@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -20,5 +21,17 @@ public class Lotto {
         System.out.println(numbers);
     }
 
-    // TODO: 추가 기능 구현
+    int matchWinning(List<Integer> winning) {
+        int result = 0;
+        for (int i = 0; i < winning.size(); i++) {
+            if (Objects.equals(winning.get(i), numbers.get(i))) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    boolean matchBonus(int bonus) {
+        return numbers.contains(bonus);
+    }
 }
