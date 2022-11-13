@@ -24,6 +24,19 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
+    private void validateDuplicate(List<Integer> numbers, Integer bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_MESSAGE);
+        }
+    }
+
+    private void validateLottoNumber(Integer number) {
+        if (number >= 1 && number <= 45) {
+            return;
+        }
+        throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
+    }
+
     public static WinningLotto of(String numbersInput, String bonusNumberInput) {
         if (!lottoPattern.matcher(numbersInput).matches()) {
             throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
@@ -34,19 +47,6 @@ public class WinningLotto {
                 .collect(Collectors.toList());
         Integer bonusNumber = convertInputToBonusNumber(bonusNumberInput);
         return new WinningLotto(numbers, bonusNumber);
-    }
-
-    public void validateDuplicate(List<Integer> numbers, Integer bonusNumber) {
-        if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_MESSAGE);
-        }
-    }
-
-    private static void validateLottoNumber(Integer number) {
-        if (number >= 1 && number <= 45) {
-            return;
-        }
-        throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
     }
 
     private static Integer convertInputToBonusNumber(String bonusNumber) {
