@@ -13,10 +13,10 @@ public class Publisher {
         this.price = price;
         lottos = new ArrayList<>(price / 1000);
         for(int i = 0; i < price / 1000; ++i)
-            lottos.add(new Lotto(createLottoNumber()));
+            lottos.add(new Lotto(publishLottoNumber()));
     }
 
-    private List<Integer> createLottoNumber(){
+    private List<Integer> publishLottoNumber(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
