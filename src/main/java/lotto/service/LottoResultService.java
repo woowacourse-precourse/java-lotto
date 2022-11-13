@@ -11,7 +11,7 @@ import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 
 public class LottoResultService {
-    public Map<LottoResultConstant, Integer> getResult(List<Lotto> userLotto, WinningLotto winningLotto) {
+    public static Map<LottoResultConstant, Integer> getResult(List<Lotto> userLotto, WinningLotto winningLotto) {
         Map<LottoResultConstant, Integer> winningStatistics = initWinningStatistics();
         for (Lotto lotto : userLotto) {
             int[] correctCountAndBonusCount = lotto.compareToWinningLotto(winningLotto);
@@ -23,7 +23,7 @@ public class LottoResultService {
         return winningStatistics;
     }
 
-    private Map<LottoResultConstant, Integer> initWinningStatistics() {
+    private static Map<LottoResultConstant, Integer> initWinningStatistics() {
         Map<LottoResultConstant, Integer> winningStatistics = new HashMap<>();
         winningStatistics.put(LottoResultConstant.EMPTY, 0);
         winningStatistics.put(LottoResultConstant.CORRECT_THREE, 0);
@@ -34,7 +34,7 @@ public class LottoResultService {
         return winningStatistics;
     }
 
-    private LottoResultConstant getLottoResultConstantFromCorrectCountAndBonusCount(int[] correctCountAndBonusCount) {
+    private static LottoResultConstant getLottoResultConstantFromCorrectCountAndBonusCount(int[] correctCountAndBonusCount) {
         if (correctCountAndBonusCount[0] == 3) {
             return LottoResultConstant.CORRECT_THREE;
         } else if (correctCountAndBonusCount[0] == 4) {

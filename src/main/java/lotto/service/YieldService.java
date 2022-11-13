@@ -5,7 +5,7 @@ import lotto.constant.LottoResultConstant;
 import lotto.domain.Money;
 
 public class YieldService {
-    public double calculateYield(Map<LottoResultConstant, Integer> result, Money userMoney) {
+    public static double calculateYield(Map<LottoResultConstant, Integer> result, Money userMoney) {
         Integer earningMoney = result.keySet()
                 .stream()
                 .map(lottoResultConstant -> lottoResultConstant.getResultMoney() * result.get(lottoResultConstant))

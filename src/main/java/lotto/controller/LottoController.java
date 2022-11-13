@@ -21,8 +21,6 @@ import lotto.view.View;
 
 public class LottoController {
 
-    private static final LottoResultService lottoResultService= new LottoResultService();
-    private static final YieldService yieldService = new YieldService();
     /**
      * 사용자에게 money 를 입력받고 validation 후 돈을 기억해둔다. 사용자에게 LotteryWinningNumber 를 입력받고 validation 후 기억해둔다. 사용자에게
      * BonusLottoNumber 를 입력받고 validation 후 기억해둔다.
@@ -110,13 +108,13 @@ public class LottoController {
     }
 
     private void printResult(Money money, List<Lotto> userLotto, WinningLotto lotteryWinningNumber) {
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(userLotto,
+        Map<LottoResultConstant, Integer> result = LottoResultService.getResult(userLotto,
                 lotteryWinningNumber);
         printUserLottoAndUserYield(result, money);
     }
 
     private void printUserLottoAndUserYield(Map<LottoResultConstant, Integer> result, Money userMoney) {
-        double yieldPercent = yieldService.calculateYield(result, userMoney);
+        double yieldPercent = YieldService.calculateYield(result, userMoney);
         DecimalFormat format = new DecimalFormat("###,###.#");
         String percentString = format.format(yieldPercent);
         List<String> viewResult = createResult(result);
