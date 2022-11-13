@@ -1,10 +1,10 @@
 package lotto;
 
-import lotto.user.domain.User;
-import lotto.user.repository.UserRepository;
+import lotto.lotterymachine.controller.LotteryMachineController;
 
 public class Application {
     public static void main(String[] args) {
-        User user = new User(UserRepository.inputNumbers());
+        LotteryMachineController lotteryMachineController = new LotteryMachineController();
+        lotteryMachineController.startGame();
     }
 }
