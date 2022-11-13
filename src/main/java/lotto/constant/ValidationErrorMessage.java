@@ -19,4 +19,8 @@ public enum ValidationErrorMessage {
     public String getErrorMessage() {
         return ERROR_PREFIX + errorMessage;
     }
+
+    public String getErrorMessageWithoutPrefix() {
+        return errorMessage;
+    }
 }
