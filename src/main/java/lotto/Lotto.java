@@ -22,7 +22,9 @@ public class Lotto {
 
     private void isValidNumberOfNumbers(List<Integer> winningNumbers) {
         if (winningNumbers.size() != NUMBER_OF_NUMBERS) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자로 이루어져야 합니다.");
+            String errorMessage = "[ERROR] 로또 번호는 6개의 숫자로 이루어져야 합니다.";
+            System.out.println(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
@@ -32,14 +34,18 @@ public class Lotto {
                 .collect(Collectors.toList());
 
         if (uniqueNumbers.size() != NUMBER_OF_NUMBERS) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
+            String errorMessage = "[ERROR] 로또 번호는 중복되지 않아야 합니다.";
+            System.out.println(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
     private static void isInRangeNumbers(List<Integer> winningNumbers) {
         for (int number : winningNumbers) {
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 범위의 숫자여야 합니다.");
+                String errorMessage = "[ERROR] 로또 번호는 1~45 범위의 숫자여야 합니다.";
+                System.out.println(errorMessage);
+                throw new IllegalArgumentException(errorMessage);
             }
         }
     }
