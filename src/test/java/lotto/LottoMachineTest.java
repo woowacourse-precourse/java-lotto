@@ -27,4 +27,13 @@ class LottoMachineTest {
         Integer numberOfLotto = LottoMachine.getNumberOfLotto(purchaseAmount);
         assertThat(numberOfLotto).isEqualTo(8);
     }
+
+    @DisplayName("구매 가능한 로또 발행 수만큼 로또 번호를 반복해서 생성한다.")
+    @Test
+    void createMultipleLottoNumbers() {
+        Integer purchaseAmount = 8000;
+        Integer numberOfLotto = LottoMachine.getNumberOfLotto(purchaseAmount);
+        List<List<Integer>> multipleLottoNumbers = LottoMachine.createMultipleLottoNumbers(numberOfLotto);
+        assertThat(multipleLottoNumbers.size()).isEqualTo(numberOfLotto);
+    }
 }

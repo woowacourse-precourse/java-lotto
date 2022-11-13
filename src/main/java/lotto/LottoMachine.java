@@ -3,6 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LottoMachine {
 
@@ -14,5 +16,11 @@ public class LottoMachine {
 
     public static Integer getNumberOfLotto(Integer purchaseAmount) {
         return (purchaseAmount / UNIT_AMOUNT);
+    }
+
+    public static List<List<Integer>> createMultipleLottoNumbers(Integer numberOfLotto) {
+        return IntStream.range(0, numberOfLotto)
+                .mapToObj(i -> createLottoNumbers())
+                .collect(Collectors.toList());
     }
 }
