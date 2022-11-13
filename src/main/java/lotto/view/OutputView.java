@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lottos;
+import lotto.domain.Profit;
 import lotto.domain.WinningResult;
 
 public class OutputView {
@@ -9,7 +10,11 @@ public class OutputView {
         System.out.println("\n" + lottos);
     }
 
-    public static void winningNumberOutput(WinningResult winning) {
+    public static void winningResultOutput(WinningResult winning) {
         System.out.println("\n" + winning);
+    }
+
+    public static void profitOutput(Profit profit) {
+        System.out.println("\n" + profit);
     }
 }
