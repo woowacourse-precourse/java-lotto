@@ -9,6 +9,10 @@ public enum BaseException {
 
     private final String error;
 
+    public String getError(){
+        return error;
+    }
+
     private BaseException(String error){
         this.error = error;
     }
