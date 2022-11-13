@@ -87,6 +87,107 @@ class RankTest {
 			Rank rank = Rank.of(0, false);
 			assertEquals(rank, Rank.MISS);
 		}
+	}
 
+	@DisplayName("등수에 맞는 맞춘 갯수를 리턴한다.")
+	@Nested
+	class GetHitNumberCountTest {
+		@Test
+		void case1() {
+			assertEquals(Rank.FIRST.getHitNumberCount(), 6);
+		}
+
+		@Test
+		void case2() {
+			assertEquals(Rank.SECOND.getHitNumberCount(), 5);
+		}
+
+		@Test
+		void case3() {
+			assertEquals(Rank.THIRD.getHitNumberCount(), 5);
+		}
+
+		@Test
+		void case4() {
+			assertEquals(Rank.FOURTH.getHitNumberCount(), 4);
+		}
+
+		@Test
+		void case5() {
+			assertEquals(Rank.FIFTH.getHitNumberCount(), 3);
+		}
+
+		@Test
+		void case6() {
+			assertEquals(Rank.MISS.getHitNumberCount(), 0);
+		}
+	}
+
+	@DisplayName("등수에 맞는 당첨금을 리턴한다.")
+	@Nested
+	class GetPrizeMoneyTest {
+		@Test
+		void case1() {
+			assertEquals(Rank.FIRST.getPrizeMoney(), 2_000_000_000);
+		}
+
+		@Test
+		void case2() {
+			assertEquals(Rank.SECOND.getPrizeMoney(), 30_000_000);
+		}
+
+		@Test
+		void case3() {
+			assertEquals(Rank.THIRD.getPrizeMoney(), 1_500_000);
+		}
+
+		@Test
+		void case4() {
+			assertEquals(Rank.FOURTH.getPrizeMoney(), 50_000);
+		}
+
+		@Test
+		void case5() {
+			assertEquals(Rank.FIFTH.getPrizeMoney(), 5_000);
+		}
+
+		@Test
+		void case6() {
+			assertEquals(Rank.MISS.getPrizeMoney(), 0);
+		}
+	}
+
+	@DisplayName("등수에 맞는 당첨금을 통화형식에 맞게 리턴한다.")
+	@Nested
+	class GetPrizeMoneyWithCommaTest {
+		@Test
+		void case1() {
+			assertEquals(Rank.FIRST.getPrizeMoneyWithComma(), "2,000,000,000");
+		}
+
+		@Test
+		void case2() {
+			assertEquals(Rank.SECOND.getPrizeMoneyWithComma(), "30,000,000");
+		}
+
+		@Test
+		void case3() {
+			assertEquals(Rank.THIRD.getPrizeMoneyWithComma(), "1,500,000");
+		}
+
+		@Test
+		void case4() {
+			assertEquals(Rank.FOURTH.getPrizeMoneyWithComma(), "50,000");
+		}
+
+		@Test
+		void case5() {
+			assertEquals(Rank.FIFTH.getPrizeMoneyWithComma(), "5,000");
+		}
+
+		@Test
+		void case6() {
+			assertEquals(Rank.MISS.getPrizeMoneyWithComma(), "0");
+		}
 	}
 }
