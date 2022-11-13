@@ -19,22 +19,24 @@ class CalculatorTest {
             calculator = new CalculatorModel();
         }
 
+        @DisplayName("나누어 떨어지는 경우")
         @Test
         void case1() {
-            int totalPrize = 5000;
-            int investmentCash = 8000;
+            int total = 5000;
+            int cash = 8000;
 
-            double actual = calculator.getProfit(totalPrize, investmentCash);
+            double actual = calculator.getProfit(total, cash);
             double result = 62.5;
             assertThat(actual).isEqualTo(result);
         }
 
+        @DisplayName("버리는 경우")
         @Test
         void case2() {
-            int totalPrize = 10000;
-            int investmentCash = 30000;
+            int total = 10000;
+            int cash = 30000;
 
-            double actual = calculator.getProfit(totalPrize, investmentCash);
+            double actual = calculator.getProfit(total, cash);
             double result = 33.3;
             assertThat(actual).isEqualTo(result);
         }
