@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
+import static lotto.common.constant.NumberConstant.LOTTO_LENGTH;
 import static lotto.common.exception.Validator.validateDifferentLottoNumbers;
 import static lotto.common.exception.Validator.validateRangeLottoNumbers;
 
@@ -16,7 +17,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateDifferentLottoNumbers(numbers);
         validateRangeLottoNumbers(numbers);
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
