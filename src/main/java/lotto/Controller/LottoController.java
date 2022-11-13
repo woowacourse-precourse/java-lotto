@@ -55,7 +55,17 @@ public class LottoController {
         int bonusNumber = Integer.parseInt(readLine());
         lottoData.setBonusNumber(bonusNumber);
     }
-
+    private int getLottoPrize(Lotto userNumberLotto){
+        Lotto winnerNumberLotto = lottoData.getWinnerNumber();
+        int bonusNumber = lottoData.getBonusNumber();
+        int matchedNumberCount = compareWinnerNumber(userNumberLotto, winnerNumberLotto);
+        if(matchedNumberCount == 6) return LottoData.LottoPrize.FIRSTPRIZE.getValue();
+        if(matchedNumberCount == 5 && isContainsBonusNumber(userNumberLotto, bonusNumber))return LottoData.LottoPrize.SECONDPRIZE.getValue();
+        if(matchedNumberCount == 5) return LottoData.LottoPrize.THRIDPRIZE.getValue();
+        if(matchedNumberCount == 4) return LottoData.LottoPrize.FOURTHPRIZE.getValue();
+        if(matchedNumberCount == 3) return LottoData.LottoPrize.FIFTHPRIZE.getValue();
+        return 0;
+    }
     private int compareWinnerNumber(Lotto userNumberLotto, Lotto winnerNumberLotto){
         List<Integer> userNumber = userNumberLotto.getLottoNumber();
         List<Integer> winnerNumber = winnerNumberLotto.getLottoNumber();
