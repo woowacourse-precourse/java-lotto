@@ -12,11 +12,13 @@ public class Prize {
     private final List<Integer> numbers = new ArrayList<>();
     private final int bonusNumber;
 
-    public Prize(String numbers, int bonusNumber) {
+    public Prize(String numbers, String bonusNumber) {
         setNumbers(numbers);
 
-        validateNumberRange(bonusNumber);
-        this.bonusNumber = bonusNumber;
+        validateInteger(bonusNumber);
+        validateNumberRange(Integer.parseInt(bonusNumber));
+        validateDuplicatedNumber(Integer.parseInt(bonusNumber));
+        this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
     public List<Integer> getPrize() {
