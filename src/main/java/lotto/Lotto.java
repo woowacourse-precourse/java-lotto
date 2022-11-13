@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.data.Error;
+
 import java.util.List;
 
 public class Lotto {
@@ -7,30 +9,14 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        checkOutOfRange(numbers);
-        checkDuplicateNumber(numbers);
+        ExceptionHandler.checkOutOfRange(numbers);
+        ExceptionHandler.checkDuplicateNumber(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void checkOutOfRange(List<Integer> numbers) {
-        if (numbers.get(0) < 1 || numbers.get(numbers.size() - 1) > 45) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void checkDuplicateNumber(List<Integer> numbers) {
-        int distinctSize = (int) numbers.stream()
-                .distinct()
-                .count();
-
-        if (numbers.size() != distinctSize) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.OVER_SIZE.getMessage());
         }
     }
 
@@ -55,6 +41,10 @@ public class Lotto {
             }
         }
         return winningCount;
+    }
+
+    public boolean isSameWithBonus(int bonus) {
+        return numbers.contains(bonus);
     }
 
     private boolean isSameNumbers(List<Integer> numbers, List<Integer> targetNumbers, int numberIdx, int targetNumberIdx) {
