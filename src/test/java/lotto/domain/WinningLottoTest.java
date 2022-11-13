@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class WinningLotteryTest {
+public class WinningLottoTest {
     private final Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
     private static Stream<Arguments> generateLotto() {
@@ -33,7 +33,7 @@ public class WinningLotteryTest {
     @ValueSource(ints = {7, 8, 9, 45})
     void case1(int input) {
         BonusNumber bonusNumber = new BonusNumber(input);
-        assertDoesNotThrow(() -> new WinningLottery(winLotto, bonusNumber));
+        assertDoesNotThrow(() -> new WinningLotto(winLotto, bonusNumber));
     }
 
     @DisplayName("setBonusNumber 메서드에 중복인 숫자가 오면 IEA 예외")
@@ -41,14 +41,14 @@ public class WinningLotteryTest {
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
     void case2(int input) {
         BonusNumber bonusNumber = new BonusNumber(input);
-        assertThrows(IllegalArgumentException.class, () -> new WinningLottery(winLotto, bonusNumber));
+        assertThrows(IllegalArgumentException.class, () -> new WinningLotto(winLotto, bonusNumber));
     }
 
     @DisplayName("getResult 메서드는 당첨 결과를 알맞게 LottoResult 형태로 반환한다")
     @ParameterizedTest
     @MethodSource("generateLotto")
     void case3(Lotto lotto, LottoResult result) {
-        WinningLottery winningLottery = new WinningLottery(winLotto, new BonusNumber(7));
-        assertThat(winningLottery.getResult(lotto)).isEqualTo(result);
+        WinningLotto winningLotto = new WinningLotto(winLotto, new BonusNumber(7));
+        assertThat(winningLotto.getResult(lotto)).isEqualTo(result);
     }
 }

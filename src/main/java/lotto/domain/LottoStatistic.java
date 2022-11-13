@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 final class LottoStatistic {
-    private final WinningLottery winningLottery;
+    private final WinningLotto winningLotto;
     private final Lottos lottos;
 
-    public LottoStatistic(WinningLottery winningLottery, Lottos generated) {
-        this.winningLottery = winningLottery;
+    public LottoStatistic(WinningLotto winningLotto, Lottos generated) {
+        this.winningLotto = winningLotto;
         this.lottos = generated;
     }
 
@@ -27,7 +27,7 @@ final class LottoStatistic {
 
     private List<LottoResult> calculateScore() {
         return lottos.toStream()
-                .map(winningLottery::getResult)
+                .map(winningLotto::getResult)
                 .collect(Collectors.toList());
     }
 

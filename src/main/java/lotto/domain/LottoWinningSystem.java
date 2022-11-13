@@ -40,9 +40,9 @@ public final class LottoWinningSystem {
 
         Lottos lottos = generateLottos(money);
 
-        WinningLottery winningLottery = getWinningLottery();
+        WinningLotto winningLotto = getWinningLottery();
 
-        LottoStatistic lottoStatistic = new LottoStatistic(winningLottery, lottos);
+        LottoStatistic lottoStatistic = new LottoStatistic(winningLotto, lottos);
         LottoScoreDto lottoScoreDto = lottoStatistic.getScore();
         outputView.printStatistic(lottoScoreDto);
     }
@@ -60,14 +60,14 @@ public final class LottoWinningSystem {
         return lottos;
     }
 
-    private WinningLottery getWinningLottery() {
+    private WinningLotto getWinningLottery() {
         outputView.printInputLotteryMessage();
         final Lotto winLotto = new Lotto(inputView.getLotteryNumber());
 
         outputView.printInputBonusMessage();
         BonusNumber bonusNumber = new BonusNumber(inputView.getBonusNumber());
-        WinningLottery winningLottery = new WinningLottery(winLotto, bonusNumber);
+        WinningLotto winningLotto = new WinningLotto(winLotto, bonusNumber);
 
-        return winningLottery;
+        return winningLotto;
     }
 }
