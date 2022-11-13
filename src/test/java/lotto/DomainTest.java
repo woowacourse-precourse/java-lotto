@@ -69,4 +69,40 @@ public class DomainTest {
         assertThat(domain.getReward(5) == 5000);
     }
 
+    @DisplayName("각 등수별 개수 반환 메서드 테스트")
+    @Test
+    void getRankListTest() {
+        List<Lotto> lottos = new ArrayList<>();
+        List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+        int bonus = -1;
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)));
+        assertThat(domain.getRankList(lottos, winningNumbers, bonus)
+                .containsAll(Arrays.asList(0, 1, 0, 0, 0, 0)));
+
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 7)));
+        assertThat(domain.getRankList(lottos, winningNumbers, bonus)
+                .containsAll(Arrays.asList(0, 1, 0, 1, 0, 0)));
+
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 7)));
+        bonus = 6;
+        assertThat(domain.getRankList(lottos, winningNumbers, bonus)
+                .containsAll(Arrays.asList(0, 1, 1, 1, 0, 0)));
+
+        bonus = -1;
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 4, 7, 8)));
+        assertThat(domain.getRankList(lottos, winningNumbers, bonus)
+                .containsAll(Arrays.asList(0, 1, 1, 1, 1, 0)));
+
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 9, 7, 8)));
+        assertThat(domain.getRankList(lottos, winningNumbers, bonus)
+                .containsAll(Arrays.asList(0, 1, 1, 1, 1, 1)));
+
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)));
+        assertThat(domain.getRankList(lottos, winningNumbers, bonus)
+                .containsAll(Arrays.asList(0, 2, 1, 1, 1, 1)));
+
+        lottos.add(new Lotto(Arrays.asList(45, 44, 43, 42,41, 40)));
+        assertThat(domain.getRankList(lottos, winningNumbers, bonus)
+                .containsAll(Arrays.asList(0, 2, 1, 1, 1, 1)));
+    }
 }
