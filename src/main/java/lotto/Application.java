@@ -11,8 +11,8 @@ public class Application {
 
         user.inputPurchaseMoney();
         user.purchaseLotto();
-        lottoMachine.inputWinningNumber();
+        Lotto winningNumber = lottoMachine.inputWinningNumber();
         lottoMachine.inputBonusNumber();
-        Result.compareLottoNumber(user.myLotto, lottoMachine.winningNumber, lottoMachine.bonusNumber, user.money);
+        Result.compareLottoNumber(user.myLotto, winningNumber, lottoMachine.bonusNumber, user.money);
     }
 }

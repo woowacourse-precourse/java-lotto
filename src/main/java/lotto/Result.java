@@ -24,7 +24,7 @@ enum Winning {
 
 public class Result {
     public static void compareLottoNumber(List<Lotto> myLotto,
-                                          List<Integer> winningNumber,
+                                          Lotto winningNumber,
                                           int bonusNumber,
                                           int purchaseMoney) {
         for (Lotto lotto : myLotto) {
@@ -37,9 +37,9 @@ public class Result {
         calculateTheProfit(purchaseMoney);
     }
 
-    public static int countWinningNumber(Lotto lotto, List<Integer> winningNumber) {
+    public static int countWinningNumber(Lotto lotto, Lotto winningNumber) {
         int cnt = 0;
-        for (int number : winningNumber) {
+        for (int number : winningNumber.getNumbers()) {
             cnt += containWinningNumber(lotto, number);
         }
 
@@ -76,11 +76,11 @@ public class Result {
     }
 
     public static void printTheResult() {
-        System.out.println("3개 일치 (5,000원) -  " + Winning.FIFTH.cnt + "개");
-        System.out.println("4개 일치 (50,000원) -  " + Winning.FOURTH.cnt + "개");
-        System.out.println("5개 일치 (1,500,000원) -  " + Winning.THIRD.cnt + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) -  " + Winning.SECOND.cnt + "개");
-        System.out.println("6개 일치 (2,000,000,000원) -  " + Winning.FIRST.cnt + "개");
+        System.out.println("3개 일치 (5,000원) - " + Winning.FIFTH.cnt + "개");
+        System.out.println("4개 일치 (50,000원) - " + Winning.FOURTH.cnt + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + Winning.THIRD.cnt + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Winning.SECOND.cnt + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + Winning.FIRST.cnt + "개");
     }
 
     public static void calculateTheProfit(int purchaseMoney) {
@@ -96,7 +96,7 @@ public class Result {
     }
 
     public static void printTheProfit(double profit) {
-        System.out.println("총 수익률은 " + String.format(" %.1f", profit) + "%입니다.");
+        System.out.println("총 수익률은 " + String.format("%.1f", profit) + "%입니다.");
     }
 
 }

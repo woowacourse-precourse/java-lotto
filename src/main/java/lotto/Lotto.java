@@ -7,6 +7,9 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        isOverlap(numbers);
+        isNotSixSize(numbers);
+        isNotInRange(numbers);
         this.numbers = numbers;
     }
 
@@ -14,6 +17,30 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void isOverlap(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호에 중복된 숫자가 있습니다.");
+        }
+    }
+
+    private void isNotSixSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호가 6개가 아닙니다.");
+        }
+    }
+
+    private void isNotInRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException("[ERROR] 당첨 번호가 범위를 벗어났습니다.");
+            }
+        }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     public boolean containNumber(int number) {
