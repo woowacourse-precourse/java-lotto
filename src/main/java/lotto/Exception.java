@@ -27,6 +27,7 @@ public class Exception {
         winNumFormatError(input);
         String[] tmpNums = input.split(",");
         winNumDuplicate(tmpNums);
+        winNumSizeError(tmpNums);
         for (String e : tmpNums) {
             winNumTypeError(e);
             int num = Integer.parseInt(e);

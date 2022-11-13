@@ -24,4 +24,8 @@ public class WinNumInputException {
         if (input.length != Arrays.stream(input).distinct().count())
             throw new IllegalArgumentException("[ERROR] 중복된 수를 입력하였습니다.");
     }
+    public static void winNumSizeError(String[] input){
+        if(input.length!=6)
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해야 합니다.");
+    }
 }
