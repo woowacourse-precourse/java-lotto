@@ -59,14 +59,13 @@ class LottoTest {
     @Test
     void checkPurchaseByTicketNumber() {
         LottoPurchase lottopurchase = new LottoPurchase("8000");
-        lottopurchase.calculateTicketNumber();
-        Assertions.assertEquals(lottopurchase.calculateTicketNumber(),8);
+        lottopurchase.calculateTicketCount();
+        Assertions.assertEquals(lottopurchase.calculateTicketCount(),8);
     }
     @DisplayName("구매한 금액과 당첨금의 마진률이 맞는지 확인한다.")
     @Test
     void checkPurchaseByMargin() {
         LottoPurchase lottopurchase = new LottoPurchase("8000");
-        double margin = lottopurchase.calculateMargin(5000);
-        Assertions.assertEquals(margin,62.5);
+        Assertions.assertEquals(lottopurchase.calculateMargin(5000),62.5);
     }
 }
