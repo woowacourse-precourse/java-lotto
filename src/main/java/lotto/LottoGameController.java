@@ -1,6 +1,6 @@
 package lotto;
 
-import View.IoView;
+import view.IoView;
 import dto.ScratchResult;
 import java.util.Collections;
 import java.util.List;
