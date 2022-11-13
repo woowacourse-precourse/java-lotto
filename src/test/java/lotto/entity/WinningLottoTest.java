@@ -45,7 +45,35 @@ class WinningLottoTest {
             IllegalArgumentException.class);
     }
 
-    @DisplayName("로또가 번호가 1개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 0개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
+    @Test
+    void matchZeroAndNotBonus() {
+        //given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(7, 8, 9, 10, 11, 12)), 13);
+
+        //when
+        Rank result = winningLotto.compare(lotto);
+
+        //then
+        assertThat(result).isEqualTo(Rank.NONE);
+    }
+
+    @DisplayName("로또 번호가 0개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
+    @Test
+    void matchZeroAndBonus() {
+        //given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(7, 8, 9, 10, 11, 12)), 1);
+
+        //when
+        Rank result = winningLotto.compare(lotto);
+
+        //then
+        assertThat(result).isEqualTo(Rank.NONE);
+    }
+
+    @DisplayName("로또 번호가 1개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
     @Test
     void matchOneAndNotBonus() {
         //given
@@ -59,7 +87,7 @@ class WinningLottoTest {
         assertThat(result).isEqualTo(Rank.NONE);
     }
 
-    @DisplayName("로또가 번호가 1개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 1개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
     @Test
     void matchOneAndBonus() {
         //given
@@ -73,7 +101,7 @@ class WinningLottoTest {
         assertThat(result).isEqualTo(Rank.NONE);
     }
 
-    @DisplayName("로또가 번호가 2개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 2개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
     @Test
     void matchTwoAndNotBonus() {
         //given
@@ -87,7 +115,7 @@ class WinningLottoTest {
         assertThat(result).isEqualTo(Rank.NONE);
     }
 
-    @DisplayName("로또가 번호가 2개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 2개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
     @Test
     void matchTwoAndBonus() {
         //given
@@ -101,7 +129,7 @@ class WinningLottoTest {
         assertThat(result).isEqualTo(Rank.NONE);
     }
 
-    @DisplayName("로또가 번호가 3개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 3개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
     @Test
     void matchThreeAndNotBonus() {
         //given
@@ -115,7 +143,7 @@ class WinningLottoTest {
         assertThat(result).isEqualTo(Rank.FIFTH);
     }
 
-    @DisplayName("로또가 번호가 3개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 3개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
     @Test
     void matchThreeAndBonus() {
         //given
@@ -129,7 +157,7 @@ class WinningLottoTest {
         assertThat(result).isEqualTo(Rank.FIFTH);
     }
 
-    @DisplayName("로또가 번호가 4개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 4개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
     @Test
     void matchFourAndNotBonus() {
         //given
@@ -143,7 +171,7 @@ class WinningLottoTest {
         assertThat(result).isEqualTo(Rank.FOURTH);
     }
 
-    @DisplayName("로또가 번호가 4개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 4개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
     @Test
     void matchFourAndBonus() {
         //given
@@ -157,7 +185,7 @@ class WinningLottoTest {
         assertThat(result).isEqualTo(Rank.FOURTH);
     }
 
-    @DisplayName("로또가 번호가 5개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 5개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
     @Test
     void matchFiveAndNotBonus() {
         //given
@@ -171,7 +199,7 @@ class WinningLottoTest {
         assertThat(result).isEqualTo(Rank.THIRD);
     }
 
-    @DisplayName("로또가 번호가 5개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 5개 맞고 보너스가 맞는 경우의 결과를 반환한다.")
     @Test
     void matchFiveAndBonus() {
         //given
@@ -185,7 +213,7 @@ class WinningLottoTest {
         assertThat(result).isEqualTo(Rank.SECOND);
     }
 
-    @DisplayName("로또가 번호가 6개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
+    @DisplayName("로또 번호가 6개 맞고 보너스가 맞지 않는 경우의 결과를 반환한다.")
     @Test
     void matchSixAndNotBonus() {
         //given
