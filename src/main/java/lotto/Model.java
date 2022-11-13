@@ -36,7 +36,7 @@ public class Model {
         while (lottoNumber.contains(randomNumber)) {
             randomNumber = Randoms.pickNumberInRange(1, 45);
         }
-        
+
         return randomNumber;
     }
 
@@ -60,7 +60,7 @@ public class Model {
         try {
             return Integer.parseInt(string);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
+            throw new IllegalArgumentException("[ERROR] 입력된 값이 숫자가 아닙니다.");
         }
     }
 
