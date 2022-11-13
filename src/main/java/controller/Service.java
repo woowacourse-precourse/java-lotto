@@ -48,4 +48,10 @@ public class Service {
         sameNumbers.retainAll(winningNumbers);
         return sameNumbers.size();
     }
+
+    public boolean compareBonusNumber(List<Integer> lottoNumbers, int bonusNumber, int winningNumbers){
+        if(winningNumbers == 5)
+            return lottoNumbers.contains(bonusNumber);
+        return false;
+    }
 }
