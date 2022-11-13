@@ -134,10 +134,11 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void inputCashStringToIntegerTest() {
+    void changeCashStringToIntegerTest() {
 
         assertThat(changeCashStringToInteger("12345")).isEqualTo(12345);
     }
+
 
     @Test
     void getUserCashTest() {
