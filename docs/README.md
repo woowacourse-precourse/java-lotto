@@ -9,7 +9,7 @@
 - 당첨 번호와` 보너스 번호를 입력받는다.
     - 당첨번호 입력기를 만들고, 그것을 배열/리스트로 반환한다.<><3> 
       - [x] 당첨번호 입력기 만들기 Inputer#createLottoWinNumber
-      - [] 배열/리스트로 반환하는 함수 만들기 Maker#makeStringToList
+      - [x] 배열/리스트로 반환하는 함수 만들기 Maker#makeStringToList
     - [x] 보너스 번호를 입력기를 만들고, 그것을 정수형`으로 반환한다.<><3> Inputer#createLottoBonusNumber
 
 - 발행한 로또 수량 및 번호를 출력한다. 로또 번호는 오름차순으로 정렬하여 보여준다.

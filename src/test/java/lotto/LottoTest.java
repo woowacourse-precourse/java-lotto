@@ -28,7 +28,6 @@ class LottoTest {
         Maker changeStringToList = new Maker();
 
         assertEquals(changeStringToList.lottoWinList("1,2,3,4,5,6"), List.of(1,2,3,4,5,6));
-
     }
 
 
