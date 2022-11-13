@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
     private static final int LOTTO_START_NUMBER = 1;
@@ -11,6 +13,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateLottoSize(numbers);
         validateEachNumberInRange(numbers);
+        validateHasDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -25,6 +28,15 @@ public class Lotto {
             if (number < LOTTO_START_NUMBER || number > LOTTO_END_NUMBER) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    private void validateHasDuplicate(List<Integer> numbers) {
+        List<Integer> removedDuplicates = numbers.stream()
+                .distinct()
+                .collect(toList());
+        if (removedDuplicates.size() < LOTTO_SIZE) {
+            throw new IllegalArgumentException();
         }
     }
 }

@@ -33,7 +33,7 @@
 - [ ] 로또 생성 Lotto#Lotto(List<Integer> numbers)
   - [X] 로또 번호 리스트의 사이즈가 6인지 검증 Lotto#validateLottoSize(List<Integer> numbers)
   - [X] 로또의 각 번호가 1~45 숫자 범위 내에 있는지 검증 Lotto#validateEachNumberInRange(List<Integer> numbers)
-  - [ ] 로또의 각 번호가 중복되는지 검증 Lotto#validateHasDuplicate(List<Integer> numbers)
+  - [X] 로또의 각 번호가 중복되는지 검증 Lotto#validateHasDuplicate(List<Integer> numbers)
   - [ ] 로또 번호 리스트를 오름차순으로 정렬 Lotto#ascendingSort(List<Integer> numbers)
 - [ ] 로또 1장 가격 상수 처리 (1000) 
 - [X] 로또 번호 리스트 사이즈 상수 처리 (6)
