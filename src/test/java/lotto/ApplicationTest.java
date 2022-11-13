@@ -64,6 +64,6 @@ class ApplicationTest extends NsTest {
     @Test
     void creatLottoBundleTest() {
         final int purchaseAmount = 6;
-        assertEquals(Application.creatLottoBundle(purchaseAmount).size(), purchaseAmount);
+        assertEquals(Generator.creatLottoBundle(purchaseAmount).size(), purchaseAmount);
     }
 }
