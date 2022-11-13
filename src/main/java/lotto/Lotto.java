@@ -2,6 +2,8 @@ package lotto;
 
 import constants.LottoConstants;
 import constants.UIConstants;
+import user.BonusNumber;
+import user.WinNumber;
 
 import java.util.List;
 import java.util.Set;
@@ -31,9 +33,10 @@ public class Lotto {
         }
     }
 
-    public void countMatchingNumber(List<Integer> winNumbers, int bonusNumber) {
+    public Wins countMatchingNumber(WinNumber winNumber, BonusNumber bonusNumber) {
+        List<Integer> winNumbers = winNumber.getWinNumber();
         int matchingCount = 0;
-        boolean isBonusMatched = winNumbers.contains(bonusNumber);
+        boolean isBonusMatched = numbers.contains(bonusNumber.getBonusNumber());
 
         for (int number : numbers) {
             if (winNumbers.contains(number)) {
@@ -41,7 +44,7 @@ public class Lotto {
             }
         }
 
-        Wins.countWinningLotto(matchingCount, isBonusMatched);
+        return Wins.getWins(matchingCount, isBonusMatched);
     }
 
     @Override
