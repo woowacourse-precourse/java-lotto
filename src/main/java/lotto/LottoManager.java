@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -54,7 +55,7 @@ public class LottoManager {
     }
 
     // 로또 리스트를 생성하는 메소드
-    public void createLottoList(){
+    public void createLottoList() {
         // 로또 배열 생성
         lottoList = new ArrayList<>();
         // lottoCount 만큼 로또 생성
@@ -67,6 +68,9 @@ public class LottoManager {
     public void createLotto() {
         // 1~45 랜덤 번호 6개 생성
         List<Integer> numberList = pickUniqueNumbersInRange(1, 45, 6);
+
+        // 랜덤 번호 오름차순 정렬
+        numberList.sort((o1, o2) -> o1 - o2);
 
         lottoList.add(new Lotto(numberList));
     }
