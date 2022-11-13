@@ -81,7 +81,11 @@ public class Application {
         return lotteries;
     }
 
-    public static List<Integer> checkLottery(Lotto lotto, List<Integer> winningNumbers, int bonus) {
+    public static List<Integer> checkLottery(
+            Lotto lotto,
+            List<Integer> winningNumbers,
+            int bonus
+    ) {
         List<Integer> numbers = lotto.getNumbers();
         List<Integer> hitCountAndBonusHitCount = Arrays.asList(0, 0);
         int cnt = 0;
@@ -97,7 +101,10 @@ public class Application {
         return hitCountAndBonusHitCount;
     }
 
-    public static int getRankIndex(int hitCount, int bonusHitCount) {
+    public static int getRankIndex(
+            int hitCount,
+            int bonusHitCount
+    ) {
         if (hitCount == 3) return 5;
         if (hitCount == 4) return 4;
         if (hitCount == 5 && bonusHitCount == 0) return 3;
