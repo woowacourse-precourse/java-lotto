@@ -17,4 +17,12 @@ public class User {
     public int countTicket() {
         return pay / TicketPrice.TICKET_PRICE.getTicketPrice();
     }
+
+    public void textTicketPrice() {
+        System.out.println("구입 금액을 입력해주세요");
+    }
+
+    public void textTicketcount() {
+        System.out.printf(countTicket()+"개를 구매했습니다.");
+    }
 }
