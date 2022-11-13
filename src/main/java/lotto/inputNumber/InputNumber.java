@@ -10,7 +10,9 @@ import java.util.stream.Collectors;
 public class InputNumber {
 
     public static List<Integer> createNumber() {
-        return new ArrayList<>();
+        printInputMessage();
+        List<Integer> numbers = inputNumber();
+        return numbers;
     }
 
     private static List<Integer> inputNumber() {
