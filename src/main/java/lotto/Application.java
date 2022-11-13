@@ -40,20 +40,22 @@ public class Application {
         return payment;
     }
 
-    public static void inputWinningNumbers() {
+    public static List<Integer> inputWinningNumbers() {
         // 당첨 번호 입력
         System.out.println(INPUT_WINNING_NUMBERS_SENTENCE);
         List<Integer> winningNumbers = Arrays.stream(Console.readLine().split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         System.out.println();
+        return winningNumbers;
     }
 
-    public static void inputBonusNumber() {
+    public static int inputBonusNumber() {
         // 보너스 번호 입력
         System.out.println(INPUT_BONUS_NUMBER_SENTENCE);
         int bonus = Integer.parseInt(Console.readLine());
         System.out.println();
+        return bonus;
     }
 
     public static List<Integer> generateSortedRandomNumbers() {
