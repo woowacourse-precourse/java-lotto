@@ -11,12 +11,13 @@ import lotto.constant.LottoResultConstant;
 import lotto.constant.StringConstant;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.domain.WinningLotto;
 import lotto.service.LottoResultService;
 import lotto.service.UserLottoService;
 import lotto.service.YieldService;
 import lotto.validation.BonusLottoValidation;
-import lotto.validation.LotteryWinningNumberValidation;
 import lotto.validation.Validation;
+import lotto.view.PrintResultView;
 import lotto.view.View;
 
 public class LottoController {
@@ -35,15 +36,13 @@ public class LottoController {
         Money userMoney = money.get();
         int lottoCount = calculateLottoCountWithOutputView(userMoney);
         List<Lotto> userLotto = createUserLottoWithOutputView(lottoCount);
-
         Optional<Lotto> winningLotto = getWinningLottoWithValidation();
         if (winningLotto.isEmpty()) {
             return;
         }
-        Lotto lotteryWinningNumber = winningLotto.get();
-//
-//        String bonusLotto = getBonusLottoWithValidation(winningLotto);
-//
+        Optional<WinningLotto> lotteryWinningNumber = getBonusLottoWithValidationAndCreateWinningLotto(
+                winningLotto.get());
+
 //        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(userLotto,
 //                getWinningLotto(winningLotto), getBonusLotto(bonusLotto));
 //        printUserLottoAndUserYield(result, Integer.parseInt(userMoneyInput));
@@ -94,60 +93,23 @@ public class LottoController {
         }
     }
 
-    private void lottoMoneyInputValidation(String userInput) {
-        Validation lottoMoneyValidation = createLottoMoneyValidation();
-        userInputValidation(lottoMoneyValidation, userInput);
+    private Optional<WinningLotto> getBonusLottoWithValidationAndCreateWinningLotto(Lotto winningLotto) {
+        String userInput = PrintResultView.printViewWithUserInput(StringConstant.BONUS_LOTTO_INPUT_MESSAGE.getMessage());
+        try {
+            return Optional.of(new WinningLotto(winningLotto, getBonusLotto(userInput)));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return Optional.empty();
+        }
     }
 
-    private Validation createLottoMoneyValidation() {
-        return new LottoMoneyValidation();
-    }
-
-    private void userInputValidation(Validation validation, String userInput) {
-        validation.isValidate(userInput);
-    }
-
-    private String lottoWinningNumberView() {
-        View lottoWinningNumberView = createLottoWinningNumberView();
-        return printViewAndReturnInput(lottoWinningNumberView);
-    }
-
-    private View createLottoWinningNumberView() {
-        return new LotteryWinningNumberView();
-    }
-
-    private void winningLottoInputValidation(String userLottoWinningInput) {
-        Validation winningLottoInputValidation = createWinningLottoInputValidation();
-        userInputValidation(winningLottoInputValidation, userLottoWinningInput);
-    }
-
-    private Validation createWinningLottoInputValidation() {
-        return new LotteryWinningNumberValidation();
-    }
-
-    private String getBonusLottoWithValidation(String winningLotto) {
-        String userBonusLottoInput = bonusLottoView();
-        bonusLottoInputValidation(userBonusLottoInput, winningLotto);
-        return userBonusLottoInput;
-    }
-
-    private String bonusLottoView() {
-        View bonusLottoView = createBonusLottoView();
-        return printViewAndReturnInput(bonusLottoView);
-    }
-
-    private View createBonusLottoView() {
-        return new BonusLottoView();
-    }
-
-    private void bonusLottoInputValidation(String userBonusLottoInput, String lotteryWinningNumber) {
-        Validation bonusLottoInputValidation = createBonusLottoInputValidation();
-        List<Integer> lottoNumber = createLottoNumber(lotteryWinningNumber);
-        bonusLottoInputValidation.isValidate(userBonusLottoInput, lottoNumber);
-    }
-
-    private Validation createBonusLottoInputValidation() {
-        return new BonusLottoValidation();
+    private int getBonusLotto(String userInput) {
+        try {
+            return Integer.parseInt(userInput);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(
+                    StringConstant.BONUS_LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage());
+        }
     }
 
     private static List<Integer> createLottoNumber(String userInput) {
@@ -165,9 +127,6 @@ public class LottoController {
                 .collect(Collectors.toList());
     }
 
-    private int getBonusLotto(String bonusLotto) {
-        return Integer.parseInt(bonusLotto);
-    }
 
     private void printUserLottoAndUserYield(Map<LottoResultConstant, Integer> result, int userMoney) {
         double yieldPercent = yieldService.calculateYield(result, userMoney);
