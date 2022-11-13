@@ -58,20 +58,23 @@ public class Application {
         String[] splitedInput = input.split(",");
         List<Integer> luckyNumber = new ArrayList<>();
         for (String s : splitedInput) {
-            validation.validateNumber(s);
-            int number = Integer.parseInt(s);
-            validation.validateNumberRange(number);
+            int number = stringToInt(s);
             luckyNumber.add(number);
         }
         return new Lotto(luckyNumber);
     }
 
     private static int validateBonusNumber(String input, Lotto lotto) {
-        validation.validateNumber(input);
-        int bonus = Integer.parseInt(input);
-        validation.validateNumberRange(bonus);
+        int bonus = stringToInt(input);
         lotto.isDuplicateBonusNumber(bonus);
         return bonus;
+    }
+
+    private static int stringToInt(String target) {
+        validation.validateNumber(target);
+        int number = Integer.parseInt(target);
+        validation.validateNumberRange(number);
+        return number;
     }
 
     private static void getResult(List<Lotto> lottos, Lotto lucky, int bonus) {
