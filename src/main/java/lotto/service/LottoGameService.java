@@ -2,15 +2,16 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
+import lotto.domain.Prize;
 import lotto.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class LottoGameService {
 
     private OutputView outputView;
+    private Prize prize;
     public List<Lotto> pickLottos(int ticketCnt) {
         List<Lotto> lottoList = new ArrayList<>();
         for (int i=0; i<ticketCnt; i++) {
@@ -24,6 +25,35 @@ public class LottoGameService {
     private List<Integer> sortAscending(List<Integer> numbers) {
         Collections.sort(numbers);
         return numbers;
+    }
+
+    public Map<Prize, Integer> compareWinningLotto(List<Lotto> lottoList, Lotto winningLotto, int bonusNumber) {
+        Map<Prize, Integer> prizeMap = new EnumMap<>(Prize.class);
+        for (Lotto userLotto : lottoList) {
+            int binggoCnt = sizeIntersection(userLotto.getNumbers(), winningLotto.getNumbers());
+            Prize prizeType = prize.getMatchPrize(binggoCnt, checkBonusBinggo(userLotto, bonusNumber));
+            plusPrizeCount(prizeMap, prizeType);
+        }
+        return prizeMap;
+    }
+
+    private boolean checkBonusBinggo(Lotto userLotto, int bonusNumber) {
+        if (userLotto.getNumbers().contains(bonusNumber)) {
+            return true;
+        }
+        return false;
+    }
+
+    private int sizeIntersection(List<Integer> userLottoNumbers, List<Integer> winningLottoNumbers) {
+        Set<Integer> numberSet = userLottoNumbers.stream()
+                .filter(winningLottoNumbers::contains)
+                .collect(Collectors.toSet());
+        return new ArrayList<>(numberSet).size();
+    }
+
+    private void plusPrizeCount(Map<Prize, Integer> prizeCountMap, Prize prize) {
+        int count = prizeCountMap.getOrDefault(prize, 0);
+        prizeCountMap.put(prize, count+1);
     }
 
 }
