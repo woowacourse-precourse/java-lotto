@@ -33,6 +33,7 @@ public class Lotto {
 
     public static List<Integer> generateRandomLottoNumbers() {
         List<Integer> lottoNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        lottoNum.sort(Comparator.naturalOrder());
         return lottoNum;
     }
 }
