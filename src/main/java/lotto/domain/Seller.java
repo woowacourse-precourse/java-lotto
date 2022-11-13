@@ -6,6 +6,7 @@ import java.util.List;
 public class Seller {
 
     private static final int LOTTO_PRICE = 1000;
+    private static final String CHANGES_EXIST_EXCEPTION_MESSAGE = "금액이 나눠 떨어지지 않습니다";
 
     public List<Lotto> issueLottos(Money money) {
         validateNoChanges(money);
@@ -14,7 +15,7 @@ public class Seller {
 
     private void validateNoChanges(Money money) {
         if (money.hasChangesWith(LOTTO_PRICE)) {
-            throw new IllegalArgumentException("금액이 나눠 떨어지지 않습니다");
+            throw new IllegalArgumentException(CHANGES_EXIST_EXCEPTION_MESSAGE);
         }
     }
 

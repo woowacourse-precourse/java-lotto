@@ -9,6 +9,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
     private static final int LOTTO_NUMBERS_LENGTH = 6;
+    private static final String LOTTO_NUMBERS_LENGTH_EXCEPTION_MESSAGE = "로또 번호는 " + LOTTO_NUMBERS_LENGTH + "개입니다";
+    private static final String DUPLICATE_EXCEPTION_MESSAGE = "로또 번호에 중복이 있습니다";
 
     private final List<LottoNumber> numbers;
 
@@ -27,14 +29,14 @@ public class Lotto {
 
     private void validateLength(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBERS_LENGTH) {
-            throw new IllegalArgumentException("로또 번호는 " + LOTTO_NUMBERS_LENGTH + "개입니다");
+            throw new IllegalArgumentException(LOTTO_NUMBERS_LENGTH_EXCEPTION_MESSAGE);
         }
     }
 
     private void validateNoDuplicate(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         if (uniqueNumbers.size() != numbers.size()) {
-            throw new IllegalArgumentException("로또 번호에 중복이 있습니다");
+            throw new IllegalArgumentException(DUPLICATE_EXCEPTION_MESSAGE);
         }
     }
 
