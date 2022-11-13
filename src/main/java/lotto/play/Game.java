@@ -21,12 +21,14 @@ public class Game {
 
     private Prize prize;
 
+    private List<Integer> matchResults;
 
 
     public Game() {
         player = new Player();
         lottos = new ArrayList<>();
         prize = new Prize();
+        matchResults = new ArrayList<>();
     }
 
     public void playGame(){
@@ -36,12 +38,19 @@ public class Game {
         OutputPrint.generatedLottoNumbersPrint(lottos);
         prize.inputPrizeNumbers();
         prize.inputBonusNumber();
+        matchPrize();
+    }
+
+    private void matchPrize() {
+        for (Lotto lotto : lottos) {
+            int matchResult = prize.match(lotto);
+            matchResults.add(matchResult);
+        }
+        OutputPrint.resultPrint(matchResults);
     }
 
 
-
     private void startGame(){
-        InputPrint.startInput();
         player.inputMoney();
     }
 
