@@ -18,6 +18,15 @@ public class RateOfReturn {
         this.view = view;
     }
 
+    public void printRate(double rate) {
+        StringBuilder context = new StringBuilder();
+
+        context.append(BEFORE_RATE).append(rate)
+                .append(UNIT).append(AFTER_RATE);
+
+        view.printMessage(context.toString());
+    }
+
     public double calculate() {
         double percentage = getPercentage();
 
