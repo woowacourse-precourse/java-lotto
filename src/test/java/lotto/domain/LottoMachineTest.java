@@ -22,5 +22,20 @@ public class LottoMachineTest {
         lottoMachine.getLottosNumberList().stream().forEach(System.out::println);
     }
 
+    @Test
+    void 당첨번호_저장() {
+        lottoMachine = new LottoMachine(5);
+        List<Integer> winningNumber = List.of(1,2,3,4,5,6);
+        int bonusNumber = 7;
+        lottoMachine.saveWinningNumber(winningNumber,bonusNumber);
+    }
 
+    @Test
+    void 당첨_개수_확인() {
+        lottoMachine = new LottoMachine(20);
+        List<Integer> winningNumber = List.of(1,2,3,4,5,6);
+        int bonusNumber = 7;
+        lottoMachine.saveWinningNumber(winningNumber,bonusNumber);
+        lottoMachine.getWinningList();
+    }
 }

@@ -69,23 +69,24 @@ public class LottoMachine {
     }
 
     public List<Integer> getWinningList() {
-        List<Integer> winningList = IntStream.of(new int[7])
+        List<Integer> winningList = IntStream.of(new int[8])
                 .boxed()
                 .collect(Collectors.toList());
         lottoGroups.getLottos().forEach(lotto -> {
             int winningCount = getWinningCount(lotto);
             winningList.set(winningCount, winningList.get(winningCount) + 1);
         });
-        System.out.println("winningList = " + winningList);
-        return List.of(1, 2, 3, 4, 5);
+        return winningList;
     }
 
     private int getWinningCount(Lotto lotto) {
-        System.out.println(lotto.getNumbers());
         int winningCount = lotto.getNumbers().stream()
                 .filter(this::checkWinningNumber)
                 .collect(Collectors.toList())
                 .size();
+        if (winningCount==5 && lotto.getNumbers().contains(winningLotto.getBonusNumber())){
+            return winningCount+2;
+        }
         return winningCount;
     }
 
