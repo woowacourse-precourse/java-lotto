@@ -14,6 +14,10 @@ public class PurchasedAmount {
         this.price = Integer.parseInt(inputPrice);
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     private void validate(String inputPrice) {
         /*숫자 검사*/
         validateDigit(inputPrice);
@@ -42,4 +46,5 @@ public class PurchasedAmount {
             throw new IllegalArgumentException(INVALID_MONEY_INPUT_FORMAT_MESSAGE);
         }
     }
+
 }
