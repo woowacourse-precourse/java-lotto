@@ -11,4 +11,8 @@ public class Lottos {
         lottos.add(lotto);
     }
 
+    // 로또 여러개를 가져오는 기능
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }
