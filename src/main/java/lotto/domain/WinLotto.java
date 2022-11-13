@@ -26,7 +26,7 @@ public class WinLotto {
         new Lotto(winningNumbers);
     }
 
-    public void setBounsNumbers(){
+    public void setBounsNumber(){
         bonusNumber = Integer.parseInt(Console.readLine());
     }
 
