@@ -25,4 +25,14 @@ public class CalculatorTest {
                 .contains("5개 일치 (1,500,000원) - 1개")
                 .contains("5개 일치, 보너스 볼 일치 (30,000,000원) - 1개");
     }
+
+    @Test
+    void 수익률_계산() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Calculator calc = new Calculator(1000L);
+        Calculator.calculateLottos(3,false);
+        calc.printResult();
+        assertThat(out.toString()).contains("총 수익률은 500.0%입니다.");
+    }
 }
