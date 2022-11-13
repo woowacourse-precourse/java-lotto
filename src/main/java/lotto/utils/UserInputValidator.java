@@ -6,6 +6,7 @@ public class UserInputValidator {
     public static void validatePurchaseAmount(String purchaseAmount) {
         isDigit(purchaseAmount);
         isValidUnitOfMoney(Integer.parseInt(purchaseAmount));
+        isRangeOfPurchaseAmount(Long.parseLong(purchaseAmount));
     }
 
     private static void isDigit(String number) {
@@ -17,8 +18,14 @@ public class UserInputValidator {
     }
 
     private static void isValidUnitOfMoney(int purchaseAmount) {
-        if (purchaseAmount % UNIT_OF_MONEY != 0 || purchaseAmount == 0) {
+        if (purchaseAmount % LOTTO_TICKET_PRICE != 0 || purchaseAmount == 0) {
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_VALID_UNIT_OF_MONEY);
+        }
+    }
+
+    private static void isRangeOfPurchaseAmount(long purchaseAmount) {
+        if (purchaseAmount < LOTTO_TICKET_PRICE || purchaseAmount > MAXIMUM_PURCHASE_AMOUNT) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_NOT_VALID_RANGE_OF_PURCHASE_AMOUNT);
         }
     }
 }

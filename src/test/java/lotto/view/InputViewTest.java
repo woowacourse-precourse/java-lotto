@@ -33,6 +33,16 @@ class InputViewTest {
                 .hasMessage(ERROR_MESSAGE_NOT_VALID_UNIT_OF_MONEY);
     }
 
+    @DisplayName("구입 금액 - 1000원 이상, 20억 이하만 입력 가능")
+    @ParameterizedTest
+    @ValueSource(strings = {"-1000", "2100000000"})
+    void 구입_금액은_특정_범위를_만족(String userInput) {
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(InputView::inputPurchaseAmount)
+                .hasMessage(ERROR_MESSAGE_NOT_VALID_RANGE_OF_PURCHASE_AMOUNT);
+    }
+
     @DisplayName("구입 금액 - 정상 입력")
     @ParameterizedTest
     @ValueSource(strings = {"1000", "2000"})
