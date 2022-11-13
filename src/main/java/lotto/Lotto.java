@@ -42,9 +42,10 @@ public class Lotto {
         return Arrays.toString(numbers.toArray(new Integer[numbers.size()]));
     }
 
-    public List<Integer> getLotto(){
+    public ArrayList<Integer> getLotto(){
         Collections.sort(numbers);
-        return numbers;
+        ArrayList<Integer> lottos=new ArrayList<>(numbers);
+        return lottos;
     }
     // TODO: 추가 기능 구현
 }
