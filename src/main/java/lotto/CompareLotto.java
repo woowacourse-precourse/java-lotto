@@ -52,7 +52,7 @@ public class CompareLotto {
 
     public static void printRateOfReturn(){
         double getReturn = (fifth * 5000) + (fourth * 50000) + (third * 1500000) + (second * 30000000) + (first * 2000000000);
-        double rateOfReturn = (getReturn / userInputMoney)*100;
+        double rateOfReturn = (getReturn / LottoInput.inputMoney)*100;
         System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
 
     }
