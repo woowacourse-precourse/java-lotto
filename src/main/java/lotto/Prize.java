@@ -5,7 +5,7 @@ public enum Prize {
     SECOND(5, "30,000,000원", 30000000L),
     THIRD(5, "1,500,000원", 1500000L),
     FOURTH(4, "50,000원", 50000L),
-    FIFTH(3, "5,000", 5000L),
+    FIFTH(3, "5,000원", 5000L),
     NONE(0, "0", 0L);
 
     final int matches;
