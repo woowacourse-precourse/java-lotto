@@ -6,24 +6,17 @@ import lotto.domain.lotto.LottoDraw;
 import lotto.ui.dto.BonusNumber;
 import lotto.ui.dto.LottoPurchasedAmount;
 import lotto.ui.dto.WinNumbers;
+import lotto.util.BonusNumberValidator;
+import lotto.util.LottoPurchasedAmountValidator;
 import lotto.util.Validator;
+import lotto.util.WinNumbersValidator;
 
 public class InputView {
-    private final Validator lottoPurchasedAmountValidator;
-    private final Validator winNumbersValidator;
-    private final Validator bonusNumberValidator;
-
-    public InputView(Validator lottoPurchasedAmountValidator,
-                     Validator winNumbersValidator,
-                     Validator bonusNumberValidator) {
-        this.lottoPurchasedAmountValidator = lottoPurchasedAmountValidator;
-        this.winNumbersValidator = winNumbersValidator;
-        this.bonusNumberValidator = bonusNumberValidator;
-    }
 
     public LottoPurchasedAmount getLottoPurchasedAmount() {
         String purchasedAmount = getUserInputWithMessage(MessageConstants.PURCHASED_AMOUNT_MESSAGE);
-        return new LottoPurchasedAmount(purchasedAmount, lottoPurchasedAmountValidator);
+        Validator validator = new LottoPurchasedAmountValidator();
+        return new LottoPurchasedAmount(purchasedAmount, validator);
     }
 
     public LottoDraw getLottoDraw() {
@@ -35,12 +28,16 @@ public class InputView {
 
     private WinNumbers getWinNumbers() {
         String winNumbers = getUserInputWithMessage(MessageConstants.WIN_NUMBER_MESSAGE);
-        return new WinNumbers(winNumbers, winNumbersValidator);
+
+        Validator validator = new WinNumbersValidator();
+        return new WinNumbers(winNumbers, validator);
     }
 
     private BonusNumber getBonusNumber() {
         String bonusNumber = getUserInputWithMessage(MessageConstants.BONUS_NUMBER_MESSAGE);
-        return new BonusNumber(bonusNumber, bonusNumberValidator);
+
+        Validator validator = new BonusNumberValidator();
+        return new BonusNumber(bonusNumber, validator);
     }
 
     private String getUserInputWithMessage(String message) {
