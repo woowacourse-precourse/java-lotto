@@ -22,8 +22,14 @@ public class InputNumber {
         return numbers;
     }
 
-    private static void validate(String numbers) {
-        // try catch
+    private static void validate(String input) {
+        try {
+            Arrays.stream(input.split(","))
+                    .map(s -> Integer.parseInt(s))
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void printInputMessage() {
