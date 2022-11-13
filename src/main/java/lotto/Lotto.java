@@ -17,19 +17,24 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            ShowErrorMessage.showLottoNumberCount();
             throw new IllegalArgumentException();
         }
     }
 
+    public List<Integer> getLottoNumbers(){
+        return numbers;
+    }
+
     public long lottoCount(long amount) {
-        exceptionHandling.notDivideException(amount); // 예외 검사
+        exceptionHandling.notDivide(amount); // 예외 검사
         return amount / 1000;
     }
 
-    public List<List<Integer>> createLotto(long numberOfLotto) {
-        List<List<Integer>> lottos = new ArrayList<>();
+    public List<Lotto> createLotto(long numberOfLotto) {
+        List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < numberOfLotto; i++) {
-            List<Integer> lotto = createLottoList();
+            Lotto lotto = new Lotto(createLottoList());
             lottos.add(lotto);
         }
         return lottos;
