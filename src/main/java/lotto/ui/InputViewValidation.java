@@ -6,7 +6,7 @@ public class InputViewValidation {
 
     static final String ERROR_NOT_INTEGER_FORMAT = "[ERROR] 숫자만 입력해주세요.";
     static final String ERROR_NOT_1000 = "[ERROR] 1000단위 숫자만 입력해주세요.";
-    static final Pattern NUMBER_PATTERN = Pattern.compile("^[1-9]*$");
+    static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]*$");
 
 
     public static void validateIsInteger(String input) {
