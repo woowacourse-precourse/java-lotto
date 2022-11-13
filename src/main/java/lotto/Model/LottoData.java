@@ -26,6 +26,7 @@ public class LottoData{
         this.countOfLotto = numberOfLotto;
     }
     public void setNumberOfWins(HashMap<Integer, Integer> numberOfWins){this.numberOfWins = numberOfWins;}
+    public HashMap<Integer, Integer> getNumberOfWins(){return numberOfWins;}
     public int getCountOfLotto(){
         return countOfLotto;
     }

@@ -100,4 +100,14 @@ public class LottoController {
         List<Integer> userNumber = userNumberLotto.getLottoNumber();
         return userNumber.contains(bonusNumber);
     }
+
+    private void printLottoPrize(){
+        List<Integer> prizeList = new ArrayList<>(lottoData.getNumberOfWins().keySet());
+        List<Integer> winCount = new ArrayList<Integer>();
+        prizeList.sort(Integer::compareTo);
+        for(int prize : prizeList){
+            winCount.add(lottoData.getNumberOfWins().get(prize));
+        }
+        output.showLottoPrize(prizeList, winCount);
+    }
 }
