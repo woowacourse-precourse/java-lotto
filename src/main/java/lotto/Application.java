@@ -10,9 +10,12 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         LottoShop lottoShop = new LottoShop();
-        lottoShop.generateLottoList(lottoShop.buyLotto());
+        List<Lotto> lottoList = lottoShop.generateLottoList(lottoShop.buyLotto());
 
         LottoUser lottoUser = new LottoUser();
+        List<List<Integer>> userLottoList = lottoUser.generateUser();
 
+        LottoCalculator lottoCalculator = new LottoCalculator();
+        System.out.println(lottoCalculator.checkLuckyNumbers(lottoList, userLottoList));
     }
 }

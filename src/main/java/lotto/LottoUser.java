@@ -6,54 +6,61 @@ import java.util.stream.Collectors;
 public class LottoUser {
     LottoConsole lottoConsole = new LottoConsole();
 
-    public List<List<Integer>> generateUser(){
+    public List<List<Integer>> generateUser() {
         List<List<Integer>> user = new ArrayList<>();
-        user.add(generateLuckyNumber());
-        user.add(generateBonusNumber());
+        List<Integer> luckyNumber = generateLuckyNumber();
+        List<Integer> bonusNumber = generateBonusNumber();
+        checkDuplicationNumber(luckyNumber,bonusNumber.get(0));
+        user.add(luckyNumber);
+        user.add(bonusNumber);
         return user;
     }
 
-
-    private List<Integer> generateLuckyNumber(){
+    private List<Integer> generateLuckyNumber() {
         String luckyString = lottoConsole.inputLuckyNumber();
         List<Integer> luckyNumberList = changeStringToIntegerList(luckyString);
         checkDuplicationOfList(luckyNumberList);
-        checkLengthOfList(luckyNumberList,6);
+        checkLengthOfList(luckyNumberList, 6);
         checkSizeOfNumber(luckyNumberList);
         return luckyNumberList;
     }
 
-    private List<Integer> generateBonusNumber(){
+
+    private List<Integer> generateBonusNumber() {
         String bonusString = lottoConsole.inputBonusNumber();
         List<Integer> bonusNumberList = changeStringToIntegerList(bonusString);
-        checkLengthOfList(bonusNumberList,1);
+        checkLengthOfList(bonusNumberList, 1);
         checkSizeOfNumber(bonusNumberList);
         return bonusNumberList;
     }
 
+    private void checkDuplicationNumber(List<Integer> numberList, int checkNumber) {
+        for (Integer number : numberList) {
+            if(number==checkNumber){
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않는 숫자여야 합니다.");
+            }
+        }
+    }
 
-    private List<Integer> checkDuplicationOfList(List<Integer> numberList) {
+    private void checkDuplicationOfList(List<Integer> numberList) {
         Set<Integer> numberSet = new HashSet<>(numberList);
-        if(numberList.size()!=numberSet.size()){
+        if (numberList.size() != numberSet.size()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않는 숫자여야 합니다.");
         }
-        return numberList;
     }
 
-    private List<Integer> checkLengthOfList(List<Integer> numberList, int checkLength) {
-        if (numberList.size() != checkLength){
+    private void checkLengthOfList(List<Integer> numberList, int checkLength) {
+        if (numberList.size() != checkLength) {
             throw new IllegalArgumentException("[ERROR] 입력된 값이 " + checkLength + "개가 아닙니다.");
         }
-        return numberList;
     }
 
-    private List<Integer> checkSizeOfNumber(List<Integer> numberList) {
+    private void checkSizeOfNumber(List<Integer> numberList) {
         for (Integer number : numberList) {
-            if(!(1<= number && number <= 45)){
+            if (!(1 <= number && number <= 45)) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
-        return numberList;
     }
 
     private List<String> changeStringToStringList(String str1) {
@@ -61,10 +68,10 @@ public class LottoUser {
         return stringList;
     }
 
-    private List<Integer> changeStringListToIntegerList(List<String> stringList){
+    private List<Integer> changeStringListToIntegerList(List<String> stringList) {
         try {
             return stringList.stream().map(Integer::parseInt).collect(Collectors.toList());
-        } catch(NumberFormatException exception){
+        } catch (NumberFormatException exception) {
             throw new NumberFormatException("[ERROR] 입력된 값이 숫자가 아닙니다.");
         }
     }
