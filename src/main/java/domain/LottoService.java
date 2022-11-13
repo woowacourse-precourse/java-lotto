@@ -1,11 +1,12 @@
 package domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static util.Constant.LOTTO_PRICE;
+import static util.Constant.*;
 
 public class LottoService {
 
@@ -43,10 +44,7 @@ public class LottoService {
     public List<Lotto> publishLotto(int numberOfLotto) {
         List<Lotto> publishedLotto = new ArrayList<>();
         while (numberOfLotto > 0) {
-            List<Integer> randomNumbers = NumberGenerator.createUniqueRandomNumbers();
-            List<Integer> userLottoNumbers = randomNumbers.stream()
-                    .sorted(Comparator.comparing(Math::abs))
-                    .collect(Collectors.toList());
+            List<Integer> userLottoNumbers = NumberGenerator.createUniqueRandomNumbers();
             Lotto lotto = new Lotto(userLottoNumbers);
 
             publishedLotto.add(lotto);
@@ -62,7 +60,7 @@ public class LottoService {
     }
 
     public double getEarningRate() {
-        double earningRate = (double) this.totalEarning / this.money;
+        double earningRate = (double) this.totalEarning / this.money * 100;
         return Math.round(earningRate * 100) / (double) 100;
     }
 
