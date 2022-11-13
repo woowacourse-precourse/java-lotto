@@ -17,7 +17,7 @@
     - [x] 자연수로 지정된 설정 중에 올바르게 되어있는지 확인 - checkNaturalNumber
     - [x] 0이 포함된 자연수로 지정된 설정 중에 올바르게 되어있는지 확인 - checkZeroOrNaturalNumber
     - [ ] 논리적 오류 확인 - checkIllegalLotto
-      - [ ] 로또 길이보다 보너스 번호 길이가 긴지 확인 - checkLongerLottoThanBonus
+      - [x] 로또 길이보다 보너스 번호 길이가 긴지 확인 - checkLongerLottoThanBonus
       - [ ] 로또 길이 + 보너스 번호 길이가 숫자 범위 길이보다 큰지 확인 - checkLongerTotalThenNumber
       - [ ] 상위 등수가 하위 등수 금액보다 같거나 적은지 확인 - checkRankAmount
 

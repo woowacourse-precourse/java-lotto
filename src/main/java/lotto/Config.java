@@ -14,7 +14,7 @@ public class Config {
     private static final String RANGE_NUMBER_ERROR_MESSAGE = "범위를 표현한 설정값 중에 올바르지 않은 것이 존재합니다.";
     private static final String NATURAL_NUMBER_ERROR_MESSAGE = "자연수 입력이 필요한 설정값 중에 올바르지 않은 것이 존재합니다.";
     private static final String ZERO_OR_NATURAL_NUMBER_ERROR_MESSAGE = "0혹은 자연수 입력이 필요한 설정값 중에 올바르지 않은 것이 존재합니다.";
-
+    private static final String LONGER_LOTTO_THAN_BONUS = "로또 길이보다 보너스 번호 길이가 클 수 없습니다.";
 
     private Config() {
     }
@@ -47,6 +47,9 @@ public class Config {
     }
 
     private static void checkLongerLottoThanBonus() {
+        if (LOTTO_LENGTH < BONUS_LOTTO_LENGTH) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void checkLongerTotalThenNumber() {
