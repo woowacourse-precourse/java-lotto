@@ -8,6 +8,9 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class LottoResult {
+    private static final int RANK_COUNT_DEFAULT_VALUE = 0;
+    private static final int DEFAULT_REWARD = 0;
+
     private final Map<Rank, Integer> lottoResult;
 
     public LottoResult() {
@@ -15,11 +18,11 @@ public class LottoResult {
     }
 
     public void addResult(Rank rank) {
-        lottoResult.put(rank, lottoResult.getOrDefault(rank, 0) + 1);
+        lottoResult.put(rank, lottoResult.getOrDefault(rank, RANK_COUNT_DEFAULT_VALUE) + 1);
     }
 
     public Money reward() {
-        Money reward = new Money(0);
+        Money reward = new Money(DEFAULT_REWARD);
         for (Entry<Rank, Integer> entry : rewardCalculateEntrySet()) {
             Money rankReward = entry.getKey().reward();
             reward = reward.add(rankReward.multiply(entry.getValue()));
@@ -34,7 +37,7 @@ public class LottoResult {
     }
 
     public int rankCount(Rank rank) {
-        return lottoResult.getOrDefault(rank, 0);
+        return lottoResult.getOrDefault(rank, RANK_COUNT_DEFAULT_VALUE);
     }
 
     @Override
