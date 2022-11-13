@@ -43,6 +43,21 @@ public class LottoMachineTest extends NsTest {
         });
     }
 
+    @Test
+    void 보너스번호가_하나가_아니면_예외가_발생합니다() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> run("5000", "1,2,3,4,5,6", "7,8"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 보너스번호가_당첨번호와_중복되면_에외가_발생합니다() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> run("5000", "1,2,3,4,5,6", "6"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
     @Override
     protected void runMain() {
         Application.main(new String[]{});
