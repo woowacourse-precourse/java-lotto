@@ -7,12 +7,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoGenerator {
     // 한장의 로또를 만들어주는 메서드
-    public static List<Integer> createLottoNumber() {
+    private static List<Integer> createLottoNumber() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
     // 금액만큼 로또번호를 만들어주는 메서드
-    public List<List<Integer>> createLottos(int receivedMoney) {
+    public static List<List<Integer>> createLottos(int receivedMoney) {
         int ticketCount = receivedMoney / 1000;
         List<List<Integer>> lottoTicket = new ArrayList<>();
 
