@@ -46,4 +46,8 @@ public class Lotto {
     private void ascendingSort(List<Integer> numbers) {
         sort(numbers);
     }
+
+    public boolean containsBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }
