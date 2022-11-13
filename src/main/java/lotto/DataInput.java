@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DataInput {
@@ -62,12 +63,20 @@ public class DataInput {
         return bonusNumber;
     }
 
-    private static int ValidateFormat(String input) {
+    private static void ValidateFormat(String input) {
         input = input.trim();
         if(input.matches(VALID_FORMAT_PATTERN)){
             System.out.println(ERROR_MESSAGE_FORMAT);
             throw new IllegalArgumentException();
         }
-        return 0;
+    }
+
+    private static List<Integer> StringToList(String input) {
+        String[] convert = input.split(",");
+        List<Integer> result = new ArrayList<>();
+        for(int i = 0; i < convert.length; i++){
+            result.add(Integer.parseInt(convert[i]));
+        }
+        return result;
     }
 }
