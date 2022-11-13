@@ -14,8 +14,13 @@ public enum Ranking {
 
     private static final String HAS_BONUS_NUMBER_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원)";
     private static final String NO_BONUS_NUMBER_MESSAGE = "%d개 일치 (%s원)";
-    
+
     private final int rightCount;
+
+    public int getPrize() {
+        return prize;
+    }
+
     private final int prize;
     private final boolean hasBonusNumber;
 
