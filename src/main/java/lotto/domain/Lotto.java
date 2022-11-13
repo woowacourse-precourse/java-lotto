@@ -47,7 +47,6 @@ public class Lotto {
     private void validateWinningNumbers(String winningNumbers) {
         validateWinningNumbersLength(winningNumbers);
         validateWinningNumbersSeparator(winningNumbers);
-        validateInputNumbers(winningNumbers);
     }
 
     private void validateWinningNumbersLength(String winningNumbers) {
@@ -63,32 +62,6 @@ public class Lotto {
         if (!winningNumbers.contains(NUMBER_INPUT_SEPARATOR)) {
             throw new IllegalArgumentException(
                     LottoExceptionMessageUtils.INVALID_SEPARATOR.findExceptionMessage(winningNumbers));
-        }
-    }
-
-    private void validateInputNumbers(String winningNumbers) {
-        Arrays.stream(winningNumbers.split(NUMBER_INPUT_SEPARATOR))
-                .filter(winningNumber -> !isCorrectNumber(winningNumber))
-                .findAny()
-                .ifPresent(input -> {
-                    throw new IllegalArgumentException(
-                            LottoExceptionMessageUtils.INVALID_NUMBER_RANGE.findExceptionMessage(winningNumbers));
-                });
-    }
-
-    private boolean isCorrectNumber(String playerInputNumber) {
-        int playerNumber = castInputNumber(playerInputNumber);
-
-        return (LottoNumberConst.MIN_NUMBER_INT_VALUE <= playerNumber
-                && playerNumber <= LottoNumberConst.MAX_NUMBER_INT_VALUE);
-    }
-
-    private int castInputNumber(String inputNumber) {
-        try {
-            return Integer.parseInt(inputNumber);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(
-                    LottoExceptionMessageUtils.INVALID_NUMBER_FORMAT.findExceptionMessage(inputNumber));
         }
     }
 
