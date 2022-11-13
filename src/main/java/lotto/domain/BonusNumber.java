@@ -20,11 +20,11 @@ final class BonusNumber {
     }
 
     private boolean isOverRange(int number) {
-        return number <= LottoConstants.LOTTO_END_INCLUSIVE.value();
+        return number > LottoConstants.LOTTO_END_INCLUSIVE.value();
     }
 
     private boolean isUnderRange(int number) {
-        return number >= LottoConstants.LOTTO_START_INCLUSIVE.value();
+        return number < LottoConstants.LOTTO_START_INCLUSIVE.value();
     }
 
     public boolean isBonusNumber(int other) {

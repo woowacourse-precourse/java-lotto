@@ -39,7 +39,7 @@ public final class Lotto {
     }
 
     private boolean isUnique(List<Integer> numbers) {
-        return numbers.stream().distinct().count() != 6;
+        return numbers.stream().distinct().count() == 6;
     }
 
     private boolean isOverRange(List<Integer> numbers) {
