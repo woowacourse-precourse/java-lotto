@@ -7,9 +7,8 @@ public class Print {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    static void userLottos(int purchaseAmount){
+    static void userLottos(List<Lotto> lottos, int purchaseAmount){
         int buyAmount = Operation.buyAmount(purchaseAmount);
-        List<Lotto> lottos=Operation.buyLotto(purchaseAmount);
         System.out.printf("%d개를 구매했습니다.\n", buyAmount);
         for (Lotto lotto: lottos) {
             lotto.printLotto();

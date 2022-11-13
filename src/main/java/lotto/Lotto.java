@@ -23,8 +23,8 @@ public class Lotto {
 
     int matchWinning(List<Integer> winning) {
         int result = 0;
-        for (int i = 0; i < winning.size(); i++) {
-            if (Objects.equals(winning.get(i), numbers.get(i))) {
+        for (int winNum: winning) {
+            if (numbers.contains(winNum)) {
                 result++;
             }
         }
