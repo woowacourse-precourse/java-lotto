@@ -1,4 +1,4 @@
-package Result;
+package Print;
 
 public class Percent {
 
