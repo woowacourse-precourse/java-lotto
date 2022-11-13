@@ -67,5 +67,11 @@ public enum ErrorMessage {
         public String toString() {
             return HEADER + "보너스 번호는 1부터 45사이의 숫자여야 합니다.";
         }
-    }
+    },
+    BONUS_NUMBER_DUPLICATION{
+        @Override
+        public String toString() {
+            return HEADER + "보너스 번호는 당첨 번호와 중복되지 않아야 합니다.";
+        }
+    },
 }

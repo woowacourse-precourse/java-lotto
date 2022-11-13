@@ -30,10 +30,14 @@ public class LottoController {
         validateLuckyNumber(luckyNumber);
 
         String bonusNumber = inputView.inputBonusNumber();
+        validateBonusNumber(luckyNumber, bonusNumber);
+    }
+
+    private void validateBonusNumber(String luckyNumber, String bonusNumber) {
         validator.validateBonusNumberSize(bonusNumber);
         validator.validateBonusNumberDigit(bonusNumber);
         validator.validateBonusNumberRange(bonusNumber);
-        converter.convertToLuckyNumber(luckyNumber);
+        validator.validateDuplication(converter.convertToLuckyNumber(luckyNumber), bonusNumber);
     }
 
     private void validateLuckyNumber(String luckyNumber) {

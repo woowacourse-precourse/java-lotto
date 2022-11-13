@@ -3,6 +3,7 @@ package utils;
 import model.LottoStatus;
 
 import java.util.HashMap;
+import java.util.List;
 
 import static model.ErrorMessage.*;
 import static model.LottoStatus.END;
@@ -130,6 +131,12 @@ public class Validator {
         int bonusNumber = Integer.parseInt(input);
         if (bonusNumber < START.getValue() || bonusNumber > END.getValue()) {
             throw new IllegalArgumentException(INCORRECT_BONUS_NUMBER_RANGE.toString());
+        }
+    }
+
+    public void validateDuplication(List<Integer> luckyNumber, String input) {
+        if (luckyNumber.contains(Integer.parseInt(input))) {
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATION.toString());
         }
     }
 }
