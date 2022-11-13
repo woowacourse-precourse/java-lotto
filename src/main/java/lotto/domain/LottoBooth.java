@@ -9,7 +9,7 @@ public class LottoBooth {
         isPositiveInteger(lottoCount);
         List<Lotto> lottoTicket = new ArrayList<>();
 
-        for(int issued=0; issued<lottoCount; issued++){
+        for (int issued = 0; issued < lottoCount; issued++) {
             lottoTicket.add(new Lotto(issueLotto()));
         }
         return new LottoTicket(lottoTicket);
@@ -25,4 +25,6 @@ public class LottoBooth {
             throw new IllegalArgumentException("[ERROR] 로또는 1개 이상 발급 가능합니다.");
         }
     }
+
+
 }

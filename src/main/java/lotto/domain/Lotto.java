@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,8 +17,11 @@ public class Lotto {
         return this.numbers;
     }
 
-    public List<Integer> sortLottoNumbers() {
-        return this.numbers.stream().sorted().collect(Collectors.toList());
+    public List<Integer> sortNumbers() {
+        return this.numbers
+                .stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private void validateSize(List<Integer> numbers) {
