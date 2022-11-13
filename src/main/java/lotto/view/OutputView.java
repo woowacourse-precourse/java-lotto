@@ -2,17 +2,12 @@ package lotto.view;
 
 import lotto.domain.LottoRank;
 
-import java.util.EnumMap;
 import java.util.List;
 
 public class OutputView {
 
     private final String LOTTO_PURCHASE_PRICE_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private final String LOTTO_PURCHASE_COMPLETE_MESSAGE = "개를 구매했습니다.";
-    private final String OPENING_BRACKET = "(";
-    private final String CLOSING_BRACKET = ")";
-    private final String ONE_SPACE = " ";
-    private final String COMMA = ",";
     private final String NUMBER_OF_THING = "개";
 
     public LottoRank lottoRank;
