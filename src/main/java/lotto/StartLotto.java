@@ -16,9 +16,14 @@ public class StartLotto {
         List<Integer> winNums = winNumInput();
         int bonusNum = bonusNumInput(winNums);
         List<Check> checks = new ArrayList<>();
+        checkSave(checks, winNums, lotto, bonusNum);
         //check 에 lotto 넣고 저장해야함
         Result result = new Result(checks);
         printEnd(result, money);
+    }
 
+    public static void checkSave(List<Check> checks, List<Integer> winNums, List<Lotto> lotto, int bonusNum) {
+        for (Lotto e : lotto)
+            checks.add(new Check(e, winNums, bonusNum));
     }
 }

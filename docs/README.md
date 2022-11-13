@@ -7,9 +7,8 @@
 - [x] 금액에 해당하는 만큼 로또 발행한다. (1장 = 1,000원)
   - [x] 로또 번호를 생성한다. - Lotto.java -> buyLotto()
     - [x] 중복 값이 나올 경우 예외 처리 - Lotto.java -> validate()
-  - [x] 오름 차순으로 정렬한다. - Lotto.java -> Lotto.numSort()
   - [x] 발행한 로또 수량을 출력한다.
-  - [x] 로또 번호를 출력한다. - Lotto.java -> Lotto.printNumbers()
+  - [x] 로또 번호를 출력한다. (오름 차순) - Output.java -> printLotto()
 - [x] 당첨 번호를 입력 한다. (쉼표 기준) - winNumInput()
   - [x] 예외 시 처리 - WinNumInputException.java
     - [x] 쉼표로 구분되지 않는 입력 시 예외 처리 - winNumFormatException()

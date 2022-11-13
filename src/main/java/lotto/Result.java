@@ -36,7 +36,6 @@ public class Result {
                 fifth++;
         }
     }
-
     public static int getFirst() {
         return first;
     }

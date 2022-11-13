@@ -1,15 +1,24 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import static lotto.Result.third;
 
 public class Output {
 
     public static void printLotto(List<Lotto> lotto) {
         System.out.println(lotto.size() + "개를 구매했습니다.");
         for (Lotto e : lotto)
-            e.printNumbers();
+            printNumbers(e);
+    }
+
+    public static void printNumbers(Lotto lotto) {
+        List <Integer> numberForPrint = new ArrayList<>();
+        for(int e : lotto.getNums())
+            numberForPrint.add(e);
+        Collections.sort(numberForPrint);
+        System.out.println(numberForPrint);
     }
 
     public static void requestWinNum() {

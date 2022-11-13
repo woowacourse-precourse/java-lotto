@@ -10,9 +10,8 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException{
         validate(numbers);
-        numSort(numbers);
         this.numbers = numbers;
     }
 
@@ -30,14 +29,6 @@ public class Lotto {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lotto.add(new Lotto(numbers));
         }
-    }
-
-    private void numSort(List<Integer> numbers) {
-        Collections.sort(numbers);
-    }
-
-    public void printNumbers() {
-        System.out.println(numbers);
     }
 
     public int getNum(int index) {
