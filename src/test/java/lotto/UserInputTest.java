@@ -1,10 +1,9 @@
 package lotto;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -38,8 +37,7 @@ class UserInputTest {
         String input = "2000";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        long a = user.inputMoney();
-        assertThat(a).isEqualTo(2000);
+        assertThat(user.money).isEqualTo(2000);
     }
 
     @Test
