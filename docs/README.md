@@ -50,7 +50,6 @@
 - [ ]  구입한 로또의 당첨 결과를 계산한다. RaffleCounter#countWinner()
     - [ ]  당첨 일반 번호가 몇개 있는지 확인한다. RaffleCounter#countNormalNumbers()
     - [ ]  당첨 보너스 번호가 포함되어 있는지 확인한다. RaffleCounter#countBonusNumber()
-    - [ ]  수익률을 계산한다. RaffleCounter#calculateReturnRate()
 - [ ]  당첨 결과를 출력한다. OutputUI#printWinnerCounts()
     - [ ]  당첨로또의 갯수를 출력한다. OutputUI#printWinnerResult()
     - [ ]  수익률을 출력한다. OutputUI#printReturnRate()
