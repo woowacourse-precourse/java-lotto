@@ -27,15 +27,6 @@ public class UserInput {
         return new LottoNumber(winningNumbers, bonusNumber);
     }
 
-    private static void validIsDigit(String num) {
-        try {
-            Integer.parseInt(num);
-        } catch (IllegalArgumentException e) {
-            System.out.println(NOT_NUMBER);
-            throw new IllegalArgumentException(NOT_NUMBER);
-        }
-    }
-
     private static void validMoneyUnit(int price) {
         if (price % MONEY_UNIT != REMAINDER_ZERO) {
             System.out.println(NOT_RADIX_1000);
