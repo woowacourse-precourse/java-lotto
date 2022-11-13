@@ -47,4 +47,17 @@ public class View {
         System.out.println("보너스 번호를 입력해 주세요.");
         return Console.readLine();
     }
+
+    /**
+     * print statistic
+     */
+    public void printStatistic() {
+        System.out.print("당첨 통계\n---\n");
+        for(PrizeNumber prizeNumber : PrizeNumber.values()) {
+            System.out.print(
+                    prizeNumber.prizeString() + " - "
+                    + prizeNumber.numbers() + "개\n"
+            );
+        }
+    }
 }

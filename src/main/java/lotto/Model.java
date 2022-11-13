@@ -61,11 +61,44 @@ public class Model {
 
     /**
      * set bonus number with duplicate check
-     * @param bonus
+     * @param bonus integer to set bonus
      */
     public void setBonus(int bonus) {
         ExceptionController.validateDuplicateBonusWithWin(this.winningLotto, bonus);
         this.bonus = bonus;
+    }
+
+    /**
+     * compare one purchased numbers, you select numbers
+     * @param index purchased numbers index
+     * @return how many you select same number
+     */
+    private int compareWithIndex(int index) {
+        int num = 0;
+        int bonus = 0;
+
+        List<Integer> temp = this.lottoList.get(index).getNumbers();
+        for(int i = 0; i < 6; i++) {
+            if(temp.contains(this.winningLotto.getNumbers().get(i))) {
+                num += 1;
+            }
+        }
+        if(temp.contains(this.bonus)) {
+            bonus += 1;
+        }
+        return num + bonus;
+    }
+
+    /**
+     * compare your select numbers, bonus number with purchased numbers
+     */
+    public void compare() {
+        for(int i = 0; i < this.lottoList.size(); i++) {
+            PrizeNumber prizeNumber = PrizeNumber.getSameNumber(this.compareWithIndex(i)-3);
+            if(prizeNumber != null) {
+                prizeNumber.setNum(prizeNumber.numbers()+1);
+            }
+        }
     }
 }
 

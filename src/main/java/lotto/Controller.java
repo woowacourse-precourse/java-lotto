@@ -44,4 +44,12 @@ public class Controller {
         this.exceptionController.validateBonus(input);
         this.model.setBonus(Integer.parseInt(input));
     }
+
+    /**
+     * compare numbers and print statistics
+     */
+    public void printStatistics() {
+        this.model.compare();
+        this.view.printStatistic();
+    }
 }

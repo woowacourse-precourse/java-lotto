@@ -10,6 +10,8 @@ public class Application {
             controller.purchaseLotto();
             controller.inputWinningNumber();
             controller.inputBonusNumber();
+            controller.printStatistics();
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
