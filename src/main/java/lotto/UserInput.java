@@ -6,43 +6,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.Exception.*;
+import static lotto.Output.requestBonusInput;
+import static lotto.Output.requestWinNum;
 
 public class UserInput {
-    public static int moneyInput() {
-        int money;
+    public static int moneyInput() throws IllegalArgumentException {
         String input = Console.readLine();
-        try {
-            money = inputTypeError(input);
-            moneyInputError(money);
-            return money;
-        } catch (IllegalArgumentException e) {
-            System.out.println(e);
-            throw new IllegalArgumentException();
-        }
+        moneyInputCheck(input);
+        return Integer.parseInt(input);
     }
 
-    public static Integer bonusNumInput(List<Integer> winNums) {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String tmp = Console.readLine();
-        //예외 확인
-        inputTypeError(tmp);
-        int bonus = Integer.parseInt(tmp);
-        rangeError(bonus);
-        duplicate(winNums, bonus);
+    public static int bonusNumInput(List<Integer> winNums) throws IllegalArgumentException {
+        requestBonusInput();
+        String input = Console.readLine();
+        bonusErrorCheck(winNums, input);
+        int bonus = Integer.parseInt(input);
         return bonus;
     }
 
     public static List<Integer> winNumInput() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        requestWinNum();
         List<Integer> winNums = new ArrayList<>();
         String input = Console.readLine();
-        winNumInputError(input);
+        winNumInputErrorCheck(input);
         String[] tmpNums = input.split(",");
         for (String e : tmpNums) {
-            inputTypeError(e);
             int num = Integer.parseInt(e);
-            rangeError(num);
-            duplicate(winNums, num);
             winNums.add(num);
         }
         return winNums;
