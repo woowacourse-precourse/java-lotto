@@ -13,4 +13,12 @@ class YieldTest {
         Yield yield = new Yield(5000);
         Assertions.assertEquals(630200, yield.getYield());
     }
+
+    @Test
+    void 반올림_테스트() {
+        double totalRevenue = 3245;
+        double totalPurchase = 10000;
+        String yield = String.format("%.1f", totalRevenue / totalPurchase * 100);
+        Assertions.assertEquals("32.5", yield);
+    }
 }
