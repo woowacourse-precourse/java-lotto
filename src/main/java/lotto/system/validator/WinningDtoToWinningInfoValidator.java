@@ -1,15 +1,12 @@
 package lotto.system.validator;
 
-import lotto.vo.Lotto;
 import lotto.dto.WinningInfoDto;
-import lotto.system.holder.ValidationHolder;
-import lotto.vo.WinningInfo;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WinningDtoToWinningInfoValidator implements Validator {
+public class WinningDtoToWinningInfoValidator {
 
     public static final String INVALID_WINNING_NUMBERS_FORMAT_MESSAGE = "당첨금 입력값은 쉼표로 구분된 정수만 입력해야 합니다.";
     public static final String INVALID_BONUS_NUMBER_FORMAT_MESSAGE = "보너스 점수는 정수값만 입력해야 합니다.";
@@ -18,22 +15,14 @@ public class WinningDtoToWinningInfoValidator implements Validator {
     public static final int MAX_LOTTO_NUMBER = 45;
     public static final String BONUS_DUPLICATING_WITH_WINNING_NUMBERS_MESSAGE = "입력한 보너스번호가 로또 번호와 중복되지 않아야 합니다.";
 
-    @Override
-    public boolean supports(Object target, Class<?> to) {
-        return target.getClass() == WinningInfoDto.class && to == WinningInfo.class;
-    }
-
-    @Override
-    public void validate(Object target) {
-        WinningInfoDto winningInfoDto = (WinningInfoDto) target;
-
-        List<Integer> winningNumbers = validateWinningNumbers(winningInfoDto.getWinningNumbers());
-        Integer bonus = validateBonus(winningInfoDto.getBonus());
+    public static void validate(WinningInfoDto target) {
+        List<Integer> winningNumbers = validateWinningNumbers(target.getWinningNumbers());
+        Integer bonus = validateBonus(target.getBonus());
 
         isWinningNumbersContainingBonus(winningNumbers, bonus);
     }
 
-    private List<Integer> validateWinningNumbers(String winning) {
+    private static List<Integer> validateWinningNumbers(String winning) {
         List<Integer> winningNumbers;
         try {
             winningNumbers = Arrays.stream(winning.replace(" ", "").split(","))
@@ -44,11 +33,11 @@ public class WinningDtoToWinningInfoValidator implements Validator {
             throw new IllegalArgumentException(INVALID_WINNING_NUMBERS_FORMAT_MESSAGE);
         }
 
-        ValidationHolder.validate(winningNumbers, Lotto.class);
+        IntegerListToLottoValidator.validate(winningNumbers);
         return winningNumbers;
     }
 
-    private Integer validateBonus(String bonus) {
+    private static Integer validateBonus(String bonus) {
         Integer bonusNumber;
         try {
             bonusNumber = Integer.valueOf(bonus);
@@ -60,13 +49,13 @@ public class WinningDtoToWinningInfoValidator implements Validator {
         return bonusNumber;
     }
 
-    private void isNumberInValidRange(Integer target) {
+    private static void isNumberInValidRange(Integer target) {
         if (target < MIN_LOTTO_NUMBER || MAX_LOTTO_NUMBER < target) {
             throw new IllegalArgumentException(INVALID_NUMBER_RANGE_MESSAGE);
         }
     }
 
-    private void isWinningNumbersContainingBonus(List<Integer> winningNumbers, Integer bonus) {
+    private static void isWinningNumbersContainingBonus(List<Integer> winningNumbers, Integer bonus) {
         if (winningNumbers.contains(bonus)) {
             throw new IllegalArgumentException(BONUS_DUPLICATING_WITH_WINNING_NUMBERS_MESSAGE);
         }

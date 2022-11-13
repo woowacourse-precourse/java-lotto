@@ -1,6 +1,7 @@
 package lotto.vo;
 
-import lotto.system.holder.ValidationHolder;
+import lotto.system.validator.IntegerToLottoBuyingInfoValidator;
+import lotto.system.validator.StringToLottoBuyingInfoValidator;
 
 public class LottoBuyingInfo {
 	private final int money;
@@ -12,9 +13,9 @@ public class LottoBuyingInfo {
 	}
 
 	public LottoBuyingInfo(String input) {
-		ValidationHolder.validate(input, LottoBuyingInfo.class);
+		StringToLottoBuyingInfoValidator.validate(input);
 		int money = Integer.parseInt(removeCommaFrom(input));
-		ValidationHolder.validate(money, LottoBuyingInfo.class);
+		IntegerToLottoBuyingInfoValidator.validate(money);
 
 		this.money = money;
 		this.amount = money / 1000;

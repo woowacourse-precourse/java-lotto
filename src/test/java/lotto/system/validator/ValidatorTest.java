@@ -1,35 +1,19 @@
 package lotto.system.validator;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import lotto.system.LottoApplication;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
-import lotto.vo.Lotto;
-import lotto.system.holder.ValidationHolder;
-import lotto.vo.LottoBuyingInfo;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class ValidatorTest {
-    @BeforeEach
-    void setup() {
-        LottoApplication.initializeValidators();
-    }
-
-    @AfterEach
-    void runAfter() {
-        LottoApplication.doAfter();
-    }
-
     @Nested
     @DisplayName("StringToLottoBuyingInfoValidator 테스트")
     class StringToLottoBuyingInfoValidatorTest {
@@ -40,7 +24,7 @@ class ValidatorTest {
             String input = "14000";
 
             //when & then
-            assertDoesNotThrow(() -> ValidationHolder.validate(input, LottoBuyingInfo.class));
+            assertDoesNotThrow(() -> StringToLottoBuyingInfoValidator.validate(input));
         }
 
         @Test
@@ -50,7 +34,7 @@ class ValidatorTest {
             String input = "45,000,000";
 
             //when & then
-            assertDoesNotThrow(() -> ValidationHolder.validate(input, LottoBuyingInfo.class));
+            assertDoesNotThrow(() -> StringToLottoBuyingInfoValidator.validate(input));
         }
 
         @Test
@@ -60,7 +44,7 @@ class ValidatorTest {
             String input = "45.000";
 
             //when & then
-            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
+            assertThatThrownBy(() -> StringToLottoBuyingInfoValidator.validate(input))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(StringToLottoBuyingInfoValidator.NOT_NATURAL_NUMBER_MESSAGE);
         }
@@ -76,7 +60,7 @@ class ValidatorTest {
             int input = 14000;
 
             //when & then
-            assertDoesNotThrow(() -> ValidationHolder.validate(input, LottoBuyingInfo.class));
+            assertDoesNotThrow(() -> IntegerToLottoBuyingInfoValidator.validate(input));
         }
 
         @Test
@@ -86,7 +70,7 @@ class ValidatorTest {
             int input = 500;
 
             //when & then
-            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
+            assertThatThrownBy(() -> IntegerToLottoBuyingInfoValidator.validate(input))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(IntegerToLottoBuyingInfoValidator.LOWER_THEN_MIN_VALUE_MESSAGE);
         }
@@ -98,7 +82,7 @@ class ValidatorTest {
             int input = 14500;
 
             //when & then
-            assertThatThrownBy(() -> ValidationHolder.validate(input, LottoBuyingInfo.class))
+            assertThatThrownBy(() -> IntegerToLottoBuyingInfoValidator.validate(input))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(IntegerToLottoBuyingInfoValidator.NOT_DIVIDED_VALUE_MESSAGE);
         }
@@ -114,7 +98,7 @@ class ValidatorTest {
             List<Integer> numbers = Arrays.asList(2, 4, 5, 16, 42, 45);
 
             //when && then
-            assertDoesNotThrow(() -> ValidationHolder.validate(numbers, Lotto.class));
+            assertDoesNotThrow(() -> IntegerListToLottoValidator.validate(numbers));
         }
 
         @Test
@@ -124,7 +108,7 @@ class ValidatorTest {
             List<Integer> numbers = Arrays.asList(2, 4, 5, 10, 16, 42, 45);
 
             //when && then
-            assertThatThrownBy(() -> ValidationHolder.validate(numbers, Lotto.class))
+            assertThatThrownBy(() -> IntegerListToLottoValidator.validate(numbers))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(IntegerListToLottoValidator.INVALID_LIST_SIZE_MESSAGE);
         }
@@ -136,7 +120,7 @@ class ValidatorTest {
             List<Integer> numbers = Arrays.asList(2, 4, 5, 42, 45, 47);
 
             //when && then
-            assertThatThrownBy(() -> ValidationHolder.validate(numbers, Lotto.class))
+            assertThatThrownBy(() -> IntegerListToLottoValidator.validate(numbers))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(IntegerListToLottoValidator.INVALID_NUMBER_RANGE_MESSAGE);
         }
@@ -148,7 +132,7 @@ class ValidatorTest {
             List<Integer> numbers = Arrays.asList(2, 5, 5, 32, 43, 44);
 
             //when && then
-            assertThatThrownBy(() -> ValidationHolder.validate(numbers, Lotto.class))
+            assertThatThrownBy(() -> IntegerListToLottoValidator.validate(numbers))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(IntegerListToLottoValidator.DUPLICATING_NUMBER_MESSAGE);
         }
@@ -166,7 +150,7 @@ class ValidatorTest {
                     .isNotEqualTo(orderedNumbers);
 
             //when
-            ValidationHolder.validate(target, Lotto.class);
+            IntegerListToLottoValidator.validate(target);
 
             //then
             assertThat(target)

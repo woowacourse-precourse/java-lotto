@@ -2,10 +2,7 @@ package lotto.service;
 
 import lotto.domain.ScoreInfo;
 import lotto.mock.MockScoreInfo;
-import lotto.system.LottoApplication;
 import lotto.vo.*;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,16 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoServiceTest {
 	private final LottoService lottoService = new LottoService();
-
-	@BeforeEach
-	void setup() {
-		LottoApplication.initializeValidators();
-	}
-
-	@AfterEach
-	void runAfter() {
-		LottoApplication.doAfter();
-	}
 
 	@Test
 	@DisplayName("주어진 LottoBuyingInfo 값만큼 새로운 Lotto 객체를 만들어 반환한다.")

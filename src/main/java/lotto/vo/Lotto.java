@@ -1,6 +1,6 @@
 package lotto.vo;
 
-import lotto.system.holder.ValidationHolder;
+import lotto.system.validator.IntegerListToLottoValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         numbers = new ArrayList<>(numbers);
-        ValidationHolder.validate(numbers, Lotto.class);
+        IntegerListToLottoValidator.validate(numbers);
         this.numbers = numbers;
     }
 

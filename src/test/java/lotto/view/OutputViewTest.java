@@ -1,12 +1,9 @@
 package lotto.view;
 
 import lotto.domain.ScoreInfo;
-import lotto.system.LottoApplication;
 import lotto.vo.Lotto;
 import lotto.vo.LottoBuyingInfo;
 import lotto.vo.Profit;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,16 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class OutputViewTest {
     private final OutputView outputView = new OutputViewImpl();
-
-    @BeforeEach
-    void setup() {
-        LottoApplication.initializeValidators();
-    }
-
-    @AfterEach
-    void runAfter() {
-        LottoApplication.doAfter();
-    }
 
     @Test
     @DisplayName("발행한 로또 개수를 메시지 포맷에 담아 출력할 수 있다.")

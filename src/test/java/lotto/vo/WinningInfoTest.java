@@ -1,10 +1,11 @@
 package lotto.vo;
 
 import lotto.dto.WinningInfoDto;
-import lotto.system.LottoApplication;
 import lotto.system.validator.IntegerListToLottoValidator;
 import lotto.system.validator.WinningDtoToWinningInfoValidator;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,16 +16,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class WinningInfoTest {
-    @BeforeEach
-    void setup() {
-        LottoApplication.initializeValidators();
-    }
-
-    @AfterEach
-    void runAfter() {
-        LottoApplication.doAfter();
-    }
-
     @Nested
     @DisplayName("사용자 입력값 중 로또 번호 테스트")
     class WinningNumbersTest {
