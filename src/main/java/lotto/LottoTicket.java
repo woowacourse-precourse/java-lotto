@@ -23,5 +23,18 @@ public class LottoTicket {
         return ticketCount;
     }
 
+    public static List<List<Integer>> paidLotteryNumberGenerator(int numberofPaidLottery){
 
+        List<List<Integer>> allOfLotteryNumbers = new ArrayList<>();
+        for(int ticketIndex=0; ticketIndex<numberofPaidLottery; ticketIndex++){
+            allOfLotteryNumbers.add(Randoms.pickUniqueNumbersInRange(1,45,6));
+        }
+        System.out.printf("%d개를 구매했습니다.\n",numberofPaidLottery);
+
+        for(int i=0; i<numberofPaidLottery; i++){
+            System.out.println(allOfLotteryNumbers.get(i));
+        }
+
+        return allOfLotteryNumbers;
+    }
 }
