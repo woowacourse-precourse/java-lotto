@@ -13,10 +13,12 @@ public class Application {
         int num = 0;
         try {
             money = Integer.parseInt(money_input);
-            num = Money.num_lotto(money);
+            num = User.num_lotto(money);
         } catch (IllegalArgumentException e) {
             System.out.println("[Error]" + e.getMessage());
         }
+
+        System.out.println(num + "개를 구입했습니다.");
 
 
 

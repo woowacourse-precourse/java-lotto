@@ -1,6 +1,6 @@
 package lotto;
 
-public class Money {
+public class User {
 
     public static int num_lotto(int money) {
         int num = 0;
