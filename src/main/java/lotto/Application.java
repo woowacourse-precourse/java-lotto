@@ -6,7 +6,10 @@ import lotto.view.Output;
 public class Application {
 
     public static void main(String[] args) {
-        LottoController controller = new LottoController(new Output());
-        controller.run();
+        try {
+            LottoController controller = new LottoController(new Output());
+            controller.run();
+        } catch (IllegalArgumentException exception) {
+        }
     }
 }

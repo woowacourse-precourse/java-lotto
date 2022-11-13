@@ -4,10 +4,13 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.view.Output;
 
 public class Lotto {
 
-    private static final String DUPLICATION_NUMBER_EXCEPTION_MESSAGE = "[ERROR] 중복되지 않은 숫자만 입력 가능합니다.";
+    public static final String LOTTO_NUMBER_RANGE_EXCEPTION = "로또의 숫자는 1 ~ 45 까지만 입력 가능합니다.";
+    private static final String DUPLICATION_NUMBER_EXCEPTION_MESSAGE = "중복되지 않은 숫자만 입력 가능합니다.";
+    private static final String LOTTO_NUMBERS_SIZE_EXCEPTION = "로또 번호는 6개만 입력이 가능합니다.";
     public static final int MIN_LOTTO_NUMBER = 1;
     public static final int MAX_LOTTO_NUMBER = 45;
     public static final int LOTTO_BALL_SIZE = 6;
@@ -21,6 +24,7 @@ public class Lotto {
 
     private void validate(final List<Integer> numbers) {
         if (numbers.size() != LOTTO_BALL_SIZE) {
+            Output.printExceptionMessage(LOTTO_NUMBERS_SIZE_EXCEPTION);
             throw new IllegalArgumentException();
         }
     }
@@ -30,12 +34,14 @@ public class Lotto {
         if (lotto.size() == numbers.size()) {
             return numbers;
         }
-        throw new IllegalArgumentException(DUPLICATION_NUMBER_EXCEPTION_MESSAGE);
+        Output.printExceptionMessage(DUPLICATION_NUMBER_EXCEPTION_MESSAGE);
+        throw new IllegalArgumentException();
     }
 
     private static void duplicateNumbersRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < MIN_LOTTO_NUMBER && MAX_LOTTO_NUMBER < number) {
+                Output.printExceptionMessage(LOTTO_NUMBER_RANGE_EXCEPTION);
                 throw new IllegalArgumentException();
             }
         }
