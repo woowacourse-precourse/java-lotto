@@ -1,7 +1,5 @@
 package lotto;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import java.util.ArrayList;
 import java.util.List;
 import lotto.view.InputView;
@@ -16,31 +14,36 @@ public class Controller {
 
     public void start() {
         String amount;
-        int lottoTicketNumber;
+        String winningNumber;
+        int ticketAmount;
+        List<Integer> winningNumbers = new ArrayList<>();
         Lotto lotto;
         LottoNumbers lottoNumbers = new LottoNumbers();
         List<Lotto> lottoTickets = new ArrayList<>();
 
-        amount = InputView.purchaseMessage();
+        amount = InputView.purchaseInputMessage();
 
         isValidateNumber(amount);
         isValidatePurchase(amount);
 
-        lottoTicketNumber = stringToIntegerConvert(amount);
-        OutputView.lottoTicketAmountMessage(lottoTicketNumber);
+        ticketAmount = stringToIntegerConvert(amount);
+        OutputView.lottoTicketAmountMessage(ticketAmount);
 
-        for(int i = 0; i < lottoTicketNumber; i++) {
+        for (int i = 0; i < ticketAmount; i++) {
             lotto = new Lotto(lottoNumbers.start());
             lottoTickets.add(lotto);
         }
 
         OutputView.printLottoTickets(lottoTickets);
+
+        winningNumber = InputView.winningNumberInputMessage();
+        winningNumbers = Winning.makeWinningNumberList(winningNumber);
     }
 
     public void isValidatePurchase(String userInput) {
         int amount = Integer.parseInt(userInput);
 
-        if(amount % 1000 != 0) {
+        if (amount % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_MESSAGE + NOT_INSEPARABLE_ERROR);
         }
     }
@@ -48,7 +51,7 @@ public class Controller {
     public void isValidateNumber(String userInput) {
         try {
             Integer.parseInt(userInput);
-        }catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_MESSAGE + NOT_NUMBER_ERROR);
         }
     }

@@ -8,7 +8,7 @@ public class OutputView {
     private static final String LOTTO_TICKET_AMOUNT = "개를 구매했습니다.";
 
     public static void lottoTicketAmountMessage(int ticket) {
-        System.out.println(ticket+LOTTO_TICKET_AMOUNT);
+        System.out.println(ticket + LOTTO_TICKET_AMOUNT);
     }
 
     public static void printLottoTickets(List<Lotto> tickets) {
