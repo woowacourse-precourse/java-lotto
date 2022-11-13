@@ -12,7 +12,7 @@
 - [x] 로또 1장 가격 - LOTTO_TICKET_PRICE
 
 ### 기능
-- [ ] 설정값이 적절하게 지정되어 있는지 확인 - validate
+- [x] 설정값이 적절하게 지정되어 있는지 확인 - validate
     - [x] 숫자 범위가 올바르게 되어있는지 확인 - checkRangeNumber
     - [x] 자연수로 지정된 설정 중에 올바르게 되어있는지 확인 - checkNaturalNumber
     - [x] 0이 포함된 자연수로 지정된 설정 중에 올바르게 되어있는지 확인 - checkZeroOrNaturalNumber

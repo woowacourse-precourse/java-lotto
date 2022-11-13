@@ -20,6 +20,16 @@ public class Config {
     }
 
     public static void validate() {
+        checkRangeNumber(LOTTO_RANGE_START_NUMBER, LOTTO_RANGE_END_NUMBER);
+
+        checkNaturalNumber(LOTTO_RANGE_START_NUMBER);
+        checkNaturalNumber(LOTTO_RANGE_END_NUMBER);
+        checkNaturalNumber(LOTTO_LENGTH);
+        checkNaturalNumber(LOTTO_TICKET_PRICE);
+
+        checkZeroOrNaturalNumber(BONUS_LOTTO_LENGTH);
+
+        checkIllegalLotto();
     }
 
     private static void checkRangeNumber(int start, int end) {
