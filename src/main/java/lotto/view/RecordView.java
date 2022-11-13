@@ -16,7 +16,7 @@ public class RecordView {
             String condition = reward.getCondition();
             String amount = reward.getAmount();
             int place = reward.getPlace();
-            System.out.println(condition + " " + "(" + amount + ") - " + history.get(place));
+            System.out.println(condition + " " + "(" + amount + "원) - " + history.get(place) + "개");
         }
     }
 
