@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class View {
+    private UserInputValidator validator = new UserInputValidator();
 
     public void printAmountInput() {
         System.out.println(GameConstant.START.getValue());
@@ -17,7 +18,7 @@ public class View {
         input = Console.readLine();
 
         try {
-            validateAmountInput(input);
+            validator.validateAmountInput(input);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return -1;
@@ -30,7 +31,7 @@ public class View {
         String number;
 
         number = Console.readLine();
-        validateBonusNumber(number);
+        validator.validateBonusNumber(number);
 
         return Integer.parseInt(number);
     }
@@ -42,7 +43,7 @@ public class View {
 
         input = Console.readLine();
         commaSeparate = input.split(",");
-        validateWinningNumber(Arrays.asList(commaSeparate));
+        validator.validateWinningNumber(Arrays.asList(commaSeparate));
 
         winningNumber = Arrays.stream(commaSeparate)
                 .map(Integer::parseInt)
@@ -83,50 +84,6 @@ public class View {
         double lottoReturn = ((double)prize.get("totalPrize") / amount) * 100;
 
         System.out.println("총 수익률은 "+ String.format("%.1f", lottoReturn) + "%입니다.");
-    }
-
-    public void validateAmountInput(String input) {
-        if (!isInteger(input)) {
-            throw new IllegalArgumentException(GameConstant.TYPE_EXCEPTION.getValue());
-        }
-
-        if (isDivisible(input)) {
-            throw new IllegalArgumentException(GameConstant.DIVISIBLE_EXCEPTION.getValue());
-        }
-    }
-
-    public void validateWinningNumber(List<String> numbers) {
-        for (String element : numbers) {
-            if (!isInteger(element)) {
-                throw new IllegalArgumentException(GameConstant.TYPE_EXCEPTION.getValue());
-            }
-
-            if (checkBoundary(element)) {
-                throw new IllegalArgumentException(GameConstant.BOUNDARY_EXCEPTION.getValue());
-            }
-        }
-    }
-
-    public void validateBonusNumber(String number) {
-        if (!isInteger(number)) {
-            throw new IllegalArgumentException(GameConstant.TYPE_EXCEPTION.getValue());
-        }
-
-        if (checkBoundary(number)) {
-            throw new IllegalArgumentException(GameConstant.BOUNDARY_EXCEPTION.getValue());
-        }
-    }
-
-    public boolean checkBoundary(String input) {
-        return Integer.parseInt(input) < 1 || Integer.parseInt(input) > 45;
-    }
-
-    public boolean isDivisible(String input) {
-        return (Integer.parseInt(input) % 1000 != 0);
-    }
-
-    public boolean isInteger(String input) {
-        return input.matches("[0-9.]+");
     }
 
 }
