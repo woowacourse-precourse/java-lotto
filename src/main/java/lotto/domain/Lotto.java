@@ -1,7 +1,8 @@
-package lotto;
+package lotto.domain;
+
+import lotto.domain.chart.NumberChart;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
@@ -25,14 +26,14 @@ public class Lotto {
     }
 
     private void verifySixNumber(List<Integer> numbers) {
-        if (!(numbers.size() == 6)) {
+        if (!(numbers.size() == NumberChart.LOTTO_SIZE.getValue())) {
             throw new RuntimeException("[ERROR] 6개의 숫자를 입력하세여");
         }
     }
 
     private void verifyBetween1and45(List<Integer> numbers) {
         for (int number : numbers) {
-            if (!(1 <= number && number <= 45)) {
+            if (!(NumberChart.MIN_NUMBER.getValue() <= number && number <= NumberChart.MAX_NUMBER.getValue())) {
                 throw new RuntimeException("[ERROR] 1 ~ 45 사이의 숫자만 입력해 주세요");
             }
         }
@@ -42,5 +43,5 @@ public class Lotto {
         return new ArrayList<>(numbers);
     }
 
-    // TODO: 추가 기능 구현
+
 }

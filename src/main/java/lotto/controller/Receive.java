@@ -6,6 +6,7 @@ import lotto.console.PurchaseAmountInput.InputMoney;
 import lotto.console.WinningNumberInput.InputWinningNumber;
 import lotto.domain.AutoLottoSeller;
 import lotto.domain.Lotto;
+import lotto.domain.chart.NumberChart;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Receive {
     private final InputBonusNumber inputBonusNumber = new InputBonusNumber();
     private final AutoLottoSeller autoLottoSeller = new AutoLottoSeller();
 
+
     public int receiveAndPrintMoney() {
         output.askPurchaseAmount();
         int money = inputMoney.getAndVerifyMoney();
@@ -25,7 +27,7 @@ public class Receive {
     }
 
     public List<Lotto> receiveAndPrintlottos(int money) {
-        int number = money / 1000;
+        int number = money / NumberChart.LOTTO_MONEY.getValue();
         output.announceNumber(number);
         List<Lotto> lottos = autoLottoSeller.buyLotto(money);
         output.printLotto(lottos);

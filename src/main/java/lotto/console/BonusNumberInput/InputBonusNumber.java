@@ -1,6 +1,7 @@
 package lotto.console.BonusNumberInput;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.chart.NumberChart;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class InputBonusNumber {
     }
 
     private void verifyBonusNumberBetween1and45(int bonusNumber) {
-        if (!(1 <= bonusNumber && bonusNumber <= 45)) {
+        if (!(NumberChart.MIN_NUMBER.getValue() <= bonusNumber && bonusNumber <= NumberChart.MAX_NUMBER.getValue())) {
             throw new RuntimeException("[ERROR] 1부터 45 사이의 숫자를 입력해주세요");
         }
     }
@@ -29,4 +30,5 @@ public class InputBonusNumber {
             throw new RuntimeException("[ERROR] 당첨 번호에 들어있는 숫자입니다 다른 숫자 입력해야합니다.");
         }
     }
+
 }

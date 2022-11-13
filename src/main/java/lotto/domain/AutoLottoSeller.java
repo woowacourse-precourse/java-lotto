@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
+import lotto.domain.chart.NumberChart;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class AutoLottoSeller {
     }
 
     private int buyaFewLotto(int money) {
-        return money / 1000;
+        return money / NumberChart.LOTTO_MONEY.getValue();
     }
 
     public List<Lotto> buyLotto(int money) {
