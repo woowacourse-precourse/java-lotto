@@ -32,18 +32,19 @@ public class UI {
         }
     }
 
-//    public static void printWinningHistory(Map<Integer, Integer> numberOfMatching) {
-//        System.out.println();
-//        System.out.println("당첨 통계");
-//        System.out.println("---");
-//        Prizecut[] prizecuts = Prizecut.values();
-//        for (int idx = 3; idx <=5; idx++) {
-//            System.out.println(idx + "개 일치 " + prizecuts[idx-3].getPrizePhrase() + " - " + numberOfMatching.get(idx) + "개");
-//        }
-//
-//        System.out.println("5개 일치, 보너스 볼 일치 " + Prizecut.SECOND.getPrizePhrase() + " - " + numberOfMatching.get(BONUS_NUMBER_MATCHED) + "개");
-//        System.out.println("6개 일치 " + Prizecut.FIRST.getPrizePhrase() + " - " + numberOfMatching.get(6) + "개");
-//    }
+    public static void printWinningHistory(Map<Integer, Integer> numberOfMatching, double profitRate) {
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        Prizecut[] prizecuts = Prizecut.values();
+        for (int idx = 3; idx <=5; idx++) {
+            System.out.println(idx + "개 일치 " + prizecuts[idx-3].getPrizePhrase() + " - " + numberOfMatching.get(idx) + "개");
+        }
+
+        System.out.println("5개 일치, 보너스 볼 일치 " + Prizecut.SECOND.getPrizePhrase() + " - " + numberOfMatching.get(BONUS_NUMBER_MATCHED) + "개");
+        System.out.println("6개 일치 " + Prizecut.FIRST.getPrizePhrase() + " - " + numberOfMatching.get(6) + "개");
+        System.out.println("총 수익률은 " + profitRate + "%입니다.");
+    }
 
     public static Integer enterBonusNumber() {
         System.out.println();

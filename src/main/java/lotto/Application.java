@@ -7,5 +7,10 @@ public class Application {
         UI.printBuyingLotto(lottoBuyer.getCost()/1000, lottoBuyer.getLotteries());
 
         LottoDraw lottoDraw = new LottoDraw(lottoBuyer);
+        lottoDraw.compareLotteries();
+        lottoDraw.calculatePrizeMoney();
+
+        UI.printWinningHistory(lottoDraw.getNumberOfMatching(), lottoDraw.calculateProfit());
+
     }
 }
