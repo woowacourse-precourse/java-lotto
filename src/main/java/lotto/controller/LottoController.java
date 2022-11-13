@@ -13,6 +13,8 @@ public class LottoController {
     public void start() {
         LottoMachine lottoMachine = new LottoMachine(InputView.inputPurchasePrice());
         makeLotto(lottoMachine.getRound());
+        String winNumber = InputView.inputWinNumbers();
+        String bonusNumber = InputView.inputBonusNumbers();
     }
 
     private void makeLotto(int round) {
