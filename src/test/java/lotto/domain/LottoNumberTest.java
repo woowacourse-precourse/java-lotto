@@ -43,12 +43,18 @@ class LottoNumberTest {
     }
 
     @Test
-    void 당첨번호_비정상입력_숫자뒤공백포함() {
-        assertThatThrownBy(() -> new LottoNumber("1 ,2,3,4,5,6", " "))
+    void 당첨번호_비정상입력_보너스_숫자_미입력() {
+        assertThatThrownBy(() -> new LottoNumber("1,2,3,4,5,6", " "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_NUMBER);
     }
 
+    @Test
+    void 당첨번호_비정상입력_당첨숫자_개수_미달() {
+        assertThatThrownBy(() -> new LottoNumber("1,2,3,4,6", "7"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_LOTTO_LENGTH);
+    }
     @Test
     void 당첨번호_비교_테스트() {
         LottoNumber lottoNumber = new LottoNumber("1,2,3,4,5,6", "7");
