@@ -21,10 +21,16 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
 
-        if(numbers.contains(number)){
+        if (numbers.contains(number)) {
             throw new IllegalArgumentException();
         }
 
         numbers.add(number);
+    }
+
+    public int getMatchCountWithLotto(List<Integer> purchase) {
+        return (int) purchase.stream()
+                .filter(number -> numbers.contains(number))
+                .count();
     }
 }
