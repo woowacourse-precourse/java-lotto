@@ -107,6 +107,9 @@ public class LottoGame {
             }
 
             int number = Integer.parseInt(splitedUserInput);
+            if(number > 45 || number < 1) {
+                throw new IllegalArgumentException("[ERROR] 잘못된 값 범위 입니다.");
+            }
             winningNumbers.add(number);
         }
 
