@@ -3,10 +3,13 @@
 - ### 로또 구매 금액을 입력 받을 수 있다. [ # LottoProgram.getOrderPrice() ]
 - ### 로또 구매 금액으로 로또 구매 수량을 구할 수 있다. [ # LottoService.getOrderQuantity(int orderPrice)]
   - 로또 1장은 1000원이다. [ # LottoService.LOTTO_PRICE ]
+- ### 로또 구매 수량을 출력할 수 있다. [ # LottoProgram.alertOrderQuantity(int orderQuantity) ]
+  - `N개를 구매했습니다.` 
 - ### 로또 번호를 생성할 수 있다. [ # LottoFactory.createLottoNumbers() ]
   - 로또 번호는 랜덤으로 선택된다. [ # Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBER_COUNT) ]
   - 로또 번호는 오름차순으로 정렬한다. [ # LottoFactory.sortInAscending(List<Integer> numbers) ]
 - ### 구매한 로또 수 만큼 로또 번호를 생성할 수 있다. [ # LottoFactory.createLottos(int quantity) ]
+  - 생성된 로또 번호를 모두 출력할 수 있다. [ # LottoFactory.alertUserLottos(List<Lotto> lottos) ]
 - ### 입력 받은 숫자로 당첨 번호를 만들 수 있다. [LottoProgram.createWinningLotto()]
   - 당첨 번호는 서로 다른 6개의 숫자이다.
 - ### 보너스 번호를 입력 받을 수 있다. [ # LottoProgram.getBonusNumber() ]
