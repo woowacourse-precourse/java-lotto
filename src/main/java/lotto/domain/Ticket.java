@@ -57,6 +57,7 @@ public class Ticket {
         for (Lotto lotto : lottos) {
             stringBuilder.append(lotto.toString()).append('\n');
         }
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         return stringBuilder.toString();
     }
 }
