@@ -8,6 +8,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        doubleCheck(numbers);
         this.numbers = numbers;
     }
 
@@ -16,7 +17,13 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
+    public static void doubleCheck(List<Integer> numbers){
+        for(int i = 0; i < numbers.size();i++){
+            if(numbers.contains(numbers.get(i))){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
     public int[] checkWin() {
         LottoWin lottoWin = LottoWin.getInstance();
         List<Integer> winNumber = lottoWin.getLottoNum();
@@ -28,7 +35,7 @@ public class Lotto {
                 sameCnt[nomalSameIndex] += 1;
             }
         }
-        if(winNumber.contains(this.numbers.get(this.numbers.size()))){
+        if(winNumber.contains(this.numbers.get(this.numbers.size()-1))){
             sameCnt[bounsSameIndex] += 1;
         }
         return sameCnt;
