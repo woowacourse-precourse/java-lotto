@@ -26,6 +26,8 @@ public class Controller {
 
         lottoTicketNumber = stringToIntegerConvert(amount);
         OutputView.lottoTicketAmountMessage(lottoTicketNumber);
+
+        f
     }
 
     public void isValidatePurchase(String userInput) {
