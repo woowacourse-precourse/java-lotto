@@ -24,21 +24,13 @@ public class UserInteraction {
     public List<Integer> winningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
-        String[] numbers = numberValid(input);
-        return numberTransform(numbers);
+        return numberTransform(input);
     }
 
-    private String[] numberValid(String input) {
-        String[] inputs = input.split(",");
-        if(inputs.length != 6){
-            throw new IllegalArgumentException();
-        }
-        return inputs;
-    }
-
-    private List<Integer> numberTransform(String[] numbers) {
+    private List<Integer> numberTransform(String input) {
+        String[] numbers = input.split(",");
         List<Integer> winNumbers = new ArrayList<>();
-        for(int i = 0; i < 6; i++){
+        for(int i = 0; i < numbers.length; i++){
             winNumbers.add(Integer.parseInt(numbers[i]));
         }
         return winNumbers;
