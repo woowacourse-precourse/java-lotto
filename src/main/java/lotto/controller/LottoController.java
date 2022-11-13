@@ -19,7 +19,12 @@ public class LottoController {
     private Winner winner;
 
     public void start(){
-
+        int lottoTicketCount = buyLottoTicket();
+        List<Lotto> lottos = createLotto(lottoTicketCount);
+        showLotto(lottoTicketCount,lottos);
+        Map<LottoRank, Integer> lottoResult = makeLottoResult(lottos, enterLotto(), enterBonus());
+        String profit = calculateProfit(lottoTicketCount,lottoResult);
+        showLottoResult(lottoResult,profit);
 
     }
 
