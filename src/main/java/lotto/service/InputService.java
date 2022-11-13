@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class InputService {
     User user;
+    InputException inputException = new InputException();
 
     public void setMoneyToUser(String inputMoney) {
         user = new User(inputMoneyToInteger(inputMoney));
     }
 
     public int inputMoneyToInteger(String inputMoney) {
-        InputException inputException = new InputException();
         inputException.notDigitException(inputMoney);
         inputException.notThousandMoneys(Integer.parseInt(inputMoney));
         return Integer.parseInt(inputMoney);
@@ -34,10 +34,9 @@ public class InputService {
     }
 
     public List<Integer> toList(String inputNumbers) {
-        List<Integer> numbers = new ArrayList<>(Collections.emptyList());
-        numbers = Arrays.stream(
-                        inputNumbers.replace(" ", "")
-                                .split(","))
+        List<Integer> numbers;
+        String[] stringNumbers = inputNumbers.replace(" ", "").split(",");
+        numbers = Arrays.stream(stringNumbers)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         return numbers;
