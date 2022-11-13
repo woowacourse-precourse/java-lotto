@@ -5,7 +5,7 @@
 - [x] 1부터 ~ 45사이의 숫자인지 확인한다. Lotto#validateNumbersInRange
 - [x] 로또 번호를 오름차순으로 정렬한다. Lotto#sortAscend()
 - [ ] 발행한 로또 번호를 가능한 당첨 번호와 가장 많이 일치하는 갯수와 일치 금액을 계산 한다. Lotto#matchWinner()
-- [ ] 로또 구입 금액만큼 로또를 발행한다. LottoMachine#LottoForAmount()
+- [x] 로또 구입 금액만큼 로또를 발행한다. LottoMachine#LottoForAmount()
 - [x] 로또 구입 금액을 입력 받는다. MoneyInput#getPurchaseAmount()
 - [x] 숫자만으로 이루어져 있는지 판별한다. MoneyInput#validateConvertingMoney()
 - [x] 1,000원으로 나누어 떨어지는지 검증한다. Money#validatePurchaseAmount()
