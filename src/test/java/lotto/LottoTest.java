@@ -38,7 +38,7 @@ class LottoTest {
     void testNumberOfBonus(){
         Integer bonus = 1;
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThat(lotto.numberOfBonus(bonus)).isEqualTo(1);
+        assertThat(lotto.contains(bonus)).isEqualTo(true);
 
     }
 }
