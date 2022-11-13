@@ -13,7 +13,7 @@ import lotto.Display;
 
 public class LottoProgram {
 
-    private static final Buyer buyer = new Buyer();
+    public static Buyer buyer = new Buyer();
 
     public static void init() throws IllegalArgumentException {
         inputPayment();
