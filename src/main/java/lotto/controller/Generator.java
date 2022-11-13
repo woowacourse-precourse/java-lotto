@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Generator {
 
@@ -23,11 +21,14 @@ public class Generator {
      * */
     public static List<Lotto> getLottos(int lottoCount) {
         List<Lotto> lottos = new ArrayList<>();
+
         for (int i=0; i<lottoCount; i++) {
-            List<Integer> nums = getNums();
-            Lotto lotto = new Lotto(nums);
+            Lotto lotto = new Lotto(getNums());
             lottos.add(lotto);
         }
+
         return lottos;
     }
+
+
 }
