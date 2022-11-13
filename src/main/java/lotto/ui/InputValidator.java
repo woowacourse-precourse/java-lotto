@@ -26,9 +26,15 @@ public class InputValidator {
         for(String input : userInput) {
             int inputNum = Integer.parseInt(input);
 
-            if(inputNum < 1 && inputNum > 45) {
+            if(inputNum < 1 || inputNum > 45) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    public void validateListSize(List<String> userInput) {
+        if(userInput.size() != 6) {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -44,8 +50,17 @@ public class InputValidator {
     public void validateInputWinningNumber(List<String> userInput) {
         validateListInputIsNumeric(userInput);
         validateInputRange(userInput);
-        validateInputRange(userInput);
+        validateListSize(userInput);
+
     }
 
+    public void validateInputBonusNumber(String userInput) {
+        validateStringInputIsNumeric(userInput);
 
+        int inputNum = Integer.parseInt(userInput);
+
+        if(inputNum < 1 || inputNum > 45) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

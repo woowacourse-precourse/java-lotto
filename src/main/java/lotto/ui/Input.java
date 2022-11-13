@@ -24,7 +24,6 @@ public class Input {
         return Integer.parseInt(userInput);
     }
 
-    //예외사항 검사
     public List<String> readWinningNumber() {
         Messages.INPUT_LOTTE_NUMBER.printMessage();
         String userInput = readInput();
@@ -35,18 +34,18 @@ public class Input {
         return winningNumber;
     }
 
-    public List<String> splitUserInput(String userInput) {
-        List<String> numbers = Arrays.stream(userInput.split(","))
-                .collect(Collectors.toList());
-
-        return numbers;
-    }
-
     //예외사항 검사
     public int readBonusNumber() {
         Messages.INPUT_BONUS_NUMBER.printMessage();
         String userInput = readInput();
 
         return Integer.parseInt(userInput);
+    }
+
+    public List<String> splitUserInput(String userInput) {
+        List<String> numbers = Arrays.stream(userInput.split(","))
+                .collect(Collectors.toList());
+
+        return numbers;
     }
 }
