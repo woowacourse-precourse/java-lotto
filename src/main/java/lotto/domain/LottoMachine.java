@@ -12,9 +12,9 @@ public class LottoMachine {
 
     public LottoMachine(String inputPrice) {
         validateType(inputPrice);
+        validateRange(Integer.parseInt(inputPrice));
+        validateUnit(Integer.parseInt(inputPrice));
         this.purchasePrice = Integer.parseInt(inputPrice);
-        validateRange();
-        validateUnit();
     }
 
     private void validateType(String inputPrice) {
@@ -23,14 +23,14 @@ public class LottoMachine {
         }
     }
 
-    private void validateRange() {
-        if (purchasePrice < UNIT_PRICE) {
+    private void validateRange(int inputPrice) {
+        if (inputPrice < UNIT_PRICE) {
             throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
     }
 
-    private void validateUnit() {
-        if (purchasePrice % UNIT_PRICE != 0) {
+    private void validateUnit(int inputPrice) {
+        if (inputPrice % UNIT_PRICE != 0) {
             throw new IllegalArgumentException(UNIT_ERROR_MESSAGE);
         }
     }
