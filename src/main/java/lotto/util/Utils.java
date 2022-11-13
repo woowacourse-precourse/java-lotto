@@ -46,8 +46,20 @@ public class Utils {
         return false;
     }
 
+    public static boolean isContain(String checkNumber, List<Integer> numbers) {
+        int bonusNumber = Integer.parseInt(checkNumber);
+
+        for (int index = 0; index < numbers.size(); index++) {
+            if (bonusNumber == numbers.get(index)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static boolean isNumber(char ch) {
-        if ((ch >= '0') && (ch <= '9')) {
+        if ((ch >= '0') && (ch <= +'9')) {
             return true;
         }
 

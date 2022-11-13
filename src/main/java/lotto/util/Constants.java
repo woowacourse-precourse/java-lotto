@@ -20,7 +20,11 @@ public class Constants {
     public static final String ERROR_LOTTO_DUPLICATED = ERROR + "로또 번호는 중복되지 않아야 합니다.";
     public static final String ERROR_LOTTO_RANGE = ERROR + "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
 
-    public static final String ERROR_WINNING_NUMBER_STRING = ERROR + "당첨 입력 번호에 ','과 숫자 제외는 올 수 없습니다.";
-    public static final String ERROR_WINNING_NUMBER_COMMA = ERROR + "당첨 입력 번호 문자열 처음과 끝에 ',는 올 수 없습니다.";
-    public static final String ERROR_WINNING_NUMBER_LEGNTH_ZERO = ERROR + "당첨 입력 번호 문자열의 길이는 0이 될 수 없습니다.";
+    public static final String ERROR_WINNING_NUMBER_STRING = ERROR + "당첨 입력 번호에 ','과 숫자 제외는 입력할 수 없습니다.";
+    public static final String ERROR_WINNING_NUMBER_COMMA = ERROR + "당첨 입력 번호 문자열 처음과 끝에 ',는 입력할 수 없습니다.";
+    public static final String ERROR_WINNING_NUMBER_LENGTH_ZERO = ERROR + "당첨 입력 번호 문자열의 길이는 0이 될 수 없습니다.";
+    public static final String ERROR_BONUS_NUMBER_INT = ERROR + "보너스 번호 문자열은 숫자 제외는 입력할 수 없습니다.";
+    public static final String ERROR_BONUS_NUMBER_DUPLICATED = ERROR + "보너스 번호는 당첨 입력 번호와 중복되지 않아야 합니다.";
+    public static final String ERROR_BONUS_NUMBER_Range = ERROR + "보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
+
 }

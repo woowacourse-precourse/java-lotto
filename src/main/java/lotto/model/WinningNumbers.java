@@ -6,19 +6,19 @@ import java.util.List;
 
 public class WinningNumbers {
     private List<Integer> numbers;
-  //  private final int bonusNumber;
+    private int bonusNumber;
 
-    public WinningNumbers(List<Integer> numbers) {
+    public WinningNumbers(List<Integer> numbers, int bonusNumber) {
         new LottoValidator(numbers);
         this.numbers = numbers;
-       // this.bonusNumber = bonusNumber;
+        this.bonusNumber = bonusNumber;
     }
 
     public List<Integer> getNumbers() {
         return this.numbers;
     }
 
-//    public int getBonusNumber() {
-//        return this.bonusNumber;
-//    }
+    public int getBonusNumber() {
+        return this.bonusNumber;
+    }
 }

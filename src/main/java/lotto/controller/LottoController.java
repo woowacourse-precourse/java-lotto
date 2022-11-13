@@ -28,6 +28,7 @@ public class LottoController {
     }
 
     private void getWinningNumbers() {
-        winningNumbersService = new WinningNumbersService(InputView.inputWinningNumbers());
+        winningNumbersService = new WinningNumbersService(InputView.inputWinningNumbers()
+                , InputView.inputWinningBonus());
     }
 }
