@@ -26,4 +26,8 @@ public enum Ranking {
                 .findAny()
                 .orElse(NOTHING);
     }
+
+    public int getMoney() {
+        return money;
+    }
 }
