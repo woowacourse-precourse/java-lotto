@@ -66,6 +66,14 @@ class LottoTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+	@Test
+    void 숫자_포함_여부_테스트() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.contains(1)).isEqualTo(true);
+        assertThat(lotto.contains(6)).isEqualTo(true);
+        assertThat(lotto.contains(7)).isEqualTo(false);
+        assertThat(lotto.contains(40)).isEqualTo(false);
+    }
     @Override
     public void runMain() { }
 }
