@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,5 +42,9 @@ public class Guide {
         for (Lotto lotto : boughtLotto) {
             System.out.println(lotto.getLotto());
         }
+    }
+
+    public static String addNumberPunctuation(int prizeMoney) {
+        return NumberFormat.getInstance().format(prizeMoney);
     }
 }
