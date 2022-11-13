@@ -33,7 +33,7 @@ public class Application {
         return price;
     }
 
-    private static List<Lotto> handleLottosTasks(int price) {
+    public static List<Lotto> handleLottosTasks(int price) {
         int numberOfIssues = Utils.getNumberOfIssues(price);
         List<Lotto> lottos = Utils.issueLotto(numberOfIssues);
         Ui.printLottoNumbers(numberOfIssues, lottos);

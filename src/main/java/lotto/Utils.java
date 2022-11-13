@@ -93,7 +93,7 @@ public class Utils {
 
         Set<Result> results = WINNING_DATA.keySet();
         for (Result result : results) {
-            totalPrize += result.getIntPrize() * WINNING_DATA.get(result);
+            totalPrize += result.getPrize() * WINNING_DATA.get(result);
         }
 
         float ratio = (totalPrize / (float) price) * 100;

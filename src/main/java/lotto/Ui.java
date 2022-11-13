@@ -1,8 +1,11 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
+import static java.util.regex.Pattern.*;
 import static lotto.Result.*;
 
 public class Ui {
@@ -28,12 +31,23 @@ public class Ui {
     public static void printStatistics(String ratio, Map<Result, Integer> winningData) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println(FIFTH.getStandard() + FIFTH.getStringPrize() + winningData.get(FIFTH) + "개" );
-        System.out.println(FOURTH.getStandard() + FOURTH.getStringPrize() + winningData.get(FOURTH) + "개" );
-        System.out.println(THIRD.getStandard() + THIRD.getStringPrize() + winningData.get(THIRD) + "개" );
-        System.out.println(SECOND.getStandard() + SECOND.getStringPrize() + winningData.get(SECOND) + "개" );
-        System.out.println(FIRST.getStandard() + FIRST.getStringPrize() + winningData.get(FIRST) + "개" );
+
+        Result[] results = values();
+        for (int idx = results.length - 1; idx >= 0; idx--) {
+            Result result = results[idx];
+            System.out.println(getStatisticsFormat(result, winningData.get(result)));
+        }
+
         System.out.print("총 수익률은 " + ratio +"%입니다.");
     }
+
+    private static final String getStatisticsFormat(Result result, int numOfResult) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        String prize = decFormat.format(result.getPrize());
+        String standard = result.getStandard();
+
+        return String.format("%s (%s원) - %d개", standard, prize, numOfResult);
+    }
+
 
 }
