@@ -1,6 +1,7 @@
 package lotto.seller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import lotto.domain.seller.Country;
 import lotto.domain.seller.Seller;
@@ -17,5 +18,13 @@ public class SellerTest {
         int lottoCount = seller.findLottoCountByMoney(money);
         assertThat(lottoCount).isEqualTo(10);
     }
-    
+
+    @DisplayName("[예외 발생] 로또 금액이 1000원으로 나누어 떨어지지 않는다면 IllegalException 발생")
+    @Test
+    void findLottoCountByMoney_() {
+        Seller seller = new Country();
+        int money = 10001;
+        assertThatThrownBy(() -> seller.findLottoCountByMoney(money))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }
