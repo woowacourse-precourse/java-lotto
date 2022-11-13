@@ -4,7 +4,7 @@ import lotto.domain.Money;
 import lotto.utils.ExceptionType;
 import lotto.view.Input;
 
-public class InputController {
+public class MoneyController {
 
     public Money getMoney() {
         String line = Input.readLine();

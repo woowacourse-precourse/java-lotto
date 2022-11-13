@@ -5,7 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
-import lotto.controller.InputController;
+import lotto.controller.MoneyController;
 import lotto.domain.Money;
 import lotto.utils.ExceptionType;
 import lotto.view.Input;
@@ -34,8 +34,8 @@ public class InputTest {
     void inputMoney(String target) {
         when(Input.readLine()).thenReturn(target);
 
-        InputController inputController = new InputController();
-        Money money = inputController.getMoney();
+        MoneyController moneyController = new MoneyController();
+        Money money = moneyController.getMoney();
 
         assertThat(money.getMoney()).isEqualTo(Integer.parseInt(target));
     }
@@ -46,9 +46,9 @@ public class InputTest {
     void inputMoneyByNotNumber(String target) {
         when(Input.readLine()).thenReturn(target);
 
-        InputController inputController = new InputController();
+        MoneyController moneyController = new MoneyController();
 
-        assertThatThrownBy(inputController::getMoney).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(moneyController::getMoney).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionType.IS_NOT_NUMBER.getMessage());
     }
 }
