@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoGenerator {
     private final int startNumber;
@@ -16,18 +17,12 @@ public class LottoGenerator {
         this.numberCount = numberCount;
     }
 
-    private List<Integer> createLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(startNumber, endNumber, numberCount);
+    public List<Integer> createLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(startNumber, endNumber, numberCount);
+        return sortLottoNumbers(numbers);
     }
 
-    private void sortLottoNumbers(List<Integer> lottoNumbers) {
-        Collections.sort(lottoNumbers);
-    }
-
-    public List<Integer> getLottoNumbers() {
-        List<Integer> numbers = createLottoNumbers();
-        sortLottoNumbers(numbers);
-
-        return numbers;
+    private List<Integer> sortLottoNumbers(List<Integer> numbers) {
+        return numbers.stream().sorted().collect(Collectors.toList());
     }
 }
