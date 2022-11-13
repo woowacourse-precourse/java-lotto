@@ -27,4 +27,6 @@ public class SellerTest {
         assertThatThrownBy(() -> seller.findLottoCountByMoney(money))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
+    
 }
