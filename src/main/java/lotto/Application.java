@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.Model.Lotto;
+import lotto.Service.BonusNumberService;
 import lotto.Service.LottoNumberService;
 import lotto.Service.WinningNumberService;
 
@@ -33,7 +34,12 @@ public class Application {
 
             printWinningNumberMessage();
             WinningNumberService winningNumberService = new WinningNumberService();
-            Lotto winningNumberList = winningNumberService.generateWinningNumber();
+            Lotto winningNumber = winningNumberService.generateWinningNumber();
+
+            BonusNumberService bonusNumberService = new BonusNumberService();
+            Integer bonusNumber = bonusNumberService.generateBonusNumber();
+            bonusNumberService.checkBonusRange(bonusNumber);
+            bonusNumberService.checkNotEqualWinningNumber(winningNumber.getNumbers(), bonusNumber);
 
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
