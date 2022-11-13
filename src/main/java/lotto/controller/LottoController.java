@@ -20,5 +20,6 @@ public class LottoController {
         WinningResult winningResult = new WinningResult(winningNumbers, bonusNumber);
         WinningStatistics winningStatistics = winningResult.compileStatistics(lottos);
         OutputView.printWinningStatistics(winningStatistics);
+        OutputView.printYield(money, winningStatistics);
     }
 }
