@@ -11,7 +11,7 @@ public class InputView {
     public static Integer getAmount(String input) {
         try {
             Integer amount = Integer.valueOf(input);
-            if(amount % 1000 != 0 || amount < 0) {
+            if (amount % 1000 != 0 || amount < 0) {
                 throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요. ");
             }
             return amount;
@@ -23,10 +23,10 @@ public class InputView {
     public static List<Integer> getWinningNumber(String input) {
         try {
             List<Integer> winningNumber = Arrays.stream(input.split(","))
-                                            .map(number -> Integer.valueOf(number))
-                                            .collect(Collectors.toList());
-            for(Integer number:winningNumber) {
-                if(number < 1 || number > 45) {
+                    .map(number -> Integer.valueOf(number))
+                    .collect(Collectors.toList());
+            for (Integer number : winningNumber) {
+                if (number < 1 || number > 45) {
                     throw new IllegalArgumentException("[ERROR] 1~45 사이의 값을 입력해주세요. ");
                 }
             }
