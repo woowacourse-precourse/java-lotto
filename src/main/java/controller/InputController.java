@@ -1,6 +1,6 @@
 package controller;
 
-import View.InputView;
+import view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputController {
