@@ -14,6 +14,8 @@ public class InputView {
 	private static final String INPUT_WINNING_NUMBERS_SENTENCE = "당첨 번호를 입력해 주세요.";
 	private static final String INPUT_BONUS_NUMBER_SENTENCE = "보너스 번호를 입력해 주세요.";
 	private static final Pattern PATTERN = Pattern.compile("([0-9])+");
+	private static final int START_LOTTO_NUMBER = 1;
+	private static final int FINISH_LOTTO_NUMBER = 45;
 
 	public static int inputMoney() {
 		System.out.println(BUY_SENTENCE);
@@ -27,11 +29,14 @@ public class InputView {
 			throw new IllegalArgumentException("[ERROR] 정수만 입력 가능합니다.");
 		}
 	}
-	
+
 	public static List<Integer> inputWinningNumbers() {
 		System.out.println(INPUT_WINNING_NUMBERS_SENTENCE);
 		List<Integer> winningNumbers = getWinningNumbers(PATTERN.matcher(Console.readLine()));
 		Lotto lotto = new Lotto(winningNumbers);
+		for(int number : winningNumbers) {
+			validateNumberRange(number);
+		}
 		return winningNumbers;
 	}
 
@@ -49,6 +54,14 @@ public class InputView {
 		System.out.println(INPUT_BONUS_NUMBER_SENTENCE);
 		String number = Console.readLine();
 		validateInteger(number);
+		validateNumberRange(Integer.parseInt(number));
 		return Integer.parseInt(number);
+	}
+	
+	private static void validateNumberRange(final int value) {
+		if (value < START_LOTTO_NUMBER || FINISH_LOTTO_NUMBER < value) {
+			throw new IllegalArgumentException("[ERROR] 유효한 로또 번호 범위는 "
+					+ START_LOTTO_NUMBER + "~" + FINISH_LOTTO_NUMBER + "입니다.");
+		}
 	}
 }

@@ -20,6 +20,5 @@ public class LottoWinningNumbers {
 			throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호에 포함되어 있습니다.");
 		}
 	}
-
 	
 }
