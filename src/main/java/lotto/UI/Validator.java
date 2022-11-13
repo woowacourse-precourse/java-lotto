@@ -5,17 +5,16 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-    private static final String ERROR_MONEY_NOT_NUMBER= "[ERROR] 로또 구입 금액은 숫자로만 입력 가능합니다.";
+    private static final String ERROR_INPUT_IS_NOT_NUMBER= "[ERROR] 입력값이 숫자가 아닙니다.";
     private static final String ERROR_MONEY_NOT_OVER_THOUSAND= "[ERROR] 로또 구입 금액은 1000원 이상이어야합니다. ";
     private static final String ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND= "[ERROR] 로또 구입 금액은 1000으로 나누어 떨어져야합니다. ";
+    private static final String ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE = "[ERROR] 숫자의 범위는 1에서 45 사이여야합니다.";
 
 
     public void isValidatedMoney(String money) {
-        // 숫자만으로 이루어졌는지 검증
-        if (!isConsistOfNumber(money)) {
-            throw new IllegalArgumentException(ERROR_MONEY_NOT_NUMBER);
-        }
-        // 1000원 이상이 아니며,, 1000으로 나누어 떨어지지 않는 경우 검증
+
+        validateConsistOfNumber(money);
+
         int moneyInt = Integer.parseInt(money);
         if (moneyInt < 1000) {
             throw new IllegalArgumentException(ERROR_MONEY_NOT_OVER_THOUSAND);
@@ -26,15 +25,29 @@ public class Validator {
     }
 
     public void isValidatedNormalNumbers(String normalNumbers) {
-        List<String> numbers = List.of(normalNumbers.split(","));
-        // 각 요소 숫자 검증
+        List<String> numbersInString = List.of(normalNumbers.split(","));
+        List<Integer> numbersInInteger = List.of();
 
+        for (String number : numbersInString) {
+            validateConsistOfNumber(number);
+            validateProperRangeOfNumber(Integer.parseInt(number));
+        }
     }
 
     public void isValidatedBonusNumber(String bonusNumber) {
+        validateConsistOfNumber(bonusNumber);
+        validateProperRangeOfNumber(Integer.parseInt(bonusNumber));
     }
 
-    private boolean isConsistOfNumber(String string) {
-        return Pattern.matches("[0-9]*]", string);
+    private void validateConsistOfNumber(String string) {
+        if (!Pattern.matches("[0-9]*]", string)) {
+            throw new IllegalArgumentException(ERROR_INPUT_IS_NOT_NUMBER);
+        }
+    }
+
+    private void validateProperRangeOfNumber(int parseInt) {
+        if (parseInt < 1 || parseInt > 45) {
+            throw new IllegalArgumentException(ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE);
+        }
     }
 }
