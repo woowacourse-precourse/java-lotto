@@ -7,6 +7,7 @@ public class Buyer {
 
     private final int MIN_MONEY = 1000;
     private final int MONEY_UNIT = 1000;
+
     static int money;
 
     public Buyer() {
@@ -41,7 +42,7 @@ public class Buyer {
     public void validateMoneyUnit(int inputMoney) {
         if (inputMoney % MONEY_UNIT != 0) {
             System.out.println("[ERROR] 1000원 단위로 금액을 입력해야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 1000원 단위로 금액을 입력해야 합니다.");
+            throw new IllegalArgumentException();
         }
     }
 }

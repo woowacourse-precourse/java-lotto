@@ -31,9 +31,15 @@ public class Result {
         calculateEarningRate(total_prize, Buyer.money);
     }
 
-    private void calculateEarningRate(double total_prize, int money) {
-        earnRate = total_prize / money * 100;
-        printer.printResult(winning, earnRate);
+    public void compareEachLotto(Lotto winningLotto, int bonus, Lotto lotto) {
+        for (int order = 0; order < lotto.size(); order++) {
+            if (winningLotto.contains(lotto.get(order))) {
+                count++;
+            }
+            if (lotto.get(order) == bonus) {
+                bonus_index = 1;
+            }
+        }
     }
 
     private void compareResult() {
@@ -42,6 +48,11 @@ public class Result {
         winThird();
         winFourth();
         winFifth();
+    }
+
+    private void calculateEarningRate(double total_prize, int money) {
+        earnRate = total_prize / money * 100;
+        printer.printResult(winning, earnRate);
     }
 
     private void winFifth() {
@@ -76,17 +87,6 @@ public class Result {
         if (count == 6) {
             winning[4]++;
             total_prize += FIRST_PRIZE;
-        }
-    }
-
-    public void compareEachLotto(Lotto winningLotto, int bonus, Lotto lotto) {
-        for (int order = 0; order < lotto.size(); order++) {
-            if (winningLotto.contains(lotto.get(order))) {
-                count++;
-            }
-            if (lotto.get(order) == bonus) {
-                bonus_index = 1;
-            }
         }
     }
 }

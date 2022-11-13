@@ -12,13 +12,6 @@ public class LottoMachine {
     LottoCompany lottoCompany = new LottoCompany();
     Printer printer = new Printer();
 
-
-    private Lotto makeRandomNumbers() {
-        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        Collections.sort(lottoNumbers);
-        return new Lotto(lottoNumbers);
-    }
-
     public void makeLottos(int money) {
         List<Lotto> lottos = new ArrayList<>();
         int sheets = money / MONEY_UNIT;
@@ -29,5 +22,11 @@ public class LottoMachine {
         Lottos allLottos = new Lottos(lottos);
         printer.printLottoNumbers(allLottos);
         lottoCompany.winningNumbers(allLottos);
+    }
+
+    private Lotto makeRandomNumbers() {
+        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(lottoNumbers);
+        return new Lotto(lottoNumbers);
     }
 }

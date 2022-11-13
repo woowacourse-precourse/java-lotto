@@ -14,7 +14,7 @@ public class LottoCompany {
     private final int MIN_VALUE = 1;
 
     Result result = new Result();
-    List<Integer> forValidate = new ArrayList<>();
+    List<Integer> forValidateDupWithBonus = new ArrayList<>();
     Lottos lottos;
     Lotto lotto;
     int bonus;
@@ -30,10 +30,47 @@ public class LottoCompany {
         makeWinningNumbers(winningNumbers);
     }
 
+    public void makeWinningNumbers(String numbers) {
+        String[] winningNumbers = numbers.split(",");
+        Arrays.sort(winningNumbers);
+        validate(winningNumbers);
+        List<Integer> lottoNumbers = new ArrayList<>();
+        for (int order = 0; order < LENGTH; order++) {
+            lottoNumbers.add((Integer.parseInt(winningNumbers[order])));
+        }
+        this.lotto = new Lotto(lottoNumbers);
+        bonusNumber();
+    }
+
+    private void validate(String[] winningNumbers) {
+        validateWinningNumbers(winningNumbers);
+        validateDuplicate(winningNumbers);
+        for (int i = 0; i < winningNumbers.length; i++) {
+            forValidateDupWithBonus.add(Integer.parseInt(winningNumbers[i]));
+        }
+    }
+
+    public void validateWinningNumbers(String[] numbers) {
+        String pattern = "^[0-9]*$";
+        String manInput = String.join("", numbers);
+        if (!Pattern.matches(pattern, manInput)) {
+            System.out.println("[ERROR] 6개의 '숫자만' 입력하고 ','로 당첨 번호를 구분해야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateDuplicate(String[] numbers) {
+        long distinctCount = Stream.of(numbers).distinct().count();
+        if (numbers.length != distinctCount) {
+            System.out.println("[ERROR] 중복되지 않은 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
     public void bonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
-        validateBonus(bonusNumber, forValidate);
+        validateBonus(bonusNumber, forValidateDupWithBonus);
         this.bonus = Integer.parseInt(bonusNumber);
         result.compareNumbers(this.lottos, this.lotto, this.bonus);
     }
@@ -65,43 +102,6 @@ public class LottoCompany {
         String pattern = "^[0-9]*$";
         if (!Pattern.matches(pattern, bonusInput)) {
             System.out.println("[ERROR] 보너스 번호는 '하나의 숫자로만' 입력해야 합니다.");
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public void makeWinningNumbers(String numbers) {
-        String[] winningNumbers = numbers.split(",");
-        Arrays.sort(winningNumbers);
-        validate(winningNumbers);
-        List<Integer> lottoNumbers = new ArrayList<>();
-        for (int order = 0; order < LENGTH; order++) {
-            lottoNumbers.add((Integer.parseInt(winningNumbers[order])));
-        }
-        this.lotto = new Lotto(lottoNumbers);
-        bonusNumber();
-    }
-
-    private void validate(String[] winningNumbers) {
-        validateWinningNumbers(winningNumbers);
-        validateDuplicate(winningNumbers);
-        for (int i = 0; i < winningNumbers.length; i++) {
-            forValidate.add(Integer.parseInt(winningNumbers[i]));
-        }
-    }
-
-    public void validateWinningNumbers(String[] numbers) {
-        String pattern = "^[0-9]*$";
-        String manInput = String.join("", numbers);
-        if (!Pattern.matches(pattern, manInput)) {
-            System.out.println("[ERROR] 6개의 '숫자만' 입력하고 ','로 당첨 번호를 구분해야 합니다.");
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public void validateDuplicate(String[] numbers) {
-        long distinctCount = Stream.of(numbers).distinct().count();
-        if (numbers.length != distinctCount) {
-            System.out.println("[ERROR] 중복되지 않은 숫자를 입력해야 합니다.");
             throw new IllegalArgumentException();
         }
     }
