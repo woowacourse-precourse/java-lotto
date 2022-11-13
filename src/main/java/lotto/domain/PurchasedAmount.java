@@ -16,41 +16,30 @@ public class PurchasedAmount {
 
     private void validate(String inputPrice) {
         /*숫자 검사*/
-        if (!validateDigit(inputPrice)) {
-            throw new IllegalArgumentException(INVALID_MONEY_INPUT_FORMAT_MESSAGE);
-        }
+        validateDigit(inputPrice);
+        validateMinimum(inputPrice);
+        validateUnit(inputPrice);
+    }
 
-        if (!validateMinimum(inputPrice)) {
-            throw new IllegalArgumentException(LESS_THAN_MINIMUM_MONEY_INPUT_MESSAGE);
-        }
+    private void validateUnit(String inputPrice) {
+        int price = Integer.parseInt(inputPrice);
 
-        if (!validateUnit(inputPrice)) {
+        if (price % PURCHASED_AMOUNT_UNIT == 0) {
             throw new IllegalArgumentException(INVALID_MONEY_UNIT_INPUT_MESSAGE);
         }
     }
 
-    private boolean validateUnit(String inputPrice) {
-        int price = Integer.parseInt(inputPrice);
-
-        if (price % PURCHASED_AMOUNT_UNIT == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean validateMinimum(String inputPrice) {
+    private void validateMinimum(String inputPrice) {
         int price = Integer.parseInt(inputPrice);
 
         if (price < PURCHASED_AMOUNT_UNIT) {
-            return false;
+            throw new IllegalArgumentException(LESS_THAN_MINIMUM_MONEY_INPUT_MESSAGE);
         }
-        return true;
     }
 
-    private boolean validateDigit(String inputPrice) {
+    private void validateDigit(String inputPrice) {
         if (!Pattern.matches(DIGIT_REGEX, inputPrice)) {
-            return false;
+            throw new IllegalArgumentException(INVALID_MONEY_INPUT_FORMAT_MESSAGE);
         }
-        return true;
     }
 }
