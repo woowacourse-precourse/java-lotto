@@ -20,7 +20,7 @@ public class Lotto {
     public int[] checkWin() {
         LottoWin lottoWin = LottoWin.getInstance();
         List<Integer> winNumber = lottoWin.getLottoNum();
-        final int nomalSameIndex = 1;
+        final int nomalSameIndex = 0;
         final int bounsSameIndex = 1;
         int[] sameCnt = new int[2];
         for(int i = 0; i<this.numbers.size() -1; i++){
