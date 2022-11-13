@@ -28,7 +28,8 @@
 - [x] 일치하는 수에 해당하는 인덱스에 추가한다.
   - [x] 당첨번호 중 몇개의 숫자가 같은지 알 수 있다. - Judgement#correctCount
     - [x] 보너스 번호가 있는지 알 수 있다.(당첨번호 5자리가 같은 경우만) - Judgement#hasWinningNumber
-  - [ ] 수익률 계산 - LottoCalculator#sumOfPrizeMoney
-  - [ ] 당첨 내역 출력 - LottoManager#printWinningDetails
-  - [ ] 수익률 출력 - LottoManager#printRateOfReturn
+  - [ ] 수익률 계산 - LottoCalculator #getRateOfReturn
+    - [ ] 총 상금 합산 - LottoCalculator #sumOfPrizeMoney
+  - [ ] 당첨 내역 출력 - LottoManager #printWinningDetails
+  - [ ] 수익률 출력 - LottoManager #printRateOfReturn
     
