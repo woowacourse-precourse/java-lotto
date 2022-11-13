@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +27,7 @@ public class WinningLotto {
         checkRangeOfNumber(input);
 
         bonusNumber = Integer.parseInt(input);
+        checkBonusInWinning();
     }
 
     private List<Integer> stringArrayToIntegerList(String[] words) {
@@ -60,6 +60,12 @@ public class WinningLotto {
 
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException("[ERROR] 입력은 1~45사이의 자연수만 가능합니다.");
+        }
+    }
+
+    private void checkBonusInWinning() {
+        if(winningNumber.getNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 다른 번호를 입력해야 합니다.");
         }
     }
 
