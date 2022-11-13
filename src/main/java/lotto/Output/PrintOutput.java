@@ -19,4 +19,7 @@ public enum PrintOutput {
     public void printMessage(int number) {
         System.out.printf(message,number);
     }
+    public void printProfitMessage(double number) {
+        System.out.printf(message,number);
+    }
 }
