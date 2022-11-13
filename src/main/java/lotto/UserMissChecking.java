@@ -8,7 +8,7 @@ public class UserMissChecking {
             return Integer.parseInt(input);
         } catch (Exception e){
             System.out.println("[ERROR] 금액은 숫자로 입력해야 합니다.");
-            return -1;
+            throw new IllegalArgumentException();
         }
     }
 
@@ -18,7 +18,7 @@ public class UserMissChecking {
             if(money % 1000 != 0) throw new IllegalArgumentException();
         }catch (Exception e){
             System.out.println("[ERROR] 금액은 1000원 단위로 입력해야 합니다.");
-            return false;
+            throw new IllegalArgumentException();
         }
         return true;
     }
