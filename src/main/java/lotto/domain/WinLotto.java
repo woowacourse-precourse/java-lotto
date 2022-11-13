@@ -49,13 +49,13 @@ public class WinLotto {
         return count;
     }
 
-    private void validateBonusNumberRange(int number) {
+    public void validateBonusNumberRange(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 범위를 초과하였습니다.");
         }
     }
 
-    private void validateDuplicateBonusNumber(int number,List<Integer> numbers) {
+    public void validateDuplicateBonusNumber(int number,List<Integer> numbers) {
         if (numbers.contains(number)) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호 중 보너스 번호와 중복되는 번호가 존재합니다.");
         }
