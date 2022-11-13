@@ -33,12 +33,24 @@ public class ResultView implements View{
             if(rank == Rank.NOT_WINNER){
                 continue;
             }
-            System.out.println(
-                    rank.getMatchedNumber()
-                    + "개 일치 (" + rank.getPrice() + ") - "
-            + result.get(rank) +"개"
-            );
+            printEach(rank);
         }
+    }
+
+    private void printEach(Rank rank){
+        if(rank.isNeedBonus()){
+            bonusPrint(rank);
+            return;
+        }
+        System.out.println(
+                rank.getMatchedNumber()
+                        + "개 일치 (" + rank.getPrice() + ") - "
+                        + result.get(rank) +"개"
+        );
+    }
+
+    private void bonusPrint(Rank rank){
+
     }
 
     private void printYield(){
