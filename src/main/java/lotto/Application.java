@@ -4,6 +4,8 @@ import lotto.UI.Input;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static lotto.Generator.createRandomLotto;
@@ -38,6 +40,11 @@ public class Application {
         System.out.println(haveLottoCount + "개를 구매했습니다.");
 
         lottos = createRandomLotto(haveLottoCount);
+
+        for(int i = 0; i < lottos.length; i++){
+            Collections.sort(lottos[i]);
+            System.out.println(lottos[i]);
+        }
 
         System.out.println("당첨 번호를 입력해주세요.");
         luckyNumbers = input.getLuckyNumber();
