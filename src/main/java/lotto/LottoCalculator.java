@@ -31,4 +31,9 @@ public class LottoCalculator {
         rankCount.set(count, rankCount.get(count) + 1);
     }
 
+    public double sumOfPrizeMoney() {
+        double sum = 0;
+        return sum;
+    }
+
 }
