@@ -6,9 +6,10 @@
     - [X] 구입 금액을 입력받는다. view/Input#getYourMoney
     - [X] 사용자가 정한 정답 번호를 입력받는다. view/Input#getAnswerNumbers
     - [X] 사용자가 정한 보너스 번호를 입력받는다. view/Input#getBonusNumber
-- [X] 로또 한 장에 해당하는 랜덤한 로또 번호를 만든다. utils/Cashier/createLottoNumber
-- [ ] 사용자가 입력한 금액에 맞춰 일정 갯수의 로또를 생성한다. controller/Cashier#playLotto
-- [ ] 당첨 통계를 낸다. controller/Statistics#myStat
+- [X] 로또 한 장에 해당하는 랜덤한 로또 번호를 만든다. utils/Number#createLottoNumber
+- [X] 사용자의 입력값을 받아 Cashier에 저장한다. model/Cashier#inputPlayerValue
+- [ ] 사용자가 입력한 금액에 맞춰 일정 갯수의 로또를 생성한다. model/Cashier#playLotto
+- [ ] 당첨 통계를 낸다. controller/model#myStat
 
 # 🚀 기능 요구 사항
 
