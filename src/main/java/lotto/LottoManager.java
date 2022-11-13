@@ -86,9 +86,13 @@ public class LottoManager {
         // 구입할 로또 갯수 계산
         calcLottoCount();
 
-        System.out.printf("%d개를 구매했습니다.", this.lottoCount);
+        System.out.printf("%d개를 구매했습니다.\n", this.lottoCount);
 
         // 로또 리스트 생성
         createLottoList();
+
+        for(Lotto lotto : lottoList){
+            System.out.println(lotto);
+        }
     }
 }
