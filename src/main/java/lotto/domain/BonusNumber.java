@@ -11,8 +11,8 @@ public class BonusNumber {
         this.number = number;
     }
 
-    private void validateNumberInRange(int number, int startInclusive, int endinclusive) {
-        if (number < startInclusive || number > endinclusive) {
+    private void validateNumberInRange(int number, int startInclusive, int endInclusive) {
+        if (number < startInclusive || number > endInclusive) {
             throw new IllegalArgumentException();
         }
     }
