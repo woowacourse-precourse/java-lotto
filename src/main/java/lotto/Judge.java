@@ -15,6 +15,8 @@ public class Judge {
 
         for (Lotto lottery : lotteries) {
             int index = lottery.confirmNumbers(winningNumbers);
+            if (index > 5)
+                continue;
             rankCount.set(index, rankCount.get(index) + 1);
         }
 
@@ -29,9 +31,10 @@ public class Judge {
         return totalPrizeMoney;
     }
 
-//    public  double countEarningsRate(){
-//
-//    }
+    public double countEarningsRate(int money) {
+        double rate = (double) countPrizeMoney() / money;
+        return (double) Math.round(rate * 10) / 10;
+    }
 
 }
 

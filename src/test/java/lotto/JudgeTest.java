@@ -38,4 +38,19 @@ class JudgeTest {
         long result = (long) 2000000000 * 6;
         assertThat(judge.countPrizeMoney()).isEqualTo(result);
     }
+
+    @DisplayName("수익률을 둘째자리에서 반올림하여 첫째자리까지 계산한다.")
+    @Test
+    void createEarningsRate() {
+        List<Lotto> lotteries = new ArrayList<>();
+        lotteries.add(new Lotto(List.of(11, 12, 13, 14, 15, 16)));
+        lotteries.add(new Lotto(List.of(11, 12, 13, 14, 15, 16)));
+        lotteries.add(new Lotto(List.of(1, 2, 3, 14, 15, 16)));
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6, 7);
+        Judge judge = new Judge();
+        judge.setRankCount(lotteries, winningNumbers);
+        double result = 1.7;
+        assertThat(judge.countEarningsRate(3000)).isEqualTo(result);
+    }
+
 }
