@@ -54,4 +54,4 @@
 - [ ]  당첨 결과를 출력한다. OutputUI#printWinnerCounts()
     - [ ]  당첨로또의 갯수를 출력한다. OutputUI#printWinnerResult()
     - [ ]  수익률을 출력한다. OutputUI#printReturnRate()
-- [ ]  로또 프로세스의 전반적인 흐름을 관리한다. LottoController#startLotto()
+- [x] 로또 프로세스의 전반적인 흐름을 관리한다. LottoController#startLotto()
