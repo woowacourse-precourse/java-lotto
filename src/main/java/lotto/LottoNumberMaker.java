@@ -6,9 +6,9 @@ import java.util.List;
 
 public class LottoNumberMaker {
 
-    private final List<Integer> lotto;
+    private final List<Integer> lotto =
 
-    public LottoNumberMaker(List<Integer> winningLotto) {
+    public LottoNumberMaker(List<Integer> lotto) {
         this.lotto = lotto;
     }
 
