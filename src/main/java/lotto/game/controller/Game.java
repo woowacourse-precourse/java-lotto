@@ -29,9 +29,9 @@ public class Game {
         List<Lotto> lottos = lottoService.buyLottos(money);
         ui.printPurchasedLottos(lottos);
 
-        String winningNumbersInput = ui.receiveInput(MESSAGE_WINNING_NUMBER);
-        String bonusNumberInput = ui.receiveInput(MESSAGE_BONUS_NUMBER);
-        WinningLotto winningLotto = WinningLotto.of(winningNumbersInput, bonusNumberInput);
+        String winningNumbers = ui.receiveInput(MESSAGE_WINNING_NUMBER);
+        String bonusNumber = ui.receiveInput(MESSAGE_BONUS_NUMBER);
+        WinningLotto winningLotto = WinningLotto.of(winningNumbers, bonusNumber);
 
         List<LottoGrade> lottoGrades = lottoService.confirmAllLottos(winningLotto, lottos);
         TotalResult totalResult = TotalResult.of(lottoGrades);
