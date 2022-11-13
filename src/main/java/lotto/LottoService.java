@@ -1,22 +1,15 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
+import lotto.domain.Money;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoService {
-    private final LottoManager lottoManager = new LottoManager();
     private final RandomGenerator randomGenerator = new RandomGenerator();
 
-    public List<Lotto> purchase() {
-        lottoManager.printPurchaseMessage();
-        Money money = new Money(Console.readLine());
-
-        return createLotteries(money);
-    }
-
-    private List<Lotto> createLotteries(Money money) {
+    public List<Lotto> purchase(Money money) {
         int buyQuantity = money.getWon() / 1000;
         List<Lotto> lotteries = new ArrayList<>(buyQuantity);
 
