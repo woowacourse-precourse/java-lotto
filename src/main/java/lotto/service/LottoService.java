@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import static java.util.Collections.*;
+
 public class LottoService {
 
     public RandomLotto makeRandomLottoNumbers(Money money) {
@@ -18,46 +20,35 @@ public class LottoService {
 
         for (int i = 0; i < numberOfLottoGame; i++) {
             List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(randomNumbers);
+            sort(randomNumbers);
             randomLotto.getRandomLottoNumbers().add(randomNumbers);
         }
         return randomLotto;
     }
 
     public HashMap<Winning, Integer> confirmWinningResult(RandomLotto randomLotto, Lotto lotto) {
-        HashMap<Winning, Integer> map = makeHash();
+        HashMap<Winning, Integer> winningResultMap = initWinningResultMap();
         for (List<Integer> randomLottoNums : randomLotto.getRandomLottoNumbers()) {
-            makeResult(lotto, map, randomLottoNums);
+            calcWinningRankAndWinningNum(lotto, winningResultMap, randomLottoNums);
         }
-        return map;
+        return winningResultMap;
     }
 
-    private HashMap<Winning, Integer> makeResult(Lotto lotto, HashMap<Winning, Integer> map, List<Integer> randomLottoNums) {
+    private void calcWinningRankAndWinningNum(Lotto lotto, HashMap<Winning, Integer> winningResultMap, List<Integer> randomLottoNums) {
         int temp = 0;
-        for (Integer winningNumber : lotto.getWinningNumbers()) {
-            if (randomLottoNums.contains(winningNumber)) {
+        for (Integer winningNum : lotto.getWinningNumbers()) {
+            if (randomLottoNums.contains(winningNum)) {
                 temp++;
             }
         }
-        if (temp == Winning.FIFTH.getMatchNum()) {
-            map.put(Winning.FIFTH, map.get(Winning.FIFTH) + 1);
+        for (Winning winning : Winning.values()) {
+            if (temp == winning.getMatchNum()) {
+                winningResultMap.put(winning, winningResultMap.get(winning) + 1);
+            }
         }
-        if (temp == Winning.FOURTH.getMatchNum()) {
-            map.put(Winning.FOURTH, map.get(Winning.FOURTH) + 1);
-        }
-        if (temp == Winning.THIRD.getMatchNum()) {
-            map.put(Winning.THIRD, map.get(Winning.THIRD) + 1);
-        }
-        if (temp == Winning.SECOND.getMatchNum()) {
-            map.put(Winning.SECOND, map.get(Winning.SECOND) + 1);
-        }
-        if (temp == Winning.FIRST.getMatchNum()) {
-            map.put(Winning.FIRST, map.get(Winning.FIRST) + 1);
-        }
-        return map;
     }
 
-    private HashMap<Winning, Integer> makeHash() {
+    private HashMap<Winning, Integer> initWinningResultMap() {
         HashMap<Winning, Integer> map = new HashMap<>();
         for (Winning winning : Winning.values()) {
             map.put(winning, 0);
