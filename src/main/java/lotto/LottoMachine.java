@@ -21,7 +21,7 @@ public class LottoMachine {
         }
         Lottos allLottos = new Lottos(lottos);
         printer.printLottoNumbers(allLottos);
-        lottoCompany.winningNumbers(allLottos);
+        lottoCompany.inputWinningNumbers(allLottos);
     }
 
     private Lotto makeRandomNumbers() {

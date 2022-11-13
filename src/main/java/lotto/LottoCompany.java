@@ -23,7 +23,7 @@ public class LottoCompany {
 
     }
 
-    public void winningNumbers(Lottos lottos) {
+    public void inputWinningNumbers(Lottos lottos) {
         this.lottos = lottos;
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumbers = Console.readLine();
@@ -39,7 +39,7 @@ public class LottoCompany {
             lottoNumbers.add((Integer.parseInt(winningNumbers[order])));
         }
         this.lotto = new Lotto(lottoNumbers);
-        bonusNumber();
+        makeBonusNumber();
     }
 
     private void validate(String[] winningNumbers) {
@@ -67,7 +67,7 @@ public class LottoCompany {
         }
     }
 
-    public void bonusNumber() {
+    public void makeBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
         validateBonus(bonusNumber, forValidateDupWithBonus);

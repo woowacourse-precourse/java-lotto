@@ -17,11 +17,15 @@ public class Buyer {
     public void payMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String inputMoney = Console.readLine();
+        Buyer.money = validateInputMoney(inputMoney);
+    }
+
+    private int validateInputMoney(String inputMoney) {
         validateMoneyOnlyNumber(inputMoney);
         int money = Integer.parseInt(inputMoney);
         validateMoneyRange(money);
         validateMoneyUnit(money);
-        Buyer.money = money;
+        return money;
     }
 
     public void validateMoneyOnlyNumber(String inputMoney) {
