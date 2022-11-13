@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class LottoInStream {
+    private static final String _input_purchase_amount_msg = "구입금액을 입력해 주세요.\n";
+    private static final String _input_winning_lotto_msg = "\n당첨 번호를 입력해 주세요.\n";
+    private static final String _input_bonus_number_msg = "\n보너스 번호를 입력해 주세요.\n";
 
     public static int readAmount() {
-        LottoOutStream.askPurchaseAmount();
+        System.out.print(_input_purchase_amount_msg);
         String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
@@ -18,7 +21,7 @@ public class LottoInStream {
     }
 
     public static List<Integer> readLottoNumbers() {
-        LottoOutStream.askWinningNumber();
+        System.out.print(_input_winning_lotto_msg);
         String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
@@ -28,7 +31,7 @@ public class LottoInStream {
     }
 
     public static int readBonusNumber(Lotto lotto) {
-        LottoOutStream.askBonusNumber();
+        System.out.print(_input_bonus_number_msg);
         String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {

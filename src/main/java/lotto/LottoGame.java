@@ -37,7 +37,6 @@ public class LottoGame {
         for (int i = 0; i < lottoCount; ++i) {
             lottoes.add(new Lotto(makeUniqueLottoNumber()));
         }
-        LottoOutStream.outStreamLottoCount(lottoCount);
         return lottoes;
     }
 

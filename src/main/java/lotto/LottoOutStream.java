@@ -18,24 +18,9 @@ public class LottoOutStream {
     }
 
     public static void showLottoList(List<Lotto> lottoes) {
+        System.out.print("\n" + lottoes.size() + "개를 구매했습니다.\n");
         for (Lotto lotto: lottoes) {
             lotto.showNumbers();
         }
-    }
-
-    public static void outStreamLottoCount(int lottoCount) {
-        System.out.print("\n" + lottoCount + "개를 구매했습니다.\n");
-    }
-
-    public static void askPurchaseAmount() {
-        System.out.print("구입금액을 입력해 주세요.\n");
-    }
-
-    public static void askWinningNumber() {
-        System.out.print("\n" + "당첨 번호를 입력해 주세요.\n");
-    }
-
-    public static void askBonusNumber() {
-        System.out.print("\n" + "보너스 번호를 입력해 주세요.\n");
     }
 }
