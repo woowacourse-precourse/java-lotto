@@ -30,7 +30,6 @@ public class LottoController {
         inputView.printWinningNumber();
         winningNumber.inputWinningNumber(Console.readLine());
         inputView.printBonusNumber();
-        bonusNumber.inputBonusNumber(Console.readLine());
-
+        bonusNumber.inputBonusNumber(Console.readLine(), winningNumber.getWinningNumber());
     }
 }

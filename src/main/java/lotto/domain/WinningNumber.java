@@ -39,12 +39,16 @@ public class WinningNumber {
         String[] numbers = input.split(",");
         for (String number : numbers) {
             for (int i = 0; i < number.length(); i++) {
-                if (number.charAt(i) < '0' && number.charAt(i) > '9') {
+                if (number.charAt(i) < '0' || number.charAt(i) > '9') {
                     return false;
                 }
             }
             winningNumber.add(Integer.parseInt(number)); //메소드 두개인데
         }
         return true;
+    }
+
+    public Set<Integer> getWinningNumber() {
+        return winningNumber;
     }
 }
