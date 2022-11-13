@@ -17,6 +17,10 @@ public class Result {
         }
     }
 
+    public Map<Rank, Integer> getResult() {
+        return result;
+    }
+
     public void add(Rank rank) {
         result.put(rank, result.getOrDefault(rank, 0) + 1);
     }
