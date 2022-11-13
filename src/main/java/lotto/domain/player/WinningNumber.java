@@ -7,12 +7,10 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class WinningNumber {
-	Validator validator = new Validator();
-
 	private final String winningNumber;
 
 	public WinningNumber(String winningNumberInput) {
-		validator.validateLottoNumber(winningNumberInput);
+		Validator.validateWinningNumber(winningNumberInput);
 		this.winningNumber = winningNumberInput;
 	}
 

@@ -52,29 +52,29 @@ public class ValidationConfigTest {
 	@DisplayName("유저가 입력한 당첨번호가 형식에 맞게 입력되었는지를 검증한다")
 	@Test
 	void VerifyIsCorrectlyFormatted(){
-		assertTrue(ValidationConfig.isLottoNumberCorrectlyFormatted("1,2"));
-		assertTrue(ValidationConfig.isLottoNumberCorrectlyFormatted("1,2,30,a,b,c"));
+		assertTrue(ValidationConfig.isWinningNumberCorrectlyFormatted("1,2"));
+		assertTrue(ValidationConfig.isWinningNumberCorrectlyFormatted("1,2,30,a,b,c"));
 	}
 
 	@DisplayName("유저가 입력한 당첨번호가 6개인지를 검증한다")
 	@Test
 	void VerifyIsCountCorrectlyProvided(){
-		assertTrue(ValidationConfig.isLottoNumberCountCorrectlyProvided("1,2,5,10,20,30"));
+		assertTrue(ValidationConfig.isWinningNumberCountCorrectlyProvided("1,2,5,10,20,30"));
 	}
 
 	@DisplayName("유저가 입력한 당첨번호가 1이상 45이하의 자연수인지를 검증한다")
 	@Test
 	void VerifyIsCorrectlyRanged(){
-		assertTrue(ValidationConfig.isLottoNumberCorrectlyRanged("1,2,3,4,5,45"));
-		assertFalse(ValidationConfig.isLottoNumberCorrectlyRanged("1,2,3,4,5,46"));
-		assertFalse(ValidationConfig.isLottoNumberCorrectlyRanged("0,2,3,4,5,45"));
+		assertTrue(ValidationConfig.isWinningNumberCorrectlyRanged("1,2,3,4,5,45"));
+		assertFalse(ValidationConfig.isWinningNumberCorrectlyRanged("1,2,3,4,5,46"));
+		assertFalse(ValidationConfig.isWinningNumberCorrectlyRanged("0,2,3,4,5,45"));
 	}
 
 	@DisplayName("유저가 입력한 당첨번호에 중복이 존재하는지를 검증한다")
 	@Test
 	void VerifyIsDuplicateExists(){
-		assertTrue(ValidationConfig.isLottoNumberDuplicateExists("1,1,3,4,5,45"));
-		assertFalse(ValidationConfig.isLottoNumberDuplicateExists("1,2,3,4,5,45"));
+		assertTrue(ValidationConfig.isWinningNumberDuplicateExists("1,1,3,4,5,45"));
+		assertFalse(ValidationConfig.isWinningNumberDuplicateExists("1,2,3,4,5,45"));
 	}
 
 	@DisplayName("유저가 입력한 보너스 번호가 1 이상 45 이하의 자연수인지를 검증한다")
