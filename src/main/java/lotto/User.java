@@ -29,7 +29,7 @@ public class User {
     private void validWantBuyAmountInputIsNumber(String userInput) {
         if (!NUMBER_PATTERN.matcher(userInput).matches()) {
             System.out.println(Error.IS_NOT_NUMBER.getErrorMessage());
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
         }
     }
 
@@ -40,7 +40,7 @@ public class User {
         return input;
     }
 
-    public void validWinningNumbersInput(String winningNumbersInput) {
+    private void validWinningNumbersInput(String winningNumbersInput) {
         List<Integer> winningNumbersToList = winningNumbersToList(winningNumbersInput);
         validWinningNumbersSize(winningNumbersToList);
         validDuplicateWinningNumbers(winningNumbersToList);
@@ -60,14 +60,14 @@ public class User {
         return result;
     }
 
-    public void validWinningNumbersSize(List<Integer> winningNumbersToList) {
+    private void validWinningNumbersSize(List<Integer> winningNumbersToList) {
         if (winningNumbersToList.size() != 6) {
             System.out.println(Error.LENGTH_OVER_SIX.getErrorMessage());
             throw new IllegalArgumentException("6개의 숫자를 입력해주세요.");
         }
     }
 
-    public void validDuplicateWinningNumbers(List<Integer> winningNumbersToList) {
+    private void validDuplicateWinningNumbers(List<Integer> winningNumbersToList) {
         for (Integer integer : winningNumbersToList) {
             if (Collections.frequency(winningNumbersToList, integer) > 1) {
                 System.out.println(Error.DUPLICATED.getErrorMessage());
@@ -76,7 +76,7 @@ public class User {
         }
     }
 
-    public void validWinningNumbersRange(List<Integer> winningNumbersToList) {
+    private void validWinningNumbersRange(List<Integer> winningNumbersToList) {
         for (Integer integer : winningNumbersToList) {
             if (integer > 45 || integer < 0) {
                 System.out.println(Error.RANGE_ERROR.getErrorMessage());
@@ -98,7 +98,7 @@ public class User {
         }
     }
 
-    public void validBonusNumberRange(int bonusNumber) {
+    private void validBonusNumberRange(int bonusNumber) {
         if (bonusNumber > 45 || bonusNumber < 0) {
             System.out.println(Error.RANGE_ERROR.getErrorMessage());
             throw new IllegalArgumentException("1~45 사이의 숫자만 입력 가능합니다.");
