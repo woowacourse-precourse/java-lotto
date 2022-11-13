@@ -16,6 +16,8 @@ public class LottoFactory {
 
         while (lottos.size() < quantity) {
             List<Integer> lottoNumbers = createLottoNumbers();
+            this.sortInAscending(lottoNumbers);
+            
             Lotto lotto = new Lotto(lottoNumbers);
             lottos.add(lotto);
         }
@@ -25,5 +27,9 @@ public class LottoFactory {
 
     public List<Integer> createLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBER_COUNT);
+    }
+
+    private void sortInAscending(List<Integer> numbers) {
+        Collections.sort(numbers);
     }
 }

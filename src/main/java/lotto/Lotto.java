@@ -8,7 +8,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        sortInAscending(numbers);
         this.numbers = numbers;
     }
 
@@ -16,10 +15,6 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private void sortInAscending(List<Integer> numbers) {
-        Collections.sort(numbers);
     }
 
     public List<Integer> getNumbers() {
