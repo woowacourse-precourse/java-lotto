@@ -75,8 +75,13 @@ public class Application {
     }
 
     public static void printLotto(){
+        int printLottoNumber[] = new int[6];
         for(int i=0;i<allLottoNumbers.size();i++){
-            System.out.println(allLottoNumbers.get(i));
+            for(int j=0;j<6;j++){
+                printLottoNumber[j]= allLottoNumbers.get(i).get(j);
+            }
+            Arrays.sort(printLottoNumber);
+            System.out.println(Arrays.toString(printLottoNumber));
         }
     }
 
