@@ -28,4 +28,15 @@ public class InputViewValidatorValidatorTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @DisplayName("숫자 이외의 값을 입력하면 에러를 반환한다.")
+    @Test
+    void inputNotNumber() {
+        Assertions.assertAll(
+                () -> Assertions.assertDoesNotThrow(() -> inputViewValidator.validateNumber("123")),
+                () -> assertThatThrownBy(() -> inputViewValidator.validateNumber("abc")),
+                () -> assertThatThrownBy(() -> inputViewValidator.validateNumber("!#@")),
+                () -> assertThatThrownBy(() -> inputViewValidator.validateNumber("가나다"))
+        );
+    }
 }
