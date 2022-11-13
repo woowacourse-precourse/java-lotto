@@ -42,7 +42,17 @@ public class ExceptionHandler {
         throw  new IllegalArgumentException(ValidationMessage.ERROR + ValidationMessage.NOT_IN_RANGE);
     }
 
+    public static void validateBonusNum(String bonusNum) throws IllegalArgumentException {
+        validateNotInRange1to45(bonusNum);
+    }
 
+    private static void validateNotInRange1to45(String bonusNum) {
+        boolean isInRange1to45 = Pattern.matches(ValidationConstant.PATTERN_OF_IN_RANGE,bonusNum);
+        if (isInRange1to45) {
+            return;
+        }
+        throw new IllegalArgumentException(ValidationMessage.ERROR + ValidationMessage.NOT_IN_RANGE);
+    }
 
 
 }

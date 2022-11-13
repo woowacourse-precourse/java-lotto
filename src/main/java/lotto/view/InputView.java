@@ -16,4 +16,9 @@ public class InputView {
         return winningNum;
     }
 
+    public static String inputBonusNum() {
+        System.out.println("보너스 번호를 입력해주세요.");
+        String bonusNum = Console.readLine();
+        return bonusNum;
+    }
 }
