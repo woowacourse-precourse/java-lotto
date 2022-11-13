@@ -13,6 +13,7 @@ public class Validator {
 			throw new IllegalArgumentException("[ERROR] 보너스 숫자는 당첨 번호와 중복되면 안 됩니다.");
 		}
 	}
+
 	public static void validateNumberRange(int number) {
 		if (number < LottoConstant.MINIMUM_LOTTO_NUMBER || number > LottoConstant.MAXIMUM_LOTTO_NUMBER) {
 			throw new IllegalArgumentException("[ERROR] 각각의 숫자는 1부터 45까지의 범위여야 합니다.");
@@ -24,16 +25,19 @@ public class Validator {
 			throw new IllegalArgumentException("[ERROR] 숫자는 총 여섯개여야 합니다.");
 		}
 	}
+
 	public static void validateNoDuplication(List<Integer> numbers) {
 		if (numbers.stream().distinct().count() != 6) {
 			throw new IllegalArgumentException("[ERROR] 숫자 간에 중복이 있으면 안 됩니다.");
 		}
 	}
+
 	public static void validateDivisibility(int amount) {
 		if (amount % LottoConstant.PRICE_OF_LOTTO != 0) {
 			throw new IllegalArgumentException(ErrorLog.INDIVISIBLE_PURCHASING_AMOUNT_ERROR.log());
 		}
 	}
+
 	public static void validateIntegerOrNot(String input) {
 		if (input.chars().anyMatch(letter -> letter < '0' || letter > '9')) {
 			throw new IllegalArgumentException(ErrorLog.NOT_INTEGER_INPUT_ERROR.log());

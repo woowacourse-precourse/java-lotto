@@ -9,6 +9,7 @@ public enum WinningRating {
 
 	private final int countOfMatchedNumber;
 	private final String prizeMoney;
+
 	WinningRating(int countOfMatchedNumber, String prizeMoney) {
 		this.countOfMatchedNumber = countOfMatchedNumber;
 		this.prizeMoney = prizeMoney;

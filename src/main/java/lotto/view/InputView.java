@@ -11,7 +11,7 @@ public class InputView {
 		Validator.validateIntegerOrNot(purchasingAmount);
 		return purchasingAmount;
 	}
-	
+
 	public String getWinningNumbers() {
 		printAskingWinningNumbersMessage();
 		String winningNumbers = Console.readLine();
@@ -29,12 +29,13 @@ public class InputView {
 	private void printAskingBonusNumberMessage() {
 		System.out.println(OutputMessage.ASKING_BONUS_NUMBER);
 	}
+
 	private void printAskingWinningNumbersMessage() {
 		System.out.println(OutputMessage.ASKING_WINNING_NUMBERS);
 	}
+
 	private void printAskingPurchasingAmountMessage() {
 		System.out.println(OutputMessage.ASKING_PURCHASING_AMOUNT.message());
 	}
-
 
 }

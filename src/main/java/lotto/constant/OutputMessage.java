@@ -11,6 +11,7 @@ public enum OutputMessage {
 	COUNTING_PRIZE_WITH_BONUS("%d개 일치, 보너스 볼 일치 (%s원) - %d개"),
 	DISPLAYING_RATE_OF_PROFIT("총 수익률은 %f%입니다.");
 	private final String message;
+
 	OutputMessage(String message) {
 		this.message = message;
 	}

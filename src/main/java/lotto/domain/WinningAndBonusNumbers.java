@@ -8,6 +8,7 @@ import lotto.util.Validator;
 public class WinningAndBonusNumbers {
 	private static List<Integer> winningNumbers;
 	private static int bonusNumber;
+
 	public WinningAndBonusNumbers(String winningNumbers) {
 		List<Integer> notYetValidatedWinningNumbers = Converter.convertStringWithCommaToIntegerList(winningNumbers);
 		validateWinningNumbers(notYetValidatedWinningNumbers);
@@ -26,6 +27,7 @@ public class WinningAndBonusNumbers {
 	public int getBonusNumber() {
 		return bonusNumber;
 	}
+
 	void validateWinningNumbers(List<Integer> winningNumbers) {
 		Validator.validateSizeOfNumbers(winningNumbers);
 		Validator.validateNoDuplication(winningNumbers);
