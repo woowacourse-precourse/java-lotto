@@ -22,4 +22,10 @@ public class Console {
         }
         return numbers;
     }
+
+    public int inputPlusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int number = Integer.parseInt(readLine());
+        return number;
+    }
 }

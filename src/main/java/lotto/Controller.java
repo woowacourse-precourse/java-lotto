@@ -29,8 +29,7 @@ public class Controller {
     }
 
     public Lotto issueWinningNumber(List<Integer> numbers) {
-        Lotto winningNumber = new Lotto(numbers);
-        return winningNumber;
+        Lotto winningLotto = new Lotto(numbers);
+        return winningLotto;
     }
-
 }

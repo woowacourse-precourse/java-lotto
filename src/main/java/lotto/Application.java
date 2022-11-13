@@ -11,7 +11,9 @@ public class Application {
         int count = controller.getCount(money);
         List<Lotto> issuedList = controller.issueLotto(count);
         List<Integer> numbers = console.inputWinningNumber();
-        Lotto winningNumber = controller.issueWinningNumber(numbers);
+        Lotto winningLotto = controller.issueWinningNumber(numbers);
+        int number = console.inputPlusNumber();
+        winningLotto.checkPlusNumber(number);
 
     }
 }
