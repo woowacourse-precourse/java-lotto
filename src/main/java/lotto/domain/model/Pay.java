@@ -1,5 +1,6 @@
 package lotto.domain.model;
 
+import static lotto.utils.Advice.PurchaseValidator.MINIMUM_ORDER;
 import static lotto.utils.Advice.PurchaseValidator.checkConsistNumber;
 import static lotto.utils.Advice.PurchaseValidator.checkReminder;
 
@@ -17,9 +18,11 @@ public class Pay {
         checkReminder(pay);
     }
 
-    public Long getPay() {
-        return pay;
+    public int calculateQuantity() {
+        return (int) (this.pay / MINIMUM_ORDER);
     }
 
-
+    public Double calculateYield(long reward) {
+        return (reward / (double)this.pay) * 100;
+    }
 }

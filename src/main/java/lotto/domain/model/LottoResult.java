@@ -43,8 +43,7 @@ public class LottoResult {
     public Double calculateYield(Pay pay) {
         long reward = lottoResult.keySet().stream()
                 .mapToLong(lottoRank -> lottoRank.getReward() * lottoResult.get(lottoRank)).sum();
-
-        return (reward / (double)pay.getPay()) * 100;
+        return pay.calculateYield(reward);
     }
 
     @Override
