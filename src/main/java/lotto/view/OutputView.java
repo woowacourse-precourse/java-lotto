@@ -7,18 +7,24 @@ import lotto.domain.WinLotto;
 import lotto.enums.ConstVariable;
 
 import java.text.DecimalFormat;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
+
+    public static final String STATISTIC_MESSAGE = "당첨 통계";
+    public static final String BARS = "---";
+    public static final String TOTAL_PROFIT_RATE_MESSAGE = "총 수익률은 {0}입니다.";
+    public static final String TOTAL_PROFIT_PRINT_PATTERN = "###,###.#%";
+
     public static void showStatistics(List<Lotto> generatedLottos, WinLotto winLotto) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(STATISTIC_MESSAGE);
+        System.out.println(BARS);
         List<Result> results = getResults(generatedLottos, winLotto);
         ResultStatistics statistics = printResultStatistics(results);
         System.out.println(printTotalProfit(statistics, generatedLottos.size()));
     }
-
 
     protected static List<Result> getResults(List<Lotto> generatedLottos, WinLotto winLotto) {
         List<Result> results = new ArrayList<>();
@@ -37,8 +43,8 @@ public class OutputView {
     }
 
     protected static String printTotalProfit(ResultStatistics statistics, int count) {
-        DecimalFormat format = new DecimalFormat("###,###.#%");
+        DecimalFormat format = new DecimalFormat(TOTAL_PROFIT_PRINT_PATTERN);
         String totalProfitRate = format.format((float) (statistics.getTotalProfit()) / (count * ConstVariable.STANDARD.getValue()));
-        return "총 수익률은 " + totalProfitRate + "입니다.";
+        return MessageFormat.format(TOTAL_PROFIT_RATE_MESSAGE, totalProfitRate);
     }
 }
