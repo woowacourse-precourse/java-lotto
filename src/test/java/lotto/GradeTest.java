@@ -1,25 +1,22 @@
 package lotto;
 
-import lotto.domian.lotto.Lotto;
-import lotto.domian.statistics.Statistics;
+import lotto.domian.statistics.Grade;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class StatisticsTest {
+public class GradeTest {
     @DisplayName("발행한 로또에서 당첨 번호의 수를 센 후 개수를 출력한다.")
     @Test
     void countCorrectNumbers() {
         // given
-        Statistics statistics = new Statistics();
+        Grade grade = new Grade();
 
         // when
-        int count = statistics.countCorrectNumbers(List.of(1, 2, 3, 10, 22, 12), List.of(1, 2, 3, 4, 5, 6));
+        int count = grade.countCorrectNumbers(List.of(1, 2, 3, 10, 22, 12), List.of(1, 2, 3, 4, 5, 6));
 
         // then
         assertThat(count).isEqualTo(3);
@@ -29,25 +26,25 @@ public class StatisticsTest {
     @Test
     void checkLottoNumbersContainBonusNumber() {
         // given
-        Statistics statistics = new Statistics();
+        Grade grade = new Grade();
 
         // when
-        String grade = statistics.checkLottoNumbersContainBonusNumber(List.of(1, 2, 3, 10, 22, 12), 3);
+        String result = grade.checkLottoNumbersContainBonusNumber(List.of(1, 2, 3, 10, 22, 12), 3);
 
         // then
-        assertThat(grade).isEqualTo("SECOND");
+        assertThat(result).isEqualTo("SECOND");
     }
 
     @DisplayName("발행한 로또의 등수를 확인한다.")
     @Test
     void checkLottoGrade() {
         // given
-        Statistics statistics = new Statistics();
+        Grade grade = new Grade();
 
         // when
-        String grade = statistics.checkLottoGrade(6);
+        String result = grade.checkLottoGrade(6);
 
         // then
-        assertThat(grade).isEqualTo("FIRST");
+        assertThat(result).isEqualTo("FIRST");
     }
 }
