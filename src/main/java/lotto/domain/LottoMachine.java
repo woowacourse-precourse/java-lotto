@@ -2,6 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.List;
 
 public class LottoMachine {
@@ -16,6 +17,8 @@ public class LottoMachine {
     }
 
     private List<Integer> getRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, SIZE);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, SIZE);
+        Collections.sort(numbers);
+        return numbers;
     }
 }
