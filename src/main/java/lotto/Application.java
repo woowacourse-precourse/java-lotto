@@ -26,9 +26,16 @@ public class Application {
         Lotto myLotto = new Lotto(lottoNumbers);
         int luckyNumber = getLuckyNumber();
     }
-//    public static List<List<Integer>> getMyLotto(int count){
-//        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//    }
+    public static List<List<Integer>> getMyLotto(int count){
+        List<List<Integer>> totalLottos=new ArrayList<>();
+        List<Integer> numbers;
+        for (int loop=0;loop<count;loop++){
+            numbers=Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            isValidateNumbers(numbers);
+        }
+        return totalLottos;
+
+    }
     public static int howManyLottos(int price){
         return price/1000;
     }
@@ -86,11 +93,11 @@ public class Application {
             throw new IllegalArgumentException(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
         }
     }
-//    public static void isValidateNumbers(List<Integer> numbers){
-//        for(Integer num : numbers){
-//            if(num<1||num>45){
-//                throw new IllegalArgumentException(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
-//            }
-//        }
-//    }
+    public static void isValidateNumbers(List<Integer> numbers){
+        for(Integer num : numbers){
+            if(num<1||num>45){
+                throw new IllegalArgumentException(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
+            }
+        }
+    }
 }
