@@ -8,6 +8,7 @@ import java.util.List;
 public class Application {
 
     private static final Validation validation = new Validation();
+    private static final int WINNING_TYPE = 5;
     private static final List<Winning> rankings = List.of(
             Winning.FIFTH,
             Winning.FOURTH,
@@ -80,8 +81,8 @@ public class Application {
         for (Lotto lotto : lottos) {
             int ranking = lucky.getRanking(lotto, bonus);
             if (ranking != 0) {
-                Integer before = wins.get(5 - ranking);
-                wins.set(5 - ranking, before + 1);
+                Integer before = wins.get(WINNING_TYPE - ranking);
+                wins.set(WINNING_TYPE - ranking, before + 1);
             }
         }
     }
@@ -93,7 +94,7 @@ public class Application {
 
     private static long calculatePrize() {
         long prize = 0;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < WINNING_TYPE; i++) {
             Integer result = wins.get(i);
             prize += (long) rankings.get(i).prize * result;
         }
