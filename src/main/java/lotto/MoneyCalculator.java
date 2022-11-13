@@ -1,14 +1,18 @@
 package lotto;
 
-public class MoneyCalculater {
-    private int receivedMoney = 0;
+import java.util.Scanner;
 
+public class MoneyCalculator {
+    public int receivedMoney = 0;
 
-    public MoneyCalculater() {
+    public MoneyCalculator() {
+    }
+    public int inputMoney(int Money) {
+        receivedMoney = Money;
+        validateInputMoney(receivedMoney);
+
+        return receivedMoney;
     }
 
-    public int inputMoney() {
 
-        return 0;
-    }
 }
