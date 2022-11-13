@@ -10,9 +10,10 @@ public class LottoNumbers {
     private static final String DUPLICATE_NUMBERS_EXIST = "로또의 번호 중 중복된 숫자가 포함되었습니다.";
     private static final int MINIMUM_LOTTO_NUMBER = 1;
     private static final int MAXIMUM_LOTTO_NUMBER = 45;
+    private static final int LOTTO_TOTAL_COUNT = 6;
 
     public static void validateLottoNumbers(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_TOTAL_COUNT) {
             throw new IllegalArgumentException(NUMBERS_SIZE_IS_NOT_SIX);
         }
         if (!checkNumbersRange(numbers)) {
