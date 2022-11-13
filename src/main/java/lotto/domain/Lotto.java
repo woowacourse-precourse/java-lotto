@@ -36,12 +36,8 @@ public class Lotto {
         }
     }
 
-    private List<Integer> getNumbers() {
+    public List<Integer> getNumbers() {
         return this.numbers;
-    }
-
-    public void addBonusNum(int bonusNum) {
-        this.bonusNum = bonusNum;
     }
 
     public int compare(Lotto numbers) {
@@ -51,16 +47,18 @@ public class Lotto {
                 .count();
         return matchNum;
     }
-
-    public boolean hasBonusNum(Lotto numbers) {
-        int target = numbers.getBonusNumbers();
-        return numbers.getNumbers().contains(target);
+    public void addBonusNum(int bonusNum) {
+        this.bonusNum = bonusNum;
     }
 
     private int getBonusNumbers() {
         return bonusNum;
     }
 
+    public boolean hasBonusNum(Lotto numbers) {
+        int target = numbers.getBonusNumbers();
+        return numbers.getNumbers().contains(target);
+    }
 
     // TODO: 추가 기능 구현
 }
