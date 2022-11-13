@@ -3,11 +3,7 @@ package lotto.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class WinningRuleTest {
 
@@ -15,26 +11,25 @@ class WinningRuleTest {
     @DisplayName("결과에 해당하는 enumType을 찾아줘야 한다.")
     void resultEnumType() {
         // given
-        Map<String, Object> result = Map.of("count", 6, "bonus", false);
+        LottoTicketResult result = new LottoTicketResult(6, false);
 
         // when
-        Optional<WinningRule> check = WinningRule.check(result);
-        WinningRule winningRule = check.get();
+        WinningRule winningRule = WinningRule.checkWinning(result);
 
         // then
         assertEquals(WinningRule.FIRST, winningRule);
     }
 
     @Test
-    @DisplayName("결과에 해당하는 enumType이 없으면 Optional이기에 아무것도 없어야한다.")
+    @DisplayName("결과에 해당하는 enumType이 없으면 NOT_WINNER이다")
     void enumTypeHasNotResult() {
         // given
-        Map<String, Object> result = Map.of("count", 0, "bonus", false);
+        LottoTicketResult result = new LottoTicketResult(0, false);
 
         // when
-        Optional<WinningRule> check = WinningRule.check(result);
+        WinningRule winningRule = WinningRule.checkWinning(result);
 
         // then
-        assertFalse(check.isPresent());
+        assertEquals(WinningRule.NOT_WINNER, winningRule);
     }
 }

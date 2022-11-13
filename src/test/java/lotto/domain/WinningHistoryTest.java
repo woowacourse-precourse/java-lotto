@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,13 +12,13 @@ class WinningHistoryTest {
     @DisplayName("results를 주면 WinningHistory객체를 생성 해야 한다.")
     void createWinningHistoryObject() {
         // given
-        ArrayList<Map<String, Object>> results = new ArrayList<>();
-        results.add(Map.of("count", 6, "bonus", false));
-        results.add(Map.of("count", 5, "bonus", true));
-        results.add(Map.of("count", 5, "bonus", false));
-        results.add(Map.of("count", 4, "bonus", false));
-        results.add(Map.of("count", 3, "bonus", false));
-        results.add(Map.of("count", 0, "bonus", false));
+        ArrayList<LottoTicketResult> results = new ArrayList<>();
+        results.add(new LottoTicketResult(6, false));
+        results.add(new LottoTicketResult(5, true));
+        results.add(new LottoTicketResult(5, false));
+        results.add(new LottoTicketResult(4, false));
+        results.add(new LottoTicketResult(3, false));
+        results.add(new LottoTicketResult(0, false));
 
         // when
         WinningHistory winningHistory = new WinningHistory(results);

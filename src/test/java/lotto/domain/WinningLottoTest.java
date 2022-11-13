@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -55,14 +54,26 @@ class WinningLottoTest {
 
         // when
         WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,6", "7");
-        ArrayList<Map<String, Object>> result = winningLotto.confirmWinning(lottos);
+        ArrayList<LottoTicketResult> result = winningLotto.confirmWinning(lottos);
 
         // then
-        assertEquals(Map.of("count", 6, "bonus", false), result.get(0));
-        assertEquals(Map.of("count", 5, "bonus", true), result.get(1));
-        assertEquals(Map.of("count", 5, "bonus", false), result.get(2));
-        assertEquals(Map.of("count", 4, "bonus", false), result.get(3));
-        assertEquals(Map.of("count", 3, "bonus", false), result.get(4));
-        assertEquals(Map.of("count", 0, "bonus", false), result.get(5));
+        assertThat(result.get(0))
+                .usingRecursiveComparison()
+                .isEqualTo(new LottoTicketResult(6, false));
+        assertThat(result.get(1))
+                .usingRecursiveComparison()
+                .isEqualTo(new LottoTicketResult(5, true));
+        assertThat(result.get(2))
+                .usingRecursiveComparison()
+                .isEqualTo(new LottoTicketResult(5, false));
+        assertThat(result.get(3))
+                .usingRecursiveComparison()
+                .isEqualTo(new LottoTicketResult(4, false));
+        assertThat(result.get(4))
+                .usingRecursiveComparison()
+                .isEqualTo(new LottoTicketResult(3, false));
+        assertThat(result.get(5))
+                .usingRecursiveComparison()
+                .isEqualTo(new LottoTicketResult(0, false));
     }
 }
