@@ -1,5 +1,6 @@
 package lotto.validator;
 
+import java.util.List;
 import lotto.constants.message.ExceptionMessage;
 
 public class InputValidator {
@@ -10,6 +11,10 @@ public class InputValidator {
     public static final int LOTTO_PRICE = 1000;
     public static final int ZERO = 0;
     public static final int FIRST_INDEX = 0;
+    public static final String COMMA = ",";
+    public static final int MAX_NUMBER = 6;
+    public static final int MAXIMUM_NUMBER = 45;
+    public static final int MINIMUM_NUMBER = 1;
 
     public boolean validateInputPrice(String inputPrice) {
         if (!inputPrice.matches(ONLY_NUMBER)) {
@@ -40,5 +45,14 @@ public class InputValidator {
         if (!inputWinningNumber.matches(WINNING_NUMBER)) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.WINNING_FORMAT_ERROR);
         }
+        if (isDuplicatedNumber(List.of(inputWinningNumber.split(COMMA)))) {
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATED_NUMBER);
+        }
+    }
+
+    private boolean isDuplicatedNumber(List<String> splitInputWinningNumber) {
+        return splitInputWinningNumber.stream()
+                .distinct()
+                .count() != MAX_NUMBER;
     }
 }
