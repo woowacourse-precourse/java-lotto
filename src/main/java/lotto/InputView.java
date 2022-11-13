@@ -25,6 +25,7 @@ public class InputView {
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList()));
 
+        LottoValidator.validateWinningNumber(lotto);
         return lotto;
     }
 }
