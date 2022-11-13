@@ -5,7 +5,12 @@ import lotto.view.UserInterface;
 
 public class Application {
     public static void main(String[] args) {
-        LottoController controller = new LottoController();
-        controller.gameStart();
+        try {
+            LottoController controller = new LottoController();
+            controller.gameStart();
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            throw new IllegalArgumentException();
+        }
     }
 }
