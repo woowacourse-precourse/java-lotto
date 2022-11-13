@@ -36,7 +36,7 @@
     - [ ]  당첨 번호 입력 기능 → inputWinningNumber
     - [ ]  보너스 번호 입력 기능 → inputBonusNumber
 2. OutputView
-    - [ ]  구입한 로또 개수 출력 기능 → printLottoCount
+    - [x]  구입한 로또 개수 출력 기능 → printLottoCount
     - [ ]  구매한 로또 번호 출력 기능 → printLottoNumber
     - [ ]  당첨 내역 출력 기능 → printWinningResult
     - [ ]  수익률 출력 기능 → printLottoYield

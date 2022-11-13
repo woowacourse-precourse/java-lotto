@@ -12,6 +12,7 @@ public class ApplicationController {
     Player player = new Player();
     Validator validator = new Validator();
     InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
 
     public void startApplication() {
         int purchaseAmount = validator.convertStringIntoInt(inputView.inputPurchaseAmount());
@@ -30,5 +31,6 @@ public class ApplicationController {
         //  - [ ] 당첨 번호, 보너스 번호 정하는 과정 제어 기능 호출
         int lottocount = seller.countIssueingLotto(player.getPurchaseAmount());
         player.setLottoCount(lottocount);
+        outputView.printLottoCount(player.getLottoCount());
     }
 }
