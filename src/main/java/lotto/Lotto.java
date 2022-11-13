@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -25,7 +24,6 @@ public class Lotto {
 
     private void isNumbersDuplicated(List<Integer> numbers) {
         int distinctNumbers = (int)numbers.stream()
-                                        .mapToInt(Integer::intValue)
                                         .distinct()
                                         .count();
         if (numbers.size() != distinctNumbers) {
