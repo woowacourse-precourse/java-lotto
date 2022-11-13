@@ -58,6 +58,7 @@ public class LottoController {
 
     private void getProfit() {
         String profit = lottoService.getProfit();
+        View.printProfit(profit);
     }
 
 

@@ -42,5 +42,10 @@ public class View {
             System.out.printf("%d개 일치 (%s원) - %d개", i + 3, decFormat.format(winningMoney.get(i)), result.get(i));
             System.out.println();
         }
+        System.out.println();
+    }
+
+    public static void printProfit(String profit) {
+        System.out.println("총 수익률은 "+profit+"%입니다.");
     }
 }
