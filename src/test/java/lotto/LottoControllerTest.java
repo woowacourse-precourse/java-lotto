@@ -17,6 +17,13 @@ public class LottoControllerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("입력된 금액이 0일시 예외 발생")
+    @Test
+    void isInputNumberNotZero() {
+        assertThatThrownBy(() -> lc.readUserMoney("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("수가 아닌 문자가 입력될시 예외 발생")
     @Test
     void isInputNumberConsistOfDigit() {
