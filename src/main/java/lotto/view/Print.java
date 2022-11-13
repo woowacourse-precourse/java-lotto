@@ -20,7 +20,7 @@ public final class Print {
 
     public static void printPublishedLottoNumbers(List<Lotto> publishedLotto) {
         for (Lotto lotto : publishedLotto) {
-            System.out.println(lotto.getSortedLottoNumbers());
+            System.out.println(lotto);
         }
     }
 
