@@ -36,7 +36,7 @@ public class Converter {
         if (InputValidator.isEmpty(input)) {
             throw new IllegalArgumentException(INPUT_EMPTY_ERROR.toString());
         }
-        if (InputValidator.isNumber(input)) {
+        if (!InputValidator.isNumber(input)) {
             throw new IllegalArgumentException(BONUS_NOT_NUMBER_ERROR.toString());
         }
         return  Integer.parseInt(input);
