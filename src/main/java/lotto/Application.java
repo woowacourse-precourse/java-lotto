@@ -96,4 +96,13 @@ public class Application {
         }
         return hitCountAndBonusHitCount;
     }
+
+    public static int getRankIndex(int hitCount, int bonusHitCount) {
+        if (hitCount == 3) return 5;
+        if (hitCount == 4) return 4;
+        if (hitCount == 5 && bonusHitCount == 0) return 3;
+        if (hitCount == 5 && bonusHitCount == 1) return 2;
+        if (hitCount == 6) return 1;
+        return 0;
+    }
 }
