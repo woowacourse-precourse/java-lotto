@@ -46,7 +46,7 @@ public class NumberInput {
     }
 
     private void validateNumberInRange(int number) {
-        if (LottoRule.START_INCLUSIVE < number || number > LottoRule.END_INCLUSIVE) {
+        if (LottoRule.START_INCLUSIVE > number || number > LottoRule.END_INCLUSIVE) {
             throw new IllegalArgumentException(ExceptionMessage.OUT_OF_RANGE);
         }
     }
