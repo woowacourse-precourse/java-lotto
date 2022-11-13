@@ -8,11 +8,11 @@ import lotto.domain.lotto.Lottos;
 
 public class LottoStatistics {
     private final List<WinningType> winningTypes;
-    private final int purchasedAmount;
+    private final double rewardRate;
 
-    private LottoStatistics(List<WinningType> winningTypes, int purchasedAmount) {
+    private LottoStatistics(List<WinningType> winningTypes, double rewardRate) {
         this.winningTypes = winningTypes;
-        this.purchasedAmount = purchasedAmount;
+        this.rewardRate = rewardRate;
     }
 
     public static LottoStatistics of(Lottos lottos, LottoDraw lottoDraw) {
@@ -22,8 +22,10 @@ public class LottoStatistics {
                 .collect(Collectors.toList());
 
         int purchasedAmount = lottos.purchasedLottosAmount();
+        int rewardAmount = calculateTotalRewardAmount(winningTypes);
+        double rewardRate = calculateRewardRate(purchasedAmount, rewardAmount);
 
-        return new LottoStatistics(winningTypes, purchasedAmount);
+        return new LottoStatistics(winningTypes, rewardRate);
     }
 
     public int count(WinningType winningType) {
@@ -32,12 +34,15 @@ public class LottoStatistics {
                 .count();
     }
 
-    public double calculateRewardRate() {
-        double rewardAmount = calculateTotalRewardAmount();
+    public double getRewardRate() {
+        return rewardRate;
+    }
+
+    private static double calculateRewardRate(double purchasedAmount, double rewardAmount) {
         return rewardAmount / purchasedAmount * 100;
     }
 
-    private int calculateTotalRewardAmount() {
+    private static int calculateTotalRewardAmount(List<WinningType> winningTypes) {
         return winningTypes.stream()
                 .map(WinningType::getReward)
                 .mapToInt(o -> o)

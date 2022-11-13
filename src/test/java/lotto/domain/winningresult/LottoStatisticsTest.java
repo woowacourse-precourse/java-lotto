@@ -72,7 +72,7 @@ class LottoStatisticsTest {
 
         // 4,000원 -> 5등 2개 (10,000원 수익)
         double expectedRate = (10_000.0 / 4_000.0) * 100;
-        Assertions.assertThat(lottoStatistics.calculateRewardRate()).isEqualTo(expectedRate);
+        Assertions.assertThat(lottoStatistics.getRewardRate()).isEqualTo(expectedRate);
     }
 
     @Test
@@ -92,7 +92,7 @@ class LottoStatisticsTest {
 
         // 6,000원 -> 5등 1개 (5,000원 수익)
         double expectedRate = (5_000.0 / 6_000.0) * 100;
-        Assertions.assertThat(lottoStatistics.calculateRewardRate()).isEqualTo(expectedRate);
+        Assertions.assertThat(lottoStatistics.getRewardRate()).isEqualTo(expectedRate);
     }
 
     @Test
@@ -107,7 +107,7 @@ class LottoStatisticsTest {
 
         // 1,000원 -> 1등 1개 (2,000,000,000원 수익)
         double expectedRate = (2_000_000_000.0 / 1_000.0) * 100;
-        Assertions.assertThat(lottoStatistics.calculateRewardRate()).isEqualTo(expectedRate);
+        Assertions.assertThat(lottoStatistics.getRewardRate()).isEqualTo(expectedRate);
     }
 
     @Test
@@ -122,7 +122,7 @@ class LottoStatisticsTest {
 
         // 1,000원 -> 0원 수익
         double expectedRate = (0.0 / 1_000.0) * 100;
-        Assertions.assertThat(lottoStatistics.calculateRewardRate()).isEqualTo(expectedRate);
+        Assertions.assertThat(lottoStatistics.getRewardRate()).isEqualTo(expectedRate);
     }
 
 

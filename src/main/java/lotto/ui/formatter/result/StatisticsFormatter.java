@@ -57,7 +57,7 @@ public class StatisticsFormatter implements OutputFormatter<LottoStatistics> {
     private void appendRewardRate(StringBuilder winningResultsFormat, LottoStatistics lottoStatistics) {
         winningResultsFormat
                 .append("총 수익률은 ")
-                .append(rateFormat(lottoStatistics.calculateRewardRate()))
+                .append(rateFormat(lottoStatistics.getRewardRate()))
                 .append("%")
                 .append("입니다.");
     }
