@@ -21,7 +21,6 @@ public class LottoStore {
     public double calculateLottoYield(List<Integer> lottoRankResults){
         int investment = getLottoInvestment();
         Long totalPrize = getTotalLottoPrize(lottoRankResults);
-        System.out.println(investment + " " + totalPrize);
         double lottoYield = totalPrize / (double)investment;
 
         return lottoYield;
