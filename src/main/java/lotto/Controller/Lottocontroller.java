@@ -7,6 +7,7 @@ import lotto.domain.Paper;
 import lotto.domain.Lotto;
 import lotto.domain.Numbers;
 import lotto.domain.Lottos;
+import lotto.domain.Lucky;
 public class Lottocontroller {
     //static final
 
@@ -17,6 +18,8 @@ public class Lottocontroller {
         Paper paper = convertMoney(money);
 
         Lottos lottos = new_Lottos(paper.Get_Paper());
+
+        Lucky lucky = new_Lucky();
     }
 
     private Money inputMoney(){
@@ -29,6 +32,10 @@ public class Lottocontroller {
 
     private Lottos new_Lottos(int paper){
         return new Lottos(paper);
+    }
+
+    private Lucky new_Lucky(){
+        return new Lucky(Console.readLine());
     }
     //method
 }
