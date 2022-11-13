@@ -2,8 +2,10 @@ package lotto.lottomachine;
 
 import java.util.Collections;
 import java.util.List;
+import lotto.domain.validation.LottoBonusValidation;
 import lotto.domain.validation.LottoNumbersValidation;
 import lotto.lottopaper.LottoPaper;
+import lotto.result.LottoResult;
 import lotto.user.User;
 import lotto.user.validation.UserMoneyValidation;
 
@@ -23,6 +25,7 @@ public class LottoMachine {
         buyLotto();
         LottoPaper lottoPaper = GeneratorLottoPaper.generateLottoPaper(lottoPrice);
         List<Integer> userNumbers = inputLottoNumbers();
+        Integer bonus = inputBonus();
     }
 
     public void buyLotto() {
@@ -54,5 +57,23 @@ public class LottoMachine {
             machineStatus = false;
         }
         return Collections.emptyList();
+    }
+
+    public Integer inputBonus() {
+        if (!machineStatus) {
+            return EXCEPTION_NUMBER;
+        }
+        return inputUserBonus();
+    }
+
+    public Integer inputUserBonus() {
+        String bonus = User.inputBonusNumber();
+        try {
+            LottoBonusValidation.validate(bonus);
+            return Integer.valueOf(bonus);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return EXCEPTION_NUMBER;
     }
 }
