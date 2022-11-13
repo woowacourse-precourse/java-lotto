@@ -1,10 +1,8 @@
-package lotto.domain.game.randomlottosystem;
+package lotto.system;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
-import lotto.system.IoSystem;
-import lotto.system.RandomLottoSystem;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
