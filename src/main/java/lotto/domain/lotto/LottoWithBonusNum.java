@@ -8,12 +8,15 @@ public class LottoWithBonusNum {
     private final BonusNum bonusNum;
 
     public LottoWithBonusNum() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 7);
+        this(Randoms.pickUniqueNumbersInRange(1, 45, 7));
+    }
 
+    public LottoWithBonusNum(List<Integer> lottoNumbers) {
         validate(lottoNumbers);
 
         lotto = new Lotto(lottoNumbers.subList(0, 6));
         bonusNum = new BonusNum(lottoNumbers.get(6));
+
     }
 
     private void validate(List<Integer> numbers) {
