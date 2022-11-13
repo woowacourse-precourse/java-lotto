@@ -53,4 +53,8 @@ public class Lotto {
     protected static List<Integer> pickUniqueRandomNumbers() {
         return Randoms.pickUniqueNumbersInRange(LOTTO_START, LOTTO_END, LOTTO_SIZE);
     }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
 }
