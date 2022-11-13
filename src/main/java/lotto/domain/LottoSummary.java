@@ -10,10 +10,10 @@ import static lotto.domain.Rank.SECOND;
 
 public class LottoSummary {
 
-    private final static String MATCH_NUMBER = "%d개 일치";
-    private final static String BONUS_MATCH = ", 보너스 볼 일치";
-    private final static String PRICE = " (%s원)";
-    private final static String MATCH_COUNT = " - %d개\n";
+    private static final String MATCH_NUMBER = "%d개 일치";
+    private static final String BONUS_MATCH = ", 보너스 볼 일치";
+    private static final String PRICE = " (%s원)";
+    private static final String MATCH_COUNT = " - %d개\n";
     private static final String YIELD = "총 수익률은 %s%%입니다.";
     private static final String YIELD_PATTERN = "#,##0.0";
     private static final String MONEY_PATTERN = "#,###";
