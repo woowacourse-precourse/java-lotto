@@ -19,10 +19,11 @@ public class Lotto {
         }
     }
 
+    // TODO: 추가 기능 구현
     private boolean duplicateCheck(List<Integer> numbers) {
         List<Integer> tempNumbers = new ArrayList<>();
         for(int i = 0; i < numbers.size(); i++) {
-            if(tempNumbers.contains(numbers.get(i))) {
+            if(!tempNumbers.contains(numbers.get(i))) {
                 tempNumbers.add(numbers.get(i));
             } else {
                 return true;
@@ -33,5 +34,4 @@ public class Lotto {
 
 
 
-    // TODO: 추가 기능 구현
 }
