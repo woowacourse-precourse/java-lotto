@@ -86,12 +86,12 @@
        + Result()
          * input: Lotto winLotto, List<Lotto> lottoList
          * output: None
-       + getTotalPrize()
-         * input: None
-         * output: int totalPrize
        + getWinResult()
          * input: None
          * output: Map winResult
+       + getBenefitRatio()
+           * input: int 로또 구매 금액
+           * output: String 2자리 수에서 반올림된 이익률
          
    * Money
      - 로또 구매에 필요한 돈을 담는 Class 객체
@@ -105,9 +105,6 @@
        + getMoney()
          * input: None
          * output: int money
-       + getBenefitRatio()
-           * input: int 당첨 액수
-           * output: String 2자리 수에서 반올림된 이익률
 
    * Messages
      - 각종 입/출력에 필요한 메세지를 담는 Enum 객체
