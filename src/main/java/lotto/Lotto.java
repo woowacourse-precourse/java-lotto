@@ -9,7 +9,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        ValidatePlayerNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -18,7 +18,7 @@ public class Lotto {
      * 1에서 45까지 서로 다른 임의의 수 7개인지 검증
      * @param playerNumbers 사용자가 입력한 로또 숫자
      */
-    private static void ValidatePlayerNumber(ArrayList<Integer> playerNumbers) {
+    private static void ValidatePlayerNumber(List<Integer> playerNumbers) {
         // 집합에 게임 플레이어가 입력한 숫자를 넣는다.
         HashSet<Integer> playerNumber = Model.MakeNumberToSet(playerNumbers);
 
