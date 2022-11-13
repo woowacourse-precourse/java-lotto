@@ -106,6 +106,38 @@ class LottoTest extends NsTest {
         assertThat(getMatchCount(lotto, winning)).isEqualTo(0);
     }
 
+    @Test
+    void 등수_테스트1() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winning = new Lotto(List.of(1, 2, 3, 7, 8, 9));
+
+        assertThat(lotto.getResult(winning, 7)).isEqualTo(Prize.FIFTH);
+    }
+
+    @Test
+    void 등수_테스트2() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winning = new Lotto(List.of(1, 2, 3, 4, 5, 9));
+
+        assertThat(lotto.getResult(winning, 7)).isEqualTo(Prize.THIRD);
+    }
+
+    @Test
+    void 등수_테스트3() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winning = new Lotto(List.of(1, 2, 3, 4, 5, 9));
+
+        assertThat(lotto.getResult(winning, 6)).isEqualTo(Prize.SECOND);
+    }
+
+    @Test
+    void 등수_테스트4() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winning = new Lotto(List.of(10, 12, 13, 17, 18, 19));
+
+        assertThat(lotto.getResult(winning, 6)).isEqualTo(Prize.NONE);
+    }
+
     @Override
     public void runMain() { }
 }
