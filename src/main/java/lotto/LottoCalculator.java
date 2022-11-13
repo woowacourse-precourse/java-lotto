@@ -24,4 +24,11 @@ public class LottoCalculator {
         return count - 2;
     }
 
+    public void addRankCount(int count) {
+        if (count < 0) {
+            return;
+        }
+        rankCount.set(count, rankCount.get(count) + 1);
+    }
+
 }
