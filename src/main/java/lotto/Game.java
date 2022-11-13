@@ -3,6 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static lotto.view.InputView.inputMoneyView;
@@ -27,6 +29,7 @@ public class Game {
     }
     private static Lotto getRandoms(){
         Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
+        lotto.sortNumbers();
         return lotto;
     }
 
