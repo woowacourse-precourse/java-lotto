@@ -7,14 +7,14 @@ import java.util.List;
 
 public class LottoComparator {
     public static Integer luckyCount;
-    public static Integer secondaryCount;
+    public static boolean hasBonusNumber;
 
-    public static List<Integer>  compareUserLottoAndWinningLotto(List<Lotto> userLottoGroup, Integer bonusNumber,Lotto winningLotto) {
-        List<Integer> winningResult = Arrays.asList(0,0,0,0,0);
+    public static List<Integer> compareUserLottoAndWinningLotto(List<Lotto> userLottoGroup, Integer bonusNumber, Lotto winningLotto) {
+        List<Integer> winningResult = Arrays.asList(0, 0, 0, 0, 0);
 
         for (Lotto userLotto : userLottoGroup) {
             initCount();
-            Integer luckyCount = compareUserAndWinning(userLotto, winningLotto, bonusNumber);
+            Integer luckyCount = compareEachNumber(userLotto, winningLotto, bonusNumber);
             createWinningResult(winningResult, luckyCount);
         }
         return winningResult;
@@ -22,7 +22,7 @@ public class LottoComparator {
 
     private static void initCount() {
         luckyCount = 0;
-        secondaryCount = 0;
+        hasBonusNumber = false;
     }
 
     private static void createWinningResult(List<Integer> resultCount, Integer luckyCount) {
@@ -31,17 +31,21 @@ public class LottoComparator {
         }
     }
 
-    private static Integer compareUserAndWinning(Lotto userLotto, Lotto winningLotto, Integer BonusNumber) {
+    private static Integer compareEachNumber(Lotto userLotto, Lotto winningLotto, Integer BonusNumber) {
         for (Integer userLottoNumber : userLotto.getNumbers()) {
             if (winningLotto.getNumbers().contains(userLottoNumber)) {
                 luckyCount++;
+                continue;
             }
             if (userLottoNumber == BonusNumber) {
-                secondaryCount++;
+                hasBonusNumber = true;
             }
         }
+        return calculateLuckyCount(luckyCount, hasBonusNumber);
+    }
 
-        if (secondaryCount == 1 && luckyCount == 5) {
+    private static Integer calculateLuckyCount(Integer luckyCount, boolean hasBonusNumber) {
+        if (hasBonusNumber == true && luckyCount == 5) {
             return 7;
         }
         return luckyCount;

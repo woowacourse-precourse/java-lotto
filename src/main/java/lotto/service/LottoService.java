@@ -66,7 +66,8 @@ public class LottoService {
         List<Lotto> userLottoGroup = LottoRepository.getLastUserLottoGroup();
         Lotto winningLotto = LottoRepository.getLastWinningLotto();
         Integer bonusNumber = LottoRepository.getBonusNumber();
-        List<Integer> winningResult = LottoComparator.compareUserLottoAndWinningLotto(userLottoGroup,bonusNumber,winningLotto);
+        List<Integer> winningResult = LottoComparator.compareUserLottoAndWinningLotto(
+                userLottoGroup,bonusNumber,winningLotto);
 
         saveWinningResult(winningResult);
         return winningResult;
