@@ -2,23 +2,24 @@
 
 ## 로또 게임 기능 목록
 1. 로또 구입
-   - [] (입력) 구입 금액을 입력 받는다. Ticket#getTicket
+   - [] (입력) 구입 금액을 입력 받는다. Input#inputMoney
    - [] (예외) 1000 단위로 나누어 떨어지지 않는 경우 오류 발생 Error#vaildMoney
    - [] 1000원당 1장씩 로또 발행 한다. Ticket#getTicket
 2. 로또 발행
    - [] (출력) 발행한 로또 수량을 출력한다. Message#ticketCount
    - [] 1개의 로또를 발행할 때 중복되지 않는 6개의 숫자를 뽑는다. Ticket#generateLotto
-      - [] 로또 번호의 숫자 범위는 1~45까지이다. Lotto#validNumber
-      - [] 당첨 번호 추첨 시 중복되지 않는 숫자 6개를 뽑는다. Error#
+      - [] 로또 번호의 숫자 범위는 1~45까지이다. Error#validRange
+      - [] 당첨 번호 추첨 시 중복되지 않는 Error#isDiffrent
+      - [] 숫자 6개를 뽑는다. Error#
    - [] (출력) 발행된 로또 숫자를 출력한다. Message#ticketNums
 3. 추첨 번호/보너스 번호 입력
    - [] (출력) 당첨 번호 입력 메시지 출력 Message#askWinNums
-   - [] (입력) 당첨 번호 입력 6개 숫자. 
-      - `,`로 구분한다.
+   - [] (입력) 당첨 번호 입력 6개 숫자. Input#inputWinNums
+      - `,`로 구분한다. Error#validSplit
    - [] (출력) 보너스 번호 입력 메시지 출력 Message#askBonusNum
-   - [] (입력) 보너스 번호 입력 1개 숫자 
-   - [] (예외) 모든 숫자는 서로 달라야 한다.
-   - [] (예외) 숫자 범위는 1~45 사이
+   - [] (입력) 보너스 번호 입력 1개 숫자 Input#bonusNum
+   - [] (예외) 모든 숫자는 서로 달라야 한다. Error#isDiffrent
+   - [] (예외) 숫자 범위는 1~45 사이 Error#validRange
 4. 당첨 통계 출력
    - [] 당첨 여부 판별
    - [] (출력) 통계 출력 Message#resultLotto
@@ -37,9 +38,9 @@
 6. 게임 종료
 
 ## 필요한 예외 체크 사항
-   1. 돈이 1000원 단위로 나누어 떨어지는가?
-   2. 입력한 로또 번호는 정수이며 1~45 이내에 있는가?
-   3. 입력한 7개의 번호가 각각 다른가?
+   1. 돈이 1000원 단위로 나누어 떨어지는가? Error#vaildMoney
+   2. 입력한 로또 번호는 정수이며 1~45 이내에 있는가? Error#validRange
+   3. 입력한 7개의 번호가 각각 다른가? Error#isDiffrent
    4. 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
       ```java
          // [ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.
