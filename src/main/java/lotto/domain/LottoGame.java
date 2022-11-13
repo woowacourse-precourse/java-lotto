@@ -25,6 +25,7 @@ public class LottoGame {
     public static final int _fourth_place = 3;
     public static final int _fifth_place = 4;
 
+    // 로또 구매 함수
     public static List<Lotto> buyLotto(int money) {
         List<Lotto> lottoes = new ArrayList<>();
         int lottoCount = money / _lotto_price;
@@ -42,6 +43,13 @@ public class LottoGame {
         return lottoes;
     }
 
+
+    private static List<Integer> makeUniqueLottoNumber() {
+        return (Randoms.pickUniqueNumbersInRange(Lotto._min_lotto_number, Lotto._max_lotto_number,
+                Lotto._lotto_length));
+    }
+
+    // 로또 결과 확인 함수
     public static int[] getResultLotto(List<Lotto> lottoes, Lotto winningLotto, int bonus) {
         int[] matches = {0, 0, 0, 0, 0};
 
@@ -63,6 +71,36 @@ public class LottoGame {
         return getLottoPlace(matches, l1.getNumbers().contains(bonus));
     }
 
+    private static eLottoPlace getLottoPlace(int matches, boolean isBonusMatch) {
+        if (matches == 6)
+            return eLottoPlace.FIRST_PLACE;
+        if (matches == 5 && isBonusMatch)
+            return eLottoPlace.SECOND_PLACE;
+        if (matches == 5)
+            return eLottoPlace.THIRD_PLACE;
+        if (matches == 4)
+            return eLottoPlace.FOURTH_PLACE;
+        if (matches == 3)
+            return eLottoPlace.FIFTH_PLACE;
+        return eLottoPlace.NOTHING;
+    }
+
+
+    private static int[] appendPlaceToResult(int[] matches, eLottoPlace place) {
+        if (place == eLottoPlace.FIRST_PLACE)
+            matches[_first_place] += 1;
+        if (place == eLottoPlace.SECOND_PLACE)
+            matches[_second_place] += 1;
+        if (place == eLottoPlace.THIRD_PLACE)
+            matches[_third_place] += 1;
+        if (place == eLottoPlace.FOURTH_PLACE)
+            matches[_fourth_place] += 1;
+        if (place == eLottoPlace.FIFTH_PLACE)
+            matches[_fifth_place] += 1;
+        return matches;
+    }
+
+    // 수익률 계산 함수
     public static BigDecimal calcRateOfReturn(int[] matches, int money) {
         BigDecimal rateOfReturn = new BigDecimal(sumReward(matches));
 
@@ -84,38 +122,5 @@ public class LottoGame {
             reward = reward.add(nowReward);
         }
         return reward;
-    }
-
-    private static eLottoPlace getLottoPlace(int matches, boolean isBonusMatch) {
-        if (matches == 6)
-            return eLottoPlace.FIRST_PLACE;
-        if (matches == 5 && isBonusMatch)
-            return eLottoPlace.SECOND_PLACE;
-        if (matches == 5)
-            return eLottoPlace.THIRD_PLACE;
-        if (matches == 4)
-            return eLottoPlace.FOURTH_PLACE;
-        if (matches == 3)
-            return eLottoPlace.FIFTH_PLACE;
-        return eLottoPlace.NOTHING;
-    }
-
-    private static List<Integer> makeUniqueLottoNumber() {
-        return (Randoms.pickUniqueNumbersInRange(Lotto._min_lotto_number, Lotto._max_lotto_number,
-                Lotto._lotto_length));
-    }
-
-    private static int[] appendPlaceToResult(int[] matches, eLottoPlace place) {
-        if (place == eLottoPlace.FIRST_PLACE)
-            matches[_first_place] += 1;
-        if (place == eLottoPlace.SECOND_PLACE)
-            matches[_second_place] += 1;
-        if (place == eLottoPlace.THIRD_PLACE)
-            matches[_third_place] += 1;
-        if (place == eLottoPlace.FOURTH_PLACE)
-            matches[_fourth_place] += 1;
-        if (place == eLottoPlace.FIFTH_PLACE)
-            matches[_fifth_place] += 1;
-        return matches;
     }
 }
