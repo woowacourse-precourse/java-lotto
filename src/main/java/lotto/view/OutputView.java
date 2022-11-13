@@ -5,19 +5,19 @@ import lotto.domain.Lottos;
 import lotto.domain.LottoResult;
 import lotto.utils.ErrorMessage;
 
+import java.text.NumberFormat;
 import java.util.Map;
 
 public class OutputView {
     public static final String DIVIDING_LINE = "---";
     public static final String INFORM_PURCHASE_COUNT = "%d개를 구매했습니다.";
     public static final String INFORM_PROFIT = "총 수익률은 %.1f%%입니다.";
-    public static final String INFORM_FIRST_PLACE_STATISTIC = "6개 일치 (2,000,000,000원) - %d개";
-    public static final String INFORM_SECOND_PLACE_STATISTIC = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
-    public static final String INFORM_THIRD_PLACE_STATISTIC = "5개 일치 (1,500,000원) - %d개";
-    public static final String INFORM_FOURTH_PLACE_STATISTIC = "4개 일치 (50,000원) - %d개";
-    public static final String INFORM_FIFTH_PLACE_STATISTIC = "3개 일치 (5,000원) - %d개";
-    public static final String WINNING_STATISTIC = "당첨 통계";
-    public static final String WINNING_OVERVIEW_INTRO = WINNING_STATISTIC;
+    public static final String WINNING_OVERVIEW_INTRO = "당첨 통계";
+    public static final String INFORM_WINNING_AMOUNT = " (%s원)";
+    public static final String INFORM_WINNING_COUNTS = "%d개";
+    public static final String INFORM_MATCHING_COUNT = "%d개 일치";
+    public static final String INFORM_SAME_BONUS_NUMBER = ", 보너스 볼 일치";
+    public static final String STATISTIC_SEPARATOR = " - ";
 
     public static void informPurchaseCount(Lottos lottos) {
         int count = lottos.countTotal();
@@ -42,11 +42,25 @@ public class OutputView {
     }
 
     private static void printWinningCounts(Map<LottoResult, Integer> winningCounts) {
-        System.out.println(String.format(INFORM_FIFTH_PLACE_STATISTIC, winningCounts.get(LottoResult.FIFTH_PLACE)));
-        System.out.println(String.format(INFORM_FOURTH_PLACE_STATISTIC, winningCounts.get(LottoResult.FOURTH_PLACE)));
-        System.out.println(String.format(INFORM_THIRD_PLACE_STATISTIC, winningCounts.get(LottoResult.THIRD_PLACE)));
-        System.out.println(String.format(INFORM_SECOND_PLACE_STATISTIC, winningCounts.get(LottoResult.SECOND_PLACE)));
-        System.out.println(String.format(INFORM_FIRST_PLACE_STATISTIC, winningCounts.get(LottoResult.FIRST_PLACE)));
+        for (LottoResult lottoResult : LottoResult.values()) {
+            if (lottoResult.win()) {
+                System.out.println(getWinningStatistcMessages(winningCounts, lottoResult));
+            }
+        }
+    }
+
+    private static String getWinningStatistcMessages(Map<LottoResult, Integer> winningCounts, LottoResult result) {
+        StringBuilder message = new StringBuilder();
+
+        message.append(String.format(INFORM_MATCHING_COUNT, result.getMatchingCount()));
+        if (result.equals(LottoResult.SECOND_PLACE)) {
+            message.append(INFORM_SAME_BONUS_NUMBER);
+        }
+        message.append(String.format(INFORM_WINNING_AMOUNT, NumberFormat.getInstance().format(result.getAmount())))
+                .append(STATISTIC_SEPARATOR)
+                .append(String.format(INFORM_WINNING_COUNTS, winningCounts.get(result)));
+
+        return message.toString();
     }
 
     private static void printOverViewIntro() {

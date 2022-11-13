@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import java.util.Arrays;
-import java.util.Map;
 
 public enum LottoResult {
     FIRST_PLACE(2000000000, 6),
@@ -60,7 +59,7 @@ public enum LottoResult {
         return matchingCount;
     }
 
-    public boolean winLotto() {
+    public boolean win() {
         return matchingCount >= FIFTH_PLACE.getMatchingCount();
     }
 }
