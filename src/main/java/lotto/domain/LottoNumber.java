@@ -12,10 +12,10 @@ public class LottoNumber {
     private int bonusNumber;
 
     public LottoNumber(String winningNumbers, String bonusNumber) {
-        String[] split = winningNumbers.split(",");
-        validWinningNumbers(split);
+        List<String> splitWinningNumbers = split(winningNumbers);
+        validWinningNumbers(splitWinningNumbers);
         validIsDigit(bonusNumber);
-        this.winningNumbers = Stream.of(split).map(Integer::parseInt).collect(Collectors.toList());
+        this.winningNumbers = convertStringToInteger(splitWinningNumbers);
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
@@ -33,7 +33,19 @@ public class LottoNumber {
         return new MatchCount(match, bonusMatch);
     }
 
-    private static void validWinningNumbers(String[] numbers) {
+    private List<String> split(String winningNumbers) {
+        return Stream.of(winningNumbers.split(","))
+                .map(num -> num.replaceAll(" ", ""))
+                .collect(Collectors.toList());
+    }
+
+    private List<Integer> convertStringToInteger(List<String> numbers) {
+        return numbers.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
+    private void validWinningNumbers(List<String> numbers) {
         for (String num : numbers) {
             validIsDigit(num);
             validNumberRange(Integer.parseInt(num));
