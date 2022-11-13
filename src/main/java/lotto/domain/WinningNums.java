@@ -2,9 +2,9 @@ package lotto.domain;
 
 import java.util.List;
 
-import static lotto.domain.Lotto.LOTTO_NUMS_SIZE;
 import static lotto.domain.Utils.PATTERN;
 import static lotto.domain.Utils.separateNums;
+import static lotto.domain.Validate.*;
 
 public class WinningNums {
     private final List<Integer> winningNums;
@@ -24,7 +24,7 @@ public class WinningNums {
         if (!isNotDuplicate(nums)) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
         }
-        return separateNums(winNums);
+        return nums;
     }
 
     public int validateBonusNum(String bonusNum) {
@@ -36,20 +36,6 @@ public class WinningNums {
             throw new IllegalArgumentException("[ERROR] 당첨 숫자와 보너스 숫자가 중복됩니다.");
         }
         return num;
-    }
-
-    public boolean isInRange(int number) {
-        return 1 <= number && number <= 45;
-    }
-
-    public boolean isNotContains(List<Integer> nums, int num) {
-        return !nums.contains(num);
-    }
-
-    public boolean isNotDuplicate(List<Integer> nums) {
-        return nums.stream()
-                .distinct()
-                .count() == LOTTO_NUMS_SIZE;
     }
 }
 
