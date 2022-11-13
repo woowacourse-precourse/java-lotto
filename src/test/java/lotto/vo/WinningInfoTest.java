@@ -2,7 +2,7 @@ package lotto.vo;
 
 import lotto.dto.WinningInfoDto;
 import lotto.system.validator.IntegerListToLottoValidator;
-import lotto.system.validator.WinningDtoToWinningInfoValidator;
+import lotto.system.validator.ConvertingToWinningInfoValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ class WinningInfoTest {
             //when & then
             assertThatThrownBy(winningInfoDto::toWinningInfo)
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(WinningDtoToWinningInfoValidator.INVALID_WINNING_NUMBERS_FORMAT_MESSAGE);
+                    .hasMessage(ConvertingToWinningInfoValidator.INVALID_WINNING_NUMBERS_FORMAT_MESSAGE);
         }
 
         @ParameterizedTest(name = "{displayName} - {0}")
@@ -90,7 +90,7 @@ class WinningInfoTest {
             //when & then
             assertThatThrownBy(winningInfoDto::toWinningInfo)
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(WinningDtoToWinningInfoValidator.INVALID_BONUS_NUMBER_FORMAT_MESSAGE);
+                    .hasMessage(ConvertingToWinningInfoValidator.INVALID_BONUS_NUMBER_FORMAT_MESSAGE);
         }
 
         @Test
@@ -104,7 +104,7 @@ class WinningInfoTest {
             //when & then
             assertThatThrownBy(winningInfoDto::toWinningInfo)
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(WinningDtoToWinningInfoValidator.INVALID_NUMBER_RANGE_MESSAGE);
+                    .hasMessage(ConvertingToWinningInfoValidator.INVALID_NUMBER_RANGE_MESSAGE);
         }
 
         @Test
@@ -117,7 +117,7 @@ class WinningInfoTest {
             //when & then
             assertThatThrownBy(winningInfoDto::toWinningInfo)
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(WinningDtoToWinningInfoValidator.BONUS_DUPLICATING_WITH_WINNING_NUMBERS_MESSAGE);
+                    .hasMessage(ConvertingToWinningInfoValidator.BONUS_DUPLICATING_WITH_WINNING_NUMBERS_MESSAGE);
         }
     }
 

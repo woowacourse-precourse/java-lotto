@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WinningDtoToWinningInfoValidator {
+public class ConvertingToWinningInfoValidator {
 
     public static final String INVALID_WINNING_NUMBERS_FORMAT_MESSAGE = "당첨금 입력값은 쉼표로 구분된 정수만 입력해야 합니다.";
     public static final String INVALID_BONUS_NUMBER_FORMAT_MESSAGE = "보너스 점수는 정수값만 입력해야 합니다.";
@@ -16,36 +16,50 @@ public class WinningDtoToWinningInfoValidator {
     public static final String BONUS_DUPLICATING_WITH_WINNING_NUMBERS_MESSAGE = "입력한 보너스번호가 로또 번호와 중복되지 않아야 합니다.";
 
     public static void validate(WinningInfoDto target) {
-        List<Integer> winningNumbers = validateWinningNumbers(target.getWinningNumbers());
-        Integer bonus = validateBonus(target.getBonus());
+        List<Integer> winningNumbers = convertStringToWinningNumbers(target.getWinningNumbers());
+        validateWinningNumbers(winningNumbers);
+
+        Integer bonus = convertStringToBonus(target.getBonus());
+        validateBonus(bonus);
 
         isWinningNumbersContainingBonus(winningNumbers, bonus);
     }
 
-    private static List<Integer> validateWinningNumbers(String winning) {
+    public static void validate(List<Integer> winningNumbers, Integer bonus) {
+        validateWinningNumbers(winningNumbers);
+        validateBonus(bonus);
+        isWinningNumbersContainingBonus(winningNumbers, bonus);
+    }
+
+    private static void validateWinningNumbers(List<Integer> winningNumbers) {
+        IntegerListToLottoValidator.validate(winningNumbers);
+    }
+
+    private static void validateBonus(Integer bonus) {
+        isNumberInValidRange(bonus);
+    }
+
+    private static List<Integer> convertStringToWinningNumbers(String winning) {
         List<Integer> winningNumbers;
         try {
             winningNumbers = Arrays.stream(winning.replace(" ", "").split(","))
                     .map(Integer::valueOf)
                     .collect(Collectors.toList());
-
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(INVALID_WINNING_NUMBERS_FORMAT_MESSAGE);
         }
 
-        IntegerListToLottoValidator.validate(winningNumbers);
         return winningNumbers;
     }
 
-    private static Integer validateBonus(String bonus) {
-        Integer bonusNumber;
+    private static Integer convertStringToBonus(String bonus) {
+        int bonusNumber;
         try {
-            bonusNumber = Integer.valueOf(bonus);
+            bonusNumber = Integer.parseInt(bonus);
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(INVALID_BONUS_NUMBER_FORMAT_MESSAGE);
         }
 
-        isNumberInValidRange(bonusNumber);
         return bonusNumber;
     }
 

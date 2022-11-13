@@ -1,5 +1,7 @@
 package lotto.vo;
 
+import lotto.system.validator.ConvertingToWinningInfoValidator;
+
 import java.util.List;
 
 public class WinningInfo {
@@ -7,6 +9,7 @@ public class WinningInfo {
     private final Integer bonus;
 
     public WinningInfo(List<Integer> winningNumbers, Integer bonus) {
+        ConvertingToWinningInfoValidator.validate(winningNumbers, bonus);
         this.winningNumbers = winningNumbers;
         this.bonus = bonus;
     }

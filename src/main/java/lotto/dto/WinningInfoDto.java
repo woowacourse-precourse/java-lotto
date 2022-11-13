@@ -1,6 +1,6 @@
 package lotto.dto;
 
-import lotto.system.validator.WinningDtoToWinningInfoValidator;
+import lotto.system.validator.ConvertingToWinningInfoValidator;
 import lotto.vo.WinningInfo;
 
 import java.util.Arrays;
@@ -17,7 +17,7 @@ public class WinningInfoDto {
     }
 
     public WinningInfo toWinningInfo() {
-        WinningDtoToWinningInfoValidator.validate(this);
+        ConvertingToWinningInfoValidator.validate(this);
 
         List<Integer> winningNumbers = convertWinningNumbersToIntegerList();
         int bonus = convertBonusToInteger();
