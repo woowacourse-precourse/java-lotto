@@ -9,5 +9,14 @@ TODO
     - 번호 자리수
     - 담첨 금액
 - User 클래스 정의
+    - List<Lotto> lotteries
+    - List<List<Result>> results
+    - Integer lotteryCount
+    - Integer winnings
 - Checker 클래스 정의
+    - public boolean checkIllegalArgument
+    - public int checkCoincide
+    - public float checkLotteryReturn
 - Result 클래스 정의
+    - Lotto lottery
+    - Integer winningCount
