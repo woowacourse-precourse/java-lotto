@@ -9,11 +9,11 @@ public class IOProcessor {
     private static final String ERROR_MESSAGE_PREFIX = "[ERROR]";
 
     private enum WinningMessageFormat {
-        WINNING_ONE("6개 일치 (%,d원) - %d개"),
-        WINNING_TWO("5개 일치, 보너스 볼 일치 (%,d원) - %d개"),
-        WINNING_THREE("5개 일치 (%,d원) - %d개"),
-        WINNING_FOUR("4개 일치 (%,d원) - %d개"),
-        WINNING_FIVE("3개 일치 (%,d원) - %d개");
+        WINNING_ONE("6개 일치 (%,d원) - %d개\n"),
+        WINNING_TWO("5개 일치, 보너스 볼 일치 (%,d원) - %d개\n"),
+        WINNING_THREE("5개 일치 (%,d원) - %d개\n"),
+        WINNING_FOUR("4개 일치 (%,d원) - %d개\n"),
+        WINNING_FIVE("3개 일치 (%,d원) - %d개\n");
 
         private final String format;
 
