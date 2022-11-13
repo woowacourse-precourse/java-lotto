@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import static lotto.utils.ErrorMessages.WINNING_NUMBERS_SEPARATOR;
 
 public class WinningNumbers {
+    private static final int NUMBERS_SIZE = 6;
     private static final String SEPARATOR = ",";
     private final Lotto winningNumbers;
 
@@ -17,7 +18,7 @@ public class WinningNumbers {
 
     private void validateSeparator(String numbers) {
         String [] winningNumbers = numbers.split(SEPARATOR);
-        if(winningNumbers.length != 6) {
+        if(winningNumbers.length != NUMBERS_SIZE) {
             throw new IllegalArgumentException(WINNING_NUMBERS_SEPARATOR);
         }
     }
