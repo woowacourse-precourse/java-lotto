@@ -1,13 +1,12 @@
-package lotto.application.service.purchasemoney;
+package lotto.application.input.purchasemoney;
 
-import lotto.application.service.inputagent.InputAgent;
+import lotto.application.util.inputagent.InputAgent;
 
-public class PurchaseMoneyInputServiceImpl implements PurchaseMoneyInputService {
-
+public class PurchaseMoneyInputImpl implements PurchaseMoneyInput {
 
     private final InputAgent inputAgent;
 
-    public PurchaseMoneyInputServiceImpl(InputAgent inputAgent) {
+    public PurchaseMoneyInputImpl(InputAgent inputAgent) {
         this.inputAgent = inputAgent;
     }
 
@@ -19,7 +18,7 @@ public class PurchaseMoneyInputServiceImpl implements PurchaseMoneyInputService 
         try {
             inputValue = inputAgent.inputUserPurchaseMoney();
         } catch (IllegalArgumentException exception) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(exception.getMessage());
         }
         System.out.printf("\n%d개를 구매했습니다.\n", inputValue / 1000);
 
