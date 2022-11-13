@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Arrays;
+
 public enum Rank {
 	FIRST(2000000000),
 	SECOND(30000000),
@@ -15,7 +17,19 @@ public enum Rank {
 	}
 
 	public static Rank setRank(int matchCount, boolean matchBonus) {
-		return FIRST;
+		if (matchCount == 6) {
+			return FIRST;
+		}
+		if (matchCount == 5) {
+			return matchBonus ? SECOND : THIRD;
+		}
+		if (matchCount == 4) {
+			return FOURTH;
+		}
+		if (matchCount == 3) {
+			return FIFTH;
+		}
+		return NOTHING;
 	}
 
 	public int getMoney() {
