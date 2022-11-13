@@ -24,7 +24,7 @@ public class User {
         String numbers = sc.nextLine();
 
         for(String num : numbers.split(",")){
-            userNumbers.add(Integer.valueOf(num));
+            this.userNumbers.add(Integer.valueOf(num));
         }
     }
 
