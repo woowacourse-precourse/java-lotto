@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class WinningNumbers {
-	private static final String REGEX = "^[1-9]$|^[1-3][0-9]|^4[0-5]$";
-	private static final Pattern numberPattern = Pattern.compile(REGEX);
+	private static final Pattern numberPattern = Pattern.compile(Regex.RANGE.getExpression());
 
 	private final Lotto lottoNumbers;
 	private final int bonusNumber;

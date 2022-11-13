@@ -3,8 +3,7 @@ package lotto.domain;
 import java.util.regex.Pattern;
 
 public class LottoStore {
-	private static final String REGEX = "^[0-9]*000$";
-	private static final Pattern numberPattern = Pattern.compile(REGEX);
+	private static final Pattern numberPattern = Pattern.compile(Regex.UNIT.getExpression());
 
 	private final int purchaseAmount;
 	private final int numberOfTickets;
