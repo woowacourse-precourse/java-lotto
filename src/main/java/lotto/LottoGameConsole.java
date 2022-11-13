@@ -62,9 +62,10 @@ public class LottoGameConsole {
         return Integer.parseInt(bonusNumber);
     }
 
-    private void handlePrizeOfLottoGame() {
-        // 당첨 결과 처리
-        // 당첨 결과 출력
+    private void handlePrizeOfLottoGame(Map<Rank, Integer> tallyOfRanks, int payment) {
+        emcee.showStatistics(tallyOfRanks);
+        double rateOfReturn = calculateRateOfReturn(tallyOfRanks, payment);
+        emcee.rateOfReturn(rateOfReturn);
     }
 
     private double calculateRateOfReturn(Map<Rank, Integer> tallyOfRanks, int payment) {
