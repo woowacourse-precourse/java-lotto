@@ -65,10 +65,11 @@ class InputConverterTest {
         String bonusNumber = "a";
         Assertions.assertThatThrownBy(() -> InputConverter.getNumber(bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 보너스 숫자가 숫자가 아닌 값으로 입력되었습니다.");
+                .hasMessage("[ERROR] 숫자가 아닌 값으로 입력되었습니다.");
     }
 
-    @DisplayName("보너스 숫자가 범위 외의 숫자인 경우 예외가 발생한다.")@Test
+    @DisplayName("보너스 숫자가 범위 외의 숫자인 경우 예외가 발생한다.")
+    @Test
     void enterOutBoundBonusNumber() {
         String bonusNumber = "46";
         Assertions.assertThatThrownBy(() -> InputConverter.getNumber(bonusNumber))
