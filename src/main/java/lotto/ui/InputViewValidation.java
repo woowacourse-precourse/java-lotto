@@ -76,4 +76,11 @@ public class InputViewValidation {
             throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBER);
         }
     }
+
+    public static void validateBonusNumberRange(String input) {
+        int number = Integer.parseInt(input);
+        if (number > 45 || number < 1) {
+            throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
+        }
+    }
 }

@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class InputView {
     private static final String REQUEST_MONEY = "구입금액을 입력해 주세요.";
     private static final String REQUEST_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    public static final String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     public static int inputBuyingAmount() {
         System.out.println(REQUEST_MONEY);
@@ -29,6 +30,15 @@ public class InputView {
         InputViewValidation.validateWinningNumbersUnique(winningNumbers);
 
         return Arrays.stream(winningNumbers.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+    }
+
+    public static int inputBonusNumber() {
+        System.out.println(REQUEST_BONUS_NUMBER);
+        String bonusNumber = Console.readLine();
+        InputViewValidation.validateIsInteger(bonusNumber);
+        InputViewValidation.validateWinningNumbersUnique(bonusNumber);
+
+        return Integer.parseInt(bonusNumber);
     }
 
 }
