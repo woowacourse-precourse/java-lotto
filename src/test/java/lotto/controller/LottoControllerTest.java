@@ -34,19 +34,18 @@ class LottoControllerTest {
 
     @ParameterizedTest(name = "등수 확인 테스트 {index}: {7}등")
     @CsvSource(value = {
-            "1,2,3,4,5,6,7,1",
-            "1,2,3,4,5,8,6,2",
-            "1,2,3,4,5,8,7,3",
-            "1,2,3,4,7,8,40,4",
-            "1,2,3,7,8,9,40,5",
-            "1,2,7,8,9,10,4,6"
+            "1,2,3,4,5,6,7,FIRST_RANK",
+            "1,2,3,4,5,8,6,SECOND_RANK",
+            "1,2,3,4,5,8,7,THIRD_RANK",
+            "1,2,3,4,7,8,40,FOURTH_RANK",
+            "1,2,3,7,8,9,40,FIFTH_RANK",
+            "1,2,7,8,9,10,4,NONE_RANKED"
     })
-    void 등수_확인_테스트(int num1, int num2, int num3, int num4, int num5, int num6, int bonusNum, int rankNum) {
+    void 등수_확인_테스트(int num1, int num2, int num3, int num4, int num5, int num6, int bonusNum, WinningRank expectedRank) {
         List<Integer> numbers = List.of(num1, num2, num3, num4, num5, num6);
         WinningLotto winningLotto = new WinningLotto(numbers, bonusNum);
 
         WinningRank actualRank = lottoController.judgeRank(winningLotto, baseLotto);
-        WinningRank expectedRank = WinningRank.findByRank(rankNum);
 
         assertThat(actualRank).isEqualTo(expectedRank);
     }
