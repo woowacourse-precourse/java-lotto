@@ -1,10 +1,13 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
+
 public class Game {
     private static final String ENTER_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     private static final String BUY_SOMETHING = "개를 구매했습니다.";
     private static final String ENTER_WINNING_LOTTO_NUMBER = "\n당첨 번호를 입력해 주세요.";
     private static final String ENTER_BONUS_NUMBER = "\n보너스 번호를 입력해 주세요.";
+    private static final String SHOW_WIN_STATISTICS = "\n당첨 통계 \n---";
 
     Price price = new Price();
     NumberGenerator numberGenerator = new NumberGenerator();
@@ -21,7 +24,10 @@ public class Game {
         String winningNumbers = winningNumber.inputWinningNumbers();
         lotto = new Lotto(winningNumber.seperatedByComma(winningNumbers));
         askBonusNumber();
-        bonusNumber.inputBonusNumber();
+        int number = bonusNumber.inputBonusNumber();
+        lotto.validateDuplicateWinningNumbersAndBonusNumber(number);
+        lotto.duplicateWinningNumbersAndGeneratorNumbers(numberGenerator.numbers, number);
+        showWinStatistics();
     }
 
     public void askPrice() {
@@ -44,6 +50,30 @@ public class Game {
 
     public int getCount() {
         return price.divideAmountTo1000Won();
+    }
+
+    public void showWinStatistics() {
+        PrizeMoney[] prizeMoneys = PrizeMoney.values();
+        PrizeMoney prizeBonus = PrizeMoney.BONUS;
+        System.out.println(SHOW_WIN_STATISTICS);
+
+        for (PrizeMoney prizeMoney : prizeMoneys) {
+            if (prizeMoney.equals(prizeBonus)) {
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원)- %d개\n",
+                        prizeMoney.getMatchingNumbers(), formatCommaInPrize(prizeMoney.getPrize()),
+                        prizeMoney.getCount());
+            }
+            if (!prizeMoney.equals(prizeBonus)) {
+                System.out.printf("%d개 일치 (%s원)- %d개\n", prizeMoney.getMatchingNumbers(),
+                        formatCommaInPrize(prizeMoney.getPrize()), prizeMoney.getCount());
+            }
+        }
+    }
+
+    public String formatCommaInPrize(int prize) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        String commaPrize = decimalFormat.format(prize);
+        return commaPrize;
     }
 }
 

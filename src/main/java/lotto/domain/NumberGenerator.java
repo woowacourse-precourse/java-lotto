@@ -10,7 +10,7 @@ public class NumberGenerator {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
     private static final int CREATE_NUMBER = 6;
-
+    List<List<Integer>> numbers;
 
     public List<Integer> createRandomLottoNumber() {
         List<Integer> number = Randoms.pickUniqueNumbersInRange(
@@ -19,7 +19,7 @@ public class NumberGenerator {
     }
 
     public List<List<Integer>> createNumbersBasedPrice(int count) {
-        List<List<Integer>> numbers = new ArrayList<>();
+        numbers = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             numbers.add(createRandomLottoNumber());
