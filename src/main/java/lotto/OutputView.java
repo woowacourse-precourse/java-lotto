@@ -17,6 +17,11 @@ public class OutputView {
         System.out.printf("%d개를 구매했습니다.\n", amount);
     }
 
+    public static void printWinningNumber() {
+        System.out.println();
+        System.out.println("보너스 번호 입력해 주세요.");
+    }
+
     public static void printStatistics(int amount, Map<Reward, Integer> result) {
         System.out.println();
         System.out.println("당첨 통계");
