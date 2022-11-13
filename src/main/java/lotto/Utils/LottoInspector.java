@@ -20,7 +20,7 @@ public class LottoInspector extends Validation {
         winningNumbers = winningNumbers.replaceAll(" ", "");
         String[] winningNumbersArray = winningNumbers.split(",");
 
-        validateWinningNumbers(winningNumbersArray);
+        validateWinningNumberArray(winningNumbersArray);
 
         List<Integer> winningNumberList = new ArrayList<>();
 
@@ -31,7 +31,6 @@ public class LottoInspector extends Validation {
 
         Collections.sort(winningNumberList);
 
-        System.out.println("Inspector : " + winningNumberList);
         return winningNumberList;
     }
 
