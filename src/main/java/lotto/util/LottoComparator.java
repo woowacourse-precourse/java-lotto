@@ -20,22 +20,11 @@ public class LottoComparator {
     private static Rank getLottoRank(Lotto ownLotto, Lotto prizeLotto, int bonusNumber) {
         int cnt = countNumberCorrectness(ownLotto, prizeLotto);
         boolean bonus = hasBonusNumber(ownLotto, bonusNumber);
-        int maxValue = InputConfig.LOTTO_NUMBER_COUNT;
 
-        if (cnt == maxValue) {
-            return Rank.FIRST;
-        }
-        if (cnt == maxValue - 1 && bonus) {
-            return Rank.SECOND;
-        }
-        if (cnt == maxValue - 1) {
-            return Rank.THIRD;
-        }
-        if (cnt == maxValue - 2) {
-            return Rank.FOURTH;
-        }
-        if (cnt == maxValue - 3) {
-            return Rank.FIFTH;
+        for (Rank rank : Rank.values()) {
+            if (rank.getRank(cnt, bonus)) {
+                return rank;
+            }
         }
         return Rank.NONE;
     }
