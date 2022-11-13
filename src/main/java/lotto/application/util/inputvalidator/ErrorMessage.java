@@ -1,4 +1,4 @@
-package lotto.application.service.inputvalidator;
+package lotto.application.util.inputvalidator;
 
 public enum ErrorMessage {
     PURCHASE_MONEY_IS_INTEGER("[ERROR] 구매 금액은 정수형으로, 입력 범위는 최대 2,147,483,647 까지 입니다."),
