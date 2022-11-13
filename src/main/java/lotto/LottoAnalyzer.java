@@ -1,9 +1,9 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.price.PrizeMoney;
 import lotto.util.Util;
 
 public class LottoAnalyzer {
@@ -11,19 +11,17 @@ public class LottoAnalyzer {
     private final List<Lotto> lottoTickets;
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
-
-    private int firstCount = 0;
-    private int secondCount = 0;
-    private int thirdCount = 0;
-    private int fourthCount = 0;
-    private int fifthCount = 0;
+    private int[] rankCount = new int[5];
+    private int wholePrizeMoney = 0;
 
     public LottoAnalyzer(List<Lotto> lottoTickets, List<Integer> winningNumbers, int bonusNumber) {
         this.lottoTickets = lottoTickets;
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
         compareLottoTickets();
+        addPrizeMoney();
     }
+
 
     public void compareLottoTickets() {
         for (Lotto lottoTicket : lottoTickets) {
@@ -36,41 +34,36 @@ public class LottoAnalyzer {
 
     private void checkNumbers(Set<Integer> lottoChecker) {
         if (lottoChecker.size() == 6) {
-            firstCount++;
+            rankCount[4]++;
         }
         if (lottoChecker.size() == 7) {
             if (lottoChecker.contains(bonusNumber)) {
-                secondCount++;
+                rankCount[3]++;
             }
             if (!lottoChecker.contains(bonusNumber)) {
-                thirdCount++;
+                rankCount[2]++;
             }
         }
         if (lottoChecker.size() == 8) {
-            fourthCount++;
+            rankCount[1]++;
         }
         if (lottoChecker.size() == 9) {
-            fifthCount++;
+            rankCount[0]++;
         }
     }
 
-    public int getFirstCount() {
-        return firstCount;
+    public int[] getRankCount() {
+        return rankCount;
     }
 
-    public int getSecondCount() {
-        return secondCount;
+    public int getWholePrizeMoney() {
+        return wholePrizeMoney;
     }
 
-    public int getThirdCount() {
-        return thirdCount;
-    }
-
-    public int getFourthCount() {
-        return fourthCount;
-    }
-
-    public int getFifthCount() {
-        return fifthCount;
+    private void addPrizeMoney() {
+        PrizeMoney prizeMoney[] = PrizeMoney.values();
+        for (int i = 0; i < 5; i++) {
+            wholePrizeMoney += prizeMoney[i].getValue() * rankCount[i];
+        }
     }
 }

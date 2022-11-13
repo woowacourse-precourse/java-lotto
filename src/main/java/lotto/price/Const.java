@@ -1,4 +1,4 @@
-package lotto.message;
+package lotto.price;
 
 public enum Const {
     LOTTO_TICKET_PRICE(1000);

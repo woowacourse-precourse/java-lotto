@@ -6,6 +6,7 @@ import lotto.Lotto;
 import lotto.LottoAnalyzer;
 import lotto.controller.LottoGameController;
 import lotto.message.GameMessage;
+import lotto.message.WinningMessage;
 
 public class LottoGame {
 
@@ -16,6 +17,7 @@ public class LottoGame {
     private int bonusNumber;
     private List<Lotto> userLottoTickets;
     private LottoAnalyzer lottoAnalyzer;
+    private String earningsRate;
 
     public LottoGame() {
         this.lottoGameController = new LottoGameController();
@@ -42,6 +44,9 @@ public class LottoGame {
         System.out.println(GameMessage.LINE.getMessage());
         lottoAnalyzer = lottoGameController.lookUpLotto();
         printWinningDetails();
+
+        earningsRate = lottoGameController.calculateRate();
+        System.out.println(earningsRate);
     }
 
     private void printLottoTickets() {
@@ -51,10 +56,10 @@ public class LottoGame {
     }
 
     private void printWinningDetails() {
-        System.out.println(GameMessage.FIFTH_OPTION.getMessage()+lottoAnalyzer.getFifthCount()+"개");
-        System.out.println(GameMessage.FOURTH_OPTION.getMessage()+lottoAnalyzer.getFourthCount()+"개");
-        System.out.println(GameMessage.THIRD_OPTION.getMessage()+lottoAnalyzer.getThirdCount()+"개");
-        System.out.println(GameMessage.SECOND_OPTION.getMessage()+lottoAnalyzer.getSecondCount()+"개");
-        System.out.println(GameMessage.FIRST_OPTION.getMessage()+lottoAnalyzer.getFirstCount()+"개");
+        WinningMessage winningMessage[] = WinningMessage.values();
+        int[] rankCount = lottoAnalyzer.getRankCount();
+        for (int i = 0; i < 5; i++) {
+            System.out.println(winningMessage[i].getMessage()+rankCount[i]+"개");
+        }
     }
 }

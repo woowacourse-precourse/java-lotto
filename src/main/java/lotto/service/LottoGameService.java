@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import lotto.Lotto;
 import lotto.LottoAnalyzer;
-import lotto.message.Const;
+import lotto.price.Const;
 import lotto.message.ErrorMessage;
 import lotto.util.Util;
 
@@ -14,10 +14,13 @@ public class LottoGameService {
     private List<Lotto> lottoTickets;
     private List<Integer> winningNumbers;
     private int bonusNumber;
+    private int purchaseAmount;
+    private LottoAnalyzer lottoAnalyzer;
 
     public int buyLottoTickets(final String purchaseAmount) {
         validPurchaseAmount(purchaseAmount);
-        int lottoTickets = Integer.parseInt(purchaseAmount) / Const.LOTTO_TICKET_PRICE.getValue();
+        this.purchaseAmount = Integer.parseInt(purchaseAmount);
+        int lottoTickets = this.purchaseAmount / Const.LOTTO_TICKET_PRICE.getValue();
         return lottoTickets;
     }
 
@@ -79,7 +82,12 @@ public class LottoGameService {
     }
 
     public LottoAnalyzer lookUpLotto() {
-        LottoAnalyzer lottoAnalyzer = new LottoAnalyzer(lottoTickets, winningNumbers, bonusNumber);
+        lottoAnalyzer = new LottoAnalyzer(lottoTickets, winningNumbers, bonusNumber);
         return lottoAnalyzer;
+    }
+
+    public String calculateRate() {
+        float rate = lottoAnalyzer.getWholePrizeMoney() / purchaseAmount;
+        return String.format("%,.1f",rate)+"%";
     }
 }
