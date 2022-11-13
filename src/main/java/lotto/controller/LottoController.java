@@ -3,11 +3,11 @@ package lotto.controller;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Compare;
-import lotto.model.LottoMachine;
-import lotto.model.Lotto;
-import lotto.model.LottoReference;
-import lotto.model.LottoWithBonus;
-import lotto.model.Money;
+import lotto.domain.LottoMachine;
+import lotto.domain.Lotto;
+import lotto.domain.LottoReference;
+import lotto.domain.LottoWithBonus;
+import lotto.domain.Money;
 import lotto.veiw.InputHandler;
 import lotto.veiw.OutputHandler;
 

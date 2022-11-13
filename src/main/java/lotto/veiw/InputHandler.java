@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.constants.ErrorCode;
+import lotto.domain.constants.ErrorCode;
 
 public class InputHandler {
 

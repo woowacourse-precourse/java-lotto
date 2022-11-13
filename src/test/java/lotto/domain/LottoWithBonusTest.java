@@ -1,11 +1,11 @@
-package lotto.model;
+package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
-import lotto.constants.ErrorCode;
+import lotto.domain.constants.ErrorCode;
 import org.junit.jupiter.api.Test;
 
 class LottoWithBonusTest {

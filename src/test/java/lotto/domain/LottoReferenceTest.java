@@ -1,8 +1,7 @@
-package lotto.constants;
+package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import lotto.model.LottoReference;
 import org.junit.jupiter.api.Test;
 
 class LottoReferenceTest {

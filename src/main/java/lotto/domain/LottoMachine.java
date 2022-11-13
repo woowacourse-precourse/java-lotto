@@ -1,11 +1,9 @@
-package lotto.model;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import lotto.constants.LottoConstants;
-import lotto.model.Lotto;
-import lotto.model.Money;
+import lotto.domain.constants.LottoConstants;
 
 public class LottoMachine {
 

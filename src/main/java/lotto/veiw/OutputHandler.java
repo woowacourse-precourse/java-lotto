@@ -1,10 +1,10 @@
 package lotto.veiw;
 
-import static lotto.model.LottoReference.NOPE;
+import static lotto.domain.LottoReference.NOPE;
 
 import java.text.DecimalFormat;
 import java.util.Map;
-import lotto.model.LottoReference;
+import lotto.domain.LottoReference;
 
 public class OutputHandler {
 

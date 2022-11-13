@@ -1,10 +1,10 @@
-package lotto.model;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import lotto.constants.ErrorCode;
-import lotto.constants.LottoConstants;
+import lotto.domain.constants.ErrorCode;
+import lotto.domain.constants.LottoConstants;
 
 public class Lotto {
 

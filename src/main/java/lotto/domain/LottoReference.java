@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.domain;
 
 public enum LottoReference {
     THREE(3, 5_000, ""),

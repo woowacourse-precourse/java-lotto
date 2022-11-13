@@ -1,4 +1,4 @@
-package lotto.constants;
+package lotto.domain.constants;
 
 public enum ErrorCode {
     NOT_NUMBER("숫자만 입력 가능합니다."),

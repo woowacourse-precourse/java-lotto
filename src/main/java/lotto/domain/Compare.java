@@ -1,13 +1,9 @@
 package lotto.domain;
 
-import static lotto.model.LottoReference.NOPE;
+import static lotto.domain.LottoReference.NOPE;
 
 import java.util.HashMap;
 import java.util.Map;
-import lotto.model.Lotto;
-import lotto.model.LottoMachine;
-import lotto.model.LottoReference;
-import lotto.model.LottoWithBonus;
 
 public class Compare {
 
