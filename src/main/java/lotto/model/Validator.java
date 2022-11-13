@@ -15,7 +15,7 @@ public class Validator {
         }
     }
 
-    public boolean validatePurchaseAmount(int purchaseAmount) {
+    public boolean isPurchaseAmountValidate(int purchaseAmount) {
         if (purchaseAmount % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_PREFIX + VALUE_IS_NOT_DIVIDED_BY_1000);
         }
