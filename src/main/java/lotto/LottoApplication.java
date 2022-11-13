@@ -20,8 +20,9 @@ public class LottoApplication {
             LottoTickets lottoTickets = buyLottoTickets(money);
 
             WinningLotto winningLotto = getWinningLotto();
+            List<Rank> ranks = match(lottoTickets, winningLotto);
 
-            summaryLotto(money, lottoTickets, winningLotto);
+            summaryLotto(money, ranks);
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
         }
@@ -39,15 +40,14 @@ public class LottoApplication {
         return new WinningLotto(winningNumbers, bonusNumber);
     }
 
-    private void summaryLotto(Money money, LottoTickets lottoTickets, WinningLotto winningLotto) {
-        List<Rank> ranks = getRanks(lottoTickets, winningLotto);
-        LottoSummary summary = new LottoSummary(ranks, money);
-        OutputView.printSummary(summary);
+    private List<Rank> match(LottoTickets lottoTickets, WinningLotto winningLotto) {
+        return lottoTickets.getLottos().stream()
+                .map(lotto -> Rank.from(winningLotto, lotto))
+                .collect(Collectors.toList());
     }
 
-    private List<Rank> getRanks(LottoTickets lottoTickets, WinningLotto winningLotto) {
-        return lottoTickets.getLottos().stream()
-                .map(winningLotto::match)
-                .collect(Collectors.toList());
+    private void summaryLotto(Money money, List<Rank> ranks) {
+        LottoSummary summary = new LottoSummary(ranks, money);
+        OutputView.printSummary(summary);
     }
 }
