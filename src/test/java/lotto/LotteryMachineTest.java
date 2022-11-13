@@ -56,4 +56,17 @@ class LotteryMachineTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 유의미한 숫자(1~45)가 아닐시 에러 발생")
+    @Test
+    void createBonusNumByNotCorrectNum() {
+        String inputWinningNum = "1,2,3,4,5,6";
+        LotteryMachine lotteryMachine = new LotteryMachine();
+        String[] splitWinningNum = inputWinningNum.split(",");
+        lotteryMachine.makeWinningLottoNum(splitWinningNum);
+
+
+        assertThatThrownBy(() -> lotteryMachine.makeBonusNum(lotteryMachine.getLotto().getNumbers(),"0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
