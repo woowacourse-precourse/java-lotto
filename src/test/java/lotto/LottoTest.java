@@ -31,5 +31,16 @@ class LottoTest {
     }
 
 
+    @DisplayName("6개의 로또 번호를 생성해주는지")
+    @Test
+    void randomLottoNumberGeneration(){
+
+        Generator generator = new Generator();
+
+        assertEquals(generator.generateRandomLottoNumber().size(),6);
+
+    }
+
+
 
 }
