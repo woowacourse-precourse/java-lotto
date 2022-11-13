@@ -10,9 +10,9 @@ public class OutputView {
     private static final String LOTTO_WIN_RESULT = "%d개 일치%s (%s원) - %d개";
     private static final String BONUS_WIN = ", 보너스 볼 일치";
     private static final String RATE_OF_RETURN = "총 수익률은 %.1f%%입니다.";
-    private static final String RESULT_HEADER = "당첨 통계\n---";
+    private static final String RESULT_HEADER = "\n당첨 통계\n---";
     private static final String EMPTY_STRING = "";
-    private static final DecimalFormat moneyFormat = new DecimalFormat("###,###");
+    private static final DecimalFormat MONEY_FORMAT = new DecimalFormat("###,###");
 
     private OutputView() {
     }
@@ -54,6 +54,6 @@ public class OutputView {
     }
 
     private static String convertMoneyFormat(int money) {
-        return moneyFormat.format(money);
+        return MONEY_FORMAT.format(money);
     }
 }

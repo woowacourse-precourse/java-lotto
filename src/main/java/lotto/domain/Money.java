@@ -4,7 +4,7 @@ import lotto.domain.errorenum.Error;
 
 public class Money {
     private static final int MIN_AMOUNT = 1000;
-    private int money;
+    private final int money;
 
     public Money(int money) {
         validateAbleToBuyAtLeastOne(money);
@@ -16,9 +16,13 @@ public class Money {
         return money;
     }
 
+    public int calculateBoughtLottoCount() {
+        return money / MIN_AMOUNT;
+    }
+
     private void validateAbleToBuyAtLeastOne(int money) {
         if (money < MIN_AMOUNT) {
-            throw new IllegalArgumentException(Error.MIN_MONEY_LIMIT.getCode()); //최소 금액 error code
+            throw new IllegalArgumentException(Error.MIN_MONEY_LIMIT.getCode());
         }
     }
 
@@ -26,9 +30,5 @@ public class Money {
         if (money % MIN_AMOUNT != 0) {
             throw new IllegalArgumentException(Error.MONEY_CHANGE_LEFT.getCode());
         }
-    }
-
-    public int calculateBoughtLottoCount() {
-        return money / MIN_AMOUNT;
     }
 }

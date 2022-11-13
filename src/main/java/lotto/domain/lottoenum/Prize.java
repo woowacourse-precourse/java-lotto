@@ -51,9 +51,10 @@ public enum Prize {
     }
 
     private static Prize getOnlyOneWithBonusMatch(List<Prize> prizes, boolean hasBonus) {
-        if (prizes.size() == 1) {
-            return prizes.get(0);
+        if (prizes.size() <= 1) {
+            return prizes.stream().findFirst().orElse(NONE);
         }
+
         return prizes.stream()
                 .filter(prize -> isBonusIncluded(hasBonus, prize.hasBonus))
                 .findAny()

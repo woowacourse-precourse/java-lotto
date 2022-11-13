@@ -2,6 +2,7 @@ package lotto.dto;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import lotto.domain.ReceivedPrize;
 import lotto.domain.lottoenum.Prize;
@@ -14,8 +15,8 @@ public class LottoResultDto {
         this.rateOfReturn = rateOfReturn;
         this.prizes = prizesCount.entrySet()
                 .stream()
-                .filter(prizeCount -> !prizeCount.getKey().equals(Prize.NONE))
-                .map(prizeCount -> PrizeDto.of(prizeCount.getKey(), prizeCount.getValue()))
+                .filter(prizeCount -> isNotNone(prizeCount.getKey()))
+                .map(this::toPrizeDto)
                 .collect(Collectors.toList());
     }
 
@@ -29,6 +30,14 @@ public class LottoResultDto {
 
     public double getRateOfReturn() {
         return rateOfReturn;
+    }
+
+    private boolean isNotNone(Prize prize) {
+        return !prize.equals(Prize.NONE);
+    }
+
+    private PrizeDto toPrizeDto(Entry<Prize, Integer> prizeCount) {
+        return PrizeDto.of(prizeCount.getKey(), prizeCount.getValue());
     }
 
 }

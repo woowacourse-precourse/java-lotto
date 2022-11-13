@@ -47,7 +47,6 @@ class ReceivedPrizeTest {
                 Prize.SECOND, 1,
                 Prize.FIRST, 0,
                 Prize.FOURTH, 0
-
         ));
 
         assertThat(receivedPrize.getReceivedPrize()).containsAllEntriesOf(result);

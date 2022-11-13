@@ -25,8 +25,7 @@ public class ReceivedPrize {
 
     private void initializeReceivedPrize() {
         receivedPrize = new EnumMap<>(Prize.class);
-        Stream.of(Prize.values())
-                .forEach(prize -> receivedPrize.put(prize, 0));
+        Stream.of(Prize.values()).forEach(prize -> receivedPrize.put(prize, 0));
     }
 
     private void calculatePrizeToReceive(List<Lotto> lottos, WinningLotto winningLotto) {

@@ -31,11 +31,12 @@ public class LottoController {
     }
 
     private List<Lotto> issueUserBoughtLotto(int lottoCount) {
-        return generateAutoLotto(lottoCount);
+        List<Lotto> lottos = new ArrayList<>();
+        generateAutoLotto(lottos, lottoCount);
+        return lottos;
     }
 
-    private List<Lotto> generateAutoLotto(int lottoCount) {
-        List<Lotto> lottos = new ArrayList<>();
+    private List<Lotto> generateAutoLotto(List<Lotto> lottos, int lottoCount) {
         while (lottos.size() < lottoCount) {
             lottos.add(AutoLottoGenerator.issueAutoLotto());
         }
