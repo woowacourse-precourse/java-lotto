@@ -28,4 +28,8 @@ public class Bonus {
         }
     }
 
+    // 보너스 번호를 가져오는 기능
+    public int getBonus() {
+        return bonus;
+    }
 }
