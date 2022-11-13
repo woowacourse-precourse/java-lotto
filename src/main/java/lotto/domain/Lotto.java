@@ -30,4 +30,8 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 로또의 한 줄 안에서 중복 숫자가 있습니다.");
         }
     }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }

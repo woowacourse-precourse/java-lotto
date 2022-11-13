@@ -2,7 +2,9 @@ package lotto.controller;
 
 import static lotto.view.InputView.inputPaymentAmount;
 
+import lotto.controller.dto.LottoPurchaseDto;
 import lotto.service.LottoService;
+import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -13,6 +15,8 @@ public class LottoController {
     }
 
     public void run() {
-        lottoService.purchaseLotto(inputPaymentAmount());
+        LottoPurchaseDto lottoPurchaseDto = lottoService.purchaseLotto(inputPaymentAmount());
+        OutputView.printLottoPurchaseNumber(lottoPurchaseDto.getPurchaseNumbers());
+        OutputView.printLottos(lottoPurchaseDto.getLottos());
     }
 }

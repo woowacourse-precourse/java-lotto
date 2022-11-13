@@ -1,8 +1,7 @@
 package lotto.controller.dto;
 
-import static camp.nextstep.edu.missionutils.Randoms.*;
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Lotto;
@@ -35,5 +34,13 @@ public class LottoPurchaseDto {
             throw new IllegalArgumentException("[ERROR] 지불금액이 1000으로 나누어 떨어지지 않습니다.");
         }
         return paymentAmount / LOTTO_BASIC_AMOUNT;
+    }
+
+    public int getPurchaseNumbers() {
+        return this.purchaseNumbers;
+    }
+
+    public List<Lotto> getLottos() {
+        return this.lottos;
     }
 }
