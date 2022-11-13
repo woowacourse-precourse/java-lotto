@@ -10,14 +10,15 @@ import java.util.List;
 
 public class LottoMachine {
     public static List<List<Integer>> pickLottoNumbers(int countLotto) {
-        List<List<Integer>> lottoList = new ArrayList<>();
+        List<List<Integer>> totalLotto = new ArrayList<>();
         for (int i = 0; i < countLotto; i++) {
-            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            Collections.sort(lotto.getNumbers());
-            lottoList.add(lotto.getNumbers());
-            System.out.println(lotto.getNumbers());
+            Lotto getLotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            List<Integer> lotto = new ArrayList<>(getLotto.getNumbers());
+            Collections.sort(lotto);
+            totalLotto.add(lotto);
+            System.out.println(lotto);
         }
-        return lottoList;
+        return totalLotto;
     }
 
     public static List<String> getWinningNumbers(String readLine) {
