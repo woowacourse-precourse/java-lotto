@@ -26,12 +26,12 @@ class StatsTest {
 		Stats stats = Stats.initStats();
 		stats.add(Rank.RANK_1ST);
 		stats.add(Rank.RANK_2ND);
-		String amount = "10000";
-		MachineSystem machineSystem = new MachineSystem(new Buyer(amount),
+		int amount = 10000;
+		MachineSystem machineSystem = new MachineSystem(Buyer.buyLottos(amount),
 			new WinningLotto(Arrays.asList(1, 2, 3, 4, 5, 6)));
 
 		double totalReward = Rank.RANK_1ST.getReward() + Rank.RANK_2ND.getReward();
-		double yield = totalReward / Double.parseDouble(amount) * 100;
+		double yield = totalReward / (double)amount * 100;
 		Assertions.assertThat(machineSystem.yield(stats.totalReward())).isEqualTo(yield);
 	}
 }
