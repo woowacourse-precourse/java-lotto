@@ -24,12 +24,15 @@ public class GameSystem {
         outputPurchaseQuantity();
 
         winningNumber = inputUtil.inputWinningNumber();
-
         bonusNumber = inputUtil.inputBonusNumber();
 
+        winningStatics();
+        printStatics();
+    }
+
+    private void printStatics(){
         System.out.println(WINNING_STATICS.getMessage());
         System.out.println(DASH.getMessage());
-        winningStatics();
         System.out.println(THREE_CORRECT.getMessage()+three+COUNT.getMessage());
         System.out.println(FOUR_CORRECT.getMessage()+four+COUNT.getMessage());
         System.out.println(FIVE_CORRECT.getMessage()+five+COUNT.getMessage());
@@ -56,8 +59,8 @@ public class GameSystem {
     private void winningStatics(){
         for(List<Integer> list:lottos){
             int cntWinning = matchUtil.matchWinningNumber(list,winningNumber);
-            int cntBounus = matchUtil.matchBonusNumber(list,bonusNumber);
-            correctNumber(cntWinning,cntBounus);
+            int cntBonus = matchUtil.matchBonusNumber(list,bonusNumber);
+            correctNumber(cntWinning,cntBonus);
         }
     }
 
@@ -72,14 +75,14 @@ public class GameSystem {
             four++;
             return;
         }
-        if(cntWinning==5){
-            totalPrice += FIFTEEN.getPrize();
-            five++;
-            return;
-        }
         if(cntWinning==5 && cntBonus==1){
             totalPrice += THIRTY.getPrize();
             fiveAndBonus++;
+            return;
+        }
+        if(cntWinning==5){
+            totalPrice += FIFTEEN.getPrize();
+            five++;
             return;
         }
         if(cntWinning==6){
