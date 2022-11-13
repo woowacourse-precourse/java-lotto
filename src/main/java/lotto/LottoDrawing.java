@@ -11,6 +11,7 @@ public class LottoDrawing {
     List<Integer> winningNumbers = new ArrayList<>();
     int bonusNumber;
     public List<Integer> getWinningNumber(){
+        //이거 조금 분리해야하나 ?
         System.out.println(MESSAGE_INPUT_WINNING_NUMBER);
 
         String winningNumberInput = Console.readLine();
