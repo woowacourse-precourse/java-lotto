@@ -5,8 +5,8 @@
   - [x] 중복되는 숫자 생성 시 예외처리 Lotto#validateSize()
   - [x] 숫자가 적게 생성 시 예외처리 Lotto#validateDuplicateNumbers()
 - [x] 당첨 번호를 가지고 있는 클래스 구현 Result
-  - [ ] 당첨 번호는 1 ~ 45까지의 중복없는 숫자 6개 입력
-  - [ ] 보너스 번호는 1 ~ 45까지의 숫자 중 1개만 입력
+  - [x] 당첨 번호는 1 ~ 45까지의 중복없는 숫자 6개 입력 Result#validateRange()
+  - [x] 보너스 번호는 1 ~ 45까지의 숫자 중 1개만 입력 Result#validateRange()
     - [x] 당첨 번호와 보너스 번호는 중복되지 않는다. Result#validate()
     - [x] 당첨 번호는 6개를 가지며, 서로 다른 숫자이다. Result#validate()
 - [x] 당첨 결과를 판단할 수 있는 클래스 구현 Prize

@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.Set;
 
 import static java.lang.Math.toIntExact;
+import static lotto.utils.Constant.LOTTO_END;
 import static lotto.utils.Constant.LOTTO_SIZE;
+import static lotto.utils.Constant.LOTTO_START;
 
 public class Result {
     public static final String ENTER_RIGHT_SIZE_NUMBER = "[ERROR] 6개의 숫자를 입력해주세요.";
     public static final String ENTER_UNIQUE_NUMBER = "[ERROR] 중복된 숫자를 입력하실 수 없습니다.";
     public static final String ENTER_UNIQUE_BONUS_NUMBER = "[ERROR] 보너스 숫자는 당첨 번호와 중복될 수 없습니다.";
+    public static final String INPUT_RIGHT_RANGE_NUMBER = "[ERROR] 1 ~ 45 사이의 숫자를 입력해주세요.";
 
     private List<Integer> winningNumbers = new ArrayList<>();
     private int bonusNumber;
@@ -31,8 +34,19 @@ public class Result {
     }
 
     private static void validateWinningNumbers(List<Integer> winningNumbers) {
+        validateRange(winningNumbers);
         validateSize(winningNumbers);
         validateDuplicateNumbers(winningNumbers);
+    }
+
+    private static void validateRange(List<Integer> numbers) {
+        if (isRightRange(numbers)) {
+            throw new IllegalArgumentException(INPUT_RIGHT_RANGE_NUMBER);
+        }
+    }
+
+    private static boolean isRightRange(List<Integer> numbers) {
+        return numbers.stream().anyMatch(Result::validateRange);
     }
 
     private static void validateSize(List<Integer> numbers) {
@@ -57,9 +71,28 @@ public class Result {
     }
 
     private static void validateBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
-        if (winningNumbers.contains(bonusNumber)) {
+        isRightRange(bonusNumber);
+        isUniqueNumber(winningNumbers, bonusNumber);
+    }
+
+    private static void isUniqueNumber(List<Integer> winningNumbers, int bonusNumber) {
+        if (isDuplicated(winningNumbers, bonusNumber)) {
             throw new IllegalArgumentException(ENTER_UNIQUE_BONUS_NUMBER);
         }
+    }
+
+    private static boolean isDuplicated(List<Integer> winningNumbers, int bonusNumber) {
+        return winningNumbers.contains(bonusNumber);
+    }
+
+    private static void isRightRange(int bonusNumber) {
+        if (validateRange(bonusNumber)) {
+            throw new IllegalArgumentException(INPUT_RIGHT_RANGE_NUMBER);
+        }
+    }
+
+    private static boolean validateRange(Integer number) {
+        return number < LOTTO_START || LOTTO_END < number;
     }
 
     public Prize compare(Lotto lotto) {
