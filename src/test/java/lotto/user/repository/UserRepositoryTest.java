@@ -1,21 +1,19 @@
 package lotto.user.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import lotto.lottery.repository.LottoRepository;
 import lotto.user.domain.User;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class UserRepositoryTest {
 
-    User user = new User(1);
+    User user = new User();
     @Test
     void user_lotto_create() {
         // when
-        UserRepository.createUserLottos(user,8);
+        UserRepository.setUserTicketsToLottery(user,8);
         System.out.println(user.getLottos());
     }
     @Test
@@ -38,9 +36,9 @@ class UserRepositoryTest {
     @Test
     void check_user_buy_lotto_case() {
 
-        User user = new User(36127);
+        User user = new User();
 
-        UserRepository.buylottos(user);
+        UserRepository.buyLotteryTickets(user);
 
         int target = 36;
         assertThat(user.getTicketAmount()).isEqualTo(target);
