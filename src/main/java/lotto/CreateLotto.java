@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CreateLotto {
@@ -10,8 +11,12 @@ public class CreateLotto {
         return numbers;
     }
 
-    public void winningNumber() {
-
+    public List<Integer> winningNumber(String inputWinningNumber) {
+        List<Integer> winningNumber = new ArrayList<>();
+        for (String a : inputWinningNumber.split(",")) {
+            winningNumber.add(Integer.parseInt(a));
+        }
+        return winningNumber;
     }
 
     public void textWinningNumber() {
