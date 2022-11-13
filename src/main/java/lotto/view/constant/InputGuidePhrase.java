@@ -8,4 +8,8 @@ public enum InputGuidePhrase {
     private InputGuidePhrase(String text) {
         this.text = text;
     }
+
+    public String getText() {
+        return text;
+    }
 }
