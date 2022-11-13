@@ -37,24 +37,10 @@ public class LottoController {
     }
 
     public WinningRank judgeRank(WinningLotto winningLotto, Lotto lotto) {
-        // todo: refactoring.... enum 기능 더 공부 후 활용하여 구현 방식 수정
-        int matchedNumbersCount = countMatchedNumbers(winningLotto, lotto);
-        if (matchedNumbersCount == 3) {
-            return WinningRank.FIFTH_RANK;
-        }
-        if (matchedNumbersCount == 4) {
-            return WinningRank.FOURTH_RANK;
-        }
-        if (matchedNumbersCount == 5) {
-            if (winningLotto.containBonusNumber(lotto)) {
-                return WinningRank.SECOND_RANK;
-            }
-            return WinningRank.THIRD_RANK;
-        }
-        if (matchedNumbersCount == 6) {
-            return WinningRank.FIRST_RANK;
-        }
-        return WinningRank.NONE_RANKED;
+        int duplicatedNumberCount = countMatchedNumbers(winningLotto, lotto);
+        boolean isContainBonusNumber = winningLotto.containBonusNumber(lotto);
+
+        return WinningRank.findByWinningCondition(duplicatedNumberCount, isContainBonusNumber);
     }
 
     private int countMatchedNumbers(WinningLotto winningLotto, Lotto lotto) {

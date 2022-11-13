@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum WinningRank {
@@ -30,12 +31,20 @@ public enum WinningRank {
         this.isWinExpression = isWinExpression;
     }
 
-    public int getPrizeMoney() {
-        return prizeMoney;
+
+    public static WinningRank findByWinningCondition(int duplicatedNumberCount, boolean isContainBonusNumber) {
+        return Arrays.stream(WinningRank.values())
+                .filter(rank -> rank.isWin(duplicatedNumberCount, isContainBonusNumber))
+                .findAny()
+                .orElse(NONE_RANKED);
     }
 
     public boolean isWin(int duplicatedNumberCount, boolean isContainBonusNumber) {
         return isWinExpression.apply(duplicatedNumberCount, isContainBonusNumber).booleanValue();
+    }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
     }
 
 
