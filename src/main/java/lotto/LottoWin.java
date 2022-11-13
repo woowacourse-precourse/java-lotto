@@ -49,7 +49,7 @@ public class LottoWin {
             profitSum += userInfo[profitIndex];
         }
         profitRate = ((double)profitSum / expenseSum) * 100;
-        System.out.println(String.format("총 수익률은 %.2f입니다.", profitRate));
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", profitRate));
     }
     public int[] countWinLotto(){
         List<Integer> profitTable = List.of(0,5000,50000,1500000,30000000,2000000000);
