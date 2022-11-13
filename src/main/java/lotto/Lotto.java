@@ -18,6 +18,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public List<Integer> getElements() {
+        return this.numbers;
+    }
+
     public void sortElements() {
         Collections.sort(this.numbers);
     }
