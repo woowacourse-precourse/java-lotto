@@ -27,6 +27,42 @@ public class PlayLotto extends Input {
         this.win_count = new ArrayList<>(List.of(0,0,0,0,0));
     }
 
+    public Lotto getLotto() {
+        return lotto;
+    }
+
+    public void setLotto(Lotto lotto) {
+        this.lotto = lotto;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Output getOut() {
+        return out;
+    }
+
+    public List<Integer> getWin_count() {
+        return win_count;
+    }
+
+    public void setWin_count(List<Integer> win_count) {
+        this.win_count = win_count;
+    }
+
+    public int getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
+
     public void play() { //한 사이클 실행
         buy_lottery();
         print_buy_lottery();
