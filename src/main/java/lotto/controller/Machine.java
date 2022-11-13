@@ -11,25 +11,36 @@ import lotto.view.OutputView;
 import java.util.List;
 
 public class Machine {
+    private List<Lotto> lottos;
+    private List<Rank> ranks;
+    private List<Integer> winningNumbers;
+    private int bonusNumber;
 
     public void start() {
         try {
-            int quantity = Convertor.getQuantity(InputView.amount());
-            List<Lotto> lottos = LottoGenerator.getLottos(quantity);
-            OutputView.showLottoNumber(lottos);
-
-            List<Integer> winningNumbers = Convertor.getNumbers(InputView.winningNumbers());
-            int bonusNumber = Convertor.getNumber(InputView.bonusNumber());
-            LottoException.validDuplication(winningNumbers, bonusNumber);
-
-            List<Rank> ranks = RankGenerator.getRanks();
+            issueLotto();
+            getWinningNumbersAndBonusNumber();
+            ranks = RankGenerator.getRanks();
             CompareLotto.compare(ranks, lottos, winningNumbers, bonusNumber);
-            double yield = Calculator.getYield(ranks, quantity);
-            OutputView.result(ranks, yield);
+            printResult();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
 
+    private void getWinningNumbersAndBonusNumber() {
+        winningNumbers = Convertor.getNumbers(InputView.winningNumbers());
+        bonusNumber = Convertor.getNumber(InputView.bonusNumber());
+        LottoException.validDuplication(winningNumbers, bonusNumber);
+    }
 
+    private void issueLotto() {
+        int quantity = Convertor.getQuantity(InputView.amount());
+        lottos = LottoGenerator.getLottos(quantity);
+        OutputView.showLottoNumber(lottos);
+    }
+
+    private void printResult() {
+        OutputView.result(ranks, Calculator.getYield(ranks, lottos.size()));
+    }
 }
