@@ -18,4 +18,5 @@ public enum PrintError {
     public String getMessage() {
         return  message;
     }
+
 }

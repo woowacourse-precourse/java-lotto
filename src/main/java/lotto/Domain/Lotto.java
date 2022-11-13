@@ -10,30 +10,24 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) throws IllegalArgumentException{
-        validateSix(numbers);
-        validateOverlap(numbers);
-        validateOutOfRange(numbers);
+        validate(numbers);
         this.numbers = numbers;
     }
 
-    private void validateSix(List<Integer> numbers) throws IllegalArgumentException {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
+        IllegalArgument illegalArgument = new IllegalArgument();
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(PrintError.NO_SIX_NUM.getMessage());
+            throw illegalArgument.withMessage(PrintError.NO_SIX_NUM.getMessage());
         }
-    }
 
-    private void validateOverlap(List<Integer> numbers) throws IllegalArgumentException {
         Set<Integer> compareNum = new HashSet<>(numbers);
-
         if(numbers.size() != compareNum.size()) {
-            throw new IllegalArgumentException(PrintError.OVERLAP.getMessage());
+            throw illegalArgument.withMessage(PrintError.OVERLAP.getMessage());
         }
-    }
 
-    private void validateOutOfRange(List<Integer> numbers) throws IllegalArgumentException {
         for(Integer number : numbers) {
             if(number<1 || 45<number) {
-                throw new IllegalArgumentException(PrintError.OUT_OF_NUMBER_RANGE.getMessage());
+                throw illegalArgument.withMessage(PrintError.OUT_OF_NUMBER_RANGE.getMessage());
             }
         }
     }

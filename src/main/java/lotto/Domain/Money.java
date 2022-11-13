@@ -4,7 +4,7 @@ import lotto.Input.PrintError;
 
 public class Money {
     private final int userlottonum;
-
+    IllegalArgument illegalArgument = new IllegalArgument();
     public Money(String userInput){
         int convertedUserInput = validate(userInput);
         this.userlottonum = afterCalculate(convertedUserInput);
@@ -15,7 +15,7 @@ public class Money {
         try {
             userInputNum = Integer.parseInt(userInput);
         }catch (NumberFormatException e) {
-            throw new IllegalArgumentException((PrintError.NOT_A_NUMBER.getMessage()));
+            throw illegalArgument.withMessage(PrintError.NOT_A_NUMBER.getMessage());
         }
         return userInputNum;
     }
@@ -23,7 +23,7 @@ public class Money {
     public int afterCalculate(int convertedUserInput) throws IllegalArgumentException {
 
         if (convertedUserInput % 1000 != 0) {
-            throw new IllegalArgumentException(PrintError.OUT_OF_MONEY_UNIT.getMessage());
+            throw illegalArgument.withMessage(PrintError.OUT_OF_MONEY_UNIT.getMessage());
         }
         return convertedUserInput/1000;
     }

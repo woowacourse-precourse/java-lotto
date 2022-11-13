@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class Application {
-    private List<Integer> sixNum;
-    private int bonusNum;
-    private List<Set<Integer>> publishedLottos;
+    public List<Integer> sixNum;
+    public int bonusNum;
+    public List<Set<Integer>> publishedLottos;
 
     public static void main(String[] args) {
         try {
@@ -19,10 +19,10 @@ public class Application {
         application.get_SixNum_BonusNum_PublishedLotto();
 
         Statistic statistic =
-                new Statistic(application.getSixNum(), application.getBonusNum(), application.getPublishedLottos());
+                new Statistic(application.sixNum, application.bonusNum, application.publishedLottos);
         Map<String,Integer> winningMap = statistic.getStatistic();
         Profit profit = new Profit();
-        profit.printProfit(winningMap,application.getPublishedLottos().size()*1000);
+        profit.printProfit(winningMap,application.publishedLottos.size()*1000);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -50,15 +50,4 @@ public class Application {
         this.publishedLottos = publishedLottos.getPublishedLotto();
     }
 
-    public List<Integer> getSixNum() {
-        return sixNum;
-    }
-
-    public int getBonusNum() {
-        return bonusNum;
-    }
-
-    public List<Set<Integer>> getPublishedLottos() {
-        return publishedLottos;
-    }
 }

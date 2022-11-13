@@ -16,25 +16,24 @@ public class Bonus {
             throw new IllegalArgumentException(PrintError.NOT_A_NUMBER.getMessage());
         }
 
-        validateOverlap(number, sixNum);
-        validateOutOfRange(number);
+        validate(number, sixNum);
         this.number = number;
     }
 
 
-    private void validateOverlap(int inputNumber, List<Integer> sixNum) throws IllegalArgumentException{
+    private void validate(int number, List<Integer> sixNum) throws IllegalArgumentException{
+        IllegalArgument illegalArgument = new IllegalArgument();
         for(Integer lottoNum : sixNum) {
-            if(inputNumber == lottoNum) {
-                throw new IllegalArgumentException(PrintError.OVERLAP_WITH_LOTTONUM.getMessage());
+            if(number == lottoNum) {
+                throw illegalArgument.withMessage(PrintError.OVERLAP_WITH_LOTTONUM.getMessage());
             }
+        }
+
+        if(number<1 || 45<number) {
+            throw illegalArgument.withMessage(PrintError.OUT_OF_NUMBER_RANGE.getMessage());
         }
     }
 
-    private void validateOutOfRange(int number) throws IllegalArgumentException {
-        if(number<1 || 45<number) {
-            throw new IllegalArgumentException(PrintError.OUT_OF_NUMBER_RANGE.getMessage());
-        }
-    }
     public int getNumber() {
         return number;
     }
