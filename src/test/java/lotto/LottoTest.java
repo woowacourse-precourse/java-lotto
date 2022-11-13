@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +25,16 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 구매 금액은 1,000원 단위로 입력해야 한다.")
+    @Test
+    void inputLottoAmount_잘못된_금액_입력() {
+        assertThatThrownBy(() -> Application.getLottoCount("3500"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("알맞게 입력된 로또 구매 금액.")
+    @Test
+    void inputLottoAmount_알맞은_금액_입력() {
+        assertThat(Application.getLottoCount("3000")).isEqualTo(3);
+    }
 }
