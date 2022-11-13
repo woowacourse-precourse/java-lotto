@@ -7,11 +7,6 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Lotto> lottos = buyLotto(getLottoCount("6000"));
-
-        for (Lotto l: lottos) {
-            l.print();
-        }
     }
 
     public static int getLottoCount(String input) {
@@ -56,5 +51,17 @@ public class Application {
         }
 
         return matches;
+    }
+
+    public static double getRate(int lottoCount, List<Integer> matches) { // 순서대로 [ 3개, 4개, 5개, 5개+보너스, 6개 ] 개수
+        int originMoney = lottoCount * 1000;
+        long resultMoney = 0;
+        resultMoney += matches.get(0) * 5000;
+        resultMoney += matches.get(1) * 50000;
+        resultMoney += matches.get(2) * 150000;
+        resultMoney += matches.get(3) * 30000000;
+        resultMoney += matches.get(4) * 2000000000;
+
+        return (double) originMoney / (double) resultMoney;
     }
 }
