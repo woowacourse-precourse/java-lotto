@@ -1,5 +1,6 @@
 package lotto;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
@@ -44,6 +45,19 @@ class LottoServiceTest {
 
             // then
             assertThrows(IllegalStateException.class, () -> LottoService.amountInputToInteger(input));
+        }
+
+        @Test
+        @DisplayName("[성공] - 입력값 숫자로 변환 성공")
+        void success() {
+            // given
+            final String input = "11000";
+
+            // when
+            final int result = LottoService.amountInputToInteger(input);
+
+            // then
+            assertEquals(Integer.parseInt(input), result);
         }
     }
 }
