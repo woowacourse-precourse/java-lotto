@@ -9,12 +9,12 @@ public class GameOutput {
     private static final String NUMBER_INPUT_MESSAGE = "\n당첨 번호를 입력해 주세요.\n";
     private static final String BONUS_NUMBER_INPUT_MESSAGE = "\n보너스 번호를 입력해 주세요.\n";
     private static final String WINNING_STATISTICS = "\n당첨 통계\n---\n";
-    private static final String THREE_MATCHES = "3개 일치 (%s) - %d개\n";
-    private static final String FOUR_MATCHES = "4개 일치 (%s) - %d개\n";
-    private static final String FIVE_MATCHES = "5개 일치 (%s) - %d개\n";
-    private static final String FIVE_PLUS_BONUS_MATCHES = "5개 일치, 보너스 볼 일치 (%s) - %d개\n";
-    private static final String SIX_MATCHES = "6개 일치 (%s) - %d개\n";
-    private static final String TOTAL_RATE_OF_RETURN = "총 수익률은 %d%%입니다.\n";
+    private static final String THREE_MATCHES = "3개 일치 (%s원) - %d개\n";
+    private static final String FOUR_MATCHES = "4개 일치 (%s원) - %d개\n";
+    private static final String FIVE_MATCHES = "5개 일치 (%s원) - %d개\n";
+    private static final String FIVE_PLUS_BONUS_MATCHES = "5개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+    private static final String SIX_MATCHES = "6개 일치 (%s원) - %d개\n";
+    private static final String TOTAL_RATE_OF_RETURN = "총 수익률은 %.2f%%입니다.\n";
 
     public static void printMoneyInput() {
         System.out.println(MONEY_INPUT_MESSAGE);
@@ -56,7 +56,7 @@ public class GameOutput {
         System.out.printf(SIX_MATCHES, money, matchCount);
     }
 
-    public static void printTotalRate(int rate) {
+    public static void printTotalRate(double rate) {
         System.out.printf(TOTAL_RATE_OF_RETURN, rate);
     }
 
