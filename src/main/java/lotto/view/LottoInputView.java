@@ -1,9 +1,11 @@
 package lotto.view;
 
 import static lotto.model.InputErrorMessage.INVALID_FORMAT_MONEY;
+import static lotto.model.InputErrorMessage.INVALID_LOTTO_NUMBERS;
 import static lotto.model.InputErrorMessage.MONEY_IS_NOT_DIVIDED;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import lotto.model.Constant;
 
 public class LottoInputView {
@@ -21,6 +23,7 @@ public class LottoInputView {
     public String getLottoNumber() {
         System.out.println(INPUT_LOTTO_NUMBER);
         String lottoNumbers = Console.readLine();
+        validateInputIsNumberFormat(lottoNumbers);
         return lottoNumbers;
     }
 
@@ -44,6 +47,14 @@ public class LottoInputView {
         int money = Integer.parseInt(uncheckedMoney);
         if(money % Constant.MONEY_UNIT != 0) {
             throw new IllegalArgumentException(MONEY_IS_NOT_DIVIDED.getErrorMessage());
+        }
+    }
+
+    public void validateInputIsNumberFormat(String uncheckedInput) {
+        String uncheckedNumbers = Arrays.toString(uncheckedInput.split(","));
+        boolean isNumber = isNumberString(uncheckedNumbers);
+        if(!isNumber) {
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBERS.getErrorMessage());
         }
     }
 }
