@@ -9,7 +9,7 @@ class ConsumerResultTest {
     @Test
     void 수익률_확인(){
         ConsumerResult consumerResult = new ConsumerResult();
-        Assertions.assertThat(consumerResult.profit(8000, 5000)).isEqualTo(62.5);
+        Assertions.assertThat(consumerResult.profit(8000, 5000)).isEqualTo(62.5f);
 
     }
 
