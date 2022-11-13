@@ -51,12 +51,7 @@ public class Emcee {
         System.out.println("하나의 보너스 번호만 입력해 주세요.");
     }
 
-    public void showResultOfLottoGame(Map<Rank, Integer> tallyOfRanks, int payment) {
-        showStatistics(tallyOfRanks);
-        showYield(tallyOfRanks, payment);
-    }
-
-    private void showStatistics(Map<Rank, Integer> tallyOfRanks) {
+    public void showStatistics(Map<Rank, Integer> tallyOfRanks) {
         System.out.println("당첨 통계입니다.");
         System.out.println("=========================");
         System.out.println("3개 일치 (5,000원) - " + tallyOfRanks.get(FIFTH_THREE_MATCHED) + "개");
@@ -67,7 +62,7 @@ public class Emcee {
         System.out.println("=========================");
     }
 
-    private void showYield(Map<Rank, Integer> tallyOfRanks, int payment) {
+    public void showYield(Map<Rank, Integer> tallyOfRanks, int payment) {
         double yield = calculateYield(tallyOfRanks, payment);
         System.out.println("총 수익률은 " + yield + "%입니다.");
     }
