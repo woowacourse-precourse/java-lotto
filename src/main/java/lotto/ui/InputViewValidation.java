@@ -1,5 +1,7 @@
 package lotto.ui;
 
+import lotto.lotto.LottoManager;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -46,7 +48,7 @@ public class InputViewValidation {
 
     public static void validateWinningNumbersSize(String input) {
         String[] winningNumbers = input.split(",");
-        if (winningNumbers.length != 6) {
+        if (winningNumbers.length != LottoManager.LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ERROR_LOTTO_SIZE);
         }
     }
@@ -63,7 +65,7 @@ public class InputViewValidation {
     public static void validateWinningNumbersRange(String input) {
         String[] winningNumbers = input.split(",");
         for (String number : winningNumbers) {
-            if (Integer.parseInt(number) > 45 || Integer.parseInt(number) < 1) {
+            if (Integer.parseInt(number) > LottoManager.LOTTO_RANGE_END || Integer.parseInt(number) < LottoManager.LOTTO_RANGE_START) {
                 throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
             }
         }
@@ -72,14 +74,14 @@ public class InputViewValidation {
     public static void validateWinningNumbersUnique(String input) {
         List<Integer> winningNumbers = Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
         HashSet<Integer> hashSet = new HashSet<>(winningNumbers);
-        if (hashSet.size() != 6){
+        if (hashSet.size() != LottoManager.LOTTO_NUMBER_COUNT){
             throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBER);
         }
     }
 
     public static void validateBonusNumberRange(String input) {
         int number = Integer.parseInt(input);
-        if (number > 45 || number < 1) {
+        if (number > LottoManager.LOTTO_RANGE_END || number < LottoManager.LOTTO_RANGE_START) {
             throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
         }
     }

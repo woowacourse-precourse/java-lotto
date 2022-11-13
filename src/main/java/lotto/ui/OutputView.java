@@ -1,5 +1,6 @@
 package lotto.ui;
 
+import lotto.lotto.LottoManager;
 import lotto.lotto.Rank;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class OutputView {
     }
 
     public static void outputBuyingAmount(int buyingMoney) {
-        System.out.println(buyingMoney / 1000 + BUYING_N_AMOUNT);
+        System.out.println(buyingMoney / LottoManager.LOTTO_PRICE + BUYING_N_AMOUNT);
     }
 
     public static void outputLotto(List<Integer> numbers) {

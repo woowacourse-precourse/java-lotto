@@ -13,10 +13,15 @@ public class LottoManager {
     private final int buyingMoney;
     private final Map<Rank, Integer> ranks;
 
+    public static final int LOTTO_RANGE_START = 1;
+    public static final int LOTTO_RANGE_END = 45;
+    public static final int LOTTO_PRICE = 1000;
+    public static final int LOTTO_NUMBER_COUNT = 6;
+
     public LottoManager(int buyingMoney) {
         this.buyingMoney = buyingMoney;
         lottos = new ArrayList<>();
-        for (int i = 0; i < buyingMoney / 1000; i++) {
+        for (int i = 0; i < buyingMoney / LOTTO_PRICE; i++) {
             lottos.add(generateRandomLotto());
         }
 
@@ -64,7 +69,7 @@ public class LottoManager {
     }
 
     private Lotto generateRandomLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_RANGE_START, LOTTO_RANGE_END, LOTTO_NUMBER_COUNT);
         return new Lotto(numbers);
     }
 
