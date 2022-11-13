@@ -12,6 +12,10 @@ public enum MoneyValidator implements Validator {
                     .map(i -> (char) i)
                     .allMatch(c -> Character.getType(c) == Constants.NUMBER_TYPE)
     ),
+    IS_IN_BOUNDS(
+            "[ERROR] 구입금액이 너무 큽니다.",
+            (String input) -> input.length() < String.valueOf(Config.MAX_MONEY).length()
+    ),
     ;
 
     private final String errorMessage;
@@ -31,6 +35,6 @@ public enum MoneyValidator implements Validator {
     }
 
     public static class Constants {
-        public static final  int NUMBER_TYPE = 9;
+        public static final int NUMBER_TYPE = 9;
     }
 }

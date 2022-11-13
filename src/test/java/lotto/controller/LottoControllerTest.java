@@ -24,7 +24,12 @@ class LottoControllerTest {
         assertAll(
                 () -> assertThatThrownBy(() -> controller.inputMoney("non digit"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(MoneyValidator.IS_NATURAL_NUMBER.getErrorMessage())
+                        .hasMessageContaining(MoneyValidator.IS_NATURAL_NUMBER.getErrorMessage()),
+
+                () -> assertThatThrownBy(() -> controller.inputMoney("100000000000000000"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(MoneyValidator.IS_IN_BOUNDS.getErrorMessage())
+
         );
     }
 }
