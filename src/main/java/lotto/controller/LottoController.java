@@ -53,6 +53,11 @@ public class LottoController {
     private void showWinningResult(List<Integer> result) {
         List<String> winningAmount = lottoService.getWinningAmount();
         View.printWinningResult(result, winningAmount);
+        getProfit();
+    }
+
+    private void getProfit() {
+        String profit = lottoService.getProfit();
     }
 
 

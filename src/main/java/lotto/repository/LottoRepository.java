@@ -8,11 +8,13 @@ import static java.util.Arrays.asList;
 
 public class LottoRepository {
 
+    private static List<Integer> lastWinningResult;
+    private static Integer lastPurchaseMoney;
     private static List<Lotto> lastUserLottoGroup;
     private static Lotto lastWinningLotto;
     private static Integer lastBonusNumber;
-    public static List<String> winningAmount = asList("5,000", "50,000", "1,500,000",
-            "2,000,000,000","30,000,000");
+    public static List<String> winningAmount = asList("5000", "50000", "1500000",
+            "2000000000","30000000");
 
     public static void saveUserLotto(List<Lotto> userLottoGroup) {
         lastUserLottoGroup = userLottoGroup;
@@ -40,5 +42,21 @@ public class LottoRepository {
 
     public static List<String> getWinningAmount() {
         return winningAmount;
+    }
+
+    public static void savePurchaseMoney(String purchaseMoney) {
+        lastPurchaseMoney = Integer.parseInt(purchaseMoney);
+    }
+
+    public static void saveWinningResult(List<Integer> winningResult) {
+        lastWinningResult = winningResult;
+    }
+
+    public static List<Integer> getWinningResult() {
+        return lastWinningResult;
+    }
+
+    public static Integer getPurchaseMoney() {
+        return lastPurchaseMoney;
     }
 }

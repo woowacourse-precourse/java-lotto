@@ -16,9 +16,14 @@ public class LottoService {
     public Integer luckyCount;
     public Integer secondaryCount;
 
-    public static Integer getTheNumberOfLotto(String userInputMoney) {
-        InputValidator.checkUserInputMoney(userInputMoney);
-        return Integer.parseInt(userInputMoney) / 1000;
+    public static Integer getTheNumberOfLotto(String purchaseMoney) {
+        InputValidator.checkUserInputMoney(purchaseMoney);
+        savePurchaseMoney(purchaseMoney);
+        return Integer.parseInt(purchaseMoney) / 1000;
+    }
+
+    private static void savePurchaseMoney(String purchaseMoney) {
+        LottoRepository.savePurchaseMoney(purchaseMoney);
     }
 
     public List<Lotto> createUserLotto(Integer numberOfLotto) {
@@ -60,14 +65,19 @@ public class LottoService {
         List<Lotto> userLottoGroup = LottoRepository.getLastUserLottoGroup();
         Lotto winningLotto = LottoRepository.getLastWinningLotto();
         Integer bonusNumber = LottoRepository.getBonusNumber();
-        List<Integer> resultCount = Arrays.asList(0,0,0,0,0);
+        List<Integer> winningResult = Arrays.asList(0,0,0,0,0);
 
         for (Lotto userLotto : userLottoGroup) {
             initCount();
             Integer luckyCount = compareUserAndWinning(userLotto, winningLotto, bonusNumber);
-            createWinningResult(resultCount, luckyCount);
+            createWinningResult(winningResult, luckyCount);
         }
-        return resultCount;
+        saveWinningResult(winningResult);
+        return winningResult;
+    }
+
+    private void saveWinningResult(List<Integer> winningResult) {
+        LottoRepository.saveWinningResult(winningResult);
     }
 
     private void initCount() {
@@ -98,5 +108,18 @@ public class LottoService {
 
     public List<String> getWinningAmount() {
         return LottoRepository.getWinningAmount();
+    }
+
+
+    public String getProfit() {
+        List<Integer> winningResult = LottoRepository.getWinningResult();
+        List<String> winningMoney = LottoRepository.getWinningAmount();
+        Double purchaseMoney = Double.valueOf(LottoRepository.getPurchaseMoney());
+
+        Integer totalPrice = 0;
+        for (int i = 0 ; i < winningMoney.size(); i ++){
+            totalPrice += Integer.parseInt(winningMoney.get(i)) * winningResult.get(i);
+        }
+        return String.format("%.1f", totalPrice/purchaseMoney*100);
     }
 }
