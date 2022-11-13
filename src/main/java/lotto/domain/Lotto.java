@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,7 +27,6 @@ public class Lotto {
 
     @Override
     public String toString() {
-        Collections.sort(numbers);
         return numbers.toString();
     }
 }
