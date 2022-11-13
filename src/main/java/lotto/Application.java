@@ -51,7 +51,6 @@ public class Application {
         return issueLottoList;
     }
 
-
     public static List<Integer> enterScore(){
         System.out.println("당첨 번호를 입력해 주세요.");
 
@@ -66,4 +65,5 @@ public class Application {
 
         return resultArray;
     }
+
 }
