@@ -1,6 +1,10 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum WinningHistory {
     FIRST_PRIZE(6, 2_000_000_000),
@@ -24,6 +28,12 @@ public enum WinningHistory {
 
     public int getPrizeMoney() {
         return prizeMoney;
+    }
+
+    public static List<WinningHistory> getValues() {
+        List<WinningHistory> winningHistoryValues = Stream.of(WinningHistory.values()).filter(rankType -> rankType.matchNumbers >= 3).collect(Collectors.toList());
+        Collections.reverse(winningHistoryValues);
+        return winningHistoryValues;
     }
 
     public static WinningHistory getWinningHistoryType(int matchNumbers, boolean matchBonus) {

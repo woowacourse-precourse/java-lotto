@@ -58,7 +58,7 @@ public class LottoStore {
 
     private void printWinningStatics(HashMap<WinningHistory, Integer> winningHistories) {
         outputView.printStartStatics();
-        for (WinningHistory winningHistory : winningHistories.keySet()) {
+        for (WinningHistory winningHistory : WinningHistory.getValues()) {
             outputView.printStatics(winningHistory.getStaticsMessage(winningHistories.get(winningHistory)));
         }
     }
