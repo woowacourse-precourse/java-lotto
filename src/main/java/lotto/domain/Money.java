@@ -8,18 +8,15 @@ public class Money {
     public static final String NOT_MOD_ZERO_MESSAGE = "[ERROR] 1000으로 나누어지는 금액이 아닙니다.";
     public static final String REJECT_ZERO = "[ERROR] 구입 금액에 0을 입력할 수 없습니다.";
     public static final String REJECT_NOT_NUMBERS = "[ERROR] 구입 금액에 숫자를 제외한 다른 입력이 올 수 없습니다.";
-    private int money;
+    private final int money;
+    private final int lottoCount;
 
-    public Money(String input) {
-        try {
-            validateConsistOfNumbers(input);
-            validateMoneyZero(input);
-            validateMoney(input);
-            this.money = Integer.parseInt(input);
-        } catch (IllegalArgumentException e){
-            this.money = 0;
-            System.out.println(e.getMessage());
-        }
+    public Money(String input) throws IllegalArgumentException {
+        validateConsistOfNumbers(input);
+        validateMoneyZero(input);
+        validateMoney(input);
+        this.money = Integer.parseInt(input);
+        this.lottoCount = Math.floorDiv(this.money, STANDARD_WON);
     }
 
     public void validateMoney(String input) {
@@ -42,7 +39,11 @@ public class Money {
         }
     }
 
+    public int getMoney() {
+        return this.money;
+    }
+
     public int getLottoCount() {
-        return Math.floorDiv(this.money, STANDARD_WON);
+        return this.lottoCount;
     }
 }
