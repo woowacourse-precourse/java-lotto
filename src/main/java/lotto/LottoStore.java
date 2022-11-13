@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class LottoStore {
@@ -19,6 +20,8 @@ public class LottoStore {
         List<Lotto> lottos = purchaseLottos.getPurchaseLottos();
 
         printPurchaseInform(numberOfLottosPurchased, lottos);
+
+        Lotto winningNumbers = enterWinningNumbers();
     }
 
     private PurchaseAmount setPurchaseAmount() {
@@ -32,5 +35,9 @@ public class LottoStore {
     private void printPurchaseInform(int numberOfLottosPurchased, List<Lotto> lottos) {
         outputView.printNumberOfLottosPurchased(numberOfLottosPurchased);
         outputView.printLottosList(lottos);
+    }
+
+    private Lotto enterWinningNumbers() {
+        return new Lotto(inputView.enterWinningNumber());
     }
 }
