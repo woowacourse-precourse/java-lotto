@@ -1,26 +1,30 @@
 package lotto.reposiotory;
 
-import lotto.domain.User;
+import lotto.Lotto;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Repository {
-    private static final Map<Integer,User> map=new HashMap<>();
-    private static final Repository repository=new Repository();
+    private static final List<Lotto> list = new ArrayList<>();
+    private static final Repository repository = new Repository();
 
     private Repository() {
     }
-    public void save(User user) {
-        user.setId(map.size()+1);
-        map.put(user.getId(),user);
-    }
 
-    public static Repository createRepository(){
+    public static Repository createRepository() {
         return repository;
     }
 
-    public User findById(int id) {
-        return map.get(id);
+    public void save(Lotto lotto) {
+        list.add(lotto);
+    }
+
+    public void saveAll(List<Lotto> lottos) {
+        list.addAll(lottos);
+    }
+
+
+    public List<Lotto> findAll() {
+        return Collections.unmodifiableList(list);
     }
 }

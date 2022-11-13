@@ -7,14 +7,32 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
-    public static List<Lotto> generatLottos(Integer amount) {
-        List<Lotto> lottos=new ArrayList<>();
-        for(int i=0;i<getCount(amount);i++){
+    public static List<Lotto> generatLottos(String userInput) {
+        validate(userInput);
+        return createLottos(toInt(userInput));
+    }
+
+    private static List<Lotto> createLottos(int amount) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < getCount(amount); i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             sortNumbers(numbers);
             lottos.add(new Lotto(numbers));
         }
         return lottos;
+    }
+
+    private static void validate(String userInput) {
+        try {
+            int amount = toInt(userInput);
+            if (amount % 1000 != 0) throw new IllegalArgumentException("1000원 단위 숫자를 입력해주세요");
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요");
+        }
+    }
+
+    private static int toInt(String amount) {
+        return Integer.parseInt(amount);
     }
 
     private static int getCount(Integer amount) {
