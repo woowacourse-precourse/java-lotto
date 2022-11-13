@@ -51,7 +51,7 @@ public class Statistics {
         for (Ranking ranking : counter.keySet()) {
             sumPrize += ranking.getPrize() * counter.get(ranking);
         }
-        rate = sumPrize / (double) ticket.getPrice();
+        rate = sumPrize / (double) ticket.getPrice() * 100;
         returnRate = Double.parseDouble(String.format("%.1f", rate));
     }
 
