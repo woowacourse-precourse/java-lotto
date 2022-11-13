@@ -15,28 +15,28 @@ public class LottoMachine {
     private int lottoPrice;
     private List<Integer> userNumbers;
     private Integer userBonus;
-    private boolean machineStatus;
 
     public LottoMachine() {
         lottoPrice = INIT_NUMBER;
         userNumbers = Collections.emptyList();
         userBonus = INIT_NUMBER;
-        machineStatus = true;
     }
 
     public void start() {
-        buyLotto();
-        LottoPaper lottoPaper = GeneratorLottoPaper.generateLottoPaper(lottoPrice);
-        inputLottoNumbers();
-        inputBonus();
-        showStats(lottoPaper);
+        try {
+            buyLotto();
+            LottoPaper lottoPaper = GeneratorLottoPaper.generateLottoPaper(lottoPrice);
+            inputUserNumbers();
+            inputUserBonus();
+            showStats(lottoPaper);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void showStats(LottoPaper lottoPaper) {
-        if (machineStatus) {
             List<Integer> ranks = lottoPaper.checkLottos(userNumbers, userBonus);
             OutputView.showResult(ranks, lottoPrice);
-        }
     }
 
     public void buyLotto() {
@@ -44,17 +44,10 @@ public class LottoMachine {
         try {
             UserMoneyValidation.validate(userLottoPrice);
             lottoPrice = Integer.parseInt(userLottoPrice);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            machineStatus = false;
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+            throw exception;
         }
-    }
-
-    public void inputLottoNumbers() {
-        if (!machineStatus) {
-            return;
-        }
-        inputUserNumbers();
     }
 
     public void inputUserNumbers() {
@@ -62,17 +55,10 @@ public class LottoMachine {
             List<Integer> inputLottoNumbers = InputView.inputLottoNumbers();
             LottoNumbersValidation.validateLottoNumbers(inputLottoNumbers);
             userNumbers =  inputLottoNumbers;
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            machineStatus = false;
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+            throw exception;
         }
-    }
-
-    public void inputBonus() {
-        if (!machineStatus) {
-            return;
-        }
-        inputUserBonus();
     }
 
     public void inputUserBonus() {
@@ -81,9 +67,9 @@ public class LottoMachine {
             LottoBonusValidation.validate(bonus);
             LottoBonusValidation.validateDuplicateNumber(userNumbers, bonus);
             userBonus =  Integer.valueOf(bonus);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            machineStatus = false;
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+            throw exception;
         }
     }
 }
