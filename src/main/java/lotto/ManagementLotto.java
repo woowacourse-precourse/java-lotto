@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.constant.LottoEnum;
 
 public class ManagementLotto {
     private final ValidInput validInput = new ValidInput();
@@ -38,6 +37,8 @@ public class ManagementLotto {
         }
 
         validInput.validInputHasDuplicatedNumber(inputNumberList);
+
+        inputNumberList.sort(Integer::compareTo);
 
         return inputNumberList;
     }
