@@ -2,14 +2,17 @@ package lotto;
 
 public abstract class Number {
     private int number;
+    protected Validator validator = new Validator();
 
     public int getNumber() {
         return this.number;
     }
 
-    public void setNumber(Integer number) {
+    protected void setNumber(int number) {
         this.number = number;
     }
 
-    public abstract void validate();
+    protected void validateNumber(int number) {
+        this.validator.throwIfNotPositive(number);
+    }
 }
