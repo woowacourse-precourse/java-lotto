@@ -15,7 +15,7 @@ public enum LottoResult {
         this.prize = prize;
     }
 
-    String getName() {
+    public String getName() {
         return result;
     }
     int getPrize() {
