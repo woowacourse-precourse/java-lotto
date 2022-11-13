@@ -46,7 +46,7 @@ public class LottoGame {
         printWinningDetails();
 
         earningsRate = lottoGameController.calculateRate();
-        System.out.println(earningsRate);
+        System.out.println(GameMessage.WHOLE_EARNINGS_RATE.getMessage() + earningsRate + "입니다.");
     }
 
     private void printLottoTickets() {
@@ -59,7 +59,7 @@ public class LottoGame {
         WinningMessage winningMessage[] = WinningMessage.values();
         int[] rankCount = lottoAnalyzer.getRankCount();
         for (int i = 0; i < 5; i++) {
-            System.out.println(winningMessage[i].getMessage()+rankCount[i]+"개");
+            System.out.println(winningMessage[i].getMessage() + rankCount[i] + "개");
         }
     }
 }

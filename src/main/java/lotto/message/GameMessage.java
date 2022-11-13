@@ -6,7 +6,8 @@ public enum GameMessage {
     WINNING_NUMBER("당첨 번호를 입력해 주세요."),
     BONNUS_NUMBER("보너스 번호를 입력해 주세요."),
     WINNIG_STATISTICS("당첨 통계"),
-    LINE("---");
+    LINE("---"),
+    WHOLE_EARNINGS_RATE("총 수익률은 ");
 
     private final String message;
 
