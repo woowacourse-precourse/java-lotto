@@ -1,10 +1,13 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoPlayer {
     private final InputManager inputManager = new InputManager();
     private final LottoFactory lottoFactory = new LottoFactory();
+    private final LottoAnalyst lottoAnalyst= new LottoAnalyst();
+
     public void play() {
         inputAll();
     }
@@ -14,7 +17,15 @@ public class LottoPlayer {
         List<Lotto> lottos = lottoFactory.create(lottoCount);
         printPurchaseList(lottos);
         Lotto winningNumber = requestInputWinningNumbers();
-        requestInputBonusNumber(winningNumber);
+        int bonusNumber = requestInputBonusNumber(winningNumber);
+        LottoMatcher lottoMatcher = new LottoMatcher(winningNumber, bonusNumber);
+        List<LottoGrade> lottoResults = lottoMatcher.matchAll(lottos);
+        Map<LottoGrade, Integer> analyze = lottoAnalyst.analyze(lottoResults);
+        analyze.remove(LottoGrade.BANG);
+        analyze.forEach((key, value) -> {
+            System.out.printf(String.valueOf(ConsoleMessage.STATISTICS_ELEMENT_FORMAT), key, value);
+            System.out.print(ConsoleMessage.NEW_LINE);
+        });
     }
 
     private void printPurchaseList(List<Lotto> lottos) {

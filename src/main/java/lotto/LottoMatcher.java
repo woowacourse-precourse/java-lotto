@@ -7,7 +7,7 @@ public class LottoMatcher {
     private final List<Integer> winningNumbers;
     private final Integer bonusNumber;
 
-    public LottoMatcher(Lotto winningNumber, List<Integer> winningNumbers, Integer bonusNumber) {
+    public LottoMatcher(Lotto winningNumber, Integer bonusNumber) {
         this.winningNumbers = winningNumber.getNumbers();
         this.bonusNumber = bonusNumber;
     }
@@ -18,7 +18,7 @@ public class LottoMatcher {
                 .collect(Collectors.toList());
     }
 
-    public LottoGrade matchOne(Lotto lotto) {
+    private LottoGrade matchOne(Lotto lotto) {
         int matchPoint = (int)winningNumbers.stream()
                 .filter(lotto::isContain)
                 .count();
