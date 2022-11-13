@@ -14,4 +14,10 @@ public class LottoCompanyService {
         List<Integer> inputWinningNumbers = Arrays.stream(inputWinning).map(Integer::parseInt).collect(Collectors.toList());
         return inputWinningNumbers;
     }
+
+    public int inputBonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String inputUser = Console.readLine();
+        return Integer.parseInt(inputUser);
+    }
 }
