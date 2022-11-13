@@ -22,6 +22,7 @@ public class LottoStore {
         printPurchaseInform(numberOfLottosPurchased, lottos);
 
         Lotto winningNumbers = enterWinningNumbers();
+        BonusNumber bonusNumber = enterBonusNumbers(winningNumbers);
     }
 
     private PurchaseAmount setPurchaseAmount() {
@@ -39,5 +40,9 @@ public class LottoStore {
 
     private Lotto enterWinningNumbers() {
         return new Lotto(inputView.enterWinningNumber());
+    }
+
+    private BonusNumber enterBonusNumbers(Lotto winningNumbers) {
+        return new BonusNumber(inputView.enterBonusNumber(), winningNumbers);
     }
 }
