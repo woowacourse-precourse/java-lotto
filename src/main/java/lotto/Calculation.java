@@ -42,4 +42,9 @@ public class Calculation {
         }
         return sum;
     }
+
+    public static String getWinResult(int[] counts, String profitRate) {
+        String winResult = String.format(Notification.LOTTO_RESULT.getMessage(), counts[1], counts[2], counts[3], counts[4], counts[5], profitRate);
+        return winResult;
+    }
 }
