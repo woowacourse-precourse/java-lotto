@@ -14,9 +14,8 @@ class LottoTest {
     @DisplayName("로또 오름차순 정렬 결과 확인.")
     @Test
     void sortNumbers() {
-        List<Integer> list = new ArrayList<>(Arrays.asList(8, 22, 13, 4, 35, 6));
+        List<Integer> list = Arrays.asList(8, 22, 13, 4, 35, 6);
         Lotto lotto = new Lotto(list);
-//        Lotto lotto = new Lotto(List.of(8, 22, 13, 4, 35, 6));
         assertThat(lotto.getNumbers()).isEqualTo(List.of(4, 6, 8, 13, 22, 35));
     }
 
