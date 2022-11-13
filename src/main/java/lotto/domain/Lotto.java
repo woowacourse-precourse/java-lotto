@@ -2,23 +2,23 @@ package lotto.domain;
 
 import java.util.List;
 
+import lotto.util.Validator;
+
 public class Lotto {
-    private final List<Integer> numbers;
+	private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
+	public Lotto(List<Integer> numbers) {
+		validate(numbers);
+		this.numbers = numbers;
+	}
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
+	private void validate(List<Integer> numbers) {
+		Validator.validateNoDuplication(numbers);
+		Validator.validateNumberRange(numbers);
+	}
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
+	public List<Integer> getNumbers() {
+		return numbers;
+	}
 
-    // TODO: 추가 기능 구현
 }
