@@ -8,6 +8,7 @@ import java.util.List;
 public class LottoEstimator {
     private final static int MIN_MATCH_NUMBERS = 3;
     private final static int PURCHASE_PRICE_UNIT = 1000;
+
     private final WinningLotto winningLotto;
     private final List<Lotto> purchasedLotteries;
     private final HashMap<LottoRank, Integer> rankStatics = new HashMap<>();
