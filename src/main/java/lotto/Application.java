@@ -1,10 +1,13 @@
 package lotto;
 import lotto.Domain.ErrorMessage;
 import lotto.Domain.SayMessage;
+import lotto.Domain.WinningPrize;
+import java.util.List;
 
 public class Application {
     private boolean systemError = false;
     private int money = 0;
+
     private Lotto answerValue = null;
     private static LottoClerk lottoClerk;
     private static LottoMachine lottoMachine;
@@ -26,17 +29,19 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        Application application = new Application();
-        if (application.systemError)
+        Application app = new Application();
+        if (app.systemError)
             return;
-        lottoClerk.sayBuyLotto(lottoMachine.makeLottoCount(application.getMoney()));
-        application.giveLotto();
-        application.answerLotto();
-        if (application.systemError)
+        lottoClerk.sayBuyLotto(lottoMachine.makeLottoCount(app.getMoney()));
+        app.giveLotto();
+        app.answerLotto();
+        if (app.systemError)
             return;
-        application.bonusLotto();
-        if(application.systemError)
+        app.bonusLotto();
+        if(app.systemError)
             return;
+        List<WinningPrize> winningPrizes = lottoMachine.makeStatistics(app.getBonus(),app.getAnswerValue());
+        lottoClerk.sayResult(winningPrizes, app.getMoney());
     }
 
     public void giveLotto() {
@@ -92,5 +97,9 @@ public class Application {
         } catch (Exception e) {
             errorCatcher(ErrorMessage.NOTONETOFOURTHYFIVE.getErrorMessage());
         }
+    }
+
+    public Lotto getAnswerValue() {
+        return answerValue;
     }
 }
