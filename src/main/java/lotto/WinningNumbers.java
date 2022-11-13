@@ -53,8 +53,4 @@ public class WinningNumbers {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되면 안 됩니다.");
         }
     }
-
-    public static void main(String[] args) {
-        new WinningNumbers();
-    }
 }
