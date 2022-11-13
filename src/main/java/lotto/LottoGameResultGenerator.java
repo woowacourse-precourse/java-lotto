@@ -29,6 +29,7 @@ public class LottoGameResultGenerator {
                                                 BonusNumber bonusNumber) {
         for (Lotto lotto : lottos) {
             int winningCount = getWinningCount(lotto, winningNumbers);
+            updateWinningDetails(lotto, winningDetails, bonusNumber, winningCount);
         }
     }
 
@@ -40,5 +41,33 @@ public class LottoGameResultGenerator {
             }
         }
         return winningCount;
+    }
+
+    private static void updateWinningDetails(Lotto lotto, Map<Integer, Integer> winningDetails,
+                                          BonusNumber bonusNumber, int winningCount) {
+        if (winningCount < 3) {
+            return;
+        }
+
+        int prizeMoney = getPrizeMoneyByWinningCount(lotto, bonusNumber, winningCount);
+        int oldValue = winningDetails.get(prizeMoney);
+        int newValue = oldValue + 1;
+        winningDetails.put(prizeMoney, newValue);
+    }
+
+    private static int getPrizeMoneyByWinningCount(Lotto lotto, BonusNumber bonusNumber, int winningCount) {
+        if (winningCount == 6) {
+            return 2_000_000_000;
+        }
+        if (winningCount == 5) {
+            if (lotto.contains(bonusNumber.getNumber())) {
+                return 30_000_000;
+            }
+            return 1_500_000;
+        }
+        if (winningCount == 4) {
+            return 50_000;
+        }
+        return 5_000;
     }
 }
