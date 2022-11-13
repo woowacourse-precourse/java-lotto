@@ -55,6 +55,8 @@
 # 🌺 예외상황
 #### 아래와 같은 상황 발생 시 IllegalArgumentException 을 반환하고 에러 메세지를 출력 후 종료한다.
 - 예외 출력 시 "[ERROR]"를 출력 후 에러 메세지를 출력한다.
+- [x] IllegalArgumentException 을 '먼저' 출력 후 에러메세지를 출력한다. 
+
   <br>
 
 - [x] 로또 구입 금액이 1000원으로 떨어지지 않는 경우
