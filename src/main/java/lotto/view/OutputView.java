@@ -1,10 +1,10 @@
-package lotto.result;
+package lotto.view;
 
 import java.util.List;
-import lotto.GameMessage;
-import lotto.domain.Rank;
+import lotto.view.lottostats.LottoRanksResult;
+import lotto.view.lottostats.LottoYieldResult;
 
-public class LottoResult {
+public class OutputView {
     public static void showResult(List<Integer> lottoRanks, int lottoPrice) {
         showFrontMessage();
         LottoRanksResult.showRanksStats(lottoRanks);

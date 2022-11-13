@@ -5,9 +5,9 @@ import java.util.List;
 import lotto.domain.validation.LottoBonusValidation;
 import lotto.domain.validation.LottoNumbersValidation;
 import lotto.lottopaper.LottoPaper;
-import lotto.result.LottoResult;
-import lotto.user.User;
-import lotto.user.validation.UserMoneyValidation;
+import lotto.view.OutputView;
+import lotto.view.InputView;
+import lotto.view.validation.UserMoneyValidation;
 
 public class LottoMachine {
 
@@ -32,12 +32,12 @@ public class LottoMachine {
     public void showStats(LottoPaper lottoPaper, List<Integer> userNumbers, Integer bonus) {
         if (machineStatus) {
             List<Integer> ranks = lottoPaper.checkLottos(userNumbers, bonus);
-            LottoResult.showResult(ranks, lottoPrice);
+            OutputView.showResult(ranks, lottoPrice);
         }
     }
 
     public void buyLotto() {
-        String userLottoPrice = User.buyLotto();
+        String userLottoPrice = InputView.buyLotto();
         try {
             UserMoneyValidation.validate(userLottoPrice);
             lottoPrice = Integer.parseInt(userLottoPrice);
@@ -57,7 +57,7 @@ public class LottoMachine {
 
     public List<Integer> inputUserNumbers() {
         try {
-            List<Integer> userLottoNumbers = User.inputLottoNumbers();
+            List<Integer> userLottoNumbers = InputView.inputLottoNumbers();
             LottoNumbersValidation.validateLottoNumbers(userLottoNumbers);
             return userLottoNumbers;
         } catch (IllegalArgumentException e) {
@@ -75,7 +75,7 @@ public class LottoMachine {
     }
 
     public Integer inputUserBonus() {
-        String bonus = User.inputBonusNumber();
+        String bonus = InputView.inputBonusNumber();
         try {
             LottoBonusValidation.validate(bonus);
             return Integer.valueOf(bonus);

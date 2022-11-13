@@ -8,11 +8,12 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 import lotto.domain.Rank;
+import lotto.view.OutputView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class LottoResultTest {
+public class OutputViewTest {
     private OutputStream out;
 
     @BeforeEach
@@ -29,7 +30,7 @@ public class LottoResultTest {
         List<String> answerMessage = List.of(Rank.ONE + "1", Rank.FIVE + "1");
 
         // when
-        LottoResult.showResult(ranks, 0);
+        OutputView.showResult(ranks, 0);
 
         // then
         assertThat(out.toString()).contains(answerMessage);
@@ -44,7 +45,7 @@ public class LottoResultTest {
         String answer = "총 수익률은 62.5%입니다.";
 
         // when
-        LottoResult.showResult(ranks, lottoPrice);
+        OutputView.showResult(ranks, lottoPrice);
 
         // then
         assertThat(out.toString()).contains(answer);

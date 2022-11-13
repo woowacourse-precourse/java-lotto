@@ -1,11 +1,10 @@
-package lotto.user;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import lotto.GameMessage;
 import lotto.domain.validation.LottoNumbersValidation;
 
-public class User {
+public class InputView {
     public static String buyLotto() {
         System.out.println(GameMessage.BUY);
         return Console.readLine();
@@ -15,7 +14,7 @@ public class User {
         System.out.println(GameMessage.INPUT_NUMBERS);
         String userNumbers = Console.readLine();
         LottoNumbersValidation.validateInputLottoNumbers(userNumbers);
-        return UserUtil.convertUserInputToNumbers(userNumbers);
+        return InputUtil.convertUserInputToNumbers(userNumbers);
     }
 
     public static String inputBonusNumber() {

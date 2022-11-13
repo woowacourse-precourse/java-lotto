@@ -1,4 +1,4 @@
-package lotto.user.validation;
+package lotto.view.validation;
 
 public enum ExceptionMessage {
     UNITS("구입 금액은 1000원 단위여야 합니다."),

@@ -1,7 +1,7 @@
 package lotto.domain.validation;
 
 import lotto.domain.LottoEnum;
-import lotto.user.validation.ExceptionMessage;
+import lotto.view.validation.ExceptionMessage;
 
 public class LottoBonusValidation {
     private static final String NUMBER_REGEXP = "^[0-9]+$";

@@ -1,7 +1,7 @@
-package lotto.result;
+package lotto.view.lottostats;
 
 import java.util.List;
-import lotto.GameMessage;
+import lotto.view.GameMessage;
 import lotto.domain.Rank;
 
 public class LottoYieldResult {

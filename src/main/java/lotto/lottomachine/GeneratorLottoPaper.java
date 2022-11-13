@@ -3,7 +3,7 @@ package lotto.lottomachine;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.GameMessage;
+import lotto.view.GameMessage;
 import lotto.domain.Lotto;
 import lotto.domain.LottoEnum;
 import lotto.lottopaper.LottoPaper;

@@ -1,7 +1,6 @@
-package lotto.user.validation;
+package lotto.view.validation;
 
 import lotto.domain.LottoEnum;
-import lotto.domain.validation.LottoBonusValidation;
 
 public class UserMoneyValidation {
     private static final int REMAINDER_ZERO = 0;

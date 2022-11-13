@@ -13,7 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-public class LottoMachineUserNumbersTest {
+public class LottoMachineInputViewNumbersTest {
 
     private static final String ERROR = "[ERROR]";
     private static LottoMachine lottoMachine;
