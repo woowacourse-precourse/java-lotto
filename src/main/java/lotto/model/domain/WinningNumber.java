@@ -1,9 +1,7 @@
 package lotto.model.domain;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import lotto.utils.Utils;
@@ -19,20 +17,8 @@ public class WinningNumber {
     private static final String DUPLICATED_BONUS_NUMBER = "보너스 번호는 당첨 번호와 중복되지 않아야 합니다.";
     private static final int LOTTO_NUM_MIN = 1;
     private static final int LOTTO_NUM_MAX = 45;
-    private static final double FIFTH_SCORE = 3;
-    private static final double FOURTH_SCORE = 4;
     private static final double THIRD_SCORE = 5;
     private static final double SECOND_SCORE = 5.5;
-    private static final double FIRST_SCORE = 6;
-    private static final Map<Double, Rank> NUM_OF_MATCH_AND_RANK = new HashMap<>();
-
-    static {
-        NUM_OF_MATCH_AND_RANK.put(FIFTH_SCORE, Rank.FIFTH);
-        NUM_OF_MATCH_AND_RANK.put(FOURTH_SCORE, Rank.FOURTH);
-        NUM_OF_MATCH_AND_RANK.put(THIRD_SCORE, Rank.THIRD);
-        NUM_OF_MATCH_AND_RANK.put(SECOND_SCORE, Rank.SECOND);
-        NUM_OF_MATCH_AND_RANK.put(FIRST_SCORE, Rank.FIRST);
-    }
 
     private final Lotto lotto;
     private final int bonusNumber;
@@ -98,7 +84,7 @@ public class WinningNumber {
         if (numOfMatch == THIRD_SCORE && isBonusMatch) {
             numOfMatch = SECOND_SCORE;
         }
-        return NUM_OF_MATCH_AND_RANK.getOrDefault(numOfMatch, Rank.NOTHING);
+        return RankCreator.create(numOfMatch);
     }
 
 }
