@@ -15,11 +15,11 @@ public class ResultStatistics {
 
     public ResultStatistics(List<Result> results) {
         this.results = results;
-        initMap(map);
+        initMap();
         makeMapAndTotalProfit(results);
     }
 
-    private void initMap(Map<ResultStatus, Integer> map) {
+    private void initMap() {
         map.put(ResultStatus.MATCH6, 0);
         map.put(ResultStatus.MATCH5_WITH_BONUS_BALL, 0);
         map.put(ResultStatus.MATCH5, 0);

@@ -12,16 +12,13 @@ import java.util.List;
 
 public class OutputView {
     public static void showStatistics(List<Lotto> generatedLottos, WinLotto winLotto) {
-        printHeading();
-        List<Result> results = getResults(generatedLottos, winLotto);
-        ResultStatistics statistics = printResultStatistics(results);
-        printTotalProfit(statistics, generatedLottos.size());
-    }
-
-    private static void printHeading() {
         System.out.println("당첨 통계");
         System.out.println("---");
+        List<Result> results = getResults(generatedLottos, winLotto);
+        ResultStatistics statistics = printResultStatistics(results);
+        System.out.println(printTotalProfit(statistics, generatedLottos.size()));
     }
+
 
     protected static List<Result> getResults(List<Lotto> generatedLottos, WinLotto winLotto) {
         List<Result> results = new ArrayList<>();
@@ -39,9 +36,9 @@ public class OutputView {
         return statistics;
     }
 
-    private static void printTotalProfit(ResultStatistics statistics, int count) {
+    protected static String printTotalProfit(ResultStatistics statistics, int count) {
         DecimalFormat format = new DecimalFormat("###,###.#%");
         String totalProfitRate = format.format((float) (statistics.getTotalProfit()) / (count * ConstVariable.STANDARD.getValue()));
-        System.out.println("총 수익률은 " + totalProfitRate + "입니다.");
+        return "총 수익률은 " + totalProfitRate + "입니다.";
     }
 }
