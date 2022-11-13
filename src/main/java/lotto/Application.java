@@ -10,7 +10,6 @@ public class Application {
             controller.gameStart();
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] "+e.getMessage());
-            throw new IllegalArgumentException();
         }
     }
 }

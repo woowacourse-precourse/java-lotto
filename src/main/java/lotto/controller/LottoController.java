@@ -35,5 +35,7 @@ public class LottoController {
         user = new User("보너스 번호");
         user.validateUserBonusNumber(userInput, Auto.WINNING_NUMBERS);
         auto.checkWining(Integer.parseInt(userInput));
+        auto.yieldCalculation(lottoCount*1000);
+        userInterface.printResult();
     }
 }
