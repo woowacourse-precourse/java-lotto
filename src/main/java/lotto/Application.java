@@ -10,21 +10,26 @@ public class Application {
     static HashMap<WinningPlace, Integer> winningHistory = new HashMap<>();
     static int inputPrice = 0;
 
-    public static void main(String[] args) throws Exception {
-        List<Lotto> myLottoTickets = buyLotto();
-        printMyLottoTickets(myLottoTickets);
+    public static void main(String[] args) {
+        System.out.println("구입금액을 입력해 주세요.");
+        try {
+            List<Lotto> myLottoTickets = buyLotto();
+            printMyLottoTickets(myLottoTickets);
 
-        List<Integer> winnerNumber = inputWinnerNumber();
-        System.out.println(winnerNumber);
-        System.out.println();
+            Lotto winnerNumber = new Lotto(inputWinnerNumber());
+            System.out.println(winnerNumber.getNumbers());
+            System.out.println();
 
-        int bonusNumber = inputBonusNumber();
+            int bonusNumber = inputBonusNumber();
 
-        saveWinningPlaceByTicket(winnerNumber, myLottoTickets, bonusNumber);
+            saveWinningPlaceByTicket(winnerNumber, myLottoTickets, bonusNumber);
 
-        printLottoTicketHistory();
+            printLottoTicketHistory();
 
-        printWinningsOutOfBuyingPrice(inputPrice);
+            printWinningsOutOfBuyingPrice(inputPrice);
+        } catch (Exception e) {
+        }
+
     }
 
     public static int checkUserInputCondition(String input) {
@@ -58,12 +63,26 @@ public class Application {
     }
 
     private static List<Lotto> buyLotto() {
-        System.out.println("구입금액을 입력해 주세요.");
         String userInput = Console.readLine();
         System.out.println();
-        int buyingPrice = checkUserInputCondition(userInput);
+        int buyingPrice, ticketAmount;
+
+        try {
+            buyingPrice = checkUserInputCondition(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ErrorResponse.INPUT_CONTAINS_CHAR_ERROR.getErrorMessage());
+            throw new IllegalArgumentException();
+        }
+
         inputPrice = buyingPrice;
-        int ticketAmount = convertBuyingPriceIntoTicketAmount(buyingPrice);
+
+        try {
+            ticketAmount = convertBuyingPriceIntoTicketAmount(buyingPrice);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ErrorResponse.INPUT_BUYING_RANGE_ERROR.getErrorMessage());
+            throw new IllegalArgumentException();
+        }
+
         List<Lotto> lottoTickets = getLottoTickets(ticketAmount);
 
         return lottoTickets;
@@ -118,10 +137,30 @@ public class Application {
     private static List<Integer> inputWinnerNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
-        String commaValidated = validateWinnerNumberContainsComma(userInput);
-        String sizeValidated = validateWinnerNumberSize(commaValidated);
+        String commaValidated, sizeValidated;
+
+        try {
+            commaValidated = validateWinnerNumberContainsComma(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ErrorResponse.INPUT_WITHOUT_COMMA_ERROR.getErrorMessage());
+            throw new IllegalArgumentException();
+        }
+
+        try {
+            sizeValidated = validateWinnerNumberSize(commaValidated);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ErrorResponse.INPUT_WITHOUT_COMMA_ERROR.getErrorMessage());
+            throw new IllegalArgumentException();
+        }
+
         List<Integer> convertedWinnerNumber = convertStringWinnerNumberIntoListWinnerNumber(sizeValidated);
-        validateWinnerNumberRange(convertedWinnerNumber);
+
+        try {
+            validateWinnerNumberRange(convertedWinnerNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ErrorResponse.INPUT_LOTTO_RANGE_ERROR);
+            throw new IllegalArgumentException();
+        }
 
         return convertedWinnerNumber;
     }
@@ -137,8 +176,21 @@ public class Application {
     private static int inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String userInput = Console.readLine();
-        int bonusNumber = checkUserInputCondition(userInput);
-        bonusNumber = validateBonusNumberRange(bonusNumber);
+        int bonusNumber;
+
+        try {
+            bonusNumber = checkUserInputCondition(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ErrorResponse.INPUT_LOTTO_RANGE_ERROR.getErrorMessage());
+            throw new IllegalArgumentException();
+        }
+
+        try {
+            bonusNumber = validateBonusNumberRange(bonusNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ErrorResponse.INPUT_BONUS_NUMBER_RANGE_ERROR);
+            throw new IllegalArgumentException();
+        }
 
         return bonusNumber;
     }
@@ -149,12 +201,12 @@ public class Application {
         }
     }
 
-    public static WinningPlace countCorrespondingNumbers(List<Integer> winnerNumber, Lotto checkTargetNumber, int bonusNumber) throws Exception {
+    public static WinningPlace countCorrespondingNumbers(Lotto winnerNumber, Lotto checkTargetNumber, int bonusNumber) {
         int correspondingNumber = 0;
         int correspondingBonusNumber = 0;
 
         for (Integer targetNumber : checkTargetNumber.getNumbers()) {
-            if (winnerNumber.contains(targetNumber)) {
+            if (winnerNumber.getNumbers().contains(targetNumber)) {
                 correspondingNumber++;
             }
         }
@@ -166,7 +218,7 @@ public class Application {
         return WinningPlace.getPlace(correspondingNumber, correspondingBonusNumber);
     }
 
-    public static void saveWinningPlaceByTicket(List<Integer> winnerNumber, List<Lotto> lottoTickets, int bonusNumber) throws Exception {
+    public static void saveWinningPlaceByTicket(Lotto winnerNumber, List<Lotto> lottoTickets, int bonusNumber) {
         initWinningHistory();
         for (Lotto lottoTicket : lottoTickets) {
             WinningPlace winningPlace = countCorrespondingNumbers(winnerNumber, lottoTicket, bonusNumber);
@@ -180,21 +232,21 @@ public class Application {
     }
 
     private static void printLottoTicketHistory() {
-        System.out.println(WinningPlace.FIFTH_PLACE.getMessage() + winningHistory.get(WinningPlace.FIFTH_PLACE)+"개");
-        System.out.println(WinningPlace.FOURTH_PLACE.getMessage() + winningHistory.get(WinningPlace.FOURTH_PLACE)+"개");
-        System.out.println(WinningPlace.THIRD_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
-        System.out.println(WinningPlace.SECOND_PLACE.getMessage() + winningHistory.get(WinningPlace.SECOND_PLACE)+"개");
-        System.out.println(WinningPlace.FIRST_PLACE.getMessage()+ winningHistory.get(WinningPlace.FIRST_PLACE)+"개");
+        System.out.println(WinningPlace.FIFTH_PLACE.getMessage() + winningHistory.get(WinningPlace.FIFTH_PLACE) + "개");
+        System.out.println(WinningPlace.FOURTH_PLACE.getMessage() + winningHistory.get(WinningPlace.FOURTH_PLACE) + "개");
+        System.out.println(WinningPlace.THIRD_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE) + "개");
+        System.out.println(WinningPlace.SECOND_PLACE.getMessage() + winningHistory.get(WinningPlace.SECOND_PLACE) + "개");
+        System.out.println(WinningPlace.FIRST_PLACE.getMessage() + winningHistory.get(WinningPlace.FIRST_PLACE) + "개");
     }
 
     private static void printWinningsOutOfBuyingPrice(int buyingPrice) {
         int sumOfWinnings = getTotalWinnings();
 
-        Double winningsRate = (Double.valueOf(sumOfWinnings) / Double.valueOf(buyingPrice))*100.0f;
+        Double winningsRate = (Double.valueOf(sumOfWinnings) / Double.valueOf(buyingPrice)) * 100.0f;
 
         String trimmedWinningsRate = String.format("%.1f", winningsRate);
 
-        System.out.println("총 수익률은 "+ trimmedWinningsRate+ "%입니다.");
+        System.out.println("총 수익률은 " + trimmedWinningsRate + "%입니다.");
     }
 
     private static int getTotalWinnings() {
