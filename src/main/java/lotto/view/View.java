@@ -36,17 +36,28 @@ public class View {
     public void printWinningResult(Map<Rank, Integer> countOfWinning, double profitRate) {
         StringBuilder result = new StringBuilder();
         result.append(NUMBER_INPUT_FEEDBACK).append(LINE_SEPARATOR);
-
-        result.append(
-                String.format("%d개 일치 (%d원) - %d개",
-                              Rank.FIFTH.getSameCount(),
-                              Rank.FIFTH.getWinnings(),
-                              countOfWinning.getOrDefault(Rank.FIFTH, 0)
-                )
-        );
-
+        printWinningInfo(result, countOfWinning);
         result.append(String.format("총 수익률은 %.1f%s입니다.", profitRate * 100, "%"));
         System.out.println(result);
+    }
+
+    private void printWinningInfo(StringBuilder printer, Map<Rank, Integer> countOfRank) {
+        for (Rank current : Rank.values()) {
+            printer.append(current.getSameCount())
+                   .append("개 일치");
+
+            if (current == Rank.SECOND) {
+                printer.append(", 보너스 볼 일치");
+            }
+
+            printer.append(
+                    String.format(
+                            " (%d원) - %d개%n",
+                            current.getWinnings(),
+                            countOfRank.get(current)
+                    )
+            );
+        }
     }
 
 }
