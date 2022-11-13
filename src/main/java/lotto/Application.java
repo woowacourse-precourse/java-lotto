@@ -11,22 +11,15 @@ import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        List<List<Integer>> purchaseNumbers = new ArrayList<>();
         UserInput userInput = new UserInput();
         CheckPrize prize = new CheckPrize();
-        Integer prizeAmount = userInput.getPurchasePrice();
-        System.out.println(prizeAmount + "개를 구매했습니다.");
 
-        for (int i = 0; i < prizeAmount; i++) {
-            List<Integer> integers = Lotto.generateRandomValue();
-            System.out.println(integers);
-            purchaseNumbers.add(integers);
-        }
-//        List<Integer> prizeNumber = userInput.getPrizeNumber();
+        Integer prizeAmount = userInput.getPurchasePrice();
+        Integer bounsNumber = userInput.getBounsNumber();
+
         Lotto lotto = userInput.getPrizeNumber();
+        List<List<Integer>> purchaseNumbers = lotto.generateRandomValues(prizeAmount);
         List<Integer> prizeNumber = lotto.getNumbers();
-        Integer bounsNumber = userInput.getBounsNumber(prizeNumber);
 
         Map<PrizeMoney, Integer> gradeIntegerMap = prize.checkPrizes(purchaseNumbers, prizeNumber, bounsNumber);
         printGrade(gradeIntegerMap);

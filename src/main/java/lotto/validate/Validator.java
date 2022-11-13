@@ -58,7 +58,6 @@ public class Validator {
 
     public static double validateDividedByZero( Long total, Integer prizeAmount) {
         try{
-            System.out.println("total = " + total + "prizeAmount" + prizeAmount);
             return ((double)total / (prizeAmount * 1000)) * 100;
         }catch(Exception e){
             return 0;

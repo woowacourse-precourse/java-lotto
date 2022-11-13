@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserInput {
-    public Integer getBounsNumber(List<Integer> prizeNumbers) {
+    public Integer getBounsNumber() {
         //    보너스 번호 입력
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String bonusValue = Console.readLine();
@@ -37,6 +37,7 @@ public class UserInput {
         Validator.validateContainString(purchasePrice);
         Validator.validateModIsZero(Integer.parseInt(purchasePrice));
         Integer purchaseAmount = Integer.parseInt(purchasePrice) / 1000;
+        System.out.println(purchaseAmount + "개를 구매했습니다.");
         return purchaseAmount;
     }
 }
