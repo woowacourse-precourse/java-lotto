@@ -39,7 +39,7 @@ public class Validator {
         }
     }
     public static void validateOutOfBound(Integer number){
-        if(number < DEFAULT_MINIMUM_NUMBER && number > DEFAULT_MAXIMUM_NUMBER){
+        if(number < DEFAULT_MINIMUM_NUMBER || number > DEFAULT_MAXIMUM_NUMBER){
             throw new IllegalArgumentException(generateErrorMessage(OUT_OF_BOUND));
         }
     }

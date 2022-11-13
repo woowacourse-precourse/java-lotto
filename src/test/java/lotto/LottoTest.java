@@ -23,7 +23,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("구매금액이 1000원으로 나누어 떨어지지 않는 경우")
+    @DisplayName("구매금액이 1000원으로 나누어 떨어지지 않는 경우 예외 발생")
     @Test
     void createInputByDividedByZero(){
         Integer purchasePrice = 1200;
@@ -33,6 +33,18 @@ class LottoTest {
             }
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 1,000원 단위로 입력해주세요");
+    }
+
+    @DisplayName("당첨,로또 번호를 1~45 사이의 숫자를 입력하지 않는 경우 예외 발생")
+    @Test
+    void createLottoNumberOutOfUnderBound(){
+        Integer number = 0;
+        assertThatThrownBy(() -> {
+            if(number < 1 || number > 45){
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 }
 
