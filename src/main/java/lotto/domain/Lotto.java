@@ -21,7 +21,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    static List<Integer> createRandomNumbers() {
+    private static List<Integer> createRandomNumbers() {
         return pickUniqueNumbersInRange(START_NUM, END_NUM, LOTTO_SIZE);
     }
 
