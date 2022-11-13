@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -44,7 +43,8 @@ class WinningLottoTest {
 
             //when then
             assertThatThrownBy(() -> new WinningLotto(numbers, bonusNumber))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("당첨 번호는 6개여야 합니다.");
         }
 
         @Test
@@ -60,7 +60,14 @@ class WinningLottoTest {
         }
 
         @Test
-        void 로또_번호에_중복된_숫자가_있으면_예외가_발생한다2() {
+        void _1_45_외의_숫자가_있으면_예외가_발생한다() {
+            assertThatThrownBy(() -> new Lotto(List.of(-11, 2, 3, 4, 5, 5)))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+
+        @Test
+        void 보너스_번호가_로또_번호에_중복된_숫자가_있으면_예외가_발생한다() {
             //given
             List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
             int bonusNumber = 6;
