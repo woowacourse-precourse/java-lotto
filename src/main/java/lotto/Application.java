@@ -135,7 +135,10 @@ public class Application {
         return rankCountList;
     }
 
-    public static double getRateOfReturn(List<Integer> rankCount, int payment) {
+    public static double getRateOfReturn(
+            List<Integer> rankCount,
+            int payment
+    ) {
         int priceSum = rankCount.get(1) * WinningReward.FIRST.getPrice()
                 + rankCount.get(2) * WinningReward.SECOND.getPrice()
                 + rankCount.get(3) * WinningReward.THIRD.getPrice()
