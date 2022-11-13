@@ -9,8 +9,8 @@ public class InputController {
             try {
                 InputView.pushPurchasingMoney();
                 String purchasingMoney = Console.readLine();
-                int money = Vaildator.isNumber(purchasingMoney);
-                Vaildator.isDivideBy1000(money);
+                int money = Validator.isNumber(purchasingMoney);
+                Validator.isDivideBy1000(money);
                 return money;
             } catch(IllegalArgumentException e) {
                 InputView.showMoneyError();

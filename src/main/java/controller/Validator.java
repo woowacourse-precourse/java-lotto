@@ -1,6 +1,7 @@
 package controller;
 
-public class Vaildator {
+public class Validator {
+    public static final int ONE_THOUSAND = 1000;
     public static int isNumber(String purchasingMoney) {
         for(int i=0; i < purchasingMoney.length(); i++) {
             if (!Character.isDigit(purchasingMoney.charAt(i))) {
@@ -10,7 +11,7 @@ public class Vaildator {
         return Integer.parseInt(purchasingMoney);
     }
     public static void isDivideBy1000(int money) {
-        if(money % 1000 != 0) {
+        if(money % ONE_THOUSAND != 0) {
             throw new IllegalArgumentException();
         }
     }
