@@ -22,11 +22,10 @@ public class UserInteraction {
     }
 
     public List<Integer> winningNumbers() {
-        List<Integer> winNumbers = new ArrayList<>();
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         String[] numbers = numberValid(input);
-        return winNumbers;
+        return numberTransform(numbers);
     }
 
     private String[] numberValid(String input) {
@@ -35,5 +34,13 @@ public class UserInteraction {
             throw new IllegalArgumentException();
         }
         return inputs;
+    }
+
+    private List<Integer> numberTransform(String[] numbers) {
+        List<Integer> winNumbers = new ArrayList<>();
+        for(int i = 0; i < 6; i++){
+            winNumbers.add(Integer.parseInt(numbers[i]));
+        }
+        return winNumbers;
     }
 }
