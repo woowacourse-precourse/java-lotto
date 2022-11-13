@@ -37,6 +37,10 @@ public class WinningNumber {
         if (bonusNum < 1 || bonusNum >45) {
             throw new IllegalArgumentException();
         }
+
+        if (winningNum.contains(bonusNum)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public List<Integer> getWinningNum() {
