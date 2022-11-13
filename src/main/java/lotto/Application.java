@@ -180,6 +180,75 @@ public class Application {
         return scores;
     }
 
+    static int print_score_three(List<List<Integer>> scores) {
+        int three = 0;
+
+        for (List<Integer> score : scores) {
+            if (score.get(0) == 3) {
+                three += 1;
+            }
+        }
+
+        System.out.println(Result.THREE.getName() + Integer.toString(three) + "개");
+
+        return three;
+    }
+
+    static int print_score_four(List<List<Integer>> scores) {
+        int four = 0;
+
+        for (List<Integer> score : scores) {
+            if (score.get(0) == 4) {
+                four += 1;
+            }
+        }
+
+        System.out.println(Result.FOUR.getName() + Integer.toString(four) + "개");
+
+        return four;
+    }
+
+    static int print_score_five(List<List<Integer>> scores) {
+        int five = 0;
+
+        for (List<Integer> score : scores) {
+            if (score.get(0) == 5 && score.get(1) == 0) {
+                five += 1;
+            }
+        }
+
+        System.out.println(Result.FIVE.getName() + Integer.toString(five) + "개");
+
+        return five;
+    }
+
+    static int print_score_five_bonus(List<List<Integer>> scores) {
+        int five_bonus = 0;
+
+        for (List<Integer> score : scores) {
+            if (score.get(0) == 5 && score.get(1) == 1) {
+                five_bonus += 1;
+            }
+        }
+
+        System.out.println(Result.FIVE_BONUS.getName() + Integer.toString(five_bonus) + "개");
+
+        return five_bonus;
+    }
+
+    static int print_score_six(List<List<Integer>> scores) {
+        int six = 0;
+
+        for (List<Integer> score : scores) {
+            if (score.get(0) == 6) {
+                six += 1;
+            }
+        }
+
+        System.out.println(Result.SIX.getName() + Integer.toString(six) + "개");
+
+        return six;
+    }
 
     public static void main(String[] args) {
         ask_how_much_money();
@@ -244,5 +313,12 @@ public class Application {
 
         List<List<Integer>> scores = new ArrayList<List<Integer>>();
         scores = check_computer_user_score(lottos, user_lotto, user_bonus_number);
+
+        List<Integer> save_score = new ArrayList<>();
+        save_score.add(print_score_three(scores));
+        save_score.add(print_score_four(scores));
+        save_score.add(print_score_five(scores));
+        save_score.add(print_score_five_bonus(scores));
+        save_score.add(print_score_six(scores));
     }
 }
