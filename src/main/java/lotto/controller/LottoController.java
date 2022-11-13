@@ -19,7 +19,13 @@ public class LottoController {
     }
 
     private LottoCount requestUserAmount(){
-        return new LottoCount(InputView.requestUserAmount());
+        int amount = InputView.requestUserAmount();
+        try {
+            return new LottoCount(amount);
+        } catch(IllegalArgumentException e){
+            OutputView.printException(e);
+            throw new IllegalArgumentException();
+        }
     }
 
     private LottoTicket buyTickets(LottoCount amount){

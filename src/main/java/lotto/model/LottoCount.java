@@ -17,7 +17,7 @@ public class LottoCount {
     }
 
     private void validateAmount(int amount){
-        if(amount % LOTTO_PRICE !=0){
+        if(amount % LOTTO_PRICE !=0||amount==0){
             throw new IllegalArgumentException(AMOUNT_NOT_DIVISIBLE_EXCEPTION);
         }
     }
