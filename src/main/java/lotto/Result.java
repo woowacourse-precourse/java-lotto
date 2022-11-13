@@ -36,20 +36,19 @@ public class Result {
         }
     }
 
-    public static long getTotalPrize() {
-        long totalPrize = fifth * 5000 + fourth * 50000 + third * 1500000 + second * 30000000 + first * 2000000000;
-        return totalPrize;
+    public static BigDecimal totalPrize() {
+        BigDecimal firstPrize = new BigDecimal(first * 2000000000);
+        BigDecimal secondPrize = new BigDecimal(second * 30000000);
+        BigDecimal thirdPrize = new BigDecimal(third * 1500000);
+        BigDecimal fourthPrize = new BigDecimal(fourth * 50000);
+        BigDecimal fifthPrize = new BigDecimal(fifth * 5000);
+        BigDecimal sum = firstPrize.add(secondPrize.add(thirdPrize.add(fourthPrize.add(fifthPrize))));
+        return sum;
     }
 
     public static BigDecimal calculate() {
-        BigDecimal result1 = new BigDecimal(first * 2000000000);
-        BigDecimal result2 = new BigDecimal(second * 30000000);
-        BigDecimal result3 = new BigDecimal(third * 1500000);
-        BigDecimal result4 = new BigDecimal(fourth * 50000);
-        BigDecimal result5 = new BigDecimal(fifth * 5000);
-        BigDecimal sum = result1.add(result2.add(result3.add(result4.add(result5))));
         BigDecimal moneyInput = new BigDecimal(StartLotto.payment);
-        BigDecimal result = sum.multiply(new BigDecimal(100)).divide(moneyInput, 1, RoundingMode.HALF_EVEN);
-        return result;
+        BigDecimal revenue = totalPrize().multiply(new BigDecimal(100)).divide(moneyInput, 1, RoundingMode.HALF_EVEN);
+        return revenue;
     }
 }
