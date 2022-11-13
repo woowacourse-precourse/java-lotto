@@ -12,12 +12,12 @@ public class Lotto {
         validateSize(numbers);
         validateDuplicate(numbers);
         validateCorrectRange(numbers);
+        Collections.sort(numbers);
 
         this.numbers = numbers;
     }
 
     public List<Integer> getNumbers() {
-        Collections.sort(numbers);
         return numbers;
     }
 
