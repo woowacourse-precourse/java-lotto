@@ -11,10 +11,13 @@ import java.util.regex.Pattern;
 public class UserManager {
 
     // 0으로 시작하지 않는 숫자 입력 (각 자리별 범위 : 0 ~ 9)
-    private static final String PRICE_REGEX = "^[^0][0-9]*";
+    private static final String PRICE_REGEX = "^[^0][0-9]*$";
 
     // 숫자, 쉼표(,)만으로 이루어진 입력
-    private static final String PREDICT_LOTTO_NUMBER_REGEX = "^(\\d|,)*";
+    private static final String PREDICT_LOTTO_NUMBER_REGEX = "^(\\d|,)*$";
+
+    // 0으로 시작하지 않는 숫자로만 이루어진 입력
+    private static final String PREDICT_BONUS_LOTTO_NUMBER_REGEX = "^[^0]\\d*$";
 
 
     /**
@@ -55,12 +58,12 @@ public class UserManager {
      * @return 당첨 번호 List
      */
     public static List<Integer> getInput_predictLottoNumber() {
-        String userInput = Console.readLine();
-        if (!checkPredictLottoNumber_regex(userInput)) {
+        String userInput_predictLottoNumber = Console.readLine();
+        if (!checkPredictLottoNumber_regex(userInput_predictLottoNumber)) {
             throw new IllegalArgumentException();
         }
 
-        List<Integer> predictLottoNumber = convertStringToIntegerList(userInput);
+        List<Integer> predictLottoNumber = convertStringToIntegerList(userInput_predictLottoNumber);
         if (predictLottoNumber.size() != LottoManager.LOTTO_LENGTH) {
             throw new IllegalArgumentException();
         }
@@ -71,21 +74,21 @@ public class UserManager {
     }
 
     /**
-     * @param userInput 사용자가 입력한 당첨 번호
+     * @param userInput_predictLottoNumber 사용자가 입력한 당첨 번호
      * @return 정규식에 부합한다면 true / 부합하지 않는다면 false
      */
-    private static boolean checkPredictLottoNumber_regex(String userInput) {
+    private static boolean checkPredictLottoNumber_regex(String userInput_predictLottoNumber) {
         Pattern pattern = Pattern.compile(PREDICT_LOTTO_NUMBER_REGEX);
-        Matcher matcher = pattern.matcher(userInput);
+        Matcher matcher = pattern.matcher(userInput_predictLottoNumber);
         return matcher.matches();
     }
 
     /**
-     * @param userInput 사용자가 입력한 당첨 번호
+     * @param userInput_predictLottoNumber 사용자가 입력한 당첨 번호
      * @return 당첨 번호를 쉼표(,) 기준으로 나눈 Integer List
      */
-    public static List<Integer> convertStringToIntegerList(String userInput) {
-        String[] userInput_values = userInput.split(",");
+    public static List<Integer> convertStringToIntegerList(String userInput_predictLottoNumber) {
+        String[] userInput_values = userInput_predictLottoNumber.split(",");
         List<Integer> predictLottoNumber = new ArrayList<>();
         for (String userInput_value : userInput_values) {
             predictLottoNumber.add(Integer.parseInt(userInput_value));
@@ -94,12 +97,12 @@ public class UserManager {
     }
 
     /**
-     * @param userInput 사용자가 입력한 당첨 번호
+     * @param userInput_predictLottoNumber 사용자가 입력한 당첨 번호
      * @return 번호의 범위가 1 ~ 45라면 true / 범위를 벗어났다면 false
      */
-    private static boolean checkPredictLottoNumber_value(List<Integer> userInput) {
+    private static boolean checkPredictLottoNumber_value(List<Integer> userInput_predictLottoNumber) {
         for (int i = 0; i < LottoManager.LOTTO_LENGTH; i++) {
-            int userInputNumber = userInput.get(i);
+            int userInputNumber = userInput_predictLottoNumber.get(i);
             if (userInputNumber < LottoManager.MIN_NUMBER || userInputNumber > LottoManager.MAX_NUMBER) {
                 return false;
             }
@@ -114,8 +117,34 @@ public class UserManager {
      * @return 보너스 번호
      */
     public static Integer getInput_predictBonusLottoNumber() {
-        int predictBonusLottoNumber = 0;
+        String userInput_predictBonusLottoNumber = Console.readLine();
+        if (!checkPredictBonusLottoNumber_regex(userInput_predictBonusLottoNumber)) {
+            throw new IllegalArgumentException();
+        }
+
+        int predictBonusLottoNumber = Integer.parseInt(userInput_predictBonusLottoNumber);
+        if (!checkPredictBonusLottoNumber_value(predictBonusLottoNumber)) {
+            throw new IllegalArgumentException();
+        }
         return predictBonusLottoNumber;
+    }
+
+    /**
+     * @param userInput_predictBonusLottoNumber 사용자가 입력한 보너스 번호
+     * @return 정규식에 부합한다면 true / 부합하지 않는다면 false
+     */
+    private static boolean checkPredictBonusLottoNumber_regex(String userInput_predictBonusLottoNumber) {
+        Pattern pattern = Pattern.compile(PREDICT_BONUS_LOTTO_NUMBER_REGEX);
+        Matcher matcher = pattern.matcher(userInput_predictBonusLottoNumber);
+        return matcher.matches();
+    }
+
+    /**
+     * @param userInput_predictBonusLottoNumber 사용자가 입력한 보너스 번호
+     * @return 번호의 범위가 1 ~ 45라면 true / 범위를 벗어났다면 false
+     */
+    private static boolean checkPredictBonusLottoNumber_value(int userInput_predictBonusLottoNumber) {
+        return userInput_predictBonusLottoNumber >= LottoManager.MIN_NUMBER && userInput_predictBonusLottoNumber <= LottoManager.MAX_NUMBER;
     }
 
 }
