@@ -1,8 +1,10 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+
 public class LottoGenerator {
     int generateCount;
-    // List<Integer> numbers;
     public LottoGenerator(int money) {
         try {
             if (checkMoneyUnit(money)) {
@@ -14,6 +16,10 @@ public class LottoGenerator {
         }
     }
 
+    public int getGenerateCount() {
+        return generateCount;
+    }
+
     private Boolean checkMoneyUnit(int money) throws IllegalArgumentException {
         if ((money % 1000) != 0) {
             throw new IllegalArgumentException();
@@ -21,5 +27,8 @@ public class LottoGenerator {
         return true;
     }
 
-
+    public List<Integer> createLottoNumber() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return numbers;
+    }
 }
