@@ -2,7 +2,7 @@ package lotto.Model;
 
 import java.util.*;
 import lotto.Utils.Util;
-import lotto.Utils.Validator;
+import lotto.Utils.Validator.BuyerValidator;
 
 public class Buyer {
 
@@ -17,7 +17,7 @@ public class Buyer {
     private List<List<Integer>> lottoWallet;
 
     public Buyer(String purchaseAmount) {
-        new Validator(purchaseAmount);
+        new BuyerValidator(purchaseAmount);
         this.purchaseAmount = Util.getInt(purchaseAmount);
         this.purchaseCount = Calculator.divide1000(this.purchaseAmount);
         this.lottoWallet = new ArrayList<>();

@@ -1,6 +1,8 @@
-package lotto.Utils;
+package lotto.Utils.Validator;
 
-public class Validator {
+import lotto.Utils.Util;
+
+public class BuyerValidator {
 
     public static final int DIVISOR = 1000;
     public static final int ZERO = 0;
@@ -11,7 +13,7 @@ public class Validator {
     public static final String NOT_1000UNIT_STATE = "1000원 단위로 입력해야 합니다.";
 
     protected final String moneyString;
-    public Validator(String moneyString){
+    public BuyerValidator(String moneyString){
         this.moneyString = moneyString;
         isInteger();
         isNatural();
