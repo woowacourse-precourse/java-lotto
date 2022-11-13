@@ -10,7 +10,7 @@ public class LottoUser {
         List<List<Integer>> user = new ArrayList<>();
         List<Integer> luckyNumber = generateLuckyNumber();
         List<Integer> bonusNumber = generateBonusNumber();
-        checkDuplicationNumber(luckyNumber,bonusNumber.get(0));
+        checkDuplicationNumber(luckyNumber, bonusNumber.get(0));
         user.add(luckyNumber);
         user.add(bonusNumber);
         return user;
@@ -36,7 +36,7 @@ public class LottoUser {
 
     private void checkDuplicationNumber(List<Integer> numberList, int checkNumber) {
         for (Integer number : numberList) {
-            if(number==checkNumber){
+            if (number == checkNumber) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않는 숫자여야 합니다.");
             }
         }

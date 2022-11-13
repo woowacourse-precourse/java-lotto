@@ -7,11 +7,8 @@ import java.util.List;
 public class LottoConsole {
 
     enum Prize {
-        FIRST("5,000원"),
-        SECOND("50,000원"),
-        THIRD("1,500,000원"),
-        FOURTH("30,000,000원"),
-        FIFTH("2,000,000,000원");
+        FIRST("5,000원"), SECOND("50,000원"), THIRD("1,500,000원"),
+        FOURTH("30,000,000원"), FIFTH("2,000,000,000원");
 
         private final String value;
 
@@ -39,7 +36,7 @@ public class LottoConsole {
         System.out.println();
     }
 
-    public void outputResult(List<Integer> winningList) {
+    public void outputResult(List<Integer> winningList, double profit) {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.printf("3개 일치 (%s) - %d개\n", Prize.FIRST.getValue(), winningList.get(0));
@@ -47,6 +44,7 @@ public class LottoConsole {
         System.out.printf("5개 일치 (%s) - %d개\n", Prize.THIRD.getValue(), winningList.get(2));
         System.out.printf("5개 일치, 보너스 볼 일치 (%s) - %d개\n", Prize.FOURTH.getValue(), winningList.get(3));
         System.out.printf("6개 일치 (%s) - %d개\n", Prize.FIFTH.getValue(), winningList.get(4));
+        System.out.print("총 수익률은 " + String.format("%.1f", profit) + "%입니다.");
     }
 
     public String inputLuckyNumber() {

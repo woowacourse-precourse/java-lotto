@@ -33,8 +33,9 @@ public class LottoShop {
     }
 
     private List<Integer> sortLottoByAsc(List<Integer> randomList) {
-        Collections.sort(randomList);
-        return randomList;
+        List<Integer> modifiableList = new ArrayList<>(randomList);
+        Collections.sort(modifiableList);
+        return modifiableList;
     }
 
     private int checkMoney(String inputMoney) {
