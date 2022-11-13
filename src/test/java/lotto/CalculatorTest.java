@@ -11,9 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CalculatorTest {
     private CalculatorModel calculator;
 
-    @DisplayName("calculatorProfit 메소드 테스트")
+    @DisplayName("getProfit 메소드 테스트")
     @Nested
-    class calculatorProfitTest {
+    class getProfitTest {
         @BeforeEach
         void setup() {
             calculator = new CalculatorModel();
@@ -42,7 +42,7 @@ class CalculatorTest {
 
     @DisplayName("countLottoNumber 메소드 테스트")
     @Nested
-    class countPublicationLottoTest {
+    class countLottoNumberTest {
         @BeforeEach
         void setup() {
             calculator = new CalculatorModel();
