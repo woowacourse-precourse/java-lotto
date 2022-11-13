@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Objects;
 import lotto.constant.IntConstant;
 import lotto.constant.StringConstant;
 import lotto.validation.IntegerValidation;

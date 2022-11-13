@@ -36,6 +36,5 @@ class BonusLottoValidationTest {
     void success() {
         List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
         assertDoesNotThrow(() -> new WinningLotto(new Lotto(winningLotto), 7));
-
     }
 }
