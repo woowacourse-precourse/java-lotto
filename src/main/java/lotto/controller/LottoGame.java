@@ -27,6 +27,7 @@ public class LottoGame {
 
         printNewLine();
         printBounsNumbers();
+        winLotto.setBounsNumbers();
     }
 
     public void setPurchaseAmountLotto(int input){

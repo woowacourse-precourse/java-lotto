@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class WinLotto {
     private static final char COMMA = ',';
     private List<Integer> winningNumbers;
+    private int bonusNumber;
 
     public WinLotto() {
     }
@@ -23,6 +24,10 @@ public class WinLotto {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         new Lotto(winningNumbers);
+    }
+
+    public void setBounsNumbers(){
+        bonusNumber = Integer.parseInt(Console.readLine());
     }
 
     public void validateComma(String input){
