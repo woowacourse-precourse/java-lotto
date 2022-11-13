@@ -16,6 +16,7 @@ public class LottoNumberGenerate {
         for (int i = 0; i < lottoAmount; i++) {
             lottoNumbers = generateLottoNumbers();
             lotto = new Lotto(lottoNumbers);
+            lotto.addLotto();
         }
     }
 }

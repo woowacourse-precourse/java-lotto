@@ -3,6 +3,7 @@ package lotto.mainframe;
 import java.util.List;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -16,5 +17,7 @@ public class Lotto {
         }
     }
 
-
+    public void addLotto() {
+        User.setLotteries(numbers);
+    }
 }
