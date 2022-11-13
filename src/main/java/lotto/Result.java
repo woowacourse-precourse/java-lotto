@@ -7,9 +7,11 @@ import static lotto.Const.SIZE;
 
 public class Result {
     private Map<Float, Integer> winBoard;
+    private Rank[] ranks;
 
     public Result() {
         initWinBoard();
+        ranks = Rank.values();
     }
 
     public void compare(Customer customer, Lotto lotto) {
@@ -23,6 +25,30 @@ public class Result {
 
         updateWinBoard(matchingNumber);
     }
+
+    public long getTotalReward() {
+        long totalReward = 0;
+
+        for (int i = 0; i < ranks.length; i++) {
+            totalReward += getReward(ranks[i].getMatching());
+        }
+
+        return totalReward;
+    }
+
+    public long getReward(float matchingNumber) {
+        long winSheetCount = winBoard.get(matchingNumber);
+        long reward = 0;
+
+        for (int i = 0; i < ranks.length; i++) {
+            if (ranks[i].getMatching() == matchingNumber) {
+                reward = winSheetCount * ranks[i].getPrize();
+            }
+        }
+
+        return reward;
+    }
+
 
     private void updateWinBoard(float matchingNumber) {
         winBoard.put(matchingNumber, winBoard.get(matchingNumber) + 1);
