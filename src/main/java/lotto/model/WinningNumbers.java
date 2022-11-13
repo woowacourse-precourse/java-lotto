@@ -10,11 +10,11 @@ public class WinningNumbers {
         this.bonusNumber = bonusNumber;
     }
 
-    public boolean isWinningNumber(int number) {
+    private boolean isWinningNumber(int number) {
         return regularNumbers.contains(number);
     }
 
-    public boolean isBonusNumber(int number) {
+    private boolean isBonusNumber(int number) {
         return bonusNumber == number;
     }
 
