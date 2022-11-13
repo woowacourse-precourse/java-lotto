@@ -14,7 +14,7 @@
     - [ ]  보너스 번호 저장 기능 → setBonusNumber
 2. Player
     - [x]  로또 구입 금액 저장 기능 → setPurchaseAmount
-    - [ ]  구입한 로또 개수 저장 기능 → setLottoCount
+    - [x]  구입한 로또 개수 저장 기능 → setLottoCount
     - [ ]  구매한 로또 번호 저장 기능 → setLottoNumber
     - [ ]  당첨 내역 저장 기능 → setWinningResult
     - [ ]  수익률 저장 기능 → setLottoYield
