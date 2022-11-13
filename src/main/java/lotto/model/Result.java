@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import static java.lang.Math.toIntExact;
+import static lotto.utils.Constant.LOTTO_SIZE;
 
 public class Result {
     public static final String ENTER_RIGHT_SIZE_NUMBER = "[ERROR] 6개의 숫자를 입력해주세요.";
@@ -41,7 +42,7 @@ public class Result {
     }
 
     private static boolean isDifferentSize(List<Integer> numbers) {
-        return numbers.size() != 6;
+        return numbers.size() != LOTTO_SIZE;
     }
 
     private static void validateDuplicateNumbers(List<Integer> numbers) {
@@ -52,7 +53,7 @@ public class Result {
     }
 
     private static boolean hasDuplicateNumbers(Set<Integer> uniqueNumbers) {
-        return uniqueNumbers.size() != 6;
+        return uniqueNumbers.size() != LOTTO_SIZE;
     }
 
     private static void validateBonusNumber(List<Integer> winningNumbers, int bonusNumber) {

@@ -5,10 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
 
+import static lotto.utils.Constant.LOTTO_END;
+import static lotto.utils.Constant.LOTTO_SIZE;
+import static lotto.utils.Constant.LOTTO_START;
+
 public class Lotto {
-    private static final int LOTTO_START = 1;
-    private static final int LOTTO_END = 45;
-    private static final int LOTTO_SIZE = 6;
     public static final String ERROR_GENERATED_DIFFERENT_LOTTO_SIZE = "[ERROR] 생성된 로또 번호의 개수가 다릅니다.";
     public static final String ERROR_GENERATED_DUPLICATED_LOTTO_NUMBERS = "[ERROR] 중복된 로또 번호가 생성 되었습니다.";
 
