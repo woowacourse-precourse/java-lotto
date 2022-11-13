@@ -7,6 +7,8 @@ import lotto.model.InputValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.List;
+
 public class ApplicationController {
     Seller seller = new Seller();
     Player player = new Player();
@@ -26,11 +28,13 @@ public class ApplicationController {
         // TODO
         //  - [x] 발행할 로또 개수 계산
         //  - [x] 구입한 로또 개수 저장
-        //  - [ ] 로또 개수만큼 발행
+        //  - [x] 로또 개수만큼 발행
         //  - [ ] 구매한 로또 번호 저장
+        //  - [ ] 구매한 로또 번호 출력
         //  - [ ] 당첨 번호, 보너스 번호 정하는 과정 제어 기능 호출
         int lottocount = seller.countIssueingLotto(player.getPurchaseAmount());
         player.setLottoCount(lottocount);
         outputView.printLottoCount(player.getLottoCount());
+        List<Lotto> lottoNumbers = seller.issueLotto(player.getLottoCount());
     }
 }
