@@ -1,6 +1,7 @@
 package lotto.view;
 
 import java.util.regex.Pattern;
+import lotto.domain.model.request.LottoRequest;
 import lotto.view.utils.OutputUtils;
 import lotto.view.utils.UserInputUtils;
 
@@ -16,6 +17,11 @@ public final class InputView {
         String input = UserInputUtils.readLine();
         validate(input);
         return Integer.parseInt(input);
+    }
+
+    public static LottoRequest inputLottoNumbers() {
+        String lottoNumbers = UserInputUtils.readLine();
+        return new LottoRequest(lottoNumbers);
     }
 
     private static void validate(String input) {

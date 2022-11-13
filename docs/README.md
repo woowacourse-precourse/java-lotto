@@ -7,7 +7,7 @@
 - [ ] 로또 구입 금액을 입력 받는다. -> inputLotteryPurchaseAmount
     - [ ] 입력받은 값이 숫자인지 확인한다.
 
-- [ ] 당첨 번호를 입력받는다. -> inputWinningNumber
+- [ ] 당첨 번호를 입력받는다. -> inputLottoNumber
 - [ ] 보너스 번호를 입력받는다. inputBonusNumber
     - [ ] 입력받은 값이 숫자인지 확인한다.
 
