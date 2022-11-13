@@ -22,6 +22,7 @@ public class LottoRepository {
     }
 
     public void generateLottos(int countToGenerate) {
+        clearStore();
         for (int count = 0; count < countToGenerate; count++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_COUNT);
             Collections.sort(numbers);
