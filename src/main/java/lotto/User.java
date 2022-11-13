@@ -23,7 +23,7 @@ public class User {
         setLotteries();
     }
     private void setAmount(String input){
-        int amount = checker.checkInputNumber(input);
+        int amount = checker.checkAmountInput(input);
         this.lotteryCount=amount/1000;
     }
     private void setLotteries(){

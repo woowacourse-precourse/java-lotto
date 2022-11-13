@@ -4,11 +4,22 @@ import constance.Texts;
 
 public class Checker {
     public int checkInputNumber(String input) {
-        int amount = checkNumeric(input);
-        checkNegative(amount);
-        checkAmount(amount);
 
-        amount = checkRemain(amount);
+        int number = checkNumeric(input);
+
+        checkNegative(number);
+        checkAmount(number);
+
+        return number;
+
+    }
+
+    public int checkAmountInput(String input) {
+
+        int amount = checkInputNumber(input);
+
+        checkRemain(amount);
+
         return amount;
     }
 
