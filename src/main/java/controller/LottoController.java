@@ -4,15 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import constants.LottoConstants;
 import lotto.Lotto;
 import lotto.Wins;
+import user.WinNumber;
 import utils.InputUtils;
 import user.PurchaseAmount;
 import utils.OutputUtils;
 import utils.Validator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LottoController {
 
@@ -56,13 +55,9 @@ public class LottoController {
         OutputUtils.printPurchasedLottoNumbers(lottos);
     }
 
-    private void getWinNumbersFromUser() {
+    private WinNumber getWinNumbersFromUser() {
         String userInput = InputUtils.getWinNumbersFromUser();
-        Validator.checkWinsNumberIsValid(userInput);
-
-        winNumbers = Arrays.stream(userInput.split(LottoConstants.SEPARATOR))
-                .map(Integer::valueOf)
-                .collect(Collectors.toList());
+        return new WinNumber(userInput);
     }
 
     private void getBonusNumberFromUser() {
@@ -94,7 +89,7 @@ public class LottoController {
         generateLotteryNumbers(purchaseAmount);
 
         try {
-            getWinNumbersFromUser();
+            WinNumber winNumber = getWinNumbersFromUser();
             getBonusNumberFromUser();
         } catch (IllegalArgumentException e) {
             OutputUtils.printException(e);
