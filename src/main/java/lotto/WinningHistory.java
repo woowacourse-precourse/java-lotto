@@ -58,4 +58,12 @@ public enum WinningHistory {
     private boolean matchNumberWithoutBonus(int winningMatchNumbers, int matchNumbers) {
         return winningMatchNumbers == matchNumbers;
     }
+
+    public String getStaticsMessage(int count) {
+        if (matchNumbers == SECOND_PRIZE.getMatchNumbers() && prizeMoney == SECOND_PRIZE.getPrizeMoney()) {
+            return String.format("%d개 일치, 보너스 볼 일치 (%d원) - %d개", matchNumbers, prizeMoney, count);
+        }
+
+        return String.format("%d개 일치 (%d원) - %d개", matchNumbers, prizeMoney, count);
+    }
 }
