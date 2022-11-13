@@ -13,6 +13,7 @@
 
 ### OutputView
 
+- [ ] Custom된 에러메시지를 출력한다.
 - [ ] 발행한 로또 수량 및 번호를 출력한다.
 - [ ] 당첨 통계를 출력한다. printStatistics
 
