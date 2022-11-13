@@ -48,10 +48,10 @@
   - [x] 사용자에게 값을 입력 받는다. - InputLotto#inputValueOfUser()
   - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - InputLotto#splitCommas()
     - [x] 문자열을 long으로 변환 - InputLotto#toLongs()
-
 - [x] 당첨 번호를 입력받고 List<Integer> 형으로 반환 - InputLotto#InputValueSplitCommas()
   - [x] String을 int형으로 변환하는 toInts 메서드 구현 - InputLotto#toInts()
   - [x] List<String>형을 List<Integer>형으로 반환 - InputLotto#toIntList()
+- [x] 보너스 번호를 입력 받는다. - InputLotto#inputBonusNumber()
 
 - [x] 숫자만 입력되었는지 검사한다. - ExceptionHandling#isNumeric()
 - [x] 입력한 금액이 1,000원 단위로 나누어떨어지는지 검사한다. - ExceptionHandling#notDivide()
