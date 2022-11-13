@@ -2,7 +2,7 @@
 
 ## 로또 사기
 - [x] 구매 문구 출력 (`InputView`)
-- [ ] `UserService`를 통해 User 생성
+- [x] `UserService`를 통해 User 생성
     - [x] `Lotto` 클래스 `valiate` 구현
         - [x] 6개의 숫자인지 확인
         - [x] 1 ~ 45 사이의 숫자인지 확인
@@ -11,7 +11,7 @@
     - [x] `User` 클래스 구현
         - [x] `money` 1000원 단위 검증
         - [x] 로또 구매 메서드 구현
-    - [ ] `UserService` 의 `createUser` 메서드 구현
+    - [x] `UserService` 의 `createUser` 메서드 구현
 - [ ] `LotterySellService`를 통해 로또 구매
     - [ ] `LotteryTicketRepository` 싱글톤 구현
     - [ ] 로또 번호 생성 구현
