@@ -15,9 +15,13 @@ public class OutputView {
     private static final String INPUT_WINNING_NUMBER = "\n당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_NUMBER = "\n보너스 번호를 입력해 주세요.";
     private static final String OUTPUT_STATS_MESSAGE = "\n당첨 통계\n---";
-    private static final String OUTPUT_YIELD_PERCENT = "총 수익률은 %f%%입니다.";
-    private static final List<String> OUTPUT_LOTTO_RANK = List.of("3개 일치 (5,000원) - %d개", "4개 일치 (50,000원) - %d개",
-        "5개 일치 (1,500,000원) - %d개", "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개", "6개 일치 (2,000,000,000원) - %d개");
+    private static final String OUTPUT_YIELD_PERCENT = "총 수익률은 %.1f%%입니다.";
+    private static final List<String> OUTPUT_LOTTO_RANK = List.of(
+        "3개 일치 (5,000원) - %d개",
+        "4개 일치 (50,000원) - %d개",
+        "5개 일치 (1,500,000원) - %d개",
+        "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개",
+        "6개 일치 (2,000,000,000원) - %d개");
 
     public static void printInputAmount() {
         System.out.println(INPUT_PAID_AMOUNT);
