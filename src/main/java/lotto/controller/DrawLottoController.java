@@ -32,9 +32,9 @@ public class DrawLottoController {
     private void buyLottoFromMyAmount() {
         outputView.printBuyAmountMessage();
         user.setBuyAmount(inputView.InputBuyAmount());
-        int count = drawLottoService.countBuyingLotto(user.getBuyAmount());
-        buyLotto(count);
-        outputView.printCountBuyingLotto(count, user.getMyLotto());
+        int buyLottoCount = drawLottoService.countBuyingLotto(user.getBuyAmount());
+        buyLotto(buyLottoCount);
+        outputView.printCountBuyingLotto(buyLottoCount, user.getMyLotto());
     }
 
     private void buyLotto(int count) {

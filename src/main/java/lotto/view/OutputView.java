@@ -29,9 +29,9 @@ public class OutputView {
     }
 
     public void printWiningCount(List<Integer> winingCount){
-        int i = 0;
+        int rank = 0;
         for (Rank priceMessage : Rank.values()){
-            System.out.println(priceMessage.getPriceMessage()+ winingCount.get(i++)+"개");
+            System.out.println(priceMessage.getPriceMessage()+ winingCount.get(rank++)+"개");
         }
     }
 
