@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public enum WinningPrize {
+public enum LottoResult {
     FIRST_PLACE(2000000000),
     SECOND_PLACE(30000000),
     THIRD_PLACE(1500000),
@@ -10,24 +10,24 @@ public enum WinningPrize {
 
     private final int amount;
 
-    WinningPrize(int amount) {
+    LottoResult(int amount) {
         this.amount = amount;
     }
 
-    public static WinningPrize of(int sameCount, boolean containsBonusNumber) {
-        if (sameCount == 6) {
+    public static LottoResult of(int matchingCount, boolean containsBonusNumber) {
+        if (matchingCount == 6) {
             return FIRST_PLACE;
         }
-        if (sameCount == 5) {
+        if (matchingCount == 5) {
             if (containsBonusNumber) {
                 return SECOND_PLACE;
             }
             return THIRD_PLACE;
         }
-        if (sameCount == 4) {
+        if (matchingCount == 4) {
             return FOURTH_PLACE;
         }
-        if (sameCount == 3) {
+        if (matchingCount == 3) {
             return FIFTH_PLACE;
         }
         return LAST_PLACE;

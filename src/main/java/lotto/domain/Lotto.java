@@ -52,17 +52,17 @@ public class Lotto {
         return numbers.contains(bonusNumber);
     }
 
-    public int countSameNumbers(Lotto winningLotto) {
+    public int countMatchingNumbers(Lotto winningLotto) {
         return (int) numbers.stream()
                 .filter(number -> winningLotto.contains(number))
                 .count();
     }
 
-    public WinningPrize getWinningPrize(Lotto winningLotto, int bonusNumber) {
-        int sameCount = countSameNumbers(winningLotto);
+    public LottoResult getResult(Lotto winningLotto, int bonusNumber) {
+        int sameCount = countMatchingNumbers(winningLotto);
         boolean containsBonusNumber = contains(bonusNumber);
 
-        return WinningPrize.of(sameCount, containsBonusNumber);
+        return LottoResult.of(sameCount, containsBonusNumber);
     }
 
     @Override

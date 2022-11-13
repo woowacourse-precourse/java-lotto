@@ -54,20 +54,20 @@ public class Lottos {
         return (double) winningAmount / money * 100;
     }
 
-    public Map<WinningPrize, Integer> countWinningPrize(Lotto winningLotto, int bonusNumber) {
-        HashMap<WinningPrize, Integer> winningPrizeCounts = getDefaultWinningPrizeCounts();
+    public Map<LottoResult, Integer> countWinningPrize(Lotto winningLotto, int bonusNumber) {
+        HashMap<LottoResult, Integer> winningPrizeCounts = getDefaultWinningPrizeCounts();
         for (Lotto lotto : lottos) {
-            WinningPrize winningPrize = lotto.getWinningPrize(winningLotto, bonusNumber);
-            Integer winningPrizeCount = winningPrizeCounts.getOrDefault(winningPrize, 0) + 1;
-            winningPrizeCounts.put(winningPrize, winningPrizeCount);
+            LottoResult lottoResult = lotto.getResult(winningLotto, bonusNumber);
+            Integer winningPrizeCount = winningPrizeCounts.getOrDefault(lottoResult, 0) + 1;
+            winningPrizeCounts.put(lottoResult, winningPrizeCount);
         }
         return winningPrizeCounts;
     }
 
-    private HashMap<WinningPrize, Integer> getDefaultWinningPrizeCounts() {
-        HashMap<WinningPrize, Integer> winningPrizeCounts = new HashMap<>();
-        for (WinningPrize winningPrize : WinningPrize.values()) {
-            winningPrizeCounts.put(winningPrize, DEFAULT_COUNT);
+    private HashMap<LottoResult, Integer> getDefaultWinningPrizeCounts() {
+        HashMap<LottoResult, Integer> winningPrizeCounts = new HashMap<>();
+        for (LottoResult lottoResult : LottoResult.values()) {
+            winningPrizeCounts.put(lottoResult, DEFAULT_COUNT);
         }
         return winningPrizeCounts;
     }
@@ -79,8 +79,8 @@ public class Lottos {
     private int getWinningAmount(Lotto winningLotto, int bonusNumber) {
         int winningAmount = 0;
         for (Lotto lotto : lottos) {
-            WinningPrize winningPrize = lotto.getWinningPrize(winningLotto, bonusNumber);
-            winningAmount += winningPrize.getAmount();
+            LottoResult lottoResult = lotto.getResult(winningLotto, bonusNumber);
+            winningAmount += lottoResult.getAmount();
         }
         return winningAmount;
     }

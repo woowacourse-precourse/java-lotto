@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.Lotto;
-import lotto.domain.WinningPrize;
 import lotto.utils.ErrorMessage;
 import org.junit.jupiter.api.*;
 
@@ -48,7 +46,7 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto winningLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
 
-        assertThat(lotto.countSameNumbers(winningLotto)).isEqualTo(3);
+        assertThat(lotto.countMatchingNumbers(winningLotto)).isEqualTo(3);
     }
 
     @DisplayName("로또에 당첨됐을 때")
@@ -67,7 +65,7 @@ class LottoTest {
         void createFirstPlaceLotto() {
             Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
-            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.FIRST_PLACE);
+            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.FIRST_PLACE);
         }
 
         @DisplayName("숫자 5개가 일치하고 보너스 숫자가 일치하면 2등")
@@ -75,7 +73,7 @@ class LottoTest {
         void createSecondPlaceLotto() {
             Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
 
-            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.SECOND_PLACE);
+            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.SECOND_PLACE);
         }
 
         @DisplayName("숫자 5개가 일치하고 보너스 숫자가 일치하지 않으면 3등")
@@ -83,7 +81,7 @@ class LottoTest {
         void createThirdPlaceLotto() {
             Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
 
-            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.THIRD_PLACE);
+            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.THIRD_PLACE);
         }
 
         @DisplayName("숫자 4개가 일치하면 4등")
@@ -91,7 +89,7 @@ class LottoTest {
         void createFourthPlaceLotto() {
             Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 7, 8));
 
-            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.FOURTH_PLACE);
+            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.FOURTH_PLACE);
         }
 
         @DisplayName("숫자 3개가 일치하면 5등")
@@ -99,7 +97,7 @@ class LottoTest {
         void createFifthPlaceLotto() {
             Lotto lotto = new Lotto(List.of(1, 2, 3, 7, 8, 9));
 
-            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.FIFTH_PLACE);
+            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.FIFTH_PLACE);
         }
 
         @DisplayName("숫자가 3개 이상 일치하지 않으면 꼴등")
@@ -107,7 +105,7 @@ class LottoTest {
         void createLastPlaceLotto() {
             Lotto lotto = new Lotto(List.of(1, 2, 7, 8, 9, 10));
 
-            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.LAST_PLACE);
+            assertThat(lotto.getResult(winningLotto, bonusNumber)).isEqualTo(LottoResult.LAST_PLACE);
         }
     }
 
