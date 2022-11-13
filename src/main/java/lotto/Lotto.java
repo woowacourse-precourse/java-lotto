@@ -46,13 +46,16 @@ public class Lotto {
         }
     }
 
-    private boolean isInRange(int number) {
+    public static boolean isInRange(int number) {
         return NUMBER_RANGE_START <= number && number <= NUMBER_RANGE_END;
     }
-    
+
     @Override
     public String toString() {
         return numbers.toString();
     }
 
+    public boolean contains(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }

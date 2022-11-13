@@ -10,6 +10,6 @@ public class Application {
         Lottos lottos = new Lottos(money.getMoney());
         OutputView.printLottos(lottos);
         WinningLotto winningLotto = new WinningLotto(InputView.askWinningNumber());
-        int bonusNumber = InputView.askBonusNumber();
+        BonusNumber bonusNumber = new BonusNumber(winningLotto, InputView.askBonusNumber());
     }
 }
