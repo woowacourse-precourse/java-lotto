@@ -19,6 +19,7 @@ public class UI {
         printLottoNumber();
         setPrizeNumbers();
         setBonusNumber();
+        printLottoResult();
     }
 
     private int moneyInput() {
@@ -66,5 +67,16 @@ public class UI {
             integerList.add(Integer.parseInt(stringValue));
         }
         return integerList;
+    }
+
+    public void printLottoResult() {
+        this.lottoLogic.calculateResult();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + this.lottoLogic.getThreeHit() + "개");
+        System.out.println("4개 일치 (50,000원) - " + this.lottoLogic.getFourHit() + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + this.lottoLogic.getFiveHit() + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + this.lottoLogic.getFiveHitAndBonus() + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + this.lottoLogic.getSixHit() + "개");
     }
 }

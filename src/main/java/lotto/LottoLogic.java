@@ -54,6 +54,26 @@ public class LottoLogic {
         return this.prizeNumbers;
     }
 
+    public int getThreeHit() {
+        return this.threeHit;
+    }
+
+    public int getFourHit() {
+        return this.fourHit;
+    }
+
+    public int getFiveHit() {
+        return this.fiveHit;
+    }
+
+    public int getFiveHitAndBonus() {
+        return this.fiveHitAndBonus;
+    }
+
+    public int getSixHit() {
+        return this.sixHit;
+    }
+
     public void setPrizeNumbers(List<Integer> prizeNumbers) {
         this.prizeNumbers = prizeNumbers;
     }
@@ -102,5 +122,8 @@ public class LottoLogic {
         if (hitCount == 6) {
             this.sixHit++;
         }
+    }
+    public void calculateResult() {
+        calculateCountHit();
     }
 }
