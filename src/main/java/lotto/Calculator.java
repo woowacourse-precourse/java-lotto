@@ -34,6 +34,6 @@ public class Calculator {
         Arrays.stream(Correct.values())
                         .forEach(s -> Message.valueOf(s.name()).printResult(placesCount[s.place]));
         double profit = (double) income / money * 100;
-        System.out.printf("총 수익률은 %.1f%%입니다.", profit);
+        Message.PROFIT.printProfit(profit);
     }
 }

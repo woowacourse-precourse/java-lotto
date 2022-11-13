@@ -10,7 +10,8 @@ public enum Message {
     CORRECT_FOUR("4개 일치 (50,000원) - "),
     CORRECT_FIVE("5개 일치 (1,500,000원) - "),
     CORRECT_FIVE_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-    CORRECT_SIX("6개 일치 (2,000,000,000원) - ");
+    CORRECT_SIX("6개 일치 (2,000,000,000원) - "),
+    PROFIT("총 수익률은 ");
 
 
     final String msg;
@@ -30,5 +31,9 @@ public enum Message {
 
     void print() {
         System.out.println(msg);
+    }
+
+    void printProfit(double profit) {
+        System.out.printf("%s%.1f%%입니다.", msg, profit);
     }
 }
