@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.model.Customer;
 import lotto.model.Lotto;
+import lotto.model.LottoCompany;
 import lotto.model.LottoNumber;
 import lotto.model.LottoNumberGenerator;
 import lotto.model.LottoSeller;
@@ -30,7 +31,12 @@ public class Application {
         lottoSeller.sellLotteriesTo(customer);
         OutputView.printLottos(customer.getLottos());
 
+        LottoCompany lottoComapny = lottoCompany();
+    }
+
+    private static LottoCompany lottoCompany() {
         Lotto winningLotto = new WinningLotto(InputView.inputWinningLotto()).toLotto();
-        LottoNumber lottoNumber = new LottoNumber(InputView.inputBonusNumber());
+        LottoNumber bonusNumber = new LottoNumber(InputView.inputBonusNumber());
+        return new LottoCompany(winningLotto, bonusNumber);
     }
 }
