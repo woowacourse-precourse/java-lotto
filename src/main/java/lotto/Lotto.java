@@ -18,6 +18,10 @@ public class Lotto {
 
     // 보너스 숫자를 추가하는 메서드
     public void addBonus(int bonus){
+        if(this.numbers.contains(bonus)) {
+            System.out.println("[ERROR] 이미 선택한 숫자입니다.");
+            throw new IllegalArgumentException();
+        }
         numbers.add(bonus);
     }
 

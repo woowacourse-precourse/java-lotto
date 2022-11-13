@@ -28,22 +28,21 @@ public class User {
     // 유저의 로또 번호 선택
     public List<Integer> choosingLottoNumber(String inputLottoNum) {
         List<Integer> lottoNum = new ArrayList<>();
-        try {
-            String[] tempLottoNum = inputLottoNum.split(",");
-            for (String s : tempLottoNum) {
-                int changedNum = Integer.parseInt(s);
-                UserMissChecking.numberLimitChecking(changedNum);
-                lottoNum.add(changedNum);
-            }
-        }catch (Exception e){
-            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            throw new IllegalArgumentException();
+        String[] tempLottoNum = inputLottoNum.split(",");
+        for (String value : tempLottoNum) {
+            UserMissChecking.numberChecking(value);
         }
+        for (String s : tempLottoNum) {
+            int changedNum = Integer.parseInt(s);
+            UserMissChecking.numberLimitChecking(changedNum);
+            lottoNum.add(changedNum);
+        }
+        UserMissChecking.numRepetCheck(lottoNum);
         return lottoNum;
     }
 
     // 구입한 로또 목록 출력
-    public void printBoughtLotto(){
+    public void printBoughtLotto() {
         for (List<Integer> integers : this.boughtLotto) {
             System.out.println(integers);
         }

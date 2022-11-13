@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.Collections;
+import java.util.List;
+
 public class UserMissChecking {
 
     // 금액 입력 시 숫자를 입력하지 않은 경우에 대한 에러체킹
@@ -30,11 +33,20 @@ public class UserMissChecking {
         }
     }
 
-    public static int bonusNumberChecking(String input){
+    public static int bonusNumberChecking(String input) {
         numberChecking(input);
         int bonusNum = Integer.parseInt(input);
         thousandChecking(bonusNum);
         numberLimitChecking(bonusNum);
         return bonusNum;
+    }
+
+    public static void numRepetCheck(List<Integer> lottoNum) {
+        for (int i = 0; i < lottoNum.size() - 1; i++) {
+            if (Collections.frequency(lottoNum,lottoNum.get(i)) > 1) {
+                System.out.println("[ERROR] 같은 숫자를 두 번 입력할 수 없습니다.");
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
