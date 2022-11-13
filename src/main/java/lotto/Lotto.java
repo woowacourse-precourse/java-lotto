@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -7,6 +8,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -37,5 +39,9 @@ public class Lotto {
         if (anyNumUnderOne || anyNumOverFortyFive) {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 1이상 45이하여야 합니다.");
         }
+    }
+
+    public List<Integer> getLotto() {
+        return this.numbers;
     }
 }
