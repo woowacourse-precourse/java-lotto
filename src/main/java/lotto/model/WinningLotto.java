@@ -24,6 +24,10 @@ public class WinningLotto {
         return winningLotto;
     }
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
     private void isValidInputPattern(String winningLotto) {
         if (!INPUT_PATTERN.matcher(winningLotto).matches()) {
             throw new IllegalArgumentException(INVALID_INPUT_PATTERN);
