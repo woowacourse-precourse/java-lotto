@@ -54,15 +54,15 @@
 - [X] 당첨 로또 반환 - WinningLotto#getWinningLotto() 
 - [X] 보너스 번호 반환 - WinningLotto#getBonusNumber() 
 
-#### Prize (Enum)
+#### Rank (Enum)
 - [X] 1등부터 5등까지 상수로 선언
 - [X] 1등부터 5등까지 각 상수가 가져야 하는 값으로 로또 번호 몇 개를 맞춰야 하는지와 상금 정보 추가 (ex. 6개 일치 (2,000,000,000원))
 - [X] 각 상수가 갖고 있는 값 반환
 
 
 #### Judgement
-- [ ] 구매한 각 로또가 몇 등에 해당하는지 계산 - Judgement#compare(Lotto lotto, Lotto winningLotto) 
-  - [ ] 구매한 로또 번호 리스트와 로또 당첨 번호 리스트 비교 후 몇 개의 번호가 일치하는지 확인 - Judgement#LottoRetainAll(Lotto winningLotto)
+- [ ] 로또 번호 리스트와 당첨 로또 번호 리스트 + 보너스 번호 비교 후 몇 등인지 확인 - Judgement#getLottoRank(Lotto lotto, Lotto winningLotto)
+  - [ ] 로또 번호 리스트 중 당첨 로또 번호와 다른 번호만 추출 후 리스트 생성 - Judgement#compare(Lotto lotto, Lotto winningLotto)
 
 
 #### Statistics
