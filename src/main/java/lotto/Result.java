@@ -28,10 +28,22 @@ public class Result {
     }
 
     public static void printResultElements() {
-        System.out.println("3개 일치 (5,000원) - " + equalThree);
-        System.out.println("4개 일치 (50,000원) - " + equalFour);
-        System.out.println("5개 일치 (1,500,000원) - " + equalFive);
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + equalFiveWithBonus);
-        System.out.println("6개 일치 (2,000,000,000원) - " + equalSix);
+        System.out.println("3개 일치 (5,000원) - " + equalThree + "개");
+        System.out.println("4개 일치 (50,000원) - " + equalFour + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + equalFive + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + equalFiveWithBonus + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + equalSix + "개");
+    }
+
+    public static int calculateElements() {
+        int money = 0;
+
+        money += equalThree *  5000;
+        money += equalFour * 50000;
+        money += equalFive * 15000000;
+        money += equalFiveWithBonus * 30000000;
+        money += equalSix * 2000000000;
+
+        return money;
     }
 }
