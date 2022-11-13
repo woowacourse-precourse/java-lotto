@@ -1,7 +1,6 @@
 package lotto.view;
 
 public class CommonView {
-
     public static void printExceptionMessage(Exception err) {
         System.out.println("[ERROR] " + err.getMessage());
     }
@@ -17,5 +16,4 @@ public class CommonView {
     public static void printInputMoneyMessage() {
         System.out.println("구입금액을 입력해 주세요.");
     }
-
 }

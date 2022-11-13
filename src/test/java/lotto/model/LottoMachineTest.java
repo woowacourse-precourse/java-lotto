@@ -13,7 +13,6 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoMachineTest {
-
     private static LottoMachine lottoMachine;
 
     @BeforeAll()

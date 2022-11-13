@@ -1,7 +1,6 @@
 package lotto;
 
 public class LottoController {
-
     public void play() {
 
     }
@@ -17,5 +16,4 @@ public class LottoController {
     private void getResult() {
 
     }
-
 }

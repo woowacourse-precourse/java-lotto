@@ -15,9 +15,7 @@ public class WinningRecord {
         return winningHistory;
     }
 
-
     public double getYield() {
         return 0.0;
     }
-
 }

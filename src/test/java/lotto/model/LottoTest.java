@@ -96,5 +96,4 @@ class LottoTest {
         int actual = lotto.draw(answer, 7);
         assertThat(actual).isEqualTo(0);
     }
-
 }
