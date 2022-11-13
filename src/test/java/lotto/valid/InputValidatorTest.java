@@ -34,4 +34,18 @@ public class InputValidatorTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> InputValidator.validateJackpotNumberFormat(jackpotNumber));
     }
+
+    @DisplayName("입력된 보너스 번호가 정수 외의 문자를 포함하는 경우 예외가 발생한다")
+    @Test
+    void nonDigitInBonusNumber() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputValidator.validateBonusNumber("4,5"));
+    }
+
+    @DisplayName("입력된 보너스 번호가 1부터 45사이의 숫자가 아닌 경우 예외가 발생한다")
+    @Test
+    void bonusNumberOfIncorrectRange() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputValidator.validateBonusNumber("46"));
+    }
 }
