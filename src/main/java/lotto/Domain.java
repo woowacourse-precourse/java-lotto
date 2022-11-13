@@ -13,7 +13,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Domain {
 
-    private static List<String> rankStringMapper = Arrays.asList("FIRST", "SECOND", "THIRD", "FORTH", "FIFTH");
+    private static List<String> rankStringMapper = Arrays.asList("", "FIRST", "SECOND", "THIRD", "FORTH", "FIFTH");
 
     public void validatePriceInput(String input) {
         if (!input.matches("^[0-9]+$")) {
@@ -93,6 +93,7 @@ public class Domain {
         List<Integer> rankList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
         for (Lotto lotto : lottos) {
             int tempRank = lotto.getRank(winningNumbers, bonus);
+            if (tempRank > 5) continue;
 
             rankList.set(tempRank, rankList.get(tempRank) + 1);
         }
