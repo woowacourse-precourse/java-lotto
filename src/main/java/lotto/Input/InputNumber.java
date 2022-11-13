@@ -32,5 +32,16 @@ public class InputNumber {
         return lottoSixNum;
     }
 
+    public int insertOneNum() {
+        int userInput;
+        try {
+            userInput = Integer.parseInt(Console.readLine());
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException(PrintError.NOT_A_NUMBER.getMessage());
+        }
+
+        return userInput;
+    }
+
 
 }
