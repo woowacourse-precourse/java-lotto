@@ -17,7 +17,7 @@ public class Game {
 
     public void play() {
         inputLottoAmountMessage();
-        buyer.buyLottos(buyer.inputLottoAmount());
+        buyer.buyLotto();
         List<Integer> winLottoNumber = Presenter.inputWinLottoNumber();
         int bonusNumber = Presenter.inputBonusNumber();
     }

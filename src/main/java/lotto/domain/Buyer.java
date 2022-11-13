@@ -15,13 +15,13 @@ public class Buyer {
         lottos = new ArrayList<>();
     }
 
-    public int inputLottoAmount() {
+    public void buyLotto() {
         String lottoAmount = Console.readLine();
         validatesLottoAmount(lottoAmount);
-        return Integer.parseInt(lottoAmount);
+        createLottos(Integer.parseInt(lottoAmount));
     }
 
-    public void buyLottos(int amount) {
+    public void createLottos(int amount) {
         int count = countOfLottos(amount);
         for(int i=1; i<=count; i++) {
             lottos.add(Lotto.generateLotto());
