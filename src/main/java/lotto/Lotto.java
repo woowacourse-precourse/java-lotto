@@ -22,6 +22,10 @@ public class Lotto {
             throw new IllegalArgumentException(NUMBERS_COUNT_ERROR_MESSAGE);
         }
 
+        checkNumberRange(numbers, isIncluded);
+    }
+
+    private void checkNumberRange(List<Integer> numbers, Boolean[] isIncluded) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
                 throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE);
@@ -39,19 +43,18 @@ public class Lotto {
 
     public int checkWinning(List<Integer> winningNumbers, int bonusNumber) {
         boolean[] isIncluded = new boolean[46];
-        Arrays.fill(isIncluded, false);
 
         winningNumbers.forEach(num -> isIncluded[num] = true);
         int count = (int) this.numbers.stream().filter(num -> isIncluded[num]).count();
-        // 6개 맞춤 - 1등
+        if (count < 3) {
+            return 0;
+        }
         if (count == 6) {
             return 1;
         }
-        // 5개 맞춤 + 보너스번호 맞춤 - 2등
-        if (count == 5) {
-            if (this.numbers.contains(bonusNumber)) return 2;
+        if (count == 5 && this.numbers.contains(bonusNumber)) {
+            return 2;
         }
-        // 5개부터 3개맞춘것 까지 - 3등 ~ 5등
         return 6 - count + 2;
     }
 }
