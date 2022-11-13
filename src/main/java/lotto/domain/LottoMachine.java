@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class LottoMachine {
 
@@ -32,17 +33,17 @@ public class LottoMachine {
     }
 
     public void saveWinningNumber(List<Integer> numbers, int bonusNumber) {
-        if (checkDuplication(numbers,bonusNumber) == false){
+        if (checkDuplication(numbers, bonusNumber) == false) {
             throw new IllegalArgumentException();
         }
-        winningLotto = new WinningLotto(new Lotto(numbers),bonusNumber);
+        winningLotto = new WinningLotto(new Lotto(numbers), bonusNumber);
     }
 
     private Lotto createRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < LOTTO_SIZE) {
             int number = Randoms.pickNumberInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER);
-            if (checkDuplication(numbers,number)) {
+            if (checkDuplication(numbers, number)) {
                 numbers.add(number);
             }
         }
@@ -50,7 +51,7 @@ public class LottoMachine {
         return new Lotto(numbers);
     }
 
-    public static boolean checkDuplication(List<Integer> numbers,int number) {
+    public static boolean checkDuplication(List<Integer> numbers, int number) {
         if (numbers.contains(number)) {
             return false;
         }
@@ -68,12 +69,31 @@ public class LottoMachine {
     }
 
     public List<Integer> getWinningList() {
-
+        List<Integer> winningList = IntStream.of(new int[7])
+                .boxed()
+                .collect(Collectors.toList());
+        lottoGroups.getLottos().forEach(lotto -> {
+            int winningCount = getWinningCount(lotto);
+            winningList.set(winningCount, winningList.get(winningCount) + 1);
+        });
+        System.out.println("winningList = " + winningList);
         return List.of(1, 2, 3, 4, 5);
     }
 
-    private boolean checkWinningNumber() {
-        return true;
+    private int getWinningCount(Lotto lotto) {
+        System.out.println(lotto.getNumbers());
+        int winningCount = lotto.getNumbers().stream()
+                .filter(this::checkWinningNumber)
+                .collect(Collectors.toList())
+                .size();
+        return winningCount;
+    }
+
+    private boolean checkWinningNumber(int number) {
+        if (winningLotto.getWinningNumbers().getNumbers().contains(number)) {
+            return true;
+        }
+        return false;
     }
 
     public double getYield() {

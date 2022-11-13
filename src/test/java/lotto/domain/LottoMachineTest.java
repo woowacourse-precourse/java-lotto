@@ -2,6 +2,8 @@ package lotto.domain;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class LottoMachineTest {
     LottoMachine lottoMachine;
 
@@ -19,4 +21,6 @@ public class LottoMachineTest {
         lottoMachine = new LottoMachine(5);
         lottoMachine.getLottosNumberList().stream().forEach(System.out::println);
     }
+
+
 }

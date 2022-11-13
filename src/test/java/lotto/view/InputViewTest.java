@@ -14,7 +14,7 @@ public class InputViewTest {
     }
 
     @Test
-    void 정상_입력_테스트() {
+    void 돈_정상_입력_테스트() {
         String inputNumber = "1000";
         System.setIn(new ByteArrayInputStream(inputNumber.getBytes()));
         int answer = inputView.inputMoney();
@@ -23,7 +23,7 @@ public class InputViewTest {
     }
 
     @Test
-    void 단위_에러_테스트() {
+    void 잔돈_남을시_에러_테스트() {
         String inputNumber = "1100";
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             System.setIn(new ByteArrayInputStream(inputNumber.getBytes()));
