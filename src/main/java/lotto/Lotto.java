@@ -28,4 +28,14 @@ public class Lotto {
         return count;
     }
 
+    public int checkRanking(List<Integer> winningNumbers){
+        int count = countMatch(winningNumbers);
+
+        for (Prize prize:Prize.values()){
+            if (prize.getCount() == count){
+                return prize.getName();
+            }
+        }
+        return Prize.NOTHING.getName();
+    }
 }
