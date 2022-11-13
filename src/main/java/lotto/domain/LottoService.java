@@ -7,21 +7,21 @@ import java.util.Map;
 public class LottoService {
 
     public Map<Integer, Boolean> countWinning(List<Integer> lotto, List<List<Integer>> userLotto) {
-        Map<Integer, Boolean> result = new HashMap<>();
+        Map<Integer, Boolean> lottoResult = new HashMap<>();
 
         for(List<Integer> numbers : userLotto) {
-            int count = countCorrect(lotto, numbers);
-            boolean bonusNumber = countBonus(numbers);
+            int count = countMatchNumber(lotto, numbers);
+            boolean bonusNumber = checkBonusNumber(count, numbers);
 
             if(count >= 3) {
-                result.put(count, bonusNumber);
+                lottoResult.put(count, bonusNumber);
             }
         }
 
-        return result;
+        return lottoResult;
     }
 
-    public int countCorrect(List<Integer> lotto, List<Integer> userLotto) {
+    public int countMatchNumber(List<Integer> lotto, List<Integer> userLotto) {
         int count = 0;
 
         for(int number : userLotto) {
@@ -32,19 +32,18 @@ public class LottoService {
         return count;
     }
 
+
     /**
      * 입력받는 lotto가 bonus 번호를 가지고있으면 true, 아니면 false 반환
      * @param userLotto
      * @return
      */
-    public boolean countBonus(List<Integer> userLotto) {
-        if(userLotto.contains(BonusNumber.BONUS_NUMBER.getNumber())) {
-            return true;
+    public boolean checkBonusNumber(int matchNumber, List<Integer> userLotto) {
+        if(matchNumber == LottoRank.SECOND.getMatchNumber()) {
+            if(userLotto.contains(BonusNumber.BONUS_NUMBER.getNumber())) {
+                return true;
+            }
         }
         return false;
-    }
-
-    public int calculateProfit() {
-
     }
 }
