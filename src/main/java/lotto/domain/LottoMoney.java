@@ -16,7 +16,7 @@ public class LottoMoney {
     }
 
     private void validate(int money){
-        if (money % 1000 != 0){
+        if (money % MIN_COST != 0){
             throw new IllegalArgumentException(NO_UNIT_AMOUNT_ERROR);
         }
 
