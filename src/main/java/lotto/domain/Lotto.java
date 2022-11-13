@@ -1,8 +1,9 @@
 package lotto.domain;
 
+import lotto.constants.ErrorMessages;
+
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,11 +16,15 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]로또 번호의 개수가 6개가 아닙니다");
+            throw new IllegalArgumentException(ErrorMessages.SIZE);
         }
 
         if (checkDuplicate(numbers)) {
-            throw new IllegalArgumentException("[ERROR]중복입니다.");
+            throw new IllegalArgumentException(ErrorMessages.DUPLICATE);
+        }
+
+        if (checkRange(numbers)) {
+            throw new IllegalArgumentException(ErrorMessages.RANGE);
         }
     }
 
@@ -28,6 +33,15 @@ public class Lotto {
                 .distinct()
                 .count();
         return numbers.size() != distinctSize;
+    }
+
+    private boolean checkRange(List<Integer> numbers) {
+        for (Integer i : numbers) {
+            if (i < 1 || i > 45) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public List<Integer> getNumbers() {
