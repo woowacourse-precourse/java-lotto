@@ -18,8 +18,11 @@ public class Purchase {
 
     public static void buyLotto() {
         inputAmount();
+
         createLottos();
         printLottos(lottos);
+
+
     }
 
     /**
@@ -41,5 +44,9 @@ public class Purchase {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, LOTTO_COUNT);
             lottos.add(new Lotto(numbers));
         }
+    }
+
+    private static void inputWinningNumbers() {
+        printInputWinningNumber();
     }
 }
