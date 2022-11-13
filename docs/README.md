@@ -47,5 +47,5 @@
   - [X] 수익률
 - [ ] 분석 결과에 대한 Map 컬렉션을 일급 컬렉션으로 변경
 - [ ] 로또 리스트를 일급 컬렉션으로 변경
-- [ ] 예외 처리 클래스 IllegalArgumentException으로 변경 
+- [X] 예외 처리 클래스 IllegalArgumentException으로 변경 
 - [ ] LottoPlayer inputAll 메서드 분할

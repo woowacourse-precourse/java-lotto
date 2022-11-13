@@ -3,13 +3,14 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = new ArrayList<>(numbers);
+        this.numbers = numbers.stream().distinct().collect(Collectors.toList());
+        validate(this.numbers);
         Collections.sort(this.numbers);
     }
 
@@ -28,7 +29,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.OVERLAP.getMessage());
         }
         validateElementRange(numbers);
     }
@@ -36,7 +37,7 @@ public class Lotto {
     private void validateElementRange(List<Integer> numbers) {
         numbers.forEach(i -> {
             if(isOutOfRange(i)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE.getMessage());
             }
         });
     }

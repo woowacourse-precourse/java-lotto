@@ -4,7 +4,8 @@ public enum ErrorMessage {
     NOT_NUMBER("숫자가 아닙니다."),
     NOT_THOUSAND("1000 단위가 아닙니다."),
     OVERLAP("중복된 값이 있습니다."),
-    ALREADY("이미 존재하는 값입니다."),
+    IS_CONTAIN("이미 존재하는 값입니다."),
+    REGEX_NOT_SATISFIED("입력 표준에 맞지 않습니다."),
     OUT_OF_RANGE("범위를 초과하였습니다.");
 
     private static final String PREFIX = "[ERROR] ";
