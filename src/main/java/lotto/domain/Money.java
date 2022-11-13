@@ -26,6 +26,10 @@ public class Money {
         return calculateYield(new BigDecimal(investmentPrincipalMoney.money), new BigDecimal(revenueMoney.money));
     }
 
+    private static double calculateYield(BigDecimal investmentPrincipal, BigDecimal revenue) {
+        return revenue.divide(investmentPrincipal).multiply(HUNDRED_BIG_DECIMAL).doubleValue();
+    }
+
     public int divideValue(Money money) {
         validateNotZero(money);
         return Long.valueOf(this.money / money.money).intValue();
@@ -37,16 +41,16 @@ public class Money {
         }
     }
 
-    private static double calculateYield(BigDecimal investmentPrincipal, BigDecimal revenue) {
-        return revenue.divide(investmentPrincipal).multiply(HUNDRED_BIG_DECIMAL).doubleValue();
-    }
-
     public Money add(Money money) {
         return new Money(this.money + money.money);
     }
 
     public Money multiply(int value) {
         return new Money(this.money * value);
+    }
+
+    public boolean notZero() {
+        return this.money != 0;
     }
 
     public long value() {

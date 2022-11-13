@@ -3,6 +3,7 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -52,5 +53,14 @@ public class MoneyTest {
     @ValueSource(longs = {1000L, 124000L, 12345678900L})
     void value(long value) {
         assertThat(new Money(value).value()).isEqualTo(value);
+    }
+
+    @DisplayName("0원인지 반환한다.")
+    @Test
+    void notZero() {
+        Assertions.assertAll(
+                () -> assertThat(new Money(0).notZero()).isFalse(),
+                () -> assertThat(new Money(20000).notZero()).isTrue()
+        );
     }
 }
