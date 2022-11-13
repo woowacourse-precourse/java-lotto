@@ -3,6 +3,7 @@ package lotto.view;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.LottoResult;
+import lotto.utils.ErrorMessage;
 
 import java.util.Map;
 
@@ -43,6 +44,7 @@ public class OutputView {
     }
 
     public static void printErrorMessage(IllegalArgumentException error) {
+        System.out.print(ErrorMessage.PREFIX);
         System.out.println(error.getMessage());
     }
 }
