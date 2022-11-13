@@ -37,6 +37,11 @@ public class WinningLotto extends Lotto{
 
     public Rank compareLottoNumber(Lotto lotto) {
         int countOfMatch = getCountOfMatch(lotto);
+        boolean isMatchedBonus = isMatchedBonus(lotto);
+    }
+
+    private boolean isMatchedBonus(Lotto lotto) {
+        return lotto.getNumbers().contains(this.bonusNumber);
     }
 
     private int getCountOfMatch(Lotto lotto) {
