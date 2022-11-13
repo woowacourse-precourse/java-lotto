@@ -10,10 +10,11 @@ public class MyLotto {
 
     private List<Lotto> myLotto;
     private int totalPrize;
-    private HashMap<Integer, Integer> eachLottoPrize;
+    private HashMap<String, Integer> eachLottoRank = new HashMap<>();
 
     public MyLotto(int purchaseAmount) {
         List<Lotto> tmpMyLotto = createMyLotto(purchaseAmount);
+        initializeEachLottoRank();
         this.myLotto = tmpMyLotto;
     }
 
@@ -23,12 +24,17 @@ public class MyLotto {
         }
     }
 
-    public void setEachLottoPrize(int rank) {
-        this.eachLottoPrize.put(rank, this.eachLottoPrize.get(rank)+1);
+    public void setEachLottoPrize(int rank, boolean containBonusNumber) {
+        String rankName = Rank.findRank(rank, containBonusNumber).name();
+        this.eachLottoRank.put(rankName, this.eachLottoRank.get(rankName)+1);
     }
 
     public List<Lotto> getMyLotto() {
         return this.myLotto;
+    }
+
+    public HashMap<String, Integer> getEachLottoRank() {
+        return this.eachLottoRank;
     }
 
     public List<Lotto> createMyLotto(int purchaseAmount) {
@@ -42,13 +48,23 @@ public class MyLotto {
         return tmpMyLotto;
     }
 
+    public void initializeEachLottoRank() {
+        for (Rank rank : Rank.values()) {
+            this.eachLottoRank.put(rank.name(), 0);
+        }
+    }
+
     public void checkEachLotto(Lotto winNumbers, BonusNumber bonusNumber) {
+
         for (Lotto lotto : myLotto) {
-            System.out.println(lotto.getLotto());
+
             int correctNumbers = lotto.compareWithWinNumber(winNumbers);
-            System.out.println(correctNumbers);
-            if (correctNumbers >= 3) {
-                setEachLottoPrize(correctNumbers);
+
+            if (correctNumbers == 3 || correctNumbers == 4 || correctNumbers == 6) {
+                setEachLottoPrize(correctNumbers, false);
+            }
+            if (correctNumbers == 5) {
+                setEachLottoPrize(correctNumbers, lotto.compareWithBonusNumber(bonusNumber));
             }
         }
     }
