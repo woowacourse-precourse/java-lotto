@@ -3,6 +3,8 @@ package lotto.view;
 import java.util.List;
 
 public class OutputView {
+    private static final String ERROR_HEADER = "[ERROR] ";
+
     public static void printPurchaseResult(List<List<Integer>> purchaseResult) {
         System.out.printf("%n%d개를 구매했습니다.%n", purchaseResult.size());
         for (List<Integer> lottoNumbers : purchaseResult) {
@@ -19,5 +21,9 @@ public class OutputView {
 
     public static void printProfitRate(String profitRate) {
         System.out.printf("총 수익률은 %s입니다.", profitRate);
+    }
+
+    public static void printErrorMessage(String errorMessage) {
+        System.out.println(ERROR_HEADER + errorMessage);
     }
 }
