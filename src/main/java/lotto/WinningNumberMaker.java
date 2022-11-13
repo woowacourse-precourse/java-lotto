@@ -6,9 +6,14 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class WinningNumberMaker {
+    private final int START_NUM = 1;
+    private final int END_NUM = 45;
+
     private String winningNumberInput;
+    private String bonusNumberInput;
     private String[] inputSplitByComma;
     private List<Integer> winningNumbers;
+    private int bonusNumber;
 
     void make() {
         requestWinningNumber();
@@ -64,5 +69,42 @@ public class WinningNumberMaker {
 
     List<Integer> showWinningNumbers() {
         return new ArrayList<>(this.winningNumbers);
+    }
+
+    void makeBonusNumber() {
+        requestBonusNumber();
+        getBonusNumberInput();
+        validateBonusNumberInput();
+        saveBonusNumber();
+        validateBonusNumber();
+    }
+
+    void requestBonusNumber() {
+        System.out.println(Messages.ENTER_BONUS_NUMBER.message);
+    }
+
+    void getBonusNumberInput() {
+        this.bonusNumberInput = Console.readLine();
+    }
+
+    void validateBonusNumberInput() {
+        this.bonusNumberInput.chars().forEach(c -> {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException(ErrorMessage.BONUS_NUM_NOT_A_NUMBER.message);
+            }
+        });
+    }
+
+    void saveBonusNumber() {
+        this.bonusNumber = Integer.parseInt(this.bonusNumberInput);
+    }
+
+    void validateBonusNumber() {
+        if (!(START_NUM <= this.bonusNumber && this.bonusNumber <= END_NUM)) {
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_OUT_OF_RANGE.message);
+        }
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUM_CONTAINS_BONUS_NUM.message);
+        }
     }
 }
