@@ -1,5 +1,7 @@
 package controller;
 
+import util.WinNum;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,19 +16,19 @@ public class OutputController {
 
         correctnumber = numToString(lottonumber.size());
         if(lottonumber.size() == 5 && lottonumber.contains(bonusnumber)) {
-            correctnumber = "Bonus";
+            correctnumber = WinNum.Bonus.toString();
         }
         return correctnumber;
     }
 
     public String numToString(int number) {
         switch (number) {
-            case 3: return "Three";
-            case 4: return "Four";
-            case 5: return "Five";
-            case 6: return "Six";
+            case 3: return WinNum.Three.toString();
+            case 4: return WinNum.Four.toString();
+            case 5: return WinNum.Five.toString();
+            case 6: return WinNum.Six.toString();
         }
-        return "Zero";
+        return WinNum.Nothing.toString();
     }
 
 }
