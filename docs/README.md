@@ -47,7 +47,7 @@
 
 ### 기능
 
-- [ ] 서로 다른 점수끼리 비교 - compareTo
+- [x] 서로 다른 점수끼리 비교 - compareTo
 
 ## 복권 추첨기(`LottoMachine`)
 

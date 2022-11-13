@@ -11,6 +11,9 @@ public class Score implements Comparable<Score> {
 
     @Override
     public int compareTo(Score score) {
-        return 0;
+        if(this.winningNumberCount != score.winningNumberCount){
+            return this.winningNumberCount - score.winningNumberCount;
+        }
+        return this.bonusNumberCount - score.bonusNumberCount;
     }
 }
