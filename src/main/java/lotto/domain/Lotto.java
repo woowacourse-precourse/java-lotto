@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -30,6 +31,12 @@ public class Lotto {
 
     public boolean isMatchBonusNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
+    }
+
+    public List<Integer> getSortNumbers() {
+        return numbers.stream()
+                .sorted(Integer::compareTo)
+                .collect(Collectors.toList());
     }
 
     public List<Integer> getNumbers() {

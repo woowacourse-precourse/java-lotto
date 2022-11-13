@@ -38,6 +38,7 @@ public class User {
 
     public void showNumbers() { // 리팩토링 대상. Lotto 번호를 왜 직접 처리? (getNumbers())
         for (Lotto lotto : lottos) {
+            List<Integer> sortNumbers = lotto.getSortNumbers();
             List<String> numbers = convertIntegerToString(lotto);
 
             String param = String.join(", ", numbers);
