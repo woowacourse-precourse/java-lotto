@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public enum ConsoleMessage {
     START {
         public void printMsg() {
@@ -7,8 +9,12 @@ public enum ConsoleMessage {
         }
     },
     PURCHASE {
-        public void printMsg() {
-            System.out.println(PURCHASE_MSG);
+        public void printMsg(List<Lotto> purchasedLotto) {
+            String message = String.format(PURCHASE_MSG, purchasedLotto.size());
+            System.out.println(message);
+            for (Lotto lotto : purchasedLotto) {
+                System.out.println(lotto);
+            }
         }
     },
     WINNING_NUMBER {
@@ -29,13 +35,13 @@ public enum ConsoleMessage {
     },
     YIELD {
         public void printMsg(double yield) {
-            String message = String.format(RESULT_MSG, yield);
+            String message = String.format(YIELD_MSG, yield);
             System.out.println(message);
         }
     };
 
     public static final String START_MSG ="구입금액을 입력해주세요.";
-    public static final String PURCHASE_MSG ="개를 구매했습니다.";
+    public static final String PURCHASE_MSG ="%d개를 구매했습니다.";
     private static final String WINNING_NUMBER_MSG = "당첨 번호를 입력해 주세요";
     private static final String BONUS_NUMBER_MSG = "보너스 번호를 입력해주세요";
 
@@ -50,4 +56,8 @@ public enum ConsoleMessage {
             "6개 일치 (2,000,000,000원) - %d개";
     private static final String YIELD_MSG = "총 수익률은 %.2f%%입니다.";
 
+    public void printMsg() {}
+    public void printMsg(int[] result) {}
+    public void printMsg(double yield) {}
+    public void printMsg(List<Lotto> purchasedLotto) {}
 }
