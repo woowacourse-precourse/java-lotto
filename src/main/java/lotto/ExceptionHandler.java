@@ -15,5 +15,8 @@ public class ExceptionHandler extends IllegalArgumentException{
         if (options.equals("lottoCondition")) {
             throw new IllegalArgumentException("[ERROR] 번호는 1~45 사이의 수로 이루어져 있습니다.");
         }
+        if (options.equals("RandomlottoCondition")) {
+            throw new IllegalArgumentException("[ERROR] 동일한 번호의 로또가 있습니다.");
+        }
     }
 }
