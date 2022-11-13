@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Domain.Lotto;
 import lotto.Domain.LottoShop;
 import lotto.Domain.Statistic;
@@ -11,6 +12,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.Enum.ErrorMessage.*;
@@ -18,7 +20,7 @@ import static lotto.Enum.StatisticMessage.TOTAL_YIELD;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class LottoTest {
+class LottoTest extends NsTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -36,12 +38,7 @@ class LottoTest {
 
     @DisplayName("금액을 입력하고 로또의 갯수를 확인한다.")
     void countLottoByInputProperMoney() {
-        List<Integer> sampleInputProperMoneyList = List.of(
-                1000,
-                5000,
-                70000,
-                210000000
-        );
+
     }
 
     @DisplayName("올바르지 않은 금액을 입력했을때 예외를 확인한다.")
@@ -93,8 +90,24 @@ class LottoTest {
     }
 
     @DisplayName("보너스번호의 입력을 확인한다.")
+    @Test
     void inputBonusNumber() {
+        LottoShop.soldLottoList = new ArrayList<>();
+        assertThatThrownBy(() -> run("1000", "1,2,3,4,5,6", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(DUPLICATED_BONUS_NUMBERS.toMessage());
 
+        assertThatThrownBy(() -> run("1000", "1,2,3,4,5,6", "46"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(OUT_OF_LENGTH.toMessage());
+
+        assertThatThrownBy(() -> run("1000", "1,2,3,4,5,6", "0"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(OUT_OF_LENGTH.toMessage());
+
+        assertThatThrownBy(() -> run("1000", "1,2,3,4,5,6", "A"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_INPUT_INTEGER_VALUE.toMessage());
     }
 
     @DisplayName("당첨시 수익률을 확인한다.(구매금액을 제외하지 않는다.)")
@@ -140,4 +153,8 @@ class LottoTest {
 
     }
 
+    @Override
+    protected void runMain() {
+        Application.main(new String[]{});
+    }
 }
