@@ -1,8 +1,8 @@
 package lotto.game.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.game.domain.Lotto;
 import lotto.game.domain.LottoGrade;
 import lotto.game.domain.TotalResult;
@@ -22,8 +22,9 @@ public class UI {
     public void printPurchasedLottos(List<Lotto> lottos) {
         System.out.printf("%d개를 구매했습니다.%n", lottos.size());
         lottos.stream()
-                .map(Lotto::getNumbers)
-                .map(ArrayList::new)
+                .map(lotto -> lotto.getNumbers().stream()
+                                .sorted()
+                                .collect(Collectors.toList()))
                 .forEach(System.out::println);
         System.out.println();
     }
