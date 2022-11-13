@@ -48,7 +48,7 @@ class LottoReaderTest {
         Lotto lotto = new Lotto(lottoSource);
         int bonusNumber = 7;
         WinningLotto winningLotto = new WinningLotto(compareLotto,bonusNumber);
-        assertThat(LottoReader.getLottoResult(lotto, winningLotto)).isEqualTo(expected);
+        assertThat(LottoReader.getLottoRanking(lotto, winningLotto)).isEqualTo(expected);
     }
 
     @DisplayName("정답 로또와 보너스 번호를 입력했을 때 로또 여러장의 결과 값을 제대로 반환하는지 테스트")
@@ -58,7 +58,7 @@ class LottoReaderTest {
         Lotto compareLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
         WinningLotto winningLotto = new WinningLotto(compareLotto, bonusNumber);
-        Map<LottoRanking, Integer> result = LottoReader.getLottoResults(lottoSource, winningLotto);
+        Map<LottoRanking, Integer> result = LottoReader.getLottoRankings(lottoSource, winningLotto);
 
         assertThat(result).contains(
                 entry(LottoRanking.FIRST, 1),

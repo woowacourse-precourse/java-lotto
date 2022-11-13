@@ -6,17 +6,17 @@ import java.util.Map;
 
 public class LottoReader {
 
-    public static Map<LottoRanking, Integer> getLottoResults(List<Lotto> lottos, WinningLotto winningLotto) {
+    public static Map<LottoRanking, Integer> getLottoRankings(List<Lotto> lottos, WinningLotto winningLotto) {
         Map<LottoRanking, Integer> result = new HashMap<>();
         for (Lotto lotto : lottos) {
-            LottoRanking lottoRanking = getLottoResult(lotto, winningLotto);
+            LottoRanking lottoRanking = getLottoRanking(lotto, winningLotto);
             result.computeIfPresent(lottoRanking, (key, value) -> value + 1);
             result.computeIfAbsent(lottoRanking, key -> 1);
         }
         return result;
     }
 
-    public static LottoRanking getLottoResult(Lotto lotto, WinningLotto winningLotto) {
+    public static LottoRanking getLottoRanking(Lotto lotto, WinningLotto winningLotto) {
         double matchingNumber = countMatchingNumber(lotto, winningLotto.getWinningLotto());
         if (matchingNumber == LottoRanking.THIRD.getLottoScore() && isIncludedNumber(lotto, winningLotto.getBonusNumber())) {
             matchingNumber += 0.5;
