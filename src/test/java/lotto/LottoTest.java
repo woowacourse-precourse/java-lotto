@@ -36,6 +36,16 @@ class LottoTest {
         assertThat(lotto.get(0).getNumbers().size() == 6).isTrue();
     }
 
+    @DisplayName("로또 생성 메서드는 1~45 범위의 숫자를 생성")
+    @Test
+    void createLottoTestByRange() {
+        List<Lotto> lotto = new ArrayList<>(List.of(createLotto()));
+        List<Integer> number = lotto.get(0).getNumbers();
+        for (int i = 0; i < lotto.get(0).getNumbers().size(); i++) {
+            assertThat(number.get(i) > 0 && number.get(i) < 46).isTrue();
+        }
+    }
+
     @DisplayName("로또 번호와 일치하는 숫자 개수를 구하는 메서드 테스트")
     @Test
     void getWinningResultTest() {
