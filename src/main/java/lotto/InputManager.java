@@ -2,6 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputManager {
 
     public int getPurchasingAmount() {
@@ -13,5 +16,16 @@ public class InputManager {
         }
 
         return amount;
+    }
+
+    public List<Integer> drawWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String[] winningNumberInput = Console.readLine().split(",");
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (String winningNumber : winningNumberInput) {
+            winningNumbers.add(Integer.parseInt(winningNumber));
+        }
+
+        return winningNumbers;
     }
 }
