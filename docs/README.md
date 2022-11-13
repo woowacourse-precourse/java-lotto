@@ -41,7 +41,7 @@ Java Lotto Game
 
 -----------------
 ```camp.nextstep.edu.missionutils``` 의 ```Randoms``` 및 ```Console```  API로 구현
-* Random 값 추출 : ```camp.nextstep.edu.missionutils.Randoms```의 ```pickUniqueNumbersInRange()
+* Random 값 추출 : ```camp.nextstep.edu.missionutils.Randoms```의 ```pickUniqueNumbersInRange()```
 * 사용자 입력 값 : ```camp.nextstep.edu.missionutils.Console```의 ```readLine()```
 
 <h3> Lotto class </h3>
