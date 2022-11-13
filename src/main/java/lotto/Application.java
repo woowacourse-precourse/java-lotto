@@ -10,6 +10,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     private int moneyToBuy;
     private final List<Lotto> purchasedLottoTickets = new ArrayList<>();
+    private Lotto winningNumber;
+    private Integer bonusNumber;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -17,9 +19,11 @@ public class Application {
         newRound.askForMoney();
         newRound.buyLotto();
         newRound.printLottoList();
+        newRound.setLottoWinningNumber();
     }
 
     public void askForMoney() {
+        System.out.println("구입금액을 입력해 주세요.");
         String answer = readLine().replace(" ", "");
         validateMoney(answer);
         this.moneyToBuy = Integer.parseInt(answer);
@@ -61,6 +65,63 @@ public class Application {
     }
 
     private void printLottoNumbers(Lotto ticket) {
-            System.out.println(ticket.getLottoNumbers());
+        System.out.println(ticket.getLottoNumbers());
+    }
+
+    public void setLottoWinningNumber() {
+        this.winningNumber = askWinningNumber();
+        this.bonusNumber = askBonusNumber();
+    }
+
+    private Lotto askWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String[] answer = readLine().split(",");
+        checkArrayOnlyNumber(answer);
+        return makeWinningLotto(answer);
+    }
+
+    private void checkArrayOnlyNumber(String[] answer) {
+        for (String number : answer) {
+            if (checkOnlyNumber(number)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private Lotto makeWinningLotto(String[] answer) {
+        List<Integer> answerNumber = new ArrayList<>();
+        for (String number : answer) {
+            answerNumber.add(Integer.parseInt(number));
+        }
+        return new Lotto(answerNumber);
+    }
+
+    private Integer askBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String answerBonusNumber = readLine().replace(" ", "");
+        validateBonusNumber(answerBonusNumber);
+        return Integer.parseInt(answerBonusNumber);
+    }
+
+    private void validateBonusNumber(String answerBonusNumber) {
+        if (checkOnlyNumber(answerBonusNumber)
+                || checkOutOfRange(answerBonusNumber)
+                || checkOverlapWinningNumber(answerBonusNumber)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean checkOutOfRange(String answerBonusNumber) {
+        return (Integer.parseInt(answerBonusNumber) > 45 || Integer.parseInt(answerBonusNumber) < 1);
+    }
+
+    private boolean checkOverlapWinningNumber(String answerBonusNumber) {
+        Integer bonusNumber = Integer.parseInt(answerBonusNumber);
+        for(Integer lottoNumber: this.winningNumber.getLottoNumbers()){
+            if(lottoNumber.equals(bonusNumber)){
+                return true;
+            }
+        }
+        return false;
     }
 }
