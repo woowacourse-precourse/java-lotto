@@ -1,8 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.List;
+import java.util.*;
 
 public class LottoMachine {
     private final List<Integer> normalNumber;
@@ -27,7 +28,7 @@ public class LottoMachine {
             throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다.");
         }
 
-        if(money % 1000 > 0) {
+        if (money % 1000 > 0) {
             throw new IllegalArgumentException("[ERROR] 구매금액은 1000원 단위가 아닙니다.");
         }
     }
@@ -35,6 +36,12 @@ public class LottoMachine {
     public int getLottoCount(String input) {
         int money = Integer.parseInt(input);
         return money / 1000;
+    }
+
+    public List<Integer> getLottoNumbers() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 9, 6);
+        Collections.sort(numbers, Collections.reverseOrder());
+        return numbers;
     }
 
 }
