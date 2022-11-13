@@ -2,7 +2,9 @@ package lotto;
 
 import lotto.Exception.ExceptionType;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Validator {
     public static void validateMoney(String money) {
@@ -52,11 +54,22 @@ public class Validator {
         return true;
     }
 
+
     public static void validateRange(List<Integer> numbers) {
         numbers.forEach(number -> {
             if (number < 1 || number > 45) {
                 throw new IllegalArgumentException(ExceptionType.LOTTO_RANGE_EXCEPTION.getMessage());
             }
         });
+    }
+
+    public static void validateDuplicates(List<Integer> numbers) {
+        Set<Integer> duplicateCheckSet = new HashSet<>();
+        for (Integer number : numbers) {
+            if (duplicateCheckSet.contains(number)) {
+                throw new IllegalArgumentException(ExceptionType.LOTTO_DUPLICATE_EXCEPTION.getMessage());
+            }
+            duplicateCheckSet.add(number);
+        }
     }
 }
