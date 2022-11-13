@@ -25,3 +25,5 @@
     - Integer winningCount
 - ~~WinningLotto 클래스 정의~~
     - extends Lotto
+- ~~Application 클래스~~
+    - ~~Create Game > run Game~~
