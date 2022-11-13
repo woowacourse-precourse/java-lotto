@@ -11,6 +11,8 @@ public class Lotto {
         validate(numbers);
         duplicatedNumber(numbers);
         this.numbers = numbers;
+        printLottoNumber();
+
     }
 
     private void validate(List<Integer> numbers) {
@@ -25,6 +27,10 @@ public class Lotto {
         if (!(DeleteDuplicate.size() == 6)) {
             throw new IllegalArgumentException("[ERROR]:중복된 숫자가 있습니다.");
         }
+    }
+
+    public void printLottoNumber() {
+        System.out.println(numbers);
     }
 
     // TODO: 추가 기능 구현
