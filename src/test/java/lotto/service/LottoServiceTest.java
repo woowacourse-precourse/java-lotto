@@ -6,10 +6,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import lotto.domain.Customer;
+import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
+import lotto.domain.LottoNumber;
 import lotto.domain.LottoSeller;
 import lotto.dto.LottoDto;
 import lotto.dto.LottoInformationDto;
+import lotto.dto.LottoResultDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -60,5 +63,21 @@ class LottoServiceTest {
         LottoDto lottoDto = new LottoDto(List.of(1, 2, 3, 4, 5, 6), 7);
         LottoMachine lottoMachine = lottoService.draw(lottoDto);
         assertThat(lottoMachine).isNotNull();
+    }
+
+    @Test
+    void check_메서드는_Customer가_로또를_구입하지_않은경우_IllegalStateException을_던진다() {
+        Customer customer = new Customer(2000);
+        LottoMachine lottoMachine = new LottoMachine(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.valueOf(7));
+        assertThatThrownBy(() -> lottoService.check(customer, lottoMachine))
+                .isInstanceOf(IllegalStateException.class);
+    }
+
+    @Test
+    void check_메서드는_Customer와_LottoMachine을_입력받아_LottoResultDto를_반환한다() {
+        Customer customer = new Customer(2000);
+        customer.buyLottoTicketTo(new LottoSeller());
+        LottoMachine lottoMachine = new LottoMachine(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.valueOf(7));
+        assertThat(lottoService.check(customer, lottoMachine)).isInstanceOf(LottoResultDto.class);
     }
 }
