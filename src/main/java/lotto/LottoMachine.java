@@ -30,14 +30,14 @@ public class LottoMachine {
     }
 
     public Lotto publishWinningLotto(String winningNumbers) {
-        return new Lotto(convertToList(winningNumbers));
+        return new Lotto(convert(winningNumbers));
     }
 
     public Bonus publishBonus(int bonusNumber, Lotto winningLotto) {
         return new Bonus(bonusNumber, winningLotto);
     }
 
-    private List<Integer> convertToList(String numbers) {
+    private List<Integer> convert(String numbers) {
         List<Integer> convertedNumbers = new ArrayList<>();
 
         for (String number : numbers.split(",")) {
