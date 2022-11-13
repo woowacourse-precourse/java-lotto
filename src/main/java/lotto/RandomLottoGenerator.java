@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RandomLottoGenerator {
     private List<Integer> numbers;
@@ -17,8 +18,7 @@ public class RandomLottoGenerator {
         this.numbers
                 = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         validate(numbers);
-        Collections.sort(numbers);
-        return numbers;
+        return numbers.stream().sorted().collect(Collectors.toList());
     }
 
     private void validate(List<Integer> numbers) {
