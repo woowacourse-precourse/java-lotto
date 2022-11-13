@@ -10,14 +10,14 @@
 - `camp.nextstep.edu.missonutils.Randoms` 라이브러리에서
   `pickUniqueNumbersInRange` 함수를 사용
 
+## 생성된 사용자의 로또 번호 출력
+- 사용자의 로또 번호를 출력
+- 이 때 로또 번호는 오름차순으로 정렬
+- 
 ## 당첨 번호 입력
 - 이번 주 당첨 번호, 보너스 번호를 입력
 - `camp.nextstep.edu.missonutils.Console` 라이브러리에서 `readLine` 함수를 사용
 - 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생하고 에러 메시지 출력 후 종료
-
-## 생성된 사용자의 로또 번호 출력
-- 사용자의 로또 번호를 출력
-- 이 때 로또 번호는 오름차순으로 정렬
 
 ## 당첨 번호랑 사용자의 로또 번호들과 비교
 - 당첨 번호와 보너스 번호를 랜덤으로 생성된 사용자의 로또 번호들과
