@@ -7,7 +7,7 @@ public class inputMoney {
         validate(money);
         this.money = money;
     }
-    private int buyLotto(){
+    public int buyLotto(){
         return Integer.valueOf(money) / 1000;
     }
     public int buyLottoprint(){
