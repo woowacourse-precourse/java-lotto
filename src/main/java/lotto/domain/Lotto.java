@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.domain.message.ErrorMessageConstants.*;
+import static lotto.message.ErrorMessageConstants.*;
 import static lotto.restrict.RestrictConstants.*;
 
 import java.util.ArrayList;

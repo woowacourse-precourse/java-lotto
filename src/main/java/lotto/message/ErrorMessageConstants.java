@@ -1,4 +1,4 @@
-package lotto.domain.message;
+package lotto.message;
 
 public interface ErrorMessageConstants {
 
