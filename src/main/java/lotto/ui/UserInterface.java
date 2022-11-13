@@ -8,11 +8,12 @@ public class UserInterface {
     private static final String INPUT_MONEY_ANNOUNCEMENT = "구입금액을 입력해 주세요.";
     private static final String PUBLISH_LOTTOS_ANNOUNCEMENT = "개를 구매했습니다.";
     private static final String INPUT_WINNING_NUMBERS_ANNOUNCEMENT = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER_ANNOUNCEMENT = "보너스 번호를 입력해 주세요.";
 
     public static String getInputMoney() {
         System.out.println(INPUT_MONEY_ANNOUNCEMENT);
         String inputMoneyRaw = Console.readLine();
-        Validator.checkInputMoney(inputMoneyRaw);
+//        Validator.checkInputMoney(inputMoneyRaw);
         return inputMoneyRaw;
     }
 
@@ -29,7 +30,15 @@ public class UserInterface {
         System.out.println();
         System.out.println(INPUT_WINNING_NUMBERS_ANNOUNCEMENT);
         String numbersRaw = Console.readLine();
-        Validator.checkInputWinningNumbers(numbersRaw);
+//        Validator.checkInputWinningNumbers(numbersRaw);
         return numbersRaw;
+    }
+
+    public static String getBonusNumber() {
+        System.out.println();
+        System.out.println(INPUT_BONUS_NUMBER_ANNOUNCEMENT);
+        String bonusNumberRaw = Console.readLine();
+//        Validator.checkInputBonusNumber(bonusNumberRaw);
+        return bonusNumberRaw;
     }
 }

@@ -20,11 +20,11 @@ public class Cashier {
     }
 
     public void saveResultInAccount() {
-        this.account.saveResult(lottos);
+//        this.account.saveResult(lottos);
     }
 
     public void getResultInAccount() {
-        this.account.getResult();
+//        this.account.getResult();
     }
 
     public void setWinningRule() {
