@@ -26,4 +26,10 @@ public class WinningCalculator {
                 .collect(Collectors.toList());
         return numbersConverted;
     }
+
+    private static void setBonusNumberFromUser() {
+        String bonusNumberRaw = UserInterface.getBonusNumber();
+        int bonusNumberConverted = Integer.parseInt(bonusNumberRaw);
+        bonusNumber = bonusNumberConverted;
+    }
 }
