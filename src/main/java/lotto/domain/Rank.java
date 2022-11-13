@@ -26,4 +26,8 @@ public enum Rank {
             .filter(rank -> !rank.equals(THIRD) || !hasBonus)
             .findFirst().orElse(NOTHING);
     }
+
+    public long getPrize() {
+        return this.prize;
+    }
 }
