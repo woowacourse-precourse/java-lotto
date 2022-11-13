@@ -3,8 +3,12 @@ package lotto;
 import camp.nextstep.edu.missionutils.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.text.NumberFormat;
 
 public class Application {
+    private static String[] resultString = { "6개 일치", "5개 일치, 보너스 볼 일치", "5개 일치", "4개 일치", "3개 일치" };
+    private static Integer[] prizeMoney = { 2000000000, 30000000, 1500000, 50000, 5000 };
+
     public static void main(String[] args) {
         List<Lotto> lottoList;
 
@@ -86,6 +90,7 @@ public class Application {
             throw new IllegalArgumentException("중복되지 않는 숫자를 입력해야 합니다.");
 
         result = getResult(lottoList, winningNumbers, bonusNumber);
+        printResult(result);
     }
 
     private static Integer[] getResult(List<Lotto> lottoList, Lotto winningNumbers, Integer bonusNumber) {
@@ -97,5 +102,15 @@ public class Application {
         }
 
         return result;
+    }
+
+    private static void printResult(Integer[] result) {
+        NumberFormat nf = NumberFormat.getIntegerInstance();
+
+        System.out.println("\n" + "당첨 통계");
+        System.out.println("---");
+
+        for (int i = 4; i >= 0; i--)
+            System.out.println(resultString[i] + " (" + nf.format(prizeMoney[i]) + "원) - " + result[i] + "개");
     }
 }
