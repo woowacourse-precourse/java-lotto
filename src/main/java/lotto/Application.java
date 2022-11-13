@@ -12,6 +12,7 @@ public class Application {
         System.out.println(userNumber);
         ArrayList<Integer> winningNumber=Input.winningNumberInput();
         System.out.println(winningNumber);
-
+        int bonusNumber = Input.bonusNumberInput(winningNumber);
+        System.out.println(bonusNumber);
     }
 }

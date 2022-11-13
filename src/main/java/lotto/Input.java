@@ -23,8 +23,17 @@ public class Input {
 		for ( int i=0;array.length>i;i++){
 			winningNumber.add(Integer.valueOf(array[i]));
 		}
-		validateArray(winningNumber);
+		validateWinningNumber(winningNumber);
 		return winningNumber;
+
+	}
+
+	public static int bonusNumberInput(ArrayList<Integer> winningNumber) {
+		System.out.println("보너스번호 1자리를 입력하세요");
+		int userInput = Integer.parseInt(Console.readLine());
+
+		validateBonusNumber(winningNumber,userInput);
+		return userInput;
 
 	}
 
@@ -37,7 +46,7 @@ public class Input {
 		}
 	}
 
-	private static void validateArray(ArrayList<Integer> integers) {
+	private static void validateWinningNumber(ArrayList<Integer> integers) {
 		for (int i = 0;integers.size()>i;i++){
 			if (integers.get(i) < 1 || integers.get(i) > 45) {
 				System.out.println("잘못된 입력"+integers.get(i));
@@ -52,6 +61,19 @@ public class Input {
 		if (integers.size() != 6) {
 			System.out.println("입력값개수오류"+integers.size());
 			throw new IllegalArgumentException();
+		}
+	}
+
+	private static void validateBonusNumber(ArrayList<Integer> winningNumber,int bonusNumber) {
+		if(bonusNumber > 45 || bonusNumber < 1){
+			System.out.println("잘못된 입력"+bonusNumber);
+			throw new IllegalArgumentException();
+		}
+		for(int i=0;winningNumber.size()>i;i++){
+			if(winningNumber.get(i) == bonusNumber){
+				System.out.println("중복된보너스 입력");
+				throw new IllegalArgumentException();
+			}
 		}
 	}
 }
