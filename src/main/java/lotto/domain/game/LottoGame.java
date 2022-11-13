@@ -3,11 +3,11 @@ package lotto.domain.game;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.game.answerlottosystem.AnswerLottoSystem;
-import lotto.domain.game.randomlottosystem.RandomLottoSystem;
 import lotto.domain.money.Money;
-import lotto.domain.settlementsysyem.SettlementSystem;
+import lotto.system.AnswerLottoSystem;
 import lotto.system.IoSystem;
+import lotto.system.RandomLottoSystem;
+import lotto.system.SettlementSystem;
 
 public class LottoGame {
     private final IoSystem io;

@@ -1,9 +1,8 @@
-package lotto.domain.game.answerlottosystem;
+package lotto.system;
 
 import lotto.domain.lotto.AnswerLotto;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoNumber;
-import lotto.system.IoSystem;
 
 public class AnswerLottoSystem {
 

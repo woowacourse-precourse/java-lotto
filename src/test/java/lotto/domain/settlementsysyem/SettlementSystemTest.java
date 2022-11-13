@@ -5,6 +5,7 @@ import lotto.domain.lotto.AnswerLotto;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoBundle;
 import lotto.domain.lotto.LottoNumber;
+import lotto.system.SettlementSystem;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;

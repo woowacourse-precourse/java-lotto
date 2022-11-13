@@ -2,6 +2,7 @@ package lotto.domain.settlementsysyem;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import lotto.domain.score.Ranking;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;

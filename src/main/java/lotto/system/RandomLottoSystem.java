@@ -1,8 +1,7 @@
-package lotto.domain.game.randomlottosystem;
+package lotto.system;
 
 import java.util.List;
 import lotto.domain.lotto.LottoBundle;
-import lotto.system.IoSystem;
 
 public class RandomLottoSystem {
     private final IoSystem io;

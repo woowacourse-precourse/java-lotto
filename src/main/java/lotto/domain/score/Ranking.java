@@ -1,4 +1,4 @@
-package lotto.domain.settlementsysyem;
+package lotto.domain.score;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;

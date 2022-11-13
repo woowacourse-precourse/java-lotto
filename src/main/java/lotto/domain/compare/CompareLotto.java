@@ -3,7 +3,7 @@ package lotto.domain.compare;
 
 import lotto.domain.lotto.AnswerLotto;
 import lotto.domain.lotto.Lotto;
-import lotto.domain.settlementsysyem.Score;
+import lotto.domain.score.Score;
 
 public class CompareLotto {
 

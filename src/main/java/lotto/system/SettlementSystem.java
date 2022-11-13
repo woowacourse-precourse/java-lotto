@@ -1,10 +1,11 @@
-package lotto.domain.settlementsysyem;
+package lotto.system;
 
 import java.util.Map;
 import lotto.domain.compare.CompareLotto;
 import lotto.domain.lotto.AnswerLotto;
 import lotto.domain.lotto.LottoBundle;
 import lotto.domain.money.Money;
+import lotto.domain.score.Ranking;
 
 public class SettlementSystem {
     private final Map<Ranking, Integer> settlement;
