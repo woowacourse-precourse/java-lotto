@@ -27,7 +27,7 @@ public class BonusNumberTest {
     @ValueSource(ints = {1, 33, 45})
     @ParameterizedTest
     void case3(int input) {
-        assertThat(new BonusNumber(input).isBonusNumber(input)).isEqualTo(true);
-        assertThat(new BonusNumber(input).isBonusNumber(input + 1)).isEqualTo(false);
+        assertThat(new BonusNumber(input).isBonusNumber(input)).isTrue();
+        assertThat(new BonusNumber(input).isBonusNumber(input + 1)).isFalse();
     }
 }

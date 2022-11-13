@@ -57,42 +57,35 @@ class LottoTest {
     @DisplayName("getLottoPrinting 메서드는 로또의 값을 string으로 반환해줌")
     @ParameterizedTest
     @MethodSource("generateBasicLotto")
-    void case1(Lotto lotto,String expected){
-         assertThat(lotto.getLottoPrinting()).isEqualTo(expected);
+    void case1(Lotto lotto, String expected) {
+        assertThat(lotto.getLottoPrinting()).isEqualTo(expected);
     }
 
     @DisplayName("contains 메서드는 로또 안에 특정 숫자가 있는지 검사한다")
     @ParameterizedTest
     @MethodSource("generateBasicLotto")
-    void case2(Lotto lotto){
-        assertThat(lotto.contains(1)).isEqualTo(true);
-        assertThat(lotto.contains(43)).isEqualTo(false);
+    void case2(Lotto lotto) {
+        assertThat(lotto.contains(1)).isTrue();
+        assertThat(lotto.contains(43)).isFalse();
     }
 
     @DisplayName("contains 메서드는 로또 안에 보너스 넘버가 중복으로 있는지 검사한다")
     @ParameterizedTest
     @MethodSource("generateBasicLotto")
-    void case3(Lotto lotto){
-        BonusNumber bonus1=new BonusNumber(1);
-        BonusNumber bonus43=new BonusNumber(43);
-        assertThat(lotto.contains(bonus1)).isEqualTo(true);
-        assertThat(lotto.contains(bonus43)).isEqualTo(false);
+    void case3(Lotto lotto) {
+        BonusNumber bonus1 = new BonusNumber(1);
+        BonusNumber bonus43 = new BonusNumber(43);
+        assertThat(lotto.contains(bonus1)).isTrue();
+        assertThat(lotto.contains(bonus43)).isFalse();
     }
 
     @DisplayName("calculateScore 메서드는 로또를 받아서 점수를 계산한다 반환한다")
     @ParameterizedTest
     @MethodSource("generateBasicLotto")
-    void case4(Lotto lotto){
-        Lotto lotto1=new Lotto(List.of(1,13,14,15,16,17));
+    void case4(Lotto lotto) {
+        Lotto lotto1 = new Lotto(List.of(1, 13, 14, 15, 16, 17));
         assertThat(lotto.getScore(lotto)).isEqualTo(6);
         assertThat(lotto.getScore(lotto1)).isEqualTo(1);
-    }
-
-    private static Stream<Arguments> generateBasicLotto(){
-        return Stream.of(
-                Arguments.of(new Lotto(List.of(1,2,3,4,5,6)),"[1, 2, 3, 4, 5, 6]"),
-                Arguments.of(new Lotto(List.of(1,11,22,33,44,45)),"[1, 11, 22, 33, 44, 45]")
-        );
     }
     // 아래에 추가 테스트 작성 가능
 }
