@@ -41,7 +41,9 @@ public class NumberView {
     }
 
     public static int getBonusNumber() {
-        return 0;
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = Integer.parseInt(readLine());
+        return bonusNumber;
     }
 
     private void checkBonusNumber() {

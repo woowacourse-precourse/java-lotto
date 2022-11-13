@@ -14,5 +14,6 @@ public class Application {
         List<Lotto> lottoList = generator.generate(MoneyView.get());
         LottoView.print(lottoList);
         NumberView.getWinNumbers();
+        NumberView.getBonusNumber();
     }
 }
