@@ -7,8 +7,9 @@ import java.util.Set;
 
 public class Validator {
     public static void isMultiplesOfThousand(int inputNumber) {
-        if (inputNumber % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000의 배수만 입력 가능합니다.");
+        if (inputNumber % LottoInfo.PRICE.getNumber() != 0) {
+            String message = String.format("[ERROR] %d의 배수만 입력 가능합니다.", LottoInfo.PRICE.getNumber());
+            throw new IllegalArgumentException(message);
         }
     }
 
@@ -19,8 +20,11 @@ public class Validator {
     }
 
     public static void isInRange(int input) {
-        if (1 > input || input > 45) {
-            throw new IllegalArgumentException("[ERROR] 1과 45 사이의 정수만 입력 가능합니다.");
+        if (LottoInfo.START_NUMBER.getNumber() > input
+                || input > LottoInfo.END_NUMBER.getNumber()) {
+            String message = String.format("[ERROR] %d과 %d 사이의 정수만 입력 가능합니다.",
+                    LottoInfo.START_NUMBER.getNumber(), LottoInfo.END_NUMBER.getNumber());
+            throw new IllegalArgumentException(message);
         }
     }
 
@@ -32,8 +36,9 @@ public class Validator {
     }
 
     public static void listLengthCheck(List<Integer> inputs, int length) {
-        if(inputs.size() != length) {
-            throw new IllegalArgumentException("[ERROR] 6개의 번호를 입력해주세요.");
+        if (inputs.size() != length) {
+            String message = String.format("[ERROR] %d개의 번호를 입력해주세요.", length);
+            throw new IllegalArgumentException(message);
         }
     }
 }
