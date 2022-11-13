@@ -1,11 +1,11 @@
 package lotto.service;
 
 public enum RewardChart {
-    First(2_000_000_000),
-    Second(30_000_000),
-    Third(1_500_000),
-    Fourth(50_000),
-    Fifth(5_000);
+    FIRST_REWARD(2_000_000_000),
+    SECOND_REWARD(30_000_000),
+    THIRD_REWARD(1_500_000),
+    FOURTH_REWARD(50_000),
+    FIFTH_REWARD(5_000);
 
     private final int value;
 

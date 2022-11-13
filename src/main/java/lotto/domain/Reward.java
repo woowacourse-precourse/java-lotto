@@ -18,24 +18,24 @@ public class Reward {
     }
 
     private int giveMoney(int i) {
-        if (i == RankChart.FirstPlace.getValue()) {
-            return RewardChart.First.getValue();
+        if (i == RankChart.FIRST_PLACE.getValue()) {
+            return RewardChart.FIRST_REWARD.getValue();
 
         }
-        if (i == RankChart.SecondPlace.getValue()) {
-            return RewardChart.Second.getValue();
+        if (i == RankChart.SECOND_PLACE.getValue()) {
+            return RewardChart.SECOND_REWARD.getValue();
 
         }
-        if (i == RankChart.ThirdPlace.getValue()) {
-            return RewardChart.Third.getValue();
+        if (i == RankChart.THIRD_PLACE.getValue()) {
+            return RewardChart.THIRD_REWARD.getValue();
 
         }
-        if (i == RankChart.FourthPlace.getValue()) {
-            return RewardChart.Fourth.getValue();
+        if (i == RankChart.FOURTH_PLACE.getValue()) {
+            return RewardChart.FOURTH_REWARD.getValue();
 
         }
-        if (i == RankChart.FifthPlace.getValue()) {
-            return RewardChart.Fifth.getValue();
+        if (i == RankChart.FIFTH_PLACE.getValue()) {
+            return RewardChart.FIFTH_REWARD.getValue();
         }
         return 0;
     }

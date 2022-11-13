@@ -17,24 +17,24 @@ public class Rank {
     }
 
     public int changeRank(int i) {
-        if (i == RankChart.FirstPlace.getValue()) {
-            return RankChart.FirstPlace.getValue();
+        if (i == RankChart.FIRST_PLACE.getValue()) {
+            return RankChart.FIRST_PLACE.getValue();
 
         }
-        if (i == RankChart.SecondPlace.getValue()) {
-            return RankChart.SecondPlace.getValue();
+        if (i == RankChart.SECOND_PLACE.getValue()) {
+            return RankChart.SECOND_PLACE.getValue();
 
         }
-        if (i == RankChart.ThirdPlace.getValue()) {
-            return RankChart.SecondPlace.getValue();
+        if (i == RankChart.THIRD_PLACE.getValue()) {
+            return RankChart.THIRD_PLACE.getValue();
 
         }
-        if (i == RankChart.FourthPlace.getValue()) {
-            return RankChart.FourthPlace.getValue();
+        if (i == RankChart.FOURTH_PLACE.getValue()) {
+            return RankChart.FOURTH_PLACE.getValue();
 
         }
-        if (i == RankChart.FifthPlace.getValue()) {
-            return RankChart.FifthPlace.getValue();
+        if (i == RankChart.FIFTH_PLACE.getValue()) {
+            return RankChart.FIFTH_PLACE.getValue();
         }
         return 0;
     }

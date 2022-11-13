@@ -1,11 +1,11 @@
 package lotto.service;
 
 public enum RankChart {
-    FirstPlace(6),
-    SecondPlace(7),
-    ThirdPlace(5),
-    FourthPlace(4),
-    FifthPlace(3);
+    FIRST_PLACE(6),
+    SECOND_PLACE(7),
+    THIRD_PLACE(5),
+    FOURTH_PLACE(4),
+    FIFTH_PLACE(3);
 
     private final int value;
 
