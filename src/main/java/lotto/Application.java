@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,16 +30,8 @@ public class Application {
         // 당첨 번호 입력(콤마로 구분)
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumber = Console.readLine();
-
-        List<String> winnings = List.of(winningNumber.split(","));
-        List<Integer> win = new ArrayList<>();
-
-        for(int i=0; i<winnings.size(); i++){
-            win.add(Integer.parseInt(winnings.get(i)));
-        }
-
-        Lotto winLotto = new Lotto(win);
-        System.out.println(winLotto.getNumbers());
+        Lotto winLotto = new Lotto(winningNumber);
+        //System.out.println(winLotto.getNumbers());
 
         // 보너스 번호
         System.out.println("보너스 번호를 입력해 주세요.");
@@ -54,8 +45,9 @@ public class Application {
         }return true;
     }
 
+    // 로또 생성 & 오름차순으로 정렬
     static void generateLotto(List<List<Integer>> numbers, int amount){
-        
+
         // 로또 번호 생성
         for(int i=0; i<amount; i++){
             numbers.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
@@ -65,4 +57,5 @@ public class Application {
             Collections.sort(numbers.get(i));     // 오름차순 정렬
         }
     }
+
 }
