@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoResult;
 import lotto.domain.RandomNumbers;
 import lotto.util.Transform;
 import lotto.view.InputView;
@@ -24,6 +25,12 @@ public class LottoGame {
         OutputView.printLottoFormatting(purchaseLotto);
         lottoNumbers = setLottoNumbers();
         bonusNumber = setBonusNumber();
+
+        LottoResult lottoResult = new LottoResult(purchaseLotto, lottoNumbers, bonusNumber);
+        List<Integer> result = lottoResult.getResult();
+        OutputView.printWinningHistory(result);
+
+        OutputView.printGrossProfit(result, quantity * 1000);
     }
 
     private int getLottoPurchaseAmount() {
