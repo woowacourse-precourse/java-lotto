@@ -23,6 +23,16 @@ public class InputView {
         return Console.readLine();
     }
 
+    public static int inputBonusNumber() {
+        System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
+        String bonusNumber = Console.readLine();
+
+        // 입력이 숫자인지만 확인
+        isDigit(bonusNumber);
+
+        return Integer.parseInt(bonusNumber);
+    }
+
     private static void isDigit(String money){
         for(int i=0; i<money.length(); i++){
             if(!Character.isDigit(money.charAt(i))){
