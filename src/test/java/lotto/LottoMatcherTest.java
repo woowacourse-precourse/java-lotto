@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static lotto.Rank.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,10 +32,13 @@ class LottoMatcherTest {
         WinningLotto winningLotto = new WinningLotto(Arrays.asList(33, 15, 29, 42, 28, 11), 10);
 
         // when
-        List<Rank> actualResults = matcher.matchAllLottos(publishedLottos, winningLotto);
-        List<Rank> expectedResults = Arrays.asList(
-                FOURTH_FOUR_MATCHED, FIRST_SIX_MATCHED, NONE, FIFTH_THREE_MATCHED, NONE,
-                NONE, SECOND_FIVE_WITH_BONUS, NONE, NONE, THIRD_FIVE_MATCHED);
+        Map<Rank, Integer> actualResults = matcher.matchAllLottos(publishedLottos, winningLotto);
+        Map<Rank, Integer> expectedResults = Map.of(
+                FIRST_SIX_MATCHED, 1,
+                SECOND_FIVE_WITH_BONUS, 1,
+                THIRD_FIVE_MATCHED, 1,
+                FOURTH_FOUR_MATCHED, 1,
+                FIFTH_THREE_MATCHED, 1);
 
         // then
         assertThat(actualResults).isEqualTo(expectedResults);
