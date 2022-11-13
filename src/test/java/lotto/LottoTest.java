@@ -1,6 +1,9 @@
 package lotto;
 
 import static lotto.domain.Lotto.createLotto;
+import static lotto.view.BonusInput.bonus;
+import static lotto.view.BonusInput.bonusInput;
+import static lotto.view.BonusInput.getBonusResult;
 import static lotto.view.WinningInput.getWinningResult;
 import static lotto.view.WinningInput.winningCount;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -54,6 +57,8 @@ class LottoTest {
     @DisplayName("로또 번호와 일치하는 보너스 번호가 있는지 확인")
     @Test
     void getBonusResultTest() {
-
+        bonusInput = "21";
+        getBonusResult(List.of(List.of(8, 21, 23, 41, 42, 43), List.of(3, 5, 11, 16, 32, 38)));
+        assertThat(bonus).isTrue();
     }
 }
