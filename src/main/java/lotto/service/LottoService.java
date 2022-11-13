@@ -20,16 +20,18 @@ public class LottoService {
         this.numberGenerator = new NumberGenerator();
     }
 
-    public Lottos publishLotto(String input) {
-        List<Lotto> result = IntStream.range(0, new Money(input).getLottoCount())
+    public Lottos publishLotto(int lottoCount) {
+        List<Lotto> result = IntStream.range(0, lottoCount)
                 .mapToObj(i -> new Lotto(this.numberGenerator.createDuplicateNumbers()))
                 .collect(Collectors.toList());
 
         return new Lottos(result);
     }
 
-    public void getLottosByMoney(Buyer buyer, String input) {
-        buyer.buyLottos(publishLotto(input));
+    public void getLottosByMoney(Buyer buyer) throws IllegalArgumentException {
+        Money money = new Money(buyer.inputMoney());
+        buyer.setMoney(money);
+        buyer.buyLottos(publishLotto(buyer.getLottoCount()));
     }
 
     public void publishWinningNumbersWithBonusNumber(View view) throws IllegalArgumentException {
