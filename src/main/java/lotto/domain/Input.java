@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
+    private static final int LOTTO_PRICE = 1000;
     private static final int COMMA_COUNT = 5;
     private static final int LOTTO_COUNT = 6;
 
@@ -45,7 +46,7 @@ public class Input {
      * 입력한 문자열이 1000원으로 나누어 떨어지는지 확인하는 메소드
      */
     private static boolean isDividedBy1000(String number) {
-        return Integer.parseInt(number) % 1000 == 0;
+        return Integer.parseInt(number) % LOTTO_PRICE == 0;
     }
 
     /**
