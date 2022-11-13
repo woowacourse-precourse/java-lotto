@@ -9,8 +9,7 @@ public class LottoConsole {
 
     public LottoConsole(){ }
 
-    public String inputLottoPrice() {
-        printMessage(INPUT_PRICE.toString());
+    public String userInput() {
         return readLine();
     }
 
