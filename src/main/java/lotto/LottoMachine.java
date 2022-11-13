@@ -9,28 +9,30 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoMachine {
-    public List<Integer> inputWinningNumber() {
+    List<Integer> winningNumber = new ArrayList<>();
+    int bonusNumber;
+    public void inputWinningNumber() {
         System.out.println("\n당첨 번호를 입력해 주세요.");
         String inputNumber = Console.readLine();
-        return checkThatWinningNumberIsRightInput(inputNumber);
+        checkThatWinningNumberIsRightInput(inputNumber);
     }
 
     public List<String> splitNumber(String number) {
         return Arrays.asList(number.split(","));
     }
 
-    public int inputBonusNumber() {
+    public void inputBonusNumber() {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         try {
-            return Integer.parseInt(Console.readLine());
+            bonusNumber = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자를 입력해야 합니다.");
         }
     }
 
-    public List<Integer> checkThatWinningNumberIsRightInput(String inputNumber) {
+    public void checkThatWinningNumberIsRightInput(String inputNumber) {
         List<String> winningNumberTemp = splitNumber(inputNumber);
-        List<Integer> winningNumber = Exception.changeListStringToInteger(winningNumberTemp);
+        winningNumber = Exception.changeListStringToInteger(winningNumberTemp);
         if (Exception.isOverlap(winningNumber)) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호에 중복된 숫자가 있습니다.");
         }
@@ -40,8 +42,6 @@ public class LottoMachine {
         if (Exception.isNotInRange(winningNumber)) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호가 범위를 벗어났습니다.");
         }
-
-        return winningNumber;
     }
 
 

@@ -11,7 +11,7 @@ public class Application {
 
         user.inputPurchaseMoney();
         user.purchaseLotto();
-        List<Integer> winningNumber = lottoMachine.inputWinningNumber();
-        int bonusNumber = lottoMachine.inputBonusNumber();
+        lottoMachine.inputWinningNumber();
+        lottoMachine.inputBonusNumber();
     }
 }

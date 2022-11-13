@@ -10,6 +10,7 @@ import java.util.List;
 public class User {
     String money_str;
     int money;
+    List<Lotto> myLotto = new ArrayList<>();
 
     public void inputPurchaseMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -29,11 +30,9 @@ public class User {
     }
 
     public void purchaseLotto() {
-        List<Lotto> myLotto = new ArrayList<>();
         int number = money / 1000;
 
         System.out.println("\n" + number + "개를 구매했습니다.");
-
 
         for (int i = 0; i < number; i++) {
             myLotto.add(new Lotto(getOneLotto()));
