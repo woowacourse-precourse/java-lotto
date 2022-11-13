@@ -36,7 +36,7 @@ public class Lotto {
 
     private void validateElementRange(List<Integer> numbers) {
         numbers.forEach(i -> {
-            if(isOutOfRange(i)) {
+            if (isOutOfRange(i)) {
                 throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE.getMessage());
             }
         });

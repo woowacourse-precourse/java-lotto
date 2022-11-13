@@ -1,13 +1,12 @@
 package lotto;
 
 import java.util.List;
-import java.util.Map;
 
 public class LottoPlayer {
     private final InputManager inputManager = new InputManager();
     private final PrintManager printManager = new PrintManager();
     private final LottoFactory lottoFactory = new LottoFactory();
-    private final LottoAnalyst lottoAnalyst= new LottoAnalyst();
+    private final LottoAnalyst lottoAnalyst = new LottoAnalyst();
 
     private int lottoCount;
     private Lottos lottos;

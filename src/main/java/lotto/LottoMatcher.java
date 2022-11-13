@@ -19,15 +19,15 @@ public class LottoMatcher {
     }
 
     private LottoGrade matchOne(Lotto lotto) {
-        int matchPoint = (int)winningNumbers.stream()
+        int matchPoint = (int) winningNumbers.stream()
                 .filter(lotto::isContain)
                 .count();
-        if(matchPoint == LottoGrade.SECOND.getMatchCount() &&
+        if (matchPoint == LottoGrade.SECOND.getMatchCount() &&
                 lotto.isContain(bonusNumber)) {
             return LottoGrade.SECOND;
         }
-        for(LottoGrade lottoGrade : LottoGrade.values()) {
-            if(lottoGrade.getMatchCount() == matchPoint) {
+        for (LottoGrade lottoGrade : LottoGrade.values()) {
+            if (lottoGrade.getMatchCount() == matchPoint) {
                 return lottoGrade;
             }
         }

@@ -13,9 +13,10 @@ public class InputValidator {
     public void validateInputWinningNumbers(String input) {
         validateIsSeparateByComma(input);
     }
+
     public void validateWinningNumbers(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
-        if (set.size()!= numbers.size()) {
+        if (set.size() != numbers.size()) {
             throw new IllegalArgumentException(ErrorMessage.OVERLAP.getMessage());
         }
     }
@@ -27,7 +28,7 @@ public class InputValidator {
     }
 
     private void validateIsContainWinningNumber(int input, Lotto winningNumber) {
-        if(winningNumber.isContain(input)) {
+        if (winningNumber.isContain(input)) {
             throw new IllegalArgumentException(ErrorMessage.IS_CONTAIN.getMessage());
         }
     }
@@ -47,13 +48,13 @@ public class InputValidator {
     }
 
     private void validateIsThousand(int input) {
-        if(input < LottoSetting.PRICE.getValue() || input % LottoSetting.PRICE.getValue() != 0) {
+        if (input < LottoSetting.PRICE.getValue() || input % LottoSetting.PRICE.getValue() != 0) {
             throw new IllegalArgumentException(ErrorMessage.NOT_THOUSAND.getMessage());
         }
     }
 
     private void validateOutOfRange(Integer value) {
-        if(value < LottoSetting.MIN_NUMBER.getValue() ||
+        if (value < LottoSetting.MIN_NUMBER.getValue() ||
                 value > LottoSetting.MAX_NUMBER.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE.getMessage());
         }

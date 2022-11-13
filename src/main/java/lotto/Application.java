@@ -5,7 +5,7 @@ public class Application {
         try {
             LottoPlayer lottoPlayer = new LottoPlayer();
             lottoPlayer.play();
-        }catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }

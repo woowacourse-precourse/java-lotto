@@ -34,6 +34,6 @@ public class PrintManager {
 
     private void printYield(double yield) {
         System.out.printf(String.valueOf(ConsoleMessage.RESPONSE_YIELD),
-                Math.round(yield*100)/100.0);
+                Math.round(yield * 100) / 100.0);
     }
 }
