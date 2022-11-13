@@ -58,7 +58,7 @@ public class LottoStatistics {
         }
     }
 
-    private static void checkContains(Lotto winNumbers, Lotto lotto) {
+    public static void checkContains(Lotto winNumbers, Lotto lotto) {
         List<Integer> numbers = lotto.getNumbers();
         for (Integer winNumber : winNumbers.getNumbers()) {
             if(numbers.contains(winNumber)) same[idx] += 1;

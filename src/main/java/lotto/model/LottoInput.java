@@ -40,7 +40,7 @@ public class LottoInput {
         return bonusNumber;
     }
 
-    private static List<Integer> tokenizeNumber(String answer){
+    public static List<Integer> tokenizeNumber(String answer){
         StringTokenizer st = new StringTokenizer(answer, ",");
         List<Integer> answerList = new ArrayList<>();
 
