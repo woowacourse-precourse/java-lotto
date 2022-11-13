@@ -5,10 +5,12 @@ import java.util.Map;
 import java.util.Set;
 
 public class LottoResult {
-    private final Map<Rank, Integer> resultMap = new HashMap<>(); //생성자로 만들어버리기
+    private Map<Rank, Integer> resultMap = new HashMap<>(); //생성자로 만들어버리기
+    private double yield;
 
-    public LottoResult(UserLottos userLottos, WinningLotto winningLotto) {
+    public LottoResult(double money, UserLottos userLottos, WinningLotto winningLotto) {
         setResultMap(userLottos, winningLotto);
+        calculateYield(money);
     }
 
     //당첨 로또 맵만들기 {등수(enum):개수}
@@ -30,4 +32,25 @@ public class LottoResult {
         int winningCount = resultMap.getOrDefault(rank, 0);
         resultMap.put(rank, winningCount + 1);
     }
+
+    //수익률 계산하기
+    public void calculateYield(double money) {
+        int totalPrize = 0;
+        for(Rank rank : Rank.values()) {
+            int count = resultMap.getOrDefault(rank,0);
+            long prize = rank.getPrize();
+            totalPrize += count*prize;
+        }
+
+        yield = Math.round(totalPrize/money*1000)/10.0;
+    }
+
+    public Map<Rank, Integer> resultMap() {
+        return this.resultMap;
+    }
+
+    public double getYeild() {
+        return this.yield;
+    }
+
 }
