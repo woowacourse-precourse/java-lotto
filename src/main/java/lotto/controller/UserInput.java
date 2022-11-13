@@ -25,10 +25,9 @@ public class UserInput {
         String userInput = Console.readLine();
         System.out.println();
 
-        hasOnlyNumberAndComma(userInput);
+        isValidInput(userInput);
 
         List<Integer> winningNumber = stringToNumbers(userInput);
-        hasSixNumbers(winningNumber);
         for (int lottoNumber: winningNumber) {
             validNumber(lottoNumber);
         }
@@ -68,8 +67,8 @@ public class UserInput {
         }
     }
 
-    private static void hasOnlyNumberAndComma(String input) {
-        if (!input.matches("[0-9,]+")) {
+    private static void isValidInput(String input) {
+        if (!input.matches("[0-9],[0-9],[0-9],[0-9],[0-9],[0-9]")) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자를 쉼표로 구분하여 입력해야 합니다.");
         }
     }
@@ -83,12 +82,6 @@ public class UserInput {
     private static void isDividableBy1000(int budget) {
         if (budget % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000으로 나누어 떨어져야 합니다.");
-        }
-    }
-
-    private static void hasSixNumbers(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자를 가져야 합니다.");
         }
     }
 
