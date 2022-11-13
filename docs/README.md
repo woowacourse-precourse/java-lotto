@@ -4,17 +4,18 @@
 
 ### Business
 
-- [ ] 플레이어로 부터 값을 입력 받는다. - playerInput
-    - [ ] 플레이어로 부터 입력 받은 값을 long로 변환한다.
-    - [ ] 입력 받은 값이 1,000 단위인지 확인한다.
-    - [ ] 입력 받은 값을 통해 로또 구매 개수를 확인한다.
+- [X] 플레이어로 부터 값을 입력 받는다. - Input.request
+    - [X] 플레이어로 부터 입력 받은 값을 long로 변환한다. - convertInput
+    - [X] 입력 받은 값이 0인지 확인한다. - validationZeroAmount
+    - [X] 입력 받은 값이 1,000 단위인지 확인한다. - validationAmount
+    - [X] 입력 받은 값을 통해 로또 구매 개수를 확인한다. - buyLottoQuantity
     - [ ] `,`로 구분된 7개의 당첨 번호를 받는다. (마지막 값은 보너스 번호이다.)
         - [ ] 당첨 번호를 리스트로 변환한다.
 
 
-- [X] 6개의 중복되지 않는 값을 가진 리스트를 생성한다. - createLottoNumbers
-- [X] 구매한 로또만큼 6개의 중복되지 않는 값을 가진 리스트를 배열에 넣어 반환한다. - buyLotto
-- [X] Lotto 클래스의 numbers (로또 번호)를 반환한다. - getNumbers
+- [X] 6개의 중복되지 않는 값을 가진 리스트를 생성한다. - Lotto.createLottoNumbers
+- [X] 구매한 로또만큼 6개의 중복되지 않는 값을 가진 리스트를 배열에 넣어 반환한다. - Lotto.buyLotto
+- [X] Lotto 클래스의 numbers (로또 번호)를 반환한다. - Lotto.getNumbers
 
 
 - [X] enum 클래스를 이용해 1등 ~ 5등까지의 당첨 조건과 당첨금을 상수로 선언한다. - className : Rank
@@ -27,8 +28,8 @@
     - [ ] 등수 별 당첨 횟수를 카운팅한다.
 
 
-- [X] 플레이어의 입력이 잘 못된 경우 발생시킬 Exception 클래스 구현
-  - [X] 메세지의 상수를 구현하고 에러에 따른 메세지를 반환한다.
+- [X] 플레이어의 입력이 잘 못된 경우 발생시킬 Exception 클래스 구현 - className : LottoException
+  - [X] 메세지의 상수를 구현하고 에러에 따른 메세지를 반환한다. - createErrorMsg
 
 ### UI
 
