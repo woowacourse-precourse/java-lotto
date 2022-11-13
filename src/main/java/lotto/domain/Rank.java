@@ -45,4 +45,8 @@ public class Rank {
                 .append("원) - ").append(count).append("개");
         return sb.toString();
     }
+
+    public int getRanking() {
+        return ranking;
+    }
 }

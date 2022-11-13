@@ -26,7 +26,7 @@ public class CompareLottoTest {
         CompareLotto.compare(ranks, lottos, winningNumbers1, 10);
         //then
         assertThat(ranks.stream()
-                .filter(r -> r.isMatchMatchingNumber(RankMatchStatus.rank1.getMatch()))
+                .filter(r -> r.getRanking() == 1)
                 .findFirst().get()
                 .getTotalReward())
                 .isEqualTo(RankRewardStatus.rank1.getReward());
@@ -44,7 +44,7 @@ public class CompareLottoTest {
         CompareLotto.compare(ranks, lottos, winningNumbers2, 6);
         //then
         assertThat(ranks.stream()
-                .filter(r -> r.isMatchMatchingNumber(RankMatchStatus.rank2.getMatch()))
+                .filter(r -> r.getRanking() == 2)
                 .findFirst().get()
                 .getTotalReward())
                 .isEqualTo(RankRewardStatus.rank2.getReward());

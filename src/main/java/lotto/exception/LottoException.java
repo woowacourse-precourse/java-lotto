@@ -51,8 +51,7 @@ public class LottoException {
     }
 
     public static void validDuplication(List<Integer> numbers, int number) {
-        numbers.add(number);
-        if(hasDuplication(numbers)) {
+        if(numbers.contains(number)) {
             StringBuilder message = new StringBuilder(ERROR_MESSAGE);
             message.append(DUPLICATE_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
