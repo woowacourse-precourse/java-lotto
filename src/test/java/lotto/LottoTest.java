@@ -27,7 +27,7 @@ class LottoTest {
     // 아래에 추가 테스트 작성 가능
     @DisplayName("복수의 로또의 당첨 개수를 확인한다.")
     @Test
-    void LottoMatchList() {
+    void lottoMatchList() {
         List<Integer> winNumbers = List.of(1, 2, 3, 4, 5, 6);
         Lotto winLotto = new Lotto(winNumbers);
         winLotto.setBonusNumber(45);
@@ -42,7 +42,7 @@ class LottoTest {
 
     @DisplayName("보너스 번호 포함하는 복수의 로또 당첨 개수를 확인한다.")
     @Test
-    void LottoMatchWihListIncludeBonus() {
+    void lottoMatchWihListIncludeBonus() {
         List<Integer> winNumbers = List.of(1, 2, 3, 4, 5, 6);
         Lotto winLotto = new Lotto(winNumbers);
         winLotto.setBonusNumber(7);
@@ -57,7 +57,7 @@ class LottoTest {
 
     @DisplayName("두 로또의 일치하는 숫자를 반환한다.")
     @Test
-    void LottoMatch() {
+    void lottoMatch() {
         Lotto lotto1 = new Lotto(List.of(1, 7, 11, 10, 8, 9));
         Lotto lotto2 = new Lotto(List.of(1, 2, 8, 9, 15, 7));
         List<Lotto> boughtLottos = List.of(lotto1, lotto2);
@@ -67,7 +67,7 @@ class LottoTest {
 
     @DisplayName("보너스 번호가 맞았는지 확인한다.")
     @Test
-    void LottoBonusMatch() {
+    void lottoBonusMatch() {
         Lotto lotto1 = new Lotto(List.of(1, 7, 11, 10, 8, 9));
         lotto1.setBonusNumber(15);
         Lotto lotto2 = new Lotto(List.of(1, 2, 8, 9, 15, 7));
@@ -77,7 +77,7 @@ class LottoTest {
 
     @DisplayName("보너스 번호가 기존의 로또 번호와 중복되면 예외가 발생한다.")
     @Test
-    void ValidateLottoSize() {
+    void validateLottoSize() {
         Lotto lotto = new Lotto(List.of(1, 7, 11, 10, 8, 9));
 
         assertThatThrownBy(() -> lotto.setBonusNumber(1))
@@ -86,7 +86,7 @@ class LottoTest {
 
     @DisplayName("보너스 번호가 세팅되어 있지 않은 상태로 bonusMatch를 확인하면 예외가 발생한다.")
     @Test
-    void ValidateLottoBonusExist() {
+    void validateLottoBonusExist() {
         Lotto lotto1 = new Lotto(List.of(1, 7, 11, 10, 8, 2));
         Lotto lotto2 = new Lotto(List.of(1, 2, 8, 9, 15, 7));
 
