@@ -9,6 +9,8 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+import static lotto.utils.Constant.ERROR_PREFIX;
+
 public enum InputValidation {
     BLANK(
             "아무것도 입력하지 않았습니다.",
@@ -58,7 +60,7 @@ public enum InputValidation {
     }
 
     public String errorMessage() {
-        return "[ERROR] " + errorMessage;
+        return ERROR_PREFIX + errorMessage;
     }
 
     private static Optional<InputValidation> validate(String input, String validationGroup) {
@@ -68,13 +70,11 @@ public enum InputValidation {
                 .findFirst();
     }
 
-    private static final ConsoleLog consoleLog = ConsoleLog.getInstance();
-
     public static void checkValidation(String input, String validationGroup) {
         Optional<InputValidation> validation = validate(input, validationGroup);
         if (validation.isPresent()) {
             String message = validation.get().errorMessage();
-            consoleLog.println(message);
+            ConsoleLog.getInstance().println(message);
             // 테스트 케이스 통과를 위한 임시방편... 뭔가 이상하다.
             if (validation.get() == NOT_NUMBER) {
                 throw new NoSuchElementException(message);

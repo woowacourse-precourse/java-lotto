@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
+import static lotto.utils.Constant.ONE_LOTTO_AMOUNT;
 
 public class PurchaseService {
     private final InputConsole inputConsole;
     private final OutputConsole outputConsole;
     private final LottoNumberGenerator lottoNumberGenerator;
-    private static final int ONE_LOTTO_AMOUNT = 1000;
 
     public PurchaseService() {
         this.inputConsole = new InputConsole();

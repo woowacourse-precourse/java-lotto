@@ -1,8 +1,9 @@
 package lotto.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static lotto.domain.WinningRule.checkWinning;
+import static lotto.utils.Constant.ONE_LOTTO_AMOUNT;
 
 public class WinningHistory {
     private int firstCount;
@@ -13,13 +14,13 @@ public class WinningHistory {
     private int winningAmount;
     private final double yield;
 
-    public WinningHistory(ArrayList<LottoTicketResult> results) {
+    public WinningHistory(List<LottoTicketResult> results) {
         analysis(results);
-        double yield = (double) winningAmount / (1_000 * results.size()) * 100;
+        double yield = (double) winningAmount / (ONE_LOTTO_AMOUNT * results.size()) * 100;
         this.yield = (double) Math.round(yield * 10) / 10;
     }
 
-    private void analysis(ArrayList<LottoTicketResult> results) {
+    private void analysis(List<LottoTicketResult> results) {
         for (LottoTicketResult result : results) {
             WinningRule winningRule = checkWinning(result);
             countWinning(winningRule);
@@ -28,21 +29,16 @@ public class WinningHistory {
     }
 
     private void countWinning(WinningRule winningRule) {
-        if (winningRule == WinningRule.FIRST) {
+        if (winningRule == WinningRule.FIRST)
             firstCount++;
-        }
-        if (winningRule == WinningRule.SECOND) {
+        if (winningRule == WinningRule.SECOND)
             secondCount++;
-        }
-        if (winningRule == WinningRule.THIRD) {
+        if (winningRule == WinningRule.THIRD)
             thirdCount++;
-        }
-        if (winningRule == WinningRule.FOURTH) {
+        if (winningRule == WinningRule.FOURTH)
             fourthCount++;
-        }
-        if (winningRule == WinningRule.FIFTH) {
+        if (winningRule == WinningRule.FIFTH)
             fifthCount++;
-        }
     }
 
     public int getFirstCount() {

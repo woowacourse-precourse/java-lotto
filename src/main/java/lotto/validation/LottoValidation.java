@@ -1,10 +1,14 @@
 package lotto.validation;
 
+import lotto.utils.ConsoleLog;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Stream;
+
+import static lotto.utils.Constant.ERROR_PREFIX;
 
 public enum LottoValidation {
     NOT_SIX_NUMBERS(
@@ -25,7 +29,7 @@ public enum LottoValidation {
     }
 
     private String errorMessage() {
-        return "[ERROR] " + errorMessage;
+        return ERROR_PREFIX + errorMessage;
     }
 
     private static Optional<LottoValidation> validate(List<Integer> numbers) {
@@ -36,6 +40,7 @@ public enum LottoValidation {
 
     public static void checkValidation(List<Integer> numbers) {
         validate(numbers).ifPresent(enumType -> {
+            ConsoleLog.getInstance().println(enumType.errorMessage());
             throw new IllegalArgumentException(enumType.errorMessage());
         });
     }

@@ -1,14 +1,20 @@
 package lotto.domain;
 
+import lotto.utils.ConsoleLog;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import static lotto.utils.Constant.ERROR_PREFIX;
+
 public class WinningLotto {
     private final List<Integer> numbers;
     private final int bonusNumber;
+    private static final boolean MATCH_BONUS = true;
+    private static final String ERROR_MESSAGE = ERROR_PREFIX + "보너스 번호에 중복 된 숫자가 포함되어있습니다.";
 
     public WinningLotto(String numbers, String bonusNumber) {
         List<Integer> refineNumbers = refineNumbers(numbers);
@@ -26,8 +32,8 @@ public class WinningLotto {
                 .collect(Collectors.toList());
     }
 
-    public ArrayList<LottoTicketResult> confirmWinning(List<Lotto> lottos) {
-        ArrayList<LottoTicketResult> result = new ArrayList<>();
+    public List<LottoTicketResult> confirmWinning(List<Lotto> lottos) {
+        List<LottoTicketResult> result = new ArrayList<>();
         for (Lotto lotto : lottos) {
             int count = matchesCount(lotto);
             result.add(confirmSecondWinning(lotto, count));
@@ -47,14 +53,15 @@ public class WinningLotto {
 
     private LottoTicketResult confirmSecondWinning(Lotto lotto, int count) {
         if (count == 5 && lotto.getNumbers().contains(bonusNumber)) {
-            return new LottoTicketResult(count, true);
+            return new LottoTicketResult(count, MATCH_BONUS);
         }
-        return new LottoTicketResult(count, false);
+        return new LottoTicketResult(count, !MATCH_BONUS);
     }
 
     private void validate(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호에 중복 된 숫자가 포함되어있습니다.");
+            ConsoleLog.getInstance().println(ERROR_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 }

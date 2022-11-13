@@ -6,7 +6,6 @@ import lotto.domain.WinningHistory;
 import lotto.domain.WinningLotto;
 import lotto.view.OutputConsole;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ConfirmationWinningService {
@@ -17,7 +16,7 @@ public class ConfirmationWinningService {
     }
 
     public void confirm(List<Lotto> lottos, WinningLotto winningLotto) {
-        ArrayList<LottoTicketResult> results = winningLotto.confirmWinning(lottos);
+        List<LottoTicketResult> results = winningLotto.confirmWinning(lottos);
         WinningHistory winningHistory = new WinningHistory(results);
         outputConsole.showWinningStatistics(winningHistory);
     }

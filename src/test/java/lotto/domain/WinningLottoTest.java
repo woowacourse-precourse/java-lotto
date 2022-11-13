@@ -54,7 +54,7 @@ class WinningLottoTest {
 
         // when
         WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,6", "7");
-        ArrayList<LottoTicketResult> result = winningLotto.confirmWinning(lottos);
+        List<LottoTicketResult> result = winningLotto.confirmWinning(lottos);
 
         // then
         assertThat(result.get(0))
