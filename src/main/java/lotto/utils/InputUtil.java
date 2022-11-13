@@ -1,19 +1,30 @@
 package lotto.utils;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.validator.LottoNumberValidator;
+import lotto.domain.Lotto;
+import lotto.validator.BonusNumberValidator;
+import lotto.validator.InputLottoNumberValidator;
 import lotto.validator.PurchaseAmountValidator;
+
+import java.util.List;
 
 public class InputUtil {
 
-    public static int purchaseAmount() {
-        String money = Console.readLine();
-        PurchaseAmountValidator.validate(money);
-        return Integer.parseInt(money);
+    public static int readPurchaseAmount() {
+        String purchaseAmount = Console.readLine();
+        PurchaseAmountValidator.validate(purchaseAmount);
+        return Integer.parseInt(purchaseAmount);
     }
 
-    public static void lottoNumber() {
-        String lottoNumber = Console.readLine();
-        LottoNumberValidator.validate(lottoNumber);
+    public static List<Integer> readWinningLottoNumber() {
+        String winningLottoNumber = Console.readLine();
+        InputLottoNumberValidator.validate(winningLottoNumber);
+        return FormatLottoNumber.get(winningLottoNumber);
+    }
+
+    public static Integer readBonusNumber(Lotto winLotto) {
+        String bonusNumber = Console.readLine();
+        BonusNumberValidator.validate(bonusNumber, winLotto);
+        return Integer.parseInt(bonusNumber);
     }
 }
