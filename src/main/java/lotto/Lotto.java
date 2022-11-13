@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,7 +16,10 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-    }
 
-    // TODO: 추가 기능 구현
+        Set<Integer> listSet = new HashSet<>(numbers);
+        if (listSet.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
