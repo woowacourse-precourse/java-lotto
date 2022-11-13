@@ -39,7 +39,7 @@
 - [x] 하나의 값만 가진다.
 - [x] 숫자 범위는 1~45까지이다.
 - [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생,
-  - [x] "[ERROR] 보너스 번호는 하나의 값만 가능합니다."
+  - [ ] "[ERROR] 보너스 번호는 하나의 값만 가능합니다."
   - [x] "[ERROR] 보너스 번호의 범위는 1부터 45가지 입니다."
   - [x] "[ERROR] 보너스 번호는 로또 번호와 중복될수없습니다."
 
@@ -91,27 +91,25 @@
 
 ## View
 
-```
-ViewHandler
-```
-
+- InputHandler
 - [x] inputMoney : "구입금액을 입력해 주세요."
+  - [x] String to int, handling exception (숫자만 가능)
+- [x] inputLottoNumber : "당첨 번호를 입력해 주세요."
+  - [x] String to List<Integer>, handling exception (숫자만 가능)
+- [x] inputBonusNumber : "보너스 번호를 입력해 주세요."
+  - [x] String to Integer, handling exception (숫자만 가능)
 
-  - [x] String to List<Integer>, handling exception
 
-- [x] inputLottoWithBonus
 
-	- [x] inputLottoNumber : "당첨 번호를 입력해 주세요."
-		- [x] String to List<Integer>, handling exception
+- outputHandler
 
-	- [x] inputBonusNumber : "보너스 번호를 입력해 주세요."
-		- [x] String to Integer, handling exception
-
-- [ ] LottoTicket.outputLottoTicket(); 
+- [x] output.printResult()
 
 - [x] Compare 값 출력
 
-  - [ ] ```
+  - [x] winningStatistics
+
+    ```
     당첨 통계
     ---
     3개 일치 (5,000원) - 1개
@@ -121,6 +119,36 @@ ViewHandler
     6개 일치 (2,000,000,000원) - 0개
     총 수익률은 62.5%입니다.
     ```
+
+
+
+## Controller
+
+view 와 domain 을 연결시키는 부분입니다.
+
+view 를 통해 사용자에게 입력 및 출력합니다. 입력 받은 값을 domain에게 전달해 값을 받습니다.
+
+- [ ] run()
+
+	- view 와 domain 을 연결
+
+- [ ] inputMoney 
+
+	- view 를 통해 사용자로부터 금액 입력
+	- domain의 Money에게 금액 입력
+
+- [ ] inputLotto
+
+	- view 를 통해 사용자로부터 로또번호 입력
+
+	- domain의 Lotto에게 번호 입력
+
+- [ ] inputBonus
+
+	- view 를 통해 사용자로부터 보너스 번호 입력
+	- domain의 LottoWithBonus에게 금액 입력
+
+- [ ] 
 
 
 
