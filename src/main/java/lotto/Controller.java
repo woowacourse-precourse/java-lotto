@@ -6,13 +6,15 @@ import java.util.*;
 
 public class Controller {
 
-    public void play(int lottoCount) {
-        System.out.println("게임 시작~");
-        System.out.println(lottoCount);
+    public void run(int lottoCount) {
+
+        System.out.println("\n" + lottoCount + "개를 구매했습니다.");
 
         Set<List<Integer>> lottoNumbers = lottoGenerator(lottoCount);
-        System.out.println(lottoNumbers);
+        lottoNumbers.forEach(System.out::println);
 
+        Game game = new Game();
+        game.play(lottoNumbers);
     }
 
     private Set<List<Integer>> isValidCntLottoNumbers(int lottoCount, Set<List<Integer>> lottoNumbers) {

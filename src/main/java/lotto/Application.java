@@ -10,7 +10,7 @@ public class Application {
         System.out.println("구매 금액을 입력해주세요");
         int purchaseAmount = Integer.parseInt(Console.readLine());
         Controller controller = new Controller();
-        controller.play(isValidPurchaseAmount(purchaseAmount) / 1000);
+        controller.run(isValidPurchaseAmount(purchaseAmount) / 1000);
     }
 
     static private int isValidPurchaseAmount(int inputValue) throws IllegalArgumentException {
