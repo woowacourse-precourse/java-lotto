@@ -12,6 +12,7 @@ public class WinningResultsFormatter implements OutputFormatter<WinningResults> 
     private static final String LINE_BREAK = "\n";
     private static final String COUNT_DASH = " - ";
     private static final String COUNT_UNIT = "개";
+
     private final OutputFormatter<WinningResultType> winningResultTypeFormatter;
 
     public WinningResultsFormatter(OutputFormatter<WinningResultType> winningResultTypeFormatter) {

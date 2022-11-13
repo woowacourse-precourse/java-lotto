@@ -3,7 +3,6 @@ package lotto.domain.winningresult;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import lotto.domain.lotto.LottoDraw;
 import lotto.domain.lotto.Lottos;
 
@@ -27,7 +26,7 @@ public class WinningResults {
         return new WinningResults(winningResultTypes, purchasedAmount);
     }
 
-    public int count(WinningResultType winningResultType){
+    public int count(WinningResultType winningResultType) {
         return (int) winningResultTypes.stream()
                 .filter(o -> o == winningResultType)
                 .count();
@@ -36,10 +35,6 @@ public class WinningResults {
     public double calculateRewardRate() {
         double rewardAmount = calculateTotalRewardAmount();
         return rewardAmount / purchasedAmount * 100;
-    }
-
-    public Stream<WinningResultType> stream() {
-        return winningResultTypes.stream();
     }
 
     private int calculateTotalRewardAmount() {

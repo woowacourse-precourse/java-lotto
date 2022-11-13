@@ -2,8 +2,8 @@ package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.common.MessageConstants;
-import lotto.ui.dto.BonusNumber;
 import lotto.domain.lotto.LottoDraw;
+import lotto.ui.dto.BonusNumber;
 import lotto.ui.dto.LottoPurchasedAmount;
 import lotto.ui.dto.WinNumbers;
 import lotto.util.Validator;

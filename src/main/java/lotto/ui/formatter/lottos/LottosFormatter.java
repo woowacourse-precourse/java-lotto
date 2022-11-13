@@ -9,6 +9,7 @@ public class LottosFormatter implements OutputFormatter<Lottos> {
     private static final String LINE_BREAK = "\n";
     private static final String LOTTO_DIAMETER = "\n";
     private static final String LOTTO_PURCHASED_MESSAGE = "개를 구매했습니다.";
+
     private final OutputFormatter<Lotto> lottoOutputFormatter;
 
     public LottosFormatter(OutputFormatter<Lotto> lottoOutputFormatter) {

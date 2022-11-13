@@ -15,6 +15,7 @@ public enum InputErrors {
     BONUS_NUMBER_DUPLICATED_WIN_NUMBER("보너스 번호는 당첨 번호와 중복 될 수 없습니다.");
 
     private String message;
+
     InputErrors(String message) {
         String errorPrefix = "[ERROR]";
         this.message = errorPrefix + message;

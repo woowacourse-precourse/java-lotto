@@ -1,29 +1,28 @@
 package lotto.ui;
 
 import lotto.domain.lotto.Lottos;
-import lotto.domain.winningresult.WinningResultType;
 import lotto.domain.winningresult.WinningResults;
 import lotto.ui.formatter.OutputFormatter;
 
 public class ResultView {
-	private static final String LINE_BREAK = "\n";
+    private static final String LINE_BREAK = "\n";
 
-	private final OutputFormatter<Lottos> lottosOutputFormatter;
-	private final OutputFormatter<WinningResults> resultOutputFormatter;
+    private final OutputFormatter<Lottos> lottosOutputFormatter;
+    private final OutputFormatter<WinningResults> resultOutputFormatter;
 
-	public ResultView(OutputFormatter<Lottos> lottosOutputFormatter,
-		OutputFormatter<WinningResults> resultOutputFormatter) {
-		this.lottosOutputFormatter = lottosOutputFormatter;
-		this.resultOutputFormatter = resultOutputFormatter;
-	}
+    public ResultView(OutputFormatter<Lottos> lottosOutputFormatter,
+                      OutputFormatter<WinningResults> resultOutputFormatter) {
+        this.lottosOutputFormatter = lottosOutputFormatter;
+        this.resultOutputFormatter = resultOutputFormatter;
+    }
 
-	public void printDrawnLottos(Lottos lottos) {
-		System.out.print(LINE_BREAK);
-		System.out.println(lottosOutputFormatter.outputFormat(lottos));
-	}
+    public void printDrawnLottos(Lottos lottos) {
+        System.out.print(LINE_BREAK);
+        System.out.println(lottosOutputFormatter.outputFormat(lottos));
+    }
 
-	public void printWinningResult(WinningResults winningResults) {
-		System.out.print(LINE_BREAK);
-		System.out.println(resultOutputFormatter.outputFormat(winningResults));
-	}
+    public void printWinningResult(WinningResults winningResults) {
+        System.out.print(LINE_BREAK);
+        System.out.println(resultOutputFormatter.outputFormat(winningResults));
+    }
 }

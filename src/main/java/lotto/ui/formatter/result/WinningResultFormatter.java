@@ -7,6 +7,7 @@ public class WinningResultFormatter implements OutputFormatter<WinningResultType
     private static final String MONEY_UNIT = "원";
     private static final String OPEN_BRACE = " (";
     private static final String CLOSE_BRACE = ")";
+
     @Override
     public String outputFormat(WinningResultType winningResultType) {
         StringBuilder format = new StringBuilder(winningResultType.getContent());

@@ -10,7 +10,6 @@ public class WinNumbersValidator implements Validator {
     private static final int LOTTO_NUMBER_MAX_RANGE = 45;
     private static final int LOTTO_SIZE = 6;
 
-
     @Override
     public void validate(String userInput) throws IllegalArgumentException {
         validateNotNull(userInput);
