@@ -1,5 +1,6 @@
 package lotto.ui;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class InputViewValidation {
@@ -8,6 +9,7 @@ public class InputViewValidation {
     static final String ERROR_NOT_1000 = "[ERROR] 1000단위 숫자만 입력해주세요.";
     static final String ERROR_LOTTO_SIZE = "[ERROR] 6개의 당첨 번호를 입력해주세요.";
     static final String ERROR_LOTTO_NUMBER_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+    static final String ERROR_INPUT_FORMAT = "[ERROR] 입력 형식이 지켜지지 않았습니다.";
     static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]*$");
 
 
@@ -23,26 +25,40 @@ public class InputViewValidation {
         }
     }
 
-    public static void validateWinningNumbersSize(String input){
+    public static void validateWinningNumbersFormat(String input) {
+        if (Objects.equals(input.charAt(0), ',') ||
+                Objects.equals(input.charAt(input.length()-1), ',')) {
+            throw new IllegalArgumentException(ERROR_INPUT_FORMAT);
+        }
+        for (int i = 1; i < input.length()-1; i++) {
+            if (Objects.equals(input.charAt(i), ',')) {
+                if (!NUMBER_PATTERN.matcher(String.valueOf(input.charAt(i-1))).find() || !NUMBER_PATTERN.matcher(String.valueOf(input.charAt(i+1))).find()) {
+                    throw new IllegalArgumentException(ERROR_INPUT_FORMAT);
+                }
+            }
+        }
+    }
+
+    public static void validateWinningNumbersSize(String input) {
         String[] winningNumbers = input.split(",");
         if (winningNumbers.length != 6) {
             throw new IllegalArgumentException(ERROR_LOTTO_SIZE);
         }
     }
 
-    public static void validateWinningNumbersInteger(String input){
+    public static void validateWinningNumbersInteger(String input) {
         String[] winningNumbers = input.split(",");
-        for (String number: winningNumbers) {
-            if (!NUMBER_PATTERN.matcher(number).find()){
+        for (String number : winningNumbers) {
+            if (!NUMBER_PATTERN.matcher(number).find()) {
                 throw new IllegalArgumentException(ERROR_NOT_INTEGER_FORMAT);
             }
         }
     }
 
-    public static void validateWinningNumbersRange(String input){
+    public static void validateWinningNumbersRange(String input) {
         String[] winningNumbers = input.split(",");
-        for (String number: winningNumbers) {
-            if (Integer.parseInt(number) > 45 && Integer.parseInt(number) < 1){
+        for (String number : winningNumbers) {
+            if (Integer.parseInt(number) > 45 && Integer.parseInt(number) < 1) {
                 throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
             }
         }
