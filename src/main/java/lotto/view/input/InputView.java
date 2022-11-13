@@ -21,9 +21,9 @@ public class InputView {
         System.out.println(INPUT_PURCHASE_MONEY_GUIDE);
         String text = Console.readLine();
         inputViewValidator.validateNumber(text);
-        long inputValue = Long.parseLong(text);
-        inputViewValidator.validateDivideThousand(inputValue);
-        return inputValue;
+        inputViewValidator.validateDivideThousand(Long.parseLong(text));
+        printEnter();
+        return Long.parseLong(text);
     }
 
     public List<Integer> inputWinningLotto() {
@@ -31,6 +31,7 @@ public class InputView {
         String text = Console.readLine();
         inputViewValidator.validateContainRest(text);
         inputViewValidator.validateSplitByRestNumber(text);
+        printEnter();
         return Arrays.stream(text.split(REST))
                 .mapToInt(Integer::parseInt)
                 .boxed()
@@ -41,6 +42,11 @@ public class InputView {
         System.out.println(INPUT_BONUS_NUMBER_GUIDE);
         String text = Console.readLine();
         inputViewValidator.validateNumber(text);
+        printEnter();
         return Integer.parseInt(text);
+    }
+
+    private static void printEnter() {
+        System.out.println();
     }
 }
