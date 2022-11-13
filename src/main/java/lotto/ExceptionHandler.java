@@ -17,4 +17,15 @@ public class ExceptionHandler {
             throw new IllegalArgumentException(Error.OUT_OF_RANGE.getMessage());
         }
     }
+
+    public static void checkNumeric(String input) throws IllegalArgumentException {
+        if (!isNumeric(input)) {
+            throw new IllegalArgumentException(Error.NOT_NUMERIC.getMessage());
+        }
+    }
+
+    private static boolean isNumeric(String input) {
+        return input != null && input.matches("^[0-9,]*$");
+    }
+
 }
