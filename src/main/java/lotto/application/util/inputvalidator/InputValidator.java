@@ -1,4 +1,4 @@
-package lotto.application.service.inputvalidator;
+package lotto.application.util.inputvalidator;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ public interface InputValidator {
     void validatePurchaseMoneyIsInteger(String lottoPurchaseMoney);
 
     void validatePurchaseMoneyDividable(String lottoPurchaseMoney);
-
 
     void validateWinningNumbersAreInteger(String[] inputValue);
 
