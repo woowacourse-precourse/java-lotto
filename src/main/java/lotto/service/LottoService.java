@@ -9,4 +9,10 @@ public class LottoService {
     public void buyLottos(int inputPrice) {
         lottoRepository.generateLottos(inputPrice / LOTTO_PRICE);
     }
+
+
+    public int getCountOfLotto() {
+        return lottoRepository.findAll()
+                .size();
+    }
 }
