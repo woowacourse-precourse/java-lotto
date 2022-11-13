@@ -49,6 +49,7 @@ public class Game {
 
     public void setBonus(Integer bonus){
         validateBonusByRange(bonus);
+        validateBonusByDistinction(bonus);
         this.bonus = bonus;
     }
 
