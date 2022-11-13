@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.controller.dto.UserPriceDto;
+import lotto.controller.dto.UserInputMoneyDto;
 import lotto.controller.dto.WinnerNumberDto;
 import lotto.repository.dto.UserLottoDto;
 import lotto.service.LottoService;
@@ -23,34 +23,39 @@ public class LottoController {
 	}
 
 	public void startApplication() {
-
-		UserPriceDto userPriceDto = inputController.getUserMoneyNumber();
-		if (isInvalidNumber(userPriceDto)) {
-			return;
+		try {
+			UserInputMoneyDto userInputMoneyDto = getUserInputMoneyDto();
+			UserLottoDto userLottoDto = getUserLottoDto(userInputMoneyDto);
+			WinnerNumberDto winnerNumberDto = getWinnerNumberDto();
+			activateStatisticsService(userInputMoneyDto, userLottoDto, winnerNumberDto);
+		} catch (RuntimeException e) {
+			outputView.printError(e.getMessage());
 		}
-
-		int lottoCount = userPriceDto.getUserTicketCount();
-		outputView.printLottoCount(lottoCount);
-		UserLottoDto userLottoDto = lottoService.makeRandomLottoNumber(lottoCount);
-		outputView.printUserLotto(userLottoDto.getUserLotto());
-
-		WinnerNumberDto winnerNumberDto = inputController.getAnswerNumber();
-		if (isInvalidNumber(winnerNumberDto.getAnswerNumbers())) {
-			return;
-		}
-		inputController.getBonusNumber(winnerNumberDto);
-		if (isInvalidNumber(winnerNumberDto.getBonusNumber())) {
-			return;
-		}
-
-		Double yield = statisticsService.updateStatistics(userLottoDto, winnerNumberDto,
-			userPriceDto.getInputPrice());
-		outputView.printUserStatistics(yield);
-
 	}
 
-	private boolean isInvalidNumber(Object number) {
-		return number == null;
+	private UserInputMoneyDto getUserInputMoneyDto() {
+		UserInputMoneyDto userInputMoneyDto = inputController.getUserMoneyNumber();
+		outputView.printLottoCount(userInputMoneyDto.getUserTicketCount());
+		return userInputMoneyDto;
+	}
+
+	private UserLottoDto getUserLottoDto(UserInputMoneyDto userInputMoneyDto) {
+		UserLottoDto userLottoDto = lottoService.makeRandomLottoNumber(userInputMoneyDto.getUserTicketCount());
+		outputView.printUserLotto(userLottoDto.getUserLotto());
+		return userLottoDto;
+	}
+
+	private WinnerNumberDto getWinnerNumberDto() {
+		WinnerNumberDto winnerNumberDto = inputController.getAnswerNumber();
+		inputController.getBonusNumber(winnerNumberDto);
+		return winnerNumberDto;
+	}
+
+	private void activateStatisticsService(UserInputMoneyDto userInputMoneyDto, UserLottoDto userLottoDto,
+		WinnerNumberDto winnerNumberDto) {
+		Double yield = statisticsService.updateStatistics(userLottoDto, winnerNumberDto,
+			userInputMoneyDto.getInputPrice());
+		outputView.printUserStatistics(yield);
 	}
 
 }

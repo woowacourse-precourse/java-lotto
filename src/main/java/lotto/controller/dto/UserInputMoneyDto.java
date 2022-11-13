@@ -1,11 +1,11 @@
 package lotto.controller.dto;
 
-public class UserPriceDto {
+public class UserInputMoneyDto {
 
 	private Integer inputPrice;
 	private Integer userTicketCount;
 
-	public UserPriceDto(Integer userPrice) {
+	public UserInputMoneyDto(Integer userPrice) {
 		this.inputPrice = userPrice;
 		this.userTicketCount = userPrice / 1000;
 	}

@@ -31,7 +31,7 @@ public class InputValidService {
 
 	private void validNumberRange(Integer bonusNumber) {
 		if (1 > bonusNumber || 45 < bonusNumber) {
-			throw new IllegalArgumentException(ErrorConst.OUT_OF_BONUS_RANGE_ERROR);
+			throw new RuntimeException(ErrorConst.OUT_OF_BONUS_RANGE_ERROR);
 		}
 	}
 
@@ -39,7 +39,7 @@ public class InputValidService {
 		List<Integer> numbers = inputNumber.chars().mapToObj(i -> i - 48).collect(Collectors.toList());
 		int count = (int)numbers.stream().filter(i -> 0 > i || 9 < i).count();
 		if (count != 0) {
-			throw new IllegalArgumentException(ErrorConst.NOT_NUMBER_ERROR);
+			throw new RuntimeException(ErrorConst.NOT_NUMBER_ERROR);
 		}
 	}
 
@@ -53,13 +53,13 @@ public class InputValidService {
 
 	private void validAnswersSize(String[] split) {
 		if (split.length != 6) {
-			throw new IllegalArgumentException(ErrorConst.NUMBERS_SIZE_ERROR);
+			throw new RuntimeException(ErrorConst.NUMBERS_SIZE_ERROR);
 		}
 	}
 
 	private void validNumberDividedByThousand(Integer userMoneyNumber) {
 		if (userMoneyNumber % 1000 != 0) {
-			throw new IllegalArgumentException(ErrorConst.NOT_DIVIDED_BY_THOUSAND);
+			throw new RuntimeException(ErrorConst.NOT_DIVIDED_BY_THOUSAND);
 		}
 	}
 

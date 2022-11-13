@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.controller.dto.UserPriceDto;
+import lotto.controller.dto.UserInputMoneyDto;
 import lotto.controller.dto.WinnerNumberDto;
 import lotto.service.InputValidService;
 import lotto.view.InputView;
@@ -19,16 +19,15 @@ public class InputController {
 		this.inputValidService = inputValidService;
 	}
 
-	public UserPriceDto getUserMoneyNumber() {
+	public UserInputMoneyDto getUserMoneyNumber() {
 		String userMoney = inputView.printStart();
-		UserPriceDto userPriceDto;
+		UserInputMoneyDto userInputMoneyDto;
 		try {
-			userPriceDto = new UserPriceDto(inputValidService.validateUserMoney(userMoney));
-		} catch (IllegalArgumentException e) {
-			outputView.printError(e.getMessage());
-			return null;
+			userInputMoneyDto = new UserInputMoneyDto(inputValidService.validateUserMoney(userMoney));
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
 		}
-		return userPriceDto;
+		return userInputMoneyDto;
 	}
 
 	public WinnerNumberDto getAnswerNumber() {
@@ -36,9 +35,8 @@ public class InputController {
 		WinnerNumberDto winnerNumberDto;
 		try {
 			winnerNumberDto = new WinnerNumberDto(inputValidService.validAnswer(answer));
-		} catch (IllegalArgumentException e) {
-			outputView.printError(e.getMessage());
-			return null;
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
 		}
 		return winnerNumberDto;
 	}
@@ -47,9 +45,8 @@ public class InputController {
 		String bonus = inputView.printBonusNumber();
 		try {
 			winnerNumberDto.setBonusNumber(inputValidService.validateBonus(bonus));
-		} catch (IllegalArgumentException e) {
-			outputView.printError(e.getMessage());
-			return null;
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
 		}
 		return winnerNumberDto;
 	}
