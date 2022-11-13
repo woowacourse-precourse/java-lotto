@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,6 +13,9 @@ public class Lotto {
         overlapsFind(numbers);
         this.numbers = numbers;
     }
+    public List<Integer> getNumbers(){
+        return numbers;
+    }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
@@ -20,6 +24,7 @@ public class Lotto {
     }
     private void overlapsFind(List<Integer> numbers){
         Set<Integer> overlapTest = new HashSet<>();
+        // Collections.addAll 기능을 사용해보기
         for(int nowNumber : numbers){
             overlapTest.add(nowNumber);
         }
