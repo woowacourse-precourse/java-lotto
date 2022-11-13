@@ -26,6 +26,8 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    //예외 처리 테스트
     @DisplayName("예외 처리 에러가 IllegalArgumentException 인지 확인하는 테스트")
     @Test
     void exceptionsTest(){
@@ -33,7 +35,8 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호에 문자가 있으면 예외가 발생한다.")
+    //구매 가격 입력 테스트
+    @DisplayName("구매 가격에 문자가 있으면 예외가 발생한다.")
     @Test
     void createLottoString() {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
@@ -50,5 +53,13 @@ class LottoTest {
         assertThat(buy__).isEqualTo(expectedReturn);
     }
 
+
+    // 로또 번호 생성 관련 테스트
+    @DisplayName("로또 번호 생성 테스트")
+    @Test
+    void checkTheTicket(){
+        TicketNumbers ticketNumbers = new TicketNumbers(3);
+        ticketNumbers.collectTickets();
+    }
 
 }
