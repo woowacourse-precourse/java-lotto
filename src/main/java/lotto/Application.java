@@ -30,7 +30,7 @@ public class Application {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         // 보너스 번호를 입력받는 메서드 호출
-        int bonusNumber = getBonusInput();
+        int bonusNumber = getBonusInput(winningLotto);
 
         // 당첨 통계를 구하는 메서드 호출
         printResult(winningLotto, lottos, bonusNumber);
@@ -77,7 +77,7 @@ public class Application {
         return new Lotto(winningNumbers);
     }
 
-    public static int getBonusInput() {
+    public static int getBonusInput(Lotto winningLotto) {
         int bonus;
         try {
             bonus = Integer.parseInt(Console.readLine());
@@ -86,6 +86,8 @@ public class Application {
         }
 
         if (bonus < 1 || bonus > 45) throw new IllegalArgumentException("[ERROR]Bonus input error");
+        if (winningLotto.getElements().contains(bonus))
+            throw new IllegalArgumentException("[ERROR]Bonus input error");
 
         return bonus;
     }
@@ -120,7 +122,6 @@ public class Application {
 
         for(Lotto lotto : lottos) {
             int equalCount = equalNumberCounter(winningLotto, lotto, bonusNumber);
-            lotto.printElements();
 
             if(equalCount == 3)
                 history.setEqualThree();
