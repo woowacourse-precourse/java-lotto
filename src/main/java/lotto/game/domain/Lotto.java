@@ -1,6 +1,6 @@
 package lotto.game.domain;
 
-import static lotto.game.ExceptionHandler.*;
+import static lotto.game.ExceptionConst.*;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throwException(NOT_SIX_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(NOT_SIX_NUMBER_MESSAGE);
         }
     }
 
@@ -24,7 +24,7 @@ public class Lotto {
                 .distinct()
                 .count();
         if (noDuplicateCount != 6) {
-            throwException(DUPLICATE_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_MESSAGE);
         }
     }
 

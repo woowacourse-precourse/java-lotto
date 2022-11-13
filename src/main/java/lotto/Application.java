@@ -7,6 +7,10 @@ import lotto.game.view.UI;
 public class Application {
     public static void main(String[] args) {
         Game game = Game.create(new LottoService(), new UI());
-        game.start();
+        try {
+            game.start();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

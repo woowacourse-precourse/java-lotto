@@ -1,6 +1,6 @@
 package lotto.game.domain;
 
-import static lotto.game.ExceptionHandler.*;
+import static lotto.game.ExceptionConst.*;
 
 import java.util.regex.Pattern;
 
@@ -21,7 +21,7 @@ public class Money {
 
     public static Money of(String input) {
         if (!moneyPattern.matcher(input).matches()) {
-            throwException(NUMBER_ONLY_MESSAGE);
+            throw new IllegalArgumentException(NUMBER_ONLY_MESSAGE);
         }
         return Money.of(Long.parseLong(input));
     }
@@ -34,7 +34,7 @@ public class Money {
         if (value % 1000 == 0) {
             return;
         }
-        throwException(DIVISIBLE_1000_ONLY_MESSAGE);
+        throw new IllegalArgumentException(DIVISIBLE_1000_ONLY_MESSAGE);
     }
 
     public long getValue() {

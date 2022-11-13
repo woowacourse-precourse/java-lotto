@@ -1,6 +1,6 @@
 package lotto.game.domain;
 
-import static lotto.game.ExceptionHandler.*;
+import static lotto.game.ExceptionConst.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +26,7 @@ public class WinningLotto {
 
     public static WinningLotto of(String numbersInput, String bonusNumberInput) {
         if (!lottoPattern.matcher(numbersInput).matches()) {
-            throwException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
         }
         List<Integer> numbers = Arrays.stream(numbersInput.split(","))
                 .sequential()
@@ -38,7 +38,7 @@ public class WinningLotto {
 
     public void validateDuplicate(List<Integer> numbers, Integer bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            throwException(BONUS_NUMBER_DUPLICATE_MESSAGE);
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_MESSAGE);
         }
     }
 
@@ -46,12 +46,12 @@ public class WinningLotto {
         if (number >= 1 && number <= 45) {
             return;
         }
-        throwException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
+        throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
     }
 
     private static Integer convertInputToBonusNumber(String bonusNumber) {
         if (!bonusNumberPattern.matcher(bonusNumber).matches()) {
-            throwException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
         }
         return Integer.parseInt(bonusNumber);
     }
