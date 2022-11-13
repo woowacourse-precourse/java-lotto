@@ -33,9 +33,8 @@ public class Simulation {
         String bonus_s = Function.getBonus();
         int bonus = Function.validBonus(bonus_s, winNumber);
         List<Integer> result = new ArrayList<>(List.of(0, 0, 0, 0, 0));
-        int count;
         for (Lotto lotto : trial) {
-            count = Function.countMatching(lotto, winNumber, bonus);
+            int count = Function.countMatching(lotto, winNumber, bonus);
             List<Integer> temp_result = Function.winLotto(count);
             for (int j = 0; j < 5; j++) {
                 result.set(j, result.get(j) + temp_result.get(j));
