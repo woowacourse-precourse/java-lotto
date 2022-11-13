@@ -2,6 +2,7 @@ package util;
 
 import camp.nextstep.edu.missionutils.Console;
 import domain.Lotto;
+import domain.Money;
 import domain.Rank;
 
 import java.util.ArrayList;
@@ -51,21 +52,8 @@ public class LottoUtils {
         });
     }
 
-    public static int getLottoCnt() {
-        return getMoney() / LOTTO_PRICE;
-    }
-
-    private static int getMoney() {
-        int money = Integer.parseInt(Console.readLine());
-        validateMoney(money);
-
-        return money;
-    }
-
-    private static void validateMoney(int money) {
-        if (money % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
-        }
+    public static int getLottoCntByMoney(Money money) {
+        return money.getMoney() / LOTTO_PRICE;
     }
 
     private static void printLottoNumbers(List<Lotto> lottos) {
@@ -106,6 +94,7 @@ public class LottoUtils {
         List<Integer> rightNumbers = new ArrayList<>();
         List<Integer> wrongNumbers = new ArrayList<>();
         lottos.forEach(lotto -> {
+            //getRightORWrongNumbers
             List<Integer> lottoNumbers = lotto.getLottoNumbers();
             for (int i = 0; i < LOTTO_NUMBER_COUNT; i++) {
                 if (lottoNumbers.get(i) == winningLottoNumbers.get(i)) {
@@ -163,4 +152,6 @@ public class LottoUtils {
         String roundedPercent = String.format("%.1f", profitPercent);
         return roundedPercent;
     }
+
+
 }
