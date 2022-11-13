@@ -84,5 +84,18 @@ public class Application {
 
         if (winningNumbers.contains(bonusNumber))
             throw new IllegalArgumentException("중복되지 않는 숫자를 입력해야 합니다.");
+
+        result = getResult(lottoList, winningNumbers, bonusNumber);
+    }
+
+    private static Integer[] getResult(List<Lotto> lottoList, Lotto winningNumbers, Integer bonusNumber) {
+        Integer[] result = { 0, 0, 0, 0, 0, 0 };
+
+        for (Lotto lotto: lottoList) {
+            Prize prize = lotto.getResult(winningNumbers, bonusNumber);
+            result[prize.ordinal()]++;
+        }
+
+        return result;
     }
 }
