@@ -1,4 +1,4 @@
-package ui;
+package util;
 
 import camp.nextstep.edu.missionutils.Console;
 import domain.Lotto;
@@ -13,7 +13,7 @@ import static values.Constants.Digit.*;
 import static values.Constants.Error.*;
 import static values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
 
-public class LottoUi {
+public class LottoUtils {
 
     public static void validate(List<Integer> numbers) {
         validateNumbersSize(numbers);
