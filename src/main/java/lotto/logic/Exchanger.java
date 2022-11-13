@@ -5,6 +5,18 @@ import lotto.domain.Rank;
 
 public class Exchanger {
 
+    private static class ExchangerHolder {
+        private static final Exchanger INSTANCE = new Exchanger();
+    }
+
+    private Exchanger() {
+
+    }
+
+    public static Exchanger getInstance() {
+        return ExchangerHolder.INSTANCE;
+    }
+
     public double calculateProfitRate(Map<Rank, Integer> countOfRank, long payment) {
         long profit = calculateProfit(countOfRank);
         return (double) profit / payment;

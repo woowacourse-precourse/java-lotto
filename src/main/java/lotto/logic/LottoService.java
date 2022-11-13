@@ -11,8 +11,16 @@ import lotto.domain.WinningInfo;
 
 public class LottoService {
 
-    public LottoService() {
+    private static class LottoServiceHolder {
+        private static final LottoService INSTANCE = new LottoService();
+    }
 
+    private LottoService() {
+
+    }
+
+    public static LottoService getInstance() {
+        return LottoServiceHolder.INSTANCE;
     }
 
     public Map<Rank, Integer> getResult(WinningInfo target, List<Lotto> lottos) {
