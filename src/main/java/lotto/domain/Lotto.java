@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -21,6 +20,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
     private void validateScope(List<Integer> numbers) {
         boolean isException = numbers.stream()
                 .anyMatch(number -> number < 1 || 45 < number);
@@ -29,32 +29,37 @@ public class Lotto {
     }
 
     private void validateDuplicate(List<Integer> numbers) {
-        int nonDuplNum = (int)numbers.stream()
+        int nonDuplNum = (int) numbers.stream()
                 .distinct().count();
-        if (nonDuplNum != numbers.size()){
+        if (nonDuplNum != numbers.size()) {
             throw new IllegalArgumentException();
         }
     }
-    private List<Integer> getNumbers(){
+
+    private List<Integer> getNumbers() {
         return this.numbers;
     }
-    public void addBonusNum(int bonusNum){
+
+    public void addBonusNum(int bonusNum) {
         this.bonusNum = bonusNum;
     }
-    public int compare(Lotto numbers){
+
+    public int compare(Lotto numbers) {
         List<Integer> target = numbers.getNumbers();
-        int matchNum = (int)target.stream()
+        int matchNum = (int) target.stream()
                 .filter(num -> this.numbers.contains(num))
                 .count();
         return matchNum;
     }
-    public boolean hasBonusNum(List<Integer> numbers){
-        if(numbers.contains(bonusNum))
-            return true;
-        return false;
+
+    public boolean hasBonusNum(Lotto numbers) {
+        int target = numbers.getBonusNumbers();
+        return numbers.getNumbers().contains(target);
     }
 
-
+    private int getBonusNumbers() {
+        return bonusNum;
+    }
 
 
     // TODO: 추가 기능 구현
