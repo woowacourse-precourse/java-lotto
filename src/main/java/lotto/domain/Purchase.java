@@ -22,7 +22,7 @@ public class Purchase {
         createLottos();
         printLottos(lottos);
 
-
+        inputNumbers();
     }
 
     /**
@@ -46,7 +46,8 @@ public class Purchase {
         }
     }
 
-    private static void inputWinningNumbers() {
+    private static void inputNumbers() {
         printInputWinningNumber();
+        System.out.println(inputWinningNumbers());
     }
 }

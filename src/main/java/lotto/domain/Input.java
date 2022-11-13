@@ -2,6 +2,10 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Input {
 
     public static int inputPurchaseAmount() {
@@ -37,5 +41,12 @@ public class Input {
      */
     private static boolean isDividedBy1000(String number) {
         return Integer.parseInt(number) % 1000 == 0;
+    }
+
+    public static List<Integer> inputWinningNumbers() {
+        String numbers = Console.readLine();
+        return Arrays.stream(numbers.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
