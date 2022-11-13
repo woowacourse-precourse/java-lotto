@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.EnumMap;
+import java.util.Map;
 
 public enum Rank {
     FIRST(1, 2_000_000_000),
@@ -10,15 +11,14 @@ public enum Rank {
     FIFTH(5, 5000),
     NO_LUCK(0, 0);
 
-    private static final EnumMap<Rank, Integer> jackpotCntMap = new EnumMap<>(Rank.class);
-    static {
-        jackpotCntMap.put(FIRST, Lotto.NUMBER_SIZE);
-        jackpotCntMap.put(SECOND, Lotto.NUMBER_SIZE - 1);
-        jackpotCntMap.put(THIRD, Lotto.NUMBER_SIZE - 1);
-        jackpotCntMap.put(FOURTH, Lotto.NUMBER_SIZE - 2);
-        jackpotCntMap.put(FIFTH, Lotto.NUMBER_SIZE - 3);
-        jackpotCntMap.put(NO_LUCK, 0);
-    }
+    private static final Map<Rank, Integer> jackpotCntMap = new EnumMap<>(Map.of(
+            FIRST, Lotto.NUMBER_SIZE,
+            SECOND, Lotto.NUMBER_SIZE - 1,
+            THIRD, Lotto.NUMBER_SIZE - 1,
+            FOURTH, Lotto.NUMBER_SIZE - 2,
+            FIFTH, Lotto.NUMBER_SIZE - 3,
+            NO_LUCK, 0
+    ));
     private final int rank;
     private final int reward;
 
