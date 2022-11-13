@@ -14,6 +14,7 @@ public class LottoController {
         PurchaseAmount purchaseAmount = inputPurchaseAmount();
         // 로또 n장 생성 (1장 당 6자리 숫자 랜덤 생성) -> Lotto.java
         LottoTicket lottoTicket = getTickets(purchaseAmount);
+        Output.printTicketsList(purchaseAmount, lottoTicket);
         // 당첨 번호 입력 받음
         WinningBonusNumber winningBonusNumber = inputWinningBonusNumber();
         // 결과 생성
