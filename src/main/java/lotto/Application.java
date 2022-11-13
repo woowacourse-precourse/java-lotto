@@ -3,8 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.LottoGame;
 import lotto.domain.User;
+import lotto.domain.WinningLotto;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -25,5 +25,10 @@ public class Application {
         for (Lotto lotto:lotteries) {
             System.out.println(lotto.toString());
         }
+
+        WinningLotto winningLotto = new WinningLotto();
+        System.out.println("당첨 번호를 입력해 주세요.");
+        winningLotto.receiveWinningNumber();
+        System.out.println(winningLotto.getWinningNumber());
     }
 }

@@ -6,13 +6,28 @@ import lotto.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class WinningLotto {
+    Lotto winningNumber = null;
 
-    public int receiveInput() {
+    public Lotto getWinningNumber() {
+        return winningNumber;
+    }
+
+    public void receiveWinningNumber() {
         String input = Console.readLine();
-        judgeIsDigitOfString(input);
+        String[] numbers = input.split(",");
+        winningNumber = new Lotto(stringArrayToIntegerList(numbers));
+    }
 
-        return Integer.parseInt(input);
+    private List<Integer> stringArrayToIntegerList(String[] words) {
+        List<Integer> result = new ArrayList<>();
+
+        for (String w:words) {
+            judgeIsDigitOfString(w);
+            result.add(Integer.parseInt(w));
+        }
+
+        return result;
     }
 
     private void judgeIsDigitOfString(String sentence) {
