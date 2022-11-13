@@ -7,7 +7,7 @@ import java.awt.*;
 public class Application {
 
     public static void main(String[] args) {
-    MainController mainController = new MainController();
-    mainController.moneyController();
+        MainController mainController = new MainController();
+        mainController.run();
     }
 }

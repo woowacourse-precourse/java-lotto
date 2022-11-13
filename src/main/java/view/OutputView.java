@@ -6,9 +6,7 @@ import lotto.LottoStore;
 import java.util.List;
 
 public class OutputView {
-    public void printLotteries() {
-        LottoMachine lottoMachine = new LottoMachine();
-        List<List<Integer>> totalLotteries = lottoMachine.sortLottoNumbers();
+    public static void printLotteries(List<List<Integer>> totalLotteries) {
         for (int i = 0; i < totalLotteries.size(); i++) {
             List<Integer> lotto = totalLotteries.get(i);
             System.out.println(lotto);
@@ -16,7 +14,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printLottoCount(int lottoCount) {
+    public static void printLottoCount(int lottoCount) {
         System.out.println();
         System.out.printf("%d개를 구매했습니다.\n", lottoCount);
     }

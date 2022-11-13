@@ -8,9 +8,7 @@ import java.util.List;
 
 public class LottoMachine {
 
-    public List<List<Integer>> createLotto() {
-        LottoStore lottoStore = new LottoStore();
-        int lottoCount = lottoStore.calculateLottoCount(1);
+    public List<List<Integer>> createLotto(int lottoCount) {
         List<List<Integer>> totalLotteries = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> numbers =
@@ -20,8 +18,7 @@ public class LottoMachine {
         return totalLotteries;
     }
 
-    public List<List<Integer>> sortLottoNumbers() {
-        List<List<Integer>> totalLotteries = createLotto();
+    public List<List<Integer>> sortLottoNumbers(List<List<Integer>> totalLotteries) {
         for (List<Integer> lotto : totalLotteries) {
             Collections.sort(lotto);
         }
