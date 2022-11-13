@@ -49,6 +49,10 @@ public class Money {
         return new Money(this.money * value);
     }
 
+    public long value() {
+        return this.money;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

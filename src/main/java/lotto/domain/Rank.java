@@ -47,6 +47,14 @@ public enum Rank {
         return this.matchCount == matchCount;
     }
 
+    public int matchCount() {
+        return this.matchCount;
+    }
+
+    public boolean matchBonusNumber() {
+        return this.matchBonusNumber;
+    }
+
     public Money reward() {
         return this.reward;
     }
