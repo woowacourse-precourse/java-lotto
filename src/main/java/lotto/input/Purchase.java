@@ -16,9 +16,16 @@ public class Purchase {
     }
 
     private int validate(String input) {
+        isBlank(input);
         int number = isNumber(input);
         isMultipleOfThousand(number);
         return number;
+    }
+
+    private void isBlank(String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException("[ERROR] 구입금액을 입력해주세요.");
+        }
     }
 
     private int isNumber(String input) {
