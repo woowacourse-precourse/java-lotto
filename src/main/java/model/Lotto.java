@@ -25,6 +25,10 @@ public class Lotto {
         this.numbers = getSortNumbers(numbers);
     }
 
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
+    }
+
     private void validateLotto(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicate(numbers);
@@ -60,10 +64,6 @@ public class Lotto {
         Collections.sort(sortNumbers);
 
         return sortNumbers;
-    }
-
-    public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
     }
 
     public WinningResult getWinningResult(WinningLotto winningLotto) {
