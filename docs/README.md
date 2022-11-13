@@ -11,7 +11,7 @@
 - [x] 1,000원으로 나누어 떨어지는지 검증한다. Money#validatePurchaseAmount()
 - [x] 로또 구입 금액을 가져온다. Money#getMoney()
 - [x] 로또를 발행한다. LottoMachine#issue()
-- [ ] 구분자로 나눈 값을 반환한다. NumberInput#splitInputSeparator()
+- [x] 구분자로 나눈 값을 반환한다. NumberInput#splitInputSeparator()
 - [ ] 당첨 번호를 입력 받는다. NumberInput#getWinningNumbers()
 - [ ] 보너스 번호를 입력 받는다. NumberInput#getBonusNumber()
 - [ ] 발행 로또가 로또 당첨 번호를 몇 개 가지고 있는지 확인한다. WinLotto#numberOfSameNumbers()
