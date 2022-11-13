@@ -3,6 +3,7 @@ package lotto;
 public class Controller {
     private final Model model = new Model();
     private final View view = new View();
+    private final ExceptionController exceptionController = new ExceptionController();
     public Controller() {
     }
 
@@ -11,7 +12,9 @@ public class Controller {
      */
     public void inputUserMoney() {
         String money = view.inputMoney();
-        this.model.setUserMoney(money);
+        exceptionController.validateMoney(money);
+        int moneyInt = Integer.parseInt(money);
+        this.model.setUserMoney(moneyInt);
     }
 
     /**

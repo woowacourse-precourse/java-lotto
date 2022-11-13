@@ -26,30 +26,11 @@ public class Model {
     }
 
     /**
-     * judge money is constructed by digits
-     * @param money served by setUserMoney
-     * @return Is money variable is constructed by digits
-     */
-    private boolean validateInt(String money) {
-        for(int i = 0; i < money.length(); i++){
-            if(!Character.isDigit(money.charAt(i))){
-                return false;
-            }
-        }
-        return true;
-    }
-    /**
+     * setter userMoney
      * set money with user input
-     * @param stringMoney String to be thousands unit
+     * @param money String to be thousands unit
      */
-    public void setUserMoney(String stringMoney) {
-        if(!validateInt(stringMoney)){
-            throw new IllegalArgumentException("[ERROR] Please input Number only");
-        }
-        int money = Integer.parseInt(stringMoney);
-        if(money % 1000 > 0){
-            throw new IllegalArgumentException("[ERROR] Please enter in thousands");
-        }
+    public void setUserMoney(int money) {
         this.userMoney = money;
     }
 
