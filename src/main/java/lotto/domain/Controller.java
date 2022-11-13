@@ -21,9 +21,8 @@ public class Controller {
 
         Rank rank = new Rank(0,0,0,0,0);
 
-        for(int i = 0; i < lottoList.size(); i++) {
-            List<Integer> temp = lottoList.get(i);
-            List<Check> checkList = Service.checkLotto(temp, jackpotNumArr, bonusNum);
+        for (List<Integer> lottos : lottoList) {
+            List<Check> checkList = Service.checkLotto(lottos, jackpotNumArr, bonusNum);
             Service.checkRank(checkList, rank);
         }
 

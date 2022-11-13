@@ -6,6 +6,7 @@ import lotto.model.Lotto;
 import lotto.global.Exception;
 import lotto.model.Rank;
 import lotto.view.Input;
+import lotto.view.Output;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 public class Service {
 
     public static int getMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
+        Output.outputPurchaseAmount();
         String money = Input.inputMoney();
         Exception.verifyMoney(money);
 
@@ -22,7 +23,7 @@ public class Service {
 
     public static int getVolume(int money) {
         int volume = money / 1000;
-        System.out.println(volume + "개를 구매했습니다.");
+        Output.outputBoughtNumber(volume);
 
         return volume;
     }
@@ -42,7 +43,7 @@ public class Service {
     }
 
     public static String getJackpotNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        Output.outputJackpotNumber();
 
         return Input.inputJackpotNumber();
     }
@@ -54,24 +55,24 @@ public class Service {
     }
 
     public static int getBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        Output.outputBonusNumber();
         int bonusNum = Input.inputBonusNumber();
 
         return bonusNum;
     }
 
     public static List<List<Integer>> getLottoList(List<Lotto> lottoList) {
-        List<List<Integer>> temp = new ArrayList<>();
+        List<List<Integer>> lottos = new ArrayList<>();
         for(int i = 0; i < lottoList.size(); i++) {
             List<Integer> lotto = lottoList.get(i).getNumbers();
-            temp.add(lotto);
+            lottos.add(lotto);
         }
 
-        return temp;
+        return lottos;
     }
 
     public static List<Check> checkLotto(List<Integer> lotto, String[] jackpotNum, int bonusNum) {
-        List<Check> list = new ArrayList<>();
+        List<Check> checkList = new ArrayList<>();
         Check check = new Check(0, false);
         for(int i = 0; i < jackpotNum.length; i++) {
             int number = Integer.parseInt(jackpotNum[i]);
@@ -82,8 +83,8 @@ public class Service {
                 check.isBonus();
             }
         }
-        list.add(check);
-        return list;
+        checkList.add(check);
+        return checkList;
     }
 
     public static Rank checkRank(List<Check> checkList, Rank rank) {
@@ -97,13 +98,11 @@ public class Service {
             if (count == 4) {
                 rank.addFourth();
             }
-            if (count == 5) {
-                if (bonus) {
-                    rank.addSecond();
-                }
-                if (!bonus) {
-                    rank.addThird();
-                }
+            if (count == 5 && bonus) {
+                rank.addSecond();
+            }
+            if (count == 5 && !bonus) {
+                rank.addThird();
             }
             if (count == 6) {
                 rank.addFirst();
@@ -121,20 +120,14 @@ public class Service {
         int winningPrice = (fifth * 5000) + (fourth * 50000) + (third * 1500000)
                 + (second * 30000000) + (first * 2000000000);
 
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - "+ fifth + "개");
-        System.out.println("4개 일치 (50,000원) - " + fourth + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + third + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + second + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + first + "개");
+        Output.outputResult(fifth, fourth, third, second, first);
 
         return winningPrice;
     }
 
     public static double getEarningsRate(int winningPrice, int money) {
         double earningRate = ((double) winningPrice / money) * 100;
-        System.out.println("총 수익률은 " + earningRate + "%입니다.");
+        Output.outputEarningRate(earningRate);
 
         return earningRate;
     }
