@@ -17,11 +17,10 @@ public class Application {
         try {
         Application application = new Application();
         application.get_SixNum_BonusNum_PublishedLotto();
-        //통계 내용출력
+
         Statistic statistic =
                 new Statistic(application.getSixNum(), application.getBonusNum(), application.getPublishedLottos());
         Map<String,Integer> winningMap = statistic.getStatistic();
-        //
         Profit profit = new Profit();
         profit.printProfit(winningMap,application.getPublishedLottos().size()*1000);
         } catch (IllegalArgumentException e) {
