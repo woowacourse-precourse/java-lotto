@@ -41,16 +41,16 @@ public class Compare {
         Lotto myLotto = lottoWithBonus.getLotto();
 
         for (Lotto haveLotto : lottoVendingMachine.getHaveLottoList()) {
-            int count = 0;
-            count += isContains(haveLotto, myLotto);
+            int count = isContains(haveLotto, myLotto);
+            LottoReference lottoReference = NOPE;
             if (count == 5) {
-                result.put(checkBonus(haveLotto, lottoWithBonus),
-                        result.getOrDefault(checkBonus(haveLotto, lottoWithBonus), 0) + 1);
+                lottoReference = checkBonus(haveLotto, lottoWithBonus);
             }
             if (count != 5) {
-                result.put(LottoReference.hasCorrectCount(count),
-                        result.getOrDefault(LottoReference.hasCorrectCount(count), 0) + 1);
+                lottoReference = LottoReference.hasCorrectCount(count);
             }
+            result.put(lottoReference,
+                    result.getOrDefault(lottoReference, 0) + 1);
         }
         return result;
     }
