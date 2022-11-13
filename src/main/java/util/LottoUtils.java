@@ -71,7 +71,7 @@ public class LottoUtils {
         lottos.forEach(System.out::println);
     }
 
-    public String getTotalRevenueMessage(Double percent) {
+    public String getTotalProfitMessage(Double percent) {
         StringBuilder message = new StringBuilder();
         String roundedPercent = String.format("%.1f", percent);
 
@@ -141,6 +141,4 @@ public class LottoUtils {
         });
         return new Rank(ranking);
     }
-
-
 }
