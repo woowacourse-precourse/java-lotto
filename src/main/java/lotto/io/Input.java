@@ -21,6 +21,7 @@ public class Input {
     public int enterPurchaseAmt() {
         System.out.println("구입금액을 입력해 주세요.");
         String amount = readLine();
+        purchaseValidator.validate(amount);
 
         System.out.printf("\n%d개를 구매했습니다.\n", Integer.parseInt(amount) / MIN_UNIT);
         return Integer.parseInt(amount);
@@ -29,9 +30,11 @@ public class Input {
     public LinkedList<Integer> enterWinningNumber() {
         System.out.println("\n당첨 번호를 입력해 주세요.");
         String number = readLine();
+        winningValidator.validate(number);
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String bonus = readLine();
+        bonusValidator.validate(bonus);
 
         LinkedList<Integer> winningNumList = makeWinningNumberList(number, bonus);
 
