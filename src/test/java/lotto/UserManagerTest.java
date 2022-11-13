@@ -122,4 +122,59 @@ public class UserManagerTest {
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
+    /**
+     * getInput_predictBonusLottoNumber - 보너스 번호 입력
+     */
+    @Test
+    void getInput_predictBonusLottoNumber_테스트() {
+        String userPredictBonusLottoNumber = "22";
+        putSystemInput(userPredictBonusLottoNumber);
+        assertThat(Integer.parseInt(userPredictBonusLottoNumber)).isEqualTo(UserManager.getInput_predictBonusLottoNumber());
+    }
+
+    @Test
+    void getInput_predictBonusLottoNumber_숫자_이외_입력_예외_테스트() {
+        String userPredictBonusLottoNumber = "앍";
+        putSystemInput(userPredictBonusLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictBonusLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getInput_predictBonusLottoNumber_시작값_0_입력_예외_테스트() {
+        String userPredictBonusLottoNumber = "06";
+        putSystemInput(userPredictBonusLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictBonusLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getInput_predictBonusLottoNumber_공백_입력_예외_테스트() {
+        String userPredictBonusLottoNumber = " ";
+        putSystemInput(userPredictBonusLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictBonusLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getInput_predictBonusLottoNumber_범위_초과_예외_테스트() {
+        String userPredictBonusLottoNumber = "46";
+        putSystemInput(userPredictBonusLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictBonusLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void getInput_predictBonusLottoNumber_범위_미만_예외_테스트() {
+        String userPredictBonusLottoNumber = "0";
+        putSystemInput(userPredictBonusLottoNumber);
+        assertSimpleTest(() ->
+                assertThatThrownBy(UserManager::getInput_predictBonusLottoNumber)
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
 }
