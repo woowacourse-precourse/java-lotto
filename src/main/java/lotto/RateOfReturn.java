@@ -18,7 +18,7 @@ public class RateOfReturn {
         this.view = view;
     }
 
-    private double calculate() {
+    public double calculate() {
         double percentage = getPercentage();
 
         return getRounds(percentage);
