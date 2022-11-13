@@ -45,12 +45,24 @@ public class LottoResult {
         yield = Math.round(totalPrize/money*1000)/10.0;
     }
 
-    public Map<Rank, Integer> resultMap() {
+    public Map<Rank, Integer> getResultMap() {
         return this.resultMap;
     }
 
-    public double getYeild() {
+    public double getYield() {
         return this.yield;
+    }
+
+    //서비스로직 - 문자열로 형변환
+    public String getResultString() {
+        StringBuffer sb = new StringBuffer();
+
+        for(Rank rank : Rank.values()) {
+            int count = resultMap.getOrDefault(rank, 0);
+            sb.append(String.format(rank.toString()+"\n",count));
+        }
+
+        return sb.toString();
     }
 
 }
