@@ -26,6 +26,8 @@ public class Application {
         checkBonusNumberIncludedWinningNumber(winningNumber, bonusNumber);
 
         List<Integer> lottoResult = resultWinningLottery(lotto, winningNumber, bonusNumber);
+
+        double earningRate = calculateLottoEarningsRate(lottoResult, lottoCount);
     }
     public static int howMuchLottoBuy(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -35,7 +37,6 @@ public class Application {
 
         return Integer.parseInt(money)/1000;
     }
-
     public static List<Lotto> issueLotto(int lottoCount){
         System.out.println("\n"+lottoCount+"개를 구매했습니다.");
         List<Lotto> lotto = new ArrayList<>();
@@ -86,5 +87,20 @@ public class Application {
         }
 
         return lottoResult;
+    }
+    public static double calculateLottoEarningsRate(List<Integer> lottoResult, int lottoCount){
+        double purchaseAmount = lottoCount * 1000;
+        double earning = 0;
+
+        String rank;
+        for(int i = 0 ; i < lottoResult.size() ; i++){
+            rank = "RANK"+(i+1);
+            earning += lottoResult.get(i) * LottoInformation.valueOf(rank).getPrizeMoney();
+        }
+
+        double earningRate = earning / purchaseAmount;
+        earningRate = Math.round(earningRate*10) * 100 / 10.0;
+
+        return earningRate;
     }
 }
