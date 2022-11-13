@@ -22,7 +22,7 @@ public class PrizeTest {
 		prizeResult.put(Rank.THIRD, 1);
 		prizeResult.put(Rank.FOURTH, 0);
 		prizeResult.put(Rank.FIFTH, 1);
-		totalPrize = Prize.getTotalPrizeMoney();
+		totalPrize = Prize.getTotalPrizeMoney(prizeResult);
 		assertThat(totalPrize).isEqualTo(91505000);
 	}
 }
