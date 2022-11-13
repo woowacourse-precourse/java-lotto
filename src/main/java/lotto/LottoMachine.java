@@ -18,8 +18,8 @@ public class LottoMachine {
         return (purchaseAmount / UNIT_AMOUNT);
     }
 
-    public static List<List<Integer>> createMultipleLottoNumbers(Integer numberOfLotto) {
-        return IntStream.range(0, numberOfLotto)
+    public static List<List<Integer>> createMultipleLottoNumbers(Integer purchaseAmount) {
+        return IntStream.range(0, getNumberOfLotto(purchaseAmount))
                 .mapToObj(i -> createLottoNumbers())
                 .collect(Collectors.toList());
     }

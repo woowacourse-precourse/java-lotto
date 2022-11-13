@@ -32,8 +32,7 @@ class LottoMachineTest {
     @Test
     void createMultipleLottoNumbers() {
         Integer purchaseAmount = 8000;
-        Integer numberOfLotto = LottoMachine.getNumberOfLotto(purchaseAmount);
-        List<List<Integer>> multipleLottoNumbers = LottoMachine.createMultipleLottoNumbers(numberOfLotto);
-        assertThat(multipleLottoNumbers.size()).isEqualTo(numberOfLotto);
+        List<List<Integer>> multipleLottoNumbers = LottoMachine.createMultipleLottoNumbers(purchaseAmount);
+        assertThat(multipleLottoNumbers.size()).isEqualTo(8);
     }
 }
