@@ -4,7 +4,7 @@ public enum Messages {
     RECEIVE_PRICE_MESSAGE("구입 금액을 입력해 주세요."),
     RECEIVE_WINNING_NUMBER_MESSAGE("당첨 번호를 입력해 주세요."),
     RECEIVE_BONUS_NUMBER_MESSAGE("보너스 번호를 입력해 주세요."),
-    RESULT_OF_PURCHASE_MESSAGE("{0}개를 구매했습니다."),
+    RESULT_OF_PURCHASE_MESSAGE("\n{0}개를 구매했습니다."),
     WINNING_STATISTICS_MESSAGE("당첨 통계\n"
             + "---\n"
             + "3개 일치 (5,000원) - {0}개\n"
