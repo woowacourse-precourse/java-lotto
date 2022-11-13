@@ -17,10 +17,19 @@ public class WinNumber {
 
         numberSplit = inputWinNum.split(",");
 
-        for(int i =0; i<numberSplit.length; i++){
-            winnerNumber.add(Integer.parseInt(numberSplit[i]));
+        for (String s : numberSplit) {
+            winnerNumber.add(Integer.parseInt(s));
         }
 
         return  winnerNumber;
+    }
+
+    public int bonusNumber() {
+        int bonusNum;
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonusNum = Integer.parseInt(Console.readLine());
+
+        return bonusNum;
     }
 }
