@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Validation {
+	private static List<String> jackpot_number_list_compare;
+	//============================사용자 입력 금액 예외 처리============================//
 
 	public static boolean money_validation(String validation_param){
 		if (validation_param.matches("^[0-9]*$")){
@@ -29,6 +31,8 @@ public class Validation {
 		return false;
 	}
 
+	//============================당첨 번호 예외 처리============================//
+
 	public static boolean jackpot_number_validation(String jackpot_number){
 
 		if (jackpot_number.contains(",")){//문자 자체에 ',' 이 포함되어 있어야지만 조건이 성립된다.
@@ -42,6 +46,8 @@ public class Validation {
 
 	private static boolean jackpot_number_length_validation(String jackpot_number) {
 		List<String> jackpot_number_list = Arrays.asList(jackpot_number.split(","));
+
+		jackpot_number_list_compare=jackpot_number_list;
 
 		if(jackpot_number_list.size()==6){
 			if (jackpot_number_regex_validation(jackpot_number,jackpot_number_list)){
@@ -78,6 +84,51 @@ public class Validation {
 		}
 
 		return RANGE_FLAG;
+	}
+
+	//============================보너스 번호 예외 처리============================//
+
+	public static boolean bonus_number_validation(String bonus_number){
+
+		if (bonus_number.matches("^[0-9]*$")){
+			if (bonus_number_length_validation(bonus_number)){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private static boolean bonus_number_length_validation(String bonus_number){
+
+		if (bonus_number.length()==1||bonus_number.length()==2){
+			if (bonus_number_range_validation(bonus_number)){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private static boolean bonus_number_range_validation(String bonus_number){
+		int bonus = Integer.parseInt(bonus_number);
+
+		if (0<bonus&&bonus<46){
+			if (bonus_number_existCheck_validation(bonus_number)){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private static boolean bonus_number_existCheck_validation(String bonus_number){
+
+		if (jackpot_number_list_compare.contains(bonus_number)){
+			return false;
+		}
+
+		return true;
 	}
 
 }
