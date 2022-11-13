@@ -23,7 +23,7 @@ public class LottoGeneratorTest {
         int endNumberInEight = 8;
         lottoGenerator = new LottoGenerator(startNumberFromThree, endNumberInEight, numberCount);
 
-        List<Integer> lottoNumbers = lottoGenerator.getLottoNumbers();
+        List<Integer> lottoNumbers = lottoGenerator.createLotto();
         assertTrue(lottoNumbers.containsAll(expected));
     }
 
@@ -33,7 +33,7 @@ public class LottoGeneratorTest {
         int expected = 6;
         lottoGenerator = new LottoGenerator(startNumber, endNumber, numberCount);
 
-        List<Integer> lottoNumbers = lottoGenerator.getLottoNumbers();
+        List<Integer> lottoNumbers = lottoGenerator.createLotto();
         assertEquals(expected, lottoNumbers.size());
     }
 
@@ -43,7 +43,7 @@ public class LottoGeneratorTest {
         boolean expected = true;
         lottoGenerator = new LottoGenerator(startNumber, endNumber, numberCount);
 
-        List<Integer> lottoNumbers = lottoGenerator.getLottoNumbers();
+        List<Integer> lottoNumbers = lottoGenerator.createLotto();
         for (Integer number : lottoNumbers) {
             boolean actual = (number >= startNumber && number <= endNumber);
             assertEquals(expected, actual);
@@ -56,7 +56,7 @@ public class LottoGeneratorTest {
         int expected = 1;
         lottoGenerator = new LottoGenerator(startNumber, endNumber, numberCount);
 
-        List<Integer> lottoNumbers = lottoGenerator.getLottoNumbers();
+        List<Integer> lottoNumbers = lottoGenerator.createLotto();
         for(Integer number : lottoNumbers) {
             int actual = Collections.frequency(lottoNumbers, number);
             assertEquals(expected, actual);
@@ -70,7 +70,17 @@ public class LottoGeneratorTest {
         int endNumberInSix = 6;
         lottoGenerator = new LottoGenerator(startNumber, endNumberInSix, numberCount);
 
-        List<Integer> lottoNumbers = lottoGenerator.getLottoNumbers();
+        List<Integer> lottoNumbers = lottoGenerator.createLotto();
         assertEquals(expected, lottoNumbers);
+    }
+
+    @DisplayName("로또 개수에 맞게 로또 번호가 생성된다.")
+    @Test
+    void createLottos() {
+        int count = 6;
+        lottoGenerator = new LottoGenerator(startNumber, endNumber, numberCount);
+
+        List<Lotto> lottos = lottoGenerator.createLottos(count);
+        assertEquals(lottos.size(), count);
     }
 }
