@@ -1,5 +1,6 @@
 package Printer;
 
+import java.util.Arrays;
 import java.util.List;
 import Character.LotteryTicketingMachine;
 import Character.Lotto;
@@ -18,7 +19,7 @@ public class MessagePrinter {
     }
 
     public void printPurchasedLotto(List<Lotto> lottoBundle) {
-        for (int lottoBundleIndex=0; lottoBundleIndex<lottoBundle.size(); lottoBundleIndex++) {
+        for (int lottoBundleIndex = 0; lottoBundleIndex < lottoBundle.size(); lottoBundleIndex++) {
             System.out.println(lottoBundle.get(lottoBundleIndex).getNumbersToString());
         }
     }
@@ -31,16 +32,14 @@ public class MessagePrinter {
         System.out.println(Message.INPUT_BONUS_NUMBER_MESSAGE.getPrintingMessage());
     }
 
-    public void printWinningResult(String correct3, String correct4, String correct5, String correctBonus5, String correct6) {
+    public void printWinningResult(List<Integer> winningNumberCount) {
         System.out.println(Message.WINNING_RESULT_MESSAGE_TITLE.getPrintingMessage());
-        System.out.println(Message.WINNING_RESULT_MESSAGE_3CORRECT.getPrintingMessage()+correct3+"개");
-        System.out.println(Message.WINNING_RESULT_MESSAGE_4CORRECT.getPrintingMessage()+correct4+"개");
-        System.out.println(Message.WINNING_RESULT_MESSAGE_5CORRECT.getPrintingMessage()+correct5+"개");
-        System.out.println(Message.WINNING_RESULT_MESSAGE_5BONUS_CORRECT.getPrintingMessage()+correctBonus5+"개");
-        System.out.println(Message.WINNING_RESULT_MESSAGE_6CORRECT.getPrintingMessage()+correct6+"개");
+        for (int index = 3; index < 8; index++) {
+            System.out.println(Message.values()[index + 2].getPrintingMessage() + winningNumberCount.get(index) + "개");
+        }
     }
 
-    public void printEarningsRate(double earningRate) {
-        System.out.println("총 수익률은 "+String.format("%.1f",earningRate*100)+"%입니다.");
+    public void printEarningsRate (double earningRate) {
+        System.out.println("총 수익률은 " + String.format("%.1f", earningRate * 100) + "%입니다.");
     }
 }
