@@ -30,7 +30,9 @@ public class InputView {
     }
 
     public Integer askBonusNumber() {
-        return null;
+        System.out.println(FixedMessage.INPUT_BONUS_NUMBER.getMessage());
+        String inputValue = Console.readLine();
+        return validateValue(inputValue);
     }
 
     public Integer validateValue(String inputValue) {
