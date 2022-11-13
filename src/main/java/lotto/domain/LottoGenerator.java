@@ -44,7 +44,9 @@ public class LottoGenerator {
     }
 
     private Lotto generateLotto() {
-        List<Integer> randomNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_LOWER_LIMIT, LOTTO_NUMBER_UPPER_LIMIT, LOTTO_NUMBER_QUANTITY));
+        List<Integer> randomNumbers = new ArrayList<>(
+                Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_LOWER_LIMIT, LOTTO_NUMBER_UPPER_LIMIT,
+                        LOTTO_NUMBER_QUANTITY));
         randomNumbers.sort(Comparator.naturalOrder());
         return new Lotto(randomNumbers);
     }
