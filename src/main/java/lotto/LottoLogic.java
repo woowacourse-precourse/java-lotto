@@ -79,6 +79,7 @@ public class LottoLogic {
     public double getEarningRate() {
         return this.earningRate;
     }
+
     public void setPrizeNumbers(List<Integer> prizeNumbers) {
         this.prizeNumbers = prizeNumbers;
     }
@@ -122,7 +123,7 @@ public class LottoLogic {
             this.fiveHitAndBonus++;
         }
         if (hitCount == 5 && !bonusHit) {
-            this.fiveHitAndBonus++;
+            this.fiveHit++;
         }
         if (hitCount == 6) {
             this.sixHit++;
