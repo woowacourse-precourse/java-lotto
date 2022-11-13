@@ -15,13 +15,24 @@ import lotto.view.OutputView;
 public class LottoController {
 
 	public void run() {
-		LottoAmount lottoAmount = new LottoAmount(InputView.inputUserMoney());
+		LottoAmount lottoAmount = createLottoAmount();
+
 		LottoTicket lottoTickets = buyLotto(lottoAmount);
+
 		OutputView.printLottoTickets(lottoTickets);
-		LottoResult lottoResult = makeLottoResult(lottoTickets);
+
+		WinningNumber winningNumber = createWinningNumber();
+
+		BonusNumber bonusNumber = createBonusNumber(winningNumber);
+
+		LottoResult lottoResult = createLottoResult(lottoTickets, winningNumber, bonusNumber);
+
 		OutputView.printPrizeResult(lottoResult);
-		double moneyResult = lottoAmount.calculatePrizeResult(lottoResult);
-		OutputView.printRateReturn(moneyResult);
+		OutputView.printRateReturn(lottoAmount.calculatePrizeResult(lottoResult));
+	}
+
+	private LottoAmount createLottoAmount() {
+		return new LottoAmount(InputView.inputUserMoney());
 	}
 
 	private LottoTicket buyLotto(LottoAmount lottoAmount) {
@@ -30,9 +41,15 @@ public class LottoController {
 		return new LottoTicket(lottoCount);
 	}
 
-	private LottoResult makeLottoResult(LottoTicket lottoTickets) {
-		WinningNumber winningNumber = new WinningNumber(InputView.inputWinningNumber());
-		BonusNumber bonusNumber = new BonusNumber(InputView.inputBonusNumber(), winningNumber.getWinningNumber());
-		return lottoTickets.calculateRank(winningNumber, bonusNumber);
+	private LottoResult createLottoResult(LottoTicket tickets, WinningNumber winningNumber, BonusNumber bonusNumber) {
+		return tickets.calculateRank(winningNumber, bonusNumber);
+	}
+
+	private WinningNumber createWinningNumber() {
+		return new WinningNumber(InputView.inputWinningNumber());
+	}
+
+	private BonusNumber createBonusNumber(WinningNumber winningNumber) {
+		return new BonusNumber(InputView.inputBonusNumber(), winningNumber.getWinningNumber());
 	}
 }
