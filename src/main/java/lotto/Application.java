@@ -1,5 +1,8 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,10 +21,14 @@ public class Application {
         int myPrice = priceInput();
         int lottoCount=howManyLottos(myPrice);
         System.out.println(lottoCount+SHOP_RESULT);
+
         List<Integer> lottoNumbers = lottoNumAnswerInput();
         Lotto myLotto = new Lotto(lottoNumbers);
         int luckyNumber = getLuckyNumber();
     }
+//    public static List<List<Integer>> getMyLotto(int count){
+//        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+//    }
     public static int howManyLottos(int price){
         return price/1000;
     }
@@ -33,9 +40,9 @@ public class Application {
     }
 
     public static int priceInput() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println(INPUT_MESSAGE);
-        int price = scanner.nextInt();
+        String getPrice = Console.readLine();
+        int price = Integer.valueOf(getPrice);
         validatePrice(price);
         return price;
     }
@@ -54,10 +61,9 @@ public class Application {
     }
 
     public static List<Integer> lottoNumAnswerInput() {
-        Scanner scanner = new Scanner(System.in);
         List<Integer> lottoNumbers = new ArrayList<>();
         System.out.println(LOTTO_ANSWER_INPUT_MESSAGE);
-        String lottoInput = scanner.nextLine();
+        String lottoInput = Console.readLine();
         validateInputForm(lottoInput);
         String[] tempInput = lottoInput.split(",");
 
@@ -68,9 +74,9 @@ public class Application {
     }
 
     public static int getLuckyNumber() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println(LUCKY_NUMBER_INPUT_MESSAGE);
-        int luckyNum = scanner.nextInt();
+        String getLuckyNum = Console.readLine();
+        int luckyNum = Integer.valueOf(getLuckyNum);
         isValidateNumber(luckyNum);
         return luckyNum;
     }
@@ -80,4 +86,11 @@ public class Application {
             throw new IllegalArgumentException(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
         }
     }
+//    public static void isValidateNumbers(List<Integer> numbers){
+//        for(Integer num : numbers){
+//            if(num<1||num>45){
+//                throw new IllegalArgumentException(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
+//            }
+//        }
+//    }
 }
