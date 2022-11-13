@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -12,10 +11,8 @@ public class CompareHowManyCorrect {
         List<Integer> correctNumberEachLotto = new ArrayList<>();
 
         for (int i = 0 ; i < user.size(); i ++) {
-            List<Integer> gatherNumbers = new ArrayList<>();
-            gatherNumbers.addAll(user.get(i));
-            gatherNumbers.addAll(winNumber);
-            correctNumberEachLotto.add(caculateDuplication(gatherNumbers));
+            List<Integer> gatherLists = gatherTwoLists(user.get(i),winNumber);
+            correctNumberEachLotto.add(caculateDuplication(gatherLists));
         }
 
         return correctNumberEachLotto;
@@ -27,6 +24,14 @@ public class CompareHowManyCorrect {
         int duplicationNumber = gather.size() - removeDuplicationSize;
 
         return duplicationNumber;
+    }
+
+
+    public List<Integer> gatherTwoLists(List<Integer> user, List<Integer> winNumber){
+        List<Integer> gatherLists = new ArrayList<>();
+        gatherLists.addAll(user);
+        gatherLists.addAll(winNumber);
+        return gatherLists;
     }
 
 
