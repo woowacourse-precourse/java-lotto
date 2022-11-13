@@ -1,6 +1,8 @@
-package lotto.domain;
+package lotto.domain.menu;
 
 import lotto.Lotto;
+import lotto.domain.RandomLottoGenerator;
+import lotto.domain.WinningNumberAndLotto;
 import lotto.domain.subaction.WinningNumberPlace;
 import lotto.input.AdditionalNumber;
 import lotto.input.LottoTickets;
@@ -20,17 +22,15 @@ public class LottoGameMachine {
         this.winningNumber = winningNumber;
     }
 
-    public void setUp() {
-        int lottos = lottoTickets.getPaid(); // 티켓 받기
-        List<List<Integer>> randomLotto = randomLottoGenerator.createTicket(lottos); // 랜덤 받기
-        Lotto lottoAnswer = winningNumber.getCorrect(); // 정답 받기
+    public void run() {
+        int lottos = lottoTickets.getPaid();
+        List<List<Integer>> randomLotto = randomLottoGenerator.createTicket(lottos);
+        Lotto lottoAnswer = winningNumber.getCorrect();
 
         WinningNumberAndLotto winningNumberAndLotto = new WinningNumberAndLotto(new WinningNumberPlace());
-        List<Integer> sameNumberCount = winningNumberAndLotto.comparison(randomLotto, lottoAnswer); // 결과 받기
+        List<Integer> sameNumberCount = winningNumberAndLotto.comparison(randomLotto, lottoAnswer);
 
         LottoGameManagement lottoGameManagement = new LottoGameManagement(new AdditionalNumber());
         lottoGameManagement.bonusConfirmation(randomLotto, lottoAnswer, sameNumberCount);
-
-        //return 0;
     }
 }

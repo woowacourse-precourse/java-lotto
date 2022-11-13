@@ -4,36 +4,39 @@ import java.util.List;
 import lotto.constants.Rank;
 
 public class TotalPrizeMoney {
-
-    public int calculation(List<Integer> numbers, List<Integer> countCheck) {
+    public int totalCalculation(List<Integer> sameNumberCount, List<Integer> winningRanking) {
         int result = 0;
-        for (int number : numbers) {
-            if (number == Rank.FIFTH.getMatch()) {
-                result += Rank.FIFTH.getMoney();
-            }
 
-            if (number == Rank.FOURTH.getMatch()) {
-                result += Rank.FOURTH.getMoney();
-            }
-
-            if (number == Rank.THIRD.getMatch()) {
-                if (countCheck.get(2) == 1) {
-                    result += Rank.THIRD.getMoney();
-                }
-            }
-
-            if (number == Rank.SECOND.getMatch()) {
-                if (countCheck.get(3) == 1) {
-                    result += Rank.SECOND.getMoney();
-                }
-            }
-
-            if (number == Rank.FIRST.getMatch()) {
-                result += Rank.FIRST.getMoney();
-            }
+        for (int correctNumber : sameNumberCount) {
+            result = getResult(winningRanking, result, correctNumber);
         }
-
         return result;
     }
 
+    private int getResult(List<Integer> winningRanking, int result, int correctNumber) {
+        if (correctNumber == Rank.FIFTH.getMatch()) {
+            result += Rank.FIFTH.getMoney();
+        }
+
+        if (correctNumber == Rank.FOURTH.getMatch()) {
+            result += Rank.FOURTH.getMoney();
+        }
+
+        if (correctNumber == Rank.THIRD.getMatch()) {
+            if (winningRanking.get(2) == 1) {
+                result += Rank.THIRD.getMoney();
+            }
+        }
+
+        if (correctNumber == Rank.SECOND.getMatch()) {
+            if (winningRanking.get(3) == 1) {
+                result += Rank.SECOND.getMoney();
+            }
+        }
+
+        if (correctNumber == Rank.FIRST.getMatch()) {
+            result += Rank.FIRST.getMoney();
+        }
+        return result;
+    }
 }

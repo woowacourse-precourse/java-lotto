@@ -22,11 +22,6 @@ public class LottoGameManagement {
         BonusBallAndLotto bonusBallAndLotto = new BonusBallAndLotto(new BonusNumberCase());
         List<Integer> bonusNumbers = bonusBallAndLotto.getCorrectLocation(lottoAnswer, randomLotto, sameNumberCount, bonus);
 
-        System.out.println("보너스사용자리");
-        for (int tt : bonusNumbers) {
-            System.out.println(tt);
-        }
-
         RankingWinner rankingWinner = new RankingWinner(new WinningStatistics(), new TotalPrizeMoney(), new YieldCalculation());
         rankingWinner.findAWinner(sameNumberCount, bonusNumbers);
 

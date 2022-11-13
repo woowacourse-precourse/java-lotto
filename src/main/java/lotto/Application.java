@@ -9,6 +9,6 @@ public class Application {
 
     public static void main(String[] args) {
         LottoGameMachine lottoGameMachine = new LottoGameMachine(new LottoTickets(), new RandomLottoGenerator(), new WinningNumber());
-        lottoGameMachine.setUp();
+        lottoGameMachine.run();
     }
 }

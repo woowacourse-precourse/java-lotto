@@ -5,9 +5,6 @@ import java.util.List;
 import lotto.Lotto;
 import lotto.domain.subaction.BonusNumberCase;
 
-/**
- * 보너스 번호가 해당 되는 로또 찾기 구현
- */
 public class BonusBallAndLotto {
     private static final int BONUS_CONDITIONS = 5;
 
