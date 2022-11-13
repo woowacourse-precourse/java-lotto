@@ -3,11 +3,13 @@ package ExceptionCollections;
 import enumCollections.Exceptions;
 
 public class CommonException {
-    public static final String REGULAR_EXPRESSION = "^[0-9]*$";
+    static final String NUMBER = "^[0-9]*$";
+    static final int LOTTO_MINIMUM_NUMBER = 1;
+    static final int LOTTO_MAXIMUM_NUMBER = 45;
     static final int PRICE_PER_LOTTO = 1000;
 
     public static void hasCharacters(String number) {
-        if (!number.contains(REGULAR_EXPRESSION)) {
+        if (!number.contains(NUMBER)) {
             throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.CHARACTER_INCLUDED));
         }
     }
@@ -15,6 +17,12 @@ public class CommonException {
     public static void validatePaymentUnit(int payment) {
         if (payment % PRICE_PER_LOTTO != 0) {
             throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.WRONG_MONEY_UNIT));
+        }
+    }
+
+    public static void validateNumberRange(int number) {
+        if (number < LOTTO_MINIMUM_NUMBER || number > LOTTO_MAXIMUM_NUMBER) {
+            throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.OUT_OF_NUMBER_RANGE));
         }
     }
 }
