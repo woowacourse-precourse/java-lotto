@@ -28,7 +28,7 @@ public class Calculator {
         if (count == 5 && hasBonus(winningNumbers, lotto)) {
             return Rank.SECOND;
         }
-        return rankMapper(count);
+        return getRankByMatch(count);
     }
 
     private static int getWinningNumberCounts(WinningNumbers winningNumbers, Lotto lotto) {
@@ -41,15 +41,11 @@ public class Calculator {
         return count;
     }
 
-    public static Rank rankMapper(int count) {
-        if (count == 6) {
-            return Rank.FIRST;
-        } else if (count == 3) {
-            return Rank.FIFTH;
-        } else if (count == 4) {
-            return Rank.FOURTH;
-        } else if (count == 5) {
-            return Rank.THIRD;
+    public static Rank getRankByMatch(int match) {
+        for (Rank rank : Rank.values()) {
+            if (rank.getMatch() == match) {
+                return rank;
+            }
         }
         return Rank.NOTHING;
     }

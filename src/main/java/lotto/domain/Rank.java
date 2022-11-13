@@ -20,4 +20,7 @@ public enum Rank {
         return this.price;
     }
 
+    public int getMatch() {
+        return this.match;
+    }
 }
