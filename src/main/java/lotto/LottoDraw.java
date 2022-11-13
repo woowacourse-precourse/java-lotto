@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class LottoDraw {
-    private static final int BONUS_NUMBER_MATCHED = 100;
+    private static final int BONUS_NUMBER_MATCHED = 7;
 
     private final LottoBuyer lottoBuyer;
     private int totalPrizeMoney;
@@ -54,9 +54,12 @@ public class LottoDraw {
         }
     }
 
-//    public int calculatePrizeMoney() {
-//
-//    }
+    public void calculatePrizeMoney() {
+        Prizecut[] prizecuts = Prizecut.values();
+        for (int idx = 3; idx <= 7; idx++) {
+            totalPrizeMoney += numberOfMatching.get(idx) * prizecuts[idx - 3].getPrizeMoney();
+        }
+    }
 
     public int getTotalPrizeMoney() {
         return totalPrizeMoney;
@@ -73,4 +76,6 @@ public class LottoDraw {
     public int getBonusNumber() {
         return bonusNumber;
     }
+
+
 }
