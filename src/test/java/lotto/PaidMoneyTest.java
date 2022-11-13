@@ -14,4 +14,10 @@ public class PaidMoneyTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("구입 금액이 1000원 단위가 아니면 예외가 발생한다.")
+    @Test
+    void createMoneyByWrongMoney() {
+        assertThatThrownBy(() -> new PaidMoney(1001))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
