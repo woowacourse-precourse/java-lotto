@@ -135,18 +135,18 @@
     - [ ✔ ] 구입금액 입력 문구를 출력한다. `CommonView#printInputMoneyMessage`
 
 - PublishView
-    - [ ] 발행한 로또 수량 및 번호를 출력한다. `PublishView#printPublishInformation`
+    - [ ✔ ] 발행한 로또 수량 및 번호를 출력한다. `PublishView#printPublishInformation`
 
 - RecordView
-    - [ ] 당첨 내역을 출력한다. `RecordView#printWinningRecord`
-    - [ ] 수익률은 소수점 둘째 자리에서 반올림해서 출력한다. `RecordView#printYeild`
+    - [ ✔ ] 당첨 내역을 출력한다. `RecordView#printWinningRecord`
+    - [ ✔ ] 수익률은 소수점 둘째 자리에서 반올림해서 출력한다. `RecordView#printYeild`
 
 #### Controller
 
-- [ ] 로또 애플리케이션을 시작한다. `LottoController#play`
-- [ ] 로또를 구매하도록 중개한다. `LottoController#buyLotto`
-- [ ] 당첨 번호와 보너스 번호를 입력하도록 중개한다. `Lottocontroller#setAnswer`
-- [ ] 결과를 출력하도록 중개한다. `LottoController#getResult`
-- [ ] 입력값을 유효성검사한다. `LottoController#validateInput`
+- [ ✔ ] 로또 애플리케이션을 시작한다. `LottoController#play`
+- [ ✔ ] 로또를 구매하도록 중개한다. `LottoController#buyLotto`
+- [ ✔ ] 당첨 번호와 보너스 번호를 입력하도록 중개한다. `Lottocontroller#setAnswer`
+- [ ✔ ] 결과를 출력하도록 중개한다. `LottoController#getResult`
+- [ ✔ ] 입력값을 유효성검사한다. `LottoController#validateInput`
 
 
