@@ -25,7 +25,7 @@ public class Application {
 
     private static int askPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
-        int purchaseAmount = Integer.parseInt(Console.readLine());
+        int purchaseAmount = Change.number(Console.readLine());
         System.out.println();
         return purchaseAmount;
     }

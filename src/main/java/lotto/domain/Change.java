@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,5 +58,9 @@ public class Change {
             System.out.println("[ERROR] 당첨번호를 다시 입력해주세요. - 마지막에 문자 입력");
             throw new IllegalArgumentException();
         }
+    }
+
+    public static int number(String purchaseAmount) {
+        return Integer.parseInt(purchaseAmount);
     }
 }
