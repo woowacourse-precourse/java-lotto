@@ -9,17 +9,18 @@
 ### model
 
 1. Lotto
-    - [x]  발행할 로또 개수 계산 기능 → countIssueingLotto
     - [ ]  로또 개수만큼 발행 기능 → issueLotto
     - [ ]  당첨 번호 저장 기능 → setWinningNumber
     - [ ]  보너스 번호 저장 기능 → setBonusNumber
-    - [ ]  로또와 당첨 번호 비교 기능 → compareLotto_WinningNumber
 2. Player
     - [ ]  로또 구입 금액 저장 기능 → setPurchaseAmount
     - [ ]  구입한 로또 개수 저장 기능 → setLottoCount
     - [ ]  구매한 로또 번호 저장 기능 → setLottoNumber
     - [ ]  당첨 내역 저장 기능 → setWinningResult
     - [ ]  수익률 저장 기능 → setLottoYield
+3. Seller
+    - [ ] 발행할 로또 개수 계산 기능 → countIssueingLotto
+    - [ ]  로또와 당첨 번호 비교 기능 → compareLotto_WinningNumber
 3. Validator
     - [x]  로또 구입 금액이 1,000원으로 나누어 떨어지는지 검증 기능 → validatePurchaseAmount
     - [ ]  당첨 번호를 쉼표 기준으로 입력했는지 검증 기능 → validateWinningNumber_Diveded_Comma
