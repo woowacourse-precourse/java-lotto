@@ -14,9 +14,9 @@ public class ProfitCalculatorTest {
     @Test
     void getRateOfReturn() {
         LottoMachine lottoMachine = new LottoMachine();
-        ProfitCalculator manager = new ProfitCalculator();
+        ProfitCalculator profitCalculator = new ProfitCalculator();
         lottoMachine.purchaseLottoTable(8000);
-        float result = manager.getRateOfReturn(List.of(1,0,0,0,0));
+        float result = profitCalculator.getRateOfReturn(List.of(1,0,0,0,0,8));
 
         assertThat(result).isEqualTo(62.5f);
     }
