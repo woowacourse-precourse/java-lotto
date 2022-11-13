@@ -52,5 +52,5 @@
 - [x] 구매 개수 계산 - UserLotto
 - [x] 구매 리스트 생성(랜덤) - NumberGenerator
 - [x] 몇 개의 번호가 당첨 번호와 일치하는지 확인 - Judgment
-- [ ] 보너스 번호 일치 여부 확인 - Judgment
+- [x] 보너스 번호 일치 여부 확인 - Judgment
 - [ ] 수익률 계산 - UserLotto
