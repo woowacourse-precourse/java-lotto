@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.math.BigInteger;
+import java.security.spec.ECField;
 import java.util.*;
 
 public class Application {
@@ -19,7 +20,11 @@ public class Application {
         if (buyingAmount != STOP_VALUE){
             final int countOfLottery = buyingAmount / AMOUNT_UNIT;
             System.out.println("\n" + countOfLottery + "개를 구매했습니다.");
-            checkWinning(countOfLottery, buyingAmount);
+            try{
+                checkWinning(countOfLottery, buyingAmount);
+            }
+            catch(Exception e){
+            }
         }
     }
     private static int inputBuyingAmount(){
@@ -56,9 +61,14 @@ public class Application {
             lotteryBundleArray.add(createAndPrintLottery());
             cntForCreateLottery++;
         }
-        Lotto lotto = new Lotto(inputWinningNumbers());
-        ArrayList<BigInteger> resultArray = lotto.checkLottoWinnings(lotteryBundleArray, inputBonusWinningNumber());
-        lotto.printLottoWinningsResult(resultArray, buyingAmount);
+        Lotto lotto = null;
+        try{
+            lotto = new Lotto(inputWinningNumbers());
+        }
+        catch(Exception e) {
+            throw e;
+        }
+        lotto.printLottoWinningsResult(lotto.checkLottoWinnings(lotteryBundleArray, inputBonusWinningNumber()), buyingAmount);
     }
     private static ArrayList<Integer> createAndPrintLottery(){
         List<Integer> tempLotteryArray = Randoms.pickUniqueNumbersInRange(1, 45, LOTTERY_NUMBER_LIMIT);
@@ -72,12 +82,18 @@ public class Application {
         System.out.println(lotteryNumberArray);
         return lotteryNumberArray;
     }
-    private static List<Integer> inputWinningNumbers(){
+    private static List<Integer> inputWinningNumbers() {
         System.out.println("\n당첨 번호를 입력해 주세요.");
         String tempWinningNumbersString = Console.readLine();
         ArrayList<Integer> winningNumbersArray = new ArrayList<>();
-        for (String winningNumber : tempWinningNumbersString.split(",")) {
-            winningNumbersArray.add(Integer.parseInt(winningNumber));
+        for (String winningNumber : tempWinningNumbersString.split(",")){
+            try{
+                winningNumbersArray.add(Integer.parseInt(winningNumber));
+            }
+            catch (Exception e){
+                System.out.println("[ERROR] 당첨 번호는 숫자와 ',' 만 입력하셔야 합니다.");
+                throw new IllegalArgumentException();
+            }
         }
         return winningNumbersArray;
     }
