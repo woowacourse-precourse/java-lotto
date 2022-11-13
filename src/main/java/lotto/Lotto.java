@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 import org.assertj.core.util.Sets;
 
@@ -21,6 +22,12 @@ public class Lotto {
         }
 
         numbers.stream().forEach(s -> LottoValidator.checkLottoRange(s));
+    }
+
+    @Override
+    public String toString() {
+        Collections.sort(numbers);
+        return numbers.toString();
     }
 
     public int size() {
