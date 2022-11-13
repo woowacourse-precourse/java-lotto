@@ -30,7 +30,7 @@ public class Lotto {
     private void validateOverlap(List<Integer> numbers) {
         Set<Integer> lotto = new HashSet<>(numbers);
         if (numbers.size() != lotto.size()) {
-            throw new IllegalArgumentException("[ERROR] 서로 다른 숫자로 구성되어 있지 않습니다.");
+            throw new IllegalArgumentException(ERROR_MSG_SAME_NUMBER);
         }
     }
 
@@ -40,7 +40,7 @@ public class Lotto {
             .filter(num -> LOTTO_MIN_NUM <= num && num <= LOTTO_MAX_NUM)
             .collect(Collectors.toList());
         if (lotto.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호가 1과 45사이의 수로 구성되어 있지 않습니다.");
+            throw new IllegalArgumentException(ERROR_MSG_OTHER_NUMBER_BETWEEN_1_AND_45);
         }
     }
 
