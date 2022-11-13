@@ -1,6 +1,7 @@
 package view;
 
 import lotto.LottoMachine;
+import lotto.LottoStore;
 
 import java.util.List;
 
@@ -13,5 +14,10 @@ public class OutputView {
             System.out.println(lotto);
         }
         System.out.println();
+    }
+
+    public void printLottoCount(int lottoCount) {
+        System.out.println();
+        System.out.printf("%d개를 구매했습니다.\n", lottoCount);
     }
 }

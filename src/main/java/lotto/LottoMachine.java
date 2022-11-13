@@ -1,7 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import view.InputView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +10,7 @@ public class LottoMachine {
 
     public List<List<Integer>> createLotto() {
         LottoStore lottoStore = new LottoStore();
-        int lottoCount = lottoStore.calculateLottoCount();
+        int lottoCount = lottoStore.calculateLottoCount(1);
         List<List<Integer>> totalLotteries = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> numbers =

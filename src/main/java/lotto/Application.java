@@ -1,12 +1,13 @@
 package lotto;
 
-import view.OutputView;
+import controller.MainController;
+
+import java.awt.*;
 
 public class Application {
+
     public static void main(String[] args) {
-        OutputView outputView = new OutputView();
-        LottoBank lottoBank = new LottoBank();
-        outputView.printLotteries();
-        lottoBank.LottoNumberCompareResult();
+    MainController mainController = new MainController();
+    mainController.moneyController();
     }
 }

@@ -14,10 +14,13 @@ public class LottoBank {
             for (int number : lotto) {
                 countContainsNumber(number);
             }
-            for (int i=0; i<containsCount; i++) {
+            for (int i = 0; i < containsCount; i++) {
                 rankCount[containsCount]++;
             }
             containsCount = 0;
+        }
+        for (int i = 0; i < rankCount.length; i++) {
+            System.out.println(rankCount[i]);
         }
     }
 
