@@ -38,4 +38,23 @@ public class UserService {
         }
         return count;
     }
+
+    public ArrayList<Integer> checkTheNumberOfWinsInAll(Lotto winningNumbers, ArrayList<Lotto> lotties,int bonusNumber) {
+        ArrayList<Integer> numberOfWinningTypes = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+        for (Lotto lotto : lotties) {
+            int count = checkTheNumberOfWinsInOne(winningNumbers,lotto);
+            if (count == 6) {
+                numberOfWinningTypes.set(0,numberOfWinningTypes.get(0)+1);
+            }else if (count == 5 && lotto.getNumbers().contains(bonusNumber)) {
+                numberOfWinningTypes.set(1,numberOfWinningTypes.get(1)+1);
+            }else if (count == 5) {
+                numberOfWinningTypes.set(2,numberOfWinningTypes.get(2)+1);
+            }else if (count == 4) {
+                numberOfWinningTypes.set(3,numberOfWinningTypes.get(3)+1);
+            }else if (count == 3) {
+                numberOfWinningTypes.set(4,numberOfWinningTypes.get(4)+1);
+            }
+        }
+        return numberOfWinningTypes;
+    }
 }
