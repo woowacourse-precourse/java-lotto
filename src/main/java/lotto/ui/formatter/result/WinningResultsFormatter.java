@@ -62,6 +62,6 @@ public class WinningResultsFormatter implements OutputFormatter<WinningResults> 
     }
 
     private static String rateFormat(double rate) {
-        return String.format("%.1f", BigDecimal.valueOf(rate));
+        return String.format("%,.1f", BigDecimal.valueOf(rate));
     }
 }
