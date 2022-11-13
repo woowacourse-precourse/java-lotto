@@ -24,7 +24,7 @@ public class BuyLottoTickets {
         OutputView.printLottoTickets(pick_count, buyLottoTickets);
     }
 
-    private void setLottoNumberTicket(List<List<Integer>> buyLottoTickets) {
+    public void setLottoNumberTicket(List<List<Integer>> buyLottoTickets) {
         List<Integer> LottoTicket = new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, TICKET_SIZE));
         Collections.sort(LottoTicket);
         buyLottoTickets.add(LottoTicket);

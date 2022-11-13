@@ -45,9 +45,6 @@ public class LottoGame {
 
     }
 
-    public static long getSumMoney() {
-        return sumMoney;
-    }
 
     public static float getYield() {
         return yield;

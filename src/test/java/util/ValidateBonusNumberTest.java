@@ -17,8 +17,6 @@ class ValidateBonusNumberTest {
     @Test
     @DisplayName("(예외)문자열에서 숫자 변환 과정 오류(문자열에 숫자가 아닌 문자가 있을 경우 ")
     void wrongConvertInteger() {
-
-
         Assertions.assertThatThrownBy(()-> {
             int bonusNumber=0;
             try {
@@ -63,7 +61,6 @@ class ValidateBonusNumberTest {
         Assertions.assertThatThrownBy(()->{
             int rightBonusNumber=bonusNumber;
             if (lottoTicket.stream().anyMatch(n -> rightBonusNumber == n)) {
-                System.out.println("rightBonusNumber = " + rightBonusNumber);
             throw new IllegalArgumentException(
                 ErrorMessage.ERROR_BONUS_DUPLICATE_WINNING.getMessage());
         }

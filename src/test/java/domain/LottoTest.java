@@ -1,5 +1,6 @@
-package lotto;
+package domain;
 
+import constant.ErrorMessage;
 import domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,5 +35,13 @@ class LottoTest {
         assertThatThrownBy(() -> ValidateWinningLottoNumber.validateSplitNumber("1,2,a,3,4,5"))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 번호가 범위를 넘어간다면?")
+    @Test
+    void createLottoByOverRange(){
+        assertThatThrownBy(()-> new Lotto(List.of(1,45,46,0,2,3))).isInstanceOf(IllegalArgumentException.class);
+
+    }
+
 
 }
