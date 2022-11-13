@@ -15,7 +15,7 @@ public class LottoController {
         inputView.printHowMuch();
         inputLotto.inputMoney();
         lottoData = inputLotto.makeLottoData();
-        outputView.printPurchaseAmount(lottoData.lottoAmount);
+        outputView.printPurchaseAmount((int) lottoData.lottoAmount);
         lottoData.makeLotto();
         outputView.printPurchaseLottoNumbers(lottoData.allLotto);
     }

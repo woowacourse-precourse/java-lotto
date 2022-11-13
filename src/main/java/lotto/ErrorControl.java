@@ -34,7 +34,7 @@ public class ErrorControl {
 
     public void validateNumber(String money) {
         try {
-            Integer.parseInt(money);
+            Double.parseDouble(money);
         } catch (IllegalArgumentException e) {
             throw new MyIllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
         }

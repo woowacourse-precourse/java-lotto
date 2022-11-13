@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.model.LottoCalculate.LottoPrizeMoneyMatchCount;
 
 public class LottoData {
     public double money;
     public int bonusNumber;
-    public int lottoAmount;
+    public double lottoAmount;
     public double prizeMoneySum;
     public List<Integer> winNumbers;
     public List<Lotto> allLotto;
@@ -19,8 +18,8 @@ public class LottoData {
 
     public LottoData(double money) {
         this.money = money;
-        this.lottoAmount = (int) (money / 1000);
-        allLotto = new ArrayList<>(lottoAmount);
+        this.lottoAmount = (money / 1000);
+        allLotto = new ArrayList<>((int) lottoAmount);
         prize = new PrizeData();
         prizeMoneySum = 0;
     }
@@ -36,11 +35,10 @@ public class LottoData {
         }
     }
 
-    public void calculateAllData(){
+    public void calculateAllData() {
         for (Lotto lotto : allLotto) {
-            lottoCalculate.totalCalculate(lotto,this);
+            lottoCalculate.totalCalculate(lotto, this);
         }
-
     }
 
     public float percentageOfReturn() {
