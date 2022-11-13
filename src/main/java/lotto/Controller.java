@@ -6,12 +6,33 @@ import java.util.*;
 
 public class Controller {
     private final int MONEY_UNIT = 1000;
+    private final Input input = new Input();
+    private final Output output = new Output();
 
     public void generate() {
-        //1. 금액에 해당하는 로또 생성
-        //2. 당첨번호, 보너스 번호 입력
-        //3. 당첨된 로또 개수 맵 만들기 {등수:개수}
-        //4.
+        // 1. 돈 입력 받기
+        try {
+            int money = input.getMoney();
+
+            // 2. 금액에 해당하는 로또 생성 - 출력하기
+            Set<Lotto> lottoSet = createLottos(money);
+            output.printLottos(lottoSet);
+
+            // 3. 당첨번호, 보너스 번호 입력 -> 당첨 로또 만들기
+            List<Integer> winningNumbers = input.getWinningNumbers();  //로또 객체로 만들기
+            Lotto winningLotto = new Lotto(input.getWinningNumbers()); //로또객체로 만드는 이유: INPUT이 유효한지 체크하기 위함.
+            int bonusNumber = input.getBonusNumber();
+
+            // 4. 당첨된 로또 개수 맵 만들기 {등수:개수} - 당첨 내역 출력하기
+            Map<String, Integer> resultMap = createResultMap(lottoSet, winningNumbers, bonusNumber);
+            printResult(money, resultMap);
+
+            // 5. 수익률 계산하기 - 수익률 출력하기
+            printYield(calculateYield(money, resultMap));
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
     }
 
     public Set<Lotto> createLottos(int money) {
