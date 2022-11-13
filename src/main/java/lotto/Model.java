@@ -29,7 +29,7 @@ public class Model {
      * @param playerNumbers 사용자가가 입력한 숫자
      * @return 입력한 숫자를 HashSet로 return 한다.
      */
-    public static HashSet<Integer> MakeNumberToSet(List<Integer> playerNumbers) {
+    public static HashSet<Integer> MakeListToSet(List<Integer> playerNumbers) {
         HashSet<Integer> playerNumber = new HashSet<>();
 
         // 집합에 사용자가가 입력한 숫자를 넣는다.

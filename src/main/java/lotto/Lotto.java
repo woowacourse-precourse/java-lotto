@@ -20,7 +20,7 @@ public class Lotto {
      */
     private static void ValidatePlayerNumber(List<Integer> playerNumbers) {
         // 집합에 게임 플레이어가 입력한 숫자를 넣는다.
-        HashSet<Integer> playerNumber = Model.MakeNumberToSet(playerNumbers);
+        HashSet<Integer> playerNumber = Model.MakeListToSet(playerNumbers);
 
         // 집합의 크기가 7이 아니거나 1에서 45까지의 숫자가 아닌 숫자를 포함하면 예외를 발생한다.
         if (playerNumber.size() != 7 || Collections.min(playerNumber) < 1 || Collections.max(playerNumber) > 45) {
