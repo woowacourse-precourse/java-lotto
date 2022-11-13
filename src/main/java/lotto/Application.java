@@ -8,9 +8,9 @@ import java.util.List;
 
 public class Application {
     static HashMap<WinningPlace, Integer> winningHistory = new HashMap<>();
+    static int inputPrice = 0;
 
     public static void main(String[] args) throws Exception {
-//        Skeleton code for main
         List<List<Integer>> myLottoTickets = buyLotto();
         printMyLottoTickets(myLottoTickets);
 
@@ -23,6 +23,8 @@ public class Application {
         saveWinningPlaceByTicket(winnerNumber, myLottoTickets, bonusNumber);
 
         printLottoTicketHistory();
+
+        printWinningsOutOfBuyingPrice(inputPrice);
     }
 
     public static int checkUserInputCondition(String input) {
@@ -59,6 +61,7 @@ public class Application {
         String userInput = Console.readLine();
         System.out.println();
         int buyingPrice = checkUserInputCondition(userInput);
+        inputPrice = buyingPrice;
         int ticketAmount = convertBuyingPriceIntoTicketAmount(buyingPrice);
         List<List<Integer>> lottoTickets = getLottoTickets(ticketAmount);
 
@@ -159,11 +162,31 @@ public class Application {
     }
 
     private static void printLottoTicketHistory() {
-        System.out.println(WinningPlace.FIFTH_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
-        System.out.println(WinningPlace.FOURTH_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
+        System.out.println(WinningPlace.FIFTH_PLACE.getMessage() + winningHistory.get(WinningPlace.FIFTH_PLACE)+"개");
+        System.out.println(WinningPlace.FOURTH_PLACE.getMessage() + winningHistory.get(WinningPlace.FOURTH_PLACE)+"개");
         System.out.println(WinningPlace.THIRD_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
-        System.out.println(WinningPlace.SECOND_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
-        System.out.println(WinningPlace.FIRST_PLACE.getMessage()+ winningHistory.get(WinningPlace.THIRD_PLACE)+"개");
+        System.out.println(WinningPlace.SECOND_PLACE.getMessage() + winningHistory.get(WinningPlace.SECOND_PLACE)+"개");
+        System.out.println(WinningPlace.FIRST_PLACE.getMessage()+ winningHistory.get(WinningPlace.FIRST_PLACE)+"개");
+    }
 
+    private static void printWinningsOutOfBuyingPrice(int buyingPrice) {
+        int sumOfWinnings = getTotalWinnings();
+
+        Double winningsRate = (Double.valueOf(sumOfWinnings) / Double.valueOf(buyingPrice))*100.0f;
+
+        String trimmedWinningsRate = String.format("%.1f", winningsRate);
+
+        System.out.println("총 수익률은 "+ trimmedWinningsRate+ "%입니다.");
+    }
+
+    private static int getTotalWinnings() {
+        int totalWinnings = 0;
+        for (WinningPlace winningPlace : winningHistory.keySet()) {
+            if (!winningPlace.equals(WinningPlace.NOT_IN_PLACE) && winningHistory.get(winningPlace) != 0) {
+                totalWinnings += winningPlace.getWinnings();
+            }
+        }
+
+        return totalWinnings;
     }
 }
