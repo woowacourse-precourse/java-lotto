@@ -58,12 +58,12 @@ public class Lotto {
         return lotto;
     }
 
-    public List<WinLottoNumber> compareLottos(List<Lotto> lottoNumber, List<Integer> winNumber) {
-        List<WinLottoNumber> compareNumber = new ArrayList<>();
+    public List<Integer> compareLottos(List<Lotto> lottoNumber, List<Integer> winNumber) {
+        List<Integer> compareNumber = new ArrayList<>();
         for (int i = 0; i < lottoNumber.size(); i++) {
             WinLottoNumber winLottoNumber = compareLotto(lottoNumber.get(i), winNumber);
-            compareNumber.add(winLottoNumber);
-            System.out.println("당첨 번호:" + compareNumber.get(i).getWinLottoNumber() + ":");
+            compareNumber.add(winLottoNumber.getWinLottoNumber().size());
+            System.out.println("당첨 번호의 개수:" + compareNumber.get(i) + ":");
         }
         return compareNumber;
     }
