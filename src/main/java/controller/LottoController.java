@@ -11,6 +11,8 @@ import view.InputView;
 import view.OutputView;
 
 public class LottoController {
+    private static final String ERROR = "[ERROR] ";
+
     public void play() {
         try {
             Money money = InputView.inputPurchaseAmount();
@@ -26,7 +28,7 @@ public class LottoController {
             OutputView.printWinningResult(winningResult);
             OutputView.printEarningsRate(earningsRate);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            System.out.println(ERROR + e.getMessage());
         }
     }
 }

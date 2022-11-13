@@ -2,11 +2,8 @@ package model;
 
 import java.util.List;
 
-import static constant.Config.ERROR;
-
-
 public class WinningLotto {
-    private static final String DUPLICATE_ERROR = String.format("%s 보너스 번호는 로또 번호와 중복되지 않아야 합니다.", ERROR);
+    private static final String DUPLICATE_ERROR = "보너스 번호는 로또 번호와 중복되지 않아야 합니다.";
     private final Lotto winningLotto;
     private final BonusNumber bonusNumber;
 

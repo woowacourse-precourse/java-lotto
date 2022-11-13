@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
-import static constant.Config.ERROR;
 import static constant.Config.MAX_NUMBER;
 import static constant.Config.MIN_NUMBER;
 import static constant.Config.NUMBER_COUNT;
@@ -16,8 +15,8 @@ import static constant.Config.RANGE_ERROR;
 
 public class Lotto {
     private static final int INIT_COUNT = 0;
-    private static final String SIZE_ERROR = String.format("%s 로또 번호는 %d개의 숫자여야 합니다.", ERROR, NUMBER_COUNT);
-    private static final String DUPLICATE_ERROR = String.format("%s 로또 번호는 중복되지 않아야 합니다.", ERROR);
+    private static final String SIZE_ERROR = String.format("로또 번호는 %d개의 숫자여야 합니다.", NUMBER_COUNT);
+    private static final String DUPLICATE_ERROR = "로또 번호는 중복되지 않아야 합니다.";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {

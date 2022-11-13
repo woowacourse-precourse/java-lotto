@@ -1,11 +1,9 @@
 package model;
 
-import constant.Config;
-
 import static constant.Config.PRICE;
 
 public class Money {
-    private static final String PRICE_ERROR = String.format("%s 구입금액은 %,d원으로 나누어 떨어져야 합니다.", Config.ERROR, PRICE);
+    private static final String PRICE_ERROR = String.format("구입금액은 %,d원으로 나누어 떨어져야 합니다.", PRICE);
 
     private final int money;
 

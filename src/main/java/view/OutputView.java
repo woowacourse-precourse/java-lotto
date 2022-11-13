@@ -3,7 +3,6 @@ package view;
 import model.EarningsRate;
 import model.Lotto;
 import model.Lottos;
-import model.Money;
 import model.Win;
 import model.WinningResult;
 

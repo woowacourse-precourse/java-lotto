@@ -13,6 +13,6 @@ public class MoneyTest {
         assertThatThrownBy(() -> {
             new Money(money);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 구입금액은 1,000원으로 나누어 떨어져야 합니다.");
+                .hasMessage("구입금액은 1,000원으로 나누어 떨어져야 합니다.");
     }
 }

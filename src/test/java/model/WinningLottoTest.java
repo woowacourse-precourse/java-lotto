@@ -15,6 +15,6 @@ class WinningLottoTest {
             BonusNumber bonusNumber = new BonusNumber(1);
             new WinningLotto(lotto, bonusNumber);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 보너스 번호는 로또 번호와 중복되지 않아야 합니다.");
+                .hasMessage("보너스 번호는 로또 번호와 중복되지 않아야 합니다.");
     }
 }
