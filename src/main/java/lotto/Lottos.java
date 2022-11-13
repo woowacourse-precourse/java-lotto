@@ -10,14 +10,14 @@ public class Lottos {
 
     private final List<Lotto> lottos;
 
-    public Lottos(int amount) {
+    public Lottos(long amount) {
         lottos = new ArrayList<>();
         create(amount);
     }
 
-    private void create(int amount) {
-        int count = amount / PRICE;
-        for (int number = 0; number < count; number++) {
+    private void create(long amount) {
+        long count = amount / PRICE;
+        for (long number = 0; number < count; number++) {
             Lotto lotto = new Lotto(LottoNumberGenerator.generateNumbers());
             lottos.add(lotto);
         }

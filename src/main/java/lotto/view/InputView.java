@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    public static int askAmount() {
+    public static long askAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
-        return parseInt(input, "[ERROR] 구입 금액은 숫자만 입력할 수 있습니다.");
+        return parseLong(input, "[ERROR] 구입 금액은 숫자만 입력할 수 있습니다.");
     }
 
     public static String askWinningNumber() {
@@ -24,6 +24,15 @@ public class InputView {
     private static int parseInt(String input, String errorMessage) {
         try {
             return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            System.out.println(errorMessage);
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static long parseLong(String input, String errorMessage) {
+        try {
+            return Long.parseLong(input);
         } catch (NumberFormatException e) {
             System.out.println(errorMessage);
             throw new IllegalArgumentException();

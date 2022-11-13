@@ -4,9 +4,9 @@ public class Money {
 
     private static final int LOTTO_PRICE = 1000;
 
-    private final int money;
+    private final long money;
 
-    public Money(int money) {
+    public Money(long money) {
         this.money = money;
         validate();
     }
@@ -30,7 +30,7 @@ public class Money {
         }
     }
 
-    public int getMoney() {
+    public long getMoney() {
         return money;
     }
 }
