@@ -70,7 +70,7 @@
 - ✅ 당첨 로또 개수
   - ✅ 경우 별 당첨로또 개수 저장 : <Calculator> CountOfRank()
 
-### ✔ 수익률 출력
+### ✅ 수익률 출력
 
 - ✅ 총 당첨 금액 : 총합(경우별 당첨금액 * 경우별 당첨 로또 개수) : <Calculator> getSumOfWinningAmount()
 - ✅ 수익률 : 총 당첨 금액 / 구매 금액 : <Calculator> earnedRatio()
