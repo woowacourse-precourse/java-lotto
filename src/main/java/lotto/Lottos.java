@@ -7,15 +7,14 @@ import java.util.List;
 public class Lottos {
 
     private final List<Lotto> lottos;
-    private final long count;
 
     public Lottos(Money money) {
         lottos = new ArrayList<>();
-        count = money.countPurchasable(Lotto.PRICE);
-        createLotto();
+        createLotto(money);
     }
 
-    private void createLotto() {
+    private void createLotto(Money money) {
+        long count = money.countPurchasable(Lotto.PRICE);
         for (long number = 0; number < count; number++) {
             Lotto lotto = new Lotto(LottoNumberGenerator.generateNumbers());
             lottos.add(lotto);
@@ -23,7 +22,7 @@ public class Lottos {
     }
 
     public long getCount() {
-        return count;
+        return lottos.size();
     }
 
     public List<Lotto> getLottos() {
