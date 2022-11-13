@@ -28,7 +28,11 @@ public class Application {
         List<Integer> winningNumbers = inputWinningNumbers();
         int bonus = inputBonusNumber();
 
-
+        List<Integer> rankCount = getRankCount(
+                lotteries,
+                winningNumbers,
+                bonus
+        );
     }
 
     public static int inputPrice() {
@@ -111,5 +115,21 @@ public class Application {
         if (hitCount == 5 && bonusHitCount == 1) return 2;
         if (hitCount == 6) return 1;
         return 0;
+    }
+
+    public static List<Integer> getRankCount(
+            List<Lotto> lotteries,
+            List<Integer> winningNumbers,
+            int bonus
+    ) {
+        List<Integer> rankCountList = Arrays.asList(0,0,0,0,0,0);
+        lotteries.forEach(lotto -> {
+            List<Integer> hitCountAndBonusHitCount = checkLottery(lotto, winningNumbers, bonus);
+            int hitCount = hitCountAndBonusHitCount.get(0);
+            int bonusHitCount = hitCountAndBonusHitCount.get(1);
+            int rankIndex = getRankIndex(hitCount, bonusHitCount);
+            rankCountList.set(rankIndex, rankCountList.get(rankIndex)+1);
+        });
+        return rankCountList;
     }
 }
