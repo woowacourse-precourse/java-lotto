@@ -40,7 +40,5 @@ public class View {
             System.out.printf("%d개 일치 (%s원) - %d개", i + 3, winningMoney.get(i), result.get(i));
             System.out.println();
         }
-        System.out.println("총 수익률은 62.5%입니다."
-        );
     }
 }

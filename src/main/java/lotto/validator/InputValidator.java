@@ -1,5 +1,8 @@
 package lotto.validator;
 
+import lotto.Lotto;
+import lotto.repository.LottoRepository;
+
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -90,7 +93,18 @@ public class InputValidator {
         if(checkNumberBoundary(bonusNumber)){
             throw new IllegalArgumentException("올바르지 않은 범위입니다.");
         }
+        if(checkNumberInWinningNumber(bonusNumber)){
+            throw new IllegalArgumentException("당첨 번호와 중복됩니다.");
+        }
 
+    }
+
+    private static boolean checkNumberInWinningNumber(String bonusNumber) {
+        Lotto winningLotto = LottoRepository.getLastWinningLotto();
+        if(winningLotto.getNumbers().contains(winningLotto)){
+            return true;
+        }
+        return false;
     }
 
     private static boolean checkNumberBoundary(String bonusNumber) {
