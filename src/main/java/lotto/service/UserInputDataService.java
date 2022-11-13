@@ -9,8 +9,7 @@ public class UserInputDataService {
     private final OutputView outputView = new OutputView();
 
     public User inputUserData() {
-        int buyingPrice = inputBuyingPrice();
-        User user = new User(buyingPrice);
+        User user = new User(inputBuyingPrice());
         setUserLotto(user);
         printLottoNumbers(user);
         return user;
