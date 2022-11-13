@@ -2,21 +2,22 @@ package lotto;
 
 import lotto.UI.ERRORUI;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private List<Lotto> lottos;
-    private Integer cntLotto;
+    private List<Lotto> lottos = new ArrayList<>();
+    private Integer cntLotto = null;
     private static final int lottoValue = 1000;
 
     public void purchaseLotto(String input){
         try {
             Integer value = checkNum(input);
-            int cntLotto = divideLotto(value);
+            cntLotto = divideLotto(value);
             setLotto(cntLotto);
         }catch (IllegalArgumentException e){
             ERRORUI.getErrorDivideValue();
-            System.exit(1);
+            System.exit(0);
         }
     }
     private Integer checkNum(String input){
@@ -25,6 +26,7 @@ public class User {
             value = Integer.parseInt(input);
         }catch (IllegalArgumentException e){
             ERRORUI.getErrorInputNum();
+            System.exit(0);
         }
         return value;
     }
@@ -44,7 +46,7 @@ public class User {
             }
         }catch (IllegalArgumentException e){
             ERRORUI.getErrorLotto();
-            System.exit(1);
+            System.exit(0);
         }
     }
 

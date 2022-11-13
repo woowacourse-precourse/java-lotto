@@ -1,9 +1,6 @@
 package lotto;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,7 +8,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) throws IllegalArgumentException {
         validate(numbers);
         checkDuplicate(numbers);
-        orderLotto(numbers);
+       // orderLotto(numbers);
         this.numbers = numbers;
     }
 
@@ -29,11 +26,11 @@ public class Lotto {
         }
     }
     // TODO: 추가 기능 구현
-
+/*
     private void orderLotto(List<Integer> numbers){
-        numbers.sort(Comparator.naturalOrder());
+        Collections.sort(numbers);
     }
-
+*/
     public List<Integer> getLotto(){
         return numbers;
     }

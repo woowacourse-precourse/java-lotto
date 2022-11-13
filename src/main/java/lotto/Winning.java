@@ -26,6 +26,7 @@ public class Winning {
             }
         }catch (IllegalArgumentException e){
             ERRORUI.getErrorRange();
+            System.exit(0);
         }
     }
 
@@ -37,6 +38,7 @@ public class Winning {
             }
         }catch (IllegalArgumentException e){
             ERRORUI.getErrorInputNum();
+            System.exit(0);
         }
         return num;
     }
@@ -62,6 +64,7 @@ public class Winning {
             }
         }catch (IllegalArgumentException e){
             ERRORUI.getErrorRange();
+            System.exit(0);
         }
     }
 
@@ -71,6 +74,7 @@ public class Winning {
             bonus = Integer.parseInt(s);
         }catch (IllegalArgumentException e){
             ERRORUI.getErrorInputNum();
+            System.exit(0);
         }
         return bonus;
     }

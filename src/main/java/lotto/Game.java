@@ -31,6 +31,6 @@ public class Game {
         System.out.println(BaseLotto.FIVESUCCESS.getDescription() + " - " + totalLotto.get(2)+"개");
         System.out.println(BaseLotto.FIVEANDBONUSSUCCESS.getDescription() + " - " + totalLotto.get(3)+"개");
         System.out.println(BaseLotto.SIXSUCCESS.getDescription() + " - " + totalLotto.get(4)+"개");
-        System.out.println(BaseLotto.TOTALRETURN.getDescription() + " " + winning.getToTalRate(Integer.parseInt(input))+"입니다.");
+        System.out.println(BaseLotto.TOTALRETURN.getDescription() + " " + winning.getToTalRate(Integer.parseInt(input))*100+"%입니다.");
     }
 }
