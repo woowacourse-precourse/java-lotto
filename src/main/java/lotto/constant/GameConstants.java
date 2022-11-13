@@ -15,4 +15,7 @@ public class GameConstants {
     public static final int THIRD_PRIZE = 1_500_000;
     public static final int SECOND_PRIZE = 30_000_000;
     public static final int FIRST_PRIZE = 2_000_000_000;
+
+    public static final String NATURAL_NUMBER_REGEX = "[0-9]+";
+    public static final String NO_LEADING_ZERO_REGEX = "[1-9][0-9]*";
 }
