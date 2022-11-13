@@ -27,4 +27,8 @@ public class BonusNumber {
             throw new IllegalArgumentException();
         }
     }
+
+    public boolean existIn(Lotto lotto) {
+        return lotto.contains(bonusNumber);
+    }
 }
