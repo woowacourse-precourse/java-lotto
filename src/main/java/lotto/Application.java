@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
@@ -20,6 +21,8 @@ public class Application {
         ng.generateNumbers();
 
         System.out.println(ng.myLotto);
+
+
 
     }
 }

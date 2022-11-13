@@ -1,8 +1,7 @@
 package lotto;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import static lotto.Constant.*;
@@ -20,10 +19,14 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_LENGTH);
         }
-        if (false) {
+
+        HashSet<Integer> numbersNotDuplicate = new HashSet<>();
+        numbersNotDuplicate.addAll(numbers);
+        if (numbersNotDuplicate.size() != numbers.size()) {
             throw new IllegalArgumentException(ERROR_DUPLICATE);
         }
-        if (false) {
+
+        if (numbers.get(0) < 1 || numbers.get(5) > 45) {
             throw new IllegalArgumentException(ERROR_RANGE);
         }
     }
