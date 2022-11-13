@@ -2,7 +2,8 @@ package lotto;
 
 public enum PrintMessage {
     PURCHASE_INFO("개를 구매했습니다."),
-    STATISTIC_INFO("당첨 통계");
+    STATISTIC_INFO("당첨 통계"),
+    TOTAL_PRIZE("총 수익률은 ");
 
     private final String message;
 
