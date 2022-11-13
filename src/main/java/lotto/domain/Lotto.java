@@ -6,10 +6,10 @@ import static java.util.Collections.sort;
 import static java.util.stream.Collectors.toList;
 
 public class Lotto {
-    private static final int LOTTO_SIZE = 6;
-    private static final int LOTTO_START_NUMBER = 1;
-    private static final int LOTTO_END_NUMBER = 45;
-    private static final int LOTTO_PRICE = 1_000;
+    public static final int LOTTO_SIZE = 6;
+    public static final int LOTTO_START_NUMBER = 1;
+    public static final int LOTTO_END_NUMBER = 45;
+    public static final int LOTTO_PRICE = 1_000;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
