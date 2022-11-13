@@ -26,6 +26,7 @@ public class LottoGameController {
         try {
             inputLottoPurchaseAmount();
             printPurchaseLottoCount();
+            issueLottoNumbers();
             printIssuedLottoNumbers();
             setWinningNumberAndBonusNumber();
             decidePurchaseLottosRank();
@@ -37,23 +38,23 @@ public class LottoGameController {
 
     public void inputLottoPurchaseAmount() {
         lottoPurchaseAmount = inputView.inputLottoPurchaseAmount();
-        lottoIssueCount = lottoGameService.getLottoIssueCount(lottoPurchaseAmount);
     }
 
     public void printPurchaseLottoCount() {
+        lottoIssueCount = lottoGameService.getLottoIssueCount(lottoPurchaseAmount);
         outputView.printPurchaseLottoCount(lottoIssueCount);
     }
 
-    public void printIssuedLottoNumbers() {
-        generateLottoNumbers();
-        outputView.printIssuedLottoNumbers(lottoGameService.getPurchaseLottoNumbers());
-    }
-
-    public void generateLottoNumbers() {
+    public void issueLottoNumbers() {
         for (int generateIndex = 0; generateIndex < lottoIssueCount; generateIndex++) {
             lottoGameService.addLottoNumberToLottoNumbers();
         }
     }
+
+    public void printIssuedLottoNumbers() {
+        outputView.printIssuedLottoNumbers(lottoGameService.getPurchaseLottoNumbers());
+    }
+
 
     public void setWinningNumberAndBonusNumber() {
         String lottoWinningNumbers = inputView.inputLottoWinningNumbers();
