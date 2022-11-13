@@ -32,7 +32,6 @@ public class Lotto {
     }
 
     public List<Integer> printLottoNumber(){
-        Collections.sort(numbers);
         return numbers;
     }
 }

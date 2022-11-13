@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 enum Score{
     zero(0,0), six(6,2_000_000_000), fifth(5,30_000_000), fifthBonus(55,1_500_000), fourth(4,50_000), third(3,5_000);
@@ -34,14 +35,18 @@ public class User {
         int lottoCount = price/1000;
         for (int i = 0; i < lottoCount; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            userLotto.add(new Lotto(numbers));
+            List<Integer> sortedList = numbers.stream().sorted().collect(Collectors.toList());
+
+            userLotto.add(new Lotto(sortedList));
         }
+
     }
     public void printUserLotto(int price){
         int lottoCount = price/1000;
         System.out.println("\n"+lottoCount+"개를 구매했습니다.");
         for(int i=0; i<lottoCount; i++){
-            System.out.println(userLotto.get(i).printLottoNumber());
+            List<Integer> printList = userLotto.get(i).printLottoNumber();
+            System.out.println(printList);
         }
     }
 
@@ -85,6 +90,6 @@ public class User {
         return Score.getWinValue(count);
     }
     public void printWinningRatio(int correctLottoNum,int purchasePrice){
-        System.out.println("총 수익률은 "+String.format("%.2f",(double)correctLottoNum/purchasePrice*100)+"%입니다.");
+        System.out.println("총 수익률은 "+String.format("%.1f",(double)correctLottoNum/purchasePrice*100)+"%입니다.");
     }
 }
