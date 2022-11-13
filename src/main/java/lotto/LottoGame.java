@@ -13,7 +13,6 @@ public class LottoGame {
     private static List<Integer> winNumber;
     private static int bonusBall;
     private static List<List<Integer>> randomLottoNumbers;
-    private static Map<String, Integer> winNumbers;
 
     public LottoGame() {
         result = "";
@@ -21,7 +20,6 @@ public class LottoGame {
         winNumber = new ArrayList<>();
         bonusBall = 0;
         randomLottoNumbers = new ArrayList<>();
-        winNumbers = new LinkedHashMap<>();
     }
 
     public void startGame() {
@@ -29,26 +27,6 @@ public class LottoGame {
             buyLotto();
             createNumbers();
             compareNumber();
-
-
-//            result = Console.readLine(); // 구입 금액 입력
-//            if (result.length() != 4) {
-//                throw new IllegalArgumentException("[ERROR]");
-//            }
-//            LottoNumbers lottoNumbers = new LottoNumbers(result); // 구입 금액을 기반으로 ~장 생성
-//            randomLottoNumbers = lottoNumbers.getNumbers(); // 생선된 랜덤 로또값들을 List<List<Integer>>에 get을 이용해 저장
-//            String[] str = new String[6];
-//            str = Console.readLine().split(",");
-//            List<Integer> basket = new ArrayList<>();
-//            for (int i = 0; i < str.length; i++) {
-//                basket.add(Integer.parseInt(str[i]));
-//            }
-//            Lotto lotto = new Lotto(basket);
-//            System.out.println("보너스 번호를 입력해주세요.");
-//            int num2 = Integer.parseInt(Console.readLine());
-
-//            Manager manager = new Manager();
-//            manager.inputWinNumbers(randomLottoNumbers, basket, bonusBall);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

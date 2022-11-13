@@ -54,18 +54,21 @@ public class Manager {
 
     // 로또 번호, winNumber랑 로또랑 비교해서 몇 개 일치하는지 저장하는 메서드
     private void saveLotto(List<List<Integer>> randomLottoNumbers, List<Integer> winNumber) {
-        int count = 0;
         for (int i = 0; i < randomLottoNumbers.size(); i++) {
             for (int j = 0; j < randomLottoNumbers.get(i).size(); j++) {
-                if (randomLottoNumbers.get(i).contains(winNumber.get(j))) {
-                    checkLotto.put(randomLottoNumbers.get(i), checkLotto.getOrDefault(randomLottoNumbers.get(i), count) + 1);
-//                    System.out.println("numbers.get(i) = " + numbers.get(i));
-                    correctNumber.put(randomLottoNumbers.get(i).toString(), correctNumber.getOrDefault(randomLottoNumbers.get(i).toString(), count) + 1);
-                }
+                checkNumber(randomLottoNumbers, i, j, winNumber);
             }
         }
         for (List<Integer> integers : checkLotto.keySet()) {
             System.out.println("checkLotto.keySet() = " + integers);
+        }
+    }
+
+    private void checkNumber(List<List<Integer>> randomLottoNumbers, int i, int j, List<Integer> winNumber) {
+        if (randomLottoNumbers.get(i).contains(winNumber.get(j))) {
+            checkLotto.put(randomLottoNumbers.get(i), checkLotto.getOrDefault(randomLottoNumbers.get(i), 0) + 1);
+//                    System.out.println("numbers.get(i) = " + numbers.get(i));
+            correctNumber.put(randomLottoNumbers.get(i).toString(), correctNumber.getOrDefault(randomLottoNumbers.get(i).toString(), 0) + 1);
         }
     }
 
@@ -90,6 +93,7 @@ public class Manager {
         }
     }
 
+    // mapTest 변수명 수정하기
     private void compareLastValue(List<Integer> countPrize, Map<String, Integer> mapTest) {
         for (Integer integer : countPrize) {
             for (Hi value : Hi.values()) {
@@ -122,7 +126,6 @@ public class Manager {
             System.out.print(" - " + mapTest.get(s) + "개");
             System.out.println();
         }
-        System.out.println("********************************");
 
         System.out.println("***********수익률 구하기**************");
         List<Integer> testList = new ArrayList<>();
@@ -213,7 +216,8 @@ public class Manager {
             }
         }
         System.out.println("total = " + total);
-        double add = ((double) total / myMoney * 100);
+        double add = ((double) total / myMoney) * 100;
+        System.out.println("add = " + add);
         add = Math.round(add*10)/10.0;
         System.out.println("총 수익률은 " + add + "%입니다.");
     }

@@ -22,11 +22,11 @@
 //    }
 //
 //    public enum Bye {
-//        FIVE(5000),
-//        FOUR(50000),
-//        THREE(1500000),
-//        TWO(30000000),
-//        ONE(2000000000);
+//        FIVE(5_000),
+//        FOUR(50_000),
+//        THREE(1_500000),
+//        TWO(30_000000),
+//        ONE(2_000000000);
 //
 //        final private int bye;
 //
@@ -54,18 +54,26 @@
 //
 //    // 로또 번호, winNumber랑 로또랑 비교해서 몇 개 일치하는지 저장하는 메서드
 //    private void saveLotto(List<List<Integer>> randomLottoNumbers, List<Integer> winNumber) {
-//        int count = 0;
 //        for (int i = 0; i < randomLottoNumbers.size(); i++) {
 //            for (int j = 0; j < randomLottoNumbers.get(i).size(); j++) {
-//                if (randomLottoNumbers.get(i).contains(winNumber.get(j))) {
-//                    checkLotto.put(randomLottoNumbers.get(i), checkLotto.getOrDefault(randomLottoNumbers.get(i), count) + 1);
+//                checkNumber(randomLottoNumbers, i, j, winNumber);
+////                if (randomLottoNumbers.get(i).contains(winNumber.get(j))) {
+////                    checkLotto.put(randomLottoNumbers.get(i), checkLotto.getOrDefault(randomLottoNumbers.get(i), 0) + 1);
 ////                    System.out.println("numbers.get(i) = " + numbers.get(i));
-//                    correctNumber.put(randomLottoNumbers.get(i).toString(), correctNumber.getOrDefault(randomLottoNumbers.get(i).toString(), count) + 1);
-//                }
+////                    correctNumber.put(randomLottoNumbers.get(i).toString(), correctNumber.getOrDefault(randomLottoNumbers.get(i).toString(), 0) + 1);
+////                }
 //            }
 //        }
 //        for (List<Integer> integers : checkLotto.keySet()) {
 //            System.out.println("checkLotto.keySet() = " + integers);
+//        }
+//    }
+//
+//    private void checkNumber(List<List<Integer>> randomLottoNumbers, int i, int j, List<Integer> winNumber) {
+//        if (randomLottoNumbers.get(i).contains(winNumber.get(j))) {
+//            checkLotto.put(randomLottoNumbers.get(i), checkLotto.getOrDefault(randomLottoNumbers.get(i), 0) + 1);
+////                    System.out.println("numbers.get(i) = " + numbers.get(i));
+//            correctNumber.put(randomLottoNumbers.get(i).toString(), correctNumber.getOrDefault(randomLottoNumbers.get(i).toString(), 0) + 1);
 //        }
 //    }
 //
@@ -90,6 +98,7 @@
 //        }
 //    }
 //
+//    // mapTest 변수명 수정하기
 //    private void compareLastValue(List<Integer> countPrize, Map<String, Integer> mapTest) {
 //        for (Integer integer : countPrize) {
 //            for (Hi value : Hi.values()) {
@@ -117,6 +126,21 @@
 //        checkBonus(checkLotto, correctNumber, bonusBall);
 //        checkPrize(correctNumber);
 //        compareLastValue(countPrize, mapTest);
+//        for (String s : mapTest.keySet()) {
+//            System.out.print(s);
+//            System.out.print(" - " + mapTest.get(s) + "개");
+//            System.out.println();
+//        }
+//        System.out.println("********************************");
+//
+//        System.out.println("***********수익률 구하기**************");
+//        List<Integer> testList = new ArrayList<>();
+//        for (String s : mapTest.keySet()) {
+//            testList.add(mapTest.get(s));
+//        }
+//        calculateMoney(myMoney, testList);
+//
+//
 //        /*
 //        Map<String, Integer> winner = new LinkedHashMap<>(); // 당첨 번호를 저장할 Map
 //        Map<List<Integer>, Integer> winnerMap = new LinkedHashMap<>();
@@ -177,19 +201,6 @@
 //
 //         */
 //
-//        for (String s : mapTest.keySet()) {
-//            System.out.print(s);
-//            System.out.print(" - " + mapTest.get(s) + "개");
-//            System.out.println();
-//        }
-//        System.out.println("********************************");
-//
-//        System.out.println("***********수익률 구하기**************");
-//        List<Integer> testList = new ArrayList<>();
-//        for (String s : mapTest.keySet()) {
-//            testList.add(mapTest.get(s));
-//        }
-//        calculateMoney(myMoney, testList);
 //    }
 //
 //
@@ -211,7 +222,8 @@
 //            }
 //        }
 //        System.out.println("total = " + total);
-//        double add = ((double) total / myMoney * 100);
+//        double add = ((double) total / myMoney) * 100;
+//        System.out.println("add = " + add);
 //        add = Math.round(add*10)/10.0;
 //        System.out.println("총 수익률은 " + add + "%입니다.");
 //    }
