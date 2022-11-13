@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Lucky {
     public List<Integer> compareNumbers(List<List<Integer>> user, List<Integer> com) {
-        List<Integer> list = new ArrayList<>();
+        List<Integer> compareNumbers = new ArrayList<>();
         for (int i = 0; i < user.size(); i++) {
             int count = 0;
             for (int j = 0; j < user.get(i).size(); j++) {
@@ -14,9 +14,9 @@ public class Lucky {
                     count++;
                 }
             }
-            list.add(count);
+            compareNumbers.add(count);
         }
-        return list;
+        return compareNumbers;
     }
 
 }
