@@ -33,5 +33,17 @@ class LottoServiceTest {
             // then
             assertThrows(IllegalStateException.class, () -> LottoService.amountInputToInteger(input));
         }
+
+        @Test
+        @DisplayName("[실패] - 입력 값이 1000으로 나누어 떨어지지 않는 경우")
+        void inputIsNotFallApart() {
+            // given
+            final String input = "1101";
+
+            // when
+
+            // then
+            assertThrows(IllegalStateException.class, () -> LottoService.amountInputToInteger(input));
+        }
     }
 }
