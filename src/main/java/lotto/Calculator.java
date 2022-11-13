@@ -9,13 +9,13 @@ import java.util.List;
 
 public class Calculator {
 
-    static final private int MAX_NUMBER = 45;
-    static final private int MIN_NUMBER = 1;
-    static final private int NUMBER_COUNT = 6;
-    final private long money;
-    final private long quantity;
-    static private long income;
-    static private long[] placesCount;
+    private static final int MAX_NUMBER = 45;
+    private static final int MIN_NUMBER = 1;
+    private static final int NUMBER_COUNT = 6;
+    private final long money;
+    private final long quantity;
+    private static long income;
+    private static long[] placesCount;
 
     List<List<Integer>> lotteries = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class Calculator {
         Message.PROFIT.printProfit(profit);
     }
 
-    void generateRandomLotto(long quantity) {
+    private void generateRandomLotto(long quantity) {
         for (int i = 0; i < quantity; i++) {
             List<Integer> randomLotto =
                     new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT));
@@ -60,7 +60,7 @@ public class Calculator {
         }
     }
 
-    void printLotto(List randomLotto) {
+    private void printLotto(List randomLotto) {
         System.out.println(randomLotto);
     }
 }
