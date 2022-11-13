@@ -20,7 +20,7 @@ public class LottoGame {
         PrizeMoney prizeMoney = new PrizeMoney(money, rankCountMatch.getTotalPrice());
 
         OutputView.printWinningInfo(rankCountMatch);
-        OutputView.printProfit(prizeMoney.getPrize());
+        OutputView.printProfit(prizeMoney.getProfit());
     }
 
 }

@@ -2,14 +2,14 @@ package lotto.domain;
 
 public class PrizeMoney {
 
-    private final double prize;
+    private final double profit;
 
     public PrizeMoney(Money ownMoney, int earnMoney) {
-        this.prize = (earnMoney / (double) ownMoney.getMoney()) * 100;
+        this.profit = (earnMoney / (double) ownMoney.getMoney()) * 100;
     }
 
-    public double getPrize() {
-        return this.prize;
+    public double getProfit() {
+        return this.profit;
     }
 
 }
