@@ -10,6 +10,9 @@ public class WinningLotto {
     private static final String WINNING_NUMBERS_MUST_BE_SIX_DIFFERENT_NUMBERS = "[ERROR] 당첨 번호는 서로 다른 6개의 수여야 합니다.";
     private static final String BONUS_NUMBER_IS_BETWEEN_ONE_AND_FORTY_FIVE = "[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String WINNING_NUMBERS_CONTAIN_BONUS_NUMBER = "[ERROR] 당첨 번호와 보너스 번호가 중복됩니다.";
+    private static final int LOTTO_NUMBER_LOWER_LIMIT = 1;
+    private static final int LOTTO_NUMBER_UPPER_LIMIT = 45;
+    private static final int LOTTO_NUMBERS_SIZE = 6;
 
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
@@ -33,7 +36,7 @@ public class WinningLotto {
 
     private boolean isBetweenOneAndFortyFive(List<Integer> winningNumbers) {
         for (int winningNumber : winningNumbers) {
-            if (winningNumber < 1 || winningNumber > 45) {
+            if (winningNumber < LOTTO_NUMBER_LOWER_LIMIT || winningNumber > LOTTO_NUMBER_UPPER_LIMIT) {
                 return false;
             }
         }
@@ -42,7 +45,7 @@ public class WinningLotto {
 
     private boolean isSixDifferentNumbers(List<Integer> winningNumbers) {
         Set<Integer> duplicateChecker = new HashSet<>(winningNumbers);
-        return duplicateChecker.size() == 6;
+        return duplicateChecker.size() == LOTTO_NUMBERS_SIZE;
     }
 
     private void validateBonusNumber(int bonusNumber) {
@@ -52,7 +55,7 @@ public class WinningLotto {
     }
 
     private boolean isBetweenOneAndFortyFive(int bonusNumber) {
-        return bonusNumber >= 1 && bonusNumber <= 45;
+        return bonusNumber >= LOTTO_NUMBER_LOWER_LIMIT && bonusNumber <= LOTTO_NUMBER_UPPER_LIMIT;
     }
 
     private void validateDuplicate(List<Integer> winningNumbers, int bonusNumber) {
