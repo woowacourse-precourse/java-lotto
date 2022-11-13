@@ -4,10 +4,11 @@
 
 ---
 
-- LottoGame(로또게임): 로또 게임 입출력 관리
-- LottoMachine(로또 기계): 여러 개의 로또 번호를 생성하는 기계
+- LottoGame(로또게임): 로또 게임 프로세스 관리
+- Customer(로또 구매자): 여러 개의 로또를 구입하는 사람
 - Lotto(로또): 로또 번호
-- DrawingMachine(뽑기 기계): 당첨 번호를 생성하는 기계
+- WinningNumber(당첨 번호) : 당첨 번호
+- LottoCompany(로또 회사): 당첨 번호를 생성하고 상금을 부여하는 회사
 
 ## 2. 기능 목록
 
