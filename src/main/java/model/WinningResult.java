@@ -9,11 +9,11 @@ public class WinningResult {
     private final Map<Win, Integer> winningResult;
 
     public WinningResult(Map<Win, Integer> winningResult) {
-        this.winningResult = winningResult;
+        this.winningResult = Map.copyOf(winningResult);
     }
 
     public Map<Win, Integer> getWinningResult() {
-        return Collections.unmodifiableMap(winningResult);
+        return winningResult;
     }
 
     public EarningsRate getEarningsRate(Money money) {

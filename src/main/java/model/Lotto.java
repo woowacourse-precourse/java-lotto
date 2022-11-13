@@ -22,11 +22,12 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateLotto(numbers);
 
-        this.numbers = getSortNumbers(numbers);
+        List<Integer> sortNumbers = getSortNumbers(numbers);
+        this.numbers = List.copyOf(sortNumbers);
     }
 
     public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
+        return numbers;
     }
 
     private void validateLotto(List<Integer> numbers) {
@@ -59,8 +60,8 @@ public class Lotto {
         }
     }
 
-    private ArrayList<Integer> getSortNumbers(List<Integer> numbers) {
-        ArrayList<Integer> sortNumbers = new ArrayList<>(numbers);
+    private List<Integer> getSortNumbers(List<Integer> numbers) {
+        List<Integer> sortNumbers = new ArrayList<>(numbers);
         Collections.sort(sortNumbers);
 
         return sortNumbers;
