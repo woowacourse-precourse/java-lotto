@@ -36,11 +36,4 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 0)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @Test
-    void checkValidityNewConstructor() {
-        Lotto test = new Lotto(6);
-
-        assertThat(test).isInstanceOf(Lotto.class);
-    }
 }
