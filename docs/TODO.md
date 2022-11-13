@@ -13,7 +13,7 @@
     - List<List<Result>> results
     - Integer lotteryCount
     - Integer winnings
-- Checker 클래스 정의
+- ~~Checker 클래스 정의~~
     - public boolean checkIllegalArgument
     - public int checkCoincide
     - public float checkLotteryReturn
