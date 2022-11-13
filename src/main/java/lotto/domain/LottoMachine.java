@@ -16,6 +16,7 @@ public class LottoMachine {
     private final int LOTTO_SIZE = 6;
     private final int MIN_LOTTO_NUMBER = 1;
     private final int MAX_LOTTO_NUMBER = 45;
+    private static List<Integer> winningList;
 
     private LottoGroups lottoGroups;
     private WinningLotto winningLotto;
@@ -69,7 +70,7 @@ public class LottoMachine {
     }
 
     public List<Integer> getWinningList() {
-        List<Integer> winningList = IntStream.of(new int[8])
+        winningList = IntStream.of(new int[8])
                 .boxed()
                 .collect(Collectors.toList());
         lottoGroups.getLottos().forEach(lotto -> {
@@ -84,8 +85,11 @@ public class LottoMachine {
                 .filter(this::checkWinningNumber)
                 .collect(Collectors.toList())
                 .size();
-        if (winningCount==5 && lotto.getNumbers().contains(winningLotto.getBonusNumber())){
-            return winningCount+2;
+        if (winningCount == 5 && lotto.getNumbers().contains(winningLotto.getBonusNumber())) {
+            return winningCount + 1;
+        }
+        if (winningCount == 6) {
+            return winningCount + 2;
         }
         return winningCount;
     }

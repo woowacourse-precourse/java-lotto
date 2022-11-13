@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.LottoGroups;
+import lotto.domain.Rank;
 
 import java.util.List;
 
@@ -23,7 +24,9 @@ public class OutputView {
     }
 
     public void printWinningList(List<Integer> winningList) {
-
+        for (int i = 3; i <= 7; i++) {
+            System.out.println(Rank.findMoney(i).getMessage(winningList.get(i)));
+        }
     }
 
     public void printErrorMessage(String message) {
