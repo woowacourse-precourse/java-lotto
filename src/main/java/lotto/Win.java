@@ -1,6 +1,8 @@
 package lotto;
 
 import lotto.constant.Rank;
+import lotto.validator.Validator;
+import lotto.view.LottoView;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,7 +11,19 @@ import java.util.Map;
 import static lotto.constant.Rank.*;
 
 public class Win {
+    private static final String UNIT = "개";
+    private static final String SEPARATOR = "---";
+    private static final String WINNING_STATS_WORD = "당첨 통계";
+    private static final String BLANK_LINE = "\n";
+
+
     private Map<Rank, Integer> ranking;
+    private LottoView view;
+
+    public Win(Map<Rank, Integer> ranking, LottoView view) {
+        this.ranking = ranking;
+        this.view = view;
+    }
 
     public Win(Map<Rank, Integer> ranking) {
         this.ranking = ranking;
@@ -36,16 +50,31 @@ public class Win {
             ranking.put(rank, ranking.get(rank) + 1);
         }
 
-        return new Win(ranking);
+        return new Win(ranking, new LottoView(new Validator()));
     }
 
     private static void init(Map<Rank, Integer> ranking) {
-        for (Rank rank : values()) {
+        for (Rank rank : Rank.values()) {
             ranking.put(rank, 0);
         }
     }
 
-    // TODO 당첨 내역 출력
+    public void printWinningStats() {
+        StringBuilder context = new StringBuilder();
 
-    // TODO 총 당첨금액 반환
+        view.printBlankLine();
+        view.printMessage(WINNING_STATS_WORD);
+        view.printMessage(SEPARATOR);
+
+        for (Rank rank : ranking.keySet()) {
+            if (rank == ETC) {
+                continue;
+            }
+
+            context.append(rank.getWinningStats()).
+                    append(ranking.get(rank)).append(UNIT).append(BLANK_LINE);
+        }
+
+        view.printMessage(context.toString());
+    }
 }

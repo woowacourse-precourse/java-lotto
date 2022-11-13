@@ -3,21 +3,27 @@ package lotto.constant;
 import java.util.Arrays;
 
 public enum Rank {
-    FIRST(2000000000, 6, 0),
-    SECOND(30000000, 5, 1),
-    THIRD(1500000, 5, 0),
-    FOURTH( 50000, 4, 0),
-    FIFTH( 5000, 3, 0),
-    ETC(0, 0, 0);
+    FIRST(2000000000, 6, 0, "6개 일치 (2,000,000,000원) - "),
+    SECOND(30000000, 5, 1, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+    THIRD(1500000, 5, 0, "5개 일치 (1,500,000원) - "),
+    FOURTH( 50000, 4, 0, "4개 일치 (50,000원) - "),
+    FIFTH( 5000, 3, 0, "3개 일치 (5,000원) - "),
+    ETC(0, 0, 0, "당첨되지 않았습니다.");
 
     private int winnings;
     private int win;
     private int bonus;
+    private String winningStats;
 
-    Rank(int winnings, int win, int bonus) {
+    Rank(int winnings, int win, int bonus, String winningStats) {
         this.winnings = winnings;
         this.win = win;
         this.bonus = bonus;
+        this.winningStats = winningStats;
+    }
+
+    public int getWinnings() {
+        return winnings;
     }
 
     public int getWin() {
@@ -28,7 +34,10 @@ public enum Rank {
         return bonus;
     }
 
-    // TODO bonus, win 숫자 비교해서 랭킹 반환하는 기능 추가
+    public String getWinningStats() {
+        return winningStats;
+    }
+
     public static Rank findByWinAndBonus(int win, int bonus) {
         return Arrays.stream(Rank.values())
                 .filter(rank -> hasSameWinAndBonus(win, bonus, rank))
@@ -39,7 +48,4 @@ public enum Rank {
     private static boolean hasSameWinAndBonus(int win, int bonus, Rank rank) {
         return rank.getWin() == win && rank.getBonus() == bonus;
     }
-
-
-    // TODO Rank에 개수 전달해서 내역 문자열 조합해서 반환하는 기능 추가
 }
