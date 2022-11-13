@@ -9,6 +9,7 @@ public class User {
 
     public int buy() {
         String amount = Console.readLine();
+        Validator.validateAmount(amount);
         return Integer.parseInt(amount);
     }
 
