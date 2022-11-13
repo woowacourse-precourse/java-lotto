@@ -31,7 +31,7 @@
 
   콘솔로부터 정수를 하나 입력받는 기능
 
-- `List<int> readIntegers()` [ - ]
+- `List<Integer> readIntegers()` [ - ]
 
   콘솔로부터 쉽표로 구분된 여러 개의 정수를 한 번에 입력받는 기능
 
@@ -43,7 +43,7 @@
 
   콘솔에 문자열을 출력하는 기능
 
-- `void println(List<T>)` [ - ]
+- `void println(List<Integer>)` [ - ]
 
   콘솔에 여러 개의 변수를 리스트 형식으로 출력하는 기능
 
@@ -87,13 +87,9 @@
 
 당첨 번호 관련 기능
 
-### `class WinningNumbersGenerator` [ - ]
+- `WinningNumbers(List<Integer>, int)` [ - ]
 
-당첨 번호 생성 관련 기능
-
-- `static WinningNumbers generate(List<Integer>, int)` [ - ]
-  
-  당첨 번호 생성하는 기능
+  중복되지 않는지, 범위에 벗어나지 않는지 확인 후 당첨 번호 생성
 
 ### `enum LottoResult` [ - ]
 
@@ -118,3 +114,20 @@
 - `String getReturnRateDescription()` [ - ]
 
   총 수익률 설명을 얻어오는 기능
+
+### `class LottoStatisticsGenerator` [ - ]
+
+당첨 통계 생성 관련 기능
+
+- `public LottoStatisticsGenerator(Payment)` [ - ]
+
+  구입 금액만 알 수 있을 때 먼저 `LottoStatisticsGenerator` 를 생성
+
+- `public void setResult(List<LottoResult>)` [ - ] 
+
+  당첨 결과를 설정
+
+- `public void generate()` [ - ]
+
+  구입 금액과 당첨 결가를 이용해서 `LottoStatistics`를 생성하는 기능
+  - `setResult()`가 호출되기 전에 호출된다면 exception 반환
