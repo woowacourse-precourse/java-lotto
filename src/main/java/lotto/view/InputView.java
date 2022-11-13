@@ -3,6 +3,7 @@ package lotto.view;
 import java.util.regex.Pattern;
 import lotto.domain.model.request.LottoNumberRequest;
 import lotto.domain.model.request.LottoRequest;
+import lotto.domain.model.request.MoneyRequest;
 import lotto.view.utils.OutputUtils;
 import lotto.view.utils.UserInputUtils;
 
@@ -13,11 +14,11 @@ public final class InputView {
     private InputView() {
     }
 
-    public static int inputLotteryPurchaseAmount() {
+    public static MoneyRequest inputLotteryPurchaseAmount() {
         OutputUtils.outputLine("구입금액을 입력해 주세요");
         String input = UserInputUtils.readLine();
         validate(input);
-        return Integer.parseInt(input);
+        return new MoneyRequest(Integer.parseInt(input));
     }
 
     public static LottoRequest inputLottoNumbers() {
