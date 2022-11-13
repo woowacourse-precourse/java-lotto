@@ -19,6 +19,23 @@ public class Compare {
         this.lottoWithBonus = lottoWithBonus;
     }
 
+    public void printResult(Map<LottoResult, Integer> result) {
+        DecimalFormat moneyFormat = new DecimalFormat("###,###");
+        DecimalFormat floatFormat = new DecimalFormat("###,###.#");
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (LottoResult lo : LottoResult.values()) {
+            if (lo != NOPE) {
+                System.out.printf("%d개 일치%s (%s원) - %d개\n", lo.getCorrectCount(), lo.getMessage(),
+                        moneyFormat.format(lo.getPrize()),
+                        result.getOrDefault(lo, 0));
+            }
+        }
+
+        System.out.printf("총 수익률은 %s%%입니다.\n", floatFormat.format(calculateYield(result)));
+    }
+
 
     public float calculateYield(Map<LottoResult, Integer> result) {
         long totalPrize = getTotalPrize(result);
@@ -46,10 +63,12 @@ public class Compare {
             int count = 0;
             count += isContains(haveLotto, myLotto);
             if (count == 5) {
-                result.put(checkBonus(haveLotto, lottoWithBonus), result.getOrDefault(checkBonus(haveLotto, lottoWithBonus), 0) + 1);
+                result.put(checkBonus(haveLotto, lottoWithBonus),
+                        result.getOrDefault(checkBonus(haveLotto, lottoWithBonus), 0) + 1);
             }
             if (count != 5) {
-                result.put(LottoResult.hasCorrectCount(count), result.getOrDefault(LottoResult.hasCorrectCount(count), 0) + 1);
+                result.put(LottoResult.hasCorrectCount(count),
+                        result.getOrDefault(LottoResult.hasCorrectCount(count), 0) + 1);
             }
         }
         return result;

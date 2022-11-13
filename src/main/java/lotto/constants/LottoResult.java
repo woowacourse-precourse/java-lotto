@@ -1,19 +1,20 @@
 package lotto.constants;
 
 public enum LottoResult {
-    ThreeCorrect(3, 5_000),
-    FourCorrect(4, 50_000),
-    FiveCorrect(5, 1_500_000),
-    FiveCorrectWithBonus(5, 30_000_000),
-    SixCorrect(6, 2_000_000_000),
-    UNDERThree(0, 0);
-
+    THREE(3, 5_000, ""),
+    FOUR(4, 50_000, ""),
+    FIVE(5, 1_500_000, ""),
+    BONUS(5, 30_000_000, ", 보너스 볼 일치"),
+    SIX(6, 2_000_000_000, ""),
+    NOPE(0, 0, "");
     private int prize;
     private int correctCount;
+    private String message;
 
-    LottoResult(int correctCount, int prize) {
+    LottoResult(int correctCount, int prize, String message) {
         this.prize = prize;
         this.correctCount = correctCount;
+        this.message = message;
     }
 
     public static int getPrizeByCorrectCount(int correctCount) {
@@ -23,15 +24,28 @@ public enum LottoResult {
                 return l.getPrize();
             }
         }
-        return UNDERThree.getPrize();
+        return 0;
     }
 
-    private int getPrize() {
+    public static LottoResult hasCorrectCount(int correctCount) {
+        LottoResult[] lottoResults = LottoResult.values();
+        for (LottoResult l : lottoResults) {
+            if (l.getCorrectCount() == correctCount) {
+                return l;
+            }
+        }
+        return NOPE;
+    }
+
+    public int getPrize() {
         return prize;
     }
 
-    private int getCorrectCount() {
+    public int getCorrectCount() {
         return correctCount;
     }
 
+    public String getMessage() {
+        return message;
+    }
 }
