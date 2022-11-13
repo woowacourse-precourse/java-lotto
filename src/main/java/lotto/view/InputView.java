@@ -1,12 +1,10 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class InputView {
@@ -58,4 +56,12 @@ public class InputView {
         return lotteryAmount;
     }
 
+    public static List<Integer> makeList(String userInput) {
+        String[] arrayInput = userInput.split(",");
+        List<Integer> userNumbers = new ArrayList<>();
+        for (int i = 0; i < arrayInput.length; i++) {
+            userNumbers.add(Integer.valueOf(arrayInput[i]));
+        }
+        return userNumbers;
+    }
 }
