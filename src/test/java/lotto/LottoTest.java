@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Issue;
 import lotto.domain.Lotto;
+import lotto.service.CoincideNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -50,7 +51,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
+    @DisplayName("당첨통계가 정상적으로 계산되는지 확인한다")
+    @Test
+    void calculateWinStaticics() {
+        CoincideNumber.plusCountOfRank(2);
+        int count = 1;
+        assertThat(count).isEqualTo(CoincideNumber.FIVE_BONUS_COINCIDE.count());
+    }
+   
 
     // 아래에 추가 테스트 작성 가능
 }
