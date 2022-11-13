@@ -17,6 +17,12 @@ public class RankingService {
         this.player = player;
     }
 
+    public void rankService() {
+        getRanking();
+        getEarningRate();
+        printResult();
+    }
+
     public void getRanking() {
         List<Lotto> lottos = player.getLottos();
         for (Lotto lotto : lottos) {
