@@ -18,5 +18,8 @@ public class LottoController {
         return lottoService.createLottos(orderQuantity);
     }
 
+    public WinningLotto createWinningLotto(List<Integer> lottoNumbers, int bonusNumber) {
+        return lottoService.createWinningLotto(lottoNumbers, bonusNumber);
+    }
 
 }

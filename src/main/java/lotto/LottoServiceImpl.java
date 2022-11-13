@@ -19,4 +19,9 @@ public class LottoServiceImpl implements LottoService {
     public List<Lotto> createLottos(int orderQuantity) {
         return lottoFactory.createLottos(orderQuantity);
     }
+
+    @Override
+    public WinningLotto createWinningLotto(List<Integer> lottoNumbers, int bonusNumber) {
+        return new WinningLotto(lottoFactory.createLotto(lottoNumbers), bonusNumber);
+    }
 }
