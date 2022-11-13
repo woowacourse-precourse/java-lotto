@@ -36,4 +36,9 @@ public enum Message {
     void printProfit(double profit) {
         System.out.printf("%s%.1f%%입니다.", msg, profit);
     }
+
+    void printPurchase(long quantity) {
+        String message = String.format("%d%s", quantity, msg);
+        System.out.println(message);
+    }
 }

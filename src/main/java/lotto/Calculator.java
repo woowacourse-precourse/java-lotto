@@ -13,6 +13,7 @@ public class Calculator {
         placesCount = new long[6];
         this.money = money;
         this.quantity = money / 1000;
+        Message.PURCHASE.printPurchase(quantity);
     }
 
     static void calculateLottos(long count, boolean isBonus) {

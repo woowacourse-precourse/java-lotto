@@ -8,7 +8,6 @@ public class Application {
 
         Calculator calc = user.inputMoney();
 
-        System.out.printf("%d%s%n%n", calc.quantity, Message.PURCHASE);
         user.generateRandomLotto(calc.quantity);
 
         Lotto lotto = user.inputWinningNumber();
