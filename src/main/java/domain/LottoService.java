@@ -61,6 +61,11 @@ public class LottoService {
         return money / LOTTO_PRICE;
     }
 
+    public double getEarningRate() {
+        double earningRate = (double) this.totalEarning / this.money;
+        return Math.round(earningRate * 100) / (double) 100;
+    }
+
     private Prize getResultOfLotto(
             List<Integer> winningNumbers,
             List<Integer> userNumbers,
