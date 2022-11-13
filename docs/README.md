@@ -1,14 +1,16 @@
 **기능 구현 목록**
 
 - 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다. 
-    - [] 로또 구입 금액 입력기를 만들고, 입력값에 따라 로또 개수를 정수형으로 반환한다.<><1> Inputer#inputMoney
+    - [x] 로또 구입 금액 입력기를 만들고, 입력값에 따라 로또 개수를 정수형으로 반환한다.<><1> Inputer#inputMoney
 
 - 사용자 : 구입 금액만큼 1~45까지의 로또 번호를 중복되지 않게 6개의 숫자 리스트를 랜덤하게 생성한다.
     - [] 로또 번호 생성기를 만들고, 그것의 배열/리스트를 반환한다.<1><2,3> Generater#generateRandomLottoNumber
 
-- 당첨 번호와 보너스 번호를 입력받는다.
-    - [] 당첨번호 입력기를 만들고, 그것을 배열/리스트로 반환한다.<><3> Inputer#createLottoWinNumber
-    - [] 보너스 번호를 입력기를 만들고, 그것을 정수형으로 반환한다.<><3> Inputer#createLottoBonusNumber
+- 당첨 번호와` 보너스 번호를 입력받는다.
+    - 당첨번호 입력기를 만들고, 그것을 배열/리스트로 반환한다.<><3> 
+      - [x] 당첨번호 입력기 만들기 Inputer#createLottoWinNumber
+      - [] 배열/리스트로 반환하는 함수 만들기 Maker#makeStringToList
+    - [x] 보너스 번호를 입력기를 만들고, 그것을 정수형`으로 반환한다.<><3> Inputer#createLottoBonusNumber
 
 - 발행한 로또 수량 및 번호를 출력한다. 로또 번호는 오름차순으로 정렬하여 보여준다.
   - [] 로또 번호 출력기를 만든다. 그것은 오름차순으로 정렬하여 보여준다.<2><>  Printer#printUserLottoNumber
