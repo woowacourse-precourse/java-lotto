@@ -44,4 +44,19 @@ class WinningLottoTest {
         Assertions.assertThat(containsBonus).isEqualTo(isMatchBonus);
     }
 
+    @DisplayName("당첨 번호와 일치한 갯수에 따라 당첨 내역 출력")
+    @ParameterizedTest
+    @CsvSource({"1, 2, 3, 4, 5, 6, FIRST",
+                "1, 2, 3, 4, 5, 7, SECOND",
+                "1, 2, 3, 4, 5, 45, THIRD",
+                "1, 2, 3, 4, 44, 45, FOURTH",
+                "1, 2, 3, 43, 44, 45, FIFTH",
+                "1, 2, 42, 43, 44, 45, SIXTH",
+                "1, 41, 42, 43, 44, 45, SIXTH",
+                "40, 41, 42, 43, 44, 45, SIXTH"})
+    void calculateRanking(int number1, int number2, int number3, int number4, int number5, int number6, Ranking ranking) {
+        Lotto lotto = new Lotto(List.of(number1, number2, number3, number4, number5, number6));
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+        Assertions.assertThat(winningLotto.calculateRanking(lotto)).isEqualTo(ranking);
+    }
 }
