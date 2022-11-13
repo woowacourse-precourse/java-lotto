@@ -44,7 +44,7 @@
 ### controller
 
 1. ApplicationController
-    - [ ]  어플리케이션 시작 기능 → startApplication
+    - [x]  어플리케이션 시작 기능 → startApplication
 
         구입 금액 입력 호출
    
