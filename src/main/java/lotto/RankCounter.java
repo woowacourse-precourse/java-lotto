@@ -6,7 +6,7 @@ public class RankCounter {
     private HashMap<Rank, Integer> rankCounter;
 
     public RankCounter() {
-        HashMap<Rank, Integer> rankCounter = new HashMap<>();
+        rankCounter = new HashMap<>();
         for (Rank rank : Rank.values()) {
             rankCounter.put(rank, 0);
         }
