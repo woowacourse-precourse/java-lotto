@@ -25,11 +25,11 @@ public class Buyer {
 
     public void createLottos(int amount) {
         int count = countOfBuyLottos(amount);
-        IntStream.range(1, countOfBuyLottos(amount)+1).forEach(value -> lottos.add(Lotto.generateLotto()));
+        IntStream.range(1, countOfBuyLottos(amount)).forEach(value -> lottos.add(Lotto.generateLotto()));
         OutputView.printPurchase(count, lottos);
     }
 
     private int countOfBuyLottos(int amount) {
-        return amount/1000;
+        return (amount/1000)+1;
     }
 }
