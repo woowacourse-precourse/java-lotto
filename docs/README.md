@@ -44,3 +44,26 @@
   - __(조건)__ 상금/투자금 * 100 
   - __(조건)__ 소수점 둘째 자리
 
+
+<br>
+
+## ✏ 스켈레톤
+- domain (비즈니스 로직)
+  - Revenue (수익 및 수익률 계산)
+  - Score (등수 계산)
+- model (일급컬렉션)
+  - Bonus (보너스 숫자)
+  - Lotto (개별 로또)
+  - Lottos (로또들)
+- validation 
+  - Validation (모델 생성 검증 외 다른 검증 로직)
+- view
+  - input
+    - CreateBonus (보너스 숫자 생성)
+    - CreateLott (로또 생성)
+    - UserInput (유저 인풋 받음)
+  - output
+    - Guide (가이드 문장 출력)
+    - Result (결과 통계 출력)
+- util
+  - Constants (상수)
