@@ -1,8 +1,15 @@
-package lotto;
+package lotto.service;
+
+import lotto.domain.Lotto;
+import lotto.domain.LottoMachine;
+import lotto.domain.LottoPurchaseInfo;
+import lotto.domain.WinPrize;
+import lotto.message.PrintController;
+import lotto.message.input.MoneyInputController;
 
 import java.util.List;
 
-public class LottoSeller {
+public class LottoSellService {
 
     private final LottoMachine lottoMachine;
     private final int ZERO = 0;
@@ -10,7 +17,7 @@ public class LottoSeller {
     private MoneyInputController moneyInputController;
     private PrintController printController;
 
-    public LottoSeller() {
+    public LottoSellService() {
         lottoMachine = new LottoMachine();
         moneyInputController = new MoneyInputController();
         printController = new PrintController();

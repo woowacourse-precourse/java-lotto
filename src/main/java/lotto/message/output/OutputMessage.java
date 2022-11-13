@@ -1,4 +1,4 @@
-package lotto;
+package lotto.message.output;
 
 public enum OutputMessage {
 
@@ -11,7 +11,7 @@ public enum OutputMessage {
     BONUS_MATCH_MESSAGE("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개"),
     SIX_COUNT_MATCH_MESSAGE("6개 일치 (2,000,000,000원) - %d개");
 
-    String message;
+    public String message;
 
     OutputMessage(String message) {
         this.message = message;

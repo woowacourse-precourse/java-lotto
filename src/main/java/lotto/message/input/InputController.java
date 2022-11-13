@@ -1,6 +1,7 @@
-package lotto;
+package lotto.message.input;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.message.PrintController;
 
 public abstract class InputController {
 

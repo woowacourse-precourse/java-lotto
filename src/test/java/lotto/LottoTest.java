@@ -1,5 +1,9 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.domain.LottoMachine;
+import lotto.domain.WinPrize;
+import lotto.service.LottoPrizeRecordingService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -141,7 +145,7 @@ class LottoTest {
     public void recordWinPrize() {
 
         LottoMachine lottoMachine = new LottoMachine();
-        LottoPrizeRecordingManager lottoPrizeRecordingManager = new LottoPrizeRecordingManager();
+        LottoPrizeRecordingService lottoPrizeRecordingService = new LottoPrizeRecordingService();
         lottoMachine.setWinNumber(List.of("11", "12", "13", "14", "15", "16"));
         lottoMachine.setBonusNumber("17");
 
@@ -150,11 +154,11 @@ class LottoTest {
                 new Lotto(List.of(11, 12, 13, 20, 21, 22)));
 
         lottoNumbers.forEach(
-                (lotto) -> lottoPrizeRecordingManager
+                (lotto) -> lottoPrizeRecordingService
                         .setPrizeRecording(lottoMachine.getWinPrize(lotto))
         );
 
-        EnumMap<WinPrize, Long> prizeRecording = lottoPrizeRecordingManager.getPrizeRecording();
+        EnumMap<WinPrize, Long> prizeRecording = lottoPrizeRecordingService.getPrizeRecording();
 
         assertThat(prizeRecording.keySet().size()).isEqualTo(2);
         assertThat(prizeRecording.get(WinPrize.ONE_GRADE)).isEqualTo(1);
@@ -168,7 +172,7 @@ class LottoTest {
     public void calculatePrizeRate() {
 
         LottoMachine lottoMachine = new LottoMachine();
-        LottoPrizeRecordingManager lottoPrizeRecordingManager = new LottoPrizeRecordingManager();
+        LottoPrizeRecordingService lottoPrizeRecordingService = new LottoPrizeRecordingService();
         lottoMachine.setWinNumber(List.of("11", "12", "13", "14", "15", "16"));
         lottoMachine.setBonusNumber("17");
 
@@ -177,12 +181,12 @@ class LottoTest {
                 new Lotto(List.of(11, 12, 13, 20, 21, 22)));
 
         lottoNumbers.forEach(
-                (lotto) -> lottoPrizeRecordingManager
+                (lotto) -> lottoPrizeRecordingService
                         .setPrizeRecording(lottoMachine.getWinPrize(lotto))
         );
 
-        assertThat(lottoPrizeRecordingManager.getPrizeRate(2000))
-                .isEqualTo(lottoPrizeRecordingManager.getTotalPrizeMoney() / 2000);
+        assertThat(lottoPrizeRecordingService.getPrizeRate(2000))
+                .isEqualTo(lottoPrizeRecordingService.getTotalPrizeMoney() / 2000);
     }
 
 }

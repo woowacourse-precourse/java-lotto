@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum WinPrize {
 
@@ -9,8 +9,8 @@ public enum WinPrize {
     FIVE_GRADE(3, 5_000),
     NOTHING(0, 0);
 
-    long matchCount;
-    long price;
+    public long matchCount;
+    public long price;
 
     WinPrize(long matchCount, long price) {
         this.matchCount = matchCount;

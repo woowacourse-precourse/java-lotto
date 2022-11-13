@@ -1,9 +1,11 @@
-package lotto;
+package lotto.service;
+
+import lotto.domain.WinPrize;
 
 import java.util.EnumMap;
 import java.util.stream.Collectors;
 
-public class LottoPrizeRecordingManager {
+public class LottoPrizeRecordingService {
 
     private EnumMap<WinPrize, Long> prizeRecording = new EnumMap<>(WinPrize.class);
     private long totalPrizeMoney;

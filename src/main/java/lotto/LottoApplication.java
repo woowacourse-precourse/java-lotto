@@ -1,22 +1,25 @@
 package lotto;
 
+import lotto.message.PrintController;
+import lotto.service.LottoBuyService;
+
 public class LottoApplication {
 
-    private LottoBuyer lottoBuyer;
+    private LottoBuyService lottoBuyService;
     private PrintController printController;
 
     public LottoApplication() {
-        this.lottoBuyer = new LottoBuyer();
+        this.lottoBuyService = new LottoBuyService();
         this.printController = new PrintController();
     }
 
     public void run() {
 
         try {
-            lottoBuyer.buyLotto();
-            lottoBuyer.inputNumber();
-            lottoBuyer.checkWinStatics();
-            lottoBuyer.checkRate();
+            lottoBuyService.buyLotto();
+            lottoBuyService.inputNumber();
+            lottoBuyService.checkWinStatics();
+            lottoBuyService.checkRate();
         } catch (IllegalArgumentException illegalArgumentException) {
             printController.print(illegalArgumentException.getMessage());
         }
