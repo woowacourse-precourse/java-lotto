@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
 
 public class Application {
@@ -17,7 +19,11 @@ public class Application {
     }
 
     private boolean isValidMoney(int money) {
-        return money==moneyUnit;
+        return money == moneyUnit;
+    }
+
+    private static List<Integer> createLottoNumber() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
     private void validMoney(int money) {
