@@ -42,13 +42,7 @@ public class LottoMachine {
     }
 
     private Lotto createRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < LOTTO_SIZE) {
-            int number = Randoms.pickNumberInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER);
-            if (checkDuplication(numbers, number)) {
-                numbers.add(number);
-            }
-        }
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER,6));
         Collections.sort(numbers);
         return new Lotto(numbers);
     }
@@ -104,10 +98,10 @@ public class LottoMachine {
 
     public double getYield() {
         int moneyAll = 0;
-        for (int i=0;i<=7;i++){
+        for (int i = 0; i <= 7; i++) {
             moneyAll += Rank.findMoney(i).getMoney(winningList.get(i));
         }
-        return (double) moneyAll / (1000.0 * (double) count/100.0);
+        return (double) moneyAll / (1000.0 * (double) count / 100.0);
     }
 
 }

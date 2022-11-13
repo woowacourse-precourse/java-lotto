@@ -19,15 +19,19 @@ public class Game {
     }
 
     public void start() {
-        int money = inputView.inputMoney();
-        int lottoCount = money / LOTTO_UNIT;
-        lottoMachine = new LottoMachine(lottoCount);
-        outputView.printLottoCount(lottoCount);
-        outputView.printLottoNumbers(lottoMachine.getLottosNumberList());
-        lottoMachine.saveWinningNumber(inputView.inputWinningNumber(),
-                inputView.inputBonusNumber());
-        outputView.printWinningList(lottoMachine.getWinningList());
-        outputView.printYield(lottoMachine.getYield());
+        try {
+            int money = inputView.inputMoney();
+            int lottoCount = money / LOTTO_UNIT;
+            lottoMachine = new LottoMachine(lottoCount);
+            outputView.printLottoCount(lottoCount);
+            outputView.printLottoNumbers(lottoMachine.getLottosNumberList());
+            lottoMachine.saveWinningNumber(inputView.inputWinningNumber(),
+                    inputView.inputBonusNumber());
+            outputView.printWinningList(lottoMachine.getWinningList());
+            outputView.printYield(lottoMachine.getYield());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
 }
