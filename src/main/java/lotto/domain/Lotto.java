@@ -81,7 +81,11 @@ public class Lotto {
         final int LOTTO_END_NUMBER = 45;
 
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, count);
-        lottoNumbers.sort(null);
+        try {
+            lottoNumbers.sort(null);
+        }catch (Exception ignored) {
+
+        }
 
         return lottoNumbers;
     }
