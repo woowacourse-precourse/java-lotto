@@ -16,5 +16,10 @@ public class Lotto {
         }
     }
 
+    // 보너스 숫자를 추가하는 메서드
+    public void addBonus(int bonus){
+        numbers.add(bonus);
+    }
+
     // TODO: 추가 기능 구현
 }
