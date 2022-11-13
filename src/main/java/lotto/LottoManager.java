@@ -10,6 +10,7 @@ import java.util.List;
 public class LottoManager {
     private InputManager inputManager;
     private List<Lotto> lottos;
+    private LottoMachine lottoMachine;
 
     public LottoManager(){
         this.inputManager = new InputManager();
@@ -23,6 +24,7 @@ public class LottoManager {
         printLottos(lottos);
         List<Integer> winningNumbers = inputManager.drawWinningNumbers();
         int bonusNumber = inputManager.drawBonusNumber();
+        lottoMachine = new LottoMachine(winningNumbers, bonusNumber);
     }
 
     public int countBuyableLotto(int amount) {
