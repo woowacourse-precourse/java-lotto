@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Set;
 
 public class MatchCalculator {
-
 	private static int lottoMatch;
 	private static int bonusMatch;
 	protected static int fiveMatchAndBonusMatch;
