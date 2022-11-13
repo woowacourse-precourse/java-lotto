@@ -42,7 +42,7 @@ class WinningPrizeTest {
             int output = 1;
             assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
         }
-        
+
         @Test
         void findRanking_case2(){
             int amountOfCorrectNumbers = 5;
@@ -56,6 +56,81 @@ class WinningPrizeTest {
             int amountOfCorrectNumbers = 5;
             bonusNumber = 7;
             int output = 3;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+
+        @Test
+        void findRanking_case4_1(){
+            int amountOfCorrectNumbers = 4;
+            bonusNumber = 6;
+            int output = 4;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+        @Test
+        void findRanking_case4_2(){
+            int amountOfCorrectNumbers = 4;
+            bonusNumber = 7;
+            int output = 4;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+
+        @Test
+        void findRanking_case5_1(){
+            int amountOfCorrectNumbers = 3;
+            bonusNumber = 6;
+            int output = 5;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+        @Test
+        void findRanking_case5_2(){
+            int amountOfCorrectNumbers = 3;
+            bonusNumber = 7;
+            int output = 5;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+
+        @Test
+        void findRanking_case6_1(){
+            int amountOfCorrectNumbers = 2;
+            bonusNumber = 6;
+            int output = -1;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+        @Test
+        void findRanking_case6_2(){
+            int amountOfCorrectNumbers = 2;
+            bonusNumber = 7;
+            int output = -1;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+
+        @Test
+        void findRanking_case6_3(){
+            int amountOfCorrectNumbers = 1;
+            bonusNumber = 6;
+            int output = -1;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+        @Test
+        void findRanking_case6_4(){
+            int amountOfCorrectNumbers = 1;
+            bonusNumber = 7;
+            int output = -1;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+
+        @Test
+        void findRanking_case6_5(){
+            int amountOfCorrectNumbers = 0;
+            bonusNumber = 6;
+            int output = -1;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+        @Test
+        void findRanking_case6_6(){
+            int amountOfCorrectNumbers = 0;
+            bonusNumber = 7;
+            int output = -1;
             assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
         }
     }
