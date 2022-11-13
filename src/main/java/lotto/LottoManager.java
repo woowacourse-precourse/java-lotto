@@ -2,10 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class LottoManager {
     private InputManager inputManager;
@@ -54,5 +51,22 @@ public class LottoManager {
             Collections.sort(lotto.getNumbers());
             System.out.println(Arrays.toString(lotto.getNumbers().toArray()));
         }
+    }
+
+    public int compareWinningNumbers(Lotto lotto, List<Integer> winningNumbers) {
+        int count = 0;
+        for (int number : lotto.getNumbers()) {
+            if (winningNumbers.contains(number)) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    public boolean compareBonusNumbers(Lotto lotto, int bonusNumbers) {
+        if (lotto.getNumbers().contains(bonusNumbers)) {
+            return true;
+        }
+        return false;
     }
 }
