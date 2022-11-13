@@ -11,8 +11,8 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public boolean isExistNumber(int bonus) {
-        return numbers.contains(bonus);
+    public boolean isExistNumber(int number) {
+        return numbers.contains(number);
     }
 
     public List<Integer> getSortedLottoNumbers() {
