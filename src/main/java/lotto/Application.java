@@ -4,6 +4,23 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+enum MatchCount {
+    THREE(3,"5,000원"),FOUR(4,"50,000원"),
+    FIVE(5,"1,500,000원"),FIVE_BONUS(5,"30,000,000원"),
+    SIX(6,"2,000,000,000원");
+    private final int value;
+    private final String prize;
+    MatchCount(int value,String prize) {
+        this.value=value;
+        this.prize=prize;
+    }
+    public int getValue() {
+        return value;
+    }
+    public String getPrize() {
+        return prize;
+    }
+}
 
 public class Application {
     private static final String INPUT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -15,20 +32,33 @@ public class Application {
     private static final String OUT_OF_RANGE_MESSAGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다";
     private static final String SHOP_RESULT = "개를 구매했습니다.";
     private static final String IS_DUPLICATED_MESSAGE = "숫자가 중복되었습니다.";
+    private static final String LOTTO_RESULT = "당첨 통계";
+    private static final String LOTTO_RESULT_LINE="---";
+    private static final String MATCH="개 일치 ";
+    private static final String COUNT="개";
 
     public static void main(String[] args) {
         int myPrice = priceInput();
         int lottoCount=howManyLottos(myPrice);
         System.out.println(lottoCount+SHOP_RESULT);
+
         List<List<Integer>> myLottos=getMyLottos(lottoCount);
         for(List<Integer> myLotto:myLottos){
             System.out.println(myLotto);
         }
 
         List<Integer> lottoNumbers = lottoNumAnswerInput();
-        Lotto myLotto = new Lotto(lottoNumbers);
+        Lotto lottoAnswer = new Lotto(lottoNumbers);
         int luckyNumber = getLuckyNumber();
+
+        lottoResult(lottoAnswer,luckyNumber,myLottos);
     }
+    public static void lottoResult(Lotto answer, int luckyNum, List<List<Integer>> lottos){
+        System.out.println(LOTTO_RESULT);
+        System.out.println(LOTTO_RESULT_LINE);
+//        System.out.println(matchNum + MATCH + price + count + COUNT);
+    }
+
     public static List<List<Integer>> getMyLottos(int count){
         List<List<Integer>> totalLottos=new ArrayList<>();
         List<Integer> numbers;
