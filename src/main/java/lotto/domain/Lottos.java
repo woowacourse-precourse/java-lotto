@@ -20,4 +20,8 @@ public class Lottos {
         this.lottos.add(lotto);
         this.numberOfLottos += 1;
     }
+
+    public Integer getPriceOfLottos() {
+        return lottos.size() * Lotto.getPrice();
+    }
 }

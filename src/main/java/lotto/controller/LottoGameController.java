@@ -18,7 +18,9 @@ public class LottoGameController {
         final Lotto winLotto = getWinLotto();
         final Integer bonusNumber = getBonusNumber(winLotto);
 
-        UserOutput.outputWinStatistics(new Result(boughtLottos, winLotto, bonusNumber));
+        UserOutput.outputResultStatistics(
+                new Result(boughtLottos, winLotto, bonusNumber),
+                boughtLottos.getPriceOfLottos());
     }
 
     private Integer getBonusNumber(Lotto winLotto) {

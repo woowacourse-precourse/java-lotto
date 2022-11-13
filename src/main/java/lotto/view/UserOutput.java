@@ -9,6 +9,8 @@ import lotto.domain.WinRank;
 public class UserOutput {
     private static final String OUTPUT_BUY_LOTTOS = " 개를 구매했습니다.";
     private static final String OUTPUT_WIN_STATISTICS = "당첨 통계\n---";
+    private static final String OUTPUT_EARNING_RATE = "총 수익률은 ";
+    private static final String OUTPUT_PERCENT = "%입니다.";
 
     public static void outputBuyLottos(Lottos lottos) {
         System.out.println("\n" + lottos.getNumberOfLottos().toString() + OUTPUT_BUY_LOTTOS);
@@ -20,13 +22,23 @@ public class UserOutput {
         System.out.println();
     }
 
-    public static void outputWinStatistics(Result result) {
+    public static void outputResultStatistics(Result result, Integer inputMoney) {
         System.out.println(OUTPUT_WIN_STATISTICS);
+        outputWinStatistics(result);
+        outputEarningRate(result, inputMoney);
+    }
+
+    private static void outputWinStatistics(Result result) {
         final Map<WinRank, Integer> prizeResult = result.getPrizeResult();
 
         for (WinRank winRank : WinRank.getWinnerRanksExceptFail()) {
             System.out.println(getEachWinStatistics(winRank, prizeResult));
         }
+
+    }
+
+    private static void outputEarningRate(Result result, Integer inputMoney) {
+        System.out.println(OUTPUT_EARNING_RATE + result.calculateEarningRate(inputMoney) + OUTPUT_PERCENT);
     }
 
     private static String getEachWinStatistics(WinRank winRank, Map<WinRank, Integer> prizeResult) {

@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class Lotto {
+    private static final Integer PRICE = 1000;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -22,5 +23,9 @@ public class Lotto {
 
     public List<Integer> getLotto() {
         return this.numbers;
+    }
+
+    public static Integer getPrice() {
+        return PRICE;
     }
 }
