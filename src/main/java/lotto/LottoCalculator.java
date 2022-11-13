@@ -1,39 +1,21 @@
 package lotto;
 
 import java.util.List;
+import java.util.Optional;
 
 public class LottoCalculator {
 
-    public static int calculateRank(Lotto winningNumber, Bonus bonus, Lotto lottoTicket) {
-        List<Integer> winningNumbers = winningNumber.getNumbers();
-        List<Integer> lottoTicketNumbers = lottoTicket.getNumbers();
-        int bonusNumber = bonus.getNumber();
-
-        long matchCount = match(lottoTicketNumbers, winningNumbers);
-
-        if (matchCount == 6) {
-            return 1;
-        }
-        if (matchCount == 5 && containsBonusNumber(lottoTicketNumbers, bonusNumber)) {
-            return 2;
-        }
-        if (matchCount == 5) {
-            return 3;
-        }
-        if (matchCount == 4) {
-            return 4;
-        }
-        if (matchCount == 3) {
-            return 5;
-        }
-        return -1;
+    public static Optional<Rank> calculateRank(Lotto winningNumbers, Bonus bonus, Lotto ticket) {
+        long matchCount = match(winningNumbers, ticket);
+        return Rank.getRank((int) matchCount, containsBonus(ticket, bonus));
     }
 
-    private static long match(List<Integer> lottoTicketNumbers, List<Integer> winningNumbers) {
-        return lottoTicketNumbers.stream().filter(winningNumbers::contains).count();
+    private static long match(Lotto winningNumbers, Lotto ticket) {
+        List<Integer> numbers = winningNumbers.getNumbers();
+        return ticket.getNumbers().stream().filter(numbers::contains).count();
     }
 
-    private static boolean containsBonusNumber(List<Integer> lottoTicketNumbers, int bonusNumber) {
-        return lottoTicketNumbers.contains(bonusNumber);
+    private static boolean containsBonus(Lotto ticket, Bonus bonus) {
+        return ticket.getNumbers().contains(bonus.getNumber());
     }
 }
