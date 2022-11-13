@@ -1,11 +1,8 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoIO {
@@ -54,7 +51,6 @@ public class LottoIO {
         if (input == null) {
             return true;
         }
-
         String[] nums = input.split(",");
         if (nums.length != 6) {
             return true;
