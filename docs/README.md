@@ -47,8 +47,8 @@
 - WinningLotto extends Lotto
 - [x] 당첨 로또 번호 저장받기
 - [x] 보너스 번호 저장받기
-- LottoResult
-- [ ] 로또 당첨 비교하기
+- LottoPurchase
+- [x] 구매한 로또 저장받기
 
 ### service
 - LottoService

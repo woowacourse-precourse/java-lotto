@@ -23,16 +23,20 @@ public class LottoController {
     }
 
     public void start() {
-        OutputView.printInputAmount();
-        Integer paidAmount = InputView.inputPaidAmount();
-
-        LottoTicketDTO lottoTicketDTO = lottoService.issueLottoByPaidAmount(paidAmount);
-        OutputView.printPaidLotto(paidAmount, lottoTicketDTO);
+        purchaseLotto();
 
         OutputView.printInputWinningNumber();
         List<Integer> winningLottoNumber = InputView.inputWinningNumber();
 
         OutputView.printInputBonusNumber();
         Integer bonusLottoNumber = InputView.inputBonusNumber();
+    }
+
+    private void purchaseLotto() {
+        OutputView.printInputAmount();
+        Integer paidAmount = InputView.inputPaidAmount();
+
+        LottoTicketDTO lottoTicketDTO = lottoService.purchaseLottoByPaidAmount(paidAmount);
+        OutputView.printPaidLotto(paidAmount, lottoTicketDTO);
     }
 }
