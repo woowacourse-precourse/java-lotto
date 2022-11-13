@@ -3,6 +3,9 @@ package lotto;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -53,9 +56,9 @@ class LottoTest {
                 () -> assertEquals(lottoList.size(), 14),
                 () -> assertEquals(lottoList.get(0).size(), 6)
         );
-
-
     }
+
+
 
 
 }

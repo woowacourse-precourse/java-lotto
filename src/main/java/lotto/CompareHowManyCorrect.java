@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
-public class Comparator {
+public class CompareHowManyCorrect {
 
 
     public List<Integer> compareLotto(List<List<Integer>> user, List<Integer> winNumber){
