@@ -165,4 +165,16 @@ class LottoServiceTest {
         assertThat(lottoService.calculateProfitPercent(spentMoney, totalProfit))
                 .isEqualTo("15,650.0%");
     }
+
+    @Test
+    @DisplayName("로또를 9,000원치 구매하고 수익금이 2,000,005,000원이면 수익률은 22,222,277.8% 여야한다")
+    void buyLotto9_000WonAnd2_000_005_000ProfitThenProfitRateMust_22_222_277_8Percent() {
+        // given
+        Money spentMoney = Money.of(9_000L);
+        Money totalProfit = Money.of(2_000_005_000L);
+
+        // expect
+        assertThat(lottoService.calculateProfitPercent(spentMoney, totalProfit))
+                .isEqualTo("22,222,277.8%");
+    }
 }
