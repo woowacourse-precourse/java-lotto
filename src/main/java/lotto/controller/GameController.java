@@ -5,6 +5,7 @@ import lotto.domain.GameScore;
 import lotto.view.GamePrint;
 
 public class GameController {
+
     private final GameService gameService;
 
     public GameController() {

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ValidateUtils {
+
     private static final String ERROR_MEESAGE_HEADER = "[ERROR] ";
 
     private static final String VALIDATE_MONEY_TYPE = "금액은 숫자만 입력 가능합니다. ";

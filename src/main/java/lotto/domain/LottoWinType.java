@@ -23,6 +23,7 @@ public enum LottoWinType {
     public int getIdx() {
         return idx;
     }
+
     public int getCorretAnswer() {
         return corretAnswer;
     }

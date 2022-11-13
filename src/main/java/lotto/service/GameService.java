@@ -7,7 +7,6 @@ import java.util.List;
 import lotto.domain.GameScore;
 import lotto.domain.Lotto;
 import lotto.domain.User;
-import lotto.utils.Constant;
 import lotto.view.GameInput;
 import lotto.view.GamePrint;
 

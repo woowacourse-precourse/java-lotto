@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import java.util.Map;
-import lotto.domain.LottoWinType;
 
 public class GameScore {
 

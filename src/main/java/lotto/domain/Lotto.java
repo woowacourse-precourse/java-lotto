@@ -10,6 +10,7 @@ import lotto.utils.Constant;
 import lotto.utils.ValidateUtils;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {

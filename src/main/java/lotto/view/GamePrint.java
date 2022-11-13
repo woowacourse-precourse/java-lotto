@@ -44,13 +44,14 @@ public class GamePrint {
 
     public static void printWinLottoStats(GameScore gameScore) {
         System.out.println(PRINT_WIN_STATS_START_TEXT);
-        List<LottoWinType> mapKeySet = new ArrayList<> (gameScore.getLottoWinType().keySet());
+        List<LottoWinType> mapKeySet = new ArrayList<>(gameScore.getLottoWinType().keySet());
         mapKeySet.sort(Comparator.comparing(LottoWinType::getIdx));
         for (LottoWinType winType : mapKeySet) {
             if (winType == LottoWinType.ELSE) {
                 continue;
             }
-            System.out.println(getWinTypePrintText(winType) + gameScore.getLottoWinType().get(winType) + WIN_STATS_COUNT_TEXT);
+            System.out.println(
+                    getWinTypePrintText(winType) + gameScore.getLottoWinType().get(winType) + WIN_STATS_COUNT_TEXT);
         }
         System.out.println(String.format(PROFIT_RATE_TEXT, gameScore.getProfitRate()));
     }
