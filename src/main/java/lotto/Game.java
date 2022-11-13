@@ -7,14 +7,25 @@ import java.util.*;
 public class Game {
 
     public void play(int lottoCount) {
-
         System.out.println("게임 시작~");
         System.out.println(lottoCount);
 
-        for (int count = 0; count < lottoCount; count++) {
+        Set<List<Integer>> lottoNumbers = new HashSet<>();
+
+        for(int count =0; count < lottoCount; count++) {
 
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            System.out.println(lottoNumber);
+            lottoNumbers.add(lottoNumber);
+        }
+
+        isValidCntLottoNumbers(lottoCount,lottoNumbers);
+        System.out.println(lottoNumbers);
+    }
+
+    private void isValidCntLottoNumbers(int lottoCount, Set<List<Integer>> lottoNumbers) {
+
+        while (lottoNumbers.size() != lottoCount) {
+            lottoNumbers.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         }
     }
 }
