@@ -13,7 +13,7 @@ public class Game {
     private Integer budget = 0;
     private List<Lotto> lottos = new ArrayList<>();
     private Lotto winningLotto;
-    private Integer bonus;
+    private Integer bonus = 0;
     public Game(){
 
     }
@@ -59,6 +59,9 @@ public class Game {
         return Randoms.pickUniqueNumbersInRange(1, maximumLottoNumber, numberToDraw);
     }
 
+    private void validateBonusByRange(Integer bonus){
+        if (bonus > 45 || bonus < 1) throw new IllegalArgumentException();
+    }
 
 
 
