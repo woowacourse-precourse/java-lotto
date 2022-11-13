@@ -24,4 +24,11 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("1000원 단위가 아닌 숫자는 예외가 발생한다.")
+    @Test
+    void inputMoneyMultiply1000(){
+        assertThatThrownBy(
+                ()-> Exception.UserMoneyDivide1000(8500)
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
 }
