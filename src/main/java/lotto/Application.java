@@ -40,11 +40,11 @@ public class Application {
     }
 
     private static void calculateEarnings(int[] ranking, int userInputMoney) {
-        int total = ranking[3] * 5000
-                + ranking[4] * 50000
-                + ranking[5] * 150000
-                + ranking[7] * 30000000
-                + ranking[6] * 2000000000;
+        int total = ranking[3] * RankingMoney.FIFTH.getMoney()
+                + ranking[4] * RankingMoney.FOURTH.getMoney()
+                + ranking[5] * RankingMoney.THIRD.getMoney()
+                + ranking[7] * RankingMoney.SECOND.getMoney()
+                + ranking[6] * RankingMoney.FIRST.getMoney();
         double earnings = total / (double) userInputMoney * 100;
         double roundedEarnings = (double) Math.round(earnings * 10) / 10;
         System.out.println("총 수익률은 " + roundedEarnings + "%입니다.");
