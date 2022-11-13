@@ -16,6 +16,10 @@ public class Money {
 		}
 	}
 	
+	public int getMoney() {
+		return MONEY;
+	}
+	
 	public int getLottoCount() {
 		return lottoCount;
 	}
