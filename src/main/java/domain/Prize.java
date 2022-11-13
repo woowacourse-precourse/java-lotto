@@ -1,19 +1,21 @@
 package domain;
 
 public enum Prize {
-    firstPrize(1, 2000000000),
-    secondPrice(2, 30000000),
-    thirdPrice(3, 1500000),
-    fourthPrice(4, 50000),
-    fifthPrice(5, 5000),
-    nothing(0, 0);
+    firstPrize(1, 2000000000,"6개 일치 (2,000,000,000원)"),
+    secondPrice(2, 30000000,"5개 일치, 보너스 볼 일치 (30,000,000원)"),
+    thirdPrice(3, 1500000,"5개 일치 (1,500,000원)"),
+    fourthPrice(4, 50000,"4개 일치 (50,000원)"),
+    fifthPrice(5, 5000,"3개 일치 (5,000원)"),
+    nothing(0, 0,"미당첨");
 
     public final int ranking;
     public final int rankingPrize;
+    public final String systemMessage;
 
-    private Prize(int ranking, int rankingPrize) {
+    private Prize(int ranking, int rankingPrize,String systemMessage) {
         this.ranking = ranking;
         this.rankingPrize = rankingPrize;
+        this.systemMessage = systemMessage;
     }
 
 }
