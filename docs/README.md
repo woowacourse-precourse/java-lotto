@@ -3,10 +3,13 @@
 ## 로또 사기
 - [x] 구매 문구 출력 (`InputView`)
 - [ ] `UserService`를 통해 User 생성
-  - [ ] `Lotto` 클래스 `valiate` 구현
-  - [ ] `Lotto` 를 상속받은 `LotteryTicket` 클래스 구현
-  - [ ] `User` 클래스 구현
-  - [ ] `UserService` 의 `createUser` 메서드 구현
+    - [ ] `Lotto` 클래스 `valiate` 구현
+        - [ ] 6개의 숫자인지 확인
+        - [ ] 1 ~ 45 사이의 숫자인지 확인
+        - [ ] 중복된 숫자가 있는지 확인
+    - [ ] `Lotto` 를 상속받은 `LotteryTicket` 클래스 구현
+    - [ ] `User` 클래스 구현
+    - [ ] `UserService` 의 `createUser` 메서드 구현
 - [ ] `LotterySellService`를 통해 로또 구매
     - [ ] `LotteryTicketRepository` 싱글톤 구현
     - [ ] 로또 번호 생성 구현
