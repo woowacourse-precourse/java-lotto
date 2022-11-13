@@ -73,7 +73,7 @@ public class WinningNumber {
 
     public List<Rank> collectRanks(List<Lotto> lottos) {
         return lottos.stream()
-                .map(lotto -> createRank(lotto))
+                .map(this::createRank)
                 .collect(Collectors.toList());
     }
 

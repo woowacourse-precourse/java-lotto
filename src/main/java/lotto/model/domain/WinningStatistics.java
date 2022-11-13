@@ -58,8 +58,7 @@ public class WinningStatistics {
     }
 
     private void countRanks(List<Rank> ranks) {
-        ranks.stream()
-                .forEach(this::countRank);
+        ranks.forEach(this::countRank);
     }
 
     private void countRank(Rank rank) {

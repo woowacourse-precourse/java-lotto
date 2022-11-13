@@ -62,7 +62,7 @@ public class Lotto {
 
     public int countMatch(Lotto lotto) {
         return (int) numbers.stream()
-                .filter(number -> lotto.contains(number))
+                .filter(lotto::contains)
                 .count();
     }
 
