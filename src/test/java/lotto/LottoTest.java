@@ -3,6 +3,7 @@ package lotto;
 import lotto.domain.Issue;
 import lotto.domain.Lotto;
 import lotto.service.CoincideNumber;
+import lotto.ui.Output;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -58,7 +59,15 @@ class LottoTest {
         int count = 1;
         assertThat(count).isEqualTo(CoincideNumber.FIVE_BONUS_COINCIDE.count());
     }
-   
+
+    @DisplayName("수익률이 정상적으로 계산되는지 확인한다")
+    @Test
+    void calculateRevenue() {
+        Issue issue = new Issue(5000);
+        double result = 100000/5000;
+        assertThat(result).isEqualTo(issue.calculate(100000));
+    }
+
 
     // 아래에 추가 테스트 작성 가능
 }
