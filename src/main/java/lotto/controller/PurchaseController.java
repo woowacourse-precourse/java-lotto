@@ -21,4 +21,9 @@ public class PurchaseController extends Controller{
             throw new IllegalArgumentException(FORMAT_ERROR_MESSAGE);
         }
     }
+
+    public int purchaseLotto(int money) {
+        Purchase purchase = new Purchase();
+        return purchase.changeToLotto(money);
+    }
 }
