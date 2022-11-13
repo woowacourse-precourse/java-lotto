@@ -89,7 +89,7 @@
        + getTotalPrize()
          * input: None
          * output: int totalPrize
-       + getResult()
+       + getWinResult()
          * input: None
          * output: Map winResult
          
