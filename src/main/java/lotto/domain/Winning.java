@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Winning {
-    private int win1 = 0;
-    private int win2 = 0;
-    private int win3 = 0;
-    private int win4 = 0;
-    private int win5 = 0;
+    public int win1 = 0;
+    public int win2 = 0;
+    public int win3 = 0;
+    public int win4 = 0;
+    public int win5 = 0;
 
     public void score(List<List<Integer>> userNum, List<Integer> winNum, int bonusNum) {
         for (int i=0; i<userNum.size(); i++) {
