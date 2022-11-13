@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class LottoListTest {
+class LottoMachineTest {
 
     @DisplayName("입력한 돈이 1000으로 나누어지지 않으면 예외가 발생한다.")
     @Test
@@ -49,6 +49,13 @@ class LottoListTest {
                 + "\n" + result.getLottoList().get(1).getNumbers();
 
         assertThat(resultString).isEqualTo(result.toString());
+    }
+
+    @DisplayName("금액이 0원 이하일 때 예외 발생")
+    @Test
+    void createLottoByDuplicatedCharacter() {
+        assertThatThrownBy(() -> new LottoMachine(-1000))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
