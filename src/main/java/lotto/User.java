@@ -22,6 +22,10 @@ public class User {
     }
 
     public int toInteger(String input) {
+        if (!input.matches("^[0-9]*$")) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+        }
+
         int money = Integer.parseInt(input);
         if (money < 1000) {
             throw new IllegalArgumentException("[ERROR] 1,000원 이상을 입력해 주세요.");
