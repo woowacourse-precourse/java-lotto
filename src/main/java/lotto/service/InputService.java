@@ -18,13 +18,15 @@ public class InputService {
         return Integer.parseInt(inputMoney);
     }
 
-    private List<Integer> inputNumbersToList(String inputNumbers) {
+    public List<Integer> inputNumbersToList(String inputNumbers) {
         List<Integer> numbers = new ArrayList<>(Collections.emptyList());
+        numbers = toList(inputNumbers);
         return numbers;
     }
 
     private List<Integer> toList(String inputNumbers) {
         List<Integer> numbers = new ArrayList<>(Collections.emptyList());
+
         StringTokenizer st = new StringTokenizer(inputNumbers, ",");
         while (st.hasMoreTokens()) {
             numbers.add(Integer.parseInt(st.nextToken()));
