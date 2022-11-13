@@ -2,12 +2,8 @@ package lotto.Controller;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import lotto.domain.Money;
-import lotto.domain.Paper;
-import lotto.domain.Lotto;
-import lotto.domain.Numbers;
-import lotto.domain.Lottos;
-import lotto.domain.Lucky;
+import lotto.domain.*;
+
 public class Lottocontroller {
     //static final
 
@@ -20,6 +16,7 @@ public class Lottocontroller {
         Lottos lottos = new_Lottos(paper.Get_Paper());
 
         Lucky lucky = new_Lucky();
+        Bonusnumber bonusnumber = new_Bonus();
     }
 
     private Money inputMoney(){
@@ -36,6 +33,10 @@ public class Lottocontroller {
 
     private Lucky new_Lucky(){
         return new Lucky(Console.readLine());
+    }
+
+    private Bonusnumber new_Bonus(){
+        return new Bonusnumber(Console.readLine());
     }
     //method
 }
