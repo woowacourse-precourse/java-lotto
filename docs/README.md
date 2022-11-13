@@ -15,10 +15,18 @@
             - [x] 랜덤한 숫자 6개를 생성하는 기능 LottoShop.generateRandomNumbers
             - [x] 랜덤한 숫자 6개를 오름차순 정렬하는 기능 LottoShop.sortLottoByAsc
       - [x] 랜덤한 숫자 6개를 로또 갯수만큼 출력하는 기능 LottoConsole.outputLottoList
-- [ ] 당첨 번호와 보너스 번호를 입력받는 기능 LottoConsole.inputLuckyNumbers
-    - [ ] "당첨 번호를 입력해 주세요." 출력 
-    - [ ] 당첨 번호 6개를 쉼표를 기준으로 구분하여 입력받는 기능 LottoShop.userNumbers
-    - [ ] 보너스 번호 1개를 입력받는 기능 
+- [x] 당첨 번호와 보너스 번호를 입력받는 기능 
+    - [x] 당첨 번호 6개를 입력받는 기능 
+        - [x] "당첨 번호를 입력해 주세요." 출력 LottoConsole.inputLuckyNumber
+        - [x] 입력받은 String값을 List<Integer>로 변환하는 기능 LottoUser.changeStringToIntegerList
+            - [x] 당첨 번호를 쉼표를 기준으로 구분하여 입력받는 기능 LottoUser.changeStringToStringList
+        - [x] 당첨 번호의 갯수를 확인하는 기능 LottoUser.checkLengthOfList
+        - [x] 당첨 번호가 1부터 45 사이의 숫자인지 확인하는 기능 LottoUser.checkSizeOfNumber
+        - [x] 당첨 번호에 중복이 없는지 확인하는 기능 LottoUser.checkDuplicationOfList
+    - [x] 보너스 번호 1개를 입력받는 기능 
+        - [x] "보너스 번호를 입력해 주세요." 출력 LottoConsole.inputBonusNumber
+        - [x] 보너스 번호의 갯수를 확인하는 기능 LottoUser.checkLengthOfList
+        - [x] 보너스 번호가 1부터 45 사이의 숫자인지 확인하는 기능 LottoUser.checkSizeOfNumber
 - [ ] 당첨 통계를 출력하는 기능 LottoConsole.outputResult
     - [ ] 당첨 번호, 로또 번호, 보너스 번호를 비교하여 몇개가 일치하는지 계산하는 기능 LottoCalculator.checkLuckyNumbers
 - [ ] 수익률을 출력하는 기능 LottoConsole.outputProfit
