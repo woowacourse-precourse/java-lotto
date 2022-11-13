@@ -42,10 +42,6 @@ public enum Prize {
         return hasBonus;
     }
 
-    public long getTotalMoney(int count) {
-        return (long) money * count;
-    }
-
     private static boolean isMatchCountSame(long matchCount, int prizeCount) {
         return matchCount == prizeCount;
     }
