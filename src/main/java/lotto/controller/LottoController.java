@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.model.Auto;
 import lotto.model.User;
 import lotto.view.UserInterface;
 
@@ -8,6 +9,7 @@ public class LottoController {
     private static final String PURCHASE_AMOUNT = "구입금액";
 
     private String userInputMoney ;
+    public static int lottoCount;
 
     UserInterface userInterface = new UserInterface();
 
@@ -15,9 +17,9 @@ public class LottoController {
         userInputMoney = userInterface.getUserInput(PURCHASE_AMOUNT);
         User userMoney = new User(PURCHASE_AMOUNT);
         userMoney.validateUserMoney(userInputMoney);
-
-
-
+        lottoCount = Integer.parseInt(userInputMoney)/1000;
+        new Auto(lottoCount);
+        userInterface.showAutoLottos(Auto.AUTOLOTTOS, lottoCount);
 
     }
 }
