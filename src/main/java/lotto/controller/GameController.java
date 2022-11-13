@@ -5,20 +5,31 @@ import lotto.model.Lotto;
 import lotto.model.LottoInput;
 import lotto.model.LottoMachine;
 import lotto.model.User;
+import lotto.model.WinningLotto;
 import lotto.view.GameMessage;
 
 public class GameController {
     private final GameMessage gameMessage = new GameMessage();
     private final LottoInput lottoInput = new LottoInput();
     private LottoMachine lottoMachine = new LottoMachine();
+    private WinningLotto winningLotto;
     private User user;
 
     public void run() {
+        publishUserLotto();
+        assignWinningLotto();
+    }
+
+    public void publishUserLotto() {
         int purchaseAmount = inputPurchaseAmount();
-        publishUserLotto(purchaseAmount);
-        printLottoTicketDetail();
-        assignWinningNumber();
-        assignBonusNumber();
+        createUserLottoTicket(purchaseAmount);
+        printUserLottoTicketDetail();
+    }
+
+    public void assignWinningLotto() {
+        Lotto lotto = assignWinningNumber();
+        int bonusNumber = assignBonusNumber();
+        winningLotto = new WinningLotto(lotto, bonusNumber);
     }
 
     public int inputPurchaseAmount() {
@@ -26,24 +37,25 @@ public class GameController {
         return lottoInput.inputPurchaseAmount();
     }
 
-    public void publishUserLotto(int purchaseAmount) {
+    public void createUserLottoTicket(int purchaseAmount) {
         int lottoTicketCount = lottoMachine.computeLottoTicketsCount(purchaseAmount);
         List<Lotto> lottoTickets = lottoMachine.publishLottoTickets(lottoTicketCount);
         user = new User(purchaseAmount, lottoTicketCount, lottoTickets);
     }
 
-    public void printLottoTicketDetail() {
+    public void printUserLottoTicketDetail() {
         gameMessage.printLottoTicketCount(user.getLottoTicketCount());
         gameMessage.printLottoTickets(user.getLottoTickets());
     }
 
-    public void assignWinningNumber() {
+    public Lotto assignWinningNumber() {
         gameMessage.printInputWinningNumber();
         List<Integer> winningNumber = lottoInput.inputWinningNumber();
+        return new Lotto(winningNumber);
     }
 
-    public void assignBonusNumber() {
+    public int assignBonusNumber() {
         gameMessage.printInputBonusNumber();
-        int bonusNumber = lottoInput.inputBonusNumber();
+        return lottoInput.inputBonusNumber();
     }
 }
