@@ -3,6 +3,7 @@ package lotto.domain;
 import lotto.domain.constant.LottoProperty;
 import lotto.constant.ValidationErrorMessage;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -43,5 +44,9 @@ public class Lotto {
     private boolean isAllUnique (List<Integer> numbers) {
         Set<Integer> lottoNumberSet = new HashSet<>(numbers);
         return lottoNumberSet.size() == LottoProperty.LENGTH.getProperty();
+    }
+
+    public List<Integer> getNumbers() {
+        return new ArrayList<>(numbers);
     }
 }
