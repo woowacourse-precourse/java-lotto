@@ -21,10 +21,16 @@ public class LottoGame {
         Money money = new Money(InputView.inputPurchaseMoney());
         OutputView.printBlank();
         makeLotto(money.countLotto());
+        drawLottery();
     }
 
     private void makeLotto(int lottoCount) {
         Lottos lottos = new Lottos(LottoGenerator.generateLottos(lottoCount));
         OutputView.printPurchaseLotto(lottos.getLottos());
+    }
+
+    private void drawLottery() {
+        OutputView.printInputWinningLotto();
+        List<Integer> winningLottoNumber =  InputView.inputWinningLotto();
     }
 }

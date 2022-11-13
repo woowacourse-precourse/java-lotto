@@ -10,4 +10,9 @@ public class InputView {
         int money = Converter.changeToMoney(readLine());
         return money;
     }
+
+    public static List<Integer> inputWinningLotto() {
+        List<Integer> winningLotto = Converter.changeToWinningNumber(readLine());
+        return winningLotto;
+    }
 }
