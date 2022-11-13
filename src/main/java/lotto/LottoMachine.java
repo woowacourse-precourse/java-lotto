@@ -19,6 +19,10 @@ public class LottoMachine {
 
         lottos = generateLottos();
         printLottos();
+
+        winningNumbers = userInput.getWinningNumbers();
+        bonusNumber = userInput.BonusNumber(winningNumbers);
+        printResult();
     }
 
     private List<Lotto> generateLottos() {
@@ -35,5 +39,48 @@ public class LottoMachine {
             lotto.printNumbers();
         }
         System.out.println();
+    }
+
+    private void printResult() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        int totalPrize = 0;
+        for (int i = Prize.values().length - 1; i >= 0; i--) {
+            Prize prize = Prize.values()[i];
+            int winningCount = getWinningCount(prize);
+            totalPrize += winningCount * prize.getPrizeMoney();
+            String result = String.format("%d개 일치 (%s) - %d개",
+                    prize.getMatchCount(), prize.getPrizeString(), winningCount);
+            System.out.println(result);
+        }
+
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", (float) totalPrize / money * 100);
+    }
+
+    private int getWinningCount(Prize prize) {
+        int winningCount = 0;
+        for (Lotto lotto : lottos) {
+            int matchCount = getMatchCount(lotto);
+            boolean matchBonus = isMatchBonus(lotto);
+            if (Prize.getPrize(matchCount, matchBonus) == prize) {
+                winningCount++;
+            }
+        }
+        return winningCount;
+    }
+
+    private int getMatchCount(Lotto lotto) {
+        int matchCount = 0;
+        for (int number : lotto.getNumbers()) {
+            if (winningNumbers.contains(number)) {
+                matchCount++;
+            }
+        }
+        return matchCount;
+    }
+
+    private boolean isMatchBonus(Lotto lotto) {
+        return lotto.getNumbers().contains(bonusNumber);
     }
 }
