@@ -11,14 +11,19 @@ public class Application {
     private static final String PRICE_MESSAGE = "값이 1000으로 나누어지지 않습니다.";
     private static final String ANSWER_MESSAGE = "번호가 6개가 아닙니다";
     private static final String LUCKY_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
-    private static final String OUT_OF_RANGE_MESSAGE = "숫자가 범위 밖에 있습니다.";
-
+    private static final String OUT_OF_RANGE_MESSAGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다";
+    private static final String SHOP_RESULT = "개를 구매했습니다.";
 
     public static void main(String[] args) {
         int myPrice = priceInput();
+        int lottoCount=howManyLottos(myPrice);
+        System.out.println(lottoCount+SHOP_RESULT);
         List<Integer> lottoNumbers = lottoNumAnswerInput();
         Lotto myLotto = new Lotto(lottoNumbers);
         int luckyNumber = getLuckyNumber();
+    }
+    public static int howManyLottos(int price){
+        return price/1000;
     }
 
     public static void validatePrice(int price) {
