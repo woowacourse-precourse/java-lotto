@@ -3,9 +3,8 @@ package lotto.validator;
 import lotto.Lotto;
 import lotto.repository.LottoRepository;
 
+import java.util.Arrays;
 import java.util.List;
-
-import static java.util.Arrays.asList;
 
 public class InputValidator {
 
@@ -46,7 +45,7 @@ public class InputValidator {
     }
 
     public static void checkWinningNumber(String winningNumber) {
-        List<String> checkNumber = asList(winningNumber.split(","));
+        List<String> checkNumber = Arrays.asList(winningNumber.split(","));
         if(checkLength(checkNumber)){
             throw new IllegalArgumentException("올바른 형식이 아닙니다.");
         }

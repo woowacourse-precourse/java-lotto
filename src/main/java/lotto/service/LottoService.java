@@ -6,12 +6,10 @@ import lotto.validator.InputValidator;
 import lotto.utils.RandomUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-import static java.util.Arrays.asList;
 
 public class LottoService {
 
@@ -39,7 +37,7 @@ public class LottoService {
 
     public void createWinningLotto(String winningNumber) {
         InputValidator.checkWinningNumber(winningNumber);
-        Lotto winningLotto = new Lotto(asList(winningNumber.split(",")).stream()
+        Lotto winningLotto = new Lotto(Arrays.asList(winningNumber.split(",")).stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList()));
         saveWinningLotto(winningLotto);
@@ -62,7 +60,7 @@ public class LottoService {
         List<Lotto> userLottoGroup = LottoRepository.getLastUserLottoGroup();
         Lotto winningLotto = LottoRepository.getLastWinningLotto();
         Integer bonusNumber = LottoRepository.getBonusNumber();
-        List<Integer> resultCount = asList(0,0,0,0,0);
+        List<Integer> resultCount = Arrays.asList(0,0,0,0,0);
 
         for (Lotto userLotto : userLottoGroup) {
             initCount();
