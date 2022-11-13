@@ -1,9 +1,6 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
 
@@ -13,7 +10,7 @@ public class Lotto {
         validate(numbers);
         this.numbers = numbers;
     }
-
+    // 숫자 개수 확인
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 발행된 로또의 숫자가 6개가 아닙니다.");
