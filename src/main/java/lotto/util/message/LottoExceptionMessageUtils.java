@@ -10,8 +10,6 @@ public enum LottoExceptionMessageUtils {
     INVALID_NUMBER_LENGTH("%s 유효하지 않은 길이입니다. 입력 값 : %s"),
     INVALID_RANKING("%s 존재하지 않는 등수입니다. 입력 값 : %s");
 
-    private static final String EXCEPTION_MESSAGE_PREFIX = "[ERROR]";
-
     private final String message;
 
     LottoExceptionMessageUtils(String message) {
@@ -19,6 +17,6 @@ public enum LottoExceptionMessageUtils {
     }
 
     public String findExceptionMessage(Object target) {
-        return String.format(this.message, EXCEPTION_MESSAGE_PREFIX, target);
+        return String.format(this.message, CommonMessageConst.EXCEPTION_MESSAGE_PREFIX, target);
     }
 }
