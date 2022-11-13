@@ -21,12 +21,12 @@ public class Application {
     private static final String FIRST_PLACE_SENTENCE = "6개 일치 (2,000,000,000원)";
 
     public static void main(String[] args) {
-        inputPrice();
+        int payment = inputPrice();
         inputWinningNumbers();
         inputBonusNumber();
     }
 
-    public static void inputPrice() {
+    public static int inputPrice() {
         // 구입 금액 입력
         System.out.println(INPUT_PAYMENT_SENTENCE);
         int payment = Integer.parseInt(Console.readLine());
@@ -34,6 +34,7 @@ public class Application {
             throw new IllegalArgumentException();
         }
         System.out.println();
+        return payment;
     }
 
     public static void inputWinningNumbers() {
