@@ -33,11 +33,13 @@ public class OutputView {
                     DecimalFormat df = new DecimalFormat("###,###");
                     if (entry.getKey() == WinningRank.SECOND_PLACE) {
                         System.out.printf(WINNING_DETAILS_WITH_BONUS_MESSAGE,
-                                entry.getKey().getMatchingCount(), df.format(entry.getKey().getWinningPrice()), entry.getValue());
+                                entry.getKey().getMatchingCount(), df.format(entry.getKey().getWinningPrice()),
+                                entry.getValue());
                         return;
                     }
                     System.out.printf(WINNING_DETAILS_MESSAGE,
-                            entry.getKey().getMatchingCount(), df.format(entry.getKey().getWinningPrice()), entry.getValue());
+                            entry.getKey().getMatchingCount(), df.format(entry.getKey().getWinningPrice()),
+                            entry.getValue());
                 });
     }
 
