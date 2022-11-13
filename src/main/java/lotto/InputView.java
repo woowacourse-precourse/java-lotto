@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserInput {
+public class InputView {
+
+    private InputView(){}
 
     public Calculator inputMoney() {
         Message.INPUT_MONEY.print();

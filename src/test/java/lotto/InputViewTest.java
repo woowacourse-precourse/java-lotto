@@ -7,12 +7,12 @@ import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class UserInputTest {
+class InputViewTest {
     final private String ERROR = "[ERROR]";
 
     @Test
     void 돈_입력_예외_1() {
-        UserInput user = new UserInput();
+        InputView user = new InputView();
         String input = "1100";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -22,7 +22,7 @@ class UserInputTest {
 
     @Test
     void 돈_입력_예외_2() {
-        UserInput user = new UserInput();
+        InputView user = new InputView();
         String input = "NotaNumber";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -31,7 +31,7 @@ class UserInputTest {
     }
     @Test
     void 당첨_번호_입력_예외_1() {
-        UserInput user = new UserInput();
+        InputView user = new InputView();
         String input = "나, 5, 6, 7, 가";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -41,7 +41,7 @@ class UserInputTest {
 
     @Test
     void 예외_메시지() {
-        UserInput user = new UserInput();
+        InputView user = new InputView();
         String input = "1000j";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
