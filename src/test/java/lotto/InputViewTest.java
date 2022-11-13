@@ -12,41 +12,37 @@ class InputViewTest {
 
     @Test
     void 돈_입력_예외_1() {
-        InputView user = new InputView();
         String input = "1100";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(() -> user.inputMoney())
+        assertThatThrownBy(() -> InputView.inputMoney())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 돈_입력_예외_2() {
-        InputView user = new InputView();
         String input = "NotaNumber";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(() -> user.inputMoney())
+        assertThatThrownBy(() -> InputView.inputMoney())
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void 당첨_번호_입력_예외_1() {
-        InputView user = new InputView();
         String input = "나, 5, 6, 7, 가";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(() -> user.inputWinningNumber())
+        assertThatThrownBy(() -> InputView.inputWinningNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 예외_메시지() {
-        InputView user = new InputView();
         String input = "1000j";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatThrownBy(() -> user.inputMoney())
+        assertThatThrownBy(() -> InputView.inputMoney())
                 .hasMessageContaining("[ERROR]")
                 .isInstanceOf(IllegalArgumentException.class);
     }
