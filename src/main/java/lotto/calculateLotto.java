@@ -50,4 +50,11 @@ public class calculateLotto {
                 .boxed()
                 .collect(Collectors.toList());
     }
+    void printWinLotto(List<Integer> winLottos, double rateLotto){
+        int count = 3;
+        for(int winLottoNumber : winLottos){
+            System.out.println(count+++"개 일치 "+" - "+winLottoNumber+"개");
+        }
+        System.out.println("총 수익률은 "+rateLotto+"%입니다.");
+    }
 }
