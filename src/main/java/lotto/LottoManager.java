@@ -27,6 +27,14 @@ public class LottoManager {
         }
     }
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
+    public Map<Rank, Integer> getRanks() {
+        return ranks;
+    }
+
     public void calculateTotalRanks(Lotto winningLotto, int winningBonus) {
         for (Lotto lotto : this.lottos) {
             int matchCount = calculateMatchCount(winningLotto, lotto);
