@@ -26,7 +26,7 @@ public class InputAgentImpl implements InputAgent {
         String[] lottoNumbers = lottoNumber.split(",");
         List<Integer> convertedLottoNumbers = new ArrayList<>();
 
-        InputValidatorImpl.validateIntegerValue(lottoNumbers);
+        InputValidatorImpl.validateWinningNumbersAreInteger(lottoNumbers);
 
         for (String value : lottoNumbers) {
             convertedLottoNumbers.add(Integer.parseInt(value));

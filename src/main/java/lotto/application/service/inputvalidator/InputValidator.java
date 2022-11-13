@@ -4,23 +4,24 @@ import java.util.List;
 
 public interface InputValidator {
 
-    void validatePurchaseMoneyInteger(String lottoPurchaseMoney);
+    void validatePurchaseMoneyIsInteger(String lottoPurchaseMoney);
 
     void validatePurchaseMoneyDividable(String lottoPurchaseMoney);
 
-    void validateIntegerValue(String inputValue);
 
-    void validateIntegerValue(String[] inputValue);
+    void validateWinningNumbersAreInteger(String[] inputValue);
 
-    void validateLottoNumbersOverlap(List<Integer> numbers);
+    void validateWinningNumbersAreOverlapped(List<Integer> numbers);
 
-    void validateLottoNumbersLength(List<Integer> numbers);
+    void validateWinningNumbersLengthIsSix(List<Integer> numbers);
 
     void winningNumbersAreNumeric(String winningNumbers);
 
-    void validateLottoNumbersRange(int number);
+    void validateWinningNumbersRange(int number);
 
-    void validateBonusNumberOverlap(List<Integer> numbers, int bonusNumber);
+    void validateBonusNumberIsInteger(String inputValue);
+
+    void validateBonusNumberIsOverlapped(List<Integer> numbers, int bonusNumber);
 
     void validateBonusNumberRange(int bonusNumber);
 
