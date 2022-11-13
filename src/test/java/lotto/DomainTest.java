@@ -57,7 +57,16 @@ public class DomainTest {
 
         result = Arrays.asList(11, 22, 33, 44, 43, 42);
         assertThat(domain.trimLottoNumberInput("11,22,33,44,43,42").containsAll(result));
+    }
 
+    @DisplayName("등수에 따른 수익 계산 테스트")
+    @Test
+    void getRewardTest() {
+        assertThat(domain.getReward(1) == 2000000000);
+        assertThat(domain.getReward(2) == 30000000);
+        assertThat(domain.getReward(3) == 1500000);
+        assertThat(domain.getReward(4) == 50000);
+        assertThat(domain.getReward(5) == 5000);
     }
 
 }
