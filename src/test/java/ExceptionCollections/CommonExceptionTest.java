@@ -41,4 +41,13 @@ public class CommonExceptionTest {
                 () -> CommonException.validateNumberRange(47)
         );
     }
+
+    @DisplayName("당첨 번호 개수가 6개이다.")
+    @Test
+    void 당첨_번호_개수_테스트() {
+        assertThatIllegalArgumentException().isThrownBy(
+                () -> CommonException.validateNumberLength(List.of(1, 2, 3, 4), 6)
+        );
+    }
+
 }
