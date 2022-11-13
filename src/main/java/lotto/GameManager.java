@@ -16,9 +16,6 @@ public class GameManager {
         try {
             buyingLotto();
             inputWinningAndBonusNumber();
-            calculateRank();
-            OutputView.outputWinningStat(lottoManager.getRanks());
-            OutputView.outputEarningRate(String.valueOf(Math.round(lottoManager.calculateEarningRate() * 10) / 10.0));
         } catch (IllegalArgumentException illegalArgumentException){
             System.out.println(illegalArgumentException.getMessage());
         }
@@ -44,7 +41,4 @@ public class GameManager {
         OutputView.outputBlankLine();
     }
 
-    private void calculateRank(){
-        lottoManager.calculateTotalRanks(this.winningLotto,this.bonusNumber);
-    }
 }
