@@ -46,10 +46,10 @@ public class LottoGameConsole {
     }
 
     private int createBonusNumber(List<Integer> winningNumbers) {
-        // 보너스 번호 안내
-        // 보너스 번호 입력
-        // 보너스 번호 검증
-        return 0;
+        emcee.guideBonusNumber();
+        String bonusNumber = player.selectBonusNumber();
+        validator.validateBonusNumber(bonusNumber, winningNumbers);
+        return Integer.parseInt(bonusNumber);
     }
 
     private void handlePrizeOfLottoGame() {
