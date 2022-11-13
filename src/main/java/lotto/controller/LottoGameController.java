@@ -15,5 +15,6 @@ public class LottoGameController {
     }
 
     public void printLottoTickets(int lottoTicketCount) {
+
     }
 }

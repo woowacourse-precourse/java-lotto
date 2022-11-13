@@ -7,7 +7,7 @@ import lotto.message.GameMessage;
 public class LottoGame {
 
     private final LottoGameController lottoGameController;
-    private int lottoTickets;
+    private int lottoTicketCount;
 
     private String userInput;
 
@@ -18,9 +18,9 @@ public class LottoGame {
     public void start() {
         System.out.println(GameMessage.PURCHASE_AMOUNT.getMessage());
         userInput = Console.readLine();
-        lottoTickets = lottoGameController.buyLottoTickets(userInput);
+        lottoTicketCount = lottoGameController.buyLottoTickets(userInput);
 
-        System.out.println(lottoTickets + GameMessage.NUMBER_OF_PURCHASES.getMessage());
-        lottoGameController.printLottoTickets(lottoTickets);
+        System.out.println(lottoTicketCount + GameMessage.NUMBER_OF_PURCHASES.getMessage());
+        lottoGameController.printLottoTickets(lottoTicketCount);
     }
 }
