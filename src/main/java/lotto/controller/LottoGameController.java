@@ -10,8 +10,8 @@ public class LottoGameController {
         this.lottoGameService = new LottoGameService();
     }
 
-    public int inputMoney(final String money) {
-        return lottoGameService.inputMoney(money);
+    public int buyLottoTickets(final String purchaseAmount) {
+        return lottoGameService.buyLottoTickets(purchaseAmount);
     }
 
     public void printLottoTickets(int lottoTicketCount) {

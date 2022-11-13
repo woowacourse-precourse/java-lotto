@@ -18,7 +18,7 @@ public class LottoGame {
     public void start() {
         System.out.println(GameMessage.PURCHASE_AMOUNT.getMessage());
         userInput = Console.readLine();
-        lottoTickets = lottoGameController.inputMoney(userInput);
+        lottoTickets = lottoGameController.buyLottoTickets(userInput);
 
         System.out.println(lottoTickets + GameMessage.NUMBER_OF_PURCHASES.getMessage());
         lottoGameController.printLottoTickets(lottoTickets);
