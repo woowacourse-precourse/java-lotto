@@ -16,5 +16,13 @@ public class Lotto {
         }
     }
 
+    public boolean contains(int lottoNum) {
+        return numbers.contains(lottoNum);
+    }
+
+    public int matchCount(Lotto otherLotto) {
+        return (int) (numbers.stream().filter(otherLotto::contains).count());
+    }
+
     // TODO: 추가 기능 구현
 }
