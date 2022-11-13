@@ -2,6 +2,7 @@ package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,12 +25,16 @@ public class Input {
         return Integer.parseInt(userInput);
     }
 
-    public List<String> readWinningNumber() {
+    public List<Integer> readWinningNumber() {
+        List<Integer> winningNumber;
+
         Messages.INPUT_LOTTE_NUMBER.printMessage();
         String userInput = readInput();
 
-        List<String> winningNumber = splitUserInput(userInput);
-        inputValidator.validateInputWinningNumber(winningNumber);
+        List<String> splitInput = splitUserInput(userInput);
+        inputValidator.validateInputWinningNumber(splitInput);
+
+        winningNumber = stringListToIntegerList(splitInput);
 
         return winningNumber;
     }
@@ -39,6 +44,8 @@ public class Input {
         Messages.INPUT_BONUS_NUMBER.printMessage();
         String userInput = readInput();
 
+        inputValidator.validateInputBonusNumber(userInput);
+
         return Integer.parseInt(userInput);
     }
 
@@ -47,5 +54,15 @@ public class Input {
                 .collect(Collectors.toList());
 
         return numbers;
+    }
+
+    public List<Integer> stringListToIntegerList(List<String> splitInput) {
+        List<Integer> winningNumber = new ArrayList<>();
+
+        for (int place = 0; place < splitInput.size(); place++) {
+            winningNumber.add(place, Integer.parseInt(splitInput.get(place)));
+        }
+
+        return winningNumber;
     }
 }

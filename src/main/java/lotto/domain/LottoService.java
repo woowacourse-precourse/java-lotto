@@ -43,4 +43,8 @@ public class LottoService {
         }
         return false;
     }
+
+    public int calculateProfit() {
+
+    }
 }
