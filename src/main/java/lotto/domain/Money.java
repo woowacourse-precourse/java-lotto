@@ -1,35 +1,33 @@
 package lotto.domain;
 
 public class Money {
-    private int money;
+    private long money;
 
     public Money(String input) {
-        validate(input);
-        this.money = Integer.parseInt(input);
+        this.money = validate(input);
     }
 
-    private void validate(String input) {
-        int money;
-
+    private long validate(String input) {
+        long money;
         try {
-            money = Integer.parseInt(input);
+            money = Long.parseLong(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessages.MONEY_NOT_INTEGER.get());
         }
-
         if (money < 1000) {
             throw new IllegalArgumentException(ErrorMessages.MONEY_UNDER_1000.get());
         }
         if (money % 1000 != 0) {
             throw new IllegalArgumentException(ErrorMessages.MONEY_NOT_DIVIDED_BY_1000.get());
         }
+        return money;
     }
 
-    public int getLottoCount() {
+    public long getLottoCount() {
         return this.money / 1000;
     }
 
-    public int getMoney() {
+    public long getMoney() {
         return this.money;
     }
 }

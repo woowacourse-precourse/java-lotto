@@ -36,7 +36,7 @@ public class Result {
         return this.winResult;
     }
 
-    public String getBenefitRatio(int money) {
+    public String getBenefitRatio(long money) {
         double ratio = ((double) this.totalPrize / (double) money) * 100;
         return String.format("%.1f", ratio);
     }

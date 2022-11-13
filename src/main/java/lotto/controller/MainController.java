@@ -25,7 +25,7 @@ public class MainController {
         OutputView.printBenefitRatio(result.getBenefitRatio(money.getMoney()));
     }
 
-    private static List<Lotto> makeLotto(int count) {
+    private static List<Lotto> makeLotto(long count) {
         List<List<Integer>> lottoNumList = generateNum(count);
         List<Lotto> lottoList = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class MainController {
         return winLotto;
     }
 
-    private static List<List<Integer>> generateNum(int count) {
+    private static List<List<Integer>> generateNum(long count) {
         List<List<Integer>> lottoNumList = new ArrayList<>();
 
         while (lottoNumList.size() < count) {
