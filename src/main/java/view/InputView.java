@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import util.Validation;
 
-public class UserInput {
+public class InputView {
 
     // 구입 금액을 입력하는 기능
     public static int purchaseMoney() {
