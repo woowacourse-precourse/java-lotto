@@ -1,11 +1,64 @@
 package lotto.controller;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class WinningPrizeTest {
+
+
+    @Nested
+    class FindRankingTest{
+        List<Integer> lottoNumbers;
+        Lotto lottoPapers;
+        int bonusNumber;
+
+        @DisplayName("2등 테스팅을 위하여, 로또한장의 번호는 (1,2,3,4,5,6) 으로 고정한다.")
+        @BeforeEach
+        void beforeSettingOfFindRanking(){
+            lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+            lottoPapers = new Lotto(lottoNumbers);
+        }
+
+        @Test
+        void findRanking_case1_1(){
+            int amountOfCorrectNumbers = 6;
+            bonusNumber = 6;
+            int output = 1;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+
+        @Test
+        void findRanking_case1_2(){
+            int amountOfCorrectNumbers = 6;
+            bonusNumber = 7;
+            int output = 1;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+
+        @Test
+        void findRanking_case2(){
+            int amountOfCorrectNumbers = 5;
+            bonusNumber = 6;
+            int output = 2;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+
+        @Test
+        void findRanking_case3(){
+            int amountOfCorrectNumbers = 5;
+            bonusNumber = 7;
+            int output = 3;
+            assertThat(WinningPrize.findRanking(amountOfCorrectNumbers,lottoPapers,bonusNumber)).isEqualTo(output);
+        }
+    }
 
     @Nested
     class FindEnumByRankTest {
