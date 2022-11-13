@@ -19,7 +19,7 @@ public class InputValidatorTest {
     @DisplayName("구입 금액이 1,000원으로 나누어떨어지지 않으면 예외가 발생한다.")
     @Test
     void purchaseAmount() {
-        assertThatThrownBy(() -> inputValidator.isPurchaseAmountValidate(10001))
+        assertThatThrownBy(() -> inputValidator.validatePurchaseAmount(10001))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

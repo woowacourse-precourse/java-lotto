@@ -17,11 +17,12 @@ public class ApplicationController {
     OutputView outputView = new OutputView();
 
     public void startApplication() {
-        int purchaseAmount = inputValidator.convertStringIntoInt(inputView.inputPurchaseAmount());
+        String input_purchaseAmount = inputView.inputPurchaseAmount();
+        int purchaseAmount = inputValidator.convertStringIntoInt(input_purchaseAmount);
         player.setPurchaseAmount(purchaseAmount);
-        if (inputValidator.isPurchaseAmountValidate(player.getPurchaseAmount())) {
-            controlIssueingLotto();
-        }
+
+        inputValidator.validatePurchaseAmount(player.getPurchaseAmount());
+        control_CountIssueingLotto();
     }
 
     public void controlIssueingLotto() {

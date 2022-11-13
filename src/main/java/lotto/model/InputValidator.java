@@ -16,10 +16,9 @@ public class InputValidator {
         }
     }
 
-    public boolean isPurchaseAmountValidate(int purchaseAmount) {
+    public void validatePurchaseAmount(int purchaseAmount) {
         if (purchaseAmount % PRICE_OF_LOTTO != 0) {
             throw new IllegalArgumentException(ERROR_PREFIX + VALUE_IS_NOT_DIVIDED_BY_1000);
         }
-        return true;
     }
 }
