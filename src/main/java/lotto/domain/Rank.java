@@ -1,15 +1,16 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.EnumMap;
 import java.util.Map;
 
 public enum Rank {
-    FIRST(1, "2,000,000,000"),
-    SECOND(2, "30,000,000"),
-    THIRD(3, "1,500,000"),
-    FOURTH(4, "50,000"),
-    FIFTH(5, "5,000"),
-    NO_LUCK(0, "0");
+    FIRST(1, 2_000_000_000),
+    SECOND(2, 30_000_000),
+    THIRD(3, 1_500_000),
+    FOURTH(4, 50_000),
+    FIFTH(5, 5000),
+    NO_LUCK(0, 0);
 
     private static final Map<Rank, Integer> jackpotCntMap = new EnumMap<>(Map.of(
             FIRST, Lotto.NUMBER_SIZE,
@@ -23,10 +24,11 @@ public enum Rank {
     private static final String RANK_MESSAGE_FORMAT = "%d개 일치 (%s원)";
     private static final String SECOND_RANK_MESSAGE_FORMAT = "%d개 일치, 보너스 볼 일치 (%s원)";
 
+    private static final DecimalFormat rewardFormat = new DecimalFormat("###,###");
     private final int rank;
-    private final String reward;
+    private final int reward;
 
-    Rank(int rank, String reward) {
+    Rank(int rank, int reward) {
         this.rank = rank;
         this.reward = reward;
     }
@@ -42,7 +44,9 @@ public enum Rank {
         }
         return NO_LUCK;
     }
+
     public String getInfo() {
+        String reward = rewardFormat.format(this.reward);
         if (this.equals(SECOND)) {
             return String.format(SECOND_RANK_MESSAGE_FORMAT, jackpotCntMap.get(SECOND), reward);
         }
