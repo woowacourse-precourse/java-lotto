@@ -13,7 +13,10 @@ public enum printChart {
     PRINT_FIVE("5개 일치 (1,500,000원) - "),
     PRINT_FIVE_FLUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     PRINT_SIX("6개 일치 (2,000,000,000원) - "),
-    REPORT_RATE("총 수익률은 ");
+    REPORT_RATE("총 수익률은 "),
+    PRINT_GE("개"),
+    PRINT_PERCENT("%입니다.");
+
 
 
     private final String value;
