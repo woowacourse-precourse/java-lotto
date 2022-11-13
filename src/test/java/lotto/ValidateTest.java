@@ -1,15 +1,14 @@
 package lotto;
 
-import lotto.io.Input;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.util.List;
+import lotto.domain.Lotto;
 import lotto.utils.ValidateUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-class LottoTest {
+class ValidateTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
