@@ -34,7 +34,7 @@ public enum Prize {
     }
 
     private static BiPredicate<Integer, Integer> judgeThird() {
-        return (winningMatches, bonusMatches) -> winningMatches == 5;
+        return (winningMatches, bonusMatches) -> winningMatches == 5 && bonusMatches == 0;
     }
 
     private static BiPredicate<Integer, Integer> judgeSecond() {
