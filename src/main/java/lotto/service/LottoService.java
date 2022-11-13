@@ -16,7 +16,6 @@ public class LottoService {
     Output output;
     Input input;
     Issue issue;
-    Lotto lotto;
     public LottoService(){
         output = new Output();
         input = new Input();
@@ -41,8 +40,7 @@ public class LottoService {
     //당첨 번호 입력
     public void createWinNum(){
         output.winningNum();
-        Integer[] numbers = Stream.of(input.winningNum()
-                .split(","))
+        Integer[] numbers = Stream.of(input.winningNum().split(","))
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .toArray(Integer[]::new);
@@ -51,6 +49,9 @@ public class LottoService {
 
     //보너스 번호 안내 문구 출력
     //보너스 번호 입력
-    
+    public void createBonusNum(){
+        output.bonusNum();
+        win.addBonusNum(input.bounsNum());
+    }
     //당첨통계 출력
 }
