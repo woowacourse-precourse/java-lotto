@@ -56,16 +56,20 @@ public class LottoResult {
                 .append(LOTTO_RESULT_MESSAGE_CONTOUR)
                 .append(CommonMessageConst.LINE_FEED);
 
-        String lottoRankingMessage = Arrays.stream(LottoRanking.values())
-                .filter(lottoRanking -> lottoRanking != LottoRanking.RANKING_NOTHING)
-                .map(this::processLottoRankingResultMessage)
-                .collect(Collectors.joining(CommonMessageConst.LINE_FEED));
+        String lottoRankingMessage = processLottoRankingMessage();
         lottoResultMessage.append(lottoRankingMessage).append(CommonMessageConst.LINE_FEED);
 
         String revenuePercentMessage = String.format(REVENUE_PERCENT_MESSAGE_FORMAT, revenuePercent.toString());
         lottoResultMessage.append(revenuePercentMessage);
 
         return lottoResultMessage.toString();
+    }
+
+    private String processLottoRankingMessage() {
+        return Arrays.stream(LottoRanking.values())
+                .filter(lottoRanking -> lottoRanking != LottoRanking.RANKING_NOTHING)
+                .map(this::processLottoRankingResultMessage)
+                .collect(Collectors.joining(CommonMessageConst.LINE_FEED));
     }
 
     private String processLottoRankingResultMessage(LottoRanking lottoRanking) {
