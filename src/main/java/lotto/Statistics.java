@@ -12,37 +12,33 @@ public class Statistics {
     }
 
     public int getPrize(Lotto lotto) {
-        if (isFirst(lotto))
+        int count = getCount(lotto);
+        if (count == 6)
             return 1;
-        if (isSecond(lotto))
-            return 2;
-        if (isThird(lotto))
+        if (count == 5) {
+            if (isContainsBonus(lotto))
+                return 2;
             return 3;
-        if (isFourth(lotto))
+        }
+        if (count == 4)
             return 4;
-        if (isFifth(lotto))
+        if (count == 3)
             return 5;
         return -1;
     }
 
-    public boolean isFirst(Lotto lotto) {
-        return false;
+    public int getCount(Lotto lotto) {
+        int count = 0;
+        for (int i = 0; i < lotto.getNumbers().size(); i++) {
+            if (winning.getNumbers().contains(lotto.getNumbers().get(i)))
+                count++;
+        }
+        return count;
     }
 
-    public boolean isSecond(Lotto lotto) {
+    public boolean isContainsBonus(Lotto lotto) {
+        if (lotto.getNumbers().contains(bonus))
+            return true;
         return false;
     }
-
-    public boolean isThird(Lotto lotto) {
-        return false;
-    }
-
-    public boolean isFourth(Lotto lotto) {
-        return false;
-    }
-
-    public boolean isFifth(Lotto lotto) {
-        return false;
-    }
-
 }
