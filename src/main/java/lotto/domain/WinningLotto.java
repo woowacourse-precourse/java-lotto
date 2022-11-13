@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.List;
 import lotto.domain.errorenum.Error;
 import lotto.domain.lottoenum.LottoCondition;
 
@@ -14,6 +15,16 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
+    public int countMatchingNumbers(List<Integer> lottoNumbers) {
+        return (int) lottoNumbers.stream()
+                .filter(lotto.getNumbers()::contains)
+                .count();
+    }
+
+    public boolean isContainingBonusNumber(List<Integer> lottoNumbers) {
+        return lottoNumbers.contains(bonusNumber);
+    }
+
     private void validateInRange(int bonusNumber) {
         if (bonusNumber >= LottoCondition.MIN.getValue() && bonusNumber <= LottoCondition.MAX.getValue()) {
             return;
@@ -22,7 +33,7 @@ public class WinningLotto {
     }
 
     private void validateDuplicateWithLotto(Lotto lotto, int bonusNumber) {
-        if (lotto.getSortedNumbers().contains(bonusNumber)) {
+        if (lotto.getNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException(Error.BONUS_NUMBER_DUPLICATE.getCode());
         }
     }
