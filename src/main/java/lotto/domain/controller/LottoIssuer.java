@@ -14,6 +14,8 @@ import lotto.domain.model.WinningLotto;
 public class LottoIssuer {
 
     private Map<RankingInformation, Integer> statistics;
+    private WinningLotto winningLotto;
+    private Lotto lottoBeingChecked;
 
     public LottoIssuer() {
         initStatistics();
@@ -26,6 +28,8 @@ public class LottoIssuer {
             statistics.put(oneRank, 0);
         }
     }
+
+    // ======= 로또 발행 관련 메소드 ======
 
     public List<Lotto> issueLottos(int numberOfLottos) {
         List<Lotto> lottos = new ArrayList<>();
@@ -46,38 +50,78 @@ public class LottoIssuer {
         return new Lotto(oneLottoNumbers);
     }
 
+    // ======= 당첨 통계 관련 메소드 ======
+
     public Map<RankingInformation, Integer> makeWinningStatistics(List<Lotto> lottos,
             WinningLotto winningLotto) {
-        List<Integer> winningNumbers = winningLotto.getWinningNumbers();
-        int bonusNumber = winningLotto.getBonusNumber();
 
+        this.winningLotto = winningLotto;
+
+        checkEachLottoWithWinningLotto(lottos);
+
+        return statistics;
+    }
+
+    private void checkEachLottoWithWinningLotto(List<Lotto> lottos) {
+        for (Lotto oneLotto : lottos) {
+            lottoBeingChecked = oneLotto;
+            compareOneLotto();
+        }
+    }
+
+    private void compareOneLotto() {
+        int numberOfDuplicated = countMatchingNumbers();
+
+        reflectStatistics(numberOfDuplicated);
+    }
+
+    private int countMatchingNumbers() {
+        List<Integer> matchingNumbers = leaveOnlyDuplicated();
+
+        int numberOfMatchingNumbers = matchingNumbers.size();
+
+        return numberOfMatchingNumbers;
+    }
+
+    private List<Integer> leaveOnlyDuplicated() {
+        List<Integer> winningNumbers = winningLotto.getWinningNumbers();
+
+        List<Integer> lottoNumbers = new ArrayList<>(lottoBeingChecked.getNumbers());
+
+        lottoNumbers.retainAll(winningNumbers);
+
+        return lottoNumbers;
+    }
+
+    private void reflectStatistics(int numberOfDuplicated) {
         RankingInformation[] rankingInformations = RankingInformation.values();
 
-        for (Lotto oneLotto : lottos) {
-            List<Integer> lottoNumbers = new ArrayList<>();
-            lottoNumbers.addAll(oneLotto.getNumbers());
-            boolean containsBonus = lottoNumbers.contains(bonusNumber);
-            lottoNumbers.retainAll(winningNumbers);
-
-            int rankIndex = lottoNumbers.size() - 3;
-
-            if (rankIndex == 3) {
-                rankIndex++;
+        for (RankingInformation rank : rankingInformations) {
+            if (numberOfDuplicated == rank.getNumberOfMatch()) {
+                increaseCount(rank);
+                break;
             }
+        }
+    }
 
-            if (rankIndex == 2) {
-                if (containsBonus) {
-                    rankIndex++;
-                }
-            }
+    private void increaseCount(RankingInformation rank) {
+        if (rank.getNumberOfMatch() == 5) {
+            boolean containsBonus = checkBonusNumber();
 
-            if (rankIndex >= 0) {
-                RankingInformation rank = rankingInformations[rankIndex];
-                int count = statistics.get(rank) + 1;
-                statistics.put(rank, count);
+            if (containsBonus) {
+                rank = RankingInformation.SECOND_PLACE;
             }
         }
 
-        return statistics;
+        int count = statistics.get(rank) + 1;
+        statistics.put(rank, count);
+    }
+
+    private boolean checkBonusNumber() {
+        int bonusNumber = winningLotto.getBonusNumber();
+
+        boolean isContained = lottoBeingChecked.getNumbers().contains(bonusNumber);
+
+        return isContained;
     }
 }
