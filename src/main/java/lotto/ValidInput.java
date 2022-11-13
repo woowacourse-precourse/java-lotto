@@ -2,7 +2,6 @@ package lotto;
 
 import java.util.List;
 import java.util.Objects;
-import lotto.constant.LottoEnum;
 
 public class ValidInput {
     public void validCashAmount(Integer cash, Integer lottoDividePrice) {
