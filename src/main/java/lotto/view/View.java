@@ -3,7 +3,7 @@ package lotto.view;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
-import lotto.domain.Winning;
+import lotto.domain.Rank;
 
 public class View {
 
@@ -33,15 +33,15 @@ public class View {
         System.out.println(BONUS_NUMBER_INPUT_REQUEST);
     }
 
-    public void printWinningResult(Map<Winning, Integer> countOfWinning, double profitRate) {
+    public void printWinningResult(Map<Rank, Integer> countOfWinning, double profitRate) {
         StringBuilder result = new StringBuilder();
         result.append(NUMBER_INPUT_FEEDBACK).append(LINE_SEPARATOR);
 
         result.append(
                 String.format("%d개 일치 (%d원) - %d개",
-                              Winning.FIFTH.getSameCount(),
-                              Winning.FIFTH.getWinnings(),
-                              countOfWinning.get(Winning.FIFTH)
+                              Rank.FIFTH.getSameCount(),
+                              Rank.FIFTH.getWinnings(),
+                              countOfWinning.getOrDefault(Rank.FIFTH, 0)
                 )
         );
 

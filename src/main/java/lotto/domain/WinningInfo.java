@@ -3,11 +3,11 @@ package lotto.domain;
 import java.util.List;
 import lotto.aspect.Validator;
 
-public class WinningLotto extends Lotto {
+public class WinningInfo extends Lotto {
 
     private int bonusNumber;
 
-    public WinningLotto(List<Integer> numbers, int bonusNumber) {
+    public WinningInfo(List<Integer> numbers, int bonusNumber) {
         super(numbers);
         Validator.validateBonusNumber(numbers, bonusNumber);
         this.bonusNumber = bonusNumber;
