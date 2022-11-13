@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
 import java.util.List;
 
 public class IOProcessor {
@@ -35,10 +36,10 @@ public class IOProcessor {
         return Console.readLine();
     }
 
-    public static void printLottoPurchaseInfo(int lottoCount, List<List<Integer>> lottos) {
-        System.out.println(lottoCount + "개를 구매했습니다.");
-        for (List<Integer> lottoNumber : lottos) {
-            System.out.println(lottoNumber.toString());
+    public static void printLottoPurchaseInfo(List<Lotto> lottos) {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers().toString());
         }
     }
 
