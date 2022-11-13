@@ -35,4 +35,33 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자를 입력해주세요.");
     }
+
+    @DisplayName("보너스 번호를 숫자가 아닌 다른 문자로 입력할 경우 예외가 발생한다.")
+    @Test
+    void createIncorrectBonusNumberPattern() {
+        String money = "a1000";
+        assertThatThrownBy(() -> Validator.isCorrectBonusNumberPattern(money))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자를 입력해주세요.");
+    }
+
+    @DisplayName("로또 당첨 번호와 중복되는 보너스 번호를 입력할 경우 예외가 발생한다.")
+    @Test
+    void createDuplicatedBonusNumber() {
+        List<Integer> lottoNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 6;
+        assertThatThrownBy(() -> Validator.validateBonusNumber(lottoNumbers, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복된 숫자는 입력할 수 없습니다.");
+    }
+
+    @DisplayName("1~45의 보너스 번호를 입력하지 않을 경우 예외가 발생한다.")
+    @Test
+    void createOverBonusNumber() {
+        List<Integer> lottoNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 100;
+        assertThatThrownBy(() -> Validator.validateBonusNumber(lottoNumbers, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1부터 45 사이의 숫자여야 합니다.");
+    }
 }
