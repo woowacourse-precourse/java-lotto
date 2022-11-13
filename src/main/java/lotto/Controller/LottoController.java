@@ -75,7 +75,7 @@ public class LottoController {
         initCountPrize(numberOfWins);
         for(Lotto lotto : lottos){
             int lottoPrize = getLottoPrize(lotto);
-            if(lottoPrize != noPrize) numberOfWins.put(lottoPrize, numberOfWins.get(lottoPrize));
+            if(lottoPrize != noPrize) numberOfWins.put(lottoPrize, numberOfWins.get(lottoPrize) + 1);
         }
         lottoData.setNumberOfWins(numberOfWins);
     }
