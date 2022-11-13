@@ -146,7 +146,7 @@ public class Application {
                 + rankCount.get(3) * WinningReward.THIRD.getPrice()
                 + rankCount.get(4) * WinningReward.FOURTH.getPrice()
                 + rankCount.get(5) * WinningReward.FIFTH.getPrice();
-        double rateOfReturn = (double) priceSum / payment;
+        double rateOfReturn = (double) priceSum / payment * 100;
         return String.format("%.1f", rateOfReturn);
     }
 
