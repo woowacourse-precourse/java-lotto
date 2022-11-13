@@ -2,19 +2,20 @@ package lotto.service;
 
 import java.util.HashSet;
 import java.util.List;
+import lotto.model.LottoPrice;
 import lotto.model.LottoRule;
 
 public class Validate {
 
-    public void validPurchasePriceAboveThanUnitPrice(int purchasePrice, int unitPrice) {
-        if (purchasePrice < unitPrice) {
-            throw new IllegalArgumentException("입력값이 " + unitPrice + "보다 낮습니다. 로또를 구매할 수 없습니다.");
+    public void validPurchasePriceAboveThanUnitPrice(int purchasePrice) {
+        if (purchasePrice < LottoPrice.UNIT.getPrice()) {
+            throw new IllegalArgumentException("입력값이 " + LottoPrice.UNIT + "보다 낮습니다. 로또를 구매할 수 없습니다.");
         }
     }
 
-    public void validDivisible(int purchasePrice, int unitPrice) {
-        if (purchasePrice % unitPrice != 0) {
-            throw new IllegalArgumentException("입력값이 " + unitPrice + "으로 나누어떨어지지 않습니다.");
+    public void validDivisible(int purchasePrice) {
+        if (purchasePrice % LottoPrice.UNIT.getPrice() != 0) {
+            throw new IllegalArgumentException("입력값이 " + LottoPrice.UNIT + "으로 나누어떨어지지 않습니다.");
         }
     }
 
