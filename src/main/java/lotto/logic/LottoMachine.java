@@ -2,12 +2,12 @@ package lotto.logic;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import lotto.domain.Lotto;
 
 public class LottoMachine {
+
+    private static final int PRICE = 1_000;
 
     private static class LottoMachineHolder {
         private static final LottoMachine INSTANCE = new LottoMachine();
@@ -19,6 +19,14 @@ public class LottoMachine {
 
     public static LottoMachine getInstance() {
         return LottoMachineHolder.INSTANCE;
+    }
+
+    public List<Lotto> generateLottos(int payment) {
+
+        List<Lotto> lottos = new ArrayList<>();
+
+
+
     }
 
     public Lotto generateLotto() {
