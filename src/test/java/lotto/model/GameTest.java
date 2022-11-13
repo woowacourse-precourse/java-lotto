@@ -15,4 +15,11 @@ class GameTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("최대 로또 번호를 넘은 보너스 번호를 설정 시 예외 발생")
+    @Test
+    public void setBonusOutOfRange(){
+        Game game = new Game();
+        assertThatThrownBy(() -> game.setBonus(500))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
