@@ -55,8 +55,9 @@ public class UserInteraction {
             }
         }
     }
-    public void checkBonusNumber(List<Integer> numbers, int bonusNumber){
-        if (numbers.contains(bonusNumber)){
+
+    public void checkBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨번호와 중복 될 수 없습니다.");
         }
     }
