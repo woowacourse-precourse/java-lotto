@@ -18,7 +18,7 @@ public class MessagesTest {
     void 구매_메세지_Enum이_잘_적용되는지_확인합니다() {
         String format = MessageFormat.format(RESULT_OF_PURCHASE_MESSAGE.toString(), 5);
 
-        assertThat(format).isEqualTo("5개를 구매했습니다.");
+        assertThat(format).isEqualTo("\n5개를 구매했습니다.");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class MessagesTest {
     void 에러메세지_Enum이_잘_적용되는지_확인합니다() {
         String errorMessage = ERROR_MESSAGE_PREFIX.toString() + PRICE_ERROR_MESSAGE;
 
-        assertThat(errorMessage).isEqualTo("[ERROR] 금액은 1000원 단위여야 합니다.");
+        assertThat(errorMessage).isEqualTo("[ERROR] 금액은 1000원 단위 숫자여야 합니다.");
     }
 
 }
