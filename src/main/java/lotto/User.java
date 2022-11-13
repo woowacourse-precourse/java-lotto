@@ -37,4 +37,8 @@ public class User {
             System.exit(1);
         }
     }
+
+    public List<Lotto> getLottos(){
+        return lottos;
+    }
 }
