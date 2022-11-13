@@ -21,10 +21,10 @@ public class CheckUtil {
         }
     }
 
-    public static void checkIsValidWinningNumber(List<Integer> winning){
+    public static void checkIsValidWinningNumber(List<Integer> winning) throws IllegalArgumentException{
         for(int num:winning){
             if(num<1 || num>45){
-
+                throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_ERROR_MESSAGE.getMessage());
             }
         }
     }
