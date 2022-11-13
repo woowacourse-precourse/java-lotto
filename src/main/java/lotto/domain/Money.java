@@ -6,7 +6,7 @@ import lotto.validation.IntegerValidation;
 
 public class Money {
 
-    private int money;
+    private final int money;
 
     public Money(String money) {
         numericFormat(money);

@@ -3,12 +3,13 @@ package lotto.validation;
 import static org.junit.jupiter.api.Assertions.*;
 
 import lotto.constant.IntConstant;
+import lotto.controller.LottoController;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoMoneyValidationTest {
-    Validation lottoMoneyValidation = new LottoMoneyValidation();
+        Validation lottoMoneyValidation = new LottoMoneyValidation();
     @DisplayName("숫자가 아니면 IllegalArgumentException 을 발생시킨다.")
     @Test
     void notNumberException() {

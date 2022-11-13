@@ -2,7 +2,7 @@ package lotto.view;
 
 import java.util.List;
 
-public class UserLottoView extends View{
+public class PrintResultView extends View{
 
     private List<String> userLotto;
 

@@ -22,7 +22,7 @@ import lotto.view.BonusLottoView;
 import lotto.view.InputView;
 import lotto.view.LotteryWinningNumberView;
 import lotto.view.LottoBuyView;
-import lotto.view.UserLottoView;
+import lotto.view.PrintResultView;
 import lotto.view.View;
 
 public class LottoController {
@@ -38,7 +38,8 @@ public class LottoController {
         if (money.isEmpty()) {
             return;
         }
-        int lottoCount = money.get().moneyDivideBy(IntConstant.LOTTO_MONEY_PER_ONE.getValue());
+        Money userMoney = money.get();
+        int lottoCount = userMoney.moneyDivideBy(IntConstant.LOTTO_MONEY_PER_ONE.getValue());
         printUserLottoCount(lottoCount);
         List<Lotto> userLotto = createUserLotto(lottoCount);
         printUserLottoResult(userLotto);
@@ -65,14 +66,15 @@ public class LottoController {
 
     private String lottoMoneyInputView() {
         View lottoMoneyView = createLottoMoneyView();
-        return printViewAndReturnInput(lottoMoneyView);
+        lottoMoneyView.show();
+        return lottoMoneyView.getResponse();
     }
 
     private void printUserLottoCount(int lottoCount) {
-        View moneyView = new UserLottoView();
+        View printUserLottoCountView = new PrintResultView();
         List<String> lotto = new ArrayList<>(List.of(lottoCount + "개를 구매했습니다."));
-        moneyView.setPrintElement(lotto);
-        moneyView.show();
+        printUserLottoCountView.setPrintElement(lotto);
+        printUserLottoCountView.show();
     }
 
     private static List<Lotto> createUserLotto(int lottoCount) {
@@ -81,7 +83,7 @@ public class LottoController {
     }
 
     private void printUserLottoResult(List<Lotto> userLotto) {
-        View userLottoView = new UserLottoView();
+        View userLottoView = new PrintResultView();
         List<String> userLottoResult = userLotto.stream()
                 .map(Object::toString)
                 .collect(Collectors.toList());
@@ -97,11 +99,6 @@ public class LottoController {
 
     private View createLottoMoneyView() {
         return new LottoBuyView();
-    }
-
-    private String printViewAndReturnInput(View view) {
-        view.show();
-        return view.getResponse();
     }
 
     private void lottoMoneyInputValidation(String userInput) {
