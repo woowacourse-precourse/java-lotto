@@ -19,7 +19,7 @@ public class ExceptionHandling {
     }
 
     public void isNumeric(String value){
-        if(!Pattern.matches(NUMBER_REGEX, value)){ // 숫자가 아니라면
+        if(!Pattern.matches(NUMBER_REGEX, value) || value.equals("")){ // 숫자가 아니라면
             ShowErrorMessage.showOutRangeLottoNumber();
             throw new IllegalArgumentException();
         }
@@ -32,7 +32,6 @@ public class ExceptionHandling {
         }
     }
 
-    // TODO
     public void removeDuplicateNumber(List<Integer> winNumber){
         Set<Integer> winNumberSet = new HashSet<>(winNumber);
         if(winNumberSet.size() != winNumber.size()){
