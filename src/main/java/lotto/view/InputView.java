@@ -7,15 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.view.ViewEnum.*;
+
 public class InputView {
-    private static final String NUMBER_OF_USER_PRICE_INPUT_MESSAGE="구입금액을 입력해 주세요.";
-    private static final String LIST_OF_LOTTO_INPUT_MESSAGE="당첨 번호를 입력해 주세요.";
-    private final static String EXCEPTED_UNIT_OF_PRICE_MESSAGE="[ERROR] 1,000원 단위의 슷자만 입력 가능합니다.";
-    private final static String EXCEPTED_LOTTO_MESSAGE="[ERROR] 로또 번호는 1부터 45 사이의 중복되지 않는 6개의 숫자여야 합니다.";
-    private final static String NUMBER_OF_BONUS_INPUT_MESSAGE="보너스 번호를 입력해 주세요.";
 
     public static int getUserPriceNumber(){
-        System.out.println(NUMBER_OF_USER_PRICE_INPUT_MESSAGE);
+        System.out.println(NUMBER_OF_USER_PRICE_INPUT_MESSAGE.getMessage());
         String strUserPrice= Console.readLine();
         isValidGetUserPriceNumber(strUserPrice);
 
@@ -24,13 +21,13 @@ public class InputView {
 
     private static void isValidGetUserPriceNumber(String strUserPrice){
         if(!InputValid.checkPriceUnit(strUserPrice)){
-            System.out.println(EXCEPTED_UNIT_OF_PRICE_MESSAGE);
+            System.out.println(EXCEPTED_UNIT_OF_PRICE_MESSAGE.getMessage());
             throw new IllegalArgumentException();
         }
     }
 
     public static List<Integer> getLottoNumber(){
-        System.out.println(LIST_OF_LOTTO_INPUT_MESSAGE);
+        System.out.println(LIST_OF_LOTTO_INPUT_MESSAGE.getMessage());
         String strLottoNumber=Console.readLine();
         isValidGetLottoNumber(strLottoNumber);
 
@@ -43,13 +40,13 @@ public class InputView {
 
     private static void isValidGetLottoNumber(String strLottoNumber){
         if(!InputValid.checkLottoNumber(strLottoNumber)){
-            System.out.println(EXCEPTED_LOTTO_MESSAGE);
+            System.out.println(EXCEPTED_LOTTO_MESSAGE.getMessage());
             throw new IllegalArgumentException();
         }
     }
 
     public static Integer getBonusNumber(List<Integer> lottoNumber){
-        System.out.println(NUMBER_OF_BONUS_INPUT_MESSAGE);
+        System.out.println(NUMBER_OF_BONUS_INPUT_MESSAGE.getMessage());
         String strBonusNumber=Console.readLine();
 
         return isValidGetBonusNumber(strBonusNumber,lottoNumber);
@@ -57,7 +54,7 @@ public class InputView {
 
     private static int isValidGetBonusNumber(String strBonusNumber,List<Integer> lottoNumber){
         if(!InputValid.checkBonusNumber(strBonusNumber,lottoNumber)){
-            System.out.println(EXCEPTED_LOTTO_MESSAGE);
+            System.out.println(EXCEPTED_LOTTO_MESSAGE.getMessage());
             throw new IllegalArgumentException();
         }
         return Integer.parseInt(strBonusNumber);
