@@ -1,5 +1,10 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
