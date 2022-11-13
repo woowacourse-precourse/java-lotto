@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
     private static final String REST = ",";
-    
+
     private final InputViewValidator inputViewValidator;
 
     public InputView() {
@@ -30,5 +30,11 @@ public class InputView {
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .collect(Collectors.toList());
+    }
+
+    public int inputBonusNumber() {
+        String text = Console.readLine();
+        inputViewValidator.validateNumber(text);
+        return Integer.parseInt(text);
     }
 }
