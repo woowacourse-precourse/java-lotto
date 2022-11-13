@@ -24,14 +24,15 @@ public class LottoNumber {
         return lottoNumberList;
     }
 
-    public String outputLottoNumberList(int lottoCount, List<List<Integer>> lottoNumberList){
+    public void outputLottoNumberList(int lottoCount, List<List<Integer>> lottoNumberList){
         StringBuilder sb = new StringBuilder();
         sb.append(lottoCount);
         sb.append(BOUGHT_HOW_MANY + "\n");
         for(int i=0; i<lottoCount; i++){
             sb.append(lottoNumberList.get(i) + "\n");
         }
-        return sb.toString();
+
+        System.out.println(sb);
     }
     private List<Integer> getLottoNumbers(){
         List<Integer> lottoNumbers =
