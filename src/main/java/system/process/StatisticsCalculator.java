@@ -5,6 +5,7 @@ import models.BoughtLottos;
 import models.Statistics;
 import models.WinningLotto;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,6 +60,7 @@ public class StatisticsCalculator {
     private void calculatePercentAndPrintPercent(long prizeAmountSummation) {
         double rate = (double) prizeAmountSummation / (boughtLottos.getAmount() * 1000);
         double percent = (double) Math.round(rate * 1000) / 10;
-        System.out.print("총 수익률은 " + percent + "%입니다.");
+
+        System.out.print("총 수익률은 " + String.format("%,.1f",percent) + "%입니다.");
     }
 }

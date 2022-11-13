@@ -20,7 +20,7 @@ public class WinningLottoRegisterTest extends NsTest {
         );
     }
 
-    @DisplayName("당첨 번호의 입력 양식(번호와 쉼표를 번갈아가면서 씀)이 잘못 되었을 때")
+    @DisplayName("당첨 번호의 입력 양식(번호와 쉼표를 번갈아가면서 씀)이 잘못 되었다면 예외 발생.")
     @Test
     void inputWrongWinningNumbers(){
         //중간에 쉼표가 2개
@@ -56,6 +56,21 @@ public class WinningLottoRegisterTest extends NsTest {
         //숫자 5개에 끝에 쉼표 1개
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12,13,14,15,16,"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage())
+        );
+    }
+
+    @DisplayName("보너스 번호의 입력 양식(두 자리 숫자만 가능)이 잘못 되었다면 예외 발생.")
+    @Test
+    void inputWrongWinningBonusNumber(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("11,12,13,14,15,16","100"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(IllegalArgument.OUT_OF_BONUS_NUMBER_LENGTH.getMessage())
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("11,12,13,14,15,16","1,"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage())
         );
