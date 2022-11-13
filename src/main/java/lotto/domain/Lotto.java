@@ -6,7 +6,7 @@ import java.text.MessageFormat;
 import java.util.List;
 
 final class Lotto {
-    private static final String LOTTO_FORMAT="[{0}, {1}, {2}, {3}, {4}, {5}]";
+    private static final String LOTTO_FORMAT = "[{0}, {1}, {2}, {3}, {4}, {5}]";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -33,7 +33,7 @@ final class Lotto {
     }
 
     private void isInRange(List<Integer> numbers) {
-       numbers.forEach(this::isInLottoSize);
+        numbers.forEach(this::isInLottoSize);
     }
 
     private void isInLottoSize(int number) {
@@ -45,8 +45,8 @@ final class Lotto {
         }
     }
 
-    public String getLottoPrinting(){
-        return MessageFormat.format(LOTTO_FORMAT,numbers.toArray());
+    public String getLottoPrinting() {
+        return MessageFormat.format(LOTTO_FORMAT, numbers.toArray());
     }
 
     public boolean contains(int number) {
@@ -65,10 +65,10 @@ final class Lotto {
     public int getScore(Lotto other) {
         return numbers.stream()
                 .reduce(0,
-                        (total,number)->total+calculateScore(number,other));
+                        (total, number) -> total + calculateScore(number, other));
     }
 
-    private int calculateScore(int number,Lotto other){
+    private int calculateScore(int number, Lotto other) {
         if (other.contains(number)) {
             return 1;
         }
