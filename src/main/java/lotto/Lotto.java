@@ -23,4 +23,10 @@ public class Lotto {
         }
         return number;
     }
+
+    public Integer numberOfBonus(Integer bonus){
+        if (numbers.contains(bonus)) return 1;
+        return 0;
+    }
+
 }
