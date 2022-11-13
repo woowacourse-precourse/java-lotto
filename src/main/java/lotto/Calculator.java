@@ -23,7 +23,7 @@ public class Calculator {
     private enum Prize {
         FIRST_PLACE(1, 2000000000),
         SECOND_PLACE(2, 30000000),
-        THIRD_PLACE(3, 15000000),
+        THIRD_PLACE(3, 1500000),
         FOURTH_PLACE(4, 50000),
         FIFTH_PLACE(5, 5000);
 
@@ -103,7 +103,8 @@ public class Calculator {
                 profit += rankCount.get(prize.place) * prize.prize;
             }
         }
-        yield = Math.round(profit/(1000*lotto.size()));
+        int amount = 1000*lotto.size();
+        yield = Math.round(((profit/amount)*10))/10.0;
     }
 
     public double getYield() {
