@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class WinningNumberValidator {
 	private static final Pattern pattern = Pattern.compile("^([1-9]),([1-9]),([1-9]),([1-9]),([1-9]),([1-9])$");
 
-	public void runWinningNumberValidator(String inputData) {
+	public List<Integer> runWinningNumberValidator(String inputData) {
 		List<Integer> winningBalls;
 		if (isInvalidInputFormat(inputData)) {
 			throw new IllegalArgumentException(COMMA_CLASSIFICATION.getErrorMessage());
@@ -23,6 +23,7 @@ public class WinningNumberValidator {
 		if (isOutBoundsNumber(winningBalls)) {
 			throw new IllegalArgumentException(NOT_LOTTO_NUMBER_RANGE.getErrorMessage());
 		}
+		return winningBalls;
 	}
 
 	private boolean isInvalidInputFormat(String inputData) {
