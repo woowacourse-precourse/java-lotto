@@ -11,6 +11,7 @@ public class LottoStore {
     private static final LottoDesignator lottoDesignator = new LottoDesignator();
     private static final LottoResultJudge lottoResultJudge = new LottoResultJudge();
     private static final LottoGenerator lottoGenerator = new LottoGenerator();
+    private static final ProfitCalculator profitCalculator = new ProfitCalculator();
 
     public static void startLotto() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -57,21 +58,27 @@ public class LottoStore {
         }
 
         int[] count = new int[5];
+        int profit = 0;
         for(int lottoResultIndex = 0; lottoResultIndex<lottoResult.size(); lottoResultIndex++) {
             if(lottoResult.get(lottoResultIndex).equals(LottoResult.FIRST)) {
                 count[0]++;
+                profit += LottoResult.FIRST.getPrize();
             }
             if(lottoResult.get(lottoResultIndex).equals(LottoResult.SECOND)) {
                 count[1]++;
+                profit += LottoResult.SECOND.getPrize();
             }
             if(lottoResult.get(lottoResultIndex).equals(LottoResult.THIRD)) {
                 count[2]++;
+                profit += LottoResult.THIRD.getPrize();
             }
             if(lottoResult.get(lottoResultIndex).equals(LottoResult.FOURTH)) {
                 count[3]++;
+                profit += LottoResult.FOURTH.getPrize();
             }
             if(lottoResult.get(lottoResultIndex).equals(LottoResult.FIFTH)) {
                 count[4]++;
+                profit += LottoResult.FIFTH.getPrize();
             }
         }
 
@@ -82,7 +89,7 @@ public class LottoStore {
         System.out.println(LottoResult.SECOND.getName() + count[1] + "개");
         System.out.println(LottoResult.FIRST.getName() + count[0] + "개");
 
-        System.out.println("총 수익률은 62.5%입니다.");
+        System.out.println("총 수익률은 " + profitCalculator.profitPercent(money, profit) + "%입니다.");
     }
 
 }

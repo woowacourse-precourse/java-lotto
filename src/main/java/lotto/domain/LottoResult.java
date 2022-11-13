@@ -18,7 +18,7 @@ public enum LottoResult {
     public String getName() {
         return result;
     }
-    int getPrize() {
+    public int getPrize() {
         return prize;
     }
 
