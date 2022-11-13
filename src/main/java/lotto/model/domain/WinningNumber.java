@@ -40,7 +40,7 @@ public class WinningNumber {
     }
 
     private int validateBonusNumber(int bonusNumber, List<Integer> winningNumber) {
-        if (!isValidLottoNumberRange(bonusNumber)) {
+        if (isInvalidLottoNumberRange(bonusNumber)) {
             throw new IllegalArgumentException(INVALID_BONUS_NUMBER_RANGE);
         }
         if (isDuplicatedWithWinningNumber(bonusNumber, winningNumber)) {
@@ -61,8 +61,8 @@ public class WinningNumber {
         return winningNumber;
     }
 
-    private boolean isValidLottoNumberRange(int num) {
-        return num >= LOTTO_NUM_MIN && num <= LOTTO_NUM_MAX;
+    private boolean isInvalidLottoNumberRange(int num) {
+        return num < LOTTO_NUM_MIN || num > LOTTO_NUM_MAX;
     }
 
     private List<Integer> parseWinningNumber(String winningNumber) {
@@ -81,10 +81,14 @@ public class WinningNumber {
         double numOfMatch = this.lotto.countMatch(lotto);
         boolean isBonusMatch = lotto.contains(bonusNumber);
 
-        if (numOfMatch == THIRD_SCORE && isBonusMatch) {
+        if (isSecondScore(numOfMatch, isBonusMatch)) {
             numOfMatch = SECOND_SCORE;
         }
         return RankCreator.create(numOfMatch);
+    }
+
+    private boolean isSecondScore(double numOfMatch, boolean isBonusMatch) {
+        return numOfMatch == THIRD_SCORE && isBonusMatch;
     }
 
 }

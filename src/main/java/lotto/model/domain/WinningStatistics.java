@@ -37,7 +37,7 @@ public class WinningStatistics {
     }
 
     private double sumOfReward() {
-        return (float) rankAndRankCount.keySet()
+        return (double) rankAndRankCount.keySet()
                 .stream()
                 .map(this::sumOfOneRankReward)
                 .reduce(Integer::sum)

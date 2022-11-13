@@ -24,7 +24,7 @@ public class Lotto {
     }
 
     private void validateNumbers(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBER_SIZE) {
+        if (isInvalidLottoNumberSize(numbers)) {
             throw new IllegalArgumentException(WRONG_NUMBER_SIZE);
         }
         if (isInvalidAllLottoNumberRange(numbers)) {
@@ -33,6 +33,10 @@ public class Lotto {
         if (hasDuplicatedLottoNumber(numbers)) {
             throw new IllegalArgumentException(DUPLICATED_NUMBER);
         }
+    }
+
+    private boolean isInvalidLottoNumberSize(List<Integer> numbers) {
+        return numbers.size() != LOTTO_NUMBER_SIZE;
     }
 
     private boolean isInvalidAllLottoNumberRange(List<Integer> numbers) {

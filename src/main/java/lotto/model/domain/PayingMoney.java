@@ -18,7 +18,7 @@ public class PayingMoney {
         this.money = validateMoney(money);
     }
 
-    private static int validateMoney(String money) {
+    private int validateMoney(String money) {
         money = Utils.deleteAllString(money);
         if (!Pattern.matches(MONEY_REGEX, money)) {
             throw new IllegalArgumentException(MONEY_IS_ONLY_NUMBER);
@@ -26,14 +26,22 @@ public class PayingMoney {
         return validateMoney(Integer.parseInt(money));
     }
 
-    private static int validateMoney(int money) {
-        if (money < LOTTO_PRICE) {
+    private int validateMoney(int money) {
+        if (isLackMoney(money)) {
             throw new IllegalArgumentException(MONEY_IS_MORE_THAN_1000);
         }
-        if (money % LOTTO_PRICE != NOTHING) {
+        if (isMoneyNotFactorOf1000(money)) {
             throw new IllegalArgumentException(MONEY_IS_FACTOR_OF_1000);
         }
         return money;
+    }
+
+    private boolean isMoneyNotFactorOf1000(int money) {
+        return money % LOTTO_PRICE != NOTHING;
+    }
+
+    private boolean isLackMoney(int money) {
+        return money < LOTTO_PRICE;
     }
 
     public Lottos createLottos() {
