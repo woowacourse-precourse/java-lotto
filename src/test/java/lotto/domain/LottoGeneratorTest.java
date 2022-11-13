@@ -10,16 +10,36 @@ public class LottoGeneratorTest {
 
     @DisplayName("발행하는 로또의 숫자는 6개여야 한다.")
     @Test
-    void 로또_개수() {
+    void getLottoCount() {
         List<Integer> lotto = LottoGenerator.createRandomLottoNumber();
-        Assertions.assertThat(lotto.size()).isEqualTo(6);
+
+        int randomLottoSize = lotto.size();
+
+        Assertions.assertThat(randomLottoSize).isEqualTo(6);
     }
 
     @DisplayName("발행하는 로또에는 중복된 숫자가 있으면 안된다.")
     @Test
-    void 로또_중복() {
+    void getDuplicateLottoCount() {
         List<Integer> lotto = LottoGenerator.createRandomLottoNumber();
-        Assertions.assertThat(lotto.stream().distinct().count()).isEqualTo(6);
+
+        long notDuplicateCount = lotto.stream()
+                .distinct()
+                .count();
+
+        Assertions.assertThat(notDuplicateCount).isEqualTo(6);
+    }
+
+    @DisplayName("발행하는 로또의 각 수는 1 - 45 범위를 벗어나지 않는다.")
+    @Test
+    void getLottoRange() {
+        List<Integer> lotto = LottoGenerator.createRandomLottoNumber();
+
+        long zeroCount = lotto.stream()
+                .filter(n -> n <= 0 || n > 45)
+                .count();
+
+        Assertions.assertThat(zeroCount).isEqualTo(0);
     }
 }
 
