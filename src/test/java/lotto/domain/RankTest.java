@@ -19,5 +19,4 @@ class RankTest {
 		Rank rank = Rank.getRank(sameCount, bonusNumber);
 		assertThat(rank).isEqualByComparingTo(Rank.NO_RANK);
 	}
-
 }

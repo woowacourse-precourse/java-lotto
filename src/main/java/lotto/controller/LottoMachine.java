@@ -22,18 +22,17 @@ public class LottoMachine {
 
 	private void setting() {
 		Buyer buyer = Buyer.buyLottos(InputView.inputAmount());
-
 		OutputView.printAllLottoNumber(buyer.getLotto());
 
-		String winningNumbers = InputView.inputWinningNumber();
-		WinningLotto winningLotto = WinningLotto.generateWinningLotto(winningNumbers);
+		WinningLotto winningLotto = WinningLotto.generateWinningLotto(InputView.inputWinningNumber());
 		winningLotto.setBonusNumber(InputView.inputBonusNumber());
 		machineSystem = new MachineSystem(buyer, winningLotto);
 	}
 
 	private void winningStats() {
-		Stats stats = machineSystem.createStats();
+		Stats stats = Stats.initStats();
+		stats.addLottos(machineSystem.matchLottos());
 		stats.print();
-		OutputView.printYieldMessage(machineSystem.yield(stats.totalReward()));
+		OutputView.printYieldMessage(stats.yield());
 	}
 }

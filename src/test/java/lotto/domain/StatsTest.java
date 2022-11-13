@@ -1,12 +1,8 @@
 package lotto.domain;
 
-import java.util.Arrays;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import lotto.service.MachineSystem;
 
 class StatsTest {
 
@@ -14,8 +10,8 @@ class StatsTest {
 	@DisplayName("당첨 내역에 따른 상금")
 	void checkTotalRewardTest() {
 		Stats stats = Stats.initStats();
-		stats.add(Rank.RANK_1ST);
-		stats.add(Rank.RANK_2ND);
+		stats.addLotto(Rank.RANK_1ST);
+		stats.addLotto(Rank.RANK_2ND);
 		int sum = Rank.RANK_1ST.getReward() + Rank.RANK_2ND.getReward();
 		Assertions.assertThat(stats.totalReward()).isEqualTo(sum);
 	}
@@ -24,14 +20,11 @@ class StatsTest {
 	@DisplayName("수익률 계산해주는 테스트")
 	void calculateYieldTest() {
 		Stats stats = Stats.initStats();
-		stats.add(Rank.RANK_1ST);
-		stats.add(Rank.RANK_2ND);
-		int amount = 10000;
-		MachineSystem machineSystem = new MachineSystem(Buyer.buyLottos(amount),
-			new WinningLotto(Arrays.asList(1, 2, 3, 4, 5, 6)));
-
-		double totalReward = Rank.RANK_1ST.getReward() + Rank.RANK_2ND.getReward();
-		double yield = totalReward / (double)amount * 100;
-		Assertions.assertThat(machineSystem.yield(stats.totalReward())).isEqualTo(yield);
+		stats.addLotto(Rank.RANK_4TH);
+		stats.addLotto(Rank.RANK_5TH);
+		double amount = 2000;
+		double totalReward = Rank.RANK_4TH.getReward() + Rank.RANK_5TH.getReward();
+		double yield = totalReward / amount * 100;
+		Assertions.assertThat(stats.yield()).isEqualTo(yield);
 	}
 }
