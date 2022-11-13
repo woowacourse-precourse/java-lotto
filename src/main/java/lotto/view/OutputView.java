@@ -1,5 +1,7 @@
 package lotto.view;
 
+import java.util.List;
+
 public class OutputView {
 
     public String isNumberMsg() {
@@ -14,11 +16,11 @@ public class OutputView {
         System.out.println(count + "개를 구입했습니다.");
     }
 
-    public String EqualMsg() {
+    public String equalMsg() {
         return "[ERROR] 중복된 값이 있습니다.";
     }
 
-    public String RangeMsg(){
+    public String rangeMsg(){
         return "[ERROR] 1~45범위의 숫자만 입력해주세요.";
     }
 
@@ -26,7 +28,11 @@ public class OutputView {
         return "[ERROR] 6개의 숫자를 입력해주세요.";
     }
 
-    public String EqualBonusMsg() {
+    public String equalBonusMsg() {
         return "[ERROR] 당첨 번호와 중복된 값이 있습니다.";
+    }
+
+    public void userLottoMsg(int index, List<List<Integer>> lotto) {
+        System.out.println(lotto.get(index));
     }
 }

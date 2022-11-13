@@ -10,14 +10,14 @@ public class BonusNumber {
 
     public void checkBonusNumber(List<Integer>number, String bonus) {
         isNumber(bonus);
-        RangeNumber(bonus);
+        rangeNumber(bonus);
         isEqualNumber(bonus, number);
     }
 
-    public boolean RangeNumber(String bonus){
+    public boolean rangeNumber(String bonus){
         int number = Integer.parseInt(bonus);
         if(!(number >= 1 && number <=45)) {
-            inputError(outputView.RangeMsg());
+            inputError(outputView.rangeMsg());
         }
         return true;
     }
@@ -41,7 +41,7 @@ public class BonusNumber {
 
     private void isEqual(int num, int i) {
         if(num == i) {
-            inputError(outputView.EqualBonusMsg());
+            inputError(outputView.equalBonusMsg());
         }
     }
 
