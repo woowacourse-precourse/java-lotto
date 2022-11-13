@@ -42,6 +42,33 @@ public class Application {
                     }
                 }
             }
+
+            winningStatisticsMaker(lottoArray[i], userInputBonusNumber, correctCount, countTmp);
+        }
+    }
+
+    public static void winningStatisticsMaker(int[] lottoArray, int userInputBonusNumber, int[] correctCount, int countTmp){
+        if (countTmp == 3) {
+            correctCount[0]++;
+        }
+
+        else if (countTmp == 4) {
+            correctCount[1]++;
+        }
+
+        else if (countTmp == 5) {
+            for (int i = 0; i < 6; i++){
+                if (lottoArray[i] == userInputBonusNumber){
+                    correctCount[3]--;
+                    correctCount[4]++;
+                }
+            }
+
+            correctCount[3]++;
+        }
+
+        else if (countTmp == 6) {
+            correctCount[5]++;
         }
     }
 
