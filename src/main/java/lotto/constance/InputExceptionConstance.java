@@ -15,4 +15,5 @@ public class InputExceptionConstance {
     public static final String WIN_LOTTO_NUMBER = "WIN_LOTTO_NUMBER";
     public static final String BONUS_NUMBER = "BONUS_NUMBER";
     public static final String COMMA = ",";
+    public static final int SPLIT_NUMBER = 1000;
 }

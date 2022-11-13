@@ -6,8 +6,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static lotto.constance.BasicConstance.NUMBER_LENGTH;
 import static lotto.constance.InputExceptionConstance.*;
+import static lotto.constance.LottoConstance.END_RANDOM_NUMBER;
+import static lotto.constance.LottoConstance.NUMBER_LENGTH;
 
 public class InputException {
     private InputException() {}
@@ -48,13 +49,13 @@ public class InputException {
     }
 
     private static void validateSplit(String number) {
-        if(Integer.parseInt(number) % 1000 != 0) {
+        if(Integer.parseInt(number) % SPLIT_NUMBER != 0) {
             exception(NOT_SPLIT_1000);
         }
     }
 
     private static void validateUnder(String number) {
-        if(Integer.parseInt(number) < 1000) {
+        if(Integer.parseInt(number) < SPLIT_NUMBER) {
             exception(UNDER_1000);
         }
     }
@@ -82,7 +83,7 @@ public class InputException {
     private static void validateNotExceed(String number) {
         List<Integer> numbers = toList(number);
         for(Integer num : numbers) {
-            if(num > 45) {
+            if(num > END_RANDOM_NUMBER) {
                 exception(NOT_EXCEEDING_45);
             }
         }
