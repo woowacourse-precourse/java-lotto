@@ -27,13 +27,10 @@ public class Validator {
         }
     }
 
-    public static void bonusNumberRange(String bonusNumber) {
+    public static void bonusNumber(String bonusNumber) {
         if (!Pattern.matches(REGEX.BONUS_NUMBER, bonusNumber)) {
             throw new IllegalArgumentException(ERROR.BONUS_NUMBER_RANGE);
         }
-    }
-
-    public static void bonusNumberInWinningNumbers(String bonusNumber) {
         if (Lotto.getWinningNumbers().contains(Integer.parseInt(bonusNumber))) {
             throw new IllegalArgumentException(ERROR.BONUS_NUMBER_IN_WINNING_NUMBER);
         }
