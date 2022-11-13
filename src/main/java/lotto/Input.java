@@ -24,18 +24,21 @@ public class Input {
     }
 
     public String setWinningLotto(){
-        return "";
+        String inputWinningLotto=Console.readLine();
+        checkLotto(inputWinningLotto);
+        checkWinningLotto(inputWinningLotto);
+        return inputWinningLotto;
     }
 
-    public boolean checkWinningLotto(){
-        return false;
+    public void checkWinningLotto(String inputWinningLotto){
+
     }
 
     public int setBonusNumber(){
         return 0;
     }
 
-    public boolean checkLotto(){
-        return false;
+    public void checkLotto(String inputWinningLotto){
+
     }
 }
