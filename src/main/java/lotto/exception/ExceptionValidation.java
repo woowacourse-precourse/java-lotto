@@ -18,14 +18,14 @@ public class ExceptionValidation {
         inputrangeException(winnningNum);
     }
 
-    private static boolean inputsizeException(List<Integer> input) {
+    protected static boolean inputsizeException(List<Integer> input) {
         if (input.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 6자리의 수를 입력해주세요.");
         }
         return false;
     }
 
-    private static boolean inputduplicateException(List<Integer> input) {
+    protected static boolean inputduplicateException(List<Integer> input) {
         for (int i = 0; i < input.size(); i++) {
             int frequency = Collections.frequency(input, input.get(i));
             if (input.size() == 6 && frequency >= 2) {
@@ -35,7 +35,7 @@ public class ExceptionValidation {
         return false;
     }
 
-    private static boolean inputrangeException(List<Integer> input) {
+    protected static boolean inputrangeException(List<Integer> input) {
         for (int i = 0; i < input.size(); i++) {
             if (input.get(i) > 45 || input.get(i) < 1) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
