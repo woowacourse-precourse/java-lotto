@@ -1,7 +1,8 @@
-package lotto;
+package lotto.application;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.Lotto;
 
 public class LottoSeller {
 
