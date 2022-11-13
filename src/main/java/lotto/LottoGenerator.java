@@ -22,6 +22,7 @@ public class LottoGenerator {
         if(!judge.correctAmount(amount)) {
             throw new IllegalArgumentException("1000으로 나누어 떨어지도록 해주세요.");
         }
+        System.out.println(Integer.parseInt(amount) / 1000 + "개를 구매했습니다.");
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < Integer.parseInt(amount) / 1000; i++) {
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
