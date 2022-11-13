@@ -2,16 +2,15 @@ package service;
 
 import domain.Lotto;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LottoService {
-    private final List<Integer>numbers = new ArrayList<>();
+
     public Lotto createWinningNumber(String winningNumber) {
-        String[] inputNumbers = winningNumber.split(",");
-        for (String inputNumber : inputNumbers) {
-            numbers.add(Integer.parseInt(inputNumber));
-        }
+        List<Integer> numbers = Stream.of(winningNumber.split(","))
+                .mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
         return new Lotto(numbers);
     }
 }
