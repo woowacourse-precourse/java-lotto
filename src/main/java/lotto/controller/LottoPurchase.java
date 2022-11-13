@@ -1,9 +1,23 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LottoPurchase {
     public static final int LOTTO_PRICE = 1000;
+
+    public List<Lotto> purchaseLottos() {
+        List<Lotto> lottos = new ArrayList<>();
+        int purchaseOfNumber = purchaseAmountDividedByLottoPrice(getPurchaseAmountInput());
+
+        for (int count = 0; count < purchaseOfNumber; count++) {
+            lottos.add(Lotto.generator());
+        }
+        return lottos;
+    }
 
     private int getPurchaseAmountInput() {
         String userInput = Console.readLine();
