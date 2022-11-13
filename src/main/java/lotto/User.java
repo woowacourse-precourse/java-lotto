@@ -32,7 +32,7 @@ public class User {
     public void purchaseLotto() {
         int number = money / 1000;
 
-        System.out.println("\n" + number + "개를 구매했습니다.");
+        System.out.println(number + "개를 구매했습니다.");
 
         for (int i = 0; i < number; i++) {
             List<Integer> lotto = getOneLotto();
@@ -42,7 +42,7 @@ public class User {
     }
 
     public List<Integer> getOneLotto() {
-        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(lotto);
 
         return lotto;
