@@ -15,7 +15,7 @@ public class LottoSummary {
     private final static String PRICE = " (%s원)";
     private final static String MATCH_COUNT = " - %d개\n";
     private static final String YIELD = "총 수익률은 %s%%입니다.";
-    private static final String YIELD_PATTERN = "#,###.0";
+    private static final String YIELD_PATTERN = "#,##0.0";
     private static final String MONEY_PATTERN = "#,###";
     private static final int PERCENT = 100;
 
@@ -28,10 +28,14 @@ public class LottoSummary {
     }
 
     private double calculateYield(List<Rank> ranks, Money money) {
+        double purchaseAmount = money.getMoney();
+        if (purchaseAmount == 0) {
+            return 0.;
+        }
         AtomicLong sum = new AtomicLong();
 
         ranks.forEach(rank -> sum.addAndGet(rank.getPrice()));
-        return sum.get() / (double) money.getMoney() * PERCENT;
+        return sum.get() / purchaseAmount * PERCENT;
     }
 
     private String summaryResult(List<Rank> ranks) {
