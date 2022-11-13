@@ -1,6 +1,7 @@
 package lotto.util;
 
 import java.util.List;
+import lotto.LottoNumberRange;
 
 public class Validator {
 
@@ -22,6 +23,18 @@ public class Validator {
         int size = playerNumbers.size();
         if (size != PLAYER_NUMBERS_COUNT_STANDARD) {
             throw new IllegalArgumentException(PLAYER_NUMBERS_COUNT_STANDARD_ERROR_MESSAGE);
+        }
+    }
+
+    public static void validatePlayNumbersRange(List<Integer> playerNumbers) {
+        int minRange = LottoNumberRange.MIN.getValue();
+        int maxRange = LottoNumberRange.MAX.getValue();
+
+        boolean isPlayerNumbersInRange = playerNumbers.stream()
+                .allMatch(playerNumber -> minRange <= playerNumber && playerNumber <= maxRange);
+
+        if (!isPlayerNumbersInRange) {
+            throw new IllegalArgumentException();
         }
     }
 }
