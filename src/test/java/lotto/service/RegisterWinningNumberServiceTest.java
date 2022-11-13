@@ -38,7 +38,10 @@ class RegisterWinningNumberServiceTest extends NsTest {
         run("1,2,3,4,5,6", "6");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> registerWinningNumberService.register());
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> registerWinningNumberService.register()
+        );
         assertEquals("[ERROR] 보너스 번호에 중복 된 숫자가 포함되어있습니다.", exception.getMessage());
     }
 

@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WinningHistoryTest {
     @Test
-    @DisplayName("results를 주면 WinningHistory객체를 생성 해야 한다.")
+    @DisplayName("results를 주면 WinningHistory의 필드값을 생성 해야 한다.")
     void createWinningHistoryObject() {
         // given
         ArrayList<LottoTicketResult> results = new ArrayList<>();
