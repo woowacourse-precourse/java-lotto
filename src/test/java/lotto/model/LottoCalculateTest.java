@@ -110,6 +110,6 @@ class LottoCalculateTest {
     @DisplayName("구입금액: 10000, 상금: 12345 일 때 수익률은 123.5 이다.")
     @Test
     void calculatePercentageOfReturnTest() {
-        assertThat(lottoCalculate.calculatePercentageOfReturn(10000, 12345)).isEqualTo(123.5);
+        assertThat(lottoCalculate.calculatePercentageOfReturn(10000, 12345)).isEqualTo(123.5f);
     }
 }

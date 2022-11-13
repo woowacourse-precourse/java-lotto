@@ -8,16 +8,22 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class InputLottoTest {
     static InputLotto inputLotto;
+    static LottoData lottoData;
 
-    @BeforeAll
-    static void initAll() {
+    @BeforeEach
+    void initAll() {
+        String input = "10000";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
         inputLotto = new InputLotto();
+        inputLotto.inputMoney();
+        lottoData = inputLotto.makeLottoData();
     }
 
     @DisplayName("구매 금액 입력 시 숫자가 아닌 값을 넣으면 IllegalArgumentException 이 발생합니다.")
@@ -45,7 +51,8 @@ class InputLottoTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         inputLotto.inputMoney();
-        assertThat(inputLotto.money).isEqualTo(12000);
+        LottoData lottoData1 = inputLotto.makeLottoData();
+        assertThat(lottoData1.money).isEqualTo(12000);
     }
 
     @DisplayName("당첨 번호 입력 시 정확한 입력값은 List 로 변환해 반환합니다.")
@@ -55,8 +62,8 @@ class InputLottoTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         List<Integer> expect = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        inputLotto.inputWinNumber();
-        assertThat(inputLotto.winNumbers).isEqualTo(expect);
+        inputLotto.inputWinNumber(lottoData);
+        assertThat(lottoData.winNumbers).isEqualTo(expect);
     }
 
     @DisplayName("당첨 번호 입력시 숫자 구분시 ',' 이 아닌 다른것을 사용하면 IllegalArgumentException 이 발생합니다.")
@@ -66,7 +73,7 @@ class InputLottoTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber());
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber(lottoData));
     }
 
     @DisplayName("당첨 번호 입력시 1~45 사이 이외의 숫자를 넣으면 IllegalArgumentException 이 발생합니다.")
@@ -76,7 +83,7 @@ class InputLottoTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber());
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber(lottoData));
     }
 
     @DisplayName("당첨 번호 입력시 숫자 이외 다른것을 넣으면 IllegalArgumentException 이 발생합니다.")
@@ -86,7 +93,7 @@ class InputLottoTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber());
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber(lottoData));
     }
 
     @DisplayName("당첨 번호 입력시 6개 초과의 숫자를 넣으면 IllegalArgumentException 이 발생합니다.")
@@ -96,7 +103,7 @@ class InputLottoTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber());
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber(lottoData));
     }
 
     @DisplayName("당첨 번호 입력시 중복된 숫자를 넣으면 IllegalArgumentException 이 발생합니다.")
@@ -106,7 +113,7 @@ class InputLottoTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber());
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber(lottoData));
     }
 
     @DisplayName("보너스번호 입력시 정환한 값은 int 로 변환해 반환합니다.")
@@ -116,8 +123,8 @@ class InputLottoTest {
         String input = "7";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        inputLotto.inputBonusNumber(winNumbers);
-        assertThat(inputLotto.bonusNumber).isEqualTo(7);
+        inputLotto.inputBonusNumber(lottoData, winNumbers);
+        assertThat(lottoData.bonusNumber).isEqualTo(7);
     }
 
     @DisplayName("보너스 번호 입력 시 숫자 이외의 다른것을 넣으면 IllegalArgumentException 이 발생합니다.")
@@ -127,7 +134,7 @@ class InputLottoTest {
         String input = "s";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(winNumbers));
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(lottoData, winNumbers));
     }
 
     @DisplayName("보너스 번호 입력 시 숫자 이외의 다른것을 넣으면 IllegalArgumentException 이 발생합니다.")
@@ -137,7 +144,7 @@ class InputLottoTest {
         String input = "23,";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(winNumbers));
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(lottoData, winNumbers));
     }
 
     @DisplayName("보너스 번호 입력 시 1~45 범위 밖의 숫자를 넣으면 IllegalArgumentException 이 발생합니다.")
@@ -147,7 +154,7 @@ class InputLottoTest {
         String input = "46";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(winNumbers));
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(lottoData, winNumbers));
     }
 
     @DisplayName("보너스 번호 입력 시 1~45 범위 밖의 숫자를 넣으면 IllegalArgumentException 이 발생합니다.")
@@ -157,7 +164,7 @@ class InputLottoTest {
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(winNumbers));
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(lottoData, winNumbers));
     }
 
     @DisplayName("보너스 번호 입력 시 당첨 번호와 중복되는 숫자를 넣으면 IllegalArgumentException 이 발생합니다.")
@@ -167,6 +174,6 @@ class InputLottoTest {
         String input = "1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(winNumbers));
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(lottoData, winNumbers));
     }
 }
