@@ -11,7 +11,7 @@ import java.util.Set;
 public class WinningNumber {
 
     private final String input;
-    private static List<Integer> numbers = new ArrayList<>();
+    public static List<Integer> numbers = new ArrayList<>();
     private static String[] inputs ;
 
 
@@ -45,6 +45,11 @@ public class WinningNumber {
             new Exceptions("중복된 숫자가 없어야 한다");
         }
     }
+
+    public List<Integer> showWinningNumbers(){
+        return numbers;
+    }
+
 
 
 }

@@ -86,5 +86,24 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    //보너스 번호 테스트
+    @DisplayName("보너스 번호는 로또 번호와 중복되면 안된다")
+    @Test
+    void testBonus(){
+        WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6");
+        List<Integer> numbers = winningNumber.showWinningNumbers();
+        assertThatThrownBy(()->new BonusNumber("1",numbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
+    @DisplayName("보너스 번호와 로또 번호는 알맞으면 반환을 합니다")
+    @Test
+    void testReturn(){
+        WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6");
+        List<Integer> numbers = winningNumber.showWinningNumbers();
+        BonusNumber bonusNumber = new BonusNumber("7", numbers);
+        int bonum = bonusNumber.makeBonusNumber();
+        System.out.println("numbers = " + numbers);
+        System.out.println("bonum = " + bonum);
+    }
 }
