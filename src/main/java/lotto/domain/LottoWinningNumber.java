@@ -1,13 +1,13 @@
 package lotto.domain;
 
-import java.util.List;
+import static lotto.utils.StringToListConverter.convert;
 
 public class LottoWinningNumber extends Lotto {
     private static final String EXCEPTION_MESSAGE = "1~45 사이 숫자를 입력해 주시기 바랍니다.";
     private final int bonusNumber;
 
-    public LottoWinningNumber(List<Integer> winningNumber, String bonus) {
-        super(winningNumber);
+    public LottoWinningNumber(String winningNumber, String bonus) {
+        super(convert(winningNumber));
         int bonusNumber = validateInputIsNumber(bonus);
         this.bonusNumber = validateDuplicate(bonusNumber);
     }
