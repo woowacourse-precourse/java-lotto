@@ -106,19 +106,19 @@ public class LottoService {
         }
     }
 
-    public List<String> getWinningAmount() {
+    public List<Long> getWinningAmount() {
         return LottoRepository.getWinningAmount();
     }
 
 
     public String getProfit() {
         List<Integer> winningResult = LottoRepository.getWinningResult();
-        List<String> winningMoney = LottoRepository.getWinningAmount();
+        List<Long> winningMoney = LottoRepository.getWinningAmount();
         Double purchaseMoney = Double.valueOf(LottoRepository.getPurchaseMoney());
 
-        Integer totalPrice = 0;
+        Long totalPrice = 0L;
         for (int i = 0 ; i < winningMoney.size(); i ++){
-            totalPrice += Integer.parseInt(winningMoney.get(i)) * winningResult.get(i);
+            totalPrice += winningMoney.get(i) * winningResult.get(i);
         }
         return String.format("%.1f", totalPrice/purchaseMoney*100);
     }

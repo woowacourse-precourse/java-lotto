@@ -13,8 +13,8 @@ public class LottoRepository {
     private static List<Lotto> lastUserLottoGroup;
     private static Lotto lastWinningLotto;
     private static Integer lastBonusNumber;
-    public static List<String> winningAmount = asList("5000", "50000", "1500000",
-            "2000000000","30000000");
+    public static List<Long> winningAmount = asList(5000L, 50000L, 1500000L,
+            2000000000L,30000000L);
 
     public static void saveUserLotto(List<Lotto> userLottoGroup) {
         lastUserLottoGroup = userLottoGroup;
@@ -40,7 +40,7 @@ public class LottoRepository {
         return lastBonusNumber;
     }
 
-    public static List<String> getWinningAmount() {
+    public static List<Long> getWinningAmount() {
         return winningAmount;
     }
 

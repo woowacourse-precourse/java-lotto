@@ -31,7 +31,7 @@ public class View {
         return Console.readLine();
     }
 
-    public static void printWinningResult(List<Integer> result, List<String> winningMoney) {
+    public static void printWinningResult(List<Integer> result, List<Long> winningMoney) {
         for (int i = 0; i < 4; i++) {
             if (i == 3) {
                 System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개", 5, decFormat.format(winningMoney.get(i + 1)), result.get(i + 1));
