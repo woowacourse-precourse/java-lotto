@@ -6,7 +6,15 @@ import java.util.Map;
 
 public class Result {
     private int totalPrize = 0;
-    private Map<String, Integer> winResult = new HashMap<>();
+    private Map<String, Integer> winResult = new HashMap<>()  {
+        {
+            put("5등", 0);
+            put("4등", 0);
+            put("3등", 0);
+            put("2등", 0);
+            put("1등", 0);
+        }
+    };
 
     public Result(WinLotto winLotto, int bonusNum, List<Lotto> lottoList) {
         for (Lotto lotto : lottoList) {

@@ -19,6 +19,7 @@ public class MainController {
         WinLotto winLotto = makeWinLotto();
         int bonusNum = winLotto.validateBonus(InputView.inputBonusNum());
         Result result = new Result(winLotto, bonusNum, lottoList);
+        OutputView.printWinList(result.getWinResult());
     }
 
     private static List<Lotto> makeLotto(int count) {
