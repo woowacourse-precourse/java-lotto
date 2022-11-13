@@ -14,7 +14,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateLottoSize(numbers);
-        validateEachNumberInRange(numbers);
+        validateEachNumberInRange(numbers, LOTTO_START_NUMBER, LOTTO_END_NUMBER);
         validateHasDuplicate(numbers);
         ascendingSort(numbers);
         this.numbers = numbers;
@@ -26,9 +26,9 @@ public class Lotto {
         }
     }
 
-    private void validateEachNumberInRange(List<Integer> numbers) {
+    private void validateEachNumberInRange(List<Integer> numbers, int startInclusive, int endInclusive) {
         for (int number : numbers) {
-            if (number < LOTTO_START_NUMBER || number > LOTTO_END_NUMBER) {
+            if (number < startInclusive || number > endInclusive) {
                 throw new IllegalArgumentException();
             }
         }
