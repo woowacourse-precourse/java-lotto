@@ -16,10 +16,10 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException();
         }
-        if (new HashSet<>(numbers).size() != 6) {
+        if (new HashSet<>(numbers).size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException();
         }
     }
@@ -39,5 +39,17 @@ public class Lotto {
         CompareResult compareResult = compareWith(winningNumbers);
 
         return Prize.toPrize(compareResult).getMoney();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("[" + numbers.get(0));
+
+        for (Integer number : numbers) {
+            result.append(", ").append(number);
+        }
+        result.append(']');
+
+        return result.toString();
     }
 }

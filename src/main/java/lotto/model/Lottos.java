@@ -17,4 +17,15 @@ public class Lottos {
                 .mapToInt(lotto -> lotto.getWinningAmount(winningNumbers))
                 .sum();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        for (Lotto lotto : lottos) {
+            result.append(lotto).append('\n');
+        }
+
+        return result.toString();
+    }
 }
