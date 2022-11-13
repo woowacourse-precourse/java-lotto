@@ -2,7 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     private final int moneyUnit = 1000;
@@ -22,8 +24,14 @@ public class Application {
         return money == moneyUnit;
     }
 
-    private static List<Integer> createLottoNumber() {
+    private List<Integer> createLottoNumber() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
+    private boolean isDistinctNumber(List<Integer> number) {
+        Set<Integer> reuslt = new HashSet<>(number);
+
+        return number.size() == reuslt.size();
     }
 
     private void validMoney(int money) {
