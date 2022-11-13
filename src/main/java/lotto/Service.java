@@ -1,7 +1,9 @@
 package lotto;
 
 public class Service {
-    private static final int THOUSAND = 1000;
+
+    private static final int LOTTERY_PRICE = 1000;
+
     Exception exception = new Exception();
 
     public int stringToInt(String string) {
@@ -15,15 +17,15 @@ public class Service {
         }
     }
 
-    public void isDividedByThousand(int number) {
-        if(number % THOUSAND != 0) {
+    public void isDividedByLotteryPrice(int number) {
+        if(number % LOTTERY_PRICE != 0) {
             exception.isMoneyUnitException();
         }
     }
 
     public int numberOfLottery(int money) {
-        isDividedByThousand(money);
-        int lotteryCount = money/THOUSAND;
+        isDividedByLotteryPrice(money);
+        int lotteryCount = money/LOTTERY_PRICE;
         return lotteryCount;
     }
 
