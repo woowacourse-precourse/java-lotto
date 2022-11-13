@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Calculation {
     public static String getProfitRate(long cost, long earn) {
@@ -46,5 +48,9 @@ public class Calculation {
     public static String getWinResult(int[] counts, String profitRate) {
         String winResult = String.format(Notification.LOTTO_RESULT.getMessage(), counts[1], counts[2], counts[3], counts[4], counts[5], profitRate);
         return winResult;
+    }
+
+    public static List<Integer> toIntegerList(String inputWinNumbers){
+        return Arrays.stream(inputWinNumbers.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 }
