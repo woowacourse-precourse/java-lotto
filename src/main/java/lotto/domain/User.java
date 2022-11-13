@@ -22,6 +22,8 @@ public class User {
         long totalProfit = statistics.getTotalProfit();
 
         float profitPercent = (float)totalProfit / (float) purchaseMoney * 100;
+        profitPercent = Math.round(profitPercent * 10) / 10;
+
         return profitPercent;
     }
 
