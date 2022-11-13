@@ -1,4 +1,4 @@
-package lotto.domain.converter;
+package lotto.model.converter;
 
 import lotto.Lotto;
 
