@@ -16,6 +16,7 @@ public class LottoGame {
     static final Integer BONUS = 7;
     static final int MINIMUM_WINNING = 3;
     static final int THIRD_RANK=5;
+    static final int ONE_HUNDRED=100;
 
     static final List<Integer> moneyRanks = Arrays.asList(5000, 50000, 1500000, 2000000000,
         30000000);
@@ -35,6 +36,7 @@ public class LottoGame {
     public void Game() {
 
         setting();
+        bonusNumber=InputBonusNumber.getBonusNumber();
         for (int index = 0; index < buyLottoTickets.size(); index++) {
             List<Integer> nowLottoTicket = buyLottoTickets.get(index);
             matchCountBox.add(matchCount(winningLottoTicket, nowLottoTicket, bonusNumber));
@@ -58,7 +60,7 @@ public class LottoGame {
     }
 
     private float setYield(float sumMoney) {
-        float yield = sumMoney / (float) InputUserMoney.getUserMoney() * 100;
+        float yield = sumMoney / (float) InputUserMoney.getUserMoney() * ONE_HUNDRED;
         return yield;
     }
 

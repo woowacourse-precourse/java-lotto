@@ -11,7 +11,7 @@ public class InputBonusNumber {
     public static void inputBonusNumber() {
         OutputView.printInputBonus();
         String inputBonusNumber = Console.readLine();
-        ValidateBonusNumber.validateBonusNumber(inputBonusNumber);
+        bonusNumber = ValidateBonusNumber.validateBonusNumber(inputBonusNumber);
     }
 
     public static int getBonusNumber() {
