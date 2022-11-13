@@ -8,11 +8,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        try{
-            validate(numbers);
-        }catch(IllegalArgumentException e){
-            System.err.println("[ERROR] "+e);
-        }
+        validate(numbers);
         this.numbers = numbers;
     }
 
@@ -50,8 +46,8 @@ public class Lotto {
 
     // check duplicate of bonus and guess
     public static void validDuplicate(Integer bonus) throws IllegalArgumentException{
-        if (User.guess.contains(String.valueOf(bonus))){
-            throw new IllegalArgumentException();
+        if (User.guess.contains(bonus)){
+             throw new IllegalArgumentException();
         }
     }
 }
