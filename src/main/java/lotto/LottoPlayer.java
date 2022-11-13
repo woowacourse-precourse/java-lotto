@@ -21,11 +21,13 @@ public class LottoPlayer {
         LottoMatcher lottoMatcher = new LottoMatcher(winningNumber, bonusNumber);
         List<LottoGrade> lottoResults = lottoMatcher.matchAll(lottos);
         Map<LottoGrade, Integer> analyze = lottoAnalyst.analyze(lottoResults);
+        double yield = lottoAnalyst.getYield(analyze);
         analyze.remove(LottoGrade.BANG);
         analyze.forEach((key, value) -> {
             System.out.printf(String.valueOf(ConsoleMessage.STATISTICS_ELEMENT_FORMAT), key, value);
             System.out.print(ConsoleMessage.NEW_LINE);
         });
+        System.out.printf(String.valueOf(ConsoleMessage.RESPONSE_YIELD), Math.round(yield*100)/100.0);
     }
 
     private void printPurchaseList(List<Lotto> lottos) {
