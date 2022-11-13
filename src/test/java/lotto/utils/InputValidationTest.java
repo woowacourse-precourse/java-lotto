@@ -11,6 +11,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -84,6 +87,19 @@ class InputValidationTest extends NsTest {
             runException(firstInput, secondInput);
             assertThat(output()).contains(ErrorMessage.LOTTO_NUMBER_IS_DISTINCT);
         });
+    }
+
+    @DisplayName("입력받은 당첨번호는 정렬이 되어있어야 한다.")
+    @Test
+    void checkWinningNumberSorted() {
+        List<Integer> result = List.of(1,2,3,4,5,6);
+        InputStream in = new ByteArrayInputStream("6,5,4,3,2,1".getBytes());
+        System.setIn(in);
+
+        Input input = new Input();
+        List<Integer> answer = input.getWinningNumber();
+
+        assertThat(answer).isEqualTo(result);
     }
 
     @Override
