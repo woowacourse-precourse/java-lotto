@@ -9,7 +9,7 @@ public class GameScore {
     private double profitRate;
     private Map<LottoWinType, Integer> lottoWinType;
 
-    public GameScore(int prizeMoney, int profitRate, Map<LottoWinType, Integer> lottoWinType) {
+    public GameScore(int prizeMoney, double profitRate, Map<LottoWinType, Integer> lottoWinType) {
         this.prizeMoney = prizeMoney;
         this.profitRate = profitRate;
         this.lottoWinType = lottoWinType;
@@ -25,7 +25,12 @@ public class GameScore {
         return lottoWinType;
     }
 
-    public static GameScore of(int prizeMoney, int profitRate, Map<LottoWinType, Integer> lottoWinType) {
+    private static double calculateProfitRate(int prizeMoney, int userPay) {
+        return (double) prizeMoney / (double) userPay * 100;
+    }
+
+    public static GameScore of(int prizeMoney, int userPay, Map<LottoWinType, Integer> lottoWinType) {
+        double profitRate = calculateProfitRate(prizeMoney, userPay);
         return new GameScore(prizeMoney, profitRate, lottoWinType);
     }
 }

@@ -44,6 +44,6 @@ public class User {
 
             this.lottoWinTypeMap.put(winType, this.lottoWinTypeMap.get(winType) + 1);
         }
-        return GameScore.of(totalPrizeMoney, this.numbers.size() * Constant.MONEY_UNIT, this.lottoWinTypeMap);
+        return GameScore.of(totalPrizeMoney, this.money, this.lottoWinTypeMap);
     }
 }
