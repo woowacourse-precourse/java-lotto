@@ -5,6 +5,8 @@ import java.util.List;
 import static lotto.utils.ErrorMessages.*;
 
 public class BonusNumber {
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 45;
     private final int number;
 
     public BonusNumber(String number) {
@@ -25,7 +27,7 @@ public class BonusNumber {
     private void validateRange(String number) {
         int bonusNumber = Integer.parseInt(number);
         System.out.println(bonusNumber);
-        if (bonusNumber < 1 || bonusNumber > 45) {
+        if (bonusNumber < MIN_RANGE || bonusNumber > MAX_RANGE) {
             throw new IllegalArgumentException(BONUS_NUMBER_OUT_OF_RANGE);
         }
     }
