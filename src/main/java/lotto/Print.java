@@ -24,16 +24,19 @@ public class Print {
     }
 
     public static void printWinningNumber() {
+        System.out.println();
         System.out.println(MESSAGE_WINNING_NUMBER);
     }
 
     public static void printBonusNumber() {
+        System.out.println();
         System.out.println(MESSAGE_BONUS_NUMBER);
     }
 
     public static void printRankCounter(RankCounter rankCounter) {
+        System.out.println();
         System.out.println(MESSAGE_RANK_COUNTER_START);
-        System.out.println(rankCounter);
+        System.out.print(rankCounter);
     }
 
     public static void printYield(double yield) {
