@@ -5,6 +5,8 @@ import lotto.Model.Lotto;
 import lotto.Model.ValidNumbers;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LottoService {
 
@@ -21,5 +23,14 @@ public class LottoService {
         return lotto;
     }
 
+    public Lotto createCustomLotto(String input) {
+        List<Integer> numbers = Stream.of(input.split("\\s*,\\s*"))
+                .map(n -> (Integer.parseInt(n)))
+                .collect(Collectors.toList());
+
+        Lotto lotto = new Lotto(numbers);
+
+        return lotto;
+    }
 
 }
