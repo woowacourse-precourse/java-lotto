@@ -2,6 +2,9 @@ package lotto.UI;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputUI {
 
     private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해주세요.";
@@ -22,17 +25,24 @@ public class InputUI {
         return Integer.parseInt(money);
     }
 
-    public String getNormalNumbers() {
+    public List<Integer> getNormalNumbers() {
         outputUI.printMessage(NORMAL_NUMBER_INPUT_MESSAGE);
         String normalNumbers = Console.readLine();
         validator.validateNormalNumbers(normalNumbers);
-        return normalNumbers;
+        String[] normalNumbersString = normalNumbers.split(",");
+
+        List<Integer> normalNumberInteger = new ArrayList<>();
+        for (String normalNumberString : normalNumbersString) {
+            normalNumberInteger.add(Integer.parseInt(normalNumberString));
+        }
+
+        return normalNumberInteger;
     }
 
-    public String getBonusNumbers() {
+    public Integer getBonusNumbers() {
         outputUI.printMessage(BONUS_NUMBER_INPUT_MESSAGE);
         String bonusNumber = Console.readLine();
         validator.validateBonusNumber(bonusNumber);
-        return bonusNumber;
+        return Integer.parseInt(bonusNumber);
     }
 }
