@@ -18,6 +18,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public boolean contains(int number) {
+        return this.numbers.contains(number);
+    }
+
     @Override
     public String toString() {
         Collections.sort(numbers);
