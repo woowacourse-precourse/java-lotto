@@ -29,4 +29,46 @@ class InputViewValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호 입력의 사이즈가 6 초과일 때 예외처리한다.")
+    @Test
+    void validateByNumberSizeExceed() {
+        assertThatThrownBy(() -> InputViewValidation.validateWinningNumbersSize("1,2,3,4,5,6,7"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호 입력의 사이즈가 6 미만일 때 예외처리한다.")
+    @Test
+    void validateByNumberSizeSmall() {
+        assertThatThrownBy(() -> InputViewValidation.validateWinningNumbersSize("2,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호 입력에 수가 아닌 문자가 있을 때 예외처리한다.")
+    @Test
+    void validateByNumberNotInteger() {
+        assertThatThrownBy(() -> InputViewValidation.validateWinningNumbersInteger("1,ㄱ,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호 입력은 맨앞에 숫자가 오지 않으면 예외처리한다.")
+    @Test
+    void validateByStartNumberInvalidFormat() {
+        assertThatThrownBy(() -> InputViewValidation.validateWinningNumbersFormat(".1,2,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호 입력은 맨뒤에 숫자가 오지 않으면 예외처리한다.")
+    @Test
+    void validateByEndNumberInvalidFormat() {
+        assertThatThrownBy(() -> InputViewValidation.validateWinningNumbersFormat("1,2,3,4,5,6."))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호 입력은 ,의 양옆에 숫자가 오지 않으면 예외처리한다.")
+    @Test
+    void validateByBetweenNumberInvalidFormat() {
+        assertThatThrownBy(() -> InputViewValidation.validateWinningNumbersFormat("1,2,3,4,,,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }

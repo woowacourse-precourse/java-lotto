@@ -58,7 +58,8 @@ public class InputViewValidation {
     public static void validateWinningNumbersRange(String input) {
         String[] winningNumbers = input.split(",");
         for (String number : winningNumbers) {
-            if (Integer.parseInt(number) > 45 && Integer.parseInt(number) < 1) {
+            System.out.println(number);
+            if (Integer.parseInt(number) > 45 || Integer.parseInt(number) < 1) {
                 throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
             }
         }
