@@ -16,7 +16,9 @@ public class LottoStatisticsGenerator {
         // TODO 구현 필요
     }
 
-    public void generate() {
+    public LottoStatistics generate() {
         // TODO 구현 필요
+
+        return new LottoStatistics(payment, results);
     }
 }
