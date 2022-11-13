@@ -7,7 +7,13 @@ import java.util.List;
 public class GamController {
     private int inputAmount() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     private void printLotto(User user) {
@@ -22,12 +28,20 @@ public class GamController {
         String input = Console.readLine().replace(" ", "");
         List<Integer> winningNum = new ArrayList<Integer>();
         for (String str : input.split(",")) {
-            winningNum.add(Integer.parseInt(str));
+            try {
+                winningNum.add(Integer.parseInt(str));
+            } catch (Exception e) {
+                throw new IllegalArgumentException();
+            }
         }
 
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNum = Integer.parseInt(Console.readLine());
-
+        int bonusNum = 0;
+        try {
+            bonusNum = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
         return new WinningNumber(winningNum, bonusNum);
     }
 
