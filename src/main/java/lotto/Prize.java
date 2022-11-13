@@ -8,8 +8,8 @@ public enum Prize {
     FIFTH  (5000, "3개 일치 (5,000원)"),
     NOTHING(0, "");
 
-    private int money;
-    private String ment;
+    private final int money;
+    private final String ment;
 
     static Prize getPrize(int correctCount, boolean isBonusRight){
         if (correctCount == 6) {
@@ -29,8 +29,9 @@ public enum Prize {
         return NOTHING;
     }
 
-    private Prize (int prizeAmount, String ment){
-        money = prizeAmount;
+    Prize(int initPrizeAmount, String initMent){
+        money = initPrizeAmount;
+        ment = initMent;
     }
 
     public int getMoney(){
