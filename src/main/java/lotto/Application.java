@@ -16,6 +16,6 @@ public class Application {
         List<List<Integer>> userLottoList = lottoUser.generateUser();
 
         LottoCalculator lottoCalculator = new LottoCalculator();
-        System.out.println(lottoCalculator.checkLuckyNumbers(lottoList, userLottoList));
+        System.out.println(lottoCalculator.checkNumbers(lottoList, userLottoList));
     }
 }

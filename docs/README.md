@@ -27,9 +27,8 @@
         - [x] "보너스 번호를 입력해 주세요." 출력 LottoConsole.inputBonusNumber
         - [x] 보너스 번호의 갯수를 확인하는 기능 LottoUser.checkLengthOfList
         - [x] 보너스 번호가 1부터 45 사이의 숫자인지 확인하는 기능 LottoUser.checkSizeOfNumber
-- [ ] 당첨 통계를 출력하는 기능 LottoConsole.outputResult
-    - [ ] 당첨 번호, 로또 번호, 보너스 번호를 비교하여 몇개가 일치하는지 계산하는 기능 LottoCalculator.checkLuckyNumbers
-- [ ] 수익률을 출력하는 기능 LottoConsole.outputProfit
-    - [ ] 로또 구입 금액과 당첨 금액으로 수익률을 계산하고 소수점 둘째 자리에서 반올림하는 기능 LottoCalculator.calculateProfit
-    - [ ] "총 수익률은 %f%입니다." LottoConsole.outputProfit
+- [ ] 당첨 통계를 출력하는 기능 
+    - [x] 당첨 번호, 로또 번호, 보너스 번호를 비교하여 몇개가 일치하는지 계산하는 기능 LottoCalculator.checkNumbers
+    - [ ] 로또 구입 금액과 당첨 금액으로 수익률을 계산하고 소수점 둘째 자리에서 반올림하는 기능 LottoCalculator.profit
+    - [ ] "총 수익률은 %f%입니다." LottoConsole.outputResult
     
