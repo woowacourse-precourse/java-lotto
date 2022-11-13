@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static lotto.domain.ErrorMessage.ERROR_OVER_RANGE;
+import static lotto.utils.ErrorMessages.LOTTO_NUMBERS_OUT_OF_RANGE;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -32,6 +32,6 @@ class LottoTest {
     void createLottoByNumberRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 87, 6)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR_OVER_RANGE);
+                .hasMessageContaining(LOTTO_NUMBERS_OUT_OF_RANGE);
     }
 }

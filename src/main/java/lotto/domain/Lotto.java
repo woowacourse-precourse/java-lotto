@@ -4,32 +4,32 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.domain.ErrorMessage.*;
+import static lotto.utils.ErrorMessages.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        validateDuplicated(numbers);
-        validateNumbersRange(numbers);
+        validateDuplicate(numbers);
+        validateRange(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ERROR_OVER_SIZE);
+            throw new IllegalArgumentException(LOTTO_NUMBERS_OVER_SIZE);
         }
     }
 
-    private void validateDuplicated(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> number = new HashSet<>(numbers);
         if (number.size() != 6) {
-            throw new IllegalArgumentException(ERROR_DUPLICATED);
+            throw new IllegalArgumentException(LOTTO_NUMBERS_DUPLICATED);
         }
     }
 
-    private void validateNumbersRange(List<Integer> numbers) {
+    private void validateRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             validateNumberRange(number);
         }
@@ -37,7 +37,7 @@ public class Lotto {
 
     private void validateNumberRange(int number) {
         if (number < 1 || number > 45) {
-            throw new IllegalArgumentException(ERROR_OVER_RANGE);
+            throw new IllegalArgumentException(LOTTO_NUMBERS_OUT_OF_RANGE);
         }
     }
 }
