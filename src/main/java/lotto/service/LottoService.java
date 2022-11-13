@@ -35,17 +35,22 @@ public class LottoService {
     }
 
     private void calcWinningRankAndWinningNum(Lotto lotto, HashMap<Winning, Integer> winningResultMap, List<Integer> randomLottoNums) {
-        int temp = 0;
-        for (Integer winningNum : lotto.getWinningNumbers()) {
-            if (randomLottoNums.contains(winningNum)) {
-                temp++;
-            }
-        }
+        int matchCnt = calcMatchNumber(lotto, randomLottoNums);
         for (Winning winning : Winning.values()) {
-            if (temp == winning.getMatchNum()) {
+            if (matchCnt == winning.getMatchNum()) {
                 winningResultMap.put(winning, winningResultMap.get(winning) + 1);
             }
         }
+    }
+
+    private int calcMatchNumber(Lotto lotto, List<Integer> randomLottoNums) {
+        int matchCnt = 0;
+        for (Integer winningNum : lotto.getWinningNumbers()) {
+            if (randomLottoNums.contains(winningNum)) {
+                matchCnt++;
+            }
+        }
+        return matchCnt;
     }
 
     private HashMap<Winning, Integer> initWinningResultMap() {
