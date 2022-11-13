@@ -14,4 +14,8 @@ public class LottoMessage {
             System.out.println(lotto.getNumbers());
         }
     }
+
+    public void printInputWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
 }

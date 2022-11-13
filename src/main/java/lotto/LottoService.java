@@ -9,6 +9,7 @@ import java.util.List;
 public class LottoService {
     private final RandomGenerator randomGenerator = new RandomGenerator();
     private final List<Lotto> lotteries = new ArrayList<>();
+    private Lotto winningNumber;
 
     public void purchase(Money money) {
         int buyQuantity = money.getWon() / 1000;
@@ -20,5 +21,9 @@ public class LottoService {
 
     public List<Lotto> getPurchaseLotteries() {
         return lotteries;
+    }
+
+    public void setWinningNumber(String inputWinningNumber) {
+        winningNumber = Lotto.from(inputWinningNumber);
     }
 }

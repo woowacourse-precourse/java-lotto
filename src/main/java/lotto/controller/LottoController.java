@@ -22,4 +22,9 @@ public class LottoController {
         List<Lotto> purchaseLotteries = lottoService.getPurchaseLotteries();
         lottoMessage.printPurchasedLotteries(purchaseLotteries);
     }
+
+    public void inputWinningNumber() {
+        lottoMessage.printInputWinningNumber();
+        lottoService.setWinningNumber(Console.readLine());
+    }
 }
