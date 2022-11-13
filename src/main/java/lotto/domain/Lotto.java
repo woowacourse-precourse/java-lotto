@@ -50,7 +50,7 @@ public class Lotto {
         return numbers.contains(number);
     }
 
-    public String toStringNumbers(){
+    public String toStringNumbers() {
         return numbers.toString();
     }
 }
