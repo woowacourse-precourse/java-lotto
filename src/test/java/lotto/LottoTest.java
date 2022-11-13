@@ -47,4 +47,21 @@ class LottoTest {
         assertThat(player.playerLotto.size()).isEqualTo(6);
     }
 
+    @Test
+    void 당첨넘버_생성_테스트() {
+        String winningNumbersInput = "1,2,3,4,5,6";
+        String winningBonusNumber = "7";
+        WinningNumbers winningNumbers = new WinningNumbers(winningNumbersInput, winningBonusNumber);
+        assertThat(winningNumbers.winningNumbers.contains(3));
+    }
+
+    @Test
+    void 당첨보너스넘버_생성_테스트() {
+        String winningNumbersInput = "1,2,3,4,5,6";
+        String winningBonusNumber = "7";
+        WinningNumbers winningNumbers = new WinningNumbers(winningNumbersInput, winningBonusNumber);
+        assertThat(winningNumbers.winningBonusNumber).isEqualTo(7);
+    }
+
+
 }
