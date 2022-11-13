@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,46 +15,36 @@ public class Application {
             Winning.SECOND,
             Winning.FIRST
     );
+    private static final InputOutput io = new InputOutput();
 
     static List<Integer> wins;
 
     public static void main(String[] args) {
 
         try {
-            System.out.println(Sentences.PRICE.value());
-            int amount = getPurchasePrice();
-            System.out.println();
+            String price = io.getPrice();
+            int amount = getPurchasePrice(price);
 
-            System.out.println(Sentences.getPurchase(amount));
             List<Lotto> lottos = getRandomLottos(amount);
-            printRandomLottos(lottos);
-            System.out.println();
+            io.printLottos(amount, lottos);
 
-            System.out.println(Sentences.LUCKY.value());
-            Lotto lucky = getLuckyNumbers();
-            System.out.println();
+            String lukcyNumber = io.getLukcyNumber();
+            Lotto lucky = makeLotto(lukcyNumber);
 
-            System.out.println(Sentences.BONUS.value());
-            int bonus = getBonusNumber();
-            lucky.validateBonusNumber(bonus);
-            System.out.println();
+            String bonusNumber = io.getBonusNumber();
+            int bonus = validateBonusNumber(bonusNumber, lucky);
 
             wins = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
             getResult(lottos, lucky, bonus);
 
-            System.out.println(Sentences.STATS.value());
-            System.out.println(Sentences.LINE.value());
-            printResult();
-
-            String earningRate = calculateEarningRate(amount);
-            System.out.println(Sentences.getRate(earningRate));
+            io.printResult(wins);
+            io.printEarningRate(calculateEarningRate(amount));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private static int getPurchasePrice() {
-        String input = Console.readLine().trim();
+    private static int getPurchasePrice(String input) {
         validation.validatePrice(input);
         return Integer.parseInt(input) / 1000;
     }
@@ -69,14 +58,7 @@ public class Application {
         return lottos;
     }
 
-    private static void printRandomLottos(List<Lotto> lottos) {
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto.toString());
-        }
-    }
-
-    private static Lotto getLuckyNumbers() {
-        String input = Console.readLine().trim();
+    private static Lotto makeLotto(String input) {
         String[] splitedInput = input.split(",");
         List<Integer> luckyNumber = new ArrayList<>();
         for (String s : splitedInput) {
@@ -88,11 +70,11 @@ public class Application {
         return new Lotto(luckyNumber);
     }
 
-    private static int getBonusNumber() {
-        String input = Console.readLine().trim();
+    private static int validateBonusNumber(String input, Lotto lotto) {
         validation.validateNumber(input);
         int bonus = Integer.parseInt(input);
         validation.validateNumberRange(bonus);
+        lotto.isDuplicateBonusNumber(bonus);
         return bonus;
     }
 
@@ -103,14 +85,6 @@ public class Application {
                 Integer before = wins.get(5 - ranking);
                 wins.set(5 - ranking, before + 1);
             }
-        }
-    }
-
-    private static void printResult() {
-        for (int i = 0; i < 5; i++) {
-            Winning ranking = rankings.get(i);
-            String result = ranking.toString(wins.get(i));
-            System.out.println(result);
         }
     }
 

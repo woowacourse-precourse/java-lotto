@@ -35,7 +35,7 @@ public class Lotto {
         return target;
     }
 
-    public void validateBonusNumber(int bonus) {
+    public void isDuplicateBonusNumber(int bonus) {
         if (numbers.contains(bonus)) {
             throw new IllegalArgumentException(Errors.WRONG_BONUS.toString());
         }
