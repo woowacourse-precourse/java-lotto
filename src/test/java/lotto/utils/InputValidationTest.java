@@ -76,6 +76,16 @@ class InputValidationTest extends NsTest {
         });
     }
 
+    @DisplayName("입력받은 당첨번호는 중복이 없어야한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1000:1,2,3,3,2,1", "1000:1,2,3,4,5,5"}, delimiter = ':')
+    void checkWinningNumberDuplicated(String firstInput, String secondInput) {
+        assertSimpleTest(() -> {
+            runException(firstInput, secondInput);
+            assertThat(output()).contains(ErrorMessage.LOTTO_NUMBER_IS_DISTINCT);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
