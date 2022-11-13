@@ -21,6 +21,14 @@ public class LottoController {
     }
 
     public void run() {
+        try {
+            lotto();
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
+        }
+    }
+
+    private void lotto() {
         Customer customer = buyLotto();
         LottoMachine lottoMachine = draw();
         check(customer, lottoMachine);
