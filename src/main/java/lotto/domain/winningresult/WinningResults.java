@@ -34,9 +34,8 @@ public class WinningResults {
     }
 
     public double calculateRewardRate() {
-        int rewardAmount = calculateTotalRewardAmount();
-
-        return (rewardAmount / purchasedAmount) * 100;
+        double rewardAmount = calculateTotalRewardAmount();
+        return rewardAmount / purchasedAmount * 100;
     }
 
     public Stream<WinningResultType> stream() {

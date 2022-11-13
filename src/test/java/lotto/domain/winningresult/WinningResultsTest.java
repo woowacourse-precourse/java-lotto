@@ -13,10 +13,10 @@ class WinningResultsTest {
 
     @Test
     public void 로또_당첨_결과_저장_테스트_5등_2등() throws IllegalAccessException {
-        Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        Lotto lottoB = new Lotto(List.of(1, 2, 3, 7, 8, 9));
-
-        List<Lotto> declaredLottos = List.of(lottoA, lottoB);
+        List<Lotto> declaredLottos = List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(1, 2, 3, 7, 8, 9))
+        );
         Lottos lottos = getLottosByDeclaredLotto(declaredLottos);
 
         LottoDraw lottoDraw = LottoDraw.of(List.of(1, 2, 3, 4, 5, 13), 6);
@@ -28,10 +28,10 @@ class WinningResultsTest {
 
     @Test
     public void 로또_당첨_결과_저장_테스트_4등_4등() throws IllegalAccessException {
-        Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        Lotto lottoB = new Lotto(List.of(1, 2, 3, 4, 7, 8));
-
-        List<Lotto> declaredLottos = List.of(lottoA, lottoB);
+        List<Lotto> declaredLottos = List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(1, 2, 3, 4, 7, 8))
+        );
         Lottos lottos = getLottosByDeclaredLotto(declaredLottos);
 
         LottoDraw lottoDraw = LottoDraw.of(List.of(1, 2, 3, 4, 41, 42), 43);
@@ -42,11 +42,11 @@ class WinningResultsTest {
 
     @Test
     public void 로또_당첨_결과_저장_테스트_1등_2등_3등() throws IllegalAccessException {
-        Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        Lotto lottoB = new Lotto(List.of(1, 2, 3, 4, 5, 8));
-        Lotto lottoC = new Lotto(List.of(1, 2, 3, 4, 6, 9));
-
-        List<Lotto> declaredLottos = List.of(lottoA, lottoB, lottoC);
+        List<Lotto> declaredLottos = List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 8)),
+                new Lotto(List.of(1, 2, 3, 4, 6, 9))
+        );
         Lottos lottos = getLottosByDeclaredLotto(declaredLottos);
 
         LottoDraw lottoDraw = LottoDraw.of(List.of(1, 2, 3, 4, 5, 6), 8);
@@ -57,6 +57,75 @@ class WinningResultsTest {
         Assertions.assertThat(winningResults.count(WinningResultType.THIRD_PLACE)).isEqualTo(1);
     }
 
+    @Test
+    public void 수익률_테스트_수익() throws IllegalAccessException {
+        List<Lotto> declaredLottos = List.of(
+                new Lotto(List.of(1, 2, 3, 14, 15, 16)),
+                new Lotto(List.of(1, 2, 3, 14, 17, 18)),
+                new Lotto(List.of(11, 12, 13, 14, 17, 18)),
+                new Lotto(List.of(11, 12, 13, 14, 17, 18))
+        );
+        Lottos lottos = getLottosByDeclaredLotto(declaredLottos);
+
+        LottoDraw lottoDraw = LottoDraw.of(List.of(1, 2, 3, 40, 41, 42), 43);
+        WinningResults winningResults = WinningResults.of(lottos, lottoDraw);
+
+        // 4,000원 -> 5등 2개 (10,000원 수익)
+        double expectedRate = (10_000.0 / 4_000.0) * 100;
+        Assertions.assertThat(winningResults.calculateRewardRate()).isEqualTo(expectedRate);
+    }
+
+    @Test
+    public void 수익률_테스트_손실() throws IllegalAccessException {
+        List<Lotto> declaredLottos = List.of(
+                new Lotto(List.of(1, 2, 3, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 17, 18)),
+                new Lotto(List.of(11, 12, 13, 14, 17, 18)),
+                new Lotto(List.of(11, 12, 13, 14, 17, 18)),
+                new Lotto(List.of(11, 12, 13, 14, 17, 18)),
+                new Lotto(List.of(11, 12, 13, 14, 17, 18))
+        );
+        Lottos lottos = getLottosByDeclaredLotto(declaredLottos);
+
+        LottoDraw lottoDraw = LottoDraw.of(List.of(1, 2, 3, 40, 41, 42), 43);
+        WinningResults winningResults = WinningResults.of(lottos, lottoDraw);
+
+        // 6,000원 -> 5등 1개 (5,000원 수익)
+        double expectedRate = (5_000.0 / 6_000.0) * 100;
+        Assertions.assertThat(winningResults.calculateRewardRate()).isEqualTo(expectedRate);
+    }
+
+    @Test
+    public void 수익률_테스트_최대_수익() throws IllegalAccessException {
+        List<Lotto> declaredLottos = List.of(
+                new Lotto(List.of(1, 2, 3, 14, 15, 16))
+        );
+        Lottos lottos = getLottosByDeclaredLotto(declaredLottos);
+
+        LottoDraw lottoDraw = LottoDraw.of(List.of(1, 2, 3, 14, 15, 16), 17);
+        WinningResults winningResults = WinningResults.of(lottos, lottoDraw);
+
+        // 1,000원 -> 1등 1개 (2,000,000,000원 수익)
+        double expectedRate = (2_000_000_000.0 / 1_000.0) * 100;
+        Assertions.assertThat(winningResults.calculateRewardRate()).isEqualTo(expectedRate);
+    }
+
+    @Test
+    public void 수익률_테스트_최대_손실() throws IllegalAccessException {
+        List<Lotto> declaredLottos = List.of(
+                new Lotto(List.of(1, 2, 3, 14, 15, 16))
+        );
+        Lottos lottos = getLottosByDeclaredLotto(declaredLottos);
+
+        LottoDraw lottoDraw = LottoDraw.of(List.of(31, 32, 33, 34, 35, 36), 37);
+        WinningResults winningResults = WinningResults.of(lottos, lottoDraw);
+
+        // 1,000원 -> 0원 수익
+        double expectedRate = (0.0 / 1_000.0) * 100;
+        Assertions.assertThat(winningResults.calculateRewardRate()).isEqualTo(expectedRate);
+    }
+
+
     private Lottos getLottosByDeclaredLotto(List<Lotto> declaredLottos) throws IllegalAccessException {
         Lottos lottos = Lottos.from(1000);
         Class<? extends Lottos> lottosClass = lottos.getClass();
@@ -66,6 +135,5 @@ class WinningResultsTest {
 
         return lottos;
     }
-
 
 }
