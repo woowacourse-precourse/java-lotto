@@ -3,6 +3,7 @@ package controller;
 import domain.Lotto;
 import domain.LottoMachine;
 import input.MoneyInput;
+import input.NumberInput;
 import view.RequestView;
 import view.ResultView;
 
@@ -13,9 +14,11 @@ public class LottoController {
     private RequestView requestView = new RequestView();
     private MoneyInput moneyInput = new MoneyInput();
     private ResultView resultView = new ResultView();
+    private NumberInput numberInput = new NumberInput();
 
     private LottoMachine machine;
     private List<Lotto> lotteries;
+    private Lotto winnerNumber;
 
     public void purchase() {
         requestView.displayEnterPurchaseAmount();
@@ -26,6 +29,7 @@ public class LottoController {
 
     public void winnerNumber() {
         requestView.displayEnterWinnerNumber();
+        winnerNumber = new Lotto(numberInput.getWinningNumbers());
     }
 
     public void bonusNumber() {
