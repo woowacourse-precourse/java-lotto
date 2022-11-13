@@ -10,10 +10,16 @@ public class Application {
     public static void main(String[] args) {
     	String money = getMoneyFromUser();
     	List<Lotto> lottoNumbers = createLottoNumbers(money);
+    	String WinningNumber = getWinningNumberFromUser();
         // TODO: 프로그램 구현
     }
     
     public static String getMoneyFromUser() {
+    	String result = Console.readLine();
+    	return result;
+    }
+    
+    public static String getWinningNumberFromUser() {
     	String result = Console.readLine();
     	return result;
     }
