@@ -41,13 +41,13 @@
 - 발행한 로또 번호와 당첨 번호가 일치하는 개수를 계산한다.
 - *LottoPrize#getMatchCount()*
 
+### ☑️ 로또 당첨 금액 계산 기능
+- 사용자가 당첨된 로또의 총 금액을 계산한다.
+- *LottoPrize#getTotalWinningAmount()*
+
 ### ☑️ 수익률 계산 기능
 - 사용자의 구입 금액과 당첨된 경우 받을 수 있는 금액에 대하여 수익률을 계산하여 리턴한다.
 - *LottoPrize#computeEarningRate()*
-
-
-
-
 
 ### ☑️ 메시지 출력 기능 
 - 프로그램을 진행하며 출력되는 메시지를 관리한다.
