@@ -32,7 +32,7 @@ public class InputView {
         return !money.chars().allMatch(Character::isDigit);
     }
 
-    public static List<Integer> inputWinningNumbers() {
+    public static List<Integer> insertWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String numbersWithSeparator = Console.readLine();
         validateWinningNumbers(numbersWithSeparator);
@@ -63,7 +63,7 @@ public class InputView {
         return separatedNumbers.length != PROPER_SIZE;
     }
 
-    public static int inputBounsNumber() {
+    public static int insertBounsNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
 

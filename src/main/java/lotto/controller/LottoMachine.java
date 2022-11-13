@@ -14,9 +14,9 @@ public class LottoMachine {
         OutputView.informPurchaseCount(lottos);
         OutputView.printIssuedLottos(lottos);
 
-        List<Integer> winningNumbers = InputView.inputWinningNumbers();
+        List<Integer> winningNumbers = InputView.insertWinningNumbers();
         Lotto winningLotto = new Lotto(winningNumbers);
-        int bounsNumber = InputView.inputBounsNumber();
+        int bounsNumber = InputView.insertBounsNumber();
 
         OutputView.printWinningOverview(lottos, winningLotto, bounsNumber);
     }
