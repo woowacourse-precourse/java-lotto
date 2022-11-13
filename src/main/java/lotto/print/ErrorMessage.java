@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public enum ErrorMessage {
     BASIC_MESSAGE("basic", "[ERROR]"),
-    INPUT_OVER("InputOverException", " 로또 입력 개수가 초과하였습니다."),
+    INPUT_OVER("InputSixDigitException", " 로또 입력 개수가 초과하였습니다."),
     NUMBER_VERIFICATION("NumberCheckException", " 숫자가 아닌 문자를 입력하였습니다."),
     OVERLAPS_NUMBER("OverlapsNumberException", " 중복된 숫자를 입력하였습니다."),
     SCOPE_OVER("ScopeOverException", " 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
