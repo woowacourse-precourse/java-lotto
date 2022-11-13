@@ -3,9 +3,9 @@ package lotto.model;
 import static lotto.constants.LottoConstant.BONUS_NUMBER_INDEX;
 import static lotto.utils.Calculator.calculateCountsByRanks;
 import static lotto.utils.NumberAdapter.fitBonusNumber;
+import static lotto.utils.NumberAdapter.fitPaidMoney;
 import static lotto.utils.NumberAdapter.fitWinningNumber;
 import static lotto.utils.NumberAdapter.fitWinningNumberWithBonusNumber;
-import static lotto.utils.NumberAdapter.getPaidMoney;
 import static lotto.validator.BonusNumberValidator.hasValidBonusNumber;
 import static lotto.validator.LottoNumberValidator.hasValidLotteryNumber;
 
@@ -20,7 +20,7 @@ public class Store {
     }
 
     public void sellLottoToCustomer(String beforePaidMoney) {
-        int paidMoney = getPaidMoney(beforePaidMoney);
+        int paidMoney = fitPaidMoney(beforePaidMoney);
         this.customer = new Customer(paidMoney);
     }
 

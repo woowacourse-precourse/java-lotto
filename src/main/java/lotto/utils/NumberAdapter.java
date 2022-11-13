@@ -26,7 +26,7 @@ public class NumberAdapter {
         return winningNumber;
     }
 
-    public static int getPaidMoney(String beforePaidMoney) {
+    public static int fitPaidMoney(String beforePaidMoney) {
         return Integer.parseInt(beforePaidMoney);
     }
 }

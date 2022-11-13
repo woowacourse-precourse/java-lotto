@@ -5,7 +5,7 @@ import static lotto.model.Rank.FIRST_PLACE;
 import static lotto.model.Rank.FOURTH_PLACE;
 import static lotto.model.Rank.SECOND_PLACE;
 import static lotto.model.Rank.THIRD_PLACE;
-import static lotto.utils.NumberAdapter.getPaidMoney;
+import static lotto.utils.NumberAdapter.fitPaidMoney;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatNoException;
 
@@ -66,7 +66,7 @@ public class StoreTest {
         //given
         setCustomerForStore();
         setWinningNumberWithBonusNumber();
-        int paidMoneyToInteger = getPaidMoney(paidMoney);
+        int paidMoneyToInteger = fitPaidMoney(paidMoney);
 
         //when
         Map<Rank, Integer> ranks = testStore.judgeCustomerRanks();
