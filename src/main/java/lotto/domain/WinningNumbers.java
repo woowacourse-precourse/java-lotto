@@ -15,7 +15,6 @@ public enum WinningNumbers {
         this.matches = matches;
         this.reward = reward;
     }
-
     public static long getReward(int matches, boolean bonusCheck) {
         if (matches == 5 && bonusCheck) {
             return FIVE_BONUS.reward;
@@ -28,6 +27,20 @@ public enum WinningNumbers {
         }
 
         return 0L;
+    }
+
+    public static WinningNumbers getEnum(int matches, boolean bonusCheck) {
+        if (matches == 5 && bonusCheck) {
+            return FIVE_BONUS;
+        }
+
+        for (WinningNumbers winningNumbers : WinningNumbers.values()) {
+            if (matches == winningNumbers.matches) {
+                return winningNumbers;
+            }
+        }
+
+        return NOTHING;
     }
 
     public int getMatch() {

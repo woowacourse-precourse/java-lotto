@@ -60,6 +60,20 @@ public class Lotto {
         return sum/totalMoney;
     }
 
+    public Map<WinningNumbers, Integer> countWinningCase(List<Integer> normalNumbers, List<Boolean> bonusNumbers) {
+        Map<WinningNumbers, Integer> result = new EnumMap<WinningNumbers, Integer>(WinningNumbers.class);
+
+        for (int singleLotto = 0; singleLotto < normalNumbers.size(); singleLotto++) {
+            int match = normalNumbers.get(singleLotto);
+            boolean bonus = bonusNumbers.get(singleLotto);
+            WinningNumbers keyEnum = WinningNumbers.getEnum(match,bonus);
+
+            result.put(keyEnum,result.getOrDefault(keyEnum,0) + 1);
+        }
+
+        return result;
+    }
+
     private void checkNumberLength(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 숫자의 갯수는 6개만 가능합니다.");
