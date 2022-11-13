@@ -12,7 +12,7 @@ public class Guide {
         System.out.printf("%d개를 구매했습니다.%n", lottoCount);
     }
 
-    public void printInputLottoGuide() {
+    public void printInputWinningNumberGuide() {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
