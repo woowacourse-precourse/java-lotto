@@ -8,9 +8,19 @@ import java.util.List;
 public class NumbersReceiver {
     public NumbersReceiver() {}
 
-    public int insertMoney() {
+    public long insertMoney() throws IllegalArgumentException {
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        try {
+            long money = Long.parseLong(Console.readLine());
+
+            if (money < 0) {
+                throw new IllegalArgumentException();
+            }
+
+            return money;
+        } catch (Exception exception) {
+            throw new IllegalArgumentException("[ERROR] 0이상의 정수만 입력 가능합니다");
+        }
     }
 
     public List<Integer> setBasicNumbers() throws IllegalArgumentException {
