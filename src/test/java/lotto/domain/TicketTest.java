@@ -31,7 +31,7 @@ class TicketTest {
     void getLottosByIncreasingOrder() {
         Ticket ticket = new Ticket(1000);
         assertThat(isIncreasingOrder(ticket.getLottos().get(0)))
-                .isEqualTo(true);
+                .isTrue();
     }
 
     private boolean isIncreasingOrder(Lotto lotto) {
