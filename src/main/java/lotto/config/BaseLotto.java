@@ -16,6 +16,10 @@ public enum BaseLotto {
 
     private final String description;
 
+    public String getDescription(){
+        return description;
+    }
+
     private BaseLotto(String description){
         this.description = description;
     }

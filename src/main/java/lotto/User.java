@@ -9,14 +9,24 @@ public class User {
     private Integer cntLotto;
     private static final int lottoValue = 1000;
 
-    public void purchaseLotto(int value){
+    public void purchaseLotto(String input){
         try {
+            Integer value = checkNum(input);
             int cntLotto = divideLotto(value);
             setLotto(cntLotto);
         }catch (IllegalArgumentException e){
             ERRORUI.getErrorDivideValue();
             System.exit(1);
         }
+    }
+    private Integer checkNum(String input){
+        Integer value = null;
+        try {
+            value = Integer.parseInt(input);
+        }catch (IllegalArgumentException e){
+            ERRORUI.getErrorInputNum();
+        }
+        return value;
     }
 
     private Integer divideLotto(int value){
