@@ -25,7 +25,7 @@ class LottoHistoryTest {
         // when
         history.saveHistory(third);
         history.saveHistory(fourth);
-        List<LottoRanking> winningHistory = history.getHistorys();
+        List<LottoRanking> winningHistory = history.getWinningHistory();
 
         // then
         assertThat(winningHistory).contains(LottoRanking.THIRD, LottoRanking.FOURTH);

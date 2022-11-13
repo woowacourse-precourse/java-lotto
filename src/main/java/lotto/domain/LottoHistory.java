@@ -10,7 +10,7 @@ public class LottoHistory {
     public LottoHistory() {
     }
 
-    public List<LottoRanking> getHistorys() {
+    public List<LottoRanking> getWinningHistory() {
         return winningHistory;
     }
 
