@@ -26,7 +26,7 @@ public class OutputUI {
     public void printWinnerResult(ResultLotto resultLotto) {
         Rank[] ranks = Rank.values();
         for (Rank rank : ranks) {
-            System.out.println(String.format("%d개 일치 (%s) - %d개",
+            System.out.println(String.format("%d개 일치%s - %d개",
                     rank.getHitCount(),
                     rank.getRewardString(),
                     resultLotto.getResultWithRank(rank.getRankInt())));
@@ -34,7 +34,7 @@ public class OutputUI {
         }
     }
 
-    public void printReturnReate(double returnRate) {
-        System.out.println("총 수익률은 " + returnRate +"%입니다.");
+    public void printReturnRate(double returnRate) {
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", returnRate));
     }
 }

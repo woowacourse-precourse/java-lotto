@@ -20,6 +20,6 @@ public class RaffleStaticsCalculator {
             totalWinningMoney += (winningMoney.get(i) * lottoResult.get(i));
         }
 
-        return Math.round(((double) totalWinningMoney / (double) totalLottoBuyMoney)  * 100.0);
+        return ((double) totalWinningMoney / (double) totalLottoBuyMoney)  * 100.0;
     }
 }

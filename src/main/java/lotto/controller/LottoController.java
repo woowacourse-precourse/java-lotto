@@ -26,7 +26,7 @@ public class LottoController {
 
         ResultLotto resultLotto = createResultLotto(resultOfLottos);
         outputUI.printWinnerResult(resultLotto);
-        outputUI.printReturnReate(returnRate);
+        outputUI.printReturnRate(returnRate);
 
 
     }
