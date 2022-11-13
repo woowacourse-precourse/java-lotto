@@ -9,13 +9,16 @@ import java.util.List;
 import java.util.TooManyListenersException;
 
 public class I_O_System {
-    static final int lottey_price = 1000;
-
     public static final String BAGIC_ERROR_MESSAGE = "[ERROR]";
     private static final String Sell_Messge = "개를 구매했습니다.";
     private static final String ERROR_Code_1 = " 숫자가 아닌 문자가 들어왔습니다.";
     private static final String ERROR_Code_2 = " 돈이 천원 단위로 나누어지지않습니다.";
 
+    private static final int Lottey_min = 1;
+    private static final int Lottey_max = 6;
+    private static final int Lottey_number_max = 45;
+    static final int lottey_price = 1000;
+    
     private String Enter_Number = "0";
     private int Money_Enter = 0;
     private int Ticket =0;
@@ -79,7 +82,7 @@ public class I_O_System {
         System.out.println(Ticket + Sell_Messge);
         for(int i=0;i<Ticket;i++)
         {
-            List<Integer> number = Randoms.pickUniqueNumbersInRange(1,45,6);
+            List<Integer> number = Randoms.pickUniqueNumbersInRange(Lottey_min,Lottey_number_max,Lottey_max);
             Ticket_Print(number);
             List<List<Integer>> mylist = new ArrayList<>();
             mylist.add(number);
