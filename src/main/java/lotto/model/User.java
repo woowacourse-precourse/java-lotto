@@ -17,7 +17,7 @@ public class User {
     }
 
     private void validateNotNull(String userInput) {
-        if (userInput == null || "0".equals(userInput)) {
+        if (userInput == null || userInput == "" || "0".equals(userInput)) {
             throw new IllegalArgumentException(changeWord + "은 0이상의 값을 입력하세요.");
         }
     }
