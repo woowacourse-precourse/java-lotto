@@ -17,21 +17,12 @@ public class MoneyTest {
         assertThat(money.getLottoCnt()).isEqualTo(10);
     }
 
-    @DisplayName("금액이 1000원보다 작으면 예외가 발생한다.")
-    @ParameterizedTest
-    @ValueSource(ints = {-1, 0, 100, 999})
-    void createMoneyByLessThan1000(int input) {
-        assertThatThrownBy(() -> Money.from((input)))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining("[ERROR] 구입 금액의 최소단위는 1000원입니다.");
-
-    }
     @DisplayName("금액이 1000원으로 나눠떨어지지 않으면 예외가 발생한다.")
     @ParameterizedTest
     @ValueSource(ints = {1100, 7777, 9999})
     void createMoneyByDecimals(int input) {
         assertThatThrownBy(() -> Money.from(input))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining("[ERROR] 구입 금액은 1000 단위여야 합니다");
+            .hasMessageContaining("[ERROR] 구입 금액은 1000원 단위여야만 합니다.");
     }
 }

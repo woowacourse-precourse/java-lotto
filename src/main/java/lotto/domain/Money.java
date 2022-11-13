@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
+
 public class Money {
+
+    DecimalFormat decFormat = new DecimalFormat("###,###");
 
     private final int MONEY_UNIT = 1000;
     private final int amount;
@@ -15,9 +19,6 @@ public class Money {
     }
 
     private void validate(int moneyAmount) {
-        if (moneyAmount < MONEY_UNIT) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액의 최소단위는 1000원입니다.");
-        }
         if (moneyAmount % MONEY_UNIT != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위여야만 합니다.");
         }
@@ -31,5 +32,9 @@ public class Money {
         return amount;
     }
 
+    @Override
+    public String toString() {
+        return decFormat.format(amount);
+    }
 
 }
