@@ -21,4 +21,8 @@ public class LottoRaffler {
     private Long checkWinningNumbers(List<Integer> raffleNumbers) {
         return raffleNumbers.stream().filter(winningNumbers::contains).count();
     }
+
+    private boolean checkBonusNumber(int raffleNumber) {
+        return bonusNumber == raffleNumber;
+    }
 }
