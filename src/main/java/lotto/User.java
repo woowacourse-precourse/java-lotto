@@ -13,7 +13,7 @@ public class User {
 
     static Validator val = new Validator();
 
-    public List<List<Integer>> lottoRandomNumber(Integer number) {   //사용자 입력값을 받는 것
+    public static List<List<Integer>> lottoRandomNumber(Integer number) {   //사용자 입력값을 받는 것
         List<List<Integer>> numberResult = new ArrayList<>();
         for (int i = 0; i < number; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -28,7 +28,7 @@ public class User {
 
         public static int inputBuyPrice() {
             String Sixinput = readLine();
-            return Integer.parseInt(readLine());
+            return Integer.parseInt(Sixinput);
         }
 
 
@@ -57,8 +57,8 @@ public class User {
         }
 
         public static int bonusNumber() {
-            Set<Integer> bonusNumber1 = new HashSet<>();
-            String bonusNumberInput = new String(String.valueOf(bonusNumber1));
+            String BonusInput = readLine();
+            String bonusNumberInput = new String(String.valueOf(BonusInput));
             return Integer.parseInt(readLine());
 
 

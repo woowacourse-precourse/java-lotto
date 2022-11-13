@@ -37,40 +37,50 @@ public class Lotto {
     public static void bonusSay(){
         System.out.println("보너스 번호를 입력해주세요");
     }
+    public static void LottoResultMessage(){
+        System.out.println("\n당첨 통계\n---");
+    }
+
 
     //당첨통계
-    public static void toResult( Integer number, int correct, int Countlotto){
-        List<Integer> answer = new ArrayList<>();
+    public static void toResult( Integer number, int correct, int Countlotto) {
         User user = new User();
         // [1,2,3,4,5,6] 처럼 로또번호 입력값
         String lottoInput = user.lottoListSix();
         List<Integer> lottoToList = user.lottoToList(lottoInput);
         // [] 랜덤으로 나오는 숫자
-        List<List<Integer>> lottoRandomNumber = user.lottoRandomNumber((Integer)(Countlotto));  //숫자에서 숫자로 형변환시킬때
+        List<List<Integer>> lottoRandomNumber = user.lottoRandomNumber((Integer) (Countlotto));  //숫자에서 숫자로 형변환시킬때
         // [1,2,3,4,5,6] == []랜덤 으로 비교해서 안에없으면 넣어주기 카운트 또한 증가
-        int count = 0;
-        for(int i = 0; i < number; i++){
-            if(!lottoRandomNumber.contains(lottoToList))
-                lottoRandomNumber.contains(lottoToList);
-                count++;
-        }
 
+        for (int i = 0; i < number; i++) {
+            if (!lottoRandomNumber.contains(lottoToList))
+                lottoRandomNumber.contains(lottoToList);
+
+        }
+    }
 
         // 해당하는 숫자에 도착하면 나오는 결과값 한번에 출력
-        for(int j = 0; j < correct; j++) {
-            if (correct == 3) {
-                System.out.println(Countlotto + "일치" + "(5,000원)" + "-" + count + "개");
-            }if (correct == 4) {
-                System.out.println(Countlotto + "일치" + "(50,000원)" + "-" + count + "개");
-            }if (correct == 5) {
-                System.out.println(Countlotto + "일치" + "(1,500,000원)" + "-" + count + "개");
-            }if (correct == 5) {
-                System.out.println(Countlotto + "일치" + "(30,000,000원)" + "-" + count + "개");
-            }if (correct == 6) {
-                System.out.println(Countlotto + "일치" + "(2,000,000,000원)" + "-" + count + "개");
+        public int[] ScoreNumber(List<Integer> correct, List<Boolean> BonusBoolean ) {
+
+
+            int[] CountNumber = {1,2,3,4,5};
+            for (int index = 0; index < correct.size(); index++) {
+                if (correct.get(index) == 3) {
+                    CountNumber[0]++;
+                }if (correct.get(index) == 4) {
+                    CountNumber[1]++;
+                }
+                if (correct.get(index) == 5 && !BonusBoolean.get(index)) {
+                    CountNumber[2]++;
+                }
+                if (correct.get(index) == 5 && BonusBoolean.get(index)) {
+                    CountNumber[3]++;
+                }
+                if (correct.get(index) == 6) {
+                    CountNumber[4]++;
+                }
             }
         }
-
 
 
     }

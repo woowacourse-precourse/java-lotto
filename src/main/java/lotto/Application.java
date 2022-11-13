@@ -7,15 +7,16 @@ public class Application {
         // TODO: 프로그램 구현
 
 
-        Lotto.inputBuyPirce1();
+        Lotto.inputBuyPirce1(); //메세지
 
-        int input = User.inputBuyPrice();
+        int input = User.inputBuyPrice(); //입력칸
 
-        int input2 = Lotto.buyScuessCount(input);
+        int input2 = Lotto.buyScuessCount(input); //8개를 구입하셨습니다
 
         User user = new User();
         Lotto.buySucess(input2);
-        user.lottoRandomNumber(input2);
+        User.lottoRandomNumber(input2);
+
 
         Lotto.sayLottoNumber();
         String lottoListSix = user.lottoListSix();
@@ -23,6 +24,8 @@ public class Application {
 
         Lotto.bonusSay();
         int bonusNumber = User.bonusNumber();
+
+        Lotto.LottoResultMessage();
 
 
 
