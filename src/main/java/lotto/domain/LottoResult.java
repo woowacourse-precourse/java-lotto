@@ -3,35 +3,27 @@ package lotto.domain;
 import lotto.model.Lotto;
 import lotto.model.LottoBuyer;
 import lotto.model.LottoResults;
+import lotto.model.LottoWinningNumber;
 
 import java.util.List;
 
 public class LottoResult {
-    private static String PROFIT_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
-
-    LottoProfitRate lottoProfitRate = new LottoProfitRate();
-
-    public void getLottoStatistics(LottoBuyer lottoBuyer, List<Integer> winningNumbers, int bonusNumber) {
+    public void getLottoStatistics(LottoBuyer lottoBuyer, LottoWinningNumber lottoWinningNumber) {
         LottoResults lottoResults = new LottoResults();
         List<Lotto> lottoList = lottoBuyer.getLottoTickets();
 
         for (Lotto lotto : lottoList) {
             List<Integer> lottoNumbers = lotto.getLotto();
-            boolean isBonus = checkIsBonus(lottoNumbers, bonusNumber);
-            int lottoCount = countLottoNumber(lottoNumbers, winningNumbers);
+            int lottoCount = countLottoNumber(lottoNumbers, lottoWinningNumber.getLottoWinningNumbers());
+            boolean isBonus = checkIsBonus(lottoNumbers, lottoWinningNumber.getBonusNumber());
             getLottoCount(lottoResults, lottoCount, isBonus);
         }
 
         long totalWinnings = calculateTotalWinnings(lottoResults);
+        lottoBuyer.setTotalWinnings(totalWinnings);
 
         printRankingResult(lottoResults);
-        printProfitRate(totalWinnings, lottoBuyer.getPayment());
     }
-
-    private void printProfitRate(long totalWinnings, int payment) {
-        System.out.printf(PROFIT_RATE_MESSAGE, lottoProfitRate.getProfitRate(totalWinnings, payment));
-    }
-
 
     private void getLottoCount(LottoResults lottoResults, int lottoCount, boolean isBonus) {
         if (lottoCount == 3) {

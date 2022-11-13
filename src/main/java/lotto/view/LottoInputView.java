@@ -39,4 +39,9 @@ public class LottoInputView {
         winningNumberValidator.validateBonusNumber(bonusNumber);
         return bonusNumber;
     }
+
+    public void inputWinningNumber() {
+        List<Integer> winningNumbers = inputWinningNumbers();
+        int bonusNumber = inputBonusNumber();
+    }
 }
