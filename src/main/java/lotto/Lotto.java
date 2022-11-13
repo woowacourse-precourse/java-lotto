@@ -1,5 +1,4 @@
 package lotto;
-
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,7 +36,6 @@ public class Lotto {
         }
         return tempArray;
     }
-
     public ArrayList<BigInteger> checkLottoWinnings(ArrayList<ArrayList<Integer>> lotteryBundleArray, int bonusWinningNumber){
         return countLotteryWinningNumber(lotteryBundleArray, bonusWinningNumber);
     }
@@ -110,10 +108,8 @@ public class Lotto {
     }
     private void printPercentOfProfit(BigInteger sumOfWinAmount, String buyingAmountString){
         BigInteger buyingAmount = new BigInteger(buyingAmountString);
-
         double percentOfProfit = sumOfWinAmount.doubleValue()/buyingAmount.doubleValue()*100;
         percentOfProfit = Math.round(percentOfProfit * 100)/100.0;
-
         System.out.println("총 수익률은 "+percentOfProfit+"%입니다.");
     }
 }

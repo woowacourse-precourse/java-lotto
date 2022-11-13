@@ -1,12 +1,7 @@
 package lotto;
-
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.math.BigInteger;
-import java.security.spec.ECField;
 import java.util.*;
-
 public class Application {
     private static final int STOP_VALUE = -1;
     private static final int AMOUNT_UNIT = 1000;
@@ -61,7 +56,7 @@ public class Application {
             lotteryBundleArray.add(createAndPrintLottery());
             cntForCreateLottery++;
         }
-        Lotto lotto = null;
+        Lotto lotto;
         try{
             lotto = new Lotto(inputWinningNumbers());
         }
@@ -74,7 +69,6 @@ public class Application {
         List<Integer> tempLotteryArray = Randoms.pickUniqueNumbersInRange(1, 45, LOTTERY_NUMBER_LIMIT);
         ArrayList<Integer> lotteryNumberArray = new ArrayList<>();
         Iterator lotteryNumberItr = tempLotteryArray.iterator();
-        int index = 0;
         while (lotteryNumberItr.hasNext()){
             lotteryNumberArray.add((int)lotteryNumberItr.next());
         }
