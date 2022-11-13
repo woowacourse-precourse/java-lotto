@@ -2,16 +2,14 @@
 
 ## 로또 게임 기능 목록
 1. 로또 구입
-   - [x] (입력) 구입 금액을 입력 받는다. Input#inputMoney
-   - [x] (예외) 1000 단위로 나누어 떨어지지 않는 경우 오류 발생 Input#vaildMoney
-   - [] 1000원당 1장씩 로또 발행 한다. Lotto#getLotto
+   - [x] (입력) 구입 금액을 입력 받기 _Input#inputMoney_
+     - [x] (예외) 1000 단위로 나누어 떨어지지 않는 경우 오류 발생 _Input#vaildMoney_
+   - [x] 1000원당 1장씩 로또 발행 한다. _Lotto#getLotto_
 2. 로또 발행
-   - [] (출력) 발행한 로또 수량을 출력한다. Message#ticketCount
-   - [] 1개의 로또를 발행할 때 중복되지 않는 6개의 숫자를 뽑는다. Ticket#generateLotto
-      - [] 로또 번호의 숫자 범위는 1~45까지이다. Error#validRange
-      - [] 당첨 번호 추첨 시 중복되지 않는 Error#isDiffrent
-      - [] 숫자 6개를 뽑는다. Error#
-   - [] (출력) 발행된 로또 숫자를 출력한다. Message#ticketNums
+   - [x] (출력) 발행한 로또 수량을 출력한다. _Message#PRINT_BUY_LOTTO_
+   - [x] 1개의 로또를 발행할 때 중복되지 않는 6개의 숫자를 뽑는다. _Random#pickUniqueNumbersInRange_
+     - [x] 숫자 6개를 뽑는다. _Lotto#validate_
+   - [x] (출력) 발행된 로또 숫자를 출력한다. _Message#PRINT_LOTTOS_
 3. 추첨 번호/보너스 번호 입력
    - [] (출력) 당첨 번호 입력 메시지 출력 Message#askWinNums
    - [] (입력) 당첨 번호 입력 6개 숫자. Input#inputWinNums
