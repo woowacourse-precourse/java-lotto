@@ -1,8 +1,9 @@
 package lotto.controller;
 
+import lotto.controller.validator.MoneyValidator;
 import lotto.service.LottoGameService;
 
-public class LottoController {
+public class LottoController implements Controller {
 
     private final LottoGameService service;
 
@@ -11,6 +12,8 @@ public class LottoController {
     }
 
     public void inputMoney(String input) {
+        validateInput(input, MoneyValidator.values());
+    }
 
     }
 }
