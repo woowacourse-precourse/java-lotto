@@ -7,8 +7,8 @@ import lotto.WinningLotto;
 import lotto.view.Printer;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoController {
     private static int price;
@@ -29,6 +29,7 @@ public class LottoController {
     }
     public Lotto generateLotto(){
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(startRange, endRange, count);
+        lottoNumbers = lottoNumbers.stream().sorted().collect(Collectors.toList());
         return new Lotto(lottoNumbers);
     }
 
