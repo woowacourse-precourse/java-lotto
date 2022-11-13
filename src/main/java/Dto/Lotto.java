@@ -1,4 +1,4 @@
-package lotto;
+package Dto;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호의 길이가 6이 아닙니다.");
         }
     }
 
