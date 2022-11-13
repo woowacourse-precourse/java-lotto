@@ -28,4 +28,10 @@ public class CheckUtil {
             }
         }
     }
+
+    public static void checkIsValidBonusNumber(int bonus) throws IllegalArgumentException{
+        if(bonus<1 || bonus>45){
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_ERROR_MESSAGE.getMessage());
+        }
+    }
 }
