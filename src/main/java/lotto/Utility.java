@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import jdk.jshell.execution.Util;
 
+import javax.xml.crypto.dsig.spec.HMACParameterSpec;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,36 +21,39 @@ public abstract class Utility {
     public static final String winningStatistics = "당첨 통계";
     public static final String separateLine = "---";
 
-    public void printMessage(String message){
+    public static final long divisorNumber = 1000;
+
+    public static void printMessage(String message){
         System.out.println(message);
     }
 
-    public String receiveInput(){
+    public static String receiveInput(){
         String input = Console.readLine();
         return input;
     }
 
-    public long calculateQuotient(long dividend, long divisor){
+    public static long calculateQuotient(long dividend, long divisor){
         return dividend/divisor;
     }
 
-    public Lotto createLotto(){
+    public static Lotto createLotto(){
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Lotto lotto = new Lotto(lottoNumbers);
         return lotto;
     }
 
-    public List <Integer> saveWinningNumbers(String winningNumbers){
+    public static List <Integer> saveWinningNumbers(String winningNumbers){
         List<String> splitWinningNumber = new ArrayList<String>(Arrays.asList(winningNumbers.split(",")));
         List<Integer> _winningNumbers = new ArrayList<>();
         for(int i=0; i<splitWinningNumber.size(); i++){
             int curNum = (int)Exception.checkNumeric(splitWinningNumber.get(i));
+            Exception.checkNumberRange(minLottoNumber, maxLottoNumber, curNum);
             _winningNumbers.add(curNum);
         }
         return _winningNumbers;
     }
 
-    public double profitPercentage(long spentAmount, long totalPrizeAmount){
+    public static double profitPercentage(long spentAmount, long totalPrizeAmount){
         return Math.round((totalPrizeAmount/spentAmount)*100)/100.0;
     }
 }
