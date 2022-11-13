@@ -2,6 +2,8 @@ package lotto.util;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -35,5 +37,12 @@ class ValidatorTest {
 	@DisplayName("1000원 단위의 입력인지 검증한다.")
 	void validateDivisibleInput() {
 		assertThatNoException().isThrownBy(() -> Validator.validateDivisibility(4214000));
+	}
+
+
+	@Test
+	@DisplayName("숫자 간에 중복이 있는지 검증한다.")
+	void validateNoDuplication() {
+		assertThatThrownBy(() -> Validator.validateNoDuplication(List.of(2, 4, 16, 23, 23, 42))).isInstanceOf(IllegalArgumentException.class);
 	}
 }
