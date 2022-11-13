@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.exception.AmountException;
+import lotto.exception.LottoException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,9 +20,7 @@ public class Convertor {
     }
 
     public static List<Integer> getNumbers(String input) {
-        return Arrays.stream(input.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        return LottoException.validateWinningNumbers(input);
     }
 
     public static int getNumber(String input) {
