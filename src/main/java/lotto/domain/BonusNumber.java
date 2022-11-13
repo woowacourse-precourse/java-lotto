@@ -6,34 +6,31 @@ public class BonusNumber {
     private int bonusNumber;
 
     public void inputBonusNumber(String input, Set<Integer> winningNumber) {
-        if (!isNumber(input)) {
-            throw new IllegalArgumentException(Error.IS_NOT_NUMBER.getMessage());
-        }
-        if (!isRangeNumber()) {
-            throw new IllegalArgumentException(Error.IS_NOT_RANGE.getMessage());
-        }
-        if (isUnique(winningNumber)) { //얜 느낌표 없네
+        validateNumbers(input);
+        bonusNumber = toInt(input);
+        validateRange(bonusNumber);
+        validateUnique(bonusNumber, winningNumber);
+    }
+
+    private int toInt(String input) {
+        return Integer.parseInt(input);
+    }
+
+    private void validateUnique(int bonusNumber, Set<Integer> winningNumber) {
+        if (winningNumber.contains(bonusNumber)) {
             throw new IllegalArgumentException(Error.IS_NOT_UNIQUE.getMessage());
         }
     }
 
-    private boolean isUnique(Set<Integer> winningNuber) {
-        return winningNuber.contains(bonusNumber);
-    }
-
-    private boolean isRangeNumber() {
-        return bonusNumber >= 1 && bonusNumber <= 45;
-    }
-
-    private boolean isNumber(String input) {
-        for (int i = 0; i < input.length(); i++) {
-            char number = input.charAt(i);
-            if (number < '0' || number > '9') {
-                return false;
-            }
+    private void validateRange(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException(Error.IS_NOT_RANGE.getMessage());
         }
-        bonusNumber = Integer.parseInt(input);
-        return true;
     }
 
+    private void validateNumbers(String str) {
+        if (str.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException(Error.IS_NOT_NUMBER.getMessage());
+        }
+    }
 }
