@@ -8,7 +8,14 @@ import java.util.Map;
 
 public class Rank {
     private float earningRate;
-    private Map<RankType, Integer> rank = new EnumMap<RankType, Integer>(RankType.class);
+    private final Map<RankType, Integer> rank;
+
+    public Rank() {
+        this.rank = new EnumMap<RankType, Integer>(RankType.class);
+        for(RankType type: RankType.values()) {
+            this.rank.put(type, 0);
+        }
+    }
 
     public void setEarningRate(int money) {
         int total = 0;
@@ -28,7 +35,7 @@ public class Rank {
     }
 
     public void setRank(RankType rankType) {
-        this.rank.put(rankType, rank.getOrDefault(rankType, 0) + 1);
+        this.rank.put(rankType, rank.get(rankType) + 1);
     }
 
     public int countWinningNumber(List<Integer> lotto, List<Integer> playerLotto) {
