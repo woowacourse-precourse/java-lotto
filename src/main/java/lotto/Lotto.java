@@ -22,8 +22,8 @@ public class Lotto {
                 .count();
     }
 
-    protected boolean checkContains(int bonus) {
-        return numbers.contains(bonus);
+    protected boolean checkContains(int number) {
+        return numbers.contains(number);
     }
 
     protected void checkLottoRange(Integer number) {
