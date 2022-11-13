@@ -2,6 +2,7 @@ package lotto.model;
 
 import static lotto.validator.LottoNumberValidator.hasValidLotteryNumber;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,7 +24,8 @@ public class Lotto {
 
     @Override
     public String toString() {
-        Collections.sort(numbers);
-        return numbers.toString();
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        return sortedNumbers.toString();
     }
 }
