@@ -5,10 +5,13 @@ public class BuyAmount {
     private final int MONEY;
 
     public BuyAmount(String userInput) {
+        validate(userInput);
+        this.MONEY = Integer.parseInt(userInput);
+    }
+
+    private void validate(String userInput) {
         Utility.intValidate(userInput);
-        int money = Integer.parseInt(userInput);
-        notDivideValidate(money);
-        this.MONEY = money;
+        notDivideValidate(Integer.parseInt(userInput));
     }
 
     private void notDivideValidate(int money) {

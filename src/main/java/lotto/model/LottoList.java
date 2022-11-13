@@ -1,17 +1,15 @@
-package lotto.controller;
+package lotto.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.model.Lotto;
 
-public class LottoListController {
+public class LottoList {
 
     private final int LOTTO_COUNT;
     private final List<Lotto> LOTTO_LIST = new ArrayList<Lotto>();
 
-    public LottoListController(int buyAmount) {
+    public LottoList(int buyAmount) {
         this.LOTTO_COUNT = buyLottoCount(buyAmount);
         for (int count = 0; count < LOTTO_COUNT; count++) {
             LottoNumberSave();

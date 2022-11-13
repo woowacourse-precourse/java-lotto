@@ -7,6 +7,8 @@ import java.util.List;
 public class Lotto {
 
     private final List<Integer> numbers = new ArrayList<>();
+    private final int MAX = 45;
+    private final int MIN = 1;
 
     public Lotto(List<Integer> nums) {
         validate(nums);
@@ -17,6 +19,15 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         sizeValidate(numbers);
         overlapValidate(numbers);
+        rangeValidate(numbers);
+    }
+
+    private void rangeValidate(List<Integer> numbers) {
+        for (Integer num : numbers) {
+            if (num < MIN || num > MAX) {
+                throw new IllegalArgumentException("[ERROR] 번호가 잘못된 번호입니다.");
+            }
+        }
     }
 
     private void sizeValidate(List<Integer> numbers) {

@@ -1,9 +1,9 @@
 package lotto.view;
 
-import java.util.List;
-import lotto.controller.LottoListController;
-import lotto.controller.LottoSameCountController;
+import lotto.model.LottoList;
 import lotto.model.Lotto;
+import lotto.model.Rank;
+import lotto.model.Result;
 
 public class OutputView {
 
@@ -11,8 +11,8 @@ public class OutputView {
         System.out.println("\n" + count + "개를 구매했습니다.");
     }
 
-    public static void LottoListPrint(LottoListController lottoListController) {
-        for (Lotto lotto : lottoListController.getLOTTO_LIST()) {
+    public static void LottoListPrint(LottoList lottoList) {
+        for (Lotto lotto : lottoList.getLOTTO_LIST()) {
             LottoNumberPrint(lotto);
             System.out.println("");
         }
@@ -26,17 +26,18 @@ public class OutputView {
         System.out.print("]");
     }
 
-    public static void ResultPrint(List<Integer> rankcountlist) {
+    public static void ResultPrint(Result result) {
         System.out.println("\n당첨 통계\n---");
-        System.out.println("3개 일치 (5,000원) - " + rankcountlist.get(4) + "개");
-        System.out.println("4개 일치 (50,000원) - " + rankcountlist.get(3) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + rankcountlist.get(2) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankcountlist.get(1) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + rankcountlist.get(0) + "개");
+        System.out.println("3개 일치 (5,000원) - " + result.getRankCount(Rank.FIFTH) + "개");
+        System.out.println("4개 일치 (50,000원) - " + result.getRankCount(Rank.FOURTH) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + result.getRankCount(Rank.THIRD) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + result.getRankCount(Rank.SECOND) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + result.getRankCount(Rank.FIRST) + "개");
     }
 
-    public static void YieldPrint(int summoney, int paymonney) {
-        double result = (double) summoney * 100 / paymonney;
+
+    public static void YieldPrint(double summoney, int paymonney) {
+        double result = summoney * 100 / paymonney;
         System.out.println("총 수익률은 " + result + "%입니다.");
     }
 

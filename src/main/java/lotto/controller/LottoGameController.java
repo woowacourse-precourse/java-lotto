@@ -1,6 +1,9 @@
 package lotto.controller;
 
 import lotto.model.BuyAmount;
+import lotto.model.LottoList;
+import lotto.model.Result;
+import lotto.model.UserNumbers;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -12,25 +15,19 @@ public class LottoGameController {
 
     private void gameStart() {
         BuyAmount buyAmount = new BuyAmount(InputView.buyAmountInput());
-        LottoListController lottoListController = new LottoListController(buyAmount.getMONEY());
-        initMessage(lottoListController);
-        UserNumbersController userNumbersController = new UserNumbersController(
+        LottoList lottoList = new LottoList(buyAmount.getMONEY());
+        initMessage(lottoList);
+        UserNumbers userNumbers = new UserNumbers(
             InputView.answerNumberInput(),
             InputView.bonusNumberInput());
-        LottoSameCountController lottoSameCountController = new LottoSameCountController(
-            lottoListController, userNumbersController);
-        OutputView.ResultPrint(lottoSameCountController.getRANK_COUNT_LIST());
-        OutputView.YieldPrint(lottoSameCountController.getSUM_MONEY(), buyAmount.getMONEY());
+        Result result = new Result(lottoList, userNumbers);
+        OutputView.ResultPrint(result);
+        OutputView.YieldPrint(result.getSumPrice(), buyAmount.getMONEY());
     }
 
-    private void initMessage(LottoListController lottoListController) {
-        OutputView.LottoCountPrint(lottoListController.getLOTTO_COUNT());
-        OutputView.LottoListPrint(lottoListController);
-    }
-
-    private void sameMessage(LottoListController lottoListController,
-        UserNumbersController userNumbersController) {
-
+    private void initMessage(LottoList lottoList) {
+        OutputView.LottoCountPrint(lottoList.getLOTTO_COUNT());
+        OutputView.LottoListPrint(lottoList);
     }
 
 
