@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Counter {
     private int money;
+    private int numberOfLotto;
 
     public Counter() {
         money = 0;
@@ -12,6 +13,7 @@ public class Counter {
     private void putMoney() {
         String inputMoney = Console.readLine();
         moneyCheck(inputMoney);
+        moneyCount(money);
     }
 
     private void moneyCheck(String inputMoney) {
@@ -32,5 +34,13 @@ public class Counter {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("1000원 단위의 금액이 아닙니다.");
         }
+    }
+
+    private void moneyCount(int money) {
+        this.numberOfLotto = money / 1000;
+    }
+
+    public int getNumberOfLotto() {
+        return numberOfLotto;
     }
 }
