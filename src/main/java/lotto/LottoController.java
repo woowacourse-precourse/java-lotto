@@ -35,6 +35,9 @@ public class LottoController {
 
         String inputBonusNumber = InputView.inputBonusNumber();
         int bonusNumber = LottoParser.parseToBonumNumber(inputBonusNumber);
+
+        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+
     }
 
     private void result() {
