@@ -29,7 +29,18 @@ public class LottoController extends Controller {
     }
 
     private List<Integer> createWinningNumbers() {
-        return null;
+        outputView.printInputWinningNumbersSentence();
+        String winningNumbersInput = inputView.input();
+        validateWinningNumbersInput(winningNumbersInput);
+
+        return inputUtils.convertToWinningNumbers(winningNumbersInput);
+    }
+
+    private void validateWinningNumbersInput(String winningNumbersInput) {
+        String validateFormat = "^\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2}$";
+        if (!winningNumbersInput.matches(validateFormat)) {
+            throw new IllegalArgumentException(FORMAT_ERROR_MESSAGE);
+        }
     }
 
     private int createBonusNumber() {
