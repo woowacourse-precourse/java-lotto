@@ -11,9 +11,13 @@ public class Application {
     public static void main(String[] args) {
         int money, num, bonus;
         int[] statistics = new int[5];
-        double profit = 0;
+        double profit = 0, total = 0;
         List<Integer> win_numbers;
         List<Lotto> buy_lists = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            statistics[i] = 0;
+        }
 
         System.out.println("구입금액을 입력해 주세요.");
 
@@ -70,6 +74,8 @@ public class Application {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + statistics[3] + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + statistics[4] + "개");
 
-        System.out.println("총 수익률은 " + profit + "%입니다.");
+        profit = Lotto.check_profit(money, statistics, total) / money * 100.0;
+
+        System.out.println("총 수익률은 " + Math.round(profit*10)/10.0 + "%입니다.");
     }
 }

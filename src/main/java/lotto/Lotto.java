@@ -47,4 +47,13 @@ public class Lotto {
         }
         return cnt;
     }
+
+    public static double check_profit(int money, int[] statistics, double total) {
+        total += statistics[0] * 5_000;
+        total += statistics[1] * 50_000;
+        total += statistics[2] * 1_500_000;
+        total += statistics[3] * 30_000_000;
+        total += statistics[4] * 2_000_000_000;
+        return total;
+    }
 }
