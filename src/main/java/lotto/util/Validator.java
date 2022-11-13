@@ -11,6 +11,7 @@ public class Validator {
 
     private static final String PURCHASE_AMOUNT_UNIT_ERROR_MESSAGE = "구입금액은 1,000원 단위여야 합니다.";
     private static final String PLAYER_NUMBERS_COUNT_STANDARD_ERROR_MESSAGE = "당첨 번호는 6개를 입력해야 합니다.";
+    private static final String PLAYER_NUMBERS_RANGE_ERROR_MESSAGE = "당첨 번호는 1부터 45 사이의 숫자여야 합니다.";
 
     public static void validateUnitStandard(int purchaseAmount) {
         boolean isPurchaseAmountNotFollowUnitStandard = purchaseAmount % UNIT_STANDARD != ZERO;
@@ -34,7 +35,7 @@ public class Validator {
                 .allMatch(playerNumber -> minRange <= playerNumber && playerNumber <= maxRange);
 
         if (!isPlayerNumbersInRange) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(PLAYER_NUMBERS_RANGE_ERROR_MESSAGE);
         }
     }
 }
