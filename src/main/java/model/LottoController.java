@@ -1,5 +1,6 @@
 package model;
 
+import utils.Converter;
 import utils.Validator;
 import view.InputView;
 import view.OutputView;
@@ -9,12 +10,14 @@ public class LottoController {
     private final OutputView outputView;
     private final Validator validator;
     private final LottoService lottoService;
+    private final Converter converter;
 
     public LottoController() {
         inputView = new InputView();
         outputView = new OutputView();
         validator = new Validator();
         lottoService = new LottoService();
+        converter = new Converter();
     }
 
     public void start() {
@@ -30,7 +33,7 @@ public class LottoController {
         validator.validateBonusNumberSize(bonusNumber);
         validator.validateBonusNumberDigit(bonusNumber);
         validator.validateBonusNumberRange(bonusNumber);
-
+        converter.convertToLuckyNumber(luckyNumber);
     }
 
     private void validateLuckyNumber(String luckyNumber) {
