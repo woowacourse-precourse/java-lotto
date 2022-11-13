@@ -27,6 +27,14 @@ public enum Grade {
         this.condition = condition;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public int getPrize() {
+        return this.prize;
+    }
+
     public static Grade valueOf(int sameNumCount, Boolean isBonusSame) {
         return Arrays.stream(values())
                 .filter(Grade -> Grade.condition.test(sameNumCount, isBonusSame))
