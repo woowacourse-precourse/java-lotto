@@ -20,6 +20,7 @@ public class User {
         return AutoLotto;
     }
 
+
     private void CheckMoney(int money){
         try {
             if (money % 1000 != 0) {
@@ -47,11 +48,13 @@ public class User {
                     throw new Exception("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
                 }
             }
-            Lotto lotto = new Lotto(UserLotto);
-            StringToBonusNum(UserLotto);
+
+
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+        Lotto lotto = new Lotto(UserLotto);
+        StringToBonusNum(UserLotto);
         return UserLotto;
     }
 

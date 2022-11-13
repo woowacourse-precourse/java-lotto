@@ -10,6 +10,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        CheckDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -21,6 +22,13 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
 
+    private void CheckDuplicate(List<Integer> numbers){
+        for(int i = 1;i<=numbers.size();i++){
+            if(numbers.get(i) == numbers.get(i-1)){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 
 
 
