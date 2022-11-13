@@ -16,9 +16,9 @@ public class LottoCalculator {
         return rankCount;
     }
 
-    public int compare(List<Integer> lotto, List<Integer> winningNumbers, int bonusNumber) {
-        int count = judgement.correctCount(lotto, winningNumbers);
-        if (count < 5 || !judgement.hasBonusNumbers(bonusNumber, lotto)) {
+    public int compare(Lotto lotto, WinningNumbers winningNumbers, int bonusNumber) {
+        int count = judgement.correctCount(lotto.getNumbers(), winningNumbers.getNumbers());
+        if (count < 5 || !judgement.hasBonusNumbers(bonusNumber, lotto.getNumbers())) {
             count--;
         }
         return count - 2;
@@ -41,7 +41,7 @@ public class LottoCalculator {
     }
 
     public double getRateOfReturn(int purchaseMoney) {
-        return sumOfPrizeMoney() / purchaseMoney;
+        return (sumOfPrizeMoney() / purchaseMoney) * 100;
     }
 
 }

@@ -10,8 +10,10 @@ class LottoCalculatorTest {
 
     @Test
     void compare() {
+        Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 10));
+        WinningNumbers winningNumbers = new WinningNumbers(Arrays.asList(1, 2, 3, 4, 5, 30));
         LottoCalculator lottoCalculator = new LottoCalculator();
-        int input = lottoCalculator.compare(Arrays.asList(1, 2, 3, 4, 5, 10), Arrays.asList(1, 2, 3, 4, 5, 30), 6);
+        int input = lottoCalculator.compare(lotto, winningNumbers, 6);
         int result = 2;
 
         assertThat(input).isEqualTo(result);

@@ -33,14 +33,16 @@ public class LottoManager {
     }
 
     public void printWinningDetails(LottoCalculator lottoCalculator) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + lottoCalculator.getRankCount().get(0) + "개");
-        System.out.printf("4개 일치 (50,000원) - " + lottoCalculator.getRankCount().get(1) + "개");
-        System.out.printf("5개 일치 (1,500,000원) - " + lottoCalculator.getRankCount().get(2) + "개");
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoCalculator.getRankCount().get(3) + "개");
-        System.out.printf("6개 일치 (2,000,000,000원) - " + lottoCalculator.getRankCount().get(4) + "개");
+        System.out.println("4개 일치 (50,000원) - " + lottoCalculator.getRankCount().get(1) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + lottoCalculator.getRankCount().get(2) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoCalculator.getRankCount().get(3) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + lottoCalculator.getRankCount().get(4) + "개");
     }
 
     public void printRateOfReturn(LottoCalculator lottoCalculator) {
-        System.out.println("총 수익률은 " + lottoCalculator.getRateOfReturn(purchaseMoney) + "%입니다.");
+        System.out.println("총 수익률은 " + String.format("%.1f",lottoCalculator.getRateOfReturn(purchaseMoney)) + "%입니다.");
     }
 }

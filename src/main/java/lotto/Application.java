@@ -5,11 +5,10 @@ import lotto.view.LottoManager;
 
 public class Application {
     public static void main(String[] args) {
-        // 로또개수 입력
         final LottoManager lottoManager = new LottoManager();
-        int lottoCount = lottoManager.inputLottoCount();
+        final int lottoCount = lottoManager.inputLottoCount();
+        System.out.println(lottoCount + "개를 구매했습니다.");
 
-        // 개수에 맞게 로또번호 생성 및 출력
         final NumberGenerator numberGenerator = new NumberGenerator();
         Lotto[] lottos = new Lotto[lottoCount];
         for (int i = 0; i < lottos.length; i++) {
@@ -17,13 +16,17 @@ public class Application {
         }
         lottoManager.printLottoNumbers(lottos);
 
-        // 당첨번호 입력
         List<Integer> winningNumbers = numberGenerator.createWinningNumbers(lottoManager.inputWinningNumbers());
         WinningNumbers w = new WinningNumbers(winningNumbers);
-        // 보너스 번호 입력
         final int bonusNumber = numberGenerator.createBonusNumbers(winningNumbers, lottoManager.inputBonusNumber());
 
+        LottoCalculator lottoCalculator = new LottoCalculator();
+        for (Lotto lotto : lottos) {
+            int correctCount = lottoCalculator.compare(lotto, w, bonusNumber);
+            lottoCalculator.addRankCount(correctCount);
+        }
 
-
+        lottoManager.printWinningDetails(lottoCalculator);
+        lottoManager.printRateOfReturn(lottoCalculator);
     }
 }
