@@ -3,7 +3,7 @@
 - [x] 6자리인지 검증한다. Lotto#validateSize()
 - [x] 입력받은 당첨 번호가 중복되지 않는지 검증한다. Lotto#validateDuplicateNumber()
 - [x] 1부터 ~ 45사이의 숫자인지 확인한다. Lotto#validateNumbersInRange
-- [ ] 로또 번호를 오름차순으로 정렬한다. Lotto#sortAscend()
+- [x] 로또 번호를 오름차순으로 정렬한다. Lotto#sortAscend()
 - [ ] 발행한 로또 번호를 가능한 당첨 번호와 가장 많이 일치하는 갯수와 일치 금액을 계산 한다. Lotto#matchWinner()
 - [ ] 로또의 결과 추가한다. Lotto#addResult()
 - [ ] 로또의 결과를 가져온다. Lotto#getResult()

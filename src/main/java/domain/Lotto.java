@@ -6,6 +6,7 @@ import util.LottoRule;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,6 +15,7 @@ public class Lotto {
         validateSize(numbers);
         validateDuplicateNumber(numbers);
         validateNumbersInRange(numbers);
+        numbers = sortAscend(numbers);
         this.numbers = numbers;
     }
 
@@ -39,6 +41,12 @@ public class Lotto {
                 throw new IllegalArgumentException(ExceptionMessage.OUT_OF_RANGE);
             }
         }
+    }
+
+    private List<Integer> sortAscend(List<Integer> numbers) {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public List<Integer> getNumbers() {
