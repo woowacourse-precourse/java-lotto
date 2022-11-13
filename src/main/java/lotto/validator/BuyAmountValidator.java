@@ -7,6 +7,7 @@ public class BuyAmountValidator {
     private static final String CONVERT_ERROR_MESSAGE = "숫자로 변환 할 수 없습니다.";
     private static final String DIVIDE_ERROR_MESSAGE = "1000으로 나눌 수 없는 숫자를 입력했습니다.";
     private static final String NEGATIVE_INPUT_MESSAGE = "음수를 입력했습니다.";
+    private static final int ZERO_REMAINDER = 0;
 
     public void validateInputNumber(String inputNumber) {
         validateInvalidNumber(inputNumber);
@@ -38,6 +39,6 @@ public class BuyAmountValidator {
     }
 
     private boolean divideBy1000(int inputNumber) {
-        return inputNumber % LOTTO_PRICE == 0;
+        return inputNumber % LOTTO_PRICE == ZERO_REMAINDER;
     }
 }
