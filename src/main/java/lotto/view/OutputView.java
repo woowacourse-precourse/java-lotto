@@ -25,4 +25,8 @@ public class OutputView {
     public String validateMsg(){
         return "[ERROR] 6개의 숫자를 입력해주세요.";
     }
+
+    public String EqualBonusMsg() {
+        return "[ERROR] 당첨 번호와 중복된 값이 있습니다.";
+    }
 }

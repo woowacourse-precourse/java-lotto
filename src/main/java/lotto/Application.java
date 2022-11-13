@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.User;
 import lotto.view.InputView;
@@ -14,6 +15,7 @@ public class Application {
     private static OutputView outputView;
     private static Lotto lotto;
     //private static List<Integer> numbers;
+    private static BonusNumber bonusNumber;
 
 
     public static void main(String[] args) {
@@ -22,6 +24,7 @@ public class Application {
         inputView = new InputView();
         outputView = new OutputView();
         user = new User();
+        bonusNumber = new BonusNumber();
 
         lotto = new Lotto();
 
@@ -33,8 +36,8 @@ public class Application {
         List<Integer> ar = lotto.change(win);
         lotto.checkInput(ar);
 
-        inputView.bonusNumber();
-
+        String bonus = inputView.bonusNumber();
+        bonusNumber.checkBonusNumber(ar, bonus);
 
     }
 
