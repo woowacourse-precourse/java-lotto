@@ -27,6 +27,9 @@ public class Validation {
     private static void validateDividedByThousand(String input) {
         int number = Integer.parseInt(input);
 
+        if (number == 0) {
+            throw (new IllegalArgumentException());
+        }
         if ((number % 1000) != 0) {
             throw (new IllegalArgumentException());
         }
