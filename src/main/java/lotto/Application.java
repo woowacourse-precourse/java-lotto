@@ -10,12 +10,17 @@ public class Application {
         // 객체, 변수 생성
         LottoIO lottoInfo = new LottoIO();
         UserIO user = new UserIO();
-        int budget;
+        int budget = -1;
         int amount;
         double yields;
 
         // 구입금액 입력
-        budget = user.moneySpent();
+        try {
+            budget = user.moneySpent();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         // 구매 갯수와 번호 출력
         amount = user.purchasedAmount(budget);
@@ -23,8 +28,18 @@ public class Application {
         user.printLotto();
 
         // 당첨 번호와 보너스 번호 입력
-        lottoInfo.inputLottoAnswer();
-        lottoInfo.inputBonusAnswer();
+        try {
+            lottoInfo.inputLottoAnswer();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        try {
+            lottoInfo.inputBonusAnswer();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         // 핵심 로직: 번호 비교, 수익률 계산
         MatchLogic matcher = new MatchLogic(lottoInfo, user);
