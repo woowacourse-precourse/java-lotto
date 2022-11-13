@@ -21,7 +21,7 @@ public class WinningCount {
 
     public void addWinningResult(String str, boolean bonusCheck) {
         if (bonusCheck && str == "5") {
-            count.put("bonus", count.get("bonus"));
+            count.put("bonus", count.get("bonus") + 1);
             return;
         }
         if (count.containsKey(str)) {
