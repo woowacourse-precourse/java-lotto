@@ -18,4 +18,8 @@ public enum Prize {
         this.systemMessage = systemMessage;
     }
 
+    public int getRanking() {
+        return this.ranking;
+    }
+
 }
