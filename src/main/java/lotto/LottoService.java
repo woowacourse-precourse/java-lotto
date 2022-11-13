@@ -8,9 +8,11 @@ import java.util.List;
 import java.util.Set;
 
 public class LottoService {
-    private final List<Integer> winningNumbers;
-    private final int bonusNumber;
+    private List<Integer> winningNumbers;
+    private int bonusNumber;
 
+    public LottoService() {
+    }
 
     public LottoService(List<Integer> winningNumbers, int bonusNumber) {
         this.winningNumbers = winningNumbers;
@@ -69,4 +71,11 @@ public class LottoService {
         return uniqueFormerNumbers.size();
     }
 
+    public void setWinningNumbers(List<Integer> winningNumbers) {
+        this.winningNumbers = winningNumbers;
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
+    }
 }
