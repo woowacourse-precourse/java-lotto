@@ -30,6 +30,11 @@ public class User {
         return money % LottoProperty.PRICE.getProperty() == Status.EMPTY.getStatus();
     }
 
+    public void buyLotteryTicket(LotteryTicket lotteryTicket) {
+        money -= LottoProperty.PRICE.getProperty();
+        lotteryTickets.add(lotteryTicket);
+    }
+
     public int getMoney() {
         return money;
     }
