@@ -4,8 +4,8 @@ import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.LottoResult;
 import lotto.utils.ErrorMessage;
+import lotto.utils.Numbers;
 
-import java.text.NumberFormat;
 import java.util.Map;
 
 public class OutputView {
@@ -56,7 +56,7 @@ public class OutputView {
         if (result.equals(LottoResult.SECOND_PLACE)) {
             message.append(INFORM_SAME_BONUS_NUMBER);
         }
-        message.append(String.format(INFORM_WINNING_AMOUNT, NumberFormat.getInstance().format(result.getAmount())))
+        message.append(String.format(INFORM_WINNING_AMOUNT, Numbers.getNumbersWithComma(result.getAmount())))
                 .append(STATISTIC_SEPARATOR)
                 .append(String.format(INFORM_WINNING_COUNTS, winningCounts.get(result)));
 
