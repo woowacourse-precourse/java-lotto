@@ -10,12 +10,12 @@ public class Application {
     public static void main(String[] args) {
     	int count = getCount();
     	List<Lotto> lottoNumbers = createLottoNumbers(count);
-    	String WinningNumber = getWinningNumber();
+    	List<Integer> WinningNumber = getWinningNumber();
     	String bonusNumber = getBonusNumber();
     	
     	createLottoNumbers(count);
     	printLottoNumbers(count,lottoNumbers);
-    	printWinningResult(WinningNumber,bonusNumber,lottoNumbers);
+    	//printWinningResult(WinningNumber,bonusNumber,lottoNumbers);
     	
     	return;
         // TODO: 프로그램 구현
@@ -32,9 +32,25 @@ public class Application {
     	return result/1000;
     }
     
-    public static String getWinningNumber() {
+    public static List<Integer> getWinningNumber() {
+    	int eachNumber;
+    	List<Integer> result = new ArrayList<>();
+    	
     	System.out.println("당첨 번호를 입력해 주세요.");
-    	return Console.readLine();
+    	String input = Console.readLine();
+    
+    	String[] inputSplited = input.split(",");
+    	for(String s:inputSplited) {
+    		eachNumber = Integer.parseInt(s);
+    		if(eachNumber<1 || eachNumber>46)
+    			throw new IllegalArgumentException("[ERROR]");
+    		result.add(eachNumber);
+    	}
+
+    	if(result.size()!=6)
+    		throw new IllegalArgumentException("[ERROR]");
+    	
+    	return result;
     }
     
     public static String getBonusNumber() {
