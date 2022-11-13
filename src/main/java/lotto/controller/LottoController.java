@@ -25,6 +25,7 @@ public class LottoController {
         System.out.println("userLottoNumbers: "+userLottoNumbers);
         compareLottos();
         System.out.println("ranking: "+lottoRanking);
+        getLottoResult();
     }
 
     public void getUserMoney() {
@@ -53,5 +54,8 @@ public class LottoController {
 
     public void compareLottos(){
         lottoRanking=lottos.calculateLottos(userLottoNumbers);
+    }
+    public void getLottoResult(){
+        OutputView.printLottoResult(lottoRanking);
     }
 }
