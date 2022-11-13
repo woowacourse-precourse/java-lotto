@@ -6,7 +6,7 @@ public class WinningRecord {
     private List<Integer> winningHistory;
     private long investment;
 
-    public WinningRecord(List<Integer> winningHistory, long investment) {
+    public WinningRecord(List<Integer> winningHistory) {
         this.winningHistory = winningHistory;
         this.investment = winningHistory.stream().reduce(0, Integer::sum) * 1000;
     }

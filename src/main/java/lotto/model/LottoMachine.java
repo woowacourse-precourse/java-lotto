@@ -3,8 +3,10 @@ package lotto.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoMachine {
     private List<Integer> answer;
@@ -26,7 +28,13 @@ public class LottoMachine {
         return lottos;
     }
 
-    public WinningRecord drawAll() {
-        return null;
+    public WinningRecord drawAll(List<Lotto> lottos) {
+        int[] temp = new int[]{0, 0, 0, 0, 0, 0};
+        lottos.forEach(lotto -> {
+            int place = lotto.draw(answer, bonus);
+            temp[place]++;
+        });
+        List<Integer> history = Arrays.stream(temp).boxed().collect(Collectors.toList());
+        return new WinningRecord(history);
     }
 }
