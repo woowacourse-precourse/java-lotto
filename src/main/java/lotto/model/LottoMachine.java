@@ -2,9 +2,16 @@ package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.util.RandomUtil;
 import lotto.util.constants.LottoConstants;
 
 public class LottoMachine {
+    private WinningLotto winningLotto;
+
+    public void createWinningLotto(Lotto lotto, int bonusNumber) {
+        winningLotto = new WinningLotto(lotto, bonusNumber);
+    }
+
     public int computeLottoTicketsCount(int purchaseAmount) {
         return purchaseAmount / LottoConstants.LOTTO_TICKET_PRICE;
     }
@@ -21,7 +28,7 @@ public class LottoMachine {
     }
 
     public Lotto createLottoTicket() {
-        LottoRandom lottoRandom = new LottoRandom();
+        RandomUtil lottoRandom = new RandomUtil();
         return new Lotto(lottoRandom.pickNumbers());
     }
 }

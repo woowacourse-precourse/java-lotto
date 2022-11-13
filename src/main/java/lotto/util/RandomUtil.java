@@ -1,16 +1,16 @@
-package lotto.model;
+package lotto.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.util.constants.LottoConstants;
 
-public class LottoRandom {
-    private List<Integer> lottoNumbers;
+public class RandomUtil {
+    private List<Integer> numbers;
 
     public List<Integer> pickNumbers() {
-        lottoNumbers = pickUniqueNumbers();
-        return sortLottoNumbers();
+        numbers = pickUniqueNumbers();
+        return sortNumbers();
     }
 
     public List<Integer> pickUniqueNumbers() {
@@ -18,7 +18,7 @@ public class LottoRandom {
                 LottoConstants.LOTTO_NUMBER_MAX, LottoConstants.LOTTO_TICKET_SIZE);
     }
 
-    public List<Integer> sortLottoNumbers() {
-        return lottoNumbers.stream().sorted().collect(Collectors.toList());
+    public List<Integer> sortNumbers() {
+        return numbers.stream().sorted().collect(Collectors.toList());
     }
 }

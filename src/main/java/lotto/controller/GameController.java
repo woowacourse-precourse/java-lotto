@@ -5,14 +5,12 @@ import lotto.model.Lotto;
 import lotto.model.LottoInput;
 import lotto.model.LottoMachine;
 import lotto.model.User;
-import lotto.model.WinningLotto;
 import lotto.view.GameMessage;
 
 public class GameController {
     private final GameMessage gameMessage = new GameMessage();
     private final LottoInput lottoInput = new LottoInput();
     private LottoMachine lottoMachine = new LottoMachine();
-    private WinningLotto winningLotto;
     private User user;
 
     public void run() {
@@ -24,12 +22,6 @@ public class GameController {
         int purchaseAmount = inputPurchaseAmount();
         createUserLottoTicket(purchaseAmount);
         printUserLottoTicketDetail();
-    }
-
-    public void assignWinningLotto() {
-        Lotto lotto = assignWinningNumber();
-        int bonusNumber = assignBonusNumber();
-        winningLotto = new WinningLotto(lotto, bonusNumber);
     }
 
     public int inputPurchaseAmount() {
@@ -46,6 +38,12 @@ public class GameController {
     public void printUserLottoTicketDetail() {
         gameMessage.printLottoTicketCount(user.getLottoTicketCount());
         gameMessage.printLottoTickets(user.getLottoTickets());
+    }
+
+    public void assignWinningLotto() {
+        Lotto lotto = assignWinningNumber();
+        int bonusNumber = assignBonusNumber();
+        lottoMachine.createWinningLotto(lotto, bonusNumber);
     }
 
     public Lotto assignWinningNumber() {
