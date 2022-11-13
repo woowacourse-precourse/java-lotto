@@ -19,6 +19,8 @@ public enum WinningRank {
             (duplicatedNumberCount, isContainBonusNumber) -> (duplicatedNumberCount == 6));
 
 
+    public static final String RANK_NOT_FOUND_ERROR_MESSAGE = "[ERROR] 잘못된 조건이 입력되었습니다.";
+
     private static final String DECIMAL_FORMAT = "###,###";
 
     private final int prizeMoney;
@@ -32,11 +34,12 @@ public enum WinningRank {
     }
 
 
-    public static WinningRank findByWinningCondition(int duplicatedNumberCount, boolean isContainBonusNumber) {
+    public static WinningRank findByWinningCondition(int duplicatedNumberCount, boolean isContainBonusNumber)
+            throws IllegalArgumentException {
         return Arrays.stream(WinningRank.values())
                 .filter(rank -> rank.isWin(duplicatedNumberCount, isContainBonusNumber))
                 .findAny()
-                .orElse(NONE_RANKED);
+                .orElseThrow(() -> new IllegalArgumentException(RANK_NOT_FOUND_ERROR_MESSAGE));
     }
 
     public boolean isWin(int duplicatedNumberCount, boolean isContainBonusNumber) {
