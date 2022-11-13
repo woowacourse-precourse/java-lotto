@@ -7,6 +7,9 @@ import lotto.service.LottoInputDataService;
 import lotto.service.UserInputDataService;
 
 public class LottoController {
+    private final UserInputDataService userInputDataService = new UserInputDataService();
+    private final LottoInputDataService lottoInputDataService = new LottoInputDataService();
+    private final LottoCalculateService lottoCalculateService = new LottoCalculateService();
 
     public void start() {
         User user = setUserData();
@@ -15,17 +18,14 @@ public class LottoController {
     }
 
     public User setUserData() {
-        UserInputDataService userInputDataService = new UserInputDataService();
         return userInputDataService.inputUserData();
     }
 
     public Lotto setLottoData() {
-        LottoInputDataService lottoInputDataService = new LottoInputDataService();
         return lottoInputDataService.inputLottoData();
     }
 
     public void calculateLottoWinning(User user, Lotto lotto) {
-        LottoCalculateService lottoCalculateService = new LottoCalculateService();
         lottoCalculateService.calculateWinning(user, lotto);
     }
 }
