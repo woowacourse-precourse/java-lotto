@@ -26,7 +26,7 @@ public class ExceptionHandling {
     }
 
     public void outRangeLottoNumber(String value){
-        if(!Pattern.matches(LOTTO_NUMBER_REGEX, value)){ // 로또 번호의 범위가 아니라면
+        if(!Pattern.matches(LOTTO_NUMBER_REGEX, value) || value.equals("")){ // 로또 번호의 범위가 아니라면
             ShowErrorMessage.showOutRangeLottoNumber();
             throw new IllegalArgumentException();
         }
