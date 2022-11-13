@@ -55,4 +55,16 @@ public class LottoController {
         int bonusNumber = Integer.parseInt(readLine());
         lottoData.setBonusNumber(bonusNumber);
     }
+
+    private int compareWinnerNumber(Lotto userNumberLotto, Lotto winnerNumberLotto){
+        List<Integer> userNumber = userNumberLotto.getLottoNumber();
+        List<Integer> winnerNumber = winnerNumberLotto.getLottoNumber();
+        int matchedNumber = 0;
+        for(int number : winnerNumber){
+            if(userNumber.contains(winnerNumber)){
+                matchedNumber += 1;
+            }
+        }
+        return matchedNumber;
+    }
 }
