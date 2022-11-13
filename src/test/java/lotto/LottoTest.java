@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,6 +37,14 @@ class LottoTest {
     void 당첨번호_생성_테스트() {
         Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
         assertThat(lotto.getLottoNumbers()).isEqualTo("[1, 2, 3, 4, 5, 6]");
+    }
+
+    @Test
+    void 보너스넘버_생성_테스트() {
+        LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
+        List<Integer> numbers = lottoNumberGenerator.generateLottoNumbers();
+        int bonusNumber = lottoNumberGenerator.generateBonusNumber(numbers);
+        assertThat(numbers.contains(bonusNumber)).isEqualTo(false);
     }
 
 
