@@ -30,7 +30,11 @@ public class LottoController {
         return lottoService.bonusNumber(prizeLotto);
     }
 
-    public void compareNumbers(List<Lotto> lottos, Lotto prizeLotto, int bonusNumber) {
-        lottoService.compareNumbers(lottos, prizeLotto, bonusNumber);
+    public Double compareNumbers(List<Lotto> lottos, Lotto prizeLotto, int bonusNumber) {
+        return lottoService.compareNumbers(lottos, prizeLotto, bonusNumber);
+    }
+
+    public Double getGrossEarnings(double benefit, int investmentAmount) {
+        return lottoService.getGrossEarnings(benefit, investmentAmount);
     }
 }

@@ -14,22 +14,21 @@ public class Application {
         final LottoController lottoController = new LottoController();
         final UserController userController = new UserController();
 
-        int userMoney = userController.getInputMoney();
-        int lottoCount = lottoController.getLottoCount(userMoney);
+        int investmentAmount = userController.getInputMoney();
+        int lottoCount = lottoController.getLottoCount(investmentAmount);
 
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             lottos.add(lottoController.getLotto());
         }
 
-        User user = new User(userMoney, lottos);
+        User user = new User(investmentAmount, lottos);
         Lotto prizeLotto = lottoController.getPrizeLotto();
         int bonusNumber = lottoController.getBonusNumber(prizeLotto);
 
         OutputView.printDividingLine();
-        lottoController.compareNumbers(user.getLottos(), prizeLotto, bonusNumber);
+        double benefit = lottoController.compareNumbers(user.getLottos(), prizeLotto, bonusNumber);
 
-        // 수익률 = 수익 / 로또 산 돈 * 100
-//        userController.getBenefit(benefit, userMoney);
+        OutputView.printGrossEarnings(lottoController.getGrossEarnings(benefit, investmentAmount));
     }
 }

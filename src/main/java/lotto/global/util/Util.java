@@ -6,6 +6,7 @@ import lotto.domain.lotto.domain.Lotto;
 import lotto.domain.lotto.verifier.InputNumberVerifier;
 import lotto.domain.view.OutputView;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Util {
@@ -52,6 +53,11 @@ public class Util {
         String bonusNumber = Console.readLine();
         InputNumberVerifier.bonusNumberVerifier(prizeLotto, bonusNumber);
         return Util.stringToInt(bonusNumber);
+    }
+
+    public static String decimalFormatting(Long value) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.##");
+        return decimalFormat.format(value);
     }
 
 }

@@ -1,19 +1,17 @@
 package lotto.domain.lotto.service;
 
 import lotto.domain.lotto.domain.Lotto;
-import lotto.domain.lotto.domain.type.PriceNumberCount;
 import lotto.domain.view.InputView;
 import lotto.domain.view.OutputView;
-import lotto.global.constant.UserServiceConstants;
 import lotto.global.util.Util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.global.constant.UserServiceConstants.*;
-
 public class LottoService {
+    private static final String MATCH_MESSAGE = "일치하는 볼 개수 %d개, 보너스 볼 개수 %d개";
 
     public int lottoCount(int inputMoney) {
         return inputMoney / 1000;
@@ -31,13 +29,27 @@ public class LottoService {
         return InputView.getInputBonusNumber(prizeLotto);
     }
 
-    public void compareNumbers(List<Lotto> lottos, Lotto prizeLotto, int bonusNumber) {
+    public Double compareNumbers(List<Lotto> lottos, Lotto prizeLotto, int bonusNumber) {
         Map<String, Integer> result = new HashMap<>();
         for (Lotto lotto : lottos) {
-            String key = getKeyForMap(lotto, prizeLotto, bonusNumber);
-            putValues(result, key);
+            int ball = 0;
+            int bonus = 0;
+            for (int i : lotto.getNumbers()) {
+                if (prizeLotto.getNumbers().contains(i)) {
+                    ball++;
+                }
+
+                if (i == bonusNumber) {
+                    bonus++;
+                }
+            }
+            putValues(result, getKey(ball, bonus));
         }
-        OutputView.printResult(result);
+        return OutputView.printResult(result);
+    }
+
+    private String getKey(int ball, int bonus) {
+        return String.format(MATCH_MESSAGE, ball, bonus);
     }
 
     private void putValues(Map<String, Integer> result, String key) {
@@ -47,53 +59,8 @@ public class LottoService {
         result.putIfAbsent(key, 1);
     }
 
-    private String getKeyForMap(Lotto lotto, Lotto prizeLotto, int bonusNumber) {
-        Map<String, Integer> howManyMatchNumber =
-                howManyMatchNumber(lotto.getNumbers(), prizeLotto.getNumbers(), bonusNumber);
-        return keyNameForResult(howManyMatchNumber.get(UserServiceConstants.PRIZE), howManyMatchNumber.get("bonus"));
+    // 수익률 = 수익 / 로또 산 돈 * 100
+    public Double getGrossEarnings(double benefit, double investmentAmount) {
+        return benefit / investmentAmount * 100;
     }
-
-    static int PRIZE = 0;
-    static int BONUS = 0;
-
-    private Map<String, Integer> howManyMatchNumber(List<Integer> lotto, List<Integer> prizeLotto, int bonusNumber) {
-        Map<String, Integer> countMatchNumbers = new HashMap<>();
-        for (int number : lotto) {
-            compareNumber(prizeLotto, number, bonusNumber);
-        }
-        countMatchNumbers.put(UserServiceConstants.PRIZE, PRIZE);
-        countMatchNumbers.put(UserServiceConstants.BONUS, BONUS);
-        return countMatchNumbers;
-    }
-
-    private void compareNumber(List<Integer> prizeLotto, int number, int bonusNumber) {
-        for (int prizeNumber : prizeLotto) {
-            if (number == prizeNumber) {
-                PRIZE++;
-                break;
-            }
-            if (number == bonusNumber) {
-                BONUS++;
-                break;
-            }
-        }
-    }
-
-    private String keyNameForResult(int prize, int bonus) {
-        PriceNumberCount[] priceNumberCounts = PriceNumberCount.values();
-        for (PriceNumberCount priceNumberCount : priceNumberCounts) {
-            if (isExistsNumber(priceNumberCount, prize, bonus) != null) {
-                return isExistsNumber(priceNumberCount, prize, bonus);
-            }
-        }
-        return NONE;
-    }
-
-    private String isExistsNumber(PriceNumberCount priceNumberCount, int prize, int bonus) {
-        if (prize == priceNumberCount.getPrize() && bonus == priceNumberCount.getBonus()) {
-            return priceNumberCount.getMessage();
-        }
-        return null;
-    }
-
 }
