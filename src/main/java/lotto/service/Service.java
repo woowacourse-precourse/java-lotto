@@ -9,6 +9,7 @@ import lotto.domain.Lotteries;
 import lotto.domain.Result;
 import lotto.domain.WinningNumbers;
 import lotto.utils.Converter;
+import lotto.view.OutputView;
 
 public class Service {
     Lotteries lotteries;
@@ -21,7 +22,7 @@ public class Service {
             int lottoPriceNumber = Converter.toIntFromString(lottoPrice);
             generateLotteries(lottoPriceNumber);
         } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
+            OutputView.printErrorMessage(exception.getMessage());
             throw new NoSuchElementException();
         }
     }
@@ -35,7 +36,7 @@ public class Service {
             List<Integer> winningNumberInputs = Converter.toIntList(winningNumberInput);
             winningNumbers = new WinningNumbers(winningNumberInputs);
         } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
+            OutputView.printErrorMessage(exception.getMessage());
             throw new IllegalArgumentException();
         }
     }
