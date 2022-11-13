@@ -30,15 +30,20 @@ public class Input {
         return inputWinningLotto;
     }
 
-    public void checkWinningLotto(String inputWinningLotto){
-
-    }
-
     public int setBonusNumber(){
-        return 0;
+        String inputBonusNumber=Console.readLine();
+        checkLotto(inputBonusNumber);
+        int bonusNumber=Integer.parseInt(inputBonusNumber)
+        return bonusNumber;
     }
 
     public void checkLotto(String inputWinningLotto){
 
     }
+
+    public void checkWinningLotto(String inputWinningLotto){
+
+    }
+
+
 }
