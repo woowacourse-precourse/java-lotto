@@ -1,12 +1,10 @@
 package lotto;
 
-import lotto.io.Input;
-import lotto.io.Print;
+import lotto.controller.GameController;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        Game game = new Game();
-        game.start();
+        GameController gameController = new GameController();
+        gameController.start();
     }
 }
