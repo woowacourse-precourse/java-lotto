@@ -1,6 +1,6 @@
 package lotto;
 
-public enum WinningStatistic {
+public enum LottoResult {
     RANK_ONE(6, false),
     RANK_TWO(5, true),
     RANK_THREE(5, false),
@@ -12,7 +12,7 @@ public enum WinningStatistic {
     private final int ranking;
     private final int cashPrize;
 
-    public static WinningStatistic getInstance(int numOfCorrectLottoNum,
+    public static LottoResult getInstance(int numOfCorrectLottoNum,
         boolean bonusLottoNumCorrect) {
         switch (numOfCorrectLottoNum) {
             case 3:
@@ -30,7 +30,7 @@ public enum WinningStatistic {
         return RANK_ZERO;
     }
 
-    WinningStatistic(int numOfCorrectLottoNum, boolean bonusLottoNumCorrect) {
+    LottoResult(int numOfCorrectLottoNum, boolean bonusLottoNumCorrect) {
         this.numOfCorrectLottoNum = numOfCorrectLottoNum;
         this.bonusLottoNumCorrect = bonusLottoNumCorrect;
         validate();
@@ -89,5 +89,9 @@ public enum WinningStatistic {
 
     public int getCashPrize() {
         return cashPrize;
+    }
+
+    public static int getResultTypeNumber() {
+        return values().length;
     }
 }
