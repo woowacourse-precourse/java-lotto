@@ -6,13 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoStore {
-    private static final LottoBuyer lottoBuyer = new LottoBuyer();
-    private static final LottoSeller lottoSeller = new LottoSeller();
-    private static final LottoDesignator lottoDesignator = new LottoDesignator();
-    private static final LottoResultJudge lottoResultJudge = new LottoResultJudge();
-    private static final LottoGenerator lottoGenerator = new LottoGenerator();
-    private static final ProfitCalculator profitCalculator = new ProfitCalculator();
-
     private static int money;
     private static int pages;
     private static List<Lotto> userLotto;
@@ -26,17 +19,17 @@ public class LottoStore {
     public void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         try {
-            this.money = lottoBuyer.getPay();
+            this.money = LottoBuyer.getInstance.getPay();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
         }
 
 
-        pages = lottoSeller.getSellPages(money);
+        pages = LottoSeller.getInstance.getSellPages(money);
         System.out.println("\n" + pages + "개를 구매했습니다.");
 
-        this.userLotto = lottoGenerator.issueLotto(pages);
+        this.userLotto = LottoGenerator.getInstance.issueLotto(pages);
         for(int userLottoIndex = 0; userLottoIndex<userLotto.size(); userLottoIndex++) {
             System.out.println(userLotto.get(userLottoIndex).getLotto());
         }
@@ -47,7 +40,7 @@ public class LottoStore {
         System.out.println("\n당첨 번호를 입력해 주세요.");
 
         try {
-            this.winningNumber = lottoDesignator.inputLotto();
+            this.winningNumber = LottoDesignator.getInstance.inputLotto();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
@@ -56,7 +49,7 @@ public class LottoStore {
         System.out.println("\n보너스 번호를 입력해 주세요.");
 
         try {
-            this.bonus = lottoDesignator.inputBonus();
+            this.bonus = LottoDesignator.getInstance.inputBonus();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
@@ -66,7 +59,7 @@ public class LottoStore {
     public void judgeLottoNumber() {
         this.lottoResult = new ArrayList<>();
         for(int i = 0; i<pages; i++) {
-            lottoResult.add(lottoResultJudge.judgeLotto(userLotto.get(i).getLotto(), winningNumber, bonus));
+            lottoResult.add(LottoResultJudge.getInstance.judgeLotto(userLotto.get(i).getLotto(), winningNumber, bonus));
         }
 
 
@@ -103,6 +96,6 @@ public class LottoStore {
         System.out.println(LottoResult.SECOND.getName() + count[1] + "개");
         System.out.println(LottoResult.FIRST.getName() + count[0] + "개");
 
-        System.out.println("총 수익률은 " + profitCalculator.profitPercent(money, profit) + "%입니다.");
+        System.out.println("총 수익률은 " + ProfitCalculator.getInstance.profitPercent(money, profit) + "%입니다.");
     }
 }

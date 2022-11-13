@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class LottoGenerator {
+    public static final LottoGenerator getInstance = new LottoGenerator();
     public List<Lotto> issueLotto(int pages) {
         List<Lotto> lotto = new ArrayList<>();
         for(int iterator = 0; iterator<pages; iterator++) {

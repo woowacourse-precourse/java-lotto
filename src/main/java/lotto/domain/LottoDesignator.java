@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LottoDesignator {
+    public static final LottoDesignator getInstance = new LottoDesignator();
     private static final String INT_REGEX = "^[0-9]*$";
     private static final int CIPHER = 6;
     private static final int RANGE = 45;

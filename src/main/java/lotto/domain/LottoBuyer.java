@@ -3,6 +3,8 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 public class LottoBuyer {
+
+    public static final LottoBuyer getInstance = new LottoBuyer();
     private static final String INT_REGEX = "^[0-9]*$";
     public int getPay() {
         String input = Console.readLine();

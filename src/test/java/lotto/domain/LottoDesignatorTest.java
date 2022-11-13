@@ -6,12 +6,11 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoDesignatorTest {
-    private static final LottoDesignator lottoDesignator = new LottoDesignator();
     @DisplayName("입력받은 로또번호가 숫자가 아닐 경우 예외가 발생한다.")
     @Test
     void 로또_번호가_숫자가_아닐_경우_예외() {
         String input = "1,2,3,a,4,5";
-        assertThatThrownBy(() -> lottoDesignator.checkOnlyNumber(input))
+        assertThatThrownBy(() -> LottoDesignator.getInstance.checkOnlyNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -19,7 +18,7 @@ public class LottoDesignatorTest {
     @Test
     void 로또_번호_자릿수_예외() {
         String input = "1,2,3,4,5";
-        assertThatThrownBy(() -> lottoDesignator.checkSixCipher(input))
+        assertThatThrownBy(() -> LottoDesignator.getInstance.checkSixCipher(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -27,7 +26,7 @@ public class LottoDesignatorTest {
     @Test
     void 로또_번호_중복_예외() {
         String input = "1,2,3,4,5,5";
-        assertThatThrownBy(() -> lottoDesignator.checkDuplication(input))
+        assertThatThrownBy(() -> LottoDesignator.getInstance.checkDuplication(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -35,7 +34,7 @@ public class LottoDesignatorTest {
     @Test
     void 로또_범위_예외() {
         String input = "1,2,3,4,5,61";
-        assertThatThrownBy(() -> lottoDesignator.checkRange(input))
+        assertThatThrownBy(() -> LottoDesignator.getInstance.checkRange(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -43,7 +42,7 @@ public class LottoDesignatorTest {
     @Test
     void 보너스_번호_숫자_아닐_경우_예외() {
         String input = "a";
-        assertThatThrownBy(() -> lottoDesignator.checkOnlyNumber(input))
+        assertThatThrownBy(() -> LottoDesignator.getInstance.checkOnlyNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -52,7 +51,7 @@ public class LottoDesignatorTest {
     void 보너스번호_중복_예외() {
         String bonus = "1";
         String lotto = "1,2,3,4,5,6";
-        assertThatThrownBy(() -> lottoDesignator.checkBonusDuplication(lotto, bonus))
+        assertThatThrownBy(() -> LottoDesignator.getInstance.checkBonusDuplication(lotto, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -60,7 +59,7 @@ public class LottoDesignatorTest {
     @Test
     void 보너스번호_범위_예외() {
         String bonus = "70";
-        assertThatThrownBy(() -> lottoDesignator.checkRange(bonus))
+        assertThatThrownBy(() -> LottoDesignator.getInstance.checkRange(bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
