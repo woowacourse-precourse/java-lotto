@@ -19,8 +19,7 @@ class UserLottoInfoTest {
         String lottoPrice = "abc01";
         assertThatThrownBy(() -> {
             userLottoInfo = new UserLottoInfo(lottoPrice);
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("잘못된 형식의 금액을 입력하셨습니다.");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -29,8 +28,7 @@ class UserLottoInfoTest {
     void lottoPriceNotMultiplesof1000(String lottoPrice) {
         assertThatThrownBy(() -> {
             userLottoInfo = new UserLottoInfo(lottoPrice);
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("잘못된 형식의 금액을 입력하셨습니다.");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
