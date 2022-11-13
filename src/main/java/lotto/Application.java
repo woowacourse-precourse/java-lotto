@@ -20,6 +20,7 @@ public class Application {
 
         int prizeMoney = lotto.getPrizeMoney(playerLotto, bonusNumber);
         lotto.showWinningStatistics();
+        Profit.showRate(purchaseAmount, prizeMoney);
     }
 
     private static int askPurchaseAmount() {

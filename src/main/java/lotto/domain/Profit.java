@@ -1,7 +1,13 @@
 package lotto.domain;
 
 public class Profit {
-    private int calculateRate(int purchaseAmount, int prizeMoney) {
-        return (prizeMoney / purchaseAmount) * 100;
+    private static double calculateRate(int purchaseAmount, int prizeMoney) {
+        double rate = ((double) prizeMoney / (double) purchaseAmount) * 100;
+        return Math.round(rate * 10) / 10.0;
+    }
+
+    public static void showRate(int purchaseAmount, int prizeMoney) {
+        String profitRate = String.valueOf(calculateRate(purchaseAmount, prizeMoney));
+        System.out.println("총 수익률은 " + profitRate + "%입니다.");
     }
 }
