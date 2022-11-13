@@ -11,7 +11,7 @@ public class LottoManager {
 
     private final List<Lotto> lottos;
     private final int buyingMoney;
-    private final Map<Rank,Integer> ranks;
+    private final Map<Rank, Integer> ranks;
 
     public LottoManager(int buyingMoney) {
         this.buyingMoney = buyingMoney;
@@ -22,18 +22,18 @@ public class LottoManager {
 
         ranks = new HashMap<>();
         Rank[] allRanks = Rank.values();
-        for (Rank rank: allRanks) {
-            ranks.put(rank,0);
+        for (Rank rank : allRanks) {
+            ranks.put(rank, 0);
         }
     }
-    
+
     public void calculateTotalRanks(Lotto winningLotto, int winningBonus) {
-        for (Lotto lotto: this.lottos) {
+        for (Lotto lotto : this.lottos) {
             int matchCount = calculateMatchCount(winningLotto, lotto);
             boolean matchBonus = calculateMatchBonus(winningBonus, lotto);
-            
+
             Rank rank = Rank.getRank(matchCount, matchBonus);
-            this.ranks.put(rank,this.ranks.get(rank) + 1);
+            this.ranks.put(rank, this.ranks.get(rank) + 1);
         }
     }
 
@@ -52,12 +52,24 @@ public class LottoManager {
 
     private boolean calculateMatchBonus(int winningBonus, Lotto lotto) {
         List<Integer> numbers = lotto.getNumbers();
-        int matchCount = 0;
         return numbers.contains(winningBonus);
     }
 
     private Lotto generateRandomLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
+    }
+
+    private int calculateTotalReward() {
+        Rank[] allRanks = Rank.values();
+        int totalReward = 0;
+        for (Rank rank : allRanks) {
+            totalReward += ranks.get(rank) * rank.getWinningReward();
+        }
+        return totalReward;
+    }
+
+    public float calculateEarningRate() {
+        return (float) calculateTotalReward() / (float) buyingMoney;
     }
 }
