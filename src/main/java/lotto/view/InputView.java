@@ -23,6 +23,13 @@ public class InputView {
         return new Lotto(toLottoNumbers(toNumbers(line.split(","))));
     }
 
+    public static LottoNumber inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = toNumber(Console.readLine());
+        System.out.println();
+        return new LottoNumber(bonusNumber);
+    }
+
     private static int toNumber(String line) {
         try {
             return Integer.parseInt(line);

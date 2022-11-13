@@ -3,6 +3,7 @@ package lotto.controller;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoIssueMachine;
+import lotto.domain.LottoNumber;
 import lotto.domain.Money;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -13,5 +14,6 @@ public class LottoController {
         List<Lotto> lottos = LottoIssueMachine.issue(money.calculateQuantity());
         OutputView.printLottos(lottos);
         Lotto winningNumbers = InputView.inputWinningNumbers();
+        LottoNumber bonusNumber = InputView.inputBonusNumber();
     }
 }
