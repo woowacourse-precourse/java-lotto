@@ -33,12 +33,12 @@ public class Lotto {
                 count++;
             }
         }
-
         return count;
     }
 
     private int getCorrectBonusCount(int bonusNumber) {
         int count = 0;
+
         if (numbers.contains(bonusNumber)) {
             count++;
         }
