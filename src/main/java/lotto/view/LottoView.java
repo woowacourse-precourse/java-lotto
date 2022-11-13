@@ -13,7 +13,7 @@ public class LottoView {
         }
     }
 
-    static void printResult() {
+    public static void printResult() {
         System.out.println();
     }
 }

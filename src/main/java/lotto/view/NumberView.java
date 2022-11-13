@@ -9,6 +9,7 @@ public class NumberView {
 
     public static List<Integer> getWinNumbers() {
         List<Integer> winNumbers;
+        System.out.println();
         System.out.println("당첨 번호를 입력해 주세요. ex) 1,2,3,4,5,6");
         winNumbers = getWinNumbersFormat(readLine());
         checkWinNumbers(winNumbers);
@@ -44,6 +45,7 @@ public class NumberView {
 
     public static int getBonusNumber() {
         int bonusNumber;
+        System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
         bonusNumber = checkBonusNumber(readLine());
 

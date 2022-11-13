@@ -38,14 +38,16 @@
 
   - Judgment
   
-  - [ ] 몇개의 숫자가 같은지 카운트 Judgment#countMatch()
-  - [ ] 보너스 숫자가 포함되는지 확인 Judgment#checkBonus()
+  - [x] 몇개의 숫자가 같은지 카운트 Judgment#countCorrect()
+  - [x] 보너스 숫자가 포함되는지 확인 Judgment#checkBonus()
   
   - Statistics
   
-  - [ ] 로또 결과를 기록 Statistics#record()
-  - [ ] 로또 결과가 기록된 map 반환 Statistics#getMap()
-  - [ ] 수익률 계산 Statistics#getReturn()
+  - [x] 로또 결과를 기록 Statistics#record()
+  - [x] 로또 결과가 기록된 map 반환 Statistics#getMap()
+  - [ ] 수익률 계산 Statistics#getYield()
+
+  - Result
 
 ## 예외 상황
 - 구입금액이 숫자가 아님
