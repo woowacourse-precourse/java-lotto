@@ -14,6 +14,7 @@ public class Game {
     private List<Lotto> lottos = new ArrayList<>();
     private Lotto winningLotto;
     private Integer bonus = 0;
+
     public Game(){
 
     }
@@ -52,6 +53,7 @@ public class Game {
         validateBonusByDistinction(bonus);
         this.bonus = bonus;
     }
+
 
     private void validateBudget(Integer budget){
         if (budget % price != 0) throw new IllegalArgumentException();
