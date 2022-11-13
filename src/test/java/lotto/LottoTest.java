@@ -73,4 +73,23 @@ class LottoTest {
 
         assertThat(lotto1.bonusMatch(lotto2)).isTrue();
     }
+
+    @DisplayName("보너스 번호가 기존의 로또 번호와 중복되면 예외가 발생한다.")
+    @Test
+    void ValidateLottoSize() {
+        Lotto lotto = new Lotto(List.of(1, 7, 11, 10, 8, 9));
+
+        assertThatThrownBy(() -> lotto.setBonusNumber(1))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 세팅되어 있지 않은 상태로 bonusMatch를 확인하면 예외가 발생한다.")
+    @Test
+    void ValidateLottoBonusExist() {
+        Lotto lotto1 = new Lotto(List.of(1, 7, 11, 10, 8, 2));
+        Lotto lotto2 = new Lotto(List.of(1, 2, 8, 9, 15, 7));
+
+        assertThatThrownBy(() -> lotto1.bonusMatch(lotto2))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
