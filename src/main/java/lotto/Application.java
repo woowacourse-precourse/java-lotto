@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -11,17 +10,19 @@ public class Application {
     public static void main(String[] args) {
     	int count = getCount();
     	List<Lotto> lottoNumbers = createLottoNumbers(count);
-    	String WinningNumber = getFromUser();
-    	String bonusNumber = getFromUser();
+    	String WinningNumber = getWinningNumber();
+    	String bonusNumber = getBonusNumber();
     	
     	createLottoNumbers(count);
     	printLottoNumbers(count,lottoNumbers);
+    	printWinningResult(WinningNumber,bonusNumber,lottoNumbers);
     	
     	return;
         // TODO: 프로그램 구현
     }
     
     public static int getCount() {
+    	System.out.println("구입금액을 입력해 주세요.");
     	String input = Console.readLine();
     	int result = Integer.parseInt(input);
     	
@@ -29,6 +30,16 @@ public class Application {
     		throw new IllegalArgumentException("[ERROR]");
     		
     	return result/1000;
+    }
+    
+    public static String getWinningNumber() {
+    	System.out.println("당첨 번호를 입력해 주세요.");
+    	return Console.readLine();
+    }
+    
+    public static String getBonusNumber() {
+    	System.out.println("보너스 번호를 입력해 주세요.");
+    	return Console.readLine();
     }
     
     public static String getFromUser() {
@@ -52,4 +63,14 @@ public class Application {
     	for(Lotto lotto:lottoNumbers)
     		lotto.printNumbers();
     }    
+    
+    public static void printWinningResult(String WinningNumber,String bonusNumber, List<Lotto> lottoNumbers) {
+    	for(Lotto lotto:lottoNumbers) {
+    		int a = comparison(WinningNumber,bonusNumber, lotto);
+    	}
+    }
+    
+    public static int comparison(String WinningNumber,String bonusNumber, Lotto lottoNumber) {
+    	return 1;
+    }
 }
