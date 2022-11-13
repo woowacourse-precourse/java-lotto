@@ -12,12 +12,12 @@ public enum Rank {
 	firstRank(2_000_000_000, RankConst.FIRST_RANK_RESULT);
 
 	private final Integer price;
-	private final String priceWon;
+	private final String rankCountDescription;
 	private Integer count;
 
-	Rank(int price, String priceWon) {
+	Rank(int price, String rankCountDescription) {
 		this.price = price;
-		this.priceWon = priceWon;
+		this.rankCountDescription = rankCountDescription;
 		this.count = 0;
 	}
 
@@ -33,7 +33,7 @@ public enum Rank {
 	}
 
 	public String getUserStatisticsResult() {
-		return this.priceWon + this.count + RankConst.COUNT;
+		return this.rankCountDescription + this.count + RankConst.COUNT;
 	}
 
 }
