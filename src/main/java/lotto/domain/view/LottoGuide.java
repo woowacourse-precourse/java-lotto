@@ -3,8 +3,10 @@ package lotto.domain.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import lotto.constants.GuideSentences;
+import lotto.constants.RankingInformation;
 import lotto.domain.model.Lotto;
 
 public class LottoGuide {
@@ -45,5 +47,20 @@ public class LottoGuide {
         int bonusNumber = Integer.parseInt(Console.readLine());
 
         return bonusNumber;
+    }
+
+    public void informWinningStatistics(Map<RankingInformation, Integer> statistics) {
+        System.out.println(GuideSentences.OUTPUT_WINNING_STATISTICS.getSentence());
+        String countUnit = "개";
+
+        for (RankingInformation oneRank : RankingInformation.values()) {
+            String rankResult =
+                    oneRank.getStatisticSentence() + statistics.get(oneRank).toString() + countUnit;
+            System.out.println(rankResult);
+        }
+    }
+
+    public void informRateOfReturn(double rateOfReturn) {
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", rateOfReturn);
     }
 }
