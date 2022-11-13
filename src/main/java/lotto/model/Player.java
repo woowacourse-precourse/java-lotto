@@ -2,7 +2,7 @@ package lotto.model;
 
 public class Player {
     private int purchaseAmount;
-    private int LottoCount;
+    private int lottoCount;
 
     public void setPurchaseAmount(int purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
@@ -12,11 +12,11 @@ public class Player {
         return this.purchaseAmount;
     }
 
-    public void setLottoCount(int LottoCount) {
-        this.LottoCount = LottoCount;
+    public void setLottoCount(int lottoCount) {
+        this.lottoCount = lottoCount;
     }
 
     public int getLottoCount() {
-        return this.LottoCount;
+        return this.lottoCount;
     }
 }
