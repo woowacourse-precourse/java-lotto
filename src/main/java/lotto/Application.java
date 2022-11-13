@@ -4,6 +4,7 @@ import static lotto.Input.getBonusNumber;
 import static lotto.Input.getPurchasePrice;
 import static lotto.Input.getWinningNumbers;
 import static lotto.Output.printLotteries;
+import static lotto.Output.printWinningStatistics;
 
 import java.util.List;
 
@@ -31,9 +32,7 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 보너스번호가 당첨번호와 중복됩니다.");
         }
 
-
-
-//        printWinningStatistics(lotteries, winningNumbers);
+        printWinningStatistics(lotteries, winningNumbers, bonusNumber);
     }
 
 }
