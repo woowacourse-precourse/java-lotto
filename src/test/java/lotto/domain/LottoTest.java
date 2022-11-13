@@ -27,6 +27,7 @@ class LottoTest {
     @Test
     void createLottoByIncorrectNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(100, 2, 3, 4, 5, 6)))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1부터 45 사이의 숫자여야 합니다.");
     }
 }
