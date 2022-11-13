@@ -21,7 +21,7 @@ public class LottoInput {
     }
     
     private static void validatePurchaseAmount(Integer amount) {
-        if (amount % LottoMachineEnum.LOTTO_PRICE.getValue() != 0) {
+        if (amount == 0 || amount % LottoMachineEnum.LOTTO_PRICE.getValue() != 0) {
             throw new IllegalArgumentException(purchaseAmountExceptionMessage);
         }
     }
