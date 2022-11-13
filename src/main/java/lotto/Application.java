@@ -44,6 +44,7 @@ public class Application {
             }
 
             winningStatisticsMaker(lottoArray[i], userInputBonusNumber, correctCount, countTmp);
+            winningStatisticPrinter(correctCount);
             yieldCalculation(correctCount, purchasedValue);
         }
     }
@@ -60,17 +61,27 @@ public class Application {
         else if (countTmp == 5) {
             for (int i = 0; i < 6; i++){
                 if (lottoArray[i] == userInputBonusNumber){
-                    correctCount[3]--;
-                    correctCount[4]++;
+                    correctCount[2]--;
+                    correctCount[3]++;
                 }
             }
 
-            correctCount[3]++;
+            correctCount[2]++;
         }
 
         else if (countTmp == 6) {
-            correctCount[5]++;
+            correctCount[4]++;
         }
+    }
+
+    public static void winningStatisticPrinter(int[] correctCount){
+        System.out.println("당첨 통계\n---");
+
+        System.out.println("3개 일치 (5,000원) - " +correctCount[0]+ "개");
+        System.out.println("4개 일치 (50,000원) - " +correctCount[1]+ "개");
+        System.out.println("5개 일치 (1,500,000원) - " +correctCount[2]+ "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " +correctCount[3]+ "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " +correctCount[4]+ "개");
     }
 
     public static void yieldCalculation(int[] correctCount, int purchasedValue){
