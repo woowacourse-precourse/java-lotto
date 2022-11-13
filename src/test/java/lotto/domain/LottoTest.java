@@ -39,4 +39,18 @@ class LottoTest {
         assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6))
                 .getNumbers()).contains(1, 2, 3, 4, 5, 6);
     }
+
+    @DisplayName("로또 번호가 45를 넘으면 예외가 발생한다.")
+    @Test
+    void createLottoByOverScope() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 47)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호가 1미만이면 예외가 발생한다.")
+    @Test
+    void createLottoByUnderScope() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 0)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
