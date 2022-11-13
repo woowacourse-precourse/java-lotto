@@ -14,7 +14,7 @@ public class Config {
     private static final String RANGE_NUMBER_ERROR_MESSAGE = "범위를 표현한 설정값 중에 올바르지 않은 것이 존재합니다.";
     private static final String NATURAL_NUMBER_ERROR_MESSAGE = "자연수 입력이 필요한 설정값 중에 올바르지 않은 것이 존재합니다.";
     private static final String ZERO_OR_NATURAL_NUMBER_ERROR_MESSAGE = "0혹은 자연수 입력이 필요한 설정값 중에 올바르지 않은 것이 존재합니다.";
-    private static final String LONGER_LOTTO_THAN_BONUS = "로또 길이보다 보너스 번호 길이가 클 수 없습니다.";
+    private static final String ILLEGAL_LOTTO_ERROR_MESSAGE = "불법 로또 프로그램을 감지했습니다.";
 
     private Config() {
     }
@@ -44,6 +44,10 @@ public class Config {
     }
 
     private static void checkIllegalLotto() {
+        if (!(isLongerLottoThanBonus() && isLongerTotalThenNumber() && isRankAmount())) {
+            Logger.log(ILLEGAL_LOTTO_ERROR_MESSAGE, LogType.ERROR);
+            throw new IllegalArgumentException();
+        }
     }
 
     private static boolean isLongerLottoThanBonus() {
@@ -55,8 +59,8 @@ public class Config {
     }
 
     private static boolean isRankAmount() {
-        for(int index = 0; index < WINNING_RANK_AMOUNT.length - 1; index++){
-            if(WINNING_RANK_AMOUNT[index] <= WINNING_RANK_AMOUNT[index + 1]){
+        for (int index = 0; index < WINNING_RANK_AMOUNT.length - 1; index++) {
+            if (WINNING_RANK_AMOUNT[index] <= WINNING_RANK_AMOUNT[index + 1]) {
                 return false;
             }
         }
