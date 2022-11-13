@@ -2,13 +2,28 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EnterWinningNumber {
     public static final int LOTTO_SIZE = 6;
 
-    private String getWinningNumberInput() {
-        return Console.readLine();
+    private List<Integer> getWinningNumberInput() {
+        return convert(Console.readLine());
+    }
+
+    private List<Integer> convert(String winningNumber) {
+        List<Integer> winninLotto = new ArrayList<>();
+        String[] winningSplitNumber = winningNumber.split(",");
+
+        for (String numberString : winningSplitNumber) {
+            int number = inputIsNumber(numberString);
+            isEachNumberBetween1AND45(number);
+            winninLotto.add(number);
+        }
+
+        lottoSizeValidation(winninLotto);
+        return winninLotto;
     }
 
     private int inputIsNumber(String userInput) {
