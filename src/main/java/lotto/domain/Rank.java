@@ -21,18 +21,18 @@ public enum Rank {
 		this.count = 0;
 	}
 
-	public static double findYield(Integer buyPrice) {
+	public static Double findYield(Integer buyPrice) {
 		double sum = Arrays.stream(Rank.values())
 			.mapToDouble(i -> i.price * i.count)
 			.reduce(0, (total, y) -> total + y);
-		return Math.round(sum * 1000d / (double)buyPrice) / 10d;
+		return Double.valueOf(Math.round(sum * 1000d / (double)buyPrice) / 10d);
 	}
 
 	public void updateCount(Integer number) {
 		this.count += number;
 	}
 
-	public String getUserStatisticsResult() {
+	public String userStatisticsResultToString() {
 		return this.rankCountDescription + this.count + RankConst.COUNT;
 	}
 

@@ -40,7 +40,7 @@ class RankTest {
 		Rank.firstRank.updateCount(addNumber);
 
 		//when
-		String userStatisticsResult = Rank.firstRank.getUserStatisticsResult();
+		String userStatisticsResult = Rank.firstRank.userStatisticsResultToString();
 
 		//then
 		assertThat(userStatisticsResult).isEqualTo(RankConst.FIRST_RANK_RESULT + addNumber + RankConst.COUNT);
@@ -53,7 +53,7 @@ class RankTest {
 		Rank.firstRank.updateCount(1);
 
 		//when
-		String userStatisticsResult = Rank.firstRank.getUserStatisticsResult();
+		String userStatisticsResult = Rank.firstRank.userStatisticsResultToString();
 
 		//then
 		assertThat(userStatisticsResult).isEqualTo(RankConst.FIRST_RANK_RESULT + 1 + RankConst.COUNT);

@@ -46,8 +46,8 @@ class StatisticsServiceTest {
 
 		//when
 		statisticsService.updateStatistics(userLottoDto, winnerNumberDto);
-		String userFirstRankStatisticsResult = Rank.firstRank.getUserStatisticsResult();
-		String userSecondRankStatisticsResult = Rank.secondRank.getUserStatisticsResult();
+		String userFirstRankStatisticsResult = Rank.firstRank.userStatisticsResultToString();
+		String userSecondRankStatisticsResult = Rank.secondRank.userStatisticsResultToString();
 
 		//then
 		Assertions.assertThat(userFirstRankStatisticsResult)

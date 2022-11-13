@@ -19,11 +19,11 @@ public class OutputView {
 		System.out.println(lottoCount + ViewConst.LOTTO_COUNT_OUTPUT);
 	}
 
-	public void printUserStatistics(Integer buyPrice) {
+	public void printUserStatistics(Double yield) {
 		System.out.println(ViewConst.STATISTICS_OUTPUT);
 		Arrays.stream(Rank.values())
-			.forEach(i -> System.out.println(i.getUserStatisticsResult()));
-		System.out.println("총 수익률은 " + Rank.findYield(buyPrice) + "%입니다.");
+			.forEach(i -> System.out.println(i.userStatisticsResultToString()));
+		System.out.println("총 수익률은 " + yield + "%입니다.");
 	}
 
 	public void printError(String errorMessage) {
