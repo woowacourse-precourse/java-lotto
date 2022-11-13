@@ -1,13 +1,10 @@
 package lotto.console;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.console.Output;
 import lotto.domain.chart.ErrorPrint;
 import lotto.domain.chart.NumberChart;
 
 public class InputMoney {
-
-    Output output = new Output();
 
     public int getAndVerifyMoney() {
         String purchaseMoney = getPurchaseMoney();
