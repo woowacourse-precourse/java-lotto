@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -64,6 +66,17 @@ class ApplicationTest extends NsTest {
 
         assertThatThrownBy(() -> application.createLotto(money))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또를 생성한 번호가 중복이 있는지 확인한다.")
+    @Test
+    void CreateLottoByDistinctNumber() {
+        Application application = new Application();
+        int money = 1000;
+        List<Integer> number = application.createLotto(money);
+        Set<Integer> result = new HashSet<>(number);
+
+        assertThat(number.size()).isEqualTo(result.size());
     }
 
     @Override
