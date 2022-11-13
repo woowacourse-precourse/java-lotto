@@ -1,13 +1,33 @@
 package lotto.domain;
 
+import static lotto.constant.WinningResult.RANK_1;
+import static lotto.constant.WinningResult.RANK_2;
+import static lotto.constant.WinningResult.RANK_3;
+import static lotto.constant.WinningResult.RANK_4;
+import static lotto.constant.WinningResult.RANK_5;
+import static lotto.constant.WinningResult.RANK_NONE;
+
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import lotto.constant.WinningResult;
 
 public class WinningCalculator {
     private List<Integer> numbers;
     private int bonusNumber;
+    private Map<Integer, WinningResult> winningTable = new HashMap<>();
+
+    public WinningCalculator() {
+        this.winningTable.put(0, RANK_NONE);
+        this.winningTable.put(1, RANK_NONE);
+        this.winningTable.put(2, RANK_NONE);
+        this.winningTable.put(3, RANK_5);
+        this.winningTable.put(4, RANK_4);
+        this.winningTable.put(5, RANK_3);
+        this.winningTable.put(6, RANK_1);
+    }
 
     public void setWinningNumbers(String numbersRaw) {
         List<Integer> winningNumbers = convertStringToIntegerList(numbersRaw);
@@ -48,5 +68,14 @@ public class WinningCalculator {
         List<Integer> numbersOfLotto = lotto.getNumbers();
         boolean isContainBonusNumber = numbersOfLotto.contains(this.bonusNumber);
         return isContainBonusNumber;
+    }
+
+    private WinningResult getWinningResultByCount(int countContainNumbers, boolean isContainBonusNumber) {
+        WinningResult winningResult = this.winningTable.get(countContainNumbers);
+        boolean isClass2 = (winningResult == RANK_3) && isContainBonusNumber;
+        if (isClass2) {
+            winningResult = RANK_2;
+        }
+        return winningResult;
     }
 }
