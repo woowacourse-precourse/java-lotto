@@ -2,6 +2,8 @@ package lotto.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import lotto.util.constants.LottoConstants;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,6 +61,29 @@ class LottoMachineTest {
             }
         }
 
+    }
+
+    @Nested
+    @DisplayName("당첨 결과를 계산한다.")
+    class ComputeWinningResultsTest {
+        private Lotto winningLotto;
+        private List<Lotto> userLottoTickets;
+
+
+        @BeforeEach
+        void setUp() {
+            winningLotto = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
+            userLottoTickets = new ArrayList<>();
+            userLottoTickets.add(new Lotto(new ArrayList<>(Arrays.asList(8, 21, 23, 41, 42, 43))));
+            userLottoTickets.add(new Lotto(new ArrayList<>(Arrays.asList(1, 3, 5, 14, 22, 45))));
+        }
+
+        @Test
+        void 일치하는_숫자_갯수_계산_테스트() {
+            Lotto userLotto = userLottoTickets.get(1);
+            int count = lottoMachine.compareLottoNumber(userLotto.getNumbers(), winningLotto.getNumbers());
+            assertThat(count).isEqualTo(3);
+        }
     }
 
 }
