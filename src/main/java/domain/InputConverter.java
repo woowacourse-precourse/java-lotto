@@ -1,8 +1,7 @@
 package domain;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static util.Constant.*;
 
@@ -15,9 +14,12 @@ public class InputConverter {
 
     public static List<Integer> getWinningNumbers(String lottoNumbersInput) {
         String[] numbers = lottoNumbersInput.split(",");
-        return Arrays.stream(numbers)
-                .map(InputConverter::convertInput)
-                .collect(Collectors.toList());
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (String number : numbers) {
+            isValidInRangeNumber(number);
+            winningNumbers.add(InputConverter.getNumber(number));
+        }
+        return winningNumbers;
     }
 
     public static int getNumber(String number) {
@@ -52,13 +54,13 @@ public class InputConverter {
         try {
             bonusNumber = Integer.parseInt(numberInput);
         } catch (NumberFormatException e) {
-            String errorMessage = "[ERROR] 보너스 숫자가 숫자가 아닌 값으로 입력되었습니다.";
+            String errorMessage = "[ERROR] 숫자가 아닌 값으로 입력되었습니다.";
             System.out.println(errorMessage);
             throw new IllegalArgumentException(errorMessage);
         }
 
         if (bonusNumber < MINIMUM_NUMBER || bonusNumber > MAXIMUM_NUMBER) {
-            String errorMessage = "[ERROR] 보너스 숫자가 숫자가 아닌 값으로 입력되었습니다.";
+            String errorMessage = "[ERROR] 로또 번호는 1~45 범위의 숫자여야 합니다.";
             System.out.println(errorMessage);
             throw new IllegalArgumentException(errorMessage);
         }
