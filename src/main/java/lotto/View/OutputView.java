@@ -30,7 +30,12 @@ public class OutputView {
     }
 
     public static void printEarningRate(float earningRate) {
-        String earning = String.format("%.2f", earningRate);
-        System.out.printf("총 수익률은 %s%%입니다.", earning);
+        float earning = getFloatToFirstDecimalPlace(earningRate);
+        System.out.printf("총 수익률은 %.1f%%입니다.", earning);
+    }
+
+    public static float getFloatToFirstDecimalPlace(float decimal) {
+        final float FIRST_PLACE = 10;
+        return (float) Math.round(decimal * FIRST_PLACE) / FIRST_PLACE;
     }
 }
