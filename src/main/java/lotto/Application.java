@@ -13,7 +13,7 @@ public class Application {
         int[] statistics = new int[5];
         double profit = 0;
         List<Integer> win_numbers;
-        List<List<Integer>> buy_numbers = new ArrayList<>();
+        List<Lotto> buy_numbers = new ArrayList<>();
 
         System.out.println("구입금액을 입력해 주세요.");
 
@@ -21,6 +21,10 @@ public class Application {
         num = money / 1000;
 
         System.out.println("\n" + num + "개를 구매했습니다.");
+
+        for (int i = 0; i < num; i++) {
+            buy_numbers.add(new Lotto(Lotto.buy_lotto()));
+        }
 
         System.out.println("\n당첨 번호를 입력해 주세요.");
 
