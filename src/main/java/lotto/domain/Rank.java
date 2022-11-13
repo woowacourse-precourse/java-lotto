@@ -6,7 +6,7 @@ public enum Rank {
     FIRST(6, 2_000_000_000, false),
     SECOND(5, 30_000_000, true),
     THIRD(5, 1_500_000, false),
-    FOURTH(3, 50_000,false),
+    FOURTH(4, 50_000,false),
     FIFTH(3, 5_000, false),
     NONE(0, 0, false);
 
@@ -22,9 +22,20 @@ public enum Rank {
 
     public static Rank valueOf(int matchCount, boolean hitBonusNumber) {
         return Arrays.stream(Rank.values())
-                .filter(rank -> rank.matchCount == matchCount)
-                .filter(rank -> rank.hitBonusNumber == hitBonusNumber)
+                .filter(rank -> rank.matchCount == matchCount && rank.hitBonusNumber == hitBonusNumber)
                 .findFirst()
                 .orElse(NONE);
+    }
+
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public int getReward() {
+        return reward;
+    }
+
+    public boolean isHitBonusNumber() {
+        return hitBonusNumber;
     }
 }
