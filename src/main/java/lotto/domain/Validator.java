@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 import lotto.Constants.ERROR;
 import lotto.Constants.REGEX;
-import lotto.domain.Lotto;
 
 public class Validator {
     public static void lottoFormat(List<Integer> numbers) {

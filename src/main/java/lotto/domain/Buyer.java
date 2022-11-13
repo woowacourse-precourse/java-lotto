@@ -52,7 +52,6 @@ public class Buyer {
     }
 
     public void setTotalWinningPrize(long totalWinningPrize) {
-
         this.totalWinningPrize += totalWinningPrize;
     }
 
