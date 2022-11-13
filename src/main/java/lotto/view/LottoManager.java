@@ -9,11 +9,19 @@ public class LottoManager {
 
     public int inputPurchaseMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        purchaseMoney = Integer.parseInt(Console.readLine());
+        String money = Console.readLine();
+        checkNumber(money);
+        purchaseMoney = Integer.parseInt(money);
         if (purchaseMoney % 1000 > 0) {
             throw new IllegalArgumentException();
         }
         return purchaseMoney / 1000;
+    }
+
+    public void checkNumber(String number) {
+        if (!number.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("숫자가 아닌 문자 입력");
+        }
     }
 
     public void printLottoCount(int lottoCount) {
