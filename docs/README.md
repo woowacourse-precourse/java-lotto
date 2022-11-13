@@ -12,6 +12,7 @@
   - <span style ="color:red">[ERROR]</span> 1 ~ 45 의 범위가 아니다.
   - <span style ="color:red">[ERROR]</span> 중복된 숫자를 입력하였다.
 - [ ] 보너스 번호를 입력 받는다.
+  - <span style ="color:red">[ERROR]</span>  1 ~ 45 의 범위가 아니다.
   - <span style ="color:red">[ERROR]</span> 당첨 번호와 중복된 숫자를 입력하였다.
 - [ ] 발행 번호와 당첨 번호를 비교한다.
   - 5개 번호가 일치할 때 보너스 번호를 비교한다.
