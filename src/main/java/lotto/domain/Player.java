@@ -6,6 +6,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.util.number.LottoNumberConst;
+import lotto.util.ranking.LottoRanking;
 
 public class Player {
 
@@ -37,8 +38,11 @@ public class Player {
         return myLottos;
     }
 
-    public void calculateLottoRanking(LottoResult lottoResult, Lotto winningLotto, LottoNumber bonusNumber) {
-        myLottos.forEach(lotto -> lottoResult.addRankingCount(winningLotto.calculateLottoGrade(lotto, bonusNumber)));
+    public List<LottoRanking> calculateLottoRanking(Lotto winningLotto, LottoNumber bonusNumber) {
+        final List<LottoRanking> rankings = new ArrayList<>();
+
+        myLottos.forEach(lotto -> rankings.add(winningLotto.calculateLottoGrade(lotto, bonusNumber)));
+        return rankings;
     }
 
     public BigDecimal calculateRevenuePercent(BigDecimal totalReward) {
@@ -47,11 +51,10 @@ public class Player {
 
     @Override
     public String toString() {
-        StringBuilder playerMessage = new StringBuilder();
+        StringBuilder playerMessage = new StringBuilder(LINE_FEED);
 
         playerMessage
-                .append(String.format(
-                        LOTTO_COUNT_MESSAGE_FORMAT, lottoPurchaseAmount.calculatePurchaseLottoAmount()))
+                .append(String.format(LOTTO_COUNT_MESSAGE_FORMAT, lottoPurchaseAmount.calculatePurchaseLottoAmount()))
                 .append(LINE_FEED);
 
         myLottos.forEach(lotto -> playerMessage.append(lotto.toString()).append(LINE_FEED));

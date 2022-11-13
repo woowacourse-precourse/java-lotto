@@ -3,23 +3,39 @@ package lotto.domain;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import lotto.util.message.LottoRankingMessageUtils;
 import lotto.util.ranking.LottoRanking;
 
 public class LottoResult {
 
     private static final int GRADE_PLUS_VALUE = 1;
-    private static final String MESSAGE_PREFIX = "당첨 통계\n---\n";
+    private static final String LOTTO_RESULT_MESSAGE_PREFIX = "당첨 통계";
+    private static final String LOTTO_RESULT_MESSAGE_CONTOUR = "---";
+    private static final String REVENUE_PERCENT_MESSAGE_FORMAT = "총 수익률은 %s%%입니다.";
     private static final String LINE_FEED = "\n";
 
     private final Map<LottoRanking, Integer> lottoRankingResult = new EnumMap<>(LottoRanking.class);
+    private final BigDecimal revenuePercent;
 
-    public void addRankingCount(LottoRanking lottoRanking) {
-        lottoRankingResult.put(lottoRanking, lottoRankingResult.getOrDefault(lottoRanking, 0) + GRADE_PLUS_VALUE);
+    public LottoResult(Player player, Lotto winningLotto, LottoNumber bonusNumber) {
+        List<LottoRanking> lottoRankings = player.calculateLottoRanking(winningLotto, bonusNumber);
+
+        addRankingCount(lottoRankings);
+        BigDecimal totalReward = calculateTotalReward();
+        revenuePercent = player.calculateRevenuePercent(totalReward);
     }
 
-    public BigDecimal calculateTotalReward() {
+    private void addRankingCount(List<LottoRanking> lottoRankings) {
+        lottoRankings.forEach(
+                ranking ->
+                        lottoRankingResult.put(ranking,
+                                lottoRankingResult.getOrDefault(ranking, 0) + GRADE_PLUS_VALUE));
+    }
+
+    private BigDecimal calculateTotalReward() {
         return lottoRankingResult.keySet()
                 .stream()
                 .filter(lottoRanking -> lottoRanking != LottoRanking.RANKING_NOTHING)
@@ -33,16 +49,22 @@ public class LottoResult {
 
     @Override
     public String toString() {
-        StringBuilder lottoResultMessage = new StringBuilder();
+        StringBuilder lottoResultMessage = new StringBuilder(LINE_FEED);
 
-        lottoResultMessage.append(MESSAGE_PREFIX);
+        lottoResultMessage.append(LOTTO_RESULT_MESSAGE_PREFIX)
+                .append(LINE_FEED)
+                .append(LOTTO_RESULT_MESSAGE_CONTOUR)
+                .append(LINE_FEED);
 
-        Arrays.stream(LottoRanking.values())
+        String lottoRankingMessage = Arrays.stream(LottoRanking.values())
                 .filter(lottoRanking -> lottoRanking != LottoRanking.RANKING_NOTHING)
-                .forEach(lottoRanking ->
-                        lottoResultMessage
-                                .append(processLottoRankingResultMessage(lottoRanking))
-                                .append(LINE_FEED));
+                .map(this::processLottoRankingResultMessage)
+                .collect(Collectors.joining(LINE_FEED));
+        lottoResultMessage.append(lottoRankingMessage).append(LINE_FEED);
+
+        String revenuePercentMessage = String.format(REVENUE_PERCENT_MESSAGE_FORMAT, revenuePercent.toString());
+        lottoResultMessage.append(revenuePercentMessage);
+
         return lottoResultMessage.toString();
     }
 

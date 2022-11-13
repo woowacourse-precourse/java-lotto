@@ -16,13 +16,14 @@ public class LottoStore {
     }
 
     public LottoResult calculateLottoResult(LottoNumber bonusNumber) {
-        LottoResult lottoResult = new LottoResult();
-
-        player.calculateLottoRanking(lottoResult, winningLotto, bonusNumber);
-        return lottoResult;
+        return new LottoResult(player, winningLotto, bonusNumber);
     }
 
-    public BigDecimal calculateRevenuePercent(LottoResult lottoResult) {
-        return player.calculateRevenuePercent(lottoResult.calculateTotalReward());
+    public BigDecimal calculateRevenuePercent(BigDecimal totalReward) {
+        return player.calculateRevenuePercent(totalReward);
+    }
+
+    public String findPlayerInfo() {
+        return player.toString();
     }
 }
