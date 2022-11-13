@@ -28,4 +28,13 @@ public class ExceptionHandler {
         return input != null && input.matches("^[0-9,]*$");
     }
 
+    public static void checkDuplicateNumber(List<Integer> numbers) throws IllegalArgumentException {
+        int distinctSize = (int) numbers.stream()
+                .distinct()
+                .count();
+
+        if (numbers.size() != distinctSize) {
+            throw new IllegalArgumentException(Error.DUPLICATE_NUMBER.getMessage());
+        }
+    }
 }
