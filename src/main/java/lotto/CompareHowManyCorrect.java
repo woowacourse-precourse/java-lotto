@@ -18,7 +18,7 @@ public class CompareHowManyCorrect {
         return correctNumberEachLotto;
     }
 
-    public int caculateDuplication(List<Integer> gather, int bounsNumber){
+    public int caculateDuplication(List<Integer> gather, int bounsNumber){ // 겹치는 숫자를 나중에 인덱스로 사용하기 위해, '6개 겹치는 경우'와 '5개 겹치고 1개 보너스인 경우'에 +1을 하여 구분 지었음.
 
         int removeDuplicationSize = new HashSet(gather).size();
         int duplicationNumber = gather.size() - removeDuplicationSize;
