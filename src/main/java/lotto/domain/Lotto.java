@@ -32,6 +32,16 @@ public class Lotto {
         }
         return 6 - matchCount;
     }
+
+    public int getPrizeMoney(List<List<Integer>> playerLotto, int bonusNumber) {
+        makeRank(playerLotto, bonusNumber);
+        int prizeMoney = 0;
+        for (Rank value : Rank.values()) {
+            prizeMoney += rank[value.getIndex()] * value.getWinningsPrice();
+        }
+        return prizeMoney;
+    }
+
     private void makeRank(List<List<Integer>> playerLotto, int bonusNumber) {
         int rankIndex;
         for (List<Integer> lotto : playerLotto) {

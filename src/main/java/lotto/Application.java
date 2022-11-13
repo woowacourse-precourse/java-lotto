@@ -21,6 +21,8 @@ public class Application {
 
         int bonusNumber = askBonusNumber();
 
+        int prizeMoney = lotto.getPrizeMoney(playerLotto, bonusNumber);
+        System.out.println(prizeMoney);
 
     }
 
