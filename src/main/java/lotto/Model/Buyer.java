@@ -23,9 +23,6 @@ public class Buyer {
         this.lottoWallet = new ArrayList<>();
     }
 
-    public int getPurchaseAmount() {
-        return purchaseAmount;
-    }
     public int getPurchaseCount() {
         return purchaseCount;
     }

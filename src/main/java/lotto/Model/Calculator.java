@@ -16,8 +16,8 @@ public class Calculator {
         return rankResult;
     }
 
-    public long getSumOfWinningAmount(){
-        long sum = 0;
+    public double getSumOfWinningAmount(){
+        double sum = 0;
         for (WinningRank rank : rankResult){
             sum += rank.WinningAmount();
         }
@@ -32,7 +32,8 @@ public class Calculator {
     }
 
     public double earnedRatio(){
-        return (getSumOfWinningAmount() / (rankResult.size() * UNIT_OF_MONEY)) * PERCENT;
+        double sum = getSumOfWinningAmount();
+        return (sum / (rankResult.size() * UNIT_OF_MONEY)) * PERCENT;
     }
 
     public static int divide1000(int num){

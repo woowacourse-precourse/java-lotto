@@ -8,7 +8,6 @@ public class Util {
 
     public static List<Integer> generateRandomNum(int start, int end, int count){
         List<Integer> lotto = pickUniqueNumbersInRange(start, end, count);
-        Collections.sort(lotto);
         return lotto;
     }
 
