@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.BuyLotto;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -57,5 +58,14 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    class BuyLottoTest {
+        @Test
+        void winNumberTestCase() {
+            String input = "1,2,3,4,5,6";
+            List<Integer> result = List.of(1,2,3,4,5,6);
+            assertThat(BuyLotto.numbers()).isEqualTo(result);
+        }
     }
 }
