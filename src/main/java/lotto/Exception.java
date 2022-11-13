@@ -1,16 +1,19 @@
 package lotto;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.logging.Logger;
 
 public class Exception {
 
-    public static void UserContainExceptNumber(String stringLottoMoney) throws IllegalArgumentException{
-        for (int i=0;i<stringLottoMoney.length();i++){
+    public static void UserContainExceptNumber(String stringLottoMoney) throws NoSuchElementException {
+        for (int i = 0; i < stringLottoMoney.length(); i++) {
             char oneNumber = stringLottoMoney.charAt(i);
-
             if (!Character.isDigit(oneNumber)) {
-                throw new IllegalArgumentException("[ERROR] 입력은 숫자만 가능합니다.");
+                System.out.println("[ERROR]");
+                throw new NoSuchElementException();
             }
         }
     }
