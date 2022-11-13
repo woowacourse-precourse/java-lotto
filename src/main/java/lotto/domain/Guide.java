@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import lotto.domain.Preprocessor;
+import java.util.ArrayList;
 import java.util.List;
+
+import static lotto.domain.Preprocessor.*;
 
 
 public class Guide {
@@ -24,6 +28,20 @@ public class Guide {
         for (Lotto lotto : boughtLotto) {
             System.out.println(lotto.getLotto());
         }
+    }
+
+    public static List<String> createLottoStatisticsMessage(List<Integer> lottoResult) {
+        List<String> messages = new ArrayList<String>();
+        for (Prize prize : Prize.values()) {
+            int index = prize.ordinal();
+            if (index == 5) {
+                break;
+            }
+            messages.add(convertIntToString(prize.getMatchingCount()) + "개 일치 (" +
+                    addNumberPunctuation(prize.getPrizeMoney()) +
+                    "원) - " + convertIntToString(lottoResult.get(index)) + "개");
+        }
+        return messages;
     }
 
 
