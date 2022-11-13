@@ -9,14 +9,19 @@ public class LottoBuyer {
     List<Lotto> lottoTickets = new ArrayList<>();
     private final int totalLottoTickets;
     private final int payment;
+    private long totalWinnings;
 
-    public LottoBuyer(int inputAmount) {
-        this.payment = inputAmount;
-        this.totalLottoTickets = inputAmount / LOTTO_PRICE;
+    public LottoBuyer(int payment) {
+        this.payment = payment;
+        this.totalLottoTickets = payment / LOTTO_PRICE;
     }
 
     public List<Lotto> getLottoTickets() {
         return lottoTickets;
+    }
+
+    public void addLottoTicket(Lotto lotto) {
+        lottoTickets.add(lotto);
     }
 
     public int getTotalLottoTickets() {
@@ -27,7 +32,11 @@ public class LottoBuyer {
         return payment;
     }
 
-    public void addLottoTicket(Lotto lotto) {
-        lottoTickets.add(lotto);
+    public void setTotalWinnings(long totalWinnings) {
+        this.totalWinnings = totalWinnings;
+    }
+
+    public long getTotalWinnings() {
+        return totalWinnings;
     }
 }
