@@ -13,6 +13,7 @@ public class User {
     public int buyingLotto(){
         String input = Console.readLine();
         int money = UserMissChecking.numberChecking(input);
+        if(money == -1 ||!UserMissChecking.thousandChecking(money)) return -1;
         return money / 1000;
     }
 
