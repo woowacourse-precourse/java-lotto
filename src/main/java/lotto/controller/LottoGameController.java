@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.LottoGameResult;
 import lotto.domain.LottoPurchaseMoney;
 import lotto.domain.PlayerLotto;
 import lotto.domain.WinningLotto;
@@ -18,6 +19,9 @@ public class LottoGameController {
             printPlayerLotto(playerLotto);
 
             WinningLotto winningLotto = createWinningLotto();
+
+            LottoGameResult lottoGameResult = createLottoGameResult(playerLotto, winningLotto);
+            printLottoGameResult(lottoGameResult, lottoPurchaseMoney);
         } catch (RuntimeException e) {
             return;
         }
@@ -56,5 +60,13 @@ public class LottoGameController {
             OutputView.printErrorMessage(e.getMessage());
             throw new RuntimeException();
         }
+    }
+
+    private LottoGameResult createLottoGameResult(PlayerLotto playerLotto, WinningLotto winningLotto) {
+        return new LottoGameResult(playerLotto, winningLotto);
+    }
+
+    private void printLottoGameResult(LottoGameResult lottoGameResult, LottoPurchaseMoney lottoPurchaseMoney) {
+        OutputView.printTotalResult(lottoGameResult, lottoPurchaseMoney);
     }
 }

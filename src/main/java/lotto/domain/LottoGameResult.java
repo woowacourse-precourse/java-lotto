@@ -21,4 +21,8 @@ public class LottoGameResult {
 
         return result;
     }
+
+    public Map<Rank, Integer> getWinningResult() {
+        return winningResult;
+    }
 }
