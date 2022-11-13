@@ -28,14 +28,14 @@
 # 기능 목록
 
 1. Lotto
-   - 로또 하나를 담당하는 객체
-   - List<Integer> 이 필요함
-   - [예외사항] List<Integer>를 받을 때 6개가 아니면 예외
-   - [예외사항] 중복이 있으면 예외
-   - [예외사항] 로또 시작 숫자(1) 부터 로또 끝 숫자(45) 범위를 넘어가면 예외
-   - String getLottoPrinting() 로또의 값을 주어진 형태로 만들어서 String 으로 반환해줌
-   - boolean contains(int number) 로또 안에 특정 숫자가 있는지 확인함
-   - int getSame(Lotto);
+    - 로또 하나를 담당하는 객체
+    - List<Integer> 이 필요함
+    - [예외사항] List<Integer>를 받을 때 6개가 아니면 예외
+    - [예외사항] 중복이 있으면 예외
+    - [예외사항] 로또 시작 숫자(1) 부터 로또 끝 숫자(45) 범위를 넘어가면 예외
+    - String getLottoPrinting() 로또의 값을 주어진 형태로 만들어서 String 으로 반환해줌
+    - boolean contains(int number) 로또 안에 특정 숫자가 있는지 확인함
+    - int getSame(Lotto);
 2. Money
     - 1000의 배수로 로또에 사용되는 돈을 관리하는 객체
     - [예외사항] 1000의 배수가 아니라면 예외
@@ -49,24 +49,24 @@
     - List<Lotto>가 필요함
     - 그냥 List<Lotto>를 반환하는 것 대신, Lottos 를 통해 반환하고, getLottos 를 한다면 immutable list 를 보냄
 5. MissionRandom
-   - 랜덤을 DI 하는 역할을 가지고 있음. 
-   - 인터페이스를 통해 LottoCreator 에 주입됨
-   - List<Integer> pickUniqueNumbersInRange(int startInclusive,int endInclusive, int count);
+    - 랜덤을 DI 하는 역할을 가지고 있음.
+    - 인터페이스를 통해 LottoCreator 에 주입됨
+    - List<Integer> pickUniqueNumbersInRange(int startInclusive,int endInclusive, int count);
 6. LottoCreator
     - 로또를 생성하는 역할을 가지고 있음
     - MissionRandom 이 필요함
-    - static 메서드 Lottos createLottos(Money);
+    - Lottos createLottos(Money);
 7. WinningLottery
-   - 당첨 번호를 관리하고, 입력을 검증하는 역할을 가지고 있음
-   - Lotto 와, int bonusNumber 이 필요함
-   - WinningLottery(Lotto)
-   - void setBonusNumber(int bonusNumber);
-   - [예외사항] bonusNumber 이 범위에서 벗어남
-   - [예외사항] bonusNumber 이 lotto 와 중복이 있음 
-   - LottoResult getResult(Lotto)
+    - 당첨 번호를 관리하고, 입력을 검증하는 역할을 가지고 있음
+    - Lotto 와, int bonusNumber 이 필요함
+    - WinningLottery(Lotto)
+    - void setBonusNumber(int bonusNumber);
+    - [예외사항] bonusNumber 이 범위에서 벗어남
+    - [예외사항] bonusNumber 이 lotto 와 중복이 있음
+    - LottoResult getResult(Lotto)
 8. LottoStatistic
     - 로또 통계 계산을 담당함
-    - WinningLottery 와 Lottos 가 필요함 
+    - WinningLottery 와 Lottos 가 필요함
     - LottoStatistic(WinningLottery,Lottos);
     - public LottoScoreDto getScore();
 9. LottoScoreDto
@@ -77,18 +77,18 @@
     - long getFive()
     - long getFiveBonus()
     - double getRate() 가 필요함
-10. InputHandler 
-     - InputView 와 System 과의 의존성을 낮추는 중간 객체
-     - String readLine() 가 필요함
+10. InputHandler
+    - InputView 와 System 과의 의존성을 낮추는 중간 객체
+    - String readLine() 가 필요함
 11. InputValidator
     - View 를 도와주는 Utility 객체
 12. InputView
-     - 사용자의 입력을 담당하는 객체
-     - inputHandler 가 필요함
-     - int getAmount() 금액을 가져옴. 
-     - [예외사항] 숫자만으로 이루어 지지 않음
-     - List<Integer> getWinLotteryNumbers()
-     - [예외사항] 숫자,숫자 형태로 이루어 지지 않음
+    - 사용자의 입력을 담당하는 객체
+    - inputHandler 가 필요함
+    - int getAmount() 금액을 가져옴.
+    - [예외사항] 숫자만으로 이루어 지지 않음
+    - List<Integer> getWinLotteryNumbers()
+    - [예외사항] 숫자,숫자 형태로 이루어 지지 않음
 13. OutputHandler
     - OutputView 와 System 과의 의존성을 낮추는 중간 객체
     - void printf(String format,Object ...args)
