@@ -1,9 +1,11 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.LottoNumber;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 class LottoNumberTest {
     @Test
@@ -46,9 +48,19 @@ class LottoNumberTest {
                 .hasMessage("[ERROR] 숫자를 입력해주세요.");
     }
 
-//    @Test
-//    void 당첨번호_비교_테스트() {
-//        LottoNumber lottoNumber = new LottoNumber("8,21,23,41,42,43", "31");
-//        LottoNumber.getMatchResult(new Lotto(List.of(8, 21, 23, 41, 42, 43)));
-//    }
+    @Test
+    void 당첨번호_비교_테스트() {
+        LottoNumber lottoNumber = new LottoNumber("1,2,3,4,5,6", "7");
+        MatchCount matchResult = lottoNumber.getMatchResult(new Lotto(List.of(1, 2, 3, 10, 11, 7)));
+        MatchCount answer = new MatchCount(3, 1);
+        assertTrue(answer.isSameResult(matchResult));
+    }
+
+    @Test
+    void 당첨번호_비교_테스트_비정상() {
+        LottoNumber lottoNumber = new LottoNumber("1,2,3,4,5,6", "7");
+        MatchCount matchResult = lottoNumber.getMatchResult(new Lotto(List.of(1, 2, 3, 10, 11, 7)));
+        MatchCount answer = new MatchCount(4, 1);
+        assertFalse(answer.isSameResult(matchResult));
+    }
 }
