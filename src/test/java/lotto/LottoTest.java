@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -36,9 +37,10 @@ class LottoTest {
     @DisplayName("당첨번호와 입력번호를 비교한다")
     @Test
     void compareLottoNumber() {
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
         int result = 3;
-        assertThat(result).isEqualTo(lotto.compare(List.of(1, 3, 4, 8, 10, 32)));
+        assertThat(result).isEqualTo(lotto.compare(new Lotto(Arrays.asList(
+        1, 3, 4, 8, 10, 32))));
     }
     @DisplayName("로또 구입 금액이 1000단위가 아니라면 예외 처리 한다")
     @ParameterizedTest
