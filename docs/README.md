@@ -25,7 +25,8 @@
    - static final 상수 -> `"[ERROR]"` 생성
    - 잘못된 값 입력(validate error) -> `IllegalArgumentException`
      - 각 예외 던질 때 붙여서 전달
-
+4. 기능 구현 후 mvc 패턴으로 리팩토링
+   - 도메인 단위의 기능을 명확히 하기 위함
 ---
 
 ### 기능적 요구사항
