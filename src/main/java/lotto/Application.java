@@ -9,8 +9,14 @@ public class Application {
     public static int inputpurchase(){
         System.out.println("구입금액을 입력해 주세요.");
         String userInput = Console.readLine();
+        try{
+            int returnData = Integer.valueOf(userInput);
+        }catch(NumberFormatException e){
+            System.out.println("[ERROR]잘못된 입력입니다.");
+        }
         int returnData = Integer.valueOf(userInput);
         return returnData;
+
     }
     //사용자가 로또는 몇개를 구매했는지 확인하는 메서드
     public static int countBuyGame(int buyMoney){
@@ -45,16 +51,28 @@ public class Application {
         }
     }
 
+    public static void printStatus(){
+        LottoWin lottoWin = LottoWin.getInstance();
+        int[] lottoStatusTable = lottoWin.countWinLotto();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.printf("3개 일치 (5,000원) - %d개\n",lottoStatusTable[1]);
+        System.out.printf("4개 일치 (50,000원) - %d개\n",lottoStatusTable[2]);
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n",lottoStatusTable[3]);
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",lottoStatusTable[4]);
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n",lottoStatusTable[5]);
+
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
         int purchaseAmont = inputpurchase();
         int buyGameCnt = countBuyGame(purchaseAmont);
         Lotto[] buyGames = buyLotto(buyGameCnt);
         printLottoNum(buyGames);
         calProfitRateRun(buyGames);
+        printStatus();
         LottoWin lottoWin = LottoWin.getInstance();
         lottoWin.profitRateCal();
-
     }
 }
