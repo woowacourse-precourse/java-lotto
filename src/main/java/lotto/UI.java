@@ -9,6 +9,8 @@ public class UI {
     private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String PURCHASE_LOTTO_MESSAGE = "개를 구매했습니다.";
     private static final String PRIZE_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String BONUS_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
+
     private final LottoLogic lottoLogic;
 
     public UI() {
@@ -16,6 +18,7 @@ public class UI {
         printNumberOfLotto();
         printLottoNumber();
         setPrizeNumbers();
+        setBonusNumber();
     }
 
     private int moneyInput() {
@@ -43,6 +46,13 @@ public class UI {
         Validation.validatePrizeNumberInput(prizeNumbers);
 
         this.lottoLogic.setPrizeNumbers(stringListToIntegerList(prizeNumbers));
+    }
+
+    private void setBonusNumber() {
+        System.out.println(BONUS_INPUT_MESSAGE);
+        String bonusInput = Console.readLine();
+
+        this.lottoLogic.setBonusNumber(Integer.parseInt(bonusInput));
     }
 
     public List<String> sliceInputNumber(String value) {

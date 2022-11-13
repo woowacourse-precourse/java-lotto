@@ -14,6 +14,7 @@ public class LottoLogic {
     private int numberOfLotto;
     private List<Lotto> buyLottoList;
     private List<Integer> prizeNumbers;
+    private int bonusNumber;
 
     public LottoLogic(int money) {
         this.money = money;
@@ -46,5 +47,9 @@ public class LottoLogic {
 
     public void setPrizeNumbers(List<Integer> prizeNumbers) {
         this.prizeNumbers = prizeNumbers;
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 }
