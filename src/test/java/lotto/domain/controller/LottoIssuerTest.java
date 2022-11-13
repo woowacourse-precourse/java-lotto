@@ -13,17 +13,17 @@ import org.junit.jupiter.api.Test;
 
 public class LottoIssuerTest {
     List<Lotto> lottos = new ArrayList<>();
-    int numberOfIssueTestLottos = 8;
+    int purchaseAmount = 8000;
 
     @BeforeEach
     void setLottos() {
-        lottos = LottoIssuer.issueLottos(numberOfIssueTestLottos);
+        lottos = LottoIssuer.issueLottos(purchaseAmount);
     }
 
     @Test
-    @DisplayName("로또발행 - 입력된 개수만큼 발행된다.")
+    @DisplayName("로또발행 - 입력된 금액만큼 발행된다.")
     void issueLottos_LottosCountTest() {
-        assertThat(lottos.size()).isEqualTo(numberOfIssueTestLottos);
+        assertThat(lottos.size()).isEqualTo(purchaseAmount / LottoIssuer.PRICE_OF_LOTTO);
     }
 
     @Test
