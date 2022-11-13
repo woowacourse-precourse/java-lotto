@@ -38,6 +38,6 @@ public class MachineSystem {
 	}
 
 	public double yield(int totalReward) {
-		return (double)totalReward / buyer.getAmount() * PERCENTAGE;
+		return (double)totalReward / buyer.getLottosAmount() * PERCENTAGE;
 	}
 }

@@ -3,49 +3,31 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import camp.nextstep.edu.missionutils.Randoms;
+import java.util.stream.IntStream;
 
 public class Buyer {
 	private static final int ZERO_COUNT = 0;
 
-	private final int amount;
 	private final List<Lotto> lottos;
 
-	public Buyer(String inputAmount) {
-		amount = Integer.parseInt(inputAmount);
-		lottos = new ArrayList<>();
-		buyLotto();
+	public Buyer(List<Lotto> lottos) {
+		this.lottos = lottos;
 	}
 
-	private List<Integer> generateLottoNumber() {
-		return Randoms.pickUniqueNumbersInRange(ConstValue.MIN_LOTTO_NUMBER,
-			ConstValue.MAX_LOTTO_NUMBER, ConstValue.LOTTO_NUMBERS);
-	}
-
-	private List<Integer> sortNumbers(List<Integer> lottoNumbers) {
-		return lottoNumbers.stream()
-			.sorted()
+	public static Buyer buyLottos(int inputAmount) {
+		List<Lotto> lottos = IntStream.range(ZERO_COUNT, inputAmount / ConstValue.LOTTO_PRICE)
+			.mapToObj(i -> Lotto.generateLottoNumber())
 			.collect(Collectors.toList());
+		return new Buyer(lottos);
 	}
 
-	private void buyLotto() {
-		for (int i = ZERO_COUNT; i < lottoCount(); i++) {
-			List<Integer> lottoNumbers = generateLottoNumber();
-			lottos.add(new Lotto(sortNumbers(lottoNumbers)));
-		}
 
-	}
-
-	public int lottoCount() {
-		return amount / ConstValue.LOTTO_PRICE;
+	public int getLottosAmount() {
+		return lottos.size() * ConstValue.LOTTO_PRICE;
 	}
 
 	public List<Lotto> getLotto() {
 		return new ArrayList<>(lottos);
 	}
 
-	public double getAmount() {
-		return amount;
-	}
 }

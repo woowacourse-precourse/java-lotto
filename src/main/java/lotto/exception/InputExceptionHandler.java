@@ -18,10 +18,10 @@ public class InputExceptionHandler {
 	private static final int CASH_UNIT = 1000;
 	private static final String REST_DIVISION_REGEX = ",";
 
-	public static String checkPurchaseAmountForm(String input) {
+	public static int checkPurchaseAmountForm(String input) {
 		isNumber(input);
 		divideByThousand(input);
-		return input;
+		return Integer.parseInt(input);
 	}
 
 	private static void isNumber(String input) {

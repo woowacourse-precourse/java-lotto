@@ -2,6 +2,9 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
 	private static final String VALIDATE_SIZE_EXCEPTION_MESSAGE = "로또 번호는 6개여야 합니다.";
@@ -12,7 +15,7 @@ public class Lotto {
 	public Lotto(List<Integer> numbers) {
 		validateSize(numbers);
 		validateDuplication(numbers);
-		this.numbers = numbers;
+		this.numbers = sortNumbers(numbers);
 	}
 
 	private void validateSize(List<Integer> numbers) {
@@ -32,6 +35,17 @@ public class Lotto {
 		return numbers.size() != numbers.stream()
 			.distinct()
 			.count();
+	}
+
+	public static Lotto generateLottoNumber() {
+		return new Lotto(Randoms.pickUniqueNumbersInRange(ConstValue.MIN_LOTTO_NUMBER,
+			ConstValue.MAX_LOTTO_NUMBER, ConstValue.LOTTO_NUMBERS));
+	}
+
+	private List<Integer> sortNumbers(List<Integer> lottoNumbers) {
+		return lottoNumbers.stream()
+			.sorted()
+			.collect(Collectors.toList());
 	}
 
 	public List<Integer> getNumbers() {
