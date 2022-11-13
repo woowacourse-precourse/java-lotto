@@ -6,7 +6,7 @@ public class Input {
     static Scanner scanner = new Scanner(System.in);
 
     /**
-     * 금액 입력 요청
+     * 사용자에게 로또를 살 금액을 입력 요청하는 메서드
      */
     public static int askMoney() {
         System.out.println(Messages.ASK_MONEY);
@@ -15,7 +15,7 @@ public class Input {
     }
 
     /**
-     * 복권 구매(돈 -> 티켓)
+     * 복권 구매 메서드
      */
     public static int inputMoney(int Money) {
         vaildMoney(Money);
