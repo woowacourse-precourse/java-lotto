@@ -14,15 +14,18 @@ public class Application {
     public static void main(String[] args) {
         int money = getMoneyInput();
         int lottoTicketNumber = calculateHowManyTicketUserCanBuy(money);
+        System.out.printf("%d개를 구매했습니다.\n", lottoTicketNumber);
         List<Lotto> lottoList = buyManyLotto(lottoTicketNumber);
-        LottoWinNumber lottoWinNumber = new LottoWinNumber(getLottoNumbersInput(),
+        printLottoList(lottoList);
+        LottoWinNumber lottoWinNumber = new LottoWinNumber(getLottoWinNumbersInput(),
             getBonusNumberInput());
         Map<LottoResult, Integer> statistics = compileStatistics(lottoList, lottoWinNumber);
-        double rateOfReturn = calculateRateOfReturn(statistics,lottoTicketNumber);
-        printStatistics(statistics,rateOfReturn);
+        double rateOfReturn = calculateRateOfReturn(statistics, lottoTicketNumber);
+        printStatistics(statistics, rateOfReturn);
     }
 
     private static int getMoneyInput() {
+        System.out.println("구입금액을 입력해 주세요.");
         int moneyInput = getIntegerInput();
         if (moneyInput < 0) {
             throw new IllegalArgumentException();
@@ -54,11 +57,26 @@ public class Application {
         return new Lotto(pickLottoNumbersByRandom());
     }
 
+    private static void printLottoList(List<Lotto> lottoList) {
+        for (Lotto lotto : lottoList) {
+            printLotto(lotto);
+        }
+    }
+
+    private static void printLotto(Lotto lotto) {
+        List<Integer> numbers = lotto.getNumbers();
+        System.out.print("[");
+        System.out.print(numbers.stream()
+            .map(String::valueOf).collect(Collectors.joining(", ")));
+        System.out.print("]\n");
+    }
+
     private static List<Integer> pickLottoNumbersByRandom() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    private static List<Integer> getLottoNumbersInput() {
+    private static List<Integer> getLottoWinNumbersInput() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String oneLine = Console.readLine();
         try {
             return Arrays.stream(oneLine.split(",")).map(Integer::parseInt)
@@ -69,6 +87,7 @@ public class Application {
     }
 
     private static int getBonusNumberInput() {
+        System.out.println("보너스 번호를 입력해 주세요.");
         return getIntegerInput();
     }
 
