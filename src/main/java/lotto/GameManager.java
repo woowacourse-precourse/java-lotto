@@ -37,11 +37,11 @@ public class GameManager {
 
     private void inputWinningAndBonusNumber(){
         List<Integer> winningNumbers = InputView.inputWinningNumbers();
-        //validator 필요!!
         this.winningLotto = new Lotto(winningNumbers);
         OutputView.outputBlankLine();
         this.bonusNumber = InputView.inputBonusNumber();
         OutputView.outputBlankLine();
+        LottoValidation.validateUniqueWinningNumbersWithBonus(winningNumbers,bonusNumber);
     }
 
     private void calculateRank(){

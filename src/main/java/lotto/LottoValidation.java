@@ -22,4 +22,10 @@ public class LottoValidation {
         }
     }
 
+    public static void validateUniqueWinningNumbersWithBonus(List<Integer> winningNumbers, int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(InputViewValidation.ERROR_DUPLICATE_NUMBER);
+        }
+    }
+
 }
