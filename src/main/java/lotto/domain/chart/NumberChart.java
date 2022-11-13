@@ -17,4 +17,3 @@ public enum NumberChart {
         return value;
     }
 }
-
