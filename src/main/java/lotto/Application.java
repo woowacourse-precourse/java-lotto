@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -18,8 +19,9 @@ public class Application {
             lotto.add(new Lotto(issueLottoNumber()));
             System.out.println(lotto.get(i).getNumbers());
         }
+        List<Integer> enterValue = enterScore();
 
-        System.out.println(enterScore());
+        checkValue(lotto,enterValue);
 
     }
 
@@ -53,17 +55,27 @@ public class Application {
 
     public static List<Integer> enterScore(){
         System.out.println("당첨 번호를 입력해 주세요.");
-
         String readNumber = Console.readLine();
         String[] valueNumber = readNumber.split(",");
-
+        if(Arrays.stream(valueNumber).count() != 6) throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리 입니다.");
         int[] intArray = Arrays.stream(valueNumber).mapToInt(Integer::parseInt).toArray();
         List<Integer> resultArray = Arrays.stream(intArray).boxed().collect(Collectors.toList());
         System.out.println("");
         System.out.println("보너스 번호를 입력해 주세요.");
         resultArray.add(Integer.parseInt(Console.readLine()));
-
+        if(resultArray.size() != resultArray.stream().distinct().count()) throw new IllegalArgumentException("[ERROR] 중복값이 존재합니다.");
         return resultArray;
+    }
+
+    public static List<List<Integer>> checkValue(List<Lotto> lottos, List<Integer> enterScore){
+
+        List<List<Integer>> value  = new ArrayList<>();
+
+        for (int i = 0; i < lottos.size(); i++) {
+            value.add(lottos.get(i).getNumbers().stream().filter(number -> enterScore.stream().anyMatch(Predicate.isEqual(number))).collect(Collectors.toList()));
+        }
+
+        return value;
     }
 
 }
