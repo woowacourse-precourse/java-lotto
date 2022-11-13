@@ -13,6 +13,8 @@ public class LottoGame {
         int input = user.setPurchaseAmount();
         user.validateUnit(input);
 
+        System.out.println();
+        System.out.println(input/1000+"개를 구매했습니다.");
         setPurchaseAmountLotto(input/1000);
 
         user.getPurchaseLottoNumbers();
