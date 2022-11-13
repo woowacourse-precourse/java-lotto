@@ -3,17 +3,14 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class UserInput {
 
     List<List<Integer>> lotteries = new ArrayList<>();
-    final private int MAX_NUMBER = 45;
-    final private int MIN_NUMBER = 1;
-    final private int NUMBER_COUNT = 6;
+    static final private int MAX_NUMBER = 45;
+    static final private int MIN_NUMBER = 1;
+    static final private int NUMBER_COUNT = 6;
 
     public Calculator inputMoney() {
         Message.INPUT_MONEY.print();
@@ -28,6 +25,7 @@ public class UserInput {
         try {
             money = Long.parseLong(input);
         } catch (NumberFormatException e) {
+            System.out.println("[ERROR]");
             throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
         }
         if (money % 1000 != 0 || money == 0) {
