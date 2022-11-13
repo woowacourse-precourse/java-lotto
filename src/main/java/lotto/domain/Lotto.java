@@ -10,11 +10,11 @@ public class Lotto {
 
     private static final int LOTTO_SIZE = 6;
 
-    private final List<Integer> numbers;
+    private final List<LottoNumber> lottoNumbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.lottoNumbers = makeLottoNumbersBy(numbers);
     }
 
     public static int getLottoSize() {
@@ -22,7 +22,23 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return new ArrayList<>(numbers);
+        List<Integer> result = new ArrayList<>();
+        for (LottoNumber lottoNumber : lottoNumbers) {
+            result.add(lottoNumber.getValue());
+        }
+        return result;
+    }
+
+    private List<LottoNumber> makeLottoNumbersBy(List<Integer> rawData) {
+        List<LottoNumber> lottoNumbers = new ArrayList<>();
+        for (Integer data : rawData) {
+            lottoNumbers.add(makeIntToLottoNumber(data));
+        }
+        return lottoNumbers;
+    }
+
+    private LottoNumber makeIntToLottoNumber(Integer intData) {
+        return new LottoNumber(intData);
     }
 
     private void validate(List<Integer> numbers) {
