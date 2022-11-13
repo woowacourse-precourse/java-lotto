@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("OutputView 테스트")
 class OutputViewTest {
     private final OutputView outputView = new OutputViewImpl();
 

@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("WinningInfoDto 테스트")
 class WinningInfoDtoTest {
     @Nested
     @DisplayName("WinningInfoDto 를 WinningInfo 객체로 바꾸는 toWinningInfo 메소드 테스트")
@@ -67,7 +68,7 @@ class WinningInfoDtoTest {
         class BonusNumberTest {
             @ParameterizedTest(name = "{displayName} - {0}")
             @MethodSource("lotto.dto.WinningInfoDtoTest#SourceOfBonusNotInteger")
-            @DisplayName("입력값이 정수로 이루어지지 않은 bonus 값이면 WinningInfo 객체를 만드려고 할 때 예외가 발생한다.")
+            @DisplayName("입력값이 정수로 이루어지지 않은 보너스 번호로 WinningInfo 객체를 만드려고 할 때 예외가 발생한다.")
             void givenBonusNotInteger_whenConvertingToWinningInfo_thenThrowsException(String bonus) {
                 //given
                 String winningNumbers = "1,3,7,14,34,43";

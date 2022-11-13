@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("Profit 테스트")
 class ProfitTest {
     @Test
     @DisplayName("주어진 profit 값을 백분율로 바꾸어 반환할 수 있다.")

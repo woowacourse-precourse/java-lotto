@@ -1,4 +1,6 @@
-package lotto.view;
+package lotto.mock;
+
+import lotto.view.InputViewImpl;
 
 public class MockInputView extends InputViewImpl {
 

@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@DisplayName("WinningInfo 테스트")
 class WinningInfoTest {
     @Nested
     @DisplayName("WinningInfo 생성자 메소드 테스트")

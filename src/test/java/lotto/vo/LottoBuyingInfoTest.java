@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+@DisplayName("LottoBuyingInfo 테스트")
 class LottoBuyingInfoTest {
     @Nested
     @DisplayName("LottoBuyingInfo 생성자 테스트")

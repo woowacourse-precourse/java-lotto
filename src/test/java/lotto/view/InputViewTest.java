@@ -6,10 +6,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+import lotto.mock.MockInputView;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("InputView 테스트")
 class InputViewTest {
 	private static InputView inputView;
 
