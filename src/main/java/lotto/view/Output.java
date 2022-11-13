@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.List;
 import lotto.domain.Lotto;
@@ -44,8 +45,9 @@ public class Output {
         System.out.println(matchNumber + "개 일치, 보너스 볼 일치 (" + money + "원) - " + countOfMatch + "개");
     }
 
-    public void printTotalRate(String totalRate) {
-        System.out.println("총 수익률은 " + totalRate + "%입니다.");
+    public void printTotalRate(double rate) {
+        String changeRate = makeNumberForamt(rate);
+        System.out.println("총 수익률은 " + changeRate + "%입니다.");
     }
 
     public static void printErrorAndExit(String errorMessage) {
@@ -53,8 +55,9 @@ public class Output {
         System.out.println("게임을 종료합니다");
     }
 
-    private String makeNumberForamt(int money) {
-        DecimalFormat format = new DecimalFormat("###,###");
-        return format.format(money);
+    private String makeNumberForamt(Object target) {
+        DecimalFormat format = new DecimalFormat("###,###.#");
+        format.setRoundingMode(RoundingMode.HALF_UP);
+        return format.format(target);
     }
 }

@@ -52,7 +52,7 @@ public class Mission {
         EnumMap<Rank, Integer> result = repository.getResult();
         result.forEach((rank, count) -> callOutputAboutRank(rank, count));
 
-        String rate = getRate(money.getMoney(), priceMoney);
+        double rate = getRate(money.getMoney(), priceMoney);
 
         output.printTotalRate(rate);
     }
@@ -82,18 +82,18 @@ public class Mission {
         return input.getWinningBonusNumber();
     }
 
-    private String getRate(int inputMoney, int priceMoney) {
+    private double getRate(int inputMoney, int priceMoney) {
         double result = (double) priceMoney / inputMoney;
         result *= 100;
-        return String.format("%.1f", result);
+        return result;
     }
 
     private void callOutputAboutRank(Rank rank, Integer count) {
-        if (rank == Rank.SECOND) {
-            output.printLottoResultAboutRankWithBonus(rank.getCountOfMatch(), rank.getMoney(), count);
+        if (rank == Rank.ZERO) {
             return;
         }
-        if (rank == Rank.ZERO) {
+        if (rank == Rank.SECOND) {
+            output.printLottoResultAboutRankWithBonus(rank.getCountOfMatch(), rank.getMoney(), count);
             return;
         }
         output.printLottoResultAboutRank(rank.getCountOfMatch(), rank.getMoney(), count);
