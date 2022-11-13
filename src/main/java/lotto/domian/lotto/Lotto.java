@@ -1,11 +1,13 @@
 package lotto.domian.lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        Collections.sort(numbers);
         validateLottoNumbers(numbers);
         this.numbers = numbers;
     }
