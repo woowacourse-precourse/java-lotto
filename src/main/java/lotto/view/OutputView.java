@@ -44,7 +44,11 @@ public class OutputView {
 
     protected static String printTotalProfit(ResultStatistics statistics, int count) {
         DecimalFormat format = new DecimalFormat(TOTAL_PROFIT_PRINT_PATTERN);
-        String totalProfitRate = format.format((float) (statistics.getTotalProfit()) / (count * ConstVariable.STANDARD.getValue()));
+        String totalProfitRate = getTotalProfitRate(statistics, count, format);
         return MessageFormat.format(TOTAL_PROFIT_RATE_MESSAGE, totalProfitRate);
+    }
+
+    private static String getTotalProfitRate(ResultStatistics statistics, int count, DecimalFormat format) {
+        return format.format((float) (statistics.getTotalProfit()) / (count * ConstVariable.STANDARD.getValue()));
     }
 }
