@@ -29,21 +29,21 @@
 
 ### 로또 당첨 결과를 알려주는 클래스 Name : Result
 
-- [ ] (일치 개수, 보너스 번호 일치 여부 ,등수) enum 클래스 Name : Rank
+- [x] (일치 개수, 보너스 번호 일치 여부 ,등수) enum 클래스 Name : Rank
   > 보너스 번호를 확인하지 않거나(일치하는 숫자가 5개가 아니거나) 일치하지 않는 번호인 경우 false
-- [ ] (등수, 금액) enum 클래스 Name : Prize
-- [ ] 사용자의 번호와 당첨 번호를 비교하여 일치하는 번호 개수를 반환 - #countMatchingNumber()
-- [ ] 일치하는 개수에 따른 등수를 반환 - #getRank()
-- [ ] 5개의 번호가 일치할 경우 보너스 번호 일치 여부를 확인 - #isMatchingBonusNumber()
+- [x] (등수, 금액) enum 클래스 Name : Prize
+- [x] 사용자의 번호와 당첨 번호를 비교하여 일치하는 번호 개수를 반환 - #countMatchingNumber()
+- [x] 일치하는 개수에 따른 등수를 반환 - #getRank()
+- [x] 5개의 번호가 일치할 경우 보너스 번호 일치 여부를 확인 - #isMatchingBonusNumber()
 
 ---
 
 ### 로또 확인 과정을 진행하는 클래스 Name : LottoService
-- [ ] 로또 구매 수량 반환
-- [ ] 로또 구매 수량 만큼 로또 발행
-- [ ] 로또 당첨 여부를 통해 상금을 반환
-- [ ] 모든 로또의 당첨 결과 리스트 반환
-- [ ] 수익률 반환
+- [x] 로또 구매 수량 반환
+- [x] 로또 구매 수량 만큼 로또 발행
+- [x] 로또 당첨 여부를 통해 상금을 반환
+- [x] 모든 로또의 당첨 결과 리스트 반환
+- [x] 수익률 반환
 
 ## 사용자의 입력
 
@@ -60,10 +60,14 @@
 ## 출력
 
 ### 출력을 담당하는 클래스 Name : SystemMessage
-
-- [ ] 소수점 둘째 자리에서 반올림한 수익률 출력 - #showEarningRate()
-- [ ] 발행한 로또 수량 출력 - #showAmount()
-- [ ] 발행한 로또의 번호를 오름차순으로 정렬하여 출력 - #showNumbers()
+- [x] 입력 요청 메시지
+  - [x] 로또 구매 금액 입력 요청 메시지 출력 - askBuyLotto()
+  - [x] 로또 당첨 번호 입력 요청 메시지 출력 - askWinningNumbers()
+  - [x] 로또 보너스 번호 입력 요청 메시지 출력 - askBonusNumber()
+- [x] 결과 출력
+  - [x] 로또 당첨된 결과 출력 - printPrizeResult()
+  - [x] 로또 발행 결과 출력 - printPublishLottoResult()
+  - [x] 로또 구매 후 구매 개수 출력 - printBuyLotto()
 
 ---
 ## 예외 처리
