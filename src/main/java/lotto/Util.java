@@ -27,4 +27,5 @@ public class Util {
 	public static boolean isCorrectSize(List<Integer> numbers, int size){
 		return numbers.size() == size;
 	}
+
 }

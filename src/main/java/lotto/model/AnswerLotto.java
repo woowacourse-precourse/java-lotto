@@ -3,6 +3,8 @@ package lotto.model;
 import lotto.Util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +17,7 @@ public class AnswerLotto {
 
 	public AnswerLotto(List<Integer> answer, Integer bonus) {
 		isValidate(answer, bonus);
+		Collections.sort(answer);
 		this.answer = answer;
 		this.bonus = bonus;
 	}
@@ -56,4 +59,22 @@ public class AnswerLotto {
 			throw new IllegalArgumentException("There has overlapping numbers");
 		}
 	}
+
+	public int getRank(Lotto lotto){
+		int matchCount = getMatchCount(lotto.getNumbers());
+		if (matchCount < 3) {
+			return 6;
+		}
+		if (matchCount < 5 || (matchCount == 5 && lotto.getNumbers().contains(bonus))) {
+			matchCount--;
+		}
+		return Math.abs(7 - matchCount);
+	}
+
+	private int getMatchCount(List<Integer> numbers) {
+		return (int) numbers.stream()
+				.filter(num -> answer.contains(num) || num.equals(bonus))
+				.count();
+	}
+
 }
