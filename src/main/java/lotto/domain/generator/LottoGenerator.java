@@ -24,7 +24,7 @@ public class LottoGenerator {
 
     private Lottos createLotto(int quantity) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int number = 1; number < quantity; number++) {
+        for (int number = 0; number < quantity; number++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER, NUMBER_COUNT);
             Collections.sort(lottoNumbers);
             lottos.add(new Lotto(lottoNumbers));
