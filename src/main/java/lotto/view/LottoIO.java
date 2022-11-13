@@ -1,9 +1,9 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.messages;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class LottoIO {
 
@@ -18,18 +18,15 @@ public class LottoIO {
     public void inputLottoAnswer() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
-        System.out.println(input + "\n");
 
         if (checkInvalidNumbers(input)) {
-            System.out.println("[ERROR] 당첨번호는 쉼표(,)를 기준으로 6개의 숫자를 입력해 주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(messages.INVALID_ANSWER.getErrorMsg());
         }
-
+        System.out.println(input + "\n");
         String[] nums = input.split(",");
         for (String num : nums) {
             this.lottoAnswer.add(Integer.valueOf(num));
         }
-        return;
     }
 
     // 보너스 번호 입력
@@ -39,11 +36,9 @@ public class LottoIO {
         System.out.println(input + "\n");
 
         if (checkInvalidBonus(input)) {
-            System.out.println("[ERROR] 보너스 번호는 1부터 45 사이의 숫자를 한 개만 입력해 주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(messages.INVALID_BONUS.getErrorMsg());
         }
         Integer result = Integer.valueOf(input);
-
         this.bonus = result;
         return;
     }
@@ -54,7 +49,7 @@ public class LottoIO {
             return true;
         }
         String[] nums = input.split(",");
-        if (nums.length != 6) {
+        if (checkInvalidLength(input, 6) || checkDuplicate(nums)) {
             return true;
         }
         for (String num : nums) {
@@ -70,7 +65,25 @@ public class LottoIO {
         if (input == null) {
             return true;
         }
-        if (isNotNumericRange(input)) {
+        if (checkInvalidLength(input, 1) || isNotNumericRange(input)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkDuplicate(String[] input) {
+        List<String> input1 = new ArrayList<>(List.of(input));
+        Set<String> input2 = new HashSet<>(input1);
+
+        if (input1.size() != input2.size()) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkInvalidLength(String input, int cond) {
+        String[] nums = input.split(",");
+        if (nums.length != cond) {
             return true;
         }
         return false;
