@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import static lotto.domain.LottoGenerator.LOTTO_NUMBER_COUNT;
 
 public class Lotto {
+    protected static final String DUPLICATED_NUMBER = "중복된 당첨 번호가 존재합니다.";
+    
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -21,7 +23,7 @@ public class Lotto {
 
     private void validateDuplicatedNumber(List<Integer> numbers) {
         if (numbers.size() != new HashSet<>(numbers).size()) {
-            throw new IllegalArgumentException("중복된 당첨 번호가 존재합니다.");
+            throw new IllegalArgumentException(DUPLICATED_NUMBER);
         }
     }
 
