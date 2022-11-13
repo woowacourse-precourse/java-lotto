@@ -21,8 +21,8 @@ public class Controller {
         isValidateNumber(amount);
         isValidatePurchase(amount);
 
-        lottoTicketNumber = lottoTicketNumber(amount);
-        ticketPurchaseMessage(lottoTicketNumber);
+        lottoTicketNumber = stringToIntegerConvert(amount);
+        OutputView.lottoTicketAmountMessage(lottoTicketNumber);
     }
 
     public void isValidatePurchase(String userInput) {
@@ -41,13 +41,9 @@ public class Controller {
         }
     }
 
-    public int lottoTicketNumber(String userInput) {
+    public int stringToIntegerConvert(String userInput) {
         int ticket = Integer.parseInt(userInput);
 
         return ticket / 1000;
-    }
-
-    public void ticketPurchaseMessage(int ticket) {
-        System.out.println(ticket+PURCHASE_LOTTO_AMOUNT);
     }
 }
