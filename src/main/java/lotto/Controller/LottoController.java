@@ -1,6 +1,7 @@
 package lotto.Controller;
 
 import lotto.Model.Lotto;
+import lotto.Model.lottoResult;
 import lotto.View.input;
 import lotto.View.output;
 import lotto.Model.lottoGenerator;
@@ -13,6 +14,7 @@ public class LottoController {
     List<Integer> winLotto = new ArrayList<>();
     int amountLotto = 0;
     int bonusNum = 0;
+    List<Integer> winResult = new ArrayList<>();
 
     public void start() {
         // 구매금액 입력
@@ -32,6 +34,12 @@ public class LottoController {
         // 보너스 번호 입력
         output.printInputBonus();
         bonusNum = input.inputBonus(lotto.getNumbers());
+
+        // 당첨 통계
+        output.printStatistics();
+        lottoResult statistics = new lottoResult(groupLotto, winLotto, bonusNum);
+        System.out.println(statistics.getWinResult());
+
 
     }
 
