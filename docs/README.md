@@ -75,6 +75,10 @@
 
   해당 `Lotto`의 당첨 결과를 확인하는 기능 
 
+- `List<Integer> getNumbers()` [ - ]
+
+  로또 숫자 배열을 얻어오는 기능
+
 ### `class LottoGenerator` [ - ]
 
 로또 생성 관련 기능
