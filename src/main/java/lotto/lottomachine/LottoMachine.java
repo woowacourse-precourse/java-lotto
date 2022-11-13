@@ -26,6 +26,14 @@ public class LottoMachine {
         LottoPaper lottoPaper = GeneratorLottoPaper.generateLottoPaper(lottoPrice);
         List<Integer> userNumbers = inputLottoNumbers();
         Integer bonus = inputBonus();
+        showStats(lottoPaper, userNumbers, bonus);
+    }
+
+    public void showStats(LottoPaper lottoPaper, List<Integer> userNumbers, Integer bonus) {
+        if (machineStatus) {
+            List<Integer> ranks = lottoPaper.checkLottos(userNumbers, bonus);
+            LottoResult.showResult(ranks, lottoPrice);
+        }
     }
 
     public void buyLotto() {
