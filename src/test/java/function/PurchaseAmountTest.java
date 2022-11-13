@@ -12,7 +12,7 @@ public class PurchaseAmountTest {
 
     @DisplayName("정상적인 입력")
     @Test
-    void correctInput() throws IllegalAccessException {
+    void correctInput() {
         String data = "5000";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThat(Ui.inputPurchaseAmount()).isEqualTo(5000);
