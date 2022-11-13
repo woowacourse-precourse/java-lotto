@@ -1,11 +1,13 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.util.Validator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class LottoMachine {
@@ -37,7 +39,7 @@ public class LottoMachine {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < LOTTO_SIZE) {
             int number = Randoms.pickNumberInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER);
-            if (checkDuplication(numbers, number)) {
+            if (checkDuplication(numbers,number)) {
                 numbers.add(number);
             }
         }
@@ -45,7 +47,7 @@ public class LottoMachine {
         return new Lotto(numbers);
     }
 
-    private boolean checkDuplication(List<Integer> numbers, int number) {
+    public static boolean checkDuplication(List<Integer> numbers,int number) {
         if (numbers.contains(number)) {
             return false;
         }

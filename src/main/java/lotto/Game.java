@@ -4,6 +4,8 @@ import lotto.domain.LottoMachine;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.List;
+
 public class Game {
 
     private static final int LOTTO_UNIT = 1000;
