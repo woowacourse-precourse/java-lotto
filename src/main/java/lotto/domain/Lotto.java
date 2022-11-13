@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import java.util.Comparator;
 import java.util.List;
+
+import static java.util.Comparator.*;
 
 public class Lotto {
     private static final int NUMBERS_SIZE = 6;
@@ -14,6 +17,14 @@ public class Lotto {
         validateDuplication(numbers);
         validateAllRange(numbers);
         this.numbers = numbers;
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+    public List<Integer> getSortedNumbers(){
+        this.numbers.sort(naturalOrder());
+        return this.numbers;
     }
 
     private void validateDigit(List<Integer> numbers) {
