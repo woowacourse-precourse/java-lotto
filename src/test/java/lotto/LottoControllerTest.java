@@ -178,4 +178,16 @@ class LottoControllerTest {
         //then
         assertEquals(List.of(0,0,0,0,1),result);
     }
+
+    @Test
+    void getLottoYield(){
+        //given
+        List<Lotto> lottos = lottoController.purchaseLotto("1000");
+        Lotto lotto = lottos.get(0);
+        lottoService.setWinningNumbers(lotto.getNumbers());
+        //when
+        double result = lottoController.getLottoYield();
+        //then
+        assertEquals(2_000_000_000 / 1000.0 * 100, result);
+    }
 }
