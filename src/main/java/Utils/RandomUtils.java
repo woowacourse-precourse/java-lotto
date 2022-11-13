@@ -2,10 +2,10 @@ package Utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RandomUtils {
 //    - 당첨 번호 및 보너스 번호의 중복성 체크
@@ -13,8 +13,7 @@ public class RandomUtils {
 
     public static List<Integer> getRandomLottoNumber() {
         List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(lotto);
-        return lotto;
+        return lotto.stream().sorted().collect(Collectors.toList());
     }
 
     public static boolean isUniqueNumber(List<Integer> input) {
