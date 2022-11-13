@@ -21,8 +21,8 @@ public class Lotto {
     }
 
     public static List<Integer> createRandomLottoNumber() {
-        List<Integer> tempList = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        ArrayList<Integer> createdRandomNumbers = new ArrayList<>(tempList);
+        List<Integer> createdNumbersFromRandoms = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        ArrayList<Integer> createdRandomNumbers = new ArrayList<>(createdNumbersFromRandoms);
         Collections.sort(createdRandomNumbers);
 
         return createdRandomNumbers;
