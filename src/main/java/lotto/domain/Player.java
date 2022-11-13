@@ -3,6 +3,7 @@ package lotto.domain;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -11,7 +12,7 @@ import static lotto.constant.GameConstants.*;
 
 public class Player {
     private int purchaseAmount;
-    private List<Lotto> lottos;
+    private final List<Lotto> lottos = new ArrayList<>();
 
     public Player() {
         String purchaseAmount = InputView.readPurchaseAmount();
@@ -49,8 +50,8 @@ public class Player {
 
     public void buyLotto() {
         while (this.purchaseAmount > 0) {
-            this.lottos.add(Computer.issueLotto());
-            this.purchaseAmount -= LOTTO_PRICE;
+            lottos.add(Computer.issueLotto());
+            purchaseAmount -= LOTTO_PRICE;
         }
     }
 
