@@ -1,19 +1,19 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class LotteryShop {
     private static final int LOTTO_PRICE = 1000;
-    private int lottoCnt;
-    public List<Integer> lottoNum;
 
-    public LotteryShop(int totalPayment) {
-        countLotto(totalPayment);
+    private int countLotto(int totalPayment) {
+        validate(totalPayment);
+        return totalPayment / LOTTO_PRICE;
     }
 
-    private void countLotto(int totalPayment) {
-        validate(totalPayment);
-        lottoCnt = totalPayment / LOTTO_PRICE;
+    public List<Integer> makeLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return numbers;
     }
 
     private void validate(int totalPayment) {
