@@ -5,25 +5,27 @@ import static lottoMachine.enums.Numbers.LOTTO_PRICE;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.Lotto;
+import lottoMachine.device.LottoMachineDevices;
 
 public class LottoMachine {
 
     private final BanknoteSlot banknoteSlot;
+    private final LottoMachineDevices lottoMachineDevices;
     private final List<Lotto> lottoTickets;
 
     public LottoMachine() {
         banknoteSlot = new BanknoteSlot();
+        lottoMachineDevices = new LottoMachineDevices();
         lottoTickets = new ArrayList<>();
     }
 
     public void startLottoGame() {
-        receiveMoney();
-        createLottoTickets();
-    }
-
-    public void receiveMoney() {
-        LottoMachinePrinter.printReceivePriceMessage();
+        lottoMachineDevices.printReceivePriceMessage();
         banknoteSlot.receiveMoney();
+        createLottoTickets();
+        setDevice();
+        lottoMachineDevices.printPurchaseAmount();
+        lottoMachineDevices.printLottoTickets();
     }
 
     public void createLottoTickets() {
@@ -32,12 +34,14 @@ public class LottoMachine {
             Lotto lotto = new Lotto(NumberGenerator.createRandomNumber());
             lottoTickets.add(lotto);
         }
-        LottoMachinePrinter.printPurchaseAmount(numberOfLotto);
-        LottoMachinePrinter.printLottoTickets(lottoTickets);
     }
 
     private int getNumberOfLotto() {
         int money = banknoteSlot.getMoney();
         return money / LOTTO_PRICE.getValue();
+    }
+
+    private void setDevice() {
+        lottoMachineDevices.setLottoTickets(lottoTickets);
     }
 }
