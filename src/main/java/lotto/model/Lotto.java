@@ -12,7 +12,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자이어야합니다.");
         }
     }
 
@@ -23,5 +23,4 @@ public class Lotto {
     // numbers의 접근 제어자인 private을 변경할 수 없다.
     // Lotto에 필드(인스턴스 변수)를 추가할 수 없다.
     // Lotto의 패키지 변경은 가능하다.
-
 }
