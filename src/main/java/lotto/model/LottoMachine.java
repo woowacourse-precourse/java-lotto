@@ -1,5 +1,9 @@
 package lotto.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class LottoMachine {
@@ -13,9 +17,16 @@ public class LottoMachine {
     }
 
     public List<Lotto> publish(long price) {
-        List<Integer> lottoNumber = List.of(1, 2, 3, 4, 5, 6);
-        return List.of(new Lotto(lottoNumber));
+        List<Lotto> lottos = new ArrayList<>();
+        while (price >= 1000) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            numbers.sort(Comparator.naturalOrder());
+            lottos.add(new Lotto(numbers));
+            price -= 1000;
+        }
+        return lottos;
     }
+
 
     public WinningRecord drawAll() {
         return new WinningRecord();
