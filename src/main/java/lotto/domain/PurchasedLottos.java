@@ -27,7 +27,7 @@ public class PurchasedLottos {
 
     private Lotto generateLotto() {
         final List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MINIMUM, LOTTO_NUMBER_MAXIMUM, LOTTO_SIZE);
-        Collections.unmodifiableList(numbers);
+        Collections.sort(numbers);
 
         return new Lotto(numbers);
     }
