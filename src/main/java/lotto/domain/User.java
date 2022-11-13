@@ -9,8 +9,17 @@ public class User {
     private int prizeMoney;
     private ArrayList<Integer> winningNumbers;
     private int bonusNumber;
+    private ArrayList<Integer> numberOfWinningTypes;
 
     public User() {
+    }
+
+    public ArrayList<Integer> getNumberOfWinningTypes() {
+        return numberOfWinningTypes;
+    }
+
+    public void setNumberOfWinningTypes(ArrayList<Integer> numberOfWinningTypes) {
+        this.numberOfWinningTypes = numberOfWinningTypes;
     }
 
     public ArrayList<Lotto> getLotties() {
