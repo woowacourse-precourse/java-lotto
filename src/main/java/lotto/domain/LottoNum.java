@@ -1,7 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.constant.BoundaryValue;
-import lotto.domain.constant.LottoPrice;
+import lotto.domain.constant.LottoInfo;
 import lotto.domain.io.Multiple1000Validator;
 import lotto.domain.io.NumberValidator;
 
@@ -24,7 +23,11 @@ public class LottoNum {
 
   private int getLottoNum(String input) {
     int money = Integer.parseInt(input);
-    money /= LottoPrice.LOTTO_PRICE.getLottoPrice();
+    money /= LottoInfo.LOTTO_PRICE.getValue();
     return money;
+  }
+
+  public int getLottoNum() {
+    return lottoNum;
   }
 }
