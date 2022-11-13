@@ -3,10 +3,7 @@ package lotto.service;
 import lotto.exception.AmountException;
 import lotto.exception.LottoException;
 import lotto.status.lotto.LottoStatus;
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Convertor {
 

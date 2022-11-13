@@ -17,7 +17,7 @@ public class Rank {
     }
 
     public boolean isMatchMatchingNumber(int matchingNumber) {
-        if(matchingNumber == match) return true;
+        if (matchingNumber == match) return true;
         return false;
     }
 
@@ -26,7 +26,7 @@ public class Rank {
     }
 
     public boolean containBonus() {
-        if(bonus) return true;
+        if (bonus) return true;
         return false;
     }
 
@@ -37,7 +37,7 @@ public class Rank {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(match).append("개 일치");
-        if(bonus) {
+        if (bonus) {
             sb.append(", 보너스 볼 일치");
         }
 

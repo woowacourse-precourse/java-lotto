@@ -9,19 +9,16 @@ public class InputView {
 
     public static String amount() {
         System.out.println(AMOUNT_PHRASE);
-        String input = readLine();
-        return input;
+        return readLine();
     }
 
     public static String winningNumbers() {
         System.out.println(WINNING_NUMBER_PHRASE);
-        String input = readLine();
-        return input;
+        return readLine();
     }
 
     public static String bonusNumber() {
         System.out.println(BONUS_NUMBER_PHRASE);
-        String input = readLine();
-        return input;
+        return readLine();
     }
 }

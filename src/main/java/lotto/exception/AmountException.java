@@ -10,10 +10,10 @@ public class AmountException {
     public static void validateAmount(String input) {
         StringBuilder message = new StringBuilder(ERROR_MESSAGE);
 
-        if(!isNumeric(input)) {
+        if (!isNumeric(input)) {
             message.append(NUMERIC_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
-        } else if(!isAccurateUnit(input)) {
+        } else if (!isAccurateUnit(input)) {
             message.append(LottoStatus.eachPrice.getValue()).append(UNIT_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
         }
@@ -24,7 +24,7 @@ public class AmountException {
     }
 
     private static boolean isAccurateUnit(String input) {
-        if(Integer.parseInt(input) % LottoStatus.eachPrice.getValue() != 0) return false;
+        if (Integer.parseInt(input) % LottoStatus.eachPrice.getValue() != 0) return false;
         return true;
     }
 }

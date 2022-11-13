@@ -19,7 +19,7 @@ public class Lotto {
         int count = 0;
 
         for (Integer number : numbers) {
-            if(this.numbers.contains(number)) {
+            if (this.numbers.contains(number)) {
                 count++;
             }
         }
@@ -28,7 +28,7 @@ public class Lotto {
     }
 
     public boolean hasNumber(int number) {
-        if(numbers.contains(number)) return true;
+        if (numbers.contains(number)) return true;
         return false;
     }
 

@@ -18,13 +18,13 @@ public class LottoException {
     public static void validateLotto(List<Integer> numbers) {
         StringBuilder message = new StringBuilder(ERROR_MESSAGE);
 
-        if(!isAccurateSize(numbers)) {
+        if (!isAccurateSize(numbers)) {
             message.append(LottoStatus.count.getValue()).append(LENGTH_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
-        }else if(hasDuplication(numbers)) {
+        } else if (hasDuplication(numbers)) {
             message.append(DUPLICATE_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
-        }else if(!isAccurateRange(numbers)) {
+        } else if (!isAccurateRange(numbers)) {
             message.append(LottoStatus.startInclusive.getValue()).append("부터 ")
                     .append(LottoStatus.endInclusive.getValue()).append(RANGE_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
@@ -40,7 +40,7 @@ public class LottoException {
     public static int validateNumber(String input) {
         int number = getNumber(input);
 
-        if(!isAccurateRange(List.of(number))) {
+        if (!isAccurateRange(List.of(number))) {
             StringBuilder message = new StringBuilder(ERROR_MESSAGE);
             message.append(LottoStatus.startInclusive.getValue()).append("부터 ")
                     .append(LottoStatus.endInclusive.getValue()).append(RANGE_EXCEPTION_MESSAGE);
@@ -51,7 +51,7 @@ public class LottoException {
     }
 
     public static void validDuplication(List<Integer> numbers, int number) {
-        if(numbers.contains(number)) {
+        if (numbers.contains(number)) {
             StringBuilder message = new StringBuilder(ERROR_MESSAGE);
             message.append(DUPLICATE_EXCEPTION_MESSAGE);
             throw new IllegalArgumentException(message.toString());
@@ -79,21 +79,21 @@ public class LottoException {
     }
 
     private static boolean isAccurateSize(List<Integer> numbers) {
-        if(numbers.size() != LottoStatus.count.getValue()) return false;
+        if (numbers.size() != LottoStatus.count.getValue()) return false;
         return true;
     }
 
     private static boolean hasDuplication(List<Integer> numbers) {
         Set<Integer> stack = new HashSet<>();
         for (Integer number : numbers) {
-            if(!stack.add(number)) return true;
+            if (!stack.add(number)) return true;
         }
         return false;
     }
 
     private static boolean isAccurateRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if(!(LottoStatus.startInclusive.getValue() <= number && number <= LottoStatus.endInclusive.getValue())) {
+            if (!(LottoStatus.startInclusive.getValue() <= number && number <= LottoStatus.endInclusive.getValue())) {
                 return false;
             }
         }
