@@ -1,14 +1,12 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
+import lotto.LottoConstant;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Customer {
-    private static final int LOTTO_PRICE = 1000;
-
     public List<Lotto> purchaseLottos(int money) {
         return IntStream.range(0, getLottoCount(money))
                 .mapToObj(index -> purchaseLotto())
@@ -16,7 +14,7 @@ public class Customer {
     }
 
     public int getLottoCount(int money) {
-        return money / LOTTO_PRICE;
+        return money / LottoConstant.PRICE.getValue();
     }
 
     private Lotto purchaseLotto() {
@@ -24,6 +22,9 @@ public class Customer {
     }
 
     private List<Integer> generateLottoNumber() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Randoms.pickUniqueNumbersInRange(
+                LottoConstant.START_NUMBER.getValue(),
+                LottoConstant.END_NUMBER.getValue(),
+                LottoConstant.NUMBER_COUNT.getValue());
     }
 }

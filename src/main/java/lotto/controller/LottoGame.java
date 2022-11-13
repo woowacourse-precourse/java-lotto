@@ -10,7 +10,6 @@ import lotto.view.LottoGameView;
 import java.util.*;
 
 public class LottoGame {
-
     private final LottoGameView lottoGameView;
     private final Customer customer;
     private final LottoCompany lottoCompany;

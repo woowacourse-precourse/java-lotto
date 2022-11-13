@@ -1,13 +1,13 @@
 package lotto.domain;
 
+import lotto.LottoConstant;
+
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
-    private static final int LOTTO_NUMBER_COUNT = 6;
-
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -27,13 +27,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBER_COUNT) {
+        if (numbers.size() != LottoConstant.NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateDuplication(List<Integer> numbers) {
-        if (new HashSet<>(numbers).size() != LOTTO_NUMBER_COUNT) {
+        if (new HashSet<>(numbers).size() != LottoConstant.NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException();
         }
     }
