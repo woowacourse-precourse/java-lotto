@@ -23,6 +23,10 @@ public class Lottos {
                 .forEach(lottoResult::addResult);
     }
 
+    public List<Lotto> lottos() {
+        return this.lottos;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
