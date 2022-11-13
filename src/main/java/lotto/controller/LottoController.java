@@ -46,7 +46,7 @@ public class LottoController {
     private void printLottoResult(List<Lotto> lottos, WinningLotto winningLotto) {
         Map<LottoRanking, Integer> lottoResultData = LottoReader.getLottoRankings(lottos, winningLotto);
         OutputView.printLottoResult(lottoResultData);
-        printLottoRate(lottoResult.getLottoResult(lottoResultData));
+        printLottoRate(lottoResult.getLottoYield(lottoResultData));
     }
 
     private Lotto getManualLottoFromUserByConsole() {

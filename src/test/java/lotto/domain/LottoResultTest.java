@@ -64,7 +64,7 @@ class LottoResultTest {
     @ParameterizedTest
     @MethodSource("lottoRankingRewardRateDataSource")
     void 로또_상금_수익률_계산_테스트(Map<LottoRanking, Integer> lottoData, double expected) {
-        double result = Math.round(lottoResult.getLottoResult(lottoData) * 1000) / 1000.0;
+        double result = Math.round(lottoResult.getLottoYield(lottoData) * 1000) / 1000.0;
         assertThat(result).isEqualTo(expected);
     }
 
