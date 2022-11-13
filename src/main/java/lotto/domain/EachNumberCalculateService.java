@@ -9,8 +9,8 @@ public class EachNumberCalculateService {
 
     private final static int BONUSNUMBER = 5;
 
-    private Lotto winningLottery;
-    private int bonusNumber;
+    private final Lotto winningLottery;
+    private final int bonusNumber;
 
     public EachNumberCalculateService(Lotto lottery, int bonusNumber){
         winningLottery = lottery;
