@@ -4,6 +4,7 @@ import lotto.domain.Customer;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCompany;
 import lotto.domain.WinningNumber;
+import lotto.util.LottoRank;
 import lotto.view.LottoGameView;
 import lotto.view.ViewValidator;
 import org.junit.jupiter.api.DisplayName;
