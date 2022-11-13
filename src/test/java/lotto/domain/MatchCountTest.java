@@ -1,19 +1,29 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.MatchCount;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MatchCountTest {
-    @Test
-    void equalsTest() {
-        MatchCount matchCount1 = new MatchCount(1, 1);
-        MatchCount matchCount2 = new MatchCount(1, 1);
-        MatchCount matchCount3 = new MatchCount(1, 0);
 
-        assertThat(matchCount1).isEqualTo(matchCount2);
-        assertThat(matchCount1).isNotEqualTo(matchCount3);
+    @DisplayName("같은 등수 반환 테스트")
+    @Test
+    void 같은_등수_반환_테스트() {
+        MatchCount matchCount1 = new MatchCount(3, 0);
+        MatchCount matchCount2 = new MatchCount(3, 1);
+        MatchCount matchCount3 = new MatchCount(4, 0);
+        MatchCount matchCount4 = new MatchCount(5, 0);
+        MatchCount matchCount5 = new MatchCount(5, 1);
+        MatchCount matchCount6 = new MatchCount(6, 0);
+
+        assertTrue(matchCount1.isSameResult(matchCount2));
+        assertFalse(matchCount1.isSameResult(matchCount3));
+        assertFalse(matchCount3.isSameResult(matchCount4));
+        assertFalse(matchCount4.isSameResult(matchCount5));
+        assertFalse(matchCount5.isSameResult(matchCount6));
     }
 
 }
