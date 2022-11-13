@@ -43,6 +43,15 @@ public class Application {
         for (int num = 0;num < count;num++)
             lottoList.add(buyLotto());
 
+        printLotteries(lottoList);
+
         return lottoList;
+    }
+
+    private static void printLotteries(List<Lotto> lottoList) {
+        System.out.println("\n" + lottoList.size() + "개를 구매했습니다.");
+
+        for (Lotto lotto: lottoList)
+            lotto.printNumbers();
     }
 }
