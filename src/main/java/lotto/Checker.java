@@ -39,7 +39,7 @@ public class Checker {
         if (input % 1000 > 0) {
             remain = input % 1000;
             System.out.println(String.format(Texts.LOTTO_CHECKER_EXCEPTION_AMOUNT_REMAIN, remain));
-            input %= 1000;
+            input -= remain;
         }
         return input;
     }
