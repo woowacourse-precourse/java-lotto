@@ -109,6 +109,9 @@ public class Application {
         System.out.println("당첨 통계\n" + "---");
 
         Result history = getEqualNumber(winningLotto, lottos, bonusNumber);
+        history.printResultElements();
+
+        calculateEarning(history, lottos.size() * 1000);
     }
 
     public static Result getEqualNumber(Lotto winningLotto, List<Lotto> lottos, int bonusNumber) {
@@ -118,7 +121,6 @@ public class Application {
         for(Lotto lotto : lottos) {
             int equalCount = equalNumberCounter(winningLotto, lotto, bonusNumber);
             lotto.printElements();
-            winningLotto.printElements();
 
             if(equalCount == 3)
                 history.setEqualThree();
@@ -146,5 +148,11 @@ public class Application {
             if(userLotto.getElements().contains(bonusNumber)) count = 7;
 
         return count;
+    }
+
+    public static void calculateEarning(Result history, int money) {
+        double earning = (double)history.calculateElements() / (double)money;
+
+        System.out.println("총 수익률은 " + earning * 100 + "%입니다.");
     }
 }
