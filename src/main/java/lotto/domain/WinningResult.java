@@ -33,16 +33,15 @@ public class WinningResult {
     private String makeRankingMessage() {
         StringBuilder result = new StringBuilder();
         for (Ranking ranking : Ranking.values()) {
-            result.append(makeWinningResultMessageExceptNothing(ranking));
+            makeWinningResultMessageExceptNothing(result, ranking);
         }
         return WINNING_RESULT_START_MESSAGE + result;
     }
 
-    private String makeWinningResultMessageExceptNothing(Ranking ranking) {
+    private void makeWinningResultMessageExceptNothing(StringBuilder result, Ranking ranking) {
         if (ranking != Ranking.NOTHING) {
-            return String.format(WINNING_RESULT_MESSAGE, ranking.toString(), winningResult.get(ranking));
+            result.append(String.format(WINNING_RESULT_MESSAGE, ranking.toString(), winningResult.get(ranking)));
         }
-        return "";
     }
 
     @Override
