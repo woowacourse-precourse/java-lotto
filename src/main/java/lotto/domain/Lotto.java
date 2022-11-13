@@ -47,7 +47,7 @@ public class Lotto {
         }
     }
 
-    public int getHitCount(Lotto buyingLotto) {
+    public int countHitNumber(Lotto buyingLotto) {
         return (int) this.numbers.stream()
                 .filter(number -> buyingLotto.numbers.contains(number))
                 .count();

@@ -16,16 +16,16 @@ public class GradesResult {
     }
 
     public double calculateYield(Money money) {
-        return getTotalPrizeMoney() / money.getMoney();
+        return calculateTotalPrizeMoney() / money.getMoney();
     }
 
-    private double getTotalPrizeMoney() {
+    private double calculateTotalPrizeMoney() {
         return gradesResult.keySet().stream()
-                .mapToDouble(grade -> getPrizeMoney(grade))
+                .mapToDouble(grade -> calculatePrizeMoney(grade))
                 .sum();
     }
 
-    private int getPrizeMoney(Grade grade) {
+    private long calculatePrizeMoney(Grade grade) {
         return grade.getPrizeMoney().getMoney() * gradesResult.get(grade);
     }
 }

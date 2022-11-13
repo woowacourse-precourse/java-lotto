@@ -17,7 +17,7 @@ public class Seller {
     }
 
     private static List<Lotto> toLottos(Money money) {
-        int lottoQuantity = money.getQuantityByUnit(LOTTO_PRICE);
+        long lottoQuantity = money.getQuantityByUnit(LOTTO_PRICE);
         List<Lotto> lottos = new ArrayList<>();
         while (lottoQuantity-- != 0) {
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_BALL_SIZE)));

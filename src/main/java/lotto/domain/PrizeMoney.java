@@ -2,13 +2,13 @@ package lotto.domain;
 
 public class PrizeMoney {
 
-    private final int prizeMoney;
+    private final long prizeMoney;
 
-    public PrizeMoney(int prizeMoney) {
+    public PrizeMoney(long prizeMoney) {
         this.prizeMoney = prizeMoney;
     }
 
-    public int getMoney() {
+    public long getMoney() {
         return prizeMoney;
     }
 }

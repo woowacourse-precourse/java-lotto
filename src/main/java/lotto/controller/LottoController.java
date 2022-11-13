@@ -30,9 +30,8 @@ public class LottoController {
 
     private void createStatistics(Money money) {
         GradingMachine gradingMachine = new GradingMachine(Input.inputWinnerLotto(), Input.inputBonusNumber());
-        GradesResult gradesResult = gradingMachine.getGradesResultByLottoTicket(lottoTicket);
+        GradesResult gradesResult = gradingMachine.gradesResultByLottoTicket(lottoTicket);
         output.printLottoResult(gradesResult.getGradesResult());
         output.printLottoYield(gradesResult.calculateYield(money));
     }
-
 }

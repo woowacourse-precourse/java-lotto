@@ -36,7 +36,7 @@ public class GradingMachine {
         throw new IllegalArgumentException();
     }
 
-    public GradesResult getGradesResultByLottoTicket(LottoTicket lottoTicket) {
+    public GradesResult gradesResultByLottoTicket(LottoTicket lottoTicket) {
         Map<Grade, Integer> gradeResult = new EnumMap<>(Grade.class);
         for (Lotto buyingLotto : lottoTicket.getLottoTicket()) {
             Grade grade = findGrade(buyingLotto);
@@ -46,7 +46,7 @@ public class GradingMachine {
     }
 
     private Grade findGrade(Lotto buyingLotto) {
-        return Grade.of(winnerLotto.getHitCount(buyingLotto), buyingLotto.hasBonusNumber(bonusNumber));
+        return Grade.of(winnerLotto.countHitNumber(buyingLotto), buyingLotto.hasBonusNumber(bonusNumber));
     }
 
 
