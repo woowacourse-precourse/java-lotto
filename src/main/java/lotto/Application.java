@@ -9,8 +9,8 @@ public class Application {
         Lotto lotto = InputView.inputWinningNumber();
         int bonus = lotto.inputBonus();
 
-        for (List numbers : calc.lotteries) {
-            lotto.compareLotto(numbers, bonus);
+        for (List randomLotto : calc.lotteries) {
+            lotto.compareLotto(randomLotto, bonus);
         }
         calc.printResult();
     }
