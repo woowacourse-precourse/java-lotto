@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,6 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         validateByRange(numbers);
+        validateBySize(numbers);
     }
 
     private void validateByRange(List<Integer> numbers){
@@ -24,6 +27,11 @@ public class Lotto {
         if (numbers.size() != 6){
             throw new IllegalArgumentException();
         }
+    }
+
+    private void validateByDistinction(List<Integer> numbers){
+        Set<Integer> distinctNumbers = new HashSet<>(numbers);
+        if (distinctNumbers.size() != numbers.size()) throw new IllegalArgumentException();
     }
 
     public Integer countMatched(List<Integer> winningNumbers){
