@@ -15,7 +15,7 @@ class ValidatorTest {
 
 	@Test
 	@DisplayName("정수가 아닌 입력이 들어오면 예외가 발생한다.")
-	void validateNotIntergerInput() {
+	void validateNotIntegerInput() {
 		assertThatThrownBy(() -> Validator.validateIntegerOrNot("abc")).isInstanceOf(IllegalArgumentException.class);
 	}
 
