@@ -35,4 +35,14 @@ public class UserLottos {
             userLottos.add(lotto);
         }
     }
+
+    public Set<Lotto> getUserLottos() {
+
+        return userLottos;
+    }
+
+    public int getLottoCount() {
+
+        return count;
+    }
 }
