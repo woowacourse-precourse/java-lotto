@@ -3,15 +3,18 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.EnumMap;
 
 public class Application {
     enum NumberType { WINNING, BONUS, NONE };
+    enum Places { FIRST, SECOND, THIRD, FOURTH, FIFTH };
 
     static NumberType[] numberTypeCheck = new NumberType[46];
+    static Map<Places, Integer> noOfLottoIn = new EnumMap<>(Places.class);
     static int noOfLottos;
-
 
     public static void guideWinningNumberFormat() { System.out.print("당첨 번호 6개를 쉼표로 구분해 입력해주세요: "); }
 
@@ -147,15 +150,15 @@ public class Application {
         noOfLottos = (int)(purchasePrice / 1000);
     }
 
+    public static void printNoOfPurchasedLottos() {
+        System.out.printf("%d개를 구매했습니다.\n", noOfLottos);
+    }
+
     public static void generateLottoNumbers() {
         for (int no = 0; no < noOfLottos; no++) {
             List<Integer> pickedNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             new Lotto(pickedNumbers);
         }
-    }
-
-    public static void printPurchasedLottos() {
-        // TODO: implement method to purchased Lottos
     }
 
     public static void getComparisonResults() {
@@ -173,9 +176,11 @@ public class Application {
     public static void main(String[] args) {
         getWinningNumbers();
         getBonusNumber();
+
         getNoOfLotto();
+        printNoOfPurchasedLottos();
         generateLottoNumbers();
-        printPurchasedLottos();
+
         getComparisonResults();
         printLottoResults();
         printEarningsRate();
