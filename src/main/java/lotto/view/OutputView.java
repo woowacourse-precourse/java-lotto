@@ -1,7 +1,5 @@
 package lotto.view;
 
-import java.util.List;
-
 import lotto.constant.OutputMessage;
 
 public class OutputView {

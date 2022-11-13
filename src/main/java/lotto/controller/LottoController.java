@@ -6,6 +6,7 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.PurchasingAmount;
+import lotto.domain.WinningNumbers;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -14,11 +15,15 @@ public class LottoController {
 	OutputView outputView = new OutputView();
 	int numberOfTickets;
 	List<Lotto> lotteries;
+	WinningNumbers winningNumbers;
+
 	public void control() {
 		calculateNumberOfTickets();
 		issueLotteries();
+		receiveWinningNumbers();
 	}
-	private void calculateNumberOfTickets() {
+
+	void calculateNumberOfTickets() {
 		PurchasingAmount purchasingAmount = new PurchasingAmount(Integer.parseInt(inputView.getPurchasingAmount()));
 		numberOfTickets = purchasingAmount.getNumberOfTickets();
 		outputView.printNumberOfTickets(numberOfTickets);
@@ -31,6 +36,10 @@ public class LottoController {
 			lotteries.add(new Lotto(lottoGenerator.getNumbers()));
 		}
 		lotteries.forEach(lotto -> System.out.println(lotto.getNumbers()));
+	}
+
+	void receiveWinningNumbers() {
+		winningNumbers = new WinningNumbers(inputView.getWinningNumbers());
 	}
 
 	List<Lotto> getLotteries() {
