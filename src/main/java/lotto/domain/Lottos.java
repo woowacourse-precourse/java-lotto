@@ -20,4 +20,12 @@ public class Lottos {
         }
         return lottos;
     }
+
+    public List<Lotto> getLottos() {
+        return new ArrayList<>(lottos);
+    }
+
+    public int getLottosCount() {
+        return lottos.size();
+    }
 }

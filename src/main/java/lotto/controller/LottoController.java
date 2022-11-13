@@ -13,6 +13,7 @@ public class LottoController {
         try {
             PurchaseMoney purchaseMoney = createPurchaseMoney();
             Lottos lottos = createLottos(purchaseMoney);
+            printLottos(lottos);
 
         } catch (IllegalArgumentException error) {
             printErrorMessage(error.getMessage());
@@ -28,5 +29,11 @@ public class LottoController {
         Lottos lottos = lottoMachine.purchase(purchaseMoney);
 
         return lottos;
+    }
+
+
+    private void printLottos(Lottos lottos) {
+        printLottosCount(lottos.getLottosCount());
+        printLottosInfo(lottos);
     }
 }
