@@ -2,15 +2,14 @@ package lotto.domain;
 
 import java.util.List;
 import lotto.domain.errorenum.Error;
-import lotto.domain.lottoenum.LottoCondition;
+import lotto.util.LottoNumberValidator;
 
 public class WinningLotto {
     private final Lotto lotto;
     private final int bonusNumber;
 
     public WinningLotto(Lotto lotto, int bonusNumber) {
-        validateInRange(bonusNumber);
-        validateDuplicateWithLotto(lotto, bonusNumber);
+        validate(lotto, bonusNumber);
         this.lotto = lotto;
         this.bonusNumber = bonusNumber;
     }
@@ -25,15 +24,13 @@ public class WinningLotto {
         return lottoNumbers.contains(bonusNumber);
     }
 
-    private void validateInRange(int bonusNumber) {
-        if (bonusNumber >= LottoCondition.MIN.getValue() && bonusNumber <= LottoCondition.MAX.getValue()) {
-            return;
-        }
-        throw new IllegalArgumentException(Error.NOT_IN_RANGE.getCode());
+    private void validate(Lotto lotto, int bonusNumber) {
+        LottoNumberValidator.validateInRange(bonusNumber);
+        validateBonusNumberDuplicate(lotto.getNumbers(), bonusNumber);
     }
 
-    private void validateDuplicateWithLotto(Lotto lotto, int bonusNumber) {
-        if (lotto.getNumbers().contains(bonusNumber)) {
+    private void validateBonusNumberDuplicate(List<Integer> lottoNumbers, int bonusNumber) {
+        if (lottoNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(Error.BONUS_NUMBER_DUPLICATE.getCode());
         }
     }
