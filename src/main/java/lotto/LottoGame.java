@@ -16,6 +16,7 @@ public class LottoGame {
         FIFTH_PLACE,
         NOTHING
     }
+
     private static final int _lotto_price = 1000;
     public static final int _first_place = 0;
     public static final int _second_place = 1;
@@ -43,7 +44,7 @@ public class LottoGame {
     public static int[] getResultLotto(List<Lotto> lottoes, Lotto winningLotto, int bonus) {
         int[] matches = {0, 0, 0, 0, 0};
 
-        for (Lotto lotto: lottoes) {
+        for (Lotto lotto : lottoes) {
             eLottoPlace place = matchLotto(lotto, winningLotto, bonus);
             matches = appendPlaceToResult(matches, place);
         }
@@ -99,7 +100,8 @@ public class LottoGame {
     }
 
     private static List<Integer> makeUniqueLottoNumber() {
-        return (Randoms.pickUniqueNumbersInRange(Lotto._min_lotto_number, Lotto._max_lotto_number, Lotto._lotto_length));
+        return (Randoms.pickUniqueNumbersInRange(Lotto._min_lotto_number, Lotto._max_lotto_number,
+                Lotto._lotto_length));
     }
 
     private static int[] appendPlaceToResult(int[] matches, eLottoPlace place) {
