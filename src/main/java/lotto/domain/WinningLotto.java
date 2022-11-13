@@ -24,6 +24,7 @@ public class WinningLotto {
 
         for (String w:words) {
             judgeIsDigitOfString(w);
+            checkRangeOfNumber(w);
             result.add(Integer.parseInt(w));
         }
 
@@ -42,4 +43,13 @@ public class WinningLotto {
             throw new IllegalArgumentException("[ERROR] 입력은 자연수만 가능합니다.");
         }
     }
+
+    private void checkRangeOfNumber(String word) {
+        int number = Integer.parseInt(word);
+
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException("[ERROR] 입력은 1~45사이의 자연수만 가능합니다.");
+        }
+    }
+
 }
