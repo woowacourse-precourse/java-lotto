@@ -1,7 +1,9 @@
 package lotto.util;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.constant.Constant;
+import lotto.constant.Message;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,5 +24,14 @@ public class ServiceInput {
     private static List<Integer> sortLottoNumbers(List<Integer> numbers){
         Collections.sort(numbers);
         return numbers;
+    }
+
+    public static String getInputWinningNumbers() {
+
+        String inputWinningNumbers = Console.readLine();
+
+        // TODO: 예외처리 구현
+
+        return inputWinningNumbers;
     }
 }
