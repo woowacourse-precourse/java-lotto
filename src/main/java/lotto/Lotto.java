@@ -33,6 +33,10 @@ public class Lotto {
         return new Lotto(numbers);
     }
 
+    public boolean contains(Integer number) {
+        return numbers.contains(number);
+    }
+
     @Override
     public String toString() {
         int index;

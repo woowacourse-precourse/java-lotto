@@ -10,13 +10,17 @@ public class Ticket {
     private static final int UNIT_PRICE = 1000;
     private static final String PURCHASE_COMMENT = "개를 구매했습니다.";
 
-    private final LottoView view;
+    private LottoView view;
     private int count;
     private List<Lotto> tickets;
 
     public Ticket(int count, List<Lotto> tickets, LottoView view) {
         this.view = view;
         this.count = count;
+        this.tickets = tickets;
+    }
+
+    public Ticket(List<Lotto> tickets) {
         this.tickets = tickets;
     }
 
@@ -38,5 +42,13 @@ public class Ticket {
         for (Lotto ticket : tickets) {
             view.printMessage(ticket.toString());
         }
+    }
+
+    public Lotto get(int index) {
+        return tickets.get(index);
+    }
+
+    public int size() {
+        return count;
     }
 }
