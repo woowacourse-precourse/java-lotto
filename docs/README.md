@@ -1,4 +1,4 @@
-# 기능 목록 ver 1.4.1
+# 기능 목록 ver 1.4.2
 <hr>
 
 ### 예외처리 상황
@@ -34,7 +34,8 @@
   - [x] 당첨 번호 입력받기 문구 출력 - Guide
   - [x] 보너스 번호 입력받기 문구 출력 - Guide
   - [x] 정수에다가 구두점 표시 후 반환 - Preprocessor
-  - [ ] 당첨 통계 출력 - UserLotto
+  - [ ] 당첨 통계 출력 - Guide
+  - [ ] 수익률 출력 - Guide
 
 
 - [x] 입력 기능
@@ -53,5 +54,5 @@
 - [x] 구매 리스트 생성(랜덤) - NumberGenerator
 - [x] 몇 개의 번호가 당첨 번호와 일치하는지 확인 - Judgment
 - [x] 보너스 번호 일치 여부 확인 - Judgment
-- [x] 당첨결과 리스트 생성 - UserLotto
+- [x] 당첨결과 리스트 생성(당첨 통계) - UserLotto
 - [ ] 수익률 계산 - UserLotto
