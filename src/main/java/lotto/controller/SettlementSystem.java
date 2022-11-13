@@ -22,6 +22,6 @@ public class SettlementSystem {
 
     private static void makeResults(WinningLotto winningLotto, UserLotto userLotto, BonusNumber bonusNumber) {
         awards = AwardManager.makeAwards(winningLotto, userLotto, bonusNumber);
-        yield = YieldManager.makeYield(awards, userLotto.size());
+        yield = YieldManager.makeYield(awards);
     }
 }

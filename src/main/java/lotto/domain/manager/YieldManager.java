@@ -7,8 +7,8 @@ import lotto.util.Util;
 import java.util.List;
 
 public class YieldManager {
-    public static float makeYield(List<Award> prize, int userLottoSize) {
-        float beforeMoney = userLottoSize * Constant.MONEY_UNIT;
+    public static float makeYield(List<Award> prize) {
+        float beforeMoney = prize.size() * Constant.MONEY_UNIT;
         float totalMoney = beforeMoney;
         for (Award award : prize) {
             totalMoney += award.getReward();
