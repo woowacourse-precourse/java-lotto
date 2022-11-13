@@ -5,10 +5,10 @@ import static lotto.service.LottoService.*;
 import java.util.List;
 
 import lotto.Notice;
-import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoStore;
 import lotto.domain.User;
+import lotto.service.LottoService;
 import lotto.view.Input;
 import lotto.view.Output;
 
@@ -28,19 +28,17 @@ public class RunController {
 
 		LottoMachine machine = pickThisRoundLotto();
 
-		user.setPrizeMoney(getMoneyByLotto(seller , machine));
-		Output.printCount(user.getPrizeMoney());
+		if (machine != null) {
+			user.setPrizeMoney(getMoneyByLotto(seller , machine));
+			Output.printCount(user.getPrizeMoney());
 
-		user.setRateOfReturn(calculateRateOfReturn(user.getPrizeMoney(), user.getMoney()));
-		Output.printRateOfReturn(user.getRateOfReturn());
+			user.setRateOfReturn(calculateRateOfReturn(user.getPrizeMoney(), user.getMoney()));
+			Output.printRateOfReturn(user.getRateOfReturn());
+		}
 	}
 
-	private static boolean isNotNull(int money) {
-		return money != 0;
-	}
-
-	private static String calculateRateOfReturn(List<Integer> prizeMoney, int money) {
-		return calculate(prizeMoney, money);
+	private static boolean isNotNull(int value) {
+		return value != 0;
 	}
 
 	private static LottoStore buyLottoByMoney(int quantity) {
@@ -68,25 +66,52 @@ public class RunController {
 	}
 
 	private static LottoMachine pickThisRoundLotto() {
+		List<Integer> winningNumbers = pickWinningNumbers();
+
+		if (winningNumbers != null) {
+			Object bonusNumber = pickBonusNumber();
+			if (bonusNumber != null) {
+				return new LottoMachine(winningNumbers, (int)bonusNumber);
+			}
+		}
+
+		return null;
+	}
+
+	private static List<Integer> pickWinningNumbers() {
 		Output.printNotice(Notice.WINNING_NUMBERS.getNoticeMessage());
 		String winningNumbers = Input.numbers();
 
+		try {
+			return convertStringToList(winningNumbers);
+		} catch (IllegalArgumentException e) {
+			Output.printNotice(Notice.ERROR.getNoticeMessage() + "숫자만 입력해주세요");
+
+			return null;
+		}
+	}
+
+	private static Object pickBonusNumber() {
 		Output.printNotice(Notice.BONUS_NUMBER.getNoticeMessage());
 		String bonusNumber = Input.numbers();
 
-		return new LottoMachine(winningNumbers, bonusNumber);
+		try {
+			return Integer.parseInt(bonusNumber);
+		} catch (IllegalArgumentException e) {
+			Output.printNotice(Notice.ERROR.getNoticeMessage());
+
+			return null;
+		}
 	}
 
 	private static int getCurrentMoney() {
-		int money = 0;
 		String numbers = Input.numbers();
 
 		try {
-			money = Integer.parseInt(numbers);
+			return Integer.parseInt(numbers);
 		} catch (IllegalArgumentException e) {
 			Output.printNotice(Notice.ERROR.getNoticeMessage());
+			return 0;
 		}
-
-		return money;
 	}
 }

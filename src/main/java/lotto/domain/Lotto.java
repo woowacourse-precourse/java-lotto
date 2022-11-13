@@ -3,6 +3,8 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import lotto.Notice;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -22,19 +24,17 @@ public class Lotto {
         return numbers;
     }
 
-    private void checkDuplication(List<Integer> numbers) {
+    private void checkDuplication(List<Integer> lotto) {
         List<Integer> check = new ArrayList<>();
 
-        check.add(numbers.get(0));
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) < 1 || numbers.get(i) > 45) {
-                throw new IllegalArgumentException("[ERROR] 1 ~ 45 사이의 숫자를 입력해주세요.");
-            }
-            if (i != 0 && check.contains(numbers.get(i))) {
-                throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+        check.add(lotto.get(0));
+        for (int i = 0; i < lotto.size(); i++) {
+            if (i != 0 && check.contains(lotto.get(i))) {
+                throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 중복된 숫자가 있습니다.");
             }
             if (i != 0)
-                check.add(numbers.get(i));
+                check.add(lotto.get(i));
         }
     }
+
 }

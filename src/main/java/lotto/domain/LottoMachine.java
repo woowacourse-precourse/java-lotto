@@ -1,23 +1,21 @@
 package lotto.domain;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import lotto.Notice;
 
 public class LottoMachine {
-	private static final String LOTTO_REGEX = ",";
 	private final List<Integer> winningNumbers;
 	private final int bonusNumber;
 
+	public LottoMachine(List<Integer> winningNumbers, int bonusNumber) {
+		this.winningNumbers = winningNumbers;
+		this.bonusNumber = bonusNumber;
 
-	public LottoMachine(String numbers, String bonus) {
-		this.winningNumbers = convertStringToList(numbers);
-		this.bonusNumber = convertInteger(bonus);
-
-		checkException(winningNumbers, bonusNumber);
+		checkException();
 	}
+
 	public int getBonusNumber() {
 		return bonusNumber;
 	}
@@ -26,60 +24,52 @@ public class LottoMachine {
 		return winningNumbers;
 	}
 
-	private List<Integer> convertStringToList(String numbers) {
-		List<String> lotto = Arrays.asList(numbers.split(LOTTO_REGEX));
-		checkWinningNumbers(lotto);
 
-		return lotto.stream()
-				.map(Integer::parseInt)
-				.collect(Collectors.toList());
+	/*
+	예외 처리
+	 */
+	private void checkException() {
+		checkWinningNumbers(winningNumbers);
+		checkNumberRange(bonusNumber);
+
+		checkDuplication(winningNumbers);
+		checkBonusDuplication(winningNumbers, bonusNumber);
 	}
 
-	private int convertInteger(String number) {
-		int bonus = 0;
-
-		if (checkBonus(number)) {
-			bonus = Integer.parseInt(number);
-		}
-
-		return bonus;
-	}
-
-	private void checkWinningNumbers(List<String> lotto) {
+	private void checkWinningNumbers(List<Integer> lotto) {
 		if (lotto.size() != 6) {
-			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + "쉼표로 구분해 주세요");
+			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 6자리의 숫자를 입력해주세요.");
 		}
-		for (String s : lotto) {
-			if (!isNumeric(s)) {
-				throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + "숫자만 입력해주세요");
-			}
 
-			int num = Integer.parseInt(s);
-
-			if (num < 0 || num > 45) {
-				throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 1 ~ 45 사이의 숫자만 입력해 주세요");
-			}
+		for (Integer integer : lotto) {
+			checkNumberRange(integer);
 		}
 	}
-	private boolean isNumeric(String str) {
-		return str.chars().allMatch(Character :: isDigit);
+
+	public void checkNumberRange(int number) {
+		int LOTTO_MIN = 1;
+		int LOTTO_MAX = 45;
+		if (number< LOTTO_MIN || number > LOTTO_MAX) {
+			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 1 ~ 45 사이의 숫자를 입력해 주세요.");
+		}
 	}
 
-	public boolean checkBonus(String bonus) {
-		if (bonus.length() > 2) {
-			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() +"1개만 입력해 주세요.");
-		}
-
-		if (Integer.parseInt(bonus) < 1 || Integer.parseInt(bonus) > 45) {
-			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + "1 ~ 45 사이의 숫자를 입력해 주세요.");
-		}
-
-		return true;
-	}
-
-	private void checkException(List<Integer> lotto, int bonus) {
+	private void checkBonusDuplication(List<Integer> lotto, int bonus) {
 		if (lotto.contains(bonus)) {
-			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + "로또 번호와 다른 보너스 숫자를 입력해주세요.");
+			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 로또 번호와 다른 보너스 숫자를 입력해주세요.");
+		}
+	}
+
+	private void checkDuplication(List<Integer> lotto) {
+		List<Integer> check = new ArrayList<>();
+
+		check.add(lotto.get(0));
+		for (int i = 0; i < lotto.size(); i++) {
+			if (i != 0 && check.contains(lotto.get(i))) {
+				throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 중복된 숫자가 있습니다.");
+			}
+			if (i != 0)
+				check.add(lotto.get(i));
 		}
 	}
 }

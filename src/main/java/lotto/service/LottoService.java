@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Ranking;
@@ -11,6 +12,7 @@ import lotto.domain.Lotto;
 
 public class LottoService {
 	static final int PERCENT = 100;
+	private static final String LOTTO_REGEX = ",";
 
 	public static List<List<Integer>> publishLotteries(int quantity) {
 		List<List<Integer>> candidate = new ArrayList<>();
@@ -30,7 +32,7 @@ public class LottoService {
 		return countWinningNumber(candidate, winningNumbers, bonusNumber);
 	}
 
-	public static String calculate(List<Integer> winningCount, double money) {
+	public static String calculateRateOfReturn(List<Integer> winningCount, double money) {
 		return LottoService.getRateOfReturn(winningCount, money);
 	}
 
@@ -116,5 +118,13 @@ public class LottoService {
 		}
 
 		return sum;
+	}
+
+	public static List<Integer> convertStringToList(String numbers) {
+		List<String> lotto = Arrays.asList(numbers.split(LOTTO_REGEX));
+
+		return lotto.stream()
+				.map(Integer::parseInt)
+				.collect(Collectors.toList());
 	}
 }
