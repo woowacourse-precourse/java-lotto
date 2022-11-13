@@ -18,7 +18,7 @@ public class InputChecker {
         return true;
     }
     public boolean checkInputMoney(String input) throws IllegalArgumentException{
-        if(!isDigit(input) || isMultipleThousand(Integer.parseInt(input))){
+        if(!isDigit(input) || !isMultipleThousand(Integer.parseInt(input))){
             return false;
         }
         return true;
