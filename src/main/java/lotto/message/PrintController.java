@@ -10,6 +10,8 @@ import java.util.List;
 
 public class PrintController {
 
+    static final int PERCENT_UNIT = 100;
+
     public void print(List<Lotto> lottoNumbers) {
 
         System.out.println(String.format(OutputMessage.PURCHASE_COUNT_MESSAGE.message,
@@ -33,9 +35,7 @@ public class PrintController {
     }
 
     public void print(double prizeRate) {
-
-        // 소수점 둘째 자리에서 반올림
-        System.out.println(String.format(OutputMessage.TOTAL_WIN_RATE_MESSAGE.message, prizeRate * 100));
+        System.out.println(String.format(OutputMessage.TOTAL_WIN_RATE_MESSAGE.message, prizeRate * PERCENT_UNIT));
     }
 
     public void printPurchaseMoneyMessage() {
