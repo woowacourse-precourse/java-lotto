@@ -91,6 +91,7 @@ public class Application {
 
         result = getResult(lottoList, winningNumbers, bonusNumber);
         printResult(result);
+        printRate(result, lottoList.size());
     }
 
     private static Integer[] getResult(List<Lotto> lottoList, Lotto winningNumbers, Integer bonusNumber) {
@@ -112,5 +113,14 @@ public class Application {
 
         for (int i = 4; i >= 0; i--)
             System.out.println(resultString[i] + " (" + nf.format(prizeMoney[i]) + "원) - " + result[i] + "개");
+    }
+
+    private static void printRate(Integer[] result, Integer lotteryCount) {
+        int earn = 0;
+
+        for (int i = 4; i >= 0; i--)
+            earn += prizeMoney[i] * result[i];
+
+        System.out.println("총 수익률은 " + Math.round(earn / (lotteryCount * 1000.0) * 100 * 10) / 10.0 + "%입니다.");
     }
 }
