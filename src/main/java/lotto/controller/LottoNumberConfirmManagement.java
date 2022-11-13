@@ -5,6 +5,7 @@ import java.util.List;
 
 public class LottoNumberConfirmManagement {
   private final HashMap<Integer, Integer> winningTickets;
+  private final int BONUS_NUMBER = 100;
 
   private static List<List<Integer>> numberIntegration;
   private static List<Integer> winningNumbers;
@@ -33,12 +34,24 @@ public class LottoNumberConfirmManagement {
       if (winningNumbers.contains(number)) {
         sameNumberCount++;
       }
+      if(sameNumberCount==5){
+        if(checkBonusNumber(numbers)){
+          sameNumberCount = BONUS_NUMBER;
+        }
+      }
     }
     return sameNumberCount;
   }
 
   private boolean containNumber(int number, List<Integer> winningNumbers) {
     if (winningNumbers.contains(number)) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean checkBonusNumber(List<Integer> numbers){
+    if(numbers.contains(bonusNumber)){
       return true;
     }
     return false;
