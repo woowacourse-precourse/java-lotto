@@ -34,7 +34,7 @@ public class Validator {
         }
     }
 
-    private static void validateNumberRange(int number, int startRange, int endRange){
+    public static void validateNumberRange(int number, int startRange, int endRange){
         if(number < startRange || number > endRange){
             throw new IllegalArgumentException(
                     String.format("[ERROR] {} ~ {} 사이의 입력이 아닙니다.", startRange, endRange));
@@ -47,4 +47,9 @@ public class Validator {
         }
     }
 
+    public static void validateNonDuplicatedNumber(List<Integer> numbers, int bonus) {
+        if(numbers.contains(bonus)){
+            throw new IllegalArgumentException("[ERROR] 당첨 번호와 중복된 보너스 번호를 입력하였습니다.");
+        }
+    }
 }

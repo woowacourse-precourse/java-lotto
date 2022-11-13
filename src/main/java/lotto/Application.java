@@ -24,7 +24,7 @@ public class Application {
         WinningNumber winningNumber = new WinningNumber(userInput.getWinningNumber());
 
         guide.printInputBonusGuide();
-        // 보너스 번호 입력 받음
+        winningNumber.updateBonus(userInput.getBonusNumber());
 
         // 결과 출력
     }

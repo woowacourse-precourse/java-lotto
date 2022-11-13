@@ -45,6 +45,12 @@ public class UserInput {
         return lst;
     }
 
+    public int getBonusNumber(){
+        String userInput = getUserInput();
+        Validator.validateStringIsNumeric(userInput);
+        return Integer.parseInt(userInput);
+    }
+
     private String[] getSplit(String input) {
         return input.split(",");
     }
