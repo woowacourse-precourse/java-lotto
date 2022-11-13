@@ -81,6 +81,4 @@ public class LottoDraw {
     public int getBonusNumber() {
         return bonusNumber;
     }
-
-
 }

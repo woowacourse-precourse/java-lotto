@@ -11,6 +11,17 @@ public class LottoBuyer {
     private final int cost;
     private final List<Lotto> lotteries = new ArrayList<>();
 
+    public LottoBuyer() {
+        cost = UI.enterCost();
+        Validation.costValidate(cost);
+
+        int totalLottoCount = this.cost / 1000;
+
+        for (int cnt = 0; cnt < totalLottoCount; cnt++) {
+            lotteries.add(buyRandomLotto());
+        }
+    }
+
     public LottoBuyer(int cost) {
         Validation.costValidate(cost);
         this.cost = cost;
@@ -32,7 +43,6 @@ public class LottoBuyer {
             List<Integer> numbers = numbersList.get(cnt);
             lotteries.add(buyLotto(numbers));
         }
-
     }
 
     public Lotto buyRandomLotto() {

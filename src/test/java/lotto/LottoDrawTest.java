@@ -93,7 +93,6 @@ class LottoDrawTest {
                 List.of(1, 2, 3, 4, 5, 17),
                 List.of(1, 2, 3, 4, 5, 7)
         ));
-
         LottoDraw lottoDraw = new LottoDraw(lottoBuyer);
         lottoDraw.compareLotteries();
         lottoDraw.calculatePrizeMoney();
