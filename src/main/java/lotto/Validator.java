@@ -5,6 +5,7 @@ import lotto.Exception.ExceptionType;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Validator {
     public static void validateMoney(String money) {
@@ -24,6 +25,14 @@ public class Validator {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException(ExceptionType.MONEY_VALUE_EXCEPTION.getMessage());
         }
+    }
+
+    public static void validateLotto(String input) {
+        List<String> lotto = List.of(input.split(","));
+        validateLottoFormat(lotto);
+        List<Integer> lottoNumbers = convertStringListToIntegerList(lotto);
+        validateRange(lottoNumbers);
+        validateDuplicates(lottoNumbers);
     }
 
     public static void validateLottoFormat(List<String> lottos) {
@@ -54,6 +63,9 @@ public class Validator {
         return true;
     }
 
+    public static List<Integer> convertStringListToIntegerList(List<String> lotto) {
+        return lotto.stream().map(Integer::parseInt).collect(Collectors.toList());
+    }
 
     public static void validateRange(List<Integer> numbers) {
         numbers.forEach(number -> {
