@@ -23,7 +23,7 @@ class LottoServiceTest {
     @DisplayName("로또 구매가 정상적으로 되야한다")
     void buyLotto() {
         // given
-        Money money = Money.of(10000);
+        Money money = Money.of(10_000L);
 
         // when
         List<Lotto> lottos = lottoService.buyLottos(money);
@@ -122,7 +122,7 @@ class LottoServiceTest {
     @DisplayName("로또를 만원치 구매하고 수익금이 20억이면 수익률은 20,000,000.0% 여야한다")
     void buyLotto10000WonAnd20BillionProfitThenProfitRateMust_2_000_000Percent() {
         // given
-        Money spentMoney = Money.of(10_000);
+        Money spentMoney = Money.of(10_000L);
         Money totalProfit = Money.of(2_000_000_000L);
 
         // expect

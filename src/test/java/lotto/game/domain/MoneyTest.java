@@ -34,7 +34,7 @@ class MoneyTest {
     void createMoney() {
         // given
         String input = "10000";
-        Money money = Money.of(10000);
+        Money money = Money.of(10_000L);
 
         // expect
         assertThat(Money.of(input))
