@@ -15,6 +15,15 @@ public class Calculator {
         return rankResult;
     }
 
+    public long getSumOfWinningAmount(){
+        long sum = 0;
+        for (WinningRank rank : rankResult){
+            sum += rank.WinningAmount();
+        }
+        return sum;
+    }
+
+
     public static int divide1000(int num){
         return num / UNIT_OF_MONEY;
 

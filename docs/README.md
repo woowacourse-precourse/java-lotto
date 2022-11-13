@@ -62,13 +62,13 @@
   - ✅ (e) 중복 불가 : <BonusValidator> isOverlap()
   - ✅ readLine() 사용
 
-### ✔ 당첨 내역 출력
+### ✔ 당첨 내역 출력 by Enum
 
-- ✅ 숫자 일치 개수 <WinningLotto> matchNumberCount()
-  - ✅ 번호 1개씩 당첨로또에 포함되어있는지 확인
+- ✅ 숫자 일치 개수 
+  - ✅ 번호 1개씩 당첨로또에 포함되어있는지 확인 <WinningLotto> matchNumberCount()
   - ✅ 보너스는 따로 확인 <WinningLotto> isMatchBonusNumber()
-- 당첨 금액
-  - 경우 별 당첨금액 저장
+- ✅ 당첨 금액
+  - ✅ 경우 별 당첨금액 저장 <Calculator> getSumOfWinningAmount()
 - 당첨 로또 개수
   - 경우 별 당첨로또 개수 저장
 
