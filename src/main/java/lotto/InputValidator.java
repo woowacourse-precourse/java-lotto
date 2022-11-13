@@ -4,6 +4,10 @@ import lotto.exception.NotNumberException;
 import lotto.exception.NotThousandException;
 import lotto.exception.WinningNumbersIllegalException;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class InputValidator {
     public void validateInputPurchaseAmount(String input) {
         validateIsNumber(input);
@@ -12,6 +16,12 @@ public class InputValidator {
 
     public void validateInputWinningNumbers(String input) {
         validateIsSeparateByComma(input);
+    }
+    public void validateWinningNumbers(List<Integer> numbers) {
+        Set<Integer> set = new HashSet<>(numbers);
+        if (set.size()!= numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 중복된 값이 있습니다.");
+        }
     }
 
     public void validateInputBonusNumber(String input, Lotto winningNumber) {

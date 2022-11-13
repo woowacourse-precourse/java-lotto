@@ -23,6 +23,7 @@ public class InputManager {
         List<Integer> inputToList = Arrays.stream(input.split(","))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
+        inputValidator.validateWinningNumbers(inputToList);
 
         return new Lotto(inputToList);
     }
