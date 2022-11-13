@@ -12,6 +12,9 @@ import java.util.List;
 
 public class OutputView {
     private static final String BUY = "개를 구매했습니다.";
+    private static final String PROFIT = "총 수익률은 ";
+    private static final String END_WORD = "%입니다.";
+
 
     public static void printBuyLottoNumber(LottoPurAmount lottoPurAmount) {
         String buynumber = "";
@@ -35,5 +38,11 @@ public class OutputView {
             String str = ResultView.valueOf(values2[i].toString()).label() + numberList.get(values2[i].toString()) + "개";
             System.out.println(str);
         }
+    }
+
+    public static void printProfit(float puramount,float winamount) {
+        String profit;
+        profit = PROFIT + String.format("%.1f", puramount/winamount * 100) + END_WORD;
+        System.out.println(profit);
     }
 }
