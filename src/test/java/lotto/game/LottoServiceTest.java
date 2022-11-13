@@ -23,7 +23,7 @@ class LottoServiceTest {
         // given
         String input = "12삼";
         // expect
-        assertThatThrownBy(() -> lottoService.convertInputToMoney(input))
+        assertThatThrownBy(() -> Money.of(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 숫자만 입력해주세요.");
     }
@@ -34,7 +34,7 @@ class LottoServiceTest {
         // given
         String input = "12345";
         // expect
-        assertThatThrownBy(() -> lottoService.convertInputToMoney(input))
+        assertThatThrownBy(() -> Money.of(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1000으로 나눠 떨어지는 금액만 입력해주세요.");
     }
@@ -47,7 +47,7 @@ class LottoServiceTest {
         Money money = Money.of(10000);
 
         // expect
-        assertThat(lottoService.convertInputToMoney(input))
+        assertThat(Money.of(input))
                 .isEqualTo(money);
     }
 

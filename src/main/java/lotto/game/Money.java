@@ -1,6 +1,9 @@
 package lotto.game;
 
+import java.util.regex.Pattern;
+
 public class Money {
+    private static final Pattern moneyPattern = Pattern.compile("^[1-9]\\d*$");
     public static final Money NO_MONEY = new Money(0);
 
     private final long value;
@@ -12,6 +15,13 @@ public class Money {
 
     public static Money of(long value) {
         return new Money(value);
+    }
+
+    public static Money of(String input) {
+        if (!moneyPattern.matcher(input).matches()) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
+        return Money.of(Long.parseLong(input));
     }
 
     private void validate(long value) {
