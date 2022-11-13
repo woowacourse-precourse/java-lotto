@@ -13,6 +13,7 @@ public class Statistics {
     private int fifth = 0;
 
     public Statistics(List<Integer> winningLotto, int bonusNumber) {
+        validate(winningLotto, bonusNumber);
         this.WINNING_LOTTO = winningLotto;
         this.BONUS_NUMBER = bonusNumber;
     }
@@ -30,41 +31,49 @@ public class Statistics {
         lotto.retainAll(WINNING_LOTTO);
         int duplicate = lotto.size();
 
-        isFirstPlace(duplicate);
-        isSecondPlace(duplicate, bonus);
-        isThirdPlace(duplicate, bonus);
-        isFourthPlace(duplicate);
-        isFifthPlace(duplicate);
+        isFirstPrize(duplicate);
+        isSecondPrize(duplicate, bonus);
+        isThirdPrize(duplicate, bonus);
+        isFourthPrize(duplicate);
+        isFifthPrize(duplicate);
     }
 
-    private void isFirstPlace(int duplicate) {
+    private void isFirstPrize(int duplicate) {
         if (duplicate == 6) {
             first += 1;
         }
     }
 
-    private void isSecondPlace(int duplicate, boolean bonus) {
+    private void isSecondPrize(int duplicate, boolean bonus) {
         if (duplicate == 5 && bonus) {
             second += 1;
         }
     }
 
-    private void isThirdPlace(int duplicate, boolean bonus) {
+    private void isThirdPrize(int duplicate, boolean bonus) {
         if (duplicate == 5 && !bonus) {
             third += 1;
         }
     }
 
-    private void isFourthPlace(int duplicate) {
+    private void isFourthPrize(int duplicate) {
         if (duplicate == 4) {
             fourth += 1;
         }
     }
 
-    private void isFifthPlace(int duplicate) {
+    private void isFifthPrize(int duplicate) {
         if (duplicate == 3) {
             fifth += 1;
         }
+    }
+    private void validate(List<Integer> numbers, int number) {
+        if (! isValidUnique(numbers, number)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+        }
+    }
+    private boolean isValidUnique(List<Integer> numbers, int number) {
+        return ! numbers.contains(number);
     }
 }
 
