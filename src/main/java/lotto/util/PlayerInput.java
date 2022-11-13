@@ -36,17 +36,18 @@ public class PlayerInput {
             throw new IllegalArgumentException();
         }
 
-        if (!input.contains(",")) {
-            View.printNotComma();
-            throw new IllegalArgumentException();
-        }
-
         try {
             numbers = Convertor.StringToInteger(Arrays.asList(input.split("\\s*,\\s*")));
         } catch (IllegalArgumentException ie) {
             View.printNotInteger();
             throw new IllegalArgumentException();
         }
+
+        if (!input.contains(",")) {
+            View.printNotComma();
+            throw new IllegalArgumentException();
+        }
+
         return numbers;
     }
 
