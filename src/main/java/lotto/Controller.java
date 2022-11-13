@@ -17,17 +17,16 @@ public class Controller {
         return readLine();
     }
 
-    public String inputBonusNumber(List<Integer> lottoNumber) {
+    public int inputBonusNumber(List<Integer> lottoNumber) {
         ErrorUtil errorUtil = new ErrorUtil();
         OutputView outputView = new OutputView();
         outputView.printInputBonusNumber();
         String bonusNumber = readLine();
-        List<Integer> temp = lottoNumber;
-        temp.add(Integer.parseInt(bonusNumber));
+        lottoNumber.add(Integer.parseInt(bonusNumber));
         errorUtil.errorInputBonusNumber(bonusNumber);
-        errorUtil.errorOverlapLottoNumber(temp);
-        System.out.println(lottoNumber);
-        return bonusNumber;
+        errorUtil.errorOverlapLottoNumber(lottoNumber);
+        lottoNumber.remove(6);
+        return Integer.parseInt(bonusNumber);
     }
 
     public List<Integer> lottoNumber() {
@@ -49,8 +48,7 @@ public class Controller {
         outputView.printRandomLottoNumber(boxRandomNumber);
         List<Integer> lottoNumber = lottoNumber();
         Lotto lotto = new Lotto(lottoNumber);
-        inputBonusNumber(lottoNumber);
-        List<Integer> countWin = dataProcessing.countWinLotto(lottoNumber, boxRandomNumber, countLotto);
-        System.out.println(countWin);
+        int bonusNumber = inputBonusNumber(lottoNumber);
+        List<Integer> countWin = dataProcessing.countWinLotto(lottoNumber, boxRandomNumber, countLotto, bonusNumber);
     }
 }
