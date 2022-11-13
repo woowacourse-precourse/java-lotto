@@ -11,7 +11,7 @@ public class Application {
     static int inputPrice = 0;
 
     public static void main(String[] args) throws Exception {
-        List<List<Integer>> myLottoTickets = buyLotto();
+        List<Lotto> myLottoTickets = buyLotto();
         printMyLottoTickets(myLottoTickets);
 
         List<Integer> winnerNumber = inputWinnerNumber();
@@ -45,34 +45,35 @@ public class Application {
         return buyingPrice / 1000;
     }
 
-    public static List<List<Integer>> getLottoTickets(int ticketAmount) {
-        List<List<Integer>> lottoTickets = new ArrayList<>();
+    public static List<Lotto> getLottoTickets(int ticketAmount) {
+        List<Lotto> lottoTickets = new ArrayList<>();
 
         for (int i = 0; i < ticketAmount; i++) {
-            List<Integer> ticket = Lotto.createRandomLottoNumber();
+            List<Integer> randomLottoNumber = Lotto.createRandomLottoNumber();
+            Lotto ticket = new Lotto(randomLottoNumber);
             lottoTickets.add(ticket);
         }
 
         return lottoTickets;
     }
 
-    private static List<List<Integer>> buyLotto() {
+    private static List<Lotto> buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         String userInput = Console.readLine();
         System.out.println();
         int buyingPrice = checkUserInputCondition(userInput);
         inputPrice = buyingPrice;
         int ticketAmount = convertBuyingPriceIntoTicketAmount(buyingPrice);
-        List<List<Integer>> lottoTickets = getLottoTickets(ticketAmount);
+        List<Lotto> lottoTickets = getLottoTickets(ticketAmount);
 
         return lottoTickets;
     }
 
-    private static void printMyLottoTickets(List<List<Integer>> lottoTickets) {
+    private static void printMyLottoTickets(List<Lotto> lottoTickets) {
         int size = lottoTickets.size();
         System.out.println(size + "개를 구매했습니다.");
-        for (List<Integer> lottoTicket : lottoTickets) {
-            System.out.println(lottoTicket);
+        for (Lotto lottoTicket : lottoTickets) {
+            System.out.println(lottoTicket.getNumbers());
         }
         System.out.println();
     }
@@ -148,10 +149,27 @@ public class Application {
         }
     }
 
-    public static void saveWinningPlaceByTicket(List<Integer> winnerNumber, List<List<Integer>> lottoTickets, int bonusNumber) throws Exception {
+    public static WinningPlace countCorrespondingNumbers(List<Integer> winnerNumber, Lotto checkTargetNumber, int bonusNumber) throws Exception {
+        int correspondingNumber = 0;
+        int correspondingBonusNumber = 0;
+
+        for (Integer targetNumber : checkTargetNumber.getNumbers()) {
+            if (winnerNumber.contains(targetNumber)) {
+                correspondingNumber++;
+            }
+        }
+
+        if (checkTargetNumber.getNumbers().contains(bonusNumber)) {
+            correspondingBonusNumber++;
+        }
+
+        return WinningPlace.getPlace(correspondingNumber, correspondingBonusNumber);
+    }
+
+    public static void saveWinningPlaceByTicket(List<Integer> winnerNumber, List<Lotto> lottoTickets, int bonusNumber) throws Exception {
         initWinningHistory();
-        for (List<Integer> lottoTicket : lottoTickets) {
-            WinningPlace winningPlace = Lotto.countCorrespondingNumbers(winnerNumber, lottoTicket, bonusNumber);
+        for (Lotto lottoTicket : lottoTickets) {
+            WinningPlace winningPlace = countCorrespondingNumbers(winnerNumber, lottoTicket, bonusNumber);
             addToHistory(winningPlace);
         }
     }
