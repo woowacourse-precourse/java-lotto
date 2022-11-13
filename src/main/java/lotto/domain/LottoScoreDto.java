@@ -1,14 +1,14 @@
 package lotto.domain;
 
 public final class LottoScoreDto {
-    private final long three;
-    private final long four;
-    private final long five;
-    private final long fiveBonus;
-    private final long six;
+    private final int three;
+    private final int four;
+    private final int five;
+    private final int fiveBonus;
+    private final int six;
     private final double rate;
 
-    public LottoScoreDto(long three, long four, long five, long fiveBonus, long six, double rate) {
+    public LottoScoreDto(int three, int four, int five, int fiveBonus, int six, double rate) {
         this.three = three;
         this.four = four;
         this.five = five;
@@ -17,23 +17,23 @@ public final class LottoScoreDto {
         this.rate = rate;
     }
 
-    public long getThree() {
+    public int getThree() {
         return three;
     }
 
-    public long getFour() {
+    public int getFour() {
         return four;
     }
 
-    public long getFive() {
+    public int getFive() {
         return five;
     }
 
-    public long getFiveBonus() {
+    public int getFiveBonus() {
         return fiveBonus;
     }
 
-    public long getSix() {
+    public int getSix() {
         return six;
     }
 
