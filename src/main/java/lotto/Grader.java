@@ -37,7 +37,7 @@ public class Grader {
                 .forEach(rank -> System.out.println(rank.getDetail() + rank.getStrCount()));
     }
 
-    private boolean isRankTwo(int matchNumber, List<Integer> lottoNumbers) {
+    public boolean isRankTwo(int matchNumber, List<Integer> lottoNumbers) {
        return matchNumber == 5 && lottoNumbers.contains(bonusNumber);
     }
 
