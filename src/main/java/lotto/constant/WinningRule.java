@@ -11,12 +11,12 @@ public enum WinningRule {
 
     private final String rank;
     private final int money;
-    private final String rule;
+    private final String announcement;
 
-    WinningRule(String rank, int money, String rule) {
+    WinningRule(String rank, int money, String announcement) {
         this.rank = rank;
         this.money = money;
-        this.rule = rule;
+        this.announcement = announcement;
     }
 
     public String getRank() {
@@ -27,7 +27,7 @@ public enum WinningRule {
         return money;
     }
 
-    public String getRule() {
-        return rule;
+    public String getAnnouncement() {
+        return announcement;
     }
 }
