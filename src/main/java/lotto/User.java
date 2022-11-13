@@ -12,7 +12,7 @@ public class User {
         money = scanner.nextInt();
     }
 
-    public List<Lotto> buyLotto(){
+    public void buyLotto(){
         Seller seller = new Seller();
         seller.validateMoneyUnit(money);
         lottoBag = seller.sellLotto(money);
