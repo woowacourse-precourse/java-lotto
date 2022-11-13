@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -24,4 +24,18 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("복수의 로또의 당첨 개수를 확인한다.")
+    @Test
+    void LottoMatchList() {
+        List<Integer> winNumbers = List.of(1,2,3,4,5,6);
+        Lotto winLotto = new Lotto(winNumbers);
+        winLotto.setBonusNumber(45);
+
+        Lotto lotto1 = new Lotto(List.of(1,7,8,9,10,11));
+        Lotto lotto2 = new Lotto(List.of(1,2,3,14,15,16));
+        List<Lotto> boughtLottos = List.of(lotto1, lotto2);
+
+        assertThat(winLotto.matchWithList(boughtLottos, 1)).isEqualTo(1);
+        assertThat(winLotto.matchWithList(boughtLottos, 3)).isEqualTo(1);
+    }
 }
