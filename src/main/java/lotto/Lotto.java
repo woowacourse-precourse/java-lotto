@@ -11,6 +11,7 @@ public class Lotto {
     private static final String LOTTO_LENGTH_ERROR_MESSAGE = "로또 번호는 " + LOTTO_LENGTH + "개의 숫자로 이루어져야 합니다.";
     private static final String RANGE_NUMBER_ERROR_MESSAGE = "로또 번호는 " + LOTTO_RANGE_START_NUMBER + "이상 "
             + LOTTO_RANGE_END_NUMBER + "이하 범위이여야 합니다." ;
+    private static final String DUPLICATED_NUMBER_ERROR_MESSAGE = "로또 번호에 중복된 숫자가 존재합니다.";
 
     private final List<Integer> numbers;
 
@@ -18,6 +19,7 @@ public class Lotto {
         checkExistedLotto(numbers);
         checkLottoLength(numbers);
         checkRangeNumber(numbers);
+        checkDuplicatedNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -44,5 +46,10 @@ public class Lotto {
     }
 
     private void checkDuplicatedNumber(List<Integer> numbers) {
+        long distinctCount = numbers.stream().distinct().count();
+        if(LOTTO_LENGTH != distinctCount){
+            Logger.log(DUPLICATED_NUMBER_ERROR_MESSAGE, LogType.ERROR);
+            throw new IllegalArgumentException();
+        }
     }
 }
