@@ -18,9 +18,9 @@
 ---
 ## 기능목록
 
-- [] 로또번호 랜덤생성기 구현 - LottoGenerator
+- [X] 로또번호 랜덤생성기 구현 - LottoGenerator
   - [X] 구입기능 구현 - LottoGenerator 생성자
-  - [] 생성해야 할 로또 수 리턴하는 메소드 - getGenerateCount
+  - [X] 생성해야 할 로또 수 리턴하는 메소드 - getGenerateCount
     - [X] 1000원 단위, 1000원 단위X-> 예외처리
   - [X] 생성번호 필요조건: 중복X. 번호개수는 6개 고정 - LottoGenerator#createLottoNumber
   
@@ -28,6 +28,7 @@
 
 - [] 당첨 번호 구현 WinnningNumber
   - [] 당첨번호 입력 조건: 번호개수 6, 중복X, 쉼표 기준 
+    -  중복X WinningNumber#noDuplicateNumber
   - [] 보너스 번호 입력 조건, 당첨번호와 중복X
 
 

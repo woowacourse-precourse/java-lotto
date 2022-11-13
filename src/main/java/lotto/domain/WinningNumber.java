@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class WinningNumber {
     List<Integer> winNumber;
@@ -25,4 +28,25 @@ public class WinningNumber {
     public int getBonusNumber() {
         return bonusNumber;
     }
+
+    private Boolean checkDuplicateNumber(List<Integer> winNumbers) throws IllegalAccessException {
+        List<Integer> tempWinNumber = new ArrayList<>(winNumbers);
+        Set<Integer> numSet = new HashSet<>(tempWinNumber);
+
+        if (numSet.size() != tempWinNumber.size()) {
+            System.out.println("중복된 요소가 있습니다!");
+            throw new IllegalAccessException("[ERROR]: Duplicate!");
+        }
+        return true;
+    }
+
+    private Boolean checkWinNumberSize(List<Integer> winNumber) throws IllegalAccessException {
+        if (winNumber.size() != 6) {
+            System.out.println("당첨번호 숫자는 6개입니다!");
+            throw new IllegalAccessException("[ERROR]: NOT CORRECT UNIT!");
+        }
+        return true;
+    }
+
+
 }
