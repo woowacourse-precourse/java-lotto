@@ -1,6 +1,14 @@
 package lotto.model;
 
-import static lotto.constant.LottoConstants.*;
+import static lotto.constant.LottoConstants.DUPLICATE_NUMBER_EXIST_MSG;
+import static lotto.constant.LottoConstants.EMPTY_LOTTO_VALUE_MSG;
+import static lotto.constant.LottoConstants.INVALID_LOTTO_INPUT_FORM;
+import static lotto.constant.LottoConstants.INVALID_LOTTO_SIZE_MSG;
+import static lotto.constant.LottoConstants.INVALID_RANGED_LOTTO_INPUT;
+import static lotto.constant.LottoConstants.LOTTO_SIZE;
+import static lotto.constant.LottoConstants.MAX_VALID_LOTTO_VALUE;
+import static lotto.constant.LottoConstants.MIN_VALID_LOTTO_VALUE;
+import static lotto.constant.LottoConstants.TO_STRING;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -12,7 +20,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = sort(numbers);
     }
 
     public Lotto(String userInput) {
@@ -20,11 +28,11 @@ public class Lotto {
         List<Integer> numbers = toList(userInput);
 
         hasDuplicateNumber(numbers);
-        this.numbers=numbers;
+        this.numbers = sort(numbers);
     }
 
     public int countContainedNumbersIn(Lotto another) {
-        return (int)this.numbers.stream()
+        return (int) this.numbers.stream()
                 .filter(number -> another.numbers.contains(number))
                 .count();
     }
@@ -57,6 +65,11 @@ public class Lotto {
         return Arrays.stream(userInput.split(","))
                 .mapToInt(Integer::parseInt)
                 .boxed()
+                .collect(Collectors.toList());
+    }
+
+    private List<Integer> sort(List<Integer> numbers) {
+        return numbers.stream()
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
     }
@@ -95,7 +108,7 @@ public class Lotto {
         }
     }
 
-    private void isConsistWithProperRange(String userInput){
+    private void isConsistWithProperRange(String userInput) {
         for (String piece : userInput.split(",")) {
             isInRange(piece);
         }
@@ -104,7 +117,7 @@ public class Lotto {
     private void isInRange(String piece) {
         isNumeric(piece);
         int pieceToInt = Integer.parseInt(piece);
-        if (pieceToInt < MIN_VALID_LOTTO_VALUE || pieceToInt >MAX_VALID_LOTTO_VALUE ) {
+        if (pieceToInt < MIN_VALID_LOTTO_VALUE || pieceToInt > MAX_VALID_LOTTO_VALUE) {
             throw new IllegalArgumentException(INVALID_RANGED_LOTTO_INPUT);
         }
     }
