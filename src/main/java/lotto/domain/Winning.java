@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Winning {
@@ -10,11 +13,16 @@ public class Winning {
     }
 
     public void pickNum() {
-
+        String[] input = Console.readLine().split(",");
+        this.numbers = saveNumbers(input);
     }
 
-    private void validate() {
-
+    private List<Integer> saveNumbers(String[] numbers) {
+        List<Integer> save = new ArrayList<>();
+        for (String number : numbers) {
+            save.add(Integer.parseInt(number));
+        }
+        return save;
     }
 
     public void compare(User user) {
