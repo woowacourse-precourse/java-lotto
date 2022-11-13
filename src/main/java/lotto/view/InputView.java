@@ -19,20 +19,28 @@ public class InputView {
 
     public void validateMoneyInput(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 로또를 구매하시려면 천원 단위의 금액만 가능합니다.");
         }
     }
 
+    /*
+    inputView 에 존재하여야 하는 메소드
+    1. 로또 구입 금액 입력
+    2. 당첨 번호 입력
+    3. 보너스 번호 입력
+     */
     public int inputLottoPurchaseMoney() {
         lottoPurchaseMoney = Integer.parseInt(Console.readLine());
         validateMoneyInput(lottoPurchaseMoney);
         return lottoPurchaseMoney;
     }
 
+    // 얘는 LottoTickets 클래스에
     public int getLottoTickets(int money) {
         return lottoPurchaseMoney / PRICE_PER_LOTTO;
     }
 
+    // 당첨번호 입력 메소드이므로 WinningLotto 클래스로
     public List<Integer> createWinningNumber() {
         String inputNumbers = Console.readLine();
         List<Integer> winningNumbers = new ArrayList<>();
@@ -42,7 +50,7 @@ public class InputView {
         return winningNumbers;
     }
 
-    // 보너스 숫자를 입력해 int 형으로 반환함
+    // 보너스 번호 입력하는 메소드이므로 inputview에
     public int inputBonusNumber() {
         return Integer.parseInt(Console.readLine());
     }
@@ -53,6 +61,7 @@ public class InputView {
         return oneGameNumbers;
     }
 
+    // 로또 게임 횟수 만큼 로또 번호를 랜덤하게 발행하는 메소드
     public List<List<Integer>> createAllGameLottoNumber(int ticket) {
         allLottoNumber = new ArrayList<>();
         for (int i = 0; i < ticket; i++) {
@@ -61,12 +70,7 @@ public class InputView {
         return allLottoNumber;
     }
 
-    /**
-     * 한 게임의 로또 번호와 당첨번호, 보너스 번호를 받아서 당첨 여부를 확인하는 메소드
-     * @param lottoNumbers
-     * @param winningNumbers
-     * @param bonusNumber
-     */
+    // 로또 번호, 당첨 번호, 보너스 번호를 입력받아 등수를 확인함
     public void compareWinningNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers, int bonusNumber) {
         if(lottoNumbers.contains(bonusNumber)){
             List <Integer> result = lottoNumbers.stream()
@@ -82,6 +86,7 @@ public class InputView {
         }
     }
 
+    // 몇 개 맞췄는지 확인하고 보너스 번호의 유무를 받아서 2등 당첨의 경우를 고려함
     private void judgeLottoRank(List<Integer> result, int bonusNumber) {
         if (result.size() == 0) {
             lottoResult.set(0, lottoResult.get(0)+1);
@@ -100,6 +105,7 @@ public class InputView {
         }
     }
 
+    // 당첨 결과를 통해 총 수익을 계산하는 메소드
     public int calculrateLottoEarningMoney(List<Integer> lottoResult) {
         int earningMoney = 0;
         earningMoney += lottoResult.get(0) * 2000000000;
@@ -110,6 +116,7 @@ public class InputView {
         return earningMoney;
     }
 
+    // 로또 구입 금액과 수익을 계산하여 수익률을 반환함
     public String calculrateLottoEarningRate(int earningMoney, int purchaseMoney) {
         double earningRate = (double) earningMoney / purchaseMoney * 100;
         String stringFormatResult = String.format("%.1f", earningRate);
