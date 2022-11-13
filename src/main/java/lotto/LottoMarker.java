@@ -5,18 +5,15 @@ import java.util.Set;
 
 public class LottoMarker {
     public static LottoResult produceWinningStatistic(LottoWinNumber answer, Lotto ticket){
-        Set<Integer> answerNumSet=new HashSet<>(answer.getNumbers());
-        int numOfCorrectLottoNum=0;
-        boolean bonusNumCorrect=false;
-        if(answerNumSet.contains(answer.getBonusNum())){
-            bonusNumCorrect=true;
+        Set<Integer> answerNumberSet=new HashSet<>(answer.getNumbers());
+        Set<Integer> ticketNumberSet=new HashSet<>(ticket.getNumbers());
+        boolean bonusNumberCorrect=false;
+        if (ticketNumberSet.contains(answer.getBonusNum())){
+            bonusNumberCorrect=true;
         }
-        for (int number :ticket.getNumbers()){
-            if(answerNumSet.contains(number)){
-                numOfCorrectLottoNum+=1;
-                answerNumSet.remove(number);
-            }
-        }
-        return LottoResult.getInstance(numOfCorrectLottoNum,bonusNumCorrect);
+        Set<Integer> intersection=new HashSet<>(answerNumberSet);
+        intersection.retainAll(ticketNumberSet);
+        int numberOfCorrectLottoNumbers=intersection.size();
+        return LottoResult.getInstance(numberOfCorrectLottoNumbers,bonusNumberCorrect);
     }
 }

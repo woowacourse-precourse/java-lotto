@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
 
@@ -20,6 +22,10 @@ public class Lotto {
                 throw new IllegalArgumentException
                     ("[ERROR] 로또 번호는 1~45 범위 안에 있는 정수값이어야 합니다.");
             }
+        }
+        Set<Integer> numberSet=new HashSet<>(numbers);
+        if (numberSet.size()!=6){
+            throw new IllegalArgumentException("[ERROR] 중복되지 않은 로또 번호를 뽑아야 합니다.");
         }
     }
 
