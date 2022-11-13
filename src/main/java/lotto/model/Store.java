@@ -8,7 +8,6 @@ import static lotto.utils.NumberAdapter.fitWinningNumberWithBonusNumber;
 import static lotto.utils.NumberAdapter.getPaidMoney;
 import static lotto.validator.BonusNumberValidator.hasValidBonusNumber;
 import static lotto.validator.LottoNumberValidator.hasValidLotteryNumber;
-import static lotto.view.InputView.readUserPaidMoney;
 
 import java.util.List;
 import java.util.Map;
