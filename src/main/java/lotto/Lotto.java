@@ -20,7 +20,7 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR} 로또 번호는 모두 달라야 합니다.");
         }
 
-        numbers.stream().forEach(s -> LottoValidator.checkRange(s));
+        numbers.stream().forEach(s -> LottoValidator.checkLottoRange(s));
     }
 
     public int size() {
