@@ -33,6 +33,10 @@ public class Customer {
         return bag.getLottos();
     }
 
+    public void earn(int money) {
+        bag.setAmount(money);
+    }
+
     private void validate(String number) {
         if (!number.matches("^[0-9]+$")) {
             System.out.println("[ERROR] 구매 금액은 숫자여야 합니다.");
