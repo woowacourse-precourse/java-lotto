@@ -12,6 +12,12 @@ public class EnterWinningNumber {
         return convert(Console.readLine());
     }
 
+    private int getBonusNumberInput() {
+        int bonusNumber = inputIsNumber(Console.readLine());
+        isEachNumberBetween1AND45(bonusNumber);
+        return bonusNumber;
+    }
+
     private List<Integer> convert(String winningNumber) {
         List<Integer> winninLotto = new ArrayList<>();
         String[] winningSplitNumber = winningNumber.split(",");
