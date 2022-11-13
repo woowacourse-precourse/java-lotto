@@ -34,7 +34,8 @@ public enum ConsoleMessage {
     RESULT {
         @Override
         public void printMsg(int[] result) {
-            String message = String.format(RESULT_MSG, result[0], result[1], result[2], result[3], result[4]);
+            //result에서는 1등부터 순서대로 저장되어 있지만 반대 순위부터 출력해야 해서 끝부터 출력한다.
+            String message = String.format(RESULT_MSG, result[4], result[3], result[2], result[1], result[0]);
             System.out.println(message);
         }
     },
