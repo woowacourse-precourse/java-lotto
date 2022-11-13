@@ -48,6 +48,8 @@ public class Application {
             Map<Rank,Integer> lottoResult = calculateResultService.compare(winningNumber.getNumbers(), bonusNumber, lottoList);
             printWinningResultMessage(lottoResult);
 
+            printYieldMessage(calculateResultService.getYield(purchaseAmount, lottoResult));
+
 
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());

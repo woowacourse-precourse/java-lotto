@@ -38,4 +38,21 @@ public class CalculateResultService {
     public void add(Rank rank){
         lottoCount.merge(rank, 1, (value, putValue) -> value + 1);
     }
+
+    public double getYield(Integer lottoSheetsAmount, Map<Rank,Integer> lottoResult) {
+        Integer profit = calculateProfit(lottoResult);
+        double yield = ((double)profit / (double)lottoSheetsAmount) * 100 ;
+        return Math.round(yield * 100) / 100.0;
+    }
+    public Integer calculateProfit(Map<Rank,Integer> lottoResult){
+        Integer profit = 0;
+        for(Rank rank : Rank.values()){
+            if(lottoResult.get(rank) == null){
+                continue;
+            }
+            profit += lottoResult.get(rank) * rank.getPrizeMoney();
+        }
+        System.out.println("profit = " + profit);
+        return profit;
+    }
 }

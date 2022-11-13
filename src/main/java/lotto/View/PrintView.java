@@ -30,19 +30,19 @@ public class PrintView {
 
     public static void printWinningResultMessage(Map<Rank, Integer> lottoResult) {
         String str = "\n당첨 통계\n" +
-                "---\n";
+                "---";
         for (Rank rank : Rank.values()) {
             if (rank.equals(Rank.LOSING_TICKET))
                 continue;
             if(rank.equals(Rank.BONUS)){
-                str += String.format( "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n" ,
+                str += String.format( "\n%d개 일치, 보너스 볼 일치 (%s원) - %d개" ,
                         rank.getCount(),
                         getPrizeMoney(rank),
                         getWinningCount(lottoResult.get(rank)));
                 continue;
             }
 
-            str += String.format( "%d개 일치 (%s원) - %d개\n" ,
+            str += String.format( "\n%d개 일치 (%s원) - %d개" ,
                     rank.getCount(),
                     getPrizeMoney(rank),
                     getWinningCount(lottoResult.get(rank)));
@@ -50,8 +50,8 @@ public class PrintView {
         System.out.println(str);
     }
 
-    public static void printYieldMessage(int yield) {
-        String str = String.format("총 수익률은 %d%%입니다.", yield);
+    public static void printYieldMessage(double yield) {
+        String str = "총 수익률은 " + yield +"%입니다.";
         System.out.println(str);
     }
 
