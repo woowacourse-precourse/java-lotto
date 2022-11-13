@@ -17,4 +17,8 @@ public class Result {
             result.put(ranking, result.getOrDefault(ranking, 0) + 1);
         }
     }
+
+    public Map<Ranking, Integer> getResult() {
+        return result;
+    }
 }
