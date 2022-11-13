@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.view.input;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

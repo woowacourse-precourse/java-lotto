@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.view.output;
 
 import java.text.DecimalFormat;
 import java.util.stream.Collectors;

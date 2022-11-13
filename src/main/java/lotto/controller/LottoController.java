@@ -8,8 +8,8 @@ import lotto.domain.Lottos;
 import lotto.domain.Money;
 import lotto.domain.WinningLotto;
 import lotto.domain.strategy.RandomLottoNumberGenerateStrategy;
-import lotto.view.InputView;
-import lotto.view.OutputView;
+import lotto.view.input.InputView;
+import lotto.view.output.OutputView;
 
 public class LottoController {
     private static final String ERROR_MESSAGE = "[ERROR] ";
