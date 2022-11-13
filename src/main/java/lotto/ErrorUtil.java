@@ -12,8 +12,8 @@ public class ErrorUtil {
     }
 
     public void errorInputLottoNumber(String[] lottoNumbers) {
-        for (int i=0;i<lottoNumbers.length;++i) {
-            if (Integer.parseInt(lottoNumbers[i]) < 1 || Integer.parseInt(lottoNumbers[i]) > 45) {
+        for (String lottoNumber : lottoNumbers) {
+            if (Integer.parseInt(lottoNumber) < 1 || Integer.parseInt(lottoNumber) > 45) {
                 outputView.printErrorInputLottoNumber();
                 throw new IllegalArgumentException();
             }

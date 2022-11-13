@@ -63,18 +63,33 @@ public class DataProcessing {
 
     public int[] resultWinLotto(List<Integer> countWin) {
         int[] resultLotto = {0, 0, 0, 0, 0};
-        for (int i=0;i<countWin.size();++i) {
-            if (countWin.get(i) == 6)
+        for (Integer integer : countWin) {
+            if (integer == 6)
                 resultLotto[4] += 1;
-            else if (countWin.get(i) == 7)
+            else if (integer == 7)
                 resultLotto[3] += 1;
-            else if (countWin.get(i) == 5)
+            else if (integer == 5)
                 resultLotto[2] += 1;
-            else if (countWin.get(i) == 4)
+            else if (integer == 4)
                 resultLotto[1] += 1;
-            else if (countWin.get(i) == 3)
+            else if (integer == 3)
                 resultLotto[0] += 1;
         }
         return resultLotto;
+    }
+
+    public int totalMoney(int[] resultWin) {
+        int result = 0;
+        int[] winMoney = {5000, 50000, 1500000, 30000000, 2000000000};
+        for (int i=0;i<resultWin.length;++i)
+            result += winMoney[i] * resultWin[i];
+        return result;
+    }
+
+    public float totalReturn(int countLotto, int[] resultWin) {
+         float principal = countLotto * 1000;
+         float resultMoney = totalMoney(resultWin);
+         float result = (resultMoney * 100) / principal;
+         return result;
     }
 }

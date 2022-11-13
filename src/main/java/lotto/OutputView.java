@@ -18,8 +18,9 @@ public class OutputView {
     private static final String FIVEWIN = "5개 일치 (1,500,000원) - ";
     private static final String BONUSWIN = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     private static final String SIXWIN = "6개 일치 (2,000,000,000원) - ";
-
     private static final String COUNT = "개";
+    private static final String RESULTRETURN = "총 수익률은 ";
+    private static final String ISPERCENT = "%입니다.";
     public void printInputMoney() {
         System.out.println(INPUTMONEY);
     }
@@ -50,8 +51,8 @@ public class OutputView {
     }
 
     public void printRandomLottoNumber(List<List<Integer>> randomBoxNumbers) {
-        for (int i=0;i<randomBoxNumbers.size();++i) {
-            System.out.println(randomBoxNumbers.get(i));
+        for (List<Integer> randomBoxNumber : randomBoxNumbers) {
+            System.out.println(randomBoxNumber);
         }
     }
 
@@ -63,5 +64,9 @@ public class OutputView {
         System.out.println(FIVEWIN + resultWin[2] + COUNT);
         System.out.println(BONUSWIN + resultWin[3] + COUNT);
         System.out.println(SIXWIN + resultWin[4] + COUNT);
+    }
+
+    public void printResultReturn(float ResultReturn) {
+        System.out.println(RESULTRETURN + String.format("%.1f", ResultReturn) + ISPERCENT);
     }
 }
