@@ -14,8 +14,12 @@ public class UI {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         String[] split = input.split(",");
-        Integer[] numbers = Arrays.stream(split).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
-        return Arrays.asList(numbers);
+        try {
+            Integer[] numbers = Arrays.stream(split).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
+            return Arrays.asList(numbers);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자와 , 만 입력해주세요. ex)1,2,3,4,5,6");
+        }
     }
 
     public static int enterCost(){
@@ -49,7 +53,11 @@ public class UI {
     public static Integer enterBonusNumber() {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
     }
 
 
