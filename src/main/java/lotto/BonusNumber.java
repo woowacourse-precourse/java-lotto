@@ -2,6 +2,8 @@ package lotto;
 
 public class BonusNumber {
     private int bonusNumber;
+    private final int START_LOTTO_NUMBER = 1;
+    private final int END_LOTTO_NUMBER = 45;
 
     public BonusNumber(int number) {
         validate(number);
@@ -19,6 +21,6 @@ public class BonusNumber {
     }
 
     private boolean isValidRange(int number) {
-        return 1 <= number && number <= 45;
+        return START_LOTTO_NUMBER <= number && number <= END_LOTTO_NUMBER;
     }
 }
