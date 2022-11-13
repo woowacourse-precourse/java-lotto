@@ -14,13 +14,14 @@ public class LottoGame {
     private final LottoMachine lottoMachine = new LottoMachine();
     
     public void start() {
-        List<Lotto> boughtLottos = lottoMachine.buy(getPurchaseAmount());
+        Integer purchaseAmount = getPurchaseAmount();
+        List<Lotto> boughtLottos = lottoMachine.buy(purchaseAmount);
         printBoughtLottoList(boughtLottos);
         
         WinningNumber winningNumber = new WinningNumber(getWinningNormalNumbers(), getWinningBonusNumbers());
         
         List<WinningDetail> winningDetails = compareLottoList(boughtLottos, winningNumber);
-        printWinningStatistic(winningDetails);
+        printWinningStatistic(winningDetails, purchaseAmount);
     }
     
     private List<WinningDetail> compareLottoList(List<Lotto> lottos, WinningNumber winningNumber) {
@@ -39,15 +40,18 @@ public class LottoGame {
     }
     
     private Integer getPurchaseAmount() {
-        return 10000;
+        System.out.println("구입금액을 입력해 주세요.");
+        return LottoInput.getPurchaseAmount();
     }
     
     private List<Integer> getWinningNormalNumbers() {
-        return List.of(1, 2, 3, 4, 5, 6);
+        System.out.println("당첨 번호를 입력해 주세요.");
+        return LottoInput.getNormalNumbers();
     }
     
     private List<Integer> getWinningBonusNumbers() {
-        return List.of(7);
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return List.of(LottoInput.getBonusNumber());
     }
     
     private void printBoughtLottoList(List<Lotto> lottos) {
@@ -58,7 +62,7 @@ public class LottoGame {
         }
     }
     
-    private void printWinningStatistic(List<WinningDetail> winningDetails) {
+    private void printWinningStatistic(List<WinningDetail> winningDetails, Integer purchaseAmount) {
         System.out.println("당첨 통계");
         System.out.println("---");
         
@@ -68,6 +72,6 @@ public class LottoGame {
             System.out.println(winningText);
         }
         
-        System.out.println("총 수익률은 " + winningStatistic.getTextByRateOfReturn(getPurchaseAmount()) + "입니다.");
+        System.out.println("총 수익률은 " + winningStatistic.getTextByRateOfReturn(purchaseAmount) + "입니다.");
     }
 }
