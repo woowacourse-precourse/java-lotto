@@ -52,7 +52,7 @@ public class LottoNumber {
         }
     }
 
-    private static void validIsDigit(String num) {
+    private void validIsDigit(String num) {
         try {
             Integer.parseInt(num);
         } catch (IllegalArgumentException e) {
@@ -61,7 +61,7 @@ public class LottoNumber {
         }
     }
 
-    private static void validNumberRange(int num) {
+    private void validNumberRange(int num) {
         if (num < LOTTO_NUMBER_MIN || num > LOTTO_NUMBER_MAX) {
             System.out.println(NOT_LOTTO_NUMBER_RANGE);
             throw new IllegalArgumentException(NOT_LOTTO_NUMBER_RANGE);
