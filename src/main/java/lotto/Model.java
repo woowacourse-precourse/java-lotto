@@ -76,4 +76,14 @@ public class Model {
     public static String[] SplitInput(String string) {
         return string.split(",");
     }
+
+    public static List<Integer> MakeStringToListInteger(String[] strings) {
+        List<Integer> result = new ArrayList<>();
+
+        for (String str : strings) {
+            result.add(Integer.parseInt(str));
+        }
+
+        return result;
+    }
 }
