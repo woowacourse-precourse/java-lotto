@@ -24,7 +24,7 @@ public class Cashier {
     }
 
     public void getResultInAccount() {
-//        this.account.getResult();
+        this.account.printResult();
     }
 
     public void setWinningRule() {
