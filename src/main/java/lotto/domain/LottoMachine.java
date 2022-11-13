@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.constant.Score;
+import lotto.config.Score;
 
 import java.util.List;
 import java.util.Map;

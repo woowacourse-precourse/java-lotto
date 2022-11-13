@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import lotto.console.Input;
-import lotto.constant.Score;
+import lotto.config.Score;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 

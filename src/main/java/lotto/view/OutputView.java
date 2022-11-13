@@ -1,11 +1,11 @@
 package lotto.view;
 
-import lotto.constant.Score;
+import lotto.config.Score;
 
 import java.util.List;
 import java.util.Map;
 
-import static lotto.constant.Score.*;
+import static lotto.config.Score.*;
 
 public class OutputView {
 

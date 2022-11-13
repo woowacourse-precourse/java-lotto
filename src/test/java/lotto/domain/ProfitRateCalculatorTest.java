@@ -1,13 +1,13 @@
 package lotto.domain;
 
-import lotto.constant.Score;
+import lotto.config.Score;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static lotto.constant.Score.THREE;
+import static lotto.config.Score.THREE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ProfitRateCalculatorTest {
