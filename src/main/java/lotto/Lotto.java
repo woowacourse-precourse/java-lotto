@@ -49,9 +49,11 @@ public class Lotto {
 
 class UserInput {
 
-    static public void requestPayment() {
+    static public int requestPayment() {
         String userInput = Console.readLine();
         isNumeric(userInput);
+
+        return Integer.parseInt(userInput);
     }
 
     static public List<Integer> requestWinningLottoNumber() {
@@ -63,13 +65,14 @@ class UserInput {
             isNumeric(number);
             numbers.add(Integer.parseInt(number));
         }
-        return numbers;
 
+        return numbers;
     }
 
     static public int requestBonusNumber() {
         String userInput = Console.readLine();
         isNumeric(userInput);
+
         return Integer.parseInt(userInput);
     }
 
@@ -81,8 +84,6 @@ class UserInput {
             throw new IllegalArgumentException("[ERROR] 입력된 내용이 숫자가 아닙니다.");
         }
     }
-
-
 }
 
 
