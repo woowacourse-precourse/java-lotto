@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import lotto.constant.IntConstant;
 import lotto.constant.LottoResultConstant;
 import lotto.constant.StringConstant;
 import lotto.domain.Lotto;
+import lotto.domain.Money;
 import lotto.service.LottoResultService;
 import lotto.service.UserLottoService;
 import lotto.service.YieldService;
@@ -17,6 +19,7 @@ import lotto.validation.LotteryWinningNumberValidation;
 import lotto.validation.LottoMoneyValidation;
 import lotto.validation.Validation;
 import lotto.view.BonusLottoView;
+import lotto.view.InputView;
 import lotto.view.LotteryWinningNumberView;
 import lotto.view.LottoBuyView;
 import lotto.view.UserLottoView;
@@ -31,44 +34,65 @@ public class LottoController {
      * BonusLottoNumber 를 입력받고 validation 후 기억해둔다.
      */
     public void lottoProcedure() {
-        String userMoneyInput = getUserMoneyWithValidation();
-        printUserLottoMoneyResult(userMoneyInput);
-        List<Lotto> userLotto = createUserLotto(userMoneyInput);
+        Optional<Money> money = getUserMoneyWithValidation();
+        if (money.isEmpty()) {
+            return;
+        }
+        int lottoCount = money.get().moneyDivideBy(IntConstant.LOTTO_MONEY_PER_ONE.getValue());
+        printUserLottoCount(lottoCount);
+        List<Lotto> userLotto = createUserLotto(lottoCount);
         printUserLottoResult(userLotto);
 
-        String winningLotto = getWinningLottoWithValidation();
-
-        String bonusLotto = getBonusLottoWithValidation(winningLotto);
-
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(userLotto,
-                getWinningLotto(winningLotto), getBonusLotto(bonusLotto));
-        printUserLottoAndUserYield(result, Integer.parseInt(userMoneyInput));
+//        String winningLotto = getWinningLottoWithValidation();
+//
+//        String bonusLotto = getBonusLottoWithValidation(winningLotto);
+//
+//        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(userLotto,
+//                getWinningLotto(winningLotto), getBonusLotto(bonusLotto));
+//        printUserLottoAndUserYield(result, Integer.parseInt(userMoneyInput));
     }
 
-    private void printUserLottoMoneyResult(String userMoneyInput) {
-        int userMoney = Integer.parseInt(userMoneyInput);
-        int lottoCount = userMoney / IntConstant.LOTTO_MONEY_PER_ONE.getValue();
+    private Optional<Money> getUserMoneyWithValidation() {
+        String userMoneyInput = lottoMoneyInputView();
+        try {
+            Money lottoMoney = new Money(userMoneyInput);
+            return Optional.of(lottoMoney);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return Optional.empty();
+        }
+    }
+
+    private String lottoMoneyInputView() {
+        View lottoMoneyView = createLottoMoneyView();
+        return printViewAndReturnInput(lottoMoneyView);
+    }
+
+    private void printUserLottoCount(int lottoCount) {
         View moneyView = new UserLottoView();
-        List<String> lotto = new ArrayList<>(List.of(String.valueOf(lottoCount) + "개를 구매했습니다."));
+        List<String> lotto = new ArrayList<>(List.of(lottoCount + "개를 구매했습니다."));
         moneyView.setPrintElement(lotto);
         moneyView.show();
+    }
+
+    private static List<Lotto> createUserLotto(int lottoCount) {
+        UserLottoService userLottoService = new UserLottoService(lottoCount);
+        return userLottoService.createLottoNumber();
+    }
+
+    private void printUserLottoResult(List<Lotto> userLotto) {
+        View userLottoView = new UserLottoView();
+        List<String> userLottoResult = userLotto.stream()
+                .map(Object::toString)
+                .collect(Collectors.toList());
+        userLottoView.setPrintElement(userLottoResult);
+        userLottoView.show();
     }
 
     private String getWinningLottoWithValidation() {
         String userLottoWinningInput = lottoWinningNumberView();
         winningLottoInputValidation(userLottoWinningInput);
         return userLottoWinningInput;
-    }
-
-    private String getUserMoneyWithValidation() {
-        String userMoneyInput = lottoMoneyInputView();
-        lottoMoneyInputValidation(userMoneyInput);
-        return userMoneyInput;
-    }
-
-    private String lottoMoneyInputView() {
-        View lottoMoneyView = createLottoMoneyView();
-        return printViewAndReturnInput(lottoMoneyView);
     }
 
     private View createLottoMoneyView() {
@@ -142,20 +166,6 @@ public class LottoController {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-    }
-
-    private static List<Lotto> createUserLotto(String userMoneyInput) {
-        UserLottoService userLottoService = new UserLottoService(userMoneyInput);
-        return userLottoService.createLottoNumber();
-    }
-
-    private void printUserLottoResult(List<Lotto> userLotto) {
-        View userLottoView = new UserLottoView();
-        List<String> userLottoResult = userLotto.stream()
-                .map(Object::toString)
-                .collect(Collectors.toList());
-        userLottoView.setPrintElement(userLottoResult);
-        userLottoView.show();
     }
 
     private List<Integer> getWinningLotto(String winningLotto) {

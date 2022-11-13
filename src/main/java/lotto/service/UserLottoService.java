@@ -7,17 +7,14 @@ import lotto.domain.Lotto;
 
 public class UserLottoService {
 
-    private final String userInputMoney;
+    private final int lottoCount;
 
-    private final int perLottoMoney;
 
-    public UserLottoService(String userInputMoney) {
-        this.userInputMoney = userInputMoney;
-        this.perLottoMoney = IntConstant.LOTTO_MONEY_PER_ONE.getValue();
+    public UserLottoService(int lottoCount) {
+        this.lottoCount = lottoCount;
     }
 
     public List<Lotto> createLottoNumber() {
-        int lottoCount = howManyLottoCanBuy();
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             lottos.add(new Lotto());
@@ -25,7 +22,4 @@ public class UserLottoService {
         return lottos;
     }
 
-    private int howManyLottoCanBuy() {
-        return Integer.parseInt(userInputMoney) / perLottoMoney;
-    }
 }

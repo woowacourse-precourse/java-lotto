@@ -7,8 +7,10 @@ import lotto.constant.StringConstant;
 public class LottoMoneyValidation extends Validation{
     @Override
     public void isValidate(String userInput) {
+
         isNumericFormat(userInput);
         isDivideByInteger(userInput);
+
     }
 
     @Override

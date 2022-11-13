@@ -20,7 +20,7 @@ public abstract class Validation {
     }
 
     private void throwError(String errorMessage){
-        throw new IllegalArgumentException(errorMessage);
+        throw new IllegalArgumentException();
     }
 
 }
