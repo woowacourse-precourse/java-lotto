@@ -7,7 +7,9 @@ public enum EventMessage {
     BONUS_NUMBERS("보너스 번호를 입력해 주세요."),
     STATISTICS("당첨 통계");
 
+    public final String message;
     EventMessage(String message){
+        this.message = message;
     }
 
 }

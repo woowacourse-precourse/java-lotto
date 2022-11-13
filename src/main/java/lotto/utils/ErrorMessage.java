@@ -7,7 +7,10 @@ public enum ErrorMessage {
     INVALID_BONUS_NUMBER("[ERROR] 보너스 번호는 1~45 사이의 숫자로 하나만 입력 가능합니다."),
     ISSUE_LOTTO_ERROR("[ERROR] 로또 발행 도중 오류가 발생했습니다.");
 
+    public final String message;
+
     ErrorMessage(String message) {
+        this.message = message;
     }
 
 }
