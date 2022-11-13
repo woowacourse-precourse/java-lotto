@@ -5,7 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
-import camp.nextstep.edu.missionutils.Console;
+import lotto.controller.InputController;
 import lotto.domain.Money;
 import lotto.utils.ExceptionType;
 import lotto.view.Input;
@@ -17,26 +17,25 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
 public class InputTest {
-    private MockedStatic<Console> console;
-
+    private MockedStatic<Input> input;
     @BeforeEach
     void before() {
-        console = mockStatic(Console.class);
+        input = mockStatic(Input.class);
     }
 
     @AfterEach
     void after() {
-        console.close();
+        input.close();
     }
 
     @DisplayName("정확한 금액을 입력받는 경우 Money 객체가 return된다.")
     @ParameterizedTest
     @ValueSource(strings = {"1000", "3000", "80000"})
     void inputMoney(String target) {
-        when(Console.readLine()).thenReturn(target);
+        when(Input.readLine()).thenReturn(target);
 
-        Input input = new Input();
-        Money money = input.getMoney();
+        InputController inputController = new InputController();
+        Money money = inputController.getMoney();
 
         assertThat(money.getMoney()).isEqualTo(Integer.parseInt(target));
     }
@@ -45,11 +44,11 @@ public class InputTest {
     @ParameterizedTest
     @ValueSource(strings = {"!1102", "err0r", "string"})
     void inputMoneyByNotNumber(String target) {
-        when(Console.readLine()).thenReturn(target);
+        when(Input.readLine()).thenReturn(target);
 
-        Input input = new Input();
+        InputController inputController = new InputController();
 
-        assertThatThrownBy(input::getMoney).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(inputController::getMoney).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionType.IS_NOT_NUMBER.getMessage());
     }
 }
