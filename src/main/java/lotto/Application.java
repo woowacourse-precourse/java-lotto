@@ -4,10 +4,9 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        UserInput user = new UserInput();
-        Calculator calc = user.inputMoney();
+        Calculator calc = InputView.inputMoney();
 
-        Lotto lotto = user.inputWinningNumber();
+        Lotto lotto = InputView.inputWinningNumber();
         int bonus = lotto.inputBonus();
 
         for (List numbers : calc.lotteries) {

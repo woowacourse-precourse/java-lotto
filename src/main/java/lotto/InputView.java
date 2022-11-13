@@ -9,7 +9,7 @@ public class InputView {
 
     private InputView(){}
 
-    public Calculator inputMoney() {
+    static public Calculator inputMoney() {
         Message.INPUT_MONEY.print();
         String input = Console.readLine();
         validateMoney(input);
@@ -17,7 +17,7 @@ public class InputView {
         return new Calculator(money);
     }
 
-    private void validateMoney(String input) {
+    static private void validateMoney(String input) {
         long money;
         try {
             money = Long.parseLong(input);
@@ -30,14 +30,14 @@ public class InputView {
         }
     }
 
-    public Lotto inputWinningNumber() {
+    static public Lotto inputWinningNumber() {
         Message.INPUT_LOTTERY_NUMBER.print();
         String winningNumber = Console.readLine();
         List numbers = validateLotto(winningNumber);
         return new Lotto(numbers);
     }
 
-    private List validateLotto(String winningNumber) {
+    static private List validateLotto(String winningNumber) {
         String[] splitInput = winningNumber.split(",");
         List<Integer> numbers = new ArrayList<>();
         validateLottoType(splitInput, numbers);
@@ -45,7 +45,7 @@ public class InputView {
         return numbers;
     }
 
-    private void validateLottoType(String[] splitInput, List<Integer> numbers) {
+    static private void validateLottoType(String[] splitInput, List<Integer> numbers) {
         try {
             for (int i = 0; i < splitInput.length; i++) {
                 numbers.add(Integer.parseInt(splitInput[i].trim()));
