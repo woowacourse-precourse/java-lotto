@@ -1,4 +1,4 @@
-package lotto;
+package domain;
 
 import util.ExceptionMessage;
 import util.LottoRule;
