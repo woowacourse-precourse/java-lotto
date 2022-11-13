@@ -7,20 +7,28 @@ public class Lottos {
 
     private final static int LOTTO_PRICE = 1000;
 
-    private List<Lotto> lottos;
+    private final List<Lotto> lottos;
+    private final int purchaseAmount;
 
-    // Todo : 1000원으로 나누어 떨어지지 않는 경우 예외 처리
-    public Lottos(int money) {
-        this.lottos = new ArrayList<>();
-        generateLottos(money);
+    public Lottos(int purchaseAmount) {
+        validatePurchaseAmount(purchaseAmount);
+        this.purchaseAmount = purchaseAmount;
+        this.lottos = generateLottos();
     }
 
-    private void generateLottos(int money) {
-        int amount = money / LOTTO_PRICE;
-        for(int i = 0; i < amount; i++) {
-            LottoNumberGenerator lottoNumber = new LottoNumberGenerator();
-            lottos.add(new Lotto(lottoNumber.getNumber()));
+    private void validatePurchaseAmount(int purchaseAmount) {
+        if(purchaseAmount % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException();
         }
+    }
+
+    private List<Lotto> generateLottos() {
+        int amount = purchaseAmount / LOTTO_PRICE;
+        List<Lotto> newLottos = new ArrayList<>();
+        for(int i = 0; i < amount; i++) {
+            newLottos.add(new Lotto(LottoNumberGenerator.generateNumbers()));
+        }
+        return newLottos;
     }
 
     public List<Lotto> getLottos() {
