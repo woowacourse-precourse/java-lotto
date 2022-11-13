@@ -1,7 +1,5 @@
 package lotto.model;
 
-import static lotto.model.Constants.LottoStatus.MATCH_FIVE_PROFIT;
-import static lotto.model.Constants.LottoStatus.MATCH_FOUR_PROFIT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
@@ -53,19 +51,23 @@ class LottoNumbersTest {
         lottoNumbers.addLotto(new Lotto(List.of(2, 3, 4, 5, 8, 9)));
 
         Lotto targetLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        lottoNumbers.addAllStatus(targetLotto,1);
+        lottoNumbers.addAllStatus(targetLotto, 1);
         assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_SIX)).isEqualTo(1);
         assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FIVE)).isEqualTo(0);
         assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FOUR)).isEqualTo(1);
     }
 
-    @DisplayName("수익 계산")
+
+    @DisplayName("당첨 로또와 보너스번호를 받고 수익 계산")
     @Test
-    public void get_profit_sum() {
+    void get_Profit_Sum() {
         LottoNumbers lottoNumbers = new LottoNumbers();
-        lottoNumbers.addStatus(LottoStatus.MATCH_FOUR);
-        assertThat(lottoNumbers.getProfitSum()).isEqualTo(MATCH_FOUR_PROFIT);
-        lottoNumbers.addStatus(LottoStatus.MATCH_FIVE);
-        assertThat(lottoNumbers.getProfitSum()).isEqualTo(MATCH_FOUR_PROFIT+MATCH_FIVE_PROFIT);
+        lottoNumbers.addLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottoNumbers.addLotto(new Lotto(List.of(2, 3, 4, 5, 8, 9)));
+        Lotto targetLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lottoNumbers.getProfitSum(targetLotto, 8)).isEqualTo(2_000_050_000);
+
+        lottoNumbers.addLotto(new Lotto(List.of(1, 2, 3, 4, 5, 8)));
+        assertThat(lottoNumbers.getProfitSum(targetLotto, 8)).isEqualTo(2_030_050_000);
     }
 }

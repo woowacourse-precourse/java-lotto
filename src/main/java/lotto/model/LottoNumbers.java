@@ -13,12 +13,12 @@ public class LottoNumbers {
     public static final int DEFAULT_STATUS_COUNT_VALUE = 0;
     public static final int ADD_ONE_COUNT = 1;
     public static final int RANDOM_START_INCLUSIVE = 0;
-    public static final String LOTTO_RESULT_DELIMITER = "\n";
     public static final String LOTTO_RESULT_TYPE = "{0} - {1}개";
+    public static final String NEXT_LINE = "\n";
     private final List<Lotto> lottoNumbers;
     private final EnumMap<LottoStatus, Integer> lottoStatusQuantity;
 
-    public LottoNumbers() {
+    LottoNumbers() {
         this.lottoNumbers = new ArrayList<>();
         this.lottoStatusQuantity = new EnumMap<>(LottoStatus.class);
         Arrays.stream(LottoStatus.values())
@@ -44,16 +44,17 @@ public class LottoNumbers {
         lottoStatusQuantity.replace(lottoStatus, lottoStatusQuantity.get(lottoStatus) + ADD_ONE_COUNT);
     }
 
-    int getProfitSum() {
-        return lottoStatusQuantity.entrySet().stream()
-                .map(entry -> entry.getKey().getProfit() * entry.getValue())
-                .reduce(Integer::sum).orElse(DEFAULT_STATUS_COUNT_VALUE);
+    int getProfitSum(Lotto targetLotto, int bonusNumber) {
+        return lottoNumbers.stream()
+                .map(lotto -> lotto.matchLotto(targetLotto, bonusNumber))
+                .mapToInt(LottoStatus::getProfit)
+                .sum();
     }
 
     String getPurchaseDetails() {
         return lottoNumbers.stream()
                 .map(Lotto::toString)
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining(NEXT_LINE));
     }
 
     String getResult(Lotto targetLotto, int bonusNumber) {
@@ -63,7 +64,7 @@ public class LottoNumbers {
                 .map(lottoStatusEntry -> MessageFormat.format(LOTTO_RESULT_TYPE,
                         lottoStatusEntry.getKey().getDescription(),
                         lottoStatusEntry.getValue()))
-                .collect(Collectors.joining(LOTTO_RESULT_DELIMITER));
+                .collect(Collectors.joining(NEXT_LINE));
     }
 
     int getLottoQuantity() {
