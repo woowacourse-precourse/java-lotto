@@ -25,6 +25,16 @@ public class Lotto {
         return this.numbers;
     }
 
+    public int calculateMatchCount(List<Integer> winningNumbers) {
+        int matchCount = 0;
+        for(Integer lottoNumber : numbers){
+            if(winningNumbers.contains(lottoNumber)){
+                matchCount++;
+            }
+        }
+        return matchCount;
+    }
+
     //로또의 유효성 검사
     private boolean isValidLotto(List<Integer> numbers) {
         return isCorrectSize(numbers) && isInRange(numbers) && isNotDuplicated(numbers);
