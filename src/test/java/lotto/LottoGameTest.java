@@ -36,6 +36,17 @@ public class LottoGameTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 구매가 정상적으로 이루어져야 한다.")
+    @Test
+    void buyLottoFunctionalTest() {
+        int money = 35000;
+        int lottoPrice = 1000;
+
+        List<Lotto> buyLottoes = LottoGame.buyLotto(35000);
+
+        Assertions.assertThat(buyLottoes.size()).isEqualTo(money / lottoPrice);
+    }
+
     @DisplayName("로또의 결과가 올바르게 나와야 한다.")
     @Test
     void getResultLottoFunctionalTest() {
