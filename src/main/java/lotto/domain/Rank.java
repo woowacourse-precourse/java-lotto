@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Rank {
 
-    public static List<Integer> rankNumbers(List<Integer> sameNumbers) {
+    public List<Integer> rankNumbers(List<Integer> sameNumbers) {
         List<Integer> rankRecord = new ArrayList<>();
         for (int sameNumber : sameNumbers) {
             rankRecord.add(changeRank(sameNumber));
@@ -16,7 +16,7 @@ public class Rank {
         return rankRecord;
     }
 
-    public static int changeRank(int i) {
+    public int changeRank(int i) {
         if (i == RankChart.FirstPlace.getValue()) {
             return RankChart.FirstPlace.getValue();
 

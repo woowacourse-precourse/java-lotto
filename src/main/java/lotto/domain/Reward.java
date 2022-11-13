@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Reward {
 
-    public static List<Integer> rewardMoneys(List<Integer> ranking) {
+    public List<Integer> rewardMoneys(List<Integer> ranking) {
         List<Integer> moneyRecord = new ArrayList<>();
         for (int rankNumber : ranking) {
             moneyRecord.add(giveMoney(rankNumber));
@@ -17,7 +17,7 @@ public class Reward {
         return moneyRecord;
     }
 
-    private static int giveMoney(int i) {
+    private int giveMoney(int i) {
         if (i == RankChart.FirstPlace.getValue()) {
             return RewardChart.First.getValue();
 

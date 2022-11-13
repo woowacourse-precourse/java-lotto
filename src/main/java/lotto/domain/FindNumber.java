@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class FindNumber {
 
-    public static List<Integer> findSameNumber(List<Lotto> lottoNumbers, List<Integer> winNumbers, int bonus) {
+    public List<Integer> findSameNumber(List<Lotto> lottoNumbers, List<Integer> winNumbers, int bonus) {
         List<Integer> ranked = new ArrayList<>();
         for (Lotto lotto : lottoNumbers) {
             ranked.add(findNumber(lotto, winNumbers, bonus));
@@ -15,7 +15,7 @@ public class FindNumber {
         return ranked;
     }
 
-    private static int findNumber(Lotto lotto, List<Integer> winNumbers, int bonus) {
+    private int findNumber(Lotto lotto, List<Integer> winNumbers, int bonus) {
         int ranking = lotto.value().stream()
                 .filter(number -> winNumbers.stream()
                         .anyMatch(Predicate.isEqual(number)))
@@ -26,7 +26,7 @@ public class FindNumber {
         return ranking;
     }
 
-    private static int matchBonus(Lotto lotto, int bonus) {
+    private int matchBonus(Lotto lotto, int bonus) {
         if (lotto.value().contains(bonus)) {
             return 2;
         }

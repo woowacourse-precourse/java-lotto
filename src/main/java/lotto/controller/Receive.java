@@ -19,6 +19,7 @@ public class Receive {
 
 
     public int receiveAndPrintMoney() {
+
         output.askPurchaseAmount();
         int money = inputMoney.getAndVerifyMoney();
         output.printEmptyLine();
