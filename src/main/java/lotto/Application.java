@@ -11,8 +11,7 @@ public class Application {
         // TODO: 프로그램 구현
         Game game = new Game();
         int money = game.insertMoney();
-        int lottoCount = game.buyLotto(money);
-        List<Lotto> lottoBought = game.createLotto(lottoCount);
+        List<Lotto> lottoBought = game.createLotto(money);
         for (int i = 0; i < lottoBought.size(); i++) {
             System.out.println(lottoBought.get(i).getNumbers());
         }

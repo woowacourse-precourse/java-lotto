@@ -11,19 +11,12 @@ public class Game {
     public int insertMoney() {
         System.out.println("구입 금액을 입력해 주세요.");
         int money = Integer.parseInt(Console.readLine());
-
         return money;
     }
 
-    public int buyLotto(int money) {
-        if (money % 1000 > 0) {  // 천원단위로 나누어 떨어지지 않을 경우 예외처리
-            throw new IllegalArgumentException("[ERROR] 금액이 잘못되었습니다.");
-        }
-        int lottoCount = money / 1000;
-        return lottoCount;
-    }
-
-    public List<Lotto> createLotto(int lottoCount) {
+    // 로또 발행하기
+    public List<Lotto> createLotto(int money) {
+        int lottoCount = checkLottoCount(money);
         LottoAutoMachine lottoAutoMachine = new LottoAutoMachine();
         List<Lotto> lottoBought = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
@@ -31,6 +24,15 @@ public class Game {
             lottoBought.add(lotto);
         }
         return lottoBought;
+    }
+
+    // 로또 발행 개수 확인 및 예외 처리
+    private int checkLottoCount(int money) {
+        if (money % 1000 > 0) {  // 천원단위로 나누어 떨어지지 않을 경우 예외처리
+            throw new IllegalArgumentException("[ERROR] 금액이 잘못되었습니다.");
+        }
+        int lottoCount = money / 1000;
+        return lottoCount;
     }
 
 }
