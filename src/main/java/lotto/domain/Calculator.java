@@ -24,11 +24,11 @@ public class Calculator {
     }
 
     public static Rank calculateRank(WinningNumbers winningNumbers, Lotto lotto) {
-        int count = getWinningNumberCounts(winningNumbers, lotto);
+        int count = getWinningNumberMatch(winningNumbers, lotto);
         return getRankByMatch(count, winningNumbers, lotto);
     }
 
-    private static int getWinningNumberCounts(WinningNumbers winningNumbers, Lotto lotto) {
+    private static int getWinningNumberMatch(WinningNumbers winningNumbers, Lotto lotto) {
         int count = 0;
         for (Integer number : winningNumbers.getWinningNumbers()) {
             if (lotto.getNumbers().contains(number)) {
