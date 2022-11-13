@@ -8,18 +8,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-    	String money = getMoneyFromUser();
+    	String money = getFromUser();
     	List<Lotto> lottoNumbers = createLottoNumbers(money);
-    	String WinningNumber = getWinningNumberFromUser();
+    	String WinningNumber = getFromUser();
+    	String bonusNumber = getFromUser();
         // TODO: 프로그램 구현
     }
     
-    public static String getMoneyFromUser() {
-    	String result = Console.readLine();
-    	return result;
-    }
-    
-    public static String getWinningNumberFromUser() {
+    public static String getFromUser() {
     	String result = Console.readLine();
     	return result;
     }
