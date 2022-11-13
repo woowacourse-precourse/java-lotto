@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Generator extends Kiosk {
+public class Generator {
     public static List<Lotto> generate(int numberOfLottos) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int lottoNumber = 0; lottoNumber < numberOfLottos; lottoNumber++) {
+        for (int count = 0; count < numberOfLottos; count++) {
             List<Integer> lottoNumbers = new ArrayList<>(pickLottoNumbers());
-            lottos.add(new Lotto(orderNumbers(lottoNumbers)));
+            Lotto newLotto = new Lotto(orderNumbers(lottoNumbers));
+            lottos.add(newLotto);
         }
         return lottos;
     }
