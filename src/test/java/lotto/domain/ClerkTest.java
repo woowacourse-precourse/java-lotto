@@ -9,13 +9,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ClerkTest {
-    Clerk clerk = new Clerk();
-
     @DisplayName("1000원당 한 장씩 로또를 발행한다.")
     @Test
     void 금액에_맞는_수의_로또_발행() {
         int money = 5000;
-        List<Lotto> lottos = clerk.issueLottos(money);
+        List<Lotto> lottos = Clerk.issueLottos(money);
 
         assertThat(lottos)
                 .hasSize(5);
@@ -26,7 +24,7 @@ class ClerkTest {
     void 금액_예외1() {
         int money = 4500;
 
-        assertThatThrownBy(() -> clerk.issueLottos(money))
+        assertThatThrownBy(() -> Clerk.issueLottos(money))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1000원");
     }
@@ -36,7 +34,7 @@ class ClerkTest {
     void 금액_예외2() {
         int money = 0;
 
-        assertThatThrownBy(() -> clerk.issueLottos(money))
+        assertThatThrownBy(() -> Clerk.issueLottos(money))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("양수");
     }

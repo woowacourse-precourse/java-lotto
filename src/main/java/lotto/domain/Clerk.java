@@ -3,17 +3,17 @@ package lotto.domain;
 import java.util.List;
 
 public class Clerk {
-    public List<Lotto> issueLottos(int money) {
+    public static List<Lotto> issueLottos(int money) {
         int numberOfLottos = calculateNumberOfLottos(money);
         return LottoGenerator.generateLottos(numberOfLottos);
     }
 
-    public int calculateNumberOfLottos(int money) {
+    public static int calculateNumberOfLottos(int money) {
         validate(money);
         return money / 1000;
     }
 
-    private void validate(int money) {
+    private static void validate(int money) {
         if (money <= 0) {
             throw new IllegalArgumentException("[ERROR] 양수를 입력해야 합니다.");
         }
