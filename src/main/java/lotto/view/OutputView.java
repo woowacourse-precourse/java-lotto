@@ -15,7 +15,16 @@ public class OutputView {
     }
 
     public static void printLottoTickets(LottoTicket lottoTicket){
-        List<Lotto> lottoTickets = lottoTicket.getLottoTickets();
-        System.out.println("asdasd");
+        for(Lotto lotto : lottoTicket.getLottoTickets()){
+            System.out.println(convertToString(lotto));
+        }
     }
+
+    private static String convertToString(Lotto lotto){
+        return lotto.getNumbers().stream()
+                .sorted()
+                .toString();
+
+    }
+
 }
