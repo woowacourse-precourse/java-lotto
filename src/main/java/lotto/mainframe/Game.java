@@ -6,12 +6,12 @@ import lotto.view.GameOutput;
 public class Game {
 
     private User user;
-    private Calculation calculation;
+    private CalculationResult calculation;
     private LottoNumberGeneration generation;
 
     public Game() {
         user = new User();
-        calculation = new Calculation();
+        calculation = new CalculationResult();
         generation = new LottoNumberGeneration();
     }
 

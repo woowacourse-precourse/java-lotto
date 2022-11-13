@@ -1,10 +1,9 @@
 package lotto.mainframe;
 
-import java.text.DecimalFormat;
 import java.util.List;
 import lotto.view.GameOutput;
 
-public class Calculation {
+public class CalculationResult {
 
     private final int ZERO_COUNT = 0;
     private int threeMatchCount;
