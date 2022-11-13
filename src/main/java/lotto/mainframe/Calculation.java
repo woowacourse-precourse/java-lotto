@@ -20,7 +20,6 @@ public class Calculation {
         fiveMatchCount = ZERO_COUNT;
         fivePlusBonusMatchCount = ZERO_COUNT;
         sixMatchCount = ZERO_COUNT;
-        totalRate = ZERO_COUNT;
     }
 
     public void calculateResult(List<List<Integer>> lotteries, int bonusNumber,
@@ -66,11 +65,11 @@ public class Calculation {
     }
 
     public double calculateRate(int userInputMoney, int totalPrize) {
-        return (totalPrize/userInputMoney)*100;
+        return ((double)totalPrize / (double)userInputMoney) * 100;
     }
 
     public void setTotalRate() {
-        this.totalRate = calculateRate(User.getUserInputMoney(),calculateTotalPrize());
+        this.totalRate = calculateRate(User.getUserInputMoney(), calculateTotalPrize());
     }
 
     public void printResult() {

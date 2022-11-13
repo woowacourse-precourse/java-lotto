@@ -14,7 +14,7 @@ public class GameOutput {
     private static final String FIVE_MATCHES = "5개 일치 (%s원) - %d개\n";
     private static final String FIVE_PLUS_BONUS_MATCHES = "5개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private static final String SIX_MATCHES = "6개 일치 (%s원) - %d개\n";
-    private static final String TOTAL_RATE_OF_RETURN = "총 수익률은 %.2f%%입니다.\n";
+    private static final String TOTAL_RATE_OF_RETURN = "총 수익률은 %.1f%%입니다.\n";
 
     public static void printMoneyInput() {
         System.out.println(MONEY_INPUT_MESSAGE);
