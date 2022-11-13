@@ -102,7 +102,7 @@ public class InputException {
     }
 
     public static void isValidBonusNumberOverlap(List<Integer> winiingNumber, int bonusNumber) {
-        if(winiingNumber.contains(bonusNumber)) {
+        if (winiingNumber.contains(bonusNumber)) {
             try {
                 throw new IllegalArgumentException("[ERROR] 당첨번호와 중복되지 않는 숫자를 입력하세요");
             } catch (IllegalArgumentException illegalArgumentException) {

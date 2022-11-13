@@ -21,7 +21,7 @@ public class Lotto {
 
     private void validateOverlap(List<Integer> numbers) {
         Set<Integer> overlap = new HashSet<>();
-        for(int i : numbers) {
+        for (int i : numbers) {
             overlap.add(i);
         }
         if (numbers.size() != overlap.size()) {

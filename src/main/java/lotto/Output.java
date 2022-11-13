@@ -15,7 +15,7 @@ public class Output {
     public static void printLottoBundle(List<Lotto> lottos, int purchaseAmount) {
         System.out.println();
         System.out.println(purchaseAmount + "개를 구매했습니다.");
-        for(Lotto lotto : lottos) {
+        for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
     }
