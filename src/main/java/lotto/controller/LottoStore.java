@@ -37,7 +37,7 @@ public class LottoStore {
         purchasedAmount = InputUi.readPurchaseAmount();
         int lottoNumber = purchasedAmount / Lotto.PRICE;
 
-        List<Lotto> generatedLottos = lottoController.generateLottoAuto(lottoNumber);
+        List<Lotto> generatedLottos = lottoController.generateQuickPickLottos(lottoNumber);
         OutputUi.printPurchasedLottos(generatedLottos);
 
         return generatedLottos;

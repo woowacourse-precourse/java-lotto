@@ -12,17 +12,21 @@ import java.util.Map;
 
 public class LottoController {
 
-    public List<Lotto> generateLottoAuto(int number) {
+    public List<Lotto> generateQuickPickLottos(int number) {
 
         List<Lotto> generatedLottos = new ArrayList<>();
 
         while (generatedLottos.size() < number) {
-            List<Integer> numbers =
-                    Randoms.pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.NUMBER_COUNT);
-            generatedLottos.add(new Lotto(numbers));
+            Lotto lotto = generateQuickPickLotto();
+            generatedLottos.add(lotto);
         }
-
         return generatedLottos;
+    }
+
+    public Lotto generateQuickPickLotto() {
+        List<Integer> quickPickNumbers = Randoms
+                .pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.NUMBER_COUNT);
+        return new Lotto(quickPickNumbers);
     }
 
     public Map<WinningRank, Integer> countWinLotto(WinningLotto winningLotto, List<Lotto> lottos) {

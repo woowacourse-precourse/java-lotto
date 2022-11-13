@@ -28,7 +28,7 @@ class LottoControllerTest {
     @ParameterizedTest(name = "로또_자동생성_테스트 {index} : {0}")
     @CsvSource(value = {"5,5", "42,42"})
     void 로또_생성_테스트(int generatingNumber, int expectedLottoCount) {
-        List<Lotto> lottos = lottoController.generateLottoAuto(generatingNumber);
+        List<Lotto> lottos = lottoController.generateQuickPickLottos(generatingNumber);
         assertThat(lottos.size()).isEqualTo(expectedLottoCount);
     }
 
