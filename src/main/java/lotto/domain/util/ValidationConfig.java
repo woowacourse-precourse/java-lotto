@@ -1,11 +1,11 @@
-package lotto.domain;
+package lotto.domain.util;
 
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import static java.lang.Integer.*;
-import static lotto.Setup.*;
+import static lotto.domain.util.Rule.*;
 
 public class ValidationConfig {
 	private static final String NUMBER_ONLY_REGEX = "^\\d+$"; // 숫자로만 구성된 형식을 표현한다
@@ -37,13 +37,13 @@ public class ValidationConfig {
 	}
 
 	public static boolean isLottoNumberCorrectlyRanged(String input) {
-		Stream<Integer> numbers = numbersToStream(input);
+		Stream<Integer> numbers = toStreamInteger(input);
 		return numbers.allMatch(number -> number >= LOTTO_FIRST_NUMBER_INCLUSIVE.getValue()
 				&& number <= LOTTO_LAST_NUMBER_INCLUSIVE.getValue());
 	}
 
 	public static boolean isLottoNumberDuplicateExists(String input) {
-		return numbersToStream(input).distinct().count() != numbersToStream(input).count();    // 스트림 객체의 개별 소환을 위해 각각 호출한다
+		return toStreamInteger(input).distinct().count() != toStreamInteger(input).count();    // 스트림 객체의 개별 소환을 위해 각각 호출한다
 	}
 
 	public static boolean isBonusNumberCorrectlyRanged(String input) {
@@ -55,10 +55,10 @@ public class ValidationConfig {
 	}
 
 	public static boolean isBonusNumberDuplicateExists(String bonusInput, List<Integer> winningNumber) {
-		return  winningNumber.contains(Integer.parseInt(bonusInput));
+		return winningNumber.contains(Integer.parseInt(bonusInput));
 	}
 
-	public static Stream<Integer> numbersToStream(String input) {
+	public static Stream<Integer> toStreamInteger(String input) {
 		return Pattern.compile(",").
 				splitAsStream(input).
 				map(Integer::parseInt);

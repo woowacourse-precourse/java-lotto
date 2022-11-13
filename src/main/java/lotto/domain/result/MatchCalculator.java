@@ -1,6 +1,6 @@
 package lotto.domain.result;
 
-import lotto.LottoIssuer;
+import lotto.domain.lotto.LottoMachine;
 
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +14,7 @@ public class MatchCalculator {
 	protected static final int[] countingMatches = new int[4];
 
 	public static void findMatch(List<Integer> winningNumber, int bonusNumber) {
-		List<List<Integer>> issuedLottoes = LottoIssuer.issuedLottoes;
+		List<List<Integer>> issuedLottoes = LottoMachine.issuedLottoes;
 
 		for (List<Integer> lotto : issuedLottoes) {
 			getLottoMatch(lotto, winningNumber);

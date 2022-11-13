@@ -1,7 +1,6 @@
 package lotto.ui;
 
-import lotto.Rule;
-import lotto.Setup;
+import lotto.domain.util.Rule;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class ConsoleOutput {
 	public static final String EMPTY = "입력하지 않으셨습니다.";
 	public static final String AMOUNT_NOT_A_NUMBER = "구입금액은 숫자만 입력이 가능합니다.";
 	public static final String AMOUNT_LESS_THAN_1000 = "구입금액은 1000원 이상부터 가능합니다.";
-	public static final String AMOUNT_NOT_ASSIGNED_CURRENCY_UNIT = String.format("구입금액은 %d원 단위로 입력이 가능합니다.", Setup.LOTTO_PRICE.getValue());
+	public static final String AMOUNT_NOT_ASSIGNED_CURRENCY_UNIT = String.format("구입금액은 %d원 단위로 입력이 가능합니다.", Rule.LOTTO_PRICE.getValue());
 
 	public static final String LOTTO_NUMBER_NOT_CORRECTLY_FORMATTED = "로또 번호는 1,2,3,4,5,6 형식으로 입력해야 합니다.";
 	public static final String LOTTO_NUMBER_NOT_CORRECTLY_COUNTED = "로또 번호는 6개의 숫자를 입력해야 합니다.";
@@ -61,11 +60,11 @@ public class ConsoleOutput {
 	public static void PrintResultMessage(int specialMatch, int[] counting) {
 		System.out.println(RESULT_TITLE);
 		System.out.println(LINE);
-		System.out.printf(RESULT_CONTENT, Rule.FIFTH_PRIZE.getMatches(),Rule.FIFTH_PRIZE.getReward(), counting[0]);
-		System.out.printf(RESULT_CONTENT, Rule.FOURTH_PRIZE.getMatches(),Rule.FOURTH_PRIZE.getReward(), counting[1]);
-		System.out.printf(RESULT_CONTENT, Rule.THIRD_PRIZE.getMatches(),Rule.THIRD_PRIZE.getReward(), counting[2]);
-		System.out.printf(RESULT_CONTENT_BONUS, Rule.SECOND_PRIZE.getMatches(),Rule.SECOND_PRIZE.getReward(), specialMatch);
-		System.out.printf(RESULT_CONTENT, Rule.FIRST_PRIZE.getMatches(),Rule.FIRST_PRIZE.getReward(), counting[3]);
+		System.out.printf(RESULT_CONTENT, Rule.FIFTH_PRIZE.getMatch(),Rule.FIFTH_PRIZE.getReward(), counting[0]);
+		System.out.printf(RESULT_CONTENT, Rule.FOURTH_PRIZE.getMatch(),Rule.FOURTH_PRIZE.getReward(), counting[1]);
+		System.out.printf(RESULT_CONTENT, Rule.THIRD_PRIZE.getMatch(),Rule.THIRD_PRIZE.getReward(), counting[2]);
+		System.out.printf(RESULT_CONTENT_BONUS, Rule.SECOND_PRIZE.getMatch(),Rule.SECOND_PRIZE.getReward(), specialMatch);
+		System.out.printf(RESULT_CONTENT, Rule.FIRST_PRIZE.getMatch(),Rule.FIRST_PRIZE.getReward(), counting[3]);
 	}
 
 	public static void PrintProfitMessage(String profit) {

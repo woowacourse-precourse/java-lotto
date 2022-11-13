@@ -1,7 +1,6 @@
-package lotto;
+package lotto.domain.util;
 
 public enum Rule {
-
 	LOTTO_PRICE(1000L),
 	LOTTO_FIRST_NUMBER_INCLUSIVE(1),
 	LOTTO_LAST_NUMBER_INCLUSIVE(45),
@@ -12,7 +11,6 @@ public enum Rule {
 	THIRD_PRIZE(5, "1,500,000원"),
 	SECOND_PRIZE(5, "30,000,000원"),
 	FIRST_PRIZE(6, "2,000,000,000원");
-
 
 	private int value;
 	private long money;

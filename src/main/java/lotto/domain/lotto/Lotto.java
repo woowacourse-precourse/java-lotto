@@ -1,5 +1,6 @@
-package lotto;
+package lotto.domain.lotto;
 
+import lotto.domain.util.Rule;
 import lotto.ui.ConsoleOutput;
 
 import java.util.HashSet;

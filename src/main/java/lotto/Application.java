@@ -1,13 +1,13 @@
 package lotto;
 
-import lotto.domain.Game;
+import lotto.controller.GameController;
 import lotto.ui.ConsoleOutput;
 
 public class Application {
 	public static void main(String[] args) {
 		try {
-			Game game = new Game();
-			game.run();
+			GameController gameController = new GameController();
+			gameController.run();
 		} catch (Exception e) {
 			ConsoleOutput.PrintExitMessage();
 		}

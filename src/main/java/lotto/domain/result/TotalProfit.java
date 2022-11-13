@@ -1,6 +1,6 @@
 package lotto.domain.result;
 
-import lotto.Rule;
+import lotto.domain.util.Rule;
 
 public class TotalProfit {
 	private static double totalReward;
@@ -10,11 +10,11 @@ public class TotalProfit {
 	}
 
 	protected static void countPrize() {
-		totalReward += MatchCalculator.countingMatches[0] * convertToDouble(Rule.valueOf("FIFTH_PRIZE").getReward());
-		totalReward += MatchCalculator.countingMatches[1] * convertToDouble(Rule.valueOf("FOURTH_PRIZE").getReward());
-		totalReward += MatchCalculator.countingMatches[2] * convertToDouble(Rule.valueOf("THIRD_PRIZE").getReward());
-		totalReward += MatchCalculator.fiveMatchAndBonusMatch * convertToDouble(Rule.valueOf("SECOND_PRIZE").getReward());
-		totalReward += MatchCalculator.countingMatches[3] * convertToDouble(Rule.valueOf("FIRST_PRIZE").getReward());
+		totalReward += MatchCalculator.countingMatches[0] * convertToDouble(Rule.FIFTH_PRIZE.getReward());
+		totalReward += MatchCalculator.countingMatches[1] * convertToDouble(Rule.FOURTH_PRIZE.getReward());
+		totalReward += MatchCalculator.countingMatches[2] * convertToDouble(Rule.THIRD_PRIZE.getReward());
+		totalReward += MatchCalculator.fiveMatchAndBonusMatch * convertToDouble(Rule.SECOND_PRIZE.getReward());
+		totalReward += MatchCalculator.countingMatches[3] * convertToDouble(Rule.FIRST_PRIZE.getReward());
 	}
 
 	private static double convertToDouble(String value) {
