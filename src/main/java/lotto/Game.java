@@ -1,12 +1,14 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Game {
     private final View view = new View();
     private final RandomGenerator randomGenerator = new RandomGenerator();
     private final List<Lotto> lottoTickets = new ArrayList<>();
+    private final WinCalculator winCalculator = new WinCalculator();
     private Lotto winningNumbers;
     private int validAmount;
     private int bonusNumber;
@@ -25,6 +27,7 @@ public class Game {
         printLottoNumbers();
         getWinningNumbers();
         getBonusNumber();
+        calculateWin();
 
     }
 
@@ -70,6 +73,13 @@ public class Game {
     public void getBonusNumber() {
         view.printGetBonusNumber();
         this.bonusNumber = view.getBonusNumber();
+    }
+
+    public void calculateWin() {
+        HashMap<String, Integer> prize = new HashMap<>();
+
+        prize = winCalculator.getEachPrize(lottoTickets, winningNumbers, bonusNumber);
+
     }
 
 }

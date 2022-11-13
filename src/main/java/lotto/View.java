@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +33,7 @@ public class View {
     }
 
     public void printEachLotto(List<Integer> numbers) {
+        Collections.sort(numbers);
         System.out.println(numbers);
     }
 
@@ -52,9 +54,8 @@ public class View {
         commaSeparate = input.split(",");
         validateWinningNumber(Arrays.asList(commaSeparate));
 
-        winningNumber = Arrays.asList(commaSeparate)
-                .stream()
-                .map(s -> Integer.parseInt(s))
+        winningNumber = Arrays.stream(commaSeparate)
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
         return winningNumber;
