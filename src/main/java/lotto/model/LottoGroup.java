@@ -9,4 +9,14 @@ public class LottoGroup {
         this.lottos = lottos;
     }
 
+    public String getLottosString(){
+        StringBuilder sb = new StringBuilder();
+        for (Lotto lotto : lottos) {
+            sb.append(lotto.getNumbersString());
+            sb.append("\n");
+        }
+        return sb.toString().trim();
+    }
+
+
 }

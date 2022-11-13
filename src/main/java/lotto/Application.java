@@ -16,9 +16,8 @@ public class Application {
 
         guide.printLottoCount(lottoCount);
         LottoGroup lottoGroup = new LottoGroup(generator.generateLottos(lottoCount));
-        // 사용자 로또 번호 출력
+        guide.printLottoGroup(lottoGroup);
 
-        // 당첨번호 입력 문장 출력
         guide.printInputLottoGuide();
         // 당첨번호 입력
 
