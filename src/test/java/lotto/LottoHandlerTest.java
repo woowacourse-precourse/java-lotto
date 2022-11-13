@@ -10,4 +10,5 @@ class LottoHandlerTest {
     void handleLotto() {
         // TODO : handleLotto() 로직 완성 후에 테스트
     }
+
 }
