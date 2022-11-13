@@ -8,13 +8,14 @@
 - 테스트 코드는 도메인 로직에 단위 테스트로 구현. 
 
 
-- Model은 Model계층 끼리만 의존성이 허용된다.(Service, View, Controller에 의존하면 안됨)
+- Model은 Service, View, Controller에 의존하면 안된다.
 
 
 - View는 Model에만 의존한다.
 
 
-- Controller는 Model, View를 이용해 UI를 만든다.
+- Controller는 Model, View를 이용해 UI를 만든다. (Input -> Service를 이용한 데이터 처리 -> View 호출)
+  - Controller가 Model을 반환해도 되는지는 확실치 않아서 Controller를 통합.
 
 
 - Service는 Model의 데이터를 가져와 원하는 Controller에 원하는 형태로 데이터를 가공한다.
@@ -32,15 +33,12 @@
 
 
 - Controller
-  - [x] PurchaseController
-    - [x] 구입 금액 입력
-    - [x] Ticket 출력
-  - [x] StatisticsController
-    - [x] 당첨 번호 입력
-    - [x] 보너스 번호 입력
-    - [x] 당첨 통계 출력
-  - [x] ProfitRateController
-    - [x] 수익률 출력
+  - [x] 구입 금액 입력
+  - [x] Ticket 출력
+  - [x] 당첨 번호 입력
+  - [x] 보너스 번호 입력
+  - [x] 당첨 통계 출력
+  - [x] 수익률 출력
 
 
 - View
