@@ -28,6 +28,7 @@ public class Application {
         List<Integer> lottoResult = resultWinningLottery(lotto, winningNumber, bonusNumber);
 
         double earningRate = calculateLottoEarningsRate(lottoResult, lottoCount);
+        winningStatistics(lottoResult, earningRate);
     }
     public static int howMuchLottoBuy(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -102,5 +103,17 @@ public class Application {
         earningRate = Math.round(earningRate*10) / 10.0;
 
         return earningRate;
+    }
+    public static void winningStatistics(List<Integer> lottoResult, double earningRate){
+        System.out.println("\n당첨 통계");
+        System.out.println("---");
+
+        String rank;
+        for(int i = lottoResult.size()-1 ; i >= 0 ; i--) {
+            rank = "RANK" + (i + 1);
+            System.out.print(LottoInformation.valueOf(rank).getResultMsg());
+            System.out.println(" - " + lottoResult.get(i)+"개");
+        }
+        System.out.println("총 수익률은 "+earningRate+"%입니다.");
     }
 }
