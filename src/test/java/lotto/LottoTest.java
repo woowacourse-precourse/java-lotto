@@ -34,7 +34,7 @@ class LottoTest {
     @DisplayName("로또 번호에 47이상의 자연수가 있으면 예외가 발생한다.")
     @Test
     void createLottoByHighNumber() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 47)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
