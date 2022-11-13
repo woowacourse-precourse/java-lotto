@@ -23,7 +23,7 @@ public class LottoController {
     public void run() {
         try {
             lotto();
-        } catch (IllegalArgumentException e) {
+        } catch (RuntimeException e) {
             outputView.printErrorMessage(e.getMessage());
         }
     }

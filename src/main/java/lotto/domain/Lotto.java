@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Lotto {
     public static final int LOTTO_NUMBERS_SIZE = 6;
-    private static final String INVALID_SIZE_MESSAGE = "[ERROR] 올바르지 않은 로또 개수입니다.";
-    private static final String DUPLICATED_NUMBER_MESSAGE = "[ERROR] 중복된 로또 번호입니다.";
+    private static final String INVALID_SIZE_MESSAGE = "올바르지 않은 로또 개수입니다.";
+    private static final String DUPLICATED_NUMBER_MESSAGE = "중복된 로또 번호입니다.";
 
     private final List<LottoNumber> numbers;
 

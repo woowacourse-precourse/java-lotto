@@ -20,6 +20,7 @@ public enum OutputView {
     private static final String BONUS_BALL_MESSAGE = ", 보너스 볼 일치";
     private static final String EMPTY_MESSAGE = "";
     private static final long EMPTY_PRIZE = 0L;
+    private static final String ERROR_MESSAGE_FORMAT = "[ERROR] {0}";
 
     public void printLottoInformation(LottoInformationDto lottoInformationDto) {
         System.out.println(generateLottoInformation(lottoInformationDto));
@@ -81,7 +82,7 @@ public enum OutputView {
     }
 
     public void printErrorMessage(String message) {
-        System.out.println(message);
+        System.out.println(format(ERROR_MESSAGE_FORMAT, message));
     }
 }
 

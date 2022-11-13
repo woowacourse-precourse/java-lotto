@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.Optional;
 
 public class Customer {
-    private static final String INVALID_TICKET_MESSAGE = "[ERROR] 로또를 아직 구매하지 않았습니다.";
+    private static final String INVALID_TICKET_MESSAGE = "로또를 아직 구매하지 않았습니다.";
 
     private Integer amount;
     private Optional<LottoTicket> lottoTicket = Optional.empty();
