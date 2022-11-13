@@ -66,9 +66,9 @@
   - [x] prize 를 Lotto 클래스에 담지 말고, LottoData 클래스에 담기
   - [x] prizeMoney 를 Lotto 클래스에 담지 말고, LottoData 클래스에 누적시키기
 - [x] error 검사 전용 클래스 생성
-- [ ] OutputView#getLottoPrizeMoney() 함수 클래스 이동
+- [x] OutputView#getLottoPrizeMoney() 함수 클래스 이동 -> enum 클래스 생성
 - [x] LottoInput 클래스 에 저장되는 데이터를 LottoData 클래스로 옮기기
-- [ ] enum 사용을 위한 LottoCalculate#calculatePrize() 메서드 간소화하기
+- [x] enum 사용을 위한 LottoCalculate#calculatePrize() 메서드 간소화하기
 - [x] LottoData 클래스에서 map 초기값 입력 간소화 혹은 map 말고 다른 자료형 사용하기
 - [x] OutputView#printPercentageOfReturn() 에서 퍼센트 값이 클 때 E사용 안하고 출력하기
 - [ ] 하드코딩 제거, 상수 이름에 정보 추가하기

@@ -1,22 +1,11 @@
 package lotto.model;
 
+import static lotto.model.LottoInformation.convertPrizeNumberToLottoInfo;
+
 import java.util.Collection;
 import java.util.List;
 
 public class LottoCalculate {
-    public enum LottoPrizeMoneyMatchCount {
-        NONE(0, 0, 0), FIRST(1, 2000000000, 6), SECOND(2, 30000000, 5), THIRD(3, 1500000, 5),
-        FOURTH(4, 50000, 4), FIFTH(5, 5000, 3);
-        public final int prize;
-        public final int prizeMoney;
-        public final int matchCount;
-
-        LottoPrizeMoneyMatchCount(int prize, int prizeMoney, int matchCount) {
-            this.prize = prize;
-            this.prizeMoney = prizeMoney;
-            this.matchCount = matchCount;
-        }
-    }
 
     int checkMatches(Collection<Integer> lottoNumbers, List<Integer> winNumbers) {
         int matchCount = 0;
@@ -32,28 +21,28 @@ public class LottoCalculate {
         return lottoNumbers.contains(bonusNumber);
     }
 
-    LottoPrizeMoneyMatchCount calculatePrize(int matchCount, boolean checkBonusNumber) {
+    int calculatePrize(int matchCount, boolean checkBonusNumber) {
         if (matchCount == 6) {
-            return LottoPrizeMoneyMatchCount.FIRST;
+            return 1;
         } else if (matchCount == 5 & checkBonusNumber) {
-            return LottoPrizeMoneyMatchCount.SECOND;
+            return 2;
         } else if (matchCount == 5) {
-            return LottoPrizeMoneyMatchCount.THIRD;
+            return 3;
         } else if (matchCount == 4) {
-            return LottoPrizeMoneyMatchCount.FOURTH;
+            return 4;
         } else if (matchCount == 3) {
-            return LottoPrizeMoneyMatchCount.FIFTH;
+            return 5;
         }
-        return LottoPrizeMoneyMatchCount.NONE;
+        return 0;
     }
 
     void totalCalculate(Lotto lotto, LottoData lottoData) {
         int matchCount = checkMatches(lotto.getNumbers(), lottoData.winNumbers);
         boolean matchBonusNumber = checkBonusNumber(lotto.getNumbers(), lottoData.bonusNumber);
-        LottoPrizeMoneyMatchCount lottoPrizeMoneyMatchCount = lottoCalculate.calculatePrize(matchCount,
-                matchBonusNumber);
-        lottoData.prize.addPrizeCount(lottoPrizeMoneyMatchCount.prize);
-        lottoData.prizeMoneySum += lottoPrizeMoneyMatchCount.prizeMoney;
+        int prizeNumber = calculatePrize(matchCount, matchBonusNumber);
+        LottoInformation lottoInformation = convertPrizeNumberToLottoInfo.get(prizeNumber);
+        lottoData.prize.addPrizeCount(lottoInformation.prize);
+        lottoData.prizeMoneySum += lottoInformation.prizeMoney;
     }
 
     float calculatePercentageOfReturn(double money, double prizeMoneySum) {
