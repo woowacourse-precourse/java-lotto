@@ -1,4 +1,4 @@
-package lotto;
+package lotto.enumeration;
 
 public enum Money {
     SIX(2_000_000_000, "2,000,000,000원"),

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.enumeration;
 
 public enum Bonus {
     EQUAL(1, true),

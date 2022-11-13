@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import lotto.enumeration.Bonus;
+import lotto.enumeration.Money;
+
 public class Lotto {
     private final List<Integer> numbers;
     private final Stats game = new Stats();
