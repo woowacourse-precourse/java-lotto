@@ -12,7 +12,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-//        sort(numbers);
         this.numbers = numbers;
     }
 
@@ -24,12 +23,6 @@ public class Lotto {
         if (!isValidLotto(numbers)) {
             throw new IllegalArgumentException();
         }
-    }
-
-    // 에러 원인 : pickUniqueNumbersInRange()메서드의 final List<Integer> numbers = new ArrayList<>(); 바꿀수 없음!!
-    private void sort(List<Integer> numbers) {
-//        numbers.sort(Integer::compare);
-        Collections.sort(numbers);
     }
 
     private boolean isCorrectSize(List<Integer> numbers) {
