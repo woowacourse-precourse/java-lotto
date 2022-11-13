@@ -46,8 +46,8 @@ public class Lotto {
         String pattern = "^[0-9]*$";
         for (String number : numbers) {
             if (!Pattern.matches(pattern, number)) {
-                System.out.println("[ERROR} 복권 구입 금액은 양의 정수 형태이어야 합니다.");
-                throw new IllegalArgumentException("[ERROR] 잘못된 형식의 복권 구입 금액");
+                System.out.println("[ERROR} 복권 번호는 양의 정수 형태이어야 합니다.");
+                throw new IllegalArgumentException("[ERROR] 잘못된 형식의 복권 번호");
             }
         }
     }
