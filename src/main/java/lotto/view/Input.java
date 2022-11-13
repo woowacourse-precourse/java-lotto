@@ -23,9 +23,9 @@ public class Input {
             .collect(Collectors.toList());
     }
 
-    public static String getBonusNumber() {
+    public static int getBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         // 예외처리 필요 1~45가 맞는지
-        return Console.readLine();
+        return Integer.parseInt(Console.readLine());
     }
 }
