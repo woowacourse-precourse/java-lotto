@@ -29,7 +29,7 @@ public class GeneratorLottoPaper {
 
     private static Lotto generateLotto() {
         List<Integer> lottoNumbers = generateLottoNumbers();
-        Lotto lotto = new Lotto(generateLottoNumbers());
+        Lotto lotto = new Lotto(lottoNumbers);
         System.out.println(lottoNumbers);
         return lotto;
     }
