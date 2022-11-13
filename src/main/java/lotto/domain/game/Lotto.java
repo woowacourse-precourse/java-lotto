@@ -26,4 +26,10 @@ public class Lotto {
         }
     }
 
+    public void validateDuplicateBonusAndWinningNumber(int number){
+        if(numbers.contains(number)){
+            throw new IllegalArgumentException(DUPLICATION_WINNING_NUMBER_AND_BONUS_NUMBER.print());
+        }
+    }
+
 }
