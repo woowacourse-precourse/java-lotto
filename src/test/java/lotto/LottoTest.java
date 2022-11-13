@@ -1,10 +1,12 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +26,29 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("예외 처리 에러가 IllegalArgumentException 인지 확인하는 테스트")
+    @Test
+    void exceptionsTest(){
+        assertThatThrownBy(()->new Exceptions())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호에 문자가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoString() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new BuyPrice("1500"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구입 가격을 제대로 입력받으면 몇장의 로또를 살 수 있는지 확인하는 코드")
+    @Test
+    void checkTheCorrectPriceReturn(){
+        BuyPrice buyPrice = new BuyPrice("3000");
+        int buy__ = buyPrice.checkPrice();
+        int expectedReturn = 3;
+        assertThat(buy__).isEqualTo(expectedReturn);
+    }
+
+
 }
