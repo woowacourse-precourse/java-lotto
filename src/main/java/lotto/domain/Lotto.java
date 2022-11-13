@@ -40,7 +40,7 @@ public class Lotto {
 
     private static void validateNumbersRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < MIN_LOTTO_NUMBER && MAX_LOTTO_NUMBER < number) {
+            if (number < MIN_LOTTO_NUMBER || MAX_LOTTO_NUMBER < number) {
                 Output.printExceptionMessage(LOTTO_NUMBER_RANGE_EXCEPTION);
                 throw new IllegalArgumentException();
             }
