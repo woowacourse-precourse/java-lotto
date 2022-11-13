@@ -17,11 +17,13 @@ public class ResultView implements View{
     public void makeView() {
         print();
     }
+
     private void print(){
         printDefaultMessage();
         printMatches();
         printYield();
     }
+
     private void printDefaultMessage(){
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -50,7 +52,12 @@ public class ResultView implements View{
     }
 
     private void bonusPrint(Rank rank){
-
+        System.out.println(
+                rank.getMatchedNumber()
+                        + "개 일치, 보너스 볼 일치 ("
+                        + rank.getPrice() + ") - "
+                        + result.get(rank) +"개"
+        );
     }
 
     private void printYield(){
