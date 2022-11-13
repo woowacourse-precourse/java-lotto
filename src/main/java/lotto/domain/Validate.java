@@ -8,7 +8,7 @@ import static lotto.domain.Lotto.MIN_LOTTO_NUM;
 
 public class Validate {
     public static boolean isInRange(int number) {
-        return MAX_LOTTO_NUM <= number && number <= MIN_LOTTO_NUM;
+        return MIN_LOTTO_NUM <= number && number <= MAX_LOTTO_NUM;
     }
 
     public static boolean isInRangeAll(List<Integer> nums) {
