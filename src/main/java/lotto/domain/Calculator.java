@@ -24,16 +24,21 @@ public class Calculator {
     }
 
     public static Rank calculateRank(WinningNumbers winningNumbers, Lotto lotto) {
+        int count = getWinningNumberCounts(winningNumbers, lotto);
+        if (count == 5 && hasBonus(winningNumbers, lotto)) {
+            return Rank.SECOND;
+        }
+        return rankMapper(count);
+    }
+
+    private static int getWinningNumberCounts(WinningNumbers winningNumbers, Lotto lotto) {
         int count = 0;
         for (Integer number : winningNumbers.getWinningNumbers()) {
             if (lotto.getNumbers().contains(number)) {
                 count += 1;
             }
         }
-        if (count == 5 && hasBonus(winningNumbers, lotto)) {
-            return Rank.SECOND;
-        }
-        return rankMapper(count);
+        return count;
     }
 
     public static Rank rankMapper(int count) {
