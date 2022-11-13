@@ -1,12 +1,15 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import lotto.constant.LottoConstant;
 import lotto.constant.WinningRating;
 
 public class LottoComparator {
+	private static final int INITIAL_VALUE = 0;
 	Lotto lotto;
 	WinningAndBonusNumbers winningAndBonusNumbers;
 	List<Integer> winningNumbers;
@@ -27,35 +30,40 @@ public class LottoComparator {
 		this.lotto = lotto;
 
 		init();
-		calculateCountOfMatchedNumber();
+		calculateCountOfMatchedNumber(lotto.getNumbers());
 		rateWinning();
 	}
 
 	private void rateWinning() {
-		if (countOfMatchedNumber >= WinningRating.FIFTH.getCountOfMatchedNumber()) {
-			rateWinningWithoutBonusNumber();
+		if (countOfMatchedNumber >= WinningRating.FIFTH.getCountOfMatchedNumber()
+			&& countOfMatchedNumber != WinningRating.SECOND.getCountOfMatchedNumber()) {
+			rateNotSecondAndThirdWinning();
 		}
 		if (countOfMatchedNumber == WinningRating.SECOND.getCountOfMatchedNumber()) {
-			rateWinningWithBonusNumber();
+			rateSecondOrThirdWinning();
 		}
 	}
 
-	private void rateWinningWithBonusNumber() {
-		if ((int)lotto.getNumbers().stream().filter(winningNumbersWithBonusNumber::contains).count()
-			== LottoConstant.COUNT_OF_LOTTO_NUMBERS) {
+	private void rateSecondOrThirdWinning() {
+		winningRating = WinningRating.THIRD;
+		if (new HashSet<>(winningNumbersWithBonusNumber).containsAll(lotto.getNumbers())) {
 			winningRating = WinningRating.SECOND;
 		}
 	}
 
-	private void rateWinningWithoutBonusNumber() {
-		for (WinningRating rating : WinningRating.values()) {
-			if (rating.getCountOfMatchedNumber() == countOfMatchedNumber) {
-				winningRating = rating;
-			}
-		}
+	private void rateNotSecondAndThirdWinning() {
+		Arrays.stream(WinningRating.values())
+			.filter(rating -> rating != WinningRating.SECOND)
+			.collect(Collectors.toList())
+			.forEach(rating -> {
+				if (rating.getCountOfMatchedNumber() == countOfMatchedNumber)
+					winningRating = rating;
+			});
 	}
 
 	private void init() {
+		winningRating = WinningRating.MISS;
+		countOfMatchedNumber = INITIAL_VALUE;
 		winningNumbers = winningAndBonusNumbers.getWinningNumbers();
 		bonusNumber = winningAndBonusNumbers.getBonusNumber();
 		winningNumbersWithBonusNumber = new ArrayList<>();
@@ -63,10 +71,7 @@ public class LottoComparator {
 		winningNumbersWithBonusNumber.add(bonusNumber);
 	}
 
-	private void calculateCountOfMatchedNumber() {
-		countOfMatchedNumber = (int)lotto.getNumbers()
-			.stream()
-			.filter(number -> winningNumbers.contains(number))
-			.count();
+	private void calculateCountOfMatchedNumber(List<Integer> numbers) {
+		countOfMatchedNumber = (int)numbers.stream().filter(winningNumbers::contains).count();
 	}
 }
