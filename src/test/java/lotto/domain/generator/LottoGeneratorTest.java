@@ -1,6 +1,7 @@
 package lotto.domain.generator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import lotto.domain.model.Lottos;
 import lotto.domain.model.request.MoneyRequest;
@@ -16,6 +17,9 @@ class LottoGeneratorTest {
         LottoGenerator lottoGenerator = new LottoGenerator(moneyRequest);
         Lottos generatedLottos = lottoGenerator.getLottos();
 
-        assertThat(generatedLottos.size()).isEqualTo(8);
+        assertAll(
+                () -> assertThat(generatedLottos.size()).isEqualTo(8),
+                () -> assertThat(generatedLottos.getLotto(0).size()).isEqualTo(6)
+        );
     }
 }
