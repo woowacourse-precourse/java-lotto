@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 // 당첨 번호와 발행된 로또에 대한 확인 담당
 public class Lotto {
@@ -24,8 +26,38 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Set<Integer> setOfLottoNumbers = new HashSet<>(numbers);
+        if (setOfLottoNumbers.size() != LottoManager.LOTTO_LENGTH) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    // TODO: 추가 기능 구현
+    /**
+     * TODO: 로또와 일치하는 숫자의 개수 반환
+     *
+     * @param lotto 발행된 로또
+     * @return 발행된 로또와 사용자가 입력한 당첨 번호 사이 일치하는 숫자의 개수
+     */
+    public int countSameLottoNumber(List<Integer> lotto) {
+        int numberOfSameLottoNumber = 0;
+
+        for (int userPredictLottoNumber : numbers) {
+            if (lotto.contains(userPredictLottoNumber)) {
+                numberOfSameLottoNumber++;
+            }
+        }
+        return numberOfSameLottoNumber;
+    }
+
+    /**
+     * TODO: 보너스 번호 확인
+     *
+     * @param lotto                  발행된 로또
+     * @param userPredictBonusNumber 사용자가 입력한 보너스 번호
+     * @return 발행된 로또에 보너스 번호가 들어있다면 true / 없다면 false
+     */
+    public boolean checkBonusLottoNumber(List<Integer> lotto, int userPredictBonusNumber) {
+        return lotto.contains(userPredictBonusNumber);
+    }
 
 }

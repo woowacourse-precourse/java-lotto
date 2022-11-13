@@ -18,9 +18,10 @@ public class ProgramManager {
     private static int price;
     private static int numberOfLotto;
     private static List<Integer> userPredictLottoNumbers;
+    private static int userPredictBonusNumber;
 
-    private static List<List<Integer>> lotto;
-    private static List<Integer> lottoResult;
+    public static List<List<Integer>> lotto;
+    private static int[] lottoRankResult;
     private static int lottoRevenueRate;
 
     public static void playLottoGame() {
@@ -57,11 +58,11 @@ public class ProgramManager {
 
         // 보너스 번호 입력받기
         System.out.println(ASK_PREDICT_LOTTO_BONUS_NUMBER);
-        userPredictLottoNumbers.add(UserManager.getInput_predictBonusLottoNumber());
+        userPredictBonusNumber = UserManager.getInput_predictBonusLottoNumber();
     }
 
     private static void getLottoStatistics() {
-        lottoResult = LottoManager.getLottoResult(userPredictLottoNumbers);
+        lottoRankResult = LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber);
         lottoRevenueRate = LottoManager.getRevenueRate(price);
     }
 
