@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.model.Lotto;
 import lotto.model.LottoGroup;
+import lotto.model.WinningNumber;
 import lotto.view.input.Generator;
 import lotto.view.input.UserInput;
 import lotto.view.output.Guide;
@@ -21,7 +21,7 @@ public class Application {
         guide.printLottoGroup(lottoGroup);
 
         guide.printInputWinningNumberGuide();
-        Lotto winningNumber = new Lotto(userInput.getWinningNumber());
+        WinningNumber winningNumber = new WinningNumber(userInput.getWinningNumber());
 
         guide.printInputBonusGuide();
         // 보너스 번호 입력 받음

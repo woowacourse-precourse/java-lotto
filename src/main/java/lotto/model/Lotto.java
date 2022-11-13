@@ -24,5 +24,10 @@ public class Lotto {
         return numbers.toString();
     }
 
+    public void validateNonDuplicatedNumber(int number){
+        if(numbers.contains(number)){
+            throw new IllegalArgumentException("[ERROR] 보너스 숫자가 기존 당첨 번호와 중복됩니다.");
+        }
+    }
 
 }
