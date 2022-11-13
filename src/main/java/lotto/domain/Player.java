@@ -14,8 +14,9 @@ public class Player {
 
     public void inputMoney(){
         String startInput = InputPrint.startInput();
-        purchaseNumber = Integer.parseInt(startInput);
-        Validation.purchaseNumberValid(purchaseNumber);
+        int money = Integer.parseInt(startInput);
+        Validation.purchaseNumberValid(money);
+        purchaseNumber = money / 1000;
     }
 
     public int getPurchaseNumber() {
