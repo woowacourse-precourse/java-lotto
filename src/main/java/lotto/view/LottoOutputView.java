@@ -10,9 +10,10 @@ import lotto.model.LottoResults;
 import lotto.model.LottoWinningNumber;
 
 public class LottoOutputView {
-    private static String CONFIRM_BUY_AMOUNT_MESSAGE = "%d개를 구매했습니다.\n";
+    private static String BUY_AMOUNT_MESSAGE = "%d개를 구매했습니다.\n";
     private static String STATISTIC_MESSAGE = "당첨 통계\n---";
     private static String PROFIT_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
+    src/main/java/lotto/view/LottoOutputView.java
 
     LottoProfitRate lottoProfitRate = new LottoProfitRate();
     LottoStatistics lottoStatistics = new LottoStatistics();
@@ -25,7 +26,7 @@ public class LottoOutputView {
     }
 
     public void printBuyAmount(LottoBuyer lottoBuyer) {
-        System.out.printf(CONFIRM_BUY_AMOUNT_MESSAGE, lottoBuyer.getTotalLottoTickets());
+        System.out.printf(BUY_AMOUNT_MESSAGE, lottoBuyer.getTotalLottoTickets());
     }
 
     public void printLottoInfo(LottoBuyer lottoBuyer) {
