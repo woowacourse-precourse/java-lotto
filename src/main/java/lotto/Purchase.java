@@ -1,14 +1,22 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Comparator;
+
 public class Purchase {
     private final int payment;
     private final int pricePerTicket = 1_000;
     public int ticketAmount;
+    public List<List<Integer>> ticketList;
 
     public Purchase(int payment) {
         validate(payment);
         this.payment = payment;
         this.ticketAmount = getTicketAmount(this.payment);
+        this.ticketList = getTicketList(this.ticketAmount);
     }
 
     private void validate(int payment) {
@@ -17,8 +25,25 @@ public class Purchase {
         }
     }
 
-    private int getTicketAmount(int payment){
+    private int getTicketAmount(int payment) {
         ticketAmount = payment / this.pricePerTicket;
         return ticketAmount;
     }
+
+    private static List<List<Integer>> getTicketList(int ticketAmount){
+        List<List<Integer>> ticketList = new ArrayList<List<Integer>>();
+        for (int i = 0; i < ticketAmount; i++) {
+            List<Integer> ticket = getTicket();
+            ticketList.add(ticket);
+        }
+        return ticketList;
+    }
+
+    private static List<Integer> getTicket() {
+        List<Integer> ticket;
+        ticket = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        ticket.sort(Comparator.naturalOrder());
+        return ticket;
+    }
+    
 }
