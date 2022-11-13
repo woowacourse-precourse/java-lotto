@@ -50,10 +50,8 @@ public class User {
         int totalPrizeMoney = 0;
         initLottoWinTypeMap();
         for (Lotto lotto : this.numbers) {
-            LottoWinType winType = lotto.findMatchedLotto(lotto.getNumbers(), winLottoNumbers.getNumbers(),
-                    bonusLottoNumber);
+            LottoWinType winType = lotto.findMatchedLotto(winLottoNumbers.getNumbers(), bonusLottoNumber);
             totalPrizeMoney += winType.getMoney();
-
             this.lottoWinTypeMap.put(winType, this.lottoWinTypeMap.get(winType) + 1);
         }
         return GameScore.of(totalPrizeMoney, this.money, this.lottoWinTypeMap);

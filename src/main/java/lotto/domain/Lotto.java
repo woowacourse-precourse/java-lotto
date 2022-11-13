@@ -44,14 +44,13 @@ public class Lotto {
         return numbers.stream().sorted().collect(Collectors.toList());
     }
 
-    public LottoWinType findMatchedLotto(List<Integer> myLotto, List<Integer> winLotto, int bonusLotto) {
+    public LottoWinType findMatchedLotto(List<Integer> winLotto, int bonusLotto) {
         int answerCount = 0;
         int bonusCount = 0;
-        for (Integer number : myLotto) {
+        for (Integer number : this.getNumbers()) {
             if (winLotto.contains(number)) {
                 answerCount++;
             }
-
             if (number == bonusLotto) {
                 bonusCount++;
             }
