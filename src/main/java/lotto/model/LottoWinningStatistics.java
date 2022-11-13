@@ -26,20 +26,12 @@ public class LottoWinningStatistics {
         winningCounts.put(SIX_NUMBERS_MATCH, 0);
     }
 
-    public double getEarningsRate() {
-        return earningsRate;
+    public Integer getWinningCount(LottoWinningStatus winningStatus) {
+        return winningCounts.get(winningStatus);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        for (LottoWinningStatus winningStatus : winningCounts.keySet()) {
-            builder.append(winningStatus)
-                    .append(" - ")
-                    .append(winningCounts.get(winningStatus))
-                    .append("개\n");
-        }
-        return builder.toString();
+    public double getEarningsRate() {
+        return earningsRate;
     }
 
     public void generate(LottoIssuingMachine issuingMachine, LottoDrawingMachine drawingMachine) {

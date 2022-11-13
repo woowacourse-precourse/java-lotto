@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.model.LottoIssuingMachine;
 import lotto.model.LottoWinningStatistics;
+import lotto.model.LottoWinningStatus;
 
 public class LottoView {
 
@@ -33,7 +34,10 @@ public class LottoView {
 
     public void printWinningStatistics(LottoWinningStatistics winningStatistics) {
         System.out.println("\n당첨 통계\n" + "---");
-        System.out.print(winningStatistics);
+        for (LottoWinningStatus winningStatus : LottoWinningStatus.values()) {
+            if (winningStatus == LottoWinningStatus.NOT_WINNING_STATUS) continue;
+            System.out.println(winningStatus + " - " + winningStatistics.getWinningCount(winningStatus) + "개");
+        }
         System.out.println("총 수익률은 " + String.format("%.1f", winningStatistics.getEarningsRate()) + "%입니다.");
     }
 }
