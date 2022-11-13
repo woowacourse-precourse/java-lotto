@@ -43,4 +43,8 @@ public class Lotto {
             throw new IllegalArgumentException(DUPLICATE_LOTTO_NUMBER);
         }
     }
+
+    public boolean isContain(int number) {
+        return this.numbers.contains(number);
+    }
 }
