@@ -17,7 +17,10 @@ public class Application {
         lottos.printAllLottos();
 
         printInputWinningNumbersComment();
-        WinningNumbers winningNumbers = new WinningNumbers(toIntegers(spilt(Console.readLine())));
+        List<Integer> winningNumbers = toIntegers(spilt(Console.readLine()));
+
+        printInputBonusNumberComment();
+        Numbers numbers = new Numbers(winningNumbers, toInt(Console.readLine()));
     }
 
     private static void printInputMoneyComment() {
@@ -40,6 +43,9 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
+    private static void printInputBonusNumberComment() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
     private static int toInt(String input) {
         return Integer.parseInt(input);
     }
