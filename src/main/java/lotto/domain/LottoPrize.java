@@ -8,7 +8,24 @@ public enum LottoPrize {
     FIFTH_PRIZE(3, 0, 5_000),
     NO_PRIZE(0,0, 0);
 
+    private final int lottoNumberCount;
+    private final int bonusNumberCount;
+    private final int prize;
+
     LottoPrize(int lottoNumberCount, int bonusNumberCount, int prize) {
+        this.lottoNumberCount = lottoNumberCount;
+        this.bonusNumberCount = bonusNumberCount;
+        this.prize = prize;
     }
 
+    public static LottoPrize getLottoPrize(int lottoNumberCount, int bonusNumberCount) {
+        if (lottoNumberCount == FIRST_PRIZE.lottoNumberCount) return FIRST_PRIZE;
+        else if (lottoNumberCount == SECOND_PRIZE.lottoNumberCount) {
+            if (bonusNumberCount == SECOND_PRIZE.bonusNumberCount) return SECOND_PRIZE;
+            return THIRD_PRIZE;
+        }
+        else if (lottoNumberCount == FOURTH_PRIZE.lottoNumberCount) return FOURTH_PRIZE;
+        else if (lottoNumberCount == FIFTH_PRIZE.lottoNumberCount) return FIFTH_PRIZE;
+        return NO_PRIZE;
+    }
 }
