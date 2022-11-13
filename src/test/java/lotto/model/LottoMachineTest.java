@@ -109,7 +109,7 @@ class LottoMachineTest {
     void bonusNumberIsLessThenOneReturningException() {
         assertThatThrownBy(() -> lottoMachine.setLuckyNumber(List.of(1, 2, 3, 4, 5, 6), 0))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("번호는 1이상 45이하 입니다.");
+                .hasMessage("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 
     @DisplayName("당첨 번호의 각 자리가 1 미만이라면 예외를 발생한다.")
@@ -117,7 +117,7 @@ class LottoMachineTest {
     void luckyNumberIsLessThenOneReturningException() {
         assertThatThrownBy(() -> lottoMachine.setLuckyNumber(List.of(1, 2, 3, -1, 5, 6), 7))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("번호는 1이상 45이하 입니다.");
+                .hasMessage("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 
     @DisplayName("보너스 번호가 45 초과라면 예외를 발생한다.")
@@ -125,7 +125,7 @@ class LottoMachineTest {
     void bonusNumberIsGreaterThenFortyFiveReturningException() {
         assertThatThrownBy(() -> lottoMachine.setLuckyNumber(List.of(1, 2, 3, 4, 5, 6), 46))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("번호는 1이상 45이하 입니다.");
+                .hasMessage("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 
     @DisplayName("당첨 번호의 각 자리가 45 초과라면 예외를 발생한다.")
@@ -133,7 +133,7 @@ class LottoMachineTest {
     void luckyNumberIsGreaterThenFortyFiveReturningException() {
         assertThatThrownBy(() -> lottoMachine.setLuckyNumber(List.of(1, 2, 3, 46, 5, 6), 7))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("번호는 1이상 45이하 입니다.");
+                .hasMessage("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 
     @DisplayName("당첨 번호와 보너스 번호가 중복되면 예외가 발생한다.")
