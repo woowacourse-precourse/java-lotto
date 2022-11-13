@@ -30,6 +30,10 @@ public enum Winning {
         return Optional.empty();
     }
 
+    public int getSameCount() {
+        return this.sameCount;
+    }
+
     public Long getWinnings() {
         return this.winnings;
     }
