@@ -45,6 +45,13 @@ public class Lotto {
         }
     }
 
+    public static boolean isNumberInRangeForLotto(int num) {
+        if (num >= _min_lotto_number && num <= _max_lotto_number) {
+            return true;
+        }
+        return false;
+    }
+
     private boolean isNumberNullOrEmpty(List<Integer> numbers) {
         if (numbers == null || numbers.isEmpty()) {
             return true;
@@ -65,13 +72,4 @@ public class Lotto {
         }
         return false;
     }
-
-    private boolean isNumberInRangeForLotto(int num) {
-        if (num >= _min_lotto_number && num <= _max_lotto_number) {
-            return true;
-        }
-        return false;
-    }
-
-    // TODO: 추가 기능 구현
 }

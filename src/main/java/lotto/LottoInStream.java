@@ -37,10 +37,12 @@ public class LottoInStream {
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(Application._err_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
-
         int number = convStrToInt(line);
         if (lotto.hasNumber(number)) {
             throw new IllegalArgumentException(Application._err_msg + " 보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
+        }
+        if (!Lotto.isNumberInRangeForLotto(number)) {
+            throw new IllegalArgumentException(Application._err_msg + " 범위를 벗어난 보너스 번호는 허용하지 않습니다.");
         }
         return (number);
     }
