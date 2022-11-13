@@ -17,7 +17,7 @@ public class LottoGame {
     }
 
     public void execute() {
-        var money = new Money(io.input());
+        var money = Money.generatePurchaseLottoMoney(io.input());
 
         var randomLottoSystem = new RandomLottoSystem(io);
         var answerLottoSystem = new AnswerLottoSystem(io);

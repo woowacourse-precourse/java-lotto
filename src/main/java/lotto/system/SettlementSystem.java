@@ -40,7 +40,8 @@ public class SettlementSystem {
     }
 
     public Money calculateProfits() {
-        var profits = Money.zero();
+        var profits = Money.generateMoney(0L);
+
         for (var rankAdnCount : settlement.entrySet()) {
             profits = profits.plus(rankAdnCount.getKey()
                     .calculateProfits(rankAdnCount.getValue())

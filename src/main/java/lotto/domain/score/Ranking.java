@@ -48,6 +48,6 @@ public enum Ranking {
     }
 
     public Money calculateProfits(Integer value) {
-        return new Money(String.valueOf(prize * value));
+        return Money.generateMoney(prize * value);
     }
 }
