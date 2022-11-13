@@ -1,9 +1,8 @@
 package lotto;
 
-import static lotto.utils.Constant.LOTTO_PRICE;
-
 import java.util.EnumMap;
 import java.util.List;
+import lotto.controller.LottoController;
 import lotto.controller.MoneyController;
 import lotto.controller.WinningController;
 import lotto.domain.Lotto;
@@ -22,6 +21,7 @@ public class Mission {
 
     MoneyController moneyController;
     WinningController winningController;
+    LottoController lottoController;
 
     Mission() {
         output = new Output();
@@ -29,6 +29,7 @@ public class Mission {
         repository = new ResultRepository();
         moneyController = new MoneyController();
         winningController = new WinningController();
+        lottoController = new LottoController();
 
         try {
             play();
@@ -40,9 +41,7 @@ public class Mission {
     private void play() {
         Money money = getMoney();
 
-        int many = calculateHowManyLotto(money);
-        List<Lotto> lottos = lottoMaker.getLottos(many);
-        output.printLottos(lottos);
+        List<Lotto> lottos = lottoController.getLottos(money);
 
         WinningLotto winningLotto = winningController.getWinningLotto();
 
@@ -65,10 +64,6 @@ public class Mission {
     private Money getMoney() {
         output.printGetMoney();
         return moneyController.getMoney();
-    }
-
-    private int calculateHowManyLotto(Money money) {
-        return money.getMoney() / LOTTO_PRICE;
     }
 
     private double getRate(int inputMoney, int priceMoney) {
