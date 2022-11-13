@@ -20,6 +20,6 @@ public class Output {
     }
 
     public void printError(String errorMessage) {
-        System.err.println("[ERROR] " + errorMessage);
+        System.out.println("[ERROR] " + errorMessage);
     }
 }
