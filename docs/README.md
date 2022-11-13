@@ -22,7 +22,7 @@
 - [ ] 수익률을 가져온다. LottoStatistics#getPercentageOfProfit()
   - [ ] 수익률을 계산한다. LottoStatistics#calculatePercentageOfProfit()
 - [x] "구입금액을 입력해 주세요." 출력한다. RequestView#displayEnterPurchaseAmount()
-- [ ] "당첨 번호를 입력해 주세요." 출력한다. RequestView#displayEnterWinnerNumber()
+- [x] "당첨 번호를 입력해 주세요." 출력한다. RequestView#displayEnterWinnerNumber()
 - [ ] "보너스 번호를 입력해 주세요." 출력한다. RequestView#displayEnterBonusNumber()
 - [ ] 발행한 로또 수량 및 번호를 출력한다. ResultView#displayAllLottoes()
 - [ ] 수익률을 출력한다. ResultView#displayProfitPercentage()

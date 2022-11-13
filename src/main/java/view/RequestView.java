@@ -7,4 +7,8 @@ public class RequestView {
     public void displayEnterPurchaseAmount() {
         System.out.println(LottoMessage.ENTER_INPUT_AMOUNT);
     }
+
+    public void displayEnterWinnerNumber() {
+        System.out.println(LottoMessage.ENTER_WINNER_NUMBER);
+    }
 }

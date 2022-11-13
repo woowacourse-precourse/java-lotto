@@ -10,4 +10,8 @@ public class LottoController {
         requestView.displayEnterPurchaseAmount();
     }
 
+    public void winnerNumber() {
+        requestView.displayEnterWinnerNumber();
+    }
+
 }
