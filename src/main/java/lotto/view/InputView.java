@@ -3,6 +3,10 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.ErrorMessage;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class InputView {
 
@@ -20,7 +24,7 @@ public class InputView {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
 
-        if (isDivideBy1000(money)) {
+        if (!(isDivideBy1000(money))) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
     }
