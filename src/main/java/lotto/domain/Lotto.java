@@ -17,7 +17,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
         if (!isInRangeAll(numbers)) {
             throw new IllegalArgumentException("[ERROR] 자동으로 생성된 로또 번호의 범위가 올바르지 않습니다.");
@@ -25,5 +25,9 @@ public class Lotto {
         if (!isNotDuplicate(numbers)) {
             throw new IllegalArgumentException("[ERROR] 자동으로 생성된 로또 번호 중 중복되는 숫자가 있습니다.");
         }
+    }
+
+    public List<Integer> get() {
+        return numbers;
     }
 }
