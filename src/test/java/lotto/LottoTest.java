@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -53,7 +55,7 @@ class LottoTest {
     @DisplayName("구입 입력만큼 나오는지 확인")
     @Test
     void checkSix() {
-        lottoMachine=new LottoMachine();
+        lottoMachine = new LottoMachine();
         lottoMachine.makeLottoCount(6000);
         lottoMachine.makeLottoReceipt();
         assertThat(6).isEqualTo(lottoMachine.getLottoReceipt().size());
@@ -85,17 +87,17 @@ class LottoTest {
     @Test
     void judgeLottoTest() {
         LottoMachine lottoMachine = new LottoMachine();
-        assertThat(lottoMachine.judgeLotto(5,true)).isEqualTo(WinningPrize.FIVEWITHBONUS);
+        assertThat(lottoMachine.judgeLotto(5, true)).isEqualTo(WinningPrize.FIVEWITHBONUS);
     }
 
     @DisplayName("로또 정답과 로또 그리고 보너스로 답 판단")
     @Test
     void calculateLottoTest() {
         LottoMachine lottoMachine = new LottoMachine();
-        Lotto lotto = new Lotto(new String[]{"1","3","5","7","8","9"});
-        Lotto answer = new Lotto(new String[]{"1","3","5","7","8","10"});
+        Lotto lotto = new Lotto(new String[]{"1", "3", "5", "7", "8", "9"});
+        Lotto answer = new Lotto(new String[]{"1", "3", "5", "7", "8", "10"});
         int bonus = 9;
-        assertThat(lottoMachine.calculateLotto(answer,lotto,bonus)).isEqualTo(WinningPrize.FIVEWITHBONUS);
+        assertThat(lottoMachine.calculateLotto(answer, lotto, bonus)).isEqualTo(WinningPrize.FIVEWITHBONUS);
     }
 
     @DisplayName("로또 결과물 잘 들어오는지 확인")
@@ -104,9 +106,36 @@ class LottoTest {
         LottoMachine lottoMachine = new LottoMachine();
         lottoMachine.makeLottoCount(1000);
         lottoMachine.makeLottoReceipt();
-        Lotto answer = new Lotto(new String[]{"1","3","5","7","8","10"});
+        Lotto answer = new Lotto(new String[]{"1", "3", "5", "7", "8", "10"});
         int bonus = 9;
         assertThat(lottoMachine.getLottoReceipt().size()).isEqualTo(1);
+    }
+
+    @DisplayName("랭크에 따른 맞춘 숫자 반환")
+    @Test
+    void rankTest() {
+        LottoClerk lottoClerk = new LottoClerk();
+        assertThat(lottoClerk.rankChecker(WinningPrize.THREE)).isEqualTo("3");
+    }
+
+    @DisplayName("해당 랭크에 해당하는 String 반환 makeResultMessage 테스트")
+    @Test
+    void rankStringTest() {
+        LottoClerk lottoClerk = new LottoClerk();
+        ArrayList<WinningPrize> result = new ArrayList<>();
+        result.add(WinningPrize.THREE);
+        assertThat(lottoClerk.makeResultMessage(result, WinningPrize.THREE))
+                .isEqualTo("3개 일치 (5,000원) - 1개\n");
+    }
+
+    @DisplayName("소수점 첫번째자리까지만 테스트 getProfitPercent 테스트")
+    @Test
+    void getProfitPercentTest() {
+        LottoClerk lottoClerk = new LottoClerk();
+        ArrayList<WinningPrize> result = new ArrayList<>();
+        result.add(WinningPrize.THREE);
+        assertThat(lottoClerk.getProfitPercent(result, 8000))
+                .isEqualTo("62.5");
     }
 
 
