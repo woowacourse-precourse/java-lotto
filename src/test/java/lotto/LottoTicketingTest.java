@@ -15,7 +15,7 @@ class LottoTicketingTest {
     @DisplayName("로또 티켓을 발권해 티켓 내 중복된 숫자가 없는지 확인한다.")
     @Test
     void checkDuplicationInAutoCreatedLottoTickets() {
-        List<Integer> lottoNumbers = new ArrayList<>();
+        List<Integer> lottoNumbers;
         Set<Integer> lottoNumbersWithoutDuplication;
         int count = 0;
         IllegalArgumentException error = new IllegalArgumentException();
@@ -28,6 +28,6 @@ class LottoTicketingTest {
                 throw error;
             }
         }
-        assertThat(lottoTicketing.giveLottoTickets()).isNotInstanceOf(IllegalArgumentException.class);
+        assertThat(lottoTicketing.getValidLottoNumbers().size()).isEqualTo(6);
     }
 }
