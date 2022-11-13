@@ -106,6 +106,7 @@
     - 당첨번호와 보너스넘버를 구매한 로또번호들을 비교하는 함수
   - add(rank, bonus): rank와 bonus를 받아 등수를 기록하는 함수
   - isBonus(winningCount, bonusNumber, lottoNumber) : 보너스 숫자를 맞췄는 확인하는 함수
+  - calculateProfit(lottoResult) : 수익률을 계산하는 함수
 ## View Package
 ### PrintView Class
 - function
@@ -116,11 +117,22 @@
   - printBonusNumberMessage : 보너스 번호를 입력하라고 출력하는 함수
   - printWinningResultMessage : 당첨 통계에 대하여 출력하는 함수
   - printYieldMessage : 수익률을 출력하는 함수
+  - getPrizeMoney : 맞힌개수에 맞게 상금을 출력하는 함수
+  - getWinningCount : 맞힌개수가 없어서 null이라면 0을 출력하게 바꿔주는 함수
 
 ## Controller Package
 ### LottoController CLASS
 - function
   - run : 전체 게임을 조정하는 컨트롤러
+  - gameInit : Service 객체들을 게임 시작전에 초기화하는 함수
+  - gameCleanUp : 게임이 종료되면 객체 할당 해제를 진행하는 함수
+  - preparePurchaseAmount : 구입금액 관련 함수호출
+  - preparePurchaseCount : 구입 장수 관련 함수
+  - prepareLottoRandomNumber : 랜덤 숫자 생성 관련 함수 호출
+  - inputWinningNumber : 당첨번호 관련 함수 호출
+  - inputBonusNumber : 보너스번호 관련 함수 호출
+  - calculateResult : 당첨 금액, 당첨 개수 등 당첨결과에 대한 함수 호출
+
 
 
 이후 추가,삭제,변경되는 내용들이 있다면 업데이트를 하겠습니다.
