@@ -7,6 +7,11 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Validate {
+    public void validPurchasePriceAboveThanUnitPrice(int purchasePrice, int unitPrice) {
+        if (purchasePrice < unitPrice) {
+            throw new IllegalArgumentException("입력값이 " + unitPrice + "보다 낮습니다. 로또를 구매할 수 없습니다.");
+        }
+    }
 
     public void validDivisible(int purchasePrice, int unitPrice) {
         if (purchasePrice % unitPrice != 0) {

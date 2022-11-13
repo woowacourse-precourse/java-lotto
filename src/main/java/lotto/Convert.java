@@ -11,6 +11,7 @@ public class Convert {
     private final Validate validate = new Validate();
 
     public int toLottoCount(int purchasePrice) {
+        validate.validPurchasePriceAboveThanUnitPrice(purchasePrice, UNIT_LOTTO_PRICE);
         validate.validDivisible(purchasePrice, UNIT_LOTTO_PRICE);
         return purchasePrice / UNIT_LOTTO_PRICE;
     }
