@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class User {
@@ -40,6 +41,7 @@ public class User {
                 lotto.add(randomNumber);
             }
         }
+        lotto.sort(Comparator.naturalOrder());
         return lotto;
     }
 
