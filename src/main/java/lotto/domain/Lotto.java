@@ -14,6 +14,16 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public int countSameNumbers(Lotto winningNumbers) {
+        int count = 0;
+        for (LottoNumber number : numbers) {
+            if (winningNumbers.hasNumber(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public boolean hasNumber(LottoNumber number) {
         return numbers.contains(number);
     }
@@ -30,6 +40,4 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
         }
     }
-
-
 }
