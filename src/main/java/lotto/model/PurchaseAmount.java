@@ -1,8 +1,9 @@
 package lotto.model;
 
+import lotto.view.Validator;
+
 public class PurchaseAmount {
 
-    public static final String ERR_PURCHASE_AMOUNT = "[ERROR] 구매 금액은 1000원 단위여야 합니다. 예시) 7000(O), 15000(O), 6500(X)";
     private final int purchaseAmount;
     public PurchaseAmount(int purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
@@ -11,10 +12,10 @@ public class PurchaseAmount {
 
     private void validate(int amount) {
         if (amount <= 0) {
-            throw new IllegalArgumentException(ERR_PURCHASE_AMOUNT);
+            throw new IllegalArgumentException(Validator.ERR_PURCHASE_AMOUNT);
         }
         if (amount % Lotto.PRICE != 0) {
-            throw new IllegalArgumentException(ERR_PURCHASE_AMOUNT);
+            throw new IllegalArgumentException(Validator.ERR_PURCHASE_AMOUNT);
         }
     }
 
