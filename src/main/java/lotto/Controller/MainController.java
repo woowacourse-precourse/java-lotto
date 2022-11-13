@@ -1,12 +1,9 @@
 package lotto.Controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Bonus;
-import lotto.Cash;
-import lotto.Lotto;
+import lotto.*;
 import lotto.Model.CalculatorModel;
 import lotto.Model.LottoGeneratorModel;
-import lotto.Rank;
 import lotto.View.OutputView;
 
 import java.util.ArrayList;
@@ -45,7 +42,7 @@ public class MainController {
         lottoNumber = countLottoNumber(cash);
     }
 
-    private int countLottoNumber(Cash cash) throws IllegalArgumentException {
+    private int countLottoNumber(Cash cash){
         CalculatorModel calculator = new CalculatorModel();
         return calculator.countLottoNumber(cash);
     }
@@ -95,9 +92,9 @@ public class MainController {
         CalculatorModel calculator = new CalculatorModel();
         int total = 0;
         for (Lotto myLotto : myLottos) {
-            int match = myLotto.countMatch(winningLotto);
+            Match match = new Match(myLotto.countMatch(winningLotto));
             boolean hasBonus = myLotto.hasBonusNumber(bonus);
-            Rank rank = Rank.getRank(match, hasBonus);
+            Rank rank = Rank.getMyRank(match, hasBonus);
             total += rank.getPrize();
             int p = point.get(rank);
             point.replace(rank, p + 1);
