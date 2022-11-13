@@ -1,7 +1,8 @@
 package lotto.domain;
 
+import lotto.util.ServiceInput;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Service {
@@ -9,7 +10,6 @@ public class Service {
     private List<Lotto> lottoTickets;
 
     public Service(int nLottoTickets){
-
         setLottoTickets(nLottoTickets);
     }
 
@@ -17,8 +17,7 @@ public class Service {
         this.lottoTickets = new ArrayList<>();
         for (int i=0; i < nLottoTickets; i++){
 
-            // TODO: 로또 6개 랜덤 번호 생성 구현
-            Lotto lotto = new Lotto(Arrays.asList(0,0,0,0,0,0));
+            Lotto lotto = new Lotto(ServiceInput.getLottoNumbers());
             lottoTickets.add(lotto);
         }
     }
