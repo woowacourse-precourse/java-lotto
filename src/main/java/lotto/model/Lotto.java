@@ -22,6 +22,9 @@ public class Lotto {
             if(number <= 0 || number > 45){
                 throw new IllegalArgumentException("[ERROR] 알맞은 범위의 숫자를 입력해주세요.");
             }
+            if(lottos.contains(number)){
+                throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자를 입력해주세요.");
+            }
             lottos.add(number);
         }
         return lottos;
