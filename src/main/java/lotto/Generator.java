@@ -16,13 +16,12 @@ public class Generator {
 
         for (int i = 0; i<lottoAmount; i++) {
             List<Integer> randomLottoNumber = pickUniqueNumbersInRange(1, 45, 6);
-
             twoDimensionLottoNumberList.add(randomLottoNumber);
         }
 
-
         return twoDimensionLottoNumberList;
     }
+
 
 
 
