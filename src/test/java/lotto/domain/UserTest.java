@@ -25,7 +25,7 @@ public class UserTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("금액이 1000원단위가 아니 예외가 발생한다.")
+    @DisplayName("금액이 1000원단위가 아니라면 예외가 발생한다.")
     @Test
     void createBuyAmountByWrongSize() {
         User user = new User();
@@ -47,7 +47,7 @@ public class UserTest {
         assertThat(buyAmount).isEqualTo(user.getBuyAmount());
     }
 
-    @DisplayName("금액 설정하기.")
+    @DisplayName("로또 저장하기.")
     @Test
     void setMyLotto() {
         //given
