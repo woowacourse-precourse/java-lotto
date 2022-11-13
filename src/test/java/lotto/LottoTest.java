@@ -97,6 +97,17 @@ class LottoTest extends NsTest {
         });
     }
 
+    @DisplayName("보너스 숫자가 1~45범위밖이라면 에러메시지 프린트.")
+    @Test
+    void bonusNumberNotInRange(){
+        assertSimpleTest(() -> {
+            try{
+                run("3000", "1,2,3,4,5,6", "52");
+            } catch(IllegalArgumentException e){
+                assertThat(output().contains(ERROR_MESSAGE));
+            }
+        });
+    }
 
 
     @Override
