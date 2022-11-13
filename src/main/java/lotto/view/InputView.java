@@ -12,4 +12,9 @@ public class InputView {
         System.out.println(ViewMessage.INPUT_NUMBERS);
         return Console.readLine();
     }
+
+    public String inputBonusNumber() {
+        System.out.println(ViewMessage.INPUT_BONUS_NUMBER);
+        return Console.readLine();
+    }
 }

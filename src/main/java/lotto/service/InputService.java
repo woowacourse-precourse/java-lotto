@@ -42,6 +42,13 @@ public class InputService {
         return numbers;
     }
 
+    public void addBonusNumber(String inputBonusNumber) {
+        inputException.notDigitException(inputBonusNumber);
+        // 1 ~ 45 확인후 아니면 예외처리
+        user.addNumber(Integer.parseInt(inputBonusNumber));
+    }
+
+
     public User getUser() {
         return user;
     }

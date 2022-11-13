@@ -21,4 +21,8 @@ public class User {
     public void setNumbers(List<Integer> numbers) {
         this.numbers = numbers;
     }
+
+    public void addNumber(Integer number) {
+        this.numbers.add(number);
+    }
 }
