@@ -8,7 +8,7 @@ public class Application {
         User user = new User();
 
         Print.printInsertMoney();
-        int money = Input.readInteger();
+        long money = Input.readLong();
 
         user.payMoney(money);
         user.buyLotto();

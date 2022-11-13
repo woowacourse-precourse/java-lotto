@@ -9,7 +9,7 @@ public class User {
 
     public User() {}
 
-    public void payMoney(int money) {
+    public void payMoney(long money) {
         this.gameMoney = new GameMoney(money);
     }
 

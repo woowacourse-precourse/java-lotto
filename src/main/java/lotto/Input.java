@@ -14,7 +14,15 @@ public class Input {
         try {
             return Integer.parseInt(readString());
         } catch (Exception e) {
-            throw new IllegalArgumentException(Error.ERROR_INPUT_PARSING_INT.getValue());
+            throw new IllegalArgumentException(Error.ERROR_INPUT_PARSING_NUMBER.getValue());
+        }
+    }
+
+    public static long readLong() {
+        try {
+            return Long.parseLong(readString());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(Error.ERROR_INPUT_PARSING_NUMBER.getValue());
         }
     }
 
@@ -26,7 +34,7 @@ public class Input {
             try {
                 separateInput.add(Integer.parseInt(inputs[inputIndex]));
             } catch (Exception e) {
-                throw new IllegalArgumentException(Error.ERROR_INPUT_PARSING_INT.getValue());
+                throw new IllegalArgumentException(Error.ERROR_INPUT_PARSING_NUMBER.getValue());
             }
         }
         return separateInput;
