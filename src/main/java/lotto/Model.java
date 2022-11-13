@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -50,5 +51,10 @@ public class Model {
 
     public static Integer CountLottoAmount(Integer purchaseAmount) {
         return purchaseAmount / 1000;
+    }
+
+    public static ArrayList<Integer> SortArrayList(ArrayList<Integer> arraylist) {
+        Collections.sort(arraylist);
+        return arraylist;
     }
 }
