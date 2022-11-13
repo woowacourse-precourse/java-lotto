@@ -14,7 +14,7 @@ public class IOManager {
             int price = Integer.parseInt(Console.readLine());
             System.out.println(IOMessage.EMPTY_LINE);
 
-            return price / LottoConfig.LOTTO_PRICE;
+            return price;
         } catch(Exception e) {
             throw new IllegalArgumentException();
         }
