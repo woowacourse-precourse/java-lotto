@@ -39,6 +39,9 @@ public class ProgramManager {
     private static int[] lottoRankResult;
     private static float lottoRevenueRate;
 
+    /**
+     * TODO: 로또 게임 실행부
+     */
     public static void playLottoGame() {
         buyLotto();
 
@@ -47,7 +50,8 @@ public class ProgramManager {
 
         getUserPredictLottoNumbers();
 
-        getLottoStatistics();
+        lottoRankResult = LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber);
+        lottoRevenueRate = LottoManager.getRevenueRate(price, lottoRankResult);
 
         printLottoStatistics();
     }
@@ -88,16 +92,9 @@ public class ProgramManager {
         }
     }
 
-    private static void getLottoStatistics() {
-        lottoRankResult = LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber);
-        lottoRevenueRate = LottoManager.getRevenueRate(price, lottoRankResult);
-    }
-
     private static void printLottoStatistics() {
         String lottoStatisticsMessage
-                = LOTTO_STATISTICS_MESSAGE_TITLE +
-                getLottoRankResultMessage() +
-                getLottoRevenueRateMessage();
+                = LOTTO_STATISTICS_MESSAGE_TITLE + getLottoRankResultMessage() + getLottoRevenueRateMessage();
         System.out.println(lottoStatisticsMessage);
     }
 
