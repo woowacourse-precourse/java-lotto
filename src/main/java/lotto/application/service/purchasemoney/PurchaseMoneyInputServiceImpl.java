@@ -1,16 +1,23 @@
-package lotto.domain.client;
+package lotto.application.service.purchasemoney;
 
 import lotto.application.service.inputagent.InputAgent;
 
-public class Client {
+public class PurchaseMoneyInputServiceImpl implements PurchaseMoneyInputService {
 
-    public static int getPurchaseMoney() {
+
+    private final InputAgent inputAgent;
+
+    public PurchaseMoneyInputServiceImpl(InputAgent inputAgent) {
+        this.inputAgent = inputAgent;
+    }
+
+    @Override
+    public int inputPurchaseMoney() {
         System.out.println("구매금액을 입력해 주세요.");
-        InputAgent inputAgent = new InputAgent();
 
         int inputValue = 0;
         try {
-            inputValue = inputAgent.inputUserMoney();
+            inputValue = inputAgent.inputUserPurchaseMoney();
         } catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException();
         }
