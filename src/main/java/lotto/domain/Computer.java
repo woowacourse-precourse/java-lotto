@@ -15,12 +15,16 @@ public class Computer {
     private final int bonusNumber;
 
     public Computer() {
-        String winningNumber = InputView.readWinningNumber();
-        List<String> winningNumbers = Arrays.asList(winningNumber.split(","));
-        validate(winningNumbers);
+        String winningNumbers = InputView.readWinningNumbers();
+        List<String> splittedWinningNumbers = Arrays.asList(winningNumbers.split(","));
+        validate(splittedWinningNumbers);
+        this.winningNumbers = splittedWinningNumbers.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
 
         String bonusNumber = InputView.readBonusNumber();
         validate(bonusNumber);
+        this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
     private void validate(List<String> winningNumbers) {
