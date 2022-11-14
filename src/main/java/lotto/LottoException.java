@@ -21,5 +21,11 @@ public class LottoException {
 			throw new IllegalArgumentException(Constant.MONEY_RANGE_ERROR);
 		}
 	}
+
+	public void checkInputSize(String[] splitLottoNumber, int length) throws IllegalArgumentException {
+		if (splitLottoNumber.length != length) {
+			throw new IllegalArgumentException(Constant.INPUT_SIZE_ERROR);
+		}
+	}
 	
 }

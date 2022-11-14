@@ -37,6 +37,7 @@ public class Service {
 	public List<Integer> userInputNumber() {
 		String number = Console.readLine();
 		String[] splitLottoNumber = number.split(",");
+		exception.checkInputSize(splitLottoNumber, Constant.LOTTO_LENGTH);
 		for (int i = 0; i < Constant.LOTTO_LENGTH; i++) {
 			lottoNumber.add(Integer.parseInt(splitLottoNumber[i]));
 		}
