@@ -51,4 +51,12 @@ class LottoTest {
         int prizeMoney = lotto.getPrizeMoney(Arrays.asList(Arrays.asList(1,2,3,4,5,10)), 45);
         assertThat(prizeMoney).isEqualTo(Rank.THIRD.getWinningsPrice());
     }
+
+    @DisplayName("4등이 당첨됐을 때 정상동작 하는지 확인한다.")
+    @Test
+    void getPrizeMoney_정상동작_4등_당첨(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        int prizeMoney = lotto.getPrizeMoney(Arrays.asList(Arrays.asList(1,2,3,4,9,10)), 45);
+        assertThat(prizeMoney).isEqualTo(Rank.FOURTH.getWinningsPrice());
+    }
 }
