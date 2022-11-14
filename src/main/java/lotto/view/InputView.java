@@ -24,7 +24,7 @@ public class InputView {
 
             return amount;
         } catch (NumberFormatException e) {
-            throw new InputNotNumberException(); // 커스텀 예외 필요
+            throw new InputNotNumberException();
         }
     }
 
@@ -32,7 +32,7 @@ public class InputView {
         try {
             String inputItems = Console.readLine();
             List<Integer> numbers = new ArrayList<>();
-            String[] parsed = inputItems.split(","); // 파싱 오류가 발생할 일이 있을까 ?
+            String[] parsed = inputItems.split(",");
 
             for (String s : parsed) {
                 numbers.add(Integer.parseInt(s));
@@ -42,7 +42,7 @@ public class InputView {
 
             return numbers;
         } catch (NumberFormatException e) {
-            throw new InputNotNumberException(); // 커스텀 예외 필요
+            throw new InputNotNumberException();
         }
     }
 
@@ -64,24 +64,24 @@ public class InputView {
         isEnoughAmount(amount);
     }
 
-    private void isValidAmount(int amount) { // 메소드명 수정 필요
+    private void isValidAmount(int amount) {
         if (amount % 1000 != 0) {
             throw new InvalidAmountValueException();
         }
     }
 
-    private void isEnoughAmount(int amount) { // 메소드명 수정 필요
+    private void isEnoughAmount(int amount) {
         if (amount < 1000) {
             throw new SmallAmountException();
         }
     }
 
     private void validateBonusNumber(List<Integer> numbers, int bonusNumber) {
-        validateBounsNumberOutOfRange(bonusNumber);
+        validateBonusNumberOutOfRange(bonusNumber);
         validateBonusNumberDuplicated(numbers, bonusNumber);
     }
 
-    private void validateBounsNumberOutOfRange(int bonusNumber) {
+    private void validateBonusNumberOutOfRange(int bonusNumber) {
         if (isOutOfRange(bonusNumber)) {
             throw new NumberOutOfRangeException();
         }
