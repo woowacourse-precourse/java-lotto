@@ -29,7 +29,7 @@ public class OutputPrint {
         System.out.println("\n" + TextType.WINNING_STATISTICS.getText() + "\n" + "---");
     }
 
-    public static void resultPrint(Map<Integer, Integer> matchResults, int money, int sum) {
+    public static void resultPrint(Map<Integer, Integer> matchResults) {
         System.out.println(ResultType.MATCH_THREE.getResult() + " " + ResultType.MATCH.getResult() + " "
                 + PriceType.FIFTH.getPrice() + " - " + matchResults.getOrDefault(3, 0)
                 + ResultType.DIGIT.getResult());
@@ -45,9 +45,16 @@ public class OutputPrint {
         System.out.println(ResultType.MATCH_SIX.getResult() + " " + ResultType.MATCH.getResult() + " "
                 + PriceType.FIRST.getPrice() + " - " + matchResults.getOrDefault(6, 0)
                 + ResultType.DIGIT.getResult());
+    }
 
+    public static void earnRatioPrint(double money, double sum) {
         System.out.println(TextType.EARN_PERCENT.getText() + " "
-                + String.format("%.1f", ((double) sum / (double) money) * 100.0) + "%입니다.");
+                + String.format("%.1f", (sum / money) * 100.0) + "%입니다.");
+    }
+
+    public static void earnRatioPrint() {
+        System.out.println(TextType.EARN_PERCENT.getText() + " "
+                + 0 + "%입니다.");
     }
 
     public static void printError(String log) {

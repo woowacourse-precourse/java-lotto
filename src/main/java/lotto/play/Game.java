@@ -35,6 +35,15 @@ public class Game {
         prize.inputBonusNumber();
         OutputPrint.prizePrint();
         matchPrize();
+        calculateEarnRatio(player.getPurchaseNumber(), player.getSum());
+    }
+
+    public void calculateEarnRatio(int money, int sum) {
+        try {
+            OutputPrint.earnRatioPrint(money, sum);
+        }catch (ArithmeticException e){
+            OutputPrint.earnRatioPrint();
+        }
     }
 
     private void matchPrize() {
@@ -42,8 +51,8 @@ public class Game {
             int matchResult = prize.match(lotto);
             matchResults.put(matchResult, matchResults.getOrDefault(matchResult, 0) + 1);
         }
-        int sum = earnSum();
-        OutputPrint.resultPrint(matchResults, player.getPurchaseNumber(), sum);
+        player.setSum(earnSum());
+        OutputPrint.resultPrint(matchResults);
     }
 
     private int earnSum() {
