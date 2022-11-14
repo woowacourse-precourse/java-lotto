@@ -44,6 +44,24 @@ public class Winning extends Valid {
     }
 
     public void compare(User user) {
+        List<Lotto> lottos = user.getLottos();
+        for (Lotto o : lottos) {
+            user.setResult(compareLotto(o));
+        }
+    }
 
+    private Rank compareLotto(Lotto o) {
+        int cnt = 0;
+        boolean bonus = false;
+        List<Integer> userNums = o.getNumbers();
+        for (int num : userNums) {
+            if (this.numbers.contains(num)) {
+                cnt++;
+            }
+            if (this.bonus == num) {
+                bonus = true;
+            }
+        }
+        return Rank.findRank(cnt, bonus);
     }
 }
