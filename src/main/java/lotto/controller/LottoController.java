@@ -26,10 +26,9 @@ public class LottoController {
 
     public static void run() {
         try {
-            purchaseLotto();
-            setWinningNumbers();
-            setBonusNumber();
-            validateDuplicates(winningNumbers, bonusNumber);
+            purchaseLottoTickets();
+            publishPlayerNumbers();
+            determineWinningNumbersAndBonusNumber();
 
             // 로또 결과 계산
             LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
@@ -63,16 +62,22 @@ public class LottoController {
         bonusNumber = bonus.get();
     }
 
+    private static void determineWinningNumbersAndBonusNumber() {
+        setWinningNumbers();
+        setBonusNumber();
+        validateDuplicates(winningNumbers, bonusNumber);
+    }
 
-    private static void purchaseLotto() {
+    private static void purchaseLottoTickets() {
         OutputView.printCashInput();
         Purchase budget = new Purchase(InputView.getInput());
         ticketNumber = budget.getTicketNumber();
         OutputView.printTicketNumber(ticketNumber);
+    }
+
+    private static void publishPlayerNumbers() {
         Player player = new Player(ticketNumber);
         allPlayerNumbers = new ArrayList<>(player.getAllPlayerNumbers());
         OutputView.printPlayerNumbers(allPlayerNumbers);
     }
-
-
 }
