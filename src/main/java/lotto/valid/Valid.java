@@ -15,6 +15,13 @@ public class Valid {
     public static String[] lotto_answer_valid(String answer){
         return answer.split(",");
 
+    public static void check_under_thousand(String str) {
+        Integer num = Integer.valueOf(str);
+        if(num % 1000 != 0){
+            throw new IllegalArgumentException(under_thousand_Message + num);
+        }
+    }
+
     public static void check_empty(String str) {
         String [] input = str.split(",");
         for(int i = 0; i < input.length; i++){
