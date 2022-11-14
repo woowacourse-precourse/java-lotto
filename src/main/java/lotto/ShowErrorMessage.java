@@ -7,6 +7,7 @@ public class ShowErrorMessage {
     private static final String NOT_DIVIDE_MESSAGE = "금액은 1,000으로 나누어 떨어져야 합니다.";
     private static final String LOTTO_NUMBER_COUNT = "당첨 번호의 개수는 6개여야 합니다.";
     private static final String DUPLICATE_LOTTO_NUBMER = "당첨 번호는 중복될 수 없습니다.";
+    private static final String CONTAINS_BONUS_NUMBER = "보너스 번호는 당첨번호와 중복될 수 없습니다.";
 
     public static void showOutRangeLottoNumber() {
         System.out.println(ERROR_MESSAGE + OUT_RANGE_LOTTO_NUMBER_MESSAGE);
@@ -22,6 +23,10 @@ public class ShowErrorMessage {
 
     public static void showDuplicateLottoNumber() {
         System.out.println(ERROR_MESSAGE + DUPLICATE_LOTTO_NUBMER);
+    }
+
+    public static void showContainsBonusNumber() {
+        System.out.println(ERROR_MESSAGE + CONTAINS_BONUS_NUMBER);
     }
 
 }
