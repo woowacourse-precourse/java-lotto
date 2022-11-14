@@ -1,3 +1,16 @@
+package lotto.domain;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
+
 public class Lotto {
     private static final String DUPLICATE_ERROR = "[ERROR] 로또 개수는 중복이 불가능합니다.";
     private static final int LOTTO_COUNT = 6;
