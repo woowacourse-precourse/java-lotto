@@ -2,18 +2,15 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoManager {
-
-    private final int FIRST_PRIZE = 2_000_000_000;
-    private final int SECOND_PRIZE = 30_000_000;
-    private final int THIRD_PRIZE = 1500000;
-    private final int FOURTH_PRIZE = 50000;
-    private final int FIFTH_PRIZE = 5000;
+    private final int[] rewards = new int[]{ Prize.FIFTH_PRIZE.getPrize(),
+            Prize.SECOND_PRIZE.getPrize(),
+            Prize.THIRD_PRIZE.getPrize(),
+            Prize.FOURTH_PRIZE.getPrize(),
+            Prize.FIFTH_PRIZE.getPrize() };
     private int[] prize = new int[]{ 0, 0, 0, 0, 0 };
-    private final int[] rewards = new int[]{ FIRST_PRIZE, SECOND_PRIZE, THIRD_PRIZE, FOURTH_PRIZE, FIFTH_PRIZE };
     private final Judge judge;
     private final LottoGenerator lottoGenerator;
     private List<Lotto> userLottos;
