@@ -13,10 +13,6 @@ public class Lottos {
                 .collect(Collectors.toList());
     }
 
-    public int size() {
-        return lottos.size();
-    }
-
     @Override
     public String toString() {
         return lottos.stream()

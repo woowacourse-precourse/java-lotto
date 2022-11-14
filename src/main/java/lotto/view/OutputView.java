@@ -1,7 +1,6 @@
 package lotto.view;
 
 import java.util.Map;
-import lotto.model.domain.Lottos;
 import lotto.model.domain.Rank;
 
 public class OutputView {
@@ -23,9 +22,9 @@ public class OutputView {
         System.out.println(REQUEST_MONEY);
     }
 
-    public static void printLottos(Lottos lottos) {
+    public static void printLottos(int numOfLottoBuying, String lottos) {
         System.out.println();
-        System.out.println(lottos.size() + BUY_SOME);
+        System.out.println(numOfLottoBuying + BUY_SOME);
         System.out.println(lottos);
     }
 
