@@ -40,6 +40,12 @@ public class Exception {
 			throw new IllegalArgumentException(Constants.ERROR_BONUS_ONLY_NUMBER);
 		}
 	}
+
+	public void checkBonusRange(String input) throws IllegalArgumentException {
+		if (Integer.parseInt(input) < 1 || Integer.parseInt(input) > 45) {
+			throw new IllegalArgumentException(Constants.ERROR_BONUS_RANGE);
+		}
+	}
 }
 
 
