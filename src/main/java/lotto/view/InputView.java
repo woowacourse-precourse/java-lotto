@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+현
+import static lotto.view.OutputView.printPriceInputMessage;
 
 public class InputView {
     public static int lottoPurchaseMoney = 0;
@@ -11,6 +13,7 @@ public class InputView {
     private static final String COMMA = ",";
 
     public static int inputLottoPurchaseMoney() {
+        printPriceInputMessage();
         lottoPurchaseMoney = Integer.parseInt(Console.readLine());
         return lottoPurchaseMoney;
     }
