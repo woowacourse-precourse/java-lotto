@@ -45,8 +45,4 @@ public class Game {
         if (winningLotto.countBonus(bonus) == 1) throw new IllegalArgumentException();
     }
 
-
-
-
-
 }
