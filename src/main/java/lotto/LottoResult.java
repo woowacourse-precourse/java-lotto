@@ -13,4 +13,11 @@ public class LottoResult {
         }
         return matchCount;
     }
+
+    public static int earningRatioCalculator(int totalMoney, int totalPrize){
+        int earnedRatio = totalPrize/totalMoney*100;
+        return earnedRatio;
+    }
+
+
 }
