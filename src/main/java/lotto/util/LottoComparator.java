@@ -9,10 +9,11 @@ public class LottoComparator {
 
     public static Map<Rank, Integer> compareToPrize(List<Lotto> lottoList, Lotto prizeLotto, int bonusNumber) {
         Map<Rank, Integer> ranked = new EnumMap<>(Rank.class);
-        for (Lotto lotto : lottoList) {
-            Rank result = getLottoRank(lotto, prizeLotto, bonusNumber);
-            ranked.put(result, ranked.getOrDefault(result, 0) + 1);
-        }
+        lottoList.stream()
+                .map(l -> getLottoRank(l, prizeLotto, bonusNumber))
+                .forEach(rank ->
+                        ranked.put(rank, ranked.getOrDefault(rank, 0) + 1)
+                );
         return ranked;
     }
 
