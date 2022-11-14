@@ -61,13 +61,13 @@ public class GetLottoNumber {
         return winNum;
     }
 
- /*   public int Bonus() {// 보너스번호
+    public int Bonus() {// 보너스번호
         bonusNumber = Integer.parseInt(Console.readLine());
         if (bonusNumber < 1 || bonusNumber > 45) {
             System.out.println("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
             return 0;
         }
         return bonusNumber;
-    }*/
+    }
 
 }
