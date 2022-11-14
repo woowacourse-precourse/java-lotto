@@ -15,20 +15,7 @@ public class Judgement {
         if (differentNumbers.size() > FIFTH_PLACE_COUNT) {
             return UNRANK;
         }
-        if (differentNumbers.size() == FIFTH_PLACE_COUNT) {
-            return FIFTH_PLACE;
-        }
-        if (differentNumbers.size() == FOURTH_PLACE_COUNT) {
-            return FOURTH_PLACE;
-        }
-        if (differentNumbers.size() == THIRD_OR_SECOND_PLACE_CANDIDATE_COUNT) {
-            int bonusNumber = winningLotto.getBonusNumber();
-            if (!differentNumbers.contains(bonusNumber)) {
-                return THIRD_PLACE;
-            }
-            return SECOND_PLACE;
-        }
-        return FIRST_PLACE;
+        return calculateRankExceptForUnrank(differentNumbers, winningLotto);
     }
 
     private List<Integer> compare(Lotto lotto, WinningLotto winningLotto) {
@@ -37,5 +24,21 @@ public class Judgement {
         return numbers.stream()
                 .filter(number -> !winningNumbers.contains(number))
                 .collect(toList());
+    }
+
+    private Rank calculateRankExceptForUnrank(List<Integer> differentNumbers, WinningLotto winningLotto) {
+        if (differentNumbers.size() == FIFTH_PLACE_COUNT) {
+            return FIFTH_PLACE;
+        }
+        if (differentNumbers.size() == FOURTH_PLACE_COUNT) {
+            return FOURTH_PLACE;
+        }
+        if (differentNumbers.size() == THIRD_OR_SECOND_PLACE_CANDIDATE_COUNT) {
+            if (!differentNumbers.contains(winningLotto.getBonusNumber())) {
+                return THIRD_PLACE;
+            }
+            return SECOND_PLACE;
+        }
+        return FIRST_PLACE;
     }
 }
