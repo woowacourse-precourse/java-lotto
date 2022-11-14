@@ -17,7 +17,6 @@ public class LottoController {
 
     private void playLotto() {
         Buyer buyer = InputController.inputPurchaseAmount();
-        buyer.addLotto();
         OutputView.printBuyerLotto(buyer);
         WinningLotto winninglotto = InputController.inputWinningLotto();
         Calculator calculator = LottoController.makeCalculator(buyer, winninglotto);

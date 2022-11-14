@@ -19,7 +19,7 @@ public class Buyer {
         new BuyerValidator(purchaseAmount);
         this.purchaseAmount = Util.getInt(purchaseAmount);
         this.purchaseCount = Calculator.divide1000(this.purchaseAmount);
-        this.lottoWallet = new ArrayList<>();
+        buyLotto();
     }
 
     public int getPurchaseCount() {
@@ -30,7 +30,8 @@ public class Buyer {
         return lottoWallet;
     }
 
-    public void addLotto() {
+    private void buyLotto() {
+        this.lottoWallet = new ArrayList<>();
         for (int i = ZERO; i < purchaseCount; i++) {
             Lotto lotto = new Lotto(Util.generateRandomNum(START_NUM, END_NUM, NUMBERS_OF_LOTTO));
             lottoWallet.add(lotto);
