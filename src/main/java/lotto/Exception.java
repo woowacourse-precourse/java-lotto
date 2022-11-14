@@ -46,6 +46,12 @@ public class Exception {
 			throw new IllegalArgumentException(Constants.ERROR_BONUS_RANGE);
 		}
 	}
+
+	public void lottoOverLap(List<Integer> lotto, int bonusNum) throws IllegalArgumentException {
+		if (lotto.contains(bonusNum)) {
+			throw new IllegalArgumentException(Constants.ERROR_LOTTO_BONUS_SAME);
+		}
+	}
 }
 
 
