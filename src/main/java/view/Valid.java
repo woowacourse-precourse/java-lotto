@@ -8,6 +8,9 @@ public class Valid {
 
     public static boolean isNotNumber(String price) {
         boolean isNotNumber = false;
+        if(price.equals("")) {
+            isNotNumber = true;
+        }
         price = price.replaceAll("[0-9]", "");
         if (price.length() != 0) {
             isNotNumber = true;
