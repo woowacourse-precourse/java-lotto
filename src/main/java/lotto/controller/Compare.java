@@ -8,6 +8,7 @@ import java.util.List;
 public class Compare {
     int count;
     boolean bonusHit;
+    int fourth = 0;
     int fifth = 0;
 
     public Compare(List<List<Integer>> userLotto, Lotto winLotto, int bonusLotto) {
@@ -43,10 +44,14 @@ public class Compare {
         if (count == 3) {
             fifth += 1;
         }
+        if (count == 4) {
+            fourth += 1;
+        }
     }
 
     public void Win() {
         OutputView.OutputWinLotto();
         OutputView.FifthLotto(fifth);
+        OutputView.FourthLotto(fourth);
     }
 }
