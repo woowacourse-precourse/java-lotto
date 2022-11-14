@@ -75,4 +75,12 @@ class LottoTest {
         int prizeMoney = lotto.getPrizeMoney(List.of(Arrays.asList(1, 2, 7, 10, 11, 12)), 45);
         assertThat(prizeMoney).isEqualTo(0);
     }
+
+    @DisplayName("1개 맞았을때 정상동작 하는지 확인한다.")
+    @Test
+    void getPrizeMoney_정상동작_1개(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        int prizeMoney = lotto.getPrizeMoney(List.of(Arrays.asList(1, 34, 7, 10, 11, 12)), 45);
+        assertThat(prizeMoney).isEqualTo(0);
+    }
 }
