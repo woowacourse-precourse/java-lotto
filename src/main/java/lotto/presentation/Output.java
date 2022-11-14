@@ -24,7 +24,7 @@ public class Output {
 
     public static void printRate(List<Result> results) {
         double rate = getRate(results);
-        System.out.println("총 수익률은 " + String.format("%.1f", rate) + "% 입니다.");
+        System.out.println("총 수익률은 " + String.format("%.1f", rate) + "%입니다.");
     }
 
     private static double getRate(List<Result> results) {
