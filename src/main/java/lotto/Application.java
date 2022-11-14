@@ -52,7 +52,6 @@ public class Application {
         boolean inputLottoError = false;
         try {
             lotto = createLotto(numbers);
-
         } catch (Exception e) {
             inputLottoError = true;
             throw new IllegalArgumentException();
@@ -80,26 +79,22 @@ public class Application {
     }
 
 
-
     public static int inputBonusNumber(Lotto lotto) {
         String inputBonus = Console.readLine();
         int bonus;
         boolean inputBonusError = false;
         try {
             bonus = Integer.parseInt(inputBonus);
+            lotto.checkBonusExists(bonus);
         } catch (Exception e) {
             inputBonusError = true;
             throw new IllegalArgumentException();
-        }finally {
+        } finally {
             if (inputBonusError) {
-                System.out.println("[ERROR] ");
+                System.out.println("[ERROR] 잘못된 보너스 번호");
             }
         }
-
         return bonus;
     }
 
-    public static void checkValidityOfBonus() {
-
-    }
 }
