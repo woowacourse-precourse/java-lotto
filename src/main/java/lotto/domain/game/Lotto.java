@@ -5,13 +5,14 @@ import java.util.List;
 import static lotto.domain.game.LottoString.*;
 
 public class Lotto {
-    private final List<Integer> numbers;
-    private static final int LOTTO_COUNT = 6;
+    private final List<Integer> lotto;
+    public static final int LOTTO_COUNT = 6;
+    public static final int LOTTO_BONUS_COUNT = 1;
 
     public Lotto(List<Integer> winningNumbers) {
         validateSizeWinningNumber(winningNumbers);
         validateDuplicate(winningNumbers);
-        this.numbers = winningNumbers;
+        this.lotto = winningNumbers;
     }
 
     public void validateSizeWinningNumber(List<Integer> numbers) {
@@ -27,13 +28,13 @@ public class Lotto {
     }
 
     public void validateDuplicateBonusAndWinningNumber(int number){
-        if(numbers.contains(number)){
+        if(lotto.contains(number)){
             throw new IllegalArgumentException(DUPLICATION_WINNING_NUMBER_AND_BONUS_NUMBER.print());
         }
     }
 
     public void setBonusNumber(int number){
         validateDuplicateBonusAndWinningNumber(number);
-        numbers.add(number);
+        lotto.add(number);
     }
 }
