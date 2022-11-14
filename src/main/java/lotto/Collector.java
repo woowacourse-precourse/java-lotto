@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.verifier.BonusNumberValidator;
-import lotto.verifier.WinningNumberValidator;
+import lotto.verifier.WinningNumbersValidator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class Collector {
 
     public List<Integer> collectRankResults(List<Lotto> lottoList) {
-        WinningNumberValidator winningNumberVerifier = new WinningNumberValidator();
+        WinningNumbersValidator winningNumberVerifier = new WinningNumbersValidator();
         BonusNumberValidator bonusNumberVerifier = new BonusNumberValidator();
 
         List<Integer> winningNumbers = winningNumberVerifier.askWinningNumbers();
