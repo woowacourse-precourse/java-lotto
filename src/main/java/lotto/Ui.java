@@ -9,25 +9,25 @@ public class Ui {
     public int moneyInput() {
         System.out.println("구입금액을 입력해 주세요.");
         String moneyInput = Console.readLine();
-        ChangeNumberType changeNumberType = new ChangeNumberType(moneyInput);
+        GetValidateInput getValidateInput = new GetValidateInput(moneyInput);
 
-        return changeNumberType.getNumber();
+        return getValidateInput.getMoney();
     }
 
     public List<Integer> lottoInput() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String lottoInput = Console.readLine();
-        ChangeNumberType changeNumberType = new ChangeNumberType(lottoInput);
+        GetValidateInput getValidateInput = new GetValidateInput(lottoInput);
 
-        return changeNumberType.getNumbers();
+        return getValidateInput.getNumbers();
     }
 
-    public int bonusInput() {
+    public int bonusInput(List<Integer> lotto) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusInput = Console.readLine();
-        ChangeNumberType changeNumberType = new ChangeNumberType(bonusInput);
+        GetValidateInput getValidateInput = new GetValidateInput(bonusInput);
 
-        return changeNumberType.getNumber();
+        return getValidateInput.getBonus(lotto);
     }
 
     public void buyLottoOutput(List<LottoNumber> buyList) {
