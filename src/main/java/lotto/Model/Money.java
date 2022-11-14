@@ -46,6 +46,5 @@ public class Money {
         prizeSum *= 100;
         return prizeSum;
     }
-
 }
 
