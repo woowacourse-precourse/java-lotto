@@ -31,7 +31,7 @@ public class LottoGameController {
     }
 
     private void makeYield(int purchaseAmount) {
-        String lottoYield = lottoReader.calculateYield(purchaseAmount);
+        double lottoYield = lottoReader.calculateYield(purchaseAmount);
         printYield(lottoYield);
     }
 

@@ -18,19 +18,15 @@ public class LottoReader {
         this.lottoResult = initLottoResult();
     }
 
-    public String calculateYield(int purchaseAmount) {
+    public double calculateYield(int purchaseAmount) {
         int totalWinningAmount = calculateTotalAmount();
-        return roundOff((double) totalWinningAmount / purchaseAmount * 100);
+        return (double) totalWinningAmount / purchaseAmount * 100;
     }
 
     public Map<LottoRank, Integer> createLottoResult(List<Lotto> publishedLotto, Lotto winningLotto, Bonus bonus) {
         Map<Lotto, Integer> matchingResult = createMatchingResult(publishedLotto, winningLotto);
         putLottoRank(matchingResult, bonus);
         return lottoResult;
-    }
-
-    private String roundOff(double lottoYield) {
-        return String.format("%.1f", lottoYield);
     }
 
     private int calculateTotalAmount() {
