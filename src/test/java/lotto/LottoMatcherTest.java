@@ -1,5 +1,9 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.domain.Rank;
+import lotto.domain.WinningLotto;
+import lotto.participant.LottoMatcher;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.Rank.*;
+import static lotto.domain.Rank.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoMatcherTest {

@@ -1,10 +1,14 @@
-package lotto;
+package lotto.participant;
+
+import lotto.domain.Lotto;
+import lotto.domain.Rank;
+import lotto.domain.WinningLotto;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.Rank.*;
+import static lotto.domain.Rank.*;
 
 public class LottoMatcher {
 

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum Rank {
     FIRST_SIX_MATCHED, SECOND_FIVE_WITH_BONUS, THIRD_FIVE_MATCHED, FOURTH_FOUR_MATCHED, FIFTH_THREE_MATCHED, NONE

@@ -1,9 +1,12 @@
-package lotto;
+package lotto.participant;
+
+import lotto.domain.Lotto;
+import lotto.domain.Rank;
 
 import java.util.List;
 import java.util.Map;
 
-import static lotto.Rank.*;
+import static lotto.domain.Rank.*;
 
 public class Emcee {
 
