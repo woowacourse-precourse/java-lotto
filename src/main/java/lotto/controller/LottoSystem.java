@@ -30,6 +30,16 @@ public class LottoSystem {
         outputView.outputUserLottos(userLottos);
     }
 
+    public void draw() {
+        String inputWonNumber = inputView.inputWonNumber();
+        List<Integer> wonNumber = validator.convertToIntList(inputWonNumber);
+        System.out.println(wonNumber);
+
+        String inputBonusNumber = inputView.inputBonusNumber();
+        int bonusNumber = validator.convertToInt(inputBonusNumber);
+        System.out.println(bonusNumber);
+    }
+
     private List<Lotto> purchaseLotto(int money) {
         int lottoCnt = money / 1000;
         List<Lotto> lottos = new ArrayList<>();
