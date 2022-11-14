@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-
+        
     }
 
     // num개의 lotto를 발행하는 함수
@@ -50,4 +51,13 @@ public class Application {
         }
     }
 
+    // string배열을 int List로 변환하는 함수
+    public static List<Integer> stringToIntList(String[] str){
+        List<Integer> nums = new ArrayList<>();
+        int[] numbers = Arrays.stream(str).mapToInt(Integer::parseInt).toArray();
+        for(int i : numbers){
+            nums.add(i);
+        }
+        return nums;
+    }
 }
