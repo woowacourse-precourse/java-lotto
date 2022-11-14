@@ -26,7 +26,7 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
-    @DisplayName("로또번호가  정령되는지 확인")
+    @DisplayName("로또번호가  정렬되는지 확인")
     @Test
     void sortLottoNumbers() {
         Lotto lotto = new Lotto(List.of(45,13,12,23,29,1));

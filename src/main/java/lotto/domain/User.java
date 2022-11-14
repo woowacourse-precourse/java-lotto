@@ -19,7 +19,7 @@ public class User {
         return lottos;
     }
 
-    public void CheckResult(WinningLotto winningLotto) {
+    public void checkResult(WinningLotto winningLotto) {
         WinningsCalculator calculator = new WinningsCalculator(lottos, winningLotto);
         numberOfLottosByRank = calculator.getNumberOfRankedLottos();
         winnings = calculator.calculateWinnings();
