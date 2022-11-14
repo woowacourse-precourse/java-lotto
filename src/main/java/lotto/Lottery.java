@@ -60,7 +60,6 @@ public class Lottery {
             isBonus = isBonus(user, lotto);
             addGrade(winningCount, isBonus);
         }
-        System.out.println(gradeCount);
     }
 
     public void addGrade(int winningCount, boolean isBonus) {
@@ -79,5 +78,9 @@ public class Lottery {
         if (winningCount == 3) {
             gradeCount.put("FIFTH", 1);
         }
+    }
+
+    public HashMap<String, Integer> getGradeCount() {
+        return gradeCount;
     }
 }
