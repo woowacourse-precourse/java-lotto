@@ -26,7 +26,7 @@ class InputValidatorTest {
         }
     }
 
-    @DisplayName("당첨 숫자의 유효성을 검사한다.")
+    @DisplayName("당첨 번호의 유효성을 검사한다.")
     @Nested
     class WinningNumbers {
 
@@ -48,6 +48,32 @@ class InputValidatorTest {
         @Test
         void HaveLengthOf5() {
             assertThatThrownBy(() -> InputValidator.checkInputWinningNumbers("1,2,3,4,5"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @DisplayName("보너스 번호의 유효성을 검사한다.")
+    @Nested
+    class BonusNumber {
+
+        @DisplayName("숫자가 아닌 문자 입력 -> 예외 발생")
+        @Test
+        void NotNumber() {
+            assertThatThrownBy(() -> InputValidator.checkInputBonusNumber("7a"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("공백 포함 -> 예외 발생")
+        @Test
+        void HaveSpace() {
+            assertThatThrownBy(() -> InputValidator.checkInputBonusNumber(" 7"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("공백 포함 -> 예외 발생")
+        @Test
+        void Over9Digits() {
+            assertThatThrownBy(() -> InputValidator.checkInputBonusNumber("1000000000"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
