@@ -1,5 +1,10 @@
 package lotto.domain;
 
+import lotto.Lotto;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoController {
@@ -17,7 +22,7 @@ public class LottoController {
         System.out.println(lb);
 
         //당첨번호 입력
-        //Lotto win_lotto = lottoInput();
+        Lotto win_lotto = lottoInput();
 
         //보너스 번호 입력
         //int bonus_num = bonusInput();
@@ -43,5 +48,20 @@ public class LottoController {
             throw new IllegalArgumentException();
         System.out.println(count + "개를 구매했습니다.");
         return count;
+    }
+    private Lotto lottoInput(){
+        System.out.println("당첨번호를 입력해 주세요.");
+        String lotto_str = readLine();
+        String[] num_list = lotto_str.split(",");
+        List<Integer> lottoNumber = new ArrayList<>();
+        for(String num_str : num_list) {
+            try {
+                int num = Integer.parseInt(num_str);
+                lottoNumber.add(num);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return new Lotto(lottoNumber);
     }
 }
