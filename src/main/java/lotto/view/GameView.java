@@ -1,16 +1,18 @@
-package lotto;
+package lotto.view;
 
-import static lotto.ResponseMessage.BONUS_NUM_INPUT;
-import static lotto.ResponseMessage.MONEY_INPUT;
-import static lotto.ResponseMessage.QUANTITY;
-import static lotto.ResponseMessage.RATE_OF_RETURN_PREFIX;
-import static lotto.ResponseMessage.RATE_OF_RETURN_SUFFIX;
-import static lotto.ResponseMessage.STATISTICS;
-import static lotto.ResponseMessage.WINNING_NUM_INPUT;
+import static lotto.view.ResponseMessage.BONUS_NUM_INPUT;
+import static lotto.view.ResponseMessage.MONEY_INPUT;
+import static lotto.view.ResponseMessage.QUANTITY;
+import static lotto.view.ResponseMessage.RATE_OF_RETURN_PREFIX;
+import static lotto.view.ResponseMessage.RATE_OF_RETURN_SUFFIX;
+import static lotto.view.ResponseMessage.STATISTICS;
+import static lotto.view.ResponseMessage.WINNING_NUM_INPUT;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
+import lotto.domain.Buyer;
+import lotto.domain.Lotto;
 
 public class GameView {
 

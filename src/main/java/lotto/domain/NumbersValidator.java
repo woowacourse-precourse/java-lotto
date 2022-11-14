@@ -1,11 +1,11 @@
-package lotto;
+package lotto.domain;
 
 
-import static lotto.ErrorMessage.INVALID_BONUS_NUMBER;
-import static lotto.ErrorMessage.INVALID_LOTTO_NUMBER;
-import static lotto.ErrorMessage.INVALID_MONEY;
-import static lotto.ErrorMessage.NOT_A_NUMBER;
-import static lotto.ErrorMessage.PREFIX;
+import static lotto.domain.ErrorMessage.INVALID_BONUS_NUMBER;
+import static lotto.domain.ErrorMessage.INVALID_LOTTO_NUMBER;
+import static lotto.domain.ErrorMessage.INVALID_MONEY;
+import static lotto.domain.ErrorMessage.NOT_A_NUMBER;
+import static lotto.domain.ErrorMessage.PREFIX;
 
 import java.util.Arrays;
 import java.util.List;

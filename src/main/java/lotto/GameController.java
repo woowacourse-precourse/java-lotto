@@ -4,6 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.domain.Buyer;
+import lotto.domain.NumbersValidator;
+import lotto.domain.WinningNumber;
+import lotto.view.GameView;
 
 public class GameController {
 

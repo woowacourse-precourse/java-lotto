@@ -1,11 +1,11 @@
-package lotto;
+package lotto.domain;
 
 import static java.util.stream.Collectors.toMap;
-import static lotto.WinningCase.FIFTH_PLACE;
-import static lotto.WinningCase.FIRST_PLACE;
-import static lotto.WinningCase.FOURTH_PLACE;
-import static lotto.WinningCase.SECOND_PLACE;
-import static lotto.WinningCase.THIRD_PLACE;
+import static lotto.domain.WinningCase.FIFTH_PLACE;
+import static lotto.domain.WinningCase.FIRST_PLACE;
+import static lotto.domain.WinningCase.FOURTH_PLACE;
+import static lotto.domain.WinningCase.SECOND_PLACE;
+import static lotto.domain.WinningCase.THIRD_PLACE;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,14 +32,13 @@ public class Buyer {
     private double rateOfReturn;
 
 
-    Buyer(int money) {
+    public Buyer(int money) {
         lottos = LottoMachine.buyLottos(money);
         usedMoney = money;
     }
 
     public void checkWinningNumber(WinningNumber winningNumber) {
-        winningResult = Arrays.stream(WinningCase.values())
-                .collect(toMap(winningCase -> winningCase, winningCase -> 0L));
+        winningResult = initWinningResult();
 
         lottos.stream()
                 .filter(lotto -> winningNumber.countMatchedNumbers(lotto) > normalization)
@@ -54,6 +53,12 @@ public class Buyer {
 
         calculateRateOfReturn(winningResult);
     }
+
+    private Map<WinningCase, Long> initWinningResult() {
+        return Arrays.stream(WinningCase.values())
+                .collect(toMap(winningCase -> winningCase, winningCase -> 0L));
+    }
+
 
     private void calculateRateOfReturn(Map<WinningCase, Long> winningResult) {
         long earnedMoney = winningResult.entrySet().stream()
