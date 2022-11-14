@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,7 +22,6 @@ public class LottoMachine {
         else if (Math.floorDiv(money, LottoConstant.PRICE.getValue()) == 0) {
             throw new IllegalArgumentException();
         }
-
         return Math.floorDiv(money, LottoConstant.PRICE.getValue());
     }
 
@@ -35,6 +35,22 @@ public class LottoMachine {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public List<Lotto> sellLottos() {
+        List<Lotto> lottos = new ArrayList<>();
+        int money = readPurchaseAmount();
+        int quantity = countPurchaseQuantity(money);
+
+        for (int i = 0; i < quantity; i++) {
+            lottos.add(
+                    new Lotto(generateLottoNumbers(
+                            LottoConstant.STARTFROM.getValue(),
+                            LottoConstant.ENDTO.getValue(),
+                            LottoConstant.SIZE.getValue()
+                    )));
+        }
+        return lottos;
     }
 
 }
