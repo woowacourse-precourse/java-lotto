@@ -3,14 +3,18 @@ package view;
 import static view.InputLottoPurchaseAmountConstants.*;
 
 import camp.nextstep.edu.missionutils.Console;
+import controller.LottoCreate;
+
 
 public class InputLottoPurchaseAmount {
-
+	
 	public static long readLottoPurchaseAmount() {
 		System.out.println(INPUT_TEXT_PURCHASE_AMOUNT);
 		String purchaseAmount = Console.readLine();
 		long purchaseAmountResult = validate(purchaseAmount);
-
+		
+		LottoCreate lottoCreate = new LottoCreate();
+		lottoCreate.createLotto(purchaseAmountResult);
 		return purchaseAmountResult;
 	}
 
