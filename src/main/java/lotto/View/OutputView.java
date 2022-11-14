@@ -1,10 +1,10 @@
 package lotto.View;
 
-import lotto.Domain.LotteryTickets;
-import lotto.Domain.Lotto;
-import lotto.Domain.Message;
+import lotto.Domain.*;
 
+import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OutputView {
@@ -21,4 +21,23 @@ public class OutputView {
         String lottoPrintMessage = Message.LOTTO_MESSAGE_PREFIX + String.join(Message.LOTTO_MESSAGE_SEPERATOR,lottoNums) + Message.LOTTO_MESSAGE_SUFFIX;
         System.out.println(lottoPrintMessage);
     }
+
+    public static void showLottoResult(LottoResult lottoResult) {
+        for (Map.Entry<Rank, Integer> entry : lottoResult.getResult().entrySet()) {
+            if(entry.getKey().getMatchCount() >= Rank.FIFTH.getMatchCount()) {
+                printRankResult(entry.getKey(),entry.getValue());
+            }
+        }
+
+    }
+    private static void printRankResult(Rank key, Integer value) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+
+        if(key == Rank.SECOND){
+            System.out.printf((Message.SECOND_RANK_MESSAGE) + "%n", key.getMatchCount(), decFormat.format(key.getPrice()), value);
+            return ;
+        }
+        System.out.printf((Message.RANK_MESSAGE) + "%n", key.getMatchCount(), decFormat.format(key.getPrice()), value);
+    }
+
 }
