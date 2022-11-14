@@ -17,6 +17,12 @@ public class Validator {
         }
     }
 
+    public static void validateRange(int number) {
+        if (number < MIN_NUMBER || MAX_NUMBER < number) {
+            throw new IllegalArgumentException(RANGE_EXCEPTION.toString());
+        }
+    }
+
     public static void validateLength(List<Integer> numbers, int length) {
         if (numbers.size() != length) {
             throw new IllegalArgumentException(String.format(LENGTH_EXCEPTION.toString(), length));
