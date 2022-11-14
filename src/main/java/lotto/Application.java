@@ -72,12 +72,27 @@ public class Application {
         m_Lotto.VALIDATE_BONUS_NO(result);
         return result;
     }
+    public static void PRINT_RESULT(int Bonus, ArrayList<List<Integer>> My_Lotto_Number, int Amount){
+        System.out.println("당첨 통계\n---");
+        ArrayList<String> Result_Sting_Arr = m_Lotto.CHECK_WINNER(Bonus, My_Lotto_Number, Amount);
+        for (int i = 0; i < Result_Sting_Arr.size(); i++){
+            System.out.println(Result_Sting_Arr.get(i));
+        }
+    }
+    static Lotto m_Lotto;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        try{
             int Amount = PRINT_REQUEST_PAY();
             ArrayList<List<Integer>> My_Lotto_Number = PRINT_MY_LOTTO_NUMBER(Amount);
             ArrayList<Integer> Winning_Number = PRINT_INPUT_WINNING_NUMBER();
             m_Lotto = new Lotto(Winning_Number);
             int Bonus = PRINT_INPUT_BONUS_NUMBER();
+            PRINT_RESULT(Bonus, My_Lotto_Number, Amount);
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
     }
 }
