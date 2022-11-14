@@ -2,10 +2,12 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import lotto.domain.Clerk;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.Statistics;
+import lotto.domain.StatisticsMaker;
 import lotto.domain.WinningLotto;
 import lotto.domain.WinningLottoMachine;
 import lotto.view.Input;
@@ -24,8 +26,12 @@ public class LottoController {
     }
 
     private void makeResult(Output output, List<Lotto> lottos, WinningLotto winningLotto) {
-        Statistics statistics = new Statistics();
-        statistics.makeStatistics(winningLotto, lottos);
+        StatisticsMaker statisticsMaker = new StatisticsMaker();
+
+        Map<Integer, Integer> ranking = statisticsMaker.makeRankings(winningLotto, lottos);
+        double yield = statisticsMaker.makeYield(lottos, ranking);
+
+        Statistics statistics = new Statistics(ranking, yield);
         output.printWinningStatistics(statistics);
     }
 

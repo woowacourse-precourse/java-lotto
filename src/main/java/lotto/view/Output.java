@@ -5,6 +5,7 @@ import java.util.Map;
 import lotto.Constants;
 import lotto.domain.Lotto;
 import lotto.domain.Statistics;
+import lotto.domain.StatisticsMaker;
 
 public class Output {
 
