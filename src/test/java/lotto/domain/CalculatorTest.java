@@ -38,4 +38,12 @@ class CalculatorTest {
         assertThat(getRankCount2.getTotalPrice()).isEqualTo(2_030_000_000);
     }
 
+    @DisplayName("일치 숫자에 따라 옳은 순위를 반환하는지 확인한다")
+    @Test
+    void calculateRank() {
+        assertThat(getRankCount1.calculateRank(sampleWinningNubmers3, sampleLotto1)).isEqualTo(Rank.FIRST);
+        assertThat(getRankCount1.calculateRank(sampleWinningNumbers1, sampleLotto1)).isEqualTo(Rank.NOTHING);
+        assertThat(getRankCount1.calculateRank(sampleWinningNubmers2, sampleLotto3)).isEqualTo(Rank.FIFTH);
+    }
+
 }
