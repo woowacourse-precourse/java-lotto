@@ -51,6 +51,7 @@ public class Service {
 
 	public void inputLottoBonusNumber() {
 		String number = Console.readLine();
+		checkbonusNumber(number);
 		bonusLotto.setBonus(Integer.parseInt(number));
 	}
 
@@ -113,6 +114,10 @@ public class Service {
 
 	public void checkUserNumber(String splitLottoNumber) {
 		exception.checkNumberSize(splitLottoNumber);
+	}
+
+	public void checkbonusNumber(String number) {
+		exception.chackBonusNumberSameLottoNumber(number, lotto.getNumbers());
 	}
 
 	public void checkMoney(String inputMoney) {

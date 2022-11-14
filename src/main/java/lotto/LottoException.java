@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class LottoException {
@@ -33,4 +34,11 @@ public class LottoException {
 			throw new IllegalArgumentException(Constant.RANGE_OVER_ERROR);
 		}
 	}
+
+	public void chackBonusNumberSameLottoNumber(String number, List<Integer> numbers) throws IllegalArgumentException {
+		if (numbers.contains(Integer.parseInt(number))) {
+			throw new IllegalArgumentException(Constant.BONUS_NUMBER_OVERLAP_ERROR);
+		}
+	}
+
 }
