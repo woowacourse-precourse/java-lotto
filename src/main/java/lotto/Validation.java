@@ -74,7 +74,7 @@ public class Validation {
     }
 
     private boolean isOutOfRangeNumber(Integer number) {
-        return (number < MIN_LOTTO_NUMBER.getCode()) || (number > MAX_LOTTO_NUMBER.getCode());
+        return (number >= MIN_LOTTO_NUMBER.getCode()) && (number <= MAX_LOTTO_NUMBER.getCode());
     }
 
     private boolean isDuplicate(List<Integer> numbers) {
