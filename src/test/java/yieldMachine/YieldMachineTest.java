@@ -100,15 +100,17 @@ public class YieldMachineTest {
     void calculateAllLottoReward()
             throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         YieldMachine yieldMachine = new YieldMachine(List.of(1, 2, 3, 4, 7, 8), 11);
-        Method calculateOneLottoRewardMethod
-                = YieldMachine.class.getDeclaredMethod("calculateOneLottoReward", BoughtLotto.class);
-        calculateOneLottoRewardMethod.setAccessible(true);
+        Method calculateAllLottoRewardMethod
+                = YieldMachine.class.getDeclaredMethod("calculateAllLottoReward", List.class);
+        calculateAllLottoRewardMethod.setAccessible(true);
 
-        calculateOneLottoRewardMethod.invoke(yieldMachine, new BoughtLotto(List.of(1, 2, 3, 4, 7, 11)));
-        calculateOneLottoRewardMethod.invoke(yieldMachine, new BoughtLotto(List.of(1, 2, 3, 4, 5, 6)));
-        calculateOneLottoRewardMethod.invoke(yieldMachine, new BoughtLotto(List.of(7, 8, 9, 10, 11, 12)));
-        calculateOneLottoRewardMethod.invoke(yieldMachine, new BoughtLotto(List.of(1, 3, 7, 11, 20, 34)));
+        List<BoughtLotto> lottos = new ArrayList<>();
+        lottos.add(new BoughtLotto(List.of(1, 2, 3, 4, 7, 11)));
+        lottos.add(new BoughtLotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottos.add(new BoughtLotto(List.of(7, 8, 9, 10, 11, 12)));
+        lottos.add(new BoughtLotto(List.of(1, 3, 7, 11, 20, 35)));
 
+        calculateAllLottoRewardMethod.invoke(yieldMachine, lottos);
         List<Integer> countOfReward = yieldMachine.getCountOfRewards();
         assertThat(countOfReward).isEqualTo(List.of(1, 1, 0, 1, 0));
     }
