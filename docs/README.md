@@ -2,11 +2,11 @@
   - 생성자 
     - validate, checkRangeOfNumbers, checkDuplicatedNumber 메소드를 차례로 호출한다.
     - parameters인 numbers를 로컬 변수인 numbers에 저장한다.
-  - validate()
+  - validate 메소드
     - numbers의 길이가 6이 아니면 `IllegalArgumentException`를 발생시킨다.
   - checkRangeOfNumbers 메소드
     - numbers의 각 값이 1에서 45 사이의 값이 아니면 `IllegalArgumentException`를 발생시킨다.
-  - checkDuplicatedNumber
+  - checkDuplicatedNumber 메소드
     - numbers에 중복된 값이 있는지 확인한다.
     - 이때 numbers는 오름차순으로 정렬되어 있으므로 인접한 값만 확인하면 된다.
     - 이 과정에서 중복된 값이 발견되면 `IllegalArgumentException`를 발생시킨다.
