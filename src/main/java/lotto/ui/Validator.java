@@ -4,7 +4,9 @@ import lotto.exception.IllegalLottoNumberException;
 import lotto.exception.IllegalMoneyException;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validator {
@@ -16,10 +18,10 @@ public class Validator {
     private static final String ERROR_NUMBERS_ARE_NOT_CONSISTS_OF_SIX = "[ERROR] 6자리로 구성된 숫자가 아닙니다.";
     private static final String ERROR_BONUS_NUMBER_DUPLICATED = "[ERROR] 보너스 번호 중복입니다.";
 
-
     public void validateMoney(String money) {
         validateConsistOfNumber(money);
-        validateProperRangeOfMoney(money);
+        validateMoneyOverThousand(money);
+        validateMoneyDividedByThousand(money);
     }
 
     public void validateNormalNumbers(String normalNumbers) {
@@ -36,8 +38,10 @@ public class Validator {
         validateNotDuplicatedNumber(normalNumbers, Integer.parseInt(bonusNumber));
     }
 
-    private void validateNotDuplicatedNumber(List<Integer> normalNumbers, Integer bonusNumber) {
-        if (normalNumbers.contains(bonusNumber)) {
+    private void validateNotDuplicatedNumber(List<Integer> numbers) {
+        int originalSize = numbers.size();
+        Set<Integer> numberSet = new HashSet<>(numbers);
+        if (originalSize != numberSet.size()) {
             throw new IllegalLottoNumberException(ERROR_BONUS_NUMBER_DUPLICATED);
         }
     }
@@ -65,6 +69,9 @@ public class Validator {
     private List<Integer> transformNumberAsInteger(String normalNumbers) {
         List<String> numbersInString = List.of(normalNumbers.split(","));
         List<Integer> numbersInInteger = new ArrayList<>();
+        for (String numberInString : numbersInString) {
+            validateConsistOfNumber(numberInString);
+        }
         for (String number : numbersInString) {
             numbersInInteger.add(Integer.parseInt(number));
         }
@@ -72,10 +79,21 @@ public class Validator {
     }
     private void validateProperRangeOfMoney(String money) {
         int moneyInt = Integer.parseInt(money);
+        if (moneyInt % 1000 != 0) {
+            System.out.println(ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND);
+            throw new IllegalMoneyException(ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND);
+        }
+    }
+
+    private void validateMoneyOverThousand(String money) {
+        int moneyInt = Integer.parseInt(money);
         if (moneyInt < 1000) {
             System.out.println(ERROR_MONEY_NOT_OVER_THOUSAND);
             throw new IllegalMoneyException(ERROR_MONEY_NOT_OVER_THOUSAND);
         }
+    }
+    private void validateMoneyDividedByThousand(String money) {
+        int moneyInt = Integer.parseInt(money);
         if (moneyInt % 1000 != 0) {
             System.out.println(ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND);
             throw new IllegalMoneyException(ERROR_MONEY_NOT_DIVIDED_WITH_THOUSAND);
