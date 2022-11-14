@@ -38,4 +38,8 @@ public class InputOutputController {
     public void inputBonusNumber(){
         bonusNumber = inputView.printbonusNumber();
     }
+
+    public void checkLottoNumbers(){
+        logicService.checkLottoNumber(lottos,winningNumbers,bonusNumber);
+    }
 }
