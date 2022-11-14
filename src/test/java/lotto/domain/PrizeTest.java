@@ -16,7 +16,7 @@ class PrizeTest {
      */
     @DisplayName("6자리 이상의 당첨 번호를 입력하면 예외가 발생한다.")
     @Test
-    void prizeNumbersLengthOutOfBoundInputException() {
+    void prizeNumbersLengthOutOfBoundInputExceptionTest() {
         ScannerInput("1,2,3,4,5,6,7");
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputPrizeNumbers();
@@ -25,7 +25,7 @@ class PrizeTest {
 
     @DisplayName("6자리 이하의 당첨 번호를 입력하면 예외가 발생한다.")
     @Test
-    void prizeNumbersLessLengthInputException() {
+    void prizeNumbersLessLengthInputExceptionTest() {
         ScannerInput("1,2,3,4");
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputPrizeNumbers();
@@ -34,7 +34,7 @@ class PrizeTest {
 
     @DisplayName("쉼표로 구분하지 않으면 예외가 발생한다.")
     @Test
-    void prizeNumbersNotSplitCommaInputException() {
+    void prizeNumbersNotSplitCommaInputExceptionTest() {
         ScannerInput("1234");
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputPrizeNumbers();
@@ -43,7 +43,7 @@ class PrizeTest {
 
     @DisplayName("45가 넘는 숫자를 입력하면 예외가 발생한다.")
     @Test
-    void prizeNumbersOverRangeInputException() {
+    void prizeNumbersOverRangeInputExceptionTest() {
         ScannerInput("1,2,4,5,7,46");
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputPrizeNumbers();
@@ -52,7 +52,7 @@ class PrizeTest {
 
     @DisplayName("1보다 작은 숫자를 입력하면 예외가 발생한다.")
     @Test
-    void prizeNumbersLessRangeInputException() {
+    void prizeNumbersLessRangeInputExceptionTest() {
         ScannerInput("1,2,4,-1,5,4,6");
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputPrizeNumbers();
@@ -61,7 +61,7 @@ class PrizeTest {
 
     @DisplayName("1~45 사이의 6자리 숫자를 쉼표로 구분하여 입력하면 통과한다.")
     @Test
-    void prizeNumbersInput() {
+    void prizeNumbersInputTest() {
         ScannerInput("1,2,4,5,6,7");
         prize.inputPrizeNumbers();
         List<Integer> prizeNumbers = prize.getPrizeNumbers();
@@ -74,7 +74,7 @@ class PrizeTest {
      */
     @DisplayName("1~45 사이가 아닌 숫자를 입력하면 에러가 발생한다.")
     @Test
-    void bonusNumbersOverRangeInputException() {
+    void bonusNumbersOverRangeInputExceptionTest() {
         ScannerInput("46");
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputBonusNumber();
@@ -83,7 +83,7 @@ class PrizeTest {
 
     @DisplayName("숫자를 입력하지 않으면 오류가 발생한다.")
     @Test
-    void bonusNumbersNotNumberInputException() {
+    void bonusNumbersNotNumberInputExceptionTest() {
         ScannerInput("A");
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputBonusNumber();
@@ -92,7 +92,7 @@ class PrizeTest {
 
     @DisplayName("1~45사이의 올바른 숫자를 입력하면 통과한다.")
     @Test
-    void bonusNumbersInput() {
+    void bonusNumbersInputTest() {
         ScannerInput("5");
         prize.inputBonusNumber();
         int bonusNumber = prize.getBonusNumber();

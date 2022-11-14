@@ -22,7 +22,7 @@ class PlayerTest extends NsTest {
      */
     @DisplayName("1000원으로 나누어 떨어지지 않으면 예외가 발생한다.")
     @Test
-    void moneyInputNotDividedException() {
+    void moneyInputNotDividedExceptionTest() {
         assertSimpleTest(() -> {
             runException("1020");
             assertThat(output()).contains(ERROR_MESSAGE);
@@ -31,7 +31,7 @@ class PlayerTest extends NsTest {
 
     @DisplayName("1000원으로 나누어 떨어지면 통과한다.")
     @Test
-    void moneyInputDividedException() {
+    void moneyInputDividedExceptionTest() {
         ScannerInput("15000");
         player.inputMoney();
         int purchaseNumber = player.getPurchaseNumber();
@@ -40,7 +40,7 @@ class PlayerTest extends NsTest {
 
     @DisplayName("0원을 입력할시 예외가 발생한다.")
     @Test
-    void moneyInputZeroException() {
+    void moneyInputZeroExceptionTest() {
         assertSimpleTest(() -> {
             runException("0");
             assertThat(output()).contains(ERROR_MESSAGE);
@@ -49,7 +49,7 @@ class PlayerTest extends NsTest {
 
     @DisplayName("문자 입력할시 예외가 발생한다.")
     @Test
-    void notMoneyInputZeroException() {
+    void notMoneyInputZeroExceptionTest() {
         assertSimpleTest(() -> {
             runException("AA");
             assertThat(output()).contains(ERROR_MESSAGE);
