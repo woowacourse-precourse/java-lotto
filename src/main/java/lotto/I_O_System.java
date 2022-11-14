@@ -22,8 +22,9 @@ public class I_O_System {
     private final String Point = "개";
 
     private static final int Lottey_min = 1;
-    private static final int Lottey_max = 6;
+    public static final int Lottey_max = 6;
     private static final int Lottey_number_max = 45;
+
     static final int lottey_price = 1000;
 
     private String Enter_Number = "0";
@@ -47,14 +48,14 @@ public class I_O_System {
     public void Lottey_System() {
         int Bonus_Number = 0;
         List<Integer> Winning_Number = new ArrayList<>();
-        List<List<Integer>> mylist = new ArrayList<>();
+        List<List<Integer>> My_Lotto_Numbers = new ArrayList<>();
 
-        User_Lottery_Number(mylist);
+        User_Lottery_Number(My_Lotto_Numbers);
         Enter_WinningNumber(Winning_Number);
         Bonus_Number = Bonus_Number_Enter(Bonus_Number);
 
         Lotto lotto = new Lotto(Winning_Number);
-        lotto.Check_Lottey(Bonus_Number, Winning_Number, mylist);
+        lotto.Check_Lottey(Bonus_Number, Winning_Number, My_Lotto_Numbers);
     }
 
     private boolean Differnet_Error() {
@@ -74,7 +75,7 @@ public class I_O_System {
         int Base_Number = 0;
 
         try {
-            if ((Base_Number = Money_Enter % 1000) > 0) {
+            if ((Base_Number = Money_Enter % lottey_price) > 0) {
                 throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE + ERROR_Code_2);
             }
         } catch (IllegalArgumentException ex) {
