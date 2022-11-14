@@ -80,6 +80,13 @@ public class Controller {
         return winning;
     }
 
+    public String winningTable() {
+        return "3개 일치 (5,000원) - " + (int) winningTableCheck(3) + "개\n"
+                + "4개 일치 (50,000원) - " + (int) winningTableCheck(4) + "개\n"
+                + "5개 일치 (1,500,000원) - " + (int) winningTableCheck(5) + "개\n"
+                + "5개 일치, 보너스 볼 일치 (30,000,000원) - " + (int) bonusWinningCheck() + "개\n"
+                + "6개 일치 (2,000,000,000원) - " + (int) winningTableCheck(6) + "개";
+    }
 
 
 
