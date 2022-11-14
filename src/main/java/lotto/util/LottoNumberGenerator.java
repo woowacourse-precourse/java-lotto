@@ -1,8 +1,11 @@
-package lotto.model;
+package lotto.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
+import lotto.model.Lotto;
+import lotto.model.LottoCount;
+import lotto.model.Lottos;
 
 public class LottoNumberGenerator {
     private static final int MIN_RANGE = 1;

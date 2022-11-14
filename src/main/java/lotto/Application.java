@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.model.LottoCount;
-import lotto.model.LottoNumberGenerator;
+import lotto.util.LottoNumberGenerator;
 import lotto.model.Lottos;
 import lotto.model.Money;
 import lotto.model.Result;
