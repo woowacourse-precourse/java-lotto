@@ -62,6 +62,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 구분자가_쉼표가_아닐_때() {
+        assertSimpleTest(() -> {
+            runException("1000","1 2 3 4 5 6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
