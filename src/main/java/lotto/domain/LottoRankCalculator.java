@@ -17,11 +17,11 @@ public class LottoRankCalculator {
         return lottoCalculator;
     }
 
-    public Map<LottoRank, Integer> calculateRanks(WinningNumbers winningNumbers, Lottos lottos) {
-        Map<LottoRank, Integer> ranks = new HashMap<>();
+    public Map<Lotto, LottoRank> calculateRanks(WinningNumbers winningNumbers, Lottos lottos) {
+        Map<Lotto, LottoRank> ranks = new HashMap<>();
         for (Lotto lotto : lottos) {
             LottoRank rank = calculateRank(winningNumbers, lotto);
-            ranks.put(rank, ranks.getOrDefault(rank, 0) + 1);
+            ranks.put(lotto, rank);
         }
         return ranks;
     }
