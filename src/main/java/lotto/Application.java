@@ -4,10 +4,17 @@ import controller.LottoController;
 
 public class Application {
     public static void main(String[] args) {
+
         LottoController lottoController = new LottoController();
-        lottoController.purchase();
-        lottoController.winnerNumber();
-        lottoController.bonusNumber();
-        lottoController.statistics();
+
+        try {
+            lottoController.purchase();
+            lottoController.winnerNumber();
+            lottoController.bonusNumber();
+            lottoController.statistics();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
