@@ -21,6 +21,15 @@ public class Application {
         }
     }
 
+    public static void validMoney(int money) throws IllegalArgumentException {
+        if (money < 1000) {
+            throw new IllegalArgumentException("[ERROR]: 구입금액으로 로또를 구매할 수 없습니다.");
+        }
+        if (money % lottoPrice != 0) {
+            throw new IllegalArgumentException("[ERROR]: 구입금액이 로또금액으로 나누어 떨어지지 않습니다.");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
