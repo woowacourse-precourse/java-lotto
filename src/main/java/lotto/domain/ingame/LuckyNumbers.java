@@ -12,27 +12,27 @@ public class LuckyNumbers {
 
     private static final int LOTTO_MIN = 1;
     private static final int LOTTO_MAX = 45;
-    private final List<Integer> luckyNumbers;
+    private final List<Integer> luckyBalls;
     private final int bonus;
 
-    public LuckyNumbers(List<Integer> luckyNumbers, int bonus) {
+    public LuckyNumbers(List<Integer> luckyBalls, int bonus) {
 
         try {
-            validate(luckyNumbers, bonus);
+            validate(luckyBalls, bonus);
         } catch (Exception exception) {
             OutputView.showError(exception);
             throw new IllegalArgumentException();
         }
 
-        Collections.sort(luckyNumbers);
+        Collections.sort(luckyBalls);
 
-        this.luckyNumbers = luckyNumbers;
+        this.luckyBalls = luckyBalls;
         this.bonus = bonus;
     }
 
-    private static void validate(List<Integer> luckyNumbers, int bonus) {
+    private static void validate(List<Integer> luckyBalls, int bonus) {
 
-        List<Integer> balls = gatherBalls(luckyNumbers, bonus);
+        List<Integer> balls = gatherBalls(luckyBalls, bonus);
 
         validateBallsInRange(balls);
         validateBallsUnique(balls);
@@ -44,11 +44,11 @@ public class LuckyNumbers {
         }
     }
 
-    private static List<Integer> gatherBalls(List<Integer> luckyNumbers, int bonus) {
+    private static List<Integer> gatherBalls(List<Integer> luckyBalls, int bonus) {
 
         List<Integer> balls = new ArrayList<>();
 
-        balls.addAll(luckyNumbers);
+        balls.addAll(luckyBalls);
         balls.add(bonus);
 
         return balls;
@@ -64,8 +64,8 @@ public class LuckyNumbers {
         }
     }
 
-    public List<Integer> getLuckyNumbers() {
-        return luckyNumbers;
+    public List<Integer> getLuckyBalls() {
+        return luckyBalls;
     }
 
     public int getBonus(){

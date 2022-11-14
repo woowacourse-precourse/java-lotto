@@ -18,5 +18,18 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public int compare(List<Integer> luckyNumbers) {
+        return (int) numbers.stream()
+                .filter(luckyNumbers::contains)
+                .count();
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
 }

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class InputView {
 
     private static final String PAYMENT_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String LUCKY_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String LUCKY_BALLS_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final Pattern PATTERN = Pattern.compile("^[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+$");
     private static final String SEPARATOR = ",";
@@ -32,13 +32,13 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
-    public static List<Integer> inputLuckyNumbers() {
-        System.out.println(LUCKY_NUMBERS_MESSAGE);
+    public static List<Integer> inputLuckyBalls() {
+        System.out.println(LUCKY_BALLS_MESSAGE);
 
         String input = Console.readLine();
 
         try {
-            validateLuckyNumbers(input);
+            validateLuckyBalls(input);
         } catch (Exception exception) {
             OutputView.showError(exception);
             throw new IllegalArgumentException();
@@ -69,7 +69,7 @@ public class InputView {
         }
     }
 
-    private static void validateLuckyNumbers(String input) {
+    private static void validateLuckyBalls(String input) {
         if (!PATTERN.matcher(input).matches()) {
             throw new InvalidNumbersFormatException();
         }

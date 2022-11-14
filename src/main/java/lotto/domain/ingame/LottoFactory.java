@@ -7,8 +7,8 @@ import java.util.List;
 
 public class LottoFactory {
 
-    public static LuckyNumbers createLuckyNumbers(List<Integer> luckyNumbers, int bonus) {
-        return new LuckyNumbers(luckyNumbers, bonus);
+    public static LuckyNumbers createLuckyNumbers(List<Integer> luckyBalls, int bonus) {
+        return new LuckyNumbers(luckyBalls, bonus);
     }
 
     public static List<Lotto> createLotto(int tickets) {

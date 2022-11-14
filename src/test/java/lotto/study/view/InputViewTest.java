@@ -70,7 +70,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         assertThatThrownBy(() -> {
-            inputView.inputLuckyNumbers();
+            inputView.inputLuckyBalls();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -84,7 +84,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         assertThatThrownBy(() -> {
-            inputView.inputLuckyNumbers();
+            inputView.inputLuckyBalls();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -98,7 +98,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         assertThatThrownBy(() -> {
-            inputView.inputLuckyNumbers();
+            inputView.inputLuckyBalls();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -112,7 +112,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         //when
-        List<Integer> result = inputView.inputLuckyNumbers();
+        List<Integer> result = inputView.inputLuckyBalls();
 
         //then
         assertThat(result).containsExactly(1,2,3,4,5,6);

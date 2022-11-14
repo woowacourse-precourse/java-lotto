@@ -13,7 +13,7 @@ public class OutputView {
     private static final String STAT_MESSAGE = System.lineSeparator() + "당첨 통계" + System.lineSeparator() + "---";
     private static final String RANK_MESSAGE = "%d개 일치%s(%d원) - %d개" + System.lineSeparator();
     private static final String BONUS_MESSAGE = ", 보너스 볼 일치";
-    private static final String PROFIT_MESSAGE = "총 수익률은 %s입니다."+System.lineSeparator();
+    private static final String PROFIT_MESSAGE = "총 수익률은 %s%입니다."+System.lineSeparator();
     private static final String ERROR_MESSAGE = "[ERROR] %s" + System.lineSeparator();
 
     public static void showLotto(List<Lotto> userLotto) {
@@ -23,7 +23,7 @@ public class OutputView {
 
         for (Lotto lotto : userLotto) {
 
-            String format = List.of(lotto).toString();
+            String format = lotto.getNumbers().toString();
             System.out.println(format);
         }
 
@@ -33,9 +33,10 @@ public class OutputView {
     public static void showStatistic(Statistic stat) {
         System.out.println(STAT_MESSAGE);
         for (Rank rank : Rank.getAllRank()) {
-            System.out.printf(RANK_MESSAGE, rank.getMatch, isSecond(rank), rank.getPrize, stat.getRankCount(rank));
+            System.out.printf(RANK_MESSAGE, rank.getBallCount(), isSecond(rank),
+                    rank.getPrize(), stat.getRankCount(rank));
         }
-        System.out.printf(PROFIT_MESSAGE, formatDecimal(stat.getProfit()));
+        System.out.printf(PROFIT_MESSAGE, formatDecimal(stat.getProfitRate()));
     }
 
     private static String isSecond(Rank rank) {

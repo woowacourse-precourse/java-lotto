@@ -21,7 +21,7 @@ public class GameController {
         outputView.showLotto(userLotto);
 
         final LuckyNumbers luckyNumbers = makeLuckyNumbers();
-        final Statistic statistic = makeStatistic(userLotto,luckyNumbers);
+        final Statistic statistic = makeStatistic(userLotto,luckyNumbers, payment.getAmount());
         outputView.showStatistic(statistic);
     }
 
@@ -31,15 +31,15 @@ public class GameController {
     }
 
     private LuckyNumbers makeLuckyNumbers() {
-        return LottoFactory.createLuckyNumbers(inputView.inputLuckyNumbers(), inputView.inputBonus());
+        return LottoFactory.createLuckyNumbers(inputView.inputLuckyBalls(), inputView.inputBonus());
     }
 
     private List<Lotto> issueLotto(int tickets) {
         return LottoFactory.createLotto(tickets);
     }
 
-    private Statistic makeStatistic(List<Lotto> userLotto, LuckyNumbers luckyNumbers) {
-        return new Statistic(userLotto,luckyNumbers);
+    private Statistic makeStatistic(List<Lotto> userLotto, LuckyNumbers luckyNumbers, int amount) {
+        return new Statistic(userLotto,luckyNumbers,amount);
     }
 
 

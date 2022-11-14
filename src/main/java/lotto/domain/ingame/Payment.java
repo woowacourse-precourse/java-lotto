@@ -29,6 +29,10 @@ public class Payment {
         }
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
     public int getTicket() {
         return ticket;
     }
