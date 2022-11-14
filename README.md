@@ -18,12 +18,13 @@
 - [v] 보너스 번호를 입력 받는다. - Input#receiveBonusNuber
 
 출력
-- [ ] 로또 구입 금액을 입력받는 문구를 출력한다. - Output#giveMeMoney
+- [v] 로또 구입 금액을 입력받는 문구를 출력한다. - Output#giveMeMoney
+- [v] 당첨 번호를 입력받는 문구를 출력한다. - Output#giveMeWinningNumbers, giveMeBonusNumber
 - [ ] 발행한 로또 수량을 출력한다. - Output#lottoQuantity
 - [ ] 발행한 로또 번호를 출력한다. - Output#lotteriesNumbers
 - [ ] 당첨 내역을 출력한다. - Output#winningHistory
 - [ ] 수익률을 출력한다. - Output#earningRate
-- [ ] 예외 메시지를 출력한다. -  
+- [ ] 예외 메시지를 출력한다. 
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
