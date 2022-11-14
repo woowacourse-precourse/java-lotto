@@ -25,7 +25,7 @@ public class WinNumberController {
     }
 
 
-    public Integer readBoundNumber(String userBonusNumber) {
+    public Integer readBonusNumber(String userBonusNumber) {
         isDigit(userBonusNumber);
 
         return Integer.parseInt(userBonusNumber);
