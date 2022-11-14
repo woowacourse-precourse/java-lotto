@@ -2,7 +2,6 @@ package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import jdk.jshell.spi.ExecutionControlProvider;
 import lotto.domain.Lotto;
 import lotto.domain.UserLotto;
 import lotto.domain.Bonus;
@@ -26,13 +25,11 @@ public class Application {
         try {
             UserLotto user = createUserLotto();
             List<Lotto> lottos = getLottoList(user.getLottoCount());
-
             printLottoList(lottos);
 
             Lotto winningNumbers = createWinningNumbers();
             List<Integer> lottoResult = createLottoResult(lottos, winningNumbers.getLotto(),
                     createBonusNumber(winningNumbers).getBonusNumber());
-
             printResults(lottoResult, user);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -44,12 +41,12 @@ public class Application {
         return new UserLotto(readLine());
     }
 
-    public static List<Lotto> getLottoList(int lottoCount) {
+    public static List<Lotto> getLottoList(int lottoCount) throws IllegalArgumentException {
         printLottoCount(lottoCount);
         return createLottoList(lottoCount);
     }
 
-    public static Lotto createWinningNumbers() {
+    public static Lotto createWinningNumbers() throws IllegalArgumentException {
         printGetWinningNumber();
         return new Lotto(convertStringListToIntegerList(splitNumber(readLine())));
     }
