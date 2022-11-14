@@ -2,7 +2,7 @@ package lotto.repository;
 
 import java.util.List;
 import lotto.domain.LottoHistory;
-import lotto.domain.LottoRanking;
+import lotto.domain.enums.LottoRanking;
 
 public class LottoHistoryRepository extends LottoHistory {
     public LottoHistoryRepository() {

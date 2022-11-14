@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import lotto.domain.enums.LottoException;
 
 public class Lotto {
     private final List<Integer> numbers;

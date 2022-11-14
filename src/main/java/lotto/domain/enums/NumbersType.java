@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.enums;
 
 public enum NumbersType {
     START_INCLUSIVE(1),

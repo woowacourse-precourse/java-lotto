@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.domain.enums.LottoRanking;
 
 public class LottoHistory {
     private final List<LottoRanking> winningHistory = new ArrayList<>();

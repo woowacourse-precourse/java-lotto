@@ -1,7 +1,7 @@
 package lotto.view.print;
 
 import lotto.domain.LottoHistory;
-import lotto.domain.LottoRanking;
+import lotto.domain.enums.LottoRanking;
 
 public class PrintHistory {
     private static final String YIELD_MESSAGE = "총 수익률은 %s%%입니다.%n";

@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import lotto.domain.enums.NumbersType;
 
 public class LottoCheck {
     public LottoCheck() {
