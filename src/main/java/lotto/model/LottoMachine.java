@@ -10,6 +10,10 @@ public class LottoMachine {
     private int lottoTicketCount;
     private List<Lotto> lottoTickets;
 
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
     public int getLottoTicketCount() {
         return lottoTicketCount;
     }

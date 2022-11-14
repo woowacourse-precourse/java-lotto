@@ -1,10 +1,12 @@
 package lotto.service;
 
 import java.util.List;
+import java.util.Map;
 import lotto.model.Lotto;
 import lotto.model.LottoMachine;
 import lotto.model.LottoResult;
 import lotto.model.WinningLotto;
+import lotto.util.constants.WinningScore;
 
 public class LottoService {
     private LottoMachine lottoMachine;
@@ -25,4 +27,15 @@ public class LottoService {
         winningLotto = new WinningLotto(lotto, bonusNumber);
     }
 
+    public Map<WinningScore, Integer> computeWinningResult() {
+        lottoResult = new LottoResult(winningLotto.getBonusNumber());
+        for (Lotto userLotto : lottoMachine.getLottoTickets()) {
+            lottoResult.computeWinningScore(userLotto, winningLotto.getWinningLotto());
+        }
+        return lottoResult.getWinningScoreResult();
+    }
+
+    public double computeRateOfReturn() {
+        return lottoResult.computeRateOfReturn(lottoMachine.getPurchaseAmount());
+    }
 }

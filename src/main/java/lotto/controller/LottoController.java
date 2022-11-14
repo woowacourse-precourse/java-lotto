@@ -1,9 +1,11 @@
 package lotto.controller;
 
 import java.util.List;
+import java.util.Map;
 import lotto.model.Lotto;
 import lotto.model.LottoInput;
 import lotto.service.LottoService;
+import lotto.util.constants.WinningScore;
 import lotto.view.GameMessage;
 
 public class LottoController {
@@ -14,6 +16,7 @@ public class LottoController {
     public void run() {
         publishUserLotto();
         assignWinningLotto();
+        calculateWinningStatistics();
     }
 
     public void publishUserLotto() {
@@ -48,4 +51,8 @@ public class LottoController {
         return lottoInput.inputBonusNumber();
     }
 
+    public void calculateWinningStatistics() {
+        Map<WinningScore, Integer> statistics = lottoService.computeWinningResult();
+        double rateOfReturn = lottoService.computeRateOfReturn();
+    }
 }
