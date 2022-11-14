@@ -1,16 +1,15 @@
 package lotto.domain;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        numbers.sort(Comparator.naturalOrder());
-        this.numbers = numbers;
+    public Lotto(List<Integer> rowNumbers) {
+        validate(rowNumbers);
+        List<Integer> sortedNumbers = new ArrayList<>(rowNumbers);
+        sortedNumbers.sort(Comparator.naturalOrder());
+        this.numbers = sortedNumbers;
     }
 
     private void validate(List<Integer> numbers) {
