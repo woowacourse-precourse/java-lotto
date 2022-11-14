@@ -14,12 +14,17 @@ public class LottoGameSimulator {
     }
 
     public void run() {
-        getInputOfMoney();
-        printGeneratedLotto();
-        getInputOfWinningNumbers();
-        getInputOfBonusNumber();
-        generateResult();
-        printResult();
+        try {
+            getInputOfMoney();
+            printGeneratedLotto();
+            getInputOfWinningNumbers();
+            getInputOfBonusNumber();
+            generateResult();
+            printResult();
+        } catch (IllegalArgumentException exception) {
+            MessagePrinter.printErrorMessage(exception);
+        }
+
     }
 
     public void getInputOfMoney() {

@@ -42,4 +42,9 @@ public class MessagePrinter {
         String roundedEarningRate = String.format("%.1f", earningRate);
         System.out.println("총 수익률은 " + roundedEarningRate +"%입니다.");
     }
+
+    public static void printErrorMessage(Exception exception) {
+        String errorMessage = exception.getMessage();
+        System.out.println(errorMessage);
+    }
 }
