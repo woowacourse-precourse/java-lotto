@@ -10,8 +10,11 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String input = inputMoney();
-        if (!validateMoney(input)) {
-            return;
+
+        try {
+            validateMoney(input);
+        } catch (IllegalArgumentException e) {
+            return ;
         }
         int NumberOfLotto = getNumberOfLotto(input);
 
@@ -27,21 +30,17 @@ public class Application {
         return input;
     }
 
-    public static boolean validateMoney(String input) {
+    public static void validateMoney(String input) {
         int money;
-        try {
-            if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
-                throw new IllegalArgumentException();
-            }
-            money = Integer.parseInt(input);
-            if (money < 1000 || money % 1000 != 0) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
+        if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
             System.out.println("[ERROR] 금액을 제대로 입력해주세요.");
-            return false;
+            throw new IllegalArgumentException();
         }
-        return true;
+        money = Integer.parseInt(input);
+        if (money < 1000 || money % 1000 != 0) {
+            System.out.println("[ERROR] 금액을 제대로 입력해주세요.");
+            throw new IllegalArgumentException();
+        }
     }
 
     public static int getNumberOfLotto(String input) {
@@ -70,7 +69,7 @@ public class Application {
             i.printLotto();
         }
     }
-    
+
     public static String[] inputWinNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
