@@ -4,6 +4,8 @@ import java.util.List;
 
 public class BonusNumber {
 
+    private static final int MIN_NUMBER_RANGE = 1;
+    private static final int MAX_NUMBER_RANGE = 45;
     private final int bonusNumber;
 
     public BonusNumber(String input, List<Integer> winningNumbers) {
@@ -30,16 +32,16 @@ public class BonusNumber {
 
     private int isNumber(String input) {
         try {
-            int inputNumber = Integer.valueOf(input);
-            return inputNumber;
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
         }
     }
 
     private void isInCorrectRange(int inputNumber) {
-        if (inputNumber < 1 || inputNumber > 45) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        if (inputNumber < MIN_NUMBER_RANGE || inputNumber > MAX_NUMBER_RANGE) {
+            throw new IllegalArgumentException(
+                    String.format("[ERROR] 보너스 번호는 %d부터 %d사이의 숫자여야 합니다.", MIN_NUMBER_RANGE, MAX_NUMBER_RANGE));
         }
     }
 
