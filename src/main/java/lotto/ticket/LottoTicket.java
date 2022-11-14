@@ -1,6 +1,6 @@
 package lotto.ticket;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -13,8 +13,8 @@ public class LottoTicket {
     }
 
     public List<Integer> getLottoNumbers() {
-        List<Integer> numberList = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numberList);
+        List<Integer> numberList = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        numberList.sort(Integer::compareTo);
         return numberList;
     }
     

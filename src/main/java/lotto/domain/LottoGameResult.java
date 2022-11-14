@@ -21,13 +21,7 @@ public class LottoGameResult {
 	}
 
 	public double totalInvestment() {
-		return countBoughtTickets() * money.getValue();
-	}
-
-	private int countBoughtTickets() {
-		return this.matchingResults.values()
-				.stream()
-				.reduce(0, Integer::sum);
+		return money.getValue();
 	}
 
 	public double totalWinningPrice() {

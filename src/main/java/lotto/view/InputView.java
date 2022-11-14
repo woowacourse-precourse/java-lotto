@@ -16,18 +16,20 @@ public class InputView {
 	private static final Pattern PATTERN = Pattern.compile("([0-9])+");
 	private static final int START_LOTTO_NUMBER = 1;
 	private static final int FINISH_LOTTO_NUMBER = 45;
+	private static final String ERROR_MESSAGE ="[ERROR] 정수만 입력 가능합니다.";
 
 	public static int inputMoney() {
 		System.out.println(BUY_SENTENCE);
 		String money = Console.readLine();
-		validateInteger(money);
-		return Integer.parseInt(money);
+		return Integer.parseInt(validateInteger(money));
 	}
 
-	private static void validateInteger(String string) {
+	private static String validateInteger(String string) {
 		if (!string.chars().allMatch(Character::isDigit)) {
-			throw new IllegalArgumentException("[ERROR] 정수만 입력 가능합니다.");
+			System.out.println("[ERROR] 숫자를 입력해주셔야 합니다.");
+			return "1000";
 		}
+		return string;
 	}
 
 	public static List<Integer> inputWinningNumbers() {

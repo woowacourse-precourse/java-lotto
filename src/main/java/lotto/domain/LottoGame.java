@@ -14,7 +14,6 @@ public class LottoGame {
 
 	public LottoGame(final LottoTickets lottoTickets,
 			final LottoWinningNumbers lottoWinningNumbers) {
-		System.out.println("LottoGame생성자:"+lottoTickets);
 		this.lottoTickets = lottoTickets;
 		this.lottoWinningNumbers = lottoWinningNumbers;
 	} 
@@ -32,6 +31,6 @@ public class LottoGame {
 	}
 
 	public double getYield(final LottoGameResult lottoGameResult) {
-		return lottoGameResult.totalWinningPrice() / lottoGameResult.totalInvestment();
+		return lottoGameResult.totalWinningPrice() / lottoGameResult.totalInvestment() * 100;
 	}
 }
