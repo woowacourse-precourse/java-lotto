@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class Statistics {
-    Rank rank;
+    private Rank rank;
 
     public Statistics(List<Rank> rankings) {
         aggregateRankingsToStatistics(rankings);
