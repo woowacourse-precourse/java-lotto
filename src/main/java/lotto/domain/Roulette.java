@@ -1,19 +1,32 @@
 package lotto.domain;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Roulette {
-    public int compareNumbers(List<Integer> lotto, List<Integer> winningNumber) {
+    Map<String, Integer> lottoStatus = new HashMap<>();
+    List<Integer> winningNumber;
+    int bonusNumber;
+
+    public Roulette(List<Integer> numbers, int number) {
+        this.winningNumber = numbers;
+        this.bonusNumber = number;
+    }
+
+    public void setLottoStatus() {
+        for (Rank rank : Rank.values()) {
+            lottoStatus.put(rank.name(), 0);
+        }
+    }
+
+    public int compareWithWinningNumber(List<Integer> myLotto) {
         int count = 0;
-        for (int number = 0; number < 6; number++) {
-            if (winningNumber.contains(lotto.get(number))) {
+        for (int number : myLotto) {
+            if (winningNumber.contains(number)) {
                 count++;
             }
         }
         return count;
-    }
-
-    public boolean hasBonusNumber(List<Integer> lotto, int bonusNumber) {
-        return lotto.contains(bonusNumber);
     }
 }
