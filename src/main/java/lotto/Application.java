@@ -72,5 +72,24 @@ public class Application {
         return equalNumberCount;
     }
 
+    private int changeLottoResultNumber(int count, boolean bonus, List<Integer> lottoResult) {
+
+        if (count == 6) {
+            return 0;
+        }
+        if (count == 5 && bonus) {
+            return 1;
+        }
+        if (count == 5) {
+            return 2;
+        }
+        if (count == 4) {
+            return 3;
+        }
+        if (count == 3) {
+            return 4;
+        }
+        return -1;
+    }
 
 }
