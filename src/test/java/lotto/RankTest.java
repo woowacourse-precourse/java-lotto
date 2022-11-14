@@ -31,4 +31,11 @@ public class RankTest {
 	public void valueOfTest_보너스통과() {
 		assertThat(Rank.valueOf(5, true)).isEqualTo(Rank.SECOND);
 	}
+
+	@Test
+	public void valueOfTest_보너스통과못함() {
+		assertThat(Rank.valueOf(5, false)).isEqualTo(Rank.THIRD);
+		assertThat(Rank.valueOf(4, false)).isEqualTo(Rank.FOURTH);
+		assertThat(Rank.valueOf(3, false)).isEqualTo(Rank.FIFTH);
+	}
 }
