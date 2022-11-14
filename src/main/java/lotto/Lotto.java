@@ -107,4 +107,10 @@ public class Lotto {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + result.get(4) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + result.get(3) + "개");
     }
+    public static void yield(List<Integer> result, int count){
+        int sum = result.get(0)*5 + result.get(1)*50
+                + result.get(2)*1500 + result.get(4)*30000
+                + result.get(3)*2000000;
+        System.out.println("총 수익률은 "+(double)Math.round((sum*1000/count))/10+"%입니다.");
+    }
 }

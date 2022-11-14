@@ -13,6 +13,7 @@ public class Application {
 
             List<Integer> result = Lotto.winResult(winNum, ticket);
             Lotto.winningHistory(result);
+            Lotto.yield(result, count);
         }
     }
 }
