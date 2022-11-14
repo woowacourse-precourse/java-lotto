@@ -25,6 +25,16 @@ class LottoServiceViewTest {
     }
 
     @ParameterizedTest
+    @DisplayName("유효성 검사 통합 테스트")
+    @CsvSource(value = {"10004, [ERROR] 구매 금액의 최소 단위", "2147483648, [ERROR] 구매 금액은 최대 10억 미만",
+            "as, [ERROR] 구매 금액은 숫자만 입력되어야 합니다.", "123, [ERROR] 최소 구매 금액은 1,000원 이상입니다."})
+    void validateInputMoneyTest(String inputMoney, String errorMessage) {
+        assertThatThrownBy(() -> lottoServiceView.validateInputMoney(inputMoney))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(errorMessage);
+    }
+
+    @ParameterizedTest
     @DisplayName("유효성 검사 테스트 - 화폐 최소 단위 검사")
     @ValueSource(strings = {"10004", "112334", "123040", "111400"})
     void checkMonetaryUnitTest(String inputMoney) {
