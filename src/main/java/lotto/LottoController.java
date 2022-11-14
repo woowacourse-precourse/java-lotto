@@ -4,13 +4,12 @@ import lotto.check.BonusCheck;
 import lotto.check.MoneyCheck;
 import lotto.check.WinningNumberCheck;
 import lotto.domain.Lotto;
-import lotto.domain.Money;
 import lotto.domain.Result;
 import lotto.domain.User;
 
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.*;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoController {
     private User user;

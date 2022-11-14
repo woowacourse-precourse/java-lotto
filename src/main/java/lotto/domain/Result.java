@@ -1,8 +1,9 @@
 package lotto.domain;
 
-import lotto.check.WinningNumberCheck;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
 public class Result {
 

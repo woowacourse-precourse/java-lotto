@@ -2,10 +2,11 @@ package lotto;
 
 import lotto.domain.*;
 
-import java.util.*;
 import java.text.DecimalFormat;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class View {
 
