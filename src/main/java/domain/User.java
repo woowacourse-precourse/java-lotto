@@ -5,14 +5,19 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class User {
-    private final int inputUserMoney;
 
-    public User(int inputUserMoney) {
+    private int inputUserMoney;
+
+    public int getInputUserMoney() {
+        return inputUserMoney;
+    }
+
+    public void setInputUserMoney(int inputUserMoney) {
         validateInputUserMoney(inputUserMoney);
         this.inputUserMoney = inputUserMoney;
     }
 
-    public void validateInputUserMoney(int inputUserMoney) {
+    private void validateInputUserMoney(int inputUserMoney) {
         try {
             if (inputUserMoney % 1000 != 0) throw new IllegalArgumentException();
         } catch (IllegalArgumentException e) {
