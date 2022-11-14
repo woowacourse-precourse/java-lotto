@@ -10,6 +10,7 @@ import java.util.NoSuchElementException;
 import static lotto.utils.StringParser.parseInputToIntegerList;
 
 public final class Input {
+    private static final String INVALID_PARSE_STRING_TO_INTEGER_MESSAGE = "[ERROR] 로또 번호는 숫자를 입력해야 합니다.";
     private Input() {
     }
 
@@ -34,8 +35,8 @@ public final class Input {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 로또 번호는 숫자만 입력해야 합니다.");
-            throw new NoSuchElementException();
+            System.out.println(INVALID_PARSE_STRING_TO_INTEGER_MESSAGE);
+            throw new NoSuchElementException(INVALID_PARSE_STRING_TO_INTEGER_MESSAGE);
         }
     }
 }

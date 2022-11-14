@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class StringParser {
+    private static final String INVALID_PARSE_STRING_TO_INTEGER_MESSAGE = "[ERROR] 로또 번호는 숫자를 입력해야 합니다.";
     private StringParser() {
     }
 
@@ -38,7 +39,8 @@ public final class StringParser {
         try {
             Integer.parseInt(inputSplit);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자를 입력해야 합니다.");
+            System.out.println(INVALID_PARSE_STRING_TO_INTEGER_MESSAGE);
+            throw new IllegalArgumentException(INVALID_PARSE_STRING_TO_INTEGER_MESSAGE);
         }
     }
 }
