@@ -6,14 +6,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
-    public static List<Lotto> generateLottos(int lottoQuantity) {
+    public static List<Lotto> generateLottos(int paidMoney) {
         List<Lotto> lottos = new ArrayList<>();
+        int lottoQuantity = paidMoney / 1000;
+
         for (int index = 0; index < lottoQuantity; index++) {
             List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             sortNumbers(numbers);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
+
         return lottos;
     }
 

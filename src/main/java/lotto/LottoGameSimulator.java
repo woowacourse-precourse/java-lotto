@@ -7,7 +7,7 @@ import java.util.List;
 
 public class LottoGameSimulator {
     private LottoGameResult lottoGameResult;
-    private List<Lotto> purchasedLottos;
+    private List<Lotto> Lottos;
     private WinningNumbers winningNumbers;
     private int paidMoney;
     public LottoGameSimulator() {
@@ -15,8 +15,8 @@ public class LottoGameSimulator {
 
     public void run() {
         try {
-            getInputOfMoney();
-            printGeneratedLotto();
+            buyLotto();
+            printLottos();
             getInputOfWinningNumbers();
             getInputOfBonusNumber();
             generateResult();
@@ -24,21 +24,32 @@ public class LottoGameSimulator {
         } catch (IllegalArgumentException exception) {
             MessagePrinter.printErrorMessage(exception);
         }
-
     }
 
-    public void getInputOfMoney() {
+    public void buyLotto() {
+        String moneyInput = getInputOfMoney();
+        validateMoney(moneyInput);
+        paidMoney = Integer.parseInt(moneyInput);
+        generateLottos();
+    }
+
+    public String getInputOfMoney() {
         MessagePrinter.printMoneyInputRequest();
         String moneyInput = Inputter.readLine();
-        MoneyValidator.validate(moneyInput);
-        paidMoney = Integer.parseInt(moneyInput);
+        return moneyInput;
     }
 
-    public void printGeneratedLotto() {
-        int lottoQuantity = paidMoney / 1000;
-        purchasedLottos = LottoGenerator.generateLottos(lottoQuantity);
-        MessagePrinter.printGeneratedLottoQuantity(lottoQuantity);
-        MessagePrinter.printGeneratedLottoNumbers(purchasedLottos);
+    public void validateMoney(String moneyInput) {
+        MoneyValidator.validate(moneyInput);
+    }
+
+    public void generateLottos() {
+        Lottos = LottoGenerator.generateLottos(paidMoney);
+    }
+
+    public void printLottos() {
+        MessagePrinter.printGeneratedLottoQuantity(paidMoney);
+        MessagePrinter.printGeneratedLottoNumbers(Lottos);
     }
 
     public void getInputOfWinningNumbers() {
@@ -63,7 +74,7 @@ public class LottoGameSimulator {
     public void generateResult() {
         LottoGameResultGenerator lottoGameResultGenerator = new LottoGameResultGenerator();
         lottoGameResult = lottoGameResultGenerator
-                .generateLottoGameResult(purchasedLottos, winningNumbers, paidMoney);
+                .generateLottoGameResult(Lottos, winningNumbers, paidMoney);
     }
 
     public void printResult() {
