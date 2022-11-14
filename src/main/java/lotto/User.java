@@ -53,6 +53,7 @@ public class User {
     }
 
     private void printTicketCount() {
+        System.out.println(this.lottoTicketCount + "개를 구매했습니다.");
     }
 
     private void printLottoTickets() {
