@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import java.util.Objects;
-
 public class Result {
     int matchCount;
     boolean matchBonus;

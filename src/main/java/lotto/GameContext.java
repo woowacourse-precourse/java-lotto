@@ -5,7 +5,6 @@ import lotto.logic.UserLogic;
 import lotto.process.Process;
 import lotto.screen.ConsoleInput;
 import lotto.screen.Input;
-import lotto.screen.KeyboardInput;
 import lotto.screen.Output;
 
 public class GameContext {
