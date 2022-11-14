@@ -4,17 +4,15 @@ public class Application {
     public static void main(String[] args) {
         LottoKiosk lottoKiosk = new LottoKiosk();
         WinningNumberMaker winningNumberMaker = new WinningNumberMaker();
-        try{
-            lottoKiosk.insertMoney();
-            lottoKiosk.sellLotto();
+        try {
+            Customer customer = new Customer();
+            customer.insertMoney(lottoKiosk);
+            lottoKiosk.sellLotto(customer);
             winningNumberMaker.make();
-            winningNumberMaker.makeBonusNumber();
-            LottoChecker lottoChecker = new LottoChecker(winningNumberMaker.showWinningNumbers(),
-                    winningNumberMaker.showBonusNumber());
-            lottoChecker.insertLottos(lottoKiosk.showAllLotto());
-            lottoChecker.saveAllResult();
-            lottoChecker.printEachPrizeWinCount();
-            lottoChecker.printProfitRate();
+            LottoChecker lottoChecker = new LottoChecker(winningNumberMaker.getWinningNumbers(),
+                    winningNumberMaker.getBonusNumber());
+            customer.insertLottos(lottoChecker);
+            lottoChecker.printResult();
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
