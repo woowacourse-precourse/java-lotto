@@ -54,7 +54,7 @@ public class LottoService {
                 LottoConstant.MAX_NUMBER.getValue(),
                 LottoConstant.NUMBERS_SIZE.getValue())
             .stream()
-            .sorted(Comparator.reverseOrder())
+            .sorted(Comparator.naturalOrder())
             .collect(Collectors.toList());
     }
 
