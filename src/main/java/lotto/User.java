@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 enum Score {
-    zero(0, 0), six(6, 2_000_000_000), fifth(5, 30_000_000), fifthBonus(55, 1_500_000), fourth(4, 50_000), third(3, 5_000);
+    zero(0, 0), six(6, 2_000_000_000), fifth(5, 1_500_000), fifthBonus(55, 30_000_000), fourth(4, 50_000), third(3, 5_000);
 
     int value;
     int money;
@@ -34,6 +34,8 @@ public class User {
     public List<Lotto> userLotto = new ArrayList<>();
     public int achieveMoney;
 
+    public User(){
+    }
     public void getUserLotto(int price) {
         int lottoCount = price / 1000;
         for (int i = 0; i < lottoCount; i++) {
