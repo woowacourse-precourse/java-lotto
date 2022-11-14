@@ -24,10 +24,10 @@ public class Lottos {
     }
 
     public LottoResponseDtos toResponseDto() {
-        return new LottoResponseDtos(mapToLottoResponseDtos());
+        return new LottoResponseDtos(mapToLottoResponseDto());
     }
 
-    private List<LottoResponseDto> mapToLottoResponseDtos() {
+    private List<LottoResponseDto> mapToLottoResponseDto() {
         return lottos.stream()
                 .map(Lotto::toResponseDto)
                 .collect(Collectors.toList());
