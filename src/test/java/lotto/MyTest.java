@@ -24,11 +24,21 @@ public class MyTest {
 
     @Test
     @DisplayName("로또 번호는 1에서 45사이의 숫자만 가져야 한다.")
-    void 로또_번호는_1에서_45사이의_숫자만_가져야_한다(){
+    void 로또_번호는_1에서_45사이의_숫자만_가져야_한다() {
         List<Integer> testNumbers = Arrays.asList(0, 46, 100, 55, -100);
         InputValidator inputValidator = new InputValidator();
         for (Integer testNumber : testNumbers) {
             assertThatThrownBy(() -> inputValidator.validateLottoNumber(testNumber)).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Test
+    @DisplayName("로또 번호가 6개가 아닐 경우 예외가 발생한다.")
+    void 로또_번호가_6개가_아닐_경우_예외가_발생한다() {
+        List<List<Integer>> testLotto = Arrays.asList(Arrays.asList(1, 2, 3, 4, 5), Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+        InputValidator inputValidator = new InputValidator();
+        for (List<Integer> numbers : testLotto) {
+            assertThatThrownBy(() -> inputValidator.validateLottoSize(numbers)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 
