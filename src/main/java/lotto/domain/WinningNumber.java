@@ -50,7 +50,7 @@ public class WinningNumber {
 
     private void checkIfNumberInRange(int i){
         if(i<minNum ||i>maxNum){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorResource.errorStart+NumberNotInRange);
         }
     }
     private void checkIfNumberStartsWithZero(int temporaryNumber, char newNumber ){
