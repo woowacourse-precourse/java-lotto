@@ -13,21 +13,21 @@ class InputValidatorTest {
 
         @DisplayName("숫자가 아닌 문자가 포함 -> 예외 발생")
         @Test
-        void NotNumber() {
+        void notNumber() {
             assertThatThrownBy(() -> InputValidator.checkInputMoney("1000j"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("9자리 초과의 숫자 -> 예외 발생")
         @Test
-        void Over9Digits() {
+        void over9Digits() {
             assertThatThrownBy(() -> InputValidator.checkInputMoney("1000000000"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("0으로 시작하는 숫자 -> 예외 발생")
         @Test
-        void StartWithZero() {
+        void startWithZero() {
             assertThatThrownBy(() -> InputValidator.checkInputMoney("01000"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
@@ -39,21 +39,21 @@ class InputValidatorTest {
 
         @DisplayName("공백 포함 -> 예외 발생")
         @Test
-        void NotNumber() {
+        void notNumber() {
             assertThatThrownBy(() -> InputValidator.checkInputWinningNumbers("1,2, 3,4,5,6"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("숫자가 아닌 문자 입력 -> 예외 발생")
         @Test
-        void Over9Digits() {
+        void over9Digits() {
             assertThatThrownBy(() -> InputValidator.checkInputWinningNumbers("1,2,3,4,5,a"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("5개의 숫자 입력 -> 예외 발생")
         @Test
-        void HaveLengthOf5() {
+        void haveLengthOf5() {
             assertThatThrownBy(() -> InputValidator.checkInputWinningNumbers("1,2,3,4,5"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
@@ -65,21 +65,21 @@ class InputValidatorTest {
 
         @DisplayName("숫자가 아닌 문자 입력 -> 예외 발생")
         @Test
-        void NotNumber() {
+        void notNumber() {
             assertThatThrownBy(() -> InputValidator.checkInputBonusNumber("7a"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("공백 포함 -> 예외 발생")
         @Test
-        void HaveSpace() {
+        void haveSpace() {
             assertThatThrownBy(() -> InputValidator.checkInputBonusNumber(" 7"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("공백 포함 -> 예외 발생")
         @Test
-        void Over9Digits() {
+        void over9Digits() {
             assertThatThrownBy(() -> InputValidator.checkInputBonusNumber("1000000000"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
