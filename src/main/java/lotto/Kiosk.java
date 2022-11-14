@@ -1,7 +1,5 @@
 package lotto;
 
-import ExceptionCollections.CommonException;
-import ExceptionCollections.PaymentException;
 import View.Input;
 import View.Output;
 import enumCollections.RankNumber;
@@ -11,13 +9,13 @@ import java.util.List;
 
 public class Kiosk {
     static final int LOTTO_PRICE = 1000;
+
     static protected List<Integer> winningNumbers;
     static protected int bonusNumber;
-    static int payment;
 
     static public void start(Buyer buyer) {
         try {
-            payment = getPurchaseAmount();
+            int payment = getPurchaseAmount();
             int numberOfLottos = countLottos(payment);
             List<Lotto> lottos = Generator.generate(numberOfLottos);
             printLottoInformation(numberOfLottos, lottos);
@@ -42,7 +40,7 @@ public class Kiosk {
 
     static private int getBonusNumber() {
         Output.getBonusNumber();
-        return Input.getBonusNumber();
+        return Input.getBonusNumber(winningNumbers);
     }
 
     static private void printResult(EnumMap<RankNumber, Integer> resultStatistics, int payment) {
@@ -52,13 +50,10 @@ public class Kiosk {
 
     static private int getPurchaseAmount() {
         Output.getPurchaseAmount();
-        String payment = Input.getPurchaseMoney();
-        PaymentException.validate(payment);
-        return Integer.valueOf(payment);
+        return Input.getPurchaseMoney();
     }
 
     static private int countLottos(int payment) {
         return payment / LOTTO_PRICE;
     }
-
 }

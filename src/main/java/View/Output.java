@@ -5,7 +5,6 @@ import enumCollections.RankNumber;
 import enumCollections.ResultStatistics;
 import lotto.Lotto;
 
-import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 

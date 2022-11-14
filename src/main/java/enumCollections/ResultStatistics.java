@@ -6,7 +6,7 @@ public enum ResultStatistics {
     THIRD("5개 일치 (1,500,000원) - %s개"),
     SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - %s개"),
     FIRST("6개 일치 (2,000,000,000원) - %s개"),
-    YIELD("수익률은 %s%%입니다."),
+    YIELD("총 수익률은 %s%%입니다."),
     GUIDE_MESSAGE("당첨 통계"),
     LINE("---");
 

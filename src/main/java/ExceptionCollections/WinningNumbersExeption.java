@@ -3,7 +3,6 @@ package ExceptionCollections;
 import enumCollections.Exceptions;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class WinningNumbersExeption extends CommonException {
     static final int NUMBER_LENGTH = 6;

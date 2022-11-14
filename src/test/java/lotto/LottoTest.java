@@ -27,18 +27,18 @@ class LottoTest extends NsTest {
     }
 
     // 아래에 추가 테스트 작성 가능
-    @DisplayName("구매자가 지불한 돈이 1,000원 단위가 아니라면 예외가 발생한다.")
-    @Test
-    void validatePayment() {
-        assertThatThrownBy(() -> MoneyAdministrator.validatePayment(10200))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
+//    @DisplayName("구매자가 지불한 돈이 1,000원 단위가 아니라면 예외가 발생한다.")
+//    @Test
+//    void validatePayment() {
+//        assertThatThrownBy(() -> MoneyAdministrator.validatePayment(10200))
+//                .isInstanceOf(IllegalArgumentException.class);
+//    }
 
-    @DisplayName("지불한 금액에 따라 로또 발행 개수가 달라진다.")
-    @Test
-    void countNumberOfLotto() {
-        assertThat(MoneyAdministrator.countLottos(12000)).isEqualTo(12);
-    }
+//    @DisplayName("지불한 금액에 따라 로또 발행 개수가 달라진다.")
+//    @Test
+//    void countNumberOfLotto() {
+//        assertThat(Kiosk.countLottos(12000)).isEqualTo(12);
+//    }
 
     @DisplayName("로또 번호가 오름차순으로 정렬된다.")
     @Test

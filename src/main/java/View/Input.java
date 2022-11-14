@@ -1,7 +1,8 @@
 package View;
 
-import ExceptionCollections.WinningNumbersExeption;
 import ExceptionCollections.BonusNumberException;
+import ExceptionCollections.PaymentException;
+import ExceptionCollections.WinningNumbersExeption;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
@@ -9,8 +10,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
-    public static String getPurchaseMoney() {
-        return Console.readLine().trim();
+    public static int getPurchaseMoney() {
+        String payment = Console.readLine();
+        PaymentException.validate(payment);
+        return Integer.valueOf(payment);
     }
 
     public static List<Integer> getWinningNumbers() {

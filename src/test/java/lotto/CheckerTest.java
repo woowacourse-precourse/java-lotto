@@ -43,7 +43,6 @@ public class CheckerTest {
     @Test
     void winSecondPrizeTest() {
         Kiosk.winningNumbers = List.of(1, 2, 3, 7, 8, 9);
-        Kiosk.bonusNumber = 10;
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(3, 4, 5, 6, 7, 8)),
