@@ -18,6 +18,11 @@ public class YieldMachine {
         this.countOfReward = new ArrayList<>();
     }
 
+    public YieldMachine(List<Integer> numbers, int number) {
+        this.winningNumberLotto = new WinningNumberLotto(numbers, number);
+        this.countOfReward = new ArrayList<>();
+    }
+
     public void run() {
 
     }

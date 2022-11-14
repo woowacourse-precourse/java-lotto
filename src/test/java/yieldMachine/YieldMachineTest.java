@@ -17,16 +17,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class YieldMachineTest extends NsTest {
 
-    YieldMachine yieldMachine = new YieldMachine();
-
     @DisplayName("입력된 숫자가 1000 단위가 아닌 경우에는 false가 반환된다.")
     @Test
     void findCountOfSameNumberWithWinningNumber() {
         assertSimpleTest(() ->
-                {run("1,2,3,4,5,6", "1")
+                {
+                    run("1,2,3,4,5,6", "1");
+                }
         );
-
-
     }
 
 
