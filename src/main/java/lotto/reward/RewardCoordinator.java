@@ -51,6 +51,6 @@ public class RewardCoordinator {
             String result = rewards.get(index).getRewardInfo() + " - " + totalResult[index] + "개\n";
             stringBuilder.append(result);
         }
-        return stringBuilder.toString();
+        return stringBuilder.deleteCharAt(stringBuilder.length()-1).toString();
     }
 }
