@@ -21,4 +21,8 @@ public class GameController {
             user.addLotto(lotto);
         }
     }
+
+    public void checkWinningNumbers() {
+        message.inputWinningNumbers();
+    }
 }
