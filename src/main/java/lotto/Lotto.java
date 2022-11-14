@@ -25,7 +25,7 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public Integer calQuantityByPrice(Integer money) {
+    public static Integer calQuantityByPrice(Integer money) {
         Integer quantity = money/price;
 
         return quantity;
