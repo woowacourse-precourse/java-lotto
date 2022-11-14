@@ -1,7 +1,9 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -36,12 +38,20 @@ public class Lotto {
     }
 
     private void checkDuplication(List<Integer> lottoNumbers) {
-        HashSet<Integer> hashSet = new HashSet<>();
+        HashSet<Integer> hashSet = new HashSet<>(lottoNumbers);
 
         lottoNumbers.stream().map(hashSet::add);
 
         if (hashSet.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
         }
+    }
+
+    public List<List<Integer>> generateLottoNumber(int theNumberOfLotto) {
+        List<List<Integer>> generatedLottoNumber = new ArrayList<>();
+        for (int i = 0; i < theNumberOfLotto; i++) {
+            generatedLottoNumber.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        }
+        return generatedLottoNumber;
     }
 }
