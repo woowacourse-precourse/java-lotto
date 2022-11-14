@@ -4,24 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.Lotto.lottoEA;
+import static lotto.User.bonusNumber;
 
 public class LotteryMachine {
-    private List<Integer> winningNumbers;
+    private List<Integer> winningNumbers; //Lotto numbers와 같은 역할임
     private ArrayList<List<Integer>> userNumbers;
     private List<Integer> winningCase;
     public static List<Integer> winningPriceByCase;
 
     public LotteryMachine(User user, Lotto lotto){
-        this.winningNumbers = user.getUserNumbers();
-        this.userNumbers = lotto.getLotteryOfUser();
+        this.userNumbers = user.getLotteryOfUser();
+        this.winningNumbers = lotto.getNumbers();
     }
 
     public void countWinningNumber(){
-        for(int i=0; i<userNumbers.size(); i++){
-            List<Integer> lottery = userNumbers.get(i);
+        winningCase = new ArrayList<>();
+        for (List<Integer> lottery : userNumbers) {
             this.winningCase.add(compare(lottery, winningNumbers));
         }
+        matchBonusNumber();
     }
 
     private int compare(List<Integer> lottery, List<Integer> winningNumbers) {
@@ -33,6 +34,26 @@ public class LotteryMachine {
         if(count>=3)
             return count;
         return 0;
+    }
+
+    private boolean isBonusNumber(List<Integer> userNums){
+        for(int a: userNums){
+            if(a == bonusNumber)
+                return true;
+        }
+        return false;
+    }
+
+    private void matchBonusNumber(){
+        for(int i=0; i<winningCase.size(); i++){
+            if(winningCase.get(i) == 5 && isBonusNumber(userNumbers.get(i))){
+                winningCase.set(i, 7);
+            }
+        }
+    }
+
+    public List<Integer> getWinningCase(){
+        return this.winningCase;
     }
 
     public void matchWinningCase(){
