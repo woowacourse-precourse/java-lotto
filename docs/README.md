@@ -5,7 +5,7 @@
 ### Business
 
 - [X] 플레이어로 부터 값을 입력 받는다. - Input.request
-    - [X] 플레이어로 부터 입력 받은 값을 long로 변환한다. - convertInput
+    - [X] 플레이어로 부터 입력 받은 값을 int로 변환한다. - convertInput
     - [X] 입력 받은 값이 0인지 확인한다. - validationZeroAmount
     - [X] 입력 받은 값이 1,000 단위인지 확인한다. - validationAmount
     - [X] 입력 받은 값을 통해 로또 구매 개수를 확인한다. - buyLottoQuantity
@@ -20,7 +20,7 @@
 
 - [X] enum 클래스를 이용해 1등 ~ 5등까지의 당첨 조건과 당첨금을 상수로 선언한다. - className : Rank
     - [X] enum을 이용해 중복되는 당첨번호의 수를 전달하면 값에 맞는 등수를 반환한다. - getRank
-    - [X] enum을 이용해 당첨된 수를 전달하면 총 금액(`해당 등수 * 당첨 횟수`)을 반환 받는다. - getTotalAmount
+    - [X] enum을 이용해 당첨된 수를 전달하면 총 금액(`해당 등수 * 당첨 횟수`)을 반환 받는다. - getCalAmount
     - [X] enum을 이용해 등수의 당첨금액이 얼마인지 반환 받는다. - getWinAmount
 
 
@@ -31,15 +31,22 @@
 - [X] 플레이어의 입력이 잘 못된 경우 발생시킬 Exception 클래스 구현 - className : LottoException
   - [X] 메세지의 상수를 구현하고 에러에 따른 메세지를 반환한다. - createErrorMsg
 
+- [ ] 수익률 계산을 하는 클래스를 생성한다.
+  - [ ] 총 수익을 계산한다. 
+  - [ ] 수익률을 반환한다. 
+
+
 ### UI
 
-- [ ] 유저에게 데이터를 요청할 메세지를 출력한다.
-    - [ ] 구입 금액
-    - [ ] 당첨 번호
-    - [ ] 보너스 번호
+- [X] 유저에게 데이터를 요청할 메세지를 출력한다. 
+    - [X] 구입 금액 - buyLottoPrice
+    - [X] 당첨 번호 - prizeNumber
+    - [X] 보너스 번호 - bonusNumber
 
-
-- [ ] 통계 결과값을 출력한다. - printLottoState
+- [ ] 구매 완료 메세지를 출력한다. - buyLotto
+- [ ] 구매한 로또 목록을 출력한다. - buyLottoNumbers
+- [ ] 통계 결과값을 출력한다. - stats
+- [ ] 수익률을 출력한다. - getRate
 
 ## 기능 요구 사항
 
