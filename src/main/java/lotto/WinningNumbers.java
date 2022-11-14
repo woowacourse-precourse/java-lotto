@@ -37,7 +37,7 @@ public class WinningNumbers {
 
     private void validateWinningNumbers(List<Integer> winningNumbers) {
         if (winningNumbers.size() != NUMBER_SIZE) {
-            throw new IllegalArgumentException("당첨 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException("당첨 번호는 "+NUMBER_SIZE+"개여야 합니다.");
         }
         winningNumbers.forEach(this::validateNumber);
     }

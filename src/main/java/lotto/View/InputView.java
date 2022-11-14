@@ -1,7 +1,6 @@
 package lotto.View;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +17,7 @@ public class InputView {
         return convertToList(Console.readLine());
     }
 
-    public int getBonusNumber(){
+    public int getBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         return validateNumber(Console.readLine());
     }
