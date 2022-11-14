@@ -31,7 +31,7 @@ public class User extends Exception {
     }
 
     public static Integer checkMonetaryUnit(Integer money) {
-        if (money % 1000 != 0) {
+        if (money % 1000 != 0 || money == 0) {
             throw new IllegalArgumentException(ER_MONETARYUNIT.getMessage());
         }
         return money;
@@ -70,14 +70,13 @@ public class User extends Exception {
         }
         return number;
     }
-
-    public static Integer validCheckBonusNumber() {
-        try {
-            return bonusNumberRangeCheck(inputBonusNumber());
-        } catch (IllegalArgumentException illegalArgumentException) {
-            System.out.println(illegalArgumentException.getMessage());
-            throw new IllegalArgumentException();
+    public static void bonusNumberCheckInLottoNumber(List<Integer> lottoNumber , Integer bonusNumber){
+        if(lottoNumber.contains(bonusNumber)){
+            throw new IllegalArgumentException(ER_BONUSNUMBERINLOTTONUMBER.getMessage());
         }
     }
+
+
+
 
 }
