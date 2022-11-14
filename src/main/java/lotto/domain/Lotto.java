@@ -30,7 +30,7 @@ public class Lotto {
 
         store.drawNumber(customer.getHasLotto());
 
-        for (int i = 0;i < customer.getHasLotto();i++) {
+        for (int i = 0; i < customer.getHasLotto(); i++) {
             lottos.add(new Lotto(store.getNumbers().get(i)));
             lottos.get(i).showLotto();
         }
@@ -39,7 +39,7 @@ public class Lotto {
 
         checker.insertBonusNumber();
 
-        for (int i = 0;i < customer.getHasLotto();i++) {
+        for (int i = 0; i < customer.getHasLotto(); i++) {
             checker.checkMyLotto(lottos.get(i).getLotto());
         }
 
@@ -54,7 +54,7 @@ public class Lotto {
             throw new IllegalArgumentException(OVER_CAPACITY_LOTTO.getMessage());
         }
 
-        for (int i = 0; i < LOTTO_NUMBER_CAPACITY - 1;i++) {
+        for (int i = 0; i < LOTTO_NUMBER_CAPACITY - 1; i++) {
             if (numbers.get(i) == numbers.get(i + 1)) {
                 throw new IllegalArgumentException(DUPLICATION_NUMBER_LOTTO.getMessage());
             }

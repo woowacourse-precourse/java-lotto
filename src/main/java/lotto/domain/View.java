@@ -25,6 +25,7 @@ public class View {
     public void insertBonusNumber() {
         System.out.println(INSERT_BONUS_NUMBER);
     }
+
     public void startWinningStats() {
         System.out.println(WINNING_STATS);
     }

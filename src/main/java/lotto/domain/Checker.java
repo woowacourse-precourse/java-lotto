@@ -121,23 +121,6 @@ public class Checker {
 
     }
 
-    public void calculateRateOfReturn(int payMoney) {
-
-        double total = 0;
-
-        for (Entry<LottoStatus, Integer> entry : winningStats.entrySet()) {
-
-            LottoStatus status = entry.getKey();
-            int count = entry.getValue();
-
-            total += calculateTotalWinningAmount(status, count);
-
-        }
-
-        returnRate = (total / payMoney) * 100;
-
-    }
-
     public double calculateTotalWinningAmount(LottoStatus status, int count) {
 
         if (status == THREE) {
@@ -161,6 +144,23 @@ public class Checker {
         }
 
         return 0;
+    }
+
+    public void calculateRateOfReturn(int payMoney) {
+
+        double total = 0;
+
+        for (Entry<LottoStatus, Integer> entry : winningStats.entrySet()) {
+
+            LottoStatus status = entry.getKey();
+            int count = entry.getValue();
+
+            total += calculateTotalWinningAmount(status, count);
+
+        }
+
+        returnRate = (total / payMoney) * 100;
+
     }
 
     public double getReturnRate() {

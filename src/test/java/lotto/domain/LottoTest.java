@@ -21,7 +21,7 @@ class LottoTest {
     static void 로또_발행() {
         Store store = new Store();
         store.drawNumber(hasLotto);
-        for (int i = 0;i < hasLotto;i++) {
+        for (int i = 0; i < hasLotto; i++) {
             lottos.add(new Lotto(store.getNumbers().get(i)));
         }
     }

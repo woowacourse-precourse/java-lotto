@@ -50,11 +50,11 @@ class CheckerTest {
     void 모든_당첨_순위_확인() {
 
         List<List<Integer>> numbers = List.of(
-                List.of(1,2,3,8,9,10),  // 3
-                List.of(1,2,3,4,9,10),  // 4
-                List.of(1,2,3,4,5,10),  // 5
-                List.of(1,2,3,4,5,7),   // 5, 1
-                List.of(1,2,3,4,5,6)    // 6
+                List.of(1, 2, 3, 8, 9, 10),  // 3
+                List.of(1, 2, 3, 4, 9, 10),  // 4
+                List.of(1, 2, 3, 4, 5, 10),  // 5
+                List.of(1, 2, 3, 4, 5, 7),   // 5, 1
+                List.of(1, 2, 3, 4, 5, 6)    // 6
         );
 
         HashMap<LottoStatus, Integer> result = new HashMap<>() {{
@@ -65,7 +65,7 @@ class CheckerTest {
             put(SIX, 1);
         }};
 
-        for (int i = 0;i < numbers.size();i++) {
+        for (int i = 0; i < numbers.size(); i++) {
             checker.checkMyLotto(numbers.get(i));
         }
 
@@ -91,7 +91,7 @@ class CheckerTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
 
-        for (int i = 0;i < numbers.size();i++) {
+        for (int i = 0; i < numbers.size(); i++) {
             checker.checkMyLotto(numbers.get(i));
         }
 

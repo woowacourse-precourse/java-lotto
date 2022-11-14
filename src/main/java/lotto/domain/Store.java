@@ -18,7 +18,7 @@ public class Store {
 
     public void drawNumber(int hasLotto) {
         int i;
-        for (i = 0;i < hasLotto;i++) {
+        for (i = 0; i < hasLotto; i++) {
             numbers.add(Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBER_CAPACITY));
             numbers.get(i).stream().sorted().collect(Collectors.toList());
         }
