@@ -41,7 +41,7 @@ public class Input {
     }
 
     private static void validateInputPrize(String prize) throws IllegalArgumentException {
-        String pattern = "^(" + regexGroup + ",? ){5}" + regexGroup;
+        String pattern = "^(" + regexGroup + ", ?){5}" + regexGroup;
 
         if (!Pattern.matches(pattern, prize)) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_INPUT_PRIZE_NUM);
