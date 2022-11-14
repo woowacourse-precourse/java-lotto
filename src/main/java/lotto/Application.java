@@ -12,7 +12,7 @@ public class Application {
             player.showResult();
         }
         catch(IllegalArgumentException e) {
-            System.out.println("[ERROR]");
+            System.out.println(e.getMessage());
         }
     }
 }

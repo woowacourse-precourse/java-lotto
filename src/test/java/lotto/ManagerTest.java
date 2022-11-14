@@ -70,6 +70,36 @@ class ManagerTest {
         int expect = 7;
         assertThat(result).isEqualTo(expect);
     }
+    @DisplayName("보너스 번호 입력 예외 테스트1")
+    @Test
+    void inputBonusNumberExceptionCase1() {
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            manager.inputBonusNumber();
+        });
+    }
+    @DisplayName("보너스 번호 입력 예외 테스트2")
+    @Test
+    void inputBonusNumberExceptionCase2() {
+        String input = "55";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            manager.inputBonusNumber();
+        });
+    }
+    @DisplayName("보너스 번호 입력 예외 테스트3")
+    @Test
+    void inputBonusNumberExceptionCase3() {
+        String input = "a";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            manager.inputBonusNumber();
+        });
+    }
 
     @Test
     void compareNumber() {

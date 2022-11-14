@@ -26,7 +26,7 @@ class PlayerTest {
         assertThat(result).isEqualTo(expect);
     }
 
-    @DisplayName("로또 구입 금액으로 1234원을 입력하면 예외가 발생한트")
+    @DisplayName("로또 구입 금액으로 1234원을 입력하면 예외가 발생한다")
     @Test
     void purchaseLottoException() {
         String input = "1234";

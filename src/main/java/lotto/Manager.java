@@ -4,6 +4,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,6 +17,10 @@ public class Manager {
     private int bonusNumber;
     private final int[] reward = {5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000};
 
+    public Manager() {
+        List<Integer> lottoNumbersForTest = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        lotto = new Lotto(lottoNumbersForTest);
+    }
     public void requestMoneyStatementPrint() {
         System.out.println(requestMoneyStatement);
     }
