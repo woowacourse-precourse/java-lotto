@@ -10,30 +10,12 @@ public class Game {
     public static final Integer maximumLottoNumber = 45;
     public static final Integer numberToDraw = 6;
 
-    private Integer budget = 0;
-    private List<Lotto> lottos = new ArrayList<>();
+
     private Lotto winningLotto;
     private Integer bonus = 0;
 
     public Game(){
 
-    }
-
-    public Integer getBudget() {
-        return budget;
-    }
-
-    public void setBudget(Integer budget){
-        validateBudget(budget);
-        this.budget = budget;
-    }
-
-    public void buyLotto(){
-        lottos.add(new Lotto(generateLottoNumbers()));
-    }
-
-    public List<Lotto> getLottos(){
-        return lottos;
     }
 
     public Lotto getWinningLotto() {
@@ -55,13 +37,7 @@ public class Game {
     }
 
 
-    private void validateBudget(Integer budget){
-        if (budget % price != 0) throw new IllegalArgumentException();
-    }
 
-    private List<Integer> generateLottoNumbers(){
-        return Randoms.pickUniqueNumbersInRange(1, maximumLottoNumber, numberToDraw);
-    }
 
     private void validateBonusByRange(Integer bonus){
         if (bonus > maximumLottoNumber || bonus < 1) throw new IllegalArgumentException();
