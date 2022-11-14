@@ -7,10 +7,10 @@ import lotto.util.constants.WinningScore;
 
 public class LottoResult {
 
-    private Map<WinningScore, Integer> result;
+    private Map<WinningScore, Integer> winningScore;
 
     public LottoResult() {
-        result = new HashMap<>() {{
+        this.winningScore = new HashMap<>() {{
             put(WinningScore.THREE, 0);
             put(WinningScore.FOUR, 0);
             put(WinningScore.FIVE, 0);
@@ -19,12 +19,15 @@ public class LottoResult {
         }};
     }
 
-    public Map<WinningScore, Integer> computeWinningScore(List<Lotto> userLottoTickets, Lotto winningLotto) {
+    public Map<WinningScore, Integer> getWinningScore() {
+        return this.winningScore;
+    }
+
+    public void computeWinningScore(List<Lotto> userLottoTickets, Lotto winningLotto) {
         for (Lotto userLotto : userLottoTickets) {
             WinningScore winningScore = compareLottoNumber(userLotto.getNumbers(), winningLotto.getNumbers());
-            result.put(winningScore, result.get(winningScore) + 1);
+            this.winningScore.put(winningScore, this.winningScore.get(winningScore) + 1);
         }
-        return result;
     }
 
     public WinningScore compareLottoNumber(List<Integer> userLotto, List<Integer> winningLotto) {
