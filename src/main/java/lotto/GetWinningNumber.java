@@ -3,9 +3,9 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetUerNumber {
+public class GetWinningNumber {
     public List<Integer> winningNumber;
-      public void makeWinningNumber(String userInput){
+      public void getWinningNumber(String userInput){
         Validate checkLottoNumber = new Validate();
         winningNumber = new ArrayList<>();
         checkLottoNumber.validateUserInput(userInput);
