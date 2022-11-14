@@ -9,7 +9,7 @@ import java.util.List;
 
 public class LottoView {
     public static int inputMoney() {
-        int money = ValidateView.PossibleNumber(AppView.inputLine());
+        int money = ValidateView.possibleNumber(AppView.inputLine());
         if(ValidateView.isPossibleMoney(money)) {
             return money;
         }
@@ -27,7 +27,7 @@ public class LottoView {
         String [] ArrBeforeChange = AppView.inputLine().split(",");
         List<Integer> inputNum = new ArrayList<>();
         for(String element : ArrBeforeChange) {
-            inputNum.add(ValidateView.PossibleNumber(element));
+            inputNum.add(ValidateView.possibleNumber(element));
         }
         return inputNum;
     }

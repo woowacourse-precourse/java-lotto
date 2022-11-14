@@ -1,7 +1,8 @@
 package lotto.view;
 
 public class ValidateView {
-    public static int PossibleNumber(String number) throws IllegalArgumentException {
+    //
+    public static int possibleNumber(String number) throws IllegalArgumentException {
         int num;
         try {
             num = Integer.parseInt(number);

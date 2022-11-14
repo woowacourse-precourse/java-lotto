@@ -16,4 +16,12 @@ public class ValidateViewTest {
         });
     }
 
+    @DisplayName("변환하려는 문자가 숫자 타입이 맞는지")
+    @ParameterizedTest
+    @ValueSource(strings = {"15A"})
+    void inputNumberByWrongType(String input) {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            ValidateView.possibleNumber(input);
+        });
+    }
 }
