@@ -20,6 +20,7 @@ public class Manager {
     public Manager() {
         List<Integer> lottoNumbersForTest = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
         lotto = new Lotto(lottoNumbersForTest);
+        bonusNumber = 7;
     }
     public void requestMoneyStatementPrint() {
         System.out.println(requestMoneyStatement);

@@ -100,9 +100,18 @@ class ManagerTest {
             manager.inputBonusNumber();
         });
     }
-
+    @DisplayName("당첨 내역 확인 메소드 테스트")
     @Test
     void compareNumber() {
+        List<List<Integer>> purchaseNumbers = new ArrayList<>();
+        purchaseNumbers.add(Arrays.asList(1,2,3,4,5,6)); // 6개 일치
+        purchaseNumbers.add(Arrays.asList(1,2,3,4,5,7)); // 5개 + 보너스 일치
+        purchaseNumbers.add(Arrays.asList(1,2,3,4,5,8)); // 5개 일치
+        purchaseNumbers.add(Arrays.asList(1,2,3,4,7,8)); // 4개 일치
+        purchaseNumbers.add(Arrays.asList(1,2,3,7,8,9)); // 3개 일치
+        int[] result = manager.compareNumber(purchaseNumbers);
+        int[] expect = {1,1,1,1,1};
+        assertThat(result).isEqualTo(expect);
     }
     @DisplayName("3개가 같은 로또 번호배열 비교하여 같은 개수 3을 반환")
     @Test
