@@ -3,6 +3,8 @@ package util;
 import domain.Lotto;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.stream.Stream;
 
 public enum LottoRank {
 
@@ -37,6 +39,11 @@ public enum LottoRank {
             return true;
         }
         return false;
+    }
+
+    public static Stream<LottoRank> getAscendRank() {
+        return Arrays.stream(LottoRank.values())
+                .sorted(Collections.reverseOrder());
     }
 
     public int getSameCount() {
