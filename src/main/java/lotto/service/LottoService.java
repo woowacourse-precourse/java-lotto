@@ -14,7 +14,7 @@ public class LottoService {
     }
 
     // 로또 구매하는 기능
-    public void buyLotto() throws IllegalArgumentException  {
+    public void buyLotto() throws IllegalArgumentException {
         lottoView.displayInputMoney();
         lottoMachine.inputMoney();
         int lottoCount = lottoMachine.getLottoCount();
@@ -24,8 +24,13 @@ public class LottoService {
     }
 
     // 당첨 번호 입력하는 기능
-    public void inputWinningNumber() {
+    public void inputWinningNumber() throws IllegalArgumentException {
+        lottoView.displayInputWinningNumber();
+    }
 
+    // 보너스 번호 입력하는 기능
+    public void inputBonusNumber() throws IllegalArgumentException {
+        lottoMachine.inputWinningNumber();
     }
 
     // 당첨 결과 보여주는 기능

@@ -37,6 +37,11 @@ public class LottoMachine {
         winningNumber.inputWinningNumber(Input.input());
     }
 
+    // 보너스 번호 생성 기능
+    public void inputBonusNumber() throws IllegalArgumentException {
+        winningNumber.inputBonusNumber(Input.input());
+    }
+
 //    당첨 결과 반환 기능
 //    public List<Integer> getLottoResult() {}
 
