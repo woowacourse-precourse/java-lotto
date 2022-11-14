@@ -3,15 +3,13 @@ package lotto.global;
 import lotto.model.Lotto;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class LogicException {
 
     public static void verifyMoney(String money) {
         if (!money.matches("^\\d*")) {
             System.out.println(ExceptionCode.NUM_ERROR.getMessage());
-//            throw new IllegalArgumentException(ERROR + " " + NUM_ERROR);
-            throw new NoSuchElementException(ExceptionCode.NUM_ERROR.getMessage());
+            throw new IllegalArgumentException(ExceptionCode.NUM_ERROR.getMessage());
         }
         if(Integer.parseInt(money) % 1000 != 0 || Integer.parseInt(money) == 0) {
             throw new IllegalArgumentException(ExceptionCode.MUST_DIVIDE_UNIT_PRICE.getMessage());

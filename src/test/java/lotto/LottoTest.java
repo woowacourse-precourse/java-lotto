@@ -36,7 +36,7 @@ class LottoTest {
     @Test
     void verifyMoneyNumberFormat() {
         assertThatThrownBy(() -> LogicException.verifyMoney("1000q"))
-                .isInstanceOf(NoSuchElementException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("구입 금액이 0이나 1000으로 나누어 떨어지지 않을 때")
