@@ -9,6 +9,11 @@ public class Output {
         System.out.println("[ERROR] " + errorMessage);
     }
 
+    public static void printLottos(Lottos lottos) {
+        printLottosCount(lottos.getLottosCount());
+        printLottosInfo(lottos);
+    }
+
     public static void printLottosCount(int lottosCount) {
         System.out.println(lottosCount + "개를 구매했습니다.");
     }
