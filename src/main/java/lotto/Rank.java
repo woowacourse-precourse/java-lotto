@@ -28,17 +28,17 @@ public enum Rank {
     }
 
 
-    public static Rank getWinning(int hitCount, boolean bonusHit) {
-        return Arrays.stream(Rank.values())
-                .filter(lottoResult -> lottoResult.hitCount == hitCount
-                        && lottoResult.bonusHit == bonusHit)
-                .findAny()
-                .orElse(DEFAULT);
-    }
+        public static Rank getWinning(int hitCount, boolean bonusHit) {
+            return Arrays.stream(Rank.values())
+                    .filter(lottoResult -> lottoResult.hitCount == hitCount
+                            && lottoResult.bonusHit == bonusHit)
+                    .findAny()
+                    .orElse(DEFAULT);
+        }
 
     public static List<Rank> getNoDefault() {
         return Arrays.stream(Rank.values())
-                .filter(rank -> (!rank.name().equals("DEFAULT")))
+                .filter(rank -> (!rank.equals(DEFAULT)))
                 .sorted(Collections.reverseOrder())
                 .collect(Collectors.toList());
     }
