@@ -11,8 +11,11 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        try {
+            LottoService.validateMatchNumbers(numbers);
+        } catch (IllegalArgumentException exception) {
+            String oldMessage = exception.getMessage();
+            throw new IllegalArgumentException(oldMessage.replace("당첨", "로또"));
         }
     }
 
