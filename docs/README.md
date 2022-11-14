@@ -16,7 +16,7 @@
 
 
 ## 기능 목록
-- 1~45 범위의 숫자 중 중복되지 않은 6개의 번호를 뽑는다.:로또 발행 - Lotto#issue
+- 1~45 범위의 숫자 중 중복되지 않은 6개의 번호를 뽑는다.:로또 발행 - LottoManager#issue
 - 금액을 입력받는다. - Application#inputCustomerMoney
 - 금액에 맞게 로또를 구매한다. - Customer#purchaseLotto
 - 당첨 번호를 입력 받는다. - Application#inputWinningNumber
