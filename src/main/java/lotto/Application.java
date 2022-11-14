@@ -11,6 +11,12 @@ import lotto.view.NumberView;
 import java.util.List;
 
 public class Application {
+    enum test {
+        test1,
+        test2,
+        test3
+    }
+
     public static void main(String[] args) {
         LottoGenerator generator = new LottoGenerator();
         Winnings.setWinnings();

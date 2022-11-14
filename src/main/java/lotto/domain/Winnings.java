@@ -16,7 +16,7 @@ public class Winnings {
         }
     }
 
-    public static int getWinnings(double num) {
+    public static int getWinnings(double금 num) {
         return (int) map.get(num);
     }
 

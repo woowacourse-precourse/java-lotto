@@ -25,10 +25,14 @@
 
 ### DOMAIN
 
+- Lotto
+
+- [x] lotto 번호 반환 Lotto.getNumbers()
+- 
 - LottoGenerator
 
 - [x] 중복되지 않는 6개의 숫자 생성 LottoGenerator#generateNumbers()
-- [x] 금액에 해당하는 개수 만큼 로또 발행 Lotto#generate()
+- [x] 금액에 해당하는 개수 만큼 로또 발행 LottoGenerator#generate()
 
 - Referee
 
@@ -45,7 +49,8 @@
   - [x] 로또 결과가 기록된 map 반환 Statistics#getMap()
   - [x] 수익률 계산 Statistics#getYield()
 
-  - Result
+- [x] 당첨 결과 Result
+- [x] 상금 Winnings
 
 ## 예외 상황
 - 구입금액이 숫자가 아님
