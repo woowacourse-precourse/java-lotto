@@ -37,4 +37,15 @@ public class Revenue {
     public void settleRevenue(int winnings){
         revenue+=winnings;
     }
+    public void getStatics(){
+        String rankName;
+        int winnings;
+        initializeRevenueStatics();
+        for(List<Integer> match:matches){
+            rankName = Rank.getRankNameByMatchState(match);
+            winnings = Rank.getWinningsByMatchState(match);
+            updateRevenueStatics(rankName);
+            settleRevenue(winnings);
+        }
+    }
 }
