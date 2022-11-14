@@ -36,7 +36,7 @@ public class Lotto {
         return sorted;
     }
 
-    public boolean checkBonusLotto(int bonus) {
+    public boolean checkBonus(int bonus) {
         if (numbers.contains(bonus)) {
             return true;
         }
