@@ -1,5 +1,9 @@
 package lotto.domain;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public enum WinningType {
     FIFTH("3개 일치 (5,000원) - {0}개", 5000),
     FOURTH("4개 일치 (50,000원) - {0}개", 50000),
@@ -23,5 +27,17 @@ public enum WinningType {
 
     public int getMoney() {
         return this.money;
+    }
+
+    public static List<String> getDescList() {
+        return Arrays.stream(WinningType.values())
+                .map(WinningType::getDesc)
+                .collect(Collectors.toList());
+    }
+
+    public static List<Integer> getMoneyList() {
+        return Arrays.stream(WinningType.values())
+                .map(WinningType::getMoney)
+                .collect(Collectors.toList());
     }
 }

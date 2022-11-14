@@ -18,10 +18,7 @@ public class LottoView {
     private static final String STATISTICS_INFO_MESSAGE = "당첨 통계\n---";
     private static final String RATE_OF_RETURN_MESSAGE = "총 수익률은 {0,number,#.#}%입니다.";
     private static final String BLANK_LINE = "\n";
-
-    public static final List<String> PRIZE_DESC = Arrays.stream(WinningType.values())
-            .map(WinningType::getDesc)
-            .collect(Collectors.toList());
+    public static final List<String> PRIZE_DESC = WinningType.getDescList();
 
     public static void printWinningLottoRequest() {
         System.out.println(BLANK_LINE + REQUEST_WINNING_LOTTO_MESSAGE);
