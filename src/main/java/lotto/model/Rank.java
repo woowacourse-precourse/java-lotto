@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.function.Predicate;
 
@@ -52,5 +53,16 @@ public enum Rank {
 
     public static List<Rank> getRankOrder() {
         return List.of(FIFTH_PLACE, FOURTH_PLACE, THIRD_PLACE, SECOND_PLACE, FIRST_PLACE);
+    }
+
+    public static Map<Rank, Integer> initRankMap() {
+        return new java.util.HashMap<>(Map.of(
+                FIRST_PLACE, 0,
+                SECOND_PLACE, 0,
+                THIRD_PLACE, 0,
+                FOURTH_PLACE, 0,
+                FIFTH_PLACE, 0
+        ));
+
     }
 }
