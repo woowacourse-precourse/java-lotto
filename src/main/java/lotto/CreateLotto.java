@@ -5,8 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class CreateLotto {
     final List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
     public List<Integer> createRandomBall() {
         return numbers;
     }
@@ -47,4 +49,7 @@ public class CreateLotto {
         System.out.println("보너스 번호를 입력해주세요");
     }
 
+    public void textTicketPrice() {
+        System.out.println("구입 금액을 입력해주세요");
+    }
 }
