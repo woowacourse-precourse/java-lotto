@@ -1,5 +1,7 @@
 package lotto.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,4 +22,22 @@ public class Statistics {
 
     }
 
+    private Map<String, Integer> checkMatchNumbersCount(List<Integer> answerLottoNumbers, int bounsNumber,
+        Lotto lottoNumbers) {
+        int matchCount = 0, bonusCount = 0;
+        List<Integer> value = new ArrayList<>(lottoNumbers.getNumbers());
+
+        value.removeAll(answerLottoNumbers);
+
+        matchCount = answerLottoNumbers.size() - value.size();
+        System.out.println(value.get(0));
+        if (matchCount == 5)
+            if (value.get(0) == bounsNumber)
+                bonusCount = 1;
+        HashMap<String, Integer> matchNumbersCount = new HashMap<>();
+        matchNumbersCount.put("matchCount", matchCount);
+        matchNumbersCount.put("bonusCount", bonusCount);
+        return matchNumbersCount;
+
+    }
 }
