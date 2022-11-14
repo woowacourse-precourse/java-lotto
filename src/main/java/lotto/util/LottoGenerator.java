@@ -16,9 +16,7 @@ public class LottoGenerator {
         List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(
                 Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER, Constant.LOTTO_SIZE)
         );
-
         Collections.sort(numbers);
-
         return numbers;
     }
 }
