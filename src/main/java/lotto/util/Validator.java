@@ -34,11 +34,11 @@ public class Validator {
         return false;
     }
 
-    private static boolean isNotSameIndex(int index1, int index2){
+    public static boolean isNotSameIndex(int index1, int index2){
         return index1 != index2;
     }
 
-    private static boolean isSame(int num1, int num2){
+    public static boolean isSame(int num1, int num2){
         return num1 == num2;
     }
 

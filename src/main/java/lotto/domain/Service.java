@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.constant.Message;
 import lotto.util.ServiceInput;
+import lotto.util.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,25 @@ public class Service {
     }
 
     private void setBonusNumber(){
-        this.bonusNumber = ServiceInput.getBonusNumber();
+        int bonusNumber = ServiceInput.getBonusNumber();
+        validateBonusNumberInWinningNumbers(bonusNumber);
+
+        this.bonusNumber = bonusNumber;
     }
+
+    private void validateBonusNumberInWinningNumbers(int bonusNumber){
+
+        for (int i=0; i< this.winningNumbers.size(); i++){
+            validateDuplicateBonusNumber(bonusNumber, this.winningNumbers.get(i));
+        }
+    }
+
+    private void validateDuplicateBonusNumber(int bonusNumber, int winningNumber) {
+
+        if (Validator.isSame(bonusNumber,winningNumber)){
+            Message.printInputErrorDuplicateBonusNumber();
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
