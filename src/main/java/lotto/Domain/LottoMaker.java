@@ -36,13 +36,13 @@ public class LottoMaker {
             Lotto lotto = new Lotto(publishLottoTicket());
             this.lottoTickets.add(lotto);
         }
+        this.printLottoTickets();
     }
 
     // 하나의 로또지 발행
     public List<Integer> publishLottoTicket(){
-        List<Integer> ticket = Randoms.
+        return Randoms.
                 pickUniqueNumbersInRange(Constants.firstNumber,
                         Constants.lastNumber, Constants.lottoLength);
-        return ticket;
     }
 }
