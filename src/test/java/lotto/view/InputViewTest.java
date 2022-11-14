@@ -42,4 +42,17 @@ class InputViewTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage(INPUT_TYPE_IS_NOT_PROPER);
     }
+
+    @Test
+    @DisplayName("로또 당첨 번호 입력 형식이 적절하지 않으면 예러를 발생한다.")
+    void inputWinningLottoNumberImproperly() {
+        String inputLottoNumber = "123456";
+        InputStream in = generateUserInput(inputLottoNumber);
+        System.setIn(in);
+        scanner = new Scanner(System.in);
+
+        assertThatThrownBy(InputView::inputWinningLotto)
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage(INPUT_TYPE_IS_NOT_PROPER);
+    }
 }
