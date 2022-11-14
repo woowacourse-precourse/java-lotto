@@ -63,10 +63,6 @@ public class Result {
         return rankInfo;
     }
 
-    public int getRankCount(Rank rank) {
-        return rankInfo.get(rank);
-    }
-
     public float getWinningAmount() {
         return winningAmount;
     }
