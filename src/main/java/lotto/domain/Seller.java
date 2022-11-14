@@ -6,7 +6,7 @@ import lotto.ErrorMessage;
 
 public class Seller {
 
-	private static final int LOTTO_PRICE = 1_000;
+	public static final int LOTTO_PRICE = 1_000;
 	private static final String PURCHASE_ANNOUNCEMENT = "%s개를 구매했습니다.";
 
 	public static List<Lotto> sellLottoTickets(int money) {
