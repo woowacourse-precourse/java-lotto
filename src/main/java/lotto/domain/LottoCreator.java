@@ -32,9 +32,9 @@ final class LottoCreator {
 
     private List<Integer> generateNumbers() {
         return pickNumbers.pickUniquesInRange(
-                LottoConstants.LOTTO_START_INCLUSIVE.value(),
-                LottoConstants.LOTTO_END_INCLUSIVE.value(),
-                LottoConstants.LOTTO_LENGTH.value()
+                LottoConstants.LOTTO_START_INCLUSIVE,
+                LottoConstants.LOTTO_END_INCLUSIVE,
+                LottoConstants.LOTTO_LENGTH
         );
     }
 }

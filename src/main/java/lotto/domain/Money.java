@@ -8,7 +8,7 @@ import lotto.constant.LottoConstants;
 public final class Money {
     private static final String NEGATIVE_MESSAGE = "돈에는 양수가 들어와야 합니다";
     private static final String MULTIPLE_MESSAGE =
-            "돈에는 " + LottoConstants.LOTTO_PRICE.value() + "의 배수가 들어와야 합니다";
+            "돈에는 " + LottoConstants.LOTTO_PRICE + "의 배수가 들어와야 합니다";
     private static final int unit = 1000;
     private final long amount;
 

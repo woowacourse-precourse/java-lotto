@@ -15,9 +15,9 @@ public final class Lotto {
     private static final String INCORRECT_LENGTH_MESSAGE = "숫자는 6개가 들어와야 합니다";
     private static final String DUPLICATE_MESSAGE = "숫자에 중복이 있습니다";
     private static final String OVER_RANGE_MESSAGE = "로또에는 " +
-            LottoConstants.LOTTO_END_INCLUSIVE.value() + "보다 큰 숫자가 올 수 없습니다";
+            LottoConstants.LOTTO_END_INCLUSIVE + "보다 큰 숫자가 올 수 없습니다";
     private static final String UNDER_RANGE_MESSAGE = "로또에는 " +
-            LottoConstants.LOTTO_END_INCLUSIVE.value() + "보다 큰 숫자가 올 수 없습니다";
+            LottoConstants.LOTTO_END_INCLUSIVE + "보다 큰 숫자가 올 수 없습니다";
     private static final String LOTTO_FORMAT = "[{0}, {1}, {2}, {3}, {4}, {5}]";
     private final List<Integer> numbers;
 
@@ -52,23 +52,23 @@ public final class Lotto {
     }
 
     private boolean isRightLength(List<Integer> numbers) {
-        return numbers.size() == LottoConstants.LOTTO_LENGTH.value();
+        return numbers.size() == LottoConstants.LOTTO_LENGTH;
     }
 
     private boolean isUnique(List<Integer> numbers) {
         return numbers.stream()
                 .distinct()
-                .count() == LottoConstants.LOTTO_LENGTH.value();
+                .count() == LottoConstants.LOTTO_LENGTH;
     }
 
     private boolean isOverRange(List<Integer> numbers) {
         return numbers.stream()
-                .anyMatch(it -> it > LottoConstants.LOTTO_END_INCLUSIVE.value());
+                .anyMatch(it -> it > LottoConstants.LOTTO_END_INCLUSIVE);
     }
 
     private boolean isUnderRange(List<Integer> numbers) {
         return numbers.stream()
-                .anyMatch(it -> it < LottoConstants.LOTTO_START_INCLUSIVE.value());
+                .anyMatch(it -> it < LottoConstants.LOTTO_START_INCLUSIVE);
     }
 
     /**

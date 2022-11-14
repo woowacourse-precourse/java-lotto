@@ -46,7 +46,7 @@ final class LottoStatistic {
                 .map(key -> key.getPrize() * prizeCount.get(key))
                 .mapToLong(prize -> (long) prize)
                 .reduce(0, Long::sum);
-        final int totalPurchaseAmount = LottoConstants.LOTTO_PRICE.value() * lottos.size();
+        final int totalPurchaseAmount = LottoConstants.LOTTO_PRICE * lottos.size();
         return (double) totalPrize / totalPurchaseAmount * TO_PERCENT;
     }
 }
