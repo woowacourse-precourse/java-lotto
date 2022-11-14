@@ -16,7 +16,6 @@ public class PayOut {
         this.value = number;
     }
 
-
     public PayOut(String number) {
         this(new Number(number));
     }
@@ -31,7 +30,7 @@ public class PayOut {
 
     private void validateGamePrice(int value) {
         if (value % GAME_PRICE != 0) {
-            throw new IllegalArgumentException(ErrorMessage.PAYOUT_IS_NOT_DIVISIBLE_BY_THOUSANDS_MESSAGE.getValue());
+            throw new IllegalArgumentException(ErrorMessage.NOT_DIVISIBLE_BY_THOUSANDS_MESSAGE.getValue());
         }
     }
 

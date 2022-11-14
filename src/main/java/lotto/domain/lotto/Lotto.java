@@ -1,11 +1,9 @@
 package lotto.domain.lotto;
 
+import lotto.domain.number.LottoNumber;
 import lotto.resource.message.ErrorMessage;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -19,14 +17,18 @@ public class Lotto {
 
     private void validateDuplicate(List<Integer> lottoNumbers) {
         if (lottoNumbers.stream().distinct().count() != lottoNumbers.size()) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_DUPLICATE.getValue());
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER.getValue());
         }
     }
 
     private void validateLottoNumberCount(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_COUNT_IS_NOT_SIX.getValue());
+            throw new IllegalArgumentException(ErrorMessage.NOT_SIX_COUNT.getValue());
         }
+    }
+
+    public boolean contains(LottoNumber lottoNumber) {
+        return numbers.contains(lottoNumber.getValueAsInt());
     }
 
     public int getMaxNum() {

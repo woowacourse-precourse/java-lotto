@@ -17,7 +17,7 @@ class NumberTest {
         assertThatThrownBy(() -> new Number(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]")
-                .hasMessage(ErrorMessage.PAYOUT_IS_NOT_INTEGER_OR_NUMBER_OUT_OF_RANGE_MESSAGE.getValue());
+                .hasMessage(ErrorMessage.NOT_INTEGER_OR_NUMBER_OUT_OF_RANGE_MESSAGE.getValue());
     }
 
     @Test
@@ -28,7 +28,7 @@ class NumberTest {
         assertThatThrownBy(() -> new Number(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]")
-                .hasMessage(ErrorMessage.PAYOUT_IS_NOT_INTEGER_OR_NUMBER_OUT_OF_RANGE_MESSAGE.getValue());
+                .hasMessage(ErrorMessage.NOT_INTEGER_OR_NUMBER_OUT_OF_RANGE_MESSAGE.getValue());
     }
 
     @Test

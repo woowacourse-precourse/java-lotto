@@ -28,7 +28,7 @@ class PayOutTest {
         assertThatThrownBy(() -> new PayOut(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]")
-                .hasMessage(ErrorMessage.PAYOUT_IS_NOT_DIVISIBLE_BY_THOUSANDS_MESSAGE.getValue());
+                .hasMessage(ErrorMessage.NOT_DIVISIBLE_BY_THOUSANDS_MESSAGE.getValue());
     }
 
     @Test

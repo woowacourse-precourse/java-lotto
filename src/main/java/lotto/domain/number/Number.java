@@ -22,7 +22,7 @@ public class Number {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(
-                    ErrorMessage.PAYOUT_IS_NOT_INTEGER_OR_NUMBER_OUT_OF_RANGE_MESSAGE.getValue()
+                    ErrorMessage.NOT_INTEGER_OR_NUMBER_OUT_OF_RANGE_MESSAGE.getValue()
             );
         }
     }
