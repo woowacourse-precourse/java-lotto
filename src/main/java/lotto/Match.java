@@ -7,18 +7,24 @@ import java.util.List;
 public class Match {
 
     private final int lottoResults;
+    public final List<Integer> winningNumbers;
+    public final List<Integer> lotto;
+    public final int bonusNumber;
 
-    public Match(List<Integer> winningNumers, List<Integer> lottoes, int bounusNumber) {
-        this.lottoResults = getLottoResults(winningNumers, lottoes, bounusNumber);
+    public Match(List<Integer> winningNumers, List<Integer> lotto, int bounusNumber) {
+        this.winningNumbers= winningNumers;
+        this.lotto = lotto;
+        this.bonusNumber=bounusNumber;
+        this.lottoResults = getLottoResults();
     }
 
     public int getResults() {
         return lottoResults;
     }
 
-    private int getOverlapedCount(List<Integer> winningNumer, List<Integer> lotto) {
-        HashSet<Integer> winningNumberSet = new HashSet<>(winningNumer);
-        HashSet<Integer> lottoSet = new HashSet<>(lotto);
+    private int getOverlapCount() {
+        HashSet<Integer> winningNumberSet = new HashSet<>(this.winningNumbers);
+        HashSet<Integer> lottoSet = new HashSet<>(this.lotto);
         HashSet<Integer> intersection = new HashSet<>(winningNumberSet);
 
         intersection.retainAll(lottoSet);
@@ -26,28 +32,29 @@ public class Match {
         return intersection.size();
     }
 
-    private boolean isContainBonusNumber(List<Integer> lotto, int bonusNumber){
-        return lotto.contains(bonusNumber);
+    private boolean isContainBonusNumber() {
+        return lotto.contains(this.bonusNumber);
     }
 
-    private int getLottoResults(List<Integer> winningNumers, List<Integer> lotto, int bonusNumber){
-        int overlapedCount = getOverlapedCount(winningNumers, lotto);
-        if(overlapedCount ==6){
+    private int getLottoResults() {
+        int overlapCount = getOverlapCount();
+        if (overlapCount == 6) {
             return 2000000000;
         }
-        if(overlapedCount== 5){
-            return bonusCalculate(lotto, bonusNumber);
+        if (overlapCount == 5) {
+            return bonusCalculate();
         }
-        if(overlapedCount==4){
+        if (overlapCount == 4) {
             return 50000;
         }
-        if(overlapedCount==3){
+        if (overlapCount == 3) {
             return 5000;
         }
         return 0;
     }
-    private int bonusCalculate(List<Integer> lotto, int bonusNumber){
-        if(isContainBonusNumber(lotto, bonusNumber)){
+
+    private int bonusCalculate() {
+        if (isContainBonusNumber()) {
             return 30000000;
         }
         return 1500000;
