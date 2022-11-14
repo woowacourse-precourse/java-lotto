@@ -10,6 +10,7 @@ public class Application {
         String command;
         int lottoCount, bonusNumber;
         List<Lotto> lottos;
+        List<Integer> winNumbers;
 
         System.out.println("구입금액을 입력해 주세요.");
         command = Console.readLine();
@@ -24,17 +25,14 @@ public class Application {
 
         System.out.println("당첨 번호를 입력해 주세요.");
         command = Console.readLine();
-
-        // TODO : 숫자 검증 메서드 만들기
-        // TODO : 파싱 및 리스트 반환 메서드 만들기
+        winNumbers = getWinNumbers(command);
 
         System.out.println("보너스 번호를 입력해 주세요.");
         command = Console.readLine();
-        // TODO : 검증 넣기
-        bonusNumber = Integer.parseInt(command);
+        bonusNumber = getLottoNumber(command);
 
         System.out.println("당첨 통계\n---");
-        // TODO : 통계 출력 함수 만들기
+        printStat(lottos, winNumbers, bonusNumber);
 
     }
 
@@ -91,7 +89,8 @@ public class Application {
         resultMoney += matches.get(3) * 30000000;
         resultMoney += matches.get(4) * 2000000000;
 
-        return (double) originMoney / (double) resultMoney;
+        if (resultMoney == 0) return 0.0;
+        return (double) resultMoney * 100.0 / (double) originMoney;
     }
 
     public static int getLottoNumber(String input) {
@@ -107,7 +106,7 @@ public class Application {
         return lotto;
     }
 
-    public static List<Integer> getLottoNumbers(String input) {
+    public static List<Integer> getWinNumbers(String input) {
         List<Integer> lottos = new ArrayList<>();
         String[] inputs = input.split(",");
 
@@ -120,5 +119,15 @@ public class Application {
         }
 
         return lottos;
+    }
+
+    public static void printStat(List<Lotto> lottos, List<Integer> winNumbers, Integer bonus) {
+        List<Integer> matches = getMatches(lottos, winNumbers, bonus); // 순서대로 [ 3개, 4개, 5개, 5개+보너스, 6개 ] 개수
+        System.out.println("3개 일치 (5,000원) - " + matches.get(0) + "개");
+        System.out.println("4개 일치 (50,000원) - " + matches.get(1) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + matches.get(2) + "개");
+        System.out.println("5개 일치 (30,000,000원) - " + matches.get(3) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + matches.get(4) + "개");
+        System.out.println("총 수익률은 " + String.format("%.1f", getRate(lottos.size(), matches)) + "%입니다.");
     }
 }
