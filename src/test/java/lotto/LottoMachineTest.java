@@ -32,4 +32,19 @@ class LottoMachineTest {
         assertThatThrownBy(() -> lottoMachine.getWinningNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("올바른 보너스 번호 입력 테스트")
+    @Test
+    void 올바른_보너스_번호_입력() {
+        int bonus = 35;
+        assertThat(lottoMachine.getBonusNumber(bonus)).isEqualTo(bonus);
+    }
+
+    @DisplayName("유효하지 않은 보너스 번호 입력 테스트")
+    @Test
+    void 유효하지_않은_보너스_번호_입력() {
+        int bonus = 3515;
+        assertThatThrownBy(() -> lottoMachine.getBonusNumber(bonus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
