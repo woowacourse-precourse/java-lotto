@@ -29,7 +29,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         HashSet<Integer> playerNumbers = Model.MakeListToSet(numbers);
-        ValidatePlayerNumber(playerNumbers);
+        Controller.ValidatePlayerNumber(playerNumbers);
         this.numbers = numbers;
 
         // 로또 번호 분석
