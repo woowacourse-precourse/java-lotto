@@ -7,7 +7,10 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateOverNum(numbers);
+        validateNotMatchMoney(numbers);
+        validateNotMatchNum(numbers);
+        sorting(numbers);
         this.numbers = numbers;
     }
 
@@ -27,5 +30,16 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateNotMatchNum(List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++) {
+            if (45 < numbers.get(i) || numbers.get(i) < 1) {
+                System.out.println("[ERROR] 로또 번호가 1부터 45 이내에 있지 않음");
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private void sorting(List<Integer> numbers) {
+        numbers.sort(Comparator.naturalOrder());
+    }
 }
