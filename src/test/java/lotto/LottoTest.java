@@ -87,6 +87,14 @@ class LottoTest extends NsTest {
 		});
 	}
 
+	@Test
+	void 입력금액_범위_검사() {
+		assertSimpleTest(() -> {
+			runException("0");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
