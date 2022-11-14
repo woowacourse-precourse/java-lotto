@@ -18,15 +18,4 @@ public enum PriceNumberCount {
         this.message = message;
     }
 
-    public int getPrize() {
-        return prize;
-    }
-
-    public int getBonus() {
-        return bonus;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 }

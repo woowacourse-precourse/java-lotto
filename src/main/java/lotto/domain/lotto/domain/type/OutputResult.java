@@ -28,14 +28,21 @@ public enum OutputResult {
         Map<String, String> map = new HashMap<>();
         OutputResult[] values = OutputResult.values();
         for (OutputResult outputResult : values) {
-            if (outputResult.prize == prize && outputResult.bonus == bonus) {
-                map.put("benefit", String.valueOf(outputResult.benefit));
-                map.put("message", outputResult.message);
-                map.put("bonus", String.valueOf(outputResult.bonus));
-                return map;
+            Map<String, String> equalsValuePutMap = isEqualsValuePutMap(outputResult, prize, bonus, map);
+            if (!equalsValuePutMap.isEmpty()) {
+                return equalsValuePutMap;
             }
         }
         return null;
     }
 
+    private static Map<String, String> isEqualsValuePutMap(OutputResult outputResult, int prize, int bonus, Map<String, String> map) {
+        if (outputResult.prize == prize && outputResult.bonus == bonus) {
+            map.put("benefit", String.valueOf(outputResult.benefit));
+            map.put("message", outputResult.message);
+            map.put("bonus", String.valueOf(outputResult.bonus));
+            return map;
+        }
+        return map;
+    }
 }
