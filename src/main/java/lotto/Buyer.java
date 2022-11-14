@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -13,16 +14,18 @@ public class Buyer {
             FIFTH_PLACE,
             FOURTH_PLACE,
             THIRD_PLACE,
-            FIFTH_PLACE
+            FIRST_PLACE
     );
     final int normalization = 2;
     final int bonusCountPlace = 3;
     final int secondPlaceIdx = 0;
 
-    double rateOfReturn;
 
     private final int usedMoney;
     private final List<Lotto> lottos;
+
+    private Map<WinningCase, Long> winningResult;
+    private double rateOfReturn;
 
 
     Buyer(int money){
@@ -30,20 +33,21 @@ public class Buyer {
         usedMoney = money;
     }
 
-    public Map<WinningCase, Long> checkWinningNumber(WinningNumber winningNumber){
-        Map<WinningCase, Long> winningResult = lottos.stream()
+    public void checkWinningNumber(WinningNumber winningNumber){
+        winningResult = Arrays.stream(WinningCase.values())
+                .collect(toMap(winningCase -> winningCase, winningCase -> 0L));
+
+        lottos.stream()
                 .filter(lotto -> winningNumber.countMatchedNumbers(lotto) > normalization)
-                .collect(groupingBy(lotto -> {
+                .forEach(lotto -> {
                     long matched = winningNumber.countMatchedNumbers(lotto) - normalization;
                     if( matched == bonusCountPlace && winningNumber.isBonusNumberMatched(lotto)) {
                         matched = secondPlaceIdx;
                     }
-                    return winningCases.get((int) matched);
-        }, counting()));
+                    WinningCase key = winningCases.get((int)matched);
+                    winningResult.put(key, winningResult.get(key) + 1);});
 
         calculateRateOfReturn(winningResult);
-
-        return winningResult;
     }
 
     private void calculateRateOfReturn(Map<WinningCase, Long> winningResult){
@@ -54,4 +58,15 @@ public class Buyer {
         rateOfReturn = (Math.round((float) earnedMoney / usedMoney * 10000) / 100.0);
     }
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
+    public Map<WinningCase, Long> getWinningResult() {
+        return winningResult;
+    }
+
+    public double getRateOfReturn() {
+        return rateOfReturn;
+    }
 }
