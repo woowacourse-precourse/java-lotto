@@ -28,4 +28,19 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    @Override
+    public String toString(){
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("[");
+        for(int i=0;i< numbers.size();i++){
+            stringBuffer.append(numbers.get(i));
+            if(i != numbers.size()-1){
+                stringBuffer.append(", ");
+            }
+        }
+        stringBuffer.append("]");
+
+        return stringBuffer.toString();
+    }
 }
