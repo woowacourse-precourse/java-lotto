@@ -15,10 +15,8 @@ public class LottoSystem {
     public void setWinningNumbers(String numbers) throws IllegalArgumentException {
         numbers = numbers.replaceAll("\\s", "");
         validateWinningNumbers(numbers);
-        List<Integer> toList = Arrays.stream(numbers.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-        winningNumber = new WinningNumber(toList);
+        List<Integer> winningNumbers = stringArrayToIntegerList(numbers.split(","));
+        winningNumber = new WinningNumber(winningNumbers);
     }
 
     public void setBonusNumber(String number) {
@@ -58,5 +56,12 @@ public class LottoSystem {
             return false;
         }
         return true;
+    }
+
+    private List<Integer> stringArrayToIntegerList(String[] array) {
+        List<Integer> result = Arrays.stream(array)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        return result;
     }
 }
