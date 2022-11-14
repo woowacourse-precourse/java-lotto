@@ -15,9 +15,9 @@ public class UserTest {
     @Test
     void inputMoneyTest(){
         assertThatThrownBy(()-> new User("100012j"))
-                .isInstanceOf(NoSuchElementException.class);
+                .isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(()-> new User("10001"))
-                .isInstanceOf(NoSuchElementException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -15,13 +15,13 @@ public class LottoAnswerTest {
     @Test
     void inputTest(){
         assertThatThrownBy(()-> new LottoAnswer("1,2,3,4,5","7"))
-                .isInstanceOf(NoSuchElementException.class);
+                .isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(()-> new LottoAnswer("1,2,3,4,5,47","7"))
-                .isInstanceOf(NoSuchElementException.class);
+                .isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(()-> new LottoAnswer("1,2,3,4,5,6","5"))
-                .isInstanceOf(NoSuchElementException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
