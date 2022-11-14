@@ -75,7 +75,7 @@ class LottoMachineTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또_구매_테스트")
+    @DisplayName("로또 구매 테스트")
     @Test
     void 로또_구매_테스트() {
         int count = 8;
@@ -83,5 +83,14 @@ class LottoMachineTest {
         for (Lotto lotto : lottoMachine.getLottos()) {
             System.out.println(lotto.toStringLotto());
         }
+    }
+
+    @DisplayName("당첨 통계 내기")
+    @Test
+    void 당첨_통계_내기() {
+        lottoMachine.buyLottos(100);
+        List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
+        int bonus = 30;
+        lottoMachine.calculateResult(winning, bonus);
     }
 }
