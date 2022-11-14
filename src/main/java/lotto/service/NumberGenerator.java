@@ -1,7 +1,9 @@
-package lotto;
+package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.constant.ExceptionConstant;
+import lotto.constant.LottoConstant;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,7 +18,7 @@ public class NumberGenerator {
     }
 
     public int calculatorLottoQuantity(int purchasePrice) {
-        return purchasePrice / Constant.PRICE_UNIT;
+        return purchasePrice / LottoConstant.PRICE_UNIT;
     }
 
     public int enterPurchasePrice() {
@@ -54,32 +56,27 @@ public class NumberGenerator {
         }
     }
 
-    private int exceptionInvalidPurchasePrice(String purchasePrice) {
+    private int exceptionInvalidPurchasePrice(String purchasePrice){
+
         try {
             return Integer.parseInt(purchasePrice);
-        } catch (NumberFormatException exception) {
-            NoSuchElementException e = new NoSuchElementException();
-            System.out.println(Constant.ERROR_MESSAGE + "구매금액은 숫자여야합니다.");
-            throw e;
+        } catch (Exception e) {
+            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INVALID_PURCHASE_PRICE);
         }
     }
 
-    public void exceptionDividedIntoThousands(int purchasePrice) {
+    public void exceptionDividedIntoThousands(int purchasePrice) throws IllegalArgumentException{
         if (purchasePrice % 1000 != 0) {
-            IllegalArgumentException e = new IllegalArgumentException();
-            System.out.println(Constant.ERROR_MESSAGE + "구매금액은 1,000원으로 나누어 떨어져야 합니다.");
-            throw e;
+            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INCORRECT_DIVIDED_PURCHASE_PRICE);
         }
     }
 
-    private void exceptionInvalidLottoNumber(String lottoNumber) {
+    private void exceptionInvalidLottoNumber(String lottoNumber) throws IllegalArgumentException{
         try {
             String[] lottoNumbers = lottoNumber.split(",");
             computerLotto = addComputerNumber(new ArrayList<>(Arrays.asList(lottoNumbers)));
         } catch (NumberFormatException exception) {
-            IllegalArgumentException e = new IllegalArgumentException();
-            System.out.println(Constant.ERROR_MESSAGE + "로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            throw e;
+            throw new IllegalStateException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INVALID_LOTTO_RANGE);
         }
     }
 }
