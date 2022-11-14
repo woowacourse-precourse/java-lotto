@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -15,6 +16,10 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
+        HashSet<Integer> numbersSet = new HashSet<>(numbers);
+        if (numbersSet.size() != 6){
+            throw new IllegalArgumentException("[ERROR] 로또 번호에는 중복이 없어야 합니다.");
+        }
     }
 
     // TODO: 추가 기능 구현
@@ -28,12 +33,27 @@ public class Lotto {
      *
      * @return
      */
-    public void lottoOutput(){
+    public void lottoOutput(List<List<Integer>> lottoList, int bonus, int money){
         //복권 당첨 확인
-
+        HashMap<Integer, Integer> winNumbers = gameConfirm(lottoList,bonus);
         //복권 당첨 금액 확인
-
+        Integer totalProfit = totalProfit(winNumbers);
         //수익율 계산
+        double percent = percentToProfit(money, totalProfit);
+        //UI
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - "+winNumbers.get(3)+"개");
+        System.out.println("4개 일치 (50,000원) - "+winNumbers.get(4)+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+winNumbers.get(5)+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+winNumbers.get(7)+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+winNumbers.get(6)+"개");
+        System.out.println("총 수익률은 "+String.format("%.2f",percent)+"%입니다.");
+        System.out.println("총 상금은 "+totalProfit+"원 입니다.");
+    }
+    public double percentToProfit(int inputmoney, int totalprofit){
+        double perscent = totalprofit / inputmoney * 100;
+        return perscent;
     }
     private Integer totalProfit(HashMap<Integer, Integer> winNumbers){
         int result=0;
@@ -61,8 +81,9 @@ public class Lotto {
         HashMap<Integer, Integer> winNumbers = getwinnerSetMap();
         for (List<Integer> lottoNum : lottoList) {
             Integer fixnum = fixNumber(lottoNum);
-            if (fixnum==5&&lottoList.contains(bonus)){
+            if (fixnum==5&&lottoNum.contains(bonus)){
                 winNumbers.put(7,winNumbers.get(7)+1);//2등
+                continue;
             }
             winNumbers.put(fixnum,winNumbers.get(fixnum)+1);
         }

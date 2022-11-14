@@ -13,6 +13,7 @@ public class Application {
         List<List<Integer>> lottoList = buyLotto(money);
         Map<String, List<Integer>> luckyNumMap = digitInput();
         Lotto mylotto = new Lotto(luckyNumMap.get("luckyNums"));
+        mylotto.lottoOutput(lottoList,luckyNumMap.get("bonus").get(0),money);
     }
 
 
