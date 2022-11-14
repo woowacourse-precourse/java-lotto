@@ -1,16 +1,18 @@
 package lotto;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
     public List<Lotto> lottoSet;
+    int numberOfLotto;
+    int[] winningCount = new int[5];
 
     public User(){
         System.out.println("구입 금액을 입력해주세요.");
-        int numberOfLotto = getNumberOfLotto();
-
+        numberOfLotto = getNumberOfLotto();
     }
     public static int getNumberOfLotto(){
         String totalPrice = readLine();
@@ -20,7 +22,13 @@ public class User {
         // 2. 1000원으로 나누어 떨어져?
         // 3.  --  또 있나 생각해보기  --
         // 따로 메서드 만들어서 test하기!! -> 구현할 기능 목록에도 추가하기
-        int numberOfLotto = Integer.parseInt(totalPrice);
+        int numberOfLotto = Integer.parseInt(totalPrice) / 1000;
+
         return numberOfLotto;
+    }
+    public static List<Integer> getLottoNumbers() { // 랜덤으로 6개의 숫자 뽑기
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
+        return numbers;
     }
 }
