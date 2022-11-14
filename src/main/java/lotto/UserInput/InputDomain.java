@@ -44,17 +44,17 @@ public class InputDomain {
 
     private static void bonusNumberIsNumberExceptionHandling(String user_input, List<Integer> winning_lottery_number) {
         if (!isNumber(user_input))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 
     private static void bonusNumberIsRangeExceptionHandling(int bonus_number){
         if(bonus_number< LottoRange.NUMBER_MIN.getValue()||bonus_number>LottoRange.NUMBER_MAX.getValue())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 
     private static void purchaseAmount_exceptionHandling(String user_input) {
         if (!isNumber(user_input) || !isDevidedThousand(user_input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 1000의 배수여야 합니다.");
         }
     }
 
@@ -71,14 +71,14 @@ public class InputDomain {
     private static void bonusNumberOverlapExceptionHandling(int bonus_number, List<Integer> winning_lottery_number) {
         for (int i = 0; i < winning_lottery_number.size(); i++) {
             if (winning_lottery_number.get(i) == bonus_number) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되면 안됩니다.");
             }
         }
     }
 
     private static void tokenIsNumberExceptionHandling(List<String> token_String) {
         if (tokenIsNumberException(token_String)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 

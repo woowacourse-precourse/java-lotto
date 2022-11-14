@@ -22,13 +22,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개입니다.");
         }
     }
 
     private void tokenIsOverlapExceptionHandling(List<Integer> token_int) {
         if (isOverlap(token_int)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호에 중복이 있으면 안됩니다.");
         }
     }
 
@@ -45,7 +45,7 @@ public class Lotto {
 
     private void toeknInRangeExceptionHandling(List<Integer> token_int) {
         if (tokenRangeException(token_int)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 

@@ -7,7 +7,6 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         int purchase_amount;
         int bonus_number;
         List<Integer> winning_lottery_number;

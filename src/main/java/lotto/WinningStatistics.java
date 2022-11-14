@@ -47,7 +47,7 @@ public class WinningStatistics {
     private int compareLottery(List<Integer> winning, List<Integer> user) {
         List<Integer> winning_clone = new ArrayList<>(winning);
         winning_clone.removeAll(user);
-        System.out.println(winning_clone.toString());
+//        System.out.println(winning_clone.toString());
         return winning_clone.size();
     }
 
@@ -72,7 +72,7 @@ public class WinningStatistics {
         System.out.println("5개 일치 (1,500,000)원 - "+same_count.get(WinningRank.THIRD_RANK.getValue())+"개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000)원 - "+same_count.get(WinningRank.SECOND_RANK.getValue())+"개");
         System.out.println("6개 일치 (2,000,000,000)원 - "+same_count.get(WinningRank.FIRST_RANK.getValue())+"개");
-        System.out.println("총 수익률은 "+String.format("%.2f",getYield())+"%입니다.");
+        System.out.println("총 수익률은 "+String.format("%.1f",getYield())+"%입니다.");
     }
 
     private double getYield(){
@@ -82,6 +82,6 @@ public class WinningStatistics {
         total_reward+=same_count.get(WinningRank.THIRD_RANK.getValue())*WinningRank.THIRD_RANK_REWARD.getValue();
         total_reward+=same_count.get(WinningRank.FOURTH_RANK.getValue())*WinningRank.FOURTH_RANK_REWARD.getValue();
         total_reward+=same_count.get(WinningRank.FIFTH_RANK.getValue())*WinningRank.FIFTH_RANK_REWARD.getValue();
-        return total_reward/purchase_amount*100;
+        return total_reward*100/purchase_amount;
     }
 }
