@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.resource;
 
 public enum ErrorType {
     NOT_NUMBER("숫자만 입력해주세요"),

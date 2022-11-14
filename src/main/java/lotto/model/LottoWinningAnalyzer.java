@@ -1,10 +1,15 @@
 package lotto.model;
 
+import lotto.resource.MessageType;
+import lotto.resource.WinningType;
+
 import java.util.EnumMap;
 
 import static lotto.view.LottoSeller.printMessage;
 
 public class LottoWinningAnalyzer {
+    private static final int DECIMAL_POINT = 2;
+
     private EnumMap<WinningType, Integer> winningResult;
 
     public LottoWinningAnalyzer(EnumMap<WinningType, Integer> winningResult) {
@@ -25,8 +30,9 @@ public class LottoWinningAnalyzer {
     private double calculateProfit(int userMoney) {
         double winningMoney = getSumAllWinningMoney();
         double profit = winningMoney / userMoney * 100;
+        double roundDecimalPoint = Math.pow(10, DECIMAL_POINT);
 
-        return Math.round(profit * 100) / 100;
+        return Math.round(profit * roundDecimalPoint) / roundDecimalPoint;
     }
 
     private long getSumAllWinningMoney() {

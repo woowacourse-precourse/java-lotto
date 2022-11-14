@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.resource;
 
 public enum MessageType {
     PURCHASE_PRICE("구매금액을 입력해 주세요."),

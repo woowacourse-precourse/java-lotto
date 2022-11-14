@@ -2,8 +2,8 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.model.Error;
-import lotto.model.ErrorType;
-import lotto.model.MessageType;
+import lotto.resource.ErrorType;
+import lotto.resource.MessageType;
 import lotto.model.Lotto;
 
 import java.util.Arrays;

@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.model.WinningType;
+import lotto.resource.WinningType;
 import lotto.model.LottoStore;
 import lotto.model.LottoWinningAnalyzer;
 import lotto.model.WinningLotto;

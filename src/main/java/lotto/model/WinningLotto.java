@@ -1,5 +1,8 @@
 package lotto.model;
 
+import lotto.resource.ErrorType;
+import lotto.resource.WinningType;
+
 import static lotto.model.Lotto.*;
 
 public class WinningLotto {
