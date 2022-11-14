@@ -2,7 +2,7 @@ package lotto.constant;
 
 public enum LottoNumbers {
     LOTTO_LENGTH(6),
-    LOTTO_MIN(0),
+    LOTTO_MIN(1),
     LOTTO_MAX(45);
 
     private final int number;
