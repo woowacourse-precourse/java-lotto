@@ -1,44 +1,43 @@
 package controller;
-
 import domain.MatchingNumber;
-import util.ResultView;
+import lotto.Lotto;
 import util.WinNum;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class OutputController {
-    public HashMap<String,Integer> matchingNumber(List<List<Integer>> lottolist,List<Integer> lottoanswer,int bonusnumber) {
+    public HashMap<String,Integer> matchingNumber(List<Lotto> lottos, List<Integer> lottoAnswer, int bonusNumber) {
         HashMap<String,Integer> correctnumber = new HashMap<>();
         initHashmap(correctnumber);
 
-        for(int i=0; i<lottolist.size(); i++) {
-            String matchingnumber;
-            matchingnumber = calMatchingNumber(lottolist.get(i),lottoanswer,bonusnumber);
-            int eachnum = correctnumber.get(matchingnumber);
-            correctnumber.put(matchingnumber,eachnum+1);
+        for (Lotto lotto : lottos) {
+            String matchingNumber;
+            matchingNumber = calMatchingNumber(lotto.getLotto(), lottoAnswer, bonusNumber);
+            int eachNum = correctnumber.get(matchingNumber);
+            correctnumber.put(matchingNumber, eachNum + 1);
         }
         return correctnumber;
     }
 
-    public void initHashmap(HashMap<String,Integer> correctnumber) {
+    public void initHashmap(HashMap<String,Integer> correctNumber) {
         WinNum[] values = WinNum.values();
-        for(int i=0; i< values.length; i++) {
-            correctnumber.put(values[i].toString(),0);
+        for (WinNum value : values) {
+            correctNumber.put(value.toString(), 0);
         }
     }
 
-    public String calMatchingNumber(List<Integer> lottonumber, List<Integer> lottoanswer,int bonusnumber) {
-        String correctnumber;
-        lottonumber.retainAll(lottoanswer);
+    public String calMatchingNumber(List<Integer> lottoNumber, List<Integer> lottoAnswer,int bonusNumber) {
+        String correctNumber;
+        List<Integer> remLottoNum = new ArrayList<>(lottoNumber);
+        List<Integer> remLottoAns = new ArrayList<>(lottoAnswer);
+        remLottoNum.retainAll(remLottoAns);
 
-        correctnumber = numToString(lottonumber.size());
-        if(lottonumber.size() == 5 && lottonumber.contains(bonusnumber)) {
-            correctnumber = WinNum.Bonus.toString();
+        correctNumber = numToString(remLottoNum.size());
+        if(remLottoNum.size() == 5 && remLottoNum.contains(bonusNumber)) {
+            correctNumber = WinNum.Bonus.toString();
         }
-        return correctnumber;
+        return correctNumber;
     }
 
     public String numToString(int number) {
@@ -54,12 +53,12 @@ public class OutputController {
     public int winningAmount(MatchingNumber matchingNumber) {
         int price = 0;
         WinNum[] values = WinNum.values();
-        HashMap<String,Integer> matchingnumbers = matchingNumber.getMatchingNumber();
+        HashMap<String,Integer> matchingNumbers = matchingNumber.getMatchingNumber();
 
-        for(int i=0; i< values.length; i++) {
-            String money = WinNum.valueOf(values[i].toString()).label();
-            int winnumber = matchingnumbers.get(values[i].toString());
-            price += Integer.parseInt(money) * winnumber;
+        for (WinNum value : values) {
+            String money = WinNum.valueOf(value.toString()).label();
+            int winNumber = matchingNumbers.get(value.toString());
+            price += Integer.parseInt(money) * winNumber;
         }
         return price;
     }

@@ -28,8 +28,8 @@ public class InputValidator {
     }
 
     public void checkNumberQuantity(List<Integer> lottoNumber) {
-        HashSet<Integer> setlottonumber = new HashSet<>(lottoNumber);
-        if(setlottonumber.size() != Constant.NUMBERQUANTITY) {
+        HashSet<Integer> setLottoNumber = new HashSet<>(lottoNumber);
+        if(setLottoNumber.size() != Constant.NUMBERQUANTITY) {
             throw new IllegalArgumentException(Error.SAMENUMBER.getErrorMsg());
         }
     }

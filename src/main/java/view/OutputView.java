@@ -32,6 +32,8 @@ public class OutputView {
     }
 
     public static void printResult(MatchingNumber matchingNumber) {
+        InputView.printWinResult();
+
         ResultView[] values = ResultView.values();
         WinNum[] values2 = WinNum.values();
         HashMap<String,Integer> numberList = matchingNumber.getMatchingNumber();
@@ -42,9 +44,9 @@ public class OutputView {
         }
     }
 
-    public static void printProfit(float puramount,float winamount) {
+    public static void printProfit(float winamount,float puramount) {
         String profit;
-        profit = PROFIT + String.format("%.1f", puramount/winamount * 100) + END_WORD;
+        profit = PROFIT + String.format("%.1f", winamount/puramount * 100) + END_WORD;
         System.out.println(profit);
     }
 }

@@ -3,13 +3,13 @@ package domain;
 import java.util.HashMap;
 
 public class MatchingNumber {
-    private HashMap<String,Integer> correctnumber = new HashMap<>();
+    private final HashMap<String,Integer> correctNumber;
 
-    public MatchingNumber(HashMap<String, Integer> correctnumber) {
-        this.correctnumber = correctnumber;
+    public MatchingNumber(HashMap<String, Integer> correctNumber) {
+        this.correctNumber = correctNumber;
     }
 
     public HashMap<String,Integer> getMatchingNumber() {
-        return correctnumber;
+        return correctNumber;
     }
 }
