@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Integer ticketsNumber = User.askTicketNumber();
-        List<Lotto> lottos = User.buy(ticketsNumber);
+        Integer ticketNumber = User.askTicketNumber();
+        List<Lotto> lottos = User.buy(ticketNumber);
         List<Integer> winNumbers = User.askWinNumbers();
         Integer bonusNumber = User.askBonusNumber();
-
-        // Calculator calculator = new Calculator(lotto, bonus);
-        // for (Lotto lotto : lottos) {
-        //     calculator.doSomething2(lotto);
-        // }
-        User.getEarning();
+        new Lotto(winNumbers, bonusNumber);
+        // for (lottos) { calcul.something (Lotto.match(lotto)) }
+        //
+        //
+        // User.getEarning(); ??
+        // cal.getEarning(); ???
     }
 }

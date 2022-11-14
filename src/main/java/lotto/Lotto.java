@@ -5,18 +5,34 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private static List<Integer> winNumbers;
+    private static Integer bonusNumber;
 
-    public static List<Integer> generate() {
-        return Randoms.pickUniqueNumbersInRange(Constant.MIN_NUMBER, Constant.MAX_NUMBER, Constant.SIZE);
-    }
+    private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         List<Integer> sorted = new ArrayList<>(numbers);
 
         Validator.lottoNumber(numbers);
         Collections.sort(sorted);
-        System.out.println(sorted);
         this.numbers = sorted;
+    }
+
+    public Lotto(List<Integer> winNumbers, Integer bonusNumber) {
+        Lotto.winNumbers =  winNumbers;
+        Lotto.bonusNumber = bonusNumber;
+        this.numbers = null;
+    }
+
+    public static List<Integer> generate() {
+        return Randoms.pickUniqueNumbersInRange(Constant.MIN_NUMBER, Constant.MAX_NUMBER, Constant.SIZE);
+    }
+
+    public static Boolean isContainedWinNumber(Integer bonusNumber) {
+        return Lotto.winNumbers.contains(bonusNumber);
+    }
+
+    public void printLotto() {
+        System.out.println(this.numbers);
     }
 }

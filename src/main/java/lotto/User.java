@@ -17,16 +17,18 @@ public class User {
         return budget / Constant.TICKET_PRICE;
     }
 
-    public static List<Lotto> buy(Integer tickets) {
+    public static List<Lotto> buy(Integer ticketNumber) {
         List<Lotto> lottos = new ArrayList<>();
 
-        System.out.println(tickets + "개를 구매했습니다.");
+        System.out.println(ticketNumber + "개를 구매했습니다.");
 
-        for (int i = 0; i < tickets; i++) {
+        for (int i = 0; i < ticketNumber; i++) {
             List<Integer> generated = Lotto.generate();
             Lotto lotto = new Lotto(generated);
+            lotto.printLotto();
             lottos.add(lotto);
         }
+
         return lottos;
     }
 
