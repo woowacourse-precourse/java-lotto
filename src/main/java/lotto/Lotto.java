@@ -1,12 +1,9 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -36,9 +33,7 @@ public class Lotto{
             Lotto numbers = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             System.out.println(numbers.numbers);
             ArrayList<Integer> sortNumbers= new ArrayList<>();
-            for(int k=0;numbers.numbers.size()>k;k++){
-                sortNumbers.add(numbers.numbers.get(k));
-            }
+            for(int k=0;numbers.numbers.size()>k;k++){sortNumbers.add(numbers.numbers.get(k));}
             Collections.sort(sortNumbers);
             userNumber.add(sortNumbers);
             i ++;
