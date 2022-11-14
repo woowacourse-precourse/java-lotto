@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import lotto.constant.IntConstant;
 import lotto.constant.LottoResultConstant;
@@ -26,32 +24,21 @@ public class LottoController {
      * BonusLottoNumber 를 입력받고 validation 후 기억해둔다.
      */
     public void lottoProcedure() {
-        Optional<Money> money = getUserMoneyWithValidation();
-        if (money.isEmpty()) {
-            return;
-        }
-        List<Lotto> userLotto = createUserLottoWithOutputView(calculateLottoCountWithOutputView(money.get()));
-        Optional<Lotto> winningLotto = getWinningLottoWithValidation();
-        if (winningLotto.isEmpty()) {
-            return;
-        }
-        Optional<WinningLotto> lotteryWinningNumber = getBonusLottoWithValidationAndCreateWinningLotto(
-                winningLotto.get());
-        if (lotteryWinningNumber.isEmpty()) {
-            return;
-        }
-        printResult(money.get(), userLotto, lotteryWinningNumber.get());
+        Money money = getUserMoneyWithValidation();
+        int lottoCount = calculateLottoCountWithOutputView(money);
+
+        List<Lotto> userLotto = createUserLottoWithOutputView(lottoCount);
+        Lotto winningLotto = getWinningLottoWithValidation();
+
+        WinningLotto lotteryWinningNumber = getBonusLottoWithValidationAndCreateWinningLotto(
+                winningLotto);
+
+        printResult(money, userLotto, lotteryWinningNumber);
     }
 
-    private Optional<Money> getUserMoneyWithValidation() {
+    private Money getUserMoneyWithValidation() {
         String userMoneyInput = View.printViewWithUserInput(StringConstant.MONEY_INPUT_MESSAGE.getMessage());
-        try {
-            Money lottoMoney = new Money(userMoneyInput);
-            return Optional.of(lottoMoney);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return Optional.empty();
-        }
+        return new Money(userMoneyInput);
     }
 
     private int calculateLottoCountWithOutputView(Money userMoney) {
@@ -69,15 +56,12 @@ public class LottoController {
         return userLotto;
     }
 
-    private Optional<Lotto> getWinningLottoWithValidation() {
+    private Lotto getWinningLottoWithValidation() {
         String userLottoWinningInput = View.printViewWithUserInput(
                 StringConstant.WINNING_LOTTERY_NUMBER_INPUT_MESSAGE.getMessage());
-        try {
-            return Optional.of(new Lotto(ifNumericThenReturnDesirableForm(userLottoWinningInput)));
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return Optional.empty();
-        }
+        return new Lotto(ifNumericThenReturnDesirableForm(userLottoWinningInput));
+
+
     }
 
     private List<Integer> ifNumericThenReturnDesirableForm(String userInput) {
@@ -88,14 +72,9 @@ public class LottoController {
         }
     }
 
-    private Optional<WinningLotto> getBonusLottoWithValidationAndCreateWinningLotto(Lotto winningLotto) {
+    private WinningLotto getBonusLottoWithValidationAndCreateWinningLotto(Lotto winningLotto) {
         String userInput = View.printViewWithUserInput(StringConstant.BONUS_LOTTO_INPUT_MESSAGE.getMessage());
-        try {
-            return Optional.of(new WinningLotto(winningLotto, getBonusLotto(userInput)));
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return Optional.empty();
-        }
+        return new WinningLotto(winningLotto, getBonusLotto(userInput));
     }
 
     private int getBonusLotto(String userInput) {
