@@ -26,6 +26,8 @@ public class LottoPurchase {
         for (int count = 0; count < purchaseOfNumber; count++) {
             lottos.add(Lotto.generator());
         }
+
+        resultPrint.generateLotto(lottos);
         return lottos;
     }
 
