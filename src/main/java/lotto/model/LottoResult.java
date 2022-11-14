@@ -30,8 +30,7 @@ public class LottoResult {
         for (Map.Entry<WinningScore, Integer> score : winningScoreResult.entrySet()) {
             totalAmount += score.getKey().getMoney() * score.getValue();
         }
-        double rate = totalAmount / purchaseAmount * 100;
-        return Math.round(rate * 100) / 100.0;
+        return totalAmount / purchaseAmount * 100;
     }
 
     public void computeWinningScore(Lotto userLotto, Lotto winningLotto) {

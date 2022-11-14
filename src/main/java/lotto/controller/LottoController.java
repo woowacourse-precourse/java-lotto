@@ -53,6 +53,8 @@ public class LottoController {
 
     public void calculateWinningStatistics() {
         Map<WinningScore, Integer> statistics = lottoService.computeWinningResult();
+        gameMessage.printStatistics(statistics);
         double rateOfReturn = lottoService.computeRateOfReturn();
+        gameMessage.printRateOfReturn(rateOfReturn);
     }
 }
