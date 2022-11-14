@@ -87,7 +87,7 @@ public class Application {
         }
         yield /= purchase;
         yield *= 100;
-        System.out.println("총 수익률은 " + yield + "%입니다.");
+        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
     }
 
     public static void main(String[] args) {
