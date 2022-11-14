@@ -16,6 +16,9 @@ public class Purchase {
             count -=1;
         }
     }
+    public Integer getCost(){
+        return myLotto.size() * 1000;
+    }
 
     public List<Lotto> getMyLotto(){
         return myLotto;
