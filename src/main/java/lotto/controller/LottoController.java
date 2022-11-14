@@ -1,21 +1,19 @@
 package lotto.controller;
 
-import lotto.domain.LottoMachine;
-import lotto.domain.User;
+import lotto.service.LottoService;
 import lotto.view.InputView;
 
 public class LottoController {
 
-    User user = new User();
-    private LottoMachine lottoMachine;
+    LottoService lottoService = new LottoService();
 
-    public void buyLotto() {
+    public void startLotto() {
         int money = Integer.parseInt(InputView.inputMoney());
-        user = User.initUserLotto(money);
+        lottoService.buyLotto(money);
     }
 
     public void initWinningLotto() {
-        String bonusNumber = InputView.inputWinningNumber();
-        lottoMachine = LottoMachine.initLottoMachineNumber(bonusNumber).get();
+        String winningNumber = InputView.inputWinningNumber();
+        lottoService.saveWinningLotto(winningNumber);
     }
 }
