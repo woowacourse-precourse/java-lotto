@@ -18,7 +18,7 @@ public class InputNumbers {
         checkBonusNumber(num);
         checkOverlap(lottoNumbers, num);
 
-        this.lottoNumbers = ToIntegerLottoNumbers(lottoNumbers);
+        this.lottoNumbers = toIntegerLottoNumbers(lottoNumbers);
         bonusNumber = Integer.valueOf(num);
     }
 
@@ -46,7 +46,7 @@ public class InputNumbers {
         }
     }
 
-    private List<Integer> ToIntegerLottoNumbers(List<String> lottoNumbers){
+    private List<Integer> toIntegerLottoNumbers(List<String> lottoNumbers){
         return lottoNumbers.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 }
