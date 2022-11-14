@@ -12,12 +12,18 @@ public enum InputValidator {
     private static final String JACKPOT_NUMBER_FORMAT_ERROR_MESSAGE = "[ERROR] 올바른 형식으로 입력해야 합니다.";
     private static final String BONUS_NUMBER_RANGE_ERROR_MESSAGE = "[ERROR] 보너스 번호는 1부터 45사이의 숫자여야 합니다.";
 
-    public static void validateMoney(String moneyInput) {
-        checkNonDigit(moneyInput);
-        int money = Integer.parseInt(moneyInput);
-        if (money < 0 || money % LottoIssuer.MONEY_UNIT != 0) {
-            throw new IllegalArgumentException(MONEY_ERROR_MESSAGE);
+    public static int getValidMoney(String moneyInput) throws IllegalArgumentException {
+        if (isParsableInt(moneyInput)) {
+            int money = Integer.parseInt(moneyInput);
+            if (money >= 0 && money % LottoIssuer.MONEY_UNIT == 0) {
+                return money;
+            }
         }
+        throw new IllegalArgumentException(MONEY_ERROR_MESSAGE);
+    }
+
+    private static boolean isParsableInt(String userInput) {
+        return (userInput.length() > 0) && !userInput.matches(NON_DIGIT);
     }
 
     public static void validateJackpotNumberFormat(String jackpotNumberInput) {
@@ -25,7 +31,8 @@ public enum InputValidator {
             throw new IllegalArgumentException(JACKPOT_NUMBER_FORMAT_ERROR_MESSAGE);
         }
     }
-    public static void validateBonusNumber(String bonusNumberInput){
+
+    public static void validateBonusNumber(String bonusNumberInput) {
         checkNonDigit(bonusNumberInput);
         int bonusNumber = Integer.parseInt(bonusNumberInput);
         if (bonusNumber < Lotto.MIN_NUMBER || bonusNumber > Lotto.MAX_NUMBER) {

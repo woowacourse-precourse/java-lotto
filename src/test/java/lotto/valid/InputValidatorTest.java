@@ -12,19 +12,12 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputValidatorTest {
-    @DisplayName("로또 구입 금액이 1000으로 나누어 떨어지지 않으면 예외가 발생한다")
-    @Test
-    void nonDigitInMoney() {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> InputValidator.validateMoney("4500"));
-    }
-
-    @DisplayName("입력된 로또 구입 금액이 정수 외의 문자를 포함하는 경우 예외가 발생한다")
+    @DisplayName("입력된 로또 구입 금액이 1000으로 나누어 떨어지는 0 이상의 정수가 아니면 예외가 발생한다")
     @ParameterizedTest
-    @ValueSource(strings = {"1,000", "-4000"})
+    @ValueSource(strings = {"1,000", "-4000", "", "14500"})
     void doesNotInputMoneyUnit1000(String moneyInput) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> InputValidator.validateMoney(moneyInput));
+                .isThrownBy(() -> InputValidator.getValidMoney(moneyInput));
     }
 
     @DisplayName("입력된 당첨 번호가 잘못된 형식인 경우 예외가 발생한다")
