@@ -22,4 +22,5 @@ public class MakeLotto {
         System.out.println("보너스 번호를 입력해 주세요.");
         lottoBonusNumber = Integer.valueOf(Console.readLine());
     }
+
 }
