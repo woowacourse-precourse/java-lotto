@@ -4,17 +4,28 @@
 
 ### Business
 
-- [X] 플레이어로 부터 값을 입력 받는다. - Input.request
+- [X] 플레이어로 부터 값을 입력 받는다. - request
     - [X] 플레이어로 부터 입력 받은 값을 int로 변환한다. - convertInput
+    - [ ] 입력 받은 값이 비어있는지 확인한다. - validationInputLength
     - [X] 입력 받은 값이 0인지 확인한다. - validationZeroAmount
     - [X] 입력 받은 값이 1,000 단위인지 확인한다. - validationAmount
-    - [X] 입력 받은 값을 통해 로또 구매 개수를 확인한다. - Buy.lottoQuantity
-    - [ ] `,`로 구분된 7개의 당첨 번호를 받는다. (마지막 값은 보너스 번호이다.)
-        - [ ] 당첨 번호를 리스트로 변환한다.
+    - [X] 입력 받은 값을 통해 로또 구매 개수를 확인한다. - lottoQuantity    
+
+    
+- [X] `,`로 구분된 6개의 당첨 번호와 1자리의 보너스 번호를 입력 받는다.
+  - [X] ,으로 구분한 String[]을 반환한다.  - splitNumbers
+  - [X] String[]로 된 당첨 번호를 리스트로 변환한다. - convertNumbers
+  
+
+- [X] List로 변환한 당첨번호의 유효성 검사를 진행한다.
+  - [X] 배열의 중복 값을 제거하고 크기가 6인지 검사한다 - duplicationNumbers
+  - [X] 보너스 번호가 이미 배열에 존재하는지 확인한다. - duplicationBonusNumber
+  - [X] 입력한 당첨 번호 전체가 1~45 사이의 값인지 확인한다. - validationNumbersInRange
+    - [X] 주어진 값이 1~45 사이의 값인지 확인한다. - validationNumberInRange
 
 
-- [X] 6개의 중복되지 않는 값을 가진 리스트를 생성한다. - Lotto.createLottoNumbers
-- [X] 구매한 로또만큼 6개의 중복되지 않는 값을 가진 리스트를 배열에 넣어 반환한다. - Lotto.buyLotto
+- [X] 6개의 중복되지 않는 값을 가진 리스트를 생성한다. - createLottoNumbers
+- [X] 구매한 로또만큼 6개의 중복되지 않는 값을 가진 리스트를 배열에 넣어 반환한다. - buyLotto
 - [X] Lotto 클래스의 numbers (로또 번호)를 반환한다. - Lotto.getNumbers
 
 
@@ -24,12 +35,12 @@
     - [X] enum을 이용해 등수의 당첨금액이 얼마인지 반환 받는다. - getWinAmount
 
 
-- [ ] 구매한 로또 번호와 당첨 번호를 비교하여 중복된 값의 수를 반환한다.
-    - [ ] 등수 별 당첨 횟수를 카운팅한다.
+- [X] 구매한 로또 번호와 당첨 번호를 비교하여 중복된 값의 수를 반환한다.
+    - [X] 등수 별 당첨 횟수를 카운팅한다. - getCompareCount
+    - [X] 보너스 번호가 구매한 로또에 포함되어 있는지 확인한다. - getBonusCheck
 
 
 - [X] 플레이어의 입력이 잘 못된 경우 발생시킬 Exception 클래스 구현 - className : LottoException
-  - [X] 메세지의 상수를 구현하고 에러에 따른 메세지를 반환한다. - createErrorMsg
 
 - [X] 수익률 계산을 하는 클래스를 생성한다. - LottoCalculator
   - [X] 총 수익을 계산한다. - calPrizeProfit
@@ -37,6 +48,7 @@
 
 
 ### UI
+- [X] 사용할 모든 메시지를 작성한 상수 클래스를 생성한다.
 
 - [X] 유저에게 데이터를 요청할 메세지를 출력한다. 
     - [X] 구입 금액 - buyLottoPrice
@@ -102,3 +114,12 @@
     - numbers의 접근 제어자인 private는 변경하면 안된다.
     - Lotto에 필드를 추가할 수 없다.
 - 제공된 Randoms 와 Console 라이브러리를 이용한다.
+
+
+## 특이사항
+- 의도된 사항인지는 모르겠으나 ApplicationTest의 예외테스트 부분에서는 테스트가 통과하기 위해서 에러가 발생되었을 때   
+System.out.print를 통해 메세지만 콘솔에 띄운 뒤 에러를 통해 프로그램을 종료하면 안된다.  
+해당 테스트는 String으로 받은 input 데이터를 int로 parse하는 부분에서 발생을 시키는 테스트이다.  
+이 테스트만 특이 케이스로 에러로 프로그램을 종료시키는게 아닌 -1 음수를 반환시켜 실행 부분에서 조건을 분석하여 프로그램을 종료시킨다.  
+이 외의 모든 Exception은 Exception 에러 메세지를 통해 처리하였다.   
+이유는 LottoTest에서 배열의 사이즈라 6이 아니라면 Exception을 발생시키는 것을 보고 판단하였다.
