@@ -6,14 +6,35 @@ import java.util.List;
 import java.util.Map;
 
 public class Maker {
-    Generator generator;
-    List<Integer> result;
-    public Maker() {
-        generator = new Generator();
+    private final Generator generator;
+    private final List<Integer> result;
+    private final float earningRate;
+
+    Maker(Map<Lotto, Bonus> lotteries, int purchaseAmount) {
         result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0));
+        generator = new Generator();
+        make(lotteries);
+        earningRate = calculateEarningRate(purchaseAmount);
     }
 
-    public void make(Map<Lotto, Bonus> lotteries) {
+    List<Integer> getResult() {
+        return result;
+    }
+
+    float getEarningRate() {
+        return earningRate;
+    }
+
+    private float calculateEarningRate(int purchaseAmount) {
+        long earning = 0;
+        for (Ranking ranking: Ranking.values()) {
+            earning += (long)result.get(ranking.value()) * ranking.prizeMoney();
+        }
+
+        return (float)earning / purchaseAmount * 100;
+    }
+
+    private void make(Map<Lotto, Bonus> lotteries) {
         List<Integer> winNumber = generator.getWinNumber();
 
         for (Lotto lotto: lotteries.keySet()) {
@@ -38,8 +59,5 @@ public class Maker {
         result.set(ranking.value(), result.get(ranking.value()) + 1);
     }
 
-    List<Integer> getResult() {
-        return result;
-    }
 
 }
