@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 public class LottoCompare {
 
-    public int getCompareCount(List<Integer> numbers, List<Integer> playerNumbers) {
+    public int getCompareCount(List<Integer> numbers, List<Integer> prizeNumbers) {
         return numbers.stream()
-                .filter(number -> playerNumbers
+                .filter(number -> prizeNumbers
                         .stream()
                         .anyMatch(Predicate.isEqual(number)))
                 .collect(Collectors.toList())
@@ -16,7 +16,7 @@ public class LottoCompare {
     }
 
     public boolean getBonusCheck(int number, List<Integer> numbers) {
-        return numbers.contains(numbers);
+        return numbers.contains(number);
     }
 
 }
