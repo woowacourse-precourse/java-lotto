@@ -12,15 +12,15 @@ public class Application {
     int insertedNumber;
     List<Integer> winningNumbers;
     int bonusNumber;
-    List<List<Integer>> randomLottos = new ArrayList<>();
+
+    List<Lotto> lottery = new ArrayList<>();
 
     public static void main(String[] args) {
         Application application = new Application();
         application.printInsertPrice();
         application.insertPriceAndSaveNumber();
-        application.makeArray();
-        application.makeEachArrays();
-        application.printRandomLottos();
+        application.makeLottery();
+        application.printLottery();
         application.printInsertWinningNumber();
         application.insertWinningNumber();
         application.printInsertBonusNumber();
@@ -37,16 +37,11 @@ public class Application {
         if(insertedNumber < 0 || insertedNumber%1000 != 0) Exception.of(Exception.LOTTO_PRICE_01);
     }
 
-    public void makeArray(){
-        int dividedNumber = insertedNumber / 1000;
-        for(int i =0; i < dividedNumber; i++)
-            randomLottos.add(new ArrayList<>());
-    }
-
-    public void makeEachArrays(){
-        for(int i = 0; i < insertedNumber/1000; i++) {
-            List<Integer> lotto = makeUnDuplicatedArray();
-            randomLottos.get(i).addAll(lotto);
+    public void makeLottery(){
+        for(int i =0; i < insertedNumber/1000; i++){
+            List<Integer> randomSet = makeUnDuplicatedArray();
+            Lotto lotto = new Lotto(randomSet);
+            lottery.add(lotto);
         }
     }
 
@@ -64,17 +59,12 @@ public class Application {
         return result;
     }
 
-    private void printRandomLottos(){
+    private void printLottery(){
         System.out.println(insertedNumber/1000 + "를 구매했습니다.");
-        for(int i =0; i < insertedNumber/1000; i++){
-            System.out.print("[");
-            for(int j=0; j < 6; j++){
-                System.out.print(randomLottos.get(i).get(j));
-                if(j != 5) System.out.print(", ");
-            }
-            System.out.print("]");
+        lottery.forEach(o->{
+            o.print();
             System.out.println();
-        }
+        });
     }
 
     private void printInsertWinningNumber(){
@@ -137,8 +127,8 @@ public class Application {
         if(t < 0 || t > 45) Exception.of(Exception.BONUS_NUMBER_06);
     }
 
-    public List<List<Integer>> getRandomLottos() {
-        return randomLottos;
+    public List<Lotto> getLottery() {
+        return lottery;
     }
 
     public List<Integer> getWinningNumbers() {
