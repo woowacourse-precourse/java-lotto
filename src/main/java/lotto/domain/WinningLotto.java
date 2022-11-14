@@ -1,13 +1,20 @@
 package lotto.domain;
 
-import java.util.List;
 
 public class WinningLotto {
-    private List<Integer> numbers;
-    private int bonusNumber;
+    private final Lotto winningLotto;
+    private final int bonusNumber;
 
-    public WinningLotto(List<Integer> numbers, int bonusNumber) {
-        this.numbers = numbers;
+    public WinningLotto(Lotto winningLotto, int bonusNumber) {
+        this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
+    }
+
+    public int matchCount(Lotto lotto) {
+        return lotto.containsCount(winningLotto);
+    }
+
+    public boolean isMatchBonusNumber(Lotto lotto) {
+        return lotto.contains(bonusNumber);
     }
 }
