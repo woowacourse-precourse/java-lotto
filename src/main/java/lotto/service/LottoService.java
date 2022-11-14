@@ -5,7 +5,7 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.domain.Lotto.IssueLotto;
+import static lotto.domain.Lotto.issueLotto;
 import static lotto.view.InputView.*;
 
 public class LottoService {
@@ -20,7 +20,7 @@ public class LottoService {
             System.out.println(e);
             return;
         }
-        List<Lotto> issuedLotteries = IssueLotto(count);
+        List<Lotto> issuedLotteries = issueLotto(count);
     }
 
     public static List<Integer> stringToIntList(String input) {

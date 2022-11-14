@@ -27,7 +27,7 @@ public class Lotto {
     }
 
     // input 개수만큼 로또 발행
-    public static List<Lotto> IssueLotto(int count) {
+    public static List<Lotto> issueLotto(int count) {
         List<Lotto> lotteries = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
