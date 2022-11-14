@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class User {
     private final InputValidation inputValidation = new InputValidation();
+    private int countLotto;
 
     public void inputPrice() {
         String price = Console.readLine();
@@ -16,6 +17,5 @@ public class User {
 
     private int calculateCountLotto(String line) {
         return Integer.parseInt(line) / 1000;
-    }
     }
 }
