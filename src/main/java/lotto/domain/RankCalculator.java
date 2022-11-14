@@ -1,29 +1,57 @@
 package lotto.domain;
 
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class RankCalculator {
 
-    private Map<Rank, Integer> rank;
+    private Map<Rank, Integer> ranks;
 
     public RankCalculator(List<Lotto> lottoTickets, UserNumber userNumber) {
-        countRank(lottoTickets, userNumber); // 로또 숫자들과 사용자 숫자 비교
+        this.ranks = countRank(lottoTickets, userNumber);
     }
 
-    private void countRank(List<Lotto> lottoTickets, UserNumber userNumber) {
+    private Map<Rank, Integer> countRank(List<Lotto> lottoTickets, UserNumber userNumber) {
+        Map<Rank, Integer> ranks = new HashMap<>();
 
         for (Lotto lottoTicket : lottoTickets) {
-            compareLottoWithUser();// 로또 숫자와 사용자 숫자 비교
-            // 당첨 여부 갱신
+            Rank rank = compareLottoWithUser(lottoTicket, userNumber);
+            ranks.put(rank, ranks.getOrDefault(rank, 0) + 1);
         }
+        return ranks;
     }
 
-    private void compareLottoWithUser() {
-        compareBonusNumber(); // 똑같은 숫자가 5개일 경우 보너스 번호 비교
+    private Rank compareLottoWithUser(Lotto lottoTicket, UserNumber userNumber) {
+        List<Integer> list = new ArrayList<>(lottoTicket.getNumbers());
+        int correct = 0;
+
+        for (int number : userNumber.getWinNumbers().getNumbers()) {
+            if (list.contains(number)) {
+                correct++;
+            }
+        }
+        return convertRank(correct, compareBonusNumber(lottoTicket, userNumber.getBonusNumber()));
     }
 
-    private void compareBonusNumber() {
+    private Rank convertRank(int count, boolean isSecond) {
+        for (Rank rank : Rank.values()) {
+            if (count == Rank.SECOND.getCorrectCount() && isSecond) {
+                return Rank.SECOND;
+            } else if (count == rank.getCorrectCount()) {
+                return rank;
+            }
+        }
+        return Rank.NONE;
+    }
 
+    private boolean compareBonusNumber(Lotto lottoTicket, int bonusNumber) {
+        return lottoTicket.getNumbers().contains(bonusNumber);
+    }
+
+    public Map<Rank, Integer> getRanks() {
+        return ranks;
     }
 }

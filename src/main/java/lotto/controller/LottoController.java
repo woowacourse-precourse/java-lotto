@@ -5,6 +5,7 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoController {
 
@@ -28,5 +29,6 @@ public class LottoController {
 
     private void calculateRank(List<Lotto> lottoTickets, UserNumber userNumber) {
         RankCalculator rankCalculator = new RankCalculator(lottoTickets, userNumber);
+        Map<Rank, Integer> map = rankCalculator.getRanks();
     }
 }
