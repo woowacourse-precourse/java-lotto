@@ -12,7 +12,7 @@
 
 - 생성숫자와 당첨숫자 비교 기능
   - [O] 구입한 내역의 숫자와 당첨숫자 비교 결과를 반환합니다.(보너스숫자제외) - CompareNumber#jugementNumber()
-  - [] 보너스숫자를 포함한 결과를 리스트에 담아 반환합니다. - CompareNumberWithBonus#jugementNumberWithBonus()
+  - [O] 보너스숫자를 포함한 결과를 리스트에 담아 반환합니다. - CompareNumberWithBonus#jugementNumberWithBonus()
 
 - 당첨 내용 출력 기능
   - [] 구매한 개수를 출력합니다. - PrintInputMoneyGenerator#printInputMoney()
