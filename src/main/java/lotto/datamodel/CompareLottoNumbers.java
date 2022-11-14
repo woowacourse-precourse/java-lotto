@@ -9,6 +9,7 @@ public class CompareLottoNumbers {
     private static final int TOTAL_WIN_COUNT = 6;
     private final List<Integer> numbers;
     private final int bonusNumber;
+    private boolean bonusValid = false;
 
     public CompareLottoNumbers(List<Integer> numbers, int bonusNumber) {
         this.numbers = numbers;
@@ -17,9 +18,13 @@ public class CompareLottoNumbers {
 
     public List<Integer> calculator(int lottoCount, List<List<Integer>> lottoNumbers) {
         Rank score;
+        int count = 0;
+
         List<Integer> price = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
-            score = checkSameNumber(lottoNumbers.get(i));
+            count = checkSameNumber(lottoNumbers.get(i));
+            score = returnType(count);
+            bonusValid = false;
             if (score != Rank.NONE) {
                 price.add(score.getAmount());
             }
@@ -27,9 +32,8 @@ public class CompareLottoNumbers {
         return price;
     }
 
-    private Rank checkSameNumber(List<Integer> oneNumbers) {
+    private int checkSameNumber(List<Integer> oneNumbers) {
         int count = 0;
-        boolean bonusValid = false;
 
         for (int i = 0; i < TOTAL_WIN_COUNT; i ++) {
             if (oneNumbers.contains(numbers.get(i))) {
@@ -39,7 +43,10 @@ public class CompareLottoNumbers {
                 bonusValid = true;
             }
         }
+        return count;
+    }
 
+    private Rank returnType(int count) {
         if (count == 6) {
             return Rank.FIRST;
         }

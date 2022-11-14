@@ -24,13 +24,23 @@ class CompareLottoNumbersTest {
         assertThat(result).usingRecursiveComparison().isEqualTo(List.of(5000,50000));
     }
 
-    @DisplayName("생성된 로또 번호 한줄을 받아서 당첨번호와 비교하여 몇등인지 알려준다")
+    @DisplayName("당첨번호랑 같은 숫자의 개수를 알려준다")
     @Test
-    void createEnumValue() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void createSameNumberCount() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = compare.getClass().getDeclaredMethod("checkSameNumber", List.class);
         method.setAccessible(true);
 
         Object result = method.invoke(compare, List.of(5,8,14,22,26,30));
+        assertThat(result).isEqualTo(3);
+    }
+
+    @DisplayName("당첨번호랑 같은 숫자의 개수를 받아서 몇등인지 알려준다")
+    @Test
+    void createEnumValue() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method method = compare.getClass().getDeclaredMethod("returnType", int.class);
+        method.setAccessible(true);
+
+        Object result = method.invoke(compare, 3);
 
         assertThat(result).isEqualTo(Rank.FIFTH);
     }
