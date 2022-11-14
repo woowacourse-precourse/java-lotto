@@ -2,11 +2,12 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class User {
     private final LottoManager lottoManager = new LottoManager();
+    private final int[] statistics = {0, 0, 0, 0, 0};
 
     public void start() {
         int price;
@@ -29,6 +30,11 @@ public class User {
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
         lottoManager.inputBonusNumbers();
+
+        for (Lotto lotto : lottos) {
+            int index = lottoManager.getRankingIndex(lotto);
+            addStatistics(index);
+        }
     }
 
     private int inputPrice() {
@@ -37,5 +43,11 @@ public class User {
 
     private int setCount(int price) {
         return price / 1000;
+    }
+
+    private void addStatistics(int index) {
+        if (index >= 0) {
+            statistics[index]++;
+        }
     }
 }
