@@ -3,7 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Price {
-    private static final int DIVIDE_MONEY = 1000;
+
     static String input;
 
     public int inputPurchaseAmount() {
@@ -29,6 +29,6 @@ public class Price {
 
     public int divideAmountTo1000Won() {
         int count = Integer.parseInt(input);
-        return count / DIVIDE_MONEY;
+        return count / Constant.DIVIDE_MONEY;
     }
 }

@@ -7,14 +7,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class NumberGenerator {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 45;
-    private static final int CREATE_NUMBER = 6;
+
     List<List<Integer>> numbers;
 
     public List<Integer> createRandomLottoNumber() {
         List<Integer> number = Randoms.pickUniqueNumbersInRange(
-                MIN_NUMBER, MAX_NUMBER, CREATE_NUMBER);
+                Constant.MIN_NUMBER, Constant.MAX_NUMBER, Constant.CREATE_NUMBER);
         return number;
     }
 
