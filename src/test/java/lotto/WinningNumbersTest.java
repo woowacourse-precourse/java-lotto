@@ -79,4 +79,16 @@ class WinningNumbersTest {
         assertThatThrownBy(() -> winningNumbers.newBonusNumber(testNumber2))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void bonusNumberDuplicateTest() throws Exception {
+        WinningNumbers winningNumbers = new WinningNumbers();
+
+        Integer[] inputLotto = {1,2,3,4,5,6};
+        int bonusNumber= 1;
+        winningNumbers.newWinningNumbers(new ArrayList<>(List.of(inputLotto)));
+
+        assertThatThrownBy(() -> winningNumbers.newBonusNumber(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
