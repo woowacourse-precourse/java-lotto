@@ -1,5 +1,8 @@
 package lotto.view;
 
+import static lotto.LottoRank.RANK2;
+
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -13,7 +16,8 @@ public final class Print {
     private static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String WINNING_STATS = "당첨 통계";
     private static final String DIVIDE_LINE = "---";
-    private static final String COUNT = "개";
+    private static final String WINNING_RESULT = "%d개 일치 (%s원) - %d개";
+    private static final String BONUS_WINNING_RESULT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
     private static final String YIELD_BEFORE = "총 수익률은 %s";
     private static final String YIELD_AFTER = "%입니다.";
 
@@ -47,17 +51,27 @@ public final class Print {
         System.out.println(WINNING_STATS);
         System.out.println(DIVIDE_LINE);
 
-        for (Entry<LottoRank, Integer> lottoResultEntry : lottoResult.entrySet()) {
-            LottoRank rank = lottoResultEntry.getKey();
-            Integer count = lottoResultEntry.getValue();
+        for (Entry<LottoRank, Integer> LottoResults : lottoResult.entrySet()) {
+            LottoRank rank = LottoResults.getKey();
+            Integer count = LottoResults.getValue();
 
-            System.out.print(rank);
-            System.out.println(count + COUNT);
+            int matchingCount = rank.getMatchingCount();
+            String prizeMoney = convertCommaMoney(rank.getPrizeMoney());
+
+            if (rank == RANK2) {
+                System.out.printf((BONUS_WINNING_RESULT) + "%n", matchingCount, prizeMoney, count);
+            }
+
+            System.out.printf((WINNING_RESULT) + "%n", matchingCount, prizeMoney, count);
         }
     }
 
     public static void printYield(String lottoYield) {
         System.out.println(String.format(YIELD_BEFORE, lottoYield) + YIELD_AFTER);
+    }
+
+    private static String convertCommaMoney(int prizeMoney) {
+        return NumberFormat.getInstance().format(prizeMoney);
     }
 
     private Print() {
