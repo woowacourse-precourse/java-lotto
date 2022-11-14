@@ -2,9 +2,6 @@ package lotto.view;
 
 import lotto.domain.MoneyEnumClass;
 import lotto.exception.BuyMoneyException;
-import lotto.service.BuyLotto;
-import lotto.service.WinningMoney;
-
 import java.util.Collections;
 import java.util.List;
 

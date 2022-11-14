@@ -2,7 +2,6 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Application;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

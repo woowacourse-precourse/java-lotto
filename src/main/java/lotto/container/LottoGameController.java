@@ -1,9 +1,6 @@
 package lotto.container;
 
 import lotto.service.*;
-import lotto.view.InputOutputView;
-
-import java.util.List;
 
 public class LottoGameController {
     private RelativeLottoService relativeLottoService = new RelativeLottoService();

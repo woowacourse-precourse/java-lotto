@@ -7,10 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BuyLotto {
-    /**
-     * 1000원 단위로 구입 금액을 입력받음
-     * 1000단위가 아닐 경우 예외 처리
-     */
     private final static int DIVIDE_VALUE = 1000;
 
     InputOutputView inputOutputView = new InputOutputView();
