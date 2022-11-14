@@ -3,18 +3,20 @@ package lotto;
 import java.util.List;
 
 enum Winning {
-    FIRST(2_000_000_000, 0),
-    SECOND(30_000_000, 0),
-    THIRD(1_500_000, 0),
-    FOURTH(50_000, 0),
-    FIFTH(5_000, 0);
+    FIRST(2_000_000_000, 0, "6개 일치 (2,000,000,000원) - "),
+    SECOND(30_000_000, 0, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+    THIRD(1_500_000, 0, "5개 일치 (1,500,000원) - "),
+    FOURTH(50_000, 0, "4개 일치 (50,000원) - "),
+    FIFTH(5_000, 0, "3개 일치 (5,000원) - ");
 
     public int prize;
     public int cnt;
+    public String message;
 
-    Winning(int prize, int cnt) {
+    Winning(int prize, int cnt, String message) {
         this.prize = prize;
         this.cnt = cnt;
+        this.message = message;
     }
 
     public int multiple() {
@@ -74,11 +76,9 @@ public class Result {
     }
 
     public static void printTheResult() {
-        System.out.println("3개 일치 (5,000원) - " + Winning.FIFTH.cnt + "개");
-        System.out.println("4개 일치 (50,000원) - " + Winning.FOURTH.cnt + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + Winning.THIRD.cnt + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Winning.SECOND.cnt + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + Winning.FIRST.cnt + "개");
+        for(Winning winning : Winning.values()) {
+            System.out.println(winning.message + winning.cnt + "개");
+        }
     }
 
     public static void calculateTheProfit(int purchaseMoney) {
