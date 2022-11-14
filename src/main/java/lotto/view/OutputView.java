@@ -27,7 +27,7 @@ public class OutputView {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public static void printStatic(List<Integer> numbers, float number) {
+    public static void printStatic(List<Integer> numbers, double number) {
         System.out.println("당첨 통계\n" +
                 "---\n" +
                 "3개 일치 (5,000원) - " + numbers.get(0) + "개\n" +
