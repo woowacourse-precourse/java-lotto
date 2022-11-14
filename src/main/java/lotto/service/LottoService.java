@@ -2,7 +2,6 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
@@ -24,7 +23,6 @@ public class LottoService {
         List<List<Integer>> numbers = new ArrayList<>();
         for (int i = 0; i < money.calcLottoQuantity(); i++) {
             List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(randomNumbers);
             Lotto lotto = new Lotto(randomNumbers);
             numbers.add(lottoRepository.save(lotto));
         }
