@@ -17,7 +17,7 @@ public class Lotto {
         }
     }
 
-    public int compareWithWinningNumber(List<Integer> winningNumber, int bonusNumber){
+    public int compareWithWinningNumber(List<Integer> winningNumber) {
         this.numbers.sort(Comparator.naturalOrder());
         winningNumber.sort(Comparator.naturalOrder());
         int sameNumberCount = 0;
@@ -28,5 +28,13 @@ public class Lotto {
             }
         }
         return sameNumberCount;
+    }
+
+    public boolean checkBonusNumber(int bonusNumber) {
+        boolean containBonusNumber = false;
+        if (numbers.contains(bonusNumber) == true) {
+            containBonusNumber = true;
+        }
+        return containBonusNumber;
     }
 }
