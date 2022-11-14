@@ -33,4 +33,14 @@ public class CommonExceptionTest {
             assertThat(e.getMessage()).isEqualTo(notIntMessage);
         }
     }
+
+    @Test
+    @DisplayName("1 ~ 45 범위를 벗어나는 값은 에러가 발생한다.")
+    void checkNumberRange1() {
+        // given
+        int number = 46;
+
+        // when, then
+        assertThrows(IllegalArgumentException.class, () -> CommonException.checkNumberRange(number));
+    }
 }
