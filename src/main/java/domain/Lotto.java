@@ -45,20 +45,5 @@ public class Lotto {
 
         return bonusNumber;
     }
-
-    public static Rank getRank(){
-        int bonusNumber = generateBonusNumber();
-        Lotto winningLotto = generateWinningLotto();
-        int lottoCnt = getLottoCntByMoney(inputMoney());
-        List<Lotto> lottos = generateLotto(lottoCnt);
-
-        Rank rank = compareLottoNumber(winningLotto, bonusNumber, lottos);
-        return rank;
-    }
-
-    public static Money inputMoney(){
-        int money = Integer.parseInt(Console.readLine());
-        return new Money(money);
-    }
 }
 
