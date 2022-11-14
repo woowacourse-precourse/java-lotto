@@ -16,9 +16,6 @@ public class Computer {
 
     public List<Integer> createLottoNumbers(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(STRAT_RANGE, END_RANGE, LOTTO_NUMBER_LENGTH);
-        // 오름차순 정렬
-        numbers.sort(Comparator.naturalOrder());
-
         return numbers;
     }
 
