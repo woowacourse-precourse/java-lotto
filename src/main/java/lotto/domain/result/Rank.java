@@ -6,27 +6,28 @@ import java.util.stream.Collectors;
 
 public enum Rank {
 
-    THREE_MATCHES("%d개 일치 (%,d원) - %d개", 5_000, 3, false),
-    FOUR_MATCHES("%d개 일치 (%,d원) - %d개", 50_000, 4, false),
-    FIVE_MATCHES_WITHOUT_BONUS("%d개 일치 (%,d원) - %d개", 1_500_000, 5, false),
-    FIVE_MATCHES_WITH_BONUS("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", 30_000_000, 5, true),
-    SIX_MATCHES("%d개 일치 (%,d원) - %d개", 2_000_000_000, 6, false),
+    THREE_MATCHES("%d개 일치 (%,d원) - %d개", 3, 5_000, false),
+    FOUR_MATCHES("%d개 일치 (%,d원) - %d개", 4, 50_000, false),
+    FIVE_MATCHES_WITHOUT_BONUS("%d개 일치 (%,d원) - %d개", 5, 1_500_000, false),
+    FIVE_MATCHES_WITH_BONUS("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", 5, 30_000_000, true),
+    SIX_MATCHES("%d개 일치 (%,d원) - %d개", 6, 2_000_000_000, false),
     NONE("none", 0, 0, false);
 
     private final String message;
-    private final int prizeMoney;
     private final int hitCount;
+    private final int prizeMoney;
     private final boolean hasBonusNumber;
 
-    Rank(String message, int prizeMoney, int hitCount, boolean hasBonusNumber) {
-        this.prizeMoney = prizeMoney;
-        this.hitCount = hitCount;
-        this.hasBonusNumber = hasBonusNumber;
+    Rank(String message, int hitCount, int prizeMoney, boolean hasBonusNumber) {
         this.message = message;
+        this.hitCount = hitCount;
+        this.prizeMoney = prizeMoney;
+        this.hasBonusNumber = hasBonusNumber;
     }
 
-    public static List<Rank> getAllRanks() {
+    public static List<Rank> getAllRanksExceptNone() {
         return Arrays.stream(Rank.values())
+                .filter(x -> x.hitCount != 0)
                 .collect(Collectors.toList());
     }
 
