@@ -30,13 +30,4 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @DisplayName("유저의 로또 번호를 오름차순으로 정렬한다.")
-    @Test
-    void sorting() {
-        Lotto lotto = new Lotto(List.of(1,3,2,4,5,6));
-        assertEquals(List.of(1,2,3,4,5,6), lotto);
-    }
-
-
 }
