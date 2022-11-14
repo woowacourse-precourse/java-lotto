@@ -63,6 +63,14 @@ public class UserService {
         return Console.readLine();
     }
 
+    public String enterWinningNumbers() {
+        return Console.readLine();
+    }
+
+    public String enterBonusNumber() {
+        return Console.readLine();
+    }
+
     public int findTheNumberOfLotteryTicketsPurchased(String purchaseAmount){
         int amount = Integer.parseInt(purchaseAmount);
         return amount / 1000;
