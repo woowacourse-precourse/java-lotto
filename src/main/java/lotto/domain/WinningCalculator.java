@@ -109,7 +109,7 @@ public class WinningCalculator {
 
     private void checkRangeOfNumberInNumbers(List<Integer> numbers) {
         for (int number: numbers) {
-            if (START_NUMBER < number && number < END_NUMBER) {
+            if (START_NUMBER <= number && number <= END_NUMBER) {
                 continue;
             }
             throw new IllegalArgumentException("[ERROR] 범위에 맞는 번호를 당첨 번호를 입력해주세요.");
