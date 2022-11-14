@@ -7,7 +7,7 @@ import java.util.List;
 public class PlayLotto {
     CreateLotto createLotto = new CreateLotto();
 
-    public List<List<Integer>> playLottoTicketCount(Integer ticketCount) {
+    public List<List<Integer>> allTicket(Integer ticketCount) {
         List<List<Integer>> allLottoNumber = new ArrayList<>();
         for (int i = 0; i < ticketCount; i++) {
             CreateLotto createLotto = new CreateLotto();
