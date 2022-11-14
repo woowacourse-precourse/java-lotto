@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.enums.Ranking;
+
 import java.util.List;
 
 public class Player {
@@ -43,6 +45,14 @@ public class Player {
 
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
+    }
+
+    public void setWinningResult() {
+        for (Lotto lottonumber : lottoNumbers) {
+            int matchingNumbers = compareLottoAndWinningNumber(lottonumber);
+            Ranking lottoResult = Ranking.getRankByMatchingNumbers(matchingNumbers);
+            lottoResult.plusWinningResult();
+        }
     }
 
     private int compareLottoAndWinningNumber(Lotto lotto) {

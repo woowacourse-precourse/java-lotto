@@ -61,9 +61,10 @@ public class ApplicationController {
 
     public void control_WinningResult() {
         //TODO
-        //  - [ ] 당첨 결과 계산
-        //  - [ ] 당첨 내역 저장
+        //  - [x] 당첨 결과 계산
+        //  - [x] 당첨 내역 저장
         //  - [ ] 당첨 내역 출력
+        player.setWinningResult();
 
         //TODO: 수익률 계산 과정 제어 기능 호출
     }
