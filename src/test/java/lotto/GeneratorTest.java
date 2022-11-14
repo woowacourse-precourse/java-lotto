@@ -12,7 +12,7 @@ class GeneratorTest {
     @Test
     void createLotto() {
         Generator generator = new Generator();
-        Lotto lotto = generator.createLotto();
+        Lotto lotto = generator.createLottoNumber();
         System.out.println(lotto);
 
     }
