@@ -1,5 +1,6 @@
 package lotto.entity;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class User {
@@ -7,6 +8,18 @@ public class User {
     private List<Integer> userNumber;
     private int bonusNumber;
     private int lottoAmount;
+    private Long yield;
+    private HashMap<Integer, Integer> winning = new HashMap<>(){
+        {
+            put(5, 0);
+            put(4, 0);
+            put(3, 0);
+            put(2, 0);
+            put(1, 0);
+        }
+    };
+
+
     public User(){}
 
     public List<Integer> getUserNumber() {
@@ -39,5 +52,21 @@ public class User {
 
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
+    }
+
+    public Long getYield() {
+        return yield;
+    }
+
+    public void setYield(Long yield) {
+        this.yield = yield;
+    }
+
+    public HashMap<Integer, Integer> getWinning() {
+        return winning;
+    }
+
+    public void setWinning(HashMap<Integer, Integer> winning) {
+        this.winning = winning;
     }
 }

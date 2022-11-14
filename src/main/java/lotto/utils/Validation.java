@@ -1,6 +1,6 @@
 package lotto.utils;
 
-import lotto.entity.LottoInfo;
+import lotto.Enum.LottoInfo;
 
 import java.util.HashSet;
 import java.util.List;
@@ -56,7 +56,7 @@ public class Validation {
     }
     public static boolean isValidRange(String input) {
         int intInput = Parser.StringToInt(input);
-        return intInput < LottoInfo.START || intInput > LottoInfo.END;
+        return intInput < LottoInfo.START.getInfo() || intInput > LottoInfo.END.getInfo();
     }
     public static boolean isUnique(List<String> inputList) {
         Set<String> numberSet = new HashSet<>(inputList);
