@@ -172,14 +172,13 @@ public class Application {
      * 로또 구매 금액과 당첨 금액을 바탕으로 수익률을 계산
      * @return 수익률
      */
-    public static BigDecimal getProfitRate(int purchased, int profit){
+    public static String getProfitRate(int purchased, int profit){
         // double 연산 시 연산 결과가 지수 표현으로 나오는 경우 -> 알아보기가 힘듦
         // BigDecimal을 이용하여 지수 표현 제거
         BigDecimal a = new BigDecimal(purchased / 100);
         BigDecimal b = new BigDecimal(profit);
         BigDecimal profitRate = b.divide(a, 2, RoundingMode.HALF_EVEN).stripTrailingZeros();
-        System.out.println(profitRate.toPlainString());
-        return profitRate;
+        return profitRate.toPlainString();
     }
 
     public static int getProfit(HashMap<Prize, Integer> prizes){
