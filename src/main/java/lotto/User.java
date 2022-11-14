@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class User {
     private int lottoPrice;
-    private int lottoEA;
-    private String winningNumbers;
+    public static int lottoEA;
+    private String numberString;
     private List<Integer> userNumbers;
-    private int bonusNumber;
-    private ArrayList<List<Integer>> lotteryOfUser;
+    public static int bonusNumber;
+    private List<List<Integer>> lotteryOfUser;
 
     public void enterPrice(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -32,23 +32,27 @@ public class User {
     }
 
     public void createLotto(){
+        lotteryOfUser = new ArrayList<>();
         for(int ea=0; ea<this.lottoEA; ea++){
-            System.out.println(randomNumbers());
+            lotteryOfUser.add(randomNumbers());
+            System.out.println(lotteryOfUser.get(ea));
         }
     }
 
     private List<Integer> randomNumbers(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-        lotteryOfUser = new ArrayList<List<Integer>>();
-        this.lotteryOfUser.add(numbers);
         return numbers;
+    }
+
+    public List<List<Integer>> getLotteryOfUser(){
+        return this.lotteryOfUser;
     }
 
     public void enterWinningNumbers(){
         System.out.println("당첨 번호를 입력해 주세요");
         Scanner sc = new Scanner(System.in);
-        this.winningNumbers = sc.nextLine();
-        enter(winningNumbers);
+        this.numberString = sc.nextLine();
+        enter(numberString);
     }
 
     public void enterBonusNumber(){
@@ -67,8 +71,6 @@ public class User {
     public List<Integer> getUserNumbers(){
         return this.userNumbers;
     }
-
-
 
     public int getBonusNumber(){
         return this.bonusNumber;
