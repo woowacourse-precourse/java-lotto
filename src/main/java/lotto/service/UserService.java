@@ -62,4 +62,9 @@ public class UserService {
     public String enterPurchaseAmount () {
         return Console.readLine();
     }
+
+    public int findTheNumberOfLotteryTicketsPurchased(String purchaseAmount){
+        int amount = Integer.parseInt(purchaseAmount);
+        return amount / 1000;
+    }
 }
