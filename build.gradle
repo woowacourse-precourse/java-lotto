@@ -9,6 +9,7 @@ repositories {
 
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.0.0'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
 }
 
 java {
