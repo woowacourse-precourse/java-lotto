@@ -32,6 +32,7 @@ public class Application {
             WINNING_COUNT_REPOSITORY.putAll(lottoRating.rate());
             YieldCalculator yieldCalculator = new YieldCalculator(WINNING_COUNT_REPOSITORY, price.getPurchasePrice());
             BigDecimal yield = yieldCalculator.calculate();
+            OUTPUT_VIEW.printWinningStatistics(WINNING_COUNT_REPOSITORY, yield);
         } catch (IllegalArgumentException ignored) {
             System.out.println(ExceptionMessage.APPLICATION_EXIT.getMessage());
         }
