@@ -29,10 +29,15 @@ public class WinningNumbers {
     }
 
     private List<Integer> numbersToList(String numbers) {
-        return Arrays.stream(numbers.split(SEPARATOR))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        try {
+            return Arrays.stream(numbers.split(SEPARATOR))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(WINNING_NUMBERS_NOT_INTEGER);
+        }
     }
+
 
     public Lotto getWinningNumbers() {
         return this.winningNumbers;
