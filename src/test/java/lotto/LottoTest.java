@@ -45,4 +45,12 @@ class LottoTest {
         assertThat(lotto.numberOfSameNumbers(List.of(3, 4, 5, 6, 7, 8))).isEqualTo(4);
     }
 
+    @DisplayName("발행된 로또 번호가 보너스 번호를 포함하는지 확인")
+    @Test
+    void lottoIsContainBonusNumber() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 5;
+        assertThat(lotto.isContainBonusNumber(bonusNumber)).isTrue();
+    }
+
 }
