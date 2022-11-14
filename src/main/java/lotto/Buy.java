@@ -84,7 +84,7 @@ public class Buy {
     }
 
 
-    public static List<Integer> makeIntNumbers(List<String> temporaryNumbers) {
+    public static List<Integer> convertIntNumbers(List<String> temporaryNumbers) {
         List<Integer> intNumbers;
 
         intNumbers = temporaryNumbers.stream()
