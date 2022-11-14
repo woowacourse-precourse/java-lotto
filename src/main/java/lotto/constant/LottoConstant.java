@@ -1,6 +1,7 @@
-package lotto;
+package lotto.constant;
 
-public class Constant {
+public class LottoConstant {
+
     public static final int LOTTO_WINNING_SIZE = 5;
     public static final int PRICE_UNIT = 1000;
     public static final int LOTTO_MIN_RANGE = 1;
