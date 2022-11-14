@@ -15,7 +15,7 @@ public class Application {
         try {
             money = Integer.parseInt(input_money);
         } catch (NumberFormatException ex) {
-        throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
         }
         if(money <= 0) throw new IllegalArgumentException("[ERROR] 구입금액이 0원이하 일 수 없습니다.");
         return money;
@@ -29,15 +29,15 @@ public class Application {
         return chance;
     }
     static List<Integer> make_lotto_num(){
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-//        numbers.sort(Comparator.naturalOrder());
+        List<Integer> numbers = new ArrayList<>( Randoms.pickUniqueNumbersInRange(1,45,6));
+        numbers.sort(Comparator.naturalOrder());
         return numbers;
     }
     static List<List<Integer>> buy_lotto(int chance){
         List<List<Integer>> lotto_nums =new ArrayList<>();
         List<Integer> lotto;
         for(int i = 1 ; i <= chance ; i++){
-            lotto = make_lotto_num();
+            lotto = make_lotto_num();;
             lotto_nums.add(lotto);
             System.out.println(lotto);
         }
