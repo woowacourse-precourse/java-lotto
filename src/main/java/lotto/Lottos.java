@@ -30,4 +30,8 @@ public class Lottos {
             System.out.println(lotto.getNumbers().toString());
         }
     }
+
+    public List<Lotto> getLottos() {
+        return this.lottos;
+    }
 }
