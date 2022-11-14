@@ -43,8 +43,18 @@ public class Lotto {
         int cnt = 0;
         int bonus = 0;
         if(findidx(bonusnum) == 1) bonus = 1;
+//        for(int i = 0; i < truenum.size(); i++){
+//            System.out.print(truenum.get(i) + ",");
+//        }
+//        System.out.println(bonusnum);
+//        System.out.println("맞춰야 할 숫자");
+//        for(int i = 0; i < numbers.size(); i++){
+//            System.out.print(numbers.get(i) + ",");
+//        }
+//        System.out.println();
+//
         for(int i = 0; i < truenum.size(); i++){
-            if(truenum.get(i) != -1) cnt++;
+            if(findidx(truenum.get(i)) != -1) cnt++;
         }
         if(cnt == 6) return LottoRank.First;
         if(cnt == 5 && bonus == 1) return LottoRank.Second;
