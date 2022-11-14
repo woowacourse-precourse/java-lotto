@@ -12,7 +12,8 @@ public enum ExceptionType {
             ConstantNumberType.COST.getValue()),
     COUNT("갯수가 %d개 이어야 합니다",
             ConstantNumberType.COUNT.getValue()),
-    EMPTY("적어도 하나의 로또는 구매해야 합니다.")
+    EMPTY("적어도 하나의 로또는 구매해야 합니다."),
+    NULL("번호를 받지 못했습니다."),
     ;
 
     private static final String ERROR_BASE = "[ERROR] ";

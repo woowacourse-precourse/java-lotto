@@ -20,21 +20,26 @@ public class WinNumber {
     }
 
     private void validate(Set<Integer> winNumbers, Integer bonusNumber) {
-        if (winNumbers == null) {
-            throw new NullPointerException("[ERROR] 당첨 번호를 받지 못했습니다.");
-        }
-        if (bonusNumber == null) {
-            throw new NullPointerException("[ERROR] 보너스 번호를 받지 못했습니다.");
+        if (isNull(winNumbers) || isNull(bonusNumber)) {
+            throw ExceptionType.NULL.getException();
         }
         if (hasWrongSize(winNumbers)) {
             throw ExceptionType.COUNT.getException();
         }
-        if (hasNumberOutOfRange(winNumbers) || isNumberOutOfRange(bonusNumber)) {
+        if (hasNumberOutOfRange(winNumbers) || hasNumberOutOfRange(bonusNumber)) {
             throw ExceptionType.RANGE.getException();
         }
         if (containsNumber(winNumbers, bonusNumber)) {
             throw ExceptionType.DUPLICATE.getException();
         }
+    }
+
+    private static boolean isNull(Set<Integer> numbers) {
+        return numbers == null;
+    }
+
+    private static boolean isNull(Integer number) {
+        return number == null;
     }
 
     private static boolean hasWrongSize(Set<Integer> numbers) {
@@ -47,13 +52,13 @@ public class WinNumber {
         return !numbers.stream().allMatch(number -> IntegerValidator.isInBetween(number, minimum, maximum));
     }
 
-    private static boolean isNumberOutOfRange(int number) {
+    private static boolean hasNumberOutOfRange(Integer number) {
         int minimum = ConstantNumberType.MIN.getValue();
         int maximum = ConstantNumberType.MAX.getValue();
         return !IntegerValidator.isInBetween(number, minimum, maximum);
     }
 
-    private static boolean containsNumber(Set<Integer> numbers, int number) {
+    private static boolean containsNumber(Set<Integer> numbers, Integer number) {
         return numbers.contains(number);
     }
 
