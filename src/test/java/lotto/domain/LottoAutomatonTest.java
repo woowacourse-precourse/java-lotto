@@ -48,6 +48,7 @@ class LottoAutomatonTest {
         // given
         numbers = automaton.getNumbers();
         lotto = new Lotto(numbers);
+
         // when
         lotto.ascending(numbers);
 
