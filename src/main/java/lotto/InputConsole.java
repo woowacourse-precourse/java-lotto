@@ -25,8 +25,8 @@ public class InputConsole {
     }
 
     private static void validateMoney(String money) {
-        if (!isEnoughMoney(money) || !isOneThousandUnits(money) || !isDigit(money)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_MONEY_ERROR.getMessage());
+        if (!isDigit(money) || !isEnoughMoney(money) || !isOneThousandUnits(money)) {
+            throw new IllegalArgumentException(INVALID_MONEY_ERROR.getMessage());
         }
     }
 
