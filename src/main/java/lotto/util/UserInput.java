@@ -31,13 +31,13 @@ public class UserInput {
 
     private static void validateInputLottoMoney(String inputLottoMoney) {
 
-        if (!Validator.hasNotCharacter(inputLottoMoney)){
-            Message.printInputErrorHasCharacter();
+        if (Validator.isEmpty(inputLottoMoney)){
+            Message.printInputErrorEmpty();
             throw new IllegalArgumentException();
         }
 
-        if (Validator.isEmpty(inputLottoMoney)){
-            Message.printInputErrorEmpty();
+        if (!Validator.hasNotCharacter(inputLottoMoney)){
+            Message.printInputErrorHasCharacter();
             throw new IllegalArgumentException();
         }
     }
