@@ -2,6 +2,7 @@ package lotto.service;
 
 import lotto.entity.Lotto;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,21 @@ public class WinningDecision {
         this.winningLotto = winningLotto;
         this.bonus = bonus;
         this.purchaseAmount = purchaseAmount;
+    }
+
+    public void showWinningDecision() {
+        System.out.println("당첨 통계\n---");
+
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        for (WinningResult result : WinningResult.values()) {
+            String winningPrize = decimalFormat.format(result.getPrize());
+
+            System.out.printf("%s (%s원) - %d개\n", result.getMatching(), winningPrize, winningPrizes.get(result.getPrize()));
+        }
+
+        long totalWinningPrize = Calculator.sumWinningPrize(winningPrizes);
+        String yield = Calculator.getYield(totalWinningPrize, purchaseAmount);
+        System.out.printf("총 수익률은 %s입니다.", yield);
     }
 
     public void initMyPrizes() {
