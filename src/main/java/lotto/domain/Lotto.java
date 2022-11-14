@@ -21,14 +21,14 @@ public class Lotto {
 
     private static void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또의 숫자는 6개 입니다.");
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
-        Set<Integer> collect = new HashSet<>(numbers);
-        if (collect.size() != 6) {
-            throw new IllegalArgumentException("중복된 숫자는 허용되지 않습니다.");
+        Set<Integer> distinct = new HashSet<>(numbers);
+        if (distinct.size() != 6) {
+            throw new IllegalArgumentException("로또는 중복된 숫자를 허용되지 않습니다.");
         }
     }
 
