@@ -9,18 +9,15 @@ public class AmountValidation {
     3. 음수 값을 입력한 경우 ~ int 라서 애초에 방지해줌
     */
 
-    private final int amount;
     private static final int UNIT_OF_AMOUNT = 1000;
 
-    public AmountValidation(int amount) {
-        this.amount = amount;
-    }
-
-
-    public boolean isValidAmount() {
+    public static boolean isValidAmount(int amount) {
         if(amount < UNIT_OF_AMOUNT) {
-            return false;
+            throw new IllegalArgumentException("[ERROR] 1000원 이상 금액을 입력해주세요.");
         }
-        return amount % UNIT_OF_AMOUNT == 0;
+        if (amount % UNIT_OF_AMOUNT != 0) {
+        throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요.");
+        }
+        return true;
     }
 }
