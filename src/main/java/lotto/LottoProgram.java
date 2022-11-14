@@ -111,4 +111,10 @@ public class LottoProgram {
 	public void checkPrize(String input) {
 		exception.checkInputPrice(input);
 	}
+
+	public void checkWinningNumber(String winNum) {
+		exception.checkLottoOnlyNumber(winNum);
+		exception.checkLottoRange(winNum);
+		exception.reduplicationLottoNumbers(lottoNumbers, winNum);
+	}
 }
