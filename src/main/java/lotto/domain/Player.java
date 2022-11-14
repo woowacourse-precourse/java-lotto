@@ -20,7 +20,7 @@ public class Player {
 
     public int howManyLotto(int money){
         if(money%1000!=0){
-            throw new IllegalArgumentException("[ERROR] 돈은 1000원 단위로 떨어져야 합니다.");
+            throw new IllegalArgumentException(ErrorCode.NOT_DIVIDE_1000.getMessage());
         }
         return money/1000;
     }

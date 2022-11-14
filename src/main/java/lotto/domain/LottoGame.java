@@ -11,7 +11,6 @@ public class LottoGame {
 
     private Player player;
     private int money;
-    private final Logger logger = LoggerFactory.getLogger(LottoGame.class);
 
     public LottoGame(){
 
@@ -44,7 +43,7 @@ public class LottoGame {
             this.player = new Player(money);
             return;
         }
-        throw new IllegalArgumentException("[ERROR] 구입금액은 숫자만 입력해야합니다.");
+        throw new IllegalArgumentException(ErrorCode.NOT_NUMBER.getMessage());
     }
 
     private List<Integer> inputWinningNumbers(){

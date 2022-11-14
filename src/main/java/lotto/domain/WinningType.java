@@ -24,7 +24,7 @@ public enum WinningType {
         return Arrays.stream(WinningType.values())
                 .filter(winningType -> winningType.matchNumber==matchNumber)
                 .findAny()
-                .orElseThrow(()->new IllegalArgumentException("[ERROR] matchNumber 잘못입력했음."));
+                .orElseThrow(()->new IllegalArgumentException(ErrorCode.INVALID_INPUT.getMessage()));
     }
 
     public String printWinningMessage(int count){
