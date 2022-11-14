@@ -25,9 +25,14 @@ public class Judgement {
         return second;
     }
     public List<Integer> makeWinningTable(List<List<Integer>> lotterys, List<Integer> winningNumber){
+        Input input = new Input();
         for (List<Integer> lottery : lotterys){
             int result = rankLotto(lottery, winningNumber);
-            winningTable.add(result);
+            if( secondPrize(lottery, input.bonus, result)){
+                winningTable.add(7);
+            } else {
+                winningTable.add(result);
+            }
         }
         return winningTable;
     }
