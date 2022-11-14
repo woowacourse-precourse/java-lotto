@@ -86,4 +86,26 @@ public class Validators {
 
         return isValid;
     }
+
+    public static void validateNumbersSize(List<Integer> numbers) {
+        if (numbers.size() != LOTTERY_LENGTH) {
+            throw new IllegalArgumentException(Exceptions.THREE.getMessages());
+        }
+    }
+
+    public static void validateNumbersRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < RANGE_MIN || number > RANGE_MAX) {
+                throw new IllegalArgumentException(Exceptions.ONE.getMessages());
+            }
+        }
+    }
+
+    public static void validateNumbersUniqueness(List<Integer> numbers) {
+        for (int i=0; i<numbers.size()-1; i++) {
+            if (numbers.get(i) == numbers.get(i+1)) {
+                throw new IllegalArgumentException(Exceptions.THREE.getMessages());
+            }
+        }
+    }
 }
