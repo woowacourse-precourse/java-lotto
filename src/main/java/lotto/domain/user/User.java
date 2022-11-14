@@ -25,6 +25,10 @@ public class User {
         return money;
     }
 
+    public void buyLotto(Lotto lotto){
+        this.lotto.add(lotto);
+    }
+
     private void validateMoney(int money) throws IllegalArgumentException{
         if (money % LottoInfo.PRICE.getValue() != 0)
             throw new IllegalArgumentException(ErrorMsg.WRONG_BUYING_UNIT.toString());
