@@ -37,7 +37,8 @@ public class LottoController {
 
             HashMap<Integer, Integer> result = checkLotto(issuedLotteries, luckyNumber, bonusNumberInput);
             outputView.outputWinningStatistics(result);
-            outputView.outputEarningRate(lottoService.getEarningRate(purchasingAmount, lottoService.getEarning(result)));
+            outputView.outputEarningRate(lottoService.getEarningRate(
+                    purchasingAmount, lottoService.getEarning(result)));
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }

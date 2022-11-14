@@ -56,18 +56,29 @@ public class WinningNumber {
 
     private void addResult(HashMap<Integer, Integer> result, List<Integer> numbers, int count) {
         if (count == WinningNumberStatus.FIRST.getCount()) {
-            result.put(WinningNumberStatus.FIRST.getOrder(), result.get(WinningNumberStatus.FIRST.getOrder()) + 1);
+            result.put(WinningNumberStatus.FIRST.getOrder(),
+                    result.get(WinningNumberStatus.FIRST.getOrder()) + 1);
             return;
         }
 
-        if (count == WinningNumberStatus.SECOND.getCount() && numbers.contains(bonusNumber)) {
-            result.put(WinningNumberStatus.SECOND.getOrder(), result.get(WinningNumberStatus.SECOND.getOrder()) + 1);
+        if (isSecond(numbers, count)) {
+            result.put(WinningNumberStatus.SECOND.getOrder(),
+                    result.get(WinningNumberStatus.SECOND.getOrder()) + 1);
             return;
         }
 
-        if (WinningNumberStatus.FIFTH.getCount() <= count && count <= WinningNumberStatus.THIRD.getCount()) {
-            result.put(WinningNumberStatus.getOrderOverTHIRD(count), result.get(WinningNumberStatus.getOrderOverTHIRD(count)) + 1);
+        if (isOverThird(count)) {
+            result.put(WinningNumberStatus.getOrderOverTHIRD(count),
+                    result.get(WinningNumberStatus.getOrderOverTHIRD(count)) + 1);
         }
+    }
+
+    private boolean isOverThird(int count) {
+        return WinningNumberStatus.FIFTH.getCount() <= count && count <= WinningNumberStatus.THIRD.getCount();
+    }
+
+    private boolean isSecond(List<Integer> numbers, int count) {
+        return count == WinningNumberStatus.SECOND.getCount() && numbers.contains(bonusNumber);
     }
 
     private int getCount(List<Lotto> lotteries, HashSet<Integer> exist, int lotteriesIndex) {
@@ -85,9 +96,7 @@ public class WinningNumber {
     }
 
     private void initExist(HashSet<Integer> exist) {
-        for (int index = 0; index < luckyNumber.getNumbers().size(); index++) {
-            exist.add(luckyNumber.getNumbers().get(index));
-        }
+        exist.addAll(luckyNumber.getNumbers());
     }
 
     private void initResult(HashMap<Integer, Integer> result) {
