@@ -2,10 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Application {
     private final int moneyUnit = 1000;
@@ -57,8 +54,23 @@ public class Application {
     }
 
     public List<Integer> getLottoResult(List<LottoNumber> buyList, List<Integer> winningLotto, int bonusNumber) {
+        boolean bonus = isContainBonusNumber(winningLotto, bonusNumber);
+        List<Integer> lottoResult = Arrays.asList(0, 0, 0, 0, 0);
+        int equalNumberCount = 0;
 
-        return null;
+        for (LottoNumber lottoNumber : buyList) {
+            equalNumberCount = compareLotto(lottoNumber.getNumbers(), winningLotto);
+
+            if (isWinning(equalNumberCount)) {
+                int index = changeLottoResultNumber(equalNumberCount, bonus);
+                lottoResult.set(index, lottoResult.get(index) + 1);
+            }
+        }
+        return lottoResult;
+    }
+
+    private boolean isWinning(int equalNumberCount) {
+        return equalNumberCount >= 3;
     }
 
     private int compareLotto(List<Integer> lottoNumber, List<Integer> winningLotto) {
@@ -77,7 +89,6 @@ public class Application {
     }
 
     private int changeLottoResultNumber(int count, boolean bonus) {
-
         if (count == 6) {
             return 0;
         }
@@ -90,10 +101,7 @@ public class Application {
         if (count == 4) {
             return 3;
         }
-        if (count == 3) {
-            return 4;
-        }
-        return -1;
+        return 4;
     }
 
 }
