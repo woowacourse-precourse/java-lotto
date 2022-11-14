@@ -4,11 +4,11 @@
 - ### lotto 패키지
   - #### data
     - type
-      - MessageType: 로또 게임 진행시 콘솔 출력 메시지
-      - ErrorType: 에러 발생 종류
-      - StepType: 로또 구매의 진행 단계
-      - LottoResultType: 로또 당첨 등급과 금액
-      - ConstantNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수
+      - MessageType: 로또 게임 진행시 콘솔 출력 메시지 모음
+      - ExceptionType: 발생하는 에러 종류 모음
+      - StepType: 로또 게임의 진행 단계 모음
+      - LottoResultType: 로또 당첨 등급과 금액 모음
+      - ConstantNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수 모음
     - dto
       - Lotto: 로또 1매에 포함된 숫자들
         - .validate(): 로또가 올바른지 검사한다.

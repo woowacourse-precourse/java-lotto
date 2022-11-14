@@ -1,9 +1,10 @@
-package lotto.data.type;
+package lotto.type;
 
-public enum ErrorType {
+public enum ExceptionType {
 
     NUMBER("숫자를 입력해야 합니다."),
     FORMAT("쉼표로 구분지어 입력해야 합니다."),
+    DUPLICATE("중복되지 않은 숫자를 입력해야 합니다."),
     RANGE("%d ~ %d 사이의 숫자를 입력해야 합니다.",
             ConstantNumberType.MIN.getValue(),
             ConstantNumberType.MAX.getValue()),
@@ -17,7 +18,7 @@ public enum ErrorType {
 
     private final IllegalArgumentException exception;
 
-    ErrorType(String message, Object... replacers) {
+    ExceptionType(String message, Object... replacers) {
         this.exception = new IllegalArgumentException(ERROR_BASE + String.format(message, replacers));
     }
 
