@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers; // 인스턴스 변수, 변하지 않는 값
+    private final List<Integer> numbers; // 인스턴스 변수, 변하지 않는 값(final) <-> static: 클래스 변수
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -40,9 +40,10 @@ public class Lotto {
         }
     }
 
-    public void validateBonusNumber(int bonusNumber) {
+    public int validateBonusNumber(int bonusNumber) {
         validateRangeOfBonusNumber(bonusNumber);
         validateDuplicationOfBonusNumber(bonusNumber);
+        return bonusNumber;
     }
 
     private void validateRangeOfBonusNumber(int bonusNumber) {

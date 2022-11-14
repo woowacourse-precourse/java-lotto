@@ -34,7 +34,6 @@ public class NumberGenerator {
     private  List<Integer> generateEachNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6); // 정렬 안되있음
         Collections.sort(numbers);
-        System.out.println(numbers);
         return numbers;
     }
 
