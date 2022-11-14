@@ -22,9 +22,9 @@ public class Validation {
 
     public static void isNumber(String[] numbers) throws IllegalArgumentException {
         String regExp = "^[0-9]+$";
-        boolean containNotNumber = Arrays.stream(numbers)
-                .anyMatch(number -> !number.matches(regExp));
-        if(containNotNumber){
+        boolean containNumber = Arrays.stream(numbers)
+                .allMatch(number -> number.matches(regExp));
+        if(!containNumber){
             throw new IllegalArgumentException(ERROR_MESSAGE + CONTAIN_NUMBER);
         }
     }
