@@ -15,7 +15,7 @@ public class Wallet {
 
     public Wallet(int numberOfPurchase) {
         this.numberOfPurchase = numberOfPurchase;
-        initialize();
+        lottos = new ArrayList<>();
         pickLottos();
     }
 
@@ -32,9 +32,5 @@ public class Wallet {
     private Lotto pickRandomNumber() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Constant.LOTTO_MIN_NUMBER, Constant.LOTTO_MAX_NUMBER, Constant.LOTTO_SIZE);
         return new Lotto(numbers);
-    }
-
-    public void initialize() {
-        lottos = new ArrayList<>();
     }
 }

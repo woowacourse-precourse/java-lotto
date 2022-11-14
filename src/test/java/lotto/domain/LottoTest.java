@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoTest extends NsTest {
     @DisplayName("입력한 값은 숫자여야만 한다.")

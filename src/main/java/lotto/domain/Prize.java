@@ -1,9 +1,6 @@
 package lotto.domain;
 
 import lotto.utils.Ranking;
-
-import java.util.AbstractMap;
-import java.util.Collections;
 import java.util.HashMap;
 
 public class Prize {

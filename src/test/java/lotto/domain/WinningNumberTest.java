@@ -12,7 +12,6 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinningNumberTest extends NsTest {
     @DisplayName("입력받은 당첨번호는 숫자여야한다.")

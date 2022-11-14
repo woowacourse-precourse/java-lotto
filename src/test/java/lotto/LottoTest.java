@@ -31,8 +31,8 @@ class LottoTest {
     @Test
     void createLottoByOrdered() throws Exception {
         List question = new ArrayList<>();
-        for (int i = 0 ; i < 6; i++) {
-            question.add(i+1);
+        for (int i = 0; i < 6; i++) {
+            question.add(i + 1);
         }
         Lotto lotto = new Lotto(question);
 

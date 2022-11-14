@@ -1,16 +1,12 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.domain.Lotto;
-import lotto.views.Input;
-import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -56,7 +52,7 @@ class GameManagerTest extends NsTest {
                 List.of(1, 2, 7, 8, 9, 10),
                 List.of(1, 7, 8, 9, 10, 11),
                 List.of(1, 2, 3, 4, 5, 8)
-                );
+        );
     }
 
     @Override
