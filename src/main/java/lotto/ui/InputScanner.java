@@ -26,4 +26,35 @@ public class InputScanner {
             throw new NumberFormatException();
         }
     }
+
+    public List<Integer> scanWinningNumbers() {
+        List<Integer> _winningNumbers;
+        String input = Console.readLine();
+        _winningNumbers = stringToIntegerList(input);
+        sortWinningNumbers(_winningNumbers);
+        winningNumbers = _winningNumbers;
+        return sortWinningNumbers(_winningNumbers);
+    }
+
+    private List<Integer> sortWinningNumbers(List<Integer> inputNumbers) {
+        Collections.sort(inputNumbers);
+        return inputNumbers;
+    }
+
+    private List<Integer> stringToIntegerList(String input) {
+        List<Integer> conversionResult;
+        try {
+            conversionResult = Stream.of(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException();
+        }
+        return conversionResult;
+    }
+
+    public int scanBonusNumber() {
+        String input = Console.readLine();
+        int bonusNumber = 0;
+        bonusNumber = stringToInteger(input);
+        return bonusNumber;
+    }
 }
