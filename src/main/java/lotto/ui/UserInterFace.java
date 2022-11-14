@@ -29,7 +29,7 @@ public class UserInterFace {
         print("\n");
     }
     
-    static void print(String text) {
+    public void print(String text) {
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
         try {
