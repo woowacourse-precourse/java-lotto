@@ -38,4 +38,20 @@ public class BonusTest {
         //then
         assertThrows(IllegalArgumentException.class, () -> bonusNumber.notNumber(input));
     }
+
+    @Test
+    public void 보너스번호범위검증() throws Exception{
+        //given
+        String input = "46";
+        int bonus = bonusNumber.convertStringToInteger(input);
+
+        //when
+        try{
+            bonusNumber.numberRange(bonus);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        //then
+        assertThrows(IllegalArgumentException.class, () -> bonusNumber.numberRange(bonus));
+    }
 }
