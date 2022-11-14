@@ -1,6 +1,8 @@
 #
 
-###
+## Program
+
+### MainProgram
 
 로또 시스템을 구성하는 프로그램 입니다.
 
@@ -14,8 +16,17 @@
 
 ## util
 
-###
+### Converter
 
-general한 자료형에 대해 validate 기능을 제공합니다.
+general한 자료형에 대해 형변환 기능을 제공합니다.
+
+### Generator
+
+general한 로직을 제공합니다.
+
+### Validator
+
+general한 자료형에 대해 유효성 기능을 제공합니다.
+
 
 

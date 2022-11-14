@@ -1,23 +1,28 @@
 package lotto.program;
 
-import java.util.ArrayList;
-import java.util.List;
 import lotto.utils.Converter;
 import lotto.utils.Generator;
 import lotto.vo.Lotto;
+import lotto.vo.LottoOfAnswer;
+import lotto.vo.LottoOfUser;
 
 public class BusinessProgram {
 
-    public List<Lotto> generateUserLotto(int money) {
+    public LottoOfUser generateUserLotto(int money) {
         int ticket = Converter.moneyToTicket(money);
         return generateLottoByTicket(ticket);
     }
 
-    private List<Lotto> generateLottoByTicket(int ticket) {
-        List<Lotto> userLotto = new ArrayList<>();
+    private LottoOfUser generateLottoByTicket(int ticket) {
+        LottoOfUser userOfLotto = new LottoOfUser();
         for (int index = 0; index < ticket; index++) {
-            new Lotto(Generator.makeRandomLottoNumbers());
+            Lotto newLotto = new Lotto(Generator.makeRandomLottoNumbers());
+            userOfLotto.add(newLotto);
         }
-        return userLotto;
+        return userOfLotto;
+    }
+
+    public void printUserLottoResults(LottoOfUser userLotto, LottoOfAnswer answerLotto) {
+        System.out.println("당첨통계\t---");
     }
 }

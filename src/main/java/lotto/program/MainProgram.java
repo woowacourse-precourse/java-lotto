@@ -3,6 +3,7 @@ package lotto.program;
 import java.util.List;
 import lotto.vo.Lotto;
 import lotto.vo.LottoOfAnswer;
+import lotto.vo.LottoOfUser;
 
 public class MainProgram {
     private final ConsoleProgram consoleProgram;
@@ -15,8 +16,8 @@ public class MainProgram {
 
     public void run() {
         int money = consoleProgram.requestMoney();
-        List<Lotto> userLotto = businessProgram.generateUserLotto(money);
+        LottoOfUser userLotto = businessProgram.generateUserLotto(money);
         LottoOfAnswer answerLotto = consoleProgram.requestAnswerLottoWithBonusNumber();
-//        businessProgram.printUserLottoResults(userLotto,answerLotto);
+        businessProgram.printUserLottoResults(userLotto,answerLotto);
     }
 }
