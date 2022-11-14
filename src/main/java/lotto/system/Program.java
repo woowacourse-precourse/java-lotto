@@ -1,6 +1,6 @@
 package lotto.system;
 
-import lotto.Lotto;
+import lotto.generation.Lotto;
 import lotto.generation.LottoGenerator;
 
 import java.util.List;
@@ -11,5 +11,6 @@ public class Program {
     public void startProgram() {
         int purchaseAmount = SystemUi.getPurchaseAmount();
         List<Lotto> lottos = lottoGenerator.generateLottos(purchaseAmount);
+        SystemUi.printLotto(lottos);
     }
 }
