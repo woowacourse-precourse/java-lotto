@@ -14,6 +14,12 @@ public class I_O_System {
     private static final String Bonus_Number_Answer = "보너스 번호를 입력해 주세요.";
     private static final String ERROR_Code_1 = " 숫자가 아닌 문자가 들어왔습니다.";
     private static final String ERROR_Code_2 = " 돈이 천원 단위로 나누어지지않습니다.";
+    private final String Three_Matche = "3개 일치 (5,000원) - ";
+    private final String Four_Matche = "4개 일치 (50,000원) - ";
+    private final String Five_Matche = "5개 일치 (1,500,000원) - ";
+    private final String Five_Matche_Bounus = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
+    private final String Six_Matche = "6개 일치 (2,000,000,000원) - ";
+    private  final  String Point = "개";
 
     private static final int Lottey_min = 1;
     private static final int Lottey_max = 6;
@@ -107,11 +113,19 @@ public class I_O_System {
     }
 
     public void Ticket_Print(List<Integer> number) {
-        List<Integer> Print_Number = new ArrayList<>();
 
-        Print_Number.addAll(number);
+        List<Integer> Print_Number = new ArrayList<>(number);
         Collections.sort(Print_Number);
         System.out.println(Print_Number);
+    }
+    public void Number_of_Win_Print(int[] Number_of_Win) {
+        System.out.println(Three_Matche +Number_of_Win[3]+Point);
+        System.out.println(Four_Matche +Number_of_Win[4]+Point);
+        System.out.println(Five_Matche +Number_of_Win[5]+Point);
+        System.out.println(Five_Matche_Bounus +Number_of_Win[5]+Point);
+        System.out.println(Six_Matche +Number_of_Win[6]+Point);
+        System.out.println();
+
     }
 
 
