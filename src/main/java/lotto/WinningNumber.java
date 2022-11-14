@@ -25,7 +25,7 @@ public class WinningNumber {
 
     public List<Integer> getWinningNumber() {
         userInterface.printEnterWinningNumber();
-        result = validateNumbers(Console.readLine());
+        result = getNumbers(Console.readLine());
         lotto = new Lotto(result);
 
         userInterface.printEnterBonusNumber();
@@ -35,7 +35,7 @@ public class WinningNumber {
         return result;
     }
 
-    List<Integer> validateNumbers(String input) {
+    List<Integer> getNumbers(String input) {
         List<Integer> result = new ArrayList<>();
         String[] split = input.split(",");
 
