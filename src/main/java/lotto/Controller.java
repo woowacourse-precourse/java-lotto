@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Controller {
     View view = new View();
@@ -33,7 +34,7 @@ public class Controller {
             checkWinning(computers);
             Result();
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            if (!Objects.equals(e.getMessage(),null)) System.out.println(e.getMessage());
         }
     }
 
