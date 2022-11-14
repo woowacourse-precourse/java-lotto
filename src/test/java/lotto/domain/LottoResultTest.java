@@ -1,12 +1,11 @@
 package lotto.domain;
 
-import lotto.dto.GameResultResponseDtos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static lotto.dto.GameResultResponseDtos.*;
+import static lotto.dto.GameResultResponseDtos.GameResultResponseDto;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoResultTest {
@@ -39,5 +38,16 @@ class LottoResultTest {
         assertThat(responseDto.getWinnerPrice()).isEqualTo(30000000);
         assertThat(responseDto.hasBonus()).isTrue();
         assertThat(responseDto.getTotalCount()).isEqualTo(3);
+    }
+
+    @DisplayName("LottoResult 필드 is 메소드 검증")
+    @Test
+    void isField() {
+        assertThat(LottoResult.FIRST.isFirst()).isTrue();
+        assertThat(LottoResult.SECOND.isSecond()).isTrue();
+        assertThat(LottoResult.THIRD.isThird()).isTrue();
+        assertThat(LottoResult.FOURTH.isFourth()).isTrue();
+        assertThat(LottoResult.FIFTH.isFifth()).isTrue();
+        assertThat(LottoResult.ELSE.isElse()).isTrue();
     }
 }
