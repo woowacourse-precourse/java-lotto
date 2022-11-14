@@ -7,4 +7,10 @@ public class PurchasingLotto {
     public PurchasingLotto(int amountOfLotto) {
         this.amountOfLotto = amountOfLotto;
     }
+
+    public int calculateNumberOfLotto(int purchasingAmount) {
+        int NumberOfLotto = purchasingAmount / 1000;
+
+        return NumberOfLotto;
+    }
 }
