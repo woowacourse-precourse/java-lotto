@@ -14,9 +14,21 @@ public class GameResult {
         result = new ArrayList<>(Collections.nCopies(placeRange + 1, 0));
     }
 
+
+
     private int countMatchingNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
         return (int) lottoNumbers.stream()
                 .filter(winningNumbers::contains)
                 .count();
+    }
+
+    private boolean check(int matchingNumber, boolean hasBonusNumber, WinningConstants nthPlace) {
+        int requiredWinningNumber = nthPlace.getRequiredWinningNumber();
+        boolean needsBonusNumber = nthPlace.getNeedsBonusNumber();
+
+        if (matchingNumber < requiredWinningNumber) {
+            return false;
+        }
+        return !needsBonusNumber || hasBonusNumber;
     }
 }
