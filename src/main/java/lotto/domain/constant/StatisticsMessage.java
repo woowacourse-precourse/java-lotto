@@ -18,5 +18,16 @@ public enum StatisticsMessage {
     this.message = message;
   }
 
+  public String print(StatisticsDto dto) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("\n")
+      .append(STATISTICS.message).append("\n")
+      .append(SAME_THREE_NUMBER.message).append(dto.getSame3Num()).append(NUMBER.message).append("\n")
+      .append(SAME_FOUR_NUMBER.message).append(dto.getSame4Num()).append(NUMBER.message).append("\n")
+      .append(SAME_FIVE_NUMBER.message).append(dto.getSame5Num()).append(NUMBER.message).append("\n")
+      .append(SAME_FIVE_AND_BONUS_NUMBER.message).append(dto.getSame5AndBonusNum()).append(NUMBER.message).append("\n")
+      .append(SAME_SIX_NUMBER.message).append(dto.getSame6Num()).append(NUMBER.message).append("\n");
+    return sb.toString();
+  }
 
 }
