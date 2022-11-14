@@ -19,7 +19,7 @@ public class InputView {
         List<Integer> input = List.of(readLine().split(",")).stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
-        return ipnut;
+        return input;
     }
 
     public static int InputBonusNumber() {

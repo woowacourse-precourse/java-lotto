@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.controller.Compare;
 import lotto.controller.Issue;
 import lotto.model.Lotto;
 import lotto.view.InputView;
@@ -12,5 +13,6 @@ public class Application {
         List<Integer> numbers = InputView.InputWinNumber();
         Lotto winLotto = new Lotto(numbers);
         int bonusLotto = InputView.InputBonusNumber();
+        new Compare(user.userLotto, winLotto,bonusLotto);
     }
 }
