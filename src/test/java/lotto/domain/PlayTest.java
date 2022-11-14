@@ -8,29 +8,34 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class PlayTest {
-    private Lotto lotto;
+    private WinningNumber winningNumber;
     @BeforeEach
     public void setUp() {
-        lotto = Lotto.from(List.of(1,2,3,4,5,6));
+        winningNumber = WinningNumber.of(List.of(1,2,3,4,5,6),7);
     }
     @Test
     public void NoneTest() {
-        assertThat(lotto.play(WinningNumber.of(List.of(1,2,8,9,10,11),12))).isEqualTo(Result.NONE);
+        Lotto lotto = Lotto.from(List.of(2, 13, 22, 32, 38, 45));
+        assertThat(lotto.play(winningNumber)).isEqualTo(Result.NONE);
     }
     @Test
     public void ThreeTest() {
-        assertThat(lotto.play(WinningNumber.of(List.of(1,2,3,9,10,11),12))).isEqualTo(Result.THREE);
+        Lotto lotto = Lotto.from(List.of(1, 3, 5, 14, 22, 45));
+        assertThat(lotto.play(winningNumber)).isEqualTo(Result.THREE);
     }
     @Test
     public void FiveTest() {
-        assertThat(lotto.play(WinningNumber.of(List.of(1,2,3,4,5,7),8))).isEqualTo(Result.FIVE);
+        Lotto lotto = Lotto.from(List.of(1, 2, 3, 4, 5, 43));
+        assertThat(lotto.play(winningNumber)).isEqualTo(Result.FIVE);
     }
     @Test
     public void FiveBonusTest() {
-        assertThat(lotto.play(WinningNumber.of(List.of(1,2,3,4,7,8),5))).isEqualTo(Result.FIVE_BONUS);
+        Lotto lotto = Lotto.from(List.of(1, 2, 3, 4, 7, 43));
+        assertThat(lotto.play(winningNumber)).isEqualTo(Result.FIVE_BONUS);
     }
     @Test
     public void SixTest() {
-        assertThat(lotto.play(WinningNumber.of(List.of(1,2,3,4,5,8),6))).isEqualTo(Result.SIX);
+        Lotto lotto = Lotto.from(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.play(winningNumber)).isEqualTo(Result.SIX);
     }
 }

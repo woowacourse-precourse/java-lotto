@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
     private static final int MAXIMUM_NUMBER = 45;
     private static final int MINIMUM_NUMBER = 1;
+    private static final int FIVE = 5;
     private List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -22,7 +24,7 @@ public class Lotto {
 
     public static Lotto from(List<Integer> lotto) {
         List<Integer> sortedLotto = new ArrayList(lotto);
-        Collections.sort(sortedLotto, Collections.reverseOrder());
+        Collections.sort(sortedLotto);
         return new Lotto(sortedLotto);
     }
     public static Lotto generateRandomLotto() {
@@ -55,7 +57,7 @@ public class Lotto {
     }
 
     public Result play(WinningNumber winningNumber) {
-        if (count(winningNumber) == 5 && hasSameBonusNumber(winningNumber))
+        if (count(winningNumber) == FIVE && hasSameBonusNumber(winningNumber))
             return Result.FIVE_BONUS;
         return Result.valueOf(numbers.stream()
                 .filter(winningNumber::contains)
@@ -81,5 +83,12 @@ public class Lotto {
     @Override
     public int hashCode() {
         return Objects.hash(numbers);
+    }
+
+    public String toString() {
+        List<String> mappedNumbers = numbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.toList());
+        return "[" + String.join(", ",mappedNumbers) + "]";
     }
 }

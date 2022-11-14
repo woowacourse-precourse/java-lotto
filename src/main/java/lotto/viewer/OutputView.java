@@ -10,7 +10,7 @@ public class OutputView {
     public static final String PERFORATION = "---";
     public static final String SEPERATOR = " - ";
     public static final String TOTAL_PROFIT = "총 수익률은 ";
-    public static final String EXPLANATION_PROFIT = "%d입니다.";
+    public static final String EXPLANATION_PROFIT = "%입니다.";
 
     public static void showHistory(History history) {
         EnumSet<Result> allResult = EnumSet.complementOf(EnumSet.of(Result.NONE));

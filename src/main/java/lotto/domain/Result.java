@@ -28,6 +28,9 @@ public enum Result {
     }
 
     public String toString() {
-        return number +"개 일치 (" + String.format("%,d",prize) + ")";
+        if (this.equals(FIVE_BONUS)) {
+            return number +"개 일치, 보너스 볼 일치 (" + String.format("%,d",prize) + "원)";
+        }
+        return number +"개 일치 (" + String.format("%,d",prize) + "원)";
     }
 }

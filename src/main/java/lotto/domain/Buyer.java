@@ -17,7 +17,7 @@ public class Buyer {
         }
     }
     public void buyLotto(int number) {
-        while (lottos.size()<=number) {
+        while (lottos.size()<number) {
             selectLotto(Lotto.generateRandomLotto());
         }
     }
