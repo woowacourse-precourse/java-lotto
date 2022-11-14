@@ -22,5 +22,7 @@ public class Game {
         ui.printLottos(lottos);
 
         String inputMatchNumbers = ui.inputMatchNumbers();
+        List<Integer> matchNumbers = service.getMatchNumbers(inputMatchNumbers);
+        String inputBonusNumber = ui.inputBonusNumber();
     }
 }

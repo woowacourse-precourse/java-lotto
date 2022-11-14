@@ -25,4 +25,11 @@ public class Ui {
 
         return in;
     }
+
+    public String inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String in = Console.readLine();
+
+        return in;
+    }
 }
