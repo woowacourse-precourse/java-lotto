@@ -26,7 +26,7 @@ public class Output {
     }
 
     public static void printEarningRate(float earningRate) {
-
+        System.out.printf("총 수익률은 %.1f입니다.\n", earningRate);
     }
 
 }
