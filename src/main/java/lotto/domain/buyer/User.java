@@ -17,4 +17,8 @@ public class User implements Buyer {
         return Integer.parseInt(money);
     }
 
+    @Override
+    public long calculateProfitRatio(int amount) {
+        return 0;
+    }
 }
