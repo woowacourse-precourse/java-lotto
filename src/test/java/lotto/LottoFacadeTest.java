@@ -91,5 +91,16 @@ public class LottoFacadeTest {
             assertThat(winningLotto.getLotto().getNumbers().size()).isEqualTo(6);
             assertThat(winningLotto.getBonusBall().getNumber()).isEqualTo(7);
         }
+
+        @Test
+        @DisplayName("보너스 번호가 당첨번호에 이미 포함되어 있다면 예외가 발생한다.")
+        void fail1() {
+            //given
+            InputFactory.inputNumber("1,2,3,4,5,6" + "\n" + "6");
+            //when && then
+            assertThatThrownBy(() -> lottoFacade.createWinningLotto())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.INVALID_BONUS_NUMBER);
+        }
     }
 }
