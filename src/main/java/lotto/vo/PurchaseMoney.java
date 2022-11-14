@@ -24,6 +24,10 @@ public class PurchaseMoney {
         return purchaseMoney;
     }
 
+    public int getLottoCount() {
+        return purchaseMoney / PURCHASE_MONEY_UNIT;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
