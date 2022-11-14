@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 public class WinningNumbers {
 
 	private final String WINNING_NUMBER_INPUT_FORMAT = "^(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2})$";
-	private final String INVALID_WINNING_NUMBER_FORMAT = "[ERROR] 당첨번호들은 1~45 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
-	private final String INVALID_NUMBER_BOUNDARY = "[ERROR] 당첨번호는 1~45의 숫자로만 구성되어야 합니다.";
-	private final String INVALID_FIRST_NUMBER = "[ERROR] 두자리 숫자인 당첨번호의 첫번째 자리는 0이 올 수 없습니다.";
-	private final String OVERLAP_NUMBER = "[ERROR] 당첨번호들은 중복이 되지 않아야 합니다.";
+	private final String INVALID_WINNING_NUMBER_FORMAT = "[ERROR] 당첨번호는 1~45 숫자 6개와 쉼표로 구분되는 형식으로 입력해 주시기 바랍니다.";
+	private final String INVALID_NUMBER_BOUNDARY = "[ERROR] 당첨번호는 1~45의 숫자로만 입력해 주시기 바랍니다.";
+	private final String INVALID_FIRST_NUMBER = "[ERROR] 두자리 숫자인 당첨번호의 첫번째 자리는 1이상 입력해 주시기 바랍니다.";
+	private final String OVERLAP_NUMBER = "[ERROR] 당첨번호들을 중복없이 입력해 주시기 바랍니다.";
 	private final char FIRST_NUMBER_ZERO = '0';
 	private final int MIN_NUMBER_BOUNDARY = 1;
 	private final int MAX_NUMBER_BOUNDARY = 45;

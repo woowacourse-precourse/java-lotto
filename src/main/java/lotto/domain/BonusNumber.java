@@ -4,10 +4,10 @@ import java.util.List;
 
 public class BonusNumber {
 
-	private final String INVALID_INPUT_LETTER = "[ERROR] 숫자만 입력이 가능합니다.";
-	private final String INVALID_BONUS_NUMBER_BOUNDARY = "[ERROR] 보너스번호는 1-45사이의 숫자만 가능합니다.";
-	private final String OVERLAP_WITH_WINNER_NUMBERS = "[ERROR] 보너스번호와 당첨번호에는 중복이 없어야 합니다.";
-	private final String INVALID_FIRST_NUMBER = "[ERROR] 두자리 숫자인 보너스번호의 첫번째 자리는 0이 올 수 없습니다.";
+	private final String INVALID_INPUT_LETTER = "[ERROR] 보너스 번호는 숫자만 입력해 주시기 바랍니다.";
+	private final String INVALID_BONUS_NUMBER_BOUNDARY = "[ERROR] 보너스번호는 1-45사이의 숫자만 입력해 주시기 바랍니다.";
+	private final String OVERLAP_WITH_WINNER_NUMBERS = "[ERROR] 보너스번호는 당첨번호와 중복없이 입력해 주시기 바랍니다.";
+	private final String INVALID_FIRST_NUMBER = "[ERROR] 두자리 숫자인 보너스번호의 첫번째 자리는 1이상 입력해 주시기 바랍니다.";
 	private final String CHECK_NUMBER = "\\d{1,2}";
 	private final char FIRST_NUMBER_ZERO = '0';
 	private final int MIN_NUMBER_BOUNDARY = 1;
