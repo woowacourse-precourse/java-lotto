@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.LottoSystem;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -58,4 +59,6 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+
 }
