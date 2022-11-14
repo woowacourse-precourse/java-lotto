@@ -6,23 +6,28 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class View {
-    private void validateIsDivisible(int money) {
+    private int validateIsDivisible(int money) {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000으로 나눠떨어져야 합니다");
         }
+        return money/1000;
     }
-    private void validateIsNumber(String input) {
+    private int validateIsNumber(String input) {
+        int num;
         try {
-            int number = Integer.parseInt(input);
+            num = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력이 가능합니다");
         }
+        return num;
     }
-    private void validateAreNumbers(String input) {
+    private List<Integer> validateAreNumbers(String input) {
+        List<Integer> numbers = new ArrayList<>();
         String[] splitInput = input.split(",");
         for (String value : splitInput) {
-            validateIsNumber(value);
+            numbers.add(validateIsNumber(value));
         }
+        return numbers;
     }
     private void validateUniqueNumbersInput(List<Integer> numbers) {
         List<Integer> noDuplicates = new ArrayList<>();
