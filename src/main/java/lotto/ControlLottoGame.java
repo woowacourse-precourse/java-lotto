@@ -27,7 +27,7 @@ public class ControlLottoGame {
         List<Integer> winningNumbers = new ArrayList<>();
         String[] inputNumbers = input.split(",");
 
-        for(int i = 0; i<inputNumbers.length; i++){
+        for (int i = 0; i < inputNumbers.length; i++) {
             String noSpace = inputNumbers[i].trim();
             winningNumbers.add(Integer.parseInt(noSpace));
         }
@@ -35,7 +35,21 @@ public class ControlLottoGame {
         return winningNumbers;
     }
 
-    public int calculateEarningRate(List<Integer> winningCount, int quantity) {
+    public int inputToBonusNumber(String input, List<Integer> winningNumbers) {
+        int bonusNumber = Integer.parseInt(input);
+
+        if ((bonusNumber < 0) || (bonusNumber > 45)) {
+            throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_RANGE.get());
+        }
+
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_DUPLICATED.get());
+        }
+
+        return bonusNumber;
+    }
+
+    public float calculateEarningRate(List<Integer> winningCount, int quantity) {
         int payedPrice = quantity * 1000;
         int earnedPrice = 0;
         String earnedRate;
@@ -45,8 +59,9 @@ public class ControlLottoGame {
         earnedPrice += winningCount.get(2) * FIVE_CORRECT;
         earnedPrice += winningCount.get(3) * SIX_CORRECT;
         earnedPrice += winningCount.get(4) * FIVE_BONUS_CORRECT;
-        earnedRate = String.format(".1f", (earnedPrice/payedPrice)*100);
+        double rate = (double) earnedPrice / payedPrice;
+        earnedRate = String.format("%.1f", rate * 100);
 
-        return Integer.parseInt(earnedRate);
+        return Float.parseFloat(earnedRate);
     }
 }
