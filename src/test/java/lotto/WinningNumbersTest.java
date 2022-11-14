@@ -14,6 +14,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import lotto.domain.WinningNumbers;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class WinningNumbersTest {
     private static WinningNumbers winningNumbers;
@@ -69,6 +70,14 @@ public class WinningNumbersTest {
                 Arguments.of(List.of(1, 2, 3, 4, 5, 7), 5),
                 Arguments.of(List.of(1, 2, 3, 4, 7, 8), 4),
                 Arguments.of(List.of(1, 2, 3, 7, 8, 9), 3)
-                );
+        );
+    }
+
+    @DisplayName("보너스번호가 위닝넘버에 포함되어있는 경우 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6})
+    void checkBonusNumberDuplicated(int bonusNumber) {
+        assertThatThrownBy(() -> winningNumbers.checkBonusNumber())
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
