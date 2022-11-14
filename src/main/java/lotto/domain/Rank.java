@@ -33,7 +33,7 @@ public class Rank {
 
     private Place determine(int matchingNumber, boolean checkBonus) {
         for (Place place : Place.values()) {
-            if (matchingNumber == place.getMatchingNumber() && checkBonus) {
+            if (matchingNumber == place.SECOND.getMatchingNumber() && checkBonus) {
                 return place.SECOND;
             }
             if (matchingNumber == place.getMatchingNumber()) {
