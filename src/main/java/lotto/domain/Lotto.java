@@ -7,6 +7,7 @@ import static lotto.constant.LottoRule.START_NUMBER;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.constant.ErrorMessage;
 import lotto.ui.UserInterface;
 
 public class Lotto {
@@ -32,7 +33,7 @@ public class Lotto {
         if (numbers.size() == COUNT_OF_NUMBERS) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] 로또 번호의 개수가 규칙과 다릅니다.");
+        throw new IllegalArgumentException(ErrorMessage.LOTTO_INCORRECT_COUNT);
     }
 
     private void checkRangeOfNumberInNumbers(List<Integer> numbers) {
@@ -40,7 +41,7 @@ public class Lotto {
             if (START_NUMBER <= number && number <= END_NUMBER) {
                 continue;
             }
-            throw new IllegalArgumentException("[ERROR] 로또 번호의 범위가 규칙과 다릅니다.");
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_INCORRECT_RANGE);
         }
     }
 
@@ -49,7 +50,7 @@ public class Lotto {
         if (numbers.size() == numbersDeleteDuplication.size()) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] 로또 번호에 중복이 있습니다.");
+        throw new IllegalArgumentException(ErrorMessage.LOTTO_DUPLICATED_NUMBER);
     }
 
 }
