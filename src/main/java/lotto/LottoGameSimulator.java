@@ -53,6 +53,6 @@ public class LottoGameSimulator {
 
     public void printResult() {
         lottoGameResult = LottoGameResultGenerator.generateLottoGameResult(purchasedLottos,
-                winningNumbers, bonusNumber);
+                winningNumbers, bonusNumber, userMoney);
     }
 }

@@ -7,12 +7,14 @@ import java.util.Map;
 public class LottoGameResultGenerator {
     public static LottoGameResult generateLottoGameResult(List<Lotto> lottos,
                                                           WinningNumbers winningNumbers,
-                                                          BonusNumber bonusNumber) {
+                                                          BonusNumber bonusNumber,
+                                                          Money paidMoney) {
         Map<Integer, Integer> winningDetails = new HashMap<>();
         initializeWinningDetails(winningDetails);
         calculateWinningDetails(winningDetails, lottos, winningNumbers, bonusNumber);
-        int profits = calculateProfits(winningDetails);
-        LottoGameResult lottoGameResult = new LottoGameResult();
+        double earningRate = calculateEarningRate(winningDetails, paidMoney);
+
+        LottoGameResult lottoGameResult = new LottoGameResult(winningDetails, earningRate);
         return lottoGameResult;
     }
 
@@ -72,6 +74,12 @@ public class LottoGameResultGenerator {
             return 50_000;
         }
         return 5_000;
+    }
+
+    private static double calculateEarningRate(Map<Integer, Integer> winningDetails, Money paidMoney) {
+        int profits = calculateProfits(winningDetails);
+        double earningRate = (profits / (double)paidMoney.getMoney()) * 100;
+        return earningRate;
     }
 
     private static int calculateProfits(Map<Integer, Integer> winningDetails) {
