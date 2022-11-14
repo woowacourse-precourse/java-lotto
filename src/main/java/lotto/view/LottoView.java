@@ -4,6 +4,10 @@ import static camp.nextstep.edu.missionutils.Console.*;
 import static lotto.view.constant.InputMessage.*;
 import static lotto.view.constant.OutputMessage.*;
 
+import java.util.List;
+
+import lotto.domain.Lotto;
+
 public class LottoView {
 
 	public static void displayInputPurchaseAmount() {
@@ -12,6 +16,12 @@ public class LottoView {
 
 	public static void displayPurchasedLottoAmount(int purchasedLottoCount) {
 		System.out.printf(OUTPUT_PURCHASE_AMOUNT, purchasedLottoCount);
+	}
+
+	public static void displayPurchasedLottos(List<Lotto> lottos) {
+		for (Lotto lotto : lottos) {
+			System.out.println(lotto.getLottoNumbers());
+		}
 	}
 
 	public static String getUserInput() {
