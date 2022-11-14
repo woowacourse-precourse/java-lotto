@@ -59,8 +59,9 @@ class ResultCalculateTest {
         lottos.add(new Lotto(Arrays.asList(1,2,3,4,11,10))); //4등
         lottos.add(new Lotto(Arrays.asList(1,2,3,12,11,10))); //5등
         lottos.add(new Lotto(Arrays.asList(1,2,13,12,11,10))); //탈락
-        lottos.add(new Lotto(Arrays.asList(1,2,3,4,10,7))); //2등
-        List<Integer> answer = List.of(0,1,2,1,1,1);
+        //lottos.add(new Lotto(Arrays.asList(1,2,3,4,10,7))); //2등
+        List<Integer> answer = List.of(2_031_555_000,1,1,1,1,1);
+        assertThat(2_031_555_000).isEqualTo(ResultCalculate.synthesizeRanking(lottos,numbers).get(0));
         assertThat(true)
                 .isEqualTo(ResultCalculate.synthesizeRanking(lottos,numbers).equals(answer));
     }
