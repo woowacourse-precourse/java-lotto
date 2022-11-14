@@ -1,5 +1,8 @@
 package lotto.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public enum Rank {
     NO_5(5_000, "3개 일치 (5,000원)"),
     NO_4(50_000, "4개 일치 (50,000원)"),
@@ -8,9 +11,20 @@ public enum Rank {
     NO_1(2_000_000_000, "6개 일치 (2,000,000,000원)");
 
     private static final String TO_ENUM = "NO_";
+    private static final String INVALID_RANK_VALUE_MSG = "유효하지 않은 순위값입니다";
 
-    public static String toRankName(int rankValue) {
-        return TO_ENUM + rankValue;
+    private static final Set<String> validRankNames = new HashSet<>();
+
+    static {
+        for (Rank rank : Rank.values()) {
+            validRankNames.add(rank.name());
+        }
+    }
+
+    public static Rank from(int rankValue) {
+        String rankName = toRankName(rankValue);
+        isValidName(rankName);
+        return Rank.valueOf(toRankName(rankValue));
     }
 
     Rank(long prize, String description) {
@@ -28,5 +42,17 @@ public enum Rank {
     public String getDescription() {
         return this.description;
     }
+
+    private static String toRankName(int rankValue) {
+        return TO_ENUM + rankValue;
+    }
+
+    private static void isValidName(String rankName) {
+        if (!validRankNames.contains(rankName)) {
+            throw new IllegalArgumentException(INVALID_RANK_VALUE_MSG);
+        }
+    }
+
+
 }
 

@@ -24,10 +24,10 @@ public class Result {
     }
 
     public long calculateProfit() {
-        long profit=DEFAULT_VALUE;
+        long profit = DEFAULT_VALUE;
 
         for (Rank rank : result.keySet()) {
-            profit+= rank.calculateTotalPrize(result.get(rank));
+            profit += rank.calculateTotalPrize(result.get(rank));
         }
 
         return profit;
@@ -38,7 +38,7 @@ public class Result {
         StringBuilder resultStatics = new StringBuilder();
 
         for (Rank rank : Rank.values()) {
-            resultStatics.append(rank.getDescription()+DELIMITER+result.get(rank)+UNIT+NEW_LINE);
+            resultStatics.append(rank.getDescription() + DELIMITER + result.get(rank) + UNIT + NEW_LINE);
         }
 
         return resultStatics.toString();
@@ -52,8 +52,8 @@ public class Result {
 
     private void store(List<Integer> ranks) {
         for (Integer rankValue : ranks) {
-            Rank currentRank = Rank.valueOf(Rank.toRankName(rankValue));
-            result.put(currentRank, result.get(currentRank)+INCREASE_AMOUNT);
+            Rank currentRank = Rank.from(rankValue);
+            result.put(currentRank, result.get(currentRank) + INCREASE_AMOUNT);
         }
     }
 }

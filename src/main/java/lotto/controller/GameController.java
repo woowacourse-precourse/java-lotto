@@ -17,11 +17,11 @@ public class GameController {
             createMoney();
             generateLottosByMoney();
             createWinningManager();
+            calculateResult();
         } catch (IllegalArgumentException e) {
             OutputView.announceError(e.getMessage());
             return;
         }
-        calculateResult();
     }
 
     private void createMoney() {
