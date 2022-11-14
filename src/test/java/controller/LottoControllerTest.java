@@ -1,5 +1,6 @@
 package controller;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import domain.BonusNumber;
 import domain.Lotto;
 import domain.WinningNumbers;
@@ -17,7 +18,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class LottoControllerTest {
+class LottoControllerTest extends NsTest {
 
     LottoController lottoController = new LottoController();
 
@@ -107,6 +108,25 @@ class LottoControllerTest {
         assertThat(winningList.get(LottoRanking.FIFTH)).isEqualTo(1);
 
     }
+    @DisplayName("당첨 내역에 따른 상금 수익률 확인 테스트")
+    @Test
+    public void checkWinningMoney(){
+        //given
+        int lottoCount = 10;
+        HashMap<LottoRanking, Integer> winningList = new HashMap<>();
+        winningList.put(LottoRanking.FIRST,0);
+        winningList.put(LottoRanking.SECOND,0);
+        winningList.put(LottoRanking.THIRD,0);
+        winningList.put(LottoRanking.FOURTH,1);
+        winningList.put(LottoRanking.FIFTH,0);
 
+        //when
+        lottoController.printYield(lottoCount,winningList);
 
+        //then
+        assertThat(output()).contains("총 수익률은 500.0%입니다.");
+    }
+
+    @Override
+    protected void runMain() {}
 }
