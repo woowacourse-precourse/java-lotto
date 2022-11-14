@@ -1,5 +1,7 @@
 package lotto.type;
 
+import java.util.stream.IntStream;
+
 public enum StepType {
     INIT,
     BUY_LOTTO,
@@ -24,10 +26,9 @@ public enum StepType {
      */
     static {
         StepType[] stepTypes = StepType.values();
-        int bound = stepTypes.length - 1;
-        for (int index = 0; index < bound; index++) {
+        IntStream.range(0, stepTypes.length - 1).forEach((index) -> {
             stepTypes[index].nextStep = stepTypes[index + 1];
             stepTypes[index + 1].prevStep = stepTypes[index];
-        }
+        });
     }
 }
