@@ -9,10 +9,12 @@ import lotto.Lotto;
 import lotto.Compare;
 import lotto.NumberSplit;
 import lotto.MoneyException;
+import lotto.Bonus;
 
 public class Application {
     public static void main(String[] args) {
         int count = 0;
+        boolean bonusCheck=false;
         // 입력
         int money = Integer.parseInt(Console.readLine());
 
@@ -34,11 +36,17 @@ public class Application {
             // 사용자 수와 로또의 수 비교
             Compare compare = new Compare(numberSplit.getNumber(), lottoNumbers);
 
-            System.out.println(lottoNumbers);   // 잘 작동하는 지 확인하는 코드
-            System.out.println(compare.same);   // 잘 작동하는 지 확인하는 코드
+            // System.out.println(lottoNumbers);   // 잘 작동하는 지 확인하는 코드
+            // System.out.println(compare.same);   // 잘 작동하는 지 확인하는 코드
+
+            // 보너스 번호
+            int bonusNumber = Integer.parseInt(Console.readLine());
+            Bonus bonus = new Bonus(lottoNumbers, bonusNumber);
+            bonusCheck=bonus.getBonusCheck();
+            // System.out.println(bonusCheck);   // 잘 작동하는 지 확인하는 코드
         }
-        // 보너스 번호
         // 당첨 내역
+
         // 수익률
     }
 }
