@@ -1,6 +1,7 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
+import static lotto.Message.*;
 import lotto.domain.*;
 import lotto.view.View;
 
@@ -11,8 +12,6 @@ import java.util.stream.IntStream;
 
 public class LottoService {
 
-    private static final String WINNING_INPUT_MESSAGE = "정확히 숫자를 입력하고 `,`로 구분 지을 수 있습니다.";
-    private static final String BONUS_INPUT_MESSAGE = "보너스 번호는 숫자만 입력할 수 있습니다.";
     public NumberGenerator numberGenerator;
     private WinningTicket winningTicket;
     
@@ -45,7 +44,7 @@ public class LottoService {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new IllegalArgumentException(WINNING_INPUT_MESSAGE);
+            throw new IllegalArgumentException(WINNING_INPUT_MESSAGE.getValue());
         }
     }
 
@@ -54,7 +53,7 @@ public class LottoService {
             view.printInputBonusMessage();
             return Integer.parseInt(Console.readLine());
         } catch (Exception e) {
-            throw new IllegalArgumentException(BONUS_INPUT_MESSAGE);
+            throw new IllegalArgumentException(BONUS_INPUT_MESSAGE.getValue());
         }
     }
 
