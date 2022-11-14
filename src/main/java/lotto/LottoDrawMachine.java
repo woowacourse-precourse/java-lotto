@@ -23,12 +23,12 @@ public class LottoDrawMachine {
         return bonusNumber;
     }
 
-    public LottoDrawMachine() {
+    public LottoDrawMachine() throws IllegalArgumentException {
         winningNumbers = createWinningNumbers();
         bonusNumber = createBonusNumber();
     }
 
-    private Lotto createWinningNumbers() {
+    private Lotto createWinningNumbers() throws IllegalArgumentException {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         throwExceptionWinningNumbers(input);
@@ -36,12 +36,12 @@ public class LottoDrawMachine {
         return (new Lotto(convertStringListToIntList(numbersOfString, Integer::parseInt)));
     }
 
-    private void throwExceptionWinningNumbers(String str) {
+    private void throwExceptionWinningNumbers(String str) throws IllegalArgumentException {
         areNotDigitOrComma(str);
         existsEmptyValue(str);
     }
 
-    private void areNotDigitOrComma(String str) {
+    private void areNotDigitOrComma(String str) throws IllegalArgumentException {
         for (int idx = 0; idx < str.length(); idx++) {
             char ch = str.charAt(idx);
             if (!Character.isDigit(ch) && !isComma(ch)) {
@@ -54,7 +54,7 @@ public class LottoDrawMachine {
         return ch == ',';
     }
 
-    private void existsEmptyValue(String str) {
+    private void existsEmptyValue(String str) throws IllegalArgumentException {
         boolean commaFlag = true;
         for (int idx = 0; idx < str.length(); idx++) {
             char ch = str.charAt(idx);
@@ -73,14 +73,14 @@ public class LottoDrawMachine {
                 .collect(Collectors.toList());
     }
 
-    private int createBonusNumber() {
+    private int createBonusNumber() throws IllegalArgumentException {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         validate(input);
         return Integer.parseInt(input);
     }
 
-    private void validate(String str) {
+    private void validate(String str) throws IllegalArgumentException {
         isNotAllDigit(str);
         isEmptyNumber(str);
         Integer number = Integer.parseInt(str);
@@ -88,7 +88,7 @@ public class LottoDrawMachine {
         duplicateWinningNumbers(number);
     }
 
-    private void isNotAllDigit(String str) {
+    private void isNotAllDigit(String str) throws IllegalArgumentException {
         for (int idx = 0; idx < str.length(); idx++) {
             char ch = str.charAt(idx);
             if (!Character.isDigit(ch)) {
@@ -97,21 +97,22 @@ public class LottoDrawMachine {
         }
     }
 
-    private void isEmptyNumber(String str) {
+    private void isEmptyNumber(String str) throws IllegalArgumentException {
         if (str.length() == 0) {
             throw new IllegalArgumentException("[ERROR]: 빈 값은 들어올 수 없습니다.");
         }
     }
 
-    private void isNotRange(Integer number) {
+    private void isNotRange(Integer number) throws IllegalArgumentException {
         if (number < MIN_VALUE || MAX_VALUE < number) {
             throw new IllegalArgumentException("[ERROR]: 숫자의 범위는 1 ~ 45까지여야 합니다.");
         }
     }
 
-    private void duplicateWinningNumbers(Integer number) {
+    private void duplicateWinningNumbers(Integer number) throws IllegalArgumentException {
         if (winningNumbers.getNumbers().contains(number)) {
             throw new IllegalArgumentException("[ERROR]: 보너스 번호는 당첨 번호와 중복되면 안됩니다.");
         }
     }
+
 }

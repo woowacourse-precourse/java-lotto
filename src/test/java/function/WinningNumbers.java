@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinningNumbers {
-    
+
     @DisplayName("숫자가 아닌 다른 값")
     @Test
     void isNotNumber() {

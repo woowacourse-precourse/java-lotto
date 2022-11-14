@@ -11,7 +11,7 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException {
         validate(numbers);
         numbers.stream().sorted(Comparator.naturalOrder());
         this.numbers = numbers;
@@ -21,29 +21,29 @@ public class Lotto {
         return numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         isNotConstantSize(numbers);
         isNotRange(numbers);
         duplicateNumbers(numbers);
     }
 
-    private void isNotConstantSize(List<Integer> numbers) {
+    private void isNotConstantSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException("[ERROR]: 로또의 사이즈는 6이여야 합니다.");
         }
     }
 
-    private void isNotRange(List<Integer> numbers) {
+    private void isNotRange(List<Integer> numbers) throws IllegalArgumentException {
         numbers.stream().forEach(this::isNotRange);
     }
 
-    private void isNotRange(Integer number) {
+    private void isNotRange(Integer number) throws IllegalArgumentException {
         if (number < MIN_VALUE || MAX_VALUE < number) {
             throw new IllegalArgumentException("[ERROR]: 숫자의 범위는 1 ~ 45까지여야 합니다.");
         }
     }
 
-    private void duplicateNumbers(List<Integer> numbers) {
+    private void duplicateNumbers(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR]: 중복되는 숫자가 존재합니다.");
         }

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoTicketsTest {
+
     @DisplayName("정상적인 입력")
     @Test
     void correctInput() {

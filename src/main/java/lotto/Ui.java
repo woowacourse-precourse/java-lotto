@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Ui {
 
-    public static int inputPurchaseAmount() {
+    public static int inputPurchaseAmount() throws IllegalArgumentException {
         printPurchaseAmountInput();
         String input = inputString();
         throwExceptionIfNotNumber(input);
@@ -21,7 +21,7 @@ public class Ui {
         return Console.readLine();
     }
 
-    private static void throwExceptionIfNotNumber(String str) {
+    private static void throwExceptionIfNotNumber(String str) throws IllegalArgumentException {
         if (!isAllNumber(str)) {
             throw new IllegalArgumentException("[ERROR]: 구입금액은 숫자만 입력이 가능합니다.");
         }
@@ -44,7 +44,7 @@ public class Ui {
         return true;
     }
 
-    private static void throwExceptionIfNotDivisibleBy1000(int number) {
+    private static void throwExceptionIfNotDivisibleBy1000(int number) throws IllegalArgumentException {
         if (number % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR]: 구입금액이 1000으로 나누어 떨어지지 않습니다.");
         }

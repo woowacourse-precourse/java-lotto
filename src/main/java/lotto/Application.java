@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
@@ -11,6 +10,7 @@ public class Application {
             int lottoTickets = LottoVendingMachine.getLottoTickets(purchaseAmount);
             List<Lotto> lottos = LottoVendingMachine.getLottos(lottoTickets);
             LottoDrawMachine lottoDrawMachine = new LottoDrawMachine();
+//            lottoDrawMachine.printResultWinning(lottos);
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }
