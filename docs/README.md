@@ -8,23 +8,23 @@
 - [x] 발행된 로또 번호를 변환하고 가져온다.
   - [x] 지정된 양식에 따라 로또 번호를 문자열로 변환한다. Lotto#getString()
   - [x] 발행된 모든 로또 번호를 가져온다. Ticket#getAll()
-- [ ] 당첨 번호를 입력 받고 저장한다.
+- [x] 당첨 번호를 입력 받고 저장한다.
   - [x] 당첨 번호를 입력 받는다. InputController#showLottoNumberInput()
   - [x] 콤마로 구분되어 입력된 값을 숫자형으로 변환한다. Lotto#from()
   - [x] 입력된 숫자가 6개인지 확인한다. Validator#isNotCorrectLottoNumberSize()
   - [x] 입력된 숫자가 1 ~ 45 인지 확인한다. Validator#hasNotCorrectRangeNumbers()
   - [x] 당첨 번호를 저장한다. Draw#constrocutor
-- [ ] 보너스 번호를 입력 받고 저장한다.
+- [x] 보너스 번호를 입력 받고 저장한다.
   - [x] 보너스 번호를 입력 받는다.
   - [x] 1 ~ 45 숫자인지 확인한다. Validator#hasNotCorrectRangeNumber()
   - [x] 보너스 번호를 저장한다. Draw#setBonus()
-- [ ] 당첨과 낙첨 조건을 설정하고 비교한다.
+- [x] 당첨과 낙첨 조건을 설정하고 비교한다.
   - [x] 당첨 조건을 설정한다 PrizeType#Enum
   - [x] 당첨 번호, 보너스 번호를 비교한다. Raffle#getPrizeTypeWith()
-- [ ] 당첨 통계를 낸다.
-  - [ ] 당첨 등수와 금액을 수집한다.
-  - [ ] 수익금을 계산한다.
-  - [ ] 결과를 출력한다.
+- [x] 당첨 통계를 낸다.
+  - [x] 당첨 등수와 금액을 수집한다.
+  - [x] 수익금을 계산한다.
+  - [x] 결과를 출력한다.
 
 ## ✔ 요구 사항
 - indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
