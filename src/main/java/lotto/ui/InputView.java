@@ -24,34 +24,16 @@ public enum InputView {
         return money;
     }
 
-    public static JackpotBonus inputJackpotBonus(){
-        List<Integer> jackpotNumbers = inputJackpotNumbers();
-        int bonusNumber = inputBonusNumber();
-
-        return new JackpotBonus(jackpotNumbers, bonusNumber);
-    }
-
-    private static List<Integer> inputJackpotNumbers() {
+    public static String inputJackpotNumbers() {
         System.out.println(INPUT_JACKPOT_NUMBERS_MESSAGE);
-        String jackpotNumberInput = Console.readLine();
+        String jackpotInput = Console.readLine();
 
-        InputValidator.validateJackpotNumberFormat(jackpotNumberInput);
-
-        List<Integer> jackpotNumbers =
-                Arrays.stream(jackpotNumberInput.split(JACKPOT_NUMBER_SEPARATOR))
-                        .map(Integer::parseInt)
-                        .collect(Collectors.toList());
-
-        LottoValidator.validate(jackpotNumbers);
-
-        return jackpotNumbers;
+        return jackpotInput;
     }
-    private static int inputBonusNumber() {
+    public static String inputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
-        String bonusNumber = Console.readLine();
+        String bonusInput = Console.readLine();
 
-        InputValidator.validateBonusNumber(bonusNumber);
-
-        return Integer.parseInt(bonusNumber);
+        return bonusInput;
     }
 }
