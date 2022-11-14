@@ -5,11 +5,15 @@ public class Controller {
 	PrintMessage printMesseg = new PrintMessage();
 
 	public void run() {
-		buyLotto();
-		printBuyLotto();
-		inputNumber();
-		lottoNumberCompareAfterStore();
-		printResult();
+		try {
+			buyLotto();
+			printBuyLotto();
+			inputNumber();
+			lottoNumberCompareAfterStore();
+			printResult();
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public void buyLotto() {
