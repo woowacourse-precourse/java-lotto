@@ -16,8 +16,7 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != COUNT) {
-            System.out.println(NOT_SIX);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_SIX);
         }
     }
 
@@ -26,8 +25,7 @@ public class Lotto {
         int numbersSize = numbers.size();
         int noRepetitionSize = noRepetition.size();
         if (numbersSize != noRepetitionSize) {
-            System.out.println(DUPLICATED_VALUE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATED_VALUE);
         }
     }
 }

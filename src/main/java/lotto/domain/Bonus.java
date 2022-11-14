@@ -14,8 +14,7 @@ public class Bonus {
 
     private void validateExist(List<Integer> numbers, int bonus) {
         if (numbers.contains(bonus)) {
-            System.out.println(CANNOT_BE_BONUS);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(CANNOT_BE_BONUS);
         }
     }
 }

@@ -35,8 +35,7 @@ public class Validator {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            System.out.println(NOT_NUMERIC);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_NUMERIC);
         }
     }
 
@@ -46,8 +45,7 @@ public class Validator {
 
     private void validateRange(int number) {
         if (number < 1 || number > 45) {
-            System.out.println(NOT_PROPER_NUMBER);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_PROPER_NUMBER);
         }
     }
 

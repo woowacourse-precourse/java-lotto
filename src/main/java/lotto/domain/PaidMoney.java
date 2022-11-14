@@ -14,15 +14,13 @@ public class PaidMoney {
 
     private void validateNoMoney(int paidMoney) {
         if (paidMoney == 0) {
-            System.out.println(BOUGHT_NOTHING);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(BOUGHT_NOTHING);
         }
     }
 
     private void validateWrongMoney(int paidMoney) {
         if (paidMoney % 1000 != 0) {
-            System.out.println(NOT_DIVISIBLE_BY_THOUSAND);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_DIVISIBLE_BY_THOUSAND);
         }
     }
 }
