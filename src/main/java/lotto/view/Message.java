@@ -4,9 +4,12 @@ import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.User;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 public class Message {
+    private static NumberFormat numberFormat = NumberFormat.getInstance();
+
     public static void printBuy() {
         System.out.println("구입금액을 입력해 주세요.");
     }
@@ -36,6 +39,10 @@ public class Message {
             );
         }
         System.out.println("총 수익률은 "+user.calcProfit()+"%입니다.");
+    }
+
+    private static String formattingReward(int reward) {
+        return numberFormat.format(reward);
     }
 
     private static String isBonus(boolean bonus) {
