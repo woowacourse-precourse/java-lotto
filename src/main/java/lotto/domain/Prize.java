@@ -45,7 +45,7 @@ public enum Prize {
                 .orElse(NONE);
     }
 
-    public static int getPrizeMoney(Prize prize, int count) {
+    public static int calculatePrizeMoney(Prize prize, int count) {
         return prize.getPrizeMoney() * count;
     }
 

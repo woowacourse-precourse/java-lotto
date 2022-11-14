@@ -32,7 +32,7 @@ public class Result {
     private void sumPrizeMoney() {
         for (Prize prize : totalMatchResult.keySet()) {
             int count = totalMatchResult.get(prize);
-            totalPrizeMoney += Prize.getPrizeMoney(prize, count);
+            totalPrizeMoney += Prize.calculatePrizeMoney(prize, count);
         }
     }
 
