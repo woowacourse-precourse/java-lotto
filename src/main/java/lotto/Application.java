@@ -19,19 +19,22 @@ public class Application {
     final static int NUMBER_SIZE = 6;
     public static void main(String[] args) {
         saveInput();
-        gameStart();
+//        gameStart();
+        calculateWinning();
+        calculateRate();
         // TODO: 프로그램 구현
     }
 
-    public static void gameStart(){
-        //TODO: 게임 시작 구현
-        int gameTurn = gameData.getLottoCount();
-        while(gameTurn > 0){
-
-
-            gameTurn--;
-        }
-    }
+//    public static void gameStart(){
+//        //TODO: 게임 시작 구현
+//        int gameTurn = gameData.getLottoCount();
+//        while(gameTurn > 0){
+//
+//            if(){
+//                gameTurn--;
+//            }
+//        }
+//    }
 
     public static void saveInput(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -65,11 +68,19 @@ public class Application {
         //TODO: 로또 발행 구현
     }
 
-    public void calculateWinning(){
+    public static void calculateWinning(){
         //TODO: 당첨 내역 계산 구현
+        StringBuilder sb = new StringBuilder();
+        sb.append("당첨 통계\n---\n");
+//        3개 일치 (5,000원) - 1개
+//        4개 일치 (50,000원) - 0개
+//        5개 일치 (1,500,000원) - 0개
+//        5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
+//        6개 일치 (2,000,000,000원) - 0개
+
     }
 
-    public void calculateRate(){
+    public static void calculateRate(){
         //TODO: 수익률 계산 구현
     }
 
