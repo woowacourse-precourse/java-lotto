@@ -16,6 +16,10 @@ public class Application {
             String amount = Console.readLine();
             amountEmptyException(amount);
             OutOfDigitException(amount);
+
+            LottoList userLotto = new LottoList(new BigInteger(amount));
+
+
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
         }
