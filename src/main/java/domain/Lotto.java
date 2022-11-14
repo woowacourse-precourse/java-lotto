@@ -22,7 +22,7 @@ public class Lotto {
         return numbers;
     }
 
-    public static List<Lotto> generateLotto(int lottoCnt) {
+    public static List<Lotto> generateLottos(int lottoCnt) {
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < lottoCnt; i++) {
