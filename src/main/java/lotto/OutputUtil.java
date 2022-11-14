@@ -3,19 +3,19 @@ package lotto;
 public class OutputUtil {
     public static final int MIN_HIT = 3;
     public static final int MAX_HIT = 6;
-    private static final String START_STATISTICS = "당첨통계\n---";
+    private static final String START_STATISTICS = "\n당첨통계\n---";
     private static final String PURCHASE_INPUT = "구입금액을 입력해 주세요.";
     private static String PURCHASE_RESULT = "개를 구매했습니다.";
-    private static final String WINNING_NUMBER_NOTICE = "당첨 번호를 입력해 주세요.";
-    private static final String BONUS_NOTICE = "보너스 번호를 입력해 주세요.";
+    private static final String WINNING_NUMBER_NOTICE = "\n당첨 번호를 입력해 주세요.";
+    private static final String BONUS_NOTICE = "\n보너스 번호를 입력해 주세요.";
 
     public void noticePurchase() {
         System.out.println(PURCHASE_INPUT);
     }
 
-    public void showPurchaseResult(Purchase purchase, Lottos lottos) {
-        Integer size =purchase.getSize();
-        PURCHASE_RESULT= Integer.toString(size)+PURCHASE_RESULT;
+    public void showPurchaseResult(Lottos lottos) {
+        Integer size = lottos.getSize();
+        PURCHASE_RESULT= "\n"+Integer.toString(size)+PURCHASE_RESULT;
         System.out.println(PURCHASE_RESULT);
         for (Lotto lotto: lottos.getLottos() ) {
             System.out.println(lotto);
