@@ -20,4 +20,8 @@ public class DomainValidator {
         Set<Integer> lottoNumberSet = new HashSet<>(numbers);
         return lottoNumberSet.size() == LottoProperty.LENGTH.getProperty();
     }
+
+    public static boolean hasNumberInLottery (List<Integer> numbers, int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }
