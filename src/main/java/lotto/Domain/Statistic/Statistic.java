@@ -1,7 +1,5 @@
 package lotto.Domain.Statistic;
 
-import lotto.Output.Statistic.StatisticOutput;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,33 +9,30 @@ public class Statistic {
     public List<Set<Integer>> publishedLotto;
     public List<Integer> prizeRanks;
 
-    private Statistic(){}
     public Statistic(List<Integer> lottoSix, int bonus, List<Set<Integer>> publishedLotto) {
         this.lottoSix = lottoSix;
         this.bonus = bonus;
         this.publishedLotto = publishedLotto;
-        StatisticOutput statisticOutput = new StatisticOutput();
         this.prizeRanks = getStatistic();
-        statisticOutput.getStatisticOutput(prizeRanks);
     }
 
 
 
     public List<Integer> getStatistic() {
         int[] prizeRank = {0,0,0,0,0};
+        StatisticCalculate statisticCalculate = new StatisticCalculate();
         for(Set<Integer> publishedOneLotto : publishedLotto) {
-            List<Integer> userlotto = lottoSix;
-            userlotto.removeAll(publishedOneLotto);
-            if(userlotto.size() == 3) { prizeRank[0]++; }
-            if(userlotto.size() == 2) { prizeRank[1]++; }
-            if(userlotto.size() == 1) { prizeRank[2]++; }
-            if(userlotto.size() == 0) { prizeRank[4]++; }
-            userlotto.removeAll(List.of(bonus));
-            if(userlotto.size() == 0) { prizeRank[3]++; prizeRank[2]--; }
+            int hasBonusSize = statisticCalculate.hasBonusSize(publishedOneLotto, lottoSix, bonus);
+            int hasNoBonusSize = statisticCalculate.hasNoBonusSize(publishedOneLotto, lottoSix, bonus);
+            if(hasBonusSize == 6){ prizeRank[3]++; }
+
+            if(hasNoBonusSize == 6){ prizeRank[4]++; }
+            if(hasNoBonusSize == 7){ prizeRank[2]++; }
+            if(hasNoBonusSize == 8){ prizeRank[1]++; }
+            if(hasNoBonusSize == 9){ prizeRank[0]++; }
         }
-        return Arrays.stream(prizeRank)
-                .boxed()
-                .collect(Collectors.toList());
+
+        return Arrays.stream(prizeRank).boxed().collect(Collectors.toList());
     }
 
 }
