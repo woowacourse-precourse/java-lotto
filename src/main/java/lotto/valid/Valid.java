@@ -12,6 +12,15 @@ package lotto.valid;
  */
 public class Valid {
 
+    public static void check_number(String str){
+        str = str.replace(",", "");
+        for(int i= 0; i < str.length(); i++){
+            if(!Character.isDigit(str.charAt(i))){
+                throw new IllegalArgumentException(number_Message +str.charAt(i));
+            }
+        }
+    }
+
     public static void check_Overlap(String str){
         String[] input = str.split(",");
         List<Integer> container = new ArrayList<>();
