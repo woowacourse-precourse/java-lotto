@@ -1,9 +1,6 @@
 package controller;
 
-import lotto.Lotto;
-import lotto.LottoGame;
-import lotto.LottoRank;
-import lotto.WinningLotto;
+import lotto.*;
 import view.InputView;
 import view.OutputView;
 
@@ -12,18 +9,18 @@ import java.util.Map;
 
 public class Controller {
     public void run() {
-        List<Lotto> lottos = getLottos();
+        Lottos lottos = getLottos();
         WinningLotto winningLotto = getWinningLotto();
         getResult(lottos, winningLotto);
     }
 
-    private List<Lotto> getLottos() {
+    private Lottos getLottos() {
         int lottoPrice = InputView.getLottoPrice();
         int lottoCount = LottoGame.getLottoCount(lottoPrice);
 
         OutputView.printLottoCount(lottoCount);
 
-        List<Lotto> lottos = LottoGame.getLottos(lottoCount);
+        Lottos lottos = LottoGame.getLottos(lottoCount);
 
         OutputView.printLottos(lottos);
 
@@ -37,7 +34,7 @@ public class Controller {
         return LottoGame.createWinningLotto(winningLottoNumber, winningBonusNumber);
     }
 
-    private void getResult(List<Lotto> lottos, WinningLotto winningLotto) {
-        Map<LottoRank, Integer> lottoResult = LottoGame.getLottoResult(lottos, winningLotto);
+    private void getResult(Lottos lottos, WinningLotto winningLotto) {
+        Map<LottoRank, Integer> lottoResult = lottos.getLottoResult(winningLotto);
     }
 }

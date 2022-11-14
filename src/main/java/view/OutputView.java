@@ -1,6 +1,7 @@
 package view;
 
 import lotto.Lotto;
+import lotto.Lottos;
 
 import java.util.List;
 
@@ -12,8 +13,8 @@ public class OutputView {
         System.out.printf(LOTTO_PURCHASE_COUNT_OUTPUT_MESSAGE, lottoCount);
     }
 
-    public static void printLottos(List<Lotto> lottos) {
-        for (Lotto lotto : lottos) {
+    public static void printLottos(Lottos lottos) {
+        for (Lotto lotto : lottos.getLottos()) {
             System.out.println(lotto.getLottoNumbers());
         }
     }
