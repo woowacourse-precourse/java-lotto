@@ -19,7 +19,7 @@ class WinningNumberTest {
     @ParameterizedTest()
     @ValueSource(ints = {1, 45, 33})
     void constructor_test(int numberInRange) {
-        WinningNumber winningNumber = new WinningNumber(numberInRange);
+        WinningNumber winningNumber = WinningNumber.from(numberInRange);
 
         assertThat(winningNumber).isInstanceOf(WinningNumber.class);
     }
@@ -28,15 +28,16 @@ class WinningNumberTest {
     @ParameterizedTest()
     @ValueSource(ints = {111, 52, -1})
     void constructor_error_test(int outOfRangeNumber) {
-        assertThatThrownBy(() -> new WinningNumber(outOfRangeNumber)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> WinningNumber.from(outOfRangeNumber)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 숫자는 1부터 45에 속해야 합니다.");
     }
 
     @DisplayName("equals 메소드에 같은 숫자의 다른 객체를 입력했을 때 true를 반환하는지 확인")
     @ParameterizedTest()
     @CsvSource({"1, 1", "2, 2", "3, 3"})
     void equals_true_test(int number, int sameNumber) {
-        WinningNumber winningNumber = new WinningNumber(number);
-        WinningNumber sameWinningNumber = new WinningNumber(sameNumber);
+        WinningNumber winningNumber = WinningNumber.from(number);
+        WinningNumber sameWinningNumber = WinningNumber.from(sameNumber);
 
         assertThat(winningNumber.equals(sameWinningNumber)).isTrue();
     }
@@ -45,8 +46,8 @@ class WinningNumberTest {
     @ParameterizedTest()
     @CsvSource({"1, 2", "2, 3", "5, 3"})
     void equals_false_test(int number, int differentNumber) {
-        WinningNumber winningNumber = new WinningNumber(number);
-        WinningNumber differentWinningNumber = new WinningNumber(differentNumber);
+        WinningNumber winningNumber = WinningNumber.from(number);
+        WinningNumber differentWinningNumber = WinningNumber.from(differentNumber);
 
         assertThat(winningNumber.equals(differentWinningNumber)).isFalse();
     }
@@ -55,8 +56,8 @@ class WinningNumberTest {
     @ParameterizedTest()
     @CsvSource({"1, 1", "2, 2", "3, 3"})
     void hashCode_equal_test(int number, int sameNumber) {
-        WinningNumber winningNumber = new WinningNumber(number);
-        WinningNumber sameWinningNumber = new WinningNumber(sameNumber);
+        WinningNumber winningNumber = WinningNumber.from(number);
+        WinningNumber sameWinningNumber = WinningNumber.from(sameNumber);
 
         assertThat(winningNumber.hashCode()).isEqualTo(sameWinningNumber.hashCode());
     }
@@ -65,8 +66,8 @@ class WinningNumberTest {
     @ParameterizedTest()
     @CsvSource({"1, 2", "2, 3", "3, 4"})
     void hashCode_not_equal_test(int number, int differentNumber) {
-        WinningNumber winningNumber = new WinningNumber(number);
-        WinningNumber differentWinningNumber = new WinningNumber(differentNumber);
+        WinningNumber winningNumber = WinningNumber.from(number);
+        WinningNumber differentWinningNumber = WinningNumber.from(differentNumber);
 
         assertThat(winningNumber.hashCode()).isNotEqualTo(differentWinningNumber.hashCode());
     }
@@ -75,7 +76,7 @@ class WinningNumberTest {
     @ParameterizedTest()
     @CsvSource({"1, 1", "2, 2", "3, 3"})
     void isSameValue_true_test(int number, int sameNumber) {
-        WinningNumber winningNumber = new WinningNumber(number);
+        WinningNumber winningNumber = WinningNumber.from(number);
 
         assertThat(winningNumber.isSameValue(sameNumber)).isTrue();
     }
@@ -84,7 +85,7 @@ class WinningNumberTest {
     @ParameterizedTest()
     @CsvSource({"1, 2", "2, 3", "3, 33"})
     void isSameValue_false_test(int number, int sameNumber) {
-        WinningNumber winningNumber = new WinningNumber(number);
+        WinningNumber winningNumber = WinningNumber.from(number);
 
         assertThat(winningNumber.isSameValue(sameNumber)).isFalse();
     }
@@ -93,7 +94,7 @@ class WinningNumberTest {
     @ParameterizedTest()
     @MethodSource("provideArgumentsForCountSameValueTest")
     void countSameValue_test(List<Integer> numbers, int number, String expected) {
-        WinningNumber bonusNumber = new WinningNumber(number);
+        WinningNumber bonusNumber = WinningNumber.from(number);
 
         String count = bonusNumber.countSameValue(numbers);
 

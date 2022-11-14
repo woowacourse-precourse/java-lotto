@@ -6,9 +6,13 @@ import java.util.Objects;
 public class WinningNumber {
     private final int number;
 
-    public WinningNumber(int number) {
+    private WinningNumber(int number) {
         validateRange(number);
         this.number = number;
+    }
+
+    public static WinningNumber from(int number) {
+        return new WinningNumber(number);
     }
 
     private void validateRange(int number) {
