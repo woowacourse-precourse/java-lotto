@@ -1,4 +1,4 @@
-package veiw;
+package view;
 
 import models.Lotto;
 

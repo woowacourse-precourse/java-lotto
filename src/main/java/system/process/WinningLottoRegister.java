@@ -3,7 +3,7 @@ package system.process;
 import models.WinningLotto;
 import system.process.validation.WinningLottoRegisterValidation;
 import utils.Input;
-import veiw.WinningLottoRegisterView;
+import view.WinningLottoRegisterView;
 
 import java.util.ArrayList;
 import java.util.List;

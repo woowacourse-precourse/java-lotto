@@ -4,7 +4,7 @@ import constants.LottoConstant;
 import models.BoughtLottos;
 import system.process.validation.BuyingValidation;
 import utils.Input;
-import veiw.BuyingView;
+import view.BuyingView;
 
 public class Buying {
     private BoughtLottos boughtLottos;

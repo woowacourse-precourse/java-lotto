@@ -1,4 +1,4 @@
-package veiw;
+package view;
 
 import constants.PrizeDivision;
 import models.Statistics;

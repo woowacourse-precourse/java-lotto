@@ -3,7 +3,7 @@ package system;
 import system.process.Buying;
 import system.process.StatisticsCalculator;
 import system.process.WinningLottoRegister;
-import veiw.StatisticsView;
+import view.StatisticsView;
 
 public class LottoGameSystem {
     private Buying boughtLottos;
