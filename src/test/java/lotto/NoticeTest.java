@@ -3,6 +3,7 @@ package lotto;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.HashMap;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,6 +38,29 @@ class NoticeTest {
         System.setOut(new PrintStream(out));
         Notice notice = new Notice();
         notice.profitRatio(100F);
+        assertThat(out.toString()).isEqualTo(answer);
+    }
+
+    @Test
+    void 당첨_내역_출력1() {
+        String answer = ("당첨 통계\n"
+                + "---\n"
+                + "3개 일치 (5,000원) - 0개\n"
+                + "4개 일치 (50,000원) - 0개\n"
+                + "5개 일치 (1,500,000원) - 0개"
+                + "\n5개 일치, 보너스 볼 일치 (30,000,000원) - 0개\n"
+                + "6개 일치 (2,000,000,000원) - 1개\n")
+                .replaceAll("\\n", System.getProperty("line.separator"));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Notice notice = new Notice();
+        HashMap<String, Integer> winningCount = new HashMap<>();
+        winningCount.put("FIFTH", 0);
+        winningCount.put("FOURTH", 0);
+        winningCount.put("THIRD", 0);
+        winningCount.put("SECOND", 0);
+        winningCount.put("FIRST", 1);
+        notice.winningAnalysis(winningCount);
         assertThat(out.toString()).isEqualTo(answer);
     }
 }
