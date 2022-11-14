@@ -11,6 +11,7 @@ public class Application {
 
     int insertedNumber;
     List<Integer> winningNumbers;
+    int bonusNumber;
     List<List<Integer>> randomLottos = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -96,6 +97,17 @@ public class Application {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
+    public void insertBonusNumberSaveNumber(){
+        String input = null;
+        try{
+            input = Console.readLine();
+        }catch (java.lang.Exception e){
+            Exception.of(Exception.WINNING_NUMBER_02);
+        }
+        isInRangeAndSize(input);
+        this.bonusNumber = Integer.parseInt(input);
+    }
+
     private void saveToList(String[] split) {
         winningNumbers = Arrays.stream(split).map(Integer::parseInt).collect(Collectors.toList());
     }
@@ -113,11 +125,26 @@ public class Application {
         }
     }
 
+    private void isInRangeAndSize(String input) {
+        if(input == null)   Exception.of(Exception.BONUS_NUMBER_05);
+        int t = 0;
+        try{
+            t = Integer.parseInt(input);
+        }catch (java.lang.Exception e){
+            Exception.of(Exception.BONUS_NUMBER_06);
+        }
+        if(t < 0 || t > 45) Exception.of(Exception.BONUS_NUMBER_06);
+    }
+
     public List<List<Integer>> getRandomLottos() {
         return randomLottos;
     }
 
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
