@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.view.Message;
+
 import java.util.List;
 
 public class Lotto {
@@ -14,8 +16,8 @@ public class Lotto {
     }
 
     private void validateSize() {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("당첨번호는 6개의 숫자를 입력하셔야 합니다.");
+        if (numbers.size() != Resource.LOTTO_SIZE) {
+            throw new IllegalArgumentException(Message.LOTTO_NOTSIZE);
         }
     }
 
@@ -23,15 +25,15 @@ public class Lotto {
         int numbersLength = (int) numbers.stream()
                 .distinct()
                 .count();
-        if (numbersLength != 6) {
-            throw new IllegalArgumentException("당첨번호는 중복번호를 입력할 수 없습니다.");
+        if (numbersLength != Resource.LOTTO_SIZE) {
+            throw new IllegalArgumentException(Message.LOTTO_DUPLICATE);
         }
     }
 
     private void validateRange() {
         for (int number : numbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("당첨번호는 1부터 45까지의 수여야 합니다.");
+            if (number < Resource.MIN_LOTTO_NUMBER || number > Resource.MAX_LOTTO_NUMBER) {
+                throw new IllegalArgumentException(Message.LOTTO_NOTRANGE);
             }
         }
     }

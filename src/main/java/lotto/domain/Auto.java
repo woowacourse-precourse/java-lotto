@@ -9,11 +9,11 @@ import java.util.List;
 
 public class Auto {
 
-    private static final String SEPARATOR = ",";
+    private static final int PERCENT = 100;
 
     public static List<List<Integer>> AUTO_LOTTOS = new ArrayList<>();
     public static List<Integer> WINNING_NUMBERS = new ArrayList<>();
-    public static double YIELD;
+    public static String YIELD;
 
     public Auto() {
     }
@@ -21,7 +21,7 @@ public class Auto {
     public Auto(int lottoCount) {
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> lotto = new ArrayList<>();
-            lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lotto = Randoms.pickUniqueNumbersInRange(Resource.MIN_LOTTO_NUMBER, Resource.MAX_LOTTO_NUMBER, Resource.LOTTO_SIZE);
             try {
                 Collections.sort(lotto);
             } catch (UnsupportedOperationException e) {
@@ -32,7 +32,7 @@ public class Auto {
     }
 
     public void makeWinningNumbers(String userInput) {
-        List<String> userInputs = Arrays.asList(userInput.split(SEPARATOR));
+        List<String> userInputs = Arrays.asList(userInput.split(Resource.SEPARATOR));
         for (String userNumber : userInputs) {
             WINNING_NUMBERS.add(Integer.parseInt(userNumber));
         }
@@ -68,9 +68,9 @@ public class Auto {
         if (win == Rank.FIFTH.getWin()) Rank.FIFTH.plusCount();
     }
 
-    public void yieldCalculation(int money) {
+    public void yieldCalculation(int inputMoney) {
         long yield = Rank.FIRST.getCount() * Rank.FIRST.getMoney() + Rank.SECOND.getCount() * Rank.SECOND.getMoney() + Rank.THIRD.getCount() * Rank.THIRD.getMoney()
                 + Rank.FOURTH.getCount() * Rank.FOURTH.getMoney() + Rank.FIFTH.getCount() * Rank.FIFTH.getMoney();
-        YIELD = yield / (double) money * 100;
+        YIELD = String.format("%.1f", yield / (double) inputMoney * PERCENT);
     }
 }

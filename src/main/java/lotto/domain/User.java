@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.view.Message;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,7 +9,8 @@ public class User {
 
     private String changeWord;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String changeWord) {
         this.changeWord = changeWord;
@@ -38,22 +41,21 @@ public class User {
     }
 
 
-
     private void validateNotNull(String userInput) {
         if (userInput == null || userInput == "") {
-            throw new IllegalArgumentException(changeWord + "은 빈 값을 입력할 수 없습니다");
+            throw new IllegalArgumentException(changeWord + Message.ISNULL);
         }
     }
 
     private void validateNotZero(String userInput) {
         if ("0".equals(userInput)) {
-            throw new IllegalArgumentException(changeWord + "은 0이상의 값을 입력하세요.");
+            throw new IllegalArgumentException(changeWord + Message.ISZERO);
         }
     }
 
     private void validateNoSpace(String userInput) {
-        if(userInput!=userInput.trim() || userInput.indexOf(" ")!=-1){
-            throw new IllegalArgumentException(changeWord + "은 띄어쓰기 없이 입력하세요.");
+        if (userInput != userInput.trim() || userInput.indexOf(" ") != -1) {
+            throw new IllegalArgumentException(changeWord + Message.ISSPACE);
         }
     }
 
@@ -61,47 +63,40 @@ public class User {
         try {
             return Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(changeWord + "은 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(changeWord + Message.NOTNUMBER);
         }
     }
 
     private void validateNoChange(int userMoney) {
-        if (userMoney % 1000 != 0) {
-            throw new IllegalArgumentException(changeWord + "은 1000원 단위어야 합니다");
+        if (userMoney % Resource.LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException(changeWord + Message.HASCHARGE);
         }
     }
 
     private void validateHasComma(String userInput) {
-        if(userInput.indexOf(",")==-1){
-            throw new IllegalArgumentException(changeWord + "는 쉼표로 구분되어야 합니다");
+        if (userInput.indexOf(Resource.SEPARATOR) == -1) {
+            throw new IllegalArgumentException(changeWord + Message.NOCOMMA);
         }
     }
 
     private void validateNumberList(String userInput) {
-        List<String> userInputs = Arrays.asList(userInput.split(","));
-        for(String userNumber : userInputs){
+        List<String> userInputs = Arrays.asList(userInput.split(Resource.SEPARATOR));
+        for (String userNumber : userInputs) {
             validateNumber(userNumber);
         }
     }
 
     private void validateRange(int userInput) {
-        if(userInput<1 || userInput>45){
-            throw new IllegalArgumentException(changeWord + "는 1 ~ 45 사이의 수여야 합니다");
+        if (userInput < Resource.MIN_LOTTO_NUMBER || userInput > Resource.MAX_LOTTO_NUMBER) {
+            throw new IllegalArgumentException(changeWord + Message.NOTRANGE);
         }
     }
-
-    /*private void validateDuplicate(int parseInt) {
-        if(Auto.WINNING_NUMBERS.contains(parseInt)){
-            throw new IllegalArgumentException(changeWord + "는 당첨번호와 중복값을 쓸 수 없습니다.");
-        }
-    }*/
 
     private void validateDuplicate(int userInput, List<Integer> winningNumbers) {
-        if(winningNumbers.contains(userInput)){
-            throw new IllegalArgumentException(changeWord + "는 당첨번호와 중복값을 쓸 수 없습니다.");
+        if (winningNumbers.contains(userInput)) {
+            throw new IllegalArgumentException(changeWord + Message.ISDUPLICATE);
         }
     }
-
 
 
 }
