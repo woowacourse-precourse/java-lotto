@@ -1,9 +1,10 @@
 package lotto.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class PrizeTest {
     Result result;
@@ -23,7 +24,7 @@ class PrizeTest {
         //when
         Prize prize = Prize.generatePrize(result);
         //then
-        Assertions.assertThat(prize)
+        assertThat(prize)
                   .isEqualTo(Prize.FIRST);
     }
 
@@ -38,7 +39,7 @@ class PrizeTest {
         //when
         Prize prize = Prize.generatePrize(result);
         //then
-        Assertions.assertThat(prize)
+        assertThat(prize)
                   .isEqualTo(Prize.SECOND);
     }
 
@@ -52,7 +53,7 @@ class PrizeTest {
         //when
         Prize prize = Prize.generatePrize(result);
         //then
-        Assertions.assertThat(prize)
+        assertThat(prize)
                   .isEqualTo(Prize.THIRD);
     }
 
@@ -66,7 +67,7 @@ class PrizeTest {
         //when
         Prize prize = Prize.generatePrize(result);
         //then
-        Assertions.assertThat(prize)
+        assertThat(prize)
                   .isEqualTo(Prize.FOURTH);
     }
 
@@ -80,7 +81,7 @@ class PrizeTest {
         //when
         Prize prize = Prize.generatePrize(result);
         //then
-        Assertions.assertThat(prize)
+        assertThat(prize)
                   .isEqualTo(Prize.FIFTH);
     }
 
@@ -94,7 +95,7 @@ class PrizeTest {
         //when
         Prize prize = Prize.generatePrize(result);
         //then
-        Assertions.assertThat(prize)
+        assertThat(prize)
                   .isEqualTo(Prize.NOTHING);
     }
 }
