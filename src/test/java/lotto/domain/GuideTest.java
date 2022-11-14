@@ -8,6 +8,8 @@ import java.util.List;
 import static lotto.domain.Guide.printRateOfReturn;
 
 class GuideTest {
+
+
     @DisplayName("로또 통계 메시지 출력")
     @Test
     void printLottoStatisticsMessage() {
