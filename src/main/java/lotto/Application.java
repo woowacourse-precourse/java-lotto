@@ -14,8 +14,12 @@ public class Application {
             lottoController.bonusNumber();
             lottoController.statistics();
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            recordException(e.getMessage());
         }
 
+    }
+
+    private static void recordException(String message) {
+        System.out.println(message);
     }
 }

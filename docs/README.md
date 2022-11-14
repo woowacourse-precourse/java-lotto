@@ -1,5 +1,6 @@
 
 ## 기능 구현 목록
+- [x] 예외를 기록한다. Application#recordException()
 - [x] 6자리인지 검증한다. Lotto#validateSize()
 - [x] 입력받은 당첨 번호가 중복되지 않는지 검증한다. Lotto#validateDuplicateNumber()
 - [x] 1부터 ~ 45사이의 숫자인지 확인한다. Lotto#validateNumbersInRange
@@ -39,6 +40,7 @@
 - [x] 당첨 조건별 일치 갯수와 보너스 볼 일치별 갯수를 출력한다. ResultView#displayWinners()
 
 ## 클래스별 각 역할과 책임
+- Application: 프로그램 제어 및 기록
 - LottoController: 전체 프로그램 흐름(입력, 출력 등)
 - Lotto: 로또 검증
 - LottoMachine: 로또 발행
