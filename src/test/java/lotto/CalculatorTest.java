@@ -15,7 +15,6 @@ public class CalculatorTest {
         EnumMap<RankNumber, Integer> resultStatistics = Checker.initializeResultStatistics();
         resultStatistics.put(RankNumber.FIFTH, 1);
         float expected = 62.5f;
-
         assertThat(Calculator.getYield(8000, resultStatistics))
                 .isEqualTo(expected);
     }
@@ -25,8 +24,7 @@ public class CalculatorTest {
     void 수익률_반올림_계산_테스트_1() {
         EnumMap<RankNumber, Integer> resultStatistics = Checker.initializeResultStatistics();
         resultStatistics.put(RankNumber.FIFTH, 2);
-        float expected = 142.9f;
-
+        double expected = 142.9;
         assertThat(Calculator.getYield(7000, resultStatistics))
                 .isEqualTo(expected);
     }
@@ -37,7 +35,6 @@ public class CalculatorTest {
         EnumMap<RankNumber, Integer> resultStatistics = Checker.initializeResultStatistics();
         resultStatistics.put(RankNumber.FIFTH, 1);
         float expected = 250.0f;
-
         assertThat(Calculator.getYield(2000, resultStatistics))
                 .isEqualTo(expected);
     }
@@ -47,8 +44,7 @@ public class CalculatorTest {
     void 수익률_반올림_계산_테스트_3() {
         EnumMap<RankNumber, Integer> resultStatistics = Checker.initializeResultStatistics();
         resultStatistics.put(RankNumber.FOURTH, 1);
-        float expected = 250.0f;
-
+        double expected = 2500.0;
         assertThat(Calculator.getYield(2000, resultStatistics))
                 .isEqualTo(expected);
     }
@@ -59,7 +55,6 @@ public class CalculatorTest {
         EnumMap<RankNumber, Integer> resultStatistics = Checker.initializeResultStatistics();
         resultStatistics.put(RankNumber.THIRD, 1);
         float expected = 75_000.0f;
-
         assertThat(Calculator.getYield(2000, resultStatistics))
                 .isEqualTo(expected);
     }
@@ -69,8 +64,7 @@ public class CalculatorTest {
     void 수익률_반올림_계산_테스트_5() {
         EnumMap<RankNumber, Integer> resultStatistics = Checker.initializeResultStatistics();
         resultStatistics.put(RankNumber.SECOND, 1);
-        float expected = 300_000.0f;
-
+        double expected = 300_000.0f;
         assertThat(Calculator.getYield(10_000, resultStatistics))
                 .isEqualTo(expected);
     }
@@ -80,8 +74,7 @@ public class CalculatorTest {
     void 수익률_반올림_계산_테스트_6() {
         EnumMap<RankNumber, Integer> resultStatistics = Checker.initializeResultStatistics();
         resultStatistics.put(RankNumber.SECOND, 1);
-        float expected = 3_000_000.0f;
-
+        double expected = 3_000_000;
         assertThat(Calculator.getYield(1_000, resultStatistics))
                 .isEqualTo(expected);
     }
@@ -91,8 +84,7 @@ public class CalculatorTest {
     void 수익률_반올림_계산_테스트_7() {
         EnumMap<RankNumber, Integer> resultStatistics = Checker.initializeResultStatistics();
         resultStatistics.put(RankNumber.FIRST, 1);
-        double expected = 3_000_000.0f;
-
+        double expected = 2.0E7;
         assertThat(Calculator.getYield(10_000, resultStatistics))
                 .isEqualTo(expected);
     }
