@@ -8,11 +8,12 @@ import java.util.List;
 public class User {
     public static final int ONEGAMECOST = 1000;
     public static final int GAMEOVER = -1;
+    public int gameMoney;
 
     public int inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String inputMoney = Console.readLine();
-        int gameMoney = validate(inputMoney);
+        gameMoney = validate(inputMoney);
         if (gameMoney == GAMEOVER) {
             return GAMEOVER;
         }
@@ -37,6 +38,7 @@ public class User {
             return GAMEOVER;
         }
     }
+
     public List<List<Integer>> buyLotto() {
         List<List<Integer>> totalBuyLotto = new ArrayList<>();
         int lottoAmount = inputMoney() / 1000;
