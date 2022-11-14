@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -46,10 +47,56 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("구입금액에 문자가 들어있으면 예외가 발생한다.")
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("구입금액이 1000으로 나눠떨어지지 않으면 예외가 발생한다.")
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() -> {
+            runException("999");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("로또 번호는 1부터 45 사이의 숫자를 벗어나면 예외가 발생한다.")
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,48,","6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("로또 번호는 문자가 있으면 예외가 발생한다.")
+    @Test
+    void 예외_테스트4() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,a", "7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("보너스 번호에 숫자가 아닌 문자가 있을 시, 예외 발생")
+    @Test
+    void 예외_테스트5() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "c");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중첩될 시, 예외 발생")
+    @Test
+    void 예외_테스트6() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "1");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
