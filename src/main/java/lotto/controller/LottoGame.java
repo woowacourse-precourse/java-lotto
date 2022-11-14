@@ -34,12 +34,12 @@ public class LottoGame {
 
     public static void startGame() {
         try {
-            String userInput = User.askPurchaseAmount();
-            Integer userMoney = User.convertToInteger(userInput);
+            Integer userMoney = User.convertToInteger(User.askPurchaseAmount());
             List<List<Integer>> randomLottoNumbers = makeLottos(userMoney);
             printLotto(randomLottoNumbers);
             List<Integer> userNumbers = User.lottoNumberReceiveInput();
-            Integer userBonusNumber = User.validCheckBonusNumber();
+            Integer userBonusNumber = User.bonusNumberRangeCheck(User.inputBonusNumber());
+            User.bonusNumberCheckInLottoNumber(userNumbers,userBonusNumber);
             for (int size = 0; size < randomLottoNumbers.size(); size++) {
                 statisticsInput(compareLottoNumber(userNumbers, randomLottoNumbers.get(size), userBonusNumber));
             }
