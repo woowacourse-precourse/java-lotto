@@ -1,5 +1,6 @@
 package lotto.Model;
 
+import java.util.Collections;
 import java.util.List;
 import lotto.Constant.Message;
 
@@ -9,6 +10,7 @@ public class Lotto {
 
     public Lotto(final List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
