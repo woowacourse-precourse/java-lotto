@@ -35,4 +35,11 @@ public class MyView {
 		String correctNumbers = Console.readLine();
 		model.addAttribute("correctNumbers", correctNumbers);
 	}
+
+	public void getBonusNumber() {
+		System.out.println(OutMsg.BONUS_REQUEST.getMessage());
+
+		String bonus = Console.readLine();
+		model.addAttribute("bonusNumber", bonus);
+	}
 }
