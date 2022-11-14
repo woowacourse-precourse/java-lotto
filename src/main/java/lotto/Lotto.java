@@ -1,7 +1,7 @@
 package lotto;
 
 import java.util.List;
-
+import camp.nextstep.edu.missionutils.Console;
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -16,5 +16,12 @@ public class Lotto {
         }
     }
 
+    public static void game(){
+        int cost;
+        Output.printCost();
+        cost = Integer.parseInt(Console.readLine());
+
+
+    }
     // TODO: 추가 기능 구현
 }
