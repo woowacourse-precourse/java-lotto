@@ -84,6 +84,8 @@ public class Controller {
                 result.put(1, result.get(1)+1);
             }
         }
+
+        return result;
     }
 
     public static void Solution() {
