@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import com.sun.jdi.connect.spi.Connection;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -36,9 +37,9 @@ public class Application {
     public static int inputMoney(){
         System.out.println("구입금액을 입력해 주세요");
         int purchaseMoney = Integer.parseInt(Console.readLine());
-        int purchaseAmount = purchaseMoney % 1000;
+        int purchaseAmount = purchaseMoney / 1000;
         System.out.println(purchaseAmount+"개를 구매했습니다.");
-        if (purchaseAmount!=0){
+        if (purchaseMoney%1000!=0){
             throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액을 입력하십시오.");
         }
         return purchaseMoney;
@@ -47,8 +48,10 @@ public class Application {
     private static List<List<Integer>> digitPick(int purchaseAmount){
         List<List<Integer>> lottoNums = new ArrayList<>();
         while (lottoNums.size()!=purchaseAmount){
-            lottoNums.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            System.out.println(lottoNums.get(-1));
+            List<Integer> lottoNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottoNum.sort(Comparator.naturalOrder());
+            lottoNums.add(lottoNum);
+            System.out.println(lottoNum);
         }
         return lottoNums;
     }
