@@ -9,7 +9,6 @@ public class NumberGenerator {
     public int numberOfLotto;
     List<List<Integer>> myLotto = new ArrayList<>();
 
-    List<Integer> list = new ArrayList<>();
 
     NumberGenerator(int numberOfLotto) {
         this.numberOfLotto = numberOfLotto;
@@ -22,5 +21,6 @@ public class NumberGenerator {
             Lotto lotto = new Lotto(numbers);
             this.myLotto.add(lotto.getNumbers());
         }
+
     }
 }

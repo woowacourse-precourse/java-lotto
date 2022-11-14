@@ -14,8 +14,9 @@
   - [x] 각 번호는 쉼표(,)를 기준으로 구분
   - [x] 당첨번호 오름차순 아닐수도 있음
 - [x] 구매번호와 당첨번호를 비교하여 일치하는 숫자가 몇개인지 구한다. NumberChecker#compareResult()
-- [ ] 수익률을 구한다. LottoResult#getRateOfReturn()
-  - [ ] LottoResult enum 을 이용하여 수익률을 계산한다. 
+- [x] 수익률을 구한다. LottoResult#getRateOfReturn()
+  - [x] LottoResult enum 을 이용하여 수익률을 계산한다. 
+  - [ ] 수익률은 소수점 둘째 자리에서 반올림한다. (ex. 100.0%, 51.5%, 1,000,000.0%)
 - [x] Lotto#
   - [x] 오름차순 정렬한다. Lotto#sort()
   - [x] Lotto#validate()
