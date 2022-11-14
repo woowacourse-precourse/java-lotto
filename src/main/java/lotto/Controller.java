@@ -131,11 +131,10 @@ public class Controller {
         View.Output("당첨 통계");
         View.Output("---");
         List<String> lottoResultKeys = new ArrayList<>(lottoResult.keySet());
-        List<String> lottoReward = new ArrayList<>(LottoReward.values());
         for (int i = 0; i < 5; i++) {
             String key = lottoResultKeys.get(i);
             Integer result = lottoResult.get(i);
-            String reward = lottoReward.get(i);
+            Integer reward = LottoReward.getRewardByRank(i);
             View.Output(key+"개 일치 ("+reward+") - "+result+"개");
         }
     }
