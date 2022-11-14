@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import lotto.domain.lottoConstant.Constant;
+import lotto.domain.lottoConstant.errorMessage.LottoNumberError;
+
 public class Lotto {
 	private final List<Integer> numbers;
 
@@ -20,23 +23,23 @@ public class Lotto {
 	}
 
 	private void validateNumberSize(List<Integer> numbers) {
-		if (numbers.size() != LottoError.LOTTO_SIZE) {
-			throw new IllegalArgumentException(LottoError.LOTTO_SIZE_ERROR_MESSAGE);
+		if (numbers.size() != Constant.LOTTO_SIZE) {
+			throw new IllegalArgumentException(LottoNumberError.LOTTO_SIZE_ERROR_MESSAGE);
 		}
 	}
 
 	private void validateDuplicateNumber(List<Integer> numbers) {
 		Set<Integer> notDuplicateNumbers = new HashSet<>(numbers);
-		if (notDuplicateNumbers.size() != LottoError.LOTTO_SIZE) {
-			throw new IllegalArgumentException(LottoError.LOTTO_DUPLICATE_ERROR_MESSAGE);
+		if (notDuplicateNumbers.size() != Constant.LOTTO_SIZE) {
+			throw new IllegalArgumentException(LottoNumberError.LOTTO_DUPLICATE_ERROR_MESSAGE);
 		}
 	}
 
 	private void validateNumberRange(List<Integer> numbers) {
 		int rightRangeNumberCount = (int)numbers.stream()
-			.filter(num -> LottoError.LOTTO_START_RANGE <= num && num <= LottoError.LOTTO_END_RANGE).count();
-		if (rightRangeNumberCount != LottoError.LOTTO_SIZE) {
-			throw new IllegalArgumentException(LottoError.LOTTO_RANGE_ERROR_MESSAGE);
+			.filter(num -> Constant.MIN_VALUE <= num && num <= Constant.MAX_VALUE).count();
+		if (rightRangeNumberCount != Constant.LOTTO_SIZE) {
+			throw new IllegalArgumentException(LottoNumberError.LOTTO_RANGE_ERROR_MESSAGE);
 		}
 	}
 

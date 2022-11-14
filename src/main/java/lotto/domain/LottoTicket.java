@@ -6,11 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.lottoConstant.Constant;
 
 public class LottoTicket {
-	private static final int START_RANGE = 1;
-	private static final int END_RANGE = 45;
-	private static final int LOTTO_COUNT = 6;
 	private final List<Lotto> lottoTickets = new ArrayList<>();
 
 	public LottoTicket(int ticketNumber) {
@@ -20,7 +18,7 @@ public class LottoTicket {
 	private void createLottoTickets(int ticketNumber) {
 		for (int i = 0; i < ticketNumber; i++) {
 			List<Integer> lottoNumber = new ArrayList<>(
-				Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, LOTTO_COUNT));
+				Randoms.pickUniqueNumbersInRange(Constant.MIN_VALUE, Constant.MAX_VALUE, Constant.LOTTO_SIZE));
 			Collections.sort(lottoNumber);
 			Lotto lotto = new Lotto(lottoNumber);
 			lottoTickets.add(lotto);
