@@ -21,6 +21,10 @@ public class LottoIssuer {
         return new Lottos(createLottos(numberOfLottos));
     }
 
+    public static PrizeLotto createPrizeLotto(List<Integer> numbers, int bonusNumber) {
+        return new PrizeLotto(numbers, bonusNumber);
+    }
+
     private static int getNumberOfLottos(int purchasePrice) {
         return purchasePrice / LOTTO_PRICE;
     }
