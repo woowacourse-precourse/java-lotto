@@ -6,39 +6,28 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public enum Rank {
-    FIRST(6, 0, 2000000000, 1),
-    SECOND(5, 1, 30000000, 2),
-    THIRD(5, 0, 1500000, 3),
-    FOURTH(4, 0, 50000, 4),
-    FIFTH(3, 0, 5000, 5),
-    NONE(0, 0, 0, 0);
+    FIRST(2000000000, "6개 일치"),
+    SECOND(30000000, "5개 일치, 보너스 볼 일치"),
+    THIRD(1500000, "5개 일치"),
+    FOURTH(50000, "4개 일치"),
+    FIFTH(5000, "3개 일치"),
+    NONE(0, "");
 
-    private Integer matchedCount;
-    private Integer bonusCount;
     private Integer amount;
-    private Integer rankNumber;
+    private String criteria;
 
-    Rank(Integer matchedCount, Integer bonusCount, Integer amount, Integer rankNumber){
-        this.matchedCount = matchedCount;
-        this.bonusCount = bonusCount;
+
+    Rank(Integer amount, String criteria) {
         this.amount = amount;
-        this.rankNumber = rankNumber;
-    }
-
-    public Integer getMatchedCount() {
-        return matchedCount;
-    }
-
-    public Integer getBonusCount() {
-        return bonusCount;
+        this.criteria = criteria;
     }
 
     public Integer getAmount() {
         return amount;
     }
 
-    public Integer getRankNumber() {
-        return rankNumber;
+    public String getCriteria(){
+        return criteria;
     }
 
 
