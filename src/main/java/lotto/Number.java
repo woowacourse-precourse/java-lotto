@@ -49,4 +49,19 @@ public class Number {
         return count;
     }
 
+    public void initializeMap() {
+        for (int i = 0; i <= 7; i++) {
+            Win.put(i, 0);
+        }
+    }
+
+    public void map(List<Integer> userLotto, int count) {
+        if (count == 5) {
+            if (userLotto.contains(BonusNumber)) {
+                count = 7;
+            }
+        }
+        Win.put(count, Win.get(count) + 1);
+    }
+
 }
