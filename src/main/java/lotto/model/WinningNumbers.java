@@ -20,7 +20,7 @@ public class WinningNumbers {
 
     public CompareResult judgeMatchOrBonus(Integer number, CompareResult compareResult) {
         if (isWinningNumber(number)) {
-            return compareResult.increaseMatchCount();
+            return compareResult.oneMoreNumberMatched();
         }
         if (isBonusNumber(number)) {
             return compareResult.bonusNumberFound();
