@@ -5,10 +5,11 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class WinningStatisticsCompilerTest {
-
+	@DisplayName("각 등수별 당첨 횟수를 구한다.")
 	@Test
 	void getCountsOfWins() {
 		List<Lotto> lotteries = List.of(
