@@ -4,6 +4,8 @@ import lotto.model.Lottos;
 import lotto.model.WinningInfo;
 
 public class OutputView {
+    public static final String NUMBER_OF_PURCHASED_LOTTOS_MESSAGE_FORMAT = "\n%d개를 구매했습니다.\n";
+    public static final String PROFIT_RATE_MESSAGE_FORMAT = "총 수익률은 %.1f%%입니다.\n";
     private static OutputView instance;
 
     private OutputView() {
@@ -18,8 +20,7 @@ public class OutputView {
     }
 
     public void printNumberOfLottos(int numberOfLottos) {
-        System.out.println();
-        System.out.println(numberOfLottos + "개를 구매했습니다.");
+        System.out.printf(NUMBER_OF_PURCHASED_LOTTOS_MESSAGE_FORMAT, numberOfLottos);
     }
 
     public void printLottos(Lottos lottos) {
@@ -32,6 +33,6 @@ public class OutputView {
     }
 
     public void printProfitRate(double profitRate) {
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", (double) Math.round(profitRate * 10) / 10);
+        System.out.printf(PROFIT_RATE_MESSAGE_FORMAT, (double) Math.round(profitRate * 10) / 10);
     }
 }
