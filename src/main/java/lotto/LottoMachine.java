@@ -1,8 +1,21 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
+    private List<Lotto> lottos = new ArrayList<>();
+
+    public void buyLottos(int count) {
+        for (int idx = 0; idx < count; idx++) {
+            lottos.add(new Lotto(Utils.pickUnique6Numbers()));
+        }
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
     public int getLottoBuyCount(int paidMoney) {
         return paidMoney / LottoInfo.PRICE.getValue();
     }
