@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class LottoGameExceptionHandler {
+
     public static void handleAmountNotThousandsException(int amount) {
         final int LOTTO_PRICE = 1000;
         if (amount % LOTTO_PRICE != 0) {
@@ -37,7 +38,7 @@ public class LottoGameExceptionHandler {
 
     public static void handleNotAscendingOrderException(List<Integer> numbers) {
         for (int i = 1; i < numbers.size(); i++) {
-            if (numbers.get(i-1) > numbers.get(i)) {
+            if (numbers.get(i - 1) > numbers.get(i)) {
                 throw new IllegalArgumentException("[ERROR] Lotto numbers are not sorted.");
             }
         }
