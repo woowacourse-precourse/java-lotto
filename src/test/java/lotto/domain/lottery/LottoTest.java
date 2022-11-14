@@ -3,8 +3,6 @@ package lotto.domain.lottery;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,7 +27,7 @@ class LottoTest {
     @DisplayName("로또 번호와 당첨 번호를 비교합니다")
     void getMatchCount() {
         Lotto lotto = new Lotto(List.of(1, 3, 7, 12, 23, 40));
-        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1, 3, 7 ,9, 16, 23, 26));
+        WinningLotto winningNumbers = new WinningLotto("1,3,7,9,16,23");
 
         int matchCount = lotto.getMatchCount(winningNumbers);
 
