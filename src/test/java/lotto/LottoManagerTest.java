@@ -32,6 +32,6 @@ class LottoManagerTest extends NsTest {
 
     @Override
     public void runMain() {
-        new LottoManager().start();
+        new LottoManager().buyLotto();
     }
 }
