@@ -13,8 +13,10 @@ public class InputView {
 
 	public static int inputMoney() {
 		System.out.println(START_GAME_MESSAGE);
+
 		String number = Console.readLine();
 		validateNumber(number);
+
 		return Integer.parseInt(number);
 	}
 
@@ -30,7 +32,7 @@ public class InputView {
 	public static int inputBonusNumbers() {
 		System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
 
-		String number=Console.readLine();
+		String number = Console.readLine();
 		validateNumber(number);
 
 		return Integer.parseInt(number);
@@ -59,6 +61,5 @@ public class InputView {
 	private static List<Integer> toIntegerList(List<String> numbers) {
 		return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
 	}
-
 
 }

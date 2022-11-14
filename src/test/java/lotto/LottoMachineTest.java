@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import lotto.domain.LottoMachine;
-import lotto.domain.LottoRank;
+
 
 public class LottoMachineTest {
 

@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
 
 import lotto.view.OutputView;
 
@@ -57,8 +57,8 @@ public class LottoReceipt {
 	}
 
 	public void calculateRevenue() {
-		for(LottoRank rank:results.keySet()){
-			revenue+=rank.getReward()*results.get(rank);
+		for (LottoRank rank : results.keySet()) {
+			revenue += rank.getReward() * results.get(rank);
 		}
 	}
 
@@ -66,7 +66,7 @@ public class LottoReceipt {
 		OutputView.printLottoResults(results);
 	}
 
-	public void printYield(Money money){
+	public void printYield(Money money) {
 		OutputView.printLottoYield(revenue, money);
 	}
 }

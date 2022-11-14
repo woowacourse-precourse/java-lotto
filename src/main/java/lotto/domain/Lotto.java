@@ -7,49 +7,48 @@ import lotto.exception.ErrorMessage;
 import lotto.view.OutputView;
 
 public class Lotto {
-    private final List<Integer> numbers;
+	private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
+	public Lotto(List<Integer> numbers) {
+		validate(numbers);
+		this.numbers = numbers;
+	}
 
-    private void validate(List<Integer> numbers) {
-        validateCount(numbers);
-        validateRange(numbers);
-        validateDuplicate(numbers);
-    }
+	private void validate(List<Integer> numbers) {
+		validateCount(numbers);
+		validateRange(numbers);
+		validateDuplicate(numbers);
+	}
 
-    private void validateCount(List<Integer> numbers){
-        if (numbers.size() != LottoRule.NUMBER_COUNT.getValue()){
-            OutputView.printError(ErrorMessage.NUMBER_COUNT_ERROR);
-            throw new IllegalArgumentException();
-        }
-    }
+	private void validateCount(List<Integer> numbers) {
+		if (numbers.size() != LottoRule.NUMBER_COUNT.getValue()) {
+			OutputView.printError(ErrorMessage.NUMBER_COUNT_ERROR);
+			throw new IllegalArgumentException();
+		}
+	}
 
-    private void validateRange(List<Integer> numbers){
-        for(Integer number : numbers){
-            checkRange(number);
-        }
-    }
+	private void validateRange(List<Integer> numbers) {
+		for (Integer number : numbers) {
+			checkRange(number);
+		}
+	}
 
-    private void validateDuplicate(List<Integer> numbers){
-        if(Set.copyOf(numbers).size()!= LottoRule.NUMBER_COUNT.getValue()){
-            OutputView.printError(ErrorMessage.DUPLICATE_NUMBER_ERROR);
-            throw new IllegalArgumentException();
-        }
-    }
+	private void validateDuplicate(List<Integer> numbers) {
+		if (Set.copyOf(numbers).size() != LottoRule.NUMBER_COUNT.getValue()) {
+			OutputView.printError(ErrorMessage.DUPLICATE_NUMBER_ERROR);
+			throw new IllegalArgumentException();
+		}
+	}
 
-    private void checkRange(Integer number){
-        if (number<LottoRule.MIN_NUMBER.getValue() || number>LottoRule.MAX_NUMBER.getValue()){
-            OutputView.printError(ErrorMessage.NUMBER_RANGE_ERROR);
-            throw new IllegalArgumentException();
-        }
-    }
+	private void checkRange(Integer number) {
+		if (number < LottoRule.MIN_NUMBER.getValue() || number > LottoRule.MAX_NUMBER.getValue()) {
+			OutputView.printError(ErrorMessage.NUMBER_RANGE_ERROR);
+			throw new IllegalArgumentException();
+		}
+	}
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
+	public List<Integer> getNumbers() {
+		return numbers;
+	}
 
 }

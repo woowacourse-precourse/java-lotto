@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.exception.ErrorMessage;
-import lotto.view.OutputView;
 
 public class Money {
 

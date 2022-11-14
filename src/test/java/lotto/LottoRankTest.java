@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import lotto.domain.LottoRank;
-import lotto.domain.Money;
+
 
 public class LottoRankTest {
 

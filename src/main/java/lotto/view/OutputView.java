@@ -67,6 +67,6 @@ public class OutputView {
 	}
 
 	public static void printLottoYield(int revenue, Money money) {
-		System.out.printf(LOTTO_YIELD, revenue/(float)money.getAmount()*100);
+		System.out.printf(LOTTO_YIELD, revenue / (float)money.getAmount() * 100);
 	}
 }
