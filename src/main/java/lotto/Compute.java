@@ -113,7 +113,7 @@ public class Compute {
             profit += winRecords.get(winType.winTypeKey) * winType.prizeMoney;
         }
 
-        profit = (float) money / profit;
+        profit = profit / (float) money * 100;
 
         return profit;
     }
