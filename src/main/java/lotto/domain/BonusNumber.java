@@ -3,6 +3,11 @@ package lotto.domain;
 import lotto.constant.LottoConstants;
 
 final class BonusNumber {
+    private static final String OVER_RANGE_MESSAGE = "보너스 숫자에는 " +
+            LottoConstants.LOTTO_END_INCLUSIVE.value() + "보다 큰 숫자가 올 수 없습니다";
+    private static final String UNDER_RANGE_MESSAGE = "보너스 숫자에는 " +
+            LottoConstants.LOTTO_END_INCLUSIVE.value() + "보다 큰 숫자가 올 수 없습니다";
+
     private final int number;
 
     public BonusNumber(int number) {
@@ -12,10 +17,10 @@ final class BonusNumber {
 
     private void validate(int number) {
         if (isOverRange(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(OVER_RANGE_MESSAGE);
         }
         if (isUnderRange(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(UNDER_RANGE_MESSAGE);
         }
     }
 

@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 final class InputValidator {
+    private static final String NULL_MESSAGE = "입력이 null 입니다";
+    private static final String CANNOT_BE_INT = "숫자로 변환될 수 없습니다";
+    private static final String CANNOT_BE_INTEGERS = "형식이 올바르지 않아 숫자들로 변환될 수 없습니다";
     private static final Pattern NUMBER = Pattern.compile("^[0-9]+$");
     private static final Pattern SPLITTER_PATTERN = Pattern.compile("^([0-9],?)+[0-9]$");
 
@@ -16,10 +19,10 @@ final class InputValidator {
 
     private static void canBeInt(String input) {
         if (input == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_MESSAGE);
         }
         if (!NUMBER.matcher(input).matches()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(CANNOT_BE_INT);
         }
     }
 
@@ -33,10 +36,10 @@ final class InputValidator {
 
     private static void canBeIntegers(String input) {
         if (input == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_MESSAGE);
         }
         if (!SPLITTER_PATTERN.matcher(input).matches()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(CANNOT_BE_INTEGERS);
         }
     }
 }

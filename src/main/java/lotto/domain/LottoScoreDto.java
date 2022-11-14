@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.Map;
 
 public final class LottoScoreDto {
+    private static final String NULL_MESSAGE = "prizeCount 에 null 이 포함되어 있습니다";
     private final Map<LottoPrize, Integer> prizeCount;
     private final double rate;
 
@@ -13,24 +14,23 @@ public final class LottoScoreDto {
     }
 
     private void validate(Map<LottoPrize, Integer> prizeCount) {
-        //todo: 메시지 작성
         if (prizeCount == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_MESSAGE);
         }
         if (prizeCount.get(LottoPrize.FIRST_PRIZE) == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_MESSAGE);
         }
         if (prizeCount.get(LottoPrize.SECOND_PRIZE) == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_MESSAGE);
         }
         if (prizeCount.get(LottoPrize.THIRD_PRIZE) == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_MESSAGE);
         }
         if (prizeCount.get(LottoPrize.FOURTH_PRIZE) == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_MESSAGE);
         }
         if (prizeCount.get(LottoPrize.FIFTH_PRIZE) == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_MESSAGE);
         }
     }
 

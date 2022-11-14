@@ -1,6 +1,7 @@
 package lotto.domain;
 
 final class WinningLotto {
+    private static final String DUPLICATE_MESSAGE = "당첨 번호와 보너스 번호가 중복됩니다";
     private final Lotto lotto;
     private final BonusNumber bonusNumber;
 
@@ -12,7 +13,7 @@ final class WinningLotto {
 
     private void validate(BonusNumber bonusNumber) {
         if (lotto.contains(bonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATE_MESSAGE);
         }
     }
 

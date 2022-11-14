@@ -5,6 +5,8 @@ import handler.InputHandler;
 import java.util.List;
 
 public final class InputView {
+    private static final String NULL_MESSAGE = "InputHandler 가 null 입니다";
+
     private final InputHandler inputHandler;
 
     public InputView(InputHandler inputHandler) {
@@ -14,7 +16,7 @@ public final class InputView {
 
     private void validateInputHandler(InputHandler inputHandler) {
         if (inputHandler == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_MESSAGE);
         }
     }
 

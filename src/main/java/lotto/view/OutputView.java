@@ -7,6 +7,7 @@ import lotto.domain.Lottos;
 import lotto.domain.Money;
 
 public final class OutputView {
+    private static final String NULL_MESSAGE = "OutputHandler 가 null 입니다";
     private static final String INPUT_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String LOTTO_AMOUNT_MESSAGE = "\n%d개를 구매했습니다.\n";
     private static final String INPUT_LOTTERY_MESSAGE = "\n 당첨 번호를 입력해 주세요.";
@@ -28,7 +29,7 @@ public final class OutputView {
 
     private void validateOutputHandler(OutputHandler outputHandler) {
         if (outputHandler == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_MESSAGE);
         }
     }
 
