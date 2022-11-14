@@ -79,7 +79,6 @@
 - `calculateReturnRate()` : 사용자의 총 수익률을 계산하는 기능
 - `Printresult()`: 로또 게임의 결과를 출력하는 기능
 
-### 4. Constants Class
-- 프로그램에 사용되는 상수들을 정의해놓은 클래스
+### 4. Constants Enum
+- 로또 게임 결과에 사용되는 상수들을 정의해놓은 Enum
 - 별도의 독립적인 기능은 없다.
-- `java enum` 을 활용하였다.
