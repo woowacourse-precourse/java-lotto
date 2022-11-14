@@ -38,7 +38,7 @@ public class ExceptionHandler {
         }
     }
 
-    public static void checkOverSize(List<Integer> numbers) throws IllegalArgumentException {
+    public static void checkInvalidSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(Error.INVALID_SIZE.getMessage());
         }

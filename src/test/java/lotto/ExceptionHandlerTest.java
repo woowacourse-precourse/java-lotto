@@ -62,7 +62,7 @@ public class ExceptionHandlerTest {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7);
 
         Throwable exception = assertThrows(IllegalArgumentException.class,
-                () -> ExceptionHandler.checkOverSize(numbers));
+                () -> ExceptionHandler.checkInvalidSize(numbers));
 
         assertEquals(exception.getMessage(), Error.INVALID_SIZE.getMessage());
     }
