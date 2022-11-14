@@ -5,6 +5,7 @@ import java.util.List;
 public class Controller {
     public void run() {
         List<Lotto> lottos = getLottos();
+        getWinningLottoNumbers();
     }
 
     private List<Lotto> getLottos() {
@@ -18,5 +19,10 @@ public class Controller {
         OutputView.printLottos(lottos);
 
         return lottos;
+    }
+
+
+    private void getWinningLottoNumbers() {
+        String winningLottoNumber = InputView.getWinningLottoNumbers();
     }
 }
