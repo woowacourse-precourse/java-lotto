@@ -26,27 +26,42 @@ public class LottoGame {
     }
 
     public void start() {
+        inputPurchaseAmount();
+        showLottoTickets();
+        inputWinningNumbers();
+        inputBonusNumber();
+        showStatistics();
+    }
+
+    private void inputPurchaseAmount(){
         System.out.println(GameMessage.PURCHASE_AMOUNT.getMessage());
         userInput = Console.readLine();
         lottoTicketCount = lottoGameController.buyLottoTickets(userInput);
+    }
 
+    private void showLottoTickets() {
         System.out.println(lottoTicketCount + GameMessage.NUMBER_OF_PURCHASES.getMessage());
         userLottoTickets = lottoGameController.saveLottoTickets(lottoTicketCount);
         printLottoTickets();
+    }
 
+    private void inputWinningNumbers() {
         System.out.println(GameMessage.WINNING_NUMBER.getMessage());
         userInput = Console.readLine();
         winningNumbers = lottoGameController.pickWinningNumbers(userInput);
+    }
 
+    private void inputBonusNumber(){
         System.out.println(GameMessage.BONNUS_NUMBER.getMessage());
         userInput = Console.readLine();
         bonusNumber = lottoGameController.pickBonusNumber(userInput);
+    }
 
+    private void showStatistics(){
         System.out.println(GameMessage.WINNIG_STATISTICS.getMessage());
         System.out.println(GameMessage.LINE.getMessage());
         lottoAnalyzer = lottoGameController.lookUpLotto();
         printWinningDetails();
-
         printEarningsRate();
     }
 

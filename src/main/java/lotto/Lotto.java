@@ -1,7 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import lotto.message.ErrorMessage;
