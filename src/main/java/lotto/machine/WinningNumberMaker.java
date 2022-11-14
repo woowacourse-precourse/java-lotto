@@ -1,7 +1,7 @@
 package lotto.machine;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import lotto.message.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
@@ -17,12 +17,12 @@ public class WinningNumberMaker {
     private List<Integer> winningNumbers;
     private int bonusNumber;
 
-    public void make() throws IllegalArgumentException{
+    public void make() throws IllegalArgumentException {
         makeWinningNumbers();
         makeBonusNumber();
     }
 
-    public void makeWinningNumbers() throws IllegalArgumentException{
+    public void makeWinningNumbers() throws IllegalArgumentException {
         requestWinningNumber();
         getWinningNumberInput();
         divideByComma();
@@ -49,6 +49,9 @@ public class WinningNumberMaker {
     public void validateInputSplitByComma() {
         if (this.inputSplitByComma.length != 6) {
             throw new IllegalArgumentException(ErrorMessage.NOT_SIX_NUM.message);
+        }
+        if (Arrays.stream(this.inputSplitByComma).collect(Collectors.toSet()).size() < 6) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_EXIST.message);
         }
         for (String winningNumberStr : inputSplitByComma) {
             validateWinningNumberStr(winningNumberStr);
@@ -115,7 +118,7 @@ public class WinningNumberMaker {
         }
     }
 
-    public int getBonusNumber(){
+    public int getBonusNumber() {
         return bonusNumber;
     }
 }
