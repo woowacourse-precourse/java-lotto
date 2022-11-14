@@ -7,18 +7,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LotteryDrawMachine {
-    private final static int ea = 1000;
+    public final static int ea = 1000;
     User user;
-    List<Lotto> lottos = new ArrayList<>();
+    List<Lotto> lottos;
+    UIManager ui = new UIManager();
+    int numOfPurchasableLotto;
+    WinningNumber wn;
 
 
-    public LotteryDrawMachine(User user) {
-        this.user = user;
+    public LotteryDrawMachine() {
+        user = new User(ui.enterPurchaseAmount());
+        lottos = generateLotto();
+        ui.buyLottos(numOfPurchasableLotto, lottos);
+        String winningNumber = ui.enterWinningNumber();
+        String bonusNumber = ui.enterBonusNumber();
+        wn = new WinningNumber(winningNumber, bonusNumber);
+        ui.winningStat(user);
     }
 
     // 유저 금액만큼 로또 생성
     public List<Lotto> generateLotto() {
-        int numOfPurchasableLotto = user.getPurchaseAmount() / ea;
+        lottos = new ArrayList<>();
+        numOfPurchasableLotto = user.getPurchaseAmount() / ea;
+
         for (int i = 0; i < numOfPurchasableLotto; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LotteryRules.START_INCLUSIVE.getNumber(),
                     LotteryRules.END_INCLUSIVE.getNumber(), LotteryRules.COUNT.getNumber());

@@ -14,7 +14,7 @@ class LotteryDrawMachineTest {
     @DisplayName("금액에 맞게 로또를 샀는가")
     public void numOfLottoTest() {
         User user = new User(8000);
-        LotteryDrawMachine ldm = new LotteryDrawMachine(user);
+        LotteryDrawMachine ldm = new LotteryDrawMachine();
         List<Lotto> lottos = ldm.generateLotto();
 
         assertThat(lottos.size()).isEqualTo(8);
