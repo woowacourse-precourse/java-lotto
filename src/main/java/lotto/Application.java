@@ -28,7 +28,7 @@ public class Application {
     }
 
     private void firstStep() {
-        userService.setInputMoney(user, manager);
+        userService.setInputMoney(user);
         managerService.changeLottos(user);
     }
 

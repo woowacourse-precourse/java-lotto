@@ -74,27 +74,27 @@ public class User {
     }
 
     public void setRankFifth() {
-        ranks.put(Number.FIVE, ranks.get(Number.FIVE) + 1);
+        ranks.put(Number.FIVE, ranks.get(Number.FIVE) + Number.ONE.getValue());
         addWinningAmount(Number.FIFTH_WINNING_AMOUNT.getValue());
     }
 
     public void setRankFourth() {
-        ranks.put(Number.FOUR, ranks.get(Number.FOUR) + 1);
+        ranks.put(Number.FOUR, ranks.get(Number.FOUR) + Number.ONE.getValue());
         addWinningAmount(Number.FOURTH_WINNING_AMOUNT.getValue());
     }
 
     public void setRankThird() {
-        ranks.put(Number.THREE, ranks.get(Number.THREE) + 1);
+        ranks.put(Number.THREE, ranks.get(Number.THREE) + Number.ONE.getValue());
         addWinningAmount(Number.THIRD_WINNING_AMOUNT.getValue());
     }
 
     public void setRankSecond() {
-        ranks.put(Number.TWO, ranks.get(Number.TWO) + 1);
+        ranks.put(Number.TWO, ranks.get(Number.TWO) + Number.ONE.getValue());
         addWinningAmount(Number.SECOND_WINNING_AMOUNT.getValue());
     }
 
     public void setRankFirst() {
-        ranks.put(Number.ONE, ranks.get(Number.ONE) + 1);
+        ranks.put(Number.ONE, ranks.get(Number.ONE) + Number.ONE.getValue());
         addWinningAmount(Number.FIRST_WINNING_AMOUNT.getValue());
     }
 }

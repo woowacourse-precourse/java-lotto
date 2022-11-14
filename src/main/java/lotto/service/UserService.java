@@ -12,9 +12,9 @@ public class UserService {
 
     public void calculateYield(User user) {
         double yield = user.getWinningAmount() / user.getMoney();
-        yield *= 1000;
+        yield *= Number.THOUSAND.getValue();
         yield = Math.round(yield);
-        yield /= 10;
+        yield /= Number.THOUSAND.getValue();
         user.setYield(yield);
     }
 
@@ -36,14 +36,13 @@ public class UserService {
         }
     }
 
-    public void setInputMoney(User user, Manager manager) throws IllegalArgumentException {
+    public void setInputMoney(User user) throws IllegalArgumentException {
         System.out.println(Message.INPUT_PURCHASE_AMOUNT_MESSAGE);
         String input = InputUtil.getUserInput();
         try {
             ExceptionHandler.checkValidationMoney(input);
             double money = Double.parseDouble(input);
             user.setMoney(money);
-
         } catch (IllegalArgumentException illegalArgumentException) {
             OutputUtil.printInputWinningNumbersError();
             throw illegalArgumentException;

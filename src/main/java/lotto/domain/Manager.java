@@ -30,8 +30,8 @@ public class Manager {
         List<Integer> lottoNumbers = userLotto.getNumbers();
 
         int correctCount = 0;
-        for (int i = 0; i < lottoNumbers.size(); i++) {
-            Integer userLottoNumber = lottoNumbers.get(i);
+        for (int index = 0; index < lottoNumbers.size(); index++) {
+            Integer userLottoNumber = lottoNumbers.get(index);
             if (isCorrectNumber(userLottoNumber)) {
                 correctCount++;
             }
