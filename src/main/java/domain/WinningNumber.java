@@ -10,6 +10,8 @@ import java.util.StringTokenizer;
 public class WinningNumber {
 
     private final int winning_cnt = 6;
+    private final int MIN_NUMBER = 1;
+    private final int MAX_NUMBER = 45;
 
     public List<Integer> validateWinningNumbers(String input){
         notNumber(input);
@@ -39,7 +41,7 @@ public class WinningNumber {
 
     public void numberRange(List<Integer> list){
         for(int num : list){
-            if(num < 1 || num > 45){
+            if(num < MIN_NUMBER || num > MAX_NUMBER){
                 throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_NUMBER_RANGE.getErrorMessage());
             }
         }
