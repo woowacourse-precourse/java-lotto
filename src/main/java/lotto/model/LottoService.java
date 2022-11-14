@@ -20,11 +20,7 @@ public class LottoService {
     }
 
     private List<Integer> getNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        for (Integer number : createLottoNumbers()) {
-            numbers.add(number);
-        }
-        return numbers;
+        return new ArrayList<>(createLottoNumbers());
     }
 
     private List<Integer> createLottoNumbers() {
