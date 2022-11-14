@@ -23,18 +23,20 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         final String INPUT_PATTERN = "^[1-9]$|^[1-3][0-9]$|^4[0-5]$";
+        final String SIZE_DUPLICATE_EXCEPTION_MESSAGE = "[ERROR] 중복된 숫자 또는 6개의 숫자가 입력되지 않았습니다.";
+        final String RANGE_EXCEPTION_MESSAGE = "1-45를 벗어나는 문자를 입력할 수 업습니다.";
 
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
 
         if (uniqueNumbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(SIZE_DUPLICATE_EXCEPTION_MESSAGE);
         }
 
         for (int number : numbers) {
             boolean isMatch = Pattern.matches(INPUT_PATTERN, Integer.toString(number));
 
             if (!isMatch) {
-                throw new IllegalArgumentException("[ERROR]");
+                throw new IllegalArgumentException(RANGE_EXCEPTION_MESSAGE);
             }
         }
     }
