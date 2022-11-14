@@ -11,7 +11,7 @@ public class Statistic {
     private final List<Lotto> userLotto;
     private final LuckyNumbers luckyNumbers;
     private final LinkedHashMap<Rank, Integer> result = new LinkedHashMap<>();
-    private Long profitRate;
+    private double profitRate;
 
     public Statistic(List<Lotto> userLotto, LuckyNumbers luckyNumbers,int amount){
         this.userLotto = userLotto;
@@ -39,14 +39,14 @@ public class Statistic {
             sum += (long) rank.getPrize() * result.get(rank);
         }
 
-        profitRate = sum / amount * 100;
+        profitRate = (double) sum / amount * 100;
     }
 
     public int getRankCount(Rank rank) {
         return result.getOrDefault(rank, 0);
     }
 
-    public long getProfitRate() {
+    public double getProfitRate() {
         return profitRate;
     }
 

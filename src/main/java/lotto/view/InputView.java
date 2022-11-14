@@ -26,7 +26,7 @@ public class InputView {
             validate(input);
         } catch (Exception exception) {
             OutputView.showError(exception);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
 
         return Integer.parseInt(input);

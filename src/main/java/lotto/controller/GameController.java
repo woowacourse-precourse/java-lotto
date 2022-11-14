@@ -11,27 +11,24 @@ import lotto.view.OutputView;
 import java.util.List;
 
 public class GameController {
-    private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
-
     public void run() {
 
         final Payment payment = makePayment();
         final List<Lotto> userLotto = issueLotto(payment.getTicket());
-        outputView.showLotto(userLotto);
+        OutputView.showLotto(userLotto);
 
         final LuckyNumbers luckyNumbers = makeLuckyNumbers();
         final Statistic statistic = makeStatistic(userLotto,luckyNumbers, payment.getAmount());
-        outputView.showStatistic(statistic);
+        OutputView.showStatistic(statistic);
     }
 
 
     private Payment makePayment() {
-        return new Payment(inputView.inputPayment());
+        return new Payment(InputView.inputPayment());
     }
 
     private LuckyNumbers makeLuckyNumbers() {
-        return LottoFactory.createLuckyNumbers(inputView.inputLuckyBalls(), inputView.inputBonus());
+        return LottoFactory.createLuckyNumbers(InputView.inputLuckyBalls(), InputView.inputBonus());
     }
 
     private List<Lotto> issueLotto(int tickets) {
