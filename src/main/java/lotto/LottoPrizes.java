@@ -41,4 +41,7 @@ public enum LottoPrizes {
     public static double purchasingPrice() {
         return Payment.LOTTO_PRICE;
     }
+    public int getCondition() {
+        return condition;
+    }
 }
