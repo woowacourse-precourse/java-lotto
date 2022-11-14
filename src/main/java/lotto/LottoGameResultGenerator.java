@@ -36,13 +36,12 @@ public class LottoGameResultGenerator {
                                                 WinningNumbers winningNumbers,
                                                 BonusNumber bonusNumber) {
         for (Lotto lotto : lottos) {
-            // winningCount세는 것도 update안에 넣는 게 어떨지?
-            int winningCount = getWinningCount(lotto, winningNumbers);
+            int winningCount = calculateWinningCount(lotto, winningNumbers);
             updateWinningDetails(lotto, bonusNumber, winningCount);
         }
     }
 
-    private int getWinningCount(Lotto lotto, WinningNumbers winningNumbers) {
+    private int calculateWinningCount(Lotto lotto, WinningNumbers winningNumbers) {
         int winningCount = 0;
         for (int number : winningNumbers.getNumbers()) {
             if (lotto.contains(number)) {
