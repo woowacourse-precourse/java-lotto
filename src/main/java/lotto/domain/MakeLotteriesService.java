@@ -8,9 +8,13 @@ import lotto.model.Lotto;
 public class MakeLotteriesService {
     private List<Lotto> lotteries;
 
-    public void makeLotteries(int lotteriesNumber){
+    public MakeLotteriesService(int lotteriesNumber){
+        makeLotteries(lotteriesNumber);
+    }
+
+    private void makeLotteries(int lotteriesNumber){
         lotteries = new LinkedList<>();
-        for (int lottoCount = 0; lottoCount < lotteriesNumber; lotteriesNumber++){
+        for (int lottoCount = 0; lottoCount < lotteriesNumber; lottoCount++){
             lotteries.add(makeLotto());
         }
     }
