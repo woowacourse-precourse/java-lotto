@@ -25,10 +25,10 @@ public class LottoGame {
     }
 
     public void play() {
-        int sumlotto = purchase.puchaseLotto(); // 로또 구매금액
-        List<Lotto> lottos = getpurchaseLotto(sumlotto);// 로또를 담은 리스트
-        List<Integer> winningNum = Winningnum.getWinningNum(); // 당첨번호 입력
-        int bonusNum = Winningnum.getBonusNum(winningNum); // 보너스번호 입력
+        int sumlotto = purchase.puchaseLotto();
+        List<Lotto> lottos = getpurchaseLotto(sumlotto);
+        List<Integer> winningNum = Winningnum.getWinningNum();
+        int bonusNum = Winningnum.getBonusNum(winningNum);
         Map<Integer, Integer> map = result.getwinningResult(lottos, winningNum, bonusNum);
         showStatistic(map, sumlotto);
     }
