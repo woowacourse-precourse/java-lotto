@@ -14,6 +14,23 @@ public enum LotteryRank {
     private int numberOfMatches;
     private int reward;
 
+    public static LotteryRank findRank (int numberOfMatches, boolean hasBonusNumber) {
+        if (numberOfMatches == SECOND.getNumberOfMatches()) {
+            if (hasBonusNumber) {
+                return LotteryRank.SECOND;
+            }
+            return LotteryRank.THIRD;
+        }
+
+        for (LotteryRank rank : LotteryRank.values()) {
+            if (rank.getNumberOfMatches() == numberOfMatches) {
+                return rank;
+            }
+        }
+
+        return BEFORE_DRAW;
+    }
+
     private LotteryRank (int numberOfMatches, int reward) {
         this.numberOfMatches = numberOfMatches;
         this.reward = reward;
