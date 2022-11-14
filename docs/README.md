@@ -78,7 +78,7 @@
 게임의 실행과 전반적인 흐름을 담당
 
 - [ ] 게임 실행 - run
-    - [ ] 로또 구입 금액 입력 - inputPurchaseAmount
+    - [x] 로또 구입 금액 입력 - inputPurchaseAmount
       - [x] 문자열 번호를 숫자 형식으로 변환 - formatStringToNumber
         - [x] 구입 금액이 숫자인지 확인 - checkNumericString
         - [x] 1,000원으로 나누어 떨어지는지 확인 - checkDivisibleThousand

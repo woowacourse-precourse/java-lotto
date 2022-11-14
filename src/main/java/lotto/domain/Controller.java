@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import lotto.Lotto;
 import lotto.utils.Logger;
@@ -25,7 +26,9 @@ public class Controller {
     }
 
     private int inputPurchaseAmount() {
-        return 0;
+        System.out.println("구입금액을 입력해 주세요.");
+        String numericString = Console.readLine();
+        return formatStringToNumber(numericString);
     }
 
     private int formatStringToNumber(String numericString) {
