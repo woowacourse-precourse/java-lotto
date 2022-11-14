@@ -1,5 +1,6 @@
-package lotto;
+package game;
 
+import lotto.MakeLotto;
 import user.BuyLotto;
 import user.Input;
 
