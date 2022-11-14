@@ -15,7 +15,7 @@ public class View {
         String[] splitInput = input.split(",");
         for (String value : splitInput) {
             try {
-                int numbers = Integer.parseInt(value);
+                int number = Integer.parseInt(value);
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("[ERROR] 숫자만 입력이 가능합니다");
             }
@@ -47,5 +47,13 @@ public class View {
             throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자만 입력이 가능합니다");
         }
     }
+    public int getMoneyInput() {
+        String moneyString = Console.readLine();
+        validateIsNumber(moneyString);
+        int money = Integer.parseInt(moneyString);
+        validateIsDivisible(money);
+        return money;
+    }
+
 }
 
