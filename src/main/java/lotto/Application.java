@@ -9,25 +9,32 @@ public class Application {
     private static final int minNumber = 1;
     private static final int maxNumber = 45;
     private static final int numberCount = 6;
+    private static final Ui ui = new Ui();
+    private static List<LottoNumber> buyList;
+    private static int money;
+
 
     public static void main(String[] args) {
         Application application = new Application();
-
         try {
-            application.run();
+            application.buyLottoRun();
+            application.lottoResultRun();
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void run() {
-        Ui ui = new Ui();
-        int money = ui.moneyInput();
-        List<LottoNumber> buyList = buyLotto(money);
+    public void buyLottoRun() {
+        money = ui.moneyInput();
+        buyList = buyLotto(money);
         ui.buyLottoOutput(buyList);
+    }
 
+    public void lottoResultRun() {
         List<Integer> lotto = ui.lottoInput();
         int bonus = ui.bonusInput(lotto);
+
         List<Integer> lottoResult = getLottoResult(buyList, lotto, bonus);
         double totalProfit = getTotalProfit(money, lottoResult);
 
