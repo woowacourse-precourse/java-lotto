@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.io.Output;
+
 import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,6 +29,8 @@ public class Statistics {
             compareNum(quickPick, winningNumWithBonusList);
         }
         double revenue = (totalPrize / (double) purchaseAmt) * 100;
+
+        Output.printWinningStatistics(rankMap, revenue);
     }
 
     private void compareNum(Lotto quickPick, LinkedList<Integer> winningNumWithBonusList) {
