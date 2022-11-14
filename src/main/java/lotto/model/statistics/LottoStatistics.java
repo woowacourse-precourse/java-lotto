@@ -27,16 +27,18 @@ public class LottoStatistics {
             stringBuilder.append(lottoResult.getDescription())
                     .append(" - ")
                     .append(resultCount)
-                    .append("개\n");
+                    .append("개");
+
+            if(lottoResult.ordinal() != LottoResult.FIRST.ordinal()) {
+                stringBuilder.append("\n");
+            }
         }
         return stringBuilder.toString();
     }
 
     public String getReturnRateDescription() {
         AtomicInteger totalPrize = new AtomicInteger();
-        resultMap.forEach((lottoResult, count) -> {
-            totalPrize.addAndGet(lottoResult.getPrize() * count);
-        });
+        resultMap.forEach((lottoResult, count) -> totalPrize.addAndGet(lottoResult.getPrize() * count));
         float returnRate = (totalPrize.floatValue() / (float) payment.getAmount());
 
         return "총 수익률은 " + decimalFormatter.format(returnRate) + "%입니다.";
