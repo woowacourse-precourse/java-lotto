@@ -23,7 +23,7 @@ public class LottoService {
         List<List<Integer>> randomNumbers = Utils.createRandomNumbers(NUM_MIN, NUM_MAX, LOTTO_SIZE, numOfLottoBuying);
         Lottos lottos = new Lottos(randomNumbers);
 
-        OutputView.printLottos(numOfLottoBuying ,lottos.toString());
+        OutputView.printLottos(numOfLottoBuying, lottos.toString());
         return lottos;
     }
 

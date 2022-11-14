@@ -21,7 +21,7 @@ public class RankCreator {
         NUM_OF_MATCH_AND_RANK.put(FIRST_SCORE, Rank.FIRST);
     }
 
-    public static Rank create(double numOfMatch) {
+    static Rank create(double numOfMatch) {
         return NUM_OF_MATCH_AND_RANK.getOrDefault(numOfMatch, Rank.NOTHING);
     }
 }

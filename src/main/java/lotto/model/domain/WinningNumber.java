@@ -39,7 +39,7 @@ public class WinningNumber {
                 .collect(Collectors.toList());
     }
 
-    public List<Rank> collectRanks(List<Lotto> lottos) {
+    List<Rank> collectRanks(List<Lotto> lottos) {
         return lottos.stream()
                 .map(this::createRank)
                 .collect(Collectors.toList());

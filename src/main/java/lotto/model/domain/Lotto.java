@@ -66,13 +66,13 @@ public class Lotto {
         return LEFT_BRACKETS + numbersToString + RIGHT_BRACKETS + NEW_LINE;
     }
 
-    public int countMatch(Lotto lotto) {
+    int countMatch(Lotto lotto) {
         return (int) numbers.stream()
                 .filter(lotto::contains)
                 .count();
     }
 
-    public boolean contains(int number) {
+    boolean contains(int number) {
         return numbers.contains(number);
     }
 
