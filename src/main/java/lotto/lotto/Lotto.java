@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import lotto.exception.LottoException;
+import lotto.ui.Message;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,12 +15,13 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         duplicationNumbers(numbers);
+        validationNumbersInRange(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new LottoException(this.getClass());
+            throw new LottoException(Message.NUMBERS_SIZE_SIX_FIT_ERROR);
         }
     }
 
@@ -52,9 +54,9 @@ public class Lotto {
         validate(new ArrayList<>(checkNumbers));
     }
 
-    public boolean duplicationBonusNumber(List<Integer> numbers, int number) { // 보너스 번호가 이미 배열에 있는지
-        if (numbers.contains(number)) {
-            throw new LottoException(this.getClass());
+    public boolean duplicationBonusNumber(int number) { // 보너스 번호가 이미 배열에 있는지
+        if (this.numbers.contains(number)) {
+            throw new LottoException(Message.HAS_BONUS_NUMBER_ERROR);
         }
         return true;
     }
@@ -67,7 +69,7 @@ public class Lotto {
 
     public void validationNumberInRange(int number) { // 입력한 로또 부분이 1 ~ 45의 값인지
         if (!(1 <= number && number <= 45)) {
-            throw new LottoException(this.getClass());
+            throw new LottoException(Message.NO_NUMBER_RANGE_ERROR);
         }
     }
 }
