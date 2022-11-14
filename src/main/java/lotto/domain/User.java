@@ -2,12 +2,15 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.lang.Character.isDigit;
 
 public class User {
     static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
+    static final String INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
 
     private int userMoney;
     private List<Integer> winningNumbers;
@@ -15,7 +18,6 @@ public class User {
 
 
     public User(int userMoney, List<Integer> winningNumbers, int bonusNumber) {
-        validateUserMoney(userMoney);
 
         this.userMoney = userMoney;
         this.winningNumbers = winningNumbers;
@@ -25,21 +27,38 @@ public class User {
     public int inputMoney() {
         System.out.println(INPUT_MONEY);
 
-        String money = Console.readLine();
-        checkInteger(money);
+        String inputNum = Console.readLine();
+        checkInteger(inputNum);
 
-        return Integer.parseInt(money);
-    }
+        int userMoney = Integer.parseInt(inputNum);
+        checkUserMoneyUnit(userMoney);
 
-    public void validateUserMoney(int userMoney) {
-        if (userMoney % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액을 1000원 단위로 입력해주세요.");
-        }
+        return userMoney;
     }
 
     public void checkInteger(String number) {
         if(!number.matches("-?\\d+(\\.\\d+)?")) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+        }
+    }
+
+    public void checkUserMoneyUnit(int userMoney) {
+        if (userMoney % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액을 1000원 단위로 입력해주세요.");
+        }
+    }
+
+    public void checkWinningNumbers(String inputNumbers) {
+        for (char c : inputNumbers.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                checkComma(c);
+            }
+        }
+    }
+
+    public void checkComma(char c) {
+        if (c != ',') {
+            throw new IllegalArgumentException("[ERROR] 쉼표를 기준으로 구분해주세요");
         }
     }
 }
