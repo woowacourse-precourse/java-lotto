@@ -1,22 +1,22 @@
 package lotto;
 
-public class Money {
-    private static final int MIN_MONEY = 1000;
+public class LottoMachine {
     private static final String AMOUNT_IS_NOT_UNDER_1000_MESSAGE = "[ERROR] 로또 구입 금액이 1,000원 미만이 될 수 없습니다.";
+    private static final int LOTTO_PER_PRICE = 1000;
 
-    private int amount;
+    private int lottoCount;
 
-    public Money(int amount) {
-        validateAmountIsNotUnder1000(amount);
-        this.amount = amount;
+    public LottoMachine() {
     }
 
-    public int getAmount() {
-        return amount;
+    public int insert(int money) {
+        validateAmountIsNotUnder1000(money);
+        lottoCount = money / LOTTO_PER_PRICE;
+        return lottoCount;
     }
 
     private void validateAmountIsNotUnder1000(int amount) {
-        if (amount < MIN_MONEY) {
+        if (amount < LOTTO_PER_PRICE) {
             throw new IllegalArgumentException(AMOUNT_IS_NOT_UNDER_1000_MESSAGE);
         }
     }
