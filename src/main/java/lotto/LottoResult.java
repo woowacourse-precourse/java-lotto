@@ -13,12 +13,12 @@ public class LottoResult {
         this.ranks = ranks;
     }
 
-    public float calculateEarningRatio(Integer buyPrice) {
+    public float calculateEarningRatio(long buyPrice) {
         float ratio;
         long totalWinning = 0;
 
         for (Rank rank : Rank.values()) {
-            totalWinning = totalWinning + Long.valueOf(rank.getWinningMoney()) * ranks.getOrDefault(rank, 0);
+            totalWinning = totalWinning + (long)rank.getWinningMoney() * ranks.getOrDefault(rank, 0);
         }
         ratio = PERCENT_CONVERT_NUMBER * (totalWinning / (Float.valueOf(buyPrice)));
 

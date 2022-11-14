@@ -42,7 +42,7 @@ public class View {
         }
     }
 
-    public static void printLottoResult(LottoResult result, Integer buyPrice) {
+    public static void printLottoResult(LottoResult result, Long buyPrice) {
         System.out.printf("\n" + RESULT_STATISTICS_MESSAGE + "\n" + RESULT_STATISTICS_LINE + "\n");
         for (Rank rank : Rank.values()) {
             printRankResult(rank, result);

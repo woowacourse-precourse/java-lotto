@@ -15,7 +15,7 @@ public class GameManager {
 
     public void run() {
         View.printPriceMessage();
-        Integer price = inputPrice();
+        Long price = inputPrice();
         List<Lotto> publishedLottos = publishLottos(getCountFromPrice(price));
         View.printPublishedLottos(publishedLottos);
 
@@ -30,8 +30,8 @@ public class GameManager {
         View.printLottoResult(result, price);
     }
 
-    private Integer getCountFromPrice(Integer Price) {
-        Integer lottoCount = Price / PRICE_UNIT.getNumber();
+    private Integer getCountFromPrice(Long Price) {
+        Integer lottoCount = (int)(Price / PRICE_UNIT.getNumber());
         return lottoCount;
     }
 

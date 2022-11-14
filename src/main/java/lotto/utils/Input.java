@@ -9,12 +9,12 @@ import static lotto.enums.LottoCondition.PRICE_UNIT;
 public class Input {
     private static final int REMINDER_ZERO = 0;
 
-    public static Integer inputPrice() {
+    public static Long inputPrice() {
         String price = readLine();
         validateIsNumber(price);
         validatePrice(price);
 
-        return Integer.parseInt(price);
+        return Long.parseLong(price);
     }
 
     public static List<Integer> inputWinningLotto() {
