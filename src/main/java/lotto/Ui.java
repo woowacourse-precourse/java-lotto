@@ -29,4 +29,13 @@ public class Ui {
 
         return changeNumberType.getNumber();
     }
+
+    public void buyLottoOutput(List<LottoNumber> buyList) {
+        int size = buyList.size();
+        System.out.println(size + "개를 구매했습니다.");
+
+        for (LottoNumber lottoNumber : buyList) {
+            System.out.println(lottoNumber.toString());
+        }
+    }
 }
