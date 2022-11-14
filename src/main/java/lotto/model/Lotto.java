@@ -16,6 +16,11 @@ public class Lotto {
     public static final int LOTTO_FOURTH_REWARD = 50000;
     public static final int LOTTO_FIFTH_REWARD = 5000;
     public static final int LOTTO_LOSE_REWARD = 0;
+    public static final int THREE = 3;
+    public static final int FOUR = 4;
+    public static final int FIVE = 5;
+    public static final int SIX = 6;
+
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
