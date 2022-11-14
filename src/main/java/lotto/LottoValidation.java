@@ -1,11 +1,9 @@
 package lotto;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Validation {
+public class LottoValidation {
     public static final int RANGE_START = 1;
     public static final int RANGE_END = 45;
     public static final int LOTTO_COUNT = 6;

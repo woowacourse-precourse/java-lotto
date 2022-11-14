@@ -11,9 +11,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Validation.numberCountValidation(numbers);
-        Validation.numberRangeValidation(numbers);
-        Validation.numberDuplicateValidation(numbers);
+        LottoValidation.numberCountValidation(numbers);
+        LottoValidation.numberRangeValidation(numbers);
+        LottoValidation.numberDuplicateValidation(numbers);
     }
     public Long sameNumber(Lotto lotto,Integer bonus){
         Long score = numbers.stream()
