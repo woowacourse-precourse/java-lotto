@@ -3,6 +3,8 @@ package lotto.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.Lotto;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MakeGames {
@@ -20,7 +22,13 @@ public class MakeGames {
 
     private Lotto makeLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Lotto lotto = new Lotto(numbers);
+        Lotto lotto = new Lotto(sortNumber(numbers)); // 로또 번호를 오름차순으로 저장하기위해 솔트 해준다.
         return lotto;
+    }
+    private List<Integer> sortNumber(List<Integer> numbers) {
+        List<Integer> result = new ArrayList<Integer>();
+        result.addAll(numbers);
+        Collections.sort(result);
+        return result;
     }
 }
