@@ -1,7 +1,7 @@
 package lotto.domain.lotto;
 
-import lotto.domain.jackpot.Jackpot;
 import lotto.domain.jackpot.JackpotResult;
+import lotto.domain.prize.PrizeResult;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -49,7 +49,6 @@ public class Lotto {
             Lotto lotto = new Lotto(one_of_lotto);
             compare_list_to_list(lotto, jackpot_number, bonus_number,jr);
         }
-
     }
 
     public static void compare_list_to_list(Lotto lotto, String jackpot_number
@@ -66,7 +65,7 @@ public class Lotto {
         }
         int hit_jk = jr.return_jackpot_count();
         int hit_bn = jr.return_bonus_count();
-
+        PrizeResult.prize_set_by_count(hit_jk,hit_bn);
         jr.reset_count();
     }
 
