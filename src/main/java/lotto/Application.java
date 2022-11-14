@@ -50,8 +50,6 @@ public class Application {
      * 1. lottoRandomNum (Lotto 랜덤 숫자뽑기) 완료 <br/>
      * 숫자 1 ~ 45 Random, 중복되지 않는 숫자 6개 오름차순 저장
      * 
-     * @param i
-     * 
      * @return
      */
     public static List<Integer> lottoRandomNum() {
@@ -107,5 +105,23 @@ public class Application {
             Collections.sort(myLottoNum);
         }
         return myLottoNum;
+    }
+
+    // 보너스 번호 입력
+    /**
+     * 2-1. bonusNum (보너스 번호) 완료
+     * 
+     * @return
+     */
+    public static int bonusNum(List<Integer> myLottoNum) {
+        System.out.print("보너스 번호를 입력해 주세요.");
+        int bonusPick = Integer.parseInt(Console.readLine());
+        int bonusNum = 0;
+
+        if (!myLottoNum.contains(bonusPick)) {
+            bonusNum = bonusPick;
+        }
+
+        return bonusNum;
     }
 }
