@@ -78,8 +78,8 @@ public class User {
     }
 
     private List<Integer> createNumbers() {
-        List<Integer> numbers =Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//        Collections.sort(numbers);
+        List<Integer> numbers =new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(numbers);
         return numbers;
 
     }
