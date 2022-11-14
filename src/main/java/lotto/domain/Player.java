@@ -23,7 +23,6 @@ public class Player {
         checkRange(bonusNumber);
     }
 
-
     public void compare(PrizeCount prizeCount, List<Lotto> lottos, int lottoBonusNumber) {
         boolean hasBonusNumber;
 
@@ -33,10 +32,12 @@ public class Player {
             if (isEqualBonusNumber(lottoBonusNumber)) {
                 hasBonusNumber = Boolean.TRUE;
             }
-            System.out.println("lotto = " + lotto.getMatchingNumber(numbers)+ hasBonusNumber);
-            prizeCount.add(Prize.findPrize(lotto.getMatchingNumber(numbers), hasBonusNumber));
-        }
 
+            Prize prize = Prize.findPrize(lotto.getMatchingNumber(numbers), hasBonusNumber);
+            if (prize != null) {
+                prizeCount.add(prize);
+            }
+        }
     }
 
     public boolean isEqualBonusNumber(int lottoBonusNumber) {
