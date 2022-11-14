@@ -27,6 +27,7 @@ public class WinningNumbers {
         printGuideMessage(GuideMessageType.WINNING_NUMBERS.message);
         this.winningNumbers = convertNumbers();
 
+        System.out.println();
         printGuideMessage(GuideMessageType.BONUS_NUMBER.message);
         String bonusNumber = setNumber();
         validateBonusNumber(bonusNumber);
