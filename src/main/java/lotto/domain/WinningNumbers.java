@@ -24,10 +24,7 @@ public class WinningNumbers {
     }
 
     private List<Integer> validateNumbers(String numbersInput) {
-        validateNumbersIsCorrectInputForm(numbersInput);
-
-        List<Integer> numbers = new ArrayList<>();
-        Arrays.stream(numbersInput.split(",")).forEach(v -> numbers.add(Integer.parseInt(v)));
+        List<Integer> numbers = validateNumbersIsCorrectInputForm(numbersInput);
 
         validateNumbersIsInRange(numbers);
 
@@ -36,8 +33,14 @@ public class WinningNumbers {
         return numbers;
     }
 
-    private void validateNumbersIsCorrectInputForm(String numbersInput){
-        if(!numbersInput.matches("^(\\d,){5}\\d$")){
+    private List<Integer> validateNumbersIsCorrectInputForm(String numbersInput){
+        List<Integer> numbers = new ArrayList<>();
+
+        try{
+            Arrays.stream(numbersInput.split(",")).forEach(v -> numbers.add(Integer.parseInt(v)));
+
+            return numbers;
+        }catch (NumberFormatException e){
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자 6개를 쉼표(,)로 구분해야 합니다.");
         }
     }
@@ -67,8 +70,12 @@ public class WinningNumbers {
         try{
             int bonus = Integer.parseInt(bonusInput);
 
-            if(bonus<LottoGenerator.LOTTO_NUMBER_RANGE_START && bonus>LottoGenerator.LOTTO_NUMBER_RANGE_END){
+            if(bonus<LottoGenerator.LOTTO_NUMBER_RANGE_START || bonus>LottoGenerator.LOTTO_NUMBER_RANGE_END){
                 throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.");
+            }
+
+            if(numbers.contains(bonus)){
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되면 안됩니다.");
             }
 
             return bonus;
