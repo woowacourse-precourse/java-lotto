@@ -32,6 +32,16 @@ public class LottoController {
 
         return getWinningNumbers(inputLottoNumbers, bonusNumber);
     }
+
+    private WinningNumbers getWinningNumbers(Lotto inputLottoNumbers, int bonusNumber) {
+        try {
+            return new WinningNumbers(inputLottoNumbers, bonusNumber);
+        } catch (IllegalArgumentException e) {
+            OutputView.printException(e);
+            return getWinningNumbers(inputLottoNumbers, getBonusNumber());
+        }
+    }
+
     private int getBonusNumber() {
         try {
             return InputView.inputBonusNumber();
