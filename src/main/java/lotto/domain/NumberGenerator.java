@@ -18,7 +18,7 @@ public class NumberGenerator {
 
     private void validate(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입금액은 1,000원 단위로 입력해야 합니다.");
         }
     }
 
