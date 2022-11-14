@@ -11,7 +11,7 @@
 
 - [x] 로또 금액은 숫자이어야 한다.
 - [x] 로또 금액은 1000원 단위이어야 한다.
-- [ ] 사용자가 잘못된 값을 입력할 경우, `IllegalArgumentException`을 발생시켜야 한다.
+- [x] 사용자가 잘못된 값을 입력할 경우, `IllegalArgumentException`을 발생시켜야 한다.
 
 ---
 
