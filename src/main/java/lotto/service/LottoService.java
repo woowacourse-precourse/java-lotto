@@ -10,6 +10,7 @@ import lotto.domain.LottoRepository;
 import lotto.domain.Money;
 import lotto.type.Prize;
 import lotto.view.LottoDto;
+import lotto.view.LottoInputDto;
 import lotto.view.PrizeDto;
 
 public class LottoService {
@@ -40,7 +41,7 @@ public class LottoService {
         Long prizeMoney = prizes.stream()
                 .map(Prize::getPrizeMoney)
                 .reduce(Long::sum)
-                .orElse(1L);
+                .orElse(0L);
         return money.calcYield(prizeMoney);
 
     }
