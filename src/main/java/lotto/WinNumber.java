@@ -13,18 +13,16 @@ public class WinNumber {
 
     private List<Integer> winNumbers = new ArrayList<>();
     private Integer bonusNumber;
-
+    // 겹치는 숫자를 입력했을 때, 예외 발생시키기!
     public void enterWinNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         getWinNumbers(Console.readLine());
     }
 
+
     public void getWinNumbers(String input) {
         String[] numbers = input.split(",");
         validateWinNumbers(numbers);
-        for (String number : numbers) {
-            winNumbers.add(Integer.valueOf(number));
-        }
     }
 
     void validateWinNumbers(String[] numbers) {
@@ -35,6 +33,10 @@ public class WinNumber {
             if (isNotNumeric(number) || isNotInRange(number)) {
                 throw new IllegalArgumentException(ExceptionHandler.WORNG_WIN_NUMBERS);
             }
+            if (winNumbers.contains(Integer.valueOf(number))) {
+                throw new IllegalArgumentException(ExceptionHandler.WORNG_WIN_NUMBERS);
+            }
+            winNumbers.add(Integer.valueOf(number));
         }
     }
 
