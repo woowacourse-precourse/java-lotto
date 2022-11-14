@@ -9,30 +9,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RankTest {
-
-    @Test
+    @ParameterizedTest
     @DisplayName("맞는 로또번호 갯수와 보너스 번호 맞춘 여부가 주어지면, 해당 등수 리턴")
-    void findByCountAndBonus(){
-        //Given
-        int count = 5;
-        boolean isCorrectBonus = false;
-
-        //When
-        Rank rank = Rank.findByCountAndBonus(count, isCorrectBonus);
-        //Then
-        assertThat(rank.name()).isEqualTo("THIRD");
-    }
-
-
-    @Test
-    @DisplayName("5등 안에 못들면 NORANK 리턴")
-    void findByCountAndBonusNORANK(){
-        //Given
-        int count = 2;
-        boolean isCorrectBonus = false;
-        //When
-        Rank rank = Rank.findByCountAndBonus(count, isCorrectBonus);
-        //Then
-        assertThat(rank.name()).isEqualTo("NORANK");
+    @CsvSource({"6,false,FIRST","5,true,SECOND","5,false,THIRD", "4,false,FOURTH","3,false,FIFTH","2,false,NORANK"})
+    void findByCountAndBonus(int count, boolean isCorrectBonus, String expected){
+        String actual = Rank.findByCountAndBonus(count,isCorrectBonus).name();
+        assertThat(actual).isEqualTo(expected);
     }
 }
