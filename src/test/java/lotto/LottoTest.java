@@ -41,4 +41,83 @@ class LottoTest {
 
         assertThatThrownBy(() -> LottoView.isNumber(input)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 1등은 6개 번호가 일치해야 한다.")
+    @Test
+    void checkPrize1() {
+        Lotto winningNumber = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto myLotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+
+        Winning winning = winningNumber.checkLotto(myLotto, 0);
+        Assertions.assertThat(winning).isEqualTo(Winning.SIX);
+    }
+
+    @DisplayName("로또 2등은 5개 번호와 보너스 번호가 일치해야 한다.")
+    @Test
+    void checkPrize2() {
+        Lotto winningNumber = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto myLotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 7));
+
+        Winning winning = winningNumber.checkLotto(myLotto, 7);
+        Assertions.assertThat(winning).isEqualTo(Winning.FIVE_WITH_BONUS);
+    }
+
+    @DisplayName("로또 3등은 5개 번호가 일치해야 한다.")
+    @Test
+    void checkPrize3() {
+        Lotto winningNumber = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto myLotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 10));
+
+        Winning winning = winningNumber.checkLotto(myLotto, 7);
+        Assertions.assertThat(winning).isEqualTo(Winning.FIVE);
+    }
+
+    @DisplayName("로또 4등은 4개 번호가 일치해야 한다.")
+    @Test
+    void checkPrize4() {
+        Lotto winningNumber = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto myLotto = new Lotto(Arrays.asList(1, 2, 3, 4, 30, 40));
+
+        Winning winning = winningNumber.checkLotto(myLotto, 10);
+        Assertions.assertThat(winning).isEqualTo(Winning.FOUR);
+    }
+
+    @DisplayName("로또 5등은 3개 번호가 일치해야 한다.")
+    @Test
+    void checkPrize5() {
+        Lotto winningNumber = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto myLotto = new Lotto(Arrays.asList(1, 2, 3, 40, 41, 42));
+
+        Winning winning = winningNumber.checkLotto(myLotto, 10);
+        Assertions.assertThat(winning).isEqualTo(Winning.THREE);
+    }
+
+    @DisplayName("산 모든 로또의 등수를 계산한다.")
+    @Test
+    void checkLottoAll() {
+        List<Lotto> lottos = new ArrayList<>();
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)));
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 13, 14, 15)));
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 25)));
+        lottos.add(new Lotto(Arrays.asList(30, 31, 32, 33, 34, 35)));
+
+        Lotto winningNumber = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        List<Integer> win = winningNumber.checkLottoAll(lottos, 25);
+        Assertions.assertThat(win).isEqualTo(Arrays.asList(0, 1, 1, 0, 0, 1, 0));
+    }
+
+    @DisplayName("모든 로또의 등수와 수익률 계산 테스트")
+    @Test
+    void checkProfit() {
+        List<Lotto> lottos = new ArrayList<>();
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)));
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 13, 14, 15)));
+        lottos.add(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 25)));
+        lottos.add(new Lotto(Arrays.asList(30, 31, 32, 33, 34, 35)));
+
+        Lotto winningNumber = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        List<Integer> win = winningNumber.checkLottoAll(lottos, 25);
+        String result = Lotto.caculateProfit(win, 4000);
+        Assertions.assertThat(result).isEqualTo("50750125");
+    }
 }
