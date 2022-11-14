@@ -1,41 +1,17 @@
 package lotto.domain;
 
 import lotto.constant.Constant;
-import lotto.constant.ErrorMessage;
-
-import java.util.Arrays;
+import lotto.utils.Validation;
 
 public class Money {
 
     private final int money;
 
     public Money(String money) {
-        checkNumber(money);
-        checkFirstNumberIsNotZero(money);
-        checkThousandMoney(money);
+        Validation.validateCheckNumeric(money, Constant.SPLIT_FOR_MONEY);
+        Validation.validateFirstNumberIsNotZero(money);
+        Validation.checkThousandMoney(money);
         this.money = Integer.parseInt(money);
-    }
-
-    private void checkNumber(String input) {
-        String[] split = input.split(Constant.SPLIT_FOR_MONEY);
-
-        boolean result = Arrays.stream(split).allMatch((alphbet) -> alphbet.charAt(0) >= '0' && alphbet.charAt(0) <= '9');
-        if (!result)
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
-    }
-
-    private void checkFirstNumberIsNotZero(String input) {
-        String[] split = input.split(Constant.SPLIT_FOR_MONEY);
-
-        if (split.length > 1 && Integer.parseInt(split[0]) == 0)
-            throw new IllegalArgumentException(ErrorMessage.FIRST_NUMBER_IS_NOT_ZERO);
-    }
-
-    private void checkThousandMoney(String input) {
-        int price = Integer.parseInt(input);
-
-        if (price % Constant.LOTTO_PRICE != 0)
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_MUST_THOUSAND_PRICE);
     }
 
     public int getNumberOfPurchase() {

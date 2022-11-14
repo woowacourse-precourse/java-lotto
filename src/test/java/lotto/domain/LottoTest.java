@@ -2,7 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Application;
-import lotto.constant.ErrorMessage;
+import lotto.utils.Validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -18,7 +18,7 @@ public class LottoTest extends NsTest {
     void checkInputIsNumber(String input) {
         assertSimpleTest(() -> {
             runException(input);
-            assertThat(output()).contains(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
+            assertThat(output()).contains(Validation.LOTTO_INPUT_MUST_NUMBER);
         });
     }
 
@@ -28,7 +28,7 @@ public class LottoTest extends NsTest {
     void checkInputIsThousand(String input) {
         assertSimpleTest(() -> {
             runException(input);
-            assertThat(output()).contains(ErrorMessage.LOTTO_MUST_THOUSAND_PRICE);
+            assertThat(output()).contains(Validation.LOTTO_MUST_THOUSAND_PRICE);
         });
     }
 
@@ -38,7 +38,7 @@ public class LottoTest extends NsTest {
     void checkFirstNumberIsNotZero(String input) {
         assertSimpleTest(() -> {
             runException(input);
-            assertThat(output()).contains(ErrorMessage.FIRST_NUMBER_IS_NOT_ZERO);
+            assertThat(output()).contains(Validation.FIRST_NUMBER_IS_NOT_ZERO);
         });
     }
 

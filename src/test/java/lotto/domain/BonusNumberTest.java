@@ -2,7 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Application;
-import lotto.constant.ErrorMessage;
+import lotto.utils.Validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,7 +20,7 @@ public class BonusNumberTest extends NsTest {
     void checkBonusNumberInRange(String firstInput, String secondInput, String thirdInput) {
         assertSimpleTest(() -> {
             runException(firstInput, secondInput, thirdInput);
-            assertThat(output()).contains(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
+            assertThat(output()).contains(Validation.LOTTO_INPUT_MUST_NUMBER);
         });
     }
 
@@ -33,7 +33,7 @@ public class BonusNumberTest extends NsTest {
             BonusNumber bonusNumber = new BonusNumber(input);
         })
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorMessage.FIRST_NUMBER_IS_NOT_ZERO);
+                .hasMessageContaining(Validation.FIRST_NUMBER_IS_NOT_ZERO);
     }
 
     @DisplayName("입력받은 보너스 번호가 1~45 안의 값인지")
@@ -44,7 +44,7 @@ public class BonusNumberTest extends NsTest {
             BonusNumber bonusNumber = new BonusNumber(input);
         })
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
+                .hasMessageContaining(Validation.LOTTO_NUMBER_IN_RANGE);
     }
 
     @DisplayName("입력받은 보너스 번호가 당첨번호와 중복이 되선 안된다.")
@@ -53,7 +53,7 @@ public class BonusNumberTest extends NsTest {
     void checkBonusNumberDistinctWinningNumber(String firstInput, String secondInput, String thirdInput) {
         assertSimpleTest(() -> {
             runException(firstInput, secondInput, thirdInput);
-            assertThat(output()).contains(ErrorMessage.BONUS_DISTINCT_WINNING_NUMBER);
+            assertThat(output()).contains(Validation.BONUS_DISTINCT_WINNING_NUMBER);
         });
     }
 

@@ -1,10 +1,9 @@
 package lotto.domain;
 
 import lotto.constant.Constant;
-import lotto.constant.ErrorMessage;
+import lotto.utils.Validation;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,17 +11,17 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateNumberSize(numbers);
-        validateIsDistinct(numbers);
+        Validation.validateNumberSize(numbers);
+        Validation.validateIsDistinct(numbers);
         this.numbers = sortLottoNumbers(numbers);
     }
 
     public Lotto(String winningNumbers) {
-        checkWinningNumber(winningNumbers);
+        Validation.validateCheckNumeric(winningNumbers, Constant.SPLIT_FOR_WINNING_NUMBER);
         List<Integer> convertedNumber = convertToList(winningNumbers);
-        validateNumberSize(convertedNumber);
-        validateIsDistinct(convertedNumber);
-        checkNumberInRange(convertedNumber);
+        Validation.validateNumberSize(convertedNumber);
+        Validation.validateIsDistinct(convertedNumber);
+        Validation.validNumberInRange(convertedNumber);
         this.numbers = sortLottoNumbers(convertedNumber);
     }
 
@@ -30,37 +29,11 @@ public class Lotto {
         return Collections.unmodifiableList(numbers);
     }
 
-    private void validateNumberSize(List<Integer> numbers) {
-        if (numbers.size() != Constant.LOTTO_SIZE) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_SIX);
-        }
-    }
-
-    private void validateIsDistinct(List<Integer> numbers) {
-        long distinctCount = numbers.stream().distinct().count();
-
-        if (numbers.size() != distinctCount) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_DISTINCT);
-        }
-    }
 
     private List<Integer> sortLottoNumbers(List<Integer> numbers) {
         List<Integer> notImmutableList = new ArrayList<>(numbers);
         Collections.sort(notImmutableList);
         return notImmutableList;
-    }
-
-    public void validateDistinctInBonusNumber(int bonusNumber) {
-        if (numbers.contains(bonusNumber))
-            throw new IllegalArgumentException(ErrorMessage.BONUS_DISTINCT_WINNING_NUMBER);
-    }
-
-    public void checkWinningNumber(String input) {
-        String[] split = input.split(Constant.SPLIT_FOR_WINNING_NUMBER);
-
-        boolean result = Arrays.stream(split).allMatch((alphbet) -> alphbet.charAt(0) >= '0' && alphbet.charAt(0) <= '9');
-        if (!result)
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
     }
 
     public List<Integer> convertToList(String numbers) {
@@ -72,12 +45,5 @@ public class Lotto {
         }
 
         return result;
-    }
-
-    public void checkNumberInRange(List<Integer> numbers) {
-        boolean inRange = numbers.stream().allMatch(number -> number >= Constant.LOTTO_MIN_NUMBER && number <= Constant.LOTTO_MAX_NUMBER);
-
-        if (inRange == false)
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
     }
 }

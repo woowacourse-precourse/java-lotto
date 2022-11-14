@@ -3,6 +3,7 @@ package lotto;
 import lotto.domain.*;
 import lotto.constant.Constant;
 import lotto.utils.Ranking;
+import lotto.utils.Validation;
 import lotto.views.Input;
 import lotto.views.Output;
 
@@ -31,7 +32,7 @@ public class GameManager {
 
         winningNumber = new Lotto(input.getWinningNumber());
         bonusNumber = new BonusNumber(input.getBonusNumber());
-        winningNumber.validateDistinctInBonusNumber(bonusNumber.getBonusNumber());
+        Validation.validateDistinctInBonusNumber(winningNumber.getNumbers(), bonusNumber.getBonusNumber());
         prize = new Prize(makePrize());
 
         output.printPrize(prize);

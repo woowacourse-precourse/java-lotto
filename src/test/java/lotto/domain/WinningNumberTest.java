@@ -2,7 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Application;
-import lotto.constant.ErrorMessage;
+import lotto.utils.Validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,7 +21,7 @@ public class WinningNumberTest extends NsTest {
     void checkWinningNumberIsNumeric(String firstInput, String secondInput) {
         assertSimpleTest(() -> {
             runException(firstInput, secondInput);
-            assertThat(output()).contains(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
+            assertThat(output()).contains(Validation.LOTTO_INPUT_MUST_NUMBER);
         });
     }
 
@@ -42,7 +42,7 @@ public class WinningNumberTest extends NsTest {
     void checkWinningNumberSize(String firstInput, String secondInput) {
         assertSimpleTest(() -> {
             runException(firstInput, secondInput);
-            assertThat(output()).contains(ErrorMessage.LOTTO_NUMBER_IS_SIX);
+            assertThat(output()).contains(Validation.LOTTO_NUMBER_IS_SIX);
         });
     }
 
@@ -52,7 +52,7 @@ public class WinningNumberTest extends NsTest {
     void checkWinningNumberDuplicated(String firstInput, String secondInput) {
         assertSimpleTest(() -> {
             runException(firstInput, secondInput);
-            assertThat(output()).contains(ErrorMessage.LOTTO_NUMBER_IS_DISTINCT);
+            assertThat(output()).contains(Validation.LOTTO_NUMBER_IS_DISTINCT);
         });
     }
 
@@ -73,7 +73,7 @@ public class WinningNumberTest extends NsTest {
     void checkWinningNumberInRange(String firstInput, String secondInput) {
         assertSimpleTest(() -> {
             runException(firstInput, secondInput);
-            assertThat(output()).contains(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
+            assertThat(output()).contains(Validation.LOTTO_NUMBER_IN_RANGE);
         });
     }
 
