@@ -50,4 +50,13 @@ class LottoResultTest {
         assertThat(LottoResult.FIFTH.isFifth()).isTrue();
         assertThat(LottoResult.ELSE.isElse()).isTrue();
     }
+
+    @DisplayName("LottoResult equals 메소드 검증")
+    @Test
+    void equals() {
+        LottoResult firstResult = LottoResult.FIRST;
+        LottoResult elseResult = LottoResult.ELSE;
+        assertThat(firstResult.equals(LottoResult.FIRST)).isTrue();
+        assertThat(elseResult.equals(LottoResult.SECOND)).isFalse();
+    }
 }
