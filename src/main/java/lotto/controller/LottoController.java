@@ -18,7 +18,9 @@ public class LottoController {
     public Map<LottoRanking, Integer> lottoRanking;
     private static int MONEY_UNIT=1000;
     private static int PERCENT_CALCULATION=100;
+    private static String ERROR_MESSAGE="[ERROR] 올바른 입력이 아닙니다.";
     public void startLotto() {
+        try{
         getUserMoney();
         printLottoQuantity();
         printLottos();
@@ -26,7 +28,10 @@ public class LottoController {
         getUserBonusNumber();
         compareLottos();
         getLottoResult();
-        getLottoResultRate();
+        getLottoResultRate(); }
+        catch(IllegalArgumentException exception){
+            System.out.println(ERROR_MESSAGE);
+        }
     }
 
     public void getUserMoney() {

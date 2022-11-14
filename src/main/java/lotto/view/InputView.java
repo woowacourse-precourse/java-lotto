@@ -21,6 +21,7 @@ public class InputView {
         String tmpInputNumbers = Console.readLine();
         List<Integer> inputNumbers = new ArrayList<>();
         String[] tmpInputNumber = tmpInputNumbers.split(COMMA);
+
         for (int i = 0; i < tmpInputNumber.length; i++) {
             inputNumbers.add(Integer.parseInt(tmpInputNumber[i]));
         }
