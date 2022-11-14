@@ -27,6 +27,7 @@ public class Controller {
 
     public void makeWinningNumbers() {
         winningNumbers = view.inputLottoNumber();
+        view.printLine("");
         winningNumbers.add(view.inputBonusNumber());
     }
 
@@ -48,5 +49,21 @@ public class Controller {
         for (int i = 0; i <= count - 3 && i != values.length - 1; i++) {
             values[i].increaseCount();
         }
+    }
+
+    public void run(){
+        view.printLine("구입금액을 입력해 주세요.");
+        int priceNumber = view.inputPrice();
+        view.printLine("");
+
+        view.printLine(priceNumber + "개를 구매했습니다.");
+        makeLottoNumbers(priceNumber);
+        view.printListOfBuyLotto(lottoNumbers);
+        view.printLine("");
+
+        makeWinningNumbers();
+        view.printLine("");
+
+        view.printResult(values, 0);
     }
 }
