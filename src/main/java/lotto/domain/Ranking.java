@@ -1,12 +1,11 @@
 package lotto.domain;
 
 public enum Ranking {
-    FIFTH(5, 3, "3개 일치", 5_000),
-    FOURTH(4, 4, "4개 일치", 50_000),
-    THIRD(3, 5, "5개 일치", 1_500_000),
+    FIRST(1, 6,"6개 일치", 2_000_000_000),
     SECOND(2, 5, "5개 일치, 보너스 볼 일치", 30_000_000),
-    FIRST(1, 6,"6개 일치", 2_000_000_000);
-
+    THIRD(3, 5, "5개 일치", 1_500_000),
+    FOURTH(4, 4, "4개 일치", 50_000),
+    FIFTH(5, 3, "3개 일치", 5_000);
 
     private final int place;
     private final int matchingNumberCount;
