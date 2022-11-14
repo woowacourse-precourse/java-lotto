@@ -21,7 +21,6 @@ public class LottoGame {
     private void playGame() {
         OutputView.printInputMoney();
         Money money = new Money(InputView.inputPurchaseMoney());
-        OutputView.printBlank();
         Lottos lottos = makeLotto(money.countLotto());
         winStatics(lottos, drawLottery(), money);
     }
@@ -35,17 +34,15 @@ public class LottoGame {
     private WinningLotto drawLottery() {
         OutputView.printInputWinningNumber();
         Lotto winningLottoNumber = new Lotto(InputView.inputWinningNumber());
-        OutputView.printBlank();
 
         OutputView.printInputBonusNumber();
         WinningLotto winningLotto = new WinningLotto(winningLottoNumber,
                 InputView.inputBonusNumber());
-        OutputView.printBlank();
         return winningLotto;
     }
 
     private void winStatics(Lottos lottos, WinningLotto winningLotto, Money money) {
         LottoResult lottoResult = new LottoResult(lottos, winningLotto, money);
-        // TODO: OutputView.printResult();
+        OutputView.printResult(lottoResult);
     }
 }
