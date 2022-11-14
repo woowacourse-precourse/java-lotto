@@ -54,7 +54,7 @@ class LottoTest {
     @DisplayName("구입 금액이 로또 1장 가격보다 작으면 예외가 발생한다.")
     @Test
     void moneyUnderLottoPrice() {
-        assertThatThrownBy(() -> new Money(800))
+        assertThatThrownBy(() -> new Money(0))
                 .isInstanceOf(MoneyRangeException.class);
     }
 }
