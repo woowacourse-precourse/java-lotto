@@ -44,13 +44,23 @@ class LottoRankTest {
 
     @DisplayName("로또 5개 일치, 5개 + 보너스 번호 일치 로직 확인 : 5개 일치")
     @Test
-    void checkFiveMatch(){
+    void checkFiveMatch() {
         assertThat(LottoRank.of(LottoRank.FIVE_MATCHES, false)).isEqualTo(LottoRank.FIVE_MATCHES);
     }
 
     @DisplayName("로또 5개 일치, 5개 + 보너스 번호 일치 로직 확인 : 5개 + 보너스 일치")
     @Test
-    void checkFiveBonusMatch(){
+    void checkFiveBonusMatch() {
         assertThat(LottoRank.of(LottoRank.FIVE_MATCHES, true)).isEqualTo(LottoRank.FIVE_BONUS_MATCHES);
+    }
+
+    @DisplayName("결과가 0 미만, 6초과 된 값이 들어올 경우 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "7", "9"})
+    void checkMatchCount(String input) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> LottoRank.find(input));
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] 도출 퇼 수 없는 결과입니다 | MATCH COUNT : " + input);
+
     }
 }
