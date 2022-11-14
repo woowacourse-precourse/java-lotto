@@ -19,21 +19,22 @@ public class Application {
 
         LottoGame lottoGame = new LottoGame();
         int lottoNumber = lottoGame.countLotto(lottoCost);
-        System.out.println(lottoNumber+"개를 구매했습니다.");
+        System.out.println("\n"+lottoNumber+"개를 구매했습니다.");
 
-        List<Lotto> lotteries = lottoGame.createRandomLotto();
+        lottoGame.createRandomLotto();
+        List<Lotto> lotteries = lottoGame.getLotteries();
         for (Lotto lotto:lotteries) {
             System.out.println(lotto.toString());
         }
 
         WinningLotto winningLotto = new WinningLotto();
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         winningLotto.receiveWinningNumber();
 
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         winningLotto.receiveBonusNumber();
 
-        System.out.println("당첨 통계\n" +
+        System.out.println("\n당첨 통계\n" +
                 "---");
         lottoGame.compareEachLotto(winningLotto);
         lottoGame.setRateOfReturn();

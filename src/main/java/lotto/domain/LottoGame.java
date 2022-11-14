@@ -23,13 +23,11 @@ public class LottoGame {
         return lottoCount;
     }
 
-    public List<Lotto> createRandomLotto() {
+    public void createRandomLotto() {
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lotteries.add(new Lotto(lottoNumber));
         }
-
-        return lotteries;
     }
 
     public void compareEachLotto(WinningLotto winningLotto) {
