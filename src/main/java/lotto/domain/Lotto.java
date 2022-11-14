@@ -52,10 +52,14 @@ public class Lotto {
     private void validateWinningNumbersLength(String winningNumbers) {
         int inputLength = winningNumbers.length();
 
-        if (!(MIN_INPUT_NUMBER_LENGTH <= inputLength && inputLength <= MAX_INPUT_NUMBER_LENGTH)) {
+        if (!isValidNumberLength(inputLength)) {
             throw new IllegalArgumentException(
                     LottoExceptionMessageUtils.INVALID_NUMBER_LENGTH.findExceptionMessage(inputLength));
         }
+    }
+
+    private boolean isValidNumberLength(int inputLength) {
+        return MIN_INPUT_NUMBER_LENGTH <= inputLength && inputLength <= MAX_INPUT_NUMBER_LENGTH;
     }
 
     private void validateWinningNumbersSeparator(String winningNumbers) {

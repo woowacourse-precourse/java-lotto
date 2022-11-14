@@ -26,7 +26,7 @@ public class Player {
         BigInteger lottoAmount = lottoPurchaseAmount.calculatePurchaseLottoAmount();
         List<Lotto> myLottos = new ArrayList<>();
 
-        while (lottoAmount.compareTo(BigInteger.ZERO) > 0) {
+        while (isBiggerThanZero(lottoAmount)) {
             List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(
                     LottoNumberConst.MIN_NUMBER_INT_VALUE,
                     LottoNumberConst.MAX_NUMBER_INT_VALUE,
@@ -37,6 +37,10 @@ public class Player {
             lottoAmount = lottoAmount.subtract(BigInteger.ONE);
         }
         return myLottos;
+    }
+
+    private boolean isBiggerThanZero(BigInteger lottoAmount) {
+        return lottoAmount.compareTo(BigInteger.ZERO) > 0;
     }
 
     public List<LottoRanking> calculateLottoRanking(Lotto winningLotto, LottoNumber bonusNumber) {

@@ -29,11 +29,15 @@ public class LottoPurchaseAmount {
     private void validateAmountUnit(String playerInputAmount) {
         BigDecimal playerPurchaseAmount = new BigDecimal(playerInputAmount);
 
-        if (playerPurchaseAmount.remainder(PRICE_OF_ONE).compareTo(BigDecimal.ZERO) > 0) {
+        if (!isValidAmountUnit(playerPurchaseAmount)) {
             throw new IllegalArgumentException(
                     LottoExceptionMessageUtils.INVALID_PURCHASE_AMOUNT_UNIT
                             .findExceptionMessage(playerInputAmount));
         }
+    }
+
+    private boolean isValidAmountUnit(BigDecimal playerPurchaseAmount) {
+        return playerPurchaseAmount.remainder(PRICE_OF_ONE).compareTo(BigDecimal.ZERO) == 0;
     }
 
     private void validateNumber(String playerInputAmount) {

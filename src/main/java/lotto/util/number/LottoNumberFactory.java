@@ -17,22 +17,26 @@ public class LottoNumberFactory {
     }
 
     public static LottoNumber numberOf(int number) {
-        validateNumber(number);
+        validateIndex(number);
         return LOTTO_NUMBERS[number];
     }
 
     public static LottoNumber numberOf(String number) {
         int targetNumber = getNumber(number);
 
-        validateNumber(targetNumber);
+        validateIndex(targetNumber);
         return LOTTO_NUMBERS[targetNumber];
     }
 
-    private static void validateNumber(int number) {
-        if (!(LottoNumberConst.MIN_NUMBER_INT_VALUE <= number && number <= LottoNumberConst.MAX_NUMBER_INT_VALUE)) {
+    private static void validateIndex(int number) {
+        if (!isValidIndexRange(number)) {
             throw new IllegalArgumentException(LottoExceptionMessageUtils
                     .INVALID_NUMBER_RANGE.findExceptionMessage(number));
         }
+    }
+
+    private static boolean isValidIndexRange(int number) {
+        return LottoNumberConst.MIN_NUMBER_INT_VALUE <= number && number <= LottoNumberConst.MAX_NUMBER_INT_VALUE;
     }
 
     private static int getNumber(String otherTypeNumber) {

@@ -15,10 +15,14 @@ public class LottoNumber {
     }
 
     private void validateNumber(int number) {
-        if (!(LottoNumberConst.MIN_NUMBER_INT_VALUE <= number && number <= LottoNumberConst.MAX_NUMBER_INT_VALUE)) {
+        if (!isValidNumberRange(number)) {
             throw new IllegalArgumentException(
                     LottoExceptionMessageUtils.INVALID_NUMBER_RANGE.findExceptionMessage(number));
         }
+    }
+
+    private boolean isValidNumberRange(int number) {
+        return LottoNumberConst.MIN_NUMBER_INT_VALUE <= number && number <= LottoNumberConst.MAX_NUMBER_INT_VALUE;
     }
 
     @Override
