@@ -1,11 +1,9 @@
 package lotto.util.number;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.stream.IntStream;
 import lotto.common.CommonExceptionTest;
-import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.helper.util.LottoNumberTestUtils;
 import lotto.util.message.LottoExceptionMessageUtils;

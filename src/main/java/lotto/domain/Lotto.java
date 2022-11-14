@@ -74,8 +74,7 @@ public class Lotto {
 
         if (validNumberSize != LottoNumberConst.NUMBER_SIZE) {
             throw new IllegalArgumentException(
-                    LottoExceptionMessageUtils.INVALID_NUMBER_SIZE.findExceptionMessage(validNumberSize)
-            );
+                    LottoExceptionMessageUtils.INVALID_NUMBER_SIZE.findExceptionMessage(validNumberSize));
         }
     }
 

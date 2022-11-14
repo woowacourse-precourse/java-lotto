@@ -1,7 +1,6 @@
 package lotto.util.message;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import lotto.common.CommonExceptionTest;
 import lotto.util.ranking.LottoRanking;

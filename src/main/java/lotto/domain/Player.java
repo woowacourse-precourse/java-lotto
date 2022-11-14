@@ -27,8 +27,7 @@ public class Player {
         List<Lotto> myLottos = new ArrayList<>();
 
         while (isBiggerThanZero(lottoAmount)) {
-            List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(
-                    LottoNumberConst.MIN_NUMBER_INT_VALUE,
+            List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(LottoNumberConst.MIN_NUMBER_INT_VALUE,
                     LottoNumberConst.MAX_NUMBER_INT_VALUE,
                     LottoNumberConst.NUMBER_SIZE
             );

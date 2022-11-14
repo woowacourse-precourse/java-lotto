@@ -42,7 +42,8 @@ public enum LottoRanking {
     private final long correctNumberCount;
     private final Predicate<Boolean> correctBonusNumberPredicate;
 
-    LottoRanking(BigDecimal lottoRankingReward, long correctNumberCount, Predicate<Boolean> correctBonusNumberPredicate) {
+    LottoRanking(BigDecimal lottoRankingReward, long correctNumberCount,
+            Predicate<Boolean> correctBonusNumberPredicate) {
         this.lottoRankingReward = lottoRankingReward;
         this.correctNumberCount = correctNumberCount;
         this.correctBonusNumberPredicate = correctBonusNumberPredicate;
