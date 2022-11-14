@@ -2,11 +2,12 @@ package lotto.presentation;
 
 import java.util.List;
 import lotto.application.LottoService;
-import lotto.domain.BonusNumber;
-import lotto.domain.GeneralWinNumber;
+import lotto.domain.BonusBall;
+import lotto.domain.WinningBalls;
 import lotto.domain.Lotto;
+import lotto.domain.LottoAmount;
 import lotto.domain.Match;
-import lotto.domain.WinNumber;
+import lotto.domain.Balls;
 import lotto.presentation.view.LottoGamePrinter;
 import lotto.presentation.view.LottoGameReader;
 

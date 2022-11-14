@@ -5,13 +5,13 @@ import constants.LottoGame;
 import java.util.List;
 import java.util.Set;
 
-public class GeneralWinNumber {
+public class WinningBalls {
 
-    private final List<Integer> generalWinNumbers;
+    private final List<Integer> winningBalls;
 
-    public GeneralWinNumber(List<Integer> generalWinNumbers) {
-        validate(generalWinNumbers);
-        this.generalWinNumbers = generalWinNumbers;
+    public WinningBalls(List<Integer> winningBalls) {
+        validate(winningBalls);
+        this.winningBalls = winningBalls;
     }
 
     public void validate(List<Integer> generalWinNumbers) {
@@ -28,19 +28,18 @@ public class GeneralWinNumber {
         }
     }
 
-    public int matchCount(Lotto lotto) {
-        return (int) generalWinNumbers.stream()
-                .filter(i -> lotto.contains(i))
-                .count();
+    public boolean contains(int number) {
+        return winningBalls.stream()
+                .anyMatch(ball -> ball == number);
     }
 
-    public boolean contains(BonusNumber bonusNumber) {
-        return generalWinNumbers.stream()
-                .anyMatch(i -> bonusNumber.isSame(i));
+    public boolean containsBonusNumber(BonusBall bonusBall) {
+        return winningBalls.stream()
+                .anyMatch(i -> bonusBall.isSame(i));
     }
 
-    private boolean isWithinRange(List<Integer> generalWinNumbers) {
-        return generalWinNumbers.stream()
+    private boolean isWithinRange(List<Integer> winningBalls) {
+        return winningBalls.stream()
                 .anyMatch(number -> !(number >= LottoGame.LOTTO_MIN_RANGE && number <= LottoGame.LOTTO_MAX_RANGE));
     }
 

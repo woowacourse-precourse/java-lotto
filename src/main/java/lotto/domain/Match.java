@@ -24,7 +24,7 @@ public enum Match {
         this.resultMessage = resultMessage;
     }
 
-    public static Match findByMatchCountAndMatchBonus(int matchCount, boolean isMatchBonus) {
+    public static Match findByMatchCountAndIsMatchBonus(int matchCount, boolean isMatchBonus) {
         Match matchResult = Arrays.stream(Match.values())
                 .filter(match -> match.matchCount == matchCount)
                 .findAny()
@@ -36,7 +36,7 @@ public enum Match {
         return matchResult;
     }
 
-    public static long calculateTotalPrizeMonay(List<Match> matches) {
+    public static long calculateTotalPrizeMoney(List<Match> matches) {
         return matches.stream()
                 .mapToLong(Match::getPrizeMoney)
                 .sum();

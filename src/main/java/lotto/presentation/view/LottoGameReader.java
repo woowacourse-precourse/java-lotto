@@ -14,7 +14,7 @@ public class LottoGameReader {
         return ReaderConverter.convertInteger(lottoAmount);
     }
 
-    public static List<Integer> readWinNumber() {
+    public static List<Integer> readGeneralWinNumbers() {
         LottoGamePrinter.printEnterWinNumber();
         String winNumber = readLine();
         LottoReaderValidator.validateCommaSeparatorArray(winNumber);

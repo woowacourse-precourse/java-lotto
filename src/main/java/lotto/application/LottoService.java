@@ -2,12 +2,12 @@ package lotto.application;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.domain.BonusNumber;
-import lotto.domain.GeneralWinNumber;
+import lotto.domain.BonusBall;
+import lotto.domain.WinningBalls;
 import lotto.domain.Lotto;
 import lotto.domain.LottoAmount;
 import lotto.domain.Match;
-import lotto.domain.WinNumber;
+import lotto.domain.Balls;
 import lotto.infrastructure.LottoProvider;
 
 public class LottoService {
@@ -17,13 +17,13 @@ public class LottoService {
         return LottoProvider.createLottos(lottoAmount.getLottoCount());
     }
 
-    public static WinNumber getWinNumber(GeneralWinNumber generalWinNumber, BonusNumber bonusNumber) {
-        return new WinNumber(generalWinNumber, bonusNumber);
+    public static Balls getBalls(WinningBalls winningBalls, BonusBall bonusBall) {
+        return new Balls(winningBalls, bonusBall);
     }
 
-    public static List<Match> match(List<Lotto> lottos, WinNumber winNumber) {
+    public static List<Match> match(List<Lotto> lottos, Balls balls) {
         return lottos.stream()
-                .map(lotto -> lotto.match(winNumber))
+                .map(lotto -> lotto.match(balls))
                 .collect(Collectors.toList());
     }
 

@@ -3,13 +3,13 @@ package lotto.domain;
 import constants.ExceptionMessage;
 import constants.LottoGame;
 
-public class BonusNumber {
+public class BonusBall {
 
-    private final int bonusNumber;
+    private final int bonusBall;
 
-    public BonusNumber(int bonusNumber) {
-        validate(bonusNumber);
-        this.bonusNumber = bonusNumber;
+    public BonusBall(int bonusBall) {
+        validate(bonusBall);
+        this.bonusBall = bonusBall;
     }
 
     public void validate(int bonusNumber) {
@@ -19,11 +19,11 @@ public class BonusNumber {
     }
 
     public boolean isSame(int number) {
-        return this.bonusNumber == number;
+        return this.bonusBall == number;
     }
 
-    public boolean isMatch(Lotto lotto) {
-        return lotto.contains(bonusNumber);
+    public boolean isMatchLotto(Lotto lotto) {
+        return lotto.contains(bonusBall);
     }
 
 }

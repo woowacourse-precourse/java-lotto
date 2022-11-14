@@ -44,10 +44,21 @@ public class Lotto {
         return numbers.contains(number);
     }
 
-    public Match match(WinNumber winNumber) {
-        MatchResultDTO dto = winNumber.matching(this);
+    public boolean matchBonusBall(BonusBall bonusBall) {
+        return numbers.stream()
+                .anyMatch(number -> bonusBall.isSame(number));
+    }
 
-        return Match.findByMatchCountAndMatchBonus(dto.getMatchCount(), dto.isMatchBonus());
+    public int matchWinningBalls(WinningBalls winningBalls) {
+        return (int) numbers.stream()
+                .filter(number -> winningBalls.contains(number))
+                .count();
+    }
+
+    public Match match(Balls balls) {
+        MatchResultDTO dto = balls.matching(this);
+
+        return Match.findByMatchCountAndIsMatchBonus(dto.getMatchCount(), dto.isMatchBonus());
     }
 
     private boolean isWithinRange(List<Integer> generalWinNumbers) {
