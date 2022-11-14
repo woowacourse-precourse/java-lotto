@@ -2,10 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import lotto.domain.Rank;
 import lotto.domain.Result;
@@ -14,8 +12,8 @@ import lotto.domain.Validator;
 public class GameConsole {
 
     private static final String INPUT_PURCHASE_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
-    private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+    private static final String INPUT_WINNING_NUMBER_MESSAGE = "\n당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER_MESSAGE = "\n보너스 번호를 입력해 주세요.";
 
     public int inputPurchase(){
         notice(INPUT_PURCHASE_MESSAGE);
@@ -48,7 +46,7 @@ public class GameConsole {
     }
 
     public void outputLottos(int lottoCount, List<Lotto> lottos) {
-        System.out.println(String.format("%d개를 구매했습니다.", lottoCount));
+        System.out.printf("%d개를 구매했습니다.\n", lottoCount);
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
@@ -66,9 +64,9 @@ public class GameConsole {
         rankInfo.remove(Rank.NONE);
 
         for (Rank rank : rankInfo.keySet()) {
-            System.out.println(String.format("%d개 일치 (%,d원) - %d개", rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank)));
+            System.out.printf("%d개 일치 (%,d원) - %d개\n", rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank));
             if (rank == Rank.SECOND){
-                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank)));
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n", rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank));
             }
         }
     }
