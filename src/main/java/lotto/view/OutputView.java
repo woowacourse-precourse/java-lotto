@@ -15,15 +15,18 @@ public class OutputView {
     private static final String HYPHEN_WITH_UNIT = " - %d개\n";
     private static final String SHOW_RATE_OF_PROFIT_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
 
-    public static void showLottos(String lottos) {
+    public OutputView() {
+    }
+
+    public void showLottos(String lottos) {
         System.out.println(lottos);
     }
 
-    public static void showLottoCount(String paidMoney) {
+    public void showLottoCount(String paidMoney) {
         System.out.println(fitPaidMoney(paidMoney) / LOTTO_PRICE + LOTTO_COUNT_MESSAGE);
     }
 
-    public static void showCustomerRanks(Map<Rank, Integer> customerRank) {
+    public void showCustomerRanks(Map<Rank, Integer> customerRank) {
         System.out.println(SHOW_CUSTOMER_RANKS_MESSAGE);
 
         List<Rank> rankOrder = getRankOrder();
@@ -34,7 +37,7 @@ public class OutputView {
         }
     }
 
-    public static void showRateOfProfit(float rateOfProfit) {
+    public void showRateOfProfit(float rateOfProfit) {
         System.out.printf(SHOW_RATE_OF_PROFIT_MESSAGE, rateOfProfit);
     }
 }
