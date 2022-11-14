@@ -8,5 +8,7 @@ public class InputView {
         System.out.println(GameMessage.PRICE_MESSAGE.getMessage());
         return Console.readLine();
     }
+    
+
 
 }
