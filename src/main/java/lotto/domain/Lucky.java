@@ -1,10 +1,9 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Lucky {
-    public List<Integer> compareNumbers(List<List<Integer>> user, List<Integer> com) {
+    public List<Integer> compareNumbers(List<List<Integer>> user, List<Integer> com, int bonusNumber) {
         List<Integer> compareNumbers = new ArrayList<>();
         for (int i = 0; i < user.size(); i++) {
             int count = 0;
@@ -14,9 +13,20 @@ public class Lucky {
                     count++;
                 }
             }
-            compareNumbers.add(count);
+            if (count == 5) {
+                count += compareBonus(user.get(i),bonusNumber);
+            }
+            if (count > 2) {
+                compareNumbers.add(count);
+            }
         }
         return compareNumbers;
     }
 
+    public int compareBonus(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            return 2;
+        }
+        return 0;
+    }
 }
