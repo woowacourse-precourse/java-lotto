@@ -1,6 +1,9 @@
 package lotto;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.*;
 
 public class View {
     private void validateIsDivisible(int money) {
@@ -16,6 +19,15 @@ public class View {
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("[ERROR] 숫자만 입력이 가능합니다");
             }
+        }
+    }
+    private void validateUniqueNumberInput(List<Integer> numbers) {
+        List<Integer> noDuplicates = new ArrayList<>();
+        for (int num : numbers) {
+            if (noDuplicates.contains(num)) {
+                throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자만 입력이 가능합니다");
+            }
+            noDuplicates.add(num);
         }
     }
 }
