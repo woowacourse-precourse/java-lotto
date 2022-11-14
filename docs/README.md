@@ -2,9 +2,10 @@
 
 ## 로또 기능
 - - -
-- [ ] 로또 발행 : 1~45에서 중복되지 않는 6개의 숫자를 뽑는다. - createRandomLotto
-  - [ ] 로또 발행 : 구입 금액(장당 1000원)에 해당하는 만큼 로또를 발행한다. - createLottoByPay
-- [ ] 수익률 통계는 소수점 둘째 자리에서 반올림한다. - calculateEarningRate
+- [ ] 로또 발행 : 1~45에서 중복되지 않는 6개의 숫자를 뽑는다. - Generator#createRandomLotto
+  - [ ] 로또 발행 : 구입 금액(장당 1000원)에 해당하는 만큼 로또를 발행한다. - Generator#createLottoByPay
+- [ ] 당첨된 로또들의 수익금을 합한다. - Calculator#sumJackpot
+  - [ ] 수익률 통계는 소수점 둘째 자리에서 반올림한다. - Calculator#calculateEarningRate
 - [ ] 만들어진 로또와 입력한 로또가 일치하는지 비교한다 - Judgement#rankLotto
   - [ ] 5개 일치의 경우, 보너스 번호가 일치하는지 비교한다 - Judgement#secondPrize
 
