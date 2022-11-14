@@ -18,7 +18,6 @@ public class LottoAmount {
 
     public List<List<Integer>> buyLotto() {
         NumberGenerator numberGenerator = new NumberGenerator();
-        System.out.println(lottoTickets + "개를 구매했습니다.");
         return numberGenerator.createRandomNumbers(lottoTickets);
     }
     public int getPurchaseAmount() {

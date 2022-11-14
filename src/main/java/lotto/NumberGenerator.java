@@ -17,7 +17,6 @@ public class NumberGenerator {
                     END_LOTTO_NUMBER, LOTTO_NUMBERS_LENGTH));
             numbers.sort(Integer::compareTo);
             lotto.add(numbers);
-            System.out.println(numbers);
         }
         return lotto;
     }

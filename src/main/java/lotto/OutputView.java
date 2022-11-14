@@ -1,48 +1,36 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
-    private long totalEarnMoney;
-    private int purchaseAmount;
-    private final int ONE_HUNDRED_PERCENT = 100;
-    public OutputView(List<Integer> statistics, int purchaseAmount) {
-        this.purchaseAmount = purchaseAmount;
+    public void printBuyLottoTicket(int purchaseAmount) {
+        System.out.printf("%d개를 구매했습니다.\n", exchangeTicket(purchaseAmount));
+    }
+
+    public void printBuyLotto(List<List<Integer>> lottoNumbers) {
+        for (List<Integer> lottoNumber : lottoNumbers) {
+            System.out.println(lottoNumber);
+        }
+        System.out.println("");
+    }
+    public void printStatistics(Map<Rank, Integer> totalResult){
+
         System.out.println("당첨 통계");
         System.out.println("---");
-        resultThree(statistics.get(0));
-        resultFour(statistics.get(1));
-        resultFive(statistics.get(2));
-        resultFiveBonus(statistics.get(3));
-        resultSix(statistics.get(4));
 
-        totalEarn();
-    }
-    private void resultThree(int result) {
-        totalEarnMoney += result * 5000L;
-        System.out.println("3개 일치 (5,000원) - " + result + "개");
-    }
-    private void resultFour(int result) {
-        totalEarnMoney += result * 50000L;
-        System.out.println("4개 일치 (50,000원) - " + result + "개");
-    }
-    private void resultFive(int result) {
-        totalEarnMoney += result * 1500000L;
-        System.out.println("5개 일치 (1,500,000원) - " + result +"개");
-    }
-    private void resultFiveBonus(int result) {
-        totalEarnMoney += result * 30000000L;
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + result + "개");
-    }
-    private void resultSix(int result) {
-        totalEarnMoney += result * 2000000000L;
-        System.out.println("6개 일치 (2,000,000,000원) - " + result + "개");
+        for (Rank rank : Rank.values()) {
+            System.out.printf(rank.getText(), totalResult.get(rank));
+            System.out.println("");
+        }
     }
 
-    private void totalEarn() {
-        System.out.printf("총 수익률은 %.1f%%입니다.", calculator());
+    public void printPercentage(double percentage) {
+        System.out.printf("총 수익률은 %.1f%%입니다.", percentage);
     }
-    private double calculator() {
-        return totalEarnMoney / (double) purchaseAmount * ONE_HUNDRED_PERCENT;
+
+    private int exchangeTicket(int purchaseAmount) {
+        return purchaseAmount / 1000;
     }
+
 }
