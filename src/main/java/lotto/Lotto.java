@@ -115,6 +115,10 @@ public class Lotto {
         return Console.readLine();
     }
 
+    public String inputBonusNumber() {
+        return Console.readLine();
+    }
+
     public List<Integer> inputLottoNumber(String input) {
         StringTokenizer st = new StringTokenizer(input, ",");
         List<Integer> winningLottoNumber = new ArrayList<>();
