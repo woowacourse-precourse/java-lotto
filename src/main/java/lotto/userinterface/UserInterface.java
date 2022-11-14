@@ -81,9 +81,9 @@ public class UserInterface {
                 NoDuplicateNumberCond.getInstance()
         );
 
-        String numbers = String.join(",", answerNumbers.stream().map((Integer number) -> Integer.toString(number)).collect(Collectors.toList())) + "," + input;
+        String numbers = getConcatenatedString(answerNumbers, input);
 
-        Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, input);
+        Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, numbers);
 
         if (notPassConditionIndex != -1) {
             Condition notPassCondition = conditions.get(notPassConditionIndex);
@@ -91,5 +91,9 @@ public class UserInterface {
         }
 
         return Integer.parseInt(input);
+    }
+
+    private static String getConcatenatedString(List<Integer> numbers, String input) {
+        return String.join(",", numbers.stream().map((Integer number) -> Integer.toString(number)).collect(Collectors.toList())) + "," + input;
     }
 }
