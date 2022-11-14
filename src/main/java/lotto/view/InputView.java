@@ -20,4 +20,10 @@ public class InputView {
     System.out.println(GuideMessage.INPUT_MONEY.getMessage());
     return inputReader.readLottoNum();
   }
+
+  public WinningNumber readWinningNumber(){
+    System.out.println(GuideMessage.INPUT_WINNING_NUMBER.getMessage());
+    return inputReader.readWinningNumber();
+  }
+
 }
