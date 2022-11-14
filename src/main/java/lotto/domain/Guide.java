@@ -1,10 +1,9 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static lotto.domain.Preprocessor.*;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Guide {
     public static void printGetMoney() {

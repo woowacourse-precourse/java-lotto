@@ -1,22 +1,19 @@
 package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.domain.Preprocessor.splitNumber;
+import static lotto.domain.Preprocessor.convertStringToInt;
+import static lotto.domain.Preprocessor.convertStringListToIntegerList;
+import static lotto.domain.Guide.*;
+import static lotto.domain.NumberGenerator.createLottoList;
+import static lotto.domain.UserLotto.createLottoResult;
+import static lotto.domain.Bonus.bonusIsNumeric;
+import static lotto.domain.Lotto.validateLottoIsNumeric;
 
 import lotto.domain.Lotto;
 import lotto.domain.UserLotto;
 import lotto.domain.Bonus;
-
 import java.util.List;
-
-import static lotto.domain.Preprocessor.splitNumber;
-import static lotto.domain.Preprocessor.convertStringToInt;
-import static lotto.domain.Preprocessor.convertStringListToIntegerList;
-
-import static lotto.domain.Guide.*;
-
-import static lotto.domain.NumberGenerator.createLottoList;
-import static lotto.domain.UserLotto.createLottoResult;
-import static lotto.domain.Bonus.bonusIsNumeric;
 
 public class Application {
     static final int ROUND_NUMBER = 1;
@@ -48,12 +45,17 @@ public class Application {
 
     public static Lotto createWinningNumbers() throws IllegalArgumentException {
         printGetWinningNumber();
-        return new Lotto(convertStringListToIntegerList(splitNumber(readLine())));
+        String winningNumber = readLine();
+
+        List<String> winningNumbers = splitNumber(winningNumber);
+        validateLottoIsNumeric(winningNumbers);
+        return new Lotto(convertStringListToIntegerList(winningNumbers));
     }
 
     public static Bonus createBonusNumber(Lotto winningNumbers) throws IllegalArgumentException {
         printGetBonusNumber();
         String bonusNumber = readLine();
+
         bonusIsNumeric(bonusNumber);
         return new Bonus(convertStringToInt(bonusNumber), winningNumbers);
     }

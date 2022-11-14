@@ -27,7 +27,7 @@ public class Bonus {
                                           int bonusNumber) throws IllegalArgumentException {
         List<Integer> lottoNumbers = winningLotto.getLotto();
         if (lottoNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 담첨 번호에 포함될 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 담첨 번호와 중복될 수 없습니다.");
         }
     }
 

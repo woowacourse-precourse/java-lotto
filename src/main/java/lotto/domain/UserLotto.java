@@ -1,12 +1,11 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static lotto.domain.Judgment.checkBonusCorrect;
 import static lotto.domain.Judgment.getCorrectLottoNumberCount;
 import static lotto.domain.Preprocessor.convertStringToInt;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserLotto {
     private final int lottoAmount;
