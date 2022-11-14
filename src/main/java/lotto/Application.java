@@ -2,7 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -24,7 +26,12 @@ public class Application {
         Recall = money / 1000;
 
         System.out.println(Recall+"개");
-
+        List<List<Integer>> numbers = new ArrayList<>();
+        for(int j = 0; j < Recall; j++) {
+            RandomLotto lottoNumbers = new RandomLotto();
+            numbers.add(lottoNumbers.numbers);
+            System.out.println(numbers.get(j));
+        }
     }
 
     private static void input(String moneya) {
