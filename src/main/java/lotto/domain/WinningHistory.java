@@ -8,7 +8,8 @@ import java.util.Set;
 import static lotto.domain.WinningMoney.*;
 
 public class WinningHistory {
-    private Map<WinningMoney,Integer> winningHistory; 
+    private Map<WinningMoney,Integer> winningHistory;
+    private int yield;
 
     public WinningHistory () {
         winningHistory = new HashMap<>();
@@ -64,7 +65,17 @@ public class WinningHistory {
     }
 
 
-    public int calculateYield(int money) {
-        i
+    public void calculateYield(int money) {
+        long sum = 0L;
+        for (WinningMoney winningMoney : winningHistory.keySet()) {
+            if (winningHistory.get(winningMoney) > 0) {
+                sum += winningHistory.get(winningMoney) * winningMoney.getWinningMoney();
+            }
+        }
+        yield = Math.round(sum / money * 100);
+    }
+
+    public int getYield() {
+        return yield;
     }
 }
