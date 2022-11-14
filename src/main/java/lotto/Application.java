@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.UI.*;
 import lotto.domain.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +14,29 @@ public class Application {
 
         issueLotteries(publisher);
 
-        UI.printLotteries(publisher.getLotteries());
+        Output.printLotteries(publisher.getLotteries());
 
-        Maker maker = new Maker(publisher.getLotteries(), purchaseAmount);
-        List<Integer> result = maker.getResult();
-        float earningRate = maker.getEarningRate();
+        Dealer dealer = new Dealer(publisher.getLotteries(), purchaseAmount);
+        List<Integer> result = dealer.getResult();
+        float earningRate = dealer.getEarningRate();
 
-        UI.printResult(result);
-        UI.printEarningRate(earningRate);
+        String resultPrintFormat = getPrintResultFormat(result);
+        Output.printResult(resultPrintFormat);
+        Output.printEarningRate(earningRate);
+    }
+
+    static String getPrintResultFormat(List<Integer> result) {
+        StringBuilder resultPrintFormat = new StringBuilder();
+        for (Ranking ranking: Ranking.values()) {
+            int count = result.get(ranking.value());
+            resultPrintFormat.append(String.format(ranking.printFormat(), count));
+        }
+        return resultPrintFormat.toString();
     }
 
     static int getPurchaseAmount() {
         try {
-            return UI.getAnswerInInteger(Request.purchaseAmount.value());
+            return Input.getAnswerInInteger(Request.purchaseAmount.value());
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위의 숫자여야 합니다.");
         }
@@ -35,10 +46,10 @@ public class Application {
         while (publisher.getLotteries().size() < publisher.getTicketQuantity()) {
             try {
                 List<Integer> numbers = new ArrayList<>();
-                for (String number : UI.getAnswer(Request.winNumber.value()).split(",")) {
+                for (String number : Input.getAnswer(Request.winNumber.value()).split(",")) {
                     numbers.add(Integer.parseInt(number));
                 }
-                int bonusNumber = (UI.getAnswerInInteger(Request.bonusNumber.value()));
+                int bonusNumber = (Input.getAnswerInInteger(Request.bonusNumber.value()));
                 publisher.issueLotto(numbers, bonusNumber);
             } catch (Exception e) { // 숫자가 아닌 문자인 경우
                 throw new IllegalArgumentException(
