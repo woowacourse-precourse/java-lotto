@@ -1,6 +1,7 @@
 package lotto.util;
 
 import lotto.domain.ErrorMessage;
+import lotto.domain.Lotto;
 
 import java.util.List;
 
@@ -40,5 +41,11 @@ public class InputChecker {
             }
         }
         return true;
+    }
+    public boolean checkInputBonusNumber(String input, Lotto winningLotto) throws IllegalArgumentException{
+        if(!isNumeric(input)){
+            throw new IllegalArgumentException(ErrorMessage.INPUT_LOTTO_NUMBERS_NOT_NUMERIC.print());
+        }
+        return false;
     }
 }

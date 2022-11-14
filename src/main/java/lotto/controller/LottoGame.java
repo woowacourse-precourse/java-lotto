@@ -39,11 +39,20 @@ public class LottoGame {
         List<String> inputWinningLottoNumbers = Arrays.asList(input.split(","));
 
         if(inputChecker.checkInputWinningLottoNumbersIsNumeric(inputWinningLottoNumbers)){
-            List<Integer> changeStringToIntegerLottoNunbers=new ArrayList<>();
+            List<Integer> changeStringToIntegerLottoNumbers=new ArrayList<>();
             for(String number : inputWinningLottoNumbers){
-                changeStringToIntegerLottoNunbers.add(Integer.parseInt(number));
+                changeStringToIntegerLottoNumbers.add(Integer.parseInt(number));
             }
-            winningLotto=new Lotto(changeStringToIntegerLottoNunbers);
+            winningLotto=new Lotto(changeStringToIntegerLottoNumbers);
         }
+        int bonus=getBonusNumberInput(winningLotto);
+    }
+    public Integer getBonusNumberInput(Lotto winningLotto) throws IllegalArgumentException{
+        String input=inputView.inputBonusNumber();
+        int bonus=-1;
+        if(inputChecker.checkInputBonusNumber(input, winningLotto)){
+            bonus=Integer.parseInt(input);
+        }
+        return bonus;
     }
 }

@@ -21,4 +21,8 @@ public class InputView {
         System.out.println(SystemMessage.INPUT_WINNING_LOTTO_NUMBER.print());
         return Console.readLine();
     }
+    public String inputBonusNumber() throws IllegalArgumentException{
+        System.out.println(SystemMessage.INPUT_BONUS_NUMBER.print());
+        return Console.readLine();
+    }
 }
