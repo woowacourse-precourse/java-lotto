@@ -1,4 +1,4 @@
-package lotto;
+package ui;
 
 public enum PrintMessage {
     PURCHASE_INFO("개를 구매했습니다."),
@@ -9,5 +9,9 @@ public enum PrintMessage {
 
     PrintMessage(String message) {
         this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }
