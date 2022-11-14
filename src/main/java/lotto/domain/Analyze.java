@@ -11,6 +11,7 @@ public class Analyze {
     private final List<Integer> prizeNumber;
     private final List<List> userLottos;
     private final Integer bonus;
+    private static int countingNumber = 1000;
 
     public Analyze(List<Integer> prizeNumber, Integer bonus, List<List> userLottos){
         this.prizeNumber = prizeNumber;
@@ -82,7 +83,7 @@ public class Analyze {
         for (int i = 0; i < getMatchFrequency().size(); i++){
             totalPrize += getMatchFrequency().get(i) * winnings.get(i);
         }
-        return (UserNumber.inputPrice() * 1000) / totalPrize;
+        return (UserNumber.inputPrice() * countingNumber) / totalPrize;
     }
 
 }
