@@ -1,5 +1,7 @@
 package lotto;
 
+import java.text.DecimalFormat;
+
 public enum Prize {
     FIRST("6개 일치", 2_000_000_000),
     SECOND("5개 일치, 보너스 볼 일치", 30_000_000),
@@ -22,6 +24,15 @@ public enum Prize {
 
     public Integer getReward() {
         return reward;
+    }
+
+    public void printPrize(int count) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        System.out.println(this.getMatchCount() + " (" + decFormat.format(this.getReward()) + "원) - " + count + "개");
+    }
+
+    public long getReturn(int count) {
+        return this.reward * count;
     }
 
 }
