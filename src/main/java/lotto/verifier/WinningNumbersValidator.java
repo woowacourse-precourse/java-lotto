@@ -29,7 +29,7 @@ public class WinningNumbersValidator {
         if (isDuplicated(winningNumbers)) {
             throw new IllegalArgumentException("숫자끼리 중복되지 않아야 합니다.");
         }
-        if (isNumbersFrom1To45(winningNumbers)) {
+        if (!isNumbersFrom1To45(winningNumbers)) {
             throw new IllegalArgumentException("숫자는 1부터 45 사이여야합니다.");
         }
 
@@ -49,7 +49,16 @@ public class WinningNumbersValidator {
     }
 
     private boolean isDuplicated(List<Integer> winningNumbers) {
-        return true;
+        while (!winningNumbers.isEmpty()) {
+            int currentNumber = winningNumbers.get(0);
+            winningNumbers.remove(0);
+
+            if (winningNumbers.contains(currentNumber)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private boolean isNumbersFrom1To45(List<Integer> winningNumbers) {
@@ -65,7 +74,7 @@ public class WinningNumbersValidator {
         List<Integer> winningNumbers = new ArrayList<>();
         String[] numbers = input.split(",");
 
-        for(String number: numbers) {
+        for (String number : numbers) {
             winningNumbers.add(Integer.parseInt(number));
         }
 
