@@ -1,6 +1,8 @@
 package lotto;
 
-
+import view.Input;
+import model.Data;
+import view.MessagePrint;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,61 +10,61 @@ public class LottoGame {
 
     public void playLottoGame() {
 
-        Number number = new Number();
+        Data data = new Data();
         MessagePrint message = new MessagePrint();
 
         message.printInputAmount();
-        number.inputNumber(Message.AMOUNT.getMessage());
+        data.purchaseAmount= Input.inputNumber();
+        data.getNumberOfLotto();
 
-        int Amount = Integer.parseInt(number.purchaseAmount);
-        int n = Amount / 1000;
+        message.printLottoCount(data.numberOfLotto);
 
-        message.printLottoCount(n);
+        List<Integer>[] userLotto = new ArrayList[data.numberOfLotto];
 
-        List<Integer>[] userLotto = new ArrayList[n];
-
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < data.numberOfLotto; i++) {
             userLotto[i] = new ArrayList<Integer>();
         }
 
-        for (int i = 0; i < n; i++) {
-            number.getRandomNumber();
-            userLotto[i].addAll(number.randomNumbers);
+        for (int i = 0; i < data.numberOfLotto; i++) {
+            userLotto[i].addAll(Input.getRandomNumber());
+            new Lotto(userLotto[i]);
         }
 
-        message.printUserLotto(userLotto, n);
+        message.printUserLotto(userLotto, data.numberOfLotto);
 
 
         message.printInputWinningNumber();
 
-        number.inputNumber(Message.WINNING.getMessage());
 
-        List<Integer> winningLottoNumber = new ArrayList<>();
+        data.winningNumber=Input.inputNumber();
 
-        String[] winningNumberSplit = number.winningNumber.split(",");
+
+        String[] winningNumberSplit = data.winningNumber.split(",");
         for (int i = 0; i < winningNumberSplit.length; i++) {
-            winningLottoNumber.add(Integer.valueOf(winningNumberSplit[i]));
+            data.winningLottoNumber.add(Integer.valueOf(winningNumberSplit[i]));
         }
 
+        new Lotto(data.winningLottoNumber);
+
+
         message.printBonusNumber();
-        number.inputNumber(Message.BONUSNUMBER.getMessage());
+        data.BonusNumber=Input.inputNumber();
 
         message.printSTATISTICS();
 
-        number.initializeMap();
+        data.initializeMap();
 
         for (int i = 0; i < userLotto.length; i++) {
-            int checkLotto = number.checkLottoNumber(userLotto[i], winningLottoNumber);
-            number.map(userLotto[i], checkLotto);
+            int checkLotto = data.checkLottoNumber(userLotto[i]);
+            data.map(userLotto[i], checkLotto);
         }
 
-        message.printCheckLotto(number.Win);
+        message.printCheckLotto(data.Win);
 
-        double yield = number.getYield(Amount);
+        data.getYield();
 
 
-        message.printYield(yield);
-
+        message.printYield(data.yield);
 
     }
 
