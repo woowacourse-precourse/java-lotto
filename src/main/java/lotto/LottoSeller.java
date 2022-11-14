@@ -23,6 +23,10 @@ public class LottoSeller {
         this.change = money%1000;
     }
 
+    LottoSeller(List<Lotto> bundle) {
+        this.bundle = bundle;
+    }
+
     void takeMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         money = Integer.parseInt(Console.readLine());
