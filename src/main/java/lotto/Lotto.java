@@ -83,4 +83,19 @@ public class Lotto {
         winNum.add(bonusnum);
         return result;
     }
+    public static List<Integer> winResult(List<Integer> winNum, List<List<Integer>> ticket){
+        List<Integer> result = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+        int time=0;
+        for(int i=0;i<ticket.size();i++){
+            time = compare(winNum,ticket,i);
+            if(time>=0 && time<=3){
+                result.set(time,result.get(time)+1);
+            }
+            if(time==4){
+                result.set(4,result.get(4)+1);
+            }
+        }
+
+        return result;
+    }
 }

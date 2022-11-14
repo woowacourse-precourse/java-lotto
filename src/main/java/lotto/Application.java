@@ -10,6 +10,9 @@ public class Application {
             List<List<Integer>> ticket = Lotto.publish(count);
             List<Integer> winNum = Lotto.createWinningnum();
             Lotto.createBonusnum(winNum);
+
+            List<Integer> result = Lotto.winResult(winNum, ticket);
+
         }
     }
 }
