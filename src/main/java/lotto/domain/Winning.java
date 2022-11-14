@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Winning {
@@ -10,7 +11,7 @@ public class Winning {
     public int win4 = 0;
     public int win5 = 0;
 
-    public void score(List<List<Integer>> userNum, List<Integer> winNum, int bonusNum) {
+    public void score(List<Lotto> userNum, List<Integer> winNum, int bonusNum) {
         for (int i=0; i<userNum.size(); i++) {
             int count = sameCount(userNum.get(i), winNum);
 
@@ -28,11 +29,11 @@ public class Winning {
         }
     }
 
-    public int sameCount(List<Integer> userNum, List<Integer> winNum) {
+    public int sameCount(Lotto userNum, List<Integer> winNum) {
         int count = 0;
 
-        for (int i=0; i<userNum.size(); i++) {
-            if(winNum.contains(userNum.get(i))) {
+        for (int i=0; i<userNum.getNumbers().size(); i++) {
+            if(winNum.contains(userNum.getNumbers().get(i))) {
                 count++;
             }
         }
@@ -40,8 +41,8 @@ public class Winning {
         return count;
     }
 
-    public void bonusCount(List<Integer> userNum, int bonusNum) {
-        if (userNum.contains(bonusNum)) {
+    public void bonusCount(Lotto userNum, int bonusNum) {
+        if (userNum.getNumbers().contains(bonusNum)) {
             win2++;
             return;
         }
