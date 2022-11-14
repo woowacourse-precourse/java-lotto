@@ -58,7 +58,7 @@ public class I_O_System {
         lotto.Check_Lottey(Bonus_Number, Winning_Number, My_Lotto_Numbers);
     }
 
-    private boolean Differnet_Error() {
+    private boolean Differnet_Error() {//숫자가 아닌 문자가 들어오면 예외처리
         try {
             if (!(Enter_Number != null && Enter_Number.matches("^[0-9]*$"))) {
                 throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE + ERROR_Code_1);
@@ -71,7 +71,7 @@ public class I_O_System {
         return true;
     }
 
-    private boolean left_money() {
+    private boolean left_money() {//거스름돈이 남는다면 예외처리
         int Base_Number = 0;
 
         try {
@@ -96,7 +96,7 @@ public class I_O_System {
         }
     }
 
-    public void User_Lottery_Number(List<List<Integer>> mylist) {
+    public void User_Lottery_Number(List<List<Integer>> mylist) {//1에서45사이의 숫자를 티켓 숫자에 맞게 랜덤하게 6자리로 생성
         System.out.println(Ticket + Sell_Messge);
         for (int i = 0; i < Ticket; i++) {
             List<Integer> number = Randoms.pickUniqueNumbersInRange(Lottey_min, Lottey_number_max, Lottey_max);

@@ -68,7 +68,7 @@ public class Lotto {
         IO.Number_of_Win_Print(Number_of_Win, Bounus_Win, Jackpot);
     }
 
-    private void Check_Winning_Number(List<Integer> Winning_Number, List<Integer> numbers, int Bonus_Number) {
+    private void Check_Winning_Number(List<Integer> Winning_Number, List<Integer> numbers, int Bonus_Number) {// 당첨 숫자와 로또 숫자를 몇개 맞췄는지 확인
         List<Integer> matchList = Winning_Number.stream().filter(o -> numbers.stream()
                 .anyMatch(Predicate.isEqual(o))).collect(Collectors.toList());
         if (matchList.size() == Five_Match) {
@@ -77,7 +77,7 @@ public class Lotto {
         Number_of_Win[matchList.size()] += 1;
     }
 
-    private int Winning_Jackpot(int Jackpot) {
+    private int Winning_Jackpot(int Jackpot) {//당첨금이 얼마인지 총합 계산
         int[] Jackpot_Money = {Tree_Matche_Money, Four_Matche_Money, Five_Matche_Money, Six_Matche_Money, Five_Matche_Money_Bonus};
         for (int i = 0; i < Jackpot_Money.length - 1; i++) {
             Jackpot += Jackpot_Money[i] * Number_of_Win[i + 3];
