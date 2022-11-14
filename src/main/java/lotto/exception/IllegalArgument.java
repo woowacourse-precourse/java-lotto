@@ -2,18 +2,16 @@ package lotto.exception;
 
 public class IllegalArgument {
 
-    public static boolean isNumber(String purchaseAmount) throws IllegalArgumentException {
-        purchaseAmount = purchaseAmount.replaceAll(",", "");
+    public static boolean isNumber(String purchaseAmount) {
         if (!purchaseAmount.matches("[0-9]+")) {
-            throw new IllegalArgumentException("[ERROR] 1,000원 단위의 숫자만 입력 가능합니다.");
+            return false;
         }
         return true;
     }
 
-    public static boolean isThousandWon(String purchaseAmount) throws IllegalArgumentException {
-        purchaseAmount = purchaseAmount.replaceAll(",", "");
+    public static boolean isThousandWon(String purchaseAmount) {
         if (Integer.parseInt(purchaseAmount) % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1,000원 단위의 숫자만 입력 가능합니다.");
+            return false;
         }
         return true;
     }
