@@ -32,7 +32,12 @@ public class LotteryTickets {
     }
 
     public List<Lotto> getLottoTickets() {
+
         return lottoTickets;
+    }
+
+    public void setLottoTickets(List<Lotto> lottos){
+        this.lottoTickets = new ArrayList<>(lottos);
     }
 
 }
