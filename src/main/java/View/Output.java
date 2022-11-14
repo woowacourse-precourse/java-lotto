@@ -15,7 +15,7 @@ public class Output {
     }
 
     public static void getNumberOfPurchase(int number) {
-        getGuideMessage(GuideMessage.NUMBER_OF_PURCHASE, number);
+        printFormatGuideMessage(GuideMessage.NUMBER_OF_PURCHASE, number);
     }
 
     public static void getWinningNumbers() {
@@ -31,8 +31,8 @@ public class Output {
     }
 
     public static void showResultStatistics(EnumMap<RankNumber, Integer> resultStatistics) {
-        getGuideMessage(ResultStatistics.GUIDE_MESSAGE);
-        getGuideMessage(ResultStatistics.LINE);
+        printResultStatistics(ResultStatistics.GUIDE_MESSAGE);
+        printResultStatistics(ResultStatistics.LINE);
         getCompleteStatistics(resultStatistics);
     }
 
@@ -41,9 +41,9 @@ public class Output {
             if (rank.equals(ResultStatistics.YIELD)) {
                 break;
             }
-            System.out.printf(
-                    ResultStatistics.getMessage(rank),
-                    resultStatistics.get(RankNumber.valueOf(rank.toString()))
+            printFormatResultStatistics(
+                    rank,
+                    resultStatistics.get(ResultStatistics.getRankNumber(rank))
             );
         }
     }
@@ -54,11 +54,20 @@ public class Output {
         }
     }
 
-    public static void getGuideMessage(Enum message) {
-        System.out.println(message);
+    public static void getGuideMessage(GuideMessage situation) {
+        System.out.println(GuideMessage.getMessage(situation));
     }
 
-    public static void getGuideMessage(GuideMessage message, int value) {
-        System.out.println(Integer.toString(value) + message);
+    public static void printFormatGuideMessage(GuideMessage situation, int value) {
+        System.out.printf(GuideMessage.getMessage(situation).concat("\n"), value);
     }
+
+    public static void printResultStatistics(ResultStatistics rank) {
+        System.out.println(ResultStatistics.getMessage(rank));
+    }
+
+    public static void printFormatResultStatistics(ResultStatistics rank, int value) {
+        System.out.printf(ResultStatistics.getMessage(rank).concat("\n"), value);
+    }
+
 }
