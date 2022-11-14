@@ -1,9 +1,9 @@
 package lotto.view;
 
-import lotto.LottoResult;
-import lotto.Lottos;
-import lotto.Ranking;
-import lotto.Stats;
+import lotto.domain.LottoResult;
+import lotto.domain.Lottos;
+import lotto.domain.Ranking;
+import lotto.domain.Stats;
 
 public class OutputView {
 // sb
