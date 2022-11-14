@@ -1,5 +1,8 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.*;
 
 public class Application {
@@ -10,35 +13,26 @@ public class Application {
     static int cntLotto;    // 로또 수량
     static List<Lotto> lottoList;  // 생성한 로또들의 목록
 
-    /**
-     * nums[i]와 nums[0]~nums[i-1] 까지를 비교해서
-     * 전부 다르다면 0을 반환하고 하나라도 같다면 1을 반환한다.
-     */
-    static int subLoop(int i, List<Integer> nums){
-        int result = 0;
-        for(int idx = 0; idx < i; idx++){
-            if(nums.get(i) == nums.get(idx)){
-                result = 1;
-                break;
-            }
-        }
-        return result;
-    }
+    // 로또 번호 1개의 결과 타입
+    enum compareType{Three, Four, FiveOnly, FiveAndBonus, Six};
+
+    // countCompareType[Three] : Three 결과인 로또의 갯수
+    static int[] countCompareType = new int[6];
+
+    // moneyCompareType[Three] : Three 결과에 해당하는 상금
+    static int[] moneyCompareType = {
+            0, 5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000 };
 
     /**
-     * 중복값 없이 1부터 45 까지의 난수 리스트 6개를 생성해 반환한다.
+     * 중복값 없이 1부터 45 까지의 난수 6개로 이루어진 리스트를 생성해 반환한다.
      */
     static List<Integer> createRandomNumberList(){
-        List<Integer> nums = new ArrayList<>(6);
-        for(int i = 0; i < nums.size(); i++){
-            nums.set(i, (int) (Math.random() * 45 + 1));
-            i -= subLoop(i, nums);
-        }
+        List<Integer> nums = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return nums;
     }
 
     /**
-     * List<Integer>을 오름차순으로 정렬해 반환한다.
+     * 입력받은 난수 리스트들을 오름차순으로 정렬해 반환한다.
      */
     static List<Integer> sortRandomNumberList(List<Integer> randomNumberList){
         Collections.sort(randomNumberList);
@@ -84,13 +78,72 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+    /**
+     * 로또 당첨 번호 일치 개수, 보너스 일치 여부를 입력받아
+     * 로또 당첨 통계 결과를 세팅한다.
+     */
+    static void setResultOfLotto(int countCorrectNumbers, boolean sameWithBonumNum){
+        if(countCorrectNumbers < 3) return;
+        if(countCorrectNumbers == 3){
+            countCompareType[compareType.Three.ordinal()] += 1;
+            return;
+        }
+        if(countCorrectNumbers == 4){
+            countCompareType[compareType.Four.ordinal()] += 1;
+            return;
+        }
+        if(countCorrectNumbers == 5 && !sameWithBonumNum){
+            countCompareType[compareType.FiveOnly.ordinal()] += 1;
+            return;
+        }
+        if(countCorrectNumbers == 5 && sameWithBonumNum){
+            countCompareType[compareType.FiveOnly.ordinal()] += 1;
+            return;
+        }
+        countCompareType[compareType.Six.ordinal()] += 1;
+    }
+
+    /**
+     * 각 로또의 당첨 통계를 낸다.
+     */
+    static void setResultOfLottoList(){
+        for(Lotto lotto : lottoList){
+            int countCorrectNumbers = lotto.getCountCorrectNumbers(correctNums);
+            boolean sameWithBonumNum = lotto.isSameWithBonumNum(bonusNum);
+            setResultOfLotto(countCorrectNumbers, sameWithBonumNum);
+        }
+    }
+
+    /**
+     * 로또 당첨 총 수익률을 반환한다.
+     */
+    static double getYield(){
+        
+    }
+
+    /**
+     * 로또 당첨 통계 결과를 출력한다.
+     */
+    static void printResult(){
+        System.out.println(
+                "당첨 통계\n" +
+                "---\n" +
+                "3개 일치 (5,000원) - " + countCompareType[compareType.Three.ordinal()] + "개\n" +
+                "4개 일치 (50,000원) - " + countCompareType[compareType.Four.ordinal()] + "개\n" +
+                "5개 일치 (1,500,000원) - " + countCompareType[compareType.FiveOnly.ordinal()] + "개\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + countCompareType[compareType.FiveAndBonus.ordinal()] + "개\n" +
+                "6개 일치 (2,000,000,000원) - " + countCompareType[compareType.Six.ordinal()] + "개\n" +
+                "총 수익률은 " + 62.5+ "%입니다."
+        );
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
         // 로또 구입 금액 입력
         System.out.println("구입 금액을 입력해주세요");
-        Scanner sc = new Scanner(System.in);
-        money = sc.nextInt();
+        String userInput = Console.readLine();
+        money = Integer.parseInt(userInput);
         System.out.println();
 
         // 1000원으로 나누어 떨어지지 않는 경우 예외 처리
@@ -104,8 +157,8 @@ public class Application {
 
         // 당첨 번호를 입력
         System.out.println("당첨 번호를 입력해주세요");
-        String inputNumbers = sc.next();
-        String[] splitedNumbers = inputNumbers.split(",");
+        userInput = Console.readLine();
+        String[] splitedNumbers = userInput.split(",");
         System.out.println();
 
         correctNums = Arrays.stream(splitedNumbers)
@@ -114,10 +167,10 @@ public class Application {
 
         // 보너스 번호 입력
         System.out.println("보너스 번호를 입력해주세요");
-        bonusNum = sc.nextInt();
+        userInput = Console.readLine();
+        bonusNum = Integer.parseInt(userInput);
         System.out.println();
 
         // 당첨 통계 결과 출력
-
     }
 }
