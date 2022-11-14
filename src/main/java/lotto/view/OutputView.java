@@ -1,6 +1,8 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
+import lotto.domain.Ranking;
+
 import java.util.List;
 
 public class OutputView {
@@ -23,5 +25,18 @@ public class OutputView {
             System.out.println(lotto.toString());
         }
         System.out.println();
+    }
+
+    public static void printWinningStatistics(int[] rankingCount) {
+        System.out.println("당첨 통계\n" +
+                            "---");
+        int rankingIndex = 5;
+        for (Ranking ranking : Ranking.values()) {
+            String condition = ranking.getCondition();
+            String reward = ranking.getReward();
+            int count = rankingCount[rankingIndex--];
+
+            System.out.printf("%s (%s) - %d개\n", condition, reward, count);
+        }
     }
 }
