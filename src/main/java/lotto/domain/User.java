@@ -1,11 +1,18 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
     public int getMoneyInput() {
         String money = readLine();
-        validateDataType(money);
         validateMoney(Integer.parseInt(money));
         return Integer.parseInt(money);
     }
@@ -16,9 +23,15 @@ public class User {
         }
     }
 
-    private void validateDataType(String money) {
-        if (!money.matches("-?\\d+")) {
-            throw new IllegalArgumentException("[ERROR] 입력된 돈이 숫자가 아닙니다.");
+    public List<Integer> getLottoInput() {
+        String lottoInput = readLine();
+        String[] lotto = lottoInput.split(",");
+        List<Integer> lottoNumber = new ArrayList<>();
+
+        for (String s : lotto) {
+            lottoNumber.add(Integer.parseInt(s));
         }
+
+        return lottoNumber;
     }
 }
