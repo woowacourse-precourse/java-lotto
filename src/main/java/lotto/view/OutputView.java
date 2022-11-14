@@ -2,22 +2,11 @@ package lotto.view;
 
 import lotto.service.LottoService;
 
-import java.util.List;
-
 import static lotto.service.WinningHistory.*;
-import static lotto.view.ViewMessage.OUTPUT_BUY_LOTTO;
 import static lotto.view.ViewWinningMessage.*;
 
 public class OutputView {
     LottoService lottoService = new LottoService();
-
-    public void buyLottoPrint(int lotteryCount) {
-        System.out.println(lotteryCount + OUTPUT_BUY_LOTTO.getMessage());
-    }
-
-    public void LottoPrint(List<Integer> numbers) {
-        System.out.println(numbers);
-    }
 
     public void winningHistoryPrint() {
         System.out.println(FIFTH_PLACE_QUANTITY.getMessage(FIFTH_PLACE.getQuantity()));
@@ -29,10 +18,6 @@ public class OutputView {
 
     public void lottoQuantityPrint(int quantity) {
         System.out.println(quantity + "개를 구매했습니다.");
-    }
-
-    public void totalLottoNumbersPrint() {
-        System.out.println();
     }
 
     public void returnPrint(int quantity) {
