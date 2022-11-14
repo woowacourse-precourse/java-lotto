@@ -69,9 +69,17 @@ public class Game {
     }
 
     private void setProfitRate() {
+        if (isWinningPrizeZero()) {
+            this.profitRate = 0.0;
+            return;
+        }
+
         this.profitRate = ((double) this.winningPrize / user.getLottoMoney()) * 100;
     }
 
+    private boolean isWinningPrizeZero(){
+        return this.winningPrize == 0;
+    }
     private boolean isNotRank(int rank) {
         return rank == -1;
     }
