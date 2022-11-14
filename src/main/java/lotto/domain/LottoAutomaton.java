@@ -9,7 +9,6 @@ public class LottoAutomaton {
     private List<Integer> numbers;
 
     public LottoAutomaton() {
-        this.numbers = createNumbers();
     }
 
     public List<Integer> getNumbers() {
