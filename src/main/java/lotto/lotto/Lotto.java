@@ -2,7 +2,9 @@ package lotto.lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import lotto.exception.LottoException;
 
@@ -11,6 +13,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        duplicationNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -44,5 +47,27 @@ public class Lotto {
         return numbers;
     }
 
+    public void duplicationNumbers(List<Integer> numbers) { // 배열의 값이 6인지와 중복 값이 있는지 확인
+        Set<Integer> checkNumbers = new HashSet<>(numbers);
+        validate(new ArrayList<>(checkNumbers));
+    }
 
+    public boolean duplicationBonusNumber(List<Integer> numbers, int number) { // 보너스 번호가 이미 배열에 있는지
+        if (numbers.contains(number)) {
+            throw new LottoException(this.getClass());
+        }
+        return true;
+    }
+
+    public void validationNumbersInRange(List<Integer> numbers) { // 입력한 로또배열의 유효값 확인
+        for (int number : numbers) {
+            validationNumberInRange(number);
+        }
+    }
+
+    public void validationNumberInRange(int number) { // 입력한 로또 부분이 1 ~ 45의 값인지
+        if (!(1 <= number && number <= 45)) {
+            throw new LottoException(this.getClass());
+        }
+    }
 }
