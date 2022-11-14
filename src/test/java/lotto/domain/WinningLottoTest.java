@@ -80,11 +80,12 @@ class WinningLottoTest {
         assertThat(new WinningLotto(winningNumbers))
                 .isInstanceOf(WinningLotto.class);
     }
+
     @DisplayName("모든 번호가 다 맞은 경우 그 count를 반환한다.")
     @Test
     void givenAllMatchedNumber_whenCountMatchWithWinningNumber_thenReturnResult() {
         //given
-        List<Integer> numbers = new ArrayList<>(List.of(1,2,3,4,5,6));
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         Map<Integer, Boolean> winningNumber = new HashMap<>();
         winningNumber.put(1, false);
         winningNumber.put(2, false);
@@ -107,7 +108,7 @@ class WinningLottoTest {
     @Test
     void givenMatchedNumber_whenCountMatchWithWinningNumber_thenReturnResult() {
         //given
-        List<Integer> numbers = new ArrayList<>(List.of(1,2,3,4,5,6));
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         Map<Integer, Boolean> winningNumber = new HashMap<>();
         winningNumber.put(1, false);
         winningNumber.put(2, false);
@@ -130,7 +131,7 @@ class WinningLottoTest {
     @Test
     void givenNothingMatchedNumber_whenCountMatchWithWinningNumber_thenReturnResult() {
         //given
-        List<Integer> numbers = new ArrayList<>(List.of(11,12,13,14,15,16));
+        List<Integer> numbers = new ArrayList<>(List.of(11, 12, 13, 14, 15, 16));
         Map<Integer, Boolean> winningNumber = new HashMap<>();
         winningNumber.put(1, false);
         winningNumber.put(2, false);

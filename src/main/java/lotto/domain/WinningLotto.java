@@ -42,7 +42,7 @@ public class WinningLotto {
         int normalCount = 0;
         int bonusCount = 0;
 
-        for(int number : numbers) {
+        for (int number : numbers) {
             bonusCount += addCountIfBonusNumberMatch(number);
             normalCount += addCountIfNormalNumberMatch(number);
         }

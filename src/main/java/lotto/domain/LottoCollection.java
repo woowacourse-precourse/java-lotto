@@ -17,10 +17,10 @@ public class LottoCollection {
     public Map<LottoAward, Integer> countLottoAward(WinningLotto winningLotto) {
         Map<LottoAward, Integer> groupOfLottoAward = new HashMap<>();
 
-        for(Lotto lotto : lottos) {
+        for (Lotto lotto : lottos) {
             LottoResult lottoResult = lotto.countMatchedNumber(winningLotto);
             LottoAward award = LottoAward.getAwardFrom(lottoResult);
-            groupOfLottoAward.put(award,groupOfLottoAward.getOrDefault(award,0)+1);
+            groupOfLottoAward.put(award, groupOfLottoAward.getOrDefault(award, 0) + 1);
         }
 
         return groupOfLottoAward;
@@ -34,6 +34,7 @@ public class LottoCollection {
 
         return sb.toString();
     }
+
     public static LottoCollection of(List<Lotto> lottos) {
         return new LottoCollection(lottos);
     }

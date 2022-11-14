@@ -14,8 +14,8 @@ public class WinningLottoGenerator {
 
         validate(winningBall.size());
 
-        for(Integer number : winningBall) {
-            winningNumbers.put(number,false);
+        for (Integer number : winningBall) {
+            winningNumbers.put(number, false);
         }
         winningNumbers.put(eventBall, true);
 
@@ -23,7 +23,7 @@ public class WinningLottoGenerator {
     }
 
     private static void validate(int size) {
-        if(size != LottoRule.AMOUNT_OF_NUMBER.getValue()) {
+        if (size != LottoRule.AMOUNT_OF_NUMBER.getValue()) {
             throw new IllegalLottoNumberAmountException();
         }
     }

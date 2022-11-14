@@ -23,11 +23,12 @@ public enum ErrorMessage {
 
     private final String message;
     private final StringBuilder sb = new StringBuilder();
+
     ErrorMessage(String message) {
         this.message = message;
     }
 
     public String getMessage() {
-       return sb.append(NOTICE.message).append(this.message).toString();
+        return sb.append(NOTICE.message).append(this.message).toString();
     }
 }

@@ -18,6 +18,7 @@ public class LottoAutoGenerator {
 
         return groupOfLotto;
     }
+
     public static Lotto generateLotto() {
         List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(
                 LottoRule.MINIMUM_NUMBER.getValue(),

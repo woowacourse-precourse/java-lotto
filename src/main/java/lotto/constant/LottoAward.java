@@ -3,12 +3,12 @@ package lotto.constant;
 import lotto.domain.LottoResult;
 
 public enum LottoAward {
-    FIRST(6,0,2_000_000_000),
-    SECOND(5,1, 30_000_000),
-    THIRD(5,0, 1_500_000),
-    FOURTH(4,0, 50_000),
-    FIFTH(3,0, 5_000),
-    NONE(0,0, 0);
+    FIRST(6, 0, 2_000_000_000),
+    SECOND(5, 1, 30_000_000),
+    THIRD(5, 0, 1_500_000),
+    FOURTH(4, 0, 50_000),
+    FIFTH(3, 0, 5_000),
+    NONE(0, 0, 0);
 
     private final int normalCount;
     private final int bonusCount;
@@ -24,7 +24,7 @@ public enum LottoAward {
         int normalMatchedCount = lottoResult.getNormalCount();
         int bonusMatchedCount = lottoResult.getBonusCount();
 
-        if(normalMatchedCount == SECOND.getNormalCount() &&
+        if (normalMatchedCount == SECOND.getNormalCount() &&
                 bonusMatchedCount == SECOND.getBonusCount()) {
             return SECOND;
         }

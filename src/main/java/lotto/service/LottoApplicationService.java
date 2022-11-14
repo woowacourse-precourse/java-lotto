@@ -12,7 +12,7 @@ public class LottoApplicationService {
     private final ConsoleOutput consoleOutput = new ConsoleOutput();
     private Money money;
     private LottoCollection lottoCollection;
-    private  WinningLotto winningLotto;
+    private WinningLotto winningLotto;
 
     private LottoStatistic statistic;
 
@@ -42,6 +42,6 @@ public class LottoApplicationService {
 
     public void getStatisticsOfLotto() {
         statistic = LottoStatistic.of(lottoCollection.countLottoAward(winningLotto));
-        consoleOutput.printStatisticsOfWiningLotto(statistic,money.getMoney());
+        consoleOutput.printStatisticsOfWiningLotto(statistic, money.getMoney());
     }
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 public class InputParser {
     private static final String SEPARATOR = ",";
+
     public static Integer parseToInteger(String singleLine) {
         try {
             return Integer.parseInt(singleLine.trim());
@@ -24,7 +25,7 @@ public class InputParser {
     ) {
         ArrayList<Integer> parseCompleted = new ArrayList<>();
 
-        for(String toBeParse : input) {
+        for (String toBeParse : input) {
             parseCompleted.add(parseToInteger(toBeParse));
         }
 

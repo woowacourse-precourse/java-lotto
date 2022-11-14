@@ -14,7 +14,7 @@ class WinningLottoGeneratorTest {
     @Test
     void givenLackNumbers_whenCreateWinningLotto_thenThrowError() {
         //given
-        List<Integer> numbers = new ArrayList<>(List.of(1,2,3,4,5));
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5));
         Integer bonus = 13;
 
         //when//then
@@ -26,7 +26,7 @@ class WinningLottoGeneratorTest {
     @Test
     void givenToManyNumbers_whenCreateWinningLotto_thenThrowError() {
         //given
-        List<Integer> numbers = new ArrayList<>(List.of(1,2,3,4,5,7,8));
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 7, 8));
         Integer bonus = 13;
 
         //when//then
@@ -38,7 +38,7 @@ class WinningLottoGeneratorTest {
     @Test
     void givenInput_whenCreateWinningLotto_thenReturnInstance() {
         //given
-        List<Integer> numbers = new ArrayList<>(List.of(1,2,3,4,5,6));
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         Integer bonus = 13;
 
         //when//then

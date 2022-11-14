@@ -14,12 +14,12 @@ public class LottoStatistic {
     }
 
     public Double getReturnOnInvestmentRatio(int money) {
-        return (double)(sumOfIncome*100) / (double)money;
+        return (double) (sumOfIncome * 100) / (double) money;
     }
 
     public int getWinningCount(LottoAward award) {
         return groupOfAward.getOrDefault(award, 0);
-    };
+    }
 
     private void calculateSumOfIncome() {
         if (sumOfIncome != null) return;

@@ -60,7 +60,7 @@ class LottoTest {
     @DisplayName("모든 조건을 만족할 경우 Lotto Instance를 반환한다.")
     @Test
     void givenValidNumber_whenCreateLotto_thenReturnLottoInstance() {
-       //given
+        //given
         List<Integer> numberInput = List.of(1, 2, 3, 4, 5, 45);
 
         //when //then
