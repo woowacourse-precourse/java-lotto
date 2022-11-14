@@ -3,9 +3,7 @@ package lotto.repository;
 import lotto.constant.LotteryRank;
 import lotto.domain.LotteryTicket;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class LotteryTicketRepository {
     private static LotteryTicketRepository instance = new LotteryTicketRepository();
@@ -25,6 +23,10 @@ public class LotteryTicketRepository {
     public void addLotteryTicket (LotteryTicket lotteryTicket) {
         store.put(lotteryTicket.getLotteryId(), lotteryTicket);
         drawResult.put(lotteryTicket.getLotteryId(), LotteryRank.BEFORE_DRAW);
+    }
+
+    public void updateResultById (String lotteryId, LotteryRank rank) {
+        drawResult.put(lotteryId, rank);
     }
 
     public Optional<LotteryTicket> findTicketById(String lotteryId) {
