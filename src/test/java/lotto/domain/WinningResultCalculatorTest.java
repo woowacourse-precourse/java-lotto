@@ -28,6 +28,12 @@ class WinningResultCalculatorTest {
         assertThat(winningStatus).isEqualTo(result);
     }
 
+    @DisplayName("당첨 금 출력")
+    @Test
+    void calculatePrizeMoney() {
+        assertThat(winningResultCalculator.calculateReturnRatio(4_000)).isEqualTo(5.225E7);
+    }
+
     @BeforeEach
     void init() {
         List<Lotto> lottos = new LinkedList<>();

@@ -8,6 +8,11 @@ public class WinningResultCalculator {
 
     //TreeMap 으로 선언해야 합니다
     Map<Rank, Integer> winningStatus = new TreeMap<>();
+    private int totalPrizeMoney = 0;
+
+    public double calculateReturnRatio(double expenses) {
+        return (totalPrizeMoney / expenses) * 100;
+    }
 
     public Map<Rank, Integer> createWinningStatus(List<Lotto> lottos, WinningNumbers winningNumbers) {
 
@@ -20,7 +25,20 @@ public class WinningResultCalculator {
             winningStatus.put(rank, winningStatus.get(rank) + 1);
         }
 
+        calculateTotalPrizeMoney();
+
         return winningStatus;
+    }
+
+    private int calculateTotalPrizeMoney() {
+
+        for (Rank rank : winningStatus.keySet()) {
+            for (int count = 0; count < winningStatus.get(rank); count++) {
+                totalPrizeMoney += Rank.getRankPrize(rank);
+            }
+        }
+
+        return totalPrizeMoney;
     }
 
 }
