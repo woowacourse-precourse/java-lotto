@@ -17,4 +17,5 @@ public interface LottoProcessor {
 
     List<Lotto> createLottoByCount(Integer count);
 
+    Lotto createLotto(List<Integer> lottoNumbers);
 }

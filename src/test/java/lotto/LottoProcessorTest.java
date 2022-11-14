@@ -81,8 +81,8 @@ public class LottoProcessorTest {
     }
 
     @TestFactory
-    @DisplayName("LottoProcessor createLotto Test")
-    Stream<DynamicTest> lottoProcessorCreateLottoTest() {
+    @DisplayName("LottoProcessor createLottoByCount Test")
+    Stream<DynamicTest> lottoProcessorCreateLottoByCountTest() {
         lottoProcessor = new LottoProcessorImpl();
 
         return Stream.of(
@@ -111,6 +111,21 @@ public class LottoProcessorTest {
                     assertThat(resultNumber.get(LottoEnum.LOTTO.getSize()-1))
                             .isGreaterThanOrEqualTo(LottoEnum.LOTTO.getMinNum())
                             .isLessThanOrEqualTo(LottoEnum.LOTTO.getMaxNum());
+                })
+        );
+    }
+
+    @TestFactory
+    @DisplayName("LottoProcessor createLotto Test")
+    Stream<DynamicTest> lottoProcessorCreateLottoTest() {
+        lottoProcessor = new LottoProcessorImpl();
+
+        return Stream.of(
+                DynamicTest.dynamicTest("입력한 숫자로 로또를 생성한다.", () -> {
+                    final List<Integer> lottoNumbers = List.of(1,2,3,4,5,6);
+                    Lotto result = lottoProcessor.createLotto(lottoNumbers);
+
+                    assertThat(result.getNumbers()).isEqualTo(lottoNumbers);
                 })
         );
     }

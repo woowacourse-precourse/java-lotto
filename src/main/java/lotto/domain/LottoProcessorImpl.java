@@ -37,6 +37,11 @@ public class LottoProcessorImpl implements LottoProcessor{
         return clientLotto;
     }
 
+    @Override
+    public Lotto createLotto(List<Integer> lottoNumbers) {
+        return lottoRepository.create(lottoNumbers);
+    }
+
     private List<Integer> createRandomNumber(){
         return Randoms.pickUniqueNumbersInRange(LottoEnum.LOTTO.getMinNum(), LottoEnum.LOTTO.getMaxNum(), LottoEnum.LOTTO.getSize());
     }
