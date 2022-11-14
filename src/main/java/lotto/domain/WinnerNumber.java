@@ -78,5 +78,8 @@ public class WinnerNumber {
         if (Integer.parseInt(bonusNumber) < MINIMUM_NUMBER || Integer.parseInt(bonusNumber) > MAXIMUM_NUMBER) {
             throw new IllegalArgumentException(ExceptionMessage.OUT_OF_BOUNDS);
         }
+        if (numbers.contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATED_NUMBER);
+        }
     }
 }
