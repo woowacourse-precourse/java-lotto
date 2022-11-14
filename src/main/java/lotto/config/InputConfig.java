@@ -55,10 +55,10 @@ public class InputConfig {
 
     public static void checkBonusNumber(String input) {
         isNumber(input);
-        isInRange(Integer.valueOf(input));
+        isInLottoRange(Integer.parseInt(input));
     }
 
-    private static void isInRange(int value) {
+    private static void isInLottoRange(int value) {
         if (!(START_INCLUSIVE <= value && value <= END_INCLUSIVE)) {
             throw new IllegalArgumentException(String.format(ERROR_RANGE_OVERFLOW, START_INCLUSIVE, END_INCLUSIVE));
         }
@@ -67,12 +67,12 @@ public class InputConfig {
     // 구입 금액 입력
     public static void checkPurchaseInput(String input) {
         isNumber(input);
-        long value = isInLong(input);
+        long value = isInLongRange(input);
         isMoreThanZero(value);
         isDividedByPrice(value);
     }
 
-    private static Long isInLong(String input) {
+    private static Long isInLongRange(String input) {
         try {
             return Long.parseLong(input);
         } catch (NumberFormatException e) {
