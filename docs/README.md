@@ -3,8 +3,9 @@
 - [ ] 구입 금액 만큼 로또를 발행한다.
   - [x] 복권 금액은 1,000원이며 나누어 떨어지는지 확인한다. Validator#hasLeftMoneyAfterBuyLotto()
   - [x] 1 ~ 45 숫자에서 중복없이 임의의 숫자 6개를 오름차순으로 생성한다. Lotto#fromRandomNumbers()
-- [ ] 발행된 로또 번호를 출력한다.
-  - [ ] 지정된 양식에 따라 로또 번호를 출력한다.
+- [ ] 발행된 로또 번호를 변환한다.
+  - [x] 지정된 양식에 따라 로또 번호를 문자열로 변환한다. Lotto#getString()
+  - [ ] 로또 번호 리스트의 모든 로또 번호를 출력한다.
 - [ ] 당첨 번호를 입력 받는다.
   - [x] 콤마로 구분되어 입력된 값을 숫자형으로 변환한다. Lotto#from()
   - [x] 입력된 숫자가 6개인지 확인한다. Validator#isNotCorrectLottoNumberSize()

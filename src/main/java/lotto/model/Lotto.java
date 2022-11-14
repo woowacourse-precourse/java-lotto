@@ -45,7 +45,12 @@ public class Lotto {
 
     @Override
     public String toString() {
-        return "";
+        String build = this.numbers
+                .stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
+
+        return String.format("[%s]", build);
     }
 
     private void validate(List<Integer> numbers) {

@@ -52,4 +52,11 @@ class LottoTest {
     void createLottoByRandomNumbers() {
         assertDoesNotThrow(Lotto::fromRandomNumbers);
     }
+
+    @DisplayName("문자열로 반환 한다")
+    @Test
+    void toStringFromLotto() {
+        Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
+        assertThat(lotto.toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
+    }
 }
