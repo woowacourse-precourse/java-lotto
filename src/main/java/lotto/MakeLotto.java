@@ -1,6 +1,6 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
-
+import java.util.Comparator;
 import java.util.ArrayList;
 
 public class MakeLotto {
@@ -21,12 +21,17 @@ public class MakeLotto {
 
             }
         }
+
+        numbers.sort(Comparator.naturalOrder());
         System.out.println(numbers);
         return numbers;
     }
-    public static void totallotto(int cnt){
+    public static ArrayList<ArrayList<Integer>> totallotto(int cnt){
+        ArrayList<ArrayList<Integer>> total = new ArrayList<>();
         for(int i=0;i<cnt;i++){
-            makelotto();
+            total.add(makelotto());
+
         }
+        return total;
     }
 }

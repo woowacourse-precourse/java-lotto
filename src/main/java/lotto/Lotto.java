@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 public class Lotto {
@@ -18,10 +19,12 @@ public class Lotto {
 
     public static void game(){
         int cost;
+        ArrayList<ArrayList<Integer>> total = new ArrayList<>();
+
         Output.printCost();
         cost = Integer.parseInt(Console.readLine());
         int cnt = Output.printOrder(cost);
-        MakeLotto.totallotto(cnt);
+        total=MakeLotto.totallotto(cnt);
 
         //로또 생성
 
