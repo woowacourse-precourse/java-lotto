@@ -7,17 +7,14 @@ import lotto.domain.Converter;
 
 public class InputView {
     public static int inputPurchaseMoney() {
-        int money = Converter.changeToMoney(readLine());
-        return money;
+        return Converter.changeToMoney(readLine());
     }
 
     public static List<Integer> inputWinningNumber() {
-        List<Integer> winningLotto = Converter.changeToWinningNumber(readLine());
-        return winningLotto;
+        return Converter.changeToWinningNumber(readLine());
     }
 
     public static int inputBonusNumber() {
-        int bonusNumber = Converter.changeToBonusNumber(readLine());
-        return bonusNumber;
+        return Converter.changeToBonusNumber(readLine());
     }
 }
