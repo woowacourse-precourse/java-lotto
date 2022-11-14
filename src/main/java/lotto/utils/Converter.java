@@ -12,7 +12,7 @@ public class Converter {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(ErrorMessages.NUMBER_ERROR.getMessage());
         }
     }
 
@@ -22,7 +22,7 @@ public class Converter {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(ErrorMessages.NUMBER_ERROR.getMessage());
         }
     }
 
