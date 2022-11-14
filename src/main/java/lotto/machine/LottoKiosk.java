@@ -12,6 +12,10 @@ import lotto.message.Message;
 
 public class LottoKiosk {
     private final int LOTTO_PRICE = 1000;
+    private final int START_NUM = 1;
+    private final int END_NUM = 45;
+    private final int NUM_COUNT = 6;
+    private final int MIN = 1000;
 
     private String moneyInput;
     private long money;
@@ -47,16 +51,16 @@ public class LottoKiosk {
     }
 
     public void validateMoney() {
-        if (this.money < 1000) {
+        if (this.money < MIN) {
             throw new IllegalArgumentException(ErrorMessage.LESS_THAN_THOUSAND.message);
         }
-        if (this.money % LOTTO_PRICE != 0) {
+        if (!isAbleToDivide()) {
             throw new IllegalArgumentException(ErrorMessage.DIVIDE_DISABLE.message);
         }
     }
 
-    public long showInsertedMoney() {
-        return this.money;
+    boolean isAbleToDivide() {
+        return this.money % LOTTO_PRICE == 0;
     }
 
     public void sellLotto(Customer customer) {
@@ -87,7 +91,10 @@ public class LottoKiosk {
     }
 
     public List<Integer> makeLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
+        return Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, NUM_COUNT)
+                .stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public void printAllLottoNumber() {
@@ -96,11 +103,15 @@ public class LottoKiosk {
         }
     }
 
-    public List<Lotto> showAllLotto() {
-        return new ArrayList<>(lottos);
+    public long showInsertedMoney() {
+        return this.money;
     }
 
     public long showHowMany() {
         return this.howMany;
+    }
+
+    public List<Lotto> showAllLotto() {
+        return new ArrayList<>(lottos);
     }
 }
