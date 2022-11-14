@@ -21,7 +21,7 @@ public class Lottos {
         return lottos.size() * PRICE_PER_ONE_LOTTO;
     }
 
-    public Map<LottoRank, Integer> getLottoResult(WinningLotto winningLotto) {
+    public LottoResult getLottoResult(WinningLotto winningLotto) {
         Map<LottoRank, Integer> lottoResult = initLottoResult();
 
         for (Lotto lotto : lottos) {
@@ -31,7 +31,7 @@ public class Lottos {
             lottoResult.put(lottoRank, lottoResult.getOrDefault(lottoRank, 0) + 1);
         }
 
-        return lottoResult;
+        return new LottoResult(lottoResult);
     }
 
     private Map<LottoRank, Integer> initLottoResult() {

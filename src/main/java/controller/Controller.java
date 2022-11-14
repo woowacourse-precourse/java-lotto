@@ -35,6 +35,6 @@ public class Controller {
     }
 
     private void getResult(Lottos lottos, WinningLotto winningLotto) {
-        Map<LottoRank, Integer> lottoResult = lottos.getLottoResult(winningLotto);
+        LottoResult lottoResult = lottos.getLottoResult(winningLotto);
     }
 }
