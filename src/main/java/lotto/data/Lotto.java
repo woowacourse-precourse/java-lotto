@@ -1,6 +1,7 @@
 package lotto.data;
 
 import static lotto.util.Error.ERROR_DUPLICATED_NUMBERS;
+import static lotto.util.Error.ERROR_OUT_OF_MAX_IDX;
 import static lotto.util.Error.ERROR_OUT_OF_RANGE_NUMBER;
 
 import java.util.ArrayList;
@@ -31,10 +32,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6)
-        {
-            System.out.println("[ERROR] 로또 번호의 최대 길이는 6입니다.");
-            throw new IllegalArgumentException();
-        }
+            ERROR_OUT_OF_MAX_IDX.generate();
     }
 
     // TODO: 추가 기능 구현
@@ -53,6 +51,11 @@ public class Lotto {
         }
     }
 
+    private void range(int number){
+        if (number < 1 || number > 45)
+            ERROR_OUT_OF_RANGE_NUMBER.generate();
+    }
+
     //로또 랭크 반환
     public Rank checkRankOf(Lotto userLotto) {
         int lastIndex = this.numbers.size()-1;
@@ -68,6 +71,12 @@ public class Lotto {
         boolean bonusMatch = userLotto.numbers.contains(bonus);
 
         return Rank.getPrize(match, bonusMatch);
+    }
+
+    public void addBonus(int number){
+        range(number);
+        validate(this.numbers);
+        numbers.add(number);
     }
 
     @Override

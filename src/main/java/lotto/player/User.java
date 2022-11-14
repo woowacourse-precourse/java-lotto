@@ -1,7 +1,6 @@
 package lotto.player;
 
 import static lotto.util.Error.ERROR_OUT_OF_RANGE_PAYMENT;
-import static lotto.util.Error.ERROR_PARSE_INT;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
@@ -11,11 +10,10 @@ public class User {
 
     public final Lotto[] tickets;
 
-    public User(String payment){
-        int pay = tryParseInt(payment);
-        validate(pay);
+    public User(int payment){
+        validate(payment);
 
-        int ticketNum = pay/1000;
+        int ticketNum = payment/1000;
         Lotto[] tickets = new Lotto[ticketNum];
         List<Integer> random6Digit;
         for(int i = 0; i < ticketNum; i++){
@@ -24,14 +22,6 @@ public class User {
         }
 
         this.tickets = tickets;
-    }
-    private int tryParseInt(String payment){
-        try{
-            return Integer.parseInt(payment);
-        }catch(Exception e){
-            ERROR_PARSE_INT.generate();
-        }
-        return 0;
     }
     private void validate(int payment){
         if(payment <= 0 || payment%1000 != 0)
@@ -45,6 +35,7 @@ public class User {
     @Override
     public String toString() {
         StringBuilder tickets = new StringBuilder();
+        tickets.append(getTicketNum()).append("개를 구매했습니다.").append(System.lineSeparator());
         for(int i = 0; i < getTicketNum(); i++)
             tickets.append(this.tickets[i].toString()).append(System.lineSeparator());
         return tickets.toString();
