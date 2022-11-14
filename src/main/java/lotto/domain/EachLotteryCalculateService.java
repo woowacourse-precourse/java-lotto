@@ -7,7 +7,7 @@ import lotto.model.Rank;
 
 public class EachLotteryCalculateService {
 
-    private final static int BONUSNUMBER = 5;
+    private final static int BONUS_NUMBER = 5;
 
     private final Lotto winningLottery;
     private final int bonusNumber;
@@ -36,7 +36,7 @@ public class EachLotteryCalculateService {
     }
 
     private boolean isNeedBonusCheck(int matchedNumber){
-        return matchedNumber == BONUSNUMBER;
+        return matchedNumber == BONUS_NUMBER;
     }
 
     private boolean isContainsBonus(Lotto lottery){

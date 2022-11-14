@@ -6,7 +6,13 @@ import java.util.List;
 import lotto.model.Lotto;
 
 public class MakeLotteriesService {
+
+    private final static int START_NUMBER = 1;
+    private final static int END_NUMBER = 45;
+    private final static int LOTTERY_SIZE = 6;
+
     private List<Lotto> lotteries;
+
 
     public MakeLotteriesService(int lotteriesNumber){
         makeLotteries(lotteriesNumber);
@@ -24,6 +30,6 @@ public class MakeLotteriesService {
     }
 
     private Lotto makeLotto(){
-        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return new Lotto(Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, LOTTERY_SIZE));
     }
 }

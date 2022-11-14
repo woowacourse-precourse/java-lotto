@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
 
 public class PurchaseView implements View{
+
+    private final static String NULL_INPUT_ERROR_MESSAGE = "[ERROR] 금액을 입력해주세요.";
     private String purchaseNumbers;
 
     @Override
@@ -20,7 +22,7 @@ public class PurchaseView implements View{
         try{
             purchaseNumbers = Console.readLine();
         }catch (NoSuchElementException e){
-            throw new IllegalArgumentException("[ERROR] 금액을 입력해주세요.");
+            throw new IllegalArgumentException();
         }
 
     }

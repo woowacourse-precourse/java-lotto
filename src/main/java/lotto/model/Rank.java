@@ -16,7 +16,7 @@ public enum Rank {
     private final int matchedNumber;
     private final Bonus bonus;
     private final String price;
-    private int priceAmount;
+    private final int priceAmount;
 
     Rank(int matchedNumber, Bonus bonus, String price, int priceAmount){
         this.matchedNumber = matchedNumber;

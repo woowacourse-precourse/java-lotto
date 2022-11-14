@@ -5,8 +5,9 @@ import java.util.Map;
 import lotto.model.Rank;
 
 public class ResultView implements View{
-    private Map<Rank, Integer> result;
-    private double yield;
+
+    private final Map<Rank, Integer> result;
+    private final double yield;
 
     public ResultView(Map<Rank, Integer> result, double yield){
         this.result = result;

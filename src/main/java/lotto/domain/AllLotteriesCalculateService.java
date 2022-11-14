@@ -10,6 +10,9 @@ import lotto.model.Rank;
 
 public class AllLotteriesCalculateService {
 
+    private static final int LOTTERY_PRICE = 1000;
+    private static final int YIELD_PERCENTAGE = 100;
+
     private final EachLotteryCalculateService eachNumberCalculateService;
     private Map<Rank, Integer> results;
     private double yield;
@@ -25,7 +28,7 @@ public class AllLotteriesCalculateService {
                 rank -> results.put(rank, results.get(rank) + 1)
         );
         this.results = results;
-        calculateYield(lotteries.size() * 1000);
+        calculateYield(lotteries.size() * LOTTERY_PRICE);
     }
 
     public Map<Rank, Integer> getResults() {
@@ -39,7 +42,7 @@ public class AllLotteriesCalculateService {
     private void calculateYield(int purchaseAmount){
         int prizeAmount = calculatePrizeAmount();
 
-        yield = (prizeAmount  * 100 / (double)purchaseAmount);
+        yield = (prizeAmount  * YIELD_PERCENTAGE / (double)purchaseAmount);
     }
 
     private int calculatePrizeAmount(){

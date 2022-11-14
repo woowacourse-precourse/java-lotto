@@ -6,11 +6,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
-
     private static final int SIZE = 6;
     private static final int MIN = 1;
     private static final int MAX = 45;
+
+    private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);

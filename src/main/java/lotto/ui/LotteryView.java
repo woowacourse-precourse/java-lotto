@@ -4,8 +4,9 @@ import java.util.List;
 import lotto.model.Lotto;
 
 public class LotteryView implements View {
-    private int lotteriesCount;
-    private List<Lotto> lotteries;
+
+    private final List<Lotto> lotteries;
+    private final int lotteriesCount;
 
     public LotteryView(int lottoNumber, List<Lotto> lotteries){
         this.lotteriesCount = lottoNumber;

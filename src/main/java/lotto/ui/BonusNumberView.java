@@ -3,6 +3,7 @@ package lotto.ui;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BonusNumberView implements View{
+
     private String bonusNumber;
 
     @Override
