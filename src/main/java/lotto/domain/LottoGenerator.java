@@ -13,10 +13,14 @@ import java.util.List;
 public class LottoGenerator {
     public void generateRandomLotto(LottoBuyer lottoBuyer) {
         int lottoAmount = lottoBuyer.getTotalLottoTickets();
-
+        
         for (int i = 0; i < lottoAmount; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, RIGHT_LOTTO_SIZE);
+            List<Integer> numbers = getRandomNumbers();
             lottoBuyer.addLottoTicket(new Lotto(numbers));
         }
+    }
+
+    public List<Integer> getRandomNumbers() {
+        return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, RIGHT_LOTTO_SIZE);
     }
 }
