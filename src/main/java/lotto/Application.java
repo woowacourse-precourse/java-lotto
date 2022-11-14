@@ -3,15 +3,15 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Application {
-    private static List<Lotto> lotto_list = new ArrayList<>(); //전체 로또 담을 리스트
+    private static List<Lotto> lottoList = new ArrayList<>(); //전체 로또 담을 리스트
+
+    private static final int LOTTO_NUMBER = 6;
 
     public static int BONUS;
+    public static Lotto winningLotto;
 
     public static List<Integer> makeRandom() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -33,8 +33,8 @@ public class Application {
             List<Integer> numbers = makeRandom();
             Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
-            lotto_list.add(lotto); //로또 리스트에 담기
-            lotto.getNumbers(); //로또 번호 출옴
+            lottoList.add(lotto); //로또 리스트에 담기
+            lotto.printNumbers(); //로또 번호 출옴
         }
     }
 
@@ -57,11 +57,47 @@ public class Application {
         BONUS = Integer.parseInt(Console.readLine());
     }
 
+    public static boolean validBonus(List<Integer> tempLottoNumbers) {
+        if (tempLottoNumbers.contains(BONUS)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void printStat() {
+        System.out.println("\n당첨 통계\n---");
+
+        List<Integer> record = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0)); //로또 통계 기록용 리스트
+        int count = 0;
+        int element;
+
+        for (int listIdx = 0; listIdx < lottoList.size(); listIdx++) {
+            List<Integer> tempLottoNumbers = lottoList.get(listIdx).getNumbers(); //해당 lotto 클래스의 numbers
+            count = correctCount(tempLottoNumbers);
+
+            
+        }
+    }
+
+    public static int correctCount(List<Integer> tempLottoNumbers) {
+        int count = 0;
+        List<Integer> winningNumbers = winningLotto.getNumbers(); //당첨 로또 번호
+
+        for (int numberIdx = 0; numberIdx < LOTTO_NUMBER; numberIdx++) {
+            if (winningNumbers.contains(tempLottoNumbers.get(numberIdx))) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int lottoNumber = buyLotto();
         printLotto(lottoNumber);
-        Lotto winningLotto = new Lotto(winningNumber());
+        winningLotto = new Lotto(winningNumber()); //당첨 로또
         bonusNumber();
+        printStat();
     }
 }
