@@ -46,7 +46,7 @@ public class Validator {
     }
 
     public static boolean isHundredUnit(int money) {
-        if (money % UNIT != 0) {
+        if (money > 0 && money % UNIT != 0) {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 1000원 단위여야 합니다.");
         }
         return true;

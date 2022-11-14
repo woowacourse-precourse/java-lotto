@@ -49,7 +49,7 @@
 
 # 필요한 자료구조
 - `ui/Validator` 클래스 : 유효성 검사
-    - `isNumber()`, `isPositive()`, `isHundredUnit()`, `isInRange()`, `isDuplicate()`
+    - `isNumber()`, `isHundredUnit()`, `isInRange()`, `isDuplicate()`
 - `ui/Input` 클래스 : 입력 처리
     - `readMoney()`, `readWinningNumbers()`, `readBonusNumber()`
 - `domain/Lotto` 클래스 : 사용자의 로또 1개를 저장하고, 로또와 관련된 로직 수행
