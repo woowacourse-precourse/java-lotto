@@ -25,12 +25,19 @@ public class Validator {
         if(!isLottoRange(lottoNumbers)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_NOT_VALID_RANGE.toString());
         }
+        if(!isSixNumbers(lottoNumbers)) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_NOT_SIX_NUMBERS.toString());
+        }
     }
 
     private boolean isLottoRange(List<Integer> lottoNumbers) {
         int rightNumberCount = (int) lottoNumbers.stream()
                 .filter(number -> 1 <= number && number <= 45).count();
         return rightNumberCount == 6;
+    }
+
+    private boolean isSixNumbers(List<Integer> lottoNumbers) {
+        return lottoNumbers.size() == 6;
     }
 
     private boolean isNumber(String input) {
