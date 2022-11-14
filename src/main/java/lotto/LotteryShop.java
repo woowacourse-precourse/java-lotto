@@ -6,6 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LotteryShop {
+    public static int dollar;
+
+    public static int get_number_of_tickets() {
+        int number_of_tickets = dollar / 1000;
+        if (dollar % 1000 != 0) throw new IllegalArgumentException();
+        System.out.println(number_of_tickets + "개를 구매했습니다.");
+        return number_of_tickets;
+    }
+
     public static List<Lotto> generate_lottery(int number_of_tickets) {
         List<Lotto> tickets = new ArrayList<>();
 
