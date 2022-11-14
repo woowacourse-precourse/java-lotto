@@ -18,6 +18,7 @@ public class Manager {
     public final String INIT_RESULT = "당첨 통계\n---\n";
     public final String INIT_WINNING_RATE = "총 수익률은 ";
     public final String CLOSE_WINNING_RATE = "%입니다.";
+    public final String LOTTO_UNIT = "개";
 
     public boolean isNumber(String str){
         for(int i=0; i<str.length(); i++){
@@ -92,5 +93,15 @@ public class Manager {
         System.out.print(INIT_WINNING_RATE);
         System.out.print(String.format("%.2f", rate));
         System.out.println(CLOSE_WINNING_RATE);
+    }
+
+    public void PrintGameResult(List<Lotto> lottos, List<Integer> winning, int bonus){
+        int[] frequency = calculateResult(lottos, winning, bonus);
+        System.out.print(INIT_RESULT);
+        for(int i=1;i<frequency.length;i++){
+            System.out.print(Constants.invert(i).getGameResult());
+            System.out.print(" - ");
+            System.out.println(frequency[i]+LOTTO_UNIT);
+        }
     }
 }
