@@ -25,24 +25,11 @@ public class LottoVendingMachine {
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
-        printLottos(lottos);
+        print(lottos);
         return lottos;
     }
 
-    private static void printLottos(List<Lotto> lottos) {
-        for (Lotto lotto : lottos) {
-            printLotto(lotto);
-        }
-    }
-
-    private static void printLotto(Lotto lotto) {
-        String output = "[";
-        for (int number : lotto.getNumbers()) {
-            output += String.valueOf(number);
-            output += ", ";
-        }
-        output = output.substring(0, output.length() - 2); // ", ".length() == 2 마지막 ", " 제거
-        output += "]";
-        System.out.println(output);
+    private static void print(List<Lotto> lottos) {
+        lottos.stream().forEach(e -> System.out.println(e));
     }
 }

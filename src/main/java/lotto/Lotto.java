@@ -20,4 +20,14 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public String toString() {
+        String output = "";
+        for (int number : numbers) {
+            output += String.valueOf(number);
+            output += ", ";
+        }
+        output = output.substring(0, output.length() - 2); // ", ".length() == 2 마지막 ", " 제거
+        return "[" + output + "]";
+    }
 }
