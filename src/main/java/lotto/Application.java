@@ -15,7 +15,13 @@ public class Application {
         }
 
         Lotto winLotto = askWinLotto();
-        int winBonus = askWinBonus();
+        int winBonus = askWinBonus(winLotto);
+
+        List<Integer> results = new ArrayList<>();
+        for(int i=0; i<purchases.size(); i++) {
+            results.add(Analyse.containNumber(winLotto, purchases.get(i), winBonus));
+        }
+        System.out.println("results:"+results);
 
     }
 
@@ -41,9 +47,16 @@ public class Application {
         return winLotto;
     }
 
-    public static int askWinBonus() {
+    public static int askWinBonus(Lotto winLotto) {
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonus = Buy.isRightNumber(Console.readLine());
+
+        List<Integer> winNum = winLotto.getLotto();
+
+        if(winNum.contains(bonus)) {
+            throw new IllegalArgumentException("[ERROR] 로또 숫자가 중복됩니다.");
+        }
+
         if(bonus<1|| bonus>45) {
             throw new IllegalArgumentException("[ERROR] 로또 숫자의 범위가 적절하지 않습니다.");
         }
