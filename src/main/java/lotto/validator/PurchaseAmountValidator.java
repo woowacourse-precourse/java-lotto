@@ -18,6 +18,6 @@ public class PurchaseAmountValidator {
     }
 
     private static boolean isThousandUnit(String money) {
-        return Integer.parseInt(money) % 1000 == 0;
+        return Integer.parseInt(money) % 1000 == 0 && Integer.parseInt(money) != 0;
     }
 }
