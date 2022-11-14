@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import lotto.exception.DuplicateLottoNumberException;
 import lotto.exception.InvalidSizeLottoNumberException;
