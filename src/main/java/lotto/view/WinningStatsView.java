@@ -13,6 +13,7 @@ public class WinningStatsView {
     public static final String WINNING_UNIT = "개";
     public static final String RATE_OF_RETURN_FRONT_MESSAGE = "총 수익률은 ";
     public static final String RATE_OF_RETURN_BACK_MESSAGE = "%입니다.";
+    public static final String LINE_BREAK = "\n";
 
     public static void showWinningStatsMessage() {
         System.out.println(WINNING_STATS_MESSAGE);
@@ -32,5 +33,9 @@ public class WinningStatsView {
 
     public static void showRateOfReturn(String rateOfReturn) {
         System.out.println(RATE_OF_RETURN_FRONT_MESSAGE + rateOfReturn + RATE_OF_RETURN_BACK_MESSAGE);
+    }
+
+    public static void showLineBreak() {
+        System.out.println(LINE_BREAK);
     }
 }
