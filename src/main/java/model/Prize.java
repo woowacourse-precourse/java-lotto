@@ -12,30 +12,28 @@ public enum Prize {
     Fourth(4, 50000, "4개 일치 (50,000원) - 개"),
     Fifth(3, 5000, "3개 일치 (5,000원) - 개");
 
-    private final double hit;
-    private final int money;
-    private final String message;
+    private final double HIT;
+    private final int MONEY;
+    private final String MESSAGE;
 
-    public double hit(){
-        return hit;
+    public double HIT(){
+        return HIT;
     }
-    public int money(){
-        return money;
-    }
-    public String message(){
-        return message;
+    public int MONEY(){return MONEY;}
+    public String MESSAGE(){
+        return MESSAGE;
     }
 
     private static final Map<Double, Prize> BY_HIT =
-            Stream.of(values()).collect(Collectors.toMap(Prize::hit, Function.identity()));
+            Stream.of(values()).collect(Collectors.toMap(Prize::HIT, Function.identity()));
 
     public static Prize prizeOfHit(Double hit){
         return BY_HIT.get(hit);
     }
 
     Prize(double hit, int money, String message) {
-        this.hit = hit;
-        this.money = money;
-        this.message = message;
+        this.HIT = hit;
+        this.MONEY = money;
+        this.MESSAGE = message;
     }
 }
