@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueN
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -267,5 +268,21 @@ public class SimulatorTest {
     void convertTotalWinsToTotalWinningPriceCase3() {
         List<Integer> wins = List.of(0, 0, 3, 54, 214);
         assertThat(Simulator.calculateTotalWinningPrice(wins)).isEqualTo(8_270_000);
+    }
+
+    @DisplayName("수익률 계산하기 - 1")
+    @Test
+    void calculateRateOfReturnCase1() {
+        List<Integer> wins = List.of(0, 0, 3, 54, 214);
+        int purchasePrice = 378000;
+        assertThat(Simulator.calculateRateOfReturn(wins, purchasePrice)).isEqualTo(new BigDecimal("21.878"));
+    }
+
+    @DisplayName("수익률 계산하기 - 2")
+    @Test
+    void calculateRateOfReturnCase2() {
+        List<Integer> wins = List.of(0, 0, 42, 540, 2104);
+        int purchasePrice = 3728000;
+        assertThat(Simulator.calculateRateOfReturn(wins, purchasePrice)).isEqualTo(new BigDecimal("26.964"));
     }
 }
