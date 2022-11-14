@@ -34,7 +34,7 @@ public class LottoOfAnswer {
 
     public boolean isContainBounus(boolean isNotExistBonus, Integer number) {
         if (isNotExistBonus) {
-            return numbers.contains(number);
+            return bonusNumber == number;
         }
         return true;
     }
