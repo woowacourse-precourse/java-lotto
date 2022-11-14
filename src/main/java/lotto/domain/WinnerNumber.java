@@ -22,8 +22,8 @@ public class WinnerNumber {
 
     public WinnerNumber(List<String> winnerNumber) {
         validateLottoNumber(winnerNumber.get(LOTTO_NUMBER));
-        validateBonusNumber(winnerNumber.get(BONUS_NUMBER));
         this.numbers = creatNumberList(winnerNumber.get(LOTTO_NUMBER));
+        validateBonusNumber(winnerNumber.get(BONUS_NUMBER));
         this.bonusNumber = Integer.parseInt(winnerNumber.get(BONUS_NUMBER));
     }
 
@@ -73,13 +73,13 @@ public class WinnerNumber {
 
     public void validateBonusNumber(String bonusNumber) {
         if (!bonusNumber.matches(BONUS_NUMBER_CHECK)) {
-            throw new IllegalArgumentException(ExceptionMessage.NON_NUMERIC_INPUT);
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NON_NUMERIC_INPUT);
         }
         if (Integer.parseInt(bonusNumber) < MINIMUM_NUMBER || Integer.parseInt(bonusNumber) > MAXIMUM_NUMBER) {
-            throw new IllegalArgumentException(ExceptionMessage.OUT_OF_BOUNDS);
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.OUT_OF_BOUNDS);
         }
         if (numbers.contains(Integer.parseInt(bonusNumber))) {
-            throw new IllegalArgumentException(ExceptionMessage.DUPLICATED_NUMBER);
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATED_NUMBER);
         }
     }
 }
