@@ -20,31 +20,43 @@ public class Application {
         return Console.readLine();
     }
 
-    public static void Number_exception(String purchase_Amount){
-        for(int i=0; i<purchase_Amount.length(); i++){
-            if((int)(purchase_Amount.charAt(i))>57 || (int)(purchase_Amount.charAt(i))<48){
+    public static void Number_exception(String purchase_Input){
+        for(int i=0; i<purchase_Input.length(); i++){
+            if((int)(purchase_Input.charAt(i))>57 || (int)(purchase_Input.charAt(i))<48){
                 throw new IllegalArgumentException("[Error] 자연수 값을 입력해주세요.");
             }
         }
     }
 
-    public static void Unit_exception(String purchase_Amount){
-        if((Integer.parseInt(purchase_Amount)%1000)!=0){
+    public static void Unit_exception(String purchase_Input){
+        if((Integer.parseInt(purchase_Input)%1000)!=0){
             throw new IllegalArgumentException("[Error] 1000원 단위로 입력해주세요.");
         }
     }
 
-//    public static int purchase_Amount(){
+    public static int StringtoInteger(String str){
+        return Integer.parseInt(str);
+    }
+
+    public static int purchase_Amount(int input){
+        return (input / 1000);
+    }
+
+    public static void purchase_Amount_Output(int input){
+        System.out.println(input+"개를 구매했습니다.");
+    }
+
+//    public static int purchase_Input(){
 //
 //    }
 
     public static void main(String[] args) {
         issue_Number();
         purchase_Output();
-        String purchase_Amount = Input();
-        Number_exception(purchase_Amount);
-        Unit_exception(purchase_Amount);
-
+        String purchase_Input = Input();
+        Number_exception(purchase_Input);
+        Unit_exception(purchase_Input);
+        purchase_Amount_Output(purchase_Amount(StringtoInteger(purchase_Input)));
 
 
 
