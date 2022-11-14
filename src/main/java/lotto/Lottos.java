@@ -6,21 +6,27 @@ import java.util.List;
 import java.util.Map;
 
 public class Lottos {
-    static int LOTTO_PRICE = 1000;
-    private List<Lotto> boughtLottos;
+    int LOTTO_PRICE = 1000;
 
-    public Lottos(List<Lotto> boughtLottos) {
-        this.boughtLottos = boughtLottos;
-    }
+    private final List<Lotto> boughtLottos = new ArrayList<>();
+    private final int paid;
 
-    public void generate(int paid) {
-        boughtLottos = new ArrayList<>();
+    public Lottos(int paid) {
+        this.paid = paid;
         for (int i = 0; i < paid / LOTTO_PRICE; i++) {
             boughtLottos.add(Lotto.create());
         }
     }
 
-    private Map<Score, Integer> getScore(List<Integer> winningNumbers, int bonusNumber) {
+    public List<Lotto> getBoughtLottos() {
+        return boughtLottos;
+    }
+
+    public int getPaid() {
+        return paid;
+    }
+
+    public Map<Score, Integer> getScore(List<Integer> winningNumbers, int bonusNumber) {
         Map<Score, Integer> result = setResult();
         for (Lotto lotto : boughtLottos) {
             Score score = lotto.getScore(winningNumbers, bonusNumber);
@@ -39,7 +45,6 @@ public class Lottos {
         result.put(Score.THIRD, 0);
         result.put(Score.FOURTH, 0);
         result.put(Score.FIFTH, 0);
-        result.put(Score.SIXTH, 0);
         return result;
     }
 }
