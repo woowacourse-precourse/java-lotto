@@ -15,5 +15,6 @@ public class Application {
         if(answerNum.contains(0)){
             return;
         }
+        int bonusNum= user.bonusInput();
     }
 }

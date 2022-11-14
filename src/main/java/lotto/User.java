@@ -58,4 +58,9 @@ public class User {
         }
         return answer;
     }
+    public static  int bonusInput(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNum = Console.readLine();
+        return Integer.valueOf(bonusNum);
+    }
 }
