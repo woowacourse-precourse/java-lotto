@@ -7,7 +7,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.view.InputView;
+import lotto.view.NewInputView;
 
 public class InputViewTest {
 
@@ -26,13 +26,14 @@ public class InputViewTest {
 	@Test
 	@DisplayName("문자열 배열을 정수 리스트로 변환")
 	void ConvertIntoIntegerListTest() {
+		NewInputView input = new NewInputView();
 		String[] strings = new String[6];
 		List<Integer> list1 = new ArrayList<>();
 		for (int i = 0; i < strings.length; i++) {
 			strings[i] = String.valueOf(i);
 			list1.add(i);
 		}
-		Assertions.assertThat(InputView.convertIntoIntegerList(strings)).isEqualTo(list1);
+		Assertions.assertThat(input.convertIntoIntegerList(strings)).isEqualTo(list1);
 	}
 
 }

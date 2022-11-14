@@ -60,11 +60,9 @@ public class NewInputView {
 		try {
 			money = Integer.parseInt(inputNumber);
 			Validator.isMoneyValidate(money);
-			Validator.isOnlyNumber(test);
 		} catch (Exception exception) {
 			System.out.println(INVALID_INPUT);
-			throw new NoSuchElementException(INVALID_INPUT);
-			// throw new IllegalArgumentException(INVALID_INPUT);
+			throw new NoSuchElementException();
 		}
 	}
 

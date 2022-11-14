@@ -34,14 +34,4 @@ public class Validator {
 			throw new IllegalArgumentException(INVALID_INPUT);
 		}
 	}
-
-	public static void isOnlyNumber(String[] tests) {
-		for (String test : tests) {
-			if (Integer.parseInt(test) > 9 || Integer.parseInt(test) < 1) {
-				System.out.println(INVALID_INPUT);
-				throw new NoSuchElementException(INVALID_INPUT);
-				// throw new IllegalArgumentException(INVALID_INPUT);
-			}
-		}
-	}
 }
