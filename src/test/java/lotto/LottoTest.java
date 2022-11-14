@@ -31,13 +31,10 @@ class LottoTest {
     @DisplayName("입력된 금액이 1000으로 나누어 떨어지지 않으면 예외가 발생한다.")
     @Test
     void validatePaymentTest() {
-        int validPayment = 140000;
         int inValidPayment = 14123;
 
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-
-        assertThat(lotto.validatePayment(validPayment)).isEqualTo(true);
-        assertThat(lotto.validatePayment(inValidPayment)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> lotto.validatePayment(inValidPayment)).isInstanceOf(IllegalArgumentException.class);
 
     }
 
@@ -46,12 +43,11 @@ class LottoTest {
     void generateLottoNumber() {
 
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        Set<Integer> numberSet = new HashSet<>(lotto.generateLottoNumber());
-
-        assertThat(numberSet.size()).isEqualTo(6);
+        int theNumberOfLotto = 6;
+        List<List<Integer>> generatedLottoNumber = lotto.generateLottoNumber(6);
+        assertThat(generatedLottoNumber.size()).isEqualTo(6);
 
     }
-
     @DisplayName("두 개의 숫자가 일치하는지 여부를 리턴한다.")
     @Test
     void checkNumbersMatch() {
@@ -149,4 +145,5 @@ class LottoTest {
         assertThat(lotto.calculateYield(prizeThree / totalPayment)).isEqualTo(answerThree);
         assertThat(lotto.calculateYield(prizeFour / totalPayment)).isEqualTo(answerFour);
     }
+
 }
