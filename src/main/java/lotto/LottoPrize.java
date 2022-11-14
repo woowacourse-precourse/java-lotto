@@ -8,9 +8,7 @@ public enum LottoPrize {
     FIFTH("3개 일치", 5_000),
     NONE("당첨되지 않음", 0);
 
-
     public String matchCount;
-
     public int reward;
 
     private LottoPrize(String matchCount, int reward) {
