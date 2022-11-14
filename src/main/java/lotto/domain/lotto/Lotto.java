@@ -1,5 +1,12 @@
 package lotto.domain.lotto;
 
+import static lotto.message.LottoLine.LOTTO_LINE_END;
+import static lotto.message.LottoLine.LOTTO_LINE_START;
+import static lotto.message.LottoLine.LOTTO_NUMBER_SEPARATOR;
+import static lotto.value.LottoValues.LOTTO_END_NUMBER;
+import static lotto.value.LottoValues.LOTTO_SIZE;
+import static lotto.value.LottoValues.LOTTO_START_NUMBER;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,13 +19,18 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public static Lotto makeLotto(List<Integer> numbers) {
+        return new Lotto(numbers);
+    }
+
     public static Lotto makeRandomLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER.getValue(),
+                LOTTO_END_NUMBER.getValue(), LOTTO_SIZE.getValue());
         return new Lotto(numbers.subList(0, 6));
     }
 
     public static boolean isRanged(int number) {
-        return 1 <= number && number <= 45;
+        return LOTTO_START_NUMBER.getValue() <= number && number <= LOTTO_END_NUMBER.getValue();
     }
 
     public int matchCount(Lotto otherLotto) {
@@ -37,20 +49,21 @@ public class Lotto {
         return numbers.contains(num);
     }
 
+
     @Override
     public String toString() {
         List<Integer> sorted = numbers.stream().sorted().collect(Collectors.toList());
         StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append('[');
+        stringBuffer.append(LOTTO_LINE_START);
 
         for (int i = 0; i < sorted.size(); i++) {
             stringBuffer.append(sorted.get(i));
             if (i != sorted.size() - 1) {
-                stringBuffer.append(", ");
+                stringBuffer.append(LOTTO_NUMBER_SEPARATOR);
             }
         }
 
-        stringBuffer.append(']');
+        stringBuffer.append(LOTTO_LINE_END);
         return stringBuffer.toString();
     }
 

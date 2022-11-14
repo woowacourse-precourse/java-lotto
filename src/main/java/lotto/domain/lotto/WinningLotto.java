@@ -5,13 +5,14 @@ import lotto.domain.place.MatchResult;
 import lotto.domain.place.PlaceCondition;
 
 public class WinningLotto {
+
     protected final Lotto lotto;
     protected final BonusNum bonusNum;
 
     public WinningLotto(List<Integer> lottoNumbers, int bonusNumber) {
-        lotto = new Lotto(lottoNumbers);
-
         validate(lottoNumbers, bonusNumber);
+
+        lotto = new Lotto(lottoNumbers);
         bonusNum = new BonusNum(bonusNumber);
     }
 
