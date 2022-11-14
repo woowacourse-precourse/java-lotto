@@ -19,10 +19,10 @@ public class LottoCheckerTest {
     @MethodSource("generateData")
     void compareLottoNumbers(List<Integer> numbers, int count) {
         LottoChecker lottoChecker = new LottoChecker();
-        Lotto purchased = new Lotto(numbers);
-        Lotto winning= new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto purchasedLotto = new Lotto(numbers);
+        Lotto winningLotto= new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
-        assertThat(lottoChecker.compare(purchased, winning)).isEqualTo(count);
+        assertThat(lottoChecker.compare(purchasedLotto, winningLotto)).isEqualTo(count);
     }
 
     static Stream<Arguments> generateData() {
@@ -38,8 +38,8 @@ public class LottoCheckerTest {
     @CsvSource(value = {"1:true", "7:false"}, delimiter = ':')
     void hasBonusNumber(int bonunsNumber, boolean hasBounsNumber) {
         LottoChecker lottoChecker = new LottoChecker();
-        Lotto purchased = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        boolean result = lottoChecker.hasBonusNumber(purchased, bonunsNumber);
+        Lotto purchasedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        boolean result = lottoChecker.hasBonusNumber(purchasedLotto, bonunsNumber);
 
         assertThat(result).isEqualTo(hasBounsNumber);
     }
@@ -56,9 +56,9 @@ public class LottoCheckerTest {
                 new Lotto(List.of(1, 2, 3, 14, 15, 16)),
                 new Lotto(List.of(11, 12, 13, 14, 15, 16))
         );
-        Lotto winning = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonunsNumber = 45;
-        List<Integer> result = lottoChecker.compareLottoTable(lottoTable, winning, bonunsNumber);
+        List<Integer> result = lottoChecker.compareLottoTable(lottoTable, winningLotto, bonunsNumber);
 
         assertThat(result).isEqualTo(List.of(6, 15, 5, 4, 3, 0));
     }
@@ -70,10 +70,10 @@ public class LottoCheckerTest {
         List<Lotto> lottoTable = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6))
         );
-        Lotto winning = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonunsNumber = 6;
 
-        assertThatThrownBy(() -> lottoChecker.compareLottoTable(lottoTable, winning, bonunsNumber))
+        assertThatThrownBy(() -> lottoChecker.compareLottoTable(lottoTable, winningLotto, bonunsNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
