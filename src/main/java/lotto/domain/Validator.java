@@ -11,7 +11,7 @@ public class Validator {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR.LOTTO_SIZE);
         }
-        if (new HashSet<Integer>(numbers).size() != 6) {
+        if ((new HashSet<Integer>(numbers)).size() != 6) {
             throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATION);
         }
     }
