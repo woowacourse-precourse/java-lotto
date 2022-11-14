@@ -30,6 +30,8 @@ public class GameStarter {
 
         List<Integer> amountCorrectList = compareHowManyCorrect.correctNumberList(userLottoNumberList,lottoWinNumber,bonusNumber);
         int revenue = calculater.caculateRevenue(amountCorrectList);
+
+
         printer.printWinList(amountCorrectList);
         printer.printRevenuePercent(userInputMoney,revenue);
     }

@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inputer {
-
-    private static final String MONEY_INPUT = "구입금액을 입력해 주세요.";
-    private static final String WIN_INPUT = "당첨 번호를 입력해 주세요.";
-    private static final String BONUS_INPUT = "보너스 번호를 입력해 주세요.";
     private static final String REGEX = ",";
 
     public int inputMoney() {

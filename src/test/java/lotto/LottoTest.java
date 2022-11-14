@@ -91,7 +91,7 @@ class LottoTest {
 
         CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
 
-        assertEquals(compareHowManyCorrect.caculateDuplication(gather,0),2);
+        assertEquals(compareHowManyCorrect.caculateCorrect(gather,0),2);
 
 
     }
@@ -155,6 +155,8 @@ class LottoTest {
 
 
     }
+
+
 
 
 
