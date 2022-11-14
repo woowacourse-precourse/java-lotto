@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Calculator {
     public int sum = 0;
-    public double earningRate = 0.0;
+    public double earningRate = 0;
     public int sumJackpot (List<Integer> winningTable){
         for (int result : winningTable) {
             if (result == 7) {
@@ -23,8 +23,8 @@ public class Calculator {
         }
         return sum;
     }
-    public double calculateEarningRate(int sum, int pay){
-        earningRate = (sum/pay)/100.0;
+    public double calculateEarningRate(double sum, double pay){
+        earningRate = Math.round(sum/pay)/10.0;
         return earningRate;
     }
 }
