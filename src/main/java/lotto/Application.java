@@ -1,6 +1,11 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
@@ -36,5 +41,22 @@ public class Application {
     }
 
     // 랜덤 로또번호 뽑기
+    /**
+     * 1. lottoRandomNum (Lotto 랜덤 숫자뽑기) 완료 <br/>
+     * 숫자 1 ~ 45 Random, 중복되지 않는 숫자 6개 오름차순 저장
+     * 
+     * @return
+     */
+    public static List<Integer> lottoRandomNum() {
+        List<Integer> lottoRandomNum = new ArrayList<Integer>();
+        while (lottoRandomNum.size() < 6) {
+            List<Integer> lottoNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
+            if (!lottoRandomNum.contains(lottoNum)) {
+                lottoRandomNum.addAll(lottoNum);
+                Collections.sort(lottoRandomNum);
+            }
+        }
+        return lottoRandomNum;
+    }
 }
