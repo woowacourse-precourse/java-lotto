@@ -15,7 +15,7 @@ public class Manager {
 
     private Lotto lotto;
     private int bonusNumber;
-    private final int[] reward = {5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000};
+    private final int[] reward = {0, 5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000};
 
     public Manager() {
         List<Integer> lottoNumbersForTest = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
@@ -109,27 +109,32 @@ public class Manager {
     }
 
     public int[] compareNumber(List<List<Integer>> purchaseNumbers) {
-        int[] result = new int[]{0, 0, 0, 0, 0};
+        int[] result = new int[]{0, 0, 0, 0, 0, 0};
         List<Integer> winningNumber = lotto.getNumbers();
         for (List<Integer> numbers : purchaseNumbers) {
             int numberOfSame = countSameNumber(numbers, winningNumber);
-            if (numberOfSame == 3) {
-                result[0]++;
-            }
-            if (numberOfSame == 4) {
-                result[1]++;
-            }
-            if (numberOfSame == 5 && !numbers.contains(bonusNumber)) {
-                result[2]++;
-            }
-            if (numberOfSame == 5 && numbers.contains(bonusNumber)) {
-                result[3]++;
-            }
-            if (numberOfSame == 6) {
-                result[4]++;
-            }
+            result[indexToResult(numberOfSame, numbers)]++;
         }
         return result;
+    }
+
+    public int indexToResult(int numberOfSame, List<Integer> numbers) {
+        if (numberOfSame == 3) {
+            return 1;
+        }
+        if (numberOfSame == 4) {
+            return 2;
+        }
+        if (numberOfSame == 5 && !numbers.contains(bonusNumber)) {
+            return 3;
+        }
+        if (numberOfSame == 5 && numbers.contains(bonusNumber)) {
+            return 4;
+        }
+        if (numberOfSame == 6) {
+            return 5;
+        }
+        return 0;
     }
 
     public int countSameNumber(List<Integer> from, List<Integer> to) {
