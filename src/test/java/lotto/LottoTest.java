@@ -27,13 +27,4 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @DisplayName("입력 금액을 받는다.")
-    @Test
-    void CasherMoneyInput() {
-        int result = 8_000;
-        MoneyReceiver moneyReceiver = new MoneyReceiver;
-        assertThat(result).isEqualTo(moneyReceiver.getMoney);
-    }
-
 }
