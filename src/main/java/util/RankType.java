@@ -1,6 +1,6 @@
 package util;
 
 public enum RankType {
-    FIFTH, FOURTH, THIRD, SECCOND, FIRST;
+    NONE, FIFTH, FOURTH, THIRD, SECCOND, FIRST;
 
 }
