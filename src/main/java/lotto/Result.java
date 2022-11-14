@@ -14,6 +14,15 @@ public class Result {
         this.result = new HashMap<>();
     }
 
+    // 모든 구매한 로또와 당첨 로또를 비교해 결과를 도출하는 기능
+    public void matchLottoAndWinningLotto(Lottos lottos, Lotto winngingLotto, Bonus bonus) {
+        initWinningRank();
+        for (Lotto lotto : lottos.getLottos()) {
+            updateResult(checkMatchCount(lotto, winngingLotto), matchBonus(lotto, bonus.getBonus()));
+        }
+    }
+
+
     // 당첨 번호와 로또 번호를 비교하여 같은 수의 개수를 반환하는 기능
     public int checkMatchCount(Lotto lotto, Lotto winningLotto) {
         List<Integer> purchasedLottoNumbers = lotto.getNumbers();
