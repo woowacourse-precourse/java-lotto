@@ -63,7 +63,9 @@
 * WinningStats(당첨 통계)
   * 당첨 통계를 출력한다.
   * 당첨 금액을 계산한다.
-* LottoComparator
+* LottoComparator 객체
   * 당첨번호와 로또번호를 비교하여 일치하는 번호 개수를 출력한다.
+* Money 객체
+* Constant 객체 (상수 공용으로 사용하기위함)
 * WinningAmount Enum
   * 당첨 번호와 일치하는 개수,보너스번호 일치 여부,당첨금액
