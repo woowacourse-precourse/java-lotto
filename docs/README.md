@@ -16,6 +16,33 @@
     - 5등: 3개 번호 일치 / 5,000원
 - 로또 1장의 가격은 1,000원이다.
 
+## 프로젝트 구조
+.
+└── lotto</br>
+├── Application.java</br>
+├── constant : 상수와 열거형</br>
+│   ├── LottoConstant.java : 프로그램에 필요한 상수들</br>
+│   ├── OutputMessage.java : 출력할 메세지들을 열거형으로 선언</br>
+│   └── WinningRating.java : </br>
+├── controller</br>
+│   └── LottoController.java</br>
+├── domain</br>
+│   ├── Lotto.java</br>
+│   ├── LottoComparator.java</br>
+│   ├── LottoGenerator.java</br>
+│   ├── ProfitCalculator.java</br>
+│   ├── PurchasingAmount.java</br>
+│   ├── WinningAndBonusNumbers.java</br>
+│   └── WinningStatisticsCompiler.java</br>
+├── util</br>
+│   ├── Converter.java</br>
+│   ├── Sorter.java</br>
+│   └── Validator.java</br>
+└── view</br>
+├── InputView.java</br>
+└── OutputView.java</br>
+
+
 ## 프로그램 진행 과정
 1. 구입금액을 입력 받는다.
    - 구입금액 입력 안내를 출력한다.
