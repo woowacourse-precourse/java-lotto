@@ -13,7 +13,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]: 로또의 갯수가 6개가 아닙니다.");
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_SIZE_ERROR.getErrorMsg());
         }
     }
 
@@ -24,7 +24,7 @@ public class Lotto {
 
     public void validBonusNumber(Integer bonusNum) throws IllegalArgumentException {
         if (this.numbers.contains(bonusNum)) {
-            throw new IllegalArgumentException("[ERROR]: 보너스 번호와 당첨 번호가 같습니다.");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_BONUS_NUMBER.getErrorMsg());
         }
     }
 }

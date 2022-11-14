@@ -23,16 +23,16 @@ public class Application {
         try {
             return Integer.parseInt(userInput);
         } catch (Exception e){
-            throw new IllegalArgumentException("[ERROR]: 입력값이 숫자가 아닙니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getErrorMsg());
         }
     }
 
     public static void validMoney(int money) throws IllegalArgumentException {
         if (money < lottoPrice) {
-            throw new IllegalArgumentException("[ERROR]: 구입금액으로 로또를 구매할 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.TOO_LOW_PRICE.getErrorMsg());
         }
         if (money % lottoPrice != 0) {
-            throw new IllegalArgumentException("[ERROR]: 구입금액이 로또금액으로 나누어 떨어지지 않습니다.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_PERFECT_PRICE.getErrorMsg());
         }
     }
 
@@ -80,7 +80,7 @@ public class Application {
                 int num = Integer.parseInt(input);
                 numbers.add(num);
             } catch (Exception e) {
-                throw new IllegalArgumentException("[ERROR]: 입력값이 숫자가 아닙니다.");
+                throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getErrorMsg());
             }
         }
 
@@ -91,17 +91,17 @@ public class Application {
 
     public static void validLuckyNumbers(List<Integer> inputNums) throws IllegalArgumentException {
         if(inputNums.size() != inputNums.stream().distinct().count()){
-            throw new IllegalArgumentException("[ERROR]: 당첨번호에 중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED.getErrorMsg());
         }
     }
 
     public static void checkRange(List<Integer> inputNums) throws IllegalArgumentException {
         for (int num : inputNums) {
             if (num < startNumber) {
-                throw new IllegalArgumentException("[ERROR]: 1보다 작은 번호를 입력하였습니다. " + num);
+                throw new IllegalArgumentException(ErrorMessage.LOW_INPUT_ERROR.getErrorMsg() + num);
             }
             if (num > endNumber) {
-                throw new IllegalArgumentException("[ERROR]: 45보다 큰 번호를 입력하였습니다. " + num);
+                throw new IllegalArgumentException(ErrorMessage.HIGH_INPUT_ERROR.getErrorMsg() + num);
             }
         }
     }
@@ -119,11 +119,13 @@ public class Application {
         try {
             return Integer.parseInt(userInput);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR]: 입력값이 숫자가 아닙니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getErrorMsg());
         }
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        Lotto luck =getLuckyNumbers();
+        getBonusNumber(luck);
     }
 }
