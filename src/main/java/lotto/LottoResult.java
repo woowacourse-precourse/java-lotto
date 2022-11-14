@@ -20,13 +20,13 @@ public class LottoResult {
     public long getTotalMoney() {
         return totalMoney;
     }
-//    public int calcMoney() {
-//        int total = 0;
-//        for(Prize prize : result.keySet()) {
-//            int prizeMoney = prize.getPrizeMoney();
-//            int count = result.get(prize);
-//            total += count * prizeMoney;
-//        }
-//        return total;
-//    }
+
+    // 특정 등수에 몇개가 당첨됬는지 반환합니다.
+    public int countPrize(Prize prize) {
+        Integer count = result.get(prize);
+        if(count == null) {
+            return 0;
+        }
+        return count;
+    }
 }
