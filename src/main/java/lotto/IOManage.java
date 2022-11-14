@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class IOManage {
     private int inputPrice;
@@ -17,20 +18,21 @@ public class IOManage {
     public void inputPayment() {
         System.out.println(Message.INPUT_PAYMENT.get());
         String input = Console.readLine();
+        if (!Pattern.matches("^[0-9]*&", input)) {
+            throw new IllegalArgumentException(Message.ERROR_INCORRECT_RANGE.get());
+        }
         inputPrice = Integer.parseInt(input);
     }
 
     public void outputLottoGeneration() {
         ControlLottoGame control = new ControlLottoGame();
-        int quantity = control.priceToQuantity(inputPrice);
-        this.quantity = quantity;
+        quantity = control.priceToQuantity(inputPrice);
 
         GenerateLotto generation = new GenerateLotto(quantity);
-        List<List<Integer>> lottoNumbers = generation.getLottoNumbers();
-        this.generatedLotto = lottoNumbers;
+        generatedLotto = generation.getLottoNumbers();
 
         System.out.println(quantity + Message.OUTPUT_BUYING.get());
-        for (List<Integer> lottoNumber : lottoNumbers) {
+        for (List<Integer> lottoNumber : generatedLotto) {
             System.out.println(lottoNumber);
         }
     }
