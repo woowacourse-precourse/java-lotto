@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.domain.raffleDevice.RaffleMachine;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

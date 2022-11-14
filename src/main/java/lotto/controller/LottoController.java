@@ -1,7 +1,9 @@
 package lotto.controller;
 
 import lotto.domain.*;
-import lotto.domain.lottoMachine.LottoMachine;
+import lotto.domain.lottoDevice.LottoMachine;
+import lotto.domain.raffleDevice.RaffleMachine;
+import lotto.domain.raffleDevice.RaffleResultCalculator;
 import lotto.ui.InputUI;
 import lotto.ui.OutputUI;
 
@@ -13,7 +15,7 @@ public class LottoController {
     private static final OutputUI outputUI = new OutputUI();
     private static final LottoMachine lottoMachine = new LottoMachine();
     private static final RaffleMachine raffleMachine = new RaffleMachine();
-    private static final RaffleStaticsCalculator raffleStaticCalculator = new RaffleStaticsCalculator();
+    private static final RaffleResultCalculator raffleStaticCalculator = new RaffleResultCalculator();
 
     public void start() {
         List<Lotto> lottos = buyLottos();
