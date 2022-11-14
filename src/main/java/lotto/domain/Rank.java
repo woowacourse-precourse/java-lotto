@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public enum Rank {
@@ -25,6 +26,15 @@ public enum Rank {
                 .filter(LottoRank -> LottoRank.match == matchValue)
                 .findAny()
                 .orElse(NOTHING);
+    }
+
+    @Override
+    public String toString() {
+        DecimalFormat priceFormat = new DecimalFormat("###,###");
+        if (this == SECOND_RANK) {
+            return THIRD_RANK.getMatch() + "개 일치, 보너스 볼 일치 (" + priceFormat.format(this.prize) + "원) - ";
+        }
+        return this.getMatch() + "개 일치 (" + priceFormat.format(this.prize) + "원) - ";
     }
 
     public int getRank() {
