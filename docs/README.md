@@ -31,15 +31,15 @@
 - 일반 당첨번호 입력, 보너스 당첨번호 입력 → 각 숫자가 범위를 벗어남
 
 ## 기능 목록
-
+//TODO: README 재작성
 최종 결과가 나올 때 까지 어떤 기능을 거쳐가야할지 순서대로 기능을 생각해본다.
 
-- [ ]  Lotto
-- [ ]  WinnerLotto
-- [ ]  TotalWinnerLotto
+- [x]  Lotto
+- [x]  WinnerLotto
+- [x]  TotalWinnerLotto
 
-- [ ]  로또 구입 금액 입력 메시지를 출력한다. OutputUI#printMessage()
-- [ ]  당첨 일반 번호 입력 메시지를 출력한다. OutputUI#printMessage()
+- [x]  로또 구입 금액 입력 메시지를 출력한다. OutputUI#printMessage()
+- [x]  당첨 일반 번호 입력 메시지를 출력한다. OutputUI#printMessage()
 - [ ]  당첨 보너스 번호 입력 메시지를 출력한다. OutputUI#printMessage()
 - [ ]  발행 받은 로또 용지를 출력한다. OutputUI#printLottos()
 - [ ]  당첨로또의 갯수를 출력한다. OutputUI#printWinnerResult()
