@@ -43,7 +43,9 @@ public class User {
             if (isWinningNumberNumeric(winningNumber)) {
                 this.winningNumbers.add(Integer.parseInt(winningNumber));
             }
-            throw new IllegalArgumentException();
+            if (!isWinningNumberNumeric(winningNumber)) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
@@ -80,5 +82,9 @@ public class User {
 
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
