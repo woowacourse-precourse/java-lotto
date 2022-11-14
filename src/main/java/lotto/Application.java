@@ -1,8 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Application {
@@ -13,6 +15,8 @@ public class Application {
             return;
         }
         Integer price = Integer.valueOf(lotto);
+
+        List<List<Integer>> randomNumsList = getLottoList(price);
 
         List<Integer> nums = getNums();
 
@@ -50,5 +54,22 @@ public class Application {
         nums.add(Integer.valueOf(winningNums));
         Lotto lotto = new Lotto(nums);
         return nums;
+    }
+
+    public static List<List<Integer>> getLottoList(Integer price) {
+
+        Integer count = Integer.valueOf(price)/1000;
+        System.out.println(count + "개를 구매했습니다.");
+        List<List<Integer>> randomNumsList = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            List<Integer> randomNums = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
+            List<Integer> sortedRandomNums = new ArrayList(randomNums);
+            sortedRandomNums.sort(Comparator.naturalOrder());
+            randomNumsList.add(sortedRandomNums);
+            System.out.println(sortedRandomNums);
+        }
+
+        return randomNumsList;
     }
 }
