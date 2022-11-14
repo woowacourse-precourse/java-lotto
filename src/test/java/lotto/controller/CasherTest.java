@@ -1,16 +1,12 @@
 package lotto.controller;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import lotto.view.BonusNumberReceiver;
-import lotto.view.MoneyReceiver;
-import lotto.view.WinNumberReceiver;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CasherTest {
 
@@ -20,5 +16,13 @@ public class CasherTest {
         int money = 8000;
         int expected = 8;
         assertThat(Casher.issueTickets(money)).isEqualTo(expected);
+    }
+
+    @DisplayName("잘못된 금액을 입력할 경우 예외를 발생시킨다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"8001", "8000j"})
+    void wrongInputToIssueTickets(String wrongInput) {
+        assertThatThrownBy(() -> Casher.issueTickets(Integer.parseInt(wrongInput)))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
