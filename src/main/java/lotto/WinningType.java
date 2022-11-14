@@ -33,10 +33,6 @@ public enum WinningType {
         return this.value;
     }
 
-    public void setValue(int value){
-        this.value = value;
-    }
-
     public String printMessage(){
         if(this == WinningType.NOTHING) return "";
         return (this.message + " - " + this.value + "개");

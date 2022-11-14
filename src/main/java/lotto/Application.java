@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static lotto.validation.*;
 import static lotto.calculation.*;
@@ -24,7 +23,7 @@ public class Application {
 
     public static void printLottoResult(int budget, List<Lotto> lottoArray, List<Integer> lottoAnswer, int bonusNumber){
         List<WinningType> result = calculateResultAll(lottoArray, lottoAnswer, bonusNumber);
-        double returnRate = calculateReturnRate(budget, result);
+        double returnRate = calculateReturnRate((budget*1000), result);
         System.out.println("당첨 통계\n---");
         for(WinningType wt : WinningType.values()) System.out.println(wt.printMessage());
         System.out.println("총 수익률은 " + returnRate + "%입니다.");
@@ -52,6 +51,7 @@ public class Application {
     public static void throwException(String message){
         System.out.println("[ERROR] " + message);
         throw new IllegalArgumentException();
+//        throw new IllegalArgumentException("[ERROR] " + message);
     }
 
 }

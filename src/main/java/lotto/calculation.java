@@ -9,18 +9,6 @@ import static lotto.WinningType.*;
 
 public class calculation {
 
-//    public static Map<Integer, Integer> calculateResultAll(List<Lotto> lottoList, List<Integer> answerList, int bonusNumber){
-//        Map<Integer, Integer> result = new HashMap<>();
-//        for(WinningType wt : WinningType.values()) result.put(wt.value, 0);
-//        for(int i=0; i<lottoList.size(); i++){
-//            List<Integer> userList = lottoList.get(i).getNumbers();
-//            int value = calculateResultByOne(userList, answerList, bonusNumber);
-//            WinningType key = WinningType.getType(value);
-//            result.put(key.value, value);
-//        }
-//        return result;
-//    }
-
     public static List<WinningType> calculateResultAll(List<Lotto> lottoList, List<Integer> answerList, int bonusNumber){
         List<WinningType> result = new ArrayList<>();
         for(WinningType wt : WinningType.values()) result.add(wt);
@@ -28,7 +16,7 @@ public class calculation {
             List<Integer> userList = lottoList.get(i).getNumbers();
             int value = calculateResultByOne(userList, answerList, bonusNumber);
             WinningType wt = WinningType.getType(value);
-            wt.setValue(value);
+            wt.increaseValue();
         }
         return result;
     }
@@ -39,9 +27,9 @@ public class calculation {
             int answer = answerList.get(i);
             if(userList.contains(answer)) count++;
         }
-        if(count == 5 && userList.contains(bonusNumber)) return MATCH5WITHBONUS.value;
+        if(count == 5 && userList.contains(bonusNumber)) return MATCH5WITHBONUS.key;
         if(count >= 3 && count <= 6) return count;
-        return 0;
+        return NOTHING.key;
     }
 
     public static double calculateReturnRate(int budget, List<WinningType> result){
@@ -50,8 +38,8 @@ public class calculation {
             int price = wt.value * wt.price;
             totalPrice += price;
         }
-        double returnRate = (double)totalPrice/(double)budget;
-        returnRate = Math.round((returnRate*10)/10.0);
+        double returnRate = ((double)totalPrice/(double)budget)*100;
+        returnRate = Math.round((returnRate*10))/10.0;
         return returnRate;
     }
 
