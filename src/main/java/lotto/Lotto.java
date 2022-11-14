@@ -1,9 +1,7 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 public class Lotto {
 
@@ -11,6 +9,7 @@ public class Lotto {
     private static final String DUPLICATELOTTO_ERRORMESSAGE = "[ERROR] 중복된 숫자를 입력하지마세요.";
 
     private final List<Integer> numbers;
+
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -24,6 +23,7 @@ public class Lotto {
             throw new IllegalArgumentException(DUPLICATELOTTO_ERRORMESSAGE);
         }
     }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
