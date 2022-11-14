@@ -1,10 +1,11 @@
 package lotto.controller;
 
 import java.util.List;
+import lotto.service.LottoServiceImpl;
+import lotto.vo.Lotto;
 import lotto.service.LottoService;
 import lotto.ui.InputView;
 import lotto.ui.OutputView;
-import lotto.vo.Lotto;
 import lotto.vo.LottoPurchaseInfo;
 import lotto.vo.LottoWinNumberInfo;
 
@@ -12,7 +13,7 @@ public class LottoController {
 
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
-    private LottoService service;
+    private LottoService service = new LottoServiceImpl();
 
     /**
      * Lotto 게임 동작 수행
@@ -49,6 +50,7 @@ public class LottoController {
 
     private List<Lotto> createLottoNumbers(int lottoGameCount) {
         List<Lotto> lottoNumbers = service.createLottoNumbers(lottoGameCount);
+        outputView.printLottoNumbers(lottoNumbers);
         return lottoNumbers;
     }
 
