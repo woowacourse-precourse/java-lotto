@@ -5,10 +5,12 @@ import java.util.Map;
 import java.util.Set;
 
 public class LottoResult {
-    private Map<Rank, Integer> resultMap = new HashMap<>(); //생성자로 만들어버리기
+    private final double money;
+    private final Map<Rank, Integer> resultMap = new HashMap<>(); //생성자로 만들어버리기
     private double yield;
 
-    public LottoResult(double money, UserLottos userLottos, WinningLotto winningLotto) {
+    public LottoResult(UserLottos userLottos, WinningLotto winningLotto) {
+        money = userLottos.getUserLottosMoney();
         setResultMap(userLottos, winningLotto);
         calculateYield(money);
     }
@@ -23,9 +25,9 @@ public class LottoResult {
         }
     }
 
-    //당첨 기준별 로또 개수 세기 기능.
+    //당첨 기준별 로또 개수 세기 기능
     public void addToResultMap(Rank rank) {
-        if(rank == null) {
+        if (rank == null) {
             return;
         }
 
@@ -35,14 +37,14 @@ public class LottoResult {
 
     //수익률 계산하기
     public void calculateYield(double money) {
-        int totalPrize = 0;
-        for(Rank rank : Rank.values()) {
-            int count = resultMap.getOrDefault(rank,0);
+        long totalPrize = 0;
+        for (Rank rank : Rank.values()) {
+            int count = resultMap.getOrDefault(rank, 0);
             long prize = rank.getPrize();
-            totalPrize += count*prize;
+            totalPrize += count * prize;
         }
 
-        yield = Math.round(totalPrize/money*1000)/10.0;
+        yield = Math.round((totalPrize / money) * 1000) / 10.0;
     }
 
     public Map<Rank, Integer> getResultMap() {
@@ -57,9 +59,9 @@ public class LottoResult {
     public String getResultString() {
         StringBuffer sb = new StringBuffer();
 
-        for(Rank rank : Rank.values()) {
+        for (Rank rank : Rank.values()) {
             int count = resultMap.getOrDefault(rank, 0);
-            sb.append(String.format(rank.getSentence()+"\n",count));
+            sb.append(String.format(rank.getSentence() + "\n", count));
         }
 
         return sb.toString().trim();
