@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import static lotto.domain.Purchase.LOTTO_PRICE;
+import static lotto.util.Validation.validateDuplicates;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,25 +17,18 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
+
+    private static List<List<Integer>> allPlayerNumbers;
     private static int ticketNumber;
-    private static List<List<Integer>> allPlayerNumbers = new ArrayList<>();
     private static List<Integer> winningNumbers;
     private static int bonusNumber;
 
     public static void run() {
         try {
             purchaseLotto();
-
-            // 로또 발행
-            Player player = new Player(ticketNumber);
-            allPlayerNumbers = player.get();
-
-            // 당첨 번호 생성
-            Lotto lotto = new Lotto(InputView.inputWinningNumbers());
-            Bonus bonus = new Bonus(InputView.inputBonusNumber());
-            winningNumbers = lotto.get();
-            bonusNumber = bonus.get();
-            validateDuplicates();
+            setWinningNumbers();
+            setBonusNumber();
+            validateDuplicates(winningNumbers, bonusNumber);
 
             // 로또 결과 계산
             LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
@@ -56,15 +50,24 @@ public class LottoController {
 
     }
 
+    private static void setBonusNumber() {
+        Bonus bonus = new Bonus(InputView.inputBonusNumber());
+        bonusNumber = bonus.get();
+    }
+
+    private static void setWinningNumbers() {
+        Lotto lotto = new Lotto(InputView.inputWinningNumbers());
+        winningNumbers = lotto.get();
+    }
+
     private static void purchaseLotto() {
         Purchase budget = new Purchase(InputView.inputTotalBudget());
         ticketNumber = budget.getTicketNumber();
         OutputView.printTicketNumber(ticketNumber);
+        Player player = new Player(ticketNumber);
+        allPlayerNumbers = new ArrayList<>(player.getAllPlayerNumbers());
+        OutputView.printPlayerNumbers(allPlayerNumbers);
     }
 
-    private static void validateDuplicates() {
-        if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("보너스 번호가 당첨 번호와 중복됩니다.");
-        }
-    }
+
 }
