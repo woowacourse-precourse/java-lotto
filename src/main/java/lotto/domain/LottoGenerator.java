@@ -17,13 +17,6 @@ public class LottoGenerator {
     }
 
     public static List<Integer> generateRandomNumbers() {
-        List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < LENGTH_OF_LOTTO_NUM) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!randomNumbers.contains(randomNumber)) {
-                randomNumbers.add(randomNumber);
-            }
-        }
-        return randomNumbers;
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
