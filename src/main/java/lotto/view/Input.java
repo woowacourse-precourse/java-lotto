@@ -1,9 +1,6 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Input {
 
@@ -11,16 +8,12 @@ public class Input {
         return Console.readLine();
     }
 
-    public List<Integer> inputWinningNumber() {
-        String input = Console.readLine();
-        return Arrays.stream(input.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+    public String inputWinningNumber() {
+        return Console.readLine();
     }
 
-    public int inputBonusNumber() {
-        String input = Console.readLine();
-        return Integer.parseInt(input);
+    public String inputBonusNumber() {
+        return Console.readLine();
     }
 
 }
