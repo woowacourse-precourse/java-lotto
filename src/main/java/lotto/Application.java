@@ -16,6 +16,7 @@ public class Application {
         List<List> purchaseLotto = autoLotto(purchaseAmount);
         List<Integer> winnerLotto = winLotto();
         int bonusNumber = bonusLotto();
+        List<List> lottoResult = compareLotto(purchaseLotto,winnerLotto,bonusNumber);
     }
 
     public static int buyLotto(){
@@ -99,6 +100,18 @@ public class Application {
         }
         if(bonus>45 || bonus<1){
             throw new IllegalArgumentException(INPUT_RANGE_ERROR);
+        }
+    }
+
+
+    public static List<List> compareLotto(List<List> purchaseLotto, List<Integer> winNumbers, int bonusNumber){
+        checkLottoInputException(bonusNumber, winNumbers);
+        return purchaseLotto;
+    }
+
+    private static void checkLottoInputException(int bonusNumber, List<Integer> winNumbers){
+        if(winNumbers.contains(bonusNumber)){
+            throw new IllegalArgumentException(ALREADY_EXISTED_NUMBER);
         }
     }
 }
