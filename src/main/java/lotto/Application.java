@@ -13,6 +13,7 @@ public class Application {
         ui.inputCost();
 
         User user = new User(ui.getCost());
-
+        ui.inputWinning();
+        Lotto lotto = new Lotto(ui.getWinningNumbers());
     }
 }
