@@ -5,15 +5,26 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LotteryNumbersDraw {
+    private String inputDrawNumbers;
+    private List<Integer> drawNumbers;
     private static final String SEPARATOR = ",";
-    public List<Integer> drawNumbers(String userInput) {
+
+    public LotteryNumbersDraw(String inputDrawNumbers) {
+        this.inputDrawNumbers = inputDrawNumbers;
+    }
+
+    public void setDrawNumbers() {
         try {
-            String deletedBlankSpaceString = userInput.replaceAll("\\s", "");
-            return Arrays.stream(deletedBlankSpaceString.split(SEPARATOR))
+            String deletedBlankSpaceString = inputDrawNumbers.replaceAll("\\s", "");
+            this.drawNumbers = Arrays.stream(deletedBlankSpaceString.split(SEPARATOR))
                     .map(Integer::parseInt).sorted().collect(Collectors.toList());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자와 공백 그리고'" + SEPARATOR + "' 만을 입력해주세요.");
         }
+    }
+
+    public List<Integer> getDrawNumbers() {
+        return this.drawNumbers;
     }
 
     public int getBonusNumber(int bonus) {
