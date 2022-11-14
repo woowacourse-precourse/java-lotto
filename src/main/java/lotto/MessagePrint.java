@@ -47,4 +47,11 @@ public class MessagePrint {
 		System.out.printf(Constants.WIN_TOTAL_MESSAGE, Rank.FIRST.getCountOfMatch(), nf.format(Rank.FIRST.getWinningMoney()),
 			StoreMap.get(Rank.FIRST));
 	}
+
+	public void lottoPercentView(StoreMap storeMap) {
+		LottoProgram lottoProgram = new LottoProgram();
+		System.out.print(Constants.TOTAL_PROFIT);
+		System.out.printf("%.1f", lottoProgram.lottoPercentCalculate(storeMap));
+		System.out.println(Constants.END_MESSAGE);
+	}
 }
