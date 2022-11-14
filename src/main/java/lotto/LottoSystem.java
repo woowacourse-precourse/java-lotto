@@ -3,8 +3,6 @@ package lotto;
 import java.util.List;
 
 public class LottoSystem {
-    public final int price = 1000;
-
     private List<Integer> winNumbers;
     private int bonusNumbers;
 

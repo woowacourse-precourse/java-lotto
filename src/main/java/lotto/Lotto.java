@@ -3,6 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
+    public static final int PRICE = 1000;
 
     private static final int NUMBER_CNT = 6;
     private static final int NUMBER_MIN = 1;
