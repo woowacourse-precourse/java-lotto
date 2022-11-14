@@ -18,11 +18,11 @@ class RankTest {
 
     enum Place {
         ;
-        private static final String FIRST = "FIRST";
-        private static final String SECOND = "SECOND";
-        private static final String THIRD = "THIRD";
-        private static final String FOURTH = "FOURTH";
-        private static final String FIFTH = "FIFTH";
+        private static final String FIRST = "FIRST_PLACE";
+        private static final String SECOND = "SECOND_PLACE";
+        private static final String THIRD = "THIRD_PLACE";
+        private static final String FOURTH = "FOURTH_PLACE";
+        private static final String FIFTH = "FIFTH_PLACE";
     }
 
     @Nested
