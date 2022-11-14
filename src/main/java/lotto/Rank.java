@@ -2,11 +2,12 @@ package lotto;
 
 import static lotto.Constant.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Rank {
-    // bonusNumber 1~45인지 확인하는 함수 추가
     private final int bonusNumber;
     private final Lotto lottoNumbers;
 
@@ -23,5 +24,9 @@ public class Rank {
         if (lottoNum.size() != (LOTTO_NUMBER_SIZE + 1)) {
             throw new IllegalArgumentException("[ERROR] 당첨번호와 중복되지 않는 보너스 번호를 입력해주세요.");
         }
+
+        List<Integer> bonusNumberInList = new ArrayList<>(Arrays.asList(bonusNumber));
+        Lotto lotto = new Lotto(bonusNumberInList);
+        lotto.isNumbersInRange(bonusNumberInList);
     }
 }
