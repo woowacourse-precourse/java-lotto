@@ -7,11 +7,17 @@ public class Judgment {
     public List<List<Integer>> collectionOfLottoNumbers;
     public final int firstCount;
     public final int secondCount;
+    public final int thirdCount;
+    public final int fourthCount;
+    public final int fifthCount;
 
     public Judgment(List<List<Integer>> collectionOfLottoNumbers, List<Integer>numbers, int bonusNumber) {
         this.collectionOfLottoNumbers = collectionOfLottoNumbers;
         this.firstCount = calculateFirst(numbers);
         this.secondCount = calculateSecond(numbers, bonusNumber);
+        this.thirdCount = calculateThird(numbers);
+        this.fourthCount = calculateFourth(numbers);
+        this.fifthCount = calculateFifth(numbers);
     }
 
     private int calculateFirst(List<Integer>numbers) {
