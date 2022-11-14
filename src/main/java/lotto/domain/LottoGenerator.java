@@ -19,9 +19,9 @@ public class LottoGenerator {
         final Integer count = getLottoCount(price);
 
         IntStream.rangeClosed(1, count).forEach(i -> {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             while (LottoValidator.isDuplication(numbers)) {
-                numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+                numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             }
 
             numbers.sort(Comparator.comparing(Integer::intValue));

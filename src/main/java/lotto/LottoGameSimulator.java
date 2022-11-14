@@ -22,12 +22,16 @@ public class LottoGameSimulator {
     }
 
     public void start() {
-        List<Lotto> lottoPacks = buyLottoProcess();
+        try {
+            List<Lotto> lottoPacks = buyLottoProcess();
 
-        String winningNumber = setWinningNumber();
-        String bonusNumber = setBonusNumber();
+            String winningNumber = setWinningNumber();
+            String bonusNumber = setBonusNumber();
 
-        checkLottoResult(lottoPacks, winningNumber, bonusNumber);
+            checkLottoResult(lottoPacks, winningNumber, bonusNumber);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public List<Lotto> buyLottoProcess() {
@@ -86,7 +90,7 @@ public class LottoGameSimulator {
     }
 
     public void checkEarningRate(List<Lotto> lottoPacks, Map<LottoMatch, Integer> matchedCount) {
-        String price = String.valueOf(lottoPacks.size() / 1000);
+        String price = String.valueOf(lottoPacks.size() * 1000);
 
         display.printEarningLate(controller.calEarningRate(price, matchedCount));
         display.printNewLine();
