@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static lotto.ErrorMessage.INVALID_MONEY_ERROR;
 import static lotto.LottoMachine.LOTTO_PRICE;
 
 public class InputConsole {
@@ -25,7 +26,7 @@ public class InputConsole {
 
     private static void validateMoney(String money) {
         if (!isEnoughMoney(money) || !isOneThousandUnits(money) || !isDigit(money)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_MONEY_ERROR.getMessage());
         }
     }
 
