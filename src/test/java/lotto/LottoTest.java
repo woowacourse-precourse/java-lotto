@@ -36,4 +36,37 @@ class LottoTest {
                 .usingRecursiveComparison()
                 .isEqualTo(expected);
     }
+
+    @DisplayName("당첨 번호가 주여졌을 때 존재하는 개수를 센다.")
+    @Test
+    void checkCorrectCountWinningNumbers1() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 7);
+
+        assertThat(lotto.countWinningNumbers(winningNumbers))
+                .as("개수를 정확히 세지 못했습니다.")
+                .isEqualTo(5);
+    }
+
+    @DisplayName("당첨 번호가 주여졌을 때 존재하는 개수를 센다.")
+    @Test
+    void checkCorrectCountWinningNumbers2() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> winningNumbers = List.of(1, 2, 10, 11, 12, 13);
+
+        assertThat(lotto.countWinningNumbers(winningNumbers))
+                .as("개수를 정확히 세지 못했습니다.")
+                .isEqualTo(2);
+    }
+
+    @DisplayName("당첨 번호가 주여졌을 때 존재하는 개수를 센다.")
+    @Test
+    void checkCorrectCountWinningNumbers3() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> winningNumbers = List.of(7, 8, 9, 10, 11, 12);
+
+        assertThat(lotto.countWinningNumbers(winningNumbers))
+                .as("개수를 정확히 세지 못했습니다.")
+                .isEqualTo(0);
+    }
 }
