@@ -41,6 +41,15 @@ public class MyTest {
             assertThatThrownBy(() -> inputValidator.validateLottoSize(numbers)).isInstanceOf(IllegalArgumentException.class);
         }
     }
+    @Test
+    @DisplayName("로또 번호가 중복일 경우 예외가 발생한다.")
+    void 로또_번호가_중복일_경우_예외가_발생한다(){
+        List<List<Integer>> testLotto = Arrays.asList(Arrays.asList(1, 2, 2, 4, 5, 6), Arrays.asList(1, 1, 1, 1, 1, 1));
+        InputValidator inputValidator = new InputValidator();
+        for (List<Integer> numbers : testLotto) {
+            assertThatThrownBy(() -> inputValidator.validateDuplicatedLotto(numbers)).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 
 
 }

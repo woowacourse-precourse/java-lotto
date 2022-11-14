@@ -20,4 +20,8 @@ public class InputValidator {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개입니다.");
         }
     }
+
+    public void validateDuplicatedLotto(List<Integer> numbers) {
+
+    }
 }
