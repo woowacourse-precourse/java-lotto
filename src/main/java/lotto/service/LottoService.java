@@ -17,4 +17,8 @@ public class LottoService {
         }
         return matchingNumberCount;
     }
+
+    public boolean hasBonusNumber(Lotto lotto, int bonusNumber) {
+        return lotto.getNumbers().contains(bonusNumber);
+    }
 }
