@@ -2,11 +2,11 @@ package lotto;
 
 import java.util.List;
 
-public class Comparison {
+public class Compare {
 
     int sameNumber = 0;
     int samebonusNumber = 7;
-    public int comparisonNumbers(List<Integer> winNumber, List<Integer> lottoNumber) {
+    public int compareNumbers(List<Integer> winNumber, List<Integer> lottoNumber) {
         for (int i = 0; i < 5; i++) {
             if (lottoNumber.contains(winNumber.get(i))) {
                 sameNumber++;
