@@ -47,4 +47,21 @@ public class DiscriminatorTest {
         assertThat(discriminator.canSecondRank(matchCount)).isFalse();
     }
 
+    @Test
+    @DisplayName("추첨 번호를 5개 맞추고 보너스 번호를 맞춘 경우 보너스 번호 맞춘 개수는 1인지 확인한다.")
+    public void compareLottoWithBonusNumber(){
+        int expectedBonusCount=1;
+
+        List<Integer> lottoNumbers=List.of(1,45,6,7,8,20);
+        Lotto lotto = new Lotto(lottoNumbers);
+
+        String raffleNumbers="1,45,6,7,9,20";
+        String bonusNumber="8";
+
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
+        Discriminator discriminator = new Discriminator(raffleNumber);
+
+        assertThat(discriminator.guessBonusNumber(lotto, 5)).isEqualTo(expectedBonusCount);
+    }
+
 }
