@@ -10,7 +10,7 @@ public class MoneyValidator {
         validateValue(buyingMoney);
     }
 
-    private static void validateMinimumValue(int money) {
+    public static void validateMinimumValue(int money) {
         if (money < 1000) {
             throw new IllegalArgumentException(ExceptionType.MONEY_MINIMUM_VALUE_EXCEPTION.getMessage());
         }
