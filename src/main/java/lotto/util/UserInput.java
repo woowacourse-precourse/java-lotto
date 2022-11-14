@@ -5,6 +5,13 @@ import lotto.constant.Message;
 
 public class UserInput {
 
+    public static int getMoney(){
+        String inputMoney = getInputMoney();
+        int money = Converter.StringToInteger(inputMoney);
+
+        return money;
+    }
+
     private static String getInputMoney(){
 
         String inputMoney = Console.readLine();
@@ -25,5 +32,4 @@ public class UserInput {
             throw new IllegalArgumentException();
         }
     }
-
 }
