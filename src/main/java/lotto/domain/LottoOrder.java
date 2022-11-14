@@ -35,4 +35,12 @@ public class LottoOrder {
 
         return money / LOTTO_PRICE;
     }
+
+    public List<Lotto> getLottoTickets() {
+        return lottoTickets;
+    }
+
+    public int getLottoCount() {
+        return lottoCount;
+    }
 }
