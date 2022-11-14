@@ -18,4 +18,11 @@ public class ResponseMessage {
                 .append("개를 구매했습니다.");
         System.out.println(responseMessage);
     }
+
+    public static void printWinningNumbers() {
+        initStringBuilder();
+        responseMessage.append("당첨 번호를 입력해 주세요.");
+        System.out.println(responseMessage);
+    }
+
 }
