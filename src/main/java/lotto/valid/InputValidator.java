@@ -34,7 +34,7 @@ public enum InputValidator {
                         .map(Integer::parseInt)
                         .collect(Collectors.toList());
 
-        LottoValidator.validate(jackpotNumbers);
+        Lotto.validate(jackpotNumbers);
 
         return jackpotNumbers;
     }
