@@ -1,8 +1,10 @@
 package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static java.util.Map.entry;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,6 +47,42 @@ class StatisticsCalculatorTest {
             assertThat(statistics.get(LottoPrize.THIRD)).isEqualTo(0);
             assertThat(statistics.get(LottoPrize.SECOND)).isEqualTo(1);
             assertThat(statistics.get(LottoPrize.FIRST)).isEqualTo(1);
+        }
+    }
+
+    @DisplayName("수익률 계산 기능")
+    @Nested
+    class CalculateRateOfReturn {
+        Map<LottoPrize, Integer> mockStatistics;
+
+        @Test
+        public void calculateRateOfReturn() {
+            mockStatistics = Map.ofEntries(
+                    entry(LottoPrize.FIRST, 1),
+                    entry(LottoPrize.SECOND, 1),
+                    entry(LottoPrize.THIRD, 2),
+                    entry(LottoPrize.FOURTH, 1),
+                    entry(LottoPrize.FIFTH, 0)
+            );
+            double mockRateOfReturn = StatisticsCalculator.calculateRateOfReturn(7000, mockStatistics);
+            double expectedRateOfReturn = 29043571.4;
+            System.out.println(mockRateOfReturn);
+            assertThat(mockRateOfReturn).isEqualTo(expectedRateOfReturn);
+        }
+
+        @Test
+        public void calculateRateOfReturn2() {
+            mockStatistics = Map.ofEntries(
+                    entry(LottoPrize.FIRST, 0),
+                    entry(LottoPrize.SECOND, 0),
+                    entry(LottoPrize.THIRD, 1),
+                    entry(LottoPrize.FOURTH, 0),
+                    entry(LottoPrize.FIFTH, 0)
+            );
+            double mockRateOfReturn = StatisticsCalculator.calculateRateOfReturn(17000, mockStatistics);
+            double expectedRateOfReturn = 8823.5;
+            System.out.println(mockRateOfReturn);
+            assertThat(mockRateOfReturn).isEqualTo(expectedRateOfReturn);
         }
     }
 }
