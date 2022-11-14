@@ -9,14 +9,20 @@ public class Purchase {
     Integer purchaseAmount;
 
     public List<Lotto> lottoPurchase() {
-        // 로또 구입 금액 입력
-        this.purchaseAmount = Integer.parseInt(Console.readLine());
+        this.purchaseAmount = numericAmount(Console.readLine());
         if (purchaseAmount % 1000 != 0) {
             throw new IllegalArgumentException();
         }
 
-        // 로또 생성기
         LottoGenerator lottoGenerator = new LottoGenerator(purchaseAmount);
         return lottoGenerator.generateLotto();
+    }
+
+    private Integer numericAmount(String amount) {
+        try {
+            return Integer.parseInt(amount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수만 입력 가능합니다.");
+        }
     }
 }

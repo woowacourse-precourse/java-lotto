@@ -19,13 +19,13 @@ public class LottoProgram {
         enterWinningNumber();
 
         winningResult = new WinningResult(winningNumber);
-        winningResult.winningHistory(purchasedLotto);
 
-        printLottoResult(purchasedLotto);
+        userInterface.printWinningHistory(winningResult.winningHistory(purchasedLotto));
+        userInterface.printWinningRate(winningResult.winningRate(purchase.purchaseAmount));
     }
 
     private List<Lotto> purchaseLotto() {
-        System.out.println("구입금액을 입력해 주세요.");
+        userInterface.printEnterAmout();
         List<Lotto> purchasedLotto = purchase.lottoPurchase();
         userInterface.printPurchasedLotto(purchasedLotto);
 
@@ -33,12 +33,7 @@ public class LottoProgram {
     }
 
     private void enterWinningNumber() {
-        System.out.println("\n당첨 번호를 입력해 주세요.");
+        userInterface.printEnterWinningNumber();
         winningNumber.getWinningNumber();
-    }
-
-    private void printLottoResult(List<Lotto> purchasedLotto) {
-        userInterface.printWinningHistory(winningResult.winningHistory(purchasedLotto));
-        userInterface.printWinningRate(winningResult.winningRate(purchase.purchaseAmount));
     }
 }
