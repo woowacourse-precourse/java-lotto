@@ -39,12 +39,21 @@ public class LottoView {
 
     public static void printWinningResult(HashMap<Rank,Integer> result){
         DecimalFormat formatter = new DecimalFormat("###,###");
+        Rank[] rankName = Rank.values();
         System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
-        for (Map.Entry<Rank, Integer> entry: result.entrySet()){
-            if(!entry.getKey().equals(Rank.FAIL)){
-                System.out.println(entry.getKey().getMatchCount()+"개 일치 (" + formatter.format(entry.getKey().getPrize()) + "원) - "+entry.getValue()+"개");
+
+        for(Rank rank:rankName){
+            int NUM = 0;
+            if(result.get(rank) != null){
+                NUM = result.get(rank);
+            }
+            if(rank.equals(Rank.SECOND)){
+                System.out.println(rank.getMatchCount()+"개 일치, 보너스 볼 일치 (" + formatter.format(rank.getPrize()) + "원) - "+ NUM +"개");
+            }
+            if(!rank.equals(Rank.FAIL)){
+                System.out.println(rank.getMatchCount()+"개 일치 (" + formatter.format(rank.getPrize()) + "원) - "+ NUM +"개");
             }
         }
     }

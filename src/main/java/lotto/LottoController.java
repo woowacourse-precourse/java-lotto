@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class LottoController {
     public void start(){
@@ -44,15 +43,12 @@ public class LottoController {
     }
     private HashMap<Rank,Integer> resultRank(List<Rank> ranking){
         HashMap<Rank,Integer> rank_count = new HashMap<>();
-        int count = 0;
-        rank_count.put(Rank.FIFTH,0);
-        rank_count.put(Rank.FOURTH,0);
-        rank_count.put(Rank.THIRD,0);
-        rank_count.put(Rank.SECOND,0);
-        rank_count.put(Rank.FIRST,0);
+        int count = 1;
 
         for (Rank rank : ranking){
-            if (rank_count.containsKey(rank)){ count = rank_count.get(rank)+1; }
+            if (rank_count.containsKey(rank.getMatchCount())){
+                count = rank_count.get(rank.getMatchCount())+1;
+            }
             rank_count.put(rank,count);
         }
         return rank_count;
@@ -63,7 +59,6 @@ public class LottoController {
         for (Map.Entry<Rank, Integer> entry: result.entrySet()){
             sum += entry.getValue()*entry.getKey().getPrize();
         }
-        //System.out.println(sum+" "+number_of_lotto.getMoney());
         LottoView.printProfitResult((double) (sum*100)/number_of_lotto.getMoney());
     }
 }
