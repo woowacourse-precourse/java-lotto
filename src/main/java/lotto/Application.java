@@ -11,28 +11,28 @@ public class Application {
     private static final int numberCount = 6;
 
     public static void main(String[] args) {
-        Ui ui = new Ui();
         Application application = new Application();
 
         try {
-            int money = ui.moneyInput();
-
-            List<LottoNumber> buyList = application.buyLotto(money);
-
-            ui.buyLottoOutput(buyList);
-
-            List<Integer> lotto = ui.lottoInput();
-            int bonus = ui.bonusInput(lotto);
-
-            List<Integer> lottoResult = application.getLottoResult(buyList, lotto, bonus);
-            double totalProfit = application.getTotalProfit(money, lottoResult);
-
-            ui.lottoResultTotalOutput(lottoResult);
-            ui.totalProfitOutput(totalProfit);
-
+            application.run();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void run() {
+        Ui ui = new Ui();
+        int money = ui.moneyInput();
+        List<LottoNumber> buyList = buyLotto(money);
+        ui.buyLottoOutput(buyList);
+
+        List<Integer> lotto = ui.lottoInput();
+        int bonus = ui.bonusInput(lotto);
+        List<Integer> lottoResult = getLottoResult(buyList, lotto, bonus);
+        double totalProfit = getTotalProfit(money, lottoResult);
+
+        ui.lottoResultTotalOutput(lottoResult);
+        ui.totalProfitOutput(totalProfit);
     }
 
     public List<Integer> createLotto() {
