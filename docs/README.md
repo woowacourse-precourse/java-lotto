@@ -28,7 +28,6 @@
   - [x] Ticket (구입 금액에 맞는 로또 발행)
   - [x] WinningLotto
   - [x] BonusNumber
-  - [x] ProfitRate
   - [x] Prize (Enum 으로 구현)
 
 
@@ -106,6 +105,13 @@
 
 ---
 ## ✔️ 단위 테스트 목록
+- Application
+  - [x] 기능테스트
+  - [x] 예외테스트
+  - [ ] 최대 수익률 테스트
+    - 로또가 모두 1등이 되면 수익률이 200,000,000.0%가 되고 이 경우가 최대 수익률이다.
+
+
 - Lotto
   - [x] 로또 번호가 6개가 넘어가면 예외 발생
   - [x] 로또 번호에 중복된 숫자가 있으면 예외 발생
@@ -125,10 +131,6 @@
 
 - BonusNumber
   - [x] 보너스 번호가 1~45 사이의 숫자가 아니면 예외 발생
-
-
-- ProfitRate
-  - [x] 수익률이 너무 큰경우 지수(exponent)가 제거 되는지 테스트
 
 
 - LottoResultService

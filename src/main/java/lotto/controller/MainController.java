@@ -10,6 +10,7 @@ import lotto.view.ProfitRateView;
 import lotto.view.StatisticsView;
 import lotto.view.TicketView;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 public class MainController {
@@ -23,8 +24,7 @@ public class MainController {
 
         int purchaseAmount = ticket.getPurchaseAmount();
         double prizeMoney = LottoResultService.getPrizeMoney(statistics);
-        double rate = ProfitRateService.calculateRate(purchaseAmount, prizeMoney);
-        ProfitRate profitRate = new ProfitRate(rate);
-        ProfitRateView.outPut(profitRate);
+        BigDecimal rate = ProfitRateService.calculateRate(purchaseAmount, prizeMoney);
+        ProfitRateView.outPut(rate);
     }
 }

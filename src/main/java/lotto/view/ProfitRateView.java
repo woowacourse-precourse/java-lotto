@@ -1,9 +1,11 @@
 package lotto.view;
 
-import lotto.model.ProfitRate;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class ProfitRateView {
-    public static void outPut(ProfitRate profitRate) {
-        System.out.println("총 수익률은 " + profitRate + "%입니다.");
+    public static void outPut(BigDecimal profitRate) {
+        DecimalFormat format = new DecimalFormat("#,##0.0");
+        System.out.println("총 수익률은 " + format.format(profitRate) + "%입니다.");
     }
 }
