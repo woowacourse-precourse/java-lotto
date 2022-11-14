@@ -12,7 +12,7 @@ public class Lotto {
     }
 
     public void printNumbers(){
-        System.out.print(numbers.toString());
+        System.out.println(numbers.toString());
     }
 
 
