@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LotteryStore {
-    private static final int ARRAY_LIST_SIZE = 1024;
+    private static final int LIST_SIZE = 1024;
     private static final int WINNING_NUMBER_COUNT = 6;
     private static final int ZERO = 0;
     private static final int LOTTO_PRICE = 1000;
@@ -28,12 +28,12 @@ public class LotteryStore {
     public LotteryStore() {
         this.userInterface = new UserInterface();
         this.lottoCalculator = new LottoCalculator();
-        this.lottos = new ArrayList<>(ARRAY_LIST_SIZE);
+        this.lottos = new ArrayList<>(LIST_SIZE);
         this.winningNumbers = new ArrayList<>(WINNING_NUMBER_COUNT);
     }
 
     public void buyLotto() {
-        this.lottoCount = this.userInterface.getLottoCount();
+        this.lottoCount = this.userInterface.getBuyLottoCount();
         for (int i = 0; i < lottoCount; ++i) {
             this.lottos.add(new Lotto(lottoCalculator.createLotto()));
         }
@@ -62,7 +62,6 @@ public class LotteryStore {
     }
 
     public void outputResult() {
-        // 로또 당첨 계산하고
         Map<LottoRankingType, Integer> lottoRankingTypes = this.lottoCalculator.getLottoRanking(this.winningNumbers, this.bonusNumber, this.lottos);
 
         int totalAmount = getTotalWinningAmount(lottoRankingTypes);
@@ -70,7 +69,7 @@ public class LotteryStore {
         if (totalAmount != ZERO || this.lottos.size() != ZERO) {
            rateOfReturn = (double) totalAmount / (double) (this.lottos.size() * LOTTO_PRICE) * RATE;
         }
-        // 결과를 userinterface에 넘겨주자
+
         this.userInterface.printResult(lottoRankingTypes, rateOfReturn);
     }
 

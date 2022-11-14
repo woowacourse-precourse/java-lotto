@@ -1,6 +1,5 @@
 package lotto.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,19 +8,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoCalculator {
     private static final int MAP_SIZE = 1024;
-
     private static final int ONE = 1;
     private static final int WIN_FIRST_COUNT = 6;
     private static final int WIN_THIRD_COUNT = 5;
     private static final int WIN_FOURTH_COUNT = 4;
     private static final int WIN_FIFTH_COUNT = 3;
-
-    private static final int BANG_TWO_COUNT = 2;
-
-    private static final int BANG_ONE_COUNT = 1;
-
-    private static final int BANG_ZERO_COUNT = 0;
-
 
     public LottoCalculator() {
 
