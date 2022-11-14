@@ -27,4 +27,16 @@ public class Lotto {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATED_BONUS_NUMBER.getErrorMsg());
         }
     }
+
+    public int getWinningNum(Lotto luckyNumbers) {
+        int count = 0;
+        List<Integer> luckys = luckyNumbers.numbers;
+
+        for (int lucky : luckys) {
+            if (numbers.contains(lucky)) {
+                count += 1;
+            }
+        }
+        return count;
+    }
 }
