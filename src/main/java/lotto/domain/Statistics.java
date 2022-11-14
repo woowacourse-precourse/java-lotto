@@ -1,26 +1,48 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Statistics {
-    private int[] gradeCount;
+    private Map<Grade, Integer> gradeCount = new HashMap<>();
     private int earningRate;
 
-    public Statistics(List<Integer> winningNumbers, List<Lotto> lottos){
+    public Statistics(WinningNumbers winningNumbers, List<Lotto> lottos){
         countGrade(winningNumbers, lottos);
         calculateEarningRate();
     }
 
-    private void countGrade(List<Integer> winningNumbers, List<Lotto> lottos){
+    private void countGrade(WinningNumbers winningNumbers, List<Lotto> lottos){
+        for(Grade grade : Grade.values()){
+            gradeCount.put(grade, 0);
+        }
+
         for(Lotto lotto : lottos){
-            int grade = compare(winningNumbers, lotto);
-            gradeCount[grade]++;
+            int count = (int)lotto.getNumbers().stream().filter(v -> winningNumbers.getNumbers().contains(v)).count();
+            Grade grade = getGrade(winningNumbers, lotto, count);
+            gradeCount.put(grade, gradeCount.get(grade)+1);
         }
     }
 
-    private int compare(List<Integer> winningNumbers, Lotto lotto){
-        return 0;
+    private Grade getGrade(WinningNumbers winningNumbers, Lotto lotto, int count){
+        if(count == Grade.FIRST.getMatchCount()) {
+            return Grade.FIRST;
+        }
+        if(count == Grade.SECOND.getMatchCount() && lotto.getNumbers().contains(winningNumbers.getBonus())){
+            return Grade.SECOND;
+        }
+        if(count == Grade.THIRD.getMatchCount() && !lotto.getNumbers().contains(winningNumbers.getBonus())){
+            return Grade.THIRD;
+        }
+        if(count == Grade.FOURTH.getMatchCount()){
+            return Grade.FOURTH;
+        }
+        if(count == Grade.FIFTH.getMatchCount()){
+            return  Grade.FIFTH;
+        }
+        return Grade.NOTHING;
     }
 
     private void calculateEarningRate(){
@@ -31,7 +53,7 @@ public class Statistics {
         return 0;
     }
 
-    public int[] getGradeCount() {
+    public Map<Grade, Integer> getGradeCount() {
         return gradeCount;
     }
 
@@ -42,7 +64,7 @@ public class Statistics {
     @Override
     public String toString() {
         return "Statistics{" +
-                "winningCount=" + Arrays.toString(gradeCount) +
+                "winningCount=" + gradeCount +
                 ", earningRate=" + earningRate +
                 '}';
     }
