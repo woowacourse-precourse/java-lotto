@@ -100,6 +100,14 @@ public class ServiceInput {
 
     private static void validateInputBonusNumber(String inputBonusNumber) {
 
-        // TODO: 예외처리1,2 구현
+        if (!Validator.hasNotCharacter(inputBonusNumber)){
+            Message.printInputErrorHasCharacter();
+            throw new IllegalArgumentException();
+        }
+
+        if (Validator.isEmpty(inputBonusNumber)){
+            Message.printInputErrorEmpty();
+            throw new IllegalArgumentException();
+        }
     }
 }
