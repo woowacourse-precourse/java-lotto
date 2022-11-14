@@ -1,10 +1,12 @@
 package lotto;
 
 import static org.assertj.core.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class GetRateOfReturnTest {
-
+    @DisplayName("수익률 계산 하는 test")
     @Test
     void calculateRate() {
         GetRateOfReturn testcase = new GetRateOfReturn();

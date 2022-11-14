@@ -11,9 +11,9 @@ public class CreateRandomLotto {
             List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             List<Integer> copyOfLotto = new ArrayList<>(lotto);
             Collections.sort(copyOfLotto);
-            LottoPaper eachNumber = new LottoPaper();
-            eachNumber.setLottoNumber(copyOfLotto);
-            lottoPaper.add(eachNumber);
+            LottoPaper eachLotto = new LottoPaper();
+            eachLotto.setLottoNumber(copyOfLotto);
+            lottoPaper.add(eachLotto);
         }
         return lottoPaper;
     }

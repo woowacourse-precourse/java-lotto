@@ -1,5 +1,6 @@
 package lotto;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,7 +9,15 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 class LottoPaperTest {
-
+    @DisplayName("LottoPaper 에 랜던 번호가 잘 들어가는지 확인 하는 test")
+    @Test
+    void printLotto(){
+        LottoPaper lottoPaper = new LottoPaper();
+        List<Integer> testNum = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        lottoPaper.setLottoNumber(testNum);
+        assertThat(lottoPaper.lottoNumber).isEqualTo(testNum);
+    }
+    @DisplayName("당첨번호와 랜덤번호와 비교해서 몇개 일치하는 지에 대한 test")
     @Test
     void getResult() {
         LottoPaper lottoPaper = new LottoPaper();
