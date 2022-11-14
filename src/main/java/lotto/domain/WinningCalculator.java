@@ -141,4 +141,10 @@ public class WinningCalculator {
         }
         throw new IllegalArgumentException("[ERROR] 범위에 맞는 보너스 번호를 입력해주세요.");
     }
+
+    private void checkBonusNumberIsContainWinningNumbers(int bonusNumber) {
+        if (this.numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호에 없는 보너스 번호를 입력해주세요.");
+        }
+    }
 }
