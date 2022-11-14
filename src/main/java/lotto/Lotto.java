@@ -1,6 +1,10 @@
 package lotto;
 
+import lotto.util.ExceptionMessage;
+
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,9 +16,20 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NUMBER_OUT_OF_RANGE);
+        }
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATE_NUMBER);
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
+    }
+
+    public void print() {
+        System.out.println(numbers.stream()
+                .sorted()
+                .collect(Collectors.toList()));
+    }
 }
