@@ -58,11 +58,35 @@ public class LottoMachine {
     public void setNormalNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
+        validateWinningNumber(input, 6);
         String[] tokenized = input.split(",");
 
         this.normalNumbers = new ArrayList<>();
         for(String token: tokenized) {
             normalNumbers.add(Integer.parseInt(token));
+        }
+    }
+
+    public void setBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        validateWinningNumber(input, 1);
+
+        this.bonusNumber = Integer.parseInt(input);
+    }
+
+    public void validateWinningNumber(String input, int size) {
+        String[] tokenized = input.split(",");
+        if (tokenized.length != size) {
+            throw new IllegalArgumentException("[ERROR] 번호의 개수가 " + size + "개가 되어야 합니다.");
+        }
+
+        for(String token : tokenized) {
+            try {
+                int winningNumber = Integer.parseInt(token);
+            } catch(NumberFormatException e) {
+                throw new IllegalArgumentException("[ERROR] 숫자 또는 ',' 이외의 문자가 포함되었습니다.");
+            }
         }
     }
 
