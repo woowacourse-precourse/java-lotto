@@ -101,20 +101,23 @@ class LottoTest extends NsTest {
     @DisplayName("보너스번호의 입력을 확인한다.")
     @Test
     void inputBonusNumber() {
-        LottoShop.soldLottoList = new ArrayList<>();
-        assertThatThrownBy(() -> run("1000", "1,2,3,4,5,6", "1"))
+        LottoInspector inspector = new LottoInspector();
+
+        inspector.winningNumberToList("1,2,3,4,5,6");
+
+        assertThatThrownBy(() -> inspector.bonusNumberToInt("1"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(DUPLICATED_BONUS_NUMBERS.toMessage());
 
-        assertThatThrownBy(() -> run("1000", "1,2,3,4,5,6", "46"))
+        assertThatThrownBy(() -> inspector.bonusNumberToInt("46"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(OUT_OF_LENGTH.toMessage());
 
-        assertThatThrownBy(() -> run("1000", "1,2,3,4,5,6", "0"))
+        assertThatThrownBy(() -> inspector.bonusNumberToInt("0"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(OUT_OF_LENGTH.toMessage());
 
-        assertThatThrownBy(() -> run("1000", "1,2,3,4,5,6", "A"))
+        assertThatThrownBy(() -> inspector.bonusNumberToInt("A"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_INPUT_INTEGER_VALUE.toMessage());
     }
