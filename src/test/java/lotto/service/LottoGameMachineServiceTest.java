@@ -1,9 +1,13 @@
 package lotto.service;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.*;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -30,5 +34,20 @@ class LottoGameMachineServiceTest {
         assertThat(service.readMoney()).isEqualTo(money);
         assertThat(service.readLottoQuantity()).isEqualTo(lottoQuantity);
         assertThat(service.readLottoNumbers()).hasSize(lottoQuantity);
+    }
+
+    @DisplayName("당첨 번호가 입력되어야 한다.")
+    @Test
+    public void givenWinningNumbers_whenEnterWinningNumbers_thenReturnWinningNumbers(){
+        // Given
+        List<Integer> winningNumbers = new ArrayList<>(List.of(1,2,3,4,5,6));
+        Lotto winningNumbersLotto = new Lotto(winningNumbers);
+
+        // When
+        service.enterTheWinningNumbers(winningNumbersLotto);
+
+        // Then
+        assertThat(service.readWinningNumbers()).hasSize(6);
+        assertThat(service.readWinningNumbers()).isEqualTo(winningNumbers);
     }
 }
