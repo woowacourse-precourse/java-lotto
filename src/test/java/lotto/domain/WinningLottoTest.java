@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import lotto.constant.ErrorMessage;
 import lotto.constant.LottoNumber;
-import lotto.validator.LottoNumberValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -98,7 +97,7 @@ public class WinningLottoTest {
             int bonusNumber = 7;
 
             // when, then
-            assertThatCode(() -> LottoNumberValidator.validateBonusNumberAndLottoAreDuplicate(lotto, bonusNumber))
+            assertThatCode(() -> new WinningLotto(lotto, bonusNumber))
                     .doesNotThrowAnyException();
         }
     }
