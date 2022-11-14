@@ -1,12 +1,14 @@
 package lotto.controller;
 
 import lotto.model.Lotto;
+import lotto.view.OutputView;
 
 import java.util.List;
 
 public class Compare {
     int count;
     boolean bonusHit;
+    int fifth = 0;
 
     public Compare(List<List<Integer>> userLotto, Lotto winLotto, int bonusLotto) {
         for (int paper = 0; paper < userLotto.size(); paper++) {
@@ -15,7 +17,9 @@ public class Compare {
             if (count == 5) {
                 bonusHit = IsBonus(userLotto.get(paper), bonusLotto);
             }
+            Result(count,bonusHit);
         }
+        Win();
     }
 
     private int CountLotto(List<Integer> nowUserLotto, Lotto winLotto, int paper) {
@@ -33,5 +37,16 @@ public class Compare {
             return true;
         }
         return false;
+    }
+
+    public void Result(int count, boolean bonusHit) {
+        if (count == 3) {
+            fifth += 1;
+        }
+    }
+
+    public void Win() {
+        OutputView.OutputWinLotto();
+        OutputView.FifthLotto(fifth);
     }
 }

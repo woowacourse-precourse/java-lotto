@@ -10,4 +10,10 @@ public class OutputView {
             System.out.println(userLotto.get(c));
         }
     }
+    public static void OutputWinLotto() {
+        System.out.println("당첨 통계\n---");
+    }
+    public static void FifthLotto(int count) {
+        System.out.println("3개 일치 (5,000원) - "+count+"개");
+    }
 }
