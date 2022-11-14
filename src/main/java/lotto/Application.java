@@ -72,31 +72,61 @@ public class Application {
     public static void winningStatistics(){
         System.out.println("\n" + WINNINGSTATISTICS.getPrintStatement());
 
-        Map<Integer, Integer> correspondCounts = new HashMap<Integer, Integer>();
-        for(int i=3; i<=6; i++){
-            correspondCounts.put(i, 0);
+        Integer twoPlaceCount = 0; // 2등 처리를 위해 생성
+        Map<Integer, Integer> matchingInfo = new HashMap<Integer, Integer>();
+        for(int i=0; i<=6; i++){
+            matchingInfo.put(i, 0);
         }
 
         for(Lotto lotto: buyLottos){
-            Integer correspondCount = CalculationRank(lotto);
+            Integer correspondCount = matchingCount(lotto);
+            if(correspondCount == 5 && lotto.contains(bonusNumber)){
+                twoPlaceCount++;
+            }
             if(correspondCount > 2){
-                correspondCounts.put(correspondCount , correspondCounts.get(correspondCount) + 1);
+                matchingInfo.put(correspondCount , matchingInfo.get(correspondCount) + 1);
             }
         }
 
+        printMatchingInfo(matchingInfo, twoPlaceCount);
+
     }
 
-    public static Integer CalculationRank(Lotto lotto){
+    public static Integer matchingCount(Lotto lotto){
 
         Integer correspondCount = 0;
 
         for(Integer number : lotto.getNumbers()){
             if(winningLotto.contains(number)){
-                correspondCount ++;
+                correspondCount++;
             }
         }
 
         return correspondCount;
     }
+
+    public static void printMatchingInfo(Map<Integer, Integer> rankInfo, Integer twoPlaceCount){
+
+        for(Integer key : rankInfo.keySet()){
+            switch (key){
+                case 3:
+                    System.out.println(matchingAmount(key, "5,000원",rankInfo.get(key), 5));
+                    break;
+                case 4:
+                    System.out.println(matchingAmount(key, "50,000원",rankInfo.get(key), 4));
+                    break;
+                case 5:
+                    System.out.println(matchingAmount(key, "1,500,000원",rankInfo.get(key)-twoPlaceCount, 3));
+                    System.out.println(matchingAmount(key, "30,000,000원",twoPlaceCount, 2));
+                    break;
+                case 6:
+                    System.out.println(matchingAmount(key, "2,000,000,000원",rankInfo.get(key), 1));
+                    break;
+            }
+        }
+
+    }
+
+
 
 }

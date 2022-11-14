@@ -6,7 +6,7 @@ public class CommonContent {
         PURCHASEAMOUNT("구입금액을 입력해 주세요."),
         WINNINGNUMBER("당첨 번호를 입력해 주세요."),
         BONUSNUMBER("보너스 번호를 입력해 주세요."),
-        WINNINGSTATISTICS("당첨 통계\n---\n");
+        WINNINGSTATISTICS("당첨 통계\n---");
 
         private String printStatement;
 
@@ -14,8 +14,8 @@ public class CommonContent {
             this.printStatement = printStatement;
         }
 
-        public static String matchingAmount(Integer matchingCount, Integer winningAmount, Integer winNumbers, Boolean bonusMatching){
-            if(winningAmount == 5 && bonusMatching){
+        public static String matchingAmount(Integer matchingCount, String winningAmount, Integer winNumbers, Integer rank){
+            if(rank == 2){
                 return matchingCount + "개 일치, 보너스 볼 일치 (" + winningAmount + ") - " + winNumbers + "개";
             }
             return matchingCount + "개 일치 (" + winningAmount + ") - " + winNumbers + "개";
@@ -33,6 +33,11 @@ public class CommonContent {
             return printStatement;
         }
     }
+
+    public enum PrintWinningInfo{
+
+    }
+
 
     public enum PrintError{
         LOTTONUMBERERROR("로또 번호는 1부터 45 사이의 숫자여야 합니다."),
