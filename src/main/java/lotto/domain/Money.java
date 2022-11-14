@@ -15,7 +15,9 @@ public class Money {
     }
 
     public int boughtLottoCount(){
-        return Math.toIntExact(Long.parseLong(money) % 1000);
+        int bought = Math.toIntExact(Long.parseLong(money) / Setting.LOTTO_PRICE_PER_ONE);
+        Output.printBoughtLotto(bought);
+        return bought;
     }
 
     private String inputMoney(){
@@ -31,14 +33,14 @@ public class Money {
 
     private void validateInputMoneyIsAllNumber(){
         try{
-            Long.parseLong(money);
+            Long.parseLong(this.money);
         }catch (Exception e){
             throw new IllegalArgumentException("[ERROR] 구입 금액은 2의 63승 이하의 숫자이어야합니다.");
         }
     }
 
     private void validateInputMoneyIsRightUnit(){
-        if(Math.toIntExact(Long.parseLong(money) % 1000) != 0){
+        if(Math.toIntExact(Long.parseLong(money) % Setting.LOTTO_PRICE_PER_ONE) != 0){
             throw new IllegalArgumentException("[ERROR] 구입 금액은 "+ Setting.LOTTO_PRICE_PER_ONE +"원 단위입니다.");
         }
     }
