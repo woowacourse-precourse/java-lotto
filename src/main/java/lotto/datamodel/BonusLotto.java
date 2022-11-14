@@ -22,4 +22,8 @@ public class BonusLotto {
         }
     }
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
 }
