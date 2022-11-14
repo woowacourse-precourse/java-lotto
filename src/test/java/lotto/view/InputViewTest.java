@@ -45,6 +45,7 @@ public class InputViewTest {
     void 보너스번호_정상_입력() {
         String inputNumber = "10";
         int answer = 10;
+        System.setIn(new ByteArrayInputStream(inputNumber.getBytes()));
         int bonusNumber = inputView.inputBonusNumber();
         Assertions.assertEquals(answer,bonusNumber);
     }

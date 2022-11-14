@@ -26,16 +26,4 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    // 아래에 추가 테스트 작성 가능
-    @Test
-    void print() {
-        List<List<Integer>> a = new ArrayList<List<Integer>>();
-        for (int i = 0; i < 4; i++) {
-            a.add(List.of(1, 2, 3, 4, 5));
-        }
-        a.stream().map((w)->w.toString())
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
-    }
 }

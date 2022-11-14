@@ -62,7 +62,7 @@ public class Validator {
         return true;
     }
 
-    private static void checkDuplication(List<Integer> numbers) {
+    public static void checkDuplication(List<Integer> numbers) {
         List<Integer> check = numbers.stream().distinct().collect(Collectors.toList());
         if (numbers.size() == check.size()) {
             return;

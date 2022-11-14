@@ -24,7 +24,7 @@ public class OutputView {
     }
 
     public void printWinningList(List<Integer> winningList) {
-        for (int i = START_WINNING_LIST; i <= END_WINNING_LIST; i++) {
+        for (int i = START_WINNING_LIST; i < END_WINNING_LIST; i++) {
             System.out.println(Rank.findMoney(i).getMessage(winningList.get(i)));
         }
     }
