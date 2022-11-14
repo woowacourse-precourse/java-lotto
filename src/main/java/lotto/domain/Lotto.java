@@ -26,7 +26,7 @@ public class Lotto {
         for (String s : lucky) {
             winningNumbers.add(Integer.parseInt(s));
         }
-        Lotto lotto = new Lotto(winningNumbers);
+        new Lotto(winningNumbers);
         return winningNumbers;
     }
 }
