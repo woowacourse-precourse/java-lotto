@@ -5,6 +5,7 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import org.w3c.dom.ls.LSOutput;
 
 public class Application {
     public static void main(String[] args) {
@@ -13,8 +14,9 @@ public class Application {
 
         final int MONEY = validateMoneyInput(input);
         List<Lotto> boughtLottos = new ArrayList<Lotto>();
-        boughtLottos = buyLotto(boughtLottos, MONEY);
 
+        boughtLottos = buyLotto(boughtLottos, MONEY);
+        printLottos(boughtLottos);
 
 
     }
@@ -55,5 +57,23 @@ public class Application {
 
         return lottos;
     }
+
+    public static void printLottos(List lottos){
+        StringBuilder lottoNumbers = new StringBuilder();
+        for (int i = 0; i<lottos.size(); i++){
+            lottoNumbers.append("[");
+            Lotto lottoItem = (Lotto) lottos.get(i);
+
+            for (int j = 0; j<lottoItem.getNumbers().size(); j++){
+                int number = lottoItem.getNumbers().get(j);
+                lottoNumbers.append(String.valueOf(number)+", ");
+            }
+
+            lottoNumbers.append("]\n");
+        }
+
+        System.out.print(lottoNumbers);
+    }
+
 
 }
