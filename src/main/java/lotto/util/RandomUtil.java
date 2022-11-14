@@ -6,19 +6,13 @@ import java.util.stream.Collectors;
 import lotto.util.constants.LottoConstants;
 
 public class RandomUtil {
-    private List<Integer> numbers;
-
-    public List<Integer> pickNumbers() {
-        numbers = pickUniqueNumbers();
-        return sortNumbers();
+    public static List<Integer> pickNumbers() {
+        List<Integer> numbers = pickUniqueNumbers();
+        return numbers.stream().sorted().collect(Collectors.toList());
     }
 
-    public List<Integer> pickUniqueNumbers() {
+    public static List<Integer> pickUniqueNumbers() {
         return Randoms.pickUniqueNumbersInRange(LottoConstants.LOTTO_NUMBER_MIN,
                 LottoConstants.LOTTO_NUMBER_MAX, LottoConstants.LOTTO_TICKET_SIZE);
-    }
-
-    public List<Integer> sortNumbers() {
-        return numbers.stream().sorted().collect(Collectors.toList());
     }
 }

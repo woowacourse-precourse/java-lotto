@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import lotto.model.Lotto;
+import lotto.model.WinningScore;
 import lotto.util.constants.GameConstants;
-import lotto.util.constants.WinningScore;
 
-public class GameMessage {
+public class LottoOutputView {
 
     public void printInputPurchaseAmount() {
         print(GameConstants.INPUT_PURCHASE_AMOUNT);
@@ -31,7 +31,7 @@ public class GameMessage {
         }
     }
 
-    public void printLottoNumber(List<Integer> lotto) {
+    private void printLottoNumber(List<Integer> lotto) {
         String[] lottoArray = lotto.stream().map(String::valueOf).toArray(String[]::new);
         print(Arrays.toString(lottoArray));
     }
@@ -43,7 +43,7 @@ public class GameMessage {
         }
     }
 
-    public void printWinningScore(WinningScore winningScore, Map<WinningScore, Integer> statistics) {
+    private void printWinningScore(WinningScore winningScore, Map<WinningScore, Integer> statistics) {
         if (winningScore == WinningScore.NONE) {
             return;
         }
@@ -55,7 +55,7 @@ public class GameMessage {
         print(String.format("총 수익률은 %.1f%%입니다.", rateOfReturn));
     }
 
-    public void print(String printString) {
+    private void print(String printString) {
         System.out.println(printString);
     }
 }

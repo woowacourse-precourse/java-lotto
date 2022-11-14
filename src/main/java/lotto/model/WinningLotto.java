@@ -3,7 +3,7 @@ package lotto.model;
 import lotto.util.constants.LottoConstants;
 
 public class WinningLotto {
-    private Lotto winningLotto;
+    private final Lotto winningLotto;
     private int bonusNumber;
 
     public WinningLotto(Lotto winningLotto, int bonusNumber) {

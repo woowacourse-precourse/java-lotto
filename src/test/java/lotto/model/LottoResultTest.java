@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import lotto.util.constants.WinningScore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,6 +42,9 @@ class LottoResultTest {
         List<Integer> scoreCount = new ArrayList<>(Arrays.asList(0, 0, 0, 1, 0));
         int i = 0;
         for (WinningScore score : WinningScore.values()) {
+            if (score == WinningScore.NONE) {
+                continue;
+            }
             assertThat(result.get(score)).isEqualTo(scoreCount.get(i));
             i += 1;
         }
@@ -58,6 +60,9 @@ class LottoResultTest {
         List<Integer> scoreCount = new ArrayList<>(Arrays.asList(0, 1, 0, 1, 0));
         int i = 0;
         for (WinningScore score : WinningScore.values()) {
+            if (score == WinningScore.NONE) {
+                continue;
+            }
             assertThat(result.get(score)).isEqualTo(scoreCount.get(i));
             i += 1;
         }

@@ -1,4 +1,4 @@
-package lotto.util.constants;
+package lotto.model;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -11,7 +11,7 @@ public enum WinningScore {
     BONUS(1, 30_000_000) {
         @Override
         public String printWinningScore() {
-            return String.format("%d개 일치, 보너스 볼 일치 (%,d원)", FIVE.score, money);
+            return String.format("%d개 일치, 보너스 볼 일치 (%,d원)", FIVE.score, BONUS.money);
         }
     },
     SIX(6, 200_000_0000),
@@ -20,8 +20,8 @@ public enum WinningScore {
     private static final Map<Integer, WinningScore> BY_COUNT =
             Stream.of(values()).collect(Collectors.toMap(WinningScore::getScore, e -> e));
 
-    public final int score;
-    public final int money;
+    private int score;
+    private int money;
 
     WinningScore(int score, int money) {
         this.score = score;

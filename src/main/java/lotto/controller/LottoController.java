@@ -3,15 +3,21 @@ package lotto.controller;
 import java.util.List;
 import java.util.Map;
 import lotto.model.Lotto;
-import lotto.model.LottoInput;
+import lotto.model.WinningScore;
 import lotto.service.LottoService;
-import lotto.util.constants.WinningScore;
-import lotto.view.GameMessage;
+import lotto.view.LottoInputView;
+import lotto.view.LottoOutputView;
 
 public class LottoController {
-    private final GameMessage gameMessage = new GameMessage();
-    private final LottoInput lottoInput = new LottoInput();
-    private final LottoService lottoService = new LottoService();
+    private final LottoOutputView lottoOutputView;
+    private final LottoInputView lottoInputView;
+    private LottoService lottoService;
+
+    public LottoController(LottoInputView lottoInputView, LottoOutputView lottoOutputView) {
+        this.lottoInputView = lottoInputView;
+        this.lottoOutputView = lottoOutputView;
+        lottoService = new LottoService();
+    }
 
     public void run() {
         publishUserLotto();
@@ -19,42 +25,42 @@ public class LottoController {
         calculateWinningStatistics();
     }
 
-    public void publishUserLotto() {
+    private void publishUserLotto() {
         int purchaseAmount = inputPurchaseAmount();
         List<Lotto> lottoTickets = lottoService.publishLottoTickets(purchaseAmount);
         printUserLottoTicketDetail(lottoTickets);
     }
 
-    public int inputPurchaseAmount() {
-        gameMessage.printInputPurchaseAmount();
-        return lottoInput.inputPurchaseAmount();
+    private int inputPurchaseAmount() {
+        lottoOutputView.printInputPurchaseAmount();
+        return lottoInputView.inputPurchaseAmount();
     }
 
-    public void printUserLottoTicketDetail(List<Lotto> lottoTickets) {
-        gameMessage.printLottoTicketCount(lottoService.getLottoTicketCount());
-        gameMessage.printLottoTickets(lottoTickets);
+    private void printUserLottoTicketDetail(List<Lotto> lottoTickets) {
+        lottoOutputView.printLottoTicketCount(lottoService.getLottoTicketCount());
+        lottoOutputView.printLottoTickets(lottoTickets);
     }
 
-    public void assignWinningLotto() {
+    private void assignWinningLotto() {
         List<Integer> winningNumber = inputWinningNumber();
         int bonusNumber = inputBonusNumber();
         lottoService.createWinningLotto(winningNumber, bonusNumber);
     }
 
-    public List<Integer> inputWinningNumber() {
-        gameMessage.printInputWinningNumber();
-        return lottoInput.inputWinningNumber();
+    private List<Integer> inputWinningNumber() {
+        lottoOutputView.printInputWinningNumber();
+        return lottoInputView.inputWinningNumber();
     }
 
-    public int inputBonusNumber() {
-        gameMessage.printInputBonusNumber();
-        return lottoInput.inputBonusNumber();
+    private int inputBonusNumber() {
+        lottoOutputView.printInputBonusNumber();
+        return lottoInputView.inputBonusNumber();
     }
 
-    public void calculateWinningStatistics() {
+    private void calculateWinningStatistics() {
         Map<WinningScore, Integer> statistics = lottoService.computeWinningResult();
-        gameMessage.printStatistics(statistics);
+        lottoOutputView.printStatistics(statistics);
         double rateOfReturn = lottoService.computeRateOfReturn();
-        gameMessage.printRateOfReturn(rateOfReturn);
+        lottoOutputView.printRateOfReturn(rateOfReturn);
     }
 }

@@ -6,7 +6,7 @@ import lotto.model.Lotto;
 import lotto.model.LottoMachine;
 import lotto.model.LottoResult;
 import lotto.model.WinningLotto;
-import lotto.util.constants.WinningScore;
+import lotto.model.WinningScore;
 
 public class LottoService {
     private LottoMachine lottoMachine;

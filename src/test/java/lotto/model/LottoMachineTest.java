@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import lotto.util.constants.LottoConstants;
@@ -18,6 +19,14 @@ class LottoMachineTest {
     void setUp() {
         lottoMachine = new LottoMachine(purchaseAmount);
         lottoTickets = lottoMachine.getLottoTickets();
+    }
+
+    @DisplayName("구입 금액은 1000으로 나누어 떨어지지 않으면 예외가 발생한다.")
+    @Test
+    void 금액_예외_테스트() {
+        int purchaseAmount = 1300;
+        assertThatThrownBy(() -> new LottoMachine(purchaseAmount))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("발행할 로또 수량은 로또 한 장의 가격을 나눈 값이다.")

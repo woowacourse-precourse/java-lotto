@@ -3,11 +3,10 @@ package lotto.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import lotto.util.constants.WinningScore;
 
 public class LottoResult {
 
-    private Map<WinningScore, Integer> winningScoreResult;
+    private final Map<WinningScore, Integer> winningScoreResult;
     private int bonusNumber;
 
     public LottoResult(int bonusNumber) {
