@@ -3,6 +3,7 @@ package lotto.view;
 
 import lotto.domain.Prize;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +12,8 @@ import java.util.stream.Stream;
 public class OutputView {
 
     private static final String PURCHASE_COUNT = "개를 구매했습니다.";
-    private static final String HISTORY = "%d개 일치 (%s원) - %d개";
-    private static final String SECOND_HISTORY = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
+    private static final String HISTORY = "\n%d개 일치 (%s원) - %d개";
+    private static final String SECOND_HISTORY = "\n%d개 일치, 보너스 볼 일치 (%s원) - %d개";
 
     public static void printPurchaseLotto(int ticketCnt) {
         System.out.println(ticketCnt + PURCHASE_COUNT);
@@ -24,9 +25,9 @@ public class OutputView {
 
     public static void printWinningHistory(Map<Prize, Integer> prizeCntMap) {
         System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.print("---");
         for (Map.Entry<Prize, Integer> prizeEntry: prizeCntMap.entrySet()) {
-            System.out.println(printWinningCount(prizeEntry));
+            System.out.print(printWinningCount(prizeEntry));
         }
     }
 
@@ -37,13 +38,18 @@ public class OutputView {
         if (prizeEntry.getKey().equals(Prize.SECOND)) {
             return String.format(SECOND_HISTORY,
                     prizeEntry.getKey().binggoCnt(),
-                    prizeEntry.getKey().reward(),
+                    commaFormatting(prizeEntry.getKey().reward()),
                     prizeEntry.getValue());
         }
         return String.format(HISTORY,
                 prizeEntry.getKey().binggoCnt(),
-                prizeEntry.getKey().reward(),
+                commaFormatting(prizeEntry.getKey().reward()),
                 prizeEntry.getValue());
+    }
+
+    private static String commaFormatting(int reward) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        return decimalFormat.format(reward);
     }
 
 

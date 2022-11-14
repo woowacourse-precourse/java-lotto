@@ -6,18 +6,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Prize {
-    FAIL(0, false, ""),
-    FIFTH(3, false, "5,000"),
-    FORTH(4, false, "50,000"),
-    THIRD(5, false, "1,500,000"),
-    SECOND(5, true, "30,000,000"),
-    FIRST(6, false, "2,000,000,000");
+    FAIL(0, false, 0),
+    FIFTH(3, false, 5000),
+    FORTH(4, false, 50000),
+    THIRD(5, false, 1500000),
+    SECOND(5, true, 30000000),
+    FIRST(6, false, 2000000000);
 
-    private final String reward;
+    private final int reward;
     private final int binggoCnt;
     private final boolean applyBounus;
 
-    private Prize(int binggoCnt, boolean applyBounus, String reward) {
+    private Prize(int binggoCnt, boolean applyBounus, int reward) {
         this.binggoCnt = binggoCnt;
         this.reward = reward;
         this.applyBounus = applyBounus;
@@ -45,7 +45,7 @@ public enum Prize {
     }
 
 
-    public String reward() {
+    public int reward() {
         return this.reward;
     }
 
