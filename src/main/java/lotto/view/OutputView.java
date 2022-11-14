@@ -1,5 +1,8 @@
 package lotto.view;
 
+import lotto.domain.Rank;
+import lotto.domain.WinningResult;
+
 import java.util.List;
 
 public class OutputView {
@@ -19,14 +22,14 @@ public class OutputView {
         System.out.println(lotto.toString());
     }
 
-    public static void printWinLottoStatistics(float profit){
+    public static void printWinLottoStatistics(float profit, WinningResult result){
         System.out.println(OUTPUT_WIN_LOTTO_STATISTICS);
         System.out.println("---");
-        System.out.println(OUTPUT_THREE_CORRECT);
-        System.out.println(OUTPUT_FOUR_CORRECT);
-        System.out.println(OUTPUT_FIVE_CORRECT);
-        System.out.println(OUTPUT_FIVE_BONUS_CORRECT);
-        System.out.println(OUTPUT_SIX_CORRECT);
-        System.out.printf("총 수익률은 %f입니다.%n", profit);
+        System.out.println(OUTPUT_THREE_CORRECT + result.getWinningResult().get(Rank.FIFTH) + "개");
+        System.out.println(OUTPUT_FOUR_CORRECT + result.getWinningResult().get(Rank.FOURTH) + "개");
+        System.out.println(OUTPUT_FIVE_CORRECT + result.getWinningResult().get(Rank.THIRD) + "개");
+        System.out.println(OUTPUT_FIVE_BONUS_CORRECT + result.getWinningResult().get(Rank.SECOND) + "개");
+        System.out.println(OUTPUT_SIX_CORRECT + result.getWinningResult().get(Rank.FIRST) + "개");
+        System.out.println("총 수익률은 " + String.format("%.1f", profit) + "%입니다.");
     }
 }
