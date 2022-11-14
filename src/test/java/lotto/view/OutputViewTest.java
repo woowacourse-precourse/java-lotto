@@ -72,7 +72,7 @@ class OutputViewTest {
             ResultStatistics resultStatistics = new ResultStatistics(results);
             assertThat(resultStatistics.getMatchCount(ResultStatus.MATCH5)).isEqualTo(1);
             assertThat(resultStatistics.getTotalProfit()).isEqualTo(1500000);
-            assertThat(OutputView.printTotalProfit(resultStatistics, lottos.size())).isEqualTo("총 수익률은 50,000%입니다.");
+            assertThat(OutputView.printTotalProfit(resultStatistics, lottos.size())).isEqualTo("총 수익률은 50,000.0%입니다.");
         }
 
         @DisplayName("5개 + 보너스볼 일치 1개")
@@ -83,7 +83,7 @@ class OutputViewTest {
             ResultStatistics resultStatistics = new ResultStatistics(results);
             assertThat(resultStatistics.getMatchCount(ResultStatus.MATCH5_WITH_BONUS_BALL)).isEqualTo(1);
             assertThat(resultStatistics.getTotalProfit()).isEqualTo(30000000);
-            assertThat(OutputView.printTotalProfit(resultStatistics, lottos.size())).isEqualTo("총 수익률은 1,000,000%입니다.");
+            assertThat(OutputView.printTotalProfit(resultStatistics, lottos.size())).isEqualTo("총 수익률은 1,000,000.0%입니다.");
         }
 
         @DisplayName("6개 일치 1개")
@@ -121,7 +121,7 @@ class OutputViewTest {
             assertThat(resultStatistics.getMatchCount(ResultStatus.MATCH3)).isEqualTo(1);
             assertThat(resultStatistics.getMatchCount(ResultStatus.MATCH4)).isEqualTo(2);
             assertThat(resultStatistics.getTotalProfit()).isEqualTo(105000);
-            assertThat(OutputView.printTotalProfit(resultStatistics, lottos.size())).isEqualTo("총 수익률은 2,100%입니다.");
+            assertThat(OutputView.printTotalProfit(resultStatistics, lottos.size())).isEqualTo("총 수익률은 2,100.0%입니다.");
         }
 
         @DisplayName("3개 일치 1개, 4개 일치 1개, 5개일치 1개")
@@ -134,7 +134,7 @@ class OutputViewTest {
             assertThat(resultStatistics.getMatchCount(ResultStatus.MATCH4)).isEqualTo(1);
             assertThat(resultStatistics.getMatchCount(ResultStatus.MATCH5)).isEqualTo(1);
             assertThat(resultStatistics.getTotalProfit()).isEqualTo(1555000);
-            assertThat(OutputView.printTotalProfit(resultStatistics, lottos.size())).isEqualTo("총 수익률은 31,100%입니다.");
+            assertThat(OutputView.printTotalProfit(resultStatistics, lottos.size())).isEqualTo("총 수익률은 31,100.0%입니다.");
         }
 
         @DisplayName("3개 일치 1개, 4개 일치 1개, 5개 & 보너스볼 일치 1개")
@@ -147,7 +147,7 @@ class OutputViewTest {
             assertThat(resultStatistics.getMatchCount(ResultStatus.MATCH4)).isEqualTo(1);
             assertThat(resultStatistics.getMatchCount(ResultStatus.MATCH5_WITH_BONUS_BALL)).isEqualTo(1);
             assertThat(resultStatistics.getTotalProfit()).isEqualTo(30055000);
-            assertThat(OutputView.printTotalProfit(resultStatistics, lottos.size())).isEqualTo("총 수익률은 601,100%입니다.");
+            assertThat(OutputView.printTotalProfit(resultStatistics, lottos.size())).isEqualTo("총 수익률은 601,100.0%입니다.");
         }
     }
 }

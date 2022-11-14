@@ -16,7 +16,7 @@ public class OutputView {
     public static final String STATISTIC_MESSAGE = "당첨 통계";
     public static final String BARS = "---";
     public static final String TOTAL_PROFIT_RATE_MESSAGE = "총 수익률은 {0}입니다.";
-    public static final String TOTAL_PROFIT_PRINT_PATTERN = "###,###.#%";
+    public static final String TOTAL_PROFIT_PRINT_PATTERN = "###,###.0%";
 
     public static void showStatistics(List<Lotto> generatedLottos, WinLotto winLotto) {
         System.out.println(STATISTIC_MESSAGE);
