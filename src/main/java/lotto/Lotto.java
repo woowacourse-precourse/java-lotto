@@ -1,24 +1,31 @@
 package lotto;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        List<Integer> numbers2 = new ArrayList<>(numbers.size());
+        for (int number : numbers) {
+            numbers2.add(number);
+        }
+        Collections.sort(numbers2);
+        this.numbers = numbers2;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 6개의 숫자여야 합니다.");
         }
         HashSet<Integer> numbersSet = new HashSet<>(numbers);
         if (numbersSet.size() != 6){
-            throw new IllegalArgumentException("[ERROR] 로또 번호에는 중복이 없어야 합니다.");
+            throw new IllegalArgumentException("로또 번호에는 중복이 없어야 합니다.");
         }
     }
 
@@ -33,29 +40,12 @@ public class Lotto {
      *
      * @return
      */
-    public void lottoOutput(List<List<Integer>> lottoList, int bonus, int money){
-        //복권 당첨 확인
-        HashMap<Integer, Integer> winNumbers = gameConfirm(lottoList,bonus);
-        //복권 당첨 금액 확인
-        Integer totalProfit = totalProfit(winNumbers);
-        //수익율 계산
-        double percent = percentToProfit(money, totalProfit);
-        //UI
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - "+winNumbers.get(3)+"개");
-        System.out.println("4개 일치 (50,000원) - "+winNumbers.get(4)+"개");
-        System.out.println("5개 일치 (1,500,000원) - "+winNumbers.get(5)+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+winNumbers.get(7)+"개");
-        System.out.println("6개 일치 (2,000,000,000원) - "+winNumbers.get(6)+"개");
-        System.out.println("총 수익률은 "+String.format("%.2f",percent)+"%입니다.");
-        System.out.println("총 상금은 "+totalProfit+"원 입니다.");
-    }
-    public double percentToProfit(int inputmoney, int totalprofit){
+
+    public double percentToProfit(double inputmoney, double totalprofit){
         double perscent = totalprofit / inputmoney * 100;
         return perscent;
     }
-    private Integer totalProfit(HashMap<Integer, Integer> winNumbers){
+    public Integer totalProfit(HashMap<Integer, Integer> winNumbers){
         int result=0;
         HashMap<Integer, Integer> winningMoney = getwinningMoney();
         for (int key :winNumbers.keySet()){
@@ -77,9 +67,9 @@ public class Lotto {
     }
 
 
-    public HashMap<Integer, Integer> gameConfirm(List<List<Integer>> lottoList, int bonus){
+    public HashMap<Integer, Integer> gameConfirm(List<Lotto> lottoList, int bonus){
         HashMap<Integer, Integer> winNumbers = getwinnerSetMap();
-        for (List<Integer> lottoNum : lottoList) {
+        for (Lotto lottoNum : lottoList) {
             Integer fixnum = fixNumber(lottoNum);
             if (fixnum==5&&lottoNum.contains(bonus)){
                 winNumbers.put(7,winNumbers.get(7)+1);//2등
@@ -103,7 +93,7 @@ public class Lotto {
         return winNumbers;
     }
 
-    private Integer fixNumber(List<Integer> lottoNum){
+    private Integer fixNumber(Lotto lottoNum){
         int winNum = 0;
         for (int num : numbers){
             if (lottoNum.contains(num)){
@@ -111,6 +101,10 @@ public class Lotto {
             }
         }
         return winNum;
+    }
+
+    private boolean contains(int num) {
+        return getNumbers().contains(num);
     }
 
 
