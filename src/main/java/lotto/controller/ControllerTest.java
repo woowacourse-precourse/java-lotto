@@ -71,4 +71,28 @@ public class ControllerTest {
                     .isEqualTo(RankOfLotto.FIRSTPRIZE.ordinal());
         }
     }
+
+    @Nested
+    class ManageLottoTest {
+        @Test
+        void NumberOfLottoTest1() {
+            int budget = 5000;
+            ManageLotto manageLotto = new ManageLotto(budget);
+            assertThat(manageLotto.getLottoNum()).isEqualTo(5);
+        }
+
+        @Test
+        void NumberOfLottoTest2() {
+            int budget = 100000;
+            ManageLotto manageLotto = new ManageLotto(budget);
+            assertThat(manageLotto.getLottoNum()).isEqualTo(100);
+        }
+
+        @Test
+        void NumberOfLottoTest3() {
+            int budget = 23000;
+            ManageLotto manageLotto = new ManageLotto(budget);
+            assertThat(manageLotto.getLottoNum()).isEqualTo(23);
+        }
+    }
 }
