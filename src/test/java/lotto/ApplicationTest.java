@@ -1,16 +1,36 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+
+    @BeforeEach
+    void setUp() {
+        Arrays.stream(Rank.values())
+                .forEach(rank -> rank.initCount());
+    }
+
+    @Test
+    void 금액은_숫자만_입력하지_않으면_종료() {
+        assertThat(Application.isValidAmount("11aa")).isEqualTo(false);
+    }
+
+    @Test
+    void 올바른_금액을_입력하지_않으면_종료() {
+        assertThat(Application.isValidAmount("1100")).isEqualTo(false);
+    }
 
     @Test
     void 기능_테스트() {
