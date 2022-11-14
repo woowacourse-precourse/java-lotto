@@ -32,4 +32,21 @@ public class Lotto {
         return numbers.stream().sorted().collect(Collectors.toList());
     }
 
+    @Override
+    public String toString() {
+        StringBuilder message = new StringBuilder();
+
+        message.append("[");
+        for (int number : getSortedNumbers()) {
+            message.append(number);
+
+            if (number != numbers.get(numbers.size() - 1)) {
+                message.append(", ");
+            }
+        }
+        message.append("]");
+
+        return message.toString();
+    }
+
 }
