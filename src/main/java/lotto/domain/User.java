@@ -10,7 +10,7 @@ public class User {
     private final LottoManager lottoManager;
     private final int[] statistics = {0, 0, 0, 0, 0};
     private final List<String> ranking = new ArrayList<>(Arrays.asList("FIRST", "SECOND", "THIRD", "FOURTH", "FIFTH"));
-    private int earnings;
+    private float earnings;
 
     public User() {
         lottoManager = new LottoManager();
@@ -46,6 +46,7 @@ public class User {
 
         addEarnings();
         System.out.println(getStatisitcs());
+        System.out.println(getEarningRatio(price));
     }
 
     private int inputPrice() {
@@ -81,7 +82,7 @@ public class User {
         return earning;
     }
 
-    private int getEarnings() {
+    private float getEarnings() {
         return earnings;
     }
 
@@ -93,5 +94,9 @@ public class User {
                 "\n5개 일치 (1,500,000원) - " + statistics[2] + "개" +
                 "\n5개 일치, 보너스 볼 일치 (30,000,000원) - " + statistics[1] + "개" +
                 "\n6개 일치 (2,000,000,000원) - " + statistics[0] + "개";
+    }
+
+    private String getEarningRatio(int price) {
+        return "총 수익률은 " + String.format("%.1f", (getEarnings() / price * 100)) + "%입니다.";
     }
 }
