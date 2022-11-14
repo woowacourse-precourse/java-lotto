@@ -34,7 +34,7 @@
 5. Ranking enum 클래스
    - enum 정의
    - 로또의 결과가 어느 랭킹에 해당하는지 찾는 메소드 (findRanking)
-   - enum의 변수에 대한 get 메소드 (getMatch, getPrize, getBonusMatch)
+   - enum의 변수에 대한 get 메소드 (getMatch, getPrize, getBonusMatch, getDescription)
 5. LottoTest
    - Non-integer를 Input했을 때 IllegalArgumentException을 발생시키는지 확인
 6. ApplicationTest
