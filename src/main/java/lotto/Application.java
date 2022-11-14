@@ -138,5 +138,34 @@ public class Application {
         return winnings;
     }
 
+    public static void printStats(EnumMap<WIN, Integer> winnings, int inputMoney) {
+        long totalMoney = 0L;
+        for (WIN win : winnings.keySet()) {
+            if (win == WIN.WIN_NO)
+                continue;
+            totalMoney += printStatsOne(win, winnings.get(win));
+        }
+        printRateOfReturn(totalMoney, inputMoney);
+    }
+
+    public static Integer printStatsOne(WIN win, Integer k){
+        int sameNumbers = win.getSameNumbers();
+        int earnMoney = win.getMoney();
+        String msg = sameNumbers + "개 일치";
+
+        if (win == WIN.WIN_2ND) {
+            msg += ", 보너스 볼 일치";
+        }
+        msg += " (" + addComma(earnMoney) + "원)-"+ k + "개";
+
+        System.out.println(msg);
+        return earnMoney * k;
+    }
+
+    public static void printRateOfReturn(Long totalMoney, int inputMoney) {
+        float rateOfReturn = 100 * totalMoney / (float) inputMoney;
+        String rate = String.format("%.1f", rateOfReturn);
+        System.out.println("총 수익률은 " + rate + "%입니다.");
+    }
 
 }

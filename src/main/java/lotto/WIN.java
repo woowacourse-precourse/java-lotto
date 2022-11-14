@@ -4,11 +4,11 @@ import java.util.Map;
 
 public enum WIN {
 
-    WIN_1ST(6, false, 2_000_000_000),
-    WIN_2ND(5, true, 30_000_000),
-    WIN_3RD(5, false, 1_500_000),
-    WIN_4TH(4, false, 50_000),
     WIN_5TH(3, false, 5_000),
+    WIN_4TH(4, false, 50_000),
+    WIN_3RD(5, false, 1_500_000),
+    WIN_2ND(5, true, 30_000_000),
+    WIN_1ST(6, false, 2_000_000_000),
     WIN_NO(0, false, 0);
 
     private final int sameNumbers;
@@ -23,6 +23,10 @@ public enum WIN {
 
     public int getMoney() {
         return money;
+    }
+
+    public int getSameNumbers() {
+        return sameNumbers;
     }
 
     public static WIN getWIN(int sameNumbers, boolean sameBonus) {
