@@ -13,6 +13,8 @@ public class Application {
         Render.purchaseLottoResultPrint(purchase.getMyLotto());
 
         Lotto winningNumber = inputWinningNumber();
+        Integer bonus = inputBonusNumber(winningNumber);
+
 
     }
     public static void programStart(){
@@ -24,6 +26,8 @@ public class Application {
     public static Lotto inputWinningNumber(){
         return Convert.winningConvert(Console.readLine());
     }
-
+    public static Integer inputBonusNumber(Lotto winningNumber){
+        return Convert.bonusConvert(Console.readLine(),winningNumber);
+    }
 
 }
