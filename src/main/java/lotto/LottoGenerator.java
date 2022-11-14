@@ -18,7 +18,7 @@ public class LottoGenerator {
     }
 
     private int getAmountOfLottos(int money) {
-        return 0;
+        return money / 1000;
     }
 
     private List<Integer> createRandomNumbers() {
