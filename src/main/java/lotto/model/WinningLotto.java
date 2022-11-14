@@ -2,11 +2,11 @@ package lotto.model;
 
 import lotto.util.constants.LottoConstants;
 
-public class Winning {
+public class WinningLotto {
     private Lotto winningLotto;
     private int bonusNumber;
 
-    public Winning(Lotto winningLotto, int bonusNumber) {
+    public WinningLotto(Lotto winningLotto, int bonusNumber) {
         validate(bonusNumber);
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
