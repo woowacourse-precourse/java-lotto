@@ -7,8 +7,7 @@
    - 당첨 내역 확인하는 로직 메소드 (checkLotto)
    - 로또 번호 오름차순으로 정렬하는 메소드 (sortLotto)
    - 로또 당첨이 5 숫자일 경우 보너스 숫자와 일치하는 확인하는 메소드 (checkBonusLotto)
-   - 중복된 숫자가 있으면 IllegalArgumentException 발생시키는 메소드 (validateUnique)
-   - 숫자의 개수가 6이 아니면 IllegalArgumentException 발생시키는 메소드 (validateSize)
+   - View 클래스의 validator를 활용한 validator 메소드 (validateLotto)
 3. View 클래스: user input/output 클래스
     - 구입 금액 입력 받아서 로또 뽑기 회수 리턴, 예외 상황 시 에러 발생시키는 메소드 (getMoneyInput)
       - 구입 금액이 1000으로 나눠떨어지지 않으면 IllegalArgumentException 발생시키는 메소드 (validateIsDivisible)
@@ -31,3 +30,7 @@
     - 소수점 둘째 자리에서 반올림한 수익률 출력하는 메소드 (printProfitRateMsg)
     - 당첨 내역 출력하는 메소드 (printResult)
 4. Application 클래스: 게임 실행
+5. LottoTest
+   - Non-integer를 Input했을 때 IllegalArgumentException을 발생시키는지 확인
+6. ApplicationTest
+7. GameTest
