@@ -23,6 +23,7 @@ public class Service {
 
 	public void userInputMoney() {
 		String inputmoney = Console.readLine();
+		checkMoney(inputmoney);
 		money = (Integer.parseInt(inputmoney));
 		count = (Integer.parseInt(inputmoney) / Constant.PRICE);
 	}
@@ -106,5 +107,9 @@ public class Service {
 
 	public double yield() {
 		return Math.round((double)totalPrize() / money * 1000) / 10.0;
+	}
+	
+	public void checkMoney(String inputMoney) {
+		exception.checkMissMatch(inputMoney);
 	}
 }
