@@ -1,14 +1,13 @@
 package lotto.service;
 
+import static lotto.utils.Constants.NUMBER_OF_RANKING;
+
 import lotto.domain.Lotto;
 import lotto.domain.Ranking;
 import lotto.domain.WinningNumber;
-
 import java.util.List;
 
 public class WinningService {
-    private static final int NUMBER_OF_RANKING = Ranking.values().length;
-
     public static int[] compareAllLottoWithWinningNumbers(List<Lotto> lottos, WinningNumber winningNumber) {
         int[] rankingCount = new int[NUMBER_OF_RANKING + 1];
 
