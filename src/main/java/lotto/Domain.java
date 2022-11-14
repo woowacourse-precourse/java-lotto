@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Domain {
-    String[] moneyString = {"first", "second", "third", "fourth", "fifth"};
+    String[] Ranking = {"first", "second", "third", "fourth", "fifth"};
 
     void checkWinning(Computer[] computers, EnumMap<Money, Integer> map, Lotto lotto) {
         for (Computer computer : computers) {
@@ -16,7 +16,7 @@ public class Domain {
     }
 
     Money WinningKey(int count) {
-        if (count>=3) return Money.valueOf(moneyString[Math.abs(count-7)]);
+        if (count>=3) return Money.valueOf(Ranking[Math.abs(count-7)]);
         return Money.notThing;
     }
 
