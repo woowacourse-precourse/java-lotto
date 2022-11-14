@@ -1,9 +1,11 @@
 package lotto.domain;
 
 import lotto.ui.Validator;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -30,5 +32,13 @@ public class Lotto {
         }
 
         return Result.getResult(score);
+    }
+
+    public void print() {
+        System.out.println(
+                numbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ", "[", "]"))
+        );
     }
 }
