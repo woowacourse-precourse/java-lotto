@@ -29,9 +29,12 @@ public class GameView {
         Lotto lotto = lottoController.createWinningNumber(inputMessage.inputWinningNumber());
         Bonus bonus = bonusController.createBonusNumber(inputMessage.inputBonusNumber(), lotto);
 
-        // 당첨 통계를 출력한다
+        // 당첨 내역을 계산한다
         RankInfo rankInfo = rankInfoController.createRankInfo();
         rankInfo = rankInfoController.getRankInfo(rankInfo, lotto, userLotto, bonus);
+
+        // 당첨 내역과 수익률을 출력한다.
         outputMessage.printStatistic(rankInfo);
+        outputMessage.printYield(rankInfoController.getYield(rankInfo, money));
     }
 }

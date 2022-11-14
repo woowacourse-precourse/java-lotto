@@ -14,6 +14,8 @@ public class OutputMessage {
     private static final String MATCH_COUNT_WITH_BONUS = "개 일치, 보너스 볼 일치 (";
     private static final String REWARD = "원) - ";
     private static final String NUMBER_OF_MATCHES = "개";
+    private static final String YIELD_START = "총 수익률은 ";
+    private static final String YIELD_END = "%입니다.";
 
     public void printNumberOfPurchase(int purchaseNumber) {
         System.out.println("\n" + purchaseNumber + NUMBER_OF_PURCHASE);
@@ -29,6 +31,10 @@ public class OutputMessage {
             System.out.println(rank.getMatchCount() + setBonusStatement(rank)
                     + setRewardWithComma(rank.getReward()) + REWARD + rankInfo.getMatchNumber(rank) + NUMBER_OF_MATCHES);
         }
+    }
+
+    public void printYield(String yield) {
+        System.out.println(YIELD_START + yield + YIELD_END);
     }
 
     public String setBonusStatement(Rank rank) {
