@@ -22,7 +22,7 @@ class ValidateUserMoneyTest {
         String message = null;
         try {
             if (money % CURRENCY_UNIT > 0) {
-                throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_MONEY.getMessage());
+                throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_CURRENCY.getMessage());
             }
         } catch (IllegalArgumentException e) {
             message = e.getMessage();
@@ -59,7 +59,7 @@ class ValidateUserMoneyTest {
         try {
             IntStream chars = input_money.chars();
             if (chars.anyMatch(c -> (c < '0' || c > '9'))) {
-                throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getMessage());
+                throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_MONEY.getMessage());
             }
         } catch (IllegalArgumentException e) {
             message = e.getMessage();

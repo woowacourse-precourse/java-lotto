@@ -1,10 +1,10 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import domain.Lotto;
+import util.Lotto;
 import java.util.ArrayList;
 import java.util.List;
-import util.ValidateWinningLottoNumber;
+import util.ConvertWinningLottoNumber;
 
 public class InputWinningLottoNumber {
 
@@ -14,8 +14,9 @@ public class InputWinningLottoNumber {
     public static void inputWinningLottoNumber() {
         OutputView.printInputLotto();
         String Lotto = Console.readLine();
-        winningLottoTicket = ValidateWinningLottoNumber.setWinningLottoTicket(Lotto);
+        winningLottoTicket = ConvertWinningLottoNumber.setWinningLottoTicket(Lotto);
         Lotto lotto = new Lotto(winningLottoTicket);
+
     }
 
 

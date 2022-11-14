@@ -4,7 +4,7 @@ import constant.ErrorMessage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValidateWinningLottoNumber {
+public class ConvertWinningLottoNumber {
 
     private static final int MAX_NUMBER = 45;
     private static final int MIN_NUMBER = 1;
@@ -19,9 +19,6 @@ public class ValidateWinningLottoNumber {
             winningLottoTicket.add(Integer.parseInt(number));
         }
 
-        if (winningLottoTicket.size() != TICKET_SIZE) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_SIZE.getMessage());
-        }
         return winningLottoTicket;
     }
 
@@ -30,12 +27,9 @@ public class ValidateWinningLottoNumber {
         try {
             convertSplitedNumber = Integer.parseInt(splitedNumber);
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_WINNING_NOT_NUMBER.getMessage());
         }
 
-        if (convertSplitedNumber < MIN_NUMBER || convertSplitedNumber > MAX_NUMBER) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_OVERRANGE.getMessage());
-        }
     }
 
 

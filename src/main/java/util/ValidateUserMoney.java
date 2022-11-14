@@ -42,18 +42,21 @@ public class ValidateUserMoney {
         if(parseInt==0){
             throw new IllegalArgumentException(ErrorMessage.ERROR_NO_MONEY.getMessage());
         }
+
+
     }
 
     private static void isCorrectMoney(int money){
         if(money % CURRENCY_UNIT>0){
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_MONEY.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_CURRENCY.getMessage());
         }
+
     }
 
     private static void isNumber(String input_money){
         IntStream chars = input_money.chars();
         if(chars.anyMatch(c ->  (c< MIN_NUMBER_CHAR || c> MAX_NUMBER_CHAR))){
-            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_MONEY.getMessage());
         }
     }
 }

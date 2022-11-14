@@ -1,13 +1,11 @@
 package domain;
 
-import constant.ErrorMessage;
-import domain.Lotto;
+import util.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import util.ValidateWinningLottoNumber;
-import view.InputWinningLottoNumber;
+import util.ConvertWinningLottoNumber;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -31,7 +29,7 @@ class LottoTest {
     @DisplayName("로또 번호에 숫자가 아닌게 있으면 예외가 발생한다.")
     @Test
     void createLottoByNotNumber() {
-        assertThatThrownBy(() -> ValidateWinningLottoNumber.validateSplitNumber("1,2,a,3,4,5"))
+        assertThatThrownBy(() -> ConvertWinningLottoNumber.validateSplitNumber("1,2,a,3,4,5"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 

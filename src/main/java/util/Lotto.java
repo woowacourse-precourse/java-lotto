@@ -1,8 +1,7 @@
-package domain;
+package util;
 
 import constant.ErrorMessage;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Lotto {
 
@@ -21,10 +20,10 @@ public class Lotto {
             throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_SIZE.getMessage());
         }
         if (isDuplicated(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_DUPLICATE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_WINNING_DUPLICATE.getMessage());
         }
         if (isOverRange(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_OVERRANGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_WINNING_OVERRANGE.getMessage());
         }
     }
 
