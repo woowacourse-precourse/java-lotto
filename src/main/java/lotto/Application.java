@@ -15,7 +15,7 @@ public class Application {
             UserOutput.viewLottos(manageLotto);
 
             WinningNumber answer = new WinningNumber(UserInput.writeWinningNumber());
-            answer.setBonusNumber(UserInput.writeBonusNumber(answer.getWinningNumber()));
+            answer.setBonusNumber(UserInput.writeBonusNumber(answer.getLottoNumbers()));
 
             UserOutput.viewLottoResult(manageLotto, answer);
         } catch (Exception e) {

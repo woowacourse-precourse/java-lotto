@@ -69,7 +69,7 @@ public class UserInput {
 
     private static void isValidInput(String input) {
         if (!input.matches("[0-9],[0-9],[0-9],[0-9],[0-9],[0-9]")) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자를 쉼표로 구분하여 입력해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자를 쉼표만으로 구분하여 입력해야 합니다.");
         }
     }
 

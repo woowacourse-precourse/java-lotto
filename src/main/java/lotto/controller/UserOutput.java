@@ -23,7 +23,7 @@ public class UserOutput {
         int[] ranks  = {0,0,0,0,0,0};
         for (Lotto newLotto: manageLotto.myLotto) {
             int index = LottoCalculator.rankOfThisLotto
-                    (newLotto.getLottoNumbers(), winningNumber.getWinningNumber(), winningNumber.getBonusNumber());
+                    (newLotto.getLottoNumbers(), winningNumber.getLottoNumbers(), winningNumber.getBonusNumber());
             ranks[index]++;
         }
 
