@@ -7,4 +7,5 @@ public class ErrorMessage {
 
     public static final String UNITS_THOUSAND = "천원 단위로 입력해야 합니다.";
     public static final String NOT_INTEGER = "정수만 입력 가능합니다.";
+    public static final String POSITIVE_NUMBER = "양수만 입력 가능합니다.";
 }
