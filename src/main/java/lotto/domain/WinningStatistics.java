@@ -24,4 +24,19 @@ public class WinningStatistics {
         return numbers.contains(bonusNumber);
     }
 
+    public static Map<WinningRank, Integer> getWinningDetails(LottoGroup lottoGroup, AnswerLotto answerLotto) {
+        Map<WinningRank, Integer> winningDetails = WinningRank.getWinningDetails();
+        
+        for (Lotto lotto : lottoGroup.getLottoGroup()) {
+            int count = compareWithAnswer(lotto, answerLotto);
+            boolean containsBonusNumber = compareWithBonusNumber(lotto, answerLotto, count);
+            WinningRank winningRank = WinningRank.findWinningRank(count, containsBonusNumber);
+            winningDetails.replace(winningRank, winningDetails.get(winningRank) + 1);
+        }
+        
+        return winningDetails;
+    }
+
+
+
 }

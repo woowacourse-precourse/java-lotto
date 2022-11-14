@@ -6,8 +6,8 @@ public class AnswerLotto {
     private final List<Integer> answerLotto;
     private final int bonusNumber;
 
-    public AnswerLotto(List<Integer> winningNumbers, int bonusNumber) {
-        this.answerLotto = winningNumbers;
+    public AnswerLotto(List<Integer> answerLotto, int bonusNumber) {
+        this.answerLotto = answerLotto;
         this.bonusNumber = bonusNumber;
     }
 
