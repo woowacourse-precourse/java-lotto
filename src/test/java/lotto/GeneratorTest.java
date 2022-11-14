@@ -2,20 +2,18 @@ package lotto;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import lotto.domain.Generator;
-import lotto.domain.Lotto;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import lotto.domain.Generator;
+import lotto.domain.Lotto;
 
-//@ExtendWith(MockitoExtension.class)
 public class GeneratorTest {
     @InjectMocks
     private Generator target;

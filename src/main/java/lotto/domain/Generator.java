@@ -2,7 +2,6 @@ package lotto.domain;
 
 import java.util.HashMap;
 import java.util.List;
-import lotto.Constants.NUMBER;
 import lotto.Ranking;
 
 public class Generator {
