@@ -1,9 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 
 public class Host {
 
@@ -12,9 +10,21 @@ public class Host {
     private int winningBonusNumber;
 
     public Host(Lotto winningLotto, int winningBonusNumber) {
+        validate(winningLotto.getNumbers(), winningBonusNumber);
         this.winningLotto = winningLotto;
         this.winningLottoNumbers = winningLotto.getNumbers();
         this.winningBonusNumber = winningBonusNumber;
+    }
+
+    private void validate(List<Integer> lottoNumber, int bonusNumber) {
+        if (lottoNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException(Constants.LOTTO_NUMBERS_DUPLICATE_EXCEPTION);
+        }
+
+        if (bonusNumber < Constants.LOTTO_START_NUMBER
+                || bonusNumber > Constants.LOTTO_END_NUMBER) {
+            throw new IllegalArgumentException(Constants.LOTTO_NUMBERS_RANGE_EXCEPTION);
+        }
     }
 
     public List<Winning> drawLotto(User user) {
