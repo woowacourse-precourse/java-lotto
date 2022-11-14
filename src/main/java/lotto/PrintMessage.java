@@ -13,6 +13,14 @@ public class PrintMessage {
 		System.out.println(count + Constant.BOUGHT_LOTTO_TICKETS);
 	}
 
+	public void bonusInputNumberMessage() {
+		System.out.println(Constant.BONUS_NUMBER_MESSAGE_QUESTION);
+	}
+
+	public void InputNumberMessage() {
+		System.out.println(Constant.NUMBER_MESSAGE_QUESTION);
+	}
+
 	public void printPurchaseLotto(List<List<Integer>> purchaseLotto) {
 		for (List<Integer> onePurchaseLotto : purchaseLotto) {
 			List<Integer> copyPurchaseLotto = new ArrayList<>();
