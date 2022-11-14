@@ -208,4 +208,14 @@ public class Application {
         String printFormat = String.join(",", ticket);
         return openBracket + printFormat + closeBracket;
     }
+
+    static void printTotalRank(Map<Integer, Integer> totalRank) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + totalRank.get(5) + "개");
+        System.out.println("4개 일치 (50,000원) - " + totalRank.get(4) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + totalRank.get(3) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + totalRank.get(2) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + totalRank.get(1) + "개");
+    }
 }
