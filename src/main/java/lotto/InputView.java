@@ -7,6 +7,7 @@ import java.util.List;
 public class InputView {
     private final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private final String WINNING_NUMBERS_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     private ConversionUtility conversionUtility = new ConversionUtility();
 
@@ -23,5 +24,12 @@ public class InputView {
         List<Integer> winningNumbers = conversionUtility.convertStringWinningNumbersToList(inputWinningNumbers);
 
         return winningNumbers;
+    }
+
+    public int inputBonusNumber() {
+        System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
+        int bonusNumber = Integer.parseInt(Console.readLine());
+
+        return bonusNumber;
     }
 }
