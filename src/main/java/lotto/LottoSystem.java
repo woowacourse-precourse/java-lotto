@@ -12,7 +12,7 @@ public class LottoSystem {
             new WinInfo(3, 0, 5000, 5)
     );
 
-    public static final WinInfo noWin = new WinInfo(-1,-1,0,-1);
+    public static final WinInfo noWin = new WinInfo(-1, -1, 0, -1);
 
 
     private List<Integer> winNumbers;
@@ -29,13 +29,14 @@ public class LottoSystem {
         this.bonusNumbers = bonusNumbers;
     }
 
-    private int getMatchedCnt(List<Integer> target){
+    private int getMatchedCnt(List<Integer> target) {
         int result = 0;
-        for(int i=0;i<target.size();i++){
-            if(target.get(i) == this.winNumbers.get(i)){
+        for (int i = 0; i < target.size(); i++) {
+            if (target.get(i) == this.winNumbers.get(i)) {
                 result++;
             }
         }
         return result;
     }
+
 }
