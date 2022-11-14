@@ -96,6 +96,25 @@ class WinningNumberMakerTest {
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
+    @DisplayName("[오류 테스트] 중복되는 당첨 번호가 있음")
+    @Test
+    void duplicateNumberExist() {
+        //입력값 세팅
+        String[] numbers = {"1", "4", "7", "20", "20", "25"};
+        ByteArrayInputStream byteInput = new ByteArrayInputStream(String.join(",", numbers).getBytes());
+        System.setIn(byteInput);
+        //given
+        WinningNumberMaker winningNumberMaker = new WinningNumberMaker();
+        winningNumberMaker.getWinningNumberInput();
+        winningNumberMaker.divideByComma();
+        //when
+        //then
+        assertThatThrownBy(() -> winningNumberMaker.validateInputSplitByComma())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.DUPLICATE_EXIST.message)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
     @DisplayName("입력값으로 당첨번호 6개 저장")
     @Test
     void make() {
