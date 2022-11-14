@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.type.LottoCondition.PRICE_UNIT;
+import static lotto.enums.LottoCondition.PRICE_UNIT;
 
 public class Input {
     private static final int REMINDER_ZERO = 0;

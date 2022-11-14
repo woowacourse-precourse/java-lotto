@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static lotto.type.LottoCondition.*;
+import static lotto.enums.LottoCondition.*;
 
 public class Lotto {
     private final List<Integer> numbers;

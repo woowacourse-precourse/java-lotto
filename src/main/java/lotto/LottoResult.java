@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.type.Rank;
+import lotto.enums.Rank;
 
 import java.util.Arrays;
 import java.util.EnumMap;

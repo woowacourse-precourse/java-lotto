@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-import static lotto.type.LottoCondition.*;
+import static lotto.enums.LottoCondition.*;
 import static lotto.utils.Input.*;
 
 public class GameManager {

@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.type.Rank;
+import lotto.enums.Rank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 
-import static lotto.type.Rank.RANK_FOUR;
-import static lotto.type.Rank.RANK_TWO;
+import static lotto.enums.Rank.RANK_FOUR;
+import static lotto.enums.Rank.RANK_TWO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoGameTest {

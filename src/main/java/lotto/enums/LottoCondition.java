@@ -1,4 +1,4 @@
-package lotto.type;
+package lotto.enums;
 
 public enum LottoCondition {
     PRICE_UNIT(1000),

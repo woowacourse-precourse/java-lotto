@@ -2,13 +2,13 @@ package lotto.utils;
 
 import lotto.Lotto;
 import lotto.LottoResult;
-import lotto.type.Rank;
+import lotto.enums.Rank;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
-import static lotto.type.Rank.RANK_NONE;
-import static lotto.type.Rank.RANK_TWO;
+import static lotto.enums.Rank.RANK_NONE;
+import static lotto.enums.Rank.RANK_TWO;
 
 public class View {
     private static final String REQUEST_PRICE_MESSAGE = "구입금액을 입력해 주세요.";
