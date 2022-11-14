@@ -166,7 +166,7 @@ class LottoTest {
 
     @DisplayName("당첨 번호가 1과 45사이의 값이면 예외가 발생하지 않는다")
     @Test
-    void createNumberByWithinRange() throws NoSuchMethodException {
+    void createNumberByWithinRange() {
         List<Integer> winningNumbers = List.of(1, 7, 10, 24, 37, 45);
         int bonusNumber = 12;
 
@@ -254,24 +254,22 @@ class LottoTest {
         assertThat(bonusNumber).isEqualTo(result);
     }
 
-    @DisplayName("로또 번호에 특정 번호가 포함되어 있으면 true를 반환한다")
+    @DisplayName("당첨 번호에 특정 번호가 포함되어 있으면 true를 반환한다")
     @Test
     void isContainNumber() {
-        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
-        Lotto lotto = new Lotto(lottoNumber);
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 43), 45);
 
-        boolean contain = lotto.isContain(10);
+        boolean contain = winningNumber.isContainedWinningNumber(10);
 
         assertThat(contain).isEqualTo(true);
     }
 
-    @DisplayName("로또 번호에 특정 번호가 포함되어 있지 않으면 false를 반환한다")
+    @DisplayName("당첨 번호에 특정 번호가 포함되어 있지 않으면 false를 반환한다")
     @Test
     void isNotContainNumber() {
-        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
-        Lotto lotto = new Lotto(lottoNumber);
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 43), 45);
 
-        boolean contain = lotto.isContain(11);
+        boolean contain = winningNumber.isContainedWinningNumber(11);
 
         assertThat(contain).isEqualTo(false);
     }
@@ -280,13 +278,12 @@ class LottoTest {
     @Test
     void getThreeHitCount() {
         List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
-        List<Integer> winningNumber = List.of(3, 10, 12, 20, 33, 45);
         int bonusNumber = 2;
-        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
+        WinningNumber winningNumber = new WinningNumber(List.of(3, 10, 12, 20, 33, 45), bonusNumber);
         Lotto lotto = new Lotto(lottoNumber);
         int result = 3;
 
-        long hitCount = drawingMachine.getHitCount(lotto);
+        long hitCount = lotto.getHitCount(winningNumber);
 
         assertThat(hitCount).isEqualTo(result);
     }
@@ -295,12 +292,10 @@ class LottoTest {
     @Test
     void isHitBonusNumber() {
         List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
-        List<Integer> winningNumber = List.of(3, 10, 12, 20, 33, 45);
-        int bonusNumber = 43;
-        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
+        WinningNumber winningNumber = new WinningNumber(List.of(3, 10, 12, 20, 33, 45), 43);
         Lotto lotto = new Lotto(lottoNumber);
 
-        boolean hitBonusNumber = drawingMachine.isHitBonusNumber(lotto);
+        boolean hitBonusNumber = lotto.isHitBonusNumber(winningNumber);
 
         assertThat(hitBonusNumber).isEqualTo(true);
     }
@@ -308,13 +303,10 @@ class LottoTest {
     @DisplayName("로또 번호에 보너스 번호가 포함되어 있지 않으면 false를 반환한다")
     @Test
     void isNotHitBonusNumber() {
-        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
-        List<Integer> winningNumber = List.of(3, 10, 12, 20, 33, 45);
-        int bonusNumber = 41;
-        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
-        Lotto lotto = new Lotto(lottoNumber);
+        WinningNumber winningNumber = new WinningNumber(List.of(3, 10, 12, 20, 33, 45), 41);
+        Lotto lotto = new Lotto(List.of(1, 10, 12, 24, 33, 43));
 
-        boolean hitBonusNumber = drawingMachine.isHitBonusNumber(lotto);
+        boolean hitBonusNumber = lotto.isHitBonusNumber(winningNumber);
 
         assertThat(hitBonusNumber).isEqualTo(false);
     }
@@ -322,14 +314,11 @@ class LottoTest {
     @DisplayName("5개 번호와 1개의 보너스 번호가 일치하면 2등을 반환한다")
     @Test
     void isSecondPlace() {
-        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
-        List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
-        int bonusNumber = 43;
-        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
-        Lotto lotto = new Lotto(lottoNumber);
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
+        Lotto lotto = new Lotto(List.of(1, 10, 12, 24, 33, 43));
         LottoRank result = LottoRank.SECOND_PLACE;
 
-        LottoRank rank = drawingMachine.getRank(lotto);
+        LottoRank rank = lotto.getRank(winningNumber);
 
         assertThat(rank).isEqualTo(result);
     }
@@ -337,14 +326,11 @@ class LottoTest {
     @DisplayName("5개 번호가 일치하면 3등을 반환한다")
     @Test
     void isThirdPlace() {
-        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
-        List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
-        int bonusNumber = 42;
-        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
-        Lotto lotto = new Lotto(lottoNumber);
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 42);
+        Lotto lotto = new Lotto(List.of(1, 10, 12, 24, 33, 43));
         LottoRank result = LottoRank.THIRD_PLACE;
 
-        LottoRank rank = drawingMachine.getRank(lotto);
+        LottoRank rank = lotto.getRank(winningNumber);
 
         assertThat(rank).isEqualTo(result);
     }
@@ -352,14 +338,11 @@ class LottoTest {
     @DisplayName("4개 번호가 일치하면 4등을 반환한다")
     @Test
     void isFourthPlace() {
-        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 32, 43);
-        List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
-        int bonusNumber = 43;
-        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
-        Lotto lotto = new Lotto(lottoNumber);
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
+        Lotto lotto = new Lotto(List.of(1, 10, 12, 24, 32, 43));
         LottoRank result = LottoRank.FOURTH_PLACE;
 
-        LottoRank rank = drawingMachine.getRank(lotto);
+        LottoRank rank = lotto.getRank(winningNumber);
 
         assertThat(rank).isEqualTo(result);
     }
@@ -367,14 +350,11 @@ class LottoTest {
     @DisplayName("2개 번호가 일치하면 낫싱을 반환한다")
     @Test
     void isNothing() {
-        List<Integer> lottoNumber = List.of(1, 10, 13, 25, 32, 43);
-        List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
-        int bonusNumber = 43;
-        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
-        Lotto lotto = new Lotto(lottoNumber);
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
+        Lotto lotto = new Lotto(List.of(1, 10, 13, 25, 32, 43));
         LottoRank result = LottoRank.NOTHING;
 
-        LottoRank rank = drawingMachine.getRank(lotto);
+        LottoRank rank = lotto.getRank(winningNumber);
 
         assertThat(rank).isEqualTo(result);
     }
@@ -382,13 +362,11 @@ class LottoTest {
     @DisplayName("2개의 로또가 들어가면 2개의 당첨 결과가 나온다")
     @Test
     void getRankByLottos() {
-        Lotto lotto1 = new Lotto(List.of(1, 10, 13, 25, 32, 43));
-        Lotto lotto2 = new Lotto(List.of(2, 11, 13, 25, 33, 45));
-        List<Integer> winningNumbers = List.of(1, 10, 12, 24, 33, 45);
-        int bonusNumber = 43;
-        WinningNumber winningNumber = new WinningNumber(winningNumbers, bonusNumber);
+        List<Lotto> lottos = List.of(new Lotto(List.of(1, 10, 13, 25, 32, 43)), new Lotto(List.of(2, 11, 13, 25, 33, 45)));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
+        Customer customer = new Customer();
 
-        List<LottoRank> ranks = winningNumber.getRanks(List.of(lotto1, lotto2));
+        List<LottoRank> ranks = customer.getRanks(lottos, winningNumber);
 
         assertThat(ranks.size()).isEqualTo(2);
     }
