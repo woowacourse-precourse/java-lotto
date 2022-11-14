@@ -19,6 +19,22 @@ class LottoCountingTest {
         return new Lotto(winningNumber);
     }
 
+    // 위에서부터 6개 일치, 5개 일치 및 보너스번호 일치, 5개 일치, 4개 일치, 3개 일치, 2개 일치, 1개 일치, 0개 일치 2개 순으로 나열했다.
+    // 1등,2등,3등,4등,5등, 당첨없음, 당첨없음 순이다.
+    Lotto[] lottoPaperInput = new Lotto[]{
+            new Lotto(List.of(1, 2, 3, 4, 5, 6)), // 6
+            new Lotto(List.of(1, 2, 4, 5, 6, 8)), // 5
+            new Lotto(List.of(1, 2, 3, 4, 5, 7)), // 5
+            new Lotto(List.of(1, 2, 3, 4, 9, 19)), // 4
+            new Lotto(List.of(4, 5, 6, 7, 8, 9)), // 3
+            new Lotto(List.of(1, 5, 10, 20, 30, 40)), // 2
+            new Lotto(List.of(1, 10, 20, 30, 40, 45)), // 1
+            new Lotto(List.of(10, 20, 30, 40, 42, 44)), // 0
+            new Lotto(List.of(20, 30, 40, 41, 42, 43)), // 0
+    };
+
+    int bonusNumber = 8;
+
     @Nested
     class CompareLottoAndCountTest{
 
@@ -31,14 +47,14 @@ class LottoCountingTest {
 
         @Test
         void compareLottoAndCount_case1(){
-            List<Integer> oneSetOfNumber = List.of(1,2,3,4,5,6);
+            List<Integer> oneSetOfNumber = lottoPaperInput[0].getNumbers();
             int output = 6;
             getCaseTest(oneSetOfNumber,output);
         }
 
         @Test
         void compareLottoAndCount_case2(){
-            List<Integer> oneSetOfNumber = List.of(1,2,3,4,5,7);
+            List<Integer> oneSetOfNumber = lottoPaperInput[1].getNumbers();
             int output = 5;
             getCaseTest(oneSetOfNumber,output);
         }
@@ -46,34 +62,34 @@ class LottoCountingTest {
         @Test
         void compareLottoAndCount_case3(){
 
-            List<Integer> oneSetOfNumber = List.of(1,2,3,4,7,8);
+            List<Integer> oneSetOfNumber = lottoPaperInput[3].getNumbers();
             int output = 4;
             getCaseTest(oneSetOfNumber,output);
         }
 
         @Test
         void compareLottoAndCount_case4(){
-            List<Integer> oneSetOfNumber = List.of(4,5,6,7,8,9);
+            List<Integer> oneSetOfNumber = lottoPaperInput[4].getNumbers();
             int output = 3;
             getCaseTest(oneSetOfNumber,output);
         }
 
         @Test
         void compareLottoAndCount_case5() {
-            List<Integer> oneSetOfNumber = List.of(5, 6, 7, 8, 9, 10);
+            List<Integer> oneSetOfNumber = lottoPaperInput[5].getNumbers();
             int output = 2;
             getCaseTest(oneSetOfNumber,output);
         }
         @Test
         void compareLottoAndCount_case6(){
-            List<Integer> oneSetOfNumber = List.of(1,10,20,30,40,45);
+            List<Integer> oneSetOfNumber = lottoPaperInput[6].getNumbers();
             int output = 1;
             getCaseTest(oneSetOfNumber,output);
         }
 
         @Test
         void compareLottoAndCount_case7(){
-            List<Integer> oneSetOfNumber = List.of(40,41,42,43,44,45);
+            List<Integer> oneSetOfNumber = lottoPaperInput[7].getNumbers();
             int output = 0;
             getCaseTest(oneSetOfNumber,output);
         }
@@ -81,17 +97,6 @@ class LottoCountingTest {
 
     @Nested
     class CountedLottoTest{
-
-        Lotto[] lottoPaperInput = new Lotto[]{
-                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 7)),
-                new Lotto(List.of(1, 2, 4, 5, 7, 8)),
-                new Lotto(List.of(4, 5, 6, 7, 8, 9)),
-                new Lotto(List.of(1, 5, 10, 20, 30, 40)),
-                new Lotto(List.of(1, 10, 20, 30, 40, 45)),
-                new Lotto(List.of(10, 20, 30, 40, 42, 44)),
-                new Lotto(List.of(20, 30, 40, 41, 42, 43))
-        };
 
         Lotto[] getLottoPaperInput(int size){
             Lotto[] lottoPapers = new Lotto[size];
@@ -190,4 +195,6 @@ class LottoCountingTest {
             testDataIsAllCorrect(size);
         }
     }
+
+    
 }
