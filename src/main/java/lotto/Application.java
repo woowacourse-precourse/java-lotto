@@ -15,10 +15,10 @@ public class Application {
             PrintSortedLottos(lottos);
             List<Integer> winNumbers = LottoUI.receiveWinNumbers();
             Lotto winLotto = new Lotto(winNumbers);
-            Integer bonusNumber = LottoUI.receiveBonusNumber();
-            winLotto.setBonusNumber(bonusNumber);
+            Integer bonusNumberVal = LottoUI.receiveBonusNumber();
+            BonusNumber bonusNumber = new BonusNumber(bonusNumberVal, winLotto);
 
-            Integer moneyEarned = matchLottos(winLotto, lottos);
+            Integer moneyEarned = matchLottos(winLotto, lottos, bonusNumber);
             double benefit = Lotto.calculateBenefit(money, moneyEarned);
             LottoUI.printBenefit(benefit);
         } catch (IllegalArgumentException e) {
@@ -33,17 +33,17 @@ public class Application {
         }
     }
 
-    private static Integer matchLottos(Lotto winLotto, List<Lotto> lottos) {
+    private static Integer matchLottos(Lotto winLotto, List<Lotto> lottos, BonusNumber bonusNumber) {
         LottoUI.WinStatisticTitle();
-        Integer matchThree = winLotto.matchWithList(lottos, THREE);
+        Integer matchThree = winLotto.matchWithList(lottos, bonusNumber, THREE);
         LottoUI.printWinHistory(THREE, LottoEnum.MATCH_THREE_PRIZE.getValue(), matchThree);
-        Integer matchFour = winLotto.matchWithList(lottos, FOUR);
+        Integer matchFour = winLotto.matchWithList(lottos, bonusNumber, FOUR);
         LottoUI.printWinHistory(FOUR, LottoEnum.MATCH_FOUR_PRIZE.getValue(), matchFour);
-        Integer matchFive = winLotto.matchWithList(lottos, FIVE);
+        Integer matchFive = winLotto.matchWithList(lottos, bonusNumber, FIVE);
         LottoUI.printWinHistory(FIVE, LottoEnum.MATCH_FIVE_PRIZE.getValue(), matchFive);
-        Integer matchFiveIncludeBonus = winLotto.matchWihListIncludeBonus(lottos, FIVE);
+        Integer matchFiveIncludeBonus = winLotto.matchWihListIncludeBonus(lottos, bonusNumber, FIVE);
         LottoUI.printWinHistoryWithBonus(FIVE, LottoEnum.MATCH_FIVE_WITH_BONUS_PRIZE.getValue(), matchFiveIncludeBonus);
-        Integer matchSix = winLotto.matchWithList(lottos, SIX);
+        Integer matchSix = winLotto.matchWithList(lottos, bonusNumber, SIX);
         LottoUI.printWinHistory(SIX, LottoEnum.MATCH_SIX_PRIZE.getValue(), matchSix);
 
         return earnByLottos(matchThree, matchFour, matchFive, matchFiveIncludeBonus, matchSix);

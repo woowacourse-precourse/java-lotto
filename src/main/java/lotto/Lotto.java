@@ -6,7 +6,6 @@ import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private Integer bonusNumber = null;
 
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
@@ -15,20 +14,20 @@ public class Lotto {
     }
 
 
-    public Integer matchWithList(List<Lotto> lottos, Integer matchAmount) {
+    public Integer matchWithList(List<Lotto> lottos, BonusNumber bonusNumber, Integer matchAmount) {
         Integer matchingLottos = 0;
         for (Lotto lotto : lottos) {
-            if (Objects.equals(this.match(lotto), matchAmount) && !bonusMatch(lotto)) {
+            if (Objects.equals(this.match(lotto), matchAmount) && !bonusNumber.bonusMatch(lotto)) {
                 matchingLottos++;
             }
         }
         return matchingLottos;
     }
 
-    public Integer matchWihListIncludeBonus(List<Lotto> lottos, Integer matchAmount) {
+    public Integer matchWihListIncludeBonus(List<Lotto> lottos, BonusNumber bonusNumber, Integer matchAmount) {
         Integer matchingLottos = 0;
         for (Lotto lotto : lottos) {
-            if (Objects.equals(this.match(lotto), matchAmount) && bonusMatch(lotto)) {
+            if (Objects.equals(this.match(lotto), matchAmount) && bonusNumber.bonusMatch(lotto)) {
                 matchingLottos++;
             }
         }
@@ -48,16 +47,6 @@ public class Lotto {
         return matchAmount;
     }
 
-    public boolean bonusMatch(Lotto lotto) {
-        checkBonusNumberSet();
-        return lotto.getNumbers().contains(this.bonusNumber);
-    }
-
-    public void setBonusNumber(Integer bonusNumber) {
-        validateBonusNumberDuplicate(bonusNumber);
-        this.bonusNumber = bonusNumber;
-    }
-
     public List<Integer> getNumbers() {
         return numbers;
     }
@@ -73,20 +62,6 @@ public class Lotto {
         if (numbers.size() != numbers.stream().distinct().count()) {
             System.out.println("[ERROR]중복되는 번호는 입력할 수 없습니다.");
             throw new IllegalArgumentException("[ERROR]중복되는 번호는 입력할 수 없습니다.");
-        }
-    }
-
-    private void validateBonusNumberDuplicate(Integer bonusNumber) {
-        if (this.numbers.contains(bonusNumber)) {
-            System.out.println("[ERROR]보너스 번호가 기존 당첨 번호와 중복됩니다.");
-            throw new IllegalArgumentException("[ERROR]보너스 번호가 기존 당첨 번호와 중복됩니다.");
-        }
-    }
-
-    private void checkBonusNumberSet() {
-        if (this.bonusNumber == null) {
-            System.out.println("[ERROR]보너스 번호가 입력되어 있지 않습니다.");
-            throw new IllegalArgumentException("[ERROR]보너스 번호가 입력되어 있지 않습니다.");
         }
     }
 
