@@ -16,12 +16,19 @@ public class Statistics {
         List<Integer> winNumbers = winLotto.getWinNumbers().stream().limit(IntEnum.LOTTO_SIZE.getValue()).collect(Collectors.toList());
         int bonus = winLotto.getWinNumbers().get(IntEnum.LOTTO_SIZE.getValue());
         for (Lotto tmpLotto : randomLottos) {
-            int countMatch = 0;
             List<Integer> tmpNumber = tmpLotto.getNumbers();
-            for (int winNumber : winNumbers) if (tmpNumber.contains(winNumber)) countMatch++;
+            int countMatch = countCalculate(winNumbers, tmpNumber);
             if (countMatch == 5) checkHasBonus(bonus, countMatch, tmpNumber);
             if (countMatch != 5) rank.set(countMatch, rank.get(countMatch) + 1);
         }
+    }
+
+    private int countCalculate(List<Integer> winNumbers, List<Integer> tmpNumber) {
+        int countMatch = 0;
+        for (int winNumber : winNumbers) {
+            if (tmpNumber.contains(winNumber)) countMatch++;
+        }
+        return countMatch;
     }
 
     private void checkHasBonus(int bonus, int count, List<Integer> tmpNumber) {
