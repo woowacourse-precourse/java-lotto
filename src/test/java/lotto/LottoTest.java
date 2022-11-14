@@ -140,5 +140,19 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호로 중복되지 않는 숫자 6개를 입력 받고, 보너스 번호 1개를 입력 받는다.")
+    @Test
+    void inputWinningNumbers() {
+        // given
+        String winningNumbers = "1,2,3,4,5,6";
+        String bonusNumber = "7";
+
+        // when
+        Game game = new Game();
+
+        // then
+        assertThat(game.inputNumber(winningNumbers, bonusNumber).getWinningNumber().getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(game.inputNumber(winningNumbers, bonusNumber).getBonusNumber()).isEqualTo(7);
+    }
 
 }
