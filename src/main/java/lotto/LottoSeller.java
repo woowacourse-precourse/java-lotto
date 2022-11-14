@@ -14,17 +14,25 @@ public class LottoSeller {
 
     public void getPayAmount() {
         System.out.println(MESSAGE_INPUT_PAY_AMOUNT);
-        this.payAmount = Integer.parseInt(Console.readLine());
 
-        if (payAmount > 0 && payAmount % 1000 == 0) {
+        String inputMoney = Console.readLine();
 
+        validate(inputMoney);
+
+        this.payAmount = Integer.parseInt(inputMoney);
+    }
+
+    public void validate(String inputMoney){
+        if(!inputMoney.equals("[0-9]+")){
+            throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
         }
         if (payAmount % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
         }
     }
 
-    public int countTicket() {
+    public int getNumberOfTickets() {
+        this.numberOfTickets = payAmount / 1000;
         return payAmount / 1000;
     }
 

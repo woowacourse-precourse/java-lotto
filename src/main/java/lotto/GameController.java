@@ -11,10 +11,10 @@ public class GameController {
     int bonusNumber;
 
     public void buyLotto() {
-        LottoSeller lottoPurchase = new LottoSeller();
+        LottoSeller orderLotto = new LottoSeller();
 
-        lottoPurchase.getPayAmount();
-        lottoPurchase.printTicket();
+        orderLotto.getPayAmount();
+        orderLotto.printTicket();
     }
 
     public void drawLotto() {
