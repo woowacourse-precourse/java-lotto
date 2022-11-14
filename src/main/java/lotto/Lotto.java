@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.List;
-import static lotto.Application.throwException;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,12 +12,24 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6){
-            String message = "[ERROR] 로또 번호는 총 6개의 숫자이여야 합니다.";
-            throwException(message);
+            String message = "로또 번호는 총 6개의 숫자이여야 합니다.";
+            throwLottoException(message);
         }
+        validateDuplicate(numbers);
     }
 
     public List<Integer> getNumbers(){
         return this.numbers;
+    }
+
+    public void validateDuplicate(List<Integer> numbers){
+        String msg = "로또 번호 사이에는 중복이 없어야 합니다.";
+        for(int elem : numbers) {
+            if(numbers.indexOf(elem) != numbers.lastIndexOf(elem)) throwLottoException(msg);
+        }
+    }
+
+    public void throwLottoException(String message){
+        throw new IllegalArgumentException("[ERROR] " + message);
     }
 }
