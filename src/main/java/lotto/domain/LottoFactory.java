@@ -1,21 +1,18 @@
 package lotto.domain;
 
+import lotto.domain.model.Lotto;
+import lotto.domain.model.LottoNum;
+
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class LottoFactory {
-  public List<List<Integer>> makeLottos(int lottoNum) {
-    List<List<Integer>> lottos = new ArrayList<>();
+  public List<Lotto> makeLottos(LottoNum lottoNum) {
+    List<Lotto> lottos = new ArrayList<>();
     LottoGenerator generator = new LottoGenerator();
-    for (int i = 0; i < lottoNum; i++) {
+    for (int i = 0; i < lottoNum.getLottoNum(); i++) {
       lottos.add(generator.generate());
-      sortLotto(lottos.get(i));
     }
     return lottos;
-  }
-
-  private void sortLotto(List<Integer> lotto) {
-    lotto.sort(Comparator.naturalOrder());
   }
 }
