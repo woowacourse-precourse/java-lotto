@@ -1,7 +1,8 @@
-package lotto;
+package lotto.ui;
 
-import lotto.ui.ErrorMessages;
 import java.util.Set;
+import lotto.Constants;
+import lotto.LottoNumber;
 import java.util.HashSet;
 import java.util.List;
 
@@ -42,16 +43,22 @@ public class Validator {
         }
     }
 
-    public void throwIfNotUnique(List<Number> numbers) {
-        Set<Number> numberSet = new HashSet<>(numbers);
+    public void throwIfNotUnique(List<Integer> numbers) {
+        Set<Integer> numberSet = new HashSet<>(numbers);
         if (numberSet.size() != numbers.size()) {
             throwExceptionWithErrorMessage(ErrorMessages.INPUT_IS_NOT_UNIQUE.getMessage());
         }
     }
 
-    public void throwIfNotSix(List<Number> numbers) {
+    public void throwIfNotSix(List<Integer> numbers) {
         if (numbers.size() != Constants.LOTTO_NUMBER_COUNT.getNumber()) {
             throwExceptionWithErrorMessage(ErrorMessages.INPUT_IS_NOT_SIX.getMessage());
+        }
+    }
+
+    public void throwIfAlreadyHasNumber(List<Integer> numbers, LottoNumber number) {
+        if (numbers.contains(number.getNumber())) {
+            throwExceptionWithErrorMessage(ErrorMessages.INPUT_IS_NOT_UNIQUE.getMessage());
         }
     }
 }

@@ -1,6 +1,9 @@
 package lotto;
 
+import lotto.ui.Validator;
+
 public abstract class Number {
+
     private int number;
     protected Validator validator = new Validator();
 
