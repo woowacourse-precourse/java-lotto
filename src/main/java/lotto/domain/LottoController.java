@@ -1,4 +1,4 @@
-package lotto.doamin;
+package lotto.domain;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -6,9 +6,14 @@ public class LottoController {
     public void start(){
         //구입 금액 입력
         int cost = costInput();
+
+        //구매 가능 개수 계산
         int count = cost2count(cost);
-        // 금액에 따라 개수가 정해지는 로또 뭉치 생성
+
+        //주어진 개수의 로또 뭉치 생성
         LottoBundle lb = new LottoBundle(count);
+        //생성된 로또 뭉치 출력
+        //System.out.println(lb);
 
         //당첨번호 입력
         //Lotto win_lotto = lottoInput();
@@ -31,9 +36,11 @@ public class LottoController {
             throw new IllegalArgumentException();
         }
     }
-    private int cost2count(int cost){
-        if(cost%1000!=0 || cost<0)
+    public int cost2count(int cost){
+        int count = cost/1000;
+        if(cost%1000!=0 || count<=0)
             throw new IllegalArgumentException();
-        return cost/1000;
+        System.out.println(count + "개를 구매했습니다.");
+        return count;
     }
 }

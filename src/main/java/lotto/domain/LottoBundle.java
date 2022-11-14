@@ -1,5 +1,6 @@
-package lotto.doamin;
+package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
 import java.util.ArrayList;
@@ -17,7 +18,14 @@ public class LottoBundle {
 
     private List<Lotto> createLottoList(){
         List<Lotto> lottoList1 = new ArrayList<>();
-        while(this.count-->0){}
+        while(this.count-->0){
+            //로또 한개 생성 후 로또 뭉치에 추가
+            lottoList1.add( createOneLotto());
+        }
         return lottoList1;
+    }
+    private Lotto createOneLotto(){
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new Lotto(numbers);
     }
 }

@@ -1,4 +1,4 @@
-package lotto.doamin;
+package lotto.domain;
 
 public class LottoStatistic {
 }
