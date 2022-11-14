@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum Rank {
     NOTHING(0, 0),
     THREE(3, 5_000),
@@ -22,5 +24,12 @@ public enum Rank {
 
     public int prize() {
         return prize;
+    }
+
+    public static Rank find(int matchNumber) {
+        return Arrays.stream(values())
+                .filter(rank -> rank.matchNumber == matchNumber)
+                .findAny()
+                .orElse(NOTHING);
     }
 }
