@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class User {
@@ -27,6 +28,12 @@ public class User {
     public void inputWinningNumbers(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumbers = Console.readLine();
+
+        try {
+            validateWinningNumbers(winningNumbers);
+        }catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e);
+        }
 
         this.winningNumbers= new Lotto(convertToList(winningNumbers)).getNumbers();
     }
@@ -69,6 +76,23 @@ public class User {
             Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요!");
+        }
+    }
+
+    public void validateWinningNumbers(String winningNumbers){
+        if(winningNumbers.chars().filter(c -> c == ',').count() != 5){
+            throw new IllegalArgumentException("[ERROR] 콤마를 기준으로 6자리를 입력해주세요!");
+        }
+
+        String [] numbers = winningNumbers.split(",");
+        List<String> duplicateCheck = new ArrayList<>();
+
+        for(String number : numbers){
+            try {Integer.parseInt(number);
+            }catch (NumberFormatException e){throw new IllegalArgumentException("[ERROR] 콤마를 기준으로 숫자만 입력해주세요!");}
+            if(duplicateCheck.contains(number)){throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력했습니다!");}
+            if(Integer.parseInt(number)<1 || Integer.parseInt(number)>45){throw new IllegalArgumentException("[ERROR] 1~45범위로 숫자를 입력해주세요!");}
+            duplicateCheck.add(number);
         }
     }
 
