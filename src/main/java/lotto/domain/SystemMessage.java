@@ -9,4 +9,6 @@ public class SystemMessage {
     public static final String IS_ONLY_NUMBER_ERROR_MESSAGE = "숫자를 입력하여야 합니다.";
     public static final String IS_MONEY_ERROR_MESSAGE = "구입 금액은 숫자여야 합니다.";
     public static final String LOTTO_ONLY_NUMBER_ERROR_MESSAGE = "당첨 번호는 숫자여야 합니다.";
+    public static final String YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
+
 }

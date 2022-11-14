@@ -1,5 +1,6 @@
 package lotto.controlloer;
 
+import static lotto.domain.SystemMessage.YIELD_MESSAGE;
 import static lotto.view.InputView.*;
 import static lotto.view.outputView.printLottoGroup;
 
@@ -15,11 +16,13 @@ public class Controller {
 
     public boolean run(){
         try {
-            LottoGroup lottoGroup = buyLotto();
+            Integer money = inputMoney();
+            LottoGroup lottoGroup = buyLotto(money);
             AnswerLotto answerLotto = getAnswerLotto();
             Map<WinningRank, Integer> winningDetails = WinningStatistics.getWinningDetails(
                     lottoGroup, answerLotto);
             printWinningInformation(winningDetails);
+            calculateStatistic(winningDetails,money);
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;
@@ -27,11 +30,10 @@ public class Controller {
         return true;
     }
 
-    private LottoGroup buyLotto(){
+    private LottoGroup buyLotto(Integer money){
         NumberGenerator lottogenerator = new NumberGenerator();
-        Integer NumberOfLotto = inputMoney();
-        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(getNumberOfLotto(NumberOfLotto)));
-        printLottoGroup(lottoGroup, NumberOfLotto);
+        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(getNumberOfLotto(money)));
+        printLottoGroup(lottoGroup, money);
         return lottoGroup;
     }
 
@@ -48,4 +50,13 @@ public class Controller {
     private void printWinningInformation(Map<WinningRank, Integer> winningDetails) {
         outputView.printWinningDetails(winningDetails);
      }
+
+     private void calculateStatistic(Map<WinningRank, Integer> winningDetails, Integer money){
+         long winningAmount = WinningStatistics.getWinningAmount(winningDetails);
+         printYield(WinningStatistics.getLottoYield(winningAmount, money));
+     }
+
+    public static void printYield(double lottoYield) {
+        System.out.printf(YIELD_MESSAGE, lottoYield);
+    }
 }
