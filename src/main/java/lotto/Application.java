@@ -11,13 +11,15 @@ public class Application {
         Collector collector = new Collector();
         Calculator calculator = new Calculator();
 
-        int money = purchaseManager.askAmountOfMoney();
+        try {
+            int money = purchaseManager.askAmountOfMoney();
+            List<Lotto> lottoList = lottoGenerator.createLottos(money);
+            List<Integer> results = collector.collectResults(lottoList);
 
-        List<Lotto> lottoList = lottoGenerator.createLottos(money);
-
-        List<Integer> results = collector.collectResults(lottoList);
-
-        double profitRate = calculator.getProfitRate(results);
-        System.out.printf("총 수익률은 %g%%입니다.", profitRate);
+            double profitRate = calculator.getProfitRate(results);
+            System.out.printf("총 수익률은 %g%%입니다.", profitRate);
+        } catch(IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
 }
