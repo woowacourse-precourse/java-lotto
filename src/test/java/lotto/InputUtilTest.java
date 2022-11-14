@@ -79,7 +79,31 @@ public class InputUtilTest {
 		expect.add(6);
 		assertThat(InputUtil.inputWinnigNumber()).isEqualTo(expect);
 	}
+	
 
+
+	@DisplayName("보너스번호 입력 - 숫자가 아닌 당첨번호 입력")
+	@Test
+	void inputBonusNumbersNotNumber() {
+		SetSystemInput("A");
+		assertThatThrownBy(() -> InputUtil.inputBonusNumber())
+		.isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@DisplayName("보너스번호 입력 - 범위가 아닌 당첨번호 입력")
+	@Test
+	void inputBonusNumbersNotRange() {
+		SetSystemInput("70");
+		assertThatThrownBy(() -> InputUtil.inputBonusNumber())
+		.isInstanceOf(IllegalArgumentException.class);
+	}
+	
+	@DisplayName("보너스번호 입력 - 올바른 당첨번호 입력")
+	@Test
+	void inputBonusNumbersIsRight() {
+		SetSystemInput("1");
+		assertThat(InputUtil.inputBonusNumber()).isEqualTo(1);
+	}
 	
 	public void SetSystemInput(String input) {
 		OutputStream out = new ByteArrayOutputStream();
