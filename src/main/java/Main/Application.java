@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import Print.Error_Message;
 import Print.Message;
-import camp.nextstep.edu.missionutils.Console;
+import User.User;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
@@ -14,17 +13,13 @@ public class Application {
     public static void main(String[] args) {
         //BuyLotto butlotto = new BuyLotto();
     	
-    	Message.INPUT_MONEY.print();
-    	String s = Console.readLine();
-    	try {
-    		change(s);
-    	}
-    	catch(IllegalArgumentException e) {
-    		System.out.println(e.getMessage());
+    	User user = new User();
+    	
+    	int n = user.input_money();
+    	
+    	if(n == 0) {
     		return;
     	}
-    	
-    	int n = Integer.parseInt(s) / 1000;
     	
     	List<Lotto> arr = new ArrayList<>();
     	
@@ -39,31 +34,13 @@ public class Application {
     		System.out.println(numbers);
     	}
     	
-    	Message.INPUT_WINNER_NUMBER.print();
-    	String[] win_number_string = Console.readLine().split(",");
+    	List<Integer> win_number = user.winning_number();
     	
-    	int[] win_number = new int[win_number_string.length];
-    	
-    	if(win_number.length != 6) {
-    		throw new IllegalArgumentException(Error_Message.INPUT_NUMBER_SIX.print_error());
+    	if(win_number.size() == 0) {
+    		return;
     	}
     	
-    	boolean[] check = new boolean[46];
-    	for(int i = 0; i < win_number_string.length; i++) {
-    		win_number[i] = Integer.parseInt(win_number_string[i]);
-    		if(win_number[i] < 1 || win_number[i] > 45) {
-    			throw new IllegalArgumentException(Error_Message.INPUT_RANGE.print_error());
-    		}
-    		
-    		if(check[win_number[i]]) {
-    			throw new IllegalArgumentException(Error_Message.INPUT_NUMBER_DISTINCT.print_error());
-    		}
-    		
-    		check[win_number[i]] = true;
-    	}
-    	
-    	Message.INPUT_BONUS_NUMBER.print();
-    	int bonus_number = Integer.parseInt(Console.readLine());
+    	int bonus_number = user.winning_number_bonus();
     	
     	Message.WINNING_STATES.print();
     	
@@ -95,24 +72,10 @@ public class Application {
     	Message.PROFIT.print_profit(profit);
     }
     
-    public static void change(String s) {
-    	int n = 0;
-    	try {
-    		n = Integer.parseInt(s);
-    	}
-    	catch(NumberFormatException e) {
-    		throw new IllegalArgumentException(Error_Message.INPUT_NUMBER.print_error());
-    	}
-    	
-    	if(n / 1000 == 0) {
-    		throw new IllegalArgumentException(Error_Message.INPUT_DIVIDE_TEN.print_error());
-    	}
-    }
-    
-    public static int result(List<Integer> arr, int[] win_number) {
+    public static int result(List<Integer> arr, List<Integer> win_number) {
     	int number_count = 0;
-    	for(int i = 0; i < win_number.length; i++) {
-			if(arr.contains(win_number[i])) {
+    	for(int i = 0; i < win_number.size(); i++) {
+			if(arr.contains(win_number.get(i))) {
 				number_count++;
 			}
 		}
