@@ -25,8 +25,8 @@ public class PrintMachine {
         System.out.println(WinningMessage.BONUS_MATCH.getMessage() + countResult[7] + WinningMessage.VOLUME.getMessage());
         System.out.println(WinningMessage.SIXTH_MATCH.getMessage() + countResult[6] + WinningMessage.VOLUME.getMessage());
     }
-    public static void yieldOfLotto(double value){
-        System.out.println("총 수익률은 " + (float)value + "%입니다.");
+    public static void yieldOfLotto(String value){
+        System.out.println("총 수익률은 " + value + "%입니다.");
     }
     public static void printLottoPapers(List<LottoPaper> lottoPapers) {
         for (LottoPaper lottoPaper : lottoPapers) {

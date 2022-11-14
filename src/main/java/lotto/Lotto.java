@@ -19,7 +19,7 @@ public class Lotto {
     }
     public void getResult(List<LottoPaper> lottoPapers, long money, int bonusNumber){
         long [] result = new long[8];
-        double yield;
+        String yield;
         GetRateOfReturn getRateOfReturn = new GetRateOfReturn();
         for (LottoPaper lottoPaper : lottoPapers) {
             result[lottoPaper.getResult(numbers, bonusNumber)]++;
