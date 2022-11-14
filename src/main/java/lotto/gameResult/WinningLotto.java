@@ -4,44 +4,69 @@ import java.util.List;
 import java.util.HashSet;
 
 public class WinningLotto {
-    public static int fifthNumber;
-    public static int fourthNumber;
-    public static int thirdNumber;
-    public static int secondNumber;
-    public static int firstNumber;
+    public static int fifthClassNumber;
+    public static int fourthClassNumber;
+    public static int thirdClassNumber;
+    public static int secondClassNumber;
+    public static int firstClassNumber;
 
-    public static void threeNumberFind(List<List<Integer>> lottoBundle, List<Integer> winningNumber) {
+    public static void fifthClassFind(List<List<Integer>> lottoBundle, List<Integer> winningNumber) {
         for(int i=0; i<lottoBundle.size(); i++) {
-            HashSet<Integer> check = new HashSet<>();
-            check.addAll(lottoBundle.get(i));
+            HashSet<Integer> check = new HashSet<>(lottoBundle.get(i));
             check.addAll(winningNumber);
             if (check.size() == 9) {
-                fifthNumber += 1;
+                fifthClassNumber += 1;
             }
         }
     }
     
-    public static void fourNumberFind(List<List<Integer>> lottoBundle, List<Integer> winningNumber) {
+    public static void fourthClassFind(List<List<Integer>> lottoBundle, List<Integer> winningNumber) {
         for(int i=0; i<lottoBundle.size(); i++) {
-            HashSet<Integer> check = new HashSet<>();
-            check.addAll(lottoBundle.get(i));
+            HashSet<Integer> check = new HashSet<>(lottoBundle.get(i));
             check.addAll(winningNumber);
             if (check.size() == 8) {
-                fourthNumber += 1;
+                fourthClassNumber += 1;
             }
         }
     }
     
-    public static void fiveNumberFind(List<List<Integer>> lottoBundle, List<Integer> winningNumber) {
+    public static void thirdClassFind(List<List<Integer>> lottoBundle, List<Integer> winningNumber) {
         for(int i=0; i<lottoBundle.size(); i++) {
-            HashSet<Integer> check = new HashSet<>();
-            check.addAll(lottoBundle.get(i));
+            HashSet<Integer> check = new HashSet<>(lottoBundle.get(i));
             check.addAll(winningNumber);
             if (check.size() == 7) {
-                thirdNumber += 1;
+                thirdClassNumber += 1;
             }
         }
     }
 
-    
+    public static void secondClassFind(List<List<Integer>> lottoBundle, List<Integer> winningNumber, int bonusNumber) {
+        for(int i=0; i<lottoBundle.size(); i++) {
+            HashSet<Integer> myNumber = new HashSet<>(lottoBundle.get(i));
+            HashSet<Integer> winNumber = new HashSet<>(winningNumber);
+            myNumber.removeAll(winNumber);
+            if (myNumber.size()==1 && myNumber.contains(bonusNumber)) {
+                secondClassNumber += 1;
+            }
+        }
+        thirdClassNumber -= secondClassNumber;
+    }
+
+    public static void firstClassFind(List<List<Integer>> lottoBundle, List<Integer> winningNumber) {
+        for(int i=0; i<lottoBundle.size(); i++) {
+            HashSet<Integer> check = new HashSet<>(lottoBundle.get(i));
+            check.addAll(winningNumber);
+            if (check.size() == 6) {
+                firstClassNumber += 1;
+            }
+        }
+    }
+
+    public static void winningDetails(List<List<Integer>> lottoBundle, List<Integer> winningNumber, int bonusNumber) {
+        WinningLotto.fifthClassFind(lottoBundle, winningNumber);
+        WinningLotto.fourthClassFind(lottoBundle, winningNumber);
+        WinningLotto.thirdClassFind(lottoBundle, winningNumber);
+        WinningLotto.secondClassFind(lottoBundle, winningNumber, bonusNumber);
+        WinningLotto.firstClassFind(lottoBundle, winningNumber);
+    }
 }
