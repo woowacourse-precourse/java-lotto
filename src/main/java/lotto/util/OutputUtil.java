@@ -1,6 +1,7 @@
 package lotto.util;
 
 import lotto.domain.Lotto;
+import lotto.domain.User;
 import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
 
@@ -17,12 +18,12 @@ public class OutputUtil {
         System.out.println(Message.NOT_THOUSAND_UNIT_INPUT_ERROR);
     }
 
-    public static void printUserLottoCount(int lottoCount) {
-        System.out.println("" + lottoCount + "개를 구매했습니다.");
+    public static void printUserLottoCount(User user) {
+        System.out.println("" + user.getLottoCount() + "개를 구매했습니다.");
     }
 
-    public static void printUserLottos(List<Lotto> lottos) {
-        for (Lotto lotto : lottos) {
+    public static void printUserLottos(User user) {
+        for (Lotto lotto : user.getLottos()) {
             System.out.println(lotto);
         }
     }
