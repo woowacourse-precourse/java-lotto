@@ -2,7 +2,6 @@ package lotto.view.output;
 
 import java.text.NumberFormat;
 import java.util.List;
-import java.util.Map;
 import java.util.StringJoiner;
 import lotto.domain.lotto_numbers.Lotto;
 import lotto.domain.winning.Ranking;
@@ -36,22 +35,25 @@ public class LottoFormat {
 
     static String finalResults(FinalResultsDto finalResultsDto) {
         StringJoiner stringJoiner = new StringJoiner("\n");
+        String rateOfReturnFormat = String.format("%,.1f", finalResultsDto.rateOfReturn());
+
         stringJoiner
                 .add("당첨 통계")
                 .add("---")
-                .add(resultsFormat(finalResultsDto.results()))
-                .add("총 수익률은 " + finalResultsDto.rateOfReturn() + "%입니다.");
+                .add(resultsFormat(finalResultsDto))
+                .add("총 수익률은 " + rateOfReturnFormat + "%입니다.");
 
         return stringJoiner.toString();
     }
 
-    private static String resultsFormat(Map<Ranking, Integer> results) {
+    private static String resultsFormat(FinalResultsDto finalResultsDto) {
         StringBuilder stringBuilder = new StringBuilder();
-        results.forEach(
-                (key, value) -> stringBuilder
-                        .append(rankingFormat(key)).append(" - ")
-                        .append(value).append("개\n")
-        );
+
+        for (Ranking ranking : Ranking.values()) {
+            stringBuilder
+                    .append(rankingFormat(ranking)).append(" - ")
+                    .append(finalResultsDto.count(ranking)).append("개\n");
+        }
 
         return stringBuilder.toString();
     }

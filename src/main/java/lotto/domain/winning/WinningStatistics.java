@@ -13,8 +13,7 @@ public class WinningStatistics {
     public double rateOfReturn() {
         int totalPayment = lottoTickets.totalPayment();
         long totalWinnings = lottoResults.totalWinnings();
-        double rate = (double) totalWinnings / totalPayment * 100;
 
-        return (double) Math.round(rate * 10) / 10;
+        return (double) totalWinnings / totalPayment * 100;
     }
 }

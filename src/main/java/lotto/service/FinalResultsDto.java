@@ -15,11 +15,11 @@ public class FinalResultsDto {
         this.rateOfReturn = winningStatistics.rateOfReturn();
     }
 
-    public Map<Ranking, Integer> results() {
-        return results;
-    }
-
     public double rateOfReturn() {
         return rateOfReturn;
+    }
+
+    public int count(Ranking ranking) {
+        return results.get(ranking);
     }
 }
