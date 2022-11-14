@@ -15,7 +15,7 @@ class MoneyTest {
 			Money money = new Money(inputMoney);
 		});
 
-		String expectedMessage = "[ERROR] 구매금액은 숫자만 입력해 주시기 바랍니다.";
+		String expectedMessage = "[ERROR] 숫자만 입력해 주시기 바랍니다.";
 		assertThat(expectedMessage).isEqualTo(exception.getMessage());
 	}
 
@@ -27,7 +27,7 @@ class MoneyTest {
 			Money money = new Money(inputMoney);
 		});
 
-		String expectedMessage = "[ERROR] 구매금액은 숫자만 입력해 주시기 바랍니다.";
+		String expectedMessage = "[ERROR] 숫자만 입력해 주시기 바랍니다.";
 		assertThat(expectedMessage).isEqualTo(exception.getMessage());
 	}
 
@@ -39,19 +39,19 @@ class MoneyTest {
 			Money money = new Money(inputMoney);
 		});
 
-		String expectedMessage = "[ERROR] 구매금액의 첫째자리는 1이상으로 입력해 주시기 바랍니다.";
+		String expectedMessage = "[ERROR] 두자리 이상의 숫자중 첫째자리는 1이상으로 입력해 주시기 바랍니다.";
 		assertThat(expectedMessage).isEqualTo(exception.getMessage());
 	}
 
 	@Test
 	@DisplayName("구매금액이 0인 경우 예외를 발생시킨다.")
 	void validateFirstDigitZeroTest2() {
-		String inputMoney = "09000";
+		String inputMoney = "0";
 		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
 			Money money = new Money(inputMoney);
 		});
 
-		String expectedMessage = "[ERROR] 구매금액의 첫째자리는 1이상으로 입력해 주시기 바랍니다.";
+		String expectedMessage = "[ERROR] 구매금액은 1.000이상으로 입력해 주시기 바랍니다.";
 		assertThat(expectedMessage).isEqualTo(exception.getMessage());
 	}
 
@@ -80,7 +80,7 @@ class MoneyTest {
 	}
 
 	@Test
-	@DisplayName("구매금액이 2,000,000,000초과일때 예외를 발생시킨다.")
+	@DisplayName("구매금액이 최대 입력 가능 금액 초과일때 예외를 발생시킨다.")
 	void validateOverMaxNumberTest() {
 		String inputMoney = "3000000000";
 		Exception exception = assertThrows(IllegalArgumentException.class, () -> {

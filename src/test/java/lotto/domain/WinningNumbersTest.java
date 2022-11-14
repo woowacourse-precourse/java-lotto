@@ -80,7 +80,7 @@ class WinningNumbersTest {
 			WinningNumbers winningNumbers = new WinningNumbers(inputWinnerNumber);
 		});
 
-		String expectedMessage = "[ERROR] 당첨번호는 1~45의 숫자로만 입력해 주시기 바랍니다.";
+		String expectedMessage = "[ERROR] 1-45 사이의 숫자만 입력해 주시기 바랍니다.";
 		assertThat(expectedMessage).isEqualTo(exception.getMessage());
 	}
 
@@ -92,7 +92,7 @@ class WinningNumbersTest {
 			WinningNumbers winningNumbers = new WinningNumbers(inputWinnerNumber);
 		});
 
-		String expectedMessage = "[ERROR] 두자리 숫자인 당첨번호의 첫번째 자리는 1이상 입력해 주시기 바랍니다.";
+		String expectedMessage = "[ERROR] 두자리 이상의 숫자중 첫째자리는 1이상으로 입력해 주시기 바랍니다.";
 		assertThat(expectedMessage).isEqualTo(exception.getMessage());
 	}
 
