@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class BonusNumber {
     private static final int BONUS_NUMBER_SIZE = 1;
@@ -35,10 +36,15 @@ public class BonusNumber {
     }
 
     private static void validateDuplicateWinning(List<Integer> bonus, Lotto winning) {
-        if (winning.toString()
-                .contains(bonus.toString())) {
+        if (winning.get()
+                .stream()
+                .anyMatch(number -> Objects.equals(bonus.get(0), number))){
             throw new IllegalArgumentException("[ERROR] Must enter a number that does not overlap with the winning number.");
         }
+    }
+
+    public List<Integer> get() {
+        return bonus;
     }
 
     @Override
