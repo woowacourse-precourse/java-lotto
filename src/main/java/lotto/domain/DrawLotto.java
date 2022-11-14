@@ -30,7 +30,7 @@ public class DrawLotto {
         }
         return false;
     }
-    public Ranking getRank(Lotto lotto) {
+    private Ranking getRank(Lotto lotto) {
         int match = checkLotto(lotto);
         boolean bonusMatch = checkBonus(lotto);
         return  Arrays.stream(Ranking.values())
@@ -38,6 +38,15 @@ public class DrawLotto {
                 .filter(l -> l.getBonusMatch()==(bonusMatch))
                 .findFirst()
                 .get();
+    }
+    public Map<Ranking, Integer> checkListOfLottos() {
+        Map<Ranking, Integer> comparison = setupComparison();
+        Ranking rank;
+        for (Lotto lotto : lottoList) {
+            rank = getRank(lotto);
+            comparison.put(rank, comparison.get(rank) + 1);
+        }
+        return comparison;
     }
     private Map<Ranking, Integer> setupComparison() {
         Map<Ranking, Integer> comparison = new HashMap<Ranking, Integer>();
