@@ -38,6 +38,24 @@ public class WinningDecision {
         return cnt;
     }
 
+    private void increasePrizeCount(int matchingCount, List<Integer> myNumbers) {
+        if (matchingCount == 3) {
+            winningPrizes.merge(WinningResult.MATCH_THREE.getPrize(), 1, Integer::sum);
+        }
+        if (matchingCount == 4) {
+            winningPrizes.merge(WinningResult.MATCH_FOUR.getPrize(), 1, Integer::sum);
+        }
+        if (matchingCount == 5 && !hasBonus(myNumbers)) {
+            winningPrizes.merge(WinningResult.MATCH_FIVE.getPrize(), 1, Integer::sum);
+        }
+        if (matchingCount == 5 && hasBonus(myNumbers)) {
+            winningPrizes.merge(WinningResult.MATCH_BONUS.getPrize(), 1, Integer::sum);
+        }
+        if (matchingCount == 6) {
+            winningPrizes.merge(WinningResult.MATCH_SIX.getPrize(), 1, Integer::sum);
+        }
+    }
+
     private boolean hasBonus(List<Integer> myNumbers) {
         return myNumbers.contains(bonus);
     }
