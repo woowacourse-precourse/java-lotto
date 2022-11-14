@@ -9,7 +9,7 @@ import java.util.List;
 public class Pick {
 
   private final int count;
-  private List<List<Integer>> pick_member = new ArrayList<>();
+  static List<List<Integer>> pick_member = new ArrayList<>();
 
   public Pick(int count) {
     this.count = count;
