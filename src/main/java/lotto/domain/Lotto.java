@@ -19,10 +19,6 @@ public class Lotto {
         this.numbers = Numbers.sortAscending(numbers);
     }
 
-    public static Lotto of(List<Integer> numbers) {
-        return new Lotto(numbers);
-    }
-
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException();
@@ -35,15 +31,19 @@ public class Lotto {
         }
     }
 
+    private boolean containsDuplicatedNumbers(List<Integer> numbers) {
+        HashSet<Integer> uniqueNumbers = new HashSet<>(numbers);
+
+        return uniqueNumbers.size() != LOTTO_SIZE;
+    }
+
     private boolean isNumbersOutOfRange(List<Integer> numbers) {
         return numbers.stream()
                 .anyMatch(number -> number < MIN_NUMBER || number > MAX_NUMBER);
     }
 
-    private boolean containsDuplicatedNumbers(List<Integer> numbers) {
-        HashSet<Integer> uniqueNumbers = new HashSet<>(numbers);
-
-        return uniqueNumbers.size() != LOTTO_SIZE;
+    public static Lotto of(List<Integer> numbers) {
+        return new Lotto(numbers);
     }
 
     public static Lotto creatRandom() {

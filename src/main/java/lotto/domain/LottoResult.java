@@ -31,12 +31,12 @@ public enum LottoResult {
         return getResultByMatchingCount(matchingCount);
     }
 
-    private static boolean isSecondOrThirdPlace(int matchingCount) {
-        return matchingCount == SECOND_PLACE.getMatchingCount();
-    }
-
     private static boolean isLastPlace(int matchingCount) {
         return matchingCount < FIFTH_PLACE.getMatchingCount();
+    }
+
+    private static boolean isSecondOrThirdPlace(int matchingCount) {
+        return matchingCount == SECOND_PLACE.getMatchingCount();
     }
 
     private static LottoResult getResultByMatchingCount(int matchingCount) {

@@ -62,6 +62,19 @@ public class Lottos {
         return (double) winningAmount / money * PERCENTAGE_CONVERTER;
     }
 
+    private int getWinningAmount(Lotto winningLotto, int bonusNumber) {
+        int winningAmount = NO_AMOUNT;
+        for (Lotto lotto : lottos) {
+            LottoResult lottoResult = lotto.getResult(winningLotto, bonusNumber);
+            winningAmount += lottoResult.getAmount();
+        }
+        return winningAmount;
+    }
+
+    private int getMoney() {
+        return LOTTO_PRICE * lottos.size();
+    }
+
     public Map<LottoResult, Integer> getWinningCounts(Lotto winningLotto, int bonusNumber) {
         HashMap<LottoResult, Integer> winningCounts = getEmptyWinningCounts();
         for (Lotto lotto : lottos) {
@@ -78,19 +91,6 @@ public class Lottos {
             emptyWinningCounts.put(lottoResult, DEFAULT_COUNT);
         }
         return emptyWinningCounts;
-    }
-
-    private int getMoney() {
-        return LOTTO_PRICE * lottos.size();
-    }
-
-    private int getWinningAmount(Lotto winningLotto, int bonusNumber) {
-        int winningAmount = NO_AMOUNT;
-        for (Lotto lotto : lottos) {
-            LottoResult lottoResult = lotto.getResult(winningLotto, bonusNumber);
-            winningAmount += lottoResult.getAmount();
-        }
-        return winningAmount;
     }
 
     @Override
