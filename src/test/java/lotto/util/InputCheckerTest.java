@@ -58,6 +58,12 @@ class InputCheckerTest {
     void isNumeric2(){
         assertThat(inputChecker.isNumeric("10")).isTrue();
     }
+    @DisplayName("입력받은 보너스 번호가 당첨번호와 중복되면 예외처리가 발생하는지 확인")
+    @Test
+    void isNotDuplication(){
+        assertThatThrownBy(()->inputChecker.isNotDuplication(1, List.of(1, 2, 3, 4, 5, 6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
     @DisplayName("입력받은 당첨 번호가 정수가 아닌 경우 예외처리가 발생하는지 확인")
     @Test
     void checkInputWinningLottoNumbersIsNumeric1(){
