@@ -6,4 +6,8 @@ public class Money {
     public Money(String money) {
         this.money = money;
     }
+
+    private boolean isNotNumeric(String money) {
+        return !money.chars().allMatch(Character::isDigit);
+    }
 }
