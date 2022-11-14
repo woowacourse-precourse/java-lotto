@@ -83,19 +83,21 @@ public class LotteryMachine {
         }
 
         for(Integer number : winningNumbers) {
-            if(number < LottoConstant.START_NUMBER.getValue() || LottoConstant.END_NUMBER.getValue() < number) {
-                throw new IllegalArgumentException("[ERROR] 숫자 범위를 벗어납니다");
-            }
+            outOfRange(number);
         }
     }
 
     private void validateBonus() {
-        if(bonus < LottoConstant.START_NUMBER.getValue() || LottoConstant.END_NUMBER.getValue() < bonus) {
-            throw new IllegalArgumentException("[ERROR] 숫자 범위를 벗어납니다");
-        }
+        outOfRange(bonus);
 
         if(winningLottery.getNumbers().contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 중복된 값이 존재합니다");
+        }
+    }
+
+    private void outOfRange(int value) {
+        if(value < LottoConstant.START_NUMBER.getValue() || LottoConstant.END_NUMBER.getValue() < value) {
+            throw new IllegalArgumentException("[ERROR] 숫자 범위를 벗어납니다");
         }
     }
 }

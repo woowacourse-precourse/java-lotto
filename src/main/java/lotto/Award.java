@@ -28,10 +28,9 @@ public class Award {
 
     public void compileStatistics(List<Lotto> myLotteries) {
         Winning winning;
-        Lotto winningLottery = lotteryMachine.getWinningLottery();
 
         for(Lotto lotto : myLotteries) {
-            int compare = lotto.compare(winningLottery);
+            int compare = lotto.compare(lotteryMachine.getWinningLottery());
 
             if(compare < LottoConstant.WINNING_STANDARD.getValue()) {
                 continue;
