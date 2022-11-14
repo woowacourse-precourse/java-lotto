@@ -53,5 +53,15 @@ class LottoTest {
 		assertThat(2).isEqualTo(service.prize.get(30000000));
 
 	}
-	
+
+	@Test
+	void 총_당첨금_계산() {
+		Service service = new Service();
+		service.setPrize();
+		service.checkRank(5, 1);//2등 2번 저장
+		service.checkRank(5, 1);
+
+		assertThat(60000000).isEqualTo(service.totalPrize());
+
+	}
 }
