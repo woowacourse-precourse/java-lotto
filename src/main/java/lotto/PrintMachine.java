@@ -1,8 +1,8 @@
 package lotto;
 
-import java.util.Map;
+import java.util.List;
 
-public class PrintMessenger {
+public class PrintMachine {
     public static void askPriceToBuy(){
         System.out.println("구입금액을 입력해 주세요.");
     }
@@ -27,5 +27,10 @@ public class PrintMessenger {
     }
     public static void yieldOfLotto(double value){
         System.out.println("총 수익률은 " + value + "%입니다.");
+    }
+    public static void printLottoPapers(List<LottoPaper> lottoPapers) {
+        for (LottoPaper lottoPaper : lottoPapers) {
+            System.out.println(lottoPaper.lottoNumber);
+        }
     }
 }

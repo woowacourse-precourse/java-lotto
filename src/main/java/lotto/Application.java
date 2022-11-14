@@ -12,10 +12,10 @@ public class Application {
         GetBonusNumber bonusNumber = new GetBonusNumber();
         lottoStore.insertMoney();
         lottoStore.getLottoPaper();
-        PrintMessenger.askWinningNumber();
+        PrintMachine.askWinningNumber();
         List<Integer> winningNumber= createWinningNumber.makeWinningNumber(Console.readLine());
         Lotto lotto = new Lotto(winningNumber);
-        PrintMessenger.askBonusNumber();
+        PrintMachine.askBonusNumber();
         bonusNumber.getBonusNumber(winningNumber, Console.readLine());
         System.out.println(bonusNumber.bonus);
         lotto.getResult(lottoStore.lottoPapers, lottoStore.validMoney, bonusNumber.bonus);

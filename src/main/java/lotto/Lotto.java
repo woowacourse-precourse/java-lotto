@@ -24,8 +24,8 @@ public class Lotto {
         for (LottoPaper lottoPaper : lottoPapers) {
             result[lottoPaper.getResult(numbers, bonusNumber)]++;
         }
-        PrintMessenger.winningResult(result);
+        PrintMachine.winningResult(result);
         yield = getRateOfReturn.calculateRate(result, money);
-        PrintMessenger.yieldOfLotto(yield);
+        PrintMachine.yieldOfLotto(yield);
     }
 }
