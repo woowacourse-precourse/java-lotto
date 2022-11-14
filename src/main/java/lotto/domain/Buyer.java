@@ -9,7 +9,7 @@ import static lotto.domain.Lotto.*;
 public class Buyer {
     private final List<Lotto> lottos;
 
-    public Buyer(String won) {
+    public Buyer(int won) {
         int numberOfLottos = calculateNumberOfLottos(won);
         List<Lotto> lottos = new ArrayList<>();
         for (int count = 0; count < numberOfLottos; count++) {
@@ -19,10 +19,9 @@ public class Buyer {
         this.lottos = lottos;
     }
 
-    private int calculateNumberOfLottos(String won) {
-        int wonParseToInt = Integer.parseInt(won);
-        validateIsUnderLottoPrice(wonParseToInt);
-        int wonRoundDownLottoPriceUnits = roundDownLottoPriceUnits(wonParseToInt);
+    private int calculateNumberOfLottos(int won) {
+        validateIsUnderLottoPrice(won);
+        int wonRoundDownLottoPriceUnits = roundDownLottoPriceUnits(won);
         return wonRoundDownLottoPriceUnits / LOTTO_PRICE;
     }
 
