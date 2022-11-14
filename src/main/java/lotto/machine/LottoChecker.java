@@ -27,12 +27,12 @@ public class LottoChecker {
     }
 
     private void initResult() {
-        this.result.put(Prize.FIRST, 0);
-        this.result.put(Prize.SECOND, 0);
-        this.result.put(Prize.THIRD, 0);
-        this.result.put(Prize.FOURTH, 0);
-        this.result.put(Prize.FIFTH, 0);
-        this.result.put(Prize.NONE, 0);
+        this.result.put(Prize.FIRST, NONE);
+        this.result.put(Prize.SECOND, NONE);
+        this.result.put(Prize.THIRD, NONE);
+        this.result.put(Prize.FOURTH, NONE);
+        this.result.put(Prize.FIFTH, NONE);
+        this.result.put(Prize.NONE, NONE);
     }
 
     public Map<Prize, Integer> showResult() {
