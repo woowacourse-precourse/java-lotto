@@ -12,10 +12,6 @@ public class LottoManager {
         lottoGenerator = new LottoGenerator();
     }
 
-    public int inputPrice() {
-        return Integer.parseInt(Console.readLine());
-    }
-
     public List<Lotto> createLottos(int count) {
         Lotto lotto;
         List<Integer> lottoNumbers;
