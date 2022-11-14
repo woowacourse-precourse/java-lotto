@@ -53,7 +53,7 @@ public class LottoController {
     }
 
     private void printLottoResult(List<WinResultStatus> winResults) {
-        lottoService.createLottoResult(winResults);
+        outputView.printLottoResult(lottoService.createLottoResult(winResults));
     }
 
     private static void printLogInfo(IllegalArgumentException exception) {

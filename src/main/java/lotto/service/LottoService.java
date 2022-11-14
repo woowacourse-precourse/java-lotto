@@ -54,7 +54,7 @@ public class LottoService {
     }
 
     public List<Object> createLottoResult(List<WinResultStatus> winResults) {
-        return List.of(calculateEarningsRate(winResults), createStatistics(winResults));
+        return List.of(createStatistics(winResults), calculateEarningsRate(winResults));
     }
 
     private double calculateEarningsRate(List<WinResultStatus> winResults) {
@@ -68,11 +68,11 @@ public class LottoService {
     }
 
     private Map<WinResultStatus, Integer> createStatistics(List<WinResultStatus> winResults) {
-        Map<WinResultStatus, Integer> statisticsCount = new HashMap<>();
+        Map<WinResultStatus, Integer> statisticsCounts = new HashMap<>();
         for (WinResultStatus winResult : winResults) {
-            statisticsCount.put(winResult, statisticsCount.getOrDefault(winResult, ZERO) + ONE);
+            statisticsCounts.put(winResult, statisticsCounts.getOrDefault(winResult, ZERO) + ONE);
         }
-        return statisticsCount;
+        return statisticsCounts;
     }
 
     private long calculatePrizeMoney(List<WinResultStatus> winResults) {

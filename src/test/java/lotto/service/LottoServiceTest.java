@@ -70,8 +70,8 @@ class LottoServiceTest {
 
         // when
         List<Object> lottoResult = lottoService.createLottoResult(winResults);
-        double earningsRate = (double) lottoResult.get(0);
-        Map<WinResultStatus, Integer> statisticsCount = (Map<WinResultStatus, Integer>) lottoResult.get(1);
+        double earningsRate = (double) lottoResult.get(1);
+        Map<WinResultStatus, Integer> statisticsCount = (Map<WinResultStatus, Integer>) lottoResult.get(0);
         System.out.println(earningsRate);
         System.out.println(statisticsCount);
 
