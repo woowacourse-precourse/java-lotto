@@ -16,6 +16,9 @@ public class LottoTickets {
             lottoTickets.add(lotto);
         }
     }
+    public int length(){
+        return lottoTickets.size();
+    }
 
     public List<Lotto> getLottoTickets(){
         return Collections.unmodifiableList(lottoTickets);
