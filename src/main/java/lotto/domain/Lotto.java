@@ -11,7 +11,7 @@ public class Lotto {
         numbers.forEach(this::rangeCheck);
         isDuplicate(numbers);
         Collections.sort(numbers);
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -38,9 +38,12 @@ public class Lotto {
         return Math.toIntExact(count);
     }
 
+    public boolean hasBonusNumber(int bonusNumber){
+        return numbers.contains(bonusNumber);
+    }
+
     public void printLotto(){
         System.out.printf("[%d, %d, %d, %d, %d, %d]%n",numbers.get(0),numbers.get(1),numbers.get(2),numbers.get(3),numbers.get(4),numbers.get(5));
     }
 
-    // TODO: 추가 기능 구현
 }

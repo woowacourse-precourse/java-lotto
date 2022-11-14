@@ -14,7 +14,7 @@ public class Player {
     }
 
     public Player(int money){
-        this.lottos = buyLottos(howManyLotto(money));
+        this.lottos = new ArrayList<>(buyLottos(howManyLotto(money)));
         this.money = money;
     }
 
@@ -29,7 +29,8 @@ public class Player {
 
         List<Lotto> sampleLottos = new ArrayList<>();
         for (int i = 0; i < moneyCount; i++) {
-            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            List<Integer> randomNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Lotto lotto = new Lotto(randomNumbers);
             sampleLottos.add(lotto);
         }
         return sampleLottos;
