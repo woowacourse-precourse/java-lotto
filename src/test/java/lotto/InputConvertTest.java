@@ -79,4 +79,32 @@ public class InputConvertTest {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThat(out.toString()).isEqualTo("[ERROR] 아무것도 입력되지 않았습니다.");
     }
+    @DisplayName("oneNumber에 아무런 입력이 없어 에러가 발생한 경우 에러메세지를 출력한다.")
+    @Test
+    void oneNumberInputConvertErrorByNothingForPrint() {
+        String input = "";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        assertThatThrownBy(() -> InputConvert.oneNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(out.toString()).isEqualTo("[ERROR] 아무것도 입력되지 않았습니다.");
+    }
+    @DisplayName("oneNumber에 에러가 발생한 경우 에러메세지를 출력한다.")
+    @Test
+    void oneNumberInputConvertErrorForPrint() {
+        String input = "5a";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        assertThatThrownBy(() -> InputConvert.oneNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(out.toString()).isEqualTo("[ERROR] 입력 형식에 맞게 입력되어야 합니다.");
+    }
+    @DisplayName("\"5000\"이 입력되면 5000이 리턴되고 \"1\"이 입력되면 1이 리턴된다.")
+    @Test
+    void oneNumberConvert() {
+        String input = "5000";
+        assertThat(InputConvert.oneNumber(input)).isEqualTo(5000);
+        input = "1";
+        assertThat(InputConvert.oneNumber(input)).isEqualTo(1);
+    }
 }
