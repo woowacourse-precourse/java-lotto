@@ -27,4 +27,13 @@ public class LottoView {
 	public static String getUserInput() {
 		return readLine();
 	}
+
+	public static void displayInputWinningLotto() {
+		System.out.println(INPUT_WINNING_LOTTO_NUMBERS);
+	}
+
+	public static void displayInputBonusNumber() {
+		System.out.println(INPUT_BONUS_NUMBER);
+	}
+
 }

@@ -10,6 +10,7 @@ public class LottoController {
 		createPurchaseAmount();
 		displayPurchasedLottoAmount();
 		displayPurchasedLottos();
+		createWinningLottoAndBonusNumber();
 
 	}
 
@@ -28,5 +29,20 @@ public class LottoController {
 		int purchasedLottoCount = LottoService.purchasedLottoAmount();
 		LottoService.createUserLottos(purchasedLottoCount);
 		LottoView.displayPurchasedLottos(Lottos.getLottos());
+	}
+
+	private static void createWinningLottoAndBonusNumber() {
+		createWinningLotto();
+		createBonusNumber();
+	}
+
+	private static void createWinningLotto() {
+		LottoView.displayInputWinningLotto();
+		LottoService.createWinningLotto(LottoView.getUserInput());
+	}
+
+	private static void createBonusNumber() {
+		LottoView.displayInputBonusNumber();
+		LottoService.createBonusNumber(LottoView.getUserInput());
 	}
 }
