@@ -9,6 +9,14 @@ import lotto.domain.Rank;
 import lotto.util.ConversionArrayToList;
 
 public class DrawLottoService {
+    private static final int LOTTO_COST = 1000;
+    private static final int FIVE_NUMBER_MATCHES = 5;
+    private static final int SIX_NUMBER_MATCHES = 6;
+    private static final int FIFTH_WINING_COUNT = 3;
+    private static final int FIRST_WINING_COUNT = 7;
+
+    private static final int PERCENTILE = 100;
+
     Map<Integer, Integer> correctNumberCount = new HashMap<>();
     ConversionArrayToList conversionArrayToList = new ConversionArrayToList();
 
@@ -19,7 +27,7 @@ public class DrawLottoService {
     private double reward;
 
     public int countBuyingLotto(int amount) {
-        return amount / 1000;
+        return amount / LOTTO_COST;
     }
 
     public List<Integer> getListToWiningNumber(String winingLottoNUmber) {
@@ -41,13 +49,13 @@ public class DrawLottoService {
     }
 
     private void isFirstWiningLotto() {
-        if (correctCount == 6) {
+        if (correctCount == SIX_NUMBER_MATCHES) {
             correctCount++;
         }
     }
 
     private void isSecondWiningLotto(List<Integer> myLotto, int bonusNumber) {
-        if (correctCount == 5) {
+        if (correctCount == FIVE_NUMBER_MATCHES) {
             if (myLotto.contains(bonusNumber)) {
                 correctCount++;
             }
@@ -55,7 +63,7 @@ public class DrawLottoService {
     }
 
     public void setWiningCount() {
-        for (int i = 3; i <= 7; i++) {
+        for (int i = FIFTH_WINING_COUNT; i <= FIRST_WINING_COUNT; i++) {
             winingCount.add(correctNumberCount.getOrDefault(i, 0));
         }
     }
@@ -71,6 +79,6 @@ public class DrawLottoService {
     }
 
     public double getRevenue(int buyAmountLotto) {
-        return ((reward) / buyAmountLotto) * 100;
+        return ((reward) / buyAmountLotto) * PERCENTILE;
     }
 }

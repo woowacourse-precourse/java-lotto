@@ -3,6 +3,9 @@ package lotto.domain;
 import java.util.List;
 
 public class WiningNumber {
+    private static final int MIN_LOTTO_NUMBER = 1;
+    private static final int MAX_LOTTO_NUMBER = 45;
+    private static final int LOTTO_SIZE = 6;
     private final List<Integer> winingNumber;
 
     private int bonusNumber;
@@ -19,14 +22,14 @@ public class WiningNumber {
     }
 
     private void validateNumbersSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_SIZE) {
             System.out.println("[ERROR] 로또 번호는 6자리여야 합니다.");
             throw new IllegalArgumentException();
         }
     }
 
     private void validateOverlapNumbers(List<Integer> numbers) {
-        if (numbers.stream().distinct().count() != 6) {
+        if (numbers.stream().distinct().count() != LOTTO_SIZE) {
             System.out.println("[ERROR] 로또 번호에 중복이 있으면 안됩니다.");
             throw new IllegalArgumentException();
         }
@@ -39,7 +42,7 @@ public class WiningNumber {
     }
 
     private void checkRange(int number) {
-        if (number < 1 || number > 45) {
+        if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
             System.out.println("[ERROR] 로또 번호는 1부터 45사이여야 합니다.");
             throw new IllegalArgumentException();
         }
@@ -52,7 +55,7 @@ public class WiningNumber {
     }
 
     private void validateBonusNumberRange(int number) {
-        if (number < 1 || number > 45) {
+        if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
             System.out.println("[ERROR] 보너스 번호는 1부터45사이여야 합니다.");
             throw new IllegalArgumentException();
         }
