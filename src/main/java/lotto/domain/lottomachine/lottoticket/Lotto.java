@@ -14,12 +14,16 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (isNotSizeSix(numbers)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
         if (hasDuplication(numbers)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있을 수 없습니다.");
         }
+    }
+
+    private boolean isNotSizeSix(List<Integer> numbers) {
+        return numbers.size() != 6;
     }
 
     private boolean hasDuplication(List<Integer> numbers) {
@@ -30,9 +34,8 @@ public class Lotto {
 
     public String countNumbersConsistentWith(WinningNumbers winningNumbers, WinningNumber bonusNumber) {
         String count = winningNumbers.countSameValue(numbers);
-        String bonusCount = bonusNumber.countSameValue(numbers);
         if (isFive(count)) {
-            return count + bonusCount;
+            return count + bonusNumber.checkSameValue(numbers);
         }
         return count;
     }

@@ -24,10 +24,10 @@ class LottoTest {
 
     @BeforeEach
     void setUp() {
-        winningNumbers = new WinningNumbers(Stream.of(1, 2, 3, 4, 5, 6)
-                .map(WinningNumber::new)
+        winningNumbers = WinningNumbers.from(Stream.of(1, 2, 3, 4, 5, 6)
+                .map(WinningNumber::from)
                 .collect(Collectors.toList()));
-        bonusNumber = new WinningNumber(7);
+        bonusNumber = WinningNumber.from(7);
     }
 
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
