@@ -1,28 +1,39 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WinningNumber {
 
-    public int[] inputWinningNum(String winningString) {
-        String[] strArray = winningString.split(",");
-        int[] winningNumbers = changeIntArr(strArray);
-        winningSize(winningNumbers);
-        return winningNumbers;
+    public Lotto inputWinningNum(String winningString) {
+        try {
+            String[] strArray = winningString.split(",");
+            List<Integer> winningLottoNumbers = changeIntArr(strArray);
+
+            Lotto Winninglotto = new Lotto(winningLottoNumbers);
+            return Winninglotto;
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     public int inputBonusNum(String BonusStr) {
         int bonusNum = 0;
+
         if (isNumeric(BonusStr) && inRange(Integer.parseInt(BonusStr))) {
             bonusNum = Integer.parseInt(BonusStr);
         }
+
         return bonusNum;
     }
 
-    public int[] changeIntArr(String[] strArray) {
-        int[] winningArray = new int[strArray.length];
+    public List<Integer> changeIntArr(String[] strArray) { // string 배열을 받아서 조건이 맞으면 int 배열로 바꿔준다.
+        List<Integer> winningArray = new ArrayList<>();
         for(int i = 0; i < strArray.length; i++) {
-            if(isNumeric(strArray[i]) && inRange(Integer.parseInt(strArray[i]))) {
-                winningArray[i] = Integer.parseInt(strArray[i]);
+            if(isNumeric(strArray[i])) {
+                winningArray.add(Integer.parseInt(strArray[i]));
             }
         }
         return winningArray;
@@ -33,24 +44,15 @@ public class WinningNumber {
             Double.parseDouble(s);
             return true;
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 잘못된 값을 입력하셨습니다");
             throw new IllegalArgumentException();
         }
     }
 
-    private boolean inRange(int i) {
-        if((1 <= i && i <= 45)){
-            return true;
-        }
-        System.out.println("[ERROR] 잘못된 범위의 값을 입력하셨습니다");
-        throw new IllegalArgumentException();
-    }
-
-    private void winningSize(int[] arr) {
-        if(arr.length != 6) {
-            System.out.println("[ERROR] 6개의 당첨 번호가 아닙니다");
+    private boolean inRange(int num) {
+        if((1 > num || num > 45)){
             throw new IllegalArgumentException();
         }
+        return true;
     }
 }
 
