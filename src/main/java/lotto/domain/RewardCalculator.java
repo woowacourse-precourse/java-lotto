@@ -22,4 +22,10 @@ public class RewardCalculator {
 
         return totalRevenue;
     }
+
+    public double calculateProfit(Map<LottoRank, Integer> winningCounts, long price) {
+        long totalRevenue = createTotalRevenue(winningCounts);
+
+        return createProfitInFirstDecimal(totalRevenue, price);
+    }
 }
