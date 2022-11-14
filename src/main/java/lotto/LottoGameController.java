@@ -1,10 +1,12 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dto.IssueLottoInfo;
 import dto.LottoGameInfo;
 import util.InputUtil;
+import util.PrintUtil;
 
 /**
  * 
@@ -30,7 +32,7 @@ public class LottoGameController {
 	// 로또 발행하기
 	public void issueLotto() {
 
-		List<IssueLottoInfo> issueLottoInfo = lottoGameInfo.getIssueLotto();
+		List<IssueLottoInfo> issueLottoInfo = new ArrayList<IssueLottoInfo>();
 		for (int i = 0; i < lottoGameInfo.getInputPrice() / 1000; i++) {
 			issueLottoInfo.add(new IssueLottoInfo());
 		}
@@ -40,7 +42,8 @@ public class LottoGameController {
 
 	// 발행번호 출력하기 
 	public void printIssueLotto() {
-		// TODO: 추가 기능 구현
+		PrintUtil.printPurchaseResult(lottoGameInfo.getInputPrice());
+		PrintUtil.printIssueLotto(lottoGameInfo.getIssueLotto());
 	}
 	
 	// 당첨번호 입력받기
