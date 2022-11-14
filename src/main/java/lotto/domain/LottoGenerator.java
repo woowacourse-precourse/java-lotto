@@ -12,7 +12,7 @@ public class LottoGenerator {
             }
         }
         catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("ERROR");
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 
