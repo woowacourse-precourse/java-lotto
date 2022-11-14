@@ -31,6 +31,11 @@ class LottoTest {
             Arguments.of(List.of(1,2,3,4,5,11) , 5)
         );
     }
-
+    @DisplayName("보너스 번호를 가지고 있는지 여부 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"1,true", "7,false"})
+    void hasBonusNumberTest(int bonusNumber,boolean expected) {
+        assertThat(lotto.hasBonusNumber(bonusNumber)).isEqualTo(expected);
+    }
 
 }
