@@ -48,6 +48,32 @@ public class OutputView {
                 .map(lottoNumber -> Integer.toString((lottoNumber)))
                 .collect(Collectors.toList());
     }
+    public static void printLottoResult(LottoResult lottoResult){
+        List<LottoRank> withoutDefault = LottoRank.getWithoutDefault();
+        for (int i = withoutDefault.size() - 1; i >= 0 ; i--) {
+            LottoRank rank = withoutDefault.get(i);
+            System.out.printf(RESULT_RANK_MESSAGE,
+                    rank.getCount(), printIfSecond(rank),
+                    df.format(rank.getPrice()), lottoResult.getRankCount(rank));
+        }
+    }
+    private static String printIfSecond(final LottoRank rank) {
+        if (rank.equals(LottoRank.SECOND)) {
+            return SAME_BONUS_MESSAGE;
+        }
+        return " ";
+    }
+
+    public static void printResultIntro() {
+        System.out.println(WINNING_STATISTICS);
+        System.out.println("---");
+    }
+
+    public static void printProfit(double profit) {
+        String profitMessage = String.format("총 수익률은 %.1f%%입니다.", profit);
+        System.out.println(profitMessage);
+    }
+
     public static void printException(Exception exception) {
         System.out.println(exception.getMessage());
     }
