@@ -3,7 +3,9 @@ package lotto.domain;
 import java.util.List;
 
 public class Draw {
-    public static Enum<Correct> findCorrectType(List<Integer> lotto, List<String> winNum, int bonusNum) {
+
+    public static Enum<CorrectNum> findCorrectType(List<Integer> lotto, List<String> winNum,
+        int bonusNum) {
         int cnt = 0;
         int bonusCnt = 0;
         for (int i = 0; i < winNum.size(); i++) {
@@ -15,20 +17,20 @@ public class Draw {
             }
         }
         if (cnt == 3) {
-            return Correct.THREE;
+            return CorrectNum.THREE;
         }
         if (cnt == 4) {
-            return Correct.FOUR;
+            return CorrectNum.FOUR;
         }
         if (cnt == 5) {
-            return Correct.FIVE;
+            return CorrectNum.FIVE;
         }
         if (cnt == 5 && bonusNum == 1) {
-            return Correct.FIVE_BONUS;
+            return CorrectNum.FIVE_BONUS;
         }
         if (cnt == 6) {
-            return Correct.SIX;
+            return CorrectNum.SIX;
         }
-        return Correct.NOTHING;
+        return CorrectNum.NOTHING;
     }
 }
