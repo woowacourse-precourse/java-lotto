@@ -14,6 +14,12 @@ public class GameResult {
         result = new ArrayList<>(Collections.nCopies(placeRange + 1, 0));
     }
 
+    public void calculateTotalResult(List<Lotto> lottos, List<Integer> winningNumbers, int bonusNumber) {
+        lottos.stream()
+                .map(Lotto::getLottoNumbers)
+                .forEach(lottoNumbers -> calculateSingleResult(lottoNumbers, winningNumbers, bonusNumber));
+    }
+
     private void calculateSingleResult(List<Integer> lottoNumbers, List<Integer> winningNumbers, int bonusNumber) {
         int matchingNumber = countMatchingNumber(lottoNumbers, winningNumbers);
         boolean hasBonusNumber = lottoNumbers.contains(bonusNumber);
