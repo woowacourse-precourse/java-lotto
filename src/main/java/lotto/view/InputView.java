@@ -7,7 +7,7 @@ import static lotto.uitls.Validation.validateLottoPurchaseAmount;
 import static lotto.uitls.Validation.validateLottoWinningNumber;
 import static lotto.uitls.Converter.convertToIntegerList;
 
-public class PlyaerInputReader {
+public class InputView {
 
     public int readAmountOfLottoPrice() {
         String playerInput = readLine();
