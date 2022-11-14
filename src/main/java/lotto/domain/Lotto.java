@@ -13,10 +13,14 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        validate(numbers);
+        this.numbers = numbers;
+    }
+
+    private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicate(numbers);
         numbers.forEach(this::validateLottoNumberRange);
-        this.numbers = numbers;
     }
 
     private void validateSize(List<Integer> numbers) {
