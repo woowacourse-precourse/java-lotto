@@ -31,6 +31,7 @@ public class User {
             System.out.println("[Error]1,000 단위의 금액을 입력하세요");
             throw new IllegalArgumentException();
         }
+
         System.out.println(num +"개를 구매했습니다.");
         return num;
     }

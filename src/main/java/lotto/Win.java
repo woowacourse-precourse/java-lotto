@@ -63,4 +63,16 @@ public enum Win {
         System.out.println("6개 일치 (2,000,000,000원) - " + cnt_total_ranking.get(0) + "개");
         return cnt_total_ranking;
     }
+
+    public static void yield(List<Integer> cnt_total_ranking, int money) {
+        double revenue = cnt_total_ranking.get(0) * FIRST.prize +
+                cnt_total_ranking.get(1) * SECOND.prize +
+                cnt_total_ranking.get(2) * THIRD.prize +
+                cnt_total_ranking.get(3) * FOURTH.prize +
+                cnt_total_ranking.get(4) * FIFTH.prize;
+
+        double yield = (revenue / money) * 100 ;
+        System.out.println(yield);
+        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "% 입니다.");
+    }
 }
