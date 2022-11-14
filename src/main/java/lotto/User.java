@@ -13,7 +13,9 @@ public class User {
     public User() {
         System.out.println("구입 금액을 입력해주세요.");
         numberOfLotto = getNumberOfLotto();
+
         lottos = getlottos(numberOfLotto);
+        printLottos(numberOfLotto,lottos);
     }
 
     public static int getNumberOfLotto() {
@@ -43,4 +45,8 @@ public class User {
         return newLottos;
     }
 
+    public static void printLottos(int numberOfLotto,List<Lotto> lottos){
+        System.out.println( numberOfLotto + "개를 구매했습니다.");
+        for(int orderOfLottos=0;orderOfLottos<lottos.size();orderOfLottos++) System.out.println(lottos.get(orderOfLottos));
+    }
 }
