@@ -2,8 +2,9 @@ package lotto.domain;
 
 public class LottoAmount {
 	private static final String INPUT_MONEY_ERROR_MESSAGE = "[ERROR] 구입 금액은 1000원 단위로 입력하셔야 합니다.";
-	private static int MIN_UNIT = 1000;
-	private static int ZERO_NUMBER = 0;
+	private static final int MIN_UNIT = 1000;
+	private static final int PERCENT_NUMBER = 100;
+	private static final int ZERO_NUMBER = 0;
 	private final int purchaseMoney;
 
 	public LottoAmount(int money) {
@@ -26,9 +27,10 @@ public class LottoAmount {
 	}
 
 	public double calculatePrizeResult(LottoResult lottoResult) {
-		return lottoResult.getLottoResult().entrySet().stream()
+		long result = lottoResult.getLottoResult().entrySet().stream()
 			.filter(entry -> LottoRanking.noWin != entry.getKey())
 			.map(entry -> entry.getKey().getPrizeMoney() * entry.getValue())
 			.mapToLong(Integer::longValue).sum();
+		return (double) result / purchaseMoney * PERCENT_NUMBER;
 	}
 }

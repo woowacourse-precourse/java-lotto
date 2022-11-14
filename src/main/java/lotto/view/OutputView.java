@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.text.NumberFormat;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class OutputView {
 	private static final String PRINT_PRIZE_RESULT_BORDER_LINE = "---";
 	private static final String PRINT_PRIZE_RESULT_FRONT = "%d개 일치";
 	private static final String PRINT_PRIZE_RESULT_BONUS = ", 보너스 볼 일치";
-	private static final String PRINT_PRIZE_RESULT_LAST = " (%d) - %d개";
+	private static final String PRINT_PRIZE_RESULT_LAST = " (%s원) - %d개";
 	private static final String PRINT_RATE_RETURN = "총 수익률은 %.1f%%입니다.%n";
 
 	public static void printLottoNumber(int lottoNumber) {
@@ -52,7 +53,8 @@ public class OutputView {
 			if (lottoRanking.isMatchBonus()) {
 				printResult.append(PRINT_PRIZE_RESULT_BONUS);
 			}
-			printResult.append(String.format(PRINT_PRIZE_RESULT_LAST, lottoRanking.getPrizeMoney(), prizeCount));
+			String prizeMoney = NumberFormat.getInstance().format(lottoRanking.getPrizeMoney());
+			printResult.append(String.format(PRINT_PRIZE_RESULT_LAST, prizeMoney, prizeCount));
 			System.out.println(printResult);
 		}
 	}
