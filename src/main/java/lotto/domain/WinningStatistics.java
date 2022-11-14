@@ -21,4 +21,14 @@ public class WinningStatistics {
         return winningStatisticsMap;
     }
 
+    public double calculateProfitRate(int money) {
+        int sum = 0;
+        for (Map.Entry<Ranking, Integer> entry : winningStatisticsMap.entrySet()) {
+            if (entry.getValue() > 0) {
+                sum += entry.getKey().getWinningPrice();
+            }
+        }
+        return (double)sum / money * 100;
+    }
+
 }
