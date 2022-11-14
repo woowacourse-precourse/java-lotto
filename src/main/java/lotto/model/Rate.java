@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Rate {
+
     private Map<Rank,Integer> rankPrice;    // <Rank, 상금(price)> Map
     private double earningRate; // 수익률
 

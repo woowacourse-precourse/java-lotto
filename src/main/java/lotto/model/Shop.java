@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Shop {
+
     private int price;
     private int lottoSize;
     private List<Lotto> lottoPayed;
@@ -49,7 +50,5 @@ public class Shop {
             throw new IllegalArgumentException();
         }
     }
-
-
 
 }

@@ -51,4 +51,5 @@ public class ShopTest {
         assertThatThrownBy(() -> new Shop(1200))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 }

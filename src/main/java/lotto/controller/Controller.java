@@ -23,7 +23,7 @@ public class Controller {
     private Rate rate;
     private int price;
 
-    // 요청 수행 method
+    /** 요청 수행 methods */
     public List<Lotto> buyLotto() throws IllegalArgumentException{
         this.price = getPrice();
         shop = new Shop(price);
@@ -44,8 +44,7 @@ public class Controller {
         return rate.getEarningRate();
     }
 
-
-    // 입력 method
+    /** 입력 methods */
     public int getPrice() throws IllegalArgumentException{
         view.printInputPrice();
         String price = readLine();
@@ -68,6 +67,7 @@ public class Controller {
         return Integer.parseInt(bonusNum);
     }
 
+    /** validation */
     public void validatePriceFormat(String price) {
         char[] charNumbers = price.toCharArray();
 

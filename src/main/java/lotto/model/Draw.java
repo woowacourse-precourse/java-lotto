@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Draw {
+
     private Lotto winningLotto;
     private int bonusNum;
     private Map<Rank, Integer> winningStats; // <Rank, 결과 수> Map

@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -17,14 +18,14 @@ public class Lotto {
     }
 
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != Constant.lottoNumSize) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public List<Integer> getNumbers() {
-        return numbers;
     }
 
     private void validateNumRange(List<Integer> numbers) {
@@ -43,4 +44,5 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
 }

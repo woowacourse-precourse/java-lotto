@@ -55,4 +55,5 @@ public class RateTest {
         int underZeroLength = earningRateWord.substring(earningRateWord.indexOf(".")).length();
         assertThat(underZeroLength == 2).isTrue();
     }
+
 }

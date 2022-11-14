@@ -60,4 +60,5 @@ public class DrawTest {
         assertThatThrownBy(() -> new Draw(lotto,bonusNum))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 }
