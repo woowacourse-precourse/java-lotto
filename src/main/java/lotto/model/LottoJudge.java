@@ -23,7 +23,8 @@ public class LottoJudge {
         String profitPercent;
 
         for (LottoRank lottoRank : LottoRank.values()) {
-            totalProfit += Collections.frequency(rankCount, lottoRank) * LottoRank.getPrice(lottoRank);
+            int winningMoney = Integer.parseInt(LottoRank.getPrice(lottoRank).replace(",", ""));
+            totalProfit += Collections.frequency(rankCount, lottoRank) * winningMoney;
         }
 
         profitPercent = String.format("%.1f", (totalProfit / money) * 100.0);
