@@ -38,9 +38,9 @@
 - [X] 단위 테스트 작성
   - [X] PlayerTest
   - [X] ManagerTest
-- [ ] Java Enum 활용
+- [X] Java Enum 활용
 - [ ] 자바 컨벤션에 맞춰 style 검토
-  - [ ] indent 2이내
+  - [X] indent 2이내
   - [ ] 하드코딩 금지
   - [ ] 함수 15줄 이트
 ---
