@@ -5,8 +5,8 @@ import lotto.Lotto.Lotto;
 import lotto.Lotto.LottoInfo;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoGenerator
 {
@@ -33,8 +33,8 @@ public class LottoGenerator
     {
         List<Integer> lottoNumbers =
                 Randoms.pickUniqueNumbersInRange(LottoInfo.START_LOTTO_NUMBER,LottoInfo.END_LOTTO_NUMBER,LottoInfo.LOTTO_SIZE);
-        Collections.sort(lottoNumbers);
-        return lottoNumbers;
+
+        return lottoNumbers.stream().sorted().collect(Collectors.toList());
     }
 
     public static LottoGenerator getInstance()
