@@ -16,4 +16,9 @@ public class WinningLottoService {
         }
         return winningNumbers;
     }
+
+    private static int getBonusNumber() {
+        OutputView.messageBonusInput();
+        return Integer.parseInt(Console.readLine());
+    }
 }
