@@ -26,7 +26,7 @@ public class Statistics {
             + PrizeType.PRIZE3.getReward() * PRIZE3 + PrizeType.PRIZE4.getReward() * PRIZE4
             + PrizeType.PRIZE5.getReward() * PRIZE5;
 
-        return (float)totalReward / receivedMoney;
+        return ((float)totalReward / receivedMoney) * 100;
     }
 
     private Map<String, Integer> checkMatchNumbersCount(List<Integer> answerLottoNumbers, int bounsNumber,
