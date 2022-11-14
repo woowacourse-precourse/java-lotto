@@ -10,4 +10,8 @@ public class BonusNumber {
     public String getBonusNumber() {
         return bonusNumber;
     }
+
+    public int convertBonusNumber(){
+        return Integer.parseInt(bonusNumber);
+    }
 }
