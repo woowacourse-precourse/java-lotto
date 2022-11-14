@@ -28,4 +28,16 @@ class InputValidatorTest {
         assertThatThrownBy(() -> inputValidator.validateInputPurchaseAmount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("당첨번호 포멧이 맞지 않을 때")
+    void winningNumberNotSuitFormat() throws Exception {
+        //given
+        String input = "11,22,33,44";
+        //when
+        //then
+        assertThatThrownBy(() -> inputValidator.validateInputPurchaseAmount(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    
 }
