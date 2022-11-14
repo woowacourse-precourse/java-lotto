@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static lotto.constant.Message.ERROR_MESSAGE;
 import static lotto.constant.Message.INVALID_NUMBER_INPUT_FORMAT_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,6 +34,6 @@ public class WinningLottoTest {
         IllegalArgumentException exception =
                 assertThrows(IllegalArgumentException.class, () -> new WinningLotto(List.of(0, 1, 2, 3, 4, 46), "6"));
 
-        assertEquals(exception.getMessage(), INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
+        assertEquals(exception.getMessage(), ERROR_MESSAGE + INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
     }
 }

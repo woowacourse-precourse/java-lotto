@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+import static lotto.constant.Message.ERROR_MESSAGE;
 import static lotto.constant.Message.INVALID_WINNING_LOTTO_INPUT_FORMAT_MESSAGE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -35,7 +36,7 @@ public class InputViewTest {
         IllegalArgumentException exception =
                 assertThrows(IllegalArgumentException.class, () -> inputView.inputWinningLottoNumber());
 
-        assertEquals(exception.getMessage(), INVALID_WINNING_LOTTO_INPUT_FORMAT_MESSAGE);
+        assertEquals(exception.getMessage(), ERROR_MESSAGE + INVALID_WINNING_LOTTO_INPUT_FORMAT_MESSAGE);
     }
 
     @ParameterizedTest
