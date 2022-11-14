@@ -14,8 +14,10 @@ public class GameController {
 
     public void run() {
         int inputMoney = InputView.getUserMoney();
+
         LottoMachine lottos = buyLotto(inputMoney);
         User user = new User(inputMoney, lottos.getLottos());
+        WinningNumber winnerNumber = getWinningNumber();
     }
 
     public LottoMachine buyLotto(int money) {
@@ -25,5 +27,12 @@ public class GameController {
         LottoMachine lottos = new LottoMachine(count);
         OutputView.showLottos(lottos);
         return lottos;
+    }
+
+    public WinningNumber getWinningNumber() {
+        Lotto lotto = new Lotto(InputView.getWinningNumber());
+        int bonusNumber = InputView.getBonusNumber();
+
+        return new WinningNumber(lotto, bonusNumber);
     }
 }
