@@ -63,9 +63,9 @@
 
 ## 💰 MoneyManger
 
-- [ ] 수익률을 구한다. - getMoneyReturn
-    - [ ] 수익률은 소수점 둘째자리에서 반올림한다. - getRoundPrice
-    - [ ] 반올림된 수익률을 구한다. - getRoundPrice
+- [x] 수익률을 구한다. - getMoneyReturn
+    - [x] 수익률은 소수점 둘째자리에서 반올림한다. - getRoundPrice
+    - [x] 반올림된 수익률을 구한다. - getRoundPrice
 
 ## ⚠️ 예외 처리 - Validation
 
