@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -22,5 +23,25 @@ public class Application {
         result.put("collect",collect);
         result.put("bonus",bonus);
         return result;
+    }
+
+    public static List<List<Integer>> buyLotto(int purchaseMoney){
+        return digitPick(purchaseMoney/1000);
+    }
+    public static int inputMoney(){
+        System.out.println("구입금액을 입력해 주세요");
+        int purchaseMoney = Integer.parseInt(Console.readLine());
+        if (purchaseMoney%1000!=0){
+            throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액을 입력하십시오.");
+        }
+        return purchaseMoney;
+    }
+
+    private static List<List<Integer>> digitPick(int purchaseAmount){
+        List<List<Integer>> lottoNums = new ArrayList<>();
+        while (lottoNums.size()!=purchaseAmount){
+            lottoNums.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        }
+        return lottoNums;
     }
 }
