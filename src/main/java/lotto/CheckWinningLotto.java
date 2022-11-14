@@ -12,8 +12,7 @@ public class CheckWinningLotto {
 
     public List<Integer> winningIndexToCount(List<List<Integer>> comparedNumber, List<Integer> winningNumber, int bonusNumber) {
         List<Integer> totalCount = checkWinningTotal(comparedNumber, winningNumber, bonusNumber);
-        for (int i = 0; i < totalCount.size(); i++) {
-            int index = totalCount.get(i);
+        for (int index : totalCount) {
             int beforeCount = winningCount.get(index);
             this.winningCount.set(index, beforeCount + 1);
         }
@@ -22,14 +21,14 @@ public class CheckWinningLotto {
 
     private List<Integer> checkWinningTotal(List<List<Integer>> comparedNumber, List<Integer> winningNumber, int bonusNumber) {
         List<Integer> totalCount = new ArrayList<>();
-        for (int i = 0; i < comparedNumber.size(); i++) {
-            int correctCount = checkWinning(comparedNumber.get(i), winningNumber);
+        for (List<Integer> integers : comparedNumber) {
+            int correctCount = checkWinning(integers, winningNumber);
             if (correctCount >= 3) {
                 totalCount.add(correctCount - 3);
             }
 
-            if ((correctCount == 5) && (checkWinningBonus(comparedNumber.get(i), bonusNumber))) {
-                totalCount.remove(totalCount.size()-1);
+            if ((correctCount == 5) && (checkWinningBonus(integers, bonusNumber))) {
+                totalCount.remove(totalCount.size() - 1);
                 totalCount.add(4);
             }
         }
