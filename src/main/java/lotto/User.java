@@ -13,6 +13,8 @@ public class User {
 
     public int purchasePrice;
     public List<Integer> winningNumbers;
+    public int bonusNumber;
+
     public User() {
     }
 
@@ -50,5 +52,21 @@ public class User {
         boolean isWinningNumberSize = (winningNumbers.length() == WINNING_NUMBER_SIZE);
 
         return (isNumeric && isWinningNumberSize);
+    }
+
+    public void setBonusNumber() {
+        String bonusNumber = Console.readLine();
+        if (isValidBonusNumber(bonusNumber)) {
+            this.purchasePrice = Integer.parseInt(bonusNumber);
+            return;
+        }
+        throw new IllegalArgumentException();
+    }
+
+    private boolean isValidBonusNumber(String bonusNumber) {
+        boolean isNumeric = Pattern.matches(PRICE_PATTERN, bonusNumber);
+        boolean isBonusNumberSize = (bonusNumber.length() == BONUS_NUMBER_SIZE);
+
+        return (isNumeric && isBonusNumberSize);
     }
 }
