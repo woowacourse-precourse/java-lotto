@@ -48,6 +48,7 @@ class LottoTest {
         assertThat(generatedLottoNumber.size()).isEqualTo(6);
 
     }
+
     @DisplayName("두 개의 숫자가 일치하는지 여부를 리턴한다.")
     @Test
     void checkNumbersMatch() {
@@ -112,4 +113,12 @@ class LottoTest {
         assertThat(lotto.calculateYield(result, totalPayment)).isEqualTo("203155.5");
     }
 
+    @DisplayName("로또 번호를 읽어들여 정수 배열로 리턴한다.")
+    @Test
+    void inputLottoNumber() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        assertThat(lotto.inputLottoNumber("1,2,3,4,5,6")).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(() -> lotto.inputLottoNumber("1,2,3,4,5,k")).isInstanceOf(IllegalArgumentException.class);
+    }
 }
