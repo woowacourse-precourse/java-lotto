@@ -14,6 +14,15 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public Lotto(List<Integer> numbers, int bonusNum) {
+        isNotContainBonusNum(numbers, bonusNum);
+        this.numbers = numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
@@ -31,6 +40,12 @@ public class Lotto {
     private void isNotDuplication(List<Integer> numbers){
         Set<Integer> numberSet = new HashSet<>(numbers);
         if(numbers.size() != numberSet.size()){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void isNotContainBonusNum(List<Integer> numbers, int bonusNumber){
+        if(numbers.contains(bonusNumber)){
             throw new IllegalArgumentException();
         }
     }
