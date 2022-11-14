@@ -43,4 +43,5 @@
 1. 대략적인 README.md 작성
 2. lotto 에 중복된 숫자가 있는 경우 예외를 던지는 기능
 3. lotto 클래스의 getter 기능과 테스트
-4. lotto repository의 create 기능과 테스트
+4. lotto repository 의 create 기능과 테스트
+5. lotto 가 당첨번호와 몇개 일치하는지 알려주는 기능과 테스트
