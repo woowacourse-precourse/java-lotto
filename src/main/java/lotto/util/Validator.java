@@ -8,8 +8,8 @@ import static lotto.constant.GameConstants.*;
 
 public class Validator {
 
-    public static void validateRange(List<Integer> numbers) {
-        if (LOTTO_NUMBER_LENGTH != numbers.stream()
+    public static void validateRange(List<Integer> numbers, int length) {
+        if (length != numbers.stream()
                 .filter(number -> MIN_NUMBER <= number)
                 .filter(number -> number <= MAX_NUMBER)
                 .count()) {
