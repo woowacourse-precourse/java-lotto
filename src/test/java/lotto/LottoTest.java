@@ -48,6 +48,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호에 숫자가 아닌 문자가 있을 경우 예외가 발생한다.")
+    @Test
+    void inputPrizeNumbersContainChar() {
+        LottoLogic lottoLogic = new LottoLogic("1000");
+        assertThatThrownBy(() -> lottoLogic.setPrizeNumbers(List.of("1","2","3","4","5","k")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("당첨 번호와 중복된 보너스 번호를 입력할 경우 예외가 발생한다.")
     @Test
     void inputBonusNumberByDuplicatedNumberByPrizeNumbers() {
