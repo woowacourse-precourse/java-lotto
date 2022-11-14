@@ -42,6 +42,9 @@ public class Lotto {
         if (winningNumbers.numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 중복된 수가 존재합니다.");
         }
+        if (45 < bonusNumber || bonusNumber < 1) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
     }
 
     public static boolean hasDuplication(List<Integer> numbers) {
