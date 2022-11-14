@@ -1,5 +1,9 @@
 package lotto;
 
+import lotto.machine.LottoChecker;
+import lotto.machine.LottoKiosk;
+import lotto.machine.WinningNumberMaker;
+
 public class Application {
     public static void main(String[] args) {
         LottoKiosk lottoKiosk = new LottoKiosk();

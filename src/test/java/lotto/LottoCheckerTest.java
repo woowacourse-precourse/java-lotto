@@ -3,6 +3,8 @@ package lotto;
 import java.util.List;
 import java.util.Map;
 
+import lotto.machine.LottoChecker;
+import lotto.machine.LottoKiosk;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -8,9 +8,9 @@ public enum Prize {
     FIFTH(3, "5,000원", 5000L),
     NONE(0, "0", 0L);
 
-    final int matches;
-    final String price;
-    final long money;
+    public final int matches;
+    public final String price;
+    public final long money;
 
     Prize(int matches, String price, long money) {
         this.matches = matches;
@@ -18,7 +18,7 @@ public enum Prize {
         this.money = money;
     }
 
-    static String prizeInfo(Prize prize) {
+    public static String prizeInfo(Prize prize) {
         if (prize == SECOND) {
             return prize.matches + "개 일치, 보너스 볼 일치 " + "(" + prize.price + ")";
         }

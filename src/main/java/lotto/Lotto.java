@@ -25,7 +25,7 @@ public class Lotto {
         }
     }
 
-    List<Integer> showNumbers() {
+    public List<Integer> showNumbers() {
         return new ArrayList<>(numbers);
     }
 }

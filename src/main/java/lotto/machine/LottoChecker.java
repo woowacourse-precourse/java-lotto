@@ -1,5 +1,7 @@
-package lotto;
+package lotto.machine;
 
+import lotto.Lotto;
+import lotto.Prize;
 import lotto.message.Message;
 
 import java.math.RoundingMode;
@@ -17,7 +19,7 @@ public class LottoChecker {
     private List<Lotto> lottos = new ArrayList<>();
     private Map<Prize, Integer> result = new HashMap<>();
 
-    LottoChecker(List<Integer> winningNumbers, int bonusNumber) {
+    public LottoChecker(List<Integer> winningNumbers, int bonusNumber) {
         this.WINNING_NUMBERS = winningNumbers;
         this.BONUS_NUMBER = bonusNumber;
         initResult();
@@ -32,21 +34,21 @@ public class LottoChecker {
         this.result.put(Prize.NONE, 0);
     }
 
-    Map<Prize, Integer> showResult() {
+    public Map<Prize, Integer> showResult() {
         return new HashMap<>(result);
     }
 
-    void printResult(){
+    public void printResult(){
         saveAllResult();
         printEachPrizeWinCount();
         printProfitRate();
     }
 
-    void insertLottos(List<Lotto> lottos) {
+    public void insertLottos(List<Lotto> lottos) {
         this.lottos = lottos;
     }
 
-    void saveAllResult() {
+    public void saveAllResult() {
         for (Lotto lotto : lottos) {
             int matches = howManyMatches(lotto);
             boolean isContainBonus = false;
@@ -58,7 +60,7 @@ public class LottoChecker {
         }
     }
 
-    int howManyMatches(Lotto lotto) {
+    public int howManyMatches(Lotto lotto) {
         int matches = 0;
         for (Integer number : lotto.showNumbers()) {
             if (this.WINNING_NUMBERS.contains(number)) {
@@ -68,11 +70,11 @@ public class LottoChecker {
         return matches;
     }
 
-    boolean checkBonusNumber(Lotto lotto) {
+    public boolean checkBonusNumber(Lotto lotto) {
         return lotto.showNumbers().contains(BONUS_NUMBER);
     }
 
-    Prize getPrize(int matches, boolean isContainBonus) {
+    public Prize getPrize(int matches, boolean isContainBonus) {
         if (matches == 6) {
             return Prize.FIRST;
         }
@@ -91,7 +93,7 @@ public class LottoChecker {
         return Prize.NONE;
     }
 
-    void printEachPrizeWinCount() {
+    public void printEachPrizeWinCount() {
         System.out.println(Message.PRIZE_RESULT.message);
         printPrizeWinCount(Prize.FIFTH);
         printPrizeWinCount(Prize.FOURTH);
@@ -100,11 +102,11 @@ public class LottoChecker {
         printPrizeWinCount(Prize.FIRST);
     }
 
-    void printPrizeWinCount(Prize prize) {
+    public void printPrizeWinCount(Prize prize) {
         System.out.println(Prize.prizeInfo(prize) + " - " + result.get(prize) + "개");
     }
 
-    long getTotalPrizeMoney() {
+    public long getTotalPrizeMoney() {
         long totalPrizeMoney = 0;
         for (Prize prize : result.keySet()) {
             totalPrizeMoney += prize.money * result.get(prize);
@@ -112,7 +114,7 @@ public class LottoChecker {
         return totalPrizeMoney;
     }
 
-    String getProfitRate(long totalPrizeMoney) {
+    public String getProfitRate(long totalPrizeMoney) {
         if (totalPrizeMoney == 0) {
             return "0.0";
         }
@@ -123,7 +125,7 @@ public class LottoChecker {
         return df.format(profitRate);
     }
 
-    void printProfitRate() {
+    public void printProfitRate() {
         System.out.println("총 수익률은 " + getProfitRate(getTotalPrizeMoney()) + "%입니다.");
     }
 }

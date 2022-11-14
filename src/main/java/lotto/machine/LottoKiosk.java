@@ -1,4 +1,4 @@
-package lotto;
+package lotto.machine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.Customer;
+import lotto.Lotto;
 import lotto.message.ErrorMessage;
 import lotto.message.Message;
 
@@ -25,15 +27,15 @@ public class LottoKiosk {
         validateMoney();
     }
 
-    void askHowMuch() {
+    public void askHowMuch() {
         System.out.println(Message.REQUEST_MONEY.message);
     }
 
-    void moneyInserted() {
+    public void moneyInserted() {
         this.moneyInput = Console.readLine();
     }
 
-    void validateMoneyInput() {
+    public void validateMoneyInput() {
         this.moneyInput.chars().forEach(o -> {
             if (!Character.isDigit(o)) {
                 throw new IllegalArgumentException(ErrorMessage.MONEY_NOT_A_NUMBER.message);
@@ -41,11 +43,11 @@ public class LottoKiosk {
         });
     }
 
-    void chargeMoney() {
+    public void chargeMoney() {
         money = Long.parseLong(moneyInput);
     }
 
-    void validateMoney() {
+    public void validateMoney() {
         if (this.money < 1000) {
             throw new IllegalArgumentException(ErrorMessage.MORE_THAN_THOUSAND.message);
         }
@@ -54,11 +56,11 @@ public class LottoKiosk {
         }
     }
 
-    long showInsertedMoney() {
+    public long showInsertedMoney() {
         return this.money;
     }
 
-    void sellLotto(Customer customer) {
+    public void sellLotto(Customer customer) {
         calculateLottoAmount();
         showHowManyLotto();
         makeAllLotto();
@@ -66,40 +68,40 @@ public class LottoKiosk {
         customer.getLotto(lottos);
     }
 
-    void calculateLottoAmount() {
+    public void calculateLottoAmount() {
         this.howMany = money / LOTTO_PRICE;
     }
 
-    void showHowManyLotto() {
+    public void showHowManyLotto() {
         System.out.println("\n" + howMany + Message.HOW_MANY_SOLD.message);
     }
 
-    void makeAllLotto() {
+    public void makeAllLotto() {
         lottos = new ArrayList<>();
         for (int i = 0; i < this.howMany; i++) {
             lottos.add(makeLotto(makeLottoNumbers()));
         }
     }
 
-    Lotto makeLotto(List<Integer> numbers) {
+    public Lotto makeLotto(List<Integer> numbers) {
         return new Lotto(numbers);
     }
 
-    List<Integer> makeLottoNumbers() {
+    public List<Integer> makeLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
     }
 
-    void printAllLottoNumber() {
+    public void printAllLottoNumber() {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.showNumbers());
         }
     }
 
-    List<Lotto> showAllLotto() {
+    public List<Lotto> showAllLotto() {
         return new ArrayList<>(lottos);
     }
 
-    long showHowMany() {
+    public long showHowMany() {
         return this.howMany;
     }
 }

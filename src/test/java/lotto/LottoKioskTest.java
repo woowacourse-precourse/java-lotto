@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import lotto.machine.LottoKiosk;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

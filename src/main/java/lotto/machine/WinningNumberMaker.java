@@ -1,4 +1,4 @@
-package lotto;
+package lotto.machine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,12 @@ public class WinningNumberMaker {
     private List<Integer> winningNumbers;
     private int bonusNumber;
 
-    void make() throws IllegalArgumentException{
+    public void make() throws IllegalArgumentException{
         makeWinningNumbers();
         makeBonusNumber();
     }
 
-    void makeWinningNumbers() throws IllegalArgumentException{
+    public void makeWinningNumbers() throws IllegalArgumentException{
         requestWinningNumber();
         getWinningNumberInput();
         divideByComma();
@@ -30,23 +30,23 @@ public class WinningNumberMaker {
         saveWinningNumbers();
     }
 
-    void requestWinningNumber() {
+    public void requestWinningNumber() {
         System.out.println(Message.ENTER_WINNING_NUMBER.message);
     }
 
-    void getWinningNumberInput() {
+    public void getWinningNumberInput() {
         this.winningNumberInput = Console.readLine();
     }
 
-    void divideByComma() {
+    public void divideByComma() {
         this.inputSplitByComma = this.winningNumberInput.split(",");
     }
 
-    String[] showInputSplitByComma() {
+    public String[] showInputSplitByComma() {
         return this.inputSplitByComma;
     }
 
-    void validateInputSplitByComma() {
+    public void validateInputSplitByComma() {
         if (this.inputSplitByComma.length != 6) {
             throw new IllegalArgumentException(ErrorMessage.NOT_ENOUGH_NUM.message);
         }
@@ -55,7 +55,7 @@ public class WinningNumberMaker {
         }
     }
 
-    void validateWinningNumberStr(String winningNumberStr) {
+    public void validateWinningNumberStr(String winningNumberStr) {
         for (int i = 0; i < winningNumberStr.length(); i++) {
             if (!Character.isDigit(winningNumberStr.charAt(i))) {
                 throw new IllegalArgumentException(ErrorMessage.WINNING_NUM_NOT_A_NUMBER.message);
@@ -67,18 +67,18 @@ public class WinningNumberMaker {
         }
     }
 
-    void saveWinningNumbers() {
+    public void saveWinningNumbers() {
         this.winningNumbers = new ArrayList<>();
         for (String winningNumberStr : inputSplitByComma) {
             this.winningNumbers.add(Integer.parseInt(winningNumberStr));
         }
     }
 
-    List<Integer> getWinningNumbers() {
+    public List<Integer> getWinningNumbers() {
         return new ArrayList<>(this.winningNumbers);
     }
 
-    void makeBonusNumber() throws IllegalArgumentException {
+    public void makeBonusNumber() throws IllegalArgumentException {
         requestBonusNumber();
         getBonusNumberInput();
         validateBonusNumberInput();
@@ -86,15 +86,15 @@ public class WinningNumberMaker {
         validateBonusNumber();
     }
 
-    void requestBonusNumber() {
+    public void requestBonusNumber() {
         System.out.println(Message.ENTER_BONUS_NUMBER.message);
     }
 
-    void getBonusNumberInput() {
+    public void getBonusNumberInput() {
         this.bonusNumberInput = Console.readLine();
     }
 
-    void validateBonusNumberInput() {
+    public void validateBonusNumberInput() {
         this.bonusNumberInput.chars().forEach(c -> {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException(ErrorMessage.BONUS_NUM_NOT_A_NUMBER.message);
@@ -102,11 +102,11 @@ public class WinningNumberMaker {
         });
     }
 
-    void saveBonusNumber() {
+    public void saveBonusNumber() {
         this.bonusNumber = Integer.parseInt(this.bonusNumberInput);
     }
 
-    void validateBonusNumber() {
+    public void validateBonusNumber() {
         if (!(START_NUM <= this.bonusNumber && this.bonusNumber <= END_NUM)) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_OUT_OF_RANGE.message);
         }
@@ -115,7 +115,7 @@ public class WinningNumberMaker {
         }
     }
 
-    int getBonusNumber(){
+    public int getBonusNumber(){
         return bonusNumber;
     }
 }
