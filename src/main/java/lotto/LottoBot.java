@@ -58,7 +58,7 @@ public class LottoBot {
 
     public double calculateYield(int[] ranks) {
         int price = getPrice(ranks);
-        return (double) price / initialMoney;
+        return (double) price / initialMoney * 100;
     }
 
     private int getPrice(int[] ranks) {

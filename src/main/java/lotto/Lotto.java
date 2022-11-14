@@ -6,7 +6,10 @@ public class Lotto {
     public static final int MIN_LOTTO_NUMBER = 1;
     public static final int MAX_LOTTO_NUMBER = 45;
     public static final int LOTTO_NUMBER_SIZE = 6;
+    public static final int LOTTO_PRICE = 1000;
     private final List<Integer> numbers;
+
+    private final Exception exception = new Exception();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -14,9 +17,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ExceptionType.INVALID_LENGTH.getErrorMsg());
-        }
+        exception.checkLottoNumbers(numbers);
     }
 
     public int getRank(String[] winningNumbers, String bonusNumber) {
