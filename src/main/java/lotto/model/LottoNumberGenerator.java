@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoNumberGenerator {
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 45;
+    private static final int MAX_LENGTH = 6;
+
     public Lottos generateLottos(LottoCount lottoCount) {
         return generateLottoNumbers(lottoCount);
     }
@@ -14,7 +18,7 @@ public class LottoNumberGenerator {
         Lottos lottos = new Lottos();
 
         do {
-            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, MAX_LENGTH);
             Collections.sort(lottoNumbers);
             Lotto lotto = new Lotto(lottoNumbers);
             lottos.addLotto(lotto);
