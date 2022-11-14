@@ -47,13 +47,21 @@ public class LottoDrawingMachine {
         validateDrawnNumbers(winning_numbers, bonus_number);
     }
 
-    public List<String> drawLottoNumbers() {
+    public List<Integer> getWinning_numbers() {
+        return winning_numbers;
+    }
+
+    public int getBonus_number() {
+        return bonus_number;
+    }
+
+    private List<String> drawLottoNumbers() {
         String winning_number_line = Console.readLine();
         String bonus_number_line = Console.readLine();
         return List.of(winning_number_line, bonus_number_line);
     }
 
-    public void validateDrawnNumbersPattern(String winning_number_line, String bonus_number_line) {
+    private void validateDrawnNumbersPattern(String winning_number_line, String bonus_number_line) {
         if (!winning_number_line.matches(REGEX_WINNING_NUMBER_FORMAT.getValue())) {
             throw new IllegalArgumentException(DRAW_LOTTO_FORMAT_ERROR.getMessage());
         }

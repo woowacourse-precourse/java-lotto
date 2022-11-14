@@ -33,6 +33,8 @@ public class Clerk {
 
     private void printPurchasedLotto(List<Lotto> lotto_group) {
         System.out.println(lotto_group.size() + MESSAGE_PURCHASE.getValue());
-        lotto_group.forEach(Lotto::printNumbers);
+        lotto_group.stream()
+                .map(Lotto::getNumbers)
+                .forEach(System.out::println);
     }
 }

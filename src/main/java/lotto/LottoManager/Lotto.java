@@ -13,8 +13,8 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public void printNumbers() {
-        System.out.println(this.numbers);
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validateLottoNum(List<Integer> numbers) {

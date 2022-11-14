@@ -19,4 +19,8 @@ public class Consumer {
         this.lotto_group = clerk.sellLotto(purchaseAmount);
     }
 
+    public void checkPrize(List<Integer> winning_numbers, int bonus_number) {
+
+
+    }
 }

@@ -19,8 +19,9 @@ public class LottoShop {
         return SingletonHelper.INSTANCE;
     }
 
-    public void takeOneConsumer() {
+    public Consumer takeOneConsumer() {
         Consumer consumer = new Consumer(clerk);
         consumer.purchaseLotto();
+        return consumer;
     }
 }
