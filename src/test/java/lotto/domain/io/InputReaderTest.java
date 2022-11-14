@@ -41,6 +41,7 @@ class InputReaderTest {
     InputReader inputReader = new InputReader();
     InputStream inputStream = readUserInput(input);
     System.setIn(inputStream);
+
     try {
       LottoNum lottoNum = inputReader.readLottoNum();
     } catch (IllegalArgumentException e) {
