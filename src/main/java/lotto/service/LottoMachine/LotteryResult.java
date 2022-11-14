@@ -1,4 +1,4 @@
-package lotto.service.executeLotto;
+package lotto.service.LottoMachine;
 
 import lotto.DataTable.PrizeTable;
 
@@ -9,6 +9,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class LotteryResult {
     private final List<List<Integer>> userLotteries;
     private final List<Integer> winningNumbers;
+    private Map<Integer, Integer> scoresCount;
+    private double yield;
 
     public LotteryResult(List<List<Integer>> userLotteries, List<Integer> winningNumbers) {
         this.userLotteries = userLotteries;
@@ -17,7 +19,7 @@ public class LotteryResult {
 
     private static final int BONUS_SCORE_INDEX = 0;
 
-    public Map<Integer, Integer> getScores(int bonusNumber) {
+    public void setScores(int bonusNumber) {
         Map<Integer, Integer> scoresCount = initScoreCount();
         userLotteries.forEach(lotteryTicket -> {
             int count = countSameNumber(lotteryTicket);
@@ -29,13 +31,21 @@ public class LotteryResult {
                 scoresCount.put(count, scoresCount.get(count) + 1);
             }
         });
-        return scoresCount;
+        this.scoresCount = scoresCount;
     }
 
-    public double getYield(Map<Integer, Integer> scores) {
+    public Map<Integer, Integer> getScoresCount() {
+        return this.scoresCount;
+    }
+
+    public void setYield(Map<Integer, Integer> scores) {
         double totalPrize = totalPrize(scores);
         double yield = totalPrize / (userLotteries.size());
-        return Math.round(yield * 10) / 100.0;
+        this.yield = Math.round(yield * 10) / 100.0;
+    }
+
+    public double getYield() {
+        return this.yield;
     }
 
     private Map<Integer, Integer> initScoreCount() {

@@ -1,4 +1,4 @@
-package lotto.service.executeLotto;
+package lotto.service.LottoMachine;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,8 +27,9 @@ public class LotteryResultTest {
         Map<Integer, Integer> EXPECTED_RESULT = Map.of(0, 0, 3, 1, 4, 0, 5, 0, 6, 0);
 
         LotteryResult compare = new LotteryResult(USER_LOTTERIES, WINNING_NUMBERS);
-        Map<Integer, Integer> result = compare.getScores(BONUS);
-        assertThat(result).isEqualTo(EXPECTED_RESULT);
+        compare.setScores(BONUS);
+
+        assertThat(compare.getScoresCount()).isEqualTo(EXPECTED_RESULT);
     }
 
     @DisplayName("3등 1개 총 수익률 계산")
@@ -49,9 +50,9 @@ public class LotteryResultTest {
 
         double EXPECTED_RESULT = 62.5;
         LotteryResult compare = new LotteryResult(USER_LOTTERIES, WINNING_NUMBERS);
-        Map<Integer, Integer> result = compare.getScores(BONUS);
-
-        assertThat(compare.getYield(result)).isEqualTo(EXPECTED_RESULT);
+        compare.setScores(BONUS);
+        compare.setYield(compare.getScoresCount());
+        assertThat(compare.getYield()).isEqualTo(EXPECTED_RESULT);
     }
 
     @DisplayName("보너스 1개, 3등 1개")
@@ -73,8 +74,7 @@ public class LotteryResultTest {
         Map<Integer, Integer> EXPECTED_RESULT = Map.of(0, 1, 3, 1, 4, 0, 5, 0, 6, 0);
 
         LotteryResult compare = new LotteryResult(USER_LOTTERIES, WINNING_NUMBERS);
-        Map<Integer, Integer> result = compare.getScores(BONUS);
-
-        assertThat(result).isEqualTo(EXPECTED_RESULT);
+        compare.setScores(BONUS);
+        assertThat(compare.getScoresCount()).isEqualTo(EXPECTED_RESULT);
     }
 }
