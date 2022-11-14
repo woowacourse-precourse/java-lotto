@@ -27,10 +27,8 @@ public class User extends Exception {
             if (!abc.matcher(input).matches()) {
                 throw new IllegalArgumentException(ER_STRINGCHECK.getMessage());
             }
-
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-
         }
     }
 
@@ -39,7 +37,7 @@ public class User extends Exception {
         if (abc.matcher(input).matches()) {
             return Integer.parseInt(input);
         }
-        return 0;
+        return null;
     }
 
     public static Integer checkMonetaryUnit(Integer money) {
@@ -94,6 +92,11 @@ public class User extends Exception {
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
             throw new IllegalArgumentException();
+        }
+    }
+    public static void bonusNumberInLottoNumber(){
+        if(lottoNumberReceiveInput().contains(inputBonusNumber())){
+            throw new IllegalArgumentException(ER_BONUSNUMBERINLOTTONUMBER.getMessage());
         }
     }
 
