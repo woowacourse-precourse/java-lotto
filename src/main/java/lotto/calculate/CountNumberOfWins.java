@@ -12,7 +12,6 @@ public class CountNumberOfWins {
     private int thirdPlace;
     private int fourthPlace;
     private int fifthPlace;
-    private double sumOfPrize;
     private final BuyLotto buyLotto;
     private final WinningNumbers winningNumbers;
 
@@ -22,13 +21,16 @@ public class CountNumberOfWins {
         this.thirdPlace = 0;
         this.fourthPlace = 0;
         this.fifthPlace = 0;
-        this.sumOfPrize = 0;
         this.buyLotto = buyLotto;
         this.winningNumbers = winningNumbers;
     }
 
     private List<List<Integer>> setBuyLotto() {
         return buyLotto.issue();
+    }
+
+    public int setLottoPrice() {
+        return buyLotto.getPrice();
     }
 
     private List<Integer> setWinningNumbers() {
@@ -87,17 +89,5 @@ public class CountNumberOfWins {
 
     public int getFifthPlace() {
         return fifthPlace;
-    }
-
-    public void calculateSumOfPrize() {
-        sumOfPrize += (Grade.FIRST.getPrizeMoney() * getFirstPlace());
-        sumOfPrize += (Grade.SECOND.getPrizeMoney() * getSecondPlace());
-        sumOfPrize += (Grade.THIRD.getPrizeMoney() * getThirdPlace());
-        sumOfPrize += (Grade.FOURTH.getPrizeMoney() * getFourthPlace());
-        sumOfPrize += (Grade.FIFTH.getPrizeMoney() * getFifthPlace());
-    }
-
-    public double rateOfReturn() {
-        return Math.round(( sumOfPrize / buyLotto.getPrice() * 100 * 10)) / 10.0;
     }
 }

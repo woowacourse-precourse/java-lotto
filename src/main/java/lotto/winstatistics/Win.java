@@ -1,6 +1,7 @@
 package lotto.winstatistics;
 
 import lotto.calculate.CountNumberOfWins;
+import lotto.calculate.RateOfReturn;
 import lotto.lottocontroller.BuyLotto;
 import lotto.winningnumbers.WinningNumbers;
 
@@ -20,23 +21,28 @@ public class Win {
         System.out.println(TITLE_DISTINGUISHING_ROLE);
     }
 
-    private void printStatistics(CountNumberOfWins countNumberOfWins) {
+    private void printWinStatistics(CountNumberOfWins countNumberOfWins) {
         System.out.printf(FIFTH_GRADE_STATISTICS_MESSAGE, countNumberOfWins.getFifthPlace());
         System.out.printf(FOURTH_GRADE_STATISTICS_MESSAGE, countNumberOfWins.getFourthPlace());
         System.out.printf(THIRD_GRADE_STATISTICS_MESSAGE, countNumberOfWins.getThirdPlace());
         System.out.printf(SECOND_GRADE_STATISTICS_MESSAGE, countNumberOfWins.getSecondPlace());
         System.out.printf(FIRST_GRADE_STATISTICS_MESSAGE, countNumberOfWins.getFirstPlace());
-        System.out.printf(RATE_OF_RETURNS_MESSAGE, countNumberOfWins.rateOfReturn(), PERCENT_CHARACTER);
+    }
+
+    private void printRateOfReturn(RateOfReturn rateOfReturn) {
+        System.out.printf(RATE_OF_RETURNS_MESSAGE, rateOfReturn.getRateOfReturn(), PERCENT_CHARACTER);
     }
 
     public void statistics() {
         BuyLotto buyLotto = new BuyLotto();
         WinningNumbers winningNumbers = new WinningNumbers();
         CountNumberOfWins countNumberOfWins = new CountNumberOfWins(buyLotto, winningNumbers);
+        RateOfReturn rateOfReturn = new RateOfReturn(countNumberOfWins);
 
         countNumberOfWins.ranking();
-        countNumberOfWins.calculateSumOfPrize();
+        rateOfReturn.calculateSumOfPrize();
         statisticsMessage();
-        printStatistics(countNumberOfWins);
+        printWinStatistics(countNumberOfWins);
+        printRateOfReturn(rateOfReturn);
     }
 }
