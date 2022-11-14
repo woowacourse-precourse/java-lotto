@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.domain.Rank;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +34,8 @@ public class OutputView {
     }
 
     public void printPercentage(double percentage) {
-        System.out.printf("총 수익률은 %.1f%%입니다.", percentage);
+        DecimalFormat formatter = new DecimalFormat("###,###.0");
+        System.out.println("총 수익률은 " + formatter.format(percentage) + "%입니다.");
     }
 
     private int exchangeTicket(int purchaseAmount) {
