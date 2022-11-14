@@ -10,25 +10,27 @@ import java.util.List;
 public class Application {
 
 
-    static long purchaseAmount = 0;
-    static int numberOfTickets = 0;
+    public static int enterPurchaseAmount() {
 
-
-    public static void enterPurchaseAmount() {
-
+        System.out.println("구입금액을 입력해 주세요.");
         String strAmount = Console.readLine();
-        long amount = Long.parseLong(strAmount);
+        int amount = Integer.parseInt(strAmount);
 
         if (amount % 1000 != 0) {
-            throw new IllegalArgumentException("1000의 배수만 입력 가능합니다.");
+            throw new IllegalArgumentException("[ERROR] 1000의 배수만 입력 가능합니다.");
         }
-        purchaseAmount = amount;
-        numberOfTickets = (int) amount / 1000;
+
+        return amount;
+
     }
 
 
-    public static void printNumberOfTickets() {
-        System.out.println(numberOfTickets + "개를 구매했습니다.");
+    public static int printNumberOfTickets(int amount) {
+
+        int cnt  = amount / 1000;
+        System.out.println(cnt + "개를 구매했습니다.");
+        return cnt;
+
     }
 
 
@@ -65,6 +67,7 @@ public class Application {
         return winningNums;
 
     }
+
 
     public static int validateBonusNum(int[] winningNums) {
 
@@ -122,11 +125,7 @@ public class Application {
     }
 
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-
-        enterPurchaseAmount();      // 구매 금액 입력
-        printNumberOfTickets();     // 로또 개수 출력
+    public static List<List<Integer>> generateAllLotto(int numberOfTickets){
 
         List<List<Integer>> allLottoList = new ArrayList<>();
 
@@ -139,10 +138,33 @@ public class Application {
             System.out.println(lotto);
         }
 
-        int[] winningNums = enterTheWinningNumber();   // 입력한 당첨
-        Lotto lotto = new Lotto(List.of(winningNums[0], winningNums[1], winningNums[2],
-            winningNums[3], winningNums[4], winningNums[5]));
+        return allLottoList;
+
+    }
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+
+        int amount = enterPurchaseAmount();      // 구매 금액 입력
+        int numberOfTickets = printNumberOfTickets(amount);     // 로또 개수 출력
+
+        List<List<Integer>> allLotto = generateAllLotto(numberOfTickets);
+
+        int[] winningNums = enterTheWinningNumber();   // 당첨 번호 입력
+        List<Integer> tmp = new ArrayList<>();
+
+        for(int winningNum : winningNums){
+            tmp.add(winningNum);
+
+        }
+
+        Lotto lotto = new Lotto(tmp);
+
+
         int bonusNum = validateBonusNum(winningNums);   // 보너스 번호 입력
+
+
+
 
     }
 }
