@@ -21,7 +21,13 @@ public class LuckyNumber {
         luckyNumber = new Lotto(number);
     }
 
+    public Lotto getLuckyNumber(){
+        return luckyNumber;
+    }
 
+    public int getBonusNumber(){
+        return bonusNumber;
+    }
 
     private void validate(String input){
         for(int i=0; i<input.length(); i++){
