@@ -31,7 +31,7 @@ public class LottoController {
 
         //로또 번호를 비교해서 통계결과를 출력해주는 클래스 생성
         LottoStatistic ls = new LottoStatistic(lb, bonus_num, win_lotto);
-        //System.out.println(ls);
+        System.out.println(ls);
     }
     private int costInput(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -73,7 +73,7 @@ public class LottoController {
             int bonus_num = Integer.parseInt(bonus_str);
             if(bonus_num<1 && bonus_num>45)
                 throw new IllegalArgumentException();
-            if(isLottoDuplicate(bonus_num,lotto))
+            if(isBonusDuplicate(bonus_num,lotto))
                 throw new IllegalArgumentException();
             return bonus_num;
         } catch (NumberFormatException e) {
@@ -83,11 +83,12 @@ public class LottoController {
 //    private boolean isString_in_1to9(String str) {
 //        return str.matches("[1-9.]+");
 //    }
-    private boolean isLottoDuplicate(int num, Lotto lotto) {
-        for(int lotto_num : lotto.getNumbers()){
-            if(num == lotto_num)
-                return true;
-        }
-        return false;
+    private boolean isBonusDuplicate(int num, Lotto lotto) {
+        return lotto.getNumbers().contains(num);
+//        for(int lotto_num : lotto.getNumbers()){
+//            if(num == lotto_num)
+//                return true;
+//        }
+//        return false;
     }
 }

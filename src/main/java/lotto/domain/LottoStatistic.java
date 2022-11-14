@@ -2,6 +2,8 @@ package lotto.domain;
 
 import lotto.Lotto;
 
+import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,12 +12,25 @@ public class LottoStatistic {
     private final int bonus_num;
     private final Lotto win_lotto;
 
-    private Map<Rank,Integer> rankMap;
+    private Map<Rank,Integer> rankMap = new HashMap<>();
 
     public LottoStatistic(LottoBundle lottoBundle, int bonus_num, Lotto win_lotto) {
         this.lottoBundle = lottoBundle;
         this.bonus_num = bonus_num;
         this.win_lotto = win_lotto;
+        compareBundle();
+    }
+    @Override
+    public String toString(){
+        DecimalFormat df = new DecimalFormat("###,###");
+        String print = "당첨 통계\n---\n";
+        for(Rank rank: Rank.values()){
+            print += rank.getCounts()+"개 일치 (";
+            print += df.format(rank.getPrice())+ "원) - ";
+            print += rankMap.getOrDefault(rank,0)+"개\n";
+        }
+
+        return print;
     }
     private void compareBundle(){
         for(Lotto lotto: lottoBundle.getLottoList()){
