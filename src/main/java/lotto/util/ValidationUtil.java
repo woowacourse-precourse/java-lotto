@@ -1,6 +1,7 @@
 package lotto.util;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 import static lotto.constant.ErrorOutputMessage.*;
 import static lotto.constant.LottoNumber.*;
@@ -22,9 +23,9 @@ public class ValidationUtil {
      * @param amount 구매 금액
      */
     private void validateNumberType(String amount) {
-        try {
-            Integer.parseInt(amount);
-        } catch (Exception e) {
+        String regex = "[0-9]+";
+
+        if (!Pattern.matches(regex, amount)) {
             System.out.println(PURCHASE_TYPE);
             throw new IllegalArgumentException(PURCHASE_TYPE);
         }
