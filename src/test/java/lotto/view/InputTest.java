@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Stream;
 
@@ -82,6 +83,40 @@ class InputTest {
                 .isInstanceOf(NoSuchElementException.class);
     }
 
+    @DisplayName("올바른 형식의 보너스 번호를 입력했을 때 하나의 보너스 번호를 리턴받는다.")
+    @ParameterizedTest
+    @MethodSource("setCorrectBonusNumber")
+    public void givenCorrectBonusNumberWinningNumbers_whenGetBonusNumber_thenReturnBonusNumber(String bonusNumber){
+        // Given
+        InputStream inputStream = generateUserInput(bonusNumber);
+        System.setIn(inputStream);
+        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+
+        // When
+        int correctBonusNumber = inputTest.getBonusNumber(winningNumbers);
+
+        // Then
+        assertThat(correctBonusNumber).isNotNull();
+
+    }
+
+    // TODO: 현재 NoSuchElementException 으로 예외처리, 추후에 IllegalArgumentException 으로 바꿔야 한다.[방법 찾는 중]
+    @DisplayName("올바르지 않은 번호 입력 시 IllegalArgumentException 을 던진다.")
+    @ParameterizedTest
+    @MethodSource("setBonusNumber")
+    public void givenWrongNumberWinningNumbers_whenGetBonusNumber_thenReturnIllegalArgumentException(String bonusNumber)
+    {
+        // Given
+        InputStream inputStream = generateUserInput(bonusNumber);
+        System.setIn(inputStream);
+        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+
+        // When & Then
+        assertThatThrownBy(()->inputTest.getBonusNumber(winningNumbers))
+                .isInstanceOf(NoSuchElementException.class);
+    }
+
+
     private static Stream<Arguments> setCorrectMoney(){
         return Stream.of(
                 Arguments.of("1000"),
@@ -113,6 +148,22 @@ class InputTest {
                 Arguments.of("1,2,3,4,5,6,7,8,9,10"),
                 Arguments.of("a,b,c,d,e,f"),
                 Arguments.of("46,1,2,3,4,5")
+        );
+    }
+
+    private static Stream<Arguments> setCorrectBonusNumber(){
+        return Stream.of(
+                Arguments.of("7"),
+                Arguments.of("45"),
+                Arguments.of("25")
+        );
+    }
+
+    private static Stream<Arguments> setBonusNumber(){
+        return Stream.of(
+                Arguments.of("1"),
+                Arguments.of("dkfsjfls"),
+                Arguments.of("1,2,3,4")
         );
     }
 
