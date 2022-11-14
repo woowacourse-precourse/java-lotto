@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Roulette {
-    Map<String, Integer> lottoStatus = new HashMap<>();
+    public Map<String, Integer> lottoStatus = new HashMap<>();
     List<Integer> winningNumber;
     int bonusNumber;
 
@@ -28,5 +28,10 @@ public class Roulette {
             }
         }
         return count;
+    }
+
+    public void countLotto(int count) {
+        String rank = Rank.of(count);
+        lottoStatus.put(rank, lottoStatus.get(rank) + 1);
     }
 }
