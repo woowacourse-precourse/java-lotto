@@ -48,4 +48,14 @@ class LottoTest {
         int[] correctNum = {1, 1, 1, 4, 5, 6};
         assertThat(lotto.getCountCorrectNumbers(correctNum)).isEqualTo(4);
     }
+
+    @DisplayName("로또 번호에 보너스 번호가 있는지 판단한다.")
+    @Test
+    void isThereInBonusNumber(){
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNum = 5;
+        assertThat(lotto.isSameWithBonumNum(bonusNum)).isEqualTo(true);
+        bonusNum = 7;
+        assertThat(lotto.isSameWithBonumNum(bonusNum)).isEqualTo(false);
+    }
 }

@@ -33,4 +33,14 @@ public class Lotto {
     /**
      * 보너스 번호를 입력받아 일치 여부를 return 한다.
      */
+    public boolean isSameWithBonumNum(int bonusNum){
+        boolean result = false;
+        for(int i= 0; i < numbers.size(); i++){
+            if(numbers.get(i) == bonusNum){
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
 }
