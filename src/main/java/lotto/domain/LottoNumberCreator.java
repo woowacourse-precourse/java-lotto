@@ -45,6 +45,8 @@ public class LottoNumberCreator {
         return new Lotto(lottoWinNumbers);
     }
 
+
+
     /**
      * 숫자 개수 검증 로직
      */
