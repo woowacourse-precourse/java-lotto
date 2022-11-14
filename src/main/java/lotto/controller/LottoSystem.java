@@ -2,17 +2,19 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.NumberGenerator;
-import lotto.view.InputView;
 import lotto.utils.Validator;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.utils.ErrorCode.*;
+import static lotto.utils.ErrorCode.INVALID_PRICE;
 
 public class LottoSystem {
 
     private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
     private final NumberGenerator numberGenerator = new NumberGenerator();
     private final Validator validator = new Validator();
 
@@ -25,10 +27,7 @@ public class LottoSystem {
             throw new IllegalArgumentException(INVALID_PRICE.getMessage());
         }
         List<Lotto> userLottos = buyLotto(money);
-        // 아래 코드는 테스트용
-        for (Lotto lotto : userLottos) {
-            System.out.println(lotto.getNumbers());
-        }
+        outputView.outputUserLottos(userLottos);
     }
 
     private List<Lotto> buyLotto(int money) {
