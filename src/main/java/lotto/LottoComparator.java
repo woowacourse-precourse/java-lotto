@@ -11,12 +11,11 @@ public class LottoComparator {
         return new ComparisonToWinningNumberResult(matchCount, isBonusMatched);
     }
 
-    public static void compareAndCountMatchLotto(Map<LottoPrize, Integer> statistics, Lotto lotto,
+    public static LottoPrize compareAndCountMatchLotto(Lotto lotto,
                                                  WinningNumber winningNumber) {
         ComparisonToWinningNumberResult result = LottoComparator.compare(lotto, winningNumber);
         LottoPrize prizeOfResult = LottoPrize.of(result);
-        int preStatistics = statistics.get(prizeOfResult);
-        statistics.put(prizeOfResult, preStatistics + 1);
+        return prizeOfResult;
     }
 
 }
