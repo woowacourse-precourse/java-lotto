@@ -77,8 +77,12 @@ public class LottoController {
     }
 
     private void giveResult() {
-        adminService.confirmWinNumber();
-        HashMap<LottoResultType, Integer> myResult = userService.getMyResult(userId);
+        adminService.finishRound();
+        LottoQueryDto lottoQueryDto = LottoQueryDto.builder()
+                .userId(userId)
+                .roundId(roundId)
+                .build();
+        HashMap<LottoResultType, Integer> myResult = userService.getMyResult(lottoQueryDto);
         Logger.log(lottoResultView.stringify(myResult));
         currentStep = currentStep.getNextStep();
     }
