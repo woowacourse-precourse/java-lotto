@@ -24,10 +24,8 @@ public class LottoPublisher {
     }
 
     public List<Integer> sortRandomLottoNumber(List<Integer> randomLottoNumberList) {
-        List<Integer> sortedRandomLottoNumberList = new ArrayList<>();
-
         Collections.sort(randomLottoNumberList);
 
-        return sortedRandomLottoNumberList;
+        return randomLottoNumberList;
     }
 }
