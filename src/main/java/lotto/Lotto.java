@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -97,5 +98,27 @@ public class Lotto {
         }
 
         return total;
+    }
+
+    public static void printWin(List<Integer> win) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (Winning winning : Winning.values()) {
+            if (winning != Winning.NONE) {
+                System.out.println(
+                        winning.getMatch() + " " + winning.getValue() + " - " + win.get(winning.getRank()) + "개");
+            }
+        }
+    }
+
+    public static String caculateProfit(List<Integer> win, int cost) {
+        long total = totalPrize(win);
+        double profit = total / (double) cost * 100;
+
+        DecimalFormat format = new DecimalFormat("0.##");
+        String result = format.format(profit);
+        System.out.print("총 수익률은 " + result + "%입니다.");
+
+        return result;
     }
 }
