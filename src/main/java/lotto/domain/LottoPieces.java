@@ -4,21 +4,20 @@ import lotto.util.errorMessage.ErrorMessage;
 
 public class LottoPieces {
 
+    private static final int MIN_UNIT = 1000;
+
     public final int pieces;
 
-    public LottoPieces(int money) {
-        validateMoney(money);
+    public LottoPieces(Money money) {
         this.pieces = calculatePieces(money);
     }
 
-    private static int calculatePieces(int money) {
-        int pieces = money / 1000;
+    public static int calculatePieces(Money money) {
+        int pieces = getQuotient(money);
         return pieces;
     }
 
-    private void validateMoney(int money) {
-        if (money % 1000 != 0) {
-            throw new IllegalArgumentException(ErrorMessage.PAYMENT_UNIT_ERROR);
-        }
+    private static int getQuotient(Money money) {
+        return money.getMoney() / MIN_UNIT;
     }
 }
