@@ -3,16 +3,16 @@ package lotto.model;
 import java.util.List;
 
 public class WinningNumbers {
-    private final List<Integer> regularNumbers;
+    private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
-    public WinningNumbers(List<Integer> regularNumbers, int bonusNumber) {
-        this.regularNumbers = regularNumbers;
+    public WinningNumbers(List<Integer> winningNumbers, int bonusNumber) {
+        this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
 
     private boolean isWinningNumber(int number) {
-        return regularNumbers.contains(number);
+        return winningNumbers.contains(number);
     }
 
     private boolean isBonusNumber(int number) {
