@@ -9,10 +9,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoMachine {
+    public static final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
+    public static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    public static final String BONUS_NUMBER_INTEGER = "[ERROR] 보너스 번호는 숫자를 입력해야 합니다.";
     int bonusNumber;
+
     public Lotto inputWinningNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(INPUT_WINNING_NUMBER);
         String inputNumber = Console.readLine();
+
         return checkThatWinningNumberIsRightInput(inputNumber);
     }
 
@@ -21,16 +26,17 @@ public class LottoMachine {
     }
 
     public void inputBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(INPUT_BONUS_NUMBER);
         try {
             bonusNumber = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException(BONUS_NUMBER_INTEGER);
         }
     }
 
     public Lotto checkThatWinningNumberIsRightInput(String inputNumber) {
         List<String> winningNumberTemp = splitNumber(inputNumber);
+
         return new Lotto(Exception.changeListStringToInteger(winningNumberTemp));
     }
 
