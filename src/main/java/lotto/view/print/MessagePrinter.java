@@ -1,5 +1,7 @@
 package lotto.view.print;
 
+import lotto.domain.Buyer;
+
 public class MessagePrinter {
     private static final String NOTIFY_INPUT_PAYMENT = "구입금액을 입력해 주세요.";
     private static final String NOTIFY_INPUT_WINNING_LOTTO_NUMBERS = "당첨 번호를 입력해 주세요.";
@@ -12,5 +14,10 @@ public class MessagePrinter {
 
     public void printStaticPaymentNotification() {
         System.out.println(NOTIFY_INPUT_PAYMENT);
+    }
+
+    public void printDynamicLottoAmount(Buyer buyer) {
+        int lottoAmount = buyer.getLottos().size();
+        System.out.printf((NOTIFY_LOTTO_AMOUNT) + "%n", lottoAmount);
     }
 }
