@@ -19,14 +19,16 @@ public class Lotto {
 
     private void sizeValidate(List<Integer> numbers){
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[Error] 로또 번호 개수는 6개여야 합니다.");
+            System.out.println("[ERROR] 로또 번호 개수는 6개여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호 개수는 6개여야 합니다.");
         }
     }
 
     private void inputValidate(List<Integer> numbers){
         for(Integer number : numbers){
             if(number < 1 || number > 45){
-                throw new IllegalArgumentException("[Error] 로또 번호는 1에서 45여야 합니다.");
+                System.out.println("[ERROR] 로또 번호는 1에서 45여야 합니다.");
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1에서 45여야 합니다.");
             }
         }
     }
@@ -35,6 +37,7 @@ public class Lotto {
         for(Integer number : numbers){
             int numberFrequency = Collections.frequency(numbers, number);
             if(numberFrequency > 1){
+                System.out.println("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
             }
         }

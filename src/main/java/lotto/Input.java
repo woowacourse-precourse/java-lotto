@@ -38,22 +38,26 @@ public class Input {
 
     void bonusValidate(String number) {
         if (!isNumeric(number)) {
+            System.out.println("[ERROR] 로또 번호는 숫자여야 합니다.");
             throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자여야 합니다.");
         }
 
         int convertedNumber = Integer.parseInt(number);
         if(convertedNumber < 1 || convertedNumber > 45){
+            System.out.println("[ERROR] 로또 번호는 1에서 45여야 합니다.");
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1에서 45여야 합니다.");
         }
     }
 
     void inputValidate(String money) {
         if (!isNumeric(money)) {
+            System.out.println("[ERROR] 구입 금액은 숫자여야 합니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야 합니다.");
         }
 
         int convertedMoney = Integer.parseInt(money);
         if (!divideByThousand(convertedMoney)) {
+            System.out.println("[ERROR] 구입 금액은 1,000 단위여야 합니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000 단위여야 합니다.");
         }
     }
@@ -78,4 +82,6 @@ public class Input {
         //Collections.sort(numbers);
         return numbers;
     }
+
+
 }
