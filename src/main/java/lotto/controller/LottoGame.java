@@ -35,4 +35,9 @@ public class LottoGame {
         printBonusNumberInputNotice();
         bonusNumber = readBonusNumber();
     }
+
+    public void getResultOfLotto(List<Lotto> lottos, WinningNumber winningNumber) {
+        int[] rankingCount = WinningService.compareAllLottoWithWinningNumbers(lottos, winningNumber);
+        printWinningStatistics(rankingCount);
+    }
 }
