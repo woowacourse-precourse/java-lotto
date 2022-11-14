@@ -87,41 +87,41 @@ class WinningNumbersTest {
         }
     }
 
-    @ParameterizedTest(name = "일치 개수 {0}: 로또 번호 {1}와 당첨 번호 {2}, 보너스 번호 {3}의 비교시 {4}이 결과로 나와야 함")
+    @ParameterizedTest(name = "일치 개수 {0}: [1, 2, 3, 4, 5, 6]와 당첨 번호 {1}, 보너스 번호 {2}의 비교시 {3}이 결과로 나와야 함")
     @MethodSource("provideMatchAll")
-    void matchWithNoBonus(int ignoredMatch, List<Integer> lottoNumbers, List<Integer> winningStdNumbers,
+    void matchWithNoBonus(int ignoredMatch, List<Integer> winningStdNumbers,
             int bonusNumber, Reward reward) {
-        List<Lotto> lottos = List.of(new Lotto(lottoNumbers));
+        List<Lotto> lottos = List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
         WinningNumbers winningNumbers = new WinningNumbers(winningStdNumbers, bonusNumber);
 
         MatchResults results = winningNumbers.matchAll(lottos);
-        MatchResults except = new MatchResults(Lists.list(reward));
+        MatchResults expect = new MatchResults(Lists.list(reward));
 
-        Assertions.assertThat(results).isEqualTo(except);
+        Assertions.assertThat(results).isEqualTo(expect);
     }
 
     static Stream<Arguments> provideMatchAll() {
         return Stream.of(
                 // 0개 매칭
-                Arguments.of(0, List.of(1, 2, 3, 4, 5, 6), List.of(7, 8, 9, 10, 11, 12), 13, null),
-                Arguments.of(0, List.of(1, 2, 3, 4, 5, 6), List.of(7, 8, 9, 10, 11, 12), 1, null),
+                Arguments.of(0, List.of(7, 8, 9, 10, 11, 12), 13, null),
+                Arguments.of(0, List.of(7, 8, 9, 10, 11, 12), 1, null),
                 // 1개 매칭
-                Arguments.of(1, List.of(1, 2, 3, 4, 5, 6), List.of(1, 7, 8, 9, 10, 11), 12, null),
-                Arguments.of(1, List.of(1, 2, 3, 4, 5, 6), List.of(1, 7, 8, 9, 10, 11), 2, null),
+                Arguments.of(1, List.of(1, 7, 8, 9, 10, 11), 12, null),
+                Arguments.of(1, List.of(1, 7, 8, 9, 10, 11), 2, null),
                 // 2개 매칭
-                Arguments.of(2, List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 8, 9, 10, 11), 12, null),
-                Arguments.of(2, List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 8, 9, 10, 11), 3, null),
+                Arguments.of(2, List.of(1, 2, 8, 9, 10, 11), 12, null),
+                Arguments.of(2, List.of(1, 2, 8, 9, 10, 11), 3, null),
                 // 3개 매칭
-                Arguments.of(3, List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 9, 10, 11), 12, FIFTH),
-                Arguments.of(3, List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 9, 10, 11), 4, FIFTH),
+                Arguments.of(3, List.of(1, 2, 3, 9, 10, 11), 12, FIFTH),
+                Arguments.of(3, List.of(1, 2, 3, 9, 10, 11), 4, FIFTH),
                 // 4개 매칭
-                Arguments.of(4, List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 10, 11), 12, FOURTH),
-                Arguments.of(4, List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 10, 11), 5, FOURTH),
+                Arguments.of(4, List.of(1, 2, 3, 4, 10, 11), 12, FOURTH),
+                Arguments.of(4, List.of(1, 2, 3, 4, 10, 11), 5, FOURTH),
                 // 5개 매칭
-                Arguments.of(5, List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 11), 12, THIRD),
-                Arguments.of(5, List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 11), 6, SECOND),
+                Arguments.of(5, List.of(1, 2, 3, 4, 5, 11), 12, THIRD),
+                Arguments.of(5, List.of(1, 2, 3, 4, 5, 11), 6, SECOND),
                 // 6개 매칭
-                Arguments.of(6, List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 6), 12, FIRST)
+                Arguments.of(6, List.of(1, 2, 3, 4, 5, 6), 12, FIRST)
         );
     }
 }
