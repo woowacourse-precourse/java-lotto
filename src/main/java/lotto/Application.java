@@ -15,7 +15,7 @@ public class Application {
         return money;
     }
 
-    public static Integer readMoney() {
+    public static Integer readMoney() throws IllegalArgumentException {
         System.out.println("구입금액을 입력해주세요.");
         String userInput = Console.readLine();
         try {
@@ -62,11 +62,12 @@ public class Application {
     public static Lotto getLuckyNumbers() {
         List<Integer> inputNums = readLuckyNumbers();
         validLuckyNumbers(inputNums);
+        checkRange(inputNums);
         Lotto luckyNums = new Lotto(inputNums);
         return luckyNums;
     }
 
-    public static List<Integer> readLuckyNumbers(){
+    public static List<Integer> readLuckyNumbers() throws IllegalArgumentException {
         System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         String[] inputs = userInput.split(",");
@@ -74,7 +75,8 @@ public class Application {
 
         for (String input : inputs) {
             try {
-                numbers.add(Integer.valueOf(input));
+                int num = Integer.valueOf(input);
+                numbers.add(num);
             } catch (Exception e) {
                 throw new IllegalArgumentException("[ERROR]: 입력값이 숫자가 아닙니다.");
             }
@@ -85,9 +87,20 @@ public class Application {
         return numbers;
     }
 
-    public static void validLuckyNumbers(List<Integer> inputNums) {
+    public static void validLuckyNumbers(List<Integer> inputNums) throws IllegalArgumentException {
         if(inputNums.size() != inputNums.stream().distinct().count()){
             throw new IllegalArgumentException("[ERROR]: 당첨번호에 중복된 숫자가 있습니다.");
+        }
+    }
+
+    public static void checkRange(List<Integer> inputNums) throws IllegalArgumentException {
+        for (int num : inputNums) {
+            if (num < 1) {
+                throw new IllegalArgumentException("[ERROR]: 1보다 작은 당첨번호를 입력하였습니다. " + num);
+            }
+            if (num > 45) {
+                throw new IllegalArgumentException("[ERROR]: 45보다 큰 당첨번호를 입력하였습니다. " + num);
+            }
         }
     }
 
