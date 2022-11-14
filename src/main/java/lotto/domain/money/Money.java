@@ -28,8 +28,7 @@ public class Money {
 	}
 
 	public void isGreaterThanZero(int money) {
-		int quotientNumber = money / LOTTO_PURCHASE_AMOUNT;
-		if (quotientNumber == 0) {
+		if (money == 0) {
 			throw new IllegalArgumentException(LOTTO_PURCHASE_AMOUNT_NOT_ZERO);
 		}
 	}
