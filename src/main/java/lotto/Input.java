@@ -33,8 +33,8 @@ public class Input {
 
     public static List<Integer> getWinningNumbers() {
         String input = Console.readLine();
+        validWinning6Numbers(input);
         String[] split = input.split(",");
-        validWinning6Numbers(split);
         validWinningRepetition(split);
         return toIntegerList(split);
     }
@@ -63,8 +63,8 @@ public class Input {
         }
     }
 
-    private static void validWinning6Numbers(String[] split) throws IllegalArgumentException {
-        if (split.length != 11) {
+    private static void validWinning6Numbers(String input) throws IllegalArgumentException {
+        if (input.length() != 11) {
             System.out.println("[ERROR] 쉼표로 구분된 6개의 문자가 아닙니다.");
             throw new IllegalArgumentException();
         }
