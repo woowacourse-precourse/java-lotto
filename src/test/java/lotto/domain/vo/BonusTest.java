@@ -33,7 +33,7 @@ class BonusTest {
         assertEquals(ErrorCode.NOT_CONTAINS_IN_LOTTO.getErrorMessage(), exception.getMessage());
     }
 
-    @DisplayName("unvalidated Range")
+    @DisplayName("Unvalidated Range")
     @ParameterizedTest(name = "[{index}] input {0} ")
     @ValueSource(ints = {-1, 0, 46})
     void validateRange_0or46_NOTINRANGE(int bonus) {
