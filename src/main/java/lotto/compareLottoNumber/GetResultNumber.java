@@ -31,4 +31,23 @@ public class GetResultNumber {
         }
     }
 
+    public boolean validationBonusNumber(int[] prizeNumber, int bonusNumber) {
+        return validate.wrongNumber(bonusNumber) || validate.duplicateNumber(bonusNumber, prizeNumber);
+    }
+
+    public int getBonusNumberFromUser(int[] prizeNumber) {
+        try {
+            int bonusNumber = Integer.parseInt(Console.readLine());
+
+            if (validationBonusNumber(prizeNumber, bonusNumber)) {
+                throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+
+            return bonusNumber;
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException("올바른 숫자를 입력해주세요.");
+        }
+    }
+
 }
