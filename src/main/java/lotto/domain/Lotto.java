@@ -9,10 +9,6 @@ import static lotto.domain.LottoGenerator.MINIMUM_LOTTO_NUMBER;
 
 public class Lotto {
 
-    protected static final String DUPLICATED_NUMBER_ERROR = "중복된 당첨 번호가 존재합니다.";
-    private static final String INVALID_NUMBER_COUNT_ERROR = "당첨 번호는 6개여야 합니다.";
-    private static final String OUT_OF_RANGE_NUMBER_ERROR = "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -49,10 +45,10 @@ public class Lotto {
     }
 
     public String getSortedNumbers() {
-        return String.join(", ", toSortedNumbers());
+        return String.join(", ", sortNumbers());
     }
 
-    private List<String> toSortedNumbers() {
+    private List<String> sortNumbers() {
         return numbers.stream()
                 .sorted()
                 .map(String::valueOf)
