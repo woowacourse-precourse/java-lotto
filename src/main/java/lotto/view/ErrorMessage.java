@@ -1,4 +1,4 @@
-package lotto;
+package lotto.view;
 
 public enum ErrorMessage {
     NOT_COAST("[ERROR] 1000원 단위로 구매해주세요."),

@@ -1,8 +1,13 @@
-package lotto;
+package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Lotto;
+import lotto.domain.GetBonusNumber;
+import lotto.domain.GetWinningNumber;
+import lotto.domain.LottoStore;
+import lotto.view.PrintMachine;
 
-public class DoLotto {
+public class LottoController {
     public void startLotto() {
         LottoStore lottoStore = new LottoStore();
         GetWinningNumber winningLotto = new GetWinningNumber();

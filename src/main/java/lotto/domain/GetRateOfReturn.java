@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.view.WinningMessage;
 
 public class GetRateOfReturn {
     public String calculateRate(long [] result, long money){

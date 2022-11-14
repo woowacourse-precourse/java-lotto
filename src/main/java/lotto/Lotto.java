@@ -1,5 +1,11 @@
 package lotto;
 
+import lotto.domain.GetRateOfReturn;
+import lotto.domain.LottoPaper;
+import lotto.domain.Validate;
+import lotto.view.ErrorMessage;
+import lotto.view.PrintMachine;
+
 import java.util.List;
 
 public class Lotto {

@@ -1,9 +1,11 @@
-package lotto;
+package lotto.view;
+
+import lotto.domain.LottoPaper;
 
 import java.util.List;
 
 public class PrintMachine {
-    private static String volume = "개";
+    private static final String volume = "개";
     public static void askPriceToBuy(){
         System.out.println("구입금액을 입력해 주세요.");
     }

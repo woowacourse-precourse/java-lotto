@@ -1,4 +1,4 @@
-package lotto;
+package lotto.view;
 
 public enum WinningMessage {
 
@@ -21,5 +21,4 @@ public enum WinningMessage {
     public int getMoney() {
         return money;
     }
-
 }

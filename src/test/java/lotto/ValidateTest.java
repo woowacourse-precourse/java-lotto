@@ -2,6 +2,8 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.*;
 
+import lotto.domain.Validate;
+import lotto.view.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
