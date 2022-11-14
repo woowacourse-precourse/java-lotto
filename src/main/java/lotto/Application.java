@@ -30,6 +30,6 @@ public class Application {
     private final static int PRICE_PER_LOTTERY = 1000;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
     }
 }
