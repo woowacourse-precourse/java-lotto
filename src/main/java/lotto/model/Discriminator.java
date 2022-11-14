@@ -5,6 +5,7 @@ import java.util.List;
 public class Discriminator {
     private static final int ZERO = 0;
     private static final int COUNT = 1;
+    private static final int SECOND_RANK_CONDITION = 5;
     private final List<Integer> raffleNumbers;
     private final int bonusNumber;
 
@@ -21,5 +22,8 @@ public class Discriminator {
             }
         }
         return numberOfMatches;
+    }
+    public boolean canSecondRank(int raffleNumberMatches) {
+        return raffleNumberMatches == SECOND_RANK_CONDITION;
     }
 }
