@@ -5,10 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LottoMachine {
-    private static final String ERROR_MESSAGE = "[ERROR]";
     private final int LOTTO_PRICE = 1000;
     private final int[] PRIZE = { 0, 2000000000, 30000000, 1500000, 50000, 5000};
     private int paid;
@@ -27,13 +28,13 @@ public class LottoMachine {
 
     private void validateMoney(String input){
         if(!input.matches("[0-9]+")){
-            System.out.println("[ERROR]");
+            System.out.println("[ERROR] 숫자만 입력해 주세요");
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요");
 
         }
         int money = Integer.parseInt(input);
-
-        if(money != 0 && money % LOTTO_PRICE != 0){
+        if(money == 0  || money % LOTTO_PRICE != 0){
+            System.out.println("[ERROR] 1000원 단위로 입력해 주세요");
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해 주세요");
         }
     }
@@ -85,6 +86,7 @@ public class LottoMachine {
         }
     }
     public void printResult(){
+        String rate = String.format("%.1f", (double) revenue * 100 / paid);
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - "+result[5]+"개");
@@ -92,7 +94,7 @@ public class LottoMachine {
         System.out.println("5개 일치 (1,500,000원) - "+ result[3]+"개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+result[2]+"개");
         System.out.println("6개 일치 (2,000,000,000원) - "+result[1]+"개");
-        System.out.println("총 수익률은 " + (double) revenue*100/paid + "%입니다.");
+        System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 
 
