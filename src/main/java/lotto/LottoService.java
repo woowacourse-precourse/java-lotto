@@ -32,11 +32,13 @@ public class LottoService {
         return lotto;
     }
 
-    public void compare(List<Lotto> lottos, WinnerLotto winnerLotto) {
+    public Map<LottoRank, Integer> compare(List<Lotto> lottos, WinnerLotto winnerLotto) {
         for (Lotto lotto : lottos) {
-            long count = winnerLotto.matchNumbers(lotto);
-            boolean isBonus = winnerLotto.matchBonus(lotto);
+            LottoRank rank = winnerLotto.matchAll(lotto);
+            lottoResult.put(rank, lottoResult.get(rank) + 1);
         }
+        return lottoResult;
     }
 }
+
 
