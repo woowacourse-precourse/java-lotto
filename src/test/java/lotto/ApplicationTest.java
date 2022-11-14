@@ -94,6 +94,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 로또_번호가_문자가_섞여있을_때() {
+        assertSimpleTest(() -> {
+            runException("12000", "1,10,12,15,16,r");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
