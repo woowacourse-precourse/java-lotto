@@ -25,6 +25,7 @@ public class LottoSystem {
         List<LottoRanking> lottoResult = makeResult(winningLotto);
         outputView.printLottoResult(lottoResult);
         int prizeMoney = calculatePrizeMoey(lottoResult);
+        outputView.printYield(calculateYield(prizeMoney, userMoney));
     }
 
     public double calculateYield(int prizeMoney, int userMoney) {

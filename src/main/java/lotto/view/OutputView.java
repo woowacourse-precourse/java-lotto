@@ -21,4 +21,7 @@ public class OutputView {
             System.out.println(sb);
         }
     }
+    public void printYield(double yield) {
+        System.out.format("%.1f%%%n", yield);
+    }
 }
