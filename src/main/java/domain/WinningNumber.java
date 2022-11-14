@@ -25,4 +25,12 @@ public class WinningNumber {
             throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_NUMBER_COUNT.getErrorMessage());
         }
     }
+
+    public void numberRange(List<Integer> list){
+        for(int num : list){
+            if(num < 1 || num > 45){
+                throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_NUMBER_RANGE.getErrorMessage());
+            }
+        }
+    }
 }
