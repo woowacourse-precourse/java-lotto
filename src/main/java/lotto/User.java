@@ -26,7 +26,7 @@ public class User {
     this.userLottoList = userLottoList;
   }
 
-  public void printUserLottoList(){
+  public void printUserLottoList() {
     for (Lotto lotto : userLottoList) {
       System.out.println(lotto.getLottoString());
     }

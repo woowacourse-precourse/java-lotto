@@ -11,7 +11,7 @@ public class InputUtil {
     return stringToInt(Console.readLine());
   }
 
-  public static Lotto getPrizeLotto(){
+  public static Lotto getPrizeLotto() {
     return stringToLotto(Console.readLine());
   }
 
@@ -28,7 +28,7 @@ public class InputUtil {
     return new Lotto(stringListToIntegerList(strList));
   }
 
-  private static List<Integer> stringListToIntegerList(List<String> strList){
+  private static List<Integer> stringListToIntegerList(List<String> strList) {
     List<Integer> intList;
     try {
       intList = strList.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
