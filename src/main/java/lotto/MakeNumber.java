@@ -3,7 +3,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class MakeNumber {
@@ -15,10 +14,10 @@ public class MakeNumber {
         List<List> numbers = new ArrayList<>();
         for (int i = 0; i < buyCount; i++) {
             List<Integer> number = Randoms.pickUniqueNumbersInRange(startInclusive,endInclusive,count);
-            number.sort(Comparator.naturalOrder());
+            System.out.println(number);
+
             numbers.add(number);
         }
-        System.out.println(numbers);
         return numbers;
     }
 }
