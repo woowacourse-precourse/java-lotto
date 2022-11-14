@@ -48,4 +48,8 @@ public class MessagePrinter {
             System.out.printf((NOTIFY_WINNING_RECORD) + "%n" + rank.getReward() + rankRecord.get(rank));
         }
     }
+
+    public void printStaticStatisticsTopic() {
+        System.out.println(NOTIFY_TOPIC_STATISTICS);
+    }
 }
