@@ -43,6 +43,7 @@ public class Jackpot {
     }
 
     public static void compare_jackpot_and_lotto(){
-        Lotto.compare_prepare(PickNumber.get_purchased_lotto_list(),jackpot_number_static,bonus_number_static);
+        JackpotResult jr=new JackpotResult();
+        Lotto.compare_prepare(PickNumber.get_purchased_lotto_list(),jackpot_number_static,bonus_number_static,jr);
     }
 }
