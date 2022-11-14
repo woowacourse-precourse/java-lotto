@@ -28,7 +28,7 @@ public class MoneyTest {
 
     @DisplayName("정상 금액 입력시 예외가 발생하지 않는다.")
     @Test
-    void createBonusBySuccess() {
+    void createMoneyBySuccess() {
         assertDoesNotThrow(() -> new Money(3000));
     }
 }
