@@ -7,49 +7,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final String ERROR_MESSAGE = "[ERROR] ";
     public static void main(String[] args) {
-        inputPrint();
-        String inputMoney = Console.readLine();
-        int lottoCount = Lotto.calculate(inputMoney);
-        countPrint(lottoCount);
+        try {
+            inputPrint();
+            String inputMoney = Console.readLine();
+            Lotto.checkIsInt(inputMoney);
+            int lottoCount = Lotto.calculate(inputMoney);
+            countPrint(lottoCount);
 
-        List<List<Integer>> allLotto = new ArrayList<>();
+            List<List<Integer>> allLotto = new ArrayList<>();
 
-        for(int i = 0; i < lottoCount; i++){
-            List <Integer> numbers = new ArrayList<>();
-            Lotto lotto = new Lotto(numbers);
-            allLotto.add(Lotto.allNumbers);
+            for(int i = 0; i < lottoCount; i++){
+                List <Integer> numbers = new ArrayList<>();
+                new Lotto(numbers);
+                allLotto.add(Lotto.allNumbers);
+            }
+
+            disableWarning();
+
+            numbersPrint();
+            String inputNumbers = Console.readLine();
+            Winning.addWinning(inputNumbers);
+
+            bonusPrint();
+            String inputBonus = Console.readLine();
+            Winning.addBonus(inputBonus);
+
+            Compare compare = new Compare();
+
+            Report report = new Report(Rank.None);
+
+            int totalPrize = 0;
+
+            for(int i = 0; i < allLotto.size(); i++){
+                int matchNumber = compare.matchCount(allLotto.get(i),Winning.numbers);
+                boolean matchBonus = compare.matchBonus(allLotto.get(i), Winning.numbers);
+
+                Rank rank = Rank.valueOf(matchNumber, matchBonus);
+
+                report = new Report(rank);
+                report.winningCount(matchNumber, matchBonus);
+
+                totalPrize += rank.getPrize();
+            }
+            double returnRate = returnRate(lottoCount * 1000, totalPrize);
+            reportPrint(report.winningCount, returnRate);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ERROR_MESSAGE + e.getMessage());
         }
 
-        disableWarning();
-
-        numbersPrint();
-        String inputNumbers = Console.readLine();
-        Winning.addWinning(inputNumbers);
-
-        bonusPrint();
-        String inputBonus = Console.readLine();
-        Winning.addBonus(inputBonus);
-
-        Compare compare = new Compare();
-
-        Report report = new Report(Rank.None);
-
-        int totalPrize = 0;
-
-        for(int i = 0; i < allLotto.size(); i++){
-            int matchNumber = compare.matchCount(allLotto.get(i),Winning.numbers);
-            boolean matchBonus = compare.matchBonus(allLotto.get(i), Winning.numbers);
-
-            Rank rank = Rank.valueOf(matchNumber, matchBonus);
-
-            report = new Report(rank);
-            report.winningCount(matchNumber, matchBonus);
-
-            totalPrize += rank.getPrize();
-        }
-        double returnRate = returnRate(lottoCount * 1000, totalPrize);
-        reportPrint(report.winningCount, returnRate);
     }
 
     public static void inputPrint(){
