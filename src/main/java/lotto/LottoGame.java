@@ -15,7 +15,7 @@ public class LottoGame {
         this.validateBonusNumber(bonusNumber);
     }
 
-    public LottoResult play() {
+    public LottoResult generateResult() {
         List<Rank> ranks = publishedLottos.calculateResultRanks(bonusNumber);
         EnumMap<Rank, Integer> ranksResult = new EnumMap<>(Rank.class);
 

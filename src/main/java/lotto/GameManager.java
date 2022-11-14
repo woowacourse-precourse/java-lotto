@@ -25,7 +25,7 @@ public class GameManager {
         Integer bonusNumber = inputBonusNumber();
 
         LottoGame game = new LottoGame(bonusNumber, winningLotto, publishedLottos);
-        LottoResult result = game.play();
+        LottoResult result = game.generateResult();
         View.printLottoResult(result, price);
     }
 

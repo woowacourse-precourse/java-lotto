@@ -30,7 +30,7 @@ class LottoGameTest {
         LottoResult expectResult = new LottoResult(expectRanks);
 
         //when
-        LottoResult result = game.play();
+        LottoResult result = game.generateResult();
 
         //then
         assertThat(result.ranks).isEqualTo(expectResult.ranks);
