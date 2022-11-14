@@ -92,7 +92,7 @@ class LottoTest {
         /*given*/
         Integer playLottoTicketCountSizeTest = 8;
         /*when*/
-        Integer playLottoTicketCountSize = playLotto.playLottoTicketCount(8).size();
+        Integer playLottoTicketCountSize = playLotto.allTicket(8).size();
         /*then*/
         assertThat(playLottoTicketCountSizeTest).isEqualTo(playLottoTicketCountSize);
     }
@@ -100,7 +100,7 @@ class LottoTest {
     @DisplayName("티켓은 오름차순 정렬하여 보여준다.")
     @Test
     void playLottoTicketASCTest() {
-        List<List<Integer>> ASCTest = playLotto.playLottoTicketCount(6);
+        List<List<Integer>> ASCTest = playLotto.allTicket(6);
         for (List<Integer> ASCTestMinimum : ASCTest) {
             for (int i = 0; i < 5; i++) {
                 assertThat(ASCTestMinimum.get(i)).isLessThan(ASCTestMinimum.get(i + 1));
