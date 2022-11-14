@@ -41,4 +41,26 @@ public class ValidatorProcessorTest {
                 })
         );
     }
+
+    @TestFactory
+    @DisplayName("ValidatorProcessor validateLottoNumberInput Test")
+    Stream<DynamicTest> ValidatorProcessorValidateLottoNumberInputTest() {
+        validatorProcessor = new ValidatorProcessorImpl();
+
+        return Stream.of(
+                DynamicTest.dynamicTest(" 통과", () -> {
+                    final String input = "1,2,3,4,5,6";
+                    List<Integer> result = validatorProcessor.validateLottoNumberInput(input);
+
+                    assertThat(result.size()).isEqualTo(LottoEnum.LOTTO.getSize());
+                }),
+                DynamicTest.dynamicTest("입력이 잘못된 경우 예외를 던져준다.", () -> {
+                    final String input = "1,2,3,4,5,r";
+
+                    assertThatThrownBy(() -> validatorProcessor.validateLottoNumberInput(input))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("잘못된 입력값 입니다.");
+                })
+        );
+    }
 }
