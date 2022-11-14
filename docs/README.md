@@ -1,4 +1,12 @@
 * 기능 구현 목록
-  * Class Lotto
-  * Class Result
-  * Class Input
+  * Input
+    * [ ] 구매금액 입력
+    * [ ] 당첨 번호 입력
+    * [ ] 보너스 번호 입력
+  * Lotto
+    * [ ] 로또 번호 추첨기 생성
+      * [ ] 정렬
+    * [ ] 예외 상황 생성 (validate)
+  * statistics
+    * [ ] 로또 번호 추첨기와 당첨 번호 비교
+    * [ ] 수익률 구현
