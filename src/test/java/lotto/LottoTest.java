@@ -95,12 +95,12 @@ class LottoTest {
                 .isEqualTo(10);
     }
 
-    @DisplayName("입력된 당첨 번호가 1~45 범위에서 벗어나면 예외가 발생한다.")
+    @DisplayName("입력된 당첨 번호 또는 보너스 번호가 1~45 범위에서 벗어나면 예외가 발생한다.")
     @Test
-    void inputWinningNumbersError() {
+    void inputNumbersError() {
         // given
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 46);
-        int bonusNumber = 7;
+        int bonusNumber = 17;
 
         // when
         Lotto winningNumber = new Lotto(winningNumbers);
@@ -110,22 +110,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("입력된 보너스 번호가 당첨 번호와 중복되면 예외가 발생한다.")
-    @Test
-    void inputBonusNumbersError() {
-        // given
-        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
-        int bonusNumber = 6;
-
-        // when
-        Lotto winningNumber = new Lotto(winningNumbers);
-
-        // then
-        assertThatThrownBy(() -> new WinningNumbers(winningNumber, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("입력된 보너스 번호에 중복 숫자가 존재하면 예외가 발생한다.")
+    @DisplayName("입력된 당첨 번호에 중복 숫자가 존재하면 예외가 발생한다.")
     @Test
     void inputWinningNumbersDuplicated() {
         // given
@@ -139,5 +124,21 @@ class LottoTest {
         assertThatThrownBy(() -> new WinningNumbers(winningNumber, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력된 보너스 번호가 당첨 번호와 중복되면 예외가 발생한다.")
+    @Test
+    void inputBonusNumbersDuplicated() {
+        // given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 6;
+
+        // when
+        Lotto winningNumber = new Lotto(winningNumbers);
+
+        // then
+        assertThatThrownBy(() -> new WinningNumbers(winningNumber, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }

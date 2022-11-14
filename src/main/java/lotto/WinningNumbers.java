@@ -28,11 +28,12 @@ public class WinningNumbers {
     for (int number: winningNumber.getNumbers()) {
       isBetween(number);
     }
+    isBetween(bonusNumber);
   }
 
   public void isDuplicatedWinningNum(Lotto winningNumber) {
     if (new HashSet<>(winningNumber.getNumbers()).size() != winningNumber.getNumbers().size()) {
-      throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복 숫자가 없습니다.");
+      throw new IllegalArgumentException("[ERROR] 당첨 번호에는 중복 숫자가 없어야 합니다.");
     }
   }
 
