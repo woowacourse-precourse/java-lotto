@@ -16,4 +16,17 @@ public class OutputView {
             System.out.println(transLottoNumbersToForm(lotto.getNumbers()));
         }
     }
+
+    public void showTotalResult(ResultLotto resultLotto, int buyMoney){
+        System.out.println(RESULT_LOTTO);
+        String output;
+        DecimalFormat df = new DecimalFormat("###,###");
+        for(MatchMoney matchMoney : resultLotto.getMap().keySet()){
+            String format = df.format(matchMoney.getPrice());
+            String message = selectMessage(matchMoney);
+            output = String.format(message,matchMoney.getMatchNumber(), format, resultLotto.getMap().get(matchMoney));
+            System.out.println(output);
+        }
+        System.out.println(String.format(RESULT_YEILD, resultLotto.calYield(buyMoney)));
+    }
 }
