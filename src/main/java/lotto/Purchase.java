@@ -1,7 +1,7 @@
 package lotto;
 
 public class Purchase {
-    static Integer lottoSize;
+    private Integer lottoSize;
     public static final String ERROR_PRICE = "[ERROR] Price should be at least 1000.";
 
     public Purchase(Integer price) {
@@ -15,4 +15,8 @@ public class Purchase {
         }
     }
 
+    public Integer getSize() {
+        Integer size = this.lottoSize;
+        return size;
+    }
 }
