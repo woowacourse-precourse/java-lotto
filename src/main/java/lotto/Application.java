@@ -13,10 +13,10 @@ public class Application {
         lottoStore.insertMoney();
         lottoStore.getLottoPaper();
         PrintMachine.askWinningNumber();
-        List<Integer> winningNumber= createWinningNumber.makeWinningNumber(Console.readLine());
-        Lotto lotto = new Lotto(winningNumber);
+        createWinningNumber.makeWinningNumber(Console.readLine());
+        Lotto lotto = new Lotto(createWinningNumber.winningNumber);
         PrintMachine.askBonusNumber();
-        bonusNumber.getBonusNumber(winningNumber, Console.readLine());
+        bonusNumber.getBonusNumber(createWinningNumber.winningNumber, Console.readLine());
         lotto.getResult(lottoStore.lottoPapers, lottoStore.validMoney, bonusNumber.bonus);
     }
 }

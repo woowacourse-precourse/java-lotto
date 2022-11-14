@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetUerNumber {
-      public List<Integer> makeWinningNumber(String userInput){
+    public List<Integer> winningNumber;
+      public void makeWinningNumber(String userInput){
         Validate checkLottoNumber = new Validate();
-        List<Integer> WinningNumber = new ArrayList<>();
+        winningNumber = new ArrayList<>();
         checkLottoNumber.validateUserInput(userInput);
         String [] splitNumber = userInput.split(",");
         for (String num : splitNumber) {
-            WinningNumber.add(Integer.parseInt(num));
+            winningNumber.add(Integer.parseInt(num));
         }
-        return WinningNumber;
     }
 }
