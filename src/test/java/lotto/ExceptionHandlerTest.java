@@ -64,7 +64,7 @@ public class ExceptionHandlerTest {
         Throwable exception = assertThrows(IllegalArgumentException.class,
                 () -> ExceptionHandler.checkOverSize(numbers));
 
-        assertEquals(exception.getMessage(), Error.OVER_SIZE.getMessage());
+        assertEquals(exception.getMessage(), Error.INVALID_SIZE.getMessage());
     }
 
     @DisplayName("중복된 숫자가 포함되는 경우, 예외 발생")

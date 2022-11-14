@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.data.Error;
-import lotto.domain.ExceptionHandler;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Error.OVER_SIZE.getMessage());
+            throw new IllegalArgumentException(Error.INVALID_SIZE.getMessage());
         }
     }
 
