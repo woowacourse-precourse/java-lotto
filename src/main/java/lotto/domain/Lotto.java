@@ -12,9 +12,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Validator.isCorrectSize(numbers);
-        Validator.isDuplicated(numbers);
-        Validator.isInRange(numbers);
+        Validator.validateNumbers(numbers);
     }
 
     public List<Integer> getNumbers() {
