@@ -29,9 +29,6 @@ public class WinNumber {
         if (hasWrongSize(winNumbers)) {
             throw ExceptionType.COUNT.getException();
         }
-        if (hasDuplicateNumber(winNumbers)) {
-            throw ExceptionType.DUPLICATE.getException();
-        }
         if (hasNumberOutOfRange(winNumbers) || isNumberOutOfRange(bonusNumber)) {
             throw ExceptionType.RANGE.getException();
         }
@@ -42,10 +39,6 @@ public class WinNumber {
 
     private static boolean hasWrongSize(Set<Integer> numbers) {
         return !CollectionValidator.hasSizeOf(numbers, ConstantNumberType.COUNT.getValue());
-    }
-
-    private static boolean hasDuplicateNumber(Set<Integer> numbers) {
-        return !CollectionValidator.hasUniqueElementsOnly(numbers);
     }
 
     private static boolean hasNumberOutOfRange(Set<Integer> numbers) {
