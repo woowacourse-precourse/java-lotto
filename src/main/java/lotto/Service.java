@@ -7,13 +7,11 @@ import java.util.List;
 public class Service {
 
     private static final int LOTTERY_PRICE = 1000;
-    private static final int LOTTERY_NUMBER_MAX = 45;
-    private static final int LOTTERY_NUMBER_MIN = 1;
-    private static final int LOTTERY_NUMBERS_SIZE = 6;
+    private static final int BONUS_CRITERIA = 5;
     private static final String NUMBER_REGEX = "[+-]?\\d*(\\.\\d+)?";
 
     Exception exception = new Exception();
-    LottoGroup lottoGroup = new LottoGroup();
+
 
     public int stringToInt(String string) {
         if(!isInteger(string)){
@@ -44,7 +42,7 @@ public class Service {
         return lotteryCount;
     }
 
-    public List<Lotto> createLotteryTickets(int numberOfTickets) {
+    public List<Lotto> createLotteryTickets(int numberOfTickets, LottoGroup lottoGroup) {
         for(int count = 0; numberOfTickets > count; count++) {
             lottoGroup.createLotto();
         }
@@ -55,7 +53,7 @@ public class Service {
         return Arrays.asList(string.split(","));
     }
 
-    public List<Integer> stringsToIntegers(List<String> strings) {
+    public List<Integer> toIntegers(List<String> strings) {
         List<Integer> integers = new ArrayList<>();
 
         for(String string : strings) {
@@ -69,4 +67,35 @@ public class Service {
 
         return integers;
     }
+
+    public RankType getLotteryRank(Lotto lotto, WinningNumber winningNumber) {
+       int matchNumberCount = matchNumberCount(lotto.getNumbers(), winningNumber.getLotto().getNumbers());
+
+       boolean isMatchNumber = true;
+
+       if(matchNumberCount == BONUS_CRITERIA) {
+           isMatchNumber = isMatchNumber(winningNumber.getBonus(), lotto.getNumbers());
+       }
+       return RankType.findRankType(matchNumberCount, isMatchNumber);
+    }
+
+
+    public int matchNumberCount(List<Integer> numbers, List<Integer> comparisonCriteria) {
+        int count = 0;
+        for(int loopCount = 0; numbers.size() > loopCount; loopCount++) {
+            if(comparisonCriteria.contains(numbers.get(loopCount))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public boolean isMatchNumber(int number, List<Integer> comparisonCriteria) {
+        if(comparisonCriteria.contains(number)) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

@@ -1,9 +1,13 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -11,10 +15,14 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 public class ServiceTest {
 
     private Service service;
+    private Lotto lotto;
+    private WinningNumber winningNumber;
 
     @BeforeEach
     void setUp() {
         service = new Service();
+        lotto = new Lotto(List.of(1,2,3,4,5,6));
+
     }
 
     @DisplayName("문자열을 정수로 변경시키는 메서드 테스트")
@@ -50,7 +58,7 @@ public class ServiceTest {
     void createLotteryTicketsTest() {
         int numberOfLotteryTickets = 10;
 
-        assertThat(service.createLotteryTickets(numberOfLotteryTickets).size())
+        assertThat(service.createLotteryTickets(numberOfLotteryTickets, new LottoGroup()).size())
                 .isEqualTo(numberOfLotteryTickets);
     }
 
@@ -65,13 +73,32 @@ public class ServiceTest {
     @DisplayName("문자열 리스트를 정수 리스트로 반환하는 기능 테스트")
     @Test
     void stringsToIntegersTest() {
-        assertThat(service.stringsToIntegers(List.of("1", "2", "3"))).isEqualTo(List.of(1, 2, 3));
+        assertThat(service.toIntegers(List.of("1", "2", "3"))).isEqualTo(List.of(1, 2, 3));
     }
 
     @DisplayName("문자열 리스트가 정수가 아니라면 예외 발생")
     @Test
     void stringToIntegerExceptionTest() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> service.stringsToIntegers(List.of("1", "2", "문자열")));
+                .isThrownBy(() -> service.toIntegers(List.of("1", "2", "문자열")));
+    }
+
+    @DisplayName("로또의 순위를 반환하는 테스트")
+    @ParameterizedTest
+    @MethodSource("provideLottoAndWinningNumber")
+    void getLotteryRankTest(Lotto lotto, WinningNumber winningNumber, RankType rankType) {
+        assertThat(service.getLotteryRank(lotto, winningNumber)).isEqualTo(rankType);
+    }
+
+    private static Stream<Arguments> provideLottoAndWinningNumber() {
+        int bonusNumber = 20;
+        WinningNumber winningNumber = new WinningNumber(new Lotto(List.of(1,2,3,4,5,6)), bonusNumber);
+        return Stream.of(
+                Arguments.of(new Lotto(List.of(1,2,3,4,5,6)), winningNumber, RankType.FIRST),   //1등
+                Arguments.of(new Lotto(List.of(1,2,3,4,5,20)), winningNumber, RankType.SECOND),  //2등
+                Arguments.of(new Lotto(List.of(1,2,3,4,5,7)), winningNumber, RankType.THIRD),  //3등..
+                Arguments.of(new Lotto(List.of(1,2,3,4,9,8)), winningNumber, RankType.FOURTH),
+                Arguments.of(new Lotto(List.of(1,2,3,10,11,20)), winningNumber, RankType.FIFTH)
+        );
     }
 }
