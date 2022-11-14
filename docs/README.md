@@ -10,7 +10,7 @@
 - [x] 보너스 번호를 입력받는다.  -PrizeNumber#bonusNumber()
 
 ## 3. enum을 생성한다.  -PrizeCategory()
-- [] 사용자와 당첨번호의 일치 갯수에 따른 당첨금의 enum을 생성한다.  -PrizeCategory()
+- [x] 사용자와 당첨번호의 일치 갯수에 따른 당첨금의 enum을 생성한다.  -PrizeCategory()
 
 ## 4. 로또 결과를 분석한다.  - Analyze()
 
