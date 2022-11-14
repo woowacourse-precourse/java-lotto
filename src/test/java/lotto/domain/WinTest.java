@@ -25,8 +25,8 @@ class WinTest {
     public void createWin() {
         List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         int bonusNumber = 7;
-
-        Win win = Win.compare(ticket, winningNumbers, bonusNumber);
+        Win win = new Win();
+        win.compareAllLotto(ticket, winningNumbers, bonusNumber);
         assertThat(win).isInstanceOf(Win.class);
     }
 
@@ -36,8 +36,8 @@ class WinTest {
         List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         int bonusNumber = 7;
         int money = Rank.FIRST.getWinnings();
-
-        Win win = Win.compare(ticket, winningNumbers, bonusNumber);
+        Win win = new Win();
+        win.compareAllLotto(ticket, winningNumbers, bonusNumber);
         assertThat(win.getWinnings()).isEqualTo(money);
     }
 }
