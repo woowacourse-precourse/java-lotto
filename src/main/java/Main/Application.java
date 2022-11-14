@@ -3,6 +3,7 @@ package Main;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -12,7 +13,16 @@ public class Application {
         //BuyLotto butlotto = new BuyLotto();
     	
     	System.out.println("구입금액을 입력해 주세요.");
-    	int n = Integer.parseInt(Console.readLine()) / 1000;
+    	String s = Console.readLine();
+    	try {
+    		change(s);
+    	}
+    	catch(IllegalArgumentException e) {
+    		System.out.println(e.getMessage());
+    		return;
+    	}
+    	
+    	int n = Integer.parseInt(s) / 1000;
     	
     	ArrayList<Integer>[] arr = new ArrayList[n];
     	for(int i = 0; i < n; i++) {
@@ -22,16 +32,11 @@ public class Application {
     	System.out.println("\n" + n + "개를 구매했습니다.");
     	for(int i = 0; i < n; i++) {
     		
-    		arr[i] = input(n);
+    		arr[i] = new ArrayList<>(input());
     		
-    		System.out.print("[");
-    		for(int j = 0; j < arr[i].size(); j++) {
-    			System.out.print(arr[i].get(j));
-    			if(j < arr[i].size() - 1) {
-    				System.out.print(", ");
-    			}
-    		}
-    		System.out.println("]");
+    		Collections.sort(arr[i]);
+    		
+    		System.out.println(arr[i]);
     	}
     	
     	System.out.println("\n당첨 번호를 입력해 주세요.");
@@ -82,6 +87,16 @@ public class Application {
     	System.out.println("총 수익률은 " + String.format("%.1f", percent) + "%입니다.");
     }
     
+    public static void change(String s) {
+    	int n = 0;
+    	try {
+    		n = Integer.parseInt(s);
+    	}
+    	catch(NumberFormatException e) {
+    		throw new IllegalArgumentException("[ERROR] ");
+    	}
+    }
+    
     public static int result(ArrayList<Integer> arr, int[] win_number) {
     	int number_count = 0;
     	for(int i = 0; i < win_number.length; i++) {
@@ -97,22 +112,10 @@ public class Application {
     	return arr.contains(bonus_number);
     }
     
-    public static ArrayList<Integer> input(int n){
-    	ArrayList<Integer> input_number = new ArrayList<>();
+    public static List<Integer> input(){
+    	List<Integer> input_number;
     	
-    	int count = 0;
-		boolean[] check = new boolean[46];
-    	while(count != 6) {
-			int number = Randoms.pickNumberInRange(1, 45);
-			
-			if(!check[number]) {
-				check[number] = true;
-				input_number.add(number);
-				count++;
-			}
-		}
-    	
-    	Collections.sort(input_number);
+    	input_number = Randoms.pickUniqueNumbersInRange(1, 45, 6);
     	
     	return input_number;
     }
