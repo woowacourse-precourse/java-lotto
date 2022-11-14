@@ -2,9 +2,9 @@ package lotto.domain;
 
 import lotto.constant.LottoConstants;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.LongStream;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 final class LottoCreator {
     private static final String NULL_MESSAGE = "숫자를 뽑는 방식에 null 이 들어왔습니다";
@@ -23,17 +23,18 @@ final class LottoCreator {
 
     public Lottos createLottos(Money money) {
         long count = money.ableToBuy();
-        List<Lotto> lottos = new ArrayList<>();
-        LongStream.range(0, count)
-                .forEach(__ -> addLotto(lottos));
+        List<Lotto> lottos = Stream.generate(() -> generateNumbers())
+                .limit(count)
+                .map(Lotto::new)
+                .collect(Collectors.toList());
         return new Lottos(lottos);
     }
 
-    private void addLotto(List<Lotto> lottos) {
-        List<Integer> numbers = pickNumbers.pickUniquesInRange(
+    private List<Integer> generateNumbers() {
+        return pickNumbers.pickUniquesInRange(
                 LottoConstants.LOTTO_START_INCLUSIVE.value(),
                 LottoConstants.LOTTO_END_INCLUSIVE.value(),
-                LottoConstants.LOTTO_LENGTH.value());
-        lottos.add(new Lotto(numbers));
+                LottoConstants.LOTTO_LENGTH.value()
+        );
     }
 }
