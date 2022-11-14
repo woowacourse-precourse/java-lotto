@@ -25,7 +25,7 @@ public enum Prize {
                 .filter(prize -> prize.matchingCount == matchingCount
                                          && prize.hasBonusNumber == hasBonusNumber)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("there is no matched Prize"));
+                .orElse(null);
     }
 
     public int getMoney() {
