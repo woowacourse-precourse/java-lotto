@@ -1,6 +1,7 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import lotto.domain.Lotto;
 import lotto.domain.UserLotto;
 import lotto.domain.Bonus;
@@ -11,32 +12,47 @@ import static lotto.domain.Preprocessor.splitNumber;
 import static lotto.domain.Preprocessor.convertStringToInt;
 import static lotto.domain.Preprocessor.convertStringListToIntegerList;
 
-import static lotto.domain.Guide.printGetMoney;
-import static lotto.domain.Guide.printLottoCount;
-import static lotto.domain.Guide.printBoughtLottoList;
-import static lotto.domain.Guide.printGetWinningNumber;
-import static lotto.domain.Guide.printGetBonusNumber;
-import static lotto.domain.Guide.printLottoStatistics;
-import static lotto.domain.Guide.printRateOfReturn;
-import static lotto.domain.Guide.createLottoStatisticsMessage;
+import static lotto.domain.Guide.*;
 
 import static lotto.domain.NumberGenerator.createLottoList;
 import static lotto.domain.UserLotto.createLottoResult;
 
 public class Application {
+    static final int ROUND_NUMBER = 1;
+
     public static void main(String[] args) {
-        printGetMoney();
-        UserLotto user = new UserLotto(Console.readLine());
+        UserLotto user = createUserLotto();
         int lottoCount = user.getLottoCount();
-        printLottoCount(lottoCount);
-        List<Lotto> boughtLotto = createLottoList(lottoCount);
+        List<Lotto> boughtLotto = createBoughtLotto(lottoCount);
+
         printBoughtLottoList(boughtLotto);
-        printGetWinningNumber();
-        Lotto winningNumbers = new Lotto(convertStringListToIntegerList(splitNumber(Console.readLine())));
-        printGetBonusNumber();
-        Bonus bonusNumber = new Bonus(convertStringToInt(Console.readLine()), winningNumbers);
-        List<Integer> lottoResult = createLottoResult(boughtLotto, winningNumbers.getLotto(), bonusNumber.getBonusNumber());
+
+        Lotto winningNumbers = createWinningNumbers();
+        Bonus bonusNumber = createBonusNumber(winningNumbers);
+        List<Integer> lottoResult = createLottoResult(boughtLotto, winningNumbers.getLotto(),
+                bonusNumber.getBonusNumber());
+
         printLottoStatistics(createLottoStatisticsMessage(lottoResult));
-        printRateOfReturn(user.getRateOfReturn(lottoResult), 1);
+        printRateOfReturn(user.getRateOfReturn(lottoResult), ROUND_NUMBER);
+    }
+
+    public static UserLotto createUserLotto() {
+        printGetMoney();
+        return new UserLotto(readLine());
+    }
+
+    public static List<Lotto> createBoughtLotto(int lottoCount) {
+        printLottoCount(lottoCount);
+        return createLottoList(lottoCount);
+    }
+
+    public static Lotto createWinningNumbers() {
+        printGetWinningNumber();
+        return new Lotto(convertStringListToIntegerList(splitNumber(readLine())));
+    }
+
+    public static Bonus createBonusNumber(Lotto winningNumbers) {
+        printGetBonusNumber();
+        return new Bonus(convertStringToInt(readLine()), winningNumbers);
     }
 }

@@ -3,7 +3,8 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.domain.Judgment.getCorrectLottoNumberCount;
+import static lotto.domain.Judgment.*;
+
 
 public class UserLotto {
     private final int lottoAmount;
@@ -39,8 +40,8 @@ public class UserLotto {
                                                   List<Integer> winningNumbers, int bonusNumber) {
         List<Integer> lottoResult = new ArrayList<>(List.of(0,0,0,0,0)); // 1등, 2등 ... 5등
         for (Lotto lotto : boughtLotto) {
-            int matchingCount = Judgment.getCorrectLottoNumberCount(lotto, winningNumbers);
-            boolean bonusMatching = Judgment.checkBonusCorrect(bonusNumber, lotto.getLotto());
+            int matchingCount = getCorrectLottoNumberCount(lotto, winningNumbers);
+            boolean bonusMatching = checkBonusCorrect(bonusNumber, lotto.getLotto());
             Prize prize = Prize.getPrize(matchingCount, bonusMatching);
             int resultIndex = prize.ordinal();
             if (prize.equals(Prize.NONE)) { // 꽝은 결과에 필요없음

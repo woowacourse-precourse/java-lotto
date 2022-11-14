@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.Preprocessor;
-
 import java.util.ArrayList;
 import java.util.List;
 
