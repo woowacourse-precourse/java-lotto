@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -98,15 +99,35 @@ class LottoCountingTest {
             return lottoPapers;
         }
 
+        boolean isDataAllCorrect(Lotto[] lottoPapers, Lotto winningLotto, Map<Lotto, Integer> countedLotto){
+
+            for (Lotto lottoPaper : lottoPapers) {
+                int expectedCorrectCount = lottoCounter.compareLottoAndCount(lottoPaper, winningLotto);
+                int actualCorrectCount = countedLotto.get(lottoPaper);
+                if (expectedCorrectCount != actualCorrectCount) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         @Test
-        void countedLotto_case1(){
+        void countedLotto_case1_1(){
             Lotto[] lottoPapers = new Lotto[0];
             int sizeOutput = 0;
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
         }
 
         @Test
-        void countedLotto_case2(){
+        void countedLotto_case1_2(){
+            Lotto[] lottoPapers = new Lotto[0];
+            Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
+            assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
+        }
+
+        @Test
+        void countedLotto_case2_1(){
             int size = 1;
             int sizeOutput = 1;
             Lotto[] lottoPapers = getLottoPaperInput(size);
@@ -114,7 +135,15 @@ class LottoCountingTest {
         }
 
         @Test
-        void countedLotto_case3(){
+        void countedLotto_case2_2(){
+            int size = 1;
+            Lotto[] lottoPapers = getLottoPaperInput(size);
+            Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
+            assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
+        }
+
+        @Test
+        void countedLotto_case3_1(){
             int size = 3;
             int sizeOutput = 3;
 
@@ -123,7 +152,15 @@ class LottoCountingTest {
         }
 
         @Test
-        void countedLotto_case4(){
+        void countedLotto_case3_2(){
+            int size = 3;
+            Lotto[] lottoPapers = getLottoPaperInput(size);
+            Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
+            assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
+        }
+
+        @Test
+        void countedLotto_case4_1(){
             int size = 5;
             int sizeOutput = 5;
 
@@ -132,12 +169,28 @@ class LottoCountingTest {
         }
 
         @Test
-        void countedLotto_case5(){
+        void countedLotto_case4_2(){
+            int size = 5;
+            Lotto[] lottoPapers = getLottoPaperInput(size);
+            Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
+            assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
+        }
+
+        @Test
+        void countedLotto_case5_1(){
             int size = 8;
             int sizeOutput = 8;
 
             Lotto[] lottoPapers = getLottoPaperInput(size);
             assertThat(lottoCounter.countedLotto(lottoPapers,getWinningLotto()).size()).isEqualTo(sizeOutput);
+        }
+
+        @Test
+        void countedLotto_case5_2(){
+            int size = 8;
+            Lotto[] lottoPapers = getLottoPaperInput(size);
+            Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
+            assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
         }
     }
 }
