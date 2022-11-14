@@ -108,4 +108,21 @@ public class ConsoleUserInterface {
         validateAs_JavaInteger(input);
         return Integer.parseInt(input);
     }
+
+    public void showLottoStatistics(Map<LottoPlace, Integer> records, double marginRate) {
+        List<LottoPlace> lottoPlaces = List.of(LottoPlace.values());
+
+        for (LottoPlace place : lottoPlaces) {
+            if (place.equals(LottoPlace.NONE)) {
+                continue;
+            }
+            output(String.format(
+                    MSG_SHOW_COUNT_WINNING_BY_PLACE,
+                    place.getInfo(),
+                    place.getPrizeMoney(),
+                    records.get(place))
+            );
+        }
+        output(String.format(MSG_SHOW_TOTAL_MARGIN_RATE, marginRate));
+    }
 }
