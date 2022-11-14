@@ -3,6 +3,7 @@ package lotto.participant;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -64,6 +65,6 @@ public class Emcee {
     }
 
     public void showRateOfReturn(double rateOfReturn) {
-        System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
+        System.out.println("총 수익률은 " + BigDecimal.valueOf(rateOfReturn) + "%입니다.");
     }
 }
