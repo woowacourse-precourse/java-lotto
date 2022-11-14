@@ -18,21 +18,21 @@ class PublisherTest {
 
     @ParameterizedTest(name = "금액이 1000으로 나누어떨어지지않으면 예외가 발생한다.")
     @CsvSource(value = {"1001", "999", "123", "2003"})
-    void createLottoByInvalidMoney(int money) {
+    void createLottoByInvalidMoney(String money) {
         assertThatThrownBy(() -> publisher.getLottoGroup(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest(name = "{0}원이면 {1}장의 로또가 나온다")
     @CsvSource(value = {"1000:1", "2000:2", "10000:10", "4000:4"}, delimiter = ':')
-    void getLottoCount(int money, int count) {
+    void getLottoCount(String money, int count) {
         List<Lotto> lottoGroup = publisher.getLottoGroup(money);
         assertEquals(lottoGroup.size(), count);
     }
 
     @ParameterizedTest(name = "로또는 오름차순으로 정렬되어있다.")
     @CsvSource(value = {"1000", "2000", "12000", "30000"})
-    void getSortedLotto(int money) {
+    void getSortedLotto(String money) {
         List<Lotto> lottoGroup = publisher.getLottoGroup(money);
         for (Lotto lotto : lottoGroup) {
             List<Integer> parsedLotto = lotto.getLotto();
