@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.ENUMS.ErrorMessages;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,10 +16,11 @@ class WinningNumberTest {
     public void winningNumberCountTest() {
         String lottoNumbers = "1,2,3,4,5";
         String bonusNumbers = "7";
-        WinningNumber wn = new WinningNumber(lottoNumbers, bonusNumbers);
 
         assertThatThrownBy(() -> new WinningNumber(lottoNumbers, bonusNumbers))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessages.ERROR_SIGN.getErrorMessage()
+                        + " " + ErrorMessages.COUNT_ERROR.getErrorMessage());
 
     }
 
@@ -27,7 +29,6 @@ class WinningNumberTest {
     public void winningNumberDuplicateTest() {
         String lottoNumbers = "1,2,3,4,5,5";
         String bonusNumbers = "7";
-        WinningNumber wn = new WinningNumber(lottoNumbers, bonusNumbers);
 
         assertThatThrownBy(() -> new WinningNumber(lottoNumbers, bonusNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
