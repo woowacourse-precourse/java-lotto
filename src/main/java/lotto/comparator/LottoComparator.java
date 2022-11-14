@@ -2,18 +2,18 @@ package lotto.comparator;
 
 import lotto.Const;
 import lotto.Lotto;
+import lotto.result.LottoResult;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class LottoComparator {
 
     public static List<Integer> compareUserLottoAndWinningLotto(List<Lotto> userLottoGroup, Integer bonusNumber, Lotto winningLotto) {
-        List<Integer> winningResult = Arrays.asList(0, 0, 0, 0, 0);
-
+        LottoResult l = new LottoResult();
+        List<Integer> winningResult = l.getWinningResult();
         for (Lotto userLotto : userLottoGroup) {
             Integer luckyCount = compareEachNumber(userLotto, winningLotto, bonusNumber);
-            createWinningResult(winningResult, luckyCount);
+            l.createResult(luckyCount);
         }
         return winningResult;
     }
@@ -23,11 +23,6 @@ public class LottoComparator {
         Const.hasBonusNumber = false;
     }
 
-    private static void createWinningResult(List<Integer> resultCount, Integer luckyCount) {
-        if (luckyCount >= 3) {
-            resultCount.set(luckyCount - 3, resultCount.get(luckyCount - 3) + 1);
-        }
-    }
 
     public static Integer compareEachNumber(Lotto userLotto, Lotto winningLotto, Integer BonusNumber) {
         initCount();
@@ -45,6 +40,9 @@ public class LottoComparator {
 
     public static Integer calculateLuckyCount(Integer luckyCount, boolean hasBonusNumber) {
         if (hasBonusNumber == true && luckyCount == 5) {
+            return 6;
+        }
+        if(luckyCount == 6){
             return 7;
         }
         return luckyCount;

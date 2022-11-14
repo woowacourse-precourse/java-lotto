@@ -49,8 +49,7 @@ public class LottoController {
     }
 
     private void showWinningResult(List<Integer> result) {
-        List<Long> winningAmount = lottoService.getWinningAmount();
-        View.printWinningResult(result, winningAmount);
+        View.printWinningResult(result);
         getProfit();
     }
 

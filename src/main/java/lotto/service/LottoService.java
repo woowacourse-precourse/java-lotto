@@ -73,19 +73,15 @@ public class LottoService {
     private void saveWinningResult(List<Integer> winningResult) {
         LottoRepository.saveWinningResult(winningResult);
     }
-    public List<Long> getWinningAmount() {
-        return LottoRepository.getWinningAmount();
-    }
 
     public String getProfit() {
         List<Integer> winningResult = LottoRepository.getWinningResult();
-        List<Long> winningMoney = LottoRepository.getWinningAmount();
         Double purchaseMoney = Double.valueOf(LottoRepository.getPurchaseMoney());
 
         Long totalPrice = 0L;
-        for (int i = 0 ; i < winningMoney.size(); i ++){
-            totalPrice += winningMoney.get(i) * winningResult.get(i);
-        }
+//        for (int i = 0 ; i < winningMoney.size(); i ++){
+//            totalPrice += winningMoney.get(i) * winningResult.get(i);
+//        }
         return String.format("%.1f", totalPrice/purchaseMoney*100);
     }
 }
