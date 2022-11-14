@@ -27,7 +27,31 @@ public class Machine {
                 count++;
             }
         }
+
         return count;
     }
 
+    public Rank Ranking(WinningNumber winningNumber, Lotto lotto) {
+        int count = compare(winningNumber.lotto, lotto);
+        if (count == 6) {
+            return Rank.FIRST;
+        }
+        if (count == 5) {
+            if (checkBonusNumber(lotto, winningNumber.bonusNumber)) {
+                return Rank.SECOND;
+            }
+            return Rank.THIRD;
+        }
+        if (count == 4) {
+            return Rank.FOURTH;
+        }
+        if (count == 3) {
+            return Rank.FIFTH;
+        }
+        return Rank.LOSE;
+    }
+
+    private boolean checkBonusNumber(Lotto lotto, int bonusNumber) {
+        return lotto.getNumbers().contains(bonusNumber);
+    }
 }

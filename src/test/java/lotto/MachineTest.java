@@ -2,6 +2,8 @@ package lotto;
 
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.Machine;
+import lotto.domain.lotto.Rank;
+import lotto.domain.lotto.WinningNumber;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -49,6 +51,56 @@ public class MachineTest {
         int count = machine.compare(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Lotto(List.of(6, 7, 8, 9, 10, 11)));
 
         Assertions.assertThat(count).isEqualTo(1);
+    }
+
+    @DisplayName("순위 확인 - 1등")
+    @Test
+    void rankingCheckFirst() {
+        Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Rank ranking = machine.Ranking(winningNumber, lotto);
+        Assertions.assertThat(ranking).isEqualTo(Rank.FIRST);
+    }
+
+    @DisplayName("순위 확인 - 2등")
+    @Test
+    void rankingCheckSecond() {
+        Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        Rank ranking = machine.Ranking(winningNumber, lotto);
+        Assertions.assertThat(ranking).isEqualTo(Rank.SECOND);
+    }
+
+
+    @DisplayName("순위 확인 - 3등")
+    @Test
+    void rankingCheckTHIRD() {
+        Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
+        Rank ranking = machine.Ranking(winningNumber, lotto);
+        Assertions.assertThat(ranking).isEqualTo(Rank.THIRD);
+    }
+
+
+    @DisplayName("순위 확인 - 미당첨")
+    @Test
+    void rankingCheckLose() {
+        Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 8, 9, 10, 11));
+        Rank ranking = machine.Ranking(winningNumber, lotto);
+        Assertions.assertThat(ranking).isEqualTo(Rank.LOSE);
     }
 
 }
