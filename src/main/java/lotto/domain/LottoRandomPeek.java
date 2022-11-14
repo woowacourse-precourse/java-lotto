@@ -8,19 +8,23 @@ import java.util.*;
 public class LottoRandomPeek {
     private final List<Lotto> randomLottos;
 
-    public LottoRandomPeek(int countLotto) {
+    public LottoRandomPeek() {
         randomLottos = new ArrayList<>();
+    }
+    public void generateRandom(int countLotto){
         for (int peekIndex = 0; peekIndex < countLotto; peekIndex++) {
             drawLotto();
         }
     }
 
-    public void drawLotto() {
+    public List<Integer> drawLotto() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
                 IntEnum.START_NUMBER.getValue(), IntEnum.LAST_NUMBER.getValue(), IntEnum.LOTTO_SIZE.getValue());
-        randomLottos.add(new Lotto(sortList(randomNumbers)));
+        return randomNumbers;
     }
-
+    public void addLotto(List<Integer> addRottoList){
+        randomLottos.add(new Lotto(sortList(addRottoList)));
+    }
     private List<Integer> sortList(List<Integer> randomNumbers) {
         for (int i = 0; i < randomNumbers.size() - 1; i++) {
             int idx = i;

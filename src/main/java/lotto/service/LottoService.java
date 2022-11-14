@@ -13,7 +13,8 @@ public class LottoService {
     public void play() throws IllegalArgumentException {
 
         Buyer buyer = new BuyerGenerate().generate();
-        LottoRandomPeek lottoRandomPeek = new LottoRandomPeek(buyer.getBuyLottoCount());
+        LottoRandomPeek lottoRandomPeek = new LottoRandomPeek();
+        lottoRandomPeek.generateRandom(buyer.getBuyLottoCount());
         new LottoRandomPeekOutput().output(lottoRandomPeek.getRandomLottos());
 
         WinLotto winLotto = new WinLottoGenerate().generate();
