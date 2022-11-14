@@ -55,12 +55,15 @@ public class DrawLotto {
         }
         return comparison;
     }
-    public int calculateProfit() {
+    private double calculateProfit() {
         Map<Ranking, Integer> comparison = checkListOfLottos();
-        int profit = 0;
+        double profit = 0.0;
         for (Ranking rank : Ranking.values()) {
             profit += rank.getPrize()*comparison.get(rank);
         }
         return profit;
+    }
+    public double calculateProfitRate(float money) {
+        return calculateProfit()/money*100;
     }
 }
