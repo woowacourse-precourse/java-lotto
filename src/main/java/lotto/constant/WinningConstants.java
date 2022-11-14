@@ -32,4 +32,20 @@ public enum WinningConstants {
         String message = stringBuilder.toString();
         return String.format(message, requiredWinningNumber, reward);
     }
+
+    public int getRequiredWinningNumber() {
+        return requiredWinningNumber;
+    }
+
+    public boolean getHasBonusNumber() {
+        return hasBonusNumber;
+    }
+
+    public int getReward() {
+        return reward;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }
