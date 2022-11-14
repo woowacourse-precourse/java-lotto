@@ -9,6 +9,8 @@ import static lotto.utils.NumberAdapter.fitPaidMoney;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatNoException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,8 +34,8 @@ public class StoreTest {
     }
 
     void setWinningNumberWithBonusNumber() {
-        String winningNumber = "1,2,3,4,5,6";
-        String bonusNumber = "7";
+        List<Integer> winningNumber = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
 
         testStore.pickWinningNumberWithBonusNumber(winningNumber, bonusNumber);
     }
@@ -52,12 +54,12 @@ public class StoreTest {
     @DisplayName("유효한 당첨번호와 보너스 번호를 입력받고 유효성 검사를 통과한다.")
     void checkPickWinningNumberWithBonusNumberByValidInput() {
         //given
-        String beforeWinningNumber = "1,2,3,4,5,6";
-        String beforeBonusNumber = "7";
+        List<Integer> winningNumber = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
 
         //when, then
         assertThatNoException().isThrownBy(
-                () -> testStore.pickWinningNumberWithBonusNumber(beforeWinningNumber, beforeBonusNumber));
+                () -> testStore.pickWinningNumberWithBonusNumber(winningNumber, bonusNumber));
     }
 
     @Test
