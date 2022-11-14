@@ -1,7 +1,9 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -33,5 +35,11 @@ public class InputConvertTest {
         String input = "1,2,3,4,5 ,6";
         assertThatThrownBy(() -> InputConvert.lottoNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("\"1,2,3,4,5,6\"이 List인 [1, 2, 3, ,4, 5, 6]로 변환된다.")
+    @Test
+    void lottoNumberConvert() {
+        String input = "1,2,3,4,5,6";
+        assertThat(InputConvert.lottoNumber(input)).isEqualTo(List.of(1,2,3,4,5,6));
     }
 }
