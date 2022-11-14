@@ -24,6 +24,6 @@ public class InputView {
         System.out.println(InputMessage.INPUT_BONUS_NUMBER);
         int bonusNumber = Integer.parseInt(Console.readLine());
         validator.isValidBonusNumber(lottoNumbers, bonusNumber);
-        return new WinningLotto(lottoNumbers);
+        return new WinningLotto(lottoNumbers, bonusNumber);
     }
 }
