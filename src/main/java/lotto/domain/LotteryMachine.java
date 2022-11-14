@@ -14,9 +14,9 @@ public class LotteryMachine {
     private static final int LOTTERY_PRICE = 1_000;
     private static final int MINIMUM_MATCH_NUMBER = 3;
     private static final int THREE_NUMBERS_MATCH = 3;
-    private static final int FOUR_NUMBERS_MATCH = 3;
-    private static final int FIVE_NUMBERS_MATCH = 3;
-    private static final int SIX_NUMBERS_MATCH = 3;
+    private static final int FOUR_NUMBERS_MATCH = 4;
+    private static final int FIVE_NUMBERS_MATCH = 5;
+    private static final int SIX_NUMBERS_MATCH = 6;
     private static final String USER_MONEY_INPUT_MESSAGE = "구입 금액을 입력해 주세요.";
     private static final String PURCHASED_LOTTERY_NUMBER_MESSAGE = "개를 구매했습니다.";
     private static final String WINNING_LOTTERY_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
@@ -128,5 +128,13 @@ public class LotteryMachine {
             return Result.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCH;
         }
         return Result.FIVE_NUMBERS_MATCH;
+    }
+
+    public void setWinningLotto(Lotto winningLotto) { // for test
+        this.winningLotto = winningLotto;
+    }
+
+    public void setBonusNumber(int bonusNumber) { // for test
+        this.bonusNumber = bonusNumber;
     }
 }

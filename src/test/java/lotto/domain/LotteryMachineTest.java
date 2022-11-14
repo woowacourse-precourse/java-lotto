@@ -1,10 +1,10 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,11 +12,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LotteryMachineTest {
 
     private static final InputValidator inputValidator = new InputValidator();
+    private static final User user = new User();
+    private static final LotteryMachine lotteryMachine = new LotteryMachine();
+
+    @BeforeEach
+    void beforeEach() {
+        List<Lotto> lotteries = new ArrayList<>();
+        lotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+        lotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 8)));
+        lotteries.add(new Lotto(List.of(1, 2, 9, 4, 5, 8)));
+        user.setLotteries(lotteries);
+    }
+
+    @AfterEach
+    void afterEach() {
+        user.setLotteries(null);
+    }
 
     @Test
     public void generateUniqueNumbers() {
-        User user = new User();
-        LotteryMachine lotteryMachine = new LotteryMachine();
+
 //        String userInput = "3000";
 //        InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
 //        System.setIn(inputStream);
@@ -27,18 +44,6 @@ public class LotteryMachineTest {
             Lotto lotto = userLotteries.get(i);
             assertThat(hasUniqueNumbers(lotto)).isTrue();
         }
-    }
-
-    private boolean hasUniqueNumbers(Lotto lotto) {
-        List<Integer> lotteryNumbers = lotto.getNumbers();
-
-        int containCount = 1;
-        for (int i = 0; i < lotteryNumbers.size(); ++i) {
-            Integer lotteryNumber = lotteryNumbers.get(i);
-            long count = lotteryNumbers.stream().filter(number -> lotteryNumber.equals(number)).count();
-            if (count != containCount) return false;
-        }
-        return true;
     }
 
     @Test
@@ -59,6 +64,30 @@ public class LotteryMachineTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             bonusNumberTest("46", List.of(1, 2, 3, 4, 5, 6));
         });
+    }
+
+    @Test
+    public void CompileStatisticsTest() {
+        lotteryMachine.setWinningLotto(new Lotto(List.of(1,2,3,4,5,6)));
+        lotteryMachine.setBonusNumber(7);
+        lotteryMachine.showResult(user);
+        assertThat(user.getWinningLotteryCounts().get(Result.SIX_NUMBERS_MATCH)).isEqualTo(2);
+        assertThat(user.getWinningLotteryCounts().get(Result.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCH)).isEqualTo(1);
+        assertThat(user.getWinningLotteryCounts().get(Result.FIVE_NUMBERS_MATCH)).isEqualTo(1);
+        assertThat(user.getWinningLotteryCounts().get(Result.FOUR_NUMBERS_MATCH)).isEqualTo(1);
+
+    }
+
+    private boolean hasUniqueNumbers(Lotto lotto) {
+        List<Integer> lotteryNumbers = lotto.getNumbers();
+
+        int containCount = 1;
+        for (int i = 0; i < lotteryNumbers.size(); ++i) {
+            Integer lotteryNumber = lotteryNumbers.get(i);
+            long count = lotteryNumbers.stream().filter(number -> lotteryNumber.equals(number)).count();
+            if (count != containCount) return false;
+        }
+        return true;
     }
 
     private void winningNumbersCountTest(String[] winningNumbersInput) {
