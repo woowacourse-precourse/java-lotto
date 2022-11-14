@@ -1,5 +1,8 @@
 package lotto;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -29,6 +32,9 @@ public class User {
         if (purchasePrice % UNIT_PRICE > 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요.");
         }
+        else if(purchasePrice <= 0){
+            throw new IllegalArgumentException("[ERROR] 0원보다 큰 값을 입력해주세요.");
+        }
     }
 
 
@@ -44,6 +50,20 @@ public class User {
 
     public List<List<Integer>> getUserLottos() {
         return new ArrayList<>(userLottos);
+    }
+
+    public BigDecimal caculateRateOfReturn(){
+        BigInteger totalReturn = BigInteger.valueOf(0);
+        for(LottoRanking lottoRanking : LottoRanking.values()){
+            int count = countRanking.get(lottoRanking);
+            totalReturn = totalReturn.add(BigInteger.valueOf((long) count * lottoRanking.getPrice()));
+        }
+
+        BigDecimal rateOfReturn = new BigDecimal(totalReturn);
+        rateOfReturn = rateOfReturn.subtract(BigDecimal.valueOf(purchasePrice));
+        rateOfReturn = rateOfReturn.divide(BigDecimal.valueOf(purchasePrice), 5, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100));
+
+        return rateOfReturn.setScale(2, RoundingMode.HALF_UP);
     }
 
     public void setCountRanking(Lotto lotto){

@@ -1,8 +1,11 @@
 package lotto;
 
+import org.assertj.core.data.Percentage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,5 +55,27 @@ class UserTest {
                     .isEqualTo(countArray[i]);
             i+=1;
         }
+    }
+
+    @DisplayName("수익률 계산 테스트")
+    @Test
+    void getRateOfReturn() {
+        User user = new User(6000);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6), 7);
+        user.setUserLottos(List.of(
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(2, 3, 4, 5, 6, 7),
+                List.of(4, 5, 6, 7, 8, 9),
+                List.of(1, 2, 3, 7, 8, 9),
+                List.of(9, 10, 11, 12, 13, 14)
+        ));
+
+        user.setCountRanking(lotto);
+        BigDecimal expected = new BigDecimal("67166733.33");
+        assertThat(user.caculateRateOfReturn()).isEqualTo(expected);
+
+
     }
 }
