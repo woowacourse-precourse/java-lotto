@@ -32,9 +32,9 @@ public class Computer {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-        Validator.validateLength(this.winningNumbers, WINNING_NUMBER_LENGTH);
-        Validator.validateRange(this.winningNumbers, WINNING_NUMBER_LENGTH);
-        Validator.validateDuplication(this.winningNumbers, WINNING_NUMBER_LENGTH);
+        Validator.validateLength(this.winningNumbers, WINNING_NUMBERS_LENGTH);
+        Validator.validateRange(this.winningNumbers, WINNING_NUMBERS_LENGTH);
+        Validator.validateDuplication(this.winningNumbers, WINNING_NUMBERS_LENGTH);
     }
 
     private void validate(String bonusNumber) {
@@ -46,7 +46,7 @@ public class Computer {
     }
 
     public static Lotto issueLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_LENGTH);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBERS_LENGTH);
         return new Lotto(numbers);
     }
 
