@@ -74,7 +74,7 @@ public class IOManage {
         CheckWinningLotto check = new CheckWinningLotto();
         System.out.println(Message.OUTPUT_STATISTICS.get());
 
-        List<Integer> winningCount = check.winningIndexToCount(generatedLotto, winningNumbers, bonusNumber);
+        List<Integer> winningCount = check.totalWinningCount(generatedLotto, winningNumbers, bonusNumber);
 
         System.out.println(Message.THREE_CORRECT.get() + winningCount.get(0) + Message.COUNT.get());
         System.out.println(Message.FOUR_CORRECT.get() + winningCount.get(1) + Message.COUNT.get());
@@ -86,7 +86,7 @@ public class IOManage {
     public void outputEarningRate() {
         ControlLottoGame control = new ControlLottoGame();
         CheckWinningLotto check = new CheckWinningLotto();
-        List<Integer> winningCount = check.winningIndexToCount(generatedLotto, winningNumbers, bonusNumber);
+        List<Integer> winningCount = check.totalWinningCount(generatedLotto, winningNumbers, bonusNumber);
         float earningRate = control.calculateEarningRate(winningCount, quantity);
         System.out.println(Message.EARNING_RATE.get() + earningRate + Message.ENDING.get());
     }
