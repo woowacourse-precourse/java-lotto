@@ -15,7 +15,7 @@ public class LottoKiosk {
     private long howMany;
     private List<Lotto> lottos;
 
-    public void insertMoney() throws IllegalArgumentException{
+    public void getMoney() throws IllegalArgumentException {
         askHowMuch();
         moneyInserted();
         validateMoneyInput();
@@ -53,37 +53,30 @@ public class LottoKiosk {
         return this.money;
     }
 
-    void calculateLottoAmount() {
-        this.howMany = money / LOTTO_PRICE;
-    }
-
     long showHowMany() {
         return this.howMany;
+    }
+
+    void sellLotto(Customer customer) {
+        calculateLottoAmount();
+        showHowManyLotto();
+        makeAllLotto();
+        printAllLottoNumber();
+        customer.getLotto(lottos);
+    }
+
+    void calculateLottoAmount() {
+        this.howMany = money / LOTTO_PRICE;
     }
 
     void showHowManyLotto() {
         System.out.println("\n" + howMany + Messages.HOW_MANY_SOLD.message);
     }
 
-    void sellLotto() {
-        calculateLottoAmount();
-        showHowManyLotto();
-        makeAllLotto();
-        printAllLottoNumber();
-    }
-
-    List<Integer> makeUniqueSixLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
-    }
-
-    List<Integer> sortUniqueSixLottoNumbers(List<Integer> uniqueSixNumbers) {
-        return uniqueSixNumbers.stream().sorted().collect(Collectors.toList());
-    }
-
     void makeAllLotto() {
         lottos = new ArrayList<>();
         for (int i = 0; i < this.howMany; i++) {
-            lottos.add(makeLotto(sortUniqueSixLottoNumbers(makeUniqueSixLottoNumbers())));
+            lottos.add(makeLotto(makeLottoNumbers()));
         }
     }
 
@@ -91,8 +84,12 @@ public class LottoKiosk {
         return new Lotto(numbers);
     }
 
+    List<Integer> makeLottoNumbers() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
+    }
+
     List<Lotto> showAllLotto() {
-        return this.lottos.stream().map(o -> (Lotto) o).collect(Collectors.toList());
+        return new ArrayList<>(lottos);
     }
 
     void printAllLottoNumber() {
