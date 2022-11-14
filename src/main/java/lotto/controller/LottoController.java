@@ -3,6 +3,8 @@ package lotto.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 import lotto.MyLottoList;
+import lotto.PrizeLotto;
+import lotto.view.LottoView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,4 +33,8 @@ public class LottoController {
         myLottoList.setLotto(tempList);
     }
 
+    public static PrizeLotto generatePrizeLottoInstance() {
+        Lotto prizeLotto = new Lotto(LottoView.inputPrizeLotto());
+        return new PrizeLotto(prizeLotto);
+    }
 }
