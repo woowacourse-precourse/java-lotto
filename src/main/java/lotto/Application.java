@@ -56,7 +56,7 @@ public class Application {
     public List<Integer> getLottoResult(List<LottoNumber> buyList, List<Integer> winningLotto, int bonusNumber) {
         boolean bonus = isContainBonusNumber(winningLotto, bonusNumber);
         List<Integer> lottoResult = Arrays.asList(0, 0, 0, 0, 0);
-        int equalNumberCount = 0;
+        int equalNumberCount;
 
         for (LottoNumber lottoNumber : buyList) {
             equalNumberCount = compareLotto(lottoNumber.getNumbers(), winningLotto);
@@ -104,10 +104,13 @@ public class Application {
         return 4;
     }
 
-    public double getTotalProfit(List<Integer> lottoResult) {
+    public double getTotalProfit(int money, List<Integer> lottoResult) {
         double profit = 0;
 
-        return profit;
+        for (LottoResult result : LottoResult.values()) {
+            profit += (result.getMoney() * lottoResult.get(result.getIndex()));
+        }
+        return Math.round((profit / money * 100) * 1000) / 1000.0;
     }
 
 }
