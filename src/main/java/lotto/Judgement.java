@@ -3,7 +3,6 @@ package lotto;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Judgement {
     private List<HashMap<Integer, Boolean>> resultTable;
