@@ -2,9 +2,12 @@ package lotto;
 
 public class GetRateOfReturn {
     public String calculateRate(long [] result, long money){
-        long value = result[3] * 5000 + result[4] * 50000 + result[5] * 150000 + result[6] * 2000000000 + result[7] * 30000000;
+        long value = result[3] * WinningMessage.THIRD_MATCH.getMoney()
+                + result[4] * WinningMessage.FORTH_MATCH.getMoney()
+                + result[5] * WinningMessage.FIFTH_MATCH.getMoney()
+                + result[6] * WinningMessage.SIXTH_MATCH.getMoney()
+                + result[7] * WinningMessage.BONUS_MATCH.getMoney();
         double yield = ((double) value / money) * 100;
         return String.format("%.1f", yield);
-
     }
 }
