@@ -12,5 +12,8 @@ public class Exception {
 		if (Integer.parseInt(input) <= 0) {
 			throw new IllegalArgumentException(Constants.ERROR_NUMBER_RANGE);
 		}
+		if (Integer.parseInt(input) % 1000 != 0) {
+			throw new IllegalArgumentException(Constants.ERROR_NUMBER_PRICE);
+		}
 	}
 }
