@@ -39,4 +39,8 @@ public class OutputView {
             System.out.printf("%s (%s) - %d개\n", condition, reward, count);
         }
     }
+
+    public static void printRateOfReturn(double rateOfReturn) {
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", rateOfReturn);
+    }
 }
