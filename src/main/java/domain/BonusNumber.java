@@ -13,4 +13,9 @@ public class BonusNumber {
             throw new IllegalArgumentException(BonusExceptionType.NOT_MATCH_BONUS_CNT.getErrorMessage());
         }
     }
+
+    public int convertStringToInteger(String input){
+        int bonus = Integer.parseInt(input);
+        return bonus;
+    }
 }
