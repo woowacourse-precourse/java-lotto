@@ -3,15 +3,15 @@
 - [x] validate 메서드 기능 추가 - Lotto.validate()
   - [x] 입력된 숫자가 1~45 사이의 숫자가 아닐 시 예외 발생
   - [x] 입력된 숫자에 중복된 숫자가 입력될 시 예외 발생
-- [x] 숫자들을 정렬하여 보여주기
+- [x] 숫자들을 정렬하여 보여주기 - Lotto.showLotto()
 ### - LottoSeller 인스턴스 기능
 - [x] 구입 금액 읽기 - LottoSeller.takemoney()
   - [x] 구입 금액에 따라 만들 로또의 개수 계산
   - [x] 거스름돈 계산
 - [x] LottoBundle 만들기 - LottoSeller.makeLottoBundle()
   - [x] Lotto에 난수를 넣기
-- [ ] 만든 LottoBundle 보여주기 
-- [ ] 거스름돈 돌려주기
+- [x] 만든 LottoBundle 보여주기 - LottoSeller.showBundle()
+- [x] 거스름돈 돌려주기 - LottoSeller.giveChange()
 ### - NumberComparator 인스턴스 기능
 - [ ] 당첨 숫자 읽기
   - [ ] 숫자 validate
