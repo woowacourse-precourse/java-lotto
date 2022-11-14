@@ -283,6 +283,38 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    /**
+     * validateWinnerNumberSize(param1)
+     * param1: String userInput
+     * returns 사용자 입력 userInput 반환
+     * throws IllegalArgumentException when 입력 수가 6개가 되지 않은 경우
+     */
+    @DisplayName("사용자는 당첨번호 6개를 입력해야 한다.")
+    @Test
+    public void validateWinnerNumberSizeTest() {
+        //given
+        String userInput = "1,2,3,4,5,6";
+        String expectedValue = "1,2,3,4,5,6";
+
+        //when
+        String actualValue = Application.validateWinnerNumberSize(userInput);
+
+        //then
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @DisplayName("쉼표로 구분한 사용자 입력이 6개가 아닐 시 예외가 발생한다.")
+    @Test
+    public void validateWinnerNumberSizeTest_ExceptionCase() {
+        //given
+        String userInput = "1,2,3,4,5";
+        //when
+
+        //then
+        assertThatThrownBy(() -> Application.validateWinnerNumberSize(userInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
