@@ -20,7 +20,8 @@ public class LottoGameController {
         List<Lotto> tickets = game.createLottoTickets(amount);
         printTickets(amount, tickets);
         List<Integer> winnings = getWinnings();
-        String bonus = getBonus(winnings);
+        int bonus = Integer.parseInt(getBonus(winnings));
+        List<String> checkResult = game.compare(winnings, tickets, bonus);
     }
 
     public String getAmount() {

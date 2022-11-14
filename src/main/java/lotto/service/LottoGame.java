@@ -1,9 +1,11 @@
 package lotto.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
+import lotto.domain.LottoCheck;
 import lotto.repository.LottoAutomatonRepository;
 
 public class LottoGame {
@@ -25,8 +27,13 @@ public class LottoGame {
         return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    public void compare() {
-        // 당첨 번호, 보너스 번호와 비교해 등수를 확인
+    public List<String> compare(List<Integer> winnings, List<Lotto> tickets, int bonus) {
+        LottoCheck check = new LottoCheck();
+        List<String> checkResult = new ArrayList<>();
+        for (Lotto ticket : tickets) {
+            checkResult.add(check.checkRanking(winnings, ticket.getNumbers(), bonus));
+        }
+        return checkResult;
     }
 
     public void createHistory() {
