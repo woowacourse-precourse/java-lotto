@@ -1,6 +1,7 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.LottoGenerator;
 import lotto.validate.UserValidator;
 import lotto.validate.Validator;
 
