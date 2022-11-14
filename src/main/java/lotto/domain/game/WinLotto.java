@@ -30,4 +30,9 @@ public class WinLotto {
         return Arrays.stream(Ranking.values()).collect(toMap(ranking -> ranking, ranking -> 0L));
     }
 
+    public int countMatchWinningNumber(List<Integer> lottoTicket){
+        return (int) lottoTicket.stream()
+                .filter(winningNumber::contains)
+                .count();
+    }
 }
