@@ -17,6 +17,10 @@ public class Application {
         List<Integer> prize = prizeNumber(Console.readLine());
         System.out.println("보너스 번호를 입력해 주세요.");
         Integer bonus = bonusNumber(Console.readLine());
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        Map<Collect, Integer> result = lotteryResult(userLottoTotal, prize, bonus);
+        lottoResultOutput(result);
     }
     public static String userPayment () {
         return Console.readLine();
@@ -58,5 +62,48 @@ public class Application {
     }
     public static Integer bonusNumber (String bonusInput) {
         return Integer.parseInt(bonusInput);
+    }
+    public static Map<Collect, Integer> lotteryResult (List<List<Integer>> userLotto, List<Integer> prize, Integer bonus) {
+        Map<Collect, Integer> result = new HashMap<>();
+        result.put(Collect.FIRST, 0);
+        result.put(Collect.SECOND, 0);
+        result.put(Collect.THIRD, 0);
+        result.put(Collect.FOURTH, 0);
+        result.put(Collect.FIFTH, 0);
+        for (List<Integer> lotto : userLotto) {
+            Collect resultCollect = Collect.find(lotteryComparison(lotto, prize, bonus));
+            if (resultCollect != null) {
+                result.put(resultCollect, result.get(resultCollect)+1);
+            }
+        }
+
+        return result;
+    }
+
+    public static Float lotteryComparison(List<Integer> userLotto, List<Integer> prize, Integer bonus) {
+        Integer sameLottoCount = 0;
+        for ( int i = 0 ; i < userLotto.size() ; i++) {
+            if (prize.contains(userLotto.get(i))) {
+                sameLottoCount++;
+            }
+        }
+        if (sameLottoCount.equals(5)) {
+            Float result = sameLottoCount + isBonus(userLotto, bonus);
+            return result;
+        }
+        return sameLottoCount.floatValue();
+    }
+
+    public static Float isBonus(List<Integer> userLotto, Integer bonus) {
+        if (userLotto.contains(bonus)) {
+            return 0.5f;
+        }
+        return 0.0f;
+    }
+
+    public static void lottoResultOutput(Map<Collect, Integer> lotteryResult) {
+        for (Collect rk : Collect.values()) {
+            System.out.println(rk.getDescription() + " - " + lotteryResult.get(rk)+"개");
+        }
     }
 }
