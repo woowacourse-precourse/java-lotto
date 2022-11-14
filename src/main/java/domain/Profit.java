@@ -5,11 +5,11 @@ public class Profit {
     private final String percentageProfit;
     private final float PERCENTAGE = 100F;
 
-    public Profit(int money, int prizeMoney) {
+    public Profit(int money, long prizeMoney) {
         percentageProfit = calculatePercentageProfit(money, prizeMoney);
     }
 
-    private String calculatePercentageProfit(int money, int prizeMoney) {
+    private String calculatePercentageProfit(int money, long prizeMoney) {
         float profit = (Float.valueOf(prizeMoney) / Float.valueOf(money)) * PERCENTAGE;
         return String.format("%.1f", profit);
     }
