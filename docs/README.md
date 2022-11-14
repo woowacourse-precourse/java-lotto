@@ -204,16 +204,31 @@ v2 release
 2. [x] 출력클래스도 상수들이 집약되어 있는데 효율적인 방식이 맞는지 고민해본다.<br>
 => Error(Exception) 관련 메시지들은 별도의 Exception 처리 클래스에서 관리
 
-3. [ ] 기능별 테스트 코드 작성 필요.
+3. [x] 기능별 테스트 코드 작성 필요.
 
 
 쟁점 사항 
-- Exception 처리를 위한 Validation을 한 곳에서 처리하도록 기능을 집약했다. 그런데 이때의 문제점은 여러 군데에서 호출을 받는다는 것이다. 이럼으로써 생성자를 각각 매번 호출을 시키던지 static으로 변환해서 사용하던지 결정을 해야 하는 상황에 놓인다. 
+- Exception 처리를 위한 Validation을 한 곳에서 처리하도록 기능을 집약했다. 그런데 이때의 문제점은 여러 군데에서 호출을 받는다는 것이다. 이럼으로써 생성자를 각각 매번 호출을 시키던지 static으로 변환해서 사용하던지 결정을 해야 하는 상황에 놓인다. <br>
 현재의 상황에서는 static 처리를 했다. (e.g ConsolInput -> readLine -> Validator.validateInputNotEmpty)
-- LottoMachine에서 발생하는 오류룰 IllegalArgument에러로 볼것인지의 문제가 있다. 객체의 현 상태가 메서드 호출을 처리하기 적절지 않다는 의미에서 IllegalStateException을 고려했다. 
+- LottoMachine에서 발생하는 오류룰 IllegalArgument에러로 볼것인지의 문제가 있다. 객체의 현 상태가 메서드 호출을 처리하기 적절지 않다는 의미에서 IllegalStateException을 고려했다.<br>
 => 인자의 값이 적절하지 않다는 의미에서 IllegalArgumentException 고수. 
-- Controller에서 예외를 잡아줄 때 IllegalArgumentException으로 특정 짓는 것이 맞는가의 문제가 있다. 지정한 오류는 전부 해당 에러가 맞지만, 특정하지 않은 (내가 모르는) 오류가 발생할 경우 이를 캐치하고 메시지를 보려고 한다면 exception 전체를 잡아야 하는 것인가 하는 의문이 든다.
-=> 그렇다 하더라도 현재는 메시지를 발생시키지는 않고 있으므로 IllegalArgumentException을 잡는 것으로 고수.
+- Controller에서 예외를 잡아줄 때 IllegalArgumentException으로 특정 짓는 것이 맞는가의 문제가 있다. 지정한 오류는 전부 해당 에러가 맞지만, 특정하지 않은 (내가 모르는) 오류가 발생할 경우 이를 캐치하고 메시지를 보려고 한다면 exception 전체를 잡아야 하는 것인가 하는 의문이 든다. <br>
+=> 그렇다 하더라도 현재는 메시지를 발생시키지는 않고 있으므로 IllegalArgumentException을 잡는 것으로 고수. (test셋에서도 IllegalArgumentException으로 잡고 있음)
+- 객체화에 대한 일말의 깨달음이 있어 lotto, lottotickets, TotalProfit, TotalRank를 객체화 하도록 재구성했다. 
+- result 부분에서 rank를 종합하는 로직이 난해하다. <br>
+  - 기본 플로우는 컴퓨터 생성 로또 번호와 유저가 입력한 당첨 번호를 비교하여 match를 찾는다. 
+  - 그리고 매치에 맞는 상금을 enum 클래스에서 가져온다. 
+  - 그로부터 최종 상금을 구하고 수익률을 계산한다.
+  - 출력 형식에 맞는 메시지로 구성한다.
+  - 출력한다. 
+- 이 과정에서 계산 부분은 Calculator가 담당하고 자료는 명사형 클래스(TotalRank, TotalProfit)이 보유한다. 계산한 값을 용이하게 보유한다는 의미에서 static으로 사용했다.
+- 4개의 규칙적인 rank와 1개의 special rank(2등)를 계산하는 방식에서 하드코딩이 불가피했다. 이 로직을 짜는 과정에서 한계를 많이 느꼈는데 개선 과제로 남겨둔다.
+
+<br>
+v3 release
+
+---
+
 
 </details>
 
