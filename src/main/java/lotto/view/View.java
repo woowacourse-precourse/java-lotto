@@ -7,14 +7,20 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class View {
 
+    private static final int FIRST = 1;
+    private static final int SECOND = 2;
+    private static final int THIRD = 3;
+    private static final int FORTH = 4;
+    private static final int FIFTH = 5;
+
     // 로또 번호 비교한 모든 결과를 출력하는 메서드
     public void printResult (HashMap<Integer, Integer> prizeRankings, double totalProfit) {
 
-        System.out.printf("3개 일치 (5,000원) - %d개\n", prizeRankings.get(Ranking.FIFTH.getPrize()));
-        System.out.printf("4개 일치 (50,000원) - %d개\n", prizeRankings.get(Ranking.FORTH.getPrize()));
-        System.out.printf("5개 일치 (1,500,000원) - %d개\n", prizeRankings.get(Ranking.THIRD.getPrize()));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", prizeRankings.get(Ranking.SECOND.getPrize()));
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", prizeRankings.get(Ranking.FIRST.getPrize()));
+        System.out.printf("3개 일치 (5,000원) - %d개\n", prizeRankings.get(FIFTH));
+        System.out.printf("4개 일치 (50,000원) - %d개\n", prizeRankings.get(FORTH));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", prizeRankings.get(THIRD));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", prizeRankings.get(SECOND));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", prizeRankings.get(FIRST));
         System.out.printf("총 수익률은 %.1f%%입니다.\n", totalProfit*100);
     }
 
@@ -46,21 +52,5 @@ public class View {
         System.out.println("당첨 번호를 입력해주세요.");
 
         return Console.readLine();
-    }
-
-    public enum Ranking {
-        FIRST(1),
-        SECOND(2),
-        THIRD(3),
-        FORTH(4),
-        FIFTH(5);
-
-        final private int ranking;
-        private int getPrize() {
-            return ranking;
-        }
-        Ranking(int ranking) {
-            this.ranking = ranking;
-        }
     }
 }
