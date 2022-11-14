@@ -5,7 +5,10 @@ import lotto.Model.Lotto;
 import lotto.Model.ValidNumbers;
 import lotto.Model.WinningLotto;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -34,4 +37,30 @@ public class LottoService {
         return winningLotto;
     }
 
+    public Map<Integer, Integer> compareLottoNumbers(List<Lotto> totalLotto, WinningLotto winningLotto) {
+        Map<Integer, Integer> resultMap = new HashMap<>();
+
+        for (Lotto lotto : totalLotto) {
+            int count = winningLotto.compareAndCount(lotto);
+            Integer value = resultMap.putIfAbsent(count, 1);
+
+            if (value != null) {
+                value = resultMap.get(count);
+                resultMap.put(count, value + 1);
+            }
+        }
+
+        return resultMap;
+    }
+
+    public int countWinning(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
+        int count = lottoNumbers.stream()
+                .filter(num -> winningNumbers
+                        .stream()
+                        .anyMatch(Predicate.isEqual(num)))
+                .collect(Collectors.toList())
+                .size();
+
+        return count;
+    }
 }
