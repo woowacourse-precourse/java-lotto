@@ -19,7 +19,7 @@
 
 Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
 
-`RandomLottos` 클래스에서 저장한다.
+`RandomLottos` 클래스에서 저장한다. 일급 컬렉션으로 유지한다.
 
 ## java enum
 
@@ -44,12 +44,11 @@ java enum 클래스 `LottoRanking`을 작성한다.
 
 `LottoStatistic` 클래스를 만들어 통계를 담당하도록 한다.
 - `LottoStatistic` 클래스는 `List<LottoRanking> lottosRanking`을 저장한다.
-- `RandomLottos`의 인스턴스 `randomLottos`, `WinningLotto`의 인스턴스 `winningLotto`를 매개변수로 이를 초기화 할 수 있다.
 - 이 리스트를 통해 출력문자열을 초기화 할 수 있다.
 
 ## 출력
 
-`Output` 클래스에 작성한다.
+getter를 java enum 클래스에서만 사용하기 위해 각각의 클래스에서 출력을 담당한다.
 
 ## 단위 테스트
 
