@@ -10,7 +10,7 @@ public class LottoController {
     private final LottoService lottoService;
     private Player player;
     private List<Lotto> playerLottoList;
-
+    private Lotto winLotto;
     public LottoController() {
         lottoService = new LottoService();
     }
@@ -18,5 +18,6 @@ public class LottoController {
     public void playLotto() {
         player = lottoService.createPlayer();
         lottoService.createPlayerLottoList(player.getTicketNumber());
+        winLotto = lottoService.createWinLotto();
     }
 }

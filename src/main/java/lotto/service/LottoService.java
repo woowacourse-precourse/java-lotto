@@ -2,6 +2,7 @@ package lotto.service;
 
 import lotto.model.Lotto;
 import lotto.model.Player;
+import lotto.model.WinningNumber;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -42,4 +43,11 @@ public class LottoService {
         }
         return lottoList;
     }
+
+    public Lotto createWinLotto() {
+        outputView.printInputWinningNumber();
+        WinningNumber winningNumber = new WinningNumber(inputView.inputWinningNumber());
+        return new Lotto(winningNumber.getWinningNumber());
+    }
+
 }
