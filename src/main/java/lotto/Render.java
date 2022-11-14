@@ -9,8 +9,10 @@ public class Render {
     private final static String stringFormat = "%d개 일치 (%s원) - %d개\n";
     private final static String stringFormatBonus= "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private final static String earningFormat = "총 수익률은 %.1f";
+    private final static String purchaseFormat = "%d개를 구매했습니다.";
     public static void purchaseLottoResultPrint(List<Lotto> lotto){
         StringBuffer response = new StringBuffer();
+        response.append(String.format(purchaseFormat,lotto.size()) +"\n");
         for(int i = 0;i<lotto.size();i++) {
             response.append(lotto.get(i) + "\n");
         }
@@ -18,7 +20,6 @@ public class Render {
     }
     public static void StatsResultPrint(Map<StatsType,Integer> lottoStats, Double earning){
         StringBuffer response = new StringBuffer();
-        response.append("당첨 통계\n---\n");
         for(var type : lottoStats.keySet()){
             int count = type.getScore() / 10;
             int bonus = type.getScore() % 10;

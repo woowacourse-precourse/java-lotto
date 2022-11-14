@@ -1,5 +1,10 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +17,7 @@ public class InputValidation {
         try{
             Integer.parseInt(stringNumber);
         }catch (NumberFormatException e){
+
             throw new IllegalArgumentException(NUMBER_FORMAT_MESSAGE);
         }
         return true;

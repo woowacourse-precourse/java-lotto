@@ -31,7 +31,7 @@ public class Lotto {
         result.append("[");
         for(int i = 0;i < numbers.size();i++) {
             result.append(numbers.get(i));
-            if(i <= numbers.size() - 1)
+            if(i < numbers.size() - 1)
                 result.append(", ");
         }
         result.append("]");
