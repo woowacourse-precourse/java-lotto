@@ -97,7 +97,7 @@ public class Checker {
     }
 
     public void checkBoundary(int number) {
-        if (45 < number && number < 1) {
+        if (45 < number || number < 1) {
             String errorMessage = String.format(LOTTO_CHECKER_ERROR, number, LOTTO_CHECKER_ERROR_ILLEGAL);
             printAndThrowError(errorMessage);
         }
