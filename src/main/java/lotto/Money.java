@@ -15,7 +15,7 @@ public class Money {
             isDivided(money);
         } catch (LottoInputException e) {
             System.out.println(e.getMessage());
-            throw e;
+            e.printStackTrace();
         }
     }
 
