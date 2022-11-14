@@ -32,22 +32,4 @@ public class Exception {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자를 입력해야 합니다.");
         }
     }
-
-    public static boolean isOverlap(List<Integer> winningNumber) {
-        return winningNumber.size() != winningNumber.stream().distinct().count();
-    }
-
-    public static boolean isNotSixSize(List<Integer> winningNumber) {
-        return winningNumber.size() != 6;
-    }
-
-    public static boolean isNotInRange(List<Integer> winningNumber) {
-        for (int number : winningNumber) {
-            if (number < 1 || number > 45) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 }
