@@ -14,7 +14,7 @@ class LottoTicketTest {
 		int userMoney = 10000;
 		LottoTicket lottoTicket = new LottoTicket(userMoney);
 
-		List<List<Integer>> lottoTickets = lottoTicket.createLottoTickets();
+		List<Lotto> lottoTickets = lottoTicket.getLottoTickets();
 
 		assertEquals(lottoTickets.size(), 10);
 	}

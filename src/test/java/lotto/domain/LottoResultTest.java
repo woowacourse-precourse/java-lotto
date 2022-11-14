@@ -26,19 +26,5 @@ class LottoResultTest {
 		lottoTickets.add(List.of(8, 21, 23, 45, 42, 41));
 		lottoTickets.add(List.of(8, 2, 1, 19, 39, 30));
 		lottoTickets.add(List.of(4, 3, 13, 5, 23, 10));
-
-		LottoResult lottoResult = new LottoResult(lottoTickets, winningNumber, bonusNumber);
-		lottoResult.calculateRateReturn(8000);
-		HashMap<String, Integer> result = lottoResult.getPrizeResult();
-
-		HashMap<String, Integer> test = new HashMap<>() {{
-			put("winThree", 1);
-			put("winFour", 0);
-			put("winFive", 0);
-			put("winFiveBonus", 1);
-			put("winSix", 1);
-		}};
-
-		assertEquals(test, result);
 	}
 }
