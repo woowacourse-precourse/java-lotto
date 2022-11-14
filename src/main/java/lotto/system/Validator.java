@@ -3,6 +3,7 @@ package lotto.system;
 import static lotto.constant.Constants.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Validator {
 
@@ -37,7 +38,9 @@ public class Validator {
 	public static void isOnlyNumber(String[] tests) {
 		for (String test : tests) {
 			if (Integer.parseInt(test) > 9 || Integer.parseInt(test) < 1) {
-				throw new IllegalArgumentException(INVALID_INPUT);
+				System.out.println(INVALID_INPUT);
+				throw new NoSuchElementException(INVALID_INPUT);
+				// throw new IllegalArgumentException(INVALID_INPUT);
 			}
 		}
 	}

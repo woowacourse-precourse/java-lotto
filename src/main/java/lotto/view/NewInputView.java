@@ -47,7 +47,9 @@ public class NewInputView {
 		try {
 			bonusNumber = Integer.parseInt(inputNumber);
 		} catch (Exception exception) {
-			throw new IllegalArgumentException(INVALID_INPUT);
+			System.out.println(INVALID_INPUT);
+			throw new NoSuchElementException(INVALID_INPUT);
+			//throw new IllegalArgumentException(INVALID_INPUT);
 		}
 	}
 
@@ -61,7 +63,7 @@ public class NewInputView {
 			Validator.isOnlyNumber(test);
 		} catch (Exception exception) {
 			System.out.println(INVALID_INPUT);
-			throw new NoSuchElementException();
+			throw new NoSuchElementException(INVALID_INPUT);
 			// throw new IllegalArgumentException(INVALID_INPUT);
 		}
 	}
