@@ -31,6 +31,7 @@
 - [x] "보너스 번호를 입력해 주세요." 출력한다. RequestView#displayEnterBonusNumber()
 - [x] 발행한 로또 수량 및 번호를 출력한다. ResultView#displayAllLotteries()
 - [ ] "당첨 통계"를 출력한다. ResultView#displayWinStatistics()
+- [ ] "---"를 출력한다. ResultView#displaySeparator()
 - [x] 수익률을 출력한다. ResultView#displayPercentageProfit()
 - [ ] 당첨 조건별 일치 갯수와 보너스 볼 일치별 갯수를 출력한다. ResultView#displayWinners()
 
