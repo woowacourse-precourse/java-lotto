@@ -32,7 +32,7 @@ public class WinningLogic {
         return match;
     }
     private static void addMatch(Integer number){
-        if(winning.contains(number)){
+        if(winning.getNumbers().contains(number)){
             match++;
         }
     }
