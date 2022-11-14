@@ -38,7 +38,7 @@ public class Validator {
     }
 
     private static void isRightForm(String numbers) {
-        String pattern = "[0-9],[0-9],[0-9],[0-9],[0-9],[0-9]";
+        String pattern = "[0-9]+,[0-9]+,[0-9]+,[0-9]+,[0-9]+,[0-9]+";
         if (!numbers.matches(pattern)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_RIGHT_FORM.getMessage());
         }
