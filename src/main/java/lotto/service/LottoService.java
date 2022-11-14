@@ -31,11 +31,10 @@ public class LottoService {
         randomLottoNumber = RandomUtil.getLottoNumbers(inputPurchaseAmount);
     }
 
-    private void drawLotteries() {
+    public void drawLotteries() {
         createWinningNumber();
         createBonusNumber();
         drawForWinner();
-        returnResult();
     }
 
     private void createWinningNumber() {
@@ -109,7 +108,7 @@ public class LottoService {
         accumulatedWinningPrize += winningInfo.getPrize();
     }
 
-    private void returnResult() {
+    public void returnResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " +numOf5thPrize+"개");

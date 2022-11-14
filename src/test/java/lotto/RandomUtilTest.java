@@ -30,6 +30,6 @@ class RandomUtilTest {
 
         List<RandomLottoNumber> lottoNumbers = RandomUtil.createLottoNumberList(count);
 
-        assertThat(6).isEqualTo(lottoNumbers.get(0).randomNumber.size());
+        assertThat(6).isEqualTo(lottoNumbers.get(0).getRandomNum().size());
     }
 }
