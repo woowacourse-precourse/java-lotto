@@ -5,8 +5,8 @@ import java.util.List;
 import constant.LottoRanking;
 import ui.ResultPrint;
 public class ResultCalculate {
-    public static void resultCalculate(List<Lotto> purchaseLottos, List<Integer> drawLotto ){
-        profitCalculate(synthesizeRanking(purchaseLottos,drawLotto));
+    public static void resultCalculate(List<Lotto> purchaseLottos, List<Integer> drawLotto,int buyAmount){
+        profitCalculate(synthesizeRanking(purchaseLottos,drawLotto),buyAmount);
     }
     public static List<Integer> synthesizeRanking(List<Lotto> purchaseLottos, List<Integer> drawLotto){
         List<Integer> ranks = new LinkedList<>();
@@ -60,7 +60,15 @@ public class ResultCalculate {
 
         return LottoRanking.FIFTH.getPrice();
     }
-    public static void profitCalculate(List<Integer> rankings){
+    public static void profitCalculate(List<Integer> rankings, int outcome){
         ResultPrint.printResult(rankings);
+        int income = rankings.get(LottoRanking.PRICE.getIndex());
+        System.out.printf("총 수익률은 %.1f%%입니다.\n",calculatePercent(income,outcome));
+    }
+
+    public static double calculatePercent(int income,int outcome){
+        double profitPercent = (((double)income*100)/(double)outcome);
+        profitPercent = Math.round(profitPercent*10)/(double)10;
+        return profitPercent;
     }
 }
