@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.constant.Constants.ErrorMessage.OVER_RANGE;
 import static lotto.constant.Constants.Lotto.RANGE_BEGIN;
 import static lotto.constant.Constants.Lotto.RANGE_END;
 
@@ -37,7 +38,7 @@ public class LottoNumber {
 
     private void validateRange(int number) {
         if (number < RANGE_BEGIN || number > RANGE_END) {
-            throw new IllegalArgumentException("[ERROR] 1~45 범위 밖의 숫자가 포함되어 있습니다.");
+            throw new IllegalArgumentException(OVER_RANGE);
         }
     }
 }

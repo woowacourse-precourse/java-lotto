@@ -1,12 +1,13 @@
 package lotto.utils;
 
+import static lotto.constant.Constants.ErrorMessage.NON_NUMBER;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputUtil {
-
     public static int readNumber() {
         return toNumber(Console.readLine());
     }
@@ -19,7 +20,7 @@ public class InputUtil {
         try {
             return Integer.parseInt(line);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 문자가 입력되었습니다.");
+            throw new IllegalArgumentException(NON_NUMBER);
         }
     }
 

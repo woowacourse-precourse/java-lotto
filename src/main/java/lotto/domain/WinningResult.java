@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.constant.Constants.ErrorMessage.ALREADY_CONTAINS_BONUS_NUMBER;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +36,7 @@ public class WinningResult {
 
     private void validateHasBonusNumber(Lotto winningNumbers, LottoNumber bonusNumber) {
         if (winningNumbers.hasNumber(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호에 포함되어 있습니다.");
+            throw new IllegalArgumentException(ALREADY_CONTAINS_BONUS_NUMBER);
         }
     }
 }

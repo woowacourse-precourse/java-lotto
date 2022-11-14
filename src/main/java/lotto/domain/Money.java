@@ -1,8 +1,10 @@
 package lotto.domain;
 
-import static lotto.constant.Constants.Money.MAXIMUM_AMOUNT;
-import static lotto.constant.Constants.Money.MINIMUM_AMOUNT;
-import static lotto.constant.Constants.Money.UNIT_AMOUNT;
+import static lotto.constant.Constants.ErrorMessage.MAXIMUM_AMOUNT;
+import static lotto.constant.Constants.ErrorMessage.MINIMUM_AMOUNT;
+import static lotto.constant.Constants.ErrorMessage.NON_UNIT_AMOUNT;
+
+import lotto.constant.Constants;
 
 public class Money {
     private final int amount;
@@ -15,7 +17,7 @@ public class Money {
     }
 
     public int calculateQuantity() {
-        return amount / UNIT_AMOUNT;
+        return amount / Constants.Money.UNIT_AMOUNT;
     }
 
     public double calculateYield(long totalPrize) {
@@ -23,20 +25,20 @@ public class Money {
     }
 
     private static void validateMinimumAmount(int money) {
-        if (money < MINIMUM_AMOUNT) {
-            throw new IllegalArgumentException("[ERROR] 최소 1,000원 이상 구매해야 합니다.");
+        if (money < Constants.Money.MINIMUM_AMOUNT) {
+            throw new IllegalArgumentException(MINIMUM_AMOUNT);
         }
     }
 
     private static void validateMaximumAmount(int money) {
-        if (money > MAXIMUM_AMOUNT) {
-            throw new IllegalArgumentException("[ERROR] 구입 한도는 최대 10만원까지입니다.");
+        if (money > Constants.Money.MAXIMUM_AMOUNT) {
+            throw new IllegalArgumentException(MAXIMUM_AMOUNT);
         }
     }
 
     private static void validateUnitAmount(int money) {
-        if (money % UNIT_AMOUNT != 0) {
-            throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해야 합니다.");
+        if (money % Constants.Money.UNIT_AMOUNT != 0) {
+            throw new IllegalArgumentException(NON_UNIT_AMOUNT);
         }
     }
 }

@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.constant.Constants.ErrorMessage.HAS_DUPLICATED_NUMBERS;
+import static lotto.constant.Constants.ErrorMessage.WRONG_SIZE;
 import static lotto.constant.Constants.Lotto.SIZE;
 
 import java.util.HashSet;
@@ -36,14 +38,14 @@ public class Lotto {
 
     private void validateSize(List<LottoNumber> numbers) {
         if (numbers.size() != SIZE) {
-            throw new IllegalArgumentException("[ERROR] 로또는 숫자가 6개이어야 합니다.");
+            throw new IllegalArgumentException(WRONG_SIZE);
         }
     }
 
     private void validateDuplicates(List<LottoNumber> numbers) {
         Set<LottoNumber> nonDuplicatesNumbers = new HashSet<>(numbers);
         if (nonDuplicatesNumbers.size() != SIZE) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException(HAS_DUPLICATED_NUMBERS);
         }
     }
 }
