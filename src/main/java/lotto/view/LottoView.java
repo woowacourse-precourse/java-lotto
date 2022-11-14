@@ -30,11 +30,15 @@ public class LottoView {
         }
     }
 
-//    당첨 번호 입력하라는 메세지 출력 기능
-//    public void displayInputWinningNumber() {}
+//  당첨 번호 입력하라는 메세지 출력 기능
+    public void displayInputWinningNumber() {
+        System.out.println(Message.INPUT_WINNING_NUMBER);
+    }
 
 //    보너스 번호 입력하라는 메세지 출력 기능
-//    public void displayInputBonusNumber() {}
+    public void displayInputBonusNumber() {
+        System.out.println(Message.INPUT_BONUS_NUMBER);
+    }
 
 //    당첨 통계 보여주는 기능
 //    public void displayYield() {}
