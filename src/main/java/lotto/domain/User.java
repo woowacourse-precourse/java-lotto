@@ -8,9 +8,6 @@ public class User {
     private int purchaseLottoPiece;
     private List<Lotto> purchaseLotto;
 
-    public User() {
-    }
-
     public User(int purchaseMoney, int purchaseLottoPiece, List<Lotto> purchaseLotto) {
         this.purchaseMoney = purchaseMoney;
         this.purchaseLottoPiece = purchaseLottoPiece;

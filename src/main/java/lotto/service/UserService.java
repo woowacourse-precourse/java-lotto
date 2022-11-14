@@ -5,9 +5,7 @@ import lotto.domain.Lotto;
 import lotto.domain.User;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static constants.Constants.*;
 
@@ -18,7 +16,7 @@ public class UserService {
         int purchaseMoney = scanPayMoney();
         int purchaseLottoPiece = purchaseMoney / LOTTO_PRICE;
         List<Lotto> purchaseLotto = issueLotto(purchaseLottoPiece);
-        return new User(purchaseMoney,purchaseLottoPiece,purchaseLotto);
+        return new User(purchaseMoney, purchaseLottoPiece, purchaseLotto);
     }
 
     private List<Lotto> issueLotto(int purchaseLottoNum) {
@@ -30,11 +28,11 @@ public class UserService {
         return tempGeneratedLotto;
     }
 
-    public void printBoughtLotto(User user){
+    public void printBoughtLotto(User user) {
         StringBuilder printString = new StringBuilder();
         printString.append(BLANK_BR); //한줄 공백
         printString.append(user.getPurchaseLottoPiece()).append(PURCHASE_MSG).append("\n");
-        for(Lotto now : user.getPurchaseLotto()){
+        for (Lotto now : user.getPurchaseLotto()) {
             printString.append(now).append("\n");
         }
         System.out.println(printString);
@@ -51,4 +49,5 @@ public class UserService {
         if (money % LOTTO_PRICE == 0) return;
         throw new IllegalArgumentException(PAY_MONEY_ERROR);
     }
+
 }

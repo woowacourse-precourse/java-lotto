@@ -10,6 +10,10 @@ public class WinningLotto extends Lotto {
         this.bonusNumber = bonusNumber;
     }
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
     @Override
     public String toString() {
         return super.getNumbers().toString() + " " + bonusNumber;
