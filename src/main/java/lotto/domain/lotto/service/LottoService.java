@@ -5,13 +5,13 @@ import lotto.domain.view.InputView;
 import lotto.domain.view.OutputView;
 import lotto.global.util.Util;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.global.constant.ServiceConstants.*;
+
 public class LottoService {
-    private static final String MATCH_MESSAGE = "일치하는 볼 개수 %d개, 보너스 볼 개수 %d개";
 
     public int lottoCount(int inputMoney) {
         return inputMoney / 1000;
@@ -34,18 +34,39 @@ public class LottoService {
         for (Lotto lotto : lottos) {
             int ball = 0;
             int bonus = 0;
-            for (int i : lotto.getNumbers()) {
-                if (prizeLotto.getNumbers().contains(i)) {
-                    ball++;
-                }
-
-                if (i == bonusNumber) {
-                    bonus++;
-                }
-            }
+            Map<String, Integer> ballAndBonus = plusBallOrBonus(lotto, prizeLotto, bonusNumber);
+            ball = ballAndBonus.get(BALL);
+            bonus = ballAndBonus.get(BONUS);
             putValues(result, getKey(ball, bonus));
         }
         return OutputView.printResult(result);
+    }
+
+    private Map<String, Integer> plusBallOrBonus(Lotto lotto, Lotto prizeLotto, int bonusNumber) {
+        int ball = 0;
+        int bonus = 0;
+        Map<String, Integer> ballAndBonus = new HashMap<>();
+        for (int i : lotto.getNumbers()) {
+            ball = compareBall(prizeLotto, i, ball);
+            bonus = compareBonus(bonusNumber, i, bonus);
+        }
+        ballAndBonus.put(BALL, ball);
+        ballAndBonus.put(BONUS, bonus);
+        return ballAndBonus;
+    }
+
+    private int compareBall(Lotto prizeLotto, int i, int ball) {
+        if (prizeLotto.getNumbers().contains(i)) {
+            ball++;
+        }
+        return ball;
+    }
+
+    private int compareBonus(int bonusNumber, int i, int bonus) {
+        if (i == bonusNumber) {
+            bonus++;
+        }
+        return bonus;
     }
 
     private String getKey(int ball, int bonus) {
