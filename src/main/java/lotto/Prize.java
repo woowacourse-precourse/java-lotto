@@ -19,6 +19,25 @@ public enum Prize {
         this.prizeMoney = prizeMoney;
     }
 
+    public static Prize valueOf(int count, boolean bonus) {
+        if (count == 6) {
+            return Prize.PRIZE1;
+        }
+        if (count == 5 && bonus) {
+            return Prize.PRIZE2;
+        }
+        if (count == 5) {
+            return Prize.PRIZE3;
+        }
+        if (count == 4) {
+            return Prize.PRIZE4;
+        }
+        if (count == 3) {
+            return Prize.PRIZE5;
+        }
+        return null;
+    }
+
     public int getPrizeMoney() {
         return prizeMoney;
     }
