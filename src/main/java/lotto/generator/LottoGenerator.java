@@ -9,10 +9,6 @@ import lotto.domain.Payment;
 
 public class LottoGenerator {
 
-    public static Lotto generateByNumbers(String numbers) {
-        return new Lotto(numbers);
-    }
-
     public static List<Lotto> generateByPayment(Payment payment) {
         int numberOfAvailablePurchases = payment.getNumberOfAvailablePurchases();
         List<Lotto> purchasedLottos = new ArrayList<>();

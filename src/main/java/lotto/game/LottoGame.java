@@ -43,7 +43,7 @@ public class LottoGame {
     private WinningLotto generateWinningLotto() {
         UserInputView.printInputWinningLottoNumbers();
         String winningLottoNumbers = Console.readLine();
-        Lotto winningLotto = LottoGenerator.generateByNumbers(winningLottoNumbers);
+        Lotto winningLotto = new Lotto(winningLottoNumbers);
 
         UserInputView.printInputBonusNumber();
         String bonusNumber = Console.readLine();

@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import lotto.constant.ErrorMessage;
 import lotto.constant.LottoNumber;
-import lotto.generator.LottoGenerator;
 import lotto.validator.LottoNumberValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -22,7 +21,7 @@ public class WinningLottoTest {
         @DisplayName("숫자가 아닐 경우 예외를 던진다")
         void not_numeric() {
             // given
-            Lotto lotto = LottoGenerator.generateByNumbers("1,2,3,4,5,6");
+            Lotto lotto = new Lotto("1,2,3,4,5,6");
             String input = "로또게임";
 
             // when, then
@@ -35,7 +34,7 @@ public class WinningLottoTest {
         @DisplayName("숫자일 경우 예외를 던지지 않는다")
         void numeric() {
             // given
-            Lotto lotto = LottoGenerator.generateByNumbers("1,2,3,4,5,6");
+            Lotto lotto = new Lotto("1,2,3,4,5,6");
             String input = "7";
 
             // when, then
