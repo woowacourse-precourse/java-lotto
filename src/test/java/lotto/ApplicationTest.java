@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,8 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
+    @DisplayName("로또 게임이 올바르게 작동합니다.")
     @Test
-    void 기능_테스트() {
+    void functionTest() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("8000", "1,2,3,4,5,6", "7");
@@ -46,10 +48,92 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("숫자가 아닌 구매 금액 입력에 대해서 올바른 에러 메시지를 출력합니다.")
     @Test
-    void 예외_테스트() {
+    void createAmountNotNum() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("1000으로 나누어떨어지지 않는 구매 금액 입력에 대해서 올바른 에러 메시지를 출력합니다.")
+    @Test
+    void createAmountNotDividedBy1000() {
+        assertSimpleTest(() -> {
+            runException("13500");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("숫자가 아닌 수로 이루어진 당첨 번호 입력에 대해서 올바른 에러 메시지를 출력합니다.")
+    @Test
+    void createWinningNumNotNum() {
+        assertSimpleTest(() -> {
+            runException("4000", "1, 2, 3, 4, 5, a", "10");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("크가가 6보다 큰 당첨 번호 입력에 대해서 올바른 에러 메시지를 출력합니다.")
+    @Test
+    void createWinningNumBiggerThan6() {
+        assertSimpleTest(() -> {
+            runException("4000", "1, 2, 3, 4, 5, 6, 7", "10");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("크기가 6보다 작은 당첨 번호 입력에 대해서 올바른 에러 메시지를 출력합니다.")
+    @Test
+    void createWinningNumSmallerThan6() {
+        assertSimpleTest(() -> {
+            runException("4000", "1, 2, 3, 4, 5", "10");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("중복되는 당첨 번호 입력에 대해서 올바른 에러 메시지를 출력합니다.")
+    @Test
+    void createWinningNumNotUnique() {
+        assertSimpleTest(() -> {
+            runException("4000", "1, 2, 3, 4, 5, 5", "10");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("범위 밖의 당첨 번호 입력에 대해서 올바른 에러 메시지를 출력합니다.")
+    @Test
+    void createWinningNumNotInRange() {
+        assertSimpleTest(() -> {
+            runException("4000", "1, 2, 3, 4, 5, 48", "10");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("숫자가 아닌 보너스 번호 입력에 대해서 올바른 에러 메시지를 출력합니다.")
+    @Test
+    void createBonusNumNotNum() {
+        assertSimpleTest(() -> {
+            runException("4000", "1, 2, 3, 4, 5, 6", "a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("범위 밖의 보너스 번호 입력에 대해서 올바른 에러 메시지를 출력합니다.")
+    @Test
+    void createBonusNumNotInRange() {
+        assertSimpleTest(() -> {
+            runException("4000", "1, 2, 3, 4, 5, 6", "48");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("당첨 번호와 중복되는 보너스 번호 입력에 대해서 올바른 에러 메시지를 출력합니다.")
+    @Test
+    void createBonusNumNotUnique() {
+        assertSimpleTest(() -> {
+            runException("4000", "1, 2, 3, 4, 5, 6", "6");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }

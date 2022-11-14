@@ -12,9 +12,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또의 크기는 6이어야 합니다.");
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getLottoNum() {
+        return numbers;
+    }
 }
