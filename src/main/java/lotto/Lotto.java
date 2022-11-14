@@ -37,6 +37,15 @@ public class Lotto {
         return 0;
     }
     
+    public List<String> winning(){
+        List<String> results = new ArrayList<>();
+        String winningInput = Console.readLine().strip();
+        String bonus = Console.readLine().strip();
+        results.add(winningInput);
+        results.add(bonus);
+        return results;
+    }
+    
     public List<Integer> gen(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
