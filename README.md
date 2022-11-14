@@ -14,8 +14,8 @@
 
 입력
 - [v] 로또 구입 금액을 입력 받는다. - Input#receiveMoney
-- [ ] 당첨번호를 입력 받는다. - Input#receiveWinningNumbers
-- [ ] 보너스 번호를 입력 받는다. - Input#receiveBonusNuber
+- [v] 당첨번호를 입력 받는다. - Input#receiveWinningNumbers
+- [v] 보너스 번호를 입력 받는다. - Input#receiveBonusNuber
 
 출력
 - [ ] 로또 구입 금액을 입력받는 문구를 출력한다. - Output#giveMeMoney

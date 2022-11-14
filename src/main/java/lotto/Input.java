@@ -17,7 +17,8 @@ public class Input {
         }
     }
 
-//    public static void receiveBonusNuber(){
-//
-//    }
+    public static void receiveBonusNuber(List<Integer> winningNumbers) {
+        String number = camp.nextstep.edu.missionutils.Console.readLine();
+        winningNumbers.add(Integer.parseInt(number));
+    }
 }
