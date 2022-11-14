@@ -16,9 +16,14 @@ public class UI {
     }
 
     private static String inputWinNumbers(){
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         String numbers = camp.nextstep.edu.missionutils.Console.readLine();
         return numbers;
+    }
+    private static String inputBonusNumbers(){
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        String number = camp.nextstep.edu.missionutils.Console.readLine();
+        return number;
     }
 
 }
