@@ -19,4 +19,9 @@ public class Message {
     public void lottoDetailMessage(Lotto lotto){
         System.out.println(lotto.getNumbers());
     }
+
+    public String inputWinningNumberMessage() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        return Console.readLine();
+    }
 }

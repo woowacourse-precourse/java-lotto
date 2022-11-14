@@ -21,6 +21,8 @@ public class LottoController {
         for(Lotto lotto : user.getLottos()){
             message.lottoDetailMessage(lotto);
         }
+
+        String inputWinningNumber = message.inputWinningNumberMessage();
     }
 
 }
