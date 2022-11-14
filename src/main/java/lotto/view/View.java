@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.object.Lotto;
 import lotto.object.WinningHistory;
 import lotto.object.Yield;
 
@@ -20,7 +21,7 @@ public class View {
         System.out.println(String.format("%d개를 구매했습니다.", amount));
     }
 
-    public static void printLottoNumbers(List<List<Integer>> lottos) {
+    public static void printLottoNumbers(List<Lotto> lottos) {
         lottos.stream().forEach(System.out::println);
     }
 
