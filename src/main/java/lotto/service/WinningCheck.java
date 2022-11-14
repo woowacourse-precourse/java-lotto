@@ -2,6 +2,7 @@ package lotto.service;
 
 import lotto.Enum.Ranking;
 import lotto.domain.Lotto;
+import lotto.domain.LottoAnswer;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,14 +13,19 @@ public class WinningCheck {
     private static final int FIVE = 5;
     private static final double FIVE_POINT_FIVE = 5.5;
     private static final int ONE = 1;
-    Map<Ranking, Integer> lottoResult = new HashMap<>();
+    private static final double HUNDRED = 100.0;
+    Map<Ranking, Integer> lottoResult;
 
-    public Map<Ranking, Integer> winningCheck(List<Lotto> userLottos, List<Integer> answerNumbers, int bonusNumber) {
+    public Map<Ranking, Integer> getLottoResult() {
+        return lottoResult;
+    }
+
+    public WinningCheck(List<Lotto> userLottos, LottoAnswer lottoAnswer) {
+        lottoResult = new HashMap<>();
         initLottoResult();
         for(Lotto userLotto : userLottos) {
-            lottoResultCount(haveNumberCount(userLotto.getNumbers(), answerNumbers, bonusNumber));
+            lottoResultCount(haveNumberCount(userLotto.getNumbers(), lottoAnswer.getNumbers(), lottoAnswer.getBonusNumber()));
         }
-        return lottoResult;
     }
 
     private void initLottoResult() {
@@ -48,6 +54,14 @@ public class WinningCheck {
     private void lottoResultCount(double count) {
         Ranking ranking = Ranking.valueOfNumber(count);
         lottoResult.computeIfPresent(ranking, (k, v) -> v + ONE);
+    }
+
+    public double calculate(int money) {
+        double resultMoney = ZERO;
+        for (Ranking ranking : Ranking.values()) {
+            resultMoney += lottoResult.get(ranking) * ranking.money();
+        }
+        return Math.round(resultMoney / money * HUNDRED * HUNDRED) / HUNDRED;
     }
 
 }
