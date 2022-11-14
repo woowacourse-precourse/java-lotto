@@ -28,6 +28,22 @@ public class Input {
         return winNumbers;
     }
 
+    int inputBonusNumber(){
+        String number = readLine();
+        bonusValidate(number);
+        return Integer.parseInt(number);
+    }
+
+    void bonusValidate(String number) {
+        if (!isNumeric(number)) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자여야 합니다.");
+        }
+
+        int convertedNumber = Integer.parseInt(number);
+        if(convertedNumber < 1 || convertedNumber > 45){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1에서 45여야 합니다.");
+        }
+    }
 
     void inputValidate(String money) {
         if (!isNumeric(money)) {
