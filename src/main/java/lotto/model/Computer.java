@@ -12,9 +12,9 @@ public class Computer {
         List<List<Integer>> computerRandomNumbers = new ArrayList<>();
 
         for (int i = 0; i < (inputMoney/1000); i++) {
-            List<Integer> randomNumbers;
-            randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            computerRandomNumbers.add(randomNumbers);
+            List<Integer> numbers;
+            numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            computerRandomNumbers.add(numbers);
         }
         return computerRandomNumbers;
     }

@@ -18,8 +18,8 @@ public class InputView {
     public static String[] getNumbers() {
         System.out.println(WRITE_LOTTO);
 
-        String[] numbers = Console.readLine().split(",");
-        return numbers;
+        String[] inputLottoNumbers = Console.readLine().split(",");
+        return inputLottoNumbers;
     }
 
     public static int getBonusNumber() {
