@@ -1,7 +1,8 @@
 package lotto.domain;
 
+import lotto.Enum.ErrorCode;
+
 import java.util.*;
-import java.util.stream.Stream;
 
 public class Lotto {
     private final int MAX_SIZE = 6;

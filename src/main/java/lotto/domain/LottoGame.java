@@ -1,11 +1,10 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.*;
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
+import lotto.Enum.ErrorCode;
+import lotto.Enum.WinningType;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LottoGame {
