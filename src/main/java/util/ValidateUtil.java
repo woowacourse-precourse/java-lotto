@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import dto.Lotto;
+
 public class ValidateUtil {
 	
 	
@@ -47,5 +49,9 @@ public class ValidateUtil {
 			return true;
 		}
 		return false;
+	}
+
+	public static boolean checkDuplicates(Lotto winningNumber, int bonusNumber) {
+		return winningNumber.getNumbers().contains(bonusNumber);
 	}
 }
