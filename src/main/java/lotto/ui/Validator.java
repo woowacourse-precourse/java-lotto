@@ -5,6 +5,7 @@ import java.util.List;
 public class Validator {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
+    private static final int UNIT = 1000;
 
     public static boolean isNumber(char input) {
         if (!Character.isDigit(input)) {
@@ -42,5 +43,12 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
         }
         return false;
+    }
+
+    public static boolean isHundredUnit(int money) {
+        if (money % UNIT != 0) {
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 1000원 단위여야 합니다.");
+        }
+        return true;
     }
 }
