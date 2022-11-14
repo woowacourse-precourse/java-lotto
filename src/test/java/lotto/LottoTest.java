@@ -31,4 +31,11 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(6, 1, 2, 3, 4, 5));
         assertThat(lotto.toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
+
+    @DisplayName("로또 번호가 범위를 벗어나면 예외가 발생한다.")
+    @Test
+    void createLottoByOutOfRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 50)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
