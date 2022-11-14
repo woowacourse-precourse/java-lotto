@@ -28,16 +28,16 @@ public class OutputView {
 		}
 	}
 
-	public static void printWinningResult(Map<Rank, Integer> getRanks) {
+	public static void printWinningResult(Map<Rank, Integer> scoreBoard) {
 		System.out.println(RESULT_HEADER_MESSAGE);
 
-		List<Rank> rankValue = List.of(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST);
-		for (Rank ranking : rankValue) {
+		List<Rank> ranks = List.of(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST);
+		for (Rank rank : ranks) {
 			System.out.printf(
-				createWinningResultMessage(ranking),
-				ranking.getHitNumberCount(),
-				ranking.getPrizeMoneyWithComma(),
-				getRanks.get(ranking));
+				createWinningResultMessage(rank),
+				rank.getHitNumberCount(),
+				rank.getPrizeMoneyWithComma(),
+				scoreBoard.get(rank));
 		}
 	}
 
@@ -45,8 +45,8 @@ public class OutputView {
 		System.out.printf(PROFIT_RATE_MESSAGE, getProfitRate);
 	}
 
-	private static String createWinningResultMessage(Rank ranking) {
-		if (ranking == Rank.SECOND) {
+	private static String createWinningResultMessage(Rank rank) {
+		if (rank == Rank.SECOND) {
 			return SECOND_RESULT_MESSAGE;
 		}
 		return WINNING_RESULT_MESSAGE;
