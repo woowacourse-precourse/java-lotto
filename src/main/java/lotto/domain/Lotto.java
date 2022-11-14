@@ -1,10 +1,15 @@
 package lotto.domain;
 
+import static lotto.utils.message.NumberMessageUtil.FIVE;
+import static lotto.utils.message.NumberMessageUtil.FOUR;
+import static lotto.utils.message.NumberMessageUtil.SIX;
+import static lotto.utils.message.NumberMessageUtil.THREE;
 import static lotto.utils.validate.NumberValidator.validateNumber;
 import static lotto.utils.validate.NumberValidator.validateNumbersSize;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.utils.winning.RankUtil;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -27,6 +32,28 @@ public class Lotto {
         return numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    public RankUtil compare(Winning winning) {
+        int count = correctCount(winning.getWinningNumbers());
+        boolean isBonusMatch = isMatchBonusNumber(winning.getBonusNumber());
+
+        return getRank(count, isBonusMatch);
+    }
+
+    private RankUtil getRank(int count, boolean isBonusMatch) {
+        if (count == SIX.getNumber()) {
+            return RankUtil.FIRST;
+        } else if (count == FIVE.getNumber() && isBonusMatch) {
+            return RankUtil.SECOND;
+        } else if (count == FIVE.getNumber()) {
+            return RankUtil.THIRD;
+        } else if (count == FOUR.getNumber()) {
+            return RankUtil.FOURTH;
+        } else if (count == THREE.getNumber()) {
+            return RankUtil.FIFTH;
+        }
+        return RankUtil.MISS;
     }
 
     public int correctCount(List<Integer> winningLottoNumbers) {

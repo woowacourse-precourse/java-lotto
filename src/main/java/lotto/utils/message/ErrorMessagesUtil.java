@@ -1,14 +1,17 @@
 package lotto.utils.message;
 
+import static lotto.utils.message.NumberMessageUtil.LOTTO_MAX;
+import static lotto.utils.message.NumberMessageUtil.LOTTO_MIN;
+import static lotto.utils.message.NumberMessageUtil.LOTTO_PRICE;
+
 public enum ErrorMessagesUtil {
     PREFIX("[ERROR] "),
     ONLY_NUMBERS("숫자만 입력할 수 있습니다."),
     NOT_BLANK("공백은 입력할 수 없습니다."),
-    NOT_DIVIDE("1,000원으로 나누어 떨어지지 않습니다"),
+    NOT_DIVIDE(String.format("%,d원으로 나누어 떨어지지 않습니다", LOTTO_PRICE.getNumber())),
     DUPLICATE_NUMBER("숫자가 중복되었습니다."),
-    LOWER_MONEY("0원보다 작게 입력할 수 없습니다."),
-    LOWER_NUMBER("1보다 낮은 수는 입력할 수 없습니다."),
-    UPPER_NUMBER("45보다 높은 수는 입력할 수 없습니다.");
+    LOWER_NUMBER(String.format("%d보다 낮은 수는 입력할 수 없습니다.", LOTTO_MIN.getNumber())),
+    UPPER_NUMBER(String.format("%d보다 높은 수는 입력할 수 없습니다.", LOTTO_MAX.getNumber()));
 
 
     private final String message;

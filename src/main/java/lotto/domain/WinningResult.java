@@ -1,8 +1,8 @@
 package lotto.domain;
 
+import static lotto.utils.ConsoleUtil.*;
 import static lotto.utils.message.StaticMessagesUtil.*;
 
-import lotto.utils.ConsoleUtil;
 import lotto.utils.winning.RankUtil;
 import lotto.utils.winning.RewardUtil;
 
@@ -36,7 +36,7 @@ public class WinningResult {
     }
 
     public void show() {
-        ConsoleUtil.showMessage(WINNING_RESULT.getMessage());
+        showMessage(WINNING_RESULT.getMessage());
         showParamMessage(RankUtil.FIFTH.getMessage(), RewardUtil.FIFTH.getReward(), fifth);
         showParamMessage(RankUtil.FOURTH.getMessage(), RewardUtil.FOURTH.getReward(), fourth);
         showParamMessage(RankUtil.THIRD.getMessage(), RewardUtil.THIRD.getReward(), third);
@@ -50,10 +50,6 @@ public class WinningResult {
                 + (long) third * RewardUtil.THIRD.getReward()
                 + (long) fourth * RewardUtil.FOURTH.getReward()
                 + (long) fifth * RewardUtil.FIFTH.getReward();
-    }
-
-    private void showParamMessage(String message, int reward, int rank) {
-        ConsoleUtil.showParamMessage(message, reward, rank);
     }
 
 }

@@ -1,6 +1,10 @@
 package lotto.utils.validate;
 
 import static lotto.utils.message.ErrorMessagesUtil.*;
+import static lotto.utils.message.NumberMessageUtil.LOTTO_COUNT;
+import static lotto.utils.message.NumberMessageUtil.LOTTO_MAX;
+import static lotto.utils.message.NumberMessageUtil.LOTTO_MIN;
+import static lotto.utils.message.NumberMessageUtil.LOTTO_PRICE;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -23,11 +27,7 @@ public class NumberValidator {
     public static void validateBuyMoney(String money) {
         validateCommon(money);
 
-        if (Integer.parseInt(money) < 0) {
-            throw new IllegalArgumentException(LOWER_MONEY.getMessage());
-        }
-
-        if (Integer.parseInt(money) % 1000 != 0) {
+        if (Integer.parseInt(money) % LOTTO_PRICE.getNumber() != 0) {
             throw new IllegalArgumentException(NOT_DIVIDE.getMessage());
         }
     }
@@ -39,17 +39,17 @@ public class NumberValidator {
     }
 
     public static void validateNumber(int number) {
-        if (number < 1) {
+        if (number < LOTTO_MIN.getNumber()) {
             throw new IllegalArgumentException(LOWER_NUMBER.getMessage());
         }
 
-        if (number > 45) {
+        if (number > LOTTO_MAX.getNumber()) {
             throw new IllegalArgumentException(UPPER_NUMBER.getMessage());
         }
     }
 
     public static void validateNumbersSize(List<?> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_COUNT.getNumber()) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
         }
     }

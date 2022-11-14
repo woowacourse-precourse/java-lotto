@@ -2,6 +2,7 @@ package lotto.domain;
 
 import static lotto.utils.message.StaticMessagesUtil.INPUT_BONUS_NUMBER;
 import static lotto.utils.message.StaticMessagesUtil.INPUT_WINNING_NUMBERS;
+import static lotto.utils.message.StaticMessagesUtil.SPLIT_NUMBERS_DELIMITER;
 import static lotto.utils.validate.NumberValidator.validateNumbersSize;
 
 import java.util.ArrayList;
@@ -20,11 +21,11 @@ public class Winning {
         this.bonusNumber = 0;
     }
 
-    public void inputNumber() {
+    public void inputNumbers() {
         ConsoleUtil.showMessage(INPUT_WINNING_NUMBERS.getMessage());
         String input = ConsoleUtil.input();
 
-        String[] splitNumbers = input.split(",");
+        String[] splitNumbers = input.split(SPLIT_NUMBERS_DELIMITER.getMessage());
         validateInputNumber(splitNumbers);
 
         numbers = convertStringToInteger(splitNumbers);
