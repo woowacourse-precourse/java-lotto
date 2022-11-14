@@ -3,10 +3,7 @@ package lotto.model;
 import lotto.service.LottoService;
 import lotto.view.OutputView;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -29,8 +26,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
-        Collections.sort(this.numbers);
+        Set<Integer> ordered = new TreeSet<>(numbers);
+        this.numbers = new ArrayList<>(ordered);
     }
 
     private void validate(List<Integer> numbers) {
