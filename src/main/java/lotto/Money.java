@@ -16,4 +16,9 @@ public class Money {
         }
         return amount;
     }
+
+    public int lottoCount(String amount) {
+        int money = Integer.parseInt(amount);
+        return (money / 1000);
+    }
 }
