@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class Lotto {
     private  List<Integer> numbers;
@@ -22,18 +25,17 @@ public class Lotto {
         }
     }
 
-    private void pickNumberForLotto(){
-        numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+    public void printNumbersOfLotto(){
+        System.out.println(numbers);
     }
 
     private void validateDuplicatedNumbers(List<Integer> numbers){
-        Set<Integer> numberSet = new HashSet<>(numbers);
-        if(numberSet.size()!=numbers.size()){
+        List<Integer> distinctNumbers = numbers.stream()
+                .distinct()
+                .collect(toList());
+
+        if(distinctNumbers.size()<6){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
         }
-    }
-
-    private void printNums() {
-        System.out.println(numbers);
     }
 }
