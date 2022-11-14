@@ -7,6 +7,7 @@ import java.util.*;
 public class LottoGame {
     private final String seperator = ",";
     private final LottoVendingMachine machine;
+    private CheckPrize checkPrize;
     private final ArrayList<Integer> winningNumber;
     private int bonusNumber;
     private ArrayList<Lotto> purchasedLotto;
@@ -14,6 +15,7 @@ public class LottoGame {
     public LottoGame() {
         machine = new LottoVendingMachine();
         winningNumber = new ArrayList<>();
+        checkPrize = new CheckPrize();
     }
 
     public void start() {
@@ -32,6 +34,11 @@ public class LottoGame {
         bonusNumber = Integer.parseInt(bonusInput);
         checkBonus(bonusNumber);
 
+        int prize = checkPrize.getPrize(purchasedLotto, winningNumber, bonusNumber);
+        double earnRate = ((double) prize / inputMoney) * 100;
+        String rateFormat = "총 수익률은 %.2f% 입니다.";
+        String printRate = String.format(rateFormat, earnRate);
+        System.out.println(printRate);
     }
 
     private void printPurchasedLotto() {
