@@ -5,11 +5,11 @@ import java.util.Arrays;
 
 public enum Ranking {
 
-    FIFTH(3, 5_000, false),
-    FOURTH(4, 50_000, false),
-    THIRD(5, 1_500_000, false),
-    SECOND(5, 30_000_000, true),
-    FIRST(6, 2_000_000_000, false),
+    FIFTH(3, 5_000L, false),
+    FOURTH(4, 50_000L, false),
+    THIRD(5, 1_500_000L, false),
+    SECOND(5, 30_000_000L, true),
+    FIRST(6, 2_000_000_000L, false),
     NOTHING(0, 0, false);
 
     private static final String HAS_BONUS_NUMBER_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원)";
@@ -17,16 +17,16 @@ public enum Ranking {
     public static final int SECOND_RIGHT_COUNT = 5;
 
     private final int rightCount;
-    private final int prize;
+    private final long prize;
     private final boolean hasBonusNumber;
 
-    Ranking(int rightCount, int prize, boolean hasBonusNumber) {
+    Ranking(int rightCount, long prize, boolean hasBonusNumber) {
         this.rightCount = rightCount;
         this.prize = prize;
         this.hasBonusNumber = hasBonusNumber;
     }
 
-    public int getPrize() {
+    public long getPrize() {
         return prize;
     }
 
