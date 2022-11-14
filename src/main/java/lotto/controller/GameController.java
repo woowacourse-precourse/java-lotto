@@ -10,5 +10,6 @@ public class GameController {
     public void buyLotto() {
         message.inputPrice();
         user.inputPrice();
+        message.countLotto(user.getCountLotto());
     }
 }

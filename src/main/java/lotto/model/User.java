@@ -9,6 +9,10 @@ public class User {
     private final InputValidation inputValidation = new InputValidation();
     private int countLotto;
 
+    public int getCountLotto() {
+        return countLotto;
+    }
+
     public void inputPrice() {
         String price = Console.readLine();
         inputValidation.validatePrice(price);
