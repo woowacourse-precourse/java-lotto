@@ -58,4 +58,10 @@ public class DataProcess {
         }
         return totalReward;
     }
+
+    public static float CalculateIncome(long totalReward, int count){
+        float income = totalReward / count;
+        income /= 10.0;
+        return income;
+    }
 }
