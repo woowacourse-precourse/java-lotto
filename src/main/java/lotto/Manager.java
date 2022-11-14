@@ -55,4 +55,9 @@ public class Manager {
         return lotto;
     }
 
+    public void PrintLotto(List<Lotto> list){
+        for(int i=0; i<list.size(); i++){
+            list.get(i).Print();
+        }
+    }
 }
