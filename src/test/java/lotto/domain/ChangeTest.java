@@ -19,8 +19,15 @@ class ChangeTest {
 
     @DisplayName("숫자와 ','을 제외한 문자가 입력이 되었으면 예외가 발생한다.")
     @Test
-    void lottoNumberTest_다른문자가_입력되었을때(){
+    void lottoNumberTest_다른문자가_입력(){
         assertThatThrownBy(() -> Change.lottoNumber("1,a,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("','가 2개 이상 입력이 되었는지 확인하는 기능")
+    @Test
+    void lottoNumberTest_콤마가_2개(){
+        assertThatThrownBy(() -> Change.lottoNumber("1,,2,3,4,5,6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
