@@ -9,7 +9,7 @@ import java.util.List;
 public class UserService {
     private User user;
     private LottoSystemService lottoSystemService;
-    private int revenue;
+    private float revenue;
 
 
     public void setPayMent() {
@@ -33,7 +33,7 @@ public class UserService {
         return user.getUserLottoNumber();
     }
 
-    private float setRevenue(){
+    private void setRevenue(){
         int payAmount = user.getUserPayAmount();
         List<Integer> hit = lottoSystemService.getHitCount();
         List<Integer> hitValue = Arrays.asList(5000, 50000, 1500000, 30000000, 2000000000);
@@ -43,7 +43,7 @@ public class UserService {
             hitValueSum += hit.get(i) * hitValue.get(i);
         }
 
-        return (float) (Math.round(((hitValueSum / payAmount) * 100)) / 100.0);
+        revenue = (float) (Math.round(((hitValueSum / payAmount) * 100)) / 100.0);
     }
 
 }
