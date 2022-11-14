@@ -1,6 +1,5 @@
 package lotto.service;
 
-import lotto.domain.Manager;
 import lotto.domain.User;
 import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
@@ -14,7 +13,7 @@ public class UserService {
         double yield = user.getWinningAmount() / user.getMoney();
         yield *= Number.THOUSAND.getValue();
         yield = Math.round(yield);
-        yield /= Number.THOUSAND.getValue();
+        yield /= Number.TEN.getValue();
         user.setYield(yield);
     }
 
