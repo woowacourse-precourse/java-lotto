@@ -17,7 +17,6 @@ public class Application {
         Lotto lotto = new Lotto(winningNumber);
         PrintMachine.askBonusNumber();
         bonusNumber.getBonusNumber(winningNumber, Console.readLine());
-        System.out.println(bonusNumber.bonus);
         lotto.getResult(lottoStore.lottoPapers, lottoStore.validMoney, bonusNumber.bonus);
     }
 }
