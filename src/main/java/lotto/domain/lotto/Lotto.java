@@ -11,6 +11,8 @@ import java.util.StringJoiner;
  * - `Lotto`에 필드(인스턴스 변수)를 추가할 수 없다.
  */
 public class Lotto {
+    public static int PRICE = 1000;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Machine {
-
     public Lotto draw() {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
