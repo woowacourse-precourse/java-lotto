@@ -12,7 +12,7 @@ public class LottoController {
     private Message message = new Message();
     private LottoService lottoService = new LottoService();
 
-    public int buyLotto(User user){
+    public int getLottoAmount(User user){
         String inputPayment = message.inputPaymentMessage();
         int lottoPayment = lottoService.inputPaymentToNumber(inputPayment);
         user.setLottoPayment(lottoPayment);
@@ -21,17 +21,19 @@ public class LottoController {
         message.buyLottoMessage(lottoAmount);
         return lottoAmount;
     }
-    public void start(){
 
-        User user = new User();
-        int lottoAmount = buyLotto(user);//로또 구매 금액 입력// 몇개 구매 ~
-
-        user.buyLottos(lottoAmount);
-
+    public void showLottoDetail(User user){
         for(Lotto lotto : user.getLottos()){
             message.lottoDetailMessage(lotto);
         }
-// 구매한거 디테일
+    }
+
+    public void start(){
+        User user = new User();
+        int lottoAmount = getLottoAmount(user);//로또 구매 금액 입력// 몇개 구매 ~
+
+        user.buyLottos(lottoAmount);
+        showLottoDetail(user);
 
 
         String inputWinningNumber = message.inputWinningNumberMessage();
