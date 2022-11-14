@@ -15,6 +15,13 @@ public class LotteryController {
     private final ComputerView computerView = new ComputerView();
     private final RankingView rankingView = new RankingView();
 
+    public void runLottoMatch(){
+        createPlayer();
+        insertWinningNumbers();
+        matchPlayerLottoWithWinningNumbers();
+        showPlayersResult();
+    }
+
 
     public void createPlayer(){
         makeLottoForPlayer(takePlayersMoney());
