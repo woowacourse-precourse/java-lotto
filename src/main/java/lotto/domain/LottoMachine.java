@@ -14,14 +14,14 @@ public class LottoMachine {
     }
 
     private int countPurchaseQuantity(int money) {
-        if (Math.floorMod(money, 1000) != 0) {
+        if (Math.floorMod(money, LottoConstant.PRICE.getValue()) != 0) {
             throw new IllegalArgumentException();
         }
-        else if (Math.floorDiv(money, 10) == 0) {
+        else if (Math.floorDiv(money, LottoConstant.PRICE.getValue()) == 0) {
             throw new IllegalArgumentException();
         }
 
-        return Math.floorDiv(money, 10);
+        return Math.floorDiv(money, LottoConstant.PRICE.getValue());
     }
 
 
