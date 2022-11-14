@@ -84,4 +84,8 @@ public class WinningNumbers {
 
         return stringToInt(convertedNumbers);
     }
+
+    public List<Integer> getWinningNumbers() {
+        return this.winningNumbers;
+    }
 }
