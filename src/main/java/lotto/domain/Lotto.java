@@ -15,20 +15,20 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validateSize(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) throws IllegalArgumentException{
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_SIZE_ERROR.print());
         }
     }
 
-    private void validateRange(List<Integer> numbers){
+    private void validateRange(List<Integer> numbers) throws IllegalArgumentException{
         for(int i=0; i<numbers.size(); i++){
             if(numbers.get(i)<1 || numbers.get(i)>45){
                 throw new IllegalArgumentException(ErrorMessage.LOTTO_RANGE_ERROR.print());
             }
         }
     }
-    private void validateDuplicate(List<Integer> numbers){
+    private void validateDuplicate(List<Integer> numbers) throws IllegalArgumentException{
         for(int i=0; i< numbers.size(); i++){
             if(Collections.frequency(numbers, numbers.get(i))>1){
                 throw new IllegalArgumentException(ErrorMessage.LOTTO_DUPLICATE_ERROR.print());
