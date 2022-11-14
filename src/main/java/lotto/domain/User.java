@@ -23,7 +23,7 @@ public class User {
 
     public void validate (int money) {
         if (!isMultipleOfThousand(money)) {
-            throw new IllegalArgumentException(ValidationErrorMessage.INVALID_MONEY_AMOUNT.getErrorMessageWithoutPrefix());
+            throw new IllegalArgumentException(ValidationErrorMessage.INVALID_MONEY_AMOUNT.getErrorMessage());
         }
     }
 
