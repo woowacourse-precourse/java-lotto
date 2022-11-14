@@ -108,11 +108,33 @@ class ApplicationTest extends NsTest {
         assertThat(isNotDuplicated(application.getRandomLottos())).isEqualTo(true);
     }
 
+    @DisplayName("로또 금액의 각각의 배열에는 1 ~ 45 범위의 숫자가 저장된다")
+    @Test
+    void createRandomLottsWithNumberWhichInRage() {
+        //given
+        Application application = new Application();
+        makeLottoPrice("8000");
+        application.insertPriceAndSaveNumber();
+        application.makeArray();
+        //when
+        application.makeEachArrays();
+        //then
+        assertThat(inRange(application.getRandomLottos())).isEqualTo(true);
+    }
+
+    private boolean inRange(List<List<Integer>> randomLottos){
+        for(List<Integer> lottos : randomLottos){
+            for(Integer lotto : lottos){
+                if(lotto < 0 || lotto > 45) return false;
+            }
+        }
+        return true;
+    }
+
     private boolean isNotDuplicated(List<List<Integer>> randomLottos){
         for(List<Integer> lottos : randomLottos){
             boolean [] check = new boolean[45];
             for(Integer lotto : lottos){
-                System.out.println("lotto = " + lotto);
                 if(check[lotto-1]) return false;
                 check[lotto-1] = true;
             }
