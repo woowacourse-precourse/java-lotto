@@ -2,7 +2,6 @@ package lotto.system;
 
 import lotto.exception.IllegalArgument;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,5 +23,15 @@ public class Parser {
             throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력 가능합니다.");
         }
         return Arrays.asList(winningNumber.split(","));
+    }
+
+    public int validateBonusNumber(String bonusNumber) throws IllegalArgumentException {
+        if (!IllegalArgument.isNumber(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력 가능합니다.");
+        }
+        if (!IllegalArgument.isInRange(Arrays.asList(Integer.parseInt(bonusNumber)))) {
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력 가능합니다.");
+        }
+        return Integer.parseInt(bonusNumber);
     }
 }

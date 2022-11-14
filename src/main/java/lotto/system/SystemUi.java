@@ -10,10 +10,12 @@ public class SystemUi {
     private static final String START_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String ANNOUNCE_LOTTO_NUMBER_MESSAGE = "개를 구매했습니다.";
     private static final String GET_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String GET_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+    private static final Parser parser = new Parser();
 
     public static int getPurchaseAmount() {
         System.out.println(START_MESSAGE);
-        return new Parser().validatePurchaseAmount(Console.readLine());
+        return parser.validatePurchaseAmount(Console.readLine());
     }
 
     public static void printLotto(List<Lotto> lottos) {
@@ -28,5 +30,11 @@ public class SystemUi {
         System.out.println();
         System.out.println(GET_WINNING_NUMBER_MESSAGE);
         return Console.readLine();
+    }
+
+    public static int getBonusNumber() {
+        System.out.println();
+        System.out.println(GET_BONUS_NUMBER_MESSAGE);
+        return parser.validateBonusNumber(Console.readLine());
     }
 }
