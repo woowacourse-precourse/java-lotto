@@ -27,8 +27,7 @@ public class WinningNumber {
     }
 
     private static List<Integer> parsingWinningNumber(String winningNumber){
-        String parsedWinningNumber = winningNumber.replaceAll(" ", "");
-        List<String> winningNumberList = Arrays.asList(parsedWinningNumber.split(","));
+        List<String> winningNumberList = Arrays.asList(winningNumber.split(","));
         return convertType(winningNumberList);
     }
 
