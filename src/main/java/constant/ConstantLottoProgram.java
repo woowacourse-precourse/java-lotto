@@ -1,7 +1,7 @@
 package constant;
 
 public enum ConstantLottoProgram {
-    RANGE_OF_LOTTO_NUMBER(1,45),LOTTO_LENGTH(6),LOTTO_LENGTH_WITH_BONUNS(7);
+    RANGE_OF_LOTTO_NUMBER(1,45),LOTTO_LENGTH(6);
     int length;
     int minimum;
     int maximum;
