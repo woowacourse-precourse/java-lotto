@@ -73,8 +73,8 @@ public class Application {
         ressum += 30000000 * res.get(LottoRank.Second.getValue());
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n",res.get(LottoRank.First.getValue()));
         ressum += (long)2000000000 * res.get(LottoRank.First.getValue());
-        //System.out.println(ressum);
-        System.out.printf("총 수익률은 %.1f%% 입니다.", ((double)(ressum)) / initmoney);
+      //  System.out.println(ressum/initmoney);
+        System.out.printf("총 수익률은 %.1f%%입니다.", ((double)(ressum)) / initmoney*100);
     }
     public static void main(String[] args) {
         //로또 생성
