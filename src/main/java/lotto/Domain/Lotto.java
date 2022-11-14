@@ -1,8 +1,9 @@
-package lotto;
+package lotto.Domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.Validator.LottoValidator;
 import org.assertj.core.util.Sets;
 
 public class Lotto {

@@ -1,6 +1,7 @@
-package lotto;
+package lotto.Validator;
 
 import java.util.HashSet;
+import lotto.Domain.Lotto;
 import org.assertj.core.util.Sets;
 
 public class LottoValidator {

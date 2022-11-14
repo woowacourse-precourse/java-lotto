@@ -1,8 +1,11 @@
-package lotto;
+package lotto.View;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import lotto.Domain.Lotto;
+import lotto.Validator.LottoValidator;
+import lotto.Validator.MoneyValidator;
 
 public class InputView {
     public static int getAmount() {
