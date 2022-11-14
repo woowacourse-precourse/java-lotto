@@ -1,6 +1,10 @@
 package lotto.view;
 
-import static lotto.domain.LottoRanking.*;
+import static lotto.domain.LottoRanking.FIFTH;
+import static lotto.domain.LottoRanking.FIRST;
+import static lotto.domain.LottoRanking.FOURTH;
+import static lotto.domain.LottoRanking.SECOND;
+import static lotto.domain.LottoRanking.THIRD;
 
 import java.util.List;
 import java.util.Map;
@@ -8,6 +12,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoRanking;
 
 public class OutputView {
+
 	private static final String OUTPUT_LOTTO_COUNT_MESSAGE = "개를 구매했습니다.";
 	private static final String OUTPUT_WINNING_STATISTICS = "당첨 통계\n---";
 
@@ -24,9 +29,12 @@ public class OutputView {
 	}
 
 	public void printLottoNumbers(List<Lotto> lottos) {
+		StringBuilder stringBuilder = new StringBuilder();
 		for (Lotto lotto : lottos) {
-			System.out.println(lotto);
+			stringBuilder.append(lotto);
+			stringBuilder.append('\n');
 		}
+		System.out.print(stringBuilder);
 	}
 
 	public void printStatistics(Map<LottoRanking, Integer> winningResult, Double yield) {
