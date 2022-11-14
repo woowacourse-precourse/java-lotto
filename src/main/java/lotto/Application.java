@@ -8,11 +8,15 @@ public class Application {
     public static void main(String[] args) {
         int buylotto = askmoney();
         List<List<Integer>> lottonumbers = new ArrayList<>();
+        List<Integer> winningnumbers = new ArrayList<>();
+        int bonusnum;
 
         Random random = new Random();
         lottonumbers = random.createAllLotto(buylotto);
         printalllotto(lottonumbers,buylotto);
 
+        winningnumbers = askwinningnumbers();
+        bonusnum = askbonusnumber();
         // TODO: 프로그램 구현
     }
     public static int askmoney(){
@@ -39,6 +43,8 @@ public class Application {
         for(String number:input.split(",")){
             winningnumbers.add(Integer.valueOf(number));
         }
+
+        Lotto execptnum = new Lotto(winningnumbers);
         return winningnumbers;
     }
     public static int askbonusnumber(){
