@@ -10,7 +10,7 @@ public class LottoMachine {
     public static Lottos issueLottos(Money money) {
         Lottos lottos = new Lottos();
         long count = money.countPurchasable(Lotto.PRICE);
-        
+
         for (long number = 0; number < count; number++) {
             lottos.add(issueLotto());
         }
