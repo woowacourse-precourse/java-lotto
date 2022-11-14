@@ -8,7 +8,6 @@ import domain.Lotto;
 import domain.LottoRank;
 import domain.LottoReward;
 import domain.Player;
-import java.util.logging.Logger;
 
 import java.util.*;
 
@@ -27,7 +26,7 @@ public class LottoService {
         checkWinningNumberAndBonusNumber(winningLotto);
 
         comparePlayerLottoNumberAndWinningLottoNumberLogic(player,winningLotto,lottoBonusNumber);
-        lookForPlayerLottoRevenue(player);
+        calculatePlayerLottoRevenue(player);
         printPlayerLottoResult(player);
     }
 
@@ -97,7 +96,7 @@ public class LottoService {
             player.getWinningLottoCount().put(LottoRank.WIN_LOTTO_6 , player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_6,0) + 1);
     }
 
-    public void lookForPlayerLottoRevenue(Player player){
+    public void calculatePlayerLottoRevenue(Player player){
         int countWinningLottoThree = player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_3,0);
         int countWinningLottoFour = player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_4,0);
         int countWinningLottoFive = player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_5,0);
