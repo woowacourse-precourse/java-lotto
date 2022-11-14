@@ -5,18 +5,31 @@ import enumCollections.RankNumber;
 import java.util.EnumMap;
 
 public class Checker extends Kiosk {
-    public static EnumMap<RankNumber, Integer> compare(Buyer buyer) {
-        EnumMap<RankNumber, Integer> resultStatistics = initializeResultStatistics();
+    static EnumMap<RankNumber, Integer> resultStatistics = initializeResultStatistics();
+
+    public static EnumMap<RankNumber, Integer> compareAll(Buyer buyer) {
         for (Lotto lotto : buyer.lottos) {
-            RankNumber lottoRank = (RankNumber)getRank(countSameNumbers(lotto));
-            System.out.println(getRank(countSameNumbers(lotto)));
-            if (lottoRank.equals(RankNumber.THIRD) && hasBonusNumber(lotto)) {
-                lottoRank = RankNumber.SECOND;
+            if (isInRankRange(lotto)) {
+                compareEach(lotto);
             }
-            int oldCounts = resultStatistics.get(lottoRank);
-            resultStatistics.put(lottoRank, oldCounts + 1);
         }
         return resultStatistics;
+    }
+
+    public static void compareEach(Lotto lotto) {
+        RankNumber lottoRank = getRank(countSameNumbers(lotto));
+        if (lottoRank.equals(RankNumber.THIRD) && hasBonusNumber(lotto)) {
+            lottoRank = RankNumber.SECOND;
+        }
+        int oldCounts = resultStatistics.get(lottoRank);
+        resultStatistics.put(lottoRank, oldCounts + 1);
+    }
+
+    public static boolean isInRankRange(Lotto lotto) {
+        if (countSameNumbers(lotto) >= RankNumber.getRankNumber(RankNumber.FIFTH)) {
+            return true;
+        }
+        return false;
     }
 
     public static EnumMap<RankNumber, Integer> initializeResultStatistics() {
@@ -41,7 +54,7 @@ public class Checker extends Kiosk {
         return count;
     }
 
-    public static Enum getRank(int sameNumbers) {
+    public static RankNumber getRank(int sameNumbers) {
         return RankNumber.getRank(sameNumbers);
     }
 }

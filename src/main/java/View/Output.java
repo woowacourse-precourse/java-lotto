@@ -38,10 +38,13 @@ public class Output {
 
     public static void getCompleteStatistics(EnumMap<RankNumber, Integer> resultStatistics) {
         for (ResultStatistics rank : ResultStatistics.values()) {
-            if (rank.equals(ResultStatistics.GUIDE_MESSAGE)) {
+            if (rank.equals(ResultStatistics.YIELD)) {
                 break;
             }
-            System.out.printf(ResultStatistics.getMessage(rank), resultStatistics.get(rank));
+            System.out.printf(
+                    ResultStatistics.getMessage(rank),
+                    resultStatistics.get(RankNumber.valueOf(rank.toString()))
+            );
         }
     }
 
