@@ -2,7 +2,6 @@ package lotto.dto;
 
 import lotto.domain.Lottos;
 
-import java.util.Collections;
 import java.util.List;
 
 public class LottosDTO {
@@ -13,6 +12,6 @@ public class LottosDTO {
     }
     
     public List<List<Integer>> getLottos() {
-        return Collections.unmodifiableList(lottos);
+        return lottos;
     }
 }

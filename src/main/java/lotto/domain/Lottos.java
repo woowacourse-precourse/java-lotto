@@ -33,6 +33,10 @@ public class Lottos {
     }
     
     public List<List<Integer>> lottos() {
+        return Collections.unmodifiableList(parseLottos());
+    }
+    
+    private List<List<Integer>> parseLottos() {
         return lottos.stream()
                 .map(Lotto::lottoNumber)
                 .collect(Collectors.toList());
