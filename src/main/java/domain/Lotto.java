@@ -1,12 +1,8 @@
 package domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import net.bytebuddy.implementation.bytecode.Throw;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -27,7 +23,7 @@ public class Lotto {
         HashSet<Integer> numbersOverlap = new HashSet<>(numbers);
         if (numbers.size() != numbersOverlap.size())
             throw new IllegalArgumentException(ErrorMessage.HAVE_DUPLICATION.getErrorMessage());
-        }
+    }
 
     public List<Integer> getNumbers() {
         return numbers;

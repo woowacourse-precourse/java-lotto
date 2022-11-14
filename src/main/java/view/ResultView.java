@@ -9,9 +9,11 @@ import java.util.List;
 public class ResultView {
 
     public void resultLotto(HashMap<String, Integer> winningLotto, int inputMoney) {
-        int totalYield = 0;
+        double totalYield = 0;
+        System.out.println("당첨통계");
+        System.out.println("---");
         for (ResultMessage rank : ResultMessage.values()) {
-            System.out.println(rank.getCondition() + " (" + rank.getWinningCount() + ")" + " - " + winningLotto.get(rank.getWinningNumber()) + "개");
+            System.out.println(rank.getCondition() + " (" + rank.getWinningCount() + "원)" + " - " + winningLotto.get(rank.getWinningNumber()) + "개");
             if (winningLotto.get(rank.getWinningNumber()) != 0) {
                 totalYield += convertToMoney(rank.getWinningCount());
             }
@@ -19,14 +21,14 @@ public class ResultView {
         resultYield(totalYield, inputMoney);
     }
 
-    private int convertToMoney(String winningCount) {
+    private double convertToMoney(String winningCount) {
         String convertWinningCount = winningCount.replaceAll(",", "");
-        return Integer.parseInt(convertWinningCount);
+        return Double.parseDouble(convertWinningCount);
     }
 
-    private void resultYield(int totalYield, int inputMoney) {
-        double yieldRate = ((double) totalYield / inputMoney) * 100;
-        System.out.println("총 수익률은 " + yieldRate + "%" + "입니다");
+    private void resultYield(double totalYield, int inputMoney) {
+        double yieldRate = (totalYield / inputMoney) * 100;
+        System.out.println("총 수입률은 "+String.format("%.1f", yieldRate)+"%입니다");
     }
 
     public void resultTotalLotto(List<Lotto> totalLottoNumbers){

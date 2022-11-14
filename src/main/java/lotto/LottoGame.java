@@ -23,10 +23,9 @@ public class LottoGame {
 
     private void gameSet() {
         controller = new Controller();
-        user = new User();
-        user.setInputUserMoney(controller.inputUserMoney());
-        user.setTotalLotto(user.getInputUserMoney() / 1000);
-        user.setTotalLottoNumbers(controller.createTotalLottoNumber(user.getTotalLotto()));
+        int userMoney = controller.inputUserMoney();
+        int totalLotto = userMoney/1000;
+        user = new User(userMoney,totalLotto,controller.createTotalLottoNumber(totalLotto));
     }
 
     private void showSetResult() {
@@ -36,14 +35,12 @@ public class LottoGame {
     }
 
     private void setLottoWinning() {
-        lottoCompany = new LottoCompany();
-        lottoCompany.setLottoWinningNumbers(controller.inputLottoWinningNumbers());
-        lottoCompany.setLottoWinningBonus(controller.inputBonusNumber());
+        lottoCompany = new LottoCompany(controller.inputLottoWinningNumbers(), controller.inputBonusNumber());
     }
 
     private void showResult() {
         HashMap<String, Integer> result = controller.createWinningLotto(user.getTotalLottoNumbers(), lottoCompany.getLottoWinningNumbers(), lottoCompany.getLottoWinningBonus());
-        resultView.resultLotto(result, user.getTotalLotto());
+        resultView.resultLotto(result, user.getInputUserMoney());
     }
 
 }

@@ -8,6 +8,7 @@ public enum ErrorMessage {
     NOT_COMMA("[ERROR] 쉼표로 구분해야합니다");
 
     private final String errorMessage;
+
     ErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }

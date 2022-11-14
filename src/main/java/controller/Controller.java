@@ -49,10 +49,11 @@ public class Controller {
         Util util = new Util();
         for (int i = 0; i < totalLottoNumbers.size(); i++) {
             int key = util.compareWinningNumber(totalLottoNumbers.get(i).getNumbers(), winningNumbers);
+            String convertKey = Integer.toString(key);
             if (key == 5 && util.compareBonusNumber(totalLottoNumbers.get(i).getNumbers(), bonusNumber))
                 totalResult.put("Bonus", totalResult.get("Bonus") + 1);
-            if (totalResult.containsKey(Integer.toString(key)))
-                totalResult.put(Integer.toString(key), totalResult.get(key) + 1);
+            if (totalResult.containsKey(convertKey))
+                totalResult.put(convertKey, totalResult.get(convertKey) + 1);
         }
         return totalResult;
     }

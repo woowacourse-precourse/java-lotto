@@ -3,8 +3,14 @@ package domain;
 import java.util.List;
 
 public class LottoCompany {
-    private int lottoWinningBonus;
-    private List<Integer> lottoWinningNumbers;
+
+    private final List<Integer> lottoWinningNumbers;
+    private final int lottoWinningBonus;
+    public LottoCompany(List<Integer> lottoWinningNumbers ,int lottoWinningBonus) {
+        validateRange(lottoWinningBonus);
+        this.lottoWinningBonus = lottoWinningBonus;
+        this.lottoWinningNumbers = lottoWinningNumbers;
+    }
 
     public List<Integer> getLottoWinningNumbers() {
         return lottoWinningNumbers;
@@ -14,21 +20,13 @@ public class LottoCompany {
         return lottoWinningBonus;
     }
 
-    public void setLottoWinningNumbers(List<Integer> lottoWinningNumbers) {
-        this.lottoWinningNumbers = lottoWinningNumbers;
-    }
-
-    public void setLottoWinningBonus(int lottoWinningBonus) {
-        this.lottoWinningBonus = lottoWinningBonus;
-    }
-
     private void validateComma(String lottoWinningNumbers) {
         if (!lottoWinningNumbers.contains(","))
             throw new IllegalArgumentException(ErrorMessage.NOT_COMMA.getErrorMessage());
     }
 
-    private void validateRange(int lottoWinningBonus){
-        if(lottoWinningBonus < 1 || lottoWinningBonus > 45)
+    private void validateRange(int lottoWinningBonus) {
+        if (lottoWinningBonus < 1 || lottoWinningBonus > 45)
             throw new IllegalArgumentException(ErrorMessage.NOT_RANGE.getErrorMessage());
     }
 }
