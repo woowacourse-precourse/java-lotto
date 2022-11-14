@@ -52,6 +52,6 @@ public class WinningLotto extends Lotto {
     }
 
     public double getearningRate() {
-        return  grossEarning / ((double)compareCount * 1000) * 100;
+        return  grossEarning / ((double)compareCount * LottoInfo.LOTTO_PRICE.getValue()) * 100;
     }
 }

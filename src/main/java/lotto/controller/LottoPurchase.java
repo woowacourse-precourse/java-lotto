@@ -2,6 +2,7 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
+import lotto.domain.LottoInfo;
 import lotto.view.ResultPrint;
 import lotto.view.UserInputHelper;
 
@@ -9,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoPurchase {
-    public static final int LOTTO_PRICE = 1000;
-
     private UserInputHelper userInputHelper;
     private ResultPrint resultPrint;
 
@@ -41,7 +40,7 @@ public class LottoPurchase {
 
     private int purchaseAmountDividedByLottoPrice(int purchaseAmount) {
         lottoPriceUnitsValidate(purchaseAmount);
-        int numberOfPurchase = purchaseAmount / LOTTO_PRICE;
+        int numberOfPurchase = purchaseAmount / LottoInfo.LOTTO_PRICE.getValue();
         resultPrint.numberOfPurchase(numberOfPurchase);
         return numberOfPurchase;
     }
@@ -55,8 +54,8 @@ public class LottoPurchase {
     }
 
     private void lottoPriceUnitsValidate(int purchaseAmount) {
-        if (purchaseAmount % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 구매 금액은 " + LOTTO_PRICE + "원 단위로 입력 가능합니다.");
+        if (purchaseAmount % LottoInfo.LOTTO_PRICE.getValue() != 0) {
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 " + LottoInfo.LOTTO_PRICE.getValue() + "원 단위로 입력 가능합니다.");
         }
     }
 }

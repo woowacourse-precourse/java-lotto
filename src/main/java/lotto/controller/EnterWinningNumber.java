@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.LottoInfo;
 import lotto.domain.WinningLotto;
 import lotto.view.UserInputHelper;
 
@@ -8,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnterWinningNumber {
-    public static final int LOTTO_SIZE = 6;
-
     private UserInputHelper userInputHelper;
     private List<Integer> winningLotto;
     private int bonusNumber;
@@ -60,13 +59,13 @@ public class EnterWinningNumber {
     }
 
     private void isEachNumberBetween1AND45(int number) {
-        if (number > 45 || number < 1) {
+        if (number > LottoInfo.MAX_NUMBER.getValue() || number < LottoInfo.MIN_NUMBER.getValue()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
     private void lottoSizeValidation(List<Integer> lotto) {
-        if (lotto.size() != LOTTO_SIZE) {
+        if (lotto.size() != LottoInfo.LOTTO_LENGTH.getValue()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리만 입력 가능합니다.");
         }
     }
