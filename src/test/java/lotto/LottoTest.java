@@ -1,11 +1,14 @@
 package lotto;
 
+import lotto.logic.CalcLottoNumber;
+import lotto.logic.LottoAmount;
 import lotto.object.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -29,5 +32,11 @@ class LottoTest {
     void createLottoByOverRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호가 주어진 갯수만큼 올바르게 생성되야 한다.")
+    @Test
+    void createLotto() {
+        assertThat(CalcLottoNumber.getLottos(3L).size()).isEqualTo(3L);
     }
 }
