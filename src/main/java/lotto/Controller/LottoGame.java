@@ -2,7 +2,7 @@ package lotto.Controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import lotto.Domain.Lotto;
@@ -15,7 +15,7 @@ public class LottoGame {
     Lotto winningNumber;
     int bonusNumber;
 
-    private final Map<Reward, Integer> result = new LinkedHashMap<>() {{
+    private final Map<Reward, Integer> result = new EnumMap<>(Reward.class) {{
         put(Reward.FIFTH, 0);
         put(Reward.FOURTH, 0);
         put(Reward.THIRD, 0);
