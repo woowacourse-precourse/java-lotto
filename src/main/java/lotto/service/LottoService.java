@@ -18,14 +18,14 @@ public class LottoService {
         this.lottoRepository = lottoRepository;
     }
 
-    public List<List<Integer>> createLottos(Money money) {
+    public LottoDto createLottos(Money money) {
         List<List<Integer>> numbers = new ArrayList<>();
-        for (int i = 0; i <money.calcLottoQuantity(); i++) {
+        for (int i = 0; i < money.calcLottoQuantity(); i++) {
             List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(randomNumbers);
             numbers.add(lottoRepository.save(lotto));
         }
-        return numbers;
+        return new LottoDto(numbers);
     }
 
     public PrizeDto calcWinningResult(List<Integer> winningNumbers,int bonusNumber, Money money) {
