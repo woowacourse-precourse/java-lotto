@@ -17,7 +17,7 @@ public class InputView {
 
     public static int readBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
-        String input = Console.readLine().trim();
+        String input = readWithoutWhiteSpace();
         System.out.println();
 
         return convertStringToInteger(input);
@@ -25,7 +25,7 @@ public class InputView {
 
     public static List<Integer> readWinningNumbers() {
         System.out.println(INPUT_WINNING_NUMBERS);
-        String input = Console.readLine();
+        String input = readWithoutWhiteSpace();
         System.out.println();
 
         return convertStringToIntegerList(input);
@@ -33,7 +33,7 @@ public class InputView {
 
     public static int readAmountOfMoney() {
         System.out.println(INPUT_MONEY);
-        String input = Console.readLine();
+        String input = readWithoutWhiteSpace();
         System.out.println();
 
         return convertStringToInteger(input);
@@ -51,5 +51,10 @@ public class InputView {
         return Arrays.stream(input.split(COMMA_DELIMITER))
                 .map(InputView::convertStringToInteger)
                 .collect(Collectors.toList());
+    }
+
+    private static String readWithoutWhiteSpace() {
+        String input = Console.readLine();
+        return input.replaceAll("\\s", "");
     }
 }
