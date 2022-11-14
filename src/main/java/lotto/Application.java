@@ -11,7 +11,8 @@ import static lotto.CommonContent.PrintLottoContent.*;
 
 public class Application {
 
-    private static List<Lotto> buyLottos;
+    private static Integer buyAmount;
+    private static List<Lotto> byeLottos;
     private static Lotto winningLotto;
     private static Integer bonusNumber;
 
@@ -26,12 +27,17 @@ public class Application {
     public static void byeLotto(){
 
         System.out.println(PURCHASEAMOUNT.getPrintStatement());
-        Integer byeMoney = Integer.parseInt(readLine());
-        Integer purchaseNumbers = byeMoney/1000;
+        Integer purchaseNumbers = 0;
+        try{
+            buyAmount = Integer.parseInt(readLine());
+            purchaseNumbers = buyAmount/1000;
+        }catch (Exception e) {
+            throw new IllegalArgumentException(BYEMONEYFORMERROR.getPrintStatement());
+        }
 
         if(purchaseNumbers == 0){
             throw new IllegalArgumentException(NOBYELOTTOERROR.getPrintStatement());
-        }else if(byeMoney%1000 != 0){
+        }else if(buyAmount%1000 != 0){
             throw new IllegalArgumentException(PURCHASEAMOUNTERROR.getPrintStatement());
         }
         System.out.println("\n" + CommonContent.PrintLottoContent.purchaseNumbers(purchaseNumbers));
@@ -39,10 +45,10 @@ public class Application {
     }
 
     public static void createLotto(Integer purchaseNumbers){
-        buyLottos = new ArrayList<Lotto>();
+        byeLottos = new ArrayList<Lotto>();
         for(int i=0; i<purchaseNumbers; i++){
-            buyLottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
-            System.out.println(buyLottos.get(i).getNumbers());
+            byeLottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            System.out.println(byeLottos.get(i).getNumbers());
         }
     }
 
@@ -63,6 +69,8 @@ public class Application {
             bonusNumber = Integer.parseInt(readLine());
             if(bonusNumber > 46 && bonusNumber < 0){
                 throw new IllegalArgumentException(BONUSNUMBERERROR.getPrintStatement());
+            }else if(winningLotto.contains(bonusNumber)){
+                throw new IllegalArgumentException(BONUSNUMBEROVERLAPERROR.getPrintStatement());
             }
         }catch (Exception e){
             throw new IllegalArgumentException(BONUSNUMBERERROR.getPrintStatement());
@@ -78,7 +86,7 @@ public class Application {
             matchingInfo.put(i, 0);
         }
 
-        for(Lotto lotto: buyLottos){
+        for(Lotto lotto: byeLottos){
             Integer correspondCount = matchingCount(lotto);
             if(correspondCount == 5 && lotto.contains(bonusNumber)){
                 twoPlaceCount++;
@@ -89,8 +97,10 @@ public class Application {
         }
 
         printMatchingInfo(matchingInfo, twoPlaceCount);
-
+        calculationProfit(matchingInfo, twoPlaceCount);
     }
+
+
 
     public static Integer matchingCount(Lotto lotto){
 
@@ -105,28 +115,48 @@ public class Application {
         return correspondCount;
     }
 
-    public static void printMatchingInfo(Map<Integer, Integer> rankInfo, Integer twoPlaceCount){
+    public static void printMatchingInfo(Map<Integer, Integer> matchingInfo, Integer twoPlaceCount){
 
-        for(Integer key : rankInfo.keySet()){
+        for(Integer key : matchingInfo.keySet()){
             switch (key){
                 case 3:
-                    System.out.println(matchingAmount(key, "5,000원",rankInfo.get(key), 5));
+                    System.out.println(matchingAmount(key, "5,000원",matchingInfo.get(key), 5));
                     break;
                 case 4:
-                    System.out.println(matchingAmount(key, "50,000원",rankInfo.get(key), 4));
+                    System.out.println(matchingAmount(key, "50,000원",matchingInfo.get(key), 4));
                     break;
                 case 5:
-                    System.out.println(matchingAmount(key, "1,500,000원",rankInfo.get(key)-twoPlaceCount, 3));
+                    System.out.println(matchingAmount(key, "1,500,000원",matchingInfo.get(key)-twoPlaceCount, 3));
                     System.out.println(matchingAmount(key, "30,000,000원",twoPlaceCount, 2));
                     break;
                 case 6:
-                    System.out.println(matchingAmount(key, "2,000,000,000원",rankInfo.get(key), 1));
+                    System.out.println(matchingAmount(key, "2,000,000,000원",matchingInfo.get(key), 1));
                     break;
             }
         }
-
     }
 
+    private static void calculationProfit(Map<Integer, Integer> matchingInfo, Integer twoPlaceCount) {
 
+        double frofit = 0;
+        for(Integer key : matchingInfo.keySet()){
+            switch (key){
+                case 3:
+                    frofit += matchingInfo.get(key)*5000;
+                    break;
+                case 4:
+                    frofit += matchingInfo.get(key)*50000;
+                    break;
+                case 5:
+                    frofit += matchingInfo.get(key)*1500000;
+                    frofit += matchingInfo.get(key)*30000000;
+                    break;
+                case 6:
+                    frofit += matchingInfo.get(key)*2000000000;
+                    break;
+            }
+        }
+        System.out.println(profitReturn(frofit/(double)buyAmount*100 * 100 / 100.0));
+    }
 
 }
