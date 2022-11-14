@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -62,15 +63,28 @@ class UserTest {
     @DisplayName("보너스 번호의 범위 1~45가 아닐시 예외가 발생한다")
     @Test
     void 보너스_번호_범위_검사() {
-        Integer TestTrue = 11;
-        Integer TestFalse = 77;
+        Integer testTrue = 11;
+        Integer testFalse = 77;
         // TestTrue
-        assertEquals(11, user.bonusNumberRangeCheck(TestTrue));
+        assertEquals(11, user.bonusNumberRangeCheck(testTrue));
         // throw new IllegalArgumentException("[ERROR] 1~45 사이의 숫자 한개를 입력해 주세요.")
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
-                user.bonusNumberRangeCheck(TestFalse));
+                user.bonusNumberRangeCheck(testFalse));
         assertEquals("[ERROR] 로또 번호의 숫자 범위는 1~45까지 입니다.",illegalArgumentException.getMessage());
 
     }
+
+    @DisplayName("보너스 번호와 로또 번호가 같을시 예외가 발생한다.")
+    @Test
+    void 보너스_번호_로또_번호_중복_검사() {
+        Integer bonusNumber = 8;
+        List<Integer> lottoNumbers = List.of(1,2,3,4,5,8);
+
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
+                user.bonusNumberCheckInLottoNumber(lottoNumbers,bonusNumber));
+        assertEquals("[ERROR] 보너스 번호와 로또 번호는 중복이 안됩니다.",illegalArgumentException.getMessage());
+
+    }
+
 
 }
