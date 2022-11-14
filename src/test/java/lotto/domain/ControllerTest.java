@@ -28,4 +28,16 @@ public class ControllerTest {
         assertThatThrownBy(() -> checkNumericStringMethod.invoke(controller, noNumericString)).getCause()
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입 금액이 1,000으로 나누어 떨어지지 않으면 예외가 발생한다.")
+    @Test
+    void testNotDivisibleThousand() throws NoSuchMethodException {
+        Method checkDivisibleThousandMethod = Controller.class.getDeclaredMethod("checkDivisibleThousand", int.class);
+        checkDivisibleThousandMethod.setAccessible(true);
+
+        int number = 1001;
+
+        assertThatThrownBy(() -> checkDivisibleThousandMethod.invoke(controller, number)).getCause()
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

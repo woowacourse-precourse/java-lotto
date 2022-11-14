@@ -7,6 +7,7 @@ import lotto.utils.Logger.LogType;
 
 public class Controller {
     private static final String NUMERIC_STRING_ERROR_MESSAGE = "숫자 형식으로 입력해 주세요.";
+    private static final String DIVISIBLE_THOUSAND_ERROR_MESSAGE = "구입 금액은 1,000으로 나누어 떨어져야 합니다.";
 
     private static Controller instance;
 
@@ -20,38 +21,42 @@ public class Controller {
         return instance;
     }
 
-    public void run(){
+    public void run() {
     }
 
-    private int inputPurchaseAmount(){
+    private int inputPurchaseAmount() {
         return 0;
     }
 
-    private int formatStringToNumber(String number){
+    private int formatStringToNumber(String number) {
         return 0;
     }
 
-    private void checkNumericString(String number){
-        if(!number.chars().allMatch(Character::isDigit)){
+    private void checkNumericString(String number) {
+        if (!number.chars().allMatch(Character::isDigit)) {
             Logger.log(NUMERIC_STRING_ERROR_MESSAGE, LogType.ERROR);
             throw new IllegalArgumentException();
         }
     }
 
-    private void checkDivisibleThousand(int number){
+    private void checkDivisibleThousand(int number) {
+        if (number % 1000 != 0) {
+            Logger.log(DIVISIBLE_THOUSAND_ERROR_MESSAGE, LogType.ERROR);
+            throw new IllegalArgumentException();
+        }
     }
 
-    private void printPublishedLotto(List<Lotto> lottos){
+    private void printPublishedLotto(List<Lotto> lottos) {
 
     }
 
-    private List<Integer> calculateWonLotto(List<Lotto> lottos){
+    private List<Integer> calculateWonLotto(List<Lotto> lottos) {
         return null;
     }
 
-    private void printWonLotto(List<Integer> rankCounts){
+    private void printWonLotto(List<Integer> rankCounts) {
     }
 
-    private void printYield(int loss, int profit){
+    private void printYield(int loss, int profit) {
     }
 }

@@ -81,7 +81,7 @@
     - [ ] 로또 구입 금액 입력 - inputPurchaseAmount
       - [ ] 문자열 번호를 숫자 형식으로 변환 - formatStringToNumber
         - [x] 구입 금액이 숫자인지 확인 - checkNumericString
-        - [ ] 1,000원으로 나누어 떨어지는지 확인 - checkDivisibleThousand
+        - [x] 1,000원으로 나누어 떨어지는지 확인 - checkDivisibleThousand
     - [ ] 당첨과 보너스 번호를 입력 처리
     - [ ] 발행한 로또 수량 및 번호를 출력 - printPublishedLotto
     - [ ] 당첨 내역 결과 반환 - calculateWonLotto
