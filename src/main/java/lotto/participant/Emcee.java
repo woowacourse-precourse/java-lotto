@@ -30,9 +30,7 @@ public class Emcee {
         System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
         System.out.println("Lotto 정보는 다음과 같습니다.");
         System.out.println("==================================================");
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto);
-        }
+        lottos.forEach(System.out::println);
         System.out.println("==================================================\n");
     }
 
