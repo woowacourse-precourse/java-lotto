@@ -156,3 +156,12 @@
   - [x] 총 금액을 계산함 - public void calcResultMoney()
   - [x] 총 수익률을 계산함 -  public void calcEarningRate()
 - [x] 수익률 계산 - Result#calcEarningRate()
+
+### Game Class
+`게임을 시작하고 진행하는 클래스`
+- [x] 게임 전체를 시작하고 진행하는 기능 - public void start()
+- [x] 사용자 값을 세팅 - public void userSetting()
+- [x] 정답 값을 세팅 - public void computerSetting()
+- [x] 사용자 값을 출력 - public void printUserLotto()
+- [x] 결과를 계산 - public void calculate()
+- [x] 결과를 출력 - public void printResult()
