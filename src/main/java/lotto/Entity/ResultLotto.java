@@ -12,5 +12,8 @@ public class ResultLotto {
         Arrays.stream(MatchMoney.values()).forEach(x -> map.put(x,0));
     }
 
-
+    public void addMatchMoney(MatchMoney matchMoney){
+        if(matchMoney == null) return;
+        map.put(matchMoney, map.getOrDefault(matchMoney,0)+1);
+    }
 }
