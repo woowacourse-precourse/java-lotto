@@ -12,5 +12,7 @@ public class SystemMessage {
     public static final String YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
     public static final String LESS_THAN_THOUSAND_ERROR_MESSAGE = "구입 금액은 1000 이상이어야 합니다.\n";
     public static final String MULTIPLE_THOUSAND_ERROR_MESSAGE = "구입 금액은 1000원 단위여야 합니다\n";
-}   
+    public static final String DUPLICATE_BONUS_ERROR_MESSAGE = "로또 번호와 중복된 보너스 번호입니다.\n";
+
+}
         
