@@ -1,7 +1,9 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -22,6 +24,8 @@ public class LottoController {
 			Lotto lotto = generateLotto();
 			lottos.add(lotto);
 		}
+		model.addAttribute("Lottos", lottos);
+		view.printLottos();
 		return lottos;
 	}
 
@@ -38,9 +42,24 @@ public class LottoController {
 		return new Lotto(uniqueRandNumbers);
 	}
 
-	// private List<Integer> registerAnswer() {
-	//
-	// }
+	private void registerAnswers() {
+		registerCorrectLotto();
+		registerBonusNumber();
+	}
+
+	private void registerCorrectLotto() {
+		view.getCorrectNumbers();
+		String numbersString = (String)model.getAttribute("correctNumbers");
+		List<String> stringList = Arrays.asList(numbersString.split(","));
+		List<Integer> intList = stringList.stream().map(Integer::parseInt).collect(Collectors.toList());
+		Lotto lotto = new Lotto(intList);
+		model.addAttribute("correctLotto", lotto);
+	}
+
+	private void registerBonusNumber() {
+
+	}
+
 	//
 	// private void handleAnalysis(List<Lotto> lottos, List<Integer> answer) {
 	//
