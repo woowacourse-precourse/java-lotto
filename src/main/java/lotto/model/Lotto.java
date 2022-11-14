@@ -49,8 +49,8 @@ public class Lotto {
     public String toString() {
         StringBuilder result = new StringBuilder("[" + numbers.get(0));
 
-        for (Integer number : numbers) {
-            result.append(", ").append(number);
+        for (int index = 1; index < numbers.size(); index++) {
+            result.append(", ").append(numbers.get(index));
         }
         result.append(']');
 
