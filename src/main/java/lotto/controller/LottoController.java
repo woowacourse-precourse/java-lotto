@@ -15,6 +15,7 @@ public class LottoController {
     private LottoMachine lottoMachine = new LottoMachine();
     private Lotto winningLotto;
     private Bonus bonus;
+    private static final int LOTTO_PRICE = 1000;
 
     public void init() {
         playLotto();
@@ -37,7 +38,7 @@ public class LottoController {
     private int sell() {
         Printer.print(LottoMessage.INPUT_AMOUNT.getMessage());
         int amount = user.buy();
-        return amount / 1000;
+        return amount / LOTTO_PRICE;
     }
 
     private List<Lotto> issue(int lottoNum) {
