@@ -1,15 +1,16 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.model.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
-public class DrawNumber {
-    public static List<Lotto> lottos = new ArrayList<Lotto>();
+public class Lottos {
+    private List<Lotto> lottos;
 
-    public DrawNumber(int ticketAmount) {
+    public Lottos(int ticketAmount) {
         generateNumber(ticketAmount);
         printNumber();
     }
