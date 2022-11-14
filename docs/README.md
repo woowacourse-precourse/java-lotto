@@ -2,12 +2,12 @@
 
 ### UI
 - [X] 로또 구매 금액을 입력 받는다. - NumberScanner#inputPayment()
-  - [ ] 정수로 변환할 수 없는 경우 예외처리 - NumberScanner#validateParseInt(String input)
+  - [X] 정수로 변환할 수 없는 경우 예외처리 - NumberScanner#validateParseInt(String input)
 - [ ] 당첨 번호를 입력 받는다.  - NumberScanner#inputwinningLottoNumbers()
   - [ ] 쉼표(,)를 기준으로 문자열을 나눈다. - NumberScanner#splitByDelimiter()
-  - [ ] 각 문자열이 정수로 변환할 수 없는 경우 예외처리 - NumberScanner#validateParseInt(String input)
+  - [X] 각 문자열이 정수로 변환할 수 없는 경우 예외처리 - NumberScanner#validateParseInt(String input)
 - [ ] 보너스 번호를 입력 받는다. - NumberScanner#inputBonusNumber()
-  - [ ] 정수로 변환할 수 없는 경우 예외처리 - NumberScanner#validateParseInt(String input)
+  - [X] 정수로 변환할 수 없는 경우 예외처리 - NumberScanner#validateParseInt(String input)
 
 - [ ] 구매한 로또 수를 출력한다. 
 - [ ] 구매한 로또 리스트를 (한 개 이상) 출력한다.
