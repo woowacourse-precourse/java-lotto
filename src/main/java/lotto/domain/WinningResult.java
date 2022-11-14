@@ -18,6 +18,10 @@ public class WinningResult {
         put(lottos, winningNumbers);
     }
 
+    public WinningResult(Map<Ranking, Integer> winningResult) {
+        this.winningResult = winningResult;
+    }
+
     private Map<Ranking, Integer> initialize() {
         return Arrays.stream(Ranking.values())
                 .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b, () -> new EnumMap<>(Ranking.class)));
