@@ -15,10 +15,10 @@ public class LottoController {
 
 	public void play() {
 		try {
-			LottoStore lottoStore = new LottoStore(InputView.scanPurchaseAmount());
+			LottoStore lottoStore = new LottoStore(InputView.PURCHASE_AMOUNT.getMessage());
 			List<Lotto> lottoTickets = buyLottoTickets(lottoStore.getNumberOfTickets());
-			WinningNumbers winningNumbers = new WinningNumbers(InputView.scanWinningNumbers(),
-				InputView.scanBonusNumber());
+			WinningNumbers winningNumbers = new WinningNumbers(InputView.WINNING_NUMBERS.getMessage(),
+				InputView.BONUS_NUMBER.getMessage());
 			calculateResult(lottoStore.getPurchaseAmount(), lottoTickets, winningNumbers);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
