@@ -7,7 +7,8 @@
     - 당첨 내역 확인하는 로직 메소드 (checkLotto)
 2. View 클래스: user input/output 클래스
     - 구입 금액 입력 받고, 예외 상황 시 에러 발생시키는 메소드 메소드 (getMoneyInput)
-      - 구입 금액이 1000으로 나눠떨어지지 않으면 IllegalArgumentException 발생시키는 메소드 (validateMoneyInput)
+      - 구입 금액이 1000으로 나눠떨어지지 않으면 IllegalArgumentException 발생시키는 메소드 (validateIsDivisible)
+      - 입력값이 숫자가 아닌 값이 있으면 IllegalArgumentException 발생시키는 메소드 (validateIsNumber)
     - 당첨 번호 입력 받고, 예외 상황 시 에러 발생시키는 메소드 (getUniqueNumberInput)
       - 번호 입력이 중복되면 IllegalArgumentException 발생시키는 메소드 (validateUniqueNumberInput)
       - 번호가 1~45 범위 밖이면 IllegalArgumentException 발생시키는 메소드 (validateNumberInRange)
