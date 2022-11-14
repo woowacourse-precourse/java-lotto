@@ -8,6 +8,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class AmountTest {
+    @DisplayName("구입금액을 입력하지 않으면 예외가 발생한다.")
+    @Test
+    void noInputAmount() {
+        assertThatThrownBy(() -> new Amount(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("구입금액이 0원보다 적으면 예외가 발생한다.")
     @Test
     void underZero() {
