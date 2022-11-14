@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class Application {
     private final static String inputPriceMessage = "구입금액을 입력해 주세요.";
     private final static String inputWinningNumbersMessage = "당첨 번호를 입력해 주세요.";
+    private final static String inputBonusNumberMessage = "보너스 번호를 입력해 주세요.";
     private final static String priceNonNumericErrorMessage = "[ERROR] 구입금액은 숫자여야 합니다.";
     private final static String bonusNonNumericErrorMessage = "[ERROR] 보너스 번호는 숫자여야 합니다.";
 
@@ -18,6 +19,7 @@ public class Application {
         Simulator lottoSimulator = new Simulator(price);
         printPurchaseHistory(lottoSimulator);
         List<Integer> winningNumbers = readNumbers(inputWinningNumbersMessage);
+        int bonus = readNumber(inputBonusNumberMessage, bonusNonNumericErrorMessage);
     }
 
     private static int readNumber(String outputMessage, String errorMessage) {
