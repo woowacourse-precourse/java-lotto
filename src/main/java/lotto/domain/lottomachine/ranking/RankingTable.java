@@ -32,4 +32,12 @@ public class RankingTable {
         DecimalFormat formatter = new DecimalFormat("###,###.0%");
         return formatter.format(rateOfReturn);
     }
+
+    public List<List<String>> getAllByAscendingRanking() {
+        return frequenciesByRank.entrySet()
+                .stream()
+                .sorted(Comparator.comparing(entry -> entry.getKey().getCash()))
+                .map(entry ->List.of(entry.getKey().getNumberOfMatching(), entry.getKey().getCashInDecimalFormat(), String.valueOf(entry.getValue())))
+                .collect(Collectors.toList());
+    }
 }
