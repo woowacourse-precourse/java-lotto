@@ -11,7 +11,7 @@
   - [O] 1-45 범위의 숫자 중 당첨번호와 중복되지 않는 보너스 번호를 입력받는다. - BonusNumberGenerator#createBonusNumber()
 
 - 생성숫자와 당첨숫자 비교 기능
-  - [] 구입한 내역의 숫자와 당첨숫자 비교 결과를 반환합니다.(보너스숫자제외) - CompareNumber#jugementNumber()
+  - [O] 구입한 내역의 숫자와 당첨숫자 비교 결과를 반환합니다.(보너스숫자제외) - CompareNumber#jugementNumber()
   - [] 보너스숫자를 포함한 결과를 리스트에 담아 반환합니다. - CompareNumberWithBonus#jugementNumberWithBonus()
 
 - 당첨 내용 출력 기능
