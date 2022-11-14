@@ -23,7 +23,7 @@ public class LottoList {
         OutputView.printNumberOfLotto(lottoPlayNumber, lottoList);
     }
 
-    private int getLottoPlayNumber(){
+    private int setLottoPlayNumber(){
         String readMoneyValue = InputView.readInputLine();
         Validation.validateMoneyInput(readMoneyValue);
         int money = Integer.parseInt(readMoneyValue);
@@ -42,5 +42,9 @@ public class LottoList {
 
     public List<Lotto> getLottoList(){
         return lottoList;
+    }
+
+    public int getLottoPlayNumber(){
+        return lottoPlayNumber;
     }
 }
