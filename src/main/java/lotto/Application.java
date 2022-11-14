@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.Arrays;
 import java.util.ArrayList;
 
 public class Application {
@@ -16,7 +17,7 @@ public class Application {
 
 		Integer bonusNumber = User.getBonusNumber(winningNumbers);
 
-		showLottoResult(winningNumbers, myLottos);
+		showLottoResult(winningNumbers, myLottos, bonusNumber);
 	}
 
 	public static List<List<Integer>> getMyLottos(int purchaseQuantity) {
@@ -34,46 +35,44 @@ public class Application {
 		return myLottos;
 	}
 
-	public static void showLottoResult(List<Integer> winningNumbers, List<List<Integer>> myLottos) {
+	public static void showLottoResult(List<Integer> winningNumbers, List<List<Integer>> myLottos, Integer bonusNumber) {
 
-		List<Integer> result = compareNumbers(winningNumbers, myLottos);
+		List<Integer> result = compareNumbers(winningNumbers, myLottos, bonusNumber);
 		
-		System.out.println(result);
 		System.out.println("\n당첨 통계\n---");
 		
-		int startIndex = Constant.FIFTH_PLACE.condition;
-		int endIndex = Constant.FIRST_PLACE.condition;
-		for (int numberOfNumbers = startIndex; numberOfNumbers <= endIndex; numberOfNumbers++) {
+		for (int index = Constant.FIFTH_PLACE.condition; index <= Constant.FIRST_PLACE.condition; index++) {
 
-			Integer numberOfTimes = result.get(numberOfNumbers);
+			Integer numberOfTimes = result.get(index);
+			System.out.println(getLottoResultMessage(index, numberOfTimes));
 			
-			String message = getLottoResultMessage(numberOfNumbers) + numberOfTimes + "개";
-
-			System.out.println(message);
+			if (index == Constant.SECOND_PLACE.condition) {
+				
+				int _index = result.size() - 1;
+				System.out.println(getLottoResultMessage(_index, result.get(_index)));
+			}
 		}
 	}
 
-	public static List<Integer> compareNumbers(List<Integer> winningNumbers, List<List<Integer>> myLottos) {
+	public static List<Integer> compareNumbers(List<Integer> winningNumbers, List<List<Integer>> myLottos, Integer bonusNumber) {
 
-		int length = Constant.LOTTO_NUMBERS_LENGTH.value + 1;
-		List<Integer> result = new ArrayList<Integer>(length);
+		int length = Constant.LOTTO_NUMBERS_LENGTH.value + 2;
+		Integer[] numberOfTimes = new Integer[length];
+		Arrays.fill(numberOfTimes, 0);
 		
-		for (int index = 0; index < length; index++) {
-			result.add(0);
-		}
-
+		List<Integer> result = new ArrayList<Integer>(Arrays.asList(numberOfTimes));
+		
 		for (List<Integer> myLotto : myLottos) {
 
 			int numberOfNumbers = countCorrectNumbers(winningNumbers, myLotto);
 
-			Integer numberOfTimes = result.get(numberOfNumbers);
-			result.set(numberOfNumbers, numberOfTimes + 1);
-
-			// ㅜ false
-			// System.out.println(winningNumbers == numbers);
-
-			// ㅜ true
-			// System.out.println(winningNumbers.equals(numbers));
+			boolean isSecondPlace = numberOfNumbers == Constant.SECOND_PLACE.condition && winningNumbers.contains(bonusNumber);
+			if (isSecondPlace) {
+				
+				updateLottoResult(result, length - 1);
+				continue;
+			}
+			updateLottoResult(result, numberOfNumbers);
 		}
 		return result;
 	}
@@ -92,26 +91,34 @@ public class Application {
 		return count;
 	}
 	
-	public static String getLottoResultMessage(int numberOfNumbers) {
+	public static List<Integer> updateLottoResult(List<Integer> result, int index) {
+		
+		Integer numberOfTimes = result.get(index);
+		result.set(index, numberOfTimes + 1);
+		
+		return result;
+	}
+	
+	public static String getLottoResultMessage(int index, Integer numberOfTimes) {
 
-		if (numberOfNumbers == Constant.FIRST_PLACE.condition) {
-			return Constant.FIRST_PLACE.resultMessage;
+		if (index == Constant.FIRST_PLACE.condition) {
+			return Constant.FIRST_PLACE.resultMessage + numberOfTimes + "개";
 		}
 
-		if (numberOfNumbers == Constant.SECOND_PLACE.condition) {
-			return Constant.SECOND_PLACE.resultMessage;
+		if (index == Constant.LOTTO_NUMBERS_LENGTH.value + 1) {
+			return Constant.SECOND_PLACE.resultMessage + numberOfTimes + "개";
 		}
 
-		if (numberOfNumbers == Constant.THIRD_PLACE.condition) {
-			return Constant.THIRD_PLACE.resultMessage;
+		if (index == Constant.THIRD_PLACE.condition) {
+			return Constant.THIRD_PLACE.resultMessage + numberOfTimes + "개";
 		}
 
-		if (numberOfNumbers == Constant.FOURTH_PLACE.condition) {
-			return Constant.FOURTH_PLACE.resultMessage;
+		if (index == Constant.FOURTH_PLACE.condition) {
+			return Constant.FOURTH_PLACE.resultMessage + numberOfTimes + "개";
 		}
 
-		if (numberOfNumbers == Constant.FIFTH_PLACE.condition) {
-			return Constant.FIFTH_PLACE.resultMessage;
+		if (index == Constant.FIFTH_PLACE.condition) {
+			return Constant.FIFTH_PLACE.resultMessage + numberOfTimes + "개";
 		}
 
 		return "";
