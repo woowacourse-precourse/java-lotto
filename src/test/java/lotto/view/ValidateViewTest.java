@@ -24,4 +24,13 @@ public class ValidateViewTest {
             ValidateView.possibleNumber(input);
         });
     }
+
+    @DisplayName("bonusNumber가 1부터 45까지 숫자가 맞는지")
+    @ParameterizedTest
+    @ValueSource(ints = {46})
+    void inputBonusNumberByWrongNumber(int input) {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            ValidateView.isPossibleBonusNumber(input);
+        });
+    }
 }
