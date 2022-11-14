@@ -3,11 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-
 import static Constant.ErrorMessage.LOTTO_DUPLICATE;
 import static Constant.ErrorMessage.OUT_RANGE;
-import static Constant.Game.MAX_NUMBER;
-import static Constant.Game.MIN_NUMBER;
 
 /**
  * 기능 구현 목록 - 로또 번호와 보너스 번호를 받아 하나의 객체로 만들어주는 클래스!

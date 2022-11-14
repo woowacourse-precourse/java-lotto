@@ -2,16 +2,8 @@ package lotto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-/**
- * 예외 테스트 리스트
- * 1. 1234567890,이 아닌 다른 문자가 섞여 들어옴.
- * 2. 보너스가 1234567890,이 아닌 다른 문자가 섞여 들어옴.
- * 3. 보너스 + 로또가 유효함.
- */
 
 public class WinningNumberTest {
 
