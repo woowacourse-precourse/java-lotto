@@ -20,4 +20,8 @@ public class LottoMachine extends Lotto{
 
         return convertNumbers;
     }
+
+    public static LottoMachine initLottoMachineNumber(String numbers) {
+        return new LottoMachine(convertStringToNumber(numbers));
+    }
 }
