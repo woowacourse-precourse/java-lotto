@@ -17,6 +17,7 @@ public class LottoBuyer {
     private Integer bonusNumber;
 
     private List<Lotto> lottos;
+
     public LottoBuyer() throws IllegalArgumentException {
         try {
             setMoney();
@@ -28,11 +29,12 @@ public class LottoBuyer {
             setLottoNumbers();
             System.out.println("보너스 번호를 입력해 주세요.");
             setBonusNumber();
-        } catch(IllegalArgumentException iae){
+        } catch (IllegalArgumentException iae) {
             throw iae;
         }
     }
-    public void setMoney() throws IllegalArgumentException{
+
+    public void setMoney() throws IllegalArgumentException {
         final String input = Console.readLine();
 
         try {
@@ -42,51 +44,51 @@ public class LottoBuyer {
         } catch (IllegalArgumentException iae) {
             throw iae;
         }
-        money =  new BigInteger(input);
+        money = new BigInteger(input);
     }
 
-    public void setLottoNumbers() throws IllegalArgumentException{
+    public void setLottoNumbers() throws IllegalArgumentException {
         final String input = Console.readLine();
         List<Integer> inputNumbers;
 
-        try{
+        try {
             CheckInputException.checkBuyerInputIsNotFiveComma(input);
             CheckInputException.checkBuyerInputIsNotSixNumbers(input);
             inputNumbers = Util.splitInteger(input, ",");
             lotto = new Lotto(inputNumbers);
-        }catch (IllegalArgumentException iae){
+        } catch (IllegalArgumentException iae) {
             throw iae;
         }
     }
 
-    public void setBonusNumber() throws IllegalArgumentException{
+    public void setBonusNumber() throws IllegalArgumentException {
         final String input = Console.readLine();
 
-        try{
+        try {
             CheckInputException.checkBuyerInputIsNotNumberRange(input);
             CheckInputException.checkBuyerInputIsNotNumber(input);
             bonusNumber = Integer.valueOf(input);
             List<Integer> tmpNumbers = new ArrayList<Integer>(lotto.getLottoInfo());
             tmpNumbers.add(bonusNumber);
             CheckInputException.checkDuplicateNumbers(tmpNumbers);
-        }catch(IllegalArgumentException iae){
+        } catch (IllegalArgumentException iae) {
             throw iae;
         }
     }
 
-    public BigInteger getMoney(){
+    public BigInteger getMoney() {
         return money;
     }
 
-    public Lotto getLotto(){
+    public Lotto getLotto() {
         return lotto;
     }
 
-    public List<Lotto> getLottos(){
+    public List<Lotto> getLottos() {
         return lottos;
     }
 
-    public Integer getBonusNumber(){
+    public Integer getBonusNumber() {
         return bonusNumber;
     }
 

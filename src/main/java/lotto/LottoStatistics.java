@@ -13,7 +13,7 @@ enum Rank {
     FIFTH(3, 5_000, "5,000원"),
     FOURTH(4, 50_000, "50,000원"),
     THIRD(5, 1_500_000, "1,500,000원"),
-    SECOND(5,30_000_000, "30,000,000원"),
+    SECOND(5, 30_000_000, "30,000,000원"),
     FIRST(6, 2_000_000_000, "2,000,000,000원");
 
     private final int match;
@@ -30,11 +30,11 @@ enum Rank {
         this.printPrize = printPrize;
     }
 
-    public BigInteger getMoney(){
+    public BigInteger getMoney() {
         return this.money;
     }
 
-    public int getPrize(){
+    public int getPrize() {
         return prize;
     }
 
@@ -42,28 +42,28 @@ enum Rank {
         this.count++;
     }
 
-    public int getCount(){
+    public int getCount() {
         return count;
     }
 
-    public int getMatch(){
+    public int getMatch() {
         return match;
     }
 
-    public String getPrintPrize(){
+    public String getPrintPrize() {
         return printPrize;
     }
 
 }
 
 public class LottoStatistics {
-    private LottoBuyer lottoBuyer;
-    private Lotto lotto;
-    private List<Lotto> lottos;
-    private BigInteger money;
-    private Integer bonusNumber;
+    private final LottoBuyer lottoBuyer;
+    private final Lotto lotto;
+    private final List<Lotto> lottos;
+    private final BigInteger money;
+    private final Integer bonusNumber;
 
-    public LottoStatistics() throws IllegalArgumentException{
+    public LottoStatistics() throws IllegalArgumentException {
         try {
             lottoBuyer = new LottoBuyer();
             lotto = lottoBuyer.getLotto();
@@ -72,15 +72,15 @@ public class LottoStatistics {
             bonusNumber = lottoBuyer.getBonusNumber();
             winTheLottery();
             printResult();
-        } catch (IllegalArgumentException iae){
+        } catch (IllegalArgumentException iae) {
             throw iae;
         }
     }
 
-    public void winTheLottery(){
+    public void winTheLottery() {
         Iterator<Lotto> lottoIter = lottos.iterator();
 
-        while (lottoIter.hasNext()){
+        while (lottoIter.hasNext()) {
             Lotto tmpLotto = lottoIter.next();
             List<Integer> tmpNumbers = new ArrayList<>(tmpLotto.getLottoInfo());
             tmpNumbers.removeAll(lotto.getLottoInfo());
@@ -89,29 +89,29 @@ public class LottoStatistics {
     }
 
     /*등수별 카운트*/
-    public void rankCount(List<Integer> numbers){
-        if (numbers.size() == 0){
+    public void rankCount(List<Integer> numbers) {
+        if (numbers.size() == 0) {
             Rank.FIRST.plusCount();
         }
-        if (numbers.size() == 1 && numbers.contains(bonusNumber)){
+        if (numbers.size() == 1 && numbers.contains(bonusNumber)) {
             Rank.SECOND.plusCount();
         }
-        if (numbers.size() == 1 && !numbers.contains(bonusNumber)){
+        if (numbers.size() == 1 && !numbers.contains(bonusNumber)) {
             Rank.THIRD.plusCount();
         }
-        if (numbers.size() == 2){
+        if (numbers.size() == 2) {
             Rank.FOURTH.plusCount();
         }
-        if (numbers.size() == 3 ){
+        if (numbers.size() == 3) {
             Rank.FIFTH.plusCount();
         }
     }
 
-    public BigInteger getTotalPrize(){
+    public BigInteger getTotalPrize() {
         BigInteger totalPrize = new BigInteger("0");
 
-        for (Rank rank : Rank.values()){
-            for (int index = 0; index < rank.getCount(); index++){
+        for (Rank rank : Rank.values()) {
+            for (int index = 0; index < rank.getCount(); index++) {
                 BigInteger tmpPrize = BigInteger.valueOf(rank.getPrize());
                 totalPrize = totalPrize.add(tmpPrize);
             }
@@ -119,7 +119,7 @@ public class LottoStatistics {
         return totalPrize;
     }
 
-    public BigDecimal getRateOfReturn(){
+    public BigDecimal getRateOfReturn() {
         BigInteger totalPrize = getTotalPrize();
         BigDecimal buyerMoney = new BigDecimal(this.money);
         BigDecimal spentMoney = new BigDecimal(totalPrize);
@@ -129,12 +129,12 @@ public class LottoStatistics {
         return rateOfReturn;
     }
 
-    public void printCountByRank(){
-        for (Rank rank : Rank.values()){
+    public void printCountByRank() {
+        for (Rank rank : Rank.values()) {
             int matchCount = rank.getMatch();
             int countByRank = rank.getCount();
 
-            if (rank == Rank.SECOND){
+            if (rank == Rank.SECOND) {
                 System.out.println(matchCount + "개 일치, 보너스 볼 일치 (" + rank.getPrintPrize() + ")"
                         + " - " + countByRank + "개");
                 continue;
@@ -145,7 +145,7 @@ public class LottoStatistics {
         }
     }
 
-    public void printResult(){
+    public void printResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
         printCountByRank();

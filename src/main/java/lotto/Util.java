@@ -8,28 +8,28 @@ import java.util.ArrayList;
 
 public class Util {
 
-    public static boolean isNumberic(final String str){
-        try{
+    public static boolean isNumberic(final String str) {
+        try {
             Double.parseDouble(str);
             return true;
-        }catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             return false;
         }
     }
 
-    public static boolean isDividedBuyThousand(final String input){
+    public static boolean isDividedBuyThousand(final String input) {
         final BigInteger convertInput = new BigInteger(input);
         final BigInteger thousand = BigInteger.valueOf(1000);
         final BigInteger remainderInput = convertInput.remainder(thousand);
 
-        if (remainderInput.compareTo(BigInteger.ZERO) == 0){
+        if (remainderInput.compareTo(BigInteger.ZERO) == 0) {
             return true;
         }
         return false;
     }
 
-    public static int countChar(final String input, final char ch){
-        final int count = (int)input.chars()
+    public static int countChar(final String input, final char ch) {
+        final int count = (int) input.chars()
                 .filter(c -> c == ch)
                 .count();
 
@@ -39,23 +39,23 @@ public class Util {
     public static List<Integer> splitInteger(final String input, final String sep) throws IllegalArgumentException {
         List<Integer> lottoNumbers = new ArrayList<>();
 
-        try{
-            for (String number : input.split(sep)){
+        try {
+            for (String number : input.split(sep)) {
                 CheckInputException.checkBuyerInputIsNotNumber(number);
                 CheckInputException.checkBuyerInputIsNotNumberRange(number);
                 Integer tmpNumber = Integer.valueOf(number);
                 lottoNumbers.add(tmpNumber);
             }
-        } catch(IllegalArgumentException iae){
+        } catch (IllegalArgumentException iae) {
             throw iae;
         }
         return lottoNumbers;
     }
 
-    public static boolean isDuplicate(List<Integer> numbers){
+    public static boolean isDuplicate(List<Integer> numbers) {
         long numbersCount = numbers.stream().distinct().count();
 
-        if (numbers.size() != numbersCount){
+        if (numbers.size() != numbersCount) {
             return true;
         }
         return false;

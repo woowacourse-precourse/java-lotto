@@ -7,7 +7,8 @@ import java.util.ArrayList;
 class CheckInputException {
 
     private static final String ERROR_MESSAGE = "[ERROR]";
-    public static void checkBuyerInputIsMinus(final String input) throws IllegalArgumentException{
+
+    public static void checkBuyerInputIsMinus(final String input) throws IllegalArgumentException {
 
         final BigInteger money = new BigInteger(input);
         final BigInteger zero = BigInteger.ZERO;
@@ -17,53 +18,53 @@ class CheckInputException {
         }
     }
 
-    public static void checkBuyerInputIsNotNumber(final String input) throws IllegalArgumentException{
+    public static void checkBuyerInputIsNotNumber(final String input) throws IllegalArgumentException {
         if (Util.isNumberic(input) == false || input.contains(" ") == true) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 입력하신 문자열은 숫자열이 아닙니다.");
         }
     }
 
-    public static void checkBuyerInputIsNotDivided(final String input) throws IllegalArgumentException{
-        if (Util.isDividedBuyThousand(input) == false){
+    public static void checkBuyerInputIsNotDivided(final String input) throws IllegalArgumentException {
+        if (Util.isDividedBuyThousand(input) == false) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 1000으로 나누어 떨어지지 않습니다.");
         }
     }
 
-    public static void checkBuyerInputIsNotNumberRange(final String input) throws IllegalArgumentException{
+    public static void checkBuyerInputIsNotNumberRange(final String input) throws IllegalArgumentException {
         final BigInteger convertInput = new BigInteger(input);
         final BigInteger numberFortyFive = BigInteger.valueOf(45);
         final BigInteger numberOne = BigInteger.ONE;
 
         //if (input < 0 || input > 45)와 조건이 같음
-        if (convertInput.compareTo(numberOne) == -1 || convertInput.compareTo(numberFortyFive) == 1){
+        if (convertInput.compareTo(numberOne) == -1 || convertInput.compareTo(numberFortyFive) == 1) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 1~45범위의 숫자가 아닙니다.");
         }
     }
 
-    public static void checkBuyerInputIsNotFiveComma(final String input) throws IllegalArgumentException{
+    public static void checkBuyerInputIsNotFiveComma(final String input) throws IllegalArgumentException {
         final int countComma = Util.countChar(input, ',');
 
-        if (countComma != 5){
+        if (countComma != 5) {
             throw new IllegalArgumentException(ERROR_MESSAGE + "','의 숫자가 5개가 아닙니다.");
         }
     }
 
-    public static void checkBuyerInputIsNotSixNumbers(final String input) throws IllegalArgumentException{
+    public static void checkBuyerInputIsNotSixNumbers(final String input) throws IllegalArgumentException {
         List<Integer> list;
 
-        try{
+        try {
             list = Util.splitInteger(input, ",");
-        } catch(IllegalArgumentException iae){
+        } catch (IllegalArgumentException iae) {
             throw iae;
         }
 
-        if (list.size() != 6){
+        if (list.size() != 6) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 입력한 당첨 번호가 6개가 아닙니다.");
         }
     }
 
-    public static void checkDuplicateNumbers(List<Integer> numbers) throws IllegalArgumentException{
-        if (Util.isDuplicate(numbers) == true){
+    public static void checkDuplicateNumbers(List<Integer> numbers) throws IllegalArgumentException {
+        if (Util.isDuplicate(numbers) == true) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 중복된 값이 입력되었습니다.");
         }
     }

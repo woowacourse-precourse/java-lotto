@@ -10,11 +10,11 @@ import java.util.Collections;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) throws IllegalArgumentException{
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException {
         validate(numbers);
         try {
             CheckInputException.checkDuplicateNumbers(numbers);
-        } catch(IllegalArgumentException iae){
+        } catch (IllegalArgumentException iae) {
             throw iae;
         }
         this.numbers = numbers;
@@ -25,7 +25,8 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-    public List<Integer> getLottoInfo(){
+
+    public List<Integer> getLottoInfo() {
         return numbers;
     }
 
