@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.List;
+import lotto.model.Lotto;
 
 import static lotto.LottoErrorMessage.*;
 import static lotto.LottoConstant.*;

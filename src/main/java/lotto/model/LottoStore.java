@@ -1,11 +1,14 @@
 package lotto;
 
+import lotto.model.Lotto;
+import lotto.model.LottoMachine;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.LottoErrorMessage.*;
 import static lotto.LottoConstant.*;
-import static lotto.LottoSeller.printMessage;
+import static lotto.view.LottoSeller.printMessage;
 
 public class LottoStore {
     private List<Lotto> lottoTickets = new ArrayList<>();

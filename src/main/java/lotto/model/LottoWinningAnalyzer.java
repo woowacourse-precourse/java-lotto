@@ -3,7 +3,7 @@ package lotto;
 import java.util.EnumMap;
 
 import static lotto.LottoConstant.*;
-import static lotto.LottoSeller.printMessage;
+import static lotto.view.LottoSeller.printMessage;
 
 public class LottoWinningAnalyzer {
     private EnumMap<WinningType, Integer> winningResult;

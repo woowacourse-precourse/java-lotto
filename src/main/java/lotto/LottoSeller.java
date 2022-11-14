@@ -1,6 +1,7 @@
-package lotto.ui;
+package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.model.Lotto;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +14,15 @@ public class LottoSeller {
 
     public static void printMessage(String message) {
         System.out.println(message);
+    }
+
+    public static void printLottoNumbers(List<Lotto> lottoTickets) {
+        int lottoPurchaseCount = lottoTickets.size();
+        printMessage(String.format(BUY_MSG, lottoPurchaseCount));
+
+        for (int i = 0; i < lottoPurchaseCount; i++) {
+            printMessage(lottoTickets.get(i).toString());
+        }
     }
 
     public static int receivePurchasePrice() {

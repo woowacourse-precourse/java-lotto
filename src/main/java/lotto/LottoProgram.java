@@ -1,5 +1,10 @@
 package lotto;
 
+import lotto.model.LottoStore;
+import lotto.model.LottoWinningAnalyzer;
+import lotto.model.WinningLotto;
+import lotto.model.Lotto;
+
 import java.util.EnumMap;
 import java.util.List;
 
@@ -46,6 +51,7 @@ public class LottoProgram {
         LottoStore lottoStore = new LottoStore();
 
         this.lottoTickets = lottoStore.buyLottoNumber(price);
+        printLottoNumbers(lottoTickets);
     }
 
     private void initializeWinningLotto(List<Integer> numbers, int bonusNumber) {
