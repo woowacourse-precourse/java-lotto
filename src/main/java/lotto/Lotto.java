@@ -94,6 +94,37 @@ public class Lotto {
     public static void printLotto(List<Integer> Lotto){
         System.out.println(Lotto);
     }
+
+    public static String checkBonus(List<Integer> wnum){
+        if(getBonus(bonusNum(),wnum)){
+            return("5b");
+        }
+        return("5");
+    }
+    public static void startLotto(){
+        List<List<Integer>> lotto = new ArrayList<>();
+        List<String> winCheck = new ArrayList<>();
+        int i = 0;
+        int buy = buyLotto();
+        for(i = 0; i < buy; i++){
+            lotto.add(generateLotto());
+        }
+        System.out.println("");
+        System.out.println((i)+"개를 구매했습니다.");
+        for(List<Integer> number : lotto){
+            printLotto(number);
+        }
+        List<Integer> winNum = winner();
+        for(List<Integer> wnum : lotto){
+            winCheck.add(String.valueOf(getWin(wnum,winNum)));
+        }
+        if(winCheck.contains("5")){
+            winCheck.set(winCheck.indexOf("5"), checkBonus(lotto.get(winCheck.indexOf("5"))));
+        }
+        calculate(winCheck);
+        calculateEarn(winCheck);
+    }
+
     public static List<Integer> generateLotto(){
         List<Integer> Lotto = new ArrayList<>();
         Lotto.addAll(Randoms.pickUniqueNumbersInRange(1,45,6));
