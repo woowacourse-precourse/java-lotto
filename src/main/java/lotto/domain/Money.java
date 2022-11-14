@@ -14,6 +14,10 @@ public class Money {
         validate();
     }
 
+    public Long getLongMoney(){
+        return Long.parseLong(money);
+    }
+
     public int boughtLottoCount(){
         int bought = Math.toIntExact(Long.parseLong(money) / Setting.LOTTO_PRICE_PER_ONE);
         Output.printBoughtLotto(bought);
@@ -44,6 +48,4 @@ public class Money {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 "+ Setting.LOTTO_PRICE_PER_ONE +"원 단위입니다.");
         }
     }
-
-
 }
