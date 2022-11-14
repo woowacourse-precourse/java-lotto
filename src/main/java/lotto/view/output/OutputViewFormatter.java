@@ -16,6 +16,8 @@ public class OutputViewFormatter {
     private static final String PERCENT = "%";
     private static final String YIELD_FORMAT = "%,.1f";
     private static final String YIELD_TEXT_FORMAT = "총 수익률은 %s%s입니다.";
+    private static final String ERROR_MESSAGE = "[ERROR] %s";
+
 
     public String outputLottoFormat(Lotto lotto) {
         return lotto.numbers().stream()
@@ -41,5 +43,9 @@ public class OutputViewFormatter {
 
     public String outputYieldFormat(double yield) {
         return String.format(YIELD_TEXT_FORMAT, String.format(YIELD_FORMAT, yield), PERCENT);
+    }
+
+    public String outputExceptionFormat(Exception exception) {
+        return String.format(ERROR_MESSAGE, exception.getMessage());
     }
 }

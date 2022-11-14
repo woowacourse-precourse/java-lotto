@@ -12,8 +12,6 @@ import lotto.view.input.InputView;
 import lotto.view.output.OutputView;
 
 public class LottoController {
-    private static final String ERROR_MESSAGE = "[ERROR] ";
-
     private final InputView inputView;
     private final OutputView outputView;
     private final LottoStore manualLottoStore;
@@ -31,7 +29,7 @@ public class LottoController {
             WinningLotto winningLotto = getWinningLotto();
             result(purchaseMoney, purchaseLottos, winningLotto);
         } catch (Exception exception) {
-            System.out.println(ERROR_MESSAGE + exception.getMessage());
+            outputView.outputException(exception);
         }
     }
 

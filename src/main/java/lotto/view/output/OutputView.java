@@ -53,4 +53,8 @@ public class OutputView {
     private static void printEnter() {
         System.out.println();
     }
+
+    public void outputException(Exception exception) {
+        System.out.println(outputViewFormatter.outputExceptionFormat(exception));
+    }
 }
