@@ -26,4 +26,11 @@ public class Discriminator {
     public boolean canSecondRank(int raffleNumberMatches) {
         return raffleNumberMatches == SECOND_RANK_CONDITION;
     }
+    public int guessBonusNumber(Lotto lotto, int raffleNumberMatches) {
+        int numberOfBonusNumberMatches = ZERO;
+        if (canSecondRank(raffleNumberMatches)&&lotto.has(bonusNumber)) {
+            numberOfBonusNumberMatches += COUNT;
+        }
+        return numberOfBonusNumberMatches;
+    }
 }
