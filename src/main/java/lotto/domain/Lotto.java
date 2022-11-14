@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public final class Lotto {
-    private static final int CONTAINS = 1;
-    private static final int NOT_CONTAINS = 0;
     private static final String NULL_MESSAGE = "숫자들이 null 입니다";
     private static final String INCORRECT_LENGTH_MESSAGE = "숫자는 6개가 들어와야 합니다";
     private static final String DUPLICATE_MESSAGE = "숫자에 중복이 있습니다";
@@ -79,15 +77,8 @@ public final class Lotto {
     }
 
     public int calculateTotalSameCount(Lotto other) {
-        return numbers.stream()
-                .reduce(0,
-                        (total, number) -> total + addIfContains(number, other));
-    }
-
-    private int addIfContains(int number, Lotto other) {
-        if (other.contains(number)) {
-            return CONTAINS;
-        }
-        return NOT_CONTAINS;
+        return (int) numbers.stream()
+                .filter(other::contains)
+                .count();
     }
 }
