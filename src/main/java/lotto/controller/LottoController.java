@@ -12,19 +12,12 @@ public class LottoController {
     private final OutputView outputView = new OutputView();
 
     public void start() {
-        final PurchasedAmount purchasedAmount = getPurchasedAmount();
-        if (purchasedAmount == null) {
-            return;
-        }
-
+        final PurchasedAmount purchasedAmount = inputView.inputPurchasedAmount();
         final PurchasedLottos purchasedLottos = new PurchasedLottos(purchasedAmount.getCount());
 
         outputView.printPurchasedLottos(purchasedAmount.getCount(), purchasedLottos);
 
-        final WinningLotto winningLotto = getWinningLotto();
-        if (winningLotto == null) {
-            return;
-        }
+        final WinningLotto winningLotto = inputView.inputWinningLottoNumber();
 
         final Result result = makeResult(winningLotto, purchasedLottos);
 
@@ -42,21 +35,4 @@ public class LottoController {
         return tmpResult;
     }
 
-    private WinningLotto getWinningLotto() {
-        try {
-            return inputView.inputWinningLottoNumber();
-        } catch (IllegalArgumentException exception) {
-            outputView.getErrorMessage(exception.getMessage());
-            return null;
-        }
-    }
-
-    private PurchasedAmount getPurchasedAmount() {
-        try {
-            return inputView.inputPurchasedAmount();
-        } catch (IllegalArgumentException exception) {
-            outputView.getErrorMessage(exception.getMessage());
-            return null;
-        }
-    }
 }

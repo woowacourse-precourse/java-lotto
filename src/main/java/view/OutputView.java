@@ -9,9 +9,6 @@ import java.util.Arrays;
 import static lotto.constant.Message.*;
 
 public class OutputView {
-    public void getErrorMessage(String message) {
-        System.out.println(ERROR_MESSAGE + message);
-    }
 
     public void printPurchasedLottos(int count, PurchasedLottos purchasedLottos) {
         System.out.println(count + PURCHASE_LOTTO_MESSAGE);

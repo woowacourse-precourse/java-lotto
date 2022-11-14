@@ -19,13 +19,13 @@ public class Lotto {
     private void validateDuplicate(List<Integer> numbers) {
         int count = (int) numbers.stream().distinct().count();
         if (count < 6) {
-            throw new IllegalArgumentException(DUPLICATE_LOTTO_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE_LOTTO_NUMBER_MESSAGE);
         }
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_SIZE_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_LOTTO_NUMBER_SIZE_MESSAGE);
         }
     }
 
@@ -37,7 +37,7 @@ public class Lotto {
                 .count();
 
         if (count != LOTTO_SIZE) {
-            throw new IllegalArgumentException(INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
         }
     }
 

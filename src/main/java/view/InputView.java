@@ -35,7 +35,7 @@ public class InputView {
 
     private void validatePattern(String lottoNumbers) {
         if (!Pattern.matches(WINNING_NUMBER_INPUT_PATTERN, lottoNumbers)) {
-            throw new IllegalArgumentException(INVALID_WINNING_LOTTO_INPUT_FORMAT_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_WINNING_LOTTO_INPUT_FORMAT_MESSAGE);
         }
     }
 

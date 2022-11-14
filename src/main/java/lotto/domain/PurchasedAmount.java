@@ -33,7 +33,7 @@ public class PurchasedAmount {
         int price = Integer.parseInt(inputPrice);
 
         if (price % PURCHASED_AMOUNT_UNIT != 0) {
-            throw new IllegalArgumentException(INVALID_MONEY_UNIT_INPUT_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_MONEY_UNIT_INPUT_MESSAGE);
         }
     }
 
@@ -41,13 +41,13 @@ public class PurchasedAmount {
         int price = Integer.parseInt(inputPrice);
 
         if (price < PURCHASED_AMOUNT_UNIT) {
-            throw new IllegalArgumentException(LESS_THAN_MINIMUM_MONEY_INPUT_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + LESS_THAN_MINIMUM_MONEY_INPUT_MESSAGE);
         }
     }
 
     private void validateDigit(String inputPrice) {
         if (!Pattern.matches(DIGIT_REGEX, inputPrice)) {
-            throw new IllegalArgumentException(INVALID_MONEY_INPUT_FORMAT_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_MONEY_INPUT_FORMAT_MESSAGE);
         }
     }
 }

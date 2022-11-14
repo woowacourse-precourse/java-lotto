@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static lotto.constant.ConstValue.DIGIT_REGEX;
-import static lotto.constant.Message.DUPLICATE_LOTTO_NUMBER_MESSAGE;
-import static lotto.constant.Message.INVALID_NUMBER_INPUT_FORMAT_MESSAGE;
+import static lotto.constant.Message.*;
 
 public class WinningLotto extends Lotto{
     private int bonusNumber;
@@ -25,13 +24,13 @@ public class WinningLotto extends Lotto{
         int bonus = Integer.parseInt(inputBonus);
 
         if (numbers.contains(bonus)) {
-            throw new IllegalArgumentException(DUPLICATE_LOTTO_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE_LOTTO_NUMBER_MESSAGE);
         }
     }
 
     private void validateDigit(String inputBonus) {
         if (!Pattern.matches(DIGIT_REGEX, inputBonus)) {
-            throw new IllegalArgumentException(INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
         }
     }
 
