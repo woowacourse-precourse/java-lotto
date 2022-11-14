@@ -28,10 +28,12 @@ public class SystemMessage {
 
     public void winningNumbersMessage(String input){
         System.out.println(input);
+        System.out.println("");
     }
 
     public void bonusNumberMessage(String input){
         System.out.println(input);
+        System.out.println("");
     }
 
 }
