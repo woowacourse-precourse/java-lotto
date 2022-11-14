@@ -19,19 +19,20 @@ public class Controller {
     String[] str;
     List<Integer> lottoList = new ArrayList<>();
     EnumMap<Money, Integer> map = new EnumMap<>(Money.class);
+    Computer[] computers;
 
     void start() {
         try {
             startMoney();
             startMoneyException();
             inMoney();
-            Computer[] computers = getComputers();
+            getComputers();
             winningNumber();
             winningNumberException();
             Bonus();
             BonusException();
             inBonus();
-            checkWinning(computers);
+            checkWinning();
             Result();
         } catch (IllegalArgumentException e) {
             if (!Objects.equals(e.getMessage(),null)) System.out.println(e.getMessage());
@@ -43,7 +44,7 @@ public class Controller {
         view.printBenfit(inMoney, result);
     }
 
-    private void checkWinning(Computer[] computers) {
+    private void checkWinning() {
         domain.checkWinning(computers, map, lotto);
         view.printResult(map);
     }
@@ -79,12 +80,11 @@ public class Controller {
         getInput();
     }
 
-    private Computer[] getComputers() {
-        Computer[] computers = new Computer[inMoney / 1000];
+    private void getComputers() {
+        computers = new Computer[inMoney / 1000];
         for (int i = 0; i < inMoney / 1000; i++) computers[i] = new Computer();
         view.purchaseNumber(inMoney / 1000, computers);
         System.out.println();
-        return computers;
     }
 
 
