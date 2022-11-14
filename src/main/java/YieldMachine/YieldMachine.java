@@ -3,16 +3,18 @@ package YieldMachine;
 import User.User;
 import lotto.WinningNumberLotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class YieldMachine {
 
     WinningNumberLotto lotto;
-    Integer MAX_COUNT_OF_LOTTO_NUMBER;
+    static final Integer MAX_COUNT_OF_LOTTO_NUMBER = 6;
     List<Integer> countOfReward;
 
     public YieldMachine() {
-
+        this.lotto = new WinningNumberLotto();
+        this.countOfReward = new ArrayList<>();
     }
 
     public void run() {
