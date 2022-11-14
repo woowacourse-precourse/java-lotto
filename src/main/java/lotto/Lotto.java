@@ -29,12 +29,7 @@ public class Lotto {
     }
 
 
-    public static Lotto generate() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, NUMBER_EA);
-        final Lotto lotto = new Lotto(numbers);
 
-        return lotto;
-    }
 
     public List<Integer> getNumbers() {
         return this.numbers;

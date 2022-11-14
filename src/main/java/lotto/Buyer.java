@@ -9,6 +9,7 @@ import static lotto.Util.Printer.printWinnings;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.Util.LottoGenerator;
 
 
 
@@ -42,7 +43,7 @@ public class Buyer {
 
     private void buyLottos() {
         for (int i = 0; i < this.lottoNum; i++) {
-            final Lotto lotto = Lotto.generate();
+            final Lotto lotto = LottoGenerator.generate();
 
             lottos.add(lotto);
         }

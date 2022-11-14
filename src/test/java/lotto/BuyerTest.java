@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import lotto.Util.LottoGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,7 +27,7 @@ public class BuyerTest {
     void 생성_올바른_로또() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    Lotto lotto = Lotto.generate();
+                    Lotto lotto = LottoGenerator.generate();
                     List<Integer> numbers = lotto.getNumbers();
                     assertThat(numbers).isEqualTo(List.of(8, 21, 23, 41, 42, 43));
                 },
