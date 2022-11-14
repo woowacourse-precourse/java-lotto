@@ -31,4 +31,16 @@ public enum Rank {
         }
         return Arrays.stream(Rank.values()).filter(rank -> rank.match == match).findAny().orElse(OUT);
     }
+
+    public long getMoney() {
+        return this.money;
+    }
+
+    @Override
+    public String toString() {
+        String description = "";
+        final String bonusBall = ", 보너스 볼 일치";
+        if (this == SECOND) description = bonusBall;
+        return String.format("%d개 일치" + description + " (%,3d원)", match, money);
+    }
 }
