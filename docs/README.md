@@ -19,13 +19,13 @@
     - [x]  로또 구입 금액 저장 기능 → setPurchaseAmount
     - [x]  구입한 로또 개수 저장 기능 → setLottoCount
     - [x]  구매한 로또 번호 저장 기능 → setLottoNumbers
+    - [ ]  당첨 번호 저장 기능 → setWinningNumber
+    - [ ]  보너스 번호 저장 기능 → setBonusNumber
     - [ ]  당첨 내역 저장 기능 → setWinningResult
     - [ ]  수익률 저장 기능 → setLottoYield
 3. Seller
     - [x]  발행할 로또 개수 계산 기능 → countIssueingLotto
     - [x]  로또 개수만큼 발행 기능 → issueLotto
-    - [ ]  당첨 번호 저장 기능 → setWinningNumber
-    - [ ]  보너스 번호 저장 기능 → setBonusNumber
 4. InputValidator
     - [x]  로또 구입 금액이 1,000원으로 나누어 떨어지는지 검증 기능 → validatePurchaseAmount
     - [ ]  당첨 번호를 쉼표 기준으로 입력했는지 검증 기능 → validateWinningNumber_Diveded_Comma
@@ -38,7 +38,7 @@
 
 1. InputView
     - [x]  로또를 구입할 금액 입력 기능 → inputPurchaseAmount
-    - [ ]  당첨 번호 입력 기능 → inputWinningNumber
+    - [x]  당첨 번호 입력 기능 → inputWinningNumber
     - [ ]  보너스 번호 입력 기능 → inputBonusNumber
 2. OutputView
     - [x]  구입한 로또 개수 출력 기능 → printLottoCount
