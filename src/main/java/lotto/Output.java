@@ -1,10 +1,11 @@
 package lotto;
 
+import java.util.Arrays;
+
 public class Output {
 
     public void wrongNumberException() {
-        System.out.println("[ERROR] 로또 구입 금액은 1000원으로 나누어 떨어져야 합니다.");
-        throw new IllegalArgumentException();
+        System.out.println("[ERROR] 로또 구입 금액은 숫자로 이루어지고 1000원으로 나누어 떨어져야 합니다.");
     }
 
     public void lottoNumberPrinter(int[] lottoArray){
@@ -17,12 +18,9 @@ public class Output {
 
     public void winningStatisticPrinter(int[] correctCount){
         System.out.println("\n당첨 통계\n---");
-
-        System.out.println("3개 일치 (5,000원) - " +correctCount[0]+ "개");
-        System.out.println("4개 일치 (50,000원) - " +correctCount[1]+ "개");
-        System.out.println("5개 일치 (1,500,000원) - " +correctCount[2]+ "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " +correctCount[3]+ "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " +correctCount[4]+ "개");
+        Arrays.asList(CorrectCountEnum.values()).forEach(correctIterator ->
+                System.out.println(correctIterator.getStr() +" - "+ correctCount[correctIterator.ordinal()]+ "개")
+        );
     }
 
     public void yieldCalculation(int[] correctCount, int purchasedValue){
