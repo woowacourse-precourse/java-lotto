@@ -19,6 +19,7 @@ public class Game {
         Integer inputPrice = getInputPrice();
         List<Lotto> lottos = getLottos(inputPrice);
         List<Integer> winNumbers = getWinNumbers();
+        int bonusNumber = getBonusNumber(winNumbers);
 
     }
 
@@ -76,6 +77,18 @@ public class Game {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하여야 합니다.");
         }
         return winNumbers;
+    }
+
+    private static int getBonusNumber(List<Integer> winNumbers) {
+        System.out.println(INPUT_BONUS_NUMBER);
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1이상 45이하여야 합니다.");
+        }
+        if (winNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호와 당첨 번호가 중복되지 않아야 합니다.");
+        }
+        return bonusNumber;
     }
 
 }
