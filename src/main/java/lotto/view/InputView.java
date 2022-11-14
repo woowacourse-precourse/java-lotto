@@ -10,6 +10,7 @@ public class InputView {
     private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String LOTTONUMBERS_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
+    private static final String LOTTONUMBERS_INPUT_EXCEPTION_MESSAGE = "[ERROR] : 중복되지 않는 1~45 사이 숫자를 입력해주세요";
     private final int lotteryPrice = 1000;
     private static int inputMoney = 0;
     private static int lotteryAmount = 0;
@@ -69,7 +70,22 @@ public class InputView {
     public List<Integer> input_Lotto_Numbers() {
         System.out.println(LOTTONUMBERS_INPUT_MESSAGE);
         List<Integer> list = makeList(getUserInput());
+        validateInput(list);
         return list;
+    }
+
+    public void validateInput(List<Integer> list) {
+        if (list.contains(0)) {
+            throw new IllegalArgumentException(LOTTONUMBERS_INPUT_EXCEPTION_MESSAGE);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) > 45) {
+                throw new IllegalArgumentException(LOTTONUMBERS_INPUT_EXCEPTION_MESSAGE);
+            }
+            if (Collections.frequency(list, list.get(i)) != 1) {
+                throw new IllegalArgumentException(LOTTONUMBERS_INPUT_EXCEPTION_MESSAGE);
+            }
+        }
     }
 
 }
