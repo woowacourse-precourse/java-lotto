@@ -8,8 +8,9 @@
 
 
 ## 도메인 모델링
-![img.png](domain-model.png)
+![img.png](img.png)
 - UserInterface : 사용자 입출력
+- InputValidator : 입력값 검증
 - Cashier : 로또 발급과 당첨금 계산을 요청
 - LottoMachine : 로또를 발급
 - Lotto : 로또 정보를 보관
@@ -26,6 +27,8 @@
 - [x] 당첨 통계 출력
   - [x] 당첨 결과 출력
   - [x] 수익률 출력
+
+### InputValidator
 - [x] 입력 금액 유효성 검사 : 0으로 시작하지 않는 4자리 이상 9자리 이하 숫자
 - [ ] 당첨 번호 유효성 검사 : 공백 없이 ","로 이어진 6개 숫자
 - [ ] 보너스 번호 유효성 검사 : 두 자리 이하의 숫자
