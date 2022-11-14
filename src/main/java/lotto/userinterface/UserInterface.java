@@ -3,15 +3,16 @@ package lotto.userinterface;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
 import lotto.MessageGenerator;
+import lotto.Util;
 import lotto.condition.Condition;
-import lotto.condition.MinimumMoneyCond;
-import lotto.condition.MoneyDivisionCond;
+import lotto.condition.lottonumber.IsAllNumberInRangeCond;
+import lotto.condition.lottonumber.NoDuplicateNumberCond;
 import lotto.condition.lottonumber.RightFormatCond;
+import lotto.condition.money.MinimumMoneyCond;
+import lotto.condition.money.MoneyDivisionCond;
 import lotto.validator.Validator;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserInterface {
 
@@ -24,10 +25,9 @@ public class UserInterface {
         String input = getInput();
 
         List<Condition> conditions = List.of(
-                RightFormatCond.getInstance()
-                IsAllNumberCond.getInstance(),
-                // NoDuplicateNumberCond.getInstance(),
-                // InRangeCond.getInstance()
+                RightFormatCond.getInstance(),
+                IsAllNumberInRangeCond.getInstance(),
+                NoDuplicateNumberCond.getInstance()
         );
 
         Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, input);
@@ -37,12 +37,9 @@ public class UserInterface {
             throw new IllegalArgumentException();
         }
 
-        return getParsedNumbers(input);
+        return Util.getParsedNumbers(input);
     }
 
-    private static List<Integer> getParsedNumbers(String input) {
-        return Arrays.stream(input.split(",")).map(((String s) -> Integer.parseInt(s))).collect(Collectors.toList());
-    }
 
     public static Integer getMoney() {
         String input = getInput();
