@@ -43,4 +43,18 @@ public class LottoService {
         Lotto winningLotto = new Lotto(winningNumber);
         return winningLotto;
     }
+
+    public int setBonusNumber(String inputBonusNumber){
+        try {
+            int bonusNumber = Integer.parseInt(inputBonusNumber);
+            LottoUtils.checkNumberInRange(bonusNumber);
+            return bonusNumber;
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void setWinningLotto(Lotto winningLotto, int bonusNumber) {
+        new WinningLotto(winningLotto,bonusNumber);
+    }
 }

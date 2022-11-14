@@ -25,6 +25,9 @@ public class LottoController {
         String inputWinningNumber = message.inputWinningNumberMessage();
         Lotto winningLotto = lottoService.setWinningNumber(inputWinningNumber);
         String inputBonusNumber = message.inputBonusNumberMessage();
+        int bonusNumber = lottoService.setBonusNumber(inputBonusNumber);
+
+        lottoService.setWinningLotto(winningLotto,bonusNumber);
     }
 
 }
