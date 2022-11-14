@@ -7,7 +7,7 @@ import lotto.enums.LottoRank;
 
 public class LottoOutput {
 
-    private static final String BUY_LOTTO = "개를 구매하였습니다.";
+    private static final String BUY_LOTTO = "개를 구매했습니다.";
     private static final String RANK_LOTTO = "당첨 통계\n---";
 
     public static void printBuyLotto(int money) {
@@ -19,6 +19,7 @@ public class LottoOutput {
         for (List<Integer> lotto : lotteries) {
             System.out.println(lotto);
         }
+        System.out.println("");
     }
 
     public static void printLottoRank(List<LottoRank> rankCount) {
@@ -27,11 +28,11 @@ public class LottoOutput {
         for (LottoRank rank : LottoRank.values()) {
             int count = Collections.frequency(rankCount, rank);
 
-            System.out.printf(LottoRank.getRank(rank) + " (%d원) - %d개\n" ,LottoRank.getPrice(rank), count);
+            System.out.printf(LottoRank.getRank(rank) + " (%s원) - %d개\n" ,LottoRank.getPrice(rank), count);
         }
     }
 
     public static void printLottoProfit(String lottoProfit) {
-        System.out.printf("총 수익률은 %s입니다.\n", lottoProfit);
+        System.out.printf("총 수익률은 %s%%입니다.\n", lottoProfit);
     }
 }

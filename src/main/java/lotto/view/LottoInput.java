@@ -11,6 +11,8 @@ public class LottoInput {
         System.out.println(INPUT_PAY_MONEY);
 
         String payMoney = Console.readLine();
+
+        System.out.println("");
         return payMoney;
     }
 
@@ -18,6 +20,8 @@ public class LottoInput {
         System.out.println(INPUT_WINNING_NUMBER);
 
         String winningNumber = Console.readLine();
+
+        System.out.println("");
         return winningNumber;
     }
 
@@ -25,6 +29,8 @@ public class LottoInput {
         System.out.println(INPUT_BONUS_NUMBER);
 
         String bonusNumber = Console.readLine();
+
+        System.out.println("");
         return bonusNumber;
     }
 }
