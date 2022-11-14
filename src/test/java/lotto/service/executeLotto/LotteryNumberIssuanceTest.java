@@ -9,17 +9,22 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
 public class LotteryNumberIssuanceTest {
-    @DisplayName("1-45사이 숫자를 가진 6개의 배열 생성 테스트")
+    @DisplayName("입력한 금액만큼 복권을 발급하는지 테스트 1")
     @Test
-    void checkLotteryNumberIssuance() {
+    void issueTest1() {
         LotteryNumbersIssuance issue = new LotteryNumbersIssuance();
-        List<Integer> numbers = issue.issueLotteryNumbers();
-
-        int EXPECTED_SIZE = 6;
-
-        System.out.println(numbers);
-        assertThat(numbers.size()).isEqualTo(EXPECTED_SIZE);
+        List<List<Integer>> numbers = issue.getLotteries(11000);
+        int EXPECTED_RESULT = 11;
+        assertThat(numbers.size()).isEqualTo(EXPECTED_RESULT);
     }
 
-    // TODO: validation 테스트 코드 짜기
+
+    @DisplayName("입력한 금액만큼 복권을 발급하는지 테스트 2")
+    @Test
+    void issueTest2() {
+        LotteryNumbersIssuance issue = new LotteryNumbersIssuance();
+        List<List<Integer>> numbers = issue.getLotteries(5000);
+        int EXPECTED_RESULT = 5;
+        assertThat(numbers.size()).isEqualTo(EXPECTED_RESULT);
+    }
 }
