@@ -1,6 +1,7 @@
 package lotto.Domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -19,5 +20,13 @@ public class LottoPublisher {
         List<Integer> randomLottoNumberList = Randoms.pickUniqueNumbersInRange(LOTTO_RANDOM_RANGE_START, LOTTO_RANDOM_RANGE_END, LOTTO_NUMBER_SIZE);
 
         return randomLottoNumberList;
+    }
+
+    public List<Integer> sortRandomLottoNumber(List<Integer> randomLottoNumberList) {
+        List<Integer> sortedRandomLottoNumberList = new ArrayList<>();
+
+        Collections.sort(randomLottoNumberList);
+
+        return sortedRandomLottoNumberList;
     }
 }
