@@ -9,7 +9,15 @@ public class Yield {
     public Yield(double purchasePrice, double profits) {
         this.purchasePrice = purchasePrice;
         this.profits = profits;
+        if(purchasePrice == 0){
+            yieldRate = 0;
+            return;
+        }
         this.yieldRate = (profits / purchasePrice) * 100;
+    }
+
+    public double getYieldRate(){
+        return yieldRate;
     }
 
     public void printYieldRate() {
