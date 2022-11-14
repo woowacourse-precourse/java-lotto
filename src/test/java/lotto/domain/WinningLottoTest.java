@@ -28,7 +28,7 @@ public class WinningLottoTest {
             // when, then
             assertThatThrownBy(() -> new WinningLotto(lotto, input))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.MONEY_IS_ALLOWED_ONLY_NUMERIC.getMessage());
+                    .hasMessage(ErrorMessage.THIS_INPUT_ALLOW_NUMBER.getMessage());
         }
 
         @Test

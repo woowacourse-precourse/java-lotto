@@ -30,7 +30,7 @@ public class WinningLotto {
 
     private void validateStringIsNumeric(String userInput) {
         if (!Pattern.matches(RegularExpression.ONLY_NUMBER.getRegex(), userInput)) {
-            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ALLOWED_ONLY_NUMERIC.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.THIS_INPUT_ALLOW_NUMBER.getMessage());
         }
     }
 
