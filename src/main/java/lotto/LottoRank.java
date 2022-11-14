@@ -15,4 +15,12 @@ public enum LottoRank {
 
 	}
 
+	public int getWinnerPrize() {
+		return winnerPrize;
+	}
+
+	public int getSameNumber() {
+		return sameNumber;
+	}
+
 }
