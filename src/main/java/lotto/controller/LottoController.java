@@ -18,7 +18,8 @@ public class LottoController {
 
     private static LottoResult getResult(BuyLottoList buyLottoList, LottoWithBonus lottoWithBonus) {
         LottoJudge lottoJudge = new LottoJudge(buyLottoList, lottoWithBonus);
-        return new LottoResult(lottoJudge.getValue());
+        LottoResult lottoResult = lottoJudge.getLottoResult();
+        return lottoResult;
     }
 
     public void run() {

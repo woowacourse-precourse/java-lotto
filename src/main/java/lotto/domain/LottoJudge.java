@@ -1,43 +1,39 @@
 package lotto.domain;
 
+import static lotto.domain.LottoReference.FIVE;
 import static lotto.domain.LottoReference.NOPE;
 
 import java.util.HashMap;
 import java.util.Map;
 import lotto.domain.vo.BuyLottoList;
 import lotto.domain.vo.Lotto;
+import lotto.domain.vo.LottoResult;
 import lotto.domain.vo.LottoWithBonus;
 
 public class LottoJudge {
 
-    private Map<LottoReference, Integer> lottoResult;
+    private LottoResult lottoResult;
 
     public LottoJudge(BuyLottoList buyLottoList, LottoWithBonus lottoWithBonus) {
         this.lottoResult = calculateResult(buyLottoList, lottoWithBonus);
     }
 
-    public Map<LottoReference, Integer> getValue() {
+    public LottoResult getLottoResult() {
         return this.lottoResult;
     }
 
-    private Map<LottoReference, Integer> calculateResult(BuyLottoList lottoMachine,
-            LottoWithBonus lottoWithBonus) {
+    private LottoResult calculateResult(BuyLottoList lottoMachine, LottoWithBonus lottoWithBonus) {
         Map<LottoReference, Integer> result = new HashMap<>();
-        Lotto myLotto = lottoWithBonus.getLotto();
 
         for (Lotto haveLotto : lottoMachine.getBuyLottoList()) {
-            int count = isContains(haveLotto, myLotto);
-            LottoReference lottoReference = NOPE;
-            if (count == 5) {
-                lottoReference = checkBonus(haveLotto, lottoWithBonus);
+            int count = getContainsCount(haveLotto, lottoWithBonus.getLotto());
+            LottoReference reference = LottoReference.hasCorrectCount(count);
+            if (reference == FIVE) {
+                reference = checkBonus(haveLotto, lottoWithBonus);
             }
-            if (count != 5) {
-                lottoReference = LottoReference.hasCorrectCount(count);
-            }
-            result.put(lottoReference,
-                    result.getOrDefault(lottoReference, 0) + 1);
+            result.put(reference, result.getOrDefault(reference, 0) + 1);
         }
-        return result;
+        return new LottoResult(result);
     }
 
     private LottoReference checkBonus(Lotto haveLotto, LottoWithBonus lottoWithBonus) {
@@ -47,7 +43,7 @@ public class LottoJudge {
         return LottoReference.FIVE;
     }
 
-    private int isContains(Lotto haveLotto, Lotto myLotto) {
+    private int getContainsCount(Lotto haveLotto, Lotto myLotto) {
         int count = 0;
         for (Integer number : myLotto.getLottoNumbers()) {
             if (haveLotto.getLottoNumbers().contains(number)) {

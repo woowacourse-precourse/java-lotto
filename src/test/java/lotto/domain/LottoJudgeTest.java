@@ -28,7 +28,6 @@ class LottoJudgeTest {
         BuyLottoList buyLottoList = new BuyLottoList(buyList);
 
         LottoJudge lottoJudge = new LottoJudge(buyLottoList, lottoWithBonus);
-        System.out.println(lottoJudge.getValue());
-        assertThat(lottoJudge.getValue().toString()).isEqualTo("{" + result + "=1}");
+        assertThat(lottoJudge.getLottoResult().toString()).isEqualTo("{" + result + "=1}");
     }
 }

@@ -1,9 +1,10 @@
 package lotto.domain.vo;
 
+import java.util.HashMap;
 import java.util.Map;
 import lotto.domain.LottoReference;
 
-public class LottoResult {
+public class LottoResult{
 
     private Map<LottoReference, Integer> lottoResult;
 
@@ -13,5 +14,11 @@ public class LottoResult {
 
     public Map<LottoReference, Integer> getValue() {
         return this.lottoResult;
+    }
+
+    @Override
+    public String toString() {
+
+        return lottoResult.toString();
     }
 }
