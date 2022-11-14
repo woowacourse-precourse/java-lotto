@@ -7,7 +7,6 @@ import lotto.domain.rank.Rank;
 import lotto.domain.rank.RankInfo;
 import lotto.domain.user.User;
 import lotto.service.RankService;
-import lotto.view.RankingView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +16,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ProfitTest {
-    RankingView rankingView = new RankingView();
-    RankService rankService = new RankService();
-    RankController rankController = new RankController(rankService, rankingView);
+
+    LottoConfig lottoConfig = new LottoConfig();
+    RankService rankService = lottoConfig.rankService();
+    RankController rankController = lottoConfig.rankController();
 
     @Test
     @DisplayName("수익률 계산 테스트")
