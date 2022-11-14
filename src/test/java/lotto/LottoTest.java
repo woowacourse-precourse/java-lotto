@@ -63,6 +63,12 @@ class LottoTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 번호가 45보다 클때 예외 발생")
+    @Test
+    void 예외_테스트5() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, -1, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Override
     public void runMain() {
