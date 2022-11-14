@@ -12,9 +12,17 @@ public class RandomLottoSystem {
     private static final Integer COUNT = 6;
 
     private final IoSystem io;
+    private final Money purchaseLottoMoney;
 
     public RandomLottoSystem(IoSystem ioSystem) {
         this.io = ioSystem;
+        this.purchaseLottoMoney = this.inputMoneyByUser();
+    }
+
+    private Money inputMoneyByUser() {
+        io.println("구입금액을 입력해 주세요.");
+        var money = Money.generatePurchaseLottoMoney(io.input());
+        return money;
     }
 
     private List<List<Integer>> generateRandomNumbers(final Long repeatCount) {
@@ -26,15 +34,20 @@ public class RandomLottoSystem {
         return numbers;
     }
 
-    public LottoBundle generateLottoBundle(Money money) {
-        var numbers = this.generateRandomNumbers(money.calculateAvailablePurchaseCount());
+    public LottoBundle generateLottoBundle() {
+        var purchaseCount = purchaseLottoMoney.calculateAvailablePurchaseCount();
+        var numbers = this.generateRandomNumbers(purchaseCount);
 
-        io.println(numbers.size() + "개를 구매했습니다.");
         var lottoBundle = new LottoBundle(numbers);
 
+        io.println(purchaseCount + "개를 구매했습니다.");
         io.println(lottoBundle.listUpLotto());
 
         return lottoBundle;
+    }
+
+    public Money getPurchaseLottoMoney() {
+        return this.purchaseLottoMoney;
     }
 
 }

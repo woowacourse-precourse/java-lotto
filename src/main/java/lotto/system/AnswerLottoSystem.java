@@ -18,10 +18,11 @@ public class AnswerLottoSystem {
 
     public AnswerLotto generateAnswerLotto() {
         io.printBeforeNextLine("당첨 번호를 입력해 주세요.");
-
+        io.println("");
         var lottoInput = io.input();
 
         io.printBeforeNextLine("보너스 번호를 입력해 주세요");
+        io.println("");
 
         var bonusInput = io.input();
 

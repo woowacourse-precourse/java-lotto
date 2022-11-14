@@ -15,7 +15,7 @@ public class SettlementSystem {
         this.io = ioSystem;
     }
 
-    public void calculateProfits(Money money) {
+    public void printCalculateProfits(Money money) {
         var profits = Money.generateMoney(0L);
 
         for (var rankAdnCount : settlement.entrySet()) {
@@ -37,7 +37,7 @@ public class SettlementSystem {
         }
     }
 
-    public void result(LottoBundle lottoBundle, AnswerLotto answerLotto) {
+    public void printSettlementResult(LottoBundle lottoBundle, AnswerLotto answerLotto) {
         this.startRaffle(lottoBundle, answerLotto);
 
         StringBuilder stringBuilder = new StringBuilder();
