@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -108,6 +109,10 @@ public class Lotto {
         }
 
         return String.format("%.1f", (double) totalPrize / totalPayment);
+    }
+
+    public String inputTotalPayment() {
+        return Console.readLine();
     }
 
 }
