@@ -12,6 +12,7 @@ public class InputView {
     static final String EMPTY_VALUE_ERROR_MESSAGE = ValidationErrorMessage.EMPTY_VALUE.getErrorMessage();
     static final String NOT_NUMBER_ERROR_MESSAGE = ValidationErrorMessage.NOT_NUMBER.getErrorMessage();
     static final String WINNING_NUMBER_REQUEST = InputGuidePhrase.WINNING_NUMBER_REQUEST.getText();
+    static final String BONUS_NUMBER_REQUEST = InputGuidePhrase.BONUS_NUMBER_REQUEST.getText();
     static final String EMPTY_VALUE_IN_WINNING_NUMBER = ValidationErrorMessage.EMPTY_VALUE_IN_WINNING_NUMBER.getErrorMessage();
     static final String WINNING_NUMBER_DELIMITER = ",";
 
@@ -64,5 +65,12 @@ public class InputView {
         return Arrays.stream(input.split(WINNING_NUMBER_DELIMITER))
                 .map(String::trim)
                 .collect(Collectors.toList());
+    }
+
+    public static int takeBonusNumberInput() {
+        System.out.println(BONUS_NUMBER_REQUEST);
+        String input = Console.readLine().trim();
+        validate(input);
+        return Integer.parseInt(input);
     }
 }
