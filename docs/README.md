@@ -32,7 +32,7 @@
 - [ ] 컴퓨터의 수를 생성한다. 
   - [X] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - NumberGenerator#createDifferentRandomNumbers()
   - [X] 1부터 45까지의 임의의 수 1개를 생성한다. - NumberGenerator#createRandomNumber()
-- [ ] 로또 등수를 알 수 있다.
+- [X] 로또 등수를 알 수 있다. - Prize#findPrize()
   - [X] 컴퓨터의 수(6자리)와 플레이어의 수(6자리)를 비교할 수 있다. 
     - [X] 몇 개의 숫자가 일치하는지 알 수 있다. - Lotto#getNumberOfMatch()
     - [X] 특정 자리에 특정 숫자가 있는지 알 수 있다. - Lotto#hasPlace()

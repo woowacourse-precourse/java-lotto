@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import lotto.util.NumberFormator;
 
 public enum Prize {
@@ -17,6 +18,14 @@ public enum Prize {
         this.numberOfMatch = numberOfMatch;
         this.money = money;
         this.hasBonusNumber = hasBonusNumber;
+    }
+
+    public static Prize findPrize(int numberOfMatch, boolean hasBonusNumber) {
+        return Arrays.asList(Prize.values()).stream()
+                .filter(prize -> prize.numberOfMatch == numberOfMatch
+                                         && prize.hasBonusNumber == hasBonusNumber)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("there is no matched Prize"));
     }
 
     public int getMoney() {
