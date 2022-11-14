@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -69,5 +71,11 @@ public class Input {
     boolean divideByThousand(int money) {
         int rem = money % 1000;
         return rem == 0;
+    }
+
+    List<Integer> randomLottoNumber(){
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        //Collections.sort(numbers);
+        return numbers;
     }
 }
