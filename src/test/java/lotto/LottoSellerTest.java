@@ -41,4 +41,14 @@ public class LottoSellerTest {
         tester.showBundle();
         assertThat(out.toString()).isEqualTo("[1, 21, 30, 33, 42, 43]\r\n[5, 7, 8, 15, 23, 43]\r\n");
     }
+
+    @Test
+    void givechangeTest() {
+        LottoSeller tester = new LottoSeller(2687);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        tester.giveChange();
+        assertThat(out.toString()).isEqualTo("잔돈은 687원입니다.\r\n");
+    }
 }
