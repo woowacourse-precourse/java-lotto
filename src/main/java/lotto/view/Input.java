@@ -40,11 +40,13 @@ public class Input {
         return prizeNumbers;
     }
 
-    public static Integer insertBonusNumber() {
+    public static Integer insertBonusNumber(List<Integer> prizeNumbers) {
         System.out.println(BONUSNUMBER_REQUEST);
 
         String bonusNumber = Console.readLine();
         checkNumber(bonusNumber);
+        TotalPrizeNumbers.validateBonusNumber(Integer.valueOf(bonusNumber), prizeNumbers);
+
         return parseInt(bonusNumber);
     }
 

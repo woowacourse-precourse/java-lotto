@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.LottoMachine;
-import lotto.domain.Lottos;
-import lotto.domain.TotalPrizeNumbers;
-import lotto.domain.PurchaseMoney;
+import lotto.domain.*;
 
 import java.util.List;
 
@@ -35,14 +32,10 @@ public class LottoController {
         return lottos;
     }
 
-    private void printLottos(Lottos lottos) {
-        printLottosCount(lottos.getLottosCount());
-        printLottosInfo(lottos);
-    }
 
     private TotalPrizeNumbers createPrizeNumbers() {
         List<Integer> prizeNumbers = insertPrizeNumbers();
-        Integer bonusNumber = insertBonusNumber();
+        Integer bonusNumber = insertBonusNumber(prizeNumbers);
 
         return new TotalPrizeNumbers(prizeNumbers, bonusNumber);
     }
