@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.model.GameDTO;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class ProcessingGameData {
     private GameDTO gameDTO;
@@ -19,7 +20,7 @@ public class ProcessingGameData {
         BigDecimal amount = new BigDecimal(allAmount);
         BigDecimal cost = new BigDecimal(allcost);
         BigDecimal result = amount.divide(cost);
-        gameDTO.setReturnOfRate(result.setScale(1, BigDecimal.ROUND_HALF_UP));
+        gameDTO.setReturnOfRate(result.setScale(1, RoundingMode.HALF_UP));
     }
 
     private void makeAllAmount(GameDTO gameDTO) {
