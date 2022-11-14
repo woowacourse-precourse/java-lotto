@@ -9,8 +9,8 @@
   - [x] 발행된 로또들의 정보를 출력한다. - LottoGenerator#printLottos()
     - [x] 발행된 로또의 정보를 출력한다. - LottoGenerator#printLotto()
 - [x] 당첨 번호와 모든 발행 번호를 비교한다. - Collector#collectRankReults()
-  - [ ] 비교한 등수 결과값을 구한다. - Collector#getRankReults()
-  - [ ] 결과 값들을 다 출력한다. - Collector#printRankReults()
+  - [x] 비교한 등수 결과값을 구한다. - Collector#getRankReults()
+  - [x] 결과 값들을 다 출력한다. - Collector#printRankReults()
 - [ ] 당첨 번호와 자신과 비교한다. - Lotto#compare()
   - [ ] 몇개의 번호가 같은지 구한다. - Lotto#countMatchingNumber()
   - [ ] 보너스 번호와 같은지 비교한다. - Lotto#matchBounsNumber()
@@ -24,9 +24,9 @@
   - [x] 1000원 단위가 아닌 경우 - PurchaseManager#isThousandUnit()
 - [ ] 당첨번호 입력 - WinningNumberVerifier#askWinningNumber()
   - [ ] 입력 포맷이 "숫자,숫자,숫자..."이 아닌 경우 - WinningNumberVerifier#isCorrectFormat()
-  - [ ] 입력 길이가 11이 아닌 경우 - WinningNumberVerifier#isLengthEleven()
+  - [ ] 입력 길이가 11이 아닌 경우
   - [ ] 숫자가 중복되는 경우 - WinningNumberVerifier#isDuplicated()
 - [ ] 보너스 번호 입력 - BonusNumberVerifier#askBonusNumber()
   - [ ] 숫자가 아닌 경우 - BonusNumberVerifier#isDigit()
-  - [ ] 한글자가 아닌 경우 - BonusNumberVerifier#isLengthOne()
+  - [ ] 한글자가 아닌 경우
   - [ ] 당첨번호와 중복되는 경우 - BonusNumberVerifier#isDuplicatedWithWinningNumber()

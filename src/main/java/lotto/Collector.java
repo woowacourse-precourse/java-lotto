@@ -15,7 +15,7 @@ public class Collector {
         BonusNumberVerifier bonusNumberVerifier = new BonusNumberVerifier();
 
         List<Integer> winningNumbers = winningNumberVerifier.askWinningNumber();
-        int bonusNumber = bonusNumberVerifier.askBonusNumber();
+        int bonusNumber = bonusNumberVerifier.askBonusNumber(winningNumbers);
 
         List<Integer> rankResults = getRankResults(winningNumbers, bonusNumber, lottoList);
         printRankResults(rankResults);
