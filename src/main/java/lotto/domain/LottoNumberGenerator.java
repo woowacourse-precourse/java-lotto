@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,6 @@ public class LottoNumberGenerator {
             LottoNumberRule.LOTTO_MINIMUM_NUMBER.getValue(),
             LottoNumberRule.LOTTO_MAXIMUM_NUMBER.getValue(),
             LottoNumberRule.LOTTO_RANGE_SIZE.getValue()));
-	return new Lotto(randomNumbers);
+        return new Lotto(randomNumbers);
     }
 }

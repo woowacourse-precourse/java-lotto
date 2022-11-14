@@ -1,9 +1,6 @@
 package lotto.view;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import lotto.dto.LottoStatsDTO;
 import lotto.dto.LottoTicketDTO;
 
@@ -13,12 +10,13 @@ public class OutputView {
     }
 
     public static void printPaidLotto(Integer lottoCount, LottoTicketDTO lottoTicketDTO) {
-        System.out.printf(OutputMessage.INFO_LOTTO_COUNT.getValue(), lottoCount / LottoNumberRule.LOTTO_PRICE.getValue());
+        System.out.printf(OutputMessage.INFO_LOTTO_COUNT.getValue(),
+            lottoCount / LottoNumberRule.LOTTO_PRICE.getValue());
         printLottoNumbers(lottoTicketDTO);
     }
 
     private static void printLottoNumbers(LottoTicketDTO paidLotto) {
-        for (List<Integer> lottoNumber: paidLotto.getLottoTicket()) {
+        for (List<Integer> lottoNumber : paidLotto.getLottoTicket()) {
             System.out.println(lottoNumber);
         }
     }

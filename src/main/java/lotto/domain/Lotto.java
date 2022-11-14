@@ -23,7 +23,7 @@ public class Lotto {
     }
 
     private void validateRange(List<Integer> lottoNumbers) {
-        for (Integer lottoNumber: lottoNumbers) {
+        for (Integer lottoNumber : lottoNumbers) {
             checkInRange(lottoNumber);
         }
     }

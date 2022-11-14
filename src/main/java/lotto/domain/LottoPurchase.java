@@ -2,7 +2,6 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import lotto.dto.LottoStatsDTO;
 
 public class LottoPurchase {
@@ -11,21 +10,13 @@ public class LottoPurchase {
     private double yield = 0;
 
     public LottoPurchase(List<Lotto> lottery) {
-	this.lottery = lottery;
+        this.lottery = lottery;
     }
 
     public void compareNumberByWinning(WinningLotto winningLotto) {
-        for (Lotto lotto: lottery) {
+        for (Lotto lotto : lottery) {
             compareRankByNumber(winningLotto, lotto);
         }
-    }
-
-    public void calculateYieldPercent() {
-        double revenue = 0;
-        for (Integer index = 0; index < rankCounts.size(); ++index) {
-            revenue += WinningPrize.of(index).getRevenue(rankCounts.get(index));
-        }
-        yield = (double)(Math.round(revenue / lottery.size())) / 10;
     }
 
     private void compareRankByNumber(WinningLotto winningLotto, Lotto lotto) {
@@ -40,8 +31,16 @@ public class LottoPurchase {
         }
     }
 
+    public void calculateYieldPercent() {
+        double revenue = 0;
+        for (Integer index = 0; index < rankCounts.size(); ++index) {
+            revenue += WinningPrize.of(index).getRevenue(rankCounts.get(index));
+        }
+        yield = (double)(Math.round(revenue / lottery.size())) / 10;
+    }
+
     public List<Lotto> getLottery() {
-	return lottery;
+        return lottery;
     }
 
     public LottoStatsDTO getLottoStatsDTO() {

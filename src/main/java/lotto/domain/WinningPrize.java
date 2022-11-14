@@ -17,14 +17,6 @@ public enum WinningPrize {
         this.distribution = distribution;
     }
 
-    public int getRank() {
-        return rank;
-    }
-
-    public double getDistribution() {
-        return distribution;
-    }
-
     public static WinningPrize of(int index) {
         return WINNING_PRIZES[index];
     }
@@ -36,6 +28,15 @@ public enum WinningPrize {
         return WINNING_PRIZES[matchScore - LottoNumberRule.MINIMUM_NUMBER_MATCH.getValue()]
             .getRank();
     }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public double getDistribution() {
+        return distribution;
+    }
+
     public double getRevenue(int rankCount) {
         return getDistribution() * rankCount;
     }

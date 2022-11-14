@@ -6,11 +6,11 @@ public enum LottoNumberRule {
 
     private final int value;
 
-    LottoNumberRule (int value) {
-	this.value = value;
+    LottoNumberRule(int value) {
+        this.value = value;
     }
 
     public int getValue() {
-	return value;
+        return value;
     }
 }

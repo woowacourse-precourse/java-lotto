@@ -11,14 +11,14 @@ public enum OutputLottoResult {
     private final String outputMessage;
 
     OutputLottoResult(String outputMessage) {
-	this.outputMessage = outputMessage;
-    }
-
-    public String getValue() {
-	return outputMessage;
+        this.outputMessage = outputMessage;
     }
 
     public static OutputLottoResult of(int index) {
-	return OUTPUT_LOTTO_RESULTS[index];
+        return OUTPUT_LOTTO_RESULTS[index];
+    }
+
+    public String getValue() {
+        return outputMessage;
     }
 }

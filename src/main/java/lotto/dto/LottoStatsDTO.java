@@ -7,14 +7,15 @@ public class LottoStatsDTO {
     private final double yieldPercent;
 
     public LottoStatsDTO(List<Integer> rankCounts, double yieldPercent) {
-	this.rankCounts = rankCounts;
-	this.yieldPercent = yieldPercent;
+        this.rankCounts = rankCounts;
+        this.yieldPercent = yieldPercent;
     }
 
     public List<Integer> getRankCounts() {
-	return rankCounts;
+        return rankCounts;
     }
+
     public double getYieldPercent() {
-	return yieldPercent;
+        return yieldPercent;
     }
 }

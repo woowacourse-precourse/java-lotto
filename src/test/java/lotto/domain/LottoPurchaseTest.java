@@ -4,13 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class LottoPurchaseTest {
     private static final WinningLotto winningLotto = new WinningLotto(
-        new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6))),7);
+        new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6))), 7);
 
     @Test
     void 로또_3등_5등_당첨_통계_테스트() {

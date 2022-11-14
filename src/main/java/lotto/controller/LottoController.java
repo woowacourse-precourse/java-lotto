@@ -1,8 +1,6 @@
 package lotto.controller;
 
 import java.util.List;
-
-import lotto.domain.Lotto;
 import lotto.dto.LottoStatsDTO;
 import lotto.dto.LottoTicketDTO;
 import lotto.service.LottoService;
@@ -13,13 +11,13 @@ public class LottoController {
     private final LottoService lottoService;
 
     public LottoController(LottoService lottoService) {
-	this.lottoService = lottoService;
+        this.lottoService = lottoService;
     }
 
     public void run() {
-        try{
+        try {
             start();
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }

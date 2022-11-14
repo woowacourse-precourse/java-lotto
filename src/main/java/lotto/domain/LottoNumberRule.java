@@ -10,10 +10,10 @@ public enum LottoNumberRule {
     private final int lottoNumberRule;
 
     LottoNumberRule(int lottoNumberRule) {
-	this.lottoNumberRule = lottoNumberRule;
+        this.lottoNumberRule = lottoNumberRule;
     }
 
     public int getValue() {
-	return lottoNumberRule;
+        return lottoNumberRule;
     }
 }

@@ -11,10 +11,10 @@ public enum OutputMessage {
     private final String outputMessage;
 
     OutputMessage(String outputMessage) {
-	this.outputMessage = outputMessage;
+        this.outputMessage = outputMessage;
     }
 
     public String getValue() {
-	return outputMessage;
+        return outputMessage;
     }
 }

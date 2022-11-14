@@ -2,60 +2,60 @@ package lotto.domain;
 
 import java.util.List;
 
-public class WinningLotto{
+public class WinningLotto {
     private final Lotto winningLottoNumber;
     private final Integer bonusNumber;
 
     public WinningLotto(Lotto winningLottoNumber, Integer bonusNumber) {
-	validateBonusNumber(bonusNumber);
-	validateBonusNumberDuplicate(winningLottoNumber, bonusNumber);
-	this.winningLottoNumber = winningLottoNumber;
-	this.bonusNumber = bonusNumber;
+        validateBonusNumber(bonusNumber);
+        validateBonusNumberDuplicate(winningLottoNumber, bonusNumber);
+        this.winningLottoNumber = winningLottoNumber;
+        this.bonusNumber = bonusNumber;
     }
 
     private void validateBonusNumber(Integer bonusNumber) {
-	if (bonusNumber < LottoNumberRule.LOTTO_MINIMUM_NUMBER.getValue()
-	    || bonusNumber > LottoNumberRule.LOTTO_MAXIMUM_NUMBER.getValue()) {
-	    throw new IllegalArgumentException(ErrorMessage.ERROR_NUMBER_RANGE.getValue());
-	}
+        if (bonusNumber < LottoNumberRule.LOTTO_MINIMUM_NUMBER.getValue()
+            || bonusNumber > LottoNumberRule.LOTTO_MAXIMUM_NUMBER.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NUMBER_RANGE.getValue());
+        }
     }
 
     private void validateBonusNumberDuplicate(Lotto winningLottoNumber, Integer bonusNumber) {
-	if (winningLottoNumber.getLottoNumbers().contains(bonusNumber)) {
-	    throw new IllegalArgumentException(ErrorMessage.ERROR_NUMBER_DUPLICATE.getValue());
-	}
+        if (winningLottoNumber.getLottoNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NUMBER_DUPLICATE.getValue());
+        }
     }
 
     public Integer compareWinningLotto(Lotto lottoNumbers) {
-	int matchScore = 0;
-	for (Integer lottoNumber: lottoNumbers.getLottoNumbers()) {
-	    matchScore += isContainWinningNumber(lottoNumber);
-	    matchScore += isContainBonusNumber(lottoNumber);
-	}
-	if (matchScore == LottoNumberRule.MAXIMUM_NUMBER_MATCH.getValue()) {
-	    matchScore += isNotContainBonusNumber(lottoNumbers.getLottoNumbers());
-	}
-	return matchScore;
+        int matchScore = 0;
+        for (Integer lottoNumber : lottoNumbers.getLottoNumbers()) {
+            matchScore += isContainWinningNumber(lottoNumber);
+            matchScore += isContainBonusNumber(lottoNumber);
+        }
+        if (matchScore == LottoNumberRule.MAXIMUM_NUMBER_MATCH.getValue()) {
+            matchScore += isNotContainBonusNumber(lottoNumbers.getLottoNumbers());
+        }
+        return matchScore;
     }
 
     private int isContainWinningNumber(Integer lottoNumber) {
-	if (winningLottoNumber.getLottoNumbers().contains(lottoNumber)) {
-	    return 1;
-	}
-	return 0;
+        if (winningLottoNumber.getLottoNumbers().contains(lottoNumber)) {
+            return 1;
+        }
+        return 0;
     }
 
     private int isContainBonusNumber(Integer lottoNumber) {
-	if (lottoNumber == bonusNumber) {
-	    return 1;
-	}
-	return 0;
+        if (lottoNumber == bonusNumber) {
+            return 1;
+        }
+        return 0;
     }
 
     private int isNotContainBonusNumber(List<Integer> lottoNumbers) {
-	if (!lottoNumbers.contains(bonusNumber)) {
-	    return 1;
-	}
-	return 0;
+        if (!lottoNumbers.contains(bonusNumber)) {
+            return 1;
+        }
+        return 0;
     }
 }
