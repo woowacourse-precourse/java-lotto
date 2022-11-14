@@ -29,6 +29,8 @@ public class InputView {
 
         validateWinningNumbers(splitInput);
 
+        System.out.println();
+
         return splitInput;
     }
 
@@ -37,6 +39,8 @@ public class InputView {
         String userInput = SCANNER.nextLine();
 
         validateInteger(userInput);
+
+        System.out.println();
 
         return Integer.valueOf(userInput);
     }
