@@ -20,7 +20,6 @@ public class LottoController {
     private View view;
 
     public LottoController() {
-        view = new View();
         try {
             init();
             read();
