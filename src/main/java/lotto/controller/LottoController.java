@@ -23,7 +23,9 @@ public class LottoController {
     }
 
     public static void sortAscendingOrder(List<Integer> numbers) {
-        Collections.sort(numbers);
+        List<Integer> tempList = new ArrayList<>(numbers);
+        Collections.sort(tempList);
+        numbers = tempList;
     }
 
     public static void generateMyLottoList(MyLottoList myLottoList) {
