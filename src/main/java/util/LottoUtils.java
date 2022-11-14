@@ -57,8 +57,10 @@ public class LottoUtils {
         return money.getMoney() / LOTTO_PRICE;
     }
 
-    private static void printLottoNumbers(List<Lotto> lottos) {
-        lottos.forEach(System.out::println);
+    public static void printLottoNumbers(List<Lotto> lottos) {
+        lottos.forEach(lotto -> {
+            System.out.println(lotto.getLottoNumbers().toString());
+        });
     }
 
     public static void printTotalProfitMessage(String percent) {
