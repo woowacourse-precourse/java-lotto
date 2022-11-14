@@ -10,8 +10,7 @@ import lotto.domain.Lotto;
 
 public class NumberGenerator {
 
-    private static List<Lotto> lottoGroup = new ArrayList<>();
-
+    private final List<Lotto> lottoGroup = new ArrayList<>();
     public enum LottoNumber {
         START(1), END(45), SIZE(6);
         private final Integer value;
@@ -26,17 +25,18 @@ public class NumberGenerator {
 
     }
 
-    public static void generateLotto(int count) {
+    public List<Lotto> generateLotto(int count) {
         for (int i = 0; i <count; i++){
-            Lotto lotto = new Lotto(generateByRandom());
+            Lotto lotto = generateByRandom();
             lottoGroup.add(lotto);
         }
-        System.out.println();
+        return lottoGroup;
     }
 
-    private static List<Integer> generateByRandom() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoNumber.START.getValue(), LottoNumber.END.getValue(), LottoNumber.SIZE.getValue());
-        Collections.sort(numbers);
-        return numbers;
+    private Lotto  generateByRandom() {
+        List<Integer> randomNumbers = new ArrayList<>();
+        randomNumbers = Randoms.pickUniqueNumbersInRange(LottoNumber.START.getValue(), LottoNumber.END.getValue(), LottoNumber.SIZE.getValue());
+        Collections.sort(randomNumbers);
+        return new Lotto(randomNumbers);
     }
 }

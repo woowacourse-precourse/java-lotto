@@ -1,6 +1,8 @@
 package lotto.view;
 
+import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoGroup;
 
 
 public class outputView {
@@ -16,5 +18,11 @@ public class outputView {
             return value;
         }
 
+    }
+
+    public static void printLottoGroup(LottoGroup lottos) {
+        lottos.getLottoGroup().stream()
+                .forEach(lotto -> System.out.println(lotto.getLotto().toString()));
+        System.out.println();
     }
 }

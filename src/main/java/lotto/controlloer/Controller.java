@@ -1,7 +1,12 @@
 package lotto.controlloer;
 
 import static lotto.view.InputView.*;
+import static lotto.view.outputView.printLottoGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+import lotto.domain.Lotto;
+import lotto.domain.LottoGroup;
 import lotto.domain.NumberGenerator;
 
 public class Controller {
@@ -12,7 +17,9 @@ public class Controller {
     }
 
     private void buyLotto(){
-        NumberGenerator.generateLotto(getNumberOfLotto(inputMoney()));
+        NumberGenerator lottogenerator = new NumberGenerator();
+        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(getNumberOfLotto(inputMoney())));
+        printLottoGroup(lottoGroup);
     }
 
     private void getAnswerLotto(){

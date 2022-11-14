@@ -5,8 +5,8 @@ import java.util.List;
 public class LottoGroup {
     private List<Lotto> lottoGroup;
 
-    public LottoGroup(List<Lotto> lottos) {
-        this.lottoGroup = lottos;
+    public LottoGroup(List<Lotto> lottoGroup) {
+        this.lottoGroup = lottoGroup;
     }
 
     public List<Lotto> getLottoGroup() {
