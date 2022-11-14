@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.LuckyNumber;
 import lotto.message.ErrorMessage;
 import lotto.repository.LottoRepository;
 import lotto.service.LottoService;
@@ -15,6 +16,7 @@ import java.io.InputStream;
 import java.util.HashSet;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -22,6 +24,11 @@ public class LottoServiceTest {
 
     private LottoService lottoService;
     private LottoRepository lottoRepository;
+
+    void provideInput(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+    }
 
     @BeforeEach
     void init() {
@@ -46,90 +53,34 @@ public class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("입력된 돈이 숫자가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
-    void getMoney_About_Numeric_Test() {
-        String input = "abc";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        assertThatThrownBy(() -> lottoService.getMoney())
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.MONEY_TYPE_ERROR.getErrorMessage());
+    @DisplayName("당첨번호와 보너스 번호를 입력받으면 LuckyNumber 객체에 정상적으로 담긴다.")
+    void pickLuckyNumberTest() {
+        //given
+        provideInput("1,2,3,4,5,6\n7");
+        //when
+        LuckyNumber luckyNumber = lottoService.pickLuckyNumber();
+        HashSet<Integer> winningNumbers = luckyNumber.getWinningNumbers();
+        int bonusNumber = luckyNumber.getBonusNumber();
+        //then
+        assertThat(winningNumbers).containsExactly(1,2,3,4,5,6);
+        assertThat(bonusNumber).isEqualTo(7);
     }
 
     @Test
-    @DisplayName("입력된 돈이 1000원 단위가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
-    void getMoney_About_Correct_Unit_Test() {
-        String input = "5100";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        assertThatThrownBy(() -> lottoService.getMoney())
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.MONEY_UNIT_ERROR.getErrorMessage());
+    @DisplayName("당첨번호 및 보너스 번호와 로또가 일치하는 갯수가 정상적으로 반환된다.")
+    void calculate_Winning_And_Bonus_Count_Test() {
+        //given
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        LuckyNumber luckyNumber = new LuckyNumber(new HashSet<>(List.of(1,2,3,4,5,45)), 6);
+        //when
+        int winningCount = lottoService.calculateWinningCount(lotto.getLottoNumbers(), luckyNumber);
+        int bonusCount = lottoService.calculateBonusCount(lotto.getLottoNumbers(), luckyNumber);
+        //then
+        assertThat(winningCount).isEqualTo(5);
+        assertThat(bonusCount).isEqualTo(1);
     }
 
-    @Test
-    @DisplayName("당첨번호가 6자리가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
-    void checkWinningNumber_About_Digit_Test() {
-        String winningNumberInput = "1,3,5,6,7";
-        assertThatThrownBy(() -> lottoService.checkWinningNumberInput(winningNumberInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.WINNING_NUMBER_DIGIT_ERROR.getErrorMessage());
-    }
 
-    @Test
-    @DisplayName("당첨번호가 숫자가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
-    void checkWinningNumber_About_Numeric_Test() {
-        String winningNumberInput = "a,b,c,d,e,f";
-        assertThatThrownBy(() -> lottoService.checkWinningNumberInput(winningNumberInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.WINNING_NUMBER_TYPE_ERROR.getErrorMessage());
-    }
 
-    @Test
-    @DisplayName("당첨번호들 가운데 1~45 숫자가 아닌 경우가 존재할 때 관련된 메세지를 담은 예외를 발생시킨다.")
-    void checkWinningNumber_About_Boundary_Test() {
-        String winningNumberInput = "47,1,2,3,4,5";
-        assertThatThrownBy(() -> lottoService.checkWinningNumberInput(winningNumberInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.WINNING_NUMBER_BOUNDARY_ERROR.getErrorMessage());
-    }
 
-    @Test
-    @DisplayName("당첨번호들 가운데 서로 중복된 숫자가 있을 시 관련된 메세지를 담은 예외를 발생시킨다.")
-    void checkWinningNumber_About_Duplicated_Test() {
-        String winningNumberInput = "3,3,1,2,4,5";
-        assertThatThrownBy(() -> lottoService.checkWinningNumberInput(winningNumberInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.WINNING_NUMBER_DUPLICATED_ERROR.getErrorMessage());
-    }
-
-    @Test
-    @DisplayName("보너스 번호가 숫자가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
-    void check_BonusNumber_About_Numeric_Test() {
-        String bonusNumber = "a";
-        HashSet<Integer> winningNumbers = new HashSet<>();
-        assertThatThrownBy(() -> lottoService.checkBonusNumberInput(bonusNumber, winningNumbers))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.BONUS_NUMBER_TYPE_ERROR.getErrorMessage());
-    }
-
-    @Test
-    @DisplayName("보너스 번호가 1~45 사이의 숫자가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
-    void check_BonusNumber_About_Boundary_Test() {
-        String bonusNumber = "47";
-        HashSet<Integer> winningNumbers = new HashSet<>();
-        assertThatThrownBy(() -> lottoService.checkBonusNumberInput(bonusNumber, winningNumbers))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.BONUS_NUMBER_BOUNDARY_ERROR.getErrorMessage());
-    }
-
-    @Test
-    @DisplayName("보너스 번호가 당첨번호와 중복될 시 관련된 메세지를 담은 예외를 발생시킨다.")
-    void check_BonusNumber_About_Duplicated_Test() {
-        String bonusNumber = "1";
-        HashSet<Integer> winningNumbers = new HashSet<>(List.of(1,2,3,4,5,6));
-        assertThatThrownBy(() -> lottoService.checkBonusNumberInput(bonusNumber, winningNumbers))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.BONUS_NUMBER_DUPLICATED_ERROR.getErrorMessage());
-    }
 }
