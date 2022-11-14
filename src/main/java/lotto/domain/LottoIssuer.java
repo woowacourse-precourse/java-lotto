@@ -13,6 +13,7 @@ public enum LottoIssuer {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.NUMBER_SIZE);
         return new Lotto(numbers);
     }
+
     public static List<Lotto> issue(int money) {
         List<Lotto> lotteries = new ArrayList<>();
 
@@ -24,6 +25,7 @@ public enum LottoIssuer {
 
         return lotteries;
     }
+
     private static int countPurchasedLotto(int money) {
         return money / MONEY_UNIT;
     }
