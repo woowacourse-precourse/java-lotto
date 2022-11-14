@@ -18,6 +18,8 @@ public class Player {
     private void validate(List<Integer> numbers, int bonusNumber) {
         checkSize(numbers);
         checkDuplicate(numbers);
+        numbers.forEach(this::checkRange);
+        checkRange(bonusNumber);
     }
 
     private void checkSize(List<Integer> numbers) {
@@ -30,6 +32,12 @@ public class Player {
         Set<Integer> check = new HashSet<>(numbers);
 
         if (check.size() != numbers.size()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkRange(int number) {
+        if (number < 1 || number > 45) {
             throw new IllegalArgumentException();
         }
     }
