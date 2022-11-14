@@ -1,7 +1,6 @@
 package lotto.Lotto;
 
 import lotto.LottoNumberValidator;
-import lotto.Message;
 
 import java.util.*;
 
