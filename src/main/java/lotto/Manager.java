@@ -2,12 +2,14 @@ package lotto;
 
 import java.util.*;
 import lotto.Lotto;
+import lotto.Constants;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Manager {
     public final int LOTTO_MIN = 1;
     public final int LOTTO_MAX = 45;
     public final int LOTTO_LENGTH = 6;
+    public final int RANK_LENGTH = 6;
 
     public final String INPUT_MONEY = "구입금액을 입력해 주세요.";
     public final String PURCHASE_MENT = "개를 구매했습니다.";
@@ -68,9 +70,20 @@ public class Manager {
         }
         return match;
     }
-    public void calculateResult(List<Lotto> lottos, List<Integer> winning, int bonus){
+    public int[] calculateResult(List<Lotto> lottos, List<Integer> winning, int bonus){
+        int[] frequency = new int[RANK_LENGTH];
+        for(int freq : frequency)
+            freq = 0;
         for(Lotto lotto : lottos){
-
+            List<Integer> numbers = lotto.getNumbers();
+            int matchCount = getMatchCount(numbers, winning);
+            int bonusCount = 0;
+            if(matchCount == 5 && numbers.contains(bonus)){
+                bonusCount = 1;
+            }
+            Constants res = Constants.calc(matchCount, bonusCount);
+            frequency[res.getRank()] += 1;
         }
+        return frequency;
     }
 }

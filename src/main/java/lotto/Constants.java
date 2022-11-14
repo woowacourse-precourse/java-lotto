@@ -16,18 +16,18 @@ public enum Constants {
         this.rank = rank;
     }
 
-    public Constants calc(int match, int bonus){
+    public static Constants calc(int match, int bonus){
         if(match == 6)
-            return this.FIRST;
+            return FIRST;
         if(match == 5 && bonus == 1)
-            return this.SECOND;
+            return SECOND;
         if(match == 5 && bonus == 0)
-            return this.THIRD;
+            return THIRD;
         if(match == 4)
-            return this.FOURTH;
+            return FOURTH;
         if(match == 3)
-            return this.FIFTH;
-        return this.NONE;
+            return FIFTH;
+        return NONE;
     }
 
     public String getGameResult(){
