@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.inputNumber.InputNumber;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WinningNumberLotto extends Lotto {
 
@@ -12,6 +13,11 @@ public class WinningNumberLotto extends Lotto {
     public WinningNumberLotto() {
         super(InputNumber.createNumber());
         int number = inputBonusNumber();
+        setBonusNumber(number);
+    }
+
+    public WinningNumberLotto(List<Integer> numbers, int number) {
+        super(numbers);
         setBonusNumber(number);
     }
 
