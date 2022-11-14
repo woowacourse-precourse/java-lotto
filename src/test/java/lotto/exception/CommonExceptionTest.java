@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CommonExceptionTest {
@@ -42,5 +43,15 @@ public class CommonExceptionTest {
 
         // when, then
         assertThrows(IllegalArgumentException.class, () -> CommonException.checkNumberRange(number));
+    }
+
+    @Test
+    @DisplayName("1 ~ 45 범위 이내의 값은 에러가 발생하지 않는다.")
+    void checkNumberRange2() {
+        // given
+        int number = 45;
+
+        // when, then
+        assertDoesNotThrow(() -> CommonException.checkNumberRange(number));
     }
 }
