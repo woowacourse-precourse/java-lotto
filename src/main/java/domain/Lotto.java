@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -41,5 +42,16 @@ public class Lotto {
             return 1;
         }
         return 0;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public void printCreatedLotto() {
+        List<Integer> collect = numbers.stream()
+                                       .sorted()
+                                       .collect(Collectors.toList());
+        System.out.println(collect);
     }
 }
