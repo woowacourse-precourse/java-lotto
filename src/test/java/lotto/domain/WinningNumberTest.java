@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -28,7 +27,7 @@ class WinningNumberTest {
 	void winNumsCalculate(String input) {
 		List<Integer> userInput = Arrays.stream(input.split(","))
 			.map(Integer::parseInt).collect(Collectors.toList());
-		Lotto lotto = new Lotto(List.of(6,5,4,12,23,10));
+		Lotto lotto = new Lotto(List.of(6, 5, 4, 12, 23, 10));
 		WinningNumber winningNumber = new WinningNumber(userInput);
 		BonusNumber bonusNumber = new BonusNumber(11, winningNumber.getWinningNumber());
 		LottoRanking lottoRanking = winningNumber.calculateMatchCount(lotto, bonusNumber.getBonusNumber());

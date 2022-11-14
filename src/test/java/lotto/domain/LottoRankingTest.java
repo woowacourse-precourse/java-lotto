@@ -16,7 +16,7 @@ class LottoRankingTest {
 	@DisplayName("")
 	void lottoRankTest(int winCount, boolean matchBonus) {
 		String prizeName = LottoRanking.findLottoRank(winCount, matchBonus).name();
-		Map<Integer, String> prizeMap = new HashMap<>(){{
+		Map<Integer, String> prizeMap = new HashMap<>() {{
 			put(2, "noWin");
 			put(3, "winThree");
 			put(4, "winFour");

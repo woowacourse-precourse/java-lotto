@@ -187,7 +187,7 @@ BUILD SUCCESSFUL in 0s
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
@@ -200,20 +200,20 @@ List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
 ```java
 public class Lotto {
-    private final List<Integer> numbers;
+	private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
+	public Lotto(List<Integer> numbers) {
+		validate(numbers);
+		this.numbers = numbers;
+	}
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
+	private void validate(List<Integer> numbers) {
+		if (numbers.size() != 6) {
+			throw new IllegalArgumentException();
+		}
+	}
 
-    // TODO: 추가 기능 구현
+	// TODO: 추가 기능 구현
 }
 ```
 
