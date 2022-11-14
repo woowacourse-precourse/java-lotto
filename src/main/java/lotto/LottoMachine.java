@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LottoMachine {
     private static final String AMOUNT_IS_NOT_UNDER_1000_MESSAGE = "[ERROR] 로또 구입 금액이 1,000원 미만이 될 수 없습니다.";
     private static final int LOTTO_PER_PRICE = 1000;
@@ -13,6 +16,14 @@ public class LottoMachine {
         validateAmountIsNotUnder1000(money);
         lottoCount = money / LOTTO_PER_PRICE;
         return lottoCount;
+    }
+
+    public List<Lotto> makeLottoTicket() {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < lottoCount; i++) {
+            lottos.add(AutoLottoGenerator.generate());
+        }
+        return lottos;
     }
 
     public int getLottoCount() {

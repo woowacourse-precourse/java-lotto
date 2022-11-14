@@ -5,5 +5,6 @@ public class Application {
         LottoMachine lottoMachine = new LottoMachine();
         lottoMachine.insert(InputView.inputMoney());
         OutputView.printLottoCount(lottoMachine.getLottoCount());
+        lottoMachine.makeLottoTicket();
     }
 }
