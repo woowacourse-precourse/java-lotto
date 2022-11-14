@@ -25,7 +25,7 @@ class LottoTest {
                 .hasMessage("[ERROR] 로또 번호에 중복된 숫자가 존재합니다.");
     }
 
-    @DisplayName("로또가 잘 생성되는지 테스트한다.")
+    @DisplayName("로또가 예외 없이 생성되는지 테스트한다.")
     @Test
     void createLottoForNormalCase() {
         assertThatCode(() -> {
