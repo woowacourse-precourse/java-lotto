@@ -8,11 +8,11 @@ import java.util.stream.Stream;
 import lotto.domain.ErrorMessage;
 
 public class BonusInput {
-    private static int bonusNumber;
     public static String bonusInput;
     public static boolean bonus;
+    private static int bonusNumber;
 
-    public static void bonusNumberInput() {
+    public static void inputBonusNumber() {
         System.out.println(Message.BONUS_NUMBER_INPUT.getMessage());
         bonusInput = readLine();
         validateInputBonusNumber(bonusInput);

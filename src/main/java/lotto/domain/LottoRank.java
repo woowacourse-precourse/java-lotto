@@ -1,7 +1,7 @@
 package lotto.domain;
 
 public enum LottoRank {
-    NONE_MATCHE(0, "", 0),
+    NONE_MATCH(0, "", 0),
     THREE_MATCHES(3, "3개 일치 (5,000원) - ", 5_000),
     FOUR_MATCHES(4, "4개 일치 (50,000원) - ", 50_000),
     FIVE_MATCHES(5, "5개 일치 (1,500,000원) - ", 1_500_000),
@@ -35,6 +35,6 @@ public enum LottoRank {
                 return rank;
             }
         }
-        return NONE_MATCHE;
+        return NONE_MATCH;
     }
 }

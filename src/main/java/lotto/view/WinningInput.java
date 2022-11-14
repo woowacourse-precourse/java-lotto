@@ -12,21 +12,18 @@ import java.util.stream.Stream;
 import lotto.domain.ErrorMessage;
 
 public class WinningInput {
-    private static int[] winningIntArr;
     public static String winningInput;
     public static List<Integer> winningNumbers;
     public static int winningCount;
+    private static int[] winningIntArr;
 
-    public static void winningNumberInput() {
+    public static void inputWinningNumber() {
         System.out.println(Message.WINNING_NUMBER_INPUT.getMessage());
         winningInput = readLine();
-        validateWinningNumber(winningInput);
-        validateWinningNumberSize(winningInput);
-        validateInputBlank(winningInput);
-        validateInputSeparator(winningInput);
+        validateWinningNumberException();
+        System.out.println();
         winningNumberToInt(winningInput);
         winningIntArrToList(winningIntArr);
-        System.out.println();
     }
 
     public static void getWinningResult(List<List<Integer>> lottos, List<Integer> winningNumbers) {
@@ -62,6 +59,12 @@ public class WinningInput {
         }
     }
 
+    private static void validateWinningNumberException() {
+        validateWinningNumberSize(winningInput);
+        validateWinningNumber(winningInput);
+        validateInputSeparator(winningInput);
+    }
+
     private static void validateWinningNumber(String winningInput) {
         Integer[] winningNumberArr = Stream.of(winningInput.split(","))
                 .mapToInt(Integer::parseInt)
@@ -81,17 +84,8 @@ public class WinningInput {
         }
     }
 
-    private static void validateInputBlank(String winningInput) {
-        for (int i = 0; i < winningInput.length(); i++) {
-            if (winningInput.charAt(i) == ' ') {
-                throw new IllegalArgumentException(ErrorMessage.ERROR_BLANK.getErrorMessage());
-            }
-        }
-    }
-
     private static void validateInputSeparator(String winningInput) {
-        String[] separatorCheck = winningInput.split(",");
-        if (separatorCheck.length != 6) {
+        if (!winningInput.contains(",")) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_SEPARATOR.getErrorMessage());
         }
     }

@@ -2,7 +2,6 @@ package lotto;
 
 import static lotto.domain.Lotto.createLotto;
 import static lotto.domain.LottoRank.getRankResult;
-
 import static lotto.view.BonusInput.bonus;
 import static lotto.view.BonusInput.bonusInput;
 import static lotto.view.BonusInput.getBonusResult;
@@ -76,6 +75,6 @@ class LottoTest {
         assertEquals(getRankResult(5, false).getMessage(), LottoRank.FIVE_MATCHES.getMessage());
         assertEquals(getRankResult(4, false).getMessage(), LottoRank.FOUR_MATCHES.getMessage());
         assertEquals(getRankResult(3, true).getMessage(), LottoRank.THREE_MATCHES.getMessage());
-        assertEquals(getRankResult(0, true).getMessage(), LottoRank.NONE_MATCHE.getMessage());
+        assertEquals(getRankResult(0, true).getMessage(), LottoRank.NONE_MATCH.getMessage());
     }
 }

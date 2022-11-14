@@ -21,8 +21,8 @@ public class LottoGame {
     public void start() {
         List<List<Integer>> lottos;
         lottos = purchaseLotto();
-        winningNumberInput();
-        bonusNumberInput();
+        inputWinningNumber();
+        inputBonusNumber();
         validateDuplicate(winningInput, bonusInput);
         getWinningResult(lottos, winningNumbers);
         getBonusResult(lottos);
