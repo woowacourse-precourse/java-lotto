@@ -1,13 +1,15 @@
 package lotto;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public class Pick {
 
   private final int count;
-  private List<List<Integer>> pick_member;
+  private List<List<Integer>> pick_member = new ArrayList<>();
 
   public Pick(int count) {
     this.count = count;
@@ -27,7 +29,7 @@ public class Pick {
   // 중복 숫자 확인
   private boolean repeated(List<Integer> numbers) {
     HashSet<Integer> check_repeat = new HashSet<>(numbers);
-    if (numbers.size() != check_repeat.size()) {
+    if (numbers.size() == check_repeat.size()) {
       return true;
     }
     return false;
