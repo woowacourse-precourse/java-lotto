@@ -1,93 +1,106 @@
 package lotto;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Exception {
 
 
     public void checkPurchaseInput(String str) {
-        if (!isNumberFormat(str)) {
-            throw new IllegalArgumentException(ExceptionType.INVALID_FORMAT.getErrorMsg());
-        }
-
-        if (!isValidPurchaseCost(str)) {
-            throw new IllegalArgumentException(ExceptionType.INVALID_PURCHASE_COST.getErrorMsg());
-        }
+        checkNumberFormat(str);
+        checkValidPurchaseCost(str);
     }
     public void checkWinningNumberInput(String numbers) {
         String[] winningNumbers = numbers.split(",");
 
-        if (!isValidLength(winningNumbers)){
-            throw new IllegalArgumentException(ExceptionType.INVALID_LENGTH.getErrorMsg());
-        }
-
-        if (haveDuplicatedNumber(winningNumbers)) {
-            throw new IllegalArgumentException(ExceptionType.DUPLICATED_NUMBER.getErrorMsg());
-        }
+        checkValidLength(winningNumbers);
+        checkDuplicatedNumber(winningNumbers);
 
         for (String winningNumber : winningNumbers) {
-            if (!isNumberFormat(winningNumber)) {
-                throw new IllegalArgumentException(ExceptionType.INVALID_FORMAT.getErrorMsg());
-            }
-
-            if (!isValidNumberRange(winningNumber)) {
-                throw new IllegalArgumentException(ExceptionType.INVALID_RANGE.getErrorMsg());
-            }
+            checkNumberFormat(winningNumber);
+            checkValidNumberRange(winningNumber);
         }
     }
 
     public void checkBonusNumberInput(String str) {
-        if (!isNumberFormat(str)) {
-            throw new IllegalArgumentException(ExceptionType.INVALID_FORMAT.getErrorMsg());
-        }
+        checkNumberFormat(str);
+        checkValidNumberRange(str);
+    }
 
-        if (!isValidNumberRange(str)) {
-            throw new IllegalArgumentException(ExceptionType.INVALID_RANGE.getErrorMsg());
+    public void checkLottoNumbers(List<Integer> numbers) {
+        String[] lottoNumbers = changeToStrArr(numbers);
+
+        checkValidLength(lottoNumbers);
+        checkDuplicatedNumber(lottoNumbers);
+
+        for (String lottoNumber : lottoNumbers) {
+            checkValidNumberRange(lottoNumber);
         }
     }
 
-    private boolean isNumberFormat(String str) {
+    private void checkNumberFormat(String str) {
         for (int i = 0; i < str.length(); i++) {
             if (!isNumber(str.charAt(i))) {
-                return false;
+                System.out.println(ExceptionType.INVALID_FORMAT.getErrorMsg());
+                throw new IllegalArgumentException(ExceptionType.INVALID_FORMAT.getErrorMsg());
             }
         }
-        return true;
     }
 
     private boolean isNumber(char c) {
         return '0' <= c && c <= '9';
     }
 
-    private boolean isValidPurchaseCost(String str) {
+    private void checkValidPurchaseCost(String str) {
         int cost = Integer.parseInt(str);
 
-        return (cost % 1000) == 0;
+        if ((cost % Lotto.LOTTO_PRICE) != 0) {
+            System.out.println(ExceptionType.INVALID_PURCHASE_COST.getErrorMsg());
+            throw new IllegalArgumentException(ExceptionType.INVALID_PURCHASE_COST.getErrorMsg());
+        }
     }
 
-    private boolean isValidLength(String[] str) {
-        return str.length == Lotto.LOTTO_NUMBER_SIZE;
+    private void checkValidLength(String[] str) {
+        if (str.length != Lotto.LOTTO_NUMBER_SIZE) {
+            System.out.println(ExceptionType.INVALID_LENGTH.getErrorMsg());
+            throw new IllegalArgumentException(ExceptionType.INVALID_LENGTH.getErrorMsg());
+        }
     }
 
-    private boolean haveDuplicatedNumber(String[] winningNumbers) {
+    private void checkDuplicatedNumber(String[] numbers) {
         Set<String> storedNumbers = new HashSet<>();
 
-        for (String winningNumber : winningNumbers) {
+        for (String winningNumber : numbers) {
             if (storedNumbers.contains(winningNumber)) {
-                return true;
+                System.out.println(ExceptionType.DUPLICATED_NUMBER.getErrorMsg());
+                throw new IllegalArgumentException(ExceptionType.DUPLICATED_NUMBER.getErrorMsg());
             }
 
             storedNumbers.add(winningNumber);
         }
-
-        return false;
     }
 
-    private boolean isValidNumberRange(String str) {
+    private void checkValidNumberRange(String str) {
         int number = Integer.parseInt(str);
 
-        return Lotto.MIN_LOTTO_NUMBER <= number && number <= Lotto.MAX_LOTTO_NUMBER;
+        if (!isValidRange(number)) {
+            System.out.println(ExceptionType.INVALID_RANGE.getErrorMsg());
+            throw new IllegalArgumentException(ExceptionType.INVALID_RANGE.getErrorMsg());
+        }
     }
 
+    private String[] changeToStrArr(List<Integer> numbers) {
+        String[] strNumbers = new String[numbers.size()];
+
+        for (int i = 0; i < numbers.size(); i++) {
+            strNumbers[i] = String.valueOf(numbers.get(i));
+        }
+
+        return strNumbers;
+    }
+
+    private static boolean isValidRange(int number) {
+        return Lotto.MIN_LOTTO_NUMBER <= number && number <= Lotto.MAX_LOTTO_NUMBER;
+    }
 }

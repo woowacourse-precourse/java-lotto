@@ -18,7 +18,12 @@ public class LottoService {
 
     private void purchaseLotto() {
         ConsoleMessage.START.printMsg();
-        int lottoCount = player.getLottoCountPurchased();
+        int lottoCount = 0;
+        try {
+            lottoCount = player.getLottoCountPurchased();
+        } catch (IllegalArgumentException e) {
+            purchaseLotto();
+        }
 
         for (int i = 0; i < lottoCount; i++) {
             Lotto lotto = lottoBot.createLotto();
@@ -29,12 +34,20 @@ public class LottoService {
 
     private void selectWinningNumbers() {
         ConsoleMessage.WINNING_NUMBER.printMsg();
-        player.selectWinningNumbers();
+        try {
+            player.selectWinningNumbers();
+        } catch (IllegalArgumentException e) {
+            selectWinningNumbers();
+        }
     }
 
     private void selectBonusNumber() {
         ConsoleMessage.BONUS_NUMBER.printMsg();
-        player.selectBonusNumber();
+        try {
+            player.selectBonusNumber();
+        } catch (IllegalArgumentException e) {
+            selectBonusNumber();
+        }
     }
 
     private void notifyResult() {
