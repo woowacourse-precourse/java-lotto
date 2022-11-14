@@ -3,7 +3,9 @@ package lotto.controller;
 import static lotto.model.Constant.FIFTH_PRIZE;
 import static lotto.model.Constant.FIRST_PRIZE;
 import static lotto.model.Constant.FOURTH_PRIZE;
+import static lotto.model.Constant.MINIMUM_SAME_NUMBER;
 import static lotto.model.Constant.MONEY_UNIT;
+import static lotto.model.Constant.PRIZE_COUNT;
 import static lotto.model.Constant.ROUNDED_NUMBER;
 import static lotto.model.Constant.SECOND_PRIZE;
 import static lotto.model.Constant.THIRD_PRIZE;
@@ -38,13 +40,9 @@ public class LottoGame {
 
     public void purchaseLotto() {
         int userMoney = lottoInputView.getLottoAmount();
-        issueLotto(userMoney);
-        lottoOutputView.printLottoCount(userMoney, lottos);
-    }
-
-    public void issueLotto(int userMoney) {
         int lottoPaperCount = userMoney / 1000;
         makeUserLottos(lottoPaperCount);
+        lottoOutputView.printLottoCount(lottoPaperCount, lottos);
     }
 
     public void makeUserLottos(int lottoPaperCount) {
@@ -75,22 +73,31 @@ public class LottoGame {
     }
 
     public void checkWinningLotto() {
-        List<Integer> winningCount = new ArrayList<>();
+        int[] winningCount = new int[PRIZE_COUNT];
         for (int i = 0; i < lottos.size(); i++) {
             Lotto userLotto = lottos.get(i);
             int sameNumberCount = winningLotto.countSameNumber(userLotto);
-            winningCount.add(sameNumberCount);
+            if(isWinningLotto(sameNumberCount)) {
+                winningCount[sameNumberCount-MINIMUM_SAME_NUMBER]++;
+            }
         }
         double profitPercentage = calculateProfitPercentage(winningCount);
         lottoOutputView.printWinningStatistic(winningCount, profitPercentage);
     }
 
-    public double calculateProfitPercentage(List<Integer> winningCount) {
+    public boolean isWinningLotto(int sameNumberCount) {
+        if(sameNumberCount >= MINIMUM_SAME_NUMBER) {
+            return true;
+        }
+        return false;
+    }
+
+    public double calculateProfitPercentage(int[] winningCount) {
         int purchaseAmount = lottos.size() * MONEY_UNIT;
         int[] prizeMoneys = {FIFTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE};
         int profit = 0;
-        for (int i = 0; i < winningCount.size(); i++) {
-            int rankingCount = winningCount.get(i);
+        for (int i = 0; i < winningCount.length; i++) {
+            int rankingCount = winningCount[i];
             int prizeMoney = prizeMoneys[i];
             profit += (rankingCount * prizeMoney);
         }
