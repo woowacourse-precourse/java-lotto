@@ -1,17 +1,20 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class User {
     private int cost;
     private List<List<Integer>> lottoNumbers;
+    private int first;
+    private int second;
+    private int third;
+    private int fourth;
+    private int fifth;
 
     public User(int cost) {
-        lottoNumbers = new ArrayList<>();
+        this.lottoNumbers = new ArrayList<>();
         validateCost(cost);
         this.cost = cost;
     }
@@ -22,6 +25,26 @@ public class User {
 
     public List<List<Integer>> getLottoNumbers() {
         return lottoNumbers;
+    }
+
+    public int getFirst() {
+        return first;
+    }
+
+    public int getSecond() {
+        return second;
+    }
+
+    public int getThird() {
+        return third;
+    }
+
+    public int getFourth() {
+        return fourth;
+    }
+
+    public int getFifth() {
+        return fifth;
     }
 
     private void validateCost(int cost) {
@@ -38,4 +61,24 @@ public class User {
         }
 
     }
+
+    public void checkWinning(List<Integer> numbers, int bonus) {
+        for (int i = 0; i < lottoNumbers.size(); i++) {
+            int count = checkNumberByLottoAndWinning(i, numbers);
+            if (count == 6) {
+                this.first++;
+            }
+            if (count == 5) {
+                checkBonus(i, bonus);
+            }
+            if (count == 4) {
+                this.fourth++;
+            }
+            if (count == 3) {
+                this.fifth++;
+            }
+        }
+    }
+
+
 }

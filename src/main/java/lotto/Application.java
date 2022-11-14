@@ -13,5 +13,8 @@ public class Application {
         ui.inputBonus();
         lotto.validateBonus(ui.getBonus());
         user.makeLottoNumbers();
+
+        user.checkWinning(lotto.getNumbers(), ui.getBonus());
+
     }
 }
