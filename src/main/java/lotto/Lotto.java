@@ -6,7 +6,10 @@ public class Lotto {
     private static final String ERROR_MESSAGE = "[ERROR]";
     private static final String LOTTO_SIZE_ERROR = ERROR_MESSAGE + " 로또 번호는 6개 이어야 합니다.";
     private static final String DUPLICATION_ERROR = ERROR_MESSAGE + " 로또 번호 6개는 서로 다른 숫자이어야 합니다.";
+    private static final String LOTTO_NUMBER_SIZE_ERROR = ERROR_MESSAGE + " 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final int LOTTO_NUMBERS_SIZE = 6;
+    private static final int LOTTO_NUMBER_MAX = 45;
+    private static final int LOTTO_NUMBER_MIN = 1;
     private static final int RANK1 = 1;
     private static final int RANK2 = 2;
     private static final int RANK3 = 3;
@@ -19,6 +22,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         duplicateValidation(numbers);
+        validateNumberSize(numbers);
         this.numbers = numbers;
     }
 
@@ -72,5 +76,14 @@ public class Lotto {
         Set<Integer> duplicationCheck = new HashSet<>(numbers);
         if (duplicationCheck.size() != numbers.size())
             throw new IllegalArgumentException(DUPLICATION_ERROR);
+    }
+
+    private void validateNumberSize(List<Integer> numbers) {
+        for (int i = 0; i < LOTTO_NUMBERS_SIZE; i++) {
+
+            int num = numbers.get(i);
+            if (num > LOTTO_NUMBER_MAX || num < LOTTO_NUMBER_MIN)
+                throw new IllegalArgumentException(LOTTO_NUMBER_SIZE_ERROR);
+        }
     }
 }
