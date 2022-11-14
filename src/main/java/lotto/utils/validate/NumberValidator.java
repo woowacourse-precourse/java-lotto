@@ -50,8 +50,16 @@ public class NumberValidator {
 
     public static void validateNumbersSize(List<?> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(NOT_MATCH_NUMBERS_SIZE.getMessage());
+            throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
         }
     }
 
+
+    public static void validateDuplicateNumber(List<Integer> numbers, String number) {
+        validateCommon(number);
+
+        if (numbers.contains(number)) {
+            throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
+        }
+    }
 }

@@ -44,12 +44,13 @@ public class Winning {
         validateNumbersSize(distinctNumbers);
 
         for (String number : distinctNumbers) {
-            NumberValidator.validateInputNumber(number);
+            NumberValidator.validateNumber(number);
         }
     }
 
     private void validateBonusNumber(String input) {
-        NumberValidator.validateInputNumber(input);
+        NumberValidator.validateDuplicateNumber(numbers, input);
+        NumberValidator.validateNumber(input);
     }
 
     private List<Integer> convertStringToInteger(String[] splitNumbers) {
