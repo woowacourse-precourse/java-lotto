@@ -24,9 +24,10 @@ public class InputMessage {
         return amount;
     }
 
-    public void purchasedLottoNumberMessage(List<List<Integer>> lotts) {
+    public List<List<Integer>> purchasedLottoNumberMessage(List<List<Integer>> lotts) {
         lotts.forEach(System.out::println);
         System.out.println(INPUT_WINNING_NUMBER);
+        return lotts;
     }
 
     public List<Integer> winningNumberMessage(List<Integer> winningNumber){
@@ -42,4 +43,5 @@ public class InputMessage {
         System.out.println(bonusNumber);
         return bonusNumber;
     }
+
 }

@@ -25,4 +25,5 @@ public class LottoGame {
         String userInput = Console.readLine();
         return UserInputCheck.bonusNumberCheck(userInput);
     }
+
 }
