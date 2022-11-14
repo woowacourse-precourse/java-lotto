@@ -24,6 +24,18 @@ class LottoListTest extends NsTest {
         }, List.of(2,3,4,5,6,7));
     }
 
+    @DisplayName("오름차순으로 번호 생성 체크")
+    @Test
+    public void checkDESC() {
+        assertRandomUniqueNumbersInRangeTest(() -> {
+            LottoList lottoList = new LottoList();
+            lottoList.generateLotto();
+            lottoList.printLottoList();
+            assertThat(output()).contains("1개를 구매했습니다.",
+                    "[2, 3, 4, 5, 6, 7]");
+        }, List.of(2,4,3,5,6,7));
+    }
+
     @Override
     protected void runMain() {
 
