@@ -35,6 +35,7 @@ public class Output {
 		System.out.printf(PRINT_SECOND_PRIZE + "\n", Collections.frequency(prizes, Prize.SECOND));
 		System.out.printf(PRINT_FIRST_PRIZE + "\n", Collections.frequency(prizes, Prize.FIRST));
 		System.out.printf(PRINT_RETURN_RATIO + "\n", getReturnRatio(prizes, lotteries.size() * 1_000));
+		System.out.println();
 	}
 
 	private static List<Prize> getPrizes(List<Lotto> lotteries, WinningNumbersIncludingBonus winnings) {
