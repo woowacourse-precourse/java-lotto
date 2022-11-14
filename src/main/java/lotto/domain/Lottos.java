@@ -11,15 +11,7 @@ public class Lottos {
     }
 
     public LottoResult result(WinningLotto winningLotto) {
-        LottoResult lottoResult = new LottoResult();
-        setLottoResult(winningLotto, lottoResult);
-        return lottoResult;
-    }
-
-    private void setLottoResult(WinningLotto winningLotto, LottoResult lottoResult) {
-        lottos.stream()
-                .map(winningLotto::rank)
-                .forEach(lottoResult::addResult);
+        return new LottoResult(winningLotto, lottos);
     }
 
     public List<Lotto> lottos() {
