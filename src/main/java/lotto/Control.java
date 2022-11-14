@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class Control {
 
 
-    private int price;
+    private long price;
     private double reward;
     private double rateOfReturn;
     private int first = 0;
@@ -68,7 +68,7 @@ public class Control {
     private void createLotto() {
         lotteries = new ArrayList<>();
 
-        int item = price / 1_000;
+        long item = price / 1_000;
 
         System.out.println();
         System.out.println(item + CONFIRM_MESSAGE);
