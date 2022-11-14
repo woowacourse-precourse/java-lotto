@@ -26,4 +26,14 @@ public class LottoService {
     public void saveBonusNumber(String bonusNumber) {
         lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber));
     }
+
+    public int matchLottoCount(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
+        int count = 0;
+        for (Integer number : lottoNumbers) {
+            if (winningNumbers.contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
