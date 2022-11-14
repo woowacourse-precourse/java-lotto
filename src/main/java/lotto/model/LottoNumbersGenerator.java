@@ -3,7 +3,9 @@ package lotto.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoNumbersGenerator {
     private LottoNumbersGenerator() {
@@ -15,7 +17,7 @@ public class LottoNumbersGenerator {
 
     public List<Integer> create() {
         List<Integer> numbers = createLottoNumbers();
-        return Collections.unmodifiableList(numbers);
+        return numbers.stream().sorted().collect(Collectors.toUnmodifiableList());
     }
 
     private List<Integer> createLottoNumbers() {
