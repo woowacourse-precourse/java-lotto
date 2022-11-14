@@ -10,4 +10,8 @@ public class Lotto {
         CheckException.checkSixSize(numbers);
         this.numbers = numbers;
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
