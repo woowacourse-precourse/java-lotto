@@ -49,12 +49,15 @@ public class User {
     }
 
     public static Integer askBonusNumber() {
+        Integer bonusNumber;
+
         System.out.println(Constant.ASK_BONUS_NUMBER);
-        String inputBonus = Console.readLine();
-        if (!inputBonus.equals("input bonus validate")) {
-            throw new IllegalArgumentException();
-        }
-        return null;
+        String input = Console.readLine();
+
+        Validator.bonusNumber(input);
+        bonusNumber = Integer.valueOf(input);
+
+        return bonusNumber;
     }
 
     public static void getEarning() {
