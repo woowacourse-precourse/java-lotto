@@ -16,13 +16,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BonusNumberTest {
 
-    List<Integer> winningNumber = new ArrayList(List.of("1,2,3,4,5,6"));
     static OutputView outputView;
     static OutputStream outputStream;
+    static List<Integer> winningNumber;
 
     @BeforeAll
     static void setup() {
-
+        winningNumber = new ArrayList<>();
+        winningNumber.add(1);
+        winningNumber.add(2);
+        winningNumber.add(3);
+        winningNumber.add(4);
+        winningNumber.add(5);
+        winningNumber.add(6);
         outputView = new OutputView();
     }
 

@@ -18,10 +18,10 @@ public class BonusNumber {
     }
 
     public int validate(String bonusNumberString, List<Integer> winningNumber) {
-        int bonusNumber = 0;
         try {
-            if (!(bonusNumber >= LOTTO_NUMBER_MIN && bonusNumber <= LOTTO_NUMBER_MAX) ||
-                    winningNumber.contains(Integer.parseInt(bonusNumberString))) {
+            int bonusNumber = Integer.parseInt(bonusNumberString);
+            if (!(bonusNumber >= LOTTO_NUMBER_MIN && bonusNumber <= LOTTO_NUMBER_MAX)
+                    || winningNumber.contains(bonusNumber)) {
                 throw new IllegalArgumentException();
             }
             bonusNumber = Integer.parseInt(bonusNumberString);
