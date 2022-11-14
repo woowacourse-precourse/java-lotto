@@ -2,9 +2,9 @@ package lotto.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
 import lotto.domain.LottoRepository;
 import lotto.domain.Money;
+import lotto.view.LottoDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,8 +23,8 @@ class LottoServiceTest {
     public void 로또생성_테스트() throws Exception {
         //given
         //when
-        List<List<Integer>> lottos = lottoService.createLottos(Money.of(10000L));
+        LottoDto lottos = lottoService.createLottos(Money.of(10000L));
         //then
-        assertThat(lottos.size()).isEqualTo(10);
+        assertThat(lottos.getLotteries().size()).isEqualTo(10);
     }
 }
