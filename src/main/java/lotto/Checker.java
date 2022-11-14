@@ -80,7 +80,7 @@ public class Checker {
             checkBoundary(number);
         }
     }
-    public  void checkBoundary(int number) {
+    public void checkBoundary(int number) {
         if (45 < number && number < 1) {
             throw new IllegalArgumentException(String.format(LOTTO_CHECKER_ERROR, number, LOTTO_CHECKER_ERROR_ILLEGAL));
         }
