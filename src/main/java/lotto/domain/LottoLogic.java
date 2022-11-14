@@ -7,10 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoLogic {
-    private final static int START_LOTTO = 1;
-    private final static int END_LOTTO = 45;
-    private final static int LOTTO_NUMBER = 6;
-    private static final int ONE_LOTTO = 1000;
     private final int money;
     private final int numberOfLotto;
     private List<Lotto> myLottos;
@@ -32,7 +28,7 @@ public class LottoLogic {
     }
 
     private int calculateNumberOfLotto() {
-        return this.money / ONE_LOTTO;
+        return this.money / LottoValue.ONE_LOTTO_PRICE.getValue();
     }
 
     public int getNumberOfLotto() {
@@ -47,7 +43,7 @@ public class LottoLogic {
     }
 
     private List<Integer> createLottoNumber() {
-        return Randoms.pickUniqueNumbersInRange(START_LOTTO, END_LOTTO, LOTTO_NUMBER);
+        return Randoms.pickUniqueNumbersInRange(LottoValue.START_LOTTO_NUMBER.getValue(), LottoValue.END_LOTTO_NUMBER.getValue(), LottoValue.LOTTO_LENGTH.getValue());
     }
 
     public List<Lotto> getMyLottos() {
