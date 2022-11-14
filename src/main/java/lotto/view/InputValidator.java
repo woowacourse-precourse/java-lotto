@@ -5,7 +5,7 @@ import lotto.model.Lotto;
 import java.util.HashSet;
 import java.util.List;
 
-public class Validator {
+public class InputValidator {
 
     private static final String PATTERN_PURCHASE_AMOUNT = "^[0-9]+$";
     public static final String PATTERN_WINNING_NUMBERS = "^[0-9]+(,[0-9]+){5}$";

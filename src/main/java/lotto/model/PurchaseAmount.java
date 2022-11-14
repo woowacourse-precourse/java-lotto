@@ -1,9 +1,8 @@
 package lotto.model;
 
-import lotto.view.Validator;
+import lotto.view.InputValidator;
 
 public class PurchaseAmount {
-
     private final int purchaseAmount;
     public PurchaseAmount(int purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
@@ -12,10 +11,10 @@ public class PurchaseAmount {
 
     private void validate(int amount) {
         if (amount <= 0) {
-            throw new IllegalArgumentException(Validator.ERR_PURCHASE_AMOUNT);
+            throw new IllegalArgumentException(InputValidator.ERR_PURCHASE_AMOUNT);
         }
         if (amount % Lotto.PRICE != 0) {
-            throw new IllegalArgumentException(Validator.ERR_PURCHASE_AMOUNT);
+            throw new IllegalArgumentException(InputValidator.ERR_PURCHASE_AMOUNT);
         }
     }
 

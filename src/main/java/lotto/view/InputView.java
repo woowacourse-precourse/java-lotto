@@ -13,8 +13,7 @@ public class InputView {
     private static final String WINNING_NUMBERS_DELIMITER = ",";
     private static InputView instance;
 
-    private InputView() {
-    }
+    private InputView() {}
 
     public static InputView getInstance() {
         if (instance == null) {
@@ -29,7 +28,7 @@ public class InputView {
 
         String purchaseAmount = Console.readLine();
 
-        Validator.validatePurchaseAmount(purchaseAmount);
+        InputValidator.validatePurchaseAmount(purchaseAmount);
 
         return Integer.parseInt(purchaseAmount);
     }
@@ -39,7 +38,7 @@ public class InputView {
 
         String winningNumbers = Console.readLine();
 
-        Validator.validateWinningNumbersFormat(winningNumbers);
+        InputValidator.validateWinningNumbersFormat(winningNumbers);
 
         return toNumbers(winningNumbers);
     }
@@ -50,7 +49,7 @@ public class InputView {
 
         String bonusNumber = Console.readLine();
 
-        Validator.validateBonusNumber(bonusNumber);
+        InputValidator.validateBonusNumber(bonusNumber);
 
         return Integer.parseInt(bonusNumber);
     }
@@ -60,7 +59,7 @@ public class InputView {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-        Validator.validateWinningNumbersRange(numbers);
+        InputValidator.validateWinningNumbersRange(numbers);
 
         return numbers;
     }
