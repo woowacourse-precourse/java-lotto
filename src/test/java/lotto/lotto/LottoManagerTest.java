@@ -18,7 +18,7 @@ class LottoManagerTest {
 
     @BeforeEach
     void init(){
-        lottoManager = new LottoManager(1000);
+        lottoManager = new LottoManager(1000, new TestNumberGenerator());
     }
 
     @DisplayName("전부 일치하면 Rank 가 WIN_SIX 이어야 한다.")
