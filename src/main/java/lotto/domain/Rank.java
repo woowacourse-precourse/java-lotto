@@ -38,4 +38,12 @@ public class Rank {
     public void updateRank(Statistic number) {
         ranks.replace(number, ranks.get(number) + 1);
     }
+
+    public long getTotalAmount() {
+        return ((long) Statistic.SIX_PRICE.getValue() * ranks.get(Statistic.SAME_SIX))
+                + ((long) Statistic.FIVE_BONUS_PRICE.getValue() * ranks.get(Statistic.SAME_FIVE_BONUS))
+                + ((long) Statistic.FIVE_PRICE.getValue() * ranks.get(Statistic.SAME_FIVE))
+                + ((long) Statistic.FOUR_PRICE.getValue() * ranks.get(Statistic.SAME_FOUR))
+                + ((long) Statistic.THREE_PRICE.getValue() * ranks.get(Statistic.SAME_THREE));
+    }
 }
