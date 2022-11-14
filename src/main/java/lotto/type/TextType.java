@@ -5,7 +5,8 @@ public enum TextType {
     LOTTO_PRIZE_NUMBER("당첨 번호를 입력해 주세요"),
     PRICE_TO_NUMBER("개를 구매했습니다."),
     LOTTO_BONUS("보너스 번호를 입력해 주세요."),
-    WINNING_STATISTICS("당첨 통계.");
+    WINNING_STATISTICS("당첨 통계"),
+    EARN_PERCENT("총 수익률은");
 
 
     private final String text;
