@@ -29,4 +29,8 @@ public class InputMessage {
         System.out.println(winningNumber);
         System.out.println(INPUT_BONUS_NUMBER);
     }
+
+    public void bonusNumberMessage(String bonusNumber) {
+        System.out.println(bonusNumber);
+    }
 }

@@ -25,4 +25,11 @@ public class UserInputCheck {
         }
         return userInput;
     }
+
+    static String bonusNumberCheck(String userInput){
+        Validation.isNumber(userInput);
+        Validation.isItOne(userInput);
+        Validation.isItRange(userInput);
+        return userInput;
+    }
 }

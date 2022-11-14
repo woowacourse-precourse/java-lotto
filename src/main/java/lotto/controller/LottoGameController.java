@@ -17,6 +17,8 @@ public class LottoGameController {
         inputMessage.purchasedLottoNumberMessage(lotts);
         String winningNumber = lottoGame.getWinningNumber();
         inputMessage.winningNumberMessage(winningNumber);
+        String bonusNumber = lottoGame.getBonusNumber();
+        inputMessage.bonusNumberMessage(bonusNumber);
 
     }
 }

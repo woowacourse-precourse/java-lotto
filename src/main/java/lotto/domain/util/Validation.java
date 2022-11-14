@@ -11,6 +11,7 @@ public class Validation {
     private static final String NOT_DIVIDED = "천원으로 나누어 떨어지지 않습니다.";
     private static final String DUPLICATE = "중복된 값이 존재합니다.";
     private static final String IS_NOT_SIX = "길이가 6이 아닙니다.";
+    private static final String IS_NOT_ONE = "길이가 1이 아닙니다.";
     private static final String IS_NOT_RANGE = "유효한 범위가 아닙니다.";
 
     public static void isNumber(String input) throws IllegalArgumentException {
@@ -56,12 +57,23 @@ public class Validation {
             throw new IllegalArgumentException(ERROR_MESSAGE + IS_NOT_SIX);
         }
     }
+    public static void isItOne(String userInput) {
+        if (userInput.length() != 1) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + IS_NOT_ONE);
+        }
+    }
 
     public static void isItRange(String[] numbers) {
         boolean containRange = Arrays.stream(numbers)
                 .mapToInt(Integer::parseInt)
                 .anyMatch(number -> number < 1 || number > 45);
         if (containRange) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + IS_NOT_RANGE);
+        }
+    }
+    public static void isItRange(String userInput) {
+        int number = Integer.parseInt(userInput);
+        if(number < 1 || number > 45 ){
             throw new IllegalArgumentException(ERROR_MESSAGE + IS_NOT_RANGE);
         }
     }

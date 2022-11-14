@@ -17,4 +17,9 @@ public class LottoGame {
         String userInput = Console.readLine();
         return UserInputCheck.winningNumberCheck(userInput);
     }
+
+    public String getBonusNumber() {
+        String userInput = Console.readLine();
+        return UserInputCheck.bonusNumberCheck(userInput);
+    }
 }
