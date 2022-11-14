@@ -16,7 +16,8 @@ public class LottoController {
     public Lottos lottos = new Lottos(userLottoQuantity);
     public LottoQuantity lottoQuantity = new LottoQuantity();
     public Map<LottoRanking, Integer> lottoRanking;
-
+    private static int MONEY_UNIT=1000;
+    private static int PERCENT_CALCULATION=100;
     public void startLotto() {
         getUserMoney();
         printLottoQuantity();
@@ -34,7 +35,7 @@ public class LottoController {
 
 
     public void printLottoQuantity() {
-        lottoQuantity.setLottoQuantityNumber(userLottoMoney / 1000);
+        lottoQuantity.setLottoQuantityNumber(userLottoMoney / MONEY_UNIT);
         userLottoQuantity = lottoQuantity.getLottoQuantityNumber();
         OutputView.printPurchaseLottoSet(userLottoQuantity);
     }
@@ -65,7 +66,7 @@ public class LottoController {
         for (LottoRanking ranking : lottoRanking.keySet()) {
             totalLottoMoney += ranking.getLottoWinningMoney() * lottoRanking.get(ranking);
         }
-        float percent = (float) totalLottoMoney / (userLottoMoney) * 100;
+        float percent = (float) totalLottoMoney / (userLottoMoney) * PERCENT_CALCULATION;
         OutputView.printLottoProfitRate(percent);
     }
 }
