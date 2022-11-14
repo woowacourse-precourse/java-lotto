@@ -18,7 +18,7 @@ public class Customer {
                 .collect(Collectors.toList()));
     }
 
-    public int getLottoCount(int money) {
+    private int getLottoCount(int money) {
         return money / LottoConstant.PRICE.getValue();
     }
 
