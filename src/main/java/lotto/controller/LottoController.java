@@ -21,6 +21,8 @@ public class LottoController {
     public void run(){
         init();
         generateLotto();
+        generateAwardLotto();
+        lottoService.play(generatedLotto,gameSet);
     }
     private void init(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -36,6 +38,12 @@ public class LottoController {
             generatedLotto.add(new Lotto(generateLottoNumbers.generateLottoNumber()));
             System.out.println(generatedLotto.get(i).getNumbers());
         }
+    }
+    private void generateAwardLotto(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        gameSet = new GameSet(new Lotto(getInput()));
+        System.out.println("보너스 번호를 입력해 주세요.");
+        gameSet.setBonusNumber(getInput());
     }
 
 }
