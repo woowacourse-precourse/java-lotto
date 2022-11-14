@@ -33,12 +33,11 @@ public class LottoSystem {
     public void draw() {
         String inputWonNumber = inputView.inputWonNumber();
         List<Integer> wonNumber = validator.convertToIntList(inputWonNumber);
-        System.out.println(wonNumber);
         Lotto wonLotto = new Lotto(wonNumber);
 
         String inputBonusNumber = inputView.inputBonusNumber();
         int bonusNumber = validator.convertToInt(inputBonusNumber);
-        System.out.println(bonusNumber);
+        validateBonusNumber(wonNumber, bonusNumber);
     }
 
     private List<Lotto> purchaseLotto(int money) {
@@ -54,6 +53,9 @@ public class LottoSystem {
     private void validateBonusNumber(List<Integer> wonNumber, int bonusNumber) {
         if (bonusNumber > 45 || bonusNumber < 1) {
             throw new IllegalArgumentException(INVALID_NUMBER_RANGE.getMessage());
+        }
+        if (wonNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATED_BONUS_NUMBER.getMessage());
         }
     }
 }
