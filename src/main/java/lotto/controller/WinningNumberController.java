@@ -16,7 +16,7 @@ public class WinningNumberController {
 
     public WinningNumber enterNumbers() {
         List<Integer> numbers = enterWinningNumbers();
-        int bonusNumber = enterBonusNumber();
+        int bonusNumber = enterBonusNumber(numbers);
         return new WinningNumber(numbers, bonusNumber);
     }
 
@@ -25,8 +25,8 @@ public class WinningNumberController {
         return winningNumbersView.show();
     }
 
-    private int enterBonusNumber() {
-        BonusNumberView bonusNumberView = new BonusNumberView();
+    private int enterBonusNumber(List<Integer> numbers) {
+        BonusNumberView bonusNumberView = new BonusNumberView(numbers);
         return bonusNumberView.show();
     }
 }

@@ -21,5 +21,8 @@ public class FrontController {
 
         WinningNumberController winningNumberController = new WinningNumberController(new WinningNumberService(new WinningNumberRepository()));
         WinningNumber winningNumber = winningNumberController.enterNumbers();
+
+        PrizeController prizeController = new PrizeController(lottos, winningNumber, countLotto);
+        prizeController.run();
     }
 }

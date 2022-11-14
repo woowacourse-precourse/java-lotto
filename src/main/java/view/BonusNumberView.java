@@ -5,6 +5,12 @@ import java.util.List;
 
 public class BonusNumberView {
 
+    private final List<Integer> numbers;
+
+    public BonusNumberView(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
     public int show() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
@@ -15,6 +21,7 @@ public class BonusNumberView {
     private int validate(String input) {
         int integerInput = validateInteger(input);
         validateRange(integerInput);
+        validateDuplicate(integerInput, numbers);
         return integerInput;
     }
 
@@ -32,5 +39,11 @@ public class BonusNumberView {
         if (integerInput < 1 || integerInput > 45) {
             throw new IllegalArgumentException("[Error] 보너스 번호는 1이상 45이하 범위의 숫자이어야 합니다.");
         }
+    }
+
+    private void validateDuplicate(int integerInput, List<Integer> numbers) {
+        if (numbers.contains(integerInput)) {
+            throw new IllegalArgumentException("[Error] 중복되는 숫자가 존재합니다.");
+       }
     }
 }

@@ -28,4 +28,11 @@ public class Lotto {
         message += "]";
         return message;
     }
+
+    public int containNumber(int number) {
+        if (numbers.contains(number)) {
+            return 1;
+        }
+        return 0;
+    }
 }

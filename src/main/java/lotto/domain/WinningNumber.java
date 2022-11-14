@@ -11,4 +11,19 @@ public class WinningNumber {
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
     }
+
+    public int countMatch(Lotto lotto) {
+        int count = 0;
+        for (int number : numbers) {
+            count += lotto.containNumber(number);
+        }
+        return count;
+    }
+
+    public boolean isBonus(Lotto lotto) {
+        if (lotto.containNumber(bonusNumber) == 1) {
+            return true;
+        }
+        return false;
+    }
 }
