@@ -2,7 +2,9 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.util.Validator;
+import lotto.view.InputView;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +13,15 @@ import static lotto.constant.GameConstants.*;
 public class Computer {
     private List<Integer> winningNumbers;
     private int bonusNumber;
+
+    public Computer() {
+        String winningNumber = InputView.readWinningNumber();
+        List<String> winningNumbers = Arrays.asList(winningNumber.split(","));
+        validate(winningNumbers);
+
+        String bonusNumber = InputView.readBonusNumber();
+        validate(bonusNumber);
+    }
 
     private void validate(List<String> winningNumbers) {
         for (String winningNumber : winningNumbers) {
