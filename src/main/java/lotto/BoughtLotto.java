@@ -11,6 +11,10 @@ public class BoughtLotto extends Lotto{
         super(RandomNumber.createNumber());
     }
 
+    public BoughtLotto(List<Integer> numbers) {
+        super(numbers);
+    }
+
     public void printLottoNumber() {
         List<Integer> numbers = super.getLotto();
         numbers.sort(Comparator.naturalOrder());
