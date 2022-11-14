@@ -53,7 +53,7 @@ public class ResultView {
         System.out.println(format);
     }
 
-    public static void createErrorMessage(IllegalArgumentException exception) {
-        String.format(ERROR_MESSAGE_FORMAT, exception.getMessage());
+    public void createErrorMessage(IllegalArgumentException exception) {
+        System.out.println(ERROR_MESSAGE_FORMAT + exception.getLocalizedMessage());
     }
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 import static java.lang.Integer.parseInt;
+import static java.lang.String.*;
 
 public class InputView {
 
@@ -16,18 +17,8 @@ public class InputView {
 
     public int getInputAmount() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
-        int inputAmount = 0;
-        try {
-            inputAmount = parseInt(readLine());
-        } catch (NumberFormatException exception) {
-            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-        }
-        return validationInputAmount(inputAmount);
-    }
-
-    private int validationInputAmount(int inputAmount) {
-        //TODO: validation 구현 필요
-        return inputAmount;
+        String inputAmount = validationInputAmount(readLine());
+        return parseInt(inputAmount);
     }
 
     public List<Integer> getWinningNums() {
@@ -37,6 +28,13 @@ public class InputView {
             winningNums.add(Integer.parseInt(winningNum));
         }
         return winningNums;
+    }
+
+    private String validationInputAmount(String inputAmount) {
+        if (!inputAmount.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("금액은 자연수만 입력해주세요!");
+        }
+        return inputAmount;
     }
 
     public int getBonusNum() {
