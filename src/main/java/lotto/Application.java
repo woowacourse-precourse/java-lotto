@@ -56,8 +56,20 @@ public class Application {
         }
     }
 
-    public void compareLotto() {
+    public List<Integer> getLottoResult(List<LottoNumber> buyList, List<Integer> winningLotto, int bonusNumber) {
 
+        return null;
+    }
+
+    private int compareLotto(List<Integer> lottoNumber, List<Integer> winningLotto) {
+        int equalNumberCount = 0;
+
+        for (Integer number : lottoNumber) {
+            if (winningLotto.contains(number)) {
+                equalNumberCount += 1;
+            }
+        }
+        return equalNumberCount;
     }
 
 
