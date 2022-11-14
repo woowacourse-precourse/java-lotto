@@ -32,7 +32,7 @@ public class Output {
             makeWinningResult(ranking, count, stringBuilder);
         }
 
-        System.out.println(stringBuilder);
+        System.out.print(stringBuilder);
     }
 
     private static List<Map.Entry<Ranking, Integer>> getResultEntryList(Result result) {

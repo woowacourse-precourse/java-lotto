@@ -12,6 +12,7 @@ public class LottoController {
     public void start() {
         // 금액 입력 받음
         PurchaseAmount purchaseAmount = inputPurchaseAmount();
+        System.out.println();
         // 로또 n장 생성 (1장 당 6자리 숫자 랜덤 생성) -> Lotto.java
         LottoTicket lottoTicket = getTickets(purchaseAmount);
         Output.printTicketsList(purchaseAmount, lottoTicket);
@@ -42,8 +43,10 @@ public class LottoController {
     private WinningBonusNumber inputWinningBonusNumber() {
         String inputWinningNumbers = Input.getInputWinningNumber();
         List<Integer> winningNumbers = makeStringToList(inputWinningNumbers);
+        System.out.println();
 
         int inputBonusNumber = Input.getInputBonusNumber();
+        System.out.println();
 
         WinningBonusNumber winningBonusNumber = new WinningBonusNumber(winningNumbers, inputBonusNumber);
 
