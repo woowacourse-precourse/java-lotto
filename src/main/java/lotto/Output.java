@@ -22,7 +22,7 @@ public class Output {
     }
 
     public static void lotteriesNumbers(List<Lotto> lotteries) {
-        for(Lotto item : lotteries) {
+        for (Lotto item : lotteries) {
             System.out.println(item.getNumbers());
         }
     }
@@ -37,8 +37,8 @@ public class Output {
         System.out.println("6개 일치 (2,000,000,000원) - " + judge.rankCount.get(5) + "개");
     }
 
-    public static void earningRate() {
-
+    public static void earningRate(Judge judge, int money) {
+        System.out.println("총 수익률은 " + judge.countEarningsRate(money) + "%입니다.");
     }
 
 }

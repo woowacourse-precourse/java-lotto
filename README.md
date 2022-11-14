@@ -24,7 +24,7 @@
 - [v] 발행한 로또 수량을 출력한다. - Output#lottoQuantity
 - [v] 발행한 로또 번호를 출력한다. - Output#lotteriesNumbers
 - [v] 당첨 내역을 출력한다. - Output#winningHistory
-- [ ] 수익률을 출력한다. - Output#earningRate
+- [v] 수익률을 출력한다. - Output#earningRate
 - [ ] 예외 메시지를 출력한다. 
 ## 🔍 진행 방식
 
