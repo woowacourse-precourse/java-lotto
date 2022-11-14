@@ -3,6 +3,8 @@
 - [x] 로또 구입 금액 저장
 - [x] 1000원 단위인지 확인, 예외시 Exception
 - [x] 0원 보다 작은지 확인, 예외시 Exception
+- [ ] 구입 금액 getter
+- [ ] 구매한 로또 수량 getter
 
 ## Buyer Generate
 - [x] 로또 구입 금액 ask 출력
@@ -11,8 +13,8 @@
 - [x] 입력된 구입 금액으로 Buyer 클래스 생성
 
 ## Lotto Random Peek
-- [ ] 금액에 맞는 횟수만큼 복권발행
-- [ ] 1~45 사이의 중복되지 않는 숫자 6개 뽑기(Randoms의 pickUniqueNumbersInRange() 활용)
+- [x] 금액에 맞는 횟수만큼 복권발행
+- [x] 1~45 사이의 중복되지 않는 숫자 6개 뽑기(Randoms의 pickUniqueNumbersInRange() 활용)
 - [ ] 로또 번호 오름차순으로 정렬
 - [ ] 발행된 랜덤복권 출력
 
