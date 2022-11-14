@@ -47,13 +47,13 @@ public enum Statistic {
         if(isInRange(3, i, 7)) {
             return STATISTIC_INDEXED[i].revenue;
         }
-        throw new IllegalArgumentException("[Error] 잘못된 인덱싱입니다.");
+        throw new IllegalArgumentException("[ERROR] 잘못된 인덱싱입니다.");
     }
 
     public static String getMsg(int i) {
         if(isInRange(3, i, 7)) {
             return STATISTIC_INDEXED[i].msg;
         }
-        throw new IllegalArgumentException("[Error] 잘못된 인덱싱입니다.");
+        throw new IllegalArgumentException("[ERROR] 잘못된 인덱싱입니다.");
     }
 }

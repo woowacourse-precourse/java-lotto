@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static lotto.service.Validation.*;
 import static lotto.service.Calculator.*;
@@ -37,8 +37,8 @@ public class BuyLottoController {
         List<Integer> tmp;
 
         for(int i=0; i < lottoNumber; i++) {
-            tmp = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(tmp);
+            tmp = Randoms.pickUniqueNumbersInRange(1, 45, 6).stream()
+                    .sorted().collect(Collectors.toList());
             lottoList.add(new Lotto(tmp));
             writeLotto(lottoList.get(i).getNumbers());
         }

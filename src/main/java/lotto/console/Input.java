@@ -12,11 +12,12 @@ import static lotto.service.Validation.*;
 public class Input {
 
     public static int inputNumber() {
-        try {
-            return Integer.parseInt(Console.readLine());
-        }catch(NumberFormatException e) {
-            throw new IllegalArgumentException("[Error] 숫자형식이 아닙니다.");
+        String tmp = Console.readLine();
+        if(isNumber(tmp)) {
+            return Integer.parseInt(tmp);
         }
+        System.out.println("[ERROR] 숫자 형식이 아닙니다.");
+        return 0;
     }
 
     public static List<Integer> inputSixNumber() {
@@ -29,11 +30,11 @@ public class Input {
                     .collect(Collectors.toList());
 
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[Error] 숫자형식이 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 숫자형식이 아닙니다.");
         }
 
         if( answer.size()!=6 || !isLotto(answer) ) {
-            throw new IllegalArgumentException("[Error] 당첨 번호를 잘못입력했습니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호를 잘못입력했습니다.");
         }
 
         return answer;

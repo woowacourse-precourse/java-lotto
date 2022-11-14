@@ -22,7 +22,7 @@ public class WinningLottoController {
         int bonusNumber = inputNumber();
 
         if(winningLotto.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[Error] 이 보너스 번호는 유효하지 않습니다.");
+            throw new IllegalArgumentException("[ERROR] 이 보너스 번호는 유효하지 않습니다.");
         }
 
         winningLotto.add(bonusNumber);

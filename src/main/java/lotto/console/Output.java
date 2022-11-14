@@ -31,8 +31,7 @@ public class Output {
         }
 
         public static void writeRevenueRate(float rate) throws IOException {
-            bw.write(String.format("총 수익률은 %.1f", rate));
-            bw.write("% 입니다.");
+            bw.write(String.format("총 수익률은 %.1f", rate) + "% 입니다.");
         }
 
         public static void writeNewLine() throws IOException {

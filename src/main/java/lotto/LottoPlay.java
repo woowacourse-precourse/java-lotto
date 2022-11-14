@@ -13,7 +13,7 @@ public class LottoPlay {
     private final static WinningLottoController inputWinningLotto = new WinningLottoController();
     private final static StatisticController statistic = new StatisticController();
 
-    public void run() throws IOException {
+    protected void run() throws IOException {
         List<Lotto> lottoList = buyLotto.runBuyLottoController();
         List<Integer> winningLotto = inputWinningLotto.runWinningLottoController();
         statistic.runStatisticController(lottoList, winningLotto);

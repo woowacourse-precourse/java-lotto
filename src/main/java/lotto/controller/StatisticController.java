@@ -4,7 +4,6 @@ import lotto.domain.Lotto;
 import lotto.domain.Statistic;
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
 
 import static lotto.service.Calculator.*;
 import static lotto.console.Output.*;

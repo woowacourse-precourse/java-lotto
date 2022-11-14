@@ -1,6 +1,7 @@
 package lotto.service;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Validation {
 
@@ -18,5 +19,9 @@ public class Validation {
 
     public static boolean isLotto(List<Integer> lst) {
         return lst.stream().allMatch(x->isInRange(1, x, 45));
+    }
+
+    public static boolean isNumber(String s) {
+        return Pattern.matches("^[0-9]*$", s);
     }
 }
