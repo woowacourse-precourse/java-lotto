@@ -16,6 +16,10 @@ public class Application {
         System.out.println(game.winningLottoNumbers);
         System.out.println(game.myLottoNumbers);
 
+
+
+
+
         /*NumberGenerator ng = new NumberGenerator(3);
 
         ng.generateNumbers();
@@ -47,7 +51,6 @@ public class Application {
         list_copy.retainAll(list_compare);
         System.out.println(list_copy);
         System.out.println(list_origin);*/
-
 
     }
 }

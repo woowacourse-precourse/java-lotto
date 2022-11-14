@@ -32,6 +32,7 @@ public class Game {
     public void getResult(){
         NumberChecker numberChecker = new NumberChecker(winningLottoNumbers, bonusNumber, myLottoNumbers);
         numberChecker.compareNumber();
+        numberChecker.getRanks();
 
 //        myCorrectNumberResult = numberChecker.numberOfCorrectNumbers;
 

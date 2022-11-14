@@ -23,6 +23,7 @@ public class NumberChecker {
             compareTemp.addAll(winningNumber);
             compareTemp.retainAll(myNumber.get(i));
             numberOfCorrectNumbers.add(compareTemp.size());
+
         }
         System.out.println(myNumber.toString());
         System.out.println(winningNumber);
@@ -31,11 +32,13 @@ public class NumberChecker {
     }
 
     public static List<Integer> getRanks(){
-        for(int correctNumber : numberOfCorrectNumbers){
-
+        PrizeResult[] values = PrizeResult.values();
+        for(int i = 0; i< values.length; i++) {
+            values[i].plusCount(numberOfCorrectNumbers);
         }
-
-
+        for(int i = 0; i< values.length; i++) {
+            System.out.println(values[i].getCount());
+        }
         return ranks;
     }
 

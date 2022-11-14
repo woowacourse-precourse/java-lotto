@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public enum PrizeResult {
@@ -13,22 +14,28 @@ public enum PrizeResult {
     private int correctNumber;
     private boolean bonusCorrect;
     private int count;
+    private List<Integer> ans = new ArrayList<>(List.of(2,3,3,0,4));
 
     PrizeResult(int prize, int correctNumber, boolean bonusCorrect) {
         this.prize = prize;
         this.correctNumber = correctNumber;
         this.bonusCorrect = bonusCorrect;
     }
-    public void plusCount() {
-        this.count++;
-    }
+    public void plusCount(List<Integer> ans) {
+        for (int i = 0;i < ans.size();i++){
+        if(this.correctNumber == ans.get(i)){
+            this.count++;
+        }
+    }}
 
     public int getPrize(){
         return this.prize;
     }
+
     public int getCount(){
         return this.count;
     }
+
 
     public static int getResults(List<Integer> list){
         for(int i:list){
