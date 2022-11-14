@@ -38,6 +38,16 @@ class ValidatorTest {
     }
 
     @Test
+    public void 입력한_숫자에_중복된_숫자가_존재하는_경우() {
+        //given
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5, 5);
+        //when
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidLottoNumbers(input));
+        //then
+        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.LOTTO_NUMBER_IS_DUPLICATED.toString());
+    }
+
+    @Test
     public void 입력한_금액이_숫자가_아닌_경우() {
         //given
         String input = "-134";
