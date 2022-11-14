@@ -25,11 +25,7 @@ public class ViewController {
     public void printStatisticsByRank(Map<Rank, Integer> result) {
         outputView.printStatisticStart();
 
-        for (Map.Entry<Rank, Integer> entry : result.entrySet()) {
-            Rank rank = entry.getKey();
-            int count = entry.getValue();
-            outputView.printStatisticsByRank(rank, count);
-        }
+        result.entrySet().stream().forEach(entry -> outputView.printStatisticsByRank(entry.getKey(), entry.getValue()));
         outputView.flush();
     }
 
