@@ -2,6 +2,7 @@ package lotto.domain.lotto;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -14,24 +15,20 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateNumbersSizeIsFixSize(numbers);
+        this.validateNumbersSizeIsFixSize(numbers.size());
 
         var generatedLotto = generateLotto(numbers);
 
-        validateLottoNumbersDuplicated(generatedLotto);
-
+        this.validateLottoNumbersDuplicated(generatedLotto);
         this.numbers = this.convertListLottoNumberToListInteger(generatedLotto);
     }
 
     public Lotto(final String input) {
         var generatedLotto = generateLotto(input);
 
-        validateLottoNumbersDuplicated(generatedLotto);
-
-        var numbers = convertListLottoNumberToListInteger(generatedLotto);
-        validateNumbersSizeIsFixSize(numbers);
-
-        this.numbers = numbers;
+        this.validateNumbersSizeIsFixSize(generatedLotto.size());
+        this.validateLottoNumbersDuplicated(generatedLotto);
+        this.numbers = convertListLottoNumberToListInteger(generatedLotto);
     }
 
     private List<LottoNumber> generateLotto(String input) {
@@ -63,8 +60,8 @@ public class Lotto {
 
     }
 
-    private void validateNumbersSizeIsFixSize(List<Integer> numbers) {
-        if (numbers.size() != FIX_SIZE) {
+    private void validateNumbersSizeIsFixSize(final Integer size) {
+        if (!Objects.equals(size, FIX_SIZE)) {
             throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_SIZE);
         }
     }
@@ -77,7 +74,7 @@ public class Lotto {
         return String.valueOf(this.numbers);
     }
 
-    public Integer compareCount(Lotto lotto) {
+    public Integer getCountByCompareLotto(Lotto lotto) {
         var count = numbers.stream()
                 .filter(lotto::hasLottoNumber)
                 .count();
