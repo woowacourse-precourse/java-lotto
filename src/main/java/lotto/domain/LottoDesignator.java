@@ -2,6 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -37,7 +38,7 @@ public class LottoDesignator {
         checkRange(input);
         checkBonusDuplication(lottoInput, input);
 
-        return Integer.parseInt(input);
+        return changeInt(input);
     }
 
     public void checkOnlyNumber(String input) {
@@ -76,7 +77,7 @@ public class LottoDesignator {
 
     public void checkBonusDuplication(String input, String number) {
         List<Integer> lotto = changeList(input);
-        int bonus = Integer.parseInt(number);
+        int bonus = changeInt(number);
         if (lotto.contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복 불가합니다.");
         }
@@ -87,10 +88,13 @@ public class LottoDesignator {
     }
 
     private List<Integer> changeList(String input) {
-        Integer[] numbers = Stream.of(removeComma(input))
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .toArray(Integer[]::new);
-        return Arrays.asList(numbers);
+        List<Integer> numbers = Stream.of(removeComma(input))
+                .map(str -> Integer.parseInt(str))
+                .collect(Collectors.toList());
+        return numbers;
+    }
+
+    private int changeInt(String input) {
+        return Integer.parseInt(input);
     }
 }
