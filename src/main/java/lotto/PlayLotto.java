@@ -52,19 +52,19 @@ public class PlayLotto {
 
     public int compareReward(int compareWinning, boolean compareBonus) {
         if (compareWinning == 3) {
-            return 0;
+            return 4;
         }
         if (compareWinning == 4) {
-            return 1;
+            return 3;
         }
         if (compareWinning == 5 && !compareBonus) {
             return 2;
         }
         if (compareWinning == 5 && compareBonus) {
-            return 3;
+            return 1;
         }
         if (compareWinning == 6 && !compareBonus) {
-            return 4;
+            return 0;
         }
         return 9;
     }
