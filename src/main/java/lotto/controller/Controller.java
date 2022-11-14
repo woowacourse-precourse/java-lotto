@@ -1,4 +1,10 @@
-package lotto;
+package lotto.controller;
+
+import lotto.view.View;
+import lotto.logic.Calculator;
+import lotto.domain.Lotto;
+import lotto.logic.LottoVerifier;
+import lotto.domain.User;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -6,11 +12,8 @@ public class Controller {
     public void run() {
         User user = getUserByInput();
         if (user == null) return;
-        View.printPurchaseList(user.purchaseLottoList);
-
         Lotto lotto = getLottoByInput();
         if (lotto == null) return;
-
         int bonus = getBonusByInput();
         if(bonus == -1) return;
 
@@ -20,12 +23,11 @@ public class Controller {
             e.printStackTrace();
             return;
         }
-
         printResult(user, lotto, bonus);
     }
 
     private void printResult(User user, Lotto lotto, int bonus) {
-        user.winResult = lotto.getWinningResult(user.purchaseLottoList, new Input(bonus));
+        user.winResult = lotto.getWinningResult(user.purchaseNumbers, new LottoVerifier(bonus));
         View.printWinningStatistics(user.winResult);
         View.printEarningsRate(Calculator.getEarningsRate(user.inputCost, user.winResult));
     }
@@ -49,6 +51,7 @@ public class Controller {
             return null;
         }
         user.getPurchaseLottoList();
+        View.printPurchaseList(user.purchaseNumbers);
         return user;
     }
 
@@ -56,7 +59,7 @@ public class Controller {
         View.printNeedBonusNumber();
         int result;
         try {
-            result = Input.getInputToInt(readLine());
+            result = LottoVerifier.getInputToInt(readLine());
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return -1;
@@ -68,7 +71,7 @@ public class Controller {
         View.printNeedWinningNumbers();
         Lotto lotto;
         try {
-            lotto = new Lotto(Input.getWinningNumber(readLine()));
+            lotto = new Lotto(LottoVerifier.getWinningNumber(readLine()));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

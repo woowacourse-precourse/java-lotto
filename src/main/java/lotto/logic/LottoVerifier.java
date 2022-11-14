@@ -1,12 +1,14 @@
-package lotto;
+package lotto.logic;
+
+import lotto.model.ContainStatus;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Input {
+public class LottoVerifier {
     private int bonus;
 
-    public Input(int bonus) {
+    public LottoVerifier(int bonus) {
         this.bonus = bonus;
     }
 
@@ -43,24 +45,24 @@ public class Input {
         }
     }
 
-    private static void validNum(String s) {
-        if(!isNum(s)){
+    private static void validNum(String readLine) {
+        if(!isNum(readLine)){
             throw new IllegalArgumentException("[ERROR] 로또 번호 문자열에 숫자가 아닌 문자가 있습니다.");
         }
-        if(!isValidNumber(s)){
+        if(!isValidNumber(readLine)){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
 
-    private static boolean isValidNumber(String s) {
-        int n = Integer.parseInt(s);
+    private static boolean isValidNumber(String undefinedNumber) {
+        int n = Integer.parseInt(undefinedNumber);
         return n >= 1 && n <= 45;
     }
 
-    private static boolean isNum(String s) {
-        for (int i = 0; i <s.length() ; i++) {
-            char inspection = s.charAt(i);
+    private static boolean isNum(String undefinedNumber) {
+        for (int i = 0; i <undefinedNumber.length() ; i++) {
+            char inspection = undefinedNumber.charAt(i);
             if (!(inspection >= '0' && inspection <= '9')) {
                 return false;
             }

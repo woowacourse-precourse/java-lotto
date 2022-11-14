@@ -1,4 +1,8 @@
-package lotto;
+package lotto.domain;
+
+import lotto.model.ContainStatus;
+import lotto.logic.LottoVerifier;
+import lotto.model.WinningRank;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -47,24 +51,24 @@ public class Lotto {
         }
     }
 
-    public Map<WinningRank, Integer> getWinningResult(List<List<Integer>> getPurchaseLottoList, Input input) {
-        Map<WinningRank, Integer> enumMap = new EnumMap<>(WinningRank.class);
+    public Map<WinningRank, Integer> getWinningResult(List<List<Integer>> purchaseNumbers, LottoVerifier lottoVerifier) {
+        Map<WinningRank, Integer> winResult = new EnumMap<>(WinningRank.class);
 
-        for (List<Integer> lotto : getPurchaseLottoList) {
-            WinningRank winningRank = getWinningRank(lotto, input);
-            enumMap.put(winningRank, enumMap.getOrDefault(winningRank, 0) + 1);
+        for (List<Integer> lotto : purchaseNumbers) {
+            WinningRank winningRank = getWinningRank(lotto, lottoVerifier);
+            winResult.put(winningRank, winResult.getOrDefault(winningRank, 0) + 1);
         }
-        return enumMap;
+        return winResult;
     }
 
-    public WinningRank getWinningRank(List<Integer> lotto, Input input) {
+    public WinningRank getWinningRank(List<Integer> lotto, LottoVerifier lottoVerifier) {
         int result = getMatchingNumber(lotto);
 
         if (result == 6) {
             return WinningRank.one;
         }
         if (result == 5) {
-            ContainStatus status = input.isBonus(lotto);
+            ContainStatus status = lottoVerifier.isBonus(lotto);
             if (status.getContain2Value()) {
                 return WinningRank.two;
             }

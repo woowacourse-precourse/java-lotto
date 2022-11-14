@@ -1,15 +1,20 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.model.WinningRank;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+
 
 public class User {
     public int inputCost;
-    public List<List<Integer>> purchaseLottoList;
+    public List<List<Integer>> purchaseNumbers;
     public Map<WinningRank, Integer> winResult;
 
-    User(String inputCost) {
+    public User(String inputCost) {
         valid(inputCost);
         this.inputCost = Integer.parseInt(inputCost);
     }
@@ -47,6 +52,6 @@ public class User {
         for (int i = 0; i < inputCost / 1000; i++) {
             result.add(getLottoNumbers());
         }
-        this.purchaseLottoList = result;
+        this.purchaseNumbers = result;
     }
 }
