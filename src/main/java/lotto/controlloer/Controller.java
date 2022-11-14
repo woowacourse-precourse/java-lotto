@@ -18,17 +18,17 @@ import lotto.view.outputView;
 public class Controller {
 
     public void run(){
-        buyLotto();
-        getAnswerLotto();
-    }
-
-    private void buyLotto(){
-        NumberGenerator lottogenerator = new NumberGenerator();
-        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(getNumberOfLotto(inputMoney())));
-        printLottoGroup(lottoGroup);
+        LottoGroup lottoGroup = buyLotto();
         AnswerLotto answerLotto = getAnswerLotto();
         Map<WinningRank, Integer> winningDetails = WinningStatistics.getWinningDetails(lottoGroup, answerLotto);
         printWinningInformation(winningDetails);
+    }
+
+    private LottoGroup buyLotto(){
+        NumberGenerator lottogenerator = new NumberGenerator();
+        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(getNumberOfLotto(inputMoney())));
+        printLottoGroup(lottoGroup);
+        return lottoGroup;
     }
 
     private AnswerLotto getAnswerLotto(){

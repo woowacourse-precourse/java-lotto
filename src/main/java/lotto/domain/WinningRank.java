@@ -6,7 +6,7 @@ import java.util.Map;
 
 public enum WinningRank {
     SIX_MATCH(6, false, 2000000000),
-    FIVE_MATCH_BONUS(5, false, 30000000),
+    FIVE_MATCH_BONUS(5, true, 30000000),
     FIVE_MATCH(5, false, 1500000),
     FOUR_MATCH(4, false, 50000),
     THREE_MATCH(3, false, 5000),

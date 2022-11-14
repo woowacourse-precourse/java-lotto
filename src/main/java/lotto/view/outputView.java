@@ -10,8 +10,8 @@ import lotto.domain.WinningRank;
 
 public class outputView {
 
-    private static final String WINNING_DETAIL_MESSAGE = "%d개 일치 (%s원) - %d개";
-    private static final String WINNING_DETAIL_WITH_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
+    private static final String WINNING_DETAIL_MESSAGE = "%d개 일치 (%s원) - %d개\n";
+    private static final String WINNING_DETAIL_WITH_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private enum Message {
         NUMBER_OF_LOTTO("개를 구매했습니다.");
         private final String value;
