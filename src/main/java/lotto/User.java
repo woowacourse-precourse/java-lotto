@@ -26,7 +26,15 @@ public class User {
         }
     }
 
-    public  void printLottoList() {
+    public int getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public List<Lotto> getLottoList(){
+        return lottoList;
+    }
+
+    public void printLottoList() {
         System.out.println(lottoList.size() + "개를 구매했습니다.");
         for (Lotto lotto : lottoList) {
             lotto.printNumbers();
