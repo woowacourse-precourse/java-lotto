@@ -133,25 +133,97 @@ public class Application {
         if(winner_number.contains(bonus)) throw new IllegalArgumentException("[Error] 당첨 번호와 중복되지 않는 값을 입력해주세요.");
     }
 
-//    public enum statistics{
-//        5등(5000, 3, 0, ,"3개 일치 (5,000원) - "),
-//        4등(50000, 4, 0, "4개 일치 (50,000원) - "),
-//        3등(1500000, 5, 0, "5개 일치 (1,500,000원) - "),
-//        2등(30000000, 5, 1, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-//        1등(2000000000, 6, 0, "6개 일치 (2,000,000,000원) - ")
+    public static void result_Output(){
+        System.out.printf("당첨통계\n---\n");
+    }
+
+    public static List<List<Integer>> result_of_each(List<List<Integer>> issue_numbers, List<Integer> winner_number, int bonus_number){
+        List<Integer> issue_number;
+        List<Integer> temp = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
+        for(int i=0; i<issue_numbers.size(); i++){
+            issue_number = issue_numbers.get(i);
+            temp.add(compare(issue_number,winner_number));
+            temp.add(compare_bonus(issue_number, bonus_number));
+            result.add(temp);
+            temp = new ArrayList<>();
+        }
+        return result;
+    }
+
+    public static List<Integer> count_prize(List<List<Integer>> result){
+        int i=0;
+        int [] prize = new int [5];
+        List<Integer> compare_result = new ArrayList<>();
+        while(i<result.size()){
+            if(result.get(i).contains(6)) prize[0]++;
+            if(result.get(i).contains(5)){
+                if(result.get(i).contains(1)) prize[1]++;
+                prize[0]++;
+            }
+            if(result.get(i).contains(4)) prize[3]++;
+            if(result.get(i).contains(3)) prize[4]++;
+            i++;
+        }
+        for(int j=0; j<5; j++){
+            compare_result.add(prize[i]);
+        }
+        return compare_result;
+    }
+
+//    public static int Number_of_iterations(List<List<Integer>> issue_numbers){
 //
-//        private final int prize;
-//        private final int number;
-//        private final int bonus;
-//        private final String message;
-//
-//        History(int prize, int number, int bonus, String message){
-//            this.prize = prize;
-//            this.number = number;
-//            this.bonus = bonus;
-//            this.message = message;
-//        }
 //    }
+//  (List<List<Integer>> issue_numbers, List<Integer> winner_number, int bonus_number)
+
+    public static int compare(List<Integer> issue_number, List<Integer> winner_number){
+        int count = 0;
+        for(int i=0; i<winner_number.size(); i++){
+            if(issue_number.contains(winner_number.get(i))) count++;
+        }
+        return count;
+    }
+
+    public static int compare_bonus(List<Integer> issue_number, int bonus_number){
+        if(issue_number.contains(bonus_number)) return 1;
+        return 0;
+    }
+
+    public enum statistics{
+        Fifth_Prize(5000, 3, 0, ,"3개 일치 (5,000원) - "),
+        Fourth_Prize(50000, 4, 0, "4개 일치 (50,000원) - "),
+        Third_Prize(1500000, 5, 0, "5개 일치 (1,500,000원) - "),
+        Second_Prize(30000000, 5, 1, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+        First_Prize(2000000000, 6, 0, "6개 일치 (2,000,000,000원) - ");
+
+        private final int prize;
+        private final int number;
+        private final int bonus;
+        private final String message;
+
+        statistics(int prize, int number, int bonus, String message){
+            this.prize = prize;
+            this.number = number;
+            this.bonus = bonus;
+            this.message = message;
+        }
+
+        public int getPrize() {
+            return prize;
+        }
+
+        public int getNumber() {
+            return number;
+        }
+
+        public int getBonus() {
+            return bonus;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -172,13 +244,14 @@ public class Application {
         Lotto_Num = replace_blank(split(Lotto_Input));
         Lotto_Number_exception(Lotto_Num);
         winner_number = StringtoInt(Lotto_Num);
-        bonus_number =  Input();
+        System.out.println(winner_number);
         bonus_Output();
+        bonus_number =  Input();
         Range_exception(bonus_number);
         Number_exception(bonus_number);
-        winner_number.add(StringtoInteger(bonus_number));
         Duplicate_exception_bonus(StringtoInteger(bonus_number), winner_number);
-
+        result_Output();
+        System.out.println(result_of_each(issue_Numbers, winner_number, StringtoInteger(bonus_number)));
 //        Lotto lotto_number = new Lotto(StringtoInt(Lotto_Num));
 //        System.out.println(lotto_number);
 
