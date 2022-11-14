@@ -9,27 +9,18 @@ public class LottoGame {
     private Integer cash;
     private Integer enterNum;
     private List<Integer> lottoList;
-    private List<Integer> winNumList;
     private Integer bonusNum;
     private Integer result;
     private float earningRate;
 
-    public LottoGame(Integer cash, Integer enterNum, List<Integer> lottoList, List<Integer> winNumList, Integer bonusNum, Integer result, float earningRate) {
+    public LottoGame(Integer cash, Integer enterNum, List<Integer> lottoList, Integer bonusNum, Integer result, float earningRate) {
         this.cash = cash;
         this.enterNum = enterNum;
         this.lottoList = lottoList;
-        validateList(winNumList);
-        this.winNumList = winNumList;
         validateBonusRange(bonusNum);
         this.bonusNum = bonusNum;
         this.result = result;
         this.earningRate = earningRate;
-    }
-
-    private void validateList(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
     }
 
     private void validateBonusRange(Integer number) {
@@ -38,7 +29,5 @@ public class LottoGame {
         }
     }
 
-    private void setLottoList(List<Lotto> lottoList) {
 
-    }
 }
