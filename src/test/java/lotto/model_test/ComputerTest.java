@@ -1,6 +1,7 @@
 package lotto.model_test;
 
 import lotto.domain.Lotto;
+import lotto.exception.IllegalArgumentException;
 import lotto.model.Computer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

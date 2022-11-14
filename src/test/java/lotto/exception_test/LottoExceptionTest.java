@@ -1,5 +1,6 @@
 package lotto.exception_test;
 
+import lotto.exception.IllegalArgumentException;
 import lotto.exception.LottoException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

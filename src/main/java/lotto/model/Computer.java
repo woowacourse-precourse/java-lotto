@@ -2,6 +2,7 @@ package lotto.model;
 
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
+import lotto.exception.IllegalArgumentException;
 
 import java.util.Arrays;
 import java.util.List;
