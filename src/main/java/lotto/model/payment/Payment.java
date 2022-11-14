@@ -1,12 +1,31 @@
 package lotto.model.payment;
 
 public class Payment {
+    private static final int TICKET_PRICE = 1000;
+    private final int amount;
+
     public Payment(int amount) {
-        // TODO 구현 필요
+        validate(amount);
+        this.amount = amount;
     }
 
     public int getLottoCount() {
-        // TODO 구현 필요
-        return 0;
+        return amount / TICKET_PRICE;
+    }
+
+    private static void validate(int amount) {
+        if(isNotPositive(amount)) {
+            throw new IllegalArgumentException("구입 금액은 0보다 커야 합니다.");
+        } if(doesNotHaveChange(amount)) {
+            throw new IllegalArgumentException("구입 금액은 1000원 단위여야 합니다.");
+        }
+    }
+
+    private static boolean isNotPositive(int amount) {
+        return amount <= 0;
+    }
+
+    private static boolean doesNotHaveChange(int amount) {
+        return amount % TICKET_PRICE != 0;
     }
 }
