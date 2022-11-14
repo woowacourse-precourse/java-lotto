@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,11 @@ public class InputValidation {
             throw new IllegalArgumentException(NUMBER_FORMAT_MESSAGE);
         }
         return true;
+    }
+    public static void winningNumberValidation(String winningNumber){
+        Arrays.stream(winningNumber.split(","))
+                .filter(element -> numberFormatExceptionValidation(element))
+                .map(element -> Integer.parseInt(element));
     }
 }
 
