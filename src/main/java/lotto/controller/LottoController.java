@@ -20,7 +20,8 @@ public class LottoController {
 			LottoBonus lottoBonus = new LottoBonus(LottoBonusGenerator.generate(InputView.bonusNumber()));
 			Stat stat = new Stat(lotto, lottoBonus, lottoTickets);
 			EarningsRate earningsRate = new EarningsRate(stat.getStat(), lottoTickets.getLottoTickets());
-			OutputView.printLottoStat(stat.getStat(), earningsRate.getEarningsRate());
+			OutputView.printLottoStat(stat.getStat());
+			OutputView.printEarningsRate(earningsRate.getEarningsRate());
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}

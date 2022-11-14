@@ -1,16 +1,18 @@
 package lotto.domain;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 
 import lotto.utils.LottoType;
 
 public class EarningsRate {
-	double earningsRate;
+	BigDecimal earningsRate;
 	public EarningsRate(Map<LottoType, Integer> stat, List<LottoTicket> lottoTickets) {
 		int prizeMoney = calculatePrizeMoney(stat);
 		int purchaseAmount = lottoTickets.size() * 1000;
-		this.earningsRate = (double)prizeMoney / purchaseAmount * 100;
+		earningsRate = new BigDecimal((double)prizeMoney / purchaseAmount);
 	}
 
 	private int calculatePrizeMoney(Map<LottoType, Integer> stat) {
@@ -21,7 +23,7 @@ public class EarningsRate {
 		return prizeMoney;
 	}
 
-	public double getEarningsRate() {
+	public BigDecimal getEarningsRate() {
 		return this.earningsRate;
 	}
 }
