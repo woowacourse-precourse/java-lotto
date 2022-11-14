@@ -3,10 +3,9 @@ package system;
 import system.process.Buying;
 import system.process.StatisticsCalculator;
 import system.process.WinningLottoRegister;
-import utils.Input;
+import veiw.StatisticsView;
 
 public class LottoGameSystem {
-
     private Buying boughtLottos;
     private WinningLottoRegister winningLotto;
     private StatisticsCalculator statisticsCalculator;
@@ -31,6 +30,7 @@ public class LottoGameSystem {
 
     private void calculateStatistics() {
         statisticsCalculator = new StatisticsCalculator(boughtLottos, winningLotto);
+        StatisticsView.printStatistics(statisticsCalculator.getStatistics());
     }
 
 

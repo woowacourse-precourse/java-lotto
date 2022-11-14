@@ -13,7 +13,7 @@ public class LottoComparison {
     private Lotto boughtLotto;
     private WinningLotto winningLotto;
 
-    private int sameNumberCount;
+    private int matchingCount;
     private int bonusCount;
 
     public LottoComparison(WinningLotto winningLotto) {
@@ -33,7 +33,7 @@ public class LottoComparison {
     }
 
     private void initializeComparison(Lotto boughtLotto) {
-        sameNumberCount = 0;
+        matchingCount = 0;
         bonusCount = 0;
         this.boughtLotto = boughtLotto;
     }
@@ -41,7 +41,7 @@ public class LottoComparison {
     private void countSameNumber(Set<Integer> winningLottoNumbers) {
         boughtLotto.getNumbers().forEach(number -> {
             if (winningLottoNumbers.contains(number)) {
-                sameNumberCount++;
+                matchingCount++;
             }
         });
     }
@@ -55,12 +55,12 @@ public class LottoComparison {
     public int rank() {
         List<PrizeDivision> prizeDivisions = Arrays.asList(PrizeDivision.values());
 
-        for(PrizeDivision division : prizeDivisions){
-            if(division.getSameNumberCount() == sameNumberCount && division.getBonusCount() == bonusCount){
-                return division.getDivision();
+        for (PrizeDivision division : prizeDivisions) {
+            if (division.getMatchingCount() == matchingCount && division.getBonusCount() == bonusCount) {
+                return division.ordinal();
             }
         }
 
-        return PrizeDivision.NO_DIVISION.getDivision();
+        return PrizeDivision.NO_DIVISION.ordinal();
     }
 }
