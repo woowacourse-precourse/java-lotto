@@ -19,6 +19,7 @@ public class Bonus {
         return this.number;
     }
 
+    // 입력된 문자열을 숫자로 변환하는 메서드
     public int convertNumber(String inputBonusNumber) {
         int number;
 
@@ -28,6 +29,7 @@ public class Bonus {
         return number;
     }
 
+    // 입력된 보너스 번호가 1~45 이내인지 확인
     public void checkBonusNumberRange(int bonusNumber){
         if (bonusNumber < 1 || bonusNumber > 45){
             System.out.println(PrintError.BONUS_RANGE);
@@ -35,6 +37,7 @@ public class Bonus {
         }
     }
 
+    // 입력된 보너스 번호가 입력한 로또 번호와 중복되는지 확인
     public void checkBonusDuplicatedNumber(int bonusNumber, List<Integer> lotto){
         if (lotto.contains(bonusNumber)){
             System.out.println(PrintError.BONUS_OVERLAP);
@@ -42,6 +45,7 @@ public class Bonus {
         }
     }
 
+    // 입력한 문자열이 숫자로만 이루어져있는지 확인
     private void isRealNumber (String inputBonusNumber) {
         for (char element: inputBonusNumber.toCharArray()) {
             if (element < 48 || element > 57) {
