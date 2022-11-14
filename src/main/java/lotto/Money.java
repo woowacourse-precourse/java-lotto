@@ -14,4 +14,8 @@ public class Money {
     public int getMoney() {
         return money;
     }
+
+    public int calculateLottoCount() {
+        return money / UNIT;
+    }
 }
