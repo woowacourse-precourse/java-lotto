@@ -30,6 +30,7 @@ public class Application {
         printWinningHistory(winningHistory);
 
         double rateOfReturn = LottoCalculator.getRateOfReturn(winningHistory, money);
+        printRateOfReturn(rateOfReturn);
     }
 
     private static void printPurchasedLottos(List<Lotto> purchasedLottos) {
@@ -51,6 +52,12 @@ public class Application {
 
     private static void printWinningHistory(Map<Rank, Integer> winningHistory) {
         winningHistory.forEach((rank, count) -> System.out.println(rank + " - " + count + "개"));
+    }
+
+    private static void printRateOfReturn(double rateOfReturn) {
+        String roundHundredths = String.format("%.1f", rateOfReturn);
+        String output = "총 수익률은 " + roundHundredths + "%입니다.";
+        println(output);
     }
 
     private static void println() {
