@@ -14,13 +14,16 @@ public class User {
         System.out.println("구입금액을 입력해 주세요.");
         price = lottoManager.inputPrice();
 
-        count = lottoManager.setCount(price);
+        count = setCount(price);
         System.out.println("\n" + count + "개를 구매했습니다.");
 
         lottos = lottoManager.createLottos(count);
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
+    }
 
+    public int setCount(int price) {
+        return price / 1000;
     }
 }

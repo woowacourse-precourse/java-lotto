@@ -16,10 +16,6 @@ public class LottoManager {
         return Integer.parseInt(Console.readLine());
     }
 
-    public int setCount(int price) {
-        return price / 1000;
-    }
-
     public List<Lotto> createLottos(int count) {
         Lotto lotto;
         List<Integer> lottoNumbers;
