@@ -49,4 +49,26 @@ public class ResultPrintTest {
                 .contains("5개 일치, 보너스 볼 일치 (30,000,000원) - 2개")
                 .contains("6개 일치 (2,000,000,000원) - 1개");
     }
+    @DisplayName("2등 당첨 수익률 확인")
+    @Test
+    void secondYield() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        ResultPrint.printingResult(
+                Map.of("FIRST", 0, "SECOND", 1, "THIRD", 0,
+                        "FOURTH", 0, "FIFTH", 0, "NOTHING", 7)
+        );
+        assertThat(out.toString()).contains("총 수익률은 375,000.0%입니다.");
+    }
+    @DisplayName("5등 당첨 수익률 확인")
+    @Test
+    void fifthYield() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        ResultPrint.printingResult(
+                Map.of("FIRST", 0, "SECOND", 0, "THIRD", 0,
+                        "FOURTH", 0, "FIFTH", 1, "NOTHING", 7)
+        );
+        assertThat(out.toString()).contains("총 수익률은 62.5%입니다.");
+    }
 }
