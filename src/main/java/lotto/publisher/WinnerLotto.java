@@ -20,17 +20,11 @@ public class WinnerLotto {
 
 
     public void setWinnerLotto(Lotto lotto) {
-        if (this.lotto == null) {
-            this.lotto = lotto;
-        }
-
+        this.lotto = lotto;
     }
 
     public void setBonusNumber(int bonusNumber) {
-        if (this.bonusNumber == 0) {
-            this.bonusNumber = bonusNumber;
-        }
-
+        this.bonusNumber = bonusNumber;
     }
 
 
