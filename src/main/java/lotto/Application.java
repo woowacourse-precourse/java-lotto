@@ -42,12 +42,9 @@ public class Application {
     public static int inputPrice() {
         // 구입 금액 입력
         System.out.println(INPUT_PAYMENT_SENTENCE);
-        int payment;
-        try {
-            payment = Integer.parseInt(Console.readLine());
-        }catch (NumberFormatException e){
-            throw new IllegalArgumentException();
-        }
+        String paymentInput = Console.readLine();
+        validateNumber(paymentInput);
+        int payment = Integer.parseInt(paymentInput);
         if (payment % 1000 != 0) {
             throw new IllegalArgumentException();
         }
@@ -76,17 +73,20 @@ public class Application {
     public static int inputBonusNumber(List<Integer> winningNumbers) {
         System.out.println(INPUT_BONUS_NUMBER_SENTENCE);
         String bonusInput = Console.readLine();
-        int bonus = validateBonusNumber(bonusInput, winningNumbers);
+        validateBonusNumber(bonusInput, winningNumbers);
+        int bonus = Integer.parseInt(bonusInput);
         System.out.println();
         return bonus;
     }
 
-    public static int validateBonusNumber(
+    public static void validateBonusNumber(
             String bonusInput,
             List<Integer> winningNumbers
     ) {
         // String의 input이 Integer로 제대로 변환되는지 확인
-        int bonus = validateNumber(bonusInput);
+        validateNumber(bonusInput);
+
+        int bonus = Integer.parseInt(bonusInput);
 
         // 1~45 범위의 수인지 확인
         validateValidRangeNumber(bonus);
@@ -95,17 +95,14 @@ public class Application {
         if (winningNumbers.contains(bonus)) {
             throw new IllegalArgumentException();
         }
-        return bonus;
     }
 
-    public static int validateNumber(String input) {
-        int output;
+    public static void validateNumber(String input) {
         try{
-            output = Integer.parseInt(input);
+            Integer.parseInt(input);
         } catch (NumberFormatException e){
             throw new IllegalArgumentException();
         }
-        return output;
     }
 
     public static void validateValidRangeNumber(int num) {
