@@ -10,6 +10,7 @@ import static lotto.constant.GameConstants.*;
 
 public class Computer {
     private List<Integer> winningNumbers;
+    private int bonusNumber;
 
     private void validate(List<String> winningNumbers) {
         for (String winningNumber : winningNumbers) {
@@ -23,6 +24,14 @@ public class Computer {
         Validator.validateLength(this.winningNumbers, WINNING_NUMBER_LENGTH);
         Validator.validateRange(this.winningNumbers, WINNING_NUMBER_LENGTH);
         Validator.validateDuplication(this.winningNumbers, WINNING_NUMBER_LENGTH);
+    }
+
+    private void validate(String bonusNumber) {
+        Validator.validateNaturalNumber(bonusNumber);
+        Validator.validateLeadingZero(bonusNumber);
+
+        this.bonusNumber = Integer.parseInt(bonusNumber);
+        Validator.validateRange(this.bonusNumber);
     }
 
     public static Lotto issueLotto() {
