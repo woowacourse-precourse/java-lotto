@@ -6,14 +6,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import static lotto.utils.Validator.*;
-
+import static camp.nextstep.edu.missionutils.Console.readLine;
 public class InputView {
-
-    public static final Scanner SCANNER = new Scanner(System.in);
 
     public static int writeBudget(){
         System.out.println("구입금액을 입력해 주세요.");
-        String userInput = SCANNER.nextLine();
+        String userInput = readLine();
 
         validateInteger(userInput);
         validateBudget(Integer.valueOf(userInput));
@@ -23,7 +21,7 @@ public class InputView {
 
     public static List<String> writeWinningNumbers(){
         System.out.println("당첨 번호를 입력해 주세요.");
-        String userInput = SCANNER.nextLine();
+        String userInput = readLine();
 
         List<String> splitInput = splitWinningNumbers(userInput);
 
@@ -36,7 +34,7 @@ public class InputView {
 
     public static int writeBonusNumber(){
         System.out.println("보너스 번호를 입력해 주세요.");
-        String userInput = SCANNER.nextLine();
+        String userInput = readLine();
 
         validateInteger(userInput);
 
