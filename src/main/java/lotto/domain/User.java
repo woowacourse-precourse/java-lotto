@@ -34,6 +34,31 @@ public class User {
         return userMoney;
     }
 
+    public List<Integer> inputWinningNumbers() {
+        System.out.println(INPUT_WINNING_NUMBERS);
+
+        String inputNumbers = Console.readLine();
+        checkWinningNumbers(inputNumbers);
+
+        List<Integer> winningNumbers = splitNumbers(inputNumbers);
+        checkWinningNumbersCount(winningNumbers);
+        checkWinningNumbersDuplicate(winningNumbers);
+
+        return winningNumbers;
+    }
+
+    public List<Integer> splitNumbers(String numbers) {
+        List<Integer> splitIntegerNums = new ArrayList<>();
+
+        List<String> splitStringNums = Arrays.asList(numbers.split(","));
+        for (String num : splitStringNums) {
+            checkInteger(num);
+            checkNumberRange(Integer.parseInt(num));
+            splitIntegerNums.add(Integer.valueOf(num));
+        }
+        return splitIntegerNums;
+    }
+
     public void checkInteger(String number) {
         if(!number.matches("-?\\d+(\\.\\d+)?")) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
