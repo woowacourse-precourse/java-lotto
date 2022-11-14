@@ -1,50 +1,15 @@
 package lotto.model;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class Statistics {
     private static final String COUNT_STATE = " - %d개";
 
-    private final List<Lotto> lottos;
-    private final WinningLotto winningLotto;
     private Map<Rank, Integer> winningLottoCounter;
 
-    public Statistics(List<Lotto> lottos, WinningLotto winningLotto) {
-        this.lottos = lottos;
-        this.winningLotto = winningLotto;
-        initMap();
-        countRank();
-    }
-
-    private void initMap() {
-        winningLottoCounter = new LinkedHashMap<>();
-        Rank[] values = Rank.values();
-        for (Rank value : values) {
-            winningLottoCounter.put(value, 0);
-        }
-    }
-
-    public Map countRank() {
-        for (Lotto lotto : lottos) {
-            Rank rank = computeRank(lotto);
-            winningLottoCounter.put(rank, winningLottoCounter.get(rank) + 1);
-        }
-
-        winningLottoCounter.remove(Rank.NOTHING);
-
-        return Collections.unmodifiableMap(winningLottoCounter);
-    }
-
-    private Rank computeRank(Lotto lotto) {
-        int countOfMatching = winningLotto.countMatchingLottoNumbers(lotto);
-        boolean hasBonusNumber = winningLotto.matchBonusNumber(lotto);
-
-        Rank rank = Rank.of(countOfMatching, hasBonusNumber);
-        return rank;
+    public Statistics(RankCount rankCount) {
+        this.winningLottoCounter = rankCount.countRank();
     }
 
     public int computeTotalPrice() {
