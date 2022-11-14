@@ -1,28 +1,32 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Client {
 
-
     private ClientInput clientInput;
+    private PrintMessage printMessage;
 
     Client(ClientInput clientInput) {
         this.clientInput = clientInput;
+        this.printMessage = new PrintMessage();
     }
 
     public int buy() {
+        print(PrintMessage.buy);
         String moneyAmountString = clientInput.get();
-
         int moneyAmount = parseStringToIntOrElseThrow(moneyAmountString);
 
         ThousandMultipleOrElseThrow(moneyAmount);
+        print(moneyAmount + PrintMessage.amount);
 
         return moneyAmount;
     }
 
     public List<Integer> mark() {
+        print(PrintMessage.numbers);
         String markedNumberString = clientInput.get();
 
         validateIsSplittedByComma(markedNumberString);
@@ -33,6 +37,7 @@ public class Client {
     }
 
     public Integer bonusMark() {
+        print(PrintMessage.bonus);
         String markedBonusNumberString = clientInput.get();
 
         int bonus;
@@ -48,6 +53,26 @@ public class Client {
         }
 
         return bonus;
+    }
+
+    public void printLottoInfo(List<List<Integer>> tickets) {
+        print(printMessage.ticketInfo(tickets));
+    }
+
+    public void printLottoResult(List<Prize> prizeResults, double benefit) {
+        print(PrintMessage.statistic);
+        Prize[] prizes = Prize.values();
+
+        for (int i = 0; i < prizes.length; i++) {
+            int amount = Collections.frequency(prizeResults, prizes[i]);
+            print(amount + printMessage.coincidence(prizes[i],
+                    amount));
+        }
+
+        print(printMessage.benefit(benefit));
+    }
+    private void print(String message) {
+        System.out.println(message);
     }
 
     private void validateIsSplittedByComma(String target) {
