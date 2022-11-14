@@ -1,6 +1,7 @@
 package lotto.domain.lotto;
 
 import static lotto.domain.lotto.Lotto.isRanged;
+import static lotto.messages.ErrorMessage.OUT_OF_RANGE_MESSAGE;
 
 public class BonusNum {
     private final int num;
@@ -12,7 +13,7 @@ public class BonusNum {
 
     void validate(int num) {
         if (!isRanged(num)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 숫자의 범위가 1 ~ 45 이내가 아닙니다.");
+            throw new IllegalArgumentException(OUT_OF_RANGE_MESSAGE.toString());
         }
     }
 
