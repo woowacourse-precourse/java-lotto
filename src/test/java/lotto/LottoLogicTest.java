@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoLogicTest {
@@ -20,7 +21,7 @@ public class LottoLogicTest {
     @Test
     void inputPrizeNumbersByDuplicatedNumber() {
         LottoLogic lottoLogic = new LottoLogic("1000");
-        assertThatThrownBy(() -> lottoLogic.setPrizeNumbers(List.of("1","2","3","4","5","5")))
+        assertThatThrownBy(() -> lottoLogic.setPrizeNumbers(List.of("1", "2", "3", "4", "5", "5")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -28,7 +29,7 @@ public class LottoLogicTest {
     @Test
     void inputPrizeNumbersContainChar() {
         LottoLogic lottoLogic = new LottoLogic("1000");
-        assertThatThrownBy(() -> lottoLogic.setPrizeNumbers(List.of("1","2","3","4","5","k")))
+        assertThatThrownBy(() -> lottoLogic.setPrizeNumbers(List.of("1", "2", "3", "4", "5", "k")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -36,7 +37,7 @@ public class LottoLogicTest {
     @Test
     void inputPrizeNumbersByOverRange() {
         LottoLogic lottoLogic = new LottoLogic("1000");
-        assertThatThrownBy(() -> lottoLogic.setPrizeNumbers(List.of("1","2","3","4","5","46")))
+        assertThatThrownBy(() -> lottoLogic.setPrizeNumbers(List.of("1", "2", "3", "4", "5", "46")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -44,7 +45,7 @@ public class LottoLogicTest {
     @Test
     void inputBonusNumberByDuplicatedNumberByPrizeNumbers() {
         LottoLogic lottoLogic = new LottoLogic("1000");
-        lottoLogic.setPrizeNumbers(List.of("1","2","3","4","5","6"));
+        lottoLogic.setPrizeNumbers(List.of("1", "2", "3", "4", "5", "6"));
         assertThatThrownBy(() -> lottoLogic.setBonusNumber("1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -53,7 +54,7 @@ public class LottoLogicTest {
     @Test
     void inputBonusNumbersContainChar() {
         LottoLogic lottoLogic = new LottoLogic("1000");
-        lottoLogic.setPrizeNumbers(List.of("1","2","3","4","5","6"));
+        lottoLogic.setPrizeNumbers(List.of("1", "2", "3", "4", "5", "6"));
         assertThatThrownBy(() -> lottoLogic.setBonusNumber("k"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -62,9 +63,18 @@ public class LottoLogicTest {
     @Test
     void inputBonusNumberByOverRange() {
         LottoLogic lottoLogic = new LottoLogic("1000");
-        lottoLogic.setPrizeNumbers(List.of("1","2","3","4","5","6"));
+        lottoLogic.setPrizeNumbers(List.of("1", "2", "3", "4", "5", "6"));
         assertThatThrownBy(() -> lottoLogic.setBonusNumber("47"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구입 금액에 알맞은 개수의 로또가 생성된다.")
+    @Test
+    void createLottoByRightPriceNumber() {
+        LottoLogic lottoLogic = new LottoLogic("3000");
+        assertThat(lottoLogic.getMyLottos().size())
+                .isEqualTo(3);
+
     }
 }
 
