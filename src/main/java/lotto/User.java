@@ -33,4 +33,10 @@ public class User {
             throw new IllegalArgumentException(Error.INPUT_NOT_NUMERIC.getMessage());
         }
     }
+
+    public void validateMoreThan1000Won(String input) {
+        if (Integer.parseInt(input) < 1000) {
+            throw new IllegalArgumentException(Error.LESS_THAN_1000WON.getMessage());
+        }
+    }
 }
