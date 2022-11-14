@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.constants.ErrorMessages;
+
 public class Money {
 
     private final long money;
@@ -16,14 +18,14 @@ public class Money {
 
     private void validateNotNegative() {
         if (money < 0) {
-            System.out.println("[ERROR] 구입 금액은 0보다 작을 수 없습니다.");
+            System.out.println(ErrorMessages.MONEY_SIGN);
             throw new IllegalArgumentException();
         }
     }
 
     private void validateMultipleOfLottoPrice() {
         if (money % Lotto.PRICE != 0) {
-            System.out.println("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");
+            System.out.println(ErrorMessages.MONEY_UNIT);
             throw new IllegalArgumentException();
         }
     }

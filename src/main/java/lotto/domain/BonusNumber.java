@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.constants.ErrorMessages;
+
 public class BonusNumber {
 
     private final int bonusNumber;
@@ -16,14 +18,14 @@ public class BonusNumber {
 
     private void validateNumber(int bonusNumber) {
         if (!Lotto.isLottoNumber(bonusNumber)) {
-            System.out.println("[ERROR] 1 ~ 45 사이의 숫자만 들어올 수 있습니다.");
+            System.out.println(ErrorMessages.NUMBER_RANGE);
             throw new IllegalArgumentException();
         }
     }
 
     private void validateDuplicate(Lotto winningLotto, int bonusNumber) {
         if (winningLotto.contains(bonusNumber)) {
-            System.out.println("[ERROR] 보너스 숫자는 당첨 숫자와 중복될 수 없습니다.");
+            System.out.println(ErrorMessages.BONUS_DUPLICATE);
             throw new IllegalArgumentException();
         }
     }

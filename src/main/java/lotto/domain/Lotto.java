@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import lotto.constants.ErrorMessages;
 
 public class Lotto {
 
@@ -24,7 +25,7 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUMBER_COUNT) {
-            System.out.println("[ERROR] 6개의 숫자를 입력해야 합니다.");
+            System.out.println(ErrorMessages.NUMBER_SIZE);
             throw new IllegalArgumentException();
         }
     }
@@ -32,7 +33,7 @@ public class Lotto {
     private void validateNonDuplicate(List<Integer> numbers) {
         for (int number : numbers) {
             if (numbers.indexOf(number) != numbers.lastIndexOf(number)) {
-                System.out.println("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
+                System.out.println(ErrorMessages.NUMBER_DUPLICATE);
                 throw new IllegalArgumentException();
             }
         }
@@ -41,7 +42,7 @@ public class Lotto {
     private void validateNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (!isLottoNumber(number)) {
-                System.out.println("[ERROR] 1 ~ 45 사이의 숫자만 입력할 수 있습니다.");
+                System.out.println(ErrorMessages.NUMBER_RANGE);
                 throw new IllegalArgumentException();
             }
         }
