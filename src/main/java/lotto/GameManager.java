@@ -27,9 +27,8 @@ public class GameManager {
 
     public void run() {
         money = new Money(input.getUserMoney());
-        int numberOfPurchase = changeNumberOfLottoToBuy(money.getNumberOfPurchase());
-        purchaseLotto(numberOfPurchase);
-        output.printWallet(wallet.getLottos(), numberOfPurchase);
+        purchaseLotto(money.getNumberOfPurchase());
+        output.printWallet(wallet.getLottos(), money.getNumberOfPurchase());
 
         winningNumber = new Lotto(input.getWinningNumber());
         bonusNumber = new BonusNumber(input.getBonusNumber());
@@ -37,11 +36,7 @@ public class GameManager {
         prize = new Prize(makePrize());
 
         output.printPrize(prize);
-        output.printProfit(getProfit(money.getNumberOfPurchase()));
-    }
-
-    public int changeNumberOfLottoToBuy(int lottoPrice) {
-        return lottoPrice / Constant.LOTTO_PRICE;
+        output.printProfit(getProfit(money.getNumberOfPurchase() * Constant.LOTTO_PRICE));
     }
 
     public void purchaseLotto(int numberOfPurchase) {

@@ -1,8 +1,10 @@
 package lotto.domain;
 
+import lotto.utils.Constant;
 import lotto.utils.ErrorMessage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,6 +16,16 @@ public class Lotto {
         validateIsDistinct(numbers);
         sortLottoNumbers(numbers);
         this.numbers = numbers;
+    }
+
+    public Lotto(String winningNumbers) {
+        checkWinningNumber(winningNumbers);
+        List<Integer> convertedNumber = convertToList(winningNumbers);
+        validateNumberSize(convertedNumber);
+        validateIsDistinct(convertedNumber);
+        checkNumberInRange(convertedNumber);
+        sortLottoNumbers(convertedNumber);
+        this.numbers = convertedNumber;
     }
 
     public List<Integer> getNumbers() {
@@ -42,5 +54,31 @@ public class Lotto {
     public void validateDistinctInBonusNumber(int bonusNumber) {
         if (numbers.contains(bonusNumber))
             throw new IllegalArgumentException(ErrorMessage.BONUS_DISTINCT_WINNING_NUMBER);
+    }
+
+    public void checkWinningNumber(String input) {
+        String[] split = input.split(",");
+
+        boolean result = Arrays.stream(split).allMatch((alphbet) -> alphbet.charAt(0) >= '0' && alphbet.charAt(0) <= '9');
+        if (!result)
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
+    }
+
+    public List<Integer> convertToList(String numbers) {
+        String[] split = numbers.split(",");
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < split.length; i++) {
+            result.add(Integer.parseInt(split[i]));
+        }
+
+        return result;
+    }
+
+    public void checkNumberInRange(List<Integer> numbers) {
+        boolean inRange = numbers.stream().allMatch(number -> number >= 1 && number <= 45);
+
+        if (inRange == false)
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
     }
 }
