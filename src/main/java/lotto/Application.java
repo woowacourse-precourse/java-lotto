@@ -143,7 +143,7 @@ public class Application {
         System.out.println("5개 일치 (1,500,000원) - "+lottoStatistics.getOrDefault(Grade.FIVE,0)+"개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+lottoStatistics.getOrDefault(Grade.FIVEANDBONUS,0)+"개");
         System.out.println("6개 일치 (2,000,000,000원) - "+lottoStatistics.getOrDefault(Grade.SIX,0)+"개");
-        System.out.println("총 수익률은 "+earningRate+"%입니다.");
+        System.out.println("총 수익률은 "+String.format("%.1f", earningRate)+"%입니다.");
     }
 
     public static void main(String[] args) {
