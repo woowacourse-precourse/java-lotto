@@ -31,7 +31,18 @@ public class Lotto {
         if(money % 1000 == 0){
             return money / 1000;
         }
-        throw new IllegalArgumentException("[ERROR]: 구입 금액은 1000원 단위만 가능합니다.");
+        throw new IllegalArgumentException("구입 금액은 1000원 단위만 가능합니다.");
     }
 
+    public static void checkIsInt(String input){
+        boolean check = true;
+        for(int i = 0; i < input.length(); i++){
+            if(!Character.isDigit(input.charAt(i))){
+               check = false;
+            }
+        }
+        if(!check){
+            throw new IllegalArgumentException("구입 금액 입력은 숫자만 가능합니다.");
+        }
+    }
 }
