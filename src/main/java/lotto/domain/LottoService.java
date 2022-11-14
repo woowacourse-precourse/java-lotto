@@ -32,12 +32,12 @@ public class LottoService {
     public List<Integer> generateLottoNumbers() {
 
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        List<Integer> sortedLottoNumbers = sortedlottoNumbers(lottoNumbers);
+        List<Integer> sortedLottoNumbers = sortedLottoNumbers(lottoNumbers);
 
         return sortedLottoNumbers;
     }
 
-    private List<Integer> sortedlottoNumbers(List<Integer> lottoNumbers) {
+    private List<Integer> sortedLottoNumbers(List<Integer> lottoNumbers) {
 
         Collections.sort(lottoNumbers);
 
