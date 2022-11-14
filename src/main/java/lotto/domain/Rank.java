@@ -21,10 +21,7 @@ public enum Rank {
 
 
     public static Rank valueOfRank(int matchCount, boolean isContainBonusNumber) {
-        if (matchCount == 5 && isContainBonusNumber) {
-            return Rank.SECOND;
-        }
-        if (matchCount == 5){
+        if (matchCount == 5 && !isContainBonusNumber) {
             return Rank.THIRD;
         }
         if (matchCount < 3){
