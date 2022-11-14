@@ -3,6 +3,8 @@ package lotto.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoResultTest {
@@ -14,5 +16,16 @@ class LottoResultTest {
         LottoResult elseResult = LottoResult.of(0, false);
         assertThat(secondResult.isSecond()).isTrue();
         assertThat(elseResult.isElse()).isTrue();
+    }
+
+    @DisplayName("주어진 로또 결과를 토대로 상금을 계산")
+    @Test
+    void sumWinnerPrice() {
+        List<LottoResult> lottoResults = List.of(
+                LottoResult.SECOND,
+                LottoResult.ELSE,
+                LottoResult.THIRD,
+                LottoResult.SECOND);
+        assertThat(LottoResult.sumWinnerPrice(lottoResults)).isEqualTo(61500000);
     }
 }
