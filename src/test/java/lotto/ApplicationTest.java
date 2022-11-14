@@ -14,9 +14,11 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 기능_테스트() {
+
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("8000", "1,2,3,4,5,6", "7");
+
                     assertThat(output()).contains(
                             "8개를 구매했습니다.",
                             "[8, 21, 23, 41, 42, 43]",
@@ -34,6 +36,7 @@ class ApplicationTest extends NsTest {
                             "6개 일치 (2,000,000,000원) - 0개",
                             "총 수익률은 62.5%입니다."
                     );
+                System.out.println("hii");
                 },
                 List.of(8, 21, 23, 41, 42, 43),
                 List.of(3, 5, 11, 16, 32, 38),
@@ -49,8 +52,13 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
+//            System.out.println("iiii");
+
             runException("1000j");
+//            System.out.println("hoooo");
             assertThat(output()).contains(ERROR_MESSAGE);
+//            System.out.println("Eeee");
+
         });
     }
 
