@@ -12,19 +12,24 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class LottoReader {
-    public Map<LottoRank, Integer> createLottoResult(List<Lotto> publishedLotto, Lotto winningLotto, Bonus bonus) {
-        Map<Lotto, Integer> matchingResult = createMatchingResult(publishedLotto, winningLotto);
-        return putLottoRank(matchingResult, bonus);
+    private final Map<LottoRank, Integer> lottoResult;
+
+    public LottoReader() {
+        this.lottoResult = initLottoResult();
     }
 
-    private Map<LottoRank, Integer> putLottoRank(Map<Lotto, Integer> matchingResult, Bonus bonus) {
-        Map<LottoRank, Integer> lottoResult = initLottoResult();
+    public Map<LottoRank, Integer> createLottoResult(List<Lotto> publishedLotto, Lotto winningLotto, Bonus bonus) {
+        Map<Lotto, Integer> matchingResult = createMatchingResult(publishedLotto, winningLotto);
+        putLottoRank(matchingResult, bonus);
+        return lottoResult;
+    }
 
+    private void putLottoRank(Map<Lotto, Integer> matchingResult, Bonus bonus) {
         for (Entry<Lotto, Integer> matchingResultEntry : matchingResult.entrySet()) {
             Integer matchingCount = matchingResultEntry.getValue();
 
             if (matchingCount == 5) {
-                putBonusRank(lottoResult, matchingResultEntry, bonus);
+                putBonusRank(matchingResultEntry, bonus);
             }
 
             if (matchingCount >= 3) {
@@ -32,11 +37,9 @@ public class LottoReader {
                 lottoResult.put(findRank, lottoResult.get(findRank) + 1);
             }
         }
-
-        return lottoResult;
     }
 
-    private void putBonusRank(Map<LottoRank, Integer> lottoResult, Entry<Lotto, Integer> matchingResult, Bonus bonus) {
+    private void putBonusRank(Entry<Lotto, Integer> matchingResult, Bonus bonus) {
         Lotto lotto = matchingResult.getKey();
 
         if (lotto.isMatch(bonus)) {
@@ -47,13 +50,13 @@ public class LottoReader {
     }
 
     private Map<LottoRank, Integer> initLottoResult() {
-        Map<LottoRank, Integer> lottoResult = new EnumMap<>(LottoRank.class);
+        Map<LottoRank, Integer> result = new EnumMap<>(LottoRank.class);
 
         for (LottoRank rank : values()) {
-            lottoResult.put(rank, 0);
+            result.put(rank, 0);
         }
 
-        return lottoResult;
+        return result;
     }
 
     private Map<Lotto, Integer> createMatchingResult(List<Lotto> publishedLotto, Lotto winningLotto) {
