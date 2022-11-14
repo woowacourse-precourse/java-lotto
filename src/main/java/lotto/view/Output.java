@@ -1,11 +1,11 @@
 package lotto.view;
 
+import static lotto.util.Constant.COUNTBUYLOTTO;
 import static lotto.util.Constant.REQUESTBONUSNUMBKER;
+import static lotto.util.Constant.REQUESTWINNINGNUMBER;
+import static lotto.util.Constant.RESULTOFANNOUNCEMENTBEGIN;
 
-import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.Check;
-import lotto.domain.Service;
 import lotto.util.Constant;
 
 public class Output {
@@ -14,14 +14,14 @@ public class Output {
     }
 
     public static void informationOnPurchasedLottoNumbers(List<List<Integer>> purchasedLotto) {
-        System.out.println(purchasedLotto.size() + Constant.COUNTBUYLOTTO);
+        System.out.println(purchasedLotto.size() + COUNTBUYLOTTO);
         for (List<Integer> lotto : purchasedLotto) {
             System.out.println(lotto);
         }
     }
 
     public static void requestInputNumber() {
-        System.out.println(Constant.REQUESTWINNINGNUMBER);
+        System.out.println(REQUESTWINNINGNUMBER);
     }
 
     public static void informationOnWinningNumber(List<Integer> winningNumbers) {
@@ -30,5 +30,9 @@ public class Output {
 
     public static void requestBonusNumber() {
         System.out.println(REQUESTBONUSNUMBKER);
+    }
+
+    public static void beginAnnouncementOfResult() {
+        System.out.println(RESULTOFANNOUNCEMENTBEGIN);
     }
 }

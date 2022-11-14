@@ -8,10 +8,7 @@ import lotto.util.Constant;
 
 public class Check {
     public static Integer countBuyLotto(String payMoney) {
+        //try catch로 입력값 확인
         return parseInt(payMoney) / (Constant.MONEYUNIT);
     }
-
-//    public static Integer checkBonusNumber(String inputBonusNumber) {
-//
-//    }
 }
