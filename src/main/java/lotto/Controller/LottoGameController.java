@@ -27,16 +27,12 @@ public class LottoGameController {
         lottoList = new ArrayList<>();
         try {
             gameInit();
-
             Integer lottoSheetAmount = preparePurchaseAmount();
             Integer lottoSheetCount = preparePurchaseCount(lottoSheetAmount);
             prepareLottoRandomNumber(lottoSheetCount);
-
             Lotto winningNumber = inputWinningNumber();
             Integer bonusNumber = inputBonusNumber(winningNumber);
-
             calculateResult(lottoSheetAmount, winningNumber, bonusNumber);
-
             gameCleanUp();
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());

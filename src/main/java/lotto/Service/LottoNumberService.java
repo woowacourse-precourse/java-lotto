@@ -42,10 +42,8 @@ public class LottoNumberService {
 
     public List<Lotto> generateRandomNumber(int lottoSheetsCount) throws IllegalArgumentException {
         List<Lotto> lottoList = new ArrayList<>();
-
         while (lottoList.size() < lottoSheetsCount) {
-            List<Integer> numbers = new ArrayList<>
-                    (Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(numbers);
             try {
                 Lotto lotto = new Lotto(numbers);
