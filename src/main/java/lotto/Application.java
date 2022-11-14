@@ -13,13 +13,15 @@ public class Application {
     private static final StatisticsService staticsService = new StatisticsService();
 
     public static void main(String[] args) {
-        User user = userService.buyLotto();
-        userService.printBoughtLotto(user);
-        WinningLotto winningLotto = winningLottoService.scanWinningNums();
-
-        Statistics statistics = staticsService.calculateRating(user, winningLotto);
-        staticsService.printTotality(statistics);
-        staticsService.printProfit(statistics, user);
-
+        try {
+            User user = userService.buyLotto();
+            userService.printBoughtLotto(user);
+            WinningLotto winningLotto = winningLottoService.scanWinningNums();
+            Statistics statistics = staticsService.calculateRating(user, winningLotto);
+            staticsService.printTotality(statistics);
+            staticsService.printProfit(statistics, user);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

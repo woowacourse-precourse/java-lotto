@@ -51,12 +51,12 @@ public class StatisticsService {
     }
 
     private String printEachCount(Prize prize, int cnt) {
-        String eachPrint = prize.getCatchPoint() + "개 일치, ";
+        String eachPrint = prize.getCatchPoint() + "개 일치";
 
         if (prize.isBonusCatchPoint())
-            eachPrint += "보너스 볼 일치 ";
+            eachPrint += ", 보너스 볼 일치";
 
-        eachPrint += "(" + formatter.format(prize.getMoney()) + ") - " + cnt + "개";
+        eachPrint += " (" + formatter.format(prize.getMoney()) + "원) - " + cnt + "개";
 
         return eachPrint;
     }
