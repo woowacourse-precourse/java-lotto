@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.assertj.core.api.Assertions;
 
 public class LottoMachineTest {
 
@@ -17,7 +17,7 @@ public class LottoMachineTest {
         List<Integer> expected = List.of(1, 2, 3, 4, 5, 6);
 
         for (int i = 0; i < lottoNumbers.size(); i++) {
-            assertThat(lottoNumbers.get(i)).isEqualTo(expected.get(i));
+            Assertions.assertThat(lottoNumbers.get(i)).isEqualTo(expected.get(i));
         }
     }
 
@@ -29,11 +29,11 @@ public class LottoMachineTest {
         List<Integer> expected = List.of(1, 2, 3, 4, 5, 6);
 
         for (int i = 0; i < lottoMachine.getNumbers().size(); i++) {
-            assertThat(lottoMachine.getNumbers().get(i)).isEqualTo(expected.get(i));
+            Assertions.assertThat(lottoMachine.getNumbers().get(i)).isEqualTo(expected.get(i));
         }
 
         String bonusNumber = "30";
         lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber));
-        assertThat(lottoMachine.getBonusNumber()).isEqualTo(30);
+        Assertions.assertThat(lottoMachine.getBonusNumber()).isEqualTo(30);
     }
 }
