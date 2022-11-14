@@ -5,20 +5,15 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoGameResultGenerator {
-    public static LottoGameResult generateLottoGameResult(List<Lotto> lottos,
-                                                          WinningNumbers winningNumbers,
-                                                          BonusNumber bonusNumber,
-                                                          Money paidMoney) {
-        Map<Integer, Integer> winningDetails = new HashMap<>();
-        initializeWinningDetails(winningDetails);
-        calculateWinningDetails(winningDetails, lottos, winningNumbers, bonusNumber);
-        double earningRate = calculateEarningRate(winningDetails, paidMoney);
+    private final Map<Integer, Integer> winningDetails;
+    private double earningRate;
 
-        LottoGameResult lottoGameResult = new LottoGameResult(winningDetails, earningRate);
-        return lottoGameResult;
+    public LottoGameResultGenerator() {
+        winningDetails = new HashMap<>();
+        initializeWinningDetails();
     }
 
-    private static void initializeWinningDetails(Map<Integer, Integer> winningDetails) {
+    private void initializeWinningDetails() {
         winningDetails.put(5_000, 0);
         winningDetails.put(50_000, 0);
         winningDetails.put(1_500_000, 0);
@@ -26,18 +21,28 @@ public class LottoGameResultGenerator {
         winningDetails.put(2_000_000_000, 0);
     }
 
-    private static void calculateWinningDetails(Map<Integer, Integer> winningDetails,
-                                                List<Lotto> lottos,
+    public LottoGameResult generateLottoGameResult(List<Lotto> lottos,
+                                                   WinningNumbers winningNumbers,
+                                                   BonusNumber bonusNumber,
+                                                   Money paidMoney) {
+        calculateWinningDetails(lottos, winningNumbers, bonusNumber);
+        calculateEarningRate(paidMoney);
+
+        LottoGameResult lottoGameResult = new LottoGameResult(winningDetails, earningRate);
+        return lottoGameResult;
+    }
+
+    private void calculateWinningDetails(List<Lotto> lottos,
                                                 WinningNumbers winningNumbers,
                                                 BonusNumber bonusNumber) {
         for (Lotto lotto : lottos) {
             // winningCount세는 것도 update안에 넣는 게 어떨지?
             int winningCount = getWinningCount(lotto, winningNumbers);
-            updateWinningDetails(lotto, winningDetails, bonusNumber, winningCount);
+            updateWinningDetails(lotto, bonusNumber, winningCount);
         }
     }
 
-    private static int getWinningCount(Lotto lotto, WinningNumbers winningNumbers) {
+    private int getWinningCount(Lotto lotto, WinningNumbers winningNumbers) {
         int winningCount = 0;
         for (int number : winningNumbers.getNumbers()) {
             if (lotto.contains(number)) {
@@ -47,8 +52,7 @@ public class LottoGameResultGenerator {
         return winningCount;
     }
 
-    private static void updateWinningDetails(Lotto lotto, Map<Integer, Integer> winningDetails,
-                                          BonusNumber bonusNumber, int winningCount) {
+    private void updateWinningDetails(Lotto lotto, BonusNumber bonusNumber, int winningCount) {
         if (winningCount < 3) {
             return;
         }
@@ -59,7 +63,7 @@ public class LottoGameResultGenerator {
         winningDetails.put(prizeMoney, newValue);
     }
 
-    private static int getPrizeMoneyByWinningCount(Lotto lotto, BonusNumber bonusNumber, int winningCount) {
+    private int getPrizeMoneyByWinningCount(Lotto lotto, BonusNumber bonusNumber, int winningCount) {
         if (winningCount == 6) {
             return 2_000_000_000;
         }
@@ -76,13 +80,12 @@ public class LottoGameResultGenerator {
         return 5_000;
     }
 
-    private static double calculateEarningRate(Map<Integer, Integer> winningDetails, Money paidMoney) {
-        int profits = calculateProfits(winningDetails);
-        double earningRate = (profits / (double)paidMoney.getMoney()) * 100;
-        return earningRate;
+    private void calculateEarningRate(Money paidMoney) {
+        int profits = calculateProfits();
+        earningRate = (profits / (double)paidMoney.getMoney()) * 100;
     }
 
-    private static int calculateProfits(Map<Integer, Integer> winningDetails) {
+    private int calculateProfits() {
         int profits = 0;
         for (int prizeMoney : winningDetails.keySet()) {
             profits += prizeMoney * winningDetails.get(prizeMoney);

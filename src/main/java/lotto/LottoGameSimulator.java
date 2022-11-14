@@ -53,7 +53,8 @@ public class LottoGameSimulator {
     }
 
     public void generateResult() {
-        lottoGameResult = LottoGameResultGenerator.generateLottoGameResult(purchasedLottos,
+        LottoGameResultGenerator lottoGameResultGenerator = new LottoGameResultGenerator();
+        lottoGameResult = lottoGameResultGenerator.generateLottoGameResult(purchasedLottos,
                 winningNumbers, bonusNumber, userMoney);
     }
 
