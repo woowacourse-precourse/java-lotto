@@ -3,9 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -56,6 +54,11 @@ public class Application {
 
         System.out.println("\n당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
+        String[] input_num = input.split(",");
+
+        for (int i=0; i < input_num.length; i++) {
+            answer.add(Integer.parseInt(input_num[i]));
+        }
 
         return answer;
     }
