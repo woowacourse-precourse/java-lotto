@@ -3,6 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 
+import static lotto.exception.InputException.bonusException;
 import static lotto.exception.InputException.inputMoneyException;
 import static lotto.service.LottoService.stringToIntList;
 
@@ -21,8 +22,7 @@ public class InputView {
 
     public static int inputBonusNumber() throws IllegalArgumentException {
         System.out.print("보너스 번호를 입력하시오");
-        int bonus = Integer.parseInt(Console.readLine());
-        return bonus;
+        return bonusException(Console.readLine());
     }
 }
 

@@ -12,4 +12,16 @@ public class InputException {
         }
         return money;
     }
+
+    public static int bonusException(String input) throws IllegalArgumentException {
+        if (!input.matches("-?\\d+")) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자만 입력 가능합니다.");
+        }
+
+        int bonus = Integer.parseInt(input);
+        if (bonus < 1 || bonus > 45) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+        return bonus;
+    }
 }
