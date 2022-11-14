@@ -37,4 +37,8 @@ public enum WinInfo {
         return WinInfo.NO_WIN;
     }
 
+    public long getWinMoney(){
+        return this.winMoney;
+    }
+
 }
