@@ -10,7 +10,6 @@ import java.util.StringTokenizer;
 public class WinningNumber {
 
     private final int winning_cnt = 6;
-    private final int winning_len = 11;
 
     public List<Integer> convertStringToList(String input){
         List<Integer> winningNumbers = new ArrayList<>();
@@ -38,6 +37,14 @@ public class WinningNumber {
         for (int i = 0; i < input.length(); i+=2) {
             if(input.charAt(i) < 48 || input.charAt(i) > 57){
                 throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_IS_NUMBER.getErrorMessage());
+            }
+        }
+    }
+
+    public void notComma(String input){
+        for (int i = 1; i < input.length()-1; i+=2) {
+            if(input.charAt(i) != ','){
+                throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_COMMA.getErrorMessage());
             }
         }
     }
