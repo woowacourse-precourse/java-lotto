@@ -5,17 +5,17 @@ import common.message.Message;
 
 public class Input {
 
-    public String inputAmount() {
+    public static String inputAmount() {
         System.out.println(Message.TOTAL_FUND.getValue());
         return Console.readLine();
     }
 
-    public String inputWinningNumbers() {
+    public static String inputWinningNumbers() {
         System.out.println(Message.INPUT_LOTTO_NUMBER.getValue());
         return Console.readLine();
     }
 
-    public String inputBonusNumber() {
+    public static String inputBonusNumber() {
         System.out.println(Message.INPUT_BONUS_NUMBER.getValue());
         return Console.readLine();
     }
