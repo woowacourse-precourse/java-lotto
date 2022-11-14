@@ -72,7 +72,7 @@ public class User {
         this.rewardMoney = rewardMoney;
     }
 
-    public List<Lotto> getLottos() {
+    public List<Lotto> getLotties() {
         return lottos;
     }
 }

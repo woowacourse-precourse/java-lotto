@@ -4,8 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class UserTest {
@@ -19,7 +17,7 @@ public class UserTest {
         User user = User.initUserLotto(money);
 
         Assertions.assertThat(user.getLottoCount()).isEqualTo(expected);
-        Assertions.assertThat(user.getLottos().size()).isEqualTo(expected);
+        Assertions.assertThat(user.getLotties().size()).isEqualTo(expected);
     }
 
     @Test
