@@ -4,7 +4,7 @@ package lotto.domain;
 public class Cost {
 
     private static final String PURCHASE_COST_TYPE_ERROR = "구매 금액에 문자가 포함될 수 없습니다";
-    private static final String PURCHASE_COST_UNIT_ERROR = "구매 금액은 1000원 단위여야 합니다";
+    private static final String PURCHASE_COST_UNIT_ERROR = "구매 금액은 %d원 단위여야 합니다";
     private static final int PRICE_PER_LOTTO = 1000;
     private final int cost;
 
@@ -36,7 +36,7 @@ public class Cost {
     public static void checkUnitValid(String purchaseCost) {
         boolean isUnit = Integer.parseInt(purchaseCost) % 1000 == 0;
         if (!isUnit) {
-            throw new IllegalArgumentException(PURCHASE_COST_UNIT_ERROR);
+            throw new IllegalArgumentException(String.format(PURCHASE_COST_UNIT_ERROR, PRICE_PER_LOTTO));
         }
     }
 
