@@ -34,6 +34,12 @@ public class LottoChecker {
         return new HashMap<>(result);
     }
 
+    void printResult(){
+        saveAllResult();
+        printEachPrizeWinCount();
+        printProfitRate();
+    }
+
     void insertLottos(List<Lotto> lottos) {
         this.lottos = lottos;
     }
