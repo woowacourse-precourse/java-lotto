@@ -14,5 +14,7 @@ public class Controller {
         OutputView.printLottoCount(lottoCount);
 
         List<Lotto> lottos = LottoGame.getLottos(lottoCount);
+
+        OutputView.printLottos(lottos);
     }
 }
