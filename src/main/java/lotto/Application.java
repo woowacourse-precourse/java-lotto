@@ -8,7 +8,9 @@ public class Application {
         // TODO: 프로그램 구현
         User user = new User();
         LotteryMachine lotteryMachine = new LotteryMachine();
-        lotteryMachine.purchaseLottery(user);
+
+        user.purchaseLottery(lotteryMachine);
+
         lotteryMachine.drawLottery();
         lotteryMachine.showResult(user);
         lotteryMachine.calculateTotalPrize(user);

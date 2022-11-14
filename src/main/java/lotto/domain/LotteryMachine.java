@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.inputValidators.MoneyValidator;
+import lotto.messages.InputMessage;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,24 +28,18 @@ public class LotteryMachine {
     private Lotto winningLotto;
     private int bonusNumber;
 
-    public void purchaseLottery(User user) {
-        user.setMoney(getUserMoneyInput(user));
-        user.setNumberOfLotteries(calculateNumOfLotteries(user));
-        user.setLotteries(generateLotteries(user.getNumberOfLotteries()));
-    }
 
-    public int getUserMoneyInput(User user) {
-        System.out.println(USER_MONEY_INPUT_MESSAGE);
+    public int getUserMoneyInput() {
+        System.out.println(InputMessage.USER_MONEY_INPUT_MESSAGE.getMessage());
         String userInput = readLine();
         System.out.println();
-        InputValidator validator = new InputValidator();
+        MoneyValidator.validateInputMoney(userInput);
 
-        validator.validateInputMoney(userInput);
         return Integer.parseInt(userInput);
     }
 
-    public int calculateNumOfLotteries(User user) {
-        int numberOfLotteries = user.getMoney() / LOTTERY_PRICE;
+    public int calculateNumOfLotteries(int money) {
+        int numberOfLotteries = money / LOTTERY_PRICE;
         System.out.println(numberOfLotteries + PURCHASED_LOTTERY_NUMBER_MESSAGE);
         return numberOfLotteries;
     }

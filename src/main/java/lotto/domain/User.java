@@ -21,6 +21,13 @@ public class User {
             winningLotteryCounts.put(result, 0);
         }
     }
+
+    public void purchaseLottery(LotteryMachine lotteryMachine) {
+        this.money = lotteryMachine.getUserMoneyInput();
+        this.numberOfLotteries = lotteryMachine.calculateNumOfLotteries(this.money);
+        this.lotteries = lotteryMachine.generateLotteries(this.numberOfLotteries);
+    }
+
     public int getMoney() {
         return money;
     }
