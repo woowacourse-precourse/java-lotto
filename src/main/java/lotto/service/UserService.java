@@ -40,7 +40,13 @@ public class UserService {
 
     public int scanPayMoney() {
         System.out.println(START_MSG);
-        int money = Integer.parseInt(Console.readLine());
+        int money;
+        try {
+            money = Integer.parseInt(Console.readLine());
+        } catch (Exception NumberFormatException) {
+            throw new IllegalArgumentException(INPUT_NOT_INTEGER);
+        }
+
         validateMoney(money);
         return money;
     }
