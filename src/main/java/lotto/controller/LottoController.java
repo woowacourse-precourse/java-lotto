@@ -5,6 +5,7 @@ import lotto.Lotto;
 import lotto.MyLottoList;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoController {
@@ -14,7 +15,12 @@ public class LottoController {
 
     public static Lotto generateOneLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        sortAscendingOrder(numbers);
         return new Lotto(numbers);
+    }
+
+    public static void sortAscendingOrder(List<Integer> numbers) {
+        Collections.sort(numbers);
     }
 
     public static void generateMyLottoList(MyLottoList myLottoList) {
@@ -24,4 +30,5 @@ public class LottoController {
         }
         myLottoList.setLotto(tempList);
     }
+
 }
