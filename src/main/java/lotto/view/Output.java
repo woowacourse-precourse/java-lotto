@@ -14,6 +14,7 @@ public class Output {
     public static final String THIRD_STATISTICS_MESSAGE = "5개 일치 (1,500,000원) - %d개\n";
     public static final String FOURTH_STATISTICS_MESSAGE = "4개 일치 (50,000원) - %d개\n";
     public static final String FIFTH_STATISTICS_MESSAGE = "3개 일치 (5,000원) - %d개\n";
+    public static final String YIELD_MESSAGE = "총 수익률은 %f%%입니다.\n";
 
 
     public static void printInputMoney() {
@@ -44,5 +45,9 @@ public class Output {
         System.out.printf(THIRD_STATISTICS_MESSAGE, winStatistics.get("3"));
         System.out.printf(FOURTH_STATISTICS_MESSAGE, winStatistics.get("4"));
         System.out.printf(FIFTH_STATISTICS_MESSAGE, winStatistics.get("5"));
+    }
+
+    public static void printYield(double yield){
+        System.out.printf(YIELD_MESSAGE, yield);
     }
 }
