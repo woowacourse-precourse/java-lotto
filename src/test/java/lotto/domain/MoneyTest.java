@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class MoneyTest {
 
@@ -21,5 +21,13 @@ class MoneyTest {
 
         // then
         assertThat(amount).isEqualTo(input / lottoPrice);
+    }
+
+    @DisplayName("입력금이 로또 금액으로 나누어 지지 않으면 예외가 발생한다.")
+    @Test
+    void createMoneyByNotDivideByLottoPrice() {
+        assertThatThrownBy(() -> new Money(800))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]");
     }
 }
