@@ -10,6 +10,7 @@ import lotto.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class LottoController {
     private static final OutputView outputView = new OutputView();
     private static final InputView inputView = new InputView();
@@ -32,5 +33,9 @@ public class LottoController {
         outputView.showTotalResult(resultLotto, user.getMoney());
     }
 
-
+    public void UserBuyLotto(){
+        int money = inputView.inputMoney();
+        user.setMoney(money);
+        user.buyLotto();
+    }
 }
