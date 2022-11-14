@@ -17,11 +17,18 @@ import lotto.view.outputView;
 
 public class Controller {
 
-    public void run(){
-        LottoGroup lottoGroup = buyLotto();
-        AnswerLotto answerLotto = getAnswerLotto();
-        Map<WinningRank, Integer> winningDetails = WinningStatistics.getWinningDetails(lottoGroup, answerLotto);
-        printWinningInformation(winningDetails);
+    public boolean run(){
+        try {
+            LottoGroup lottoGroup = buyLotto();
+            AnswerLotto answerLotto = getAnswerLotto();
+            Map<WinningRank, Integer> winningDetails = WinningStatistics.getWinningDetails(
+                    lottoGroup, answerLotto);
+            printWinningInformation(winningDetails);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     private LottoGroup buyLotto(){

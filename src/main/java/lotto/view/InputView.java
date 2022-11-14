@@ -1,8 +1,11 @@
 package lotto.view;
 
+import static lotto.domain.SystemMessage.PATTERN_ERROR_MESSAGE;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class InputView {
@@ -23,7 +26,7 @@ public class InputView {
     }
 
     private enum Validation {
-        REGEX(",");
+        REGEX(","),PATTERN("^[\\d]+, [\\d]+, [\\d]+, [\\d]+, [\\d]+, [\\d]+$");
         private final String value;
 
         Validation(String value) {
@@ -60,7 +63,9 @@ public class InputView {
 
     private static List<Integer> inputLottoNums() {
         final String lottoNumber = Console.readLine();
+        validateLottoNums(lottoNumber);
         System.out.println();
+
         return splitNumbers(lottoNumber);
     }
 
@@ -68,6 +73,13 @@ public class InputView {
     public static List<Integer> inputLottoAnswerNumber() {
         System.out.println(Message.LOTTO_ANSWER_NUMBER.getValue());
         return inputLottoNums();
+    }
+
+    private static void validateLottoNums(final String rawLottoNumbers) {
+        Pattern PATTERN = Pattern.compile(Validation.PATTERN.getValue());
+        if (!PATTERN.matcher(rawLottoNumbers).matches()) {
+            throw new IllegalArgumentException(PATTERN_ERROR_MESSAGE);
+        }
     }
 
 }
