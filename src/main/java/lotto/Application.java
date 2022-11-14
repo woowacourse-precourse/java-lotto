@@ -22,10 +22,16 @@ public class Application {
     }
 
 
+    public static void printNumberOfTickets() {
+        System.out.println(numberOfTickets + "개를 구매했습니다.");
+    }
+
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
         inputPurchaseAmount();
+        printNumberOfTickets();
 
     }
 }
