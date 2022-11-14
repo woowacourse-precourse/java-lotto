@@ -3,6 +3,8 @@ package lotto.constant;
 import lotto.domain.constant.LottoProperty;
 
 public enum ValidationErrorMessage {
+    EMPTY_VALUE("값을 입력하지 않았습니다."),
+    NOT_NUMBER("숫자만 입력해주세요."),
     INVALID_SIZE(LottoProperty.LENGTH.getProperty() + "개의 숫자를 입력해주세요."),
     INVALID_RANGE(LottoProperty.MIN_NUMBER.getProperty() + "부터 "
             + LottoProperty.MAX_NUMBER.getProperty() +"까지의 숫자만 허용됩니다."),
