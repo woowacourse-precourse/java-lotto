@@ -21,17 +21,10 @@ public class Application {
         io.outputLottoCount(buyLotto.lottoCount);
 
         // 구매한 로또 목록 리스트 생성, 여기부터는 buylottos에서 할 일?
-        List<List<Integer>> lottoLists = new ArrayList<>();
-
-        // 구매할 로또 수에 맞게 응모 로또 제작
-        for (int i = 0; i < buyLotto.lottoCount; i++) {
-            List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            Collections.sort(lottoNumbers);
-            lottoLists.add(lottoNumbers);
-        }
+        List<List<Integer>> lottoSet = buyLotto.getLottoSet(buyLotto.lottoCount);
 
         // 응모 로또 출력
-        for (List<Integer> lottoList : lottoLists) {
+        for (List<Integer> lottoList : lottoSet) {
             System.out.println(lottoList);
         }
 
@@ -47,7 +40,7 @@ public class Application {
         io.inputBonusNumber(inputNumbers);
 
         // 응모한 로또들과 정답 로또를 비교하여 몇 등을 몇 번 했는지에 대한 결과를 리스트로 반환
-        Calculator calculator = new Calculator(lottoLists, inputNumbers);
+        Calculator calculator = new Calculator(lottoSet, inputNumbers);
         List<Integer> result = calculator.getResult();
 
         // 결과 리스트에 따른 문구 출력
