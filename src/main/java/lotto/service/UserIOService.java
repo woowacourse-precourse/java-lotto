@@ -38,7 +38,7 @@ public class UserIOService {
     public List<Integer> scanWinningNumber(){
         System.out.println(SCAN_ANSWER_MSG);
         List<Integer> scanNumbers = Arrays.stream(Console.readLine().split(","))
-            .mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
+            .mapToInt(Integer::valueOf).sorted().boxed().collect(Collectors.toList());
         validateAnswer(scanNumbers);
         return scanNumbers;
     }
@@ -74,7 +74,7 @@ public class UserIOService {
         throw new IllegalArgumentException(ANSWER_COUNT_OVER_ERROR);
     }
 
-    public int scanBonusAnswer(List<Integer> lottoNumbers){
+    public int scanBonusNumber(List<Integer> lottoNumbers){
         System.out.println(BLANK_BR+SCAN_BONUS_NUMBER_MSG);
         int bonusNumber = Integer.parseInt(Console.readLine());
         validateBonusNumber(bonusNumber,lottoNumbers);
