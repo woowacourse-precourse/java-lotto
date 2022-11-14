@@ -29,7 +29,7 @@ public class Lotto {
         }
     }
 
-    public static List<List<Integer>> makeLottoByRandomNumbers (int countPurchasing) {
+    public static List<List<Integer>> makeLottoByRandomNumbers (double countPurchasing) {
         List<List<Integer>> purchasedLotteries = new ArrayList<>();
 
         for(int i = 0; i<countPurchasing; i++) {

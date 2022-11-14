@@ -1,6 +1,10 @@
 package lotto;
 
+import static lotto.domain.Service.getYield;
+import static lotto.domain.Service.inputMoney;
+
 import java.util.List;
+import lotto.domain.Check;
 import lotto.domain.Lotto;
 import lotto.domain.Service;
 import lotto.util.Constant;
@@ -10,7 +14,8 @@ public class GameProcess {
     public static void gameStart() {
         Output.gameStart();
 
-        int countPurchasing = Service.inputMoney();
+        double payMoney = inputMoney();
+        double countPurchasing = Check.countBuyLotto(payMoney);
         List<List<Integer>> purchasedLotteries = Lotto.makeLottoByRandomNumbers(countPurchasing);
         Output.informationOnPurchasedLottoNumbers(purchasedLotteries);
 
@@ -23,12 +28,9 @@ public class GameProcess {
         Output.beginAnnouncementOfResult();
         List<List<Integer>> firstResultList = Service.firstCompareLottoNumber(purchasedLotteries, winningNumbers);
         Service.scoreLotteries(firstResultList, bonusNumber);
+        String yield = getYield(payMoney);
 
-        System.out.println(Constant.FIRSTPLACE);
-        System.out.println(Constant.SECONDPLACE);
-        System.out.println(Constant.THIDPLACE);
-        System.out.println(Constant.FOURTHPLACE);
-        System.out.println(Constant.FIFTHPLACE);
+        Output.resultAnnouncement(yield);
 
     }
 }
