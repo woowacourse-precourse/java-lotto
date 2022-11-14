@@ -12,7 +12,7 @@ public class LottoStore {
     private static List<Integer> winningNumber;
     private static int bonus;
     private static List<LottoResult> lottoResult;
-    private static int[] count = new int[5];
+    private static int[] countResult = new int[5];
     private static int profit = 0;
 
 
@@ -45,39 +45,43 @@ public class LottoStore {
             lottoResult.add(LottoResultJudge.getInstance.judgeLotto(userLotto.getLotto(), winningNumber, bonus));
         }
 
-        for (LottoResult lottoResult: lottoResult) {
-            if (lottoResult == LottoResult.FIRST) {
-                count[0]++;
-                profit += LottoResult.FIRST.getPrize();
-            }
-            if (lottoResult == LottoResult.SECOND) {
-                count[1]++;
-                profit += LottoResult.SECOND.getPrize();
-            }
-            if (lottoResult == LottoResult.THIRD) {
-                count[2]++;
-                profit += LottoResult.THIRD.getPrize();
-            }
-            if (lottoResult == LottoResult.FOURTH) {
-                count[3]++;
-                profit += LottoResult.FOURTH.getPrize();
-            }
-            if (lottoResult == LottoResult.FIFTH) {
-                count[4]++;
-                profit += LottoResult.FIFTH.getPrize();
-            }
-        }
+        setLottoResult();
     }
 
 
     public void statsLotto() {
         System.out.println("\n당첨통계\n---");
-        System.out.println(LottoResult.FIFTH.getName() + count[4] + "개");
-        System.out.println(LottoResult.FOURTH.getName() + count[3] + "개");
-        System.out.println(LottoResult.THIRD.getName() + count[2] + "개");
-        System.out.println(LottoResult.SECOND.getName() + count[1] + "개");
-        System.out.println(LottoResult.FIRST.getName() + count[0] + "개");
+        System.out.println(LottoResult.FIFTH.getName() + countResult[4] + "개");
+        System.out.println(LottoResult.FOURTH.getName() + countResult[3] + "개");
+        System.out.println(LottoResult.THIRD.getName() + countResult[2] + "개");
+        System.out.println(LottoResult.SECOND.getName() + countResult[1] + "개");
+        System.out.println(LottoResult.FIRST.getName() + countResult[0] + "개");
 
         System.out.println("총 수익률은 " + ProfitCalculator.getInstance.profitPercent(money, profit) + "%입니다.");
+    }
+
+    private void setLottoResult() {
+        for (LottoResult lottoResult: lottoResult) {
+            if (lottoResult == LottoResult.FIRST) {
+                countResult[0]++;
+                profit += LottoResult.FIRST.getPrize();
+            }
+            if (lottoResult == LottoResult.SECOND) {
+                countResult[1]++;
+                profit += LottoResult.SECOND.getPrize();
+            }
+            if (lottoResult == LottoResult.THIRD) {
+                countResult[2]++;
+                profit += LottoResult.THIRD.getPrize();
+            }
+            if (lottoResult == LottoResult.FOURTH) {
+                countResult[3]++;
+                profit += LottoResult.FOURTH.getPrize();
+            }
+            if (lottoResult == LottoResult.FIFTH) {
+                countResult[4]++;
+                profit += LottoResult.FIFTH.getPrize();
+            }
+        }
     }
 }
