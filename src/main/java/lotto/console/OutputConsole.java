@@ -10,4 +10,10 @@ public class OutputConsole {
         System.out.printf("%d개를 구매했습니다.\n",lottoCount);
     }
 
+    public void randomNumbers(List<List<Integer>> numbers){
+        for (List<Integer> number : numbers) {
+            System.out.println(number);
+        }
+    }
+
 }
