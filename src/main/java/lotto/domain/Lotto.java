@@ -21,10 +21,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private static List<Integer> createRandomNumbers() {
-        return pickUniqueNumbersInRange(START_NUM, END_NUM, LOTTO_SIZE);
-    }
-
     public static Lotto createLotto() {
         Set<Integer> duplicate = new HashSet<>();
         while (duplicate.size() != LOTTO_SIZE) {
@@ -37,6 +33,10 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    private static List<Integer> createRandomNumbers() {
+        return pickUniqueNumbersInRange(START_NUM, END_NUM, LOTTO_SIZE);
     }
 
     private void validate(List<Integer> numbers) {
