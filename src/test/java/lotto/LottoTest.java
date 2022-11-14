@@ -109,4 +109,67 @@ class LottoTest {
         assertThat(userLotto.matchLottoWithLuckyNumber(luckyLotto, luckyNo))
             .isEqualTo(RANKING.NONE);
     }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복되어 예외를 발생한다.")
+    @Test
+    void match6NumberAndLuckyNo() {
+        Lotto luckyLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
+        Lotto userLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
+        int luckyNo = 11;
+        assertThatThrownBy(() -> userLotto.matchLottoWithLuckyNumber(luckyLotto, luckyNo))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호를 맞추고 번호 5개를 맞춰서 2등을 탄다.")
+    @Test
+    void match5NumberAndLuckyNo() {
+        Lotto luckyLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
+        Lotto userLotto = new Lotto(List.of(1, 3, 5, 7, 9, 15));
+        int luckyNo = 15;
+        assertThat(userLotto.matchLottoWithLuckyNumber(luckyLotto, luckyNo))
+            .isEqualTo(RANKING.SECOND);
+    }
+
+    @DisplayName("보너스 번호를 맞추고 번호 4개를 맞춰서 3등을 받는다.")
+    @Test
+    void match4NumberAndLuckyNo() {
+        Lotto luckyLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
+        Lotto userLotto = new Lotto(List.of(1, 3, 5, 7, 10, 15));
+        int luckyNo = 15;
+        assertThat(userLotto.matchLottoWithLuckyNumber(luckyLotto, luckyNo))
+            .isEqualTo(RANKING.THIRD);
+    }
+
+    @DisplayName("보너스 번호를 맞추고 번호 3개를 맞춰서 4등을 받는다.")
+    @Test
+    void match3NumberAndLuckyNo() {
+        Lotto luckyLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
+        Lotto userLotto = new Lotto(List.of(1, 3, 5, 8, 10, 15));
+        int luckyNo = 15;
+        assertThat(userLotto.matchLottoWithLuckyNumber(luckyLotto, luckyNo))
+            .isEqualTo(RANKING.FORTH);
+    }
+
+    @DisplayName("보너스 번호를 맞추고 번호 2개이 맞춰서 5등을 받는다.")
+    @Test
+    void match2NumberAndLuckyNo() {
+        Lotto luckyLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
+        Lotto userLotto = new Lotto(List.of(1, 3, 4, 8, 10, 15));
+        int luckyNo = 15;
+        assertThat(userLotto.matchLottoWithLuckyNumber(luckyLotto, luckyNo))
+            .isEqualTo(RANKING.FIFTH);
+    }
+
+    @DisplayName("보너스 번호를 맞추고 번호 1개 이하로 맞춰서 등수를 받지 못한다.")
+    @Test
+    void matchUnder1NumberAndLuckyNo() {
+        Lotto luckyLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
+        Lotto userLotto = new Lotto(List.of(1, 4, 6, 8, 10, 15));
+        int luckyNo = 15;
+        assertThat(userLotto.matchLottoWithLuckyNumber(luckyLotto, luckyNo))
+            .isEqualTo(RANKING.NONE);
+        userLotto = new Lotto(List.of(2, 4, 6, 8, 10, 15));
+        assertThat(userLotto.matchLottoWithLuckyNumber(luckyLotto, luckyNo))
+            .isEqualTo(RANKING.NONE);
+    }
 }

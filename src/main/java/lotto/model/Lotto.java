@@ -53,6 +53,12 @@ public class Lotto {
 
     public RANKING matchLottoWithLuckyNumber(Lotto luckyLotto, int luckyNumber) {
         int countBall = createCountBallByMatchNumber(luckyLotto);
+        if (numbers.contains(luckyNumber)) {
+            if (countBall == RANKING.FIRST.getCountBall()) {
+                throw new IllegalArgumentException();
+            }
+            return getRankingByCountBallIncludeLuckyNumber(countBall);
+        }
         return getRankingByCountBall(countBall);
     }
 
@@ -66,7 +72,23 @@ public class Lotto {
         return count;
     }
 
-    public RANKING getRankingByCountBall(int countBall) {
+    private RANKING getRankingByCountBallIncludeLuckyNumber(int countBall) {
+        if (countBall == RANKING.SECOND.getCountBall()) {
+            return RANKING.SECOND;
+        }
+        if (countBall == RANKING.FORTH.getCountBall()) {
+            return RANKING.THIRD;
+        }
+        if (countBall == RANKING.FIFTH.getCountBall()) {
+            return RANKING.FORTH;
+        }
+        if (countBall == RANKING.NONE.getCountBall()) {
+            return RANKING.FIFTH;
+        }
+        return RANKING.NONE;
+    }
+
+    private RANKING getRankingByCountBall(int countBall) {
         if (countBall == RANKING.FIRST.getCountBall()) {
             return RANKING.FIRST;
         }
