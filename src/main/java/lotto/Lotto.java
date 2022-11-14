@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -10,11 +11,14 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(){
-        numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45,6));
+        List<Integer> ls = Randoms.pickUniqueNumbersInRange(1,45,6);
+        Collections.sort(ls);
+        numbers = new ArrayList<>(ls);
     }
     public Lotto(List<Integer> numbers) {
         isValidList(numbers);
-        this.numbers = numbers;
+        Collections.sort(numbers);
+        this.numbers = new ArrayList<>(numbers);
     }
 
     protected static boolean isBetween1And45(int num) {
