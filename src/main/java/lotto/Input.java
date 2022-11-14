@@ -33,14 +33,18 @@ public class Input {
 
     public static List<Integer> getWinningNumbers() {
         String input = Console.readLine();
-        validWinning6Numbers(input);
         String[] split = input.split(",");
+        validWinning6Numbers(split);
         validWinningRepetition(split);
-        return toIntegerList(split);
+        List<Integer> numbers = toIntegerList(split);
+        valid1to45(numbers);
+        return numbers;
     }
 
-    public static int getBonusNumber() {
+    public static int getBonusNumber(List<Integer> winning) {
         int input = getInput();
+        validBonusRepetition(input, winning);
+        valid1to45(input);
         return input;
     }
 
@@ -50,7 +54,7 @@ public class Input {
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 입력 값이 숫자가 아닙니다.");
             throw new IllegalArgumentException();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("[ERROR] 입력 값이 잘못되었습니다.");
             throw new IllegalArgumentException();
         }
@@ -63,18 +67,41 @@ public class Input {
         }
     }
 
-    private static void validWinning6Numbers(String input) throws IllegalArgumentException {
-        if (input.length() != 11) {
+    private static void validWinning6Numbers(String[] split) throws IllegalArgumentException {
+        if (split.length != 6) {
             System.out.println("[ERROR] 쉼표로 구분된 6개의 문자가 아닙니다.");
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validWinningRepetition(String[] split) throws IllegalArgumentException{
+    private static void validWinningRepetition(String[] split) throws IllegalArgumentException {
         HashSet<String> removeDuplication = new HashSet<>(List.of(split));
-        if (removeDuplication.size()!=6){
+        if (removeDuplication.size() != 6) {
             System.out.println("[ERROR] 중복되는 당첨 번호가 있습니다.");
             throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validBonusRepetition(int bonus, List<Integer> winning) throws IllegalArgumentException {
+        if (winning.contains(bonus)) {
+            System.out.println("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void valid1to45(int number) throws IllegalArgumentException {
+        if ((number > 45) || (number < 1)) {
+            System.out.println("[ERROR] 숫자가 1에서 45 사이의 값이 아닙니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void valid1to45(List<Integer> numbers) throws IllegalArgumentException {
+        for (int number : numbers) {
+            if ((number > 45) || (number < 1)) {
+                System.out.println("[ERROR] 숫자가 1에서 45 값이 아닙니다.");
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
