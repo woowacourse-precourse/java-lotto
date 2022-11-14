@@ -1,8 +1,8 @@
 package lotto.view;
 
-import java.util.ArrayList;
 import java.util.List;
 import lotto.constant.Constant;
+import lotto.util.Convertor;
 import lotto.util.WinnerInfo;
 
 public class View {
@@ -29,15 +29,10 @@ public class View {
 
     public static void printPurchaseInformation(int lottoAmount, List<List<Integer>> lottoNumbers) {
         StringBuilder stringBuilder = new StringBuilder();
-
         System.out.printf(PURCHASE_INFORMATION_MESSAGE, lottoAmount);
+
         for (int i = 0; i < lottoAmount; i++) {
-            List<Integer> lotto = new ArrayList<>();
-
-            for (int j = 0; j < Constant.LOTTO_SIZE; j++) {
-                lotto.add(lottoNumbers.get(i).get(j));
-            }
-
+            List<Integer> lotto = Convertor.ExtractList(lottoNumbers, i);
             stringBuilder.append(lotto).append("\n");
         }
         System.out.println(stringBuilder);
