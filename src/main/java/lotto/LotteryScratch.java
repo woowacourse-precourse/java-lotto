@@ -11,11 +11,16 @@ public class LotteryScratch {
     List<Lotto> lottos;
     int count;
 
-    public LotteryScratch(WinningNumber winningNumber, LotteryDrawMachine lotteryDrawMachine) {
+    public LotteryScratch(WinningNumber winningNumber, List<Lotto> lottos, User user) {
+        this.user = user;
         this.winningNumber = winningNumber;
-        user = lotteryDrawMachine.getUser();
-        lottos = lotteryDrawMachine.getLottos();
+        this.lottos = lottos;
         compareLotto();
+        settleEarningRate();
+    }
+
+    public void settleEarningRate() {
+        user.settleEarningsRate();
     }
 
     public void compareLotto() {
@@ -28,7 +33,7 @@ public class LotteryScratch {
         Map<Rank, Integer> ranks = user.getRanks();
         List<Integer> original = lotto.getNumbers();
         Lotto winningLotto = winningNumber.getWinningLotto(); // 1, 2, 3, 4, 5, 6
-        lotto.retainAll(winningLotto);
+        (lotto.getNumbers()).retainAll(winningLotto.getNumbers());
         int size = lotto.size();
 
         if (size == 6) {

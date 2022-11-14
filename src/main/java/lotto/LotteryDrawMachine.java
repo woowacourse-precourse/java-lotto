@@ -13,7 +13,7 @@ public class LotteryDrawMachine {
     UIManager ui = new UIManager();
     int numOfPurchasableLotto;
     WinningNumber wn;
-
+    LotteryScratch lotteryScratch;
 
     public LotteryDrawMachine() {
         user = new User(ui.enterPurchaseAmount());
@@ -22,6 +22,7 @@ public class LotteryDrawMachine {
         String winningNumber = ui.enterWinningNumber();
         String bonusNumber = ui.enterBonusNumber();
         wn = new WinningNumber(winningNumber, bonusNumber);
+        lotteryScratch = new LotteryScratch(wn, lottos, user);
         ui.winningStat(user);
     }
 

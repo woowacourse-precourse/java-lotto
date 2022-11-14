@@ -25,10 +25,6 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public Lotto retainAll(Lotto lotto) {
-        return this.retainAll(lotto);
-    }
-
     public int size() {
         return numbers.size();
     }
