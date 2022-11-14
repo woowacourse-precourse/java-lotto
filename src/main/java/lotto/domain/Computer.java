@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 import static lotto.constant.GameConstants.*;
 
 public class Computer {
-    private List<Integer> winningNumbers;
-    private int bonusNumber;
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
 
     public Computer() {
         String winningNumber = InputView.readWinningNumber();
