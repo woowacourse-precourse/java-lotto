@@ -22,6 +22,88 @@
   - [O] 수익률을 % 형식으로 출력합니다. - CalculateTotalEarningGenerator#calculateTotalEarning()
 
 
+## 🚀 기능 상세 기술
+
+- 사용된 클래스 리스트
+  - Application
+  - BonusNumberCalculatorGenerator
+  - BonusNumberGenerator
+  - CalculateTotalEarningGenerator
+  - CompareNumber
+  - CompareNumberWithBonus
+  - CorrectNumberGenerator
+  - DivideInputMoneyGenerator
+  - EarningRateGenerator
+  - FinalUserNumberGenerator
+  - InputCorrectNumberGenerator
+  - InputUserMoney
+  - JudgmentBonusNumberGenerator
+  - JudgmentInputNumberGenerator
+  - Lotto
+  - PrintInputMoneyGenerator
+  - PrintWinnerStatisticsGenerator
+  - UserNumberGenerator
+
+
+**핵심기능**
+> - 로또 정답 숫자와 로또 발행 숫자를 비교하여 케이스별 로또 결과 출력 기능
+> - 수익률을 계산 출력 기능
+> - 오입력시 예외처리 기능
+
+<br>
+
+**구현 흐름도**
+
+구입 금액 숫자를 입력받음 -> 구입한 개수 만큼 로또 발행 및 번호 출력 -> 로또 정답 숫자 입력
+
+-> 로또 정답 숫자와 로또 발행 숫자를 모두 비교 -> 로또 결과 저장 -> 로또 결과 반환
+
+<br>
+
+
+### Application
+메인 함수
+<br>
+
+중요 메소드들을 선언하여 핵심기능들을 동작시키는 클래스
+Input된 구입금액 - 수익률 계산을 위해 재할당
+
+### BonusNumberCalculatorGenerator
+보너스 숫자
+
+
+
+
+
+
+
+
+### BonusNumberGenerator
+### CalculateTotalEarningGenerator
+### CompareNumber
+### CompareNumberWithBonus
+### CorrectNumberGenerator
+### DivideInputMoneyGenerator
+### EarningRateGenerator
+### FinalUserNumberGenerator
+### InputCorrectNumberGenerator
+### InputUserMoney
+### JudgmentBonusNumberGenerator
+### JudgmentInputNumberGenerator
+### Lotto
+### PrintInputMoneyGenerator
+### PrintWinnerStatisticsGenerator
+### UserNumberGenerator
+
+
+
+
+
+
+
+
+
+
 
 
 - 2 주차 주요 피드백
