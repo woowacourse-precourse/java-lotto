@@ -7,15 +7,15 @@ import java.util.Set;
 public class Validate {
     public long validMoney(long money)throws IllegalArgumentException{
         if(money < 1000)
-            throw new IllegalArgumentException("[ERROR] 1000원 이상의 금액을 입력하세요.");
+            throw new IllegalArgumentException(ErrorMessage.LESS_COAST.getErrorMessage());
         if(money % 1000 != 0)
-            throw new IllegalArgumentException("[ERROR] 1000원 단위로 구매해주세요.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_COAST.getErrorMessage());
         return money;
     }
     public void containOthers(String input)throws IllegalArgumentException{
         for(int i = 0; i < input.length(); i++){
             if(!Character.isDigit(input.charAt(i)))
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요.");
+                throw new IllegalArgumentException(ErrorMessage.NOT_DIGIT.getErrorMessage());
         }
     }
     public void validateUserInput(String input)throws IllegalArgumentException{
@@ -29,12 +29,12 @@ public class Validate {
         int bonusNumber = Integer.parseInt(userInput);
         correctNumberRange(bonusNumber);
         if(winningNumber.contains(bonusNumber))
-            throw new IllegalArgumentException("[ERROR] 당첨번호와 겹치지 않는 숫자를 입력하세요.");
+            throw new IllegalArgumentException(ErrorMessage.CONTAIN_WINNINGNUMBER.getErrorMessage());
     }
     public void validUserWinningNumber(List<Integer> winningNumber)throws IllegalArgumentException{
-        Set<Integer> overlapCheck = new HashSet<>(winningNumber);
-        if (overlapCheck.size() != winningNumber.size()) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+        Set<Integer> duplicatedNumber = new HashSet<>(winningNumber);
+        if (duplicatedNumber.size() != winningNumber.size()) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER.getErrorMessage());
         }
         for (Integer lottoNumber : winningNumber) {
             correctNumberRange(lottoNumber);
@@ -42,7 +42,7 @@ public class Validate {
     }
     public void correctNumberRange(int number)throws IllegalArgumentException{
         if(number < 1 || number > 45) {
-            throw new IllegalArgumentException("[ERROR] 1 ~ 45 사이의 숫자를 입력하세요.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER_RANGE.getErrorMessage());
             }
         }
 }
