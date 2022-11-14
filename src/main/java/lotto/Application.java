@@ -5,29 +5,31 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Application {
     public static int getMoney(){
         String inputMoney = Console.readLine();
+
         isInteger(inputMoney);
 
-        int money = Integer.parseInt((inputMoney));
-        isSplit(money);
+        int money;
+        money = Integer.parseInt(inputMoney);
 
+        isSplit(money);
         return money;
     }
     public static void isSplit(int money){
         if (money % 1000 != 0){
-            throw new IllegalArgumentException("다시 입력 해주세요");
+            throw new IllegalArgumentException("구입금액은 1000으로 나누어 떨어지는 숫자여야 합니다.");
         }
     }
-    public static void isInteger(String inputMoney){
+    public static boolean isInteger(String inputMoney){
+
         for(int i = 0; i < inputMoney.length(); i++){
             if (inputMoney.charAt(i) < '0' || inputMoney.charAt(i) > '9' ){
-                System.err.println("[ERROR]");
-                throw new IllegalArgumentException("다시 입력 해주세요");
+                    throw new IllegalArgumentException("로또 번호는 1부터 45사이의 숫자여야 합니다.");
             }
         }
+        return  true;
     }
     public static List<Integer> generateLotto(){ // 숫자 생성
         List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1,45,6);
@@ -58,14 +60,14 @@ public class Application {
                 continue;
             }
             if (inputNum.charAt(i) < '0' || inputNum.charAt(i) > '9' ){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("당첨 번호는 쉼표로 구분된 6개의 숫자들이여야 합니다.");
             }
         }
     }
 
     public static void validateNumCnt(List<Integer> winningNums){
         if (winningNums.size() != 6){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("당첨 번호는 쉼표로 구분된 6개의 숫자들이여야 합니다.");
         }
     }
 
@@ -77,6 +79,11 @@ public class Application {
         return bonusNum;
     }
 
+    public static void validateBonusNum(List<Integer> winningNum, int bonusNum){
+        if (winningNum.contains(bonusNum)) {
+            throw new IllegalArgumentException("보너스 번호는 당첨 번호에 없는 숫자여야 합니다.");
+        }
+    }
     public static void validateBonusNum(String bonusNum){
         if(bonusNum.length() != 1){
             throw new IllegalArgumentException("숫자 하나만 입력해 주세요");
@@ -161,13 +168,18 @@ public class Application {
         List<Integer> winnigNum = getWinningNum();
 
         int bonusNum = getBonusNum();
+        validateBonusNum(winnigNum, bonusNum);
 
         printStatistic(generatedLottos, winnigNum, bonusNum, money);
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        execute();
+        try{
+            execute();
+        }catch (IllegalArgumentException e){
+            System.out.println("[ERROR] : " + e.getMessage());
+        }
     }
 
 }
