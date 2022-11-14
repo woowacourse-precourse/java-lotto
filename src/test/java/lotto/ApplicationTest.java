@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -250,6 +251,26 @@ class ApplicationTest extends NsTest {
         })
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 기존 당첨 번호와 중복된 숫자를 입력할 수 없습니다.");
+    }
+
+    @Test
+    void 당첨결과출력_기능테스트() {
+        List<Lotto> lottos = List.of(
+                new Lotto(List.of(1,2,3,4,5,6)),
+                new Lotto(List.of(1,2,3,4,5,7)),
+                new Lotto(List.of(1,2,3,4,5,8)),
+                new Lotto(List.of(1,2,3,4,6,7))
+        );
+        Lotto luckyLotto = new Lotto(List.of(1,2,3,4,5,6));
+        int bonusNumber = 7;
+        HashMap<Application.Prize, Integer> answer = new HashMap<>();
+        answer.put(Application.Prize.FIRST, 1);
+        answer.put(Application.Prize.SECOND, 2);
+        answer.put(Application.Prize.THIRD, 1);
+        assertSimpleTest(() -> {
+            HashMap<Application.Prize, Integer> prizes = Application.getLottoResult(lottos, luckyLotto, bonusNumber);
+            assertThat(prizes).isEqualTo(answer);
+        });
     }
 
     @Test
