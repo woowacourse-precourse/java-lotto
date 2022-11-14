@@ -11,7 +11,7 @@ public class Yield {
 
     public Double getYield() {
         // 5-3. 소수점 둘째 자리에서 반올림한 수익률을 구한다.
-        return Math.round(((double) reward() / Integer.parseInt(this.price.getPrice())) * 100) / 100.0;
+        return Math.round(((double) reward() / Integer.parseInt(this.price.getPrice())) * 1000) / 10.0;
     }
 
     private Integer reward() {
