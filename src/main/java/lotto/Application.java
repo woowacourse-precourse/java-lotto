@@ -19,5 +19,6 @@ public class Application {
         Lotto lotto = new Lotto(answerNum);
         List<List<Integer>> tmp =  lotto.lottoNumber(parseInput);
         int [] answer = lotto.check(tmp,bonusNum);
+        user.announce(answer,parseInput*1000);
     }
 }

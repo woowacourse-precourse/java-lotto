@@ -73,4 +73,32 @@ public class User {
         aaa+="]";
         System.out.println(aaa);
     }
+    public static String [] announceList(){
+        String [] ans = new String[7];
+        ans[2]="3개 일치 (5,000원) - ";
+        ans[3]="4개 일치 (50,000원) - ";
+        ans[4]="5개 일치 (1,500,000원) - ";
+        ans[5]="5개 일치, 보너스 볼 일치 (30,000,000원) - ";
+        ans[6]="6개 일치 (2,000,000,000원) - ";
+        return ans;
+    }
+    public  static  void announce(int [] num,int buyValue){
+        String [] ans = announceList();
+        int [] lottoValue = {0,0,5000,50000,1500000,30000000,2000000000};
+        int sum =0;
+        for(int idx =2;idx<num.length;idx++){ //2~6까지 반복
+            String aaa=ans[idx];
+            aaa+=String.valueOf(num[idx]);
+            aaa+="개";
+            if(num[idx] !=0) {
+                sum += lottoValue[idx]*num[idx];
+            }
+            System.out.println(aaa);
+        }
+        String aaa="총 수익률은 ";
+
+        aaa+=String.format("%.1f",(double)sum/buyValue*100);  //이거 소수점 2쨰 자리에서 반올림
+        aaa+="%입니다.";
+        System.out.println(aaa);
+    }
 }
