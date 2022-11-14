@@ -20,10 +20,7 @@ public enum ErrorMessage {
 
     BONUS_NUMBER_BOUNDARY_ERROR(ERROR.getErrorMessage() + "보너스 번호는 1~45 사이 값을 입력해야 합니다."),
 
-    BONUS_NUMBER_DUPLICATED_ERROR(ERROR.getErrorMessage() + "보너스 번호는 당첨 번호와 중복되지 않아야 합니다.")
-
-
-    ;
+    BONUS_NUMBER_DUPLICATED_ERROR(ERROR.getErrorMessage() + "보너스 번호는 당첨 번호와 중복되지 않아야 합니다.");
 
     private final String errorMessage;
 

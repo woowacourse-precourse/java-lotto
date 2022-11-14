@@ -15,9 +15,10 @@ public enum NumberType {
 
     TEN(10),
 
+    FORTY_FIVE(45),
     HUNDRED(100),
 
-    FORTY_FIVE(45),
+    NUMBER_OF_PRIZE_TYPE(5),
 
     FIRST_PRIZE(4),
     SECOND_PRIZE(3),
@@ -35,9 +36,7 @@ public enum NumberType {
 
     FOURTH_PRIZE_REWARD(50_000 / IN_THOUSANDS.getNumberType()),
 
-    FIFTH_PRIZE_REWARD(5_000 / IN_THOUSANDS.getNumberType())
-
-    ;
+    FIFTH_PRIZE_REWARD(5_000 / IN_THOUSANDS.getNumberType());
 
     private final int numberType;
 

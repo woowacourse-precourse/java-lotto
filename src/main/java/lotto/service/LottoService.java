@@ -45,7 +45,6 @@ public class LottoService {
         pickAndSaveLotto(buyCount);
         List<Lotto> lottos = lottoRepository.findAll();
         output.printAllLottos(lottos);
-
     }
 
     public void pickAndSaveLotto(int buyCount) {
@@ -137,7 +136,7 @@ public class LottoService {
     }
 
     public int[] getPrizeResult(LuckyNumber luckyNumber) {
-        int[] prizeResult = new int[5];
+        int[] prizeResult = new int[NumberType.NUMBER_OF_PRIZE_TYPE.getNumberType()];
         List<Lotto> lottos = lottoRepository.findAll();
         for (Lotto lotto : lottos) {
             countPrizeResultForEachLotto(lotto, luckyNumber, prizeResult);

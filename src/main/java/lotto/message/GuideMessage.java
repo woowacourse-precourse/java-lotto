@@ -27,8 +27,7 @@ public enum GuideMessage {
     PRIZE_UNIT("개"),
 
     PROFIT_RATE_PREFIX_MESSAGE("총 수익률은 "),
-    PROFIT_RATE_SUFFIX_MESSAGE("%입니다.")
-    ;
+    PROFIT_RATE_SUFFIX_MESSAGE("%입니다.");
 
     private final String guideMessage;
 
