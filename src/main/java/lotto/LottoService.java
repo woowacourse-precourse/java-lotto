@@ -1,5 +1,6 @@
 package lotto;
 
+import static lotto.ui.ConsoleMessage.INPUT_BONUS_NUMBER;
 import static lotto.ui.ConsoleMessage.INPUT_PRICE;
 import static lotto.ui.ConsoleMessage.INPUT_WINNING_LOTTOS;
 import static lotto.ui.LottoConsole.*;
@@ -7,6 +8,7 @@ import static lotto.util.LottoNumberGenerator.*;
 
 import java.util.Collections;
 import java.util.List;
+import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
 import lotto.domain.UserLottoInfo;
 import lotto.domain.WinningLotto;
@@ -15,6 +17,7 @@ public class LottoService {
 
     private UserLottoInfo userLottoInfo;
     private WinningLotto winningLotto;
+    private BonusNumber bonusNumber;
 
     public LottoService() {
     }
@@ -63,5 +66,15 @@ public class LottoService {
 
     private void storeWinningLottos(String winningLottoInput) {
         winningLotto = new WinningLotto(winningLottoInput);
+    }
+
+    public void inputBonusNumber() {
+        printMessage(INPUT_BONUS_NUMBER.toString());
+        String bonusNumberInput = userInput();
+        storeBonusNumber(bonusNumberInput);
+    }
+
+    private void storeBonusNumber(String bonusNumberInput) {
+        bonusNumber = new BonusNumber(bonusNumberInput, winningLotto.getWinningLottoNumbers());
     }
 }

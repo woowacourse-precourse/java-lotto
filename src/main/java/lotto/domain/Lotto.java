@@ -11,8 +11,8 @@ import java.util.Set;
 
 public class Lotto {
     private static final int LOTTO_NUMBERS_SIZE = 6;
-    public static final int START_NUMBER = 1;
-    public static final int END_NUMBER = 45;
+    private static final int START_NUMBER = 1;
+    private static final int END_NUMBER = 45;
 
     private final List<Integer> numbers;
 
