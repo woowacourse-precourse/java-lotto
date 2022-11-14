@@ -24,7 +24,7 @@ public class InputException {
         validateNumberLength(number, NUMBER_LENGTH);
         validateOnlyNumber(number);
         validateSplitComma(number);
-        validateNotDuplicate(number);
+        validateNotDuplicate(toList(number));
         validateBelow(number);
         return toList(number);
     }
@@ -68,8 +68,7 @@ public class InputException {
         }
     }
 
-    public static void validateNotDuplicate(String number) {
-        List<Integer> numbers = toList(number);
+    public static void validateNotDuplicate(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != NUMBER_LENGTH) {
             exception(NOT_DUPLICATE);
         }
