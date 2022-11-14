@@ -13,10 +13,19 @@ import lotto.ui.UserInterface;
 
 public class LottoMachine {
     public static List<Lotto> publish(int inputMoney) {
+        validate(inputMoney);
         int countOfLottos = getCountOfLottos(inputMoney);
         UserInterface.announceCountOfLottosPublished(countOfLottos);
         List<Lotto> lottos = publishLottosByCount(countOfLottos);
         return lottos;
+    }
+
+    private static void validate(int inputMoney) {
+        boolean isMultipleOf1000 = (inputMoney % 1_000) == 0;
+        if (isMultipleOf1000) {
+            return;
+        }
+        throw new IllegalArgumentException("[ERROR] 1,000의 배수가 아닙니다.");
     }
 
     private static int getCountOfLottos(int inputMoney) {
