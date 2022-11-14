@@ -22,6 +22,17 @@ public class GameResult {
                 .count();
     }
 
+    private int calculatePlace(int matchingNumber, boolean hasBonusNumber) {
+        int place = 0;
+
+        for (WinningConstants nthPlace : WinningConstants.values()) {
+            if (check(matchingNumber, hasBonusNumber, nthPlace)) {
+                place = nthPlace.getPlace();
+            }
+        }
+        return place;
+    }
+
     private boolean check(int matchingNumber, boolean hasBonusNumber, WinningConstants nthPlace) {
         int requiredWinningNumber = nthPlace.getRequiredWinningNumber();
         boolean needsBonusNumber = nthPlace.getNeedsBonusNumber();
