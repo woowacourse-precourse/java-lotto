@@ -39,7 +39,6 @@ public class Result {
 
     public static int countWinningNumber(Lotto lotto, Lotto winningNumber) {
         int cnt = 0;
-
         for (int number : winningNumber.getNumbers()) {
             cnt += containWinningNumber(lotto, number);
         }
@@ -55,7 +54,6 @@ public class Result {
         if (lotto.containNumber(winningNumber)) {
             return 1;
         }
-
         return 0;
     }
 

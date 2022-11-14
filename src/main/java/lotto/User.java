@@ -8,17 +8,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class User {
-    public static final String INPUT_PURCHASE_MONEY = "구입금액을 입력해 주세요.";
-    public static final String PURCHASE_MONEY_MULTIPLE_THOUSAND = "[ERROR] 구입 금액은 1,000원으로 나누어 떨어져야 합니다.";
-    public static final String PURCHASE_MONEY_MORE_THAN_ZERO = "[ERROR] 구입 금액은 양수여야 합니다.";
-
     String money_str;
     int money;
-
     List<Lotto> myLotto = new ArrayList<>();
 
     public void inputPurchaseMoney() {
-        System.out.println(INPUT_PURCHASE_MONEY);
+        System.out.println("구입금액을 입력해 주세요.");
         money_str = Console.readLine();
         checkThatPurchaseMoneyIsRightInput(money_str);
     }
@@ -27,10 +22,10 @@ public class User {
         money = Exception.isInteger(purchaseMoney);
 
         if (Exception.isNotMultipleOfThousand(money)) {
-            throw new IllegalArgumentException(PURCHASE_MONEY_MULTIPLE_THOUSAND);
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원으로 나누어 떨어져야 합니다.");
         }
         if (Exception.isNotPositive(money)) {
-            throw new IllegalArgumentException(PURCHASE_MONEY_MORE_THAN_ZERO);
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 양수여야 합니다.");
         }
     }
 
