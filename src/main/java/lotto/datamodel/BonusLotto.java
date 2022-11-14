@@ -15,13 +15,13 @@ public class BonusLotto {
         return bonusNumber;
     }
     private void reduplication(int number, List<Integer> winnumbers) {
-        if(winnumbers.contains(number)) {
+        if (winnumbers.contains(number)) {
             throw new IllegalArgumentException();
         }
     }
 
     private void range(int number) {
-        if(number < 1 || number > 45){
+        if (number < 1 || number > 45) {
             throw new IllegalArgumentException();
         }
     }

@@ -15,7 +15,7 @@ public class LottoSystem {
         List<Integer> numbers;
 
         UserInteraction user = new UserInteraction();
-        String input = user.money();
+        String input = user.inputMoney();
 
         try{
             PurchaseAmount purchase = new PurchaseAmount(input);

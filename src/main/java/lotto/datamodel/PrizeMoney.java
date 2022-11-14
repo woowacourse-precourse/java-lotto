@@ -1,7 +1,6 @@
 package lotto.datamodel;
 
 import lotto.datamodel.enumdata.Rank;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +17,7 @@ public class PrizeMoney {
         float totalPrize = 0;
 
         for (Rank rank : Rank.values()) {
-            if(rank != Rank.NONE){
+            if (rank != Rank.NONE) {
                 frequency = Collections.frequency(prize, rank.getAmount());
                 totalPrize += ((float)rank.getAmount() / 1000 * frequency);
             }
@@ -30,7 +29,7 @@ public class PrizeMoney {
         int infoCount = 0;
         List<String> moneyInfo = new ArrayList<>(5);
 
-        for(Rank rank : Rank.values()){
+        for (Rank rank : Rank.values()) {
             moneyInfo.add(rank.getInformation());
             infoCount++;
         }
@@ -42,7 +41,7 @@ public class PrizeMoney {
         List<Integer> winingLotto = new ArrayList<Integer>(5);
 
         for (Rank rank : Rank.values()) {
-            if(rank != Rank.NONE){
+            if (rank != Rank.NONE) {
                 winingLotto.add(Collections.frequency(prize, rank.getAmount()));
             }
         }

@@ -1,4 +1,4 @@
-package lotto.datamodel;
+package lotto.datamodel.enumdata;
 
 public enum Rank {
     FIRST(2000000000, "6개 일치 (2,000,000,000원)"),

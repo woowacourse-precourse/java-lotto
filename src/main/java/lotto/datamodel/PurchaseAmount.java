@@ -14,9 +14,9 @@ public class PurchaseAmount {
 
     private int numberValid(String input) {
         int check;
-        try{
+        try {
             check = Integer.parseInt(input);
-        }catch(Exception e) {
+        } catch(Exception e) {
             throw new IllegalArgumentException();
         }
         return check;

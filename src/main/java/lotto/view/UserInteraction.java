@@ -8,7 +8,7 @@ public class UserInteraction {
     public UserInteraction() {
     }
 
-    public String money() {
+    public String inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         return Console.readLine();
     }
@@ -26,23 +26,10 @@ public class UserInteraction {
         return numberTransform(input);
     }
 
-    private List<Integer> numberTransform(String input) {
-        String[] numbers = input.split(",");
-        List<Integer> winNumbers = new ArrayList<>();
-        for(int i = 0; i < numbers.length; i++){
-            winNumbers.add(Integer.parseInt(numbers[i]));
-        }
-        return winNumbers;
-    }
-
     public int bonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         return bonusTransform(input);
-    }
-
-    private int bonusTransform(String input) {
-        return Integer.parseInt(input);
     }
 
     public void printResult(int lottoCount, float totalPrize, List<String> moneyInfo, List<Integer> winingLotto) {
@@ -57,4 +44,16 @@ public class UserInteraction {
         System.out.println("총 수익률은 " + String.format("%.1f", totalPrize/lottoCount * 100)+"%입니다.");
     }
 
+    private List<Integer> numberTransform(String input) {
+        String[] numbers = input.split(",");
+        List<Integer> winNumbers = new ArrayList<>();
+        for (String number : numbers) {
+            winNumbers.add(Integer.parseInt(number));
+        }
+        return winNumbers;
+    }
+
+    private int bonusTransform(String input) {
+        return Integer.parseInt(input);
+    }
 }

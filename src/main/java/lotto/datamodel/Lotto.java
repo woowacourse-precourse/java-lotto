@@ -22,14 +22,14 @@ public class Lotto {
         }
     }
     private void reduplication(List<Integer> numbers){
-        if(numbers.size() != numbers.stream().distinct().count()) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
     }
 
     private void range(List<Integer> numbers) {
-        for(int i = 0; i < numbers.size(); i++){
-            if (numbers.get(i) < 1 || numbers.get(i) >= 45) {
+        for (Integer number : numbers) {
+            if (number < 1 || number >= 45) {
                 throw new IllegalArgumentException();
             }
         }

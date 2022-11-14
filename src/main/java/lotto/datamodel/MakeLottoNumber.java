@@ -14,7 +14,7 @@ public class MakeLottoNumber {
 
     public List<List<Integer>> makeNumbers() {
         List<List<Integer>> lottoNumbers = new ArrayList<List<Integer>>();
-        for(int i = 0; i < lottoCount; i++) {
+        for (int i = 0; i < lottoCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             ArrayList<Integer>changeNumbers = new ArrayList<>(numbers);
             changeNumbers.sort(Comparator.naturalOrder());
