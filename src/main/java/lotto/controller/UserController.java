@@ -49,4 +49,12 @@ public class UserController {
         Lotto lotto = new Lotto(numbers);
         userRepository.setUserWinningNumbers(lotto);
     }
+
+    public void enterBonusNumberAndSave() {
+        winningStatsView.showLineBreak();
+        gameProgressView.showEnterBonusNumberMessage();
+        String bonusNumber = userService.enterBonusNumber();
+        // TODO : 예외 처리 필요
+        userRepository.setUserBonusNumber(Integer.parseInt(bonusNumber));
+    }
 }
