@@ -23,10 +23,11 @@ class LottoSellerTest {
     }
     @Test
     void 예외_테스트() {
-        purchase.payAmount = 8100;
+        String money = "8100";
 
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                purchase.getPayAmount());
+                purchase.validate(money));
+
         assertEquals(ERROR_INPUT_PAY_AMOUNT, exception.getMessage());
     }
 }

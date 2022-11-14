@@ -23,11 +23,13 @@ public class LottoSeller {
     }
 
     public void validate(String inputMoney){
-        if(!inputMoney.equals("[0-9]+")){
-            throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
+        if(!inputMoney.matches("[0-9]+")){
+            System.out.println(ERROR_INPUT_PAY_AMOUNT);
+            throw new IllegalArgumentException();
         }
         if (payAmount % 1000 != 0) {
-            throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
+            System.out.println(ERROR_INPUT_PAY_AMOUNT);
+            throw new IllegalArgumentException();
         }
     }
 
