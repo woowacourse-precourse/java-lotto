@@ -33,7 +33,7 @@
         - [x]  당첨 번호 6개를 입력했는지 검증 기능 → validateSizeOfWinningNumber
         
         - [x]  당첨 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateWinningNumberBetween1And45
-    - [ ]  보너스 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateBonusNumberBetween1And45
+    - [x]  보너스 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateBonusNumberBetween1And45
     - [x]  문자열을 숫자로 변환해주는 기능 → convertStringIntoInt
     - [x]  문자열을 리스트로 변환해주는 기능 → convertStringIntoList 
 
