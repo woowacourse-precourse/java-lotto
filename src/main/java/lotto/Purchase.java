@@ -8,22 +8,15 @@ import static Constant.ErrorMessage.UNITS_THOUSAND;
 public class Purchase {
 
     Integer purchaseAmount;
+    Utils util = new Utils();
 
     public List<Lotto> lottoPurchase() {
-        this.purchaseAmount = numericAmount(Console.readLine());
+        this.purchaseAmount = util.isNumeric(Console.readLine());
         if (purchaseAmount % 1000 != 0) {
             throw new IllegalArgumentException(UNITS_THOUSAND);
         }
 
         LottoGenerator lottoGenerator = new LottoGenerator(purchaseAmount);
         return lottoGenerator.generateLotto();
-    }
-
-    private Integer numericAmount(String amount) {
-        try {
-            return Integer.parseInt(amount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NOT_INTEGER);
-        }
     }
 }
