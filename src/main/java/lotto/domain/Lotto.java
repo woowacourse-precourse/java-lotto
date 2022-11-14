@@ -1,5 +1,6 @@
-package lotto;
+package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -14,7 +15,13 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-    }
 
-    // TODO: 추가 기능 구현
+        List<Integer> checkNumbers = new ArrayList<>();
+        for (Integer i : numbers) {
+            if (checkNumbers.contains(i)) {
+                throw new IllegalArgumentException();
+            }
+            checkNumbers.add(i);
+        }
+    }
 }
