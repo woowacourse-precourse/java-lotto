@@ -12,6 +12,8 @@
 ### 전반적인 흐름
 ![로또](https://user-images.githubusercontent.com/54941130/200999542-ad139ce2-3f41-4895-85e2-61028e848a65.png)
 -----------------
+### UI 분할
+![로또UI분리](https://user-images.githubusercontent.com/54941130/201557191-b2ea34eb-4946-43e9-b320-0124e5c573c7.png)
 -----------------
 ### 기능 구현 필요 목록:
 - [X] 로또 클래스 구현
