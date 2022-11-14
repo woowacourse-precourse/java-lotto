@@ -67,6 +67,9 @@
 
 - [x] 당첨된 등 수를 계산 - WinStatistics#winCounter()
   - [x] 보너스 번호가 포함인지 검사 - WinStatistics#isBonusNumber()
+- [x] 최종 정산 출력 - WinStatistics#showWinStatistics()
+- [x] 최종 계산 - WinStatistics#calculateProfit()
+- [x] 최종 수익률 출력 - WinStatistics#showProfitLotto()
 
 ## 예외 처리
 - [x] 로또를 구매하는 금액이 1000으로 나누어지지 않는 경우
