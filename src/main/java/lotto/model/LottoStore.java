@@ -4,20 +4,18 @@ import java.util.List;
 import lotto.util.Validator;
 
 public class LottoStore {
-    private List<Integer> lotteryNumbers;
+    private Lotto lotto;
     private int bonusNumber;
-    private Validator validator = new Validator();
 
-
-    public LottoStore(List<Integer> numbers, int bonusNumber) {
-        validator.validateNumbers(numbers);
-        this.lotteryNumbers = numbers;
-        validator.validateBonusNumber(numbers, bonusNumber);
+    public LottoStore(List<Integer> lottoNumbers, int bonusNumber) {
+        Lotto lotto = new Lotto(lottoNumbers);
+        this.lotto = lotto;
+        Validator.validateBonusNumber(lotto, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
-    public List<Integer> getLotteryNumbers() {
-        return lotteryNumbers;
+    public List<Integer> getLottoNumbers() {
+        return lotto.getNumbers();
     }
 
     public int getBonusNumber() {
