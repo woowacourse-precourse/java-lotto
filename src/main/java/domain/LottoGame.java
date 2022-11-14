@@ -60,4 +60,11 @@ public class LottoGame {
             matchCounts.set(matchCounts.size() - 1, matchCount + 1);
         }
     }
+
+    private void checkIsPrized(int matchedCount, int bonus) {
+        if (bonus != 1) {
+            int matchCount = matchCounts.get(matchedCount);
+            matchCounts.set(matchedCount, matchCount + 1);
+        }
+    }
 }
