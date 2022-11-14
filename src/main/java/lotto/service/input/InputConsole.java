@@ -15,4 +15,17 @@ public class InputConsole {
         return new Money(Transfer.toInteger(readLine));
     }
 
+    public static LottoNumbers readCorrectNumbers() {
+        String readLine = Console.readLine();
+        String[] splitedReadlines = readLine.split(",");
+
+        List<LottoNumber> tempCorrectLottoNumbers = new ArrayList<>();
+
+        for (String splitedReadline : splitedReadlines) {
+            tempCorrectLottoNumbers.add(new LottoNumber(Transfer.toInteger(splitedReadline)));
+        }
+
+        return new LottoNumbers(tempCorrectLottoNumbers);
+    }
+
 }
