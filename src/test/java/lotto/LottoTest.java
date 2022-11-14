@@ -3,6 +3,8 @@ package lotto;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -21,6 +23,15 @@ class LottoTest {
     void createLottoByDuplicatedNumber() {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호가 1부터 45사이의 숫자가 아닐경우 예외가 발생한다.")
+    @ParameterizedTest
+    @CsvSource({"0,1,2,3,4,5", "1,2,3,4,5,46","0,5,11,12,32,78"})
+    void 로또번호_범위체크(int int1, int int2, int int3, int int4, int int5, int int6) {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new Lotto(List.of(int1, int2, int3, int4, int5, int6)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
