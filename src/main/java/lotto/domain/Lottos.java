@@ -14,8 +14,4 @@ public class Lottos implements Iterable<Lotto> {
     public Iterator<Lotto> iterator() {
         return this.lottos.iterator();
     }
-
-    public int getLottoCount() {
-        return this.lottos.size();
-    }
 }
