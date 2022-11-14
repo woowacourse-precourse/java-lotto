@@ -37,6 +37,10 @@ public class LotteryTicketRepository {
         return Optional.ofNullable(drawResult.get(lotteryId));
     }
 
+    public List<String> findAllTicketId() {
+        return new ArrayList<>(store.keySet());
+    }
+
     public int getSize() {
         return store.size();
     }
