@@ -33,7 +33,7 @@ public class UserService {
         return user.getUserLottoNumber();
     }
 
-    private void setRevenue(){
+    public void setRevenue(){
         int payAmount = user.getUserPayAmount();
         List<Integer> hit = lottoSystemService.getHitCount();
         List<Integer> hitValue = Arrays.asList(5000, 50000, 1500000, 30000000, 2000000000);
