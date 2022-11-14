@@ -9,11 +9,11 @@ public class StringTest {
     @Test
     void ShouldBe2DecimalPointAndComma() {
         // given
-        double yieldRaw = Math.round(7777 * 10 / 3) / 10.0;
+        double yieldRaw = 16283 / 3.0;
         // when
-        DecimalFormat decFormat = new DecimalFormat("###,###.##");
+        DecimalFormat decFormat = new DecimalFormat("###,###.0");
         String yield = decFormat.format(yieldRaw);
         // then
-        assertThat(yield).isEqualTo("2,592.3");
+        assertThat(yield).isEqualTo("5,427.7");
     }
 }
