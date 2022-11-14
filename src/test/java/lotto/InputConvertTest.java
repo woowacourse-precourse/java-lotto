@@ -42,4 +42,10 @@ public class InputConvertTest {
         String input = "1,2,3,4,5,6";
         assertThat(InputConvert.lottoNumber(input)).isEqualTo(List.of(1,2,3,4,5,6));
     }
+    @DisplayName("\"1,2,3,4,20,45\"이 List인 [1, 2, 3, ,4, 20, 45]로 변환된다.")
+    @Test
+    void lottoNumberConvert2() {
+        String input = "1,2,3,4,20,45";
+        assertThat(InputConvert.lottoNumber(input)).isEqualTo(List.of(1,2,3,4,20,45));
+    }
 }
