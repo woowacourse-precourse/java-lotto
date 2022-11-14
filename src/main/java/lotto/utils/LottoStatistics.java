@@ -79,7 +79,12 @@ public class LottoStatistics {
         return null;
     }
 
-    protected long calculateReward() {
+    // 수익률 = 상금 / cost * 100
+    public double getRateOfResult(int cost) {
+        return Math.round((float) calculateReward() / cost * 1000) / 10.0;
+    }
+
+    private long calculateReward() {
         return (long) firstCount * FIRST.getReward()
                 + (long) secondCount * SECOND.getReward()
                 + (long) thirdCount * THIRD.getReward()

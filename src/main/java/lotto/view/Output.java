@@ -27,5 +27,9 @@ public class Output {
         System.out.println(THIRD + " - " + lottoStatistics.getThirdCount() + "개");
         System.out.println(SECOND + " - " + lottoStatistics.getSecondCount() + "개");
         System.out.println(FIRST + " - " + lottoStatistics.getFirstCount() + "개");
+
+        System.out.println("총 수익률은 " + lottoStatistics.getRateOfResult(cost) + "%입니다.");
     }
+
+
 }

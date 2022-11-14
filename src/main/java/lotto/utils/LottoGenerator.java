@@ -18,8 +18,9 @@ public class LottoGenerator {
         }
         return lottos;
     }
+
     public static List<Integer> get6Numbers() {
-        List<Integer> numbersInRange = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbersInRange = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         numbersInRange.sort(Comparator.naturalOrder());
         return numbersInRange;
     }

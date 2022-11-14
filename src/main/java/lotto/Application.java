@@ -14,7 +14,7 @@ import static lotto.view.Output.outputWinningStats;
 public class Application {
     public static void main(String[] args) {
         try {
-            int lottoCount = getLottoCount(inputAmount());
+            int lottoCount = inputAmount() / 1_000;
 
             List<Lotto> lottos = generateLotto(lottoCount);
             outputLottoList(lottoCount, lottos);
@@ -22,20 +22,10 @@ public class Application {
             Win win = new Win(inputWinNumbers());
             win.setBonus(inputBonusNumber());
 
-            outputWinningStats(lottoCount*1000, lottos, win);
-
-
-
+            outputWinningStats(lottoCount * 1000, lottos, win);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public static int getLottoCount(int amount) throws IllegalArgumentException {
-        if (amount < 1000 || amount % 1000 != 0) {
-            throw new IllegalArgumentException("[ERRER] 구입금액은 1,000원 단위로 입력해야 합니다.");
-        }
-        return amount / 1_000;
     }
 }
