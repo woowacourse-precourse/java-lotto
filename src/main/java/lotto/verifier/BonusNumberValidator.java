@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class BonusNumberValidator {
 
     public int askBonusNumber(List<Integer> winningNumbers) throws IllegalArgumentException {
+        System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
 
         validateInput(input, winningNumbers);
