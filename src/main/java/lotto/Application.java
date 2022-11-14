@@ -31,7 +31,7 @@ enum PrintResult {
 }
 
 public class Application {
-    static int inputMoney() {
+    static long inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String myMoney = Console.readLine();
         MyMoney money = new MyMoney(myMoney);
@@ -39,7 +39,7 @@ public class Application {
         return money.getAmount();
     }
 
-    static List<Lotto> buyLotto(int count) {
+    static List<Lotto> buyLotto(long count) {
         List<Lotto> myLotto = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             Lotto pickLotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
@@ -80,7 +80,7 @@ public class Application {
         }
     }
 
-    static void printYield(MyResult myResult, int purchase) {
+    static void printYield(MyResult myResult, long purchase) {
         double yield = 0;
         for (PrintResult rank : PrintResult.values()) {
             yield += (myResult.getWinningResult().get(rank.ordinal()) * rank.getValue());
@@ -91,8 +91,8 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        try{
-            int purchase = inputMoney() / 1000;
+        try {
+            long purchase = inputMoney() / 1000;
             List<Lotto> myLottos = buyLotto(purchase);
             printMyLotto(myLottos);
             WinningLotto winningLotto = inputWinNumber();
@@ -100,8 +100,7 @@ public class Application {
             MyResult myResult = new MyResult(myLottos, winningLotto);
             printMyLottoResult(myResult);
             printYield(myResult, purchase * 1000);
-        }
-        catch (IllegalArgumentException exception){
+        } catch (IllegalArgumentException exception) {
             System.out.print("[ERROR] ");
             System.out.println(exception.getMessage());
         }
