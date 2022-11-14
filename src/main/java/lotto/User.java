@@ -79,4 +79,14 @@ public class User {
             lotto.printNumbers();
         }
     }
+    private WinningRanking getWinningRanking(Lotto lotto, List<Integer> winningNumbers, int bonus){
+        List<Integer> coincidenceNumber = lotto.countCoincidence(winningNumbers,bonus);
+        WinningRanking result = null;
+        for (WinningRanking winningRanking: WinningRanking.values()) {
+            if (winningRanking.getRanking().equals(coincidenceNumber)){
+                result=winningRanking;
+            }
+        }
+        return result;
+    }
 }
