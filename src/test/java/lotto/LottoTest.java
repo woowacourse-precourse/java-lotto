@@ -7,7 +7,7 @@ import lottoService.LottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -77,19 +77,21 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("수익률을 정상적으로 출력하는지 확인")
+    @DisplayName("사용자의 로또번호와 당첨번호 비교")
     @Test
-    void 수익률_테스트() {
+    void 사용자_로또번호_당첨번호_비교() {
         //given
         Player player = new Player();
-        player.setLottoPrice(100000);
-        player.addLottoRevenue(65432);
+        List<Integer> playerRandomLottoNumbers = Arrays.asList(1,2,3,4,5,6);
+        Lotto playerLotto = new Lotto(playerRandomLottoNumbers);
+        List<Integer> lottoWinningNumbers = Arrays.asList(1, 2, 3, 4,5 ,7);
 
         //when
-        String yield = lottoService.calculatePlayerYield(player);
+        lottoService.comparePlayerLottoNumberAndWinningLottoNumber(lottoWinningNumbers , playerLotto ,  player , 6);
 
         //then
-        assertThat(yield).isEqualTo("65.4");
+        assertThat(player.getLottoCount()).isEqualTo(5);
+        assertThat(player.getIsWinningLottoNumberBonusNumber()).isTrue();
     }
 
     @DisplayName("사용자의 로또 결과를 잘 저장하는지 확인")
@@ -115,6 +117,22 @@ class LottoTest {
         assertThat(player1.getWinningLottoCount().get(LottoRank.WIN_LOTTO_4)).isEqualTo(1);
         assertThat(player2.getWinningLottoCount().get(LottoRank.WIN_LOTTO_5_BONUS)).isEqualTo(1);
     }
+
+    @DisplayName("수익률을 정상적으로 출력하는지 확인")
+    @Test
+    void 수익률_테스트() {
+        //given
+        Player player = new Player();
+        player.setLottoPrice(100000);
+        player.addLottoRevenue(65432);
+
+        //when
+        String yield = lottoService.calculatePlayerYield(player);
+
+        //then
+        assertThat(yield).isEqualTo("65.4");
+    }
+
 
 
 
