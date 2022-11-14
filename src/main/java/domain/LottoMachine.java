@@ -1,5 +1,6 @@
 package domain;
 
+import Util.InputUtils;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
@@ -9,9 +10,10 @@ import java.util.stream.Collectors;
 
 public class LottoMachine {
     private final int money;
+    private static final InputUtils utils = new InputUtils();
 
-    public LottoMachine(int money) {
-        this.money = money;
+    public LottoMachine() {
+        this.money = utils.StringToMoney();
     }
 
     public List<Lotto> buyTickets() {
@@ -33,5 +35,9 @@ public class LottoMachine {
                 .sorted()
                 .collect(Collectors.toList());
         return new Lotto(numbers);
+    }
+
+    public int getMoney() {
+        return money;
     }
 }
