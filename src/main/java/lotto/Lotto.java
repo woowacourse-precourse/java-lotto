@@ -58,15 +58,15 @@ public class Lotto {
 
     public static int rank(int correct, boolean bonus) {
         if(correct == 6)
-            return 1;
+            return 0;
         if(correct == 5 && bonus)
-            return 2;
+            return 1;
         if(correct == 5)
-            return 3;
+            return 2;
         if(correct == 4)
-            return 4;
+            return 3;
         if(correct == 3)
-            return 5;
+            return 4;
 
         return -1;
     }
