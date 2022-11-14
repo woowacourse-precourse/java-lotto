@@ -45,7 +45,10 @@ public class User {
     }
 
     private int inputMoney() {
-        return Integer.parseInt(Console.readLine());
+        printInputMessage();
+        String input = Console.readLine();
+        validateMoney(input);
+        return Integer.parseInt(input);
     }
 
     private void printInputMessage() {
