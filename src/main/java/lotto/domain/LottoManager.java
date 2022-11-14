@@ -1,5 +1,9 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.*;
+
 public class LottoManager {
 
     public int countLotto(String inputMoney){
@@ -24,5 +28,31 @@ public class LottoManager {
         }
     }
 
+    public List<List<Integer>> makeRandomNumbers(int lottoCount){
+        List<List<Integer>> numbers = new ArrayList<>();
+        int cnt = 0;
+        while(cnt > lottoCount){
+            List<Integer> randomNumbers = randomNumbers();
+            if(isNotDuplication(randomNumbers)){
+                Collections.sort(randomNumbers);
+                numbers.add(randomNumbers);
+                cnt ++;
+            }
+        }
+
+        return numbers;
+    }
+
+    public List<Integer> randomNumbers(){
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
+    public boolean isNotDuplication(List<Integer> numbers){
+        Set<Integer> numberSet = new HashSet<>(numbers);
+        if(numbers.size() != numberSet.size()){
+            return false;
+        }
+        return true;
+    }
 
 }
