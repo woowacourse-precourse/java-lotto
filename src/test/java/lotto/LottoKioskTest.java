@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 import lotto.machine.LottoKiosk;
+import lotto.message.ErrorMessage;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,6 +33,25 @@ class LottoKioskTest {
         //when then
         assertThatThrownBy(lottoKiosk::validateMoneyInput)
                 .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.MONEY_NOT_A_NUMBER.message)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @DisplayName("[오류 테스트] 돈이 1000보다 작음")
+    @Test
+    void chargedMoneylessThan1000() {
+        //입력값 정의
+        String input = "0";
+        ByteArrayInputStream byteInput = new ByteArrayInputStream(input.getBytes());
+        System.setIn(byteInput);
+        //given
+        LottoKiosk lottoKiosk = new LottoKiosk();
+        lottoKiosk.moneyInserted();
+        lottoKiosk.chargeMoney();
+        //when then
+        assertThatThrownBy(lottoKiosk::validateMoney)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.LESS_THAN_THOUSAND.message)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
@@ -48,10 +69,11 @@ class LottoKioskTest {
         //when then
         assertThatThrownBy(lottoKiosk::validateMoney)
                 .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.DIVIDE_DISABLE.message)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
-    @DisplayName("문자열로 올바른 입력값 Long 으로 저장")
+    @DisplayName("올바른 입력값 저장")
     @Test
     void chargeMoney() {
         //입력값 정의
@@ -68,7 +90,7 @@ class LottoKioskTest {
         assertThat(lottoKiosk.showInsertedMoney()).isEqualTo(moneyExpected);
     }
 
-    @DisplayName("올바른 입력시 금액 조회")
+    @DisplayName("입력 금액 조회")
     @Test
     void showInsertedMoney() {
         //입력값 정의
@@ -85,7 +107,7 @@ class LottoKioskTest {
         assertThat(chargedMoney).isEqualTo(moneyExpected);
     }
 
-    @DisplayName("몇개의 로또를 파는지 계산")
+    @DisplayName("판매할 로또 수 계산")
     @Test
     void calculateLottoAmount() {
         //입력값 정의
@@ -103,70 +125,19 @@ class LottoKioskTest {
         assertThat(lottoKiosk.showHowMany()).isEqualTo(howManyLotto);
     }
 
-    @DisplayName("로또 숫가 6개 만들기")
+    @DisplayName("로또 번호 생성")
     @Test
     void makeUniqueSixLottoNumbers() {
-        //given
-
-        LottoKiosk lottoKiosk = new LottoKiosk();
-        //when
-        List<Integer> sixLottoNumbers = lottoKiosk.makeLottoNumbers();
-        //then
-        assertThat(sixLottoNumbers).allSatisfy(o -> assertThat(o).isBetween(LOTTO_START_NUM, LOTTO_END_NUM));
-        assertThat(sixLottoNumbers.size()).isEqualTo(LOTTO_NUM_COUNT);
-        Set<Integer> numbersNotDuplicate = new HashSet<>(sixLottoNumbers);
-        assertThat(numbersNotDuplicate.size()).isEqualTo(LOTTO_NUM_COUNT);
-    }
-
-    @DisplayName("오름차순으로 정렬된 로또 숫가 6개 만들기")
-    @Test
-    void sortUniqueSixLottoNumbers() {
         //given
         LottoKiosk lottoKiosk = new LottoKiosk();
         //when
         List<Integer> lottoNumbers = lottoKiosk.makeLottoNumbers();
         //then
+        assertThat(lottoNumbers.size()).isEqualTo(LOTTO_NUM_COUNT);
+        assertThat(lottoNumbers).allSatisfy(o -> assertThat(o).isBetween(LOTTO_START_NUM, LOTTO_END_NUM));
         assertThat(lottoNumbers).isSortedAccordingTo(Comparator.naturalOrder());
-    }
-
-    @DisplayName("[오류 테스트] 로또 숫자가 6개보다 적음")
-    @Test
-    void lessThanSixNumbersInLotto() {
-        //given
-        LottoKiosk lottoKiosk = new LottoKiosk();
-        List<Integer> numbers = List.of(1, 3, 4, 7, 9);
-        //when
-        //then
-        assertThatThrownBy(() -> lottoKiosk.makeLotto(numbers))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR_MESSAGE);
-    }
-
-    @DisplayName("[오류 테스트] 로또 숫자가 6개보다 많음")
-    @Test
-    void moreThanSixNumbersInLotto() {
-        //given
-        LottoKiosk lottoKiosk = new LottoKiosk();
-        List<Integer> numbers = List.of(1, 3, 4, 7, 9, 11, 13);
-        //when
-        //then
-        assertThatThrownBy(() -> lottoKiosk.makeLotto(numbers))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR_MESSAGE);
-    }
-
-    @DisplayName("로또에 6개의 숫자 존재")
-    @Test
-    void makeLotto() {
-        //given
-        LottoKiosk lottoKiosk = new LottoKiosk();
-        //when
-        List<Integer> numbers = List.of(1, 3, 4, 7, 9, 11);
-        Lotto lotto = lottoKiosk.makeLotto(numbers);
-        //then
-        assertThat(lotto.showNumbers().size()).isEqualTo(LOTTO_NUM_COUNT);
-        assertThat(lotto.showNumbers()).allSatisfy(o -> assertThat(o).isBetween(LOTTO_START_NUM, LOTTO_END_NUM));
-        assertThat(lotto.showNumbers()).containsExactly(1, 3, 4, 7, 9, 11);
+        Set<Integer> numbersNotDuplicate = new HashSet<>(lottoNumbers);
+        assertThat(numbersNotDuplicate.size()).isEqualTo(LOTTO_NUM_COUNT);
     }
 
     @DisplayName("투입한 금액만큼의 로또가 생성")
@@ -185,10 +156,5 @@ class LottoKioskTest {
         //then
         List<Lotto> allLotto = lottoKiosk.showAllLotto();
         assertThat(allLotto.size()).isEqualTo(lottoKiosk.showHowMany());
-        allLotto.forEach(lotto -> {
-            List<Integer> numbers = lotto.showNumbers();
-            assertThat(numbers.size()).isEqualTo(LOTTO_NUM_COUNT);
-            assertThat(numbers).allSatisfy(num -> assertThat(num).isBetween(LOTTO_START_NUM, LOTTO_END_NUM));
-        });
     }
 }
