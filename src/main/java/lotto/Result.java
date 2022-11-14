@@ -62,6 +62,15 @@ public class Result {
         }
     }
 
+    // 총 상금을 산출하는 기능
+    public int getTotalPrize() {
+        for (Rank rank : result.keySet()) {
+            prize += rank.getPrize() * result.get(rank);
+        }
+        return prize;
+    }
+
+
     // 결과를 반환하는 기능
     public Map<Rank, Integer> getResult() {
         return result;
