@@ -57,7 +57,7 @@ public class Calculator {
     }
 
     public static float calculateRateOfProfit(Map<Rank, Integer> lottoRanks, int paidMoney) {
-        return calculateProfit(lottoRanks) / (float)paidMoney * 100;
+        return calculateProfit(lottoRanks) / (float) paidMoney * 100;
     }
 
     private static int calculateProfit(Map<Rank, Integer> lottoRanks) {
