@@ -33,10 +33,19 @@ public class Controller {
         List<Integer> result = new ArrayList<>();
         List<String> output = Arrays.asList(input.split(","));
 
-        for (int i = 0; i < output.size(); i++) {
+        for (int i = 0; i < output.size(); i++)
             result.add(Integer.parseInt(output.get(i)));
-        }
 
         return result;
     }
+
+    public String showBuy() {
+        Pay pay = new Pay(String.valueOf(user.getUseCash()));
+        int buyNum = pay.makeBuyNum();
+        user.setUserLottoNumber(generator.makeNumbers(buyNum));
+
+        return buyNum + "개를 구매했습니다.\n";
+    }
+
+
 }
