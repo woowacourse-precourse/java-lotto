@@ -98,7 +98,6 @@ class LottoCountingTest {
             System.arraycopy(lottoPaperInput, 0, lottoPapers, 0, size);
             return lottoPapers;
         }
-
         boolean isDataAllCorrect(Lotto[] lottoPapers, Lotto winningLotto, Map<Lotto, Integer> countedLotto){
 
             for (Lotto lottoPaper : lottoPapers) {
@@ -108,9 +107,15 @@ class LottoCountingTest {
                     return false;
                 }
             }
-
             return true;
         }
+        @DisplayName("맵에 넣은 데이터들이 모두 올바르게 들어가있는지 테스트하는 메서드.")
+        void testDataIsAllCorrect(int size){
+            Lotto[] lottoPapers = getLottoPaperInput(size);
+            Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
+            assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
+        }
+
 
         @Test
         void countedLotto_case1_1(){
@@ -137,9 +142,7 @@ class LottoCountingTest {
         @Test
         void countedLotto_case2_2(){
             int size = 1;
-            Lotto[] lottoPapers = getLottoPaperInput(size);
-            Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
-            assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
+            testDataIsAllCorrect(size);
         }
 
         @Test
@@ -154,9 +157,7 @@ class LottoCountingTest {
         @Test
         void countedLotto_case3_2(){
             int size = 3;
-            Lotto[] lottoPapers = getLottoPaperInput(size);
-            Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
-            assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
+            testDataIsAllCorrect(size);
         }
 
         @Test
@@ -171,9 +172,7 @@ class LottoCountingTest {
         @Test
         void countedLotto_case4_2(){
             int size = 5;
-            Lotto[] lottoPapers = getLottoPaperInput(size);
-            Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
-            assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
+            testDataIsAllCorrect(size);
         }
 
         @Test
@@ -188,9 +187,7 @@ class LottoCountingTest {
         @Test
         void countedLotto_case5_2(){
             int size = 8;
-            Lotto[] lottoPapers = getLottoPaperInput(size);
-            Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,getWinningLotto());
-            assertThat(isDataAllCorrect(lottoPapers,getWinningLotto(),countedLotto)).isTrue();
+            testDataIsAllCorrect(size);
         }
     }
 }
