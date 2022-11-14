@@ -4,6 +4,7 @@ import static util.Constant.*;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public class Result {
 
     public Result() {
         this.prize = 0;
-        this.result = new HashMap<>();
+        this.result = new LinkedHashMap<>();
     }
 
     // 모든 구매한 로또와 당첨 로또를 비교해 결과를 도출하는 기능
