@@ -30,7 +30,6 @@ public class Checker {
 
     public void insertWinningNumbers() {
 
-        view.insertWinningNumber();
         String winningNumber = Console.readLine();
 
         try {
@@ -47,8 +46,6 @@ public class Checker {
     }
 
     public void insertBonusNumber() {
-
-        view.insertBonusNumber();
 
         try {
             bonusNumber = Integer.parseInt(Console.readLine());

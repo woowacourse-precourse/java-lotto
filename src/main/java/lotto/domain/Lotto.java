@@ -17,37 +17,6 @@ public class Lotto {
 
     }
 
-    public static void run() {
-
-        Customer customer = new Customer();
-        Store store = new Store();
-        Checker checker = new Checker();
-        List<Lotto> lottos = new ArrayList<>();
-
-        customer.payMoney();
-
-        customer.buyLotto();
-
-        store.drawNumber(customer.getHasLotto());
-
-        for (int i = 0; i < customer.getHasLotto(); i++) {
-            lottos.add(new Lotto(store.getNumbers().get(i)));
-            lottos.get(i).showLotto();
-        }
-
-        checker.insertWinningNumbers();
-
-        checker.insertBonusNumber();
-
-        for (int i = 0; i < customer.getHasLotto(); i++) {
-            checker.checkMyLotto(lottos.get(i).getLotto());
-        }
-
-        checker.showWinningStats();
-        checker.calculateRateOfReturn(customer.getMoney());
-
-    }
-
     private void validate(List<Integer> numbers) {
 
         if (numbers.size() != LOTTO_NUMBER_CAPACITY) {
@@ -63,10 +32,6 @@ public class Lotto {
 
     public List<Integer> getLotto() {
         return numbers;
-    }
-
-    public void showLotto() {
-        System.out.println(numbers);
     }
 
 }
