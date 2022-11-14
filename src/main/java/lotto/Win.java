@@ -9,7 +9,7 @@ public class Win {
     private static final String SECOND_GRADE_STATISTICS_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개%n";
     private static final String FIRST_GRADE_STATISTICS_MESSAGE = "6개 일치 (2,000,000,000원) - %d개%n";
     private static final String RATE_OF_RETURNS_MESSAGE = "총 수익률은 %2.1f%s입니다.";
-    public static final String PERCENT_CHARACTER = "%";
+    private static final String PERCENT_CHARACTER = "%";
 
     public void statisticsMessage() {
         System.out.println('\n' + WIN_STATISTICS_MESSAGE);

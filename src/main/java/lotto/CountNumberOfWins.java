@@ -8,7 +8,7 @@ public class CountNumberOfWins {
     private int thirdPlace;
     private int fourthPlace;
     private int fifthPlace;
-    private int sumOfPrize;
+    private double sumOfPrize;
     private final BuyLotto buyLotto;
     private final WinningNumbers winningNumbers;
 
@@ -94,6 +94,6 @@ public class CountNumberOfWins {
     }
 
     public double rateOfReturn() {
-        return Math.round(((double) sumOfPrize / (double) buyLotto.getPrice() * 100 * 10)) / 10.0;
+        return Math.round(( sumOfPrize / buyLotto.getPrice() * 100 * 10)) / 10.0;
     }
 }
