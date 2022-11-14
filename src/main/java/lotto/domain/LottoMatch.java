@@ -30,7 +30,7 @@ public class LottoMatch {
         return bonus;
     }
 
-    private static boolean matchBonus(final Lotto lotto, final BonusNumber bonusNumber) {
+    public static boolean matchBonus(final Lotto lotto, final BonusNumber bonusNumber) {
         return lotto.get()
                 .stream()
                 .anyMatch(number -> bonusNumber.get()
