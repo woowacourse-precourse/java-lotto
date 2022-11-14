@@ -1,50 +1,56 @@
 package lotto.ui;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
+import lotto.lotto.Lotto;
 import lotto.rank.Rank;
 
 public class LottoPrint {
-    private static final String BUY_LOTTO_PRICE = "구입금액을 입력해 주세요.";
-    private static final String REQUEST_PRIZE_NUMBERS = "당첨 번호를 입력해 주세요.";
-    private static final String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    private static final String BUY_LOTTO_COUNT = "개를 구매했습니다.";
-    private static final String LOTTO_STATS = "당첨 통계";
+    DecimalFormat df = new DecimalFormat("###,###");
 
     public void buyLottoPrice() {
-        System.out.println(BUY_LOTTO_PRICE);
+        System.out.println(Message.BUY_LOTTO_PRICE);
     }
 
     public void prizeNumber() {
-        System.out.println(REQUEST_PRIZE_NUMBERS);
+        System.out.println(Message.REQUEST_PRIZE_NUMBERS);
     }
 
     public void bonusNumber() {
-        System.out.println(REQUEST_BONUS_NUMBER);
+        System.out.println(Message.REQUEST_BONUS_NUMBER);
     }
 
     public void buyLotto(int count) {
-        System.out.println(count + BUY_LOTTO_COUNT);
+        System.out.println(count + Message.BUY_LOTTO_COUNT);
     }
 
-    public void buyLottoNumbers(List<List<Integer>> buyNumbers) {
-        for (List<Integer> numbers : buyNumbers) {
-            System.out.println("numbers = " + numbers);
+    public void buyLottoNumbers(List<Lotto> buyNumbers) {
+        for (Lotto lotto : buyNumbers) {
+            System.out.println(lotto.getNumbers());
         }
     }
 
     public void stats(Map<Rank, Integer> prize) {
-        System.out.println(LOTTO_STATS);
-        System.out.println("---");
+        System.out.println(Message.LOTTO_STATS);
+        System.out.println(Message.CENTER_LINE);
         for (Rank rank : Rank.values()) {
-            String msg = "";
-            msg += "test" + "개 일치 (" + rank.getWinAmount() + "원) - " + prize.get(rank) + "개";
-            System.out.println(msg);
+            long winProfit = rank.getWinProfit();
+            String converterProfit = df.format(winProfit);
+            printPrizeDetails(prize, rank, converterProfit);
         }
     }
 
+    private void printPrizeDetails(Map<Rank, Integer> prize, Rank rank, String converterProfit) {
+        if (rank.getNumber() == 6 && rank.getBonusYN()) {
+            System.out.printf(Message.PRIZE_DETAILS_SECOND_PLACE, rank.getNumber() - 1, converterProfit, prize.get(rank));
+            return;
+        }
+        System.out.printf(Message.PRIZE_DETAILS, rank.getNumber(), converterProfit, prize.get(rank));
+    }
+
     public void rate(double amount) {
-        System.out.println("총 수익률은 " + amount + "%입니다.");
+        System.out.printf(Message.TOTAL_RATE, amount);
     }
 
 }
