@@ -12,9 +12,9 @@ public class Draw {
             if (lotto.contains(Integer.valueOf(winNum.get(i)))) {
                 cnt++;
             }
-            if (lotto.contains(bonusNum)) {
-                bonusCnt++;
-            }
+        }
+        if (lotto.contains(bonusNum)) {
+            bonusCnt++;
         }
         if (cnt == 3) {
             return CorrectNum.THREE;
@@ -22,11 +22,11 @@ public class Draw {
         if (cnt == 4) {
             return CorrectNum.FOUR;
         }
+        if (cnt == 5 && bonusCnt == 1) {
+            return CorrectNum.FIVE_BONUS;
+        }
         if (cnt == 5) {
             return CorrectNum.FIVE;
-        }
-        if (cnt == 5 && bonusNum == 1) {
-            return CorrectNum.FIVE_BONUS;
         }
         if (cnt == 6) {
             return CorrectNum.SIX;
