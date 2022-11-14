@@ -27,6 +27,7 @@ public class OutputView {
     }
 
     public void printWinningInfo(WinningInfo winningInfo) {
+        System.out.println();
         System.out.println(winningInfo);
     }
 
