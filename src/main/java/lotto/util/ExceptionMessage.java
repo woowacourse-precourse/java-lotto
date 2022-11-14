@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public class ExceptionMessage {
     public static final String ERROR = "[ERROR]";

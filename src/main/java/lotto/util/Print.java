@@ -1,4 +1,7 @@
-package lotto;
+package lotto.util;
+
+import lotto.Lotto;
+import lotto.WinningNumber;
 
 import java.util.List;
 import java.util.Map;
