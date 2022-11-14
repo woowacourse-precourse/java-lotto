@@ -40,4 +40,9 @@ public class Calculator {
         }
         result.add(count);
     }
+
+    public double returnRate(int money) {
+        double revenue = result.getRevenue();
+        return revenue / money * 100;
+    }
 }
