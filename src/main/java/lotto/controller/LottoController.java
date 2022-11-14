@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Util;
 import lotto.model.*;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 public class LottoController {
 	private List<Lotto> lottos = new ArrayList<>();
 	public void start(){
-		NumberValidator cashValidator = new NumberValidator(InputView.buyInput());
+		InputNumValidator cashValidator = new InputNumValidator(InputView.buyInput());
 		Cash cash = new Cash(Util.toLong(cashValidator.INPUT_VALUE));
 		purchase(cash);
 		AnswerLotto answerLotto = getAnswerLotto();
@@ -40,9 +39,9 @@ public class LottoController {
 	}
 
 	private AnswerLotto getAnswerLotto(){
-		LottoNumsValidator answerValidator = new LottoNumsValidator(InputView.answerInput());
+		InputNumListValidator answerValidator = new InputNumListValidator(InputView.answerInput());
 		List<Integer> numbers = Util.getSplitList(answerValidator.INPUT_VALUE);
-		NumberValidator bonus = new NumberValidator(InputView.bonusInput());
+		InputNumValidator bonus = new InputNumValidator(InputView.bonusInput());
 		return new AnswerLotto(numbers, Integer.parseInt(bonus.INPUT_VALUE));
 	}
 

@@ -2,10 +2,10 @@ package lotto.model;
 
 import java.util.Arrays;
 
-public class LottoNumsValidator extends NumberValidator {
+public class InputNumListValidator extends InputNumValidator {
 
 
-	public LottoNumsValidator(String input) {
+	public InputNumListValidator(String input) {
 		super(input);
 	}
 

@@ -23,7 +23,7 @@ public class Util {
 	}
 
 	public static boolean inRangeCheck(int num, int start, int end){
-		return start <= num && start <= end;
+		return start <= num && num <= end;
 	}
 
 	public static boolean isCorrectSize(List<Integer> numbers, int size){

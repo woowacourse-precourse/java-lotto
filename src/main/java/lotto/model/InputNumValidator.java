@@ -2,10 +2,10 @@ package lotto.model;
 
 import lotto.Util;
 
-public class NumberValidator {
+public class InputNumValidator {
 	public String INPUT_VALUE;
 
-	public NumberValidator(String input) {
+	public InputNumValidator(String input) {
 		INPUT_VALUE = input;
 	}
 

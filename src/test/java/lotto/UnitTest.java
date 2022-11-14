@@ -1,15 +1,10 @@
 package lotto;
 
-import jdk.jshell.execution.Util;
-import lotto.model.LottoNumsValidator;
-import lotto.model.NumberValidator;
-import org.assertj.core.api.Assertions;
+import lotto.model.InputNumListValidator;
+import lotto.model.InputNumValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -37,19 +32,19 @@ public class UnitTest { // TODO : 클래스 이름 변경
 	class AnswerNumTest{
 		@Test
 		void 당첨_번호_입력_테스트_정상_케이스(){
-			assertThatCode(() -> new LottoNumsValidator("1,2,3,4,5,6").isValidate())
+			assertThatCode(() -> new InputNumListValidator("1,2,3,4,5,6").isValidate())
 					.doesNotThrowAnyException();
 		}
 
 		@Test
 		void 당첨_번호_입력_테스트_예외_케이스1(){
-			assertThatThrownBy(() -> new LottoNumsValidator("1 2 3 4 5 6").isValidate())
+			assertThatThrownBy(() -> new InputNumListValidator("1 2 3 4 5 6").isValidate())
 					.isInstanceOf(IllegalArgumentException.class);
 		}
 
 		@Test
 		void 당첨_번호_입력_테스트_예외_케이스2(){
-			assertThatThrownBy(() -> new LottoNumsValidator("what the hell").isValidate())
+			assertThatThrownBy(() -> new InputNumListValidator("what the hell").isValidate())
 					.isInstanceOf(IllegalArgumentException.class);
 		}
 
@@ -57,7 +52,7 @@ public class UnitTest { // TODO : 클래스 이름 변경
 
 		@Test
 		void 당첨_번호_입력_테스트_예외_케이스3(){
-			assertThatThrownBy(() -> new LottoNumsValidator("").isValidate())
+			assertThatThrownBy(() -> new InputNumListValidator("").isValidate())
 					.isInstanceOf(IllegalArgumentException.class);
 		}
 	}
@@ -67,13 +62,13 @@ public class UnitTest { // TODO : 클래스 이름 변경
 	class LottoBuyTest{
 		@Test
 		void 로또_구입_금액_옳은_케이스_테스트1(){
-			assertThatCode(() -> new NumberValidator("14000").isValidate())
+			assertThatCode(() -> new InputNumValidator("14000").isValidate())
 					.doesNotThrowAnyException();
 		}
 
 		@Test
 		void 로또_구입_금액_옳은_케이스_테스트2(){
-			assertThatCode(() -> new NumberValidator("2147484000").isValidate())
+			assertThatCode(() -> new InputNumValidator("2147484000").isValidate())
 					.doesNotThrowAnyException();
 		}
 
@@ -85,7 +80,7 @@ public class UnitTest { // TODO : 클래스 이름 변경
 
 		@Test
 		void 로또_구입_금액_예외_케이스_테스트2(){
-			assertThatThrownBy(() -> new NumberValidator("").isValidate())
+			assertThatThrownBy(() -> new InputNumValidator("").isValidate())
 					.isInstanceOf(IllegalArgumentException.class);
 		}
 	}
