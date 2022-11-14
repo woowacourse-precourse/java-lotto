@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class PurchaseMoneyTest {
 
@@ -45,5 +46,12 @@ public class PurchaseMoneyTest {
         int purChaseLottoCount = purchaseMoney.getLottoCount();
 
         assertThat(purChaseLottoCount).isEqualTo(3);
+    }
+
+    @ParameterizedTest(name = "{displayName} {index}")
+    @ValueSource(ints = {10000, 15000, 20000, 25000, 30000})
+    @DisplayName("정상 실행 테스트")
+    public void normalTest(int input) {
+        assertDoesNotThrow(() -> new PurchaseMoney(input));
     }
 }
