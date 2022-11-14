@@ -63,4 +63,13 @@ public class Game {
         return RANK.ONE;
     }
 
+    int calculatePrize(List<RANK> ranks){
+        int sumOfPrize = 0;
+        for(RANK rank : ranks){
+            int prize = Integer.parseInt(rank.getPrize());
+            sumOfPrize += prize;
+        }
+        return sumOfPrize;
+    }
+
 }
