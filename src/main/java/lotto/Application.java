@@ -16,19 +16,21 @@ public class Application {
     }
 
     public static void runLottoApp() {
+        try {
+            int lottoCount = howMuchLottoBuyInput();
+            List<Lotto> lotto = issueLotto(lottoCount);
 
-        int lottoCount = howMuchLottoBuyInput();
+            List<Integer> winningNumber = winningNumberInput();
+            Integer bonusNumber = bonusNumberInput();
+            checkBonusNumberIncludedWinningNumber(winningNumber, bonusNumber);
 
-        List<Lotto> lotto = issueLotto(lottoCount);
+            List<Integer> lottoResult = resultWinningLottery(lotto, winningNumber, bonusNumber);
+            double earningRate = calculateLottoEarningsRate(lottoResult, lottoCount);
+            winningStatistics(lottoResult, earningRate);
 
-        List<Integer> winningNumber = winningNumberInput();
-        Integer bonusNumber = bonusNumberInput();
-        checkBonusNumberIncludedWinningNumber(winningNumber, bonusNumber);
-
-        List<Integer> lottoResult = resultWinningLottery(lotto, winningNumber, bonusNumber);
-
-        double earningRate = calculateLottoEarningsRate(lottoResult, lottoCount);
-        winningStatistics(lottoResult, earningRate);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static List<Lotto> issueLotto(int lottoCount) {
