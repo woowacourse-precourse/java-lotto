@@ -30,10 +30,10 @@ public class Application {
         ui.bonusInputUi();
         int bonus = domain.inputBonusException(luckyNums);
         Lotto lotto = new Lotto(luckyNums);
-        HashMap<Integer, Integer> winNumbers = lotto.gameConfirm(lottoList,bonus);
-        Integer totalProfit = lotto.totalProfit(winNumbers);
+        lotto.gameConfirm(lottoList,bonus);
+        Integer totalProfit = lotto.totalProfit();
         double percent = lotto.percentToProfit(purchaseMoney, totalProfit);
-        ui.lottoOutputUi(winNumbers, percent);
+        ui.lottoOutputUi(percent);
     }
 
 
