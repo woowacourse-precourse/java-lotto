@@ -3,7 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import ui.View;
-import user.Money;
+import user.NumberComponent;
 import user.User;
 
 import java.util.ArrayList;
@@ -53,45 +53,12 @@ public class LottoSeller {
     }
 
     private void makeBonusNumber() {
-        View.promptBonusNUmber();
-        String bonus = Console.readLine();
-        validateBonus(bonus);
-        this.bonus = Integer.parseInt(bonus);
-    }
-
-    private void validateBonus(String bonus) {
-        validateBonusNull(bonus);
-        validateBonusLength(bonus);
-        validateBonusOutRange(bonus);
+        int bonus = NumberComponent.makeLottoNumber();
         validateBonusNotInLotto(bonus);
+        this.bonus = bonus;
     }
-
-    private void validateBonusNull(String bonus) {
-        if (bonus == null) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateBonusLength(String bonus) {
-        if (bonus.length() > 2 || bonus.length() == 0) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateBonusOutRange(String bonus) {
-        if (bonus.charAt(0) < '1' || bonus.charAt(0) > '9') {
-            throw new IllegalArgumentException();
-        }
-        if (bonus.length() == 2) {
-            if (bonus.charAt(0) > '4' || bonus.charAt(1) < '0' || bonus.charAt(1) > '9') {
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
-    private void validateBonusNotInLotto(String bonus) {
-        int bonusNumber = Integer.parseInt(bonus);
-        if (winningLotto.hasBonus(bonusNumber)) {
+    private void validateBonusNotInLotto(int bonus) {
+        if (winningLotto.hasBonus(bonus)) {
             throw new IllegalArgumentException();
         }
     }
@@ -130,6 +97,6 @@ public class LottoSeller {
 
     public void givePrize(User user) {
         int prize = prizeCalculate(winningCount(user));
-        user.setPrizeMoney(new Money(prize));
+        user.setPrizeMoney(prize);
     }
 }
