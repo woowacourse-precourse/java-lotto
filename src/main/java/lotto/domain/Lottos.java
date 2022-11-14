@@ -15,11 +15,19 @@ public class Lottos {
     private List<Lotto> lottoNumbers;
 
     public Lottos() {
-        this.price = countLottoQuantityByInputPrice();
+        this.price = getPriceByInput();
         this.lottoNumbers = generateLottoNumbersByQuantity();
     }
 
-    public Integer countLottoQuantityByInputPrice() {
+    public Lottos(Integer price) {
+        this.price = price;
+    }
+
+    public Lottos(List<Lotto> lottoNumbers) {
+        this.lottoNumbers = lottoNumbers;
+    }
+
+    public Integer getPriceByInput() {
         String price = InputView.lottoPriceInput();
         LottoPriceException.checkLottoPrice(price);
         return Integer.parseInt(price);
