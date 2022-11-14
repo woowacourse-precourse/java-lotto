@@ -67,4 +67,8 @@ public class WinningLotto {
             throw new IllegalArgumentException(WINNING_NUMBERS_RANGE_ERROR);
         }
     }
+
+    public boolean contains(Integer number) {
+        return numbers.contains(number);
+    }
 }

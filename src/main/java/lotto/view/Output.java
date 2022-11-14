@@ -11,6 +11,7 @@ import java.util.Map;
 import lotto.domain.lottery.Lotto;
 import lotto.domain.lottery.LottoGroup;
 import lotto.domain.result.HitResult;
+import lotto.domain.result.Rank;
 
 public class Output {
 
@@ -31,13 +32,13 @@ public class Output {
     }
 
     public static void printWinningStatistics(HitResult result) {
-        Map<Integer, Integer> matchResult = result.getResult();
+        Map<Rank, Integer> matchResult = result.getHitResult();
         System.out.println(WINNING_STATISTICS);
-        System.out.println(THREE_MATCHES.getRank(matchResult));
-        System.out.println(FOUR_MATCHES.getRank(matchResult));
-        System.out.println(FIVE_MATCHES_WITHOUT_BONUS.getRank(matchResult));
-        System.out.println(FIVE_MATCHES_WITH_BONUS.getRank(matchResult));
-        System.out.println(SIX_MATCHES.getRank(matchResult));
+        System.out.println(THREE_MATCHES.getMessage(matchResult.get(THREE_MATCHES)));
+        System.out.println(FOUR_MATCHES.getMessage(matchResult.get(FOUR_MATCHES)));
+        System.out.println(FIVE_MATCHES_WITHOUT_BONUS.getMessage(matchResult.get(FIVE_MATCHES_WITHOUT_BONUS)));
+        System.out.println(FIVE_MATCHES_WITH_BONUS.getMessage(matchResult.get(FIVE_MATCHES_WITH_BONUS)));
+        System.out.println(SIX_MATCHES.getMessage(matchResult.get(SIX_MATCHES)));
     }
 
     public static void printLotteryNumbers(List<Integer> lotteryNumbers) {

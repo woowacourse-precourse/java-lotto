@@ -1,9 +1,7 @@
 package lotto.domain.result;
 
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Map.Entry;
 
 public class Profit {
 
@@ -21,14 +19,9 @@ public class Profit {
 
     public int calculateProfit(HitResult matchResults) {
         int profit = 0;
-        Map<Integer, Integer> result = matchResults.getResult();
-        List<Integer> prizeMoneys = Stream.of(Rank.values())
-                .map(Rank::getPrize)
-                .collect(Collectors.toList());
-        for (int index = 0; index < result.size(); index++) {
-            if (result.get(index) > 0) {
-                profit += (result.get(index) * prizeMoneys.get(index));
-            }
+        Map<Rank, Integer> result = matchResults.getHitResult();
+        for (Entry<Rank, Integer> entry : result.entrySet()) {
+            profit += entry.getKey().getPrize() * entry.getValue();
         }
         return profit;
     }
