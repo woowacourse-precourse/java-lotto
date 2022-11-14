@@ -4,6 +4,9 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class Lotto {
+    private final int MAX_SIZE = 6;
+    private final int MAX_NUMBER = 45;
+    private final int MIN_NUMBER = 1;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -15,13 +18,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != MAX_SIZE) {
             throw new IllegalArgumentException(ErrorCode.NOT_SIX_SIZE.getMessage());
         }
     }
 
-    private void rangeCheck(int number){
-        if(number<1||number>45){
+    public void rangeCheck(int number){
+        if(number<MIN_NUMBER||number>MAX_NUMBER){
             throw new IllegalArgumentException(ErrorCode.NOT_IN_LOTTO_RANGE.getMessage());
         }
     }
@@ -43,7 +46,14 @@ public class Lotto {
     }
 
     public void printLotto(){
-        System.out.printf("[%d, %d, %d, %d, %d, %d]%n",numbers.get(0),numbers.get(1),numbers.get(2),numbers.get(3),numbers.get(4),numbers.get(5));
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < MAX_SIZE; i++) {
+            sb.append(numbers.get(i)).append(", ");
+        }
+        sb.delete(sb.length()-2,sb.length());
+        sb.append("]%n");
+        System.out.printf(sb.toString());
     }
 
 }
