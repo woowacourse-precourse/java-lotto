@@ -7,8 +7,9 @@ public class CompareLotto {
     //내 로또와 비교
     public static void compareLotto() {
         for (int i = 0; i < LottoInput.numberOfLotto; i++) {
-            if (Application.winningNumbers.contains(Lotto.bonusNum)) {
-                int checkLotto = Application.winningNumbers.size();
+            if (LottoGenerator.myLottoNumbers.get(i).contains(Lotto.bonusNum)) {
+                LottoGenerator.myLottoNumbers.get(i).retainAll(Application.winningNumbers);
+                int checkLotto = LottoGenerator.myLottoNumbers.get(i).size();
                 if (checkLotto == 3) {
                     fifth++;
                 }
@@ -22,8 +23,9 @@ public class CompareLotto {
                     first++;
                 }
             }
-            if (!Application.winningNumbers.contains(Lotto.bonusNum)) {
-                int checkLotto = Application.winningNumbers.size();
+            if (!LottoGenerator.myLottoNumbers.get(i).contains(Lotto.bonusNum)) {
+                LottoGenerator.myLottoNumbers.get(i).retainAll(LottoGenerator.myLottoNumbers.get(i));
+                int checkLotto = LottoGenerator.myLottoNumbers.get(i).size();
                 if (checkLotto == 3) {
                     fifth++;
                 }

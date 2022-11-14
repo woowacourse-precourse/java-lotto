@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Application {
 
-    private static List<Integer> winningNumbers = new ArrayList<>();
+    public static List<Integer> winningNumbers = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -17,11 +17,16 @@ public class Application {
         LottoGenerator.myLottoNumber();
 
         //1등 번호 입력
-        Lotto.inputLotto(winningNumbers);
         Lotto winnerLotto = new Lotto(winningNumbers);
+        winnerLotto.inputLotto(winningNumbers);
 
         // 보너스 번호 입력
+        Lotto.bonusNum();
 
+        //당첨번호와 비교하기
+        CompareLotto.compareLotto();
+        CompareLotto.printCompareLotto();
+        CompareLotto.printRateOfReturn();
     }
 
 }
