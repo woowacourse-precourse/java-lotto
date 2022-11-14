@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static lotto.dto.LottoResponseDtos.LottoResponseDto;
@@ -47,7 +48,7 @@ public class LottosTest {
         );
     }
 
-    @DisplayName("Lottos 클래스 get 메소드 테스트")
+    @DisplayName("get 메소드 테스트")
     @Test
     void get() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -56,5 +57,13 @@ public class LottosTest {
 
         assertThat(lottos.get(0)).isEqualTo(lotto);
         assertThat(lottos.get(1)).isEqualTo(otherLotto);
+    }
+
+    @DisplayName("toResponseDto 메소드 테스트")
+    @Test
+    void toResponseDto() {
+        List<Integer> lottoNumbers = new LinkedList<>(List.of(6, 5, 4, 3, 2, 1));
+        Lotto lotto = new Lotto(lottoNumbers);
+        assertThat(lotto.toResponseDto().getLottoNumber()).containsExactly(1, 2, 3, 4, 5, 6);
     }
 }
