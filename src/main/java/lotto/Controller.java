@@ -46,6 +46,13 @@ public class Controller {
 
         return buyNum + "개를 구매했습니다.\n";
     }
+    public void printUserLotto() {
+        for (int i = 0; i < user.getUserLottoNumber().size(); i++) {
+            System.out.println(user.getUserLottoNumber().get(i));
+        }
+    }
+
+
 
 
 }
