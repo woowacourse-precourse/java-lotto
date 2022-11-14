@@ -1,8 +1,10 @@
 package lotto.domain;
 
 import lotto.Util.InputPrint;
+import lotto.Util.OutputPrint;
 import lotto.valid.Validation;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -25,6 +27,20 @@ public class Prize {
         String bonus = InputPrint.bonusNumberInput();
         Validation.bonusNumberValid(bonus);
         this.bonusNumber = Integer.parseInt(bonus);
+    }
+
+    public int match(Lotto lotto){
+        List<Integer> subList = new ArrayList<>(prizeNumbers);
+        subList.removeAll(lotto.getNumbers());
+        int resultSize = 6 - subList.size();
+        if (resultSize == 1 && matchBonusNumber(lotto.getNumbers())){
+            return 7;
+        }
+        return resultSize;
+    }
+
+    private boolean matchBonusNumber(List<Integer> numbers){
+        return numbers.contains(bonusNumber);
     }
 
     public List<Integer> getPrizeNumbers() {
