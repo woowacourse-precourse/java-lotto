@@ -24,7 +24,7 @@ public class LottoAnswer extends Lotto {
             checkDuplicatedNumberOrThrows(bonusNum);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            throw new IllegalArgumentException();
+            throw new NoSuchElementException();
         }
     }
 
