@@ -1,7 +1,7 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import view.message.Message;
+import common.message.Message;
 
 public class Input {
 

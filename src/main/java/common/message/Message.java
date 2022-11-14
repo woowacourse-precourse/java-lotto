@@ -1,4 +1,4 @@
-package view.message;
+package common.message;
 
 public enum Message {
 
