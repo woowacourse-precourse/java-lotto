@@ -11,10 +11,8 @@ public class UserRepository {
 
 
 
-    public void setUserOwnLotto(Lotto lotto) {
-        ArrayList<Lotto> OriginalLotties = new ArrayList<>();
-        OriginalLotties.add(lotto);
-        this.user.setLotties(OriginalLotties);
+    public void setUserLotties(ArrayList<Lotto> lotties) {
+        this.user.setLotties(lotties);
     }
 
     public void setUserNumberOfLotties(int numbers) {
