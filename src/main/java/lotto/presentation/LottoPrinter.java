@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class LottoPrinter {
 
-    public void printTotalProfit(double profit) {
+    private void printTotalProfit(double profit) {
         String[] prints = OutputPrint.OUTPUT_TOTAL_PROFIT.getMessage().split("/");
         System.out.println(prints[0] + profit + prints[1]);
     }
@@ -29,7 +29,7 @@ public class LottoPrinter {
         printTotalProfit(profit);
     }
 
-    public void printWinningStatistic() {
+    private void printWinningStatistic() {
         OutputPrint.OUTPUT_WINNING_STATISTIC.printMessage();
         OutputPrint.OUTPUT_BORDER.printMessage();
     }
