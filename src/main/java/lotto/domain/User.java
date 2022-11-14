@@ -18,11 +18,11 @@ public class User {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
         try {
-            this.money = convertToInt(money);
-            validateMoney(this.money);
+            validateMoney(money);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e);
         }
+        this.money = Integer.parseInt(money);
     }
 
     public void inputWinningNumbers(){
@@ -41,13 +41,12 @@ public class User {
     public void inputBonusNumber(){
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
-        this.bonusNumber = convertToInt(bonusNumber);
-    }
-
-    public int convertToInt(String userInput) {
-        validateToConvertToInt(userInput);
-
-        return Integer.parseInt(userInput);
+        try {
+            validateBonusNumber(bonusNumber);
+        }catch(IllegalArgumentException e){
+            throw new IllegalArgumentException(e);
+        }
+        this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
     public List<Integer> convertToList(String winningNumbers){
@@ -62,20 +61,18 @@ public class User {
         return convertWinningNumbers;
     }
 
-    public void validateMoney(int money) {
-        if (money < LOTTO_CHARGE) {
+    public void validateMoney(String money) {
+        int convertMoney = 0;
+        try {
+            convertMoney = Integer.parseInt(money);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요!");
+        }
+        if (convertMoney < LOTTO_CHARGE) {
             throw new IllegalArgumentException("[ERROR] 로또 1장의 구매가격은 1000원 입니다! 1000이상의 수를 입력해주세요");
         }
-        if(money % 1000 != 0){
+        if(convertMoney % 1000 != 0){
             throw new IllegalArgumentException("[ERROR] 1000 단위로 입력해주세요!");
-        }
-    }
-
-    public void validateToConvertToInt(String userInput) {
-        try {
-            Integer.parseInt(userInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요!");
         }
     }
 
@@ -93,6 +90,19 @@ public class User {
             if(duplicateCheck.contains(number)){throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력했습니다!");}
             if(Integer.parseInt(number)<1 || Integer.parseInt(number)>45){throw new IllegalArgumentException("[ERROR] 1~45범위로 숫자를 입력해주세요!");}
             duplicateCheck.add(number);
+        }
+    }
+
+    public void validateBonusNumber(String bonusNumber){
+        int convertBonusNumber = 0;
+        try{
+            convertBonusNumber = Integer.parseInt(bonusNumber);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 한 개의 숫자만 입력해주세요!");
+        }
+
+        if(convertBonusNumber<1 || convertBonusNumber>45){
+            throw new IllegalArgumentException("[ERROR] 1~45범위로 숫자를 입력해주세요!");
         }
     }
 
