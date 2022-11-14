@@ -1,4 +1,4 @@
-package lotto.model.domain;
+package lotto.domain;
 
 import java.util.regex.Pattern;
 import lotto.utils.Utils;

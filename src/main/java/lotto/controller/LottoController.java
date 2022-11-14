@@ -1,8 +1,8 @@
 package lotto.controller;
 
-import lotto.model.domain.Lottos;
-import lotto.model.domain.WinningNumber;
-import lotto.model.service.LottoService;
+import lotto.domain.Lottos;
+import lotto.domain.WinningNumber;
+import lotto.service.LottoService;
 
 public class LottoController {
 

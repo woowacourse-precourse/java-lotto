@@ -1,11 +1,11 @@
-package lotto.model.service;
+package lotto.service;
 
 import java.util.List;
-import lotto.model.domain.Lotto;
-import lotto.model.domain.Lottos;
-import lotto.model.domain.PayingMoney;
-import lotto.model.domain.WinningNumber;
-import lotto.model.domain.WinningStatistics;
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
+import lotto.domain.PayingMoney;
+import lotto.domain.WinningNumber;
+import lotto.domain.WinningStatistics;
 import lotto.utils.Utils;
 import lotto.view.InputView;
 import lotto.view.OutputView;

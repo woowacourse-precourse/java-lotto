@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.controller.LottoController;
-import lotto.model.service.LottoService;
+import lotto.service.LottoService;
 import lotto.view.OutputView;
 
 public class Application {
