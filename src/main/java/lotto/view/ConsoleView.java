@@ -3,6 +3,8 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.PurchasedLottos;
+import lotto.domain.Rank;
+import lotto.domain.WinningStatistics;
 import lotto.message.ConsoleMessage;
 import lotto.validator.InputValidator;
 
@@ -50,11 +52,31 @@ public class ConsoleView {
         }
     }
 
+    public static void printWinningStatistic(WinningStatistics winningStatistics) {
+        System.out.println(ConsoleMessage.OUTPUT_WINNING_STATISTICS_HEADER.getMessage());
+        for (Rank rank: Rank.getRanksExceptMiss()) {
+            int eachRankCount = winningStatistics.getWinningStatistics().get(rank);
+            printEachRank(rank, eachRankCount);
+        }
+    }
+
     private static void printLottoNumbers(Lotto lotto) {
         String numbers = lotto.getNumbers().stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(LOTTO_NUMBER_DELIMITER));
 
         System.out.print(numbers);
+    }
+
+    private static void printEachRank(Rank rank, int count) {
+        if (rank == Rank.SECOND) {
+            System.out.print(rank.getMatched() + ConsoleMessage.OUTPUT_WINNING_STATISTICS_WITH_BONUS.getMessage());
+            System.out.print(rank.getPrizeWithDecimalFormat() + ConsoleMessage.OUTPUT_WINNING_STATISTICS_AFTER_PRIZE.getMessage());
+            System.out.println(count + ConsoleMessage.OUTPUT_WINNING_STATISTICS_AFTER_COUNT.getMessage());
+            return;
+        }
+        System.out.print(rank.getMatched() + ConsoleMessage.OUTPUT_WINNING_STATISTICS_WITHOUT_BONUS.getMessage());
+        System.out.print(rank.getPrizeWithDecimalFormat() + ConsoleMessage.OUTPUT_WINNING_STATISTICS_AFTER_PRIZE.getMessage());
+        System.out.println(count + ConsoleMessage.OUTPUT_WINNING_STATISTICS_AFTER_COUNT.getMessage());
     }
 }

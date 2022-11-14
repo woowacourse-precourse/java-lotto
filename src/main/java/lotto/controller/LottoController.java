@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.PurchasedLottos;
 import lotto.domain.WinningLotto;
+import lotto.domain.WinningStatistics;
 import lotto.view.ConsoleView;
 
 import java.util.List;
@@ -10,11 +11,14 @@ import java.util.List;
 public class LottoController {
     private PurchasedLottos purchasedLottos;
     private WinningLotto winningLotto;
+    private WinningStatistics winningStatistics;
 
     public void process() {
         purchaseLotto();
         showPurchasedLottos();
         setWinningLotto();
+        createWinningStatistics();
+        showWinningResult();
     }
 
     private void purchaseLotto() {
@@ -44,5 +48,14 @@ public class LottoController {
     private int createBonusNumber() {
         ConsoleView.printBlankLine();
         return ConsoleView.inputBonusNumber();
+    }
+
+    private void createWinningStatistics() {
+        winningStatistics =  new WinningStatistics(purchasedLottos, winningLotto);
+    }
+
+    private void showWinningResult() {
+        ConsoleView.printBlankLine();
+        ConsoleView.printWinningStatistic(winningStatistics);
     }
 }

@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public enum Rank {
     FIRST(6, 2_000_000_000, false),
@@ -33,11 +37,22 @@ public enum Rank {
                 .orElse(MISS);
     }
 
+    public static List<Rank> getRanksExceptMiss() {
+        return Arrays.stream(Rank.values())
+                .filter(rank -> rank != Rank.MISS)
+                .sorted(Comparator.comparing(Rank::getPrize))
+                .collect(Collectors.toList());
+    }
+
     public int getMatched() {
         return matched;
     }
 
-    public int getPrize() {
+    public String getPrizeWithDecimalFormat() {
+        return new DecimalFormat("###,###").format(prize);
+    }
+
+    private int getPrize() {
         return prize;
     }
 
