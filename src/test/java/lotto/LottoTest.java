@@ -17,7 +17,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class LottoTest {
     private Application application;
     private LottoMachine lottoMachine;
-
+    private LottoClerk lottoClerk;
+    @BeforeEach
+    void SetUp(){
+        application =new Application();
+        lottoMachine = new LottoMachine();
+        lottoClerk = new LottoClerk();
+    }
 
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
@@ -37,14 +43,12 @@ class LottoTest {
     @DisplayName("입력이 1000 단위로 받고 로또개수 출력")
     @Test
     void testLottoCount() {
-        lottoMachine = new LottoMachine();
         assertThat(8).isEqualTo(lottoMachine.makeLottoCount(8000));
     }
 
     @DisplayName("입력이 1000 단위 아니면 true반환")
     @Test
     void inputNotThousandsNumber() {
-        application = new Application();
         String testData = "500";
         InputStream in = new ByteArrayInputStream(testData.getBytes());
         System.setIn(in);
@@ -55,7 +59,6 @@ class LottoTest {
     @DisplayName("구입 입력만큼 나오는지 확인")
     @Test
     void checkSix() {
-        lottoMachine = new LottoMachine();
         lottoMachine.makeLottoCount(6000);
         lottoMachine.makeLottoReceipt();
         assertThat(6).isEqualTo(lottoMachine.getLottoReceipt().size());
@@ -67,7 +70,6 @@ class LottoTest {
         String testData = "500sfmoieroivajsfioisa";
         InputStream in = new ByteArrayInputStream(testData.getBytes());
         System.setIn(in);
-        application = new Application();
         application.answerLotto();
         assertThat(true).isEqualTo(application.getSystemError());
     }
@@ -78,7 +80,6 @@ class LottoTest {
         String testData = "0";
         InputStream in = new ByteArrayInputStream(testData.getBytes());
         System.setIn(in);
-        application = new Application();
         application.bonusLotto();
         assertThat(true).isEqualTo(application.getSystemError());
     }
@@ -86,14 +87,12 @@ class LottoTest {
     @DisplayName("로또 개수와 보너스 여부로 판단")
     @Test
     void judgeLottoTest() {
-        LottoMachine lottoMachine = new LottoMachine();
         assertThat(lottoMachine.judgeLotto(5, true)).isEqualTo(WinningPrize.FIVEWITHBONUS);
     }
 
     @DisplayName("로또 정답과 로또 그리고 보너스로 답 판단")
     @Test
     void calculateLottoTest() {
-        LottoMachine lottoMachine = new LottoMachine();
         Lotto lotto = new Lotto(new String[]{"1", "3", "5", "7", "8", "9"});
         Lotto answer = new Lotto(new String[]{"1", "3", "5", "7", "8", "10"});
         int bonus = 9;
@@ -103,7 +102,6 @@ class LottoTest {
     @DisplayName("로또 결과물 잘 들어오는지 확인")
     @Test
     void makeStatisticsTest() {
-        LottoMachine lottoMachine = new LottoMachine();
         lottoMachine.makeLottoCount(1000);
         lottoMachine.makeLottoReceipt();
         Lotto answer = new Lotto(new String[]{"1", "3", "5", "7", "8", "10"});
@@ -114,14 +112,12 @@ class LottoTest {
     @DisplayName("랭크에 따른 맞춘 숫자 반환")
     @Test
     void rankTest() {
-        LottoClerk lottoClerk = new LottoClerk();
         assertThat(lottoClerk.rankChecker(WinningPrize.THREE)).isEqualTo("3");
     }
 
     @DisplayName("해당 랭크에 해당하는 String 반환 makeResultMessage 테스트")
     @Test
     void rankStringTest() {
-        LottoClerk lottoClerk = new LottoClerk();
         ArrayList<WinningPrize> result = new ArrayList<>();
         result.add(WinningPrize.THREE);
         assertThat(lottoClerk.makeResultMessage(result, WinningPrize.THREE))
@@ -131,7 +127,6 @@ class LottoTest {
     @DisplayName("소수점 첫번째자리까지만 테스트 getProfitPercent 테스트")
     @Test
     void getProfitPercentTest() {
-        LottoClerk lottoClerk = new LottoClerk();
         ArrayList<WinningPrize> result = new ArrayList<>();
         result.add(WinningPrize.THREE);
         assertThat(lottoClerk.getProfitPercent(result, 8000))
