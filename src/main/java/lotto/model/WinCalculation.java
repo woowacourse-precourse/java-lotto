@@ -29,9 +29,9 @@ public class WinCalculation {
         count++;
     }
 
-    private static void winCalculation(int count, boolean bonusCheck){
-        count = 0;
-        bonusCheck = true;
+    public WinCalculation() {
+        this.count = 0;
+        this.bonusCheck = true;
     }
 
     public static boolean bonusNumber(int bonus, List<Integer> number) {
@@ -45,7 +45,7 @@ public class WinCalculation {
 
     public static List<List<Object>> winCal(List<Integer> win, List<List<Integer>> lottos, int bonus) {
         for (List<Integer> lotto : lottos) {
-            winCalculation(count,bonusCheck);
+            new WinCalculation();
             winCount(win, lotto);
             if (count == 5) {
                 bonusCheck = bonusNumber(bonus, lotto);

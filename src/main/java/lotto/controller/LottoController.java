@@ -48,7 +48,6 @@ public class LottoController {
         Lotto lotto = new Lotto(win, numbers);
         numbers = lotto.change(win);
         return numbers;
-
     }
 
     private int getBonusNumber(List<Integer> lotto){
@@ -66,17 +65,11 @@ public class LottoController {
     private void winCount(List<WinDetail> result){
         List<Integer> cc = WinCount.winCount(result);
         WinCount.printCount(cc);
-
     }
 
     private void rewardRate(List<WinDetail> result, String money){
         long reward = Revenue.revenue(result);
         double rate = Revenue.rate(money,reward);
         OutputView.rateMsg(rate);
-
     }
-
-
-
-
 }
