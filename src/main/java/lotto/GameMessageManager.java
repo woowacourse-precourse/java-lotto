@@ -1,12 +1,15 @@
 package lotto;
 
 public class GameMessageManager {
+  public static void printBlankLine() {
+    System.out.println();
+  }
   public static void printInputBuyAmountMessage() {
     System.out.println(GameMessage.INPUT_BUY_AMOUNT_MESSAGE.getMessage());
   }
 
   public static void printBuyCount(int count) {
-    System.out.println("\n" + count + GameMessage.BUY_COUNT_MESSAGE.getMessage());
+    System.out.println(count + GameMessage.BUY_COUNT_MESSAGE.getMessage());
   }
 
   private enum GameMessage {

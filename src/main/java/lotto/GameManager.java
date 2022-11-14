@@ -12,14 +12,19 @@ public class GameManager {
 
   public void lottoGameStart() {
     buyLotto();
-    user.printUserLottoList();
+    printBuyLottoList();
   }
 
   private void buyLotto() {
     printInputBuyAmountMessage();
     user.setBuyAmount(getIntegerInput());
     user.setBuyCount();
+    printBlankLine();
+  }
+
+  private void printBuyLottoList(){
     printBuyCount(user.getBuyCount());
     user.setUserLottoList(LottoGenerator.getRandomLottoListByCount(user.getBuyCount()));
+    user.printUserLottoList();
   }
 }
