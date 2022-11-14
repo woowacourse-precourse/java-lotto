@@ -1,8 +1,5 @@
 package lotto;
 
-import java.util.List;
-
-import static lotto.Game.winning;
 import static lotto.option.Option.*;
 
 public enum Winning {

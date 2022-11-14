@@ -8,7 +8,7 @@ public class WinningLogic {
     private static double total = 0.0F;
     public static void addScore(){
         lottos.stream().forEach(lotto -> {
-            int countMatch = countMatch(lotto);
+            countMatch(lotto);
             checkBonus(lotto);
             countWinning();
         });
@@ -26,10 +26,9 @@ public class WinningLogic {
             }
         }
     }
-    private static Integer countMatch(Lotto lotto){
+    private static void countMatch(Lotto lotto){
         match = 0;
         lotto.getNumbers().stream().forEach(number-> addMatch(number));
-        return match;
     }
     private static void addMatch(Integer number){
         if(winning.getNumbers().contains(number)){
