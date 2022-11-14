@@ -80,33 +80,32 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 금액이 8000일때 8개의 randomLottos 배열이 만들어진다")
+    @DisplayName("로또 금액이 8000일때 8개의 Lottery 배열이 만들어진다")
     @Test
-    void createRandomLottosArrayByLottoPriceIsSet() {
+    void createLotteryByLottoPriceIsSet() {
         //given
         Application application = new Application();
         insertInput("8000");
         application.insertPriceAndSaveNumber();
         //when
-        application.makeArray();
+        application.makeLottery();
         //then
-        assertThat(application.getRandomLottos().size()).isEqualTo(8);
+        assertThat(application.getLottery().size()).isEqualTo(8);
     }
 
-    @DisplayName("로또 금액의 각각의 배열에는 서로 다른 6개의 숫자가 저장된다")
+    @DisplayName("lottery 안의 numbers 배열에는 서로 다른 6개의 숫자가 저장된다")
     @Test
-    void createRandomLottsWithSixOtherNumbers() {
+    void createLotteryWithSixOtherNumbers() {
         //given
         Application application = new Application();
         insertInput("8000");
         application.insertPriceAndSaveNumber();
-        application.makeArray();
         //when
-        application.makeEachArrays();
+        application.makeLottery();
         //then
-        assertThat(application.getRandomLottos().size()).isEqualTo(8);
-        assertThat(application.getRandomLottos().get(0).size()).isEqualTo(6);
-        assertThat(isNotDuplicated(application.getRandomLottos())).isEqualTo(true);
+        assertThat(application.getLottery().size()).isEqualTo(8);
+        assertThat(application.getLottery().get(0).getNumbers().size()).isEqualTo(6);
+        assertThat(isNotDuplicated(application.getLottery())).isEqualTo(true);
     }
 
     @DisplayName("당첨 금액은 1~45 사이의 6개 숫자라면 예외가 발생하지 않는다")
@@ -116,11 +115,10 @@ class ApplicationTest extends NsTest {
         Application application = new Application();
         insertInput("8000");
         application.insertPriceAndSaveNumber();
-        application.makeArray();
         //when
-        application.makeEachArrays();
+        application.makeLottery();
         //then
-        assertThat(inRange(application.getRandomLottos())).isEqualTo(true);
+        assertThat(inRange(application.getLottery())).isEqualTo(true);
     }
     @DisplayName("당첨 번호는 1~45 사이의 6개의 숫자가 들어왔을때 예외가 발생하지 않는다")
     @Test
@@ -136,7 +134,7 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("당첨 번호는 1~45 사이 밖의 숫자가 들어왔을떄 예외가 발생한다")
     @Test
-    void createRandomLottsWithNumberWhichOutOfRange() {
+    void createWinningNumberWithNumberWhichOutOfRange() {
         //given
         Application application = new Application();
         insertInput("1,2,3,4,5,57");
@@ -148,7 +146,7 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("당첨 번호는 개수가 6개가 아닐때 예외가 발생한다")
     @Test
-    void createRandomLottsWithNumberWhichOutOfSize() {
+    void createWinningNumberWithNumberWhichOutOfSize() {
         //given
         Application application = new Application();
         insertInput("1,2,3,4,5");
@@ -198,21 +196,21 @@ class ApplicationTest extends NsTest {
         return Arrays.stream(s.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    private boolean inRange(List<List<Integer>> randomLottos){
-        for(List<Integer> lottos : randomLottos){
-            for(Integer lotto : lottos){
-                if(lotto < 0 || lotto > 45) return false;
+    private boolean inRange(List<Lotto> lottery){
+        for(Lotto lotto : lottery){
+            for(Integer num : lotto.getNumbers()){
+                if(num < 0 || num > 45) return false;
             }
         }
         return true;
     }
 
-    private boolean isNotDuplicated(List<List<Integer>> randomLottos){
-        for(List<Integer> lottos : randomLottos){
+    private boolean isNotDuplicated(List<Lotto> lottery){
+        for(Lotto lotto : lottery){
             boolean [] check = new boolean[45];
-            for(Integer lotto : lottos){
-                if(check[lotto-1]) return false;
-                check[lotto-1] = true;
+            for(Integer num : lotto.getNumbers()){
+                if(check[num-1]) return false;
+                check[num-1] = true;
             }
         }
         return true;
