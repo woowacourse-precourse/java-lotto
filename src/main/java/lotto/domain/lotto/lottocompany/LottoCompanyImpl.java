@@ -37,6 +37,12 @@ public class LottoCompanyImpl implements LottoCompany {
         return winResult.getWinResult();
     }
 
+    @Override
+    public int getTotalPrize() {
+        return winResult.getTotalPrizeMoney();
+    }
+
+
     private int countWinNumber(List<Integer> lottoNumbers, List<String> winningNumbers) {
         int winNumberCount = 0;
         for (Integer lottoNumber : lottoNumbers) {

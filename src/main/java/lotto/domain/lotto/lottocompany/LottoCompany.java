@@ -9,4 +9,6 @@ public interface LottoCompany {
     List<Lotto> publishNLotto(int publishLottoCount);
 
     Map<Win, Integer> makeWinResult(List<Lotto> publishedNLotto, List<String> winningNumbers, int bonusNumber);
+
+    int getTotalPrize();
 }

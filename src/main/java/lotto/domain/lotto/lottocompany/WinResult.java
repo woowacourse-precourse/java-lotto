@@ -25,4 +25,12 @@ public class WinResult {
     public void addWin(Win win) {
         winResult.replace(win, winResult.get(win) + 1);
     }
+
+    public int getTotalPrizeMoney() {
+        int totalPrizeMoney = 0;
+        for (Win win : winResult.keySet()) {
+            totalPrizeMoney += win.getPrizeMoney() * winResult.get(win);
+        }
+        return totalPrizeMoney;
+    }
 }
