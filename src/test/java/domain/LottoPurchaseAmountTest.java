@@ -6,11 +6,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class LottoPurchaseAmountTest {
-    
+
     @Test
     @DisplayName("로또 구입금액이 0원이면 예외가 발생한다.")
     void inputMoneyEqualsWithZero() {
