@@ -5,8 +5,6 @@ import lotto.enums.Error;
 
 public class Money {
     private int inputMoney;
-    private int tickets;
-
     public void setInputMoney() {
         String input = InputView.purchaseInput();
         int money = isMoneyNumber(input);
