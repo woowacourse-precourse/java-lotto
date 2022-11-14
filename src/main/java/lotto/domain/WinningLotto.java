@@ -12,7 +12,7 @@ public class WinningLotto {
 
     public WinningLotto(Lotto lottoWithWinning, int bonusNumber) {
         validateRangeOfNumber(bonusNumber);
-        validateBonusNumberAndLottoAreDuplicate(lottoWithWinning, bonusNumber);
+        validateBonusNumberDuplicate(lottoWithWinning, bonusNumber);
 
         this.lottoWithWinning = lottoWithWinning;
         this.bonusNumber = bonusNumber;
@@ -22,7 +22,7 @@ public class WinningLotto {
         validateStringIsNumeric(bonusNumber);
         int bonusNumberParseInt = Integer.parseInt(bonusNumber);
         validateRangeOfNumber(bonusNumberParseInt);
-        validateBonusNumberAndLottoAreDuplicate(lottoWithWinning, bonusNumberParseInt);
+        validateBonusNumberDuplicate(lottoWithWinning, bonusNumberParseInt);
 
         this.lottoWithWinning = lottoWithWinning;
         this.bonusNumber = bonusNumberParseInt;
@@ -40,7 +40,7 @@ public class WinningLotto {
         }
     }
 
-    private void validateBonusNumberAndLottoAreDuplicate(Lotto lotto, int bonusNumber) {
+    private void validateBonusNumberDuplicate(Lotto lotto, int bonusNumber) {
         if (lotto.isContains(bonusNumber)) {
             throw new IllegalArgumentException(
                     ErrorMessage.BONUS_NUMBER_AND_WINNING_LOTTO_NUMBERS_ARE_DUPLICATE.getMessage()
