@@ -61,7 +61,7 @@ public class Application {
 
     public static Lotto getLuckyNumbers() {
         List<Integer> inputNums = readLuckyNumbers();
-        validLuckyNumbers();
+        validLuckyNumbers(inputNums);
         Lotto luckyNums = new Lotto(inputNums);
         return luckyNums;
     }
@@ -80,9 +80,17 @@ public class Application {
             }
         }
 
+        Collections.sort(numbers);
+
         return numbers;
     }
-    
+
+    public static void validLuckyNumbers(List<Integer> inputNums) {
+        if(inputNums.size() != inputNums.stream().distinct().count()){
+            throw new IllegalArgumentException("[ERROR]: 당첨번호에 중복된 숫자가 있습니다.");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
