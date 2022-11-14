@@ -33,6 +33,14 @@ public class MoneyTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("돈을 더해 반환한다.")
+    @Test
+    void add() {
+        Money money = new Money(5000);
+
+        assertThat(money.add(new Money(1000))).isEqualTo(new Money(6000));
+    }
+
     @DisplayName("돈을 나눈 값을 반환한다.")
     @Test
     void divide() {
