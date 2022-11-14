@@ -12,7 +12,7 @@ public class LottoNumber {
         this.number = number;
     }
 
-    public static void validateNumberRange(int number) {
+    private static void validateNumberRange(int number) {
         if (number < LOTTO_MIN_NUMBER || LOTTO_MAX_NUMBER < number) {
             throw new IllegalArgumentException(
                     InvalidInputMessage.ERR_DEFAULT
