@@ -46,7 +46,7 @@ public class GameManager {
     private Integer getBonusNumber() {
         Printer.printInfoInputBonus();
         String bonus = Console.readLine();
-        validation.validateIsNumber(bonus);
+        validation.validateIsNumberInput(bonus);
 
         return Integer.parseInt(bonus);
     }
@@ -54,7 +54,7 @@ public class GameManager {
     private List<Integer> getResultNumbers() {
         Printer.printInfoInputResult();
         String result = Console.readLine();
-        validation.validateResultNumbers(result);
+        validation.validateResultNumberInput(result);
 
         return Arrays.stream(result.split(","))
                 .map(Integer::parseInt)
@@ -69,7 +69,7 @@ public class GameManager {
         Printer.printInfoMoneyInput();
 
         String money = Console.readLine();
-        validation.validateMoney(money);
+        validation.validateMoneyInput(money);
 
         return Integer.parseInt(money);
     }

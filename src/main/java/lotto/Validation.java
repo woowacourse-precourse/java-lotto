@@ -11,8 +11,8 @@ import static lotto.util.LottoCode.*;
 public class Validation {
     private static final String REGEX_NOT_NUMBER = "[^\\d]";
 
-    public void validateMoney(String input) {
-        validateByRegex(REGEX_NOT_NUMBER, input);
+    public void validateMoneyInput(String input) {
+        validateIsNumberInput(input);
 
         int money = Integer.parseInt(input);
         if ((money % LOTTO_PRICE.getCode()) != 0) {
@@ -20,12 +20,20 @@ public class Validation {
         }
     }
 
-    private void validateByRegex(String Regex, String input) {
-        Pattern pattern = Pattern.compile(Regex);
-        Matcher matcher = pattern.matcher(input);
-        if (matcher.find()) {
+    public void validateResultNumberInput(String result) {
+        List<Integer> numbers = separateNumbers(result);
+
+        if (isOutOfRangeNumbers(numbers)) {
             throw new IllegalArgumentException();
         }
+
+        if (isDuplicate(numbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateIsNumberInput(String bonus) {
+        validateByRegex(REGEX_NOT_NUMBER, bonus);
     }
 
     public void validateBasicNumber(List<Integer> numbers) {
@@ -43,7 +51,7 @@ public class Validation {
     }
 
     public void validateBonusNumber(List<Integer> numbers, Integer bonusNumber) {
-        if (isOutOfRange(bonusNumber)) {
+        if (isOutOfRangeNumber(bonusNumber)) {
             throw new IllegalArgumentException();
         }
 
@@ -52,12 +60,20 @@ public class Validation {
         }
     }
 
-    private boolean isOutOfRangeNumbers(List<Integer> numbers) {
-        return numbers.stream()
-                .anyMatch(this::isOutOfRange);
+    private void validateByRegex(String Regex, String input) {
+        Pattern pattern = Pattern.compile(Regex);
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.find()) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    private boolean isOutOfRange(Integer number) {
+    private boolean isOutOfRangeNumbers(List<Integer> numbers) {
+        return numbers.stream()
+                .anyMatch(this::isOutOfRangeNumber);
+    }
+
+    private boolean isOutOfRangeNumber(Integer number) {
         return (number < MIN_LOTTO_NUMBER.getCode()) || (number > MAX_LOTTO_NUMBER.getCode());
     }
 
@@ -66,25 +82,13 @@ public class Validation {
     }
 
     private boolean isDuplicate(List<Integer> numbers, Integer bonusNumber) {
+        if (isDuplicate(numbers)) {
+            return true;
+        }
+
         return numbers.contains(bonusNumber);
     }
 
-    public void validateResultNumbers(String result) {
-        List<Integer> numbers = separateNumbers(result);
-
-        if (isOutOfRangeNumbers(numbers)) {
-            throw new IllegalArgumentException();
-        }
-
-        if (isDuplicate(numbers)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public void validateIsNumber(String bonus) {
-        validateByRegex(REGEX_NOT_NUMBER, bonus);
-    }
-    
     private List<Integer> separateNumbers(String result) {
         try {
             return Arrays.stream(result.split(","))
