@@ -52,4 +52,22 @@ public class LottoManager {
     public void inputBonusNumbers() {
         bonusNumber = Integer.parseInt(Console.readLine());
     }
+
+    private static boolean isEmptyOrNull(String value) {
+        return value == null || value.isEmpty();
+    }
+
+    public int getRankingIndex(Lotto lotto) {
+        PrizeMoney rankingValue;
+        int rankingIndex = -1;
+        List<Integer> matched = lotto.getPrized(luckyNumbers, bonusNumber);
+        String ranking = prize.get(matched);
+
+        if (!isEmptyOrNull(ranking)) {
+            rankingValue = PrizeMoney.valueOf(ranking);
+            rankingIndex = rankingValue.ordinal();
+        }
+
+        return rankingIndex;
+    }
 }
