@@ -20,12 +20,12 @@ public class OutputController extends Controller{
         view.show();
     }
 
-    public void showLottoPurchaseNumber() {
+    public void showLottoPurchaseNumbers() {
         View view = new LottoPurchaseNumberView(this.getLotteries());
         view.show();
     }
 
-    public void showStatistic() {
+    public void showLottoStatistic() {
         Raffle raffle = this.getRaffle();
         List<Lotto> lotteries = this.getLotteries();
         Map<PrizeType, Integer> status = this.countPrizeType(raffle, lotteries);
