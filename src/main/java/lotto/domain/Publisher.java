@@ -1,21 +1,23 @@
 package lotto.domain;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 import lotto.Lotto;
 
 public class Publisher {
-    static final int ticketPrice = 1000;
+    static final int TICKET_PRICE = 1000;
     private int ticketQuantity;
-    private List<Lotto> lotteries;
+    private Map<Lotto, Integer> lotteries;
 
     public Publisher(int purchaseAmount) {
         validate(purchaseAmount);
-        this.ticketQuantity = purchaseAmount / ticketPrice;
-        this.lotteries = new ArrayList<Lotto>();
+        this.ticketQuantity = purchaseAmount / TICKET_PRICE;
+        this.lotteries = new HashMap<Lotto, Integer>(ticketQuantity);
     }
 
-    public List<Lotto> getLotteries() {
+    public Map<Lotto, Integer> getLotteries() {
         return lotteries;
     }
 
@@ -23,8 +25,8 @@ public class Publisher {
         return ticketQuantity;
     }
 
-    public void issueLotto(List<Integer> numbers) {
-        lotteries.add(new Lotto(numbers));
+    public void issueLotto(List<Integer> numbers, int bonusNumber) {
+        lotteries.put(new Lotto(numbers), bonusNumber);
     }
 
     public List<Integer> make() {
@@ -32,8 +34,8 @@ public class Publisher {
         return maker.getResult();
     }
 
-    private void validate(int purchaseAmount) throws IllegalArgumentException {
-        if (purchaseAmount % ticketPrice != 0) {
+    private void validate(int purchaseAmount) {
+        if (purchaseAmount % TICKET_PRICE != 0) {
             throw new IllegalArgumentException();
         }
     }
