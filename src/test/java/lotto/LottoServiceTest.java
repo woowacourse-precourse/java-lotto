@@ -25,19 +25,19 @@ class LottoServiceTest {
     @DisplayName("입력 받은 당첨 번호가 유효하지 않은 경우 예외가 발생한다.")
     @MethodSource("invalidWinningNumber")
     @ParameterizedTest(name = "{0} : {1}")
-    void invalidWinningNumberTest(String situation, String input) {
-        assertThatThrownBy(() -> lottoService.setWinningNumber(input))
+    void invalidWinningNumberTest(String situation, String winningNumber, String bonusNumber) {
+        assertThatThrownBy(() -> lottoService.setWinningNumber(winningNumber, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     static Stream<Arguments> invalidWinningNumber() {
         return Stream.of(
-                Arguments.of("숫자가 6개보다 많은 경우", "1,2,3,4,5,6,7"),
-                Arguments.of("알파벳이 포함된 경우", "1,2,3,4,5,a"),
-                Arguments.of("숫자 범위를 벗어난 경우", "1,2,3,4,5,50"),
-                Arguments.of("한글이 들어간 경우", "ㄱ,ㄴ,ㄷ,ㄹ,ㅁ"),
-                Arguments.of("공백인 경우", ""),
-                Arguments.of("숫자가 적은 경우", "1,2,3")
+                Arguments.of("숫자가 6개보다 많은 경우", "1,2,3,4,5,6,7", "9"),
+                Arguments.of("알파벳이 포함된 경우", "1,2,3,4,5,a", "9"),
+                Arguments.of("숫자 범위를 벗어난 경우", "1,2,3,4,5,50", "9"),
+                Arguments.of("한글이 들어간 경우", "ㄱ,ㄴ,ㄷ,ㄹ,ㅁ", "9"),
+                Arguments.of("공백인 경우", "", "9"),
+                Arguments.of("숫자가 적은 경우", "1,2,3", "9")
         );
     }
 }
