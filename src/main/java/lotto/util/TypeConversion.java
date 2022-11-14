@@ -21,15 +21,15 @@ public class TypeConversion {
         return purchaseAmount;
     }
 
-    public static List<String> splitInput(String input) {
-        String[] separatedInput = input.split(SPLIT_EXPRESSION);
+    public static List<String> splitInputByComma(String input) {
+        String[] splitInput = input.split(SPLIT_EXPRESSION);
 
-        return Arrays.asList(separatedInput);
+        return Arrays.asList(splitInput);
     }
 
     public static List<Integer> stringToIntList(String input) {
 
-        List<String> playerNumbers = splitInput(input);
+        List<String> playerNumbers = splitInputByComma(input);
 
         return playerNumbers.stream()
                 .map(TypeConversion::stringToInt)
