@@ -64,16 +64,16 @@ public class LottoService {
         return luckyNumber;
     }
 
-    public int pickBonusNumber(HashSet<Integer> winningNumbers) {
-        String bonusNumberInput = input.scanBonusNumber();
-        checkBonusNumberInput(bonusNumberInput, winningNumbers);
-        return Integer.parseInt(bonusNumberInput);
-    }
-
     public HashSet<Integer> pickWinningNumbers() {
         String winningNumbersInput = input.scanWinnerNumbers();
         checkWinningNumberInput(winningNumbersInput);
         return changeStringToHashSet(winningNumbersInput);
+    }
+
+    public int pickBonusNumber(HashSet<Integer> winningNumbers) {
+        String bonusNumberInput = input.scanBonusNumber();
+        checkBonusNumberInput(bonusNumberInput, winningNumbers);
+        return Integer.parseInt(bonusNumberInput);
     }
 
     public HashSet<Integer> changeStringToHashSet(String winningNumbersInput) {
@@ -169,14 +169,6 @@ public class LottoService {
         }
     }
 
-    public int calculateBonusCount(List<Integer> lottoNumbers, LuckyNumber luckyNumber) {
-        int bonusNumber = luckyNumber.getBonusNumber();
-        if (lottoNumbers.contains(bonusNumber)) {
-            return NumberType.ONE.getNumberType();
-        }
-        return NumberType.ZERO.getNumberType();
-    }
-
     public int calculateWinningCount(List<Integer> lottoNumbers, LuckyNumber luckyNumber) {
         int count = 0;
         HashSet<Integer> winningNumbers = luckyNumber.getWinningNumbers();
@@ -188,5 +180,13 @@ public class LottoService {
             }
         }
         return count;
+    }
+
+    public int calculateBonusCount(List<Integer> lottoNumbers, LuckyNumber luckyNumber) {
+        int bonusNumber = luckyNumber.getBonusNumber();
+        if (lottoNumbers.contains(bonusNumber)) {
+            return NumberType.ONE.getNumberType();
+        }
+        return NumberType.ZERO.getNumberType();
     }
 }
