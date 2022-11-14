@@ -40,9 +40,12 @@ public class View {
     }
     private void validateNumbersInRange(List<Integer> numbers) {
         for (int num : numbers) {
-            if ((45 < num) || num < 1) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다");
-            }
+            validateNumberInRange(num);
+        }
+    }
+    private void validateNumberInRange(int num) {
+        if ((45 < num) || num < 1) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다");
         }
     }
     private void validateNumberOfNumbers(List<Integer> numbers, int size) {
@@ -64,7 +67,7 @@ public class View {
         String numbersString = Console.readLine();
         List<Integer> numbersInteger= validateAreNumbers(numbersString);
         validateNumbersInRange(numbersInteger);
-        validateNumberOfNumbers(numbersInteger);
+        validateNumberOfNumbers(numbersInteger, 6);
         validateUniqueNumbersInput(numbersInteger);
         return numbersInteger;
     }
