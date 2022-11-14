@@ -16,10 +16,12 @@ public class LottoService {
     public static int status = 0;
     public final static int ERROR_STATUS = -1;
     public final static int NORMAL_STATUS = 0;
+    private static LottoService instance = new LottoService();
 
     public LottoService() {
         inputView = new InputView();
         outputView = new OutputView();
+        status = 0;
     }
 
     public Player createPlayer() {
@@ -52,7 +54,7 @@ public class LottoService {
     }
 
     public BonusNumber createBonusNumber(List<Integer> winningNumber) {
-        if(status != NORMAL_STATUS){
+        if (status != NORMAL_STATUS) {
             return null;
         }
         outputView.printInputBonusNumber();
