@@ -11,7 +11,7 @@ import java.util.List;
 public class ValidateInput {
     @DisplayName("1000원 단위인지 확인한다.")
     @Test
-    void checkMoneyInput(){
+    void checkMoneyInput() {
         String number = "1500";
         int input = Integer.parseInt(number);
         Validator validateInputMoney = new Validator(number);
@@ -20,13 +20,25 @@ public class ValidateInput {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("인당 로또 구매 제한인 10만원 한도를 넘기는지 확인한다. .")
+    @DisplayName("인당 로또 구매 제한인 10만원 한도를 넘기는지 확인한다.")
     @Test
-    void checkInputNumbers(){
+    void checkInputNumbers() {
         String number = "150000";
         int check = Integer.parseInt(number);
         Validator validateMaxInputMoney = new Validator(number);
 
         assertThatThrownBy(() -> validateMaxInputMoney.validateMaxInputMoney(check))
-                .isInstanceOf(IllegalArgumentException.class);    }
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("양수를 입력헀는지 확인한다.")
+    @Test
+    void checkPositiveNumber() {
+        String number = "-1000";
+        Validator validatePositive = new Validator(number);
+        assertThatThrownBy(() -> validatePositive.validatePositiveNumber(number))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }

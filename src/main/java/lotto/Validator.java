@@ -51,6 +51,14 @@ public class Validator {
         }
     }
 
+    public static void validatePositiveNumber(String input){
+        int positive = Integer.parseInt(input);
+        if(positive <= 0){
+            throw new IllegalArgumentException(ERROR + NEGATIVE_PRICE_ERROR);
+        }
+
+    }
+
 
 
 }
