@@ -1,7 +1,7 @@
 package lotto;
 
 public class Money {
-    Long amount;
+    private final Long amount;
     public Money(Long amount){
         validate(amount);
         this.amount = amount;
