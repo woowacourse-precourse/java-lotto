@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,9 +35,9 @@ public class LottoStatisticsTest {
 	    //given
 		LottoStatistics lottoStatistics = new LottoStatistics(winningNumber);
 	    //when
-		List<LottoRanking> result = lottoStatistics.getWinningResult(lottos);
+		Map<LottoRanking, Integer> result = lottoStatistics.getWinningResult(lottos);
 		//then
-		assertThat(result).contains(LottoRanking.FIFTH, LottoRanking.BLANK);
+		assertThat(result.keySet()).contains(LottoRanking.FIFTH, LottoRanking.BLANK);
 	}
 
 	@DisplayName("구매한 로또의 수익률 확인 테스트")
