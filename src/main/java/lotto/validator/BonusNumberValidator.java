@@ -2,7 +2,8 @@ package lotto.validator;
 
 import lotto.domain.Lotto;
 
-import static lotto.validator.ExceptionStatus.*;
+import static lotto.validator.ExceptionStatus.NO_CONTAIN_WINNING_LOTTO_NUMBERS;
+import static lotto.validator.ExceptionStatus.NO_DIGIT;
 
 public class BonusNumberValidator {
 
