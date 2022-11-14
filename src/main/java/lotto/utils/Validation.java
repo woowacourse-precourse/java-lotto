@@ -10,8 +10,7 @@ public class Validation {
     private static final int LOTTO_FIRST_NUMBER = 1;
     private static final int LOTTO_LAST_NUMBER = 45;
 
-    public static void validate(List<Integer> numbers) {
-        validateSize(numbers);
+    public static void validateOthers(List<Integer> numbers) {
         validateDuplication(numbers);
         validateNumber(numbers);
     }
@@ -27,12 +26,6 @@ public class Validation {
     private static void validateDuplication(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException(ErrorStatus.NUMBER_DUPLICATION.printError());
-        }
-    }
-
-    private static void validateSize(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBERS_SIZE) {
-            throw new IllegalArgumentException(ErrorStatus.NUMBERS_SIZE.printError());
         }
     }
 
