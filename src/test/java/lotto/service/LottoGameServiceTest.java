@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.in;
 
+import java.util.List;
+import lotto.Lotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -48,5 +50,14 @@ public class LottoGameServiceTest {
     void buyLottoTicketsDivide1000Won(String input) {
         assertThatThrownBy(() -> lottoGameService.buyLottoTickets(input))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호는 6자리이며 ','를 구분해 나눈다.")
+    @Test
+    void pickWinningNumbers() {
+        List<Integer> expect = List.of(1,2,3,4,5,6);
+        String input = "1,2,3,4,5,6";
+        Lotto actual = lottoGameService.pickWinningNumbers(input);
+        assertThat(expect).isEqualTo(actual.getNumbers());
     }
 }
