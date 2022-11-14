@@ -32,6 +32,16 @@ public class LottoNumber {
         return number <= END_INCLUSIVE;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof LottoNumber))
+            return false;
+        LottoNumber that = (LottoNumber) o;
+        return number == that.number;
+    }
+
     public int getNumber() {
         return number;
     }
