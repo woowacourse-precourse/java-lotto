@@ -68,4 +68,8 @@ public class LottoService {
     public void showLottoResult(LottoResult lottoResult) {
         OutputView.showLottoResult(lottoResult);
     }
+
+    public void showEarningRatio(LottoResult lottoResult, int purchaseAmount) {
+        OutputView.showEarningRatioResult(lottoResult.calcEarnedRatio(purchaseAmount) *100);
+    }
 }
