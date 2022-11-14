@@ -42,7 +42,11 @@ public class InputView {
     }
 
     private static int inputNumber() {
-        return parseInt(readLine());
+        try {
+            return parseInt(readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만을 입력하실 수 있습니다.");
+        }
     }
 
     private static List<Integer> toIntegers(final String input) {
