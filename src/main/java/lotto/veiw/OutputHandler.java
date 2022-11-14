@@ -5,10 +5,12 @@ import static lotto.domain.LottoReference.NOPE;
 import java.text.DecimalFormat;
 import java.util.Map;
 import lotto.domain.LottoReference;
+import lotto.domain.LottoResult;
 
 public class OutputHandler {
 
-    public void winningStatistics(Map<LottoReference, Integer> result) {
+    public void winningStatistics(LottoResult lottoResult) {
+        Map<LottoReference, Integer> result = lottoResult.getValue();
         DecimalFormat moneyFormat = new DecimalFormat("###,###");
 
         System.out.println("당첨 통계");
@@ -23,8 +25,10 @@ public class OutputHandler {
         }
     }
 
-    public void printYield(Map<LottoReference, Integer> result) {
+    public void printYield(LottoResult lottoResult) {
+        Map<LottoReference, Integer> result = lottoResult.getValue();
         DecimalFormat floatFormat = new DecimalFormat("###,###.#");
+
         float yield = LottoReference.getYield(result);
         System.out.printf("총 수익률은 %s%%입니다.\n", floatFormat.format(yield));
     }

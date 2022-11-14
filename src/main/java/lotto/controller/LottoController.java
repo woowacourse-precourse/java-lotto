@@ -2,7 +2,7 @@ package lotto.controller;
 
 import java.util.List;
 import java.util.Map;
-import lotto.domain.Compare;
+import lotto.domain.LottoResult;
 import lotto.domain.HaveLotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.Lotto;
@@ -21,16 +21,14 @@ public class LottoController {
 
         Money money = inputMoney();
         LottoMachine lottoMachine = new LottoMachine(money);
-        HaveLotto haveLotto = new HaveLotto(lottoMachine.getBuyLottoList());
 
+        HaveLotto haveLotto = new HaveLotto(lottoMachine.getBuyLottoList());
         LottoWithBonus lottoWithBonus = inputBonus(inputLotto());
 
-        Compare compare = new Compare(haveLotto, lottoWithBonus);
+        LottoResult lottoResult = new LottoResult(haveLotto, lottoWithBonus);
 
-        Map<LottoReference, Integer> result = compare.getResult();
-
-        outputHandler.winningStatistics(result);
-        outputHandler.printYield(result);
+        outputHandler.winningStatistics(lottoResult);
+        outputHandler.printYield(lottoResult);
     }
 
     private Money inputMoney() {
