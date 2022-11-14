@@ -62,12 +62,7 @@ class ApplicationTest extends NsTest {
     void createLottoByNonInteger() {
         //given
         Application application = new Application();
-        String input = "test";
-        //when
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        makeLottoPrice("test");
         //then
         assertThatThrownBy(application::insertPriceAndSaveNumber)
                 .isInstanceOf(IllegalArgumentException.class);
@@ -78,15 +73,58 @@ class ApplicationTest extends NsTest {
     void createLottoByIntegerButNotMetCond() {
         //given
         Application application = new Application();
-        String input = "124200";
+        makeLottoPrice("124200");
+        //then
+        assertThatThrownBy(application::insertPriceAndSaveNumber)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 금액이 8000일때 8개의 randomLottos 배열이 만들어진다")
+    @Test
+    void createRandomLottosArrayByLottoPriceIsSet() {
+        //given
+        Application application = new Application();
+        makeLottoPrice("8000");
+        application.insertPriceAndSaveNumber();
         //when
+        application.makeArray();
+        //then
+        assertThat(application.getRandomLottos().size()).isEqualTo(8);
+    }
+
+    @DisplayName("로또 금액의 각각의 배열에는 서로 다른 6개의 숫자가 저장된다")
+    @Test
+    void createRandomLottsWithSixOtherNumbers() {
+        //given
+        Application application = new Application();
+        makeLottoPrice("8000");
+        application.insertPriceAndSaveNumber();
+        application.makeArray();
+        //when
+        application.makeEachArrays();
+        //then
+        assertThat(application.getRandomLottos().size()).isEqualTo(8);
+        assertThat(application.getRandomLottos().get(0).size()).isEqualTo(6);
+        assertThat(isNotDuplicated(application.getRandomLottos())).isEqualTo(true);
+    }
+
+    private boolean isNotDuplicated(List<List<Integer>> randomLottos){
+        for(List<Integer> lottos : randomLottos){
+            boolean [] check = new boolean[45];
+            for(Integer lotto : lottos){
+                System.out.println("lotto = " + lotto);
+                if(check[lotto-1]) return false;
+                check[lotto-1] = true;
+            }
+        }
+        return true;
+    }
+
+    private void makeLottoPrice(String input) {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        //then
-        assertThatThrownBy(application::insertPriceAndSaveNumber)
-                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
