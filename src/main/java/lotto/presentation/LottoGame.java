@@ -1,11 +1,13 @@
 package lotto.presentation;
 
+import lotto.data.LottoRank;
 import lotto.domain.Lotto;
 import lotto.domain.LottoComparator;
 import lotto.domain.LottoGenerator;
 import lotto.domain.RewardCalculator;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoGame {
     private final int startNumber = 1;
@@ -30,5 +32,13 @@ public class LottoGame {
         int price = lottoForm.inputPrice();
         List<Lotto> lottos = lottoGenerator.createLottos(price);
         lottoPrinter.printLottos(lottos);
+
+        List<Integer> winningNumbers = lottoForm.inputWinningNumbers();
+        int bonus = lottoForm.inputBonus();
+
+        Map<LottoRank, Integer> winningCounts = lottoComparator.createWinningCounts(lottos, winningNumbers, bonus);
+        double profit = rewardCalculator.calculateProfit(winningCounts, price);
+
+        lottoPrinter.printLottoResult(winningCounts, profit);
     }
 }
