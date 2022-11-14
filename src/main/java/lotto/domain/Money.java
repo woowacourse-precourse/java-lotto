@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.exception.LottoException;
 import lotto.setting.Setting;
 import lotto.ui.Output;
 
@@ -36,16 +37,14 @@ public class Money {
     }
 
     private void validateInputMoneyIsAllNumber(){
-        try{
-            Long.parseLong(this.money);
-        }catch (Exception e){
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 2의 63승 이하의 숫자이어야합니다.");
+        if(!this.money.matches("\\d+")){
+            throw new LottoException("구입 금액은 2의 63승 이하의 숫자이어야합니다.");
         }
     }
 
     private void validateInputMoneyIsRightUnit(){
         if(Math.toIntExact(Long.parseLong(money) % Setting.LOTTO_PRICE_PER_ONE) != 0){
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 "+ Setting.LOTTO_PRICE_PER_ONE +"원 단위입니다.");
+            throw new LottoException("구입 금액은 "+ Setting.LOTTO_PRICE_PER_ONE +"원 단위입니다.");
         }
     }
 }
