@@ -7,7 +7,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             LottoMachine lottoMachine = new LottoMachine();
-            lottoMachine.purchaseLotto();
+            lottoMachine.run();
         } catch (IllegalArgumentException error) {
             OutputView.printErrorMessage(error);
         }

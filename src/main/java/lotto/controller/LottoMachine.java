@@ -8,16 +8,34 @@ import lotto.view.OutputView;
 import java.util.List;
 
 public class LottoMachine {
-    public void purchaseLotto() {
-        int money = InputView.insertMoney();
-        Lottos lottos = new Lottos(money);
-        OutputView.informPurchaseCount(lottos);
-        OutputView.printIssuedLottos(lottos);
+    public void run() {
+        Lottos purchasedLotto = purchaseLottos();
+        printInformationOf(purchasedLotto);
 
+        Lotto winningLotto = getWinningLotto();
+        int bonusNumber = getBonusNumber();
+
+        OutputView.printWinningOverview(purchasedLotto, winningLotto, bonusNumber);
+    }
+
+    private static int getBonusNumber() {
+        return InputView.insertBounsNumber();
+    }
+
+    private static Lotto getWinningLotto() {
         List<Integer> winningNumbers = InputView.insertWinningNumbers();
         Lotto winningLotto = new Lotto(winningNumbers);
-        int bounsNumber = InputView.insertBounsNumber();
+        return winningLotto;
+    }
 
-        OutputView.printWinningOverview(lottos, winningLotto, bounsNumber);
+    private static void printInformationOf(Lottos lottos) {
+        OutputView.informPurchaseCount(lottos);
+        OutputView.printIssuedLottos(lottos);
+    }
+
+    private static Lottos purchaseLottos() {
+        int money = InputView.insertMoney();
+        Lottos lottos = new Lottos(money);
+        return lottos;
     }
 }
