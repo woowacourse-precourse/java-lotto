@@ -9,7 +9,8 @@ public enum WinningRank {
     FIVE_MATCH_BONUS(5, false, 30000000),
     FIVE_MATCH(5, false, 1500000),
     FOUR_MATCH(4, false, 50000),
-    THREE_MATCH(3, false, 5000);
+    THREE_MATCH(3, false, 5000),
+    NO_MATCH(0, false, 0);
 
     private final int matchingCount;
     private final boolean containsBonusNumber;
@@ -26,6 +27,15 @@ public enum WinningRank {
         Arrays.stream(values()).forEach(winningRank -> winningDetails.put(winningRank, 0));
         return winningDetails;
     }
+
+    public static WinningRank findWinningRank(int matchingCount, boolean containsBonusNumber) {
+        return Arrays.stream(values())
+                .filter(winningRank -> winningRank.matchingCount == matchingCount)
+                .filter(winningRank -> winningRank.containsBonusNumber == containsBonusNumber)
+                .findFirst()
+                .orElse(WinningRank.NO_MATCH);
+    }
+
 
     public int getMatchingCount() {
         return matchingCount;
