@@ -19,4 +19,8 @@ public class WinningLotto {
         return winningLottoNumber;
     }
 
+    public static int getWinningBonusNumber() {
+        return winningBonusNumber;
+    }
+
 }
