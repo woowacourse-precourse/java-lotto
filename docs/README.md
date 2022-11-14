@@ -25,7 +25,7 @@
   - [X] 구매 가능한 수만큼 로또 생성 - Randoms#pickUniqueNumbersInRange()
 - [ ] 구매 금액을 통해 몇 장의 로또를 구매할 수 있는지 계산 - Buyer#calculateNumberOfLottos(String won)
   - [X] 1,000 미만의 값인 경우 예외처리 - Buyer#validateIsUnderLottoPrice(int won) 
-  - [ ] 1,000 단위로 나누어 떨어지지 않는 경우, 1,000 단위 아래는 버림 처리 (ex. 1,200 -> 1,000) - Buyer#roundDownLottoPriceUnits(int won)
+  - [X] 1,000 단위로 나누어 떨어지지 않는 경우, 1,000 단위 아래는 버림 처리 (ex. 1,200 -> 1,000) - Buyer#roundDownLottoPriceUnits(int won)
 - [ ] 구매한 로또 리스트를 반환 - Buyer#getLottos() 
 
 

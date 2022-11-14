@@ -16,4 +16,8 @@ public class Buyer {
             throw new IllegalArgumentException();
         }
     }
+
+    private int roundDownLottoPriceUnits(int won) {
+        return won - (won % LOTTO_PRICE);
+    }
 }
