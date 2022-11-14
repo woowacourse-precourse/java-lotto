@@ -6,6 +6,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static Constant.ErrorMessage.*;
+import static Constant.Game.MAX_NUMBER;
+import static Constant.Game.MIN_NUMBER;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -30,8 +32,9 @@ public class Lotto {
     }
 
     private void checkRange() {
+        Utils util = new Utils();
         List<Integer> outRange = numbers.stream()
-                .filter(number -> number < 1 || number > 45)
+                .filter(util::invalidRange)
                 .collect(Collectors.toList());
 
         if (outRange.size() != 0) {

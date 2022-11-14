@@ -1,9 +1,13 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static Constant.ErrorMessage.LOTTO_DUPLICATE;
+import static Constant.ErrorMessage.OUT_RANGE;
+import static Constant.Game.MAX_NUMBER;
+import static Constant.Game.MIN_NUMBER;
 
 /**
  * 기능 구현 목록 - 로또 번호와 보너스 번호를 받아 하나의 객체로 만들어주는 클래스!
@@ -18,24 +22,29 @@ public class WinningNumber {
 
     private Lotto lotto;
     private Integer bonus;
+    Utils util = new Utils();
+    List<Integer> result;
     UserInterface userInterface = new UserInterface();
 
     public List<Integer> getWinningNumber() {
-        List<Integer> result = new ArrayList<>();
         userInterface.printEnterWinningNumber();
-
-        String input = Console.readLine();
-        String[] split = input.split(",");
-        for (String number : split) {
-            result.add(Integer.parseInt(number));
-        }
-
+        result = validateNumbers(Console.readLine());
         lotto = new Lotto(result);
-        userInterface.printEnterBonusNumber();
-        bonus = Integer.parseInt(Console.readLine());
 
+        userInterface.printEnterBonusNumber();
+        bonus = util.isNumeric(Console.readLine());
         validateBonus();
 
+        return result;
+    }
+
+    private List<Integer> validateNumbers(String input) {
+        List<Integer> result = new ArrayList<>();
+        String[] split = input.split(",");
+
+        for (String number : split) {
+            result.add(util.isNumeric(number));
+        }
         return result;
     }
 
@@ -46,13 +55,13 @@ public class WinningNumber {
 
     private void validateDuplication() {
         if (lotto.hasNumber(bonus)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_DUPLICATE);
         }
     }
 
     private void validateRange() {
-        if (bonus < 1 || bonus > 45) {
-            throw new IllegalArgumentException();
+        if (util.invalidRange(bonus)) {
+            throw new IllegalArgumentException(OUT_RANGE);
         }
     }
 
