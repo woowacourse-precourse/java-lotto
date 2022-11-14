@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -16,7 +17,6 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
 
 
         System.out.println("구입 금액을 입력 해주세요.");
@@ -202,18 +202,32 @@ public class Application {
     }
 
     private static int setAccount() {
-        int account = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+
         // 입력 받은 금액 검증
-        if(validAccount(account)){
+        if(validAccount(input)){
             throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
         }
+
+        int account = Integer.parseInt(input);
         return account;
     }
 
-    private static boolean validAccount(int account) {
+    private static boolean validAccount(String input) {
+
+        boolean matches = Pattern.matches("[0-9]", input);
+
+        // 부정형..
+        if(! Pattern.matches("[0-9]+" , input)){
+            return true;
+        }
+
+        int account = Integer.parseInt(input);
+
         if (account % 1000 == 0) {
             return false;
         }
+
         return true;
     }
 
