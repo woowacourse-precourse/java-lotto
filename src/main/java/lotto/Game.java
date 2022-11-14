@@ -6,9 +6,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.Constant.*;
 import static lotto.Count.*;
 import static lotto.Count.WinningCount;
-import static lotto.Lotto.BonusNumber;
 
 public class Game {
     private final List<List<Integer>> GeneratedLotto = new ArrayList<>();
@@ -16,7 +16,7 @@ public class Game {
     private int nLotto;
 
     public int HowMuch() {
-        System.out.println("구입 금액을 입력해 주세요.");
+        System.out.println(ASK_PRICE);
         String price = Console.readLine();
         nLottoPrice = Integer.parseInt(price);
         nLotto = nLottoPrice / 1000;
@@ -24,22 +24,22 @@ public class Game {
         return nLotto;
     }
 
-    public void BuyLotto(int nLotto){
-        System.out.println("\n" + nLotto + "개를 구매했습니다.");
+    public void BuyLotto(int nLotto) {
+        System.out.println("\n" + nLotto + SHOW_BUY_COUNT);
         for (int i = 0; i < nLotto; i++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             GeneratedLotto.add(lottoNumbers);
         }
     }
 
-    public void PrintGeneratedLotto(int nLotto, List<List<Integer>> GeneratedLotto){
+    public void PrintGeneratedLotto(int nLotto, List<List<Integer>> GeneratedLotto) {
         for (int i = 0; i < nLotto; i++) {
             System.out.println(GeneratedLotto.get(i));
         }
     }
 
-    public List<Integer> inputJackpotNum(){
-        System.out.println("\n당첨 번호를 입력해 주세요.");
+    public List<Integer> inputJackpotNum() {
+        System.out.println(ASK_WINNING_NUMBER);
         String winning = Console.readLine();
         String[] winningNumbers = winning.split(",");
 
@@ -84,23 +84,23 @@ public class Game {
             }
         }
         /**
-        for (int i = 0; i < WinTypeCounter.length; i++) {    //counter 출력중
-            System.out.print(WinTypeCounter[i]);
-        }**/
+         for (int i = 0; i < WinTypeCounter.length; i++) {    //counter 출력중
+         System.out.print(WinTypeCounter[i]);
+         }**/
         return WinTypeCounter;
     }
 
     public void PrintWinning(int[] WinTypeCounter) {
         float prizeMoney = getPrizeMoney(WinTypeCounter);
-        float getPercent = (prizeMoney/nLottoPrice)*100;
+        float getPercent = (prizeMoney / nLottoPrice) * 100;
 
-        System.out.println("\n\n당첨 통계\n---");
-        System.out.println("3개 일치 (5,000원) - " + WinTypeCounter[0] +"개");
-        System.out.println("4개 일치 (50,000원) - " + WinTypeCounter[1] +"개");
-        System.out.println("5개 일치 (1,500,000원) - " + WinTypeCounter[2] +"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + WinTypeCounter[3] +"개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + WinTypeCounter[4] +"개");
-        System.out.println("총 수익률은 "+(Math.round(getPercent*100)/100.0)+"%입니다.");
+        System.out.println("\n\n" + WINNING_STATS + "\n---");
+        System.out.println(THREE_MATCH + WinTypeCounter[0] + PIECE);
+        System.out.println(FOUR_MATCH + WinTypeCounter[1] + PIECE);
+        System.out.println(FIVE_MATCH + WinTypeCounter[2] + PIECE);
+        System.out.println(FIVE_BONUS_MATCH + WinTypeCounter[3] + PIECE);
+        System.out.println(SIX_MATCH + WinTypeCounter[4] + PIECE);
+        System.out.println(TOTAL_YIELD + (Math.round(getPercent * 100) / 100.0) + "%입니다.");
     }
 
     public int getPrizeMoney(int[] WinTypeCounter) {
