@@ -47,8 +47,8 @@ class LottoTest {
     @Test
     void generateRandomLottoNumberAccordingToInputMoney() {
 
-        Generator generator = new Generator();
-        List<List<Integer>> lottoList = generator.generateRandomLottoNumber(14000);
+        LottoNumberGenerator generator = new LottoNumberGenerator();
+        List<List<Integer>> lottoList = generator.generateLottoNumber(14000);
 
         assertAll(
                 () -> assertEquals(lottoList.size(), 14),
@@ -78,9 +78,9 @@ class LottoTest {
 
         List<Integer> correctNumber = new ArrayList<>(Arrays.asList(7,5,1,2,6));
 
-        CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
+        CorrectNumberCounter correctNumberCounter = new CorrectNumberCounter();
 
-        assertEquals(compareHowManyCorrect.correctNumberList(user,lottoWinNumber,30),correctNumber);
+        assertEquals(correctNumberCounter.correctNumberList(user,lottoWinNumber,30),correctNumber);
 
     }
 
@@ -89,9 +89,9 @@ class LottoTest {
     void countDuplcation() {
         List<Integer> gather = new ArrayList<>(Arrays.asList(1,2,3,6,8,10,2,4,6,9,30,45));
 
-        CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
+        CorrectNumberCounter correctNumberCounter = new CorrectNumberCounter();
 
-        assertEquals(compareHowManyCorrect.caculateCorrect(gather,0),2);
+        assertEquals(correctNumberCounter.caculateCorrect(gather,0),2);
 
 
     }
@@ -105,9 +105,9 @@ class LottoTest {
         List<Integer> gatherList = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10,5,6));
 
 
-        CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
+        CorrectNumberCounter correctNumberCounter = new CorrectNumberCounter();
 
-        assertEquals(compareHowManyCorrect.gatherTwoLists(userNumber,winNumber),gatherList);
+        assertEquals(correctNumberCounter.gatherTwoLists(userNumber,winNumber),gatherList);
 
     }
 
@@ -118,24 +118,24 @@ class LottoTest {
         List<Integer> userNumber1 = new ArrayList<>(Arrays.asList(1,4,7,10,14,30));
         List<Integer> userNumber2 = new ArrayList<>(Arrays.asList(1,4,7,13,14,30));
 
-        CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
+        CorrectNumberCounter correctNumberCounter = new CorrectNumberCounter();
 
         assertAll(
-                ()-> assertTrue(compareHowManyCorrect.checkBonus(userNumber1,bonusNumber)),
-                ()-> assertTrue(!compareHowManyCorrect.checkBonus(userNumber2,bonusNumber))
+                ()-> assertTrue(correctNumberCounter.checkBonus(userNumber1,bonusNumber)),
+                ()-> assertTrue(!correctNumberCounter.checkBonus(userNumber2,bonusNumber))
         );
     }
 
     @DisplayName("맞춘 로또에 따른 상금을 구하고, 더한다.")
     @Test
     void calculateRevenue() {
-        Calculater calculater = new Calculater();
+        RevenueCalculater revenueCalculater = new RevenueCalculater();
 
         List<Integer> correctAmountList1 = new ArrayList<>(Arrays.asList(7,6,4,3,2));
         List<Integer> correctAmountList2 = new ArrayList<>(Arrays.asList(5,6,3,3,2));
         assertAll(
-                ()->assertEquals(calculater.caculateRevenue(correctAmountList1),2030055000),
-                ()->assertEquals(calculater.caculateRevenue(correctAmountList2),31510000)
+                ()->assertEquals(revenueCalculater.caculateRevenue(correctAmountList1),2030055000),
+                ()->assertEquals(revenueCalculater.caculateRevenue(correctAmountList2),31510000)
         );
 
 

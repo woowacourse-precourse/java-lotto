@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class CompareHowManyCorrect {
+public class CorrectNumberCounter {
     private List<Integer> returnList = new ArrayList<>();
 
 

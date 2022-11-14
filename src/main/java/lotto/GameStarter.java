@@ -8,18 +8,18 @@ public class GameStarter {
     private static final String BONUS_INPUT = "보너스 번호를 입력해 주세요.";
 
     Inputer inputer = new Inputer();
-    Generator generator = new Generator();
+    LottoNumberGenerator generator = new LottoNumberGenerator();
     Printer printer = new Printer();
 
-    CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
-    Calculater calculater = new Calculater();
+    CorrectNumberCounter correctNumberCounter = new CorrectNumberCounter();
+    RevenueCalculater revenueCalculater = new RevenueCalculater();
     public void gameStart(){
 
 
         printer.printToDo(MONEY_INPUT);
         int userInputMoney = inputer.inputMoney();
 
-        List<List<Integer>> userLottoNumberList = generator.generateRandomLottoNumber(userInputMoney);
+        List<List<Integer>> userLottoNumberList = generator.generateLottoNumber(userInputMoney);
         printer.printUserLottoNumber(userLottoNumberList);
 
         printer.printToDo(WIN_INPUT);
@@ -28,8 +28,8 @@ public class GameStarter {
         printer.printToDo(BONUS_INPUT);
         int bonusNumber = inputer.inputLottoBonusNumber();
 
-        List<Integer> amountCorrectList = compareHowManyCorrect.correctNumberList(userLottoNumberList,lottoWinNumber,bonusNumber);
-        int revenue = calculater.caculateRevenue(amountCorrectList);
+        List<Integer> amountCorrectList = correctNumberCounter.correctNumberList(userLottoNumberList,lottoWinNumber,bonusNumber);
+        int revenue = revenueCalculater.caculateRevenue(amountCorrectList);
 
 
         printer.printWinList(amountCorrectList);

@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Generator {
+public class LottoNumberGenerator {
 
     private static final int MONEY_UNIT = 1000; // 1000원
     private List<List<Integer>> returnList = new ArrayList<>();
-    public List<List<Integer>> generateRandomLottoNumber(int inputMoney) {
+
+
+    public List<List<Integer>> generateLottoNumber(int inputMoney) {
 
         int lottoAmount = inputMoney / MONEY_UNIT;
 

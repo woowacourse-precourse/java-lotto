@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Calculater {
+public class RevenueCalculater {
     private static final List<Integer> REVENUELIST = new ArrayList<>(
             Arrays.asList(5000, 50000, 1500000, 30000000, 2000000000));
     private static int revenue = 0;
