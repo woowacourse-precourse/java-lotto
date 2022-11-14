@@ -7,7 +7,9 @@ public class Money {
     private final long money;
 
     public Money(String input) throws IllegalArgumentException {
+        checkBlank(input);
         validateInput(input);
+        validMoney(input);
         this.money = Long.parseLong(input);
     }
 
@@ -18,8 +20,15 @@ public class Money {
 
     // 유효한 입력값인지 검증 기능
     private void validateInput(String input) throws IllegalArgumentException {
-        for (int i = 0; i < input.length(); i++) {
-            checkDigit(input.charAt(i));
+        for (int digit = 0; digit < input.length(); digit++) {
+            checkDigit(input.charAt(digit));
+        }
+    }
+
+    // 빈칸 입력 검증 기능
+    private void checkBlank(String input) throws IllegalArgumentException {
+        if (input.equals("")) {
+            throw new IllegalArgumentException("[ERROR] 공백을 입력할 수 없습니다.");
         }
     }
 
