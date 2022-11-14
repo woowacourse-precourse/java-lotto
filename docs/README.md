@@ -8,6 +8,7 @@
   - [ ] 수익률 통계는 소수점 둘째 자리에서 반올림한다. - Calculator#calculateEarningRate
 - [ ] 만들어진 로또와 입력한 로또가 일치하는지 비교한다 - Judgement#rankLotto
   - [ ] 5개 일치의 경우, 보너스 번호가 일치하는지 비교한다 - Judgement#secondPrize
+  - [ ] 발행한 로또들의 당첨 결과를 리스트에 저장한다 - Judgement#makeWinnigTable
 
 ## 입력
 - - -
