@@ -11,5 +11,11 @@ public class User {
     public void inputPrice() {
         String price = Console.readLine();
         inputValidation.validatePrice(price);
+        countLotto = calculateCountLotto(price);
+    }
+
+    private int calculateCountLotto(String line) {
+        return Integer.parseInt(line) / 1000;
+    }
     }
 }
