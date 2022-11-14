@@ -35,4 +35,12 @@ public class WinningLotto {
     private boolean isInvalidNumber(Integer number) {
         return number < Constant.BEGIN_NUMBER.getValue() || number > Constant.END_NUMBER.getValue();
     }
+
+    public Lotto getLotto() {
+        return lotto;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }

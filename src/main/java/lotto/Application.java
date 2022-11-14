@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
+import lotto.domain.LottoRating;
 import lotto.domain.Price;
 import lotto.domain.WinningLotto;
 import lotto.resource.message.ExceptionMessage;
@@ -13,6 +14,7 @@ import lotto.view.OutputView;
 public class Application {
     private static List<Lotto> lottoTicket = new ArrayList<>();
     private static WinningLotto winningLotto;
+    private static LottoRating lottoRating;
 
     public static void main(String[] args) {
         try {
@@ -23,6 +25,8 @@ public class Application {
             lottoTicket.addAll(lottoGenerator.generateLotto());
             outputView.printLottoTicketInformation(lottoTicket);
             winningLotto = new WinningLotto(inputView.askWinningNumbers(), inputView.askBonusNumber());
+            lottoRating = new LottoRating(lottoTicket, winningLotto);
+            lottoRating.rate();
         } catch (IllegalArgumentException ignored) {
             System.out.println(ExceptionMessage.APPLICATION_EXIT.getMessage());
         }
