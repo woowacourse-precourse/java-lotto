@@ -28,5 +28,8 @@ public class Winning {
         if (!IllegalArgument.isInRange(winningNumbers)) {
             throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력 가능합니다.");
         }
+        if (IllegalArgument.isRedundancy(winningNumbers)) {
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 중복되지 않는 숫자만 입력 가능합니다.");
+        }
     }
 }

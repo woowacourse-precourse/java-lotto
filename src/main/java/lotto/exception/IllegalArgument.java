@@ -1,6 +1,9 @@
 package lotto.exception;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class IllegalArgument {
 
@@ -25,5 +28,13 @@ public class IllegalArgument {
             }
         }
         return true;
+    }
+
+    public static boolean isRedundancy(List<Integer> numbers) {
+        numbers = numbers.stream().distinct().collect(Collectors.toList());
+        if (numbers.size() != 6) {
+            return true;
+        }
+        return false;
     }
 }
