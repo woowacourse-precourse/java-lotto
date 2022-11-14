@@ -7,13 +7,14 @@ public class LottoRepository {
     private final List<Lotto> lottos = new ArrayList<>();
 
 
-    public List<Lotto> getLottos() {
-        return lottos;
+    public List<Lotto> findAll() {
+        return new ArrayList<>(lottos);
     }
 
     public List<Integer> save(Lotto lotto) {
         lottos.add(lotto);
         return lotto.getNumbers();
     }
+
 
 }
