@@ -1,20 +1,22 @@
 package controller;
 
+import domain.ErrorMessage;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Util {
 
-    public int compareWinningNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
-        List<Integer> sameNumbers = new ArrayList<>();
-        sameNumbers.addAll(lottoNumbers);
-        sameNumbers.retainAll(winningNumbers);
-        return sameNumbers.size();
+    public static void validateInteger(String inputValue) {
+        String pattern = "[0-9]+";
+        if (!inputValue.matches(pattern))
+            throw new IllegalArgumentException(ErrorMessage.NOT_INTEGER.getErrorMessage());
     }
 
-    public boolean compareBonusNumber(List<Integer> lottoNumbers, int bonusNumber) {
-        return lottoNumbers.contains(bonusNumber);
+    public static void validateComma(String lottoWinningNumbers) {
+        if (!lottoWinningNumbers.contains(","))
+            throw new IllegalArgumentException(ErrorMessage.NOT_COMMA.getErrorMessage());
     }
-
 }

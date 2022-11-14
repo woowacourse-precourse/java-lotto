@@ -28,7 +28,7 @@ public class ResultView {
 
     private void resultYield(double totalYield, int inputMoney) {
         double yieldRate = (totalYield / inputMoney) * 100;
-        System.out.println("총 수입률은 "+String.format("%.1f", yieldRate)+"%입니다");
+        System.out.println("총 수익률은 "+String.format("%.1f", yieldRate)+"%입니다.");
     }
 
     public void resultTotalLotto(List<Lotto> totalLottoNumbers){
