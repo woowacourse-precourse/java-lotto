@@ -22,11 +22,11 @@ public class LottoMachine {
     }
 
     private static void validate(int inputMoney) {
-        boolean isMultipleOf1000 = (inputMoney % 1_000) == 0;
-        if (isMultipleOf1000) {
+        boolean isMultipleOfAmountOfLotto = (inputMoney % AMOUNT_OF_ONE_LOTTO) == 0;
+        if (isMultipleOfAmountOfLotto) {
             return;
         }
-        throw new IllegalArgumentException(ErrorMessage.LOTTO_MACHINE_NOT_MULTIPLE_OF_1000);
+        throw new IllegalArgumentException(ErrorMessage.LOTTO_MACHINE_NOT_MULTIPLE_OF_AMOUNT_OF_LOTTO);
     }
 
     private static int getCountOfLottos(int inputMoney) {

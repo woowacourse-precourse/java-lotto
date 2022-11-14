@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.constant.LottoRule.AMOUNT_OF_ONE_LOTTO;
+
 import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -34,7 +36,7 @@ public class Account {
     }
 
     public String getYield() {
-        double yieldRaw = winningAmount / ((double) (count * 1000));
+        double yieldRaw = winningAmount / ((double) (count * AMOUNT_OF_ONE_LOTTO));
         double yieldPercent = yieldRaw * 100;
         DecimalFormat decFormat = new DecimalFormat("###,##0.0");
         String yield = decFormat.format(yieldPercent);
