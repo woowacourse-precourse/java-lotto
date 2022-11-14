@@ -1,12 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.List;
 
 import static lotto.Constant.ASK_PRICE;
-import static lotto.Constant.SHOW_BUY_COUNT;
 import static lotto.Game.*;
 
 public class Buy {

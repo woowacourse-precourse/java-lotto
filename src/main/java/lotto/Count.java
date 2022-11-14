@@ -7,7 +7,7 @@ public class Count {
     public static int[] BonusCount(List<List<Integer>> GeneratedLotto) {
         int[] count = new int[GeneratedLotto.size()];
         for (int i = 0; i < GeneratedLotto.size(); i++) {
-            if (GeneratedLotto.get(i).contains(Lotto.BonusNumber)) {
+            if (GeneratedLotto.get(i).contains(Bonus.BonusNumber)) {
                 count[i] += 1;
             }
         }

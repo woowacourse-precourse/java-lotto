@@ -16,7 +16,7 @@ public class Game {
     public static int nLottoPrice;
     public static int nLotto;
 
-    public List<Integer> inputJackpotNum() {
+    public static List<Integer> inputJackpotNum() {
         System.out.println(ASK_WINNING_NUMBER);
         String winning = Console.readLine();
         String[] winningNumbers = winning.split(",");
@@ -33,10 +33,7 @@ public class Game {
         PrintGeneratedLotto(nLotto, GeneratedLotto);
         List<Integer> JackpotNumbers = inputJackpotNum();
 
-        Lotto lotto = new Lotto(JackpotNumbers);
-        //System.out.println(lotto.getNumbers());
-
-        lotto.askBonusNumber();
+        Bonus.askBonusNumber();
         int[] countBonus = BonusCount(GeneratedLotto);
 
         List<Integer> winCounts = WinningCount(GeneratedLotto, JackpotNumbers);
