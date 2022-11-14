@@ -31,4 +31,11 @@ class LottoTest {
         assertThatThrownBy(() -> lotto.validateDuplicateBonusAndWinningNumber(5))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("당첨 번호의 범위가 45보다 크면 예외가 발생한다.")
+    @Test
+    void createWinningNumberOverRange(){
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,1000)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
