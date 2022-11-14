@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.constant.enumtype.UserInterfaceMessage;
+import lotto.service.LottoBonusService;
 import lotto.service.LottoInputDrawNumberService;
 import lotto.service.LottoInputService;
 import lotto.service.LottoPublishService;
@@ -9,12 +10,14 @@ public class LottoController {
     private LottoInputService lottoInputService = LottoInputService.getInstance();
     private LottoPublishService lottoPublishService = LottoPublishService.getInstance();
     private LottoInputDrawNumberService lottoInputDrawNumberService = LottoInputDrawNumberService.getInstance();
+    private LottoBonusService lottoBonusService = LottoBonusService.getInstance();
 
     public void inputLottoInfo() {
         try {
             String lottoPrice = lottoInputService.inputLottoPrice();
             printPublishedLotto(lottoPrice);
             lottoInputDrawNumberService.inputDrawNumber();
+            lottoBonusService.inputLottoBonusNumber(lottoInputDrawNumberService.getLottoDrawNumber());
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
