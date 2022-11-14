@@ -53,7 +53,7 @@ public class ApplicationController {
     public void control_BonusNumber() {
         String input_BonusNumber = inputView.inputBonusNumber();
         int bonusNumber = inputValidator.convertStringIntoInt(input_BonusNumber);
-        inputValidator.validateBonusNumberBetween1And45(bonusNumber);
+        inputValidator.validateBonusNumber(bonusNumber, player.getWinningNumber());
         player.setBonusNumber(bonusNumber);
 
         control_WinningResult();

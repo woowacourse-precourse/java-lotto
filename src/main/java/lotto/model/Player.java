@@ -1,7 +1,5 @@
 package lotto.model;
 
-import lotto.model.Lotto;
-
 import java.util.List;
 
 public class Player {
@@ -37,6 +35,10 @@ public class Player {
 
     public void setWinningNumber(List<Integer> winningNumber) {
         this.winningNumber = winningNumber;
+    }
+
+    public List<Integer> getWinningNumber() {
+        return this.winningNumber;
     }
 
     public void setBonusNumber(int bonusNumber) {
