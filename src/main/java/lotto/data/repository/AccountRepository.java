@@ -4,8 +4,8 @@ public class AccountRepository {
 
     private static AccountRepository instance;
 
-    private AccountRepository() {
-        userCount = 0L;
+    private AccountRepository(Long initUserId) {
+        userCount = initUserId;
     }
 
     public static AccountRepository getInstance() {
@@ -17,7 +17,7 @@ public class AccountRepository {
 
     private static void assignNewInstance() {
         synchronized (AccountRepository.class) {
-            instance = new AccountRepository();
+            instance = new AccountRepository(0L);
         }
     }
 
