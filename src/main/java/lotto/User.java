@@ -8,15 +8,19 @@ import java.util.*;
 public class User {
     static final int LOTTO_PRICE = 1000;
     public int purchasingAmount = 0;
-    private int lottoTicketCount = 0;
+    int lottoTicketCount = 0;
     public List<Lotto> lottoTickets = new ArrayList<>();
 
     public User() {
     }
 
+    public User(int purchasingAmount) {
+        this.purchasingAmount = purchasingAmount;
+    }
+
     public void getLottoTickets() {
         inputAmount();
-        countTicket();
+        countTickets();
         buyTickets();
         printTicketCount();
         printLottoTickets();
@@ -31,24 +35,24 @@ public class User {
         this.purchasingAmount = userInputAmount;
     }
 
-    private void validate(int purchasingAmount) throws IllegalArgumentException {
+    void validate(int purchasingAmount) throws IllegalArgumentException {
         if (purchasingAmount % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 구매 금액이 1000으로 나누어 떨어지지 않습니다");
         }
     }
 
-    private void countTicket() {
+    void countTickets() {
         this.lottoTicketCount = this.purchasingAmount / LOTTO_PRICE;
     }
 
-    private void buyTickets() {
+    void buyTickets() {
         for (int index = 0; index < this.lottoTicketCount; index++) {
             Lotto lotto = new Lotto(generateRandomNumbers());
             lottoTickets.add(lotto);
         }
     }
 
-    private List<Integer> generateRandomNumbers() {
+    List<Integer> generateRandomNumbers() {
         return Randoms.pickUniqueNumbersInRange(1,45,6);
     }
 
