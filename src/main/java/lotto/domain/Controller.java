@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.Config.LOTTO_TICKET_PRICE;
 import static lotto.Config.WINNING_RANK_AMOUNT;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -17,9 +18,11 @@ public class Controller {
 
     private static Controller instance;
 
+    private final LottoMachine lottoMachine;
     private final UahanBank uahanBank;
 
     private Controller() {
+        lottoMachine = new LottoMachine();
         uahanBank = new UahanBank();
     }
 
@@ -31,6 +34,20 @@ public class Controller {
     }
 
     public void run() {
+        List<Lotto> lottos = new ArrayList<>();
+        List<Integer> wins = new ArrayList<>();
+        List<Integer> bonuses = new ArrayList<>();
+
+        int money = inputPurchaseAmount();
+
+        for(int index = 0; index < money / LOTTO_TICKET_PRICE; index++){
+            lottos.add(new Lotto(lottoMachine.publish()));
+        }
+        printPublishedLotto(lottos);
+        lottoMachine.draw(wins, bonuses);
+
+        int profit = calculateWonLotto(lottos, new Lotto(wins), bonuses);
+        printYield(money, profit);
     }
 
     private int inputPurchaseAmount() {
@@ -103,7 +120,6 @@ public class Controller {
         for(int index = WINNING_RANK_AMOUNT.length - 1; index >= 0; index--){
             StringBuilder message = new StringBuilder();
             Score score = uahanBank.rankScores.get(index);
-
             message.append(score.winningNumberCount + "개 일치");
             if(score.bonusNumberCount == 1){
                 message.append(", 보너스 볼 일치");
@@ -112,6 +128,7 @@ public class Controller {
                 message.append(", 보너스 볼" + score.bonusNumberCount + "개 일치");
             }
             message.append(" (" + WINNING_RANK_AMOUNT[index] + "원) - " + rankCounts.get(index) + "개");
+            System.out.println(message);
         }
     }
 
