@@ -12,7 +12,7 @@ public class Lottos {
         this.lottos = generateLottos(lottoAmount);
     }
 
-    private void validateLottoTicketSize(List<Lotto> lottos, int lottoAmount) {
+    private void validateLottos(List<Lotto> lottos, int lottoAmount) {
         if (lottos.size() != lottoAmount) {
             throw new IllegalArgumentException(LOTTO_TICKET_SIZE_IS_NOT_LOTTO_AMOUNT);
         }

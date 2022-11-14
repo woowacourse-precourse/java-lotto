@@ -11,8 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoGameTest {
     @Test
-    @DisplayName("로또 구입 금액만큼 로또를 생성하면 성공이다.")
-    void createLottoAsMoney() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+    @DisplayName("로또 구입 금액만큼 로또 개수를 계산하면 성공이다.")
+    void getLottoAmountAsMoney() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
         int money = 14000;
 
         LottoGame lottoGame = new LottoGame(new Money(money));
