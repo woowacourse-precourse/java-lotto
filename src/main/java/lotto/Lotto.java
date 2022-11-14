@@ -18,4 +18,8 @@ public class Lotto {
         lotto = new StringBuilder(lotto.substring(0, lotto.length() - 2) + "]");
         return lotto.toString();
     }
+
+    public int getSameNumberCount(List<Integer> winning) {
+        return (int) numbers.stream().filter(winning::contains).count();
+    }
 }
