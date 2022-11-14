@@ -13,7 +13,7 @@ public class RankResult {
     private RankCalculator rankCalculator;
     private Map<Rank, Integer> rankMap;
 
-    public RankResult(){
+    public RankResult() {
         rankCalculator = new RankCalculator();
         rankMap = new EnumMap<>(Rank.class);
     }
@@ -21,5 +21,16 @@ public class RankResult {
     public void initEnumMap() {
         Arrays.stream(Rank.values())
                 .forEach(rank -> rankMap.put(rank, 0));
+    }
+
+    public void addRankMapCount(List<List<Integer>> randomLottos) {
+        List<Integer> winLotto = inputWinLotto();
+        int bonus = inputBonusNumber();
+
+        for (List<Integer> randomLotto : randomLottos) {
+            Rank rank = rankCalculator.calculate(winLotto, randomLotto, bonus);
+            int previousCount = rankMap.getOrDefault(rank, 0);
+            rankMap.put(rank, previousCount + 1);
+        }
     }
 }
