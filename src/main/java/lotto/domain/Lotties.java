@@ -4,6 +4,7 @@ import lotto.common.Constant;
 import lotto.exception.InputException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public final class Lotties {
@@ -44,6 +45,6 @@ public final class Lotties {
     }
 
     public List<Lotto> getLotties() {
-        return new ArrayList<>(lotties);
+        return Collections.unmodifiableList(lotties);
     }
 }
