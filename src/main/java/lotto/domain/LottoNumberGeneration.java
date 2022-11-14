@@ -14,7 +14,7 @@ public class LottoNumberGeneration {
 
     public void generateLotto(int lottoAmount) {
         List<Integer> lottoNumbers;
-        for (int i = 0; i < lottoAmount; i++) {
+        for (int lottoCount = 0; lottoCount < lottoAmount; lottoCount++) {
             lottoNumbers = generateLottoNumbers();
             List<Integer> orderedList = lottoNumbers.stream()
                     .sorted()

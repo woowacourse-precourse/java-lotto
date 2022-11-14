@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import lotto.domain.Money;
+
 public class NumberException {
 
     private static final char SEPARATOR = ',';
+    private static final int VALID_REMAIN = 0;
 
     public static void checkUserInputMoney(String userInput) {
         isNumber(userInput);
@@ -25,7 +28,7 @@ public class NumberException {
 
     public static void isMultipleOfThousand(String userInput) {
         int userInputMoney = Integer.parseInt(userInput);
-        if (userInputMoney % 1000 != 0) {
+        if (userInputMoney % Money.MONEY_UNIT.getMoneyAsInteger() != VALID_REMAIN) {
             throw new IllegalArgumentException("[ERROR] 구입금액은 1000으로 나누어 떨어져야 합니다.");
         }
     }

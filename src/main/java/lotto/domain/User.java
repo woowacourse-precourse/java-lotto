@@ -29,7 +29,7 @@ public class User {
     }
 
     public static void setLottoAmount() {
-        lottoAmount = userInputMoney / 1000;
+        lottoAmount = userInputMoney / Money.MONEY_UNIT.getMoneyAsInteger();
     }
 
     public static void setLotteries(List<Integer> lotto) {
