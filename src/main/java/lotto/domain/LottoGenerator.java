@@ -1,15 +1,15 @@
 package lotto.domain;
 
+import static lotto.constant.LottoNumberConstant.COUNT;
+import static lotto.constant.LottoNumberConstant.END;
+import static lotto.constant.LottoNumberConstant.START;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoGenerator {
-    private static final int START = 1;
-    private static final int END = 45;
-    private static final int COUNT = 6;
-
     public List<Integer> generateNumber() {
         return Randoms.pickUniqueNumbersInRange(START, END, COUNT).stream().sorted().collect(Collectors.toList());
     }
