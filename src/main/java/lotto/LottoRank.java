@@ -3,7 +3,8 @@ package lotto;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum WinningPlace {
+public enum LottoRank {
+
     FIRST_PLACE(6,0,2000000000,"6개 일치 (2,000,000,000원) - "),
     SECOND_PLACE(5,1,30000000,"5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     THIRD_PLACE(5,0,1500000,"5개 일치 (1,500,000원) - "),
@@ -24,20 +25,20 @@ public enum WinningPlace {
         return this.message;
     }
 
-    public static WinningPlace getPlace(int correspondingNumber, int correspondingBonusNumber) {
-        Optional<WinningPlace> getWinningPlace = Arrays.stream(values())
-                .filter(winningPlace -> winningPlace.correspondingNumber == correspondingNumber)
-                .filter(winningPlace -> winningPlace.correspondingBonusNumber == correspondingBonusNumber)
+    public static LottoRank getRank(int correspondingNumber, int correspondingBonusNumber) {
+        Optional<LottoRank> getLottoRank = Arrays.stream(values())
+                .filter(lottoRank -> lottoRank.correspondingNumber == correspondingNumber)
+                .filter(lottoRank -> lottoRank.correspondingBonusNumber == correspondingBonusNumber)
                 .findAny();
 
-        if (!getWinningPlace.isPresent()) {
+        if (!getLottoRank.isPresent()) {
             return NOT_IN_PLACE;
         }
 
-        return getWinningPlace.get();
+        return getLottoRank.get();
     }
 
-    WinningPlace(Integer correspondingNumber, Integer correspondingBonusNumber, Integer winnings, String message) {
+    LottoRank(Integer correspondingNumber, Integer correspondingBonusNumber, Integer winnings, String message) {
         this.correspondingNumber = correspondingNumber;
         this.correspondingBonusNumber = correspondingBonusNumber;
         this.winnings = winnings;

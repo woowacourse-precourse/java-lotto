@@ -105,7 +105,7 @@ class ApplicationTest extends NsTest {
      * param1: 당첨번호 Lotto 객체
      * param2: 사용자 Lotto 객체
      * param3: 보너스 번호(Integer)
-     * returns: winningPlace: 입력 인자에 해당하는 순위 반환
+     * returns: LottoRank: 입력 인자에 해당하는 순위 반환
      */
     @DisplayName("로또 당첨 번호와 사용자의 로또 번호의 일치 여부에 따른 1위 순위 반환 확인")
     @Test
@@ -118,8 +118,8 @@ class ApplicationTest extends NsTest {
         Lotto userLotto = new Lotto(checkTargetNumber);
 
         //when
-        WinningPlace expectedValue = WinningPlace.FIRST_PLACE;
-        WinningPlace actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
+        LottoRank expectedValue = LottoRank.FIRST_PLACE;
+        LottoRank actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
 
         //then
         assertEquals(expectedValue, actualValue);
@@ -136,8 +136,8 @@ class ApplicationTest extends NsTest {
         Lotto userLotto = new Lotto(checkTargetNumber);
 
         //when
-        WinningPlace expectedValue = WinningPlace.SECOND_PLACE;
-        WinningPlace actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
+        LottoRank expectedValue = LottoRank.SECOND_PLACE;
+        LottoRank actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
 
         //then
         assertEquals(expectedValue, actualValue);
@@ -154,8 +154,8 @@ class ApplicationTest extends NsTest {
         Lotto userLotto = new Lotto(checkTargetNumber);
 
         //when
-        WinningPlace expectedValue = WinningPlace.THIRD_PLACE;
-        WinningPlace actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
+        LottoRank expectedValue = LottoRank.THIRD_PLACE;
+        LottoRank actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
 
         //then
         assertEquals(expectedValue, actualValue);
@@ -172,8 +172,8 @@ class ApplicationTest extends NsTest {
         Lotto userLotto = new Lotto(checkTargetNumber);
 
         //when
-        WinningPlace expectedValue = WinningPlace.NOT_IN_PLACE;
-        WinningPlace actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
+        LottoRank expectedValue = LottoRank.NOT_IN_PLACE;
+        LottoRank actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
 
 
         assertEquals(expectedValue, actualValue);
@@ -190,8 +190,8 @@ class ApplicationTest extends NsTest {
         Lotto userLotto = new Lotto(checkTargetNumber);
 
         //when
-        WinningPlace expectedValue = WinningPlace.FOURTH_PLACE;
-        WinningPlace actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
+        LottoRank expectedValue = LottoRank.FOURTH_PLACE;
+        LottoRank actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
 
         //then
         assertEquals(expectedValue, actualValue);
@@ -208,8 +208,8 @@ class ApplicationTest extends NsTest {
         Lotto userLotto = new Lotto(checkTargetNumber);
 
         //when
-        WinningPlace expectedValue = WinningPlace.NOT_IN_PLACE;
-        WinningPlace actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
+        LottoRank expectedValue = LottoRank.NOT_IN_PLACE;
+        LottoRank actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
 
         //then
         assertEquals(expectedValue, actualValue);
@@ -226,8 +226,8 @@ class ApplicationTest extends NsTest {
         Lotto userLotto = new Lotto(checkTargetNumber);
 
         //when
-        WinningPlace expectedValue = WinningPlace.FIFTH_PLACE;
-        WinningPlace actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
+        LottoRank expectedValue = LottoRank.FIFTH_PLACE;
+        LottoRank actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
 
         //then
         assertEquals(expectedValue, actualValue);
@@ -244,8 +244,8 @@ class ApplicationTest extends NsTest {
         Lotto userLotto = new Lotto(checkTargetNumber);
 
         //when
-        WinningPlace expectedValue = WinningPlace.NOT_IN_PLACE;
-        WinningPlace actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
+        LottoRank expectedValue = LottoRank.NOT_IN_PLACE;
+        LottoRank actualValue = Application.countCorrespondingNumbers(winnerLotto, userLotto, bonusNumber);
 
         //then
         assertEquals(expectedValue, actualValue);

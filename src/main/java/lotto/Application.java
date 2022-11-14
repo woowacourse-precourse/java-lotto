@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Application {
-    static HashMap<WinningPlace, Integer> winningHistory = new HashMap<>();
+    static HashMap<LottoRank, Integer> winningHistory = new HashMap<>();
     static int inputPrice = 0;
 
     public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class Application {
 
             int bonusNumber = inputBonusNumber();
 
-            saveWinningPlaceByTicket(winnerNumber, myLottoTickets, bonusNumber);
+            saveLottoRankByTicket(winnerNumber, myLottoTickets, bonusNumber);
 
             printLottoTicketHistory();
 
@@ -152,12 +152,12 @@ public class Application {
     }
 
     private static void initWinningHistory() {
-        for (WinningPlace value : WinningPlace.values()) {
+        for (LottoRank value : LottoRank.values()) {
             winningHistory.put(value, 0);
         }
     }
 
-    public static WinningPlace countCorrespondingNumbers(Lotto winnerNumber, Lotto checkTargetNumber, int bonusNumber) {
+    public static LottoRank countCorrespondingNumbers(Lotto winnerNumber, Lotto checkTargetNumber, int bonusNumber) {
         int correspondingNumber = 0;
         int correspondingBonusNumber = 0;
 
@@ -171,30 +171,30 @@ public class Application {
             correspondingBonusNumber++;
         }
 
-        return WinningPlace.getPlace(correspondingNumber, correspondingBonusNumber);
+        return LottoRank.getRank(correspondingNumber, correspondingBonusNumber);
     }
 
-    public static void saveWinningPlaceByTicket(Lotto winnerNumber, List<Lotto> lottoTickets, int bonusNumber) {
+    public static void saveLottoRankByTicket(Lotto winnerNumber, List<Lotto> lottoTickets, int bonusNumber) {
         initWinningHistory();
         for (Lotto lottoTicket : lottoTickets) {
-            WinningPlace winningPlace = countCorrespondingNumbers(winnerNumber, lottoTicket, bonusNumber);
-            addToHistory(winningPlace);
+            LottoRank lottoRank = countCorrespondingNumbers(winnerNumber, lottoTicket, bonusNumber);
+            addToHistory(lottoRank);
         }
     }
 
-    private static void addToHistory(WinningPlace winningPlace) {
-        Integer prevHistory = winningHistory.get(winningPlace);
-        winningHistory.put(winningPlace, prevHistory + 1);
+    private static void addToHistory(LottoRank lottoRank) {
+        Integer prevHistory = winningHistory.get(lottoRank);
+        winningHistory.put(lottoRank, prevHistory + 1);
     }
 
     private static void printLottoTicketHistory() {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println(WinningPlace.FIFTH_PLACE.getMessage() + winningHistory.get(WinningPlace.FIFTH_PLACE) + "개");
-        System.out.println(WinningPlace.FOURTH_PLACE.getMessage() + winningHistory.get(WinningPlace.FOURTH_PLACE) + "개");
-        System.out.println(WinningPlace.THIRD_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE) + "개");
-        System.out.println(WinningPlace.SECOND_PLACE.getMessage() + winningHistory.get(WinningPlace.SECOND_PLACE) + "개");
-        System.out.println(WinningPlace.FIRST_PLACE.getMessage() + winningHistory.get(WinningPlace.FIRST_PLACE) + "개");
+        System.out.println(LottoRank.FIFTH_PLACE.getMessage() + winningHistory.get(LottoRank.FIFTH_PLACE) + "개");
+        System.out.println(LottoRank.FOURTH_PLACE.getMessage() + winningHistory.get(LottoRank.FOURTH_PLACE) + "개");
+        System.out.println(LottoRank.THIRD_PLACE.getMessage() + winningHistory.get(LottoRank.THIRD_PLACE) + "개");
+        System.out.println(LottoRank.SECOND_PLACE.getMessage() + winningHistory.get(LottoRank.SECOND_PLACE) + "개");
+        System.out.println(LottoRank.FIRST_PLACE.getMessage() + winningHistory.get(LottoRank.FIRST_PLACE) + "개");
     }
 
     private static void printWinningsOutOfBuyingPrice(int buyingPrice) {
@@ -209,9 +209,9 @@ public class Application {
 
     private static int getTotalWinnings() {
         int totalWinnings = 0;
-        for (WinningPlace winningPlace : winningHistory.keySet()) {
-            if (!winningPlace.equals(WinningPlace.NOT_IN_PLACE) && winningHistory.get(winningPlace) != 0) {
-                totalWinnings += winningPlace.getWinnings();
+        for (LottoRank lottoRank : winningHistory.keySet()) {
+            if (!lottoRank.equals(LottoRank.NOT_IN_PLACE) && winningHistory.get(lottoRank) != 0) {
+                totalWinnings += lottoRank.getWinnings();
             }
         }
 

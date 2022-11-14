@@ -11,10 +11,10 @@ class WinningPlaceTest {
     @Test
     public void getWinningMessageTest() {
         //given
-        String expectedMessage = "6개 번호 일치";
-        WinningPlace winningPlace = WinningPlace.FIRST_PLACE;
+        LottoRank lottoRank = LottoRank.FIRST_PLACE;
+        String expectedMessage = "6개 일치 (2,000,000,000원) - ";
         //when
-        String actualMessage = WinningPlace.FIRST_PLACE.getMessage();
+        String actualMessage = lottoRank.getMessage();
 
         //then
         assertEquals(expectedMessage, actualMessage);
@@ -26,9 +26,9 @@ class WinningPlaceTest {
         //given
         int correspondingNumber = 6;
         int correspondingBonusNumber = 0;
-        WinningPlace expectedPlace = WinningPlace.FIRST_PLACE;
+        LottoRank expectedPlace = LottoRank.FIRST_PLACE;
         //when
-        WinningPlace actualPlace = WinningPlace.getPlace(correspondingNumber, correspondingBonusNumber);
+        LottoRank actualPlace = LottoRank.getRank(correspondingNumber, correspondingBonusNumber);
 
         //then
         assertEquals(expectedPlace, actualPlace);
@@ -40,9 +40,9 @@ class WinningPlaceTest {
         //given
         int correspondingNumber = 0;
         int correspondingBonusNumber = 0;
-        WinningPlace expectedPlace = WinningPlace.NOT_IN_PLACE;
+        LottoRank expectedPlace = LottoRank.NOT_IN_PLACE;
         //when
-        WinningPlace actualPlace = WinningPlace.getPlace(correspondingNumber, correspondingBonusNumber);
+        LottoRank actualPlace = LottoRank.getRank(correspondingNumber, correspondingBonusNumber);
 
         //then
         assertEquals(expectedPlace, actualPlace);
@@ -52,10 +52,10 @@ class WinningPlaceTest {
     @Test
     public void getWinningsTest() {
         //given
-        WinningPlace winningPlace = WinningPlace.FIRST_PLACE;
+        LottoRank lottoRank = LottoRank.FIRST_PLACE;
         int expectedValue = 2000000000;
         //when
-        Integer actualValue = winningPlace.getWinnings();
+        Integer actualValue = lottoRank.getWinnings();
 
         //then
         assertEquals(expectedValue, actualValue);
