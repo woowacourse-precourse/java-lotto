@@ -21,4 +21,10 @@ public class User {
             throw new IllegalArgumentException(Error.INPUT_BLANK.getMessage());
         }
     }
+
+    public void validateInputWithBlank(String input) {
+        if (input.contains(" ")) {
+            throw new IllegalArgumentException(Error.INPUT_WITH_BLACK.getMessage());
+        }
+    }
 }
