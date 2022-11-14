@@ -12,4 +12,8 @@ public enum Message {
     Message(String str) {
         this.str = str;
     }
+
+    public String getStatus() {
+        return str;
+    }
 }
