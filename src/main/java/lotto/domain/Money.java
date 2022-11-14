@@ -16,4 +16,8 @@ public class Money {
         return (double) (this.amount / prizeMoney * 100);
     }
 
+    public int calcLottoQuantity() {
+        return amount.intValue() / 1000;
+    }
+
 }
