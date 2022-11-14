@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.io.Input;
+import lotto.io.Output;
 import lotto.util.BonusNumberValidator;
 import lotto.util.PurchaseAmtValidator;
 import lotto.util.WinningNumberValidator;
@@ -23,9 +24,13 @@ public class LottoMachine {
     }
 
     public void start() {
-        purchaseAmt = input.enterPurchaseAmt();
-        quickPicks = numberGenerator.getQuickPick(purchaseAmt);
-        winningNumWithBonusList = input.enterWinningNumber();
+        try {
+            purchaseAmt = input.enterPurchaseAmt();
+            quickPicks = numberGenerator.getQuickPick(purchaseAmt);
+            winningNumWithBonusList = input.enterWinningNumber();
+        } catch (IllegalArgumentException e) {
+            Output.printIllegalArgumentException(e.getMessage());
+        }
 
     }
 
