@@ -130,6 +130,22 @@ public class LotteryMachine {
         return Result.FIVE_NUMBERS_MATCH;
     }
 
+    public void calculateTotalPrize(User user) {
+        long totalPrize = 0;
+        for (Result result : Result.values()) {
+            long prize = user.getWinningLotteryCounts().get(result) * result.getPrize();
+            totalPrize += prize;
+        }
+        user.setTotalPrize(totalPrize);
+    }
+
+    public void calculateRateOfReturn(User user) {
+        int userMoney = user.getMoney();
+        long totalPrize = user.getTotalPrize();
+        double rateOfReturn = (double)totalPrize / userMoney;
+        user.setRateOfReturn(rateOfReturn);
+    }
+
     public void setWinningLotto(Lotto winningLotto) { // for test
         this.winningLotto = winningLotto;
     }

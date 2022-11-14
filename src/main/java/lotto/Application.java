@@ -11,5 +11,7 @@ public class Application {
         lotteryMachine.purchaseLottery(user);
         lotteryMachine.drawLottery();
         lotteryMachine.showResult(user);
+        lotteryMachine.calculateTotalPrize(user);
+        lotteryMachine.calculateRateOfReturn(user);
     }
 }

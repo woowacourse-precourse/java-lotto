@@ -10,7 +10,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class User {
 
     private int money;
-    private int totalPrize;
+    private long totalPrize;
     private int numberOfLotteries;
     private double rateOfReturn;
     private List<Lotto> lotteries;
@@ -23,6 +23,10 @@ public class User {
     }
     public int getMoney() {
         return money;
+    }
+
+    public long getTotalPrize() {
+        return totalPrize;
     }
 
     public int getNumberOfLotteries() {
@@ -41,8 +45,16 @@ public class User {
         this.money = money;
     }
 
+    public void setTotalPrize(long totalPrize) {
+        this.totalPrize = totalPrize;
+    }
+
     public void setNumberOfLotteries(int numberOfLotteries) {
         this.numberOfLotteries = numberOfLotteries;
+    }
+
+    public void setRateOfReturn(double rateOfReturn) {
+        this.rateOfReturn = rateOfReturn;
     }
 
     public void setLotteries(List<Lotto> lotteries) {
