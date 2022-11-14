@@ -20,6 +20,12 @@ public class Application {
     private static final String THIRD_PLACE_SENTENCE = "5개 일치 (1,500,000원) - ";
     private static final String SECOND_PLACE_SENTENCE = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     private static final String FIRST_PLACE_SENTENCE = "6개 일치 (2,000,000,000원) - ";
+    private static final String OUT_OF_RANGE_NUMBER_ERROR_MESSAGE = "[ERROR] 번호는 1부터 45 사이의 숫자여야 합니다.";
+    private static final String INVALID_FORMAT_ERROR_MESSAGE = "[ERROR] 올바른 입력 형태가 아닙니다.";
+    private static final String INVALID_PAYMENT_ERROR_MESSAGE = "[ERROR] 구입 금앱은 1000원 단위여야 합니다.";
+    private static final String INVALID_WINNING_NUMBER_SIZE_ERROR_MESSAGE = "[ERROR] 당첨 번호는 6개여야 합니다.";
+    private static final String DUPLICATED_BONUS_NUMBER_ERROR_MESSAGE = "[ERROR] 당첨 번호에 해당 보너스 번호가 이미 존재합니다.";
+    private static final String NOT_NUMBER_ERROR_MESSAGE = "[ERROR] 입력 값은 숫자여야 합니다.";
 
     public static void main(String[] args) {
         int payment = inputPrice();
@@ -46,6 +52,7 @@ public class Application {
         validateNumber(paymentInput);
         int payment = Integer.parseInt(paymentInput);
         if (payment % 1000 != 0) {
+            System.out.println(INVALID_PAYMENT_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
         System.out.println();
@@ -53,7 +60,6 @@ public class Application {
     }
 
     public static List<Integer> inputWinningNumbers() {
-        // 당첨 번호 입력
         System.out.println(INPUT_WINNING_NUMBERS_SENTENCE);
         List<Integer> winningNumbers;
         try {
@@ -61,13 +67,29 @@ public class Application {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         }catch (NumberFormatException e){
+            System.out.println(INVALID_FORMAT_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
-        if (winningNumbers.size()!=6) {
-            throw new IllegalArgumentException();
-        }
+        validateWinningNumbersSize(winningNumbers);
+        validateWinningNumbersRange(winningNumbers);
         System.out.println();
         return winningNumbers;
+    }
+
+    public static void validateWinningNumbersSize(List<Integer> winningNumbers) {
+        if (winningNumbers.size()!=6) {
+            System.out.println(INVALID_WINNING_NUMBER_SIZE_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateWinningNumbersRange(List<Integer> winningNumbers){
+        for (Integer winningNumber : winningNumbers) {
+            if (winningNumber < 1 || winningNumber > 45) {
+                System.out.println(OUT_OF_RANGE_NUMBER_ERROR_MESSAGE);
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     public static int inputBonusNumber(List<Integer> winningNumbers) {
@@ -93,6 +115,7 @@ public class Application {
 
         // 보너스 번호가 당첨 번호에 있는지 확인
         if (winningNumbers.contains(bonus)) {
+            System.out.println(DUPLICATED_BONUS_NUMBER_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
     }
@@ -101,12 +124,14 @@ public class Application {
         try{
             Integer.parseInt(input);
         } catch (NumberFormatException e){
+            System.out.println(NOT_NUMBER_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
     }
 
     public static void validateValidRangeNumber(int num) {
         if (num < 1 || num > 45) {
+            System.out.println(OUT_OF_RANGE_NUMBER_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
     }
