@@ -1,8 +1,8 @@
-package lotto;
+package lotto.service;
 
 import java.util.List;
 import java.util.Objects;
-import lotto.model.LottoEnum;
+import lotto.business.model.LottoEnum;
 
 public class ValidInput {
     public void validCashAmount(Integer cash, Integer lottoDividePrice) {

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.service;
 
 public class ProcessVariable {
     private static final Integer LOTTO_DIVIDE_PRICE = 1000;

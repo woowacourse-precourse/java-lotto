@@ -1,15 +1,15 @@
-package lotto.controller;
+package lotto.business.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.EnumMap;
 import java.util.List;
-import lotto.CalculateLotto;
-import lotto.ManagementLotto;
-import lotto.ProcessVariable;
-import lotto.model.Lotto;
-import lotto.model.LottoAnswer;
-import lotto.model.ResultEnum;
-import lotto.view.Message;
+import lotto.service.CalculateLotto;
+import lotto.service.ManagementLotto;
+import lotto.service.ProcessVariable;
+import lotto.business.model.Lotto;
+import lotto.business.model.LottoAnswer;
+import lotto.business.model.ResultEnum;
+import lotto.business.view.Message;
 
 public class LottoGame {
     private final Message message = new Message();

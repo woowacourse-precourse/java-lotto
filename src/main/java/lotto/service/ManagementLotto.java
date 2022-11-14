@@ -1,12 +1,12 @@
-package lotto;
+package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.model.Lotto;
-import lotto.model.LottoEnum;
+import lotto.business.model.Lotto;
+import lotto.business.model.LottoEnum;
 
 public class ManagementLotto {
     private final ValidInput validInput = new ValidInput();

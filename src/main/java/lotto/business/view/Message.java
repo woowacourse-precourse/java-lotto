@@ -1,10 +1,10 @@
-package lotto.view;
+package lotto.business.view;
 
 import java.text.NumberFormat;
 import java.util.EnumMap;
 import java.util.List;
-import lotto.model.Lotto;
-import lotto.model.ResultEnum;
+import lotto.business.model.Lotto;
+import lotto.business.model.ResultEnum;
 
 public class Message {
     public void printPurchaseMsg() {

@@ -1,14 +1,13 @@
-package lotto;
+package lotto.service;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import lotto.model.Lotto;
-import lotto.model.LottoAnswer;
-import lotto.model.LottoEnum;
-import lotto.model.ResultEnum;
+import lotto.business.model.Lotto;
+import lotto.business.model.LottoAnswer;
+import lotto.business.model.LottoEnum;
+import lotto.business.model.ResultEnum;
 
 public class CalculateLotto {
     private final static int INIT_VALUES = 0;
