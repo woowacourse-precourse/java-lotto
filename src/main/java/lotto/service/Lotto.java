@@ -12,7 +12,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            //exception
+            //숫자가 6개가 아님 exception
         }
     }
 
@@ -29,7 +29,7 @@ public class Lotto {
     }
     private void isUnique(int i, int j, List<Integer> numbers) {
         if(numbers.get(i).equals(numbers.get(j))) {
-            //exception
+            //중복 exception
         }
     }
 }
