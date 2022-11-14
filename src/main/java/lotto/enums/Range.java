@@ -1,8 +1,6 @@
 package lotto.enums;
 
 public enum Range {
-    ASCII_MAX(89),
-    ASCII_MIN(80),
     MAX_RANGE(45),
     MIN_RANGE(1),
     DIGIT(6),

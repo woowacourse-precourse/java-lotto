@@ -15,25 +15,21 @@ public class Validator {
         return checkDuplicated(inputN);
     }
 
-    private int StringToASCII(String s){
-        return s.charAt(0);
-    }
-
-    private int StringToInt(String s){
+    private int stringToInt(String s){
         validateNumber(s);
-        return StringToASCII(s)-'0';
+        return Integer.parseInt(s);
     }
 
-    public boolean validateNumber(String s){
-        int toInt = StringToASCII(s);
-        if(toInt>Range.ASCII_MAX.get() || toInt<Range.ASCII_MIN.get()){
-            throw new IllegalArgumentException(ErrorMessage.NUM_ERROR.getErrorMessage());
+    public void validateNumber(String s){
+        for(int i=0;i<s.length();i++){
+            if(!Character.isDigit(s.charAt(i))){
+                throw new IllegalArgumentException(ErrorMessage.NUM_ERROR.getErrorMessage());
+            }
         }
-        return true;
     }
 
     public boolean validateNumRange(String s) {
-        int idxNum = StringToInt(s);
+        int idxNum = stringToInt(s);
         if(idxNum > Range.MAX_RANGE.get() || idxNum < Range.MIN_RANGE.get()){
             throw new IllegalArgumentException(ErrorMessage.RANGE_ERROR.getErrorMessage());
         }
@@ -50,7 +46,7 @@ public class Validator {
         List<Integer> lottoNum = new ArrayList<>();
         for (String s : input) {
             if(validateNumRange(s)){
-                lottoNum.add(s.charAt(0) - '0');
+                lottoNum.add(stringToInt(s));
             }
         }
         validateLength(lottoNum);
@@ -62,10 +58,13 @@ public class Validator {
         return lottoNum;
     }
 
-    private void validatePrice(int price){
+    public void validatePrice(String stringPrice){
+        int price = stringToInt(stringPrice);
         if (price%Range.PRICE.get()!=0){
             throw new IllegalArgumentException(ErrorMessage.PRICE_ERROR.getErrorMessage());
         }
     }
+
+
 
 }
