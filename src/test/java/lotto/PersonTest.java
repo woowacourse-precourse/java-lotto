@@ -23,6 +23,16 @@ class PersonTest {
         assertThat(matchResult.get(Rank.FIFTH)).isEqualTo(1);
     }
 
+    @Test
+    void yield() {
+        Person person = generatePerson();
+        WinningNumbers winningNumbers = generateWinningNumbers();
+        Map<Rank, Integer> matchResult = person.matchResult(winningNumbers);
+
+        double expected = (2_000_000_000 + 30_000_000 + 1_500_000 + 50000 + 5000) * 100.0 / 8000;
+        assertThat(person.yield(matchResult)).isEqualTo(expected);
+    }
+
     private Person generatePerson() {
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
