@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,13 +47,14 @@ public class Account {
         for (WinningResult result: results.keySet()) {
             this.winningAmount += results.get(result) * result.getMoney();
         }
+        System.out.println("winningAmount: " + winningAmount);
     }
 
     private String getYield() {
-        double yieldRaw = winningAmount * 1000 / ((double) (count * 1000));
-        double yieldRound = Math.round(yieldRaw);
-        double yieldDivided10 = yieldRound / 10;
-        String yield = String.format("%.1f", yieldDivided10);
+        double yieldRaw = winningAmount / ((double) (count * 1000));
+        double yieldPercent = yieldRaw * 100;
+        DecimalFormat decFormat = new DecimalFormat("###,###.0");
+        String yield = decFormat.format(yieldPercent);
         return yield;
     }
 }
