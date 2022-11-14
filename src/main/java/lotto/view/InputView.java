@@ -1,18 +1,18 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Lotto;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 public class InputView {
-    private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요";
-    private static final String LOTTONUMBERS_INPUT_MESSAGE = "1~45중 6개를 골라주세요";
+    private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String LOTTONUMBERS_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String BONUS_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
     private final int lotteryPrice = 1000;
-    private int inputMoney = 0;
-    private int lotteryAmount = 0;
+    private static int inputMoney = 0;
+    private static int lotteryAmount = 0;
 
     public int getInputMoney() {
         return inputMoney;
@@ -34,7 +34,8 @@ public class InputView {
         String input = Console.readLine();
         return input;
     }
-    public void buyLottoMoney () {
+
+    public void buyLottoMoney() {
         String input = getUserInput();
         setInputMoney(Integer.parseInt(input));
     }
@@ -64,4 +65,11 @@ public class InputView {
         }
         return userNumbers;
     }
+
+    public List<Integer> input_Lotto_Numbers() {
+        System.out.println(LOTTONUMBERS_INPUT_MESSAGE);
+        List<Integer> list = makeList(getUserInput());
+        return list;
+    }
+
 }
