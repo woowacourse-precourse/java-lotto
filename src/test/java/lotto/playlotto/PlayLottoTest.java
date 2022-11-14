@@ -1,6 +1,9 @@
 package lotto.playlotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.playlotto.object.Lotto;
+import lotto.playlotto.object.User;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,7 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class PlayLottoTest extends NsTest {
+class PlayLottoTest {
 
     @Test
     void play() {
