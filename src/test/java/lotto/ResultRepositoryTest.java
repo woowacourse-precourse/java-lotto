@@ -23,4 +23,14 @@ public class ResultRepositoryTest {
         assertThat(result.get(Rank.FIRST)).isEqualTo(1);
     }
 
+    @DisplayName("당첨 내역에 의해 계산된 총 당첨 금액이 정확한지 확인한다.")
+    @Test
+    void getTotalMoney() {
+        ResultRepository resultRepository = new ResultRepository();
+        resultRepository.add(Rank.FIFTH);
+        resultRepository.add(Rank.FIFTH);
+        resultRepository.add(Rank.FIFTH);
+        resultRepository.add(Rank.FIRST);
+        assertThat(resultRepository.getTotalMoney()).isEqualTo(2_000_015_000);
+    }
 }
