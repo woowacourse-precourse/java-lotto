@@ -37,4 +37,11 @@ public class LottoGeneratorTest {
             assertTrue(curNumber < nextNumber);
         }
     }
+
+    @Test
+    @DisplayName("랜덤으로 생성된 로또 번호는 6개이다.")
+    void numbersSizeTest() {
+        // then
+        assertEquals(6, numbers.size());
+    }
 }
