@@ -33,16 +33,18 @@ public class View {
         }
     }
 
-    public String[] inputLottoNumber() {
+    public int[] inputLottoNumber() {
         try {
             String[] ss = Console.readLine().split(",");
-            for (String s : ss) {
-                int i = Integer.parseInt(s);
-                if (i < 1 || i > 45) {
+            int[] numbers = new int[ss.length];
+            for (int i = 0; i < ss.length; i++) {
+                int number = Integer.parseInt(ss[i]);
+                if (number < 1 || number > 45) {
                     throw new IllegalArgumentException();
                 }
+                numbers[i] = number;
             }
-            return ss;
+            return numbers;
         } catch (IllegalArgumentException e) {
             System.out.println("[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw e;
