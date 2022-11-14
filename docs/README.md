@@ -52,7 +52,7 @@
 
 ```bash
 ├── controller                   
-│   └──LottoController            // 뷰에서 받은 데이터를 모델에 전달, 모델에서 받은 데이터를 뷰에 전달
+│   └──LottoController            // 뷰와 모델 사이를 이어주는 인터페이스
 ├── model                         
 │   ├── domain                    
 │   │   ├── BonusNumber           // 당첨 로또의 보너스 번호
@@ -70,7 +70,7 @@
 │   ├── service                   
 │       └── LottoService          // 로또 사기, 당첨로또 발표하기, 당첨통계 계산하기
 ├── utils                         
-│   └── Utils                     // 유틸리티 클래스
+│   └── Utils                     // 유틸리티
 ├── view                          
 │   ├── InputView                 // 사용자 입력받기
 │   └── OutputView                // 문자열 출력하기
