@@ -3,10 +3,10 @@ package lotto.ui;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Counter {
-    private static final String inputPriceMessage = "구입 금액을 입력해 주세요.";
+    private static final String inputAmountMessage = "구입 금액을 입력해 주세요.";
 
-    public int inputPrice() {
-        System.out.println(inputPriceMessage);
+    public int inputAmount() {
+        System.out.println(inputAmountMessage);
         return parseInput(Console.readLine());
     }
 
