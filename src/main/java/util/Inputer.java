@@ -22,7 +22,7 @@ public class Inputer {
             System.out.println("[ERROR] : Invalid argument!");
             throw new IllegalArgumentException();
         }
-        return money / 1000;
+        return money;
     }
 
     public void inputlotto() throws IllegalArgumentException {
