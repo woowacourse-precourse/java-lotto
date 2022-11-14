@@ -1,7 +1,6 @@
 package lotto.dto;
 
 public class PurchaseAmountDto {
-
     private final Integer purchaseAmount;
 
     public PurchaseAmountDto(Integer purchaseAmount) {

@@ -17,15 +17,15 @@ public class Customer {
         spendAll();
     }
 
+    private void spendAll() {
+        amount = 0;
+    }
+
     public LottoResult check(LottoMachine lottoMachine) {
         return lottoMachine.check(lottoTicket.orElseThrow(() -> new IllegalStateException(INVALID_TICKET_MESSAGE)));
     }
 
     public LottoTicket getLottoTicket() {
         return lottoTicket.orElseThrow(() -> new IllegalStateException(INVALID_TICKET_MESSAGE));
-    }
-
-    private void spendAll() {
-        amount = 0;
     }
 }

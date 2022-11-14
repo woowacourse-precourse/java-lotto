@@ -3,7 +3,6 @@ package lotto.dto;
 import java.util.List;
 
 public class LottoInformationDto {
-
     private List<List<Integer>> lottoTicket;
     private Integer size;
 

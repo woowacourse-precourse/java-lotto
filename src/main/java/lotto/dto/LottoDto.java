@@ -3,7 +3,6 @@ package lotto.dto;
 import java.util.List;
 
 public class LottoDto {
-
     private final List<Integer> winningNumbers;
     private final Integer bonusNumber;
 

@@ -12,7 +12,6 @@ import lotto.dto.LottoInformationDto;
 import lotto.dto.LottoResultDto;
 
 public class LottoService {
-
     private final LottoSeller lottoSeller;
 
     public LottoService(LottoSeller lottoSeller) {
