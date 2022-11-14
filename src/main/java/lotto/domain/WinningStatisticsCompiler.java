@@ -5,12 +5,14 @@ import java.util.EnumMap;
 import java.util.List;
 
 import lotto.constant.WinningRating;
+import lotto.util.Converter;
 
 public class WinningStatisticsCompiler {
 	private static final int INITIAL_VALUE = 0;
 	private static final int ADDED_COUNT = 1;
 	EnumMap<WinningRating, Integer> countsOfWins;
 	List<Lotto> lotteries;
+	int profit;
 	WinningAndBonusNumbers winningAndBonusNumbers;
 
 	public WinningStatisticsCompiler(List<Lotto> lotteries, WinningAndBonusNumbers winningAndBonusNumbers) {
@@ -23,9 +25,18 @@ public class WinningStatisticsCompiler {
 		return countsOfWins;
 	}
 
+	public int getProfit() {
+		return profit;
+	}
 	private void compile() {
 		init();
 		calculateCountsOfWins();
+		calculateProfit();
+	}
+
+	private void calculateProfit() {
+		countsOfWins.forEach((winningRating, countOfWins) -> profit +=
+			Converter.convertStringOfMoneyToLong(winningRating.getPrizeMoney()) * countOfWins);
 	}
 
 	private void init() {

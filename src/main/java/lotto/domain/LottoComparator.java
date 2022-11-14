@@ -22,10 +22,6 @@ public class LottoComparator {
 		this.winningAndBonusNumbers = winningAndBonusNumbers;
 	}
 
-	public WinningRating getWinningRating() {
-		return winningRating;
-	}
-
 	public void compare(Lotto lotto) {
 		this.lotto = lotto;
 
@@ -73,5 +69,9 @@ public class LottoComparator {
 
 	private void calculateCountOfMatchedNumber(List<Integer> numbers) {
 		countOfMatchedNumber = (int)numbers.stream().filter(winningNumbers::contains).count();
+	}
+
+	public WinningRating getWinningRating() {
+		return winningRating;
 	}
 }

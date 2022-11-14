@@ -1,7 +1,7 @@
 package lotto.constant;
 
 public enum WinningRating {
-	MISS(0,null),
+	MISS(0,"0원"),
 	FIFTH(3, "5,000원"),
 	FOURTH(4, "50,000원"),
 	THIRD(5, "1,500,000원"),
