@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import lotto.util.PickUniqueNumbersInRange;
+import lotto.util.LottoUtils;
 
 public class User {
 
@@ -14,7 +14,7 @@ public class User {
         lottos = new ArrayList<>();
 
         while (lottos.size()<lottoAmount){
-            List<Integer> numbers = PickUniqueNumbersInRange.getNumbers();
+            List<Integer> numbers = LottoUtils.pickUniqueNumbersInRange();
             Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
