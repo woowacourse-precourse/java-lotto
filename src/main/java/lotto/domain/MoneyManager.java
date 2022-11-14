@@ -1,14 +1,17 @@
 package lotto.domain;
 
+import lotto.Validation;
 import lotto.util.ResultPrice;
 
 import java.util.Map;
 
 public class MoneyManager {
+    private static final Validation validation = new Validation();
     private final int money;
 
-    public MoneyManager(int money) {
-        this.money = money;
+    public MoneyManager(String money) {
+        validation.validateMoneyInput(money);
+        this.money = Integer.parseInt(money);
     }
 
     public Double getMoneyReturn(Map<ResultPrice, Integer> result) {
