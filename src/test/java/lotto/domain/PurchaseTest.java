@@ -9,9 +9,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class PurchaseTest {
-    @Test
-    void 올바른_로또_금액_입력() {
-        Purchase ticketNumber = new Purchase("8000");
+    @ParameterizedTest
+    @ValueSource(strings = {"8000", " 8 0 0 0", "80 0 0", "00800 0"})
+    void 올바른_로또_금액_입력(String input) {
+        Purchase ticketNumber = new Purchase(input);
         assertEquals(8, ticketNumber.getTicketNumber());
     }
 

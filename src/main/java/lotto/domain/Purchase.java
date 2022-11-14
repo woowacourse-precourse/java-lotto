@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.regex.Pattern;
+import lotto.util.Formatter;
 
 public class Purchase {
     public static final int LOTTO_PRICE = 1000;
@@ -8,7 +9,7 @@ public class Purchase {
     private int ticketNumber;
 
     public Purchase(String input) {
-        setTicketNumber(input);
+        setTicketNumber(Formatter.removeSpace(input));
         this.ticketNumber = getTicketNumber();
     }
 
@@ -19,8 +20,10 @@ public class Purchase {
         this.ticketNumber = calculateTicketNumber(totalBudget);
     }
 
-    private static int calculateTicketNumber(int totalBudget) {
-        return totalBudget / LOTTO_PRICE;
+    private static void validateInputType(String input) {
+        if (!MONEY_REGEX.matcher(input).matches()) {
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
     }
 
     private static void validateTotalBudget(int totalBudget) {
@@ -28,9 +31,9 @@ public class Purchase {
         verifyUnitOfBudget(totalBudget);
     }
 
-    private static void validateInputType(String input) {
-        if (!MONEY_REGEX.matcher(input).matches()) {
-            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+    private static void verifyMinimumBudget(int totalBudget) {
+        if (totalBudget < LOTTO_PRICE) {
+            throw new IllegalArgumentException("구입 금액은 1,000원 단위로 가능합니다.");
         }
     }
 
@@ -40,10 +43,8 @@ public class Purchase {
         }
     }
 
-    private static void verifyMinimumBudget(int totalBudget) {
-        if (totalBudget < LOTTO_PRICE) {
-            throw new IllegalArgumentException("구입 금액은 1,000원 단위로 가능합니다.");
-        }
+    private static int calculateTicketNumber(int totalBudget) {
+        return totalBudget / LOTTO_PRICE;
     }
 
     public int getTicketNumber() {
