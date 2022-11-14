@@ -3,9 +3,13 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.InstanceOfAssertFactories.list;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -24,4 +28,12 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("로또 번호 정렬되는지 체크")
+    @Test
+    void orderLotto() {
+        List<Integer> randomnum = new ArrayList<>(Arrays.asList(5,2,1,4,3,7));
+        List<Integer> answer =new ArrayList<>(Arrays.asList(1,2,3,4,5,7));
+        assertThat(new Lotto(randomnum).getLotto()).isEqualTo(new Lotto(answer).getLotto());
+    }
 }
