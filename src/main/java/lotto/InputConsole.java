@@ -17,7 +17,9 @@ public class InputConsole {
 
     public static int purchaseMoney() {
         System.out.println(PURCHASE_MONEY_INPUT_MESSAGE);
-        int money = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        validateMoney(input);
+        int money = Integer.parseInt(input);
         return money;
     }
 
