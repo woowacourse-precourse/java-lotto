@@ -30,7 +30,7 @@ public class View {
         System.out.println("---");
         for (String mon : Ranking) {
             Money money = Money.valueOf(mon);
-            System.out.println(money.getMoneyString()+map.getOrDefault(money,0)+"개");
+            System.out.println(money.getMoneyString() + map.getOrDefault(money, 0) + "개");
         }
     }
 
