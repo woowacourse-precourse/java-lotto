@@ -11,8 +11,9 @@ public class Input extends Valid {
 
 
     protected static List<Integer> returnList(){ //Lotto 당첨 번호 입력받기 List<Integer>로 반환
-        String[] input  = Console.readLine().split(",");
-        return Arrays.stream(input).mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
+        String input  = input()
+        checkLottonums(input);
+        return ChangeType.string_to_listinteger(input);
     }
 
     protected static int returnInt(){// 정수형 반환
@@ -45,7 +46,7 @@ public class Input extends Valid {
         check_Range(str);
         check_Overlap(str);
     }
-    private static void checkBouns(List<Integer> numbers, String str) { 
+    private static void checkBouns(List<Integer> numbers, String str) {
         check_empty(str);
         check_number(str);
         check_Range(str);
