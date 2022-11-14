@@ -1,4 +1,9 @@
-package lotto;
+package lotto.View.Controller;
+
+import lotto.Model.DataProcessing;
+import lotto.View.ErrorUtil;
+import lotto.Model.Lotto;
+import lotto.View.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;

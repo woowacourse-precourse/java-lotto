@@ -1,4 +1,4 @@
-package lotto;
+package lotto.View.Controller;
 
 public class Application {
     public static void main(String[] args) {

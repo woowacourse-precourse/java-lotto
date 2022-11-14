@@ -1,4 +1,6 @@
-package  lotto;
+package lotto.View.Controller;
+
+import lotto.View.OutputView;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
