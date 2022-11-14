@@ -8,10 +8,12 @@ import java.util.stream.Stream;
 
 public class Parser {
 
-    public static List<Integer> convertStringToIntegerList(String prizeNumber) {
-        ParserValidator.check(prizeNumber);
+    public static final String SEPARATOR = ",";
 
-        return Stream.of(prizeNumber.split(","))
+    public static List<Integer> convertStringToIntegerList(String prizeNumber) {
+        ParserValidator.check(prizeNumber.split(SEPARATOR));
+
+        return Stream.of(prizeNumber.split(SEPARATOR))
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .collect(Collectors.toList());
