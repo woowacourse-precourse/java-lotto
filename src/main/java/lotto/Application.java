@@ -25,6 +25,10 @@ public class Application {
         int numberOfLotto = money / 1000;
 
         List<Lotto> lottos = perchaseLotto(numberOfLotto);
+        printLottos(lottos);
+
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String inputNumbers = Console.readLine();
 
     }
 
@@ -51,5 +55,16 @@ public class Application {
         for (Lotto lotto : lottos) {
             System.out.println(lotto);
         }
+    }
+
+    public static List<Integer> stringToList(String inputNumbers) {
+        List<Integer> result = new ArrayList<>();
+
+        String[] numbers = inputNumbers.split(",");
+        for (String number : numbers) {
+            result.add(Integer.parseInt(number.trim()));
+        }
+
+        return result;
     }
 }
