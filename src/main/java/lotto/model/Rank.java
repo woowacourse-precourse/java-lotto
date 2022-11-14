@@ -41,5 +41,8 @@ public enum Rank {
         Rank rank = Rank.findByMatches(match);
         return rank.name();
     }
-    
+    public static int getWinningsByMatchState(List<Integer> match){
+        Rank rank = Rank.findByMatches(match);
+        return rank.REVENUE;
+    }
 }
