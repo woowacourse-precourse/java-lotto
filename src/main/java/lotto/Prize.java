@@ -18,4 +18,8 @@ public enum Prize {
         this.bonus = bonus;
         this.prizeMoney = prizeMoney;
     }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
 }
