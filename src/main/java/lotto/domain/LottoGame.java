@@ -6,7 +6,6 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
-import lotto.Application;
 
 public class LottoGame {
     public enum eLottoPlace {

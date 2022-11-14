@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import lotto.Application;
 import lotto.domain.Lotto;
 
 public class LottoInStream {
