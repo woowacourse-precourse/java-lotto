@@ -27,7 +27,7 @@ public class Statistics {
         return -1;
     }
 
-    public int getCount(Lotto lotto) {
+    private int getCount(Lotto lotto) {
         int count = 0;
         for (int i = 0; i < lotto.getNumbers().size(); i++) {
             if (winning.getNumbers().contains(lotto.getNumbers().get(i)))
@@ -36,7 +36,7 @@ public class Statistics {
         return count;
     }
 
-    public boolean isContainsBonus(Lotto lotto) {
+    private boolean isContainsBonus(Lotto lotto) {
         if (lotto.getNumbers().contains(bonus))
             return true;
         return false;
