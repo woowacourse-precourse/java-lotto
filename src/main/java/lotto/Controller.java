@@ -41,12 +41,15 @@ public class Controller {
         int count = 0;
         for (int i = 0; i < winningNumbers.size(); i++) {
             if (i == winningNumbers.size() - 1 && count == 5 && lottoNumbers.contains(winningNumbers.get(i))) {
-                ranks[ranks.length - 1].increaseCount();
+                ranks[3].increaseCount();
             } else if (lottoNumbers.contains(winningNumbers.get(i))) {
                 count++;
             }
         }
         for (int i = 0; i <= count - 3 && i != ranks.length - 1; i++) {
+            if(i==3){
+                continue;
+            }
             ranks[i].increaseCount();
         }
     }
