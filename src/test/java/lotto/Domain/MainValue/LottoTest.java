@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -42,6 +43,15 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
         softAssertions.assertAll();
+    }
+
+    @DisplayName("로또 번호가 잘 저장되는지 여부")
+    @Test
+    void checkReturnValue() {
+        List<Integer> lotto = List.of(1, 2, 3, 4, 5, 8);
+
+        assertThat(new Lotto(lotto).getNumbers())
+                .isEqualTo(lotto);
     }
 
 }

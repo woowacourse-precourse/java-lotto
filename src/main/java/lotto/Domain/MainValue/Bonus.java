@@ -2,29 +2,35 @@ package lotto.Domain.MainValue;
 
 
 import lotto.Domain.Exception.CheckException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bonus {
-    private final int number;
+    private final int bonusNumber;
 
     public Bonus(String bonus, List<Integer> sixNum) throws IllegalArgumentException{
-        this.number = convertAndValidate(bonus, sixNum);
+        this.bonusNumber = convert(bonus);
+        validate(sixNum);
     }
 
-    private int convertAndValidate(String bonus, List<Integer> sixNum) throws IllegalArgumentException{
+    private int convert(String bonus) throws IllegalArgumentException{
+        CheckException checkException = new CheckException();
+        return checkException.check_HaveChar_And_Convert(bonus);
+    }
+
+    private void validate(List<Integer> sixNum) throws IllegalArgumentException{
         CheckException checkException = new CheckException();
 
-        int number = checkException.check_HaveChar_And_Convert(bonus);
+        List<Integer> addedSixNum = new ArrayList<>(sixNum);
+        addedSixNum.add(bonusNumber);
+        checkException.check_ListWithBonusNumSizeIsSeven(addedSixNum);
 
-        sixNum.add(number);
-        checkException.check_RelativeLottoSize(sixNum.size(), sixNum);
-
-        checkException.check_OutOfRange(number);
-        return number;
+        checkException.check_OutOfRange(bonusNumber);
     }
 
 
     public int getNumber() {
-        return number;
+        return bonusNumber;
     }
 }

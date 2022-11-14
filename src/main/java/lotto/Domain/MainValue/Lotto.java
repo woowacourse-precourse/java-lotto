@@ -16,7 +16,7 @@ public class Lotto {
         CheckException checkException = new CheckException();
         checkException.check_LottoSize(numbers.size());
 
-        checkException.check_RelativeLottoSize(numbers.size(), numbers);
+        checkException.check_ListHaveNoOverlapNum(numbers);
 
         for(Integer number : numbers) {
             checkException.check_OutOfRange(number);

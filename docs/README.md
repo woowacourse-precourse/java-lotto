@@ -55,7 +55,7 @@
     * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
   * 6개가 아닌 번호 입력시 에러 발생(enum)
     * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
-  * ,가 아닌 다른 문자 입력시 에러 발생(enum)
+  * 번호가 아닌 문자 입력시 에러 발생(enum)
     * “[ERROR]”로 시작하는 메세지 포함하는 IllegalArgumentException
 <br><br>
 * 보너스 번호 저장 (1개)
