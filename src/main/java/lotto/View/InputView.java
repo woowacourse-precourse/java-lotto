@@ -3,6 +3,7 @@ package lotto.View;
 import lotto.Domain.Message;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Domain.Validator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,6 +33,7 @@ public class InputView {
         String winningNumsInput = Console.readLine();
 
         List<Integer> winningNums = makeWinningNumsToList(winningNumsInput);
+        Validator.checkIsValidWinningNums(winningNums);
         return winningNums;
     }
 
