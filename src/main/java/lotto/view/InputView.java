@@ -5,6 +5,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.utils.Validation.validateLottoPurchaseAmount;
 import static lotto.utils.Validation.validateLottoWinningNumber;
+import static lotto.utils.Validation.validateLottoBonusNumber;
 import static lotto.utils.Converter.convertToIntegerList;
 
 public class InputView {
@@ -19,5 +20,11 @@ public class InputView {
         String playerInput = readLine();
         validateLottoWinningNumber(playerInput);
         return convertToIntegerList(playerInput);
+    }
+
+    public static int readBonusNumber() {
+        String playerInput = readLine();
+        validateLottoBonusNumber(playerInput);
+        return Integer.parseInt(playerInput);
     }
 }
