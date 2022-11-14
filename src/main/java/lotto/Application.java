@@ -39,14 +39,14 @@ public class Application {
             result[rank.getValue()]++;
             earnings+= rank.getPrize();
         }
-        int earningsRate = earnings/purchaseAmount*100;
+        double earningsRate = earnings/(double)purchaseAmount*100;
 
         System.out.println("당첨 통계");
         System.out.println("---");
         for(int i=0;i<5;i++){
             System.out.println(당첨.valueOfValue(i).getResult().replace("_",",")+" - "+result[i]+"개");
         }
-        System.out.println("총 수익률은 "+earningsRate+"%입니다.");
+        System.out.println("총 수익률은 "+String.format("%.1f",earningsRate)+"%입니다.");
 
 
     }
