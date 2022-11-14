@@ -15,7 +15,7 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
 
-    public static Lotto generateLotto() {
+    public static Lotto create() {
         return new Lotto(createRandomNumbers());
     }
 

@@ -5,9 +5,9 @@ import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.IntStream;
 
+import static lotto.constance.InputExceptionConstance.*;
 import static lotto.exception.InputException.*;
 
 public class Buyer {
@@ -20,17 +20,17 @@ public class Buyer {
     public void buyLotto() {
         String lottoAmount = Console.readLine();
         validatesLottoAmount(lottoAmount);
-        createLottos(Integer.parseInt(lottoAmount));
+        generateLotto(Integer.parseInt(lottoAmount));
     }
 
-    public void createLottos(int amount) {
+    private void generateLotto(int amount) {
         int count = countOfBuyLottos(amount);
-        IntStream.range(1, count).forEach(value -> lottos.add(Lotto.generateLotto()));
+        IntStream.range(1, count).forEach(value -> lottos.add(Lotto.create()));
         OutputView.printPurchase(count, lottos);
     }
 
     private int countOfBuyLottos(int amount) {
-        return (amount / 1000) + 1;
+        return (amount / DIVIDING_NUMBER) + 1;
     }
 
     public List<Lotto> getLottos() {

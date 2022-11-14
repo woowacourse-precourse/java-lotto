@@ -15,60 +15,60 @@ public class InputException {
     }
 
     public static void validatesLottoAmount(String amount) {
-        validateNumberByValue(amount, LOTTO_AMOUNT);
-        validateSplit(amount);
-        validateUnder(amount);
+        validateOnlyNumber(amount);
+        validateDivisible(amount);
+        validateMoreThan(amount);
     }
 
     public static List<Integer> validatesWinLottoNumber(String number) {
-        validateLength(number, NUMBER_LENGTH);
-        validateNumberByValue(number, WIN_LOTTO_NUMBER);
+        validateNumberLength(number, NUMBER_LENGTH);
+        validateOnlyNumber(number);
         validateSplitComma(number);
-        validateDuplicate(number);
-        validateNotExceed(number);
+        validateNotDuplicate(number);
+        validateBelow(number);
         return toList(number);
     }
 
     public static int validatesBonusNumber(String number) {
-        validateNumberByValue(number, BONUS_NUMBER);
-        validateLength(number, BONUS_NUMBER_LENGTH);
-        validateNotExceed(number);
+        validateOnlyNumber(number);
+        validateNumberLength(number, BONUS_NUMBER_LENGTH);
+        validateBelow(number);
         return Integer.parseInt(number);
     }
 
-    private static void validateNumberByValue(String number, String value) {
-        if (value.equals(WIN_LOTTO_NUMBER)) {
+    private static void validateOnlyNumber(String number) {
+        if(isWinLottoNumber(number)) {
             number = toString(toList(number));
         }
-        validateNumber(number);
-    }
-
-    private static void validateNumber(String number) {
         if (!Pattern.matches(NUMBER_REGEX, number)) {
-            exception(NOT_NUMBER);
+            exception(NOT_ONLY_NUMBER);
         }
     }
 
-    private static void validateSplit(String number) {
-        if (Integer.parseInt(number) % SPLIT_NUMBER != 0) {
-            exception(NOT_SPLIT_1000);
+    private static boolean isWinLottoNumber(String number) {
+        return number.contains(COMMA);
+    }
+
+    private static void validateDivisible(String number) {
+        if (Integer.parseInt(number) % DIVIDING_NUMBER != 0) {
+            exception(NOT_DIVISIBLE);
         }
     }
 
-    private static void validateUnder(String number) {
-        if (Integer.parseInt(number) < SPLIT_NUMBER) {
-            exception(UNDER_1000);
+    private static void validateMoreThan(String number) {
+        if (Integer.parseInt(number) < DIVIDING_NUMBER) {
+            exception(MORE_THAN_NUMBER);
         }
     }
 
-    private static void validateLength(String number, int length) {
+    private static void validateNumberLength(String number, int length) {
         List<Integer> numbers = toList(number);
         if (numbers.size() != length) {
-            exception(NOT_LENGTH);
+            exception(NOT_SIX_LENGTH);
         }
     }
 
-    private static void validateDuplicate(String number) {
+    private static void validateNotDuplicate(String number) {
         List<Integer> numbers = toList(number);
         if (numbers.stream().distinct().count() != NUMBER_LENGTH) {
             exception(NOT_DUPLICATE);
@@ -77,15 +77,15 @@ public class InputException {
 
     private static void validateSplitComma(String number) {
         if (!number.contains(COMMA)) {
-            exception(NOT_SPLIT_COMMA);
+            exception(SPLIT_BY_COMMA);
         }
     }
 
-    private static void validateNotExceed(String number) {
+    private static void validateBelow(String number) {
         List<Integer> numbers = toList(number);
         for (Integer num : numbers) {
             if (num > END_RANDOM_NUMBER) {
-                exception(NOT_EXCEEDING_45);
+                exception(BELOW_BONUS_NUMBER);
             }
         }
     }
