@@ -58,7 +58,7 @@
 **LottoController**
 >- [x] 사용자가 로또를 구매하는 기능 ( inputUserMoney )
 >- [x] 구매된 로또 번호를 보여주는 기능 ( printLottoNumber )
->- [ ] 당첨번호를 입력하는 기능 ( inputWinningNumber )
+>- [x] 당첨번호를 입력하는 기능 ( inputWinningNumber )
 >- [ ] 보너스 번호를 입력받는 기능 ( inputBonusNumber )
 >- [ ] 당첨 통계를 보여주는 기능 ( printStatistics )
 >- [ ] 총 수익률을 보여주는 기능 ( printRevenue )
