@@ -95,6 +95,14 @@ class LottoTest extends NsTest {
 		});
 	}
 
+	@Test
+	void 입력한_금액_자연수_검사() {
+		assertSimpleTest(() -> {
+			runException("1000k");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
