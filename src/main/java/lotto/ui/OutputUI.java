@@ -5,6 +5,7 @@ import lotto.domain.Rank;
 import lotto.domain.lottoData.TotalWinnerLotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputUI {
 
@@ -23,13 +24,13 @@ public class OutputUI {
         }
     }
 
-    public void printWinnerResult(List<Integer> winnerPerRank) {
+    public void printWinnerResult(Map<Rank, Integer> winnerPerRank) {
         Rank[] ranks = Rank.values();
         for (Rank rank : ranks) {
             System.out.println(String.format("%d개 일치%s - %d개",
-                    rank.getHitCount(),
+                    rank.getNormalNumbers(),
                     rank.getRewardString(),
-                    winnerPerRank.get(rank.getRankInt())));
+                    winnerPerRank.get(rank.getNormalNumbers())));
 
         }
     }
@@ -37,4 +38,5 @@ public class OutputUI {
     public void printReturnRate(double returnRate) {
         System.out.println(String.format("총 수익률은 %.1f%%입니다.", returnRate));
     }
+
 }

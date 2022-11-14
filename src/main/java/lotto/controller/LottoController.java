@@ -27,8 +27,7 @@ public class LottoController {
         WinnerLotto winnerLotto = new WinnerLotto(inputUI.getLottoNumbers());
 
         // 로또 당첨 결과 반환, TotalWinnerLottos라고 하자.
-        // lottos, normalNumbers, bonusNumbers 필요하다.
-        TotalWinnerLotto totalWinnerLotto = new TotalWinnerLotto(raffleMachine.getResultOfLottos(lottos, winnerLotto.getNormalNumbers(), winnerLotto.getBonusNumber()));
+        TotalWinnerLotto totalWinnerLotto = new TotalWinnerLotto(raffleMachine.getWinnerPerRank(lottos, winnerLotto.getNormalNumbers(), winnerLotto.getBonusNumber()));
         outputUI.printWinnerResult(totalWinnerLotto.getWinnerPerRank());
 
         // 로또 수익률 계산
@@ -36,10 +35,6 @@ public class LottoController {
         outputUI.printReturnRate(returnRate);
     }
 
-    private TotalWinnerLotto createResultLotto(List<Integer> resultOfLottos) {
-        TotalWinnerLotto totalWinnerLotto = new TotalWinnerLotto(resultOfLottos);
-        return totalWinnerLotto;
-    }
 
     private List<Lotto> buyLottos() {
         int money = inputUI.getMoney();
