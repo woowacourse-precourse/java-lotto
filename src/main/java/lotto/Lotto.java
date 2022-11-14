@@ -22,10 +22,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private List<List<Integer>> buyLotto(int purchaseMoney){
+    public List<List<Integer>> buyLotto(int purchaseMoney){
         return digitPick(purchaseMoney/1000);
     }
-    private int inputMoney(){
+    public int inputMoney(){
         int purchaseMoney = Integer.parseInt(Console.readLine());
         if (purchaseMoney%1000!=0){
             throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액을 입력하십시오.");
@@ -35,7 +35,7 @@ public class Lotto {
 
     private List<List<Integer>> digitPick(int purchaseAmount){
         List<List<Integer>> lottoNums = new ArrayList<>();
-        while (lottoNums.size()==purchaseAmount){
+        while (lottoNums.size()!=purchaseAmount){
             lottoNums.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         }
         return lottoNums;
