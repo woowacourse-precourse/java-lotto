@@ -38,12 +38,12 @@ public class Input {
         }
     }
 
-    private static void validateLength(List<Integer> numbers){
+    public static void validateLength(List<Integer> numbers){
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자여야 합니다.");
         }
     }
-    private static void validateUnique(List<Integer> numbers){
+    public static void validateUnique(List<Integer> numbers){
         int numOfUniqueNumber = (int)numbers.stream()
                 .distinct()
                 .count();
@@ -51,7 +51,7 @@ public class Input {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 서로 다른 숫자여야 합니다.");
         }
     }
-    private static void validateRange(List<Integer> numbers){
+    public static void validateRange(List<Integer> numbers){
         int numOfOutOfRangeNumber = (int) numbers.stream()
                 .filter(n -> n>45 || n<1)
                 .count();
