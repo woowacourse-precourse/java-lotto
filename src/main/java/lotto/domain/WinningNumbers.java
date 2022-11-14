@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.view.OutputView.printErrorMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -24,6 +26,7 @@ public class WinningNumbers {
         try {
             int nowToken = Integer.parseInt(token);
         } catch (NumberFormatException exception) {
+            printErrorMessage("[ERROR] 입력은 숫자만 가능합니다.");
             throw new IllegalArgumentException();
         }
     }
@@ -48,6 +51,7 @@ public class WinningNumbers {
     private void isInRange(String input) {
         int number = Integer.parseInt(input);
         if (number < 1 || number > 45) {
+            printErrorMessage("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }
     }
@@ -55,6 +59,7 @@ public class WinningNumbers {
     private void isDuplicated(String input) {
         int number = Integer.parseInt(input);
         if (winningNumbers().contains(number)) {
+            printErrorMessage("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
             throw new IllegalArgumentException();
         }
     }

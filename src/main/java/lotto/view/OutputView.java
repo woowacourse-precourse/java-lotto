@@ -17,8 +17,12 @@ public class OutputView {
     private static final String REQUEST_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String REQUEST_BONUS_NUMBER_MESSAGE = "보너스 볼을 입력해 주세요.";
 
-    private void printMessage(String message) {
+    private static void printMessage(String message) {
         System.out.println(message);
+    }
+
+    public static void printErrorMessage(String errorMessage) {
+        printMessage(errorMessage);
     }
 
     private void printNewLine() {
@@ -30,6 +34,7 @@ public class OutputView {
     }
 
     public void printLottoNumberOfTicket(List<Lotto> lottoTicket) {
+        printNewLine();
         printMessage(String.format(NUMBER_OF_LOTTOS, lottoTicket.size()));
         for (Lotto lotto : lottoTicket) {
             printLottoNumbers(sortNumbers(lotto.lottoNumbers()));

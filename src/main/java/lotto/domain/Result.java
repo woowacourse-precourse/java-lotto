@@ -18,7 +18,7 @@ public class Result {
                 .mapToLong(this::prize)
                 .sum();
 
-        return (double) sumOfPrize / (double) money.money();
+        return (double) sumOfPrize * 100 / (double) money.money();
     }
 
     private long prize(Map.Entry<LottoRanking, Integer> rankWithCount) {
