@@ -13,37 +13,32 @@ public class ExceptionHandling {
 
     public void notDivide(long amount){
         if(amount % 1000 != 0 || amount <= 0){
-            ShowErrorMessage.showNotDivide();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ShowErrorMessage.showNotDivide());
         }
     }
 
     public void isNumeric(String value){
         if(!Pattern.matches(NUMBER_REGEX, value) || value.equals("")){ // 숫자가 아니라면
-            ShowErrorMessage.showOutRangeLottoNumber();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ShowErrorMessage.showOutRangeLottoNumber());
         }
     }
 
     public void outRangeLottoNumber(String value){
         if(!Pattern.matches(LOTTO_NUMBER_REGEX, value) || value.equals("")){ // 로또 번호의 범위가 아니라면
-            ShowErrorMessage.showOutRangeLottoNumber();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ShowErrorMessage.showOutRangeLottoNumber());
         }
     }
 
     public void removeDuplicateNumber(List<Integer> winNumber){
         Set<Integer> winNumberSet = new HashSet<>(winNumber);
         if(winNumberSet.size() != winNumber.size()){
-            ShowErrorMessage.showDuplicateLottoNumber();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ShowErrorMessage.showDuplicateLottoNumber());
         }
     }
 
     public void containsBonusNumber(List<Integer> winNumbers, int bonusNumber){
         if(winNumbers.contains(bonusNumber)){
-            ShowErrorMessage.showContainsBonusNumber();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ShowErrorMessage.showContainsBonusNumber());
         }
     }
 
