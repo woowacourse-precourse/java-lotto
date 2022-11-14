@@ -28,8 +28,12 @@ public class Controller {
         return 0;
     }
 
-    private int formatStringToNumber(String number) {
-        return 0;
+    private int formatStringToNumber(String numericString) {
+        checkNumericString(numericString);
+        int number = Integer.parseInt(numericString);
+        checkDivisibleThousand(number);
+
+        return number;
     }
 
     private void checkNumericString(String number) {

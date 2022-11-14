@@ -1,9 +1,11 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 
 import java.lang.reflect.Method;
+import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,5 +41,18 @@ public class ControllerTest {
 
         assertThatThrownBy(() -> checkDivisibleThousandMethod.invoke(controller, number)).getCause()
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("문자열 구입 금액을 숫자 형식으로 변환")
+    @Test
+    void testFormatStringToNumber() throws Exception {
+        Method formatStringToNumberMethod = Controller.class.getDeclaredMethod("formatStringToNumber", String.class);
+        formatStringToNumberMethod.setAccessible(true);
+
+        String numericString = "1000";
+
+        assertThat(
+                formatStringToNumberMethod.invoke(controller, numericString))
+                .isEqualTo(1000);
     }
 }
