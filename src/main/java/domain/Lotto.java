@@ -1,14 +1,14 @@
 package domain;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import util.LottoUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import static util.LottoUtils.*;
+import static util.LottoUtils.validate;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -18,7 +18,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getLottoNumbers(){
+    public List<Integer> getLottoNumbers() {
         return numbers;
     }
 
@@ -27,11 +27,15 @@ public class Lotto {
 
         for (int i = 0; i < lottoCnt; i++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(lottoNumbers);
-            lottos.add(new Lotto(lottoNumbers));
+            List<Integer> sortedLottoNumbers = sortLottoNumbers(lottoNumbers);
+            lottos.add(new Lotto(sortedLottoNumbers));
         }
-
         return lottos;
+    }
+
+    private static List<Integer> sortLottoNumbers(List<Integer> lottoNumbers) {
+        Stream<Integer> sortedNumbers = lottoNumbers.stream().sorted();
+        return sortedNumbers.collect(Collectors.toList());
     }
 
     public static Lotto generateWinningLotto() {
@@ -39,7 +43,7 @@ public class Lotto {
         return new Lotto(winningNumbers);
     }
 
-    public static int generateBonusNumber(){
+    public static int generateBonusNumber() {
         int bonusNumber = LottoUtils.getBonusNumber();
         validate(bonusNumber);
 
