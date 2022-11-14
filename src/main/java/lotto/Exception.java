@@ -6,7 +6,9 @@ public enum Exception {
     WINNING_NUMBER_02(2, "당첨 번호 입력값은 숫자 또는 ','로만 이루어져야 합니다"),
     WINNING_NUMBER_03(3, "당첨 번호는 1~45 사이의 숫자여야 합니다"),
     WINNING_NUMBER_04(4, "당첨 번호는 총 6개여야 합니다"),
-    WINNING_NUMBER_05(5, "당첨 번호는 입력값은 null이 될 수 없습니다");
+    WINNING_NUMBER_05(5, "당첨 번호는 입력값은 null이 될 수 없습니다"),
+    BONUS_NUMBER_05(6, "보너스 번호는 입력값은 null이 될 수 없습니다"),
+    BONUS_NUMBER_06(7, "보너스 번호는 1~45 사이의 숫자여야 합니다");
 
     private Integer number;
     private String message;
