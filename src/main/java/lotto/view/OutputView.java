@@ -1,7 +1,7 @@
 package lotto.view;
 
 import lotto.model.Lottos;
-import lotto.model.WinningInfo;
+import lotto.model.LottosResult;
 
 public class OutputView {
     public static final String NUMBER_OF_PURCHASED_LOTTOS_MESSAGE_FORMAT = "\n%d개를 구매했습니다.\n";
@@ -27,9 +27,9 @@ public class OutputView {
         System.out.println(lottos);
     }
 
-    public void printWinningInfo(WinningInfo winningInfo) {
+    public void printWinningInfo(LottosResult lottosResult) {
         System.out.println();
-        System.out.println(winningInfo);
+        System.out.println(lottosResult);
     }
 
     public void printProfitRate(double profitRate) {

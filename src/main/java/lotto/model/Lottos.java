@@ -10,13 +10,13 @@ public class Lottos {
         this.lottos = lottos;
     }
 
-    public WinningInfo getLottosResult(WinningNumbers winningNumbers) {
-        WinningInfo result = new WinningInfo();
+    public LottosResult getLottosResult(WinningNumbers winningNumbers) {
+        LottosResult result = new LottosResult();
 
         lottos.stream()
                 .map(lotto -> lotto.getPrize(winningNumbers))
                 .filter(prize -> prize != LottoPrize.LOSE)
-                .forEach(result::increaseWinningCount);
+                .forEach(result::winLotto);
 
         return result;
     }
