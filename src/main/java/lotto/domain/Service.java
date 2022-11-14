@@ -12,4 +12,5 @@ public class Service {
         Validator.validatePayMoney(payMoney);
         Output.countLotto(payMoney);
     }
+
 }
