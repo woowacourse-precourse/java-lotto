@@ -15,25 +15,15 @@ public class Place {
     }
 
     public PlaceStatus selectPlace() {
-        if (hasNumberCount == CORRECT_NUMBER_SIX) {
-            return PlaceStatus.FIRST;
-        }
+        if (hasNumberCount == CORRECT_NUMBER_SIX) return PlaceStatus.FIRST;
 
-        if (hasNumberCount == CORRECT_NUMBER_FIVE && bonusCount == CORRECT_BONUS) {
-            return PlaceStatus.SECOND;
-        }
+        if (hasNumberCount == CORRECT_NUMBER_FIVE && bonusCount == CORRECT_BONUS) return PlaceStatus.SECOND;
 
-        if (hasNumberCount == CORRECT_NUMBER_FIVE) {
-            return PlaceStatus.THIRD;
-        }
+        if (hasNumberCount == CORRECT_NUMBER_FIVE) return PlaceStatus.THIRD;
 
-        if (hasNumberCount == CORRECT_NUMBER_FOUR) {
-            return PlaceStatus.FOURTH;
-        }
+        if (hasNumberCount == CORRECT_NUMBER_FOUR) return PlaceStatus.FOURTH;
 
-        if (hasNumberCount == CORRECT_NUMBER_THREE) {
-            return PlaceStatus.FIFTH;
-        }
+        if (hasNumberCount == CORRECT_NUMBER_THREE) return PlaceStatus.FIFTH;
 
         return PlaceStatus.NOTHING;
     }

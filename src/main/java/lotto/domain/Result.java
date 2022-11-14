@@ -27,29 +27,17 @@ public class Result {
     }
 
     private void checkPlace(PlaceStatus place) {
-        if (place == PlaceStatus.FIRST) {
-            this.FIRST_PLACE++;
-        }
+        if (place == PlaceStatus.FIRST) this.FIRST_PLACE++;
 
-        if (place == PlaceStatus.SECOND) {
-            this.SECOND_PLACE++;
-        }
+        if (place == PlaceStatus.SECOND) this.SECOND_PLACE++;
 
-        if (place == PlaceStatus.THIRD) {
-            this.THIRD_PLACE++;
-        }
+        if (place == PlaceStatus.THIRD) this.THIRD_PLACE++;
 
-        if (place == PlaceStatus.FOURTH) {
-            this.FOURTH_PLACE++;
-        }
+        if (place == PlaceStatus.FOURTH) this.FOURTH_PLACE++;
 
-        if (place == PlaceStatus.FIFTH) {
-            this.FIFTH_PLACE++;
-        }
+        if (place == PlaceStatus.FIFTH) this.FIFTH_PLACE++;
 
-        if (place == PlaceStatus.NOTHING) {
-            this.NONTHING++;
-        }
+        if (place == PlaceStatus.NOTHING) this.NONTHING++;
     }
 
     public int getFirst() {
