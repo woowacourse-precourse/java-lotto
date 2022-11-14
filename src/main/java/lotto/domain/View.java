@@ -2,7 +2,9 @@ package lotto.domain;
 
 import lotto.config.LottoStatus;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static lotto.config.LottoStatus.*;
 
@@ -46,27 +48,38 @@ public class View {
         System.out.println(lotto.getLotto());
     }
 
-    public void showWinningStatsValueByKey(LottoStatus status, int count) {
-        if (status == THREE) {
-            System.out.println(SAME_THREE_WINNING + count + SHOW_SAME_NUMBER);
+    public void showWinningStats(HashMap<LottoStatus, Integer> winningStats) {
+
+        startWinningStats();
+
+        for (Map.Entry<LottoStatus, Integer> entry : winningStats.entrySet()) {
+
+            LottoStatus status = entry.getKey();
+            int count = entry.getValue();
+
+            if (status == THREE) {
+                System.out.println(SAME_THREE_WINNING + count + SHOW_SAME_NUMBER);
+            }
+
+            if (status == FOUR) {
+                System.out.println(SAME_FOUR_WINNING + count + SHOW_SAME_NUMBER);
+            }
+
+            if (status == FIVE) {
+                System.out.println(SAME_FIVE_WINNING + count + SHOW_SAME_NUMBER);
+            }
+
+            if (status == SIX_WITH_BONUS) {
+                System.out.println(SAME_SIX_WITH_BONUS + count + SHOW_SAME_NUMBER);
+            }
+
+            if (status == SIX) {
+                System.out.println(SAME_SIX_WINNING + count + SHOW_SAME_NUMBER);
+            }
         }
 
-        if (status == FOUR) {
-            System.out.println(SAME_FOUR_WINNING + count + SHOW_SAME_NUMBER);
-        }
-
-        if (status == FIVE) {
-            System.out.println(SAME_FIVE_WINNING + count + SHOW_SAME_NUMBER);
-        }
-
-        if (status == SIX_WITH_BONUS) {
-            System.out.println(SAME_SIX_WITH_BONUS + count + SHOW_SAME_NUMBER);
-        }
-
-        if (status == SIX) {
-            System.out.println(SAME_SIX_WINNING + count + SHOW_SAME_NUMBER);
-        }
     }
+
 
     public void showReturnRate(double returnRate) {
         System.out.println(SHOW_RETURN_RATE_FRONT + returnRate + SHOW_RETURN_RATE_BACK);

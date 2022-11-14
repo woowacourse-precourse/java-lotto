@@ -106,18 +106,6 @@ public class Checker {
         return winningStats;
     }
 
-    public void showWinningStats() {
-
-        view.startWinningStats();
-
-        for (Entry<LottoStatus, Integer> entry : winningStats.entrySet()) {
-
-            view.showWinningStatsValueByKey(entry.getKey(), entry.getValue());
-
-        }
-
-    }
-
     public double calculateTotalWinningAmount(LottoStatus status, int count) {
 
         if (status == THREE) {

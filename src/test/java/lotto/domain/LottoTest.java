@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class LottoTest {
 
     private static final int hasLotto = 8;
-    private static List<Lotto> lottos;
+    private static List<Lotto> lottos = new ArrayList<>();
 
     @BeforeAll
     static void 로또_발행() {

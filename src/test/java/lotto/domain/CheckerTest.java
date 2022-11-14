@@ -69,8 +69,6 @@ class CheckerTest {
             checker.checkMyLotto(numbers.get(i));
         }
 
-        checker.showWinningStats();
-
         assertThat(checker.getWinningStats()).isEqualTo(result);
 
     }

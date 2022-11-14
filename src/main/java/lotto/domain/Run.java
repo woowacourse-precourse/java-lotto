@@ -36,7 +36,7 @@ public class Run {
             checker.checkMyLotto(lottos.get(i).getLotto());
         }
 
-        checker.showWinningStats();
+        view.showWinningStats(checker.getWinningStats());
         checker.calculateRateOfReturn(customer.getMoney());
         view.showReturnRate(checker.getReturnRate());
 
