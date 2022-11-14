@@ -36,26 +36,56 @@ public class WinningNumber {
 
     private void transformInputWinningNumbers(String inputWinningNumbers) {
         List<String> modifiedInputWinningNumbers = List.of(inputWinningNumbers.split(Message.Comma));
+        winningNumberslengthCheck(modifiedInputWinningNumbers);
 
         for (String s : modifiedInputWinningNumbers) {
             try {
-                int transformedwinningNumber = Integer.parseInt(s);
-                winningNumbers.add(transformedwinningNumber);
+                int transformedWinningNumber = Integer.parseInt(s);
+                rangeCheck(transformedWinningNumber);
+                winningNumbers.add(transformedWinningNumber);
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException(Message.IsNotNumberMessage);
             }
         }
+        duplicationCheck(winningNumbers);
     }
 
     private void transformBonusNumbers(String inputBonusNumber) {
+        bonusNumberlengthCheck(inputBonusNumber);
         try {
             int transformedBonusNumber = Integer.parseInt(inputBonusNumber);
+            rangeCheck(transformedBonusNumber);
             bonusNumber = transformedBonusNumber;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Message.IsNotNumberMessage);
         }
     }
 
+    private void winningNumberslengthCheck(List<String> modifiedInputWinningNumbers) {
+        if (modifiedInputWinningNumbers.size() != Message.LOTTOLENGTH) {
+            throw new IllegalArgumentException(Message.WrongSizeWinningNumbersMessage);
+        }
+    }
+
+    private void bonusNumberlengthCheck(String modifiedInputWinningNumbers) {
+        if (modifiedInputWinningNumbers.length() != Message.BONUSLENGTH) {
+            throw new IllegalArgumentException(Message.WrongSizeBonusNumberMessage);
+        }
+    }
+
+    private void rangeCheck(int WinningNumber) {
+        if (WinningNumber < 1 || 45 < WinningNumber) {
+            throw new IllegalArgumentException(Message.WrongRangeMessage);
+        }
+    }
+
+    private void duplicationCheck(List<Integer> winningNumbers) {
+        for (Integer num : winningNumbers) {
+            if (Collections.frequency(winningNumbers, num) != 1) {
+                throw new IllegalArgumentException(Message.DuplicationMessage);
+            }
+        }
+    }
 
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
