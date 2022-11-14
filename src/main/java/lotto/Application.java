@@ -5,7 +5,7 @@ import lotto.domain.Purchase;
 public class Application {
     public static void main(String[] args) {
         try {
-            Purchase.buyLotto();
+            Purchase.lotto();
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
