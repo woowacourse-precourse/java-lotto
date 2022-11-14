@@ -8,5 +8,6 @@ public class Application {
         int purchaseAmount = Ui.inputPurchaseAmount();
         int lottoTickets = LottoVendingMachine.getLottoTickets(purchaseAmount);
         List<Lotto> lottos = LottoVendingMachine.getLottos(lottoTickets);
+        LottoDrawMachine lottoDrawMachine = new LottoDrawMachine();
     }
 }
