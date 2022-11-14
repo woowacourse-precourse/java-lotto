@@ -33,7 +33,7 @@ public class TotalResultTest {
     @Test
     void getYield() {
         Map<Rank, Integer> rankCounts = getExpected();
-        assertThat(totalResult.getYield(rankCounts)).isEqualTo("290,222,142.86");
+        assertThat(totalResult.getYield(rankCounts)).isEqualTo("29,022,214.3");
     }
 
     private static List<Lotto> getLotteries() {
