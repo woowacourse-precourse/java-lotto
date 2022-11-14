@@ -29,7 +29,6 @@ public class Application {
                 throw new IllegalArgumentException();
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + "구입 금액은 1000원 단위여야 합니다.");
-            return;
         }
 
         LottoGenerator generator = new LottoGenerator();
