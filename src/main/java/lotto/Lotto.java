@@ -18,7 +18,8 @@ public class Lotto {
     }
 
 
-        return autoTicketNumbers;
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
 }
