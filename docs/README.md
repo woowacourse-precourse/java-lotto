@@ -6,6 +6,7 @@
     구매한 로또의 개수와 정보를 출력
     당첨 번호를 입력 받음
     보너스 번호를 입력 받음
+
 #  금액 제한 설정(Money)
     MAX : 최대 금액 
     MIN : 최소 금액
@@ -66,4 +67,32 @@
     일치하는 번호의 수에 따른 금액을 반환
     일치하는 개수에 따른 상금 정보 Enum
 
+#당첨 번호 분류 (Numbers)
+
+    당첨 번호 검증을 위한 정규식 보관
+
 #당첨 확인 (Saturday)
+    
+    당첨 번호를 정렬해 보관
+    당첨 번호와 DB의 로또들을 비교
+    당첨일 경우 당첨의 통계를 냄
+    당첨액의 수익률을 계산
+
+**Saturday**
+
+    입력된 당첨 번호를 정렬해 저장
+
+**validate**
+
+    전달된 당첨 번호와 보너스 번호가 정상인지 확인
+    isntWinRegex : Win 정규식과 다르면 false
+    isOut : 45보다 큰 번호이면 false
+    isntBonusReges : Bonus 정규식과 다르면 false
+    isAlready : Bonus 값과 Win의 값들중 같은 값이 있는 경우
+**checkLotto**
+    
+    로또와 당첨번호를 비교해 일치하는 개수 반환
+
+**makeStatistics**
+
+    DB의 모든 로또들을 check 하고 통계를 저장
