@@ -22,6 +22,7 @@ public abstract class Utility {
     public static final String separateLine = "---";
 
     public static final long divisorNumber = 1000;
+    public static final int noWinIndex = 5;
 
     public static void printMessage(String message){
         System.out.println(message);
@@ -62,6 +63,31 @@ public abstract class Utility {
             _winningNumbers.add(curNum);
         }
         return _winningNumbers;
+    }
+
+    public static List <Integer> findTotalLottoResult(List <Lotto> purchaseLotto, List <Integer> winningNumbers, int bonusNumber){
+        List <Integer> result = Arrays.asList(0,0,0,0,0,0);
+        for(int i=0; i<purchaseLotto.size(); i++){
+            int index = findLottoResult(purchaseLotto.get(i).getNumbers(), winningNumbers, bonusNumber);
+            result.set(index, result.get(index)+1);
+        }
+        return result;
+    }
+    public static int findLottoResult(List <Integer> lotto, List <Integer> winningNumbers, int bonusNumber){
+        winningNumbers.retainAll(lotto);
+        int cntCorrectNum = winningNumbers.size();
+        int checkBonus = 0;
+        if(lotto.contains(bonusNumber)){
+            checkBonus = 1;
+        }
+        int index;
+        try {
+            Win win = Win.valueOf("WIN" + Integer.toString(cntCorrectNum) + Integer.toString(checkBonus));
+            index = win.getKey();
+        }catch(IllegalArgumentException ex){
+            index = noWinIndex;
+        }
+        return index;
     }
 
     public static double profitPercentage(long spentAmount, long totalPrizeAmount){
