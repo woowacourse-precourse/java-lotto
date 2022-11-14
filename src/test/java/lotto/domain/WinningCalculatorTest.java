@@ -25,7 +25,7 @@ class WinningCalculatorTest {
     @Nested
     class SetWinningNumbers {
 
-        @DisplayName("당첨 번호 설정후, 동일한 번호의 로또 결과 계산 -> 1등 반환")
+        @DisplayName("당첨 번호 설정 후, 동일한 번호의 로또 결과 계산 -> 1등 반환")
         @Test
         void shouldBeRank1WhenSetWinningNumbers() {
             // given
@@ -68,16 +68,42 @@ class WinningCalculatorTest {
     }
 
     @DisplayName("보너스 번호를 설정한다.")
-    @Test
-    void ShouldBeRank2WhenSetBonusNumber() {
-        // given
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 8));
-        Lotto lottoBeforeResetWinningNumbers = new Lotto(numbers);
-        // when
-        winningCalculator.setBonusNumber("8");
-        // then
-        assertThat(winningCalculator.getResultOfOneLotto(lottoBeforeResetWinningNumbers))
-                .isEqualTo(WinningResult.RANK_2);
+    @Nested
+    class SetBonusNumber {
+
+        @DisplayName("로또 번호와 일치하는 보너스 번호 설정 후, 결과 계산 -> 2등 반환")
+        @Test
+        void shouldBeRank2WhenSetBonusNumber() {
+            // given
+            List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 8));
+            Lotto lottoBeforeResetWinningNumbers = new Lotto(numbers);
+            // when
+            winningCalculator.setBonusNumber("8");
+            // then
+            assertThat(winningCalculator.getResultOfOneLotto(lottoBeforeResetWinningNumbers))
+                    .isEqualTo(WinningResult.RANK_2);
+        }
+
+        @DisplayName("int 범위 밖의 숫자 포함 -> 예외발생")
+        @Test
+        void tooBigNumber() {
+            assertThatThrownBy(() -> winningCalculator.setBonusNumber("2200000000"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("범위 바깥의 수 입력 -> 예외발생")
+        @Test
+        void outerRange() {
+            assertThatThrownBy(() -> winningCalculator.setBonusNumber("46"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("당첨 번호에 이미 포함된 번호 입력 -> 예외발생")
+        @Test
+        void alreadyInWinningNumbers() {
+            assertThatThrownBy(() -> winningCalculator.setWinningNumbers("6"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @DisplayName("로또 1개의 당첨 여부를 계산한다.")
