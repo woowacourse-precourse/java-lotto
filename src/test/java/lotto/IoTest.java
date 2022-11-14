@@ -12,7 +12,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class IoTest {
+public class InputTest {
     @DisplayName("1000으로 나누어 지지 않는 값을 넣었을때 일리걸 익셉션 발생 테스트")
     @Test
     void inputCheck1000() throws NoSuchMethodException, IllegalAccessException {
