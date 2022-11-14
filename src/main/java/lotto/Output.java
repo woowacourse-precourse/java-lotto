@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Output {
@@ -15,15 +16,22 @@ public class Output {
 		}
 	}
 
-	public static void printResult() {
+	public static void printResult(HashMap<Integer, Integer> result) {
 		System.out.println();
 		System.out.println("당첨 통계");
 		System.out.println("---");
-		System.out.println("3개 일치 (5,000원) - " + WinningLotto.result.getOrDefault("Fifth", 0) + "개");
-		System.out.println("4개 일치 (50,000원) - " + WinningLotto.result.getOrDefault("Fourth", 0) + "개");
-		System.out.println("5개 일치 (1,500,000원) - " + WinningLotto.result.getOrDefault("Third", 0) + "개");
-		System.out.println("5개 일치, 보너스 볼 일치(30,000,000원) - " + WinningLotto.result.getOrDefault("Second", 0) + "개");
-		System.out.println("6개 일치 (2,000,000,000원) - " + WinningLotto.result.getOrDefault("First", 0) + "개");
+		for (Rank rank : Rank.values()) {
+			if (rank == Rank.NOTHING) {
+				continue;
+			}
+			if (rank == Rank.SECOND) {
+				System.out.println(rank.getMatchCount() + "개 일치, 보너스 볼 일치(" + rank.getMoney() + "원) - "
+					+ result.get(rank.getMatchCount()) + "개");
+				continue;
+			}
+			System.out.println(
+				rank.getMatchCount() + "개 일치 (" + rank.getMoney() + "원) - " + result.get(rank.getMatchCount()) + "개");
+		}
 	}
 
 	public static void printEarningRate(int earningMoney, int paidMoney) {

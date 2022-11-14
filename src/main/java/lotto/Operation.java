@@ -26,6 +26,7 @@ public class Operation {
 		int bonusNumber = Input.enterBonusNumber();
 
 		WinningLotto winningLottoResult = new WinningLotto(winningLotto, bonusNumber);
-		HashMap result = winningLottoResult.produceResult(lotteryTickets);
+		HashMap<Integer, Integer> result = winningLottoResult.produceResult(lotteryTickets);
+		Output.printResult(result);
 	}
 }

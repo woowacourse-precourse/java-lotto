@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import lotto.WinningLotto;
 
 public class WinningLottoTest {
-	HashMap<String, Integer> lottoResult = new HashMap<>();
+	HashMap<Integer, Integer> lottoResult = new HashMap<>();
 	HashMap<String, Integer> expected = new HashMap<>();
 	WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
 
