@@ -42,7 +42,7 @@ public enum Rank {
     private static List<Rank> matchCountRanks(int matchCount) {
         return Stream.of(Rank.values())
                 .filter(rank -> rank.isMatchCountEqual(matchCount))
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private boolean isMatchCountEqual(int matchCount) {

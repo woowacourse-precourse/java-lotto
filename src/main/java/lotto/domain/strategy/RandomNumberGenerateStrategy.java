@@ -1,6 +1,7 @@
 package lotto.domain.strategy;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 import lotto.domain.NumberGenerateStrategy;
 
@@ -11,6 +12,7 @@ public class RandomNumberGenerateStrategy implements NumberGenerateStrategy {
 
     @Override
     public List<Integer> generateNumbers() {
-        return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX, LOTTO_SIZE);
+        return Collections
+                .unmodifiableList(Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX, LOTTO_SIZE));
     }
 }

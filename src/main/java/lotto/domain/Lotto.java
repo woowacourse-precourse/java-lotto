@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
 import lotto.exception.domain.LottoNumberRangeException;
 import lotto.exception.domain.LottoSizeException;
@@ -53,7 +54,7 @@ public class Lotto {
     }
 
     public List<Integer> numbers() {
-        return this.numbers;
+        return Collections.unmodifiableList(this.numbers);
     }
 
     @Override

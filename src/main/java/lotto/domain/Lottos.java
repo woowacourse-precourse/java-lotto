@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ public class Lottos {
     }
 
     public List<Lotto> lottos() {
-        return this.lottos;
+        return Collections.unmodifiableList(this.lottos);
     }
 
     public int count() {
