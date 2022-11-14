@@ -8,12 +8,12 @@ import java.util.List;
 
 public class YieldMachine {
 
-    WinningNumberLotto lotto;
+    WinningNumberLotto winningNumberLotto;
     static final Integer MAX_COUNT_OF_LOTTO_NUMBER = 6;
     List<Integer> countOfReward;
 
     public YieldMachine() {
-        this.lotto = new WinningNumberLotto();
+        this.winningNumberLotto = new WinningNumberLotto();
         this.countOfReward = new ArrayList<>();
     }
 
@@ -22,14 +22,6 @@ public class YieldMachine {
     }
 
     public void calculateYield(User user) {
-
-    }
-
-    private void createWinningNumber() {
-
-    }
-
-    private void createBonusNumber() {
 
     }
 
