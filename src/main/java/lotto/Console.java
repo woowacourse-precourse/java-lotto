@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,15 +53,19 @@ public class Console {
             if (rank.getCount()==0) {
                 break;
             }
+
             if (rankMap.get(rank)==null){
                 rankMap.put(rank,0);
             }
+
             int cnt = rankMap.get(rank);
+            DecimalFormat decimalFormat = new DecimalFormat("###,###");
+            String strMoney = decimalFormat.format(rank.getMoney());
             if (rank.getCount()==5 && rank.getBonus()==1) {
-                System.out.println(rank.getCount()+"개 일치, 보너스 볼 일치 ("+rank.getMoney()+") - "+cnt+"개");
+                System.out.println(rank.getCount()+"개 일치, 보너스 볼 일치 ("+strMoney+"원) - "+cnt+"개");
                 continue;
             }
-            System.out.println(rank.getCount()+"개 일치 ("+rank.getMoney()+") - "+cnt+"개");
+            System.out.println(rank.getCount()+"개 일치 ("+strMoney+"원) - "+cnt+"개");
         }
 
     }

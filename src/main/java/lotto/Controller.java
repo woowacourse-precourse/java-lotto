@@ -63,4 +63,14 @@ public class Controller {
         }
         return Rank.NOTHING;
     }
+
+//    public double getYield(int money, HashMap<Rank,Integer> rankMap) {
+//        if (rankMap.size() ==0 ){
+//            return 0;
+//        }
+//        double earnings = 0;
+//        for (Rank rank: rankMap.keySet()) {
+//
+//        }
+//    }
 }
