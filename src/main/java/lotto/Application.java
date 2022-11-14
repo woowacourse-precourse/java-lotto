@@ -1,6 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -29,5 +34,18 @@ public class Application {
             System.out.println("[ERROR]");
         }
         return numberOfLotto/1000;
+    }
+
+    public static List<List<Integer>> userLottoNumber (Integer numOfLotto) {
+        List<List<Integer>> userLotto = new ArrayList<>();
+        for ( int i = 0 ; i < numOfLotto ; i++) {
+            List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lottoNumberResult = new Lotto(lottoNumber);
+            List<Integer> lottoNum = new ArrayList<>(lottoNumberResult.getNumbers());
+            Collections.sort(lottoNum);
+            System.out.println(lottoNum);
+            userLotto.add(lottoNumberResult.getNumbers());
+        }
+        return userLotto;
     }
 }
