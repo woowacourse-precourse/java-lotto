@@ -9,13 +9,15 @@ public class Application {
         int buylotto = askmoney();
         List<List<Integer>> lottonumbers = new ArrayList<>();
         List<Integer> result = new ArrayList<>();
+        List<Integer> winningnumbers = new ArrayList<>();
 
         Random random = new Random();
         lottonumbers = random.createAllLotto(buylotto);
         printalllotto(lottonumbers,buylotto);
 
         CompareLotto comparelotto = new CompareLotto();
-        result = comparelotto.correctcount(lottonumbers,askwinningnumbers(),askbonusnumber());
+        winningnumbers = askwinningnumbers();
+        result = comparelotto.correctcount(lottonumbers,winningnumbers,askbonusnumber(winningnumbers));
 
         printresult(result, buylotto);
         // TODO: 프로그램 구현
@@ -48,13 +50,16 @@ public class Application {
         Lotto execptnum = new Lotto(winningnumbers);
         return winningnumbers;
     }
-    public static int askbonusnumber(){
+    public static int askbonusnumber(List<Integer> winningnumbers){
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         int bonusnumber = Integer.parseInt(input);
 
         if(bonusnumber<1 && bonusnumber>45){
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1에서 45사이의 숫자여야 합니다.");
+        }
+        if(winningnumbers.contains(bonusnumber)){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복지 않은 숫자여야 합니다.");
         }
         return bonusnumber;
     }
