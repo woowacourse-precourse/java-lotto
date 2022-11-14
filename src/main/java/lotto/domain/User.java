@@ -31,9 +31,9 @@ public class User extends Valid {
         }
     }
 
-    private void validate(String amount) throws IllegalArgumentException {
-        isNumeric(amount);
-        isCorrectPrice(amount);
+    private void validate(String inputMoney) throws IllegalArgumentException {
+        isNumeric(inputMoney);
+        isCorrectPrice(inputMoney);
     }
 
     public double calcProfit() {
