@@ -1,5 +1,8 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +10,6 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BuyerTest {
 
@@ -16,11 +18,39 @@ public class BuyerTest {
     @Test
     void readPurchaseAmountTest() {
         Buyer buyer = new Buyer();
-        String input = "12345";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
+        String notMultipleOfThousand = "12345";
+        String notNumber = "abc123";
+        String startWithZero = "05000";
+        String smallerThanOneThousand = "800";
 
-        System.setIn(in);
+        System.setIn(new ByteArrayInputStream(notMultipleOfThousand.getBytes()));
         assertThatThrownBy(buyer::readPurchaseAmount)
                 .isInstanceOf(IllegalArgumentException.class);
+
+        System.setIn(new ByteArrayInputStream(notNumber.getBytes()));
+        assertThatThrownBy(buyer::readPurchaseAmount)
+                .isInstanceOf(IllegalArgumentException.class);
+
+        System.setIn(new ByteArrayInputStream(startWithZero.getBytes()));
+        assertThatThrownBy(buyer::readPurchaseAmount)
+                .isInstanceOf(IllegalArgumentException.class);
+
+        System.setIn(new ByteArrayInputStream(smallerThanOneThousand.getBytes()));
+        assertThatThrownBy(buyer::readPurchaseAmount)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구입 금액에 따라 올바른 수의 복권을 발행한다.")
+    @Test
+    void pickLotteryNumbersTest() {
+        Buyer buyer = new Buyer();
+        String eightThousand = "8000";
+        String purchaseAmount;
+        List<List<Integer>> lotteryTickets;
+
+        System.setIn(new ByteArrayInputStream(eightThousand.getBytes()));
+        purchaseAmount = buyer.readPurchaseAmount();
+        lotteryTickets = buyer.pickLotteryNumbers(Integer.parseInt(purchaseAmount) / 1000);
+        assertEquals(8, lotteryTickets.size());
     }
 }
