@@ -17,12 +17,13 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
     // TODO: 추가 기능 구현
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
 
-    private void validateDuplication(List<Integer> numbers){
+    private void validateDuplication(List<Integer> numbers) {
         List<Integer> newNumbers = numbers.stream().distinct().collect(Collectors.toList());
         validate(newNumbers);
     }

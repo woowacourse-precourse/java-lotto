@@ -14,8 +14,9 @@ public class GameSystem {
     private PrintView printView = new PrintView();
     private LottoNumberStorage lottoNumberStorage = new LottoNumberStorage();
     private CalculateWinStatics calculateWinStatics = new CalculateWinStatics();
-    public void gameStart(){
-        int purchasePrice,bonusNumber;
+
+    public void gameStart() {
+        int purchasePrice, bonusNumber;
         List<Integer> winningNumber;
         List<List<Integer>> lottos;
 
@@ -27,9 +28,9 @@ public class GameSystem {
 
         winningNumber = inputUtil.inputWinningNumber();
         bonusNumber = inputUtil.inputBonusNumber();
-        checkIsDuplicatedNumbers(winningNumber,bonusNumber);
+        checkIsDuplicatedNumbers(winningNumber, bonusNumber);
 
-        calculateWinStatics.winningStatics(lottos,winningNumber,bonusNumber);
+        calculateWinStatics.winningStatics(lottos, winningNumber, bonusNumber);
         printView.printStatics(purchasePrice);
     }
 

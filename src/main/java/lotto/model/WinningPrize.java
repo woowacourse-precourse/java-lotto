@@ -9,11 +9,11 @@ public enum WinningPrize {
 
     private final int prize;
 
-    WinningPrize(int prize){
-        this.prize=prize;
+    WinningPrize(int prize) {
+        this.prize = prize;
     }
 
-    public int getPrize(){
+    public int getPrize() {
         return this.prize;
     }
 }

@@ -5,11 +5,11 @@ public enum GameNumber {
     THOUSAND(1000);
     private final int number;
 
-    GameNumber(int number){
+    GameNumber(int number) {
         this.number = number;
     }
 
-    public int getNumber(){
+    public int getNumber() {
         return this.number;
     }
 }
