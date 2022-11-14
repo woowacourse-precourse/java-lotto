@@ -1,9 +1,10 @@
 package lotto.domain.winning;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
 import lotto.domain.lotto_numbers.BonusNumber;
 import lotto.domain.lotto_numbers.Lotto;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +22,7 @@ class LottoTicketsTest {
         );
         int actual = lottoTickets.totalPayment();
         int predict = 3_000;
-        Assertions.assertThat(actual).isEqualTo(predict);
+        assertThat(actual).isEqualTo(predict);
     }
 
     @DisplayName("당첨 번호와 보너스 번호를 받고, 당첨된 로또에 한해 List<Ranking>을 반환 해준다.")
@@ -43,7 +44,7 @@ class LottoTicketsTest {
                 new BonusNumber(7)
         );
 
-        Assertions.assertThat(rankings).hasSize(5);
+        assertThat(rankings).hasSize(5);
     }
 
     @DisplayName("당첨 번호와 보너스 번호를 받고, 당첨되지 않은 경우, 빈 리스트를 반환한다.")
@@ -58,6 +59,6 @@ class LottoTicketsTest {
                 new BonusNumber(7)
         );
 
-        Assertions.assertThat(rankings).hasSize(0);
+        assertThat(rankings).hasSize(0);
     }
 }

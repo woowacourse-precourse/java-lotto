@@ -9,14 +9,15 @@ import lotto.view.output.LottoPrinter;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         LottoService lottoService = new LottoService(
                 new LottoStore(),
-                new LottoMachine(new WinningNumberParser()),
-                new LottoScanner(),
-                new LottoPrinter()
-        );
+                new LottoMachine(new WinningNumberParser()));
 
-        lottoService.start();
+        LottoGame lottoGame = new LottoGame(
+                lottoService,
+                new LottoScanner(),
+                new LottoPrinter());
+
+        lottoGame.start();
     }
 }

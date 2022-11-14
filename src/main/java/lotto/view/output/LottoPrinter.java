@@ -3,11 +3,10 @@ package lotto.view.output;
 import static lotto.view.output.LottoFormat.errorMessage;
 import static lotto.view.output.LottoFormat.lottoTickets;
 import static lotto.view.output.LottoFormat.purchasedNumberOfLottoTickets;
-import static lotto.view.output.LottoFormat.winningStatistics;
+import static lotto.view.output.LottoFormat.finalResults;
 
-import java.util.Map;
 import lotto.domain.winning.LottoTickets;
-import lotto.domain.winning.Ranking;
+import lotto.service.FinalResultsDto;
 
 public class LottoPrinter {
 
@@ -27,8 +26,8 @@ public class LottoPrinter {
         System.out.println(errorMessage(message));
     }
 
-    public void printWinningStatistics(Map<Ranking, Integer> results, double rateOfReturn) {
-        System.out.println(winningStatistics(results, rateOfReturn));
+    public void printFinalResults(FinalResultsDto finalResultsDto) {
+        System.out.println(finalResults(finalResultsDto));
     }
 
     public void printLottoTickets(LottoTickets lottoTickets) {

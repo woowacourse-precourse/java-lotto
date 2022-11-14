@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.StringJoiner;
 import lotto.domain.lotto_numbers.Lotto;
 import lotto.domain.winning.Ranking;
+import lotto.service.FinalResultsDto;
 
 public class LottoFormat {
 
@@ -33,13 +34,13 @@ public class LottoFormat {
         return ERROR_MESSAGE_PREFIX + message;
     }
 
-    static String winningStatistics(Map<Ranking, Integer> results, double rateOfReturn) {
+    static String finalResults(FinalResultsDto finalResultsDto) {
         StringJoiner stringJoiner = new StringJoiner("\n");
         stringJoiner
                 .add("당첨 통계")
                 .add("---")
-                .add(resultsFormat(results))
-                .add("총 수익률은 " + rateOfReturn + "%입니다.");
+                .add(resultsFormat(finalResultsDto.results()))
+                .add("총 수익률은 " + finalResultsDto.rateOfReturn() + "%입니다.");
 
         return stringJoiner.toString();
     }
