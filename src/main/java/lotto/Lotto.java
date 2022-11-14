@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Lotto {
     InputManager inputManager = new InputManager();
+    int matchCount;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -21,9 +22,19 @@ public class Lotto {
 
     public void buyLotto() {
         int repeatCount = inputManager.getMoney()/1000;
+        matchCount = 0;
         for (int i = 0; i < repeatCount; i++) {
             createLotto(inputManager.getMoney());
             printLottoNumbers();
+        }
+        for (int i = 0; i < 6; i++) {
+            calculateMatchCount(inputManager.getAnswerNumbers().get(i));
+        }
+    }
+
+    private void calculateMatchCount(Integer a) {
+        if(numbers.contains(a)){
+            matchCount++;
         }
     }
 
