@@ -15,10 +15,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public static boolean isValidNumber(int number) {
-        return LOTTO_MIN <= number && number <= LOTTO_MAX;
-    }
-
     private void validate(List<Integer> numbers) {
         if (!isValidLotto(numbers)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
@@ -58,5 +54,9 @@ public class Lotto {
 
     private boolean isInRange(List<Integer> numbers) {
         return numbers.stream().allMatch(v -> LOTTO_MIN <= v && v <= LOTTO_MAX);
+    }
+
+    public static boolean isValidNumber(int number) {
+        return LOTTO_MIN <= number && number <= LOTTO_MAX;
     }
 }

@@ -29,8 +29,8 @@ public class Controller {
         } catch (IllegalArgumentException e) {
             output.printErrorMessage(e.getMessage());
         }
-    }
 
+    }
 
     public WinningLotto getWinningLotto() {
         List<Integer> winningNumbers = input.getWinningNumbers();
@@ -38,6 +38,5 @@ public class Controller {
 
         return new WinningLotto(winningNumbers, bonusNumber);
     }
-
 
 }

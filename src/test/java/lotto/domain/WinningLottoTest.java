@@ -16,49 +16,49 @@ class WinningLottoTest {
 
     private static Stream<Arguments> provide_WinningNumbers_And_DuplicatedBonusNumber() {
         return Stream.of(
-            Arguments.of(List.of(5, 6, 7, 8, 9, 10), 5),
-            Arguments.of(List.of(7, 8, 9, 10, 11, 12), 12)
+                Arguments.of(List.of(5, 6, 7, 8, 9, 10), 5),
+                Arguments.of(List.of(7, 8, 9, 10, 11, 12), 12)
         );
     }
 
     private static Stream<Arguments> provide_Lotto_And_Rank() {
         return Stream.of(
-            Arguments.of(List.of(11, 12, 13, 14, 15, 16), FIRST),
-            Arguments.of(List.of(11, 12, 13, 14, 15, 17), SECOND),
-            Arguments.of(List.of(11, 12, 13, 14, 15, 1), THIRD),
-            Arguments.of(List.of(11, 12, 13, 14, 1, 17), FOURTH), //보너스번호 같은경우
-            Arguments.of(List.of(11, 12, 13, 14, 1, 2), FOURTH),
-            Arguments.of(List.of(11, 12, 13, 1, 2, 17), FIFTH),
-            Arguments.of(List.of(11, 12, 13, 1, 2, 3), FIFTH),
-            Arguments.of(List.of(11, 12, 1, 2, 3, 17), null),
-            Arguments.of(List.of(11, 1, 2, 3, 4, 17), null),
-            Arguments.of(List.of(1, 2, 3, 4, 5, 17), null)
+                Arguments.of(List.of(11, 12, 13, 14, 15, 16), FIRST),
+                Arguments.of(List.of(11, 12, 13, 14, 15, 17), SECOND),
+                Arguments.of(List.of(11, 12, 13, 14, 15, 1), THIRD),
+                Arguments.of(List.of(11, 12, 13, 14, 1, 17), FOURTH), //보너스번호 같은경우
+                Arguments.of(List.of(11, 12, 13, 14, 1, 2), FOURTH),
+                Arguments.of(List.of(11, 12, 13, 1, 2, 17), FIFTH),
+                Arguments.of(List.of(11, 12, 13, 1, 2, 3), FIFTH),
+                Arguments.of(List.of(11, 12, 1, 2, 3, 17), null),
+                Arguments.of(List.of(11, 1, 2, 3, 4, 17), null),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 17), null)
         );
     }
 
     private static Stream<Arguments> provide_InvalidWinningNumbers_And_BonusNumber() {
         return Stream.of(
-            //유효하지 않은 로또번호 (개수 / 중복 / 범위)
-            Arguments.of(List.of(1, 2, 3), 45),
-            Arguments.of(List.of(123456), 45),
-            Arguments.of(List.of(7, 8, 9, 10, 11, 11), 45),
-            Arguments.of(List.of(7, 8, 9, 10, 77, 58), 45),
-            //유효하지 않은 로또번호와 중복 보너스 번호
-            Arguments.of(List.of(1, 2, 3, 12), 12),
-            //유효하지 않은 보너스 번호
-            Arguments.of(List.of(1, 2, 3, 4, 5, 6), 55)
+                //유효하지 않은 로또번호 (개수 / 중복 / 범위)
+                Arguments.of(List.of(1, 2, 3), 45),
+                Arguments.of(List.of(123456), 45),
+                Arguments.of(List.of(7, 8, 9, 10, 11, 11), 45),
+                Arguments.of(List.of(7, 8, 9, 10, 77, 58), 45),
+                //유효하지 않은 로또번호와 중복 보너스 번호
+                Arguments.of(List.of(1, 2, 3, 12), 12),
+                //유효하지 않은 보너스 번호
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), 55)
         );
     }
 
     private static Stream<Arguments> provide_WinningLotto_And_Rank() {
         return Stream.of(
-            Arguments.of(List.of(1, 2, 3, 4, 5, 6), 7, null), //null
-            Arguments.of(List.of(11, 12, 13, 14, 15, 16), 17, FIRST), //first
-            Arguments.of(List.of(11, 12, 13, 14, 15, 1), 16, SECOND), //second
-            Arguments.of(List.of(11, 12, 13, 14, 15, 1), 17, THIRD), //third
-            Arguments.of(List.of(11, 12, 13, 14, 1, 2), 16, FOURTH), // fourth
-            Arguments.of(List.of(11, 12, 13, 14, 1, 2), 17, FOURTH), // fourth
-            Arguments.of(List.of(11, 12, 13, 3, 1, 2), 16, FIFTH) //fifth
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), 7, null), //null
+                Arguments.of(List.of(11, 12, 13, 14, 15, 16), 17, FIRST), //first
+                Arguments.of(List.of(11, 12, 13, 14, 15, 1), 16, SECOND), //second
+                Arguments.of(List.of(11, 12, 13, 14, 15, 1), 17, THIRD), //third
+                Arguments.of(List.of(11, 12, 13, 14, 1, 2), 16, FOURTH), // fourth
+                Arguments.of(List.of(11, 12, 13, 14, 1, 2), 17, FOURTH), // fourth
+                Arguments.of(List.of(11, 12, 13, 3, 1, 2), 16, FIFTH) //fifth
         );
     }
 
@@ -68,8 +68,8 @@ class WinningLottoTest {
     @MethodSource("provide_WinningNumbers_And_DuplicatedBonusNumber")
     void validateBonusNumberTest(List<Integer> winningNumbers, int bonusNumber) {
         assertThatThrownBy(() ->
-            WinningLotto.validateBonusNumber(winningNumbers, bonusNumber))
-            .isInstanceOf(IllegalArgumentException.class);
+                WinningLotto.validateBonusNumber(winningNumbers, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     //getRankOf 테스트
@@ -89,7 +89,7 @@ class WinningLottoTest {
     @MethodSource("provide_InvalidWinningNumbers_And_BonusNumber")
     void createWinningLottoTest(List<Integer> winningNumbers, int bonusNumber) {
         assertThatThrownBy(() -> new WinningLotto(winningNumbers, bonusNumber))
-            .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     // 생성 및 getRankOf 테스트 동시에
