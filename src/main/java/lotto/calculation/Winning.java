@@ -23,7 +23,10 @@ public class Winning {
 
     private void validate(List<Integer> winningNumbers) {
         if (winningNumbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 1부처 45까지의 숫자 6개를 입력하세요");
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자 6개를 입력하세요");
+        }
+        if (!IllegalArgument.isInRange(winningNumbers)) {
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력 가능합니다.");
         }
     }
 }
