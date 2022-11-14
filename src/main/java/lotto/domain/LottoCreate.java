@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class LottoCreate {
     private List<Integer> lottoNumbers = new ArrayList<>();
-    private Map<Integer, List> lottoGroups = new HashMap<>();
+    public static Map<Integer, List> lottoGroups = new HashMap<>();
     public List<Integer> createLottoNum() {
         lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return sortLottoNumbers(lottoNumbers);
@@ -26,7 +26,6 @@ public class LottoCreate {
         List<Lotto> lottos = new ArrayList<>();
         InputView inputView = new InputView();
         int count = inputView.getLotteryAmount();
-
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = createLottoNum();
             lottos.add(new Lotto(numbers));

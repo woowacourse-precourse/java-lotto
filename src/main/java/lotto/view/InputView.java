@@ -15,7 +15,8 @@ public class InputView {
     private final int lotteryPrice = 1000;
     private static int inputMoney = 0;
     private static int lotteryAmount = 0;
-    private static List<Integer> lottoNum;
+    public static List<Integer> lottoNum;
+    public static int bonusNum;
 
     public int getInputMoney() {
         return inputMoney;
@@ -89,11 +90,10 @@ public class InputView {
             }
         }
     }
-    public int input_Bonus_Number() {
+    public void input_Bonus_Number() {
         System.out.println(BONUS_INPUT_MESSAGE);
-        int bonusNum = Integer.parseInt(getUserInput());
+        bonusNum = Integer.parseInt(getUserInput());
         bonus_Numbers_Validate(bonusNum);
-        return bonusNum;
     }
 
     public void bonus_Numbers_Validate(int bonusNum) {
