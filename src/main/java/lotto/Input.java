@@ -11,15 +11,30 @@ public class Input {
 
     public int inputMoney(){
         String amountOfMoney = Console.readLine();
-        return Integer.parseInt(amountOfMoney);
+        int money = Integer.parseInt(amountOfMoney);
+        checkMoneyUnit(money);
+        return money;
     }
 
     public String inputWinningLottosNumber(){
-        return Console.readLine();
+        String winningNumber = Console.readLine();
+        winningNumberValidate(winningNumber);
+        return winningNumber;
     }
 
     public String inputBonusNumber(){
-        return Console.readLine();
+        String bonusNumber = Console.readLine();
+        bounsNumberValidate(bonusNumber);
+        return bonusNumber;
+    }
+
+    public void winningNumberValidate(String winningNumber){
+        containsComma(winningNumber);
+        checkOverlap(winningNumber);
+    }
+
+    public void bounsNumberValidate(String bonusNumber){
+        checkBonusNumberLength(bonusNumber);
     }
 
 
