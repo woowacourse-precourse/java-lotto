@@ -23,6 +23,6 @@ public class User {
     }
 
     public List<Lotto> getWholeLotto() {
-        return null;
+        return wholeLotto;
     }
 }
