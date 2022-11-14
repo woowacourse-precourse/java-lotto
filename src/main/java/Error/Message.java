@@ -1,2 +1,5 @@
-package Error;public class Message {
+package Error;
+
+public class Message {
+
 }
