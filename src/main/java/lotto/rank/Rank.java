@@ -1,11 +1,12 @@
 package lotto.rank;
 
 public enum Rank {
-    FIRST_PLACE(6, false, 2_000_000_000L),
-    SECOND_PLACE(6, true, 30_000_000L),
-    THIRD_PLACE(5, true, 1_500_000L),
+    FIFTH_PLACE(3, true, 5_000L),
     FOURTH_PLACE(4, true, 50_000L),
-    FIFTH_PLACE(3, true, 5_000L);
+    THIRD_PLACE(5, true, 1_500_000L),
+    SECOND_PLACE(6, true, 30_000_000L),
+    FIRST_PLACE(6, false, 2_000_000_000L);
+
 
     private final int number;
     private final boolean bonusYN;
@@ -18,7 +19,7 @@ public enum Rank {
     }
 
     public static Rank getRank(int number, boolean bonusYN) {
-        if (number < 5) {
+        if (number < 6) {
             bonusYN = true;
         }
 
@@ -34,8 +35,5 @@ public enum Rank {
         return winAmount;
     }
 
-    public long getTotalAmount(int count) {
-        return winAmount * count;
-    }
 
 }

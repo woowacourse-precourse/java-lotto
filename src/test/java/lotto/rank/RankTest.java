@@ -15,6 +15,7 @@ class RankTest {
         private static final long FOURTH = 50_000L;
         private static final long FIFTH = 5_000L;
     }
+
     enum Place {
         ;
         private static final String FIRST = "FIRST";
@@ -218,19 +219,5 @@ class RankTest {
                     .isEqualTo(result);
         }
 
-        @DisplayName("1등이 3번 당첨될 경우 총 금액")
-        @Test
-        void first_3_totalAmount() {
-            // given
-            Rank rank = Rank.valueOf(Place.FIRST);
-            long result = Amount.FIRST * 3;
-
-            // when
-            long totalAmount = rank.getTotalAmount(3);
-
-            // then
-            assertThat(totalAmount)
-                    .isEqualTo(result);
-        }
     }
 }
