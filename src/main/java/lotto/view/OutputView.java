@@ -19,4 +19,7 @@ public class OutputView {
     public static void FourthLotto(int count) {
         System.out.println("4개 일치 (50,000원) - "+count+"개");
     }
+    public static void ThirdLotto(int count) {
+        System.out.println("5개 일치 (1,500,000원) - "+count+"개");
+    }
 }
