@@ -10,19 +10,16 @@ import java.util.List;
 public class Kiosk {
     static final int LOTTO_PRICE = 1000;
 
-    static protected List<Integer> winningNumbers;
-    static protected int bonusNumber;
-
     static public void start(Buyer buyer) {
         try {
             int payment = getPurchaseAmount();
             int numberOfLottos = countLottos(payment);
             List<Lotto> lottos = Generator.generate(numberOfLottos);
             printLottoInformation(numberOfLottos, lottos);
-            buyer.buy(lottos);
-            winningNumbers = getWinningNumbers();
-            bonusNumber = getBonusNumber();
-            printResult(Checker.compareAll(buyer), payment);
+            buyer.get(lottos);
+            List<Integer> winningNumbers = getWinningNumbers();
+            int bonusNumber = getBonusNumber(winningNumbers);
+            printResult(Checker.compareAllLottos(buyer, winningNumbers, bonusNumber), payment);
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
@@ -38,7 +35,7 @@ public class Kiosk {
         return Input.getWinningNumbers();
     }
 
-    static private int getBonusNumber() {
+    static private int getBonusNumber(List<Integer> winningNumbers) {
         Output.getBonusNumber();
         return Input.getBonusNumber(winningNumbers);
     }
