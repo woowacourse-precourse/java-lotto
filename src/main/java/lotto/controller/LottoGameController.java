@@ -44,7 +44,7 @@ public class LottoGameController {
         for (Lotto ticket : tickets) {
             List<Integer> numbers = new ArrayList<>(ticket.getNumbers());
             ticket.ascending(numbers);
-            System.out.println(numbers.toString());
+            System.out.println(numbers);
         }
     }
 
