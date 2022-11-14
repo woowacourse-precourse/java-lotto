@@ -1,51 +1,37 @@
 package lotto.view.output;
 
-enum Prize {
-    FIRST(2_000_000_000),
-    SECOND(30_000_000),
-    THIRD(1_500_000),
-    FOURTH(50_000),
-    FIFTH(5_000);
-
-    private final long prize;
-
-    Prize(long prize) {
-        this.prize = prize;
-    }
-
-    public long getPrize() {
-        return this.prize;
-    }
-}
+import java.text.DecimalFormat;
+import lotto.model.Prize;
+import lotto.model.Result;
 
 public class SummaryView {
 
     // TODO 매개변수 너무 많음. 효율화 고민.
-    public static void showResult(int first, int second, int third, int fourth, int fifth) {
-        System.out.println();
-        System.out.println("당첨 통계");
+    public static void showResult(Result result) {
+        System.out.printf("%n당첨 통계%n");
         System.out.println("---");
-        System.out.printf("3개 일치 (5,000원) - %d개", fifth);
-        System.out.println();
-        System.out.printf("4개 일치 (50,000원) - %d개", fourth);
-        System.out.println();
-        System.out.printf("5개 일치 (1,500,000원) - %d개", third);
-        System.out.println();
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개", second);
-        System.out.println();
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개", first);
+        for (Prize e : Prize.values()) {
+            if (e.equals(Prize.SECOND)) {
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개" + "%n", e.getWinningCount(),
+                        intToCommaString(e.getPrize()), result.getResult().get(e));
+            }
+            System.out.printf("%d개 일치 (%s원) - %d개" + "%n", e.getWinningCount(), intToCommaString(e.getPrize()),
+                    result.getResult().get(e));
+        }
+    }
+
+    private static String intToCommaString(long number) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        String commaStr = decFormat.format(number);
+        return commaStr;
     }
 
     // TODO 매개변수 너무 많음. 효율화 고민 too.
-    public static void showEarning(int amount, int first, int second, int third, int fourth, int fifth) {
+    public static void showEarning(Result result, int amount) {
         float prizeMoney = 0;
-
-        prizeMoney += first * Prize.FIRST.getPrize();
-        prizeMoney += second * Prize.SECOND.getPrize();
-        prizeMoney += third * Prize.THIRD.getPrize();
-        prizeMoney += fourth * Prize.FOURTH.getPrize();
-        prizeMoney += fifth * Prize.FIFTH.getPrize();
-
+        for (Prize e : Prize.values()) {
+            prizeMoney += e.getPrize() * result.getResult().get(e);
+        }
         float f = (prizeMoney / (amount * 1_000)) * 100;
         System.out.println();
         System.out.println("총 수익률은 " + String.format("%.1f", f) + "%입니다.");
