@@ -12,3 +12,4 @@
 ### Problem8. 보너스 당첨 여부 return
 ### Problem9. 당첨 통계 출력
 ### Problem10. 총 수익률 계산
+### Problem11. exception 및 game 구현
