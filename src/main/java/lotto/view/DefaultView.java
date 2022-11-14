@@ -20,6 +20,9 @@ public class DefaultView implements View {
         request(controller::inputMoney);
 
         renderLottos();
+
+        System.out.println(Views.REQUEST_WINNING_NUMBER.render());
+
     }
 
     private void request(Consumer<String> consumer) {
