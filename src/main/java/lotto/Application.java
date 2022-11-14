@@ -12,6 +12,7 @@ public class Application {
 
     public static int BONUS;
     public static Lotto winningLotto;
+    public static List<Integer> record = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0)); //로또 통계 기록용 리스트
 
     public static List<Integer> makeRandom() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -64,21 +65,6 @@ public class Application {
         return false;
     }
 
-    public static void printStat() {
-        System.out.println("\n당첨 통계\n---");
-
-        List<Integer> record = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0)); //로또 통계 기록용 리스트
-        int count = 0;
-        int element;
-
-        for (int listIdx = 0; listIdx < lottoList.size(); listIdx++) {
-            List<Integer> tempLottoNumbers = lottoList.get(listIdx).getNumbers(); //해당 lotto 클래스의 numbers
-            count = correctCount(tempLottoNumbers);
-
-            
-        }
-    }
-
     public static int correctCount(List<Integer> tempLottoNumbers) {
         int count = 0;
         List<Integer> winningNumbers = winningLotto.getNumbers(); //당첨 로또 번호
@@ -92,12 +78,53 @@ public class Application {
         return count;
     }
 
+    public static void recordStat() {
+        int count = 0;
+        int element;
+
+        for (int listIdx = 0; listIdx < lottoList.size(); listIdx++) {
+            List<Integer> tempLottoNumbers = lottoList.get(listIdx).getNumbers(); //해당 lotto 클래스의 numbers
+            count = correctCount(tempLottoNumbers);
+
+            if (count == 3) {
+                element = record.get(0);
+                record.set(0, ++element);
+            }
+            else if (count == 4) {
+                element = record.get(1);
+                record.set(1, ++element);
+            }
+            else if (count == 5 && !validBonus(tempLottoNumbers)) { //보너스x
+                element = record.get(2);
+                record.set(2, ++element);
+            }
+            else if (count == 5 && validBonus(tempLottoNumbers)) { //보너스o
+                element = record.get(3);
+                record.set(3, ++element);
+            }
+            else if (count == 6) { //보너스o
+                element = record.get(4);
+                record.set(4, ++element);
+            }
+        }
+    }
+    
+    public static void printStat() {
+        System.out.println("\n당첨 통계\n---");
+        System.out.println("3개 일치 (5,000원) - " + record.get(0) + "개");
+        System.out.println("4개 일치 (50,000원) - " + record.get(1) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + record.get(2) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + record.get(3) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + record.get(4) + "개");
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int lottoNumber = buyLotto();
         printLotto(lottoNumber);
         winningLotto = new Lotto(winningNumber()); //당첨 로또
         bonusNumber();
+        recordStat();
         printStat();
     }
 }
