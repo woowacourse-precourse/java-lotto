@@ -4,11 +4,11 @@ import java.util.*;
 
 public class LottoResult {
 
-    public static List<Integer> compareLotteryNumbers(List<Integer> winningNumber, List<Integer> ticketNumber) {
-        List<Integer> matchCount = new ArrayList<>();
+    public static int compareLotteryNumbers(List<Integer> winningNumber, List<Integer> ticketNumber) {
+        int matchCount = 0;
         for (int numberIndex = 0; numberIndex < 6; numberIndex++) {
             if (ticketNumber.contains(winningNumber.get(numberIndex))) {
-                matchCount.add(numberIndex); // 티켓 당 몇개가 맞았는지 적혀있는 리스트 생성
+                matchCount++; // 티켓 당 몇개가 맞았는지 적혀있는 리스트 생성
             }
         }
         return matchCount;
