@@ -88,4 +88,16 @@ public enum Prize {
     private boolean find(int winningMatches, int bonusMatches) {
         return judge.test(winningMatches, bonusMatches);
     }
+
+    public static Prize type(Prize prize) {
+        return prize;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void printMessageWithCount(Long count) {
+        System.out.println(this.message + count + "개");
+    }
 }

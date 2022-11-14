@@ -17,6 +17,7 @@
   - [ ] 수익률 계산하는 기능 추가
 - [x] 결과를 출력하는 클래스 구현 OutputView
   - [x] 구매 내역 출력 기능 OutputView#printLottosHistory()
+  - [x] 당첨 결과를 출력하는 기능 OutputView#printResultMessage()
 
 ## 🚀 기능 요구 사항
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.

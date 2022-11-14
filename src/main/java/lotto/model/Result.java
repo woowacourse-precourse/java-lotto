@@ -3,6 +3,7 @@ package lotto.model;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static java.lang.Math.toIntExact;
@@ -114,5 +115,9 @@ public class Result {
         return toIntExact(winningNumbers.stream()
                 .filter(lotto::contains)
                 .count());
+    }
+
+    public Map<Prize, Long> compareLottos(Lottos lottos) {
+        return lottos.compareResult(this);
     }
 }

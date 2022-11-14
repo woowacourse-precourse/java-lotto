@@ -1,10 +1,12 @@
 package lotto.service;
 
 import lotto.model.Lottos;
+import lotto.model.Prize;
 import lotto.model.Result;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
 
@@ -32,5 +34,9 @@ public class LottoService {
 
     private static int stringToInt(String number) {
         return Integer.parseInt(number);
+    }
+
+    public Map<Prize, Long> calculateEarningRates(Lottos lottos, Result result) {
+        return result.compareLottos(lottos);
     }
 }
