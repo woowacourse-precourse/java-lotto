@@ -89,6 +89,10 @@ public class LottoStatistics {
         this.bonusNumber = bonusNumber;
     }
 
+    public void setMoney(BigInteger money){
+        this.money = money;
+    }
+
     public void winTheLottery() {
         Iterator<Lotto> lottoIter = lottos.iterator();
 
@@ -105,13 +109,13 @@ public class LottoStatistics {
         if (numbers.size() == 0) {
             Rank.FIRST.plusCount();
         }
-        if (numbers.size() == 1 && numbers.contains(bonusNumber)) {
+        if (numbers.size() == 2 && numbers.contains(bonusNumber)) {
             Rank.SECOND.plusCount();
         }
-        if (numbers.size() == 1 && !numbers.contains(bonusNumber)) {
+        if (numbers.size() == 1) {
             Rank.THIRD.plusCount();
         }
-        if (numbers.size() == 2) {
+        if (numbers.size() == 2 && !numbers.contains(bonusNumber)) {
             Rank.FOURTH.plusCount();
         }
         if (numbers.size() == 3) {
