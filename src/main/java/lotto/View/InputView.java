@@ -51,7 +51,7 @@ public class InputView {
             return Integer.parseInt(Console.readLine());
 
         }catch(Exception e){
-            throw new IllegalArgumentException("[ERROR] 잘못된 보너스 번호입니다");
+            throw new IllegalArgumentException(Message.ERROR_BONUS_NUM);
         }
     }
 }
