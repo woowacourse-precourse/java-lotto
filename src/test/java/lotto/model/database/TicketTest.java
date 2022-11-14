@@ -1,10 +1,11 @@
-package lotto.model;
+package lotto.model.database;
 
+import lotto.model.Lotto;
+import lotto.model.database.Ticket;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TicketTest {
     @DisplayName("데이터를 삽입한다.")

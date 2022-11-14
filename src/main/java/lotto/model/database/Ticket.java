@@ -1,4 +1,6 @@
-package lotto.model;
+package lotto.model.database;
+
+import lotto.model.Lotto;
 
 import java.util.Collections;
 import java.util.LinkedList;
