@@ -25,6 +25,19 @@ class LottoServiceViewTest {
     }
 
     @ParameterizedTest
+    @DisplayName("로또 구입 기능 통합 테스트")
+    @CsvSource(value = {"20000, 20", "300000, 300", "1000, 1"})
+    void buyLottoTest(String inputMoney, int expected) {
+
+        InputStream inputStream = new ByteArrayInputStream(inputMoney.getBytes());
+        System.setIn(inputStream);
+
+        int numberOfLotto = lottoServiceView.buyLotto();
+
+        assertThat(numberOfLotto).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
     @DisplayName("유효성 검사 통합 테스트")
     @CsvSource(value = {"10004, [ERROR] 구매 금액의 최소 단위", "2147483648, [ERROR] 구매 금액은 최대 10억 미만",
             "as, [ERROR] 구매 금액은 숫자만 입력되어야 합니다.", "123, [ERROR] 최소 구매 금액은 1,000원 이상입니다."})
