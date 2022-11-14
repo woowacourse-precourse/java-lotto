@@ -14,7 +14,7 @@ public class LottoMachine {
 
     public static List<Lotto> getRandomLottos(Integer money) {
         List<Lotto> lottos = new ArrayList<>();
-        Integer numberOfLotto = money % UNIT;
+        Integer numberOfLotto = money / UNIT;
 
         for (int count = 0; count < numberOfLotto; count++) {
             lottos.add(Lotto.numberOf(getRandomLottoNumbers()));
