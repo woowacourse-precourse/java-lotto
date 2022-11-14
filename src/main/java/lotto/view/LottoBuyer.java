@@ -15,7 +15,6 @@ public class LottoBuyer {
     public static List<List<Integer>> purchaseLotto() {
         List<List<Integer>> lottos = new ArrayList<>();
         getPurchaseAmount();
-        System.out.println(purchaseAmount + Message.PURCHASE_COUNT.getMessage());
         printLottos(lottos);
         return lottos;
     }
@@ -23,10 +22,11 @@ public class LottoBuyer {
     private static void getPurchaseAmount() {
         System.out.println(Message.PURCHASE_PRICE.getMessage());
         String inputPrice = readLine();
-        if (validateInputPrice(inputPrice)) {
-            return;
-        }
+        validateInputPrice(inputPrice);
+        validateDivideNumber(inputPrice);
+        System.out.println();
         purchaseAmount = Integer.parseInt(inputPrice) / LOTTO_PRICE;
+        System.out.println(purchaseAmount + Message.PURCHASE_COUNT.getMessage());
     }
 
     private static void printLottos(List<List<Integer>> lottos) {
@@ -37,20 +37,18 @@ public class LottoBuyer {
         System.out.println();
     }
 
-    private static boolean validateInputPrice(String inputPrice) {
-        try {
-            Integer.parseInt(inputPrice);
-        } catch (IllegalArgumentException e) {
-            System.out.println(ErrorMessage.ERROR_INPUT_PRICE.getErrorMessage());
-            return true;
-        }
-        validateDivideNumber(inputPrice);
-        return false;
-    }
-
     private static void validateDivideNumber(String inputPrice) {
         if (Integer.parseInt(inputPrice) % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_PRICE_THOUSAND_UNITS.getErrorMessage());
+        }
+    }
+
+    private static void validateInputPrice(String inputPrice) {
+        char[] charInputPrice = inputPrice.toCharArray();
+        for (char character : charInputPrice) {
+            if (character < '0' || character > '9') {
+                throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_PRICE.getErrorMessage());
+            }
         }
     }
 }

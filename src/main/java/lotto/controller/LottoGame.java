@@ -20,13 +20,17 @@ public class LottoGame {
 
     public void start() {
         List<List<Integer>> lottos;
-        lottos = purchaseLotto();
-        inputWinningNumber();
-        inputBonusNumber();
-        validateDuplicate(winningInput, bonusInput);
-        getWinningResult(lottos, winningNumbers);
-        getBonusResult(lottos);
-        getTotalResult();
+        try {
+            lottos = purchaseLotto();
+            inputWinningNumber();
+            inputBonusNumber();
+            validateDuplicate(winningInput, bonusInput);
+            getWinningResult(lottos, winningNumbers);
+            getBonusResult(lottos);
+            getTotalResult();
+        } catch (IllegalArgumentException Error) {
+            System.out.println(Error.getMessage());
+        }
     }
 
     private static void getTotalResult() {
