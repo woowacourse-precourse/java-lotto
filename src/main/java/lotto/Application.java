@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -12,7 +14,7 @@ public class Application {
 
         Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
 //        Buyer buyer = new Buyer();
-        List<Integer> lottoNumbers;
+        List<Integer> lottoNumbers = null;
 
         System.out.println("구입금액을 입력해주세요: ");
         int money = Integer.parseInt(Console.readLine());
@@ -21,18 +23,25 @@ public class Application {
 
         for (int i = 0; i<quantity; i++) {
             lottoNumbers = lotto.numbers();
+            Collections.sort(lottoNumbers);
             System.out.println(lottoNumbers);
         }
+        System.out.println(lottoNumbers);
 
         System.out.println("당첨번호를 입력해주세요: ");
-        int buyerNum = Integer.parseInt(Console.readLine());
-        int[] digits = Stream.of(String.valueOf(buyerNum).split("")).mapToInt(Integer::parseInt).toArray();
-        List<Integer> buyer = new ArrayList<>();
-
+        String buyerNum = Console.readLine();
+        int[] digits = Stream.of(buyerNum.split(",")).mapToInt(Integer::parseInt).toArray();
+        List<Integer> buyer = new ArrayList<>(6);
         for (int order = 0; order < digits.length; order++) {
             buyer.add(digits[order]);
         }
-        Set<Integer> buyerSet = new HashSet<>(buyer);
+
+        Collections.sort(buyer);
+        System.out.println(buyer);
+
+//        List<String> compare = lottoNumbers.stream().filter(old -> buyer.stream().anyMatch(Predicate.isEqual(old)));
+        lottoNumbers.removeAll(buyer);
+        System.out.println(lottoNumbers);
 
 
 
