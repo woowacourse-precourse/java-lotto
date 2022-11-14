@@ -3,14 +3,16 @@ package controller;
 import model.Lotto;
 import model.LottoRandomNumberGenerator;
 import model.LottoTotalCountCalculator;
+import view.LottoOutput;
 import view.LottoPurchaseAmountInput;
-import view.OutputLotto;
+import view.LottoTotalCountOutput;
 
 public class LottoGameController {
 
 	private LottoPurchaseAmountInput lottoPurchaseAmountInput = new LottoPurchaseAmountInput();
 	private LottoTotalCountCalculator lottoTotalCountCalculator = new LottoTotalCountCalculator();
-	private OutputLotto outputLotto = new OutputLotto();
+	private LottoOutput lottoOutput = new LottoOutput();
+	private LottoTotalCountOutput lottoTotalCountOutput = new LottoTotalCountOutput();
 	private LottoRandomNumberGenerator randomGenerator = new LottoRandomNumberGenerator();
 
 	public void gameProgress() {
@@ -34,7 +36,7 @@ public class LottoGameController {
 	}
 
 	private void lottoTotalCountPrint(long totalCount) {
-		outputLotto.showLottoCount(totalCount);
+		lottoTotalCountOutput.showLottoCount(totalCount);
 	}
 
 	private Lotto lottoCreate() {
@@ -43,6 +45,6 @@ public class LottoGameController {
 	}
 
 	private void lottoPrint(Lotto lotto) {
-		outputLotto.showLotto(lotto);
+		lottoOutput.showLotto(lotto);
 	}
 }
