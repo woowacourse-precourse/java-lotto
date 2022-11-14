@@ -15,7 +15,8 @@ public class LottoValidator extends Validator {
     public static boolean isNumbersInRange(List<Integer> numbers, int startInclusive, int endInclusive) {
         return numbers
                 .stream()
-                .filter(number -> isIntegerInRange(number, startInclusive, endInclusive))
-                .count() == numbers.size();
+                .anyMatch(number -> (number < START_INCLUSIVE || number > END_INCLUSIVE))) {
+            ErrorHandler.throwException(ErrorMessage.LOTTO_NUMBERS_NOT_IN_RANGE);
+        }
     }
 }
