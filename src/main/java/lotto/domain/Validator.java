@@ -1,5 +1,12 @@
 package lotto.domain;
 
+import static lotto.constants.ErrorConstants.DUPLICATE_NUMBER_ERROR_MESSAGE;
+import static lotto.constants.ErrorConstants.IN_RANGE_NUMBER_ERROR_MESSAGE;
+import static lotto.constants.ErrorConstants.NOT_NUMBER_ERROR_MESSAGE;
+import static lotto.constants.ErrorConstants.PURCHASE_ERROR_MESSAGE;
+import static lotto.constants.ErrorConstants.SEPARATOR_ERROR_MESSAGE;
+import static lotto.constants.RegexConstants.COMMA;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -9,20 +16,20 @@ public class Validator {
     public static void purchase(String purchase){
         checkNumber(purchase);
         if (Integer.parseInt(purchase) % 1000 != 0){
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위이여야 합니다.");
+            throw new IllegalArgumentException(PURCHASE_ERROR_MESSAGE);
         }
     }
 
     public static void winningNumbers(String winningNumbers) {
-        if (!winningNumbers.contains(",")){
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 쉼표로 구분하여 입력해야 합니다.");
+        if (!winningNumbers.contains(COMMA)){
+            throw new IllegalArgumentException(SEPARATOR_ERROR_MESSAGE);
         }
-        Arrays.stream(winningNumbers.split(","))
+        Arrays.stream(winningNumbers.split(COMMA))
                 .forEach(winningNumber -> {
                     checkNumber(winningNumber);
                     isGreaterThanOneAndLessThanFortyFive(winningNumber);
                 });
-        checkDuplicate(winningNumbers.split(","));
+        checkDuplicate(winningNumbers.split(COMMA));
     }
 
     public static void bonusNumber(String bonusNumber){
@@ -32,27 +39,27 @@ public class Validator {
 
     private static void isGreaterThanOneAndLessThanFortyFive(String number) {
         if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45){
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45사이의 수여야 합니다.");
+            throw new IllegalArgumentException(IN_RANGE_NUMBER_ERROR_MESSAGE);
         }
     }
 
     public static void checkDuplicate(List<Integer> numbers){
         HashSet<Integer> checkDuplicate = new HashSet<>(numbers);
         if (checkDuplicate.size() != 6){
-            throw new IllegalArgumentException("[ERROR] 6개의 중복되지 않은 수여야 합니다.");
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
         }
     }
 
     public static void checkDuplicate(List<Integer> winningNumbers, int bonusNumber){
         if (winningNumbers.contains(bonusNumber)){
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않는 수여야 합니다.");
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
         }
     }
 
     private static void checkDuplicate(String[] numbers){
         HashSet<String> checkDuplicate = new HashSet<>(List.of(numbers));
         if (checkDuplicate.size() != 6){
-            throw new IllegalArgumentException("[ERROR] 6개의 중복되지 않은 수여야 합니다.");
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
         }
     }
 
@@ -60,8 +67,7 @@ public class Validator {
         try {
             Integer.parseInt(number);
         }catch (NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해야합니다.");
+            throw new IllegalArgumentException(NOT_NUMBER_ERROR_MESSAGE);
         }
     }
-
 }

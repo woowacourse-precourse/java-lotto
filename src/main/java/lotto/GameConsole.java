@@ -1,5 +1,16 @@
 package lotto;
 
+import static lotto.constants.ConsoleConstants.INPUT_BONUS_NUMBER_MESSAGE;
+import static lotto.constants.ConsoleConstants.INPUT_PURCHASE_MESSAGE;
+import static lotto.constants.ConsoleConstants.INPUT_WINNING_NUMBER_MESSAGE;
+import static lotto.constants.ConsoleConstants.LOTTO_COUNT;
+import static lotto.constants.ConsoleConstants.PRIZE_RESULT;
+import static lotto.constants.ConsoleConstants.PRIZE_STAT;
+import static lotto.constants.ConsoleConstants.PROFIT;
+import static lotto.constants.ConsoleConstants.SECOND_PRIZE_RESULT;
+import static lotto.constants.ConsoleConstants.SPLIT_LINE;
+import static lotto.constants.RegexConstants.COMMA;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -10,10 +21,6 @@ import lotto.domain.Result;
 import lotto.domain.Validator;
 
 public class GameConsole {
-
-    private static final String INPUT_PURCHASE_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String INPUT_WINNING_NUMBER_MESSAGE = "\n당첨 번호를 입력해 주세요.";
-    private static final String INPUT_BONUS_NUMBER_MESSAGE = "\n보너스 번호를 입력해 주세요.";
 
     public int inputPurchase(){
         notice(INPUT_PURCHASE_MESSAGE);
@@ -28,7 +35,7 @@ public class GameConsole {
         String winningNumber = Console.readLine();
         Validator.winningNumbers(winningNumber);
 
-        return Arrays.stream(winningNumber.split(","))
+        return Arrays.stream(winningNumber.split(COMMA))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
@@ -46,7 +53,7 @@ public class GameConsole {
     }
 
     public void outputLottos(int lottoCount, List<Lotto> lottos) {
-        System.out.printf("\n%d개를 구매했습니다.\n", lottoCount);
+        System.out.printf(LOTTO_COUNT, lottoCount);
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
@@ -58,20 +65,21 @@ public class GameConsole {
     }
 
     private void outputGameResult(Result result) {
-        System.out.println("\n당첨 통계\n---");
+        System.out.println(PRIZE_STAT);
+        System.out.println(SPLIT_LINE);
 
         Map<Rank, Integer> rankInfo = result.sortedRankInfo();
         rankInfo.remove(Rank.NONE);
 
         for (Rank rank : rankInfo.keySet()) {
-            System.out.printf("%d개 일치 (%,d원) - %d개\n", rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank));
+            System.out.printf(PRIZE_RESULT, rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank));
             if (rank == Rank.SECOND){
-                System.out.printf("%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n", rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank));
+                System.out.printf(SECOND_PRIZE_RESULT, rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank));
             }
         }
     }
 
     private void outputWinningAmount(Result result) {
-        System.out.printf("총 수익률은 %.1f%%입니다.", result.getWinningAmount());
+        System.out.printf(PROFIT, result.getWinningAmount());
     }
 }
