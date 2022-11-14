@@ -7,7 +7,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class InputMoneyTest extends NsTest{
+class InputSingleIntegerTest extends NsTest{
     private static final String ERROR_MESSAGE = "[ERROR]";
     @Test
     void 구입금액_정수아닌수() {
@@ -19,6 +19,6 @@ class InputMoneyTest extends NsTest{
     }
     @Override
     public void runMain() {
-        Input.scanPurchaseAmount();
+        Input.scanSingleInteger();
     }
 }

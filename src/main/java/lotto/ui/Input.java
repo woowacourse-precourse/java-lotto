@@ -2,16 +2,14 @@ package lotto.ui;
 
 import lotto.lib.StringToIntDataStructure;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Input {
-    public static int scanPurchaseAmount(){
-        String money = readLine();
-        return StringToIntDataStructure.convertStringToInteger(money);
+    public static int scanSingleInteger(){
+        String number = readLine();
+        return StringToIntDataStructure.convertStringToInteger(number);
     }
     public static List<Integer> scanWinningLotto(){
         String winningLotto = readLine();
