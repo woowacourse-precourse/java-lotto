@@ -8,7 +8,7 @@ public class Application {
     public static void main(String[] args) {
         int buylotto = askmoney();
         List<List<Integer>> lottonumbers = new ArrayList<>();
-        List<Integer> result = new ArrayList<>();
+        int result[] = new int[5];
         List<Integer> winningnumbers = new ArrayList<>();
 
         Random random = new Random();
@@ -55,21 +55,20 @@ public class Application {
         String input = Console.readLine();
         int bonusnumber = Integer.parseInt(input);
 
-        if(bonusnumber<1 && bonusnumber>45){
+        if(bonusnumber<1 && bonusnumber>45)
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1에서 45사이의 숫자여야 합니다.");
-        }
-        if(winningnumbers.contains(bonusnumber)){
+        if(winningnumbers.contains(bonusnumber))
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복지 않은 숫자여야 합니다.");
-        }
+
         return bonusnumber;
     }
-    public static void printresult(List<Integer> result, int buylotto){
+    public static void printresult(int[] result, int buylotto){
         int totalmoney = 0;
         System.out.println("\n당첨 통계\n---");
         for(PrizeInfo info : PrizeInfo.values()){
             int index = info.ordinal();
-            System.out.println(info.getCount()+" "+info.getPrintMoney()+" - "+result.get(index)+"개");
-            totalmoney += (info.getRealMoney()* result.get(index));
+            System.out.println(info.getCount()+" "+info.getPrintMoney()+" - "+result[index]+"개");
+            totalmoney += (info.getRealMoney()* result[index]);
         }
         double earn_rate = (double)(totalmoney/10)/(double)buylotto;
         System.out.println("총 수익률은 "+String.format("%.1f",earn_rate)+"%입니다.");

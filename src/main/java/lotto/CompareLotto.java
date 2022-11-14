@@ -4,21 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompareLotto {
-    public int one=0,second=0,third=0,fourth=0,fifth=0;
-    public List<Integer> correctcount(List<List<Integer>> buynumbers, List<Integer> winningnumbers, int bonus){
-        List<Integer> correctcount = new ArrayList<>();
+    public int countwin[] = new int[5];
+    public int[] correctcount(List<List<Integer>> buynumbers, List<Integer> winningnumbers, int bonus){
 
-        for(List<Integer>buynumber : buynumbers){
+        for(List<Integer>buynumber : buynumbers)
             compare(buynumber,winningnumbers,bonus);
-        }
 
-        correctcount.add(fifth);
-        correctcount.add(fourth);
-        correctcount.add(third);
-        correctcount.add(second);
-        correctcount.add(one);
-
-        return correctcount;
+        return countwin;
     }
     public void compare(List<Integer> buynumber, List<Integer> winningnumbers, int bonus){
         int cnt=0;
@@ -29,16 +21,16 @@ public class CompareLotto {
         }
 
         if(cnt==6){
-            one++;
+            countwin[4]++;
         } else if(cnt==5){
             if(buynumber.contains(bonus))
-                second++;
+                countwin[3]++;
             else
-                third++;
+                countwin[2]++;
         } else if(cnt==4){
-            fourth++;
+            countwin[1]++;
         } else if(cnt==3){
-            fifth++;
+            countwin[0]++;
         }
     }
 }
