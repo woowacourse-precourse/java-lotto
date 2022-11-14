@@ -3,17 +3,19 @@ package lotto.model;
 import lotto.view.InputValidator;
 
 public class PurchaseAmount {
+    private static final int PERCENT_CONVERTER = 100;
     private final int purchaseAmount;
+
     public PurchaseAmount(int purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
         validate(purchaseAmount);
     }
 
-    private void validate(int amount) {
-        if (amount <= 0) {
+    private void validate(int purchaseAmount) {
+        if (purchaseAmount <= 0) {
             throw new IllegalArgumentException(InputValidator.ERR_PURCHASE_AMOUNT);
         }
-        if (amount % Lotto.PRICE != 0) {
+        if (purchaseAmount % Lotto.PRICE != 0) {
             throw new IllegalArgumentException(InputValidator.ERR_PURCHASE_AMOUNT);
         }
     }
@@ -23,6 +25,6 @@ public class PurchaseAmount {
     }
 
     public double calculateProfitRate(int winningAmount) {
-        return (double) winningAmount / purchaseAmount * 100;
+        return (double) winningAmount / purchaseAmount * PERCENT_CONVERTER;
     }
 }
