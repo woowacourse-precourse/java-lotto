@@ -11,7 +11,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -23,18 +22,8 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
 
-    public static List<Lotto> makeLottoNums(int lotto_cnt) {
-        List<Lotto> lottos = new ArrayList<>();
-
-        for (int i = 0; i<lotto_cnt; i++){
-            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            System.out.println(lotto.numbers);
-            lottos.add(lotto);
-
-        }
 
 
-        return lottos;
-    }
+    
 
 }

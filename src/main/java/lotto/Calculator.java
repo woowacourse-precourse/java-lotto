@@ -1,6 +1,6 @@
 package lotto;
 
-public class Calculate {
+public class Calculator {
 
     private static final int LOTTO_PRICE = 1000;
 
