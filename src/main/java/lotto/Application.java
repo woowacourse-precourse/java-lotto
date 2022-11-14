@@ -3,10 +3,7 @@ package lotto;
 public class Application {
 
     public static void main(String[] args) {
-        InputView inputview = new InputView();
-        inputview.inputMoney();
-        inputview.inputLottoAnswerNumber();
-        inputview.inputBonusNumber();
-
+        Controller controller = new Controller();
+        controller.run();
     }
 }

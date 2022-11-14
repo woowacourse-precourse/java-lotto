@@ -17,7 +17,7 @@ public class outputView {
         }
 
     }
-    private static void printNumbers(List<Integer> numbers) {
-            System.out.println(numbers);
+    public static void printNumbers(Lotto lotto) {
+            System.out.println(lotto.getLotto());
     }
 }
