@@ -26,7 +26,7 @@ public class BuyLotto {
     public List<List<Integer>> getLottoSet (int lottoCount) {
         List<List<Integer>> lottoSet = new ArrayList<>();
         for (int count = 0; count < lottoCount; count++) {
-            List<Integer> lottoNumbers = getLottoNumbers();
+            List<Integer> lottoNumbers = new ArrayList<>(getLottoNumbers());
             Collections.sort(lottoNumbers);
             lottoSet.add(lottoNumbers);
         }
