@@ -9,25 +9,27 @@ import java.util.List;
 
 public class Controller {
 
-    public static void lottoStart() {
+    Service service = new Service();
 
-        int money = Service.getMoney();
-        int volume = Service.getVolume(money);
+    public void lottoStart() {
 
-        List<Lotto> lotto = Service.getLotto(volume);
-        List<List<Integer>> lottoList = Service.getLottoList(lotto);
-        String jackpotNum = Service.getJackpotNumber();
-        String[] jackpotNumArr = Service.getJackpotNumberToArr(jackpotNum);
-        int bonusNum = Service.getBonusNumber(jackpotNumArr);
+        int money = service.getMoney();
+        int volume = service.getVolume(money);
+
+        List<Lotto> lotto = service.getLotto(volume);
+        List<List<Integer>> lottoList = service.getLottoList(lotto);
+        String jackpotNum = service.getJackpotNumber();
+        String[] jackpotNumArr = service.getJackpotNumberToArr(jackpotNum);
+        int bonusNum = service.getBonusNumber(jackpotNumArr);
 
         Rank rank = new Rank(0,0,0,0,0);
 
         for (List<Integer> lottos : lottoList) {
-            List<Check> checkList = Service.checkLotto(lottos, jackpotNumArr, bonusNum);
-            Service.checkRank(checkList, rank);
+            List<Check> checkList = service.checkLotto(lottos, jackpotNumArr, bonusNum);
+            service.checkRank(checkList, rank);
         }
 
-        int winningPrice = Service.getWinningPrice(rank);
-        Service.getEarningsRate(winningPrice, money);
+        int winningPrice = service.getWinningPrice(rank);
+        service.getEarningsRate(winningPrice, money);
     }
 }

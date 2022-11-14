@@ -23,7 +23,7 @@ public class Service {
     private static final int SECOND_VALUE = 5;
     private static final int FIRST_VALUE = 6;
 
-    public static int getMoney() {
+    public int getMoney() {
         Output.outputPurchaseAmount();
         String money = Input.inputMoney();
         LogicException.verifyMoney(money);
@@ -31,14 +31,14 @@ public class Service {
         return Integer.parseInt(money);
     }
 
-    public static int getVolume(int money) {
+    public int getVolume(int money) {
         int volume = money / UNIT_PRICE;
         Output.outputBoughtNumber(volume);
 
         return volume;
     }
 
-    public static List<Lotto> getLotto(int volume) {
+    public List<Lotto> getLotto(int volume) {
         List<Lotto> lottoList = new ArrayList<>();
         for(int i = 0; i < volume; i++) {
             List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45,6));
@@ -52,19 +52,19 @@ public class Service {
         return lottoList;
     }
 
-    public static String getJackpotNumber() {
+    public String getJackpotNumber() {
         Output.outputJackpotNumber();
 
         return Input.inputJackpotNumber();
     }
 
-    public static String[] getJackpotNumberToArr(String jackpotNumber) {
+    public String[] getJackpotNumberToArr(String jackpotNumber) {
         String[] jackpotArr = jackpotNumber.split(",");
 
         return jackpotArr;
     }
 
-    public static int getBonusNumber(String[] jackpotArr) {
+    public int getBonusNumber(String[] jackpotArr) {
         Output.outputBonusNumber();
         int bonusNum = Input.inputBonusNumber();
         LogicException.verifyBonusNum(bonusNum);
@@ -72,7 +72,7 @@ public class Service {
         return bonusNum;
     }
 
-    public static List<List<Integer>> getLottoList(List<Lotto> lottoList) {
+    public List<List<Integer>> getLottoList(List<Lotto> lottoList) {
         List<List<Integer>> lottos = new ArrayList<>();
         for(int i = 0; i < lottoList.size(); i++) {
             List<Integer> lotto = lottoList.get(i).getNumbers();
@@ -82,7 +82,7 @@ public class Service {
         return lottos;
     }
 
-    public static List<Check> checkLotto(List<Integer> lotto, String[] jackpotNum, int bonusNum) {
+    public List<Check> checkLotto(List<Integer> lotto, String[] jackpotNum, int bonusNum) {
         List<Check> checkList = new ArrayList<>();
         Check check = new Check(0, false);
         for(int i = 0; i < jackpotNum.length; i++) {
@@ -98,7 +98,7 @@ public class Service {
         return checkList;
     }
 
-    public static void checkRank(List<Check> checkList, Rank rank) {
+    public void checkRank(List<Check> checkList, Rank rank) {
         for(int i = 0; i < checkList.size(); i++) {
             int count = checkList.get(i).getCount();
             boolean bonus = checkList.get(i).getBonus();
@@ -120,7 +120,7 @@ public class Service {
         }
     }
 
-    public static int getWinningPrice(Rank rank) {
+    public int getWinningPrice(Rank rank) {
         int fifth = rank.getFifth();
         int fourth = rank.getFourth();
         int third = rank.getThird();
@@ -137,7 +137,7 @@ public class Service {
         return winningPrice;
     }
 
-    public static String getEarningsRate(int winningPrice, int money) {
+    public String getEarningsRate(int winningPrice, int money) {
         double earningRate = ((double) winningPrice / money);
         String result = String.format("%.1f", earningRate * PERCENTAGE);
         Output.outputEarningRate(result);

@@ -51,8 +51,9 @@ class LottoTest {
     @DisplayName("구입 개수와 로또 구매 개수가 같아야 합니다.")
     @Test
     void verifyLottoListLength() {
+        Service service = new Service();
         int volume = 5;
-        List<Lotto> lottoList = Service.getLotto(volume);
+        List<Lotto> lottoList = service.getLotto(volume);
         assertThatThrownBy(() -> LogicException.verifyLottoListVolume(lottoList, 3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -60,8 +61,9 @@ class LottoTest {
     @DisplayName("당첨 번호를 배열로 바꿨을 때의 길이가 6이고, 구성된 배열의 값이 당첨번호와 일치해야 합니다.")
     @Test
     void verifyJackpotToArr() {
+        Service service = new Service();
         String jackpot = "1,2,3,4,5,6";
-        String[] jackpotArr = Service.getJackpotNumberToArr(jackpot);
+        String[] jackpotArr = service.getJackpotNumberToArr(jackpot);
         assertThat(jackpotArr).isEqualTo(new String[]{"1","2","3","4","5","6"});
         assertThat(jackpotArr).hasSize(6);
     }
@@ -69,22 +71,24 @@ class LottoTest {
     @DisplayName("구매한 로또 번호에 보너스 번호가 포함되어 있는지 확인")
     @Test
     void checkLottoNumber() {
+        Service service = new Service();
         List<Integer> lotto = List.of(1,2,3,4,5,7);
         String[] jackpotArr = new String[]{"1","2","3","4","5","6"};
         int bonusNum = 7;
-        List<Check> checkList = Service.checkLotto(lotto, jackpotArr, bonusNum);
+        List<Check> checkList = service.checkLotto(lotto, jackpotArr, bonusNum);
         assertThat(checkList.get(0).getBonus()).isTrue();
     }
 
     @DisplayName("당첨번호와 맞는 숫자가 5개, 보너스번호를 맞췄을 때 2등 횟수 1카운트")
     @Test
     void checkRank() {
+        Service service = new Service();
         List<Integer> lotto = List.of(1, 2, 3, 4, 5, 7);
         String[] jackpotArr = new String[]{"1", "2", "3", "4", "5", "6"};
         int bonusNum = 7;
         Rank rank = new Rank(0, 0, 0, 0, 0);
-        List<Check> checkList = Service.checkLotto(lotto, jackpotArr, bonusNum);
-        Service.checkRank(checkList, rank);
+        List<Check> checkList = service.checkLotto(lotto, jackpotArr, bonusNum);
+        service.checkRank(checkList, rank);
         assertThat(rank.getSecond()).isEqualTo(1);
     }
 
@@ -92,22 +96,24 @@ class LottoTest {
     @DisplayName("당첨금액의 총액이 일치하는지 테스트")
     @Test
     void checkWinningPrice() {
+        Service service = new Service();
         List<Integer> lotto = List.of(1,2,3,4,5,7);
         String[] jackpotArr = new String[]{"1","2","3","4","5","6"};
         int bonusNum = 7;
         Rank rank = new Rank(0,0,0,0,0);
-        List<Check> checkList = Service.checkLotto(lotto, jackpotArr, bonusNum);
-        Service.checkRank(checkList, rank);
-        int winning = Service.getWinningPrice(rank);
+        List<Check> checkList = service.checkLotto(lotto, jackpotArr, bonusNum);
+        service.checkRank(checkList, rank);
+        int winning = service.getWinningPrice(rank);
         assertThat(winning).isEqualTo(30000000);
     }
 
     @DisplayName("수익률은 소수점 둘째자리에서 반올림한다")
     @Test
     void checkEarningRate() {
+        Service service = new Service();
         int winningPrice = 25790000;
         int money = 100000000;
-        assertThat(Service.getEarningsRate(winningPrice, money)).isEqualTo("25.8");
+        assertThat(service.getEarningsRate(winningPrice, money)).isEqualTo("25.8");
     }
 
     @DisplayName("보너스 번호는 1부터 45까지여야 한다")
@@ -121,8 +127,9 @@ class LottoTest {
     @DisplayName("보너스 번호는 당첨번호에 포함되지 않아야 한다")
     @Test
     void checkBonusNumAndJackpotNum() {
+        Service service = new Service();
         String jackpotNum = "1,2,3,4,5,6";
-        String[] jackpotNumArr = Service.getJackpotNumberToArr(jackpotNum);
+        String[] jackpotNumArr = service.getJackpotNumberToArr(jackpotNum);
         int bonusNum = 6;
         assertThatThrownBy(() -> LogicException.verifyBonusNumAndJackpot(jackpotNumArr, bonusNum))
                 .isInstanceOf(IllegalArgumentException.class);
