@@ -56,5 +56,9 @@ public class Application {
         }
     }
 
+    public void compareLotto() {
+
+    }
+
 
 }
