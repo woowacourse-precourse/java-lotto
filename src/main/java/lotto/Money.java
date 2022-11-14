@@ -5,6 +5,7 @@ public class Money {
     private int money;
 
     public Money(String inputMoney) {
+        inputMoney = inputMoney.trim();
         validate(inputMoney);
         this.money = Integer.parseInt(inputMoney);
     }
