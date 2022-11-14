@@ -4,9 +4,10 @@
 - [x] 입력받은 로또 번호 리스트를 오름차순으로 정렬한다.  -UserNumber#sort()
 - [x] 이중리스트로 사용자의 모든 로또를 저장한다.  -UserNumber#addLottos
 
-## 2. 로또 번호를 생성한다.  - GetPrizeNumber()
-- [] 6개의 번호와 1개의 보너스 번호를 입력받는다.  -GetPrizeNumber#inputUserNumber()
-- [] 생성된 7개의 번호를 오름차순으로 정렬한다.  - GetPrizeNumber#sortLottoNumber()
+## 2. 로또 번호를 생성한다.  - PrizeNumber()
+- [x] 1~45까지 서로 다른 6개의 로또 번호를 입력받는다.  -PrizeNumber#lottoNumber()
+- [] 생성된 6개의 번호를 오름차순으로 정렬한다.  - PrizeNumber#sort()
+- [] 보너스 번호를 입력받는다.  -PrizeNumber#bonusNumber()
 
 ## 3. 로또 결과를 분석한다.  - Analyze()
 
