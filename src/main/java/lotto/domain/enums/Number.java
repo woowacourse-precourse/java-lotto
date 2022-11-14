@@ -13,8 +13,6 @@ public class Number {
     public static final int FORTY_FIVE = 45;
     public static final int THOUSAND = 1000;
 
-    public static final int LOTTO_SIZE = 6;
-
     public static final int FIFTH_WINNING_AMOUNT = 5_000;
     public static final int FOURTH_WINNING_AMOUNT = 50_000;
     public static final int THIRD_WINNING_AMOUNT = 1_500_000;
