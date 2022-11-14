@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.system.Constant;
-import lotto.system.IOMessage;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -22,7 +21,7 @@ public class UserLotto {
     }
 
     private void printMyLotto() {
-        OutputView.printIOMessage(userLottery.size() + IOMessage.WRITE_AMOUNT_MESSAGE);
+        OutputView.printReceipt(userLottery.size());
         userLottery.printAllLotto();
     }
 

@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.domain.Award;
 import lotto.system.Constant;
+import lotto.system.IOMessage;
 import lotto.util.Util;
 
 import java.util.Collections;
@@ -27,6 +28,11 @@ public final class OutputView {
     public static void printLotto(List<Integer> lotto) {
        System.out.println(lotto);
     }
+
+    public static void printReceipt(int size) {
+        System.out.println(size + IOMessage.WRITE_AMOUNT_MESSAGE);
+    }
+
     public static void printIOMessage(String message) {
         System.out.println(message);
     }
