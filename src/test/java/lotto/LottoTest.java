@@ -52,6 +52,13 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("구매 금액이 1000으로 나누어 떨어지지 않으면 예외가 발생한다.")
+    @Test
+    void createBuyAmountByNotThousand() {
+        assertThatThrownBy(() -> LottoView.isCorrect("1050"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("보너스 번호는 숫자여야 한다.")
     @Test
     void createBonusByNotNumber() {
