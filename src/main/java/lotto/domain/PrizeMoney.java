@@ -43,4 +43,8 @@ public enum PrizeMoney {
     public String getMoney() {
         return money;
     }
+
+    public int getCountOfMatch() {
+        return countOfMatch;
+    }
 }

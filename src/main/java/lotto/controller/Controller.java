@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.PrizeMoney;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -25,15 +26,20 @@ public class Controller {
             List<Integer> winningLottoNumbers = inputView.inputWinningLottoNumbers();
             int bonusNumber = inputView.inputBonusNumber();
             lottoService.matchLottos(purchaserId, winningLottoNumbers, bonusNumber);
+            printWinningStatistics(purchaserId);
         } catch (IllegalArgumentException e) {
             outputView.printException(e.getMessage());
             return;
         }
     }
 
+    private void printWinningStatistics(Long purchaserId) {
+        outputView.printWinningHistory(lottoService.findPurchaserWinningHistory(purchaserId));
+    }
+
     private void printLottos(List<List<Integer>> purchaserLottos) {
         outputView.printLottoQuantity(purchaserLottos.size());
-        for(List<Integer> purchaserLotto : purchaserLottos){
+        for (List<Integer> purchaserLotto : purchaserLottos) {
             outputView.printLotto(purchaserLotto);
         }
     }

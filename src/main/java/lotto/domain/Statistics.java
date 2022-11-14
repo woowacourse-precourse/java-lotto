@@ -37,4 +37,8 @@ public class Statistics {
     private int incrementCountOfWinning(PrizeMoney prizeMoney){
         return winningHistory.get(prizeMoney) + 1;
     }
+
+    public Map<PrizeMoney, Integer> getWinningHistory() {
+        return winningHistory;
+    }
 }

@@ -1,11 +1,13 @@
 package lotto.service;
 
+import lotto.domain.PrizeMoney;
 import lotto.domain.Purchaser;
 import lotto.domain.Statistics;
 import lotto.repository.PurchaserRepository;
 import lotto.repository.StatisticsRepository;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoService {
     private final PurchaserRepository purchaserRepository;
@@ -37,5 +39,10 @@ public class LottoService {
         Statistics statistics = new Statistics();
         statistics.countWinningLotto(purchaser.getLottos(), winningLottoNumbers, bonusNumber);
         statisticsRepository.insert(purchaserId, statistics);
+    }
+
+    public Map<PrizeMoney, Integer> findPurchaserWinningHistory(Long purchaserId) {
+        Statistics statistics = statisticsRepository.findByPurchaserId(purchaserId);
+        return statistics.getWinningHistory();
     }
 }
