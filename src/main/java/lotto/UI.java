@@ -1,6 +1,7 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -78,6 +79,20 @@ public class UI {
         }
 
     }
+
+    public void Lotto_Choice_Result_Print(HashMap<Integer, Integer> Lotto_Choice_Result){
+        System.out.printf("3개 일치 (5,000원) - %d개%n",Lotto_Choice_Result.get(3));
+        System.out.printf("4개 일치 (50,000원) - %d개%n",Lotto_Choice_Result.get(4));
+        System.out.printf("5개 일치 (1,500,000원) - %d개%n",Lotto_Choice_Result.get(5));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개%n",Lotto_Choice_Result.get(7));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개%n",Lotto_Choice_Result.get(6));
+    }
+
+    
+
+
+
+
 }
 
 
