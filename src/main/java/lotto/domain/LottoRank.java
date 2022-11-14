@@ -52,6 +52,6 @@ public enum LottoRank {
     @Override
     public String toString() {
         DecimalFormat formatter = new DecimalFormat("###,###");
-        return comparedNumber + "(" + formatter.format(reward) + "원)";
+        return comparedNumber + " (" + formatter.format(reward) + "원)";
     }
 }
