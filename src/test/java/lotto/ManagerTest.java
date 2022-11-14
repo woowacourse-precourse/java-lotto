@@ -60,9 +60,15 @@ class ManagerTest {
         });
 
     }
-
+    @DisplayName("보너스 번호 입력 테스트")
     @Test
     void inputBonusNumber() {
+        String input = "7";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        int result = manager.inputBonusNumber();
+        int expect = 7;
+        assertThat(result).isEqualTo(expect);
     }
 
     @Test
