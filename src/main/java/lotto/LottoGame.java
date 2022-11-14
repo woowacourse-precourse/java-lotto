@@ -2,13 +2,12 @@ package lotto;
 
 import static lotto.io.Message.ONLY_NUMBER;
 
-import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
 import lotto.config.Config;
+import lotto.domain.BonusNumber;
 import lotto.domain.IssuedLotto;
-import lotto.domain.Lotto;
 import lotto.domain.PurchaseAmount;
 import lotto.domain.WinningNumber;
-import lotto.io.Reader;
 import lotto.io.Writer;
 import lotto.service.LottoIssueService;
 
@@ -34,14 +33,21 @@ public class LottoGame {
 
     public void start() {
         Writer.inputPurchaseAmount();
-        PurchaseAmount purchaseAmount = new PurchaseAmount(Reader.readUserPurchaseAmount());
+        PurchaseAmount purchaseAmount = new PurchaseAmount(read());
 
         IssuedLotto issuedLotto = lottoIssueService.issueLotto(purchaseAmount);
         Writer.printIssuedLottoList(issuedLotto);
 
         Writer.inputWinningNumber();
-        WinningNumber winningNumber = WinningNumber.saveWinningNumbers(Reader.readWinningNumbers());
+        WinningNumber winningNumber = WinningNumber.saveWinningNumbers(read());
 
+        Writer.inputBonusNumber();
+        BonusNumber bonusNumber = BonusNumber.saveBonusNumber(read());
+
+    }
+
+    private String read() {
+        return Console.readLine();
     }
 
 }

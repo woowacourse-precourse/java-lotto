@@ -2,6 +2,7 @@ package lotto.io;
 
 import static lotto.io.Message.BOUGHT_N;
 import static lotto.io.Message.ERROR;
+import static lotto.io.Message.INPUT_BONUS_NUMBER;
 import static lotto.io.Message.INPUT_PURCHASE_AMOUNT;
 import static lotto.io.Message.INPUT_WINNING_NUMBERS;
 import static lotto.io.Message.LF;
@@ -35,6 +36,9 @@ public class Writer {
         write(INPUT_WINNING_NUMBERS);
     }
 
+    public static void inputBonusNumber() {
+        write(INPUT_BONUS_NUMBER);
+    }
 
     private static void write(String message) {
         System.out.println(message + LF);
