@@ -5,6 +5,7 @@ import java.util.List;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
+import lotto.domain.ProfitCalculator;
 import lotto.domain.PurchasingAmount;
 import lotto.domain.WinningAndBonusNumbers;
 import lotto.domain.WinningStatisticsCompiler;
@@ -14,25 +15,39 @@ import lotto.view.OutputView;
 public class LottoController {
 	InputView inputView = new InputView();
 	OutputView outputView = new OutputView();
+	PurchasingAmount purchasingAmount;
 	int numberOfTickets;
 	List<Lotto> lotteries;
 	WinningAndBonusNumbers winningAndBonusNumbers;
+	WinningStatisticsCompiler winningStatisticsCompiler;
 
 	public void control() {
-		calculateNumberOfTickets();
-		issueLotteries();
-		receiveWinningNumbers();
-		receiveBonusNumbers();
-		compileWinningStatistics();
+		try {
+			calculateNumberOfTickets();
+			issueLotteries();
+			receiveWinningNumbers();
+			receiveBonusNumbers();
+			compileWinningStatistics();
+			calculateRateOfProfit();
+		} catch (IllegalArgumentException e) {
+			outputView.printErrorMessage();
+		}
 	}
 
-	void calculateNumberOfTickets() {
-		PurchasingAmount purchasingAmount = new PurchasingAmount(Integer.parseInt(inputView.getPurchasingAmount()));
+	private void calculateRateOfProfit() {
+		ProfitCalculator profitCalculator = new ProfitCalculator();
+		float rateOfProfit = profitCalculator.calculate(purchasingAmount.getPurchasingAmount(),
+			winningStatisticsCompiler.getProfit());
+		outputView.printRateOfProfit(rateOfProfit);
+	}
+
+	private void calculateNumberOfTickets() {
+		purchasingAmount = new PurchasingAmount(Integer.parseInt(inputView.getPurchasingAmount()));
 		numberOfTickets = purchasingAmount.getNumberOfTickets();
 		outputView.printNumberOfTickets(numberOfTickets);
 	}
 
-	void issueLotteries() {
+	private void issueLotteries() {
 		LottoGenerator lottoGenerator = new LottoGenerator();
 		lotteries = new ArrayList<>();
 		while (lotteries.size() != numberOfTickets) {
@@ -41,21 +56,16 @@ public class LottoController {
 		lotteries.forEach(lotto -> System.out.println(lotto.getNumbers()));
 	}
 
-	void receiveWinningNumbers() {
+	private void receiveWinningNumbers() {
 		winningAndBonusNumbers = new WinningAndBonusNumbers(inputView.getWinningNumbers());
 	}
 
-	void receiveBonusNumbers() {
+	private void receiveBonusNumbers() {
 		winningAndBonusNumbers = new WinningAndBonusNumbers(Integer.parseInt(inputView.getBonusNumber()));
 	}
 
-	void compileWinningStatistics() {
-		WinningStatisticsCompiler winningStatisticsCompiler = new WinningStatisticsCompiler(lotteries,
-			winningAndBonusNumbers);
+	private void compileWinningStatistics() {
+		winningStatisticsCompiler = new WinningStatisticsCompiler(lotteries, winningAndBonusNumbers);
 		outputView.printWinningStatistics(winningStatisticsCompiler.getCountsOfWins());
-	}
-
-	List<Lotto> getLotteries() {
-		return lotteries;
 	}
 }
