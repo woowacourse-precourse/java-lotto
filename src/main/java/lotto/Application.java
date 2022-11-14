@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.Messages.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -21,7 +23,7 @@ public class Application {
     }
 
     private static Money inputPurchasePrice() {
-        println("구입금액을 입력해 주세요.");
+        println(INPUT_PURCHASE_PRICE);
         return InputHandler.readMoney();
     }
 
@@ -34,20 +36,20 @@ public class Application {
 
     private static Lotto inputWinningNumber() {
         println();
-        println("당첨 번호를 입력해 주세요.");
+        println(INPUT_WINNING_NUMBER);
         return InputHandler.readWinningNumber();
     }
 
     private static Bonus inputBonusNumber() {
         println();
-        println("보너스 번호를 입력해 주세요.");
+        println(INPUT_BONUS_NUMBER);
         return InputHandler.readBonusNumber();
     }
 
     private static Map<Rank, Integer> getWinningHistory(List<Lotto> purchasedLottos, Lotto winningNumber, Bonus bonus) {
         println();
-        println("당첨 통계");
-        println("---");
+        println(WINNING_STATISTICS);
+        println(HORIZONTAL_RULE);
         Map<Rank, Integer> winningHistory = getWinningHistory(winningNumber, bonus, purchasedLottos);
         printWinningHistory(winningHistory);
         return winningHistory;
@@ -59,7 +61,7 @@ public class Application {
     }
 
     private static void printPurchasedLottos(List<Lotto> purchasedLottos) {
-        println(purchasedLottos.size() + "개를 구매했습니다.");
+        println(purchasedLottos.size() + BOUGHT);
         purchasedLottos.forEach(lotto -> {
             ArrayList<Integer> numbers = new ArrayList<>(lotto.getNumbers());
             numbers.sort(Integer::compareTo);
@@ -76,12 +78,12 @@ public class Application {
     }
 
     private static void printWinningHistory(Map<Rank, Integer> winningHistory) {
-        winningHistory.forEach((rank, count) -> System.out.println(rank + " - " + count + "개"));
+        winningHistory.forEach((rank, count) -> System.out.println(rank + SPACE + HYPHEN + SPACE + count + PCS));
     }
 
     private static void printRateOfReturn(double rateOfReturn) {
-        String roundHundredths = String.format("%.1f", rateOfReturn);
-        String output = "총 수익률은 " + roundHundredths + "%입니다.";
+        String roundHundredths = String.format(ROUND_HUNDREDTHS, rateOfReturn);
+        String output = TOTAL_RATE_OF_RETURN + SPACE + roundHundredths + PERCENT;
         println(output);
     }
 
