@@ -7,6 +7,7 @@ import lotto.domain.Lotto;
 import java.util.List;
 
 public interface LottoService {
-    int lotteryCheck(Lotto inputLotto, Lotto awardLotto, int bonusNumber);
+    void lotteryCheck(Lotto inputLotto, Lotto awardLotto, int bonusNumber);
     void play(List<Lotto> generatedLotto, GameSet gameSet);
+    void updateGameSet(LottoProperties lottoProperties, int correct);
 }

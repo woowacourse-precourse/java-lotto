@@ -1,21 +1,22 @@
 package lotto.service;
 
-import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.GameSet;
 import lotto.domain.Lotto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoServiceImpl implements LottoService {
+    final int SECOND_WINNDER_CORRECT = 5;
+    private GameSet gameSet;
     @Override
     public void play(List<Lotto> generatedLotto, GameSet gameSet){
+        this.gameSet = gameSet;
         for(int i =0;i<generatedLotto.size();i++){
-            gameSet.plusCount(lotteryCheck(generatedLotto.get(i),gameSet.getAwardLotto(),gameSet.getBonusNumber()));
+            lotteryCheck(generatedLotto.get(i),gameSet.getAwardLotto(),gameSet.getBonusNumber());
         }
     }
     @Override
-    public int lotteryCheck(Lotto inputLotto, Lotto awardLotto, int bonusNumber){
+    public void lotteryCheck(Lotto inputLotto, Lotto awardLotto, int bonusNumber){
         int correct = 0;
         int bonus = 0;
         int i = 0;
@@ -35,14 +36,18 @@ public class LottoServiceImpl implements LottoService {
                 j++;
             }
             if(inputLotto.getNumbers().get(i)==bonusNumber){
-                bonus=1;
+                bonus=2;
             }
         }
-        LottoProperties lottoProperties = LottoProperties.findType(correct);
-        int index = lottoProperties.function(correct);
-        if (lottoProperties.name().equals("LOTTO_THIRDWINNER")){
-            index-=bonus;
+        if (correct==SECOND_WINNDER_CORRECT){
+            correct+=bonus;
         }
-        return index;
+        LottoProperties lottoProperties = LottoProperties.findType(correct);
+        updateGameSet(lottoProperties,correct);
+    }
+    @Override
+    public void updateGameSet(LottoProperties lottoProperties, int correct){
+        gameSet.plusCount(lottoProperties.function(correct));
+        gameSet.plusTotalPrize(lottoProperties.getPrice());
     }
 }
