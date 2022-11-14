@@ -13,6 +13,11 @@ public class LottoWithBonusNum {
         bonusNum = new BonusNum(bonusNumber);
     }
 
+    public String numbers() {
+        return lotto.toString();
+    }
+
+
     private void validate(List<Integer> numbers, int bonusNumber) {
         validateSize(numbers);
         validateDuplidate(numbers, bonusNumber);

@@ -1,8 +1,10 @@
 package lotto.domain.lotto;
 
+import static lotto.domain.lotto.PurchaseLotto.makeRandomLotto;
+
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.PurchaseAmount;
+import lotto.domain.statistics.PlaceHistory;
 
 public class PurchaseLottos {
 
@@ -12,12 +14,41 @@ public class PurchaseLottos {
         lottos = new ArrayList<>(quantity);
 
         for (int count = 0; count < quantity; ++count) {
-            lottos.add(new PurchaseLotto());
+            lottos.add(makeRandomLotto());
         }
     }
 
-    public PurchaseAmount calculateAmount() {
-        return new PurchaseAmount(lottos.size() * 1000);
+    public int quantity() {
+        return lottos.size();
     }
 
+    public int calculateAmount() {
+        return quantity() * 1000;
+    }
+
+    public PlaceHistory fillPlaceHistory(WinningLotto winningLotto) {
+        PlaceHistory placeHistory = new PlaceHistory();
+        lottos.forEach(lotto -> {
+            placeHistory.updateFor(winningLotto.makeMatchResult(lotto));
+        });
+        return placeHistory;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(createPurchaseQuantityMsg());
+        stringBuffer.append('\n');
+        lottos.forEach(lotto -> {
+            //로또 목록 만들기
+            stringBuffer.append(lotto.numbers());
+            stringBuffer.append('\n');
+        });
+
+        return stringBuffer.toString();
+    }
+
+    private String createPurchaseQuantityMsg() {
+        return String.format("%d개를 구매했습니다.", quantity());
+    }
 }

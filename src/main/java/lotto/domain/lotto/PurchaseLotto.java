@@ -21,4 +21,5 @@ public class PurchaseLotto extends LottoWithBonusNum {
     public boolean IsBonusMatch(BonusNum otherBonusNum) {
         return bonusNum.equals(otherBonusNum);
     }
+
 }
