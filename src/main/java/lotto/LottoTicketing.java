@@ -25,7 +25,7 @@ public class LottoTicketing {
 
     }
 
-    public Set<Integer> checkDuplicatedNumbers(List<Integer> lottoNumbers){
+    public static Set<Integer> checkDuplicatedNumbers(List<Integer> lottoNumbers){
         Set<Integer> lottoNumbersWithoutDuplication= new TreeSet<>(lottoNumbers);
         if(lottoNumbers.size()!=lottoNumbersWithoutDuplication.size()){
             getValidLottoNumbers();
