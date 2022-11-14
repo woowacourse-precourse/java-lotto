@@ -12,8 +12,13 @@ public class PurchaseManager {
         return Integer.parseInt(input);
     }
 
-    private boolean validateInput(String input) {
-        return true;
+    private void validateInput(String input) {
+        if(!isDigit(input)) {
+            throw new IllegalArgumentException("숫자로 입력해야 합니다.");
+        }
+        if(isThousandUnit(input)) {
+            throw new IllegalArgumentException("천원 단위로 입력해야 합니다. ex) 14000");
+        }
     }
 
     private boolean isDigit(String input) {
