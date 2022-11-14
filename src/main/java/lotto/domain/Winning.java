@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Winning {
@@ -16,12 +17,11 @@ public class Winning {
         int correctedCount = compareNumbers();
         boolean containsBonus = containsBonus();
 
-
-       return WinningTable.getRank(correctedCount, containsBonus);
+        return WinningTable.getRank(correctedCount, containsBonus);
     }
 
     private int compareNumbers() {
-        List<Integer> numbers = lotto.getNumbers();
+        List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
         List<Integer> winningNumbers = wLotto.getNumbers();
         numbers.retainAll(winningNumbers);
         return numbers.size();
