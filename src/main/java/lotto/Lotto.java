@@ -29,4 +29,17 @@ public class Lotto {
         }
         return count;
     }
+    public static List<Integer> createWinningnum(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        List<Integer> winNum = new ArrayList<>();
+        try{
+            StringTokenizer st = new StringTokenizer(Console.readLine(),",");
+            for(int i=0;i<6;i++){
+                winNum.add(Integer.parseInt(st.nextToken()));
+            }
+        }catch(IllegalArgumentException e){
+            System.out.println(ExceptionType.rangeError.getName());
+        }
+        return winNum;
+    }
 }
