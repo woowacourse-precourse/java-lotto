@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum Result {
     THREE("3개 일치", "5,000", 30),
     FOUR("4개 일치", "50,000", 40),
@@ -15,5 +17,12 @@ public enum Result {
         this.message = message;
         this.money = money;
         this.score = score;
+    }
+
+    public static Result getResult(int score) {
+        return Arrays.stream(Result.values())
+                .filter(result -> result.score == score)
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 점수 계산이 잘못되었습니다."));
     }
 }
