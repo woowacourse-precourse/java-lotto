@@ -1,10 +1,11 @@
-package lotto;
+package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import  org.assertj.core.api.Assertions;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +25,13 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 객체 생성시 번호 6개인지 테스트")
+    @Test
+    void createLottoTest() {
+        Lotto lotto = Lotto.generateLottoNumber();
+
+        int expectedSize = 6;
+
+        Assertions.assertThat(lotto.getNumbers().size()).isEqualTo(expectedSize);
+    }
 }
