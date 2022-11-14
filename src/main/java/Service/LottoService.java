@@ -11,15 +11,18 @@ import java.util.*;
 
 public class LottoService {
 
-    BonusNumber bonusNumber;
-    WinningNumber winningNumber;
+    BonusNumber bonusNumber = new BonusNumber();
+    WinningNumber winningNumber = new WinningNumber();
+    Reward reward = new Reward();
     UserMoneyValidate userMoneyValidate = new UserMoneyValidate();
     SystemMessage systemMessage = new SystemMessage();
 
     public void set_lotto() {
         int userMoney = getUserMoney();
+        systemMessage.requestTotalMoney(userMoney);
         Ticket ticket = new Ticket();
         int ticketNum = ticket.getTicketNum(userMoney);
+        systemMessage.ticketsMessage(ticketNum);
         List<List<Integer>> allTickets = getAllLotto(ticketNum);
 
         List<Integer> winningNumbers = getWinningNumbers();
@@ -29,6 +32,10 @@ public class LottoService {
         Map<Rank, Integer> map = new HashMap<>();
         Map<Rank, Integer> rankMap = calculation(allWinningNumbers, allTickets, map);
         systemMessage.countMessage(rankMap);
+
+        Long sum = reward.totalReward(rankMap);
+        double profit = reward.percentage(sum, userMoney);
+        systemMessage.getProfit(profit);
     }
 
 //    public void set_winning(){
