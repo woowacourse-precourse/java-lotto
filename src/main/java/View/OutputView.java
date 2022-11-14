@@ -1,5 +1,7 @@
 package View;
 
+import Domain.Lotto;
+
 import java.util.List;
 
 public class OutputView {

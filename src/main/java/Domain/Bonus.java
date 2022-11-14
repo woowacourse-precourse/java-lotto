@@ -1,5 +1,8 @@
 package Domain;
 
+import Controller.Validation;
+import View.InputView;
+
 public class Bonus {
     private int number;
 
