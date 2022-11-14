@@ -19,9 +19,9 @@ public class Seller {
         }
     }
 
-    private List<Lotto> issueRandomLottos(int amount) {
+    private List<Lotto> issueRandomLottos(long count) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < amount; i++) {
+        for (int i = 0; i < count; i++) {
             lottos.add(Lotto.createRandomized());
         }
         return lottos;
