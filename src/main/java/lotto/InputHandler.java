@@ -3,7 +3,9 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputHandler {
     private final InputValidator inputValidator;
@@ -21,20 +23,18 @@ public class InputHandler {
     }
 
     public List<Integer> inputWinNumbers() {
-        List<Integer> winNumbers = new ArrayList<>();
         System.out.println("당첨 번호를 입력해 주세요.");
-        for (int i = 0; i < 6; i++) {
-            int number = Integer.parseInt(Console.readLine());
-            inputValidator.validateLottoNumber(number);
-            winNumbers.add(number);
-        }
+        String input = Console.readLine();
+        List<Integer> winNumbers = Arrays.stream(input.split(",")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+        inputValidator.validateLotto(winNumbers);
+
         return winNumbers;
     }
 
     public int inputBonusNumber() {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
-        inputValidator.validateLottoNumber(bonusNumber);
+        inputValidator.validateBonusNumber(bonusNumber);
         return bonusNumber;
     }
 }

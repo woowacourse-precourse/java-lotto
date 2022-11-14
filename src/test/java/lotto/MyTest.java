@@ -25,10 +25,10 @@ public class MyTest {
     @Test
     @DisplayName("로또 번호는 1에서 45사이의 숫자만 가져야 한다.")
     void 로또_번호는_1에서_45사이의_숫자만_가져야_한다() {
-        List<Integer> testNumbers = Arrays.asList(0, 46, 100, 55, -100);
+        List<List<Integer>> testLotto = Arrays.asList(Arrays.asList(1, 2, 3, 4, 46), Arrays.asList(0, 1, 2, 3, 4, 5));
         InputValidator inputValidator = new InputValidator();
-        for (Integer testNumber : testNumbers) {
-            assertThatThrownBy(() -> inputValidator.validateLottoNumber(testNumber)).isInstanceOf(IllegalArgumentException.class);
+        for (List<Integer> numbers : testLotto) {
+            assertThatThrownBy(() -> inputValidator.validateLotto(numbers)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 
@@ -38,18 +38,17 @@ public class MyTest {
         List<List<Integer>> testLotto = Arrays.asList(Arrays.asList(1, 2, 3, 4, 5), Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         InputValidator inputValidator = new InputValidator();
         for (List<Integer> numbers : testLotto) {
-            assertThatThrownBy(() -> inputValidator.validateLottoSize(numbers)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> inputValidator.validateLotto(numbers)).isInstanceOf(IllegalArgumentException.class);
         }
     }
+
     @Test
     @DisplayName("로또 번호가 중복일 경우 예외가 발생한다.")
-    void 로또_번호가_중복일_경우_예외가_발생한다(){
+    void 로또_번호가_중복일_경우_예외가_발생한다() {
         List<List<Integer>> testLotto = Arrays.asList(Arrays.asList(1, 2, 2, 4, 5, 6), Arrays.asList(1, 1, 1, 1, 1, 1));
         InputValidator inputValidator = new InputValidator();
         for (List<Integer> numbers : testLotto) {
-            assertThatThrownBy(() -> inputValidator.validateDuplicatedLotto(numbers)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> inputValidator.validateLotto(numbers)).isInstanceOf(IllegalArgumentException.class);
         }
     }
-
-
 }
