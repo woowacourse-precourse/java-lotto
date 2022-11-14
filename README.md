@@ -149,13 +149,13 @@ BUILD SUCCESSFUL in 0s
 
 ---
 ## 구현할 기능 목록
-1. [User] 클래스 생성 - 로또 구매자
+1. [User] User 클래스 생성 - 로또 구매자
 2. [User] 몇개의 로또를 구매할 지 입력받는 메서드 구현
-3. [User] 로또 번호를 생성하여 Lotto로 리턴하는 메서드 구현
-4. [User] 3번에서 리턴한 Lotto(객체)를 User의 List<Lotto>에 저장하는 메서드 구현
+3. [User] 로또 번호를 생성하여 list로 리턴하는 메서드 구현
+4. [User] 구매할 로또의 개수만큼 3번에서 리턴한 list를 Lotto(객체)에 매개 변수로 넣어 User의 List<Lotto>에 저장하는 메서드 구현
 5. [User] 저장한 List<Lotto>를 출력하는 메서드 구현
 6. [Application] 당첨 번호를 입력받아 저장하는 메서드 구현
-7. [User] 당첨 번호와 User의 List<Lotto>의 Lottto들을 비교하는 메서드 구현
+7. [User] 당첨 번호와 User의 List<Lotto>의 Lotto들을 비교하는 메서드 구현
 8. [User] 당첨된 번호 개수를 count하여 저장하는 메서드 구현 
 9. [User] 당첨 통계를 출력하는 메서드 구현
 9. [User] user의 수익률을 계산하여 출력하는 메서드 구현
