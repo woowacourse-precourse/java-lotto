@@ -47,7 +47,12 @@ public class Application {
             lotto.setWinningStatus(winningNumbers, bonusNumber);
     }
 
+    private static Double calculateROI(Double winningSum) {
+        return Math.round(winningSum/purchaseAmount*1000.0)*0.1;
+    }
+
     private static void printWinningStatistics() {
+        Double winningSum = 0.0;
         System.out.println("당첨 통계\n---");
         WinningStatus[] winningStatuses = WinningStatus.values();
         for(WinningStatus winningStatus : winningStatuses) {
@@ -55,7 +60,9 @@ public class Application {
             int matchCount = 0;
             for (Lotto lotto : lottos) if (lotto.getWinningStatus() == winningStatus) matchCount++;
             System.out.println(winningStatus.getDescription() + " - " + matchCount + "개");
+            winningSum += winningStatus.getWinningAmount() * matchCount;
         }
+        System.out.println("총 수익률은 " + calculateROI(winningSum) + "%입니다.");
     }
 
     public static void main(String[] args) {
