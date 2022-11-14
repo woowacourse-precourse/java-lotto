@@ -8,7 +8,7 @@ import java.util.Set;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers) throws Exception{
         validateNumberLength(numbers);
         validateNumberReplicate(numbers);
         validateNumberRange(numbers);
@@ -44,9 +44,9 @@ public class Lotto {
         }
     }
 
-    public int compareWithWinNumber(Lotto WinNumber) {
+    public int compareWithWinNumber(WinNumber WinNumber) {
 
-        ArrayList<Integer> correctNumbers = new ArrayList<>(WinNumber.getLotto());
+        ArrayList<Integer> correctNumbers = new ArrayList<>(WinNumber.getWinNumber().getLotto());
         correctNumbers.retainAll(this.numbers);
 
         return correctNumbers.size();

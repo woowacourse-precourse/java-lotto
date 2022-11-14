@@ -5,15 +5,7 @@ public class Purchase {
     private int money;
     private int lottoNumber;
 
-    public void printPurchase() {
-        System.out.println("구입금액을 입력해 주세요.");
-    }
-
-    public void printConfirmPurchase() {
-        System.out.println(this.lottoNumber+"개를 구매했습니다.");
-    }
-
-    public Purchase(String money) {
+    public Purchase(String money) throws Exception{
         validateMoneyType(money);
         validateMoneyUnit(Integer.valueOf(money));
         this.money = Integer.valueOf(money);
@@ -27,7 +19,7 @@ public class Purchase {
     public void validateMoneyType(String money) {
         try {
             Double.parseDouble(money);
-        } catch(NumberFormatException e) {
+        } catch(Exception e) {
             System.out.println("[ERROR] 구입 금액은 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }

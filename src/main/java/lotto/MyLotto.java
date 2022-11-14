@@ -9,19 +9,14 @@ import java.util.List;
 public class MyLotto {
 
     private List<Lotto> myLotto;
-    private int totalPrize;
+    private double profit = 0;
     private HashMap<String, Integer> eachLottoRank = new HashMap<>();
 
-    public MyLotto(int purchaseAmount) {
+    public MyLotto(Purchase purchase) {
+        int purchaseAmount = purchase.getLottoNumber();
         List<Lotto> tmpMyLotto = createMyLotto(purchaseAmount);
         initializeEachLottoRank();
         this.myLotto = tmpMyLotto;
-    }
-
-    public void printMyLotto() {
-        for (Lotto lotto : this.myLotto) {
-            System.out.println(lotto.getLotto());
-        }
     }
 
     public void setEachLottoPrize(int rank, boolean containBonusNumber) {
@@ -37,12 +32,18 @@ public class MyLotto {
         return this.eachLottoRank;
     }
 
+    public double getProfit() {
+        return this.profit;
+    }
+
     public List<Lotto> createMyLotto(int purchaseAmount) {
 
         List<Lotto> tmpMyLotto = new ArrayList<>();
 
         for (int i = 0; i < purchaseAmount; i++) {
-            tmpMyLotto.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            try {
+                tmpMyLotto.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            } catch (Exception e) {}
         }
 
         return tmpMyLotto;
@@ -54,7 +55,7 @@ public class MyLotto {
         }
     }
 
-    public void checkEachLotto(Lotto winNumbers, BonusNumber bonusNumber) {
+    public void checkEachLotto(WinNumber winNumbers, BonusNumber bonusNumber) {
 
         for (Lotto lotto : myLotto) {
 
@@ -69,16 +70,14 @@ public class MyLotto {
         }
     }
 
-    public void calculateTotalPrize() {
+    public void calculateProfit() {
 
-        int prize;
-        String lottoRank;
+        int purchaseAmount = this.myLotto.size() * 1000;
 
         for (Rank rank : Rank.values()) {
-            lottoRank = rank.name();
-            prize = rank.getPrize();
-
-            this.totalPrize += (this.eachLottoRank.get(lottoRank)*prize);
+            this.profit = this.profit + (this.eachLottoRank.get(rank.name())*rank.getPrize());
         }
+
+        this.profit = (this.profit / purchaseAmount * 100);
     }
 }

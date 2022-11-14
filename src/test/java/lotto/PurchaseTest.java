@@ -25,7 +25,11 @@ public class PurchaseTest {
     @DisplayName("구입 금액에 따른 로또 개수를 확인한다.")
     @Test
     void checkLottoAccordingToPurchase() {
-        Purchase money = new Purchase("14000");
+        Purchase money = null;
+        try{
+            money = new Purchase("14000");
+        } catch (Exception e) {}
+
         assertThat(money.getLottoNumber()).isEqualTo(14);
     }
 }

@@ -12,13 +12,14 @@ public class WinNumber {
 
     private final Lotto numbers;
 
-    public void requestWinLottoNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
-    }
-
-    public WinNumber(String numbers) {
+    public WinNumber(String numbers) throws Exception{
         List<Integer> tmpNumbers = validateNumberType(numbers);
         this.numbers = new Lotto(tmpNumbers);
+        System.out.println();
+    }
+
+    public Lotto getWinNumber() {
+        return this.numbers;
     }
 
     public List<Integer> validateNumberType(String numbers) {
