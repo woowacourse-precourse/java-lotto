@@ -1,9 +1,9 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
 import lotto.domain.calculateIncome;
 import lotto.domain.lottoGenerator;
 import lotto.domain.lottoResult;
+import lotto.Lotto;
 import lotto.view.input;
 import lotto.view.output;
 
@@ -46,6 +46,7 @@ public class LottoController {
         // 수익률
         calculateIncome calculateincome = new calculateIncome(winResult);
         output.printIncomeRate(calculateincome.getIncomeRate(amountLotto * 1000));
+
     }
 
 
