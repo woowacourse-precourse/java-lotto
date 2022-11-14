@@ -45,8 +45,6 @@ public enum 당첨 {
     public static 당첨 getRank(int matchingCount, boolean isBonus) {
         if (!isBonus && matchingCount == 5)
             return THIRD;
-        if (matchingCount == 5)
-            return SECOND;
         return Arrays.stream(당첨.values())
                 .filter(당첨 -> 당첨.matchingNumbers == matchingCount)
                 .findFirst()

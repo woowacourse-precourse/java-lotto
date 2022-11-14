@@ -38,7 +38,7 @@ public class Lotto {
             if (winningSet.contains(number))
                 matchingCount++;
         }
-        return 당첨.getRank(matchingCount, !winningSet.contains(bonusNumber));
+        return 당첨.getRank(matchingCount, numbers.contains(bonusNumber));
     }
 
     @Override
