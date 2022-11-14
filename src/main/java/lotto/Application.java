@@ -9,9 +9,10 @@ import ui.UserInput;
 import java.util.List;
 import java.util.Map;
 
+import static util.Constant.DUPLICATE_BONUS_NUMBER_ERROR;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         try {
             LottoService lottoService = new LottoService();
 
@@ -19,6 +20,7 @@ public class Application {
             List<Lotto> lottos = publishLottos(lottoService, numberOfLotto);
             List<Integer> winningNumbers = enterWinningNumber();
             int bonusNumber = enterBonusNumber();
+            isDuplicatedBonusNumber(winningNumbers,bonusNumber);
 
             Map<Prize, Integer> winningDetails = lottoService.getWinningDetails(winningNumbers, lottos, bonusNumber);
             printUserLottoResult(lottoService, winningDetails);
@@ -52,6 +54,12 @@ public class Application {
         SystemMessage.askBonusNumbers();
         String bonusNumberInput = UserInput.enterBonusNumber();
         return InputConverter.getNumber(bonusNumberInput);
+    }
+
+    private static void isDuplicatedBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATE_BONUS_NUMBER_ERROR);
+        }
     }
 
     private static void printUserLottoResult(LottoService lottoService, Map<Prize, Integer> winningDetails) {
