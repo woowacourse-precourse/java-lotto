@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public class Bonus {
-    private static int bonusNumber;
+    private int bonusNumber;
 
     public Bonus(String input) {
         this.bonusNumber = validateBonusNumber(formatInput(input));
