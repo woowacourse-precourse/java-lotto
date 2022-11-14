@@ -26,7 +26,7 @@ public class LottoController {
         lottoWinNumberInfo = getLottoBonusNumber();
 
         // 4. 결재한 금액만큼 로또 생성
-        List<Lotto> lottoNumbers = getLottoNumbers(lottoPurchaseInfo.getLottoGameCount());
+        List<Lotto> lottoNumbers = createLottoNumbers(lottoPurchaseInfo.getLottoGameCount());
 
 }
 
@@ -47,7 +47,9 @@ public class LottoController {
         return lottoWinNumberInfo;
     }
 
-    private List<Lotto> getLottoNumbers(int lottoGameCount) {
+    private List<Lotto> createLottoNumbers(int lottoGameCount) {
+        List<Lotto> lottoNumbers = service.createLottoNumbers(lottoGameCount);
+        return lottoNumbers;
     }
 
     private void CreateLottoNumbers() {
