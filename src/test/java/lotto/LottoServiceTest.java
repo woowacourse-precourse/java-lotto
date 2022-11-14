@@ -2,8 +2,12 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import lotto.service.LottoService;
+import lotto.system.SystemMessage;
 import lotto.system.SystemValid;
 import lotto.type.ErrorType;
 import lotto.type.Rank;
@@ -35,13 +39,29 @@ public class LottoServiceTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("사용자 입력 정답 번호를 리스트로 변환되는 지 - 1")
+    @DisplayName("사용자 입력 정답 번호를 리스트로 변환되는 지")
     @Test
-    void createdLottoServiceByInputParseToList(){
+    void createdLottoServiceByInputParseToList() {
         List<Integer> winningNumbersOfSix = lottoService.winningInputParseToList("1,2,3,4,5,6");
         List<Integer> winningNumbersOfTree = lottoService.winningInputParseToList("1,2,3");
-        assertThat(winningNumbersOfSix).isEqualTo(List.of(1,2,3,4,5,6));
-        assertThat(winningNumbersOfTree).isEqualTo(List.of(1,2,3));
+        assertThat(winningNumbersOfSix).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(winningNumbersOfTree).isEqualTo(List.of(1, 2, 3));
+    }
+
+    @DisplayName("로또 당첨 내역 출력 정상적으로 나오는 지")
+    @Test
+    void createdSystemMessageByWinningHistory() {
+        OutputStream captor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(captor));
+        SystemMessage.winningHistory(List.of(Rank.FIVE, Rank.NONE, Rank.FIVE, Rank.THREE, Rank.TWO));
+
+        assertThat(captor.toString().trim()).contains(
+                "3개 일치 (5,000원) - 2개",
+                "4개 일치 (50,000원) - 0개",
+                "5개 일치 (1,500,000원) - 1개",
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                "6개 일치 (2,000,000,000원) - 0개"
+        );
     }
 
     @DisplayName("수익률이 62.5%가 나오는 지")

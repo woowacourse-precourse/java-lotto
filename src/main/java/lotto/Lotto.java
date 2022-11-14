@@ -59,8 +59,4 @@ public class Lotto {
         print = print.replaceAll(" ", ", ");
         System.out.println("[" + print + "]");
     }
-
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
 }
