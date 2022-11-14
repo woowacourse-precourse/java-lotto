@@ -26,6 +26,7 @@ public class Statistics {
         for (Lotto quickPick : quickPicks) {
             compareNum(quickPick, winningNumWithBonusList);
         }
+        double revenue = (totalPrize / (double) purchaseAmt) * 100;
     }
 
     private void compareNum(Lotto quickPick, LinkedList<Integer> winningNumWithBonusList) {
