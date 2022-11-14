@@ -2,10 +2,10 @@ package lotto.domain;
 
 public class LottoCount {
     private static final int LOTTO_PRICE = 1000;
-    private final int count;
+    private final int lottoCount;
 
     public LottoCount(Money money) {
-        this.count = countLottoByMoney(money);
+        this.lottoCount = countLottoByMoney(money);
     }
 
     private int countLottoByMoney(Money money) {
@@ -14,6 +14,6 @@ public class LottoCount {
     }
 
     public int getCount() {
-        return this.count;
+        return this.lottoCount;
     }
 }
