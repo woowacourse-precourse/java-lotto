@@ -2,47 +2,48 @@ package lotto;
 
 import java.util.Collections;
 import java.util.List;
-import lotto.Application.Places;
-import lotto.Application.NumberType;
-import static lotto.Application.noOfLottoWinAt;
+
 import static lotto.Application.numberType;
+import lotto.Application.NumberType;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        Collections.sort(numbers);
+        validate(numbers);
         this.numbers = numbers;
-        Collections.sort(this.numbers);
-        print(this.numbers);
-        updateResult(this.numbers);
+        set(this.numbers);
     }
 
-    private void print(List<Integer> numbers) { System.out.println(numbers); }
-
-    private Places compareResult(int countWinningNumbers, boolean isBonusNumber) {
-        if(countWinningNumbers < 3) return Places.NONE;
-        if(countWinningNumbers == 6) return Places.FIRST;
-        if(countWinningNumbers == 4) return Places.FOURTH;
-        if(countWinningNumbers == 3) return Places.FIFTH;
-        if(isBonusNumber) return Places.SECOND;
-        return Places.THIRD;
+    private void validate(List<Integer> numbers) {
+        hasSixNumbers(numbers);
+        isDuplicated(numbers);
+        checkRange(numbers);
     }
 
-    private Places countNumberTypes(List<Integer> numbers) {
-        int countWinningNumbers = 0;
-        boolean isBonusNumber = false;
+    private static void hasSixNumbers(List<Integer> numbers) {
+        if (numbers.size() != 6)
+            throw new IllegalArgumentException("당첨 번호는 쉼표로 구분되는 6개의 수로 구성돼야 합니다.");
+    }
+
+    private static void isDuplicated(List<Integer> numbers) {
+        boolean[] isWinningNumber = new boolean[46];
         for (int number : numbers) {
-            if(numberType[number] == NumberType.WINNING)
-                countWinningNumbers++;
-            if(numberType[number] == NumberType.BONUS)
-                isBonusNumber = true;
+            if (isWinningNumber[number])
+                throw new IllegalArgumentException("당첨 번호엔 중복된 숫자가 없어야 합니다.");
+            isWinningNumber[number] = true;
         }
-        return compareResult(countWinningNumbers, isBonusNumber);
     }
 
-    private void updateResult(List<Integer> numbers) {
-        Places result = countNumberTypes(numbers);
-        int count = noOfLottoWinAt.get(result);
-        noOfLottoWinAt.put(result, count + 1);
+    private static void checkRange(List<Integer> numbers) {
+        for (int number : numbers)
+            if (number > 45 || number < 1)
+                throw new IllegalArgumentException("당첨 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
+    }
+
+    private static void set(List<Integer> winningNumbers) {
+        for (int number : winningNumbers)
+            numberType[number] = NumberType.WINNING;
     }
 }

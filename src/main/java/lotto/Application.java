@@ -16,9 +16,10 @@ public class Application {
     static NumberType[] numberType = new NumberType[46];
     static public Map<Places, Integer> noOfLottoWinAt = new EnumMap<>(Places.class);
     static public Map<Places, Long> prizesAt = new EnumMap<>(Places.class);
+
     static List<List<Integer>> purchasedLottos = new ArrayList<>();
     static int noOfLottos;
-
+    static Lotto winningNumbers;
 
     public static void initializeNumberType() {
         for (int number = 1; number <= 45; number++)
@@ -40,12 +41,26 @@ public class Application {
     }
 
     public static void guidePurchasePriceFormat() {
-        System.out.println("구매 금액(원 단위)을 1000의 배수로 입력해 주세요(최대 20억원)");
+        System.out.println("구매 금액(원 단위)을 1000의 배수로 입력해 주세요(최대 20억원).");
+    }
+
+    public static void isVoidInput(String numberInput) {
+        if (numberInput.length() == 0)
+            throw new IllegalArgumentException("문자를 입력하십시오.");
+    }
+
+    public static void isInputNumber(String numberInput) {
+        int inputLength = numberInput.length();
+        for (int index = 0; index < inputLength; index++) {
+            char charAtIndex = numberInput.charAt(index);
+            if (isNumber(charAtIndex)) continue;
+            throw new IllegalArgumentException("숫자 외 다른 문자는 입력이 불가합니다.");
+        }
     }
 
     public static void isDividedBy1000(Long purchasePrice) {
         if (purchasePrice % 1000 != 0)
-            throw new IllegalArgumentException("금액을 1000원 단위로 입력해주세요.");
+            throw new IllegalArgumentException("금액을 1000원 단위로 입력해 주세요.");
     }
 
     public static void isLargerThan2billion(Long purchasePrice) {
@@ -71,7 +86,8 @@ public class Application {
 
     public static void generateLottoNumbers() {
         for (int no = 0; no < noOfLottos; no++) {
-            List<Integer> pickedNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> pickedNumbers =
+                    new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(pickedNumbers);
             purchasedLottos.add(pickedNumbers);
         }
@@ -82,12 +98,14 @@ public class Application {
             System.out.println(lotto);
     }
 
-    public static void guideWinningNumberFormat() { System.out.print("당첨 번호 6개를 쉼표로 구분해 입력해주세요: "); }
-
-    public static void isVoidInput(String numberInput) {
-        if (numberInput.length() == 0)
-            throw new IllegalArgumentException("문자를 입력하십시오.");
+    public static void purchaseLottos() {
+        getNoOfLotto();
+        printNoOfPurchasedLottos();
+        generateLottoNumbers();
+        printLottoNumbers();
     }
+
+    public static void guideWinningNumberFormat() { System.out.println("\n당첨 번호 6개를 쉼표로 구분해 입력해 주세요."); }
 
     public static boolean isComma(char charAtIndex) { return charAtIndex == ','; }
 
@@ -103,11 +121,6 @@ public class Application {
         }
     }
 
-    public static void hasSixNumbers(String[] winningNumbers) {
-        if (winningNumbers.length != 6)
-            throw new IllegalArgumentException("당첨 번호는 쉼표로 구분되는 6개의 수로 구성돼야 합니다.");
-    }
-
     public static List<Integer> parseNumbers(String[] splitNumbers) {
         List<Integer> winningNumbers = new ArrayList<>();
         for (String numberInString : splitNumbers) {
@@ -115,26 +128,6 @@ public class Application {
             winningNumbers.add(numberInInteger);
         }
         return winningNumbers;
-    }
-
-    public static void checkRange(List<Integer> numbers) {
-        for (int number : numbers)
-            if (number > 45 || number < 1)
-                throw new IllegalArgumentException("당첨 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
-    }
-
-    public static void isDuplicated(List<Integer> winningNumbers) {
-        boolean[] isWinningNumber = new boolean[46];
-        for (int number : winningNumbers) {
-            if (isWinningNumber[number])
-                throw new IllegalArgumentException("당첨 번호엔 중복된 숫자가 없어야 합니다.");
-            isWinningNumber[number] = true;
-        }
-    }
-
-    public static void checkNumberTypeByIndex(List<Integer> winningNumbers) {
-        for (int number : winningNumbers)
-            numberType[number] = NumberType.WINNING;
     }
 
     public static void getWinningNumbers() {
@@ -145,30 +138,21 @@ public class Application {
         isInputCommaAndNumber(winningNumberInput);
 
         String[] splitNumbers = winningNumberInput.split(",");
-        hasSixNumbers(splitNumbers);
-
-        List<Integer> winningNumbers = parseNumbers(splitNumbers);
-        checkRange(winningNumbers);
-        isDuplicated(winningNumbers);
-        checkNumberTypeByIndex(winningNumbers);
+        List<Integer> splitNumbersAsInteger = parseNumbers(splitNumbers);
+        winningNumbers = new Lotto(splitNumbersAsInteger);
     }
 
     public static void guideBonusNumberFormat() {
-        System.out.print("당첨 번호가 아닌 1이상 45이하의 숫자를 보너스 번호로 입력해주세요: ");
+        System.out.println("당첨 번호가 아닌 1이상 45이하의 숫자를 보너스 번호로 입력해 주세요.");
     }
 
-    public static void isInputNumber(String numberInput) {
-        int inputLength = numberInput.length();
-        for (int index = 0; index < inputLength; index++) {
-            char charAtIndex = numberInput.charAt(index);
-            if (isNumber(charAtIndex)) continue;
-            throw new IllegalArgumentException("숫자 외 다른 문자는 입력이 불가합니다.");
-        }
+    public static void checkRange(int number) {
+        if (number > 45 || number < 1)
+            throw new IllegalArgumentException("당첨 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
     }
 
-    public static void isDuplicatedWithWinningNumbers(List<Integer> bonusNumber) {
-        int bonus = bonusNumber.get(0);
-        if (numberType[bonus] == NumberType.WINNING)
+    public static void isDuplicatedWithWinningNumbers(int number) {
+        if (numberType[number] == NumberType.WINNING)
             throw new IllegalArgumentException("당첨번호가 아닌 다른 보너스 번호를 입력하십시오.");
     }
 
@@ -179,11 +163,39 @@ public class Application {
         isVoidInput(bonusNumberInput);
         isInputNumber(bonusNumberInput);
 
-        List<Integer> bonusNumber = new ArrayList<>();
-        bonusNumber.add(Integer.parseInt(bonusNumberInput));
+        int bonusNumber = Integer.parseInt(bonusNumberInput);
         checkRange(bonusNumber);
         isDuplicatedWithWinningNumbers(bonusNumber);
-        numberType[bonusNumber.get(0)] = NumberType.BONUS;
+        numberType[bonusNumber] = NumberType.BONUS;
+    }
+
+    public static Places compareResult(int countWinningNumbers, boolean isBonusNumber) {
+        if(countWinningNumbers < 3) return Places.NONE;
+        if(countWinningNumbers == 6) return Places.FIRST;
+        if(countWinningNumbers == 4) return Places.FOURTH;
+        if(countWinningNumbers == 3) return Places.FIFTH;
+        if(isBonusNumber) return Places.SECOND;
+        return Places.THIRD;
+    }
+
+    public static Places countNumberTypes(List<Integer> numbers) {
+        int countWinningNumbers = 0;
+        boolean isBonusNumber = false;
+        for (int number : numbers) {
+            if(numberType[number] == NumberType.WINNING)
+                countWinningNumbers++;
+            if(numberType[number] == NumberType.BONUS)
+                isBonusNumber = true;
+        }
+        return compareResult(countWinningNumbers, isBonusNumber);
+    }
+
+    public static void getComparisonResult() {
+        for (List<Integer> numbers :  purchasedLottos) {
+            Places result = countNumberTypes(numbers);
+            int count = noOfLottoWinAt.get(result);
+            noOfLottoWinAt.put(result, count + 1);
+        }
     }
 
     public static void printLottoResults() {
@@ -210,7 +222,7 @@ public class Application {
 
     public static double getEarningsRate() {
         long totalWinningPrizes = sumWinningPrizes();
-        return (double)totalWinningPrizes / (noOfLottos * 1000);
+        return (double)totalWinningPrizes / (noOfLottos*1000)*100;
     }
 
     public static void printEarningsRate() {
@@ -223,15 +235,12 @@ public class Application {
         initializeNoOfLottoWinAt();
         initializePrizesAtPlaces();
 
-        getNoOfLotto();
-        printNoOfPurchasedLottos();
-        generateLottoNumbers();
-        printLottoNumbers();
+        purchaseLottos();
+        getWinningNumbers();
+        getBonusNumber();
 
-//        getWinningNumbers();
-//        getBonusNumber();
-//
-//        printLottoResults();
-//        printEarningsRate();
+        getComparisonResult();
+        printLottoResults();
+        printEarningsRate();
     }
 }
