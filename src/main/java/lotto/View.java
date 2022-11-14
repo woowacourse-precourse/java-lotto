@@ -48,8 +48,8 @@ public class View {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다");
         }
     }
-    private void validateNumberOfNumbers(List<Integer> numbers, int size) {
-        if (numbers.size() != size) {
+    private void validateNumberOfNumbers(List<Integer> numbers) {
+        if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 당첨번호 총 6개를 입력해야 합니다");
         }
     }
@@ -61,7 +61,7 @@ public class View {
     private List<Integer> validateWinnerInput(String input) {
         List<Integer> numbersInteger = validateAreNumbers(input);
         validateNumbersInRange(numbersInteger);
-        validateNumberOfNumbers(numbersInteger, 6);
+        validateNumberOfNumbers(numbersInteger);
         validateUniqueNumbersInput(numbersInteger);
         return numbersInteger;
     }
@@ -69,18 +69,19 @@ public class View {
         int bonus = validateIsNumber(input);
         validateNumberInRange(bonus);
         validateUniqueNumberInput(numbers, bonus);
+        return bonus;
     }
     public int getMoneyInput() {
         String moneyString = Console.readLine();
         int money = validateIsNumber(moneyString);
         return validateIsDivisible(money);
     }
-    public List<Integer> getUniqueNumbersInput() {
+    public List<Integer> getWinnerInput() {
         String numbersString = Console.readLine();
         List<Integer> numbersInteger = validateWinnerInput(numbersString);
         return numbersInteger;
     }
-    public int getBonusNumberInput(List<Integer> numbers) {
+    public int getBonusInput(List<Integer> numbers) {
         String bonusString = Console.readLine();
         int bonus = validateBonusInput(bonusString, numbers);
         return bonus;
