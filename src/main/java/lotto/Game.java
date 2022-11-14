@@ -72,4 +72,7 @@ public class Game {
         return sumOfPrize;
     }
 
+    double calculateProfitRate(int sumOfPrize, int purchase){
+        return (sumOfPrize / (double)purchase) * 100;
+    }
 }
