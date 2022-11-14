@@ -1,6 +1,7 @@
 package util;
 
 import lotto.Lotteries;
+import lotto.Lotto;
 import lotto.LottoResult;
 import lotto.Match;
 
@@ -21,5 +22,9 @@ public class Output {
         System.out.println("5개 일치 (1,500,000원) - " + lottoResult.getLottoMatchCountByKey(Match.FIVE) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoResult.getLottoMatchCountByKey(Match.FIVE_WITH_BONUS) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + lottoResult.getLottoMatchCountByKey(Match.SIX) + "개");
+    }
+
+    public static void printProfit(double yield) {
+        System.out.println("총 수익률은 " + yield + "%입니다.");
     }
 }
