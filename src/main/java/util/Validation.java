@@ -30,7 +30,7 @@ public class Validation {
 
     // 보너스 번호가 숫자로 구성되어있는지 검증하는 기능
     public static void validateBonusNumberConsistOfNum(String bonusNumber) {
-        if (!bonusNumber.matches(BONUS_NUMBER_REGEX)) {
+        if (!bonusNumber.matches(NUMBER_REGEX)) {
             throw new IllegalArgumentException(ERROR_MSG_NOT_NUMBER);
         }
     }
