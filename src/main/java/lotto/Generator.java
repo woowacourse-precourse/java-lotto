@@ -7,12 +7,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class Generator {
-    static final int STARTNUMBER = 1;
-    static final int ENDNUMBER = 45;
+    static final int START_NUMBER = 1;
+    static final int END_NUMBER = 45;
     static final int COUNT = 6;
 
     public static List<Integer> creatNumber() {
-        List<Integer> bundle = Randoms.pickUniqueNumbersInRange(STARTNUMBER, ENDNUMBER, COUNT);
+        List<Integer> temp = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, COUNT);
+        List<Integer> bundle = new ArrayList<>(temp);
         Collections.sort(bundle);
         return bundle;
     }
