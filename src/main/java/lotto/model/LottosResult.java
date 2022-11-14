@@ -50,13 +50,22 @@ public class LottosResult {
 
     @Override
     public String toString() {
-        String result = "당첨 통계\n---\n" +
-                String.format("3개 일치 (5,000원) - %d개\n", lottosResult.get(FIFTH_PRIZE_COUNT_POSITION)) +
-                String.format("4개 일치 (50,000원) - %d개\n", lottosResult.get(FOURTH_PRIZE_COUNT_POSITION)) +
-                String.format("5개 일치 (1,500,000원) - %d개\n", lottosResult.get(THIRD_PRIZE_COUNT_POSITION)) +
-                String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", lottosResult.get(SECOND_PRIZE_COUNT_POSITION)) +
-                String.format("6개 일치 (2,000,000,000원) - %d개\n", lottosResult.get(FIRST_PRIZE_COUNT_POSITION));
+        String result = Formats.HEAD +
+                String.format(Formats.FIFTH_LOTTO_PRIZE_MESSAGE, lottosResult.get(FIFTH_PRIZE_COUNT_POSITION)) +
+                String.format(Formats.FOURTH_LOTTO_PRIZE_MESSAGE, lottosResult.get(FOURTH_PRIZE_COUNT_POSITION)) +
+                String.format(Formats.THIRD_LOTTO_PRIZE_MESSAGE, lottosResult.get(THIRD_PRIZE_COUNT_POSITION)) +
+                String.format(Formats.SECOND_LOTTO_PRIZE_MESSAGE, lottosResult.get(SECOND_PRIZE_COUNT_POSITION)) +
+                String.format(Formats.FIRST_LOTTO_PRIZE_MESSAGE, lottosResult.get(FIRST_PRIZE_COUNT_POSITION));
 
         return result;
+    }
+
+    private static class Formats {
+        private static final String HEAD = "당첨 통계\n---\n";
+        private static final String FIFTH_LOTTO_PRIZE_MESSAGE = "3개 일치 (5,000원) - %d개\n";
+        private static final String FOURTH_LOTTO_PRIZE_MESSAGE = "4개 일치 (50,000원) - %d개\n";
+        private static final String THIRD_LOTTO_PRIZE_MESSAGE = "5개 일치 (1,500,000원) - %d개\n";
+        private static final String SECOND_LOTTO_PRIZE_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
+        private static final String FIRST_LOTTO_PRIZE_MESSAGE = "6개 일치 (2,000,000,000원) - %d개\n";
     }
 }
