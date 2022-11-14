@@ -12,7 +12,7 @@ public class Constants {
         public static final String FIVE_HIT = "5개 일치 (1,500,000원) - %d개";
         public static final String FIVE_BONUS_HIT = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
         public static final String SIX_HIT = "6개 일치 (2,000,000,000원) - %d개";
-        public static final String TOTAL_PROFIT_PERCENT = "총 수익률은 %s%입니다.";
+        public static final String TOTAL_PROFIT_PERCENT = "총 수익률은 %s%%입니다.";
     }
 
     public static class Util {
