@@ -51,15 +51,15 @@ public class Lotto {
     }
 
 
-    //당첨통계
+
     public static void toResult(Integer number, int Countlotto) {
         User user = new User();
-        // [1,2,3,4,5,6] 처럼 로또번호 입력값
+
         String lottoInput = user.lottoListSix();
         List<Integer> lottoToList = user.lottoToList(lottoInput);
-        // [] 랜덤으로 나오는 숫자
+
         List<List<Integer>> lottoRandomNumber = user.lottoRandomNumber((Integer) (Countlotto));  //숫자에서 숫자로 형변환시킬때
-        // [1,2,3,4,5,6] == []랜덤 으로 비교해서 안에없으면 넣어주기 카운트 또한 증가
+
         int cnt = 0;
         for (int i = 0; i < number; i++) {
             if (!lottoRandomNumber.contains(lottoToList))
@@ -86,7 +86,7 @@ public class Lotto {
         return Bonuse;
     }
 
-    // 해당하는 숫자에 도착하면 나오는 결과값 한번에 출력
+
     public int[] ScoreNumber(List<Integer> correct, List<Boolean> BonusBoolean) {
 
 
