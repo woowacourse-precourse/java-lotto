@@ -7,6 +7,13 @@ public enum PrinterType {
         public Printer getPrinter() {
             return new TextPrinter();
         }
+    },
+
+    MODEL_PRINTER {
+        @Override
+        public Printer getPrinter() {
+            return new ModelPrinter();
+        }
     };
 
     public abstract Printer getPrinter();
