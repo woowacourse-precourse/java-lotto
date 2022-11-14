@@ -13,6 +13,7 @@ public class LottoMachine {
 
     private final Input input;
     private final NumberGenerator numberGenerator;
+    private final Statistics statistics;
 
     private LinkedList<Integer> winningNumWithBonusList;
     private List<Lotto> quickPicks;
@@ -21,6 +22,7 @@ public class LottoMachine {
     public LottoMachine() {
         this.input = new Input(new PurchaseAmtValidator(), new WinningNumberValidator(), new BonusNumberValidator());
         this.numberGenerator = new NumberGenerator();
+        this.statistics = new Statistics();
     }
 
     public void start() {
@@ -28,10 +30,16 @@ public class LottoMachine {
             purchaseAmt = input.enterPurchaseAmt();
             quickPicks = numberGenerator.getQuickPick(purchaseAmt);
             winningNumWithBonusList = input.enterWinningNumber();
+
+            printStatistics();
         } catch (IllegalArgumentException e) {
             Output.printIllegalArgumentException(e.getMessage());
         }
 
+    }
+
+    private void printStatistics() {
+        statistics.winningStatistics(quickPicks, winningNumWithBonusList, purchaseAmt);
     }
 
 }
