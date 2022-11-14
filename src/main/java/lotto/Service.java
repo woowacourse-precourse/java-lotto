@@ -15,37 +15,37 @@ public class Service {
     Exception exception = new Exception();
 
 
-    public int stringToInt(String string) {
-        if(!isInteger(string)){
+    public int toInt(String string) {
+        if (!isInteger(string)) {
             exception.isNotIntegerException();
         }
         return Integer.parseInt(string);
     }
 
     public boolean isInteger(String string) {
-        if(string.matches(NUMBER_REGEX) == false) {
+        if (string.matches(NUMBER_REGEX) == false) {
             return false;
         }
         return true;
     }
 
     public boolean isDividedByLotteryPrice(int money) {
-        if(money % LOTTERY_PRICE != 0) {
+        if (money % LOTTERY_PRICE != 0) {
             return false;
         }
         return true;
     }
 
     public int numberOfLottery(int money) {
-        if(!isDividedByLotteryPrice(money)) {
+        if (!isDividedByLotteryPrice(money)) {
             exception.isMoneyUnitException();
         }
-        int lotteryCount = money/LOTTERY_PRICE;
+        int lotteryCount = money / LOTTERY_PRICE;
         return lotteryCount;
     }
 
     public List<Lotto> createLotteryTickets(int numberOfTickets, LottoGroup lottoGroup) {
-        for(int count = 0; numberOfTickets > count; count++) {
+        for (int count = 0; numberOfTickets > count; count++) {
             lottoGroup.createLotto();
         }
         return lottoGroup.getAllLotteryTickets();
@@ -58,9 +58,9 @@ public class Service {
     public List<Integer> toIntegers(List<String> strings) {
         List<Integer> integers = new ArrayList<>();
 
-        for(String string : strings) {
+        for (String string : strings) {
             int number = 0;
-            if(!isInteger(string)) {
+            if (!isInteger(string)) {
                 exception.isNotIntegerException();
             }
             number = Integer.parseInt(string);
@@ -71,19 +71,19 @@ public class Service {
     }
 
     public RankType getLotteryRank(Lotto lotto, WinningNumber winningNumber) {
-       int matchNumberCount = matchNumberCount(lotto.getNumbers(), winningNumber.getLotto().getNumbers());
+        int matchNumberCount = matchNumberCount(lotto.getNumbers(), winningNumber.getLotto().getNumbers());
 
-       boolean isMatchNumber = true;
+        boolean isMatchNumber = true;
 
-       if(matchNumberCount == BONUS_CRITERIA) {
-           isMatchNumber = isMatchNumber(winningNumber.getBonus(), lotto.getNumbers());
-       }
-       return RankType.findRankType(matchNumberCount, isMatchNumber);
+        if (matchNumberCount == BONUS_CRITERIA) {
+            isMatchNumber = isMatchNumber(winningNumber.getBonus(), lotto.getNumbers());
+        }
+        return RankType.findRankType(matchNumberCount, isMatchNumber);
     }
 
     public List<RankType> getLotteriesRanks(LottoGroup lottoGroup, WinningNumber winningNumber) {
         List<RankType> rankTypes = new ArrayList<>();
-        for(Lotto lotto : lottoGroup.getAllLotteryTickets()) {
+        for (Lotto lotto : lottoGroup.getAllLotteryTickets()) {
             rankTypes.add(getLotteryRank(lotto, winningNumber));
         }
         return rankTypes;
@@ -92,8 +92,8 @@ public class Service {
 
     public int matchNumberCount(List<Integer> numbers, List<Integer> comparisonCriteria) {
         int count = 0;
-        for(int loopCount = 0; numbers.size() > loopCount; loopCount++) {
-            if(comparisonCriteria.contains(numbers.get(loopCount))) {
+        for (int loopCount = 0; numbers.size() > loopCount; loopCount++) {
+            if (comparisonCriteria.contains(numbers.get(loopCount))) {
                 count++;
             }
         }
@@ -101,7 +101,7 @@ public class Service {
     }
 
     public boolean isMatchNumber(int number, List<Integer> comparisonCriteria) {
-        if(comparisonCriteria.contains(number)) {
+        if (comparisonCriteria.contains(number)) {
             return true;
         }
         return false;
@@ -110,7 +110,7 @@ public class Service {
     public int sumAllWinnings(List<RankType> rankTypes) {
         int allWinnings = 0;
 
-        for(RankType rankType : rankTypes) {
+        for (RankType rankType : rankTypes) {
             allWinnings += rankType.getReward();
         }
         return allWinnings;

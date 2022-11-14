@@ -28,7 +28,7 @@ public class ServiceTest {
     @DisplayName("문자열을 정수로 변경시키는 메서드 테스트")
     @Test
     void stringToIntTest_success() {
-        assertThat(service.stringToInt("1234"))
+        assertThat(service.toInt("1234"))
                 .isEqualTo(1234);
     }
 
@@ -36,7 +36,7 @@ public class ServiceTest {
     @Test
     void stringToIntTest_exception() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> service.stringToInt("1로또234"));
+                .isThrownBy(() -> service.toInt("1로또234"));
     }
 
     @DisplayName("1000으로 나눠 값을 반환하는 메서드")
@@ -102,7 +102,7 @@ public class ServiceTest {
     @MethodSource("provideRankTypesAndCountEachRanks")
     void countByWinningRanksTest(List<RankType> rankTypes, List<Integer> eachRanksCount) {
         List<Integer> rankCounts = new ArrayList<>();
-        for(RankType rankType : RankType.values()) {
+        for (RankType rankType : RankType.values()) {
             int rankCount = Collections.frequency(rankTypes, rankType);
             rankCounts.add(rankCount);
         }
@@ -143,7 +143,7 @@ public class ServiceTest {
     private static Stream<Arguments> provideRankTypesAndCountEachRanks() {
         List<RankType> rankTypes = new ArrayList<>();
         return Stream.of(
-                Arguments.of(List.of(RankType.FIRST,RankType.FIRST, RankType.SECOND, RankType.THIRD), List.of(2, 1, 1, 0, 0, 0)),
+                Arguments.of(List.of(RankType.FIRST, RankType.FIRST, RankType.SECOND, RankType.THIRD), List.of(2, 1, 1, 0, 0, 0)),
                 Arguments.of(List.of(RankType.FOURTH, RankType.FOURTH, RankType.FOURTH), List.of(0, 0, 0, 3, 0, 0)),
                 Arguments.of(List.of(RankType.NONE, RankType.NONE, RankType.NONE), List.of(0, 0, 0, 0, 0, 3))
         );

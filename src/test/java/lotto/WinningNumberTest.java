@@ -15,7 +15,7 @@ public class WinningNumberTest {
 
     @BeforeEach
     void createLotto() {
-        lotto = new Lotto(List.of(1,2,3,4,5,6));
+        lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
     }
 
     @DisplayName("보너스 번호가 당첨 번호와 중복되거나 1~45에 해당하지 않으면 예외가 발생한다.")
