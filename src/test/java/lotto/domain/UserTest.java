@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,10 +9,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class UserTest {
 
     User user;
+    UserService userService;
 
     @BeforeEach
     void beforeEach() {
         user = new User();
+        userService = new UserService();
     }
     
     @Test
@@ -21,7 +24,7 @@ class UserTest {
         double winningAmount = 3000.0;
         user.setWinningAmount(winningAmount);
 
-        user.calculateYield();
+        userService.calculateYield(user);
         double expect = 33.3;
         assertThat(user.getYield()).isEqualTo(expect);
     }
