@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoGameController {
-    private LottoMachine lottoMachine = new LottoMachine();
-    private LottoReader lottoReader = new LottoReader();
+    private final LottoMachine lottoMachine = new LottoMachine();
+    private final LottoReader lottoReader = new LottoReader();
 
     public void start() {
         printPurchaseMoneyInput();
