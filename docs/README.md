@@ -15,20 +15,20 @@
   - 잘못된 값이 들어온 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다. 
 - [x] 저장된 로또 번호를 오름차순으로 정렬한다.
 ### 구매자 - Buyer
-- [ ] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다. - buyLotto
-  - [ ] 로또 구입 금액을 입력 받는다. - inputSeedMoney
-    - 로또 구입 안내 문구를 출력한다. - printInputSeedMoney
-    - 로또 구입 금액을 검증한다. - validateSeedMoney
-      - 입력된 금액은 숫자(int)여야 한다.
-      - 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다.
-      - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
-- [ ] 당첨 내역을 출력한다. - checkPrize
-  - 당첨 통계 확인 ... - requestPrizeToStore
-  - 당첨 내역 출력 - printPrize
-- [ ] 수익률을 출력한다. - checkRate
-  - 수익률 계산하기 = 최종수익 / 구매가격 - calcRate
-  - 수익률은 소수점 둘째 자리에서 반올림한다. (ex. 100.0%, 51.5%, 1,000,000.0%) - roundRate
-  - 수익률 출력하기.. format: 총 수익률은 n%입니다. - printRate
+- [x] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다. - buyLotto
+- [x] 로또 구입 금액을 입력 받는다. - inputSeedMoney
+  - [x] 로또 구입 안내 문구를 출력한다. - printInputSeedMoney
+  - [x] 로또 구입 금액을 검증한다. - validateSeedMoney
+    - 입력된 금액은 숫자(int)로만 이루어져있어야 한다.
+    - 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. -> Store에서 처리
+    - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
+- [x] 당첨 내역을 출력한다. - checkPrize
+  - [x] 당첨 통계 확인 ... - requestPrizeToStore
+  - [x] 당첨 내역 출력 - printPrize
+- [x] 수익률을 출력한다. - checkRate
+  - [x] 수익률 계산하기 = 최종수익 / 구매가격 - calcRate
+  - [x] 수익률은 소수점 둘째 자리에서 반올림한다. (ex. 100.0%, 51.5%, 1,000,000.0%) - roundRate
+  - [x] 수익률 출력하기.. format: 총 수익률은 n%입니다. - printRate
 ### 로또 가게 - Store
 - [x] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다. - sellLotto
   - [x] 로또 1장의 가격은 1,000원이다. - validateInputMoney
@@ -38,6 +38,8 @@
 - [x] 당첨 확인: 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역을 반환 - checkPrize
   - [x] 보너스 번호가 있는지 확인한다. - hasBonusNumber
   - [x] 당첨번호와 몇개나 일치하는지 확인한다. - countMatchingNumbers
+- [x] 외부에서 전달받은 1등번호와 보너스번호를 저장하는 기능 - setWinningLotto, setBonusNumber
+  - [x] 전달받은 번호들이 있는지 확인
 ### 상품 정보 - Prize
 - [x] 등수별 상품 정보를 담아둔다. 
   - 당첨은 1등부터 5등까지 있다. 당첨 기준과 금액은 아래와 같다.
