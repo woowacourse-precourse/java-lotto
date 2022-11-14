@@ -5,7 +5,8 @@ import constants.LottoConstant;
 public enum IllegalArgument {
     // Number
     NOT_SET_SIZE(String.format("숫자의 개수가 %d개가 아닙니다.", LottoConstant.NUMBERS_SIZE)),
-    NOT_IN_RANGE(String.format("숫자 중, %d~%d의 범위를 벗어난 숫자가 있습니다.", LottoConstant.NUMBER_START, LottoConstant.NUMBER_END)),
+    NOT_IN_RANGE(String.format("숫자 중, %d~%d의 범위를 벗어난 숫자가 있습니다."
+            , LottoConstant.NUMBER_START, LottoConstant.NUMBER_END)),
     DUPLICATION("중복된 값이 존재합니다."),
 
     // Input
