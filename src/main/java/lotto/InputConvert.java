@@ -11,9 +11,11 @@ public class InputConvert {
     }
     private static void lottoValidate(String input) {
         if(isInputLengthZero(input)){
+            System.out.print("[ERROR] 아무것도 입력되지 않았습니다.");
             throw new IllegalArgumentException();
         }
         if(isAllCharacterNumberAndComma(input)){
+            System.out.print("[ERROR] 입력 형식에 맞게 입력되어야 합니다.");
             throw new IllegalArgumentException();
         }
     }
