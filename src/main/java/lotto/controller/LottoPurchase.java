@@ -2,6 +2,7 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
+import lotto.view.ResultPrint;
 import lotto.view.UserInputHelper;
 
 import java.util.ArrayList;
@@ -11,9 +12,11 @@ public class LottoPurchase {
     public static final int LOTTO_PRICE = 1000;
 
     private UserInputHelper userInputHelper;
+    private ResultPrint resultPrint;
 
     public LottoPurchase() {
         userInputHelper = new UserInputHelper();
+        resultPrint = new ResultPrint();
     }
 
     public List<Lotto> purchaseLottos() {
@@ -31,13 +34,14 @@ public class LottoPurchase {
         String userInput = Console.readLine();
         int purchaseAmount = userInputIsNumber(userInput);
         lottoPriceUnitsValidate(purchaseAmount);
-
         return purchaseAmount;
     }
 
     private int purchaseAmountDividedByLottoPrice(int purchaseAmount) {
         lottoPriceUnitsValidate(purchaseAmount);
-        return purchaseAmount / LOTTO_PRICE;
+        int numberOfPurchase = purchaseAmount / LOTTO_PRICE;
+        resultPrint.numberOfPurchase(numberOfPurchase);
+        return numberOfPurchase;
     }
 
     private int userInputIsNumber(String userInput) {
