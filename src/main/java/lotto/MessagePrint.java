@@ -22,4 +22,8 @@ public class MessagePrint {
 	public void inputWinNumPrint() {
 		System.out.println(Constants.INPUT_LOTTO_NUMBER_PRINT);
 	}
+
+	public void inputBonusNumPrint() {
+		System.out.println(Constants.INPUT_BONUS_NUMBER_PRINT);
+	}
 }
