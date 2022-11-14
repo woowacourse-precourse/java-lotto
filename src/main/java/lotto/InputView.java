@@ -8,13 +8,18 @@ import java.util.List;
 public class InputView {
 
     private static final String DELIMITER = ",";
-
+    private static final long MINIMUM_UNIT = 1000L;
+    private static final long ZERO = 0L;
     private InputView(){}
 
     static public Calculator inputMoney() {
         Message.INPUT_MONEY.print();
         String input = Console.readLine();
-        validateMoney(input);
+        try {
+            validateMoney(input);
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
         long money = Long.parseLong(input);
         return new Calculator(money);
     }
@@ -26,7 +31,7 @@ public class InputView {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
         }
-        if (money % 1000 != 0 || money == 0) {
+        if (money % MINIMUM_UNIT != ZERO || money == ZERO) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_1000.printError());
         }
     }
