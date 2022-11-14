@@ -26,7 +26,7 @@ public class Application {
 
         Lotto lotto = new Lotto(basicWinningNumbers);
         List<Integer> winningCounter = lotto.countMatches(purchasedLottos);
-        List<Boolean> winningBonus = lotto.checkBonusMatch(bonusNumber,purchasedLottos);
+        List<Boolean> winningBonus = lotto.matchBonus(bonusNumber,purchasedLottos);
 
         Map<WinningNumbers, Long> winningCaseStatistics = lotto.countWinningCase(winningCounter, winningBonus);
         double rawRewardRate = lotto.calculateRewardRate(winningCounter, winningBonus, startMoney);

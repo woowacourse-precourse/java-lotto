@@ -44,7 +44,7 @@ public class Lotto {
         return result;
     }
 
-    public List<Boolean> checkBonusMatch(int bonusNumber, List<List<Integer>> lottoBundle) {
+    public List<Boolean> matchBonus(int bonusNumber, List<List<Integer>> lottoBundle) {
         List<Boolean> result = new ArrayList<>();
         for (List<Integer> singleLotto : lottoBundle) {
             result.add(singleLotto.contains(bonusNumber));
