@@ -63,11 +63,12 @@ public class ConfirmWinning {
 
 	private void countRank() {
 		List<IssueLottoInfo> issueLottos = lottoGameInfo.getIssueLotto();
-		Map<Integer, Integer> result = lottoGameInfo.getResult();
+		List<Integer> result = lottoGameInfo.getResult();
 		for (IssueLottoInfo lotto : issueLottos) {
 			int rank = lotto.getWinningRanking();
 			if (rank != 0) {
-				result.put(rank,result.get(rank)+1);
+				int cnt = result.get(rank-1)+1;
+				result.set(rank-1, cnt);
 			}
 		}
 
