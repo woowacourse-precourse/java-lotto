@@ -8,9 +8,9 @@ import java.util.List;
 public class Lottos {
     private final List<Lotto> lottos;
 
-    public Lottos(LottoNumber lottoNumber) {
+    public Lottos(NumberOfLotto numberOfLotto) {
         // LottoNumber lottoNumber = new LottoNumber();
-        int number = lottoNumber.getLottoNumber();
+        int number = numberOfLotto.getNumberOfLotto();
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < number; i++) {

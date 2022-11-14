@@ -1,15 +1,15 @@
 package lotto;
 
-public class LottoNumber {
+public class NumberOfLotto {
     private final int number;
 
-    public LottoNumber(Money money) {
+    public NumberOfLotto(Money money) {
         // Money money = new Money();
-        this.number = computeLottoNumber(money.getMoney());
+        this.number = computeNumberOfLotto(money.getMoney());
         printGuideMessage();
     }
 
-    private int computeLottoNumber(int money) {
+    private int computeNumberOfLotto(int money) {
         final int LOTTO_SELLING_PRICE = 1000;
 
         return money / LOTTO_SELLING_PRICE;
@@ -21,7 +21,7 @@ public class LottoNumber {
         System.out.println(this.number + GUIDE_MESSAGE);
     }
 
-    public int getLottoNumber() {
+    public int getNumberOfLotto() {
         return this.number;
     }
 }

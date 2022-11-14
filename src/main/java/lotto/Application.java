@@ -5,8 +5,8 @@ public class Application {
         try {
             Money money = new Money();
             System.out.println();
-            LottoNumber lottoNumber = new LottoNumber(money);
-            Lottos lottos = new Lottos(lottoNumber);
+            NumberOfLotto numberOfLotto = new NumberOfLotto(money);
+            Lottos lottos = new Lottos(numberOfLotto);
             System.out.println();
             WinningNumbers winningNumbers = new WinningNumbers();
             System.out.println();
