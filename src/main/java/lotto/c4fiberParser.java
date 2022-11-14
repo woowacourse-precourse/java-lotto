@@ -7,23 +7,21 @@ import java.util.stream.Collectors;
 
 public class c4fiberParser {
     public static Integer getIntegerFromString(String input) {
-        if (!isParsable(input)) {
-            return 0;
-            //throw new IllegalArgumentException();
+        if (isParsable(input)) {
+            Integer.parseInt(input);
         }
 
-        return Integer.parseInt(input);
+        return 0;
     }
 
     public static List<Integer> getIntegerListFromString(String input) {
-        if (!isParsable(input)) {
-            return Collections.emptyList();
-            // throw new IllegalArgumentException();
+        if (isParsable(input)) {
+            return Arrays.stream(input.split(","))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
         }
 
-        return Arrays.stream(input.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        return Collections.emptyList();
     }
 
     private static boolean isParsable(String input) {
