@@ -25,6 +25,15 @@ public class LottoResult {
         return this.winningScoreResult;
     }
 
+    public double computeRateOfReturn(int purchaseAmount) {
+        double totalAmount = 0;
+        for (Map.Entry<WinningScore, Integer> score : winningScoreResult.entrySet()) {
+            totalAmount += score.getKey().getMoney() * score.getValue();
+        }
+        double rate = totalAmount / purchaseAmount * 100;
+        return Math.round(rate * 100) / 100.0;
+    }
+
     public void computeWinningScore(Lotto userLotto, Lotto winningLotto) {
         WinningScore winningScore = compareNumber(userLotto.getNumbers(), winningLotto.getNumbers());
         if (isBonusScore(winningScore, userLotto.getNumbers())) {
