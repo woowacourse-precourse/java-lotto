@@ -90,6 +90,16 @@ class PrizeTest {
         });
     }
 
+    @DisplayName("이미 존재하는 번호를 입력하면 오류가 발생한다..")
+    @Test
+    void bonusNumbersDuplicatedInputTest() {
+        prize.setPrizeNumbers(List.of(1,2,3,4,5,6));
+        ScannerInput("5");
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            prize.inputBonusNumber();
+        });
+    }
+
     @DisplayName("1~45사이의 올바른 숫자를 입력하면 통과한다.")
     @Test
     void bonusNumbersInputTest() {
@@ -98,6 +108,8 @@ class PrizeTest {
         int bonusNumber = prize.getBonusNumber();
         Assertions.assertEquals(bonusNumber, 5);
     }
+
+
 
     private void ScannerInput(String systemInput) {
         InputStream input = generateUserInput(systemInput);
