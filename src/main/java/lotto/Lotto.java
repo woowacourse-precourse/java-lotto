@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -8,6 +9,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+        sortByAsc();
     }
 
     private void validate(List<Integer> numbers) {
@@ -18,5 +20,9 @@ public class Lotto {
 
     public List<Integer> get() {
         return numbers;
+    }
+
+    public void sortByAsc() {
+        this.numbers.sort(Comparator.naturalOrder());
     }
 }
