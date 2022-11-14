@@ -231,11 +231,11 @@ public class Lotto {
 
 -[x] 구입 가격을 입력 받는 메서드 - `getPerchasePrice`
     -[x] 1000으로 나눠떨어지지 않는 경우 예외 처리 - `IllegalArgumentException`
--[ ] 구입 가격을 기준으로 발행한 로또의 수량 및 번호를 출력한다. `publishPerchasedLottoNumbers`
+-[x] 구입 가격을 기준으로 발행한 로또의 수량 및 번호를 출력한다. `publishPerchasedLottoNumbers`
 -[ ] 당첨 번호를 입력을 쉼표를 기준으로 입력받는 메서드 - `getLottoNumbers`
 -[x] 보너스 번호를 입력 받는다. `setLottoBonusNumber`
     -[x] 입력을 받을 때 범위를 벗어나거나 중복된 숫자가 들어오면 발생하는 예외 - `IllegalArgumentException`
--[ ] 각 일치하는 갯수에 대한 결과를 찾는 메서드 `findMatchCount`
+-[x] 각 일치하는 갯수에 대한 결과를 찾는 메서드 `findMatchCount`
     -[x] 구입한 로또 번호에 대해서 당첨 번호와 비교해서 몇개가 맞는지 확인하는 메서드 - `getMatchCountWithLotto`
 -[ ] 수익율 계산 메서드 - `getRateOfReturn`
 
@@ -247,3 +247,4 @@ public class Lotto {
 ## 고민하는 것들
 
 - 예외처리르 뺄까 말까?
+- `Lotto class`를 `Manager class`에 주입해서 의존성을 넣어볼까?
