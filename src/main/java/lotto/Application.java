@@ -12,7 +12,7 @@ public class Application {
     enum NumberType { WINNING, BONUS, NONE };
     enum Places { FIRST, SECOND, THIRD, FOURTH, FIFTH, NONE };
 
-    static NumberType[] numberTypeCheck = new NumberType[46];
+    static NumberType[] numberType = new NumberType[46];
     static public Map<Places, Integer> noOfLottoWinAt = new EnumMap<>(Places.class);
     static public Map<Places, Long> prizesAt = new EnumMap<>(Places.class);
     static int noOfLottos;
@@ -83,9 +83,9 @@ public class Application {
 
     public static void checkNumberTypeByIndex(List<Integer> winningNumbers) {
         for (int number = 1; number <= 45; number++)
-            numberTypeCheck[number] = NumberType.NONE;
+            numberType[number] = NumberType.NONE;
         for (int number : winningNumbers)
-            numberTypeCheck[number] = NumberType.WINNING;
+            numberType[number] = NumberType.WINNING;
     }
 
     public static void getWinningNumbers() {
@@ -117,9 +117,9 @@ public class Application {
         }
     }
 
-    public static void isDuplicatedWithWinningNumbers(NumberType[] numberTypeCheck, List<Integer> bonusNumber) {
+    public static void isDuplicatedWithWinningNumbers(List<Integer> bonusNumber) {
         int bonus = bonusNumber.get(0);
-        if (numberTypeCheck[bonus] == NumberType.WINNING)
+        if (numberType[bonus] == NumberType.WINNING)
             throw new IllegalArgumentException("당첨번호가 아닌 다른 보너스 번호를 입력하십시오.");
     }
 
@@ -133,8 +133,8 @@ public class Application {
         List<Integer> bonusNumber = new ArrayList<>();
         bonusNumber.add(Integer.parseInt(bonusNumberInput));
         checkRange(bonusNumber);
-        isDuplicatedWithWinningNumbers(numberTypeCheck, bonusNumber);
-        numberTypeCheck[bonusNumber.get(0)] = NumberType.BONUS;
+        isDuplicatedWithWinningNumbers(bonusNumber);
+        numberType[bonusNumber.get(0)] = NumberType.BONUS;
     }
 
     public static void guidePurchasePriceFormat() {
