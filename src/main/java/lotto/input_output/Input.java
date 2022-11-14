@@ -17,7 +17,7 @@ public class Input extends Valid {
     }
 
     protected static int returnInt(){// 정수형 반환
-        String input = Console.readLine();
+        String input = input();
         return Integer.parseInt(input);
     }
     protected static List<Integer> returnLotteryNumber(){
