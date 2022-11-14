@@ -140,4 +140,8 @@ public class OutputView {
     public static void printYield(final double yield) {
         System.out.printf(YIELD_PRINT_FORM, yield);
     }
+    
+    public static void printErrorMessage(final IllegalArgumentException raisedException) {
+        System.out.println(raisedException.getMessage());
+    }
 }

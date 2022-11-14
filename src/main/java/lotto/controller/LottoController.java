@@ -15,7 +15,7 @@ public class LottoController {
         try {
             playLottoDraw(inputPayment());
         } catch (IllegalArgumentException raisedException) {
-            System.out.println(raisedException.getMessage());
+            printErrorMessage(raisedException);
         }
     }
     
@@ -62,5 +62,9 @@ public class LottoController {
     
     private double calculateYield(final Payment payment, final LottoRanksDTO lottoRanksDTO) {
         return payment.calculateYield(lottoRanksDTO.getLottoRanks());
+    }
+    
+    private void printErrorMessage(final IllegalArgumentException raisedException) {
+        OutputView.printErrorMessage(raisedException);
     }
 }
