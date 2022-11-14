@@ -30,4 +30,14 @@ public class UserNumber {
         lotto.sort(Comparator.naturalOrder());
     }
 
+    public List<List> addLottos(int lottocount){
+        List<List> userlottos = new ArrayList<>();
+        for (int i = 0; i < lottocount; i++){
+            List<Integer> lotto = generateLotto();
+            sort(lotto);
+            userlottos.add(lotto);
+        }
+        return userlottos;
+    }
+
 }
