@@ -8,6 +8,7 @@ public class LottoConstant {
     public static final int LOTTO_NUMBER_RANGE_MIN = 1;
     public static final int LOTTO_NUMBER_RANGE_MAX = 45;
     public static final int LOTTO_PRICE = 1000;
+    public static final int LOTTO_COUNT_MAX = 100;
 
     public static class ExceptionMessage {
 
@@ -21,6 +22,7 @@ public class LottoConstant {
         public static final String INVALID_LOTTO_NUMBER_DUPLICATION = "로또 번호 각각은 서로 중복될 수 없습니다.";
         public static final String INVALID_BONUS_NUMBER_DUPLICATION = "보너스 번호는 당첨 번호와 중복될 수 없습니다.";
         public static final String INVALID_PURCHASE_MONEY_MIN = "로또 최소 구입 금액은 " + formatter.format(LOTTO_PRICE) + "원입니다.";
+        public static final String INVALID_PURCHASE_MONEY_MAX = "로또 최대 구입 금액은 " + formatter.format(LOTTO_PRICE * LOTTO_COUNT_MAX) + "원입니다.";
         public static final String INVALID_PURCHASE_MONEY_UNIT = "로또 구입 금액은 " + formatter.format(LOTTO_PRICE) + "원 단위이어야 합니다.";
     }
 }

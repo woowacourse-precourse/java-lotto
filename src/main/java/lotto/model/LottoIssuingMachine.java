@@ -46,6 +46,9 @@ public class LottoIssuingMachine {
         if (purchaseMoney < LOTTO_PRICE) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_PURCHASE_MONEY_MIN);
         }
+        if (purchaseMoney > LOTTO_PRICE * LOTTO_COUNT_MAX) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_PURCHASE_MONEY_MAX);
+        }
         if (purchaseMoney % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_PURCHASE_MONEY_UNIT);
         }
