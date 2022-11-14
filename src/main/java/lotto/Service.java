@@ -49,4 +49,26 @@ public class Service {
 		bonusLotto.setBonus(Integer.parseInt(number));
 	}
 
+	public void numberComparAferStore() {
+		for (List<Integer> onePurchaseLotto : purchaseLotto) {
+			for (int i = 0; i < lotto.getNumbers().size(); i++) {
+				checkNumberSame(lotto.getNumbers().get(i), onePurchaseLotto);
+			}
+			checkBonusNumberSame(bonusLotto.getBonus(), onePurchaseLotto);
+		}
+	}
+
+	public void checkNumberSame(int number, List<Integer> onePurchaseLotto) {
+		if (onePurchaseLotto.contains(number)) {
+			numberCount.guessCount();
+		}
+	}
+
+	public void checkBonusNumberSame(int bonus, List<Integer> onePurchaseLotto) {
+		if (onePurchaseLotto.contains(bonus)) {
+			numberCount.bonusGuessCount();
+			System.out.println(numberCount.getBonusGuess());
+		}
+	}
+
 }
