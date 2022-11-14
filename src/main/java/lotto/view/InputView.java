@@ -7,4 +7,9 @@ public class InputView {
         String purchaseAmountString = Console.readLine();
         return purchaseAmountString;
     }
+
+    public String inputWinningNumber() {
+        String winningNumberString = Console.readLine();
+        return winningNumberString;
+    }
 }
