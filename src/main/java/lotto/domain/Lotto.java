@@ -74,12 +74,8 @@ public final class Lotto {
     }
 
     public boolean contains(BonusNumber bonus) {
-        for (int number : numbers) {
-            if (bonus.isBonusNumber(number)) {
-                return true;
-            }
-        }
-        return false;
+        return numbers.stream()
+                .anyMatch(bonus::isBonusNumber);
     }
 
     public int calculateTotalSameCount(Lotto other) {
