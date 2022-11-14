@@ -7,20 +7,19 @@ import lotto.service.LottoIssueService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class LottoBoothTest {
-
+class LottoIssueServiceTest {
     @Test
     void 로또_티켓_발급_테스트() {
         int lottoCount = 10;
-        LottoTicket lottoTicket = LottoIssueService.issueLottoTicket(lottoCount);
+        LottoTicket lottoTicket = LottoIssueService.createLottoTicket(lottoCount);
         assertThat(lottoTicket.getLottoTicket().size()).isEqualTo(lottoCount);
     }
 
     @Test
     @DisplayName("0개 발급 요청시에는 ERROR 처리")
-    void 로또_티켓_0개_발급_테스트() {
+    void 로또_티켓_0개_발급_예외_발생() {
         int lottoCount = 0;
-        assertThatThrownBy(() -> LottoIssueService.issueLottoTicket(lottoCount))
+        assertThatThrownBy(() -> LottoIssueService.createLottoTicket(lottoCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
