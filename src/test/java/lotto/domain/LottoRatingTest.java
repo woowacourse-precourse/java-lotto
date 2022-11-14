@@ -26,7 +26,7 @@ class LottoRatingTest {
     @DisplayName("당첨 기준 확인 테스트")
     @ParameterizedTest
     @MethodSource("generateNumberParameter")
-    void checkWinningTest(List<Integer> lottoNumbers, List<Integer> winningNumbers, int bonusNumber, String tier) {
+    void checkWinningTest(List<Integer> lottoNumbers, List<Integer> winningNumbers, int bonusNumber, String rankName) {
         Lotto lotto = new Lotto(lottoNumbers);
         List<Lotto> lottoTicket = List.of(lotto);
         WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
@@ -34,18 +34,19 @@ class LottoRatingTest {
 
         lottoRating.rate();
 
-        assertThat(lottoRating.getWinningCountRepository().keySet().stream().findFirst().orElse(null)).isEqualTo(tier);
+        assertThat(lottoRating.getWinningCountRepository().keySet().stream().findFirst().orElse(null)).isEqualTo(
+                rankName);
     }
 
     static Stream<Arguments> generateNumberParameter() {
         List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         int bonusNumber = 7;
         return Stream.of(
-                Arguments.of(Arrays.asList(1, 2, 3, 24, 35, 36), winningNumbers, bonusNumber, "5등"),
-                Arguments.of(Arrays.asList(1, 2, 3, 4, 33, 40), winningNumbers, bonusNumber, "4등"),
-                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 40), winningNumbers, bonusNumber, "3등"),
-                Arguments.of(Arrays.asList(1, 2, 3, 5, 6, 7), winningNumbers, bonusNumber, "2등"),
-                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 6), winningNumbers, bonusNumber, "1등")
+                Arguments.of(Arrays.asList(1, 2, 3, 24, 35, 36), winningNumbers, bonusNumber, "FIFTH"),
+                Arguments.of(Arrays.asList(1, 2, 3, 4, 33, 40), winningNumbers, bonusNumber, "FOURTH"),
+                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 40), winningNumbers, bonusNumber, "THIRD"),
+                Arguments.of(Arrays.asList(1, 2, 3, 5, 6, 7), winningNumbers, bonusNumber, "SECOND"),
+                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 6), winningNumbers, bonusNumber, "FIRST")
         );
     }
 }
