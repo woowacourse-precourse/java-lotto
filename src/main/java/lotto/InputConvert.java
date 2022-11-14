@@ -10,11 +10,11 @@ public class InputConvert {
         return lottoConvert(input);
     }
     private static void lottoValidate(String input) {
-        if(isInputLengthZero(input)){
+        if (isInputLengthZero(input)) {
             System.out.print("[ERROR] 아무것도 입력되지 않았습니다.");
             throw new IllegalArgumentException();
         }
-        if(isAllCharacterNumberAndComma(input)){
+        if (!isAllCharacterNumberAndComma(input)) {
             System.out.print("[ERROR] 입력 형식에 맞게 입력되어야 합니다.");
             throw new IllegalArgumentException();
         }
@@ -25,7 +25,7 @@ public class InputConvert {
     private static boolean isAllCharacterNumberAndComma(String input) {
         String onlyNumber = input.replaceAll("[^0-9]", "");
         String[] numbers = input.split(",");
-        return input.length() - onlyNumber.length() + 1 != numbers.length;
+        return input.length() - onlyNumber.length() + 1 == numbers.length;
     }
     private static List<Integer> lottoConvert(String input) {
         String[] numbers = input.split(",");
@@ -34,5 +34,24 @@ public class InputConvert {
             convertedNumbers.add(Integer.parseInt(number));
         }
         return convertedNumbers;
+    }
+
+    public static int oneNumber(String input) {
+        oneNumberValidate(input);
+        return Integer.parseInt(input);
+    }
+    private static void oneNumberValidate(String input) {
+        if (isInputLengthZero(input)) {
+            System.out.print("[ERROR] 아무것도 입력되지 않았습니다.");
+            throw new IllegalArgumentException();
+        }
+        if (!isAllCharacterNumber(input)) {
+            System.out.print("[ERROR] 입력 형식에 맞게 입력되어야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+    private static boolean isAllCharacterNumber(String input) {
+        String onlyNumber = input.replaceAll("[^0-9]", "");
+        return onlyNumber.length() == input.length();
     }
 }
