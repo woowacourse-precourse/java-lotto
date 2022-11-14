@@ -69,4 +69,12 @@ public class LottoService {
 
         return profit;
     }
+
+    public String calculatePercent(int profit, int money) {
+        double result = (profit * 100) / (double) money;
+
+        String percent = String.format(".1f", result);
+
+        return percent;
+    }
 }
