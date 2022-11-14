@@ -16,6 +16,25 @@ public enum Rating {
         this.prize = prize;
     }
 
+    public static Rating checkTheRankings(int matchCount, boolean bonus){
+        if(matchCount == Rating.SECOND.getPrize() && bonus) {
+            return Rating.SECOND;
+        }
+        if(matchCount == Rating.FIRST.getPrize() && !bonus){
+            return Rating.FIRST;
+        }
+        if(matchCount == Rating.THIRD.getPrize() && !bonus){
+            return Rating.THIRD;
+        }
+        if(matchCount == Rating.FOURTH.getPrize() && !bonus){
+            return Rating.FOURTH;
+        }
+        if(matchCount == Rating.FIFTH.getPrize() && !bonus){
+            return Rating.FIFTH;
+        }
+        return Rating.NONE;
+    }
+
     public int getAccord() {
         return accord;
     }

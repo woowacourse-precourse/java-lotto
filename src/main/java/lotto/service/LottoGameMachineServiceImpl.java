@@ -28,7 +28,13 @@ public class LottoGameMachineServiceImpl implements LottoGameMachineService{
 
     @Override
     public LinkedHashMap<Rating, Integer> calculateStatistics() {
-        return null;
+        LinkedHashMap<Rating, Integer> statistics = setUpTheOrderMap();
+        for(Lotto lotto : repository.getLottoNumbers()){
+            Rating rating = lottoMatches(lotto.getNumbers());
+            if(rating.compareTo(Rating.NONE) == 0) continue;
+            statistics.put(rating, statistics.getOrDefault(rating, 0) + 1);
+        }
+        return statistics;
     }
 
     @Override
@@ -54,5 +60,24 @@ public class LottoGameMachineServiceImpl implements LottoGameMachineService{
     @Override
     public int readBonusNumber() {
         return repository.getBonusNumber();
+    }
+
+    private LinkedHashMap<Rating, Integer> setUpTheOrderMap() {
+        LinkedHashMap<Rating, Integer> map = new LinkedHashMap<>();
+        for(Rating rating : Rating.values()){
+            if(rating.compareTo(Rating.NONE) == 0) continue;
+            map.put(rating, 0);
+        }
+        return map;
+    }
+
+    private Rating lottoMatches(List<Integer> numbers) {
+        int matchCount = 0;
+        boolean bonus = false;
+        for(int number : numbers){
+            if(repository.getWinningNumbers().contains(number)) matchCount ++;
+            if(number == repository.getBonusNumber() && !bonus) bonus = true;
+        }
+        return Rating.checkTheRankings(matchCount, bonus);
     }
 }
