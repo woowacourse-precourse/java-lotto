@@ -25,7 +25,7 @@ public class Lotto {
         Set<Integer> set = new HashSet<>(numbers);
 
         if (set.size() != numbers.size()) {
-            throw new IllegalArgumentException("중복");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -35,13 +35,13 @@ public class Lotto {
                 .collect(Collectors.toList());
 
         if (outRange.size() != 0) {
-            throw new IllegalArgumentException("범위 탈출");
+            throw new IllegalArgumentException();
         }
     }
 
     private void checkNumber() {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("개수 이상");
+            throw new IllegalArgumentException("[ERROR] 개수 이상");
         }
     }
 
