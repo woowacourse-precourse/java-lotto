@@ -11,7 +11,6 @@ public class LottoProcessorImpl implements LottoProcessor{
 
     private final LottoRepository lottoRepository = new LottoRepository();
 
-    //몇개가 일치하는지 알려주는 로직
     @Override
     public int matchLottoNumber(Lotto winLotto, Lotto lotto) {
         int equalCount = 0;
