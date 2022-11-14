@@ -24,7 +24,7 @@ public enum Rank {
     public static Rank from(int rankValue) {
         String rankName = toRankName(rankValue);
         isValidName(rankName);
-        return Rank.valueOf(toRankName(rankValue));
+        return Rank.valueOf(rankName);
     }
 
     Rank(long prize, String description) {
