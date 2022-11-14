@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputNumber {
-    public List<Integer> parseWinningNumber(String userInput) {
+    public static List<Integer> parseWinningNumber(String userInput) {
         List<String> parsedString = new ArrayList<>(Arrays.asList(userInput.split("\\s*,\\s*")));
         List<Integer> winningNumber = new ArrayList<>();
         for (String parsed : parsedString) {
@@ -14,7 +14,7 @@ public class InputNumber {
         return winningNumber;
     }
 
-    public List<Integer> parseBonusNumber(String userInput){
+    public static List<Integer> parseBonusNumber(String userInput){
         List<Integer> bonusNumber = new ArrayList<>();
         bonusNumber.add(Integer.parseInt(userInput));
         return bonusNumber;
