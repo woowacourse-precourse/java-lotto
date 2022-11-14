@@ -56,9 +56,13 @@ public class Validation {
         int number;
         for (int i = 0; i < LOTTO_LENGTH; i++) {
             number = Integer.parseInt(value.get(i));
-            if (number < START_LOTTO_NUMBER || number > END_LOTTO_NUMBER) {
-                throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_NUMBER_RANGE);
-            }
+            isValidRange(number);
+        }
+    }
+
+    public static void isValidRange(int number){
+        if (number < START_LOTTO_NUMBER || number > END_LOTTO_NUMBER) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_NUMBER_RANGE);
         }
     }
 
