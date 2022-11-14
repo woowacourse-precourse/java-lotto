@@ -26,11 +26,11 @@ public class LottoSystem {
         if (!validator.isValidPrice(money)) {
             throw new IllegalArgumentException(INVALID_PRICE.getMessage());
         }
-        List<Lotto> userLottos = buyLotto(money);
+        List<Lotto> userLottos = purchaseLotto(money);
         outputView.outputUserLottos(userLottos);
     }
 
-    private List<Lotto> buyLotto(int money) {
+    private List<Lotto> purchaseLotto(int money) {
         int lottoCnt = money / 1000;
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoCnt; i++) {
