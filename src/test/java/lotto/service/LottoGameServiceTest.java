@@ -20,6 +20,7 @@ public class LottoGameServiceTest {
     void init() {
         this.lottoGameService = new LottoGameService();
     }
+
     @DisplayName("구입 금액에 맞춰 구매 가능한 로또 갯수를 반환한다.")
     @Test
     void buyLottoTickets() {
@@ -55,7 +56,7 @@ public class LottoGameServiceTest {
     @DisplayName("당첨 번호는 6자리이며 ','를 구분해 나눈다.")
     @Test
     void pickWinningNumbers() {
-        List<Integer> expect = List.of(1,2,3,4,5,6);
+        List<Integer> expect = List.of(1, 2, 3, 4, 5, 6);
         String input = "1,2,3,4,5,6";
         Lotto actual = lottoGameService.pickWinningNumbers(input);
         assertThat(expect).isEqualTo(actual.getNumbers());
@@ -66,6 +67,31 @@ public class LottoGameServiceTest {
     @ParameterizedTest
     void pickWinningNumbersNotNumber(String input) {
         assertThatThrownBy(() -> lottoGameService.pickWinningNumbers(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 숫자가 아니면 예외가 발생한다.")
+    @CsvSource({"가나", "abs"})
+    @ParameterizedTest
+    void pickBonusNumberNotNumber(String input) {
+        assertThatThrownBy(() -> lottoGameService.pickBonusNumber(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 당첨번호 숫자와 겹치면 예외가 발생한다.")
+    @CsvSource({"1", "2", "3", "4", "5", "6"})
+    @ParameterizedTest
+    void pickBonusNumberOverlap(String input) {
+        lottoGameService.pickWinningNumbers("1,2,3,4,5,6");
+        assertThatThrownBy(() -> lottoGameService.pickBonusNumber(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 범위를 벗어나면 예외가 발생한다.")
+    @CsvSource({"-1", "46", "100"})
+    @ParameterizedTest
+    void pickBonusNumberOutRange(String input) {
+        assertThatThrownBy(() -> lottoGameService.pickBonusNumber(input))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }
