@@ -2,6 +2,7 @@ package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,8 +19,8 @@ public class LottoFactory {
     }
 
     private static Lotto generate() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Lotto.NUMBER_LOWER_BOUNDS
-                , Lotto.NUMBER_UPPER_BOUNDS, Lotto.NUMBERS_SIZE);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(Lotto.NUMBER_LOWER_BOUNDS
+                , Lotto.NUMBER_UPPER_BOUNDS, Lotto.NUMBERS_SIZE));
         Collections.sort(numbers);
 
         return new Lotto(numbers);
