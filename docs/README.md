@@ -26,9 +26,9 @@
 ```
 
 ### InputConverter
-- [ ] String Input ➡️ Integer로 변환 (구입 금액)
-  - [ ] 구입 금액이 숫자 이외에 문자가 존재할 경우 IllegalArgumentException 발생 시킨다.
-  - [ ] 보너스 번호가 숫자 이외에 문자가 존재할 경우 IllegalArgumentException 발생 시킨다.
+- [x] String Input ➡️ Integer로 변환 (구입 금액)
+  - [x] 구입 금액이 숫자 이외에 문자가 존재할 경우 IllegalArgumentException 발생 시킨다.
+  - [x] 보너스 번호가 숫자 이외에 문자가 존재할 경우 IllegalArgumentException 발생 시킨다.
   
 - [ ] String Input ➡️ `List<Integer>`로 변환 (당첨 번호)
   - [ ] **숫자, 쉼표`,` 이외에 문자**가 존재하는 경우 IllegalArgumentException 발생 시킨다. (`,` split 진행 후 각각 Integer.parseInt 예외가 발생한다.)
