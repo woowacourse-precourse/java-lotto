@@ -31,5 +31,8 @@ public class Controll {
     private void winnginTicket() {
         outputView.printMessage("\n" + Message.WINNING_NUMBER.getMessage());
         winningTicket = new WinningTicket(inputView.inputNum());
+
+        outputView.printMessage("\n" + Message.BONUS_NUMBER.getMessage());
+        winningTicket.saveBonus(inputView.inputNum());
     }
 }
