@@ -12,8 +12,10 @@ public class LottoMachine {
         Map<Prize, Integer> prizeBoard = initPrizeBoard();
         for (Lotto lotto : lottos.lottos) {
             boolean isBonus = isBonus(lotto, bonus);
-            int count = (int) lotto.getNumbers().stream()
-                .filter(number -> winningNums.getNumbers().contains(number)).count();
+            int count = (int) lotto.getNumbers()
+                .stream()
+                .filter(number -> winningNums.getNumbers().contains(number))
+                .count();
             Prize prize = Prize.valueOf(count, isBonus);
             prizeBoard.put(prize, prizeBoard.get(prize) + 1);
         }
