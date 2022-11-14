@@ -83,11 +83,11 @@
 - [x] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
 
 ## Lotto 클래스
-- [ ] 제공된 Lotto 클래스를 활용해 구현해야 한다.
-- [ ] Lotto에 매개 변수가 없는 생성자를 추가할 수 없다.
-- [ ] numbers의 접근 제어자인 private을 변경할 수 없다.
-- [ ] Lotto에 필드(인스턴스 변수)를 추가할 수 없다.
-- [ ] Lotto의 패키지 변경은 가능하다.
+- [x] 제공된 Lotto 클래스를 활용해 구현해야 한다.
+- [x] Lotto에 매개 변수가 없는 생성자를 추가할 수 없다.
+- [x] numbers의 접근 제어자인 private을 변경할 수 없다.
+- [x] Lotto에 필드(인스턴스 변수)를 추가할 수 없다.
+- [x] Lotto의 패키지 변경은 가능하다.
 
 ## 유의 사항
 - [ ] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
