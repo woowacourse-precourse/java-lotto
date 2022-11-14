@@ -2,11 +2,12 @@
 
 ## 🚀 기능 목록
 
-- [ ] 구입 금액을 입력을 입력 받을 수 있다.
+- [ ] 구입 금액을 입력을 입력받을 수 있다.
   - LottoCashier#receiveMoney()
+  - 예외) 받은 금액이 숫자가 아니면 예외 발생
+  - 예외) 0과 같거나 보다 작다면 예외 발생
 - [ ] 구입 가능한 로또의 수를 도출할 수 있다.
   - LottoCashier#calculateNumberOfLottos()
-  - 예외) 받은 금액이 숫자가 아니면 예외 발생
   - 예외) 받은 금액 로또 가격으로 나눠 떨어지지 않으면 예외 발생
 - [ ] 구입한 로또의 개수를 출력한다.
   - LottoCashier#printNumberPurchased()
