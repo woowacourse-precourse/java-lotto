@@ -108,7 +108,30 @@ class LottoTest {
     }
 
     /*
-    로또 금액 입력 예외
+    보너스 번호 입력 예외
      */
 
+    @DisplayName("보너스 번호 입력 시 숫자가 앙니라면 예외가 발생한다.")
+    @Test
+    void createBonusNumberByOnlyNumber() {
+        String bonus = "u";
+        assertThatThrownBy(() -> InputException.validatesBonusNumber(bonus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호 입력할 때 1자리 숫자가 아니라면 예외가 발생한다.")
+    @Test
+    void createBonusNumberBy1Length() {
+        String bonus = "12";
+        assertThatThrownBy(() -> InputException.validatesBonusNumber(bonus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호 입력할 때 45 초과라면 예외가 발생한다.")
+    @Test
+    void createBonusNumberByBelow45() {
+        String bonus = "46";
+        assertThatThrownBy(() -> InputException.validatesBonusNumber(bonus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
