@@ -4,7 +4,7 @@ public class NumberFilter implements Filter {
     @Override
     public void doFilter(String number) {
         if (number == null || number.equals("")) {
-            throw new IllegalArgumentException("하나 이상의 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException("천원 단위의 숫자를 입력해 주세요.");
         }
 
         for (char i : number.toCharArray()) {
