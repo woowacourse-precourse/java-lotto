@@ -4,64 +4,65 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Operation {
-    static int buyAmount(int purchaseAmount){
+    static int buyAmount(int purchaseAmount) {
         return purchaseAmount / 1000;
     }
 
     static List<Lotto> buyLotto(int purchaseAmount) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < buyAmount(purchaseAmount); i++) {
-            Lotto lotto = new Lotto(generateNumbers());
-            lottos.add(lotto);
+        int buyAmount= buyAmount(purchaseAmount);
+        for (int i = 0; i < buyAmount; i++) {
+            lottos.add(new Lotto(generateNumbers()));
         }
         return lottos;
     }
 
     static List<Integer> generateNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 6) {
-            int random = Randoms.pickNumberInRange(1, 45);
-            if (!numbers.contains(random)) {
-                numbers.add(random);
-            }
+        HashSet<Integer> removeDuplication = new HashSet<>();
+        while (removeDuplication.size() < 6) {
+            removeDuplication.add(Randoms.pickNumberInRange(1, 45));
         }
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> result = new ArrayList<>(removeDuplication);
+        Collections.sort(result);
+        return result;
     }
 
     static int calculateEarning(Match match) {
-        int earning = 0;
-        earning += match.match3 * 5000;
-        earning += match.match4 * 50000;
-        earning += match.match5 * 1500000;
-        earning += match.match5Bonus * 30000000;
-        earning += match.match6 * 2000000000;
+        int earning = match.match3 * 5000
+                + match.match4 * 50000
+                + match.match5 * 1500000
+                + match.match5Bonus * 30000000
+                + match.match6 * 2000000000;
         return earning;
     }
 
-    static double calculateEarningRate(int purchaseAmount, int earning){
-        double earningRate = (double) earning/ (double) purchaseAmount;
-        earningRate= Math.round(earningRate * 1000) / 10.0;
+    static double calculateEarningRate(int purchaseAmount, int earning) {
+        double earningRate = (double) earning / (double) purchaseAmount;
+        earningRate = Math.round(earningRate * 1000) / 10.0;
         return earningRate;
     }
 
-    static void playGame(){
-        Print.getPurchaseAmount();
-        int purchaseAmount = Input.getPurchaseAmount();
-        List<Lotto> lottos = Operation.buyLotto(purchaseAmount);
+    static void playGame() {
+        try {
+            Print.getPurchaseAmount();
+            int purchaseAmount = Input.getPurchaseAmount();
+            List<Lotto> lottos = buyLotto(purchaseAmount);
+            Print.userLottos(lottos, purchaseAmount);
 
-        Print.userLottos(purchaseAmount);
-        Print.getWinningNumbers();
+            Print.getWinningNumbers();
+            List<Integer> winning = Input.getWinningNumbers();
+            Print.getBonusNumber();
+            int bonus = Input.getBonusNumber();
 
-        List<Integer> winning = Input.getWinningNumbers();
-        Print.getBonusNumber();
-        int bonus = Input.getBonusNumber();
-
-        Match match= new Match(lottos, winning, bonus);
-        Print.result(purchaseAmount,match);
+            Match match = new Match(lottos, winning, bonus);
+            int earning = calculateEarning(match);
+            double earningRate = calculateEarningRate(purchaseAmount, earning);
+            Print.result(earningRate, match);
+        } catch (IllegalArgumentException e) {
+        }
     }
-
 }
