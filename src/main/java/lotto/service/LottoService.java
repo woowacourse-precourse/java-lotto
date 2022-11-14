@@ -95,5 +95,7 @@ public class LottoService {
     public void printResult(List<LottoRank> lottoRanks) {
         LottoResult result = new LottoResult(lottoRanks);
         outputView.printResult(result);
+        Profit profit = new Profit(result.getRewardAmount(), result.getPurchaseAmount());
+        outputView.printProfit(profit);
     }
 }

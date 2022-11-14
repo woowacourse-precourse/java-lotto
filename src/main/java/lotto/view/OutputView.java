@@ -82,7 +82,6 @@ public class OutputView {
     }
 
     public void printProfit(Profit profit) {
-        // TODO : 총 수익률은 소수점 둘째자리에서 반올림
         printlnMessage(PROFIT_INTRODUCE_MESSAGE + profit.getProfitValue() + PROFIT_PERCENT_MESSAGE);
     }
 

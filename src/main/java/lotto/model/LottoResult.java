@@ -61,4 +61,12 @@ public class LottoResult {
     public int getFirst() {
         return rankMap.get(LottoRank.FIRST.name());
     }
+
+    public int getRewardAmount() {
+        return rewardAmount;
+    }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
 }
