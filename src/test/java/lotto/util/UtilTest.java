@@ -35,7 +35,7 @@ class UtilTest {
                 "62.46: 0: 62.0"
         }, delimiter = ':')
         void 콤마를_잘_삽입하고_소숫점에서_반올림하는지_테스트한다(float target, int precision, String expected) {
-            assertThat(Util.formatFloat(target, precision)).isEqualTo(expected);
+            assertThat(Util.makeFloatFormatted(target, precision)).isEqualTo(expected);
         }
     }
 }

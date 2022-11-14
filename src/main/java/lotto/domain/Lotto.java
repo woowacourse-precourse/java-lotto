@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.util.Util;
 import lotto.verifier.LottoVerifier;
 import lotto.view.OutputView;
 
@@ -35,9 +36,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        String forCheck = numbers.toString();
-        forCheck = forCheck.substring(1, forCheck.length() - 1);
-        forCheck = forCheck.replaceAll(" ", "");
-        new LottoVerifier().check(forCheck.strip());
+        String forCheck = Util.makeIntegerListToStringFormat(numbers);
+        new LottoVerifier().check(forCheck);
     }
 }
