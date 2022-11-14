@@ -1,10 +1,13 @@
-package lotto;
+package lotto.domain;
 
 import lotto.domain.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -24,5 +27,13 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("당첨 번호에 따른 계산 결과가 정상적이라면 그 결과를 반환한다.")
+    @Test
+    void computeResult_정상적인경우() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        Set<Integer> winningNumbers = new HashSet<>(Set.of(1,2,3,4,5,6));
+        int bonusNumber = 7;
+
+        Assertions.assertThat(lotto.computeResult(winningNumbers, bonusNumber)).isEqualTo(Result.SIX);
+    }
 }
