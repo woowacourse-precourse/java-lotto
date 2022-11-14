@@ -10,9 +10,9 @@ public class WinNumber {
 
     private WinNumberController wc = new WinNumberController();
 
-    public WinNumber makingWinNumber(String winNumber,String bonusNumber){
+    public WinNumber makingWinNumber(String winNumber, String bonusNumber) {
         this.winNumber = wc.readWinNumber(winNumber);
-        this.bonusNumber = wc.readBoundNumber(bonusNumber);
+        this.bonusNumber = wc.readBonusNumber(bonusNumber);
 
         validateBonusNumber(this.bonusNumber);
         validateWinNumber(this.winNumber);
@@ -20,14 +20,14 @@ public class WinNumber {
         return this;
     }
 
-    private void validateBonusNumber(Integer bonusNumber){
-        if (winNumber.contains(bonusNumber)){
+    private void validateBonusNumber(Integer bonusNumber) {
+        if (winNumber.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다");
         }
     }
 
     private void validateWinNumber(List<Integer> winNumbers) {
-        for(int winNumber : winNumbers){
+        for (int winNumber : winNumbers) {
             if (winNumber < 1 || winNumber > 45) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1과 45사이여야 합니다");
             }
