@@ -1,10 +1,9 @@
 package lotto.View;
 
-import lotto.Model.Money;
-
 import java.util.List;
 
 import static lotto.Model.LottoSystem.getFrequency;
+import static lotto.Model.Money.calcYield;
 import static lotto.Model.RandomLotto.getBundleOfLottoNumbers;
 
 
@@ -31,7 +30,7 @@ public class OutputView {
     }
 
     public static void printYield() {
-        double sum = Money.calcYield();
+        double sum = calcYield();
         String formatYield = formatting(sum);
         System.out.println("총 수익률은 " + formatYield + "%입니다.");
     }
@@ -39,6 +38,7 @@ public class OutputView {
     private static String formatting(double sum) {
         return String.format("%.1f", sum);
     }
+
 
 
 }
