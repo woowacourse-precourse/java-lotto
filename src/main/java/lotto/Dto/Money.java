@@ -1,4 +1,4 @@
-package Dto;
+package lotto.Dto;
 
 public class Money {
     private final int money;

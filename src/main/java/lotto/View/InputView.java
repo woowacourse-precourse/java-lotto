@@ -1,9 +1,9 @@
-package View;
+package lotto.View;
 
-import Dto.Money;
+import lotto.Dto.Money;
 
-import static Dto.ConstDto.InputOutputConstDto.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.Dto.ConstDto.InputOutputConstDto.*;
 
 public class InputView {
 

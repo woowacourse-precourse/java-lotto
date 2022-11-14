@@ -1,6 +1,6 @@
-package Services;
+package lotto.Services;
 
-import Dto.Money;
+import lotto.Dto.Money;
 
 public class CalculatedService {
 

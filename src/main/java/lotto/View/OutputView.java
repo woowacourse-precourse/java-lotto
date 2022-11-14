@@ -1,6 +1,6 @@
-package View;
+package lotto.View;
 
-import static Dto.ConstDto.InputOutputConstDto.PRINT_LOTTO_SIZE_MESSAGE;
+import static lotto.Dto.ConstDto.InputOutputConstDto.PRINT_LOTTO_SIZE_MESSAGE;
 
 public class OutputView {
 

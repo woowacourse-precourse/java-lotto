@@ -1,8 +1,8 @@
 package lotto;
 
-import Dto.Lotto;
-import Dto.Money;
-import Services.CalculatedService;
+import lotto.Dto.Lotto;
+import lotto.Dto.Money;
+import lotto.Services.CalculatedService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package Dto.ConstDto;
+package lotto.Dto.ConstDto;
 
 public class InputOutputConstDto {
 
