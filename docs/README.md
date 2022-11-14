@@ -22,10 +22,10 @@
 
 ## 로또 추첨
 - [x] `Lotto` 를 상속받은 `LotteryWinningNumber` 클래스 구현
-- [ ] 당첨 번호 생성 기능 구현
+- [x] 당첨 번호 생성 기능 구현
     - [x] 로또 당첨 번호 입력 받기 (`InputView`)
     - [x] 보너스 번호 입력 받기 (`InputView`)
-    - [ ] `LotteryDrawService`를 통해 당첨 번호 생성
+    - [x] `LotteryDrawService`를 통해 당첨 번호 생성
 - [ ] `LotteryDrawService`를 통해 판매된 티켓의 당첨 여부 계산 기능 구현
 - [ ] `LotteryController` 로또 추첨 구현
 
