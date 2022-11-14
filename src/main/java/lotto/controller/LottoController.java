@@ -39,7 +39,7 @@ public class LottoController {
             Ranking ranking = new Ranking(matches, bonusMatches); // [FIFTH, NONE, SECOND, THIRD, FIFTH]
             Statistics statistics = new Statistics(ranking.getRankings());
 
-            OutputView.printStatistics();
+            OutputView.printStatistics(statistics.getRank());
 
             Yield yield = new Yield(ticketNumber * LOTTO_PRICE);
             OutputView.printYield(yield.getYield());
