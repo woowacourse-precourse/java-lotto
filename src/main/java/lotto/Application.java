@@ -39,6 +39,8 @@ public class Application {
         int bonusNumber = Integer.parseInt(inputBonusNumber);
         List<Integer> ranking = rank(lottos, winningLotto, bonusNumber);
         printRanking(ranking);
+        printEarningRate(money, ranking);
+        
     }
 
     public static void validate(int money) {
@@ -110,5 +112,15 @@ public class Application {
         System.out.println("5개 일치 (1,500,000원) - " + ranking.get(2) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + ranking.get(1) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + ranking.get(0) + "개");
+    }
+
+    public static void printEarningRate(int money, List<Integer> ranking) {
+        int earnings = 0;
+        earnings += 2000000000 * ranking.get(0);
+        earnings += 30000000 * ranking.get(1);
+        earnings += 1500000 * ranking.get(2);
+        earnings += 50000 * ranking.get(3);
+        earnings += 5000 * ranking.get(4);
+        System.out.println("총 수익률은 " + String.format("%1f", (double) earnings / money) + "%입니다.");
     }
 }
