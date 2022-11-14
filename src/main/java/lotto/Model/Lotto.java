@@ -22,4 +22,7 @@ public class Lotto {
             duplicated.put(number, cnt+1);
         });
     }
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
