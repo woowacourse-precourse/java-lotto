@@ -26,7 +26,7 @@ public class GameConsole {
     public int inputPurchase() {
         notice(INPUT_PURCHASE_MESSAGE);
         String purchase = Console.readLine();
-        Validator.purchase(purchase);
+        Validator.validatePurchase(purchase);
 
         return Integer.parseInt(purchase);
     }
@@ -34,7 +34,7 @@ public class GameConsole {
     public List<Integer> inputWinningNumber() {
         notice(INPUT_WINNING_NUMBER_MESSAGE);
         String winningNumber = Console.readLine();
-        Validator.winningNumbers(winningNumber);
+        Validator.validateWinningNumbers(winningNumber);
 
         return Arrays.stream(winningNumber.split(COMMA))
                 .map(Integer::parseInt)
@@ -48,24 +48,24 @@ public class GameConsole {
     public int inputBonusNumber() {
         notice(INPUT_BONUS_NUMBER_MESSAGE);
         String bonusNumber = Console.readLine();
-        Validator.bonusNumber(bonusNumber);
+        Validator.validateBonusNumber(bonusNumber);
 
         return Integer.parseInt(bonusNumber);
     }
 
-    public void outputLottos(int lottoCount, List<Lotto> lottos) {
+    public void printLottos(int lottoCount, List<Lotto> lottos) {
         System.out.printf(LOTTO_COUNT, lottoCount);
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
     }
 
-    public void outputResult(Result result) {
-        outputGameResult(result);
-        outputWinningAmount(result);
+    public void printResult(Result result) {
+        printGameResult(result);
+        printWinningAmount(result);
     }
 
-    private void outputGameResult(Result result) {
+    private void printGameResult(Result result) {
         System.out.println(PRIZE_STAT);
         System.out.println(SPLIT_LINE);
 
@@ -80,7 +80,7 @@ public class GameConsole {
         }
     }
 
-    private void outputWinningAmount(Result result) {
+    private void printWinningAmount(Result result) {
         System.out.printf(PROFIT, result.getWinningAmount());
     }
 }

@@ -9,7 +9,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        Validator.checkDuplicate(numbers);
+        Validator.validateDuplication(numbers);
         this.numbers = sortNumbers(numbers);
     }
 

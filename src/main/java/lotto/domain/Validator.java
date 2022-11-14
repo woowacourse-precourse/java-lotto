@@ -13,27 +13,27 @@ import java.util.List;
 
 public class Validator {
 
-    public static void purchase(String purchase) {
-        checkNumber(purchase);
+    public static void validatePurchase(String purchase) {
+        isNumber(purchase);
         if (Integer.parseInt(purchase) % 1000 != 0) {
             throw new IllegalArgumentException(PURCHASE_ERROR_MESSAGE);
         }
     }
 
-    public static void winningNumbers(String winningNumbers) {
+    public static void validateWinningNumbers(String winningNumbers) {
         if (!winningNumbers.contains(COMMA)) {
             throw new IllegalArgumentException(SEPARATOR_ERROR_MESSAGE);
         }
         Arrays.stream(winningNumbers.split(COMMA))
                 .forEach(winningNumber -> {
-                    checkNumber(winningNumber);
+                    isNumber(winningNumber);
                     isGreaterThanOneAndLessThanFortyFive(winningNumber);
                 });
-        checkDuplicate(winningNumbers.split(COMMA));
+        validateDuplication(winningNumbers.split(COMMA));
     }
 
-    public static void bonusNumber(String bonusNumber) {
-        checkNumber(bonusNumber);
+    public static void validateBonusNumber(String bonusNumber) {
+        isNumber(bonusNumber);
         isGreaterThanOneAndLessThanFortyFive(bonusNumber);
     }
 
@@ -43,27 +43,27 @@ public class Validator {
         }
     }
 
-    public static void checkDuplicate(List<Integer> numbers) {
+    public static void validateDuplication(List<Integer> numbers) {
         HashSet<Integer> checkDuplicate = new HashSet<>(numbers);
         if (checkDuplicate.size() != 6) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
         }
     }
 
-    public static void checkDuplicate(List<Integer> winningNumbers, int bonusNumber) {
+    public static void validateDuplication(List<Integer> winningNumbers, int bonusNumber) {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
         }
     }
 
-    private static void checkDuplicate(String[] numbers) {
+    private static void validateDuplication(String[] numbers) {
         HashSet<String> checkDuplicate = new HashSet<>(List.of(numbers));
         if (checkDuplicate.size() != 6) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
         }
     }
 
-    private static void checkNumber(String number) {
+    private static void isNumber(String number) {
         try {
             Integer.parseInt(number);
         } catch (NumberFormatException e) {

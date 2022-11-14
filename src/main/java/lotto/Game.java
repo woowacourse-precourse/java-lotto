@@ -19,15 +19,15 @@ public class Game {
         int purchase = gameConsole.inputPurchase();
         user = new User(purchase);
 
-        gameConsole.outputLottos(user.getLottoCount(), user.getLottos());
+        gameConsole.printLottos(user.getLottoCount(), user.getLottos());
 
         List<Integer> winningNumbers = gameConsole.inputWinningNumber();
         int bonusNumber = gameConsole.inputBonusNumber();
 
-        Validator.checkDuplicate(winningNumbers, bonusNumber);
+        Validator.validateDuplication(winningNumbers, bonusNumber);
         result.matchLotto(winningNumbers, user.getLottos(), bonusNumber);
 
         result.initWinningAmount(purchase);
-        gameConsole.outputResult(result);
+        gameConsole.printResult(result);
     }
 }
