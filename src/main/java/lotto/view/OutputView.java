@@ -29,4 +29,8 @@ public class OutputView {
     public void printWinningInfo(WinningInfo winningInfo) {
         System.out.println(winningInfo);
     }
+
+    public void printProfitRate(double profitRate) {
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", (double) Math.round(profitRate * 10) / 10);
+    }
 }
