@@ -8,13 +8,13 @@ public class LottoGame {
 
     private Integer cash;
     private Integer enterNum;
-    private List<Lotto> lottoList;
+    private List<Integer> lottoList;
     private List<Integer> winNumList;
     private Integer bonusNum;
     private Integer result;
     private float earningRate;
 
-    public LottoGame(Integer cash, Integer enterNum, List<Lotto> lottoList, List<Integer> winNumList, Integer bonusNum, Integer result, float earningRate) {
+    public LottoGame(Integer cash, Integer enterNum, List<Integer> lottoList, List<Integer> winNumList, Integer bonusNum, Integer result, float earningRate) {
         this.cash = cash;
         this.enterNum = enterNum;
         this.lottoList = lottoList;
@@ -36,5 +36,9 @@ public class LottoGame {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void setLottoList(List<Lotto> lottoList) {
+
     }
 }
