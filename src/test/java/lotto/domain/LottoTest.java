@@ -33,4 +33,12 @@ class LottoTest {
         Lotto lotto = new Lotto(lottoNumber);
         assertThat(lotto.getLotto()).isEqualTo(Arrays.asList(1, 11, 18, 22, 33, 44));
     }
+
+    @DisplayName("로또 각 번호가 1에서부터 45사이를 벗어나면 예외가 발생한다.")
+    @Test
+    void lottoNumberBetween1And45() {
+        assertThatThrownBy(() -> {
+            new Lotto(List.of(0, 1, 2, 44, 45, 46));
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
