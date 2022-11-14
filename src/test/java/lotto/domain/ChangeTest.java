@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +15,13 @@ class ChangeTest {
     void lottoNumberTest_정상동작(){
         List<Integer> input = Change.lottoNumber("1,2,3,4,5,6");
         assertThat(input).isEqualTo(Arrays.asList(1,2,3,4,5,6));
+    }
+
+    @DisplayName("숫자와 ','을 제외한 문자가 입력이 되었으면 예외가 발생한다.")
+    @Test
+    void lottoNumberTest_다른문자가_입력되었을때(){
+        assertThatThrownBy(() -> Change.lottoNumber("1,a,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
