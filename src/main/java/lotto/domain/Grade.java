@@ -22,12 +22,10 @@ public enum Grade {
     public static Grade of(int hitCount, boolean bonusNumber) {
         if (hitCount == SECOND.count && bonusNumber) {
             return SECOND;
-        } else if (hitCount == SECOND.count) {
-            return THIRD;
         }
 
         return Arrays.stream(values())
-                .filter(grade -> grade.count != SECOND.count)
+                .filter(grade -> grade != SECOND)
                 .filter(grade -> grade.count == hitCount)
                 .findFirst()
                 .orElse(PASS);
