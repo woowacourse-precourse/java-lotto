@@ -4,7 +4,7 @@ import java.util.List;
 
 public class LottoSystem {
     public static final int price = 1000;
-    public static final List<WinInfo> winInfomations = List.of(
+    public static final List<WinInfo> winInformations = List.of(
             new WinInfo(6, 0, 2000000000, 1),
             new WinInfo(5, 1, 30000000, 2),
             new WinInfo(5, 0, 1500000, 3),
