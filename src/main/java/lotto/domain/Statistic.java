@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.enums.LottoReward;
+import lotto.enums.Range;
+
 import java.util.List;
 
 public class Statistic {
@@ -14,13 +17,12 @@ public class Statistic {
         return correct;
     }
 
-    public Statistic(int[] correct) {
-        this.correct = correct;
+    public Statistic() {
+        this.correct = new int[Range.CORRECT_CASE.get()];
         this.revenue = 0;
     }
 
     private void countCorrect(List<Integer> winNumbers, List<Lotto> lottos, int bonus){
-        int totalcnt = 0;
         for (Lotto lotto: lottos){
             int countEach = compare(lotto, winNumbers);
             lottoResult(countEach, correctBonus(bonus, lotto));
@@ -65,7 +67,7 @@ public class Statistic {
 
 
     private double calculateRevenue(int price){
-        return revenue/price;
+        return (double)revenue/price;
     }
 
 }

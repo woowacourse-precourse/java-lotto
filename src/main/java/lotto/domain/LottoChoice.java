@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.Lotto;
+import lotto.enums.Range;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class LottoChoice {
     }
 
     private void makeLotto(){
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Range.MIN_RANGE.get(), Range.MAX_RANGE.get(), Range.DIGIT.get());
         lottos.add(new Lotto(numbers));
     }
 
