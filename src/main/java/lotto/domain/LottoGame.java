@@ -50,13 +50,19 @@ public class LottoGame {
 
     // 로또 결과 확인 함수
     public static int[] getResultLotto(List<Lotto> lottoes, Lotto winningLotto, int bonus) {
-        int[] matches = {0, 0, 0, 0, 0};
+        int[] matchTable = initMatchTable();
 
         for (Lotto lotto : lottoes) {
             eLottoPlace place = matchLotto(lotto, winningLotto, bonus);
-            matches = appendPlaceToResult(matches, place);
+            matchTable = appendPlaceToResult(matchTable, place);
         }
-        return matches;
+        return matchTable;
+    }
+
+    private static int[] initMatchTable() {
+        int[] matchTable = {0, 0, 0, 0, 0};
+
+        return matchTable;
     }
 
     private static eLottoPlace matchLotto(Lotto l1, Lotto l2, int bonus) {
