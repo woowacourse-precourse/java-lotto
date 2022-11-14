@@ -27,4 +27,5 @@ public class LuckyNumbers {
             throw new IllegalArgumentException(LOTTO_NUMBERS_RANGE_EXCEPTION);
         }
     }
+
 }
