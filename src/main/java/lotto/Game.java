@@ -38,6 +38,13 @@ public class Game {
         return purchasedLotto;
     }
 
+    RANK countRank(Lotto playerLotto, List<Integer> winNumber, int bonusNumber){
+        int countSame = playerLotto.countSameNumber(winNumber);
+        boolean bonus = playerLotto.isBonusNumber(bonusNumber);
+        RANK rank = lookForRank(countSame, bonus);
+        return rank;
+    }
+
     RANK lookForRank(int countSame, boolean bonus){
         if(countSame < 3) return RANK.NOTHING;
         if(countSame == 3 && !bonus) return RANK.FIVE;
