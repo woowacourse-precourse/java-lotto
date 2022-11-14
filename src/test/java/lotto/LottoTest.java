@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -131,11 +132,32 @@ class LottoTest {
 
     @DisplayName("티켓이 몇개 일치하는지 찾는다.")
     @ParameterizedTest
-    @CsvSource({"3,true,0","4,false,1","5,false,2","5,true,3","6,false,4","0,true,9"})
+    @CsvSource({"3,true,0", "4,false,1", "5,false,2", "5,true,3", "6,false,4", "0,true,9"})
     void compareReward(int number1, boolean bonusCheck, int expected) {
         /*when*/
         int actual = playLotto.compareReward(number1, bonusCheck);
         /*then*/
         assertThat(expected).isEqualTo(actual);
+    }
+
+    @DisplayName("등수 별 티켓이 몇장인지 찾는다.")
+    @Test
+    void seprateTicketTest() {
+        /*given*/
+        List<Integer> seprateTicketTest = new ArrayList<>(List.of(1, 1, 1, 1, 2));
+
+        /*when*/
+        List<List<Integer>> randomLottoTest = new ArrayList<>(List.of(List.of(8, 21, 23, 41, 42, 43), /*1등*/
+                List.of(3, 8, 21, 23, 41, 42), /*3등*/
+                List.of(1, 8, 21, 23, 41, 42), /*2등*/
+                List.of(2, 20, 23, 41, 42, 43), /*4등*/
+                List.of(2, 20, 25, 41, 42, 43), /*5등*/
+                List.of(8, 21, 23, 41, 42, 43), /*1등*/
+                List.of(2, 13, 22, 32, 38, 45),
+                List.of(1, 3, 5, 14, 22, 45)));
+        List<Integer> seprateTicket = playLotto.seprateTicket(randomLottoTest, "8,21,23,41,42,43", "1");
+
+        /*then*/
+        assertThat(seprateTicketTest).isEqualTo(seprateTicket);
     }
 }
