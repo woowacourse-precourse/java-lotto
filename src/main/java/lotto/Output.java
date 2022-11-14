@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Output {
     public static void showLottos(List<Lotto> lottos) {
-        System.out.println(lottos.size()+"개를 구매했습니다.");
+        System.out.println("\n"+lottos.size()+"개를 구매했습니다.");
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
@@ -15,7 +15,7 @@ public class Output {
 
     public static void showResult(Lottos lottos, List<Integer> winNumbers, int bonusNumber) {
         Map<Score, Integer> scoreBoard = lottos.getScore(winNumbers, bonusNumber);
-        System.out.println("당첨 통계");
+        System.out.println("\n당첨 통계");
         System.out.println("---");
         int totalBenefit = 0;
         ArrayList<Score> scores = new ArrayList<>(scoreBoard.keySet());
@@ -26,12 +26,17 @@ public class Output {
             totalBenefit += score.getReward() * amount;
             sb.append(score.getPrint()).append(amount).append("개").append(System.getProperty("line.separator"));
         }
-        System.out.println(sb.toString());
-        System.out.println("총 수익률은 "+ (double)totalBenefit/lottos.getPaid() + "%입니다.");
+        System.out.println(sb.deleteCharAt(sb.length()-1));
+        System.out.println("총 수익률은 "+ getYeild(totalBenefit, lottos.getPaid()) + "%입니다.");
     }
 
     public static void showError(Error error) {
         System.out.println(error.getDesc());
         throw new IllegalArgumentException();
+    }
+
+    private static String getYeild(int benefit, int paid) {
+        double yeild = (double) (benefit / paid);
+        return String.format("%.1f", yeild);
     }
 }
