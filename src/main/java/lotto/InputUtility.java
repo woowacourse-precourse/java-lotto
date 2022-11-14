@@ -22,6 +22,7 @@ public class InputUtility {
     }
     static void isDigit(String input){
         if(!input.chars().allMatch(Character::isDigit)){
+            System.out.println("[ERROR]");
             throw new IllegalArgumentException("[ERROR] 분리된 문자열이 숫자가 아닙니다.");
         }
     }
