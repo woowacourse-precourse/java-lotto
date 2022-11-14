@@ -35,7 +35,7 @@ public class LottoGame {
     /* validate method */
     public void validateMoney(String answer) {
         if (checkOnlyNumber(answer) || checkDivisibleNumber(answer)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.INPUT_MONEY_ERROR.getMessage());
         }
     }
 
@@ -51,7 +51,7 @@ public class LottoGame {
     private void checkArrayOnlyNumber(String[] answer) {
         for (String number : answer) {
             if (checkOnlyNumber(number)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorType.INPUT_WINNING_NUMBER_ERROR.getMessage());
             }
         }
     }
@@ -60,7 +60,7 @@ public class LottoGame {
         if (checkOnlyNumber(answerBonusNumber)
                 || checkOutOfRange(answerBonusNumber)
                 || checkOverlapWinningNumber(answerBonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.INPUT_BONUS_NUMBER_ERROR.getMessage());
         }
     }
 

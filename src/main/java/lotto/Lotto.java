@@ -18,7 +18,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (checkSize(numbers) || checkOverlap(numbers) || checkOutOfRange(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.MAKE_LOTTO_ERROR.getMessage());
         }
     }
 
