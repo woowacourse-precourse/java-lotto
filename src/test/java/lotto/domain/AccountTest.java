@@ -33,7 +33,7 @@ class AccountTest {
         // given
         Account account = new Account(winningCalculator);
         // when
-        Set<WinningResult> keys = account.getResults().keySet();
+        Set<WinningResult> keys = account.getWinningResultTable().keySet();
         // then
         assertThat(keys).contains(
                 RANK_1,
@@ -58,8 +58,8 @@ class AccountTest {
         // when
         account.saveResult(lottos);
         // then
-        assertThat(account.getResults().get(RANK_2)).isEqualTo(1);
-        assertThat(account.getResults().get(RANK_5)).isEqualTo(1);
+        assertThat(account.getWinningResultTable().get(RANK_2)).isEqualTo(1);
+        assertThat(account.getWinningResultTable().get(RANK_5)).isEqualTo(1);
     }
 
     @DisplayName("수익률을 가져온다.")

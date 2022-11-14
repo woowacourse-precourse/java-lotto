@@ -39,7 +39,7 @@ public class Cashier {
     }
 
     public void getResultInAccount() {
-        Map<WinningResult, Integer> results = this.account.getResults();
+        Map<WinningResult, Integer> results = this.account.getWinningResultTable();
         UserInterface.printResult(results);
     }
 
