@@ -10,51 +10,38 @@ public class LottoPurchaseAmount {
     private static final BigDecimal PRICE_OF_ONE = new BigDecimal("1000");
     private static final BigDecimal PERCENT_UNIT = new BigDecimal("100");
     private static final int PERCENT_SCALE = 1;
-    private static final char VALID_NUMBER_START_CHARACTER = '0';
-    private static final char VALID_NUMBER_END_CHARACTER = '9';
 
     private final BigDecimal playerPurchaseAmount;
 
     public LottoPurchaseAmount(String amountInput) {
-        validatePlayerInputAmount(amountInput);
-
-        this.playerPurchaseAmount = new BigDecimal(amountInput);
+        this.playerPurchaseAmount = calculatePlayerPurchaseAmount(amountInput);
     }
 
-    private void validatePlayerInputAmount(String amountInput) {
-        validateNumber(amountInput);
-        validateAmountUnit(amountInput);
+    private BigDecimal calculatePlayerPurchaseAmount(String amountInput) {
+        BigDecimal inputPurchaseAmount;
+
+        try {
+            inputPurchaseAmount = new BigDecimal(amountInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(
+                    LottoExceptionMessageUtils.INVALID_NUMBER_FORMAT
+                            .findExceptionMessage(String.valueOf(amountInput)));
+        }
+        validateAmountUnit(inputPurchaseAmount);
+
+        return inputPurchaseAmount;
     }
 
-    private void validateAmountUnit(String playerInputAmount) {
-        BigDecimal playerPurchaseAmount = new BigDecimal(playerInputAmount);
-
-        if (!isValidAmountUnit(playerPurchaseAmount)) {
+    private void validateAmountUnit(BigDecimal inputPurchaseAmount) {
+        if (!isValidAmountUnit(inputPurchaseAmount)) {
             throw new IllegalArgumentException(
                     LottoExceptionMessageUtils.INVALID_PURCHASE_AMOUNT_UNIT
-                            .findExceptionMessage(playerInputAmount));
+                            .findExceptionMessage(inputPurchaseAmount));
         }
     }
 
     private boolean isValidAmountUnit(BigDecimal playerPurchaseAmount) {
         return playerPurchaseAmount.remainder(PRICE_OF_ONE).compareTo(BigDecimal.ZERO) == 0;
-    }
-
-    private void validateNumber(String playerInputAmount) {
-        playerInputAmount
-                .chars()
-                .mapToObj(chars -> (char) chars)
-                .filter(chars -> !isNumber(chars))
-                .findAny()
-                .ifPresent(input -> {
-                    throw new IllegalArgumentException(
-                            LottoExceptionMessageUtils.INVALID_NUMBER_FORMAT
-                                    .findExceptionMessage(String.valueOf(input)));
-                });
-    }
-
-    private boolean isNumber(char charInt) {
-        return VALID_NUMBER_START_CHARACTER <= charInt && charInt <= VALID_NUMBER_END_CHARACTER;
     }
 
     public BigInteger calculatePurchaseLottoAmount() {

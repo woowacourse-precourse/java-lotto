@@ -45,7 +45,7 @@ class LottoPurchaseAmountTest {
         void invalid_number_format_exception_test(String invalidInput) {
             assertIllegalArgumentExceptionWithMessage(() -> new LottoPurchaseAmount(invalidInput),
                     LottoExceptionMessageUtils.INVALID_NUMBER_FORMAT
-                            .findExceptionMessage(invalidInput.charAt(0)));
+                            .findExceptionMessage(invalidInput));
         }
     }
 
