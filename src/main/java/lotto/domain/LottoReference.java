@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import java.util.Map;
+import lotto.domain.constants.LottoConstants;
+
 public enum LottoReference {
     THREE(3, 5_000, ""),
     FOUR(4, 50_000, ""),
@@ -17,16 +20,6 @@ public enum LottoReference {
         this.message = message;
     }
 
-    public static int getPrizeByCorrectCount(int correctCount) {
-        LottoReference[] lottoReferences = LottoReference.values();
-        for (LottoReference l : lottoReferences) {
-            if (l.getCorrectCount() == correctCount) {
-                return l.getPrize();
-            }
-        }
-        return 0;
-    }
-
     public static LottoReference hasCorrectCount(int correctCount) {
         LottoReference[] lottoReferences = LottoReference.values();
         for (LottoReference l : lottoReferences) {
@@ -36,6 +29,28 @@ public enum LottoReference {
         }
         return NOPE;
     }
+
+    public static float getYield(Map<LottoReference, Integer> result) {
+        int totalCount = 0;
+        for (int count : result.values()) {
+            totalCount += count;
+        }
+        long amountPaid = totalCount * LottoConstants.LOTTO_PRICE;
+        long totalPrize = getPrizeByResult(result);
+
+        return (float) totalPrize / amountPaid * 100;
+    }
+
+    private static long getPrizeByResult(Map<LottoReference, Integer> result) {
+        long totalPrize = 0L;
+        for (LottoReference lo : LottoReference.values()) {
+            if (lo != NOPE) {
+                totalPrize += (long) lo.getPrize() * result.getOrDefault(lo, 0);
+            }
+        }
+        return totalPrize;
+    }
+
 
     public int getPrize() {
         return prize;

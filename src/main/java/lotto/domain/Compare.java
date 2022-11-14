@@ -15,24 +15,6 @@ public class Compare {
         this.lottoWithBonus = lottoWithBonus;
     }
 
-    public float getYield(Map<LottoReference, Integer> result) {
-        long totalPrize = getTotalPrize(result);
-        int price = lottoMachine.getPrice();
-
-        return (float) totalPrize / price * 100;
-    }
-
-    public long getTotalPrize(Map<LottoReference, Integer> result) {
-        long totalPrize = 0L;
-        for (LottoReference lo : LottoReference.values()) {
-            if (lo != NOPE) {
-                totalPrize += (long) lo.getPrize() * result.getOrDefault(lo, 0);
-            }
-        }
-        return totalPrize;
-    }
-
-
     public Map<LottoReference, Integer> getResult() {
         Map<LottoReference, Integer> result = new HashMap<>();
         Lotto myLotto = lottoWithBonus.getLotto();

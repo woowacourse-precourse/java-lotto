@@ -23,8 +23,9 @@ public class OutputHandler {
         }
     }
 
-    public void printYield(float yield) {
+    public void printYield(Map<LottoReference, Integer> result) {
         DecimalFormat floatFormat = new DecimalFormat("###,###.#");
+        float yield = LottoReference.getYield(result);
         System.out.printf("총 수익률은 %s%%입니다.\n", floatFormat.format(yield));
     }
 }

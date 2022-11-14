@@ -30,7 +30,7 @@ public class LottoController {
         Map<LottoReference, Integer> result = compare.getResult();
 
         outputHandler.winningStatistics(result);
-        outputHandler.printYield(compare.getYield(result));
+        outputHandler.printYield(result);
     }
 
     private Money inputMoney() {
