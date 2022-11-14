@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.util.Map;
 
 public class Application {
     static final int lottoPrice = 1000;
@@ -123,9 +124,14 @@ public class Application {
         }
     }
 
+    public static int getResult(List<Lotto> lottos, Lotto luckyNums, int bonusNum) {
+        Map<Prize, Integer> prizeMap = LottoWin.getPrizeMap(lottos, luckyNums, bonusNum);
+        printResult(prizeMap);
+        int totalPrize = getTotalPrize(prizeMap);
+        return totalPrize;
+    }
+    
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Lotto luck =getLuckyNumbers();
-        getBonusNumber(luck);
     }
 }
