@@ -31,6 +31,7 @@ public class EnterWinningNumber {
     }
 
     private int getBonusNumberInput() {
+        userInputHelper.bonusNumberHelper();
         int bonusNumber = inputIsNumber(Console.readLine());
         isEachNumberBetween1AND45(bonusNumber);
         return bonusNumber;
