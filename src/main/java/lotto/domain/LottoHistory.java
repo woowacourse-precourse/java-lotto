@@ -32,6 +32,14 @@ public class LottoHistory {
         }
     }
 
+    public long getTotal(List<LottoRanking> winningHistory) {
+        long total = 0L;
+        for (LottoRanking ranking : winningHistory) {
+            total += ranking.getMoney();
+        }
+        return total;
+    }
+
     public String getYield(long total, String amount) {
         return String.format("%.1f", (total * 100 / Double.parseDouble(amount)));
     }
