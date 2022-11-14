@@ -1,9 +1,10 @@
 package lotto.constant;
 
+import lotto.domain.Rank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static lotto.constant.Rank.*;
+import static lotto.domain.Rank.*;
 import static org.assertj.core.api.Assertions.*;
 
 class RankTest {

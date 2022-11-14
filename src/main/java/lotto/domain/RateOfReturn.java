@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public class RateOfReturn {
     private static final double ROUNDS = 10.0;

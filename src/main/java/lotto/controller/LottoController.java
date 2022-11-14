@@ -1,8 +1,8 @@
 package lotto.controller;
 
-import lotto.RateOfReturn;
-import lotto.Ticket;
-import lotto.Win;
+import lotto.domain.RateOfReturn;
+import lotto.domain.Ticket;
+import lotto.domain.Win;
 import lotto.dto.BonusNumberDto;
 import lotto.dto.MoneyDto;
 import lotto.dto.WinningNumbersDto;

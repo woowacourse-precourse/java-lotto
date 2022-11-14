@@ -1,13 +1,11 @@
-package lotto;
-
-import lotto.constant.Rank;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.constant.Rank.*;
+import static lotto.domain.Rank.*;
 
 public class Win {
     private Map<Rank, Integer> ranking;

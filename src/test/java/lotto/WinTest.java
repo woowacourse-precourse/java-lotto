@@ -1,6 +1,9 @@
 package lotto;
 
-import lotto.constant.Rank;
+import lotto.domain.Rank;
+import lotto.domain.Lotto;
+import lotto.domain.Ticket;
+import lotto.domain.Win;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
