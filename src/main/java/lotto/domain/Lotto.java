@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Lotto {
@@ -25,6 +26,10 @@ public class Lotto {
     public int getMatchingNumber(List<Integer> computer) {
         return (int) IntStream.range(0, computer.size())
                 .filter(index -> hasPlace(index, computer.get(index))).count();
+    }
+
+    public List<Integer> getSortedNumbers() {
+        return numbers.stream().sorted().collect(Collectors.toList());
     }
 
 }
