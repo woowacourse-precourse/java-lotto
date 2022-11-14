@@ -11,7 +11,7 @@ public class Bonus {
 
     private final Integer bonus;
 
-    public Bonus(Integer bonus) {
+    public Bonus(final Integer bonus) {
         this.bonus = bonus;
     }
 
