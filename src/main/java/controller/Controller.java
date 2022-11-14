@@ -36,7 +36,7 @@ public class Controller {
 
         double yield = lottoResult.getLottoYield(lottos);
 
-//        OutputView.printLottoResult(lottoResult);
-//        OutputView.printLottoYield(yield);
+        OutputView.printLottoResult(lottoResult);
+        OutputView.printLottoYield(yield);
     }
 }
