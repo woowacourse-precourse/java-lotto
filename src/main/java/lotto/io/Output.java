@@ -1,5 +1,7 @@
 package lotto.io;
 
-public interface Output {
-    void printOutput(String message);
+public class Output {
+    public void printOutput(String message) {
+        System.out.println(message);
+    }
 }

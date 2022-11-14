@@ -2,6 +2,7 @@ package lotto.io;
 
 import lotto.model.Lotto;
 import lotto.model.LottoRank;
+import lotto.model.LottoResult;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ public class View {
     private static final String RESULT_INFO = "당첨 통계\n---";
     private static final String EACH_RESULT = "%d개 일치 (%,d원) - %d개";
     private static final String BONUS_RESULT = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개";
+    private static final String YIELD_RESULT = "총 수익률은 %.1f%%입니다.";
     private final Input input;
     private final Output output;
 
@@ -51,12 +53,18 @@ public class View {
         output.printOutput(message);
     }
 
-    public void showResult(Map<LottoRank, Integer> lottoResult) {
+    public void showResult(LottoResult lottoResult) {
         output.printOutput(RESULT_INFO);
-        lottoResult.entrySet()
+        lottoResult.getRank().entrySet()
                 .stream()
                 .filter(result -> !result.getKey().equals(LottoRank.SIXTH))
                 .forEach(this::showAllResult);
+        showYield(lottoResult.getYield());
+    }
+
+    private void showYield(double yield) {
+        output.printOutput(
+                String.format(YIELD_RESULT, yield));
     }
 
     private void showAllResult(Map.Entry<LottoRank, Integer> result) {

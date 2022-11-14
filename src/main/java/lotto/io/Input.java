@@ -1,5 +1,9 @@
 package lotto.io;
 
-public interface Input {
-    String input();
+import camp.nextstep.edu.missionutils.Console;
+
+public class Input {
+    public String input() {
+        return Console.readLine();
+    }
 }
