@@ -24,4 +24,8 @@ public class OutputView {
         System.out.printf(RESULT_OF_BONUS_VALUE_MESSAGE.getMessage(),5,FIVE_BONUS.getMessage(),resultArray[4]);
         System.out.printf(RESULT_OF_VALUE_MESSAGE.getMessage(),6,SIX.getMessage(),resultArray[5]);
     }
+
+    public static void printRateOfReturn(int userCnt,int resultSum){
+        System.out.printf(RATE_OF_RETURN_MESSAGE.getMessage(),((double)resultSum)/(double)userCnt*1000);
+    }
 }

@@ -21,6 +21,8 @@ public class Lotto {
         this.bonusNumber = bonusNumber;
     }
 
+    public int getBonusNumber() { return bonusNumber;}
+
     public List<Integer> getNumbers() {
         return numbers;
     }
