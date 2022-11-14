@@ -1,6 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class LottoView {
@@ -14,6 +16,23 @@ public class LottoView {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return -1;
+        }
+    }
+
+    public static Lotto winningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        List<Integer> winning = new ArrayList<>();
+
+        try {
+            String[] winningInput = Console.readLine().split(",");
+            for (String number : winningInput) {
+                isNumber(number);
+                winning.add(Integer.parseInt(number));
+            }
+            return new Lotto(winning);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 
