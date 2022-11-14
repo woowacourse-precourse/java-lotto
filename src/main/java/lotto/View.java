@@ -22,11 +22,23 @@ public class View {
         }
     }
 
-    public void printListOfBuyLotto(List<Lotto> list){
+    public void printListOfBuyLotto(List<Lotto> list) {
         try {
-            for(Lotto l : list){
+            for (Lotto l : list) {
                 System.out.println(l.getNumbers().toString());
             }
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+    }
+
+    public void printResult(Rank[] values, int yield) {
+        try {
+            for (Rank rank : values) {
+                System.out.println(rank.getSameNumber() + "개 일치"
+                        + "(" + rank.getPrizeMoney() + ")" + " - " + rank.getCount() + "개");
+            }
+            System.out.println("총 수익률은 " + yield + "%입니다.");
         } catch (IllegalArgumentException e) {
             throw e;
         }
@@ -39,7 +51,7 @@ public class View {
             if (i % 1000 != 0) {
                 throw new IllegalArgumentException();
             }
-            return i/1000;
+            return i / 1000;
         } catch (IllegalArgumentException e) {
             System.out.println("[Error] 로또 구입 금액이 올바르지 않습니다.");
             throw e;
@@ -64,7 +76,7 @@ public class View {
         }
     }
 
-    public Integer inputBonusNumber(){
+    public Integer inputBonusNumber() {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (IllegalArgumentException e) {
