@@ -38,6 +38,7 @@ public class Lotto {
             System.exit(0);
         }
     }
+
     public List<Integer> getNumbers() {
         return numbers;
     }

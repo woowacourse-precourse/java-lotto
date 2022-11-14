@@ -1,13 +1,15 @@
 package view;
 
 import controller.Result;
+import domain.Lotto;
 import domain.User;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class ResultView {
 
-    public void resultLotto(HashMap<String, Integer> winningLotto) {
+    public void resultLotto(HashMap<String, Integer> winningLotto, int inputMoney) {
         int totalYield = 0;
         for (Result rank : Result.values()) {
             System.out.println(rank.getCondition() + " (" + rank.getWinningCount() + ")" + " - " + winningLotto.get(rank.getWinningNumber()) + "개");
@@ -15,7 +17,7 @@ public class ResultView {
                 totalYield += convertToMoney(rank.getWinningCount());
             }
         }
-        resultYield(totalYield);
+        resultYield(totalYield, inputMoney);
     }
 
     private int convertToMoney(String winningCount) {
@@ -23,15 +25,16 @@ public class ResultView {
         return Integer.parseInt(convertWinningCount);
     }
 
-    private void resultYield(int totalYield) {
-        User inputMoney = new User();
-        double yieldRate = ((double) totalYield / inputMoney.getInputUserMoney()) * 100;
+    private void resultYield(int totalYield, int inputMoney) {
+        double yieldRate = ((double) totalYield / inputMoney) * 100;
         System.out.println("총 수익률은 " + yieldRate + "%" + "입니다");
     }
 
-    private void resultTotalLotto(){
-        User user = new User();
-        for(int i = 0; i < user.getTotalLottoNumbers().size(); i++)
-            System.out.println(user.getTotalLottoNumbers().get(i));
+    private void resultTotalLotto(List<Lotto> totalLottoNumbers){
+        for(int i = 0; i < totalLottoNumbers.size(); i++)
+            System.out.println(totalLottoNumbers.get(i));
+    }
+    private void resultCountLotto(int countLotto){
+        System.out.println(countLotto+"개를 구매했습니다.");
     }
 }

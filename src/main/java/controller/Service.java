@@ -17,13 +17,12 @@ public class Service {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public void createTotalLottoNumber(int lottoCount) {
-        User user = new User();
+    public List<Lotto> createTotalLottoNumber(int lottoCount) {
         List<Lotto> totalLottoNumbers = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             totalLottoNumbers.add(new Lotto(createLottoNumber()));
         }
-        user.setTotalLottoNumbers(totalLottoNumbers);
+        return totalLottoNumbers;
     }
 
     public List<Integer> inputLottoWinningNumbers() {

@@ -5,17 +5,16 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class User {
-
-    private int inputUserMoney;
+    private final int inputUserMoney;
     private List<Lotto> totalLottoNumbers;
+
+    public User(int inputUserMoney) {
+        validateInputUserMoney(inputUserMoney);
+        this.inputUserMoney = inputUserMoney;
+    }
 
     public int getInputUserMoney() {
         return inputUserMoney;
-    }
-
-    public void setInputUserMoney(int inputUserMoney) {
-        validateInputUserMoney(inputUserMoney);
-        this.inputUserMoney = inputUserMoney;
     }
 
     public List<Lotto> getTotalLottoNumbers() {
@@ -25,7 +24,6 @@ public class User {
     public void setTotalLottoNumbers(List<Lotto> totalLottoNumbers) {
         this.totalLottoNumbers = totalLottoNumbers;
     }
-
 
     private void validateInputUserMoney(int inputUserMoney) {
         try {
