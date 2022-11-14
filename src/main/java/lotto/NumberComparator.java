@@ -9,6 +9,13 @@ import java.util.List;
 public class NumberComparator {
     List<Integer> number = new ArrayList<>();
 
+    NumberComparator() {
+    }
+
+    NumberComparator(List<Integer> Winningnumber) {
+        this.number = number;;
+    }
+
     void setWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
@@ -19,16 +26,17 @@ public class NumberComparator {
         for (String str : temp) {
             this.number.add(Integer.parseInt(str));
         }
+        validateWinningNumber();
     }
 
-    private void validateWinningNumber(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+    void validateWinningNumber() {
+        if (this.number.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호의 개수가 6개가 아닙니다.");
         }
-        if (Collections.min(numbers) < 1 || Collections.max(numbers) > 45) {
+        if (Collections.min(this.number) < 1 || Collections.max(this.number) > 45) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
-        if (numbers.size() != numbers.stream().distinct().count()) {
+        if (this.number.size() != this.number.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호에 중복된 숫자가 있습니다.");
         }
     }
