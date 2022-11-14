@@ -15,6 +15,7 @@ public class InputConfig {
     private static final String ERROR_RANGE_OVERFLOW = ERROR_MESSAGE + " 입력 가능한 범위를 초과했습니다. %d~%d 사이의 값을 입력해 주세요.";
     private static final String ERROR_NOT_LOTTO_LENGTH = ERROR_MESSAGE + " %d개의 숫자를 입력해 주세요.";
     private static final String ERROR_OVERLAPPED_BONUS_NUMBER = ERROR_MESSAGE + " 당첨 번호와 보너스 번호가 중복됩니다.";
+    private static final String ERROR_OVERLAPPED_NUMBER = ERROR_MESSAGE + " 당첨 번호에 중복된 숫자가 존재합니다.";
     private static final String NUMBER_PATTERN = "^[0-9]+$";
 
     public static final int START_INCLUSIVE = 1;
@@ -28,9 +29,10 @@ public class InputConfig {
     }
 
     public static void checkPrizeLotto(List<Integer> lotto) {
+        hasCorrectSize(lotto);
         Set<Integer> transformed = new HashSet<>(lotto);
-        hasCorrectSize(transformed);
-        transformed.forEach(InputConfig::isInRange);
+        hasOverlappedElement(transformed);
+        transformed.forEach(InputConfig::isInLottoRange);
     }
 
     public static void isBonusNumberInLotto(Set<Integer> lotto, int bonus) {
@@ -39,9 +41,15 @@ public class InputConfig {
         }
     }
 
-    private static void hasCorrectSize(Set<Integer> set) {
-        if (set.size() != LOTTO_NUMBER_COUNT) {
+    private static void hasCorrectSize(List<Integer> list) {
+        if (list.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(String.format(ERROR_NOT_LOTTO_LENGTH, LOTTO_NUMBER_COUNT));
+        }
+    }
+
+    private static void hasOverlappedElement(Set<Integer> set) {
+        if (set.size() != LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException(ERROR_OVERLAPPED_NUMBER);
         }
     }
 
