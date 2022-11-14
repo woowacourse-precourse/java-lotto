@@ -21,10 +21,10 @@ public class Lotto {
     }
 
     public static void checkNumberDuplicate(List<Integer> numbers) {
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.contains(numbers.get(i))) {
-                throw new IllegalArgumentException(" 중복된 숫자는 잘못된 입력값 입니다.");
-            }
+        Set<Integer> numbersSet = new HashSet<>(numbers);
+
+        if (numbersSet.size() != numbers.size()) {
+            throw new IllegalArgumentException();
         }
     }
 
