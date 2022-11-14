@@ -36,6 +36,7 @@ public class User {
     }
 
     private void countTicket() {
+        this.lottoTicketCount = this.purchasingAmount / LOTTO_PRICE;
     }
 
     private void buyTickets(int lottoTicketCount) {
