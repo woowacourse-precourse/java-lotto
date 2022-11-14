@@ -92,4 +92,30 @@ public class InputOutput {
             throw new IllegalArgumentException();
         }
     }
+
+    public int getBonusNum() {
+        int bonusNum;
+        try {
+            System.out.println("보너스 번호를 입력해 주세요.");
+            bonusNum = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 보너스 번호는 숫자이어야 합니다.");
+            throw new IllegalArgumentException();
+        }
+
+        return bonusNum;
+    }
+
+    public void validateBonusNum(int bonusNum, List<Integer> winningNums) {
+        if (winningNums.contains(bonusNum)) {
+            System.out.println("[ERROR] 보너스 번호는 당첨 번호와 중복이 있어선 안됩니다.");
+            throw new IllegalArgumentException();
+        }
+
+        if (bonusNum < 1 || 45 < bonusNum) {
+            System.out.println("[ERROR] 보너스 번호는 1부터 45사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
 }

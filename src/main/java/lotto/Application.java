@@ -16,5 +16,7 @@ public class Application {
         inputOutput.printLottos(lottos);
 
         List<Integer> winningNums = inputOutput.getWinningNums();
+        int bonusNum = inputOutput.getBonusNum();
+        inputOutput.validateBonusNum(bonusNum, winningNums);
     }
 }
