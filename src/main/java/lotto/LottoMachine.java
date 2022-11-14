@@ -15,6 +15,10 @@ public class LottoMachine {
         return lottoCount;
     }
 
+    public int getLottoCount() {
+        return lottoCount;
+    }
+
     private void validateAmountIsNotUnder1000(int amount) {
         if (amount < LOTTO_PER_PRICE) {
             throw new IllegalArgumentException(AMOUNT_IS_NOT_UNDER_1000_MESSAGE);
