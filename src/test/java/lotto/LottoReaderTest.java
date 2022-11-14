@@ -48,9 +48,9 @@ class LottoReaderTest {
         Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedLotto, winningLotto,bonus);
 
         // when
-        String lottoYield = lottoReader.calculateYield(1000);
+        double lottoYield = lottoReader.calculateYield(1000);
 
         // then
-        assertThat(lottoYield).isEqualTo("200000000.0");
+        assertThat(lottoYield).isEqualTo(200000000.0);
     }
 }
