@@ -5,7 +5,7 @@ public enum InputForm {
     INPUT_WINNING_NUMBERS( "당첨 번호를 입력해 주세요."),
     INPUT_BONUS("보너스 번호를 입력해 주세요.");
 
-    private String message;
+    private final String message;
 
     InputForm(String message) {
         this.message = message;
