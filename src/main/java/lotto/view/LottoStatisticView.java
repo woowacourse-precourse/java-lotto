@@ -1,6 +1,5 @@
 package lotto.view;
 
-
 import lotto.Env;
 import lotto.type.PrizeType;
 import lotto.util.Lang;

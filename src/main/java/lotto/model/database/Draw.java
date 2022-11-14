@@ -1,9 +1,6 @@
 package lotto.model.database;
 
-import lotto.model.Lotto;
 import lotto.model.Raffle;
-
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 

@@ -2,7 +2,6 @@ package lotto.view;
 
 import lotto.model.Lotto;
 import lotto.util.Lang;
-
 import java.util.List;
 
 public class LottoPurchaseNumberView extends View {

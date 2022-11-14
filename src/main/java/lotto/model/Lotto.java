@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Env;
 import lotto.util.Lang;
 import lotto.util.Validator;
-
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;

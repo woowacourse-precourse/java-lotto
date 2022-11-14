@@ -1,6 +1,5 @@
 package lotto.controller;
 
-
 import lotto.Env;
 import lotto.util.Lang;
 import lotto.util.Validator;

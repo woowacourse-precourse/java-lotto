@@ -2,7 +2,6 @@ package lotto.model;
 
 import lotto.type.PrizeType;
 import lotto.util.Lang;
-
 import java.util.Arrays;
 import java.util.Objects;
 
