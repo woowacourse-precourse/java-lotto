@@ -47,7 +47,13 @@ public class Application {
         }
 
         int totalIncome = calculateTotalGain(boughtLottos, pickedNumbers, bonusNum);
+        float rateOfReturn = getRateOfReturn(totalIncome, MONEY);
+        System.out.println("총 수익률은 "+rateOfReturn+"입니다.");
+    }
 
+    public static float getRateOfReturn(int totalIncome, final int MONEY) {
+        float rateOfReturn = totalIncome/MONEY;
+        return rateOfReturn;
     }
 
     public static int calculateTotalGain(List<Lotto> boughtLottos, List<Integer> pickedNumbers, int bonusNum) {
