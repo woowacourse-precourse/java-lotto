@@ -115,5 +115,21 @@ public class LottoStatistics {
         return rateOfReturn;
     }
 
+    public void printCountByRank(){
+        for (Rank rank : Rank.values()){
+            int matchCount = rank.getMatch();
+            int countByRank = rank.getCount();
+
+            if (rank == Rank.SECOND){
+                System.out.println(matchCount + "개 일치, 보너스 볼 일치 (" + rank.getPrintPrize() + ")"
+                        + " - " + countByRank + "개");
+                continue;
+            }
+
+            System.out.println(matchCount + "개 일치 (" + rank.getPrintPrize() + ")"
+                    + " - " + countByRank + "개");
+        }
+    }
+
 }
 
