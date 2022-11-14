@@ -127,7 +127,6 @@ public class Controller {
         // 당첨 통계 출력
         View.Output("당첨 통계");
         View.Output("---");
-        List<Integer> lottoResultKeys = new ArrayList<>(lottoResult.keySet());
         DecimalFormat formatter = new DecimalFormat("###,###");
         for (int i = 5; 0 < i; i--) {
             Integer correctNumber = LottoReward.getCorrectNumberByRank(i);
