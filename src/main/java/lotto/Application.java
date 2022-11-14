@@ -146,7 +146,7 @@ public class Application {
             sameNumbers = lotto.containsN(winningNumbers);
             sameBonus = lotto.contains(bonusNumber);
             WIN win = WIN.getWIN(sameNumbers, sameBonus);
-            winnings.put(win, winnings.getOrDefault(win, 0));
+            winnings.put(win, winnings.getOrDefault(win, 0) + 1);
         }
         return winnings;
     }
