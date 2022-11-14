@@ -132,11 +132,11 @@ public class Controller {
             Integer reward = LottoReward.getRewardByRank(i);
 
             if (i == 2) {
-                View.Output(correctNumber + "개 일치, 보너스 볼 일치 (" + reward + ") - " + result + "개");
+                View.Output(correctNumber + "개 일치, 보너스 볼 일치 (" + reward + "원) - " + result + "개");
             }
 
             if (i != 2) {
-                View.Output(correctNumber + "개 일치 (" + reward + ") - " + result + "개");
+                View.Output(correctNumber + "개 일치 (" + reward + "원) - " + result + "개");
             }
         }
     }
