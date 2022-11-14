@@ -6,7 +6,8 @@ public class View {
     final String Cost = "구입금액을 입력해 주세요.";
     final String Winning = "당첨 번호를 입력해 주세요.";
     final String Bonus = "보너스 번호를 입력해 주세요.";
-    String[] money = {"first","second","third","fourth","fifth"};
+    String[] Ranking = {"first", "second", "third", "fourth", "fifth"};
+
     void startMention() {
         System.out.println(Cost);
     }
@@ -24,11 +25,12 @@ public class View {
         System.out.println(Bonus);
     }
 
-    void printResult(EnumMap<Money,Integer> map) {
+    void printResult(EnumMap<Money, Integer> map) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        for (String mon : money){
-            System.out.println(Money.valueOf(mon).getMoneyString()+map.getOrDefault(Money.valueOf(mon),0)+"개");
+        for (String mon : Ranking) {
+            Money money = Money.valueOf(mon);
+            System.out.println(money.getMoneyString()+map.getOrDefault(money,0)+"개");
         }
     }
 
