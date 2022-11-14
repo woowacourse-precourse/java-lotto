@@ -2,6 +2,7 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.view.InputView.InputPrice;
@@ -9,7 +10,7 @@ import static lotto.view.InputView.InputPrice;
 
 public class Issue {
     public int count;
-    public List<Integer> userLotto;
+    public List<List<Integer>> userLotto;
 
     public Issue() {
         int userPrice = InputPrice();
@@ -32,8 +33,12 @@ public class Issue {
         return false;
     }
 
-    public List<Integer> IssueLotto(int count) {
-        List<Integer> userLotto = Randoms.pickUniqueNumbersInRange(1,45,6);
+    public List<List<Integer>> IssueLotto(int count) {
+        List<List<Integer>> userLotto = new ArrayList<>(count);
+        for (int c = 0; c <count; c++) {
+            userLotto.add(Randoms.pickUniqueNumbersInRange(1,45,6));
+        }
+
         return userLotto;
     }
 }
