@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static lotto.validation.*;
 import static lotto.calculation.*;
@@ -50,8 +51,7 @@ public class Application {
 
     public static void throwException(String message){
         System.out.println("[ERROR] " + message);
-        throw new IllegalArgumentException();
-//        throw new IllegalArgumentException("[ERROR] " + message);
+        throw new NoSuchElementException("[ERROR] " + message);
     }
 
 }

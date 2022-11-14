@@ -12,7 +12,7 @@ public class validation {
         int budget = 0;
         try{
             budget = Integer.parseInt(input);
-        }catch(NumberFormatException e){throwException("구입 금액은 숫자이어야 합니다.");}
+        }catch(NumberFormatException e){throwException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");}
         if (budget % 1000 != 0) throwException("구입 금액은 1000의 배수여야 합니다.");
         System.out.println("\n" + (budget/1000) + "개를 구매했습니다.");
         return (budget / 1000);

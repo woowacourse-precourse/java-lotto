@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -50,10 +51,20 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
-            System.out.println("[예외_테스트] output: " + output());
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
+//    @Test
+//    void 예외_테스트(){
+//        assertSimpleTest(()->{
+//            try {
+//                run("1000j");
+//            } catch (final NoSuchElementException ignore) {
+//                System.out.println("ignore: " + ignore);
+//            }
+//        });
+//    }
 
     @Override
     public void runMain() {
