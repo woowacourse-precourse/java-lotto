@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Lotto {
     public enum uiMessage{
@@ -41,8 +42,27 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
     // TODO: 추가 기능 구현
+    static void lottoSystem(){
+        System.out.println("구입금액을 입력해 주세요.");
+        String payment = Console.readLine();
+        System.out.println(amountOfLotto(payment)+"개를 구매했습니다.");
+    }
+    static Integer amountOfLotto(String lottoPayment){
+        try{
+            Integer amount = 0;
+            Integer payment = Integer.parseInt(lottoPayment);
+            if(payment%1000 != 0){
+                System.out.println("[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.");
+                throw new IllegalArgumentException();
+            }
+            amount = payment/1000;
+            return amount;
+        } catch (NumberFormatException e){
+            System.out.println("[ERROR] 구입 금액 입력은 숫자만 가능합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
 
