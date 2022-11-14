@@ -33,7 +33,8 @@ public class Controller {
         for (Lotto lotto : lottos) {
             int matchCount = lotto.getCountOfMatch(winningLotto.getWinningLottoNumbers());
             boolean bonusMatch = lotto.containBonus(winningLotto.getBonusNumber());
-            System.out.println("match count is " + matchCount + ", and Bonus number is " + bonusMatch);
+            System.out.println(matchCount + " " + bonusMatch);
+            System.out.println(LottoRank.valueOf(matchCount, bonusMatch));
         }
     }
 }

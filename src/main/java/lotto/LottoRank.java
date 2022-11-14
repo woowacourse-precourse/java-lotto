@@ -2,20 +2,71 @@ package lotto;
 
 public enum LottoRank {
     NOTHING(0, 0),
-    FIFTH_PLACE(5_000, 3),
-    FOURTH_PLACE(50_000, 4),
-    THIRD_PLACE(1_500_000, 5),
-    SECOND_PLACE(30_000_000, 5),
-    FIRST_PLACE(2_000_000_000, 6);
+    FIFTH_PLACE(3, 5_000),
+    FOURTH_PLACE(4, 50_000),
+    THIRD_PLACE(5, 1_500_000),
+    SECOND_PLACE(5, 30_000_000),
+    FIRST_PLACE(6, 2_000_000_000);
 
     private static final int LOTTO_WINNING_COUNT_STANDARD = 3;
 
-    private int winnings;
-    private int matchCount;
+    private final int winnings;
+    private final int numberOfMatch;
 
-    LottoRank(int matchCount, int winnings) {
+    LottoRank(int numberOfMatch, int winnings) {
         this.winnings = winnings;
-        this.matchCount = matchCount;
+        this.numberOfMatch = numberOfMatch;
     }
 
+    public static LottoRank valueOf(int matchCount, boolean bonusMatch) {
+        if (isNothingWinning(matchCount)) {
+            return NOTHING;
+        }
+
+        if (isSecondPlace(matchCount, bonusMatch)) {
+            return SECOND_PLACE;
+        }
+
+        if (isThirdPlace(matchCount)) {
+            return THIRD_PLACE;
+        }
+
+        if (isFourthPlace(matchCount)) {
+            return FOURTH_PLACE;
+        }
+
+        if (isFifthPlace(matchCount)) {
+            return FIFTH_PLACE;
+        }
+
+        if (isFirstPlace(matchCount)) {
+            return FIRST_PLACE;
+        }
+
+        throw new IllegalArgumentException();
+    }
+
+    private static boolean isNothingWinning(int matchCount) {
+        return matchCount < LOTTO_WINNING_COUNT_STANDARD;
+    }
+
+    private static boolean isSecondPlace(int matchCount, boolean bonusMatch) {
+        return SECOND_PLACE.numberOfMatch == matchCount && bonusMatch;
+    }
+
+    private static boolean isThirdPlace(int matchCount) {
+        return THIRD_PLACE.numberOfMatch == matchCount;
+    }
+
+    private static boolean isFourthPlace(int matchCount) {
+        return FOURTH_PLACE.numberOfMatch == matchCount;
+    }
+
+    private static boolean isFifthPlace(int matchCount) {
+        return FIFTH_PLACE.numberOfMatch == matchCount;
+    }
+
+    private static boolean isFirstPlace(int matchCount) {
+        return FIRST_PLACE.numberOfMatch == matchCount;
+    }
 }
