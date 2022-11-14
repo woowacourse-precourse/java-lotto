@@ -40,4 +40,11 @@ public class InputView {
             throw new IllegalArgumentException("로또번호 형식과 맞지 않습니다");
         }
     }
+
+    public int promptBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        validateNumber(input);
+        return Integer.parseInt(input);
+    }
 }
