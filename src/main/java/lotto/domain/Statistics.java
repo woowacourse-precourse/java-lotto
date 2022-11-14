@@ -27,6 +27,16 @@ public class Statistics {
         statisticsResult.merge(prize, 1, (oldValue, newValue) -> oldValue + 1);
     }
 
+    public float calculateYiled(Amount amount) {
+        float revenue = 0;
+        for (Prize prize : statisticsResult.keySet()) {
+            if(statisticsResult.get(prize) > 0) {
+                revenue += prize.getReward() * statisticsResult.get(prize);
+            }
+        }
+        return (revenue / amount.getValue()) * 100;
+    }
+
     public Map<Prize, Integer> getStatisticsResult() {
         return statisticsResult;
     }
