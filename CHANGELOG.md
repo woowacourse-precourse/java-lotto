@@ -1,0 +1,59 @@
+- refactor: java 컨벤션에 맞게 일부 수정 및 미사용 import문 제거
+- test(LottoManagerTest): Random 로또가 1,2,3,4,5,6일때 각 Rank 테스트 추가
+- test: TestNumberGenerator를 통해 Random Lotto 번호를 1,2,3,4,5,6으로 고정
+- refactor: Random 테스트를 위해 기존의 generateLotto 함수를 NumberGenertor인터페이스를 상속받는 RandomNumberGenerator 클래스로 기능 대체
+- docs(CHAGELOG.md): CHANGELOG.md 파일 자동 생성
+- refactor: Lotto 숫자의 개수 Lotto 숫자의 범위 상수 처리
+- refactor: package 생성 및 구분
+- test(LottoVallidationTest): LottoValidation 테스트 추가
+- feat: 당첨 번호와 보너스 번호 중복 예외 처리 추가
+- refactor: Lotto의 validation 체크 부분을 클래스 분리 하여 책임 분리
+- feat(Application): Lotto 시작 구현
+- feat(GameManager): 당첨 번호와 보너스 번호를 기반으로 계산하고 계산한 결과를 출력
+- feat(GameManager): 당첨 번호와 보너스 번호를 입력받는 기능 적용 구현
+- feat(GameManager): 구매할 가격 입력 및 가격에 대한 출력 및 lottoManager 초기화 기능 구현
+- fix(OutputView): BUYING_N_AMOUNT 오타 수정
+- feat(OutputView): 수익률 출력 기능 추가
+- refactor(LottoManager): 오류 수정을 위한 프린트문 제거
+- fix(LottoManagerTest): 수익률 계산 오류 수정에 대한 테스트 수정
+- fix(LottoManager): 수익률 계산 오류 수정
+- feat(OutputView): 당첨 통계 출력 기능 추가
+- refactor(Rank): 상수 선언 순서 변경
+- fix(InputView): 보너스 번호 입력 받을 시 6자리 미중복 숫자 예외체크하는 에러 수정
+- feat(OutputView): 공백 라인 출력 기능 추가
+- feat(OutputView): 로또 출력 기능 추가
+- feat(OutputView): 구매 개수 출력 기능 추가
+- test(LottoManagerTest): 여섯개의 숫자 전부 맞췄을 때 테스트 추가
+- feat(LottoManager): lottos와 ranks getter 추가
+- feat(LottoManager): 수익률 계산 기능 추가
+- feat(LottoManager): 계산한 정보에 따라 Rank Map에 저장하는 기능 구현
+- feat(LottoManager): 당첨 정보를 저장할 Rank Map 초기화
+- feat(LottoManager): 보너스 번호와 비교하여 보너스 번호를 갖고 있는지 return하는 기능 추가
+- feat(LottoManager): 당첨 번호와 비교하여 몇개 일치하는지 return하는 기능 추가
+- feat(LottoManager): LottoManager 클래스 구현 및 로또 생성 기능 구현 및 생성자에서 적용
+- docs: LottoManager와 LottoCalculator 기능 합병
+- test(LottoTest): 중복된 수와 수의 범위 예외처리 테스트 추가
+- feat(Lotto): Lotto 중복 된 수, 수의 범위 예외 처리
+- refactor(InputViewValidator): Lotto클래스에서 예외 처리를 위한 일부 상수 public으로 변경
+- feat(Lotto): numbers 참조를 위해 get메서드 추가
+- test(RankTest): 맞춘 개수에 따른 순위 반환 테스트 추가
+- feat(Rank): 맞춘 개수와 보너스 번호 일치 여부에 따른 Rank 반환 기능 구현
+- docs(docs/README.md): Rank 기능 구현 목록 수정
+- feat(Rank): 각 당첨 순위를 저장하는 Enum Rank 클래스 구현
+- test(InputViewValidationTest): 보너스 번호 입력 잘못된 범위의 수 예외처리 테스트 추가
+- feat(InputViewValidation): 보너스 번호 입력 시 예외처리 기능 추가 및 적용
+- test(InputViewValidationTest): 당첨번호 입력 중복된 수 예외처리 테스트 추가
+- feat(InputViewValidation): 당첨 번호 입력 중복된 수 입력 시 예외처리 기능 추가 및 적용
+- test(InputViewValidationTest): 당첨번호 입력예외처리 테스트 추가
+- fix(InputViewValidation): 당첨 번호 입력 범위 예외처리 못하던 오류 해결
+- fix(InputViewValidation): 당첨 번호 입력 형식 예외처리 마지막 문자 인덱싱 오류 해결
+- feat(InputViewValidation): 당첨 번호 입력 입력 형식 예외처리 기능 추가 및 적용
+- feat(InputViewValidation): 당첨 번호 입력 예외처리 기능 추가 및 적용
+- fix(InputView): 정규식 표현 1~9가 아닌 0~9로 변경
+- feat(InputView): 당첨 번호 입력 받는 기능 추가
+- test(InputViewValidationTest): 로또 구입 금액 입력예외처리 테스트 추가
+- feat(InputViewValidation): 로또 구입 금액 입력예외처리 기능 추가 및 적용
+- fix(InputView): 로또 구입 금액 입력 받기 전 안내 문구 추가
+- feat(InputView): 로또 구입 금액 입력 받는 기능 추가
+- docs(docs/README.md): 기능 구현 목록 작성
+- feat: setup precourse lotto project
