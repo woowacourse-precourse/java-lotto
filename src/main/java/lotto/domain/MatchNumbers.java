@@ -1,7 +1,7 @@
 package lotto.numbers;
 
 import lotto.Lotto;
-import lotto.money.Money;
+import lotto.domain.Money;
 
 import java.util.HashMap;
 import java.util.List;

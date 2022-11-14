@@ -1,7 +1,6 @@
 package lotto;
 
-import lotto.money.Money;
-import lotto.numbers.RandomNumberCreater;
+import lotto.domain.Money;
 
 import java.util.List;
 

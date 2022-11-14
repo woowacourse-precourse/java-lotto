@@ -1,4 +1,4 @@
-package lotto.money;
+package lotto.domain;
 
 import lotto.message.ErrorMessage;
 import lotto.Ranking;
