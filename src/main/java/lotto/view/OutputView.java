@@ -48,4 +48,8 @@ public class OutputView {
         System.out.println(FIRST_PLACE_MESSAGE
                 + winnerStatistics.getOrDefault(FIRST_PLACE, BLANK) + COUNT_MESSAGE);
     }
+
+    public static void printProfitRate(double profitRate) {
+        System.out.println("총 수익률은 " + profitRate + "%입니다.");
+    }
 }
