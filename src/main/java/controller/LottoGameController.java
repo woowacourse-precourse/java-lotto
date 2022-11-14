@@ -1,13 +1,19 @@
 package controller;
 
+import model.LottoTotalCountCalculator;
 import view.InputLottoPurchaseAmount;
 
 public class LottoGameController {
 	
-	InputLottoPurchaseAmount inputLotto = new InputLottoPurchaseAmount();
+	private InputLottoPurchaseAmount inputLotto = new InputLottoPurchaseAmount();
+	private LottoTotalCountCalculator lottoTotalCountCalculator = new LottoTotalCountCalculator();
 
-	public long lottoPurchaseAmountInput() {
+	private long lottoPurchaseAmountInput() {
 		long purchaseAmount = inputLotto.readLottoPurchaseAmount();
 		return purchaseAmount;
+	}
+	
+	private long lottoTotalCount(long purchaseAmount) {
+		return lottoTotalCountCalculator.calculateLottoTotalCount(purchaseAmount);
 	}
 }
