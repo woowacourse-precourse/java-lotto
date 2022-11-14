@@ -13,11 +13,11 @@
 - [x] 만든 LottoBundle 보여주기 - LottoSeller.showBundle()
 - [x] 거스름돈 돌려주기 - LottoSeller.giveChange()
 ### - NumberComparator 인스턴스 기능
-- [ ] 당첨 숫자 읽기
-  - [ ] 숫자 validate
-- [ ] 보너스 숫자 읽기
-  - [ ] 숫자 validate
-- [ ] LottoBundle과 당첨 숫자들 비교하기
+- [x] 당첨 숫자 읽기 - setWinningNumber()
+  - [x] 숫자 validate - validateWinningNumber()
+- [x] 보너스 숫자 추가하기 - setWholeNumber()
+  - [x] 숫자 validate - validateWholeNumber()
+- [x] LottoBundle과 당첨 숫자들 비교하기 - compareNumbers()
 ### - WinningPayer 인스턴스 기능
 - [ ] 당첨금 지급하기
 - [ ] 수익률 알려주기
