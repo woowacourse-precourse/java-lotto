@@ -70,11 +70,11 @@ public class InputView {
     public List<Integer> input_Lotto_Numbers() {
         System.out.println(LOTTONUMBERS_INPUT_MESSAGE);
         List<Integer> list = makeList(getUserInput());
-        validateInput(list);
+        lotto_Numbers_Validate(list);
         return list;
     }
 
-    public void validateInput(List<Integer> list) {
+    public void lotto_Numbers_Validate(List<Integer> list) {
         if (list.contains(0)) {
             throw new IllegalArgumentException(LOTTONUMBERS_INPUT_EXCEPTION_MESSAGE);
         }
@@ -87,5 +87,4 @@ public class InputView {
             }
         }
     }
-
 }
