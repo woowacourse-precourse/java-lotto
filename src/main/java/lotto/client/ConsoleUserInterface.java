@@ -1,8 +1,11 @@
 package lotto.client;
 
+import static lotto.InvalidInputMessage.ERR_DEFAULT;
+import static lotto.InvalidInputMessage.ERR_WINNING_NUMBER_FORMAT;
+
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
-import java.util.Collections;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.InvalidInputMessage;
@@ -13,6 +16,7 @@ public class ConsoleUserInterface {
 
     private final static String MSG_REQUEST_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     private final static String MSG_SHOW_PURCHASE_AMOUNT = "개를 구매했습니다.";
+    private final static String MSG_REQUEST_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
 
     public ConsoleUserInterface() {
     }
@@ -71,5 +75,21 @@ public class ConsoleUserInterface {
                 .map(LottoNumber::getNumber)
                 .collect(Collectors.toList());
         output(convertedNumbers.toString());
+    }
+
+    public List<Integer> requestWinningNumbers() {
+        output(MSG_REQUEST_WINNING_NUMBERS);
+        String input = input();
+        return parseWinningString(input);
+    }
+
+    private List<Integer> parseWinningString(String input) {
+        List<String> rawNumbers = List.of(input.split(","));
+        List<Integer> numbers = new ArrayList<Integer>();
+        for(String rawNumber : rawNumbers) {
+            validateAs_JavaInteger(rawNumber);
+            numbers.add(Integer.parseInt(rawNumber));
+        }
+        return numbers;
     }
 }
