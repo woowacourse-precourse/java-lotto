@@ -5,9 +5,13 @@ import java.util.List;
 public class WinningNumbers {
     private final List<WinningNumber> winningNumbers;
 
-    public WinningNumbers(List<WinningNumber> winningNumbers) {
+    private WinningNumbers(List<WinningNumber> winningNumbers) {
         validateDuplication(winningNumbers);
         this.winningNumbers = winningNumbers;
+    }
+
+    public static WinningNumbers from(List<WinningNumber> winningNumbers) {
+        return new WinningNumbers(winningNumbers);
     }
 
     private void validateDuplication(List<WinningNumber> numbers) {

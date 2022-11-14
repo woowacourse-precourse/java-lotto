@@ -19,8 +19,8 @@ class WinningNumbersTest {
     @ParameterizedTest()
     @MethodSource("provideNonDuplicateListForTest")
     void constructor_test(List<Integer> numbers) {
-        WinningNumbers winningNumbers = new WinningNumbers(numbers.stream()
-                .map(WinningNumber::new)
+        WinningNumbers winningNumbers = WinningNumbers.from(numbers.stream()
+                .map(WinningNumber::from)
                 .collect(Collectors.toList()));
 
         assertThat(winningNumbers).isInstanceOf(WinningNumbers.class);
@@ -31,10 +31,10 @@ class WinningNumbersTest {
     @MethodSource("provideDuplicateListForErrorTest")
     void constructor_error_test(List<Integer> numbers) {
         List<WinningNumber> winningNumbers = numbers.stream()
-                .map(WinningNumber::new)
+                .map(WinningNumber::from)
                 .collect(Collectors.toList());
 
-        assertThatThrownBy(() -> new WinningNumbers(winningNumbers))
+        assertThatThrownBy(() -> WinningNumbers.from(winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 당첨번호는 중복될 수 없습니다.");
     }
@@ -43,8 +43,8 @@ class WinningNumbersTest {
     @ParameterizedTest()
     @MethodSource("provideListForErrorTest")
     void contains_test(List<Integer> numbers, int number, boolean expected) {
-        WinningNumbers winningNumbers = new WinningNumbers(numbers.stream()
-                .map(WinningNumber::new)
+        WinningNumbers winningNumbers = WinningNumbers.from(numbers.stream()
+                .map(WinningNumber::from)
                 .collect(Collectors.toList()));
 
         boolean actual = winningNumbers.contains(number);
@@ -56,8 +56,8 @@ class WinningNumbersTest {
     @ParameterizedTest()
     @MethodSource("provideTwoListForCountTest")
     void countSameValue_test(List<Integer> numbers, List<Integer> inputNumbers, String expected) {
-        WinningNumbers winningNumbers = new WinningNumbers(numbers.stream()
-                .map(WinningNumber::new)
+        WinningNumbers winningNumbers = WinningNumbers.from(numbers.stream()
+                .map(WinningNumber::from)
                 .collect(Collectors.toList()));
 
         String actual = winningNumbers.countSameValue(inputNumbers);
