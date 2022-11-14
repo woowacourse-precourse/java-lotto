@@ -2,8 +2,11 @@ package lotto.view.print;
 
 import lotto.domain.Buyer;
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
+import lotto.domain.Statistics;
 
 import java.util.List;
+import java.util.Map;
 
 public class MessagePrinter {
     private static final String NOTIFY_INPUT_PAYMENT = "구입금액을 입력해 주세요.";
@@ -37,5 +40,12 @@ public class MessagePrinter {
 
     public void printStaticBonusNumberNotification() {
         System.out.println(NOTIFY_INPUT_BONUS_NUMBER);
+    }
+
+    public void printWinningRecord(Statistics statistics) {
+        Map<Rank, Integer> rankRecord = statistics.getRankRecord();
+        for (Rank rank : rankRecord.keySet()) {
+            System.out.printf((NOTIFY_WINNING_RECORD) + "%n" + rank.getReward() + rankRecord.get(rank));
+        }
     }
 }

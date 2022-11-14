@@ -14,7 +14,7 @@
 - [X] 구매한 로또 리스트 출력 - MessagePrinter#printDynamicLottosBought(Buyer buyer)
 - [X] 당첨 번호 입력 안내 메시지 출력 - MessagePrinter#printStaticWinningLottoNumbersNotification()
 - [X] 보너스 번호 입력 안내 메시지 출력 - MessagePrinter#printStaticBonusNumberNotification()
-- [ ] 당첨 내역 출력(구매한 로또 리스트가 로또 등수 별로 몇 개씩 당첨 됐는지) - MessagePrinter#printWinningRecord()
+- [X] 당첨 내역 출력(구매한 로또 리스트가 로또 등수 별로 몇 개씩 당첨 됐는지) - MessagePrinter#printWinningRecord()
 - [ ] 총 수익률 출력 - MessagePrinter#printEarningsRate()
 ---
 
