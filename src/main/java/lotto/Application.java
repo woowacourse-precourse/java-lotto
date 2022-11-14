@@ -14,7 +14,7 @@ public class Application {
 
             lottoGame.printResult(lottoSet);
         } catch (IllegalArgumentException illegalArgumentException) {
-            System.out.println(illegalArgumentException.getMessage());
+            System.out.println("[ERROR] " + illegalArgumentException.getMessage());
         }
     }
 }
