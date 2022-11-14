@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class LottoAnswerTest {
+public class LottoResultTest {
 
     @DisplayName("로또 당첨번호가 7개 이상이면 예외가 발생한다")
     @Test
