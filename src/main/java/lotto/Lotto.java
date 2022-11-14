@@ -2,6 +2,7 @@ package lotto;
 
 import static lotto.Config.*;
 
+import java.util.Collections;
 import java.util.List;
 import lotto.utils.Logger;
 import lotto.utils.Logger.LogType;
@@ -20,7 +21,7 @@ public class Lotto {
         checkLottoLength(numbers);
         checkRangeNumber(numbers);
         checkDuplicatedNumber(numbers);
-        this.numbers = numbers;
+        this.numbers = Collections.unmodifiableList(numbers);
     }
 
     private void checkExistedLotto(List<Integer> numbers){
@@ -51,5 +52,9 @@ public class Lotto {
             Logger.log(DUPLICATED_NUMBER_ERROR_MESSAGE, LogType.ERROR);
             throw new IllegalArgumentException();
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
