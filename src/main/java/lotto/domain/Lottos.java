@@ -17,4 +17,8 @@ public class Lottos {
                 .map(function)
                 .collect(Collectors.toList());
     }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }

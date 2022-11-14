@@ -19,6 +19,10 @@ public class User {
         return money;
     }
 
+    public Lottos getLottos() {
+        return lottos;
+    }
+
     private Lottos createLottoByCount() {
         List<Lotto> lottos = new ArrayList<>();
 
