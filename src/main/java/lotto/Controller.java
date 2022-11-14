@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class Controller {
     public void run() {
         getLottoInfo();
@@ -10,5 +12,7 @@ public class Controller {
         int lottoCount = LottoGame.getLottoCount(lottoPrice);
 
         OutputView.printLottoCount(lottoCount);
+
+        List<Lotto> lottos = LottoGame.getLottos(lottoCount);
     }
 }
