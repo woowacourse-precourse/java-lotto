@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -24,5 +25,12 @@ class WinningLottoTest {
                 Arguments.of(Arrays.asList(1, 17, 23, 38, 45, 777), 7),
                 Arguments.of(Arrays.asList(6, 11, 13, 29, 33, 40), 99)
         );
+    }
+
+    @DisplayName("당첨 번호와 보너스 번호가 중복된 번호가 있으면 예외가 발생한다.")
+    @Test
+    void containWinningLottoByDuplicateNumber() {
+        assertThatThrownBy(() -> new WinningLotto(List.of(3, 11, 26, 28, 34, 41), 26))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
