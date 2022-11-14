@@ -2,9 +2,8 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class PickRandomLotto {
     public final int LIMIT_LOTTO = 6;
@@ -24,7 +23,9 @@ public class PickRandomLotto {
 
         while(iterator.hasNext()) {
             List<Integer> values = iterator.next();
-            System.out.println(values);
+            System.out.println(values.stream()
+                    .sorted()
+                    .collect(Collectors.toList()));
         }
         inputMoney.lineSkip();
     }
