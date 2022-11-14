@@ -1,20 +1,22 @@
 package lotto.domain;
 
 public enum Ranking {
-    first(1, 6, 2_000_000_000),
-    second(2, 5, 30_000_000),
-    third(3, 5, 1_500_000),
-    fourth(4, 4, 50_000),
-    fifth(5, 3, 5_000);
+    first(1, 6, 2_000_000_000, "6개 일치 (2,000,000,000원)"),
+    second(2, 5,  30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
+    third(3, 5, 1_500_000, "5개 일치 (1,500,000원)"),
+    fourth(4, 4, 50_000, "4개 일치 (50,000원)"),
+    fifth(5, 3, 5_000, "3개 일치 (5,000원)");
 
     private final int value;
     private final int matchingCount;
     private final int prizeMoney;
+    private final String printFormat;
 
-    Ranking(int value, int numberOfMatching, int prizeMoney) {
+    Ranking(int value, int numberOfMatching, int prizeMoney, String printFormat)  {
         this.value = value;
         this.matchingCount = numberOfMatching;
         this.prizeMoney = prizeMoney;
+        this.printFormat = printFormat;
     }
 
     public int value() {
@@ -27,5 +29,9 @@ public enum Ranking {
 
     public int prizeMoney() {
         return prizeMoney;
+    }
+
+    public String printFormat() {
+        return printFormat;
     }
 }
