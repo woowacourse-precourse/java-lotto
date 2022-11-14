@@ -33,21 +33,21 @@ public class InputValidatorTest {
     class Input_WinningNumber {
         @DisplayName("쉼표 기준으로 입력되지 않으면 예외가 발생한다.")
         @Test
-        void inputWinningNumber1() {
+        void inputWinningNumberIsNotDividedIntoComma() {
             assertThatThrownBy(() -> inputValidator.convertStringIntoList("0.1.10.15.20.30"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("쉼표 사이에 숫자 형식으로 입력되지 않으면 예외가 발생한다.")
         @Test
-        void inputWinningNumber2() {
+        void inputWinningNumberContainsNotNumberTypeElement() {
             assertThatThrownBy(() -> inputValidator.convertStringIntoList("0,1,10,A,20,30"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("쉼표 사이에 값이 비어있으면 예외가 발생한다.")
         @Test
-        void inputWinningNumber3() {
+        void inputWinningNumberContainsBlackElement() {
             assertThatThrownBy(() -> inputValidator.convertStringIntoList("0,1,10,,20,30"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
