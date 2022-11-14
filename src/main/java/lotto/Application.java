@@ -37,17 +37,19 @@ public class Application {
     }
 
     public static int getLottoCount(String input) {
-        if (!input.matches("[0-9]+")) {
-            System.out.println("[ERROR] 입력 금액은 숫자로만 이루어져야 합니다.");
-            throw new IllegalArgumentException();
+        try {
+            if (!input.matches("[0-9]+")) {
+                throw new IllegalArgumentException("[ERROR] 입력 금액은 숫자로만 이루어져야 합니다.");
+            }
+            int money = Integer.parseInt(input);
+            if (money % 1000 != 0) {
+                throw new IllegalArgumentException("[ERROR] 입력 금액은 1000원 단위로 입력해야 합니다.");
+            }
+            return money / 1000;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return 0;
         }
-
-        int money = Integer.parseInt(input);
-        if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 입력 금액은 1000원 단위로 입력해야 합니다.");
-        }
-
-        return money / 1000;
     }
 
     public static List<Lotto> buyLotto(int count) {
@@ -55,7 +57,6 @@ public class Application {
 
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//            Collections.sort(numbers, Comparator.naturalOrder());
             lottos.add(new Lotto(numbers));
         }
 
