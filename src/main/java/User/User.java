@@ -54,4 +54,13 @@ public class User {
     private void printInputMessage() {
         System.out.println("구입금액을 입력해 주세요.");
     }
+
+    private boolean checkInputInteger(String money) {
+        try {
+            Integer.parseInt(money);
+        } catch (Exception exception) {
+            return false;
+        }
+        return true;
+    }
 }
