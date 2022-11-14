@@ -10,11 +10,13 @@ public class Game {
     public static int bonusNumber;
     public static int paymentAmount;
     public static List<Integer> winning_numbers;
+    public static int total_gain = 0;
 
     public static int getLottoCount() {
         return paymentAmount / LottoPrice;
     }
-    public static List<Integer> getWinning_numbers(){
+
+    public static List<Integer> getWinning_numbers() {
         return winning_numbers;
     }
 

@@ -11,9 +11,7 @@ public class Grade {
     public static final int FIVE_HIT = 5;
     public static final int SIX_HIT = 6;
 
-    public static enum Lottogrades {first, second, third, fourth, fifth, lose}
-
-   // private final List<Lottogrades> winning_amount = Arrays.asList(grade.first, gradeService.Lottogrades.second, gradeService.Lottogrades.third, gradeService.Lottogrades.fourth, gradeService.Lottogrades.fifth);
+    public enum Lottogrades {first, second, third, fourth, fifth, lose}
 
     public static Lottogrades getGrade(int hitCount, boolean bonus_hit) {
 

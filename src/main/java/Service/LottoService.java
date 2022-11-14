@@ -8,11 +8,11 @@ import java.util.List;
 
 public class LottoService {
 
-    public static List<Lotto> lottos =new ArrayList<>();
+    public static List<Lotto> lottos = new ArrayList<>();
 
     public static void lottoSpawner(int lottoCount) {
         for (int i = 0; i < lottoCount; i++) {
-            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6)));
+            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
     }
 

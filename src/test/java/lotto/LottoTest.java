@@ -1,14 +1,18 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import domain.Amount;
-import domain.Game;
+import Service.gradeService;
+import domain.Grade;
+import org.assertj.core.api.AbstractComparableAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 
+import static Service.LottoService.lottoSpawner;
+import static Controller.mainController.setGrades;
+import static domain.Grade.getGrade;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,8 +48,21 @@ class LottoTest {
     @Test
     void getGradeTest(){
 
-        assertThat(Amount.getGrade(3,false)).isEqualTo(Amount.grade.fifth);
-        assertThat(Amount.getGrade(5,true)).isEqualTo(Amount.grade.second);
+        assertThat(getGrade(3,false)).isEqualTo(Grade.Lottogrades.fifth);
+        AbstractComparableAssert<?, Grade.Lottogrades> equalTo = assertThat(getGrade(5, true)).isEqualTo(Grade.Lottogrades.second);
+
+
+    }
+    @Test
+    void controllerPrintMessageTest(){
+        lottoSpawner(8);
+
+        List<Integer> winning_numbers = List.of(1, 31, 25, 36, 42, 11);
+        setGrades();
+        //assertThat().isEqualTo();
+    }
+    @Test
+    void getLottoCountTest(){
 
     }
 
