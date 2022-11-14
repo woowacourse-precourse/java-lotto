@@ -9,19 +9,22 @@ import java.util.Set;
 
 public class User {
 
-    public void inputMoney() {
+    public int inputMoney() {
         String money = Console.readLine();
         validateMoney(money);
+        return Integer.parseInt(money);
     }
 
-    public void inputWinningLottoNumbers() {
+    public List<Integer> inputWinningLottoNumbers() {
         String number = Console.readLine();
         validateWinningLottoNumbers(number);
+        return getNumberList(number);
     }
 
-    public void inputBonusNumber() {
+    public int inputBonusNumber() {
         String bonusNumber = Console.readLine();
         validateBonusNumber(bonusNumber);
+        return Integer.parseInt(bonusNumber);
     }
 
     public List<Integer> getNumberList(String number) {
