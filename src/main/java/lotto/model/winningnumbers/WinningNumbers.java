@@ -9,22 +9,52 @@ import java.util.List;
 import java.util.Set;
 
 public class WinningNumbers {
-    private List<Integer> numbers;
-    private int bonusNumber;
+    private final List<Integer> numbers;
+    private final int bonusNumber;
 
     public WinningNumbers(List<Integer> numbers, int bonusNumber) {
         validate(numbers, bonusNumber);
 
         this.numbers = new ArrayList<>();
-        for(int number: numbers) {
-            this.numbers.add(number);
-        }
+        this.numbers.addAll(numbers);
 
         this.bonusNumber = bonusNumber;
     }
 
     public LottoResult checkLotto(Lotto lotto) {
-        // TODO 구현 필요
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        int matchCount = 0;
+        boolean doesBonusMatch = false;
+        for(int lottoNumber: lottoNumbers) {
+            if(lottoNumber == bonusNumber) {
+                doesBonusMatch = true;
+                continue;
+            }
+            if(numbers.contains(lottoNumber)) {
+                matchCount++;
+            }
+        }
+
+        return getLottoResult(matchCount, doesBonusMatch);
+    }
+
+    private LottoResult getLottoResult(int matchCount, boolean doesBonusMatch) {
+        if(matchCount == Lotto.LOTTO_NUMBER_LENGTH) {
+            return LottoResult.FIRST;
+        }
+        if(matchCount == Lotto.LOTTO_NUMBER_LENGTH - 1) {
+            if(doesBonusMatch) {
+                return LottoResult.SECOND;
+            }
+            return LottoResult.THIRD;
+        }
+        if(matchCount == Lotto.LOTTO_NUMBER_LENGTH - 2) {
+            return LottoResult.FOURTH;
+        }
+        if(matchCount == Lotto.LOTTO_NUMBER_LENGTH - 3) {
+            return LottoResult.FIFTH;
+        }
         return LottoResult.MISS;
     }
 
@@ -61,7 +91,7 @@ public class WinningNumbers {
         Set<Integer> tmpSet = new HashSet<>();
 
         for (int number : numbers) {
-            if (tmpSet.add(number) == false) {
+            if (!tmpSet.add(number)) {
                 return true;
             }
         }
