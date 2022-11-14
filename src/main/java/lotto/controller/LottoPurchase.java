@@ -9,5 +9,7 @@ public class LottoPurchase {
     public void controlLottoPurchase(){
         String purchaseAmount = lottoPurchaseUI.takePurchaseAmount();
         User user = new User(purchaseAmount);
+        user.createUserLottos();
+
     }
 }

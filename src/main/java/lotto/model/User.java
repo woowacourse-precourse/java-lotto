@@ -1,12 +1,50 @@
 package lotto.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
-    private int purchaseAmount;
     private static final int LOTTO_PRICE = 1000;
+    private int purchaseAmount;
+    private int myQuantity;
+    private List<Lotto> myLottos;
 
     public User(String purchaseAmount){
         validate(purchaseAmount);
         this.purchaseAmount = Integer.parseInt(purchaseAmount);
+        myQuantity = this.purchaseAmount/LOTTO_PRICE;
+        List<Lotto> myLottos = new ArrayList<>();
+    }
+
+    public void createUserLottos(){
+        int temporaryQuantity = myQuantity;
+        RandomGenerator randomGenerator = new RandomGenerator();
+
+        while(temporaryQuantity != 0){
+            List<Integer> randomNumbers = randomGenerator.generateSixNumbers();
+            Lotto lotto = new Lotto(randomNumbers);
+            myLottos.add(lotto);
+            temporaryQuantity--;
+        }
+    }
+
+    public int getUserPurchaseAmount(){
+        return purchaseAmount;
+    }
+
+    public int getUserPurchaseQuantity(){
+        return myQuantity;
+    }
+
+    public List<List<Integer>> getUserLottos(){
+        List<List<Integer>> userLottos = new ArrayList<>();
+
+        for (Lotto myLotto: myLottos){
+            List<Integer> userLotto = myLotto.getNumbers();
+            userLottos.add(userLotto);
+        }
+
+        return userLottos;
     }
 
     private void validate(String purchaseAmount){
