@@ -7,6 +7,5 @@ public class GameController {
 
     public void buyLotto() {
         message.inputPrice();
-        }
     }
 }
