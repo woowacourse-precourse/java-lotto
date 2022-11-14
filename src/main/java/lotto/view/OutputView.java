@@ -33,7 +33,7 @@ public class OutputView {
             String answer = prizeMoney.getCountOfMatch() + "개 일치";
 
             if (isSecond(prizeMoney)) {
-                answer += ", 보너스 볼 일치 ";
+                answer += ", 보너스 볼 일치";
             }
             answer += " (" + prizeMoney.getMoney() + "원) - " + countOfWinning + "개";
 
