@@ -4,27 +4,54 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import lotto.model.Lotto;
 import lotto.model.Rank;
 
 public class AllLotteriesCalculateService {
 
     private final EachLotteryCalculateService eachNumberCalculateService;
+    private Map<Rank, Integer> results;
+    private double yield;
 
     public AllLotteriesCalculateService(Lotto winningLottery, int bonus){
         eachNumberCalculateService = new EachLotteryCalculateService(winningLottery, bonus);
     }
 
-    public Map<Rank, Integer> calculate(List<Lotto> lotteries){
+    public void calculate(List<Lotto> lotteries){
         List<Rank> ranks = getAllWinningLotto(lotteries);
         Map<Rank, Integer> results = winningFormatter();
         ranks.forEach(
                 rank -> results.put(rank, results.get(rank) + 1)
         );
+        this.results = results;
+        calculateYield(lotteries.size() * 1000);
+    }
+
+    public Map<Rank, Integer> getResults() {
         return results;
     }
 
-    public List<Rank> getAllWinningLotto(List<Lotto> lotteries){
+    public double getYield() {
+        return yield;
+    }
+
+    private void calculateYield(int purchaseAmount){
+        int prizeAmount = calculatePrizeAmount();
+
+        yield = (prizeAmount  * 100 / (double)purchaseAmount);
+    }
+
+    private int calculatePrizeAmount(){
+        AtomicInteger sum = new AtomicInteger();
+        results.forEach( ((rank, integer) ->
+                sum.addAndGet(rank.getPriceAmount() * integer)
+                ));
+        return sum.get();
+    }
+
+
+    private List<Rank> getAllWinningLotto(List<Lotto> lotteries){
         List<Rank> answer = new LinkedList<>();
         lotteries.forEach(lotto ->
                 answer.add(eachNumberCalculateService.calculate(lotto))
@@ -40,4 +67,5 @@ public class AllLotteriesCalculateService {
         );
         return results;
     }
+
 }
