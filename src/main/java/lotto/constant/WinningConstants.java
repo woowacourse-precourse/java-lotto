@@ -10,16 +10,16 @@ public enum WinningConstants {
 
     private final int place;
     private final int requiredWinningNumber;
-    private final boolean hasBonusNumber;
+    private final boolean needsBonusNumber;
     private final int reward;
     private final String message;
 
-    WinningConstants(int place, int requiredWinningNumber, boolean hasBonusNumber, int reward) {
+    WinningConstants(int place, int requiredWinningNumber, boolean needsBonusNumber, int reward) {
         this.place = place;
         this.requiredWinningNumber = requiredWinningNumber;
-        this.hasBonusNumber = hasBonusNumber;
+        this.needsBonusNumber = needsBonusNumber;
         this.reward = reward;
-        this.message = makeMessage(requiredWinningNumber, hasBonusNumber, reward);
+        this.message = makeMessage(requiredWinningNumber, needsBonusNumber, reward);
     }
 
     private String makeMessage(int requiredWinningNumber, boolean hasBonusNumber, int reward) {
@@ -43,8 +43,8 @@ public enum WinningConstants {
         return requiredWinningNumber;
     }
 
-    public boolean getHasBonusNumber() {
-        return hasBonusNumber;
+    public boolean getNeedsBonusNumber() {
+        return needsBonusNumber;
     }
 
     public int getReward() {
