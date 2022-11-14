@@ -52,4 +52,8 @@ public class MessagePrinter {
     public void printStaticStatisticsTopic() {
         System.out.println(NOTIFY_TOPIC_STATISTICS);
     }
+
+    public void printStaticParagraphDivision() {
+        System.out.println(NOTIFY_PARAGRAPH_DIVISION);
+    }
 }
