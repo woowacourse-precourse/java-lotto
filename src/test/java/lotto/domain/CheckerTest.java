@@ -62,12 +62,15 @@ class CheckerTest {
             put(3, 1);
             put(4, 1);
             put(5, 1);
-            put(6, 2);
+            put(6, 1);
+            put(7, 1);
         }};
 
         for (int i = 0;i < numbers.size();i++) {
             checker.checkMyLotto(numbers.get(i));
         }
+
+        checker.showWinningStats();
 
         assertThat(checker.getWinningStats()).isEqualTo(result);
 
