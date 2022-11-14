@@ -29,7 +29,7 @@ public class RunController {
 		try {
 			return Integer.parseInt(numbers);
 		} catch (IllegalArgumentException e) {
-			Output.printNotice(Notice.ERROR.getNoticeMessage());
+			Output.printNotice(Notice.ERROR.getNoticeMessage() + Notice.ERROR_INPUT_NUMBER.getNoticeMessage());
 			return 0;
 		}
 	}
@@ -76,7 +76,7 @@ public class RunController {
 	}
 
 	private List<List<Integer>> publishLottoByQuantity(int quantity) {
-		Output.printResult(quantity, Notice.PURCHASE.getNoticeMessage());
+		Output.printPurchaseQuantity(quantity, Notice.PURCHASE.getNoticeMessage());
 
 		List<List<Integer>> lotto = new LottoService().publishLotteries(quantity);
 
@@ -93,6 +93,7 @@ public class RunController {
 		if (winningUmbers != null) {
 			Lotto lotto = new Lotto(winningUmbers);
 			Object bonusNumber = pickBonusNumber();
+
 			if (bonusNumber != null) {
 				return new LottoMachine(lotto.getNumbers(), (int)bonusNumber);
 			}
@@ -108,7 +109,7 @@ public class RunController {
 		try {
 			return new LottoService().convertStringToList(winningNumbers);
 		} catch (IllegalArgumentException e) {
-			Output.printNotice(Notice.ERROR.getNoticeMessage() + "숫자만 입력해주세요");
+			Output.printNotice(Notice.ERROR.getNoticeMessage() + Notice.ERROR_INPUT_NUMBER.getNoticeMessage());
 
 			return null;
 		}
@@ -121,7 +122,7 @@ public class RunController {
 		try {
 			return Integer.parseInt(bonusNumber);
 		} catch (IllegalArgumentException e) {
-			Output.printNotice(Notice.ERROR.getNoticeMessage());
+			Output.printNotice(Notice.ERROR.getNoticeMessage() + Notice.ERROR_INPUT_NUMBER.getNoticeMessage());
 
 			return null;
 		}

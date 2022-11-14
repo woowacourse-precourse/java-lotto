@@ -12,14 +12,16 @@ public class Output {
 		System.out.println(text);
 	}
 
-	public static void printResult(int result, String text) {
+	public static void printPurchaseQuantity(int result, String text) {
 		System.out.println(result + text);
 	}
 
 	public static void printResult(int prizeMoney, int value) {
 		NumberFormat numberFormat = NumberFormat.getInstance();
 
-		System.out.println("(" + numberFormat.format(prizeMoney) +"원) - " + value +"개");
+		System.out.println(Notice.PARENTHESIS.getNoticeMessage() +
+				numberFormat.format(prizeMoney) + Notice.RESULT_WON.getNoticeMessage() +
+				value + Notice.RESULT_VALUE.getNoticeMessage());
 	}
 
 	public static void printRank(Map<Rank, Integer> rank) {
@@ -32,19 +34,20 @@ public class Output {
 	}
 
 	public static void printCount(int matchCount, boolean check) {
-		System.out.print(matchCount +"개 일치");
+		System.out.print(matchCount + Notice.RESULT_COUNT.getNoticeMessage());
 		isBonus(check);
 	}
 
 	public static void isBonus(boolean check) {
 		if (check) {
-			System.out.print(", 보너스 볼 일치");
+			System.out.print(Notice.RESULT_BONUS.getNoticeMessage());
 		}
-		System.out.print(" ");
+		System.out.print(Notice.SPACE.getNoticeMessage());
 	}
 
 	public static void printRateOfReturn(String rateOfReturn) {
-		System.out.println(Notice.RATE_OF_RETURN.getNoticeMessage() + rateOfReturn + "%입니다.");
+		System.out.println(Notice.RATE_OF_RETURN.getNoticeMessage()
+				+ rateOfReturn + Notice.RESULT_PERCENT.getNoticeMessage());
 	}
 
 	public static void printPublishLotteries(List<Integer> lotto) {

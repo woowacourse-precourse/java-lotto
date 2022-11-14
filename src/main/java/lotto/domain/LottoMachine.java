@@ -37,13 +37,13 @@ public class LottoMachine {
 
 	private void checkNumberRange(int number) {
 		if (number< LOTTO_MIN || number > LOTTO_MAX) {
-			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 1 ~ 45 사이의 숫자를 입력해 주세요.");
+			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + Notice.ERROR_RANGE.getNoticeMessage());
 		}
 	}
 
 	private void checkBonusDuplication(List<Integer> lotto, int bonus) {
 		if (lotto.contains(bonus)) {
-			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 로또 번호와 다른 보너스 숫자를 입력해주세요.");
+			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + Notice.ERROR_DUPLICATION_BONUS.getNoticeMessage());
 		}
 	}
 }

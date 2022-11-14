@@ -29,7 +29,7 @@ public class Lotto {
 
     private void checkDuplication(List<Integer> lotto) {
         if (isDuplicate(lotto)) {
-            throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + Notice.ERROR_DUPLICATION.getNoticeMessage());
         }
     }
 
@@ -44,9 +44,10 @@ public class Lotto {
             checkNumberRange(integer);
         }
     }
+
     public void checkNumberRange(int number) {
         if (number< LOTTO_MIN || number > LOTTO_MAX) {
-            throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 1 ~ 45 사이의 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + Notice.ERROR_RANGE);
         }
     }
 

@@ -34,7 +34,7 @@ public class User {
 
 	private void checkMoney(int money) {
 		if ((money % LOTTO_PRICE) != 0 || money == 0) {
-			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + "1000원 단위로 입력해 주세요");
+			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + Notice.ERROR_MONEY);
 		}
 		this.money = (money / LOTTO_PRICE);
 	}
