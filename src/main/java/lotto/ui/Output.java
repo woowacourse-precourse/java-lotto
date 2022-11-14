@@ -24,35 +24,41 @@ public class Output {
         System.out.println();
     }
 
-    public static final void lottoResult(Integer purchasePrice, Map<Integer, Integer> statistics) {
+    public static final void lottoResult(
+            Integer purchasePrice,
+            List<Integer> totalProfit,
+            Map<Integer, Integer> statistics
+    ) {
         System.out.println(STATS_TITLE);
         System.out.println(HORIZONTAL_RULE);
-
-        double totalProfit = 0;
         for (Map.Entry<Integer, Integer> history : statistics.entrySet()) {
-            // key: prize money for from 3 winning numbers to 6 winning numbers
-            // values: counts of winning each prize money
             printWinCount(history.getKey(), history.getValue());
-            totalProfit += (history.getKey() * history.getValue());
         }
-        printReturnOnInvestment(purchasePrice, totalProfit);
+        printReturnOnInvestment(totalProfit, purchasePrice);
     }
 
-    private static void printWinCount(Integer prizeMoney, Integer winCount) {
-        Ranks ranks = Ranks.getRankBy(prizeMoney);
+    private static void printWinCount(Integer profit, Integer winCount) {
+        Ranks ranks = Ranks.getRankBy(profit);
         String message = ranks.getMessage() + COUNT_UNIT;
         System.out.printf(message, winCount);
     }
 
-    private static void printReturnOnInvestment(Integer purchasePrice, double totalProfit) {
-        double returnOnInvestment = (totalProfit / purchasePrice) * 100;
-        double returnOnInvestmentFormatted = roundOffToOneDecimalPlace(returnOnInvestment);
+    private static void printReturnOnInvestment(List<Integer> totalProfit, Integer purchasePrice) {
+        double returnOnInvestment = getReturnOnInvestmentBy(totalProfit, purchasePrice);
 
         StringBuilder message = new StringBuilder();
         message.append(ROI_HEAD);
-        message.append(returnOnInvestmentFormatted);
+        message.append(returnOnInvestment);
         message.append(ROI_FOOTER);
         System.out.println(message);
+    }
+
+    private static double getReturnOnInvestmentBy(List<Integer> totalProfit, Integer purchasePrice) {
+        double sumOfTotalProfit = totalProfit.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+        double returnOnInvestment = (sumOfTotalProfit / purchasePrice) * 100;
+        return roundOffToOneDecimalPlace(returnOnInvestment);
     }
 
     private static double roundOffToOneDecimalPlace(double number) {
