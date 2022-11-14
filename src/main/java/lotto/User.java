@@ -42,6 +42,17 @@ public class User {
         }
     }
 
+    Boolean isNum(String userInput) {
+        boolean numericOrNot = true;
+
+        for (int letterIdx = 0; letterIdx < userInput.length(); letterIdx++) {
+            if (!Character.isDigit(userInput.charAt(letterIdx))) {
+                numericOrNot = false;
+            }
+        }
+        return numericOrNot;
+    }
+
     void countTickets() {
         this.lottoTicketCount = this.purchasingAmount / LOTTO_PRICE;
     }
