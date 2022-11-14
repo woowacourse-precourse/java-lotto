@@ -12,15 +12,15 @@ public class Manager {
     static final String requestMoneyStatement = "구입금액을 입력해 주세요.";
     static final String requestLottoNumberStatement = "당첨 번호를 입력해 주세요.";
     static final String requestBonusNumberStatement = "보너스 번호를 입력해 주세요.";
-
+    private final int[] reward = {0, 5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000};
     private Lotto lotto;
     private int bonusNumber;
-    private final int[] reward = {0, 5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000};
 
     public Manager() {
-        List<Integer> lottoNumbersForTest = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        lotto = new Lotto(lottoNumbersForTest);
-        bonusNumber = 7;
+        List<Integer> tempLottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        lotto = new Lotto(tempLottoNumbers);
+        int tempBonusNumber = 7;
+        bonusNumber = tempBonusNumber;
     }
 
     public void requestMoneyStatementPrint() {

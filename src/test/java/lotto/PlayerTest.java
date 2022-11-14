@@ -11,10 +11,12 @@ import org.junit.jupiter.api.Test;
 
 class PlayerTest {
     Player player;
+
     @BeforeEach
     void initiatePlayerTest() {
-         player = new Player();
+        player = new Player();
     }
+
     @DisplayName("로또 구입 금액으로 8000원을 입력하면 8장이 반환된다.")
     @Test
     void purchaseLotto() {

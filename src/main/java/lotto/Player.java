@@ -6,11 +6,11 @@ import java.util.List;
 public class Player {
     public static final int minimumMoney = 1000;
     public static final int pricePerPiece = 1000;
+    private final List<List<Integer>> lottoNumbers;
+    private final Manager manager;
     private int numberOfPurchase;
     private int money;
     private double yield;
-    private final List<List<Integer>> lottoNumbers;
-    private final Manager manager;
     private int[] result;
 
     public Player() {
