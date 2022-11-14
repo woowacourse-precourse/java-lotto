@@ -69,4 +69,8 @@ public class User {
 
         return (isNumeric && isBonusNumberSize);
     }
+
+    public int getPurchaseNumber() {
+        return purchasePrice/1000;
+    }
 }
