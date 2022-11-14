@@ -2,6 +2,7 @@ package lotto.domain.menu;
 
 import java.util.List;
 import lotto.Lotto;
+import lotto.constants.SystemConsole;
 import lotto.domain.BonusBallAndLotto;
 import lotto.domain.TotalPrizeMoney;
 import lotto.domain.WinningStatistics;
@@ -11,20 +12,26 @@ import lotto.input.AdditionalNumber;
 
 public class LottoGameManagement {
     private final AdditionalNumber additionalNumber;
+    private final SystemConsole systemConsole;
 
-    public LottoGameManagement(AdditionalNumber additionalNumber) {
+    public LottoGameManagement(AdditionalNumber additionalNumber, SystemConsole systemConsole) {
         this.additionalNumber = additionalNumber;
+        this.systemConsole = systemConsole;
     }
 
-    public List<Integer> bonusConfirmation(List<List<Integer>> randomLotto, Lotto lottoAnswer, List<Integer> sameNumberCount) {
+    public List<Integer> bonusConfirmation(List<List<Integer>> randomLotto, Lotto lottoAnswer,
+            List<Integer> sameNumberCount) {
+
+        systemConsole.BONUS_NUMBER();
         int bonus = additionalNumber.getBonus();
 
         BonusBallAndLotto bonusBallAndLotto = new BonusBallAndLotto(new BonusNumberCase());
-        List<Integer> bonusNumbers = bonusBallAndLotto.getCorrectLocation(lottoAnswer, randomLotto, sameNumberCount, bonus);
+        List<Integer> bonusNumbers = bonusBallAndLotto.getCorrectLocation(lottoAnswer, randomLotto,
+                sameNumberCount, bonus);
 
-        RankingWinner rankingWinner = new RankingWinner(new WinningStatistics(), new TotalPrizeMoney(), new YieldCalculation());
+        RankingWinner rankingWinner = new RankingWinner(new WinningStatistics(), new TotalPrizeMoney(),
+                new YieldCalculation());
         rankingWinner.findAWinner(sameNumberCount, bonusNumbers);
-
         return null;
     }
 }
