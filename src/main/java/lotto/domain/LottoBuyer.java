@@ -32,8 +32,4 @@ public class LottoBuyer {
     private int changeInt(String input) {
         return Integer.parseInt(input);
     }
-
-    private void exit() {
-        return;
-    }
 }
