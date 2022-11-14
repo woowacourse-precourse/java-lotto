@@ -1,8 +1,21 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class LottoView {
+
+    public static int buyAmount() {
+        System.out.println("구입금액을 입력해주세요.");
+        try {
+            String costInput = Console.readLine();
+            validate(costInput);
+            return Integer.parseInt(costInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+    }
 
     public static void validate(String input) {
         isNull(input);
