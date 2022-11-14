@@ -1,10 +1,12 @@
-package lotto;
+package lotto.domain;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +26,22 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호의 개수가 6개보다 작으면 예외가 발생한다.")
+    @Test
+    void createLottoByLessSize() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("로또 배열을 get 메서드로 꺼낼 수 있다.")
+    @Test
+    void getLottosByGetter() {
+        // given
+        List<Integer> array = List.of(1, 2, 3, 4, 5, 6);
+        Lotto lotto = new Lotto(array);
+
+        // when
+
+        // then
+        assertThat(lotto.getNumbers()).isEqualTo(array);
+    }
 }
