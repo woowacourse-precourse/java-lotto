@@ -1,20 +1,40 @@
 package lotto;
 
-import java.util.List;
+import java.util.*;
+import lotto.UI.Error;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
-
+    public boolean checkDuplicated(List<Integer> numbers) {
+        HashSet<Integer> duplicatesExcluded = new HashSet<>(numbers);
+        if (duplicatesExcluded.size() != 6)
+            return true;
+        return false;
+    }
+    public boolean checkRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45)
+                return false;
+        }
+        return true;
+    }
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        Error error = new Error();
+
+        if (checkDuplicated(numbers)) {
+            error.duplicated();
+        }
+        else if (!checkRange(numbers)) {
+            error.outOfRange();
         }
     }
-
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
