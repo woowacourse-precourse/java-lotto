@@ -21,27 +21,27 @@ public class Lotto {
     private final List<LottoNumber> numbers;
 
     public Lotto(List<Integer> inputNumbers) {
-        List<LottoNumber> numbers = inputNumbers.stream()
+        List<LottoNumber> lottoNumbers = inputNumbers.stream()
                 .map(LottoNumberFactory::numberOf)
                 .distinct()
                 .collect(Collectors.toList());
 
-        validateLottoNumbers(numbers);
+        validateLottoNumbers(lottoNumbers);
 
-        this.numbers = numbers;
+        this.numbers = lottoNumbers;
     }
 
     public Lotto(String winningNumbers) {
         validateWinningNumbers(winningNumbers);
 
-        List<LottoNumber> numbers = Arrays.stream(winningNumbers.split(NUMBER_INPUT_SEPARATOR))
+        List<LottoNumber> lottoNumbers = Arrays.stream(winningNumbers.split(NUMBER_INPUT_SEPARATOR))
                 .distinct()
                 .map(LottoNumberFactory::numberOf)
                 .collect(Collectors.toList());
 
-        validateLottoNumbers(numbers);
+        validateLottoNumbers(lottoNumbers);
 
-        this.numbers = numbers;
+        this.numbers = lottoNumbers;
     }
 
     private void validateWinningNumbers(String winningNumbers) {
