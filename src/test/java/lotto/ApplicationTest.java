@@ -9,6 +9,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -56,10 +57,11 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("음수의 입력 Exception Handling")
     void myTest(){
         assertSimpleTest(() -> {
-            runException("1000j");
-            System.out.println(output());
+            runException("-1000");
+            assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
     @Override
