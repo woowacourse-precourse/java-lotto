@@ -315,6 +315,24 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    /**
+     * convertStringWinnerNumberIntoListWinnerNumber(param1)
+     * param1: String userInput: 사용자 입력 문자형 당첨금액
+     * returns Integer형 List 당첨금액 반환
+     */
+    @DisplayName("사용자가 입력한 문자형 당첨금액을 리스트형 당첨금액으로 전환후 반환해야 한다.")
+    @Test
+    public void convertStringWinnerNumberIntoListWinnerNumberTest() {
+        //given
+        String userInput = "1,2,3,4,5,6";
+        List<Integer> expectedValue = Arrays.asList(1, 2, 3, 4, 5, 6);
+        //when
+        List<Integer> actualValue = Application.convertStringWinnerNumberIntoListWinnerNumber(userInput);
+
+        //then
+        assertEquals(expectedValue, actualValue);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
