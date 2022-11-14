@@ -34,10 +34,10 @@ public enum RankType {
         if(count == 6) {
             return RankType.FIRST;
         }
-        if (count == 5 && isBonusBallContain) {
-            return RankType.SECOND;
-        }
         if (count == 5) {
+            if(isBonusBallContain) {
+                return RankType.SECOND;
+            }
             return RankType.THIRD;
         }
         if(count == 4) {
