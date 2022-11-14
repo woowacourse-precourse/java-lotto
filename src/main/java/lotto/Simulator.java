@@ -18,6 +18,10 @@ public class Simulator {
         return this.quantity;
     }
 
+    public List<Lotto> getLottos() {
+        return this.lottos;
+    }
+
     private void validatePrice(int price) {
         if ((price % 1000) != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");
