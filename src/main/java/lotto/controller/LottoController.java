@@ -26,8 +26,8 @@ public class LottoController {
 
     private List<Integer> createLottoNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
-            LottoEnum.MIN_LOTTO_NUMBER.getValue(),
-            LottoEnum.MAX_LOTTO_NUMBER.getValue(), LottoEnum.TOTAL_LOTTO_NUMBER.getValue());
+            LottoEnum.MIN_LOTTO_NUMBER.getValue(), LottoEnum.MAX_LOTTO_NUMBER.getValue(),
+            LottoEnum.TOTAL_LOTTO_NUMBER.getValue());
         numbers.sort(Comparator.comparingInt(number -> number));
         return numbers;
     }

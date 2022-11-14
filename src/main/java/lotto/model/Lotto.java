@@ -51,8 +51,38 @@ public class Lotto {
         }
     }
 
+    public RANKING matchLottoWithLuckyNumber(Lotto luckyLotto, int luckyNumber) {
+        int countBall = createCountBallByMatchNumber(luckyLotto);
+        return getRankingByCountBall(countBall);
+    }
+
+    private int createCountBallByMatchNumber(Lotto luckyLotto) {
+        int count = 0;
+        for (final Integer number : this.numbers) {
+            if (luckyLotto.getNumbers().contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public RANKING getRankingByCountBall(int countBall) {
+        if (countBall == RANKING.FIRST.getCountBall()) {
+            return RANKING.FIRST;
+        }
+        if (countBall == RANKING.THIRD.getCountBall()) {
+            return RANKING.THIRD;
+        }
+        if (countBall == RANKING.FORTH.getCountBall()) {
+            return RANKING.FORTH;
+        }
+        if (countBall == RANKING.FIFTH.getCountBall()) {
+            return RANKING.FIFTH;
+        }
+        return RANKING.NONE;
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
-
 }
