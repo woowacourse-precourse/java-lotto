@@ -34,4 +34,23 @@ class LottoReaderTest {
         // then
         assertThat(lottoResult).containsEntry(RANK1, 1);
     }
+
+    @DisplayName("로또 수익률을 구합니다.")
+    @Test
+    void calculateYield() {
+        // given
+        List<Lotto> publishedLotto = new ArrayList<>();
+        publishedLotto.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Bonus bonus = new Bonus(10, winningLotto);
+
+        Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedLotto, winningLotto,bonus);
+
+        // when
+        String lottoYield = lottoReader.calculateYield(1000);
+
+        // then
+        assertThat(lottoYield).isEqualTo("200000000.0");
+    }
 }
