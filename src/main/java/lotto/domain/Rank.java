@@ -10,15 +10,15 @@ public enum Rank {
 
 
     private final int match;
-    private final Money price;
+    private final Money prize;
 
-    Rank(int match, Money price) {
+    Rank(int match, Money prize) {
         this.match = match;
-        this.price = price;
+        this.prize = prize;
     }
 
-    public Money getPrice() {
-        return this.price;
+    public Money getPrize() {
+        return this.prize;
     }
 
     public int getMatch() {
