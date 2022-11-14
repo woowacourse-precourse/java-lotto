@@ -31,12 +31,13 @@
       - .decideBonusNumber(): 보너스 번호를 정합니다.
       - .getResult(): 결과를 출력합니다.
   - #### service
-    - UserService
-      - .purchase(): 로또를 구매합니다.
-      - .checkResult(): 로또 당첨 결과를 조회합니다.
-    - AdminService
-      - .decideWinner(): 당첨 번호를 정합니다.
-      - .decideBonus(): 보너스 번호를 정합니다.
+    - UserService: 일반 유저가 접근 가능한 서비스입니다.
+      - .purchaseLottoBundle(): 로또를 구매합니다.
+      - .getMyResult(): 로또 당첨 결과를 조회합니다.
+    - AdminService: 관리자가 접근 가능한 서비스입니다.
+      - .setWinNumber(): 당첨 번호를 정합니다.
+      - .setBonusNumber(): 보너스 번호를 정합니다.
+      - .confirmWinNumber(): 입력 받은 번호들을 최종적으로 저장합니다.
   - #### view
     - LottoView
       - .resolveLottoBought(): 구매한 로또의 번호를 알려줍니다.
