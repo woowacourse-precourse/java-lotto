@@ -17,6 +17,13 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        this.isDuplicateNumberExist(numbers);
+    }
+
+    private void isDuplicateNumberExist(List<Integer> input){
+        Set<Integer> set = new HashSet<>(input);
+        if(input.size() != set.size())
+            throw new IllegalArgumentException();
     }
 
     public Map<LottoMatch, Integer> calculateLottoStatistics(List<List<Integer>> userLottoList, int bonusNumber) {
