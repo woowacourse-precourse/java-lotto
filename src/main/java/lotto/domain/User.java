@@ -17,6 +17,7 @@ public class User {
 
     public static User initUserLotto(int money) {
         User user = new User(money);
+        validate(money);
 
         for (int i = 0; i < user.getLottoCount(); i++) {
             user.addUserLotto();
@@ -30,12 +31,22 @@ public class User {
     }
 
     //validate check
-    public void checkMoney(int money) {
+    public static void validate(int money) {
+        checkMoneyMinimum(money);
+        checkMoneyDivided(money);
+    }
+    public static void checkMoneyMinimum(int money) {
         if (money < 1000) {
             throw new IllegalArgumentException("[ERROR] 금액은 1000원 이상이어야 합니다.");
         }
     }
-    
+
+    public static void checkMoneyDivided(int money) {
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
+        }
+    }
+
     //getter and setter
     public int getMoney() {
         return money;
