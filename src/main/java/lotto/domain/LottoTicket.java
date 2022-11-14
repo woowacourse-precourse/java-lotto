@@ -25,4 +25,11 @@ public class LottoTicket {
         return Collections.unmodifiableList(lottoTickets);
     }
 
+    public LottoResult calLottoWinResult(WinningNumbers winningNumbers) {
+        List<LottoRank> lottoRanks = lottoTickets.stream()
+                .map(winningNumbers::calculateRanking)
+                .filter(Objects::nonNull)
+                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
+        return new LottoResult(lottoRanks);
+    }
 }
