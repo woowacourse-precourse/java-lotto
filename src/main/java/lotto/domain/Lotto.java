@@ -42,4 +42,8 @@ public class Lotto {
             }
         }
     }
+
+    public boolean isMatch(int number) {
+        return numbers.contains(number);
+    }
 }
