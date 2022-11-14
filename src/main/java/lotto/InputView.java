@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-    public enum Message {
+    private enum Message {
         PURCHASE_AMOUNT("구입금액을 입력해 주세요."), LOTTO_ANSWER_NUMBER("당첨 번호를 입력해 주세요."), BONUS_NUMBER(
                 "보너스 번호를 입력해 주세요.");
         private final String value;
@@ -22,7 +22,7 @@ public class InputView {
 
     }
 
-    public enum Validation {
+    private enum Validation {
         REGEX(",");
         private final String value;
 
