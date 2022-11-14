@@ -47,7 +47,7 @@ public class Host {
             Prize prize = Prize.valueOfRank(i);
             System.out.printf("%s (%s원) - %d개\n", prize.getDescription(), df.format(prize.getCashPrize()), rankRecord[i]);
         }
-        System.out.printf("총 수익률은 %f%%입니다.\n", resultAnalyzer.calculateRateOfReturn(userLotto));
+        System.out.printf("총 수익률은 %f%%입니다.\n", resultAnalyzer.calculateRateOfReturn(userLotto, rankRecord));
     }
 
     private int[] collectResultOfWholeLotto(ResultAnalyzer resultAnalyzer, List<Lotto> userLotto) {

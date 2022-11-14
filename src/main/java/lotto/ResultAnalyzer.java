@@ -12,8 +12,14 @@ public class ResultAnalyzer {
         this.bonusNumber = bonusNumber;
     }
 
-    public double calculateRateOfReturn(List<Lotto> wholeLotto) {
-        return 0;
+    public double calculateRateOfReturn(List<Lotto> wholeLotto, int[] rankRecord) {
+        int expense = wholeLotto.size() * 1000;
+        int income = 0;
+        for (int i = 1; i < 6; i++) {
+            income += Prize.valueOfRank(i).getCashPrize() * rankRecord[i];
+        }
+
+        return Math.round(((double) income / expense * 100) * 100 / 100);
     }
 
     public int determineRank(Lotto lotto) {
