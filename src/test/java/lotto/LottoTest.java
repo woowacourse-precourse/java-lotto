@@ -65,15 +65,15 @@ class LottoTest {
 
 	@DisplayName("당첨번호 또한, 중복된 번호가 없어야한다.")
 	@Test
-	void inputWinningLottoDuplicateCheck(){
+	void inputWinningLottoDuplicateCheck() {
 		assertThatThrownBy(
-			() -> Exception.validateDuplicateNumbers(new String[] {"1","2","3","4","5","1"})
+			() -> Exception.validateDuplicateNumbers(new String[] {"1", "2", "3", "4", "5", "1"})
 		).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@DisplayName("보너스번호 또한,숫자 이외의 엽력을 받을 수 없다.")
 	@Test
-	void inputWinningLottoBonusNumberIntegerCheck(){
+	void inputWinningLottoBonusNumberIntegerCheck() {
 		assertThatThrownBy(
 			() -> Exception.validateNumber("12j")
 		).isInstanceOf(IllegalArgumentException.class);
@@ -81,11 +81,18 @@ class LottoTest {
 
 	@DisplayName("보너스번호 또한, 1부터 45 이내의 숫자여야만 한다.")
 	@Test
-	void inputWinningLottoBonusNumberRange(){
+	void inputWinningLottoBonusNumberRange() {
 		assertThatThrownBy(
 			() -> Exception.validateLottoNumberRange("46")
 		).isInstanceOf(IllegalArgumentException.class);
 	}
 
-	
+	@DisplayName("보너스번호 또한, 발행된 당첨번호와 중복되어선 안된다.")
+	@Test
+	void inputWinningLottoBonusNumberDuplicateCheck() {
+		assertThatThrownBy(
+			() -> Exception.validateDuplicateNumbers(
+				new Lotto(List.of(1, 2, 3, 4, 5, 6)), "3")
+		).isInstanceOf(IllegalArgumentException.class);
+	}
 }
