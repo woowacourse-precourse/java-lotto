@@ -14,7 +14,7 @@ class UserTest {
         int input = 20001;
         User user = new User(input);
 
-        assertThatThrownBy(user::validatePurchaseAmount)
+        assertThatThrownBy(() -> user.validatePurchaseAmount(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessages.ERROR_SIGN.getErrorMessage()
                         + " " + ErrorMessages.DIVIDE_ERROR.getErrorMessage());

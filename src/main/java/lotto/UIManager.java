@@ -58,6 +58,6 @@ public class UIManager {
                     + ranks.get(r) + UIMessages.UNIT.getText());
         }
         System.out.println(UIMessages.TOTAL_EARNINGS.getText()
-                + " " + user.getEarningsRate() + UIMessages.IS.getText());
+                + " " + user.getEarningsRate() + "%" + UIMessages.IS.getText());
     }
 }

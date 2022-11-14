@@ -3,15 +3,16 @@ package lotto;
 import lotto.ENUMS.ErrorMessages;
 import lotto.ENUMS.Rank;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class User {
     int purchaseAmount;
     String earningsRate;
-    Map<Rank, Integer> ranks = new HashMap<>();
+    Map<Rank, Integer> ranks = new TreeMap<>();
 
     User(int purchaseAmount) {
+        earningsRate = "0";
         validatePurchaseAmount(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
         for (Rank rank : Rank.values()) {
