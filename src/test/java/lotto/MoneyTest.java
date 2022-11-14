@@ -1,5 +1,6 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
@@ -10,6 +11,14 @@ import org.junit.jupiter.api.Test;
 import lotto.domain.Money;
 
 public class MoneyTest {
+
+	@DisplayName("로또 구입 금액이 올바르면 금액을 저장한다")
+	@Test
+	void invalidMoney() {
+		Money money = new Money(1000);
+
+		assertThat(money.getAmount()).isEqualTo(1000);
+	}
 
 	@DisplayName("로또 구입 금액이 0이면 예외가 발생한다")
 	@Test
