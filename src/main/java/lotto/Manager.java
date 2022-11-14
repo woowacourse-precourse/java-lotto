@@ -57,6 +57,7 @@ public class Manager {
     }
 
     public void PrintLotto(List<Lotto> list){
+        System.out.println("\n" + list.size() + PURCHASE_MENT);
         for(int i=0; i<list.size(); i++){
             list.get(i).Print();
         }
@@ -84,6 +85,16 @@ public class Manager {
             frequency[res.getRank()] += 1;
         }
         return frequency;
+    }
+
+    public int calculateTotalMoney(List<Lotto> lottos, List<Integer> winning, int bonus){
+        int[] frequency = calculateResult(lottos, winning, bonus);
+        int total = 0;
+        for(int i=1;i<frequency.length;i++){
+            Constants c = Constants.invert(i);
+            total += c.getMoney() * frequency[i];
+        }
+        return total;
     }
 
     public void calculateReturnRate(int purchase, int money){

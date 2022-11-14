@@ -11,11 +11,13 @@ public class Player {
     private List<Integer> winning;
     private List<Lotto> lottos;
     private int Bonus;
+    private int Profit;
     public Player(Manager manager){
         this.manager = manager;
     }
 
     public void InputPurchaseMoney(){
+        System.out.println(manager.INPUT_MONEY);
         String input = readLine();
         if(!manager.isNumber(input))
             throw new IllegalArgumentException("[ERROR] : 금액은 숫자로만 구성된 문자열이어야 합니다.");
@@ -48,6 +50,7 @@ public class Player {
     }
 
     public void InputWinningNumber(){
+        System.out.println("\n" + manager.INPUT_WINNING);
         winning.clear();
         String input = readLine();
         checkWinningNumber(input);
@@ -66,6 +69,7 @@ public class Player {
         this.Bonus = bonus;
     }
     public void InputBonusNumber(){
+        System.out.println("\n" + manager.INPUT_BONUS);
         String input = readLine();
         checkBonusNumber(input);
     }
@@ -75,5 +79,16 @@ public class Player {
         for(int i=0; i<total_lotto; i++){
             lottos.add(manager.makeLotto());
         }
+    }
+
+    public void LottoGamestart(){
+        InputPurchaseMoney();
+        calculateTotalLotto();
+        manager.PrintLotto(this.lottos);
+        InputWinningNumber();
+        InputBonusNumber();
+        manager.PrintGameResult(this.lottos, this.winning, this.Bonus);
+        Profit = manager.calculateTotalMoney(this.lottos, winning, Bonus);
+        manager.calculateReturnRate(this.PurchaseMoney, this.Profit);
     }
 }
