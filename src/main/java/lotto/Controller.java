@@ -122,10 +122,11 @@ public class Controller {
         realLottoNumbers.add(realLottoBonusNumber);
 
         // Lotto 클래스 생성
-        new Lotto(realLottoNumbers);
+        Lotto lotto = new Lotto(realLottoNumbers);
 
         // 로또 번호 분석
-        LinkedHashMap<String, Integer> lottoResult = Controller.AnalyzePlayerNumbers(numbers, publishedLottoArray);
+        LinkedHashMap<Integer, Integer> lottoResult = Controller.AnalyzePlayerNumbers
+                (realLottoNumbers, publishedLottoArray);
 
         // 당첨 통계 출력
         View.Output("당첨 통계");
