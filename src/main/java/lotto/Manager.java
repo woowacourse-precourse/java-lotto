@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Manager {
@@ -26,6 +27,16 @@ public class Manager {
         }
 
         return purchaseLottos;
+    }
+
+    public int[] findMatchCount(List<Integer> lotto, List<List<Integer>> purchaseLottos) {
+        int[] matchCounts = new int[7];
+
+        purchaseLottos.stream()
+                .mapToInt(purchaseLotto -> (int) purchaseLotto.stream().filter(lotto::contains).count())
+                .forEach(matchCount -> matchCounts[matchCount] += 1);
+
+        return Arrays.copyOfRange(matchCounts, 3, 8);
     }
 
 }
