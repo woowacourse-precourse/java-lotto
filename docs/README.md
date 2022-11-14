@@ -45,7 +45,7 @@
     - AdminService: 관리자가 접근 가능한 서비스입니다.
       - .setWinNumber(): 당첨 번호를 정합니다.
       - .setBonusNumber(): 보너스 번호를 정합니다.
-      - .confirmWinNumber(): 입력 받은 번호들을 최종적으로 저장합니다.
+      - .finishRound(): 현재 진행중인 회차를 종료합니다.
   - #### view
     - LottoBundleView: 구매한 로또의 번호를 알려줍니다.
       - .stringify(): 로또 번호를 출력 형식에 맞게 문자열화 합니다.
@@ -55,7 +55,7 @@
     - InputReader
       - .readLine(): 콘솔로부터 입력을 받아옵니다.
     - Logger
-      - .log(): 콘솔에 메시지를 남깁니다.
+      - .log(): 콘솔에 메시지를 출력합니다.
     - RandomNumberGenerator
       - .generateNumbersInRange(): 범위 내의 임의의 숫자를 지정된 갯수만큼 줍니다.
     - Validator
