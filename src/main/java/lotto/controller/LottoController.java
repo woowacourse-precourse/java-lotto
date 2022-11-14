@@ -28,6 +28,23 @@ public class LottoController {
         }
     }
 
+    public List<Integer> inputWinningNumber(){
+        String inputWinningNumber = message.inputWinningNumberMessage();
+        List<Integer> winningNumber = lottoService.setWinningNumber(inputWinningNumber);
+        return winningNumber;
+    }
+
+    public int inputBonusNumber(){
+        String inputBonusNumber = message.inputBonusNumberMessage();
+        int bonusNumber = lottoService.setBonusNumber(inputBonusNumber);
+        return bonusNumber;
+    }
+
+    public void setWinningLotto() {
+        WinningLotto winningLotto = lottoService.setWinningLotto(inputWinningNumber(),inputBonusNumber());
+    }
+
+
     public void start(){
         User user = new User();
         int lottoAmount = getLottoAmount(user);//로또 구매 금액 입력// 몇개 구매 ~
@@ -35,16 +52,7 @@ public class LottoController {
         user.buyLottos(lottoAmount);
         showLottoDetail(user);
 
-
-        String inputWinningNumber = message.inputWinningNumberMessage();
-        List<Integer> winningNumber = lottoService.setWinningNumber(inputWinningNumber);
-// 당첨 번호 입력
-
-        String inputBonusNumber = message.inputBonusNumberMessage();
-        int bonusNumber = lottoService.setBonusNumber(inputBonusNumber);
-// 보너스 번호 입력
-        WinningLotto winningLotto = lottoService.setWinningLotto(winningNumber,bonusNumber);
- // 당첨번호 설정
+        setWinningLotto();
 
 // 당첨 통계
         user.getLottoResults(winningLotto);
