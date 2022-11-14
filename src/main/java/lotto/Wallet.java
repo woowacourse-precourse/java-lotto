@@ -32,7 +32,7 @@ public class Wallet {
         return money;
     }
 
-    public void getLottos(List<Lotto> boughtLottos) {
+    public void buyLottos(List<Lotto> boughtLottos) {
         myLottos = boughtLottos;
     }
 
