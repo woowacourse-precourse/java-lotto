@@ -35,7 +35,6 @@ public class Lottos {
     public List<List<Integer>> lottos() {
         return lottos.stream()
                 .map(Lotto::lottoNumber)
-                .map(Collections::unmodifiableList)
                 .collect(Collectors.toList());
     }
     

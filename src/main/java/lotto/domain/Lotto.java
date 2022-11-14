@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.validator.domain.LottoNumbersValidator;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -27,7 +28,7 @@ public class Lotto {
     }
     
     public List<Integer> lottoNumber() {
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
     
     @Override
