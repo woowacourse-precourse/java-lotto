@@ -1,6 +1,7 @@
 package lotto.service;
 
 import lotto.dto.WinningLottoNumber;
+import lotto.exception.ErrorCode;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,14 +11,13 @@ public class WriteValidation {
 
     // 금액 입력 기능
     public int writePay(String writePay) {
-        // 사용자가 잘못 입력한 시 IllegalArgumentException 발생
         validWrite(writePay);
         return Integer.parseInt(writePay);
     }
 
     private void validWrite(String writePay) {
         if (!isDigit(writePay)) {
-            throw new IllegalArgumentException("This Lotto Number is Exception !!");
+            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
         }
     }
 
@@ -28,7 +28,7 @@ public class WriteValidation {
     // 당첨 로또 입력 기능
     public WinningLottoNumber writeWinningLottoNumbers(String writeLottoNumber, String writeBonusNumber) {
         if (writeLottoNumber.chars().anyMatch(value -> value == ' ') || writeBonusNumber.chars().anyMatch(value -> value == ' ')) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
         }
 
         List<Integer> winningNumbers = Arrays.stream(writeLottoNumber.split(","))
@@ -43,7 +43,7 @@ public class WriteValidation {
 
     private void validWinningNumbers(List<Integer> winningNumbers) {
         if (!isNumberCount(winningNumbers) && !isNumberRange(winningNumbers)) {
-            throw new IllegalArgumentException("This Lotto Number is Exception !!");
+            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
         }
 
         validDuplicate(winningNumbers);
@@ -62,7 +62,7 @@ public class WriteValidation {
         int distinctSize = (int) winningNumbers.stream().distinct().count();
 
         if (currentSize != distinctSize) {
-            throw new IllegalArgumentException("This Lotto Number is Duplicated Exception !!");
+            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
         }
     }
 
@@ -75,7 +75,7 @@ public class WriteValidation {
 
     private void validRangeNumber(int bonusNumber) {
         if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
-            throw new IllegalArgumentException("This Lotto Number is Exception !!");
+            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
         }
     }
 }

@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.dto.WinningLottoNumber;
+import lotto.exception.ErrorCode;
 import lotto.service.WriteValidation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,7 @@ class WriteValidationTest {
         // when && then
         assertThatThrownBy(() -> validation.writePay(writePay))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("This Lotto Number is Exception !!");
+                .hasMessage(ErrorCode.ERROR.getMessage());
     }
 
     @Test
@@ -68,7 +69,7 @@ class WriteValidationTest {
         // when && then
         assertThatThrownBy(() -> validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("This Lotto Number is Duplicated Exception !!");
+                .hasMessage(ErrorCode.ERROR.getMessage());
     }
 
     @Test
@@ -81,7 +82,7 @@ class WriteValidationTest {
         // when && then
         assertThatThrownBy(() -> validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("This Lotto Number is Exception !!");
+                .hasMessage(ErrorCode.ERROR.getMessage());
     }
 
     @Test
@@ -94,6 +95,6 @@ class WriteValidationTest {
         // when && then
         assertThatThrownBy(() -> validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("This Lotto Number is Exception !!");
+                .hasMessage(ErrorCode.ERROR.getMessage());
     }
 }
