@@ -32,5 +32,6 @@ public class GameView {
         // 당첨 통계를 출력한다
         RankInfo rankInfo = rankInfoController.createRankInfo();
         rankInfo = rankInfoController.getRankInfo(rankInfo, lotto, userLotto, bonus);
+        outputMessage.printStatistic(rankInfo);
     }
 }
