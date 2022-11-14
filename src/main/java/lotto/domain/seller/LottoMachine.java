@@ -1,7 +1,9 @@
 package lotto.domain.seller;
 
 import java.util.List;
+import lotto.domain.lotto.LottoRanking;
 import lotto.domain.lotto.WinningLotto;
+import lotto.dto.LottoCount;
 
 public class LottoMachine implements Seller{
     private static final int LOTTO_AMOUNT = 1000;
@@ -32,6 +34,11 @@ public class LottoMachine implements Seller{
     @Override
     public boolean compareBonusNumber(List<Integer> numbers) {
         return numbers.contains(winningLotto.getBonus());
+    }
+
+    @Override
+    public LottoRanking findLottoRanking(LottoCount lottoCount) {
+        return null;
     }
 
     private void validateMoney(int money) {

@@ -5,7 +5,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.LottoRanking;
 import lotto.domain.lotto.WinningLotto;
+import lotto.dto.LottoCount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -43,6 +45,30 @@ public class SellerTest {
         Seller seller = new LottoMachine(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
         assertThat(seller.compareBonusNumber(numbers)).isTrue();
+    }
+
+    @DisplayName("[성공] 로또 당첨 몇등인지 확인하기 - 1등")
+    @Test
+    void findLottoRanking_First() {
+        Seller seller = new LottoMachine(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
+        LottoRanking lottoRanking = seller.findLottoRanking(new LottoCount(6, false));
+        assertThat(lottoRanking).isEqualTo(LottoRanking.FIRST);
+    }
+
+    @DisplayName("[성공] 로또 당첨 몇등인지 확인하기 - 2등")
+    @Test
+    void findLottoRanking_Second() {
+        Seller seller = new LottoMachine(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
+        LottoRanking lottoRanking = seller.findLottoRanking(new LottoCount(5, true));
+        assertThat(lottoRanking).isEqualTo(LottoRanking.SECOND);
+    }
+
+    @DisplayName("[성공] 로또 당첨 몇등인지 확인하기 - 3등")
+    @Test
+    void findLottoRanking_Third() {
+        Seller seller = new LottoMachine(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
+        LottoRanking lottoRanking = seller.findLottoRanking(new LottoCount(5, false));
+        assertThat(lottoRanking).isEqualTo(LottoRanking.THIRD);
     }
 
 }
