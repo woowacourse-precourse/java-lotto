@@ -1,12 +1,17 @@
 package lotto.domain;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static lotto.utils.Messages.ERROR_MESSAGE;
 
 public class Validator {
     static final int LOTTO_LOWER_BOUND = 1;
     static final int LOTTO_UPPER_BOUND = 45;
+    static final int LOTTO_SIZE = 6;
+
     public boolean validateInputAmount(String input){
         try{
             validateNumeric(input);
@@ -54,6 +59,14 @@ public class Validator {
         int bonusNumber = Integer.parseInt(input);
         if(bonusNumber < LOTTO_LOWER_BOUND || bonusNumber > LOTTO_UPPER_BOUND){
             throw new IllegalArgumentException(ERROR_MESSAGE + "1-45 사이의 범위가 아닙니다");
+        }
+    }
+
+    public void validatePermissionPatter(String input){
+        String permissionPattern = "\\d";
+        String output = input.replaceAll(permissionPattern, "");
+        if(output.length() != LOTTO_SIZE - 1){
+            throw new IllegalArgumentException(ERROR_MESSAGE + "올바르지 않은 입력 형식입니다.");
         }
     }
 
