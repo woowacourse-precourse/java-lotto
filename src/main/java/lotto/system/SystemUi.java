@@ -50,4 +50,8 @@ public class SystemUi {
                     Collections.frequency(rankCount, rank) + "개");
         }
     }
+    public static void printRevenue(long revenue, int purchaseAmount) {
+        double ratioOfRevenue = (revenue / (double)purchaseAmount)*100;
+        System.out.println("총 수익률은 "+ String.format("%.1f", ratioOfRevenue)+ "%입니다.");
+    }
 }
