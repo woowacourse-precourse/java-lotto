@@ -13,14 +13,18 @@ import static lotto.message.resultMessages.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int purchaseAmount = buyLotto();
-        List<List> purchaseLotto = autoLotto(purchaseAmount);
-        List<Integer> winnerLotto = winLotto();
-        int bonusNumber = bonusLotto();
-        List<List> compareResult = compareLotto(purchaseLotto,winnerLotto,bonusNumber);
-        List<Integer> winCnt = gameResult(compareResult);
-        printResult(winCnt);
-        getMoney(winCnt, purchaseAmount);
+        try{
+            int purchaseAmount = buyLotto();
+            List<List> purchaseLotto = autoLotto(purchaseAmount);
+            List<Integer> winnerLotto = winLotto();
+            int bonusNumber = bonusLotto();
+            List<List> compareResult = compareLotto(purchaseLotto,winnerLotto,bonusNumber);
+            List<Integer> winCnt = gameResult(compareResult);
+            printResult(winCnt);
+            getMoney(winCnt, purchaseAmount);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public static int buyLotto(){
