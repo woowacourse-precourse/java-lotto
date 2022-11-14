@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -22,5 +23,9 @@ public class Result {
 
     private long prize(Map.Entry<LottoRanking, Integer> rankWithCount) {
         return rankWithCount.getKey().prize() * rankWithCount.getValue();
+    }
+
+    public Map<LottoRanking, Integer> result() {
+        return Collections.unmodifiableMap(result);
     }
 }

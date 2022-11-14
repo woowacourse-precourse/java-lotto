@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 public class LottoFactoryTest {
 
-    private static final LottoFactory lottoFactory = new LottoFactory(new Money("1000"));
+    private static final LottoFactory lottoFactory = new LottoFactory();
 
     @Test
     @DisplayName("로또 팩토리는 랜덤한 숫자를 생성한다.")

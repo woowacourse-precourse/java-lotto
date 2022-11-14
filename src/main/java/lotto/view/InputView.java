@@ -21,14 +21,14 @@ public class InputView {
         return readLine();
     }
 
-    public List<Integer> requestWinningNumbers() {
-        List<Integer> winningNumbers;
-        try {
-            winningNumbers = convertToLottoNumbers(readLine());
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException();
-        }
-        return winningNumbers;
+    public String requestWinningNumbers() {
+//        List<Integer> winningNumbers;
+//        try {
+//            winningNumbers = convertToLottoNumbers(readLine());
+//        } catch (NumberFormatException exception) {
+//            throw new IllegalArgumentException();
+//        }
+        return readLine();
     }
 
     private List<Integer> convertToLottoNumbers(String input) {

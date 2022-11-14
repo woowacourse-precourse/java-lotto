@@ -10,7 +10,7 @@ public class OutputView {
 
     private static final String SECOND_RANK_RESULT_MESSAGE = "%,d개 일치, 보너스 볼 일치 (%,d원) - %,d개";
     private static final String NOT_SECOND_RANK_RESULT_MESSAGE = "%,d개 일치 (%,d원) - %,d개";
-    private static final String PROFIT_RESULT_MESSAGE = "총 수익률은 %,.1f%입니다.";
+    private static final String PROFIT_RESULT_MESSAGE = "총 수익률은 %,.1f%c입니다.";
     private static final String RESULT_TITLE_MESSAGE = "당첨 통계\n---";
     private static final String REQUEST_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String NUMBER_OF_LOTTOS = "%,d개를 구매했습니다.";
@@ -29,7 +29,7 @@ public class OutputView {
         printMessage(REQUEST_MONEY_MESSAGE);
     }
 
-    public void printNumberOfLottos(List<Lotto> lottoTicket) {
+    public void printLottoNumberOfTicket(List<Lotto> lottoTicket) {
         printMessage(String.format(NUMBER_OF_LOTTOS, lottoTicket.size()));
         for (Lotto lotto : lottoTicket) {
             printLottoNumbers(sortNumbers(lotto.lottoNumbers()));
@@ -37,20 +37,22 @@ public class OutputView {
     }
 
     private List<Integer> sortNumbers(List<Integer> lottoNumbers) {
-        Collections.sort(lottoNumbers);
-        return lottoNumbers;
+        List<Integer> sortedLottoNumbers = new ArrayList<>();
+        sortedLottoNumbers.addAll(lottoNumbers);
+        Collections.sort(sortedLottoNumbers);
+        return sortedLottoNumbers;
     }
 
     private void printLottoNumbers(List<Integer> sortedNumbers) {
         printMessage(Arrays.toString(sortedNumbers.toArray()));
     }
 
-    public void printWinningNumbers() {
+    public void printRequestWinningNumbers() {
         printNewLine();
         printMessage(REQUEST_WINNING_NUMBERS_MESSAGE);
     }
 
-    public void printBonusNumber() {
+    public void printRequestBonusNumber() {
         printNewLine();
         printMessage(REQUEST_BONUS_NUMBER_MESSAGE);
     }
@@ -71,6 +73,6 @@ public class OutputView {
     }
 
     public void printRateOfProfit(double rateOfProfit) {
-        printMessage(String.format(PROFIT_RESULT_MESSAGE, rateOfProfit));
+        printMessage(String.format(PROFIT_RESULT_MESSAGE, rateOfProfit, '%'));
     }
 }
