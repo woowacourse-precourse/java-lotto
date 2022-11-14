@@ -97,5 +97,14 @@ public class Compute {
 
         return profit;
     }
+
+    private void printProfit(float profit) {
+        String text = "총 수익률은 $profit%입니다.";
+        String replaceFrom = "$profit";
+        String rateOfProfit = String.format("%.1f", profit);
+        text = text.replace(replaceFrom, rateOfProfit);
+
+        System.out.println(text);
+    }
 }
 
