@@ -26,17 +26,14 @@ class LottoTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 클래스 당첨 번호 입력 받고 크기 확인")
-    @Test
-    void input_Win_Numbers_And_check_size(){
-                    run("1,2,3,4,5,6");
-                    assertThat(output()).contains("6");
-                    assertThat(output()).contains("[1, 2, 3, 4, 5, 6]");
-    }
 
-    @Override
-    protected void runMain() {
-        Lotto.main(new String[]{});
+    @DisplayName("생성된 로또 번호 확인")
+    @Test
+    void have_Lotto_numbers(){
+        List<Integer> numbers = List.of(1,2,3,4,5,6);
+        Lotto lotto = new Lotto(numbers);
+        assertThat(lotto.returnNumbers()).isEqualTo(numbers);
+
     }
 
     // 아래에 추가 테스트 작성 가능
