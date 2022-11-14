@@ -9,7 +9,6 @@ public class PrintWinnerStatisticsGenerator {
         List<Integer> winnerStatistics = new ArrayList<>();
         System.out.println("당첨통계");
         System.out.println("---");
-        System.out.println();
         for(int i=1; i<7; i++) {
             winnerStatistics.add(Collections.frequency(resultNumber, i));
         }
@@ -18,6 +17,5 @@ public class PrintWinnerStatisticsGenerator {
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", winnerStatistics.get(4));
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winnerStatistics.get(4));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winnerStatistics.get(5));
-
     }
 }
