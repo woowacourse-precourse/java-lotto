@@ -28,10 +28,10 @@ public class LottoMachine {
         HashMap<Rank, Integer> rankResult = new HashMap<>();
         for (int i = 0; i < lottos.size(); i++) {
             Rank rank = lottos.get(i).matchRank(winningNumber, bonusNumber);
-            if (rankResult.containsKey(rank)) {
-                rankResult.put(rank, rankResult.get(rank) + 1);
+            if (!rankResult.containsKey(rank)) {
+                rankResult.put(rank, 0);
             }
-            rankResult.put(rank, 1);
+            rankResult.put(rank, rankResult.get(rank) + 1);
         }
         return rankResult;
     }
