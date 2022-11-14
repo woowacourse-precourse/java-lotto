@@ -14,7 +14,7 @@ public class Application {
         try {
             int money = purchaseManager.askAmountOfMoney();
             List<Lotto> lottoList = lottoGenerator.createLottos(money);
-            List<Integer> results = collector.collectResults(lottoList);
+            List<Integer> results = collector.collectRankResults(lottoList);
 
             double profitRate = calculator.getProfitRate(results);
             System.out.printf("총 수익률은 %g%%입니다.", profitRate);
