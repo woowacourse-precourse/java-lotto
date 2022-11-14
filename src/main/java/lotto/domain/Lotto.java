@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public final class Lotto {
+    private static final int CONTAINS = 1;
+    private static final int NOT_CONTAINS = 0;
     private static final String NULL_MESSAGE = "숫자들이 null 입니다";
     private static final String INCORRECT_LENGTH_MESSAGE = "숫자는 6개가 들어와야 합니다";
     private static final String DUPLICATE_MESSAGE = "숫자에 중복이 있습니다";
@@ -44,11 +46,11 @@ public final class Lotto {
     }
 
     private boolean isRightLength(List<Integer> numbers) {
-        return numbers.size() == 6;
+        return numbers.size() == LottoConstants.LOTTO_LENGTH.value();
     }
 
     private boolean isUnique(List<Integer> numbers) {
-        return numbers.stream().distinct().count() == 6;
+        return numbers.stream().distinct().count() == LottoConstants.LOTTO_LENGTH.value();
     }
 
     private boolean isOverRange(List<Integer> numbers) {
@@ -79,13 +81,13 @@ public final class Lotto {
     public int calculateTotalSameCount(Lotto other) {
         return numbers.stream()
                 .reduce(0,
-                        (total, number) -> total + calculateScore(number, other));
+                        (total, number) -> total + addIfContains(number, other));
     }
 
-    private int calculateScore(int number, Lotto other) {
+    private int addIfContains(int number, Lotto other) {
         if (other.contains(number)) {
-            return 1;
+            return CONTAINS;
         }
-        return 0;
+        return NOT_CONTAINS;
     }
 }

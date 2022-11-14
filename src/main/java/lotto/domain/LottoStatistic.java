@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 final class LottoStatistic {
+    private static final int TO_PERCENT = 100;
     private final WinningLotto winningLotto;
     private final Lottos lottos;
 
@@ -72,6 +73,6 @@ final class LottoStatistic {
                 .mapToLong(prize -> (long) prize)
                 .reduce(0, Long::sum);
         int totalPurchaseAmount = LottoConstants.LOTTO_PRICE.value() * lottos.size();
-        return (double) totalPrize / totalPurchaseAmount * 100;
+        return (double) totalPrize / totalPurchaseAmount * TO_PERCENT;
     }
 }
