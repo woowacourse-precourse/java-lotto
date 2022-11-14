@@ -8,6 +8,7 @@ public class ResultView {
     private static final String PRINT_RANK_WINMONEY_AND_COUNT_MESSAGE = " (%d원) - %d개\n";
     private static final String PRINT_NOT_BALL_MESSAGE = "";
     private static final String PRINT_BALL_MESSAGE = ", 보너스 볼 일치";
+    public static final String PRINT_PROFIT_MESSAGE = "총 수익률은 %.1f%입니다.";
 
     public void printRandomLottos(List<List<Integer>> lottos) {
         for (List<Integer> lotto : lottos) {
@@ -37,5 +38,9 @@ public class ResultView {
             return PRINT_BALL_MESSAGE;
         }
         return PRINT_NOT_BALL_MESSAGE;
+    }
+
+    public void printProfit(RankResult rankResult, int money) {
+        System.out.printf(PRINT_PROFIT_MESSAGE, rankResult.getProfit(money));
     }
 }
