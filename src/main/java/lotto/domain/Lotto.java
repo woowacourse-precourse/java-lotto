@@ -4,7 +4,7 @@ import java.util.List;
 import lotto.exception.LottoException;
 
 public class Lotto {
-    LottoException lottoException = new LottoException();
+    private final LottoException lottoException = new LottoException();
     private List<Integer> numbers;
     private int bonusNumber;
 
