@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import static lotto.validator.LottoNumberValidator.validateHasNoDuplication;
 import static lotto.validator.LottoNumberValidator.validateIsInLottoRange;
