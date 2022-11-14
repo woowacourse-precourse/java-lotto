@@ -29,4 +29,8 @@ public class Money {
     private boolean isInvalidMoney(int money) {
         return (MIN_MONEY > money) || (money % MIN_MONEY) != 0;
     }
+
+    public int getMoney() {
+        return Integer.parseInt(money);
+    }
 }
