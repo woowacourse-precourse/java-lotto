@@ -40,10 +40,6 @@ class LottoServiceTest {
     }
 
     @Test
-    void compareLotto() {
-    }
-
-    @Test
     void getWinningAmount() {
     }
 
