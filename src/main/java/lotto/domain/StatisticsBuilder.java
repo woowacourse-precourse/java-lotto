@@ -1,29 +1,32 @@
 package lotto.domain;
 
 import lotto.view.IOProcessor;
-
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class StatisticsBuilder {
 
-    private final List<Integer> winningInfo; // 당첨정보 저장
+    private final Map<String, Integer> winningInfo;
 
     public StatisticsBuilder() {
-        winningInfo = new ArrayList<>(6);
-        for (int i = 0; i < 6; i++) {
-            winningInfo.add(0);
+        winningInfo = new LinkedHashMap<>();
+        Policy.WinningAmount[] winnings = Policy.WinningAmount.values();
+        for (Policy.WinningAmount winning : winnings) {
+            winningInfo.put(winning.name(), 0);
         }
     }
 
     public void build(List<Integer> winningNumber, int bonusNumber, List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
-            int grade = WinningChecker.check(winningNumber, bonusNumber, lotto.getNumbers());
-            winningInfo.set(grade, winningInfo.get(grade) + 1);
+            String grade = WinningChecker.check(winningNumber, bonusNumber, lotto.getNumbers());
+            if(!grade.equals("null")) {
+                winningInfo.put(grade, winningInfo.get(grade)+1);
+            }
         }
     }
 
-    public List<Integer> getWinningInfo() {
+    public Map<String, Integer> getWinningInfo() {
         return this.winningInfo;
     }
 
