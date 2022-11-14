@@ -4,6 +4,7 @@ import java.util.List;
 
 import static java.util.Collections.sort;
 import static java.util.stream.Collectors.toList;
+import static lotto.domain.ErrorType.*;
 
 public class Lotto {
     public static final int LOTTO_SIZE = 6;
@@ -22,14 +23,14 @@ public class Lotto {
 
     private void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_LOTTO_SIZE.getErrorMessage());
         }
     }
 
     private void validateEachNumberInRange(List<Integer> numbers, int startInclusive, int endInclusive) {
         for (int number : numbers) {
             if (number < startInclusive || number > endInclusive) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE.getErrorMessage());
             }
         }
     }
@@ -39,7 +40,7 @@ public class Lotto {
                 .distinct()
                 .collect(toList());
         if (removedDuplicates.size() < LOTTO_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_LOTTO_HAS_DUPLICATE.getErrorMessage());
         }
     }
 
