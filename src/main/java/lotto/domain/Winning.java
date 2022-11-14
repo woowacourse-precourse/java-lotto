@@ -64,4 +64,12 @@ public class Winning extends Valid {
         }
         return Rank.findRank(cnt, bonus);
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public int getBonus() {
+        return bonus;
+    }
 }
