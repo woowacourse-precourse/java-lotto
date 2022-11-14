@@ -1,8 +1,8 @@
 package lotto.controller;
 
 import java.util.List;
-import lotto.domain.LottoMachine;
 import lotto.domain.LottoJudge;
+import lotto.domain.LottoMachine;
 import lotto.domain.vo.BuyLottoList;
 import lotto.domain.vo.Lotto;
 import lotto.domain.vo.LottoResult;
@@ -15,6 +15,11 @@ public class LottoController {
 
     InputHandler inputHandler = new InputHandler();
     OutputHandler outputHandler = new OutputHandler();
+
+    private static LottoResult getResult(BuyLottoList buyLottoList, LottoWithBonus lottoWithBonus) {
+        LottoJudge lottoJudge = new LottoJudge(buyLottoList, lottoWithBonus);
+        return new LottoResult(lottoJudge.getValue());
+    }
 
     public void run() {
 
@@ -32,11 +37,6 @@ public class LottoController {
     private void outputResult(LottoResult lottoResult) {
         outputHandler.winningStatistics(lottoResult);
         outputHandler.printYield(lottoResult);
-    }
-
-    private static LottoResult getResult(BuyLottoList buyLottoList, LottoWithBonus lottoWithBonus) {
-        LottoJudge lottoJudge = new LottoJudge(buyLottoList, lottoWithBonus);
-        return new LottoResult(lottoJudge.getValue());
     }
 
     private BuyLottoList buyLotto(Money money) {

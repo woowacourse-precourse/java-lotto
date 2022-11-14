@@ -22,9 +22,9 @@ public enum LottoReference {
 
     public static LottoReference hasCorrectCount(int correctCount) {
         LottoReference[] lottoReferences = LottoReference.values();
-        for (LottoReference l : lottoReferences) {
-            if (l.getCorrectCount() == correctCount) {
-                return l;
+        for (LottoReference lottoReference : lottoReferences) {
+            if (lottoReference.getCorrectCount() == correctCount) {
+                return lottoReference;
             }
         }
         return NOPE;
@@ -44,9 +44,10 @@ public enum LottoReference {
     private static long getPrizeByResult(Map<LottoReference, Integer> result) {
         long totalPrize = 0L;
         for (LottoReference lo : LottoReference.values()) {
-            if (lo != NOPE) {
-                totalPrize += (long) lo.getPrize() * result.getOrDefault(lo, 0);
+            if (lo == NOPE) {
+                continue;
             }
+            totalPrize += (long) lo.getPrize() * result.getOrDefault(lo, 0);
         }
         return totalPrize;
     }

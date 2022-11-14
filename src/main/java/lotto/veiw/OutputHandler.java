@@ -6,7 +6,6 @@ import java.text.DecimalFormat;
 import java.util.Map;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoReference;
-import lotto.domain.LottoJudge;
 import lotto.domain.vo.Lotto;
 import lotto.domain.vo.LottoResult;
 
@@ -23,8 +22,8 @@ public class OutputHandler {
                 continue;
             }
             System.out.printf("%d개 일치%s (%s원) - %d개\n", lo.getCorrectCount(), lo.getMessage(),
-                        moneyFormat.format(lo.getPrize()),
-                        result.getOrDefault(lo, 0));
+                    moneyFormat.format(lo.getPrize()),
+                    result.getOrDefault(lo, 0));
         }
     }
 
