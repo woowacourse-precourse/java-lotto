@@ -13,12 +13,4 @@ public class MachineTest {
         assertThatCode(() -> machine.createSingleLottoTicket())
                 .doesNotThrowAnyException();
     }
-
-    /*@Test
-    @DisplayName("오름차순으로 정렬된 랜덤 숫자를 생성한다")
-    void createSortedRandomNumbers() {
-        Machine machine = new Machine();
-        List<Integer> randomNumbers = machine.createSortedRandomNumbers(1, 6, 6);
-        assertThat(randomNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
-    }*/
 }

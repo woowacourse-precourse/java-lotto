@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import lotto.constant.GameMessage;
 import lotto.constant.LottoStatistic;
 import lotto.exception.ExceptionHandler;
@@ -13,6 +14,7 @@ public class Organizer {
 
     public Organizer() {
     }
+
     public List<Integer> getWinningNumbers() {
         return this.winningNumbers;
     }

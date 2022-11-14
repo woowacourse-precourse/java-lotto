@@ -10,6 +10,7 @@ import lotto.constant.LottoStatistic;
 public class Machine {
     public Machine() {
     }
+
     public List<Lotto> issueLottoTickets(long money) {
         long numberOfTickets = money / LottoStatistic.LOTTO_PRICE.getValue();
         List<Lotto> lottoTickets = new ArrayList<>();
@@ -24,10 +25,4 @@ public class Machine {
                 LottoStatistic.MAX_NUMBER.getValue(), LottoStatistic.NUMBER_OF_LOTTERY_NUMBERS.getValue());
         return new Lotto(sortedRandomNumbers);
     }
-
-    /*public List<Integer> createSortedRandomNumbers(int start, int end, int count) {
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(start, end, count);
-        Collections.sort(randomNumbers);
-        return randomNumbers;
-    }*/
 }

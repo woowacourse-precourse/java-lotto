@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +17,7 @@ public class OrganizerTest {
     }
 
     @Test
-    @DisplayName("입력 문자열에 띄어쓰기가 존재해도 숫자 리스트로 변환한다.")
+    @DisplayName("입력 문자열에 띄어쓰기와 무관하게 숫자 리스트로 변환한다.")
     void getNumberListFromStringInputWithSpaces() {
         Organizer organizer = new Organizer();
         assertThat(organizer.transformStringToWinningNumbers("1 , 2,3 ,4 ,5 ,6"))

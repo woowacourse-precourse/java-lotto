@@ -29,11 +29,7 @@ public class ExceptionHandler {
 
     public static void isStringNumeric(String input) {
         String pattern = "^[0-9]*$";
-        if (input == null) {
-            Output.printMessage(ErrorMessage.NOT_NUMERIC_ERROR.getMessage());
-            throw new IllegalArgumentException();
-        }
-        if (!Pattern.matches(pattern, input)) {
+        if (input == null || !Pattern.matches(pattern, input)) {
             Output.printMessage(ErrorMessage.NOT_NUMERIC_ERROR.getMessage());
             throw new IllegalArgumentException();
         }
@@ -52,5 +48,4 @@ public class ExceptionHandler {
             throw new IllegalArgumentException();
         }
     }
-
 }

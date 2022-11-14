@@ -3,8 +3,8 @@ package lotto.exception;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-
 import java.util.List;
+
 import lotto.constant.LottoStatistic;
 
 import static org.assertj.core.api.Assertions.*;
