@@ -54,17 +54,13 @@ public class Lotto {
     }
 
     private boolean isGreaterThanRange(List<Integer> numbers) {
-        long greaterThanRangeCount = numbers.stream()
-                .filter(n -> n > 45)
-                .count();
-        return greaterThanRangeCount != 0;
+        return numbers.stream()
+                .anyMatch(number -> number > LottoConstants.LOTTO_NUMBER_MAX_RANGE);
     }
 
     private boolean isLessThanRange(List<Integer> numbers) {
-        long greaterThanRangeCount = numbers.stream()
-                .filter(n -> n < 1)
-                .count();
-        return greaterThanRangeCount != 0;
+        return numbers.stream()
+                .anyMatch(number -> number < LottoConstants.LOTTO_NUMBER_MIN_RANGE);
     }
 
     private List<Integer> sort(List<Integer> numbers) {
