@@ -71,4 +71,26 @@ public class ResultPrintTest {
         );
         assertThat(out.toString()).contains("총 수익률은 62.5%입니다.");
     }
+    @DisplayName("반올림 올림 확인")
+    @Test
+    void roundsYield() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        ResultPrint.printingResult(
+                Map.of("FIRST", 1, "SECOND", 1, "THIRD", 1,
+                        "FOURTH", 3, "FIFTH", 4, "NOTHING", 99990)
+        );
+        assertThat(out.toString()).contains("총 수익률은 2,031.7%입니다.");
+    }
+    @DisplayName("반올림의 버림 확인")
+    @Test
+    void roundsDownYield() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        ResultPrint.printingResult(
+                Map.of("FIRST", 0, "SECOND", 0, "THIRD", 0,
+                        "FOURTH", 0, "FIFTH", 1, "NOTHING", 799)
+        );
+        assertThat(out.toString()).contains("총 수익률은 0.6%입니다.");
+    }
 }
