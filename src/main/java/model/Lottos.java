@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +45,7 @@ public class Lottos {
     }
 
     public WinningResult getTotalWinningResult(WinningLotto winningLotto) {
-        Map<Win, Integer> winningResults = new HashMap<>();
+        Map<Win, Integer> winningResults = new EnumMap<>(Win.class);
 
         for (Lotto lotto : lottos) {
             WinningResult winningResult = lotto.getWinningResult(winningLotto);
