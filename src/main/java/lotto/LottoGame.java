@@ -32,18 +32,32 @@ public class LottoGame {
     }
 
     public void start() {
-        Writer.inputPurchaseAmount();
-        PurchaseAmount purchaseAmount = new PurchaseAmount(read());
+        IssuedLotto issuedLotto = this.issueLotto(this.inputPurchaseAmount());
 
+        WinningNumber winningNumber = this.inputWinningNumber();
+        BonusNumber bonusNumber = this.inputBonusNumber();
+
+    }
+
+    private PurchaseAmount inputPurchaseAmount() {
+        Writer.inputPurchaseAmount();
+        return new PurchaseAmount(read());
+    }
+
+    private IssuedLotto issueLotto(PurchaseAmount purchaseAmount) {
         IssuedLotto issuedLotto = lottoIssueService.issueLotto(purchaseAmount);
         Writer.printIssuedLottoList(issuedLotto);
+        return issuedLotto;
+    }
 
+    private WinningNumber inputWinningNumber() {
         Writer.inputWinningNumber();
-        WinningNumber winningNumber = WinningNumber.saveWinningNumbers(read());
+        return WinningNumber.saveWinningNumbers(read());
+    }
 
+    private BonusNumber inputBonusNumber() {
         Writer.inputBonusNumber();
-        BonusNumber bonusNumber = BonusNumber.saveBonusNumber(read());
-
+        return BonusNumber.saveBonusNumber(read());
     }
 
     private String read() {
