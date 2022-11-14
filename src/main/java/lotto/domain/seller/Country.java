@@ -19,8 +19,14 @@ public class Country implements Seller{
     }
 
     public int compareNumbers(List<Integer> numbers) {
-
-        return 0;
+        List<Integer> winningLottoNumbers = winningLotto.getLotto().getNumbers();
+        int count = 0;
+        for (int number : numbers) {
+            if (winningLottoNumbers.contains(number)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private void validateMoney(int money) {
