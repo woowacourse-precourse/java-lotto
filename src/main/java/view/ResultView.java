@@ -22,4 +22,8 @@ public class ResultView {
     public void displayWinStatistics() {
         System.out.println(LottoMessage.WIN_STATISTICS);
     }
+
+    public void displaySeparator() {
+        System.out.println(LottoMessage.LINE_SEPARATOR);
+    }
 }
