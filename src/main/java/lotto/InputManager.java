@@ -11,7 +11,7 @@ public class InputManager {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         if (!Verifier.isValidMoney(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.MONEY.getMessage());
         }
         int money = Integer.parseInt(input);
 
@@ -23,7 +23,7 @@ public class InputManager {
         String input = Console.readLine();
         String[] splittedInput = input.split(",");
         if (!Verifier.isValidWinningNumbers(splittedInput)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.WINNING_NUMBER.getMessage());
         }
         List<Integer> winningNumbers = stringArrayToIntegerList(splittedInput);
         return winningNumbers;
@@ -41,7 +41,7 @@ public class InputManager {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         if (!Verifier.isValidBonusNumber(input, winningNumbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.BONUS_NUMBER.getMessage());
         }
         return Integer.parseInt(input);
     }

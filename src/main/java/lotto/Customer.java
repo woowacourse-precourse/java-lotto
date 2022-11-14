@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Customer {
     private List<Lotto> lotteryTickets = new ArrayList<>();
+
     public void purchaseLotto(int money) {
         int count = money / Lotto.PRICE;
         LottoManager lottoManager = new LottoManager();
