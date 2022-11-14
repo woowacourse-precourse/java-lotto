@@ -16,20 +16,21 @@ public class WinLotto {
     private final int bonusNumber;
     private final List<List<Integer>> lottoTickets;
     private final long userMoney;
-    private Map<Ranking, Long> winningResult = new EnumMap<>(Ranking.class);
+    private Map<Ranking, Integer> winningResult = new EnumMap<>(Ranking.class);
 
-    public WinLotto(List<Integer> lotto, Player player){
-        int lottoBonusNumberIndex = lotto.size()-1;
-        bonusNumber = lotto.get(lottoBonusNumberIndex);
-        lotto.remove(lottoBonusNumberIndex);
-        winningNumber = lotto;
+    public WinLotto(Lotto lotto, Player player){
+        List<Integer> tempWinningBonusLotto = lotto.getLotto();
+        int lottoBonusNumberIndex = tempWinningBonusLotto.size()-1;
+        bonusNumber = tempWinningBonusLotto.get(lottoBonusNumberIndex);
+        tempWinningBonusLotto.remove(lottoBonusNumberIndex);
+        winningNumber = tempWinningBonusLotto;
         this.lottoTickets = player.getLottoTickets();
         this.userMoney = player.getMoney();
         winningResult = initWinningResult();
     }
 
-    private Map<Ranking, Long> initWinningResult() {
-        return Arrays.stream(Ranking.values()).collect(toMap(ranking -> ranking, ranking -> 0L));
+    private Map<Ranking, Integer> initWinningResult() {
+        return Arrays.stream(Ranking.values()).collect(toMap(ranking -> ranking, ranking -> 0));
     }
 
     public int countMatchWinningNumber(List<Integer> lottoTicket){
@@ -42,7 +43,7 @@ public class WinLotto {
         return lottoTicket.contains(bonusNumber);
     }
 
-    public Map<Ranking, Long> checkLotto(){
+    public void checkLotto(){
         for(List<Integer> lottoTicket : lottoTickets){
             int count = countMatchWinningNumber(lottoTicket);
             boolean bonus = false;
@@ -54,7 +55,6 @@ public class WinLotto {
 
             winningResult.put(ranking, winningResult.get(ranking) + 1);
         }
-        return winningResult;
     }
 
     public long calculatePrizeSum(){
@@ -65,8 +65,12 @@ public class WinLotto {
 
     public double calculateReturnRate(){
         long sum = calculatePrizeSum();
-        double returnRate = sum / userMoney * 100;
+        double returnRate = sum / (double)userMoney * 100;
 
         return Double.parseDouble(String.format("%.1f", returnRate));
+    }
+
+    public Map<Ranking, Integer> getWinningResult() {
+        return winningResult;
     }
 }
