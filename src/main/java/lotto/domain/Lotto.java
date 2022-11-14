@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.ErrorMessage;
@@ -15,6 +16,10 @@ import lotto.ErrorMessage;
  */
 public class Lotto {
 
+	public static final int LOTTO_MIN_NUMBER = 1;
+	public static final int LOTTO_MAX_NUMBER = 45;
+	public static final int NUMBER_OF_LOTTO = 6;
+
 	private final List<Integer> numbers;
 
 	public Lotto(List<Integer> numbers) {
@@ -23,7 +28,12 @@ public class Lotto {
 	}
 
 	public static Lotto newInstance() {
-		return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+		final List<Integer> numbers = Randoms
+			.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, NUMBER_OF_LOTTO)
+			.stream()
+			.sorted()
+			.collect(Collectors.toList());
+		return new Lotto(numbers);
 	}
 
 	public static List<Lotto> newInstances(int count) {
@@ -39,7 +49,7 @@ public class Lotto {
 	}
 
 	private void validate(List<Integer> numbers) {
-		if (numbers.size() != 6) {
+		if (numbers.size() != NUMBER_OF_LOTTO) {
 			throw new IllegalArgumentException(ErrorMessage.isInvalidNumberOfLottoNumbers());
 		}
 		if (isInvalidLottoNumber(numbers)) {
@@ -49,7 +59,7 @@ public class Lotto {
 
 	private boolean isInvalidLottoNumber(List<Integer> numbers) {
 		return numbers.stream()
-			.anyMatch(number -> number < 0 || number > 45);
+			.anyMatch(number -> number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER);
 	}
 
 }
