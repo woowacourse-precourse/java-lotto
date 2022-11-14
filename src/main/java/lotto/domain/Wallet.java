@@ -35,13 +35,6 @@ public class Wallet {
         return new Lotto(numbers);
     }
 
-    public void printWallet() {
-        System.out.printf("\n%d%s\n", numberOfPurchase, GameMessage.BUY_NUMBER_OF_LOTTO);
-        for (Lotto lotto : lottos) {
-            lotto.printLotto();
-        }
-    }
-
     public void initialize() {
         lottos = new ArrayList<>();
     }

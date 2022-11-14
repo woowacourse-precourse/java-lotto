@@ -39,14 +39,6 @@ public class Lotto {
         Collections.sort(notImmutableList);
     }
 
-    public void printLotto() {
-        System.out.print("[");
-        for (int i = 0; i < numbers.size() - 1; i++) {
-            System.out.printf("%d, ", numbers.get(i));
-        }
-        System.out.println(numbers.get(numbers.size() - 1) + "]");
-    }
-
     public void validateDistinctInBonusNumber(int bonusNumber) {
         if (numbers.contains(bonusNumber))
             throw new IllegalArgumentException(ErrorMessage.BONUS_DISTINCT_WINNING_NUMBER);

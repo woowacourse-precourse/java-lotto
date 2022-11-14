@@ -31,7 +31,7 @@ public class GameManager {
         int lottoPrice = input.getUserMoney();
         int numberOfPurchase = changeNumberOfLottoToBuy(lottoPrice);
         purchaseLotto(numberOfPurchase);
-        wallet.printWallet();
+        output.printWallet(wallet.getLottos(), numberOfPurchase);
 
         winningNumber = new Lotto(input.getWinningNumber());
         bonusNumber = new BonusNumber(input.getBonusNumber());
