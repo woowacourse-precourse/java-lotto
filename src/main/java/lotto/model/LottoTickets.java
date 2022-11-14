@@ -5,25 +5,26 @@ import java.util.Collections;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Lottery {
+public class LottoTickets {
     private static final int LOTTO_SIZE = 6;
     private static final int MIN_NUMBER_RANGE = 1;
     private static final int MAX_NUMBER_RANGE = 45;
 
-    private final List<Lotto> lotteryNumbers;
+    private final List<Lotto> lottoTickets;
 
-    public Lottery(int purchaseAmount) {
-        this.lotteryNumbers = makeLotteryNumbers(purchaseAmount);
+    public LottoTickets(Purchase purchase) {
+        this.lottoTickets = makeLottoTickets(purchase.getAmount());
     }
 
-    public List<Lotto> getLotteryNumbers() {
-        return lotteryNumbers;
+    public List<Lotto> getLottoTickets() {
+        return lottoTickets;
     }
 
-    private List<Lotto> makeLotteryNumbers(int amount) {
+    private List<Lotto> makeLottoTickets(int amount) {
         List<Lotto> lottoNumbers = new ArrayList<>();
         for (int i = 0; i < amount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER_RANGE, MAX_NUMBER_RANGE, LOTTO_SIZE);
+            // TODO compare-To 로 sorting 가능한지 확인해보기
             List<Integer> unmodifiableList = Collections.unmodifiableList(numbers);
             List<Integer> newList = new ArrayList<>(unmodifiableList);
             Collections.sort(newList);
