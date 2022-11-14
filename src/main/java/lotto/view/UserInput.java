@@ -11,8 +11,8 @@ public class UserInput {
     private static final String WHITE_SPACE = "\\s";
     private static final String EMPTY = "";
     private static final int WINNING_NUMBER_COUNT = 6;
-
     private UserInputValidation userInputValidation;
+
     public UserInput() {
         this.userInputValidation = new UserInputValidation();
     }

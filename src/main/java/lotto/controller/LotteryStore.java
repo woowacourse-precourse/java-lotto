@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class LotteryStore {
     private static final int LIST_SIZE = 1024;
+    private static final int MAP_SIZE = 1024;
     private static final int WINNING_NUMBER_COUNT = 6;
     private static final int ZERO = 0;
     private static final int LOTTO_PRICE = 1000;
@@ -34,6 +35,7 @@ public class LotteryStore {
 
     public void buyLotto() {
         this.lottoCount = this.userInterface.getBuyLottoCount();
+
         for (int i = 0; i < lottoCount; ++i) {
             this.lottos.add(new Lotto(lottoCalculator.createLotto()));
         }
@@ -47,7 +49,6 @@ public class LotteryStore {
 
     public void inputWinningNumbers() {
         this.winningNumbers = this.userInterface.getWinningNumbers();
-
         if (this.winningNumbers.size() != this.winningNumbers.stream().distinct().count()) {
             throw new IllegalArgumentException(ERROR_WINNING_NUMBER_DUPLICATED);
         }
@@ -55,22 +56,15 @@ public class LotteryStore {
 
     public void inputBonusNumber() {
         this.bonusNumber = this.userInterface.getBonusNumber();
-
         if (this.winningNumbers.contains(this.bonusNumber)) {
             throw new IllegalArgumentException(ERROR_BONUS_NUMBER_DUPLICATED);
         }
     }
 
     public void outputResult() {
-        Map<LottoRankingType, Integer> lottoRankingTypes = this.lottoCalculator.getLottoRanking(this.winningNumbers, this.bonusNumber, this.lottos);
-
-        int totalAmount = getTotalWinningAmount(lottoRankingTypes);
-        double rateOfReturn = 0.0;
-        if (totalAmount != ZERO || this.lottos.size() != ZERO) {
-           rateOfReturn = (double) totalAmount / (double) (this.lottos.size() * LOTTO_PRICE) * RATE;
-        }
-
-        this.userInterface.printResult(lottoRankingTypes, rateOfReturn);
+        Map<LottoRankingType, Integer> lottoRankingTypes
+                = this.lottoCalculator.getRankings(this.winningNumbers, this.bonusNumber, this.lottos);
+        this.userInterface.printResult(lottoRankingTypes, getRateOfReturn(lottoRankingTypes));
     }
 
     private int getTotalWinningAmount(Map<LottoRankingType, Integer> lottoRankingTypes) {
@@ -80,7 +74,6 @@ public class LotteryStore {
         totalAmount += getWinningAmount(lottoRankingTypes, LottoRankingType.THIRD_PLACE);
         totalAmount += getWinningAmount(lottoRankingTypes, LottoRankingType.FOURTH_PLACE);
         totalAmount += getWinningAmount(lottoRankingTypes, LottoRankingType.FIFTH_PLACE);
-
         return totalAmount;
     }
 
@@ -88,7 +81,15 @@ public class LotteryStore {
         if (lottoRankingTypes.containsKey(lottoRankingType)) {
             return lottoRankingType.getWinningAmount() * lottoRankingTypes.get(lottoRankingType).intValue();
         }
-
         return ZERO;
+    }
+
+    private double getRateOfReturn(Map<LottoRankingType, Integer> lottoRankingTypes) {
+        int totalAmount = getTotalWinningAmount(lottoRankingTypes);
+        double rateOfReturn = 0.0;
+        if (totalAmount != ZERO && this.lottos.size() != ZERO) {
+            rateOfReturn = (double) totalAmount / (double) (this.lottos.size() * LOTTO_PRICE) * RATE;
+        }
+        return rateOfReturn;
     }
 }

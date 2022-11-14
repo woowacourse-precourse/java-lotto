@@ -17,16 +17,16 @@ public class LottoCalculator {
     public LottoCalculator() {
 
     }
+
     public List<Integer> createLotto() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public Map<LottoRankingType, Integer> getLottoRanking(List<Integer> winningNumbers, int bonusNumber, List<Lotto> lottos) {
+    public Map<LottoRankingType, Integer> getRankings(List<Integer> numbers, int bonusNumber, List<Lotto> lottos) {
         Map<LottoRankingType, Integer> lottoRankingTypes = new HashMap<>(MAP_SIZE);
         lottoRankingTypesInitialize(lottoRankingTypes);
-
         for (Lotto lotto : lottos) {
-            int winNumber = getWinNumberCount(winningNumbers, lotto);
+            int winNumber = getWinNumberCount(numbers, lotto);
             boolean winBonus = lotto.getNumbers().contains(bonusNumber);
             LottoRankingType lottoRankingType = getLottoRanking(winNumber, winBonus);
 
@@ -34,6 +34,7 @@ public class LottoCalculator {
         }
         return lottoRankingTypes;
     }
+
 
     private void lottoRankingTypesInitialize(Map<LottoRankingType, Integer> lottoRankingTypes) {
         lottoRankingTypes.put(LottoRankingType.FIRST_PLACE, 0);

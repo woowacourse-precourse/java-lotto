@@ -79,6 +79,7 @@ public class UserOutput {
                 , count
                 , System.lineSeparator());
     }
+
     private void fourthPlaceHistory(int count) {
         System.out.printf(OUTPUT_WINNING_HISTORY
                 , LottoRankingType.FOURTH_PLACE.getMatchedNumberCount()
