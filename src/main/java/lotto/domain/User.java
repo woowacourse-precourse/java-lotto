@@ -29,7 +29,7 @@ public class User {
         for (Map.Entry<Ranking, Integer> entry : numberOfLottosByRank.entrySet()) {
             winnings += (long) entry.getKey().getReward() * entry.getValue();
         }
-        return (double) winnings / amountOfMoney;
+        return (double) winnings / amountOfMoney * 100;
     }
 
     public List<Lotto> getLottos() {
