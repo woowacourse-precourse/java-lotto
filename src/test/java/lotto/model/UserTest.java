@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
     @ParameterizedTest
-    @CsvSource(value = {"8000, 8", "6000, 6", "100000, 100"})
+    @CsvSource(value = {"8000, 8", "6000, 6", "100000, 100", "1000000, 1000"})
     public void 구매금액만큼_로또생성(String userInput, int expected){
         User user = new User(userInput);
         user.createUserLottos();
