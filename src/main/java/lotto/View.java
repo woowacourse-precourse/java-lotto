@@ -42,7 +42,7 @@ public class View {
             throw new IllegalArgumentException("[ERROR] 당첨번호 총 6개를 입력해야 합니다");
         }
     }
-    private void validateBonusNumberInput(List<Integer> numbers, int bonus) {
+    private void validateUniqueBonusNumberInput(List<Integer> numbers, int bonus) {
         if (numbers.contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자만 입력이 가능합니다");
         }
