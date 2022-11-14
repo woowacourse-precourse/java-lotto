@@ -1,7 +1,7 @@
-package lotto.ui;
+package lotto.presentation;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.ExceptionHandler;
+import lotto.domain.ExceptionHandler;
 import lotto.data.InputForm;
 
 import java.util.Arrays;
