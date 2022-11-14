@@ -21,9 +21,9 @@ public class LottoSystem {
     }
 
 
-    public WinInfo judgeWin(List<Integer> target) {
-        int matchedCnt = getMatchedCnt(target);
-        int bonusMatchedCnt = getBonusMatchedCnt(target);
+    public WinInfo judgeWin(Lotto target) {
+        int matchedCnt = getMatchedCnt(target.getNumbers());
+        int bonusMatchedCnt = getBonusMatchedCnt(target.getNumbers());
 
         return WinInfo.get(matchedCnt, bonusMatchedCnt);
     }
