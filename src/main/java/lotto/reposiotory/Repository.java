@@ -23,6 +23,10 @@ public class Repository {
         list.addAll(lottos);
     }
 
+    public void removeAll(){
+        list.clear();
+    }
+
 
     public List<Lotto> findAll() {
         return Collections.unmodifiableList(list);

@@ -24,7 +24,7 @@ public class Lotto {
     // TODO: 추가 기능 구현
 
     private boolean hasOverRangeNumber(List<Integer> numbers) {
-        return numbers.stream().filter(i -> i < LOTTO_MIN_NUMBER).filter(i -> LOTTO_MAX_NUMBER < i).count() != 0;
+        return numbers.stream().filter(i -> i < LOTTO_MIN_NUMBER || LOTTO_MAX_NUMBER<i).count() != 0;
     }
 
     private boolean hasDuplicatedNumber(List<Integer> numbers) {
