@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static java.lang.Integer.parseInt;
+
 import java.util.ArrayList;
 import java.util.List;
 import lotto.view.Input;
@@ -18,15 +20,27 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-    // TODO: 추가 기능 구현
-    public static List<Integer> inputWinningNumbers() {
+
+
+    public static List<Integer> getWinningNumbers() {
+        //중복,1~45 조건 필요
+        String inputWinningNumbers = Input.input();
         List<Integer> winningNumbers = new ArrayList<>();
-        String inputNumbers = Input.input();
-        String[] lucky = inputNumbers.split(",");
-        for (String s : lucky) {
-            winningNumbers.add(Integer.parseInt(s));
+
+        String[] inputNumbersArray = inputWinningNumbers.split(",");
+        for (String s : inputNumbersArray) {
+            winningNumbers.add(parseInt(s));
         }
+
         new Lotto(winningNumbers);
+
         return winningNumbers;
     }
+
+    public static Integer getBonusNumber() {
+        //중복, 1~45 조건 필요
+        String inputBonusNumber = Input.input();
+        return parseInt(inputBonusNumber);
+    }
+
 }

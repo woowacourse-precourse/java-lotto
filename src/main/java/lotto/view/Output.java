@@ -1,5 +1,7 @@
 package lotto.view;
 
+import static lotto.util.Constant.REQUESTBONUSNUMBKER;
+
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Check;
@@ -11,13 +13,22 @@ public class Output {
         System.out.println(Constant.GAMESTART);
     }
 
-    public static void countLotto(String payMoney) {
-        System.out.println(Check.countBuyLotto(payMoney) + Constant.COUNTBUYLOTTO);
-    }
-
     public static void informationOnPurchasedLottoNumbers(List<List<Integer>> purchasedLotto) {
+        System.out.println(purchasedLotto.size() + Constant.COUNTBUYLOTTO);
         for (List<Integer> lotto : purchasedLotto) {
             System.out.println(lotto);
         }
+    }
+
+    public static void requestInputNumber() {
+        System.out.println(Constant.REQUESTWINNINGNUMBER);
+    }
+
+    public static void informationOnWinningNumber(List<Integer> winningNumbers) {
+        System.out.println(winningNumbers);
+    }
+
+    public static void requestBonusNumber() {
+        System.out.println(REQUESTBONUSNUMBKER);
     }
 }

@@ -9,12 +9,15 @@ import lotto.view.Output;
 public class GameProcess {
     public static void gameStart() {
         Output.gameStart();
-        String payMoney = Input.input();
-        int countPurchasing = Service.inputMoney(payMoney);
-        List<List<Integer>> purchasedLottos = Service.makeLottoByRandomNumbers(countPurchasing);
-        Output.informationOnPurchasedLottoNumbers(purchasedLottos);
-//        Output.informationOnPurchasedLottoNumbers(countPurchasing);
-//        String inputUserNumber = Input.input();
-//        Lotto.inputWinningNumbers();
+
+        int countPurchasing = Service.inputMoney();
+        List<List<Integer>> purchasedLotteries = Service.makeLottoByRandomNumbers(countPurchasing);
+        Output.informationOnPurchasedLottoNumbers(purchasedLotteries);
+
+        Output.requestInputNumber();
+        Lotto.getWinningNumbers();
+
+        Output.requestBonusNumber();
+        Lotto.getBonusNumber();
     }
 }
