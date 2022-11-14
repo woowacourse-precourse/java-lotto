@@ -56,7 +56,7 @@
 *****
 ### 🟧 controller package
 **LottoController**
->- [ ] 사용자가 로또를 구매하는 기능 ( inputUserMoney )
+>- [x] 사용자가 로또를 구매하는 기능 ( inputUserMoney )
 >- [ ] 구매된 로또 번호를 보여주는 기능 ( printLottoNumber )
 >- [ ] 당첨번호를 입력하는 기능 ( inputWinningNumber )
 >- [ ] 보너스 번호를 입력받는 기능 ( inputBonusNumber )
