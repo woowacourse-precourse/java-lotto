@@ -54,7 +54,9 @@ public class Buyer {
         lottoResult.put(Rank.THIRD, 0);
         lottoResult.put(Rank.FOURTH, 0);
         lottoResult.put(Rank.FIFTH, 0);
-        lottoResult.put(Rank.NO_RANK, 0);
+        lottoResult.put(Rank.NO_RANK_TWO, 0);
+        lottoResult.put(Rank.NO_RANK_ONE, 0);
+        lottoResult.put(Rank.NO_RANK_ZERO, 0);
     }
 
     private void validatePurchaseAmount(int amount) {

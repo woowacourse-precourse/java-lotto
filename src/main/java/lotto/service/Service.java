@@ -58,11 +58,10 @@ public class Service {
     private Rank determineLottoRank(LottoGame lottoGame, Lotto lotto) {
         int correctCount = countCorrectLottoNumbers(lottoGame, lotto);
         boolean correctBonusNumber = containsBonusNumber(lottoGame, lotto);
-        for (Rank rank : Rank.values()) {
-            if (correctCount == rank.getCount() && correctBonusNumber == rank.getIsBonus()) {
-                return rank;
-            }
+        Rank rank = Rank.values()[correctCount];
+        if(rank==Rank.THIRD && correctBonusNumber){
+            return Rank.SECOND;
         }
-        return Rank.NO_RANK;
+        return rank;
     }
 }
