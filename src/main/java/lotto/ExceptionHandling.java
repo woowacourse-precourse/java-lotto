@@ -40,4 +40,11 @@ public class ExceptionHandling {
         }
     }
 
+    public void containsBonusNumber(List<Integer> winNumbers, int bonusNumber){
+        if(winNumbers.contains(bonusNumber)){
+            ShowErrorMessage.showContainsBonusNumber();
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
