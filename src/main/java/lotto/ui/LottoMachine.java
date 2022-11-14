@@ -17,15 +17,17 @@ public class LottoMachine {
 
     public void start() {
         purchaseLottos();
-        System.out.println("\n" + "당첨 번호를 입력해주세요.");
+        Printer.printPurchasedLottos(lottos);
+        Printer.requestWinningNumber();
         List<Integer> winningNumbers = scanner.scanWinningNumbers();
 
-        System.out.println("\n" + "보너스 번호를 입력해주세요.");
+        Printer.requestBonusNumber();
         int bonusNumber = scanner.scanBonusNumber();
     }
 
     private void purchaseLottos() {
         int lottoCount = scanner.scanPurchaseAmount();
+        Printer.requestLottoCount(lottoCount);
         NumberGenerator numberGenerator = new NumberGenerator();
         for (int i = 0; i < lottoCount; i++) {
             Lotto lotto = new Lotto(numberGenerator.createRandomNumbers());
