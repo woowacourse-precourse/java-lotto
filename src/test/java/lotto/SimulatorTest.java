@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueN
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.math.BigInteger;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -245,5 +246,26 @@ public class SimulatorTest {
         assertThat(Rank.valueOfRank(3).getWinningPrice()).isEqualTo(1_500_000);
         assertThat(Rank.valueOfRank(4).getWinningPrice()).isEqualTo(50_000);
         assertThat(Rank.valueOfRank(5).getWinningPrice()).isEqualTo(5_000);
+    }
+
+    @DisplayName("누적 등수를 누적 금액으로 환산하기 - 1")
+    @Test
+    void convertTotalWinsToTotalWinningPriceCase1() {
+        List<Integer> wins = List.of(0, 0, 2, 1, 1);
+        assertThat(Simulator.calculateTotalWinningPrice(wins)).isEqualTo(3_055_000);
+    }
+
+    @DisplayName("누적 등수를 누적 금액으로 환산하기 - 2")
+    @Test
+    void convertTotalWinsToTotalWinningPriceCase2() {
+        List<Integer> wins = List.of(5, 4, 0, 0, 1);
+        assertThat(Simulator.calculateTotalWinningPrice(wins)).isEqualTo(new BigInteger("10120005000"));
+    }
+
+    @DisplayName("누적 등수를 누적 금액으로 환산하기 - 3")
+    @Test
+    void convertTotalWinsToTotalWinningPriceCase3() {
+        List<Integer> wins = List.of(0, 0, 3, 54, 214);
+        assertThat(Simulator.calculateTotalWinningPrice(wins)).isEqualTo(8_270_000);
     }
 }
