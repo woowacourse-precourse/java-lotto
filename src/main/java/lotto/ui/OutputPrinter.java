@@ -3,6 +3,7 @@ package lotto.ui;
 import lotto.domain.WinningNumbers;
 
 import java.text.DecimalFormat;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ public class OutputPrinter {
         System.out.println(bundleSize + "개를 구매했습니다.");
 
         for (List<Integer> singleLotto : lottoBundle) {
+            Collections.sort(singleLotto);
             System.out.println(singleLotto);
         }
     }
@@ -29,7 +31,7 @@ public class OutputPrinter {
             WinningNumbers key = allWinningNumbers[winningNumberIndex];
             int matches = key.getMatch();
             long reward = key.getReward();
-            long winningCounter = winningCase.get(key);
+            long winningCounter = winningCase.getOrDefault(key, 0L);
             DecimalFormat commaInMoney = new DecimalFormat("###,###");
 
             System.out.println(matches + "개 일치 (" + commaInMoney.format(reward) + "원) - " + winningCounter + "개");
