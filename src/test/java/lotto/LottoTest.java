@@ -62,5 +62,12 @@ class LottoTest {
         assertThat(winningNumberToList.winNumbers).isEqualTo(lst);
     }
 
+    @DisplayName("당첨 번호를 비교한 뒤 일치하는 수에 대해 문자열로 저장하도록 함")
+    @Test
+    void winningNumbersCheckTest() {
+        LottoCheck lottoCheck = new LottoCheck(List.of(List.of(1,2,3,4,5,7)), List.of(1,2,3,4,5,6), 7);
+
+        assertThat(lottoCheck.checkRank).isEqualTo(List.of("5+"));
+    }
 
 }
