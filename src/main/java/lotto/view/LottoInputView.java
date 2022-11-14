@@ -9,7 +9,9 @@ import static lotto.model.InputErrorMessage.INVALID_LOTTO_NUMBERS;
 import static lotto.model.InputErrorMessage.MONEY_IS_NOT_DIVIDED;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import lotto.model.Constant;
 
 public class LottoInputView {
@@ -26,10 +28,11 @@ public class LottoInputView {
         return userLottoMoney;
     }
 
-    public String getLottoNumber() {
+    public List<Integer> getLottoNumber() {
         System.out.println(INPUT_LOTTO_NUMBER);
-        String lottoNumbers = Console.readLine();
-        validateInputIsNumberFormat(lottoNumbers);
+        String lottoNumberInput = Console.readLine();
+        validateInputIsNumberFormat(lottoNumberInput);
+        List<Integer> lottoNumbers = toListInteger(lottoNumberInput);
         return lottoNumbers;
     }
 
@@ -69,6 +72,15 @@ public class LottoInputView {
 
     public int toInt(String checkedInput) {
         int result =  Integer.parseInt(checkedInput);
+        return result;
+    }
+
+    private List<Integer> toListInteger(String checkedInput) {
+        String[] lottoNumbers = checkedInput.split(",");
+        List<Integer> result = new ArrayList<>();
+        for(String lottoNumber: lottoNumbers) {
+            result.add(Integer.valueOf(lottoNumber));
+        }
         return result;
     }
 
