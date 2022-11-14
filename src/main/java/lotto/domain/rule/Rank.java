@@ -1,7 +1,6 @@
 package lotto.domain.rule;
 
 import java.util.Arrays;
-import java.util.function.Function;
 
 public enum Rank {
     FIRST(1, 6, false, 2_000_000_000),
@@ -12,13 +11,13 @@ public enum Rank {
     FAIL(-1, -1, false, 0);
 
     private final int rank;
-    private final int matchedNumber;
+    private final int matchingCount;
     private final boolean hasBonusNumber;
     private final int winnings;
 
     Rank(int rank, int matchedNumber, boolean hasBonusNumber, int winnings) {
         this.rank = rank;
-        this.matchedNumber = matchedNumber;
+        this.matchingCount = matchedNumber;
         this.hasBonusNumber = hasBonusNumber;
         this.winnings = winnings;
     }
@@ -31,15 +30,15 @@ public enum Rank {
     }
 
     private static boolean rankConditionFilter(Rank rank, int matchedNumber, boolean hasBonusNumber) {
-        return rank.matchedNumber == matchedNumber &&
+        return rank.matchingCount == matchedNumber &&
                 (!rank.hasBonusNumber || hasBonusNumber);
     }
 
-    public int getMatchedNumber() {
-        return matchedNumber;
+    public int getMatchingCount() {
+        return matchingCount;
     }
 
-    public boolean isHasBonusNumber() {
+    public boolean hasBonusNumber() {
         return hasBonusNumber;
     }
 

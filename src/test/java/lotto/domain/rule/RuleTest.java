@@ -32,7 +32,7 @@ class RuleTest {
         WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6", "7");
 
         Rule rule = new Rule();
-        Map<Rank, Long> lottoResults = rule.getLottoResults(lottoGroup, winningNumber);
+        Map<Rank, Integer> lottoResults = rule.getLottoResults(lottoGroup, winningNumber);
 
         assertAll(
                 () -> assertThat(lottoResults.get(Rank.FIRST)).isEqualTo(1),

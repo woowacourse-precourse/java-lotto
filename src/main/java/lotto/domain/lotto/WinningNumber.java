@@ -62,7 +62,7 @@ public class WinningNumber {
         return lottoNumbers.getMatchCount(lotto);
     }
 
-    private List<String> getSplitLottoNumber(String lottoNumbers) {
+    private static List<String> getSplitLottoNumber(String lottoNumbers) {
         return Arrays.asList(lottoNumbers.split(",", -1));
     }
 }
