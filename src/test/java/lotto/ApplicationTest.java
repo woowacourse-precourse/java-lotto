@@ -73,6 +73,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 천원_단위_입력_테스트() {
+        assertSimpleTest(() -> {
+            runException("2001");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
 
     @Override
     public void runMain() {
