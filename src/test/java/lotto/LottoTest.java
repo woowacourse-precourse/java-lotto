@@ -125,5 +125,19 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("입력된 보너스 번호에 중복 숫자가 존재하면 예외가 발생한다.")
+    @Test
+    void inputWinningNumbersDuplicated() {
+        // given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 5);
+        int bonusNumber = 6;
+
+        // when
+        Lotto winningNumber = new Lotto(winningNumbers);
+
+        // then
+        assertThatThrownBy(() -> new WinningNumbers(winningNumber, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }

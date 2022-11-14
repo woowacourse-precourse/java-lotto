@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
+import java.util.stream.Collectors;
+
 public class WinningNumbers {
 
   private final Lotto winningNumber;
@@ -20,21 +23,28 @@ public class WinningNumbers {
   }
 
   public void validate(Lotto winningNumber, int bonusNumber) {
-    isDuplicated(winningNumber, bonusNumber);
+    isDuplicatedWinningNum(winningNumber);
+    isDuplicatedBonusNum(winningNumber, bonusNumber);
     for (int number: winningNumber.getNumbers()) {
       isBetween(number);
     }
   }
 
-  public void isDuplicated(Lotto winningNumber, int bonusNumber) {
+  public void isDuplicatedWinningNum(Lotto winningNumber) {
+    if (new HashSet<>(winningNumber.getNumbers()).size() != winningNumber.getNumbers().size()) {
+      throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복 숫자가 없습니다.");
+    }
+  }
+
+  public void isDuplicatedBonusNum(Lotto winningNumber, int bonusNumber) {
     if (winningNumber.getNumbers().contains(bonusNumber)) {
-      throw new IllegalArgumentException("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+      throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
     }
   }
 
   public void isBetween(int number) {
     if (number < 1 || number > 45) {
-      throw new IllegalArgumentException("로또 번호는 1~45 내에 있어야 합니다.");
+      throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 내에 있어야 합니다.");
     }
   }
 
