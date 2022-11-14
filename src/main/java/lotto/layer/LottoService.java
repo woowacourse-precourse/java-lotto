@@ -13,6 +13,7 @@ import lotto.domain.WinningLotto;
 
 public class LottoService {
 
+    private static final String ERROR_DUPLICATE = "당첨 번호와 보너스 번호는 중복될 수 없습니다.";
     Table table;
 
     public LottoService(Table table) {
@@ -34,6 +35,7 @@ public class LottoService {
     }
 
     public Map<WinningLotto, Integer> getWinningLottoFrequency(Lotto commonLotto, LottoNumber bonusNumber) {
+        validateDuplicate(commonLotto, bonusNumber);
         List<Lotto> lotteries = table.getLotteries();
         Map<WinningLotto, Integer> frequency = initWinningLotto();
         for (Lotto lotto : lotteries) {
@@ -45,6 +47,12 @@ public class LottoService {
         }
         table.saveFrequency(frequency);
         return frequency;
+    }
+
+    private void validateDuplicate(Lotto commonLotto, LottoNumber bonusNumber) {
+        if (commonLotto.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ERROR_DUPLICATE);
+        }
     }
 
     public double getBenefitRate() {
