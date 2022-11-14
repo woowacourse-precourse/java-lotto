@@ -49,8 +49,9 @@ public class View {
     }
     public int getMoneyInput() {
         String moneyString = Console.readLine();
+        int money;
         validateIsNumber(moneyString);
-        int money = Integer.parseInt(moneyString);
+        money = Integer.parseInt(moneyString);
         validateIsDivisible(money);
         return money;
     }
