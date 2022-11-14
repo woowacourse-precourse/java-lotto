@@ -9,4 +9,12 @@ public class RankCalculator {
                 .filter(lotto::contains)
                 .count();
     }
+
+    private boolean haveBonusNumber(List<Integer> numbers, int count, int bonusNumber) {
+        if (count == 5) {
+            return numbers.contains(bonusNumber);
+        }
+        return false;
+    }
+
 }
