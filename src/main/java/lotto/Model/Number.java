@@ -1,6 +1,7 @@
-package lotto;
+package lotto.Model;
 
-import lotto.View;
+import lotto.Utils.Validator.Validation;
+import lotto.View.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class Number {
         return bonusNumber;
     }
     private List<Integer> inputNumber() {
-        View.winNumber();
+        InputView.winNumber();
         String[] inputString = Console.readLine().split(",");
         for(String str : inputString){
             Validation.Integer(str);
@@ -32,7 +33,7 @@ public class Number {
         return Validation.stringArrayToIntegerList(inputString);
     }
     public int inputBonusNumber() {
-        View.BonusNumber();
+        InputView.BonusNumber();
         String bonus = Console.readLine();
         Validation.Integer(bonus);
         Validation.validateRange(bonus);

@@ -1,5 +1,12 @@
 package lotto;
 
+import lotto.Controller.Generator;
+import lotto.Controller.Match;
+import lotto.Model.Lotto;
+import lotto.Model.Number;
+import lotto.Model.Price;
+import lotto.View.OutputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +22,10 @@ public class Application {
             Generator generator =new Generator();
             Match match = new Match(lotto.getLottoNumbers(), generator.getlottoNumbers(), num.getBonusNumber());
             moneyList.add(match.getResults());
-            View.lottoNumber(generator.getlottoNumbers());
+            OutputView.lottoNumber(generator.getlottoNumbers());
         }
-        View.prizes(moneyList);
-        View.yield(calculateYield(price.getInputPrice(), moneyList.stream().reduce(Integer::sum).get()));
+        OutputView.prizes(moneyList);
+        OutputView.yield(calculateYield(price.getInputPrice(), moneyList.stream().reduce(Integer::sum).get()));
     }
 
     public static float calculateYield(int price, int income){
