@@ -100,6 +100,7 @@ public class User {
 
     public int bonusNumberInput() {
         String input = readLine();
+        validBonusNumberIsNumber(input);
         validBonusNumberRange(Integer.parseInt(input));
         return Integer.parseInt(input);
     }
@@ -115,6 +116,13 @@ public class User {
         if (bonusNumber > 45 || bonusNumber < 0) {
             System.out.println(Error.RANGE_ERROR.getErrorMessage());
             throw new IllegalArgumentException("1~45 사이의 숫자만 입력 가능합니다.");
+        }
+    }
+
+    private void validBonusNumberIsNumber(String input) {
+        if (!NUMBER_PATTERN.matcher(input).matches()) {
+            System.out.println(Error.IS_NOT_NUMBER.getErrorMessage());
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
         }
     }
 }
