@@ -1,9 +1,9 @@
-package domain;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static util.ExceptionHandler.validateInputtedMoney;
-import static util.ExceptionHandler.validateMoney;
+import static lotto.util.ExceptionHandler.validateInputtedMoney;
+import static lotto.util.ExceptionHandler.validateMoney;
 
 public class Money {
     private int money;

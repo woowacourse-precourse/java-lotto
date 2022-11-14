@@ -1,10 +1,10 @@
-package domain;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import static values.Constants.Digit.*;
+import static lotto.values.Constants.Digit.*;
 
 public class Rank {
     private final LinkedHashMap<Integer, Integer> ranking;

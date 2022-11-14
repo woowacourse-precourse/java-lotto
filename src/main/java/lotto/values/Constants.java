@@ -1,4 +1,4 @@
-package values;
+package lotto.values;
 
 public class Constants {
     public static class Console {

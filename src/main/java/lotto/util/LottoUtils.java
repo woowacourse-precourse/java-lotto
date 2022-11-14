@@ -1,18 +1,18 @@
-package util;
+package lotto.util;
 
 import camp.nextstep.edu.missionutils.Console;
-import domain.Lotto;
-import domain.Money;
-import domain.Rank;
+import lotto.domain.Lotto;
+import lotto.domain.Money;
+import lotto.domain.Rank;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 
-import static values.Constants.Console.TOTAL_PROFIT_PERCENT_MESSAGE;
-import static values.Constants.Digit.*;
-import static values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
+import static lotto.values.Constants.Console.TOTAL_PROFIT_PERCENT_MESSAGE;
+import static lotto.values.Constants.Digit.*;
+import static lotto.values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
 
 public class LottoUtils {
 

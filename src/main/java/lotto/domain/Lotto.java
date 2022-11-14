@@ -1,15 +1,15 @@
-package domain;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import util.LottoUtils;
+import lotto.util.LottoUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static util.ExceptionHandler.validateBonusNumber;
-import static util.ExceptionHandler.validateLottoNumbers;
+import static lotto.util.ExceptionHandler.validateBonusNumber;
+import static lotto.util.ExceptionHandler.validateLottoNumbers;
 
 public class Lotto {
     private final List<Integer> numbers;
