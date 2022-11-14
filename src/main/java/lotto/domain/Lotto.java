@@ -19,7 +19,7 @@ public class Lotto {
 
     public LottoRank getRank(WinningNumber winningNumber) {
         return Arrays.stream(LottoRank.values())
-                .filter(lottoRank -> lottoRank.equal(getHitCount(winningNumber), isHitBonusNumber(winningNumber)))
+                .filter(lottoRank -> lottoRank.isEqual(getHitCount(winningNumber), isHitBonusNumber(winningNumber)))
                 .findAny().orElse(LottoRank.NOTHING);
     }
 
@@ -34,7 +34,7 @@ public class Lotto {
                 .anyMatch(winningNumber::isEqualToBonusNumber);
     }
 
-    public List<Integer> getSortedByAscend() {
+    public List<Integer> getSortedByAscendNumbers() {
         return numbers.stream()
                 .sorted(Comparator.comparing(Integer::valueOf))
                 .collect(Collectors.toList());

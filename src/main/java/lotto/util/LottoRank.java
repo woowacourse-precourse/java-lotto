@@ -18,8 +18,8 @@ public enum LottoRank {
         this.prizeMoney = prizeMoney;
     }
 
-    public boolean equal(int hitCount, boolean hitBonus) {
-        if (this.hitCount == hitCount && hitCount != 5) {
+    public boolean isEqual(int hitCount, boolean hitBonus) {
+        if (this.hitCount == hitCount && SECOND_PLACE.hitCount != hitCount) {
             return true;
         }
 
