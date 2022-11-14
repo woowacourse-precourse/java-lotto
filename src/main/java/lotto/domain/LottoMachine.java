@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.constant.ErrorMessage;
 import lotto.ui.UserInterface;
 
 public class LottoMachine {
@@ -25,7 +26,7 @@ public class LottoMachine {
         if (isMultipleOf1000) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] 1,000의 배수가 아닙니다.");
+        throw new IllegalArgumentException(ErrorMessage.LOTTO_MACHINE_NOT_MULTIPLE_OF_1000);
     }
 
     private static int getCountOfLottos(int inputMoney) {
