@@ -1,23 +1,13 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.domain.lotto.domain.Lotto;
-import lotto.domain.lotto.presentation.LottoController;
-import lotto.global.util.Util;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -59,44 +49,9 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
-            assertThat(output().contains(ERROR_MESSAGE));
+            runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
         });
-    }
-
-    @DisplayName("게임 시작 문구 출력")
-    @Test
-    void printGameStart() {
-        assertThat(output().contains("구입금액을 입력해 주세요."));
-    }
-
-    @DisplayName("1000원을 투자하고 숫자 4개 일치시 수익률은 50000.00%이다.")
-    @Test
-    void isBenefit5000Percent() {
-        // given
-        LottoController lottoController = new LottoController();
-        List<Lotto> lottos = new ArrayList<>();
-        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-        Lotto prizeLotto = new Lotto(List.of(1, 2, 3, 4, 21, 22));
-        int bonusNumber = 44;
-
-        // when
-        Double benefit = lottoController.compareNumbers(lottos, prizeLotto, bonusNumber);
-
-        // then
-        assertEquals(benefit, 50000.00);
-    }
-
-    @DisplayName("로또 숫자 입력시 오름차순 정렬이 되야한다.")
-    @Test
-    void test() {
-        // given
-        List<Integer> numbers = new ArrayList<>(List.of(6, 5, 4, 3, 2, 1));
-
-        // when
-        List<Integer> orderByAscNumbers = Util.orderByDescForList(numbers);
-
-        // then
-        assertEquals(orderByAscNumbers, List.of(1, 2, 3, 4, 5, 6));
     }
 
     @Override

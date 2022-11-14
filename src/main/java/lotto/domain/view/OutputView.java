@@ -3,6 +3,7 @@ package lotto.domain.view;
 import lotto.domain.lotto.domain.Lotto;
 import lotto.domain.lotto.domain.type.OutputResult;
 import lotto.global.constant.OutputViewConstants;
+import lotto.global.constant.VerifierConstants;
 import lotto.global.util.Util;
 
 import java.text.DecimalFormat;
@@ -119,5 +120,9 @@ public class OutputView {
     public static void printGrossEarnings(double grossEarnings) {
         DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_FORMATTER);
         System.out.println("총 수익률은 " + decimalFormat.format(grossEarnings) + "%입니다.");
+    }
+
+    public static void printError(String message) {
+        System.out.println(VerifierConstants.ERROR + message);
     }
 }
