@@ -23,7 +23,7 @@
 - [x] 당첨 순위에 해당하는 일치개수를 가져온다. LottoRank#getSameCount()
 - [x] 당첨 순위에 해당하는 당첨금을 가져온다. LottoRank#getPrizeMoney()
 - [x] 로또 순위를 가져온다. LottoRank#getRank()
-- [ ] 2등인지 확인한다. LottoRank#isSecond()
+- [ ] 3등인지 확인한다. LottoRank#isThird()
 - [x] 수익률을 가져온다. Profit#getPercentageProfit()
   - [x] 수익률을 계산한다. Profit#calculatePercentageProfit()
 - [x] "구입금액을 입력해 주세요." 출력한다. RequestView#displayEnterPurchaseAmount()
