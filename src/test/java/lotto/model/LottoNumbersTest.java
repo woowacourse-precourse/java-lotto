@@ -21,7 +21,7 @@ class LottoNumbersTest {
         assertThat(lottoNumbers.contains(lotto)).isTrue();
     }
 
-    @DisplayName("자동 생성 로또를 수량 만큼 추가")
+    @DisplayName("자동 생성 로또를 수량만큼 추가")
     @Test
     void add_random_lotto() {
         LottoNumbers lottoNumbers = new LottoNumbers();
@@ -32,7 +32,7 @@ class LottoNumbersTest {
         assertThat(lottoNumbers.getLottoQuantity()).isEqualTo(8);
     }
 
-    @DisplayName("당첨 로또와 보너스번호를 받고 수익 계산")
+    @DisplayName("당첨 로또와 보너스 번호를 받고 수익 계산")
     @Test
     void get_Profit_Sum() {
         LottoNumbers lottoNumbers = new LottoNumbers();

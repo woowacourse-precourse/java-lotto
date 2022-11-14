@@ -20,7 +20,7 @@ public class User {
     }
 
     public float getProfitRage(Lotto targetLotto, int bonusNumber) {
-        return lottoNumbers.getProfitSum(targetLotto,bonusNumber) * PERCENTAGE_CONVERSION_NUMBER / usedMoney;
+        return lottoNumbers.getProfitSum(targetLotto, bonusNumber) * PERCENTAGE_CONVERSION_NUMBER / usedMoney;
     }
 
     public String getPurchaseDetails() {

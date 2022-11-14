@@ -10,7 +10,7 @@ import java.util.List;
 public class InputValidator {
 
     public static final String INPUT_BONUS_NUMBER_ERROR = "[ERROR] 정확한 보너스 번호가 아닙니다.";
-    public static final String INPUT_MONEY_ERROR = "[ERROR] 정확한 금액을 입력해주세요.";
+    public static final String INPUT_MONEY_ERROR = "[ERROR] 정확한 금액을 입력해 주세요.";
     public static final int INPUT_MONEY_REST = 0;
     public static final String INPUT_LOTTO_TYPE = "^([1-9][0-9]*)(,[1-9][0-9]*){5}$";
 

@@ -12,14 +12,14 @@ import org.junit.jupiter.api.Test;
 
 class InputValidatorTest {
 
-    @DisplayName("입력한 보너스 로또 번호 예외발생시 false반화")
+    @DisplayName("입력한 보너스 로또 번호 예외 발생 시 false 반환")
     @Test
-    void is_valid_bonus_number(){
+    void is_valid_bonus_number() {
         assertThat(InputValidator.isValidBonusNumber(new Lotto(List.of(17, 2, 3, 4, 5, 6)), "17")).isFalse();
         assertThat(InputValidator.isValidBonusNumber(new Lotto(List.of(17, 2, 3, 4, 5, 6)), "18")).isTrue();
     }
 
-    @DisplayName("보너스 로또 번호 포함 예외처리")
+    @DisplayName("보너스 로또 번호 포함 예외 처리")
     @Test
     void is_contains_bonus_number() {
         assertThatThrownBy(
@@ -30,7 +30,7 @@ class InputValidatorTest {
 
     }
 
-    @DisplayName("보너스 로또 번호 범위초과 예외처리")
+    @DisplayName("보너스 로또 번호 범위 초과 예외 처리")
     @Test
     void is_valid_bonus_number_range() {
 
@@ -44,7 +44,7 @@ class InputValidatorTest {
         assertThatCode(() -> InputValidator.isValidBonusNumberRange(1)).doesNotThrowAnyException();
     }
 
-    @DisplayName("입력한 금액 예외처리")
+    @DisplayName("입력한 금액 예외 처리")
     @Test
     void is_valid_money() {
         assertThatThrownBy(() -> InputValidator.isValidDigit("100hh")).isInstanceOf(IllegalArgumentException.class)
@@ -57,9 +57,9 @@ class InputValidatorTest {
                 .hasMessage(INPUT_MONEY_ERROR);
     }
 
-    @DisplayName("롯도 당첨 번호 잘못 입력시 false 반화")
+    @DisplayName("로또 당첨 번호 잘못 입력 시 false 반화")
     @Test
-    void is_valid_input(){
+    void is_valid_input() {
         assertThat(InputValidator.isValidTargetLottoNumbers("1,2,3,4,5")).isFalse();
         assertThat(InputValidator.isValidTargetLottoNumbers("1fdaf")).isFalse();
         assertThat(InputValidator.isValidTargetLottoNumbers("1,2,3,4,5,6")).isTrue();

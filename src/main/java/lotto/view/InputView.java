@@ -12,17 +12,17 @@ public class InputView {
 
     }
 
-    public static String requestInputMoney(){
+    public static String requestInputMoney() {
         System.out.println(REQUEST_INPUT_MONEY);
         return Console.readLine();
     }
 
-    public static String requestInputTargetLottoNumbers(){
+    public static String requestInputTargetLottoNumbers() {
         System.out.println(REQUEST_INPUT_TARGET_LOTTO_NUMBERS);
         return Console.readLine();
     }
 
-    public static String requestBonusNumber(){
+    public static String requestBonusNumber() {
         System.out.println(REQUEST_BONUS_NUMBER);
         return Console.readLine();
     }

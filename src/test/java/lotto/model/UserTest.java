@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class UserTest {
 
-    @DisplayName("수량 만큼 로또 생성 및 추가")
+    @DisplayName("수량만큼 로또 생성 및 추가")
     @Test
     void add_lotto() {
         User user = new User();

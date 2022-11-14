@@ -65,7 +65,7 @@ enum LottoStatus {
         public static final int MATCH_FIVE_PROFIT = 1_500_000;
         public static final int MATCH_FIVE_ADD_BONUS_PROFIT = 30_000_000;
         public static final int MATH_SIX_PROFIT = 2_000_000_000;
-        public static final String MATH_UNSATISFIED_DESCRIPTION = "일치 수량 부족";
+        public static final String MATH_UNSATISFIED_DESCRIPTION = "일치 수량 부족합니다.";
         public static final String MATCH_TREE_DESCRIPTION = "3개 일치 (5,000원)";
         public static final String MATCH_FOUR_DESCRIPTION = "4개 일치 (50,000원)";
         public static final String MATCH_FIVE_DESCRIPTION = "5개 일치 (1,500,000원)";

@@ -3,6 +3,7 @@ package lotto.model;
 import static lotto.model.LottoStatus.Constants.MATCH_FIVE_ADD_BONUS_VALUE;
 import static lotto.model.LottoStatus.Constants.MATCH_FIVE_VALUE;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,7 +12,9 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        if (!LottoValidator.isValid(numbers)) {
+            numbers = Collections.emptyList();
+        }
         this.numbers = numbers;
     }
 
@@ -19,11 +22,6 @@ public class Lotto {
         return new Lotto(RandomNumbersGenerator.creatSixDifferentNumbers());
     }
 
-    private void validate(List<Integer> numbers) {
-        if (!LottoValidator.isValid(numbers)) {
-            throw new IllegalArgumentException();
-        }
-    }
 
     LottoStatus matchLotto(Lotto targetLotto, int bonusNumber) {
         int count = countMathNumbers(targetLotto);
