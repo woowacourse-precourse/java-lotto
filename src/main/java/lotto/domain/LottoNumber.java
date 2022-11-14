@@ -1,10 +1,11 @@
 package lotto.domain;
 
+import static lotto.domain.Constants.Lotto.RANGE_BEGIN;
+import static lotto.domain.Constants.Lotto.RANGE_END;
+
 import java.util.Objects;
 
 public class LottoNumber {
-    private static final int RANGE_BEGIN = 1;
-    private static final int RANGE_END = 45;
     private final int number;
 
     public LottoNumber(int number) {

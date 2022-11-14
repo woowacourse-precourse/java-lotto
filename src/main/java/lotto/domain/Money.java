@@ -1,9 +1,10 @@
 package lotto.domain;
 
+import static lotto.domain.Constants.Money.MAXIMUM_AMOUNT;
+import static lotto.domain.Constants.Money.MINIMUM_AMOUNT;
+import static lotto.domain.Constants.Money.UNIT_AMOUNT;
+
 public class Money {
-    public static final int MINIMUM_AMOUNT = 1000;
-    public static final int MAXIMUM_AMOUNT = 100_000;
-    public static final int UNIT_AMOUNT = 1000;
     private final int amount;
 
     public Money(int amount) {

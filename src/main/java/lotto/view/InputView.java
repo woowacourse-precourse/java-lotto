@@ -7,6 +7,8 @@ import lotto.domain.LottoNumber;
 import lotto.domain.Money;
 
 public class InputView {
+    public static final String DELIMITER = ",";
+
     public static Money inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         Money money = new Money(InputUtil.readNumber());
@@ -16,7 +18,7 @@ public class InputView {
 
     public static Lotto inputWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        List<Integer> numbers = InputUtil.readNumbersByDelimiter(",");
+        List<Integer> numbers = InputUtil.readNumbersByDelimiter(DELIMITER);
         System.out.println();
         return new Lotto(toLottoNumbers(numbers));
     }

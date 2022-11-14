@@ -1,11 +1,12 @@
 package lotto.domain;
 
+import static lotto.domain.Constants.Lotto.SIZE;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    private static final int SIZE = 6;
     private final List<LottoNumber> numbers;
 
     public Lotto(List<LottoNumber> numbers) {
