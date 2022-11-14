@@ -1,10 +1,15 @@
 package lotto.view;
 
+import static lotto.domain.SystemMessage.DUPLICATE_ERROR_MESSAGE;
+import static lotto.domain.SystemMessage.IS_ONLY_NUMBER_ERROR_MESSAGE;
+import static lotto.domain.SystemMessage.LIMIT_NUMBER_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.PATTERN_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -26,7 +31,7 @@ public class InputView {
     }
 
     private enum Validation {
-        REGEX(","),PATTERN("^[\\d]+, [\\d]+, [\\d]+, [\\d]+, [\\d]+, [\\d]+$");
+        REGEX(","),PATTERN("^[\\w]+,[\\w]+,[\\w]+,[\\w]+,[\\w]+,[\\w]+$");
         private final String value;
 
         Validation(String value) {
@@ -61,24 +66,57 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
-    private static List<Integer> inputLottoNums() {
+    private static List<Integer> inputLottoNumbers() {
         final String lottoNumber = Console.readLine();
-        validateLottoNums(lottoNumber);
+        validateLottoNumberPattern(lottoNumber);
         System.out.println();
 
-        return splitNumbers(lottoNumber);
+        List<Integer> splitLotto = splitNumbers(lottoNumber);
+
+        validateAllLottoNumber(splitLotto);
+        return splitLotto;
     }
 
-
-    public static List<Integer> inputLottoAnswerNumber() {
+    public static List<Integer> getLottoAnswerNumber() {
         System.out.println(Message.LOTTO_ANSWER_NUMBER.getValue());
-        return inputLottoNums();
+        return inputLottoNumbers();
+    }
+    private static void validateAllLottoNumber(List<Integer> splitLotto){
+        validateLottoNumberDuplicate(splitLotto);
+        validateCheckLimit(splitLotto);
+        isOnlyNumber(splitLotto);
     }
 
-    private static void validateLottoNums(final String rawLottoNumbers) {
+    private static void validateLottoNumberPattern(final String rawLottoNumbers) {
         Pattern PATTERN = Pattern.compile(Validation.PATTERN.getValue());
         if (!PATTERN.matcher(rawLottoNumbers).matches()) {
             throw new IllegalArgumentException(PATTERN_ERROR_MESSAGE);
+        }
+    }
+
+    private static void validateLottoNumberDuplicate(List<Integer> numbers){
+        Set<Integer> duplicateChecker = new HashSet<>(numbers);
+        if (duplicateChecker.size() != 6) {
+            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
+
+        }
+    }
+
+
+    private static void validateCheckLimit(List<Integer> numbers){
+        for(Integer num : numbers){
+            if(num < 1 || num > 45){
+                throw new IllegalArgumentException(LIMIT_NUMBER_ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private static void isOnlyNumber(List<Integer> numbers){
+        for(Integer num : numbers){
+            System.out.println(num);
+            if(Character.isDigit(num)){
+                throw new IllegalArgumentException(IS_ONLY_NUMBER_ERROR_MESSAGE);
+            }
         }
     }
 

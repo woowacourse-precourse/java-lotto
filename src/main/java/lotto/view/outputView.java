@@ -13,7 +13,7 @@ public class outputView {
     private static final String WINNING_DETAIL_MESSAGE = "%d개 일치 (%s원) - %d개\n";
     private static final String WINNING_DETAIL_WITH_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private enum Message {
-        NUMBER_OF_LOTTO("개를 구매했습니다.");
+        NUMBER_OF_LOTTO("%d개를 구매했습니다.");
         private final String value;
 
         Message(String value) {
@@ -26,7 +26,8 @@ public class outputView {
 
     }
 
-    public static void printLottoGroup(LottoGroup lottos) {
+    public static void printLottoGroup(LottoGroup lottos, Integer count) {
+        System.out.println(String.format(Message.NUMBER_OF_LOTTO.getValue(), count));
         lottos.getLottoGroup().stream()
                 .forEach(lotto -> System.out.println(lotto.getLotto().toString()));
         System.out.println();

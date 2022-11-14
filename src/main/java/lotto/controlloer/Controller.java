@@ -3,16 +3,12 @@ package lotto.controlloer;
 import static lotto.view.InputView.*;
 import static lotto.view.outputView.printLottoGroup;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import lotto.domain.AnswerLotto;
-import lotto.domain.Lotto;
 import lotto.domain.LottoGroup;
 import lotto.domain.NumberGenerator;
 import lotto.domain.WinningRank;
 import lotto.domain.WinningStatistics;
-import lotto.view.InputView;
 import lotto.view.outputView;
 
 public class Controller {
@@ -33,13 +29,14 @@ public class Controller {
 
     private LottoGroup buyLotto(){
         NumberGenerator lottogenerator = new NumberGenerator();
-        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(getNumberOfLotto(inputMoney())));
-        printLottoGroup(lottoGroup);
+        Integer NumberOfLotto = inputMoney();
+        LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(getNumberOfLotto(NumberOfLotto)));
+        printLottoGroup(lottoGroup, NumberOfLotto);
         return lottoGroup;
     }
 
     private AnswerLotto getAnswerLotto(){
-        AnswerLotto answerLotto = new AnswerLotto(inputLottoAnswerNumber(), inputBonusNumber());
+        AnswerLotto answerLotto = new AnswerLotto(getLottoAnswerNumber(), inputBonusNumber());
         return answerLotto;
     }
 
