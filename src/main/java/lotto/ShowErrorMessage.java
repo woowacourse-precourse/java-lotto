@@ -20,24 +20,24 @@ public enum ShowErrorMessage {
         this.errorScript = errorScript;
     }
 
-    public static void showOutRangeLottoNumber() {
-        System.out.println(ERROR_MESSAGE.errorScript + OUT_RANGE_LOTTO_NUMBER_MESSAGE.errorScript);
+    public static String showOutRangeLottoNumber() {
+        return ERROR_MESSAGE.errorScript + OUT_RANGE_LOTTO_NUMBER_MESSAGE.errorScript;
     }
 
-    public static void showNotDivide() {
-        System.out.println(ERROR_MESSAGE.errorScript + NOT_DIVIDE_MESSAGE.errorScript);
+    public static String showNotDivide() {
+        return ERROR_MESSAGE.errorScript + NOT_DIVIDE_MESSAGE.errorScript;
     }
 
-    public static void showLottoNumberCount() {
-        System.out.println(ERROR_MESSAGE.errorScript + LOTTO_NUMBER_COUNT.errorScript);
+    public static String showLottoNumberCount() {
+        return ERROR_MESSAGE.errorScript + LOTTO_NUMBER_COUNT.errorScript;
     }
 
-    public static void showDuplicateLottoNumber() {
-        System.out.println(ERROR_MESSAGE.errorScript + DUPLICATE_LOTTO_NUBMER.errorScript);
+    public static String showDuplicateLottoNumber() {
+        return ERROR_MESSAGE.errorScript + DUPLICATE_LOTTO_NUBMER.errorScript;
     }
 
-    public static void showContainsBonusNumber() {
-        System.out.println(ERROR_MESSAGE.errorScript + CONTAINS_BONUS_NUMBER.errorScript);
+    public static String showContainsBonusNumber() {
+        return ERROR_MESSAGE.errorScript + CONTAINS_BONUS_NUMBER.errorScript;
     }
 
 }
