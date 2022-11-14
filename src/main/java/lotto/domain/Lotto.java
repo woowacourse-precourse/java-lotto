@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import lotto.domain.enums.LottoException;
+import lotto.domain.enums.NumbersType;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -19,7 +20,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         LottoException exception;
-        if (numbers.size() != 6) {
+        if (numbers.size() != NumbersType.NUMBERS_SIZE.getValue()) {
             exception = LottoException.valueOf("SIZE_EXCEPTION");
             throw new IllegalArgumentException(exception.getMessage());
         }
