@@ -65,4 +65,14 @@ public class LottoPublishService {
     private void boughtLottoCount(Integer lottoPrice) {
         boughtLottoCount = lottoPrice / LottoRule.LOTTO_PRICE.getValue();
     }
+
+    public Integer getBoughtLottoCount() {
+        return boughtLottoCount;
+    }
+
+    public void printPublishedLottoNumbers() {
+        for (Lotto publishedLotto : publishedLottoNumbers) {
+            System.out.println(publishedLotto.getNumbers());
+        }
+    }
 }
