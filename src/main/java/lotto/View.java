@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Logger;
 
 public class View {
     public void printLine(String s) {
@@ -67,7 +66,8 @@ public class View {
             }
             return i / 1000;
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR] 로또 구입 번호가 올바르지 않습니다.");
+            System.out.println("[ERROR] 로또 구입 금액이 올바르지 않습니다.");
+            return inputPrice();
         }
     }
 
@@ -76,24 +76,27 @@ public class View {
             printLine("당첨 번호를 입력해 주세요.");
             String[] ss = Console.readLine().split(",");
             List<Integer> numbers = new ArrayList<>();
-            for (int i = 0; i < ss.length; i++) {
-                int number = Integer.parseInt(ss[i]);
-                if (number < 1 || number > 45) {
-                    throw new IllegalArgumentException();
-                }
-                numbers.add(number);
-            }
-            Set<Integer> numSet = new HashSet<>(numbers);
-
-            if (numSet.size() != numbers.size()) {
-                System.out.println("[ERROR] 로또 번호가 중복되었습니다.");
-                throw new IllegalArgumentException();
-            }
-
+            checkValidateLottoNumber(ss, numbers);
             return numbers;
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw e;
+        }
+    }
+
+    public void checkValidateLottoNumber(String[] ss, List<Integer> numbers){
+        for (int i = 0; i < ss.length; i++) {
+            int number = Integer.parseInt(ss[i]);
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException();
+            }
+            numbers.add(number);
+        }
+        Set<Integer> numSet = new HashSet<>(numbers);
+
+        if (numSet.size() != numbers.size()) {
+            System.out.println("[ERROR] 로또 번호가 중복되었습니다.");
+            throw new IllegalArgumentException();
         }
     }
 
