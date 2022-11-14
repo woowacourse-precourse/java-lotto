@@ -100,10 +100,10 @@ public class Lotto {
     }
 
     private boolean isMatch(Win win, int matchCount, int bonusNumber) {
-        if (win.getMatchCount() == matchCount && !win.isBonusBall()) {
+        if (win.isEqualsMatchCount(matchCount) && !win.isBonusBall()) {
             return true;
         }
 
-        return win.getMatchCount() == matchCount && numbers.contains(bonusNumber);
+        return win.isEqualsMatchCount(matchCount) && numbers.contains(bonusNumber);
     }
 }

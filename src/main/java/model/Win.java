@@ -28,4 +28,8 @@ public enum Win {
     public int getWinningAmount() {
         return winningAmount;
     }
+
+    public boolean isEqualsMatchCount(int matchCount) {
+        return this.matchCount == matchCount;
+    }
 }
