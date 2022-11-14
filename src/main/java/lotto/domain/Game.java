@@ -13,6 +13,7 @@ public class Game {
     private Service service;
     private int[] winningResult;
     private int winningPrize;
+    private double profitRate;
 
     public Game(){
         user = new User();
@@ -22,6 +23,7 @@ public class Game {
 
         winningResult = new int[Constant.RANK_SIZE];
         winningPrize = 0;
+        profitRate = 0.0;
     }
 
     public void runGame(){
@@ -49,9 +51,10 @@ public class Game {
         }
 
         setWinningPrize();
-
         // TODO: 사용자의 당첨 통계(당첨 개수) 출력
 
+        setProfitRate();
+        // TODO: 사용자의 수익률 출력
     }
 
     private void setWinningResult(int rank) {
@@ -62,6 +65,10 @@ public class Game {
         for (int i=0; i< WinningInfo.values().length; i++){
             this.winningPrize += WinningInfo.values()[i].getPrize() * this.winningResult[i];
         }
+    }
+
+    private void setProfitRate() {
+        this.profitRate = ((double) this.winningPrize / user.getLottoMoney()) * 100;
     }
 
     private boolean isNotRank(int rank) {

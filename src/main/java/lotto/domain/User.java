@@ -24,6 +24,10 @@ public class User {
         this.nLottoTickets = this.lottoMoney / Constant.LOTTO_PRICE;
     }
 
+    public int getLottoMoney() {
+        return lottoMoney;
+    }
+
     public int getnLottoTickets() {
         return nLottoTickets;
     }
