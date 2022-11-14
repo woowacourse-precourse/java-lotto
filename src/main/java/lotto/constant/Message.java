@@ -94,7 +94,7 @@ public class Message {
     }
 
     public static void printProfitRate(double profitRate) {
-        DecimalFormat formatter = new DecimalFormat("#,###.0");
+        DecimalFormat formatter = new DecimalFormat("#,##0.0");
         String formattedProfitRate = formatter.format(profitRate);
 
         System.out.printf(PROFIT_RATE_MESSAGE, formattedProfitRate);
