@@ -62,7 +62,7 @@ public class Rank {
         List<Integer> lottoNumbers = lotto.getLottoNumbers();
         List<Integer> rightNumbers = new ArrayList<>();
         for (int i = 0; i < LOTTO_NUMBER_COUNT; i++) {
-            if (lottoNumbers.get(i) == winningLottoNumbers.get(i)) {
+            if (lottoNumbers.contains(winningLottoNumbers.get(i))) {
                 rightNumbers.add(lottoNumbers.get(i));
             }
         }
@@ -73,7 +73,7 @@ public class Rank {
         List<Integer> lottoNumbers = lotto.getLottoNumbers();
         List<Integer> wrongNumbers = new ArrayList<>();
         for (int i = 0; i < LOTTO_NUMBER_COUNT; i++) {
-            if (lottoNumbers.get(i) != winningLottoNumbers.get(i)) {
+            if (!lottoNumbers.contains(winningLottoNumbers.get(i))) {
                 wrongNumbers.add(lottoNumbers.get(i));
             }
         }
