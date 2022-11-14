@@ -52,7 +52,7 @@ public class LottoCheckTest {
         Lotto loseNum = new Lotto(List.of(1, 3, 5, 6, 9, 10));
         assertThat(lottoCheck.getRank(loseNum)).isEqualTo(LottoRank.FOURTH);
     }
-    
+
     void compareByThirdPlaceNumber() {
         Lotto winningNum = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNums = 10;
