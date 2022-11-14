@@ -41,4 +41,43 @@ public class Pick {
     public List<Integer> getScores() {
         return scores;
     }
+
+    public double getRateOfReturn(int money) {
+        int winningMoney = getWinningMoney();
+        double rateOfReturn = (double)winningMoney / money;
+
+        return Math.round((rateOfReturn * 10) / 10.0);
+    }
+
+    private int getWinningMoney() {
+        int winningMoney = 0;
+        int count;
+
+        for (int rank = 1; rank <= 5; rank++) {
+            count = scores.get(rank);
+            winningMoney += getWinningMoneyWithCount(rank, count);
+        }
+
+        return winningMoney;
+    }
+
+    private int getWinningMoneyWithCount(int rank, int count) {
+        //TODO: 컨벤션 맞추기 위해 enum으로 다시 작성할 것.
+        if (rank == 1) {
+            return 2_000_000_000 * count;
+        }
+        if (rank == 2) {
+            return 30_000_000 * count;
+        }
+        if (rank == 3) {
+            return 1_500_000 * count;
+        }
+        if (rank == 4) {
+            return 50_000 * count;
+        }
+        if (rank == 5) {
+            return 5_000 * count;
+        }
+        return 0;
+    }
 }
