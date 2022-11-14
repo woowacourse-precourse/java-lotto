@@ -41,4 +41,13 @@ class LottoTest {
         int result = playerLotto.countSameNumber(winLotto.getNumbers());
         assertThat(result == 2);
     }
+
+    @DisplayName("보너스 번호와 동일한 숫자가 있는지 확인한다.")
+    @Test
+    void checkBonusOfSameNumber(){
+        Lotto playerLotto = new Lotto(List.of(1,2,3,4,5,6));
+        int bonus = 3;
+        boolean result = playerLotto.isBonusNumber(bonus);
+        assertThat(result == true);
+    }
 }
