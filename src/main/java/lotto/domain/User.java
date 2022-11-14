@@ -49,4 +49,9 @@ public class User {
             }
         }
     }
+
+    public int getBonusInput() {
+        String BonusInput = readLine();
+        return Integer.parseInt(BonusInput);
+    }
 }

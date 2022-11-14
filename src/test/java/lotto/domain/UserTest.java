@@ -95,4 +95,13 @@ public class UserTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, user::getLottoInput);
         assertEquals("[ERROR] 1~45 사이 숫자를 입력해주세요.", exception.getMessage());
     }
+
+    @DisplayName("유저의 보너스 번호가 정상적으로 입력된다.")
+    @Test
+    void createBonus() {
+        String input = "8";
+        setUp(input);
+
+        assertThat(user.getBonusInput()).isEqualTo(Integer.parseInt(input));
+    }
 }
