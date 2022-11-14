@@ -4,10 +4,19 @@ import domain.Lotto;
 import util.LottoMessage;
 import util.LottoRank;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
+import static util.LottoMessage.SAMES_FORMAT;
+import static util.LottoMessage.OPEN_BRACKET;
+import static util.LottoMessage.CLOSE_BRACKET;
+import static util.LottoMessage.HYPHEN_WITH_SPACE;
+import static util.LottoMessage.KOREA_BASICS_UNIT;
+
 public class ResultView {
+
+    public static final DecimalFormat moneyFormat = new DecimalFormat("###,###");
 
     public ResultView() {}
 
@@ -30,6 +39,19 @@ public class ResultView {
     }
 
     public void displayWinners(Map<LottoRank, Integer> result) {
+        LottoRank.getAscendRank()
+                .forEach(rank -> {
+                    int sameCount = rank.getSameCount();
+                    String outputLine =
+                            String.format(SAMES_FORMAT, sameCount) +
+                                    OPEN_BRACKET +
+                                    moneyFormat.format(rank.getPrizeMoney()) +
+                                    CLOSE_BRACKET +
+                                    HYPHEN_WITH_SPACE +
+                                    result.getOrDefault(rank, 0) +
+                                    KOREA_BASICS_UNIT;
 
+                    System.out.println(outputLine);
+                });
     }
 }

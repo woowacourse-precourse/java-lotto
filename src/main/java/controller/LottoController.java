@@ -48,9 +48,10 @@ public class LottoController {
     public void statistics() {
         resultView.displayWinStatistics();
         resultView.displaySeparator();
-        resultView.displayPercentageProfit(profit.getPercentageProfit());
         winLotto = new WinLotto(lotteries, winnerNumber, bonusNumber);
         resultView.displayWinners(winLotto.getResult());
+        profit = new Profit(validatedMoney.getMoney(), 100000);
+        resultView.displayPercentageProfit(profit.getPercentageProfit());
     }
 
 }
