@@ -43,7 +43,11 @@ class LottoControllerTest {
         assertAll(
                 () -> assertThatThrownBy(() -> controller.inputWinningNumber("1 2 3 4"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(WinningNumberValidator.IS_SEPERATED_BY_COMMA.getErrorMessage())
+                        .hasMessageContaining(WinningNumberValidator.IS_SEPERATED_BY_COMMA.getErrorMessage()),
+
+                () -> assertThatThrownBy(() -> controller.inputWinningNumber("f,d,f,"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("[ERROR]")
         );
     }
 }
