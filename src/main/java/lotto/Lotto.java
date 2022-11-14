@@ -19,12 +19,22 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateRange(numbers);
+
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_NUMBER_COUNT);
+        }
+    }
+
+    private void validateRange(List<Integer> numbers) {
+        int max = numbers.stream().max(Comparator.comparingInt(o -> o)).get();
+        int min = numbers.stream().min(Comparator.comparingInt(o -> o)).get();
+        if (min < 1 || 45 < max) {
+            throw new IllegalArgumentException(ERROR_NUMBER_RANGE);
         }
     }
 
