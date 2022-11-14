@@ -32,26 +32,40 @@ public class StatisticsService {
 	private void updateRankCount(WinnerCountDto winnerCountDto) {
 		int answerCount = winnerCountDto.getAnswerCount();
 		int bonusCount = winnerCountDto.getBonusCount();
+		updateFirstRankCount(answerCount);
+		updateSecondRankCount(answerCount, bonusCount);
+		updateThirdRankCount(answerCount, bonusCount);
+		updateForthRankCount(answerCount);
+		updateFifthRankCount(answerCount);
+	}
 
-		if (answerCount == 6) {
-			rankGroup.updateRankCount(Rank.firstRank, 1);
-			return;
-		}
-		if (answerCount == 5 && bonusCount == 1) {
-			rankGroup.updateRankCount(Rank.secondRank, 1);
-			return;
-		}
-		if (answerCount == 5 && bonusCount == 0) {
-			rankGroup.updateRankCount(Rank.thirdRank, 1);
-			return;
-		}
-		if (answerCount == 4) {
-			rankGroup.updateRankCount(Rank.forthRank, 1);
-			return;
-		}
+	private void updateFifthRankCount(int answerCount) {
 		if (answerCount == 3) {
 			rankGroup.updateRankCount(Rank.fifthRank, 1);
-			return;
+		}
+	}
+
+	private void updateForthRankCount(int answerCount) {
+		if (answerCount == 4) {
+			rankGroup.updateRankCount(Rank.forthRank, 1);
+		}
+	}
+
+	private void updateThirdRankCount(int answerCount, int bonusCount) {
+		if (answerCount == 5 && bonusCount == 0) {
+			rankGroup.updateRankCount(Rank.thirdRank, 1);
+		}
+	}
+
+	private void updateSecondRankCount(int answerCount, int bonusCount) {
+		if (answerCount == 5 && bonusCount == 1) {
+			rankGroup.updateRankCount(Rank.secondRank, 1);
+		}
+	}
+
+	private void updateFirstRankCount(int answerCount) {
+		if (answerCount == 6) {
+			rankGroup.updateRankCount(Rank.firstRank, 1);
 		}
 	}
 
