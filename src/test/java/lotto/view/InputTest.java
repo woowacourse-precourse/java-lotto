@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -44,10 +45,40 @@ class InputTest {
     public void givenMoney_whenGetMoney_thenReturnNoSuchElementException(String money){
         // Given
         InputStream inputStream = generateUserInput(money);
+        System.setIn(inputStream);
 
         // When & Then
-        System.setIn(inputStream);
         assertThatThrownBy(()->inputTest.getMoney())
+                .isInstanceOf(NoSuchElementException.class);
+    }
+
+    @DisplayName("올바른 형식의 당첨 번호를 입력받았을 때 로또 객체를 리턴한다.")
+    @ParameterizedTest
+    @MethodSource("setCorrectWinningNumbers")
+    public void givenWinningNumbers_whenGetWinningNumbers_thenReturnLotto(String winningNumbers){
+        // Given
+        InputStream inputStream = generateUserInput(winningNumbers);
+        System.setIn(inputStream);
+
+        // When
+        Lotto lotto = inputTest.getWinningNumbers();
+
+        // Then
+        assertThat(lotto).isNotNull();
+    }
+
+
+    // TODO: 현재 NoSuchElementException 으로 예외처리, 추후에 IllegalArgumentException 으로 바꿔야 한다.[방법 찾는 중]
+    @DisplayName("올바르지 않은 당첨 번호를 입력했을 경우 IllegalArgumentException 을 던진다. [추후 수정 예정]")
+    @ParameterizedTest
+    @MethodSource("setWinningNumbers")
+    public void givenWrongWinningNumbers_whenGetWinningNumbers_thenReturnIllegalArgumentException(String winningNumbers){
+        // Given
+        InputStream inputStream = generateUserInput(winningNumbers);
+        System.setIn(inputStream);
+
+        // When & Then
+        assertThatThrownBy(()->inputTest.getWinningNumbers())
                 .isInstanceOf(NoSuchElementException.class);
     }
 
@@ -67,6 +98,21 @@ class InputTest {
                 Arguments.of("dfksdflk"),
                 Arguments.of("900"),
                 Arguments.of("23123")
+        );
+    }
+
+    private static Stream<Arguments> setCorrectWinningNumbers(){
+        return Stream.of(
+                Arguments.of("1,2,3,4,5,6")
+        );
+    }
+
+    private static Stream<Arguments> setWinningNumbers(){
+        return Stream.of(
+                Arguments.of("1,1,1,1,1"),
+                Arguments.of("1,2,3,4,5,6,7,8,9,10"),
+                Arguments.of("a,b,c,d,e,f"),
+                Arguments.of("46,1,2,3,4,5")
         );
     }
 
