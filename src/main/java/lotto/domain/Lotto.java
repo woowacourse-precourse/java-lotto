@@ -7,7 +7,7 @@ import static lotto.config.Constant.LOTTO_NUMBER_CAPACITY;
 
 public class Lotto {
 
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
 
@@ -32,6 +32,10 @@ public class Lotto {
 
     public List<Integer> getLotto() {
         return numbers;
+    }
+
+    public void showLotto() {
+        System.out.println(numbers);
     }
 
 }
