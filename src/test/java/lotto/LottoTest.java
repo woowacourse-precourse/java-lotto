@@ -33,11 +33,11 @@ class LottoTest {
         Game game = new Game();
 
         // then
-        assertThat(game.valueOf(6,false)).isEqualTo(FIRST);
-        assertThat(game.valueOf(6,true)).isEqualTo(FIRST);
-        assertThat(game.valueOf(5,  true)).isEqualTo(SECOND);
-        assertThat(game.valueOf(5,  false)).isEqualTo(THIRD);
-        assertThat(game.valueOf(4,  false)).isEqualTo(FORTH);
+        assertThat(game.valueOf(6, false)).isEqualTo(FIRST);
+        assertThat(game.valueOf(6, true)).isEqualTo(FIRST);
+        assertThat(game.valueOf(5, true)).isEqualTo(SECOND);
+        assertThat(game.valueOf(5, false)).isEqualTo(THIRD);
+        assertThat(game.valueOf(4, false)).isEqualTo(FORTH);
         assertThat(game.valueOf(2, false)).isEqualTo(null);
     }
 
@@ -56,17 +56,17 @@ class LottoTest {
 
         // when
         Game game = new Game();
-        game.compareAll(lotteries, winningNumber,bonusNumber);
+        game.compareAll(lotteries, winningNumber, bonusNumber);
 
         // then
-        assertThat(game.compareAll(lotteries, winningNumber,bonusNumber).get(Ranking.FIRST)).isEqualTo(1);
-        assertThat(game.compareAll(lotteries, winningNumber,bonusNumber).get(Ranking.SECOND)).isEqualTo(1);
-        assertThat(game.compareAll(lotteries, winningNumber,bonusNumber).get(Ranking.THIRD)).isEqualTo(2);
-        assertThat(game.compareAll(lotteries, winningNumber,bonusNumber).get(Ranking.FORTH)).isEqualTo(0);
-        assertThat(game.compareAll(lotteries, winningNumber,bonusNumber).get(Ranking.FIFTH)).isEqualTo(0);
+        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.FIRST)).isEqualTo(1);
+        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.SECOND)).isEqualTo(1);
+        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.THIRD)).isEqualTo(2);
+        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.FORTH)).isEqualTo(0);
+        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.FIFTH)).isEqualTo(0);
     }
 
-    @DisplayName("로또 구입 금액을 잘못 입력한 경우 예외처리가 된다.")
+    @DisplayName("로또 구입 금액을 잘못 입력한 경우 예외가 발생한다.")
     @Test
     void inputMoneyError() {
         // given
@@ -74,7 +74,8 @@ class LottoTest {
 
         // then
         assertThatThrownBy(() -> new Money(money))
-                .isInstanceOf(IllegalArgumentException.class);;
+                .isInstanceOf(IllegalArgumentException.class);
+        ;
     }
 
     @DisplayName("구입 금액에 따라 로또를 발행한다.")
@@ -93,4 +94,36 @@ class LottoTest {
                 .count())
                 .isEqualTo(10);
     }
+
+    @DisplayName("입력된 당첨 번호가 1~45 범위에서 벗어나면 예외가 발생한다.")
+    @Test
+    void inputWinningNumbersError() {
+        // given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 46);
+        int bonusNumber = 7;
+
+        // when
+        Lotto winningNumber = new Lotto(winningNumbers);
+
+        // then
+        assertThatThrownBy(() -> new WinningNumbers(winningNumber, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력된 보너스 번호가 당첨 번호와 중복되면 예외가 발생한다.")
+    @Test
+    void inputBonusNumbersError() {
+        // given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 6;
+
+        // when
+        Lotto winningNumber = new Lotto(winningNumbers);
+
+        // then
+        assertThatThrownBy(() -> new WinningNumbers(winningNumber, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
