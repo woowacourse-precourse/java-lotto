@@ -3,6 +3,7 @@ package lotto;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -44,5 +45,10 @@ public class Lotto {
 
     public List<Integer> getLotto() {
         return this.numbers;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + numbers.stream().map(i -> String.valueOf(i)).collect(Collectors.joining(", ")) + "]";
     }
 }
