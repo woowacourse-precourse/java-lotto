@@ -12,7 +12,6 @@ public class LottoController {
     LottoData lottoData = new LottoData();
     OutputView output = new OutputView();
     InputView input = new InputView();
-    UserException exception = new UserException();
 
     public void start(){
         try {
