@@ -19,7 +19,7 @@ public class Display {
     }
 
     public static void paidAmout(int numbersOfLotto) {
-        System.out.println(numbersOfLotto + PRINT.BUYED_LOTTO);
+        System.out.println(numbersOfLotto + PRINT.PAID_LOTTO);
     }
 
     public static void inputWinningNumbers() {

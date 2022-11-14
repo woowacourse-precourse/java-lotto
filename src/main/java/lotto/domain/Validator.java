@@ -12,7 +12,7 @@ public class Validator {
             throw new IllegalArgumentException(ERROR.LOTTO_SIZE);
         }
         if (new HashSet<Integer>(numbers).size() != 6) {
-            throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATE);
+            throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATION);
         }
     }
 
@@ -31,7 +31,7 @@ public class Validator {
     public static void winningNumberDuplicate(Integer[] winningNumbers) {
         HashSet<Integer> removeDuplicatedNumbers = new HashSet<Integer>(List.of(winningNumbers));
         if (removeDuplicatedNumbers.size() != 6) {
-            throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATE);
+            throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATION);
         }
     }
 
