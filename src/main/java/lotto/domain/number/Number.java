@@ -17,7 +17,7 @@ public class Number {
         this.value = Integer.parseInt(input);
     }
 
-    private void validateNumeric(String input) {
+    private void validateNumeric(final String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {

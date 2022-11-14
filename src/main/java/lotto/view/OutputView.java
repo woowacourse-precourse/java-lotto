@@ -9,6 +9,10 @@ import java.text.NumberFormat;
 
 public class OutputView {
 
+    public static void print(String message) {
+        System.out.println(message);
+    }
+
     public static void payout() {
         System.out.println(PrintMessage.PAYOUT.getMessage());
     }

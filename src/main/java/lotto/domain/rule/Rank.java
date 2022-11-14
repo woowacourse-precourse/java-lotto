@@ -34,6 +34,10 @@ public enum Rank {
                 (!rank.hasBonusNumber || hasBonusNumber);
     }
 
+    public int getRank() {
+        return rank;
+    }
+
     public int getMatchingCount() {
         return matchingCount;
     }

@@ -1,6 +1,7 @@
 package lotto.domain.number;
 
 import lotto.resource.message.ErrorMessage;
+import lotto.view.OutputView;
 
 public class PayOut {
     public static final int GAME_PRICE = 1_000;
@@ -30,12 +31,14 @@ public class PayOut {
 
     private void validateGamePrice(int value) {
         if (value % GAME_PRICE != 0) {
+            OutputView.print(ErrorMessage.NOT_DIVISIBLE_BY_THOUSANDS_MESSAGE.getValue());
             throw new IllegalArgumentException(ErrorMessage.NOT_DIVISIBLE_BY_THOUSANDS_MESSAGE.getValue());
         }
     }
 
     private void validateNotPositive(int value) {
         if (value <= 0) {
+            OutputView.print(ErrorMessage.NUMBER_IS_NOT_POSITIVE_MESSAGE.getValue());
             throw new IllegalArgumentException(ErrorMessage.NUMBER_IS_NOT_POSITIVE_MESSAGE.getValue());
         }
     }
