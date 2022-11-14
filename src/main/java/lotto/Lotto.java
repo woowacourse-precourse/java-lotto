@@ -20,6 +20,11 @@ public class Lotto {
         int cost;
         Output.printCost();
         cost = Integer.parseInt(Console.readLine());
+        int cnt = Output.printOrder(cost);
+        MakeLotto.totallotto(cnt);
+
+        //로또 생성
+
 
 
     }
