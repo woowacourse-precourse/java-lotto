@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import controller.InputController;
+import domain.WinningNumber;
 import util.InputValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -80,6 +81,20 @@ public class InputTest extends NsTest {
         InputValidator inputValidator = new InputValidator();
         List<Integer> lottoNumber = Arrays.asList(1,2,3,4,5,46);
         assertThatThrownBy(() -> inputValidator.checkLottoNumberRange(lottoNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호와 보너스 번호 같을때 예외 발생")
+    @Test
+    void sameNumWithBonus() {
+        //given
+        List<Integer> winNum = Arrays.asList(1,2,3,4,5,6);
+        WinningNumber winningNumber = new WinningNumber(winNum);
+        String bonusNumber = "6";
+
+        //when,then
+        InputValidator inputValidator = new InputValidator();
+        assertThatThrownBy(() -> inputValidator.checkSameNumber(bonusNumber,winningNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
