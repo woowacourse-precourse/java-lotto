@@ -16,28 +16,36 @@ class ExceptionHandlingTest {
         assertThatThrownBy(() -> exceptionHandling.notDivide(3000000000L))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    
+
     @DisplayName("숫자인지 검사, 숫자가 아니면 IllegalArgumentException을 발생시킴")
     @Test
-    void isNumeric(){
+    void isNumeric() {
         ExceptionHandling exceptionHandling = new ExceptionHandling();
         assertThatThrownBy(() -> exceptionHandling.isNumeric("123$"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    
+
     @DisplayName("1 ~ 45사이의 숫자인지 검사")
     @Test
-    void outRangeLottoNumber(){
+    void outRangeLottoNumber() {
         ExceptionHandling exceptionHandling = new ExceptionHandling();
-        assertThatThrownBy(()->exceptionHandling.outRangeLottoNumber("46"))
+        assertThatThrownBy(() -> exceptionHandling.outRangeLottoNumber("46"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("리스트 내의 중복 값 체크")
+    @DisplayName("리스트 내의 중복 값 검사")
     @Test
-    void removeDuplicateNumber(){
+    void removeDuplicateNumber() {
         ExceptionHandling exceptionHandling = new ExceptionHandling();
-        assertThatThrownBy(()->exceptionHandling.removeDuplicateNumber(List.of(23, 12, 24, 34, 12, 32)))
+        assertThatThrownBy(() -> exceptionHandling.removeDuplicateNumber(List.of(23, 12, 24, 34, 12, 32)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력한 보너스 번호가 덩첨 번호에 포함인지 검사")
+    @Test
+    void containsBonusNumber() {
+        ExceptionHandling exceptionHandling = new ExceptionHandling();
+        assertThatThrownBy(() -> exceptionHandling.containsBonusNumber(List.of(34, 45, 1, 23, 2, 11), 34))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
