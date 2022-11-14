@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -12,10 +13,10 @@ public class Player {
 
     public Player() {
         manager = new Manager();
+        List<List<Integer>> lottoNumbers = new ArrayList<>();
     }
 
     public void purchaseLotto() {
-        System.out.println("hello");
         manager.requestMoneyStatementPrint();
         int money = manager.inputMoney();
         if (money % 1000 != 0) {
