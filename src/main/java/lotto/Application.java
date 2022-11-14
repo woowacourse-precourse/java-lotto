@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.util.Print;
 
 import java.util.List;
 import java.util.Map;

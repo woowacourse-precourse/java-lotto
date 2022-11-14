@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.util.Validation;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
