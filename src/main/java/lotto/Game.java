@@ -37,4 +37,14 @@ public class Game {
         }
         return purchasedLotto;
     }
+
+    RANK lookForRank(int countSame, boolean bonus){
+        if(countSame < 3) return RANK.NOTHING;
+        if(countSame == 3 && !bonus) return RANK.FIVE;
+        if(countSame == 4 && bonus) return RANK.TWO;
+        if(countSame == 4) return RANK.FOUR ;
+        if(countSame == 5 && !bonus) return RANK.THREE;
+        return RANK.ONE;
+    }
+
 }
