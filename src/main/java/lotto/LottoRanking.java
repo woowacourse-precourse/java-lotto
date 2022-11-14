@@ -15,6 +15,7 @@ public enum LottoRanking {
     private int price;
     private int count;
     private int bonusCount;
+
     LottoRanking(String message, int price, int count, int bonusCount) {
         this.message = message;
         this.price = price;
