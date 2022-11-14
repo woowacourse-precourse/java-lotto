@@ -16,7 +16,7 @@ public class LottoUI {
     public List<Lotto> buy() throws IllegalArgumentException {
         System.out.println(Message.INPUT_PURCHASE_AMOUNT);
         String input = Console.readLine().trim();
-        return lottoMachine.printLottoBundle(input);
+        return lottoMachine.getLottoBundle(input);
     }
 
     public void printLottoBundle(List<Lotto> lottoBundle) {

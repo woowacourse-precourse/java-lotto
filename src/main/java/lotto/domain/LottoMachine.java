@@ -8,13 +8,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoMachine {
 
-    public List<Lotto> printLottoBundle(String input) throws IllegalArgumentException {
+    public List<Lotto> getLottoBundle(String input) throws IllegalArgumentException {
         validateType(input);
         int count = lottoCount(Integer.parseInt(input));
-        return CreateRandomLottoBundle(count);
+        return createRandomLottoBundle(count);
     }
 
-    private List<Lotto> CreateRandomLottoBundle(int count) {
+    private List<Lotto> createRandomLottoBundle(int count) {
         List<Lotto> bundle = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             bundle.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));

@@ -12,14 +12,14 @@ class LottoMachineTest {
     @DisplayName("구매 금액 입력 시 숫자가 아닌 값을 입력하면 예외 발생")
     @Test
     void InputNonNumericValue() {
-        assertThatThrownBy(() -> machine.printLottoBundle("1000k"))
+        assertThatThrownBy(() -> machine.getLottoBundle("1000k"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("구입 금액이 1000원으로 나누어 떨어지지 않으면 예외 발생")
     @Test
     void InputNonDivisibleNumber() {
-        assertThatThrownBy(() -> machine.printLottoBundle("1001"))
+        assertThatThrownBy(() -> machine.getLottoBundle("1001"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -39,7 +39,7 @@ class LottoMachineTest {
                 12
         };
         for (int i = 0; i < input.length; i++) {
-            int count = machine.printLottoBundle(input[i]).size();
+            int count = machine.getLottoBundle(input[i]).size();
             assertThat(count).isEqualTo(results[i]);
         }
     }
