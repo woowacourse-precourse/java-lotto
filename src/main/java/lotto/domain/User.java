@@ -8,21 +8,24 @@ public class User {
     private Money money;
 
     public User(int money) {
-        this.money = new Money(money);
+        this.money = Money.of(money);
     }
 
     public void buyLotto() {
-        List<Lotto> lottos = createLottoByCount();
-        this.lottos = new Lottos(lottos);
+        this.lottos = createLottoByCount();;
     }
 
-    private List<Lotto> createLottoByCount() {
+    public Money getMoney() {
+        return money;
+    }
+
+    private Lottos createLottoByCount() {
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < getLottoCount(); i++) {
             lottos.add(Lotto.generateLottoAuto());
         }
-        return lottos;
+        return new Lottos(lottos);
     }
 
     public int getLottoCount() {
