@@ -21,11 +21,11 @@
     - [x] 숫자가 아닐 경우 예외 처리 - bonusTypeError()
     - [x] 범위를 넘어가는 수 입력 시 예외 처리 - bonusRangeError()
     - [x] 당첨 번호와 중복 시 예외 처리 - bonusDuplicate()
-- [ ] 구매 번호와 당첨 번호를 비교한다.
+- [ ] 구매 번호와 당첨 번호를 비교한다. - Result.java -> addResult()
   - [x] 일치하는 번호 갯수를 센다. - Check.java -> matchCnt
   - [x] 해당하는 당첨 금액을 반환한다. - Check.java -> winMoney()
-  - [ ] 해당하는 당첨 등수를 반환한다.
-- [ ] 당첨 내역을 출력한다.
+  - [x] 해당하는 당첨 등수를 반환한다. - Result.java ->getCount();
+- [x] 당첨 내역을 출력한다. - Result.java -> printResult()
 - [x] 수익률을 출력한다. - Result.java -> Calculate()
   - [x] 소수 둘째 자리에서 반올림 
 - [ ] 게임 종료.
