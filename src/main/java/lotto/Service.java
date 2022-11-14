@@ -113,10 +113,12 @@ public class Service {
 	}
 
 	public void checkUserNumber(String splitLottoNumber) {
+		exception.checkMissMatch(splitLottoNumber);
 		exception.checkNumberSize(splitLottoNumber);
 	}
 
 	public void checkbonusNumber(String number) {
+		exception.checkMissMatch(number);
 		exception.checkNumberSize(number);
 		exception.chackBonusNumberSameLottoNumber(number, lotto.getNumbers());
 	}

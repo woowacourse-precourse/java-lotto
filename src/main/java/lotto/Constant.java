@@ -12,7 +12,7 @@ public class Constant {
 	public static final String WIN_MESSAGE_FRAME = "%d개 일치 (%s원) - %d개\n";
 	public static final String WIN_BONUS_MESSAGE_FRAME = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
 
-	public static final String MONEY_MISSMATCH_ERROR = "[ERROR] 자연수를 입력해햐 합니다.";
+	public static final String MISSMATCH_ERROR = "[ERROR] 자연수를 입력해야 합니다.";
 	public static final String UNIT_MONEY_ERROR = "[ERROR] 1000원 단위로 입력 해야합니다.";
 	public static final String MONEY_RANGE_ERROR = "[ERROR] 0보다 큰 자연수를 입력해야 합니다.";
 	public static final String INPUT_SIZE_ERROR = "[ERROR] 6개의 숫자를 입력해야합니다.";

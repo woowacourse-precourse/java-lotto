@@ -10,10 +10,10 @@ public class LottoException {
 			throw new IllegalArgumentException(Constant.UNIT_MONEY_ERROR);
 		}
 	}
-
-	public void checkMissMatch(String money) throws IllegalArgumentException {
-		if (!Pattern.matches("^[0-9]*$", money)) {
-			throw new IllegalArgumentException(Constant.MONEY_MISSMATCH_ERROR);
+	
+	public void checkMissMatch(String number) throws IllegalArgumentException {
+		if (!Pattern.matches("^[0-9]*$", number)) {
+			throw new IllegalArgumentException(Constant.MISSMATCH_ERROR);
 		}
 	}
 
