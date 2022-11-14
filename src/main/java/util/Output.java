@@ -1,7 +1,6 @@
 package util;
 
 import lotto.Lotteries;
-import lotto.Lotto;
 import lotto.LottoResult;
 import lotto.Match;
 
