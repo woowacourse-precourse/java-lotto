@@ -7,6 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -40,6 +42,28 @@ class LottoTest {
         String input = "123abc";
 
         assertThatThrownBy(() -> LottoView.isNumber(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호는 숫자이외의 값이라면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "b", "c", "d", "e", "f"})
+    void createWinningByOverSize(String input) {
+        assertThatThrownBy(() -> LottoView.isNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호는 숫자여야 한다.")
+    @Test
+    void createBonusByNotNumber() {
+        assertThatThrownBy(() -> LottoView.isNumber("a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 비어있다면 예외가 발생한다.")
+    @Test
+    void createBonusByNull() {
+        assertThatThrownBy(() -> LottoView.isNull(""))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 1등은 6개 번호가 일치해야 한다.")
