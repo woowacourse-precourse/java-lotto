@@ -58,11 +58,11 @@ public class User {
         this.winningAmount = winningAmount;
     }
 
-    public Map<Number, Integer> getRank() {
+    public Map<Number, Integer> getRanks() {
         return ranks;
     }
 
-    public void setRank(Map<Number, Integer> rank) {
+    public void setRanks(Map<Number, Integer> rank) {
         this.ranks = rank;
     }
 
