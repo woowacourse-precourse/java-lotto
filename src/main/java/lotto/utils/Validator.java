@@ -3,12 +3,20 @@ package lotto.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.utils.ErrorCode.INVALID_TYPE_BONUS_NUMBER;
+
 public class Validator {
 
     public Validator() {}
 
     public int convertToInt(String s) {
-        return Integer.parseInt(s);
+        int result;
+        try {
+            result = Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INVALID_TYPE_BONUS_NUMBER.getMessage());
+        }
+        return result;
     }
 
     public List<Integer> convertToIntList(String s) {
