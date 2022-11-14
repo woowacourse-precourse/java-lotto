@@ -6,38 +6,21 @@ import java.util.*;
 
 import static util.Constant.*;
 
-// 특정 사용자의 로또 종합 당첨 결과를 조회할 수 있는 기능을 담당하는 클래스
+// 특정 사용자의 로또 발행/결과 조회 등 종합 서비스를 제공하는 클래스
 public class LottoService {
 
     private int totalEarning;
-    private int money = 0;
+    private int money;
 
     public LottoService() {
         this.totalEarning = 0;
+        this.money = 0;
     }
 
-    public Map<Prize, Integer> getWinningDetails(
-            List<Integer> winningNumbers,
-            List<Lotto> lottos,
-            int bonusNumber
-    ) {
-        List<Prize> prizes = new ArrayList<>();
-        for (Lotto lotto : lottos) {
-            Prize resultOfLotto = getResultOfLotto(winningNumbers, lotto.getUserLottoNumbers(), bonusNumber);
-            prizes.add(resultOfLotto);
-        }
-
-        Map<Prize, Integer> resultMap = new HashMap<>();
-        initResultMap(resultMap);
-
-        for (Prize prize : prizes) {
-            if (prize.equals(Prize.nothing)) {
-                continue;
-            }
-            int numberOfPrize = resultMap.get(prize);
-            resultMap.replace(prize, numberOfPrize + 1);
-        }
-        return resultMap;
+    public int getNumberOfLotto(String moneyInput) {
+        int money = InputConverter.getMoney(moneyInput);
+        this.money = money;
+        return money / LOTTO_PRICE;
     }
 
     public List<Lotto> publishLotto(int numberOfLotto) {
@@ -52,10 +35,18 @@ public class LottoService {
         return publishedLotto;
     }
 
-    public int getNumberOfLotto(String moneyInput) {
-        int money = InputConverter.getMoney(moneyInput);
-        this.money = money;
-        return money / LOTTO_PRICE;
+    public Map<Prize, Integer> getWinningDetails(
+            List<Integer> winningNumbers,
+            List<Lotto> lottos,
+            int bonusNumber
+    ) {
+        List<Prize> prizes = new ArrayList<>();
+        for (Lotto lotto : lottos) {
+            Prize resultOfLotto = getResultOfLotto(winningNumbers, lotto.getUserLottoNumbers(), bonusNumber);
+            prizes.add(resultOfLotto);
+        }
+
+        return saveWinningDetails(prizes);
     }
 
     public double getEarningRate() {
@@ -69,15 +60,23 @@ public class LottoService {
             int bonusNumber
     ) {
         Result result = new Result();
-        int matchingCount = result.countMatchingNumber(winningNumbers, userNumbers);
-        boolean checkBonusNumber = false;
-        if (matchingCount == 5) {
-            checkBonusNumber = result.isMatchingBonusNumber(userNumbers, bonusNumber);
-        }
-        Rank rank = result.getRank(matchingCount, checkBonusNumber);
-        Prize prize = result.getPrize(rank);
+        Prize prize = result.getLottoPrizeResult(winningNumbers, userNumbers, bonusNumber);
         earnMoney(prize.rankingPrize);
         return prize;
+    }
+
+    private Map<Prize, Integer> saveWinningDetails(List<Prize> prizes) {
+        Map<Prize, Integer> resultMap = new HashMap<>();
+        initResultMap(resultMap);
+
+        for (Prize prize : prizes) {
+            if (prize.equals(Prize.nothing)) {
+                continue;
+            }
+            int numberOfPrize = resultMap.get(prize);
+            resultMap.replace(prize, numberOfPrize + 1);
+        }
+        return resultMap;
     }
 
     private void earnMoney(int prize) {
