@@ -171,7 +171,7 @@ public class Application {
 
     public static void checkRange(int number) {
         if (number > 45 || number < 1)
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
     }
 
     public static void isDuplicatedWithWinningNumbers(int number) {
