@@ -1,5 +1,7 @@
 package lotto.IO;
 
+import lotto.Domain.Rank;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -10,16 +12,15 @@ public class LottoIOHandler extends IOHandler {
     public List<Integer> getLottoAnswer(){
         System.out.println("당첨 번호를 입력해 주세요.");
         validateInput(getUserInput());
-        List<Integer> answer = convertStringToIntList(input);
-        return answer;
+        return convertStringToIntList(input);
     }
 
     // "~,~" 형식의 문자열을 리스트로 변환한다.
     public List<Integer> convertStringToIntList(String input){
         List<Integer> numbers = new ArrayList<>();
         String[] num = input.split(",");
-        for(int i=0;i<num.length;i++){
-            numbers.add(Integer.parseInt(num[i]));
+        for (String s : num) {
+            numbers.add(Integer.parseInt(s));
         }
         return numbers;
     }
@@ -31,18 +32,39 @@ public class LottoIOHandler extends IOHandler {
         Pattern pass = Pattern.compile("^(?:4[0-5][,]|[1-3][0-9][,]|[1-9][,]){5}(?:[4][0-6]|[1-3][0-9]|[1-9])$");
         Matcher matcher = pass.matcher(input);
         if (!matcher.find()) {
-            throw new IllegalArgumentException("[ERROR] \',\' 구분자를 통해 1~45사이의 수 6개를 입력해주세요");
+            throw new IllegalArgumentException("[ERROR] , 구분자를 통해 1~45사이의 수 6개를 입력해주세요");
         }
     }
 
-    public void printStatistics(double rate){
-        List<Integer> result = new ArrayList<>();
-        rate = (double)Math.round(rate*100)/100;
-        System.out.println("3개 일치 (5,000원) - "+1+"개\n"+
-                "4개 일치 (50,000원) - "+0+"개\n"+
-                "5개 일치 (1,500,000원) - "+1+"개\n"+
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - "+2+"개\n"+
-                "6개 일치 (2,000,000,000원) - "+3+"개\n"+
-                "총 수익률은 "+String.format("%2.f",rate)+"입니다.");
+    // 수익률 측정
+    public String printStatistics(List<Rank> ranks,int purchaseAmount){
+        double yield=0;
+        for(Rank rank:ranks){
+            yield+=rank.getPrizeMoney();
+        }
+        return String.format("%.1f",(yield/purchaseAmount)*100);
+    }
+
+    // 당첨 결과 반환
+    public int[] getResult(List<Rank> ranks){
+        int[] rankCount = new int[5];
+        for(Rank rank:ranks){
+            if(rank.getRank()!=6)
+                rankCount[rank.getRank()-1]++;
+        }
+        return rankCount;
+    }
+
+    // 사용자에게 로또 당첨 통계 출력
+    public void printResult(List<Rank> ranks,int purchaseAmount){
+        int[] rankCount = getResult(ranks);
+        System.out.println("3개 일치 (5,000원) - "+rankCount[4]+"개\n"+
+                "4개 일치 (50,000원) - "+rankCount[3]+"개\n"+
+                "5개 일치 (1,500,000원) - "+rankCount[2]+"개\n"+
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - "+rankCount[1]+"개\n"+
+                "6개 일치 (2,000,000,000원) - "+rankCount[0]+"개\n"+
+                "총 수익률은 "
+                +printStatistics(ranks,purchaseAmount)
+                +"%입니다.");
     }
 }

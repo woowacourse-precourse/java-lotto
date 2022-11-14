@@ -11,17 +11,13 @@ public class CashIOHandler extends IOHandler {
     private int lottoAmount = 0;
 
     // getter & setter
-    private void setLotteryAmount(int lotteryAmount) { this.lottoAmount = lotteryAmount; }
-    private void setPurchaseAmount(int purchaseAmount) {
-        this.purchaseAmount = purchaseAmount;
-    }
     public int getPurchaseAmount() { return purchaseAmount; }
     public int getLotteryAmount() {
         return lottoAmount;
     }
 
     // get user's cash
-    public void setUserCash() throws IllegalArgumentException{
+    public void setUserCash(){
         System.out.println("구입금액을 입력해 주세요.");
         String input = getUserInput();
         validateInput(input);

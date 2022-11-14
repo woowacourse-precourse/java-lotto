@@ -1,5 +1,6 @@
 package lotto.IOTest;
 
+import lotto.Domain.Rank;
 import lotto.IO.LottoIOHandler;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -39,6 +40,21 @@ public class LottoIOHandlerTest extends IOTest {
         assertThatThrownBy(() -> lottoIOHandler.validateInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] ',' 구분자를 통해 1~45사이의 수 6개를 입력해주세요");
+    }
+
+    @DisplayName("수익률 처리 검증")
+    @Test
+    void printStatisticsTest(){
+        List<Rank> ranks = List.of(Rank.NONE, Rank.NONE, Rank.FIFTH, Rank.NONE);
+        assertThat(lottoIOHandler.printStatistics(ranks, 8000)).isEqualTo("62.5");
+    }
+
+    @DisplayName("당첨 결과 반환 검증")
+    @Test
+    void getResultTest(){
+        List<Rank> ranks = List.of(Rank.FIRST, Rank.FIRST, Rank.FIFTH, Rank.NONE, Rank.SECOND);
+        int[] result = {2, 1, 0, 0, 1};
+        assertThat(lottoIOHandler.getResult(ranks)).isEqualTo(result);
     }
 
 }
