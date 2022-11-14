@@ -9,6 +9,9 @@ public class Application {
         List<List<Integer>> lottonumbers = new ArrayList<>();
         Random random = new Random();
         lottonumbers = random.createAllLotto(buylotto);
+        for(int i=0;i<buylotto;i++){
+            System.out.println(lottonumbers.get(i));
+        }
         // TODO: 프로그램 구현
     }
     public static int askmoney(){
