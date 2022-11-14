@@ -19,7 +19,7 @@ public enum Ranking {
         this.prize = prize;
     }
 
-    public static Ranking rank(Lotto lotto, WinningLotto winningLotto, BonusNumber bonusNumber) {
+    public static Ranking rank(Lotto lotto, Lotto winningLotto, BonusNumber bonusNumber) {
         int matchCount = winningLotto.countSameNumber(lotto);
         if (matchCount == Ranking.SECOND.getMatchCount()) {
             return Ranking.of(matchCount, checkBonusNumber(lotto, bonusNumber));

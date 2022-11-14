@@ -4,12 +4,12 @@ public class BonusNumber {
 
     private final int bonusNumber;
 
-    public BonusNumber(WinningLotto winningLotto, int bonusNumber) {
+    public BonusNumber(Lotto winningLotto, int bonusNumber) {
         validate(winningLotto, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
-    private void validate(WinningLotto winningLotto, int bonusNumber) {
+    private void validate(Lotto winningLotto, int bonusNumber) {
         validateNumber(bonusNumber);
         validateDuplicate(winningLotto, bonusNumber);
     }
@@ -21,7 +21,7 @@ public class BonusNumber {
         }
     }
 
-    private void validateDuplicate(WinningLotto winningLotto, int bonusNumber) {
+    private void validateDuplicate(Lotto winningLotto, int bonusNumber) {
         if (winningLotto.contains(bonusNumber)) {
             System.out.println("[ERROR] 보너스 숫자는 당첨 숫자와 중복될 수 없습니다.");
             throw new IllegalArgumentException();
