@@ -1,12 +1,13 @@
 package lotto.domain;
 
+import static lotto.domain.Constants.MAX_NUMBER;
+import static lotto.domain.Constants.MIN_NUMBER;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    private static final int MAX_NUMBER = 45;
-    private static final int MIN_NUMBER = 1;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
