@@ -45,10 +45,17 @@ class NumberWithDotFilterTest {
                 .isThrownBy(() -> new NumberWithDotFilter().doFilter("1,2,3,4,5,6"));
     }
 
-    @DisplayName("입력값이 지정된 크기 내의 쉼표로 구분된 공백을 포함한 숫자라면 예외가 발생한다.")
+    @DisplayName("입력값이 공백을 포함한 숫자라면 예외가 발생한다.")
     @Test
     void throwExceptionWhenValueIsMixedWithSpace() {
         assertThatThrownBy(() -> new NumberWithDotFilter().doFilter("1   ,   2,3,   4    ,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력값이 중간에 비어 있다면 예외가 발생한다")
+    @Test
+    void throwExceptionWhenValueIsMixedWithEmpty() {
+        assertThatThrownBy(() -> new NumberWithDotFilter().doFilter("1,,3,4,5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
