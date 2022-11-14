@@ -13,7 +13,7 @@ public class OutputView {
     private static final String ERROR_MESSAGE = "[ERROR] %s";
 
     public static void printLottoTickets(LottoTickets lottoTickets) {
-        List<Lotto> lottoTicketList = lottoTickets.getLottos();
+        List<Lotto> lottoTicketList = lottoTickets.getLottoTickets();
         System.out.println(String.format(LOTTO_TICKET_COUNT, lottoTicketList.size()));
         lottoTicketList.forEach(lottoTicket ->
                         System.out.println(String.format(LOTTO_TICKET_NUMBERS, lottoTicket.getSortedNumbers())));

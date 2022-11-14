@@ -43,7 +43,7 @@ public class LottoApplication {
     }
 
     private List<Rank> match(LottoTickets lottoTickets, WinningLotto winningLotto) {
-        return lottoTickets.getLottos().stream()
+        return lottoTickets.getLottoTickets().stream()
                 .map(lotto -> Rank.from(winningLotto, lotto))
                 .collect(Collectors.toList());
     }

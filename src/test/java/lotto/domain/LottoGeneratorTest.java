@@ -21,7 +21,7 @@ class LottoGeneratorTest {
 
         //when
         LottoTickets lottoTickets = LottoGenerator.generateTickets(money);
-        List<Lotto> res = lottoTickets.getLottos();
+        List<Lotto> res = lottoTickets.getLottoTickets();
 
         //then
         assertThat(res.size()).isEqualTo(money.getTicketCount());
