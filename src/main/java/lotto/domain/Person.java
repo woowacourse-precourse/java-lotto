@@ -40,4 +40,13 @@ public class Person {
             results.add(getLottoResult(lotto));
         }
     }
+
+    private int sumPrize() {
+        int totalPrize = 0;
+        for (LottoPrize result : results) {
+            totalPrize += result.getPrize();
+        }
+        return totalPrize;
+    }
+
 }
