@@ -1,13 +1,13 @@
 
 ## 기능 목록
 
-- [ ] 구입 금액 입력 - Input#enterPurchaseMoney
-  - [ ] 입력 금액 유효성 검사 - InputValidator#validatePurchaseMoney
-- [ ] 로또 번호 발행 - LottoGenerator#makeLottoNumber
-- [ ] 당첨 번호(6자리) 입력 - Input#enterSixNumber
-  - [ ] 당첨 번호(6자리) 유효성 검사 - InputValidator#validateSixNumber
-- [ ] 보너스 번호(1자리) 입력 - Input#enterBonusNumber
-  - [ ] 보너스 번호(1자리) 유효성 검사 - InputValidator#validateBonusNumber
+- [x] 구입 금액 입력 - PurchaseMoney#enterPurchaseMoney
+  - [x] 입력 금액 유효성 검사 - PurchaseMoney#validatePurchaseMoney
+- [x] 로또 번호 발행 - LottoGenerator#makeLottoNumber
+- [ ] 당첨 번호(6자리) 입력 - WinNumber#enterSixNumber
+  - [ ] 당첨 번호(6자리) 유효성 검사 - WinNumber#validateSixNumber
+- [ ] 보너스 번호(1자리) 입력 - WinNumber#enterBonusNumber
+  - [ ] 보너스 번호(1자리) 유효성 검사 - WinNumber#validateBonusNumber
 - [ ] 당첨 확인 - Lotto#checkResult
   - [ ] 로또 번호(6자리) & 당첨 번호(6자리) 일치 확인 - Lotto#compareSixNumber
   - [ ] 로또 번호(6자리) & 보너스 번호(1자리) 일치 확인 - Lotto#compareBonusNumber
