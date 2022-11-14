@@ -1,25 +1,25 @@
 package lotto.controller;
 
-import static lotto.view.OutputView.printStatics;
-import static lotto.view.OutputView.printYield;
-
 import java.util.List;
 import lotto.model.Buyer;
 import lotto.model.LottoStatics;
 import lotto.model.LottoStore;
 import lotto.model.Money;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoStoreController {
     public void run() {
         Buyer buyer = createBuyer();
-        buyer.printBuyLottos();
+        OutputView.printBuyLottos(buyer);
 
         LottoStore store = createLottoStore();
+
         LottoStatics statics = new LottoStatics();
         statics.calculateStatics(buyer, store);
-        printStatics(statics);
-        printYield(buyer, statics);
+
+        OutputView.printWinnings(statics);
+        OutputView.printYield(buyer, statics);
     }
 
     private Buyer createBuyer() {
