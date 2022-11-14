@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.dto;
 
 import lotto.vo.Score;
 import org.junit.jupiter.api.DisplayName;

@@ -1,6 +1,6 @@
 package lotto.service;
 
-import lotto.domain.ScoreInfo;
+import lotto.dto.ScoreInfo;
 import lotto.mock.MockScoreInfo;
 import lotto.vo.*;
 import org.junit.jupiter.api.DisplayName;

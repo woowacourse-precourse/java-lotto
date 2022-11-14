@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.domain.ScoreInfo;
+import lotto.dto.ScoreInfo;
 import lotto.vo.Lotto;
 import lotto.vo.LottoBuyingInfo;
 import lotto.vo.Profit;

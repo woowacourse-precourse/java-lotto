@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.ScoreInfo;
+import lotto.dto.ScoreInfo;
 import lotto.vo.*;
 
 public class LottoServiceImpl implements LottoService {

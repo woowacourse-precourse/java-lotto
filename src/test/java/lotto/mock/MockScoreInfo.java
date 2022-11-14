@@ -1,6 +1,6 @@
 package lotto.mock;
 
-import lotto.domain.ScoreInfo;
+import lotto.dto.ScoreInfo;
 import lotto.vo.Score;
 
 public class MockScoreInfo extends ScoreInfo {
