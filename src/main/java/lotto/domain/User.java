@@ -3,12 +3,18 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
+    int lottoCost = 0;
 
-    public int receiveInput() {
+    public int getLottoCost() {
+        return lottoCost;
+    }
+
+    public void receiveCostInput() {
         String input = Console.readLine();
         judgeIsDigitOfString(input);
 
-        return Integer.parseInt(input);
+        lottoCost = Integer.parseInt(input);
+        judgeCostValidate();
     }
 
     private void judgeIsDigitOfString(String sentence) {
@@ -21,6 +27,12 @@ public class User {
     private void judgeIsDigitOfChar(char word) {
         if (!Character.isDigit(word)) {
             throw new IllegalArgumentException("[ERROR] 입력은 자연수만 가능합니다.");
+        }
+    }
+
+    private void judgeCostValidate() {
+        if (lottoCost % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위로 입력해야 합니다.");
         }
     }
 }
