@@ -1,6 +1,9 @@
-package lotto;
+package lotto.domain.lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.StringJoiner;
 
 /**
  * - `Lotto`에 매개 변수가 없는 생성자를 추가할 수 없다.
@@ -19,7 +22,20 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Set<Integer> set = new HashSet<>(numbers);
+        if (set.size() != 6) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    // TODO: 추가 기능 구현
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Lotto.class.getSimpleName() + "[", "]")
+                .add("numbers=" + numbers)
+                .toString();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
