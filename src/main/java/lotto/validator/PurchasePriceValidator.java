@@ -1,9 +1,6 @@
 package lotto.validator;
 
 import static lotto.validator.CommonValidator.validateIsNumber;
-
-import lotto.ErrorConstants;
-
 public class PurchasePriceValidator {
 	public static void validatePurchasePrice(String input) {
 		validateIsNumber(input);

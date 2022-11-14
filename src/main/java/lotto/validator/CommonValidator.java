@@ -1,7 +1,5 @@
 package lotto.validator;
 
-import lotto.ErrorConstants;
-
 public class CommonValidator {
 	public static void validateIsNumber(String str) {
 		try {

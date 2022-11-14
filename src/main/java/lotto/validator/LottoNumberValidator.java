@@ -1,7 +1,6 @@
 package lotto.validator;
 
 import java.util.List;
-import lotto.ErrorConstants;
 
 public class LottoNumberValidator {
 	public static void validateNumberCountIsSix(List<Integer> numbers) {
