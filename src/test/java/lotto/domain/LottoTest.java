@@ -42,5 +42,17 @@ class LottoTest {
             assertThat(beforeNumber.compareTo(afterNumber)).isLessThanOrEqualTo(-1);
         }
     }
+    @DisplayName("로또 번호 포함 여부 기능 동작 확인.")
+    @Test
+    void containsLotto() {
+        // given
+        List<Integer> inputs = new ArrayList<>(List.of(5,1,2,10,4,7));
+        Lotto lotto = new Lotto(inputs);
 
+        // expect
+        for (int elem : inputs) {
+            boolean contains = lotto.contains(LottoNumber.getInstance(elem));
+            assertThat(contains).isEqualTo(true);
+        }
+    }
 }
