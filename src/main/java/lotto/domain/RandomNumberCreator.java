@@ -7,11 +7,11 @@ import java.util.List;
 
 import static lotto.domain.LottoValidationUtils.*;
 
-public class RandomLottoNumberCreator {
+public class RandomNumberCreator {
 
     public static final int CRITERION_ZERO = 0;
 
-    private RandomLottoNumberCreator() {
+    private RandomNumberCreator() {
     }
 
     public static List<Integer> createLottoNumber() {

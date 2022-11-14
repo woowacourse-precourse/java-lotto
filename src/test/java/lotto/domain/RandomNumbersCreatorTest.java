@@ -13,7 +13,7 @@ public class RandomNumbersCreatorTest {
     @DisplayName("주어진 범위 안에 6개의 랜덤 로또 번호를 만드는 기능")
     @RepeatedTest(50)
     void createLottoNumberInRange() {
-        List<Integer> lottoNumbers = RandomLottoNumberCreator.createLottoNumber();
+        List<Integer> lottoNumbers = RandomNumberCreator.createLottoNumber();
         assertThat(lottoNumbers.size()).isEqualTo(6);
         for (int number : lottoNumbers) {
             assertThat(number >= 1 && number <= 45).isTrue();
@@ -23,7 +23,7 @@ public class RandomNumbersCreatorTest {
     @DisplayName("주어진 범위 안에서 주어진 개수 만큼 6개의 랜덤 로또 번호들을 만드는 기능")
     @Test
     void createLottoNumbersInRange() {
-        List<List<Integer>> lottoNumbers = RandomLottoNumberCreator.createLottoNumber(4);
+        List<List<Integer>> lottoNumbers = RandomNumberCreator.createLottoNumber(4);
         assertThat(lottoNumbers.size()).isEqualTo(4);
     }
 }

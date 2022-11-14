@@ -9,7 +9,7 @@ public class LottosCreator {
     }
 
     public static Lottos create(int purchasePrice) {
-        return create(purchasePrice, RandomLottoNumberCreator.createLottoNumber(calculateLottoCount(purchasePrice)));
+        return create(purchasePrice, RandomNumberCreator.createLottoNumber(calculateLottoCount(purchasePrice)));
     }
 
     public static Lottos create(int purchasePrice, List<List<Integer>> lottoNumbers) {
