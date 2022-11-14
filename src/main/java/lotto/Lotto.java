@@ -23,6 +23,10 @@ public class Lotto {
         return LottoRanking.findByMatchingInformation(match, hasBonusNumber);
     }
 
+    public void printLottoNumbers(){
+        System.out.println(numbers);
+    }
+
     private void validate(List<Integer> numbers) {
         validateLength(numbers);
         validateUnique(numbers);

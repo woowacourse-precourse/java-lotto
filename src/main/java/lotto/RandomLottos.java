@@ -2,7 +2,7 @@ package lotto;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
@@ -16,6 +16,19 @@ public class RandomLottos {
             randomLottos.add(new Lotto(list));
         }
     }
+
+    public List<LottoRanking> createLottoRankingsBy(WinningLotto winningLotto){
+        return randomLottos.stream()
+                .map(randomLotto -> randomLotto.findLottoRankingBy(winningLotto))
+                .collect(Collectors.toList());
+    }
+
+    public void printRandomLottos(){
+        for(Lotto lotto:randomLottos){
+            lotto.printLottoNumbers();
+        }
+    }
+
     private void validateMoney(int money){
         if(money < 0){
             throw new IllegalArgumentException("[ERROR] 음수가 아닌 정수를 입력해야 합니다.");
