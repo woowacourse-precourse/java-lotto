@@ -15,6 +15,19 @@ public class LottoController {
     private LottoJudge lottoJudge;
     private WinningNumber winningNumber;
 
+    public void init() {
+        String payMoney = loadPayMoney();
+
+        printBuyNumber(payMoney);
+        printLottoNumber(generateLottoNumbers(payMoney));
+        loadWinningNumber();
+        loadBonusNumber();
+        printLottoRank(lottoGenerator.getLotteries(), winningNumber.getWinningNumbers(),
+            winningNumber.getBonusNumber());
+        printLottoProfit(lottoJudge.getRankCount(), Integer.parseInt(payMoney));
+    }
+
+
     public String loadPayMoney() {
         return LottoInput.inputPayMoney();
     }
