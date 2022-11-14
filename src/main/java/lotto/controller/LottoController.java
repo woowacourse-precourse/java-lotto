@@ -14,6 +14,7 @@ import static lotto.view.OutputView.printLottoResult;
 import static lotto.view.OutputView.printLottoTicketCount;
 import static lotto.view.OutputView.printProfit;
 import static lotto.view.OutputView.printResultIntro;
+import static lotto.view.OutputView.printTicket;
 
 public class LottoController {
     public void LottoStart(){
