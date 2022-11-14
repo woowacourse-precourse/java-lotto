@@ -12,13 +12,16 @@ public class View {
         }
     }
     private void validateIsNumber(String input) {
+        try {
+            int number = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력이 가능합니다");
+        }
+    }
+    private void validateAreNumbers(String input) {
         String[] splitInput = input.split(",");
         for (String value : splitInput) {
-            try {
-                int number = Integer.parseInt(value);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력이 가능합니다");
-            }
+            validateIsNumber(value);
         }
     }
     private void validateUniqueNumbersInput(List<Integer> numbers) {
@@ -59,7 +62,7 @@ public class View {
         String numbersString = Console.readLine();
         String[] numbersSplit;
         List<Integer> numbersInteger= new ArrayList<>();
-        validateIsNumber(numbersString);
+        validateAreNumbers(numbersString);
         numbersSplit = numbersString.split(",");
         for (String num : numbersSplit) {
             numbersInteger.add(Integer.parseInt(num));
@@ -69,5 +72,6 @@ public class View {
         validateUniqueNumbersInput(numbersInteger);
         return numbersInteger;
     }
+
 }
 
