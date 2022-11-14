@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.domain.validator.BonusNumberValidator;
 import lotto.domain.validator.NumbersValidator;
 
 import java.util.List;
@@ -22,7 +23,12 @@ public class WinningNumbers {
     }
 
     public void registerBonusNumber(int bonusNumber) {
+        validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
+    }
+
+    private void validateBonusNumber(int bonusNumber) {
+        BonusNumberValidator.validate(this, bonusNumber);
     }
 
     public int getBonusNumber() {

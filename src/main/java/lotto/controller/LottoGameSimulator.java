@@ -76,7 +76,6 @@ public class LottoGameSimulator {
 
     public void selectBonusNumber() {
         String bonusNumberInput = getInputOfBonusNumber();
-        validateBonusNumber(bonusNumberInput);
         registerBonusNumberToWinningNumbers(bonusNumberInput);
     }
 
@@ -86,12 +85,15 @@ public class LottoGameSimulator {
         return bonusNumberInput;
     }
 
-    public void validateBonusNumber(String bonusNumberInput) {
-        BonusNumberValidator.validate(bonusNumberInput, winningNumbers);
-    }
-
     public void registerBonusNumberToWinningNumbers(String bonusNumberInput) {
-        int bonusNumber = Integer.parseInt(bonusNumberInput);
+        int bonusNumber;
+
+        try {
+            bonusNumber = Integer.parseInt(bonusNumberInput);
+        } catch (Exception exception) {
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력헤야 합니다");
+        }
+
         winningNumbers.registerBonusNumber(bonusNumber);
     }
 
