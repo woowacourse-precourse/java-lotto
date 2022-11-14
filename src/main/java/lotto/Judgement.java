@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Judgement {
     private List<HashMap<Integer, Boolean>> resultTable;
@@ -41,7 +42,8 @@ public class Judgement {
         for(List<Integer> lotteryNumber : lotteryNumbers){
             compare(lotteryNumber);
         }
-
+        sumRequiredMoney();
+        computeReturnRate();
         printResult();
     }
 
@@ -49,21 +51,10 @@ public class Judgement {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + search(3, false) + "개");
-        this.requiredMoney += 5000 * search(3, false);
-
         System.out.println("4개 일치 (50,000원) - " + search(4, false) + "개");
-        this.requiredMoney += 50000 * search(4, false);
-
         System.out.println("5개 일치 (1,500,000원) - " + search(5, false) + "개");
-        this.requiredMoney += 15000000 * search(5, false);
-
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + search(5, true) + "개");
-        this.requiredMoney += 30000000 * search(5, true);
-
         System.out.println("6개 일치 (2,000,000,000원) - " + search(6, false) + "개");
-        this.requiredMoney += 200000000 * search(6, false);
-
-        computeReturnRate();
         System.out.println("총 수익률은 " + this.returnRate + "%입니다.");
     }
 
@@ -87,6 +78,31 @@ public class Judgement {
         return (int) resultTable.stream()
                 .filter(map -> map.containsKey(count))
                 .count();
+    }
+
+    private void sumRequiredMoney(){
+        this.requiredMoney += (int) resultTable.stream()
+                .filter(map -> map.containsKey(3))
+                .count() * 5000;
+
+        this.requiredMoney += (int) resultTable.stream()
+                .filter(map -> map.containsKey(4))
+                .count() * 50000;
+
+        this.requiredMoney += (int) resultTable.stream()
+                .filter(map -> map.containsKey(5))
+                .filter(map -> map.containsValue(false))
+                .count() * 1500000;
+
+        this.requiredMoney += (int) resultTable.stream()
+                .filter(map -> map.containsKey(5))
+                .filter(map -> map.containsValue(true))
+                .count() * 30000000;
+
+        this.requiredMoney += (int) resultTable.stream()
+                .filter(map -> map.containsKey(6))
+                .count() * 200000000;
+
     }
 
     private void computeReturnRate(){
