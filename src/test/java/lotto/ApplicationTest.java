@@ -54,6 +54,28 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 최소_구매금() {
+        assertSimpleTest(() -> {
+            runException("580");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 최수_구매금의_단위() {
+        assertSimpleTest(() -> {
+            runException("1100");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 최대_구매금() {
+        assertSimpleTest(() -> {
+            runException("2000000000");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
