@@ -1,7 +1,10 @@
 package lotto;
 
+import lotto.controller.RunController;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        new RunController().start();
     }
 }
