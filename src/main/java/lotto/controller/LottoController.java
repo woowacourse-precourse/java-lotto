@@ -13,7 +13,7 @@ import lotto.view.Input;
 import lotto.view.Output;
 
 public class LottoController {
-    private static LottoService lottoService;
+    private LottoService lottoService;
     private Input input;
 
     public LottoController(LottoService lottoService, Input input) {
@@ -28,7 +28,7 @@ public class LottoController {
             User user = lottoUser(money);
             printStatistics(lottoList, user);
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            Output.printError(e);
         }
     }
 
@@ -64,7 +64,7 @@ public class LottoController {
         Output.printProfit(lottoService.calculateProfit(user, lottoService.getSum(winningLottoCount)));
     }
 
-    public User lottoUser(Money money) {
+    private User lottoUser(Money money) {
         String winningNumber = input.getWinningNumber();
         String bonusNumber = input.getBonusNumber();
         WinningLottoNumber winningLottoNumber = new WinningLottoNumber(winningNumber, bonusNumber);
