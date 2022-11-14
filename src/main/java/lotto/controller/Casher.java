@@ -1,7 +1,11 @@
 package lotto.controller;
 
+import static lotto.controller.Constants.*;
+
 public class Casher {
-    public static int issueTickets(int money) { // public static으로 해야 하는가
-        return money / 1000;
+
+    public static int issueTickets(int money) {
+        ExceptionHandler.validateMoneyUnit(money);
+        return money / MONEY_UNIT;
     }
 }
