@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import java.util.StringTokenizer;
-
 public class Validation {
     private static final String ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final int LOTTO_MONEY = 1000;
