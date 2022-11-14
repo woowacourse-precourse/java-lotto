@@ -27,14 +27,15 @@ public class Lotto {
 
     private void isSizeSix(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자여야 합니다.");
+            throw new IllegalArgumentException(String.format("[ERROR] 로또 번호는 %d개의 숫자여야 합니다.", LOTTO_SIZE));
         }
     }
 
     private void isInCorrectRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < MIN_NUMBER_RANGE || number > MAX_NUMBER_RANGE) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException(
+                        String.format("[ERROR] 로또 번호는 %d부터 %d사이의 숫자여야 합니다.", MIN_NUMBER_RANGE, MAX_NUMBER_RANGE));
             }
         }
     }

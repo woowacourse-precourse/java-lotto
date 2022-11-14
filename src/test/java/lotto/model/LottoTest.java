@@ -30,7 +30,7 @@ class LottoTest {
     void createLottoByIncorrectRangeNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 50)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                .hasMessageContaining("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
     }
 
     @DisplayName("올바른 입력에 대해 로또 번호를 반환한다.")
