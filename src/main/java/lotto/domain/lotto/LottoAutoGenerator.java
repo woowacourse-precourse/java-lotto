@@ -4,6 +4,7 @@ import static lotto.util.constant.Constant.LOTTO_PURCHASE_AMOUNT;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lotto.domain.money.Money;
 
@@ -22,6 +23,7 @@ public class LottoAutoGenerator {
 
 	public Lotto createLottoByAuto() {
 		List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+		Collections.sort(numbers);
 		return new Lotto(numbers);
 	}
 }
