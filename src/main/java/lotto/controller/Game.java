@@ -24,18 +24,30 @@ public class Game {
 
     public void play() {
         Money capital = new Money(inputView.promptAmount());
-        List<Lotto> lottos = new Seller().issueLottos(capital);
-        outputView.printIssuedLottos(new LottoDto(lottos));
+        List<Lotto> lottos = issueLottosWith(capital);
 
+        List<Rank> ranks = getPicker().pick(lottos);
+
+        Money profit = sumProfitsOf(ranks);
+        double profitRate = capital.calculateProfitRateOf(profit);
+    }
+
+    private Money sumProfitsOf(List<Rank> ranks) {
+        return ranks.stream()
+                .map(Rank::prize)
+                .reduce(Money::add)
+                .orElse(new Money(0));
+    }
+
+    private Picker getPicker() {
         Lotto winningLotto = new Lotto(inputView.promptWinningNumbers());
         LottoNumber bonusNumber = new LottoNumber(inputView.promptBonusNumber());
-        List<Rank> ranks = new Picker(winningLotto, bonusNumber).pick(lottos);
+        return new Picker(winningLotto, bonusNumber);
+    }
 
-        Money profit = new Money(0);
-        for (Rank rank : ranks) {
-            profit = profit.add(rank.prize());
-        }
-
-        capital.calculateProfitRateOf(profit);
+    private List<Lotto> issueLottosWith(Money capital) {
+        List<Lotto> lottos = new Seller().issueLottos(capital);
+        outputView.printIssuedLottos(new LottoDto(lottos));
+        return lottos;
     }
 }
