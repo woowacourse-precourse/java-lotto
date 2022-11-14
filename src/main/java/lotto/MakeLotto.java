@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MakeLotto {
-    public static List<Integer> publishedLotto () {
+    public List<Integer> publishedLotto () {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 6) {
             int num = Randoms.pickNumberInRange(1,45);
