@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.Map;
+import lotto.constant.WinningResult;
 import lotto.ui.UserInterface;
 
 public class Cashier {
@@ -23,13 +25,19 @@ public class Cashier {
         this.account.saveResult(lottos);
     }
 
-    public void getResultInAccount() {
-        this.account.printResult();
-    }
-
     public void setWinningRule() {
         setWinningNumbers();
         setBonusNumber();
+    }
+
+    public void getResultInAccount() {
+        Map<WinningResult, Integer> results = this.account.getResults();
+        UserInterface.printResult(results);
+    }
+
+    public void getYieldInAccount() {
+        String yield = this.account.getYield();
+        UserInterface.printYield(yield);
     }
 
     private void setWinningNumbers() {

@@ -9,5 +9,6 @@ public class Application {
         cashier.setWinningRule();
         cashier.saveResultInAccount();
         cashier.getResultInAccount();
+        cashier.getYieldInAccount();
     }
 }

@@ -5,7 +5,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.constant.WinningResult;
-import lotto.ui.UserInterface;
 
 public class Account {
     private WinningCalculator winningCalculator;
@@ -30,9 +29,16 @@ public class Account {
         calculateWinningAmountByResults();
     }
 
-    public void printResult() {
-        UserInterface.printResult(this.results);
-        UserInterface.printYield(getYield());
+    public Map<WinningResult, Integer> getResults() {
+        return this.results;
+    }
+
+    public String getYield() {
+        double yieldRaw = winningAmount / ((double) (count * 1000));
+        double yieldPercent = yieldRaw * 100;
+        DecimalFormat decFormat = new DecimalFormat("###,###.0");
+        String yield = decFormat.format(yieldPercent);
+        return yield;
     }
 
     private void saveOneLotto(Lotto lotto) {
@@ -47,13 +53,5 @@ public class Account {
         for (WinningResult result: results.keySet()) {
             this.winningAmount += results.get(result) * result.getMoney();
         }
-    }
-
-    private String getYield() {
-        double yieldRaw = winningAmount / ((double) (count * 1000));
-        double yieldPercent = yieldRaw * 100;
-        DecimalFormat decFormat = new DecimalFormat("###,###.0");
-        String yield = decFormat.format(yieldPercent);
-        return yield;
     }
 }
