@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.repository.UserRepository;
+import lotto.service.ExceptionService;
 import lotto.service.RandomLottoService;
 import lotto.service.UserService;
 import lotto.view.GameProgressView;
@@ -16,11 +17,12 @@ public class UserController {
     private static RandomLottoService randomLottoService = new RandomLottoService();
     private static GameProgressView gameProgressView = new GameProgressView();
     private static WinningStatsView winningStatsView = new WinningStatsView();
+    private static ExceptionService exceptionService = new ExceptionService();
 
     public void savePurchaseAmount() {
         gameProgressView.showPurchaseMessage();
         String purchaseAmount = userService.enterPurchaseAmount();
-        //TODO : 예외 처리 필요
+        exceptionService.exceptionHandlingOfPurchaseAmount(purchaseAmount);
         userRepository.setUserPurchaseMoney(Integer.parseInt(purchaseAmount));
         userRepository.setUserNumberOfLotties(userService.findTheNumberOfLotteryTicketsPurchased(purchaseAmount));
     }
@@ -40,7 +42,7 @@ public class UserController {
         winningStatsView.showLineBreak();
         gameProgressView.showEnterWinningNumbersMessage();
         String winningNumbers = userService.enterWinningNumbers();
-        //TODO : 예외 처리 필요
+        exceptionService.exceptionHandlingOfWinningNumbers(winningNumbers);
         ArrayList<Integer> numbers = userService.convertWinningNumbers(winningNumbers);
         Lotto lotto = new Lotto(numbers);
         userRepository.setUserWinningNumbers(lotto);

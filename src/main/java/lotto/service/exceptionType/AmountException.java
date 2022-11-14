@@ -10,8 +10,7 @@ public class AmountException {
         try {
             int money = Integer.parseInt(purchaseAmount);
         } catch (IllegalArgumentException e) {
-            System.out.println(ERROR_MESSAGE + FAILED_TO_CONVERT_NUMBER_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE + FAILED_TO_CONVERT_NUMBER_MESSAGE);
         }
     }
 
