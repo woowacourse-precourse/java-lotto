@@ -3,13 +3,15 @@ package lotto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.NumberValidate.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        NumberValidate.countSixValidate(numbers);
-        NumberValidate.duplicateValidate(numbers);
-        NumberValidate.numbersInRangeValidate(numbers);
+        countSixValidate(numbers);
+        duplicateValidate(numbers);
+        numbersInRangeValidate(numbers);
         this.numbers = numbersSort(numbers);
     }
 
@@ -20,7 +22,7 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return List.copyOf(numbers);
     }
 
     public String toString() {
