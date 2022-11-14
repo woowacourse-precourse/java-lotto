@@ -49,8 +49,7 @@ public class LottoMachine {
     }
 
     private static List<Integer> getSortedRandomNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
-                        START_NUMBER, END_NUMBER, COUNT_OF_NUMBERS)
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, COUNT_OF_NUMBERS)
                 .stream()
                 .sorted()
                 .collect(Collectors.toList());
