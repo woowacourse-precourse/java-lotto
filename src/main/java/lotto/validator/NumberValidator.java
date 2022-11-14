@@ -1,6 +1,6 @@
 package lotto.validator;
 
-import static lotto.constants.LottoConstant.VALID_LOTTERY_NUMBER_LENGTH;
+import static lotto.constants.LottoConstant.VALID_LOTTO_NUMBER_LENGTH;
 import static lotto.constants.LottoConstant.VALID_MAX_RANGE;
 import static lotto.constants.LottoConstant.VALID_MIN_RANGE;
 import static lotto.validator.ErrorMessages.DUPLICATE_BONUS_NUMBER_ERROR_MESSAGE;
@@ -19,16 +19,16 @@ public class NumberValidator {
         }
     }
 
-    public static void hasValidRange(int lotteryNumber) throws IllegalArgumentException {
-        if (!(lotteryNumber >= VALID_MIN_RANGE && lotteryNumber <= VALID_MAX_RANGE)) {
+    public static void hasValidRange(int number) throws IllegalArgumentException {
+        if (!(number >= VALID_MIN_RANGE && number <= VALID_MAX_RANGE)) {
             throw new IllegalArgumentException(INVALID_RANGE_ERROR_MESSAGE);
         }
     }
 
-    public static void hasNonDuplicateNumbers(List<Integer> lotteryNumbers) throws IllegalArgumentException {
-        Set<Integer> tempLotteryNumbers = new HashSet<>(lotteryNumbers);
-        if (tempLotteryNumbers.size() != lotteryNumbers.size()) {
-            if (lotteryNumbers.size() == VALID_LOTTERY_NUMBER_LENGTH) {
+    public static void hasNonDuplicateNumbers(List<Integer> numbers) throws IllegalArgumentException {
+        Set<Integer> tempNumbers = new HashSet<>(numbers);
+        if (tempNumbers.size() != numbers.size()) {
+            if (numbers.size() == VALID_LOTTO_NUMBER_LENGTH) {
                 throw new IllegalArgumentException(DUPLICATE_LOTTO_NUMBER_ERROR_MESSAGE);
             }
             throw new IllegalArgumentException(DUPLICATE_BONUS_NUMBER_ERROR_MESSAGE);

@@ -1,14 +1,14 @@
 package lotto.validator;
 
 import static lotto.constants.LottoConstant.LOTTO_PRICE;
-import static lotto.constants.LottoConstant.VALID_LOTTERY_NUMBER_LENGTH;
+import static lotto.constants.LottoConstant.VALID_LOTTO_NUMBER_LENGTH;
 import static lotto.constants.LottoConstant.VALID_MAX_RANGE;
 import static lotto.constants.LottoConstant.VALID_MIN_RANGE;
 
 public class ErrorMessages {
     public static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
     public static final String INVALID_LENGTH_ERROR_MESSAGE =
-            ERROR_MESSAGE_PREFIX + "로또 번호는 " + VALID_LOTTERY_NUMBER_LENGTH + "개의 숫자로 이루어져야 합니다.";
+            ERROR_MESSAGE_PREFIX + "로또 번호는 " + VALID_LOTTO_NUMBER_LENGTH + "개의 숫자로 이루어져야 합니다.";
     public static final String DUPLICATE_LOTTO_NUMBER_ERROR_MESSAGE = ERROR_MESSAGE_PREFIX + "로또 번호는 중복되지 않아야 합니다.";
     public static final String INVALID_RANGE_ERROR_MESSAGE =
             ERROR_MESSAGE_PREFIX + "로또 번호는 " + VALID_MIN_RANGE + "부터 " + VALID_MAX_RANGE + "사이의 숫자여야 합니다";

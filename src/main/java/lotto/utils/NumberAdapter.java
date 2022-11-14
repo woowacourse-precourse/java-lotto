@@ -1,6 +1,6 @@
 package lotto.utils;
 
-import static lotto.constants.LottoConstant.LOTTERY_NUMBER_SEPARATOR;
+import static lotto.constants.LottoConstant.LOTTO_NUMBER_SEPARATOR;
 import static lotto.validator.LottoNumberValidator.hasValidLottoNumberType;
 import static lotto.validator.NumberValidator.hasValidType;
 
@@ -11,11 +11,9 @@ import java.util.stream.Collectors;
 public class NumberAdapter {
     public static List<Integer> fitWinningNumber(String beforeWinningNumber) {
         hasValidLottoNumberType(beforeWinningNumber);
-        String[] tempLotteryNumbers = beforeWinningNumber.split(LOTTERY_NUMBER_SEPARATOR);
-        int[] afterLotteryNumbers = Arrays.stream(tempLotteryNumbers).mapToInt(Integer::parseInt).toArray();
-        return Arrays.stream(afterLotteryNumbers)
-                .boxed()
-                .collect(Collectors.toList());
+        String[] tempWinningNumber = beforeWinningNumber.split(LOTTO_NUMBER_SEPARATOR);
+        int[] afterWinningNumber = Arrays.stream(tempWinningNumber).mapToInt(Integer::parseInt).toArray();
+        return Arrays.stream(afterWinningNumber).boxed().collect(Collectors.toList());
     }
 
     public static int fitBonusNumber(String beforeBonusNumber) {
