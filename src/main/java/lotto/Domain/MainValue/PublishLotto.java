@@ -15,21 +15,21 @@ public class PublishLotto {
         this.publishedLotto = createLotto(publishLottosNum);
     }
 
-    public List<Set<Integer>> getPublishedLotto() {
-        return publishedLotto;
-    }
 
     public List<Set<Integer>> createLotto(int publishLottosNum) {
         List<Set<Integer>> lottos = new ArrayList<>();
 
         for(int count=0; count<publishLottosNum; count++) {
             Set<Integer> oneLotto = new TreeSet<>();
-            oneLotto.add(Randoms.pickNumberInRange(LottoValue.MIN.getNum(), LottoValue.MAX.getNum()));
-            lottos.add(oneLotto);
+            for(int lottosize=0; lottosize<LottoValue.SIZE_No_Bonus.getNum(); lottosize++) {
+                oneLotto.add(Randoms.pickNumberInRange(LottoValue.MIN.getNum(), LottoValue.MAX.getNum()));
+            }
+                lottos.add(oneLotto);
         }
 
         return lottos;
     }
+    public List<Set<Integer>> getPublishedLotto() { return publishedLotto; }
 
 }
 
