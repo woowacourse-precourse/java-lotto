@@ -8,11 +8,12 @@ import lotto.domain.LottoMachine;
 import lotto.domain.LottoReference;
 import lotto.domain.LottoJudge;
 import lotto.domain.vo.Lotto;
+import lotto.domain.vo.LottoResult;
 
 public class OutputHandler {
 
-    public void winningStatistics(LottoJudge lottoJudge) {
-        Map<LottoReference, Integer> result = lottoJudge.getValue();
+    public void winningStatistics(LottoResult lottoResult) {
+        Map<LottoReference, Integer> result = lottoResult.getValue();
         DecimalFormat moneyFormat = new DecimalFormat("###,###");
 
         System.out.println("당첨 통계");
@@ -27,8 +28,8 @@ public class OutputHandler {
         }
     }
 
-    public void printYield(LottoJudge lottoJudge) {
-        Map<LottoReference, Integer> result = lottoJudge.getValue();
+    public void printYield(LottoResult lottoResult) {
+        Map<LottoReference, Integer> result = lottoResult.getValue();
         DecimalFormat floatFormat = new DecimalFormat("###,###.#");
 
         float yield = LottoReference.getYield(result);

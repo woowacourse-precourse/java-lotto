@@ -5,6 +5,7 @@ import lotto.domain.LottoMachine;
 import lotto.domain.LottoJudge;
 import lotto.domain.vo.BuyLottoList;
 import lotto.domain.vo.Lotto;
+import lotto.domain.vo.LottoResult;
 import lotto.domain.vo.LottoWithBonus;
 import lotto.domain.vo.Money;
 import lotto.veiw.InputHandler;
@@ -23,10 +24,15 @@ public class LottoController {
 
         LottoWithBonus lottoWithBonus = inputBonus(inputLotto());
 
-        LottoJudge lottoJudge = new LottoJudge(buyLottoList, lottoWithBonus);
+        LottoResult lottoResult = getResult(buyLottoList, lottoWithBonus);
 
-        outputHandler.winningStatistics(lottoJudge);
-        outputHandler.printYield(lottoJudge);
+        outputHandler.winningStatistics(lottoResult);
+        outputHandler.printYield(lottoResult);
+    }
+
+    private static LottoResult getResult(BuyLottoList buyLottoList, LottoWithBonus lottoWithBonus) {
+        LottoJudge lottoJudge = new LottoJudge(buyLottoList, lottoWithBonus);
+        return new LottoResult(lottoJudge.getValue());
     }
 
     private BuyLottoList buyLotto(Money money) {
