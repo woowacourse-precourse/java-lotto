@@ -1,23 +1,13 @@
 package lotto;
 
-import lotto.view.LottoView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Ticket {
     private static final int UNIT_PRICE = 1000;
-    private static final String PURCHASE_COMMENT = "개를 구매했습니다.";
 
-    private LottoView view;
     private int count;
     private List<Lotto> tickets;
-
-    public Ticket(int count, List<Lotto> tickets, LottoView view) {
-        this.view = view;
-        this.count = count;
-        this.tickets = tickets;
-    }
 
     public Ticket(int count, List<Lotto> tickets) {
         this.count = count;
@@ -36,16 +26,17 @@ public class Ticket {
             tickets.add(Lotto.createLottoNumbers());
         }
 
-        return new Ticket(count, tickets, new LottoView());
+        return new Ticket(count, tickets);
     }
 
-    public void printTickets() {
-        view.printBlankLine();
-        view.printMessage(String.valueOf(count) + PURCHASE_COMMENT);
+    public String getPurchaseContext() {
+        StringBuilder message = new StringBuilder();
 
         for (Lotto ticket : tickets) {
-            view.printMessage(ticket.toString());
+            message.append(ticket.toString());
         }
+
+        return message.toString();
     }
 
     public Lotto get(int index) {

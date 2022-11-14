@@ -1,8 +1,8 @@
 package lotto;
 
 import lotto.constant.Rank;
-import lotto.view.LottoView;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,24 +10,13 @@ import java.util.Map;
 import static lotto.constant.Rank.*;
 
 public class Win {
-    private static final String UNIT = "개";
-    private static final String SEPARATOR = "---";
-    private static final String WINNING_STATS_WORD = "당첨 통계";
-    private static final String BLANK_LINE = "\n";
-
-
     private Map<Rank, Integer> ranking;
-    private LottoView view;
-
-    public Win(Map<Rank, Integer> ranking, LottoView view) {
-        this.ranking = ranking;
-        this.view = view;
-    }
 
     public Win(Map<Rank, Integer> ranking) {
         this.ranking = ranking;
     }
 
+    // TODO 분리
     public static Win compare(Ticket ticket, List<Integer> winningNumbers, int bonusNumber) {
         int count = ticket.size();
         Map<Rank, Integer> ranking = new LinkedHashMap<>();
@@ -49,7 +38,7 @@ public class Win {
             ranking.put(rank, ranking.get(rank) + 1);
         }
 
-        return new Win(ranking, new LottoView());
+        return new Win(ranking);
     }
 
     private static void init(Map<Rank, Integer> ranking) {
@@ -58,23 +47,8 @@ public class Win {
         }
     }
 
-    public void printWinningStats() {
-        StringBuilder context = new StringBuilder();
-
-        view.printBlankLine();
-        view.printMessage(WINNING_STATS_WORD);
-        view.printMessage(SEPARATOR);
-
-        for (Rank rank : ranking.keySet()) {
-            if (rank == ETC) {
-                continue;
-            }
-
-            context.append(rank.getWinningStats()).
-                    append(ranking.get(rank)).append(UNIT).append(BLANK_LINE);
-        }
-
-        view.printMessage(context.toString());
+    public List<Integer> getWinningsCount() {
+        return new ArrayList<>(ranking.values());
     }
 
     public double getWinnings() {
