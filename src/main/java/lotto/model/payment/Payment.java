@@ -17,6 +17,10 @@ public class Payment {
         return amount / TICKET_PRICE;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
     private static void validate(int amount) {
         if(isNotPositive(amount)) {
             throw new IllegalArgumentException("구입 금액은 0보다 커야 합니다.");

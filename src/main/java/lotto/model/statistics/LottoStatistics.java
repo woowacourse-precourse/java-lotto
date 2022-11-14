@@ -4,6 +4,7 @@ import lotto.model.payment.Payment;
 
 import java.text.DecimalFormat;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class LottoStatistics {
     private static final DecimalFormat decimalFormatter = new DecimalFormat("###,###.#");
@@ -26,13 +27,18 @@ public class LottoStatistics {
             stringBuilder.append(lottoResult.getDescription())
                     .append(" - ")
                     .append(resultCount)
-                    .append("개");
+                    .append("개\n");
         }
         return stringBuilder.toString();
     }
 
     public String getReturnRateDescription() {
-        // TODO 구현 필요
-        return "";
+        AtomicInteger totalPrize = new AtomicInteger();
+        resultMap.forEach((lottoResult, count) -> {
+            totalPrize.addAndGet(lottoResult.getPrize() * count);
+        });
+        float returnRate = (totalPrize.floatValue() / (float) payment.getAmount());
+
+        return "총 수익률은 " + decimalFormatter.format(returnRate) + "%입니다.";
     }
 }
