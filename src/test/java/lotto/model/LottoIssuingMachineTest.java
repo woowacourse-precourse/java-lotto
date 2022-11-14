@@ -20,10 +20,18 @@ class LottoIssuingMachineTest {
 
     @DisplayName("로또 구매 금액이 1,000원 미만일 때 예외가 발생한다.")
     @Test
-    void issueLottosBySmallPurchaseMoney() {
+    void issueLottosByMinPurchaseMoney() {
         assertThatThrownBy(() -> issuingMachine.issue(500))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ExceptionMessage.INVALID_PURCHASE_MONEY_MIN);
+    }
+
+    @DisplayName("로또 구매 금액이 100,000원 초과일 때 예외가 발생한다.")
+    @Test
+    void issueLottosByMaxPurchaseMoney() {
+        assertThatThrownBy(() -> issuingMachine.issue(150000))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ExceptionMessage.INVALID_PURCHASE_MONEY_MAX);
     }
 
     @DisplayName("로또 구매 금액이 1,000원 단위가 아닐 때 예외가 발생한다.")

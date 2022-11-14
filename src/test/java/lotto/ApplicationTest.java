@@ -121,10 +121,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_로또_구입_금액_최소_금액() {
+    void 예외_테스트_로또_구입_금액_최소_금액_미만() {
         assertSimpleTest(() -> {
             runException("700");
             assertThat(output()).contains(PREFIX + INVALID_PURCHASE_MONEY_MIN);
+        });
+    }
+
+    @Test
+    void 예외_테스트_로또_구입_금액_최대_금액_초과() {
+        assertSimpleTest(() -> {
+            runException("1000000");
+            assertThat(output()).contains(PREFIX + INVALID_PURCHASE_MONEY_MAX);
         });
     }
 
