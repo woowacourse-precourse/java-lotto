@@ -37,7 +37,7 @@ public class InputView {
         return playerNumbers;
     }
 
-    public static List<Integer> askBonusNumber(List<Integer> playerNumbers) {
+    public static int askBonusNumber(List<Integer> playerNumbers) {
         System.out.println(ASK_BONUS_NUMBER_MESSAGE);
         String input = Console.readLine();
 
@@ -45,6 +45,6 @@ public class InputView {
         validateBonusNumberRange(bonusNumber);
         validateBonusNumberDuplicationInPlayerNumbers(bonusNumber, playerNumbers);
 
-        return playerNumbers;
+        return bonusNumber;
     }
 }
