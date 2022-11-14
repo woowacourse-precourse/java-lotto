@@ -11,20 +11,24 @@ import lotto.View.OutputView;
 public class LottoController {
 
     public void lottoStart() {
+        try{
+            int temp = InputView.inputAmount();
 
-        int temp = InputView.inputAmount();
+            new Money(temp);
 
-        new Money(temp);
+            RandomLotto.BuyNewLotto();
 
-        RandomLotto.BuyNewLotto();
+            OutputView.printBundleOfLottoNumbers();
 
-        OutputView.printBundleOfLottoNumbers();
+            inputNumbers();
 
-        inputNumbers();
+            LottoSystem.lottoSystem(Lotto.getWinningNumbers(), Lotto.getBonusNumber());
 
-        LottoSystem.lottoSystem(Lotto.getWinningNumbers(), Lotto.getBonusNumber());
+            printTotalResult();
+        }catch (IllegalArgumentException e){
+            OutputView.createErrorMessage(e);
+        }
 
-        printTotalResult();
     }
 
     private void printTotalResult() {

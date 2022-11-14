@@ -6,7 +6,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static java.lang.Integer.parseInt;
 import static lotto.Model.Lotto.stringToInt;
 import static lotto.Model.Lotto.stringToList;
-import static lotto.Model.Money.checkUnit;
 
 public class InputView {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -17,13 +16,8 @@ public class InputView {
 
     public static int inputAmount() {
         System.out.println(MONEY_INPUT);
-        int inputMoney = 0;
-        try {
-            inputMoney = parseInt(readLine());
-        } catch (NumberFormatException exception) {
-            System.out.println(ERROR_MESSAGE+MONEY_CHAR_ERROR_MESSAGE);
-        }
-        return checkUnit(inputMoney);
+        String inputAmount = validationInputAmount(readLine());
+        return parseInt(inputAmount);
     }
 
     public static void printWinningNumberInput() {
@@ -36,4 +30,13 @@ public class InputView {
         String temp = readLine();
         Lotto.setBonusNumber(stringToInt(temp));
     }
+
+    private static String validationInputAmount(String inputAmount) {
+        if (!inputAmount.matches("^[0-9]+$")) {
+            System.out.println(ERROR_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + MONEY_CHAR_ERROR_MESSAGE);
+        }
+        return inputAmount;
+    }
+
 }

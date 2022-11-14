@@ -17,12 +17,13 @@ public class Money {
     private static int inputMoney;
 
     public Money(int amount) {
+        checkUnit(amount);
         inputMoney = amount;
     }
 
-    public static int checkUnit(int money) {
+    private int checkUnit(int money) {
         try {
-            if (money % moneyUnit != 0) throw new IllegalArgumentException(ERROR_MESSAGE + MONEY_UNIT_ERROR_MESSAGE);
+            if (money % moneyUnit != 0 || money == 0) throw new IllegalArgumentException(ERROR_MESSAGE + MONEY_UNIT_ERROR_MESSAGE);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

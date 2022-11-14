@@ -15,6 +15,8 @@ public class OutputView {
     private static final int COUNT_OF_FOURTH = 4;
     private static final int COUNT_OF_FIFTH = 3;
 
+    private static final String ERROR_MESSAGE = "[ERROR]";
+
     public static void printBundleOfLottoNumbers() {
         for(List<Integer> lottoNumbers: getBundleOfLottoNumbers()) System.out.println(lottoNumbers);
     }
@@ -39,6 +41,8 @@ public class OutputView {
         return String.format("%.1f", sum);
     }
 
-
+    public static void createErrorMessage(IllegalArgumentException exception) {
+        System.out.println(ERROR_MESSAGE);
+    }
 
 }
