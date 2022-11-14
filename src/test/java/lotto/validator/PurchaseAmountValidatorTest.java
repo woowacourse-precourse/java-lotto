@@ -10,7 +10,7 @@ class PurchaseAmountValidatorTest {
 
     @DisplayName("구매 금액 입력 검사")
     @ParameterizedTest
-    @ValueSource(strings = {"1001", "-1000", "1234"})
+    @ValueSource(strings = {"1001", "-1000", "1234", "asdfasdf"})
     void purchaseAmountTest(String money) {
         assertThrows(IllegalArgumentException.class, () -> PurchaseAmountValidator.validate(money));
     }
