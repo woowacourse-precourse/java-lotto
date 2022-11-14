@@ -19,6 +19,10 @@ public class Lotto {
         if (new HashSet<>(numbers).size() != 6) {
             throw new IllegalArgumentException(ERROR.LOTTO_NUMBERS);
         }
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45)
+                throw new IllegalArgumentException(ERROR.LOTTO_NUMBERS);
+        }
     }
 
     // TODO: 추가 기능 구현
