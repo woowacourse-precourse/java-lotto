@@ -11,6 +11,7 @@ public class PlayLotto {
         List<List<Integer>> allLottoNumber = new ArrayList<>();
         for (int i = 0; i < ticketCount; i++) {
             CreateLotto createLotto = new CreateLotto();
+            /*이 부분 createRandomBall 직접 받지 않도록 수정해야 할듯*/
             Collections.sort(createLotto.createRandomBall());
             allLottoNumber.add(createLotto.createRandomBall());
         }
