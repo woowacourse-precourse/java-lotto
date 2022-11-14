@@ -14,19 +14,20 @@ public class RaffleNumber {
     private static final int PROPER_QUANTITY=6;
     private static final String WRONG_QUANTITY_ERROR_MESSAGE="[ERROR] 추첨 번호가 6개가 아닙니다. 프로그램을 종료합니다.";
     private static final String DUPLICATE_ERROR_MESSAGE="[ERROR] 숫자가 중복되었습니다. 프로그램을 종료합니다.";
-    public RaffleNumber(List<Integer> raffleNumbers) {
-        validateProperQuantity(raffleNumbers);
-        validateDuplicatedNumbers(raffleNumbers);
-        this.raffleNumbers = raffleNumbers;
+    public RaffleNumber(String raffleNumbers) {
+        validateProperRaffleNumber(raffleNumbers);
+        List<String> separatedRaffleNumber = separateRaffleNumberByComma(raffleNumbers);
+        validateProperQuantity(separatedRaffleNumber);
+        validateDuplicatedNumbers(separatedRaffleNumber);
     }
-    private void validateProperQuantity(List<Integer> raffleNumbers) {
+    private void validateProperQuantity(List<String> raffleNumbers) {
         if (raffleNumbers.size() != PROPER_QUANTITY) {
             throw new IllegalArgumentException(WRONG_QUANTITY_ERROR_MESSAGE);
         }
     }
-    private void validateDuplicatedNumbers(List<Integer> numbers) {
+    private void validateDuplicatedNumbers(List<String> numbers) {
         int numberOfUniqueNumbers;
-        Stream<Integer> lottoNumbers = numbers.stream();
+        Stream<String> lottoNumbers = numbers.stream();
         numberOfUniqueNumbers= (int)lottoNumbers.distinct().count();
         if (numberOfUniqueNumbers != PROPER_QUANTITY) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
