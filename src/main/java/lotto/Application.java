@@ -98,18 +98,18 @@ public class Application {
     public static void checkRange(List<Integer> inputNums) throws IllegalArgumentException {
         for (int num : inputNums) {
             if (num < startNumber) {
-                throw new IllegalArgumentException("[ERROR]: 1보다 작은 당첨번호를 입력하였습니다. " + num);
+                throw new IllegalArgumentException("[ERROR]: 1보다 작은 번호를 입력하였습니다. " + num);
             }
             if (num > endNumber) {
-                throw new IllegalArgumentException("[ERROR]: 45보다 큰 당첨번호를 입력하였습니다. " + num);
+                throw new IllegalArgumentException("[ERROR]: 45보다 큰 번호를 입력하였습니다. " + num);
             }
         }
     }
 
     public static int getBonusNumber(Lotto luckyNumbers) {
         int bonusNum = readBonusNumbers();
-        luckyNumbers.validBonusNumber(bonusNum);
         checkRange(List.of(bonusNum));
+        luckyNumbers.validBonusNumber(bonusNum);
         return bonusNum;
     }
 
