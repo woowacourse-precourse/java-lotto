@@ -1,4 +1,4 @@
-package lotto.controller;
+package lotto.util;
 
 import static lotto.model.GameNumber.THOUSAND;
 

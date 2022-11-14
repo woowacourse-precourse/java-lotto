@@ -1,4 +1,6 @@
-package lotto.controller;
+package lotto.util;
+
+import lotto.util.MatchUtil;
 
 import java.util.List;
 

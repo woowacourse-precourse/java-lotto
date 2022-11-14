@@ -1,4 +1,4 @@
-package lotto.controller;
+package lotto.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.controller.CheckUtil.*;
+import static lotto.util.CheckUtil.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 

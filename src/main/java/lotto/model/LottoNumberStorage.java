@@ -1,6 +1,7 @@
 package lotto.model;
 
-import lotto.controller.*;
+import lotto.util.MathUtil;
+import lotto.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.List;
