@@ -20,7 +20,7 @@ public class Lotto {
 
     private void isCorrectSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 6자리의 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.SIZE_NOT_CORRECT.message);
         }
     }
 
@@ -28,7 +28,7 @@ public class Lotto {
         Set<Integer> duplicated = new HashSet<>(numbers);
 
         if (duplicated.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.message);
         }
     }
 
