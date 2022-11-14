@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.IssueLottoInfo;
+import dto.Lotto;
 import dto.LottoGameInfo;
+import util.ExceptionUtil;
 import util.InputUtil;
 import util.PrintUtil;
+import util.ValidateUtil;
 
 /**
  * 
@@ -48,14 +51,26 @@ public class LottoGameController {
 	
 	// 당첨번호 입력받기
 	public void inputWinningNumber() {
-		// TODO: 추가 기능 구현
+		Lotto winnigNumbers = new Lotto(InputUtil.inputWinnigNumber());
+		lottoGameInfo.setWinningNumber(winnigNumbers);
 	}
 
 	// 보너스 번호 입력받기
 	public void inputBonusNumber() {
-		// TODO: 추가 기능 구현
+		int bonusNumber = InputUtil.inputBonusNumber();
+		if(!ValidateUtil.checkDuplicates(lottoGameInfo.getWinningNumber(),bonusNumber)) {
+			ExceptionUtil.makeException("보너스 번호는 당첨번호와 중복될 수 없습니다.");
+		}
+		
+		lottoGameInfo.setBonusNumber(bonusNumber);
+		
 	}
 
+	// 결과 계산하기
+	public void calculateResult() {
+		// TODO: 추가 기능 구현
+	}
+	
 	// 결과 출력하기
 	public void printResult() {
 		// TODO: 추가 기능 구현
