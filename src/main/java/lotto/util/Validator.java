@@ -23,7 +23,7 @@ public class Validator {
     private final Pattern pattern = Pattern.compile("^[0-9]*$");
 
     public void validateLottoNumber(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != COUNT) {
             throw new LottoNumberExcption(LOTTO_NUMBER_ERROR_MESSAGE);
         }
         if (numbers.stream().distinct().count() != numbers.size()) {
