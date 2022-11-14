@@ -78,9 +78,9 @@ public class InputView {
         }
     }
 
-    private int convertInteger(String money) {
+    private int convertInteger(String input) {
         try {
-            return Integer.parseInt(money);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
@@ -96,4 +96,5 @@ public class InputView {
         }
         return false;
     }
+
 }
