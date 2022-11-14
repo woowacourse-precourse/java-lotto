@@ -14,7 +14,7 @@ public class User {
     private int lottoCount;
     private int price;
     private final Exception exception;
-    private List<List<Integer>> randomLottoNumbers;
+    private List<Lotto> randomLottoNumbers;
 
     public User(){
         exception = new Exception();
@@ -42,4 +42,19 @@ public class User {
         return this.lottoCount;
     }
 
+    public void setRandomLottoNumbers(){
+        for(int i=0;i<lottoCount;i++){
+            randomLottoNumbers.add(new Lotto(initNewLotto()));
+        }
+    }
+
+    private List<Integer> initNewLotto(){
+        List<Integer> lottos = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(lottos);
+        return lottos;
+    }
+
+    public List<Lotto> getRandomLottoNumbers(){
+        return randomLottoNumbers;
+    }
 }
