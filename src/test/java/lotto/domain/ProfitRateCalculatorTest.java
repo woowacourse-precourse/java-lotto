@@ -24,7 +24,8 @@ class ProfitRateCalculatorTest {
 			);
 			int purchaseAmount = 8000;
 			ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(ranks, purchaseAmount);
-			assertEquals(profitRateCalculator.getProfitRate(), 62.5);
+			assertEquals(profitRateCalculator.getProfitRate(),
+				Rank.FIFTH.getPrizeMoney() / (double)purchaseAmount * 100);
 		}
 
 		@Test
@@ -39,7 +40,8 @@ class ProfitRateCalculatorTest {
 			);
 			int purchaseAmount = 9000;
 			ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(ranks, purchaseAmount);
-			assertEquals(profitRateCalculator.getProfitRate(), 611.1111111111111);
+			assertEquals(profitRateCalculator.getProfitRate(),
+				(Rank.FOURTH.getPrizeMoney() + Rank.FIFTH.getPrizeMoney()) / (double)purchaseAmount * 100);
 		}
 
 		@Test
@@ -54,7 +56,8 @@ class ProfitRateCalculatorTest {
 			);
 			int purchaseAmount = 9000;
 			ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(ranks, purchaseAmount);
-			assertEquals(profitRateCalculator.getProfitRate(), 0);
+			assertEquals(profitRateCalculator.getProfitRate(),
+				Rank.MISS.getPrizeMoney() / (double)purchaseAmount * 100);
 		}
 
 		@Test
@@ -69,7 +72,8 @@ class ProfitRateCalculatorTest {
 			);
 			int purchaseAmount = 9000;
 			ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(ranks, purchaseAmount);
-			assertEquals(profitRateCalculator.getProfitRate(), 55.55555555555556);
+			assertEquals(profitRateCalculator.getProfitRate(),
+				Rank.FIFTH.getPrizeMoney() / (double)purchaseAmount * 100);
 		}
 	}
 }

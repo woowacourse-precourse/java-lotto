@@ -7,19 +7,15 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class LottoStoreTest {
-	private static final int MIN_PURCHASE_UNIT = 1000;
-
 	@DisplayName("1000 단위 숫자를 제외한 값이 입력되면 예외가 발생한다.")
 	@Nested
 	class ValidateREGEXTest {
-		private static final String REGEX_ERROR_MESSAGE = "[ERROR] %d 단위 숫자만 입력해주세요.";
-
 		@Test
 		void case1() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				LottoStore lottoStore = new LottoStore("500");
 			});
-			assertEquals(String.format(REGEX_ERROR_MESSAGE, MIN_PURCHASE_UNIT), exception.getMessage());
+			assertEquals(String.format(Error.UNIT.getMessage(), Number.UNIT.getValue()), exception.getMessage());
 		}
 
 		@Test
@@ -27,7 +23,7 @@ class LottoStoreTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				LottoStore lottoStore = new LottoStore("4030");
 			});
-			assertEquals(String.format(REGEX_ERROR_MESSAGE, MIN_PURCHASE_UNIT), exception.getMessage());
+			assertEquals(String.format(Error.UNIT.getMessage(), Number.UNIT.getValue()), exception.getMessage());
 		}
 
 		@Test
@@ -35,7 +31,7 @@ class LottoStoreTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				LottoStore lottoStore = new LottoStore("15001");
 			});
-			assertEquals(String.format(REGEX_ERROR_MESSAGE, MIN_PURCHASE_UNIT), exception.getMessage());
+			assertEquals(String.format(Error.UNIT.getMessage(), Number.UNIT.getValue()), exception.getMessage());
 		}
 
 	}
@@ -43,14 +39,12 @@ class LottoStoreTest {
 	@DisplayName("1000 미만의 숫자가 입력되면 예외가 발생한다.")
 	@Nested
 	class ValidateZeroTest {
-		private static final String ZERO_ERROR_MESSAGE = "[ERROR] 최소 %d원부터 구매 가능합니다.";
-
 		@Test
 		void case1() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				LottoStore lottoStore = new LottoStore("0000");
 			});
-			assertEquals(String.format(ZERO_ERROR_MESSAGE, MIN_PURCHASE_UNIT), exception.getMessage());
+			assertEquals(String.format(Error.ZERO.getMessage(), Number.UNIT.getValue()), exception.getMessage());
 		}
 
 		@Test
@@ -58,7 +52,7 @@ class LottoStoreTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				LottoStore lottoStore = new LottoStore("00000");
 			});
-			assertEquals(String.format(ZERO_ERROR_MESSAGE, MIN_PURCHASE_UNIT), exception.getMessage());
+			assertEquals(String.format(Error.ZERO.getMessage(), Number.UNIT.getValue()), exception.getMessage());
 		}
 
 	}
@@ -72,7 +66,8 @@ class LottoStoreTest {
 			LottoStore lottoStore = new LottoStore(testPurchaseAmount);
 
 			assertEquals(lottoStore.getPurchaseAmount(), Integer.parseInt(testPurchaseAmount));
-			assertEquals(lottoStore.getNumberOfTickets(), (Integer.parseInt(testPurchaseAmount) / MIN_PURCHASE_UNIT));
+			assertEquals(lottoStore.getNumberOfTickets(),
+				(Integer.parseInt(testPurchaseAmount) / Number.UNIT.getValue()));
 		}
 
 		@Test
@@ -81,7 +76,8 @@ class LottoStoreTest {
 			LottoStore lottoStore = new LottoStore(testPurchaseAmount);
 
 			assertEquals(lottoStore.getPurchaseAmount(), Integer.parseInt(testPurchaseAmount));
-			assertEquals(lottoStore.getNumberOfTickets(), (Integer.parseInt(testPurchaseAmount) / MIN_PURCHASE_UNIT));
+			assertEquals(lottoStore.getNumberOfTickets(),
+				(Integer.parseInt(testPurchaseAmount) / Number.UNIT.getValue()));
 		}
 
 		@Test
@@ -90,7 +86,8 @@ class LottoStoreTest {
 			LottoStore lottoStore = new LottoStore(testPurchaseAmount);
 
 			assertEquals(lottoStore.getPurchaseAmount(), Integer.parseInt(testPurchaseAmount));
-			assertEquals(lottoStore.getNumberOfTickets(), (Integer.parseInt(testPurchaseAmount) / MIN_PURCHASE_UNIT));
+			assertEquals(lottoStore.getNumberOfTickets(),
+				(Integer.parseInt(testPurchaseAmount) / Number.UNIT.getValue()));
 		}
 
 	}

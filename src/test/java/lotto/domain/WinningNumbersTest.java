@@ -13,16 +13,13 @@ class WinningNumbersTest {
 	@DisplayName("1~45사이의 자연수를 제외한 값이 입력되면 예외가 발생한다.")
 	@Nested
 	class ValidateREGEXTest {
-		private static final int MIN_NUMBER = 1;
-		private static final int MAX_NUMBER = 45;
-		private static final String REGEX_ERROR_MESSAGE = "[ERROR] %d ~ %d 사이의 자연수만 입력해주세요.";
-
 		@Test
 		void case1() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("a,b,c,d,e,f", "1");
 			});
-			assertEquals(String.format(REGEX_ERROR_MESSAGE, MIN_NUMBER, MAX_NUMBER), exception.getMessage());
+			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
+				exception.getMessage());
 		}
 
 		@Test
@@ -30,7 +27,8 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "0");
 			});
-			assertEquals(String.format(REGEX_ERROR_MESSAGE, MIN_NUMBER, MAX_NUMBER), exception.getMessage());
+			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
+				exception.getMessage());
 		}
 
 		@Test
@@ -38,7 +36,8 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "46");
 			});
-			assertEquals(String.format(REGEX_ERROR_MESSAGE, MIN_NUMBER, MAX_NUMBER), exception.getMessage());
+			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
+				exception.getMessage());
 		}
 
 		@Test
@@ -46,7 +45,8 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "a");
 			});
-			assertEquals(String.format(REGEX_ERROR_MESSAGE, MIN_NUMBER, MAX_NUMBER), exception.getMessage());
+			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
+				exception.getMessage());
 		}
 
 		@Test
@@ -54,7 +54,8 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,46", "7");
 			});
-			assertEquals(String.format(REGEX_ERROR_MESSAGE, MIN_NUMBER, MAX_NUMBER), exception.getMessage());
+			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
+				exception.getMessage());
 		}
 
 		@Test
@@ -62,21 +63,20 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("10,20,30,40,41,42", "57");
 			});
-			assertEquals(String.format(REGEX_ERROR_MESSAGE, MIN_NUMBER, MAX_NUMBER), exception.getMessage());
+			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
+				exception.getMessage());
 		}
 	}
 
 	@DisplayName("보너스 번호는 당첨 번호와 중복되면 예외가 발생한다.")
 	@Nested
 	class ValidateBonusTest {
-		private static final String BONUS_ERROR_MESSAGE = "[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.";
-
 		@Test
 		void case1() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "1");
 			});
-			assertEquals(BONUS_ERROR_MESSAGE, exception.getMessage());
+			assertEquals(Error.BONUS.getMessage(), exception.getMessage());
 		}
 
 		@Test
@@ -84,7 +84,7 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "2");
 			});
-			assertEquals(BONUS_ERROR_MESSAGE, exception.getMessage());
+			assertEquals(Error.BONUS.getMessage(), exception.getMessage());
 		}
 
 		@Test
@@ -92,7 +92,7 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "3");
 			});
-			assertEquals(BONUS_ERROR_MESSAGE, exception.getMessage());
+			assertEquals(Error.BONUS.getMessage(), exception.getMessage());
 		}
 
 		@Test
@@ -100,16 +100,15 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "4");
 			});
-			assertEquals(BONUS_ERROR_MESSAGE, exception.getMessage());
+			assertEquals(Error.BONUS.getMessage(), exception.getMessage());
 		}
 
 		@Test
 		void case5() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "5");
-
 			});
-			assertEquals(BONUS_ERROR_MESSAGE, exception.getMessage());
+			assertEquals(Error.BONUS.getMessage(), exception.getMessage());
 		}
 
 		@Test
@@ -117,7 +116,7 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "6");
 			});
-			assertEquals(BONUS_ERROR_MESSAGE, exception.getMessage());
+			assertEquals(Error.BONUS.getMessage(), exception.getMessage());
 		}
 	}
 
