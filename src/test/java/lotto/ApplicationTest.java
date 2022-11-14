@@ -1,13 +1,14 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.*;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -52,6 +53,48 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @DisplayName("로또를 생성한 번호가 중복이 있는지 확인한다.")
+    @Test
+    void createLottoByDistinctNumber() {
+        Application application = new Application();
+        List<Integer> number = application.createLotto();
+        Set<Integer> result = new HashSet<>(number);
+
+        assertThat(number.size()).isEqualTo(result.size());
+    }
+
+    @DisplayName("로또 번호 발급 개수가 금액의 개수와 같은지 확인한다.")
+    @Test
+    void saveLottoByLottoCount() {
+        Application application = new Application();
+        int money = 3000;
+        int result = 3;
+
+        assertThat(application.buyLotto(money).size()).isEqualTo(result);
+    }
+
+    @DisplayName("로또 번호 결과와 예상 결과 같은지 확인한다. ")
+    @Test
+    void getLottoResultByBuyList() {
+        Application application = new Application();
+        List<LottoNumber> buyList = new ArrayList<>();
+        buyList.add(new LottoNumber(Arrays.asList(6, 5, 4, 3, 2, 0)));
+        List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+
+        assertThat(application.getLottoResult(buyList, winningLotto, bonusNumber)).containsExactly(0, 0, 1, 0, 0);
+    }
+
+    @DisplayName("로또 번호 결과로 총 수익률구해 예상 결과와 같은지 확인. ")
+    @Test
+    void getTotalProfitByLottoResult() {
+        Application application = new Application();
+        List<Integer> lottoResult = List.of(0, 0, 0, 0, 1);
+        int money = 8000;
+
+        assertThat(application.getTotalProfit(money, lottoResult)).isEqualTo(62.5);
     }
 
     @Override
