@@ -27,7 +27,7 @@ public class Application {
     public static void simulate() {
         int price = readNumber(PRICE_INPUT_MESSAGE, ErrorMessage.PRICE_NON_NUMERIC);
         Simulator lottoSimulator = new Simulator(price);
-        printPurchaseHistory(lottoSimulator);
+        printPurchaseHistory(lottoSimulator.getQuantity(), lottoSimulator.getLottos());
         Lotto winning = new Lotto(readNumbers(WINNING_NUMBERS_INPUT_MESSAGE));
         int bonus = readNumber(BONUS_INPUT_MESSAGE, ErrorMessage.BONUS_NON_NUMERIC);
         List<Integer> wins = lottoSimulator
@@ -60,10 +60,10 @@ public class Application {
         }
     }
 
-    private static void printPurchaseHistory(Simulator lottoSimulator) {
+    private static void printPurchaseHistory(int quantity, List<Lotto> lottos) {
         System.out.println();
-        System.out.println(lottoSimulator.getQuantity() + "개를 구매했습니다.");
-        lottoSimulator.getLottos()
+        System.out.println(quantity + "개를 구매했습니다.");
+        lottos
                 .stream()
                 .forEach(System.out::println);
     }
