@@ -8,7 +8,7 @@ import lotto.repository.LotteryTicketRepository;
 import java.util.List;
 
 public class LotteryDrawService {
-    public WinningNumber draw (List<Integer> numbers, int bonusNumber) {
+    public WinningNumber createWinningNumber (List<Integer> numbers, int bonusNumber) {
         return new WinningNumber(numbers, bonusNumber);
     }
 
