@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.Exception.ExceptionType;
-import lotto.Exception.Validator;
+import lotto.exception.ExceptionType;
+import lotto.exception.Validator;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.Test;
 
