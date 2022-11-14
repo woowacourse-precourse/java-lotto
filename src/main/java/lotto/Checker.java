@@ -54,6 +54,7 @@ public class Checker {
         if (numbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(String.format(LOTTO_CHECKER_ERROR, numbers, LOTTO_CHECKER_ERROR_VALIDATE));
         }
+        checkBoundary(numbers);
         checkDuplicated(numbers);
     }
 
@@ -63,18 +64,23 @@ public class Checker {
             if (numbers.contains(number)) {
                 throw new IllegalArgumentException(String.format(LOTTO_CHECKER_ERROR, numbers, LOTTO_CHECKER_ERROR_DUPLICATED));
             }
-            checkBoundary(number);
             numbers.add(number);
         }
     }
 
     public void checkDuplicated(List<Integer> numbers, int bonusNumber) {
+        this.checkDuplicated(numbers);
         if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(String.format(LOTTO_CHECKER_ERROR, numbers + " + " + bonusNumber, LOTTO_CHECKER_ERROR_DUPLICATED));
         }
     }
 
-    public void checkBoundary(int number) {
+    public void checkBoundary(List<Integer> numbers) {
+        for(int number:numbers){
+            checkBoundary(number);
+        }
+    }
+    public  void checkBoundary(int number) {
         if (45 < number && number < 1) {
             throw new IllegalArgumentException(String.format(LOTTO_CHECKER_ERROR, number, LOTTO_CHECKER_ERROR_ILLEGAL));
         }
@@ -86,6 +92,7 @@ public class Checker {
         List<Integer> numbers = new ArrayList<>();
 
         for (String s : inputs) {
+            s=s.strip();
             int number = this.checkNumber(s);
             numbers.add(number);
         }
