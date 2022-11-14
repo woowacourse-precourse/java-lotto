@@ -18,12 +18,21 @@ public class Lotto {
         SECOND(2, 30_000_000),
         FIRST(1, 2_000_000_000);
 
-        private int rank;
-        private int reward;
+        private Integer rank;
+        private Integer reward;
 
-        LottoReward(final int rank, final int reward) {
+        LottoReward(final Integer rank, final Integer reward) {
             this.rank = rank;
             this.reward = reward;
+        }
+
+        public static Integer getRewardByRank(Integer rank) {
+            for (LottoReward e : LottoReward.values()) {
+                if (e.rank == rank) {
+                    return e.reward;
+                }
+            }
+            return null;
         }
     }
 
