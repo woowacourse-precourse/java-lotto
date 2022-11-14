@@ -19,19 +19,25 @@ public class LottoGameManagement {
         this.systemConsole = systemConsole;
     }
 
-    public List<Integer> bonusConfirmation(List<List<Integer>> randomLotto, Lotto lottoAnswer,
+    public void bonusConfirmation(List<List<Integer>> randomLotto, Lotto lottoAnswer,
             List<Integer> sameNumberCount) {
 
-        systemConsole.BONUS_NUMBER();
-        int bonus = additionalNumber.getBonus();
+        systemConsole.bonusNumber();
+        List<Integer> bonusNumbers = getBonusNumbers(randomLotto, lottoAnswer, sameNumberCount);
 
-        BonusBallAndLotto bonusBallAndLotto = new BonusBallAndLotto(new BonusNumberCase());
-        List<Integer> bonusNumbers = bonusBallAndLotto.getCorrectLocation(lottoAnswer, randomLotto,
-                sameNumberCount, bonus);
+        RankingWinner rankingWinner = new RankingWinner(new WinningStatistics(),
+                new TotalPrizeMoney(), new YieldCalculation());
 
-        RankingWinner rankingWinner = new RankingWinner(new WinningStatistics(), new TotalPrizeMoney(),
-                new YieldCalculation());
         rankingWinner.findAWinner(sameNumberCount, bonusNumbers);
-        return null;
+    }
+
+    private List<Integer> getBonusNumbers(List<List<Integer>> randomLotto, Lotto lottoAnswer,
+            List<Integer> sameNumberCount) {
+
+        int bonus = additionalNumber.getBonus();
+        BonusBallAndLotto bonusBallAndLotto = new BonusBallAndLotto(new BonusNumberCase());
+
+        return bonusBallAndLotto.getCorrectLocation(lottoAnswer, randomLotto, sameNumberCount,
+                bonus);
     }
 }
