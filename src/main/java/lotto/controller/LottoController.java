@@ -4,6 +4,7 @@ import lotto.Utils.InputValid;
 import lotto.Utils.RandomUtil;
 import lotto.model.Computer;
 import lotto.model.Lotto;
+import lotto.model.Result;
 import lotto.model.User;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -15,9 +16,11 @@ public class LottoController {
     private User user;
     private Lotto lotto;
     private Computer computer;
+    private Result result;
 
     public LottoController() {
         user=new User();
+        result=new Result();
     }
 
     public void startLotto(){
@@ -29,6 +32,9 @@ public class LottoController {
 
         lotto=new Lotto(InputView.getLottoNumber());
         lotto.setBonusNumber(InputView.getBonusNumber(lotto.getNumbers()));
+
+        result.calculatorResult(computer.getRandomNumbers(),lotto.getNumbers(),lotto.getBonusNumber());
+        OutputView.printResult(result.getResultArray());
     }
 
     private void inIt(){
