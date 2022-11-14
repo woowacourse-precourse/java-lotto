@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.Map;
 
+import static lotto.util.Constants.INIT_PROFIT;
+
 public class Profit {
     private int profit = 0;
     private int investment;
@@ -18,7 +20,7 @@ public class Profit {
     }
 
     public double getProfitRate(){
-        return (double)(this.profit / this.investment) * 100;
+        return ((double)this.profit / this.investment) * 100;
     }
 
 }

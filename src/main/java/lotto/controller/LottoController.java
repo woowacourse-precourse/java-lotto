@@ -8,6 +8,8 @@ import lotto.view.output.Guide;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.util.Constants.MONETARY_UNIT;
+
 public class LottoController {
     Guide guide = new Guide();
     UserInput userInput = new UserInput();
@@ -35,7 +37,6 @@ public class LottoController {
 
     private int getLottoCount() {
         guide.printInputPriceGuide();
-
         return userInput.getLottoCount();
     }
 
@@ -58,7 +59,7 @@ public class LottoController {
     }
 
     private void printResult(Map<RankingType, Integer> rankingTypeCounts) {
-        guide.printResultGuide();
+        guide.printResultStartGuide();;
         guide.printResult(rankingTypeCounts);
     }
 
@@ -69,7 +70,7 @@ public class LottoController {
     }
 
     private int getInvestment(int lottoCount) {
-        return lottoCount * 1000;
+        return lottoCount * MONETARY_UNIT;
     }
 
 }

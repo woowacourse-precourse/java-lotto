@@ -5,6 +5,8 @@ import lotto.validation.Validator;
 import java.util.Collections;
 import java.util.List;
 
+import static lotto.util.Constants.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -14,9 +16,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Validator.validateSize(numbers, 6);
+        Validator.validateSize(numbers, LOTTO_SIZE);
         Validator.validateNonDuplicatedList(numbers);
-        Validator.validateNumbersRange(numbers, 1, 45);
+        Validator.validateNumbersRange(numbers, LOTTO_START_RANGE, LOTTO_END_RANGE);
     }
 
     public String getNumbersString() {
@@ -42,7 +44,7 @@ public class Lotto {
     }
 
     private int getMatchingPoint(WinningLotto winningNumber) {
-        int matchingPoint = 0;
+        int matchingPoint = INIT_MATCHING_POINT;
         for (Integer number : numbers) {
             matchingPoint += getExtraMatchingPoint(number, winningNumber);
         }
@@ -52,9 +54,9 @@ public class Lotto {
 
     private int getExtraMatchingPoint(int number, WinningLotto winningLotto){
         if(winningLotto.contains(number)){
-            return 1;
+            return EXTRA_POINT_WHEN_MATCH;
         }
-        return 0;
+        return EXTRA_POINT_WHEN_MISMATCH;
     }
 
     private static RankingType getRankingTypeCandidate(int matchingPoint) {

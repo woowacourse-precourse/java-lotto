@@ -6,11 +6,14 @@ import lotto.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.util.Constants.INPUT_SEPARATOR;
+import static lotto.util.Constants.MONETARY_UNIT;
+
 public class UserInput {
 
     public int getLottoCount(){
         int price = getPrice();
-        return price / 1000;
+        return price / MONETARY_UNIT;
     }
 
     private int getPrice() {
@@ -47,7 +50,7 @@ public class UserInput {
     }
 
     private String[] getSplit(String input) {
-        return input.split(",");
+        return input.split(INPUT_SEPARATOR);
     }
 
     private String getUserInput() {

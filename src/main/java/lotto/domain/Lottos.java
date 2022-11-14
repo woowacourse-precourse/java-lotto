@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.util.Constants.*;
+
 public class Lottos {
     private final List<Lotto> lottos;
 
@@ -16,7 +18,7 @@ public class Lottos {
         StringBuilder sb = new StringBuilder();
         for (Lotto lotto : lottos) {
             sb.append(lotto.getNumbersString());
-            sb.append("\n");
+            sb.append(RESULT_SEPARATOR);
         }
         return sb.toString().trim();
     }
@@ -34,7 +36,7 @@ public class Lottos {
         Map<RankingType, Integer> rankingTypeCounts = new HashMap<>();
         RankingType[] values = RankingType.values();
         for (RankingType value : values) {
-            rankingTypeCounts.put(value, 0);
+            rankingTypeCounts.put(value, INIT_COUNT);
         }
         return rankingTypeCounts;
     }
@@ -53,7 +55,7 @@ public class Lottos {
                                                 List<RankingType> lottosRankingTypes) {
         for (RankingType rankingType : lottosRankingTypes) {
             int originCount = rankingTypeCounts.get(rankingType);
-            rankingTypeCounts.put(rankingType, originCount + 1);
+            rankingTypeCounts.put(rankingType, originCount + VALUE_FOR_UPDATE_COUNT);
         }
     }
 }

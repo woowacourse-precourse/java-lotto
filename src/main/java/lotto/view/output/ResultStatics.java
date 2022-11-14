@@ -4,6 +4,8 @@ import lotto.domain.RankingType;
 
 import java.util.Map;
 
+import static lotto.util.Constants.*;
+
 public class ResultStatics {
 
     public String getString(Map<RankingType, Integer> countByRankingType){
@@ -19,27 +21,23 @@ public class ResultStatics {
         return sb.toString().trim();
     }
 
-    private String getRankingString(String ranking){
-        return String.format("%s: ",ranking);
-    }
-
     private String getConditionString(int condition){
-        return String.format("%d개 일치", condition);
+        return String.format(CONDITION_MATCHING_INFORMATION_GUIDE, condition);
     }
 
     private String getBonusConditionString(boolean isNeedBonus){
         if(isNeedBonus){
-            return ", 보너스 볼 일치";
+            return BONUS_BALL_MATCHING_INFORMATION_GUIDE;
         }
-        return "";
+        return BONUS_BALL_MISMATCHING_INFORMATION_GUIDE;
     }
 
     private String getPrizeMoney(int prizeMoney){
-        return String.format(" (%,d원)",prizeMoney);
+        return String.format(PRIZE_MONEY_INFORMATION_GUIDE,prizeMoney);
     }
 
     private String getCountString(int count){
-        return String.format(" - %d개", count);
+        return String.format(COUNT_INFORMATION_GUIDE, count);
     }
 
 
