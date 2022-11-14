@@ -8,12 +8,12 @@ import java.util.Map;
 import java.util.Set;
 
 public class LottoStatisticView extends View {
-    private final Map<PrizeType, Integer> winStatistics;
-    private final int numberOfPurchases;
+    private final Map<PrizeType, Integer> status;
+    private final long profit;
 
-    public LottoStatisticView(Map<PrizeType, Integer> winStatistics, int numberOfPurchases) {
-        this.winStatistics = winStatistics;
-        this.numberOfPurchases = numberOfPurchases;
+    public LottoStatisticView(Map<PrizeType, Integer> status, long profit) {
+        this.status = status;
+        this.profit = profit;
     }
 
     @Override
@@ -21,24 +21,24 @@ public class LottoStatisticView extends View {
         printLine(Lang.VIEW_WINNING_STATS);
         printLine("---");
 
-        Set<PrizeType> winStatisticKeys = this.winStatistics.keySet();
-        long rewardMoney = winStatisticKeys
-                .stream()
-                .mapToInt(placeType -> placeType.getReward() * this.winStatistics.get(placeType))
-                .sum();
+        this.status
+                .keySet()
+                .forEach(this::showStatus);
 
-        for (PrizeType placeType: winStatisticKeys) {
-            printLine(Lang.format(
-                    Lang.VIEW_STATS_UNIT,
-                    placeType.toString(),
-                    this.winStatistics.get(placeType)
-            ));
-        }
-
-        printLine(Lang.format(Lang.VIEW_TOTAL_RETURNS, this.calculateRevenue(rewardMoney)));
+        printLine(Lang.format(Lang.VIEW_TOTAL_RETURNS, this.calculateRevenue()));
     }
 
-    private float calculateRevenue(long rewardMoney) {
-        return (rewardMoney / (this.numberOfPurchases * 1000F)) * 100;
+    private void showStatus(PrizeType prizeType) {
+        if (prizeType != PrizeType.NOTHING) {
+            printLine(Lang.format(
+                    Lang.VIEW_STATS_UNIT,
+                    prizeType.toString(),
+                    this.status.get(prizeType)
+            ));
+        }
+    }
+
+    private float calculateRevenue() {
+        return (this.profit / (this.status.size() * 1000F)) * 100;
     }
 }

@@ -6,17 +6,17 @@ import lotto.util.Lang;
 import java.util.List;
 
 public class LottoPurchaseNumberView extends View {
-    private final List<Lotto> purchaseLotteries;
-    public LottoPurchaseNumberView(List<Lotto> purchaseLotteries) {
-        this.purchaseLotteries = purchaseLotteries;
+    private final List<Lotto> lotteries;
+    public LottoPurchaseNumberView(List<Lotto> lotteries) {
+        this.lotteries = lotteries;
     }
 
     @Override
     public void show() {
-        printLine(Lang.format(Lang.VIEW_SUCCESS_BUY, this.purchaseLotteries.size()));
+        printLine(Lang.format(Lang.VIEW_SUCCESS_BUY, this.lotteries.size()));
         printLine("");
 
-        for (Lotto lotto : this.purchaseLotteries) {
+        for (Lotto lotto : this.lotteries) {
             printLine(lotto.toString());
         }
         printLine("");
