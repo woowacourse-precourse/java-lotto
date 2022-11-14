@@ -14,12 +14,14 @@ public class LottoGenerator {
         return new Lotto(sortedNumbers);
     }
 
-    public static Lotto createWinningLottoWithEnterNumbers() {
+    public static WinningLotto createWinningLottoWithEnterNumbers() {
         String enterNumbers = Console.readLine();
         List<Integer> numbers = Arrays.stream(enterNumbers.split(","))
             .mapToInt(Integer::parseInt)
             .boxed()
             .sorted()
             .collect(Collectors.toList());
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        return new WinningLotto(numbers, bonusNumber);
     }
 }
