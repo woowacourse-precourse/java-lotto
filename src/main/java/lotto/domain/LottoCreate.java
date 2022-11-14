@@ -19,7 +19,18 @@ public class LottoCreate {
     private List<Integer> sortLottoNumbers(List<Integer> numbers) {
         return numbers.stream().sorted().collect(Collectors.toList());
     }
+    public List<Lotto> createLottos() {
+        List<Lotto> lottos = new ArrayList<>();
+        InputView inputView = new InputView();
+        int count = inputView.getLotteryAmount();
 
+        for (int i = 0; i < count; i++) {
+            List<Integer> numbers = createLottoNum();
+            lottos.add(new Lotto(numbers));
+        }
+
+        return lottos;
+    }
 
 
 }
