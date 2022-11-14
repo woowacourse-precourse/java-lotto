@@ -1,5 +1,6 @@
 package lotto;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -9,9 +10,25 @@ import static org.assertj.core.api.Assertions.*;
 
 
 class UserTest {
+
+    @DisplayName("숫주가 아닌 값이 주어지면 예외가 발생한다.")
+    @Test
+    void createUserByNonNumericString() {
+        assertThatThrownBy(()->new User("asdf"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("1000으로 나누어 떨어지지 않으면 예외가 발생한다.")
+    @Test
+    void createUserByInvalidPrice() {
+        assertThatThrownBy(()->new User("1200"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Test
     void createLottoListTest() {
-        List<Lotto> lottoList = User.createLottoList(12000);
+        User user = new User("12000");
+        List<Lotto> lottoList = user.getLottoList();
+
         assertThat(lottoList.size()).isEqualTo(12);
 
         for(Lotto lotto : lottoList){
