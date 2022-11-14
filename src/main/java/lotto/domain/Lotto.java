@@ -56,4 +56,15 @@ public class Lotto {
     public boolean isMatch(int number) {
         return numbers.contains(number);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        numbers.stream()
+            .sorted()
+            .forEach(number -> sb.append(number).append(", "));
+        sb.replace(sb.lastIndexOf(","), sb.lastIndexOf(" "), "]");
+        return sb.toString();
+    }
 }
