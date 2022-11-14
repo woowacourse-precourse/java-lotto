@@ -14,12 +14,12 @@ public class WinningNumber {
 
     public WinningNumber(Lotto luckyNumber, int bonusNumber) {
         this.luckyNumber = luckyNumber;
-        validateRange(bonusNumber);
-        validateDuplication(luckyNumber, bonusNumber);
+        validateBonusNumberRange(bonusNumber);
+        validateBonusNumberDuplication(luckyNumber, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
-    private void validateRange(int bonusNumber) {
+    private void validateBonusNumberRange(int bonusNumber) {
         if (isOutOfRange(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_OUT_OF_RANGE.toString());
         }
@@ -29,7 +29,7 @@ public class WinningNumber {
         return bonusNumber < START.getValue() || END.getValue() < bonusNumber;
     }
 
-    private void validateDuplication(Lotto luckyNumber, int bonusNumber) {
+    private void validateBonusNumberDuplication(Lotto luckyNumber, int bonusNumber) {
         if (isDuplicate(luckyNumber, bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_DUPLICATION.toString());
         }
