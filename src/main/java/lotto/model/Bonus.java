@@ -7,6 +7,14 @@ import lotto.util.Validator;
 public class Bonus {
     private final int bonus;
 
+    public static Bonus from(String input) {
+        try {
+            return new Bonus(Integer.parseInt(input));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Lang.THROW_NON_NUMERIC_CHARACTER);
+        }
+    }
+
     public Bonus(int bonus) {
         this.validate(bonus);
         this.bonus = bonus;

@@ -1,10 +1,12 @@
 package lotto.controller;
 
 import lotto.Env;
+import lotto.model.Bonus;
 import lotto.model.Lotto;
 import lotto.model.Raffle;
 import lotto.model.database.Draw;
 import lotto.model.database.Ticket;
+import lotto.view.BonusNumberInputView;
 import lotto.view.LottoNumberInputView;
 import lotto.view.MoneyInputView;
 import lotto.view.View;
@@ -40,12 +42,27 @@ public class InputController extends Controller {
         view.show();
 
         String response = view.getResponse();
-        Lotto lotto = Lotto.from(response);
-        Raffle raffle = new Raffle(lotto);
-
         Draw draw = Draw.getInstance();
-        draw.insert(raffle);
+        draw.insert(this.createRaffle(response));
     }
 
+    private Raffle createRaffle(String response) {
+        Lotto lotto = Lotto.from(response);
+        return new Raffle(lotto);
+    }
 
+    public void showBonusNumberInput() {
+        View view = new BonusNumberInputView();
+        view.show();
+
+        String response = view.getResponse();
+        Draw draw = Draw.getInstance();
+
+        this.updateRaffleBonus(draw.getLatest(), response);
+    }
+
+    private void updateRaffleBonus(Raffle raffle, String response) {
+        Bonus bonus = Bonus.from(response);
+        raffle.setBonus(bonus);
+    }
 }
