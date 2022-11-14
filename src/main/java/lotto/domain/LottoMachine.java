@@ -7,22 +7,22 @@ import lotto.domain.constants.LottoConstants;
 
 public class LottoMachine {
 
-    List<Lotto> haveLottoList;
+    List<Lotto> buyLottoList;
 
     public LottoMachine(Money money) {
         buyLottoTicket(money);
     }
 
     public LottoMachine(List<Lotto> lottoList) {
-        this.haveLottoList = lottoList;
+        this.buyLottoList = lottoList;
     }
 
-    public List<Lotto> getHaveLottoList() {
-        return haveLottoList;
+    public List<Lotto> getBuyLottoList() {
+        return buyLottoList;
     }
 
     public int getPrice() {
-        return haveLottoList.size() * LottoConstants.LOTTO_PRICE;
+        return buyLottoList.size() * LottoConstants.LOTTO_PRICE;
     }
 
 
@@ -37,13 +37,13 @@ public class LottoMachine {
             lottoList.add(new Lotto(numbers));
         }
 
-        this.haveLottoList = lottoList;
+        this.buyLottoList = lottoList;
         printHaveLottoList();
     }
 
     private void printHaveLottoList() {
-        System.out.println(haveLottoList.size() + "개를 구매했습니다.");
-        for (Lotto lotto : haveLottoList) {
+        System.out.println(buyLottoList.size() + "개를 구매했습니다.");
+        for (Lotto lotto : buyLottoList) {
             System.out.println(lotto.getLottoNumbers());
         }
     }

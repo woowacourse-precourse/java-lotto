@@ -37,7 +37,7 @@ public class Compare {
         Map<LottoReference, Integer> result = new HashMap<>();
         Lotto myLotto = lottoWithBonus.getLotto();
 
-        for (Lotto haveLotto : lottoMachine.getHaveLottoList()) {
+        for (Lotto haveLotto : lottoMachine.getBuyLottoList()) {
             int count = isContains(haveLotto, myLotto);
             LottoReference lottoReference = NOPE;
             if (count == 5) {
