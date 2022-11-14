@@ -2,7 +2,7 @@ package lotto.view.validation;
 
 import lotto.domain.LottoEnum;
 
-public class UserMoneyValidation {
+public class InputMoneyValidation {
     private static final int REMAINDER_ZERO = 0;
     private static final String NUMBER_REGEXP = "^[0-9]+$";
 
