@@ -23,18 +23,11 @@ public class LottoRepositoryTest {
 
         return Stream.of(
                 DynamicTest.dynamicTest("Create Test 로또번호 생성을 테스트한다.", () -> {
-                    Lotto result = lottoRepository.create();
+                    Lotto result = lottoRepository.create(List.of(1, 2, 3, 4, 5, 6));
                     List<Integer> resultNumber = result.getNumbers();
 
                     assertThat(resultNumber.size())
                             .isEqualTo(LottoEnum.LOTTO.getSize());
-
-                    assertThat(resultNumber.get(0))
-                            .isGreaterThanOrEqualTo(LottoEnum.LOTTO.getMinNum());
-
-                    assertThat(resultNumber.get(LottoEnum.LOTTO.getSize()-1))
-                            .isGreaterThanOrEqualTo(LottoEnum.LOTTO.getMinNum())
-                            .isLessThanOrEqualTo(LottoEnum.LOTTO.getMaxNum());
                 })
         );
     }

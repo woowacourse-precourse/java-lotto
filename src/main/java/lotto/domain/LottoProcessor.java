@@ -15,6 +15,6 @@ public interface LottoProcessor {
 
     Boolean matchBonusNumber(Integer bonusNumber, Lotto lotto);
 
-    List<Lotto> createLotto(Integer count);
+    List<Lotto> createLottoByCount(Integer count);
 
 }

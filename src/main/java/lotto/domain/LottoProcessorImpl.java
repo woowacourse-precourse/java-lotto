@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -26,11 +28,15 @@ public class LottoProcessorImpl implements LottoProcessor{
     }
 
     @Override
-    public List<Lotto> createLotto(Integer count) {
+    public List<Lotto> createLottoByCount(Integer count) {
         List<Lotto> clientLotto = new ArrayList<>();
         IntStream.range(0, count)
-                .forEach(i -> clientLotto.add(lottoRepository.create()));
+                .forEach(i -> clientLotto.add(lottoRepository.create(createRandomNumber())));
 
         return clientLotto;
+    }
+
+    private List<Integer> createRandomNumber(){
+        return Randoms.pickUniqueNumbersInRange(LottoEnum.LOTTO.getMinNum(), LottoEnum.LOTTO.getMaxNum(), LottoEnum.LOTTO.getSize());
     }
 }

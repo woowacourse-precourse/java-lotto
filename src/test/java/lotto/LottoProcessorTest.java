@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoEnum;
 import lotto.domain.LottoProcessor;
 import lotto.domain.LottoProcessorImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -87,21 +88,29 @@ public class LottoProcessorTest {
         return Stream.of(
                 DynamicTest.dynamicTest("3000원인 경우", () -> {
                     final Integer count = 3;
-                    List<Lotto> result = lottoProcessor.createLotto(count);
+                    List<Lotto> result = lottoProcessor.createLottoByCount(count);
 
                     assertThat(result.size()).isEqualTo(3);
                 }),
-                DynamicTest.dynamicTest("1000원인 경우", () -> {
-                    final Integer count = 1;
-                    List<Lotto> result = lottoProcessor.createLotto(count);
-
-                    assertThat(result.size()).isEqualTo(1);
-                }),
                 DynamicTest.dynamicTest("8000원인 경우", () -> {
                     final Integer count = 8;
-                    List<Lotto> result = lottoProcessor.createLotto(count);
+                    List<Lotto> result = lottoProcessor.createLottoByCount(count);
 
                     assertThat(result.size()).isEqualTo(8);
+                }),
+                DynamicTest.dynamicTest("생성된 숫자의 범위 테스트", () -> {
+                    final Integer count = 1;
+                    List<Lotto> result = lottoProcessor.createLottoByCount(count);
+                    final List<Integer> resultNumber = result.get(0).getNumbers();
+
+                    assertThat(result.size()).isEqualTo(1);
+
+                    assertThat(resultNumber.get(0))
+                            .isGreaterThanOrEqualTo(LottoEnum.LOTTO.getMinNum());
+
+                    assertThat(resultNumber.get(LottoEnum.LOTTO.getSize()-1))
+                            .isGreaterThanOrEqualTo(LottoEnum.LOTTO.getMinNum())
+                            .isLessThanOrEqualTo(LottoEnum.LOTTO.getMaxNum());
                 })
         );
     }
