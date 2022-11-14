@@ -41,9 +41,8 @@ public class WinningNumber {
 
     public int validateNumber(String numberString) {
         int number = 0;
-        number = Integer.parseInt(numberString);
         try {
-
+            number = Integer.parseInt(numberString);
             if (!(number >= LOTTO_NUMBER_MIN && number <= LOTTO_NUMBER_MAX)) {
                 throw new IllegalArgumentException();
             }
