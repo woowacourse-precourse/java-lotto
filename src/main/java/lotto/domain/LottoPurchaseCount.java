@@ -10,7 +10,7 @@ public class LottoPurchaseCount {
     }
 
     private static int calculateLottoPurchaseCount(int money) {
-        int lottoPurchaseCount = money/1000;
+        int lottoPurchaseCount = money / 1000;
         return lottoPurchaseCount;
     }
 }
