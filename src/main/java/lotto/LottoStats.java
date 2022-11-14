@@ -19,6 +19,9 @@ public class LottoStats {
         lottoStats.put(StatsType.first,0);
 
     }
+    public Map<StatsType,Integer> statistics(){
+        return lottoStats;
+    }
     private void calculationEarning(Integer cost){
         earning = 0d;
         for(var type  : lottoStats.keySet()){
