@@ -28,4 +28,11 @@ class MoneyTest {
         Assertions.assertThat(new Money(2000L))
                 .isInstanceOf(Money.class);
     }
+
+    @DisplayName("로또 개수 반환 테스트")
+    @Test
+    void createMoneyAndGetAmountOfLotto(){
+        Assertions.assertThat(new Money(2000L).getAmountOfLotto())
+                .isEqualTo(2);
+    }
 }
