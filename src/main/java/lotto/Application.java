@@ -18,6 +18,8 @@ public class Application {
         List<List<Integer>> userLottoTotal = userLottoNumber(numOfLotto);
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> prize = prizeNumber(Console.readLine());
+        System.out.println("보너스 번호를 입력해 주세요.");
+        Integer bonus = bonusNumber(Console.readLine());
     }
 
     public static String userPayment () {
@@ -61,5 +63,9 @@ public class Application {
                 .collect(Collectors.toList());
 
         return prizeNumberResult;
+    }
+
+    public static Integer bonusNumber (String bonusInput) {
+        return Integer.parseInt(bonusInput);
     }
 }
