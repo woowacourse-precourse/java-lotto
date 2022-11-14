@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 
 public class LotteryShop {
@@ -13,15 +14,16 @@ public class LotteryShop {
 
     public List<Integer> makeLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(numbers);
         return numbers;
     }
 
     private void validate(int totalPayment) {
         if (totalPayment % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1000단위로 입력해 주세요.");
         }
         if (totalPayment - LOTTO_PRICE < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 금액이 부족합니다.");
         }
     }
 }
