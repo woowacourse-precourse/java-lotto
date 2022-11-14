@@ -2,11 +2,14 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
+import lotto.domain.Policy;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class IOProcessor {
 
-    private static final String ERROR_MESSAGE_PREFIX = "[ERROR]";
+    private static final String ERROR_MESSAGE_PREFIX = "[ERROR]"; // 에러메시지 앞에 붙이는 접두사
 
     private enum WinningMessageFormat {
         WINNING_FIVE("3개 일치 (%,d원) - %d개\n"),
@@ -26,12 +29,12 @@ public class IOProcessor {
         }
     }
 
+    /*
+     * message: 입력 유도를 위해 출력되는 메시지
+     * end: 입력메시지 뒤에 붙일 접미사
+     * => 사용자에게 값을 입력받기 전 message + end가 출력됨
+     */
     public static String getUserInput(String message, String end) {
-        /*
-         * message: 입력 유도를 위해 출력되는 메시지
-         * end: 입력메시지 뒤에 붙일 접미사
-         * => 사용자에게 값을 입력받기 전 message + end가 출력됨
-         */
         System.out.print(message + end);
         return Console.readLine();
     }
@@ -43,19 +46,23 @@ public class IOProcessor {
         }
     }
 
-    public static void printWinningStatistics(List<Integer> winningInfo) {
-        int[] test = { 5000, 50000, 1500000, 30000000, 2000000000 };
+    public static void printWinningStatistics(Map<String, Integer> winningInfo) {
+        Iterator<String> keys = winningInfo.keySet().iterator();
         System.out.println("당첨 통계\n---");
-        WinningMessageFormat[] formats = WinningMessageFormat.values();
-        for (int i = 0; i < formats.length; i++)
-            System.out.printf(formats[i].getFormat(), test[i], winningInfo.get(5-i));
+
+        while(keys.hasNext()) {
+            String key = keys.next();
+            System.out.printf(WinningMessageFormat.valueOf(key).getFormat(),
+                    Policy.WinningAmount.valueOf(key).getAmount(),
+                    winningInfo.get(key));
+        }
     }
 
     public static void printMarginInfo(double margin) {
-        System.out.printf("총 수익률은 %.1f%%입니다.", margin);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", margin);
     }
 
     public static void printErrorMessage(String message) {
-        System.out.println(ERROR_MESSAGE_PREFIX + message);
+        System.out.println(ERROR_MESSAGE_PREFIX + " " + message);
     }
 }
