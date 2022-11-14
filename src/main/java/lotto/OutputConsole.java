@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +16,14 @@ public class OutputConsole {
             Collections.sort(lottoNumbers);
             String lottoNumbersMessage = lottoNumbers.stream().map(String::valueOf).collect(Collectors.joining(", "));
             System.out.println("[" + lottoNumbersMessage + "]");
+        }
+    }
+
+    public static void printWinningList(List<Lotto> lottos, List<Integer> winningNumber, int bonusNumber) {
+        LottoMachine lottoMachine = new LottoMachine();
+        HashMap<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos, winningNumber, bonusNumber);
+        for (Rank key: rankResult.keySet()){
+            System.out.println(key.getScoreText() + "- " + rankResult.get(key) +"개");;
         }
     }
 }

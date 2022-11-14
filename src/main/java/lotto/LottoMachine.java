@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LottoMachine {
 
-    public static final int LOTTO_PRICE= 1000;
+    public static final int LOTTO_PRICE = 1000;
 
     public List<Lotto> buy(int money) {
         List<Lotto> buyLotto = new ArrayList<>();
