@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -13,7 +11,7 @@ import static lotto.CommonContent.PrintLottoContent.*;
 
 public class Application {
 
-    private static List<Lotto> buyLottoList;
+    private static List<Lotto> buyLottos;
     private static Lotto winningLotto;
     private static Integer bonusNumber;
 
@@ -21,6 +19,8 @@ public class Application {
         byeLotto();
         createWinningNumbers();
         createBonusNumber();
+
+        winningStatistics();
     }
 
     public static void byeLotto(){
@@ -39,10 +39,10 @@ public class Application {
     }
 
     public static void createLotto(Integer purchaseNumbers){
-        buyLottoList = new ArrayList<Lotto>();
+        buyLottos = new ArrayList<Lotto>();
         for(int i=0; i<purchaseNumbers; i++){
-            buyLottoList.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
-            System.out.println(buyLottoList.get(i).getNumbers());
+            buyLottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            System.out.println(buyLottos.get(i).getNumbers());
         }
     }
 
@@ -67,6 +67,36 @@ public class Application {
         }catch (Exception e){
             throw new IllegalArgumentException(BONUSNUMBERERROR.getPrintStatement());
         }
+    }
+
+    public static void winningStatistics(){
+        System.out.println("\n" + WINNINGSTATISTICS.getPrintStatement());
+
+        Map<Integer, Integer> correspondCounts = new HashMap<Integer, Integer>();
+        for(int i=3; i<=6; i++){
+            correspondCounts.put(i, 0);
+        }
+
+        for(Lotto lotto: buyLottos){
+            Integer correspondCount = CalculationRank(lotto);
+            if(correspondCount > 2){
+                correspondCounts.put(correspondCount , correspondCounts.get(correspondCount) + 1);
+            }
+        }
+
+    }
+
+    public static Integer CalculationRank(Lotto lotto){
+
+        Integer correspondCount = 0;
+
+        for(Integer number : lotto.getNumbers()){
+            if(winningLotto.contains(number)){
+                correspondCount ++;
+            }
+        }
+
+        return correspondCount;
     }
 
 }

@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static lotto.CommonContent.PrintError.LOTTOSIZEERROR;
 
@@ -19,6 +20,10 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return numbers.stream().sorted().collect(Collectors.toList());
+    }
+
+    public boolean contains(Integer number){
+        return numbers.contains(number);
     }
 }

@@ -6,7 +6,7 @@ public class CommonContent {
         PURCHASEAMOUNT("구입금액을 입력해 주세요."),
         WINNINGNUMBER("당첨 번호를 입력해 주세요."),
         BONUSNUMBER("보너스 번호를 입력해 주세요."),
-        WINNINGSTATISTICS("당첨 통계");
+        WINNINGSTATISTICS("당첨 통계\n---\n");
 
         private String printStatement;
 
