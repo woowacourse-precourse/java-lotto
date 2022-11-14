@@ -58,9 +58,17 @@ public class Application {
     public static List<Integer> inputWinningNumbers() {
         // 당첨 번호 입력
         System.out.println(INPUT_WINNING_NUMBERS_SENTENCE);
-        List<Integer> winningNumbers = Arrays.stream(Console.readLine().split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        List<Integer> winningNumbers;
+        try {
+            winningNumbers = Arrays.stream(Console.readLine().split(","))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        if (winningNumbers.size()!=6) {
+            throw new IllegalArgumentException();
+        }
         System.out.println();
         return winningNumbers;
     }
