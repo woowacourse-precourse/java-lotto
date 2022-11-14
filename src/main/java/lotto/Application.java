@@ -9,9 +9,9 @@ import lotto.viewer.OutputView;
 public class Application {
     public static void main(String[] args) {
         try {
-            int purchaseNumber = GameManager.determinePurchaseNumber();
+            int purchaseNumber = GameManager.enterPurchaseNumber();
             Buyer buyer = GameManager.buyLottos(purchaseNumber);
-            WinningNumber winningNumber = GameManager.getWinningNumber();
+            WinningNumber winningNumber = GameManager.enterWinningNumber();
 
             History history = buyer.play(winningNumber);
             OutputView.showHistory(history);

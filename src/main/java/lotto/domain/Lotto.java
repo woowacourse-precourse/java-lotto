@@ -9,12 +9,14 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static lotto.viewer.ErrorMessage.*;
+import static lotto.viewer.ViewFormat.*;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
     private static final int MAXIMUM_NUMBER = 45;
     private static final int MINIMUM_NUMBER = 1;
     private static final int FIVE = 5;
+
     private List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) throws IllegalArgumentException {
@@ -91,6 +93,6 @@ public class Lotto {
         List<String> mappedNumbers = numbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.toList());
-        return "[" + String.join(", ",mappedNumbers) + "]";
+        return OPEN_BRACKET + String.join(COMMA,mappedNumbers) + CLOSE_BRACKET;
     }
 }

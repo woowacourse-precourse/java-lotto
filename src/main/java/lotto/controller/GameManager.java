@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameManager {
-    public static int determinePurchaseNumber() {
+    public static final String COMMA = ",";
+    public static int enterPurchaseNumber() {
         InputView.showPurchaseRequest();
         int purchaseNumber = Money.from(Console.readLine())
                 .calculatePurchaseNumber();
@@ -25,23 +26,23 @@ public class GameManager {
         return buyer;
     }
 
-    public static List<Integer> getWinningNumbers() {
+    public static List<Integer> enterWinningNumbers() {
         InputView.showWinningRequest();
-        List<Integer> winningNumbers = Arrays.asList(Console.readLine().split(",")).stream()
+        List<Integer> winningNumbers = Arrays.asList(Console.readLine().split(COMMA)).stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         return winningNumbers;
     }
 
-    public static int getBonusNumber() {
+    public static int enterBonusNumber() {
         InputView.showBonusRequest();
         int bonusNumber = Integer.parseInt(Console.readLine());
         return bonusNumber;
     }
 
-    public static WinningNumber getWinningNumber() {
-        List<Integer> winningNumbers = getWinningNumbers();
-        int bonusNumber = getBonusNumber();
+    public static WinningNumber enterWinningNumber() {
+        List<Integer> winningNumbers = enterWinningNumbers();
+        int bonusNumber = enterBonusNumber();
         WinningNumber winningNumber = WinningNumber.of(winningNumbers, bonusNumber);
         return winningNumber;
     }

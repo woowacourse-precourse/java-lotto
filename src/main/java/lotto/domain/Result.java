@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import lotto.controller.Money;
+
 import java.util.Arrays;
+
+import static lotto.viewer.ViewFormat.*;
 
 public enum Result {
     NONE(0,0),
@@ -29,8 +33,8 @@ public enum Result {
 
     public String toString() {
         if (this.equals(FIVE_BONUS)) {
-            return number +"개 일치, 보너스 볼 일치 (" + String.format("%,d",prize) + "원)";
+            return number + CONSISTENCE_WITH_BONUS + OPEN_PARENTHESIS + String.format(MONEY_FORMAT,prize) + CURRENCY + CLOSE_PARENTHESIS;
         }
-        return number +"개 일치 (" + String.format("%,d",prize) + "원)";
+        return number + CONSISTENCE + OPEN_PARENTHESIS + String.format(MONEY_FORMAT,prize) + CURRENCY + CLOSE_PARENTHESIS;
     }
 }
