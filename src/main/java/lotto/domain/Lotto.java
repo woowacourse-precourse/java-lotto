@@ -2,16 +2,15 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     protected final List<Integer> lotto;
 
     public Lotto(List<Integer> lotto) {
-        this.lotto = lotto;
+        this.lotto = lottoNumberSort(lotto);
         validate();
-        lottoNumberSort();
     }
 
     public static Lotto generator() {
@@ -23,8 +22,8 @@ public class Lotto {
         return lotto;
     }
 
-    private void lottoNumberSort() {
-        Collections.sort(lotto);
+    private List<Integer> lottoNumberSort(List<Integer> lotto) {
+        return lotto.stream().sorted().collect(Collectors.toList());
     }
 
     private void validate() {
