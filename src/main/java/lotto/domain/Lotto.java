@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.ui.Messages;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +23,7 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Messages.ERROR_LOTTO_SIZE.getMessage());
         }
     }
 

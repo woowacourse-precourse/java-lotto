@@ -28,7 +28,7 @@ public class UserLottoTest {
 
     @DisplayName("로또번호는 중복이 존재하면 안된다")
     @Test
-    void createLottoDuplicateTest() {
+    void duplicateTest() {
         //given(준비)
         UserLotto userLotto = new UserLotto(5);
 

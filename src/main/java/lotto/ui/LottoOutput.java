@@ -40,7 +40,8 @@ public class LottoOutput {
 
         if(rank != LottoRank.BLANK) {
             sb.append(rank.getMessage())
-                    .append(count);
+                    .append(count)
+                    .append("개");
         }
 
         return sb.toString();

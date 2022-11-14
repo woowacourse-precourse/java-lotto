@@ -1,9 +1,6 @@
 package lotto.domainTest;
 
-import lotto.domain.BonusNumber;
-import lotto.domain.Lotto;
-import lotto.domain.LottoRank;
-import lotto.domain.LottoService;
+import lotto.domain.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,7 +25,7 @@ public class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("사용자 로또번호중 당첨번호가 있는지 확인")
+    @DisplayName("사용자 로또번호중 보너스번호가 있는지 확인")
     void checkBonusNumberTest() {
         //given(준비)
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
@@ -46,19 +43,17 @@ public class LottoServiceTest {
     }
 
     @Test
+    @DisplayName("당첨된 로또 등수 반환")
     void rankLottoTest() {
         //given(준비)
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
-        List<Integer> userLotto = List.of(1,2,3,4,5,6);
-
-        int count = lottoService.countMatchNumber(lotto.getNumbers(), userLotto);
-        boolean bonusNumber = false;
+        int matchCount = 5;
+        boolean bonusNumber = true;
 
         //when(실행)
-        LottoRank rank = lottoService.rankLotto(count, bonusNumber);
+        LottoRank rank = lottoService.rankLotto(matchCount, bonusNumber);
 
         //then(검증)
-        Assertions.assertThat(rank).isEqualTo(LottoRank.FIRST);
+        Assertions.assertThat(rank).isEqualTo(LottoRank.SECOND);
     }
 
     @Test
@@ -83,13 +78,13 @@ public class LottoServiceTest {
     @Test
     void calculatePercent() {
         //given(준비)
-        List<LottoRank> lottoResult = List.of(LottoRank.FIRST);
+        List<LottoRank> lottoResult = List.of(LottoRank.FIFTH, LottoRank.BLANK, LottoRank.BLANK, LottoRank.BLANK);
 
         //when(실행)
         String percent = lottoService.calculatePercent(lottoResult);
 
         //then(검증)
-        Assertions.assertThat(percent).isEqualTo("62.5");
+        Assertions.assertThat(percent).isEqualTo("125.0");
     }
 
 }

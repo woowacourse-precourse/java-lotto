@@ -1,7 +1,7 @@
 package lotto.domain;
 
 public enum BonusNumber {
-    BONUS_NUMBER(1);
+    BONUS_NUMBER(0);
 
     private int number;
 

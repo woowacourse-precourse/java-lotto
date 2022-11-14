@@ -25,18 +25,4 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    // 아래에 추가 테스트 작성 가능
-    @DisplayName("보너스번호 get, set 동작확인")
-    @Test
-    void initBonusNumber() {
-        //given(준비)
-        BonusNumber.BONUS_NUMBER.setNumber(7);
-
-        //when(실행)
-
-        //then(검증)
-        Assertions.assertThat(BonusNumber.BONUS_NUMBER.getNumber()).isEqualTo(7);
-    }
-
 }
