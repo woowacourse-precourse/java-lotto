@@ -51,4 +51,10 @@ public class Input {
         check_Overlap(numbers);
     }
 
+    private static void checkPayMoney(String str)  {
+            check_empty(str);
+            check_number(str);
+            check_under_thousand(str);
+    }
+
 }
