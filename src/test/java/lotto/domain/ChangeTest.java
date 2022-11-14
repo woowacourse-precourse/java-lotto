@@ -59,4 +59,11 @@ class ChangeTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 숫자로 변환이 되는지 확인한다.")
+    @Test
+    void bonusNumber_정상동작(){
+        int input = Change.bonusNumber("7");
+        assertThat(input).isEqualTo(7);
+    }
+
 }
