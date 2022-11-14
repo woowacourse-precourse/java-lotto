@@ -12,13 +12,13 @@ class PrizeCountTest {
 
     @BeforeEach
     void setUp() {
-        prizeCount.addPrizeCount(Prize.FIFTH);
+        prizeCount.add(Prize.FIFTH);
     }
 
     @DisplayName("$등수의 합산 금액이 맞는지 확인하기")
     @Test
-    void getTotalPrizeMoney() {
-        assertThat(prizeCount.getTotalPrizeMoney(Prize.FIFTH)).isEqualTo(
+    void checkTotalMoney() {
+        assertThat(prizeCount.getTotalMoney(Prize.FIFTH)).isEqualTo(
                 Prize.FIFTH.getMoney());
     }
 

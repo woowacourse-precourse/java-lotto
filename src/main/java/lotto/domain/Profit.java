@@ -20,7 +20,7 @@ public class Profit {
 
     public void calculateAmount() {
         for (Prize prize : Prize.values()) {
-            amount += prizeCount.getTotalPrizeMoney(prize);
+            amount += prizeCount.getTotalMoney(prize);
         }
     }
 

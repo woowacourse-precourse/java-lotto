@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import java.util.stream.Stream;
-import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Named;
 import org.junit.jupiter.api.Test;
@@ -46,7 +45,7 @@ class LottoTest {
     @ParameterizedTest
     @MethodSource("providePlayers")
     void isEqualCorrectCount(Lotto player, int expected) {
-        int actual = player.getCorrectCount(COMPUTER);
+        int actual = player.getNumberOfMatch(COMPUTER);
         assertThat(actual).isEqualTo(expected);
     }
 

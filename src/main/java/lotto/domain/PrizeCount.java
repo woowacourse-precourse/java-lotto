@@ -13,11 +13,11 @@ public class PrizeCount {
         }
     }
 
-    public void addPrizeCount(Prize prize) {
+    public void add(Prize prize) {
         items.put(prize, items.get(prize) + 1);
     }
 
-    public int getTotalPrizeMoney(Prize prize) {
+    public int getTotalMoney(Prize prize) {
         return prize.getMoney() * items.get(prize);
     }
 
