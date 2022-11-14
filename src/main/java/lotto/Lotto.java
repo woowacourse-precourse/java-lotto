@@ -66,11 +66,11 @@ public class Lotto {
     }
 
     private Rank getRank(int matchingCount, boolean matchBonus) {
-        if (matchingCount == 5) {
+        if (matchingCount == 6) {
             if (matchBonus) {
                 return Rank.BONUS;
             }
-            return Rank.FIVE;
+            return Rank.SIX;
         }
 
         for (Rank rank : Rank.values()) {
