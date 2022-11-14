@@ -1,7 +1,10 @@
 package lotto;
 
+import lotto.util.ResultPrice;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -11,6 +14,10 @@ import static lotto.util.LottoCode.*;
 
 public class Validation {
     private static final String REGEX_NOT_NUMBER = "\\D";
+
+    private static void accept(ResultPrice o) {
+        throw new IllegalArgumentException();
+    }
 
     public void validateMoneyInput(String input) {
         validateIsNumberInput(input);
@@ -99,6 +106,15 @@ public class Validation {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {
+            throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
+        }
+    }
+
+    public void validateResultPrice(Map<ResultPrice, Integer> result) {
+        long match = Arrays.stream(ResultPrice.values())
+                .filter(o -> result.get(o) == null)
+                .count();
+        if (match != 0) {
             throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
         }
     }
