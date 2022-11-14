@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public class Result {
     private static int equalThree = 0;
