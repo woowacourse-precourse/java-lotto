@@ -12,21 +12,24 @@ public class OutputView {
     private static final String BEFORE_RATE = "총 수익률은 ";
     private static final String AFTER_RATE = "%입니다.";
     private static final String ERROR = "[ERROR] ";
+    private static final String CLASS_CREATE_EXCEPTION_MESSAGE = "생성할 수 없는 클래스입니다.";
 
-    // TODO 구매한 로또 번호 출력
+    public OutputView() {
+        throw new IllegalStateException(CLASS_CREATE_EXCEPTION_MESSAGE);
+    }
+
     public static void printPurchaseLottoMessage(int count, String message) {
         System.out.println(count + LOTTO_COUNT_MESSAGE);
         System.out.println(message);
     }
     
-    // TODO 당첨 통계 출력, 총 수익률 출력
-    public static void printWinnings(List<Integer> winningsCount) {
+    public static void printWinnings(List<Integer> winningsCounts) {
         System.out.println(WINNING_STATS_WORD );
         System.out.println(SEPARATOR);
 
         int rankIndex = 0;
         for (Rank rank : Rank.values()) {
-            System.out.println(rank.getWinningStats() + winningsCount.get(rankIndex++) + LOTTO_UNIT);
+            System.out.println(rank.getWinningStats() + winningsCounts.get(rankIndex++) + LOTTO_UNIT);
         }
     }
 
