@@ -68,7 +68,7 @@ public final class Validator {
 
     public static void isPrizeNumberFormat(String input) {
         if (!input.matches("^(\\d{1,2},){5}(\\d{1,2})$")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(PREFIX + INVALID_PRIZE_NUMBER_FORMAT);
         }
     }
 
@@ -86,5 +86,11 @@ public final class Validator {
         isInteger(input);
         isNegative(input);
         isValidNumberRange(List.of(Integer.parseInt(input)));
+    }
+
+    public static void containsBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(PREFIX + DUPLICATED_BONUS_NUMBER);
+        }
     }
 }

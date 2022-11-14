@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.Validator;
+
 import java.util.List;
 
 public class PrizeLotto {
@@ -7,6 +9,7 @@ public class PrizeLotto {
     private int bonusNumber;
 
     public PrizeLotto(List<Integer> numbers, int bonusNumber) {
+        Validator.containsBonusNumber(numbers, bonusNumber);
         this.lotto = new Lotto(numbers);
         this.bonusNumber = bonusNumber;
     }
