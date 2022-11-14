@@ -19,13 +19,13 @@
   - [x] 당첨조건에 맞는 WinInfo 반환
 
 - [ ] 소유한 로또와 얻은 총 수익 정보를 담는 사용자 클래스 => LottoUser
-    - [ ] validation 추가
+    - [x] validation 추가
     - [x] 로또를 구매할 돈의 양 설정
     - [ ] 가진 돈의 양 만큼 로또를 구매
     - [ ] 수익률 계산
 
 - [ ] 로또의 번호정보를 담는 클래스 => Lotto
-    - [ ] validation 추가
+    - [x] validation 추가
     - [x] getter 추가
     
 
