@@ -3,47 +3,41 @@ package lotto.controller;
 import lotto.RateOfReturn;
 import lotto.Ticket;
 import lotto.Win;
-import lotto.view.LottoView;
+import lotto.dto.BonusNumberDto;
+import lotto.dto.MoneyDto;
+import lotto.dto.WinningNumbersDto;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
-import java.util.Collections;
 import java.util.List;
 
 public class LottoController {
-    private static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
-    private static final String INPUT_WINNING_NUMBER = "\n당첨 번호를 입력해 주세요.";
-    private static final String INPUT_BONUS_NUMBER = "\n보너스 번호를 입력해 주세요.";
 
-    private LottoView view;
-
-    public LottoController(LottoView view) {
-        this.view = view;
-    }
-
-    public void start() {
-        int money;
-        int bonusNumber;
-        Ticket ticket;
-        Win win;
-        double rate;
-        RateOfReturn rateOfReturn;
-        List<Integer> winningNumbers = Collections.EMPTY_LIST;
-        LottoView view = new LottoView();
-
+    // TODO 분리
+    public void process() {
         try {
-            view.printMessage(INPUT_MONEY);
-            money = view.inputMoney();
-            ticket = Ticket.purchase(money);
-            ticket.printTickets();
-            winningNumbers = view.inputWinningNumbers();
-            bonusNumber = view.inputBonusNumber(winningNumbers);
-            win = Win.compare(ticket, winningNumbers, bonusNumber);
-            rateOfReturn = new RateOfReturn(win, money, view);
-            rate = rateOfReturn.calculate();
-            win.printWinningStats();
-            rateOfReturn.printRate(rate);
+            MoneyDto moneyDto = InputView.inputMoney();
+            int money = moneyDto.getMoney();
 
+            // 로또 구매 >> Ticket.purchase();
+            Ticket tickets = Ticket.purchase(money);
+            int count = tickets.size();
+            String lottoNumbers = tickets.getPurchaseContext();
+            OutputView.printPurchaseLottoMessage(count, lottoNumbers);
+
+            WinningNumbersDto winningNumbersDto = InputView.inputWinningNumbers();
+
+            BonusNumberDto bonusNumberDto = InputView.inputBonusNumber(winningNumbersDto);
+
+            // 당첨 통계 계산
+            Win win = Win.compare(tickets, winningNumbersDto.getWinningNumbers(), bonusNumberDto.getBonusNumber());
+            double winnings = win.getWinnings();
+            List<Integer> winningsCount = win.getWinningsCount();
+            OutputView.printWinnings(winningsCount);
+            RateOfReturn rateOfReturn = new RateOfReturn(winnings, money);
+            OutputView.printRateOfReturn(rateOfReturn.calculate());
         } catch (IllegalArgumentException exception) {
-            view.printExceptionMessage(exception);
+            OutputView.printExceptionMessage(exception);
             return;
         }
     }
