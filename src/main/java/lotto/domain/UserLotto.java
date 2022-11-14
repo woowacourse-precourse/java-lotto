@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public final class UserLotto {
 
@@ -63,10 +64,16 @@ public final class UserLotto {
     }
 
     private void isValidBonusLottoRange(String bonusNumber) {
-        if (bonusNumber.length() != 1 || !bonusNumber.matches(SPLIT_STANDARD)
-                || ( 1 > Integer.parseInt(bonusNumber) && Integer.parseInt(bonusNumber) > 45 )) {
+        if (bonusNumber.length() != 1 || !bonusNumber.matches(REG_XP_LOTTO) ||
+                ( 1 > Integer.parseInt(bonusNumber) && Integer.parseInt(bonusNumber) > 45 )) {
             throw new IllegalArgumentException(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
+    }
+
+    public int findBonusNumberWinCount(List<Integer> lotto) {
+        return (int) IntStream.range(0, 6)
+                .filter(i -> lotto.get(i).equals(bonusNumber))
+                .count();
     }
 
     public List<Integer> getLotto() {
