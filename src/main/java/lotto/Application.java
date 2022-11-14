@@ -30,6 +30,6 @@ public class Application {
      * 예외 처리를 위한 편의 기능
      */
     public static boolean isValidMoney(int money) {
-        return money % LOTTO_BUY_CURRENCY == 0;
+        return money > 0 && money % LOTTO_BUY_CURRENCY == 0;
     }
 }
