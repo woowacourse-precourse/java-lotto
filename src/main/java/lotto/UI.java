@@ -65,6 +65,6 @@ public class UI {
         System.out.println(Hit.FIVEHIT.getMessage() + " (" + Hit.FIVEHIT.getMoney() + ") - " + this.lottoLogic.getFiveHit() + "개");
         System.out.println(Hit.FIVEHITANDBONUS.getMessage() + " (" + Hit.FIVEHITANDBONUS.getMoney() + ") - " + this.lottoLogic.getFiveHitAndBonus() + "개");
         System.out.println(Hit.SIXHIT.getMessage() + " (" + Hit.SIXHIT.getMoney() + ") - " + this.lottoLogic.getSixHit() + "개");
-        System.out.println("총 수익률은 " + this.lottoLogic.getEarningRate() + "%입니다.");
+        System.out.println("총 수익률은 " + String.format("%.1f", this.lottoLogic.getEarningRate()) + "%입니다.");
     }
 }
