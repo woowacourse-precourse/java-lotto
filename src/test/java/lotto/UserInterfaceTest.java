@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class UserInterfaceTest {
     public static final UserInterface userInterface = new UserInterface();
+    public static final LottoMachine lottoMachine = new LottoMachine();
 
     public static InputStream generateUserInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
@@ -50,5 +51,16 @@ class UserInterfaceTest {
         List<Integer> answer = List.of(1, 2, 3, 4, 5, 6);
         List<Integer> winning = userInterface.inputWinningNumbers();
         assertThat(winning).isEqualTo(answer);
+    }
+
+    @DisplayName("당첨 통계 출력하기")
+    @Test
+    void 당첨_통계_출력하기() {
+        lottoMachine.buyLottos(100);
+        List<Integer> winning = Utils.pickUnique6Numbers();
+        int bonus = 30;
+        lottoMachine.calculateResult(winning, bonus);
+        lottoMachine.calculateRevenue(3000);
+        userInterface.printResult(lottoMachine.getStatistics(), lottoMachine.getRevenue());
     }
 }
