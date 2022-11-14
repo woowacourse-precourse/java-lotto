@@ -12,14 +12,18 @@ import lotto.view.OutputView;
 
 public class LottoController {
     public void run() {
-        Money money = InputView.inputMoney();
-        List<Lotto> lottos = LottoIssueMachine.issue(money.calculateQuantity());
-        OutputView.printLottos(lottos);
-        Lotto winningNumbers = InputView.inputWinningNumbers();
-        LottoNumber bonusNumber = InputView.inputBonusNumber();
-        WinningResult winningResult = new WinningResult(winningNumbers, bonusNumber);
-        WinningStatistics winningStatistics = winningResult.compileStatistics(lottos);
-        OutputView.printWinningStatistics(winningStatistics);
-        OutputView.printYield(money, winningStatistics);
+        try {
+            Money money = InputView.inputMoney();
+            List<Lotto> lottos = LottoIssueMachine.issue(money.calculateQuantity());
+            OutputView.printLottos(lottos);
+            Lotto winningNumbers = InputView.inputWinningNumbers();
+            LottoNumber bonusNumber = InputView.inputBonusNumber();
+            WinningResult winningResult = new WinningResult(winningNumbers, bonusNumber);
+            WinningStatistics winningStatistics = winningResult.compileStatistics(lottos);
+            OutputView.printWinningStatistics(winningStatistics);
+            OutputView.printYield(money, winningStatistics);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
