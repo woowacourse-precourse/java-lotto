@@ -15,12 +15,12 @@ public class Message {
         return Console.readLine();
     }
 
-    public void buyLottoMessage(int lottoAmount){
+    public void buyLottoMessage(int lottoAmount) {
         System.out.println();
         System.out.println(lottoAmount + "개를 구매했습니다.");
     }
 
-    public void lottoDetailMessage(Lotto lotto){
+    public void lottoDetailMessage(Lotto lotto) {
         System.out.println(lotto.getNumbers());
     }
 
@@ -43,17 +43,17 @@ public class Message {
         System.out.println("당첨 통계");
         System.out.println("---");
 
-        for(LottoGrade lottoGrade : LottoGrade.values()){
-            System.out.print(lottoGrade.getCorrect() +"개 일치");
-            if(lottoGrade== LottoGrade.second){
+        for (LottoGrade lottoGrade : LottoGrade.values()) {
+            System.out.print(lottoGrade.getCorrect() + "개 일치");
+            if (lottoGrade == LottoGrade.second) {
                 System.out.print(", 보너스 볼 일치");
             }
-            System.out.print(" ("+df.format(lottoGrade.getPrize())+"원) - ");
-            System.out.println(User.getLottoGradeNumber(lottoGrade)+"개");
+            System.out.print(" (" + df.format(lottoGrade.getPrize()) + "원) - ");
+            System.out.println(User.getLottoGradeNumber(lottoGrade) + "개");
         }
     }
 
     public void lottoProfitMessage(String lottoProfit) {
-        System.out.println("총 수익률은 "+lottoProfit+"%입니다.");
+        System.out.println("총 수익률은 " + lottoProfit + "%입니다.");
     }
 }

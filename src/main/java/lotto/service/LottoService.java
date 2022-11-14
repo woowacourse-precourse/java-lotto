@@ -7,34 +7,34 @@ public class LottoService {
 
     final static int LOTTO_PAYMENT = 1000;
 
-    public int buyLotto(int payment){
+    public int buyLotto(int payment) {
         int amount = getLottoAmount(payment);
         return amount;
     }
 
     public int getLottoAmount(int payment) {
-        if(payment % LOTTO_PAYMENT != 0){
+        if (payment % LOTTO_PAYMENT != 0) {
             throw new IllegalArgumentException("[ERROR] 로또 금액 단위로 입력해야 합니다.");
         }
-        return payment/LOTTO_PAYMENT;
+        return payment / LOTTO_PAYMENT;
     }
 
     public List<Integer> setWinningNumber(String inputWinningNumber) {
         List<Integer> winningNumber = LottoUtils.parsingNumberBySeparator(inputWinningNumber);
         LottoUtils.checkUniqueNumbers(winningNumber);
 
-        for(int number :winningNumber){
+        for (int number : winningNumber) {
             LottoUtils.checkNumberInRange(number);
         }
         return winningNumber;
     }
 
-    public int setBonusNumber(String inputBonusNumber){
+    public int setBonusNumber(String inputBonusNumber) {
         try {
             int bonusNumber = Integer.parseInt(inputBonusNumber);
             LottoUtils.checkNumberInRange(bonusNumber);
             return bonusNumber;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
         }
     }

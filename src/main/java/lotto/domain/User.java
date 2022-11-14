@@ -12,10 +12,10 @@ public class User {
     private double profit;
     private int lottoPayment;
 
-    public void buyLottos(int lottoAmount){
+    public void buyLottos(int lottoAmount) {
         lottos = new ArrayList<>();
 
-        while (lottos.size()<lottoAmount){
+        while (lottos.size() < lottoAmount) {
             List<Integer> numbers = LottoUtils.pickUniqueNumbersInRange();
             List<Integer> number2 = new ArrayList<>(numbers);
             Collections.sort(number2);
@@ -28,12 +28,12 @@ public class User {
         return this.lottos;
     }
 
-    public void getLottoResults(WinningLotto winningLotto){
+    public void getLottoResults(WinningLotto winningLotto) {
         lottoGrades = new ArrayList<>();
 
-        for(Lotto lotto : lottos){
+        for (Lotto lotto : lottos) {
             LottoGrade lottoGrade = winningLotto.getLottoGrade(lotto);
-            if(lottoGrade != null){
+            if (lottoGrade != null) {
                 lottoGrades.add(lottoGrade);
             }
         }
@@ -45,10 +45,10 @@ public class User {
 
     public String getLottoProfit() {
         double payment = lottoPayment;
-        for(LottoGrade lottoGrade :lottoGrades){
+        for (LottoGrade lottoGrade : lottoGrades) {
             profit += lottoGrade.getPrize();
         }
-        return String.format("%.1f",profit/payment*100);
+        return String.format("%.1f", profit / payment * 100);
     }
 
     public void setLottoPayment(int lottoPayment) {

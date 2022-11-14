@@ -7,19 +7,19 @@ public class WinningLotto extends Lotto {
 
     private int bonusNumber;
 
-    public WinningLotto(List<Integer> numbers,int bonusNumber) {
+    public WinningLotto(List<Integer> numbers, int bonusNumber) {
         super(numbers);
         this.bonusNumber = bonusNumber;
         checkContainsBonusNumber();
     }
 
     public void checkContainsBonusNumber() {
-        if(getNumbers().contains(bonusNumber)){
+        if (getNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 입력한 보너스 번호가 이미 당첨 번호에 존재합니다.");
         }
     }
 
-    public int getBonusNumber(){
+    public int getBonusNumber() {
         return bonusNumber;
     }
 
@@ -27,10 +27,10 @@ public class WinningLotto extends Lotto {
         int correct = compareToWinningLotto(lotto);
         boolean bonus = compareToBonusNumber(lotto);
 
-        return LottoGrade.getLottoGrade(correct,bonus);
+        return LottoGrade.getLottoGrade(correct, bonus);
     }
 
-    public int compareToWinningLotto(Lotto lotto){
+    public int compareToWinningLotto(Lotto lotto) {
         int result = (int) lotto.getNumbers().stream()
                 .filter(number -> getNumbers().stream()
                         .anyMatch(Predicate.isEqual(number)))
@@ -38,7 +38,7 @@ public class WinningLotto extends Lotto {
         return result;
     }
 
-    public boolean compareToBonusNumber(Lotto lotto){
+    public boolean compareToBonusNumber(Lotto lotto) {
         return lotto.getNumbers().contains(getBonusNumber());
     }
 }
