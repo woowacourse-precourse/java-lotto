@@ -57,13 +57,17 @@ enum Rank {
 }
 
 public class LottoStatistics {
-    private final LottoBuyer lottoBuyer;
-    private final Lotto lotto;
-    private final List<Lotto> lottos;
-    private final BigInteger money;
-    private final Integer bonusNumber;
+    private  Lotto lotto;
+    private  List<Lotto> lottos;
+    private  BigInteger money;
+    private  Integer bonusNumber;
+    private LottoBuyer lottoBuyer;
 
-    public LottoStatistics() throws IllegalArgumentException {
+    public LottoStatistics() {
+
+    }
+
+    public void setStatistics() throws IllegalArgumentException {
         try {
             lottoBuyer = new LottoBuyer();
             lottoBuyer.setBuyer();
