@@ -13,6 +13,7 @@ public class Application {
         askPurchaseAmount();
 
         Purchase purchase = new Purchase(getInt());
+        purchase.printCount();
 
         List<Lotto> lottos = purchase.createLottos();
 
