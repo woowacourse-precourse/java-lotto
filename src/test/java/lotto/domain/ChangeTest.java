@@ -66,4 +66,11 @@ class ChangeTest {
         assertThat(input).isEqualTo(7);
     }
 
+    @DisplayName("보너스 번호에 문자가 입력이 되었으면 예외를 발생한다.")
+    @Test
+    void bonusNumber_문자입력(){
+        assertThatThrownBy(() -> Change.bonusNumber("a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
