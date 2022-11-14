@@ -57,7 +57,30 @@ enum Rank {
 }
 
 public class LottoStatistics {
+    private LottoBuyer lottoBuyer;
+    private Lotto lotto;
+    private List<Lotto> lottos;
+    private BigInteger money;
+    private Integer bonusNumber;
 
+    /*등수별 카운트*/
+    public void rankCount(List<Integer> numbers){
+        if (numbers.size() == 0){
+            Rank.FIRST.plusCount();
+        }
+        if (numbers.size() == 1 && numbers.contains(bonusNumber)){
+            Rank.SECOND.plusCount();
+        }
+        if (numbers.size() == 1 && !numbers.contains(bonusNumber)){
+            Rank.THIRD.plusCount();
+        }
+        if (numbers.size() == 2){
+            Rank.FOURTH.plusCount();
+        }
+        if (numbers.size() == 3 ){
+            Rank.FIFTH.plusCount();
+        }
+    }
 
 }
 
