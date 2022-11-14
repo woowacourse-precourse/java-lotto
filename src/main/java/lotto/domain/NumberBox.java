@@ -11,14 +11,23 @@ public class NumberBox {
     private static final String DUPLICATE_NUMBERS = "[ERROR] 로또 번호는 중복되지 않는 숫자들로 구성되어야 합니다.";
     private static final String IN_WINNING_NUMBERS = "[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String NOT_IN_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-    private final Set<Integer> winningNumbers;
-    private final int bonusNumber;
+    public final Set<Integer> winningNumbers;
+
+    public final int bonusNumber;
 
     public NumberBox(List<Integer> winningNumbers, int bonusNumber) {
         validate(winningNumbers);
         this.winningNumbers = new HashSet<>(winningNumbers);
         validate(winningNumbers, bonusNumber);
         this.bonusNumber = bonusNumber;
+    }
+
+    public Set<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 
     private static void validate(List<Integer> winningNumbers) {
