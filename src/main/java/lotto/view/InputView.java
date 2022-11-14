@@ -3,7 +3,6 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private static final String INTEGER_REGEX = "-?\\\\d+";
     private static final String INPUT_TYPE_IS_NOT_PROPER = "[ERROR] 잘못된 입력 형식입니다.";
 
     public static Integer inputMoney() {
@@ -13,7 +12,9 @@ public class InputView {
     }
 
     private static void validateMoneyType(String money) {
-        if (!money.matches(INTEGER_REGEX)) {
+        try {
+            Integer.parseInt(money);
+        } catch (IllegalArgumentException e) {
             throw new RuntimeException(INPUT_TYPE_IS_NOT_PROPER);
         }
     }
