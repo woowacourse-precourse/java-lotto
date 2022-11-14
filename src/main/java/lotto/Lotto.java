@@ -9,6 +9,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        validateNumberSize(numbers);
         this.numbers = numbers.stream().distinct().collect(Collectors.toList());
         validate(this.numbers);
         Collections.sort(this.numbers);
@@ -32,6 +33,12 @@ public class Lotto {
             throw new IllegalArgumentException(ErrorMessage.OVERLAP.getMessage());
         }
         validateElementRange(numbers);
+    }
+
+    private void validateNumberSize(List<Integer> rawNumbers) {
+        if (rawNumbers.size() != 6) {
+            throw new IllegalArgumentException(ErrorMessage.OVERLAP.getMessage());
+        }
     }
 
     private void validateElementRange(List<Integer> numbers) {
