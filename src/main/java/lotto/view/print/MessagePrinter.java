@@ -34,4 +34,8 @@ public class MessagePrinter {
     public void printStaticWinningLottoNumbersNotification() {
         System.out.println(NOTIFY_INPUT_WINNING_LOTTO_NUMBERS);
     }
+
+    public void printStaticBonusNumberNotification() {
+        System.out.println(NOTIFY_INPUT_BONUS_NUMBER);
+    }
 }
