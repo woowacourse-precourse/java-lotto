@@ -47,5 +47,4 @@ class LottoTest {
                 , Arguments.of(new Lotto(List.of(11, 2, 3, 10, 8, 9)), 0)
         );
     }
-
 }

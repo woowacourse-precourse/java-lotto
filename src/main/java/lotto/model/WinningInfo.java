@@ -49,4 +49,16 @@ public class WinningInfo {
     public int hashCode() {
         return Objects.hash(winningCounts);
     }
+
+    @Override
+    public String toString() {
+        String result = "당첨 통계\n---\n" +
+                String.format("3개 일치 (5,000원) - %d개\n", winningCounts.get(FIFTH)) +
+                String.format("4개 일치 (50,000원) - %d개\n", winningCounts.get(FOURTH)) +
+                String.format("5개 일치 (1,500,000원) - %d개\n", winningCounts.get(THIRD)) +
+                String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winningCounts.get(SECOND)) +
+                String.format("6개 일치 (2,000,000,000원) - %d개\n", winningCounts.get(FIRST));
+
+        return result;
+    }
 }

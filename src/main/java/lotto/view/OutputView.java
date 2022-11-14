@@ -1,11 +1,13 @@
 package lotto.view;
 
 import lotto.model.Lottos;
+import lotto.model.WinningInfo;
 
 public class OutputView {
     private static OutputView instance;
 
-    private OutputView() {}
+    private OutputView() {
+    }
 
     public OutputView getInstance() {
         if (instance == null) {
@@ -22,5 +24,9 @@ public class OutputView {
 
     public void printLottos(Lottos lottos) {
         System.out.println(lottos);
+    }
+
+    public void printWinningInfo(WinningInfo winningInfo) {
+        System.out.println(winningInfo);
     }
 }
