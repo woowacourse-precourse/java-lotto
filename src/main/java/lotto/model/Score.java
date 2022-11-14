@@ -13,8 +13,12 @@ public class Score {
         this.matchBonus = matchBonus;
     }
 
+    public int getMatchLotto() {
+        return this.matchLotto;
+    }
+
     public boolean hasBonusNumber() {
-        return this.matchLotto > 0;
+        return this.matchBonus > 0;
     }
 
     @Override

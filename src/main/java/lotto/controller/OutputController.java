@@ -9,10 +9,10 @@ import lotto.view.IntroduceView;
 import lotto.view.LottoPurchaseNumberView;
 import lotto.view.LottoStatisticView;
 import lotto.view.View;
-
-import java.util.LinkedHashMap;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OutputController extends Controller{
     public void showIntroduce() {
@@ -46,7 +46,7 @@ public class OutputController extends Controller{
     }
 
     private Map<PrizeType, Integer> countPrizeType(Raffle raffle, List<Lotto> lotteries) {
-        Map<PrizeType, Integer> status = new LinkedHashMap<>();
+        Map<PrizeType, Integer> status = this.initStatus();
 
         for (Lotto lotto : lotteries) {
             PrizeType prizeType = raffle.getPrizeTypeWith(lotto);
@@ -56,11 +56,16 @@ public class OutputController extends Controller{
         return status;
     }
 
+    private Map<PrizeType, Integer> initStatus() {
+        return Arrays.stream(PrizeType.values())
+                .collect(Collectors.toMap(prizeType1 -> prizeType1, prizeType2 -> 0));
+    }
+
     private long calculateProfit(Map<PrizeType, Integer> status) {
         return status
                 .keySet()
                 .stream()
-                .mapToLong(PrizeType::getReward)
+                .mapToLong(prizeType -> (long) prizeType.getReward() * status.get(prizeType))
                 .sum();
     }
 }

@@ -1,11 +1,10 @@
 package lotto.view;
 
 
+import lotto.Env;
 import lotto.type.PrizeType;
 import lotto.util.Lang;
-
 import java.util.Map;
-import java.util.Set;
 
 public class LottoStatisticView extends View {
     private final Map<PrizeType, Integer> status;
@@ -23,6 +22,8 @@ public class LottoStatisticView extends View {
 
         this.status
                 .keySet()
+                .stream()
+                .sorted()
                 .forEach(this::showStatus);
 
         printLine(Lang.format(Lang.VIEW_TOTAL_RETURNS, this.calculateRevenue()));
@@ -38,7 +39,15 @@ public class LottoStatisticView extends View {
         }
     }
 
-    private float calculateRevenue() {
-        return (this.profit / (this.status.size() * 1000F)) * 100;
+    private double calculateRevenue() {
+        return (double) (this.profit * 100) / (this.countTicket() * Env.LOTTO_PRICE);
+    }
+
+    private int countTicket() {
+        return this.status
+                .values()
+                .stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 }

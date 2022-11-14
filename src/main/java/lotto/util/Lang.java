@@ -23,6 +23,9 @@ public class Lang {
             = "구입 금액은 숫자만 입력할 수 있으며 %d원 단위로 구매할 수 있어요.";
     public static final String VIEW_EXAMPLE_MONEY = "ex) 8000";
     public static final String VIEW_WINNING_STATS = "당첨 통계";
+    public static final String VIEW_MATCH_LOTTO_NUMBERS = "%d개 일치";
+    public static final String VIEW_MATCH_BONUS_NUMBER = ", 보너스 볼 일치";
+    public static final String VIEW_MONEY_UNIT = " (%s원)";
     public static final String VIEW_STATS_UNIT = "%s - %d개";
     public static final String VIEW_TOTAL_RETURNS = "총 수익률은 %.1f%%입니다.";
     public static final String VIEW_ERROR = "[ERROR]";
