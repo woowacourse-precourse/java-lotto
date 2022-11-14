@@ -29,7 +29,7 @@ public class View {
             if (i % 1000 != 0) {
                 throw new IllegalArgumentException();
             }
-            return Integer.parseInt(Console.readLine());
+            return i/1000;
         } catch (IllegalArgumentException e) {
             System.out.println("[Error] 로또 구입 금액이 올바르지 않습니다.");
             throw e;
