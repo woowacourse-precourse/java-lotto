@@ -17,7 +17,7 @@ class LottoCheckTest {
         check = new LottoCheck();
     }
 
-    @DisplayName("로또 번호와 덩첨 번호의 일치 개수 테스트")
+    @DisplayName("로또 번호와 당첨 번호의 일치 개수 테스트")
     @Test
     void checkWinningTest() {
         // given
@@ -34,7 +34,7 @@ class LottoCheckTest {
         assertThat(check.checkWinning(winnings, threeMatch)).isEqualTo(3);
     }
 
-    @DisplayName("로또 번호에 보너스 번호가 존재여부 테스트")
+    @DisplayName("로또 번호에 보너스 번호 존재여부 테스트")
     @Test
     void checkBonusTest() {
         // given
