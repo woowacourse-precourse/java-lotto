@@ -47,3 +47,15 @@
     - `(사용 금액 / 당첨 금액) * 100`
     - 소수 둘째자리에서 반올림
 - [ ]  수익률을 출력하는 기능
+
+# 필요한 자료구조
+- `Validation` 클래스 : 유효성 검사
+    - `isNumber()`, `isPositive()`, `isHundredUnit()`, `isInRange()`, `isDuplicate()`
+- `Input` 클래스 : 입력 처리
+    - `readMoney()`, `readWinningNumbers()`, `readBonusNumber()`
+- `Lotto` 클래스 : 사용자의 로또 1개를 저장하고, 로또와 관련된 로직 수행
+    - `List<Integer> numbers`
+    - `computeResult()`, `printLotto()`
+- `Manager` 클래스 : 구입 금액, 당첨 번호, 보너스 번호, 사용자 로또 리스트를 생성 및 저장하고, 당첨 관련 로직 수행
+    - `Set<Integer> winningNumbers`, `int bonusNumber`, `List<Lotto> lottoList`
+    - `buyLottos()`, `createLotto()`, `printLottos()`, `parseWinningNumbers()`, `setWinningNumbers()`, `setBonusNumber()`, `compareLottos()`, `printResult()`, `calculateYield()`, `printYield()`
