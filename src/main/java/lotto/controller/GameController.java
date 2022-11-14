@@ -3,12 +3,14 @@ package lotto.controller;
 import lotto.model.Computer;
 import lotto.model.Lotto;
 import lotto.model.User;
+import lotto.model.WinningNumber;
 import lotto.view.Message;
 
 public class GameController {
     private final Message message = new Message();
     private final User user = new User();
     private final Computer computer = new Computer();
+    private final WinningNumber winningNumber = new WinningNumber();
 
     public void buyLotto() {
         message.inputPrice();
@@ -24,5 +26,6 @@ public class GameController {
 
     public void checkWinningNumbers() {
         message.inputWinningNumbers();
+        winningNumber.inputWinningNumbers();
     }
 }
