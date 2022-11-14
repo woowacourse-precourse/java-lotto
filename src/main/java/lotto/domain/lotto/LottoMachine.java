@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
+    public static final Integer LOTTO_PRICE = 1000;
     
     public List<Lotto> buy(Integer amount) {
         validate(amount);
@@ -22,11 +23,11 @@ public class LottoMachine {
     }
     
     private int getCount(Integer amount) {
-        return amount / LottoMachineEnum.LOTTO_PRICE.getValue();
+        return amount / LottoMachine.LOTTO_PRICE;
     }
     
     private void validate(Integer amount) {
-        if (amount % LottoMachineEnum.LOTTO_PRICE.getValue() != 0) {
+        if (amount % LottoMachine.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException();
         }
     }

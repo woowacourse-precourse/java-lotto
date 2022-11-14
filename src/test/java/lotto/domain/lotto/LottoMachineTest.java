@@ -17,13 +17,13 @@ public class LottoMachineTest {
     @Test
     void buy_메소드는_구입_금액을_로또_가격으로_나눈_사이즈의_로또_인스턴스_리스트_반환_1() {
         int amount = 1000;
-        assertThat(lottoMachine.buy(amount).size()).isEqualTo(amount / LottoMachineEnum.LOTTO_PRICE.getValue());
+        assertThat(lottoMachine.buy(amount).size()).isEqualTo(amount / LottoMachine.LOTTO_PRICE);
     }
     
     @Test
     void buy_메소드는_구입_금액을_로또_가격으로_나눈_사이즈의_로또_인스턴스_리스트_반환_2() {
         int amount = 26000;
-        assertThat(lottoMachine.buy(amount).size()).isEqualTo(amount / LottoMachineEnum.LOTTO_PRICE.getValue());
+        assertThat(lottoMachine.buy(amount).size()).isEqualTo(amount / LottoMachine.LOTTO_PRICE);
     }
     
     @Test
