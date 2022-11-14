@@ -15,10 +15,6 @@ public class Application {
     public static List<Integer> record = new ArrayList<>(List.of(0, 0, 0, 0, 0)); //로또 통계 기록용 리스트
     public static String payMoney;
 
-    public static List<Integer> makeRandom() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return numbers;
-    }
 
     public static int buyLotto() {
         System.out.println("구매금액을 입력해 주세요.");
@@ -28,15 +24,22 @@ public class Application {
         return lottoNumber;
     }
 
+    public static List<Integer> makeRandom() {
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(numbers);
+        return numbers;
+    }
+
     public static void printLotto(int lottoNumber) {
         System.out.println("\n" + lottoNumber + "개를 구매했습니다.");
 
         for (int cnt = 0; cnt < lottoNumber; cnt++) {
-            List<Integer> numbers = makeRandom();
-            Collections.sort(numbers);
-            Lotto lotto = new Lotto(numbers);
+/*            List<Integer> numbers = makeRandom();
+            Lotto lotto = new Lotto(numbers);*/
+
+            Lotto lotto = new Lotto(makeRandom());
             lottoList.add(lotto); //로또 리스트에 담기
-            lotto.printNumbers(); //로또 번호 출옴
+            lotto.printNumbers(); //로또 번호 출력
         }
     }
 
@@ -127,11 +130,11 @@ public class Application {
         List<Integer> money = new ArrayList<>(List.of(5000, 50000, 1500000, 30000000, 2000000000));
 
         for (int idx = 0; idx < money.size(); idx++) {
-            System.out.println("moneyList : " + money.get(idx) + ", recordList : " + record.get(idx));
+            //System.out.println("moneyList : " + money.get(idx) + ", recordList : " + record.get(idx));
             earnMoney += (money.get(idx) * record.get(idx));
         }
         double pay = Double.parseDouble(payMoney);
-        System.out.println("earnMoney : " + earnMoney + ", payMoney : " + pay);
+        //System.out.println("earnMoney : " + earnMoney + ", payMoney : " + pay);
         double yield = earnMoney/pay * 100.0;
 
         System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
