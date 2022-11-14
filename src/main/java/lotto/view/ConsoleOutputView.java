@@ -16,7 +16,7 @@ public class ConsoleOutputView {
     }
 
     public void printlnError(String errorText) {
-        // TODO 구현 필요
+        System.out.println("[ERROR] " + errorText);
     }
 
     private String integersToString(List<Integer> integers) {
