@@ -20,8 +20,9 @@ public class Validator {
     public static void validateContainString(String input){
         try{
             Double.parseDouble(input);
-        } catch (Exception e) {
-            throw new NoSuchElementException(generateErrorMessage(NOT_NUMBER_MESSAGE));
+        } catch (NumberFormatException e) {
+            System.out.println(generateErrorMessage(NOT_NUMBER_MESSAGE));
+            throw new NoSuchElementException();
         }
     }
 

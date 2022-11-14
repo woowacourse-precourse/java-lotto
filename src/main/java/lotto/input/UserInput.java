@@ -10,7 +10,7 @@ import java.util.List;
 public class UserInput {
     public Integer getBounsNumber() {
         //    보너스 번호 입력
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        System.out.println("보너스 번호를 입력해 주세요.");
         String bonusValue = Console.readLine();
         Integer bounusNumber = Integer.parseInt(bonusValue);
         Validator.validateOutOfBound(bounusNumber);

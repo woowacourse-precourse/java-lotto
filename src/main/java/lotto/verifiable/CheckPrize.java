@@ -1,16 +1,8 @@
 package lotto.verifiable;
 
 import lotto.Prize;
-import lotto.Profit;
-
 import java.util.*;
-
 public class CheckPrize implements Verifiable<Prize>{
-    @Override
-    public Integer checkWithValue(Profit input) {
-        return null;
-    }
-
     @Override
     public Integer checkWithValue(Prize input) {
         List<Integer> numbersWithBonus = input.getNumberWithBonusNumber();
@@ -42,20 +34,15 @@ public class CheckPrize implements Verifiable<Prize>{
 
     private Map<PrizeMoney, Integer> recordGrade(Integer prizeCount, Map<PrizeMoney, Integer> gradeCount, Integer bonusCount) {
         if(prizeCount.equals(6)) {
-            Integer integer = gradeCount.get(PrizeMoney.FIRST);
-            gradeCount.put(PrizeMoney.FIRST, integer+1);
+            gradeCount.put(PrizeMoney.FIRST, gradeCount.get(PrizeMoney.FIRST)+1);
         } else if(prizeCount.equals(5) && bonusCount.equals(1)){
-            Integer integer = gradeCount.get(PrizeMoney.SECOND);
-            gradeCount.put(PrizeMoney.SECOND, integer+1);
+            gradeCount.put(PrizeMoney.SECOND, gradeCount.get(PrizeMoney.SECOND)+1);
         } else if (prizeCount.equals(5)) {
-            Integer integer = gradeCount.get(PrizeMoney.THIRD);
-            gradeCount.put(PrizeMoney.THIRD, integer+1);
+            gradeCount.put(PrizeMoney.THIRD, gradeCount.get(PrizeMoney.THIRD) +1);
         } else if (prizeCount.equals(4)) {
-            Integer integer = gradeCount.get(PrizeMoney.FOUR);
-            gradeCount.put(PrizeMoney.FOUR, integer+1);
+            gradeCount.put(PrizeMoney.FOUR, gradeCount.get(PrizeMoney.FOUR) +1);
         } else if (prizeCount.equals(3)) {
-            Integer integer = gradeCount.get(PrizeMoney.FIVE);
-            gradeCount.put(PrizeMoney.FIVE, integer+1);
+            gradeCount.put(PrizeMoney.FIVE, gradeCount.get(PrizeMoney.FIVE) +1);
         }
         return gradeCount;
     }
@@ -65,5 +52,15 @@ public class CheckPrize implements Verifiable<Prize>{
         for (PrizeMoney ranking : rankings) {
             gradeCount.put(ranking, 0);
         }
+    }
+
+    public static void printGrade(Map<PrizeMoney, Integer> gradeIntegerMap) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + gradeIntegerMap.get(PrizeMoney.FIVE) + "개");
+        System.out.println("4개 일치 (50,000원) - " + gradeIntegerMap.get(PrizeMoney.FOUR) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + gradeIntegerMap.get(PrizeMoney.THIRD) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + gradeIntegerMap.get(PrizeMoney.SECOND) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + gradeIntegerMap.get(PrizeMoney.FIRST) + "개");
     }
 }
