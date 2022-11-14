@@ -60,7 +60,7 @@ public class InputValidator {
         int inputNum = Integer.parseInt(userInput);
 
         if(lottoNumbers.contains(inputNum)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Messages.ERROR_BONUS_DUPLICATE.getMessage());
         }
 
         if(inputNum < 1 || inputNum > 45) {
