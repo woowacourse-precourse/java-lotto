@@ -37,7 +37,7 @@ public class Validator {
 
     private void validateDigit(String input) {
         if (!Pattern.matches(DIGIT_REGEX, input)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_MONEY_INPUT_FORMAT_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INPUT_NOT_DIGIT);
         }
     }
 
@@ -77,7 +77,7 @@ public class Validator {
 
     public void validateBonusNumber(List<Integer> lotto, String bonusNumber) {
         validateDigit(bonusNumber);
-
+        validateDuplicate(lotto, bonusNumber);
     }
 
     public void validatePurchasedAmount(String purchasedAmount) {
