@@ -2,11 +2,10 @@ package lotto;
 
 public class Money {
 
-    private int resultMoney;
+    private static int resultMoney;
 
     public Money(String input){
         validateDivisibleBy1000(input);
-        this.resultMoney = resultMoney;
     }
 
     public void validateDivisibleBy1000(String input){
@@ -17,11 +16,11 @@ public class Money {
         }
     }
 
-    public int getTicketCount(){
+    public static int getTicketCount(){
         return resultMoney / 1000;
     }
 
-    public int getResultMoney(){
+    public static int getResultMoney(){
         return resultMoney;
     }
 }
