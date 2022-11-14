@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class Money {
   private static long money;
+  public static long count;
+
   // 입력된 money가 숫자로만 이루어져 있는지.
   public static void checkMoneyIsDigit(String userMoney) {
     for (int i = 0; i < userMoney.length(); i++)
@@ -25,11 +27,11 @@ public class Money {
   }
 
   //1000원으로 나눠서 구매할 로또의 개수 반환
-  public static long countLotto(String userMoney) {
+  public static void countLotto(String userMoney) {
     checkMoneyIsDigit(userMoney);
     money = Integer.parseInt(userMoney);
     checkDividableMoney();
-    return (money / 1000);
+    count = (money / 1000);
   }
 
   public static String percentage(Map<Integer, Integer> maps) {
