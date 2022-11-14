@@ -16,8 +16,8 @@ public class Statistics {
     private final List<Integer> rank = new ArrayList<>(Collections.nCopies(BONUS_SIZE.getValue(), 0));
 
     public void compareNumber(List<Lotto> randomLottos, WinLotto winLotto) {
-        List<Integer> winNumbers = winLotto.getWinNumbers().stream().limit(IntEnum.LOTTO_SIZE.getValue()).collect(Collectors.toList());
-        int bonus = winLotto.getWinNumbers().get(IntEnum.LOTTO_SIZE.getValue());
+        List<Integer> winNumbers = winLotto.getWinNumbers().stream().limit(LOTTO_SIZE.getValue()).collect(Collectors.toList());
+        int bonus = winLotto.getWinNumbers().get(LOTTO_SIZE.getValue());
         for (Lotto tmpLotto : randomLottos) {
             List<Integer> tmpNumber = tmpLotto.getNumbers();
             int countMatch = countCalculate(winNumbers, tmpNumber);
@@ -36,10 +36,13 @@ public class Statistics {
 
     private void checkHasBonus(int bonus, int count, List<Integer> tmpNumber) {
         if (tmpNumber.contains(bonus)) {
-            rank.set(IntEnum.BONUS_SIZE.getValue(), rank.get(IntEnum.BONUS_SIZE.getValue()) + 1);
+            rank.set(BONUS_SIZE.getValue(), rank.get(BONUS_SIZE.getValue()) + 1);
         }
         if (!tmpNumber.contains(bonus)) {
             rank.set(count, rank.get(count) + 1);
         }
+    }
+    public List<Integer> getRank() {
+        return rank.stream().skip(3).collect(Collectors.toList());
     }
 }
