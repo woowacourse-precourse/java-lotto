@@ -17,4 +17,9 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public String toString() {
+        Collections.sort(numbers);
+        return numbers.toString();
+    }
 }
