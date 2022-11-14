@@ -42,42 +42,6 @@ public class InputViewTest {
     }
 
     @Test
-    void 당첨번호_입력_정수_배열로_변환() {
-        String inputNumber = "1,2,3,4,5,6";
-        List answerList = List.of(1, 2, 3, 4, 5, 6);
-        System.setIn(new ByteArrayInputStream(inputNumber.getBytes()));
-        List list = inputView.inputWinningNumber();
-        Assertions.assertEquals(answerList, list);
-    }
-
-    @Test
-    void 문자열을_입력시_에러() {
-        String inputNumbers = "a,2,3,4,5,6";
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            System.setIn(new ByteArrayInputStream(inputNumbers.getBytes()));
-            inputView.inputWinningNumber();
-        });
-    }
-
-    @Test
-    void 숫자개수가_작을경우_에러() {
-        String inputNumbers = "1,2,3,4,5,";
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            System.setIn(new ByteArrayInputStream(inputNumbers.getBytes()));
-            inputView.inputWinningNumber();
-        });
-    }
-
-    @Test
-    void 중복된_숫자가_있을경우_에러() {
-        String inputNumbers = "1,2,3,4,5,5";
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            System.setIn(new ByteArrayInputStream(inputNumbers.getBytes()));
-            inputView.inputWinningNumber();
-        });
-    }
-
-    @Test
     void 보너스번호_정상_입력() {
         String inputNumber = "10";
         int answer = 10;
@@ -101,6 +65,16 @@ public class InputViewTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             System.setIn(new ByteArrayInputStream(inputNumber.getBytes()));
             int answer = inputView.inputBonusNumber();
+        });
+    }
+
+    @Test
+    void 당첨번호_문자열을_입력시_에러() {
+        String inputNumbers = "a,2,3,4,5,6";
+        int bonusNumber = 7;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            System.setIn(new ByteArrayInputStream(inputNumbers.getBytes()));
+            inputView.inputWinningNumber();
         });
     }
 
