@@ -32,4 +32,22 @@ class LuckyNumberTest {
         luckyNumber.inputLuckyNumber(good);
         assertDoesNotThrow(() -> luckyNumber.inputLuckyNumber("1,2,5,34,6,3"));
     }
+
+    @Test
+    void 보너스숫자_입력받기(){
+        LuckyNumber luckyNumber=new LuckyNumber();
+
+        String notDisit = "a";
+        String invalidNumberRange = "49";
+        String good = "3";
+
+        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, ()-> luckyNumber.inputBonusNumber(notDisit));
+        assertThat(exception1.getMessage()).isEqualTo(LottoException.NOT_DISIT.getErrorMessage());
+
+        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, ()-> luckyNumber.inputBonusNumber(invalidNumberRange));
+        assertThat(exception2.getMessage()).isEqualTo(LottoException.INVALID_NUMBER_RANGE.getErrorMessage());
+
+        luckyNumber.inputBonusNumber(good);
+        assertThat(Integer.parseInt(good)).isEqualTo(luckyNumber.getBonusNumber());
+    }
 }
