@@ -35,7 +35,7 @@ public class User extends Valid {
     }
 
     public double calcProfit() {
-        return Math.round((money / sumReward() * 100) * 10) / 10.0;
+        return Math.round((sumReward() / (double) money * 100) * 10) / 10.0;
     }
 
     private int sumReward() {
