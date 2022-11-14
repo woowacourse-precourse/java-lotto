@@ -34,6 +34,7 @@ public class LottoSystem {
         String inputWonNumber = inputView.inputWonNumber();
         List<Integer> wonNumber = validator.convertToIntList(inputWonNumber);
         System.out.println(wonNumber);
+        Lotto wonLotto = new Lotto(wonNumber);
 
         String inputBonusNumber = inputView.inputBonusNumber();
         int bonusNumber = validator.convertToInt(inputBonusNumber);
