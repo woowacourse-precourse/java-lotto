@@ -11,22 +11,27 @@ import java.util.Map;
 
 import static util.Constant.DUPLICATE_BONUS_NUMBER_ERROR;
 
+// 어플리케이션 실행을 담당하는 클래스
 public class Application {
     public static void main(String[] args) {
         try {
             LottoService lottoService = new LottoService();
 
-            int numberOfLotto = getNumberOfLotto(lottoService);
-            List<Lotto> lottos = publishLottos(lottoService, numberOfLotto);
+            List<Lotto> lottos = getLottos(lottoService);
             List<Integer> winningNumbers = enterWinningNumber();
             int bonusNumber = enterBonusNumber();
-            isDuplicatedBonusNumber(winningNumbers,bonusNumber);
+            isDuplicatedBonusNumber(winningNumbers, bonusNumber);
 
             Map<Prize, Integer> winningDetails = lottoService.getWinningDetails(winningNumbers, lottos, bonusNumber);
             printUserLottoResult(lottoService, winningDetails);
         } catch (IllegalArgumentException e) {
             SystemMessage.printErrorMessage(e.getMessage());
         }
+    }
+
+    private static List<Lotto> getLottos(LottoService lottoService) {
+        int numberOfLotto = getNumberOfLotto(lottoService);
+        return publishLottos(lottoService, numberOfLotto);
     }
 
     private static int getNumberOfLotto(LottoService lottoService) {
