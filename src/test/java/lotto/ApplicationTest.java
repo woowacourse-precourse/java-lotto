@@ -59,8 +59,8 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         try {
             Application.main(new String[]{});
-        }catch (Exception ignored){
-
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 }
