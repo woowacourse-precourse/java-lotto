@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static lotto.domain.ErrorType.ERROR_UNDER_LOTTO_PRICE;
 import static lotto.domain.Lotto.*;
 
 public class Buyer {
@@ -27,7 +28,7 @@ public class Buyer {
 
     private void validateIsUnderLottoPrice(int won) {
         if (won < LOTTO_PRICE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_UNDER_LOTTO_PRICE.getErrorMessage());
         }
     }
 
