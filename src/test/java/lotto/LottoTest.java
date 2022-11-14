@@ -41,7 +41,8 @@ class LottoTest {
     @DisplayName("로또 번호 크기가 45보다 크면 예외 발생")
     @Test
     void createLottoByBigNumber() {
-    	assertThatThrownBy(() -> new Lotto(List.of(46, 1, 2, 3, 4, 5)));
+    	assertThatThrownBy(() -> new Lotto(List.of(46, 1, 2, 3, 4, 5)))
+    		.isInstanceOf(IllegalArgumentException.class);
     }
     
 }
