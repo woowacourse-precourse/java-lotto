@@ -69,5 +69,21 @@ public class LottoStore {
         return correct;
     }
 
+    public LottoReward calcLottoReward(Lotto lotto) {
+        int correct = getCorrectNumbersOfLotto(lotto);
+
+        if (correct == 3) { return LottoReward.fifth; }
+        if (correct == 4) { return LottoReward.fourth; }
+        if (correct == 5) { return LottoReward.third; }
+        if (correct == 6) {
+            if (lotto.getNumbers().contains(bonusNumber)) {
+                return LottoReward.second;
+            }else {
+                return LottoReward.first;
+            }
+        }
+
+        return LottoReward.zero;
+    }
 
 }
