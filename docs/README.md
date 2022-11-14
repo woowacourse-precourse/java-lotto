@@ -74,7 +74,7 @@
   - [ ] 소수점 둘째 자리에서 반올림 처리 (ex. 100.0%, 51.5%, 1,000,000,0%) - Statistics#roundToTwoDecimalPlaces()
   
 #### ErrorType 
-- [ ] 에러 타입 선언
+- [X] 입력 에러 관련 에러 타입 상수 선언
 ---
 
 
