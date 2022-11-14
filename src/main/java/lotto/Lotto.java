@@ -3,6 +3,9 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
+
+import javax.print.attribute.standard.MediaSize;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -39,11 +42,8 @@ public class Lotto {
         //보너스 번호 입력받기
         bonus = Integer.parseInt(Console.readLine());
 
-        CompareLotto.comparelotto(total,lottolst,bonus);
-
-
-
-
+        int[] result = CompareLotto.comparelotto(total,lottolst,bonus);
+        Output.printResult(result);
 
 
 
