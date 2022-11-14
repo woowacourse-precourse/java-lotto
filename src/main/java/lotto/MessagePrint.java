@@ -9,4 +9,8 @@ public class MessagePrint {
 	public void purchaseLottoPrint() {
 		System.out.println(Constants.PURCHASE_PRIZE_MESSAGE);
 	}
+
+	public void changeList(List<Integer> list) {
+		System.out.println(list);
+	}
 }
