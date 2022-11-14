@@ -26,17 +26,19 @@ public class User {
     }
 
     private void inputAmount() {
-        int userInputAmount;
+        String userInput;
 
         System.out.println("구입금액을 입력해 주세요.");
-        userInputAmount = Integer.parseInt(Console.readLine());
-        validate(userInputAmount);
-        this.purchasingAmount = userInputAmount;
+        userInput = Console.readLine();
+        validate(userInput);
+        this.purchasingAmount = Integer.parseInt(userInput);
     }
 
-    void validate(int purchasingAmount) throws IllegalArgumentException {
-        if (purchasingAmount % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 구매 금액이 1000으로 나누어 떨어지지 않습니다");
+    void validate(String userInput) throws IllegalArgumentException {
+        if (!isNum(userInput)) {
+            throw new IllegalArgumentException("[ERROR] 입력한 값이 숫자가 아닙니다. 숫자를 입력하세요.");
+        } else if (purchasingAmount % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException("[ERROR] 구매 금액이 1000으로 나누어 떨어지지 않습니다.");
         }
     }
 
