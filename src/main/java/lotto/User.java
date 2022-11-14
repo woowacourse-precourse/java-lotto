@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.*;
 
 public class User {
@@ -57,12 +56,12 @@ public class User {
     }
 
     private void printTicketCount() {
-        System.out.println(this.lottoTicketCount + "개를 구매했습니다.");
+        System.out.println("\n" + this.lottoTicketCount + "개를 구매했습니다.");
     }
 
     private void printLottoTickets() {
         for (Lotto lotto : lottoTickets) {
-            System.out.println(lotto);
+            lotto.printNumbers();
         }
     }
 }
