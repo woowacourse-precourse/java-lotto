@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import Print.Error_Message;
 import Print.Message;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -44,13 +45,23 @@ public class Application {
     	String[] win_number_string = Console.readLine().split(",");
     	
     	int[] win_number = new int[win_number_string.length];
+    	
+    	if(win_number.length != 6) {
+    		throw new IllegalArgumentException(Error_Message.INPUT_NUMBER_SIX.print_error());
+    	}
+    	
+    	boolean[] check = new boolean[46];
     	for(int i = 0; i < win_number_string.length; i++) {
     		win_number[i] = Integer.parseInt(win_number_string[i]);
-    		
     		if(win_number[i] < 1 || win_number[i] > 45) {
-    			System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-    			return;
+    			throw new IllegalArgumentException(Error_Message.INPUT_RANGE.print_error());
     		}
+    		
+    		if(check[win_number[i]]) {
+    			throw new IllegalArgumentException(Error_Message.INPUT_NUMBER_DISTINCT.print_error());
+    		}
+    		
+    		check[win_number[i]] = true;
     	}
     	
     	Message.INPUT_BONUS_NUMBER.print();
@@ -92,7 +103,11 @@ public class Application {
     		n = Integer.parseInt(s);
     	}
     	catch(NumberFormatException e) {
-    		throw new IllegalArgumentException("[ERROR] ");
+    		throw new IllegalArgumentException(Error_Message.INPUT_NUMBER.print_error());
+    	}
+    	
+    	if(n / 1000 == 0) {
+    		throw new IllegalArgumentException(Error_Message.INPUT_DIVIDE_TEN.print_error());
     	}
     }
     
