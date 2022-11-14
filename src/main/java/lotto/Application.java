@@ -10,16 +10,20 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        LottoPurchase lottoPurchase = new LottoPurchase();
-        List<Lotto> purchaseLottos = lottoPurchase.purchaseLottos();
+        try {
+            LottoPurchase lottoPurchase = new LottoPurchase();
+            List<Lotto> purchaseLottos = lottoPurchase.purchaseLottos();
 
-        EnterWinningNumber enterWinningNumber = new EnterWinningNumber();
-        WinningLotto winningLotto = enterWinningNumber.enterWinngLottoNumber();
+            EnterWinningNumber enterWinningNumber = new EnterWinningNumber();
+            WinningLotto winningLotto = enterWinningNumber.enterWinngLottoNumber();
 
-        winningLotto.compareLotto(purchaseLottos);
+            winningLotto.compareLotto(purchaseLottos);
 
-        ResultPrint resultPrint = new ResultPrint();
-        resultPrint.winningStatistics(winningLotto.getLottoRank());
-        resultPrint.earningsRate(winningLotto.getearningRate());
+            ResultPrint resultPrint = new ResultPrint();
+            resultPrint.winningStatistics(winningLotto.getLottoRank());
+            resultPrint.earningsRate(winningLotto.getearningRate());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
