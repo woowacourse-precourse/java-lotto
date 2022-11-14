@@ -18,10 +18,11 @@ public class Manager {
     private final int[] reward = {5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000};
 
     public Manager() {
-        List<Integer> lottoNumbersForTest = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        List<Integer> lottoNumbersForTest = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         lotto = new Lotto(lottoNumbersForTest);
         bonusNumber = 7;
     }
+
     public void requestMoneyStatementPrint() {
         System.out.println(requestMoneyStatement);
     }
@@ -36,8 +37,9 @@ public class Manager {
         }
         return money;
     }
+
     public void printAllPurchaseLottoNumbers(List<List<Integer>> lottoNumbers) {
-        for(List<Integer> number: lottoNumbers) {
+        for (List<Integer> number : lottoNumbers) {
             System.out.println(number);
         }
     }
@@ -67,6 +69,7 @@ public class Manager {
         lottoNumbers = convertToList(lottoNumber);
         return lottoNumbers;
     }
+
     public List<Integer> convertToList(String lottoNumber) throws IllegalArgumentException {
         List<Integer> convertedNumbers = new ArrayList<>();
         String[] number = lottoNumber.split(",");
@@ -84,7 +87,7 @@ public class Manager {
         System.out.println("\n" + requestBonusNumberStatement);
     }
 
-    public int inputBonusNumber() {
+    public int inputBonusNumber() throws IllegalArgumentException {
         String inputNumber = Console.readLine();
         int bonusNumber;
         try {
@@ -92,13 +95,17 @@ public class Manager {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.IS_NOT_INTEGER.toString());
         }
+        isValidBonusNumber(bonusNumber);
+        return bonusNumber;
+    }
+
+    public void isValidBonusNumber(int bonusNumber) throws IllegalArgumentException {
         if (!(1 <= bonusNumber && bonusNumber <= 45)) {
             throw new IllegalArgumentException(ErrorMessage.RANGE_OUT.toString());
         }
-        if(lotto.getNumbers().contains(bonusNumber)) {
+        if (lotto.getNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.DO_NOT_BE_CONTAINED_LOTTO_NUMBERS.toString());
         }
-        return bonusNumber;
     }
 
     public int[] compareNumber(List<List<Integer>> purchaseNumbers) {
