@@ -61,18 +61,23 @@ public class Manager {
         System.out.println(requestLottoNumberStatement);
     }
 
-    public List<Integer> inputLottoNumber() {
+    public List<Integer> inputLottoNumber() throws IllegalArgumentException {
         List<Integer> lottoNumbers = new ArrayList<>();
         String lottoNumber = Console.readLine();
+        lottoNumbers = convertToList(lottoNumber);
+        return lottoNumbers;
+    }
+    public List<Integer> convertToList(String lottoNumber) throws IllegalArgumentException {
+        List<Integer> convertedNumbers = new ArrayList<>();
         String[] number = lottoNumber.split(",");
         for (String num : number) {
             try {
-                lottoNumbers.add(Integer.parseInt(num));
+                convertedNumbers.add(Integer.parseInt(num));
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException(ErrorMessage.IS_NOT_INTEGER.toString());
             }
         }
-        return lottoNumbers;
+        return convertedNumbers;
     }
 
     public void requestBonusNumberStatementPrint() {

@@ -26,6 +26,7 @@ public class Player {
         this.money = money;
         return numberOfPurchase;
     }
+
     public void isValidMoney(int money) throws IllegalArgumentException {
         if (money < minimumMoney) {
             throw new IllegalArgumentException(ErrorMessage.IS_LACK.toString());
