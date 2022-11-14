@@ -28,7 +28,6 @@ public class LottoContainer {
                 matchMap.put(lottoResult, matchMap.get(lottoResult) + 1);
             }
         }
-
         printResult(matchMap);
     }
 
@@ -41,12 +40,27 @@ public class LottoContainer {
         return matchMap;
     }
 
+    public double getRate(Map<LottoResult, Integer> matchMap) {
+        Iterator<LottoResult> keys = matchMap.keySet().iterator();
+        int totalPrice = 0;
+        double rate = 0;
+
+        while(keys.hasNext()) {
+            LottoResult key = keys.next();
+            totalPrice += key.getMoney() * matchMap.get(key);
+        }
+        rate = totalPrice / (lottos.size() * 10.0);
+
+        return (rate * 10) / 10.0;
+    }
+
     public void printResult(Map<LottoResult, Integer> matchMap) {
         System.out.println(LottoResult.FIFTH_PRIZE.getMessage() + matchMap.get(LottoResult.FIFTH_PRIZE) + "개");
         System.out.println(LottoResult.FOURTH_PRIZE.getMessage() + matchMap.get(LottoResult.FOURTH_PRIZE) + "개");
         System.out.println(LottoResult.THIRD_PRIZE.getMessage() + matchMap.get(LottoResult.THIRD_PRIZE) + "개");
         System.out.println(LottoResult.SECOND_PRIZE.getMessage() + matchMap.get(LottoResult.SECOND_PRIZE) + "개");
         System.out.println(LottoResult.FIRST_PRIZE.getMessage() + matchMap.get(LottoResult.FIRST_PRIZE) + "개");
+        System.out.println("총 수익률은 " + getRate(matchMap) + "%입니다.");
     }
 
 }
