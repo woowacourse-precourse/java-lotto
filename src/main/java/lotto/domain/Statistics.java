@@ -3,9 +3,14 @@ package lotto.domain;
 import java.util.List;
 
 public class Statistics {
-    private Rank rank;
+    Rank rank;
 
-    public Statistics(List<Rank> rankings) { // [FIFTH, NONE, SECOND, THIRD, FIFTH]
+    public Statistics(List<Rank> rankings) {
+        aggregateRankingsToStatistics(rankings);
+
+    }
+
+    private static void aggregateRankingsToStatistics(List<Rank> rankings) {
         for (Rank ranking : rankings) {
             ranking.addCount(ranking);
         }

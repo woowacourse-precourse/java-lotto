@@ -5,13 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Ranking {
-    private List<Integer> matches = new ArrayList<>();
-    private List<Boolean> bonusMatches = new ArrayList<>();
     private List<Rank> rankings = new ArrayList<>();
 
     public Ranking(List<Integer> matches, List<Boolean> bonusMatches) {
-        this.matches = matches;
-        this.bonusMatches = bonusMatches;
         setRankings(matches, bonusMatches);
     }
 
