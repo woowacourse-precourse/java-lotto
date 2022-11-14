@@ -10,7 +10,7 @@ public enum EnumResult {
 	COMPARE_RESULT_FIRST("6개 일치 (2,000,000,000원) - "),
 	COMPARE_RESULT_TERMINATION("개\n"),
 	YIELD_RESULT_IS("총 수익률은 "),
-	TERMINATION("입니다."),
+	TERMINATION("%입니다."),
 	BET_RESULT("개를 구매했습니다.");
 
 	private String value;
