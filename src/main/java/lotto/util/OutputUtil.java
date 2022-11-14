@@ -5,18 +5,12 @@ import lotto.domain.User;
 import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class OutputUtil {
 
     public static void printInputPurchaseAmount() {
         System.out.println(Message.INPUT_PURCHASE_AMOUNT_MESSAGE.getMessage());
-    }
-
-    public static void printInputPurchaseAmountError() {
-        System.out.println(Message.NOT_THOUSAND_UNIT_INPUT_ERROR);
     }
 
     public static void printUserLottoCount(User user) {
@@ -25,7 +19,9 @@ public class OutputUtil {
 
     public static void printUserLottos(User user) {
         for (Lotto lotto : user.getLottos()) {
-            System.out.println(lotto);
+            List<Integer> tmp = new ArrayList<>(lotto.getNumbers());
+            Collections.sort(tmp);
+            System.out.println(tmp);
         }
     }
 
@@ -53,7 +49,6 @@ public class OutputUtil {
         System.out.println(Message.RESULT_THIRD.getMessage() + ranks.get(Number.THREE) + "개");
         System.out.println(Message.RESULT_SECOND.getMessage() + ranks.get(Number.TWO) + "개");
         System.out.println(Message.RESULT_FIRST.getMessage() + ranks.get(Number.ONE) + "개");
-
-        System.out.printf(Message.YIELD_MESSAGE.getMessage(), user.getYield());
+        System.out.printf("총 수익률은 %.1f%%입니다.", user.getYield());
     }
 }
