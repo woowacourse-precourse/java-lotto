@@ -36,6 +36,12 @@ public class Lotto {
         return numbers;
     }
 
+    public int countWinningNumbers(List<Integer> winningNumbers) {
+        return (int) winningNumbers.stream()
+                .filter(this::isExistWinningNumber)
+                .count();
+    }
+
     public boolean isExistWinningNumber(int number) {
         return this.numbers.contains(number);
     }
