@@ -2,6 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NumberGenerator {
@@ -18,8 +19,8 @@ public class NumberGenerator {
 
     private int validate(String money) {
         validateInteger(money);
-        validateUnit(Integer.valueOf(money));
-        return Integer.valueOf(money);
+        validateUnit(Integer.parseInt(money));
+        return Integer.parseInt(money);
     }
 
     private void validateInteger(String money) {
@@ -37,22 +38,26 @@ public class NumberGenerator {
     private List<List<Integer>> generate(int quantity) {
         List<List<Integer>> collectionOfNumbers = new ArrayList<>();
         for (int i = 0; i < quantity; i++) {
-            List<Integer> numbers = generateEachNumbers();
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             collectionOfNumbers.add(numbers);
         }
         return collectionOfNumbers;
     }
 
-    private  List<Integer> generateEachNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6); // 정렬 안되있음
-        // Collections.sort(numbers);
-        return numbers;
-    }
-
     private void printGeneratedNumbers() {
         System.out.println(quantity+"개를 구매했습니다.");
         for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
-            System.out.println(collectionOfLottoNumber);
+            sortNumbers(collectionOfLottoNumber);
         }
+    }
+
+    private  void sortNumbers(List<Integer> numbers) {
+        ArrayList<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        System.out.print("[");
+        for(int i = 0; i < sortedNumbers.size()-1; i++){
+            System.out.print(sortedNumbers.get(i)+", ");
+        }
+        System.out.println(sortedNumbers.get(sortedNumbers.size()-1)+"]");
     }
 }
