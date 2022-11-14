@@ -70,4 +70,9 @@ public class Lotto {
         return (int) lottoNumbers.stream().filter(otherLotto::isMatchedNumbersWith).count();
     }
 
+    @Override
+    public String toString() {
+        return lottoNumbers.toString();
+    }
+
 }

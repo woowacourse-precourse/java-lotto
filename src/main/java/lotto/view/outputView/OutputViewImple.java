@@ -8,10 +8,19 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputViewImple implements OutputView {
-    
+
+    private static final String PURCHASE_COUNT_MESSAGE = "%d개를 구매했습니다.";
+
     @Override
     public void printPurchasedLottos(List<Lotto> lottos) {
-        //TODO: 구현
+        printPurchasedAmount(lottos);
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto);
+        }
+    }
+
+    private void printPurchasedAmount(List<Lotto> lottos) {
+        System.out.println(String.format(PURCHASE_COUNT_MESSAGE, lottos.size()));
     }
 
     @Override
