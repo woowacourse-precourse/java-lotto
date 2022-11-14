@@ -39,6 +39,7 @@ public class Constants {
         public static final String RANGE_ERROR = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
         public static final String DUPLICATION_ERROR = "[ERROR] 로또 번호에는 중복이 없어야 합니다.";
         public static final String SIZE_ERROR = "[ERROR] 로또 번호는 6개여야 합니다.";
+        public static final String MONEY_VALUE_ERROR = "[ERROR] 입력받은 값이 정수 형태가 아닙니다.";
     }
 }
 
