@@ -29,4 +29,19 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public LottoMatch matchedCount(List<Integer> winningNumber, Integer bonusNumber) {
+        int count = (int) numbers.stream().filter(winningNumber::contains).count();
+
+        if (isBonusLotto(count, bonusNumber)) {
+            return LottoMatch.BONUS;
+        }
+
+        return LottoMatch.match(count);
+    }
+
+    public boolean isBonusLotto(int matchedCount, Integer bonusNumber) {
+
+        return matchedCount == 5 && numbers.contains(bonusNumber);
+    }
 }

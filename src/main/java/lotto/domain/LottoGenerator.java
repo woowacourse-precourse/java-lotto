@@ -10,11 +10,11 @@ import java.util.stream.IntStream;
 
 public class LottoGenerator {
 
-    public static List<Lotto> generate(String price) {
+    public List<Lotto> generate(String price) {
         return generate(Integer.parseInt(price));
     }
 
-    public static List<Lotto> generate(Integer price) {
+    public List<Lotto> generate(Integer price) {
         final List<Lotto> lottoPacks = new ArrayList<>();
         final Integer count = getLottoCount(price);
 
@@ -31,7 +31,7 @@ public class LottoGenerator {
         return lottoPacks;
     }
 
-    private static Integer getLottoCount(Integer price) {
+    private Integer getLottoCount(Integer price) {
         return price / 1000;
     }
 }
