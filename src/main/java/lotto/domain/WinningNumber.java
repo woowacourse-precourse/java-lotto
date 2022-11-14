@@ -3,17 +3,25 @@ package lotto.domain;
 import lotto.setting.Setting;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class WinningNumber {
 
     private Lotto lotto;
+    private int bonusNumber;
 
     // 당첨 번호 생성 기능
     public void inputWinningNumber(String input) throws IllegalArgumentException {
         validateInput(input);
         List<Integer> numbers = stringToWinningNumber(input);
         this.lotto = new Lotto(numbers);
+    }
+
+    // 보너스 번호 생성 기능
+    public void inputBonusNumber(String input) throws IllegalArgumentException {
+        checkBlank(input);
+        checkNumber(input);
     }
 
     // 올바른 당첨 번호 입력값인지 검증하는 기능
