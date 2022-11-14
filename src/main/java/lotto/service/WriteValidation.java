@@ -9,12 +9,6 @@ import java.util.stream.Collectors;
 
 public class WriteValidation {
 
-    // 금액 입력 기능
-    public int writePay(String writePay) {
-        validWrite(writePay);
-        return Integer.parseInt(writePay);
-    }
-
     private void validWrite(String writePay) {
         if (!isDigit(writePay)) {
             throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());

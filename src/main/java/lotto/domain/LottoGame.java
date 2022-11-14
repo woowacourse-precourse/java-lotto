@@ -15,8 +15,9 @@ public class LottoGame {
         LottoShop lottoShop = new LottoShop();
         InputView inputView = new InputView();
 
-        String pay = inputView.push();
-        List<Lotto> lottos = lottoShop.createLottoForPayment(pay);
+        String payment = inputView.push();
+        Money money = new Money(payment);
+        List<Lotto> lottos = lottoShop.createLottoForPayment(money);
 
         ConsumerLottoNumberView.show(lottos);
 
@@ -28,6 +29,6 @@ public class LottoGame {
         LottoRankAggregation lottoRankCombine = new LottoRankAggregation();
         ResponseRankAggregation responseRankAggregation = lottoRankCombine.rankAggregation(lottos, winningLottoNumberFor);
 
-        WinningHistoryView.showRankAggregation(responseRankAggregation, pay);
+        WinningHistoryView.showRankAggregation(responseRankAggregation, payment);
     }
 }

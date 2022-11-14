@@ -16,32 +16,6 @@ class WriteValidationTest {
     private WriteValidation validation = new WriteValidation();
 
     @Test
-    @DisplayName("유효한 금액 데이터를 입력하여 테스트 성공")
-    void writePay_case1() {
-        // given
-        String writePay = "8000";
-        int expectedPay = 8000;
-
-        // when
-        int pay = validation.writePay(writePay);
-
-        // then
-        assertThat(pay).isEqualTo(expectedPay);
-    }
-
-    @Test
-    @DisplayName("유효하지 않은 데이터를 입력하여 예외 발생")
-    void writePay_case2() {
-        // given
-        String writePay = "8000원";
-
-        // when && then
-        assertThatThrownBy(() -> validation.writePay(writePay))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorCode.ERROR.getMessage());
-    }
-
-    @Test
     @DisplayName("유효한 당첨번호 6개를 입력하고 보너스 번호 1개를 입력하여 테스트 성공")
     void winningLottoNumbers_case1() {
         // given

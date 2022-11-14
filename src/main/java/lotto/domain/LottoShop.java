@@ -11,10 +11,9 @@ public class LottoShop {
 
     private final WriteValidation validation = new WriteValidation();
 
-    public List<Lotto> createLottoForPayment(String pay) {
-        int payMoney = validation.writePay(pay);
+    public List<Lotto> createLottoForPayment(Money money) {
         try {
-            int quantity = Lotto.moneyOfQuantity(payMoney);
+            int quantity = Lotto.moneyOfQuantity(money.getPayment());
 
             return Lotto.createLottoNumbers(quantity);
         } catch (PayMoneyException e) {
