@@ -9,8 +9,7 @@ public class User {
     private int rewardMoney;
 
     private List<Lotto> lottos = new ArrayList<>();
-    //TODO: 당첨 결과 리스트
-
+    //TODO: 당첨 결과 리스트 추가, 로또금액 1000원 상수화
     private User(int money) {
         this.money = money;
         this.lottoCount = money / 1000;
@@ -30,6 +29,13 @@ public class User {
         lottos.add(Lotto.generateLottoNumber());
     }
 
+    //validate check
+    public void checkMoney(int money) {
+        if (money < 1000) {
+            throw new IllegalArgumentException("[ERROR] 금액은 1000원 이상이어야 합니다.");
+        }
+    }
+    
     //getter and setter
     public int getMoney() {
         return money;
