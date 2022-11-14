@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -38,5 +39,19 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1,2,46,4,5,6)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ERROR_MESSAGE + " 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+    }
+    @Test
+    void findLottoRankingBy_적절한_LottoRanking을_반환하는지확인1() {
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)),7);
+        Lotto l = new Lotto(List.of(1,2,3,4,5,7));
+        LottoRanking rank = l.findLottoRankingBy(winningLotto);
+        assertThat(rank).isEqualTo(LottoRanking.SECOND_PLACE);
+    }
+    @Test
+    void findLottoRankingBy_적절한_LottoRanking을_반환하는지확인2() {
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)),7);
+        Lotto l = new Lotto(List.of(1,2,11,12,13,14));
+        LottoRanking rank = l.findLottoRankingBy(winningLotto);
+        assertThat(rank).isEqualTo(LottoRanking.ETC);
     }
 }
