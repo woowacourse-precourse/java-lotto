@@ -27,6 +27,14 @@ class LottoTest {
 
     // 아래에 추가 테스트 작성 가능
 
+    @DisplayName("로또 번호가 1부터 45사이의 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void createLottoByWrongRange() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("구입 금액을 입력하고 구매 수를 구하고, 1000원 단위가 아니면 예외가 발생한다.")
     @Test
     void inputPurchaseAmountTest() {
@@ -53,7 +61,6 @@ class LottoTest {
 
         assertThat(winningNumberToList.winNumbers).isEqualTo(lst);
     }
-
 
 
 }
