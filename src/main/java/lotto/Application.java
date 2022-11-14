@@ -1,5 +1,8 @@
 package lotto;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.Validators.*;
+
 public class Application {
     private enum Messages {
         DELIMITER(","),
@@ -30,6 +33,22 @@ public class Application {
     private final static int PRICE_PER_LOTTERY = 1000;
 
     public static void main(String[] args) {
+        try {
+            int budget = budgetUI();
 
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(Messages.EXCEPTION_HEADER.getMessage() + e.getMessage());
+        }
+    }
+
+    private static int budgetUI() {
+        System.out.println(Messages.BUDGET.getMessage());
+        String budgetFigure = readLine();
+
+        validateBudget(budgetFigure);
+
+        int budget = Integer.parseInt(budgetFigure);
+        return budget;
     }
 }
