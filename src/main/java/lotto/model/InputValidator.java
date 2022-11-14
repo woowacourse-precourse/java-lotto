@@ -11,6 +11,7 @@ public class InputValidator {
     private static final String WINNING_NUMBER_IS_NOT_SIX = "당첨 번호가 6개보다 많거나 적은 수의 번호를 가지고 있습니다. 당첨 번호는 6개만 입력해야 합니다.";
     private static final String WINNING_NUMBER_IS_NOT_BETWEEN_1_AND_45 = "당첨 번호 중 1에서 45의 범위를 벗어난 번호가 있습니다. 당첨 번호는 1~45 사이의 숫자만 입력이 가능합니다.";
     private static final String BONUS_NUMBER_IS_NOT_BETWEEN_1_AND_45 = "보너스 번호는 1~45 사이의 숫자만 입력이 가능합니다.";
+    private static final String BONUS_NUMBER_IS_NOT_CONTAINED_WINNING_NUMBER = "보너스 번호는 당첨 번호와 겹치지 않는 숫자로 입력해야 합니다.";
     private static final int PRICE_OF_LOTTO = 1000;
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
@@ -62,9 +63,20 @@ public class InputValidator {
         }
     }
 
-    public void validateBonusNumberBetween1And45(int bonusNumber) {
+    public void validateBonusNumber(int bonusNumber, List<Integer> winningNumber) {
+        validateBonusNumberBetween1And45(bonusNumber);
+        validateBonusNumberNotInWinningNumber(bonusNumber, winningNumber);
+    }
+
+    private void validateBonusNumberBetween1And45(int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalArgumentException(ERROR_PREFIX + BONUS_NUMBER_IS_NOT_BETWEEN_1_AND_45);
+        }
+    }
+
+    private void validateBonusNumberNotInWinningNumber(int bonusNumber, List<Integer> winningNumber) {
+        if (winningNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ERROR_PREFIX + BONUS_NUMBER_IS_NOT_CONTAINED_WINNING_NUMBER);
         }
     }
 }
