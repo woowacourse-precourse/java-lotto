@@ -19,6 +19,6 @@ class InputSingleIntegerTest extends NsTest{
     }
     @Override
     public void runMain() {
-        Input.scanSingleInteger();
+        Input.scanMoney();
     }
 }
