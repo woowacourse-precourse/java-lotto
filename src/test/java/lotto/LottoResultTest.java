@@ -27,10 +27,14 @@ class LottoResultTest {
         List<List<Integer>> ticketNumbers = new ArrayList<>(Arrays.asList(Arrays.asList(1, 4, 8, 10, 19, 45),//4
                 Arrays.asList(4, 8, 10, 19, 28, 40), Arrays.asList(4, 8, 9, 10, 19, 31)));
         LinkedHashMap<Integer, Integer> result = new LinkedHashMap<>();
-
-        result = LottoResult.compareResult(winningNumbers, ticketNumbers);
+        result = LottoResult.compareResult(winningNumbers, ticketNumbers,1);
         System.out.println(result);
         assert(result.get(4)).equals(2);
     }
 
+
+    @Test
+    void lotteryPrizeTest(){
+
+    }
 }

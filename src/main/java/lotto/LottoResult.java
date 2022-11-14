@@ -14,20 +14,20 @@ public class LottoResult {
         return matchCount;
     }
 
-    public static LinkedHashMap<Integer, Integer> compareResult(List<Integer> winningNumber, List<List<Integer>> ticketNumber,int bonusNumber) {
+    public static LinkedHashMap<Integer, Integer> compareResult(List<Integer> winningNumber, List<List<Integer>> ticketNumber, int bonusNumber) {
         LinkedHashMap<Integer, Integer> resultByMatchedNumber = new LinkedHashMap<>();
         List<Integer> results = new ArrayList<>();
 
-        for(int ticketIndex=0; ticketIndex<ticketNumber.size(); ticketIndex++){
-            int counter= compareLotteryNumbers(winningNumber,ticketNumber.get(ticketIndex));
-            if(counter==5 && ticketNumber.get(ticketIndex).contains(bonusNumber)){
+        for (int ticketIndex = 0; ticketIndex < ticketNumber.size(); ticketIndex++) {
+            int counter = compareLotteryNumbers(winningNumber, ticketNumber.get(ticketIndex));
+            if (counter == 5 && ticketNumber.get(ticketIndex).contains(bonusNumber)) {
                 counter = 7;
             }
             results.add(counter);
         }
 
         for (int matchingNumbers = 3; matchingNumbers < 8; matchingNumbers++) {
-            resultByMatchedNumber.put(matchingNumbers,Collections.frequency(results, matchingNumbers));
+            resultByMatchedNumber.put(matchingNumbers, Collections.frequency(results, matchingNumbers));
         }
 
         return resultByMatchedNumber;
@@ -38,14 +38,18 @@ public class LottoResult {
         return earnedRatio;
     }
 
- /*    public static void lotteryPrize(LinkedHashMap<Integer, Integer> resultList){
-        PrizeList prizes[] = PrizeList.values();
 
-         System.out.printf("%d개 일치 (%d원) - %d개",prizeResult.rank(),prizeResult.money(),resultList.get(prizeResult.rank()));
-      for(PrizeList prizeResult:prizes){
-            System.out.printf("%d개 일치 (%d원) - %d개",prizeResult.rank(),prizeResult.money(),resultList.get(prizeResult.rank()));
-        }
+    public static void lotteryStatistics(LinkedHashMap<Integer, Integer> resultList) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
 
-    }*/
+        System.out.printf("3개 일치 (%d원) - %d개", PrizeList.FIFTH.money(), resultList.get(3));
+        System.out.printf("4개 일치 (%d원) - %d개", PrizeList.FOURTH.money(), resultList.get(4));
+        System.out.printf("5개 일치 (%d원) - %d개", PrizeList.THIRD.money(), resultList.get(5));
+        System.out.printf("5개 일치, 보너스 볼 일치 (%d원) - %d개", PrizeList.SECOND.money(), resultList.get(7));
+        System.out.printf("6개 일치 (%d원) - %d개", PrizeList.FIRST.money(), resultList.get(6));
+    }
 
 }
+
+
