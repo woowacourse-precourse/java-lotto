@@ -9,6 +9,7 @@ package lotto;
  */
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Compute {
     private enum WinType {
@@ -33,6 +34,42 @@ public class Compute {
         for (WinType winType : WinType.values()) {
             winRecords.put(winType.winTypeKey, 0);
         }
+        return winRecords;
+    }
+
+    private HashMap<String, Integer> computeWinRecords(
+            HashMap<String, Integer> winRecords,
+            List<Integer> lotto,
+            List<Integer> winningNumbers,
+            int bonusNumber
+    ) {
+        boolean containsBonusNumber = lotto.contains(bonusNumber);
+
+        List<Integer> matchingNumbers = lotto;
+        matchingNumbers.retainAll(winningNumbers);
+        int count = matchingNumbers.size();
+
+        if (count == 6) {
+            String key = WinType.MATCH6.winTypeKey;
+            winRecords.put(key, winRecords.get(key) + 1);
+        }
+        else if (count == 5 && containsBonusNumber) {
+            String key = WinType.MATCH5_PLUS_BONUS.winTypeKey;
+            winRecords.put(key, winRecords.get(key) + 1);
+        }
+        else if (count == 5) {
+            String key = WinType.MATCH5.winTypeKey;
+            winRecords.put(key, winRecords.get(key) + 1);
+        }
+        else if (count == 4) {
+            String key = WinType.MATCH4.winTypeKey;
+            winRecords.put(key, winRecords.get(key) + 1);
+        }
+        else if (count == 3) {
+            String key = WinType.MATCH3.winTypeKey;
+            winRecords.put(key, winRecords.get(key) + 1);
+        }
+
         return winRecords;
     }
 }
