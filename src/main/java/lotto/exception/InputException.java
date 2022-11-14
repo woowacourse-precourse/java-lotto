@@ -21,7 +21,7 @@ public class InputException {
 
     public static List<Integer> validatesWinLottoNumber(String number) {
         validateNotSpace(number);
-        validateNumberLength(number, NUMBER_LENGTH);
+        validateNumberSixLength(number);
         validateOnlyNumber(number);
         validateSplitComma(number);
         validateNotDuplicate(toList(number));
@@ -31,7 +31,7 @@ public class InputException {
 
     public static int validatesBonusNumber(String number) {
         validateOnlyNumber(number);
-        validateNumberLength(number, BONUS_NUMBER_LENGTH);
+        validateNumberOneLength(number);
         validateBelow(number);
         return Integer.parseInt(number);
     }
@@ -61,10 +61,16 @@ public class InputException {
         }
     }
 
-    private static void validateNumberLength(String number, int length) {
+    private static void validateNumberSixLength(String number) {
         List<Integer> numbers = toList(number);
-        if (numbers.size() != length) {
+        if (numbers.size() != NUMBER_LENGTH) {
             exception(NOT_SIX_LENGTH);
+        }
+    }
+
+    private static void validateNumberOneLength(String number) {
+        if(number.length() != 1) {
+            exception(NOT_ONE_LENGTH);
         }
     }
 
