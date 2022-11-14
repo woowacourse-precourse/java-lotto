@@ -131,5 +131,13 @@ public class LottoStatistics {
         }
     }
 
+    public void printResult(){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        printCountByRank();
+        BigDecimal rateOfReturn = getRateOfReturn();
+        System.out.println("총 수익률은 " + rateOfReturn.setScale(1) + "%입니다.");
+    }
+
 }
 
