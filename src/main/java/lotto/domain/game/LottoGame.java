@@ -9,6 +9,7 @@ import lotto.domain.winning.WinningDetail;
 import lotto.domain.winning.WinningNumber;
 import lotto.domain.winning.WinningNumberComparator;
 import lotto.domain.winning.statistic.WinningStatistic;
+import lotto.domain.winning.statistic.WinningStatisticView;
 
 public class LottoGame {
     
@@ -23,7 +24,7 @@ public class LottoGame {
         WinningNumber winningNumber = new WinningNumber(getWinningNormalNumbers(), getWinningBonusNumbers());
         
         List<WinningDetail> winningDetails = compareLottoList(boughtLottos, winningNumber);
-        printWinningStatistic(winningDetails, purchaseAmount);
+        WinningStatisticView.printAll(new WinningStatistic(winningDetails), purchaseAmount);
     }
     
     private List<WinningDetail> compareLottoList(List<Lotto> lottos, WinningNumber winningNumber) {
@@ -54,18 +55,5 @@ public class LottoGame {
     private List<Integer> getWinningBonusNumbers() {
         LottoGameView.printBonusNumberInputMessage();
         return List.of(LottoInput.getBonusNumber());
-    }
-    
-    private void printWinningStatistic(List<WinningDetail> winningDetails, Integer purchaseAmount) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        
-        WinningStatistic winningStatistic = new WinningStatistic(winningDetails);
-        
-        for (String winningText : winningStatistic.getWinningTextList()) {
-            System.out.println(winningText);
-        }
-        
-        System.out.println("총 수익률은 " + winningStatistic.getTextByRateOfReturn(purchaseAmount) + "입니다.");
     }
 }
