@@ -6,12 +6,16 @@ public class Application {
     public static void main(String[] args) {
         printInputMoney();
         int money = getMoneyInputFromUser();
+        int numberOfLotteries = calculateNumberOfLotteries(money);
+    }
+
+    public static int calculateNumberOfLotteries(int money) {
+        return money / 1000;
     }
 
     private static int getMoneyInputFromUser() {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        //TODO: 구입금액 입력 검증
         return validateMoneyInput(input);
     }
 
@@ -20,12 +24,12 @@ public class Application {
             throw new IllegalArgumentException(Message.ERROR_MONEY.message);
         }
 
-        int inputInt = Integer.parseInt(input);
-        if (!inMoneyRange(inputInt) || !divisibleByThousand(inputInt)) {
+        int inputInInt = Integer.parseInt(input);
+        if (!inMoneyRange(inputInInt) || !divisibleByThousand(inputInInt)) {
             throw new IllegalArgumentException(Message.ERROR_MONEY.message);
         }
 
-        return inputInt;
+        return inputInInt;
     }
 
     public static boolean inMoneyRange(int inputInt) {
