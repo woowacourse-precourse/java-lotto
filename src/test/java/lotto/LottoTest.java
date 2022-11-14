@@ -66,5 +66,15 @@ class LottoTest {
         assertThat(game.compareAll(lotteries, winningNumber,bonusNumber).get(Ranking.FIFTH)).isEqualTo(0);
     }
 
+    @DisplayName("로또 구입 금액을 잘못 입력한 경우 예외처리가 된다.")
+    @Test
+    void inputMoneyError() {
+        // given
+        int money = 1100;   // [ERROR] 1000으로 나눠지지 않는 경우
+
+        // then
+        assertThatThrownBy(() -> new Money(money))
+                .isInstanceOf(IllegalArgumentException.class);;
+    }
 
 }
