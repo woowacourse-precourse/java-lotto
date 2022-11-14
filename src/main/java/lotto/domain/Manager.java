@@ -47,23 +47,4 @@ public class Manager {
         List<Integer> numbers = userLotto.getNumbers();
         return numbers.contains(bonusNumber);
     }
-
-    public int getWinningAmount(int rank) {
-        if(rank == Number.FIVE) {
-            return Number.FIFTH_WINNING_AMOUNT;
-        }
-        if(rank == Number.FOUR) {
-            return Number.FOURTH_WINNING_AMOUNT;
-        }
-        if(rank == Number.THREE) {
-            return Number.THIRD_WINNING_AMOUNT;
-        }
-        if(rank == Number.TWO) {
-            return Number.SECOND_WINNING_AMOUNT;
-        }
-        if(rank == Number.ONE) {
-            return Number.FIRST_WINNING_AMOUNT;
-        }
-        return Number.ZERO;
-    }
 }
