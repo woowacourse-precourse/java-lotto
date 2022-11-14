@@ -37,14 +37,11 @@ public class Guide {
             if (prize == Prize.NONE) {
                 break;
             }
+            String message = convertIntToString(prize.getMatchingCount()) + "개 일치";
             if (prize == Prize.SECOND) {
-                messages.add(convertIntToString(prize.getMatchingCount()) + "개 일치, 보너스 볼 일치 (" +
-                        addNumberPunctuation(prize.getPrizeMoney()) +
-                        "원) - " + convertIntToString(lottoResult.get(prize.ordinal())) + "개");
-                continue;
+                message += ", 보너스 볼 일치";
             }
-            messages.add(convertIntToString(prize.getMatchingCount()) + "개 일치 (" +
-                    addNumberPunctuation(prize.getPrizeMoney()) +
+            messages.add(message + " (" + addNumberPunctuation(prize.getPrizeMoney()) +
                     "원) - " + convertIntToString(lottoResult.get(prize.ordinal())) + "개");
         }
         return messages;
