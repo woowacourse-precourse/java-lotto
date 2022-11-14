@@ -22,7 +22,7 @@ public class WinningNumberView {
         return winningNumberList;
     }
 
-    private String inputStringParsing(String input) {
+    public String inputStringParsing(String input) {
 
         String[] inputStrings = input.split(",");
         String[] winningNumbers = deleteBlank(inputStrings);
