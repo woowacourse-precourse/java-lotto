@@ -9,13 +9,18 @@ public class Compare {
 
     public Compare(List<List<Integer>> userLotto, Lotto winLotto, int bonusLotto) {
         for (int paper = 0; paper < userLotto.size(); paper++) {
-            count = 0;
-            for (int number = 0; number < 6; number++) {
-                if (winLotto.Contain(userLotto.get(paper).get(number))) {
-                    count += 1;
-                }
-            }
+            this.count = CountLotto(userLotto.get(paper),winLotto,paper);
             System.out.println(count);
         }
+    }
+    
+    public int CountLotto(List<Integer> nowUserLotto, Lotto winLotto, int paper) {
+        int count = 0;
+        for (int number = 0; number < 6; number++) {
+            if (winLotto.Contain(nowUserLotto.get(number))) {
+                count += 1;
+            }
+        }
+        return count;
     }
 }
