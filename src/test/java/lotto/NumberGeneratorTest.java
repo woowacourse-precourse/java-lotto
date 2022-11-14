@@ -1,11 +1,11 @@
 package lotto;
 
+import lotto.service.LottoException;
+import lotto.service.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
@@ -56,7 +56,8 @@ public class NumberGeneratorTest {
     @Test
     void createPurchasePriceNotDividedThousands() {
         final int purchasePrice = 1500;
-        assertThatThrownBy(() -> new NumberGenerator()
+        new LottoException();
+        assertThatThrownBy(() -> LottoException
                 .exceptionDividedIntoThousands(purchasePrice))
                 .isInstanceOf(IllegalArgumentException.class);
     }
