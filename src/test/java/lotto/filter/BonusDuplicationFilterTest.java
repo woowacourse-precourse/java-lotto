@@ -9,12 +9,10 @@ import lotto.publisher.WinnerLotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Spy;
 
 class BonusDuplicationFilterTest {
 
-    @Spy
-    private WinnerLotto lotto = WinnerLotto.getInstance();
+    private final WinnerLotto lotto = WinnerLotto.getInstance();
 
     @BeforeEach
     void init() {
