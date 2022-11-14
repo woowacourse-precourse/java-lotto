@@ -17,10 +17,8 @@ public class Quantity {
     }
 
     public static void validate(String purchaseAmount) {
-        if (!Validator.isInteger(purchaseAmount)
-                || !QuantityValidator.isUnitOfThousand(purchaseAmount)) {
-            throw new IllegalArgumentException();
-        }
+        Validator.validateInteger(purchaseAmount);
+        QuantityValidator.validateUnitOfThousand(purchaseAmount);
     }
 
     public int calculateQuantity() {

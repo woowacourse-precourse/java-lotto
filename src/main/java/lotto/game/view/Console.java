@@ -31,10 +31,8 @@ public interface Console {
         }
 
         private static void validate(String message) {
-            if (!Validator.isNotNull(message)
-                    || !Validator.isNotEmpty(message)) {
-                throw new IllegalArgumentException();
-            }
+            Validator.validateNotNull(message);
+            Validator.validateNotEmpty(message);
         }
     }
 }

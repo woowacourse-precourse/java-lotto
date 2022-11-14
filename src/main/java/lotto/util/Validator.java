@@ -2,30 +2,35 @@ package lotto.util;
 
 import java.util.List;
 
-public abstract class Validator {
-    public static <T> boolean isNotNull(T object) {
-        return object != null;
+public class Validator {
+    public Validator() {}
+
+    public static <T> void validateNotNull(T object) {
+        if (object == null) {
+            ErrorHandler.throwException(ErrorMessage.NULL);
+        }
     }
 
-    public static boolean isNotEmpty(String string) {
-        return !string.equals("");
+    public static void validateNotEmpty(String string) {
+        if (string.equals("")) {
+            ErrorHandler.throwException(ErrorMessage.EMPTY);
+        }
     }
 
-    public static <T> boolean isListInSize(List<T> list, int size) {
-        return list.size() == size;
-    }
 
-    public static boolean isIntegerInRange(int integer, int startInclusive, int endInclusive) {
-        return integer >= startInclusive
-                && integer <= endInclusive;
-    }
 
-    public static <T> boolean isInteger(T input) {
+//    public static void validateIntegerInRange(int integer, int startInclusive, int endInclusive) {
+//        if (integer < startInclusive
+//                || integer > endInclusive) {
+//            ErrorHandler.throwException(ErrorMessage.NOT_NULL);
+//        }
+//    }
+
+    public static <T> void validateInteger(T input) {
         try {
             Integer.parseInt((String) input);
-            return true;
         } catch (NumberFormatException e) {
-            return false;
+            ErrorHandler.throwException(ErrorMessage.NOT_INTEGER_TYPE);
         }
     }
 }
