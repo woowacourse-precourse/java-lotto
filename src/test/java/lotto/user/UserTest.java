@@ -11,7 +11,7 @@ class UserTest {
     void 유저_미입력_테스트() {
         User user = new User();
 
-        assertThrows(IllegalArgumentException.class, () -> user.getInput());
+        assertThrows(IllegalArgumentException.class, () -> user.getMoneyInput());
     }
 
     @Test

@@ -1,10 +1,7 @@
-package lotto;
+package lotto.lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.LinkedList;
 import java.util.List;
-import lotto.Lotto;
-import lotto.LottoEnums;
 
 public class LottoGenerator {
 
@@ -18,5 +15,12 @@ public class LottoGenerator {
 
     public Lotto getLotto() {
         return new Lotto(generateNumbers());
+    }
+
+    public Lotto convert2Lotto(String input) {
+        List<Integer> lottos = LottoValidator.parseCommaString(input);
+        if (lottos.size() != 6)
+            throw new IllegalArgumentException("[ERROR] 로또 숫자의 개수는 6개여야 합니다.");
+        return new Lotto(lottos);
     }
 }

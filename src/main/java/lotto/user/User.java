@@ -1,12 +1,10 @@
 package lotto.user;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import lotto.Lotto;
+import lotto.lotto.Lotto;
 
 public class User {
     private final List<Lotto> lottos;
@@ -15,7 +13,7 @@ public class User {
         lottos = new LinkedList<>();
     }
 
-    public Integer getInput() {
+    public Integer getMoneyInput() {
         try {
             System.out.println("구입금액을 입력해 주세요.");
             UserValidator userValidator = new UserValidator();
@@ -34,6 +32,14 @@ public class User {
         System.out.printf("%d개를 구매했습니다.\n", lottos.size());
         for (Lotto lotto : lottos) {
             System.out.println(lotto);
+        }
+    }
+
+    public String getInput() {
+        try{
+            return Console.readLine();
+        }  catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("[ERROR] 값이 입력되지 않았습니다.");
         }
     }
 }
