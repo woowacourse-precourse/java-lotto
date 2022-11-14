@@ -26,6 +26,6 @@ class WinningStatisticsCompilerTest {
 		WinningStatisticsCompiler winningStatisticsCompiler = new WinningStatisticsCompiler(lotteries,
 			winningAndBonusNumbers1);
 		assertThat(new ArrayList<>(winningStatisticsCompiler.getCountsOfWins().values())).isEqualTo(
-			List.of(1, 0, 0, 1, 1));
+			List.of(1, 1, 0, 0, 1, 1));
 	}
 }
