@@ -56,13 +56,15 @@ public class Result {
         BigDecimal thirdPrize = new BigDecimal(third * 1500000);
         BigDecimal fourthPrize = new BigDecimal(fourth * 50000);
         BigDecimal fifthPrize = new BigDecimal(fifth * 5000);
-        BigDecimal sum = firstPrize.add(secondPrize.add(thirdPrize.add(fourthPrize.add(fifthPrize))));
+        BigDecimal sum = firstPrize.add(secondPrize).add(thirdPrize).add(fourthPrize).add(fifthPrize);
         return sum;
     }
 
     public static BigDecimal calculate() {
         BigDecimal moneyInput = new BigDecimal(StartLotto.payment);
-        BigDecimal revenue = totalPrize().multiply(new BigDecimal(100)).divide(moneyInput, 1, RoundingMode.HALF_EVEN);
+        BigDecimal revenue = totalPrize()
+                .multiply(new BigDecimal(100))
+                .divide(moneyInput, 1, RoundingMode.HALF_EVEN);
         return revenue;
     }
 }
