@@ -24,4 +24,8 @@ public class Money {
     public static Money create(Integer money) {
         return new Money(money);
     }
+
+    public Integer getCount() {
+        return money / Number.ONE_THOUSAND;
+    }
 }
