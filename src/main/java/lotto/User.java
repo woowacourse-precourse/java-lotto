@@ -15,4 +15,10 @@ public class User {
             throw new IllegalArgumentException(Error.INPUT_NOTHING.getMessage());
         }
     }
+
+    public void validateInputBlank(String input) {
+        if (input.equals(" ")) {
+            throw new IllegalArgumentException(Error.INPUT_BLANK.getMessage());
+        }
+    }
 }
