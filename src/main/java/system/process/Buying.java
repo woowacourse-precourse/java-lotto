@@ -2,16 +2,16 @@ package system.process;
 
 import constants.LottoConstant;
 import models.BoughtLottos;
-import system.process.exception.IllegalArgument;
+import system.process.validation.BuyingValidation;
 import utils.Input;
+import veiw.BuyingView;
 
 public class Buying {
-
     private BoughtLottos boughtLottos;
 
     public Buying() {
         boughtLottos = proceedBuying(inputAmountPaid());
-        boughtLottos.printLottoList();
+        BuyingView.printLottoList(boughtLottos.getLottos());
     }
 
     private BoughtLottos proceedBuying(String amountPaid) {
@@ -19,40 +19,24 @@ public class Buying {
     }
 
     private String inputAmountPaid() {
-        printInputAmountPaidText();
+        BuyingView.printInputAmountPaidText();
         String amountPaidInput = Input.input();
 
-        if (amountPaidInput.contains(",")) {
-            IllegalArgument.handleException(IllegalArgument.NOT_DIGIT_TEXT.getMessage());
-        }
-
-        if(amountPaidInput.length() > LottoConstant.MAX_LOTTO_PRICE_LENGTH){
-            IllegalArgument.handleException(IllegalArgument.OUT_OF_AMOUNT_PAID.getMessage());
-        }
+        BuyingValidation.validateAmountPaidInput(amountPaidInput);
 
         return amountPaidInput;
     }
 
-    int calculateAvailableAmount(String amountPaidInput) {
+
+    private int calculateAvailableAmount(String amountPaidInput) {
         int amountPaid = Integer.parseInt(amountPaidInput);
+        BuyingValidation.validateAvailableAmount(amountPaid);
 
-        if(amountPaid > LottoConstant.MAX_LOTTO_PRICE){
-            IllegalArgument.handleException(IllegalArgument.OUT_OF_AMOUNT_PAID.getMessage());
-        }
-
-        if (amountPaid % LottoConstant.LOTTO_PRICE != 0) {
-            IllegalArgument.handleException(IllegalArgument.NOT_DIVISION.getMessage());
-
-        }
         return amountPaid / LottoConstant.LOTTO_PRICE;
     }
 
     public BoughtLottos getBoughtLottos() {
         return boughtLottos;
-    }
-
-    public static void printInputAmountPaidText() {
-        System.out.println("구입 금액을 입력해 주세요.");
     }
 
 }
