@@ -105,10 +105,35 @@ public class Application {
 
 
     public static List<List> compareLotto(List<List> purchaseLotto, List<Integer> winNumbers, int bonusNumber){
+        List<List> LottoPrize = new ArrayList<>();
         checkLottoInputException(bonusNumber, winNumbers);
+        int cnt = 0;
+        int bonusCnt = 0;
+        for (int i = 0; i < purchaseLotto.size(); i++) {
+            bonusCnt = 0;
+            cnt = existNumber(purchaseLotto.get(i),winNumbers);
+            if(cnt!=6){
+                bonusCnt = existBonus(purchaseLotto.get(i),bonusNumber);
+            }
+        }
         return purchaseLotto;
     }
-
+    private static int existNumber(List myLotto, List<Integer> winNumbers){
+        int cnt = 0;
+        for (int i = 0; i < 6; i++) {
+            if(myLotto.contains(winNumbers.get(i))){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+    private static int existBonus(List myLotto, int bonusNumber){
+        int cnt = 0;
+        if(myLotto.contains(bonusNumber)){
+            cnt++;
+        }
+        return cnt;
+    }
     private static void checkLottoInputException(int bonusNumber, List<Integer> winNumbers){
         if(winNumbers.contains(bonusNumber)){
             throw new IllegalArgumentException(ALREADY_EXISTED_NUMBER);
