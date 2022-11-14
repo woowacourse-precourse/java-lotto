@@ -39,6 +39,19 @@ public class InputValidatorTest {
     }
 
     @Test
+    @DisplayName("보너스 숫자가 당첨 숫자에 있어서 실패")
+    void testDuplicateBonusNumberFail() {
+        String string = "1,2,3,4,5,6";
+        List<Integer> integerList = Converter.splitFromString(string);
+
+        int bonusNumber = 1;
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> InputValidator.validateDuplicateBonusNumber(integerList, bonusNumber));
+    }
+
+
+    @Test
     @DisplayName("숫자가 아닌 값이 들어와서 실패")
     void testDigitFail() {
         String string = "가,홍시_카리나,123,12,1,2";
