@@ -1,9 +1,9 @@
 package lotto.domain;
 
-public class LottoBuyCount {
+public class LottoCount {
     private final int count;
 
-    public LottoBuyCount(Money money) {
+    public LottoCount(Money money) {
         this.count = countLottoByMoney(money);
     }
 
