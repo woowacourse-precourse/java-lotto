@@ -4,7 +4,11 @@ import lotto.domain.Cashier;
 
 public class Application {
     public static void main(String[] args) {
-        Cashier cashier = new Cashier();
-        cashier.purchaseLottos();
+        try {
+            Cashier cashier = new Cashier();
+            cashier.purchaseLottos();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
