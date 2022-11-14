@@ -13,13 +13,13 @@ public class ResultAnalyzer {
     }
 
     public double calculateRateOfReturn(List<Lotto> wholeLotto, int[] rankRecord) {
-        int expense = wholeLotto.size() * 1000;
+        double expense = wholeLotto.size() * 1000;
         int income = 0;
         for (int i = 1; i < 6; i++) {
             income += Prize.valueOfRank(i).getCashPrize() * rankRecord[i];
         }
 
-        return Math.round(((double) income / expense * 100) * 100 / 100);
+        return (double) Math.round((income / expense * 100) * 10) / 10;
     }
 
     public int determineRank(Lotto lotto) {

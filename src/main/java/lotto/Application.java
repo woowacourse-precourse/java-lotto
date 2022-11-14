@@ -23,7 +23,7 @@ public class Application {
         List<Integer> winNumbers = inputHandler.inputWinNumbers();
         int bonusNumber = inputHandler.inputBonusNumber();
         host.registerWinningInformation(winNumbers, bonusNumber);
-
+        System.out.println("Application.main");
         host.showWinResult(user);
     }
 }
