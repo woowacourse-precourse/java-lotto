@@ -4,6 +4,10 @@ public class ExceptionHandler extends IllegalArgumentException{
     ExceptionHandler(){}
 
     ExceptionHandler(String message){
-        super(message);
+        super("[ERROR]" + message);
+    }
+
+    public void setMessage(String message){
+        throw new ExceptionHandler(message);
     }
 }
