@@ -94,4 +94,15 @@ public class Lotto {
         return result;
     }
 
+    public String calculateYield(List<Integer> result, int totalPayment) {
+        List<Integer> prizeValues = new ArrayList<>(List.of(5000, 50000, 1500000, 2000000000, 30000000));
+        int totalPrize = 0;
+
+        for (int i = 0; i < 5; i++) {
+            totalPrize += prizeValues.get(i) * result.get(i);
+        }
+
+        return String.format("%.1f", (double) totalPrize / totalPayment);
+    }
+
 }
