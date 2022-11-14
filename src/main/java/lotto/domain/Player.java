@@ -39,6 +39,7 @@ public class Player {
             isNumber(line);
         } catch (Exception e) {
             System.out.println("[ERROR] 숫자가 아닌 값이 있습니다");
+            return 0;
         }
         return Integer.parseInt(line);
     }
@@ -52,6 +53,7 @@ public class Player {
                 isNumber(component);
             } catch (Exception e) {
                 System.out.println("[ERROR] 숫자가 아닌 값이 있습니다");
+                return null;
             }
             int number = Integer.parseInt(component);
             numbers.add(number);
