@@ -3,6 +3,7 @@ package lotto.domain;
 import lotto.domain.enums.Number;
 import lotto.service.ManagerService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-class ManagerTest {
+class ManagerServiceTest {
 
     User user;
     Manager manager;
@@ -23,8 +24,9 @@ class ManagerTest {
         managerService = new ManagerService();
     }
 
+    @DisplayName("8000.0 입력시 user.lottos.size() == 8")
     @Test
-    void 구입금액에_따른_로또_반환_테스트() {
+    void changeLottosTest() {
         user.setMoney(8000.0);
         int expect = 8;
         managerService.changeLottos(user);
@@ -32,8 +34,9 @@ class ManagerTest {
         assertThat(user.getLottoCount()).isEqualTo(expect);
     }
 
+    @DisplayName("0 입력 시 user.lottos.size() == 0")
     @Test
-    void 구입금액에_따른_로또_반환_테스트_0() {
+    void changeLottosTest_2() {
         user.setMoney(0.0);
         int expect = 0;
         managerService.changeLottos(user);
@@ -41,6 +44,7 @@ class ManagerTest {
         assertThat(user.getLottoCount()).isEqualTo(expect);
     }
 
+    @DisplayName("user의 Lotto와 정답 Lotto 비교하여 맞은 개수 반환 테스트")
     @Test
     void getCorrectCountTest() {
         Lotto userLotto = new Lotto(new ArrayList<>(List.of(6,5,4,3,2,1)));
@@ -52,6 +56,7 @@ class ManagerTest {
         assertThat(result).isEqualTo(expect);
     }
 
+    @DisplayName("맞은 개수와 보너스 번호 맞았는지 여부에 따른 등수 반환 테스트")
     @Test
     void judgeRankTest() {
         assertAll(
