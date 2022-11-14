@@ -17,19 +17,19 @@ public enum Rating {
     }
 
     public static Rating checkTheRankings(int matchCount, boolean bonus){
-        if(matchCount == Rating.SECOND.getPrize() && bonus) {
+        if(matchCount == Rating.SECOND.getAccord() && bonus) {
             return Rating.SECOND;
         }
-        if(matchCount == Rating.FIRST.getPrize() && !bonus){
+        if(matchCount == Rating.FIRST.getAccord() && !bonus){
             return Rating.FIRST;
         }
-        if(matchCount == Rating.THIRD.getPrize() && !bonus){
+        if(matchCount == Rating.THIRD.getAccord() && !bonus){
             return Rating.THIRD;
         }
-        if(matchCount == Rating.FOURTH.getPrize() && !bonus){
+        if(matchCount == Rating.FOURTH.getAccord() && !bonus){
             return Rating.FOURTH;
         }
-        if(matchCount == Rating.FIFTH.getPrize() && !bonus){
+        if(matchCount == Rating.FIFTH.getAccord() && !bonus){
             return Rating.FIFTH;
         }
         return Rating.NONE;
