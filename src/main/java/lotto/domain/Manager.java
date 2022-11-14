@@ -1,11 +1,7 @@
 package lotto.domain;
 
-import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
 import lotto.util.ExceptionHandler;
-import lotto.util.InputUtil;
-import lotto.util.OutputUtil;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,6 +10,8 @@ public class Manager {
 
     private List<Integer> winningNumbers = new ArrayList<>();
     private int bonusNumber;
+
+    LottoMachine lottoMachine = new LottoMachine();
 
     public void setWinningNumbers(String input) {
         String[] numbers = input.split(ExceptionHandler.COMMA);
@@ -31,24 +29,23 @@ public class Manager {
         this.bonusNumber = bonusNumber;
     }
 
-    public int changeLottoCount(int money) {
-        ExceptionHandler.checkValidationMoney(String.valueOf(money));
+    public List<Lotto> changeLottos(double money) {
+        List<Lotto> lottos = new ArrayList<>();
+        int totalCount = (int)money % 1000;
 
-        if (money >= 0) {
-            return (money / 1000);
+        for (int repeat = 1; repeat <= totalCount; repeat++) {
+            Lotto lotto = lottoMachine.generateLotto();
+            lottos.add(lotto);
         }
 
-        throw ExceptionHandler.makeIllegalArgumentException(Message.MINUS_INPUT_ERROR);
+        return lottos;
     }
 
     public int getCorrectCount(List<Integer> userLotto) {
         int correctCount = 0;
 
-        Collections.sort(winningNumbers);
-        Collections.sort(userLotto);
-
-        for (int i = 0; i < Number.LOTTO_SIZE.getValue(); i++) {
-            if(winningNumbers.get(i) == userLotto.get(i)) {
+        for (int index = 0; index < Number.LOTTO_SIZE.getValue(); index++) {
+            if (winningNumbers.contains(userLotto.get(index)) || bonusNumber == userLotto.get(index)) {
                 correctCount++;
             }
         }
