@@ -67,4 +67,19 @@ public class Result {
 	public static Integer getStatisticsByRank(int rank) {
 		return statistics.get(rank);
 	}
+
+	public static void calculateProfitRate(int purchaseAmount) {
+		int totalPrize = 0;
+
+		for (int rank = 1; rank <= RANKINGS; rank++) {
+			totalPrize += prize.get(rank) * statistics.get(rank);
+		}
+
+		profitRate = (double)totalPrize / purchaseAmount * 100;
+	}
+
+	public static double getProfitRate() {
+		return profitRate;
+	}
+
 }

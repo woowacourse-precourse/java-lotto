@@ -47,4 +47,9 @@ public class LottoView {
 		System.out.printf(OUTPUT_WINNING_STATISTICS_FORMAT_2ND, Result.getStatisticsByRank(SECOND_PLACE));
 		System.out.printf(OUTPUT_WINNING_STATISTICS_FORMAT_1ST, Result.getStatisticsByRank(FIRST_PLACE));
 	}
+
+	public static void displayProfitRate() {
+		System.out.printf(OUTPUT_PROFIT_RATE, Result.getProfitRate());
+	}
+
 }

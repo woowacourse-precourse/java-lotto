@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.Lottos;
+import lotto.domain.Money;
 import lotto.service.LottoService;
 import lotto.view.LottoView;
 
@@ -12,7 +13,7 @@ public class LottoController {
 		displayPurchasedLottos();
 		createWinningLottoAndBonusNumber();
 		displayWinningStatistics();
-
+		displayProfitRate();
 	}
 
 	private static void createPurchaseAmount() {
@@ -50,5 +51,10 @@ public class LottoController {
 	private static void displayWinningStatistics() {
 		LottoService.calculateStatistics();
 		LottoView.displayWinningStatistics();
+	}
+
+	private static void displayProfitRate() {
+		LottoService.calculateProfitRate(Money.getPurchaseAmount());
+		LottoView.displayProfitRate();
 	}
 }

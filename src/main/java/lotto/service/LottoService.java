@@ -37,4 +37,8 @@ public class LottoService {
 
 		Result.calculateStatistics(userLottos, winningLotto, bonusNumber);
 	}
+
+	public static void calculateProfitRate(int purchaseAmount) {
+		Result.calculateProfitRate(purchaseAmount);
+	}
 }
