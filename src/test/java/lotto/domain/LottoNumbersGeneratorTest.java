@@ -18,7 +18,7 @@ class LottoNumbersGeneratorTest {
 	@DisplayName("사용자가 비정상적인 문자를 입력했을 때.")
 	@Test
 	void createLottoByInvalidCharater() {
-		assertThatThrownBy(() -> LottoNumbersGenerator.generate("1,2,3,4,5,6"))
+		assertThatThrownBy(() -> LottoNumbersGenerator.generate("1,2,3,4,5,a"))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 }

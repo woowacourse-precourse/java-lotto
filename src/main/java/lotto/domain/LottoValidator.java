@@ -20,7 +20,7 @@ public class LottoValidator {
 	}
 
 	private static boolean isValidRange(List<Integer> numbers) {
-		return numbers.stream().anyMatch(n->n >= 1 && n <= 45);
+		return numbers.stream().allMatch(n->n >= 1 && n <= 45);
 	}
 
 	private static boolean isConsistOfSixNumbers(List<Integer> numbers) {
