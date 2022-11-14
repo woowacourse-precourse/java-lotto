@@ -27,11 +27,15 @@ public class Lotto {
         }
     }
 
-    private void isNotInRange(List<Integer> numbers) throws IllegalArgumentException {
+    private void isNotInRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException(WINNING_NUMBER_OUT_OF_RANGE);
-            }
+            validateOneNumber(number);
+        }
+    }
+
+    private void validateOneNumber(int number) throws IllegalArgumentException{
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(WINNING_NUMBER_OUT_OF_RANGE);
         }
     }
 
