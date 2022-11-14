@@ -29,4 +29,10 @@ public class MyView {
 		Lottos.stream().map(s->s.toString()).forEach(System.out::println);
 		System.out.println();
 	}
+
+	public void getCorrectNumbers() {
+		System.out.println(OutMsg.ANSWER_REQUEST.getMessage());
+		String correctNumbers = Console.readLine();
+		model.addAttribute("correctNumbers", correctNumbers);
+	}
 }
