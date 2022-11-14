@@ -1,7 +1,9 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -21,5 +23,12 @@ public class Lotto {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
         }
+    }
+
+    public void showLotto() {
+        List<Integer> numbersCopy = new ArrayList<Integer>(numbers);
+
+        Collections.sort(numbersCopy);
+        System.out.println(numbersCopy);
     }
 }
