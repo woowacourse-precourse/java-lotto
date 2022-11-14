@@ -18,6 +18,9 @@ public class LottoService {
 
     public LottoService() {
         this.rankResult = new TreeMap<>();
+        for (LottoRank value : LottoRank.values()) {
+            rankResult.put(value, 0);
+        }
     }
 
     public List<Lotto> create(Amount amount) {
@@ -32,7 +35,7 @@ public class LottoService {
     public Map<LottoRank, Integer> compare(List<Lotto> lottos, WinnerLotto winnerLotto) {
         for (Lotto lotto : lottos) {
             LottoRank rank = winnerLotto.matchAll(lotto);
-            rankResult.put(rank, rankResult.getOrDefault(rank,0) + 1);
+            rankResult.put(rank, rankResult.get(rank) + 1);
         }
         return rankResult;
     }
