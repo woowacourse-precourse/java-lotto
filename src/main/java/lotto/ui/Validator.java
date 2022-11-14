@@ -42,6 +42,10 @@ public class Validator {
         return count != numbers.size();
     }
 
+    public static boolean isDuplicate(List<Integer> numbers, int number) {
+        return numbers.contains(number);
+    }
+
     public static boolean isHundredUnit(int money) {
         return money > 0 && (money % UNIT == 0);
     }
