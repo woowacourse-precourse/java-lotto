@@ -28,4 +28,31 @@ public class Validators {
             return message;
         }
     }
+
+    public static void validateBudget(String input) {
+        if (!validateBudgetFormat(input) || !validateBudgetNumber(input)) {
+            throw new IllegalArgumentException(Exceptions.TWO.getMessages());
+        }
+    }
+
+    private static boolean validateBudgetFormat(String input) {
+        boolean isValid = true;
+
+        if (REG_EXP.matcher(input).find()) {
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    private static boolean validateBudgetNumber(String input) {
+        boolean isValid = true;
+        int budget = Integer.parseInt(input);
+
+        if (budget % PRICE_PER_LOTTERY != 0) {
+            isValid = false;
+        }
+
+        return isValid;
+    }
 }
