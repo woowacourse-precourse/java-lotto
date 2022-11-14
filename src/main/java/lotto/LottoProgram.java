@@ -18,6 +18,10 @@ public class LottoProgram {
 	int count = 0;
 	int bonusNum;
 
+	public int conversion(String input) {
+		return Integer.parseInt(input);
+	}
+
 	public void purchaseLotto() {
 		messagePrint.purchaseLottoPrint();
 		String inputPrice = Console.readLine();
