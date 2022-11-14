@@ -8,7 +8,7 @@ public class Purchase {
 
     private static void checkNotDivide(int purchaseAmount) {
         if ((purchaseAmount % Constant.LOTTO_PRICE) != 0) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
+            throw new IllegalArgumentException(Constant.NOT_DIVIDE_TEXT);
         }
     }
 }

@@ -24,7 +24,7 @@ public class Generator {
     }
 
     private void printLotto(List<List<Integer>> playerLotto) {
-        System.out.println(lottoCount + "개를 구매했습니다.");
+        System.out.println(lottoCount + Constant.BUY_TEXT);
         for (List<Integer> lotto : playerLotto) {
             System.out.println(lotto);
         }

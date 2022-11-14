@@ -14,8 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            System.out.println("[ERROR] 로또 번호는 6자리의 숫자여야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Constant.LENGTH_ERROR_TEXT);
         }
     }
 
@@ -63,8 +62,7 @@ public class Lotto {
     private void checkSameCount(List<Integer> numbers) {
         Set<Integer> uniqueNumber = new HashSet<>(numbers);
         if (uniqueNumber.size() != 6) {
-            System.out.println("[ERROR] 로또 번호는 중복되는 값이 없어야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Constant.SAME_COUNT_ERROR_TEXT);
         }
     }
 }
