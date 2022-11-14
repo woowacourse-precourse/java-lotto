@@ -27,7 +27,7 @@ public class OutputView {
         System.out.println(lottos);
     }
 
-    public void printWinningInfo(LottosResult lottosResult) {
+    public void printLottosResult(LottosResult lottosResult) {
         System.out.println();
         System.out.println(lottosResult);
     }

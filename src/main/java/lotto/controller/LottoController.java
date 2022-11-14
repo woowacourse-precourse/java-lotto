@@ -21,7 +21,7 @@ public class LottoController {
         Lottos lottos = purchaseLottos(purchaseAmount);
         WinningNumbers winningNumbers = inputWinningNumbers();
 
-        printLottosInfo(lottos);
+        printLottos(lottos);
         printLottosResult(lottos, winningNumbers);
         printLottosProfitRate(purchaseAmount, lottos, winningNumbers);
     }
@@ -42,12 +42,12 @@ public class LottoController {
         outputView.printNumberOfLottos(purchaseAmount.getNumberOfLottos());
     }
 
-    private void printLottosInfo(Lottos lottos) {
+    private void printLottos(Lottos lottos) {
         outputView.printLottos(lottos);
     }
 
     private void printLottosResult(Lottos lottos, WinningNumbers winningNumbers) {
-        outputView.printWinningInfo(lottos.getLottosResult(winningNumbers));
+        outputView.printLottosResult(lottos.getLottosResult(winningNumbers));
     }
 
     private void printLottosProfitRate(PurchaseAmount purchaseAmount, Lottos lottos, WinningNumbers winningNumbers) {
