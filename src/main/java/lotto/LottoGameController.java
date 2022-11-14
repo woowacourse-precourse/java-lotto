@@ -27,6 +27,10 @@ public class LottoGameController {
         Bonus bonus = publishBonus(winningLotto);
 
         makeWinningResult(publishedAllLotto, winningLotto, bonus);
+        makeYield(purchaseAmount);
+    }
+
+    private void makeYield(int purchaseAmount) {
         String lottoYield = lottoReader.calculateYield(purchaseAmount);
         printYield(lottoYield);
     }
