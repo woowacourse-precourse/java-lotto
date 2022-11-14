@@ -22,8 +22,8 @@ public class Game {
         service = new Service(nLottoTickets);
 
         winningResult = new int[Constant.RANK_SIZE];
-        winningPrize = 0;
-        profitRate = 0.0;
+        winningPrize = Constant.ZERO_WINNING_PRIZE;
+        profitRate = Constant.ZERO_PROFIT_RATE;
     }
 
     public void runGame(){
@@ -70,7 +70,7 @@ public class Game {
 
     private void setProfitRate() {
         if (isWinningPrizeZero()) {
-            this.profitRate = 0.0;
+            this.profitRate = Constant.ZERO_PROFIT_RATE;
             return;
         }
 
@@ -78,10 +78,10 @@ public class Game {
     }
 
     private boolean isWinningPrizeZero(){
-        return this.winningPrize == 0;
+        return this.winningPrize == Constant.ZERO_WINNING_PRIZE;
     }
     private boolean isNotRank(int rank) {
-        return rank == -1;
+        return rank == Constant.NO_RANK;
     }
 
     private int getSameCount(List<Integer> lottoNumbers){
@@ -100,7 +100,7 @@ public class Game {
 
         for (int i=0; i< WinningInfo.values().length; i++){
 
-            if (sameCount == 5){
+            if (sameCount == Constant.CHECK_BONUS_COUNT){
                 return checkBonusNumberRank(lottoNumbers);
             }
 
@@ -109,15 +109,15 @@ public class Game {
             }
         }
 
-        return -1;
+        return Constant.NO_RANK;
     }
 
     private int checkBonusNumberRank(List<Integer> lottoNumbers) {
 
         if(lottoNumbers.contains(service.getBonusNumber())){
-            return 2;
+            return WinningInfo.SECONDRANK.getRank();
         }
 
-        return 3;
+        return WinningInfo.THIRDRANK.getRank();
     }
 }
