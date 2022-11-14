@@ -1,8 +1,9 @@
-package lotto;
+package lotto.domain;
 
 import java.util.List;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -16,6 +17,13 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
-
+    public String showNumbers() {
+        String message = "[";
+        for (int number : numbers) {
+            message += number + ", ";
+        }
+        message = message.substring(0, message.length() - 2);
+        message += "]";
+        return message;
+    }
 }
