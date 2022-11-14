@@ -22,7 +22,9 @@ public class Parser {
 
     public static long money(String consoleInput) {
         try {
-            return Long.parseLong(consoleInput);
+            long money = Long.parseLong(consoleInput);
+            if (money % 1000 != 0) throw new IllegalArgumentException();
+            return money;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
