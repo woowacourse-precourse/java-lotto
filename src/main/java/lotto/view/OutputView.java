@@ -34,7 +34,7 @@ public class OutputView {
     }
 
     public void printPercentage(double percentage) {
-        DecimalFormat formatter = new DecimalFormat("###,###.0");
+        DecimalFormat formatter = new DecimalFormat("###,##0.0");
         System.out.println("총 수익률은 " + formatter.format(percentage) + "%입니다.");
     }
 
