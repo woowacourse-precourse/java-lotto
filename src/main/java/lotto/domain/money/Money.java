@@ -9,9 +9,6 @@ public class Money {
     private final Long amount;
 
     private Money(final Long amount) {
-        //validateMoneyIsGreaterThanMinNumber(amount);
-        validateMoneyIsDivideMinNumber(amount);
-
         this.amount = amount;
     }
 
