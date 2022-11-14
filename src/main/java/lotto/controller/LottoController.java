@@ -21,7 +21,8 @@ public class LottoController {
 		purchase(cash);
 		AnswerLotto answerLotto = getAnswerLotto();
 		List<Integer> prize = getPrize(answerLotto);
-
+		OutputView.printPrize(prize);
+		OutputView.printProfit(prize);
 	}
 
 	private void purchase(Cash cash){
@@ -32,7 +33,7 @@ public class LottoController {
 	private void addNewLotto(Cash cash) {
 		while (cash.canBuy()) {
 			cash.withdraw();
-			List<Integer> lottoNums = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+			List<Integer> lottoNums = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
 			Collections.sort(lottoNums);
 			lottos.add(new Lotto(lottoNums));
 		}
@@ -46,14 +47,12 @@ public class LottoController {
 	}
 
 	private List<Integer> getPrize(AnswerLotto answerLotto){
-		int[] prize = new int[]{0, 0, 0, 0, 0};
+		int[] prize = new int[]{0, 0, 0, 0, 0, 0};
 		lottos.stream()
 				.map(answerLotto::getRank)
-				.filter(rank -> rank < 6)
 				.forEach(rank -> prize[rank - 1]++);
 		return Arrays.stream(prize)
 				.boxed()
 				.collect(Collectors.toList());
 	}
-
 }

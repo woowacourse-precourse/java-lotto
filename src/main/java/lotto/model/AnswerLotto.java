@@ -17,8 +17,7 @@ public class AnswerLotto {
 
 	public AnswerLotto(List<Integer> answer, Integer bonus) {
 		isValidate(answer, bonus);
-		Collections.sort(answer);
-		this.answer = answer;
+		this.answer = Util.getSortedList(answer);
 		this.bonus = bonus;
 	}
 
@@ -65,7 +64,7 @@ public class AnswerLotto {
 		if (matchCount < 3) {
 			return 6;
 		}
-		if (matchCount < 5 || (matchCount == 5 && lotto.getNumbers().contains(bonus))) {
+		if (matchCount < 5 || (matchCount == 5 && !lotto.getNumbers().contains(bonus))) {
 			matchCount--;
 		}
 		return Math.abs(7 - matchCount);

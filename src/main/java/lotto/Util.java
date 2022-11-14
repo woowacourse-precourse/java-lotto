@@ -1,7 +1,9 @@
 package lotto;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,4 +30,9 @@ public class Util {
 		return numbers.size() == size;
 	}
 
+	public static List<Integer> getSortedList(List<Integer> source) {
+		List<Integer> newList = new ArrayList<>(source);
+		Collections.sort(newList);
+		return newList;
+	}
 }
