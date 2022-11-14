@@ -2,8 +2,10 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoNumber {
 
@@ -12,5 +14,13 @@ public class LottoNumber {
         Collections.sort(numbers);
         return numbers;
     }
+
+    public List<Integer> winningNumberToList(String input){
+        List<Integer> winningNumberList = Arrays.stream(input.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        return winningNumberList;
+    }
+
 
 }
