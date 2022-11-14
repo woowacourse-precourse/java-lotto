@@ -5,17 +5,23 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LotteryGame {
+public class LotteryMachine {
     private static final int AMOUNT_UNIT = 1000;
     private final List<Lotto> lottos;
 
-    public LotteryGame() {
+    public LotteryMachine() {
         lottos = new ArrayList<>();
     }
 
     public void buyLottos(int amount) {
         validateAmount(amount);
         drawLottos(amount / AMOUNT_UNIT);
+    }
+
+    private WinningStat compareNumbers(Lotto winningNumbers, int bonusNumber) {
+        WinningStat winningStat = new WinningStat();
+        lottos.forEach(x -> winningStat.add(x.countNumbers(winningNumbers), x.hasNumber(bonusNumber)));
+        return winningStat;
     }
 
     private void drawLottos(int number) {
