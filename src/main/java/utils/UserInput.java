@@ -11,14 +11,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserInput {
-    private Game game;
+    private static Game game;
 
     public UserInput(Game game) {
         this.game = game;
     }
 
     // 구입금액 입력
-    public void inputMoney() {
+    public static void inputMoney() {
         String userInputMoney = Console.readLine();
 
         validateInputIsNum(userInputMoney);
@@ -29,14 +29,14 @@ public class UserInput {
     }
 
     // 로또 개수
-    public int getLottoCount(String userInput) {
+    public static int getLottoCount(String userInput) {
         int userInputMoney = Integer.parseInt(userInput);
 
         return userInputMoney / 1000;
     }
 
     // 당첨번호 입력
-    public void inputLottoNumber() {
+    public static void inputLottoNumber() {
         String userInputLottoNumbers = Console.readLine();
 
         validateInputLottoNumbers(userInputLottoNumbers);
@@ -47,17 +47,18 @@ public class UserInput {
     }
 
     // 보너스번호 입력
-    public void inputBonusNumber() {
+    public static void inputBonusNumber() {
         String userInputBonusNumber = Console.readLine();
 
         validateInputIsNum(userInputBonusNumber);
+        validateNumberRange(userInputBonusNumber);
         validateDuplicateBonusNumber(userInputBonusNumber);
 
         game.setBonusNumber(Integer.parseInt(userInputBonusNumber));
     }
 
     // 사용자 입력이 숫자인지 유효성 검사
-    private void validateInputIsNum(String userInput) {
+    private static void validateInputIsNum(String userInput) {
         try {
             Integer.parseInt(userInput);
         } catch (Exception e) {
@@ -66,7 +67,7 @@ public class UserInput {
     }
 
     // 사용자 입력금액이 1000으로 나눠 떨어지는지 유효성 검사
-    private void validateInputMoney(String userInput) {
+    private static void validateInputMoney(String userInput) {
         int userInputMoney = Integer.parseInt(userInput);
 
         if (userInputMoney % 1000 != 0) {
@@ -75,7 +76,7 @@ public class UserInput {
     }
 
     // 입력되는 당첨번호가 형식에 맞는지 유효성 검사
-    private void validateInputLottoNumbers(String userInput) {
+    private static void validateInputLottoNumbers(String userInput) {
         String lottoNumbersPattern = "^(\\d,\\d,\\d,\\d,\\d,\\d)$";
         Pattern pattern = Pattern.compile(lottoNumbersPattern);
         Matcher matcher = pattern.matcher(userInput);
@@ -86,7 +87,7 @@ public class UserInput {
     }
 
     // 입력되는 당첨번호를 리스트로 변환
-    private List<Integer> inputLottoNumberToList(String userInput) {
+    private static List<Integer> inputLottoNumberToList(String userInput) {
         StringTokenizer st = new StringTokenizer(userInput, ",");
         List<Integer> lottoNumbers = new ArrayList<>();
 
@@ -98,15 +99,24 @@ public class UserInput {
     }
 
     // 보너스번호가 당첨번호와 중복되는지 유효성 검사
-    private void validateDuplicateBonusNumber(String userInput) {
+    private static void validateDuplicateBonusNumber(String userInput) {
         int userInputBonusNumber = Integer.parseInt(userInput);
         Lotto lotto = game.getLotto();
         List<Integer> lottoNumbers = lotto.getNumbers();
 
         for (Integer lottoNumber : lottoNumbers) {
-            if(lottoNumber == userInputBonusNumber) {
+            if (lottoNumber == userInputBonusNumber) {
                 throw new IllegalArgumentException("[ERROR] 당첨번호와 중복되지 않는 보너스번호를 입력해주세요.");
             }
+        }
+    }
+
+    // 번호가 1부터 45까지의 범위인지 확인
+    private static void validateNumberRange(String userInput) {
+        int userInputNumber = Integer.parseInt(userInput);
+
+        if (userInputNumber < 1 || userInputNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력해주세요.");
         }
     }
 }
