@@ -9,6 +9,7 @@ public class Lotto {
 
     private final String WARM = "[ERROR] ";
     private final String WARM_LOTTONUMBERS_SIZE = WARM + "로또번호는 6개이어야 합니다.";
+    private final String WARM_NOT_ALLOW_OVERLAP_NUMBER = WARM + "중복된 수가 입력되었습니다.";
     private final int LOTTO_SIZE = 6;
 
     private final List<Integer> numbers;
@@ -16,6 +17,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkNumberRange(numbers);
+        checkDuplicatedNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -33,6 +35,14 @@ public class Lotto {
     private void checkNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             Validate.validateLottoNumberRange(number);
+        }
+    }
+
+    private void checkDuplicatedNumber(List<Integer> numbers) {
+        HashSet<Integer> baseLottoNumbers = new HashSet<>(numbers);
+        if (baseLottoNumbers.size() != numbers.size()) {
+            System.out.println(WARM_NOT_ALLOW_OVERLAP_NUMBER);
+            throw new IllegalArgumentException(WARM_NOT_ALLOW_OVERLAP_NUMBER);
         }
     }
 
