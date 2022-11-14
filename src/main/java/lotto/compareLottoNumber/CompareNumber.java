@@ -19,4 +19,14 @@ public class CompareNumber {
             }
         }
     }
+
+    public void comparePrizeNumberWithBonusNumber(int money, int[] result, List<Lotto> lottoNumbers, int[] prizeNumbers,
+                                                  int bonusNumber) {
+        for (int compareLoop = 0; compareLoop < money; compareLoop++) {
+            if (lottoNumbers.get(compareLoop).compareNumberWithBonus(prizeNumbers, bonusNumber) == 6) {
+                result[2]--;
+                result[3]++;
+            }
+        }
+    }
 }
