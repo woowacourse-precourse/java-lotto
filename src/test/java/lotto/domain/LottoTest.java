@@ -1,10 +1,14 @@
 package lotto.domain;
 
+import lotto.constants.enums.WinResultStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -20,5 +24,34 @@ class LottoTest {
     void createLottoByDuplicatedNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("3개 이상의 번호 일치할때 당첨 결과 반환 테스트")
+    @ParameterizedTest
+    @CsvSource(
+            value = {"1,2,3,4,5,6:10:0",
+                    "2,3,4,5,6,7:1:1",
+                    "2,3,4,5,6,7:10:2",
+                    "3,4,5,6,7,8:10:3",
+                    "3,5,6,7,8,9:10:4"},
+            delimiter = ':'
+    )
+    void 로또와_당첨번호가_3개이상_일치하는_경우_당첨결과_반환(String lottoNumber, String bonusNumber, int winResultIndex) {
+        // given
+        List<WinResultStatus> winResultStatuses = List.of(
+                WinResultStatus.FIRST,
+                WinResultStatus.SECOND,
+                WinResultStatus.THIRD,
+                WinResultStatus.FOURTH,
+                WinResultStatus.FIFTH
+        );
+        WinningNumber winningNumber = new WinningNumber(List.of(lottoNumber, bonusNumber));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        // when
+        WinResultStatus winResult = lotto.getWinResult(winningNumber);
+
+        // then
+        assertThat(winResult).isEqualTo(winResultStatuses.get(winResultIndex));
     }
 }
