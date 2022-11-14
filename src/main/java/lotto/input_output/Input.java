@@ -33,5 +33,9 @@ public class Input {
         checkPayMoney(input);
         return ChangeType.string_to_int(input);
     }
+    protected static String input() {
+        return Console.readLine();
+    }
+
 
 }
