@@ -2,9 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static java.lang.Character.isDigit;
 
@@ -71,6 +69,14 @@ public class User {
     public void checkNumberRange(int number) {
         if (number > 45 || number < 1) {
             throw new IllegalArgumentException("[ERROR] 숫자 범위 1~45까지만 입력해주세요");
+        }
+    }
+
+    public void checkWinningNumbersDuplicate(List<Integer> winningNumbers) {
+        Set<Integer> notDuplicateWinningNumbers = new HashSet<>(winningNumbers);
+
+        if (notDuplicateWinningNumbers.size() != winningNumbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 서로 중복되지 않게 당첨 번호를 입력해주세요");
         }
     }
 }
