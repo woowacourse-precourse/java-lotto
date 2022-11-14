@@ -5,7 +5,6 @@ import lotto.Domain.Statistic.Statistic;
 import lotto.Output.Statistic.StatisticOutput;
 
 public class Application {
-    public static final String ERROR = "[ERROR]";
     public static void main(String[] args) {
         try {
             Game game = new Game();
@@ -17,7 +16,7 @@ public class Application {
         Profit profit = new Profit();
         profit.printProfit(statistic.prizeRanks,game.publishedLottos.size());
         } catch (IllegalArgumentException e) {
-            System.out.println(ERROR+e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 
