@@ -10,7 +10,6 @@ public class Store {
 	public LottoTicket lottoTicket;
 
 	public Store(int pay) {
-		new Pay(pay);
 		count = pay / PRICE;
 		issueLottoTicket();
 	}
