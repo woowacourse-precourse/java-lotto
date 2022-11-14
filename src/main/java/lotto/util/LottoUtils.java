@@ -63,19 +63,26 @@ public class LottoUtils {
 
         for (Integer rank : ranking) {
             Integer cnt = rankData.get(rank);
-            if (rank.equals(FIRST_PLACE)) {
-                totalProfit += FIRST_PLACE_PRIZE * cnt;
-            } else if (rank.equals(SECOND_PLACE)) {
-                totalProfit += SECOND_PLACE_PRIZE * cnt;
-            } else if (rank.equals(THIRD_PLACE)) {
-                totalProfit += THIRD_PLACE_PRIZE * cnt;
-            } else if (rank.equals(FOURTH_PLACE)) {
-                totalProfit += FOURTH_PLACE_PRIZE * cnt;
-            } else if (rank.equals(FIFTH_PLACE)) {
-                totalProfit += FIFTH_PLACE_PRIZE * cnt;
-            }
+            totalProfit += calculateRankingPrize(rank, cnt);
         }
         return totalProfit;
+    }
+
+    private static int calculateRankingPrize(Integer rank, int cnt){
+        int prize = 0;
+        if (rank.equals(FIRST_PLACE)) {
+            prize = FIRST_PLACE_PRIZE;
+        } else if (rank.equals(SECOND_PLACE)) {
+            prize = SECOND_PLACE_PRIZE;
+        } else if (rank.equals(THIRD_PLACE)) {
+            prize = THIRD_PLACE_PRIZE;
+        } else if (rank.equals(FOURTH_PLACE)) {
+            prize = FOURTH_PLACE_PRIZE;
+        } else if (rank.equals(FIFTH_PLACE)) {
+            prize = FIFTH_PLACE_PRIZE;
+        }
+
+        return prize * cnt;
     }
 
 
