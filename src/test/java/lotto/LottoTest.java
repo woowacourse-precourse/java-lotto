@@ -89,6 +89,7 @@ class LottoTest {
         int bonus = 10;
         assertThat(userLotto.compare(winningLotto, bonus)).isEqualTo(5);
     }
+
     @DisplayName("3자리 미만 일치 시 미당첨으로 간주한다.")
     @Test
     void compareTwoLottoNothing() {

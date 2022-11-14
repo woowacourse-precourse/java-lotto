@@ -260,7 +260,8 @@ public class SimulatorTest {
     @Test
     void convertTotalWinsToTotalWinningPriceCase2() {
         List<Integer> wins = List.of(5, 4, 0, 0, 1);
-        assertThat(Simulator.calculateTotalWinningPrice(wins)).isEqualTo(new BigInteger("10120005000"));
+        assertThat(Simulator.calculateTotalWinningPrice(wins)).isEqualTo(
+                new BigInteger("10120005000"));
     }
 
     @DisplayName("누적 등수를 누적 금액으로 환산하기 - 3")
@@ -275,7 +276,8 @@ public class SimulatorTest {
     void calculateRateOfReturnCase1() {
         List<Integer> wins = List.of(0, 0, 3, 54, 214);
         int purchasePrice = 378000;
-        assertThat(Simulator.calculateRateOfReturn(wins, purchasePrice)).isEqualTo(new BigDecimal("21.878"));
+        assertThat(Simulator.calculateRateOfReturn(wins, purchasePrice)).isEqualTo(
+                new BigDecimal("21.878"));
     }
 
     @DisplayName("수익률 계산하기 - 2")
@@ -283,6 +285,7 @@ public class SimulatorTest {
     void calculateRateOfReturnCase2() {
         List<Integer> wins = List.of(0, 0, 42, 540, 2104);
         int purchasePrice = 3728000;
-        assertThat(Simulator.calculateRateOfReturn(wins, purchasePrice)).isEqualTo(new BigDecimal("26.964"));
+        assertThat(Simulator.calculateRateOfReturn(wins, purchasePrice)).isEqualTo(
+                new BigDecimal("26.964"));
     }
 }
