@@ -2,6 +2,7 @@ package lotto.domain.constants;
 
 public enum ErrorCode {
     NOT_NUMBER("숫자만 입력 가능합니다."),
+    NOT_NEGATIVE_NUMBER("돈은 음수가 될 수 없습니다."),
     NOT_BILL("입력한 금액이 1,000원으로 나누어 떨어지지 않습니다."),
 
     NOT_HAVE_COMMA("로또 번호 사이에 `,` 를 넣어주세요."),

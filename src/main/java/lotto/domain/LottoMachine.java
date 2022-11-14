@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.constants.ErrorCode;
 import lotto.domain.constants.LottoConstants;
 
 public class LottoMachine {
@@ -10,23 +11,21 @@ public class LottoMachine {
     List<Lotto> buyLottoList;
 
     public LottoMachine(Money money) {
-        buyLottoTicket(money);
-    }
-
-    public LottoMachine(List<Lotto> lottoList) {
-        this.buyLottoList = lottoList;
+        validBill(money);
+        this.buyLottoList = buyLottoTicket(money);
     }
 
     public List<Lotto> getBuyLottoList() {
         return buyLottoList;
     }
 
-    public int getPrice() {
-        return buyLottoList.size() * LottoConstants.LOTTO_PRICE;
+    private void validBill(Money money) {
+        if (money.getMoney() % LottoConstants.LOTTO_PRICE != 0) {
+            throw ErrorCode.NOT_BILL.getException();
+        }
     }
 
-
-    private void buyLottoTicket(Money money) {
+    private List<Lotto> buyLottoTicket(Money money) {
         int count = money.getMoney() / LottoConstants.LOTTO_PRICE;
         List<Lotto> lottoList = new ArrayList<>();
 
@@ -36,15 +35,6 @@ public class LottoMachine {
                     LottoConstants.LOTTO_NUMBER_SIZE);
             lottoList.add(new Lotto(numbers));
         }
-
-        this.buyLottoList = lottoList;
-        printHaveLottoList();
-    }
-
-    private void printHaveLottoList() {
-        System.out.println(buyLottoList.size() + "개를 구매했습니다.");
-        for (Lotto lotto : buyLottoList) {
-            System.out.println(lotto.getLottoNumbers());
-        }
+        return lottoList;
     }
 }

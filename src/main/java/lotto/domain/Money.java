@@ -8,7 +8,7 @@ public class Money {
     private int value;
 
     public Money(int value) {
-        validateBill(value);
+        validateMoney(value);
         this.value = value;
     }
 
@@ -16,9 +16,9 @@ public class Money {
         return value;
     }
 
-    private void validateBill(int input) {
-        if (input % LottoConstants.LOTTO_PRICE != 0) {
-            throw ErrorCode.NOT_BILL.getException();
+    private void validateMoney(int input) {
+        if (input < 0) {
+            throw ErrorCode.NOT_NEGATIVE_NUMBER.getException();
         }
     }
 }
