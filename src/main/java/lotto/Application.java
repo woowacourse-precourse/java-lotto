@@ -11,42 +11,50 @@ public class Application {
     private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     public static void main(String[] args) {
+        Amount amount = inputAmount();
+        int lottoCount = calculateLottoCount(amount);
 
+        Lottos lottos = generatePurchasedLottos(lottoCount);
+
+        Lotto winningLotto = inputWinningLotto();
+        Bonus bonus = inputBonusNumber();
+
+        Results results = lottos.generateResults(winningLotto, bonus);
+        Statistics statistics = results.generateStatistics();
+
+        Output.printTotalResult(statistics,amount);
+    }
+
+    private static Amount inputAmount() {
         Output.println(INPUT_AMOUNT_MESSAGE);
-        Amount amount = Input.inputAmount();
+        return Input.inputAmount();
+    }
+
+    private static int calculateLottoCount(Amount amount) {
         int lottoCount = amount.calculateLottoCount();
-
         Output.println("\n" + lottoCount + LOTTO_COUNT_MESSAGE);
+        return lottoCount;
+    }
 
+    private static Lottos generatePurchasedLottos(int lottoCount) {
         // 로또 발행하는 부분
         Lottos lottos = new Lottos();
         lottos.generateLottos(lottoCount);
 
         // 발행된 로또 출력하는 부분
         Output.printPurchasedLottos(lottos.checkLottos());
+        return lottos;
+    }
 
-        // 당첨 번호를 입력하는 부분
+    private static Lotto inputWinningLotto() {
         Output.println(INPUT_WINNING_NUMBERS_MESSAGE);
         Lotto winningLotto = Input.inputWinningNumbers();
+        return winningLotto;
+    }
 
+    private static Bonus inputBonusNumber() {
         Output.println("\n" + INPUT_BONUS_NUMBER_MESSAGE);
         Bonus bonus = Input.inputBonusNumber();
-
-        Results results = new Results();
-
-        // 결과 판정하는 부분
-        for (Lotto lotto : lottos.getLottos()) {
-            results.addResult(lotto.generateResult(winningLotto, bonus));
-        }
-        //  통계 만드는 부분
-        Statistics statistics = new Statistics();
-
-        for (Result result : results.getResults()) {
-            Prize prize = Prize.generatePrize(result);
-            statistics.updateStatistics(prize);
-        }
-
-        Output.printWinningStatistics(statistics);
-        Output.printTotalYield(statistics, amount);
+        return bonus;
     }
 }
