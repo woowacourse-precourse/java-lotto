@@ -18,6 +18,11 @@ public class Lotto {
         return numbers;
     }
 
+    @Override
+    public String toString() {
+        return numbers + "";
+    }
+
     public static Lotto numberOf(List<Integer> numbers) {
         validate(numbers);
 
