@@ -14,10 +14,10 @@ public class Generator {
     }
 
     public List<Lotto> createLottoList(int amount) {
-        List<Lotto> lottoList = new ArrayList<>();
-        while(lottoList.size()<amount) {
-            lottoList.add(new Lotto(getLottoNumbers()));
+        List<Lotto> myLotto = new ArrayList<>();
+        while(myLotto.size()<amount) {
+            myLotto.add(new Lotto(getLottoNumbers()));
         }
-        return lottoList;
+        return myLotto;
     }
 }
