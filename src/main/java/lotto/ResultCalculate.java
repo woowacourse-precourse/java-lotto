@@ -5,8 +5,7 @@ import java.util.List;
 import constant.LottoRanking;
 public class ResultCalculate {
     public static void resultCalculate(List<Lotto> purchaseLottos, List<Integer> drawLotto ){
-        synthesizeRanking(purchaseLottos,drawLotto);
-
+        profitCalculate(synthesizeRanking(purchaseLottos,drawLotto));
     }
     public static List<Integer> synthesizeRanking(List<Lotto> purchaseLottos, List<Integer> drawLotto){
         List<Integer> ranks = new LinkedList<>();
@@ -15,7 +14,7 @@ public class ResultCalculate {
         }
         for(Lotto lotto :purchaseLottos){
             int sameNumberCount = compareTwoNumbers(lotto, drawLotto);
-            if(sameNumberCount != -1)
+            if(sameNumberCount != LottoRanking.NOTHING.getRanking())
                 ranks.set(sameNumberCount,ranks.get(sameNumberCount)+1);
         }
         return ranks;
@@ -27,23 +26,24 @@ public class ResultCalculate {
                 sameNumberCount++;
             }
         }
-        if(sameNumberCount<3) return -1;
+        if(sameNumberCount<=LottoRanking.NOTHING.getSameNumberCount())
+            return LottoRanking.NOTHING.getRanking();
         return calculateRanking(lotto, drawLotto,sameNumberCount);
     }
     private static int calculateRanking(Lotto lotto, List<Integer> drawLotto, int sameNumberCount){
-        if(sameNumberCount==6)
+        if(sameNumberCount==LottoRanking.FIFTH.getSameNumberCount())
             return LottoRanking.FIRST.getRanking();
-        if(sameNumberCount==5){
+        if(sameNumberCount==LottoRanking.SECOND.getSameNumberCount()){
             if(lotto.getNumbers().contains(drawLotto.get(6))) {
                 return LottoRanking.SECOND.getRanking();
             }
             return LottoRanking.THIRD.getRanking();
         }
-        if(sameNumberCount==4)
+        if(sameNumberCount==LottoRanking.FOURTH.getSameNumberCount())
             return LottoRanking.FOURTH.getRanking();
         return LottoRanking.FIFTH.getRanking();
     }
-    public static void profitCalculate(){
+    public static void profitCalculate(List<Integer> Rankings){
 
     }
 }
