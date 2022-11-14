@@ -16,4 +16,15 @@ import static lotto.view.OutputView.printProfit;
 import static lotto.view.OutputView.printResultIntro;
 
 public class LottoController {
+    public void LottoStart(){
+        LottoAmount amount = inputAmount();
+    }
+    private LottoAmount inputAmount() {
+        try {
+            return new LottoAmount(InputView.inputAmount());
+        } catch (IllegalArgumentException e) {
+            printException(e);
+            return inputAmount();
+        }
+    }
 }
