@@ -3,19 +3,17 @@ package Controller;
 import Dto.Money;
 import Services.CalculatedService;
 import View.InputView;
+import View.OutputView;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
-public class InputController {
+public class InputOutputController {
 
     private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
     private final CalculatedService calculatedService = new CalculatedService();
 
-    public int inputMoney(){
-        inputView.printLotoBuyMoney();
-        String inputNumber = readLine();
-        Money money = new Money(inputNumber);
+    public void inputMoneyOutputLottoSize(){
+        Money money = inputView.printLotoBuyMoney();
         int lottoSize = calculatedService.lottoSize(money);
-        return lottoSize;
+        outputView.printLottoSize(lottoSize);
     }
 }
