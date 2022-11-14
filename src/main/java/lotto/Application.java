@@ -4,7 +4,10 @@ import lotto.domain.Purchase;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        Purchase.buyLotto();
+        try {
+            Purchase.buyLotto();
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 }
