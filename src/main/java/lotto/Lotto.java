@@ -1,5 +1,9 @@
 package lotto;
 
+import util.Constant;
+import util.Error;
+
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -11,9 +15,14 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        HashSet<Integer> setLottoNumber = new HashSet<>(numbers);
+        if(setLottoNumber.size() != Constant.NUMBERQUANTITY) {
+            throw new IllegalArgumentException(Error.SAMENUMBER.getErrorMsg());
         }
+    }
+
+    public List<Integer> getLotto() {
+        return numbers;
     }
 
     // TODO: 추가 기능 구현
