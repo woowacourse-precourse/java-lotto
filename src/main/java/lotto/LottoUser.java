@@ -9,12 +9,14 @@ public class LottoUser {
     private LottoSystem lottoSystem;
 
     private List<Lotto> lottos;
+    private List<WinInfo> winInfomations;
 
     public LottoUser(long money, LottoSystem lottoSystem) {
         validate(money);
         this.money = money;
         this.lottoSystem = lottoSystem;
         this.lottos = new ArrayList<>();
+        this.winInfomations = new ArrayList<>();
         buyLotto();
     }
 
@@ -33,6 +35,18 @@ public class LottoUser {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
             this.lottos.add(new Lotto(numbers));
         }
+    }
+
+    //소유한 모든 로또의 결과 확인
+    public void checkWin(){
+        for(Lotto lotto : this.lottos){
+            this.winInfomations.add(lottoSystem.judgeWin(lotto));
+        }
+    }
+
+    //소유한 모든 로또의 결과 반환
+    public List<WinInfo> getWinInfomations(){
+        return this.winInfomations;
     }
 
 }
