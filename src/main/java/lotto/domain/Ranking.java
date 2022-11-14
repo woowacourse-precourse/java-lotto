@@ -33,4 +33,5 @@ public enum Ranking {
         return this.bonusMatch;
     }
 
+
 }

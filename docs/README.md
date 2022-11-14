@@ -11,7 +11,7 @@
    - 유저의 구입 금액을 입력받아 로또 셋업하는 메소드 (lottoSetup)
    - 유저의 당첨 번호를 입력받아 랭킹 계산 전까지 셋업하는 메소드 (winSetup)
    - 로또 순위 계산하는 메소드 (findRank)
-3. View 클래스: user input 클래스
+4. View 클래스: user input 클래스
     - 구입 금액 입력 받아서 로또 뽑기 회수 리턴, 예외 상황 시 에러 발생시키는 메소드 (getMoneyInput)
       - 구입 금액이 1000으로 나눠떨어지지 않으면 IllegalArgumentException 발생시키는 메소드 (validateIsDivisible)
       - 입력값이 숫자가 아닌 값이 있으면 IllegalArgumentException 발생시키는 메소드 (validateIsNumber)
@@ -26,25 +26,26 @@
       - 입력값이 숫자가 아니면 IllegalArgumentException 발생시키는 코드 (validateIsNumber, 위와 동일)
       - 번호가 1~45 범위 밖이면 IllegalArgumentException 발생시키는 메소드 (validateNumberInRange, 위와 동일)
       - 위의 validator 메소드를 한꺼번에 실행하는 메소드 (validateBonusInput)
-4. PrintMsg 클래스: message print 클래스
+5. PrintMsg 클래스: message print 클래스
    - 구입금액 입력 받을 때 메시지 출력하는 메소드 (printMoneyInputMsg)
    - 로또 구매 개수 출력하는 메소드 (printNumberOfLottosMsg)
    - 당첨 번호 입력 받을 때 메시지 출력하는 메소드 (printWinnerInputMsg)
    - 보너스 번호 입력 받을 때 메시지 출력하는 메소드 (printBonusInputMsg)
    - 소수점 둘째 자리에서 반올림한 수익률 출력하는 메소드 (printProfitRateMsg)
    - 당첨 내역 출력하는 메소드 (printResult)
-5. Application 클래스: 게임 실행
-5. Ranking enum 클래스
+6. Application 클래스: 게임 실행
+7. Ranking enum 클래스
    - enum 정의
    - 로또의 결과가 어느 랭킹에 해당하는지 찾는 메소드 (findRanking)
    - enum의 변수에 대한 get 메소드 (getMatch, getPrize, getBonusMatch, getDescription)
-5. DrawLotto 클래스
+8. DrawLotto 클래스
    - 당첨 내역 확인하는 로직 메소드 (checkLotto)
    - 로또 당첨이 5 숫자일 경우 보너스 숫자와 일치하는 확인하는 메소드 (checkBonus)
    - CheckListOfLottos 메소드를 위해 비교 맵을 셋업하는 메소드 (setupComparison)
    - 로또 리스트의 당첨 내역 확인하는 메소드 (checkListOfLottos)
+   - 로또의 랭킹을 리턴하는 메소드 (getRank)
    - 소수점 둘째 자리에서 반올림한 수익률 계산하는 메소드 (calculateProfitRate)
-5. LottoTest
+9. LottoTest
    - Non-integer를 Input했을 때 IllegalArgumentException을 발생시키는지 확인
-6. ApplicationTest
-7. GameTest
+10. ApplicationTest
+11. GameTest
