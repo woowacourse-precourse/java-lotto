@@ -54,11 +54,11 @@ public class UserLotto {
 
     public double getRateOfReturn(List<Integer> lottoResult) {
         int total = 0;
+
         for (Prize prize : Prize.values()) {
-            if (prize == Prize.NONE) {
-                break;
+            if (prize != Prize.NONE) {
+                total += prize.getPrizeMoney() * lottoResult.get(prize.ordinal());
             }
-            total += prize.getPrizeMoney() * lottoResult.get(prize.ordinal());
         }
         return (total / (double) lottoAmount) * 100;
     }
