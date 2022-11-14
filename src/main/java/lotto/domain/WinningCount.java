@@ -29,6 +29,7 @@ public class WinningCount {
         if (count.containsKey(str)) {
             count.put(str, count.get(str) + 1);
         }
+
     }
 
     public int getProfitSum() {
@@ -40,22 +41,21 @@ public class WinningCount {
     }
 
     private int calculateProfit(int profitSum, String profit) {
-        if (profit == "3") {
-            profitSum += 5000 * count.get("3");
+        if (profit == Constant.FIFTH_PLACE) {
+            profitSum += Constant.FIFTH_PLACE_PRIZE * count.get(Constant.FIFTH_PLACE);
         }
-        if (profit == "4") {
-            profitSum += 50000 * count.get("4");
+        if (profit == Constant.FOURTH_PLACE) {
+            profitSum += Constant.FOURTH_PLACE_PRIZE * count.get(Constant.FOURTH_PLACE);
         }
-        if (profit == "5") {
-            profitSum += 1500000 * count.get("5");
+        if (profit == Constant.THIRD_PLACE) {
+            profitSum += Constant.THIRD_PLACE_PRIZE * count.get(Constant.THIRD_PLACE);
         }
-        if (profit == "bonus") {
-            profitSum += 30000000 * count.get("bonus");
+        if (profit == Constant.SECOND_PLACE) {
+            profitSum += Constant.SECOND_PLACE_PRIZE * count.get(Constant.SECOND_PLACE);
         }
-        if (profit == "6") {
-            profitSum += 2000000000 * count.get("6");
+        if (profit == Constant.FIRST_PLACE) {
+            profitSum += Constant.FIRST_PLACE_PRIZE * count.get(Constant.FIRST_PLACE);
         }
         return profitSum;
     }
-
 }
