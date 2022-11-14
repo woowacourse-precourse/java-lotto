@@ -19,6 +19,7 @@ public class LottoService {
         for (int i = 0; i < lottoQuantity; i++) {
             purchaseLottos.add(Issuance());
         }
+
         System.out.println();
         return new Buyer(money, purchaseLottos);
     }
@@ -32,7 +33,7 @@ public class LottoService {
 
     private void validateForMoney(int money) {
         if (money % SystemValue.LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액이 복권 금액으로 나누어 떨어지지 않습니다.");
+            throw new IllegalArgumentException("[ERROR] 입력한 구입 금액" + money + "원이 복권 금액으로 나누어 떨어지지 않습니다.");
         }
     }
 
@@ -58,15 +59,17 @@ public class LottoService {
         return winningNumbers;
     }
 
-    public double calculatePortfolio(List<Rank> lottosRank, int purchaseMoney){
-        return 100 + ((double)(getProfitMoney(lottosRank) - purchaseMoney) / (double) purchaseMoney) * 100;
+    public double calculatePortfolio(List<Rank> lottosRank, int purchaseMoney) {
+        return 100 + ((double) (getProfitMoney(lottosRank) - purchaseMoney) / (double) purchaseMoney) * 100;
     }
 
-    private int getProfitMoney(List<Rank> lottosRank){
+    private int getProfitMoney(List<Rank> lottosRank) {
         int profit = 0;
-        for (Rank rank: lottosRank) {
+
+        for (Rank rank : lottosRank) {
             profit += rank.getReward();
         }
+
         return profit;
     }
 

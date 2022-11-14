@@ -17,10 +17,12 @@ public class LottoController {
         try {
             Buyer buyer = buy();
             Winning winning = Pick();
+
             List<Rank> lottosRank = buyer.getLottosRank(winning.getNumbers(), winning.getBonusNumber());
+
             printHistory(lottosRank);
             printPortfolio(lottosRank, buyer.getPurchaseMoney());
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -28,6 +30,7 @@ public class LottoController {
     private Buyer buy() {
         SystemMessage.inputMoney();
         String input = Console.readLine();
+
         SystemValid.validateForNumber(input, ErrorType.MONEY);
         int money = Integer.parseInt(input);
         System.out.println();
@@ -41,6 +44,7 @@ public class LottoController {
     private List<Integer> winningPick() {
         SystemMessage.inputWinningNumber();
         String input = Console.readLine();
+
         SystemValid.validateForWinningNumber(input);
         System.out.println();
         return lottoService.winningInputParseToList(input);
@@ -49,6 +53,7 @@ public class LottoController {
     private int bonusPick() {
         SystemMessage.inputBonusNumber();
         String input = Console.readLine();
+
         SystemValid.validateForNumber(input, ErrorType.BONUS);
         System.out.println();
         return Integer.parseInt(input);

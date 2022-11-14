@@ -19,8 +19,8 @@ public class SystemMessage {
         System.out.println("6개 일치 (2,000,000,000원) - " + Collections.frequency(lottosRank, Rank.ONE) + "개");
     }
 
-    public static void portfolio(double portfolio){
-        System.out.println("총 수익률은 "+String.format("%.1f", portfolio)+"%입니다.");
+    public static void portfolio(double portfolio) {
+        System.out.println("총 수익률은 " + String.format("%.1f", portfolio) + "%입니다.");
     }
 
     public static void inputMoney() {

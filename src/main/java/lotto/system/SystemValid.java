@@ -9,14 +9,14 @@ public class SystemValid {
     public static void validateForNumber(String text, ErrorType type) {
         Pattern pattern = Pattern.compile(SystemValue.REGEX_ONLY_NUMBER);
         if (!pattern.matcher(text).matches()) {
-            throw new IllegalArgumentException("[ERROR] " + type.getName() + " 이 숫자가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] " + type.getName() + text + " 숫자가 아닙니다.");
         }
     }
 
     public static void validateForWinningNumber(String text) {
         Pattern pattern = Pattern.compile(SystemValue.REGEX_WINNING_NUMBER);
         if (!pattern.matcher(text).matches()) {
-            throw new IllegalArgumentException("[ERROR] 당첨번호 형식이 맞지 않습니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨번호 " + text + "가 형식이 맞지 않습니다.");
         }
     }
 

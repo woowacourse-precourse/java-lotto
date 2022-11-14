@@ -35,6 +35,7 @@ public class Lotto {
                 count++;
             }
         }
+
         return count;
     }
 
@@ -51,6 +52,7 @@ public class Lotto {
         String print = "";
         List<Integer> orderNumbers = new ArrayList<>(numbers);
         Collections.sort(orderNumbers);
+
         for (int orderNumber : orderNumbers) {
             print = print.concat(" " + orderNumber);
         }

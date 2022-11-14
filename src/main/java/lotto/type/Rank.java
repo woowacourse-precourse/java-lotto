@@ -28,6 +28,7 @@ public enum Rank {
                 return values()[i];
             }
         }
+
         return Rank.NONE;
     }
 

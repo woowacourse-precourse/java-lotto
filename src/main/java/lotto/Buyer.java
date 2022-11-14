@@ -22,9 +22,11 @@ public class Buyer {
 
     public List<Rank> getLottosRank(List<Integer> winningNumbers, int bonusNumber) {
         List<Rank> lottosRank = new ArrayList<>();
+
         for (Lotto lotto : lottos) {
             lottosRank.add(lotto.getRank(winningNumbers, bonusNumber));
         }
+
         return lottosRank;
     }
 
