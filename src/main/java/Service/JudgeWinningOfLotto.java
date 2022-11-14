@@ -13,4 +13,12 @@ public class JudgeWinningOfLotto {
         }
         return match;
     }
+
+    public boolean isContainBounsNumber(List<Integer> RandomLotto, int bounsNumber) {
+        if (RandomLotto.contains(bounsNumber)) {
+            return true;
+        }
+        return false;
+    }
+
 }
