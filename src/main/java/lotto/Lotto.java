@@ -16,5 +16,9 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void validatePayment(int payment) {
+        if (payment % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위로 입력할 수 있습니다.");
+        }
+    }
 }
