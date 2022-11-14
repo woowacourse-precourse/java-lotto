@@ -26,11 +26,14 @@ public class LottoGameController {
         Lotto winningLotto = publishWinningLotto();
         Bonus bonus = publishBonus(winningLotto);
 
-        // 구매한 로또의 당첨 결과 산출
-        Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedAllLotto, winningLotto, bonus);
-        printLottoResult(lottoResult);
+        makeWinningResult(publishedAllLotto, winningLotto, bonus);
         String lottoYield = lottoReader.calculateYield(purchaseAmount);
         printYield(lottoYield);
+    }
+
+    private void makeWinningResult(List<Lotto> publishedAllLotto, Lotto winningLotto, Bonus bonus) {
+        Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedAllLotto, winningLotto, bonus);
+        printLottoResult(lottoResult);
     }
 
     private Bonus publishBonus(Lotto winningLotto) {
