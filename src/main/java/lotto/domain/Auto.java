@@ -9,9 +9,10 @@ import java.util.List;
 
 public class Auto {
 
+    private static final String SEPARATOR = ",";
+
     public static List<List<Integer>> AUTO_LOTTOS = new ArrayList<>();
     public static List<Integer> WINNING_NUMBERS = new ArrayList<>();
-
     public static double YIELD;
 
     public Auto() {
@@ -31,7 +32,7 @@ public class Auto {
     }
 
     public void makeWinningNumbers(String userInput) {
-        List<String> userInputs = Arrays.asList(userInput.split(","));
+        List<String> userInputs = Arrays.asList(userInput.split(SEPARATOR));
         for (String userNumber : userInputs) {
             WINNING_NUMBERS.add(Integer.parseInt(userNumber));
         }
@@ -60,16 +61,16 @@ public class Auto {
     }
 
     private void countWinningResult(int win, int bonusWin) {
-        if (win == 6) Rank.FIRST.plusCount();
-        if (win == 5 && bonusWin == 1) Rank.SECOND.plusCount();
-        if (win == 5 && bonusWin == 0) Rank.THIRD.plusCount();
-        if (win == 4) Rank.FOURTH.plusCount();
-        if (win == 3) Rank.FIFTH.plusCount();
+        if (win == Rank.FIRST.getWin()) Rank.FIRST.plusCount();
+        if (win == Rank.SECOND.getWin() && bonusWin == Rank.SECOND.getBonusWin()) Rank.SECOND.plusCount();
+        if (win == Rank.THIRD.getWin() && bonusWin == Rank.THIRD.getBonusWin()) Rank.THIRD.plusCount();
+        if (win == Rank.FOURTH.getWin()) Rank.FOURTH.plusCount();
+        if (win == Rank.FIFTH.getWin()) Rank.FIFTH.plusCount();
     }
 
     public void yieldCalculation(int money) {
         long yield = Rank.FIRST.getCount() * Rank.FIRST.getMoney() + Rank.SECOND.getCount() * Rank.SECOND.getMoney() + Rank.THIRD.getCount() * Rank.THIRD.getMoney()
-                    + Rank.FOURTH.getCount() * Rank.FOURTH.getMoney() + Rank.FIFTH.getCount() * Rank.FIFTH.getMoney();
+                + Rank.FOURTH.getCount() * Rank.FOURTH.getMoney() + Rank.FIFTH.getCount() * Rank.FIFTH.getMoney();
         YIELD = yield / (double) money * 100;
     }
 }
