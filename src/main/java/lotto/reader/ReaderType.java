@@ -1,12 +1,15 @@
 package lotto.reader;
 
 import java.util.List;
+import lotto.filter.BonusDuplicationFilter;
+import lotto.filter.BonusSizeFilter;
 import lotto.filter.CashUnitFilter;
 import lotto.filter.Filter;
 import lotto.filter.LottoDuplicationFilter;
 import lotto.filter.LottoRangeFilter;
 import lotto.filter.NumberFilter;
 import lotto.filter.NumberWithDotFilter;
+import lotto.reader.types.BonusNumberReader;
 import lotto.reader.types.LottoSellerReader;
 import lotto.reader.types.WinnerNumberReader;
 
@@ -30,6 +33,18 @@ public enum ReaderType {
                     new LottoDuplicationFilter());
 
             return new WinnerNumberReader(filters);
+        }
+    },
+
+    BONUS {
+        @Override
+        public Reader getReader() {
+            List<Filter> filters = List.of(new BonusSizeFilter(),
+                    new NumberFilter(),
+                    new LottoRangeFilter(),
+                    new BonusDuplicationFilter());
+
+            return new BonusNumberReader(filters);
         }
     };
 
