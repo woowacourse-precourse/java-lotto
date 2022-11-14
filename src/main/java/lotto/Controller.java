@@ -9,13 +9,13 @@ public class Controller {
     private View view;
     private List<Lotto> lottoNumbers;
     private List<Integer> winningNumbers;
-    private Rank[] values;
+    private Rank[] ranks;
 
     public void Controller() {
         view = new View();
         lottoNumbers = new ArrayList<>();
         winningNumbers = new ArrayList<>();
-        values = Rank.values();
+        ranks = Rank.values();
     }
 
     public void makeLottoNumbers(int number) {
@@ -41,13 +41,13 @@ public class Controller {
         int count = 0;
         for (int i = 0; i < winningNumbers.size(); i++) {
             if (i == winningNumbers.size() - 1 && count == 5 && lottoNumbers.contains(winningNumbers.get(i))) {
-                values[values.length - 1].increaseCount();
+                ranks[ranks.length - 1].increaseCount();
             } else if (lottoNumbers.contains(winningNumbers.get(i))) {
                 count++;
             }
         }
-        for (int i = 0; i <= count - 3 && i != values.length - 1; i++) {
-            values[i].increaseCount();
+        for (int i = 0; i <= count - 3 && i != ranks.length - 1; i++) {
+            ranks[i].increaseCount();
         }
     }
 
@@ -64,6 +64,6 @@ public class Controller {
         makeWinningNumbers();
         view.printLine("");
 
-        view.printResult(values, 0);
+        view.printResult(ranks, 0);
     }
 }
