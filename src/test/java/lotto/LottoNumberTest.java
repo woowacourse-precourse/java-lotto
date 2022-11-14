@@ -12,9 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 
-public class LottoNumberTest extends NsTest{
+public class LottoNumberTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
-
 
 
     @Test
@@ -24,6 +23,7 @@ public class LottoNumberTest extends NsTest{
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
     @Test
     void 구입금액_한글입력시_예외_테스트() {
         assertSimpleTest(() -> {
@@ -31,6 +31,7 @@ public class LottoNumberTest extends NsTest{
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
     @Test
     void 구입금액_영어숫자_혼합입력시_예외_테스트() {
         assertSimpleTest(() -> {
@@ -38,6 +39,7 @@ public class LottoNumberTest extends NsTest{
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
     @Test
     void 구입금액_1000의배수_예외_테스트() {
         assertSimpleTest(() -> {
@@ -49,15 +51,16 @@ public class LottoNumberTest extends NsTest{
     @Test
     void 구입금액_성공_테스트() {
         assertSimpleTest(() -> {
-            run("5000", "1,2,3,4,5,6","7");
+            run("5000", "1,2,3,4,5,6", "7");
             assertThat(output()).contains("5개를 구매했습니다.");
         });
     }
+
     @Test
     void 로또_정렬_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    run("3000","1,2,3,4,5,6","7");
+                    run("3000", "1,2,3,4,5,6", "7");
                     assertThat(output()).contains(
                             "3개를 구매했습니다.",
                             "[8, 21, 23, 41, 42, 43]",

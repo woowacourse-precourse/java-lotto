@@ -9,15 +9,16 @@ import static lotto.Application.errorContent;
 
 public class BonusNumberService {
 
-    public Integer generateBonusNumber(){
-        try{
+    public Integer generateBonusNumber() {
+        try {
             Integer bonusNumber = Integer.parseInt(Console.readLine());
             return bonusNumber;
-        }catch(NumberFormatException numberFormatException){
+        } catch (NumberFormatException numberFormatException) {
             errorContent = ERROR_MESSAGE + " 보너스 숫자는 숫자만 입력하여야합니다.";
             throw new IllegalArgumentException(errorContent);
         }
     }
+
     public void checkBonusRange(Integer bonusNumber) {
         try {
             if (bonusNumber < 1 || bonusNumber > 45) {
@@ -28,14 +29,14 @@ public class BonusNumberService {
             throw new IllegalArgumentException(errorContent);
         }
     }
+
     public void checkNotEqualWinningNumber(List<Integer> winningNumberList,
-                                           Integer bonusNumber)
-    {
+                                           Integer bonusNumber) {
         try {
             if (winningNumberList.contains(bonusNumber)) {
                 throw new IllegalArgumentException();
             }
-        }catch (Exception exception){
+        } catch (Exception exception) {
             errorContent = ERROR_MESSAGE + " 보너스 번호는 당첨번호와 달라야합니다.";
             throw new IllegalArgumentException(errorContent);
         }

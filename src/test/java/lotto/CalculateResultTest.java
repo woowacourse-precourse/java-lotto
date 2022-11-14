@@ -30,12 +30,13 @@ public class CalculateResultTest extends NsTest {
                             "6개 일치 (2,000,000,000원) - 0개"
                     );
                 },
-                List.of(1,2,3,10,11,12),
+                List.of(1, 2, 3, 10, 11, 12),
                 List.of(3, 5, 11, 16, 32, 38),
                 List.of(7, 11, 16, 35, 36, 44),
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
+
     @Test
     void 로또_3개일치1개_4개일치1개_성공_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -60,6 +61,7 @@ public class CalculateResultTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
+
     @Test
     void 로또_5개일치_보너스불일치_성공_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -82,6 +84,7 @@ public class CalculateResultTest extends NsTest {
                 List.of(2, 3, 4, 6, 7, 20)
         );
     }
+
     @Test
     void 로또_5개일치_보너스일치_성공_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -104,6 +107,7 @@ public class CalculateResultTest extends NsTest {
                 List.of(2, 3, 4, 6, 7, 8)
         );
     }
+
     @Test
     void 로또_6개일치_성공_테스트() {
         assertRandomUniqueNumbersInRangeTest(

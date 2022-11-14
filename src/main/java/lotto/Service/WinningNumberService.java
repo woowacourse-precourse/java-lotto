@@ -16,6 +16,7 @@ public class WinningNumberService {
         Lotto winningNumber = new Lotto(convertToInteger(winningNumberString, separator));
         return winningNumber;
     }
+
     public List<Integer> convertToInteger(String winningNumberString, String separator) {
         List<String> winningNumberStringList = List.of(winningNumberString.split(separator, 0));
         try {

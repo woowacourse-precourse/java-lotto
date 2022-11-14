@@ -1,8 +1,9 @@
 package lotto.Model;
 
 import java.util.Arrays;
+
 public enum Rank {
-    LOSING_TICKET(0,0,0),
+    LOSING_TICKET(0, 0, 0),
     THREE(3, 0, 5_000),
     FOUR(4, 0, 50_000),
     FIVE(5, 0, 1_500_000),
@@ -21,7 +22,7 @@ public enum Rank {
     }
 
     public static Rank getRank(int count, int bonus) {
-        if(count < 3) {
+        if (count < 3) {
             return LOSING_TICKET;
         }
         return Arrays.stream(values())

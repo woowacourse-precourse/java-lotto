@@ -34,15 +34,15 @@ public class PrintView {
         for (Rank rank : Rank.values()) {
             if (rank.equals(Rank.LOSING_TICKET))
                 continue;
-            if(rank.equals(Rank.BONUS)){
-                str += String.format( "\n%d개 일치, 보너스 볼 일치 (%s원) - %d개" ,
+            if (rank.equals(Rank.BONUS)) {
+                str += String.format("\n%d개 일치, 보너스 볼 일치 (%s원) - %d개",
                         rank.getCount(),
                         getPrizeMoney(rank),
                         getWinningCount(lottoResult.get(rank)));
                 continue;
             }
 
-            str += String.format( "\n%d개 일치 (%s원) - %d개" ,
+            str += String.format("\n%d개 일치 (%s원) - %d개",
                     rank.getCount(),
                     getPrizeMoney(rank),
                     getWinningCount(lottoResult.get(rank)));
@@ -51,16 +51,17 @@ public class PrintView {
     }
 
     public static void printYieldMessage(double yield) {
-        String str = "총 수익률은 " + yield +"%입니다.";
+        String str = "총 수익률은 " + yield + "%입니다.";
         System.out.println(str);
     }
 
-    public static String getPrizeMoney(Rank rank){
+    public static String getPrizeMoney(Rank rank) {
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         return decimalFormat.format(rank.getPrizeMoney());
     }
-    public static Integer getWinningCount(Integer count){
-        if(count==null){
+
+    public static Integer getWinningCount(Integer count) {
+        if (count == null) {
             return 0;
         }
         return count;

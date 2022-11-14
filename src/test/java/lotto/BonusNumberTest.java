@@ -20,6 +20,7 @@ public class BonusNumberTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
     @Test
     void 보너스번호_범위_예외테스트() {
         assertSimpleTest(() -> {
@@ -27,6 +28,7 @@ public class BonusNumberTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
     @Test
     void 보너스번호_당첨번호와_중복_예외테스트() {
         assertSimpleTest(() -> {
@@ -34,10 +36,12 @@ public class BonusNumberTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
     @Test
     void 보너스번호_입력_성공_테스트() {
 
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
