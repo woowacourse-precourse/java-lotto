@@ -9,11 +9,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UI {
-    public static List<Lotto> getUserNumbers() {
+    public static User getUser() {
         System.out.println(MESSAGE_INIT_LOTTO);
         String money = Console.readLine();
         User user = new User(money);
-        return user.getUserLotto();
+        printUserLotto(user.userLotto);
+        return new User(money);
     }
 
     public static void printUserLotto(List<Lotto> userNumbers) {

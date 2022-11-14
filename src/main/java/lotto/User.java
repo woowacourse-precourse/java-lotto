@@ -10,11 +10,13 @@ public class User {
 
     private final String inputMoney;
     static int money;
+    public List<Lotto> userLotto;
 
     public User(String inputMoney) {
         this.inputMoney = inputMoney;
         setMoneyNumber();
         validateMoney();
+        userLotto = getUserLotto();
     }
 
     private void setMoneyNumber() {
@@ -33,13 +35,13 @@ public class User {
 
     public List<Lotto> getUserLotto() {
         int numOfLotto = money / 1000;
-        List<Lotto> userLotto = new ArrayList<>();
+        List<Lotto> lotto = new ArrayList<>();
 
         for (int i = 0; i < numOfLotto; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto tempLotto = new Lotto(numbers);
-            userLotto.add(tempLotto);
+            lotto.add(tempLotto);
         }
-        return userLotto;
+        return lotto;
     }
 }
