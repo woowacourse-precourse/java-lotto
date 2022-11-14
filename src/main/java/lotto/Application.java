@@ -30,6 +30,10 @@ public class Application {
         }
     }
 
+    public static Integer getNumberOfLotto(int money) {
+        return money / lottoPrice;
+    }
+    
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
