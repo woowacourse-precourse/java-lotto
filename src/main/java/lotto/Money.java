@@ -2,8 +2,6 @@ package lotto;
 
 public class Money {
 
-    private static final int LOTTO_PRICE = 1000;
-
     private final long money;
 
     public Money(long money) {
@@ -24,7 +22,7 @@ public class Money {
     }
 
     private void validateMultipleOfLottoPrice() {
-        if (money % LOTTO_PRICE != 0) {
+        if (money % Lotto.PRICE != 0) {
             System.out.println("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");
             throw new IllegalArgumentException();
         }
