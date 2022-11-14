@@ -1,5 +1,6 @@
 package lotto.domain.lotto;
 
+import static lotto.domain.lotto.PurchaseLotto.makeRandomLotto;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
@@ -14,13 +15,13 @@ class PurchaseLottoTest {
 
     @BeforeEach
     void setUp() {
-        purchaseLotto = new PurchaseLotto(List.of(1, 2, 3, 4, 5, 6, 7));
+        purchaseLotto = new PurchaseLotto(List.of(1, 2, 3, 4, 5, 6), 7);
     }
 
     @Test
     void 중복_검사() {
         for (int i = 0; i < 1000; ++i) {
-            new PurchaseLotto();
+            makeRandomLotto();
         }
     }
 

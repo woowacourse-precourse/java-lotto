@@ -6,12 +6,17 @@ import lotto.domain.place.PlaceCondition;
 
 public class WinningLotto extends LottoWithBonusNum {
 
-    public WinningLotto(List<Integer> lottoNumbers) {
-        super(lottoNumbers);
+
+    public WinningLotto(List<Integer> lottoNumbers, int bonusNumber) {
+        super(lottoNumbers, bonusNumber);
     }
 
-    public MatchResult makeMatchResult(PurchaseLotto purchaseLotto) {
+    public static WinningLotto makeWinningLotto(List<Integer> lottoNumbers, int bonusNumber) {
+        return new WinningLotto(lottoNumbers, bonusNumber);
+    }
 
+
+    public MatchResult makeMatchResult(PurchaseLotto purchaseLotto) {
         return MatchResult.findByCondition(makeCondition(purchaseLotto));
     }
 
