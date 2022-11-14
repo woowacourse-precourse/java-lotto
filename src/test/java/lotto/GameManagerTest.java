@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 
+import lotto.domain.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,17 +13,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class GameManagerTest extends NsTest {
 
-//    @DisplayName("로또를 사기로한 값으로 몇개를 살 수 있는지 확인하는 테스트")
-//    @Test
-//    void changeNumberOfPurchase() {
-//        GameManager gameManager = new GameManager();
-//        int question = 15000;
-//
-//        int result = 15;
-//
-//        Assertions.assertThat(gameManager.changeNumberOfLottoToBuy(question))
-//                .isEqualTo(result);
-//    }
+    @DisplayName("로또를 사기로한 값으로 몇개를 살 수 있는지 확인하는 테스트")
+    @Test
+    void changeNumberOfPurchase() {
+        Money money = new Money("15000");
+
+        int result = 15;
+
+        assertThat(money.getNumberOfPurchase()).isEqualTo(result);
+    }
 
     @DisplayName("로또에 대한 당첨금액을 제대로 계산할 수 있어야한다.")
     @Test
