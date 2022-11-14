@@ -2,19 +2,22 @@ package lotto.domain.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CreateLotto {
-    private final List<Integer> lotto;
+    private List<Integer> lotto;
 
     public CreateLotto(){
-        lotto = generateLotto();
+        List<Integer> temLotto = generateLotto();
+        lotto = new ArrayList<>(temLotto);
         sortNatural();
     }
 
     public List<Integer> generateLotto(){
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
     }
 
     public void sortNatural(){
