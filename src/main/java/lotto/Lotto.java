@@ -1,8 +1,6 @@
 package lotto;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -77,28 +75,42 @@ public class Lotto {
     }
 }
 
+enum LottoRanking {
+    FIRST(6,false,2000000000),
+    SECOND(5,true,30000000),
+    THIRD(5,false,1500000),
+    FOURTH(4,false,50000),
+    FIFTH(3,false,5000),
+    NONE(0,false,0);
+    private final int matchCount;
+    private final boolean bonusFlag;
+    private final int prize;
+    LottoRanking(int matchCount, boolean bonusFlag, int prize) {
+        this.matchCount = matchCount;
+        this.bonusFlag = bonusFlag;
+        this.prize = prize; }
+    public int getPrize() { return prize; }
 
-
+    public static LottoRanking askRangking(int matchCount, boolean isMatchBonusNumber) {
+        for(LottoRanking ranking : LottoRanking.values()) {
+            if (ranking.matchCount == matchCount &&
+                    (ranking.bonusFlag && isMatchBonusNumber) == ranking.bonusFlag) {
+                return ranking;
+            }
+        }
+        return LottoRanking.NONE;
+    }
+}
 
 class LottoSystem {
-    enum PrizeMoney {
-        WIN(2000000000),
-        SECOND(30000000),
-        THIRD(1500000),
-        FOURTH(50000),
-        FIFTH(5000);
-        private final int prize;
-        PrizeMoney(int prize) { this.prize = prize; }
-        public int getValue() { return prize; }
-
-    }
-
     private static List<Lotto> purchasedLottos;
-    private static int[] winningCounts = new int[5];
+    private static HashMap<LottoRanking,Integer> winningCounts;
 
     public static void proceedSystem() {
+        initSystem();
         PrintedGuidance.requestPayment();
-        purchaseLotto(UserInput.requestPayment());
+        int purchasePayment = UserInput.requestPayment();
+        purchaseLotto(purchasePayment);
 
         PrintedGuidance.requestWinningNumber();
         Lotto winningNumber = new Lotto(UserInput.requestWinningLottoNumber());
@@ -106,13 +118,21 @@ class LottoSystem {
         int bonusNumber = UserInput.requestBonusNumber();
 
         checkWinningStatus(winningNumber,bonusNumber);
+        printResult(purchasePayment);
+    }
 
+    public static void initSystem() {
+        purchasedLottos = new ArrayList<>();
+        winningCounts = new HashMap<>();
+
+        for (LottoRanking ranking :LottoRanking.values()) {
+            winningCounts.put(ranking,0);
+        }
     }
 
     public static void purchaseLotto(int paymentMoney) {
         validatePayment(paymentMoney);
 
-        purchasedLottos = new ArrayList<>();
         int purchasedLottoCount = paymentMoney/1000;
         PrintedGuidance.guideLottoPurchaseCount(purchasedLottoCount);
         for (int i = 0; i < purchasedLottoCount; i++) {
@@ -127,19 +147,35 @@ class LottoSystem {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
-    public static void checkWinningStatus(Lotto winningNumber, int bonusNumber) {
+    private static void checkWinningStatus(Lotto winningNumber, int bonusNumber) {
         validateBonusNumber(winningNumber,bonusNumber);
 
         for (Lotto lotto : purchasedLottos) {
-            winningCounts[lotto.checkWinning(winningNumber)]++;
-
+            LottoRanking ranking = LottoRanking.askRangking(lotto.checkWinning(winningNumber),
+                    lotto.checkForBonusNumber(bonusNumber));
+            winningCounts.put(ranking,winningCounts.get(ranking) + 1);
         }
-
-
-
-
-
     }
+
+    private static void printResult(int purchasePayment) {
+
+        int totalPrize = 0;
+        float winningRate = 0f;
+
+        for (Map.Entry<LottoRanking, Integer> entry : winningCounts.entrySet()) {
+            totalPrize += (entry.getKey().getPrize() * entry.getValue());
+        }
+        winningRate = (float)(totalPrize/purchasePayment);
+
+        PrintedGuidance.printResult(winningCounts.get(LottoRanking.FIRST),
+                winningCounts.get(LottoRanking.SECOND),
+                winningCounts.get(LottoRanking.THIRD),
+                winningCounts.get(LottoRanking.FOURTH),
+                winningCounts.get(LottoRanking.FIFTH),
+                Math.round(winningRate*10)/10);
+    }
+
+
 
     private static void validatePayment(int paymentMoney) {
         if (paymentMoney % 1000 != 0) {
@@ -218,12 +254,12 @@ class PrintedGuidance {
         System.out.println(count + GUIDE_LOTTO_COUNT);
     }
 
-    public static void printResult(int three, int four, int five, int five_b, int six, int totalRate) {
-        System.out.println("3개 일치 (5,000원) - " + three + "개");
-        System.out.println("4개 일치 (50,000원) - " + four + "개");
-        System.out.println("5개 일치 (150,000원) - " + five + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + five_b + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + six + "개");
+    public static void printResult(int first, int second, int third, int fourth, int fifth, int totalRate) {
+        System.out.println("3개 일치 (5,000원) - " + fifth + "개");
+        System.out.println("4개 일치 (50,000원) - " + fourth + "개");
+        System.out.println("5개 일치 (150,000원) - " + third + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + second + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + first + "개");
         System.out.println("총 수익률은 " + totalRate + "%입니다.");
     }
 }
