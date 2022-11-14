@@ -2,6 +2,7 @@ package lotto.domain.view;
 
 import lotto.domain.lotto.domain.Lotto;
 import lotto.domain.lotto.domain.type.OutputResult;
+import lotto.global.constant.OutputViewConstants;
 import lotto.global.util.Util;
 
 import java.text.DecimalFormat;
@@ -11,8 +12,6 @@ import static lotto.global.constant.OutputViewConstants.*;
 
 
 public class OutputView {
-    private static int BONUS = 0;
-    private static String MATCH_COUNT = "일치하는 볼 개수 %d개, 보너스 볼 개수 %d개";
 
     public static void printCountByBuyLotto(int lottoCount) {
         System.out.printf((BUY_LOTTO) + "%n", lottoCount);
@@ -43,20 +42,36 @@ public class OutputView {
         for (int i = 3; i < 8; i++) {
             isI6SaveBonus1OrElseSaveBonus0(i);
             Map<String, String> messageInfo = createMessage(i);
-
-            String message = messageInfo.get("message");
-            String benefit = Util.decimalFormatting(Long.parseLong(messageInfo.get("benefit")));
-            int bonus = Integer.parseInt(messageInfo.get("bonus"));
-
+            String message = getMessage(messageInfo);
+            String benefit = getBenefit(messageInfo);
+            int bonus = getBonus(messageInfo);
             int proxy = getProxyNumber(i);
-            Integer count = result.get(String.format(MATCH_COUNT, proxy, bonus));
-            if (count != null) {
-                totalBenefit += isValuePresentPlusTotal(proxy, bonus, result.get(String.format(MATCH_COUNT, proxy, bonus)), messageInfo);
-            }
 
+            totalBenefit += treatBenefit(messageInfo, result, proxy, bonus, totalBenefit);
             System.out.println(returnResultValue(message, benefit, proxy, bonus, result));
         }
         return totalBenefit;
+    }
+
+    private static String getMessage(Map<String, String> messageInfo) {
+        return messageInfo.get(OutputViewConstants.message);
+    }
+
+    private static String getBenefit(Map<String, String> messageInfo) {
+        return Util.decimalFormatting(Long.parseLong(messageInfo.get(OutputViewConstants.benefit)));
+    }
+
+    private static int getBonus(Map<String, String> messageInfo) {
+        return Integer.parseInt(messageInfo.get(OutputViewConstants.bonus));
+    }
+
+    private static double treatBenefit(Map<String, String> messageInfo, Map<String, Integer> result, int proxy, int bonus, double totalBenefit) {
+        Integer count = result.get(String.format(MATCH_COUNT, proxy, bonus));
+        if (count != null) {
+            totalBenefit += isValuePresentPlusTotal(result.get(String.format(MATCH_COUNT, proxy, bonus)), messageInfo);
+            return totalBenefit;
+        }
+        return 0;
     }
 
     private static String returnResultValue(String message, String benefit, int proxy, int bonus, Map<String, Integer> result) {
@@ -70,10 +85,10 @@ public class OutputView {
         return printResult;
     }
 
-    private static double isValuePresentPlusTotal(int proxy, int bonus, int count, Map<String, String> messageInfo) {
+    private static double isValuePresentPlusTotal(int count, Map<String, String> messageInfo) {
         double plusTotalValue = 0;
         for (int i = 0; i < count; i++) {
-            plusTotalValue += Double.parseDouble(messageInfo.get("benefit"));
+            plusTotalValue += Double.parseDouble(messageInfo.get(benefit));
         }
 
         return plusTotalValue;
@@ -102,7 +117,7 @@ public class OutputView {
     }
 
     public static void printGrossEarnings(double grossEarnings) {
-        DecimalFormat decimalFormat = new DecimalFormat("###,##0.0");
+        DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_FORMATTER);
         System.out.println("총 수익률은 " + decimalFormat.format(grossEarnings) + "%입니다.");
     }
 }

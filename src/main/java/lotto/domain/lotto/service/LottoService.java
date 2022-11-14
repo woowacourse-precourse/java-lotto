@@ -80,7 +80,6 @@ public class LottoService {
         result.putIfAbsent(key, 1);
     }
 
-    // 수익률 = 수익 / 로또 산 돈 * 100
     public Double getGrossEarnings(double benefit, double investmentAmount) {
         return benefit / investmentAmount * 100;
     }

@@ -3,7 +3,6 @@ package lotto.domain.user.domain;
 import lotto.domain.lotto.domain.Lotto;
 import lotto.domain.lotto.verifier.InputMoneyVerifier;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
