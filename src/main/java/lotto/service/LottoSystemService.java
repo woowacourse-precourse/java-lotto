@@ -52,12 +52,17 @@ public class LottoSystemService {
 
     public void setAnswerLottoNumbers() {
         String inputNumbers = Console.readLine();
-
+        String number = "";
         for (int i = 0; i < inputNumbers.length(); i++) {
-            if (i % 2 == 0) {
-                numbers.add((int) inputNumbers.charAt(i));
+
+            if (inputNumbers.charAt(i) == ',') {
+                numbers.add(Integer.parseInt(number));
+                number = "";
+                continue;
             }
+            number += inputNumbers.charAt(i);
         }
+        numbers.add(Integer.parseInt(number));
     }
 
     public void setBonusLottoNumbers() {
