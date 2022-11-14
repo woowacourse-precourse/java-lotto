@@ -1,18 +1,19 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        LottoManager lottoManager = new LottoManager();
-        Lotto lotto = lottoManager.issue();
+        InputManager inputManager = new InputManager();
         UI ui = new UI();
-        ui.printLotto(lotto);
+        ui.printInputMoneyMessage();
+        int money = inputManager.inputCustomerMoney();
+        System.out.println(money);
     }
 
-    public int inputCustomerMoney() {
-        return 0;
-    }
+
 
     public List<Integer> inputWinningNumber() {
         return null;
