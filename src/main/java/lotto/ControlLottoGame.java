@@ -1,17 +1,9 @@
 package lotto;
 
-import lotto.GenerateLotto;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ControlLottoGame {
-    private final int THREE_CORRECT = 5000;
-    private final int FOUR_CORRECT = 50000;
-    private final int FIVE_CORRECT = 1500000;
-    private final int FIVE_BONUS_CORRECT = 30000000;
-    private final int SIX_CORRECT = 2000000000;
 
     ControlLottoGame() {
     }
@@ -27,8 +19,8 @@ public class ControlLottoGame {
         List<Integer> winningNumbers = new ArrayList<>();
         String[] inputNumbers = input.split(",");
 
-        for (int i = 0; i < inputNumbers.length; i++) {
-            String noSpace = inputNumbers[i].trim();
+        for (String inputNumber : inputNumbers) {
+            String noSpace = inputNumber.trim();
             winningNumbers.add(Integer.parseInt(noSpace));
         }
 
@@ -54,14 +46,32 @@ public class ControlLottoGame {
         int earnedPrice = 0;
         String earnedRate;
 
-        earnedPrice += winningCount.get(0) * THREE_CORRECT;
-        earnedPrice += winningCount.get(1) * FOUR_CORRECT;
-        earnedPrice += winningCount.get(2) * FIVE_CORRECT;
-        earnedPrice += winningCount.get(3) * SIX_CORRECT;
-        earnedPrice += winningCount.get(4) * FIVE_BONUS_CORRECT;
+        earnedPrice += winningCount.get(0) * CorrectValue.THREE_CORRECT.get();
+        earnedPrice += winningCount.get(1) * CorrectValue.FOUR_CORRECT.get();
+        earnedPrice += winningCount.get(2) * CorrectValue.FIVE_CORRECT.get();
+        earnedPrice += winningCount.get(3) * CorrectValue.SIX_CORRECT.get();
+        earnedPrice += winningCount.get(4) * CorrectValue.FIVE_BONUS_CORRECT.get();
         double rate = (double) earnedPrice / payedPrice;
         earnedRate = String.format("%.1f", rate * 100);
 
         return Float.parseFloat(earnedRate);
+    }
+}
+
+enum CorrectValue {
+    THREE_CORRECT(5000),
+    FOUR_CORRECT(50000),
+    FIVE_CORRECT(1500000),
+    FIVE_BONUS_CORRECT(30000000),
+    SIX_CORRECT(2000000000);
+
+    private final int value;
+
+    CorrectValue(int value) {
+        this.value = value;
+    }
+
+    public int get(){
+        return value;
     }
 }
