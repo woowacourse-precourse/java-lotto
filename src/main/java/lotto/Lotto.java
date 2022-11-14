@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -53,4 +54,23 @@ public class Lotto {
     public void printLotto() {
         System.out.println(numbers);
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public Winning checkLotto(Lotto lotto, int bonus) {
+        int count = 0;
+        List<Integer> lottoNumber = lotto.getNumbers();
+        boolean isBonus = lottoNumber.contains(bonus);
+
+        for (Integer number : lottoNumber) {
+            if (numbers.contains(number)) {
+                count++;
+            }
+        }
+
+        return calculatePrize(count, isBonus);
+    }
+
 }
