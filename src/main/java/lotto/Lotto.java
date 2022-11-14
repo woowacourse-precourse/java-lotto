@@ -18,6 +18,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getLottoNumbers(){
+        return numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(NOT_NUMBER_SIZE);
@@ -35,4 +39,9 @@ public class Lotto {
         }
     }
 
+    public static void validateBonusNumber(List<Integer> numbers, int bonusNumber){
+        if(numbers.contains(bonusNumber)){
+            throw new IllegalArgumentException(NOT_NUMBER_OVERLAP);
+        }
+    }
 }
