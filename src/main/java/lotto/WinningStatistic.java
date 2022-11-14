@@ -23,6 +23,8 @@ public class WinningStatistic {
                 .mapToLong(win -> win.getWinnings() * winningResult.get(win))
                 .sum();
 
-        return (double) sumOfWinnings / purchaseAmount.getPurchaseAmount() * LottoConstants.PERCENTAGE_UNIT;
+        double profitRate = (double) sumOfWinnings / purchaseAmount.getPurchaseAmount();
+
+        return profitRate * LottoConstants.PERCENTAGE_UNIT;
     }
 }

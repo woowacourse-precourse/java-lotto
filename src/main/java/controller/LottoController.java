@@ -13,14 +13,9 @@ import java.util.List;
 public class LottoController {
 
     private PurchaseAmount getLottoPurchaseAmountFromUser() {
-        try {
-            String userInput = InputUtils.getMoneyFromUser();
+        String userInput = InputUtils.getMoneyFromUser();
 
-            return new PurchaseAmount(userInput);
-        } catch (IllegalArgumentException e) {
-            OutputUtils.printException(e);
-            return getLottoPurchaseAmountFromUser();
-        }
+        return new PurchaseAmount(userInput);
     }
 
     private Lottos createLottos(PurchaseAmount purchaseAmount) {
@@ -61,15 +56,11 @@ public class LottoController {
 
         Lottos lottos = createLottos(purchaseAmount);
 
-        try {
-            WinNumber winNumber = getWinNumbersFromUser();
-            BonusNumber bonusNumber = getBonusNumberFromUser(winNumber.getWinNumber());
+        WinNumber winNumber = getWinNumbersFromUser();
+        BonusNumber bonusNumber = getBonusNumberFromUser(winNumber.getWinNumber());
 
-            WinningStatistic winningStat = calculateWinningRate(lottos, winNumber, bonusNumber);
+        WinningStatistic winningStat = calculateWinningRate(lottos, winNumber, bonusNumber);
 
-            printResult(winningStat, winningStat.calculateProfitRate(purchaseAmount));
-        } catch (IllegalArgumentException e) {
-            OutputUtils.printException(e);
-        }
+        printResult(winningStat, winningStat.calculateProfitRate(purchaseAmount));
     }
 }

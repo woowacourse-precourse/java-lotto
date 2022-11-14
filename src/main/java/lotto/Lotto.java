@@ -18,11 +18,11 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoConstants.LOTTO_NUM) {
             throw new IllegalArgumentException(UIConstants.INVALID_LOTTO_COUNT_NUMBERS);
         }
         Set<Integer> noDuplicatedNumbers = numbers.stream().collect(Collectors.toSet());
-        if (noDuplicatedNumbers.size() != 6) {
+        if (noDuplicatedNumbers.size() != LottoConstants.LOTTO_NUM) {
             throw new IllegalArgumentException(UIConstants.DUPLICATED_LOTTO_NUMBERS);
         }
         for (int number : noDuplicatedNumbers) {
@@ -44,7 +44,7 @@ public class Lotto {
         }
 
         boolean isBonusMatched = false;
-        if (matchingCount == 5) {
+        if (matchingCount == LottoConstants.BONUS_MATCH_LOTTO_NUM) {
             isBonusMatched = numbers.contains(bonusNumber.getBonusNumber());
         }
 
