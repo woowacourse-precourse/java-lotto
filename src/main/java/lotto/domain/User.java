@@ -18,6 +18,9 @@ public class User {
     static final String NOT_NUMBER_ERROR_IN_WINNING_NUMBER_MSG = "[ERROR] 콤마를 기준으로 숫자만 입력해주세요!";
     static final String DUPLICATE_NUMBER_ERROR_MSG = "[ERROR] 중복된 숫자를 입력했습니다!";
     static final String RANGE_ERROR_MSG = "[ERROR] 1~45범위로 숫자를 입력해주세요!";
+    static final char CHAR_COMMA = ',';
+    static final String STRING_COMMA = ",";
+    static final int NUMBER_OF_COMMA = 5;
     static final int LOTTO_CHARGE = 1000;
 
     private int money;
@@ -62,7 +65,7 @@ public class User {
     public List<Integer> convertToList(String winningNumbers){
         List<Integer> convertWinningNumbers = new ArrayList<>();
 
-        String [] numbers = winningNumbers.split(",");
+        String [] numbers = winningNumbers.split(STRING_COMMA);
 
         for(String number : numbers){
             convertWinningNumbers.add(Integer.parseInt(number));
@@ -87,11 +90,11 @@ public class User {
     }
 
     public void validateWinningNumbers(String winningNumbers){
-        if(winningNumbers.chars().filter(c -> c == ',').count() != 5){
+        if(winningNumbers.chars().filter(c -> c == CHAR_COMMA).count() != NUMBER_OF_COMMA){
             throw new IllegalArgumentException(CIPHER_ERROR_MSG);
         }
 
-        String [] numbers = winningNumbers.split(",");
+        String [] numbers = winningNumbers.split(STRING_COMMA);
         List<String> duplicateCheck = new ArrayList<>();
 
         for(String number : numbers){
