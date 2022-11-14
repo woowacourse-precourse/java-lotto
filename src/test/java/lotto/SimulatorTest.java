@@ -106,6 +106,17 @@ public class SimulatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 당첨 번호에 이미 속해있을 경우 예외가 발생한다.")
+    @Test
+    void setDuplicateBonusNumber() {
+        Simulator simulator = new Simulator(1000);
+        assertThatThrownBy(
+                () -> simulator.setWinning(
+                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                        3))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("1등부터 5등까지 5개 로또 결과 합산하기.")
     @Test
     void firstToFifthGeneratedLottoTest() {
