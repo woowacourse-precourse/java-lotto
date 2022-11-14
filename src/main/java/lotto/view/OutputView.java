@@ -10,6 +10,7 @@ public class OutputView {
     private static final String REQUEST_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
     private static final String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     private static final String WINNING_STATISTICS = "당첨 통계";
+    private static final String DIVIDING_LINE = "---";
     private static final String FIFTH_RANK = "3개 일치 (5,000원) - %d개\n";
     private static final String FOURTH_RANK = "4개 일치 (50,000원) - %d개\n";
     private static final String THIRD_RANK = "5개 일치 (1,500,000원) - %d개\n";
@@ -32,6 +33,7 @@ public class OutputView {
     }
 
     public static void printRequestBonusNumber() {
+        System.out.println();
         System.out.println(REQUEST_BONUS_NUMBER);
     }
 
@@ -39,7 +41,9 @@ public class OutputView {
         Map<Rank, Integer> rankAndRankCount = winningStatisticsDto.getRankAndRankCount();
         double totalYield = winningStatisticsDto.getTotalYield();
 
+        System.out.println();
         System.out.println(WINNING_STATISTICS);
+        System.out.println(DIVIDING_LINE);
         System.out.printf(FIFTH_RANK, rankAndRankCount.get(Rank.FIFTH));
         System.out.printf(FOURTH_RANK, rankAndRankCount.get(Rank.FOURTH));
         System.out.printf(THIRD_RANK, rankAndRankCount.get(Rank.THIRD));

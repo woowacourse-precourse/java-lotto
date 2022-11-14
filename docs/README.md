@@ -25,25 +25,54 @@
 
 ## 프로그래밍 요구사항
 
-- [ ] 들여쓰기의 깊이는 최대 2
-- [ ] 3항 연산자 사용하지 않기
-- [ ] 함수가 한 가지 일만 하도록 최대한 작게 구현하기
-- [ ] 함수의 길이가 15라인이 넘어가지 않도록 구현하기
-- [ ] else 예약어 사용하지 않기
-- [ ] Enum 활용하기
-- [ ] 도메인 로직에 단위 테스트 구현하기
-- [ ] `camp.nextstep.edu.missionutils` API 활용하기
-    - [ ] `Randoms.pickUniqueNumbersInRange()`로 랜덤값 추출하기
-    - [ ] `Console.readLine()`로 사용자 입력받기
+- [x] 들여쓰기의 깊이는 최대 2
+- [x] 3항 연산자 사용하지 않기
+- [x] 함수가 한 가지 일만 하도록 최대한 작게 구현하기
+- [x] 함수의 길이가 15라인이 넘어가지 않도록 구현하기
+- [x] else 예약어 사용하지 않기
+- [x] Enum 활용하기
+- [x] 도메인 로직에 단위 테스트 구현하기
+- [x] `camp.nextstep.edu.missionutils` API 활용하기
+    - [x] `Randoms.pickUniqueNumbersInRange()`로 랜덤값 추출하기
+    - [x] `Console.readLine()`로 사용자 입력받기
 
 ## Lotto 클래스 요구사항
 
-- [ ] 매개변수가 없는 생성자 추가하지 않기
-- [ ] numbers의 접근제어자인 private을 변경하지 않기
-- [ ] 인스턴스 변수를 추가하지 않기
-- [ ] 패키지 변겨
+- [x] 매개변수가 없는 생성자 추가하지 않기
+- [x] numbers의 접근제어자인 private을 변경하지 않기
+- [x] 인스턴스 변수를 추가하지 않기
+- [x] 패키지 변경 가능
 
 ## 과제 제출 전 체크 리스트
 
-- [ ] 모든 테스트가 성공하는지 확인
-- [ ] 자바 버전이 11인지 확인
+- [x] 모든 테스트가 성공하는지 확인
+- [x] 자바 버전이 11인지 확인
+
+## 패키지 구조
+
+```bash
+├── controller                   
+│   └──LottoController            // 뷰에서 받은 데이터를 모델에 전달, 모델에서 받은 데이터를 뷰에 전달
+├── model                         
+│   ├── domain                    
+│   │   ├── BonusNumber           // 당첨 로또의 보너스 번호
+│   │   ├── Lotto                 // 구매한 로또
+│   │   ├── Lottos                // 구매한 로또 모음
+│   │   ├── PayingMoney           // 로또에 지불한 돈
+│   │   ├── Rank                  // 당첨 등수(enum)
+│   │   ├── RankCreator           // 당첨 등수
+│   │   ├── WinningLotto          // 당첨 로또
+│   │   └── Winningstatistics     // 당첨 통계
+│   ├── dto                     
+│   │   ├── LottosDto
+│   │   ├── WinningLottoDto
+│   │   └── WinningstatisticsDto
+│   ├── service                   
+│       └── LottoService          // 로또 사기, 당첨로또 발표하기, 당첨통계 계산하기
+├── utils                         
+│   └── Utils                     // 유틸리티 클래스
+├── view                          
+│   ├── InputView                 // 사용자 입력받기
+│   └── OutputView                // 문자열 출력하기
+└─ Application                    // 메인 메소드를 가지고 있는 엔트리 포인트
+``` 
