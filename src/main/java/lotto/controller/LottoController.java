@@ -42,6 +42,9 @@ public class LottoController implements Controller {
                 .map(String::trim)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public void inputBonusNumber(String input) {
 
     }
 }
