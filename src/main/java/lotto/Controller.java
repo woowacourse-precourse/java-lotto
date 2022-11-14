@@ -36,7 +36,7 @@ public class Controller {
         winningNumber = InputView.winningNumberInputMessage();
         winningNumbers = Winning.makeWinningNumberList(winningNumber);
         bonusNumber = InputView.bonusNumberInputMessage();
-        Winning.prize(lottoTickets, winningNumbers, bonusNumber);
+        Winning.prize(lottoTickets, winningNumbers, bonusNumber, amount);
     }
 
     private void isValidatePurchase(String userInput) {

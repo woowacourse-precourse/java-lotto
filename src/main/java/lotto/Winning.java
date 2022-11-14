@@ -31,7 +31,7 @@ public class Winning {
         return winningNumbers;
     }
 
-    public static void prize(List<Lotto> lottoTickets, List<Integer> winningNumber, String bonusNumber) {
+    public static void prize(List<Lotto> lottoTickets, List<Integer> winningNumber, String bonusNumber, String amount) {
         validateBonusNumber(winningNumber, bonusNumber);
         List<Integer> matchList = new ArrayList<>();
         int[] prizeList = new int[5];
@@ -40,29 +40,39 @@ public class Winning {
         savePrize(matchList, prizeList);
 
         OutputView.printPrize(prizeList);
+
+        calculatePrize(amount, prizeList);
+    }
+
+    private static double calculatePrize(String amount, int[] prizeList) {
+        int sum = 0;
+        int existCost = Integer.parseInt(amount);
+        double result = 0;
+
+        sum += prizeList[0] * 5000;
+        sum += prizeList[1] * 50000;
+        sum += prizeList[2] * 1500000;
+        sum += prizeList[3] * 30000000;
+        sum += prizeList[4] * 200000000;
+
+        result = (double) ((sum - existCost) / existCost) * 100;
+
+        return result;
     }
 
     private static void savePrize(List<Integer> matchList, int[] prizeList) {
         for (int count : matchList) {
-            if (count == 3) {
-                prizeList[0] += 1;
-            }
+            prizeRank(count, 3, prizeList, 0);
+            prizeRank(count, 4, prizeList, 1);
+            prizeRank(count, 5, prizeList, 2);
+            prizeRank(count, 10, prizeList, 3);
+            prizeRank(count, 6, prizeList, 4);
+        }
+    }
 
-            if (count == 4) {
-                prizeList[1] += 1;
-            }
-
-            if(count == 5) {
-                prizeList[2] += 1;
-            }
-
-            if(count == 10) {
-                prizeList[3] += 1;
-            }
-
-            if(count == 6) {
-                prizeList[4] += 1;
-            }
+    private static void prizeRank(int count, int x, int[] prizeList, int index) {
+        if (count == x) {
+            prizeList[index] += 1;
         }
     }
 
