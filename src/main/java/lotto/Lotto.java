@@ -26,10 +26,15 @@ public class Lotto {
         }
     }
 
-    public void validatePayment(int payment) {
-        if (payment % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위로 입력할 수 있습니다.");
+    public void validatePayment(String payment) {
+        if (!payment.matches("^[0-9]*$")) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
+
+        if (Integer.parseInt(payment) % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 떨어지는 숫자를 입력해주세요.");
+        }
+
     }
 
     private void checkNumberRange(int n) {
