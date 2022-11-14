@@ -68,6 +68,13 @@ public class LottoProgram {
 		exception.lottoOverLap(lotto.getLotto(), bonusNum);
 	}
 
+	public boolean checkBonus(List<Integer> list) {
+		if (list.contains(bonusNum)) {
+			return true;
+		}
+		return false;
+	}
+
 	public int checkWinNum(List<Integer> oneLotto, List<Integer> winLotto) {
 		for (int i = 0; i < oneLotto.size(); i++) {
 			if (oneLotto.contains(winLotto.get(i))) {
