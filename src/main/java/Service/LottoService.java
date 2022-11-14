@@ -24,7 +24,7 @@ public class LottoService {
         getAllLotto(ticketNum);
     }
 
-    private int getUserMoney() throws IllegalArgumentException{
+    public int getUserMoney() throws IllegalArgumentException{
         RequestUser.requestMoney();
         String userInput = Console.readLine();
         return userMoneyValidate.validateGetMoney(userInput);

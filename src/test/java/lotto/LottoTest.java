@@ -1,10 +1,13 @@
 package lotto;
 
 import Service.LottoService;
+import domain.Ticket;
+import domain.UserMoneyValidate;
 import exception.LottoExceptionType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.RandomNumberLottoGenerator;
+import camp.nextstep.edu.missionutils.Console;
 import view.SystemMessage;
 
 import java.util.List;
