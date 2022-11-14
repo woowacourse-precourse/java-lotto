@@ -64,4 +64,13 @@ class LottoTest {
         assertThatThrownBy(() -> lottoLogic.setBonusNumber("1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("숫자가 아닌 보너스 번호를 입력할 경우 예외가 발생한다.")
+    @Test
+    void inputBonusNumbersContainChar() {
+        LottoLogic lottoLogic = new LottoLogic("1000");
+        lottoLogic.setPrizeNumbers(List.of("1","2","3","4","5","6"));
+        assertThatThrownBy(() -> lottoLogic.setBonusNumber("k"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
