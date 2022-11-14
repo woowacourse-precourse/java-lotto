@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
-import lotto.Lotto.LottoReward;
+import lotto.LottoEnum.LottoReward;
 
 public class Controller {
     /**
