@@ -13,13 +13,9 @@ public class Player {
     List<Lotto> lottoNumbers = new ArrayList<>();
 
     public Player() {
-        try {
-            inputCostForLotto();
-            buyLotto();
-            printLottoNumber();
-        } catch (IllegalArgumentException e) {
-
-        }
+        inputCostForLotto();
+        buyLotto();
+        printLottoNumber();
     }
 
     private void inputCostForLotto() {

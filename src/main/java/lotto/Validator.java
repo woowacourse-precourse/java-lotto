@@ -46,7 +46,6 @@ public class Validator {
     }
 
     public static void throwIllegalArgumentException(String message) {
-        System.out.println(message);
         throw new IllegalArgumentException(message);
     }
 

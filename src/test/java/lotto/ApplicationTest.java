@@ -10,7 +10,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueN
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static lotto.constant.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -126,6 +125,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 2, 3, 4, 5, 6)
         );
     }
+
     @DisplayName("1등 1개, 2등 1개, 3등 2개 그리고 주어진 배열 순서가 정렬되어 있지 않은 경우")
     @Test
     void 기능_테스트4() {
@@ -164,115 +164,50 @@ class ApplicationTest extends NsTest {
     @DisplayName("예외테스트 - 보너스 번호가 당첨번호와 중복될 때")
     @Test
     void 예외_테스트2() {
-        assertRandomUniqueNumbersInRangeTest(() ->
-                        assertThatThrownBy(() ->
-                                run("8000", "1,2,3,4,5,6", "6"))
-                                .isInstanceOf(IllegalArgumentException.class)
-                                .hasMessageContaining(DUPLICATED_NUMBER_ERROR_MESSAGE),
-                List.of(8, 21, 23, 41, 42, 43),
-                List.of(3, 5, 11, 16, 32, 38),
-                List.of(7, 11, 16, 35, 36, 44),
-                List.of(1, 8, 11, 31, 41, 42),
-                List.of(13, 14, 16, 38, 42, 45),
-                List.of(7, 11, 30, 40, 42, 43),
-                List.of(2, 13, 22, 32, 38, 45),
-                List.of(1, 3, 5, 14, 22, 45)
-        );
-    }
-
-    @DisplayName("예외테스트 - 당첨번호에 중복된 번호가 있을 때")
-    @Test
-    void 예외_테스트3() {
-        assertRandomUniqueNumbersInRangeTest(() ->
-                        assertThatThrownBy(() ->
-                                run("8000", "1,2,3,4,6,6"))
-                                .isInstanceOf(IllegalArgumentException.class)
-                                .hasMessageContaining(DUPLICATED_NUMBER_ERROR_MESSAGE),
-                List.of(8, 21, 23, 41, 42, 43),
-                List.of(3, 5, 11, 16, 32, 38),
-                List.of(7, 11, 16, 35, 36, 44),
-                List.of(1, 8, 11, 31, 41, 42),
-                List.of(13, 14, 16, 38, 42, 45),
-                List.of(7, 11, 30, 40, 42, 43),
-                List.of(2, 13, 22, 32, 38, 45),
-                List.of(1, 3, 5, 14, 22, 45)
-        );
+        runException("8000", "1,2,3,4,5,6", "6");
+        assertThat(output()).contains(DUPLICATED_NUMBER_ERROR_MESSAGE);
     }
 
     @DisplayName("예외테스트 - 당첨번호에 문자가 포함되어 있을 때")
     @Test
     void 예외_테스트4() {
-        assertRandomUniqueNumbersInRangeTest(() ->
-                        assertThatThrownBy(() ->
-                                run("8000", "1,2,3,4,k,6"))
-                                .isInstanceOf(IllegalArgumentException.class)
-                                .hasMessageContaining(INVALID_INPUT_ERROR_MESSAGE),
-                List.of(8, 21, 23, 41, 42, 43),
-                List.of(3, 5, 11, 16, 32, 38),
-                List.of(7, 11, 16, 35, 36, 44),
-                List.of(1, 8, 11, 31, 41, 42),
-                List.of(13, 14, 16, 38, 42, 45),
-                List.of(7, 11, 30, 40, 42, 43),
-                List.of(2, 13, 22, 32, 38, 45),
-                List.of(1, 3, 5, 14, 22, 45)
-        );
+        runException("8000", "1,2,3,4,k,6");
+        assertThat(output()).contains(INVALID_INPUT_ERROR_MESSAGE);
     }
 
     @DisplayName("예외테스트 - 당첨번호에 범위를 벗어나는 값이 있을 때")
     @Test
     void 예외_테스트5() {
-        assertRandomUniqueNumbersInRangeTest(() ->
-                        assertThatThrownBy(() ->
-                                run("8000", "1,2,3,4,5,46"))
-                                .isInstanceOf(IllegalArgumentException.class)
-                                .hasMessageContaining(OUT_OF_RANGE_ERROR_MESSAGE),
-                List.of(8, 21, 23, 41, 42, 43),
-                List.of(3, 5, 11, 16, 32, 38),
-                List.of(7, 11, 16, 35, 36, 44),
-                List.of(1, 8, 11, 31, 41, 42),
-                List.of(13, 14, 16, 38, 42, 45),
-                List.of(7, 11, 30, 40, 42, 43),
-                List.of(2, 13, 22, 32, 38, 45),
-                List.of(1, 3, 5, 14, 22, 45)
-        );
+        runException("8000", "1,2,3,4,5,46");
+        assertThat(output()).contains(OUT_OF_RANGE_ERROR_MESSAGE);
     }
 
     @DisplayName("예외테스트 - 당첨번호의 개수가 6개가 아닐 때")
     @Test
     void 예외_테스트6() {
-        assertRandomUniqueNumbersInRangeTest(() ->
-                        assertThatThrownBy(() ->
-                                run("8000", "1,2,3,4,5"))
-                                .isInstanceOf(IllegalArgumentException.class)
-                                .hasMessageContaining(INVALID_LENGTH_ERROR_MESSAGE),
-                List.of(8, 21, 23, 41, 42, 43),
-                List.of(3, 5, 11, 16, 32, 38),
-                List.of(7, 11, 16, 35, 36, 44),
-                List.of(1, 8, 11, 31, 41, 42),
-                List.of(13, 14, 16, 38, 42, 45),
-                List.of(7, 11, 30, 40, 42, 43),
-                List.of(2, 13, 22, 32, 38, 45),
-                List.of(1, 3, 5, 14, 22, 45)
-        );
+        runException("8000", "1,2,3,4,5");
+        assertThat(output()).contains(INVALID_LENGTH_ERROR_MESSAGE);
     }
 
     @DisplayName("예외테스트 - 당첨번호의 배열 입력이 이상할 때")
     @Test
     void 예외_테스트7() {
-        assertRandomUniqueNumbersInRangeTest(() ->
-                        assertThatThrownBy(() ->
-                                run("8000", "1, 2, 3, 4, 5, 6"))
-                                .isInstanceOf(IllegalArgumentException.class)
-                                .hasMessageContaining(INVALID_INPUT_ERROR_MESSAGE),
-                List.of(8, 21, 23, 41, 42, 43),
-                List.of(3, 5, 11, 16, 32, 38),
-                List.of(7, 11, 16, 35, 36, 44),
-                List.of(1, 8, 11, 31, 41, 42),
-                List.of(13, 14, 16, 38, 42, 45),
-                List.of(7, 11, 30, 40, 42, 43),
-                List.of(2, 13, 22, 32, 38, 45),
-                List.of(1, 3, 5, 14, 22, 45)
-        );
+        runException("8000", "1, 2, 3, 4, 5, 6");
+        assertThat(output()).contains(INVALID_INPUT_ERROR_MESSAGE);
+    }
+
+    @DisplayName("예외테스트 - 입력 금액이 0원 일때")
+    @Test
+    void 예외_테스트8() {
+        runException("0");
+        assertThat(output()).contains(INVALID_COST_ERROR_MESSAGE);
+    }
+
+    @DisplayName("예외테스트 - 당첨번호 입력 중 실수가 들어갈 때")
+    @Test
+    void 예외_테스트9() {
+        runException("8000", "1.1,2,3,4,5,6");
+        assertThat(output()).contains(INVALID_INPUT_ERROR_MESSAGE);
     }
 
     @Override
