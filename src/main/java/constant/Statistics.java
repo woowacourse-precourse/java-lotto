@@ -8,13 +8,13 @@ public enum Statistics {
     FIRST_RANKED("6개 일치 (2,000,000,000원) - ");
 
 
-
     private String rank;
+
     Statistics(String rank) {
-        this.rank=rank;
+        this.rank = rank;
     }
 
-    public String getStatistics(){
+    public String getStatistics() {
         return rank;
     }
 }

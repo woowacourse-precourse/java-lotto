@@ -3,8 +3,6 @@ package domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import util.ValidateBonusNumber;
-import util.ValidateUserMoney;
 import view.InputBonusNumber;
 import view.InputUserMoney;
 import view.InputWinningLottoNumber;
@@ -15,8 +13,8 @@ public class LottoGame {
 
     static final Integer BONUS = 7;
     static final int MINIMUM_WINNING = 3;
-    static final int THIRD_RANK=5;
-    static final int ONE_HUNDRED=100;
+    static final int THIRD_RANK = 5;
+    static final int ONE_HUNDRED = 100;
 
     static final List<Integer> moneyRanks = Arrays.asList(5000, 50000, 1500000, 2000000000,
         30000000);
@@ -35,14 +33,14 @@ public class LottoGame {
 
     public void Game() {
 
-        setting();
-        bonusNumber=InputBonusNumber.getBonusNumber();
+        setGame();
+        bonusNumber = InputBonusNumber.getBonusNumber();
         for (int index = 0; index < buyLottoTickets.size(); index++) {
             List<Integer> nowLottoTicket = buyLottoTickets.get(index);
             matchCountBox.add(matchCount(winningLottoTicket, nowLottoTicket, bonusNumber));
         }
 
-        calculate(matchCountBox);
+        calculateResultProcess(matchCountBox);
         OutputView.printStatistics();
 
     }
@@ -52,7 +50,7 @@ public class LottoGame {
         return yield;
     }
 
-    private void calculate(List<Integer> matchCountBox) {
+    private void calculateResultProcess(List<Integer> matchCountBox) {
         countingRank(matchCountBox);
         sumMoney = calculateSumMoney(rankedBox);
         yield = setYield((float) sumMoney);
@@ -82,7 +80,7 @@ public class LottoGame {
         }
     }
 
-    public void setting() {
+    public void setGame() {
         this.buyLottoTickets = BuyLottoTickets.getBuyLottoTickets();
         this.winningLottoTicket = InputWinningLottoNumber.getWinningLottoTicket();
         this.bonusNumber = InputBonusNumber.getBonusNumber();

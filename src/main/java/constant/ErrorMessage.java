@@ -14,12 +14,10 @@ public enum ErrorMessage {
     ERROR_BONUS_DUPLICATE_WINNING("[ERROR] 보너스 번호는 당첨번호와 겹쳐질 수 없습니다.");
 
 
-
-
-   private String message;
+    private String message;
 
     private ErrorMessage(String message) {
-        this.message=message;
+        this.message = message;
     }
 
 

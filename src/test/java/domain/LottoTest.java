@@ -38,8 +38,9 @@ class LottoTest {
 
     @DisplayName("로또 번호가 범위를 넘어간다면?")
     @Test
-    void createLottoByOverRange(){
-        assertThatThrownBy(()-> new Lotto(List.of(1,45,46,0,2,3))).isInstanceOf(IllegalArgumentException.class);
+    void createLottoByOverRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 45, 46, 0, 2, 3))).isInstanceOf(
+            IllegalArgumentException.class);
 
     }
 

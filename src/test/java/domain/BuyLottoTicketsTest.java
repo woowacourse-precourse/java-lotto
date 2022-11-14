@@ -33,17 +33,15 @@ class BuyLottoTicketsTest {
     }
 
 
+    boolean isSorted(List<Integer> LottoTicket) {
 
-    boolean isSorted(List<Integer> LottoTicket){
-
-        for(int index=0; index< LottoTicket.size()-1; index++){
-            if(LottoTicket.get(index)>LottoTicket.get(index+1)){
+        for (int index = 0; index < LottoTicket.size() - 1; index++) {
+            if (LottoTicket.get(index) > LottoTicket.get(index + 1)) {
                 return false;
             }
         }
         return true;
     }
-
 
 
 }

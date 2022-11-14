@@ -6,10 +6,10 @@ import java.util.List;
 
 public class OutputView {
 
-    private static final String BUYMONEY= "구입 금액을 입력해주세요.";
-    private static final String INPUT_LOTTO="당첨 번호를 입력해 주세요.";
-    private static final String INPUT_BONUS="보너스 번호를 입력해주세요.";
-    private static final String START_STATISTICS="당첨 통계\n---";
+    private static final String BUYMONEY = "구입 금액을 입력해주세요.";
+    private static final String INPUT_LOTTO = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS = "보너스 번호를 입력해주세요.";
+    private static final String START_STATISTICS = "당첨 통계\n---";
 
 
     public static void printButMoney() {
@@ -50,7 +50,7 @@ public class OutputView {
     }
 
     private static String getprintYieldStatistics(float yield) {
-        String Yield= "총 수익률은 " + String.format("%.1f", yield) + "%입니다.";
+        String Yield = "총 수익률은 " + String.format("%.1f", yield) + "%입니다.";
         return Yield;
     }
 }

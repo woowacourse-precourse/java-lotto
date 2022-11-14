@@ -22,7 +22,6 @@ public class ValidateUserMoney {
     private static void checkProcessIsCorrectMoney(String input_money){
         isCorrectMoney(Integer.parseInt(input_money));
 
-
     }
 
     private static void checkProcessIsNumber(String input_money){

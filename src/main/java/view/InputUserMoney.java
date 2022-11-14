@@ -7,11 +7,11 @@ import util.ValidateUserMoney;
 public class InputUserMoney {
 
 
-    private static final int EXCEPTION_CODE=-1;
+    private static final int EXCEPTION_CODE = -1;
 
     static int userMoney;
 
-    public static int inputMoney(){
+    public static int inputMoney() {
         String input_money = Console.readLine();
 
         ValidateUserMoney.validateMoney(input_money);

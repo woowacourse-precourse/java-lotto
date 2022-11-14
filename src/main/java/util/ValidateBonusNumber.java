@@ -5,6 +5,7 @@ import java.util.List;
 import view.InputWinningLottoNumber;
 
 public class ValidateBonusNumber {
+
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
     static int bonusNumber;
@@ -40,10 +41,10 @@ public class ValidateBonusNumber {
         List<Integer> lottoTicket = InputWinningLottoNumber.getWinningLottoTicket();
         int rightBonusNumber = bonusNumber;
         if (lottoTicket.stream().anyMatch(n -> rightBonusNumber == n)) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_DUPLICATE_WINNING.getMessage());
+            throw new IllegalArgumentException(
+                ErrorMessage.ERROR_BONUS_DUPLICATE_WINNING.getMessage());
         }
     }
-
 
 
 }
