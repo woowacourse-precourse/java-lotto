@@ -1,9 +1,8 @@
 package lotto.viewer;
 
 import lotto.domain.Buyer;
-import lotto.domain.Lotto;
 
-public class inputView {
+public class InputView {
     public static final String PURCHASE_REQUEST = "구입금액을 입력해 주세요.";
     public static final String PURCHASE_NUMBER = "개를 구매했습니다.";
     public static final String WINNING_REQUEST = "당첨 번호를 입력해 주세요.";

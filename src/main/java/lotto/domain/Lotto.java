@@ -2,6 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -10,7 +11,7 @@ public class Lotto {
     private static final int LOTTO_SIZE = 6;
     private static final int MAXIMUM_NUMBER = 45;
     private static final int MINIMUM_NUMBER = 1;
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validateOverSize(numbers);
@@ -20,10 +21,11 @@ public class Lotto {
     }
 
     public static Lotto from(List<Integer> lotto) {
-        lotto.sort(Collections.reverseOrder());
-        return new Lotto(lotto);
+        List<Integer> sortedLotto = new ArrayList(lotto);
+        Collections.sort(sortedLotto, Collections.reverseOrder());
+        return new Lotto(sortedLotto);
     }
-    public static Lotto generateLotto() {
+    public static Lotto generateRandomLotto() {
         return from(Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER,MAXIMUM_NUMBER,LOTTO_SIZE));
     }
 
@@ -79,8 +81,5 @@ public class Lotto {
     @Override
     public int hashCode() {
         return Objects.hash(numbers);
-    }
-    public void showLotto() {
-        System.out.println(this);
     }
 }

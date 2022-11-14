@@ -24,6 +24,10 @@ public enum Result {
     }
 
     public double calculateProfit(int count) {
-        return count * this.prize;
+        return count * prize;
+    }
+
+    public String toString() {
+        return number +"개 일치 (" + String.format("%,d",prize) + ")";
     }
 }

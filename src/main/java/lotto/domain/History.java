@@ -38,4 +38,7 @@ public class History {
                 .reduce(0, Integer::sum) * 1000;
         return totalPurchase;
     }
+    public String showNumber(Result result) {
+        return history.get(result) + "개";
+    }
 }
