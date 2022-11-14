@@ -45,6 +45,13 @@ public class LottoStore {
     }
 
     public void makeBonusNumber(int number) {
+        validateDuplicateBonusNumber(number);
         this.bonusNumber = number;
+    }
+
+    private void validateDuplicateBonusNumber(int number) {
+        if (winningLotto.existsNumber(number)) {
+            throw new IllegalArgumentException(Error.DUPLICATED_BONUS_NUMBER.getMessage());
+        }
     }
 }

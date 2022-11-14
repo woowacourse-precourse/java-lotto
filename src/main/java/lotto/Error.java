@@ -10,7 +10,8 @@ public enum Error {
     NOT_SIX_NUMBERS("[ERROR] 당첨 번호는 6개를 입력해야만 합니다."),
     DUPLICATED_NUMBERS("[ERROR] 수가 중복됩니다."),
     SEPARATOR("[ERROR] 구분자는 콤마만 가능합니다."),
-    NUMBER_OUT_OF_RANGE("[ERROR] 번호는 1 ~ 45 사이의 수만 가능합니다.")
+    NUMBER_OUT_OF_RANGE("[ERROR] 번호는 1 ~ 45 사이의 수만 가능합니다."),
+    DUPLICATED_BONUS_NUMBER("[ERROR] 보너스 번호는 당첨 번호에 존재하지 않는 수만 가능합니다.")
     ;
 
     private final String message;
