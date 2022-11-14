@@ -23,6 +23,11 @@
 
 
 
+
+- ToDoList
+  - CompareNumberWithBonus 함수 분리
+  - Lotto private number 사용하여 기능 구현
+
 ## 기능 요구 사항
 🚀 기능 요구 사항
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
