@@ -10,6 +10,12 @@ public class Lotto {
     public static final int LOTTO_NUMBER_MAX = 45;
     public static final int LOTTO_LENGTH = 6;
     public static final String LOTTO_DELIMITER = ",";
+    public static final int LOTTO_FIRST_REWARD = 2000000000;
+    public static final int LOTTO_SECOND_REWARD = 30000000;
+    public static final int LOTTO_THIRD_REWARD = 15000000;
+    public static final int LOTTO_FOURTH_REWARD = 50000;
+    public static final int LOTTO_FIFTH_REWARD = 5000;
+    public static final int LOTTO_LOSE_REWARD = 0;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
