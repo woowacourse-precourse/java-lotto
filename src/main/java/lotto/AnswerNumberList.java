@@ -1,14 +1,13 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AnswerNumberList {
-    private final List<Long> answerNumbers;
+    private final List<Long> winningNumbers;
     private final Long bonusNumber;
 
     public AnswerNumberList(List<Long> answerNumbers, Long bonusNumber) {
-        this.answerNumbers = answerNumbers;
+        this.winningNumbers = answerNumbers;
         this.bonusNumber = bonusNumber;
     }
 }
