@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private List<Lotto> lottos = new ArrayList<>();
 
-    public void buyLotto(String input) {
+    public List<Lotto> buyLotto(String input) {
+        List<Lotto> lottos = new ArrayList<>();
         validateInteger(input);
         int money = Integer.parseInt(input);
         canBuyLotto(money);
@@ -18,6 +18,8 @@ public class User {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottos.add(new Lotto(numbers));
         }
+
+        return lottos;
     }
 
     private void validateInteger(String input) {
@@ -35,9 +37,5 @@ public class User {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1,000원으로 나누어 떨어지는 금액만 입력해 주세요.");
         }
-    }
-
-    public int getLottoSheetCount() {
-        return lottos.size();
     }
 }
