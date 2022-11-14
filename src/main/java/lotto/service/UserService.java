@@ -1,0 +1,55 @@
+package lotto.service;
+
+import lotto.domain.Lotto;
+import lotto.domain.Manager;
+import lotto.domain.User;
+import lotto.domain.enums.Message;
+import lotto.domain.enums.Number;
+import lotto.util.ExceptionHandler;
+import lotto.util.InputUtil;
+import lotto.util.OutputUtil;
+
+import java.util.List;
+
+public class UserService {
+
+    public void calculateYield(User user) {
+        double yield = user.getWinningAmount() / user.getMoney();
+        yield *= 1000;
+        yield = Math.round(yield);
+        yield /= 10;
+        user.setYield(yield);
+    }
+
+    public void updateRankAndWinningAmount(User user, int rank) {
+        if (rank == Number.FIVE.getValue()) {
+            user.setRankFifth();
+        }
+        if (rank == Number.FOUR.getValue()) {
+            user.setRankFourth();
+        }
+        if (rank == Number.THREE.getValue()) {
+            user.setRankThird();
+        }
+        if (rank == Number.TWO.getValue()) {
+            user.setRankSecond();
+        }
+        if (rank == Number.ONE.getValue()) {
+            user.setRankFirst();
+        }
+    }
+
+    public void setInputMoney(User user, Manager manager) throws IllegalArgumentException {
+        System.out.println(Message.INPUT_PURCHASE_AMOUNT_MESSAGE);
+        String input = InputUtil.getUserInput();
+        try {
+            ExceptionHandler.checkValidationMoney(input);
+            double money = Double.parseDouble(input);
+            user.setMoney(money);
+
+        } catch (IllegalArgumentException illegalArgumentException) {
+            OutputUtil.printInputWinningNumbersError();
+            throw illegalArgumentException;
+        }
+    }
+}
