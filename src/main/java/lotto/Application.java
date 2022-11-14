@@ -115,8 +115,9 @@ public class Application {
             if(cnt!=6){
                 bonusCnt = existBonus(purchaseLotto.get(i),bonusNumber);
             }
+            LottoPrize.add(resultLotto(cnt,bonusCnt));
         }
-        return purchaseLotto;
+        return LottoPrize;
     }
     private static int existNumber(List myLotto, List<Integer> winNumbers){
         int cnt = 0;
@@ -138,5 +139,33 @@ public class Application {
         if(winNumbers.contains(bonusNumber)){
             throw new IllegalArgumentException(ALREADY_EXISTED_NUMBER);
         }
+    }
+
+
+    public static List<Integer> resultLotto(int cnt, int bonusCnt){
+        int[] prize = {0,0,0,0,0};
+        List<Integer> prizeLotto = new ArrayList<>();
+
+        if(cnt==6){
+            prize[0]+=1;
+        }
+        if(bonusCnt==1 && cnt==5){
+            prize[1]+=1;
+        }
+        if(bonusCnt==0 && cnt==5){
+            prize[2]+=1;
+        }
+        if(cnt==4){
+            prize[3]+=1;
+        }
+        if(cnt==3){
+            prize[4]+=1;
+        }
+
+        for (int i = 0; i < prize.length; i++) {
+            prizeLotto.add(prize[i]);
+        }
+
+        return prizeLotto;
     }
 }
