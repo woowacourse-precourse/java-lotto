@@ -24,7 +24,7 @@ public class LotteryTicketRepositoryTest {
         String lotteryId = lotteryTicket.getLotteryId();
 
         repository.addLotteryTicket(lotteryTicket);
-        assertThat(repository.findByLotteryId(lotteryId))
+        assertThat(repository.findTicketById(lotteryId))
                 .isPresent()
                 .hasValue(lotteryTicket);
     }
@@ -35,7 +35,7 @@ public class LotteryTicketRepositoryTest {
         LotteryTicketRepository repository = LotteryTicketRepository.getInstance();
         String lotteryId = "nothing";
 
-        assertThat(repository.findByLotteryId(lotteryId))
+        assertThat(repository.findTicketById(lotteryId))
                 .isNotPresent();
     }
 

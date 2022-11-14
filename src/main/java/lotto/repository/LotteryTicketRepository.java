@@ -27,7 +27,7 @@ public class LotteryTicketRepository {
         drawResult.put(lotteryTicket.getLotteryId(), LotteryRank.BEFORE_DRAW);
     }
 
-    public Optional<LotteryTicket> findByLotteryId (String lotteryId) {
+    public Optional<LotteryTicket> findTicketById(String lotteryId) {
         return Optional.ofNullable(store.get(lotteryId));
     }
 
