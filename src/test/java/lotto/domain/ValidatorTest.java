@@ -24,4 +24,12 @@ public class ValidatorTest {
         assertThatThrownBy(() -> validator.validateAmount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 번호가 1에서 45 사이의 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void inputNumbersOutOfRange() {
+        String input = "1,1,2,3,4,55";
+        assertThatThrownBy(() -> validator.validateNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

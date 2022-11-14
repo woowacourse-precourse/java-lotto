@@ -9,7 +9,8 @@ public class Validator {
     }
 
     private static void isNumber(String amount) {
-        if (amount.matches("^[^0-9]*$")) {
+        String pattern = "^[0-9]*$";
+        if (!amount.matches(pattern)) {
             throw new IllegalArgumentException(ErrorMessage.ONLY_NUMBER_POSSIBLE.getMessage());
         }
     }
@@ -20,4 +21,14 @@ public class Validator {
         }
     }
 
+    public static void validateNumbers(String numbers) {
+        isRightForm(numbers);
+    }
+
+    private static void isRightForm(String numbers) {
+        String pattern = "[1-45],[1-45],[1-45],[1-45],[1-45],[1-45]";
+        if (!numbers.matches(pattern)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_RIGHT_FORM.getMessage());
+        }
+    }
 }

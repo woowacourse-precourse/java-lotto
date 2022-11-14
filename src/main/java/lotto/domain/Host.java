@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
 public class Host {
     public Lotto drawNumbers() {
         String numbers = Console.readLine();
+        Validator.validateNumbers(numbers);
         List<Integer> lottoNumbers = getListFromString(numbers);
         return new Lotto(lottoNumbers);
     }
