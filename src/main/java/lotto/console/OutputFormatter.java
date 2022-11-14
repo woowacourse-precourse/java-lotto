@@ -5,12 +5,15 @@ import java.util.StringJoiner;
 
 class OutputFormatter {
 
+    private OutputFormatter() {
+    }
+
     static String formatThousandsSeparator(long number) {
         return String.format("%,d", number);
     }
 
-    static String formatPercent(float number) {
-        return String.format("%,.1f%%", number * 100f);
+    static String formatPercent(double number) {
+        return String.format("%,.1f%%", number * 100d);
     }
 
     static String formatLottoNumbers(List<Integer> lottoNumbers) {

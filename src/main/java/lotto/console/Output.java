@@ -53,7 +53,7 @@ public class Output {
                 count);
     }
 
-    public void writeYield(float yield) {
+    public void writeYield(double yield) {
         writeLine("총 수익률은 %s입니다.", formatPercent(yield));
     }
 
