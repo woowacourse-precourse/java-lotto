@@ -134,7 +134,37 @@
                 String 타입을 받아와 당첨번호와 중복 여부 확인
 -----------------
 
-- [ ] 예외 문구 출력 (열거체 이용)
+- [X] 예외 문구 출력 (열거체 이용)
+    #### ErrorType 열거체를 이용하여, 예외 처리 시, 에러문구 출력
+-----------------
+    예)  input -> "1000j"
+        [ERROR] Input money is wrong
+
+-----------------
+    예외 목록
+        1. Lotto 제작 중 문제 발생
+            checkSize(numbers) 
+                        || checkOverlap(numbers) 
+                        || checkOutOfRange(numbers)
+        2. 잘못된 값을 입력 받아와 문제 발생
+            2-1. inputForMoney()
+                -> checkOnlyNumber(answer) 
+                        || checkDivisibleNumber(answer)
+            2-2. inputWinningNumber()
+                -> checkOnlyNumber(number)
+            2-3. inputBonusNumber()
+                -> checkOnlyNumber(answerBonusNumber) 
+                        || checkOutOfRange(answerBonusNumber) 
+                        || checkOverlapWinningNumber(answerBonusNumber)
+-----------------
+    예외 enum 목록
+    <ErrorType>
+    MAKE_LOTTO_ERROR("making lotto is wrong"),
+    INPUT_MONEY_ERROR("Input money is wrong"),
+    INPUT_WINNING_NUMBER_ERROR("Input winning numbers are wrong"),
+    INPUT_BONUS_NUMBER_ERROR("Input bonus number is wrong");
+-----------------
+
 - [ ] 당첨 번호와 로또 비교
 - [ ] 획득 금액 계산
 - [ ] 결과 출력
