@@ -51,7 +51,6 @@ public class User {
         validateInputBlank(number);
         validateInputWithBlank(number);
         validateInputSixNumbers(number);
-        validateInputDuplicatedNumbers(number);
         validateSeparator(number);
         String[] numbers = number.split(",");
         for (String num : numbers) {
@@ -108,13 +107,6 @@ public class User {
         String[] numbers = input.split(",");
         if (numbers.length != 6) {
             throw new IllegalArgumentException(Error.NOT_SIX_NUMBERS.getMessage());
-        }
-    }
-
-    private void validateInputDuplicatedNumbers(String input) {
-        Set<String> numbers = new HashSet<>(List.of(input.split(",")));
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Error.DUPLICATED_NUMBERS.getMessage());
         }
     }
 
