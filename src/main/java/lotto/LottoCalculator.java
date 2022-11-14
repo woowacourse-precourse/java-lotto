@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Optional;
 
 public class LottoCalculator {
+    public static final int ZERO = 0;
+    public static final int HUNDRED = 100;
 
     public static Optional<Rank> calculateRank(Lotto winningNumbers, Bonus bonus, Lotto ticket) {
         long matchCount = match(winningNumbers, ticket);
@@ -23,7 +25,7 @@ public class LottoCalculator {
     public static double getRateOfReturn(Map<Rank, Integer> winningHistory, Money purchasePrice) {
         Integer totalPrize = winningHistory.entrySet().stream()
                 .map(entry -> entry.getKey().getPrize() * entry.getValue())
-                .reduce(0, Integer::sum);
-        return (double) totalPrize / purchasePrice.getAmount() * 100;
+                .reduce(ZERO, Integer::sum);
+        return (double) totalPrize / purchasePrice.getAmount() * HUNDRED;
     }
 }

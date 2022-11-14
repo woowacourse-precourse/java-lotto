@@ -1,5 +1,8 @@
 package lotto;
 
+import static lotto.Constants.MAX_NUMBER;
+import static lotto.Constants.MIN_NUMBER;
+import static lotto.Constants.WINNING_NUMBERS_SIZE;
 import static lotto.ErrorMessages.DUPLICATE_NUMBER;
 import static lotto.ErrorMessages.NOT_BETWEEN_ONE_AND_FORTY_FIVE;
 import static lotto.ErrorMessages.NOT_SIX_DIGIT_NUMBER;
@@ -28,13 +31,13 @@ public class Lotto {
     }
 
     private static void validateDuplicate(List<Integer> numbers) {
-        if (numbers.stream().distinct().count() != 6) {
+        if (numbers.stream().distinct().count() != WINNING_NUMBERS_SIZE) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER);
         }
     }
 
     private static void validateRange(List<Integer> numbers) {
-        if (!numbers.stream().allMatch(number -> 1 <= number && number <= 45)) {
+        if (!numbers.stream().allMatch(number -> MIN_NUMBER <= number && number <= MAX_NUMBER)) {
             throw new IllegalArgumentException(NOT_BETWEEN_ONE_AND_FORTY_FIVE);
         }
     }

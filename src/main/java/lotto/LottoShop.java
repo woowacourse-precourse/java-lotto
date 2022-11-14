@@ -1,5 +1,9 @@
 package lotto;
 
+import static lotto.Constants.MAX_NUMBER;
+import static lotto.Constants.MIN_NUMBER;
+import static lotto.Constants.WINNING_NUMBERS_SIZE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +22,7 @@ public class LottoShop {
     }
 
     private static Lotto issueLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, WINNING_NUMBERS_SIZE);
         return new Lotto(numbers);
     }
 }
