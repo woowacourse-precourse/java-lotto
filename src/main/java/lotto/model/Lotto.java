@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static lotto.model.ErrorMessage.*;
+import static lotto.model.LottoStatus.SIZE;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -20,15 +21,15 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != LottoStatus.SIZE.getValue()) {
-            throw new IllegalArgumentException(INCORRECT_SIZE.toString());
+        if (numbers.size() != SIZE.getValue()) {
+            throw new IllegalArgumentException(LOTTO_INCORRECT_SIZE.toString());
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         for (int index = 0; index < numbers.size(); index++) {
             if (isOutOfRange(getNumber(numbers, index))) {
-                throw new IllegalArgumentException(OUT_OF_RANGE.toString());
+                throw new IllegalArgumentException(LOTTO_OUT_OF_RANGE.toString());
             }
         }
     }
@@ -50,7 +51,7 @@ public class Lotto {
     private void countExist(List<Integer> numbers, HashMap<Integer, Integer> exist) {
         for (int index = 0; index < numbers.size(); index++) {
             if (isDuplicate(exist.get(getNumber(numbers, index)))) {
-                throw new IllegalArgumentException(DUPLICATION.toString());
+                throw new IllegalArgumentException(LOTTO_DUPLICATION.toString());
             }
         }
     }

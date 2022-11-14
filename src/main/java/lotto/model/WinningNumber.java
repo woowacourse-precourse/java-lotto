@@ -20,7 +20,7 @@ public class WinningNumber {
 
     private void validateRange(int bonusNumber) {
         if (isOutOfRange(bonusNumber)) {
-            throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE.toString());
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_OUT_OF_RANGE.toString());
         }
     }
 
@@ -30,7 +30,7 @@ public class WinningNumber {
 
     private void validateDuplication(Lotto luckyNumber, int bonusNumber) {
         if (isDuplicate(luckyNumber, bonusNumber)) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATION.toString());
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_DUPLICATION.toString());
         }
     }
 

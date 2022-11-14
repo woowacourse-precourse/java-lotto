@@ -7,20 +7,20 @@ public enum ErrorMessage {
             return "[ERROR] ";
         }
     },
-    INCORRECT_SIZE{
+    LOTTO_INCORRECT_SIZE {
         @Override
         public String toString() {
             return HEADER + "로또 번호 개수는 " + LottoStatus.SIZE.getValue() + "개여야 합니다.";
         }
     },
-    OUT_OF_RANGE{
+    LOTTO_OUT_OF_RANGE {
         @Override
         public String toString() {
             return HEADER + "로또 번호는 " + LottoStatus.START.getValue() +
                     "부터 " + LottoStatus.END.getValue() + " 사이의 숫자여야 합니다.";
         }
     },
-    DUPLICATION{
+    LOTTO_DUPLICATION {
         @Override
         public String toString() {
             return HEADER + "로또 번호는 중복되지 않아야 합니다.";

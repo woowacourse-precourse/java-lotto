@@ -1,9 +1,5 @@
 package lotto.model;
 
-import lotto.model.ErrorMessage;
-import lotto.model.Lotto;
-import lotto.model.WinningNumber;
-import lotto.model.WinningNumberStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +17,7 @@ class WinningNumberTest {
     void createBonusNumberByOutOfNumber() {
         assertThatThrownBy(() -> new WinningNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 0))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.OUT_OF_RANGE.toString());
+                .hasMessage(ErrorMessage.LOTTO_OUT_OF_RANGE.toString());
     }
 
     @Test
@@ -29,7 +25,7 @@ class WinningNumberTest {
     void createBonusNumberByDuplicatedNumber() {
         assertThatThrownBy(() -> new WinningNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 5))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.DUPLICATION.toString());
+                .hasMessage(ErrorMessage.LOTTO_DUPLICATION.toString());
     }
 
     @Test
