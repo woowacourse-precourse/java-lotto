@@ -66,16 +66,6 @@ class ApplicationTest extends NsTest {
         assertThat(number.size()).isEqualTo(result.size());
     }
 
-    @DisplayName("로또 번호 발급 금액이 1000원 단위가 아니면 예외가 발생한다.")
-    @Test
-    void saveLottoByWrongMoneyUnit() {
-        Application application = new Application();
-        int money = 12345;
-
-        assertThatThrownBy(() -> application.buyLotto(money))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @DisplayName("로또 번호 발급 개수가 금액의 개수와 같은지 확인한다.")
     @Test
     void saveLottoByLottoCount() {
