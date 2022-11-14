@@ -10,12 +10,19 @@ public class ChangeNumberType {
     }
 
     public int getNumber() {
-        return -1;
+        return changeNumberToString(number);
     }
 
     public ArrayList<Integer> getNumbers() {
         return null;
     }
 
+    private int changeNumberToString(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
