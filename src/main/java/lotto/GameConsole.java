@@ -46,7 +46,7 @@ public class GameConsole {
     }
 
     public void outputLottos(int lottoCount, List<Lotto> lottos) {
-        System.out.printf("%d개를 구매했습니다.\n", lottoCount);
+        System.out.printf("\n%d개를 구매했습니다.\n", lottoCount);
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
