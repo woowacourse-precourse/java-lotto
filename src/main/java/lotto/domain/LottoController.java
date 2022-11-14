@@ -1,6 +1,5 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.*;
 import lotto.ui.LottoInput;
 import lotto.ui.LottoOutput;
 

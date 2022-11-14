@@ -5,8 +5,8 @@ import java.util.List;
 public class InputValidator {
 
     public void validateStringInputIsNumeric(String userInput) {
-        for(char input : userInput.toCharArray()) {
-            if(!Character.isDigit(input)) {
+        for (char input : userInput.toCharArray()) {
+            if (!Character.isDigit(input)) {
                 throw new IllegalArgumentException(Messages.ERROR_NUMERIC.getMessage());
             }
         }
@@ -14,7 +14,7 @@ public class InputValidator {
 
     public void validateListInputIsNumeric(List<String> userInput) {
         try {
-            for(String input : userInput) {
+            for (String input : userInput) {
                 Integer.parseInt(input);
             }
         } catch (NumberFormatException e) {
@@ -23,17 +23,17 @@ public class InputValidator {
     }
 
     public void validateInputRange(List<String> userInput) {
-        for(String input : userInput) {
+        for (String input : userInput) {
             int inputNum = Integer.parseInt(input);
 
-            if(inputNum < 1 || inputNum > 45) {
+            if (inputNum < 1 || inputNum > 45) {
                 throw new IllegalArgumentException(Messages.ERROR_LOTTO_NUMBER_RANGE.getMessage());
             }
         }
     }
 
     public void validateInputSize(List<String> userInput) {
-        if(userInput.size() != 6) {
+        if (userInput.size() != 6) {
             throw new IllegalArgumentException(Messages.ERROR_LOTTO_SIZE.getMessage());
         }
     }
@@ -43,11 +43,11 @@ public class InputValidator {
 
         int money = Integer.parseInt(userInput);
 
-        if(money%1000 != 0) {
+        if (money % 1000 != 0) {
             throw new IllegalArgumentException(Messages.ERROR_MONEY_UNIT.getMessage());
         }
 
-        if(money < 1000) {
+        if (money < 1000) {
             throw new IllegalArgumentException(Messages.ERROR_MONEY_MIN.getMessage());
         }
     }
@@ -64,11 +64,11 @@ public class InputValidator {
 
         int inputNum = Integer.parseInt(userInput);
 
-        if(lottoNumbers.contains(inputNum)) {
-            throw new IllegalArgumentException();
+        if (lottoNumbers.contains(inputNum)) {
+            throw new IllegalArgumentException(Messages.ERROR_BONUS_DUPLICATE.getMessage());
         }
 
-        if(inputNum < 1 || inputNum > 45) {
+        if (inputNum < 1 || inputNum > 45) {
             throw new IllegalArgumentException();
         }
     }

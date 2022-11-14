@@ -25,18 +25,16 @@ public class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("사용자 로또번호중 보너스번호가 있는지 확인")
+    @DisplayName("보너스 번호가 당첨되었고 로또 등수가 2등일때만 true 반환")
     void checkBonusNumberTest() {
         //given(준비)
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
         List<Integer> userLotto = List.of(1,2,3,4,5,7);
-
-        int count = lottoService.countMatchNumber(lotto.getNumbers(), userLotto);
+        int matchNumberCount = 5;
 
         BonusNumber.BONUS_NUMBER.setNumber(7);
 
         //when(실행)
-        boolean bonusFlag = lottoService.checkBonusNumber(count, userLotto);
+        boolean bonusFlag = lottoService.checkBonusNumber(matchNumberCount, userLotto);
 
         //then(검증)
         Assertions.assertThat(bonusFlag).isTrue();
@@ -52,14 +50,15 @@ public class LottoServiceTest {
                 List.of(1,2,3,40,41,42),
                 List.of(1,2,3,4,40,41),
                 List.of(1,2,3,4,5,40),
-                List.of(1,2,3,4,5,7));
+                List.of(1,2,3,4,5,7),
+                List.of(40,41,42,43,44,45));
 
         //when(실행)
         List<LottoRank> lottoResult = lottoService.createLottoResult(lotto, userLotto);
 
         //then(검증)
         Assertions.assertThat(lottoResult).contains(LottoRank.FIRST, LottoRank.SECOND, LottoRank.THIRD,
-                LottoRank.FOURTH, LottoRank.FIFTH);
+                LottoRank.FOURTH, LottoRank.FIFTH, LottoRank.BLANK);
     }
 
     @Test

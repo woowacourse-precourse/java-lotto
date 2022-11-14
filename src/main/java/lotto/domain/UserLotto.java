@@ -18,7 +18,7 @@ public class UserLotto {
 
         return numbers;
     }
-    
+
     public void createUserLotto(int amount) {
         for (int num = 0; num < amount; num++) {
             userLotto.add(num, createLotto());

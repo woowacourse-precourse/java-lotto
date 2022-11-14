@@ -14,23 +14,23 @@ public class LottoOutput {
                 .append(Messages.LOTTO_AMOUNT.getMessage())
                 .append("\n");
 
-        for(List<Integer> lotto : userLotto) {
+        for (List<Integer> lotto : userLotto) {
             sb.append(lotto).append("\n");
         }
 
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
     public void printLottoResult(List<LottoRank> lottoResult) {
         StringBuilder sb = new StringBuilder();
         sb.append(Messages.LOTTO_RESULT.getMessage());
 
-        for(LottoRank rank : LottoRank.values()) {
+        for (LottoRank rank : LottoRank.values()) {
             sb.append(createLottoResultMessage(rank, lottoResult))
                     .append("\n");
         }
         sb.deleteCharAt(sb.length() - 1);
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
     public String createLottoResultMessage(LottoRank rank, List<LottoRank> lottoResult) {
@@ -38,7 +38,7 @@ public class LottoOutput {
 
         long count = countRank(rank, lottoResult);
 
-        if(rank != LottoRank.BLANK) {
+        if (rank != LottoRank.BLANK) {
             sb.append(rank.getMessage())
                     .append(count)
                     .append("개");
@@ -61,6 +61,6 @@ public class LottoOutput {
                 .append(percent)
                 .append(Messages.LOTTO_PERCENT_TAIL.getMessage());
 
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 }

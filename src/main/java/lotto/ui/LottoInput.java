@@ -39,7 +39,6 @@ public class LottoInput {
         return winningNumber;
     }
 
-    //예외사항 검사
     public int readBonusNumber(List<Integer> lottoNumber) {
         Messages.INPUT_BONUS_NUMBER.printMessage();
         String userInput = readInput();
@@ -50,10 +49,10 @@ public class LottoInput {
     }
 
     public List<String> splitUserInput(String userInput) {
-        List<String> numbers = Arrays.stream(userInput.split(","))
+        List<String> splitInput = Arrays.stream(userInput.split(","))
                 .collect(Collectors.toList());
 
-        return numbers;
+        return splitInput;
     }
 
     public List<Integer> stringListToIntegerList(List<String> splitInput) {
