@@ -2,7 +2,6 @@ package lotto;
 import java.util.*;
 
 public class Lotto {
-    //final은 값이 변하지 않는다. 객체를 생성하고 Lotto를 호출했을 때 넣은 numbers 그대로 유지하게 된다.
     private final List<Integer> numbers;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
