@@ -3,6 +3,7 @@ package lotto.domain.exception;
 import java.util.List;
 
 public interface LottoExceptionHandler {
+
     default void handleException(String input) {
 
     }

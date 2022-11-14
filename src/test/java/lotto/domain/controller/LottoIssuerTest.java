@@ -11,7 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("로또 발행 기능 클래스 테스트")
 public class LottoIssuerTest {
+
     List<Lotto> lottos = new ArrayList<>();
     int purchaseAmount = 8000;
 

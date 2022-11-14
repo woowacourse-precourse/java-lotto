@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Winning Lotto 모델 생성 테스트")
 public class WinningLottoTest {
 
     @DisplayName("당첨 번호 개수가 6개가 아닐 경우 예외가 발생한다.")

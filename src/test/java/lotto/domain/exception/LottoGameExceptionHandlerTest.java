@@ -9,6 +9,7 @@ import lotto.exception.LottoGameExceptionHandler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("게임 운영 로직 관련 예외 처리 테스트")
 public class LottoGameExceptionHandlerTest {
 
     @Test
@@ -76,8 +77,8 @@ public class LottoGameExceptionHandlerTest {
     @Test
     @DisplayName("로또 - 오름차순으로 정렬되어 있지 않으면 예외가 발생한다.")
     void handleNotAscendingOrderExceptionTest() {
-        List<Integer> invalidNumbers = new ArrayList<>(List.of(1,4,3,2,5,6));
-        List<Integer> validNumbers = new ArrayList<>(List.of(1,2,3,4,5,6));
+        List<Integer> invalidNumbers = new ArrayList<>(List.of(1, 4, 3, 2, 5, 6));
+        List<Integer> validNumbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
 
         LottoExceptionHandler notOrderedExceptionHandler = new LottoExceptionHandler() {
             @Override

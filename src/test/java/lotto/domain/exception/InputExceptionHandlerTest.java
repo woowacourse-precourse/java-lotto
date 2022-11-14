@@ -7,7 +7,7 @@ import lotto.exception.InputExceptionHandler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("사용자 입력 관련 예외")
+@DisplayName("사용자 입력 관련 예외 처리 테스트")
 public class InputExceptionHandlerTest {
 
     @Test

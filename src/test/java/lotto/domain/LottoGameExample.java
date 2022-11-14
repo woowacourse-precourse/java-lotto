@@ -6,6 +6,7 @@ import lotto.domain.model.Lotto;
 import lotto.domain.model.WinningLotto;
 
 public class LottoGameExample {
+
     private static final WinningLotto WIN_LOTTO = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
     private static final Lotto NOT_WIN_NUMBER = new Lotto(List.of(1, 2, 7, 8, 9, 10));
 

@@ -15,6 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("당첨 통계 및 수익률 계산 기능 클래스 테스트")
 public class LottoAnalystTest {
 
     LottoAnalyst lottoAnalyst;
@@ -121,7 +122,7 @@ public class LottoAnalystTest {
 
         lottoAnalyst.makeWinningStatistics(lottos, winningLottoExample);
 
-        double expected = (double)fifthRankReturn / (double)purchaseAmount * 100;
+        double expected = (double) fifthRankReturn / (double) purchaseAmount * 100;
         expected = Math.round(expected * 10) / 10.0;
 
         double actual = lottoAnalyst.calculateRateOfReturn();
@@ -140,7 +141,7 @@ public class LottoAnalystTest {
 
         lottoAnalyst.makeWinningStatistics(lottos, winningLottoExample);
 
-        double expected = (double)fifthRankReturn / (double)purchaseAmount * 100;
+        double expected = (double) fifthRankReturn / (double) purchaseAmount * 100;
         expected = Math.round(expected * 10) / 10.0;
 
         double actual = lottoAnalyst.calculateRateOfReturn();
@@ -159,7 +160,7 @@ public class LottoAnalystTest {
 
         lottoAnalyst.makeWinningStatistics(lottos, winningLottoExample);
 
-        double expected = (double)fifthRankReturn / (double)purchaseAmount * 100;
+        double expected = (double) fifthRankReturn / (double) purchaseAmount * 100;
         expected = Math.round(expected * 10) / 10.0;
 
         double actual = lottoAnalyst.calculateRateOfReturn();
