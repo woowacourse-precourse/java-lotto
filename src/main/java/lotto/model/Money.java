@@ -23,7 +23,7 @@ public class Money {
         if(money % 1000 != 0) throw new IllegalArgumentException(Error.PURCHASE_UNIT.getError());
         return true;
     }
-    // 입력 받은 money 유효성 검사
-    // 로또 발행 수량 구하기
-
+    public static int getLottoTickets() {
+        return inputMoney/1000;
+    }
 }
