@@ -1,6 +1,7 @@
 package lotto.domain.model;
 
 import java.util.List;
+import lotto.exception.LottoGameExceptionHandler;
 
 public class Lotto {
 
@@ -12,9 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        LottoGameExceptionHandler.handleLottoException(numbers);
     }
 
     public List<Integer> getNumbers() {

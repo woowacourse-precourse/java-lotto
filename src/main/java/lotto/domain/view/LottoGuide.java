@@ -8,13 +8,17 @@ import java.util.stream.Collectors;
 import lotto.constants.GuideSentences;
 import lotto.constants.RankingInformation;
 import lotto.domain.model.Lotto;
+import lotto.exception.InputExceptionHandler;
 
 public class LottoGuide {
 
     public int getPurchaseAmount() {
         System.out.println(GuideSentences.INPUT_PURCHASE_AMOUNT.getSentence());
 
-        int purchaseAmount = Integer.parseInt(Console.readLine());
+        String amountInput = Console.readLine();
+        InputExceptionHandler.handleOneNumberExceptions(amountInput);
+
+        int purchaseAmount = Integer.parseInt(amountInput);
 
         System.out.print("\n");
 
@@ -32,6 +36,7 @@ public class LottoGuide {
         System.out.println(GuideSentences.INPUT_WINNING_NUMBER.getSentence());
 
         String inputNumbers = Console.readLine();
+        InputExceptionHandler.handleWinningNumbersExceptions(inputNumbers);
 
         List<Integer> winningNumbers = convertInputToWinningNumbers(inputNumbers);
 
@@ -49,7 +54,9 @@ public class LottoGuide {
     public int getBonusNumber() {
         System.out.println(GuideSentences.INPUT_BONUS_NUMBER.getSentence());
 
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        String bonusNumberInput = Console.readLine();
+        InputExceptionHandler.handleOneNumberExceptions(bonusNumberInput);
+        int bonusNumber = Integer.parseInt(bonusNumberInput);
 
         System.out.print("\n");
 

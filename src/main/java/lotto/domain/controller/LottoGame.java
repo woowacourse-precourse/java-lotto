@@ -7,6 +7,7 @@ import lotto.constants.RankingInformation;
 import lotto.domain.model.Lotto;
 import lotto.domain.model.WinningLotto;
 import lotto.domain.view.LottoGuide;
+import lotto.exception.LottoGameExceptionHandler;
 
 public class LottoGame {
 
@@ -23,17 +24,22 @@ public class LottoGame {
     }
 
     public void playLottoGame() {
-        issueLottosAndInform();
+        try {
+            issueLottosAndInform();
 
-        setWinningLotto();
+            setWinningLotto();
 
-        makeStatistics();
+            makeStatistics();
 
-        informStatisticsAndRateOfReturn();
+            informStatisticsAndRateOfReturn();
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
     private void issueLottosAndInform() {
         int purchaseAmount = lottoGuide.getPurchaseAmount();
+        LottoGameExceptionHandler.handleAmountNotThousandsException(purchaseAmount);
 
         lottos = LottoIssuer.issueLottos(purchaseAmount);
 
