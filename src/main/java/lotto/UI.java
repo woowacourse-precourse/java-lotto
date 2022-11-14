@@ -15,4 +15,10 @@ public class UI {
         }
     }
 
+    private static String inputWinNumbers(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String numbers = camp.nextstep.edu.missionutils.Console.readLine();
+        return numbers;
+    }
+
 }
