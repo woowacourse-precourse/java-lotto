@@ -31,4 +31,11 @@ public class Input {
         return lotto.getNumbers();
     }
 
+    public static int bonusNumber() {
+        Output.inputBounsNumber();
+        String bonusNumber = Console.readLine();
+        LottoNumberException.checkException(bonusNumber);
+        return Integer.valueOf(bonusNumber);
+    }
+
 }
