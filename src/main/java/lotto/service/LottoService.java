@@ -63,7 +63,8 @@ public class LottoService {
     }
 
     private double getRatio(long prizeMoney) {
-        return Math.round(prizeMoney / (double) (getCountOfLotto() * LOTTO_PRICE) * PERCENT * SECOND_DECIMAL_PLACE) / SECOND_DECIMAL_PLACE;
+        return Math.round(prizeMoney / (double) (getCountOfLotto() * LOTTO_PRICE) * PERCENT * SECOND_DECIMAL_PLACE)
+                / SECOND_DECIMAL_PLACE;
     }
 
     private Map<WinResultStatus, Integer> createStatistics(List<WinResultStatus> winResults) {
@@ -76,7 +77,7 @@ public class LottoService {
 
     private long calculatePrizeMoney(List<WinResultStatus> winResults) {
         return winResults.stream()
-                .map(WinResultStatus::getPrizeMoney)
-                .count();
+                .mapToLong(WinResultStatus::getPrizeMoney)
+                .sum();
     }
 }

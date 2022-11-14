@@ -3,8 +3,11 @@ package lotto.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Map;
+import lotto.constants.enums.WinResultStatus;
 import lotto.domain.Lotto;
 import lotto.repository.LottoRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -56,5 +59,26 @@ class LottoServiceTest {
         Lotto lotto = lottos.get(0);
         // then
         assertThat(lotto.createMessage()).isEqualTo(boughtResultMessage.get(1));
+    }
+
+    @DisplayName("구매한 로또 번호와 당첨 번호를 비교해 당첨 통계 및 수익율 검증 테스트")
+    @Test
+    void 구매한_로또와_당첨번호를_비교해_당첨내역과_수익율_검증() {
+        // given
+        lottoService.buyLottos(8000);
+        List<WinResultStatus> winResults = List.of(WinResultStatus.FIFTH);
+
+        // when
+        List<Object> lottoResult = lottoService.createLottoResult(winResults);
+        double earningsRate = (double) lottoResult.get(0);
+        Map<WinResultStatus, Integer> statisticsCount = (Map<WinResultStatus, Integer>) lottoResult.get(1);
+        System.out.println(earningsRate);
+        System.out.println(statisticsCount);
+
+        // then
+        Assertions.assertAll(() -> {
+            assertThat(earningsRate).isEqualTo(62.5);
+            assertThat(statisticsCount.get(WinResultStatus.FIFTH)).isEqualTo(1);
+        });
     }
 }
