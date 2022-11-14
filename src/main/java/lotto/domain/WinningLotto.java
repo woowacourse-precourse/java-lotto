@@ -9,7 +9,7 @@ public class WinningLotto {
 
     public WinningLotto(List<Integer> winningNumbers, int bounsNumber) {
         CheckException.checkWinningNumbers(winningNumbers);
-        CheckException.checkBonusNumber(bounsNumber);
+        CheckException.checkBonusNumber(winningNumbers, bounsNumber);
         this.winningNumbers = winningNumbers;
         this.bounsNumber = bounsNumber;
     }

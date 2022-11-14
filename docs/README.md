@@ -56,3 +56,4 @@
 - `inputWinningNumbersByOutOfBound` : 입력된 당첨 번호 중 1 ~ 45의 숫자가 아니면 예외가 발생한다.
 - `inputBonusNumbersByOutOfBound` : 입력된 보너스 번호가 1 ~ 45의 숫자가 아니면 예외가 발생한다.
 - `inputWinningNumbersByOverSize` : 당첨 번호의 개수가 6개가 넘어가면 예외가 발생한다.
+- `inputBonusNumberByDuplicated` : 보너스 번호가 당첨 번호와 중복되면 예외가 발생한다.

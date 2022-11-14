@@ -17,7 +17,7 @@ class WinningLottoTest {
 
     @DisplayName("입력된 보너스 번호가 1 ~ 45의 숫자가 아니면 예외가 발생한다.")
     @Test
-    void inputBonusNumbersByOutOfBound() {
+    void inputBonusNumberByOutOfBound() {
         assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 0))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("로또 번호는 1 ~ 45 범위의 숫자여야 합니다.");
@@ -29,5 +29,13 @@ class WinningLottoTest {
         assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6, 7), 10))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("로또 번호 개수가 6개가 아닙니다.");
+    }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복되면 예외가 발생한다.")
+    @Test
+    void inputBonusNumberByDuplicated() {
+        assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 4))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복된 번호가 있습니다.");
     }
 }
