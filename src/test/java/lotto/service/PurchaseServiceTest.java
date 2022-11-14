@@ -20,7 +20,7 @@ class PurchaseServiceTest extends NsTest {
 
     @Test
     @DisplayName("로또 8개 사기")
-    void test1() {
+    void purchase8Lottos() {
         // given
         run("8000");
 
