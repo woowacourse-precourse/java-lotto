@@ -4,16 +4,15 @@ import java.util.EnumMap;
 import java.util.List;
 
 import static lotto.LottoConstant.*;
+import static lotto.LottoSeller.*;
 
 public class LottoProgram {
-    private LottoStore lottoStore;
+    private List<Lotto> lottoTickets;
     private WinningLotto winningLotto;
     private EnumMap<WinningType, Integer> winningResult;
 
     public LottoProgram() {
-        lottoStore = new LottoStore();
         winningResult = new EnumMap<>(WinningType.class);
-        winningLotto = null;
 
         for (WinningType type : WinningType.values()) {
             winningResult.put(type, INIT_WINNING_COUNT);
@@ -21,13 +20,14 @@ public class LottoProgram {
     }
 
     public void run() {
-        LottoSeller lottoSeller = new LottoSeller();
         List<Integer> numbers;
         int bonusNumber;
+        int purchasePrice;
 
-        buyLotto(lottoSeller.receivePurchasePrice());
-        numbers = lottoSeller.receiveWinningNumbers();
-        bonusNumber = lottoSeller.receiveBonusNumber();
+        purchasePrice = receivePurchasePrice();
+        this.lottoTickets = buyLotto(purchasePrice);
+        numbers = receiveWinningNumbers();
+        bonusNumber = receiveBonusNumber();
 
         initializeWinningLotto(numbers, bonusNumber);
         initializeWinningResult();
@@ -35,11 +35,13 @@ public class LottoProgram {
         LottoWinningAnalyzer analyzer = new LottoWinningAnalyzer(winningResult);
 
         analyzer.printWinningResult();
-        analyzer.printProfit(lottoStore.getUserPaidMoney());
+        analyzer.printProfit(purchasePrice);
     }
 
-    public void buyLotto(int price) {
-        lottoStore.buyLottoNumber(price);
+    public List<Lotto> buyLotto(int price) {
+        LottoStore lottoStore = new LottoStore();
+        return lottoStore.buyLottoNumber(price);
+
     }
 
     private void initializeWinningLotto(List<Integer> numbers, int bonusNumber) {
@@ -53,8 +55,6 @@ public class LottoProgram {
     }
 
     private void initializeWinningResult() {
-        List<Lotto> lottoTickets = lottoStore.getLottoTickets();
-
         for (int i = 0; i < lottoTickets.size(); i++) {
             Lotto lottoTicket = lottoTickets.get(i);
             int count = winningLotto.countWinningNumber(lottoTicket);
@@ -66,31 +66,31 @@ public class LottoProgram {
 
     private void updateWinningResult(int count, boolean hasBonus) {
         if (count == WINNING_THREE_NUM) {
-            addWinningResult(WinningType.THREE);
+            addWinningCount(WinningType.THREE);
             return;
         }
 
         if (count == WINNING_FOUR_NUM) {
-            addWinningResult(WinningType.FOUR);
+            addWinningCount(WinningType.FOUR);
             return;
         }
 
         if (count == WINNING_FIVE_NUM) {
             if (hasBonus) {
-                addWinningResult(WinningType.FIVE_AND_BONUS);
+                addWinningCount(WinningType.FIVE_AND_BONUS);
                 return;
             }
-            addWinningResult(WinningType.FIVE);
+            addWinningCount(WinningType.FIVE);
             return;
         }
 
         if (count == WINNING_SIX_NUM) {
-            addWinningResult(WinningType.SIX);
+            addWinningCount(WinningType.SIX);
             return;
         }
     }
 
-    private void addWinningResult(WinningType type) {
+    private void addWinningCount(WinningType type) {
         int currentCount = winningResult.get(type).intValue();
         winningResult.put(type, currentCount + PLUS_ONE_COUNT);
     }

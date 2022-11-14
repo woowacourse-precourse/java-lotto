@@ -9,7 +9,7 @@ import static lotto.LottoConstant.*;
 public class LottoStore {
     private List<Lotto> lottoTickets = new ArrayList<>();
 
-    public void buyLottoNumber(int price) {
+    public List<Lotto> buyLottoNumber(int price) {
         validate(price);
 
         int lottoPurchaseCount = price / LOTTO_PRICE;
@@ -22,14 +22,8 @@ public class LottoStore {
         }
 
         printLottoNumbers();
-    }
 
-    public List<Lotto> getLottoTickets(){
         return lottoTickets;
-    }
-
-    public int getUserPaidMoney(){
-        return lottoTickets.size() * LOTTO_PRICE;
     }
 
     private void validate(int price) {
@@ -45,15 +39,12 @@ public class LottoStore {
     }
 
     private void printLottoNumbers() {
-        StringBuilder message = new StringBuilder();
         int lottoPurchaseCount = lottoTickets.size();
 
-        message.append(String.format(BUY_MSG,lottoPurchaseCount));
+        System.out.println(String.format(BUY_MSG, lottoPurchaseCount));
 
         for (int i = 0; i < lottoPurchaseCount; i++) {
-            message.append(lottoTickets.get(i) + "\n");
+            System.out.println(lottoTickets.get(i));
         }
-
-        System.out.println(message);
     }
 }
