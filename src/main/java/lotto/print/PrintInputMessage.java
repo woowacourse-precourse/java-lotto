@@ -13,7 +13,7 @@ public class PrintInputMessage {
     private static final String INPUT_WRONG_DATA_TYPE = "[ERROR] 입력한 값이 숫자가 아닙니다.";
 
 
-      private static int getPurchaseAmount() {
+      public static int getPurchaseAmount() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
         try {
             String inputMoney = Console.readLine();
