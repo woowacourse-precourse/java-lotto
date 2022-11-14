@@ -1,13 +1,13 @@
 package lotto.domain;
 
 import static lotto.utils.Constant.NUMBER_OF_LOTTO;
+import static lotto.utils.Validation.validateNumberInLottoRange;
 
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
 import lotto.utils.ExceptionType;
-import lotto.view.Output;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -25,7 +25,6 @@ public class Lotto {
 
     private void validateBySize(List<Integer> numbers) {
         if (numbers.size() != NUMBER_OF_LOTTO) {
-            Output.printErrorAndExit(ExceptionType.OVER_THAN_NUMBER_OF_LOTTO.getMessage());
             throw new IllegalArgumentException(ExceptionType.OVER_THAN_NUMBER_OF_LOTTO.getMessage());
         }
     }
@@ -36,18 +35,10 @@ public class Lotto {
         }
     }
 
-    private void validateNumberInLottoRange(int number) {
-        if (number < 1 || number > 45) {
-            Output.printErrorAndExit(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
-            throw new IllegalArgumentException(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
-        }
-    }
-
     private void validateByOverlap(List<Integer> numbers) {
         HashSet<Integer> checkNumbers = new HashSet<>(numbers);
 
         if (checkNumbers.size() != NUMBER_OF_LOTTO) {
-            Output.printErrorAndExit(ExceptionType.HAVE_OVERLAP.getMessage());
             throw new IllegalArgumentException(ExceptionType.HAVE_OVERLAP.getMessage());
         }
     }

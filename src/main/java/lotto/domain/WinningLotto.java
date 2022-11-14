@@ -1,11 +1,11 @@
 package lotto.domain;
 
 import static lotto.utils.Constant.NUMBER_OF_LOTTO;
+import static lotto.utils.Validation.validateNumberInLottoRange;
 
 import java.util.HashSet;
 import java.util.List;
 import lotto.utils.ExceptionType;
-import lotto.view.Output;
 
 public class WinningLotto {
 
@@ -24,19 +24,11 @@ public class WinningLotto {
         validateByOverlapForAddBonusNumber(number);
     }
 
-    private void validateNumberInLottoRange(int number) {
-        if (number < 1 || number > 45) {
-            Output.printErrorAndExit(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
-            throw new IllegalArgumentException(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
-        }
-    }
-
     private void validateByOverlapForAddBonusNumber(int bonusNumber) {
         HashSet<Integer> checkNumbers = new HashSet<>(winning.getNumbers());
         checkNumbers.add(bonusNumber);
 
         if (checkNumbers.size() != NUMBER_OF_LOTTO + 1) {
-            Output.printErrorAndExit(ExceptionType.HAVE_OVERLAP.getMessage());
             throw new IllegalArgumentException(ExceptionType.HAVE_OVERLAP.getMessage());
         }
     }
