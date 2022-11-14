@@ -11,6 +11,7 @@ public class Application {
         if(parseInput == 0) {
             return;
         }
+        System.out.println(String.valueOf(parseInput)+"개를 구매했습니다.");
         List<Integer> answerNum = user.answerInput();
         if(answerNum.contains(0)){
             return;
