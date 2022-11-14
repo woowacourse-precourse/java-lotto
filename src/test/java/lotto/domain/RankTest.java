@@ -13,11 +13,11 @@ class RankTest {
 
 	private static Stream<Arguments> rankPriceProvideForResult() {
 		return Stream.of(
-			Arguments.of(2_000_000_000, Rank.firstRank),
-			Arguments.of(30_000_000, Rank.secondRank),
-			Arguments.of(1_500_000, Rank.thirdRank),
-			Arguments.of(50_000, Rank.forthRank),
-			Arguments.of(5_000, Rank.fifthRank)
+			Arguments.of(RankConst.FIRST_RANK_PRICE, Rank.firstRank),
+			Arguments.of(RankConst.SECOND_RANK_PRICE, Rank.secondRank),
+			Arguments.of(RankConst.THIRD_RANK_PRICE, Rank.thirdRank),
+			Arguments.of(RankConst.FORTH_RANK_PRICE, Rank.forthRank),
+			Arguments.of(RankConst.FIFTH_RANK_PRICE, Rank.fifthRank)
 		);
 	}
 

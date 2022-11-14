@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import lotto.util.ErrorConst;
+import lotto.util.ValidConst;
 
 public class InputValidService {
 
@@ -30,14 +31,16 @@ public class InputValidService {
 	}
 
 	private void validNumberRange(Integer bonusNumber) {
-		if (1 > bonusNumber || 45 < bonusNumber) {
+		if (ValidConst.LOTTO_MIN_NUMBER > bonusNumber || ValidConst.LOTTO_MAX_NUMBER < bonusNumber) {
 			throw new RuntimeException(ErrorConst.OUT_OF_BONUS_RANGE_ERROR);
 		}
 	}
 
 	private void checkIsNumber(String inputNumber) {
 		List<Integer> numbers = inputNumber.chars().mapToObj(i -> i - 48).collect(Collectors.toList());
-		int count = (int)numbers.stream().filter(i -> 0 > i || 9 < i).count();
+		int count = (int)numbers.stream()
+			.filter(i -> ValidConst.MIN_NUMBER_PER_CHARACTER > i || ValidConst.MAX_NUMBER_PER_CHARACTER < i)
+			.count();
 		if (count != 0) {
 			throw new RuntimeException(ErrorConst.NOT_NUMBER_ERROR);
 		}
@@ -52,13 +55,13 @@ public class InputValidService {
 	}
 
 	private void validAnswersSize(String[] split) {
-		if (split.length != 6) {
+		if (split.length != ValidConst.LOTTO_MAX_SIZE) {
 			throw new RuntimeException(ErrorConst.NUMBERS_SIZE_ERROR);
 		}
 	}
 
 	private void validNumberDividedByThousand(Integer userMoneyNumber) {
-		if (userMoneyNumber % 1000 != 0) {
+		if (userMoneyNumber % ValidConst.MONEY_UNIT != 0) {
 			throw new RuntimeException(ErrorConst.NOT_DIVIDED_BY_THOUSAND);
 		}
 	}

@@ -22,7 +22,7 @@ public class OutputView {
 		System.out.println(ViewConst.STATISTICS_OUTPUT);
 		List<String> userTotalRankResult = statisticsDto.getUserTotalRankResult();
 		userTotalRankResult.stream().forEach(System.out::println);
-		System.out.println("총 수익률은 " + statisticsDto.getYield() + "%입니다.");
+		System.out.println(ViewConst.TOTAL_YIELD + statisticsDto.getYield() + ViewConst.END_STATEMENT);
 	}
 
 	public void printError(String errorMessage) {

@@ -26,7 +26,7 @@ public class RankGroup {
 	}
 
 	public String userRankResultToString(Rank rank) {
-		return rank.getRankCountDescription() + rankGroup.get(rank) + RankConst.COUNT;
+		return rank.getRankCountDescription() + rankGroup.get(rank) + RankConst.COUNT_STATEMENT;
 	}
 
 	public void clearRankGroupCount() {

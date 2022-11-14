@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import lotto.domain.Lotto;
 import lotto.service.dto.StatisticsDto;
+import lotto.util.ErrorConst;
 import lotto.util.ViewConst;
 
 class OutputViewTest {
@@ -64,13 +65,13 @@ class OutputViewTest {
 
 		//then
 		assertThat(outContent.toString()).contains(ViewConst.STATISTICS_OUTPUT,
-			"총 수익률은 " + statisticsDto.getYield() + "%입니다.");
+			ViewConst.TOTAL_YIELD + statisticsDto.getYield() + ViewConst.END_STATEMENT);
 	}
 
 	@Test
 	void printErrorTest() {
 		//given
-		String errorMessage = "[ERROR]";
+		String errorMessage = ErrorConst.PREFIX_ERROR;
 
 		//when
 		outputView.printError(errorMessage);

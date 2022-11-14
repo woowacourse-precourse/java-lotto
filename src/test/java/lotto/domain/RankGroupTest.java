@@ -38,7 +38,7 @@ class RankGroupTest {
 		//when
 
 		double yield = rankGroup.findYield(buyPrice);
-		int sum = (2_000_000_000 * 1) + (30_000_000 * 2);
+		int sum = (RankConst.FIRST_RANK_PRICE * 1) + (RankConst.SECOND_RANK_PRICE * 2);
 		double result = Math.round(sum * 1000d / (double)buyPrice) / 10d;
 
 		//then
@@ -56,7 +56,7 @@ class RankGroupTest {
 		String userStatisticsResult = rankGroup.userRankResultToString(Rank.firstRank);
 
 		//then
-		assertThat(userStatisticsResult).isEqualTo(RankConst.FIRST_RANK_RESULT + addNumber + RankConst.COUNT);
+		assertThat(userStatisticsResult).isEqualTo(RankConst.FIRST_RANK_RESULT + addNumber + RankConst.COUNT_STATEMENT);
 	}
 
 	@DisplayName("사용자에게 보여즐 rank 통계 정보 출력 확인 테스트")
@@ -69,7 +69,7 @@ class RankGroupTest {
 		String userStatisticsResult = rankGroup.userRankResultToString(Rank.firstRank);
 
 		//then
-		assertThat(userStatisticsResult).isEqualTo(RankConst.FIRST_RANK_RESULT + 1 + RankConst.COUNT);
+		assertThat(userStatisticsResult).isEqualTo(RankConst.FIRST_RANK_RESULT + 1 + RankConst.COUNT_STATEMENT);
 	}
 
 	@Test

@@ -6,6 +6,7 @@ import java.util.Set;
 import lotto.controller.dto.WinnerNumberDto;
 import lotto.domain.dto.WinnerCountDto;
 import lotto.util.ErrorConst;
+import lotto.util.ValidConst;
 
 public class Lotto {
 	private final List<Integer> numbers;
@@ -42,15 +43,17 @@ public class Lotto {
 	}
 
 	private void validNumbersSize(List<Integer> numbers) {
-		if (numbers.size() != 6) {
+		if (numbers.size() != ValidConst.LOTTO_MAX_SIZE) {
 			throw new IllegalArgumentException(ErrorConst.NUMBERS_SIZE_ERROR);
 		}
 	}
 
 	private void validLottoNumberRange(List<Integer> numbers) {
 		//범위 1부터 45 까지
-		int count = (int)numbers.stream().filter(i -> 1 <= i && i <= 45).count();
-		if (count != 6) {
+		int count = (int)numbers.stream()
+			.filter(i -> ValidConst.LOTTO_MIN_NUMBER <= i && i <= ValidConst.LOTTO_MAX_NUMBER)
+			.count();
+		if (count != ValidConst.LOTTO_MAX_SIZE) {
 			throw new IllegalArgumentException(ErrorConst.OUT_OF_LOTTO_RANGE_ERROR);
 		}
 	}

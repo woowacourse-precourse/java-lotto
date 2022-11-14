@@ -55,9 +55,9 @@ class StatisticsServiceTest {
 
 		//then
 		Assertions.assertThat(userFirstRankStatisticsResult)
-			.isEqualTo(RankConst.FIRST_RANK_RESULT + 1 + RankConst.COUNT);
+			.isEqualTo(RankConst.FIRST_RANK_RESULT + 1 + RankConst.COUNT_STATEMENT);
 		Assertions.assertThat(userSecondRankStatisticsResult)
-			.isEqualTo(RankConst.SECOND_RANK_RESULT + 1 + RankConst.COUNT);
+			.isEqualTo(RankConst.SECOND_RANK_RESULT + 1 + RankConst.COUNT_STATEMENT);
 	}
 
 }

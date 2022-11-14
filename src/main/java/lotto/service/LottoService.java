@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.repository.UserLottoRepository;
 import lotto.repository.dto.UserLottoDto;
+import lotto.util.ValidConst;
 
 public class LottoService {
 
@@ -18,7 +19,8 @@ public class LottoService {
 
 	public UserLottoDto makeRandomLottoNumber(Integer lottoCount) {
 		for (int i = 0; i < lottoCount; i++) {
-			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(ValidConst.LOTTO_MIN_NUMBER,
+					ValidConst.LOTTO_MAX_NUMBER, ValidConst.LOTTO_MAX_SIZE)
 				.stream()
 				.sorted()
 				.collect(Collectors.toList());
