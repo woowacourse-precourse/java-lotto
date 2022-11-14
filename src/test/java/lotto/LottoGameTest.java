@@ -28,4 +28,17 @@ class LottoGameTest {
 
         assertThat(lottoAmount).isEqualTo(14);
     }
+
+    @Test
+    @DisplayName("로또 구입 금액만큼 로또를 생성하면 성공이다.")
+    void createLottosAsLottoAmount() throws NoSuchFieldException, IllegalAccessException {
+        Money money = new Money(14000);
+        LottoGame lottoGame = new LottoGame(money);
+
+        Field field = lottoGame.getClass().getDeclaredField("lottos");
+        field.setAccessible(true);
+        Lottos lottos = (Lottos) field.get(lottoGame);
+
+        assertThat(lottos.getLottos()).hasSize(14);
+    }
 }
