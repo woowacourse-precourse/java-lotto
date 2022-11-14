@@ -13,18 +13,45 @@ import java.util.Map;
 public class GameController {
 
     public void playLottoGame() {
-        InputView.printAtStart();
-        String inputAmount = Console.readLine();
-        Integer purchaseAmount = Integer.valueOf(inputAmount);
-        List<Lotto> lottos = LottoHandler.getLottos(purchaseAmount);
-        OutputView.printLottoNumbers(lottos);
-        InputView.printAfterLottoNumbers();
-        String inputNumbers = Console.readLine();
-        List<Integer> winningNumbers = LottoHandler.getWinningNumbers(inputNumbers);
-        InputView.printAfterWinningNumbers();
-        String bonusNumber = Console.readLine();
+        Integer purchaseAmount = getPurchaseAmount();
+        List<Lotto> lottos = createLottos(purchaseAmount);
+        List<Integer> winningNumbers = getWinningNumbers();
+        String bonusNumber = getBonusNumber();
+        getResultOfLotto(purchaseAmount, lottos, winningNumbers, bonusNumber);
+    }
+
+    private void getResultOfLotto(Integer purchaseAmount,
+                                  List<Lotto> lottos,
+                                  List<Integer> winningNumbers,
+                                  String bonusNumber) {
         Map<LottoGrade, Integer> resultOfLotto = LottoHandler.getResultOfLotto(bonusNumber, winningNumbers, lottos);
         Double rateOfReturn = LottoHandler.getRateOfReturn(resultOfLotto, purchaseAmount);
         OutputView.printResultOfLotto(resultOfLotto, rateOfReturn);
+    }
+
+    private String getBonusNumber() {
+        String bonusNumber = Console.readLine();
+        return bonusNumber;
+    }
+
+    private List<Integer> getWinningNumbers() {
+        String inputNumbers = Console.readLine();
+        List<Integer> winningNumbers = LottoHandler.getWinningNumbers(inputNumbers);
+        InputView.printAfterWinningNumbers();
+        return winningNumbers;
+    }
+
+    private List<Lotto> createLottos(Integer purchaseAmount) {
+        List<Lotto> lottos = LottoHandler.getLottos(purchaseAmount);
+        OutputView.printLottoNumbers(lottos);
+        InputView.printAfterLottoNumbers();
+        return lottos;
+    }
+
+    private Integer getPurchaseAmount() {
+        InputView.printAtStart();
+        String inputAmount = Console.readLine();
+        Integer purchaseAmount = Integer.valueOf(inputAmount);
+        return purchaseAmount;
     }
 }
