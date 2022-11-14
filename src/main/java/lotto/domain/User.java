@@ -61,4 +61,10 @@ public class User {
             throw new IllegalArgumentException("[ERROR] 쉼표를 기준으로 구분해주세요");
         }
     }
+
+    public void checkWinningNumbersCount(List<Integer> winningNumbers) {
+        if (winningNumbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호의 개수를 6개만 입력해주세요");
+        }
+    }
 }
