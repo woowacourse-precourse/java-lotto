@@ -16,19 +16,35 @@ public class LottoController {
     private static LottoService lottoService = new LottoService();
 
     public static void run() {
-        Lottos lottos = inputMoneyAmount();
+        String inputMoney = printInputMesssageAndInputAmount();
+        Lottos lottos = purchaseLottosAndPrintHistory(inputMoney);
         Result result = inputWinningNumber();
-
-        Map<Prize, Long> winningResult = lottoService.calculateEarningRates(lottos, result);
-        OutputView.printResultMessage(winningResult);
+        Map<Prize, Long> winningResults = compareResultAndPrintResult(lottos, result);
+        calculateEarningRatesAndPrint(inputMoney, winningResults);
     }
 
-    private static Lottos inputMoneyAmount() {
-        InputView.printInputMoneyMessage();
-        String input = Console.readLine();
-        Lottos lottos = lottoService.purchaseLottos(input);
+    private static void calculateEarningRatesAndPrint(String inputMoney, Map<Prize, Long> winningResults) {
+        Double earningRates = lottoService.calculateEarningRates(inputMoney, winningResults);
+        OutputView.printEarningRates(earningRates);
+    }
+
+    private static Map<Prize, Long> compareResultAndPrintResult(Lottos lottos, Result result) {
+        Map<Prize, Long> winningResult = lottoService.compareResult(lottos, result);
+        OutputView.printResultMessage(winningResult);
+        return winningResult;
+    }
+
+    private static Lottos purchaseLottosAndPrintHistory(String inputMoney) {
+        Lottos lottos = lottoService.purchaseLottos(inputMoney);
         OutputView.printLottosHistory(lottos);
         return lottos;
+    }
+
+    private static String printInputMesssageAndInputAmount() {
+        InputView.printInputMoneyMessage();
+        String money = Console.readLine();
+        ValidationUtils.validateNumber(money);
+        return money;
     }
 
     private static Result inputWinningNumber() {

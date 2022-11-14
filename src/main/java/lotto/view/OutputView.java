@@ -51,4 +51,8 @@ public class OutputView {
     private static void printNewLine() {
         System.out.println();
     }
+
+    public static void printEarningRates(Double earningRates) {
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", earningRates));
+    }
 }

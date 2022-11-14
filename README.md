@@ -14,7 +14,7 @@
     - [x] 당첨 번호는 6개를 가지며, 서로 다른 숫자이다. Result#validate()
 - [x] 당첨 결과를 판단할 수 있는 클래스 구현 Prize
   - [x] 맞춘 갯수에 따라서 등수를 반환 Prize#judge()
-  - [ ] 수익률 계산하는 기능 추가
+- [x] 수익률 계산하는 기능 추가 LottoService#calculateEarningRates()
 - [x] 결과를 출력하는 클래스 구현 OutputView
   - [x] 구매 내역 출력 기능 OutputView#printLottosHistory()
   - [x] 당첨 결과를 출력하는 기능 OutputView#printResultMessage()
