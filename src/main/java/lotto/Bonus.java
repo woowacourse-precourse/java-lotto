@@ -1,31 +1,25 @@
 package lotto;
 
 public class Bonus {
-	private final int BONUS;
-	private String errorMessage = "[ERROR] ";
-	
+	private int bonus;
+
 	public Bonus(int bonus) {
 		validate(bonus);
-		BONUS = bonus;
+		this.bonus = bonus;
 	}
-	
+
 	private void validate(int bonus) {
 		if (bonus < 1 || 45 < bonus) {
-			errorMessage += "1 이상 45 이하의 숫자를 선택해 주세요.";
-			throwException();
+			throwException(ErrorMessage.RANGE_ERROR);
 		}
 	}
-	
-	private void throwException() {
-		try {
-			throw new IllegalArgumentException();
-		} catch(IllegalArgumentException e) {
-			System.out.println(errorMessage);
-			return;
-		}
+
+	private void throwException(ErrorMessage errorType) {
+		errorType.printErrorMessage();
+		throw new IllegalArgumentException();
 	}
-	
+
 	public int getBonus() {
-		return BONUS;
+		return bonus;
 	}
 }

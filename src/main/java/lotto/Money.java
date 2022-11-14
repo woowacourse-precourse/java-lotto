@@ -1,36 +1,30 @@
 package lotto;
 
 public class Money {
-	private final int MONEY;
+	private int money;
 	private int lottoCount;
-	private String errorMessage = "[ERROR] ";
-	
+
 	public Money(int money) {
 		validate(money);
-		MONEY = money;
-		lottoCount = MONEY / 1_000;
+		this.money = money;
+		lottoCount = money / 1_000;
 	}
-	
+
 	private void validate(int money) {
 		if (money % 1_000 != 0) {
-			errorMessage += "구매 후 남는 돈이 없도록 입력해 주세요.";
-			throwException();
+			throwException(ErrorMessage.REMAINDER_ERROR);
 		}
 	}
-	
-	private void throwException() {
-		try {
-			throw new IllegalArgumentException();
-		} catch(IllegalArgumentException e) {
-			System.out.println(errorMessage);
-			return;
-		}
+
+	private void throwException(ErrorMessage errorType) {
+		errorType.printErrorMessage();
+		throw new IllegalArgumentException();
 	}
-	
+
 	public int getMoney() {
-		return MONEY;
+		return money;
 	}
-	
+
 	public int getLottoCount() {
 		return lottoCount;
 	}
