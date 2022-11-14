@@ -20,7 +20,7 @@ public class UserService {
     }
 
     private static int getAmount() throws IllegalArgumentException {
-        OutputView.printAmountInput();
+        OutputView.messageAmountInput();
         return Integer.parseInt(Console.readLine());
     }
 
