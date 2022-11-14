@@ -1,14 +1,11 @@
 package lotto.controller;
 
 import lotto.domain.*;
-import lotto.validator.MoneyValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static lotto.util.Const.*;
 
 public class GameController {
 
@@ -24,10 +21,7 @@ public class GameController {
     }
 
     public List<Lotto> buyLotto(long money) {
-        MoneyValidator.check(money);
-        long quantity = money / LOTTO_PRICE_UNIT;
-
-        return LottoMachine.order(quantity);
+        return LottoMachine.order(money);
     }
 
     public WinningNumber getWinningNumber() {
