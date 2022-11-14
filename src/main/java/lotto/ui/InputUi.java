@@ -20,4 +20,11 @@ public class InputUi {
     public String inputLottoWinNumber() {
         return Console.readLine();
     }
+
+    /**
+     * 로또 보너스 번호 입력 받기
+     */
+    public String inputLottoBonusNumber() {
+        return Console.readLine();
+    }
 }
