@@ -1,7 +1,10 @@
 package lotto.service;
 
+import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.User;
+
+import java.util.List;
 
 public class LottoService {
 
@@ -14,6 +17,10 @@ public class LottoService {
 
     public void saveWinningLotto(String bonusNumber) {
         lottoMachine = LottoMachine.initLottoMachineNumber(bonusNumber).get();
+    }
+
+    public List<Lotto> getUserLotties() {
+        return user.getLotties();
     }
 
 }
