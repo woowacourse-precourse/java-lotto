@@ -1,60 +1,71 @@
 package lotto;
 
 import lotto.enums.ErrorMessage;
+import lotto.enums.Range;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class LottoValidator {
-    String userInput;
-
-    public LottoValidator(String userInput) {
-        inputNumber(userInput);
-        this.userInput = userInput;
-    }
+public class Validator {
 
     public List<Integer> inputNumber(String inputNum) {
         String[] inputN = inputNum.split(",");
         return checkDuplicated(inputN);
     }
 
-    private int StringToInt(String s){
-        System.out.println(Integer.parseInt(s));
-        return s.charAt(0) - '0';
+    private int StringToASCII(String s){
+        return s.charAt(0);
     }
 
-    private boolean validateNum(String s) {
+    private int StringToInt(String s){
+        validateNumber(s);
+        return StringToASCII(s)-'0';
+    }
+
+    public boolean validateNumber(String s){
+        int toInt = StringToASCII(s);
+        if(toInt>Range.ASCII_MAX.get() || toInt<Range.ASCII_MIN.get()){
+            throw new IllegalArgumentException(ErrorMessage.NUM_ERROR.getErrorMessage());
+        }
+        return true;
+    }
+
+    public boolean validateNumRange(String s) {
         int idxNum = StringToInt(s);
-        if(idxNum > 45 || idxNum < 1){
+        if(idxNum > Range.MAX_RANGE.get() || idxNum < Range.MIN_RANGE.get()){
             throw new IllegalArgumentException(ErrorMessage.RANGE_ERROR.getErrorMessage());
         }
         return true;
     }
 
-    private boolean validateLength(String[] input){
-        if(input.length != 6){
+    public void validateLength(List<Integer> input){
+        if(input.size()!= Range.DIGIT.get()){
             throw new IllegalArgumentException(ErrorMessage.LEN_ERROR.getErrorMessage());
         }
-        return true;
     }
 
     private List<Integer> checkDuplicated(String[] input){
         List<Integer> lottoNum = new ArrayList<>();
-
         for (String s : input) {
-            if(validateNum(s) && validateLength(input))
-            {
+            if(validateNumRange(s)){
                 lottoNum.add(s.charAt(0) - '0');
             }
         }
+        validateLength(lottoNum);
 
         Set<Integer> inputSet = new HashSet<>(lottoNum);
-        if (inputSet.size() != 6){
+        if (inputSet.size() != Range.DIGIT.get()){
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_ERROR.getErrorMessage());
         }
         return lottoNum;
+    }
+
+    private void validatePrice(int price){
+        if (price%Range.PRICE.get()!=0){
+            throw new IllegalArgumentException(ErrorMessage.PRICE_ERROR.getErrorMessage());
+        }
     }
 
 }
