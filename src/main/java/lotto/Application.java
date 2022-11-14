@@ -42,7 +42,12 @@ public class Application {
     public static int inputPrice() {
         // 구입 금액 입력
         System.out.println(INPUT_PAYMENT_SENTENCE);
-        int payment = Integer.parseInt(Console.readLine());
+        int payment;
+        try {
+            payment = Integer.parseInt(Console.readLine());
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
         if (payment % 1000 != 0) {
             throw new IllegalArgumentException();
         }
