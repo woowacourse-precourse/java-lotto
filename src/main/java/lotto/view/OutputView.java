@@ -8,6 +8,9 @@ import lotto.domain.Rank;
 import lotto.domain.WinningStatistics;
 
 public class OutputView {
+    public static final String PRIZE_PATTERN = "###,###";
+    public static final String YILED_PATTERN = "###,###.0";
+
     public static void printLottos(List<Lotto> lottos) {
         System.out.println(lottos.size() + "개를 구매했습니다.");
         for (Lotto lotto : lottos) {
@@ -29,7 +32,7 @@ public class OutputView {
 
     public static void printYield(Money money, WinningStatistics winningStatistics) {
         double yield = money.calculateYield(winningStatistics.calculateTotalPrize());
-        System.out.println("총 수익률은 " + formatYield(yield) + "%입니다.");
+        System.out.println("총 수익률은 " + formatNumber(yield, YILED_PATTERN) + "%입니다.");
     }
 
     private static String statisticsAtRank(WinningStatistics winningStatistics, Rank rank) {
@@ -38,17 +41,12 @@ public class OutputView {
         if (rank.hasBonusNumber()) {
             sb.append(", 보너스 볼 일치");
         }
-        sb.append(String.format(" (%s원) - %d개", formatInteger(rank.getPrize()), winningStatistics.countWonLottosByRank(rank)));
+        sb.append(String.format(" (%s원) - %d개", formatNumber(rank.getPrize(), PRIZE_PATTERN), winningStatistics.countWonLottosByRank(rank)));
         return sb.toString();
     }
 
-    private static String formatInteger(Number number) {
-        DecimalFormat formatter = new DecimalFormat("###,###");
+    private static String formatNumber(Number number, String pattern) {
+        DecimalFormat formatter = new DecimalFormat(pattern);
         return formatter.format(number);
-    }
-
-    private static String formatYield(double yield) {
-        DecimalFormat formatter = new DecimalFormat("###,###.0");
-        return formatter.format(yield);
     }
 }
