@@ -55,12 +55,16 @@ public class WinningNumbers {
     }
 
     private int initializeBonus(){
-        return 0;
+        System.out.println(Message.BONUS_NUMBER_REQUEST);
+
+        String bonusInput = Console.readLine();
+
+        return validateBonus(bonusInput);
     }
 
 
-    private void validateBonus(){
-
+    private int validateBonus(String bonusInput){
+        return 0;
     }
 
     public List<Integer> getNumbers() {
