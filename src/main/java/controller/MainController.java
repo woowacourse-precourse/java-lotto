@@ -11,9 +11,9 @@ import java.util.List;
 
 public class MainController {
     private int lottoCount;
+    private int bonusNumber;
     private List<List<Integer>> totalLotteries;
     private List<Integer> winningNumbers;
-    private int[] rankCount;
 
     public void run() {
         moneyController();
@@ -35,17 +35,15 @@ public class MainController {
 
     public void makeWinningLottoController() {
         String winningNumber = InputView.inputWinningNumber();
-        int bonusNumber = InputView.inputBonusNumber();
-        winningNumbers = new WinningLotto().creteWinningNumbers(winningNumber, bonusNumber);
+        winningNumbers = new WinningLotto().creteWinningNumbers(winningNumber);
         compareController();
     }
 
     public void compareController() {
-        rankCount = new LottoBank().LottoNumberCompareResult(totalLotteries, winningNumbers);
-        compareResult();
-    }
-
-    public void compareResult() {
-        OutputView.printResult(rankCount);
+        new LottoBank().calculateWinningMatchNumber(lottoCount, totalLotteries, winningNumbers);
+        bonusNumber = InputView.inputBonusNumber();
+        int [] winningNumberMatchCount = new LottoBank().compareBonusNumber(lottoCount, bonusNumber,
+                totalLotteries, winningNumbers);
+        OutputView.printResult(winningNumberMatchCount);
     }
 }

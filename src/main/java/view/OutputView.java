@@ -1,7 +1,11 @@
 package view;
 
 import lotto.LottoRank;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
     public static void printLotteries(List<List<Integer>> totalLotteries) {
@@ -17,19 +21,22 @@ public class OutputView {
         System.out.printf("%d개를 구매했습니다.\n", lottoCount);
     }
 
-    public static void printResult(int[] rankCount) {
-        int i = 3;
+    public static void printResult(int[] winningNumberMatchCount) {
+        List<Integer> winningNumberMatchCounts = Arrays.stream(winningNumberMatchCount)
+                .boxed().collect(Collectors.toList());
+        int matchCount = 3;
         for (LottoRank lottoRank : LottoRank.values()) {
-            if (i == 6) { //5개
-                i = 7;
-            }
-            int count = rankCount[i];
-            System.out.println(lottoRank.getValue() + " - " + count);
-            if (i == 7) {
-                i--;
+            int rankMatchCount = Collections.frequency(winningNumberMatchCounts, matchCount);
+            System.out.println(lottoRank.getValue() + " - " + rankMatchCount);
+            if (matchCount == 5) {
+                matchCount = 7;
                 continue;
             }
-            i++;
+            if (matchCount == 7) {
+                matchCount = 6;
+                continue;
+            }
+            matchCount++;
         }
     }
 }

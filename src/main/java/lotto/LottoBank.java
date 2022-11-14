@@ -3,43 +3,41 @@ package lotto;
 import java.util.List;
 
 public class LottoBank {
-    private WinningLotto winningLotto;
-    private LottoMachine lottoMachine;
-    private int containsCount = 0;
+    private int[] winningNumberMatchCount;
+    private int winningMatchCount;
 
-    public int[] LottoNumberCompareResult(List<List<Integer>> totalLotteries, List<Integer> winningNumbers) {
-        int[] rankCount = new int[8];
-        for (List<Integer> lotto : totalLotteries) {
-            countContainsNumber(lotto, winningNumbers);
-            rankCount[containsCount]++;
-            containsCount = 0;
-        }
-        return rankCount;
-    }
-
-    public void countContainsNumber(List<Integer> lotto, List<Integer> winningNumbers) {
-        for (int number : lotto) {
-            if (isContainNumber(number, winningNumbers)) {
-                containsCount++;
+    public int[] calculateWinningMatchNumber(int lottoCount, List<List<Integer>> totalLotteries,
+                                             List<Integer> winningNumbers) {
+        winningNumberMatchCount = new int[lottoCount];
+        for (List<Integer> lottery : totalLotteries) {
+            winningMatchCount = compareWinningNumber(winningNumbers, lottery);
+            int index = totalLotteries.indexOf(lottery);
+            for (int i = 0; i < winningMatchCount; i++) {
+                winningNumberMatchCount[index]++;
             }
         }
-        if (isContainBonusNumber(lotto, winningNumbers)) {
-            containsCount++;
-        }
+        return winningNumberMatchCount;
     }
 
-    public boolean isContainNumber(int number, List<Integer> winningNumbers) {
-        if (winningNumbers.contains(number)) {
-            return true;
+    public int compareWinningNumber(List<Integer> winningNumbers, List<Integer> lottery) {
+        winningMatchCount = 0;
+        for (int lottoNumber : lottery) {
+            if (winningNumbers.contains(lottoNumber)) {
+                winningMatchCount++;
+            }
         }
-        return false;
+        return winningMatchCount;
     }
 
-    public boolean isContainBonusNumber(List<Integer> lotto, List<Integer> winningNumbers) {
-        int bonusNumber = winningNumbers.get(6);
-        if (containsCount == 6 && lotto.contains(bonusNumber)) {
-            return true;
+    public int[] compareBonusNumber(int lottoCount, int bonusNumber, List<List<Integer>> totalLotteries,
+                                    List<Integer> winningNumbers) {
+        winningNumberMatchCount = calculateWinningMatchNumber(lottoCount, totalLotteries, winningNumbers);
+        for (int i = 0; i < winningNumberMatchCount.length; i++) {
+            List<Integer> lottery = totalLotteries.get(i);
+            if (winningNumberMatchCount[i] == 5 && lottery.contains(bonusNumber)) {
+                winningNumberMatchCount[i] += 2;
+            }
         }
-        return false;
+        return winningNumberMatchCount;
     }
 }
