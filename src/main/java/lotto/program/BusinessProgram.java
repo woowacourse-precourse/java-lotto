@@ -11,6 +11,7 @@ public class BusinessProgram {
 
     public LottoOfUser generateUserLotto(int money) {
         int ticket = Converter.moneyToTicket(money);
+        System.out.println(ticket+"개를 구매했습니다.");
         return generateLottoByTicket(ticket);
     }
 
@@ -24,7 +25,7 @@ public class BusinessProgram {
     }
 
     public void printUserLottoResults(LottoOfUser userLotto, LottoOfAnswer answerLotto) {
-        System.out.println("당첨통계\t---");
+        System.out.println("당첨통계\n---");
         PrizeOfUser userPrize = userLotto.matchWithAnswer(answerLotto);
         userPrize.printPrize();
     }

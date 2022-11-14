@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Converter {
     public static int moneyToTicket(int money) {
-        return money % 1000;
+        return money / 1000;
     }
 
     public static List<Integer> stringToList(String stringLiteral) {

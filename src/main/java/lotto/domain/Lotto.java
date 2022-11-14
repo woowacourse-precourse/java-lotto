@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -58,6 +59,17 @@ public class Lotto {
     }
 
     public void sortedAndPrint() {
+        numbers.sort(Comparator.naturalOrder());
+        System.out.println(numbers);
+    }
 
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder("[" + numbers.get(0));
+        for (int index = 1; index < numbers.size(); index++) {
+            stringBuilder.append(", ").append(numbers.get(index));
+        }
+        stringBuilder.append("]");
+        return stringBuilder.toString();
     }
 }
