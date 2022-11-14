@@ -44,4 +44,8 @@ public class Lotto {
         }
     }
 
+    public void printLotto() {
+        System.out.println(this.numbers);
+    }
+
 }
