@@ -18,7 +18,7 @@
 10. 수익률을 출력한다.
 
 ## 기능 목록
-- [ ] 양의 정수를 입력받을 수 있다. - UserInterFace#inputInteger()
+- [x] 양의 정수를 입력받을 수 있다. - UserInterFace#inputInteger()
 - [ ] 로또 구입 금액을 기억할 수 있다. - Buyer#setMoney()
 - [ ] 로또 구입 금액을 얻을 수 있다. - Buyer#getMoney()
 - [ ] 금액에 해당하는 로또 발행수를 알 수 있다. - Judgment#countLottos()
