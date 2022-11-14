@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -17,6 +18,9 @@ public class Lotto {
         if (!isValidRange(numbers)) {
             throw new IllegalArgumentException();
         }
+        if (isDuplicated(numbers)){
+            throw new IllegalArgumentException();
+        }
     }
 
     private boolean isValidSize(List<Integer> numbers) {
@@ -32,6 +36,12 @@ public class Lotto {
                     || number > LottoConstant.ENDTO.getValue()) return false;
         }
         return true;
+    }
+
+    private boolean isDuplicated(List<Integer> numbers) {
+        HashSet<Integer> numberSet = new HashSet<>(numbers);
+        if (numberSet.size() != numbers.size()) return false;
+        return false;
     }
 
 }
