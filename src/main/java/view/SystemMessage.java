@@ -63,7 +63,7 @@ public class SystemMessage {
         System.out.println("4개 일치 (50,000원) - " + map.get(Rank.FOURTH) + "개");
         System.out.println("5개 일치 (1,500,000원) - " + map.get(Rank.THIRD) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + map.get(Rank.SECOND) + "개");
-        System.out.println("6개 일치 (,2000,000,000원) - " + map.get(Rank.FIRST) + "개");
+        System.out.println("6개 일치 (2000,000,000원) - " + map.get(Rank.FIRST) + "개");
     }
 
     public Map<Rank, Integer> getCount(Rank rank, Map<Rank, Integer> map) {
