@@ -10,6 +10,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Model {
 
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 45;
+    private static final int LOTTO_SIZE = 6;
     public List<List<Integer>> USERS_LOTTOS;
     public HashMap <Integer, Integer> PRIZE_RANKINGS;
     private int MONEY;
@@ -138,7 +141,7 @@ public class Model {
 
     private List<Integer> getLottoNumber() {
         List<Integer> lottoNumbers = new ArrayList<>
-                (Randoms.pickUniqueNumbersInRange(1, 45, 6));
+                (Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE));
         Collections.sort(lottoNumbers);
 
         return lottoNumbers;
