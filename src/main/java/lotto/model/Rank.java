@@ -30,5 +30,12 @@ public enum Rank {
                 findAny().
                 orElse(NOTHING);
     }
+    public static List<String> getRankNames(){
+        List<String> rankName=new ArrayList<>();
+        for(Rank rank: Rank.values()){
+            rankName.add(rank.name());
+        }
+        return rankName;
+    }
 
 }
