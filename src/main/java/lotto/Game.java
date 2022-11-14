@@ -20,7 +20,7 @@ public class Game {
         List<Lotto> lottos = getLottos(inputPrice);
         List<Integer> winNumbers = getWinNumbers();
         int bonusNumber = getBonusNumber(winNumbers);
-
+        showResult(inputPrice, lottos, winNumbers, bonusNumber);
     }
 
     private static Integer getInputPrice() {
@@ -91,4 +91,8 @@ public class Game {
         return bonusNumber;
     }
 
+    private static void showResult(Integer inputPrice, List<Lotto> lottos, List<Integer> winNumbers, int bonusNumber) {
+        Winning winning = new Winning(winNumbers, bonusNumber);
+        winning.printAnalysis(lottos, inputPrice);
+    }
 }
