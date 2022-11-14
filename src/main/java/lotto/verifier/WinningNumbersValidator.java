@@ -2,6 +2,7 @@ package lotto.verifier;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -61,6 +62,13 @@ public class WinningNumbersValidator {
     }
 
     private List<Integer> transformToWinningNumbers(String input) {
-        return null;
+        List<Integer> winningNumbers = new ArrayList<>();
+        String[] numbers = input.split(",");
+
+        for(String number: numbers) {
+            winningNumbers.add(Integer.parseInt(number));
+        }
+
+        return winningNumbers;
     }
 }
