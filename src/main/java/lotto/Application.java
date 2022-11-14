@@ -9,6 +9,11 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        int money = inputMoney();
+        List<List<Integer>> lottoList = buyLotto(money);
+        Map<String, List<Integer>> luckyNumMap = digitInput();
+        Lotto mylotto = new Lotto(luckyNumMap.get("luckyNums"));
+
     }
 
 
@@ -16,11 +21,11 @@ public class Application {
         Map<String, List<Integer>> result = new HashMap<>();
         List<Integer> bonus = new ArrayList<>();
         System.out.println("당첨 번호를 입력해 주세요");
-        List<Integer> collect = Arrays.stream(Console.readLine().split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        List<Integer> luckyNums = Arrays.stream(Console.readLine().split(",")).map(Integer::parseInt).collect(Collectors.toList());
         System.out.println("보너스 번호를 입력해 주세요");
         Integer bonusNum = Integer.parseInt(Console.readLine());
         bonus.add(bonusNum);
-        result.put("collect",collect);
+        result.put("luckyNums",luckyNums);
         result.put("bonus",bonus);
         return result;
     }
@@ -31,7 +36,9 @@ public class Application {
     public static int inputMoney(){
         System.out.println("구입금액을 입력해 주세요");
         int purchaseMoney = Integer.parseInt(Console.readLine());
-        if (purchaseMoney%1000!=0){
+        int purchaseAmount = purchaseMoney % 1000;
+        System.out.println(purchaseAmount+"개를 구매했습니다.");
+        if (purchaseAmount!=0){
             throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액을 입력하십시오.");
         }
         return purchaseMoney;
@@ -41,6 +48,7 @@ public class Application {
         List<List<Integer>> lottoNums = new ArrayList<>();
         while (lottoNums.size()!=purchaseAmount){
             lottoNums.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            System.out.println(lottoNums.get(-1));
         }
         return lottoNums;
     }
