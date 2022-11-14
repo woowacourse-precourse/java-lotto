@@ -1,10 +1,7 @@
 package lotto.utils;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Converter {
@@ -36,5 +33,11 @@ public class Converter {
                         decFormat.format(Winning.getPrizeByLabel(key)),
                         resultMap.get(key)))
                 .collect(Collectors.toList());
+    }
+
+    public static List<Integer> sortList(List<Integer> list) {
+        List<Integer> sortedList = new ArrayList<>(list);
+        sortedList.sort(Comparator.naturalOrder());
+        return sortedList;
     }
 }

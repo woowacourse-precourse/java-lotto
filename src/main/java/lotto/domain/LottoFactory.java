@@ -1,8 +1,12 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.utils.Converter;
 import lotto.utils.LottoInfo;
 
 public class LottoFactory {
@@ -12,7 +16,7 @@ public class LottoFactory {
                 LottoInfo.END_NUMBER.getNumber(),
                 LottoInfo.LENGTH.getNumber()
         );
-
-        return new Lotto(randomNumbers);
+        List<Integer> sortedRandomNumbers = Converter.sortList(randomNumbers);
+        return new Lotto(sortedRandomNumbers);
     }
 }
