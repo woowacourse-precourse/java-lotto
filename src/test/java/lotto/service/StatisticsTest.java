@@ -7,7 +7,6 @@ import java.util.Map;
 import lotto.model.Lotto;
 import lotto.model.Prize;
 import lotto.model.WinLotto;
-import lotto.service.Statistics;
 import org.junit.jupiter.api.Test;
 
 class StatisticsTest {

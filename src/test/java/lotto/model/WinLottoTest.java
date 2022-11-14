@@ -1,14 +1,13 @@
 package lotto.model;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class WinLottoTest {
+
     @Test
     public void 당첨로또번호_정상() {
         assertThatCode(() -> new WinLotto(
