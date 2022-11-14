@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import lotto.model.Lotto;
 import lotto.model.LottoCount;
 import lotto.model.Lottos;
+import lotto.model.Money;
 import lotto.model.Rank;
 import lotto.model.Result;
 
@@ -61,5 +62,10 @@ public class OutputView {
             return COMMA + MATCH_BONUS_BALL;
         }
         return " ";
+    }
+
+    public static void printYield(Result result, Money money) {
+        double winnings = result.getWinnings();
+        double yield = (winnings / money.getMoney()) * ONE_HUNDRED;
     }
 }

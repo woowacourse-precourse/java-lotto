@@ -16,4 +16,12 @@ public class Result {
     public int getRankCount(Rank rank) {
         return this.result.getOrDefault(rank, 0);
     }
+
+    public int getWinnings() {
+        int winnings = 0;
+        for (Rank rank : result.keySet()) {
+            winnings += rank.getWinnings() * result.get(rank);
+        }
+        return winnings;
+    }
 }

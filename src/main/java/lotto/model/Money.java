@@ -13,6 +13,10 @@ public class Money {
         this.money = Integer.parseInt(money);
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     private void isValidMoneyType(String money) {
         try {
             Integer.parseInt(money);
