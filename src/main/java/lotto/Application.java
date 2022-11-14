@@ -45,8 +45,9 @@ public class Application {
     }
 
     public static void isVoidInput(String numberInput) {
-        if (numberInput.length() == 0)
-            throw new IllegalArgumentException("문자를 입력하십시오.");
+        if (numberInput.length() == 0) {
+            throw new IllegalArgumentException("[ERROR] 문자를 입력하십시오.");
+        }
     }
 
     public static void isInputNumber(String numberInput) {
@@ -54,18 +55,23 @@ public class Application {
         for (int index = 0; index < inputLength; index++) {
             char charAtIndex = numberInput.charAt(index);
             if (isNumber(charAtIndex)) continue;
-            throw new IllegalArgumentException("숫자 외 다른 문자는 입력이 불가합니다.");
+            throw new IllegalArgumentException("[ERROR] 숫자 외 다른 문자는 입력이 불가합니다.");
         }
     }
 
-    public static void isDividedBy1000(Long purchasePrice) {
-        if (purchasePrice % 1000 != 0)
-            throw new IllegalArgumentException("금액을 1000원 단위로 입력해 주세요.");
+    public static void isInputLengthExceeds18(String numberInput) {
+        if (numberInput.length() > 18)
+            throw new IllegalArgumentException("[ERROR] 20억원보다 큰 금액으로 복권을 구매할 수 없습니다.");
     }
 
     public static void isLargerThan2billion(Long purchasePrice) {
         if (purchasePrice > 2_000_000_000)
-            throw new IllegalArgumentException("1등 당첨금보다 더 큰 금액으로 복권을 구매할 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 20억원보다 큰 금액으로 복권을 구매할 수 없습니다.");
+    }
+
+    public static void isDividedBy1000(Long purchasePrice) {
+        if (purchasePrice % 1000 != 0)
+            throw new IllegalArgumentException("[ERROR] 금액을 1000원 단위로 입력해 주세요.");
     }
 
     public static void getNoOfLotto() {
@@ -74,10 +80,11 @@ public class Application {
 
         isVoidInput(purchasePriceInput);
         isInputNumber(purchasePriceInput);
+        isInputLengthExceeds18(purchasePriceInput);
 
         long purchasePrice = Long.parseLong(purchasePriceInput);
-        isDividedBy1000(purchasePrice);
         isLargerThan2billion(purchasePrice);
+        isDividedBy1000(purchasePrice);
 
         noOfLottos = (int)(purchasePrice / 1000);
     }
@@ -143,7 +150,7 @@ public class Application {
     }
 
     public static void guideBonusNumberFormat() {
-        System.out.println("당첨 번호가 아닌 1이상 45이하의 숫자를 보너스 번호로 입력해 주세요.");
+        System.out.println("\n당첨 번호가 아닌 1이상 45이하의 숫자를 보너스 번호로 입력해 주세요.");
     }
 
     public static void checkRange(int number) {
@@ -231,16 +238,20 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        initializeNumberType();
-        initializeNoOfLottoWinAt();
-        initializePrizesAtPlaces();
+        try {
+            initializeNumberType();
+            initializeNoOfLottoWinAt();
+            initializePrizesAtPlaces();
 
-        purchaseLottos();
-        getWinningNumbers();
-        getBonusNumber();
+            purchaseLottos();
+            getWinningNumbers();
+            getBonusNumber();
 
-        getComparisonResult();
-        printLottoResults();
-        printEarningsRate();
+            getComparisonResult();
+            printLottoResults();
+            printEarningsRate();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
