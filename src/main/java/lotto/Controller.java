@@ -11,8 +11,8 @@ public class Controller {
     private static final String NOT_INSEPARABLE_ERROR = "구입 금액이 1000원 단위가 아닙니다.";
 
     public void start() {
-        String amount, winningNumber;
-        int ticketAmount, bonusNumber;
+        String amount, winningNumber, bonusNumber;
+        int ticketAmount;
         List<Integer> winningNumbers;
         Lotto lotto;
         LottoNumbers lottoNumbers = new LottoNumbers();
@@ -35,7 +35,7 @@ public class Controller {
 
         winningNumber = InputView.winningNumberInputMessage();
         winningNumbers = Winning.makeWinningNumberList(winningNumber);
-        bonusNumber = Integer.parseInt(InputView.bonusNumberInputMessage());
+        bonusNumber = InputView.bonusNumberInputMessage();
         Winning.prize(lottoTickets, winningNumbers, bonusNumber);
     }
 
