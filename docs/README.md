@@ -59,13 +59,14 @@
 - `domain/Lottos` 클래스 : 구입 금액, 사용자 구매 로또 리스트 생성 및 저장
   - `int money`, `List<Lotto> lottoList`
   - `buyLottos()`, `printLottos()`
+- `domain/Result` 클래스 : 로또 결과 관련 로직 수행
+  - `THREE("3개 일치", "5,000", 30)`
+  - `FOUR("4개 일치", “50,000", 40)`
+  - `FIVE(”5개 일치”, “1,500,000”, 50)`
+  - `FIVEWITHBONUS(”5개 일치, 보너스 볼 일치", “30,000,000”, 51)`
+  - `SIX(”6개 일치”, “2,000,000,000”, 60)`
+  - `getResult()`
 - `domain/Manager` 클래스 : 당첨 관련 로직 수행
-  - result를 enum형으로 가짐
-    - `THREE("3개 일치", "5,000")`
-    - `FOUR("4개 일치", “50,000")`
-    - `FIVE(”5개 일치”, “1,500,000”)`
-    - `FIVEWITHBONUS(”5개 일치, 보너스 볼 일치", “30,000,000”)`
-    - `SIX(”6개 일치”, “2,000,000,000”)`
   - `compareLottos()`, `printResult()`
 - `domain/Yield` 클래스 : 수익률 처리
   - `calculateYield()`, `printYield()`
