@@ -5,24 +5,23 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         LottoVandingMachine lottoVM = new LottoVandingMachine();
-        LottoMain lottoMain = new LottoMain();
-        LottoWinning lottoWinning = new LottoWinning();
+        LottoCalculator lottoCal = new LottoCalculator();
 
-        //로또 구매
-        List<List<Integer>> lottoList = lottoVM.buyLotto();
+        //로또 발행
+        List<Lotto> lottoList = lottoVM.getIssuedLottoList();
 
         //로또 추첨
-        List<Integer> lottoAnswer = lottoMain.getLottoAnswer();
+        Lotto lottoAnswer = new Lotto(lottoVM.drawLotto(), true);
 
-        int[] result = new int[5];
         //로또 추첨 결과
-        for(List<Integer> lotto : lottoList)
+        int[] result = new int[5];
+        for(Lotto lotto : lottoList)
         {
-            int matchCount = lottoWinning.compareLotto(lotto, lottoAnswer);
-            result = lottoWinning.getResult(result, matchCount);
+            int matchCount = lottoCal.compareLotto(lotto.getNumbers(), lottoAnswer.getNumbers());
+            result = lottoCal.getResult(result, matchCount);
         }
 
         //결과 출력
-        lottoWinning.printResult(lottoVM.issuedLottoCount, result);
+        lottoCal.printResult(lottoVM.getIssuedLottoCount(), result);
     }
 }

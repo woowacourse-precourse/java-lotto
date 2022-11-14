@@ -3,10 +3,10 @@ package lotto;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class LottoWinning
+public class LottoCalculator
 {
     //compare issuedLotto to drawedLotto
-    protected int compareLotto(List<Integer> issuedLotto, List<Integer> lottoAnswer)
+    public int compareLotto(List<Integer> issuedLotto, List<Integer> lottoAnswer)
     {
         int count = 0;
         for(int i = 0; i < lottoAnswer.size(); i++)
@@ -27,13 +27,13 @@ public class LottoWinning
         if(count < 3)
             return resultArr;
 
-        else if(count != 0 && count < 6)
+        if(count != 0 && count < 6)
             resultArr[count-3] += 1;
 
-        else if(count == 6)
+        if(count == 6)
             resultArr[4] += 1;
 
-        else if(count == 7)
+        if(count == 7)
             resultArr[3] += 1;
 
         return resultArr;
@@ -59,6 +59,7 @@ public class LottoWinning
             revenue += getOneYield(i, resultArr[i]);
 
         double result = (double)revenue / (issuedLottoCount * 1000);
+        result *= 100;
 
         DecimalFormat formatter = new DecimalFormat("###,###.#");
         String yield = formatter.format(result);
@@ -66,22 +67,14 @@ public class LottoWinning
         return yield;
     }
 
+    //발행한 로또의 수익
     private int getOneYield(int index, int value)
     {
-        switch (index)
+        for(LottoStandard ls : LottoStandard.values())
         {
-            case 0:
-                return value * 5000;
-            case 1:
-                return value * 50000;
-            case 2:
-                return value * 1500000;
-            case 3:
-                return value * 30000000;
-            case 4:
-                return value * 2000000000;
-            default:
-                return 0;
+            if(index == ls.getIndex())
+                return value * ls.getVlaue();
         }
+        return 0;
     }
 }
