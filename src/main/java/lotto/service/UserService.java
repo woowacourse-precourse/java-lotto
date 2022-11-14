@@ -6,6 +6,8 @@ import lotto.domain.Prize;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console.*;
 public class UserService {
 
@@ -74,5 +76,14 @@ public class UserService {
     public int findTheNumberOfLotteryTicketsPurchased(String purchaseAmount){
         int amount = Integer.parseInt(purchaseAmount);
         return amount / 1000;
+    }
+
+    public ArrayList<Integer> convertWinningNumbers(String winningNumbers) {
+        String[] items = winningNumbers.split(",");
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (String item : items) {
+            numbers.add(Integer.parseInt(item));
+        }
+        return numbers;
     }
 }

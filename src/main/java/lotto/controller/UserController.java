@@ -41,11 +41,7 @@ public class UserController {
         gameProgressView.showEnterWinningNumbersMessage();
         String winningNumbers = userService.enterWinningNumbers();
         //TODO : 예외 처리 필요
-        String[] items = winningNumbers.split(",");
-        List<Integer> numbers = new ArrayList<>();
-        for (String item : items) {
-            numbers.add(Integer.parseInt(item));
-        }
+        ArrayList<Integer> numbers = userService.convertWinningNumbers(winningNumbers);
         Lotto lotto = new Lotto(numbers);
         userRepository.setUserWinningNumbers(lotto);
     }
