@@ -5,7 +5,7 @@ public class Constants {
         public static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
         public static final String INPUT_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
         public static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
-        public static final String OUTPUT_CNT_MESSAGE = "개를 구매했습니다."; //need refactoring
+        public static final String OUTPUT_CNT_MESSAGE = "%d개를 구매했습니다.\n";
         public static final String STATISTICS_MESSAGE = "당첨 통계\n---";
         public static final String THREE_HIT_MESSAGE = "3개 일치 (5,000원) - %d개\n";
         public static final String FOUR_HIT_MESSAGE = "4개 일치 (50,000원) - %d개\n";
