@@ -1,7 +1,14 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        programStart();
+        Integer cost = Convert.costConvert(Console.readLine());
+
+    }
+    public static void programStart(){
+        System.out.print("구입금액을 입력해주세요.");
     }
 }
