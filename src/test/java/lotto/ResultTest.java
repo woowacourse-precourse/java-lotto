@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ResultTest {
     Result result;
+
     @BeforeEach
     void setUp() {
         List<List<Integer>> myLotto = List.of(
@@ -24,6 +25,7 @@ class ResultTest {
         int winningBonus = 7;
         result = new Result(myLotto, winningLotto, winningBonus);
     }
+
     @Test
     void judgeWinTest() {
         int[] expectedTotalWin = {0, 0, 0, 0, 1};
@@ -36,5 +38,4 @@ class ResultTest {
     void calculateTotalPrizeTest() {
         assertThat(result.totalPrize).isEqualTo(5000);
     }
-
 }

@@ -12,5 +12,4 @@ class BonusTest {
         assertThatThrownBy(() -> new Bonus(50))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 }

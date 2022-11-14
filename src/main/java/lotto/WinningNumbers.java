@@ -24,7 +24,7 @@ public class WinningNumbers {
         String numbers = Console.readLine();
         String[] tmp = numbers.split(",");
         for (int i = 0; i < tmp.length; i++) {
-            try{
+            try {
                 lotto.add(Integer.parseInt(tmp[i]));
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
@@ -42,14 +42,14 @@ public class WinningNumbers {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개입니다.");
         try {
             bonus = Integer.parseInt(tmp[0]);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
         }
         return bonus;
     }
 
     private void validate(List<Integer> lotto, int bonus) {
-        if (lotto.contains(bonus)){
+        if (lotto.contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되면 안 됩니다.");
         }
     }

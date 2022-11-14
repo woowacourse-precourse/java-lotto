@@ -5,6 +5,7 @@ import java.util.List;
 public class Compare {
     final int sameNumberCnt;
     final boolean isBonusSame;
+
     Compare(List<Integer> numbers, List<Integer> lotto, int bonus) {
         sameNumberCnt = sameNumberCnt(numbers, lotto);
         isBonusSame = isBonusSame(numbers, bonus);
@@ -20,9 +21,6 @@ public class Compare {
     }
 
     private boolean isBonusSame(List<Integer> numbers, int bonus) {
-        boolean isBonusSame = false;
-        if (numbers.contains(bonus))
-            isBonusSame = true;
-        return isBonusSame;
+        return numbers.contains(bonus);
     }
 }

@@ -7,8 +7,8 @@ public enum Win {
     FOURTH(4, 50_000),
     FIFTH(3, 5_000);
 
-    private int sameNumberCnt;
-    private int prize;
+    private final int sameNumberCnt;
+    private final int prize;
 
     Win(int sameNumberCnt, int prize) {
         this.sameNumberCnt = sameNumberCnt;

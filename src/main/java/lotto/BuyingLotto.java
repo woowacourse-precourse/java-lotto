@@ -6,6 +6,7 @@ import java.util.List;
 public class BuyingLotto {
     final int count;
     List<List<Integer>> lottos = new ArrayList<>();
+
     BuyingLotto() {
         System.out.println("구매금액을 입력해 주세요.");
         count = new Customer().count;

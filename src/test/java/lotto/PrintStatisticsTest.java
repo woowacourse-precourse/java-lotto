@@ -32,6 +32,5 @@ class PrintStatisticsTest extends NsTest {
         int[] totalWin = {0, 0, 0, 0, 1};
         int totalPrize = 5000;
         new PrintStatistics(myLottoCnt, totalWin, totalPrize);
-
     }
 }

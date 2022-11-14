@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.List;
-
 public class Bonus {
     final int bonus;
 

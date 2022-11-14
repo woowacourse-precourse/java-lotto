@@ -61,7 +61,6 @@ class WinningNumbersTest extends NsTest {
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
-
     @Override
     protected void runMain() {
         new WinningNumbers();

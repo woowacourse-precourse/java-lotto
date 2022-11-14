@@ -17,6 +17,7 @@ class LottoGeneratorTest {
         assertThat(numbersAllDifferent(numbers)).isEqualTo(true);
         assertThat(numbersSorted(numbers)).isEqualTo(true);
     }
+
     private boolean numbersAllDifferent(List<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
             int tmp = numbers.get(i);
@@ -25,9 +26,10 @@ class LottoGeneratorTest {
         }
         return true;
     }
+
     private boolean numbersSorted(List<Integer> numbers) {
         for (int i = 0; i < numbers.size() - 1; i++) {
-            if (numbers.get(i) > numbers.get(i+1))
+            if (numbers.get(i) > numbers.get(i + 1))
                 return false;
         }
         return true;

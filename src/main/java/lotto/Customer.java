@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Customer {
     final int count;
     final int price;
+
     Customer() {
         String tmp = Console.readLine();
         try {

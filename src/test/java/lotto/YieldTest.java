@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class YieldTest {
-
     @Test
     void calculateYield() {
         int myLottoCnt = 8;
@@ -13,5 +12,4 @@ class YieldTest {
         Yield yield = new Yield(myLottoCnt, totalPrize);
         assertEquals(62.5, yield.yield);
     }
-
 }
