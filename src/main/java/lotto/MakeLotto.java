@@ -15,7 +15,18 @@ public class MakeLotto {
                 numbers.add(num);
             }
         }
+
         numbers = numbers.stream().sorted().collect(Collectors.toList());
         return numbers;
+    }
+
+    public List<List<Integer>> publishedLottos(int n) {
+        MakeLotto makeLotto = new MakeLotto();
+        List<List<Integer>> answer = new ArrayList<>();
+        for (int i =0; i < n; i++) {
+            answer.add(makeLotto.publishedLotto());
+        }
+
+        return answer;
     }
 }

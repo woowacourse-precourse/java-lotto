@@ -4,6 +4,7 @@ import lotto.MakeLotto;
 import user.BuyLotto;
 import user.UserInput;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,6 +23,7 @@ public class PlayGame {
         int money = sc.nextInt();
 
         int lottoCnt = buyLotto.countHowMany(money);
+        List<List<Integer>> lottos = makeLotto.publishedLottos(lottoCnt);
 
         System.out.println(lottoCnt+COUNT_LOTTO.getStatus());
 
@@ -32,10 +34,9 @@ public class PlayGame {
         int bonusNum = userInput.getBonusNumber(sc.nextInt());
 
         // TODO 수익률을 계산하는 기능 구현
-
     }
 
+    public void print() {
 
-
-
+    }
 }
