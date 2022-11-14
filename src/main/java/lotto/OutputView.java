@@ -7,4 +7,8 @@ public class OutputView {
         System.out.println();
         System.out.println(String.format(LOTTO_PURCHASE_MESSAGE, lottoCount));
     }
+
+    public static void printLotto(String lotto) {
+        System.out.println(lotto);
+    }
 }
