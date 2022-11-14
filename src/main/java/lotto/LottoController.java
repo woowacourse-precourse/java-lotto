@@ -32,6 +32,4 @@ public class LottoController {
         int bonusNumber = input.readBonusNumber();
         BonusNumber.BONUS_NUMBER.setNumber(bonusNumber);
     }
-
-
 }

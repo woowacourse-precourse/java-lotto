@@ -53,4 +53,12 @@ public class LottoOutput {
         return count;
     }
 
+    public void printProfitPercent(String percent) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Messages.LOTTO_PERCENT_HEAD.getMessage())
+                .append(percent)
+                .append(Messages.LOTTO_PERCENT_TAIL.getMessage());
+
+        System.out.println(sb);
+    }
 }
