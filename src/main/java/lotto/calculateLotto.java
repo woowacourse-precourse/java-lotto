@@ -6,12 +6,15 @@ import java.util.stream.Collectors;
 public class calculateLotto {
     Lotto inputLottto;
     int bonusLotto;
+    static String lottoinputMessage = "로또번호 입력하세요.";
+    static String bonusinputMessage = "보너스번호 입력하세요.";
+    static String totalrateMessage = "총 수익률은 %s%% 입니다.";
 
     calculateLotto(){
-        System.out.println("로또번호 입력하세요");
+        System.out.println(lottoinputMessage);
         String inputLotto = Console.readLine();
         this.inputLottto = convertLottos(inputLotto);
-        System.out.println("보너스번호 입력하세요");
+        System.out.println(bonusinputMessage);
         String bonusLotto = Console.readLine();
         this.bonusLotto = convertBonus(bonusLotto);
     }
@@ -53,7 +56,7 @@ public class calculateLotto {
         for(int winLottoNumber : winLottos){
             System.out.println(count+++"개 일치 "+" - "+winLottoNumber+"개");
         }
-        System.out.println("총 수익률은 "+rateLotto+"%입니다.");
+        System.out.printf(totalrateMessage,String.format("%.1f", rateLotto));
     }
     double rateLotto(int numberOflottos, List<Integer> winLottos){
         // 계산하자 현재 가격을

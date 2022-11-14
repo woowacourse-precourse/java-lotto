@@ -2,7 +2,7 @@ package lotto;
 
 public class inputMoney {
     private final String money;
-
+    static String numberOfLottoPurchased = "%d개를 구매했습니다.%n";
     public inputMoney(String money) {
         validate(money);
         this.money = money;
@@ -11,7 +11,7 @@ public class inputMoney {
         return Integer.valueOf(money) / 1000;
     }
     public int buyLottoprint(){
-        System.out.println(buyLotto()+"개를 구매했습니다.");
+        System.out.printf(numberOfLottoPurchased,buyLotto());
         return buyLotto();
     }
     private void validate(String money){
