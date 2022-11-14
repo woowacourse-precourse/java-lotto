@@ -29,4 +29,17 @@ class InputViewTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage(INPUT_TYPE_IS_NOT_PROPER);
     }
+
+    @Test
+    @DisplayName("보너스 번호의 입력 형식이 적절하지 않으면 예러를 발생한다.")
+    void inputBonusNumberImproperly() {
+        String inputBonusNumber = "사십삼";
+        InputStream in = generateUserInput(inputBonusNumber);
+        System.setIn(in);
+        scanner = new Scanner(System.in);
+
+        assertThatThrownBy(InputView::inputBonusNumber)
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage(INPUT_TYPE_IS_NOT_PROPER);
+    }
 }
