@@ -16,9 +16,10 @@ public class Lotto {
         if (numbers.size() !=REQUIRE_LOTTO_NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException("[ERROR] : 로또 번호의 개수가 잘못됐습니다.");
         }
+        InputUtility.testNoDuplicate(numbers);
     }
     public List<Integer> getLottoNumber(){
         return numbers;
     }
-    // TODO: 추가 기능 구현
+
 }
