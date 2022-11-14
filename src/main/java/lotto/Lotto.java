@@ -10,6 +10,8 @@ public class Lotto {
     private static final String ERROR_NUMBER_RANGE = "로또 번호는 1 ~ 45 여야 합니다.";
     private final List<Integer> numbers;
     private static final List<Integer> initLottoNumbers = new ArrayList<>();
+    private static final List<Lotto> lottos = new ArrayList<>();
+    private static final int lottoPrice = 1000;
 
     static {
         for (int i = 1; i <= 45; i++) {
@@ -45,4 +47,21 @@ public class Lotto {
 
         return lottoNumbers;
     }
+
+    public static void buy(Money money) {
+        int countLottos = money.divide(lottoPrice);
+        for (int i=0; i < countLottos; i++) {
+            lottos.add(new Lotto(generateLottoNumbers()));
+        }
+    }
+
+    public static List<Lotto> getLottos() {
+        return Collections.unmodifiableList(lottos);
+    }
+
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
+    }
+
+
 }

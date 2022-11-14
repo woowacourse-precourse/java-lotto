@@ -47,4 +47,8 @@ public class Money {
             throw new IllegalArgumentException(ERROR_EMPTY);
         }
     }
+
+    public int divide(int amount) {
+        return money / amount;
+    }
 }
