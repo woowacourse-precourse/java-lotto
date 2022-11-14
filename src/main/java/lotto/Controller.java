@@ -20,23 +20,23 @@ public class Controller {
     EnumMap<Money, Integer> map = new EnumMap<>(Money.class);
     void start() {
         try {
-            inputStart();
-            inputStartException();
+            startMoney();
+            startMoneyException();
             inMoney();
             Computer[] computers = getComputers();
-            inputWinningNumber();
-            inputWinningNumberException();
-            inputBonus();
-            inputBonusException();
+            winningNumber();
+            winningNumberException();
+            Bonus();
+            BonusException();
             inBonus();
             checkWinning(computers);
-            calculateResult();
+            Result();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private void calculateResult() {
+    private void Result() {
         result = domain.checkWinningMoney(map);
         view.printBenfit(inMoney, result);
     }
@@ -59,20 +59,20 @@ public class Controller {
         input = Console.readLine();
     }
 
-    public void inputBonusException() throws IllegalArgumentException {
+    public void BonusException() throws IllegalArgumentException {
         ex.inputWinningBonus(input);
     }
 
-    private void inputBonus() {
+    private void Bonus() {
         view.inputBonus();
         getInput();
     }
 
-    public void inputStartException() throws IllegalArgumentException {
+    public void startMoneyException() throws IllegalArgumentException {
         ex.initialInput(input);
     }
 
-    private void inputStart() {
+    private void startMoney() {
         view.startMention();
         getInput();
     }
@@ -86,14 +86,14 @@ public class Controller {
     }
 
 
-    public void inputWinningNumberException() throws IllegalArgumentException {
+    public void winningNumberException() throws IllegalArgumentException {
         str = input.split(",");
         addWinningNum();
         lotto = new Lotto(lottoList);
         System.out.println();
     }
 
-    private void inputWinningNumber() {
+    private void winningNumber() {
         view.inputNumber();
         getInput();
     }
