@@ -14,12 +14,7 @@ import java.util.Map.Entry;
 public class LottoReader {
     public Map<LottoRank, Integer> createLottoResult(List<Lotto> publishedLotto, Lotto winningLotto, Bonus bonus) {
         Map<Lotto, Integer> matchingResult = createMatchingResult(publishedLotto, winningLotto);
-
-        Map<LottoRank, Integer> lottoResult = new EnumMap<>(LottoRank.class);
-
-        for (LottoRank rank : values()) {
-            lottoResult.put(rank, 0);
-        }
+        Map<LottoRank, Integer> lottoResult = initLottoResult();
 
         for (Entry<Lotto, Integer> matchingResultEntry : matchingResult.entrySet()) {
             Lotto lotto = matchingResultEntry.getKey();
@@ -37,6 +32,16 @@ public class LottoReader {
                 LottoRank findRank = findRank(matchingResultEntry.getValue());
                 lottoResult.put(findRank, lottoResult.get(findRank) + 1);
             }
+        }
+
+        return lottoResult;
+    }
+
+    private Map<LottoRank, Integer> initLottoResult() {
+        Map<LottoRank, Integer> lottoResult = new EnumMap<>(LottoRank.class);
+
+        for (LottoRank rank : values()) {
+            lottoResult.put(rank, 0);
         }
 
         return lottoResult;
