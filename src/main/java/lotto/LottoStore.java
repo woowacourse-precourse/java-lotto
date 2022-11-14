@@ -41,29 +41,28 @@ public class LottoStore {
 
     public void judgeLottoNumber() {
         this.lottoResult = new ArrayList<>();
-        for (int i = 0; i < pages; i++) {
-            lottoResult.add(LottoResultJudge.getInstance.judgeLotto(userLotto.get(i).getLotto(), winningNumber, bonus));
+        for(Lotto userLotto: userLotto) {
+            lottoResult.add(LottoResultJudge.getInstance.judgeLotto(userLotto.getLotto(), winningNumber, bonus));
         }
 
-
-        for (int lottoResultIndex = 0; lottoResultIndex < lottoResult.size(); lottoResultIndex++) {
-            if (lottoResult.get(lottoResultIndex) == LottoResult.FIRST) {
+        for (LottoResult lottoResult: lottoResult) {
+            if (lottoResult == LottoResult.FIRST) {
                 count[0]++;
                 profit += LottoResult.FIRST.getPrize();
             }
-            if (lottoResult.get(lottoResultIndex) == LottoResult.SECOND) {
+            if (lottoResult == LottoResult.SECOND) {
                 count[1]++;
                 profit += LottoResult.SECOND.getPrize();
             }
-            if (lottoResult.get(lottoResultIndex) == LottoResult.THIRD) {
+            if (lottoResult == LottoResult.THIRD) {
                 count[2]++;
                 profit += LottoResult.THIRD.getPrize();
             }
-            if (lottoResult.get(lottoResultIndex) == LottoResult.FOURTH) {
+            if (lottoResult == LottoResult.FOURTH) {
                 count[3]++;
                 profit += LottoResult.FOURTH.getPrize();
             }
-            if (lottoResult.get(lottoResultIndex) == LottoResult.FIFTH) {
+            if (lottoResult == LottoResult.FIFTH) {
                 count[4]++;
                 profit += LottoResult.FIFTH.getPrize();
             }
