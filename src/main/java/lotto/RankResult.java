@@ -18,6 +18,10 @@ public class RankResult {
         rankMap = new EnumMap<>(Rank.class);
     }
 
+    public Map<Rank, Integer> getResult() {
+        return this.rankMap;
+    }
+
     public void initEnumMap() {
         Arrays.stream(Rank.values())
                 .forEach(rank -> rankMap.put(rank, 0));
