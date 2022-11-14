@@ -58,7 +58,7 @@ public class LottoGame {
                 (Constant.NUMBER_RANGE_START,
                         Constant.NUMBER_RANGE_END,
                         Constant.LOTTO_NUMBER_COUNT);
-        //sortLottoNumbers(randomNumbers);
+        sortLottoNumbers(randomNumbers);
         return randomNumbers;
     }
 
