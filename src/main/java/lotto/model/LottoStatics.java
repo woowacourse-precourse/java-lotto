@@ -1,11 +1,9 @@
 package lotto.model;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class LottoStatics {
     private static final int DEFAULT_WINNING = 0;
-    private static final int BONUS_SAME_COUNT = 5;
 
     private HashMap<Winning, Integer> staticsInfo;
 
@@ -41,20 +39,10 @@ public class LottoStatics {
 
     public void calculatePrize(Lotto lotto, LottoStore store) {
         int sameCount = calculateSameCount(lotto, store);
-        Arrays.stream(Winning.values())
-                .filter(winning -> winning.getSameCount() == sameCount)
-                .forEach(winning -> staticsInfo.put(winning, staticsInfo.get(winning) + 1));
-        if (sameCount == BONUS_SAME_COUNT) {
-            calculateBonus(lotto, store);
-        }
-    }
-
-    private void calculateBonus(Lotto lotto, LottoStore store) {
-        if (isBonusNumber(lotto, store)) {
-            staticsInfo.put(Winning.THIRD, staticsInfo.get(Winning.THIRD) - 1);
-            return;
-        }
-        staticsInfo.put(Winning.SECOND, staticsInfo.get(Winning.SECOND) - 1);
+        boolean bonus = isBonus(lotto, store);
+        
+        Winning prize = Winning.findWinning(sameCount, bonus);
+        staticsInfo.put(prize, staticsInfo.get(prize) + 1);
     }
 
     private int calculateSameCount(Lotto lotto, LottoStore store) {
@@ -64,7 +52,7 @@ public class LottoStatics {
                 .count();
     }
 
-    private boolean isBonusNumber(Lotto lotto, LottoStore store) {
+    private boolean isBonus(Lotto lotto, LottoStore store) {
         return lotto.getNumbers().contains(store.getBonusNumber());
     }
 }

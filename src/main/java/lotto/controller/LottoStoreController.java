@@ -11,12 +11,6 @@ import lotto.model.Money;
 import lotto.view.InputView;
 
 public class LottoStoreController {
-    private final InputView input;
-
-    public LottoStoreController() {
-        this.input = new InputView();
-    }
-
     public void run() {
         Buyer buyer = createBuyer();
         buyer.printBuyLottos();
@@ -34,8 +28,8 @@ public class LottoStoreController {
     }
 
     private LottoStore createLottoStore() {
-        List<Integer> lotteryNumbers = input.inputNumbers();
-        int bonusNumber = input.inputBonusNumber();
+        List<Integer> lotteryNumbers = InputView.inputNumbers();
+        int bonusNumber = InputView.inputBonusNumber();
         return new LottoStore(lotteryNumbers, bonusNumber);
     }
 }

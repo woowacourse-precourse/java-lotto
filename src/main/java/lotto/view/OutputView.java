@@ -13,9 +13,12 @@ public class OutputView {
 
     public static void printStatics(LottoStatics statics) {
         HashMap<Winning, Integer> staticsInfo = statics.getStaticsInfo();
+        
         System.out.printf(MESSAGE_STATICS_START);
         for (Winning value : Winning.values()) {
-            System.out.printf(MESSAGE_STATICS_INFO, value.getDetail(), value.getPrize(), staticsInfo.get(value));
+            if (value.getPrize() != 0) {
+                System.out.printf(MESSAGE_STATICS_INFO, value.getDetail(), value.getPrize(), staticsInfo.get(value));
+            }
         }
     }
 
