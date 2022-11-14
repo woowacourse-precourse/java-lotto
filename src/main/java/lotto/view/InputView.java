@@ -6,6 +6,7 @@ import static lotto.domain.SystemMessage.ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.IS_MONEY_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.IS_ONLY_NUMBER_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.LIMIT_NUMBER_ERROR_MESSAGE;
+import static lotto.domain.SystemMessage.LOTTO_ONLY_NUMBER_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.PATTERN_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -34,7 +35,7 @@ public class InputView {
     }
 
     private enum Validation {
-        REGEX(","),PATTERN("^[\\w]+,[\\w]+,[\\w]+,[\\w]+,[\\w]+,[\\w]+$");
+        REGEX(","), PATTERN("^[\\w]+,[\\w]+,[\\w]+,[\\w]+,[\\w]+,[\\w]+$");
         private final String value;
 
         Validation(String value) {
@@ -70,8 +71,12 @@ public class InputView {
 
 
     private static List<Integer> splitNumbers(final String numbersText) {
+        try{
         return Arrays.stream(numbersText.split(Validation.REGEX.getValue())).map(Integer::parseInt)
                 .collect(Collectors.toList());
+        } catch(NumberFormatException numberFormatException){
+            throw new IllegalArgumentException(ERROR_MESSAGE + LOTTO_ONLY_NUMBER_ERROR_MESSAGE);
+        }
     }
 
     private static List<Integer> inputLottoNumbers() {
@@ -89,7 +94,8 @@ public class InputView {
         System.out.println(Message.LOTTO_ANSWER_NUMBER.getValue());
         return inputLottoNumbers();
     }
-    private static void validateAllLottoNumber(List<Integer> splitLotto){
+
+    private static void validateAllLottoNumber(List<Integer> splitLotto) {
         validateLottoNumberDuplicate(splitLotto);
         validateCheckLimit(splitLotto);
     }
@@ -101,7 +107,7 @@ public class InputView {
         }
     }
 
-    private static void validateLottoNumberDuplicate(List<Integer> numbers){
+    private static void validateLottoNumberDuplicate(List<Integer> numbers) {
         Set<Integer> duplicateChecker = new HashSet<>(numbers);
         if (duplicateChecker.size() != 6) {
             throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE_ERROR_MESSAGE);
@@ -110,12 +116,11 @@ public class InputView {
     }
 
 
-    private static void validateCheckLimit(List<Integer> numbers){
-        for(Integer num : numbers){
-            if(num < 1 || num > 45){
+    private static void validateCheckLimit(List<Integer> numbers) {
+        for (Integer num : numbers) {
+            if (num < 1 || num > 45) {
                 throw new IllegalArgumentException(ERROR_MESSAGE + LIMIT_NUMBER_ERROR_MESSAGE);
             }
         }
     }
-
 }
