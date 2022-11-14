@@ -45,7 +45,7 @@ public class Lotto {
     }
 
     public int getWinningAmount(WinningNumbers winningNumbers) {
-        return getPrize(winningNumbers).getMoney();
+        return getPrize(winningNumbers).getWinningAmount();
     }
 
     @Override

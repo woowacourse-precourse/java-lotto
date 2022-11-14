@@ -15,7 +15,7 @@ public class Lottos {
 
         lottos.stream()
                 .map(lotto -> lotto.getPrize(winningNumbers))
-                .filter(prize -> prize != LottoPrize.NO_PRIZE)
+                .filter(prize -> prize != LottoPrize.LOSE)
                 .forEach(result::increaseWinningCount);
 
         return result;

@@ -19,7 +19,7 @@ class LottoPrizeTest {
     @ParameterizedTest(name = "{0} 당첨 상금 {1}원")
     @CsvSource({"FIRST,2_000_000_000", "SECOND,30_000_000", "THIRD,1_500_000", "FOURTH,50_000", "FIFTH,5_000"})
     void 당첨_상금_반환_기능(String prize, int moneyAmount) {
-        assertThat(LottoPrize.valueOf(prize).getMoney()).isEqualTo(moneyAmount);
+        assertThat(LottoPrize.valueOf(prize).getWinningAmount()).isEqualTo(moneyAmount);
     }
 
     static Stream<Arguments> lottoResultAndPrize() {
@@ -32,7 +32,7 @@ class LottoPrizeTest {
                 , Arguments.of(new CompareResult(4, false), LottoPrize.FOURTH)
                 , Arguments.of(new CompareResult(3, true), LottoPrize.FIFTH)
                 , Arguments.of(new CompareResult(3, false), LottoPrize.FIFTH)
-                , Arguments.of(new CompareResult(2, true), LottoPrize.NO_PRIZE)
+                , Arguments.of(new CompareResult(2, true), LottoPrize.LOSE)
         );
     }
 }

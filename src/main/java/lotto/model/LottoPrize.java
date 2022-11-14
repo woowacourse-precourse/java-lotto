@@ -9,30 +9,30 @@ public enum LottoPrize {
     THIRD(1_500_000),
     FOURTH(50_000),
     FIFTH(5_000),
-    NO_PRIZE(0);
+    LOSE(0);
 
-    private static final Map<CompareResult, LottoPrize> compareResultToPrize = new HashMap<>();
-    private final int money;
+    private static final Map<CompareResult, LottoPrize> compareResultToLottoPrize = new HashMap<>();
+    private final int winningAmount;
 
     static {
-        compareResultToPrize.put(new CompareResult(6, false), FIRST);
-        compareResultToPrize.put(new CompareResult(5, true), SECOND);
-        compareResultToPrize.put(new CompareResult(5, false), THIRD);
-        compareResultToPrize.put(new CompareResult(4, true), FOURTH);
-        compareResultToPrize.put(new CompareResult(4, false), FOURTH);
-        compareResultToPrize.put(new CompareResult(3, true), FIFTH);
-        compareResultToPrize.put(new CompareResult(3, false), FIFTH);
+        compareResultToLottoPrize.put(new CompareResult(6, false), FIRST);
+        compareResultToLottoPrize.put(new CompareResult(5, true), SECOND);
+        compareResultToLottoPrize.put(new CompareResult(5, false), THIRD);
+        compareResultToLottoPrize.put(new CompareResult(4, true), FOURTH);
+        compareResultToLottoPrize.put(new CompareResult(4, false), FOURTH);
+        compareResultToLottoPrize.put(new CompareResult(3, true), FIFTH);
+        compareResultToLottoPrize.put(new CompareResult(3, false), FIFTH);
     }
 
-    private LottoPrize(int money) {
-        this.money = money;
+    private LottoPrize(int winningAmount) {
+        this.winningAmount = winningAmount;
     }
 
     public static LottoPrize toPrize(CompareResult lottoResult) {
-        return compareResultToPrize.getOrDefault(lottoResult, NO_PRIZE);
+        return compareResultToLottoPrize.getOrDefault(lottoResult, LOSE);
     }
 
-    public int getMoney() {
-        return money;
+    public int getWinningAmount() {
+        return winningAmount;
     }
 }
