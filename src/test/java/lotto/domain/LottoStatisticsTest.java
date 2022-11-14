@@ -38,4 +38,15 @@ public class LottoStatisticsTest {
 		//then
 		assertThat(result).contains(LottoRanking.FIFTH, LottoRanking.BLANK);
 	}
+
+	@DisplayName("구매한 로또의 수익률 확인 테스트")
+	@Test
+	void 로또_수익률_확인_테스트() {
+		//given
+		LottoStatistics lottoStatistics = new LottoStatistics(winningNumber);
+		//when
+		Double yield = lottoStatistics.calculateYield(lottos, lottoStatistics.getWinningResult(lottos));
+		//then
+		assertThat(yield).isEqualTo(62.5);
+	}
 }
