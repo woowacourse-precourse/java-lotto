@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.dto.LottosDto;
 
 public class Lottos {
 
@@ -13,14 +14,7 @@ public class Lottos {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public String toString() {
-        return lottos.stream()
-                .map(Lotto::toString)
-                .collect(Collectors.joining());
-    }
-
-    public List<Lotto> get() {
-        return lottos;
+    public LottosDto toDto() {
+        return new LottosDto(lottos);
     }
 }

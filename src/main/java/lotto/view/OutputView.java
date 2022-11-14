@@ -6,7 +6,6 @@ import lotto.domain.Rank;
 public class OutputView {
 
     private static final String REQUEST_MONEY = "구입금액을 입력해 주세요.";
-    private static final String BUY_SOME = "개를 구매했습니다.";
     private static final String REQUEST_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
     private static final String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     private static final String WINNING_STATISTICS = "당첨 통계";
@@ -22,9 +21,8 @@ public class OutputView {
         System.out.println(REQUEST_MONEY);
     }
 
-    public static void printLottos(int numOfLottoBuying, String lottos) {
+    public static void printLottos(String lottos) {
         System.out.println();
-        System.out.println(numOfLottoBuying + BUY_SOME);
         System.out.println(lottos);
     }
 

@@ -1,8 +1,11 @@
 package lotto.controller;
 
-import lotto.domain.Lottos;
-import lotto.domain.WinningNumber;
+import lotto.dto.LottosDto;
+import lotto.dto.WinningNumberDto;
+import lotto.dto.WinningStatisticsDto;
 import lotto.service.LottoService;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -13,9 +16,14 @@ public class LottoController {
     }
 
     public void run() {
-        Lottos lottos = lottoService.createLottos();
-        WinningNumber winningNumber = lottoService.createWinnerNumber();
-
-        lottoService.computeWinningStatistics(lottos.get(), winningNumber);
+        String money = InputView.requestMoney();
+        LottosDto lottosDto = lottoService.createLottos(money);
+        OutputView.printLottos(lottosDto.toString());
+        String winningNumber = InputView.requestWinningNumber();
+        String bonusNumber = InputView.requestBonusNumber();
+        WinningNumberDto winningNumberDto = lottoService.createWinningNumber(winningNumber, bonusNumber);
+        WinningStatisticsDto winningStatisticsDto = lottoService.createWinningStatistics(lottosDto, winningNumberDto);
+        OutputView.printWinningStatistics(winningStatisticsDto.getRankAndRankCount());
+        OutputView.printTotalYield(winningStatisticsDto.getTotalYield());
     }
 }

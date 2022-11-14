@@ -3,20 +3,44 @@ package lotto.domain;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import lotto.dto.WinningStatisticsDto;
 
 public class WinningStatistics {
 
     private static final int INIT_NUMBER = 0;
     private static final int LOTTO_PRICE = 1000;
     private static final int PERCENT_UNIT = 100;
+    private static final double THIRD_SCORE = 5;
+    private static final double SECOND_SCORE = 5.5;
 
     private final Map<Rank, Integer> rankAndRankCount = new HashMap<>();
 
-    public WinningStatistics(List<Lotto> lottos, WinningNumber winningNumber) {
-        List<Rank> ranks = winningNumber.collectRanks(lottos);
+    public WinningStatistics(List<Lotto> lottos, Lotto winningLotto, BonusNumber bonusNumber) {
+        List<Rank> ranks = collectRanks(lottos, winningLotto, bonusNumber);
 
         initRankAndRankCount();
         countRanks(ranks);
+    }
+
+    private List<Rank> collectRanks(List<Lotto> lottos, Lotto winningLotto, BonusNumber bonusNumber) {
+        return lottos.stream()
+                .map(lotto -> createRank(lotto, winningLotto, bonusNumber))
+                .collect(Collectors.toList());
+    }
+
+    private Rank createRank(Lotto lotto, Lotto winningLotto, BonusNumber bonusNumber) {
+        double numOfMatch = winningLotto.countMatch(lotto);
+        boolean isBonusNumberMatch = bonusNumber.isBonusNumberMatch(lotto);
+
+        if (isSecondScore(numOfMatch, isBonusNumberMatch)) {
+            numOfMatch = SECOND_SCORE;
+        }
+        return RankCreator.create(numOfMatch);
+    }
+
+    private boolean isSecondScore(double numOfMatch, boolean isBonusNumberMatch) {
+        return numOfMatch == THIRD_SCORE && isBonusNumberMatch;
     }
 
     public double computeTotalYield() {
@@ -67,7 +91,9 @@ public class WinningStatistics {
         rankAndRankCount.put(rank, ++rankCount);
     }
 
-    public Map<Rank, Integer> get() {
-        return rankAndRankCount;
+    public WinningStatisticsDto toDto() {
+        double totalYield = computeTotalYield();
+
+        return new WinningStatisticsDto(rankAndRankCount, totalYield);
     }
 }
