@@ -6,7 +6,7 @@
 - 로또 구입 금액 입력 기능 ( purchaseAmount ) O
 - 당첨 내역 계산 기능 ( checkLottoNumber ) O
 - 로또 개수 계산 기능 ( lottoAmount ) O
-- 당첨 내역 출력 기능
-- 수익률 계산 기능
-- 수익률 출력 기능
-- ERROR 문구 출력 기능
+- 당첨 통계 계산 기능 (calculationLottoStatistics)
+- 당첨 내역 출력 기능 (printLottoStatistics)
+- 수익률 계산 기능 (calculateProceeds)
+- ERROR 문구 출력 기능 (Error)
