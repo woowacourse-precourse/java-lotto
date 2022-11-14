@@ -2,8 +2,9 @@
 
 1. Game 클래스: 로또 로직을 구현한 클래스
     - 구입 금액에 맞게 로또 n개 생성기 (generateListOfLottos)
-    - 당첨 내역 확인하는 로직 메소드 (checkLotto)
+    - 로또 리스트의 당첨 내역 확인하는 메소드 (checkListOfLottos)
 2. Lotto 클래스
+   - 당첨 내역 확인하는 로직 메소드 (checkLotto)
 3. View 클래스: user input/output 클래스
     - 구입 금액 입력 받아서 로또 뽑기 회수 리턴, 예외 상황 시 에러 발생시키는 메소드 메소드 (getMoneyInput)
       - 구입 금액이 1000으로 나눠떨어지지 않으면 IllegalArgumentException 발생시키는 메소드 (validateIsDivisible)
