@@ -73,7 +73,6 @@ public class LottoGameMessage {
         WINNING_LOTTO_SIX_MESSAGE(player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_6,0));
     }
     public void printPlayerLottoYield(Player player){
-        String yield = String.format("%.1f", (double)player.getLottoRevenue()/player.getLottoPrice() * 100);
-        PLAYER_YIELD_MESSAGE(yield);
+        PLAYER_YIELD_MESSAGE(lottoService.calculatePlayerYield(player));
     }
 }

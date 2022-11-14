@@ -194,9 +194,13 @@ public class LottoService {
     public void createPlayerRandomLottoPickNumbers(Player player){
         for (int lottoNum = 0; lottoNum < player.getLottoCount(); lottoNum++) {
             Lotto playerLotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            //Collections.sort(playerLotto.getNumbers());
             player.getPlayerLottoPickNumbers().add(playerLotto);
         }
+    }
+
+    public String calculatePlayerYield(Player player){
+        String yield = String.format("%.1f", (double)player.getLottoRevenue()/player.getLottoPrice() * 100);
+        return yield;
     }
 
     private String input(){
