@@ -4,6 +4,7 @@ import java.util.List;
 import lotto.Lotto;
 import lotto.MatchingType;
 import lotto.PrizeType;
+import lotto.Profit;
 import lotto.Quantity;
 import lotto.WinningStat;
 
@@ -37,5 +38,10 @@ public class OutputView {
             String result = matchingType.getMatchCount() + "개 일치 (" + prizeType.getMoney() + ")원 - " + count + "개";
             System.out.println(result);
         }
+    }
+
+    public static void printProfit(Profit profit, Quantity quantity) {
+        double profitPercent = profit.calculate(quantity);
+        System.out.println("총 수익률은 " + profitPercent + "%입니다.");
     }
 }
