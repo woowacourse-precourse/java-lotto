@@ -18,7 +18,8 @@ public class WinningLottoNumbers {
 
         for (int idx = 0; idx < splitInputNumbers.length; idx++) {
             winningNumbers.add
-                    (Integer.parseInt(splitInputNumbers[idx]));
+                    (Integer.parseInt(splitInputNumbers[idx]
+                            .replaceAll(" ", "")));
         }
 
         Lotto lotto = new Lotto(winningNumbers);
