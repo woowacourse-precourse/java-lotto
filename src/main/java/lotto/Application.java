@@ -13,8 +13,8 @@ public class Application {
             lottoApplicationService.createLottos();
             lottoApplicationService.createWinningLottoNumbers();
             lottoApplicationService.getStatisticsOfLotto();
-        } catch (IllegalArgumentException ignored) {
-
+        } catch (IllegalArgumentException error) {
+            System.out.println(error.getMessage());
         }
     }
 }
