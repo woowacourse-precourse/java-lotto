@@ -37,4 +37,8 @@ public class LottoController {
         Lotto prizeLotto = new Lotto(LottoView.inputPrizeLotto());
         return new PrizeLotto(prizeLotto);
     }
+
+    public static void addBonusNum(int bonusNum, PrizeLotto prizeLotto) {
+        prizeLotto.setBonusNumber(bonusNum);
+    }
 }

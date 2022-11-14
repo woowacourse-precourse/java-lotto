@@ -11,6 +11,7 @@ public class AppController {
     MyLottoList myLottoList;
     PrizeLotto prizeLotto;
     int money;
+    int bonusNum;
 
     public void run() {
         AppView.outputLine("구입금액을 입력해 주세요.");
@@ -23,5 +24,10 @@ public class AppController {
         AppView.outputLine("");
         AppView.outputLine("당첨 번호를 입력해 주세요.");
         prizeLotto = generatePrizeLottoInstance();
+        AppView.outputLine("");
+        AppView.outputLine("보너스 번호를 입력해 주세요.");
+        bonusNum = LottoView.inputBonusNum();
+        addBonusNum(bonusNum, prizeLotto);
+        AppView.outputLine("");
     }
 }

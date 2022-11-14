@@ -1,7 +1,7 @@
 package lotto.view;
 
 public class ValidateView {
-    //
+    // test: test/java/lotto/view/ValidateViewTest
     public static int possibleNumber(String number) throws IllegalArgumentException {
         int num;
         try {
@@ -19,6 +19,14 @@ public class ValidateView {
         }
 
         if(money % 1000 != 0) {
+            throw new IllegalArgumentException();
+        }
+
+        return true;
+    }
+
+    public static boolean isPossibleBonusNumber(int num) throws IllegalArgumentException {
+        if(num < 1 || num > 45) {
             throw new IllegalArgumentException();
         }
 

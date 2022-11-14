@@ -17,12 +17,6 @@ public class LottoView {
         return 0;
     }
 
-    public static void outputLottoList(MyLottoList myLottoList) {
-        for(Lotto lotto : myLottoList.getLotto()) {
-            AppView.outputLine(String.valueOf(lotto));
-        }
-    }
-
     public static List<Integer> inputPrizeLotto() {
         String [] ArrBeforeChange = AppView.inputLine().split(",");
         List<Integer> inputNum = new ArrayList<>();
@@ -30,5 +24,20 @@ public class LottoView {
             inputNum.add(ValidateView.possibleNumber(element));
         }
         return inputNum;
+    }
+
+    public static int inputBonusNum() {
+        int bonusNum = ValidateView.possibleNumber(AppView.inputLine());
+        if(ValidateView.isPossibleBonusNumber(bonusNum)) {
+            return bonusNum;
+        }
+
+        return 0;
+    }
+
+    public static void outputLottoList(MyLottoList myLottoList) {
+        for(Lotto lotto : myLottoList.getLotto()) {
+            AppView.outputLine(String.valueOf(lotto));
+        }
     }
 }
