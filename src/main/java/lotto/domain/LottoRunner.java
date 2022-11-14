@@ -6,16 +6,20 @@ import lotto.ui.LottoOutStream;
 
 public class LottoRunner {
     public static void run() {
-        int money = LottoInStream.readAmount();
-        List<Lotto> lottoes = LottoGame.buyLotto(money);
-        LottoOutStream.showLottoList(lottoes);
+        try {
+            int money = LottoInStream.readAmount();
+            List<Lotto> lottoes = LottoGame.buyLotto(money);
+            LottoOutStream.showLottoList(lottoes);
 
-        Lotto winningLotto = new Lotto(LottoInStream.readLottoNumbers());
-        int bonusNumber = LottoInStream.readBonusNumber(winningLotto);
+            Lotto winningLotto = new Lotto(LottoInStream.readLottoNumbers());
+            int bonusNumber = LottoInStream.readBonusNumber(winningLotto);
 
-        int[] matches = LottoGame.getResultLotto(lottoes, winningLotto, bonusNumber);
+            int[] matches = LottoGame.getResultLotto(lottoes, winningLotto, bonusNumber);
 
-        LottoOutStream.showLottoResult(matches);
-        LottoOutStream.showRateOfReturn(LottoGame.calcRateOfReturn(matches, money));
+            LottoOutStream.showLottoResult(matches);
+            LottoOutStream.showRateOfReturn(LottoGame.calcRateOfReturn(matches, money));
+        } catch (IllegalArgumentException ex) {
+            System.out.print(ex.getMessage());
+        }
     }
 }
