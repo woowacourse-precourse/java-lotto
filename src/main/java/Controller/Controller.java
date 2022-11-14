@@ -16,13 +16,15 @@ public class Controller {
     }
 
     public void calculateLottoResult(LottoList lottoList, Winning winning, Bonus bonus){
+        int income = 0;
         int[] ranking = new int[6];
         for(Lotto eachLotto : lottoList.getLottoList()){
             int compareLotto = compareMyLottoAndWinningNumber(eachLotto.getLottoNumbers(), winning.getNumbers());
             boolean compareBonus = compareMyLottoAndBonusNumber(eachLotto.getLottoNumbers(), bonus.getBonusNumber());
-            int a = Prize.convertCountToPrizeMoney(compareLotto, ranking, compareBonus);
+            int getPrizeMoney = Prize.convertCountToPrizeMoney(compareLotto, ranking, compareBonus);
+            income += getPrizeMoney;
         }
-        OutputView.printLottoResult(ranking);
+        OutputView.printLottoResult(ranking, lottoList, income);
     }
 
     public int compareMyLottoAndWinningNumber(List<Integer> myLottoNumber, List<Integer> winningNumber){

@@ -1,6 +1,7 @@
 package View;
 
 import Domain.Lotto;
+import Domain.LottoList;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printLottoResult(int[] countList){
+    public static void printLottoResult(int[] countList, LottoList lottoList, int income){
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + countList[5] + "개");
@@ -31,6 +32,7 @@ public class OutputView {
         System.out.println("5개 일치 (1,500,000원) - " + countList[3] + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + countList[2] + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + countList[1] + "개");
+        printIncomeRate(lottoList.getLottoPlayNumber(), income);
     }
 
     public static void printIncomeRate(int numberOfLotto, int income){
