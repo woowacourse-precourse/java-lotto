@@ -19,7 +19,7 @@ public class LottoMachine {
     public void draw(List<Integer> wins, List<Integer> bonuses) {
         List<Integer> numbers = new ArrayList<>();
 
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         draw(wins, numbers, LOTTO_LENGTH);
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
