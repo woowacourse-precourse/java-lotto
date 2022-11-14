@@ -6,6 +6,7 @@ import java.util.*;
 
 import static util.Constant.*;
 
+// 특정 사용자의 로또 종합 당첨 결과를 조회할 수 있는 기능을 담당하는 클래스
 public class LottoService {
 
     private int totalEarning;

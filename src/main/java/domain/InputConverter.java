@@ -7,6 +7,7 @@ import java.util.List;
 
 import static util.Constant.*;
 
+// 사용자가 입력하는 값을 원하는 자료형으로 바꾸는 기능을 담당하는 클래스
 public class InputConverter {
 
     public static int getMoney(String moneyInput) {

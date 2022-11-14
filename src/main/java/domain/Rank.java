@@ -1,5 +1,6 @@
 package domain;
 
+// 일치하는 숫자의 개수에 따른 순위 정보를 담고있는 열거형 상수 클래스
 public enum Rank {
     first(6, false, 1),
     second(5, true, 2),

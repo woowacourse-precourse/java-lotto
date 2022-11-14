@@ -1,5 +1,6 @@
 package util;
 
+// 상수를 저장하는 클래스
 public class Constant {
     public static final int MINIMUM_NUMBER = 1;
     public static final int MAXIMUM_NUMBER = 45;

@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 
 import static util.Constant.*;
 
+/**
+ * 발급되는 한 장의 로또의 정보를 담고있는 클래스
+ * 6개의 로또 번호를 담고있는 리스트를 wrapping 하는 일급 컬렉션
+ */
 public class Lotto {
     private final List<Integer> numbers;
 

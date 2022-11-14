@@ -3,6 +3,7 @@ package domain;
 import java.util.Arrays;
 import java.util.List;
 
+// 로또별 당첨 결과 확인을 담당하는 클래스
 public class Result {
 
     public Rank getRank(int matchingCount, boolean isMatchingBonusNumber) {

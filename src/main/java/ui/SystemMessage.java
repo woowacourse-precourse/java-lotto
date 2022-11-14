@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// 시스템의 출력을 담당하는 클래스
 public class SystemMessage {
 
     public static void printPrizeResult(Map<Prize, Integer> resultMap) {
