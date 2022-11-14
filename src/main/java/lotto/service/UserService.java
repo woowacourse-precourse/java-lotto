@@ -1,11 +1,12 @@
 package lotto.service;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.Prize;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import camp.nextstep.edu.missionutils.Console.*;
 public class UserService {
 
     private final static ArrayList<Prize> PRIZE_TYPE = new ArrayList<>(Arrays.asList(
@@ -56,5 +57,9 @@ public class UserService {
             }
         }
         return numberOfWinningTypes;
+    }
+
+    public String enterPurchaseAmount () {
+        return Console.readLine();
     }
 }
