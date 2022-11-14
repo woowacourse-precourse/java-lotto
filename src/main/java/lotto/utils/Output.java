@@ -2,7 +2,13 @@ package lotto.utils;
 
 import lotto.domain.*;
 
+import java.util.Map;
+
 public final class Output {
+    private static final String STATISTICS_START_MESSAGE = "당첨 통계";
+    private static final String CONTOUR = "---";
+    private static final String STATISTICS_NO_BONUS_MESSAGE = "%d개 일치 (%,d원) - %d개\n";
+    private static final String STATISTICS_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n";
 
     private Output() {}
 
@@ -13,6 +19,22 @@ public final class Output {
     public static void printPurchasedLottos(Lottos lottos) {
         for (Lotto lotto : lottos.getLottos()) {
             System.out.println(StringParser.parseLottoToString(lotto));
+        }
+    }
+
+    public static void printWinningStatistics(Statistics statistics) {
+        System.out.println("\n" + STATISTICS_START_MESSAGE);
+        System.out.println(CONTOUR);
+        Map<Prize, Integer> statisticsResult = statistics.getStatisticsResult();
+        for (Prize prize : Prize.values()) {
+            if (prize == Prize.NOTHING) {
+                continue;
+            }
+            if (prize == Prize.SECOND) {
+                System.out.printf(STATISTICS_BONUS_MESSAGE, prize.getMatchCount(), prize.getReward(), statisticsResult.get(prize));
+                continue;
+            }
+            System.out.printf(STATISTICS_NO_BONUS_MESSAGE, prize.getMatchCount(), prize.getReward(), statisticsResult.get(prize));
         }
     }
 }
