@@ -12,7 +12,7 @@ public class User {
     //TODO: 당첨 결과 리스트 추가, 로또금액 1000원 상수화
     private User(int money) {
         this.money = money;
-        this.lottoCount = money / 1000;
+        this.lottoCount = money / Lotto.PRICE;
     }
 
     public static User initUserLotto(int money) {
@@ -36,13 +36,13 @@ public class User {
         checkMoneyDivided(money);
     }
     public static void checkMoneyMinimum(int money) {
-        if (money < 1000) {
+        if (money < Lotto.PRICE) {
             throw new IllegalArgumentException("[ERROR] 금액은 1000원 이상이어야 합니다.");
         }
     }
 
     public static void checkMoneyDivided(int money) {
-        if (money % 1000 != 0) {
+        if (money % Lotto.PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
         }
     }
