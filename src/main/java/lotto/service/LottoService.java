@@ -1,6 +1,7 @@
 package lotto.service;
 
 import static lotto.LottoConstant.INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE;
+import static lotto.LottoConstant.INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE;
 import static lotto.LottoConstant.INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
 import static lotto.LottoConstant.INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE;
 
@@ -10,6 +11,8 @@ import java.util.List;
 import lotto.domain.Lotto;
 
 public class LottoService {
+
+    private static final String WINNING_NUMBER_INPUT_VALIDATE_REGEX = "^[0-9]+(,[0-9]+){5}$";
 
     private LottoService() {
     }
@@ -49,6 +52,15 @@ public class LottoService {
                 numbers.add(randomNumber);
             }
         }
+        return new Lotto(numbers);
+    }
+
+    private static Lotto getWinningNumber(String input) {
+        List<Integer> numbers = new ArrayList<>();
+        if (input.matches(WINNING_NUMBER_INPUT_VALIDATE_REGEX)) {
+            throw new IllegalStateException(INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
+        }
+
         return new Lotto(numbers);
     }
 }
