@@ -1,9 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -26,7 +24,7 @@ public class LottoGame {
         try {
             buyLotto();
             createNumbers();
-            compareNumber();
+            compareLottoNumber();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -53,8 +51,8 @@ public class LottoGame {
     
     // 내가 입력한 금액에 맞게 로또 생성
     private void createLotto(String result) {
-        LottoNumbers lottoNumbers = new LottoNumbers(result); // 구입 금액을 기반으로 ~장 생성
-        randomLottoNumbers = lottoNumbers.getNumbers(); // 생선된 랜덤 로또값들을 List<List<Integer>>에 get을 이용해 저장
+        LottoRandomNumbers lottoRandomNumbers = new LottoRandomNumbers(result); // 구입 금액을 기반으로 ~장 생성
+        randomLottoNumbers = lottoRandomNumbers.getNumbers(); // 생선된 랜덤 로또값들을 List<List<Integer>>에 get을 이용해 저장
     }
     ////////////////////////////////////////////////////////////////////////
 
@@ -66,6 +64,7 @@ public class LottoGame {
 
     // 승리 숫자가 입력하는 메서드,
     private void createWinNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         str = Console.readLine().split(",");
         winNumber = new ArrayList<>();
         for (int i = 0; i < str.length; i++) {
@@ -82,8 +81,9 @@ public class LottoGame {
     }
 
     // 로또 번호, 승리 숫자를 비교하는 메서드
-    private void compareNumber() {
-        Manager manager = new Manager();
-        manager.inputWinNumbers(randomLottoNumbers, winNumber, bonusBall);
+    private void compareLottoNumber() {
+        LottoNumberCheck lottoNumberCheck = new LottoNumberCheck();
+        lottoNumberCheck.compareWinNumberWithMyLotto(randomLottoNumbers, winNumber, bonusBall);
+        lottoNumberCheck.comparePrizeMoneyWithMyPrizeLotto();
     }
 }

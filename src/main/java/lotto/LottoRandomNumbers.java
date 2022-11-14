@@ -6,12 +6,12 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class LottoNumbers {
+public class LottoRandomNumbers {
 
     private List<Integer> basket;
     private List<List<Integer>> numbers;
 
-    public LottoNumbers(String want) {
+    public LottoRandomNumbers(String want) {
         int piece = Integer.parseInt(want);
         piece = piece / 1000;
         this.numbers = createRandomNumbers(piece);
