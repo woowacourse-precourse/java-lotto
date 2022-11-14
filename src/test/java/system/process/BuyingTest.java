@@ -63,5 +63,4 @@ public class BuyingTest extends NsTest {
     protected void runMain() {
         Buying buying = new Buying();
     }
-
 }

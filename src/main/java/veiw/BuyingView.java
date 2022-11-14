@@ -13,5 +13,4 @@ public class BuyingView {
         System.out.println(String.format("%d개를 구매했습니다.", lottos.size()));
         lottos.forEach((lotto) -> System.out.println(lotto.getNumbers()));
     }
-
 }

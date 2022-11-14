@@ -28,7 +28,7 @@ public class LottoComparison {
     private void compareLotto() {
         Set<Integer> winningLottoNumbers = new HashSet<>(winningLotto.getLotto().getNumbers());
 
-        countSameNumber(winningLottoNumbers);
+        countMatchingNumber(winningLottoNumbers);
         countBonusNumber();
     }
 
@@ -38,7 +38,7 @@ public class LottoComparison {
         this.boughtLotto = boughtLotto;
     }
 
-    private void countSameNumber(Set<Integer> winningLottoNumbers) {
+    private void countMatchingNumber(Set<Integer> winningLottoNumbers) {
         boughtLotto.getNumbers().forEach(number -> {
             if (winningLottoNumbers.contains(number)) {
                 matchingCount++;

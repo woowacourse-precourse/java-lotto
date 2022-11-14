@@ -18,14 +18,13 @@ public class WinningLottoRegister {
     }
 
     private String inputSixLottoNumbers() {
-        WinningLottoRegisterView.printInputNumbers();
+        WinningLottoRegisterView.printInputNumbersText();
 
-        String inputNumbers = Input.input();
-        WinningLottoRegisterValidation.validateLottoNumbersInput(inputNumbers);
+        String numbersInput = Input.input();
+        WinningLottoRegisterValidation.validateLottoNumbersInput(numbersInput);
 
-        return inputNumbers;
+        return numbersInput;
     }
-
 
     private List<Integer> changeLottoNumbersInputToIntegers(String numbersInput) {
         List<Integer> numbers = new ArrayList<>();
@@ -47,10 +46,10 @@ public class WinningLottoRegister {
     private String inputBonusNumber() {
         WinningLottoRegisterView.printInputBonusNumberText();
 
-        String inputNumber = Input.input();
-        WinningLottoRegisterValidation.validateBonusNumberInput(inputNumber);
+        String numberInput = Input.input();
+        WinningLottoRegisterValidation.validateBonusNumberInput(numberInput);
 
-        return inputNumber;
+        return numberInput;
     }
 
     private int changeBonusNumberInputToInteger(String numberInput) {

@@ -3,7 +3,6 @@ package utils;
 import java.util.List;
 
 public class IsCollection {
-
     public static boolean isDigitOrCommaText(String text) {
         return text.chars().allMatch(ch -> (Character.isDigit(ch) || ch == ','));
     }
@@ -27,6 +26,4 @@ public class IsCollection {
     public static boolean isDuplication(List<Integer> numbers) {
         return numbers.size() != numbers.stream().distinct().count();
     }
-
-
 }

@@ -15,6 +15,4 @@ public class LottoConstant {
     public static final int LEAST_COMMA_POSITION = 1;
     public static final int MAX_INPUT_NUMBERS_LENGTH = 17;
     public static final int MAX_INPUT_BONUS_NUMBER_LENGTH = 2;
-
-
 }

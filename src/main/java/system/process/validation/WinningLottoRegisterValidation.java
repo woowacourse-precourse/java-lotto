@@ -32,8 +32,8 @@ public class WinningLottoRegisterValidation {
         IllegalArgument.handleException(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage());
     }
 
-    public static void validateBonusNumberInput(String inputNumber) {
-        if (inputNumber.length() > LottoConstant.MAX_INPUT_BONUS_NUMBER_LENGTH) {
+    public static void validateBonusNumberInput(String numberInput) {
+        if (numberInput.length() > LottoConstant.MAX_INPUT_BONUS_NUMBER_LENGTH) {
             IllegalArgument.handleException(IllegalArgument.OUT_OF_BONUS_NUMBER_LENGTH.getMessage());
         }
     }

@@ -11,11 +11,11 @@ public class StatisticsView {
         System.out.println("당첨 통계");
         System.out.println("---");
 
-        printPrizeDivisionsAndAccumulatePrizeAmount(statistics);
+        printPrizeDivisions(statistics);
         printRateOfReturn(statistics.getRateOfReturn());
     }
 
-    private static void printPrizeDivisionsAndAccumulatePrizeAmount(Statistics statistics) {
+    private static void printPrizeDivisions(Statistics statistics) {
         List<PrizeDivision> prizeDivision = Arrays.asList(PrizeDivision.values());
 
         for (int index = PrizeDivision.FIFTH.ordinal(); index >= PrizeDivision.FIRST.ordinal(); index--) {

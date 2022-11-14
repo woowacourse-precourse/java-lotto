@@ -32,6 +32,4 @@ public class LottoGameSystem {
         statisticsCalculator = new StatisticsCalculator(boughtLottos, winningLotto);
         StatisticsView.printStatistics(statisticsCalculator.getStatistics());
     }
-
-
 }

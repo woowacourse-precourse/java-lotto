@@ -21,5 +21,4 @@ public class Input {
         }
         IllegalArgument.handleException(IllegalArgument.NOT_DIGIT_OR_COMMA_TEXT.getMessage());
     }
-
 }

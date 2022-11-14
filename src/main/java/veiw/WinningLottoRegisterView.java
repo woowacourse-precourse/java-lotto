@@ -1,7 +1,7 @@
 package veiw;
 
 public class WinningLottoRegisterView {
-    public static void printInputNumbers() {
+    public static void printInputNumbersText() {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 

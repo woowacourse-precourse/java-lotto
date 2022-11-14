@@ -10,7 +10,7 @@ public class Buying {
     private BoughtLottos boughtLottos;
 
     public Buying() {
-        boughtLottos = proceedBuying(inputAmountPaid());
+        boughtLottos =  proceedBuying(inputAmountPaid());
         BuyingView.printLottoList(boughtLottos.getLottos());
     }
 
@@ -38,5 +38,4 @@ public class Buying {
     public BoughtLottos getBoughtLottos() {
         return boughtLottos;
     }
-
 }

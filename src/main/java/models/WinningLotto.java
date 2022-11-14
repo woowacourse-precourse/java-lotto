@@ -21,5 +21,4 @@ public class WinningLotto {
     public int getBonusNumber() {
         return bonusNumber;
     }
-
 }
