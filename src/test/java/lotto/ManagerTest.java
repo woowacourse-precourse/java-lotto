@@ -60,8 +60,12 @@ class ManagerTest {
         int expect = 3;
         assertThat(result).isEqualTo(expect);
     }
-
+    @DisplayName("수익률 계산")
     @Test
     void calculateYield() {
+        int money = 8000;
+        int [] result = {1, 0, 0, 0, 0}; // 3등 하나 당첨
+        double expect = 62.5;
+        assertThat(manager.calculateYield(money, result)).isEqualTo(expect);
     }
 }
