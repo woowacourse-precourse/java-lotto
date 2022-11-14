@@ -39,10 +39,11 @@ public class Validator {
         return true;
     }
 
-    public boolean validateBonusNumber(String input){
+    public boolean validateBonusNumber(Lotto lotto, String input){
         try{
             validateNumeric(input);
             validateLottoNumberBound(Integer.parseInt(input));
+            validateDuplicateNumber(lotto, Integer.parseInt(input));
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;
@@ -84,4 +85,10 @@ public class Validator {
         }
     }
 
+    public static void validateDuplicateNumber(Lotto lotto, int bonusNumber){
+        List<Integer> lottoNumber = lotto.getLottoNumber();
+        if(lottoNumber.contains(bonusNumber)){
+            throw new IllegalArgumentException(ERROR_MESSAGE + "보너스 넘버가 중복됩니다.");
+        }
+    }
 }
