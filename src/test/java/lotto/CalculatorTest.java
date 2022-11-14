@@ -13,8 +13,16 @@ public class CalculatorTest {
     @DisplayName("당첨 번호와 비교해 같은 숫자의 개수를 반환한다.")
     @Test
     void compareLottoByPrizeNumber() {
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
-        assertThat(Calculator.comparePrizeNumber(lotto, List.of(1,2,3,4,5,22)))
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(Calculator.comparePrizeNumber(lotto, List.of(1, 2, 3, 4, 5, 22)))
                 .isEqualTo(5);
+    }
+
+    @DisplayName("보너스 번호 비교 결과를 반환한다.")
+    @Test
+    void compareLottoByBonusNumber() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(Calculator.compareBonusNumber(lotto, 7))
+                .isEqualTo(false);
     }
 }
