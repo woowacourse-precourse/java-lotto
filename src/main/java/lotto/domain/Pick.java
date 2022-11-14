@@ -44,9 +44,9 @@ public class Pick {
 
     public double getRateOfReturn(int money) {
         int winningMoney = getWinningMoney();
-        double rateOfReturn = (double)winningMoney / money;
+        double rateOfReturn = (double)winningMoney / (double)money * 100.0;
 
-        return Math.round((rateOfReturn * 10) / 10.0);
+        return Math.round(rateOfReturn * 10) / 10.0;
     }
 
     private int getWinningMoney() {
