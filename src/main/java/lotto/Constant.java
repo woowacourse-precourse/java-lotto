@@ -9,6 +9,9 @@ public class Constant {
     public static Integer BALL_MAX_RANGE = 45;
     public static Integer MIN_LOTTO_CNT_PURCHASED = 1;
 
-    public static String COMMA_EVERY_THREE_DIGIT_PATTERN = "###,###";
-    public static String SHOW_TWO_DIGIT_UNDER_POINT_PATTERN = ".##";
+    /**
+     * NUMBER_CONVENTION : 숫자 표기 규칙을 나타내는 Pattern입니다
+     * 세 자리마다 콤마를 찍고, 소수점은 첫 째 자리까지 표기합니다
+     */
+    public static String NUMBER_CONVENTIONS = "###,###.#";
 }
