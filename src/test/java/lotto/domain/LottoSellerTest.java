@@ -7,7 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("LottoSeller 클래스")
@@ -17,7 +16,7 @@ public class LottoSellerTest {
     private LottoSeller lottoSeller = new LottoSeller();
 
     @ParameterizedTest
-    @CsvSource(value = {"1000", "2000", "3000", "4000", "15000", "60000"})
+    @ValueSource(ints = {1000, 2000, 3000, 4000, 15000, 60000})
     void sell_메서드는_금액을_받고_로또_티켓을_반환한다(int amount) {
         LottoTicket lottoTicket = lottoSeller.sell(amount);
         assertThat(lottoTicket.value().size()).isEqualTo(amount / 1000);

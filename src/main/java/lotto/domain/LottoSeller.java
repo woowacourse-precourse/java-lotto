@@ -16,7 +16,7 @@ public class LottoSeller {
 
     public LottoTicket sell(Integer amount) {
         validate(amount);
-        return generateQuickPickNumbers(amount / LOTTO_PRICE);
+        return generateLottoTicket(amount / LOTTO_PRICE);
     }
 
     private void validate(Integer amount) {
@@ -25,7 +25,7 @@ public class LottoSeller {
         }
     }
 
-    private LottoTicket generateQuickPickNumbers(Integer pickCount) {
+    private LottoTicket generateLottoTicket(Integer pickCount) {
         return Stream.generate(this::quickPick)
                 .limit(pickCount)
                 .collect(collectingAndThen(toList(), this::toLottoTicket));
