@@ -20,4 +20,8 @@ public class Statistics {
         }
         rankRecord.put(rank, rankRecord.get(rank) + 1);
     }
+
+    public Map<Rank, Integer> getRankRecord() {
+        return rankRecord;
+    }
 }
