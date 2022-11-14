@@ -28,7 +28,7 @@ public class BuyPrice {
 
     private int checkUnit(int costs) {
         if(costs%thousand != zero ){
-            new Exceptions("1000원으로 나눠져야 한다");
+            new Exceptions("[ERROR] 1000원으로 나눠져야 한다");
         }
         numberOfTickets = costs/1000;
         buyCost = costs;

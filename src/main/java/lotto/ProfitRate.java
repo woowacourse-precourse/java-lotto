@@ -13,6 +13,10 @@ public class ProfitRate {
             5000,50000,1500000,30000000,2000000000
     );
 
+    static List<Integer> rankList = Arrays.asList(
+            0,0,0,0,0 // 5등, 4등, 3등, 2등, 1등 개수 순이다.
+    );
+
     static Integer profit ;
 
     static float profitRate = 0;
@@ -30,15 +34,25 @@ public class ProfitRate {
             Integer corrects = output.get(i);
             if(corrects>=3){
                 calculate(corrects);
+                updateRang(corrects);
             }
         }
         totalProfitRate();
+    }
+
+    private void updateRang(Integer corrects) {
+        // 3 4 5 6 7 이 들어올 수 있다
+        int idx = corrects-3;
+        Integer cnt = rankList.get(idx);
+        rankList.set(idx,cnt+1);
+
     }
 
     private void calculate(Integer corrects) {
         int idx = corrects-3;
         Integer val = profitList.get(idx);
         profit += val;
+
     }
 
     public float totalProfitRate() {

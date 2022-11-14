@@ -164,12 +164,11 @@ class LottoTest {
         TicketNumbers ticketNumbers = new TicketNumbers(3);
         List<Integer> lottoNumbers = lotto.returnNumbers();
         List<List<Integer>> tickets = ticketNumbers.collectTickets();
-        BonusNumber bonusNumber = new BonusNumber("30", lottoNumbers);
-        int bbonusNumber = bonusNumber.makeBonusNumber();
+        BonusNumber bonusNumber = new BonusNumber(30, lottoNumbers);
+        int bbonusNumber = bonusNumber.bonusNumber;
         CheckScore checkScore = new CheckScore(lottoNumbers, tickets, bbonusNumber);
-        List<Integer> score = checkScore.showScoreList();
         System.out.println("lottoNumbers = " + lottoNumbers);
-        System.out.println("score = " + score);
+        System.out.println("score = " + checkScore.scoreList);
     }
 
 
@@ -183,11 +182,11 @@ class LottoTest {
         int tickets = buyPrice.checkPrice();
         TicketNumbers ticketNumbers = new TicketNumbers(tickets);
         List<List<Integer>> allTickets = ticketNumbers.collectTickets();
-        BonusNumber bonus = new BonusNumber("7",lottoNumbers);
-        int bonusNumber = bonus.makeBonusNumber();
+        BonusNumber bonus = new BonusNumber(7,lottoNumbers);
+        int bonusNumber = bonus.bonusNumber;
         List<List<Integer>> lucky = Arrays.asList(Arrays.asList(1,2,3,4,5,8));
         CheckScore checkScore = new CheckScore(lottoNumbers, lucky, bonusNumber);
-        List<Integer> scoreList = checkScore.showScoreList();
+        List<Integer> scoreList = checkScore.scoreList;
 
         System.out.println("ALL TICKETS = " + allTickets);
         System.out.println("lottoNumbers = " + lottoNumbers);
@@ -203,6 +202,7 @@ class LottoTest {
         System.out.println("buyPrice = " + buyPrice.numberOfTickets);
         System.out.println("buyPrice = " + buyPrice.buyCost);
         System.out.println("profitRate.profitRate = " + profitRate.profitRate);
+        System.out.println("profitRate.rankList = " + profitRate.rankList);
     }
 }
 
