@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -154,6 +155,51 @@ public class Application {
             }
         }
         return count;
+    }
+
+    // 당첨 구문 list 메소드
+    private static List<String> printWinningMent() {
+        List<String> printWinningCount = new ArrayList<>();
+        printWinningCount.add("3개 일치 (5,000원) - ");
+        printWinningCount.add("4개 일치 (50,000원) - ");
+        printWinningCount.add("5개 일치 (1,500,000원) - ");
+        printWinningCount.add("5개 일치, 보너스 볼 일치 (30,000,000원) - ");
+        printWinningCount.add("6개 일치 (2,000,000,000원) - ");
+        return printWinningCount;
+    }
+
+    // 당첨 개수 조건 list 메소드
+    private static List<Double> winningCountNumber() {
+        List<Double> winningCountNumbers = new ArrayList<>();
+        winningCountNumbers.add(3.0);
+        winningCountNumbers.add(4.0);
+        winningCountNumbers.add(5.0);
+        winningCountNumbers.add(5.5);
+        winningCountNumbers.add(6.0);
+        return winningCountNumbers;
+    }
+
+    // 당첨금 list 메소드
+    private static List<Integer> winningLottoMoney() {
+        List<Integer> winningMoney = new ArrayList<>();
+        winningMoney.add(5000);
+        winningMoney.add(50000);
+        winningMoney.add(1500000);
+        winningMoney.add(30000000);
+        winningMoney.add(2000000000);
+        return winningMoney;
+    }
+
+    // 최종 당첨 출력 메소드
+    private static List<Integer> printWinningResult(List<Double> winningCount) {
+        List<Integer> winningResult = new ArrayList<>();
+        List<String> printWinningCount = printWinningMent();
+        List<Double> winningCountNumbers = winningCountNumber();
+        for(int i = 0; i < printWinningCount.size(); i++) {
+            winningResult.add(Collections.frequency(winningCount, winningCountNumbers.get(i)));
+            System.out.println(printWinningCount.get(i) + winningResult.get(i) + "개");
+        }
+        return winningResult;
     }
     public static void main(String[] args) {
 
