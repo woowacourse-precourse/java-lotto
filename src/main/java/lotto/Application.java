@@ -19,19 +19,19 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int numOfLottos = howManyLotto();
-        int totalMoney = lottoPrice * numOfLottos;
         List<Lotto> lottos;
         EnumMap<WIN, Integer> winnings;
 
-        lottos = getRandomNLotto(numOfLottos);
-        getWinningNumbers();
-        getBonusNumber();
-
-        winnings = checkWinnings(lottos);
-
-        printStats(winnings, totalMoney);
-
+        try {
+            int numOfLottos = howManyLotto();
+            lottos = getRandomNLotto(numOfLottos);
+            getWinningNumbers();
+            getBonusNumber();
+            winnings = checkWinnings(lottos);
+            printStats(winnings, lottoPrice * numOfLottos);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static String addComma(int number) {
