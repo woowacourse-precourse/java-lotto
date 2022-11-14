@@ -65,7 +65,7 @@ public class LottoGameOutputView implements OutputView {
     private static String formattedGrade(LottoGrade grade) {
         String output = grade.matchNumberCount + "개 일치";
 
-        if (grade.hasBonusNumber) {
+        if (grade.hasBonusNumber != null && grade.hasBonusNumber) {
             output += ", 보너스 볼 일치";
         }
 
