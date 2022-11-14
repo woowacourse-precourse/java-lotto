@@ -14,15 +14,15 @@ public class Application {
     private static final String ERROR_PREFIX = "[ERROR] ";
 
     public static void main(String[] args) {
-        InputHandler inputHandler = new ConsoleInput();
-        InputView inputView = new InputView(inputHandler);
+        final InputHandler inputHandler = new ConsoleInput();
+        final InputView inputView = new InputView(inputHandler);
 
-        OutputHandler outputHandler = new ConsoleOutput();
-        OutputView outputView = new OutputView(outputHandler);
-        PickNumbers pickNumbers = new RandomPicker();
+        final OutputHandler outputHandler = new ConsoleOutput();
+        final OutputView outputView = new OutputView(outputHandler);
+        final PickNumbers pickNumbers = new RandomPicker();
 
         try {
-            LottoWinningSystem lottoWinningSystem = new LottoWinningSystem(inputView, outputView, pickNumbers);
+            final LottoWinningSystem lottoWinningSystem = new LottoWinningSystem(inputView, outputView, pickNumbers);
             lottoWinningSystem.run();
         } catch (IllegalArgumentException e) {
             outputHandler.println(ERROR_PREFIX + e.getMessage());

@@ -22,8 +22,8 @@ final class LottoCreator {
     }
 
     public Lottos createLottos(Money money) {
-        long count = money.ableToBuy();
-        List<Lotto> lottos = Stream.generate(() -> generateNumbers())
+        final long count = money.ableToBuy();
+        final List<Lotto> lottos = Stream.generate(() -> generateNumbers())
                 .limit(count)
                 .map(Lotto::new)
                 .collect(Collectors.toList());

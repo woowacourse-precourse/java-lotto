@@ -19,12 +19,12 @@ final class LottoStatistic {
     }
 
     public LottoScoreDto calculateStatistic() {
-        List<LottoResult> scores = calculateScore();
-        Map<LottoPrize, Integer> lottoPrizeCount = new HashMap<>();
+        final List<LottoResult> scores = calculateScore();
+        final Map<LottoPrize, Integer> lottoPrizeCount = new HashMap<>();
         Arrays.stream(LottoPrize.values())
                 .forEach(prize -> lottoPrizeCount.put(prize, calculatePrizeCount(scores, prize)));
 
-        double rate = calculateRate(lottoPrizeCount);
+        final double rate = calculateRate(lottoPrizeCount);
         return new LottoScoreDto(lottoPrizeCount, rate);
     }
 
@@ -41,12 +41,12 @@ final class LottoStatistic {
     }
 
     private double calculateRate(Map<LottoPrize, Integer> prizeCount) {
-        long totalPrize = prizeCount.keySet()
+        final long totalPrize = prizeCount.keySet()
                 .stream()
                 .map(key -> key.getPrize() * prizeCount.get(key))
                 .mapToLong(prize -> (long) prize)
                 .reduce(0, Long::sum);
-        int totalPurchaseAmount = LottoConstants.LOTTO_PRICE.value() * lottos.size();
+        final int totalPurchaseAmount = LottoConstants.LOTTO_PRICE.value() * lottos.size();
         return (double) totalPrize / totalPurchaseAmount * TO_PERCENT;
     }
 }

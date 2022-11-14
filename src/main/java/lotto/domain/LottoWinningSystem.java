@@ -39,26 +39,26 @@ public final class LottoWinningSystem {
     }
 
     public void run() {
-        Money money = getPlayerMoney();
+        final Money money = getPlayerMoney();
 
-        Lottos lottos = generateLottos(money);
+        final Lottos lottos = generateLottos(money);
 
-        WinningLotto winningLotto = createWinningLottery();
+        final WinningLotto winningLotto = createWinningLottery();
 
-        LottoStatistic lottoStatistic = new LottoStatistic(winningLotto, lottos);
-        LottoScoreDto lottoScoreDto = lottoStatistic.calculateStatistic();
+        final LottoStatistic lottoStatistic = new LottoStatistic(winningLotto, lottos);
+        final LottoScoreDto lottoScoreDto = lottoStatistic.calculateStatistic();
         outputView.printStatistic(lottoScoreDto);
     }
 
     private Money getPlayerMoney() {
         outputView.printInputAmount();
-        Money money = new Money(inputView.inputAmount());
+        final Money money = new Money(inputView.inputAmount());
         outputView.printLottoAmountMessage(money);
         return money;
     }
 
     private Lottos generateLottos(Money money) {
-        Lottos lottos = new LottoCreator(pickNumbers).createLottos(money);
+        final Lottos lottos = new LottoCreator(pickNumbers).createLottos(money);
         outputView.printLottos(lottos);
         return lottos;
     }
@@ -68,7 +68,7 @@ public final class LottoWinningSystem {
         final Lotto winLotto = new Lotto(inputView.inputLotteryNumber());
 
         outputView.printInputBonusMessage();
-        BonusNumber bonusNumber = new BonusNumber(inputView.inputBonusNumber());
+        final BonusNumber bonusNumber = new BonusNumber(inputView.inputBonusNumber());
 
         return new WinningLotto(winLotto, bonusNumber);
     }
