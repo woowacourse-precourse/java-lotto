@@ -1,5 +1,6 @@
 package lotto.util;
 
+import jdk.jfr.Name;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -64,6 +65,12 @@ class InputCheckerTest {
         assertThatThrownBy(()->inputChecker.isNotDuplication(1, List.of(1, 2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @DisplayName("입력받은 보너스 번호가 1~45사이 숫자가 아니면 예외처리 발생하는지 확인")
+    @Test
+    void isNumberInRange(){
+        assertThatThrownBy(()->inputChecker.isNumberInRange(46))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
     @DisplayName("입력받은 당첨 번호가 정수가 아닌 경우 예외처리가 발생하는지 확인")
     @Test
     void checkInputWinningLottoNumbersIsNumeric1(){
@@ -74,5 +81,10 @@ class InputCheckerTest {
     @Test
     void checkInputWinningLottoNumbersIsNumeric2(){
         assertThat(inputChecker.checkInputWinningLottoNumbersIsNumeric(List.of("1", "2", "3", "4", "5", "6"))).isTrue();
+    }
+    @DisplayName("정상적인 보너스 번호를 입력받은 경우 true를 반환하는지 확인")
+    @Test
+    void checkInputBonusNumber(){
+        assertThat(inputChecker.checkInputBonusNumber("7", List.of(1,2,3,4,5,6))).isTrue();
     }
 }
