@@ -30,7 +30,7 @@ public class LottoController {
 
 
         //로또 번호를 비교해서 통계결과를 출력해주는 클래스 생성
-        LottoStatistic ls = new LottoStatistic(lb, bonus_num, win_lotto);
+        LottoStatistic ls = new LottoStatistic(lb, bonus_num, win_lotto,cost);
         System.out.println(ls);
     }
     private int costInput(){

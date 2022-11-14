@@ -11,14 +11,18 @@ public class LottoStatistic {
     private final LottoBundle lottoBundle;
     private final int bonus_num;
     private final Lotto win_lotto;
+    private final int cost;
 
     private Map<Rank,Integer> rankMap = new HashMap<>();
+    private double profitRate=0;
 
-    public LottoStatistic(LottoBundle lottoBundle, int bonus_num, Lotto win_lotto) {
+    public LottoStatistic(LottoBundle lottoBundle, int bonus_num, Lotto win_lotto, int cost) {
         this.lottoBundle = lottoBundle;
         this.bonus_num = bonus_num;
         this.win_lotto = win_lotto;
+        this.cost = cost;
         compareBundle();
+        calculateProfitRate();
     }
     @Override
     public String toString(){
@@ -29,8 +33,19 @@ public class LottoStatistic {
             print += df.format(rank.getPrice())+ "원) - ";
             print += rankMap.getOrDefault(rank,0)+"개\n";
         }
-
+        print+="총 수익률은 "+String.format("%.2f", profitRate)+"%입니다.";
         return print;
+    }
+    private void calculateProfitRate(){
+        for(Map.Entry<Rank,Integer> entry: rankMap.entrySet()){
+            Rank rank = entry.getKey();
+            Integer value = entry.getValue();
+            profitRate+=rank.getPrice()*value;
+        }
+
+
+        profitRate/=cost;
+        profitRate*=100;
     }
     private void compareBundle(){
         for(Lotto lotto: lottoBundle.getLottoList()){
