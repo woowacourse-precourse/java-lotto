@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,14 +35,15 @@ public class View {
 
     public void printResult(Rank[] values, double yield) {
         try {
+            DecimalFormat df = new DecimalFormat("###,###");
             printLine("당첨 통계\n---");
             for (int i = 0; i < values.length; i++) {
                 if (i == 3) {
                     System.out.println(values[i].getSameNumber() + "개 일치, 보너스 볼 일치 "
-                            + "(" + values[i].getPrizeMoney() + ")" + " - " + values[i].getCount() + "개");
+                            + "(" + df.format(values[i].getPrizeMoney()) + ")" + " - " + values[i].getCount() + "개");
                 } else {
                     System.out.println(values[i].getSameNumber() + "개 일치 "
-                            + "(" + values[i].getPrizeMoney() + ")" + " - " + values[i].getCount() + "개");
+                            + "(" + df.format(values[i].getPrizeMoney()) + ")" + " - " + values[i].getCount() + "개");
                 }
             }
             System.out.println("총 수익률은 " + yield + "%입니다.");
