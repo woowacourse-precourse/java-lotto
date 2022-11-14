@@ -1,7 +1,6 @@
 package lotto.model.database;
 
 import lotto.model.Lotto;
-import lotto.model.database.Ticket;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

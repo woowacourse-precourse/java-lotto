@@ -6,6 +6,7 @@ import lotto.util.Lang;
 import lotto.util.Validator;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -81,7 +82,6 @@ public class Lotto {
         }
     }
 
-
     private List<Integer> sort(List<Integer> numbers) {
         return numbers
                 .stream()
@@ -89,12 +89,19 @@ public class Lotto {
                 .collect(Collectors.toList());
     }
 
-    public List<Integer> toList() {
+    public List<Integer> retainAll(Lotto lotto) {
+        List<Integer> numbers = new LinkedList<>(this.numbers);
+        numbers.retainAll(lotto.toList());
+
+        return numbers;
+    }
+
+    private List<Integer> toList() {
         return Collections.unmodifiableList(this.numbers);
     }
 
-    public boolean equals(Lotto lotto) {
-        return this.numbers.equals(lotto.toList());
+    public boolean contains(Bonus bonus) {
+        return this.numbers.contains(bonus.toInt());
     }
 
     @Override

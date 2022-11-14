@@ -12,6 +12,10 @@ public class Bonus {
         this.bonus = bonus;
     }
 
+    public int toInt() {
+        return this.bonus;
+    }
+
     private void validate(int bonus) {
         this.validateCorrectRangeNumber(bonus);
     }
