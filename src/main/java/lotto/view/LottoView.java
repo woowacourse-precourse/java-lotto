@@ -65,5 +65,26 @@ public class LottoView {
         winningList = rateOfReturnLotto.winningLottoResult();
     }
 
+    // 당첨 통계 결과 출력
+    public void lottoWinningResult() {
+        int i = 0;
+        for(CorrectState state : CorrectState.values()) {
+            if(state == CorrectState.NOTHING) break;
+            if(state == CorrectState.FIVE_AND_BONUS_CORRECT) {
+                System.out.println(String.format(ProgressLottoMessage.CORRECT_BONUS_MESSAGE,winningList.get(i)));
+                i += 1;
+                continue;
+            }
+            System.out.println(String.format(ProgressLottoMessage.CORRECT_MESSAGE,
+                    state.getMatchNumber(),state.getAmount(),winningList.get(i)));
+            i += 1;
+        }
+    }
+
+    // 총 수익률 결과 출력
+    public void rateOfReturnResult() {
+        this.totalRatePercent = rateOfReturnLotto.totalRatePercentCal();
+        System.out.println(String.format(ProgressLottoMessage.RATE_OF_RETURN_MESSAGE,totalRatePercent));
+    }
 
 }
