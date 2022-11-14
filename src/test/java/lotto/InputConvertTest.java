@@ -29,7 +29,7 @@ public class InputConvertTest {
     @DisplayName(",제외 특수 문자가 주어진 경우 에러가 발생한다.")
     @Test
     void lottoNumberInputConvertErrorBySpecialCharacter() {
-        String input = "1,!,3,4,5,6";
+        String input = "1,3!,3,4,5,6";
         assertThatThrownBy(() -> InputConvert.lottoNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -37,6 +37,13 @@ public class InputConvertTest {
     @Test
     void lottoNumberInputConvertErrorByBlank() {
         String input = "1,2,3,4,5 ,6";
+        assertThatThrownBy(() -> InputConvert.lottoNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("음수가 입력된 경우 에러가 발생한다.")
+    @Test
+    void lottoNumberInputConvertErrorByMinus() {
+        String input = "1,2,3,-4,5,6";
         assertThatThrownBy(() -> InputConvert.lottoNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
