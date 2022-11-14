@@ -53,12 +53,15 @@ public class Lotto {
         int cnt = 0;
         String str_pay = Console.readLine();
         for (int i = 0; i < str_pay.length(); i++)
-            if (str_pay.charAt(i) >= '0' && str_pay.charAt(i) <= '9')
+            if (str_pay.charAt(i) -48 >= 0 && str_pay.charAt(i) - 48<= 9)
                 cnt++;
-        if (cnt != str_pay.length()) {
-            System.out.println("[ERROR] 구입금액은 숫자여야 합니다.");
-            throw new IllegalArgumentException();
-        } else {
+        try {
+            if (cnt != str_pay.length())
+                throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
+        } catch (Exception e) {
+            e.printStackTrace(); //예외정보 출력
+        }
+        finally {
             pay = Integer.parseInt(str_pay); //구입금액
             System.out.println(pay);
         }
@@ -72,15 +75,16 @@ public class Lotto {
         for(int j =0; j< numbers.size(); j++){
             arr[i][j] = numbers.get(j);
         }
-        for(int k =0; k< numbers.size(); k++){
-            for(int l=k+1; l< numbers.size(); l++){
-                if(arr[i][k] == arr[i][l]){
-                    System.out.println("[ERROR] 로또 번호는 중복된 숫자가 아니여야 합니다.");
-                    throw new IllegalArgumentException();
+        try {
+            IllegalArgumentException e = new IllegalArgumentException("[ERROR] 로또 번호는 중복된 숫자가 아니여야 합니다.");
+            for(int k =0; k< numbers.size(); k++){
+                for(int l=k+1; l< numbers.size(); l++){
+                    if(arr[i][k] == arr[i][l])
+                        throw e;
                 }
-
             }
-
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace(); //예외정보 출력
         }
     }
     public void CheckLottoNumber(int[][]arr, GetLottoNumber Lot_Num){ // 일치 개수 찾기
