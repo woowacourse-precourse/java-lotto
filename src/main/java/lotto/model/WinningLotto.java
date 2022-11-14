@@ -31,7 +31,7 @@ public class WinningLotto {
 
     private void validate(String userInput) {
         isBlank(userInput);
-        validateSlicedUserInputByDelimiter(userInput);
+        validateSlicedUserInput(userInput);
     }
 
     private void isBlank(String userInput) {
@@ -40,7 +40,7 @@ public class WinningLotto {
         }
     }
 
-    private void validateSlicedUserInputByDelimiter(String userInput) {
+    private void validateSlicedUserInput(String userInput) {
         final String[] slicedUserInput = userInput.split(SLICE_DELIMITER);
 
         isValidInputForm(slicedUserInput);
