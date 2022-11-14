@@ -11,7 +11,7 @@ public class LottoResult {
     public LottoResult(Map<Lotto, LottoRank> ranks) {
         this.ranks = ranks;
         this.totalCost = ranks.size() * (long) (LottoRule.TICKET_COST);
-        this.totalPrize = LottoResultCalculator.calculatePrize(ranks);
+        this.totalPrize = LottoResultCalculator.calculateTotalPrize(ranks);
         this.earningsRatio = LottoResultCalculator.calculateEarningsRatio(totalCost, totalPrize);
     }
 
