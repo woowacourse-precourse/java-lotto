@@ -35,7 +35,7 @@ public class Ui {
         System.out.println(size + "개를 구매했습니다.");
 
         for (LottoNumber lottoNumber : buyList) {
-            System.out.println(lottoNumber.toString());
+            System.out.println(lottoNumber.getNumbers().toString());
         }
     }
 }
