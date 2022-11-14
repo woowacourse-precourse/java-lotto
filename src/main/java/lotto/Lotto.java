@@ -42,4 +42,18 @@ public class Lotto {
         }
         return winNum;
     }
+    public static List<Integer> createBonusnum(List<Integer> winNum){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        try{
+            int bonus = Integer.parseInt(Console.readLine());
+            if(winNum.contains(bonus)){
+                throw new IllegalArgumentException();
+            }
+            winNum.add(bonus);
+        }
+        catch(IllegalArgumentException e){
+            System.out.println(ExceptionType.DuplicateError.getName());
+        }
+        return winNum;
+    }
 }
