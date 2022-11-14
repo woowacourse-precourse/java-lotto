@@ -13,6 +13,7 @@ public class GameManager {
   public void lottoGameStart() {
     buyLotto();
     printBuyLottoList();
+    Lotto prizeLotto = getPrizeNumber();
   }
 
   private void buyLotto() {
@@ -26,5 +27,11 @@ public class GameManager {
     printBuyCount(user.getBuyCount());
     user.setUserLottoList(LottoGenerator.getRandomLottoListByCount(user.getBuyCount()));
     user.printUserLottoList();
+    printBlankLine();
+  }
+
+  private Lotto getPrizeNumber(){
+    printInputPrizeNumberMessage();
+    return getPrizeLotto();
   }
 }
