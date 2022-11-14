@@ -28,4 +28,21 @@ public class RevenueTest {
 
         assertThat(revenueStatics.keySet().toArray()).containsAll(Rank.getRankNames());
     }
+    @Test
+    @DisplayName("집계정보 업데이트 시 해당하는 등수의 카운트가 증가하는지 확인한다.")
+    public void updateStatics(){
+        int firstOfRankingCount=1;
+        String raffleNumbers="1,45,5,11,23,20";
+        String bonusNumber="15";
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
+
+        Discriminator discriminator = new Discriminator(raffleNumber);
+
+        Revenue revenue = new Revenue(discriminator);
+        revenue.initializeRevenueStatics();
+        revenue.updateRevenueStatics("FIRST");
+        HashMap<String, Integer> revenueStatics = revenue.getRevenueStatics();
+
+        assertThat(revenueStatics.get("FIRST")).isEqualTo(firstOfRankingCount);
+    }
 }
