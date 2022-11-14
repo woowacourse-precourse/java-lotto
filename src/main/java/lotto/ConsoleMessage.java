@@ -61,7 +61,7 @@ public enum ConsoleMessage {
             "5개 일치 (1,500,000원) - %d개\n" +
             "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n" +
             "6개 일치 (2,000,000,000원) - %d개";
-    private static final String YIELD_MSG = "총 수익률은 %.2f%%입니다.";
+    private static final String YIELD_MSG = "총 수익률은 %.1f%%입니다.";
 
     public void printMsg() {}
     public void printMsg(int[] result) {}
