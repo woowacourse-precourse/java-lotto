@@ -11,7 +11,7 @@ public class LottoBuyingInfo {
 		int money = convertMoneyLetterToNumber(input);
 
 		this.money = money;
-		this.amount = money / 1000;
+		this.amount = money / LottoInfo.LOTTO_PRICE;
 	}
 
 	private static int convertMoneyLetterToNumber(String input) {

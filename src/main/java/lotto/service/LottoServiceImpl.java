@@ -13,7 +13,7 @@ public class LottoServiceImpl implements LottoService {
 	public List<Lotto> createLottos(LottoBuyingInfo lottoBuyingInfo) {
 		List<Lotto> result = new ArrayList<>();
 		for (int count = 0; count < lottoBuyingInfo.getAmount(); count++) {
-			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoInfo.MIN_LOTTO_NUMBER, LottoInfo.MAX_LOTTO_NUMBER, LottoInfo.LOTTO_SIZE);
 			result.add(new Lotto(numbers));
 		}
 

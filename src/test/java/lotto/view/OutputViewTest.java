@@ -29,14 +29,15 @@ class OutputViewTest {
             //given
             OutputStream out = new ByteArrayOutputStream();
             System.setOut(new PrintStream(out));
-            IllegalArgumentException given = new IllegalArgumentException("테스트 예외 메시지입니다.");
+            String givenExceptionMessage = "테스트 예외 메시지입니다.";
+            IllegalArgumentException given = new IllegalArgumentException(givenExceptionMessage);
 
             //when
             outputView.printErrorMessage(given);
 
             //then
             assertThat(out.toString())
-                    .isEqualTo("[ERROR] 테스트 예외 메시지입니다.\n");
+                    .isEqualTo(String.format(OutputViewImpl.ERROR_MESSAGE_FORMAT, givenExceptionMessage));
         }
     }
 
@@ -56,7 +57,7 @@ class OutputViewTest {
 
             //then
             assertThat(out.toString())
-                    .isEqualTo(String.format("%s", String.format(OutputViewImpl.BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT, 10)));
+                    .isEqualTo(String.format(OutputViewImpl.BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT, 10));
         }
     }
 
@@ -135,7 +136,7 @@ class OutputViewTest {
 
             //then
             assertThat(out.toString())
-                    .isEqualTo("총 수익률은 62.5%입니다.\n");
+                    .isEqualTo(String.format(OutputViewImpl.PROFIT_MESSAGE_FORMAT, profit));
         }
     }
 }

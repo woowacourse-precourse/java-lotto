@@ -1,6 +1,8 @@
 package lotto.system;
 
 import lotto.mock.MockLottoApplication;
+import lotto.mock.MockLottoController;
+import lotto.view.OutputViewImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -28,7 +30,7 @@ class LottoApplicationTest {
             lottoApplication.run();
 
             //then
-            assertThat(out.toString()).isEqualTo("[ERROR] 테스트 예외입니다.\n");
+            assertThat(out.toString()).isEqualTo(String.format(OutputViewImpl.ERROR_MESSAGE_FORMAT, MockLottoController.MOCK_EXCEPTION_MESSAGE));
         }
     }
 }
