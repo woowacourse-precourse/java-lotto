@@ -3,7 +3,6 @@ package lotto.ui;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -15,8 +14,27 @@ public class InputScanner {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int purchaseAmount = 0;
-        purchaseAmount = stringToInteger(input);
+        try {
+            purchaseAmount = validatePurchaseAmount(input);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            throw new IllegalArgumentException();
+        }
         return purchaseAmount / 1000;
+    }
+
+    private int validatePurchaseAmount(String input) {
+        int purchaseAmount = 0;
+        try {
+            purchaseAmount = stringToInteger(input);
+        } catch (IllegalArgumentException e) {
+            System.err.println("[ERROR] 구입 금액은 숫자로만 이루어져야 합니다.");
+            throw new IllegalArgumentException();
+        }
+        if (purchaseAmount % 1000 > 0) {
+            System.err.println("[ERROR] 구입 금액은 천원 단위여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+        return purchaseAmount;
     }
 
     private int stringToInteger(String input) {
@@ -30,10 +48,31 @@ public class InputScanner {
     public List<Integer> scanWinningNumbers() {
         List<Integer> _winningNumbers;
         String input = Console.readLine();
-        _winningNumbers = stringToIntegerList(input);
-        sortWinningNumbers(_winningNumbers);
-        winningNumbers = _winningNumbers;
-        return sortWinningNumbers(_winningNumbers);
+        try {
+            _winningNumbers = validateWinningNumbers(input);
+            winningNumbers = _winningNumbers;
+            return sortWinningNumbers(_winningNumbers);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private List<Integer> validateWinningNumbers(String input) {
+        List<Integer> winningNumbers;
+        try {
+            winningNumbers = stringToIntegerList(input);
+        } catch (NumberFormatException e) {
+            System.err.println("[ERROR] 당첨번호는 쉼표와 숫자만 입력가능합니다.");
+            throw new IllegalArgumentException();
+        }
+        if (winningNumbers.size() != 6) {
+            System.err.println("[ERROR] 6자리 숫자만 입력가능합니다. ");
+            throw new IllegalArgumentException();
+        }
+        if (Collections.min(winningNumbers) < 1 || Collections.max(winningNumbers) > 45) {
+            System.err.println("[ERROR] 1부터 45까지의 범위 내에서 입력가능합니다.");
+        }
+        return winningNumbers;
     }
 
     private List<Integer> sortWinningNumbers(List<Integer> inputNumbers) {
@@ -54,7 +93,30 @@ public class InputScanner {
     public int scanBonusNumber() {
         String input = Console.readLine();
         int bonusNumber = 0;
-        bonusNumber = stringToInteger(input);
+        try {
+            bonusNumber = validateBonusNumber(input);
+            return bonusNumber;
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private int validateBonusNumber(String input) {
+        int bonusNumber = 0;
+        try {
+            bonusNumber = stringToInteger(input);
+        } catch (NumberFormatException e) {
+            System.err.println("[ERROR] 보너스번호는 숫자만 입력가능합니다.");
+            throw new IllegalArgumentException();
+        }
+        if (winningNumbers.contains(bonusNumber)) {
+            System.err.println("[ERROR] 당첨번호와 중복되지 않는 수를 입력해 주세요. ");
+            throw new IllegalArgumentException();
+        }
+        if (bonusNumber < 0 || bonusNumber > 45) {
+            System.err.println("[ERROR] 1부터 45까지의 범위 내에서 입력가능합니다. ");
+            throw new IllegalArgumentException();
+        }
         return bonusNumber;
     }
 }
