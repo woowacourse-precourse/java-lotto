@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
+    private static Guide guide = new Guide();
     private static Purchase purchase;
     private static WinNumber winNumber;
     private static BonusNumber bonusNumber;
 
-    public static Guide guide = new Guide();
     public static void main(String[] args) {
         guide.printPurchase();
         try {
@@ -31,7 +31,8 @@ public class Application {
         guide.requestBonusNumber();
         try {
             bonusNumber = new BonusNumber(Console.readLine(), winNumber);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
 
         myLotto.checkEachLotto(winNumber, bonusNumber);
         myLotto.calculateProfit();

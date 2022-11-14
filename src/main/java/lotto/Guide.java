@@ -1,14 +1,12 @@
 package lotto;
 
-import java.util.HashMap;
-
 public class Guide {
     public void printPurchase() {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
     public void printConfirmPurchase(Purchase purchase) {
-        System.out.println("\n"+purchase.getLottoNumber()+"개를 구매했습니다.");
+        System.out.println("\n" + purchase.getLottoNumber() + "개를 구매했습니다.");
     }
 
     public void printMyLotto(MyLotto myLotto) {
@@ -30,13 +28,15 @@ public class Guide {
         System.out.println("당첨 통계\n---");
 
         for (Rank rank : Rank.values()) {
-            if (rank.getCorrectNumbers() == 0) { continue; }
+            if (rank.getCorrectNumbers() == 0) {
+                continue;
+            }
             System.out.println(
-                    rank.getRankDescription()+myLotto.getEachLottoRank().get(rank.name())+"개");
+                    rank.getRankDescription() + myLotto.getEachLottoRank().get(rank.name()) + "개");
         }
     }
 
     public void printProfit(MyLotto myLotto) {
-        System.out.print("총 수익률은 "+String.format("%.1f", myLotto.getProfit())+"%입니다.");
+        System.out.print("총 수익률은 " + String.format("%.1f", myLotto.getProfit()) + "%입니다.");
     }
 }

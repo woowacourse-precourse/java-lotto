@@ -8,7 +8,7 @@ import java.util.Set;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) throws Exception{
+    public Lotto(List<Integer> numbers){
         validateNumberLength(numbers);
         validateNumberReplicate(numbers);
         validateNumberRange(numbers);
@@ -54,11 +54,7 @@ public class Lotto {
 
     public boolean compareWithBonusNumber(BonusNumber bonusNumber) {
 
-        boolean containBonusNumber = false;
-
-        if (this.numbers.contains(bonusNumber.getBonusNumber())) {
-            containBonusNumber = true;
-        }
+        boolean containBonusNumber = this.numbers.contains(bonusNumber.getBonusNumber());
 
         return containBonusNumber;
     }

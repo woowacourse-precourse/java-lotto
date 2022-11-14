@@ -15,20 +15,6 @@ public enum Rank {
     private final int prize;
     private final String rankDescription;
 
-    public int getPrize() {
-        return prize;
-    }
-
-    public int getCorrectNumbers() {
-        return correctNumbers;
-    }
-
-    public boolean getCorrectBonusNumber() {
-        return correctBonusNumber;
-    }
-
-    public String getRankDescription() { return rankDescription; }
-
     Rank(int correctNumbers, boolean correctBonusNumber, int prize, String rankDescription) {
         this.correctNumbers = correctNumbers;
         this.correctBonusNumber = correctBonusNumber;
@@ -42,5 +28,21 @@ public enum Rank {
                 .filter(lottoRank -> lottoRank.getCorrectBonusNumber() == bonusNumber)
                 .findAny()
                 .orElseGet(() -> NOTHING);
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
+    public int getCorrectNumbers() {
+        return correctNumbers;
+    }
+
+    public boolean getCorrectBonusNumber() {
+        return correctBonusNumber;
+    }
+
+    public String getRankDescription() {
+        return rankDescription;
     }
 }

@@ -2,10 +2,10 @@ package lotto;
 
 public class Purchase {
 
-    private int money;
-    private int lottoNumber;
+    private final int money;
+    private final int lottoNumber;
 
-    public Purchase(String money) throws Exception{
+    public Purchase(String money) throws Exception {
         validateMoneyType(money);
         validateMoneyUnit(Integer.valueOf(money));
         this.money = Integer.valueOf(money);
@@ -19,7 +19,7 @@ public class Purchase {
     public void validateMoneyType(String money) {
         try {
             Double.parseDouble(money);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("[ERROR] 구입 금액은 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }

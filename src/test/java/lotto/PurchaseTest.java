@@ -26,9 +26,10 @@ public class PurchaseTest {
     @Test
     void checkLottoAccordingToPurchase() {
         Purchase money = null;
-        try{
+        try {
             money = new Purchase("14000");
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
 
         assertThat(money.getLottoNumber()).isEqualTo(14);
     }

@@ -8,9 +8,9 @@ import java.util.List;
 
 public class MyLotto {
 
-    private List<Lotto> myLotto;
+    private final List<Lotto> myLotto;
+    private final HashMap<String, Integer> eachLottoRank = new HashMap<>();
     private double profit = 0;
-    private HashMap<String, Integer> eachLottoRank = new HashMap<>();
 
     public MyLotto(Purchase purchase) {
         int purchaseAmount = purchase.getLottoNumber();
@@ -21,7 +21,7 @@ public class MyLotto {
 
     public void setEachLottoPrize(int rank, boolean containBonusNumber) {
         String rankName = Rank.findRank(rank, containBonusNumber).name();
-        this.eachLottoRank.put(rankName, this.eachLottoRank.get(rankName)+1);
+        this.eachLottoRank.put(rankName, this.eachLottoRank.get(rankName) + 1);
     }
 
     public List<Lotto> getMyLotto() {
@@ -43,7 +43,8 @@ public class MyLotto {
         for (int i = 0; i < purchaseAmount; i++) {
             try {
                 tmpMyLotto.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            }
         }
 
         return tmpMyLotto;
@@ -75,7 +76,7 @@ public class MyLotto {
         int purchaseAmount = this.myLotto.size() * 1000;
 
         for (Rank rank : Rank.values()) {
-            this.profit = this.profit + (this.eachLottoRank.get(rank.name())*rank.getPrize());
+            this.profit = this.profit + (this.eachLottoRank.get(rank.name()) * rank.getPrize());
         }
 
         this.profit = (this.profit / purchaseAmount * 100);

@@ -1,12 +1,10 @@
 package lotto;
 
-import java.util.List;
-
 public class BonusNumber {
 
-    private int bonusNumber;
+    private final int bonusNumber;
 
-    public BonusNumber(String bonusNumber, WinNumber winNumber) throws Exception{
+    public BonusNumber(String bonusNumber, WinNumber winNumber) {
         int tmpBonusNumber = validateBonusNumberType(bonusNumber);
         validateBonusNumberRange(tmpBonusNumber);
         validateBonusNumberReplicate(tmpBonusNumber, winNumber);
@@ -21,7 +19,7 @@ public class BonusNumber {
     public int validateBonusNumberType(String bonusNumber) {
         try {
             Double.parseDouble(bonusNumber);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             System.out.println("[ERROR] 보너스 번호는 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }

@@ -16,8 +16,9 @@ class LottoTest {
     @BeforeAll
     static void setLotto() {
         try {
-            lotto = new Lotto(List.of(1,2,3,4,5,6));
-        } catch (Exception e) {}
+            lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        } catch (Exception e) {
+        }
     }
 
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -42,7 +43,8 @@ class LottoTest {
             assertThat(lotto.compareWithWinNumber(new WinNumber("42,44,45,6,7,8"))).isEqualTo(1);
             assertThat(lotto.compareWithWinNumber(new WinNumber("3,4,5,6,7,8"))).isEqualTo(4);
             assertThat(lotto.compareWithWinNumber(new WinNumber("33,34,35,36,37,38"))).isEqualTo(0);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
     }
 
     @DisplayName("로또 번호와 당첨 번호를 비교하여 일치하는 숫자의 개수를 확인한다.")
@@ -52,6 +54,7 @@ class LottoTest {
             WinNumber winNumbers = new WinNumber("6,7,8,9,10,11");
             assertThat(lotto.compareWithBonusNumber(new BonusNumber("4", winNumbers))).isEqualTo(true);
             assertThat(lotto.compareWithBonusNumber(new BonusNumber("12", winNumbers))).isEqualTo(false);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
     }
 }
