@@ -20,6 +20,7 @@ public class Player {
     public Player(long money){
         validateMoney(money);
         this.money = money;
+        buyLottos();
     }
 
     public void validateMoney(long money){
@@ -28,4 +29,12 @@ public class Player {
         }
     }
 
+    public void buyLottos(){
+        int lottoCount = (int) (money / LOTTO_PRICE);
+
+        for(int i = 0; i < lottoCount; i++){
+            CreateLotto lottoTicket = new CreateLotto();
+            lottoTickets.add(lottoTicket.getLotto());
+        }
+    }
 }
