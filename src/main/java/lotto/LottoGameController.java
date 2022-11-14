@@ -6,10 +6,10 @@ import static lotto.view.Input.inputWinningNumbers;
 import static lotto.view.Print.printBonusLottoNumberInput;
 import static lotto.view.Print.printLottoResult;
 import static lotto.view.Print.printPublishedLottoNumbers;
-import static lotto.view.Print.printPurchaseMoneyInput;
 import static lotto.view.Print.printPurchaseQuantity;
 import static lotto.view.Print.printWinningLottoNumbersInput;
 import static lotto.view.Print.printYield;
+import static lotto.view.Print.requestPurchaseAmountInput;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class LottoGameController {
     private final LottoReader lottoReader = new LottoReader();
 
     public void start() {
-        printPurchaseMoneyInput();
+        requestPurchaseAmountInput();
         int purchaseAmount = inputPurchaseAmount();
 
         List<Lotto> publishedAllLotto = publishLotto(purchaseAmount);

@@ -21,7 +21,7 @@ public final class Print {
     private static final String YIELD_BEFORE = "총 수익률은 %s";
     private static final String YIELD_AFTER = "%입니다.";
 
-    public static void printPurchaseMoneyInput() {
+    public static void requestPurchaseAmountInput() {
         System.out.println(PURCHASE_MONEY_INPUT_MESSAGE);
     }
 
