@@ -45,4 +45,13 @@ public class InputView {
         }
     }
 
+    public static int getBonusNum() {
+        try{
+            System.out.println(Message.INPUT_LOTTO_BONUS_NUMS);
+            return Integer.parseInt(Console.readLine());
+
+        }catch(Exception e){
+            throw new IllegalArgumentException("[ERROR] 잘못된 보너스 번호입니다");
+        }
+    }
 }

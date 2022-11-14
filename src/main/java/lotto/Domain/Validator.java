@@ -41,4 +41,11 @@ public class Validator {
     public static boolean checkWinningnumsSize(List<Integer> winningNums) {
         return winningNums.size() == LOTTO_LENGTH;
     }
+
+    public static void checkIsValidBonusNum(List<Integer> winningNums, int bonusNum) {
+
+        if (winningNums.contains(bonusNum) || !checkIsInLottoRange(bonusNum)) {
+            throw new IllegalArgumentException(Message.ERROR_BONUS_NUM);
+        }
+    }
 }

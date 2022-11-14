@@ -17,6 +17,8 @@ public class Message {
     public static final String EARN_RATIO_MESSAGE = "총 수익률은 %.1f%%입니다.";
     public static final String ERROR_PURCHASE_AMOUNT_IS_NOT_INT = "[ERROR] 구매 금액을 잘못 입력하였습니다." ;
     public static final String ERROR_WINNING_NUMS = "[ERROR] 잘못된 당첨번호입니다.";
+    public static final String ERROR_BONUS_NUM = "[ERROR] 잘못된 보너스 번호입니다.";
+
     public static final String ERROR_LOTTO_NUMS_LENGTH = "[ERROR] 로또 번호의 개수는 6개이어야 합니다. ";
     public static final String ERROR_LOTTO_NUM = "[ERROR] 로또 번호는 %d부터 %d 사이의 숫자여야 합니다.";
 
