@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.config.LottoConfig;
+import lotto.message.ErrorCode;
 import lotto.message.IOMessage;
 
 import java.util.ArrayList;
@@ -22,13 +23,15 @@ public class LottoProgramManager {
         }
     }
 
-    private int buyLotto() {
+    private int buyLotto() throws IllegalArgumentException {
         int price = IOManager.scanMoney();
 
         if(LottoConfig.LOTTO_PRICE == 0)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorCode.LOTTO_PRICE_ZERO.getErrorMessage());
+        if(price <= 0)
+            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_TYPE.getErrorMessage());
         if(price % LottoConfig.LOTTO_PRICE != 0)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_PRICE.getErrorMessage());
 
         IOManager.printLottoBought(price / LottoConfig.LOTTO_PRICE);
         return price / LottoConfig.LOTTO_PRICE;

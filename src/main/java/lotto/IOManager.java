@@ -21,7 +21,7 @@ public class IOManager {
 
             return price;
         } catch(Exception e) {
-            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_PRICE.getErrorMessage());
+            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_TYPE.getErrorMessage());
         }
     }
 
