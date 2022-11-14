@@ -12,7 +12,8 @@ import java.util.stream.Collectors;
 public class OutputView {
 
     public static void printLottoList(Lotties lotties) {
-        System.out.println(lotties.getLottiesSize() + "개를 구매했습니다.");
+        String printFormat = String.format("%d개를 구매했습니다.", lotties.getLottiesSize());
+        System.out.println(printFormat);
 
         for (Lotto lotto : lotties.getLotties()) {
             List<Integer> collect = lotto.getNumbers()
@@ -36,11 +37,13 @@ public class OutputView {
                 .collect(Collectors.toList());
 
         for (LottoRank rank : collect) {
-            System.out.println(rank + " - " + winLottoInfo.get(rank) + "개");
+            String printFormat = String.format("%s - %d개", rank, winLottoInfo.get(rank));
+            System.out.println(printFormat);
         }
     }
 
     public static void printYieldResult(double lottoYield) {
-        System.out.println("총 수익률은 " + lottoYield + "%입니다.");
+        String printFormat = String.format("총 수익률은 %.1f%%입니다.", lottoYield);
+        System.out.println(printFormat);
     }
 }
