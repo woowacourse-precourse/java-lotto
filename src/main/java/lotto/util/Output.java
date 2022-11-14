@@ -14,7 +14,7 @@ public class Output {
 
     private static final String BUY_MESSAGE = "개를 구매했습니다.";
     public static void printBuyMessage(int number) {
-        System.out.println(number + BUY_MESSAGE);
+        System.out.println("\n" + number + BUY_MESSAGE);
     }
 
     public static void printLotto(List<Integer> numbers) {
@@ -25,17 +25,17 @@ public class Output {
         );
     }
 
-    private static final String INPUT_WINNINGS = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_WINNINGS = "\n당첨 번호를 입력해 주세요.";
     public static void printInputWinnings() {
         System.out.println(INPUT_WINNINGS);
     }
 
-    private static final String INPUT_BONUS = "보너스 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS = "\n보너스 번호를 입력해 주세요.";
     public static void printInputBonus() {
         System.out.println(INPUT_BONUS);
     }
 
-    private static final String STATISTICS = "당첨 통계\n---";
+    private static final String STATISTICS = "\n당첨 통계\n---";
     public static void printStatistics(Map<Result, Integer> resultCounts) {
         System.out.println(STATISTICS);
         for (Map.Entry<Result, Integer> resultCount : resultCounts.entrySet()) {
