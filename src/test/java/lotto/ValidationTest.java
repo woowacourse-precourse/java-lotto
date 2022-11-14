@@ -30,7 +30,7 @@ public class ValidationTest {
 	void validateNumberOnlyException_메서드_테스트() {
 		userInput = "ㅁ";
 		Assertions.assertThrows(IllegalArgumentException.class,
-			() -> Validation.validateNumberOnlyException(Arrays.asList(userInput)));
+			() -> Validation.validateNumberOnly(Arrays.asList(userInput)));
 	}
 
 	@DisplayName("올바르지 않은 구매금액 예외처리")
@@ -38,7 +38,7 @@ public class ValidationTest {
 	@CsvSource(value = {"1000001", "999", "1004"})
 	void validatePriceRangeException_메서드_테스트() {
 		Assertions.assertThrows(IllegalArgumentException.class,
-			() -> Validation.validateNumberOnlyException(Arrays.asList(userInput)));
+			() -> Validation.validateNumberOnly(Arrays.asList(userInput)));
 	}
 
 	@DisplayName("당첨 번호 input 검증 테스트")
@@ -56,21 +56,21 @@ public class ValidationTest {
 	private void validateNumberRangeException_메서드_테스트() {
 		winningNumber = new ArrayList<>(List.of("1", "2", "3", "4", "0", "50"));
 		Assertions.assertThrows(IllegalArgumentException.class,
-			() -> Validation.validateNumberRangeException(Arrays.asList(userInput)));
+			() -> Validation.validateNumberRange(Arrays.asList(userInput)));
 	}
 
 	@DisplayName("중복된 숫자 예외 처리")
 	private void validateSameNumberException_메서드_테스트() {
 		winningNumber = new ArrayList<>(List.of("1", "2", "3", "4", "5", "1"));
 		Assertions.assertThrows(IllegalArgumentException.class,
-			() -> Validation.validateSameNumberException(winningNumber));
+			() -> Validation.validateSameNumber(winningNumber));
 	}
 
 	@DisplayName("올바르지 않은 길이의 input 예외처리")
 	private void validateLengthException_메서드_테스트() {
 		List<String> winningNumber = new ArrayList<>(List.of("1", "2", "3", "4", "5", "6", "7"));
 		Assertions.assertThrows(IllegalArgumentException.class,
-			() -> Validation.validateLengthException(winningNumber, 6));
+			() -> Validation.validateLength(winningNumber, 6));
 	}
 
 	@DisplayName("보너스 번호 input 테스트")
@@ -90,6 +90,6 @@ public class ValidationTest {
 		bonusNumber = new ArrayList<>(List.of("1"));
 
 		Assertions.assertThrows(IllegalArgumentException.class,
-			() -> Validation.validateSameNumberInWinningNumberException(winningNumber, bonusNumber));
+			() -> Validation.validateSameNumberInWinningNumber(winningNumber, bonusNumber));
 	}
 }
