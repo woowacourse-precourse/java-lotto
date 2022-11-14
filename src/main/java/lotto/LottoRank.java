@@ -1,6 +1,7 @@
 package lotto;
 
 public enum LottoRank {
+    NONE(2, 0),
     RANK5(3, 5000),
     RANK4(4, 50000),
     RANK3(5, 1500000),
