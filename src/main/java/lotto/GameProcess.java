@@ -1,11 +1,9 @@
 package lotto;
 
-import lotto.util.Validate;
-import lotto.view.Input;
+import lotto.domain.Service;
 
 public class GameProcess {
     public static void gameStart() {
-        String payMoney = Input.payMoney();
-        Validate.validatePayMoney(payMoney);
+        Service.inputMoney();
     }
 }
