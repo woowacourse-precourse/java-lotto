@@ -16,18 +16,6 @@ public enum Winning {
         this.rewards = rewards;
     }
 
-    public int getCorrectCount() {
-        return correctCount;
-    }
-
-    public int getRewards() {
-        return rewards;
-    }
-
-    public int getTotalRewards(int count) {
-        return this.rewards * count;
-    }
-
     public static Winning valueOf(int correctCount, boolean isBonus) {
         if (correctCount == Winning.FIVE.correctCount) {
             return checkBonus(isBonus);
@@ -46,5 +34,17 @@ public enum Winning {
             return Winning.BONUS;
         }
         return Winning.FIVE;
+    }
+
+    public int getCorrectCount() {
+        return correctCount;
+    }
+
+    public int getRewards() {
+        return rewards;
+    }
+
+    public int getTotalRewards(int count) {
+        return this.rewards * count;
     }
 }

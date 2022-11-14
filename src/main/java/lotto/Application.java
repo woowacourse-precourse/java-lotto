@@ -11,7 +11,8 @@ public class Application {
         try {
             // 로또 구매
             Store store = new Store();
-            User user = new User(enterMoney());
+            int moneyToBuy = enterMoney();
+            User user = new User(moneyToBuy);
             user.buyLottoAll(store);
             user.printLotto();
 
@@ -21,10 +22,9 @@ public class Application {
 
             // 당첨 통계
             List<Winning> drawResults = host.drawLotto(user);
-            Statistics statistics = new Statistics();
-            statistics.generateStatistics(drawResults);
+            Statistics statistics = new Statistics(drawResults);
             statistics.printStatistics();
-
+            statistics.printProfit(moneyToBuy);
         } catch (IllegalArgumentException e) {
             System.out.println(Constants.ERROR_PREFIX + e.getMessage());
         }

@@ -23,5 +23,5 @@ public final class Constants {
     public static final String STATISTICS_TITLE_SUFFIX = "---";
     public static final String STATISTICS = "%d개 일치 (%,d원) - %d개%n";
     public static final String STATISTICS_BONUS = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개%n";
-    public static final String LOTTO_EARNINGS_RATE = "총 수익률은 %f%입니다.%n";
+    public static final String LOTTO_EARNINGS_RATE = "총 수익률은 %s%%입니다.%n";
 }

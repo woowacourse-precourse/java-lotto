@@ -7,18 +7,23 @@ import java.util.Map;
 public class Statistics {
 
     private Map<Winning, Integer> statistics;
+    private int rewards;
 
-    public Statistics() {
-        statistics = new EnumMap<>(Winning.class);
+    public Statistics(List<Winning> drawResults) {
+        this.statistics = new EnumMap<>(Winning.class);
         for (Winning winning : Winning.values()) {
             statistics.put(winning, 0);
         }
+        this.rewards = 0;
+
+        generateStatistics(drawResults);
     }
 
-    public void generateStatistics(List<Winning> drawResults) {
+    private void generateStatistics(List<Winning> drawResults) {
         for (Winning result : drawResults) {
             statistics.put(result, statistics.get(result) + 1);
         }
+        calculateRewards();
     }
 
     public void printStatistics() {
@@ -50,5 +55,19 @@ public class Statistics {
         System.out.printf(Constants.STATISTICS, correctCount, rewards, resultCount);
     }
 
+    public void printProfit(int moneyToBuy) {
+        double profitRate = ((double) this.rewards / moneyToBuy) * 100;
+        String profitRateRoundToFirst = String.format("%.1f", profitRate);
+        System.out.printf(Constants.LOTTO_EARNINGS_RATE, profitRateRoundToFirst);
+    }
 
+    private void calculateRewards() {
+        for (Winning winning : statistics.keySet()) {
+            addRewards(winning.getTotalRewards(statistics.get(winning)));
+        }
+    }
+
+    private void addRewards(int rewards) {
+        this.rewards += rewards;
+    }
 }

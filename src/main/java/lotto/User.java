@@ -1,8 +1,6 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import java.util.Map;
 
 public class User {
 
@@ -17,7 +15,6 @@ public class User {
         System.out.println();
 
         this.lottos = store.sell(this, this.money);
-        this.money = 0;
         int boughtLottosCount = this.lottos.size();
 
         System.out.printf(Constants.CONSOLE_BUY_RESULT_SUFFIX, boughtLottosCount);
@@ -33,4 +30,6 @@ public class User {
         }
         System.out.println();
     }
+
+
 }
