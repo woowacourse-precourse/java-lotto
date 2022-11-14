@@ -25,10 +25,8 @@ public class LottoStore {
         System.out.println("\n" + pages + "개를 구매했습니다.");
 
         this.userLotto = LottoGenerator.getInstance.issueLotto(pages);
-        for (int userLottoIndex = 0; userLottoIndex < userLotto.size(); userLottoIndex++) {
-            System.out.println(userLotto.get(userLottoIndex).getLotto());
-        }
-
+        userLotto.stream()
+                .forEach(user -> System.out.println(user.getLotto()));
     }
 
     public void determiningWinningNumber() {
