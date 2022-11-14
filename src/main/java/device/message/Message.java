@@ -1,4 +1,4 @@
-package lotto.message;
+package device.message;
 
 public interface Message {
 
