@@ -34,13 +34,14 @@ public class Lotto {
 
     @Override
     public String toString() {
+        List<Integer> sortedNumbers = getSortedNumbers();
         StringBuilder message = new StringBuilder();
 
         message.append("[");
-        for (int number : getSortedNumbers()) {
+        for (int number : sortedNumbers) {
             message.append(number);
 
-            if (number != numbers.get(numbers.size() - 1)) {
+            if (number != sortedNumbers.get(sortedNumbers.size() - 1)) {
                 message.append(", ");
             }
         }
