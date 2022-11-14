@@ -26,6 +26,10 @@ public class LottoController {
 
         LottoResult lottoResult = getResult(buyLottoList, lottoWithBonus);
 
+        outputResult(lottoResult);
+    }
+
+    private void outputResult(LottoResult lottoResult) {
         outputHandler.winningStatistics(lottoResult);
         outputHandler.printYield(lottoResult);
     }
