@@ -9,49 +9,12 @@ import java.util.List;
 import static lotto.Constant.*;
 import static lotto.Count.*;
 import static lotto.Count.WinningCount;
+import static lotto.MakeLotto.*;
 
 public class Game {
-    private final List<List<Integer>> GeneratedLotto = new ArrayList<>();
-    private int nLottoPrice;
-    private int nLotto;
-
-    public int HowMuch() {
-        System.out.println(ASK_PRICE);
-        String price = Console.readLine();
-        nLottoPrice = validatePrice(price);
-        validate1000(nLottoPrice);
-        nLotto = nLottoPrice / 1000;
-        //Lotto exception 필요
-        return nLotto;
-    }
-
-    public int validatePrice(String price){
-        try{
-            nLottoPrice = Integer.parseInt(price);
-        }catch(NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 금액(숫자)을 입력하세요");}
-        return nLottoPrice;
-    }
-
-    public void validate1000(int nLottoPrice){
-        if (nLottoPrice % 1000 != 0){
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000의 배수여야 합니다.");
-        }
-    }
-
-    public void BuyLotto(int nLotto) {
-        System.out.println("\n" + nLotto + SHOW_BUY_COUNT);
-        for (int i = 0; i < nLotto; i++) {
-            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            GeneratedLotto.add(lottoNumbers);
-        }
-    }
-
-    public void PrintGeneratedLotto(int nLotto, List<List<Integer>> GeneratedLotto) {
-        for (int i = 0; i < nLotto; i++) {
-            System.out.println(GeneratedLotto.get(i));
-        }
-    }
+    public static final List<List<Integer>> GeneratedLotto = new ArrayList<>();
+    public static int nLottoPrice;
+    public static int nLotto;
 
     public List<Integer> inputJackpotNum() {
         System.out.println(ASK_WINNING_NUMBER);
@@ -66,7 +29,7 @@ public class Game {
     }
 
     public void Jackpot() {
-        BuyLotto(HowMuch());
+        LottoGenerator(Buy.HowMuch());
         PrintGeneratedLotto(nLotto, GeneratedLotto);
         List<Integer> JackpotNumbers = inputJackpotNum();
 
