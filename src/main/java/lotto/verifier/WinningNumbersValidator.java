@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 public class WinningNumbersValidator {
 
     public List<Integer> askWinningNumbers() throws IllegalArgumentException {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
 
         List<Integer> winningNumbers = validateInput(input);
