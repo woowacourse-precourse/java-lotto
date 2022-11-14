@@ -12,7 +12,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Errors.NOT_CORRECT_SIZE.getName());
+            LottoManager.terminateByError(Errors.NOT_CORRECT_SIZE.getName());
         }
         checkDuplicatedNumber(numbers);
         isCorrectRange(numbers);
@@ -22,7 +22,7 @@ public class Lotto {
         for (int i = 0; i < numbers.size(); i++) {
             int num = numbers.get(i);
             if(num < 0 || num > 45) {
-                throw new IllegalArgumentException(Errors.NOT_CORRECT_RANGE.getName());
+                LottoManager.terminateByError(Errors.NOT_CORRECT_RANGE.getName());
             }
         }
     }
@@ -35,7 +35,7 @@ public class Lotto {
         Set<Integer> targetset = new HashSet<>(numbers);
         if(targetset.size() != 6) {
             // 중복되는 숫자가 존재. -> 예외처리
-            throw new IllegalArgumentException(Errors.IS_NOT_UNIQUE.getName());
+            LottoManager.terminateByError(Errors.IS_NOT_UNIQUE.getName());
         }
     }
 

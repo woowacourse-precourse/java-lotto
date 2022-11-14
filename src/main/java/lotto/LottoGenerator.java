@@ -14,7 +14,7 @@ public class LottoGenerator {
 
     public void amountIsNumber(String amount) {
         if(!judge.correctAmount(amount)) {
-            throw new IllegalArgumentException(Errors.NOT_CORRECT_AMOUNT.getName());
+            LottoManager.terminateByError(Errors.NOT_CORRECT_AMOUNT.getName());
         }
     }
 
@@ -24,7 +24,6 @@ public class LottoGenerator {
         for (int i = 0; i < Integer.parseInt(amount) / 1000; i++) {
             lottos.add(generateLotto());
         }
-        showAllLottos(lottos);
         return lottos;
     }
 
@@ -45,11 +44,5 @@ public class LottoGenerator {
             revertNumbers.add(Integer.parseInt(n));
         }
         return new Lotto(revertNumbers);
-    }
-
-    private void showAllLottos(List<Lotto> lottoList) {
-        for(Lotto lotto : lottoList) {
-            lotto.printSortedNumbers();
-        }
     }
 }
