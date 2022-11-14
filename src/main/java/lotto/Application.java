@@ -20,5 +20,6 @@ public class Application {
 
         ResultPrint resultPrint = new ResultPrint();
         resultPrint.winningStatistics(winningLotto.getLottoRank());
+        resultPrint.earningsRate(winningLotto.getearningRate());
     }
 }
