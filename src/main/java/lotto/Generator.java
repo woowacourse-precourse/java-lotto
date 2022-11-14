@@ -14,13 +14,12 @@ public class Generator {
     private static final String SIZE_ERROR_MSG = "[ERROR] 생성된 로또의 번호가 6개가 아닙니다.";
     private static final String DUPLICATE_ERROR_MSG = "[ERROR] 로또에 중복된 번호가 있습니다.";
 
-    public List<Integer> createLotto() {
-        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(MIN_NUMBER,MAX_NUMBER,LOTTO_SIZE);
-        Collections.sort(lotto);
+    public Lotto createLotto() {
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER,MAX_NUMBER,LOTTO_SIZE);
+        Collections.sort(lottoNumbers);
+        validCheck(lottoNumbers);
 
-        validCheck(lotto);
-
-        return lotto;
+        return new Lotto(lottoNumbers);
     }
 
     private void validCheck(List<Integer> lotto) {
