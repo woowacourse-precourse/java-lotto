@@ -12,6 +12,12 @@ public class CompareLotto {
             compare(buynumber,winningnumbers,bonus);
         }
 
+        correctcount.add(fifth);
+        correctcount.add(fourth);
+        correctcount.add(third);
+        correctcount.add(second);
+        correctcount.add(one);
+
         return correctcount;
     }
     public void compare(List<Integer> buynumber, List<Integer> winningnumbers, int bonus){
