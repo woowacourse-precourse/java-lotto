@@ -5,12 +5,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class PlayerTest {
-    Player player = new Player();
-
+    Player player;
+    @BeforeEach
+    void initiatePlayerTest() {
+         player = new Player();
+    }
     @DisplayName("로또 구입 금액으로 8000원을 입력하면 8장이 반환된다.")
     @Test
     void purchaseLotto() {
