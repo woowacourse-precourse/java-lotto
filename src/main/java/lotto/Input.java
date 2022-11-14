@@ -1,9 +1,14 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import static lotto.InputValidator.*;
+
 public class Input {
 
-    static public String enterPurchaseMoney() {
-        return null;
+    static public Integer enterPurchaseMoney() {
+        System.out.println("구입 금액을 입력해주세요.");
+        return validatePurchaseMoney(Console.readLine());
     }
 
     static public String enterSixNumber() {
