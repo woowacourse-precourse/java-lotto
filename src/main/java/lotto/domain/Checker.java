@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.Validation;
 import lotto.dto.LottoResultDto;
 import lotto.util.ResultPrice;
 
@@ -11,6 +12,7 @@ import java.util.Map;
 import static lotto.util.ResultPrice.*;
 
 public class Checker {
+    private static final Validation validation = new Validation();
     private static final int SECOND_OR_THIRD = 5;
     private static final int INCREASE_NUMBER = 1;
 
@@ -25,6 +27,10 @@ public class Checker {
     }
 
     public Map<ResultPrice, Integer> getTotalScore(List<Lotto> lottoGroup) {
+        lottoGroup.stream()
+                .map(Lotto::getLotto)
+                .forEach(validation::validateBasicNumber);
+        
         setResultScoreByLottoGroup(lottoGroup);
         return totalScore;
     }
