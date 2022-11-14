@@ -26,7 +26,7 @@ public class LottoGame {
 
         Map<Rank, Integer> result = getResult(userLottos, mainNumber, bonusNumber);
 
-        gameResult(result, user);
+        totalResult(result, user);
     }
 
     public List<Integer> inputMainNumber() {
@@ -41,8 +41,8 @@ public class LottoGame {
         return mainNumbers;
     }
 
-    public List<Integer> convertToNumber(List<String> winningNumber) {
-        List<Integer> winningNumbers = winningNumber.stream()
+    public List<Integer> convertToNumber(List<String> rawMainNumber) {
+        List<Integer> winningNumbers = rawMainNumber.stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
         return winningNumbers;
@@ -96,17 +96,17 @@ public class LottoGame {
         return hasBonusNumber;
     }
 
-    public void gameResult(Map<Rank, Integer> result, User user) {
+    public void totalResult(Map<Rank, Integer> result, User user) {
         OutputView.printResultIntro();
         for (Rank rank : Rank.values()) {
-            System.out.println(totalResult(result, rank));
+            System.out.println(gameResult(result, rank));
         }
         double lastResult = totalYield(result, user);
 
         OutputView.printYield(lastResult);
     }
 
-    public String totalResult(Map<Rank, Integer> result, Rank rank) {
+    public String gameResult(Map<Rank, Integer> result, Rank rank) {
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         String reward = decimalFormat.format(rank.getReward());
 
