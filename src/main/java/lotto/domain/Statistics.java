@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.Map;
 
 public class Statistics {
     private Map<Grade, Integer> gradeCount = new HashMap<>();
-    private int earningRate;
+    private float earningRate;
 
     public Statistics(WinningNumbers winningNumbers, LottoGenerator lottoGenerator){
         countGrade(winningNumbers, lottoGenerator.getLottos());
@@ -46,14 +47,14 @@ public class Statistics {
     }
 
     private void calculateEarningRate(int numberOfLotto){
-        int earning = calculateEarning();
+        float earning = calculateEarning();
         int purchaseAmount = numberOfLotto * LottoGenerator.LOTTO_PRICE;
 
         earningRate = earning / purchaseAmount * 100;
     }
 
-    private int calculateEarning(){
-        int earning = 0;
+    private float calculateEarning(){
+        float earning = 0;
 
         for(Grade grade : Grade.values()){
             int count = gradeCount.get(grade);
@@ -69,15 +70,29 @@ public class Statistics {
         return gradeCount;
     }
 
-    public int getEarningRate() {
+    public float getEarningRate() {
         return earningRate;
     }
 
     @Override
     public String toString() {
-        return "Statistics{" +
-                "winningCount=" + gradeCount +
-                ", earningRate=" + earningRate +
-                '}';
+        StringBuffer sb = new StringBuffer();
+
+        sb.append(Message.STATISTICS_TITLE);
+
+        Grade[] grades = Grade.values();
+        for(int i = grades.length - 2;i>=0;i--){
+            sb.append(grades[i].getCondition() + " (" + getCommaNumber(grades[i].getPrize()) + Unit.MONEY + ")" + " - " + gradeCount.get(grades[i]) + Unit.NUMBER + "\n");
+        }
+
+        sb.append(String.format("%s %.1f%s", Message.START_OF_EARNING_RATE, earningRate, Message.END_OF_EARNING_RATE));
+
+        return sb.toString();
+    }
+
+    private String getCommaNumber(int number){
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+
+        return decFormat.format(number);
     }
 }
