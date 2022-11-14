@@ -42,14 +42,19 @@ public class Service {
     }
 
     public void setBonusNumber(String bonusInput) {
-        int bonusNumberInput = Converter.toIntFromString(bonusInput);
-        bonusNumber = new BonusNumber(bonusNumberInput);
+        try {
+            int bonusNumberInput = Converter.toIntFromString(bonusInput);
+            bonusNumber = new BonusNumber(bonusNumberInput);
+        } catch (IllegalArgumentException exception) {
+            OutputView.printErrorMessage(exception.getMessage());
+            throw new IllegalArgumentException();
+        }
     }
 
     public List<String> getWinningResult() {
         initResult();
         result.countWinningCase();
-        Map<String,Integer> resultMap = result.getResultMap();
+        Map<String, Integer> resultMap = result.getResultMap();
         return Converter.toWinningResults(resultMap);
     }
 
