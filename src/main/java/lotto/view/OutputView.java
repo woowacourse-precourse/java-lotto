@@ -13,7 +13,7 @@ public class OutputView {
         System.out.print(message);
     }
 
-    public void printPurchasePrice() {
+    public void printPurchaseAmount() {
 
         printlnMessage(INPUT_PURCHASE_AMOUNT_MESSAGE);
     }
