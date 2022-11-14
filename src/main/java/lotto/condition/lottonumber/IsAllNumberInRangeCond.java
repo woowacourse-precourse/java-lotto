@@ -15,6 +15,12 @@ public class IsAllNumberCond implements Condition {
 
     @Override
     public Boolean isSatisfied(String input) {
-        return Arrays.stream(input.split(",")).filter((String chunk) -> !chunk.matches(REGEX)).toArray().length != 0;
+        System.out.println(input);
+        Object[] objects = Arrays.stream(input.split(",")).filter((String chunk) -> !chunk.matches(REGEX)).toArray();
+        for (Object object : objects) {
+            System.out.println(object);
+        }
+
+        return objects.length == 0;
     }
 }

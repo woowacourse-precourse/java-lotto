@@ -1,6 +1,6 @@
-package lotto.condition;
+package lotto.condition.lottonumber;
 
-import lotto.condition.lottonumber.RightFormatCond;
+import lotto.condition.Condition;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
