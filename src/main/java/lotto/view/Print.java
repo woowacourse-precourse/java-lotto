@@ -5,20 +5,9 @@ import lotto.model.Lotto;
 import lotto.model.UserDTO;
 
 public class Print {
-    private static final String PURCHASE_LIST = "개를 구매했습니다.";
-    private static final String END_SENTENCE = "당첨 통계\n---";
-    private static final String COUNT = "개";
-    private static final String CORRECT_THREE = "3개 일치 (5,000원) - ";
-    private static final String CORRECT_FOUR = "4개 일치 (50,000원) - ";
-    private static final String CORRECT_FIVE = "5개 일치 (1,500,000원) - ";
-    private static final String CORRECT_FIVE_BONUS = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-    private static final String CORRECT_SIX = "6개 일치 (2,000,000,000원) - ";
-    private static final String ALL_RATIO = "총 수익률은 ";
-    private static final String ALL_RATIO_SEC = "%입니다.";
-
     public void printGames(UserDTO userDTO) {
         System.out.println();
-        System.out.println(userDTO.getGameCount() + PURCHASE_LIST);
+        System.out.println(userDTO.getGameCount() + PrintMassage.PURCHASE_LIST.message());
         for (Lotto lotto : userDTO.getGames()) {
             System.out.println(lotto.getLotto());
         }
@@ -26,12 +15,18 @@ public class Print {
 
     public void printResult(GameDTO gameDTO) {
         System.out.println();
-        System.out.println(END_SENTENCE);
-        System.out.println(CORRECT_THREE + gameDTO.getWinningCount()[0] + COUNT);
-        System.out.println(CORRECT_FOUR + gameDTO.getWinningCount()[1] + COUNT);
-        System.out.println(CORRECT_FIVE + gameDTO.getWinningCount()[2] + COUNT);
-        System.out.println(CORRECT_FIVE_BONUS + gameDTO.getWinningCount()[3] + COUNT);
-        System.out.println(CORRECT_SIX + gameDTO.getWinningCount()[4] + COUNT);
-        System.out.println(ALL_RATIO + gameDTO.getReturnOfRate() + ALL_RATIO_SEC);
+        System.out.println(PrintMassage.END_SENTENCE.message());
+        System.out.println(PrintMassage.CORRECT_THREE.message() + gameDTO.getWinningCount()[0] +
+                PrintMassage.COUNT.message());
+        System.out.println(PrintMassage.CORRECT_FOUR.message() + gameDTO.getWinningCount()[1] +
+                PrintMassage.COUNT.message());
+        System.out.println(PrintMassage.CORRECT_FIVE.message() + gameDTO.getWinningCount()[2] +
+                PrintMassage.COUNT.message());
+        System.out.println(PrintMassage.CORRECT_FIVE_BONUS.message() + gameDTO.getWinningCount()[3] +
+                PrintMassage.COUNT.message());
+        System.out.println(PrintMassage.CORRECT_SIX.message() + gameDTO.getWinningCount()[4] +
+                PrintMassage.COUNT.message());
+        System.out.println(PrintMassage.ALL_RATIO.message() + gameDTO.getReturnOfRate() +
+                PrintMassage.ALL_RATIO_SEC.message());
     }
 }
