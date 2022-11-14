@@ -55,20 +55,16 @@ public class LottoStatistic {
         for (Lotto lotto : lottoBundle.getLottoList()) {
             int count = compareWin_lotto(lotto);
             boolean bonus = compareBonusNum(lotto);
-            if (count == 6)
-                rankMap.put(Rank.First_Place, rankMap.getOrDefault(Rank.First_Place, 0) + 1);
-            if (count == 5 && bonus)
-                rankMap.put(Rank.Second_Place, rankMap.getOrDefault(Rank.Second_Place, 0) + 1);
-            if (count == 5)
-                rankMap.put(Rank.Third_Place, rankMap.getOrDefault(Rank.Third_Place, 0) + 1);
-            if (count == 4)
-                rankMap.put(Rank.Fourth_Place, rankMap.getOrDefault(Rank.Fourth_Place, 0) + 1);
-            if (count == 3)
-                rankMap.put(Rank.Fifth_Place, rankMap.getOrDefault(Rank.Fifth_Place, 0) + 1);
-
+            putResultToMap(count,bonus);
         }
     }
-
+    private void putResultToMap(int count, boolean bonus){
+        for(Rank rank : Rank.values()){
+            if(count == rank.getCounts() && bonus == rank.isBonus()){
+                rankMap.put(rank,rankMap.getOrDefault(rank,0)+1);
+            }
+        }
+    }
     private int compareWin_lotto(Lotto lotto) {
         int count = 0;
         for (int user_num : lotto.getNumbers()) {

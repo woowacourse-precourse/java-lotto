@@ -1,6 +1,9 @@
 package lotto.domain;
 
 public enum Message {
+    Input_Cost("구입금액을 입력해 주세요."),
+    Input_Lotto("당첨번호를 입력해 주세요."),
+    Input_Bonus("보너스번호를 입력해 주세요."),
     Exception_NotCorrectSize("[ERROR] 6개의 숫자를 입력해주세요."),
     Exception_NotInteger("[ERROR] 숫자를 입력해주세요."),
     Exception_Not1000unit("[ERROR] 1000원 단위만 입력 가능합니다."),

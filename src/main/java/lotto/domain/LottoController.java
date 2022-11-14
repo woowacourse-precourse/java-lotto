@@ -33,7 +33,7 @@ public class LottoController {
     }
 
     private int costInput() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(Message.Input_Cost.getMessage());
         String cost_str = readLine();
         try {
             return Integer.parseInt(cost_str);
@@ -53,7 +53,7 @@ public class LottoController {
     }
 
     private Lotto lottoInput() {
-        System.out.println("당첨번호를 입력해 주세요.");
+        System.out.println(Message.Input_Lotto.getMessage());
         String lotto_str = readLine();
         String[] num_list = lotto_str.split(",");
         List<Integer> lottoNumber = new ArrayList<>();
@@ -69,7 +69,7 @@ public class LottoController {
     }
 
     private int bonusInput(Lotto lotto) {
-        System.out.println("\n보너스번호를 입력해 주세요.");
+        System.out.println(Message.Input_Bonus.getMessage());
         String bonus_str = readLine();
         try {
             int bonus_num = Integer.parseInt(bonus_str);
