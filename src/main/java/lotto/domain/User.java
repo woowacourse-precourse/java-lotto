@@ -33,7 +33,7 @@ public class User {
     }
 
     public void printBoughtLotto(){
-        System.out.println(ioService.print(purchaseLottoNum,purchaseLotto));
+        System.out.println(ioService.printIssuedLotto(purchaseLottoNum,purchaseLotto));
     }
 
 }
