@@ -36,4 +36,13 @@ public class SystemMessage {
         System.out.println("");
     }
 
+    public void winningMessage(){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    public void countMessage(int n){
+        int cnt = 0;
+    }
+
 }
