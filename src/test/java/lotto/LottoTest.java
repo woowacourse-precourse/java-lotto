@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.constant.Rules.LOTTO_PRICE;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -56,5 +58,12 @@ class LottoTest {
     void moneyUnderLottoPrice() {
         assertThatThrownBy(() -> new Money(0))
                 .isInstanceOf(MoneyRangeException.class);
+    }
+
+    @DisplayName("로또 장수는 구입 금액에서 로또 1장 가격을 나눈 값이다.")
+    @Test
+    void calculateLottoCount() {
+        Money money = new Money(3 * LOTTO_PRICE);
+        assertThat(money.calculateLottoCount()).isEqualTo(3);
     }
 }
