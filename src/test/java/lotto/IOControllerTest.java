@@ -32,7 +32,7 @@ class IOControllerTest {
     void readWinningLottoTest() {
         InputStream in = new ByteArrayInputStream("1,2,3,4,5,6".getBytes());
         System.setIn(in);
-        Assertions.assertThat(IOController.readWinningLotto())
+        Assertions.assertThat(IOController.readWinningNumbers())
                 .isEqualTo(new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6)));
 
         in = new ByteArrayInputStream("1,2,3,4,5".getBytes());

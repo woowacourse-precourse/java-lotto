@@ -22,7 +22,7 @@ public class IOController {
         return buyingMoney / 1000;
     }
 
-    public static List<Integer> readWinningLotto() throws IllegalArgumentException {
+    public static List<Integer> readWinningNumbers() throws IllegalArgumentException {
         String input = Console.readLine();
         String pattern = "^([1-9]?[0-9],){5}[1-9]?[0-9]$";
         if (!Pattern.matches(pattern, input)) {

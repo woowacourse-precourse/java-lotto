@@ -2,7 +2,7 @@
 1. 로또 구입 금액 입력 (OK)
 2. 당첨 번호 및 보너스 번호 입력 (OK)
 3. 입력 값 유효성 검사 (OK)
-4. 입력값(로또 구입 금액) => Lotto Instance 생성
+4. 입력값(로또 구입 금액) => Lotto Instance 생성 (OK)
 5. Lotto Instance 유효성 검사
 6. 생성된 Lotto Instance의 수량 및 번호 출력
 7. 입력값(당첨번호, 보너스 번호) => winning Lotto Instance 생성
