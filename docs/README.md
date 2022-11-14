@@ -9,8 +9,8 @@
 - [x] 구입 가능한 로또의 수를 도출할 수 있다.
   - LottoCashier#calculateNumberOfLottos()
   - 예외) 받은 금액 로또 가격으로 나눠 떨어지지 않으면 예외 발생
-- [ ] 구입한 로또의 개수를 출력한다.
-  - LottoCashier#printNumberPurchased()
+- [x] 구입한 로또의 개수를 출력한다.
+  - 현
   
 - [ ] 입력받은 로또의 개수 만큼, 랜덤 숫자를 생성할 수 있다.
   - LottoGenerator#issueLottosByInputAmount()

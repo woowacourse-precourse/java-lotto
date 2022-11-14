@@ -35,7 +35,7 @@ public class LottoCashierImpl implements LottoCashier{
     }
 
     @Override
-    public void printNumberPurchased() {
-
+    public void printNumberPurchased(int numberOfLottoBought) {
+        System.out.printf("%d개를 구매했습니다.%n", numberOfLottoBought);
     }
 }

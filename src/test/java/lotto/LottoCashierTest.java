@@ -6,8 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
@@ -108,5 +107,24 @@ public class LottoCashierTest {
             assertThat(numberOfLottoBought)
                     .isEqualTo(2);
         }
+    }
+
+    @Nested
+    @DisplayName("printNumberPurchased_Test")
+    public class PrintNumberPurchased_Test {
+        @Test
+        void 출력_테스트() {
+            //given
+            OutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            LottoCashier lottoCashier = new LottoCashierImpl();
+            int numberPurchased = 8;
+            //when
+            lottoCashier.printNumberPurchased(numberPurchased);
+            //then
+            assertThat(out.toString())
+                    .isEqualTo(String.valueOf(numberPurchased)+"개를 구매했습니다.\n");
+        }
+
     }
 }
