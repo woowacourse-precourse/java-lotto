@@ -8,28 +8,32 @@ import java.util.List;
 
 public class Inputer {
 
+    List<Integer> lottoNumbers;
+
     public int moneyandCount() throws IllegalArgumentException {
         String input = Console.readLine();
         int money;
         if(!validate(input)) {
-            throw new IllegalArgumentException("[ERROR] : Invalid argument!");
+            System.out.println("[ERROR] : Invalid argument!");
+            throw new IllegalArgumentException();
         }
         money = Integer.parseInt(input);
         if(!isMultiofThousand(money)) {
-            throw new IllegalArgumentException("[ERROR] : Invalid argument!");
+            System.out.println("[ERROR] : Invalid argument!");
+            throw new IllegalArgumentException();
         }
         return money / 1000;
     }
 
-    public List<Integer> lotto() throws IllegalArgumentException {
+    public void inputlotto() throws IllegalArgumentException {
         String input = Console.readLine();
-        List<Integer> result = splitToken(input);
-        for(int data : result) {
+        lottoNumbers = splitToken(input);
+        for(int data : lottoNumbers) {
             if(!validToken(data)) {
-                throw new IllegalArgumentException("[ERROR] : Invalid argument!");
+                System.out.println("[ERROR] : Invalid argument!");
+                throw new IllegalArgumentException();
             }
         }
-        return result;
     }
 
     private List<Integer> splitToken(String data) {
@@ -37,7 +41,8 @@ public class Inputer {
         List<Integer> result = new ArrayList<>();
         for(String token : preresult) {
             if(!validate(token)) {
-                throw new IllegalArgumentException("[ERROR] : Invalid argument!");
+                System.out.println("[ERROR] : Invalid argument!");
+                throw new IllegalArgumentException();
             }
             result.add(Integer.parseInt(token));
         }
