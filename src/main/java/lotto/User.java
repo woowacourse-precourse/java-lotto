@@ -101,6 +101,7 @@ public class User {
             WinningRanking ranking = getWinningRanking(lotto, winningNumbers, bonus);
             if (ranking!=null){
                 sum+=ranking.getPrize();
+                rankingCount[ranking.getOrder()]=rankingCount[ranking.getOrder()]+1;
             }
         }
         float temp = (float)(100.0*((float)sum/(float)lottos.size()));
