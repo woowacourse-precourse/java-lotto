@@ -16,8 +16,17 @@
 - [ ] 수익률을 소수점 둘째 자리까지 계산한다. - calculateRateOfProfit()
 - [ ] 수익률을 출력한다. - InputOutput#printRateOfProfit()
 - [ ] 예외상황 시 에러 문구를 출력한다. - ErrorHandler
-  - [ ] 로또 구입 금액은 1000원 단위가 아닐 경우 예외이다. - amountUnitError()
-  - [ ] 당첨번호가 6개가 아닐 경우 예외이다. - lottoWinNumberError()
+  - [ ] 로또 구입 금액을 입력 받을 때 예외상황 - getLottoBuyAmountError()
+    - [ ] 입력값이 숫자가 아닐 경우 예외처리한다. - noNumberError()
+    - [ ] 로또 구입 금액은 1000원 단위가 아닐 경우 예외처리한다. - amountUnitError()
+  - [ ] 로또 당첨 번호를 입력 받을 때 예외상황 - getLottoWinnerNumberError()
+    - [ ] 콤마 사이의 글자가 숫자가 아닌 경우 예외처리한다. - splitResultNoNumberError()
+    - [ ] 당첨번호가 6개가 아닐 경우 예외처리한다. - lottoWinNumberError()
+    - [ ] 입력값이 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeError()
+    - [ ] 입력값이 서로 다른 수가 아닐 경우 예외처리한다. - overlapError()
+  - [ ] 로또 보너스 번호를 입력 받을 때 예외상황 - getLottoBonusNumberError()
+    - [ ] 입력값이 숫자가 아닐 경우 예외처리한다. - noNumberError()
+    - [ ] 입력값이 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeError()
 
 ## 📑 기능 요구 사항
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
