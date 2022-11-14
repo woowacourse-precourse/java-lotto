@@ -15,7 +15,7 @@ public class Lotto {
         if (!isValidSize(numbers)) {
             throw new IllegalArgumentException();
         }
-        if (!isValidRange(numbers)) {
+        if (!isValidRangeNumbers(numbers)) {
             throw new IllegalArgumentException();
         }
         if (isDuplicated(numbers)){
@@ -30,10 +30,15 @@ public class Lotto {
         return true;
     }
 
-    private boolean isValidRange(List<Integer> numbers) {
+    private boolean isValidRange(int number) {
+        if (number < LottoConstant.STARTFROM.getValue()
+                || number > LottoConstant.ENDTO.getValue()) return false;
+        return true;
+    }
+
+    private boolean isValidRangeNumbers(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < LottoConstant.STARTFROM.getValue()
-                    || number > LottoConstant.ENDTO.getValue()) return false;
+            if (!isValidRange(number)) return false;
         }
         return true;
     }
@@ -44,4 +49,7 @@ public class Lotto {
         return false;
     }
 
+    public List<Integer> getLottoNumbers() {
+        return numbers;
+    }
 }
