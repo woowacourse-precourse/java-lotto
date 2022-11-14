@@ -18,8 +18,8 @@ public class Lottos {
         this.lottos = lottos;
     }
 
-    public double getRateOfReturn(int prizeMoney) {
-        return ((double) prizeMoney / (lottos.size() * LottoConstant.PRICE.getValue())) * PERCENTAGE;
+    public double getRateOfReturn(int totalPrizeMoney) {
+        return ((double) totalPrizeMoney / (lottos.size() * LottoConstant.PRICE.getValue())) * PERCENTAGE;
     }
 
     public int getTotalPrizeMoney(Map<LottoRank, Integer> rankCount) {
