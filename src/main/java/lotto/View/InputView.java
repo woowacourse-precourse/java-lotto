@@ -22,7 +22,9 @@ public class InputView {
         return winningNumbers;
     }
 
-    public void printbonusNumber(){
+    public int printbonusNumber(){
         System.out.println(INPUT_BONUS_NUMBER);
+        int bonusNumber = Integer.parseInt(readLine());
+        return bonusNumber;
     }
 }
