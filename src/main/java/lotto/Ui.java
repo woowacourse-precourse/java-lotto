@@ -16,9 +16,17 @@ public class Ui {
 
     public List<Integer> lottoInput() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        String moneyInput = Console.readLine();
-        ChangeNumberType changeNumberType = new ChangeNumberType(moneyInput);
+        String lottoInput = Console.readLine();
+        ChangeNumberType changeNumberType = new ChangeNumberType(lottoInput);
 
         return changeNumberType.getNumbers();
+    }
+
+    public int bonusInput() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusInput = Console.readLine();
+        ChangeNumberType changeNumberType = new ChangeNumberType(bonusInput);
+
+        return changeNumberType.getNumber();
     }
 }
