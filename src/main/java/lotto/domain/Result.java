@@ -1,6 +1,9 @@
 package lotto.domain;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class Result {
 
@@ -13,7 +16,7 @@ public class Result {
     }};
 
 
-    public Map<ResultType,Integer> calculateLotto(List<Lotto> input,List<Integer> winning, String bonus){
+    public Map<ResultType,Integer> calculateLotto(List<Lotto> input, List<Integer> winning, String bonus){
         int check = 0;
         boolean checkBonus = false;
         for(int i=0; i<input.size(); i++){
