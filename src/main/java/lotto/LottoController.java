@@ -19,7 +19,7 @@ public class LottoController {
 		this.view = view;
 	}
 
-	private List<Lotto> generateLottos() {
+	public List<Lotto> generateLottos() {
 		int money = getMoney();
 		List<Lotto> lottos = new ArrayList<>();
 		for (int i = 0; i < money/1000; i++) {
@@ -43,7 +43,7 @@ public class LottoController {
 		return new Lotto(uniqueRandNumbers);
 	}
 
-	private void registerAnswers() {
+	public void registerAnswers() {
 		registerCorrectLotto();
 		registerBonusNumber();
 	}
@@ -60,7 +60,9 @@ public class LottoController {
 	private void registerBonusNumber() {
 		view.getBonusNumber();
 		String bonusNumber = (String)model.getAttribute("bonusNumber");
-
+		Lotto correctLotto = (Lotto)model.getAttribute("correctLotto");
+		stringValidator.validateBonusString(bonusNumber, correctLotto);
+		model.addAttribute("bonusNumber", Integer.parseInt(bonusNumber));
 	}
 
 	//

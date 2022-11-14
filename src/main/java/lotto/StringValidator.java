@@ -30,15 +30,23 @@ public class StringValidator {
 		}
 	}
 
-	public void validateBonusString(String string) {
+	public void validateBonusString(String string, Lotto lotto) {
 		checkIsNumber(string);
 		checkIsInValidRange(string);
+		checkCorrectLottoContainsBonusNumber(string, lotto);
 	}
 
 	private void checkIsInValidRange(String string) {
 		int bonus = Integer.parseInt(string);
 		if (bonus < 1 || bonus > 45) {
 			throw new IllegalArgumentException("[ERROR] 적절한 범위의 보너스 번호를 입력해야 합니다.");
+		}
+	}
+
+	private void checkCorrectLottoContainsBonusNumber(String string, Lotto lotto) {
+		List<Integer> lottoNumbers = lotto.getLotto();
+		if (lottoNumbers.contains(Integer.parseInt(string))) {
+			throw new IllegalArgumentException("[ERROR] 당첨 번호에 포함되지 않은 보너스 번호를 입력해야 합니다.");
 		}
 	}
 }
