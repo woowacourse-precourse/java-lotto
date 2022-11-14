@@ -1,9 +1,7 @@
 package lotto;
 
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class LottoStore {
@@ -34,6 +32,9 @@ public class LottoStore {
 
     public void buyAndDraw() {
         String buyAmount = buyLotto();
+        if(buyAmount.equals("0")) {
+            return;
+        }
         inputWinningNumbers();
         inputBonusNumber();
         draw();
@@ -108,8 +109,11 @@ public class LottoStore {
         Buyer lottoLists = new Buyer();
         lottoLists.setListOfLotto(buyAmount);
         buyer = lottoLists.getListOfNumbers();
-        printBoughtLotto();
 
+        if(buyer.size() == 0){
+            return "0";
+        }
+        printBoughtLotto();
         return buyAmount;
     }
 
