@@ -40,29 +40,18 @@ public class OutputView {
 		}
 	}
 
-	private static void createTicketPrint(StringBuilder sb, Lotto lotto) {
+	private static void createTicketPrint(StringBuilder lottoNumbers, Lotto lotto) {
 		for (Integer integer : lotto.getNumbers()) {
-			sb.append(integer).append(LOTTO_NUMBER_BOUNDARY);
+			lottoNumbers.append(integer).append(LOTTO_NUMBER_BOUNDARY);
 		}
 	}
 
 	public static void printPrizeResult(LottoResult lottoResult) {
 		printPrizeResultIntro();
-		Set<Map.Entry<LottoRanking, Integer>> rankResult = lottoResult.getLottoResult().entrySet();
-		List<Map.Entry<LottoRanking, Integer>> prizeRanking = rankResult.stream()
-			.filter(entry -> LottoRanking.noWin != entry.getKey())
-			.sorted(Comparator.comparingInt(money -> money.getKey().getPrizeMoney()))
-			.collect(Collectors.toList());
+		List<Map.Entry<LottoRanking, Integer>> prizeRanking = createPrizeRanking(lottoResult);
 		for (Map.Entry<LottoRanking, Integer> entry : prizeRanking) {
 			StringBuilder printResult = new StringBuilder();
-			LottoRanking lottoRanking = entry.getKey();
-			int prizeCount = entry.getValue();
-			printResult.append(String.format(PRINT_PRIZE_RESULT_FRONT, lottoRanking.getWinNumber()));
-			if (lottoRanking.isMatchBonus()) {
-				printResult.append(PRINT_PRIZE_RESULT_BONUS);
-			}
-			String prizeMoney = NumberFormat.getInstance().format(lottoRanking.getPrizeMoney());
-			printResult.append(String.format(PRINT_PRIZE_RESULT_LAST, prizeMoney, prizeCount));
+			createPrintResult(entry, printResult);
 			System.out.println(printResult);
 		}
 	}
@@ -70,6 +59,28 @@ public class OutputView {
 	private static void printPrizeResultIntro() {
 		System.out.println(PRINT_PRIZE_RESULT_INTRO);
 		System.out.println(PRINT_PRIZE_RESULT_BORDER_LINE);
+	}
+
+	private static List<Map.Entry<LottoRanking, Integer>> createPrizeRanking(LottoResult lottoResult) {
+		return lottoResult.getLottoResult().entrySet().stream()
+			.filter(entry -> LottoRanking.noWin != entry.getKey())
+			.sorted(Comparator.comparingInt(money -> money.getKey().getPrizeMoney()))
+			.collect(Collectors.toList());
+	}
+
+	private static void createPrintResult(Map.Entry<LottoRanking, Integer> entry, StringBuilder printResult) {
+		LottoRanking lottoRanking = entry.getKey();
+		int prizeCount = entry.getValue();
+		printResult.append(String.format(PRINT_PRIZE_RESULT_FRONT, lottoRanking.getWinNumber()));
+		isMatchBonusNumber(lottoRanking, printResult);
+		String prizeMoney = NumberFormat.getInstance().format(lottoRanking.getPrizeMoney());
+		printResult.append(String.format(PRINT_PRIZE_RESULT_LAST, prizeMoney, prizeCount));
+	}
+
+	private static void isMatchBonusNumber(LottoRanking lottoRanking, StringBuilder printResult) {
+		if (lottoRanking.isMatchBonus()) {
+			printResult.append(PRINT_PRIZE_RESULT_BONUS);
+		}
 	}
 
 	public static void printRateReturn(double rateReturn) {
