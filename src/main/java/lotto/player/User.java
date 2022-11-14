@@ -1,5 +1,8 @@
 package lotto.player;
 
+import static lotto.util.Error.ERROR_OUT_OF_RANGE_PAYMENT;
+import static lotto.util.Error.ERROR_PARSE_INT;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import lotto.data.Lotto;
@@ -26,16 +29,13 @@ public class User {
         try{
             return Integer.parseInt(payment);
         }catch(Exception e){
-            System.out.print("[ERROR] 구입금액을 정수형 데이터로 변환할 수 없습니다.");
-            throw new IllegalArgumentException();
+            ERROR_PARSE_INT.generate();
         }
+        return 0;
     }
     private void validate(int payment){
         if(payment <= 0 || payment%1000 != 0)
-        {
-            System.out.print("[ERROR] 구입금액은 0보다 크고 1000으로 나누어 떨어져야합니다.");
-            throw new IllegalArgumentException();
-        }
+            ERROR_OUT_OF_RANGE_PAYMENT.generate();
     }
 
     public int getTicketNum(){

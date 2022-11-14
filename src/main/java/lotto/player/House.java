@@ -1,5 +1,6 @@
 package lotto.player;
 
+import static lotto.util.Error.ERROR_INVALID_WINNING_NUMBERS;
 import static lotto.util.Rank.RANK1;
 import static lotto.util.Rank.RANK2;
 import static lotto.util.Rank.RANK3;
@@ -29,9 +30,9 @@ public class House {
             Stream<Integer> streamOfInt = streamOfStr.map(Integer::parseInt);
             return streamOfInt.collect(Collectors.toList());
         }catch (Error e){
-            System.out.println("[ERROR] 유효하지 않은 House 입력입니다.");
-            throw new IllegalArgumentException();
+            ERROR_INVALID_WINNING_NUMBERS.generate();
         }
+        return null;
     }
 
     public LinkedHashMap<Rank,Integer> getResultOf(User user){

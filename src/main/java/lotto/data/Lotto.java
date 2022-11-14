@@ -1,5 +1,8 @@
 package lotto.data;
 
+import static lotto.util.Error.ERROR_DUPLICATED_NUMBERS;
+import static lotto.util.Error.ERROR_OUT_OF_RANGE_NUMBER;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -39,20 +42,14 @@ public class Lotto {
     private void duplicate(List<Integer> numbers){
         HashSet<Integer> check = new HashSet<>(numbers);
         if(check.size() != numbers.size())
-        {
-            System.out.println("[ERROR] 중복된 로또 번호가 존재합니다.");
-            throw new IllegalArgumentException();
-        }
+            ERROR_DUPLICATED_NUMBERS.generate();
     }
 
     //로또번호 범위 검사
     private void range(List<Integer> numbers){
         for (int num : numbers) {
             if (num < 1 || num > 45)
-            {
-                System.out.println("[ERROR] 로또 번호는 1~45사이의 숫자여만 합니다.");
-                throw new IllegalArgumentException();
-            }
+                ERROR_OUT_OF_RANGE_NUMBER.generate();
         }
     }
 
