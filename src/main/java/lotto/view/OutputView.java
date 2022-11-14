@@ -10,8 +10,8 @@ public class OutputView {
     static final String PURCHASE_PHRASE = PurchasePhrase.PURCHASE.getPhrase();
     static final String LOTTERY_NUMBER_PHRASE = PurchasePhrase.LOTTERY_NUMBER.getPhrase();
 
-    public static void showPurchaseList(int purchaseCount, List<List<Integer>> lotteryTickets) {
-        System.out.println(String.format(PURCHASE_PHRASE, purchaseCount));
+    public static void showPurchaseList(List<List<Integer>> lotteryTickets) {
+        System.out.println(String.format(PURCHASE_PHRASE, lotteryTickets.size()));
         for (List<Integer> lotteryTicket : lotteryTickets) {
             showLotteryNumbers(lotteryTicket);
         }

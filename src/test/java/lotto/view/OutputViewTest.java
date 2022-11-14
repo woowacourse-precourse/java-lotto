@@ -22,7 +22,7 @@ public class OutputViewTest {
 
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        OutputView.showPurchaseList(purchaseCount, tickets);
+        OutputView.showPurchaseList(tickets);
         assertThat(out.toString())
                 .contains("2개를 구매했습니다.")
                 .contains("[1, 2, 4, 9, 10, 34]")
