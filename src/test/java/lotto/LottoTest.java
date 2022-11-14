@@ -1,5 +1,6 @@
 package lotto;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -8,8 +9,10 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class LottoTest {
-	LottoException lottoException = new LottoException();
+import camp.nextstep.edu.missionutils.test.NsTest;
+
+class LottoTest extends NsTest {
+	private static final String ERROR_MESSAGE = "[ERROR]";
 
 	@DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
 	@Test
@@ -75,5 +78,18 @@ class LottoTest {
 		assertThat(62.5).isEqualTo(service.yield());
 
 	}
-	
+
+	@Test
+	void 금액_1000원_단위_검사() {
+		assertSimpleTest(() -> {
+			runException("1500");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Override
+	public void runMain() {
+		Application.main(new String[] {});
+	}
+
 }
