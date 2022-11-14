@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.enums.Number;
 import lotto.util.ExceptionHandler;
 import java.util.ArrayList;
 import java.util.List;
