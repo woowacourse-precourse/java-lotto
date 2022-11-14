@@ -13,7 +13,7 @@ public class InputView {
 
     Calculator calculator;
 
-    public void inputMoney() {
+    public boolean inputMoney() {
         long money = ZERO;
         Message.INPUT_MONEY.print();
         String input = Console.readLine();
@@ -21,10 +21,11 @@ public class InputView {
             validateMoney(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return;
+            return true;
         }
         money = Long.parseLong(input);
         this.calculator = new Calculator(money);
+        return false;
     }
 
     private void validateMoney(String input) {
