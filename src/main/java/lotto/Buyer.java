@@ -40,14 +40,13 @@ public class Buyer {
 
         LottoPrize[] values = LottoPrize.values();
         for (int i = 0; i < values.length; i++) {
-            if(prizeList.get(values[i]) == null)
+            if (prizeList.get(values[i]) == null)
                 continue;
 
             int winCount = prizeList.get(values[i]);
-
-            if (winCount != 0) {
+            if (winCount != 0)
                 winMoney += values[i].getLottoPrizeMoney() * winCount;
-            }
+
         }
 
     }
