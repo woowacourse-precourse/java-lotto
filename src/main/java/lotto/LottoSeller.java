@@ -27,9 +27,9 @@ public class LottoSeller {
             System.out.println(ERROR_INPUT_PAY_AMOUNT);
             throw new IllegalArgumentException();
         }
-        if (payAmount % 1000 != 0) {
+        if (Integer.parseInt(inputMoney) % 1000 != 0) {
             System.out.println(ERROR_INPUT_PAY_AMOUNT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
         }
     }
 

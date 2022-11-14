@@ -29,5 +29,6 @@ class LottoSellerTest {
                 purchase.validate(money));
 
         assertEquals(ERROR_INPUT_PAY_AMOUNT, exception.getMessage());
+
     }
 }
