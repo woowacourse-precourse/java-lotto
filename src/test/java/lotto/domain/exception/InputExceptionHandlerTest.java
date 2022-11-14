@@ -7,6 +7,7 @@ import lotto.exception.InputExceptionHandler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("사용자 입력 관련 예외")
 public class InputExceptionHandlerTest {
 
     @Test
@@ -15,8 +16,13 @@ public class InputExceptionHandlerTest {
         String invalidInput = "";
         String validInput = "abc";
 
-        EmptyInputException emptyInputException = new EmptyInputException();
-        exceptionTest(emptyInputException, invalidInput, validInput);
+        LottoExceptionHandler emptyInputExceptionHandler = new LottoExceptionHandler() {
+            @Override
+            public void handleException(String input) {
+                InputExceptionHandler.handleEmptyInputException(input);
+            }
+        };
+        exceptionTest(emptyInputExceptionHandler, invalidInput, validInput);
     }
 
     @Test
@@ -25,8 +31,13 @@ public class InputExceptionHandlerTest {
         String invalidInput = "1.23dfe";
         String validInput = "1,2,";
 
-        NotNumberOrCommaException notNumberOrCommaException = new NotNumberOrCommaException();
-        exceptionTest(notNumberOrCommaException, invalidInput, validInput);
+        LottoExceptionHandler notNumberOrCommaExceptionHandler = new LottoExceptionHandler() {
+            @Override
+            public void handleException(String input) {
+                InputExceptionHandler.handleNotNumberOrCommaException(input);
+            }
+        };
+        exceptionTest(notNumberOrCommaExceptionHandler, invalidInput, validInput);
     }
 
     @Test
@@ -35,8 +46,13 @@ public class InputExceptionHandlerTest {
         String invalidInput = "1234";
         String validInput = "1,2,3";
 
-        WinNumbersFormatException winNumbersFormatException = new WinNumbersFormatException();
-        exceptionTest(winNumbersFormatException, invalidInput, validInput);
+        LottoExceptionHandler winNumbersFormatExceptionHandler = new LottoExceptionHandler() {
+            @Override
+            public void handleException(String input) {
+                InputExceptionHandler.handleWinningNumbersInputFormatException(input);
+            }
+        };
+        exceptionTest(winNumbersFormatExceptionHandler, invalidInput, validInput);
     }
 
     @Test
@@ -45,11 +61,16 @@ public class InputExceptionHandlerTest {
         String invalidInput = "12 23";
         String validInput = "33";
 
-        NotOneNumberException notOneNumberException = new NotOneNumberException();
-        exceptionTest(notOneNumberException, invalidInput, validInput);
+        LottoExceptionHandler notOneNumberExceptionHandler = new LottoExceptionHandler() {
+            @Override
+            public void handleException(String input) {
+                InputExceptionHandler.handleNotOneNumberException(input);
+            }
+        };
+        exceptionTest(notOneNumberExceptionHandler, invalidInput, validInput);
     }
 
-    void exceptionTest(InputException inputException, String invalid, String valid) {
+    void exceptionTest(LottoExceptionHandler inputException, String invalid, String valid) {
         assertThatThrownBy(() -> {
             inputException.handleException(invalid);
         })
@@ -60,38 +81,5 @@ public class InputExceptionHandlerTest {
             inputException.handleException(valid);
         })
                 .doesNotThrowAnyException();
-    }
-
-    interface InputException {
-
-        void handleException(String input);
-    }
-
-    class EmptyInputException implements InputException {
-
-        public void handleException(String input) {
-            InputExceptionHandler.handleEmptyInputException(input);
-        }
-    }
-
-    class NotNumberOrCommaException implements InputException {
-
-        public void handleException(String input) {
-            InputExceptionHandler.handleNotNumberOrCommaException(input);
-        }
-    }
-
-    class WinNumbersFormatException implements InputException {
-
-        public void handleException(String input) {
-            InputExceptionHandler.handleWinningNumbersInputFormatException(input);
-        }
-    }
-
-    class NotOneNumberException implements InputException {
-
-        public void handleException(String input) {
-            InputExceptionHandler.handleNotOneNumberException(input);
-        }
     }
 }
