@@ -3,7 +3,9 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -38,7 +40,9 @@ public class WinningNumbers {
     private void validateWinningNumbers(List<String> numbers) {
         final String INPUT_PATTERN = "^[1-9]$|^[1-3][0-9]$|^4[0-5]$";
 
-        if (numbers.size() != 6) {
+        Set<String> uniqueNumbers = new HashSet<>(numbers);
+
+        if (uniqueNumbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR]");
         }
 
@@ -57,6 +61,10 @@ public class WinningNumbers {
         boolean isMatch = Pattern.matches(INPUT_PATTERN, number);
 
         if (!isMatch) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+
+        if (this.winningNumbers.contains(Integer.parseInt(number))) {
             throw new IllegalArgumentException("[ERROR]");
         }
     }
