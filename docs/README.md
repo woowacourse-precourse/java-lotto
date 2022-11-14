@@ -49,6 +49,7 @@
 - NumberInput: 숫자 입력
 - RequestView: 요청 관련 UI
 - ResultView: 결과 관련 UI
+- Constant: 보편적 상수
 - LottoRule: 로또 관련 상수
   - [x] 로또 번호의 하한: 1
   - [x] 로또 번호의 상한: 45
