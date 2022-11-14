@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.List;
+import java.util.Collections;
+
 
 
 public class Lotto {
@@ -18,6 +20,11 @@ public class Lotto {
             }
         }
         return matchCounts;
+    }
+    public List<Integer> sortLotto() {
+        List<Integer> sorted = numbers;
+        Collections.sort(sorted);
+        return sorted;
     }
 
 }
