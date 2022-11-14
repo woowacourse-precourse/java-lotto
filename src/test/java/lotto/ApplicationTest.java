@@ -13,7 +13,7 @@ class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
-    void 기능_테스트() {
+    void total_1() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("8000", "1,2,3,4,5,6", "7");
@@ -47,9 +47,81 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void exception_1() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void exception_2() {
+        assertSimpleTest(() -> {
+            runException("800");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void exception_3() {
+        assertSimpleTest(() -> {
+            runException("12392");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void exception_4() {
+        assertSimpleTest(() -> {
+            runException("8000", "123456");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void exception_iii() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void exception_5() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void exception_6() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,80");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void exception_7() {
+        assertSimpleTest(() -> {
+            runException("8000", "11,14,21,25,33,41", "41,26");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void exception_8() {
+        assertSimpleTest(() -> {
+            runException("8000", "11,14,21,25,33,41", "80");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void exception_9() {
+        assertSimpleTest(() -> {
+            runException("8000", "11,14,21,25,33,41", "14");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }

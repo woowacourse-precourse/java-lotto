@@ -48,11 +48,16 @@ public class UserInputException extends Exception {
 
     public static boolean delimiterCheck(String input) throws IllegalArgumentException {
         try {
-            String[] checkTarget = input.split(",|[0-9]");
-            if (checkTarget.length != 0) throw new IllegalArgumentException();
+            int delimiterCount = 0;
+            int digitCount = 0;
+            for (int i = 0; i < input.length(); i++) {
+                if (input.charAt(i) == ',') delimiterCount++;
+                if (Character.isDigit(input.charAt(i))) digitCount++;
+            }
+            if (delimiterCount == 0 || digitCount == 0) throw new IllegalArgumentException();
             return false;
         } catch (IllegalArgumentException e) {
-            System.out.print("[ERROR] 당첨번호를 숫자와 ',' 로만 입력했는지 확인하세요.");
+            System.out.print("[ERROR] 당첨번호를 숫자와 ',' 로 입력했는지 확인하세요.");
             return true;
         }
     }
