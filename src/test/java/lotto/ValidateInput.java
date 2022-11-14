@@ -19,4 +19,14 @@ public class ValidateInput {
         assertThatThrownBy(() -> validateInputMoney.validateInputMoney(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("인당 로또 구매 제한인 10만원 한도를 넘기는지 확인한다. .")
+    @Test
+    void checkInputNumbers(){
+        String number = "150000";
+        int check = Integer.parseInt(number);
+        Validator validateMaxInputMoney = new Validator(number);
+
+        assertThatThrownBy(() -> validateMaxInputMoney.validateMaxInputMoney(check))
+                .isInstanceOf(IllegalArgumentException.class);    }
 }
