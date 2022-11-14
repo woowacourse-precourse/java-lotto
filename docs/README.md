@@ -29,8 +29,7 @@
     - [x] 위에서 입력 받은 숫자 6개를 제외한 보너스 숫자 1개를 입력 받는다.
     - [ ] 로또 번호를 잘못 입력 받았을 경우 IllegalArgumentException를 발생시킨다.
         - [x] 입력 받은 로또 번호가 서로 다른 숫자 6개가 아닌 경우 IllegalArgumentException을 발생시킨다.
-        - [ ] 보너스 숫자가 1개가 아니라면 IllegalArgumentException을 발생시킨다.
-        - [ ] 보너스 숫자가 입력 받은 6개의 숫자 중 하나일 경우 IllegalArgumentException을 발생시킨다.
+        - [x] 보너스 숫자가 로또 당첨 번호인 6개의 숫자 중 하나일 경우 IllegalArgumentException을 발생시킨다.
         - [ ] 숫자가 1~45의 범위의 숫자가 아니라면 IllegalArgumentException을 발생시킨다.
 - [ ] 구매한 로또 번호와 로또 당첨 번호를 비교하여 몇 등에 당첨 되었는지 구한다.
     - [ ] 구매한 로또의 숫자가 당첨 번호에 포함되어 있는지 하나씩 확인한다.
