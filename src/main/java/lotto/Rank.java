@@ -16,4 +16,12 @@ public enum Rank { //여기에 겹치는 개수 변수도 추가하는 건 어�
     public int getReward() {
         return reward;
     }
+
+    public int getOverlappingNumber() {
+        return overlappingNumber;
+    }
+
+    public int getBonusBall() {
+        return bonusBall;
+    }
 }
