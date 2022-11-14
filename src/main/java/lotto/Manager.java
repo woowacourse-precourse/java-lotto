@@ -60,11 +60,16 @@ public class Manager {
             list.get(i).Print();
         }
     }
-
+    public int getMatchCount(List<Integer> lotto, List<Integer> winning){
+        int match = 0;
+        for(int i=0; i<lotto.size(); i++){
+            if(winning.contains(lotto.get(i)))
+                match += 1;
+        }
+        return match;
+    }
     public void calculateResult(List<Lotto> lottos, List<Integer> winning, int bonus){
         for(Lotto lotto : lottos){
-            int matchCount = 0;
-            int bonusCount = 0;
 
         }
     }
