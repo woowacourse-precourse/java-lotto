@@ -19,6 +19,10 @@
       - Lotto: 저장되는 로또
       - LottoBundle: 저장되는 로또 묶음
       - WinNumber: 저장되는 당첨 및 보너스 번호
+    - dao
+      - AccountDao: 계정 서비스에서 필요한 저장소 조작 메서드를 제공합니다.
+      - UserDao: 유저 서비스에서 필요한 저장소 조작 메서드를 제공합니다.
+      - AdminDao: 관리자 서비스에서 필요한 저장소 조작 메서드를 제공합니다.
     - repository
       - AccountRepository: 계정 저장소
       - LottoBundleRepository: 구매 로또 저장소
