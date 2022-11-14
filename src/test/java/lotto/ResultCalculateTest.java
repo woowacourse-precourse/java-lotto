@@ -6,10 +6,8 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+
 class ResultCalculateTest {
     @DisplayName("List는 선언시 빈 공간이 할당되는가?")
     @Test
@@ -31,24 +29,39 @@ class ResultCalculateTest {
     @Test
     void 일부만_같음(){
         assertThat(2)
-                .isEqualTo(ResultCalculate.
-                        compareTwoNumbers(new Lotto(Arrays.asList(1,2,3,4,5,10)),List.of(1,2,3,4,11,7,10))
+                .isEqualTo(ResultCalculate
+                .compareTwoNumbers(new Lotto(Arrays.asList(1,2,3,4,5,10)),List.of(1,2,3,4,11,7,10))
                 );
         assertThat(3)
-                .isEqualTo(ResultCalculate.
-                        compareTwoNumbers(new Lotto(Arrays.asList(1,2,3,4,5,10)),List.of(1,2,3,4,11,10,7))
+                .isEqualTo(ResultCalculate
+                .compareTwoNumbers(new Lotto(Arrays.asList(1,2,3,4,5,10)),List.of(1,2,3,4,11,10,7))
                 );
         assertThat(4)
-                .isEqualTo(ResultCalculate.
-                        compareTwoNumbers(new Lotto(Arrays.asList(1,2,3,4,11,10)),List.of(1,2,3,4,5,6,7))
+                .isEqualTo(ResultCalculate
+                .compareTwoNumbers(new Lotto(Arrays.asList(1,2,3,4,11,10)),List.of(1,2,3,4,5,6,7))
                 );
     }
     @Test
     void 다_다름(){
-        assertThat(7)
-                .isEqualTo(ResultCalculate.
-                        compareTwoNumbers(new Lotto(Arrays.asList(1,2,3,4,5,6)),List.of(7,8,9,10,11,12,13))
+        assertThat(-1)
+                .isEqualTo(ResultCalculate
+                .compareTwoNumbers(new Lotto(Arrays.asList(1,2,3,4,5,6)),List.of(7,8,9,10,11,12,13))
                 );
     }
-
+    @DisplayName("2가지 일련번호에서 적절한 등수 List를 찾아내는지")
+    @Test
+    void 다_같음(){
+        List<Lotto> lottos = new LinkedList<>();
+        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7);
+        lottos.add(new Lotto(Arrays.asList(1,2,3,4,5,6))); //1등
+        lottos.add(new Lotto(Arrays.asList(1,2,3,4,10,7))); //2등
+        lottos.add(new Lotto(Arrays.asList(1,2,3,4,5,10))); //3등
+        lottos.add(new Lotto(Arrays.asList(1,2,3,4,11,10))); //4등
+        lottos.add(new Lotto(Arrays.asList(1,2,3,12,11,10))); //5등
+        lottos.add(new Lotto(Arrays.asList(1,2,13,12,11,10))); //탈락
+        lottos.add(new Lotto(Arrays.asList(1,2,3,4,10,7))); //2등
+        List<Integer> answer = List.of(0,1,2,1,1,1);
+        assertThat(true)
+                .isEqualTo(ResultCalculate.synthesizeRanking(lottos,numbers).equals(answer));
+    }
 }
