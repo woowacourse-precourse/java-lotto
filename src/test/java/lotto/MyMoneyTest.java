@@ -48,4 +48,9 @@ class MyMoneyTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void int_범위_이상의_금액_입력() {
+        MyMoney testCorrect = new MyMoney("10000000000");
+        assertThat(testCorrect.getAmount()).isEqualTo(Long.parseLong("10000000000"));
+    }
 }
