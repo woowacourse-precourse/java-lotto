@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.domain.WinLotto;
 import lotto.enums.IntEnum;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -48,13 +49,13 @@ public class Statistics {
         return rank.stream().skip(3).collect(Collectors.toList());
     }
 
-    public double calculateProfitRate(Buyer buyer) {
+    public BigDecimal calculateProfitRate(Buyer buyer) {
         int profit = 0;
         List<Integer> cutRank = rank.stream().skip(3).collect(Collectors.toList());
         for (int index = 0; index < reward.size(); index++) {
             profit += cutRank.get(index) * reward.get(index);
         }
-        return Math.round((profit / (double) buyer.getBuyPrice() * 100) * 10) / 10.0;
+        return new BigDecimal(Math.round((profit / (double) buyer.getBuyPrice() * 100) * 10) / 10.0);
     }
 
 }
