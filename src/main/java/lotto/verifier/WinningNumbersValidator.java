@@ -3,6 +3,7 @@ package lotto.verifier;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class WinningNumbersValidator {
 
@@ -55,7 +56,8 @@ public class WinningNumbersValidator {
     }
 
     private boolean isFrom1To45(String input) {
-        return true;
+        String pattern = "[1-9]|[1-4][0-9]";
+        return Pattern.matches(pattern, input);
     }
 
     private List<Integer> transformToWinningNumbers(String input) {
