@@ -2,7 +2,9 @@ package lotto;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.LottoRating;
@@ -14,25 +16,22 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class Application {
-    private static List<Lotto> lottoTicket = new ArrayList<>();
-    private static WinningLotto winningLotto;
-    private static LottoRating lottoRating;
-    private static BigDecimal yield;
+    private static final Map<String, Integer> WINNING_COUNT_REPOSITORY = new HashMap<>();
+    private static final List<Lotto> LOTTO_TICKET = new ArrayList<>();
+    private static final InputView INPUT_VIEW = new InputView();
+    private static final OutputView OUTPUT_VIEW = new OutputView();
 
     public static void main(String[] args) {
         try {
-            InputView inputView = new InputView();
-            OutputView outputView = new OutputView();
-            Price price = new Price(inputView.askPrice());
+            Price price = new Price(INPUT_VIEW.askPrice());
             LottoGenerator lottoGenerator = new LottoGenerator(price);
-            lottoTicket.addAll(lottoGenerator.generateLotto());
-            outputView.printLottoTicketInformation(lottoTicket);
-            winningLotto = new WinningLotto(inputView.askWinningNumbers(), inputView.askBonusNumber());
-            lottoRating = new LottoRating(lottoTicket, winningLotto);
-            lottoRating.rate();
-            YieldCalculator yieldCalculator = new YieldCalculator(lottoRating.getWinningCountRepository(),
-                    price.getPurchasePrice());
-            yield = yieldCalculator.calculate();
+            LOTTO_TICKET.addAll(lottoGenerator.generateLotto());
+            OUTPUT_VIEW.printLottoTicketInformation(LOTTO_TICKET);
+            WinningLotto winningLotto = new WinningLotto(INPUT_VIEW.askWinningNumbers(), INPUT_VIEW.askBonusNumber());
+            LottoRating lottoRating = new LottoRating(LOTTO_TICKET, winningLotto);
+            WINNING_COUNT_REPOSITORY.putAll(lottoRating.rate());
+            YieldCalculator yieldCalculator = new YieldCalculator(WINNING_COUNT_REPOSITORY, price.getPurchasePrice());
+            BigDecimal yield = yieldCalculator.calculate();
         } catch (IllegalArgumentException ignored) {
             System.out.println(ExceptionMessage.APPLICATION_EXIT.getMessage());
         }
