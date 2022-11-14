@@ -1,9 +1,8 @@
 package lotto;
 
+import java.util.List;
 import lotto.machine.LottoChecker;
 import lotto.machine.LottoKiosk;
-
-import java.util.List;
 
 public class Customer {
     private List<Lotto> myLottos;

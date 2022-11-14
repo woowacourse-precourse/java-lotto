@@ -1,10 +1,9 @@
 package lotto.machine;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 import java.util.stream.Collectors;
-
 import lotto.message.ErrorMessage;
-import camp.nextstep.edu.missionutils.Console;
 import lotto.message.Message;
 
 public class WinningNumberMaker {

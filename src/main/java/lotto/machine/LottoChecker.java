@@ -1,15 +1,14 @@
 package lotto.machine;
 
-import lotto.Lotto;
-import lotto.Prize;
-import lotto.message.Message;
-
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import lotto.Lotto;
+import lotto.Prize;
+import lotto.message.Message;
 
 public class LottoChecker {
     private final List<Integer> WINNING_NUMBERS;

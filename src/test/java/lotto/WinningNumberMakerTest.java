@@ -1,14 +1,14 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.io.ByteArrayInputStream;
 import java.util.List;
-
 import lotto.machine.WinningNumberMaker;
 import lotto.message.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
 
 class WinningNumberMakerTest {
     private final String ERROR_MESSAGE = "[ERROR]";

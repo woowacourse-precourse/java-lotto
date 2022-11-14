@@ -1,18 +1,16 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.io.ByteArrayInputStream;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import lotto.machine.LottoKiosk;
 import lotto.message.ErrorMessage;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.*;
 
 class LottoKioskTest {
     private final String ERROR_MESSAGE = "[ERROR]";
