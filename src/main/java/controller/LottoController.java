@@ -31,4 +31,8 @@ public class LottoController {
         List<Lotto> lotto = lottoService.getPublishedLotto();
         OutputView.noticePublishedLotto(lotto);
     }
+
+    private void getWinningNumbers() {
+        String numbers = InputView.receiveWinningNumbers();
+    }
 }

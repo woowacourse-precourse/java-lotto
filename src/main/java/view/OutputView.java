@@ -16,4 +16,8 @@ public class OutputView {
         publishedLotto.stream().map(Lotto::getNumbers)
                 .forEach(System.out::println);
     }
+
+    public static void requestWinningNumbers() {
+        System.out.println(Text.REQUEST_WINNING_NUMBERS);
+    }
 }

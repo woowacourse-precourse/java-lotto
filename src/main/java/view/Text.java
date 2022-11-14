@@ -2,7 +2,8 @@ package view;
 
 public enum Text {
     REQUEST_PURCHASE_AMOUNT("구입금액을 입력해 주세요."),
-    NOTICE_NUMBER_OF_LOTTO("개를 구매했습니다.");
+    NOTICE_NUMBER_OF_LOTTO("개를 구매했습니다."),
+    REQUEST_WINNING_NUMBERS("당첨 번호를 입력해 주세요.");
 
     private final String outputText;
 

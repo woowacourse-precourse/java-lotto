@@ -7,4 +7,9 @@ public class InputView {
         OutputView.requestPurchaseAmount();
         return Console.readLine();
     }
+
+    public static String receiveWinningNumbers() {
+        OutputView.requestWinningNumbers();
+        return Console.readLine();
+    }
 }
