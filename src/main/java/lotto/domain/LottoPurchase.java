@@ -25,7 +25,7 @@ public class LottoPurchase {
 
     private void isInteger(String input) throws IllegalArgumentException{
         if(!ValidateUtils.isNumber(input)){
-            throw new IllegalArgumentException(Constants.INVALID_PURCHASE_INPUT_MESSAGE);
+            ValidateUtils.throwIllegalArgumentException(Constants.INVALID_PURCHASE_INPUT_MESSAGE);
         }
     }
 
@@ -33,7 +33,7 @@ public class LottoPurchase {
         int value = Integer.parseInt(input);
 
         if(value % Constants.LOTTO_PRICE != 0){
-            throw new IllegalArgumentException(Constants.NOT_PRICE_UNIT_PURCHASE_INPUT_MESSAGE);
+            ValidateUtils.throwIllegalArgumentException(Constants.NOT_PRICE_UNIT_PURCHASE_INPUT_MESSAGE);
         }
     }
 
