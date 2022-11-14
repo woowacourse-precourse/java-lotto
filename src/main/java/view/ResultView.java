@@ -30,11 +30,11 @@ public class ResultView {
         System.out.println("총 수익률은 " + yieldRate + "%" + "입니다");
     }
 
-    private void resultTotalLotto(List<Lotto> totalLottoNumbers){
+    public void resultTotalLotto(List<Lotto> totalLottoNumbers){
         for(int i = 0; i < totalLottoNumbers.size(); i++)
-            System.out.println(totalLottoNumbers.get(i));
+            System.out.println(totalLottoNumbers.get(i).getNumbers());
     }
-    private void resultCountLotto(int countLotto){
+    public void resultCountLotto(int countLotto){
         System.out.println(countLotto+"개를 구매했습니다.");
     }
 }

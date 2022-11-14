@@ -46,13 +46,14 @@ public class Service {
 
     public HashMap<String,Integer> createWinningLotto(List<Lotto>totalLottoNumbers, List<Integer> winningNumbers, int bonusNumber){
         Util util = new Util();
-        HashMap<String,Integer> totalResult = new HashMap<>();
+        HashMap<String,Integer> totalResult = util.createWinning();
         for(int i = 0; i < totalLottoNumbers.size();i++)
         {
             int key = util.compareWinningNumber(totalLottoNumbers.get(i).getNumbers(), winningNumbers);
             if(key == 5 && util.compareBonusNumber(totalLottoNumbers.get(i).getNumbers(), bonusNumber))
                 totalResult.put("Bonus", totalResult.get("Bonus") + 1);
-            totalResult.put(Integer.toString(key), totalResult.get(key) + 1);
+            if(totalResult.containsKey(Integer.toString(key)))
+                totalResult.put(Integer.toString(key), totalResult.get(key) + 1);
         }
         return totalResult;
     }
