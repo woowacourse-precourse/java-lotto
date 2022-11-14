@@ -121,4 +121,16 @@ public class Lotto {
 
         return result;
     }
+
+    public List<Integer> checkLottoAll(List<Lotto> buyLottos, int bonus) {
+        List<Integer> win = Arrays.asList(0, 0, 0, 0, 0, 0, 0);
+
+        for (Lotto buyLotto : buyLottos) {
+            Winning prize = checkLotto(buyLotto, bonus);
+            if (prize != Winning.NONE) {
+                win.set(prize.getRank(), win.get(prize.getRank()) + 1);
+            }
+        }
+        return win;
+    }
 }
