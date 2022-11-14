@@ -20,7 +20,7 @@ public class Input {
     }
 
     public int getUserMoney() {
-        System.out.println(GameMessage.BUY_FOR_LOTTO);
+        output.printGetLottoPrice();
 
         String question = Console.readLine();
         inputValidation.checkNumber(question, Constant.REGEX_INPUT);
@@ -31,7 +31,7 @@ public class Input {
     }
 
     public List<Integer> getWinningNumber() {
-        System.out.print('\n' + GameMessage.INPUT_WINNING_NUMBER + '\n');
+        output.printGetWinningNumbers();
 
         String answer = Console.readLine();
         inputValidation.checkNumber(answer, Constant.REGEX_WINNING_NUMBER_INPUT);
@@ -60,7 +60,7 @@ public class Input {
     }
 
     public String getBonusNumber() {
-        System.out.print('\n' + GameMessage.INPUT_BONUS_NUMBER + '\n');
+        output.printGetBonusNumber();
 
         String answer = Console.readLine();
 

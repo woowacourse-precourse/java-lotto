@@ -37,4 +37,16 @@ public class Output {
             printLotto(lotto.getNumbers());
         }
     }
+
+    public void printGetLottoPrice() {
+        System.out.println(GameMessage.BUY_FOR_LOTTO);
+    }
+
+    public void printGetWinningNumbers() {
+        System.out.print('\n' + GameMessage.INPUT_WINNING_NUMBER + '\n');
+    }
+
+    public void printGetBonusNumber() {
+        System.out.print('\n' + GameMessage.INPUT_BONUS_NUMBER + '\n');
+    }
 }
