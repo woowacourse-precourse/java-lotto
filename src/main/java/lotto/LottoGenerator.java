@@ -4,7 +4,7 @@ import java.util.List;
 
 public class LottoGenerator {
 
-    public List<Lotto> createLottos() {
+    public List<Lotto> createLottos(int money) {
         return null;
     }
 
