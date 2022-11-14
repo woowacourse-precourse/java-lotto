@@ -15,6 +15,8 @@ public class User {
         this.lottoCount = money / Lotto.PRICE;
     }
 
+    public User() {}
+
     public static User initUserLotto(int money) {
         User user = new User(money);
         validate(money);
