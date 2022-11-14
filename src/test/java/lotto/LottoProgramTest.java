@@ -33,4 +33,25 @@ public class LottoProgramTest {
 		List<Integer> randomNumbers = new ArrayList<>(List.of(3, 5, 6, 7, 8, 9));
 		assertThat(lottoProgram.checkWinNum(randomNumbers, lottoNumbers)).isEqualTo(3);
 	}
+
+	@Test
+	public void 수익률_계산() {
+		StoreMap storeMap = new StoreMap();
+		storeMap.pushStoreMap(Rank.FIFTH);
+		storeMap.pushStoreMap(Rank.MISS);
+		storeMap.pushStoreMap(Rank.MISS);
+		storeMap.pushStoreMap(Rank.MISS);
+		storeMap.pushStoreMap(Rank.MISS);
+		storeMap.pushStoreMap(Rank.MISS);
+		storeMap.pushStoreMap(Rank.MISS);
+		storeMap.pushStoreMap(Rank.MISS);  //8장을 사고 1개 당첨 7개 낙첨
+		int totalCount = 0;
+		int totalPrize = 0;
+		for (SortedMap.Entry<Rank, Integer> elem : storeMap.getStoreMap().entrySet()) {
+			totalCount += elem.getValue() * 1000;
+			totalPrize += (elem.getValue() * elem.getKey().getWinningMoney());
+		}
+		double total = (double)totalPrize / totalCount * 100;
+		assertThat(total).isEqualTo(62.5);
+	}
 }
