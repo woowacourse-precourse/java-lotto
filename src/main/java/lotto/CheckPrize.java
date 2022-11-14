@@ -41,18 +41,18 @@ public class CheckPrize {
         int rank;
         switch (count) {
             case 3:
-                rank = 5;
+                rank = 1;
                 break;
             case 4:
-                rank = 4;
+                rank = 2;
                 break;
             case 5:
                 rank = 3;
                 if (bonus)
-                    rank = 2;
+                    rank = 4;
                 break;
             case 6:
-                rank = 1;
+                rank = 5;
                 break;
             default:
                 return;
