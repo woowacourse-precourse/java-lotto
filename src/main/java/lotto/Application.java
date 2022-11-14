@@ -113,6 +113,16 @@ public class Application {
         return bonusNum;
     }
 
+    public static int readBonusNumbers() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String userInput = Console.readLine();
+        try {
+            return Integer.parseInt(userInput);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR]: 입력값이 숫자가 아닙니다.");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
