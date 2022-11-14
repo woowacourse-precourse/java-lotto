@@ -22,6 +22,14 @@ public class Lotto {
         }
     }
 
+    private void validateRangeOfNumbers(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number > 45 || number < 1) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+        }
+    }
+
     private  void validateDuplicationOfNumbers(List<Integer> numbers) {
         int[] checkDuplication = new int[46];
         for(Integer number : numbers){
@@ -32,18 +40,18 @@ public class Lotto {
         }
     }
 
-    private void validateRangeOfNumbers(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            if (number > 45 || number < 1) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            }
-        }
-    }
-
-    public int validateBonusNumber(int bonusNumber) {
+    public int validateBonusNumber(String input) {
+        validateIsDigitOfBonusNumber(input);
+        int bonusNumber = Integer.parseInt(input);
         validateRangeOfBonusNumber(bonusNumber);
         validateDuplicationOfBonusNumber(bonusNumber);
         return bonusNumber;
+    }
+
+    private void validateIsDigitOfBonusNumber(String bonusNumber) {
+        if (bonusNumber.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
+        }
     }
 
     private void validateRangeOfBonusNumber(int bonusNumber) {
