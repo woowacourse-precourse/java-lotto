@@ -35,4 +35,8 @@ public class WinLotto {
                 .filter(winningNumber::contains)
                 .count();
     }
+
+    public boolean isBonusNumberMatch(List<Integer> lottoTicket){
+        return lottoTicket.contains(bonusNumber);
+    }
 }
