@@ -38,7 +38,7 @@ public class User {
     void validate(String userInput) throws IllegalArgumentException {
         if (!isNum(userInput)) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요");
-        } else if (purchasingAmount % LOTTO_PRICE != 0) {
+        } else if (Integer.parseInt(userInput) % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 구매 금액이 1000으로 나누어 떨어지지 않습니다");
         }
     }
