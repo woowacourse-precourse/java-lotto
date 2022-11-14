@@ -3,6 +3,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class User {
@@ -22,7 +23,9 @@ public class User {
 
     public void setPrice(){
         System.out.println(INFORMATION_MESSAGE);
-        price = Integer.parseInt(Console.readLine());
+        String strPrice = Console.readLine();
+        exception.validateInteger(strPrice);
+        this.price = Integer.parseInt(strPrice);
     }
 
     public int getPrice(){
