@@ -89,4 +89,12 @@ public class User {
         }
         return count;
     }
+
+    private void checkBonus(int i, int bonus) {
+        if (this.lottoNumbers.get(i).contains(bonus)) {
+            this.second++;
+            return;
+        }
+        this.third++;
+    }
 }
