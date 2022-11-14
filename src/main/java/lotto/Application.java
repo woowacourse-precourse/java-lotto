@@ -18,11 +18,15 @@ public class Application { // 패키지 분리
         List<Lotto> countLotto = RandomNumberCreater.generateLottoNumber(Money.count);
         LottoPirnt.printPaper(countLotto);
         Message.requestWinningNumberMessage();
+
         WinningNumber winningNumber = new WinningNumber(UserNumberScan.requestValue());
         List<Integer> numbers = winningNumber.getNumber();
+
         Message.requestBonusNumberMessage();
+
         int validBonusNumber = BonusNumber.validBonusNumber(UserNumberScan.requestValue(), numbers);
         MatchNumbers matchNumbers = new MatchNumbers();
+
         matchNumbers.match(countLotto, numbers, validBonusNumber);
         Message.matchMessage(matchNumbers.getMaps());
         Message.ratio(Money.percentage(matchNumbers.getMaps()));
