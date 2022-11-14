@@ -19,4 +19,12 @@ public class Parser {
             throw new IllegalArgumentException();
         }
     }
+
+    public static long money(String consoleInput) {
+        try {
+            return Long.parseLong(consoleInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
