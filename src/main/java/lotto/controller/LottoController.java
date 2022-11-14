@@ -1,17 +1,34 @@
 package lotto.controller;
 
+import java.util.List;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.player.Player;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
     private static final String DELIMITER = ",";
+    private Player player;
 
     public LottoController() {
+        getPlayerMoney();
+
+        player.buyLotto();
+
+        List<Lotto> playerLotteries = player.getLotteries();
+
+        OutputView.printBuyingCount(playerLotteries);
+
+    }
+
+    private void getPlayerMoney() {
         String moneyInput = InputView.getMoney();
 
         validateMoney(moneyInput);
 
         int money = Integer.parseInt(moneyInput);
 
+        player = new Player(money);
     }
 
     private void validateMoney(String moneyInput) {
@@ -30,5 +47,4 @@ public class LottoController {
             throw new IllegalArgumentException("[ERROR] 돈은 1000원 단위로 입력해주세요.");
         }
     }
-
 }
