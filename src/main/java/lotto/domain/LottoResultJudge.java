@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class LottoResultJudge {
     public static final LottoResultJudge getInstance = new LottoResultJudge();
@@ -16,8 +17,8 @@ public class LottoResultJudge {
 
     private int correspondNumber(List<Integer> userLotto, List<Integer> lotto) {
         int correctNumber = 0;
-        for (int userLottoIndex = 0; userLottoIndex < userLotto.size(); userLottoIndex++) {
-            if (lotto.contains(userLotto.get(userLottoIndex))) {
+        for(int userNum: userLotto) {
+            if (lotto.contains(userNum)) {
                 correctNumber++;
             }
         }
@@ -25,9 +26,6 @@ public class LottoResultJudge {
     }
 
     private boolean correspondBonus(List<Integer> userLotto, int bonus) {
-        if (userLotto.contains(bonus)) {
-            return true;
-        }
-        return false;
+        return userLotto.contains(bonus);
     }
 }
