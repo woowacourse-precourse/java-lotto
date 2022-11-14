@@ -11,13 +11,13 @@ import static lotto.model.LottoStatus.START;
 
 public class Validator {
 
-    public void validateSize(String input) {
+    public void validatePurchasingAmountSize(String input) {
         if (input.length() < LottoStatus.PRICE.getDigitsSize()) {
             throw new IllegalArgumentException(INCORRECT_PURCHASING_AMOUNT.toString());
         }
     }
 
-    public void validateNumber(String input) {
+    public void validatePurchasingAmountNumber(String input) {
         validateFirstDigit(input);
         validateOtherDigit(input);
     }

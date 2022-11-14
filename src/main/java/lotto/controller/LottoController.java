@@ -82,8 +82,8 @@ public class LottoController {
     }
 
     private void validatePurchasingAmount(String input) {
-        validator.validateSize(input);
-        validator.validateNumber(input);
+        validator.validatePurchasingAmountSize(input);
+        validator.validatePurchasingAmountNumber(input);
         validator.validateMonetaryUnit(input);
     }
 }
