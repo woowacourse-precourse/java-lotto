@@ -7,8 +7,7 @@ public class Application {
         Integer ticketsNumber = User.askTicketNumber();
         List<Lotto> lottos = User.buy(ticketsNumber);
         List<Integer> numbers = User.askWinNumbers();
-        Lotto winNumbers = new Lotto(numbers); // 프린트되나?
-        Integer bonus = User.askBonusNumbers();
+        Integer bonus = User.askBonusNumber();
 
         // Calculator calculator = new Calculator(lotto, bonus);
         // for (Lotto lotto : lottos) {
