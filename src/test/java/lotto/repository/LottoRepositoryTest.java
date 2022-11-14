@@ -1,6 +1,7 @@
 package lotto.repository;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.assertj.core.api.Assertions;
@@ -25,6 +26,20 @@ public class LottoRepositoryTest {
 		//then
 		Assertions.assertThat(lottoNumbers.size())
 			.isEqualTo(6);
+	}
+
+	@DisplayName("당첨 로또가 정상적으로 생성되는지 생성")
+	@Test
+	void givenLottoWinningNumber_whenMakeWinnerLotto_thenInputLottoNumberEqualsWInnerLotto() {
+		//given
+		String inputLottoWinningNumber = "1,2,3,4,5,6";
+
+		//when
+		List<Integer> winnerLotto = lottoRepository.makeWinnerLotto(inputLottoWinningNumber);
+
+		//then
+		Assertions.assertThat(winnerLotto.containsAll(List.of(1, 2, 3, 4, 5, 6)))
+			.isTrue();
 	}
 
 }
