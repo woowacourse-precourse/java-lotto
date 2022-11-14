@@ -54,7 +54,7 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
-    }
+    }	
 
     @Override
     public void runMain() {
