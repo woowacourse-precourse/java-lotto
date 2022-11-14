@@ -12,8 +12,38 @@ package lotto.valid;
  */
 public class Valid {
 
-    public static String[] lotto_answer_valid(String answer){
-        return answer.split(",");
+    public static void check_Overlap(String str){
+        String[] input = str.split(",");
+        List<Integer> container = new ArrayList<>();
+
+        for(int i = 0; i < input.length; i++){
+            Integer num = Integer.valueOf(input[i]);
+            if(container.contains(num)){
+                throw new IllegalArgumentException(overlap_Message + input[i]);
+            }
+            container.add(num);
+        }
+    }
+
+    public static void check_Overlap(List<Integer> numbers){
+        List<Integer> lottery = new ArrayList<>(numbers);
+        for(int i = 0; i < lottery.size(); i++){
+            Integer number = lottery.remove(i);
+            if(lottery.contains(number)){
+                throw new IllegalArgumentException(overlap_Message + number);
+            }
+        }
+    }
+    public static void check_Overlap(List<Integer> numbers, String str){
+        List<Integer> lottery = new ArrayList<>(numbers);
+        lottery.add(Integer.valueOf(str));
+        for(int i = 0; i < lottery.size(); i++){
+            Integer number = lottery.remove(i);
+            if(lottery.contains(number)){
+                throw new IllegalArgumentException(overlap_Message + number);
+            }
+        }
+    }
 
     public static void check_Range(String str) {
         String[] input = str.split(",");
