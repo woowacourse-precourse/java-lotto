@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -51,6 +53,24 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("음수의 입력 Exception Handling")
+    void myTest(){
+        assertSimpleTest(() -> {
+            runException("-1000");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    
+    @Test
+    @DisplayName("1000으로 나눠떨어지지 않는 경우")
+    void negateTest(){
+        assertSimpleTest(() -> {
+            runException("1234");
+            assertThat(output().contains(ERROR_MESSAGE));
         });
     }
 
