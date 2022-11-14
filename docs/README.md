@@ -105,4 +105,4 @@
 
 #### Statistics 
 - [X] 기록 전, 1등부터 5등까지 모두 0으로 초기화 상태이다. - StatisticsTest#isInitializedZeroCount()
-- [ ] 각 등수 별로 몇 번씩 당첨됐는지 기록한다. - StatisticsTest#record()
+- [X] 각 등수 별로 몇 번씩 당첨됐는지 기록한다. - StatisticsTest#record()
