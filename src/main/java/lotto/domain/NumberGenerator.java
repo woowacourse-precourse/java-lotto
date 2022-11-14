@@ -31,13 +31,13 @@ public class NumberGenerator {
     }
 
     private  void validateUnit(String money) {
-        if (!money.matches("000$")) {
+        if (!money.matches("^.*.000$")) {
             throw new IllegalArgumentException("[ERROR] 구입금액은 1,000원 단위로 입력해야 합니다.");
         }
     }
 
     private  void validateStartNumber(String money) {
-        if (money.matches("^0")) {
+        if (money.matches("^0.*")) {
             throw new IllegalArgumentException("[ERROR] 구입금액은 0으로 시작할 수 없습니다.");
         }
     }
