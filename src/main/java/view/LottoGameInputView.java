@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class LottoGameInputView implements InputView {
 
-    static class SingleTone {
+    static class Singleton {
 
         private static final InputView INSTANCE = new LottoGameInputView();
     }
@@ -16,7 +16,7 @@ public class LottoGameInputView implements InputView {
     }
 
     public static InputView getInstance() {
-        return SingleTone.INSTANCE;
+        return Singleton.INSTANCE;
     }
 
     @Override

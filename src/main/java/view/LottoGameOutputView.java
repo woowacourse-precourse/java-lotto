@@ -1,22 +1,19 @@
 package view;
 
-import camp.nextstep.edu.missionutils.Console;
 import domain.Lotto;
 import domain.LottoGrade;
 import dto.ScratchResult;
 import java.text.DecimalFormat;
 import java.text.Format;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import view.LottoGameInputView.SingleTone;
 
 public class LottoGameOutputView implements OutputView {
 
     private final Format MONEY_FORMAT = new DecimalFormat("#,###");
     private final Format RATE_FORMAT = new DecimalFormat("#,###.0");
 
-    static class SingleTone {
+    static class Singleton {
 
         private static final OutputView INSTANCE = new LottoGameOutputView();
     }
@@ -25,7 +22,7 @@ public class LottoGameOutputView implements OutputView {
     }
 
     public static OutputView getInstance() {
-        return SingleTone.INSTANCE;
+        return Singleton.INSTANCE;
     }
 
     @Override
