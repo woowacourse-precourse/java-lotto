@@ -1,7 +1,6 @@
 package lotto.domain;
 
 public class Money {
-
     private final Long amount;
 
     private Money(Long money) {
@@ -12,8 +11,12 @@ public class Money {
     public static Money of(Long money) {
         return new Money(money);
     }
-    public  Double calcYield(Long prizeMoney) {
-        return (double) (this.amount / prizeMoney * 100);
+
+    public Double calcYield(Long prizeMoney) {
+        if (prizeMoney == 0) {
+            return 0.0;
+        }
+        return prizeMoney / (double) this.amount * 100;
     }
 
     public int calcLottoQuantity() {
