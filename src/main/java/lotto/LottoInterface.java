@@ -22,7 +22,7 @@ public class LottoInterface {
     }
 
     public static void purchasedLottosInformation(List<Lotto> purchaseLottos){
-        System.out.println(purchaseLottos.size() + "개 구매했습니다.");
+        System.out.println(purchaseLottos.size() + "개를 구매했습니다.");
         for(Lotto lottoNum : purchaseLottos){
             System.out.println(lottoNum.getNumber());
         }
