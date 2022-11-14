@@ -1,14 +1,18 @@
 package lotto.datamodel;
 
 public class PurchaseAmount {
+    private final int moneyCount;
 
-    private int moneyCount;
     public PurchaseAmount(String input) {
         int money = numberValid(input);
         moneyCount = moneyValid(money);
     }
 
-    public int numberValid(String input) {
+    public int getMoneyCount() {
+        return moneyCount;
+    }
+
+    private int numberValid(String input) {
         int check;
         try{
             check = Integer.parseInt(input);
@@ -18,15 +22,10 @@ public class PurchaseAmount {
         return check;
     }
 
-    public int moneyValid(int money){
+    private int moneyValid(int money){
         if (money % 1000 != 0 || money == 0) {
             throw new IllegalArgumentException();
         }
         return money / 1000;
     }
-
-    public int getMoneyCount() {
-        return moneyCount;
-    }
-
 }

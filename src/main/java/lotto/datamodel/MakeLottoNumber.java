@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class MakeLottoNumber {
     private final int lottoCount;
+
     public MakeLottoNumber(int lottoCount){
         this.lottoCount = lottoCount;
     }
@@ -21,5 +22,4 @@ public class MakeLottoNumber {
         }
         return lottoNumbers;
     }
-
 }

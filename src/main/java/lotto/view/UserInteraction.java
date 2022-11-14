@@ -2,7 +2,6 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.datamodel.Rank;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -66,4 +65,5 @@ public class UserInteraction {
 
         System.out.println("총 수익률은 " + String.format("%.1f", totalPrize/lottoCount * 100)+"%입니다.");
     }
+    
 }

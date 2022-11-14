@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompareLottoNumbers {
-
     private final List<Integer> numbers;
     private final int bonusNumber;
+
     public CompareLottoNumbers(List<Integer> numbers, int bonusNumber) {
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
@@ -24,7 +24,7 @@ public class CompareLottoNumbers {
         return price;
     }
 
-    public Rank checkSameNumber(List<Integer> oneNumbers) {
+    private Rank checkSameNumber(List<Integer> oneNumbers) {
         int count = 0;
         boolean bonusValid = false;
 

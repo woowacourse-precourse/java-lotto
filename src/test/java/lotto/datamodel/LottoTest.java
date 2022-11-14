@@ -1,4 +1,4 @@
-package lotto;
+package lotto.datamodel;
 
 import lotto.datamodel.Lotto;
 import org.junit.jupiter.api.DisplayName;
