@@ -32,4 +32,8 @@ public class Buyer {
     private int countOfBuyLottos(int amount) {
         return (amount / 1000) + 1;
     }
+
+    public List<Lotto> getLottos() {
+        return this.lottos;
+    }
 }

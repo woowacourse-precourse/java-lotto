@@ -1,10 +1,9 @@
 package lotto;
 
 import lotto.domain.Buyer;
-import lotto.domain.Presenter;
+import lotto.domain.Stats;
 
-import java.util.List;
-
+import static lotto.domain.Presenter.*;
 import static lotto.view.InputView.*;
 
 public class Game {
@@ -18,7 +17,7 @@ public class Game {
     public void play() {
         inputLottoAmountMessage();
         buyer.buyLotto();
-        List<Integer> winLottoNumber = Presenter.inputWinLottoNumber();
-        int bonusNumber = Presenter.inputBonusNumber();
+        Stats.compare(buyer.getLottos(), inputWinLottoNumber(), inputBonusNumber());
+        Stats.printCount();
     }
 }
