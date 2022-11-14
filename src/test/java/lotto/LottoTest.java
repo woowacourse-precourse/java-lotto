@@ -1,10 +1,12 @@
 package lotto;
 
+import lotto.result.RewardEnum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +26,63 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호의 범위는 1~ 45 이다.1")
+    @Test
+    void createLottoByOverRange1() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, -1)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호의 범위는 1~ 45 이다.2")
+    @Test
+    void createLottoByOverRange2() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 55)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호 결과 매칭 기능1")
+    @Test
+    void matchLottoAndWinningNumber1(){
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6), 7);
+
+        assertThat(lotto.match(winningNumber)).isEqualTo(RewardEnum.WIN_6);
+    }
+
+    @DisplayName("로또 번호 결과 매칭 기능2")
+    @Test
+    void matchLottoAndWinningNumber2(){
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6), 7);
+
+        assertThat(lotto.match(winningNumber)).isEqualTo(RewardEnum.WIN_5_BONUS);
+    }
+
+    @DisplayName("로또 번호 결과 매칭 기능3")
+    @Test
+    void matchLottoAndWinningNumber3(){
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 8, 7));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6), 7);
+
+        assertThat(lotto.match(winningNumber)).isEqualTo(RewardEnum.WIN_4);
+    }
+
+    @DisplayName("로또 번호 결과 매칭 기능4")
+    @Test
+    void matchLottoAndWinningNumber4(){
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 8, 9, 7));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6), 7);
+
+        assertThat(lotto.match(winningNumber)).isEqualTo(RewardEnum.WIN_3);
+    }
+
+    @DisplayName("로또 번호 결과 매칭 기능5")
+    @Test
+    void matchLottoAndWinningNumber5(){
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 8, 9, 10, 11), 7);
+
+        assertThat(lotto.match(winningNumber)).isEqualTo(RewardEnum.NONE);
+    }
+
 }
