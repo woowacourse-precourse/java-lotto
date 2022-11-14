@@ -57,4 +57,8 @@ public class Application {
         }
         return bonusnumber;
     }
+    public static void printresult(){
+        System.out.println("\n당첨 통계\n---");
+
+    }
 }
