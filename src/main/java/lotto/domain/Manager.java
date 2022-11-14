@@ -26,7 +26,8 @@ public class Manager {
         return this.winningNumbers;
     }
 
-    public void setBonusNumber(int bonusNumber) {
+    public void setBonusNumber(String input) {
+        int bonusNumber = Integer.parseInt(input);
         this.bonusNumber = bonusNumber;
     }
 
