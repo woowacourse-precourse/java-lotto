@@ -40,6 +40,15 @@ public class Validation {
         }
     }
 
+    public static void validateLottoBonusNumber(String bonusNumber) {
+        if (hasNonDigitCharacter(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호에는 숫자 외의 문자가 포함될 수 없습니다.");
+        }
+        if (isNumberInCorrectRnage(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
     public static boolean hasNonDigitCharacter(String input) {
         return !input.chars().allMatch(Character::isDigit);
     }
