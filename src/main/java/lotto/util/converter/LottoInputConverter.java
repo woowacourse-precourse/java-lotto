@@ -39,4 +39,37 @@ public class LottoInputConverter {
         final List<Validator<String>> validators = new ArrayList<>();
         return stringToIntConverter.convert(input, validators);
     }
+
+    public enum LottoInputValidator {
+
+        LOTTO_INPUT_NULL((String input) -> {
+            if (input == null) {
+                throw new IllegalArgumentException();
+            }
+        }),
+
+        LOTTO_INPUT_USER_PURCHASE_COST((String input) -> {
+            if (!input.matches(USER_BUY_MONEY_PATTERN)) {
+                throw new IllegalArgumentException();
+            }
+        }),
+
+        LOTTO_INPUT_WINNING_NUMBER((String input) -> {
+            if (!input.matches(LOTTO_MAIN_NUMBER_INPUT_PATTERN)) {
+                throw new IllegalArgumentException();
+            }
+        }),
+
+        LOTTO_INPUT_BONUS_NUMBER((String input) -> {
+            if (!input.matches(LOTTO_BONUS_NUMBER_INPUT_PATTERN)) {
+                throw new IllegalArgumentException();
+            }
+        });
+
+        private final Validator<String> validator;
+
+        LottoInputValidator(final Validator<String> validator) {
+            this.validator = validator;
+        }
+    }
 }
