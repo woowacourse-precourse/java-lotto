@@ -37,6 +37,8 @@
 ### 3. Prize Enum 클래스 , Result 클래스 생성
 - Enum 클래스를 key로 하는 HashMap에 등수별 결과값 int 저장
 - output/SummaryView 결과값 반환에 활용
+- 당첨 등수 계산 로직 Result 클래스 내부 private 메소드화
+  - 당첨 등수 계산 로직 - Calculator 클래스 삭제
 
 ### 4. Controller 클래스 생성
 - Application 클래스 main 메소드의 기능을 분담
