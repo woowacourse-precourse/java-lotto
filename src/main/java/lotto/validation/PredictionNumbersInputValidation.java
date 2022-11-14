@@ -16,6 +16,11 @@ public class PredictionNumbersInputValidation {
         }
     }
 
+    public void validate(List<Integer> predictionNumbers) {
+        validateNoDuplicateNumbers(predictionNumbers);
+        validateNumbersRange(predictionNumbers);
+    }
+
     public void validateNoDuplicateNumbers(List<Integer> predictionNumbers) {
         for (int currIdx = 0; currIdx < QUANTITY_OF_DIGITS; currIdx++) {
             int nextIdx = currIdx + 1;
