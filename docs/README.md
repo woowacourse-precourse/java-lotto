@@ -24,8 +24,8 @@
   - [x] 1000원 단위가 아닌 경우 - PurchaseManager#isThousandUnit()
 - [x] 당첨번호 입력 - WinningNumberValidator#askWinningNumber()
   - [ ] 입력 포맷이 "숫자,숫자,숫자..."이 아닌 경우 - WinningNumberValidator#isCorrectFormat()
-  - [ ] 입력 길이가 11이 아닌 경우
   - [ ] 숫자가 중복되는 경우 - WinningNumberValidator#isDuplicated()
+  - [ ] 숫자가 1부터 45가 아닐 경우 - WinningNumberValidator#isNumberFrom1To45()
   - [ ] 입력값을 당첨번호를 변형하기 - WinningNumberValidator#transformToWinningNumbers()
 - [x] 보너스 번호 입력 - BonusNumberValidator#askBonusNumber()
   - [x] 숫자가 아닌 경우 - BonusNumberValidator#isDigit()
