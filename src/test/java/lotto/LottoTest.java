@@ -68,4 +68,13 @@ class LottoTest {
         assert(Three == 2);
     }
 
+    @DisplayName("result 반환리스트안에 4라는 숫자가 있는 갯수만큼의 수를 리턴")
+    @Test
+    void CheckResultFour(){
+        List<Integer> result = List.of(4,1,2,4);
+        CheckCount count = new CheckCount();
+        int Four = count.CheckFour(result);
+        assert(Four == 2);
+    }
+
 }
