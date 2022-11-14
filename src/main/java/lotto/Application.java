@@ -10,9 +10,12 @@ public class Application {
         // TODO: 프로그램 구현
         int purchasePrice = getPurchasePrice(Console.readLine());
         List<Integer> winningLottoNumbers = getWinningLottoNumbers(Console.readLine());
+        int bonusNumber = getBonusNumber(Console.readLine());
+
     }
 
     public static int getPurchasePrice(String input){
+        validatePurchasePrice(input);
         return Integer.parseInt(input);
     }
 
@@ -27,5 +30,17 @@ public class Application {
 
     public static int getBonusNumber(String input){
         return Integer.parseInt(input);
+    }
+
+    public static void validatePurchasePrice(String input) {
+        int inputNumber;
+        try {
+            inputNumber = Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(lotto.Error.INVALID_PRICE.getMessage());
+        }
+        if (inputNumber % 1000 != 0) {
+            throw new IllegalArgumentException(lotto.Error.INVALID_PRICE.getMessage());
+        }
     }
 }
