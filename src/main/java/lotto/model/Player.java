@@ -9,6 +9,7 @@ public class Player {
     private int lottoCount;
     private List<Lotto> lottoNumbers;
     private List<Integer> winningNumber;
+    private int bonusNumber;
 
     public void setPurchaseAmount(int purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
@@ -36,5 +37,9 @@ public class Player {
 
     public void setWinningNumber(List<Integer> winningNumber) {
         this.winningNumber = winningNumber;
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 }

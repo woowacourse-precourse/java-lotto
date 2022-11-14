@@ -20,7 +20,7 @@
     - [x]  구입한 로또 개수 저장 기능 → setLottoCount
     - [x]  구매한 로또 번호 저장 기능 → setLottoNumbers
     - [x]  당첨 번호 저장 기능 → setWinningNumber
-    - [ ]  보너스 번호 저장 기능 → setBonusNumber
+    - [x]  보너스 번호 저장 기능 → setBonusNumber
     - [ ]  당첨 내역 저장 기능 → setWinningResult
     - [ ]  수익률 저장 기능 → setLottoYield
 3. Seller
@@ -60,7 +60,7 @@
     - [x]  로또 발행 개수를 제어하는 기능 호출 → control_CountIssueingLotto
     - [x]  로또 발행을 제어하는 기능 호출 → control_IssueingLotto
     - [x]  당첨 번호 정하는 과정을 제어하는 기능 호출 → control_WinningNumber
-    - [ ]  보너스 번호 정하는 과정을 제어하는 기능 호출 → control_BonusNumber
+    - [x]  보너스 번호 정하는 과정을 제어하는 기능 호출 → control_BonusNumber
     - [ ]  당첨 내역 과정을 제어하는 기능 호출 → control_WinningResult
    
 
