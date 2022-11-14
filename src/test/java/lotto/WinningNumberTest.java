@@ -24,9 +24,12 @@ public class WinningNumberTest {
   }
 
   @Test
-  void 여섯자리_당첨번호_테스트() {
-    List<Integer> test1 = List.of(1,1,3,4,5);
+  void 당첨번호_자릿수_검사_테스트() {
+    List<Integer> test1 = List.of(1,2,3,4,5);
+    List<Integer> test2 = List.of(1,2,3,4,5,6,7);
     assertThatThrownBy(() -> WinningNumber.sizeIsSix(test1))
+            .isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> WinningNumber.sizeIsSix(test2))
             .isInstanceOf(IllegalArgumentException.class);
   }
 
