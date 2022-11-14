@@ -5,11 +5,11 @@ import lotto.utils.CheckException;
 
 public class User {
     private final int amount;
-    private final List<Lotto> lottoNumbers;
+    private final List<Lotto> lottos;
 
-    public User(int amount, List<Lotto> lottoNumbers) {
+    public User(int amount, List<Lotto> lottos) {
         CheckException.checkAmount(amount);
         this.amount = amount;
-        this.lottoNumbers = lottoNumbers;
+        this.lottos = lottos;
     }
 }
