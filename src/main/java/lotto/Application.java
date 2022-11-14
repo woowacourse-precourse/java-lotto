@@ -3,7 +3,7 @@ package lotto;
 import lotto.playlotto.PlayLotto;
 
 public class Application {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         try{
             PlayLotto lotto = new PlayLotto();
             lotto.play();
