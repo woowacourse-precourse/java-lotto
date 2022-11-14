@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.Player;
 import lotto.model.WinningNumber;
@@ -48,6 +49,12 @@ public class LottoService {
         outputView.printInputWinningNumber();
         WinningNumber winningNumber = new WinningNumber(inputView.inputWinningNumber());
         return new Lotto(winningNumber.getWinningNumber());
+    }
+
+    public BonusNumber createBonusNumber(List<Integer> winningNumber) {
+        outputView.printInputBonusNumber();
+        BonusNumber bonusNumber = new BonusNumber(inputView.inputBonusNumber(), winningNumber);
+        return bonusNumber;
     }
 
 }
