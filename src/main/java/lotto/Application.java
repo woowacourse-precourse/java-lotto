@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.userinterface.Hit;
 import lotto.userinterface.UserInterface;
 
 import java.util.HashMap;
@@ -21,7 +20,7 @@ public class Application {
 
         Lotto answerLotto = Lotto.numberOf(answerNumbers);
 
-        HashMap<Hit, Integer> result = Calculator.getLottoResult(randomLottos, answerLotto, bonusNumber);
+        HashMap<Calculator.Hit, Integer> result = Calculator.getLottoResult(randomLottos, answerLotto, bonusNumber);
 
         Float earningRate = Calculator.getEarningRate(result, money);
 

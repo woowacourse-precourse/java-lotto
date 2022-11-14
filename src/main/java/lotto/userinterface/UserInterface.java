@@ -1,6 +1,7 @@
 package lotto.userinterface;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Calculator;
 import lotto.Lotto;
 import lotto.Util;
 import lotto.condition.Condition;
@@ -81,8 +82,8 @@ public class UserInterface {
         return String.join(",", numbers.stream().map((Integer number) -> Integer.toString(number)).collect(Collectors.toList())) + "," + input;
     }
 
-    public static void printResult(HashMap<Hit, Integer> result) {
-        for (Hit hit : result.keySet()) {
+    public static void printResult(HashMap<Calculator.Hit, Integer> result) {
+        for (Calculator.Hit hit : result.keySet()) {
             System.out.println(MessageGenerator.getLottoResultMessage(hit, result.get(hit)));
         }
     }

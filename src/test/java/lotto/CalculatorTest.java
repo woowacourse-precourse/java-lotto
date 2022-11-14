@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.userinterface.Hit;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -23,10 +22,10 @@ class CalculatorTest {
         Integer bonusNumber = 7;
 
         // when
-        HashMap<Hit, Integer> result = Calculator.getLottoResult(lottos, answerLotto, bonusNumber);
+        HashMap<Calculator.Hit, Integer> result = Calculator.getLottoResult(lottos, answerLotto, bonusNumber);
 
         // then
-        for (Hit hit : result.keySet()) {
+        for (Calculator.Hit hit : result.keySet()) {
             Assertions.assertThat(result.get(hit)).isEqualTo(1);
         }
     }
