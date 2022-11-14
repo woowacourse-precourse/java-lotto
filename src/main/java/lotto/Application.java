@@ -109,7 +109,7 @@ public class Application {
     }
 
     public static void printLottoNumbers() {
-        for(List<Integer> lotto: purchasedLottos)
+        for (List<Integer> lotto: purchasedLottos)
             System.out.println(lotto);
     }
 
@@ -145,7 +145,7 @@ public class Application {
         return winningNumbers;
     }
 
-    public static void isNoOfDigitsExceeds9(String splitNumber) {
+    public static void isInputLengthExceeds9(String splitNumber) {
         if (splitNumber.length() > 9)
             throw new IllegalArgumentException("[ERROR] 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
     }
@@ -159,7 +159,7 @@ public class Application {
 
         String[] splitNumbers = winningNumberInput.split(",");
         for (String splitNumber : splitNumbers)
-            isNoOfDigitsExceeds9(splitNumber);
+            isInputLengthExceeds9(splitNumber);
 
         List<Integer> splitNumbersAsInteger = parseNumbers(splitNumbers);
         winningNumbers = new Lotto(splitNumbersAsInteger);
@@ -185,7 +185,7 @@ public class Application {
 
         isVoidInput(bonusNumberInput);
         isInputNumber(bonusNumberInput);
-        isNoOfDigitsExceeds9(bonusNumberInput);
+        isInputLengthExceeds9(bonusNumberInput);
 
         int bonusNumber = Integer.parseInt(bonusNumberInput);
         checkRange(bonusNumber);
@@ -194,29 +194,29 @@ public class Application {
     }
 
     public static Places compareResult(int countWinningNumbers, boolean isBonusNumber) {
-        if(countWinningNumbers < 3) return Places.NONE;
-        if(countWinningNumbers == 6) return Places.FIRST;
-        if(countWinningNumbers == 4) return Places.FOURTH;
-        if(countWinningNumbers == 3) return Places.FIFTH;
-        if(isBonusNumber) return Places.SECOND;
+        if (countWinningNumbers < 3) return Places.NONE;
+        if (countWinningNumbers == 6) return Places.FIRST;
+        if (countWinningNumbers == 4) return Places.FOURTH;
+        if (countWinningNumbers == 3) return Places.FIFTH;
+        if (isBonusNumber) return Places.SECOND;
         return Places.THIRD;
     }
 
-    public static Places countNumberTypes(List<Integer> numbers) {
+    public static Places checkPlaces(List<Integer> numbers) {
         int countWinningNumbers = 0;
         boolean isBonusNumber = false;
         for (int number : numbers) {
-            if(numberType[number] == NumberType.WINNING)
+            if (numberType[number] == NumberType.WINNING)
                 countWinningNumbers++;
-            if(numberType[number] == NumberType.BONUS)
+            if (numberType[number] == NumberType.BONUS)
                 isBonusNumber = true;
         }
         return compareResult(countWinningNumbers, isBonusNumber);
     }
 
     public static void getComparisonResult() {
-        for (List<Integer> numbers :  purchasedLottos) {
-            Places result = countNumberTypes(numbers);
+        for (List<Integer> numbers : purchasedLottos) {
+            Places result = checkPlaces(numbers);
             int count = noOfLottoWinAt.get(result);
             noOfLottoWinAt.put(result, count + 1);
         }
