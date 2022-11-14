@@ -64,6 +64,15 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("구입금액만큼 로또를 구입한다.")
+    void perchaseLottoByNumberOfLotto() {
+        int numberOfLotto = 10;
+
+        assertThat(Application.perchaseLotto(numberOfLotto).size()).isEqualTo(numberOfLotto);
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

@@ -24,7 +24,7 @@ public class Application {
 
         int numberOfLotto = money / 1000;
 
-        List<Lotto> lottos = perChaseLotto(numberOfLotto);
+        List<Lotto> lottos = perchaseLotto(numberOfLotto);
 
     }
 
@@ -35,7 +35,7 @@ public class Application {
         }
     }
 
-    public static List<Lotto> perChaseLotto(int numberOfLotto) {
+    public static List<Lotto> perchaseLotto(int numberOfLotto) {
         List<Lotto> result = new ArrayList<>();
 
         for (int i = 0; i < numberOfLotto; i++) {
