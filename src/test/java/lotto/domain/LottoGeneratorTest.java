@@ -7,23 +7,23 @@ import org.junit.jupiter.api.Test;
 
 class LottoGeneratorTest {
 
-	@Test
 	@DisplayName("6개의 번호를 생성한다.")
-	void getNumbers1() {
+	@Test
+	void validateSixNumbers() {
 		LottoGenerator lottoGenerator = new LottoGenerator();
 		assertThat(lottoGenerator.getNumbers()).hasSize(6);
 	}
 
-	@Test
 	@DisplayName("번호가 중복이 아니다.")
-	void getNumbers() {
+	@Test
+	void validateNoDuplication() {
 		LottoGenerator lottoGenerator = new LottoGenerator();
 		assertThat(lottoGenerator.getNumbers()).doesNotHaveDuplicates();
 	}
 
-	@Test
 	@DisplayName("오름차순으로 정렬되어 있다.")
-	void getNumbers2() {
+	@Test
+	void validateAscendingOrder() {
 		LottoGenerator lottoGenerator = new LottoGenerator();
 		assertThat(lottoGenerator.getNumbers()).isSorted();
 	}
