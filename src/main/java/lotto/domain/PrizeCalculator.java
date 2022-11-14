@@ -64,4 +64,8 @@ public class PrizeCalculator {
             Output.printMessage(GameMessage.RESULT_BODY.getMessage(prizeType, count));
         }
     }
+
+    public double calculateProfitRate(long initialMoney) {
+        return ((double)totalPrizeAmount / (double)initialMoney) * 100;
+    }
 }

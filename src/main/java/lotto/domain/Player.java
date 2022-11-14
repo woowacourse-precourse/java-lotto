@@ -24,9 +24,10 @@ public class Player {
 
     public void buyLottoTickets(Machine lottoMachine) {
         this.lottoTickets = lottoMachine.issueLottoTickets(initialMoney);
+        displayLottoTickets();
     }
 
-    public void displayLottoTickets() {
+    private void displayLottoTickets() {
         int numberOfTickets = lottoTickets.size();
         Output.printMessage(GameMessage.LOTTO_PURCHASE.getMessage(numberOfTickets));
         for (Lotto lotto : lottoTickets) {
@@ -41,5 +42,11 @@ public class Player {
             prizeCalculator.getResultForLotto(lotto, winningNumbers, bonusNumber);
         }
         prizeCalculator.printPrizeResult();
+        displayProfitRate();
+    }
+
+    private void displayProfitRate() {
+        double profitRate = prizeCalculator.calculateProfitRate(initialMoney);
+        Output.printMessage(GameMessage.PROFIT_RATE.getMessage(profitRate));
     }
 }

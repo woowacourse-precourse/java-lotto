@@ -15,7 +15,6 @@ public class Application {
         Player player = new Player(Long.parseLong(initialMoneyInput));
         Machine lottoMachine = new Machine();
         player.buyLottoTickets(lottoMachine);
-        player.displayLottoTickets();
 
         Organizer organizer = new Organizer();
         organizer.setWinningNumbersFromInput();

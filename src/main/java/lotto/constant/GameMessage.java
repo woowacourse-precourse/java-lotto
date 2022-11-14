@@ -8,7 +8,9 @@ public enum GameMessage {
     RESULT_HEADER("당첨 통계\n---"),
     RESULT_BODY("%d개 일치%s (%,d원) - %d개"),
     BONUS_BODY(", 보너스 볼 일치"),
-    EMPTY("");
+    EMPTY(""),
+    PROFIT_RATE("총 수익률은 %,.1f%%입니다.");
+
     private final String message;
 
     GameMessage(String message) {
@@ -20,6 +22,9 @@ public enum GameMessage {
     }
 
     public String getMessage(int formatNumber) {
+        return String.format(message, formatNumber);
+    }
+    public String getMessage(double formatNumber) {
         return String.format(message, formatNumber);
     }
 

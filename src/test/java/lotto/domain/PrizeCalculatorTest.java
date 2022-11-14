@@ -106,4 +106,23 @@ public class PrizeCalculatorTest {
                 "5개 일치 (1,500,000원) - 0개", "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
                 "6개 일치 (2,000,000,000원) - 0개");
     }
+
+    @ParameterizedTest
+    @MethodSource("provideParametersForProfitTest")
+    @DisplayName("수익률을 반환한다.")
+    void getProfitRate(Lotto lotto, List<Integer> winningNumbers, int bonusNumber, double result) {
+        PrizeCalculator prizeCalculator = new PrizeCalculator();
+        prizeCalculator.getResultForLotto(lotto, winningNumbers, bonusNumber);
+        assertThat(prizeCalculator.calculateProfitRate(8000)).isEqualTo(result);
+    }
+
+    private static Stream<Arguments> provideParametersForProfitTest() {
+        return Stream.of(
+                Arguments.of(new Lotto(List.of(1,2,3,7,8,9)), List.of(7,8,9,10,11,12), 13, 62.5),
+                Arguments.of(new Lotto(List.of(1,2,7,8,9,10)), List.of(7,8,9,10,11,12), 13, 625.0),
+                Arguments.of(new Lotto(List.of(1,7,8,9,10,11)), List.of(7,8,9,10,11,12), 13, 18_750.0),
+                Arguments.of(new Lotto(List.of(1,7,8,9,10,11)), List.of(7,8,9,10,11,12), 1, 375_000.0),
+                Arguments.of(new Lotto(List.of(7,8,9,10,11,12)), List.of(7,8,9,10,11,12), 13, 25_000_000.0)
+        );
+    }
 }
