@@ -13,15 +13,28 @@ public class IOManage {
     private int bonusNumber;
 
     IOManage() {
+        if (inputPayment()) {
+            outputLottoGeneration();
+            inputWinningNumbers();
+            inputBonusNumber();
+            outputStatistic();
+            outputEarningRate();
+        }
     }
 
-    public void inputPayment() {
+    public boolean inputPayment() {
         System.out.println(Message.INPUT_PAYMENT.get());
         String input = Console.readLine();
-        if (!Pattern.matches("^[0-9]*$",input)) {
-            throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_RANGE.get());
+        try {
+            if (!Pattern.matches("^[0-9]*$", input)) {
+                throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_RANGE.get());
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
         inputPrice = Integer.parseInt(input);
+        return true;
     }
 
     public void outputLottoGeneration() {
