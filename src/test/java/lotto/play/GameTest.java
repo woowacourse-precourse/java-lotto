@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest extends NsTest {
 
@@ -16,7 +15,7 @@ class GameTest extends NsTest {
 
     @DisplayName("0으로 나눴을때도 결과가 제대로 출력된다.")
     @Test
-    public void dividedZeroExceptionTest(){
+    void dividedZeroExceptionTest(){
         game.calculateEarnRatio(1000, 0);
         assertSimpleTest(() -> {
             assertThat(output()).contains(TextType.EARN_PERCENT.getText());
@@ -25,7 +24,7 @@ class GameTest extends NsTest {
 
     @DisplayName("정확히 입력시 결과가 정확히 출력된다.")
     @Test
-    public void dividedTest(){
+    void dividedTest(){
         game.calculateEarnRatio(1000, 0);
         assertSimpleTest(() -> {
             assertThat(output()).contains(TextType.EARN_PERCENT.getText());
