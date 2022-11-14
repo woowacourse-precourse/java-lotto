@@ -12,6 +12,7 @@ public abstract class Number {
     }
 
     protected void setNumber(int number) {
+        validateNumber(number);
         this.number = number;
     }
 

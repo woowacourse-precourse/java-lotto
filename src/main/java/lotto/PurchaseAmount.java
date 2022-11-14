@@ -7,7 +7,7 @@ public class PurchaseAmount extends Number {
     }
 
     private void validate(Integer purchaseAmount) {
-        this.validator.throwIfNotDividedByUnitPrice(this.getNumber());
+        this.validator.throwIfNotDividedByUnitPrice(purchaseAmount);
     }
 
     public int getLottoCount() {

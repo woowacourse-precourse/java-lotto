@@ -24,6 +24,10 @@ public class Lotto {
         return this.numbers;
     }
 
+    public List<Integer> getNumbersAsIntegers() {
+        return this.numbers.stream().map(LottoNumber::getNumber).collect(Collectors.toList());
+    }
+
     private void validate(List<Integer> numbers) {
         Validator validator = new Validator();
         validator.throwIfNotSix(numbers);
