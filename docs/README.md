@@ -2,7 +2,7 @@
 
 ## 📄 기능 목록
 - [x] 로또 구입 금액을 입력 받는다. - InputOutput#getLottoBuyAmount()
-- [ ] 1부터 45까지의 서로 다른 수 6개를 생성한다. - NumberGenerator#createRandomNumbers()
+- [ ] 1부터 45까지의 서로 다른 수 6개를 생성한다. - NumberGenerator#()
 - [ ] 로또 번호는 오름차순으로 정렬한다. - NumberGenerator#sortAscendingOrder()
 - [ ] 로또 당첨 번호 6개를 입력 받는다. - InputOutput#getLottoNumbers()
 - [ ] 로또 보너스 번호 1개를 입력 받는다. - InputOutput#getLottoBonusNumber()
@@ -19,14 +19,17 @@
   - [ ] 로또 구입 금액을 입력 받을 때 예외상황 - getLottoBuyAmountError()
     - [ ] 입력값이 숫자가 아닐 경우 예외처리한다. - noNumberError()
     - [ ] 로또 구입 금액은 1000원 단위가 아닐 경우 예외처리한다. - amountUnitError()
+  - [ ] 로또 번호 생성할 때 예외상황 - createLottoNumberError()
+    - [ ] 로또번호가 6개가 아닐 경우 예외처리한다. - lottoNumberError()
+    - [ ] 서로 다른 수가 아닐 경우 예외처리한다. - overlapError()
   - [ ] 로또 당첨 번호를 입력 받을 때 예외상황 - getLottoWinnerNumberError()
     - [ ] 콤마 사이의 글자가 숫자가 아닌 경우 예외처리한다. - splitResultNoNumberError()
-    - [ ] 당첨번호가 6개가 아닐 경우 예외처리한다. - lottoWinNumberError()
-    - [ ] 입력값이 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeError()
-    - [ ] 입력값이 서로 다른 수가 아닐 경우 예외처리한다. - overlapError()
+    - [ ] 로또번호가 6개가 아닐 경우 예외처리한다. - lottoNumberError()
+    - [ ] 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeError()
+    - [ ] 서로 다른 수가 아닐 경우 예외처리한다. - overlapError()
   - [ ] 로또 보너스 번호를 입력 받을 때 예외상황 - getLottoBonusNumberError()
     - [ ] 입력값이 숫자가 아닐 경우 예외처리한다. - noNumberError()
-    - [ ] 입력값이 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeError()
+    - [ ] 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeError()
 
 ## 📑 기능 요구 사항
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
