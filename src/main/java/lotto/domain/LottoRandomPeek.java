@@ -20,6 +20,7 @@ public class LottoRandomPeek {
     public List<Integer> drawLotto() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
                 IntEnum.START_NUMBER.getValue(), IntEnum.LAST_NUMBER.getValue(), IntEnum.LOTTO_SIZE.getValue());
+        randomLottos.add(new Lotto(randomNumbers));
         return randomNumbers;
     }
     public void addLotto(List<Integer> addRottoList){

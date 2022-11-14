@@ -19,7 +19,7 @@ public class LottoService {
 
         WinLotto winLotto = new WinLottoGenerate().generate();
 
-        Statistics statistics = new Statistics(lottoRandomPeek.getRandomLottos());
+        Statistics statistics = new Statistics();
         statistics.compareNumber(lottoRandomPeek.getRandomLottos(), winLotto);
         StatisticsOutput output = new StatisticsOutput();
         output.outputWiningHistory(statistics.getRank());

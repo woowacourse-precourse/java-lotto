@@ -10,11 +10,7 @@ import java.util.stream.Collectors;
 public class Statistics {
     private final List<Integer> reward = List.of(5000, 50000, 1500000, 2000000000, 30000000);
     private final List<Integer> rank = new ArrayList<>(Collections.nCopies(IntEnum.BONUS_SIZE.getValue(), 0));
-    private final int randomlottosize;
 
-    public Statistics(List<Lotto> randomLottos) {
-        randomlottosize = randomLottos.size();
-    }
 
     public void compareNumber(List<Lotto> randomLottos, WinLotto winLotto) {
         List<Integer> winNumbers = winLotto.getWinNumbers().stream().limit(IntEnum.LOTTO_SIZE.getValue()).collect(Collectors.toList());
