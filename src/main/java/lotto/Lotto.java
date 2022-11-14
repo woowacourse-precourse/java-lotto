@@ -20,8 +20,8 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private List<Integer> sort(List<Integer> numbers) {
-        List<Integer> result = new ArrayList<>(numbers);
+    private List<Integer> sort() {
+        List<Integer> result = new ArrayList<>(this.numbers);
 
         Collections.sort(result, new Comparator<Integer>() {
             @Override
@@ -39,5 +39,12 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        result += sort().toString();
+        return result;
     }
 }
