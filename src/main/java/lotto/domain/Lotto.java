@@ -28,4 +28,8 @@ public class Lotto {
                 .collect(Collectors.toList())
                 .toString();
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
