@@ -1,12 +1,13 @@
-package lotto.domain;
-
-import java.util.Arrays;
-import java.util.List;
-
-public class NumberGenerator {
-    List<Integer> lottoNumber;
-
-    public NumberGenerator(){
-        this.lottoNumber = Arrays.asList(1,2,3,4,5,6);
-    }
-}
+//package lotto.domain;
+//
+//import camp.nextstep.edu.missionutils.Randoms;
+//
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.List;
+//
+//public class NumberGenerator {
+//    public List<Integer> getLottoNumber(){
+//        return Randoms.pickUniqueNumbersInRange(1, 45, 45);
+//    }
+//}
