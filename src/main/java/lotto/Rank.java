@@ -29,4 +29,8 @@ public class Rank {
         Lotto lotto = new Lotto(bonusNumberInList);
         lotto.isNumbersInRange(bonusNumberInList);
     }
+//
+//    public void run () {
+//        List<Lotto> userLotto = User.getUserLotto();
+//    }
 }

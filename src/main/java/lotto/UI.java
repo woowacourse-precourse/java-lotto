@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UI {
-    public static void setMoney() {
+    public static List<Lotto> getUserNumbers() {
         String money = Console.readLine();
         User user = new User(money);
+        return user.getUserLotto();
     }
 
     public static Lotto getLottoNumbers() {
