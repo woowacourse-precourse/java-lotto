@@ -10,6 +10,7 @@ public class InputView {
     public Money printLotoBuyMoney(){
         System.out.println(BUY_LOTTO_MESSAGE);
         Money money = new Money(readLine());
+        System.out.println();
         return money;
     }
 
