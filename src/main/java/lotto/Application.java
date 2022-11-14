@@ -5,12 +5,34 @@ import lotto.entity.Lotto;
 import lotto.exception.Bonus;
 import lotto.exception.InputNumbers;
 import lotto.exception.PurchaseAmount;
+import lotto.service.Calculator;
+import lotto.service.Converter;
+import lotto.service.LottoGenerator;
+import lotto.service.WinningDecision;
 
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try {
+            int purchaseAmount = askPurchaseAmount();
+            int purchaseCount = Calculator.getPurchaseCount(purchaseAmount);
+
+            List<Lotto> myLotto = LottoGenerator.generateMyLotto(purchaseCount);
+            showMyLottoNumbers(purchaseCount, myLotto);
+
+            String stringNumbers = askNumbers();
+            List<Integer> numbers = Converter.convertStringToNumbers(stringNumbers);
+            Lotto winningLotto = new Lotto(numbers);
+
+            int bonus = askBonus();
+            WinningDecision winningDecision = new WinningDecision(myLotto, winningLotto, bonus, purchaseAmount);
+            winningDecision.initMyPrizes();
+            winningDecision.setMyPrizes();
+            winningDecision.showWinningDecision();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static int askPurchaseAmount() {
