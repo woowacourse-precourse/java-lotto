@@ -27,12 +27,6 @@ public class Check {
         }
     }
 
-    public static void numberDuplicate(List<Integer> numbers, int number) {
-        if (numbers.contains(number)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + " 중복된 숫자는 잘못된 입력값 입니다.");
-        }
-    }
-
     public static void winningNumberCount(List<String> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 당첨번호 숫자는 6개를 입력해야 합니다.");
@@ -65,12 +59,6 @@ public class Check {
             if (Integer.parseInt(numbers.get(i)) < startNumber || Integer.parseInt(numbers.get(i)) > finishNumber) {
                 throw new IllegalArgumentException(ERROR_MESSAGE + " 범위를 벗어난 숫자입니다.");
             }
-        }
-    }
-
-    public static void rightRange(int number, int startNumber, int finishNumber) {
-        if (number < startNumber || number > finishNumber) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + " 범위를 벗어난 숫자입니다.");
         }
     }
 }
