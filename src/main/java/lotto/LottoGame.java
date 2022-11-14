@@ -11,6 +11,7 @@ public class LottoGame {
     private final ArrayList<Integer> winningNumber;
     private int bonusNumber;
     private ArrayList<Lotto> purchasedLotto;
+    private int inputMoney;
 
     public LottoGame() {
         machine = new LottoVendingMachine();
@@ -19,10 +20,7 @@ public class LottoGame {
     }
 
     public void start() {
-        System.out.println("구입금액을 입력해 주세요.");
-        String input = Console.readLine();
-        int inputMoney = Integer.parseInt(input);
-        purchasedLotto = machine.publishLotto(inputMoney);
+        buyLotto();
         printPurchasedLotto();
 
         System.out.println("당첨 번호를 입력해 주세요");
@@ -31,14 +29,10 @@ public class LottoGame {
 
         System.out.println("보너스 번호를 입력해 주세요");
         String bonusInput = Console.readLine();
-        bonusNumber = Integer.parseInt(bonusInput);
+        bonusNumber = checkInteger(bonusInput);
         checkBonus(bonusNumber);
 
-        int prize = checkPrize.getPrize(purchasedLotto, winningNumber, bonusNumber);
-        double earnRate = ((double) prize / inputMoney) * 100;
-        String rateFormat = "총 수익률은 %.2f% 입니다.";
-        String printRate = String.format(rateFormat, earnRate);
-        System.out.println(printRate);
+        printResult();
     }
 
     private void printPurchasedLotto() {
@@ -77,5 +71,33 @@ public class LottoGame {
             if(n == bonusNumber)
                 throw new IllegalArgumentException();
         }
+    }
+
+    // 돈을 입력받아 로또를 발행하는 함수
+    private void buyLotto() {
+        System.out.println("구입금액을 입력해 주세요.");
+        String input = Console.readLine();
+        inputMoney = checkInteger(input);
+        purchasedLotto = machine.publishLotto(inputMoney);
+    }
+
+    //입력이 정수인지 확인하는 함수
+    private int checkInteger(String moneyInput) {
+        for(int i=0; i<moneyInput.length(); i++) {
+            char digit = moneyInput.charAt(i);
+            if(!(digit >= '0' && digit <= '9')) {
+                throw new IllegalArgumentException("[ERROR]");
+            }
+        }
+
+        return Integer.parseInt(moneyInput);
+    }
+
+    private void printResult() {
+        int prize = checkPrize.getPrize(purchasedLotto, winningNumber, bonusNumber);
+        double earnRate = ((double) prize / inputMoney) * 100;
+        String rateFormat = "총 수익률은 %.1f%%입니다.";
+        String printRate = String.format(rateFormat, earnRate);
+        System.out.println(printRate);
     }
 }
