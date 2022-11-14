@@ -20,7 +20,9 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateNumbers(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private void validateNumbers(List<Integer> numbers) {
