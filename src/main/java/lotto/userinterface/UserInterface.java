@@ -2,15 +2,10 @@ package lotto.userinterface;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
-import lotto.MessageGenerator;
 import lotto.Util;
 import lotto.condition.Condition;
-import lotto.condition.lottonumber.IsAllNumberInRangeCond;
-import lotto.condition.lottonumber.NoDuplicateNumberCond;
-import lotto.condition.lottonumber.RightFormatCond;
-import lotto.condition.money.IsAllNumberCond;
-import lotto.condition.money.MinimumMoneyCond;
-import lotto.condition.money.MoneyDivisionCond;
+import lotto.condition.ConditionGenerator;
+import lotto.message.MessageGenerator;
 import lotto.validator.Validator;
 
 import java.util.List;
@@ -25,12 +20,7 @@ public class UserInterface {
 
     public static List<Integer> getLottoNumbers() {
         String input = getInput();
-
-        List<Condition> conditions = List.of(
-                RightFormatCond.getInstance(),
-                IsAllNumberInRangeCond.getInstance(),
-                NoDuplicateNumberCond.getInstance()
-        );
+        List<Condition> conditions = ConditionGenerator.getLottoNumberCondition();
 
         Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, input);
 
@@ -45,12 +35,7 @@ public class UserInterface {
 
     public static Integer getMoney() {
         String input = getInput();
-
-        List<Condition> conditions = List.of(
-                IsAllNumberCond.getInstance(),
-                MinimumMoneyCond.getInstance(),
-                MoneyDivisionCond.getInstance()
-        );
+        List<Condition> conditions = ConditionGenerator.getMoneyCondition();
 
         Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, input);
 
@@ -77,11 +62,7 @@ public class UserInterface {
 
     public static Integer getBonusNumber(List<Integer> answerNumbers) {
         String input = getInput();
-
-        List<Condition> conditions = List.of(
-                IsAllNumberInRangeCond.getInstance(),
-                NoDuplicateNumberCond.getInstance()
-        );
+        List<Condition> conditions = ConditionGenerator.getBonusNumberCondition();
 
         String numbers = getConcatenatedString(answerNumbers, input);
 
