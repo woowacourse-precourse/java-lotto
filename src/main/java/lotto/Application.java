@@ -47,6 +47,8 @@ public class Application {
 
             List<Integer> jackpot = jackpotUI();
 
+            int bonus = bonusUI(jackpot);
+
         } catch (IllegalArgumentException e) {
             System.out.println(Messages.EXCEPTION_HEADER.getMessage() + e.getMessage());
         }
@@ -107,5 +109,17 @@ public class Application {
         }
 
         return result;
+    }
+
+    private static int bonusUI(List<Integer> jackpot) {
+        System.out.println(Messages.BONUS.getMessage());
+        String bonusFigure = readLine();
+
+        validateBonusType(bonusFigure);
+
+        int bonus = Integer.parseInt(bonusFigure);
+        validateBonus(bonus, jackpot);
+
+        return bonus;
     }
 }
