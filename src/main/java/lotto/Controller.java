@@ -96,6 +96,7 @@ public class Controller {
 
         // 로또 발행 출력
         View.Output(inputLottoAmount);
+        View.Output(lottoCount+"개를 구매했습니다.");
         for (List<Integer> list : publishedLottoArray) {
             View.Output(list.toString());
         }
