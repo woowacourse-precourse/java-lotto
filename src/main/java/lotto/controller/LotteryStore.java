@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 public class LotteryStore {
+    private static final int ONE = 1;
     private static final int LIST_SIZE = 1024;
-    private static final int MAP_SIZE = 1024;
     private static final int WINNING_NUMBER_COUNT = 6;
     private static final int ZERO = 0;
     private static final int LOTTO_PRICE = 1000;
@@ -44,7 +44,8 @@ public class LotteryStore {
             throw new IllegalArgumentException(ERROR_LOTTO_COUNT);
         }
 
-        this.userInterface.printLotto(this.lottoCount, this.lottos);
+        ArrayList<ArrayList<Integer>> displayLottoNumbers = this.lottoCalculator.getDisplayLottoNumbers(this.lottos);
+        this.userInterface.printLotto(this.lottoCount, displayLottoNumbers);
     }
 
     public void inputWinningNumbers() {

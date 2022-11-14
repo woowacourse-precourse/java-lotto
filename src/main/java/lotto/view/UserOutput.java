@@ -4,6 +4,7 @@ import lotto.model.Lotto;
 import lotto.model.LottoRankingType;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -36,9 +37,9 @@ public class UserOutput {
         System.out.printf(OUTPUT_LOTTO_COUNT, lottoCount, System.lineSeparator());
     }
 
-    public void lottoNumbers(List<Lotto> lottos) {
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers());
+    public void lottoNumbers(ArrayList<ArrayList<Integer>> displayLottoNumbers) {
+        for (ArrayList<Integer> lottoNumbers : displayLottoNumbers) {
+            System.out.println(lottoNumbers);
         }
     }
 

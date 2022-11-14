@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoCalculator {
     private static final int MAP_SIZE = 1024;
+    private static final int LIST_SIZE = 1024;
+    private static final int LOTTO_NUMBER_COUNT = 6;
     private static final int ONE = 1;
     private static final int WIN_FIRST_COUNT = 6;
     private static final int WIN_THIRD_COUNT = 5;
@@ -20,6 +23,16 @@ public class LottoCalculator {
 
     public List<Integer> createLotto() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
+    public ArrayList<ArrayList<Integer>> getDisplayLottoNumbers(List<Lotto> lottos) {
+        ArrayList<ArrayList<Integer>> displayLottoNumbers = new ArrayList<>(LIST_SIZE);
+        for (Lotto lotto : lottos) {
+            ArrayList<Integer> numbers = new ArrayList<>(lotto.getNumbers());
+            bubbleSort(numbers);
+            displayLottoNumbers.add(numbers);
+        }
+        return displayLottoNumbers;
     }
 
     public Map<LottoRankingType, Integer> getRankings(List<Integer> numbers, int bonusNumber, List<Lotto> lottos) {
@@ -76,5 +89,22 @@ public class LottoCalculator {
             return LottoRankingType.SECOND_PLACE;
         }
         return LottoRankingType.THIRD_PLACE;
+    }
+
+    private void bubbleSort(List<Integer> numbers) {
+        for (int i = 1; i < numbers.size(); i++) {
+            for (int j = 0; j < numbers.size() - i; j++) {
+                swapNumber(numbers, j, j + ONE);
+            }
+        }
+    }
+
+    private void swapNumber(List<Integer> numbers, int thisIndex, int nextIndex) {
+        int thisNumber = numbers.get(thisIndex).intValue();
+        int nextNumber = numbers.get(nextIndex).intValue();
+        if (thisNumber > nextNumber) {
+            numbers.set(thisIndex, nextNumber);
+            numbers.set(nextIndex, thisNumber);
+        }
     }
 }

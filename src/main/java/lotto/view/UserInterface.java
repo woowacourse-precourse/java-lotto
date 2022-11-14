@@ -3,6 +3,7 @@ package lotto.view;
 import lotto.model.Lotto;
 import lotto.model.LottoRankingType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -26,9 +27,9 @@ public class UserInterface {
         return buyAmount / LOTTO_PRICE;
     }
 
-    public void printLotto(int lottoCount, List<Lotto> lottos) {
+    public void printLotto(int lottoCount, ArrayList<ArrayList<Integer>> displayLottoNumbers) {
         this.userOutput.lottoCount(lottoCount);
-        this.userOutput.lottoNumbers(lottos);
+        this.userOutput.lottoNumbers(displayLottoNumbers);
         this.userOutput.lineBreak();
     }
 
