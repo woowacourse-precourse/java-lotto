@@ -49,7 +49,7 @@ public class LottoKiosk {
 
     public void validateMoney() {
         if (this.money < 1000) {
-            throw new IllegalArgumentException(ErrorMessage.MORE_THAN_THOUSAND.message);
+            throw new IllegalArgumentException(ErrorMessage.LESS_THAN_THOUSAND.message);
         }
         if (this.money % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessage.DIVIDE_DISABLE.message);
