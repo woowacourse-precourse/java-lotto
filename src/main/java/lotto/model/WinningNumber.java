@@ -28,6 +28,10 @@ public class WinningNumber {
             winningNumber.add(number);
             lottoNumberSet.add(number);
         }
+        validateSet(lottoNumberSet);
+    }
+
+    public void validateSet(Set<Integer> lottoNumberSet) {
         try {
             if (lottoNumberSet.size() != LOTTO_LENGTH) {
                 throw new IllegalArgumentException();

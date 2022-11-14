@@ -9,11 +9,11 @@ import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
+    public static final String LOTTO_DELIMITER = ",";
     public static final int LOTTO_ONE_PRICE = 1000;
     public static final int LOTTO_NUMBER_MIN = 1;
     public static final int LOTTO_NUMBER_MAX = 45;
     public static final int LOTTO_LENGTH = 6;
-    public static final String LOTTO_DELIMITER = ",";
     public static final int LOTTO_FIRST_REWARD = 2000000000;
     public static final int LOTTO_SECOND_REWARD = 30000000;
     public static final int LOTTO_THIRD_REWARD = 15000000;
@@ -32,13 +32,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Set<Integer> numberSet = new HashSet<>();
-        for (int i : numbers) {
-            if ((i >= LOTTO_NUMBER_MIN && i <= LOTTO_NUMBER_MAX)) {
-                numberSet.add(i);
-            }
-        }
         try {
+            Set<Integer> numberSet = makeNumberSet(numbers);
             if (numbers.size() != LOTTO_LENGTH || numberSet.size() != LOTTO_LENGTH) {
                 throw new IllegalArgumentException();
             }
@@ -46,6 +41,17 @@ public class Lotto {
             LottoService.status = LottoService.ERROR_STATUS;
             OutputView.printError(INVALID_LOTTO_NUMBER_ERROR);
         }
+    }
+
+    private Set<Integer> makeNumberSet(List<Integer> numbers) {
+        Set<Integer> numberSet = new HashSet<>();
+        for (Integer number : numbers) {
+            if (!(number >= LOTTO_NUMBER_MIN && number <= LOTTO_NUMBER_MAX)) {
+                throw new IllegalArgumentException();
+            }
+            numberSet.add(number);
+        }
+        return numberSet;
     }
 
     public List<Integer> getNumbers() {
