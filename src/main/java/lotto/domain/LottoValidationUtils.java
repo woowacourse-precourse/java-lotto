@@ -12,7 +12,6 @@ public class LottoValidationUtils {
 
     public static final int CRITERION_LOTTO_SIZE = 6;
 
-
     private LottoValidationUtils() {
     }
 
