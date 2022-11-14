@@ -1,5 +1,6 @@
-package lotto.util;
+package lotto;
 
+import lotto.util.InputValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
