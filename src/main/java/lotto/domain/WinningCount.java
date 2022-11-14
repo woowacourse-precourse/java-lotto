@@ -21,13 +21,13 @@ public class WinningCount {
         return count;
     }
 
-    public void addWinningResult(String str, boolean bonusCheck) {
-        if (bonusCheck && str == "5") {
+    public void addWinningResult(String result, boolean bonusCheck) {
+        if (bonusCheck && result == "5") {
             count.put("bonus", count.get("bonus") + 1);
             return;
         }
-        if (count.containsKey(str)) {
-            count.put(str, count.get(str) + 1);
+        if (count.containsKey(result)) {
+            count.put(result, count.get(result) + 1);
         }
 
     }
@@ -40,7 +40,7 @@ public class WinningCount {
         return profitSum;
     }
 
-    private int calculateProfit(int profitSum, String profit) {
+    public int calculateProfit(int profitSum, String profit) {
         if (profit == Constant.FIFTH_PLACE) {
             profitSum += Constant.FIFTH_PLACE_PRIZE * count.get(Constant.FIFTH_PLACE);
         }

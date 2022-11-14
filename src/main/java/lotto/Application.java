@@ -7,6 +7,7 @@ public class Application {
         try{
             controller.buyLotto();
             controller.inputNumber();
+            controller.winningStatics();
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }

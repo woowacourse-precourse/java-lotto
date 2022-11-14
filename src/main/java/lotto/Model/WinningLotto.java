@@ -38,6 +38,7 @@ public class WinningLotto {
         for (String winningNumber : winningNumbers) {
             winningLotto.add(Integer.parseInt(winningNumber));
         }
+        this.winningNumbers = new Lotto(winningLotto);
     }
 
     private String[] parsingWinningNumber(String number) {
