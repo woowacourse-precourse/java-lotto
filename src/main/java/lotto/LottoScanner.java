@@ -28,6 +28,21 @@ public class LottoScanner {
         return money;
     }
 
+    public static WinningNumber readWinningNumber() {
+        List<Integer> numbers = readSixWinningNumbers();
+        int bonusNumber = readBonusNumber();
+        return new WinningNumber(numbers, bonusNumber);
+    }
+
+    private static List<Integer> readSixWinningNumbers() {
+        System.out.println(READ_WINNING_NUMBER_PROMPT);
+        List<Integer> numbers = Arrays.stream(Console.readLine().split(LOTTO_NUM_DELIMITER))
+                .mapToInt(LottoScanner::parseIntOrThrowException)
+                .boxed()
+                .collect(Collectors.toList());
+        return numbers;
+    }
+
     private static Integer parseIntOrThrowException(String number) {
         try {
             return Integer.parseInt(number);
@@ -36,15 +51,10 @@ public class LottoScanner {
         }
     }
 
-    public static WinningNumber readWinningNumber() {
-        System.out.println(READ_WINNING_NUMBER_PROMPT);
-        List<Integer> numbers = Arrays.stream(Console.readLine().split(LOTTO_NUM_DELIMITER))
-                .mapToInt(LottoScanner::parseIntOrThrowException)
-                .boxed()
-                .collect(Collectors.toList());
 
+    private static int readBonusNumber() {
         System.out.println(READ_BONUS_NUMBER_PROMPT);
-        int bonusNumber = Integer.parseInt(Console.readLine());
-        return new WinningNumber(numbers, bonusNumber);
+        return Integer.parseInt(Console.readLine());
     }
+
 }

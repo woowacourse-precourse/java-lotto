@@ -53,7 +53,7 @@ public class LottoScannerTest {
         @Test
         public void throwExceptionWhenOtherCharacterExists() {
             assertThatThrownBy(()-> {
-                run("12.23,4,2,5,6", "8");
+                run("12.23,4,2,5,6");
             }).isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(LottoScanner.DO_NOT_INCLUDE_NUMERIC_VALUE);
         }
