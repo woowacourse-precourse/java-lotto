@@ -20,12 +20,13 @@ public class LottoController {
         this.countLotto = countLotto;
     }
 
-    public void run() {
+    public List<Lotto> run() {
         for (int i = 0; i < countLotto; i++) {
             createLotto();
         }
         LottoView viewingLotto = viewLotto();
         viewingLotto.show();
+        return lottoService.findLottos();
     }
 
     private void createLotto() {

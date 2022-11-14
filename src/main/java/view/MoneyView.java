@@ -8,6 +8,7 @@ public class MoneyView {
     public Money show() {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
+        System.out.println();
         validate(money);
         return new Money(Integer.parseInt(money));
     }
