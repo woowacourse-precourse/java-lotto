@@ -3,6 +3,7 @@ package lotto.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.Prize;
+import lotto.domain.Ticket;
 import lotto.view.OutputView;
 
 import java.util.*;
@@ -54,4 +55,23 @@ public class LottoGameService {
         prizeCountMap.put(prize, count+1);
     }
 
+    public void calculateProfitPercent(Map<Prize, Integer> prizeCntMap, int ticketCnt) {
+        int totalReward = 0;
+        for (Map.Entry<Prize, Integer> prizeEntry: prizeCntMap.entrySet()) {
+            totalReward = plusEachReward(totalReward, prizeEntry);
+        }
+        double profitPercent = divideTotalRewardIntoPayMoney(totalReward, ticketCnt);
+        OutputView.printProfitPercent(profitPercent);
+    }
+
+    private int plusEachReward(int totalReward, Map.Entry<Prize, Integer> prizeEntry) {
+        int count = prizeEntry.getValue();
+        totalReward += prizeEntry.getKey().reward() * count;
+        return totalReward;
+    }
+
+    private double divideTotalRewardIntoPayMoney(int totalReward, int ticketCnt) {
+        int price = new Ticket().getPRICE();
+        return (double) totalReward / (ticketCnt * price);
+    }
 }

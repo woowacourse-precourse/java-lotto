@@ -7,4 +7,8 @@ public class Ticket {
     public int count(int money) {
         return money/PRICE;
     }
+
+    public int getPRICE() {
+        return PRICE;
+    }
 }

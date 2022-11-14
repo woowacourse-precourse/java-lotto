@@ -27,6 +27,7 @@ public class LottoGameController {
     private void giveStatistics(List<Lotto> lottoList, Lotto winningNumbers, int bonusNumber) {
         Map<Prize, Integer> prizeCntMap = lottoGameService.compareWinningLotto(lottoList, winningNumbers, bonusNumber);
         OutputView.printWinningHistory(prizeCntMap);
+        lottoGameService.calculateProfitPercent(prizeCntMap, lottoList.size());
     }
 
 
