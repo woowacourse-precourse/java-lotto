@@ -79,4 +79,13 @@ class LottoTest {
 		).isInstanceOf(IllegalArgumentException.class);
 	}
 
+	@DisplayName("보너스번호 또한, 1부터 45 이내의 숫자여야만 한다.")
+	@Test
+	void inputWinningLottoBonusNumberRange(){
+		assertThatThrownBy(
+			() -> Exception.validateLottoNumberRange("46")
+		).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	
 }
