@@ -50,6 +50,7 @@ public class Application {
         return money;
     }
 
+
     public static int getPurchaseNum(int inputMoney) {
         return inputMoney / 1000;
     }
@@ -86,10 +87,14 @@ public class Application {
         }
 
         if (bonus < 1 || bonus > 45) throw new IllegalArgumentException("[ERROR]Bonus input error");
-        if (winningLotto.getElements().contains(bonus))
-            throw new IllegalArgumentException("[ERROR]Bonus input error");
+        isBonusNotDuplicated(winningLotto, bonus);
 
         return bonus;
+    }
+
+    public static void isBonusNotDuplicated(Lotto winningLotto, int bonus) {
+        if (winningLotto.getElements().contains(bonus))
+            throw new IllegalArgumentException("[ERROR]Bonus input error");
     }
 
     public static List<Lotto> purchaseLotto(int purchaseNum) {
