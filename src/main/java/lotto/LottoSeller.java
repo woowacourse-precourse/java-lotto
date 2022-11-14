@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -35,6 +36,14 @@ public class LottoSeller {
             Lotto lotto = new Lotto(randomNumber);
 
             bundle.add(lotto);
+        }
+    }
+
+    void showBundle() {
+        for (int index = 0; index < bundle.size(); index++) {
+            List<Lotto> bundleCopy = new ArrayList<Lotto>(bundle);
+
+            bundleCopy.get(index).showLotto();;
         }
     }
 }
