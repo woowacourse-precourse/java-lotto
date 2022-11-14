@@ -18,7 +18,7 @@
     - [x] 로또 티켓 생성 기능
     - [x] User의 구매 금액 만큼 로또 사기
 - [x] 구매 로또 출력 (`OutputView`)
-- [ ] `UserController` 의 로또 구매 부분 구현
+- [x] `UserController` 의 로또 구매 부분 구현
 
 ## 로또 추첨
 - [ ] `Lotto` 를 상속받은 `LotteryWinningNumber` 클래스 구현
