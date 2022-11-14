@@ -17,6 +17,7 @@ public class Application {
         List<List<Integer>> buyLottoPrint = buyLottoPrint(buyMoney);
         Lotto myLottoNum = myLottoNum();
         int bonusNum = bonusNum(myLottoNum);
+        int lottoStart = lottoStart(lottoRandomNum, myLottoNum);
 
     }
 
@@ -146,12 +147,12 @@ public class Application {
      * @param myLottoNum
      * @return
      */
-    public static int lottoStart(List<Integer> lottoRandomNum, List<Integer> myLottoNum) {
+    public static int lottoStart(List<Integer> lottoRandomNum, Lotto myLottoNum) {
 
         int agreementCount = 0;
 
         for (int i = 0; i < lottoRandomNum.size(); i++) {
-            if (myLottoNum.contains(lottoRandomNum.get(i))) {
+            if (((List<Integer>) myLottoNum).contains(lottoRandomNum.get(i))) {
                 agreementCount++;
             }
         }
