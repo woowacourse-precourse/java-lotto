@@ -7,7 +7,7 @@ public enum Error {
     NOT_DIVISIBLE_BY_THOUSAND("금액은 1,000원으로 나누어 떨어져야 합니다."),
     NOT_NUMERIC("입력값은 숫자이어야 합니다.");
 
-    private String message;
+    private final String message;
 
     Error(String message) {
         this.message = "[ERROR] " + message;
