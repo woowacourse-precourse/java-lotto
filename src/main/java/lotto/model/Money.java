@@ -1,4 +1,6 @@
-package lotto;
+package lotto.model;
+
+import lotto.message.PrintError;
 
 public class Money {
     private final int number;
