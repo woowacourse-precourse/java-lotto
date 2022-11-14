@@ -3,6 +3,18 @@ package lotto.domain;
 import java.util.*;
 
 public class LottoProcess {
+    final int START_COUNT = 0;
+    final int SIX_CORRECT = 6;
+    static final int FIVE_CORRECT = 5;
+    static final int FOUR_CORRECT = 4;
+    static final int THREE_CORRECT = 3;
+    static final int FIRST = 1;
+    static final int SECOND = 2;
+    static final int THIRD = 3;
+    static final int FOURTH = 4;
+    static final int FIFTH = 5;
+    static final int REST = 6;
+
     private final List<List<Integer>> lottos;
     private final List<Integer>winningNumbers;
     private final int bonusNumber;
@@ -16,7 +28,7 @@ public class LottoProcess {
     }
 
     public int compareWinningNumbers(List<Integer> lotto, List<Integer> winningNumbers){
-        int countMachingNumber=0;
+        int countMachingNumber=START_COUNT;
 
         for(int number : lotto){
             if(winningNumbers.contains(number)) countMachingNumber++;
@@ -36,21 +48,21 @@ public class LottoProcess {
     }
 
     public int decideRank(int countMachingNumber, List<Integer> lotto){
-        if(countMachingNumber == 6) return 1;
-        if(countMachingNumber == 5 && lotto.contains(bonusNumber)) return 2;
-        if(countMachingNumber == 5) return 3;
-        if(countMachingNumber == 4) return 4;
-        if(countMachingNumber == 3) return 5;
-        return 6;
+        if(countMachingNumber == SIX_CORRECT) return FIRST;
+        if(countMachingNumber == FIVE_CORRECT && lotto.contains(bonusNumber)) return SECOND;
+        if(countMachingNumber == FIVE_CORRECT) return THIRD;
+        if(countMachingNumber == FOUR_CORRECT) return FOURTH;
+        if(countMachingNumber == THREE_CORRECT) return FIFTH;
+        return REST;
     }
 
     public Map<String, Integer> countRanks(List<Integer> ranks){
         Map<String, Integer> ranking = new HashMap<>();
-        ranking.put("FIRST", Collections.frequency(ranks,1));
-        ranking.put("SECOND", Collections.frequency(ranks,2));
-        ranking.put("THIRD", Collections.frequency(ranks,3));
-        ranking.put("FOURTH", Collections.frequency(ranks,4));
-        ranking.put("FIFTH", Collections.frequency(ranks,5));
+        ranking.put("FIRST", Collections.frequency(ranks,FIRST));
+        ranking.put("SECOND", Collections.frequency(ranks,SECOND));
+        ranking.put("THIRD", Collections.frequency(ranks,THIRD));
+        ranking.put("FOURTH", Collections.frequency(ranks,FOURTH));
+        ranking.put("FIFTH", Collections.frequency(ranks,FIFTH));
 
         return ranking;
     }
