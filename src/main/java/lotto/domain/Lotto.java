@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.validation.Validator;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,9 +22,8 @@ public class Lotto {
         Validator.validateNumbersRange(numbers, LOTTO_START_RANGE, LOTTO_END_RANGE);
     }
 
-    public String getNumbersString() {
-        Collections.sort(numbers);
-        return numbers.toString();
+    public List<Integer> getNumbers() {
+        return new ArrayList<>(numbers);
     }
 
     public boolean contains(int number){

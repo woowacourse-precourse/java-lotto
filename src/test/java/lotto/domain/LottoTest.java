@@ -55,22 +55,6 @@ class LottoTest {
         }
     }
 
-    @Nested
-    @DisplayName("로또 번호 String화 로직 검증")
-    class LottoToString{
-
-        @Test
-        @DisplayName("정렬 검증 [6,3,4,1,2,5] -> \"[1, 2, 3, 4, 5, 6]\"")
-        void 로또_번호_정렬_검증(){
-            // given
-            List<Integer> integers = Arrays.asList(6, 3, 4, 1, 2, 5);
-            // when
-            Lotto lotto = new Lotto(integers);
-            String result = lotto.getNumbersString();
-            // then
-            assertThat(result).isEqualTo("[1, 2, 3, 4, 5, 6]");
-        }
-    }
 
     @Nested
     @DisplayName("당첨 번호와 비교해서 몇 등인지 출력하는 로직 검증")

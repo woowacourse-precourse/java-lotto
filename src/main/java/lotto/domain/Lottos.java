@@ -1,9 +1,6 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static lotto.util.Constants.*;
 
@@ -17,10 +14,16 @@ public class Lottos {
     public String getLottosString() {
         StringBuilder sb = new StringBuilder();
         for (Lotto lotto : lottos) {
-            sb.append(lotto.getNumbersString());
+            sb.append(getLottoSortedNumbersString(lotto));
             sb.append(RESULT_SEPARATOR);
         }
         return sb.toString().trim();
+    }
+
+    private String getLottoSortedNumbersString(Lotto lotto){
+        List<Integer> numbers = lotto.getNumbers();
+        Collections.sort(numbers);
+        return numbers.toString();
     }
 
     public Map<RankingType, Integer> getRankingTypeCounts(WinningLotto winningNumber) {
