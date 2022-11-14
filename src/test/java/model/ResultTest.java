@@ -3,7 +3,7 @@ package model;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -43,5 +43,19 @@ class ResultTest {
         Result result = Result.getResult(coincideCount, bonus);
         //then
         assertThat(result).isEqualTo(Result.LOST);
+    }
+
+    @Test
+    @DisplayName("[Result] Lost(낙첨)없이 Result 리스트 가져오는지 테스트")
+    void getResultWithoutLost() {
+        //given
+        //when
+        List<Result> resultsWithoutLost = Result.getResultsWithoutLost();
+        //then
+        assertThat(resultsWithoutLost.get(0)).isEqualTo(Result.THREE);
+        assertThat(resultsWithoutLost.get(1)).isEqualTo(Result.FOUR);
+        assertThat(resultsWithoutLost.get(2)).isEqualTo(Result.FIVE);
+        assertThat(resultsWithoutLost.get(3)).isEqualTo(Result.FIVE_BONUS);
+        assertThat(resultsWithoutLost.get(4)).isEqualTo(Result.SIX);
     }
 }
