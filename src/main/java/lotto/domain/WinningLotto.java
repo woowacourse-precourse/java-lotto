@@ -17,16 +17,8 @@ final class WinningLotto {
     }
 
     public LottoResult getResult(Lotto other) {
-        if (isFiveAndBonusCorrect(other)) {
-            return LottoResult.FIVE_BONUS_CORRECT;
-        }
-        return LottoResult.from(lotto.getScore(other));
-    }
-
-    private boolean isFiveAndBonusCorrect(Lotto other) {
-        if (lotto.getScore(other) != 5) {
-            return false;
-        }
-        return other.contains(bonusNumber);
+        LottoSameCount lottoSameCount = LottoSameCount.from(lotto.getScore(other));
+        LottoContainBonus lottoContainBonus = LottoContainBonus.from(other.contains(bonusNumber));
+        return new LottoResult(lottoSameCount, lottoContainBonus);
     }
 }

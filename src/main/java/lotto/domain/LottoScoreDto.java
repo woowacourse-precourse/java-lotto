@@ -1,40 +1,57 @@
 package lotto.domain;
 
+import java.util.Map;
+
 public final class LottoScoreDto {
-    private final int three;
-    private final int four;
-    private final int five;
-    private final int fiveBonus;
-    private final int six;
+    private final Map<LottoPrize, Integer> prizeCount;
     private final double rate;
 
-    public LottoScoreDto(int three, int four, int five, int fiveBonus, int six, double rate) {
-        this.three = three;
-        this.four = four;
-        this.five = five;
-        this.fiveBonus = fiveBonus;
-        this.six = six;
+    public LottoScoreDto(Map<LottoPrize, Integer> prizeCount, double rate) {
+        validate(prizeCount);
+        this.prizeCount = prizeCount;
         this.rate = rate;
     }
 
-    public int getThree() {
-        return three;
+    private void validate(Map<LottoPrize, Integer> prizeCount) {
+        //todo: 메시지 작성
+        if (prizeCount == null) {
+            throw new IllegalArgumentException();
+        }
+        if (prizeCount.get(LottoPrize.FIRST_PRIZE) == null) {
+            throw new IllegalArgumentException();
+        }
+        if (prizeCount.get(LottoPrize.SECOND_PRIZE) == null) {
+            throw new IllegalArgumentException();
+        }
+        if (prizeCount.get(LottoPrize.THIRD_PRIZE) == null) {
+            throw new IllegalArgumentException();
+        }
+        if (prizeCount.get(LottoPrize.FOURTH_PRIZE) == null) {
+            throw new IllegalArgumentException();
+        }
+        if (prizeCount.get(LottoPrize.FIFTH_PRIZE) == null) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public int getFour() {
-        return four;
+    public int fifthPrizeCount() {
+        return prizeCount.get(LottoPrize.FIFTH_PRIZE);
     }
 
-    public int getFive() {
-        return five;
+    public int fourthPrizeCount() {
+        return prizeCount.get(LottoPrize.FOURTH_PRIZE);
     }
 
-    public int getFiveBonus() {
-        return fiveBonus;
+    public int thirdPrizeCount() {
+        return prizeCount.get(LottoPrize.THIRD_PRIZE);
     }
 
-    public int getSix() {
-        return six;
+    public int secondPrizeCount() {
+        return prizeCount.get(LottoPrize.SECOND_PRIZE);
+    }
+
+    public int firstPrizeCount() {
+        return prizeCount.get(LottoPrize.FIRST_PRIZE);
     }
 
     public double getRate() {

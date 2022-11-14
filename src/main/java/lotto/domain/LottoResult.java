@@ -1,33 +1,56 @@
 package lotto.domain;
 
-import java.util.Arrays;
+final class LottoResult {
+    private final LottoSameCount sameCount;
+    private final LottoContainBonus containBonus;
 
-enum LottoResult {
-    ZERO_CORRECT(0, 0),
-    ONE_CORRECT(1, 0),
-    TWO_CORRECT(2, 0),
-    THREE_CORRECT(3, 5_000),
-    FOUR_CORRECT(4, 50_000),
-    FIVE_CORRECT(5, 1_500_000),
-    SIX_CORRECT(6, 2_000_000_000),
-    FIVE_BONUS_CORRECT(-1, 30_000_000);
-    private final int value;
-    private final int money;
-
-    LottoResult(int value, int money) {
-        this.value = value;
-        this.money = money;
+    public LottoResult(LottoSameCount sameCount, LottoContainBonus containBonus) {
+        this.sameCount = sameCount;
+        this.containBonus = containBonus;
     }
 
-    public static LottoResult from(int value) {
-        return Arrays.stream(LottoResult.values())
-                .filter(it -> it.value == value)
-                .filter(it -> it.value >= 0)
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+    public boolean isFirstPrize() {
+        return sameCount == LottoSameCount.SIX_SAME;
     }
 
-    public int money() {
-        return money;
+    public boolean isSecondPrize() {
+        return sameCount == LottoSameCount.FIVE_SAME && containBonus == LottoContainBonus.CONTAIN;
+    }
+
+    public boolean isThirdPrize() {
+        return sameCount == LottoSameCount.FIVE_SAME && containBonus == LottoContainBonus.NOT_CONTAIN;
+    }
+
+    public boolean isFourthPrize() {
+        return sameCount == LottoSameCount.FOUR_SAME;
+    }
+
+    public boolean isFifthPrize() {
+        return sameCount == LottoSameCount.THREE_SAME;
+    }
+
+    public LottoPrize calculatePrize() {
+        if (isFirstPrize()) {
+            return LottoPrize.FIRST_PRIZE;
+        }
+        if (isSecondPrize()) {
+            return LottoPrize.SECOND_PRIZE;
+        }
+        if (isThirdPrize()) {
+            return LottoPrize.THIRD_PRIZE;
+        }
+        if (isFourthPrize()) {
+            return LottoPrize.FOURTH_PRIZE;
+        }
+        if (isFifthPrize()) {
+            return LottoPrize.FIFTH_PRIZE;
+        }
+        return LottoPrize.ZERO;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other instanceof LottoResult &&
+                calculatePrize() == ((LottoResult) other).calculatePrize();
     }
 }

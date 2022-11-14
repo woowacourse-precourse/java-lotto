@@ -59,11 +59,11 @@ public final class OutputView {
     public void printStatistic(LottoScoreDto scoreDto) {
         outputHandler.println(STATISTIC_TITLE);
         outputHandler.println(LINE_FEED);
-        outputHandler.printf(THREE_CORRECT, scoreDto.getThree());
-        outputHandler.printf(FOUR_CORRECT, scoreDto.getFour());
-        outputHandler.printf(FIVE_CORRECT, scoreDto.getFive());
-        outputHandler.printf(FIVE_BONUS_CORRECT, scoreDto.getFiveBonus());
-        outputHandler.printf(SIX_CORRECT, scoreDto.getSix());
+        outputHandler.printf(THREE_CORRECT, scoreDto.fifthPrizeCount());
+        outputHandler.printf(FOUR_CORRECT, scoreDto.fourthPrizeCount());
+        outputHandler.printf(FIVE_CORRECT, scoreDto.thirdPrizeCount());
+        outputHandler.printf(FIVE_BONUS_CORRECT, scoreDto.secondPrizeCount());
+        outputHandler.printf(SIX_CORRECT, scoreDto.firstPrizeCount());
         outputHandler.printf(RATE, scoreDto.getRate());
     }
 }
