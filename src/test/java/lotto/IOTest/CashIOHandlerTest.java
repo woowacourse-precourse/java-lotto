@@ -1,7 +1,7 @@
 package lotto.IOTest;
 
 import lotto.IO.CashIOHandler;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +10,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CashIOHandlerTest extends IOTest {
     private  static CashIOHandler cashier;
-    @BeforeAll
-    static void initAll(){
+    @BeforeEach
+    void initAll(){
         cashier = new CashIOHandler();
     }
     @DisplayName("사용자의 입력이 제대로 입력되는지")
@@ -19,9 +19,6 @@ public class CashIOHandlerTest extends IOTest {
     void getUserInputTest(){
         systemIn("1124124");
         assertThat(cashier.getUserInput()).isEqualTo("1124124");
-
-        systemIn("168,219,000");
-        assertThat(cashier.getUserInput()).isEqualTo("168219000");
     }
 
     @DisplayName(",000 입력에 대한 예외 처리가 되는지")

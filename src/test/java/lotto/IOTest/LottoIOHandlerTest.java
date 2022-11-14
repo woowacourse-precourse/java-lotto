@@ -39,7 +39,7 @@ public class LottoIOHandlerTest extends IOTest {
         String input = "123456";
         assertThatThrownBy(() -> lottoIOHandler.validateInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] ',' 구분자를 통해 1~45사이의 수 6개를 입력해주세요");
+                .hasMessageContaining("[ERROR] , 구분자를 통해 1~45사이의 수 6개를 입력해주세요");
     }
 
     @DisplayName("수익률 처리 검증")
