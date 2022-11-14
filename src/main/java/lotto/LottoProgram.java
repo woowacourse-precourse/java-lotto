@@ -18,6 +18,11 @@ public class LottoProgram {
 	int count = 0;
 	int bonusNum;
 
+	public int countLotto(String price) {
+		int count = conversion(price);
+		return count / Constants.DIVIDE;
+	}
+
 	public int conversion(String input) {
 		return Integer.parseInt(input);
 	}
