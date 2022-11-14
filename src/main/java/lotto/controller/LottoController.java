@@ -51,7 +51,7 @@ public class LottoController {
     }
 
     private void showProfit() {
-        profit = new Profit(price.price);
-        OutputView.printProfitRate(profit.profitRate);
+        profit = new Profit(price.price, winningResult);
+        OutputView.printProfitRate(Profit.profitRate);
     }
 }

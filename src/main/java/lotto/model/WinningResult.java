@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinningResult {
-    public static List<Integer> winningResult = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+    public List<Integer> winningResult = new ArrayList<>(List.of(0, 0, 0, 0, 0));
 
     public WinningResult(int ticketAmount, Lottos lottos) {
         checkWinning(ticketAmount, lottos);
