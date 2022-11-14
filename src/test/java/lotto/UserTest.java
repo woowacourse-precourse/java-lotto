@@ -15,5 +15,11 @@ public class UserTest {
         assertThatThrownBy(() -> new User("ABC"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    
+
+    @DisplayName("숫자가 아닌 것을 입력하면 예외가 발생한다.")
+    @Test
+    void inputByNotDividedBy1000() {
+        assertThatThrownBy(() -> new User("15001"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
