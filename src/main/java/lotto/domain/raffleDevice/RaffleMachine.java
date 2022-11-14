@@ -54,7 +54,7 @@ public class RaffleMachine {
     private Rank getRank(int normalNumberCount, int bonusNumberCount) {
         Rank[] ranks = Rank.values();
         for (Rank rank : ranks) {
-            if (bonusNumberCount == 1 && rank.getNormalNumbers() == normalNumberCount) {
+            if (bonusNumberCount == 1 && Rank.SECOND.getNormalNumbers() == normalNumberCount) {
                 return Rank.SECOND;
             }
             if (rank.getNormalNumbers() == normalNumberCount) {

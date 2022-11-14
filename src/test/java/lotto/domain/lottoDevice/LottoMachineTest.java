@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lottoDevice;
 
 import lotto.domain.lottoData.Lotto;
 import lotto.domain.lottoDevice.LottoMachine;
