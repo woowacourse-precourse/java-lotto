@@ -1,8 +1,10 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static lotto.util.LottoCode.*;
 
@@ -67,4 +69,25 @@ public class Validation {
         return numbers.contains(bonusNumber);
     }
 
+    public void validateResultNumbers(String result) {
+        List<Integer> numbers = separateNumbers(result);
+
+        if (isOutOfRangeNumbers(numbers)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (isDuplicate(numbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private List<Integer> separateNumbers(String result) {
+        try {
+            return Arrays.stream(result.split(","))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

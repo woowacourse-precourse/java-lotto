@@ -53,6 +53,7 @@ public class GameManager {
     private List<Integer> getResultNumbers() {
         Printer.printInfoInputResult();
         String result = Console.readLine();
+        validation.validateResultNumbers(result);
 
         return Arrays.stream(result.split(","))
                 .map(Integer::parseInt)
