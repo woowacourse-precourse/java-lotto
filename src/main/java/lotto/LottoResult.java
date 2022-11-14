@@ -11,6 +11,8 @@ public class LottoResult {
     private Integer fiveCount = 0;
     private Integer fiveAndBonusCount = 0;
     private Integer sixCount = 0;
+    private Integer totalPrize = 0;
+    private Double yield;
 
     public LottoResult(List<Lotto> lottoList, WinningLottoNumber winningLottoNumber) {
         this.lottoList = lottoList;
@@ -41,6 +43,13 @@ public class LottoResult {
                 threeCount++;
             }
         }
+        setTotalPrize();
+        yieldCalculation();
+    }
+
+    private void setTotalPrize() {
+        this.totalPrize = (sixCount * 2000000000) + (fiveAndBonusCount * 30000000)
+                + (fiveCount * 1500000) + (fourCount * 50000) + (threeCount * 5000);
     }
 
     public void getWinningResult(){
@@ -52,5 +61,11 @@ public class LottoResult {
         System.out.println("5개 일치 (1,500,000원) - " + fiveCount + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + fiveAndBonusCount + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + sixCount + "개");
+        System.out.println();
+        System.out.println("총 수익률은 " + (double)Math.round(yield*100)/100 + "%입니다.");
+    }
+
+    private void yieldCalculation(){
+        yield = (double)totalPrize / (lottoList.size() * 10);
     }
 }
