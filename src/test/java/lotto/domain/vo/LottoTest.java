@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.vo;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,8 +28,7 @@ class LottoTest {
     }
 
     @Test
-    @DisplayName("로또 번호의 개수가 6개가 아닌 값 예외 메세지 확인.")
-    public void createLottoByOverSizeCheckMessage() {
+    public void validateSixDigits_1234566_NOTSIXDIGITS() {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             new Lotto(List.of(1, 2, 3, 4, 5, 6, 7));
         });
@@ -37,8 +36,7 @@ class LottoTest {
     }
 
     @Test
-    @DisplayName("로또 번호의 중복 예외 메세지 확인.")
-    public void duplicatedNumber_exception_message_test() {
+    public void validateDuplicate_123455_NOTDUPLICATE() {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             new Lotto(List.of(1, 2, 3, 4, 5, 5));
         });
@@ -47,7 +45,7 @@ class LottoTest {
 
     @Test
     @DisplayName("로또 번호의 숫자 범위 예외 메세지 확인.")
-    public void outOfRangeNumber_exception_message_test() {
+    public void validateRange_0or46_NOTINRANGE() {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             new Lotto(List.of(0, 2, 3, 4, 5, 45));
         });
