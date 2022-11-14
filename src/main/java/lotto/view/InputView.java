@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.LottoPurchasingMoney;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,16 +13,13 @@ import java.util.stream.Collectors;
 public class InputView {
     public static int lottoPurchaseMoney = 0;
     public final int PRICE_PER_LOTTO = 1000;
+    private final String COMMA = ",";
+
+
+    private LottoPurchasingMoney lottoPurchasingMoney;
 
     public List<Integer> lottoResult = Arrays.asList(0,0,0,0,0);
     public List<List<Integer>> allLottoNumber = new ArrayList<>();
-
-
-    public void validateMoneyInput(int money) {
-        if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 로또를 구매하시려면 천원 단위의 금액만 가능합니다.");
-        }
-    }
 
     /*
     inputView 에 존재하여야 하는 메소드
@@ -31,7 +29,7 @@ public class InputView {
      */
     public int inputLottoPurchaseMoney() {
         lottoPurchaseMoney = Integer.parseInt(Console.readLine());
-        validateMoneyInput(lottoPurchaseMoney);
+        lottoPurchasingMoney.validateMoneyInput(lottoPurchaseMoney);
         return lottoPurchaseMoney;
     }
 
@@ -44,7 +42,7 @@ public class InputView {
     public List<Integer> createWinningNumber() {
         String inputNumbers = Console.readLine();
         List<Integer> winningNumbers = new ArrayList<>();
-        for (String value : inputNumbers.split(",")) {
+        for (String value : inputNumbers.split(COMMA)) {
             winningNumbers.add(Integer.parseInt(value));
         }
         return winningNumbers;
@@ -71,6 +69,9 @@ public class InputView {
     }
 
     // 로또 번호, 당첨 번호, 보너스 번호를 입력받아 등수를 확인함
+
+    // getter는 불가피 할떄 말고 쓸일이 없다.
+    // 이 함수가 하는 일은 로또 번호를 받아서 당첨번호를 비교하는 거라서, winningNumbers 클래스에 있어야한다.
     public void compareWinningNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers, int bonusNumber) {
         if(lottoNumbers.contains(bonusNumber)){
             List <Integer> result = lottoNumbers.stream()
