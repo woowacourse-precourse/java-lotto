@@ -8,6 +8,7 @@ import static camp.nextstep.edu.missionutils.Console.*;
 public class UI {
     private int cost;
     private List<Integer> winningNumbers;
+    private int bonus;
 
     public UI() {
         this.winningNumbers = new ArrayList<>();
@@ -21,6 +22,10 @@ public class UI {
         return winningNumbers;
     }
 
+    public int getBonus() {
+        return bonus;
+    }
+
     public void inputCost() {
         System.out.println("구입 금액을 입력해 주세요.");
         this.cost = Integer.parseInt(readLine());
@@ -32,5 +37,10 @@ public class UI {
         for (int i = 0; i < winning.length; i++) {
             winningNumbers.add(Integer.parseInt(winning[i]));
         }
+    }
+
+    public void inputBonus() {
+        System.out.println("보너스 번호를 입력해 주세요");
+        this.bonus = Integer.parseInt(readLine());
     }
 }
