@@ -12,60 +12,43 @@ public class UI {
     private static final String BONUS_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
     private LottoLogic lottoLogic;
 
-    public UI() {
-        String money = moneyInput();
-        setMoney(money);
-
-        printNumberOfLotto();
-        printLottoNumber();
-
-        List<String> prizeNumbers = prizeNumbersInput();
-        setPrizeNumbers(prizeNumbers);
-        String bonusNumber = bonusNumberInput();
-        setBonusNumber(bonusNumber);
-
-        printLottoResult();
-    }
-
-    private String moneyInput() {
+    public String moneyInput() {
         System.out.println(MONEY_INPUT_MESSAGE);
-        String moneyInput = Console.readLine();
-        return moneyInput;
+        return Console.readLine();
     }
 
-    private void setMoney(String moneyInput){
+    public void lottoByMoney(String moneyInput) {
         Validation.validateMoneyInput(moneyInput);
         lottoLogic = new LottoLogic(Integer.parseInt(moneyInput));
     }
 
-    private void printNumberOfLotto() {
+    public void printNumberOfLotto() {
         System.out.println(this.lottoLogic.getNumberOfLotto() + PURCHASE_LOTTO_MESSAGE);
     }
 
-    private void printLottoNumber() {
+    public void printLottoNumber() {
         for (int i = 0; i < this.lottoLogic.getMyLottos().size(); i++) {
             System.out.println(this.lottoLogic.getMyLottos().get(i).getNumbers());
         }
     }
 
-    private List<String> prizeNumbersInput() {
+    public List<String> prizeNumbersInput() {
         System.out.println(PRIZE_INPUT_MESSAGE);
         String prizeNumberInput = Console.readLine();
         return sliceInputNumber(prizeNumberInput);
     }
 
-    private void setPrizeNumbers(List<String> prizeNumbers) {
+    public void setPrizeNumbers(List<String> prizeNumbers) {
         Validation.validatePrizeNumberInput(prizeNumbers);
         this.lottoLogic.setPrizeNumbers(stringListToIntegerList(prizeNumbers));
     }
 
-    private String bonusNumberInput() {
+    public String bonusNumberInput() {
         System.out.println(BONUS_INPUT_MESSAGE);
-        String bonusInput = Console.readLine();
-        return bonusInput;
+        return Console.readLine();
     }
 
-    private void setBonusNumber(String bonusInput) {
+    public void setBonusNumber(String bonusInput) {
         Validation.validateBonusInput(bonusInput, this.lottoLogic.getPrizeNumbers());
         this.lottoLogic.setBonusNumber(Integer.parseInt(bonusInput));
     }
