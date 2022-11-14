@@ -104,7 +104,12 @@ public abstract class Utility {
         Win win = Win.valueOf(winEnumName);
         int cntCorrectNumber = win.getCntCorrectNumber();
         int prize = win.getPrize();
-        String message = cntCorrectNumber+"개 일치 ("+decFormat.format(prize)+") - "+winNumber+"개";
+        String message;
+        if(winEnumName==winEnumNames.get(1)){
+            message = cntCorrectNumber+"개 일치, 보너스 볼 일치 ("+decFormat.format(prize)+"원) - "+winNumber+"개";
+            return message;
+        }
+        message = cntCorrectNumber+"개 일치 ("+decFormat.format(prize)+"원) - "+winNumber+"개";
         return message;
     }
 
@@ -119,7 +124,7 @@ public abstract class Utility {
     }
 
     public static void printProfitPercentage(double profitPercentage){
-        String message = "총 수익률은 "+profitPercentage+"%입니다";
+        String message = "총 수익률은 "+profitPercentage+"%입니다.";
         printMessage(message);
     }
 
