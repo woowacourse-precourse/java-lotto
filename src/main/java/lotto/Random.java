@@ -13,8 +13,8 @@ public class Random {
         for(int i=0;i<buylotto;i++){
             onelotto = Randoms.pickUniqueNumbersInRange(1,45, 6);
             Collections.sort(onelotto);
+            lottonumbers.add(onelotto);
         }
-
         return lottonumbers;
     }
 }
