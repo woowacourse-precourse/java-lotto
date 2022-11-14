@@ -1,16 +1,11 @@
 package lotto;
 
-import lotto.domain.Customer;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.WinningNumber;
 import lotto.util.LottoRank;
-import lotto.view.LottoGameView;
-import lotto.view.ViewValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
@@ -32,218 +27,22 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("숫자가 아닌 다른 글자가 들어가면 예외가 발생한다")
-    @Test
-    void createMoneyByNotNumber() {
-        ViewValidator viewValidator = new ViewValidator();
-
-        assertThatThrownBy(() -> viewValidator.validateNumberType("a1000"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("숫자가 들어가면 예외가 발생하지 않는다")
-    @Test
-    void createMoneyByNumber() {
-        ViewValidator viewValidator = new ViewValidator();
-
-        assertThatNoException()
-                .isThrownBy(() -> viewValidator.validateNumberType("1000"));
-    }
-
-    @DisplayName("숫자 예외가 발생 시 메시지에 접두어로 [ERROR]가 들어간다")
-    @Test
-    void errorMessageByNotNumber() {
-        ViewValidator viewValidator = new ViewValidator();
-
-        assertThatThrownBy(() -> viewValidator.validateNumberType("a1000"))
-                .hasMessageStartingWith("[ERROR]");
-    }
-
-    @DisplayName("1000원 단위가 아닌 돈이 입력됐을 때 예외가 발생한다")
-    @Test
-    void createMoneyByNotUnitOf1000() {
-        ViewValidator viewValidator = new ViewValidator();
-
-        assertThatThrownBy(() -> viewValidator.validateUnitOf1000("1200"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("1000원 단위인 돈이 입력됐을 때 예외가 발생하지 않는다")
-    @Test
-    void createMoneyByUnitOf1000() {
-        ViewValidator viewValidator = new ViewValidator();
-
-        assertThatNoException()
-                .isThrownBy(() -> viewValidator.validateUnitOf1000("2000"));
-    }
-
-    @DisplayName("로또 번호를 생성하면 리스트로 로또 번호가 나온다")
-    @Test
-    void generateLottoNumberByList() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Customer customer = new Customer();
-
-        Method method = customer.getClass().getDeclaredMethod("generateLottoNumber");
-        method.setAccessible(true);
-        Object lottoNumber = method.invoke(customer);
-
-        assertThat(lottoNumber).isInstanceOf(List.class);
-    }
-
     @DisplayName("로또 번호를 입력하면 오름차순으로 정렬한다")
     @Test
     void sortLottoNumber() {
-        List<Integer> numbers = List.of(34, 24, 40, 41, 10, 7);
         List<Integer> result = List.of(7, 10, 24, 34, 40, 41);
-        Lotto lotto = new Lotto(numbers);
+        Lotto lotto = new Lotto(List.of(34, 24, 40, 41, 10, 7));
 
         List<Integer> sortedByAscend = lotto.getSortedByAscendNumbers();
 
         assertThat(sortedByAscend).isEqualTo(result);
     }
 
-    @DisplayName("금액을 입력하면 로또 개수를 반환한다")
-    @Test
-    void getLottoCountByMoney() {
-        Customer customer = new Customer();
-        int money = 8000;
-        int result = 8;
-
-        int lottoCount = customer.getLottoCount(money);
-
-        assertThat(lottoCount).isEqualTo(result);
-    }
-
-    @DisplayName("돈을 입력하면 금액만큼 로또를 생성한다")
-    @Test
-    void generateLottosByMoney() {
-        Customer customer = new Customer();
-        int money = 6000;
-        int result = 6;
-
-        Lottos lottos = customer.purchaseLottos(money);
-
-        assertThat(lottos.getLottoCount()).isEqualTo(result);
-    }
-
-    @DisplayName("당첨 번호가 1과 45사이의 값이 아니면 예외가 발생한다")
-    @Test
-    void createNumberByOutOfRange() {
-        List<Integer> winningNumbers = List.of(1, 7, 10, 24, 37, 46);
-        int bonusNumber = 12;
-
-        assertThatThrownBy(() -> new WinningNumber(winningNumbers, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("당첨 번호가 1과 45사이의 값이면 예외가 발생하지 않는다")
-    @Test
-    void createNumberByWithinRange() {
-        List<Integer> winningNumbers = List.of(1, 7, 10, 24, 37, 45);
-        int bonusNumber = 12;
-
-        assertThatNoException()
-                .isThrownBy(() -> new WinningNumber(winningNumbers, bonusNumber));
-    }
-
-    @DisplayName("값이 숫자가 아니면 예외가 발생한다")
-    @Test
-    void createNumberByNotIntegerType() {
-        ViewValidator viewValidator = new ViewValidator();
-
-        assertThatThrownBy(() -> viewValidator.validateNumberType("a1"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("값이 숫자면 예외가 발생하지 않는다")
-    @Test
-    void createNumberByIntegerType() {
-        ViewValidator viewValidator = new ViewValidator();
-
-        assertThatNoException()
-                .isThrownBy(() -> viewValidator.validateNumberType("11"));
-    }
-
-    @DisplayName("5개의 콤마로 구분된 숫자들이 입력되면 6개의 숫자 리스트가 나온다")
-    @Test
-    void createSixNumber() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        LottoGameView lottoGameView = new LottoGameView(new ViewValidator());
-        String winningNumbers = "1,7,10,24,37,45";
-        List<Integer> result = List.of(1, 7, 10, 24, 37, 45);
-
-        Method method = lottoGameView.getClass().getDeclaredMethod("convertWinningNumbers", String.class);
-        method.setAccessible(true);
-        List<Integer> numbers = (List<Integer>) method.invoke(lottoGameView, winningNumbers);
-
-        assertThat(numbers).isEqualTo(result);
-    }
-
-    @DisplayName("1개의 보너스 번호가 6개의 당첨 번호 중에 포함되어있으면 예외가 발생한다")
-    @Test
-    void createBonusNumberIncludedInWinningNumber() {
-        List<Integer> winningNumbers = List.of(1, 7, 10, 24, 37, 45);
-        int bonusNumber = 7;
-
-        assertThatThrownBy(() -> new WinningNumber(winningNumbers, bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("1개의 보너스 번호가 6개의 당첨 번호 중에 포함되어있지 않으면 예외가 발생하지 않는다")
-    @Test
-    void createBonusNumberExcluded() {
-        List<Integer> winningNumbers = List.of(1, 7, 10, 24, 37, 45);
-        int bonusNumber = 11;
-
-        assertThatNoException()
-                .isThrownBy(() -> new WinningNumber(winningNumbers, bonusNumber));
-    }
-
-    @DisplayName("뽑기 기계에 당첨 번호를 넣으면 당첨 번호가 들어간다")
-    @Test
-    void generateWinningNumberInDrawingMachine() {
-        List<Integer> result = List.of(1, 7, 10, 24, 37, 45);
-        int bonusNumber = 11;
-        WinningNumber winningNumber = new WinningNumber(result, bonusNumber);
-
-        result.forEach(integer ->
-                assertThat(winningNumber.isContainedWinningNumber(integer)).isEqualTo(true));
-    }
-
-    @DisplayName("뽑기 기계에 보너스 번호를 넣으면 보너스 번호가 들어간다")
-    @Test
-    void generateBonusNumberInDrawingMachine() {
-        int result = 11;
-        WinningNumber winningNumber = new WinningNumber(List.of(1, 7, 10, 24, 37, 45), result);
-
-        assertThat(winningNumber.isEqualToBonusNumber(11)).isEqualTo(true);
-    }
-
-    @DisplayName("당첨 번호에 특정 번호가 포함되어 있으면 true를 반환한다")
-    @Test
-    void isContainNumber() {
-        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 43), 45);
-
-        boolean contain = winningNumber.isContainedWinningNumber(10);
-
-        assertThat(contain).isEqualTo(true);
-    }
-
-    @DisplayName("당첨 번호에 특정 번호가 포함되어 있지 않으면 false를 반환한다")
-    @Test
-    void isNotContainNumber() {
-        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 43), 45);
-
-        boolean contain = winningNumber.isContainedWinningNumber(11);
-
-        assertThat(contain).isEqualTo(false);
-    }
-
     @DisplayName("로또 번호가 당첨 번호에 일치하는 개수를 반환한다")
     @Test
-    void getThreeHitCount() {
-        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
-        int bonusNumber = 2;
-        WinningNumber winningNumber = new WinningNumber(List.of(3, 10, 12, 20, 33, 45), bonusNumber);
-        Lotto lotto = new Lotto(lottoNumber);
+    void getHitCount() {
+        Lotto lotto = new Lotto(List.of(1, 10, 12, 24, 33, 43));
+        WinningNumber winningNumber = new WinningNumber(List.of(3, 10, 12, 20, 33, 45), 2);
         int result = 3;
 
         long hitCount = lotto.getHitCount(winningNumber);
@@ -254,9 +53,8 @@ class LottoTest {
     @DisplayName("로또 번호에 보너스 번호가 포함되어 있으면 true를 반환한다")
     @Test
     void isHitBonusNumber() {
-        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
+        Lotto lotto = new Lotto(List.of(1, 10, 12, 24, 33, 43));
         WinningNumber winningNumber = new WinningNumber(List.of(3, 10, 12, 20, 33, 45), 43);
-        Lotto lotto = new Lotto(lottoNumber);
 
         boolean hitBonusNumber = lotto.isHitBonusNumber(winningNumber);
 
@@ -266,8 +64,8 @@ class LottoTest {
     @DisplayName("로또 번호에 보너스 번호가 포함되어 있지 않으면 false를 반환한다")
     @Test
     void isNotHitBonusNumber() {
-        WinningNumber winningNumber = new WinningNumber(List.of(3, 10, 12, 20, 33, 45), 41);
         Lotto lotto = new Lotto(List.of(1, 10, 12, 24, 33, 43));
+        WinningNumber winningNumber = new WinningNumber(List.of(3, 10, 12, 20, 33, 45), 41);
 
         boolean hitBonusNumber = lotto.isHitBonusNumber(winningNumber);
 
@@ -277,8 +75,8 @@ class LottoTest {
     @DisplayName("5개 번호와 1개의 보너스 번호가 일치하면 2등을 반환한다")
     @Test
     void isSecondPlace() {
-        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
         Lotto lotto = new Lotto(List.of(1, 10, 12, 24, 33, 43));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
         LottoRank result = LottoRank.SECOND_PLACE;
 
         LottoRank rank = lotto.getRank(winningNumber);
@@ -289,8 +87,8 @@ class LottoTest {
     @DisplayName("5개 번호가 일치하면 3등을 반환한다")
     @Test
     void isThirdPlace() {
-        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 42);
         Lotto lotto = new Lotto(List.of(1, 10, 12, 24, 33, 43));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 42);
         LottoRank result = LottoRank.THIRD_PLACE;
 
         LottoRank rank = lotto.getRank(winningNumber);
@@ -301,8 +99,8 @@ class LottoTest {
     @DisplayName("4개 번호가 일치하면 4등을 반환한다")
     @Test
     void isFourthPlace() {
-        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
         Lotto lotto = new Lotto(List.of(1, 10, 12, 24, 32, 43));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
         LottoRank result = LottoRank.FOURTH_PLACE;
 
         LottoRank rank = lotto.getRank(winningNumber);
@@ -313,8 +111,8 @@ class LottoTest {
     @DisplayName("2개 번호가 일치하면 낫싱을 반환한다")
     @Test
     void isNothing() {
-        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
         Lotto lotto = new Lotto(List.of(1, 10, 13, 25, 32, 43));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
         LottoRank result = LottoRank.NOTHING;
 
         LottoRank rank = lotto.getRank(winningNumber);
