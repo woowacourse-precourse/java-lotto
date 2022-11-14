@@ -19,7 +19,7 @@ public class LottoController {
 
     // TODO: 구입금액 입력
     public int inputPurchaseAmount() {
-        return 8;
+        return lottoService.toPurchaseAmount(Console.readLine());
     }
 
     //TODO: 당첨 번호 입력
