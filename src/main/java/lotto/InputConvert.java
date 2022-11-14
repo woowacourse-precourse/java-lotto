@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InputConvert {
@@ -13,6 +14,10 @@ public class InputConvert {
         if(input.length() - onlyNumber.length() + 1 != numbers.length){
             throw new IllegalArgumentException();
         }
-        return List.of(1,2,3,4,5,6);
+        List<Integer> convertedNumbers = new ArrayList<>();
+        for(String number : numbers){
+            convertedNumbers.add(Integer.parseInt(number));
+        }
+        return convertedNumbers;
     }
 }
