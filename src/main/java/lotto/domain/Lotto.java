@@ -1,10 +1,9 @@
 package lotto.domain;
 
-import static lotto.validator.LottoNumberValidator.validateExistDuplicateNumber;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import lotto.constant.Constants;
@@ -62,6 +61,12 @@ public class Lotto {
     private boolean isInRange(int number) {
         return LottoNumber.START_NUMBER_OF_LOTTO.getNumber() <= number
                 && number <= LottoNumber.END_NUMBER_OF_LOTTO.getNumber();
+    }
+
+    private void validateExistDuplicateNumber(List<Integer> numbers) {
+        if (numbers.size() != Set.copyOf(numbers).size()) {
+            throw new IllegalArgumentException(ErrorMessage.CAN_NOT_EXIST_DUPLICATE_NUMBER_IN_LOTTO.getMessage());
+        }
     }
 
     public List<Integer> getNumbers() {
