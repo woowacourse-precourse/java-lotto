@@ -39,7 +39,7 @@ public class CheckException {
         checkValidBoundary(bonusNumber);
     }
 
-    public static void checkValidBoundary(int number) throws IllegalArgumentException {
+    private static void checkValidBoundary(int number) throws IllegalArgumentException {
         try {
             if (number < 1 || number > 45) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 범위의 숫자여야 합니다.");

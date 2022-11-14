@@ -31,7 +31,6 @@
 - [x] 보너스 번호 입력받는 기능
 - [x] 입력된 번호가 1 ~ 45의 숫자가 아닌 경우 예외 처리
 - [x] 입력된 당첨 번호가 6개가 아닌 경우 예외 처리
-- [ ] 입력된 보너스 번호가 1개가 아닌 경우 예외 처리
 
 ### 로또 번호와 당첨 번호 비교
 - [ ] 구매한 로또 번호와 당첨 번호 비교하는 기능
@@ -50,3 +49,6 @@
 ### LottoTest
 - `createLottoByOverSize` : 로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.
 - `createLottoByDuplicatedNumber` : 로또 번호에 중복된 숫자가 있으면 예외가 발생한다.
+
+### WinningLottoTest
+- `inputWinningNumbersByOutOfBound` : 입력된 당첨 번호 중 1 ~ 45의 숫자가 아니면 예외가 발생한다.
