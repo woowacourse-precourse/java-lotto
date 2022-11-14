@@ -10,8 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.model.Lotto.*;
-
 public class LottoSeller {
     private static final String SEPARATOR = ",";
 
