@@ -12,12 +12,6 @@ public class LottoGenerator {
         this.judge = new Judge();
     }
 
-    public void amountIsNumber(String amount) {
-        if(!judge.correctAmount(amount)) {
-            LottoManager.terminateByError(Errors.NOT_CORRECT_AMOUNT.getName());
-        }
-    }
-
     public List<Lotto> createLottoNumbers(String amount) {
         Notice.BUY_MESSAGE.buy(Integer.parseInt(amount) / 1000);
         List<Lotto> lottos = new ArrayList<>();

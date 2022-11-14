@@ -13,10 +13,10 @@ public class LottoManager {
             Prize.FIFTH_PRIZE.getPrize() };
     private final Judge judge;
     private final LottoGenerator lottoGenerator;
+    private final int[] prize = new int[]{ 0, 0, 0, 0, 0 };
     private List<Lotto> userLottos;
     private Lotto winningNumbers;
     private static String error;
-    private final int[] prize = new int[]{ 0, 0, 0, 0, 0 };
     private int bonusNumber;
     private int amount;
     private float yield;

@@ -52,6 +52,7 @@
 
 ### 입력값 유효성 검사
 - [x] 구입 금액이 1000으로 나누어 떨어지는지 확인하는 기능. - Judge#correctAmount()
+- [x] 구입 금액이 자연수인지 확인하는 기능. - Judge#amountIsValid()
 - [x] 입력한 당첨 번호, 보너스 번호가 숫자들로 이뤄져 있는지 확인한다. - Judge#allNumber()
 - [x] 입력한 당첨 번호, 보너스 번호가 1 - 45 범위에 있는지 확인한다. - Lotto#isCorrectRange()
 - [x] 보너스 번호가 당첨 번호와 겹치지 않는지 확인한다. - Judge#notContain()
