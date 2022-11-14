@@ -23,6 +23,14 @@ public class Customer {
         return lottos.stream().collect(Collectors.toList());
     }
 
+    public MatchResult checkMyLottoNumbers(LottoCompany lottoCompany) {
+        return lottoCompany.showResultOfCustomerLotteries(lottos);
+    }
+
+    public double calculateProfit(MatchResult matchResult) {
+        return matchResult.getTotalPrizeMoney() / money.getPrice() * 100;
+    }
+
     private void setLotto(List<Lotto> lottos) {
         this.lottos = lottos;
     }

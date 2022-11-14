@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.List;
 import lotto.util.LottoExceptionMessage;
 
 public class LottoCompany {
@@ -16,5 +17,10 @@ public class LottoCompany {
         if (winningLotto.getNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException(LottoExceptionMessage.WINNING_LOTTO_CONTAINS_BONUS_NUMBER.getMessage());
         }
+    }
+
+    public MatchResult showResultOfCustomerLotteries(List<Lotto> lottos) {
+        LottoNumberChecker lottoNumberChecker = new LottoNumberChecker(winningLotto, bonusNumber, lottos);
+        return lottoNumberChecker.resultOfLotteries();
     }
 }
