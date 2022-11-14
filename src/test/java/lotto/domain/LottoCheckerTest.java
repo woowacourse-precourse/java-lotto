@@ -13,16 +13,16 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class WinnerCheckerTest {
+public class LottoCheckerTest {
     @DisplayName("로또 번호 비교하기")
     @ParameterizedTest(name = "{displayName} {0} {1}개 일치")
     @MethodSource("generateData")
-    void compareLottoNumbers(List<Integer> numbers, int numberOfMatches) {
-        WinnerChecker winnerChecker = new WinnerChecker();
-        Lotto purchasedLotto = new Lotto(numbers);
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+    void compareLottoNumbers(List<Integer> numbers, int count) {
+        LottoChecker lottoChecker = new LottoChecker();
+        Lotto purchased = new Lotto(numbers);
+        Lotto winning= new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
-        assertThat(winnerChecker.compareLottoNumbers(purchasedLotto, winningLotto)).isEqualTo(numberOfMatches);
+        assertThat(lottoChecker.compare(purchased, winning)).isEqualTo(count);
     }
 
     static Stream<Arguments> generateData() {
@@ -37,9 +37,9 @@ public class WinnerCheckerTest {
     @ParameterizedTest(name = "{displayName} {0}이면 {1}")
     @CsvSource(value = {"1:true", "7:false"}, delimiter = ':')
     void hasBonusNumber(int bonunsNumber, boolean hasBounsNumber) {
-        WinnerChecker winnerChecker = new WinnerChecker();
-        Lotto purchasedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        boolean result = winnerChecker.hasBonusNumber(purchasedLotto, bonunsNumber);
+        LottoChecker lottoChecker = new LottoChecker();
+        Lotto purchased = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        boolean result = lottoChecker.hasBonusNumber(purchased, bonunsNumber);
 
         assertThat(result).isEqualTo(hasBounsNumber);
     }
@@ -47,7 +47,7 @@ public class WinnerCheckerTest {
     @DisplayName("로또 테이블 비교하기")
     @Test
     void compareLottoTable() {
-        WinnerChecker winnerChecker = new WinnerChecker();
+        LottoChecker lottoChecker = new LottoChecker();
         List<Lotto> lottoTable = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 45)),
@@ -56,9 +56,9 @@ public class WinnerCheckerTest {
                 new Lotto(List.of(1, 2, 3, 14, 15, 16)),
                 new Lotto(List.of(11, 12, 13, 14, 15, 16))
         );
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winning = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonunsNumber = 45;
-        List<Integer> result = winnerChecker.compareLottoTable(lottoTable, winningLotto, bonunsNumber);
+        List<Integer> result = lottoChecker.compareLottoTable(lottoTable, winning, bonunsNumber);
 
         assertThat(result).isEqualTo(List.of(6, 15, 5, 4, 3, 0));
     }
@@ -66,23 +66,23 @@ public class WinnerCheckerTest {
     @DisplayName("로또 테이블 비교시 당첨번호에 보너스번호가 있으면 예외")
     @Test
     void compareLottoTableButException() {
-        WinnerChecker winnerChecker = new WinnerChecker();
+        LottoChecker lottoChecker = new LottoChecker();
         List<Lotto> lottoTable = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6))
         );
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winning = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonunsNumber = 6;
 
-        assertThatThrownBy(() -> winnerChecker.compareLottoTable(lottoTable, winningLotto, bonunsNumber))
+        assertThatThrownBy(() -> lottoChecker.compareLottoTable(lottoTable, winning, bonunsNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 결과 종합하기")
     @Test
     void sumUpResult() {
-        WinnerChecker winnerChecker = new WinnerChecker();
-        List<Integer> sumOfResult = winnerChecker.sumUpResult(List.of(0, 2, 3, 3, 5, 15, 6, 2, 0, 1));
+        LottoChecker lottoChecker = new LottoChecker();
+        List<Integer> result = lottoChecker.toResult(List.of(0, 2, 3, 3, 5, 15, 6, 2, 0, 1));
 
-        assertThat(sumOfResult).isEqualTo(List.of(2, 0, 1, 1, 1));
+        assertThat(result).isEqualTo(List.of(2, 0, 1, 1, 1, 10));
     }
 }

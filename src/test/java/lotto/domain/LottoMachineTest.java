@@ -13,7 +13,7 @@ public class LottoMachineTest {
     @Test
     void getAmountFromPrice() {
         LottoMachine lottoMachine = new LottoMachine();
-        int result = lottoMachine.getAmount(20000);
+        int result = lottoMachine.toAmount(20000);
 
         assertThat(result).isEqualTo(20);
     }
@@ -24,7 +24,7 @@ public class LottoMachineTest {
     void getAmountFromPriceButException(int won) {
         LottoMachine lottoMachine = new LottoMachine();
 
-        assertThatThrownBy(() -> lottoMachine.getAmount(won)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> lottoMachine.toAmount(won)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 구매 확인")
