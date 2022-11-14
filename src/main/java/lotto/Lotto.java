@@ -1,7 +1,5 @@
 package lotto;
-
-import org.assertj.core.util.Sets;
-
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,7 +17,7 @@ public class Lotto {
         }
     }
     private void redundancy(List<Integer> numbers){
-        Set<Integer> numbersFilter = Sets.newHashSet(numbers);
+        Set<Integer> numbersFilter = new HashSet<>(numbers);
         if(numbersFilter.size() != 6){
             throw new IllegalArgumentException("[ERROR] 입력하신 값에 중복이 존재합니다.");
         }

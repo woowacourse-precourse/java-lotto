@@ -21,10 +21,14 @@ public class Input {
         String winningNumbers=Console.readLine();
         return winningNumberFilter(winningNumbers);
     }
-    public int getBonusNumber(){return NumberRange(Console.readLine());}
+    public int getBonusNumber(){
+        String bonusNumber=Console.readLine();
+        NumberRegex(bonusNumber);
+        return NumberRange(bonusNumber);
+    }
     private List<Integer> winningNumberFilter(String winningNumbers){
         Set<Integer> Numbers = new HashSet<>();
-        for (String number: winningNumbers.split("-")) {
+        for (String number: winningNumbers.split(",")){
             NumberRegex(number);
             Numbers.add(NumberRange(number));
         }
@@ -32,7 +36,7 @@ public class Input {
     }
     private int NumberRange(String number){
         int checkNumber=Integer.parseInt(number);
-        if(checkNumber>0&&checkNumber<46)
+        if(checkNumber<1 || checkNumber>45)
             throw new IllegalArgumentException("[ERROR] 입력 값이 범위가 아닙니다.");
         return checkNumber;
     }

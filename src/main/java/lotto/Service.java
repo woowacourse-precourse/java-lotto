@@ -33,7 +33,7 @@ public class Service {
     private void lottoBundlePrint(List<List<Integer>> lottoBundle){
         for (List<Integer> lotto: lottoBundle) {
             Collections.sort(lotto);
-            System.out.println(lotto); //오름 차순으로 출력 까먹음
+            System.out.println(lotto);
         }
     }
 }
