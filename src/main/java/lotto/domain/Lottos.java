@@ -6,6 +6,8 @@ import lotto.strategy.LottoGenerateStrategy;
 
 public class Lottos {
 
+    private static final int FIRST_INDEX = 0;
+
     public List<Lotto> lottos = new ArrayList<>();
 
     public Lottos(int pieces, LottoGenerateStrategy lottoGenerateStrategy) {
@@ -13,7 +15,7 @@ public class Lottos {
     }
 
     private List<Lotto> makeLottos(int pieces, LottoGenerateStrategy lottoGenerateStrategy) {
-        for (int i = 0; i < pieces; i++) {
+        for (int i = FIRST_INDEX; i < pieces; i++) {
             Lotto lotto = new Lotto(lottoGenerateStrategy.generateLotto());
             lottos.add(lotto);
         }
