@@ -3,23 +3,6 @@ package lotto;
 import java.util.*;
 
 public class LottoNumberCheck {
-    public enum Hi {
-        FiVE("3개 일치 (5,000원)"),
-        FOUR("4개 일치 (50,000원)"),
-        THREE("5개 일치 (1,500,000원)"),
-        TWO("5개 일치, 보너스 볼 일치 (30,000,000원)"),
-        ONE("6개 일치 (2,000,000,000원)");
-
-        final private String hi;
-
-        private String getHi() {
-            return hi;
-        }
-
-        Hi(String hi) {
-            this.hi = hi;
-        }
-    }
 
     public enum Bye {
         FIVE(5_000),
@@ -55,8 +38,8 @@ public class LottoNumberCheck {
         myPrizeMoney = new ArrayList<>();
     }
     private void initPrize(Map<String, Integer> mapTest) {
-        for (Hi value : Hi.values()) {
-            mapTest.put(value.getHi(), 0);
+        for (Prize value : Prize.values()) {
+            mapTest.put(value.getPrize(), 0);
         }
     }
 
@@ -152,8 +135,8 @@ public class LottoNumberCheck {
 
         int count = 0;
         int total = 0;
-        for (Bye value : Bye.values()) {
-            total += value.getBye() * myPrizeMoney.get(count);
+        for (PrizeMoney value : PrizeMoney.values()) {
+            total += value.getPrizeMoney() * myPrizeMoney.get(count);
             count++;
         }
         double add = ((double) total / myMoney) * 100;
