@@ -17,9 +17,10 @@ public class Lotto {
         }
     }
 
-    public void rangeLottoNumbers(){
-        Collections.sort(numbers);
+    public void rangeLottoNumbers(){if(numbers.size()==6)
+            Collections.sort(numbers);
     }
+
     public List<Integer> getNumbers() {
         return numbers;
     }

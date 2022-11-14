@@ -26,6 +26,9 @@ public enum LottoRanking {
                 .filter(lottoRanking -> lottoRanking.isSameCounts(matchLottoCounts))
                 .findAny().get();
     }
+    public int getLottoWinningMoney(){
+        return lottoWinningMoney;
+    }
 
     public boolean isSameCounts(int lottoCounts){
         return this.lottoCounts==lottoCounts;

@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.Lotto;
 import lotto.domain.LottoQuantity;
 import lotto.domain.LottoRanking;
 import lotto.domain.Lottos;
@@ -24,6 +25,7 @@ public class LottoController {
         getUserBonusNumber();
         compareLottos();
         getLottoResult();
+        getLottoResultRate();
     }
 
     public void getUserMoney() {
@@ -55,5 +57,13 @@ public class LottoController {
     }
     public void getLottoResult(){
         OutputView.printLottoResult(lottoRanking);
+    }
+    public void getLottoResultRate(){
+        int totalLottoMoney=0;
+        for(LottoRanking ranking:lottoRanking.keySet()){
+            totalLottoMoney+=ranking.getLottoWinningMoney()*lottoRanking.get(ranking);
+        }
+       // float percent=(float)totalLottoMoney/(userLottoMoney)*1000)
+        OutputView.printLottoProfitRate((double)totalLottoMoney/(userLottoMoney*1000));
     }
 }
