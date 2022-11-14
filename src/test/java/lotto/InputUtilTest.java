@@ -57,6 +57,14 @@ public class InputUtilTest {
 		assertThatThrownBy(() -> InputUtil.inputWinnigNumber())
 		.isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("당첨번호 입력 - 범위가 아닌 당첨번호 입력")
+	@Test
+	void inputWinningNumbersNotRange() {
+		SetSystemInput("1,2,3,4,5,66");
+		assertThatThrownBy(() -> InputUtil.inputWinnigNumber())
+		.isInstanceOf(IllegalArgumentException.class);
+	}
 	
 	@DisplayName("당첨번호 입력 - 올바른 당첨번호 입력")
 	@Test

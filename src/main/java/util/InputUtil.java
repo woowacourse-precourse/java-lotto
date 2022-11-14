@@ -39,6 +39,11 @@ public class InputUtil {
 		}
 		
 		List<Integer> winnigNumber = stringListToIntegerList(inputSplit);
+		
+		if (!ValidateUtil.checkListRange(winnigNumber)) {
+			ExceptionUtil.makeException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+		}
+		
 		return winnigNumber;
 	}
 
@@ -49,6 +54,12 @@ public class InputUtil {
 			result.add(Integer.parseInt(target));
 		}
 		return result;
+	}
+
+	public static int inputBonusNumber() {
+
+		
+		return 0;
 	}
 
 }

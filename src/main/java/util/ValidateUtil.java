@@ -7,6 +7,11 @@ import java.util.regex.Pattern;
 
 public class ValidateUtil {
 	
+	
+	final private static int start = 1;
+	final private static int end = 45;
+	
+	
 	public static boolean isNumber(String inputValue){
 		return Pattern.matches("^[0-9]*$", inputValue);
 	}
@@ -23,5 +28,24 @@ public class ValidateUtil {
 	@SuppressWarnings("rawtypes")
 	public static boolean checkListSize(List numbers, int i) {
 		return numbers.size() == i;
+	}
+
+	public static boolean checkListRange(List<Integer> winnigNumber) {
+		
+		boolean result = true;
+		for(Integer number :  winnigNumber) {
+			if(!checkRange(number)) {
+				result = false;
+			}
+		}
+		return result;
+	}
+	
+	public static boolean checkRange(int number) {
+		
+		if(start <= number && number <= end ) {
+			return true;
+		}
+		return false;
 	}
 }
