@@ -15,7 +15,7 @@ public class InputView {
     private static final String SPLIT_STANDARD = ",";
 
     public static int inputLottoPurchaseAmount() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(ViewMessage.INPUT_PURCHASE);
         String input = Console.readLine();
         hasDigitsOnly(input);
         return Integer.parseInt(input);
@@ -28,7 +28,7 @@ public class InputView {
     }
 
     public static List<Integer> inputUserWinNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(ViewMessage.INPUT_WIN_NUMBER);
         String input = Console.readLine();
         isDigitAndSplitByStandard(input);
         return mapToList(input);
@@ -47,7 +47,7 @@ public class InputView {
     }
 
     public static int inputUserBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(ViewMessage.INPUT_BONUS_NUMBER);
         String input = Console.readLine();
         isBonusNumberDigit(input);
         return Integer.parseInt(input);
