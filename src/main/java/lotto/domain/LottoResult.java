@@ -13,10 +13,6 @@ public class LottoResult {
 
     private final Map<Rank, Integer> lottoResult;
 
-    public LottoResult() {
-        this.lottoResult = new HashMap<>();
-    }
-
     public LottoResult(WinningLotto winningLotto, List<Lotto> lottos) {
         this.lottoResult = new HashMap<>();
         lottos.stream()
@@ -24,7 +20,7 @@ public class LottoResult {
                 .forEach(this::addResult);
     }
 
-    public void addResult(Rank rank) {
+    private void addResult(Rank rank) {
         lottoResult.put(rank, lottoResult.getOrDefault(rank, RANK_COUNT_DEFAULT_VALUE) + 1);
     }
 

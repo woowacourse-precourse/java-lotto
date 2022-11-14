@@ -26,13 +26,18 @@ class LottosTest {
                 new Lotto(List.of(1, 2, 3, 9, 10, 11)),
                 new Lotto(List.of(1, 2, 9, 10, 11, 12))
         ));
-        LottoResult lottoResult = new LottoResult();
-        lottoResult.addResult(Rank.FIRST);
-        lottoResult.addResult(Rank.SECOND);
-        lottoResult.addResult(Rank.THIRD);
-        lottoResult.addResult(Rank.FOURTH);
-        lottoResult.addResult(Rank.FIFTH);
-        lottoResult.addResult(Rank.MISS);
+
+        WinningLotto winningLotto
+                = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoBonusNumber.of(7));
+        List<Lotto> lottoList = List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 8)),
+                new Lotto(List.of(1, 2, 3, 4, 7, 8)),
+                new Lotto(List.of(1, 2, 3, 7, 8, 9)),
+                new Lotto(List.of(1, 2, 7, 8, 9, 10)));
+
+        LottoResult lottoResult = new LottoResult(winningLotto, lottoList);
 
         assertThat(lottos.result(new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoBonusNumber.of(7))))
                 .isEqualTo(lottoResult);
