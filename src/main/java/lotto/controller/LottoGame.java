@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.UserLotto;
+import lotto.domain.WinningLotto;
 import lotto.util.InputChecker;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -15,7 +16,7 @@ public class LottoGame {
     private InputView inputView;
     private InputChecker inputChecker;
     private OutputView outputView;
-    private Lotto winningLotto;
+    private WinningLotto winningLotto;
 
     public LottoGame(){
         inputView=new InputView();
@@ -37,15 +38,17 @@ public class LottoGame {
     public void getLottoWinningNumberInput() throws IllegalArgumentException {
         String input=inputView.inputWinningNumber();
         List<String> inputWinningLottoNumbers = Arrays.asList(input.split(","));
-
+        List<Integer> changeStringToIntegerLottoNumbers=new ArrayList<>();
         if(inputChecker.checkInputWinningLottoNumbersIsNumeric(inputWinningLottoNumbers)){
-            List<Integer> changeStringToIntegerLottoNumbers=new ArrayList<>();
             for(String number : inputWinningLottoNumbers){
                 changeStringToIntegerLottoNumbers.add(Integer.parseInt(number));
             }
-            winningLotto=new Lotto(changeStringToIntegerLottoNumbers);
         }
-        int bonus=getBonusNumberInput(winningLotto);
+        Lotto winningLottoNumbers=new Lotto(changeStringToIntegerLottoNumbers);
+        int bonus=getBonusNumberInput(winningLottoNumbers);
+        if(bonus!=-1){
+            winningLotto=new WinningLotto(winningLottoNumbers, bonus);
+        }
     }
     public Integer getBonusNumberInput(Lotto winningLotto) throws IllegalArgumentException{
         String input=inputView.inputBonusNumber();
