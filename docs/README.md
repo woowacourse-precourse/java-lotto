@@ -56,8 +56,8 @@
 - `domain/Victory` 클래스 : 당첨 번호, 보너스 번호를 저장, 관련 로직 수행
   - `Set<Integer> winningNumbers`, `int bonusNumber`
   - `parseWinningNumbers()`, `setWinningNumbers()`, `setBonusNumber()`
-- `domain/Lottos` 클래스 : 구입 금액, 사용자 구매 로또 리스트 생성 및 저장
-  - `int money`, `List<Lotto> lottoList`
+- `domain/User` 클래스 : 구입 금액, 사용자 구매 로또 리스트 생성 및 저장
+  - `int money`, `List<Lotto> lottos`
   - `buyLottos()`, `printLottos()`
 - `domain/Result` 클래스 : 로또 결과 관련 로직 수행
   - `THREE("3개 일치", "5,000", 30)`
