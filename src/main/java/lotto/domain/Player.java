@@ -12,9 +12,9 @@ import static lotto.constant.GameConstants.*;
 
 public class Player {
     private int purchaseAmount;
-    private final List<Lotto> lottos = new ArrayList<>();
+    private List<Lotto> lottos = new ArrayList<>();
 
-    public Player() {
+    public void insertMoney() {
         String purchaseAmount = InputView.readPurchaseAmount();
         validate(purchaseAmount);
     }
