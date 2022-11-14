@@ -56,6 +56,13 @@ class LottoTest extends NsTest {
         });
     }
 
+    @DisplayName("로또 번호가 1보다 작을 때 예외 발생")
+    @Test
+    void 예외_테스트4() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, -1, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
     @Override
     public void runMain() {
