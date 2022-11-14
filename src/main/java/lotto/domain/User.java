@@ -16,8 +16,9 @@ public class User {
 
         while (lottos.size()<lottoAmount){
             List<Integer> numbers = LottoUtils.pickUniqueNumbersInRange();
-            Collections.sort(numbers);
-            Lotto lotto = new Lotto(numbers);
+            List<Integer> number2 = new ArrayList<>(numbers);
+            Collections.sort(number2);
+            Lotto lotto = new Lotto(number2);
             lottos.add(lotto);
         }
     }

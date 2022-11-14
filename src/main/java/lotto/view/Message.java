@@ -3,6 +3,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.text.DecimalFormat;
+import java.util.Collections;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGrade;
 import lotto.domain.User;

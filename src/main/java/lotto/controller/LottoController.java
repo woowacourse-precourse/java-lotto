@@ -13,6 +13,7 @@ public class LottoController {
     private LottoService lottoService = new LottoService();
 
     public void start(){
+
         String inputPayment = message.inputPaymentMessage();
         int lottoAmount = lottoService.buyLotto(inputPayment);
         message.buyLottoMessage(lottoAmount);
@@ -34,9 +35,6 @@ public class LottoController {
         user.getLottoResults(winningLotto);
 
         message.lottoResultMessage();
-
-
         message.lottoProfitMessage(user.getLottoProfit(inputPayment));
     }
-
 }
