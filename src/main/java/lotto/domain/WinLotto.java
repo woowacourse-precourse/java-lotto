@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class WinLotto {
     private static final char COMMA = ',';
-    private List<Integer> winningNumbers;
-    private int bonusNumber;
+    private static List<Integer> winningNumbers;
+    private static int bonusNumber;
 
     public WinLotto() {
     }
@@ -30,6 +30,14 @@ public class WinLotto {
         bonusNumber = Integer.parseInt(Console.readLine());
         validateBonusNumberRange(bonusNumber);
         validateDuplicateBonusNumber(bonusNumber,winningNumbers);
+    }
+
+    public List<Integer> getWinningNumbers(){
+        return winningNumbers;
+    }
+
+    public int getBonusNumber(){
+        return bonusNumber;
     }
 
     public void validateComma(String input) {

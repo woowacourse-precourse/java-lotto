@@ -12,13 +12,17 @@ public class UserLotto {
     private static final int CNT_NUMBER = 6;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
-    private List<List> userLotto = new ArrayList<>();
+    private static List<List> userLotto = new ArrayList<>();
 
     public UserLotto() {}
 
     public int setPurchaseAmount(){
         int input = Integer.parseInt(Console.readLine());
         return input;
+    }
+
+    public List<List> getUserLotto(){
+        return userLotto;
     }
 
     public void getPurchaseLottoNumbers(){
@@ -53,7 +57,7 @@ public class UserLotto {
 
         new Lotto(lottoNumbers);
 
-        userLotto.add(lottoNumbers);
+        this.userLotto.add(lottoNumbers);
     }
 
 }
