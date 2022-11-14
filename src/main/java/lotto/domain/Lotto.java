@@ -15,7 +15,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicate(numbers);
-        this.numbers = to(numbers);
+        this.numbers = from(numbers);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Lotto {
         }
     }
 
-    private List<LottoNumber> to(List<Integer> numbers) {
+    private List<LottoNumber> from(List<Integer> numbers) {
         return numbers.stream()
                 .map(LottoNumber::valueOf)
                 .collect(toList());
