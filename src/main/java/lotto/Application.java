@@ -10,7 +10,7 @@ public class Application {
     private static final String ERROR_MESSAGE = "[ERROR] ";
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        // TODO: 로또 프로그램 구현
         System.out.println("구입 금액을 입력해주세요.");
         String purchaseAmount_ = Console.readLine();
 
