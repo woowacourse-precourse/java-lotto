@@ -9,7 +9,8 @@ public enum OutputMessage {
 	DIVISION_LINE("---"),
 	COUNTING_PRIZE_WITHOUT_BONUS("%d개 일치 (%s) - %d개"),
 	COUNTING_PRIZE_WITH_BONUS("%d개 일치, 보너스 볼 일치 (%s) - %d개"),
-	DISPLAYING_RATE_OF_PROFIT("총 수익률은 %f%입니다.");
+	DISPLAYING_RATE_OF_PROFIT("총 수익률은 %.1f%%입니다."),
+	ERROR_MESSAGE("[ERROR] 올바른 입력이 아닙니다.");
 	private final String message;
 
 	OutputMessage(String message) {
