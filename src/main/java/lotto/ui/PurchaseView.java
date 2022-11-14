@@ -1,6 +1,7 @@
 package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.NoSuchElementException;
 
 public class PurchaseView implements View{
     private String purchaseNumbers;
@@ -16,7 +17,12 @@ public class PurchaseView implements View{
     }
 
     private void getInput(){
-        purchaseNumbers = Console.readLine();
+        try{
+            purchaseNumbers = Console.readLine();
+        }catch (NoSuchElementException e){
+            throw new IllegalArgumentException("[ERROR] 금액을 입력해주세요.");
+        }
+
     }
 
     public String getPurchaseNumbers() {
