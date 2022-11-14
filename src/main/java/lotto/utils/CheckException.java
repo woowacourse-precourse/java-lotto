@@ -1,5 +1,6 @@
 package lotto.utils;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,8 +36,11 @@ public class CheckException {
         checkSixSize(winningNumbers);
     }
 
-    public static void checkBonusNumber(int bonusNumber) throws IllegalArgumentException {
+    public static void checkBonusNumber(List<Integer> winningNumbers, int bonusNumber) throws IllegalArgumentException {
         checkValidBoundary(bonusNumber);
+        List<Integer> totalNumbers = new ArrayList<>(winningNumbers);
+        totalNumbers.add(bonusNumber);
+        checkDuplicatedNumber(totalNumbers);
     }
 
     private static void checkValidBoundary(int number) throws IllegalArgumentException {
