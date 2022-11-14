@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class LottoMachine {
@@ -21,5 +22,17 @@ public class LottoMachine {
     private List<Integer> generateNumber() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return numbers;
+    }
+
+    public HashMap<Rank, Integer> makeRankResult(List<Lotto> lottos, List<Integer> winningNumber, int bonusNumber) {
+        HashMap<Rank, Integer> rankResult = new HashMap<>();
+        for (int i = 0; i < lottos.size(); i++) {
+            Rank rank = lottos.get(i).matchRank(winningNumber, bonusNumber);
+            if (rankResult.containsKey(rank)) {
+                rankResult.put(rank, rankResult.get(rank) + 1);
+            }
+            rankResult.put(rank, 1);
+        }
+        return rankResult;
     }
 }
