@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.model.LottoService;
 import lotto.domain.model.Lottos;
 import lotto.domain.model.WinningLotto;
+import lotto.domain.model.WinningStatistics;
 import lotto.domain.model.request.LottoNumberRequest;
 import lotto.domain.model.request.LottoRequest;
 import lotto.domain.model.request.MoneyRequest;
@@ -23,11 +24,11 @@ public class LottoController {
             LottoRequest winningLottoRequest = InputView.inputLottoNumbers();
             LottoNumberRequest bonusNumberRequest = InputView.inputBonusNumber();
             WinningLotto winningLotto = new WinningLotto(winningLottoRequest, bonusNumberRequest);
-            
+
+            showStatistics(winningLotto, lottos);
         } catch (IllegalArgumentException exception) {
             OutputView.printException(exception);
         }
-
     }
 
     private Lottos showLottos(MoneyRequest moneyRequest) {
@@ -36,5 +37,11 @@ public class LottoController {
         OutputView.printLottos(lottos);
         return lottos;
     }
+
+    private void showStatistics(WinningLotto winningLotto, Lottos lottos) {
+        WinningStatistics winningStatistics = lottoService.getWinningStatistics(winningLotto, lottos);
+        OutputView.printStatistics(winningStatistics);
+    }
+
 
 }
