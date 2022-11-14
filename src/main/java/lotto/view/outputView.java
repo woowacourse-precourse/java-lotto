@@ -1,6 +1,6 @@
-package lotto;
+package lotto.view;
 
-import java.util.List;
+import lotto.domain.Lotto;
 
 
 public class outputView {
@@ -16,8 +16,5 @@ public class outputView {
             return value;
         }
 
-    }
-    public static void printNumbers(Lotto lotto) {
-            System.out.println(lotto.getLotto());
     }
 }

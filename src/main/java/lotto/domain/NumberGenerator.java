@@ -1,12 +1,16 @@
-package lotto;
+package lotto.domain;
 
-import static lotto.outputView.*;
+import static lotto.view.outputView.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.domain.Lotto;
 
 public class NumberGenerator {
+
+    private static List<Lotto> lottoGroup = new ArrayList<>();
 
     public enum LottoNumber {
         START(1), END(45), SIZE(6);
@@ -25,8 +29,9 @@ public class NumberGenerator {
     public static void generateLotto(int count) {
         for (int i = 0; i <count; i++){
             Lotto lotto = new Lotto(generateByRandom());
-            printNumbers(lotto);
+            lottoGroup.add(lotto);
         }
+        System.out.println();
     }
 
     private static List<Integer> generateByRandom() {
