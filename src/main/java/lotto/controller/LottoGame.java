@@ -21,11 +21,11 @@ public class LottoGame {
 
         int input = user.setPurchaseAmount();
         user.validateUnit(input);
-        input = setPurchaseAmount(input);
+        int lottoCount = setPurchaseAmount(input);
 
         printNewLine();
-        System.out.println(input + "개를 구매했습니다.");
-        setPurchaseAmountLotto(input);
+        System.out.println(lottoCount + "개를 구매했습니다.");
+        setPurchaseAmountLotto(lottoCount);
 
         user.getPurchaseLottoNumbers();
         printNewLine();
@@ -45,6 +45,11 @@ public class LottoGame {
         bonusAccord = winStatistics.getBonusAccord();
 
         printResult();
+
+        double rateOfReturn2 = winStatistics.calculationTotalAmount()/input*100;
+        String rateOfReturn = String.format("%,.1f",rateOfReturn2);
+        System.out.println("총 수익률은 "+rateOfReturn+"%입니다.");
+
     }
 
     public void setPurchaseAmountLotto(int input) {

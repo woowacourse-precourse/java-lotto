@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class WinStatistics {
@@ -11,6 +12,12 @@ public class WinStatistics {
     private List<List> userLottoNumbers;
     private List<Integer> winLottoNumbers;
     private int bonusNumber;
+    private HashMap<Integer,Integer> amount = new HashMap<>(){{
+       put(3,5000);
+       put(4,50000);
+       put(5,1500000);
+       put(6,2000000000);
+    }};
 
     public WinStatistics() {
     }
@@ -65,5 +72,16 @@ public class WinStatistics {
         for(int i=0;i<7;i++){
             countAccord.add(0);
         }
+    }
+
+    public int calculationTotalAmount(){
+        int totalAmount = 0;
+        for(int i=3;i<=6;i++){
+            int count = countAccord.get(i);
+            int money = amount.get(i);
+            totalAmount += count * money;
+        }
+        totalAmount += bonusAccord * 30000000;
+        return totalAmount;
     }
 }
