@@ -47,4 +47,19 @@ public class Lotto {
         result += sort().toString();
         return result;
     }
+
+    public int countSameNumber(Lotto winningLotto, int bonusNumber) {
+        int result = 0;
+        List<Integer> winningNumbers = winningLotto.getNumbers();
+
+        for (int number : numbers) {
+            if (winningNumbers.contains(number))
+                result++;
+        }
+
+        if (result == 5 && numbers.contains(bonusNumber))
+            result += 2;
+
+        return result;
+    }
 }

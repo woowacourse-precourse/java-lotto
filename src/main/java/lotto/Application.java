@@ -29,6 +29,14 @@ public class Application {
 
         System.out.println("당첨 번호를 입력해 주세요.");
         String inputNumbers = Console.readLine();
+        List<Integer> winningNumbers = stringToList(inputNumbers);
+        Lotto winningLotto = new Lotto(winningNumbers);
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String inputBonusNumber = Console.readLine();
+
+        // 예외처리 필요
+        int bonusNumber = Integer.parseInt(inputBonusNumber);
 
     }
 
