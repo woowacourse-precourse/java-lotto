@@ -16,19 +16,6 @@ class UserTest {
         user = new User();
     }
 
-    @DisplayName("구매금액 입력시 문자,공백을 입력하면 예외가 발생한다")
-    @Test
-    void 문자_공백_검사() {
-        String input = "천원";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
-                user.askPurchaseAmount());
-        assertEquals("[ERROR] 문자 또는 공백은 입력이 불가능 합니다. 1,000원 단위의 숫자를 입력해 주세요.", illegalArgumentException.getMessage());
-    }
-
     @DisplayName("구매금액 입력시 1,000원 단위가 아니라면 예외가 발생한다")
     @Test
     void 천원_단위_검사() {
@@ -36,7 +23,7 @@ class UserTest {
         Integer monetaryUnitTest2 = 1500;
 
         // return true;
-        assertTrue(user.checkMonetaryUnit(monetaryUnitTest1));
+        assertEquals(1000,user.checkMonetaryUnit(monetaryUnitTest1));
 
         // throw new IllegalArgumentException("[ERROR] 1,000원 단위의 숫자를 입력 해주세요.")
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
@@ -68,7 +55,7 @@ class UserTest {
         System.setIn(in);
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
                 user.inputBonusNumber());
-        assertEquals("[ERROR] 문자 또는 공백은 입력이 불가능합니다. 1~45 사이의 숫자 한개를 입력해 주세요.", illegalArgumentException.getMessage());
+        assertEquals("[ERROR] 문자 또는 공백은 입력이 불가능합니다. 1~45 사이의 숫자 1개를 입력해 주세요.", illegalArgumentException.getMessage());
 
     }
 
@@ -82,7 +69,7 @@ class UserTest {
         // throw new IllegalArgumentException("[ERROR] 1~45 사이의 숫자 한개를 입력해 주세요.")
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
                 user.bonusNumberRangeCheck(TestFalse));
-        assertEquals("[ERROR] 1~45 사이의 숫자 한개를 입력해 주세요.", illegalArgumentException.getMessage());
+        assertEquals("[ERROR] 로또 번호의 숫자 범위는 1~45까지 입니다.",illegalArgumentException.getMessage());
 
     }
 

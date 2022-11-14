@@ -1,7 +1,4 @@
 package lotto.enums;
-
-import java.math.BigDecimal;
-
 public enum LottoRanking {
     FIFTH("3개 일치 (5,000원) - ", 0, 5000),
     FOURTH("4개 일치 (50,000원) - ", 0, 50000),

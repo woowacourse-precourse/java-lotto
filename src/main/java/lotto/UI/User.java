@@ -21,23 +21,12 @@ public class User extends Exception {
         return Console.readLine();
     }
 
-    public static void numberCheck(String input) {
-        try {
-            Pattern abc = Pattern.compile("^[0-9]*$");
-            if (!abc.matcher(input).matches()) {
-                throw new IllegalArgumentException(ER_STRINGCHECK.getMessage());
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
     public static Integer convertToInteger(String input) {
-        Pattern abc = Pattern.compile("^[0-9]*$");
-        if (abc.matcher(input).matches()) {
+        Pattern zeroToNine = Pattern.compile("^[0-9]*$");
+        if (zeroToNine.matcher(input).matches()) {
             return Integer.parseInt(input);
         }
-        return null;
+        return 0;
     }
 
     public static Integer checkMonetaryUnit(Integer money) {
@@ -58,12 +47,7 @@ public class User extends Exception {
                 throw new IllegalArgumentException(ER_STRINGCHECK_SIXNUMBERS.getMessage());
             }
         }
-        try {
-            new Lotto(lottoNumbers);
-        } catch (IllegalArgumentException illegalArgumentException) {
-            System.out.println(illegalArgumentException.getMessage());
-            throw new IllegalArgumentException();
-        }
+        new Lotto(lottoNumbers);
         Collections.sort(lottoNumbers);
         return lottoNumbers;
     }
@@ -92,11 +76,6 @@ public class User extends Exception {
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
             throw new IllegalArgumentException();
-        }
-    }
-    public static void bonusNumberInLottoNumber(){
-        if(lottoNumberReceiveInput().contains(inputBonusNumber())){
-            throw new IllegalArgumentException(ER_BONUSNUMBERINLOTTONUMBER.getMessage());
         }
     }
 
