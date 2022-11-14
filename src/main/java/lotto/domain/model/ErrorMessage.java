@@ -15,7 +15,7 @@ public enum ErrorMessage {
     LOTTE_NUMBER_DUPLICATION("중복된 번호를 입력하셨습니다 | 중복 번호 : "),
     PURCHASE_PAY_CONSISTENCE("숫자 이외의 값을 입력하셨습니다. | 입력 : "),
     PURCHASE_PAY_REMINDER("1000원 단위로 구매하실 수 있습니다. | 입력 : "),
-    NOT_DIVIDE_COMMAS("\",\" 를 사용하여 로또번호를 구매해 주세요"),
+    NOT_DIVIDE_COMMAS("\",\" 를 사용하여 올바른 입력을 해 주세요"),
     BONUS_NUMBER_OUT_BOUND("유효범위에서 벗어난 숫자를 입력하셨습니다 (유효범위 : 1 ~ 45) | 입력 : "),
     BONUS_NUMBER_DUPLICATION("당첨번호에 속한 보너스 번호를 입력하였습니다 | 당첨 번호: "),
     BONUS_NUMBER_INVALID("올바른 로또 번호를 입력 해 주세요 | 입력 : ");
