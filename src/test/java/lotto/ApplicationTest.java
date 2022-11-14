@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -50,6 +51,24 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("음수인 금액이 입력되었을 때 예외처리하는지 확인한다.")
+    void askAmountByNegativeValue() {
+        assertSimpleTest(() -> {
+            runException("-1000");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("1000으로 나눠지지 않는 금액이 입력되었을 때 예외처리하는지 확인한다.")
+    void askAmountByNotDevidedValue() {
+        assertSimpleTest(() -> {
+            runException("1400");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
