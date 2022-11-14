@@ -3,8 +3,9 @@ package lotto.util.converter;
 import lotto.util.ConstValue.LottoConst;
 import lotto.util.Validator;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static lotto.util.converter.LottoInputConverter.LottoInputValidator.*;
 
 public class LottoInputConverter {
 
@@ -26,17 +27,29 @@ public class LottoInputConverter {
     }
 
     public int userLottoPurchaseCostToInt(final String input) {
-        final List<Validator<String>> validators = new ArrayList<>();
+        final List<Validator<String>> validators =
+                List.of(
+                        LOTTO_INPUT_NULL.validator,
+                        LOTTO_INPUT_USER_PURCHASE_COST.validator
+                );
         return stringToIntConverter.convert(input, validators);
     }
 
     public List<Integer> winningLottoNumberToList(final String input) {
-        final List<Validator<String>> validators = new ArrayList<>();
+        final List<Validator<String>> validators =
+                List.of(
+                        LOTTO_INPUT_NULL.validator,
+                        LOTTO_INPUT_WINNING_NUMBER.validator
+                );
         return stringToIntListConverter.convert(input, validators);
     }
 
     public int bonusLottoNumberToInt(final String input) {
-        final List<Validator<String>> validators = new ArrayList<>();
+        final List<Validator<String>> validators =
+                List.of(
+                        LOTTO_INPUT_NULL.validator,
+                        LOTTO_INPUT_BONUS_NUMBER.validator
+                );
         return stringToIntConverter.convert(input, validators);
     }
 
@@ -64,7 +77,8 @@ public class LottoInputConverter {
             if (!input.matches(LOTTO_BONUS_NUMBER_INPUT_PATTERN)) {
                 throw new IllegalArgumentException();
             }
-        });
+        }),
+        ;
 
         private final Validator<String> validator;
 
