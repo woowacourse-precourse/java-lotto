@@ -2,10 +2,7 @@ package lotto;
 
 import jdk.jshell.execution.Util;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -30,8 +27,9 @@ public class Lotto {
     }
 
     private List <Integer> sortNumbers(List<Integer> numbers){
-        Collections.sort(numbers);
-        return numbers;
+        List <Integer> _numbers = new ArrayList<>(numbers);
+        Collections.sort(_numbers);
+        return _numbers;
     }
 
     public List<Integer> getNumbers() {
