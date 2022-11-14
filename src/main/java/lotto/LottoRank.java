@@ -1,5 +1,7 @@
 package lotto;
 
+import java.text.NumberFormat;
+
 public enum LottoRank {
     RANK5(3, 5000),
     RANK4(4, 50000),
@@ -23,5 +25,11 @@ public enum LottoRank {
         }
 
         return RANK5;
+    }
+
+    @Override
+    public String toString() {
+        String commaMoney = NumberFormat.getInstance().format(prizeMoney);
+        return matchingCount + "개 일치 (" + commaMoney + ") - ";
     }
 }
