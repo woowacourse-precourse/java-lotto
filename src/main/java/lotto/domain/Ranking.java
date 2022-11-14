@@ -1,10 +1,6 @@
 package lotto.domain;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public enum Ranking {
     FIFTH_PLACE(5_000, 3),
@@ -23,8 +19,8 @@ public enum Ranking {
     }
 
     public static Ranking getRank(int numberOfMatchNumbers, boolean bonusNumberMatch) {
-        if (numberOfMatchNumbers == 5) {
-            return checkBonusNumber(bonusNumberMatch);
+        if (numberOfMatchNumbers == THIRD_PLACE.numberOfMatchNumbers) {
+            return checkSecondOrThird(bonusNumberMatch);
         }
 
         return Arrays.stream(Ranking.values())
@@ -33,7 +29,7 @@ public enum Ranking {
                 .orElse(NOT_RANKED);
     }
 
-    private static Ranking checkBonusNumber(boolean bonusNumberMatch) {
+    private static Ranking checkSecondOrThird(boolean bonusNumberMatch) {
         if (bonusNumberMatch) {
             return SECOND_PLACE;
         }
