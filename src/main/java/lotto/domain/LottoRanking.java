@@ -33,9 +33,16 @@ public enum LottoRanking {
 
 	private boolean isMatch(int matchCount, boolean isMatchBonusNumber) {
 		if (this.matchCount == matchCount) {
-			return this.isMatchBonusNumber == isMatchBonusNumber;
+			return checkBonusNumber(matchCount, isMatchBonusNumber);
 		}
 		return false;
+	}
+
+	private boolean checkBonusNumber(int matchCount, boolean isMatchBonusNumber) {
+		if (matchCount != 5) {
+			return true;
+		}
+		return this.isMatchBonusNumber == isMatchBonusNumber;
 	}
 
 	public int getReward() {
