@@ -14,7 +14,7 @@ public class PurchaseMoney {
         }
     }
 
-    public Integer getPurchaseMoney(){
-        return this.purchaseMoney;
+    public Integer getNumberLotteryPurchasesAvailable(){
+        return this.purchaseMoney/1000;
     }
 }
