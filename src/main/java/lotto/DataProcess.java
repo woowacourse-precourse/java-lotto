@@ -3,13 +3,22 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class DataProcess {
+    enum Reward_Amount{
+        EQUALTHREE(5000),
+        EQUALFOUL(50000),
+        EUQALFIVE(1500000),
+        EQUALBONUS(30000000),
+        EQUALSIX(2000000000);
+
+        private final long amount;
+        Reward_Amount(long amount) {this.amount = amount; }
+        public long getAmount() {return amount; }
+    }
     private static final int MAXIMUM_NUMBER_OF_LOTTO = 45;
     private static final int MINIMUM_NUMBER_OF_LOTTO = 1;
     private static final int NUMBER_OF_LOTTO_NUMBER = 6;
@@ -39,5 +48,14 @@ public class DataProcess {
         }
 
         return matching_number;
+    }
+
+    public static long CalculateTotalReward(int[] matching_number){
+        long totalReward = 0;
+        Reward_Amount[] Reward = Reward_Amount.values();
+        for(int i = 0; i < matching_number.length; i++){
+            totalReward = Reward[i].amount * matching_number[i];
+        }
+        return totalReward;
     }
 }
