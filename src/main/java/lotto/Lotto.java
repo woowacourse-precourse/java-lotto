@@ -4,6 +4,7 @@ import java.util.List;
 
 import static lotto.LottoConstant.*;
 import static lotto.LottoErrorMessage.*;
+import static lotto.LottoSeller.printMessage;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -23,18 +24,18 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
-            System.out.println(LOTTO_SIZE_ERROR_MSG);
-            throw new IllegalArgumentException();
+            printMessage(LOTTO_SIZE_ERROR_MSG);
+            throw new IllegalArgumentException(LOTTO_SIZE_ERROR_MSG);
         }
 
         if (hasDuplicateNumber(numbers)) {
-            System.out.println(DUPLICATE_NUM_ERROR_MSG);
-            throw new IllegalArgumentException();
+            printMessage(DUPLICATE_NUM_ERROR_MSG);
+            throw new IllegalArgumentException(DUPLICATE_NUM_ERROR_MSG);
         }
 
         if (hasOutOfRangeNumber(numbers)) {
-            System.out.println(LOTTO_RANGE_ERROR_MSG);
-            throw new IllegalArgumentException();
+            printMessage(LOTTO_RANGE_ERROR_MSG);
+            throw new IllegalArgumentException(LOTTO_RANGE_ERROR_MSG);
         }
     }
 
@@ -52,7 +53,7 @@ public class Lotto {
             int number = numbers.get(i);
 
             if (number < MIN_LOTTO_NUM || number > MAX_LOTTO_NUM) {
-                System.out.println(LOTTO_RANGE_ERROR_MSG);
+                printMessage(LOTTO_RANGE_ERROR_MSG);
                 return true;
             }
         }

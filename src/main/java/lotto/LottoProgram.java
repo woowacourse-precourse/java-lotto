@@ -38,7 +38,7 @@ public class LottoProgram {
         LottoWinningAnalyzer analyzer = new LottoWinningAnalyzer(winningResult);
 
         analyzer.printWinningResult();
-        ;
+
         analyzer.printProfit(purchasePrice);
     }
 

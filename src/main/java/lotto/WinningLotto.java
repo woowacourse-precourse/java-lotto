@@ -4,6 +4,7 @@ import java.util.List;
 
 import static lotto.LottoErrorMessage.*;
 import static lotto.LottoConstant.*;
+import static lotto.LottoSeller.printMessage;
 
 public class WinningLotto {
     private Lotto winningLotto;
@@ -39,12 +40,12 @@ public class WinningLotto {
 
     private void validateBonusNumber(int bonusNumber) {
         if (winningLotto.hasNumber(bonusNumber)) {
-            System.out.println(DUPLICATE_NUM_ERROR_MSG);
+            printMessage(DUPLICATE_NUM_ERROR_MSG);
             throw new IllegalArgumentException();
         }
 
         if (bonusNumber < MIN_LOTTO_NUM || bonusNumber > MAX_LOTTO_NUM) {
-            System.out.println(LOTTO_RANGE_ERROR_MSG);
+            printMessage(LOTTO_RANGE_ERROR_MSG);
             throw new IllegalArgumentException();
         }
     }

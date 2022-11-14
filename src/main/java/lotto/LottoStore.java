@@ -5,6 +5,7 @@ import java.util.List;
 
 import static lotto.LottoErrorMessage.*;
 import static lotto.LottoConstant.*;
+import static lotto.LottoSeller.printMessage;
 
 public class LottoStore {
     private List<Lotto> lottoTickets = new ArrayList<>();
@@ -40,10 +41,10 @@ public class LottoStore {
     private void printLottoNumbers() {
         int lottoPurchaseCount = lottoTickets.size();
 
-        System.out.println(String.format(BUY_MSG, lottoPurchaseCount));
+        printMessage(String.format(BUY_MSG, lottoPurchaseCount));
 
         for (int i = 0; i < lottoPurchaseCount; i++) {
-            System.out.println(lottoTickets.get(i));
+            printMessage(lottoTickets.get(i).toString());
         }
     }
 }

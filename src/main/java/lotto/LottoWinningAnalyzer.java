@@ -3,6 +3,7 @@ package lotto;
 import java.util.EnumMap;
 
 import static lotto.LottoConstant.*;
+import static lotto.LottoSeller.printMessage;
 
 public class LottoWinningAnalyzer {
     private EnumMap<WinningType, Integer> winningResult;
@@ -13,12 +14,12 @@ public class LottoWinningAnalyzer {
 
     public void printWinningResult() {
         winningResult.forEach((key, value) -> {
-            System.out.println(String.format(key.getMessage(), value));
+            printMessage(String.format(key.getMessage(), value));
         });
     }
 
     public void printProfit(int userMoney) {
-        System.out.println(String.format(WINNING_RESULT_MSG, calculateProfit(userMoney)));
+        printMessage(String.format(WINNING_RESULT_MSG, calculateProfit(userMoney)));
     }
 
     private double calculateProfit(int userMoney) {

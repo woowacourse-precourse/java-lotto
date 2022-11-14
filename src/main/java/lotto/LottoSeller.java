@@ -11,14 +11,18 @@ import static lotto.LottoErrorMessage.*;
 
 public class LottoSeller {
 
+    public static void printMessage(String message) {
+        System.out.println(message);
+    }
+
     public static int receivePurchasePrice() {
-        System.out.println(PURCHASE_PRICE_MSG);
+        printMessage(PURCHASE_PRICE_MSG);
 
         return receiveNumber();
     }
 
     public static List<Integer> receiveWinningNumbers() {
-        System.out.println(WINNING_NUM_MSG);
+        printMessage(WINNING_NUM_MSG);
         String userInput = Console.readLine();
         validateWinningNumbers(userInput);
 
@@ -31,13 +35,18 @@ public class LottoSeller {
     }
 
     public static int receiveBonusNumber() {
-        System.out.println(BONUS_NUM_MSG);
+        printMessage(BONUS_NUM_MSG);
 
         return receiveNumber();
     }
 
     private static void validateWinningNumbers(String input) {
         String[] numbers = input.split(SEPARATOR, 0);
+
+        if (numbers.length != LOTTO_SIZE) {
+            printMessage(LOTTO_SIZE_ERROR_MSG);
+            throw new IllegalArgumentException();
+        }
 
         for (int i = 0; i < numbers.length; i++) {
             validateNumber(numbers[i]);
@@ -46,7 +55,7 @@ public class LottoSeller {
 
     private static void validateNumber(String input) {
         if (!input.matches("^[0-9]*$")) {
-            System.out.println(NUMBER_ERROR_MSG);
+            printMessage(NUMBER_ERROR_MSG);
             throw new IllegalArgumentException();
         }
     }
