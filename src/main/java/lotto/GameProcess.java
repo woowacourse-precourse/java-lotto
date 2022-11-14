@@ -3,6 +3,7 @@ package lotto;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Service;
+import lotto.util.Constant;
 import lotto.view.Output;
 
 public class GameProcess {
@@ -20,6 +21,14 @@ public class GameProcess {
         int bonusNumber = Lotto.getBonusNumber();
 
         Output.beginAnnouncementOfResult();
-        Service.firstCompareLottoNumber(purchasedLotteries, winningNumbers, bonusNumber);
+        List<List<Integer>> firstResultList = Service.firstCompareLottoNumber(purchasedLotteries, winningNumbers);
+        Service.scoreLotteries(firstResultList, bonusNumber);
+
+        System.out.println(Constant.FIRSTPLACE);
+        System.out.println(Constant.SECONDPLACE);
+        System.out.println(Constant.THIDPLACE);
+        System.out.println(Constant.FOURTHPLACE);
+        System.out.println(Constant.FIFTHPLACE);
+
     }
 }

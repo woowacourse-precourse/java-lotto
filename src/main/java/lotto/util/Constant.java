@@ -7,8 +7,11 @@ public class Constant {
     public static final String REQUESTBONUSNUMBKER = "보너스 번호를 입력해 주세요.";
     public static final String RESULTOFANNOUNCEMENTBEGIN = "당첨 통계\n---";
 
-
-
+    public static final Integer NUMBEROFWINS = 4;
     public static final int MONEYUNIT = 1000;
-
+    public static int FIFTHPLACE= 0;
+    public static int FOURTHPLACE = 0;
+    public static int THIDPLACE = 0;
+    public static int SECONDPLACE = 0;
+    public static int FIRSTPLACE = 0;
 }
