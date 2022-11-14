@@ -57,7 +57,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-/*    public int Input() {
+    public int Input() {
         String strPay = Console.readLine();
         try {
             pay = Integer.parseInt(strPay); //구입금액
@@ -67,7 +67,7 @@ public class Lotto {
         }
         return pay;
     }
-    public int NumberOfLotto(){ // 로또 개수
+/*    public int NumberOfLotto(){ // 로또 개수
         lottoQuantity = pay / 1000;
         return lottoQuantity;
     }
