@@ -23,6 +23,7 @@ public class Lotto {
     }
     public enum InputMessage {
 
+        BUY_NUM("개를 구매했습니다."),
         MONEY_PAY("구입금액을 입력해 주세요."),
         BONUS_NUM("보너스 번호를 입력해 주세요."),
         WIN_NUM("당첨 번호를 입력해 주세요.");
@@ -97,9 +98,9 @@ public class Lotto {
 
     public static String checkBonus(List<Integer> wnum){
         if(getBonus(bonusNum(),wnum)){
-            return("5b");
+            return(WinNumber.FIVE_BALL_BONUS.getBall());
         }
-        return("5");
+        return(WinNumber.FIVE_BALL.getBall());
     }
     public static void startLotto(){
         List<List<Integer>> lotto = new ArrayList<>();
@@ -110,7 +111,7 @@ public class Lotto {
             lotto.add(generateLotto());
         }
         System.out.println("");
-        System.out.println((i)+"개를 구매했습니다.");
+        System.out.println((i)+InputMessage.BUY_NUM.print());
         for(List<Integer> number : lotto){
             printLotto(number);
         }
@@ -118,8 +119,8 @@ public class Lotto {
         for(List<Integer> wnum : lotto){
             winCheck.add(String.valueOf(getWin(wnum,winNum)));
         }
-        if(winCheck.contains("5")){
-            winCheck.set(winCheck.indexOf("5"), checkBonus(lotto.get(winCheck.indexOf("5"))));
+        if(winCheck.contains(WinNumber.FIVE_BALL.getBall())){
+            winCheck.set(winCheck.indexOf(WinNumber.FIVE_BALL.getBall()), checkBonus(lotto.get(winCheck.indexOf(WinNumber.FIVE_BALL.getBall()))));
         }
         calculate(winCheck);
         calculateEarn(winCheck);
