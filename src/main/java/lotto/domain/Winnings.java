@@ -1,30 +1,43 @@
 package lotto.domain;
 
-import java.util.HashMap;
 import java.util.Map;
+
+enum Prize {
+    ThreeMatch(5000),
+    FourMatch(50000),
+    FiveMatch(1500000),
+    FiveAndBonusMatch(30000000),
+    SixMatch(2000000000),
+    NoMatch(0);
+
+    final int cash;
+
+    Prize(int cash) {
+        this.cash = cash;
+    }
+}
 
 public class Winnings {
     static Map map;
-    static double[] correctNums = {3, 4, 5, 5.5, 6};
-    static int[] cash = {5000, 50000, 1500000, 30000000, 2000000000};
+    static final double[] correctNums = {3, 4, 5, 5.5, 6};
 
-    public static void setWinnings() {
-        map = new HashMap<Double, Integer>();
-
-        for (int i = 0; i < correctNums.length; i++) {
-            map.put(correctNums[i], cash[i]);
+    public static int getWinnings(double num) {
+        if (num == 6) {
+            return Prize.SixMatch.cash;
+        } else if (num == 5) {
+            return Prize.FiveMatch.cash;
+        } else if (num == 5.5) {
+            return Prize.FiveAndBonusMatch.cash;
+        } else if (num == 4) {
+            return Prize.FourMatch.cash;
+        } else if (num == 3) {
+            return Prize.ThreeMatch.cash;
         }
-    }
-
-    public static int getWinnings(double금 num) {
-        return (int) map.get(num);
+        return Prize.NoMatch.cash;
     }
 
     public static double[] getCorrectNums() {
         return correctNums;
     }
 
-    public static int[] getCash() {
-        return cash;
-    }
 }

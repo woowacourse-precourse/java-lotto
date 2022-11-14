@@ -3,7 +3,6 @@ package lotto;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.Referee;
-import lotto.domain.Winnings;
 import lotto.view.LottoView;
 import lotto.view.MoneyView;
 import lotto.view.NumberView;
@@ -11,15 +10,9 @@ import lotto.view.NumberView;
 import java.util.List;
 
 public class Application {
-    enum test {
-        test1,
-        test2,
-        test3
-    }
 
     public static void main(String[] args) {
         LottoGenerator generator = new LottoGenerator();
-        Winnings.setWinnings();
         try {
             List<Lotto> lottoList = generator.generate(MoneyView.get());
             LottoView.print(lottoList);
