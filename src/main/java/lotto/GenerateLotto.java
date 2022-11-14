@@ -23,9 +23,10 @@ public class GenerateLotto {
             checkDuplication = Sets.newHashSet(numbers);
         } while (numbers.size() != checkDuplication.size());
 
-        Collections.sort(numbers);
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
 
-        this.lottoNumbers = numbers;
+        this.lottoNumbers = sortedNumbers;
     }
 
     private void generateLottoGroup() {
