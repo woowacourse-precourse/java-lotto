@@ -33,21 +33,21 @@ class WinNumInputExceptionTest {
     @DisplayName("당첨 번호 입력 값에 중복이 존재할 경우 예외가 발생한다.")
     @Test
     void winNumDuplicate_예외처리_테스트() {
-        assertThatThrownBy(() -> winNumDuplicate(new String[]{"19","2","22","34","14","2"}))
+        assertThatThrownBy(() -> winNumDuplicate(new String[]{"19", "2", "22", "34", "14", "2"}))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("당첨 번호 입력 값이 6개의 숫자가 아닐 경우 발생한다.")
     @Test
     void winNumSizeError_예외처리_테스트_5개_입력() {
-        assertThatThrownBy(() -> winNumSizeError(new String[]{"19","2","22","34","14"}))
+        assertThatThrownBy(() -> winNumSizeError(new String[]{"19", "2", "22", "34", "14"}))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("당첨 번호 입력 값이 6개의 숫자가 아닐 경우 발생한다.")
     @Test
     void winNumSizeError_예외처리_테스트_7개_입력() {
-        assertThatThrownBy(() -> winNumSizeError(new String[]{"19","2","22","34","14","3","27"}))
+        assertThatThrownBy(() -> winNumSizeError(new String[]{"19", "2", "22", "34", "14", "3", "27"}))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
