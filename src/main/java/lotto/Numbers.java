@@ -17,7 +17,7 @@ public class Numbers {
 		List<List<Integer>> randomPick = new ArrayList<>();
 		
 		for (int i = 0; i < lottoCount; i++) {
-			List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+			List<Integer> list = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6)); 
 			Collections.sort(list);
 			randomPick.add(list);
 		}
