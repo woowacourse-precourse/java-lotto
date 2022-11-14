@@ -59,7 +59,7 @@ public class LottoService {
         return winningLotto;
     }
 
-    public void validateBonusLottoNumberRange(List<Integer> numbers) {
+    private void validateBonusLottoNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (LOTTO_MINIMUN_NUM_SIZE > number || number > LOTTO_MAXIMUN_NUM_SIZE) {
                 throw new IllegalArgumentException(NUMBER_RANGE_ONE_TO_FOUR_FIVE);
@@ -73,7 +73,7 @@ public class LottoService {
         }
     }
 
-    public static List<Integer> stringToList(String number) {
+    private static List<Integer> stringToList(String number) {
         List<Integer> numbers = Arrays.stream(number.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
