@@ -19,4 +19,18 @@ class RightFormatCondTest {
         // then
         assertThat(result).isTrue();
     }
+
+    @Test
+    void 잘못된_형식의_입력() {
+        // given
+        String[] wrongNumbers = {
+                "1,2,3,4,5,",
+                "1,2,,,,",
+                "",
+        };
+        // when, then
+        for (String wrongNumber : wrongNumbers) {
+            assertThat(condition.isSatisfied(wrongNumber)).isFalse();
+        }
+    }
 }
