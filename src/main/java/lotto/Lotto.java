@@ -7,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        duplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -21,4 +22,9 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    private void duplicate(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
