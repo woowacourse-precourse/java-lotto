@@ -40,4 +40,8 @@ public class Service {
 		return lottoNumber;
 	}
 
+	public void inputLotto(List<Integer> lottoNumber) {
+		lotto = new Lotto(lottoNumber);
+	}
+
 }
