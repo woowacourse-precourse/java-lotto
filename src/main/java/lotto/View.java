@@ -60,6 +60,7 @@ public class View {
 
     public List<Integer> inputLottoNumber() {
         try {
+            printLine("당첨 번호를 입력해 주세요.");
             String[] ss = Console.readLine().split(",");
             List<Integer> numbers = new ArrayList<>();
             for (int i = 0; i < ss.length; i++) {
@@ -78,6 +79,7 @@ public class View {
 
     public Integer inputBonusNumber() {
         try {
+            printLine("당첨 번호를 입력해 주세요.");
             return Integer.parseInt(Console.readLine());
         } catch (IllegalArgumentException e) {
             System.out.println("[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
