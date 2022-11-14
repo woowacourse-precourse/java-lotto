@@ -20,7 +20,7 @@ public class Lottos {
         return result;
     }
 
-    public int getWinningAmount(WinningNumbers winningNumbers) {
+    public int calculateWinningAmount(WinningNumbers winningNumbers) {
         return lottos.stream()
                 .mapToInt(lotto -> lotto.getWinningAmount(winningNumbers))
                 .sum();

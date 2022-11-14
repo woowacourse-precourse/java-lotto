@@ -1,11 +1,9 @@
 package lotto.model;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -19,7 +17,7 @@ class LottosTest {
     @ParameterizedTest(name = "총 상금은 {1}원")
     @MethodSource("lottosAndWinningAmount")
     void 구매한_복권들의_상금을_모두_더하는_기능(Lottos lottos, int winningAmount) {
-        assertThat(lottos.getWinningAmount(winningNumbers)).isEqualTo(winningAmount);
+        assertThat(lottos.calculateWinningAmount(winningNumbers)).isEqualTo(winningAmount);
     }
 
     static Stream<Arguments> lottosAndWinningAmount() {

@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     public static final int PRICE = 1000;
@@ -22,7 +23,10 @@ public class Lotto {
         if (numbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException();
         }
-        if (new HashSet<>(numbers).size() != NUMBERS_SIZE) {
+
+        Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
+
+        if (nonDuplicateNumbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException();
         }
     }
