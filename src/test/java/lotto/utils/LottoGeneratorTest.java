@@ -4,15 +4,14 @@ import static lotto.utils.LottoGenerator.COUNT;
 import static lotto.utils.LottoGenerator.END_INCLUSIVE;
 import static lotto.utils.LottoGenerator.START_INCLUSIVE;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import lotto.utils.LottoGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoGeneratorTest {
@@ -27,18 +26,20 @@ class LottoGeneratorTest {
         lottoNumber = LottoGenerator.makeLotto();
     }
 
+    @DisplayName("랜덤번호를 생성하면 여섯자리가 생성된다.")
     @Test
-    void 랜덤_번호_여섯자리_생성_확인() {
+    void createRandomNumbersSizeIsSix() {
         assertThat(lottoNumber.size()).isEqualTo(COUNT);
     }
-
+    @DisplayName("랜덤번호를 생성하면 중복된 값이오지않는다.")
     @Test
-    void 랜덤_번호_중복_확인() {
+    void createRandomNumberCheckDuplication() {
         assertThat(new HashSet<>(lottoNumber).size()).isEqualTo(lottoNumber.size());
     }
 
+    @DisplayName("랜덤번호를 생성하면 1~45 사이의 번호만 생성된다.")
     @Test
-    void 랜덤_번호_범위_확인() {
+    void createRandomNumberCheckRange() {
         lottoNumber.stream().map(STANDARD_LOTTO_NUMBER::contains).forEach(Assertions::assertTrue);
     }
 }
