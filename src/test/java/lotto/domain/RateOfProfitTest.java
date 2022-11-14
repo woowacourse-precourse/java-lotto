@@ -3,9 +3,21 @@ package lotto.domain;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 class RateOfProfitTest {
+    @BeforeEach
+    @AfterEach
+    void setUp() {
+        CorrectNum[] values = CorrectNum.values();
+        for (CorrectNum value : values) {
+            value.setCnt(0);
+        }
+        RateOfProfit.profit = 0;
+    }
     @Test
     void profitTest() {
         CorrectNum.THREE.setCnt(4);
