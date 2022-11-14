@@ -9,21 +9,21 @@ import lotto.ui.Ouput;
 public class LottoMachine {
     private List<Lotto> lottoTable = new ArrayList<>();
 
-    public List<Integer> getRandomNumbers() {
+    public List<Integer> createNumbers() {
         return Randoms.pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.NUMBER_OF_NUMBERS);
     }
 
-    public int getAmount(int won) {
-        if (won % Lotto.PRICE != 0 || won == 0) {
+    public int toAmount(int money) {
+        if (money % Lotto.PRICE != 0 || money == 0) {
             throw new IllegalArgumentException(Ouput.ENTER_IN_UNITS_OF_1000_WON_ERROR);
         }
-        return won / Lotto.PRICE;
+        return money / Lotto.PRICE;
     }
 
-    public void purchaseLottoTable(int won) {
+    public void purchaseLottoTable(int money) {
         lottoTable.clear();
-        for (int i = 0; i < getAmount(won); i++) {
-            Lotto lotto = new Lotto(getRandomNumbers());
+        for (int i = 0; i < toAmount(money); i++) {
+            Lotto lotto = new Lotto(createNumbers());
             lottoTable.add(lotto);
         }
     }
