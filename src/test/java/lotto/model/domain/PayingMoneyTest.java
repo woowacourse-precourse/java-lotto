@@ -1,23 +1,38 @@
 package lotto.model.domain;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class PayingMoneyTest {
 
+    @DisplayName("정상적인 로또 구입 금액을 입력받는 경우")
     @Test
-    void 로또_구입_금액_정상적인_입력값_처리하기() {
-        Assertions.assertThatCode(() -> new PayingMoney(" 1 0 0 0 "))
+    void PayingMoney() {
+        String validPayingMoney = "1000";
+        String validPayingMoney2 = " 1 0 0 0 ";
+
+        Assertions.assertThatCode(() -> new PayingMoney(validPayingMoney))
+                .doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> new PayingMoney(validPayingMoney2))
                 .doesNotThrowAnyException();
     }
 
+    @DisplayName("비정상적인 로또 구입 금액을 입력받는 경우 예외처리")
     @Test
-    void 로또_구입_금액_비정상적인_입력값_처리하기() {
-        Assertions.assertThatThrownBy(() -> new PayingMoney("1000a"))
+    void PayingMoneyException() {
+        String notNumberPayingMoney = "a";
+        String notNumberPayingMoney2 = "a2";
+        String invalidRangePayingMoney = "0";
+        String notFactorOf1000PayingMoney = "1999";
+
+        Assertions.assertThatThrownBy(() -> new PayingMoney(notNumberPayingMoney))
                 .isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> new PayingMoney("1001"))
+        Assertions.assertThatThrownBy(() -> new PayingMoney(notNumberPayingMoney2))
                 .isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> new PayingMoney("999"))
+        Assertions.assertThatThrownBy(() -> new PayingMoney(invalidRangePayingMoney))
+                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new PayingMoney(notFactorOf1000PayingMoney))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
