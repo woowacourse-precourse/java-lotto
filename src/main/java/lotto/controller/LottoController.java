@@ -1,7 +1,12 @@
 package lotto.controller;
 
 import lotto.controller.validator.MoneyValidator;
+import lotto.controller.validator.WinningNumberValidator;
 import lotto.service.LottoGameService;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoController implements Controller {
 
@@ -26,6 +31,15 @@ public class LottoController implements Controller {
     }
 
     public void inputWinningNumber(String input) {
-        
+        validateInput(input, WinningNumberValidator.values());
+        List<Integer> winningNumber = separateStringWithComma(input);
+    }
+
+    public List<Integer> separateStringWithComma(String input) {
+        return Arrays.stream(input.split(","))
+                .map(String::trim)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
     }
 }

@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.ApplicationContext;
 import lotto.controller.validator.MoneyValidator;
+import lotto.controller.validator.WinningNumberValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,16 @@ class LottoControllerTest {
 
                 () -> assertThat(MoneyValidator.IS_PARSEABLE.getPredicate().test("non digit"))
                         .isFalse()
+        );
+    }
+
+    @DisplayName("당첨 번호가 조건에 맞지 않으면 예외가 발생한다.")
+    @Test
+    void inputInvalidWinningNumber() {
+        assertAll(
+                () -> assertThatThrownBy(() -> controller.inputWinningNumber("1 2 3 4"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(WinningNumberValidator.IS_SEPERATED_BY_COMMA.getErrorMessage())
         );
     }
 }
