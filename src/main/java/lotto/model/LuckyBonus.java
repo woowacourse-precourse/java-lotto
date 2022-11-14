@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.model.GameMessage;
+
 public class LuckyBonus {
     public static int luckyBonus;
 

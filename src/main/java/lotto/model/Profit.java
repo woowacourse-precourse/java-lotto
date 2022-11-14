@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.model.WinningResult;
+import lotto.model.enums.GameMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +18,7 @@ public class Profit {
     private void calculateProfit(int price) {
         int totalProfit = 0;
         for (int index = 0; index < 5; index++) {
-            totalProfit += Winning.winningResult.get(index) * prizeMoney.get(index);
+            totalProfit += WinningResult.winningResult.get(index) * prizeMoney.get(index);
         }
         profitRate = (double) totalProfit / price * 100;
     }

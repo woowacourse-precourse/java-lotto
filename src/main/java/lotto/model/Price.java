@@ -1,6 +1,6 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
+import lotto.model.enums.GameMessage;
 
 public class Purchase {
     public final int price;

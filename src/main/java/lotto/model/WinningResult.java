@@ -1,12 +1,14 @@
 package lotto;
 
+import lotto.model.GameMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Winning {
+public class WinningResult {
     public static List<Integer> winningResult = new ArrayList<>(List.of(0, 0, 0, 0, 0));
 
-    public Winning(int ticketAmount) {
+    public WinningResult(int ticketAmount) {
         checkWinning(ticketAmount);
         printWinningResult();
     }
