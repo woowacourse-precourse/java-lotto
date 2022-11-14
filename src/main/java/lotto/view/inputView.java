@@ -11,7 +11,7 @@ public class inputView {
         return Console.readLine();
     }
 
-    private void validateRange(int number) {
+    protected void validateRange(int number) {
         if (!(MIN_RANGE_NUMBER <= number && number <= MAX_RANGE_NUMBER)) {
             throw new InvalidRangeLottoNumberException();
         }
