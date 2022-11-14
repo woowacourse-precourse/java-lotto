@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Clerk;
 import lotto.domain.Lotto;
-import lotto.domain.NumbersGenerator;
+import lotto.domain.LottoMachine;
 import lotto.domain.Statistics;
 import lotto.domain.WinningLotto;
 import lotto.view.Input;
@@ -29,10 +29,10 @@ public class LottoController {
     }
 
     private List<Lotto> getLottos(Output output, int lottoQuantity) {
-        NumbersGenerator numbersGenerator = new NumbersGenerator();
+        LottoMachine lottoMachine = new LottoMachine();
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoQuantity; i++) {
-            lottos.add(new Lotto(numbersGenerator.generatorNumbers()));
+            lottos.add(new Lotto(lottoMachine.generateLottoNumber()));
         }
         output.printInputMoneyResultMessage(lottoQuantity);
         output.printPurchasedLottos(lottos);
