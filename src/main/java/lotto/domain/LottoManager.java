@@ -31,7 +31,7 @@ public class LottoManager {
     public List<List<Integer>> makeRandomNumbers(int lottoCount){
         List<List<Integer>> numbers = new ArrayList<>();
         int cnt = 0;
-        while(cnt > lottoCount){
+        while(cnt < lottoCount){
             List<Integer> randomNumbers = randomNumbers();
             if(isNotDuplication(randomNumbers)){
                 Collections.sort(randomNumbers);
