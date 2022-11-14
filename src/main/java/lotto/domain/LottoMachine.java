@@ -30,4 +30,34 @@ public class LottoMachine {
         return numbers;
     }
 
+    public int[] determineWinners(User user, Lotto winningLotto, Bonus bonus) {
+        int[] rank = new int[6];
+        List<Integer> winningNumbers = winningLotto.getNumbers();
+        for (Lotto lotto : user.getLottos()) {
+            List<Integer> lottoNumbers = lotto.getNumbers();
+            int hits = countHits(lottoNumbers, winningNumbers, bonus);
+            determineRank(lottoNumbers, hits, bonus, rank);
+        }
+        System.out.println(rank[1]+" "+rank[2]+" "+rank[3]+" "+rank[4]+" "+rank[5]);
+        return rank;
+    }
+
+    private int countHits(List<Integer> lottoNumbers, List<Integer> winningNumbers, Bonus bonus) {
+        lottoNumbers.removeAll(winningNumbers);
+        return SIZE - lottoNumbers.size();
+    }
+
+    private void determineRank(List<Integer> lottoNumbers, int hits, Bonus bonus, int[] rank) {
+        if (hits == 6) {
+            rank[1]++;
+        } else if (hits == 5 && lottoNumbers.get(0) == bonus.getBonus()) {
+            rank[2]++;
+        } else if (hits == 5) {
+            rank[3]++;
+        } else if (hits == 4) {
+            rank[4]++;
+        } else if (hits == 3) {
+            rank[5]++;
+        }
+    }
 }

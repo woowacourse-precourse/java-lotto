@@ -55,6 +55,7 @@ public class LottoController {
     }
 
     private void showResult() {
+        int[] rank = lottoMachine.determineWinners(user, winningLotto, bonus);
         Printer.print(ResultMessage.RESULT.getMessage());
     }
 
