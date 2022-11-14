@@ -20,7 +20,7 @@ public class LottoStore {
         purchasedAmount = 0;
     }
 
-    public void startLottoService() {
+    public void startService() {
 
         try {
             List<Lotto> customerLottos = buyLottos();

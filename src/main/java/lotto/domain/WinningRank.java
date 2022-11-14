@@ -25,12 +25,12 @@ public enum WinningRank {
 
     private final int prizeMoney;
     private final String winningRule;
-    private final BiFunction<Integer, Boolean, Boolean> isWinExpression;
+    private final BiFunction<Integer, Boolean, Boolean> winningRuleExpression;
 
-    WinningRank(int prizeMoney, String winningRule, BiFunction<Integer, Boolean, Boolean> isWinExpression) {
+    WinningRank(int prizeMoney, String winningRule, BiFunction<Integer, Boolean, Boolean> winningRuleExpression) {
         this.prizeMoney = prizeMoney;
         this.winningRule = winningRule;
-        this.isWinExpression = isWinExpression;
+        this.winningRuleExpression = winningRuleExpression;
     }
 
 
@@ -43,7 +43,7 @@ public enum WinningRank {
     }
 
     public boolean isWin(int duplicatedNumberCount, boolean isContainBonusNumber) {
-        return isWinExpression.apply(duplicatedNumberCount, isContainBonusNumber).booleanValue();
+        return winningRuleExpression.apply(duplicatedNumberCount, isContainBonusNumber).booleanValue();
     }
 
     public int getPrizeMoney() {
