@@ -27,6 +27,10 @@ public class Winning {
         return winningNumbers;
     }
 
+    public static void prize(List<Lotto> lottoTickets, List<Integer> winningNumber, int bonusNumber) {
+
+    }
+
     private static void validateNumbers(List<Integer> winningNumbers) {
         isDuplicatedWinningNumber(winningNumbers);
         isValidateWinningNumberSize(winningNumbers);
@@ -37,13 +41,13 @@ public class Winning {
         isValidateWinningNumberRange(num);
     }
 
-    public static void isValidateWinningNumberSize(List<Integer> winningNumbers) {
+    private static void isValidateWinningNumberSize(List<Integer> winningNumbers) {
         if (winningNumbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_MESSAGE + LOTTO_OUT_OF_RANGE_ERROR);
         }
     }
 
-    public static void isValidateWinningNumber(String num) {
+    private static void isValidateWinningNumber(String num) {
         try {
             Integer.parseInt(num);
         }catch(NumberFormatException e) {
@@ -51,7 +55,7 @@ public class Winning {
         }
     }
 
-    public static void isValidateWinningNumberRange(String num) {
+    private static void isValidateWinningNumberRange(String num) {
         int result = Integer.parseInt(num);
 
         if(result < 1 || result > 45) {
@@ -59,7 +63,7 @@ public class Winning {
         }
     }
 
-    public static void isDuplicatedWinningNumber(List<Integer> numbers) {
+    private static void isDuplicatedWinningNumber(List<Integer> numbers) {
         if(numbers.stream().distinct().count() != 6) {
             throw new IllegalArgumentException(ERROR_MESSAGE + WINNING_DUPLICATED);
         }

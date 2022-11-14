@@ -11,9 +11,8 @@ public class Controller {
     private static final String NOT_INSEPARABLE_ERROR = "구입 금액이 1000원 단위가 아닙니다.";
 
     public void start() {
-        String amount;
-        String winningNumber;
-        int ticketAmount;
+        String amount, winningNumber;
+        int ticketAmount, bonusNumber;
         List<Integer> winningNumbers;
         Lotto lotto;
         LottoNumbers lottoNumbers = new LottoNumbers();
@@ -36,9 +35,11 @@ public class Controller {
 
         winningNumber = InputView.winningNumberInputMessage();
         winningNumbers = Winning.makeWinningNumberList(winningNumber);
+        bonusNumber = Integer.parseInt(InputView.bonusNumberInputMessage());
+        Winning.prize(lottoTickets, winningNumbers, bonusNumber);
     }
 
-    public void isValidatePurchase(String userInput) {
+    private void isValidatePurchase(String userInput) {
         int amount = Integer.parseInt(userInput);
 
         if (amount % 1000 != 0) {
@@ -46,7 +47,7 @@ public class Controller {
         }
     }
 
-    public void isValidateNumber(String userInput) {
+    private void isValidateNumber(String userInput) {
         try {
             Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
@@ -54,7 +55,7 @@ public class Controller {
         }
     }
 
-    public int stringToIntegerConvert(String userInput) {
+    private int stringToIntegerConvert(String userInput) {
         int ticket = Integer.parseInt(userInput);
 
         return ticket / 1000;
