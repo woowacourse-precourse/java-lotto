@@ -49,7 +49,7 @@ public class Input {
         }
     }
 
-    public void returnPrice(String price) {
+    public void savePrice(String price) {
         validatePrice(price);
         int priceNum = Integer.parseInt(price);
         number = priceNum / unitPrice;
@@ -66,7 +66,7 @@ public class Input {
         }
     }
 
-    public void returnAnswer(String[] enterAnswer) {
+    public void saveAnswer(String[] enterAnswer) {
         validateAnswer(enterAnswer);
         int[] answerNumber= Arrays.stream(enterAnswer).mapToInt(Integer::parseInt).toArray();
         for (int i : answerNumber) {
@@ -85,7 +85,7 @@ public class Input {
         }
     }
 
-    public void returnBonus(String bonusNum, String[] answer) {
+    public void saveBonus(String bonusNum, String[] answer) {
         validateBonus(bonusNum, answer);
         bonus = Integer.parseInt(bonusNum);
     }

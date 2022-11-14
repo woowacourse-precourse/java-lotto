@@ -10,7 +10,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        checkValidateLotto(numbers);
+        checkValidate(numbers);
         this.numbers = new ArrayList<>(numbers);
     }
 
@@ -31,6 +31,7 @@ public class Lotto {
         for (int i = 0; i < numbers.size(); i++) {
             if (Collections.frequency(numbers, numbers.get(i)) > 1) {
                 isValid = true;
+                break;
             }
         }
         return isValid;
@@ -41,12 +42,13 @@ public class Lotto {
         for (int i = 0; i < numbers.size(); i++) {
             if (numbers.get(i) < 1 && numbers.get(i) > 45) {
                 isValid = true;
+                break;
             }
         }
         return isValid;
     }
 
-    private void checkValidateLotto(List<Integer> numbers) {
+    private void checkValidate(List<Integer> numbers) {
         if (validateLength(numbers) || validateRepeat(numbers) || validateOver(numbers)) {
             throw new IllegalArgumentException(ValidMessage.ValidGenerateLotto.getPrintMessage());
         }

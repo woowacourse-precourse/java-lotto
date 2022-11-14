@@ -13,7 +13,7 @@ public class Lottos {
     public Lottos(int number) {
         numberOfLotto = number;
         lottos = new ArrayList<>();
-        generateLottos();
+        generate();
     }
 
     public List<List<Integer>> getLottos() {
@@ -24,7 +24,7 @@ public class Lottos {
         return this.numberOfLotto;
     }
 
-    public void generateLottos() {
+    public void generate() {
         for(int i = 0; i < numberOfLotto; i++) {
             NumberGenerator numberGenerator = new NumberGenerator();
             lottos.add(numberGenerator.getLotto().getNumbers());

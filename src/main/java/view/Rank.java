@@ -7,9 +7,9 @@ public enum Rank {
     Two("5개 일치, 보너스 볼 일치 (30,000,000원)", 30000000),
     One("6개 일치 (2,000,000,000원)", 2000000000);
 
-    private String print;
+    private final String print;
 
-    private int prize;
+    private final int prize;
 
     Rank(String print, int prize) {
         this.print = print;

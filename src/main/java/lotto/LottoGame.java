@@ -18,12 +18,12 @@ public class LottoGame {
 
     public void startGame() {
         try{
-            input.returnPrice(input.enterPrice());
+            input.savePrice(input.enterPrice());
             lottos = new Lottos(input.getNumber());
             output.printLottoList(lottos.getLottos());
             String[] answer = input.enterAnswer();
-            input.returnAnswer(answer);
-            input.returnBonus(input.enterBonus(), answer);
+            input.saveAnswer(answer);
+            input.saveBonus(input.enterBonus(), answer);
             output.setRankList(lottos.getLottos(), input.getAnswer(), input.getBonus());
             output.printResult(input.getNumber());
         } catch (Exception errorMessage) {

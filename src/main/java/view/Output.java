@@ -9,11 +9,11 @@ import java.util.function.Predicate;
 import static view.Rank.*;
 
 public class Output {
-    private List<Integer> rankNumber; //1등~5등 각각 해당 로또 수
+    private final List<Integer> rankNumber; //1등~5등 각각 해당 로또 수
 
     private final static int unitPrice = 1000;
 
-    private final static int changePercent = 100;
+    private final static int unitPercent = 100;
 
     private final static Rank[] rank = new Rank[]{One, Two, Three, Four, Five};
 
@@ -62,7 +62,7 @@ public class Output {
         for (int i = 0; i < rank.length; i++) {
             entireProfit += rankNumber.get(i) * rank[i].getPrize();
         }
-        String profitRateRaw = String.format("%.1f",(entireProfit/entirePurchaseLotto)*100);
+        String profitRateRaw = String.format("%.1f",(entireProfit/entirePurchaseLotto)*unitPercent);
         return Double.parseDouble(profitRateRaw);
     }
 

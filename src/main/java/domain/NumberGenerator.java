@@ -11,14 +11,14 @@ public class NumberGenerator {
     private final Lotto lotto;
 
     public NumberGenerator() {
-        lotto = new Lotto(generateLotto());
+        lotto = new Lotto(generate());
     }
 
     public Lotto getLotto() {
         return this.lotto;
     }
 
-    public List<Integer> generateLotto() {
+    public List<Integer> generate() {
         List<Integer> generateLotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(generateLotto);
         return generateLotto;

@@ -29,7 +29,7 @@ class LottoTest {
             //when
             String price = "6430";
             // then
-            assertThatThrownBy(() -> input.returnPrice(price))
+            assertThatThrownBy(() -> input.savePrice(price))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 로또 구입 금액은 1000으로 나누어 떨어져야 합니다.");
         }
@@ -40,7 +40,7 @@ class LottoTest {
             //when
             String price = "6000";
             // then
-            input.returnPrice(price);
+            input.savePrice(price);
             assertThat(input.getNumber()).isEqualTo(6);
         }
     }
@@ -87,7 +87,7 @@ class LottoTest {
             //when
             String[] answer = {"j","2","3","3","5","6"};
             //then
-            assertThatThrownBy(() -> input.returnAnswer(answer))
+            assertThatThrownBy(() -> input.saveAnswer(answer))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
         }
@@ -98,7 +98,7 @@ class LottoTest {
             //when
             String[] answer = {"1","2","3","3","5","6"};
             //then
-            assertThatThrownBy(() -> input.returnAnswer(answer))
+            assertThatThrownBy(() -> input.saveAnswer(answer))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
         }
@@ -109,7 +109,7 @@ class LottoTest {
             //when
             String[] answer = {"1","2","9","3","4","5","6"};
             //then
-            assertThatThrownBy(() -> input.returnAnswer(answer))
+            assertThatThrownBy(() -> input.saveAnswer(answer))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
         }
@@ -120,7 +120,7 @@ class LottoTest {
             //when
             String[] answer = {"100","2","1","4","5","6"};
             //then
-            assertThatThrownBy(() -> input.returnAnswer(answer))
+            assertThatThrownBy(() -> input.saveAnswer(answer))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
         }
@@ -137,7 +137,7 @@ class LottoTest {
             String[] answer = {"1", "2", "3", "4", "5", "6"};
             String bonus = "3";
             //then
-            assertThatThrownBy(() -> input.returnBonus(bonus, answer))
+            assertThatThrownBy(() -> input.saveBonus(bonus, answer))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
         }
@@ -149,7 +149,7 @@ class LottoTest {
             String[] answer = {"1","2","3","3","5","6"};
             String bonus = "4,6";
             //then
-            assertThatThrownBy(() -> input.returnBonus(bonus, answer))
+            assertThatThrownBy(() -> input.saveBonus(bonus, answer))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
         }
@@ -161,7 +161,7 @@ class LottoTest {
             String[] answer = {"1","2","3","3","5","6"};
             String bonus = "50";
             //then
-            assertThatThrownBy(() -> input.returnBonus(bonus, answer))
+            assertThatThrownBy(() -> input.saveBonus(bonus, answer))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
         }
