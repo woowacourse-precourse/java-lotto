@@ -65,6 +65,23 @@ public class Application {
         Lotto luckyNums = new Lotto(inputNums);
         return luckyNums;
     }
+
+    public static List<Integer> readLuckyNumbers(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String userInput = Console.readLine();
+        String[] inputs = userInput.split(",");
+        List<Integer> numbers = new ArrayList<>();
+
+        for (String input : inputs) {
+            try {
+                numbers.add(Integer.valueOf(input));
+            } catch (Exception e) {
+                throw new IllegalArgumentException("[ERROR]: 입력값이 숫자가 아닙니다.");
+            }
+        }
+
+        return numbers;
+    }
     
     public static void main(String[] args) {
         // TODO: 프로그램 구현
