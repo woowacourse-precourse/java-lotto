@@ -1,37 +1,26 @@
 package lotto.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Lottos {
 
-    private final static int LOTTO_PRICE = 1000;
-
     private final List<Lotto> lottos;
     private final int purchaseAmount;
 
-    public Lottos(int purchaseAmount) {
-        validatePurchaseAmount(purchaseAmount);
-        this.purchaseAmount = purchaseAmount;
-        this.lottos = generateLottos();
+    public Lottos(List<Lotto> lottos, String purchaseAmountStr) {
+        this.lottos = lottos;
+        this.purchaseAmount = purchaseAmountStringToInteger(purchaseAmountStr);
     }
 
-    private void validatePurchaseAmount(int purchaseAmount) {
-        if(purchaseAmount % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private List<Lotto> generateLottos() {
-        int amount = purchaseAmount / LOTTO_PRICE;
-        List<Lotto> newLottos = new ArrayList<>();
-        for(int i = 0; i < amount; i++) {
-            newLottos.add(new Lotto(LottoNumberGenerator.generateNumbers()));
-        }
-        return newLottos;
+    private int purchaseAmountStringToInteger(String purchaseAmountStr) {
+        return Integer.parseInt(purchaseAmountStr);
     }
 
     public List<Lotto> getLottos() {
         return lottos;
+    }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
     }
 }
