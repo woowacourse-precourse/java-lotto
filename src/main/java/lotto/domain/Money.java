@@ -25,7 +25,7 @@ public class Money {
 
     private void validateLottoUnit(int money) {
         if (money % 1000 != 0 || money <= 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위로 입력해주세요");
+            throw new IllegalArgumentException("구입 금액은 1000원 단위로 입력해주세요");
         }
     }
 
@@ -44,13 +44,6 @@ public class Money {
     @Override
     public int hashCode() {
         return Objects.hash(money);
-    }
-
-    @Override
-    public String toString() {
-        return "Money{" +
-                "money=" + money +
-                '}';
     }
 
     public double divide(Money other) {
