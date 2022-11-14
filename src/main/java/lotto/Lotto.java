@@ -9,6 +9,7 @@ import static lotto.I_O_System.BAGIC_ERROR_MESSAGE;
 
 public class Lotto {
     private final List<Integer> numbers;
+    public  static int Bounus_Win = 0;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -32,17 +33,19 @@ public class Lotto {
     }
 
     public void Check_Lottey(int Bonus_Number, List<Integer> Winning_Number, List<List<Integer>> mylist) {
-        for(int i=0; i <mylist.size();i++){
-
-            int num = Check_Winning_Number(Winning_Number,mylist.get(i));
-            System.out.println(num);
+        I_O_System IO = new I_O_System();
+        int[] Number_of_Win = {0, 0, 0, 0, 0, 0, 0};
+        for (int i = 0; i < mylist.size(); i++) {
+           Check_Winning_Number(Winning_Number, mylist.get(i), Number_of_Win);
         }
+        IO.Number_of_Win_Print(Number_of_Win);
     }
 
-    private int Check_Winning_Number(List<Integer> Winning_Number, List<Integer> numbers) {
+    private void Check_Winning_Number(List<Integer> Winning_Number, List<Integer> numbers,int[] Number_of_Win) {
         List<Integer> matchList = Winning_Number.stream().filter(o -> numbers.stream()
                 .anyMatch(Predicate.isEqual(o))).collect(Collectors.toList());
-        return matchList.size();
+        Number_of_Win[matchList.size()]+=1;
     }
+
 
 }
