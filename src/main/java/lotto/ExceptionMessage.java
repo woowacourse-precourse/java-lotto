@@ -8,10 +8,12 @@ public enum ExceptionMessage {
     NotValidateBonusNum("[ERROR] 보너스 번호는 1부터 45사이의 숫자를 입력해야 합니다.");
 
     final private String msg;
+
     public String getMsg() {
         return msg;
     }
+
     ExceptionMessage(String msg) {
-        this.msg=msg;
+        this.msg = msg;
     }
 }

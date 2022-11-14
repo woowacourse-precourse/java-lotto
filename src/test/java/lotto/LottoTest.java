@@ -60,7 +60,7 @@ class LottoTest extends NsTest {
         Lotto buy_numbers = new Lotto(new ArrayList<>(List.of(4, 23, 5, 43, 1, 35)));
 
         //when
-        boolean haveBonus = Lotto.check_bonus(buy_numbers,bonus);
+        boolean haveBonus = Lotto.check_bonus(buy_numbers, bonus);
 
         //then
         assertThat(haveBonus).isEqualTo(false);
@@ -105,7 +105,7 @@ class LottoTest extends NsTest {
         //given
         int[] statistics = {0, 0, 0, 0, 0};
         int bonus = 8;
-        List<Integer> win_numbers = new ArrayList<Integer>(List.of(1, 2, 3, 4, 6, 10));
+        List<Integer> win_numbers = new ArrayList<>(List.of(1, 2, 3, 4, 6, 10));
 
         List<Lotto> buy_lists = new ArrayList<>();
         buy_lists.add(new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 6, 7))));
@@ -115,11 +115,12 @@ class LottoTest extends NsTest {
         buy_lists.add(new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 6, 7))));
 
         //when
-        statistics = Lotto.set_statistics(buy_lists, bonus, win_numbers, statistics);
+        int[] statistics2 = Lotto.set_statistics(buy_lists, bonus, win_numbers, statistics);
 
         //then
-        assertThat(statistics).isEqualTo(new int[]{0, 1, 2, 1, 1});
+        assertThat(statistics2).isEqualTo(new int[]{0, 1, 2, 1, 1});
     }
+
     @Test
     void 예외_테스트_구입금액이_숫자가_아닐때() {
         assertSimpleTest(() -> {

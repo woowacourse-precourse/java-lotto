@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        int money = 0, num, bonus = 0;
+        int money, num, bonus;
         int[] statistics = new int[5];
         double profit, total = 0;
-        List<Integer> win_numbers = null;
+        List<Integer> win_numbers;
         List<Lotto> buy_lists = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
@@ -22,6 +22,9 @@ public class Application {
 
         System.out.println("구입금액을 입력해 주세요.");
 
+        /*
+         * 구입금액 예외사항 처리
+         * */
         try {
             String input = Console.readLine();
             money = Lotto.check_input_validate(input);
@@ -55,6 +58,9 @@ public class Application {
 
         System.out.println("\n당첨 번호를 입력해 주세요.");
 
+        /*
+         * 당첨번호 예외사항 처리
+         * */
         try {
             String input = Console.readLine();
             win_numbers = Arrays.stream(input.split(","))
@@ -80,6 +86,9 @@ public class Application {
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
 
+        /*
+         * 보너스번호 예외사항 처리
+         * */
         try {
             String input = Console.readLine();
             Lotto.check_input_validate(input);
@@ -102,6 +111,6 @@ public class Application {
 
         profit = Lotto.check_profit(statistics, total) / money * 100.0;
 
-        System.out.println("총 수익률은 " + Math.round(profit*10)/10.0 + "%입니다.");
+        System.out.println("총 수익률은 " + Math.round(profit * 10) / 10.0 + "%입니다.");
     }
 }
