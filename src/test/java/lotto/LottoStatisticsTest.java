@@ -42,4 +42,27 @@ class LottoStatisticsTest {
             assertThat(rank.getCount() == 1);
         }
     }
+
+    @Test
+    @DisplayName("총 상금 확인 테스트")
+    void getTotalPrizeTest(){
+        List<List<Integer>> testNumbers = new ArrayList<>();
+        Integer bonusNumber = 4;
+        lottoStatistics.setBonusNumber(bonusNumber);
+
+        testNumbers.add(List.of(1,2,3));            //5등
+        testNumbers.add(List.of(1,2));              //4등
+        testNumbers.add(List.of(1));            //3등
+        testNumbers.add(List.of(1, bonusNumber));   //2등
+        testNumbers.add(List.of());                 //1등
+
+        Iterator testNumberIter = testNumbers.iterator();
+        while (testNumberIter.hasNext()){
+            List<Integer> tmp = (List<Integer>)testNumberIter.next();
+            lottoStatistics.rankCount(tmp);
+        }
+        BigInteger totalPrize = lottoStatistics.getTotalPrize();
+        assertThat(totalPrize)
+                .isEqualTo(2_031_555_000);
+    }
 }
