@@ -54,8 +54,8 @@ public class Application {
 
         int totalIncome = calculateTotalGain(boughtLottos, pickedNumbers, bonusNum);
         float rateOfReturn = getRateOfReturn(totalIncome, MONEY);
-        System.out.printf("총 수익률은 %.2f",rateOfReturn);
-        System.out.println("입니다.");
+        System.out.printf("총 수익률은 %.1f",rateOfReturn);
+        System.out.println("%입니다.");
     }
 
     public static float getRateOfReturn(int totalIncome, final int MONEY) {
@@ -144,17 +144,17 @@ public class Application {
         List<Integer> pickedNumbers = new ArrayList<Integer>();
 
         if (numbers.length != 6) {
-            throw new IllegalArgumentException("[Error] pick 6 different number between 1 to 45");
+            throw new IllegalArgumentException("[ERROR]");
         }
 
         for (int i = 0; i < numbers.length; i++) {
             int number = parseInt(numbers[i]);
 
             if (pickedNumbers.contains(number)) {
-                throw new IllegalArgumentException("[Error] Duplicated number exists");
+                throw new IllegalArgumentException("[ERROR]");
             }
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[Error] Number should be in the range of 1 ~ 45");
+                throw new IllegalArgumentException("[ERROR]");
             }
             pickedNumbers.add(number);
         }
@@ -198,7 +198,7 @@ public class Application {
         boolean isUnitOf1K = ((money % 1000) == 0);
 
         if (isUnitOf1K == false) {
-            throw new IllegalArgumentException("[Error] Money should end with 000");
+            throw new IllegalArgumentException("[ERROR]");
         }
 
         return money;
@@ -209,7 +209,7 @@ public class Application {
             int money = Integer.parseInt(input);
             return money;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[Error] Only numbers are allowed");
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 
