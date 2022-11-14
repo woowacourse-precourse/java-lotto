@@ -22,7 +22,7 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
         int ranking[] = compareUserInputLottos(lottos, numbers);
-        calculateEarnings(ranking, userMoney.getUserInputMoney());
+        double earning=calculateEarnings(ranking, userMoney.getUserInputMoney());
     }
     //사용자 돈 에러 체크 함수
     private static boolean checkErrorInput(String userInput) {
@@ -39,7 +39,7 @@ public class Application {
         return true;
     }
     // 수익률 계산 함수
-    private static void calculateEarnings(int[] ranking, int userInputMoney) {
+    public static double calculateEarnings(int[] ranking, int userInputMoney) {
         int total = ranking[3] * RankingMoney.FIFTH.getMoney()
                 + ranking[4] * RankingMoney.FOURTH.getMoney()
                 + ranking[5] * RankingMoney.THIRD.getMoney()
@@ -48,9 +48,12 @@ public class Application {
         double earnings = total / (double) userInputMoney * 100;
         double roundedEarnings = (double) Math.round(earnings * 10) / 10;
         System.out.println("총 수익률은 " + roundedEarnings + "%입니다.");
+        return roundedEarnings;
     }
     // 사용자 입력 번호와 로또들 비교 함수
-    private static int[] compareUserInputLottos(List<Lotto> lottos, List<Integer> numbers) {
+    // ranking[3]= 3개 맞음, ranking[4]=4개 맞음, ranking[5]=5개 맞음, ranking[7]=5+보너스 맞음
+    // ranking[6]=다 맞음
+    public static int[] compareUserInputLottos(List<Lotto> lottos, List<Integer> numbers) {
         int[] ranking = new int[8];
         for (int i = 0; i < lottos.size(); i++) {
             int cnt = 0;
@@ -94,7 +97,7 @@ public class Application {
         return userNumbers.getNumbers();
     }
     // 로또 만들기 함수
-    private static List<Lotto> makeLotto(int lottoNum) {
+    public static List<Lotto> makeLotto(int lottoNum) {
         ArrayList<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoNum; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
