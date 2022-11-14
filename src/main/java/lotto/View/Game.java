@@ -9,6 +9,14 @@ public class Game {
     private Calculator calculator;
     private Result result;
 
+    public void start(){
+        userSetting();
+        computerSetting();
+        printUserLotto();
+        calculate();
+        printResult();
+    }
+
     public void userSetting(){
         user = new User(screen.readMoney());
         user.makeLottos();
