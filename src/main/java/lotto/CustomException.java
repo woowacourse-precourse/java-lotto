@@ -6,7 +6,6 @@ public class CustomException {
             throw new IllegalArgumentException();
         } catch (IllegalArgumentException e) {
             System.out.println(s);
-            throw e;
         }
     }
 }

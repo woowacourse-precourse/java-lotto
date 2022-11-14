@@ -24,7 +24,6 @@ public class InputMoney {
             Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] 숫자 형태의 입력이어야 합니다.");
-            throw e;
         }
         return true;
     }
