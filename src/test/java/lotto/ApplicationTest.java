@@ -1,8 +1,13 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import number.BonusNumber;
+import number.WinningNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import type.Rank;
 
 import java.util.HashMap;
 import java.util.List;
@@ -58,6 +63,24 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @ParameterizedTest
+    @CsvSource({"a123", ")234", "3h4i"})
+    void 숫자_이외의_값_입력할_경우_예외_테스트(String input) {
+        assertSimpleTest(() -> {
+            runException(input);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1^2^3^4^5^6", "123456"})
+    void 당첨_번호를_쉼표로_구분하지_않았을_경우_예외_테스트(String input) {
+        assertSimpleTest(() -> {
+            runException("2000", input);
+            assertThat(output()).contains(ERROR_MESSAGE, "당첨 번호는 숫자 6개와 ,(쉼표)로만 작성해야 합니다.");
+        });
+    }
+
     @DisplayName("로또를 금액에 맞는 개수만큼 발행한다.")
     @Test
     void createLottos() {
@@ -70,8 +93,7 @@ class ApplicationTest extends NsTest {
     @Test
     void getNumbersOfRanks() {
         LottoGroups lottoGroups = new LottoGroups(List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Lotto(List.of(1, 2, 3, 4, 5, 7))));
-        Numbers numbers = new Numbers(List.of(1, 2, 3, 7, 12, 13), 9);
-        Map<Rank, Integer> numbersOfRanks = Application.numbersOfRanks(lottoGroups, numbers);
+        Map<Rank, Integer> numbersOfRanks = Application.numbersOfRanks(lottoGroups, List.of(1, 2, 3, 7, 12, 13), 9);
 
         assertThat(numbersOfRanks.get(Rank.FIFTH)).isEqualTo(1);
         assertThat(numbersOfRanks.get(Rank.FOURTH)).isEqualTo(1);

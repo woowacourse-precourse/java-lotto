@@ -2,26 +2,35 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import number.BonusNumber;
+import number.WinningNumbers;
+import type.Rank;
 
 import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        printInputMoneyComment();
-        Money money = new Money(toInt(Console.readLine()));
-        LottoGroups lottos = new LottoGroups(createLottos(money.getNumberToPublishLottos()));
+        try {
+            printInputMoneyComment();
+            Money money = new Money(toInt(Console.readLine()));
+            LottoGroups lottos = new LottoGroups(createLottos(money.getNumberToPublishLottos()));
 
-        lottos.printAmountOfLottosComment();
-        lottos.printAllLottos();
+            lottos.printAmountOfLottosComment();
+            lottos.printAllLottos();
 
-        printInputWinningNumbersComment();
-        List<Integer> winningNumbers = toIntegers(spilt(Console.readLine()));
+            printInputWinningNumbersComment();
+            WinningNumbers winningNumbers = new WinningNumbers(toIntegers(spilt(Console.readLine())));
 
-        printInputBonusNumberComment();
-        Numbers numbers = new Numbers(winningNumbers, toInt(Console.readLine()));
+            printInputBonusNumberComment();
+            BonusNumber bonusNumber = new BonusNumber(toInt(Console.readLine()));
 
-        printTotalResultComment(numbersOfRanks(lottos, numbers));
-        printYieldComment(money, sumOfProceeds(numbersOfRanks(lottos, numbers)));
+            Map<Rank, Integer> numbersOfRanks = numbersOfRanks(lottos, winningNumbers.getWinningNumbers(), bonusNumber.getBonusNumber());
+
+            printTotalResultComment(numbersOfRanks);
+            printYieldComment(money, sumOfProceeds(numbersOfRanks));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void printInputMoneyComment() {
@@ -49,15 +58,18 @@ public class Application {
     }
 
     private static int toInt(String input) {
+        int number;
         try {
-            return Integer.parseInt(input);
+            number = Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
         }
-
+        return number;
     }
 
     private static String[] spilt(String input) {
+        if(!input.contains(","))
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자 6개와 ,(쉼표)로만 작성해야 합니다.");
         return input.split(",");
     }
 
@@ -66,13 +78,13 @@ public class Application {
         try {
             Arrays.stream(input).forEach(item -> result.add(Integer.parseInt(item)));
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는  숫자를 ,(쉼표)로 구분하여 작성해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자 6개와 ,(쉼표)로만 작성해야 합니다.");
         }
         return result;
     }
 
-    public static Map<Rank, Integer> numbersOfRanks(LottoGroups lottos, Numbers numbers) {
-        List<Rank> ranks = lottos.getRanks(numbers.getWinningNumbers(), numbers.getBonusNumber());
+    public static Map<Rank, Integer> numbersOfRanks(LottoGroups lottos, List<Integer> winningNumbers, int bonusNumber) {
+        List<Rank> ranks = lottos.getRanks(winningNumbers, bonusNumber);
         Map<Rank, Integer> numbersOfRanks = new HashMap<>();
         Arrays.stream(Rank.values()).forEach(rank -> numbersOfRanks.put(rank, Collections.frequency(ranks, rank)));
 

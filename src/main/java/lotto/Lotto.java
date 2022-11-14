@@ -1,5 +1,7 @@
 package lotto;
 
+import type.Rank;
+
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
