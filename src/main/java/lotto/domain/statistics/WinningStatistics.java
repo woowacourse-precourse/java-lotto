@@ -30,6 +30,6 @@ public class WinningStatistics {
 
     @Override
     public String toString() {
-        return String.format("당첨 통계\n---\n%s%s", placeHistory, yieldRate);
+        return String.format("당첨 통계\n---\n%s총 수익률은 %s입니다.", placeHistory, yieldRate);
     }
 }
