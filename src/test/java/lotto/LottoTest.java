@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.function.Function;
 import lotto.function.Lotto;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -34,43 +35,43 @@ class LottoTest {
     }
 
 
-    @DisplayName("숫자가 아니거나, 1,000원 단위가 아닌 값이 입력되었을 때 예외를 생성한다.")
+    @DisplayName("구매 금액으로 숫자가 아니거나, 1,000원 단위가 아닌 값이 입력되었을 때 false를 반환한다.")
     @Test
     void validPriceTest() {
         String test1 = "1234";
         String test2 = "1000j";
-        assertThatThrownBy(() -> Function.validPrice(test1)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Function.validPrice(test2)).isInstanceOf(IllegalArgumentException.class);
+        assertThat(Function.validPrice(test1)).isEqualTo(false);
+        assertThat(Function.validPrice(test2)).isEqualTo(false);
     }
 
-    @DisplayName("숫자가 아닌 값이 입력되었을 때 예외를 생성한다.")
+    @DisplayName("당첨 숫자에 숫자가 아닌 값이 입력되었을 때 false를 반환한다.")
     @Test
-    void changeTypeofWinningNumberTest() {
+    void validWinningNumberInputTest() {
         String[] test = new String[]{"a", "b", "c", "d", "e", "f"};
-        assertThatThrownBy(() -> Function.changeTypeofWinningNumber(test)).isInstanceOf(IllegalArgumentException.class);
+        assertThat(Function.validWinningNumberInput(test)).isEqualTo(false);
     }
 
-    @DisplayName("6자리가 아니거나, 숫자가 겹치거나, 범위를 넘었을 때 예외를 생성한다.")
+    @DisplayName("당첨 숫자가 6자리가 아니거나, 숫자가 겹치거나, 범위를 넘었을 때 false를 반환한다.")
     @Test
     void validWinningNumberTest() {
         List<Integer> test1 = List.of(1, 2, 3, 4, 5);
         List<Integer> test2 = List.of(1, 2, 3, 4, 5, 5);
         List<Integer> test3 = List.of(1, 2, 3, 4, 5, 99);
-        assertThatThrownBy(() -> Function.validWinningNumber(test1)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Function.validWinningNumber(test2)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Function.validWinningNumber(test3)).isInstanceOf(IllegalArgumentException.class);
+        assertThat(Function.validWinningNumberCount(test1)).isEqualTo(false);
+        assertThat(Function.validWinningNumberRange(test2)).isEqualTo(false);
+        assertThat(Function.validWinningNumberRange(test3)).isEqualTo(false);
     }
 
-    @DisplayName("숫자가 아니거나, 범위를 넘었거나, 당첨 번호에 이미 존재할때 예외를 생성한다.")
+    @DisplayName("보너스 숫자가 숫자가 아니거나, 범위를 넘었거나, 당첨 번호에 이미 존재할때 false를 반환한다.")
     @Test
     void validBonusTest() {
         List<Integer> win = List.of(1, 2, 3, 4, 5, 6);
         String test1 = "a";
         String test2 = "99";
         String test3 = "1";
-        assertThatThrownBy(() -> Function.validBonus(test1, win)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Function.validBonus(test2, win)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Function.validBonus(test3, win)).isInstanceOf(IllegalArgumentException.class);
+        assertThat(Function.validBonus(test1, win)).isEqualTo(false);
+        assertThat(Function.validBonus(test2, win)).isEqualTo(false);
+        assertThat(Function.validBonus(test3, win)).isEqualTo(false);
     }
 
     @DisplayName("로또 번호와 당첨 번호 및 보너스를 비교하여 맞는 개수를 출력한다.")
@@ -97,7 +98,7 @@ class LottoTest {
         assertThat(Function.countMatching(lotto6, win, 7)).isEqualTo(2);
     }
 
-    @DisplayName("count를 맞는 list로 변환한다.")
+    @DisplayName("로또 결과 카운트를 알맞는 리스트로 변환한다.")
     @Test
     void winLottoTest() {
         List<Integer> test1 = List.of(1, 0, 0, 0, 0);
