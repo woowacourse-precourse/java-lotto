@@ -18,12 +18,13 @@ public class BonusBallAndLotto {
         List<Integer> WinningNumbers = lottoAnswer.getNumbers();
         List<Integer> result = new ArrayList<>();
 
-        for (int sameNumber = 0; sameNumber < resultNumber.size(); sameNumber++) {
+        for (Integer integer : resultNumber) {
             int bonusCaseCount = 0;
             int correctNumberCheck = 0;
 
-            if (resultNumber.get(sameNumber) == BONUS_CONDITIONS) {
-                bonusCaseCount = bonusNumberCase.getBonusCount(random, bonus, WinningNumbers, bonusCaseCount, correctNumberCheck);
+            if (integer == BONUS_CONDITIONS) {
+                bonusCaseCount = bonusNumberCase.getBonusCount(random, bonus, WinningNumbers,
+                        bonusCaseCount, correctNumberCheck);
             }
             result.add(bonusCaseCount);
         }
