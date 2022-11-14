@@ -14,10 +14,10 @@ public class Application {
         if (input_money.isBlank()) throw new IllegalArgumentException("[ERROR] 구입금액을 입력해야 합니다.");
         try {
             money = Integer.parseInt(input_money);
-            if(money <= 0) throw new IllegalArgumentException("[ERROR] 구입금액이 0원이하 일 수 없습니다.");
         } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
+        throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
         }
+        if(money <= 0) throw new IllegalArgumentException("[ERROR] 구입금액이 0원이하 일 수 없습니다.");
         return money;
     }
 
@@ -30,7 +30,7 @@ public class Application {
     }
     static List<Integer> make_lotto_num(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-        numbers.sort(Comparator.naturalOrder());
+//        numbers.sort(Comparator.naturalOrder());
         return numbers;
     }
     static List<List<Integer>> buy_lotto(int chance){
