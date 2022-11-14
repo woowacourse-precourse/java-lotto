@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.Lotto.Lotto;
 import lotto.Lotto.LottoInfo;
 
 import java.util.HashSet;
