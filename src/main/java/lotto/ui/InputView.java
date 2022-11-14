@@ -17,13 +17,11 @@ public enum InputView {
     private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String JACKPOT_NUMBER_SEPARATOR = ",";
 
-    public static int inputMoney() {
+    public static String inputMoney() {
         System.out.println(INPUT_MONEY_MESSAGE);
         String money = Console.readLine();
 
-        InputValidator.validateMoney(money);
-
-        return Integer.parseInt(money);
+        return money;
     }
 
     public static JackpotBonus inputJackpotBonus(){
