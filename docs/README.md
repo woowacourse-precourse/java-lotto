@@ -11,10 +11,14 @@
       - ConstantNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수 모음
       - PatternType: 정규식에 사용되는 문자열 모음
     - dto
-      - Lotto: 로또 1매에 포함된 숫자들
-        - .validate(): 로또가 올바른지 검사한다.
-      - LottoBundleDto: 한 번에 구매한 모든 로또 모음
-      - LottoWinNumberDto: 당첨 로또 숫자
+      - LottoDto: 입력 받을 때 생성되는 로또 숫자
+      - LottoBundleDto: 액수를 입력해 생성되는 로또 묶음
+      - LottoWinNumberDto: 입력한 당첨 번호
+      - LottoBonusNumberDto: 입력한 보너스 번호
+    - entity
+      - Lotto: 저장되는 로또
+      - LottoBundle: 저장되는 로또 묶음
+      - WinNumber: 저장되는 당첨 및 보너스 번호
     - repository
       - LottoBundleRepository: 구매 로또 저장소
       - LottoWinNumberRepository: 당첨 번호 저장소
