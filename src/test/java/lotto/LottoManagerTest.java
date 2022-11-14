@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoManagerTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -15,7 +14,7 @@ class LottoManagerTest extends NsTest {
     @Test
     @DisplayName("숫자 이외의 값 입력시 예외 반환")
     public void throwExceptionWithIllegalAmount(){
-        assertThatThrownBy(()->{
+        assertSimpleTest(()->{
             runException("asdf");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
