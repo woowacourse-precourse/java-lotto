@@ -17,7 +17,7 @@ public class Application {
             List<Integer> results = collector.collectRankResults(lottoList);
 
             double profitRate = calculator.getProfitRate(results, money);
-            System.out.printf("총 수익률은 %g%%입니다.", profitRate);
+            System.out.printf("총 수익률은 %.1f%%입니다.", profitRate);
         } catch(IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
