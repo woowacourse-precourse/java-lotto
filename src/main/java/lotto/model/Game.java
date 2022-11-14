@@ -12,16 +12,6 @@ public class Game {
     public static final Integer maximumLottoNumber = 45;
     public static final Integer numberToDraw = 6;
 
-
-    public enum Rank{
-        FIRST,
-        SECOND,
-        THIRD,
-        FOURTH,
-        FIFTH,
-        NONE
-    }
-
     private Lotto winningLotto;
     private Integer bonus = 0;
 
@@ -52,17 +42,11 @@ public class Game {
     }
 
     private void validateBonusByDistinction(Integer bonus){
-        if (winningLotto.contains(bonus)) throw new IllegalArgumentException();
+        if (winningLotto.countBonus(bonus) == 1) throw new IllegalArgumentException();
     }
 
-    private Rank getLottoRank(Integer matchedNumberCount, Boolean hasBonusNumber){
-        if (matchedNumberCount == 6) return Rank.FIRST;
-        if (matchedNumberCount == 5 && hasBonusNumber) return Rank.SECOND;
-        if (matchedNumberCount == 5) return Rank.THIRD;
-        if (matchedNumberCount == 4) return Rank.FOURTH;
-        if (matchedNumberCount == 3) return Rank.FIFTH;
-        return Rank.NONE;
-    }
+
+
 
 
 }
