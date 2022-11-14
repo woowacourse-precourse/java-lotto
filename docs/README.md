@@ -3,7 +3,7 @@
 ### 기능 목록
 
 - [ ] 로또를 구입 금액에 따라 발행한다. - LottoGenerator#createLottos()
-  - [ ] 로또 발행 개수를 구한다. - LottoGenerator#getCountOfLottos()
+  - [ ] 로또 발행 개수를 구한다. - LottoGenerator#getAmountOfLottos()
   - [ ] 1부터 45까지의 서로 다른 임의의 숫자 6개를 생성한다. - LottoGenerator#createRandomNumbers()
   - [ ] 오름차순으로 정렬한다
 - [ ] 당첨 번호와 모든 발행 번호를 비교한다. - Collector#collectReults()
@@ -16,9 +16,9 @@
   - [ ] 총 수익을 구한다. - Calculator#getProfit()
 
 #### 에러 상황
-- [ ] 로또 구입 금액입력 - PurchaseManager#askAmountOfMoney()
-  - [ ] 숫자가 아닌 경우 - PurchaseManager#isDecimal()
-  - [ ] 1000원 단위가 아닌 경우 - PurchaseManager#isThousandUnit()
+- [x] 로또 구입 금액입력 - PurchaseManager#askAmountOfMoney()
+  - [x] 숫자가 아닌 경우 - PurchaseManager#isDecimal()
+  - [x] 1000원 단위가 아닌 경우 - PurchaseManager#isThousandUnit()
 - [ ] 당첨번호 입력 - WinningNumberVerifier#askWinningNumber()
   - [ ] 입력 포맷이 "숫자,숫자,숫자..."이 아닌 경우 - WinningNumberVerifier#isCorrectFormat()
   - [ ] 입력 길이가 11이 아닌 경우 - WinningNumberVerifier#isLengthEleven()

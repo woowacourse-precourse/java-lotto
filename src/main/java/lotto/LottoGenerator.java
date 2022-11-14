@@ -1,18 +1,27 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGenerator {
 
     public List<Lotto> createLottos(int money) {
-        return null;
+        List<Lotto> lottoList = new ArrayList<>();
+        int amount = getAmountOfLottos(money);
+
+        for (int i = 0; i < amount; i++) {
+            Lotto lotto = new Lotto(createRandomNumbers());
+            lottoList.add(lotto);
+        }
+
+        return lottoList;
     }
 
-    private int getCountOfLottos() {
+    private int getAmountOfLottos(int money) {
         return 0;
     }
 
-    private Lotto createRandomNumbers() {
+    private List<Integer> createRandomNumbers() {
         return null;
     }
 }
