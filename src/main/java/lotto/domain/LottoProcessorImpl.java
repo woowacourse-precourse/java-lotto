@@ -26,10 +26,8 @@ public class LottoProcessorImpl implements LottoProcessor{
     }
 
     @Override
-    public List<Lotto> buyLotto(Integer money) {
+    public List<Lotto> createLotto(Integer count) {
         List<Lotto> clientLotto = new ArrayList<>();
-        int count = money/PriceEnum.LOTTO_PRICE.getValue();
-
         IntStream.range(0, count)
                 .forEach(i -> clientLotto.add(lottoRepository.create()));
 

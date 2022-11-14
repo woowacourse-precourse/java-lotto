@@ -80,26 +80,26 @@ public class LottoProcessorTest {
     }
 
     @TestFactory
-    @DisplayName("LottoProcessor buyLotto Test")
-    Stream<DynamicTest> lottoProcessorBuyLottoTest() {
+    @DisplayName("LottoProcessor createLotto Test")
+    Stream<DynamicTest> lottoProcessorCreateLottoTest() {
         lottoProcessor = new LottoProcessorImpl();
 
         return Stream.of(
                 DynamicTest.dynamicTest("3000원인 경우", () -> {
-                    final int money = 3000;
-                    List<Lotto> result = lottoProcessor.buyLotto(money);
+                    final Integer count = 3;
+                    List<Lotto> result = lottoProcessor.createLotto(count);
 
                     assertThat(result.size()).isEqualTo(3);
                 }),
                 DynamicTest.dynamicTest("1000원인 경우", () -> {
-                    final int money = 1000;
-                    List<Lotto> result = lottoProcessor.buyLotto(money);
+                    final Integer count = 1;
+                    List<Lotto> result = lottoProcessor.createLotto(count);
 
                     assertThat(result.size()).isEqualTo(1);
                 }),
                 DynamicTest.dynamicTest("8000원인 경우", () -> {
-                    final int money = 8000;
-                    List<Lotto> result = lottoProcessor.buyLotto(money);
+                    final Integer count = 8;
+                    List<Lotto> result = lottoProcessor.createLotto(count);
 
                     assertThat(result.size()).isEqualTo(8);
                 })
