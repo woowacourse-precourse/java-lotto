@@ -21,7 +21,7 @@ class LottoCountingTest {
     }
 
     // 위에서부터 6개 일치, 5개 일치 및 보너스번호 일치, 5개 일치, 4개 일치, 3개 일치, 2개 일치, 1개 일치, 0개 일치 2개 순으로 나열했다.
-    // 1등,2등,3등,4등,5등, 당첨없음, 당첨없음 순이다.
+    // 1등,2등,3등,4등,5등,당첨없음 4개 순이다.
     Lotto[] lottoPaperInput = new Lotto[]{
             new Lotto(List.of(1, 2, 3, 4, 5, 6)), // 6, 1등
             new Lotto(List.of(1, 2, 4, 5, 6, 8)), // 5, 2등
@@ -221,12 +221,15 @@ class LottoCountingTest {
         // 4 : 5등
         // 5~8 : 탈락(-1)
 
-        // 하드코딩하기.
         void putExpectedResult(Map<Integer, Integer> expectedResult,String input){
             String[] inputs = input.split(" ");
             for(int inputIndex = 1 ; inputIndex <= inputs.length; inputIndex++){
                 int value = Integer.parseInt(inputs[inputIndex-1]);
-                expectedResult.put(inputIndex,value);
+                int ranking = inputIndex;
+                if(6 <= ranking) {
+                    ranking = -1;
+                }
+                expectedResult.put(ranking,value);
             }
         }
 
@@ -254,5 +257,33 @@ class LottoCountingTest {
             testWinningPaperCase(sizeInput,expectedOutput);
         }
 
+        @Test
+        void countWinningPaper_case3(){
+            int sizeInput = 3;
+            String expectedOutput = "1 1 1";
+            testWinningPaperCase(sizeInput,expectedOutput);
+        }
+
+
+        @Test
+        void countWinningPaper_case4(){
+            int sizeInput = 4;
+            String expectedOutput = "1 1 1 1";
+            testWinningPaperCase(sizeInput,expectedOutput);
+        }
+
+        @Test
+        void countWinningPaper_case5(){
+            int sizeInput = 5;
+            String expectedOutput = "1 1 1 1 1";
+            testWinningPaperCase(sizeInput,expectedOutput);
+        }
+
+        @Test
+        void countWinningPaper_case6(){
+            int sizeInput = 8;
+            String expectedOutput = "1 1 1 1 1 3";
+            testWinningPaperCase(sizeInput,expectedOutput);
+        }
     }
 }
