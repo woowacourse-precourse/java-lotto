@@ -25,4 +25,17 @@ public class NumberValidate {
             throw new IllegalArgumentException("[ERROR] 1~45의 정수만 입력 할 수 있습니다.");
         }
     }
+
+    public static void digitValidate(String numbers) {
+        if (!numbers.matches("-?\\d+")) {
+            throw new IllegalArgumentException("[ERROR] 정수만 입력 가능합니다.");
+        }
+    }
+
+    public static void divideValidate(String numbers) {
+        int digitPurchaseAmount = Integer.parseInt(numbers);
+        if (digitPurchaseAmount % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입금액은 1000단위로 입력 할 수 있습니다.");
+        }
+    }
 }
