@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Compute {
+    private final HashMap<String, Integer> winRecords;
     private enum WinType {
         MATCH3(3,"match3", 5000, "3개 일치 (5,000원) - $match3개"),
         MATCH4(4, "match4", 50000, "4개 일치 (50,000원) - $match4개"),
@@ -33,6 +34,24 @@ public class Compute {
         }
     }
 
+    public Compute(Lottos lottos, WinningNumbers winningNumbers, Money money) {
+        HashMap<String, Integer> winRecords = initializeWinRecords();
+
+        for (Lotto lotto : lottos.getLottos()) {
+            winRecords = computeWinRecords(
+                    winRecords,
+                    lotto.getNumbers(),
+                    winningNumbers.getWinningNumbers(),
+                    winningNumbers.getBonusNumber()
+            );
+        }
+        this.winRecords = winRecords;
+
+        printWinRecords(winRecords);
+
+        float profit = computeProfit(money.getMoney(), winRecords);
+        printProfit(profit);
+    }
     private HashMap<String, Integer> initializeWinRecords() {
         HashMap<String, Integer> winRecords = new HashMap<>();
 
