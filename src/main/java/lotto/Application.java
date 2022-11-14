@@ -23,6 +23,7 @@ public class Application {
         String[] inputNumbers = input.split(",");
         List<Integer> numbers = new ArrayList<>();
         for(String inputNumber : inputNumbers){
+            validateNumber(inputNumber);
             numbers.add(Integer.parseInt(inputNumber));
         }
         return numbers;
@@ -41,6 +42,18 @@ public class Application {
         }
         if (inputNumber % 1000 != 0) {
             throw new IllegalArgumentException(lotto.Error.INVALID_PRICE.getMessage());
+        }
+    }
+
+    public static void validateNumber(String input) {
+        int number;
+        try {
+            number = Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(Error.INVALID_INPUT_VALUE.getMessage());
+        }
+        if (number > 45 || number < 1) {
+            throw new IllegalArgumentException(Error.INVALID_INPUT_VALUE.getMessage());
         }
     }
 }
