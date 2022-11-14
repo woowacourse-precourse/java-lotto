@@ -31,4 +31,20 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 중복된 값이 존재합니다. numbers: " + numbers);
         }
     }
+
+    public int matchCountOfWinningNumbers(List<Integer> winningNumbers) {
+        int winNumber = 0;
+
+        for (int number : numbers) {
+            if (winningNumbers.contains(number)) {
+                winNumber += 1;
+            }
+        }
+
+        return winNumber;
+    }
+
+    public boolean isMatchBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }

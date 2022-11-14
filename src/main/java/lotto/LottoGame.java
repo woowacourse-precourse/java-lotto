@@ -13,6 +13,9 @@ public class LottoGame {
         Lotteries lotteries = buyLotteriesWithMoney(money);
 
         WinNumbers winNumbers = inputWinNumbers();
+
+        LottoResult lottoResult = lotteries.countMatchNumbers(winNumbers);
+        Output.printWinningStatistics(lottoResult);
     }
 
     private Money inputUserMoney() {

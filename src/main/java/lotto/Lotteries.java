@@ -20,4 +20,18 @@ public class Lotteries {
 
         return stringBuilder.toString();
     }
+
+    public LottoResult countMatchNumbers(WinNumbers winNumbers) {
+        LottoResult lottoResult = new LottoResult();
+
+        for (Lotto lotto : lotteries) {
+            int countOfWinningNumbers = lotto.matchCountOfWinningNumbers(winNumbers.getWinNumbers());
+            boolean matchBonusNumber = lotto.isMatchBonusNumber(winNumbers.getBonusNumber());
+
+            Match match = Match.getMatch(countOfWinningNumbers, matchBonusNumber);
+            lottoResult.plusLottoResult(match);
+        }
+
+        return lottoResult;
+    }
 }

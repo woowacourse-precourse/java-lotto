@@ -44,6 +44,12 @@ public class InputValidator {
         }
     }
 
+    public static void validateDuplicateBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 입력된 보너스 숫자가 당첨 숫자에 포함되어있습니다. bonusNumber: " + bonusNumber);
+        }
+    }
+
     public static void validateDuplicateWinningNumbers(List<Integer> winningNumbers) {
         Set<Integer> set = new HashSet<>(winningNumbers);
 
