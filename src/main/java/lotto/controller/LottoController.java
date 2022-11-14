@@ -20,8 +20,8 @@ public class LottoController {
     public void run() {
         try {
             start();
-        } catch (IllegalArgumentException errorMessage) {
-            System.out.println(errorMessage);
+        } catch (IllegalArgumentException e) {
+            outputView.printException(e);
         }
     }
 

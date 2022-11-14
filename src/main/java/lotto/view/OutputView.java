@@ -28,6 +28,10 @@ public class OutputView {
         }
     }
 
+    public void printException(Exception e) {
+        System.out.println("[ERROR] " + e.getMessage());
+    }
+
     public void printPercentage(double percentage) {
         System.out.printf("총 수익률은 %.1f%%입니다.", percentage);
     }
