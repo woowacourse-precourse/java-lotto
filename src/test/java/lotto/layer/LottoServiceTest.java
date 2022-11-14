@@ -1,6 +1,7 @@
 package lotto.layer;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mockStatic;
 
@@ -90,6 +91,19 @@ class LottoServiceTest {
         // then
         assertThat(frequency.get(WinningLotto.PLACE_5)).isEqualTo(1);
         randoms.close();
+    }
+
+    @DisplayName("당첨 번호와 보너스 번호는 중복이 되면 안된다")
+    @Test
+    void lottoServiceMakeFrequencyNotDuplicateParameter() {
+        // given
+        List<Integer> values = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        LottoNumber bonusNumber = LottoNumber.getInstance(6);
+        Lotto lotto = new Lotto(values);
+
+        // expect
+        assertThatThrownBy(() -> lottoService.getWinningLottoFrequency(lotto, bonusNumber)).isInstanceOf(
+                IllegalArgumentException.class);
     }
 
     @DisplayName("수익률 공식에 따라 계산한다")
