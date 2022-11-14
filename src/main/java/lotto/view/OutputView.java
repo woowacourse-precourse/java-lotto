@@ -10,6 +10,7 @@ public class OutputView {
     private static final String PURCHASE_OUTPUT = "개를 구매했습니다.";
 
     public static void lottoTicketsOut() {
+        System.out.println();
         Money money = new Money();
         System.out.println(money.getLottoTickets() + PURCHASE_OUTPUT);
 
@@ -17,7 +18,7 @@ public class OutputView {
         List<Lotto> newLotto = generateLotto.getLotto();
 
         for(Lotto lotto: newLotto) {
-            System.out.println(lotto);
+            System.out.println(lotto.getLotto());
         }
     }
 }
