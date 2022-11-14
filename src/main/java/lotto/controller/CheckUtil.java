@@ -34,4 +34,10 @@ public class CheckUtil {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_ERROR_MESSAGE.getMessage());
         }
     }
+
+    public static void checkIsDuplicatedNumbers(List<Integer> winning,int bonus){
+        for(int num:winning) {
+            if (num == bonus) throw new IllegalArgumentException(WINNING_BONUS_NUMBER_DUPLICATED_ERROR_MESSAGE.getMessage());
+        }
+    }
 }
