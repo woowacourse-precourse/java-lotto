@@ -16,12 +16,12 @@ public class WinnerNumber {
 
     public WinnerNumber(List<String> winnerNumber) {
         validator.validateLottoNumber(winnerNumber.get(LOTTO_NUMBER));
-        this.numbers = creatNumberList(winnerNumber.get(LOTTO_NUMBER));
+        this.numbers = creatNumbers(winnerNumber.get(LOTTO_NUMBER));
         validator.validateBonusNumber(winnerNumber.get(BONUS_NUMBER), numbers);
         this.bonusNumber = Integer.parseInt(winnerNumber.get(BONUS_NUMBER));
     }
 
-    private List<Integer> creatNumberList(String lottoNumber) {
+    private List<Integer> creatNumbers(String lottoNumber) {
         return Arrays.stream(lottoNumber.split(COMMA))
                 .map(Integer::parseInt)
                 .sorted()
