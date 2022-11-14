@@ -8,9 +8,9 @@ public class BonusNumberChecker {
     private final int number;
 
 
-    public BonusNumberChecker(int bonusNumber, List<Integer> lottoWinList){
+    public BonusNumberChecker(int bonusNumber, List<Integer> lottoWinList) {
         validateRange(bonusNumber);
-        validateOverlap(bonusNumber,lottoWinList);
+        validateOverlap(bonusNumber, lottoWinList);
 
         this.number = bonusNumber;
 
@@ -30,7 +30,7 @@ public class BonusNumberChecker {
 
     }
 
-    public int bonusReturn(){
+    public int bonusReturn() {
         return number;
     }
 
