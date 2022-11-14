@@ -38,7 +38,9 @@ public class Lotto {
         return matchNumCnt;
     }
 
-    private boolean isMatched(int key, int low, int high){
+    //보너스 번호 일치 여부부
+
+   private boolean isMatched(int key, int low, int high){
         int mid;
 
         if(low <= high){

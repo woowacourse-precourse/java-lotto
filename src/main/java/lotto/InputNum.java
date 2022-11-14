@@ -24,9 +24,17 @@ public class InputNum {
 
         List<Integer> winningNums = changStringToInteger(InputNums);
 
+        //중복 검사
+        validateDuplication(winningNums);
+
         for(int num : winningNums){
             validateRange(num);
         }
+
+        winningNums.add(askBonusNum());
+
+        //중복 검사
+        validateDuplication(winningNums);
 
         return winningNums;
     }
@@ -39,6 +47,7 @@ public class InputNum {
 
         int num = Integer.valueOf(inputNum);
         validateRange(num);
+
 
         return num;
     }
@@ -60,6 +69,12 @@ public class InputNum {
     private static void validateRange(int Num){
         if(Num < 1 || Num > 45){
             throw new IllegalArgumentException("[ERROR] 1~45사이의 숫자 1개를 입력하여 주세요.");
+        }
+    }
+
+    private static void validateDuplication(List<Integer> winningNums){
+        if(winningNums.size() != winningNums.stream().distinct().count()){
+            throw new IllegalArgumentException("[ERROR] 중복되는 숫자가 있습니다.");
         }
     }
 
