@@ -4,6 +4,7 @@ import lotto.model.Lottos;
 import lotto.model.LottosResult;
 
 public class OutputView {
+
     public static final String NUMBER_OF_PURCHASED_LOTTOS_MESSAGE_FORMAT = "\n%d개를 구매했습니다.\n";
     public static final String PROFIT_RATE_MESSAGE_FORMAT = "총 수익률은 %.1f%%입니다.\n";
     private static OutputView instance;

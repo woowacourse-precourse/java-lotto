@@ -48,7 +48,7 @@ public class Lotto {
         return LottoPrize.toPrize(compareResult);
     }
 
-    public int getWinningAmount(WinningNumbers winningNumbers) {
+    public int calculateWinningAmount(WinningNumbers winningNumbers) {
         return getPrize(winningNumbers).getWinningAmount();
     }
 

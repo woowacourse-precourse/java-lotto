@@ -22,7 +22,7 @@ public class Lottos {
 
     public int calculateWinningAmount(WinningNumbers winningNumbers) {
         return lottos.stream()
-                .mapToInt(lotto -> lotto.getWinningAmount(winningNumbers))
+                .mapToInt(lotto -> lotto.calculateWinningAmount(winningNumbers))
                 .sum();
     }
 
