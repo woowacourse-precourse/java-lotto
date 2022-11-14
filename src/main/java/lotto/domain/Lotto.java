@@ -18,18 +18,16 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    @Override
+    public String toString() {
+        return String.format("[%d, %d, %d, %d, %d, %d]", numbers.get(0), numbers.get(1), numbers.get(2), numbers.get(3), numbers.get(4), numbers.get(5));
+    }
+
     public List<Integer> getElements() {
         return this.numbers;
     }
 
     public void sortElements() {
         Collections.sort(this.numbers);
-    }
-
-    public void printElements() {
-        System.out.print("[");
-        for(int i=0; i<5; i++)
-            System.out.print(this.numbers.get(i) + ", ");
-        System.out.println(this.numbers.get(5) + "]");
     }
 }
