@@ -20,9 +20,9 @@ public enum Statistics {
         this.message = message;
     }
 
-    public static final Rank getRank(int numberOfMatched) {
-        return Arrays.stream(Rank.values())
-                .filter(rank -> rank.cntOfMatchedNum == numberOfMatched)
+    public static final Statistics getStatistics(int numberOfMatched) {
+        return Arrays.stream(Statistics.values())
+                .filter(statistics -> statistics.cntOfMatchedNum == numberOfMatched)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 3개 이상 일치하지 않습니다."));
     }

@@ -21,8 +21,8 @@ public class PrintServiceImpl implements PrintService{
     public void printWinningResult(Map<Statistics, Integer> result, double yield) {
         System.out.println(printMessage.STATISTIC_INFO);
         System.out.println("---");
-        for (Statistics rank : Statistics.values()) {
-            System.out.println(rank.getMessage() + result.get(rank) + "개");
+        for (Statistics statistics : Statistics.values()) {
+            System.out.println(statistics.getMessage() + result.get(statistics) + "개");
         }
         System.out.println(printMessage.TOTAL_PRIZE + yield + "%입니다.");
     }
