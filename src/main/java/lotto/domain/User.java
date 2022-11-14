@@ -8,6 +8,11 @@ import java.util.stream.Collectors;
 
 public class User {
     private static final int LOTTO_PRICE = 1000;
+    private static final int ZERO = 0;
+    private static final int RANGE_MIN = 1;
+    private static final int RANGE_MAX = 45;
+    private static final int LOTTO_SIZE = 6;
+
     private final int money;
     private final List<Lotto> userLottos;
 
@@ -23,15 +28,14 @@ public class User {
         moneyValidate(money);
         this.money = money;
         userLottos = new ArrayList<>();
-        for (int i = 0; i < countingLottos(money); i++) {
+        for (int i = ZERO; i < countingLottos(money); i++) {
             Lotto lotto = new Lotto(pickNumberForLotto());
             userLottos.add(lotto);
         }
-//        Stream<Lotto> stream = userLottos.stream().map(n -> new Lotto(pickNumberForLotto())).limit(5);
     }
 
     private void moneyValidate(int money) {
-        if (money % LOTTO_PRICE != 0) {
+        if (money % LOTTO_PRICE != ZERO) {
             throw new IllegalArgumentException();
         }
     }
@@ -39,10 +43,10 @@ public class User {
     private int countingLottos(int money) {
         return money / LOTTO_PRICE;
     }
-
-
+    
     private List<Integer> pickNumberForLotto() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        return Randoms.pickUniqueNumbersInRange(RANGE_MIN, RANGE_MAX, LOTTO_SIZE)
                 .stream().sorted().collect(Collectors.toList());
     }
+    
 }

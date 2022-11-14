@@ -13,11 +13,9 @@ public class OutputView {
     private static final String OUTPUT_ENTER_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     private static final String OUTPUT_WINNING_RESULTS = "당첨 통계";
     private static final String OUTPUT_LINE = "---";
-
-
-    private void outputPrint(String print) {
-        System.out.println(print);
-    }
+    private static final String OUTPUT_EA = "개";
+    private static final String OUTPUT_PROFIT_PERCENT_IS_1 = "총 수익률은 ";
+    private static final String OUTPUT_PROFIT_PERCENT_IS_2 = "%입니다.";
 
     public static void outputEnterMoney() {
         System.out.println(OUTPUT_ENTER_MONEY);
@@ -42,14 +40,9 @@ public class OutputView {
         System.out.println(OUTPUT_WINNING_RESULTS);
         System.out.println(OUTPUT_LINE);
         for (Ranking ranking : Ranking.values()) {
-            System.out.println(ranking.description() + winningResults.get(ranking) + "개");
+            System.out.println(ranking.description() + winningResults.get(ranking) + OUTPUT_EA);
         }
-        System.out.println("총 수익률은 " + profitPercent + "%입니다.");
+        System.out.println(OUTPUT_PROFIT_PERCENT_IS_1 + profitPercent + OUTPUT_PROFIT_PERCENT_IS_2);
     }
-    //3개 일치 (5,000원) - 1개
-    //4개 일치 (50,000원) - 0개
-    //5개 일치 (1,500,000원) - 0개
-    //5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
-    //6개 일치 (2,000,000,000원) - 0개
-    //총 수익률은 62.5%입니다.
+
 }

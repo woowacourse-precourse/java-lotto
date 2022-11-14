@@ -39,4 +39,5 @@ public enum Ranking {
     public static Ranking valueOfNumber(double count) {
         return BY_COUNT.get(count);
     }
+
 }
