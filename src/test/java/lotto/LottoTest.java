@@ -64,4 +64,16 @@ class LottoTest {
 		assertThat(60000000).isEqualTo(service.totalPrize());
 
 	}
+
+	@Test
+	void 수익률_계산() {
+		Service service = new Service();
+		service.money = 8000;
+		service.setPrize();
+		service.checkRank(3, 0);
+
+		assertThat(62.5).isEqualTo(service.yield());
+
+	}
+	
 }
