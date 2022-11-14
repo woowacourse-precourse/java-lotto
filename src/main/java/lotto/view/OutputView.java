@@ -11,12 +11,11 @@ import lotto.WinningStat;
 public class OutputView {
 
     private static final String LOTTO_QUANTITY_MESSAGE = "개를 구매했습니다.";
-    private static final String LOTTO_STAT_MESSAGE = "당첨 통계";
+    private static final String LOTTO_STAT_MESSAGE = "\n당첨 통계";
     private static final String DIVIDING_LINE_MESSAGE = "---";
 
     public static void printLottoQuantity(Quantity quantity) {
-        String result = quantity.getNumber()
-                + " "
+        String result = "\n" + quantity.getNumber()
                 + LOTTO_QUANTITY_MESSAGE;
 
         System.out.println(result);
@@ -35,7 +34,11 @@ public class OutputView {
             int count = winningStat.getCount();
             PrizeType prizeType = matchingType.getPrizeType();
 
-            String result = matchingType.getMatchCount() + "개 일치 (" + prizeType.getMoney() + ")원 - " + count + "개";
+            String result = matchingType.getMatchCount() + "개 일치 (" + prizeType.getMoney() + "원) - " + count + "개";
+            if (matchingType == MatchingType.FIVE_WITH_BONUS_MATCH) {
+                result = matchingType.getMatchCount() + "개 일치, 보너스 볼 일치 (" + prizeType.getMoney() + "원) - " + count + "개";
+            }
+
             System.out.println(result);
         }
     }
