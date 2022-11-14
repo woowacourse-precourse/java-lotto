@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.NumberValidate.*;
+
 public class LottoStore {
 
     public static void start() {
@@ -19,6 +21,8 @@ public class LottoStore {
 
         Lotto winningNumbers = getWinningNumbers(LottoPrinter.inputer("당첨 번호를 입력해 주세요."));
         String bonusNumber = LottoPrinter.inputer("보너스 번호를 입력해 주세요.");
+        divideValidate(bonusNumber);
+        inRangeValidate(Integer.parseInt(bonusNumber));
 
 
     }
