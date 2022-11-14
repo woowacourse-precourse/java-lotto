@@ -38,4 +38,11 @@ public class Ui {
             System.out.println(lottoNumber.getNumbers().toString());
         }
     }
+
+    public void lottoResultTotal(List<Integer> lottoResult) {
+        System.out.println("당첨 통계\n" + "---");
+        for (LottoResult result : LottoResult.values()) {
+            System.out.println(result.getDetail() + " (" + result.getMoney() + ") - " + lottoResult.get(result.getIndex()) + "개");
+        }
+    }
 }
