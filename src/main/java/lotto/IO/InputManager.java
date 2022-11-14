@@ -2,7 +2,7 @@ package lotto.IO;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.IO.message.ErrorCode;
-import lotto.IO.message.IOMessage;
+import lotto.IO.message.UIMessage;
 import lotto.config.LottoConfig;
 
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class InputManager {
     public static int scanMoney() throws IllegalArgumentException {
         try {
-            System.out.println(IOMessage.ASK_PRICE.getMessage());
+            System.out.println(UIMessage.ASK_PRICE.getMessage());
             int price = Integer.parseInt(Console.readLine());
             OutputManager.printEmptyLine();
 
@@ -27,7 +27,7 @@ public class InputManager {
 
     public static List<Integer> scanAnswer() throws IllegalArgumentException {
         try {
-            System.out.println(IOMessage.ASK_ANSWER.getMessage());
+            System.out.println(UIMessage.ASK_ANSWER.getMessage());
 
             return Arrays.stream(Console.readLine().split(","))
                     .map(Integer::parseInt)
@@ -41,7 +41,7 @@ public class InputManager {
 
     public static int scanBonus() throws IllegalArgumentException {
         try {
-            System.out.println(IOMessage.ASK_BONUS.getMessage());
+            System.out.println(UIMessage.ASK_BONUS.getMessage());
 
             return Integer.parseInt(Console.readLine());
         } catch (Exception e) {

@@ -1,8 +1,6 @@
 package lotto.IO.message;
 
-import lotto.config.LottoConfig;
-
-public enum IOMessage {
+public enum UIMessage {
     EMPTY_LINE(""),
     ASK_PRICE("구입금액을 입력해 주세요."),
     LOTTO_BUY_NUM("개를 구매했습니다."),
@@ -18,6 +16,6 @@ public enum IOMessage {
 
     private final String message;
 
-    IOMessage(String message) { this.message = message; }
+    UIMessage(String message) { this.message = message; }
     public String getMessage() { return message; }
 }
