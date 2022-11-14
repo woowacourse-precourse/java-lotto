@@ -22,8 +22,8 @@
 - [v] 로또 구입 금액을 입력받는 문구를 출력한다. - Output#giveMeMoney
 - [v] 당첨 번호를 입력받는 문구를 출력한다. - Output#giveMeWinningNumbers, giveMeBonusNumber
 - [v] 발행한 로또 수량을 출력한다. - Output#lottoQuantity
-- [ ] 발행한 로또 번호를 출력한다. - Output#lotteriesNumbers
-- [ ] 당첨 내역을 출력한다. - Output#winningHistory
+- [v] 발행한 로또 번호를 출력한다. - Output#lotteriesNumbers
+- [v] 당첨 내역을 출력한다. - Output#winningHistory
 - [ ] 수익률을 출력한다. - Output#earningRate
 - [ ] 예외 메시지를 출력한다. 
 ## 🔍 진행 방식
