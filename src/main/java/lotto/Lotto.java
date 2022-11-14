@@ -40,8 +40,6 @@ public class Lotto {
     private void checkDuplication(List<Integer> lottoNumbers) {
         HashSet<Integer> hashSet = new HashSet<>(lottoNumbers);
 
-        lottoNumbers.stream().map(hashSet::add);
-
         if (hashSet.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
         }
