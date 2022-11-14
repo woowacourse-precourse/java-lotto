@@ -22,7 +22,7 @@ public enum LottoRank {
     }
 
     public static LottoRank getRank(Lotto lotto, int numberOfSameNumber, int bonusNumber) {
-        if (SECOND.getSameCount() == numberOfSameNumber && !lotto.isContainBonusNumber(bonusNumber)) {
+        if (isSecond(numberOfSameNumber, lotto.isContainBonusNumber(bonusNumber))) {
             return LottoRank.THIRD;
         }
 
@@ -30,6 +30,13 @@ public enum LottoRank {
                 .filter(rank -> rank.getSameCount() == numberOfSameNumber)
                 .findAny()
                 .orElse(LottoRank.LOSING_TICKET);
+    }
+
+    private static boolean isSecond(int numberOfSameNumber, boolean hasBonusNumber) {
+        if (SECOND.getSameCount() == numberOfSameNumber && !hasBonusNumber) {
+            return true;
+        }
+        return false;
     }
 
     public int getSameCount() {
