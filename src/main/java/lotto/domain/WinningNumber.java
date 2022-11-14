@@ -53,7 +53,7 @@ public class WinningNumber {
 
     private void checkWinNumberSize(List<Integer> winNumbers) throws IllegalAccessException {
         if (winNumbers.size() != 6) {
-            System.err.println("당첨번호 숫자는 6개입니다!");
+            System.err.println("로또번호의 숫자는 6개입니다!");
             throw new IllegalAccessException("[ERROR]: NOT CORRECT SIZE!");
         }
     }

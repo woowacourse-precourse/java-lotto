@@ -6,6 +6,8 @@ import lotto.domain.LottoGenerator;
 import lotto.domain.LottoReference;
 import lotto.domain.WinningNumber;
 
+import java.util.NoSuchElementException;
+
 public class Application {
     public static void main(String[] args) {
         LottoGenerator lottoGenerator;
@@ -15,7 +17,16 @@ public class Application {
 
         System.out.println("구입금액을 입력해주세요.");
         String purchaseAmount = Console.readLine();
-        lottoGenerator = new LottoGenerator(Integer.parseInt(purchaseAmount));
+        for (int i = 0; i < purchaseAmount.length(); i++) {
+            int check = purchaseAmount.charAt(i);
+
+            if (check < 48 || check > 58) {
+                System.out.println("[ERROR]");
+                // 우선 이렇게하고 커밋
+                throw new NoSuchElementException("[ERROR]");
+            }
+        }
+        lottoGenerator = new LottoGenerator(purchaseAmount);
         int generateCount = lottoGenerator.getGenerateCount();
         Lotto[] lottoGroup = new Lotto[generateCount];
         for (int i = 0; i < generateCount; i++) {
