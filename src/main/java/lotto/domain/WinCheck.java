@@ -23,4 +23,9 @@ public class WinCheck {
     public boolean isBonusMatch() {
         return isBonusMatch;
     }
+
+    public static void checkSave() {
+        for (Lotto e : StartLotto.lotto)
+            StartLotto.winChecks.add(new WinCheck(e, StartLotto.winNums, StartLotto.bonusNum));
+    }
 }

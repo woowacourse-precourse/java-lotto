@@ -6,6 +6,7 @@ import java.util.List;
 import static lotto.domain.Lotto.buyLotto;
 import static lotto.IO.Output.*;
 import static lotto.IO.UserInput.*;
+import static lotto.domain.WinCheck.checkSave;
 
 public class StartLotto {
     public static int payment;
@@ -26,10 +27,5 @@ public class StartLotto {
         checkSave();
         result = new Result();
         printResult();
-    }
-
-    public static void checkSave() {
-        for (Lotto e : lotto)
-            winChecks.add(new WinCheck(e, winNums, bonusNum));
     }
 }
