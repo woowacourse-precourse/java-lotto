@@ -10,6 +10,16 @@ public class WinningLotto extends Lotto {
         this.bonusNumber = bonusNumber;
     }
 
+    public int lottoContainsCount(List<Integer> lotto) {
+        int count = 0;
+        for (Integer number : lotto) {
+            if (this.lotto.contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public int getBonusNumber() {
         return bonusNumber;
     }
