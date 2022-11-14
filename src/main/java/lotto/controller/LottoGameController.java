@@ -14,12 +14,17 @@ public class LottoGameController {
     }
 
     private void gameStart() {
-        BuyAmount buyAmount = new BuyAmount(InputView.buyAmountInput());
-        LottoList lottoList = new LottoList(buyAmount.getMONEY());
-        initMessage(lottoList);
-        UserNumbers userNumbers = new UserNumbers(InputView.answerNumberInput(),InputView.bonusNumberInput());
-        Result result = new Result(lottoList, userNumbers);
-        finishMessage(result,buyAmount);
+        try{
+            BuyAmount buyAmount = new BuyAmount(InputView.buyAmountInput());
+            LottoList lottoList = new LottoList(buyAmount.getMONEY());
+            initMessage(lottoList);
+            UserNumbers userNumbers = new UserNumbers(InputView.answerNumberInput(),InputView.bonusNumberInput());
+            Result result = new Result(lottoList, userNumbers);
+            finishMessage(result,buyAmount);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     private void initMessage(LottoList lottoList) {
