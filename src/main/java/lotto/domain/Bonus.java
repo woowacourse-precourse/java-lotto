@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.domain.ErrorType.ERROR_LOTTO_NUMBER_RANGE;
 import static lotto.domain.Lotto.LOTTO_END_NUMBER;
 import static lotto.domain.Lotto.LOTTO_START_NUMBER;
 
@@ -13,7 +14,7 @@ public class Bonus {
 
     private void validateNumberInRange(int number, int startInclusive, int endInclusive) {
         if (number < startInclusive || number > endInclusive) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE.getErrorMessage());
         }
     }
 
