@@ -3,6 +3,8 @@ package lotto.domain;
 import java.util.*;
 
 public class LottoProcess {
+    static final String STATISTICS_START_STR = "당첨 통계";
+    static final String STATISTICS_DIVISION_PARAGRAPH_STR="---";
     static final String RATE_OF_RETURN_STR = "총 수익률은 %.1f%%입니다.";
     static final int START_COUNT = 0;
     static final int SIX_CORRECT = 6;
@@ -72,6 +74,10 @@ public class LottoProcess {
     }
 
     public void printStatistics(Map<String, Integer> ranking){
+        // 실행 결과 예시와 맞추기 위해 한 칸 띄우기
+        System.out.println();
+        System.out.println(STATISTICS_START_STR);
+        System.out.println(STATISTICS_DIVISION_PARAGRAPH_STR);
         for(Rank rank : Rank.values()){
             System.out.println(rank.getMessage(ranking.get(rank.name())));
         }
