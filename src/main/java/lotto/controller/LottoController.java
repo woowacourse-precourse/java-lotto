@@ -33,8 +33,10 @@ public class LottoController {
 
         user.getLottoResults(winningLotto);
 
-
         message.lottoResultMessage();
+
+
+        message.lottoProfitMessage(user.getLottoProfit(inputPayment));
     }
 
 }

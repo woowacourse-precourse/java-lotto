@@ -9,6 +9,7 @@ public class User {
 
     private List<Lotto> lottos;
     private static List<LottoGrade> lottoGrades;
+    private double profit;
 
     public void buyLottos(int lottoAmount){
         lottos = new ArrayList<>();
@@ -30,11 +31,21 @@ public class User {
 
         for(Lotto lotto : lottos){
             LottoGrade lottoGrade = winningLotto.getLottoGrade(lotto);
-            lottoGrades.add(lottoGrade);
+            if(lottoGrade != null){
+                lottoGrades.add(lottoGrade);
+            }
         }
     }
 
     public static int getLottoGradeNumber(LottoGrade lottoGrade) {
         return (int) lottoGrades.stream().filter(grade -> lottoGrade.equals(grade)).count();
+    }
+
+    public String getLottoProfit(String inputPayment) {
+        double payment = Double.parseDouble(inputPayment);
+        for(LottoGrade lottoGrade :lottoGrades){
+            profit += lottoGrade.getPrize();
+        }
+        return String.format("%.1f",profit/payment*100);
     }
 }

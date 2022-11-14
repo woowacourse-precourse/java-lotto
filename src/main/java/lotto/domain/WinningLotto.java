@@ -26,7 +26,7 @@ public class WinningLotto extends Lotto {
     public LottoGrade getLottoGrade(Lotto lotto) {
         int correct = compareToWinningLotto(lotto);
         boolean bonus = compareToBonusNumber(lotto);
-        System.out.println("== " + correct + bonus);
+
         return LottoGrade.getLottoGrade(correct,bonus);
     }
 
