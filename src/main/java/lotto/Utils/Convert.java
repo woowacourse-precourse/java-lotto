@@ -7,6 +7,8 @@ import lotto.Constant.Message;
 public class Convert {
 
     private static final String COMMA = ",";
+    private static final int MAX_NUM = 45;
+    private static final int MIN_NUM = 1;
 
     public static int StrToInt(final String number) {
         try {
@@ -22,8 +24,17 @@ public class Convert {
 
         for (String num : number) {
             int n = StrToInt(num);
+            isLottoNumber(n);
             lottoNum.add(n);
         }
         return lottoNum;
     }
+
+    private static void isLottoNumber(int n) {
+        if(!(MIN_NUM <= n && n <= MAX_NUM)) {
+            throw new IllegalArgumentException(Message.ERROR_ONE_TO_FORTYFIVE.getMessage());
+        }
+    }
+
+
 }
