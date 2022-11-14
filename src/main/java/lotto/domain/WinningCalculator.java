@@ -11,10 +11,11 @@ import static lotto.constant.WinningResult.RANK_NONE;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
-import lotto.constant.LottoRule;
 import lotto.constant.WinningResult;
 
 public class WinningCalculator {
@@ -95,8 +96,8 @@ public class WinningCalculator {
 
     private void validateNumbers(List<Integer> numbers) {
         checkLengthOfNumbers(numbers);
-        checkRangeOfNumberInNumers(numbers);
-        checkDuplicationOfNumers(numbers);
+        checkRangeOfNumberInNumbers(numbers);
+        checkDuplicationOfNumbers(numbers);
     }
 
     private void checkLengthOfNumbers(List<Integer> numbers) {
@@ -106,12 +107,20 @@ public class WinningCalculator {
         throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
     }
 
-    private void checkRangeOfNumberInNumers(List<Integer> numbers) {
+    private void checkRangeOfNumberInNumbers(List<Integer> numbers) {
         for (int number: numbers) {
             if (START_NUMBER < number && number < END_NUMBER) {
                 continue;
             }
             throw new IllegalArgumentException("[ERROR] 범위에 맞는 번호를 당첨 번호를 입력해주세요.");
         }
+    }
+
+    private void checkDuplicationOfNumbers(List<Integer> numbers) {
+        Set<Integer> numbersDeletedDuplication = new HashSet<>(numbers);
+        if (numbers.size() == numbersDeletedDuplication.size()) {
+            return;
+        }
+        throw new IllegalArgumentException("[ERROR] 당첨 번호가 중복되었습니다.");
     }
 }
