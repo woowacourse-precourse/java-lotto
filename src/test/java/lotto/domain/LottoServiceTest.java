@@ -6,10 +6,7 @@ import lotto.domain.impl.LottoServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static lotto.Rank.*;
 import static org.assertj.core.api.Assertions.*;
@@ -73,5 +70,19 @@ class LottoServiceTest {
         Map<Rank, Integer> results = lottoService.compare(userLottos, PRIZE_LOTTO, BONUS_NUMBER);
 
         assertThat(results.getOrDefault(FIFTH, 0)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("구입 금액이 8000원이고 로또 하나가 5등이라면 수익률은 62.5%이다.")
+    void calculateRate() {
+        Map<Rank, Integer> results = new HashMap<>() {
+            {
+                put(FIFTH, 1);
+            }
+        };
+
+        double rate = lottoService.calculateRate(results, 8000);
+
+        assertThat(rate).isEqualTo(62.5);
     }
 }
