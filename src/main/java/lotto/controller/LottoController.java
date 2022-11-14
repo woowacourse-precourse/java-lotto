@@ -1,8 +1,8 @@
 package lotto.controller;
 
-import lotto.model.Lotto;
-import lotto.model.LottoService;
-import lotto.model.WinningNumber;
+import lotto.domain.Lotto;
+import lotto.service.LottoService;
+import lotto.domain.WinningNumber;
 import lotto.view.OutputView;
 import lotto.utils.Converter;
 import lotto.utils.Validator;

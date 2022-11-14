@@ -1,10 +1,10 @@
-package lotto.model;
+package lotto.domain;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static lotto.model.ErrorMessage.*;
-import static lotto.model.LottoStatus.SIZE;
+import static lotto.domain.ErrorMessage.*;
+import static lotto.domain.LottoStatus.SIZE;
 
 public class Lotto {
     private final List<Integer> numbers;

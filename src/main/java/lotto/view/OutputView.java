@@ -1,12 +1,12 @@
 package lotto.view;
 
-import lotto.model.WinningNumberStatus;
-import lotto.model.Lotto;
+import lotto.domain.WinningNumberStatus;
+import lotto.domain.Lotto;
 import java.util.HashMap;
 import java.util.List;
 
-import static lotto.model.NoticeMessage.ADDITIONAL_SECOND;
-import static lotto.model.NoticeMessage.LOTTO_COUNT;
+import static lotto.domain.NoticeMessage.ADDITIONAL_SECOND;
+import static lotto.domain.NoticeMessage.LOTTO_COUNT;
 
 public class OutputView {
 

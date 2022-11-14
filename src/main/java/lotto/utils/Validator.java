@@ -1,11 +1,11 @@
 package lotto.utils;
 
-import lotto.model.LottoStatus;
+import lotto.domain.LottoStatus;
 import java.util.HashMap;
 import java.util.List;
 
-import static lotto.model.ErrorMessage.*;
-import static lotto.model.LottoStatus.*;
+import static lotto.domain.ErrorMessage.*;
+import static lotto.domain.LottoStatus.*;
 
 public class Validator {
 

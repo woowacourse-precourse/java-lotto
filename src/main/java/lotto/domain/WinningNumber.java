@@ -1,11 +1,11 @@
-package lotto.model;
+package lotto.domain;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-import static lotto.model.LottoStatus.END;
-import static lotto.model.LottoStatus.START;
+import static lotto.domain.LottoStatus.END;
+import static lotto.domain.LottoStatus.START;
 
 public class WinningNumber {
     private final Lotto luckyNumber;
