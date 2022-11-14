@@ -4,11 +4,11 @@ import java.util.List;
 import lotto.model.Lotto;
 
 public class LotteryView implements View {
-    private int lottoNumber;
+    private int lotteriesCount;
     private List<Lotto> lotteries;
 
     public LotteryView(int lottoNumber, List<Lotto> lotteries){
-        this.lottoNumber = lottoNumber;
+        this.lotteriesCount = lottoNumber;
         this.lotteries = lotteries;
     }
 
@@ -22,7 +22,7 @@ public class LotteryView implements View {
         printAllLotteries();
     }
     private void printNumberOfLotteries(){
-        System.out.println(lottoNumber + "개를 구매했습니다.");
+        System.out.println(lotteriesCount + "개를 구매했습니다.");
     }
 
     private void printAllLotteries(){
