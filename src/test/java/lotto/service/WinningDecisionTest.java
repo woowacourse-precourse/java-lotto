@@ -2,9 +2,14 @@ package lotto.service;
 
 import lotto.entity.Lotto;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WinningDecisionTest {
     private WinningDecision winningDecision;
@@ -24,5 +29,16 @@ public class WinningDecisionTest {
         int purchaseAmount = 15000;
         winningDecision = new WinningDecision(myLotto, winningLotto, bonus, purchaseAmount);
         winningDecision.initMyPrizes();
+    }
+
+    @Test
+    @DisplayName("map에 몇 등을 몇 번했는지 저장한다.")
+    void winningPrizesTest() {
+        // when
+        winningDecision.setMyPrizes();
+
+        // then
+        Map<Integer, Integer> winningPrizes = winningDecision.getWinningPrizes();
+        assertEquals(3, winningPrizes.get(WinningResult.MATCH_THREE.getPrize()));
     }
 }
