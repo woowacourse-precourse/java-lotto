@@ -36,7 +36,7 @@ public class Output {
     }
 
     private static String getYeild(int benefit, int paid) {
-        double yeild = (double) (benefit / paid);
+        double yeild =  (benefit / (double)paid) * 100;
         return String.format("%.1f", yeild);
     }
 }
