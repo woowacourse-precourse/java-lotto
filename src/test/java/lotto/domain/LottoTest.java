@@ -54,4 +54,27 @@ class LottoTest {
         // then
         assertThat(winResult).isEqualTo(winResultStatuses.get(winResultIndex));
     }
+
+    @DisplayName("당첨 번호가 하나도 없을때 결과 반환 테스트")
+    @ParameterizedTest
+    @CsvSource(
+            value = {"5,6,7,8,9,10:45",
+                    "6,7,8,9,10,11:45",
+                    "12,13,14,15,16,17:45",
+                    "18,19,20,21,22,23:45",
+                    "24,25,26,27,28,29:45"},
+            delimiter = ':'
+    )
+    void 로또와_당첨번호가_3개미만_일치하는_경우_결과반환(String lottoNumber, String bonusNumber) {
+        // given
+        WinningNumber winningNumber = new WinningNumber(List.of(lottoNumber, bonusNumber));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        // when
+        WinResultStatus winResult = lotto.getWinResult(winningNumber);
+
+        // then
+        assertThat(winResult).isEqualTo(WinResultStatus.NOTHING);
+    }
+
 }
