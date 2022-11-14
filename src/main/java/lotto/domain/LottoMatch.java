@@ -21,4 +21,19 @@ public class LottoMatch {
                         .anyMatch(Predicate.isEqual(number)))
                 .count();
     }
+
+    public static List<Boolean> putBonus(final List<Lotto> allLotto, final BonusNumber bonusNumber) {
+        List<Boolean> bonus = new ArrayList<>();
+        for (Lotto lotto : allLotto) {
+            bonus.add(matchBonus(lotto, bonusNumber));
+        }
+        return bonus;
+    }
+
+    private static boolean matchBonus(final Lotto lotto, final BonusNumber bonusNumber) {
+        return lotto.get()
+                .stream()
+                .anyMatch(number -> bonusNumber.get()
+                        .contains(number));
+    }
 }
