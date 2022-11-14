@@ -19,6 +19,7 @@ public class SystemMessage {
 
     public void requestTotalMoney(int money){
         System.out.println(money);
+        System.out.println("");
     }
 
     public void ticketsMessage(int n){
