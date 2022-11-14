@@ -21,7 +21,7 @@ public class AppConfig {
 		InputView inputView = new InputView();
 		OutputView outputView = new OutputView();
 		InputValidService inputValidService = new InputValidService();
-		InputController inputController = new InputController(inputView, outputView, inputValidService);
+		InputController inputController = new InputController(inputView, inputValidService);
 		LottoController lottoController = new LottoController(lottoService, outputView, statisticsService,
 			inputController);
 		return lottoController;
