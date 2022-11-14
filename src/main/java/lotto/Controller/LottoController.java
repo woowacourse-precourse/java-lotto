@@ -34,19 +34,19 @@ public class LottoController {
     }
 
     private void makeLottoNumber(){
-        List<Lotto> lottos = new ArrayList<Lotto>();
+        List<Lotto> lottoList = new ArrayList<Lotto>();
         for(int i = 0; i < lottoData.getCountOfLotto(); i++){
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(lottoNumber);
-            lottos.add(lotto);
+            lottoList.add(lotto);
         }
-        lottoData.setLottos(lottos);
+        lottoData.setLottoList(lottoList);
     }
 
     private void printLottoNumber(){
-        List<Lotto> lottos = lottoData.getLottos();
+        List<Lotto> lottoList = lottoData.getLottoList();
         List<List<Integer>> lottoNumber = new ArrayList<List<Integer>>();
-        for(Lotto lotto : lottos){
+        for(Lotto lotto : lottoList){
             lottoNumber.add(lotto.getLottoNumber());
         }
         output.showPurchasedLotto(lottoData.getCountOfLotto(), lottoNumber);
@@ -64,11 +64,11 @@ public class LottoController {
     }
 
     private void countLottoPrize(){
-        List<Lotto> lottos = lottoData.getLottos();
+        List<Lotto> lottoList = lottoData.getLottoList();
         final int noPrize = 0;
         HashMap<Integer, Integer> numberOfWins = new HashMap<Integer, Integer>();
         initCountPrize(numberOfWins);
-        for(Lotto lotto : lottos){
+        for(Lotto lotto : lottoList){
             int lottoPrize = getLottoPrize(lotto);
             if(lottoPrize != noPrize) numberOfWins.put(lottoPrize, numberOfWins.get(lottoPrize) + 1);
         }
