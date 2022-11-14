@@ -12,23 +12,25 @@ public class LottoValidator {
         checkUnique(lotto);
     }
 
-    public static void checkSize(List<Integer> lotto) throws IllegalArgumentException {
+    private static void checkSize(List<Integer> lotto) throws IllegalArgumentException {
         if (lotto.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException("로또 크기는 6이여야 합니다.");
         }
     }
 
-    public static void checkUnique(List<Integer> lotto) throws IllegalArgumentException {
-        if (getUniqueCount(lotto) != LOTTO_SIZE) {
+    private static void checkUnique(List<Integer> lotto) throws IllegalArgumentException {
+        if (hasDuplicateNumber(lotto)) {
             throw new IllegalArgumentException("로또 숫자는 중복을 허락하지 않습니다.");
         }
     }
 
-    private static long getUniqueCount(List<Integer> lotto) {
-        return lotto.stream().distinct().count();
+    private static boolean hasDuplicateNumber(List<Integer> lotto) {
+        return lotto.stream()
+                .distinct()
+                .count() != LOTTO_SIZE;
     }
 
-    public static void checkNumberRange(List<Integer> lotto) throws IllegalArgumentException {
+    private static void checkNumberRange(List<Integer> lotto) throws IllegalArgumentException {
         lotto.stream()
                 .filter(LottoValidator::isNumberWrongRange)
                 .forEach(number -> {
@@ -39,4 +41,11 @@ public class LottoValidator {
     private static boolean isNumberWrongRange(int number) {
         return (number < START_NUMBER || number > END_NUMBER);
     }
+
+    public static void checkBonusNumber(List<Integer> lotto, int bonusNumber) {
+        if (lotto.contains(bonusNumber)) {
+            throw new IllegalArgumentException("보너스 번호는 로또 번호와 중복될 수 없습니다.");
+        }
+    }
+
 }
