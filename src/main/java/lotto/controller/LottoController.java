@@ -29,15 +29,18 @@ public class LottoController {
     }
     private void init() {
         System.out.println("구입금액을 입력해 주세요.");
-        String input=Console.readLine();
-        if(input.replaceAll("[0-9]","")!=""){
+        try{
+            lottoCount=Integer.parseInt(Console.readLine());
+        }catch (NumberFormatException n){
             System.out.println(message);
-            throw new IllegalArgumentException();
+            //throw new IllegalArgumentException();
+            lottoCount = 1000;
         }
-        lottoCount = Integer.parseInt(input);
+
         if(lottoCount%1000!=0){
             System.out.println(message);
-            throw new IllegalArgumentException();
+            lottoCount=1000;
+            //throw new IllegalArgumentException();
         }
         lottoCount/=1000;
         System.out.println(lottoCount+"개를 구매했습니다.");
