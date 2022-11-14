@@ -32,4 +32,9 @@ public class LottoController {
         lottoSystemService.setTotal();
         return lottoSystemService.getTotal();
     }
+
+    public float printRevenue(){
+        userService.setRevenue();
+        return userService.getRevenue();
+    }
 }
