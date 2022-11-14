@@ -40,4 +40,12 @@ public class Winning {
         }
         this.bonusNumber = bonusNumber;
     }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }

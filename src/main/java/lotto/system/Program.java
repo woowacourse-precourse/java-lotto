@@ -21,5 +21,6 @@ public class Program {
     public void winningProgram() {
         String winningNumber = SystemUi.getWinningNumber();
         Winning winning = new Winning(parser.parseWinningNumbers(winningNumber));
+        winning.setBonusNumber(SystemUi.getBonusNumber());
     }
 }
