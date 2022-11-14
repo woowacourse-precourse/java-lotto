@@ -5,7 +5,8 @@ import java.util.Arrays;
 import static lotto.constants.Constant.*;
 
 public enum Rank {
-	FIRST(1), SECOND(2), THIRD(3), FOURTH(4), FIFTH(5), NONE(-1);
+	FIFTH(5), FOURTH(4), THIRD(3),
+	SECOND(2), FIRST(1), NONE(-1);
 
 	private final int rankValue;
 

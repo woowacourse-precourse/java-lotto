@@ -25,4 +25,6 @@ public class Constant {
 		put(LOTTO_FOURTH_RANK_MATCHED_COUNT, Rank.FOURTH);
 		put(LOTTO_FIFTH_RANK_MATCHED_COUNT, Rank.FIFTH);
 	}};
+
+	public static final long NOT_COUNTED = 0L;
 }

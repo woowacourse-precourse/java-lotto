@@ -1,8 +1,15 @@
 package lotto.constants;
 
+import lotto.models.Rank;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Message {
 
-	private Message() {}
+	private Message() {
+	}
 
 	public static final String ERROR_PREFIX = "[ERROR] ";
 
@@ -20,10 +27,21 @@ public class Message {
 	public static final String ERROR_DONT_DIVIDED_BY_LOTTO_PRICE =
 			ERROR_PREFIX + "1000원 단위로 나누어 떨어지는 숫자를 입력하셔야 합니다.";
 
-
 	public static final String ASK_ENTER_THE_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
 	public static final String ASK_ENTER_THE_WINNING_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
 	public static final String ASK_ENTER_THE_WINNING_LOTTO_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 	public static final String SHOW_USER_PURCHASED_LOTTO_COUNT = "%d개를 구매했습니다.\n";
 
+	protected static final String RESULT_FIFTH_RANK = "3개 일치 (5,000원) - %d개\n";
+	protected static final String RESULT_FOURTH_RANK = "4개 일치 (50,000원) - %d개\n";
+	protected static final String RESULT_THIRD_RANK = "5개 일치 (1,500,000원) - %d개\n";
+	protected static final String RESULT_SECOND_RANK = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
+	protected static final String RESULT_FIRST_RANK = "6개 일치 (2,000,000,000원) - %d개\n";
+	public static final Map<Rank, String> RESULT_LOTTO_MESSAGES = new LinkedHashMap<>() {{
+		put(Rank.FIFTH, RESULT_FIFTH_RANK);
+		put(Rank.FOURTH, RESULT_FOURTH_RANK);
+		put(Rank.THIRD, RESULT_THIRD_RANK);
+		put(Rank.SECOND, RESULT_SECOND_RANK);
+		put(Rank.FIRST, RESULT_FIRST_RANK);
+	}};
 }
