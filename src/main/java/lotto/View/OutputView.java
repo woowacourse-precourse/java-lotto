@@ -1,5 +1,7 @@
 package lotto.View;
 
+import static lotto.Utils.Constant.*;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +24,6 @@ public class OutputView {
     private static final String PRINT_EARNED_RATIO = "총 수익률은 %.1f%%입니다.";
 
 
-    public static final int ZERO = 0;
 
     public static void printBuyerLotto(Buyer buyer) {
         printBlankLine();
