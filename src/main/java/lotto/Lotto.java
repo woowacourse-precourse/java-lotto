@@ -1,12 +1,15 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Lotto {
+public class Lotto{
 
     private final List<Integer> numbers;
 
@@ -25,10 +28,14 @@ public class Lotto {
         int i = 0;
         ArrayList<List<Integer>> userNumber = new ArrayList<>();
         do{
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
-            Lotto num = new Lotto(numbers);
-            userNumber.add(num.numbers);
+            Lotto numbers = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            System.out.println(numbers.numbers);
+            ArrayList<Integer> sortNumbers= new ArrayList<>();
+            for(int k=0;numbers.numbers.size()>k;k++){
+                sortNumbers.add(numbers.numbers.get(k));
+            }
+            Collections.sort(sortNumbers);
+            userNumber.add(sortNumbers);
             i ++;
         }while (i != numberOfGame);
         return userNumber;
