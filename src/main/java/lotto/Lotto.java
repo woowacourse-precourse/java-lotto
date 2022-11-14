@@ -25,4 +25,36 @@ public class Lotto {
         }
         return matchNumbers;
     }
+
+    public Rank matchRank(List<Integer> winningNumbers, int bonusNumber) {
+        int matchNumber = matchWinningNumber(winningNumbers);
+        Rank lottoRank = findRank(matchNumber, bonusNumber);
+        return lottoRank;
+    }
+
+    private Rank findRank(int matchNumber, int bonusNumber) {
+        if (Rank.FIRST.getMatchNumber() == matchNumber) {
+            return Rank.FIRST;
+        }
+        if (Rank.SECOND.getMatchNumber() == matchNumber && matchBonusNumber(bonusNumber)) {
+            return Rank.SECOND;
+        }
+        if (Rank.THIRD.getMatchNumber() == matchNumber) {
+            return Rank.THIRD;
+        }
+        if (Rank.FOURTH.getMatchNumber() == matchNumber) {
+            return Rank.FOURTH;
+        }
+        if (Rank.FIFTH.getMatchNumber() == matchNumber) {
+            return Rank.FIFTH;
+        }
+        return Rank.NOTHING;
+    }
+
+    private boolean matchBonusNumber(int bonusNumber) {
+        if (numbers.contains(bonusNumber)){
+            return true;
+        }
+        return false;
+    }
 }
