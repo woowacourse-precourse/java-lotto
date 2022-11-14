@@ -14,13 +14,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.NOT_VALIDATE_LENGTH.getMessage());
         }
     }
 
     private void validateDistinct(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.NOT_DISTINCT.getMessage());
         }
     }
 
@@ -30,7 +30,7 @@ public class Lotto {
 
         for (Integer number : numbers) {
             if (maxNumber.compareTo(number) == 1 || minNumber.compareTo(number) == -1) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(Error.NOT_IN_RANGE.getMessage());
             }
         }
     }
