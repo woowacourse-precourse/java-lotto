@@ -23,4 +23,7 @@ public class LottoController {
         lottoSystemService.setAnswerLottoNumbers();
     }
 
+    public void inputBonusNumber(){
+        lottoSystemService.setBonusLottoNumbers();
+    }
 }
