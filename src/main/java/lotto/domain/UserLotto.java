@@ -31,7 +31,7 @@ public class UserLotto {
         userLottos = new ArrayList<>();
 
         while (userLottos.size() != countOfPurchasedLotto) {
-            Lotto lotto = new Lotto(createLotto());
+            Lotto lotto = new Lotto(sortLotto(createLotto()));
             userLottos.add(lotto);
         }
     }
@@ -39,4 +39,12 @@ public class UserLotto {
     private List<Integer> createLotto() {
         return Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_COUNT_NUMBER);
     }
+    private List<Integer> sortLotto(List<Integer> lottoNumbers) {
+        List<Integer> sortedLotto = new ArrayList<>( lottoNumbers);
+        sortedLotto.sort(Integer:: compareTo);
+        return sortedLotto;
+    }
+
+
+
 }
