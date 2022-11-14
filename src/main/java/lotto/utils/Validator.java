@@ -3,7 +3,7 @@ package lotto.utils;
 public class Validator {
     public static void isBlank(String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException("[ERROR] 구입금액을 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 입력값이 없습니다. 값을 입력해주세요.");
         }
     }
 
@@ -11,7 +11,7 @@ public class Validator {
         try {
             Integer.parseInt(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 입력값은 숫자여야 합니다.");
         }
     }
 

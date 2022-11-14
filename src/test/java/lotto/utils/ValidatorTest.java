@@ -34,5 +34,4 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 당첨 번호는 숫자여야 합니다.");
     }
-
 }
