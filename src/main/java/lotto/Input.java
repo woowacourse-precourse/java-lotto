@@ -29,7 +29,7 @@ public class Input {
     }
 
     public static int bonusNumber(List<Integer> winningNums) {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         int num = Converter.stringToInt(input);
         if (winningNums.contains(num)) {
