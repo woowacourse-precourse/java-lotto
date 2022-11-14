@@ -10,11 +10,18 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validate2(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+    private void validate2(List<Integer> numbers){
+        if(numbers.size() != numbers.stream().distinct().count()){
+            System.out.println(ExceptionType.DuplicateError.getName());
             throw new IllegalArgumentException();
         }
     }
