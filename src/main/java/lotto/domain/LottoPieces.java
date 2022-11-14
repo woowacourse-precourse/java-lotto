@@ -1,18 +1,24 @@
 package lotto.domain;
 
+import lotto.util.errorMessage.ErrorMessage;
+
 public class LottoPieces {
 
     public final int pieces;
 
     public LottoPieces(int money) {
         validateMoney(money);
+        this.pieces = calculatePieces(money);
+    }
+
+    private static int calculatePieces(int money) {
         int pieces = money / 1000;
-        this.pieces = pieces;
+        return pieces;
     }
 
     private void validateMoney(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 천 원 단위로만 구매가 가능합니다");
+            throw new IllegalArgumentException(ErrorMessage.PAYMENT_UNIT_ERROR);
         }
     }
 }
