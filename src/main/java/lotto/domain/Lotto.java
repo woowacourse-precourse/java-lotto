@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -45,5 +46,18 @@ public class Lotto {
                 throw new IllegalArgumentException("[ERROR] 1에서 45사이 숫자만 허용됩니다.");
             }
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Lotto) {
+            Lotto lotto = (Lotto)obj;
+            return numbers.equals(lotto.numbers);
+        }
+        return false;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 }
