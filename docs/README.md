@@ -32,10 +32,10 @@
   - [X] 보너스 번호 입력 조건, 당첨번호와 중복X
 
 
-- [] 로또 등수 구현: Lotto#lottoChecker
+- [X] 로또 등수 구현: Lotto#lottoChecker
   - [X] 로또 번호, 당첨 번호 비교 Lotto#compareNumber
-    - [] 2등 조건 구현 Lotto#secondPlaceCheck
-    - [] 당첨 갯수에 따른 순위 제공 Lotto#rankCheck
+    - [X] 2등 조건 구현 Lotto#secondPlaceCheck
+    - [X] 당첨 갯수에 따른 순위 제공 Lotto#rankCheck
 
   
 - [] 결과 출력 OutputPrinter

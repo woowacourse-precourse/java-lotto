@@ -34,7 +34,6 @@ public class Lotto {
             amount++;
             counter++;
         }
-
         return (rank + counter);
     }
 
@@ -48,7 +47,8 @@ public class Lotto {
         return winCount;
     }
 
-    private Boolean secondPlaceCheck() {
-
+    private Boolean secondPlaceCheck(int bonusNumber) {
+        if (numbers.contains(bonusNumber)) return true;
+        return false;
     }
 }
