@@ -27,6 +27,9 @@ public class WinningLotto {
             }
         }
 
+        if (count == WINNING_FIVE_AND_BONUS_NUM && !hasNumberInBonus(userLotto))
+            count++;
+
         return count;
     }
 

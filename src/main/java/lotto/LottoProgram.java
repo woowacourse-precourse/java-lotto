@@ -21,27 +21,31 @@ public class LottoProgram {
 
     public void run() {
         List<Integer> numbers;
-        int bonusNumber;
-        int purchasePrice;
+        int bonusNumber, purchasePrice;
 
         purchasePrice = receivePurchasePrice();
-        this.lottoTickets = buyLotto(purchasePrice);
+        buyLotto(purchasePrice);
         numbers = receiveWinningNumbers();
         bonusNumber = receiveBonusNumber();
 
         initializeWinningLotto(numbers, bonusNumber);
         initializeWinningResult();
 
+        printWinningResult(purchasePrice);
+    }
+
+    private void printWinningResult(int purchasePrice) {
         LottoWinningAnalyzer analyzer = new LottoWinningAnalyzer(winningResult);
 
         analyzer.printWinningResult();
+        ;
         analyzer.printProfit(purchasePrice);
     }
 
-    public List<Lotto> buyLotto(int price) {
+    private void buyLotto(int price) {
         LottoStore lottoStore = new LottoStore();
-        return lottoStore.buyLottoNumber(price);
 
+        this.lottoTickets = lottoStore.buyLottoNumber(price);
     }
 
     private void initializeWinningLotto(List<Integer> numbers, int bonusNumber) {
@@ -58,40 +62,19 @@ public class LottoProgram {
         for (int i = 0; i < lottoTickets.size(); i++) {
             Lotto lottoTicket = lottoTickets.get(i);
             int count = winningLotto.countWinningNumber(lottoTicket);
-            boolean hasBonus = winningLotto.hasNumberInBonus(lottoTicket);
 
-            updateWinningResult(count, hasBonus);
+            if (count >= WINNING_THREE_NUM)
+                updateWinningResult(count);
         }
     }
 
-    private void updateWinningResult(int count, boolean hasBonus) {
-        if (count == WINNING_THREE_NUM) {
-            addWinningCount(WinningType.THREE);
-            return;
-        }
+    private void updateWinningResult(int count) {
+        WinningType type = winningResult.keySet().stream().
+                filter(winningType -> winningType.getWinningNumber() == count)
+                .findAny()
+                .get();
+        int currentCount = winningResult.get(type);
 
-        if (count == WINNING_FOUR_NUM) {
-            addWinningCount(WinningType.FOUR);
-            return;
-        }
-
-        if (count == WINNING_FIVE_NUM) {
-            if (hasBonus) {
-                addWinningCount(WinningType.FIVE_AND_BONUS);
-                return;
-            }
-            addWinningCount(WinningType.FIVE);
-            return;
-        }
-
-        if (count == WINNING_SIX_NUM) {
-            addWinningCount(WinningType.SIX);
-            return;
-        }
-    }
-
-    private void addWinningCount(WinningType type) {
-        int currentCount = winningResult.get(type).intValue();
         winningResult.put(type, currentCount + PLUS_ONE_COUNT);
     }
 }

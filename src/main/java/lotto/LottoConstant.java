@@ -8,7 +8,8 @@ public class LottoConstant {
     public static final int WINNING_THREE_NUM = 3;
     public static final int WINNING_FOUR_NUM = 4;
     public static final int WINNING_FIVE_NUM = 5;
-    public static final int WINNING_SIX_NUM = 6;
+    public static final int WINNING_FIVE_AND_BONUS_NUM = 6;
+    public static final int WINNING_SIX_NUM = 7;
     public static final int INIT_WINNING_COUNT = 0;
     public static final int PLUS_ONE_COUNT = 1;
     public static final int WINNING_THREE_MONEY = 5000;

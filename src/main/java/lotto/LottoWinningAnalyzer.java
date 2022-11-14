@@ -33,7 +33,7 @@ public class LottoWinningAnalyzer {
         long sum = 0;
 
         for (WinningType type : WinningType.values()) {
-            sum += type.getMoney() * winningResult.get(type).intValue();
+            sum += type.getMoney() * winningResult.get(type);
         }
 
         return sum;
