@@ -102,8 +102,9 @@ public class Manager {
 
     public void calculateReturnRate(int purchase, int money){
         double rate = (double)money / (double)purchase;
+        rate *= 100;
         System.out.print(INIT_WINNING_RATE);
-        System.out.print(String.format("%.2f", rate));
+        System.out.print(String.format("%.1f", rate));
         System.out.println(CLOSE_WINNING_RATE);
     }
 
