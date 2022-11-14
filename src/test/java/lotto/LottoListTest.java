@@ -36,6 +36,19 @@ class LottoListTest extends NsTest {
         }, List.of(2,4,3,5,6,7));
     }
 
+    @DisplayName("로또 여러개 구매")
+    @Test
+    public void buyMultiLottos() {
+        assertRandomUniqueNumbersInRangeTest(() -> {
+            LottoList lottoList = new LottoList();
+            lottoList.generateLotto();
+            lottoList.generateLotto();
+            lottoList.printLottoList();
+            assertThat(output()).contains("2개를 구매했습니다.",
+                    "[2, 3, 4, 5, 6, 7]", "[2, 4, 5, 7, 12, 43]");
+        }, List.of(2,4,3,5,6,7), List.of(2,4,12,5,43,7));
+    }
+
     @Override
     protected void runMain() {
 
