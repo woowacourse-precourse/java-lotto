@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 
 import static lotto.function.Tools.*;
 import static lotto.function.Validation.*;
+import static lotto.function.Validation.validateNumbers;
 
 public class Start {
 
@@ -46,6 +47,19 @@ public class Start {
             showNumbers(numbers);
         }
         return Lotto;
+    }
+
+    public static List<Integer> typeWinningNumber(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        List<Integer> winner = new ArrayList<>();
+        try{
+            winner = Stream.of(Console.readLine().split(",")).map(String::trim).map(Integer::parseInt).collect(Collectors.toList());
+        } catch (Exception e){
+            throw new IllegalArgumentException("[ERROR] 입력은 숫자와 쉼표로만 이루어져야 합니다.");
+        }
+        Collections.sort(winner);
+        validateNumbers(winner);
+        return winner;
     }
 
 }
