@@ -43,7 +43,7 @@ public class GetLottoNumber {
         return strWinNum;
     }
 
-/*    public int[] WinNum(String strWinNum) { // 당첨번호 배열에 저장
+   public int[] WinNum(String strWinNum) { // 당첨번호 배열에 저장
         if(strWinNum.equals("0")){
             return new int[]{0};
         }
@@ -61,7 +61,7 @@ public class GetLottoNumber {
         return winNum;
     }
 
-    public int Bonus() {// 보너스번호
+ /*   public int Bonus() {// 보너스번호
         bonusNumber = Integer.parseInt(Console.readLine());
         if (bonusNumber < 1 || bonusNumber > 45) {
             System.out.println("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
