@@ -42,6 +42,13 @@ public enum Prize {
         return hasBonus;
     }
 
+    private static Prize getOnlyOneWithBonusMatch(List<Prize> prizes, boolean hasBonus) {
+        if (prizes.size() <= 1) {
+            return prizes.stream().findFirst().orElse(NONE);
+        }
+        return getPrizeConsideringBonus(prizes, hasBonus);
+    }
+
     private static boolean isMatchCountSame(long matchCount, int prizeCount) {
         return matchCount == prizeCount;
     }
@@ -50,13 +57,9 @@ public enum Prize {
         return inputBonus == prizeBonus;
     }
 
-    private static Prize getOnlyOneWithBonusMatch(List<Prize> prizes, boolean hasBonus) {
-        if (prizes.size() <= 1) {
-            return prizes.stream().findFirst().orElse(NONE);
-        }
-
+    private static Prize getPrizeConsideringBonus(List<Prize> prizes, boolean inputBonus) {
         return prizes.stream()
-                .filter(prize -> isBonusIncluded(hasBonus, prize.hasBonus))
+                .filter(prize -> isBonusIncluded(inputBonus, prize.hasBonus))
                 .findAny()
                 .orElse(NONE);
     }
