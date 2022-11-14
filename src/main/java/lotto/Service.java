@@ -96,4 +96,8 @@ public class Service {
 		return total;
 	}
 
+	public double yield() {
+		return Math.round((double)totalPrize() / money * 1000) / 10.0;
+	}
+
 }
