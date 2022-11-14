@@ -4,14 +4,9 @@ import lotto.domain.Lotto;
 import lotto.domain.User;
 import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
-
-import java.util.*;
+import java.util.Map;
 
 public class OutputUtil {
-
-    public static void printInputPurchaseAmount() {
-        System.out.println(Message.INPUT_PURCHASE_AMOUNT_MESSAGE.getMessage());
-    }
 
     public static void printUserLottoCount(User user) {
         System.out.println("" + user.getLottoCount() + "개를 구매했습니다.");
