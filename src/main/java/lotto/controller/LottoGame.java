@@ -50,7 +50,7 @@ public class LottoGame {
     public Integer getBonusNumberInput(Lotto winningLotto) throws IllegalArgumentException{
         String input=inputView.inputBonusNumber();
         int bonus=-1;
-        if(inputChecker.checkInputBonusNumber(input, winningLotto)){
+        if(inputChecker.checkInputBonusNumber(input, winningLotto.getLotto())){
             bonus=Integer.parseInt(input);
         }
         return bonus;
