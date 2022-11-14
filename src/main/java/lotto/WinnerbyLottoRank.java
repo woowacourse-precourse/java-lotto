@@ -10,7 +10,6 @@ public enum WinnerbyLottoRank {
     private Supplier<Integer> prize;
     private Supplier<String> grade;
 
-
     WinnerbyLottoRank(Supplier<Integer> prize, Supplier<String> grade ) {
         this.grade = grade;
         this.prize= prize;
@@ -26,12 +25,4 @@ public enum WinnerbyLottoRank {
         System.out.print(" ("+String.format("%,d", prize.get())+"원) - ");
         System.out.printf("%d개%n",prizeLottoNumber);
     }
-
-
-
-
-
-
-
-
 }

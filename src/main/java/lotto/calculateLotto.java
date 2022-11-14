@@ -1,6 +1,7 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class calculateLotto {
@@ -33,15 +34,14 @@ public class calculateLotto {
     List<Integer> winLotto(List<Lotto> lottos){
         int[] correctNumber = {0,0,0,0,0};
         for (Lotto lotto : lottos){
-            int[] count ={0,0};
-            Set<Integer> set= new HashSet<>(inputLottto.getNumbers());
-            for(int i = 0; i<lotto.getNumbers().size();i++){
-                if(!set.add(lotto.getNumbers().get(i))) count[0]++;
+            boolean isBonus = false;
+            List<Integer> list =lotto.getNumbers().stream().filter( i -> (inputLottto.getNumbers().stream().anyMatch(Predicate.isEqual(i))))
+                    .collect(Collectors.toList());
+            System.out.println(list);
+            if(lotto.getNumbers().contains(bonusLotto) && list.size()== 5) {
+                isBonus =true;
             }
-            if(lotto.getNumbers().contains(bonusLotto) && count[0]== 5) {
-                count[1]=1;
-            }
-            int index = gradeNumber(count);
+            int index = gradeNumber(list.size(),isBonus);
             if(index>=0)correctNumber[index] +=1;
         }
         return Arrays.stream(correctNumber)
@@ -49,10 +49,10 @@ public class calculateLotto {
                 .collect(Collectors.toList());
     }
 
-    public int gradeNumber(int[] count){ // 3
-        if(count[1]==1) return 3;
-        if(count[0]==6) return 4;
-        if(count[1]!=1&&count[0]<6) return count[0]-3;
+    public int gradeNumber(int count, boolean isBonus){ // 3
+        if(isBonus==true) return 3;
+        if(count==6) return 4;
+        if(isBonus==false&&count<6) return count-3;
         return -1;
     }
     void printWinLotto(List<Integer> winLottos, double rateLotto){
