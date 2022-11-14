@@ -1,7 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
+import messages.ErrorMessages;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -9,13 +11,17 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        numbers = new ArrayList<>(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
     public static Lotto createRandomLotto() {
-        return new Lotto(
-                Randoms.pickUniqueNumbersInRange(1, 45, 6)
-        );
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -24,45 +30,27 @@ public class Lotto {
         validateDuplicate(numbers);
     }
 
-    private void validateSize(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(LottoErrorMessages.INVALID_SIZE.getMessage());
+            throw new IllegalArgumentException(ErrorMessages.INVALID_NUMBERS_SIZE);
         }
     }
 
-    private void validateRange(List<Integer> numbers) {
+    private void validateRange(List<Integer> numbers) throws IllegalArgumentException {
         for (int n : numbers) {
             if (n < 1 || n > 45) {
-                throw new IllegalArgumentException(LottoErrorMessages.INVALID_RANGE.getMessage());
+                throw new IllegalArgumentException(ErrorMessages.INVALID_RANGE);
             }
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) throws IllegalArgumentException {
         boolean[] used = new boolean[46];
         for (int n : numbers) {
             if (used[n]) {
-                throw new IllegalArgumentException(LottoErrorMessages.HAVE_DUPLICATION.getMessage());
+                throw new IllegalArgumentException(ErrorMessages.HAVE_DUPLICATION);
             }
             used[n] = true;
         }
     }
-
-    enum LottoErrorMessages {
-        INVALID_SIZE("로또 번호는 6개의 숫자로 구성되어야 합니다."),
-        INVALID_RANGE("번호들은 1 ~ 45 범위의 정수여야 합니다."),
-        HAVE_DUPLICATION("중복되지 않은 숫자들로 구성되어야 합니다.");
-
-
-        private final String message;
-
-        LottoErrorMessages(String msg) {
-            this.message = msg;
-        }
-
-        String getMessage() {
-            return this.message;
-        }
-    }
-
 }
