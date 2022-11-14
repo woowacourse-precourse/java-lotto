@@ -2,7 +2,6 @@ package lotto.view;
 
 import lotto.model.WinningNumberStatus;
 import lotto.model.Lotto;
-
 import java.util.HashMap;
 import java.util.List;
 

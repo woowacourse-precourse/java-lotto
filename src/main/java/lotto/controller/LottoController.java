@@ -7,7 +7,6 @@ import lotto.view.OutputView;
 import lotto.utils.Converter;
 import lotto.utils.Validator;
 import lotto.view.InputView;
-
 import java.util.HashMap;
 import java.util.List;
 

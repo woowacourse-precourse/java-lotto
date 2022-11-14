@@ -1,7 +1,6 @@
 package lotto.utils;
 
 import lotto.model.LottoStatus;
-
 import java.util.HashMap;
 import java.util.List;
 
