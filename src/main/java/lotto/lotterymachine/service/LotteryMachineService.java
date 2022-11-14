@@ -9,65 +9,60 @@ import lotto.util.Score;
 
 public class LotteryMachineService {
 
-    public Map<Score, Integer> ScoreBoard;
+    private Map<Score, Integer> ScoreBoard;
+
     public LotteryMachineService() {
         ScoreBoard = new EnumMap<>(Score.class);
-        ScoreBoard.put(Score.ZERO,Score.ZERO.ordinal());
-        ScoreBoard.put(Score.ONE,Score.ZERO.ordinal());
-        ScoreBoard.put(Score.TWO,Score.ZERO.ordinal());
-        ScoreBoard.put(Score.THREE,Score.ZERO.ordinal());
-        ScoreBoard.put(Score.FOUR,Score.ZERO.ordinal());
-        ScoreBoard.put(Score.FIVE,Score.ZERO.ordinal());
-        ScoreBoard.put(Score.FIVE_BONUS,Score.ZERO.ordinal());
-        ScoreBoard.put(Score.SIX,Score.ZERO.ordinal());
-    }
-    public void matchNumber(User user, LotteryMachine lotteryMachine) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        checkNumbers(user, lotteryMachine);
-        System.out.println(ScoreBoard);
-    }
-
-    public void checkNumbers(User user, LotteryMachine lotteryMachine) {
-        List<List<Integer>> userLottos = user.getLottos();
-        for(List<Integer> userLottory:userLottos) {
-            checkTargetNumbers(userLottory,lotteryMachine);
+        for (int i = 0; i < Score.values().length; i++) {
+            ScoreBoard.put(Score.values()[i], Score.ZERO.ordinal());
         }
     }
-    public void checkTargetNumbers(List<Integer> userLottery,LotteryMachine lotteryMachine){
-        int count = Score.ZERO.ordinal() ;
-        for (Integer lotteryNumber :userLottery) {
-            if(lotteryMachine.getTargetNumbers().contains(lotteryNumber)){
+
+    public Map<Score, Integer> checkNumbers(User user, LotteryMachine lotteryMachine) {
+        List<List<Integer>> userLottos = user.getLottos();
+        for (List<Integer> userLottory : userLottos) {
+            checkTargetNumbers(userLottory, lotteryMachine);
+        }
+        return ScoreBoard;
+    }
+
+    public void checkTargetNumbers(List<Integer> userLottery, LotteryMachine lotteryMachine) {
+        int count = Score.ZERO.ordinal();
+        for (Integer lotteryNumber : userLottery) {
+            if (lotteryMachine.getTargetNumbers().contains(lotteryNumber)) {
                 count++;
             }
         }
-        recordScore(userLottery,lotteryMachine.getTargetBonusNumber(),count);
+        recordScore(userLottery, lotteryMachine.getTargetBonusNumber(), count);
     }
-    public boolean recordScore(List<Integer>userLottery,int targetBonusNumber,int count){
-        System.out.println(count);
 
-        if(count == Score.FIVE.ordinal()) {
-            count = checkBonusNumber(userLottery,targetBonusNumber,count);
-            Score score= Score.values()[count];
-            ScoreBoard.put(score,ScoreBoard.get(score)+1);
+    public boolean recordScore(List<Integer> userLottery, int targetBonusNumber, int count) {
+
+        if (count == Score.FIVE.ordinal()) {
+            count = checkBonusNumber(userLottery, targetBonusNumber, count);
+            featScoreBoard(count);
             return true;
         }
 
-        if(count == Score.FIVE_BONUS.ordinal()) {
-            Score score= Score.values()[count+1];
-            ScoreBoard.put(score,ScoreBoard.get(score)+1);
+        if (count == Score.FIVE_BONUS.ordinal()) {
+            featScoreBoard(count + 1);
             return true;
         }
-        Score score= Score.values()[count];
-        ScoreBoard.put(score,ScoreBoard.get(score)+1);
-        System.out.println(ScoreBoard);
+        featScoreBoard(count);
         return true;
     }
-    public int checkBonusNumber(List<Integer>userLottery,int lotteryMachine,int count) {
-        if(userLottery.contains(lotteryMachine)) {
-            count = count + 1 ;
+
+    public int checkBonusNumber(List<Integer> userLottery, int lotteryMachine, int count) {
+        if (userLottery.contains(lotteryMachine)) {
+            count = count + 1;
             return count;
         }
         return count;
     }
+
+    public void featScoreBoard(int count) {
+        Score score = Score.values()[count];
+        ScoreBoard.put(score, ScoreBoard.get(score) + 1);
+    }
+
 }
