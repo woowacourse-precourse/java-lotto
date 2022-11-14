@@ -24,7 +24,7 @@ public enum Rank {
         if (matchCount == 5 && !isContainBonusNumber) {
             return Rank.THIRD;
         }
-        if (matchCount < 3){
+        if (matchCount < 3) {
             return Rank.NONE;
         }
         return Arrays.stream(Rank.values())

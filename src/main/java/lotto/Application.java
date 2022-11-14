@@ -5,7 +5,7 @@ public class Application {
         Game game = new Game();
         try {
             game.run();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }

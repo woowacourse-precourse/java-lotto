@@ -21,7 +21,7 @@ public class Result {
                 .forEach(rank -> rankInfo.put(rank, 0));
     }
 
-    public void initWinningAmount(int purchase){
+    public void initWinningAmount(int purchase) {
         for (Rank rank : rankInfo.keySet()) {
             winningAmount += rank.getPrize() * rankInfo.get(rank);
         }
@@ -44,7 +44,7 @@ public class Result {
         }
     }
 
-    public Map<Rank, Integer> sortedRankInfo(){
+    public Map<Rank, Integer> sortedRankInfo() {
         List<Entry<Rank, Integer>> entries = rankInfo.entrySet()
                 .stream()
                 .sorted(Comparator.comparingInt(r -> r.getKey().getPrize()))

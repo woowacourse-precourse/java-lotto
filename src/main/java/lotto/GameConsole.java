@@ -22,7 +22,7 @@ import lotto.domain.Validator;
 
 public class GameConsole {
 
-    public int inputPurchase(){
+    public int inputPurchase() {
         notice(INPUT_PURCHASE_MESSAGE);
         String purchase = Console.readLine();
         Validator.purchase(purchase);
@@ -30,7 +30,7 @@ public class GameConsole {
         return Integer.parseInt(purchase);
     }
 
-    public List<Integer> inputWinningNumber(){
+    public List<Integer> inputWinningNumber() {
         notice(INPUT_WINNING_NUMBER_MESSAGE);
         String winningNumber = Console.readLine();
         Validator.winningNumbers(winningNumber);
@@ -44,7 +44,7 @@ public class GameConsole {
         System.out.println(inputMessage);
     }
 
-    public int inputBonusNumber(){
+    public int inputBonusNumber() {
         notice(INPUT_BONUS_NUMBER_MESSAGE);
         String bonusNumber = Console.readLine();
         Validator.bonusNumber(bonusNumber);
@@ -59,7 +59,7 @@ public class GameConsole {
         }
     }
 
-    public void outputResult(Result result){
+    public void outputResult(Result result) {
         outputGameResult(result);
         outputWinningAmount(result);
     }
@@ -73,7 +73,7 @@ public class GameConsole {
 
         for (Rank rank : rankInfo.keySet()) {
             System.out.printf(PRIZE_RESULT, rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank));
-            if (rank == Rank.SECOND){
+            if (rank == Rank.SECOND) {
                 System.out.printf(SECOND_PRIZE_RESULT, rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank));
             }
         }
