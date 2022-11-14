@@ -31,14 +31,14 @@ public class Application {
         return amount;
     }
 
-//    /* 몇개의 로또를 구입할 수 있는지 계산하는 메소드*/
-//    private int getNumberOfTimes(int amount){
-//        if(amount % 1000 != 0)
-//            throw new IllegalArgumentException();
-//        int lottoCount = amount / 1000;
-//        return lottoCount; //받에서 sout ~개를 구입하였습니다.
-//    }
-//
+    /* 몇개의 로또를 구입할 수 있는지 계산하는 메소드*/
+    private int getNumberOfTimes(int amount){
+        if(amount % 1000 != 0)
+            throw new IllegalArgumentException();
+        int lottoCount = amount / 1000;
+        return lottoCount; //받에서 sout ~개를 구입하였습니다.
+    }
+
 //    /*로또 번호 자동생성 메소드*/
 //    public List<Integer> makeLottoNumber(){
 //        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
