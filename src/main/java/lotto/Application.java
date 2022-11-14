@@ -35,6 +35,7 @@ public class Application {
         int earnings = 0;
         for (Lotto lotto:mylottos) {
             당첨 rank = lotto.compareLotto(winningNumber,bonusNumber);
+            if(rank == null) continue;
             result[rank.getValue()]++;
             earnings+= rank.getPrize();
         }
