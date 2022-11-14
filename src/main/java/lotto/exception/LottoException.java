@@ -34,6 +34,6 @@ public class LottoException {
 
     private void notRightNumberException(){
         System.out.println(NOT_RIGHT_NUMBER_COMMENT);
-        throw new NoSuchElementException(NOT_RIGHT_NUMBER_COMMENT);
+        throw new IllegalArgumentException(NOT_RIGHT_NUMBER_COMMENT);
     }
 }
