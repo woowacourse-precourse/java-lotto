@@ -13,7 +13,7 @@ class LottoComparatorTest {
 
 	@DisplayName("당첨 번호와 보너스 번호로 2등 당첨 여부를 구한다.")
 	@Test
-	void getWinningRating() {
+	void getSecondRating() {
 		WinningAndBonusNumbers winningAndBonusNumbers;
 		winningAndBonusNumbers = new WinningAndBonusNumbers("4,12,16,26,32,45");
 		WinningAndBonusNumbers winningAndBonusNumbers1 = new WinningAndBonusNumbers(2);
@@ -24,7 +24,7 @@ class LottoComparatorTest {
 
 	@DisplayName("당첨 번호로 1등 당첨 여부를 구한다.")
 	@Test
-	void getWinningRati1ng() {
+	void getFirstRating() {
 		WinningAndBonusNumbers winningAndBonusNumbers;
 		winningAndBonusNumbers = new WinningAndBonusNumbers("4,12,16,26,32,45");
 		WinningAndBonusNumbers winningAndBonusNumbers1 = new WinningAndBonusNumbers(2);
