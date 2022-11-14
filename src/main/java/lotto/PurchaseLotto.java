@@ -1,14 +1,18 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
+import constant.ConstantLottoProgram;
 import ui.PurchasePrint;
 import exceptioncase.PurchaseException;
 import camp.nextstep.edu.missionutils.Randoms;
 public class PurchaseLotto {
     public static List<Lotto> purchaseLotto(){
         int lottocount = inputPurchaseMoney();
+        if(lottocount ==ConstantLottoProgram.ERROR_CODE.getErrorCode())
+            return Collections.emptyList();
         PurchasePrint.checkPurchase(lottocount);
         List<Lotto> purchaselottos = drawLotto(lottocount);
         PurchasePrint.printLottoNumber(purchaselottos);
@@ -17,7 +21,8 @@ public class PurchaseLotto {
     private static int inputPurchaseMoney(){
         PurchasePrint.intputMoney();
         String money = Console.readLine();
-        PurchaseException.inputMoneyException(money);
+        if(!PurchaseException.inputMoneyException(money))
+            return ConstantLottoProgram.ERROR_CODE.getErrorCode();
         return Integer.valueOf(money)/1000;
     }
     public static List<Lotto> drawLotto(int lottocount){

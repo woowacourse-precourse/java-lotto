@@ -1,10 +1,15 @@
 package constant;
 
+import java.util.Collections;
+
 public enum ConstantLottoProgram {
-    RANGE_OF_LOTTO_NUMBER(1,45),LOTTO_LENGTH(6);
-    int length;
-    int minimum;
-    int maximum;
+    RANGE_OF_LOTTO_NUMBER(1,45),LOTTO_LENGTH(6),ERROR_CODE(false,-1);
+    int length,minimum,maximum,errorCode;
+    boolean isError;
+    ConstantLottoProgram(boolean isError, int errorCode){
+        this.isError =isError;
+        this.errorCode = errorCode;
+    }
     ConstantLottoProgram(int length){
         this.length = length;
     }
@@ -21,4 +26,6 @@ public enum ConstantLottoProgram {
     public int getMin(){
         return minimum;
     }
+    public boolean isErrorState(){return isError;}
+    public int getErrorCode(){return errorCode;}
 }
