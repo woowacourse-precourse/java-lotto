@@ -73,6 +73,6 @@ public class Controller {
         makeWinningNumbers();
         view.printLine("");
 
-        view.printResult(ranks, 0);
+        view.printResult(ranks, calculateYield(priceNumber*1000));
     }
 }
