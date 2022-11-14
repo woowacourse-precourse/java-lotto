@@ -12,7 +12,6 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("구입 금액을 입력해주세요.");
         String purchaseAmount_ = Console.readLine();
-        System.out.println();
 
         try {
             if (!isNumeric(purchaseAmount_))
@@ -41,13 +40,11 @@ public class Application {
         for (Lotto lotto : mylottos) {
             System.out.println(lotto.toString());
         }
-        System.out.println();
 
         System.out.println("당첨 번호를 입력해 주세요.");
         int[] winningNumber_ = Arrays.stream(Console.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
         List<Integer> winningNumber = Arrays.stream(winningNumber_).boxed().collect(Collectors.toList());
         Lotto winngLotto = new Lotto(winningNumber);
-        System.out.println();
 
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
@@ -61,14 +58,14 @@ public class Application {
             earnings += rank.getPrize();
         }
         double earningsRate = earnings / (double) purchaseAmount * 100;
-        System.out.println();
-        
+
         System.out.println("당첨 통계");
         System.out.println("---");
         for (int i = 4; i >= 0; i--) {
             System.out.println(당첨.valueOfValue(i).getResult().replace("_", ",") + " - " + result[i] + "개");
         }
         System.out.println("총 수익률은 " + String.format("%.1f", earningsRate) + "%입니다.");
+
 
     }
 
