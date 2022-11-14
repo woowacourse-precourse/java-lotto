@@ -70,4 +70,49 @@ public class PlayLotto {
         return 9;
     }
 
+    public void print5th(List<Integer> countCorrectNumber) {
+        System.out.printf("3개 일치 (5,000원) - " + countCorrectNumber.get(4) + "개");
+    }
+
+    public void print4th(List<Integer> countCorrectNumber) {
+        System.out.printf("4개 일치 (50,000원) - " + countCorrectNumber.get(3) + "개");
+    }
+
+    public void print3rd(List<Integer> countCorrectNumber) {
+        System.out.printf("5개 일치 (1,500,000원) - " + countCorrectNumber.get(2) + "개");
+    }
+
+    public void print2nd(List<Integer> countCorrectNumber) {
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - " + countCorrectNumber.get(1) + "개");
+    }
+
+    public void print1st(List<Integer> countCorrectNumber) {
+        System.out.printf("6개 일치 (2,000,000,000원) - " + countCorrectNumber.get(0) + "개");
+    }
+
+    public int profit5th(List<Integer> countCorrectNumber) {
+        return countCorrectNumber.get(4) * Reward.FIFTH.getAmount();
+    }
+
+    public int profit4th(List<Integer> countCorrectNumber) {
+        return countCorrectNumber.get(3) * Reward.FOURTH.getAmount();
+    }
+
+    public int profit3rd(List<Integer> countCorrectNumber) {
+        return countCorrectNumber.get(2) * Reward.THIRD.getAmount();
+    }
+
+    public int profit2nd(List<Integer> countCorrectNumber) {
+        return countCorrectNumber.get(1) * Reward.SECOND.getAmount();
+    }
+
+    public int profit1st(List<Integer> countCorrectNumber) {
+        return countCorrectNumber.get(0) * Reward.FIFTH.getAmount();
+    }
+
+    public void printYield(int money, List<Integer> countCorrectNumber) {
+        int allProfit = profit1st(countCorrectNumber) + profit2nd(countCorrectNumber) + profit3rd(countCorrectNumber) + profit4th(countCorrectNumber) + profit5th(countCorrectNumber);
+        float yield = allProfit / money;
+        System.out.printf("총 수익률은 " + String.format("%.1f", yield) + "입니다.");
+    }
 }
