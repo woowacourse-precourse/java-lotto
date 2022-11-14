@@ -53,7 +53,7 @@ class LottoGameTest {
             assertThat(count).isEqualTo(result);
         } catch (IllegalArgumentException illegalArgumentException) {
             String message = illegalArgumentException.getMessage();
-            String result = "[ERROR] 금액을 1000원 단위로 입력해주세요.";
+            String result = "금액을 1000원 단위로 입력해주세요.";
             assertThat(message).isEqualTo(result);
         }
     }
@@ -67,7 +67,20 @@ class LottoGameTest {
             assertThat(count).isEqualTo(result);
         } catch (IllegalArgumentException illegalArgumentException) {
             String message = illegalArgumentException.getMessage();
-            String result = "[ERROR] 금액을 1000원 단위로 입력해주세요.";
+            String result = "금액을 1000원 단위로 입력해주세요.";
+            assertThat(message).isEqualTo(result);
+        }
+    }
+    @Test
+    void 구매금액에_따른_로또개수_반환3(){
+        LottoGame lottoGame = new LottoGame();
+        try {
+            int count = lottoGame.countLotto(0);
+            int result = 5;
+            assertThat(count).isEqualTo(result);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            String message = illegalArgumentException.getMessage();
+            String result = "금액을 1000원 단위로 입력해주세요.";
             assertThat(message).isEqualTo(result);
         }
     }
