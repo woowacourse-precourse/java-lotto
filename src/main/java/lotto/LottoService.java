@@ -37,7 +37,7 @@ public class LottoService {
         return new Lotto(lottoNumbers);
     }
 
-    public List<Integer> getResult(WinningLotto winningLotto, Lottos lottos) {
+    public List<Integer> getWinningResult(WinningLotto winningLotto, Lottos lottos) {
         HashMap<Integer, Integer> result = new HashMap<>();
         for (Lotto lotto : lottos.getLottos()) {
             int prize = calPrize(winningLotto, lotto);
@@ -99,10 +99,14 @@ public class LottoService {
 
     public double getRateOfReturn(int money, List<Integer> result) {
         int prizeMoney = calPrizeMoney(result);
+        return calRatePercent(money, prizeMoney);
+    }
+
+    public double calRatePercent(int money, int prizeMoney) {
         return (double) prizeMoney / money * 100;
     }
 
-    private int calPrizeMoney(List<Integer> result) {
+    public int calPrizeMoney(List<Integer> result) {
         int prizeMoney = 0;
         for (int prize = 5; prize >= 1; prize--) {
             int prizeIndex = 5 - prize;
