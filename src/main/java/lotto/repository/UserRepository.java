@@ -37,4 +37,8 @@ public class UserRepository {
         this.user.setBonusNumber(bonusNumber);
     }
 
+    public User getUser() {
+        return this.user;
+    }
+
 }
