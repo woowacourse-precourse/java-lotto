@@ -32,4 +32,8 @@ public class Money {
     public int countLotto() {
         return money / UNIT_MONEY;
     }
+
+    public int getMoney() {
+        return money;
+    }
 }

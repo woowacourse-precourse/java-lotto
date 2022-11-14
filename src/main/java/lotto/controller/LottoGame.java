@@ -1,8 +1,8 @@
 package lotto.controller;
 
-import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
+import lotto.domain.LottoResult;
 import lotto.domain.Lottos;
 import lotto.domain.Money;
 import lotto.domain.WinningLotto;
@@ -22,16 +22,17 @@ public class LottoGame {
         OutputView.printInputMoney();
         Money money = new Money(InputView.inputPurchaseMoney());
         OutputView.printBlank();
-        makeLotto(money.countLotto());
-        drawLottery();
+        Lottos purchasedLottos = makeLotto(money.countLotto());
+        winStatics(purchasedLottos, drawLottery(), money);
     }
 
-    private void makeLotto(int lottoCount) {
+    private Lottos makeLotto(int lottoCount) {
         Lottos lottos = new Lottos(LottoGenerator.generateLottos(lottoCount));
         OutputView.printPurchaseLotto(lottos.getLottos());
+        return lottos;
     }
 
-    private void drawLottery() {
+    private WinningLotto drawLottery() {
         OutputView.printInputWinningNumber();
         Lotto winningLottoNumber = new Lotto(InputView.inputWinningNumber());
         OutputView.printBlank();
@@ -39,5 +40,11 @@ public class LottoGame {
         OutputView.printInputBonusNumber();
         WinningLotto winningLotto = new WinningLotto(winningLottoNumber, InputView.inputBonusNumber());
         OutputView.printBlank();
+        return winningLotto;
+    }
+
+    private void winStatics(Lottos purchasedLottos, WinningLotto winningLotto, Money money) {
+        LottoResult lottoResult = new LottoResult(purchasedLottos, winningLotto, money);
+        // TODO: OutputView.printResult();
     }
 }
