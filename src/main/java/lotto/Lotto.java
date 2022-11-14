@@ -16,7 +16,6 @@ public class Lotto {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-
     }
 
     public Lotto(List<Integer> numbers) {
@@ -48,5 +47,4 @@ public class Lotto {
         Collections.sort(lottos);
         return lottos;
     }
-    // TODO: 추가 기능 구현
 }

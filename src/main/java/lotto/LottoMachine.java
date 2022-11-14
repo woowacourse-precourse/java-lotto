@@ -11,7 +11,6 @@ public class LottoMachine {
 
     int count = 0;
 
-    //makeProcess
     public int makeLottoCount(int money) {
         count = money / 1000;
         return count;

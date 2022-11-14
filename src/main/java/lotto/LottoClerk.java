@@ -3,9 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Domain.SayMessage;
 import lotto.Domain.WinningPrize;
-import net.bytebuddy.implementation.InvokeDynamic;
 
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
