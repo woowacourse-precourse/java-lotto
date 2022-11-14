@@ -2,7 +2,7 @@ package lotto.domain.lotto.lottocompany;
 
 import static lotto.domain.lotto.lottocompany.Win.*;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class WinResult {
@@ -10,12 +10,12 @@ public class WinResult {
     private final Map<Win, Integer> winResult;
 
     public WinResult() {
-        this.winResult = new HashMap<>();
-        this.winResult.put(first, 0);
-        this.winResult.put(second, 0);
-        this.winResult.put(third, 0);
-        this.winResult.put(fourth, 0);
+        this.winResult = new LinkedHashMap<>();
         this.winResult.put(fifth, 0);
+        this.winResult.put(fourth, 0);
+        this.winResult.put(third, 0);
+        this.winResult.put(second, 0);
+        this.winResult.put(first, 0);
     }
 
     public Map<Win, Integer> getWinResult() {
