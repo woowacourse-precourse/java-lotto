@@ -1,12 +1,12 @@
 package lotto;
 
 import lotto.service.Service;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,13 +14,14 @@ public class ServiceTest {
 
     Service service = new Service();
 
-    static List<List<Integer>> list;
-    List<Integer> player;
-    int bonus;
-    Map<String, Integer> map;
+    static List<List<Integer>> list = new ArrayList<>();
+    static List<Integer> player;
+    static int bonus;
+    static Map<String, Integer> map = new HashMap<>();
 
-    @BeforeEach
-    void test () {
+    @BeforeAll
+    static void test () {
+
         list = new ArrayList<>();
         List<Integer> list1 = List.of(1,2,3,4,5,6);
         List<Integer> list2 = List.of(1,2,3,8,9,55);
@@ -34,10 +35,11 @@ public class ServiceTest {
 
         player = List.of(1,2,3,4,5,8);
         bonus = 6;
-
-
-        map = service.matchLotteryNumber(list, player, bonus);
-
+    }
+    static {
+        map.put("30000000",1);
+        map.put("50000",2);
+        map.put("0",1);
     }
 
 
@@ -45,9 +47,12 @@ public class ServiceTest {
     void matchLotteryNumberTest() {
         System.out.println(map.toString());
 
-        assertThat(map.get("30000000")).isEqualTo(1);
-        assertThat(map.get("50000")).isEqualTo(2);
-        assertThat(map.get("0")).isEqualTo(1);
+        Map<String, Integer> expected = service.matchLotteryNumber(list,player,bonus);
+        System.out.println(expected.toString());
+
+        assertThat(map.get("30000000")).isEqualTo(expected.get("30000000"));
+        assertThat(map.get("50000")).isEqualTo(expected.get("50000"));
+        assertThat(map.get("0")).isEqualTo(expected.get("0"));
 
     }
 
@@ -57,6 +62,7 @@ public class ServiceTest {
         String expected = "30100000";
 
         assertThat(expected).isEqualTo(reward);
+
     }
 
     @Test

@@ -11,8 +11,8 @@ import static lotto.exception.ExceptionPhrase.EXCEPTION_INVALID_RESULT;
 
 public class Service {
 
-    public static HashMap<String, Integer> rewards= new HashMap<>();
-    static {
+    public HashMap<String, Integer> rewards= new HashMap<>();
+     {
         rewards.put(FIRST.getReward(),0);
         rewards.put(SECOND.getReward(),0);
         rewards.put(THIRD.getReward(),0);
@@ -98,10 +98,10 @@ public class Service {
         String sumReward = sumTotalReward(rewards);
 
         BigDecimal reward = new BigDecimal(sumReward);
-        BigDecimal count = new BigDecimal(lottoCount);
+        BigDecimal money = new BigDecimal(lottoCount);
         reward = reward.multiply(new BigDecimal("100"));
 
-        BigDecimal result = reward.divide(count, 1,RoundingMode.HALF_UP);
+        BigDecimal result = reward.divide(money, 1,RoundingMode.HALF_UP);
 
         return result.toString() + "%";
     }

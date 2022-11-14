@@ -6,6 +6,7 @@ import lotto.view.converter.Converter;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -17,14 +18,14 @@ public class ConverterTest {
 
     @Test
     void test1() {
-        assertThatThrownBy(() -> converter1.toNumbers("10000"))
-                .doesNotThrowAnyException();
+        int money = converter1.toNumbers("10000");
+        assertThat(10000).isEqualTo(money);
     }
 
     @Test
     void test2() {
         assertThatThrownBy(() -> converter1.toNumbers("삼백억"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(NoSuchElementException.class);
     }
 
     @Test
@@ -37,6 +38,6 @@ public class ConverterTest {
     @Test
     void test4() {
         assertThatThrownBy(() -> converter1.toNumbers("one, two, three, four, five, six"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(NoSuchElementException.class);
     }
 }
