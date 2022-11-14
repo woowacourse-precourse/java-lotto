@@ -21,25 +21,25 @@ public class ResultCalculate {
         return ranks;
     }
     public static int compareTwoNumbers(Lotto lotto, List<Integer> drawLotto){
-        int sameNumberCount = 7;
+        int sameNumberCount = 0;
         for(int nowNumber:drawLotto){
             if(lotto.getNumbers().contains(nowNumber)){
-                sameNumberCount--;
+                sameNumberCount++;
             }
         }
-        if(sameNumberCount>=5) return -1;
+        if(sameNumberCount<3) return -1;
         return calculateRanking(lotto, drawLotto,sameNumberCount);
     }
     private static int calculateRanking(Lotto lotto, List<Integer> drawLotto, int sameNumberCount){
-        if(sameNumberCount==1)
+        if(sameNumberCount==6)
             return LottoRanking.FIRST.getRanking();
-        if(sameNumberCount==2){
+        if(sameNumberCount==5){
             if(lotto.getNumbers().contains(drawLotto.get(6))) {
                 return LottoRanking.SECOND.getRanking();
             }
             return LottoRanking.THIRD.getRanking();
         }
-        if(sameNumberCount==3)
+        if(sameNumberCount==4)
             return LottoRanking.FOURTH.getRanking();
         return LottoRanking.FIFTH.getRanking();
     }
