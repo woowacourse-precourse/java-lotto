@@ -10,4 +10,10 @@ public class LottoException {
 		}
 	}
 
+	public void checkMoneySize(String money) throws IllegalArgumentException {
+		if (Integer.parseInt(money) < 1) {
+			throw new IllegalArgumentException(Constant.MONEY_RANGE_ERROR);
+		}
+	}
+
 }

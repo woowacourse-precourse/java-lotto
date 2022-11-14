@@ -111,5 +111,6 @@ public class Service {
 	
 	public void checkMoney(String inputMoney) {
 		exception.checkMissMatch(inputMoney);
+		exception.checkMoneySize(inputMoney);
 	}
 }
