@@ -103,6 +103,14 @@ class LottoTest extends NsTest {
 		});
 	}
 
+	@Test
+	void 당첨번호_6개_검사() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,5,6,7");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
