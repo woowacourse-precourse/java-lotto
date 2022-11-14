@@ -130,10 +130,8 @@ public class Checker {
     }
 
     public int checkCoincide(List<Integer> userNumbers, List<Integer> winningNumbers) {
-        System.out.println(String.format("!--User:%s\n!--Winning%s", userNumbers, winningNumbers));
         int coincideCount = 0;
         for (int winningNumber : winningNumbers) {
-            System.out.println(String.format("!--winningNumber:%d\n!--user contains wN?%b", winningNumber, userNumbers.contains(winningNumber)));
             if (userNumbers.contains(winningNumber)) {
                 coincideCount += 1;
             }
@@ -160,7 +158,6 @@ public class Checker {
         bonusNumber = winningLotto.getBonusNumber();
         bonus = checkBonusNumber(userNumbers, bonusNumber);
         result = new Result(lotto, coincideCount, bonus);
-        System.out.println(result);
         return result;
     }
 
