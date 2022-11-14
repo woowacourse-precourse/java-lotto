@@ -2,8 +2,6 @@ package lotto.Domain.MainValue;
 
 
 import lotto.Domain.Exception.CheckException;
-
-import java.util.HashSet;
 import java.util.List;
 
 public class Bonus {
@@ -19,8 +17,7 @@ public class Bonus {
         int number = checkException.check_HaveChar_And_Convert(bonus);
 
         sixNum.add(number);
-        HashSet<Integer> compareNum = new HashSet<>(sixNum);
-        checkException.check_RelativeLottoSize(sixNum.size(), compareNum.size());
+        checkException.check_RelativeLottoSize(sixNum.size(), sixNum);
 
         checkException.check_OutOfRange(number);
         return number;

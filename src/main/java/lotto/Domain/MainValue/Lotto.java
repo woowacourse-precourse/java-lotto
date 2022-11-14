@@ -2,9 +2,7 @@ package lotto.Domain.MainValue;
 
 import lotto.Domain.Exception.CheckException;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -18,8 +16,7 @@ public class Lotto {
         CheckException checkException = new CheckException();
         checkException.check_LottoSize(numbers.size());
 
-        Set<Integer> compareNum = new HashSet<>(numbers);
-        checkException.check_RelativeLottoSize(numbers.size(), compareNum.size());
+        checkException.check_RelativeLottoSize(numbers.size(), numbers);
 
         for(Integer number : numbers) {
             checkException.check_OutOfRange(number);

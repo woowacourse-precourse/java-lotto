@@ -2,6 +2,10 @@ package lotto.Domain.Exception;
 
 import lotto.Input.LottoValue;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class CheckException {
     private IllegalArgumentException illegalArgument = new IllegalArgumentException();
     public int check_HaveChar_And_Convert(String str) {
@@ -29,8 +33,9 @@ public class CheckException {
         }
     }
 
-    public void check_RelativeLottoSize(int size, int compareSize) {
-        if(size != compareSize) {
+    public void check_RelativeLottoSize(int size, List<Integer> compareNums) {
+        Set<Integer> compareNum = new HashSet<>(compareNums);
+        if(size != compareNum.size()) {
             throw illegalArgument;
         }
     }
