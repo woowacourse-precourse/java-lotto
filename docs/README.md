@@ -30,7 +30,7 @@
     - [x] 당첨 결과를 나타내는 enum 생성
     - [x] `LotteryTicketRepository` 에 당첨 결과를 저장하는 Map 추가
     - [x] 당첨 번호와 `LotteryTicketRepository` 에 저장된 로또 티켓을 비교해 당첨 결과 저장
-- [ ] `LotteryController` 로또 추첨 구현
+- [x] `LotteryController` 로또 추첨 구현
 
 ## 로또 결과 조회
 - [ ] 유저가 구매한 로또 당첨 결과를 담는 `LotteryResult` 클래스 구현
