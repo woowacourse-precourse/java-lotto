@@ -30,16 +30,30 @@ public class Result {
     /**
      * 총 당첨금의 합을 계산하여 반환하는 메소드
      */
-    private int sumOfMoney() {
+    private long sumOfMoney() {
         return results.keySet().stream()
-                .mapToInt(rank -> rank.getMoney() * results.get(rank))
+                .mapToLong(rank -> (long) rank.getMoney() * results.get(rank))
                 .sum();
     }
 
     /**
-     * 구입 금액과 총 당첨금의 합으로 수익률을 계산하여 반환하는 메소드
+     * 구입 금액을 파라미터로 받아 총 당첨금의 합으로 수익률(소수점 둘째 자리에서 반올림)을 계산하여 반환하는 메소드
      */
-    private double getYeild(int amount) {
-        return Math.round(((sumOfMoney() / (double) amount) * 100) / 100.0);
+    private double getYield(int amount) {
+        return Math.round(((sumOfMoney() / (double) amount) * 100)) / 100.0;
+    }
+
+    /**
+     * 당첨 결과에 대한 통계를 출력하는 메소드
+     */
+    public void printWinningStatistics(int amount) {
+        System.out.println("\n당첨 통계\n---");
+        for (Rank rank : Rank.values()) {
+            if (rank.equals(Rank.NO_LUCK)) {
+                continue;
+            }
+            System.out.printf("%s - %d개\n", Rank.getMessage(rank), results.get(rank));
+        }
+        System.out.println("총 수익률은 " + getYield(amount) + "%입니다.");
     }
 }
