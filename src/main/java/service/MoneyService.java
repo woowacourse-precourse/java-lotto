@@ -34,7 +34,7 @@ public class MoneyService {
     private void checkAmountValue(int amountValue) {
         Rule lotto = Rule.PER_LOTTO;
 
-        if (!(amountValue % lotto.getPrice() == 0)) {
+        if (amountValue == 0 || amountValue % lotto.getPrice() != 0) {
             throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_VALUE.getText());
         }
     }
