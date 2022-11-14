@@ -48,4 +48,15 @@ public class Validator {
             list.add(number);
         }
     }
+
+    public static void validateBonus(String number, Lotto winningLotto) {
+        isNumberInRange(number);
+    }
+
+    private static void isNumberInRange(String number) {
+        String pattern = "[1-45]";
+        if (!number.matches(pattern)) {
+            throw new IllegalArgumentException(ErrorMessage.ONLY_ONE_NUMBER_IN_RANGE_POSSIBLE.getMessage());
+        }
+    }
 }

@@ -23,8 +23,9 @@ public class Host {
         return list;
     }
 
-    public Bonus drawBonus() {
+    public Bonus drawBonus(Lotto winningLotto) {
         String number = Console.readLine();
+        Validator.validateBonus(number, winningLotto);
         return new Bonus(Integer.parseInt(number));
     }
 }

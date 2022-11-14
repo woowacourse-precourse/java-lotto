@@ -58,4 +58,20 @@ public class ValidatorTest {
         assertThatThrownBy(() -> validator.validateNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호가 1에서 45 사이의 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void inputBonusOutOfRange() {
+        String input = "46";
+        assertThatThrownBy(() -> validator.validateNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 1개가 아니면 예외가 발생한다.")
+    @Test
+    void inputBonusOverSize() {
+        String input = "1,2";
+        assertThatThrownBy(() -> validator.validateNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
