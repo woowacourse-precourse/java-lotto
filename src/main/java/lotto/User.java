@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -81,7 +82,6 @@ public class User {
         List<Integer> numbers =new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(numbers);
         return numbers;
-
     }
     public void printNumbersOfLottos(){
         for (Lotto lotto: this.lottos) {
@@ -111,16 +111,17 @@ public class User {
         this.earningRate = Math.round(temp*10)/(float)10.0;
     }
     public void printPrizeResult(){
-        System.out.println("당첨 통계\n---");
-        System.out.printf("3개 일치 (%d) - %d개\n", WinningRanking.FIFTH_WITHOUT_BONUS.getPrize(),
+        System.out.println("\n당첨 통계\n---");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        System.out.printf("3개 일치 (%s원) - %d개\n", decimalFormat.format(WinningRanking.FIFTH_WITHOUT_BONUS.getPrize()),
                 this.rankingCount[WinningRanking.FIFTH_WITHOUT_BONUS.getOrder()]);
-        System.out.printf("4개 일치 (%d) - %d개\n", WinningRanking.FOURTH_WITHOUT_BONUS.getPrize(),
+        System.out.printf("4개 일치 (%s원) - %d개\n", decimalFormat.format(WinningRanking.FOURTH_WITHOUT_BONUS.getPrize()),
                 this.rankingCount[WinningRanking.FOURTH_WITHOUT_BONUS.getOrder()]);
-        System.out.printf("5개 일치 (%d) - %d개\n", WinningRanking.THIRD_WITHOUT_BONUS.getPrize(),
+        System.out.printf("5개 일치 (%s원) - %d개\n", decimalFormat.format(WinningRanking.THIRD_WITHOUT_BONUS.getPrize()),
                 this.rankingCount[WinningRanking.THIRD_WITHOUT_BONUS.getOrder()]);
-        System.out.printf("5개 일치, 보너스 불 일치 (%d) - %d개\n", WinningRanking.SECOND.getPrize(),
+        System.out.printf("5개 일치, 보너스 볼 일치 (%s원) - %d개\n", decimalFormat.format(WinningRanking.SECOND.getPrize()),
                 this.rankingCount[WinningRanking.SECOND.getOrder()]);
-        System.out.printf("6개 일치 (%d) - %d개\n", WinningRanking.FIRST_WITHOUT_BONUS.getPrize(),
+        System.out.printf("6개 일치 (%s원) - %d개\n", decimalFormat.format(WinningRanking.FIRST_WITHOUT_BONUS.getPrize()),
                 this.rankingCount[WinningRanking.FIRST_WITHOUT_BONUS.getOrder()]);
         System.out.printf("총 수익률은 %.1f%%입니다.\n", this.earningRate);
     }
