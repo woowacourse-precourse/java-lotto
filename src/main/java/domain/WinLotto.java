@@ -32,10 +32,19 @@ public class WinLotto {
                     LottoRank.getRank(lotto, lotto.numberOfSameNumbers(winnerNumber.getNumbers()), bonusNumber);
 
             Integer numRank = numberOfRank.getOrDefault(rank, DEFAULT_ZERO);
+
+            if (numRank.equals(DEFAULT_ZERO)) {
+                addProfitByWinLotto(rank.getPrizeMoney());
+            }
+
             numberOfRank.put(rank, numRank + ONE);
         });
 
         return numberOfRank;
+    }
+
+    private void addProfitByWinLotto(int money) {
+        this.profit += money;
     }
 
     public Map<LottoRank, Integer> getResult() {

@@ -27,4 +27,18 @@ class WinLottoTest {
         Assertions.assertThat(lottoRankIntegerMap.get(LottoRank.FIRST)).isEqualTo(2);
     }
 
+    @Test
+    void getProfitByWinLotto() {
+        List<Lotto> lotteries = new ArrayList<>();
+        lotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+
+        Lotto winnerNumber = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+
+        WinLotto winLotto = new WinLotto(lotteries, winnerNumber, bonusNumber);
+        Assertions.assertThat(winLotto.getProfit()).isEqualTo(2_030_000_000);
+    }
+
 }
