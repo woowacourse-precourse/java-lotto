@@ -25,8 +25,11 @@
 - [x] "보너스 번호를 입력해 주세요."를 출력한다. - ShowMessage#showInputBonusNumber()
 - [x] "당첨 통계{\n}---"를 출력한다. - ShowMessage#showLottoStatistics()
 
-- [x] "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다." - ShowErrorMessage#showOutRangeLottoNumber()
+- [x] "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."를 출력한다. - ShowErrorMessage#showOutRangeLottoNumber()
   - [x] "[ERROR] 금액은 1,000으로 나누어 떨어져야 합니다."를 출력한다. - ShowErrorMessage#showNotDivide()
+- [x] "[ERROR] 당첨 번호의 개수는 6개여야 합니다."를 출력한다. - ShowErrorMessage#showLottoNumberCount()
+- [x] "[ERROR] 당첨 번호는 중복될 수 없습니다."를 출력한다. - ShowErrorMessage#showDuplicateLottoNumber()
+- [x] "[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다."를 출력한다. - ShowErrorMessage#showContainsBonusNumber()
 
 - [x] 구입할 수 있는 로또의 개수를 반환 - Lotto#lottoCount()
 - [x] 1 ~ 45까지의 숫자 중 6개의 중복되지 않는 숫자를 뽑는다. - Lotto#createLottoNumbers()
