@@ -1,16 +1,14 @@
 package lotto.domain;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
+        Collections.sort(this.numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -19,7 +17,7 @@ public class Lotto {
         }
         Set<Integer> numberPool = new HashSet<>();
         numberPool.addAll(numbers);
-        if(numberPool.size() != numbers.size()) {
+        if (numberPool.size() != numbers.size()) {
             throw new IllegalArgumentException();
         }
     }
