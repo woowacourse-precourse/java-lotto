@@ -1,5 +1,8 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+
 public class Simulator {
     private int quantity;
 
@@ -23,5 +26,10 @@ public class Simulator {
 
     private int toQuantity(int price) {
         return price / 1000;
+    }
+
+    public static Lotto generate() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new Lotto(numbers);
     }
 }
