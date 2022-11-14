@@ -2,13 +2,21 @@ package lotto.vo;
 
 import java.util.List;
 
-public class LottoOfAnswer  extends Lotto{
+public class LottoOfAnswer {
+    private final List<Integer> numbers;
     private final int bonusNumber;
 
     public LottoOfAnswer(List<Integer> numbers, int bonusNumber) {
-        super(numbers);
-        validateLottoOfAnswer(numbers,bonusNumber);
+        validate(numbers);
+        validateLottoOfAnswer(numbers, bonusNumber);
+        this.numbers = numbers;
         this.bonusNumber = bonusNumber;
+    }
+
+    private void validate(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateLottoOfAnswer(List<Integer> numbers, int bonusNumber) {
@@ -17,7 +25,17 @@ public class LottoOfAnswer  extends Lotto{
         }
     }
 
-    public boolean containBounus(int bonusNumber) {
-        return this.bonusNumber == bonusNumber;
+    public int ifContainThenCountAdd(Integer number) {
+        if (numbers.contains(number)) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public boolean isContainBounus(boolean isNotExistBonus, Integer number) {
+        if (isNotExistBonus) {
+            return numbers.contains(number);
+        }
+        return true;
     }
 }

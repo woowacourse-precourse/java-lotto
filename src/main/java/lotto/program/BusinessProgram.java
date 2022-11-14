@@ -24,5 +24,7 @@ public class BusinessProgram {
 
     public void printUserLottoResults(LottoOfUser userLotto, LottoOfAnswer answerLotto) {
         System.out.println("당첨통계\t---");
+        userLotto.matchWithAnswer(answerLotto);
+
     }
 }
