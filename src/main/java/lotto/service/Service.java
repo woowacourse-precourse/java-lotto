@@ -36,7 +36,6 @@ public class Service {
     private Lotto generateLottoNumber() {
         List<Integer> numbers = new ArrayList<>(
                 Utils.randomUniqueNumberGenerate(LOTTO_START_NUMBER, LOTTO_LAST_NUMBER, LOTTO_LENGTH));
-        Utils.sortListNaturalOrder(numbers);
         return new Lotto(numbers);
     }
 
