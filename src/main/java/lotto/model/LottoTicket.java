@@ -20,6 +20,7 @@ public class LottoTicket {
                 lottoTickets.add(new Lotto(numbers));
             } catch(IllegalArgumentException e){
                 OutputView.printException(e);
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -27,5 +28,7 @@ public class LottoTicket {
     public List<Lotto> getLottoTickets(){
         return lottoTickets;
     }
+
+
 
 }

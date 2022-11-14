@@ -43,5 +43,13 @@ public class Lotto {
         return numbers;
     }
 
+    public int countSameNum(LuckyNumbers luckyNumbers){
+        return (int) numbers.stream()
+                .filter(luckyNumbers.getLuckyNumbers()::contains)
+                .count();
+    }
 
+    private boolean contains(Integer integer) {
+        return numbers.contains(integer);
+    }
 }
