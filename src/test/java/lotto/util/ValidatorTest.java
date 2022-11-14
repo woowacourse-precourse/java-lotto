@@ -8,6 +8,22 @@ import org.junit.jupiter.api.Test;
 
 class ValidatorTest {
 
+    @DisplayName("양수가 아니라면 예외가 발생한다.")
+    @Test
+    void validatePositiveNumber() {
+        // given
+        int positive = 8_000;
+        int zero = 0;
+        int minus = -1;
+
+        // expected
+        Validator.validatePositiveNumber(positive);
+        assertThatThrownBy(() -> Validator.validatePositiveNumber(zero))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.validatePositiveNumber(minus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("구매금액이 금액단위를 따르는지 여부 반환 - 따르지 않음")
     @Test
     void validateUnitStandardNotFollow() {
