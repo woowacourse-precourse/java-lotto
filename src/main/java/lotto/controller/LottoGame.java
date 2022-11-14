@@ -10,7 +10,7 @@ import lotto.Lotto;
 
 public class LottoGame {
 
-    public List<Lotto> generateLottoByPurchaseAmount(int purchaseAmount) {
+    public static List<Lotto> generateLottoByPurchaseAmount(int purchaseAmount) {
         int lottoCount = convertToCountsOfLotto(purchaseAmount);
 
         ArrayList<Lotto> lottos = new ArrayList<>();
@@ -22,7 +22,7 @@ public class LottoGame {
         return lottos;
     }
 
-    private List<Integer> generateLottoNumbers() {
+    private static List<Integer> generateLottoNumbers() {
         return pickUniqueNumbersInRange(LOTTO_MIN, LOTTO_MAX, COUNT_OF_NUMBERS_IN_LOTTO);
     }
 }
