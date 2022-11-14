@@ -28,11 +28,11 @@
     - [x]  로또 개수만큼 발행 기능 → issueLotto
 4. InputValidator
     - [x]  로또 구입 금액이 1,000원으로 나누어 떨어지는지 검증 기능 → validatePurchaseAmount
-    - [ ]  당첨 번호 검증 기능 → validateWinningNumber
+    - [x]  당첨 번호 검증 기능 → validateWinningNumber
 
         - [x]  당첨 번호 6개를 입력했는지 검증 기능 → validateSizeOfWinningNumber
         
-        - [ ]  당첨 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateWinningNumberBetween1And45
+        - [x]  당첨 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateWinningNumberBetween1And45
     - [ ]  보너스 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateBonusNumberBetween1And45
     - [x]  문자열을 숫자로 변환해주는 기능 → convertStringIntoInt
     - [x]  문자열을 리스트로 변환해주는 기능 → convertStringIntoList 
