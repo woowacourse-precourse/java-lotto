@@ -43,6 +43,7 @@ public class WinningStatistics {
     }
 
     public static double getLottoYield(long winningAmount, int money) {
-        return PERCENTAGE + (double) (winningAmount - money) / money * PERCENTAGE;
+        double lottoYield = PERCENTAGE + (double) (winningAmount - money) / money * PERCENTAGE;
+        return Math.round(lottoYield * 10) / 10.0;
     }
 }
