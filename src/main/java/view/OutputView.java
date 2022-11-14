@@ -11,9 +11,9 @@ import java.util.List;
 public class OutputView {
     public static final String LOTTOS_COUNT = "개를 구매했습니다.";
     public static final String WINNING_STATISTICS = "당첨 통계" + System.lineSeparator() + "---" + System.lineSeparator();
-    public static final String MATCH_COUNT = "%d개 일치";
-    public static final String BONUS_BALL = ", 보너스 볼 일치";
-    public static final String WINNING_AMOUNT_AND_COUNT = " (%,d원) - %d개" + System.lineSeparator();
+    public static final String RANK = "%d개 일치%s (%,d원) - %d개" + System.lineSeparator();
+    public static final String CONTAINS_BONUS_BALL = ", 보너스 볼 일치";
+    public static final String EXCEPT_BONUS_BALL = "";
     public static final String EARNINGS_RATE = "총 수익률은 %,.1f%%입니다." + System.lineSeparator();
 
     private OutputView() {
@@ -37,19 +37,20 @@ public class OutputView {
         StringBuilder result = new StringBuilder();
         result.append(WINNING_STATISTICS);
 
-        Win[] wins = Win.values();
-        for (int ranking = wins.length - 1; ranking >= 0; ranking--) {
-            Win win = wins[ranking];
+        for (Win win : Win.values()) {
+            String bonusBallMatch = isBonusBallMatch(win);
 
-            result.append(String.format(MATCH_COUNT, win.getMatchCount()));
-            if (win.isBonusBall()) {
-                result.append(BONUS_BALL);
-            }
-            result.append(String.format(WINNING_AMOUNT_AND_COUNT,
+            result.append(String.format(RANK, win.getMatchCount(), bonusBallMatch,
                     win.getWinningAmount(), winningResult.getCount(win)));
         }
-
         return result.toString();
+    }
+
+    private static String isBonusBallMatch(Win win) {
+        if (win.isBonusBall()) {
+            return CONTAINS_BONUS_BALL;
+        }
+        return EXCEPT_BONUS_BALL;
     }
 
     public static void printEarningsRate(EarningsRate earningsRate) {
