@@ -25,13 +25,33 @@ public class Application extends Lotto {
     }
 
     public static void main(String[] args) {
+        List<Integer> myLotto = null;
         String price = "";
+
         System.out.println("구입금액을 입력해 주세요.");
         price = Console.readLine();     //구입금액
-        int howManyTimes = (Integer.parseInt(price))/10;
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
+        int howManyTimes = (Integer.parseInt(price))/1000;
+        int[][] allMyLotto = new int[howManyTimes][6];
+
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Application application = new Application(numbers);
-        application.randomLotto(price);
+
+//        myLotto = application.randomLotto();
+        System.out.println(howManyTimes + "개를 구매했습니다.");
+
+        for(int i = 0 ; i < howManyTimes; i ++ ){
+            myLotto = application.randomLotto();
+            for(int j = 0 ; j < 6; j++){
+                allMyLotto[i][j] = myLotto.get(j);
+            }
+            System.out.println(myLotto);
+        }
+
+        System.out.println("당첨 번호를 입력해주세요.");
+        String prizeNum = Console.readLine();
+
+        System.out.println("보너스 번호를 입력해주세요.");
+        String bonusNum = Console.readLine();
     }
 }

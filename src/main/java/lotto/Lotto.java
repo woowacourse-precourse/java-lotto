@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Collections;
@@ -20,13 +19,12 @@ public class Lotto {
         }
     }
 
-    public void randomLotto(String price){
-        int cost = (Integer.parseInt(price))/1000;
-        for(int i = 0 ; i < cost; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            System.out.println(numbers);
-        }
+    public List<Integer> randomLotto(){
 
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(numbers);//오름차순
+//        System.out.println(numbers);
+        return numbers;
     }
 
 }
