@@ -11,6 +11,13 @@ public class Buyer {
         lottos = List.of();
     }
 
+    private int calculateNumberOfLottos(String won) {
+        int wonParseToInt = Integer.parseInt(won);
+        validateIsUnderLottoPrice(wonParseToInt);
+        int wonRoundDownLottoPriceUnits = roundDownLottoPriceUnits(wonParseToInt);
+        return wonRoundDownLottoPriceUnits / LOTTO_PRICE;
+    }
+
     private void validateIsUnderLottoPrice(int won) {
         if (won < LOTTO_PRICE) {
             throw new IllegalArgumentException();
