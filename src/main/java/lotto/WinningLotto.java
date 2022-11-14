@@ -1,16 +1,16 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class WinningLotto {
-    private Lotto lotto;
+    private Lotto number;
     private Integer bonusNumber;
 
     public WinningLotto(String input, String bonusNumber) {
-        this.lotto = number(input);
+        validateDuplicate(input, bonusNumber);
+        validateNumber(input, bonusNumber);
+        this.number = number(input);
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
@@ -25,11 +25,19 @@ public class WinningLotto {
         return new Lotto(numbers);
     }
 
-    public List<Lotto> bonusNumber(String input) {
-        List<Lotto> lottos = new ArrayList<>();
-
-
-        return lottos;
+    private void validateDuplicate(String input, String bonusNumber) {
+        if (input.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스 번호는 달라야 합니다.");
+        }
     }
 
+    private void validateNumber(String input, String bonusNumber) {
+        if (!input.matches("^(\\d?,){5}\\d?$")) {
+            throw new IllegalArgumentException("[ERROR] 숫자와 ,만 입력해 주세요.");
+        }
+
+        if (!bonusNumber.matches("^\\d*$")) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+        }
+    }
 }

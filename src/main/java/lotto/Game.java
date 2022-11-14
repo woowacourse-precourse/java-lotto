@@ -15,6 +15,6 @@ public class Game {
         List<Lotto> lottos = lottoTicket.buy(ui.returnInputValue("구입금액을 입력해 주세요."));
         ui.printLottos(lottos);
 
-        ui.returnInputValue("당첨 번호를 입력해 주세요.");
+        String winningNumbers = ui.returnInputValue("당첨 번호를 입력해 주세요.");
     }
 }
