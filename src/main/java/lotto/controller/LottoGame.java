@@ -12,25 +12,29 @@ public class LottoGame {
     private LottoGenerator generator;
     private WinningNumberInput Winningnum;
     private WinningResult result;
+    private Rank rank;
+
 
     public LottoGame() {
         purchase = new LottoPurchase();
         generator = new LottoGenerator();
         Winningnum = new WinningNumberInput();
         result = new WinningResult();
+        rank = new Rank();
     }
 
     public void play() {
-        int lottocnt = purchase.puchaseLotto(); // 로또 구매
-        List<Lotto> lottos = getpurchaseLotto(lottocnt);// 로또를 담은 리스트
+        int sumlotto = purchase.puchaseLotto(); // 로또 구매금액
+        List<Lotto> lottos = getpurchaseLotto(sumlotto);// 로또를 담은 리스트
         List<Integer> winningNum = Winningnum.getWinningNum(); // 당첨번호 입력
-        int bonusNum = Winningnum.getBonusNum(winningNum);// 보너스번호 입력
-        Map<Integer, Integer> integerIntegerMap = result.getwinningResult(lottos, winningNum, bonusNum);
+        int bonusNum = Winningnum.getBonusNum(winningNum); // 보너스번호 입력
+        Map<Integer, Integer> map = result.getwinningResult(lottos, winningNum, bonusNum);
+        showStatistic(map, sumlotto);
     }
 
     protected List<Lotto> getpurchaseLotto(int lottocnt) {
         List<Lotto> lottonum = new ArrayList<>();
-        for (int i = 0; i < lottocnt; i++) {
+        for (int i = 0; i < lottocnt / 1000; i++) {
             Lotto lotto = new Lotto(generator.lottoGenerate());
             lottonum.add(lotto);
             System.out.println(lotto.getNumbers());
@@ -38,7 +42,14 @@ public class LottoGame {
         return lottonum;
     }
 
-    private void showStatistic () {
-
+    private void showStatistic(Map<Integer, Integer> map, int amount) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5000원) - " + rank.getRankfive(map) + "개");
+        System.out.println("4개 일치 (50,000원) - " + rank.getRankfour(map) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + rank.getRankthree(map) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rank.getranktwo(map) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + rank.getrankone(map) + "개");
+        System.out.println("총 수익률은 " + (rank.getearningRate(map, amount)+ "%입니다."));
     }
 }
