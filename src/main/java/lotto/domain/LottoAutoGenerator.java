@@ -19,11 +19,12 @@ public class LottoAutoGenerator {
         return groupOfLotto;
     }
     public static Lotto generateLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(
                 LottoRule.MINIMUM_NUMBER.getValue(),
                 LottoRule.MAXIMUM_NUMBER.getValue(),
                 LottoRule.AMOUNT_OF_NUMBER.getValue()
-        );
+        ));
+
         Collections.sort(numbers);
 
         return Lotto.of(numbers);
