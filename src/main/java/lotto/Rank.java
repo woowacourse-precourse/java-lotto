@@ -26,6 +26,10 @@ public enum Rank {
         this.winningPrice = winningPrice;
     }
 
+    public int getWinningPrice() {
+        return this.winningPrice;
+    }
+
     public static Rank valueOfRank(int place) {
         return BY_PLACE.get(place);
     }

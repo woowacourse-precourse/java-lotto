@@ -1,6 +1,9 @@
 package lotto;
 
+import static lotto.Rank.valueOfRank;
+
 import camp.nextstep.edu.missionutils.Randoms;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,5 +69,19 @@ public class Simulator {
     public static Lotto generate() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
+    }
+
+    public static BigInteger calculateTotalWinningPrice(List<Integer> wins) {
+        BigInteger totalWinningPrice = new BigInteger("0");
+        for (int rank = 1; rank < 6; rank++) {
+            for (int n = 0; n < wins.get(rank - 1); n++) {
+                totalWinningPrice = totalWinningPrice.add(
+                        BigInteger.valueOf(
+                                valueOfRank(rank).getWinningPrice()
+                        )
+                );
+            }
+        }
+        return totalWinningPrice;
     }
 }
