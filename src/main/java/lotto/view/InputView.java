@@ -7,11 +7,6 @@ import java.util.stream.Collectors;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private static final String ERROR_MESSAGE = "[ERROR] ";
-    private static final String ERROR_AMOUNT_NUMBER_MESSAGE = "구입금액은 숫자여야 합니다.";
-    private static final String ERROR_AMOUNT_MESSAGE = "구입금액은 1000원 단위여야 합니다.";
-    private static final String ERROR_LOTTO_NUMBER_MESSAGE = "로또번호는 숫자여야 합니다.";
-    private static final String ERROR_BONUS_NUMBER_MESSAGE = "보너스번호는 숫자여야 합니다.";
     private static final Integer LOTTO_PRICE = 1000;
 
     public static Integer inputPaidAmount() {
@@ -40,13 +35,13 @@ public class InputView {
 
     private static void validateNumber(String amountString) {
 	if (!isNumeric(amountString)) {
-	    throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_AMOUNT_NUMBER_MESSAGE);
+	    throw new IllegalArgumentException(ErrorMessage.ERROR_AMOUNT_NUMBER_MESSAGE.getValue());
 	}
     }
 
     private static void validateAmount(String amountString) {
 	if (Integer.parseInt(amountString) % LOTTO_PRICE != 0) {
-	    throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_AMOUNT_MESSAGE);
+	    throw new IllegalArgumentException(ErrorMessage.ERROR_AMOUNT_MESSAGE.getValue());
 	}
     }
 
@@ -58,13 +53,13 @@ public class InputView {
 
     private static void validateLottoNumber(String numberString) {
 	if (!isNumeric(numberString)) {
-	    throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_LOTTO_NUMBER_MESSAGE);
+	    throw new IllegalArgumentException(ErrorMessage.ERROR_LOTTO_NUMBER_MESSAGE.getValue());
 	}
     }
 
     private static void validateBonusNumber(String bonusNumberString) {
 	if (!isNumeric(bonusNumberString)) {
-	    throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_BONUS_NUMBER_MESSAGE);
+	    throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_NUMBER_MESSAGE.getValue());
 	}
     }
 }
