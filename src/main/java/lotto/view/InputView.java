@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.validation.PredictionNumbersInputValidation;
 import lotto.validation.PurchasePriceInputValidation;
 
 import java.util.ArrayList;
@@ -28,7 +29,11 @@ public class InputView {
         outputView.printPredictionNumbersMessage();
         String inputPredictionNumbers = Console.readLine();
 
+        PredictionNumbersInputValidation predictionNumbersInputValidation = new PredictionNumbersInputValidation();
+        predictionNumbersInputValidation.validateInputFormat(inputPredictionNumbers);
+
         List<Integer> predictionNumbers = splitStringByCommaAndParseInt(inputPredictionNumbers);
+        predictionNumbersInputValidation.validate(predictionNumbers);
         return predictionNumbers;
     }
 
