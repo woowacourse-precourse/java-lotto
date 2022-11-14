@@ -48,4 +48,8 @@ public class PrintMessage {
 			System.out.println(copyPurchaseLotto);
 		}
 	}
+
+	public void printTotalPrize(double yield) {
+		System.out.println(Constant.PROFIT_RATIO + yield + Constant.UNIT_PERCANT);
+	}
 }
