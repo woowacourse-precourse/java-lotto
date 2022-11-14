@@ -1,20 +1,20 @@
-package lotto;
+package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import lotto.domain.LottoNumberGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoNumberGeneratorTest {
 
+    private final LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
     private List<Integer> lottoNumbers;
 
     @BeforeEach
     void setUp() {
-        lottoNumbers = LottoNumberGenerator.generateNumbers();
+        lottoNumbers = lottoNumberGenerator.generate();
     }
 
     @Test
@@ -22,7 +22,7 @@ class LottoNumberGeneratorTest {
     void checkSize() {
         assertThat(lottoNumbers)
                 .size()
-                .isEqualTo(LottoNumberGenerator.COUNT);
+                .isEqualTo(Lotto.NUMBER_COUNT);
     }
 
     @Test
@@ -42,7 +42,7 @@ class LottoNumberGeneratorTest {
     void checkRange() {
         assertThat(lottoNumbers).allSatisfy(
                 lottoNumber -> assertThat(lottoNumber)
-                        .isGreaterThanOrEqualTo(LottoNumberGenerator.START_NUMBER)
-                        .isLessThanOrEqualTo(LottoNumberGenerator.END_NUMBER));
+                        .isGreaterThanOrEqualTo(Lotto.NUMBER_RANGE_START)
+                        .isLessThanOrEqualTo(Lotto.NUMBER_RANGE_END));
     }
 }
