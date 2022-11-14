@@ -50,8 +50,15 @@ public class Lotto {
         System.out.println("구입금액을 입력해 주세요.");
         String payment = Console.readLine();
         Integer amountOfLotto = amountOfLotto(payment);
+        System.out.println();
         System.out.println(amountOfLotto+"개를 구매했습니다.");
-        System.out.println(getRandomLottoNumber(amountOfLotto));
+        ArrayList<List<Integer>> myLottoNumbers = getRandomLottoNumber(amountOfLotto);
+        System.out.println("당첨  번호를 입력해 주세요.");
+        String winningNumber = Console.readLine();
+        System.out.println();
+        getTypingWinningNumber(winningNumber);
+        System.out.println("보너스 번호를 입력해 주세요");
+        String bonusNumber = Console.readLine();
     }
     static Integer amountOfLotto(String lottoPayment){
         try{
@@ -73,9 +80,26 @@ public class Lotto {
         for(int amount=0;amount<amountOfLotto;amount++){
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(lottoNumbers);
+            System.out.println(lottoNumbers);
             randomLottoNumber.add(lottoNumbers);
         }
         return randomLottoNumber;
+    }
+
+    static List<Integer> getTypingWinningNumber(String typing){
+        try{
+            List<Integer> getWinningNumber = new ArrayList<>();
+            String[] splitTypingNumber = typing.split(",");
+            for(int winningNumber=0;winningNumber<splitTypingNumber.length;winningNumber++){
+                getWinningNumber.add(Integer.parseInt(splitTypingNumber[winningNumber]));
+            }
+            System.out.println(getWinningNumber);
+            return getWinningNumber;
+        }
+        catch (NumberFormatException e) {
+            System.out.println("[ERROR] 당첨 번호 입력은 숫자와 ','만 가능합니다");
+            throw new IllegalArgumentException();
+        }
     }
 }
 
