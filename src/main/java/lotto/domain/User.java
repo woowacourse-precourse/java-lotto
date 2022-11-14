@@ -30,10 +30,6 @@ public class User {
         ranks.put(Number.ONE, 0);
     }
 
-    public User(List<Lotto> lottos) {
-        this.lottos = lottos;
-    }
-
     public List<Lotto> getLottos() {
         return lottos;
     }
@@ -42,16 +38,8 @@ public class User {
         this.lottos = lottos;
     }
 
-    public Double getMoney() {
-        return money;
-    }
-
     public void setMoney(Double money) {
         this.money = money;
-    }
-
-    public Double getWinningAmount() {
-        return winningAmount;
     }
 
     public void setWinningAmount(Double winningAmount) {
@@ -60,10 +48,6 @@ public class User {
 
     public Map<Number, Integer> getRanks() {
         return ranks;
-    }
-
-    public void setRanks(Map<Number, Integer> rank) {
-        this.ranks = rank;
     }
 
     public double getYield() {
