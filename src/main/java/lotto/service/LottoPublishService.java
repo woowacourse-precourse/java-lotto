@@ -17,10 +17,18 @@ public class LottoPublishService {
     }
 
     private static class InnerLottoPublishService {
-        private static final LottoPublishService instance = new LottoPublishService();
+        private static LottoPublishService instance = new LottoPublishService();
+        private static void renewInstance() {
+            instance = null;
+            instance = new LottoPublishService();
+        }
     }
 
     public static LottoPublishService getInstance() {
+        return InnerLottoPublishService.instance;
+    }
+    public static LottoPublishService getRenewInstance() {
+        InnerLottoPublishService.renewInstance();
         return InnerLottoPublishService.instance;
     }
 
@@ -48,8 +56,7 @@ public class LottoPublishService {
         try {
             price = Integer.parseInt(numberformat);
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException(UserInterfaceMessage.ERROR_PREFIX.getValue()
-                    + String.format(UserInterfaceMessage.ERROR_INPUT_BONUS_NUMBER_INCLUSIVE.getValue(),
+            throw new IllegalArgumentException(String.format(UserInterfaceMessage.ERROR_INPUT_BONUS_NUMBER_INCLUSIVE.getValue(),
                     LottoNumberInclusive.START.getValue(), LottoNumberInclusive.END.getValue()));
         }
         return price;
