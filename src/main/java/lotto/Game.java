@@ -9,6 +9,7 @@ public class Game {
 
     private GameConsole gameConsole;
     private User user;
+    private Result result = new Result();
 
     public Game() {
         gameConsole = new GameConsole();
