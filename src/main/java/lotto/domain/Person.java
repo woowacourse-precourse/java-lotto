@@ -27,4 +27,11 @@ public class Person {
         return 0;
     }
 
+    private LottoPrize getLottoResult(Lotto lotto) {
+        return LottoPrize.getLottoPrize(
+                countCorrectLottoNumber(lotto),
+                countCorrectBonusNumber(lotto)
+        );
+    }
+
 }
