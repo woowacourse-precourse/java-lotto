@@ -57,5 +57,8 @@ public class User {
     }
 
     private void printLottoTickets() {
+        for (Lotto lotto : lottoTickets) {
+            System.out.println(lotto);
+        }
     }
 }
