@@ -9,9 +9,15 @@ import java.util.List;
 public class LottoMachine {
 
     public void drawLotto(){
-        GenerateLottoRepository gr = printLottoPurchase();
-        InputNumbers inputNumbers = inputLottoNumberAndBonusNumber();
-        printStatistics(gr.lottoRepository, inputNumbers.lottoNumbers, inputNumbers.bonusNumber);
+        try {
+            GenerateLottoRepository gr = printLottoPurchase();
+            InputNumbers inputNumbers = inputLottoNumberAndBonusNumber();
+            Lotto lotto = new Lotto(inputNumbers.lottoNumbers);
+            printStatistics(gr.lottoRepository, lotto.numbers, inputNumbers.bonusNumber);
+
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private GenerateLottoRepository printLottoPurchase(){
