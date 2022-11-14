@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.List;
+
 public class MoneyProcessorImpl implements MoneyProcessor {
     @Override
     public String calculateMargin(double beforeMoney, double afterMoney) {
@@ -9,5 +11,12 @@ public class MoneyProcessorImpl implements MoneyProcessor {
     @Override
     public Integer calculateLottoCount(Integer money) {
         return money / PriceEnum.LOTTO_PRICE.getValue();
+    }
+
+    @Override
+    public Integer calculateWinning(List<Integer> result, RankEnum rankEnum) {
+        return Math.toIntExact(result.stream()
+                .filter(value -> value == rankEnum.getMatchNumber())
+                .count() * rankEnum.getWinnings());
     }
 }
