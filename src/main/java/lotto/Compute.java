@@ -13,16 +13,19 @@ import java.util.List;
 
 public class Compute {
     private enum WinType {
-        MATCH6("match6", "6개 일치 (2,000,000원) - $match6개"),
-        MATCH5_PLUS_BONUS("match5PlusBonus", "6개 일치 (2,000,000원) - $match5PlusBonus개"),
-        MATCH5("match5", "6개 일치 (2,000,000원) - $match5개"),
-        MATCH4("match4", "6개 일치 (2,000,000원) - $match4개"),
-        MATCH3("match3", "6개 일치 (2,000,000원) - $match3개");
+        MATCH6(6, "match6", "6개 일치 (2,000,000원) - $match6개"),
+        // 당첨 번호 5개 일치 시, MATCH5_PLUS_BONUS와 MATCH5의 값이 겹치므로 MATCH5_PLUS_BONUS의 value를 사용하지 않는다.
+        MATCH5_PLUS_BONUS(-1, "match5PlusBonus", "6개 일치 (2,000,000원) - $match5PlusBonus개"),
+        MATCH5(5, "match5", "6개 일치 (2,000,000원) - $match5개"),
+        MATCH4(4, "match4", "6개 일치 (2,000,000원) - $match4개"),
+        MATCH3(3,"match3", "6개 일치 (2,000,000원) - $match3개");
 
+        private final int winTypeValue;
         private final String winTypeKey;
         private final String winTypeMessage;
 
-        WinType(String winTypeKey, String winTypeMessage) {
+        WinType(int winTypeValue, String winTypeKey, String winTypeMessage) {
+            this.winTypeValue = winTypeValue;
             this.winTypeKey = winTypeKey;
             this.winTypeMessage = winTypeMessage;
         }
