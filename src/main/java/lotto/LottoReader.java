@@ -48,12 +48,11 @@ public class LottoReader {
 
             if (matchingCount == 5) {
                 putBonusRank(matchingResultEntry, bonus);
+                continue;
             }
 
-            if (matchingCount >= 3) {
-                LottoRank findRank = findRank(matchingResultEntry.getValue());
-                lottoResult.put(findRank, lottoResult.get(findRank) + 1);
-            }
+            LottoRank findRank = findRank(matchingCount);
+            lottoResult.put(findRank, lottoResult.get(findRank) + 1);
         }
     }
 
