@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.*;
 import lotto.Lotto;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Manager {
     public final int LOTTO_MIN = 1;
@@ -45,5 +46,11 @@ public class Manager {
             set.add(list.get(i));
         }
         return set.size() != LOTTO_LENGTH;
+    }
+
+    public Lotto makeLotto(){
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN, LOTTO_MAX, LOTTO_LENGTH);
+        Lotto lotto = new Lotto(numbers);
+        return lotto;
     }
 }
