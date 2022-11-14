@@ -2,7 +2,7 @@ package lotto.view.constant;
 
 public enum ValidationRegex {
     EMPTY_VALUE("^$"),
-    NUMBER("^[0-9]*$");
+    NUMBER("^[0-9]+$");
 
     private final String regex;
 
