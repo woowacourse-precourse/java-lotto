@@ -21,7 +21,7 @@ public class Utils {
         return price / LOTTO_PRICE;
     }
 
-    public static void initializeMap() {
+    private static void initializeMap() {
         for (Result result : Result.values()) {
             WINNING_DATA.put(result, 0);
         }
@@ -65,6 +65,8 @@ public class Utils {
     }
 
     public static Map<Result, Integer> getAllResults(List<Lotto> lottos, List<Integer> winningNums, int bonusNum) {
+        initializeMap();
+
         for (Lotto lotto : lottos) {
             getEachResult(lotto, winningNums, bonusNum);
         }
