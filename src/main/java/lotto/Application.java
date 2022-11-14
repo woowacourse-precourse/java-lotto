@@ -73,6 +73,9 @@ public class Application {
         // 결과 리스트에 따른 문구 출력
         PrintResult(result);
 
+        // 수익률 계산
+        float gainMoney = calculator.getGainMoney(money, result);
+        System.out.println("총 수익률은 " + Math.round(gainMoney * 100)/100.00 + "%입니다.");
 
     }
     public static void PrintResult(List<Integer> result) {

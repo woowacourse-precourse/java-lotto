@@ -44,4 +44,14 @@ public class Calculator {
         if (cnt == 4) fourth += 1;
         if (cnt == 3) fifth += 1;
     }
+
+    public float getGainMoney(int money, List<Integer> result) {
+        int totalMoney = result.get(0) * 2000000000
+                + result.get(1) * 30000000
+                + result.get(2) * 1500000
+                + result.get(3) * 10000
+                + result.get(4) * 5000;
+
+        return totalMoney / (float) money * 100;
+    }
 }
