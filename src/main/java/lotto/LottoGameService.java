@@ -1,5 +1,7 @@
 package lotto;
 
+import domain.Rank;
+
 import java.util.List;
 import java.util.Map;
 

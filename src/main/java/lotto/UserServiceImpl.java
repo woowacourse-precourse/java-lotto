@@ -1,4 +1,7 @@
 package lotto;
+import domain.Lotto;
+import utils.IllegalInputFormChecker;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,7 +10,7 @@ public class UserServiceImpl implements UserService{
     private static int cntOfLotto = 0;
     private static List<Integer> userNumList;
     private static int bonus;
-    private CheckInputIllegal checkInputIllegal = new CheckInputIllegal();
+    private IllegalInputFormChecker illegalInputFormChecker = new IllegalInputFormChecker();
 
     @Override
     public int getCntOfLotto(int userPayment) {
@@ -17,19 +20,16 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<Integer> getUserNums(String userInput) {
-//        checkInputIllegal.checkUserInputIllegal(userInput);
         List<String> userInputList = Arrays.asList(userInput.split(","));
         userNumList = userInputList.stream()
                 .map(string -> Integer.parseInt(string))
                 .collect(Collectors.toList());
-
-//        checkInputIllegal.checkUserNumListIllegal(userNumList);
-        return userNumList;
+        Lotto lotto = new Lotto(userNumList);
+        return lotto.getNumbers();
     }
 
     @Override
     public int getUserBonus(String userBonus) {
-//        checkInputIllegal.checkUserBonusIllegal(userBonus);
         bonus = Integer.parseInt(userBonus);
         return bonus;
     }

@@ -1,11 +1,11 @@
-package ui;
+package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.CheckInputIllegal;
+import utils.IllegalInputFormChecker;
 import message.InputMessage;
 
 public class InputServiceImpl implements InputService{
-    CheckInputIllegal checkInputIllegal = new CheckInputIllegal();
+    IllegalInputFormChecker illegalInputFormChecker = new IllegalInputFormChecker();
     static String userPayment;
     static int newUserPayment;
     static String userInput;
@@ -13,26 +13,26 @@ public class InputServiceImpl implements InputService{
 
     @Override
     public int getUserPayMessage() {
-        System.out.println(InputMessage.USER_PAY.getMessage());
+        System.out.println(InputMessage.USER_PAY);
         userPayment = Console.readLine();
-        checkInputIllegal.checkUserPayIllegal(userPayment);
+        illegalInputFormChecker.checkUserPayIllegal(userPayment);
         newUserPayment = Integer.parseInt(userPayment);
         return newUserPayment;
     }
 
     @Override
     public String getUserNumsMessage() {
-        System.out.println(InputMessage.USER_NUMS.getMessage());
+        System.out.println(InputMessage.USER_NUMS);
         userInput = Console.readLine();
-        checkInputIllegal.checkUserInputIllegal(userInput);
+        illegalInputFormChecker.checkUserInputIllegal(userInput);
         return userInput;
     }
 
     @Override
     public String getUserBonusNumMessage() {
-        System.out.println(InputMessage.USER_BONUS_NUM.getMessage());
+        System.out.println(InputMessage.USER_BONUS_NUM);
         userBonus = Console.readLine();
-        checkInputIllegal.checkUserBonusIllegal(userBonus);
+        illegalInputFormChecker.checkUserBonusIllegal(userBonus);
         return userBonus;
     }
 }

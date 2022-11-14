@@ -1,5 +1,7 @@
 package lotto;
 
+import domain.Rank;
+
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -8,26 +10,31 @@ public class ResultServiceImpl implements ResultService{
     public static Map<Rank, Integer> result = new EnumMap<Rank, Integer>(Rank.class);
 
     @Override
-    public Map<Rank, Integer> getResult(List<Integer> listOfUserNum, int cntOfLotto, List<List<Integer>> lottoList) {
-        int cntOfMatchedNum = 0;
-        Rank rank;
+    public Map<Rank, Integer> getResult(List<Integer> listOfUserNum, List<List<Integer>> lottoList, int bonus) {
         initiateResult();
+        result = compare(listOfUserNum, lottoList, bonus);
+        return result;
+    }
 
+
+    @Override
+    public Map<Rank, Integer> compare(List<Integer> listOfUserNum, List<List<Integer>> lottoList, int bonus) {
+        int cntOfMatchedNum = 0;
         for (List<Integer> lotto : lottoList) {
-            cntOfMatchedNum = getCntOfMatchedNum(listOfUserNum, lotto);
-            if (cntOfMatchedNum >= 3) {
-                rank = Rank.getRank(cntOfMatchedNum);
-                result.put(rank, result.get(rank) + 1 );
+            cntOfMatchedNum = getCntOfMatchedNum(listOfUserNum, lotto, bonus);
+
+            if (cntOfMatchedNum == 5 && isBonusMatched(lotto, bonus)) {
+                result.put(Rank.SECOND, result.get(Rank.SECOND) + 1);
+            } else if (cntOfMatchedNum >= 3) {
+                result.put( Rank.getRank(cntOfMatchedNum), result.get( Rank.getRank(cntOfMatchedNum) ) + 1);
             }
         }
         return result;
     }
 
 
-
-
     @Override
-    public int getCntOfMatchedNum(List<Integer> listOfUserNum, List<Integer> newLotto) {
+    public int getCntOfMatchedNum(List<Integer> listOfUserNum, List<Integer> newLotto, int bonus) {
         int cntOfMatchedNum = 0;
         for (int num : newLotto) {
             if (listOfUserNum.contains(num)) {
@@ -38,6 +45,16 @@ public class ResultServiceImpl implements ResultService{
     }
 
 
+
+    @Override
+    public boolean isBonusMatched(List<Integer> newLotto, int bonus) {
+        for (int num : newLotto) {
+            if ( num == bonus ) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     @Override
@@ -61,6 +78,5 @@ public class ResultServiceImpl implements ResultService{
             result.put(rank, 0);
         }
     }
-
 
 }
