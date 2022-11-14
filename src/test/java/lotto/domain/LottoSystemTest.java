@@ -11,7 +11,7 @@ class LottoSystemTest {
 
     @DisplayName("당첨 번호 입력 시 숫자 이외에 값이 있는지 확인한다.")
     @Test
-    void InputInvalidType() {
+    void inputInvalidType() {
         String[] invalidInput = {
                 "1, 2, 3, 4, 6, w",
                 "1, e, r, @, 1, 2",
@@ -25,7 +25,7 @@ class LottoSystemTest {
 
     @DisplayName("당첨 번호 입력 시 숫자가 6개 입력되었는지 확인한다")
     @Test
-    void InputInvalidCount() {
+    void inputInvalidCount() {
         String[] invalidInput = {
                 "1, 2, 3, 4",
                 "1, 2, 3, 4, 5, 6, 7",
@@ -38,7 +38,7 @@ class LottoSystemTest {
 
     @DisplayName("당첨 번호 입력 시 모두 다른 숫자인지 확인한다")
     @Test
-    void InputDuplicateNumbers() {
+    void inputDuplicateNumbers() {
         String[] invalidInput = {
                 "1, 2, 3, 5, 5, 6",
                 "7, 8, 11, 10, 11, 12",
@@ -51,7 +51,7 @@ class LottoSystemTest {
 
     @DisplayName("보너스 번호 입력 시 값이 숫자인지 확인한다")
     @Test
-    void InputNonNumericBonusNumber() {
+    void inputNonNumericBonusNumber() {
         String[] invalidInput = {"eewq", "fk", "1w"};
         for (String input : invalidInput) {
             assertThatThrownBy(() -> system.setBonusNumber(input))

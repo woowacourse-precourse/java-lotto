@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LottoStatisticsTest {
     @DisplayName("등수가 제대로 매겨졌는지 확인")
     @Test
-    void TestRankIsCorrect() {
+    void testRankIsCorrect() {
         Lotto lotto = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 42)));
         List<Lotto> lottoBundle = List.of(lotto);
         List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 7));
