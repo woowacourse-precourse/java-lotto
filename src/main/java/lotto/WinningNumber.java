@@ -6,7 +6,7 @@ import java.util.List;
 public class WinningNumber {
 
     private final static String SEPARATOR = ",";
-    private final static int REPEAT_DEFAULT = 0;
+    public final static int REPEAT_INITIAL_VALUE = 0;
 
     private final Lotto lotto;
 
@@ -25,15 +25,15 @@ public class WinningNumber {
 
     private List<Integer> validateWinningNumberTypeCheck(List<String> tempWinningNumber) {
         List<Integer> winningNumbers = new ArrayList<>();
-        for (int i = REPEAT_DEFAULT; i < tempWinningNumber.size(); i++) {
+        for (int i = REPEAT_INITIAL_VALUE; i < tempWinningNumber.size(); i++) {
             validateWinningNumberType(i, winningNumbers, tempWinningNumber);
         }
         return winningNumbers;
     }
 
-    private void validateWinningNumberType(int repeatCount, List<Integer> winningNumbers, List<String> tempWinningNumber) {
+    private void validateWinningNumberType(int repeatCount, List<Integer> winningNumbers, List<String> winningNumber) {
         try {
-            winningNumbers.add(Integer.parseInt(tempWinningNumber.get(repeatCount)));
+            winningNumbers.add(Integer.parseInt(winningNumber.get(repeatCount)));
         } catch (IllegalArgumentException exceptionMessage) {
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호가 숫자가 아닙니다.");
         }
