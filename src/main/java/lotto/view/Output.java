@@ -4,6 +4,7 @@ public class Output {
     private final String PURCHASE_LOTTO_ORDER = "개를 구매했습니다.";
     private final String USER_LOTTO_NUMBERS = "당첨 번호를 입력해 주세요.";
     private final String BONUS_LOTTO_NUMBER = "보너스 번호를 입력해 주세요.";
+    private final String WIN_STATISTICS = "당첨 통계";
 
 
     public void inputMoneyOrder() {
@@ -18,5 +19,9 @@ public class Output {
     }
     public void bonusLottoNumberOrder() {
         System.out.println(BONUS_LOTTO_NUMBER);
+    }
+    public void winStatistics() {
+        System.out.println(WIN_STATISTICS);
+        System.out.println("---");
     }
 }

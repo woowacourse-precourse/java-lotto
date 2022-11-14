@@ -17,6 +17,7 @@ public class InputBonusNumber {
         String inputBonusNumber = userReadLine();
         inputMoneyHandler.checkIsNumber(inputBonusNumber);
         bonusLottoNumber(inputBonusNumber, sixLottoNumbers);
+        System.out.println();
         return Integer.parseInt(inputBonusNumber);
     }
 
