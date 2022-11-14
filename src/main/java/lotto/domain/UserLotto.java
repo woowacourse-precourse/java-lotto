@@ -49,13 +49,17 @@ public final class UserLotto {
     }
 
     private void hasNotDuplicateLotto(List<Integer> winNumbers) {
-        if (winNumbers.stream().distinct().count() != Constant.LOTTO_SIZE) {
+        long nonDuplicateCount = winNumbers.stream()
+                .distinct()
+                .count();
+
+        if (nonDuplicateCount != Constant.LOTTO_SIZE) {
             throw new IllegalArgumentException(InputException.LOTTO_DUPLICATE_DIGIT.message());
         }
     }
 
     private void isValidBonusLottoRange(int bonusNumber) {
-        if ( Constant.MAX_LOTTO_RANGE > bonusNumber || bonusNumber > Constant.MAX_LOTTO_RANGE) {
+        if (Constant.MIN_LOTTO_RANGE > bonusNumber || bonusNumber > Constant.MAX_LOTTO_RANGE) {
             throw new IllegalArgumentException(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
     }

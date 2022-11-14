@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-    private static final String REG_XP_DIGITS = "^[0-9]+$";
+    private static final String REG_XP_DIGITS = "^[0-9,]+$";
 
     private static final String SPLIT_STANDARD = ",";
 
