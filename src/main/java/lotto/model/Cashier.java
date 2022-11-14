@@ -2,18 +2,17 @@ package lotto.model;
 
 import java.util.List;
 
-import lotto.view.Input;
-
 public class Cashier {
-    private int money;
-    private List<String> answerNumber;
-    private String bonusNumber;
+    private int receivedMoney;
+    private List<Integer> answerNumber;
+    private int bonusNumber;
 
-    // enum
-    public void inputPlayerValue() {
-        money = Input.getYourMoney();
-        answerNumber = Input.getAnswerNumbers();
-        bonusNumber = Input.getBonusNumber();
+    public void inputPlayerMoney(int receivedMoney) {
+        this.receivedMoney = receivedMoney;
+    }
+
+    public void inputPlayerAnswerNumber(List<Integer> answerNumber) {
+        this.answerNumber = answerNumber;
     }
     
 }
