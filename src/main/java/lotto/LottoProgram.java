@@ -92,4 +92,8 @@ public class LottoProgram {
 		}
 		return storeMap;
 	}
+
+	public void initCount() {
+		count = 0;
+	}
 }
