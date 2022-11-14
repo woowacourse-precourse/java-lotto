@@ -14,7 +14,7 @@ public class PurchaseMoney {
         this.purchaseMoney = purchaseMoney;
     }
 
-    private void validatePositivePurchaseMoney(int purchaseMoney) {
+    private void validatePositivePurchaseMoney(final int purchaseMoney) {
         if (purchaseMoney < PURCHASE_MONEY_UNIT || purchaseMoney % PURCHASE_MONEY_UNIT != 0) {
             throw new IllegalArgumentException(PURCHASE_MONEY_ERROR_MESSAGE);
         }
