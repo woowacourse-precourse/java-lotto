@@ -79,7 +79,7 @@ public class LottoGame {
     }
 
     public void printPurchaseAmount() {
-        System.out.println("구입 금액을 입력해 주세요.");
+        System.out.println("구입금액을 입력해 주세요.");
     }
 
     public void printWinningNumbers() {
