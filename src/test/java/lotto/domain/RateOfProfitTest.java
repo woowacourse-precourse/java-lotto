@@ -13,4 +13,12 @@ class RateOfProfitTest {
         RateOfProfit.profit();
         Assertions.assertThat(RateOfProfit.profit).isEqualTo(120000D);
     }
+
+    @Test
+    void calculateTest() {
+        CorrectNum.THREE.setCnt(4);
+        CorrectNum.FOUR.setCnt(2);
+        double calculateValue = RateOfProfit.calculate(30000);
+        Assertions.assertThat(calculateValue).isEqualTo(400D);
+    }
 }
