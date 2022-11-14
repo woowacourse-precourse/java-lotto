@@ -51,4 +51,9 @@ public class LottoController implements Controller {
         int number = Integer.parseInt(input);
         service.setBonusNumber(number);
     }
+
+    public String outputStatics() {
+        service.getStatics();
+        return null;
+    }
 }

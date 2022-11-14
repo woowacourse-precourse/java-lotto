@@ -56,6 +56,7 @@ public class DefaultView implements View {
     private void renderStatics() {
         System.out.println(Views.STATICS.render());
         System.out.println(Views.DIVIDER.render());
+        request(controller::outputStatics);
     }
 
 }
