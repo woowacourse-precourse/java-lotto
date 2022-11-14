@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.exception.BuyLottoFormatException;
+import lotto.exception.SingleNumberFormatException;
 import java.util.regex.Pattern;
 
 public final class InputBuyLottoView extends InputView {
@@ -20,7 +20,7 @@ public final class InputBuyLottoView extends InputView {
 
     private void validateFormat(String inputValue) {
         if (!PATTERN.matcher(inputValue).matches()) {
-            throw new BuyLottoFormatException();
+            throw new SingleNumberFormatException();
         }
     }
 }
