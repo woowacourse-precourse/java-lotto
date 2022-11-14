@@ -45,6 +45,7 @@
    - 로또 리스트의 당첨 내역 확인하는 메소드 (checkListOfLottos)
    - 로또의 랭킹을 리턴하는 메소드 (getRank)
    - 소수점 둘째 자리에서 반올림한 수익률 계산하는 메소드 (calculateProfitRate)
+   - 수익 계산하는 메소드 (calculateProfit)
 9. LottoTest
    - Non-integer를 Input했을 때 IllegalArgumentException을 발생시키는지 확인
 10. ApplicationTest
