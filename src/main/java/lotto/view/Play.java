@@ -25,6 +25,7 @@ public class Play {
 
     public void startPlay(){
         System.out.println(START_MESSAGE);
+        System.out.println(result.calculateRate(8000,5000));
 
         String amount = Console.readLine();
         int total = purchase.calculateAmount(amount);
@@ -43,23 +44,16 @@ public class Play {
 
         System.out.println("\n"+INPUT_BONUS_MESSAGE);
         String bonus = Console.readLine();
-//
-//        System.out.println(result.calculateResult(lotto,winLotto,bonus));
-//        System.out.println(Arrays.deepToString(result.calculateLotto(lotto,winLotto,bonus)));
-//
-//        int[][] totalResult = result.calculateLotto(lotto,winLotto,bonus);
+
         Map<ResultType,Integer> totalResult = result.calculateLotto(lotto,winLotto,bonus);
 
-        System.out.println(totalResult.entrySet());
         result.printResult(totalResult);
 
         System.out.println(result.makePrize(totalResult));
-        double prize = result.makePrize(totalResult);
+        int prize = result.makePrize(totalResult);
         System.out.println("\n"+WINNING_MESSAGE);
 
-
-//        System.out.println(result.makeTotalResult(totalResult));
-        System.out.println(result.calculateRate((double) total,prize));
+        System.out.println(result.calculateRate(total,prize));
 
     }
 

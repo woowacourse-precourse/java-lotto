@@ -2,9 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,6 +10,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validateDuplication(numbers);
+        validateRange(numbers);
         this.numbers = numbers;
     }
 
@@ -28,6 +27,11 @@ public class Lotto {
         }
     }
 
+    private void validateRange(List<Integer> numbers){
+        if(Collections.max(numbers)>45 || Collections.min(numbers)<1)
+            throw new IllegalArgumentException("[ERROR] 숫자는 1부터 45 중에서 입력하셔야 합니다.");
+
+    }
     public List<Integer> getLotto(){
         return numbers;
     }

@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.*;
 
 public class Result {
+
     private static Map<ResultType,Integer> allResult = new HashMap<>(){{
         put(ResultType.THREE,0);
         put(ResultType.FOUR,0);
@@ -10,7 +11,7 @@ public class Result {
         put(ResultType.FIVEPLUS,0);
         put(ResultType.SIX,0);
     }};
-    
+
 
     public Map<ResultType,Integer> calculateLotto(List<Lotto> input,List<Integer> winning, String bonus){
         int check = 0;
@@ -48,8 +49,12 @@ public class Result {
         return false;
     }
 
-    public double calculateRate(double purchase, double win){
-        return win/purchase;
+    public String calculateRate(int purchase, int win){
+        System.out.println((win*100)/(double) purchase);
+        double doubleWin = Double.valueOf(win);
+        double doublePurchase = Double.valueOf(purchase);
+        double rate =(doubleWin*100)/doublePurchase;
+        return String.format("%.1f",rate);
     }
 
     public ResultType makeTotalWinnings(int check, boolean bonus){
