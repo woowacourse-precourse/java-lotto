@@ -12,8 +12,7 @@ public class GetLottoNumber {
     static int bonusNumber; //보너스번호
     List<Integer> temp = new ArrayList<>();
 
-    public GetLottoNumber(List<Integer> numbers) {
-    }
+    public GetLottoNumber(List<Integer> numbers) {}
 
     public List<Integer> GetLotto(List<Integer> numbers) {
         int cnt = 0;
@@ -23,7 +22,7 @@ public class GetLottoNumber {
         return numbers;
     }
 
-    public String WinNumInput() { // 당첨번호 입력
+/*    public String WinNumInput() { // 당첨번호 입력
         winNum = new int[6];
         String[] temp;
         strWinNum = Console.readLine();
@@ -69,6 +68,6 @@ public class GetLottoNumber {
             return 0;
         }
         return bonusNumber;
-    }
+    }*/
 
 }
