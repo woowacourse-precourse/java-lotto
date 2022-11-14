@@ -7,6 +7,7 @@ import lotto.domain.NumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.Constants.*;
 import static lotto.message.ExceptionMessage.AMOUNT_EXCEPTION;
 
 public class IssueImpl implements Issue {
@@ -18,7 +19,7 @@ public class IssueImpl implements Issue {
     @Override
     public List<Lotto> createLotto(int amount) {
         validate(amount);
-        int count = amount / 1000;
+        int count = amount / LOTTO_PRICE;
 
         List<Lotto> result = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -30,7 +31,7 @@ public class IssueImpl implements Issue {
     }
 
     private void validate(int amount) {
-        if (amount % 1000 != 0) {
+        if (amount % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(AMOUNT_EXCEPTION);
         }
     }
