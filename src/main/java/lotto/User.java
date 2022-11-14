@@ -29,9 +29,8 @@ public class User {
     public void settleEarningsRate() {
         double sum = 0.0;
         for(Rank rank : ranks.keySet()) {
-            String winning = rank.getWinnings();
-            Double parseWinning = Double.parseDouble(winning.replace(",", ""));
-            sum += ranks.get(rank) * parseWinning;
+            double winning = (double)rank.getWinnings();
+            sum += ranks.get(rank) * winning;
         }
         earningsRate = String.format("%.1f", sum / purchaseAmount);
     }
@@ -40,7 +39,7 @@ public class User {
         return purchaseAmount;
     }
 
-    public int getEarningsRate() {
+    public String getEarningsRate() {
         return earningsRate;
     }
 

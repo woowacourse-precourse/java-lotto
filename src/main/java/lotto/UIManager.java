@@ -54,7 +54,7 @@ public class UIManager {
         Map<Rank, Integer> ranks = user.getRanks();
         for (Rank r : ranks.keySet()) {
             System.out.println(r.getCondition() + " ("
-                    + r.getWinnings() + UIMessages.WON.getText() +  ") - "
+                    + String.format("%,d", r.getWinnings()) + UIMessages.WON.getText() +  ") - "
                     + ranks.get(r) + UIMessages.UNIT.getText());
         }
         System.out.println(UIMessages.TOTAL_EARNINGS.getText()
