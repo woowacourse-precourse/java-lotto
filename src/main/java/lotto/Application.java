@@ -5,6 +5,5 @@ public class Application {
         // TODO: 프로그램 구현
         int purchasePrice = 0;
         purchasePrice = LottoInterface.getPurchasePrice();
-        System.out.println(purchasePrice);
     }
 }

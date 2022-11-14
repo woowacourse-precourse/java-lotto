@@ -11,6 +11,8 @@ public class LottoInterface {
         if(ErrorCheck.isValidPrice(userInput)){
             purchasePrice = Integer.parseInt(userInput);
         }
+        System.out.println(purchasePrice);
+
         return purchasePrice;
     }
 }
