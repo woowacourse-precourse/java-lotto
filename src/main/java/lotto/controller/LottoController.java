@@ -1,9 +1,10 @@
 package lotto.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.model.Calculator;
 import lotto.model.Compare;
 import lotto.model.Computer;
-import lotto.view.InputView;
+import lotto.model.enumeration.Exception;
 import lotto.view.OutputView;
 
 import java.util.List;
@@ -23,10 +24,19 @@ public class LottoController {
     }
 
     private int purchaseLotto() {
-        int inputNumber = InputView.getInputMoney();
-        OutputView.printNumberofLotto(inputNumber);
+        OutputView.printLottoStart();
+        int inputMoney = inputPurchaseMoney();
+        OutputView.printNumberofLotto(inputMoney);
 
-        return inputNumber;
+        return inputMoney;
+    }
+
+    private int inputPurchaseMoney() {
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Exception.INVALID_INPUT_ONLY_NUMBER.getExceptionMessage());
+        }
     }
 
     private List<List<Integer>> generateRandomNumbers(int inputMoney) {
@@ -38,12 +48,26 @@ public class LottoController {
 
     private int[] compareLottoNumbers(int inputMoney, List<List<Integer>> computerRandomNumbers) {
 
-        String[] numbers = InputView.getNumbers();
-        int bonusNumber = InputView.getBonusNumber();
+        OutputView.printLottoNumbers();
+        String[] lottoNumbers = inputLottoNumbers();
+        OutputView.printBonusNumber();
+        int bonusNumber = inputBonusNumber();
 
-        int[] result = compare.getResult(inputMoney, computerRandomNumbers, numbers, bonusNumber);
+        int[] result = compare.getResult(inputMoney, computerRandomNumbers, lottoNumbers, bonusNumber);
 
         return result;
+    }
+
+    private String[] inputLottoNumbers() {
+        return Console.readLine().split(",");
+    }
+
+    private int inputBonusNumber() {
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Exception.INVALID_INPUT_ONLY_NUMBER.getExceptionMessage());
+        }
     }
 
     private void createStatistic(int inputMoney, int[] result) {

@@ -6,6 +6,14 @@ import java.util.List;
 
 public class OutputView {
 
+    private static final String WRITE_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
+    private static final String WRITE_LOTTO = "\n당첨 번호를 입력해 주세요.";
+    private static final String WRITE_BONUS = "\n보너스 번호를 입력해 주세요.";
+
+    public static void printLottoStart() {
+        System.out.println(WRITE_PURCHASE_AMOUNT);
+    }
+
     public static void printNumberofLotto(int inputMoney) {
         System.out.println("\n" + (inputMoney/1000) + "개를 구매했습니다.");
     }
@@ -14,6 +22,14 @@ public class OutputView {
         for (int i = 0; i < computerRandomNumbers.size(); i++) {
             System.out.println(computerRandomNumbers.get(i));
         }
+    }
+
+    public static void printLottoNumbers() {
+        System.out.println(WRITE_LOTTO);
+    }
+
+    public static void printBonusNumber() {
+        System.out.println(WRITE_BONUS);
     }
 
 
