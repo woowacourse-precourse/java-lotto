@@ -1,6 +1,8 @@
 package lotto.view;
 
+import static lotto.utils.Constants.FIRST_PLACE;
 import static lotto.utils.Converter.convertToStringWithComma;
+import static lotto.utils.Constants.LAST_PLACE;
 
 import lotto.domain.Lotto;
 import lotto.domain.Ranking;
@@ -31,11 +33,12 @@ public class OutputView {
     public static void printWinningStatistics(int[] rankingCount) {
         System.out.println("당첨 통계\n" +
                             "---");
-        int rankingIndex = 5;
-        for (Ranking ranking : Ranking.values()) {
+
+        for (int place = LAST_PLACE; place >= FIRST_PLACE; place--) {
+            Ranking ranking = Ranking.values()[place];
             String condition = ranking.getCondition();
             String reward = convertToStringWithComma(ranking.getReward());
-            int count = rankingCount[rankingIndex--];
+            int count = rankingCount[place];
 
             System.out.printf("%s (%s원) - %d개\n", condition, reward, count);
         }
