@@ -17,7 +17,7 @@ public class c4fiberParser {
 
     public static List<Integer> getIntegerListFromString(String input) {
         if (!isParsable(input)) {
-            return Collections.EMPTY_LIST;
+            return Collections.emptyList();
             // throw new IllegalArgumentException();
         }
 
