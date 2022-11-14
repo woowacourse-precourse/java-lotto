@@ -22,6 +22,11 @@ public class WinningDecision {
         this.purchaseAmount = purchaseAmount;
     }
 
+    // for test
+    public Map<Integer, Integer> getWinningPrizes() {
+        return winningPrizes;
+    }
+
     public void showWinningDecision() {
         System.out.println("당첨 통계\n---");
 
