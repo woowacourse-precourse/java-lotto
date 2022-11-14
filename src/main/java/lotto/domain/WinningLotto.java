@@ -13,6 +13,12 @@ public class WinningLotto extends Lotto {
         this.lottoRank = Arrays.asList(0, 0, 0, 0, 0, 0);
     }
 
+    public void compareLotto(Lotto lotto) {
+        int count = lottoContainsCount(lotto.getLotto());
+        int rankIndex = lottoRankIndexConvertByLottoCount(lotto.getLotto(), count);
+        lottoRank.set(rankIndex, lottoRank.get(rankIndex) + 1);
+    }
+
     public int lottoContainsCount(List<Integer> lotto) {
         int count = 0;
         for (Integer number : lotto) {
