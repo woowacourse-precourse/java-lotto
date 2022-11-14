@@ -57,4 +57,15 @@ public class UserController {
         // TODO : 예외 처리 필요
         userRepository.setUserBonusNumber(Integer.parseInt(bonusNumber));
     }
+
+    public void showWinningStatisticsAndSave() {
+        winningStatsView.showLineBreak();
+        winningStatsView.showWinningStatsMessage();
+        winningStatsView.showContour();
+        ArrayList<Integer> numberOfWinningTypes = userService.checkTheNumberOfWinsInAll(userRepository.getUser().getWinningNumbers(),
+                userRepository.getUser().getLotties(),
+                userRepository.getUser().getBonusNumber());
+        winningStatsView.showWinning(numberOfWinningTypes);
+        userRepository.setUserNumberOfWinningTypes(numberOfWinningTypes);
+    }
 }
