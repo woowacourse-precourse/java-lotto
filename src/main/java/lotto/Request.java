@@ -17,7 +17,7 @@ public class Request {
 
 	public void requestBettingMoney() {
 		System.out.println(EnumRequestMessage.BET.getValue());
-		userInputBettingMoney = Console.readLine();
+		setUserInputBettingMoney(Console.readLine());
 	}
 
 	public void validateBettingMoney() {
@@ -32,13 +32,17 @@ public class Request {
 		}
 	}
 
+	public void setUserInputBettingMoney(String userInputBettingMoney) {
+		this.userInputBettingMoney = userInputBettingMoney;
+	}
+
 	public String getBettingMoney() {
 		return userInputBettingMoney;
 	}
 
 	public void requestWinningNumbers() {
 		System.out.println(EnumRequestMessage.WINNING_NUMBERS.getValue());
-		userInputWinningNumbers = Console.readLine();
+		setUserInputWinningNumbers(Console.readLine());
 	}
 
 	public void validateWinningNumbers() {
@@ -78,13 +82,17 @@ public class Request {
 		}
 	}
 
+	public void setUserInputWinningNumbers(String userInputWinningNumbers) {
+		this.userInputWinningNumbers = userInputWinningNumbers;
+	}
+
 	public List<Integer> getWinningNumbers() {
 		return winningNumbers;
 	}
 
 	public void requestBonusNumber() {
 		System.out.println(EnumRequestMessage.BONUS_NUMBER.getValue());
-		userInputBonusNumber = Console.readLine();
+		setUserInputBonusNumber(Console.readLine());
 	}
 
 	public void validateBonusNumber() {
@@ -102,6 +110,10 @@ public class Request {
 		if (winningNumbers.contains(Integer.parseInt(userInputBonusNumber))) {
 			throw new IllegalArgumentException(EnumError.DUPLICATED.getValue());
 		}
+	}
+
+	public  void setUserInputBonusNumber(String userInputBonusNumber) {
+		this.userInputBonusNumber = userInputBonusNumber;
 	}
 
 	public String getBonusNumber() {
