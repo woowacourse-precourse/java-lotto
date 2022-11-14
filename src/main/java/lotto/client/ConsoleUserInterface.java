@@ -1,23 +1,27 @@
 package lotto.client;
 
-import static lotto.InvalidInputMessage.ERR_DEFAULT;
-import static lotto.InvalidInputMessage.ERR_WINNING_NUMBER_FORMAT;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import lotto.InvalidInputMessage;
 import lotto.Lotto;
 import lotto.LottoNumber;
+import lotto.LottoPlace;
 
 public class ConsoleUserInterface {
 
     private final static String MSG_REQUEST_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     private final static String MSG_SHOW_PURCHASE_AMOUNT = "개를 구매했습니다.";
     private final static String MSG_REQUEST_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    private final static String FORMAT_SPLITTER_WINNING_NUMBERS = ",";
     private final static String MSG_REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    private final static String MSG_SHOW_LOTTO_STATISTICS = "당첨 통계\n---";
+    private final static String MSG_SHOW_COUNT_WINNING_BY_PLACE = "{0} ({1}) - {2}개";
+    private final static String MSG_SHOW_TOTAL_MARGIN_RATE = "총 수익률은 {0}%입니다.";
 
     public ConsoleUserInterface() {
     }
@@ -81,20 +85,24 @@ public class ConsoleUserInterface {
     public List<Integer> requestWinningNumbers() {
         output(MSG_REQUEST_WINNING_NUMBERS);
         String input = input();
-        return parseWinningString(input);
+        validateWinningString(input);
+        return Arrays.stream(input.split(FORMAT_SPLITTER_WINNING_NUMBERS))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
-    private List<Integer> parseWinningString(String input) {
-        List<String> rawNumbers = List.of(input.split(","));
-        List<Integer> numbers = new ArrayList<Integer>();
-        for(String rawNumber : rawNumbers) {
+    private void validateWinningString(String input) {
+        List<String> rawNumbers = List.of(input.split(FORMAT_SPLITTER_WINNING_NUMBERS));
+        if(rawNumbers.size() != Lotto.NUMBERS_COUNT)
+            throw new IllegalArgumentException(
+                    InvalidInputMessage.ERR_DEFAULT + InvalidInputMessage.ERR_WINNING_NUMBER_FORMAT
+            );
+        for (String rawNumber : rawNumbers) {
             validateAs_JavaInteger(rawNumber);
-            numbers.add(Integer.parseInt(rawNumber));
         }
-        return numbers;
     }
 
-    public int requestBonusNumber(){
+    public int requestBonusNumber() {
         output(MSG_REQUEST_BONUS_NUMBER);
         String input = input();
         validateAs_JavaInteger(input);
