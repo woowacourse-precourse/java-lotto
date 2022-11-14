@@ -29,7 +29,7 @@ public class LottoController {
     }
 
     public void initBonusNumber() {
-        int bonusNumber = input.readBonusNumber();
+        int bonusNumber = input.readBonusNumber(lotto.getNumbers());
         BonusNumber.BONUS_NUMBER.setNumber(bonusNumber);
     }
 
@@ -43,10 +43,5 @@ public class LottoController {
 
         String percent = service.calculatePercent(lottoResult);
         output.printProfitPercent(percent);
-    }
-
-    public static void main(String[] args) {
-        LottoController controller = new LottoController();
-        controller.start();
     }
 }

@@ -6,17 +6,17 @@ import java.util.*;
 
 
 public class UserLotto {
-    private final List<List<Integer>> userLotto = new ArrayList<>();
+    private List<List<Integer>> userLotto = new ArrayList<>();
 
     public UserLotto(int amount) {
         createUserLotto(amount);
     }
 
     public List<Integer> createLotto() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(lottoNumbers);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(numbers);
 
-        return lottoNumbers;
+        return numbers;
     }
     
     public void createUserLotto(int amount) {

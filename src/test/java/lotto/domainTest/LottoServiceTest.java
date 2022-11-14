@@ -84,10 +84,9 @@ public class LottoServiceTest {
     void calculatePercent() {
         //given(준비)
         List<LottoRank> lottoResult = List.of(LottoRank.FIRST);
-        int inputMoney = 8000;
 
         //when(실행)
-        String percent = lottoService.calculatePercent(lottoResult, inputMoney);
+        String percent = lottoService.calculatePercent(lottoResult);
 
         //then(검증)
         Assertions.assertThat(percent).isEqualTo("62.5");

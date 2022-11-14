@@ -40,11 +40,11 @@ public class LottoInput {
     }
 
     //예외사항 검사
-    public int readBonusNumber() {
+    public int readBonusNumber(List<Integer> lottoNumber) {
         Messages.INPUT_BONUS_NUMBER.printMessage();
         String userInput = readInput();
 
-        inputValidator.validateInputBonusNumber(userInput);
+        inputValidator.validateInputBonusNumber(userInput, lottoNumber);
 
         return Integer.parseInt(userInput);
     }

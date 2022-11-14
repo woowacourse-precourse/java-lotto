@@ -54,10 +54,14 @@ public class InputValidator {
 
     }
 
-    public void validateInputBonusNumber(String userInput) {
+    public void validateInputBonusNumber(String userInput, List<Integer> lottoNumbers) {
         validateStringInputIsNumeric(userInput);
 
         int inputNum = Integer.parseInt(userInput);
+
+        if(lottoNumbers.contains(inputNum)) {
+            throw new IllegalArgumentException();
+        }
 
         if(inputNum < 1 || inputNum > 45) {
             throw new IllegalArgumentException();
