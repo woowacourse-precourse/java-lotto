@@ -15,7 +15,11 @@ public class Application {
     private HashMap<Integer, Integer> PRIZE_RANKINGS;
 
     public static void main(String[] args) {
-        checkLotto();
+        try {
+            checkLotto();
+        }catch (Exception e) {
+            // exit
+        }
     }
     public static void checkLotto () {
         Application app = new Application();
