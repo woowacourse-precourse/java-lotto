@@ -23,6 +23,9 @@ public class LottoProgram {
 		String inputPrice = Console.readLine();
 		checkPrize(inputPrice);
 		messagePrint.countLottoPrint(inputPrice);
+		for (int i = 0; i < countLotto(inputPrice); i++) {
+			randomNumbers.add(Randoms.pickUniqueNumbersInRange(Constants.START_INCLUSIVE, Constants.END_INCLUSIVE, 6));
+		}
 	}
 
 }
