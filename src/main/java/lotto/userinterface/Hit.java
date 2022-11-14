@@ -1,42 +1,29 @@
 package lotto.userinterface;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public enum Hit {
-    THREE(3, 5_000),
-    FOUR(4, 50_000),
-    FIVE(5, 15_000_000),
-    FIVE_BONUS(5, 30_000_000),
-    SIZE(6, 2_000_000_000);
+    THREE(3, false, 5_000),
+    FOUR(4, false, 50_000),
+    FIVE(5, false, 15_000_000),
+    FIVE_BONUS(5, true, 30_000_000),
+    SIX(6, false, 2_000_000_000);
 
-    private final static Map<Integer, Hit> map;
-    private Integer count;
     private Integer prize;
+    private Integer hitCount;
+    private Boolean bonus;
 
-    static {
-        map = new HashMap<>();
-        for (Hit hit : Hit.values()) {
-            map.put(hit.count, hit);
-        }
-    }
-
-    Hit(Integer count, Integer prize) {
-        this.count = count;
+    Hit(Integer hitCount, Boolean bonus, Integer prize) {
+        this.hitCount = hitCount;
+        this.bonus = bonus;
         this.prize = prize;
     }
 
-    public Integer getPrize() {
-        return prize;
-    }
-
-    public static Hit getByCount(Integer count, Boolean hitBonus) {
-        Hit hit = map.get(count);
-
-        if (hitBonus && hit.count == 5) {
-            return FIVE_BONUS;
+    public static Hit getHit(Integer hitCount, Boolean bonus) {
+        for (Hit hit : Hit.values()) {
+            if (hit.hitCount == hitCount && hit.bonus == bonus) {
+                return hit;
+            }
         }
 
-        return hit;
+        return null;
     }
 }
