@@ -4,6 +4,10 @@ import lotto.controller.LottoGameController;
 
 public class Application {
     public static void main(String[] args) {
-        LottoGameController.run();
+        try {
+            LottoGameController.run();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 }
