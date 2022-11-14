@@ -12,11 +12,16 @@ public class WinNumber {
     static final int WIN_NUMBER_SIZE = 6;
 
     private List<Integer> winNumbers = new ArrayList<>();
-    private Integer bonusNumber;
+    private Integer bonusNumber = 0;
     // 겹치는 숫자를 입력했을 때, 예외 발생시키기!
     public void enterWinNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         getWinNumbers(Console.readLine());
+    }
+
+    public void enterBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        getBonusNumber(Console.readLine());
     }
 
 
@@ -25,18 +30,29 @@ public class WinNumber {
         validateWinNumbers(numbers);
     }
 
+    public void getBonusNumber(String input) {
+        validateBonusNumber(input);
+        this.bonusNumber = Integer.valueOf(input);
+    }
+
     void validateWinNumbers(String[] numbers) {
         if (numbers.length != WIN_NUMBER_SIZE) {
-            throw new IllegalArgumentException(ExceptionHandler.WORNG_WIN_NUMBERS);
+            throw new IllegalArgumentException(ExceptionHandler.WRONG_WIN_NUMBERS);
         }
         for (String number : numbers) {
             if (isNotNumeric(number) || isNotInRange(number)) {
-                throw new IllegalArgumentException(ExceptionHandler.WORNG_WIN_NUMBERS);
+                throw new IllegalArgumentException(ExceptionHandler.WRONG_WIN_NUMBERS);
             }
             if (winNumbers.contains(Integer.valueOf(number))) {
-                throw new IllegalArgumentException(ExceptionHandler.WORNG_WIN_NUMBERS);
+                throw new IllegalArgumentException(ExceptionHandler.WRONG_WIN_NUMBERS);
             }
             winNumbers.add(Integer.valueOf(number));
+        }
+    }
+
+    public void validateBonusNumber(String input) {
+        if (isNotNumeric(input) || isNotInRange(input) || winNumbers.contains(Integer.valueOf(input))) {
+            throw new IllegalArgumentException(ExceptionHandler.WRONG_BONUS_NUMBERS);
         }
     }
 
