@@ -38,7 +38,7 @@ public class LottoNumberCreator {
         validateNumber(lottoWinNumberWords);
         List<Integer> lottoWinNumbers = new ArrayList<>();
         for(int i = 0; i < NUMBER_OF_LOTTERY; ++i) {
-            lottoWinNumbers.add(Integer.valueOf(lottoWinNumberWords[i]));
+            lottoWinNumbers.add(Integer.valueOf(lottoWinNumberWords[i].trim()));
         }
 
         validateNumberRange(lottoWinNumbers);
@@ -61,7 +61,7 @@ public class LottoNumberCreator {
     private void validateNumber(String[] lottoWinNumberWords) {
         for (int i = 0; i < NUMBER_OF_LOTTERY; ++i) {
             try {
-                Integer.valueOf(lottoWinNumberWords[i]);
+                Integer.valueOf(lottoWinNumberWords[i].trim());
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] 로또 당첨 번호는 숫자를 입력하셔야 합니다.");
                 throw new IllegalArgumentException(e);
