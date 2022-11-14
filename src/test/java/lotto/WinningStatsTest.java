@@ -38,8 +38,8 @@ class WinningStatsTest {
 
         WinningStats winningStats = new WinningStats(purchase, winning, bonus);
 
-        for(WinningStats.Winning c : winningStats.collection){
-            assertThat(c.number).isEqualTo(map.get(c.rank));
+        for(WinningStats.Winning w : WinningStats.Winning.values()){
+            assertThat(w.count).isEqualTo(map.get(w.rank));
         }
     }
 
