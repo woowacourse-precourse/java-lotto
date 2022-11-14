@@ -3,6 +3,8 @@ package lotto.model;
 import lotto.service.LottoService;
 import lotto.view.OutputView;
 
+import static lotto.service.LottoService.LOTTO_ONE_PRICE;
+
 public class Player {
     private int purchaseAmount;
     private int ticketNumber;
@@ -10,13 +12,13 @@ public class Player {
 
     public Player(String amountString) {
         validate(amountString);
-        ticketNumber = purchaseAmount / Lotto.LOTTO_ONE_PRICE;
+        ticketNumber = purchaseAmount / LOTTO_ONE_PRICE;
     }
 
     public void validate(String purchaseAmountString) {
         try {
             int purchaseAmount = Integer.parseInt(purchaseAmountString);
-            if (purchaseAmount < 0 || purchaseAmount % Lotto.LOTTO_ONE_PRICE != 0) {
+            if (purchaseAmount < 0 || purchaseAmount % LOTTO_ONE_PRICE != 0) {
                 throw new IllegalArgumentException();
             }
             this.purchaseAmount = purchaseAmount;

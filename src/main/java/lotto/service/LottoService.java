@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-import static lotto.model.Lotto.*;
 
 public class LottoService {
     private final InputView inputView;
@@ -17,6 +16,22 @@ public class LottoService {
     public final static int ERROR_STATUS = -1;
     public final static int NORMAL_STATUS = 0;
     private static LottoService instance = new LottoService();
+    public static final String LOTTO_DELIMITER = ",";
+    public static final int LOTTO_ONE_PRICE = 1000;
+    public static final int LOTTO_NUMBER_MIN = 1;
+    public static final int LOTTO_NUMBER_MAX = 45;
+    public static final int LOTTO_LENGTH = 6;
+    public static final int LOTTO_FIRST_REWARD = 2000000000;
+    public static final int LOTTO_SECOND_REWARD = 30000000;
+    public static final int LOTTO_THIRD_REWARD = 15000000;
+    public static final int LOTTO_FOURTH_REWARD = 50000;
+    public static final int LOTTO_FIFTH_REWARD = 5000;
+    public static final int LOTTO_LOSE_REWARD = 0;
+    public static final int THREE = 3;
+    public static final int FOUR = 4;
+    public static final int FIVE = 5;
+    public static final int SIX = 6;
+    public static final String INVALID_LOTTO_NUMBER_ERROR = "[ERROR] 로또 번호는 중복되지 않은 1부터 45 사이의 숫자 6개입니다.";
 
     public LottoService() {
         inputView = new InputView();

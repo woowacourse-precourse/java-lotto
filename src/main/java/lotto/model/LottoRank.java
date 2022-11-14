@@ -1,6 +1,7 @@
 package lotto.model;
 
-import static lotto.model.Lotto.*;
+import static lotto.service.LottoService.*;
+import static lotto.service.LottoService.LOTTO_FIFTH_REWARD;
 
 public enum LottoRank {
 

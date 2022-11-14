@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 import static lotto.model.Lotto.*;
+import static lotto.service.LottoService.*;
 
 public class WinningNumber {
     private List<Integer> winningNumber;
@@ -38,7 +39,7 @@ public class WinningNumber {
             }
 
         } catch (IllegalArgumentException e) {
-            LottoService.status = LottoService.ERROR_STATUS;
+            status = ERROR_STATUS;
             OutputView.printError(INVALID_WINNING_NUMBER_ERROR);
         }
     }
@@ -52,7 +53,7 @@ public class WinningNumber {
             }
 
         } catch (IllegalArgumentException e) {
-            LottoService.status = LottoService.ERROR_STATUS;
+            status = ERROR_STATUS;
             OutputView.printError(INVALID_WINNING_NUMBER_ERROR);
         }
         return number;

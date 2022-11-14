@@ -6,6 +6,7 @@ import lotto.view.OutputView;
 import java.util.List;
 
 import static lotto.model.Lotto.*;
+import static lotto.service.LottoService.*;
 
 public class BonusNumber {
     private int bonusNumber;
@@ -27,7 +28,7 @@ public class BonusNumber {
             bonusNumberInt = Integer.parseInt(bonusNumberString);
             return bonusNumberInt;
         } catch (IllegalArgumentException e) {
-            LottoService.status = LottoService.ERROR_STATUS;
+            status = ERROR_STATUS;
             OutputView.printError(INVALID_BONUS_NUMBER_ERROR);
         }
         return bonusNumber;
