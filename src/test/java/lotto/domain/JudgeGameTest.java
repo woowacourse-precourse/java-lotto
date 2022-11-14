@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.controller.JudgeGame;
