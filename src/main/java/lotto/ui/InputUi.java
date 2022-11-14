@@ -15,7 +15,7 @@ public class InputUi {
         String amountInput = Console.readLine();
         InputValidator.validateIsNumber(amountInput);
 
-        int purchaseAmount = Integer.valueOf(amountInput);
+        int purchaseAmount = Integer.parseInt(amountInput);
         InputValidator.validateLottoPurchaseNumber(purchaseAmount);
 
         return purchaseAmount;
@@ -26,7 +26,7 @@ public class InputUi {
         InputValidator.validateWinningNumbersInput(winningNumbersInput);
 
         List<Integer> winningNumbers = splitNumbersStringToList(winningNumbersInput);
-        return Collections.unmodifiableList(winningNumbers);
+        return List.copyOf(winningNumbers);
     }
 
     private static List<Integer> splitNumbersStringToList(String numberInput) {
