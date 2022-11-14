@@ -8,6 +8,8 @@ import lotto.domain.Statistics;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.domain.Rank.UNRANK;
+
 public class MessagePrinter {
     private static final String NOTIFY_INPUT_PAYMENT = "구입금액을 입력해 주세요.";
     private static final String NOTIFY_INPUT_WINNING_LOTTO_NUMBERS = "당첨 번호를 입력해 주세요.";
@@ -45,6 +47,9 @@ public class MessagePrinter {
     public void printDynamicWinningRecord(Statistics statistics) {
         Map<Rank, Integer> rankRecord = statistics.getRankRecord();
         for (Rank rank : rankRecord.keySet()) {
+            if (rank == UNRANK) {
+                continue;
+            }
             System.out.printf((NOTIFY_WINNING_RECORD) + "%n", rank.getReward(), rankRecord.get(rank));
         }
     }
