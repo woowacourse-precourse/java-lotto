@@ -20,7 +20,7 @@ public class User {
 
     public void inputBonusNumber() {
         String bonusNumber = Console.readLine();
-
+        validateBonusNumber(bonusNumber);
     }
 
     private void validateMoney(String money) {
@@ -44,6 +44,14 @@ public class User {
             validateNumeric(num);
             validateNumberRange(num);
         }
+    }
+
+    private void validateBonusNumber(String number) {
+        validateInputNothing(number);
+        validateInputBlank(number);
+        validateInputWithBlank(number);
+        validateNumeric(number);
+        validateNumberRange(number);
     }
 
     private void validateInputNothing(String input) {
