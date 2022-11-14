@@ -34,4 +34,15 @@ class WinningNumberViewTest {
 
         assertThat(result).isEqualTo(expected);
     }
+
+    @Test
+    void inputStringParsing() {
+
+        String input = " 123 ";
+        String expected = "123";
+
+        String result = winningNumberView.inputStringParsing(input);
+
+        assertThat(result).isEqualTo(expected);
+    }
 }
