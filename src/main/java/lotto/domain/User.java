@@ -2,12 +2,20 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class User {
-    private final LottoManager lottoManager = new LottoManager();
+    private final LottoManager lottoManager;
     private final int[] statistics = {0, 0, 0, 0, 0};
+    private final List<String> ranking = new ArrayList<>(Arrays.asList("FIRST", "SECOND", "THIRD", "FOURTH", "FIFTH"));
+    private int earnings;
+
+    public User() {
+        lottoManager = new LottoManager();
+        earnings = 0;
+    }
 
     public void start() {
         int price;
@@ -35,6 +43,8 @@ public class User {
             int index = lottoManager.getRankingIndex(lotto);
             addStatistics(index);
         }
+
+        addEarnings();
     }
 
     private int inputPrice() {
@@ -49,5 +59,28 @@ public class User {
         if (index >= 0) {
             statistics[index]++;
         }
+    }
+
+    private void addEarnings() {
+        for (int index = 0; index < statistics.length; index++) {
+            earnings += getEarning(index);
+        }
+    }
+
+    private int getEarning(int index) {
+        String rank;
+        int earning = 0;
+
+        if (statistics[index] > 0) {
+            rank = ranking.get(index);
+            PrizeMoney rankingValue = PrizeMoney.valueOf(rank);
+            earning = rankingValue.getPrizeMoney();
+        }
+
+        return earning;
+    }
+
+    private int getEarnings() {
+        return earnings;
     }
 }
