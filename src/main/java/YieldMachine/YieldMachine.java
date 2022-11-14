@@ -1,6 +1,7 @@
 package YieldMachine;
 
 import User.User;
+import lotto.BoughtLotto;
 import lotto.WinningNumberLotto;
 
 import java.util.ArrayList;
@@ -25,11 +26,11 @@ public class YieldMachine {
 
     }
 
-    private void calculateOneLottoReward() {
+    private void calculateOneLottoReward(BoughtLotto boughtLotto) {
 
     }
 
-    private void calculateAllLottoReward() {
+    private void calculateAllLottoReward(List<BoughtLotto> boughtLottos) {
 
     }
 

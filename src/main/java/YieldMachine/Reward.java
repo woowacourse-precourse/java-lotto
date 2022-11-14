@@ -1,17 +1,24 @@
 package YieldMachine;
 
-public enum Reward {
-    FIRST(2000000000),
-    SECOND(30000000),
-    THIRD(1500000),
-    FOURTH(50000),
-    FIFTH(5000);
+import java.util.Arrays;
+import java.util.List;
 
-    final private Integer price;
+public enum Reward {
+    FIRST(2_000_000_000, Arrays.asList(6, 0)),
+    SECOND(30_000_000, Arrays.asList(5, 1)),
+    THIRD(1_500_000, Arrays.asList(5, 0)),
+    FOURTH1(50_000, Arrays.asList(4, 0)),
+    FOURTH2(50_000, Arrays.asList(4, 1)),
+    FIFTH1(5_000, Arrays.asList(3, 0)),
+    FIFTH2(5_000, Arrays.asList(3, 1));
+
+    private final Integer prize;
+    private final List<Integer> matchingNumber;
     public Integer getReward() {
-        return price;
+        return prize;
     }
-    private Reward(Integer price) {
-        this.price = price;
+    private Reward(Integer prize, List<Integer> matchingNumber) {
+        this.prize = prize;
+        this.matchingNumber = matchingNumber;
     }
 }
