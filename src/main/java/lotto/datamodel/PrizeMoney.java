@@ -27,12 +27,12 @@ public class PrizeMoney {
     }
 
     public List<String> moneyInformation() {
-        int infoCount = 0;
         List<String> moneyInfo = new ArrayList<>(5);
 
         for (Rank rank : Rank.values()) {
-            moneyInfo.add(rank.getInformation());
-            infoCount++;
+            if (rank != Rank.NONE) {
+                moneyInfo.add(rank.getInformation());
+            }
         }
         return moneyInfo;
     }
