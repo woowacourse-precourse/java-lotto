@@ -64,7 +64,10 @@ public class ServiceInput {
 
     private static void validateBonusNumber(int bonusNumber) {
 
-        // TODO: 예외처리
+        if (Validator.isRangeOut(bonusNumber)){
+            Message.printInputErrorRangeOut();
+            throw new IllegalArgumentException();
+        }
     }
 
     private static String getInputWinningNumbers() {
