@@ -46,4 +46,15 @@ public class LottosTest {
                 List.of(2, 3, 6, 7, 8, 17)
         );
     }
+
+    @DisplayName("Lottos 클래스 get 메소드 테스트")
+    @Test
+    void get() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto otherLotto = new Lotto(List.of(7, 8, 9, 10, 11, 12));
+        Lottos lottos = new Lottos(List.of(lotto, otherLotto));
+
+        assertThat(lottos.get(0)).isEqualTo(lotto);
+        assertThat(lottos.get(1)).isEqualTo(otherLotto);
+    }
 }
