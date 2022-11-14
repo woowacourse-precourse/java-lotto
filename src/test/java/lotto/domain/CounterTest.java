@@ -10,15 +10,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CounterTest {
     final Counter counter = new Counter();
-    final List<Integer> testRanking = List.of(7,6,6,5,5,4,3,3);
-    final List<Integer> testRankingTwo = List.of(0,0,0,0,0,0);
+    final List<Integer> testRanking = List.of(7, 6, 6, 5, 5, 4, 3, 3);
+    final List<Integer> testRankingTwo = List.of(0, 0, 0, 0, 0, 0);
 
     @Nested
     class countFirst {
 
         @DisplayName("1등이 2명 일때")
         @Test
-        void firstCountCase1(){
+        void firstCountCase1() {
             int answer = 2;
             int testResult = counter.countFirst(testRanking);
             assertEquals(answer, testResult);
@@ -27,7 +27,7 @@ class CounterTest {
 
         @DisplayName("1등이 0명 일때")
         @Test
-        void firstCountCase2(){
+        void firstCountCase2() {
             int answer = 0;
             int testResult = counter.countFirst(testRankingTwo);
             assertEquals(answer, testResult);
@@ -35,11 +35,11 @@ class CounterTest {
     }
 
     @Nested
-    class countSecond{
+    class countSecond {
 
         @DisplayName("2등이 1명 일때")
         @Test
-        void secondCountCase1(){
+        void secondCountCase1() {
             int answer = 1;
             int testResult = counter.countSecond(testRanking);
             assertEquals(answer, testResult);
@@ -47,7 +47,7 @@ class CounterTest {
 
         @DisplayName("2등이 0명 일때")
         @Test
-        void secondCountCase2(){
+        void secondCountCase2() {
             int answer = 0;
             int testResult = counter.countSecond(testRankingTwo);
             assertEquals(answer, testResult);
@@ -55,11 +55,11 @@ class CounterTest {
     }
 
     @Nested
-    class countThird{
+    class countThird {
 
         @DisplayName("3등이 2명 일때")
         @Test
-        void secondCountCase1(){
+        void secondCountCase1() {
             int answer = 2;
             int testResult = counter.countThird(testRanking);
             assertEquals(answer, testResult);
@@ -67,7 +67,7 @@ class CounterTest {
 
         @DisplayName("3등이 0명 일때")
         @Test
-        void secondCountCase2(){
+        void secondCountCase2() {
             int answer = 0;
             int testResult = counter.countThird(testRankingTwo);
             assertEquals(answer, testResult);
@@ -75,11 +75,11 @@ class CounterTest {
     }
 
     @Nested
-    class countFourth{
+    class countFourth {
 
         @DisplayName("4등이 1명 일때")
         @Test
-        void secondCountCase1(){
+        void secondCountCase1() {
             int answer = 1;
             int testResult = counter.countFourth(testRanking);
             assertEquals(answer, testResult);
@@ -87,7 +87,7 @@ class CounterTest {
 
         @DisplayName("4등이 0명 일때")
         @Test
-        void secondCountCase2(){
+        void secondCountCase2() {
             int answer = 0;
             int testResult = counter.countFourth(testRankingTwo);
             assertEquals(answer, testResult);
@@ -95,11 +95,11 @@ class CounterTest {
     }
 
     @Nested
-    class countFifth{
+    class countFifth {
 
         @DisplayName("5등이 2명 일때")
         @Test
-        void secondCountCase1(){
+        void secondCountCase1() {
             int answer = 2;
             int testResult = counter.countFifth(testRanking);
             assertEquals(answer, testResult);
@@ -107,7 +107,7 @@ class CounterTest {
 
         @DisplayName("5등이 0명 일때")
         @Test
-        void secondCountCase2(){
+        void secondCountCase2() {
             int answer = 0;
             int testResult = counter.countFifth(testRankingTwo);
             assertEquals(answer, testResult);
