@@ -24,6 +24,12 @@ public class InputView {
         return new Lotto(winningNumbers);
     }
 
+    public static int readBonusInput() {
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return convertStrToInt(Console.readLine());
+    }
+
     public static int convertStrToInt(String input) {
         try {
             return Integer.parseInt(input);
