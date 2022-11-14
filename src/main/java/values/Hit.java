@@ -3,11 +3,11 @@ package values;
 import static values.Constants.Console.*;
 
 public enum Hit {
-    THREE(THREE_HIT),
-    FOUR(FOUR_HIT),
-    FIVE(FIVE_HIT),
-    FIVE_BONUS(FIVE_BONUS_HIT),
-    SIX(SIX_HIT);
+    THREE(THREE_HIT_MESSAGE),
+    FOUR(FOUR_HIT_MESSAGE),
+    FIVE(FIVE_HIT_MESSAGE),
+    FIVE_BONUS(FIVE_BONUS_HIT_MESSAGE),
+    SIX(SIX_HIT_MESSAGE);
 
 
     private String message;

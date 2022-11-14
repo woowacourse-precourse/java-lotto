@@ -2,17 +2,17 @@ package values;
 
 public class Constants {
     public static class Console {
-        public static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
-        public static final String INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
-        public static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-        public static final String OUTPUT_CNT = "개를 구매했습니다.";
-        public static final String STATISTICS = "당첨 통계\n---";
-        public static final String THREE_HIT = "3개 일치 (5,000원) - %d개\n";
-        public static final String FOUR_HIT = "4개 일치 (50,000원) - %d개\n";
-        public static final String FIVE_HIT = "5개 일치 (1,500,000원) - %d개\n";
-        public static final String FIVE_BONUS_HIT = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
-        public static final String SIX_HIT = "6개 일치 (2,000,000,000원) - %d개\n";
-        public static final String TOTAL_PROFIT_PERCENT = "총 수익률은 %s%%입니다.\n";
+        public static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
+        public static final String INPUT_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
+        public static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+        public static final String OUTPUT_CNT_MESSAGE = "개를 구매했습니다."; //need refactoring
+        public static final String STATISTICS_MESSAGE = "당첨 통계\n---";
+        public static final String THREE_HIT_MESSAGE = "3개 일치 (5,000원) - %d개\n";
+        public static final String FOUR_HIT_MESSAGE = "4개 일치 (50,000원) - %d개\n";
+        public static final String FIVE_HIT_MESSAGE = "5개 일치 (1,500,000원) - %d개\n";
+        public static final String FIVE_BONUS_HIT_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
+        public static final String SIX_HIT_MESSAGE = "6개 일치 (2,000,000,000원) - %d개\n";
+        public static final String TOTAL_PROFIT_PERCENT_MESSAGE = "총 수익률은 %s%%입니다.\n";
     }
 
     public static class Util {
@@ -38,10 +38,11 @@ public class Constants {
     }
 
     public static class Error {
-        public static final String RANGE_ERROR = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-        public static final String DUPLICATION_ERROR = "[ERROR] 로또 번호에는 중복이 없어야 합니다.";
-        public static final String SIZE_ERROR = "[ERROR] 로또 번호는 6개여야 합니다.";
-        public static final String MONEY_VALUE_ERROR = "[ERROR] 입력받은 값이 정수 형태가 아닙니다.";
+        public static final String RANGE_ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+        public static final String DUPLICATION_ERROR_MESSAGE = "[ERROR] 로또 번호에는 중복이 없어야 합니다.";
+        public static final String SIZE_ERROR_MESSAGE = "[ERROR] 로또 번호는 6개여야 합니다.";
+        public static final String MONEY_VALUE_ERROR_MESSAGE = "[ERROR] 입력받은 값이 정수 형태가 아닙니다.";
     }
 }
+
 

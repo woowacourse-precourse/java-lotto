@@ -3,7 +3,7 @@ package domain;
 import camp.nextstep.edu.missionutils.Console;
 
 import static values.Constants.Digit.LOTTO_PRICE;
-import static values.Constants.Error.MONEY_VALUE_ERROR;
+import static values.Constants.Error.MONEY_VALUE_ERROR_MESSAGE;
 
 public class Money {
     private int money;
@@ -33,7 +33,7 @@ public class Money {
             int money = Integer.parseInt(inputValue);
             return new Money(money);
         } catch(Exception e) {
-            throw new IllegalArgumentException(MONEY_VALUE_ERROR);
+            throw new IllegalArgumentException(MONEY_VALUE_ERROR_MESSAGE);
         }
     }
 }

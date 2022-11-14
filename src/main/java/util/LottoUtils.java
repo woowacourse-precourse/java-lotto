@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static values.Constants.Console.TOTAL_PROFIT_PERCENT;
+import static values.Constants.Console.TOTAL_PROFIT_PERCENT_MESSAGE;
 import static values.Constants.Digit.*;
 import static values.Constants.Error.*;
 import static values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
@@ -26,14 +26,14 @@ public class LottoUtils {
 
     public static void validate(int bonusNumber) {
         if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
-            throw new IllegalArgumentException(RANGE_ERROR);
+            throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
     }
 
 
     private static void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(SIZE_ERROR);
+            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
         }
     }
 
@@ -41,14 +41,14 @@ public class LottoUtils {
         List<Integer> duplicationRemoved = numbers.stream().distinct().collect(Collectors.toList());
 
         if (duplicationRemoved.size() != 6) {
-            throw new IllegalArgumentException(DUPLICATION_ERROR);
+            throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
         }
     }
 
     private static void validateNumbersRange(List<Integer> numbers) {
         numbers.forEach(num -> {
             if (!(num >= 1 && num <= 45)) {
-                throw new IllegalArgumentException(RANGE_ERROR);
+                throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
             }
         });
     }
@@ -64,7 +64,7 @@ public class LottoUtils {
     }
 
     public static void printTotalProfitMessage(String percent) {
-        System.out.printf(TOTAL_PROFIT_PERCENT, percent);
+        System.out.printf(TOTAL_PROFIT_PERCENT_MESSAGE, percent);
     }
 
     public static List<Integer> getWinningNumbers() {
