@@ -18,7 +18,7 @@ public class Purchase {
         return userInput % 1000 == 0;
     }
 
-    public int canBuyLotto() {
-        return 0;
+    public int canBuyLotto(int money) {
+        return money / 1000;
     }
 }
