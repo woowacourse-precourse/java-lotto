@@ -11,7 +11,7 @@
       - 입력값이 숫자가 아닌 값이 있으면 턴llegalArgumentException 발생시키는 메소드 (validateAreNumbers)
     - 당첨 번호 입력 받아서 숫자 리스트로 리턴, 예외 상황 시 에러 발생시키는 메소드 (getUniqueNumbersInput)
       - 번호 입력이 중복되면 IllegalArgumentException 발생시키는 메소드 (validateUniqueNumberInput)
-      - 번호가 1~45 범위 밖이면 IllegalArgumentException 발생시키는 메소드 (validateNumberInRange)
+      - 번호가 1~45 범위 밖이면 IllegalArgumentException 발생시키는 메소드 (validateNumbersInRange)
       - 입력된 숫자의 개수가 6이 아니면 IllegalArgumentException 발생시키는 메소드 (validateNumberOfNumbers)
       - 입력값이 ',' 제외 숫자가 아닌 값이 있으면 IllegalArgumentException 발생시키는 메소드 (validateIsNumber)
     - 보너스 번호 입력 받고 숫자로 리턴, 예외 상황 시 에러 발생시키는 메소드 (getBonusNumberInput)
