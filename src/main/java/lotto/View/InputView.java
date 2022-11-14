@@ -13,7 +13,7 @@ public class InputView {
         String input = Console.readLine();
 
         inputValidator.validateMoney(input);
-        
+
         int money = Integer.parseInt(input);
 
         return money;
@@ -27,5 +27,15 @@ public class InputView {
         inputValidator.validateNumbers(input);
 
         return input;
+    }
+
+    public int readBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+
+        String input = Console.readLine();
+
+        int num = inputValidator.returnValidatedSingleNumber(input);
+
+        return num;
     }
 }
