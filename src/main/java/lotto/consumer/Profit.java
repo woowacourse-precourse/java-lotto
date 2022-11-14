@@ -5,19 +5,17 @@ import java.util.List;
 import lotto.machine.Ranks;
 
 public class Profit {
-    private final List<Integer> profit;
+    private final Integer profit;
 
     public Profit(int matchingWinningNumberCount, int matchingBonusNumberCount) {
-        profit = new ArrayList<>();
-        updateProfit(matchingWinningNumberCount, matchingBonusNumberCount);
+        profit = updateProfit(matchingWinningNumberCount, matchingBonusNumberCount);
     }
 
-    public List<Integer> getProfit() {
+    public Integer getProfit() {
         return profit;
     }
 
-    public void updateProfit(int matchingWinningNumberCount, int matchingBonusNumberCount) {
-        Integer prizeMoney = Ranks.getPrizeMoneyBy(matchingWinningNumberCount, matchingBonusNumberCount);
-        profit.add(prizeMoney);
+    public Integer updateProfit(int matchingWinningNumberCount, int matchingBonusNumberCount) {
+        return Ranks.getPrizeMoneyBy(matchingWinningNumberCount, matchingBonusNumberCount);
     }
 }
