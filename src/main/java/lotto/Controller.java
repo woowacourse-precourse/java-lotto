@@ -31,16 +31,16 @@ public class Controller {
         }
     }
 
-    public static void Solution(String inputLottoAmount) {
+    public static void Solution() {
         View.Output("구입금액을 입력해 주세요.");
         String inputLottoAmount = View.Input();
         Integer lottoAmount = Model.MakeStringToInteger(inputLottoAmount);
-        Lotto.ValidatePurchaseAmount(lottoAmount);
+        ValidatePurchaseAmount(lottoAmount);
 
         Integer inputNumbers = Model.MakeStringToInteger(inputLottoAmount);
-        Integer lottoAmount = Model.CountLottoAmount(inputNumbers);
+        Integer lottoCount = Model.CountLottoAmount(inputNumbers);
 
-        final List<List<Integer>> publishedLottoArray = Model.PublishLotto(lottoAmount);
+        final List<List<Integer>> publishedLottoArray = Model.PublishLotto(lottoCount);
 
         View.Output(lottoAmount+"개를 구매했습니다.");
         for (List<Integer> list : publishedLottoArray) {
