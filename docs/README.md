@@ -9,7 +9,7 @@
   - [x] 지정된 양식에 따라 로또 번호를 문자열로 변환한다. Lotto#getString()
   - [x] 발행된 모든 로또 번호를 가져온다. Ticket#getAll()
 - [ ] 당첨 번호를 입력 받고 저장한다.
-  - [x] 당첨 번호를 입력 받는다.
+  - [x] 당첨 번호를 입력 받는다. InputController#showLottoNumberInput()
   - [x] 콤마로 구분되어 입력된 값을 숫자형으로 변환한다. Lotto#from()
   - [x] 입력된 숫자가 6개인지 확인한다. Validator#isNotCorrectLottoNumberSize()
   - [x] 입력된 숫자가 1 ~ 45 인지 확인한다. Validator#hasNotCorrectRangeNumbers()
