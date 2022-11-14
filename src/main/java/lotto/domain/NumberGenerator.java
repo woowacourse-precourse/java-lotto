@@ -11,7 +11,7 @@ public class NumberGenerator {
         List<List<Integer>> lottoNumbers = new ArrayList<>();
 
         for (int i = 0; i < lottoTicket; i++) {
-            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> randomNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(randomNumbers);
             lottoNumbers.add(randomNumbers);
         }
