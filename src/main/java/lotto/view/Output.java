@@ -45,7 +45,7 @@ public class Output {
         System.out.println(SIX_MATCH + first + COUNT);
     }
 
-    public static void outputEarningRate(double earningRate) {
+    public static void outputEarningRate(String earningRate) {
         System.out.println(TOTAL_EARN + earningRate + PERCENT);
     }
 

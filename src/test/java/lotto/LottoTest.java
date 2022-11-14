@@ -105,9 +105,9 @@ class LottoTest {
     @DisplayName("수익률은 소수점 둘째자리에서 반올림한다")
     @Test
     void checkEarningRate() {
-        int winningPrice = 30000000;
-        int money = 1000;
-        assertThat(Service.getEarningsRate(winningPrice, money)).isEqualTo(3000000.0);
+        int winningPrice = 25790000;
+        int money = 100000000;
+        assertThat(Service.getEarningsRate(winningPrice, money)).isEqualTo("25.8");
     }
 
     @DisplayName("보너스 번호는 1부터 45까지여야 한다")

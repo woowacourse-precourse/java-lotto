@@ -137,10 +137,11 @@ public class Service {
         return winningPrice;
     }
 
-    public static double getEarningsRate(int winningPrice, int money) {
-        double earningRate = ((double) winningPrice / money) * PERCENTAGE;
-        Output.outputEarningRate(earningRate);
+    public static String getEarningsRate(int winningPrice, int money) {
+        double earningRate = ((double) winningPrice / money);
+        String result = String.format("%.1f", earningRate * PERCENTAGE);
+        Output.outputEarningRate(result);
 
-        return earningRate;
+        return result;
     }
 }
