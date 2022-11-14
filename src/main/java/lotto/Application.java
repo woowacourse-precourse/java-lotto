@@ -57,10 +57,18 @@ public class Application {
         result = INPUT_WINNING_NUMBER(Input);
         return result;
     }
+    public static int PRINT_INPUT_BONUS_NUMBER() throws IllegalArgumentException{
+        System.out.println("보너스 번호를 입력해 주세요");
+        int result = Integer.parseInt(Console.readLine());
+        m_Lotto.VALIDATE_BONUS_NO(result);
+        return result;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
             int Amount = PRINT_REQUEST_PAY();
             ArrayList<List<Integer>> My_Lotto_Number = PRINT_MY_LOTTO_NUMBER(Amount);
             ArrayList<Integer> Winning_Number = PRINT_INPUT_WINNING_NUMBER();
+            m_Lotto = new Lotto(Winning_Number);
+            int Bonus = PRINT_INPUT_BONUS_NUMBER();
     }
 }
