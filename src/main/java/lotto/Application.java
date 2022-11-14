@@ -10,7 +10,16 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int buyPrice = enterPrice();
-        if(buyPrice == 0) return;
+        while(true) {
+            if(buyPrice != 0)
+                break;
+            if(buyPrice == 0)
+                buyPrice = enterPrice();
+        }
+
+        List<Lotto> lottoList = buyLotto(buyPrice);
+
+        compareLotto(lottoList);
 
 
     }
@@ -26,12 +35,12 @@ public class Application {
     public static boolean validateMoney(String money) {
         for (int i = 0; i < money.length(); i++) {
             if (!('0' <= money.charAt(i) && money.charAt(i) <= '9')) {
-                System.out.println("구입 금액이 잘못 되었습니다.");
+                System.out.println("구입 금액이 잘못 되었습니다. 다시 입력하세요.");
                 return false;
             }
         }
         if (Integer.parseInt(money) % 1000 != 0) {
-            System.out.println("구입 금액이 잘못 되었습니다.");
+            System.out.println("구입 금액이 잘못 되었습니다. 다시 입력하세요.");
             return false;
         }
         return true;
@@ -52,6 +61,10 @@ public class Application {
     private static int getBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         return Integer.parseInt(Console.readLine());
+    }
+
+    private static void compareLotto(List<Lotto> lottoList) {
+
     }
 
 }
