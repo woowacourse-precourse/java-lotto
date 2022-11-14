@@ -6,33 +6,43 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LottoPrinter {
+    private static final String PURCHASED_ALERT_FORMAT = "%d개를 구매했습니다.\n";
+    private static final String STATISTICS_FORMAT = "%s (%s원) - %d개\n";
+    private static final String WINNING_STATISTICS_TITLE = "당첨 통계";
+    private static final String LINE_SEPARATOR = "---";
+    private static final String DECIMAL_PATTERN = "###,###";
+    private static final String BRACKET_FORMAT = "[%s]\n";
+
     public static void printLotto(List<Lotto> lottos) {
-        System.out.printf("%d개를 구매했습니다.\n", lottos.size());
+        System.out.printf(PURCHASED_ALERT_FORMAT, lottos.size());
+
         lottos.forEach(lotto -> {
-            System.out.print("[");
-            System.out.print(lotto.getNumbers().stream().map(String::valueOf)
-                    .collect(Collectors.joining(", ")));
-            System.out.println("]");
+            String lottoNumbersJoinByDelimiter = lotto
+                    .getNumbers().stream().map(String::valueOf)
+                    .collect(Collectors.joining(", "));
+
+            System.out.printf(BRACKET_FORMAT, lottoNumbersJoinByDelimiter);
         });
     }
 
     public static void printStatistics(Map<LottoPrize, Integer> statistics) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(WINNING_STATISTICS_TITLE);
+        System.out.println(LINE_SEPARATOR);
 
-        List<LottoPrize> prizes = List.of(LottoPrize.FIFTH, LottoPrize.FOURTH, LottoPrize.THIRD, LottoPrize.SECOND,
+        List<LottoPrize> prizesByOrder = List.of(LottoPrize.FIFTH, LottoPrize.FOURTH, LottoPrize.THIRD,
+                LottoPrize.SECOND,
                 LottoPrize.FIRST);
-        prizes.forEach(prize -> printPrizeStatistic(prize, statistics));
+        prizesByOrder.forEach(prize -> printPrizeStatistic(prize, statistics));
     }
 
     private static void printPrizeStatistic(LottoPrize prize, Map<LottoPrize, Integer> statistics) {
         int count = statistics.get(prize);
-        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_PATTERN);
         String formattedReward = decimalFormat.format(prize.reward);
-        System.out.printf("%s (%s원) - %d개\n", prize.matchCount, formattedReward, count);
+        System.out.printf(STATISTICS_FORMAT, prize.matchCount, formattedReward, count);
     }
 
     public static void printRateOfReturn(Double rateOfReturn) {
-        System.out.println("총 수익률은 "+ rateOfReturn + "%입니다.");
+        System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
     }
 }
