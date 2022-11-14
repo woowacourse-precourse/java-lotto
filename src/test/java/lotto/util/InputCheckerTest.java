@@ -48,15 +48,25 @@ class InputCheckerTest {
     void checkInputMoney2(){
         assertThat(inputChecker.checkInputMoney("14000")).isTrue();
     }
-    @DisplayName("입력한 당첨 로또 번호가 6개 아니면 예외 처리")
+    @DisplayName("정수가 아니면 false 반환하는지 확인")
     @Test
-    void isSizeSix1(){
-        assertThatThrownBy(()->inputChecker.isSizeSix(List.of("1", "2", "3", "4", "5", "6", "7")))
+    void isNumeric1(){
+        assertThat(inputChecker.isNumeric("k")).isFalse();
+    }
+    @DisplayName("정수가 아니면 true 반환하는지 확인")
+    @Test
+    void isNumeric2(){
+        assertThat(inputChecker.isNumeric("10")).isTrue();
+    }
+    @DisplayName("입력받은 당첨 번호가 정수가 아닌 경우 예외처리가 발생하는지 확인")
+    @Test
+    void checkInputWinningLottoNumbersIsNumeric1(){
+        assertThatThrownBy(()->inputChecker.checkInputWinningLottoNumbersIsNumeric(List.of("1", "2", "3", "k", "5", "6")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    @DisplayName("입력한 당첨 로또 번호가 6개면 true 반환 확인")
+    @DisplayName("입력받은 당첨 번호가 모두 정수인 경우 true를 반환하는지 확인")
     @Test
-    void isSizeSix2(){
-        assertThat(inputChecker.isSizeSix(List.of("1", "2", "3", "4", "5", "6"))).isTrue();
+    void checkInputWinningLottoNumbersIsNumeric2(){
+        assertThat(inputChecker.checkInputWinningLottoNumbersIsNumeric(List.of("1", "2", "3", "4", "5", "6"))).isTrue();
     }
 }
