@@ -10,8 +10,7 @@ import lotto.entity.Result;
 import lotto.entity.WinningLotto;
 import lotto.service.InputService;
 import lotto.service.OutputService;
-import lotto.util.NumericConverter;
-import lotto.util.MultipleNumericConverter;
+import lotto.util.Converter;
 
 public class LottoApplication {
 
@@ -20,12 +19,13 @@ public class LottoApplication {
     public final static int RANGE_START = 1;
     public final static int RANGE_END = 45;
 
-    private final NumericConverter numericConverter;
-    private final MultipleNumericConverter multipleNumericConverter;
+    private final Converter<String, Integer> numericConverter;
+    private final Converter<String, List<Integer>> multipleNumericConverter;
 
-    public LottoApplication() {
-        numericConverter = new NumericConverter();
-        multipleNumericConverter = new MultipleNumericConverter();
+    public LottoApplication(Converter<String, Integer> numericConverter,
+        Converter<String, List<Integer>> multipleNumericConverter) {
+        this.numericConverter = numericConverter;
+        this.multipleNumericConverter = multipleNumericConverter;
     }
 
     public void play() {
