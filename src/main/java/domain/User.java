@@ -7,6 +7,7 @@ import java.util.List;
 public class User {
 
     private int inputUserMoney;
+    private List<Lotto> totalLottoNumbers;
 
     public int getInputUserMoney() {
         return inputUserMoney;
@@ -16,6 +17,15 @@ public class User {
         validateInputUserMoney(inputUserMoney);
         this.inputUserMoney = inputUserMoney;
     }
+
+    public List<Lotto> getTotalLottoNumbers() {
+        return totalLottoNumbers;
+    }
+
+    public void setTotalLottoNumbers(List<Lotto> totalLottoNumbers) {
+        this.totalLottoNumbers = totalLottoNumbers;
+    }
+
 
     private void validateInputUserMoney(int inputUserMoney) {
         try {

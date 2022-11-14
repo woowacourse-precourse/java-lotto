@@ -28,4 +28,10 @@ public class ResultView {
         double yieldRate = ((double) totalYield / inputMoney.getInputUserMoney()) * 100;
         System.out.println("총 수익률은 " + yieldRate + "%" + "입니다");
     }
+
+    private void resultTotalLotto(){
+        User user = new User();
+        for(int i = 0; i < user.getTotalLottoNumbers().size(); i++)
+            System.out.println(user.getTotalLottoNumbers().get(i));
+    }
 }

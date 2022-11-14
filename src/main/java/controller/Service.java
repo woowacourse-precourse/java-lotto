@@ -3,6 +3,7 @@ package controller;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import domain.Lotto;
+import domain.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,12 +17,13 @@ public class Service {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public List<Lotto> createTotalLottoNumber(int lottoCount) {
+    public void createTotalLottoNumber(int lottoCount) {
+        User user = new User();
         List<Lotto> totalLottoNumbers = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             totalLottoNumbers.add(new Lotto(createLottoNumber()));
         }
-        return totalLottoNumbers;
+        user.setTotalLottoNumbers(totalLottoNumbers);
     }
 
     public List<Integer> inputLottoWinningNumbers() {
