@@ -57,8 +57,17 @@ public class LottoGame {
     }
 
     private int calculateProfit() {
-        int profit = (5000 * lottoResults.get(3)) + (50000 * lottoResults.get(4)) + (1500000 * (lottoResults.get(5)-bonusResult))
-                + (30000000 * bonusResult) + (2000000000 * lottoResults.get(6));
+        int profit = 0;
+        Prize first = Prize.CALCULATE_FIRST;
+        profit += first.calculate(lottoResults.get(6));
+        Prize second = Prize.CALCULATE_SECOND;
+        profit += second.calculate(bonusResult);
+        Prize third = Prize.CALCULATE_THIRD;
+        profit += third.calculate((lottoResults.get(5) - bonusResult));
+        Prize fourth = Prize.CALCULATE_FOURTH;
+        profit += fourth.calculate(lottoResults.get(4));
+        Prize fifth = Prize.CALCULATE_FIFTH;
+        profit += fifth.calculate(lottoResults.get(3));
 
         return profit;
     }
