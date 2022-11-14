@@ -38,7 +38,6 @@ public class Controller {
             (List<Integer> numbers, List<List<Integer>> publishedLottoArray) {
         int size = 0;
         LinkedHashMap<Integer, Integer> result = new LinkedHashMap<>();
-        result.put(0, 0);
         result.put(5, 0);
         result.put(4, 0);
         result.put(3, 0);
@@ -57,15 +56,6 @@ public class Controller {
             intersectionLottoNumbers.retainAll(lottoNumbersSet);
             size = intersectionLottoNumbers.size();
 
-            if (size == 0) {
-                result.put(0, result.get(0)+1);
-            }
-            if (size == 1) {
-                result.put(0, result.get(0)+1);
-            }
-            if (size == 2) {
-                result.put(0, result.get(0)+1);
-            }
             if (size == 3) {
                 result.put(5, result.get(5)+1);
             }
