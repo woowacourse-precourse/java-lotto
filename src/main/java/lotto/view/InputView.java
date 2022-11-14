@@ -1,15 +1,15 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.PreInput;
-import lotto.exception.NonNumberFailure;
+import lotto.exception.InputException;
 
 import java.util.regex.Pattern;
 
 public class InputView {
     private static final String PURCHASE_GREETING = "구입금액을 입력해 주세요.";
 
-    private static final Pattern NOT_NUMBER = Pattern.compile("^\\D$");
+    private static final Pattern Non_Number = Pattern.compile("^\\D$");
+    private static final int Max = 4;
 
 
     public static int money() {
@@ -21,17 +21,19 @@ public class InputView {
     public static void startGuide() {
         System.out.println(PURCHASE_GREETING);
     }
+
     private static void checkInput(String money) {
         try {
             checkNonNumber(money);
-        } catch (NonNumberFailure e) {
+        } catch (InputException e) {
             System.out.println(e.getMessage());
+            throw e;
         }
     }
 
     private static void checkNonNumber(String money) {
-        if (!NOT_NUMBER.matcher(money).matches()) {
-            throw new NonNumberFailure("[ERROR] 숫자가 아닌 문자를 입력했습니다.");
+        if (!Non_Number.matcher(money).matches()) {
+            throw new InputException("[ERROR] 숫자가 아닌 문자를 입력했습니다.");
         }
     }
 
