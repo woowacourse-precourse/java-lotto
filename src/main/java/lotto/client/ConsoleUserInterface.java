@@ -1,12 +1,18 @@
 package lotto.client;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 import lotto.InvalidInputMessage;
 import lotto.Lotto;
+import lotto.LottoNumber;
 
 public class ConsoleUserInterface {
 
     private final static String MSG_REQUEST_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
+    private final static String MSG_SHOW_PURCHASE_AMOUNT = "개를 구매했습니다.";
 
     public ConsoleUserInterface() {
     }
@@ -34,7 +40,7 @@ public class ConsoleUserInterface {
         return Integer.parseInt(input);
     }
 
-    private void validateAs_JavaInteger(String input){
+    private void validateAs_JavaInteger(String input) {
         try {
             Integer.parseInt(input);
         } catch (Exception e) {
@@ -51,5 +57,19 @@ public class ConsoleUserInterface {
                     InvalidInputMessage.ERR_DEFAULT + InvalidInputMessage.ERR_MONEY_UNIT
             );
         }
+    }
+
+    public void showPurchasedResult(List<Lotto> lottos) {
+        output(lottos.size() + MSG_SHOW_PURCHASE_AMOUNT);
+        for (Lotto lotto : lottos) {
+            showPurchasedLotto(lotto);
+        }
+    }
+
+    private void showPurchasedLotto(Lotto lotto) {
+        List<Integer> convertedNumbers = lotto.getNumbers().stream()
+                .map(LottoNumber::getNumber)
+                .collect(Collectors.toList());
+        output(convertedNumbers.toString());
     }
 }
