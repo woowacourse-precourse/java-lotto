@@ -14,6 +14,16 @@ public class CompareLotto {
                 if(winningnumbers.contains(number))
                     cnt++;
             }
+
+            if(cnt==6){
+
+            } else if(cnt==5){
+
+            } else if(cnt==4){
+
+            } else if(cnt==3){
+
+            }
         }
 
         return correctcount;
