@@ -8,12 +8,18 @@ public class Domain {
     void checkWinning(Computer[] computers, EnumMap<Money, Integer> map, Lotto lotto) {
         for (Computer computer : computers) {
             int count = checkWinningCount(computer.getNumbers(), lotto.getNumbers());
-            if (Objects.equals(count, 7)) map.put(Money.first, map.getOrDefault(Money.first, 0) + 1);
-            else if (Objects.equals(count, 6)) map.put(Money.second, map.getOrDefault(Money.second, 0) + 1);
-            else if (Objects.equals(count, 5)) map.put(Money.third, map.getOrDefault(Money.third, 0) + 1);
-            else if (Objects.equals(count, 4)) map.put(Money.fourth, map.getOrDefault(Money.fourth, 0) + 1);
-            else if (Objects.equals(count, 3)) map.put(Money.fifth, map.getOrDefault(Money.fifth, 0) + 1);
+            Money money = WinningKey(count);
+            map.put(money, map.getOrDefault(money, 0) + 1);
         }
+    }
+
+    Money WinningKey(int count) {
+        if (Objects.equals(count, 7)) return Money.first;
+        else if (Objects.equals(count, 6)) return Money.second;
+        else if (Objects.equals(count, 5)) return Money.third;
+        else if (Objects.equals(count, 4)) return Money.fourth;
+        else if (Objects.equals(count, 3)) return Money.fifth;
+        return Money.notThing;
     }
 
     int checkWinningCount(List<Integer> computers, List<Integer> lottoList) {
@@ -26,7 +32,7 @@ public class Domain {
         return count;
     }
 
-    Long checkWinningMoney(EnumMap<Money,Integer> map) {
+    Long checkWinningMoney(EnumMap<Money, Integer> map) {
         long result = 0;
         for (Money money : map.keySet())
             result += (long) map.getOrDefault(money, 0) * Money.valueOf(String.valueOf(money)).getMoney();
