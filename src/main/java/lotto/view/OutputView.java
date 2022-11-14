@@ -64,7 +64,7 @@ public class OutputView {
         if (rank.equals(Rank.SECOND)) {
             return COMMA + MATCH_BONUS_BALL;
         }
-        return " ";
+        return "";
     }
 
     public static void printYield(Result result, Money money) {
