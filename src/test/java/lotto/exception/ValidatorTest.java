@@ -16,10 +16,12 @@ public class ValidatorTest {
     public static final String VALUE_IS_NOT_USE_COMMA = "123";
     public static final String VALUE_IS_NOT_NUMBER_USE_COMMA = "가,나,다,1,4,5";
     public static final String VALUE_SIZE_IS_NOT_SIX = "1,2,3";
-    public static final String VALUE_RANGE_IS_NOT_RIGHT_USE_COMMA = "1,2,3,4,5,46";
+    public static final String VALUE_IS_MORE_THAN_RANGE_USE_COMMA = "1,2,3,4,5,46";
+    public static final String VALUE_IS_LESS_THAN_RANGE_USE_COMMA = "1,2,3,4,5,0";
 
     public static final String VALUE_IS_DUPLICATE = "1";
-    public static final String VALUE_RANGE_IS_NOT_RIGHT = "47";
+    public static final String VALUE_IS_MORE_THAN_RANGE = "46";
+    public static final String VALUE_IS_LESS_THAN_RANGE = "0";
 
     public static final List<Integer> WINNING_NUMBERS = List.of(1, 2, 3, 4, 5, 6);
 
@@ -86,17 +88,25 @@ public class ValidatorTest {
                     .hasMessageContaining("숫자를 입력해주세요.");
         }
 
-        @DisplayName("범위가 벗어나는 숫자가 있다면 예외를 반환한다.")
+        @DisplayName("범위가 벗어나는 숫자가 있다면 예외를 반환한다. - 초과인 경우")
         @Test
         void test4() {
-            assertThatThrownBy(() -> validator.validateWinningNumbers(VALUE_RANGE_IS_NOT_RIGHT_USE_COMMA))
+            assertThatThrownBy(() -> validator.validateWinningNumbers(VALUE_IS_MORE_THAN_RANGE_USE_COMMA))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1 이상 45 이하의 숫자를 입력하여야 합니다.");
+        }
+
+        @DisplayName("범위가 벗어나는 숫자가 있다면 예외를 반환한다. - 미만인 경우")
+        @Test
+        void test5() {
+            assertThatThrownBy(() -> validator.validateWinningNumbers(VALUE_IS_LESS_THAN_RANGE_USE_COMMA))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("1 이상 45 이하의 숫자를 입력하여야 합니다.");
         }
 
         @DisplayName("정상로직")
         @Test
-        void test5() {
+        void test6() {
             assertThatNoException()
                     .isThrownBy(() -> validator.validateWinningNumbers(INPUT_WINNING_NUMBERS_RIGHT_VALUE));
         }
@@ -114,17 +124,25 @@ public class ValidatorTest {
                     .hasMessageContaining("숫자를 입력해주세요.");
         }
 
-        @DisplayName("범위에 벗어나는 숫자가 있다면 예외를 반환한다.")
+        @DisplayName("범위에 벗어나는 숫자가 있다면 예외를 반환한다. - 초과인 경우")
         @Test
         void test2() {
-            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_RANGE_IS_NOT_RIGHT, WINNING_NUMBERS))
+            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_MORE_THAN_RANGE, WINNING_NUMBERS))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1 이상 45 이하의 숫자를 입력하여야 합니다.");
+        }
+
+        @DisplayName("범위에 벗어나는 숫자가 있다면 예외를 반환한다. - 미만인 경우")
+        @Test
+        void test3() {
+            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_LESS_THAN_RANGE, WINNING_NUMBERS))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("1 이상 45 이하의 숫자를 입력하여야 합니다.");
         }
 
         @DisplayName("보너스 번호가 당첨 번호와 중복된다면 예외를 반환한다.")
         @Test
-        void test3() {
+        void test4() {
             assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_DUPLICATE, WINNING_NUMBERS))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("보너스 번호가 당첨 번호와 중복됩니다.");
@@ -132,7 +150,7 @@ public class ValidatorTest {
 
         @DisplayName("정상 로직")
         @Test
-        void test4() {
+        void test5() {
             assertThatNoException()
                     .isThrownBy(() -> validator.validateBonusNumber(INPUT_BONUS_MONEY_RIGHT_VALUE, WINNING_NUMBERS));
         }
