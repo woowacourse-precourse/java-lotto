@@ -12,7 +12,6 @@ public class LottoService {
         purchaseLotto();
         selectWinningNumbers();
         selectBonusNumber();
-        //여기 결과랑 수익률 계산
         notifyResult();
     }
 
@@ -23,13 +22,18 @@ public class LottoService {
             lottoCount = player.getLottoCountPurchased();
         } catch (IllegalArgumentException e) {
             purchaseLotto();
+            return;
         }
 
+        createAllLotto(lottoCount);
+        ConsoleMessage.PURCHASE.printMsg(purchasedLotto);
+    }
+
+    private void createAllLotto(int lottoCount) {
         for (int i = 0; i < lottoCount; i++) {
             Lotto lotto = lottoBot.createLotto();
             purchasedLotto.add(lotto);
         }
-        ConsoleMessage.PURCHASE.printMsg(purchasedLotto);
     }
 
     private void selectWinningNumbers() {
@@ -38,6 +42,7 @@ public class LottoService {
             player.selectWinningNumbers();
         } catch (IllegalArgumentException e) {
             selectWinningNumbers();
+            return;
         }
     }
 
@@ -47,6 +52,7 @@ public class LottoService {
             player.selectBonusNumber();
         } catch (IllegalArgumentException e) {
             selectBonusNumber();
+            return;
         }
     }
 

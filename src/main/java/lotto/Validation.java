@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Exception {
+public class Validation {
 
 
     public void checkPurchaseInput(String str) {
@@ -42,8 +42,8 @@ public class Exception {
     private void checkNumberFormat(String str) {
         for (int i = 0; i < str.length(); i++) {
             if (!isNumber(str.charAt(i))) {
-                System.out.println(ExceptionType.INVALID_FORMAT.getErrorMsg());
-                throw new IllegalArgumentException(ExceptionType.INVALID_FORMAT.getErrorMsg());
+                System.out.println(ErrorType.INVALID_FORMAT.getErrorMsg());
+                throw new IllegalArgumentException(ErrorType.INVALID_FORMAT.getErrorMsg());
             }
         }
     }
@@ -56,15 +56,15 @@ public class Exception {
         int cost = Integer.parseInt(str);
 
         if ((cost % Lotto.LOTTO_PRICE) != 0) {
-            System.out.println(ExceptionType.INVALID_PURCHASE_COST.getErrorMsg());
-            throw new IllegalArgumentException(ExceptionType.INVALID_PURCHASE_COST.getErrorMsg());
+            System.out.println(ErrorType.INVALID_PURCHASE_COST.getErrorMsg());
+            throw new IllegalArgumentException(ErrorType.INVALID_PURCHASE_COST.getErrorMsg());
         }
     }
 
     private void checkValidLength(String[] str) {
         if (str.length != Lotto.LOTTO_NUMBER_SIZE) {
-            System.out.println(ExceptionType.INVALID_LENGTH.getErrorMsg());
-            throw new IllegalArgumentException(ExceptionType.INVALID_LENGTH.getErrorMsg());
+            System.out.println(ErrorType.INVALID_LENGTH.getErrorMsg());
+            throw new IllegalArgumentException(ErrorType.INVALID_LENGTH.getErrorMsg());
         }
     }
 
@@ -73,8 +73,8 @@ public class Exception {
 
         for (String winningNumber : numbers) {
             if (storedNumbers.contains(winningNumber)) {
-                System.out.println(ExceptionType.DUPLICATED_NUMBER.getErrorMsg());
-                throw new IllegalArgumentException(ExceptionType.DUPLICATED_NUMBER.getErrorMsg());
+                System.out.println(ErrorType.DUPLICATED_NUMBER.getErrorMsg());
+                throw new IllegalArgumentException(ErrorType.DUPLICATED_NUMBER.getErrorMsg());
             }
 
             storedNumbers.add(winningNumber);
@@ -85,8 +85,8 @@ public class Exception {
         int number = Integer.parseInt(str);
 
         if (!isValidRange(number)) {
-            System.out.println(ExceptionType.INVALID_RANGE.getErrorMsg());
-            throw new IllegalArgumentException(ExceptionType.INVALID_RANGE.getErrorMsg());
+            System.out.println(ErrorType.INVALID_RANGE.getErrorMsg());
+            throw new IllegalArgumentException(ErrorType.INVALID_RANGE.getErrorMsg());
         }
     }
 

@@ -3,8 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
-    private static final int LOTTO_PRICE = 1000;
-    private final Exception exception = new Exception();
+    private final Validation validation = new Validation();
     private final LottoBot lottoBot;
 
     public Player(LottoBot lottoBot) {
@@ -14,18 +13,18 @@ public class Player {
     public int getLottoCountPurchased() {
         int money = getMoneyPurchased();
         lottoBot.saveInitialMoney(money);
-        return money / LOTTO_PRICE;
+        return money / Lotto.LOTTO_PRICE;
     }
 
     private int getMoneyPurchased() {
         String money = Console.readLine();
-        exception.checkPurchaseInput(money);
+        validation.checkPurchaseInput(money);
         return Integer.parseInt(money);
     }
 
     public void selectWinningNumbers() {
         String input = Console.readLine();
-        exception.checkWinningNumberInput(input);
+        validation.checkWinningNumberInput(input);
 
         String[] winningNumbers = input.split(",");
         lottoBot.saveWinningNumbers(winningNumbers);
@@ -33,7 +32,7 @@ public class Player {
 
     public void selectBonusNumber() {
         String input = Console.readLine();
-        exception.checkBonusNumberInput(input);
+        validation.checkBonusNumberInput(input);
 
         lottoBot.saveBonusNumber(input);
     }

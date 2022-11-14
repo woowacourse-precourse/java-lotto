@@ -9,7 +9,7 @@ public class Lotto {
     public static final int LOTTO_PRICE = 1000;
     private final List<Integer> numbers;
 
-    private final Exception exception = new Exception();
+    private final Validation validation = new Validation();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -17,7 +17,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        exception.checkLottoNumbers(numbers);
+        validation.checkLottoNumbers(numbers);
     }
 
     public int getRank(String[] winningNumbers, String bonusNumber) {
@@ -32,7 +32,6 @@ public class Lotto {
         } else if (isFifth(winningNumbers)) {
             return 4;
         }
-
         return -1;
     }
 
