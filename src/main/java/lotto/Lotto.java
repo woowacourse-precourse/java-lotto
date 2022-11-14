@@ -14,7 +14,7 @@ public class Lotto extends IllegalArgumentException{
         return numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호가 여섯 자리가 아닙니다.");
         }
