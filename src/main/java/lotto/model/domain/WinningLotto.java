@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import lotto.model.dto.WinningNumberDto;
 import lotto.utils.Utils;
 
-public class WinningNumber {
+public class WinningLotto {
 
     private static final String NUMBER_SEPARATOR = ",";
     private static final String WINNING_NUMBER_REGEX = "^[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*$";
@@ -16,7 +16,7 @@ public class WinningNumber {
     private final Lotto lotto;
     private final BonusNumber bonusNumber;
 
-    public WinningNumber(String winningNumber, String bonusNumber) {
+    public WinningLotto(String winningNumber, String bonusNumber) {
         winningNumber = validateWinningNumber(winningNumber);
         List<Integer> parsedWinningNumber = parseWinningNumber(winningNumber);
 

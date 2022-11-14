@@ -23,7 +23,7 @@ class WinningStatisticsTest {
         List<Lotto> lottos = List.of(nothingLotto, fifthLotto, fourthLotto, thirdLotto, secondLotto, firstLotto);
         String validWinningNumber = "1,2,3,4,5,6";
         String validBonusNumber = "7";
-        WinningNumber winningNumber = new WinningNumber(validWinningNumber, validBonusNumber);
+        WinningLotto winningNumber = new WinningLotto(validWinningNumber, validBonusNumber);
         WinningNumberDto winningNumberDto = winningNumber.toDto();
         Lotto winningLotto = winningNumberDto.getLotto();
         BonusNumber bonusNumber = winningNumberDto.getBonusNumber();
@@ -59,7 +59,7 @@ class WinningStatisticsTest {
         List<Lotto> lottoReward5000 = List.of(fifthLotto);
         String validWinningNumber = "1,2,3,4,5,6";
         String validBonusNumber = "7";
-        WinningNumber winningNumber = new WinningNumber(validWinningNumber, validBonusNumber);
+        WinningLotto winningNumber = new WinningLotto(validWinningNumber, validBonusNumber);
         WinningNumberDto winningNumberDto = winningNumber.toDto();
         Lotto winningLotto = winningNumberDto.getLotto();
         BonusNumber bonusNumber = winningNumberDto.getBonusNumber();

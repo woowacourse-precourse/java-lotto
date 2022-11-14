@@ -5,7 +5,7 @@ import lotto.model.domain.BonusNumber;
 import lotto.model.domain.Lotto;
 import lotto.model.domain.Lottos;
 import lotto.model.domain.PayingMoney;
-import lotto.model.domain.WinningNumber;
+import lotto.model.domain.WinningLotto;
 import lotto.model.domain.WinningStatistics;
 import lotto.model.dto.LottosDto;
 import lotto.model.dto.WinningNumberDto;
@@ -28,9 +28,9 @@ public class LottoService {
     }
 
     public WinningNumberDto createWinningNumber(String winningNumberString, String bonusNumberString) {
-        WinningNumber winningNumber = new WinningNumber(winningNumberString, bonusNumberString);
+        WinningLotto winningLotto = new WinningLotto(winningNumberString, bonusNumberString);
 
-        return winningNumber.toDto();
+        return winningLotto.toDto();
     }
 
     public WinningStatisticsDto createWinningStatistics(LottosDto lottosDto, WinningNumberDto winningNumberDto) {

@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class WinningNumberTest {
+class WinningLottoTest {
 
     @DisplayName("정상적인 당첨번호를 생성하는 경우")
     @Test
@@ -15,9 +15,9 @@ class WinningNumberTest {
         String validBonusNumber = "7";
         String validBonusNumber2 = " 7 ";
 
-        Assertions.assertThatCode(() -> new WinningNumber(validWinningNumber, validBonusNumber))
+        Assertions.assertThatCode(() -> new WinningLotto(validWinningNumber, validBonusNumber))
                 .doesNotThrowAnyException();
-        Assertions.assertThatCode(() -> new WinningNumber(validWinningNumber2, validBonusNumber2))
+        Assertions.assertThatCode(() -> new WinningLotto(validWinningNumber2, validBonusNumber2))
                 .doesNotThrowAnyException();
     }
 
@@ -28,9 +28,9 @@ class WinningNumberTest {
         String WrongWinningNumberForm2 = "1,2,3,4,5";
         String validBonusNumber = "7";
 
-        Assertions.assertThatThrownBy(() -> new WinningNumber(WrongWinningNumberForm, validBonusNumber))
+        Assertions.assertThatThrownBy(() -> new WinningLotto(WrongWinningNumberForm, validBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> new WinningNumber(WrongWinningNumberForm2, validBonusNumber))
+        Assertions.assertThatThrownBy(() -> new WinningLotto(WrongWinningNumberForm2, validBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
