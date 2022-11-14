@@ -45,4 +45,8 @@ public class Ui {
             System.out.println(result.getDetail() + lottoResult.get(result.getIndex()) + "개");
         }
     }
+
+    public void TotalProfitOutput(double profit) {
+        System.out.println("총 수익률은 " + profit + "%입니다.");
+    }
 }
