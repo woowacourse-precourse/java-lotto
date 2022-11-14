@@ -1,9 +1,10 @@
 package lotto.domain;
 
+import lotto.Statistic;
+
 import java.util.*;
 
 public class Lotto {
-    private static final int MAX_SIZE = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -15,14 +16,14 @@ public class Lotto {
     }
 
     private void validateLength(List<Integer> numbers) {
-        if (numbers.size() != MAX_SIZE) {
+        if (numbers.size() != Statistic.SAME_SIX.getValue()) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateOverlap(List<Integer> numbers) {
         HashSet<Integer> set = new HashSet<>(numbers);
-        if (set.size() != MAX_SIZE) {
+        if (set.size() != Statistic.SAME_SIX.getValue()) {
             throw new IllegalArgumentException();
         }
     }
