@@ -11,7 +11,7 @@
     - [x] `User` 클래스 구현
         - [x] `money` 1000원 단위 검증
         - [x] 로또 구매 메서드 구현
-        - [ ] 유저가 가진 로또티켓의 번호 정보만 담아 List로 반환
+        - [x] 유저가 가진 로또티켓의 번호 정보만 담아 List로 반환
     - [x] `UserService` 의 `createUser` 메서드 구현
 - [x] `LotterySellService`를 통해 로또 구매
     - [x] 판매된 로또 티켓을 저장하는 `LotteryTicketRepository` 싱글톤으로 구현
