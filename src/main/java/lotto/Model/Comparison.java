@@ -46,4 +46,8 @@ public class Comparison {
         String key = Integer.toString(sum);
         savedResult.put(key, savedResult.getOrDefault(key,0)+1);
     }
+
+    public Map<String, Integer> getSavedResult() {
+        return savedResult;
+    }
 }
