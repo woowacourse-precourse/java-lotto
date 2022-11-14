@@ -18,9 +18,9 @@ public class User extends Valid {
     }
 
     public void buy() throws IllegalArgumentException {
-        String amount = Console.readLine();
-        validate(amount);
-        setMoney(Integer.parseInt(amount));
+        String inputMoney = Console.readLine();
+        validate(inputMoney);
+        setMoney(Integer.parseInt(inputMoney));
         createLotto();
     }
 
@@ -56,7 +56,7 @@ public class User extends Valid {
         return lottos;
     }
 
-    public void setResult(Rank rank) {
+    public void saveResult(Rank rank) {
         result.put(rank, result.getOrDefault(rank, 0) + 1);
     }
 
