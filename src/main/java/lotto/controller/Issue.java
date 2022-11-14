@@ -9,10 +9,11 @@ import java.util.List;
 
 public class Issue {
     public int count;
+    public int userPrice;
     public List<List<Integer>> userLotto;
 
     public Issue() {
-        int userPrice = InputView.InputPrice();
+        userPrice = InputView.InputPrice();
         if (!Check1000(userPrice)) {
             throw new IllegalArgumentException("[ERROR] 구매 가격이 1,000원 단위가 아닙니다.");
         }
