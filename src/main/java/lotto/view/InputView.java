@@ -2,7 +2,7 @@ package lotto.view;
 
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.SystemMessage;
+import lotto.domain.SystemMessage;
 import lotto.util.InputChecker;
 
 public class InputView {

@@ -1,6 +1,6 @@
 package lotto.util;
 
-import lotto.ErrorMessage;
+import lotto.domain.ErrorMessage;
 
 import java.util.List;
 

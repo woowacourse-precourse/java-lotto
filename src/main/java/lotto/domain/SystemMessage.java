@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum SystemMessage {
     INPUT_PURCHASE_MONEY("구매 금액을 입력해주세요."),

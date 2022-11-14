@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.SystemMessage;
+import lotto.domain.SystemMessage;
 import lotto.domain.Lotto;
 
 import java.util.List;
