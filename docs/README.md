@@ -28,6 +28,5 @@
   - [ ] 숫자가 1부터 45가 아닐 경우 - WinningNumberValidator#isNumberFrom1To45()
   - [ ] 입력값을 당첨번호를 변형하기 - WinningNumberValidator#transformToWinningNumbers()
 - [x] 보너스 번호 입력 - BonusNumberValidator#askBonusNumber()
-  - [x] 숫자가 아닌 경우 - BonusNumberValidator#isDigit()
-  - [x] 한글자가 아닌 경우
+  - [x] "1"부터 "45"가 아닌 경우 - BonusNumberValidator#isFrom1To45()
   - [x] 당첨번호와 중복되는 경우 - BonusNumberValidator#isDuplicatedWithWinningNumber()

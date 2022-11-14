@@ -3,6 +3,7 @@ package lotto.verifier;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class BonusNumberValidator {
 
@@ -15,11 +16,7 @@ public class BonusNumberValidator {
     }
 
     private void validateInput(String input, List<Integer> winningNumbers) {
-
-        if (input.length() != 1) {
-            throw new IllegalArgumentException("한 글자여야 합니다.");
-        }
-        if (!isDigit(input)) {
+        if (!isFrom1To45(input)) {
             throw new IllegalArgumentException("숫자로 입력해야 합니다.");
         }
         if (isDuplicatedWithWinningNumber(input, winningNumbers)) {
@@ -27,8 +24,9 @@ public class BonusNumberValidator {
         }
     }
 
-    private boolean isDigit(String input) {
-        return '0' <= input.charAt(0) && input.charAt(0) <= '9';
+    private boolean isFrom1To45(String input) {
+        String pattern = "[1-9]|[1-4][0-9]";
+        return Pattern.matches(pattern, input);
     }
 
     private boolean isDuplicatedWithWinningNumber(String input, List<Integer> winningNumbers) {
