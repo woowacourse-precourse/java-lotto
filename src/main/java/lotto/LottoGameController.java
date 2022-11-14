@@ -23,10 +23,7 @@ public class LottoGameController {
         int purchaseAmount = inputPurchaseAmount();
 
         List<Lotto> publishedAllLotto = publishLotto(purchaseAmount);
-
-        // 당첨 로또 및 보너스 번호 발행
-        printWinningLottoNumbersInput();
-        Lotto winningLotto = lottoMachine.publishWinningLotto(inputWinningNumbers());
+        Lotto winningLotto = publishWinningLotto();
         printBonusLottoNumberInput();
         Bonus bonus = lottoMachine.publishBonus(inputBonusNumber(), winningLotto);
 
@@ -35,6 +32,11 @@ public class LottoGameController {
         printLottoResult(lottoResult);
         String lottoYield = lottoReader.calculateYield(purchaseAmount);
         printYield(lottoYield);
+    }
+
+    private Lotto publishWinningLotto() {
+        printWinningLottoNumbersInput();
+        return lottoMachine.publishWinningLotto(inputWinningNumbers());
     }
 
     private List<Lotto> publishLotto(int purchaseAmount) {
