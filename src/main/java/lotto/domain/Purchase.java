@@ -38,7 +38,7 @@ public class Purchase {
     }
 
     public void printCount() {
-        System.out.println(count + "를 구매했습니다.");
+        System.out.println(count + "개를 구매했습니다.");
     }
 
     public int getAmount() {
