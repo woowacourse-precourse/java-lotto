@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import lotto.LottoValidator;
+import lotto.validator.LottoValidator;
 import lotto.type.Prize;
 
 public class View {
