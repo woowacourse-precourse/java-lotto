@@ -44,4 +44,9 @@ public class Service {
 		lotto = new Lotto(lottoNumber);
 	}
 
+	public void inputLottoBonusNumber() {
+		String number = Console.readLine();
+		bonusLotto.setBonus(Integer.parseInt(number));
+	}
+
 }
