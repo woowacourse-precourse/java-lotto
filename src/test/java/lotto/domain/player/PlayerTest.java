@@ -1,4 +1,4 @@
-package lotto.player;
+package lotto.domain.player;
 
 import lotto.domain.player.Player;
 import org.junit.jupiter.api.DisplayName;
