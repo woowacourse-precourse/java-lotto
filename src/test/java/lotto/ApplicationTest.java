@@ -17,6 +17,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
+
+
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -60,10 +62,10 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"4,000", "15,000", "hello", "123,0"})
+    @ValueSource(strings = {"4,000", "15,000", "hello", "123,0", "8000 "})
     void 로또금액_숫자이외예외처리_테스트(String userInput) {
         assertThatThrownBy(() -> {
-            Application.OutOfDigitException(userInput);
+            Application.outOfDigitException(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -76,11 +78,16 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1000", "10000", "100", "50"})
+    @ValueSource(strings = {"1000", "10000", "0", "50", "08000"})
     void 최소단위로나눠떨어지지않는경우_테스트(String userInput) {
         assertThatThrownBy(() -> {
             LottoList.notDivThousand(new BigInteger(userInput));
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 로또랜덤갯수생성_테스트() {
+
     }
 
     @Override
