@@ -4,13 +4,15 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class UserIO {
 
-    public static void printLottoNumbers(List<List<Integer>> lotto) {
-        System.out.println(lotto.size()+"개를 구매했습니다.");
-        for (List<Integer> paper : lotto) {
-            System.out.println(paper);
+    public static void printLottoNumbers(List<Lotto> allLotto) {
+        System.out.println(allLotto.size()+"개를 구매했습니다.");
+        for (Lotto paper : allLotto) {
+
+            System.out.println(paper.getNumbers());
         }
     }
 
