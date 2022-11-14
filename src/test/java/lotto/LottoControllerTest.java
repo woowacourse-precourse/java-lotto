@@ -31,27 +31,4 @@ public class LottoControllerTest {
         assertThatThrownBy(() -> lc.readUserMoney("1칠60"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @DisplayName("형식에 맞지 않는 당첨 번호 입력시 예외 발생")
-    @Test
-    void isWinNumberUnvalid() {
-        assertThatThrownBy(() -> lc.readWinNumber("0,1,2,3,4,5"))
-                .isInstanceOf(IllegalArgumentException.class);
-
-        assertThatThrownBy(() -> lc.readWinNumber("0,1,2,3,4"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("형식에 맞는 번호 입력시 로또가 생성")
-    @Test
-    void isWinNumberValid() {
-        //given
-        Lotto validLotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
-
-        //when
-        Lotto createdLotto = lc.readWinNumber("6,5,4,3,2,1");
-
-        //then
-        assertThat(createdLotto.toString()).isEqualTo(validLotto.toString());
-    }
 }
