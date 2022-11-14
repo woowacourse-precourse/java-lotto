@@ -1,4 +1,4 @@
-package lotto.service.executeLotto;
+package lotto.service.LottoMachine;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
