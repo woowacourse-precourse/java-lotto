@@ -7,6 +7,12 @@ public class LottoValidation {
     public static final int MIN_LOTTO_NUM = 1;
     public static final int MAX_LOTTO_NUM = 45;
 
+    public void validate(List<Integer> lottoNumbers) {
+        validateQuantityOfDigits(lottoNumbers);
+        validateNoDuplicateNumbers(lottoNumbers);
+        validateNumbersRange(lottoNumbers);
+    }
+
     public void validateQuantityOfDigits(List<Integer> lottoNumbers) {
         if (lottoNumbers.size() != QUANTITY_OF_DIGITS) {
             throw new IllegalArgumentException("[ERROR] 번호의 개수는 6개여야 합니다.");
