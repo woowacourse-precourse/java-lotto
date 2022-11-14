@@ -46,7 +46,7 @@ public class LottoValidator {
     }
 
     public static void checkBonusContain(Lotto winningNumber, int bonusNumber) {
-        if (winningNumber.getNumbers().contains(bonusNumber)) {
+        if (winningNumber.isContain(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR} 보너스 번호는 당첨 번호에 포함되어 있지 않아야 합니다.");
         }
     }
