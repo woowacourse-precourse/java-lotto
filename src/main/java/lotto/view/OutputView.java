@@ -2,7 +2,6 @@ package lotto.view;
 
 import lotto.model.enumeration.Reward;
 
-import java.util.Collections;
 import java.util.List;
 
 public class OutputView {
@@ -13,7 +12,6 @@ public class OutputView {
 
     public static void printRandomNumbers(List<List<Integer>> computerRandomNumbers) {
         for (int i = 0; i < computerRandomNumbers.size(); i++) {
-            Collections.sort(computerRandomNumbers.get(i));
             System.out.println(computerRandomNumbers.get(i));
         }
     }

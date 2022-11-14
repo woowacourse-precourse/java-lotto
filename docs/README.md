@@ -2,7 +2,7 @@
 ## 구현 기능 목록
 
 ### 로또 시작 (LottoController)
-  * [ ] 예외처리 (IllegalArgumentException)
+  * [x] 예외처리 (IllegalArgumentException)
 
 ### 구입 금액 입력 (InputView)
   - [x] 구매 금액 입력 받기 
