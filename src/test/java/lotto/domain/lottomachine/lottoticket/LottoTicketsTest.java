@@ -16,7 +16,6 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoTicketsTest {
-
     private LottoTickets lottoTickets;
 
     @BeforeEach
@@ -25,7 +24,7 @@ class LottoTicketsTest {
                 List.of(1, 2, 3, 4, 5, 6),
                 List.of(1, 2, 3, 4, 5, 7),
                 List.of(1, 11, 12, 13, 14, 15));
-        lottoTickets = new LottoTickets(lotteries.stream()
+        lottoTickets = LottoTickets.from(lotteries.stream()
                 .map(Lotto::new)
                 .collect(Collectors.toList()));
     }
@@ -34,10 +33,10 @@ class LottoTicketsTest {
     @ParameterizedTest()
     @MethodSource("provideListForTest")
     void matchWith_test(List<Integer> numbers, int number, List<String> expected) {
-        WinningNumbers winningNumbers = new WinningNumbers(numbers.stream()
-                .map(WinningNumber::new)
+        WinningNumbers winningNumbers = WinningNumbers.from(numbers.stream()
+                .map(WinningNumber::from)
                 .collect(Collectors.toList()));
-        WinningNumber bonusNumber = new WinningNumber(number);
+        WinningNumber bonusNumber = WinningNumber.from(number);
 
         List<String> actual = lottoTickets.matchWith(winningNumbers, bonusNumber);
 

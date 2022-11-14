@@ -12,8 +12,12 @@ public class LottoTickets {
 
     private final List<Lotto> tickets;
 
-    public LottoTickets(List<Lotto> tickets) {
+    private LottoTickets(List<Lotto> tickets) {
         this.tickets = tickets;
+    }
+
+    public static LottoTickets from(List<Lotto> tickets) {
+        return new LottoTickets(tickets);
     }
 
     public int size() {

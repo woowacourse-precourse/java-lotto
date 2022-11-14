@@ -28,7 +28,7 @@ public class LottoTicketSystem {
         for (int i = 0; i < numberOfTickets; i++) {
             tickets.add(issueLotto());
         }
-        return new LottoTickets(tickets);
+        return LottoTickets.from(tickets);
     }
 
     private Lotto issueLotto() {
