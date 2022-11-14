@@ -12,15 +12,15 @@ public class LottoController {
     public void startLotto() {
 
         try {
-            int purchase = lottoService.getPurchaseAmount();
-            LotteryTickets lotteryTickets = lottoService.buyLottery(purchase);
+            int purchaseAmount = lottoService.getPurchaseAmount();
+            LotteryTickets lotteryTickets = lottoService.buyLottery(purchaseAmount);
             lottoService.showLottoPurchaseHistory(lotteryTickets);
 
             WinningNumber winningNumbers = lottoService.getWinningNumsWithBonus();
 
             LottoResult lottoResult = lottoService.getLottoResult(lotteryTickets, winningNumbers);
             lottoService.showLottoResult(lottoResult);
-            lottoService.showEarningRatio(lottoResult, purchase);
+            lottoService.showEarningRatio(lottoResult, purchaseAmount);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
