@@ -73,8 +73,9 @@ public class LottoController {
 
     private void calculate(){
         List<Lotto> lotteries = makeLotteriesFactory.getLotteries();
-        CalculateFactory calculateFactory = new CalculateFactory(lotteries,
-                winningNumberService.getLotteryWinningNumbers(), winningNumberService.getBonus());
+        Lotto winningLottery = winningNumberService.getLotteryWinningNumbers();
+        int bonus = winningNumberService.getBonus();
+        CalculateFactory calculateFactory = new CalculateFactory(lotteries, winningLottery, bonus);
         ResultView resultView = new ResultView(calculateFactory.getResult(), calculateFactory.getYield());
         resultView.makeView();
     }
