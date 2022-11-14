@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 import lotto.Lotto;
 import lotto.LottoAnalyzer;
-import lotto.price.Const;
 import lotto.message.ErrorMessage;
+import lotto.price.Const;
 import lotto.util.Util;
 
 public class LottoGameService {

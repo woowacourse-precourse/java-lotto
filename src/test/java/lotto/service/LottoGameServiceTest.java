@@ -2,7 +2,6 @@ package lotto.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.in;
 
 import java.util.List;
 import lotto.Lotto;
