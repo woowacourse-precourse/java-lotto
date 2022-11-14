@@ -17,14 +17,17 @@ public class LottoStore {
         List<Lotto> lottos = addLotto(lottoCount);
         LottoPrinter.lottosPrint(lottos);
 
-        Lotto winningNumber = getWinningNumbers(LottoPrinter.inputer("당첨 번호를 입력해 주세요."));
+        Lotto winningNumbers = getWinningNumbers(LottoPrinter.inputer("당첨 번호를 입력해 주세요."));
+        String bonusNumber = LottoPrinter.inputer("보너스 번호를 입력해 주세요.");
+
 
     }
 
     private static List<Lotto> addLotto(int lottoCount) {
         ArrayList<Lotto> lottos = new ArrayList<>();
         for (int i=0; i<lottoCount; i++) {
-            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottos.add(new Lotto(randomNumbers));
         }
         return lottos;
     }
