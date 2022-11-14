@@ -1,8 +1,8 @@
 package lotto.mvc.controller;
 
-import lotto.domain.LottoPurchaseAmount;
-import lotto.domain.LottoResult;
-import lotto.domain.LottoStore;
+import lotto.domain.player.LottoPurchaseAmount;
+import lotto.mvc.model.LottoResult;
+import lotto.mvc.model.LottoStore;
 import lotto.mvc.util.LottoGameStatus;
 import lotto.mvc.util.exception.NotFoundViewMessageException;
 import lotto.mvc.util.message.InputViewMessageUtils;

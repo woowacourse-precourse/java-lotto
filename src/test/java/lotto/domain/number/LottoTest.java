@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.number;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -12,7 +12,7 @@ import lotto.helper.util.LottoTestUtils;
 import lotto.util.message.LottoExceptionMessageUtils;
 import lotto.util.number.LottoNumberConst;
 import lotto.util.number.LottoNumberFactory;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;

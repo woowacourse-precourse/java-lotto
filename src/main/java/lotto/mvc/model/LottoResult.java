@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.mvc.model;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -6,9 +6,12 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.domain.number.Lotto;
+import lotto.domain.number.LottoNumber;
+import lotto.domain.player.Player;
 import lotto.util.message.CommonMessageConst;
-import lotto.util.message.LottoRankingMessageUtils;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.message.LottoRankingMessageUtils;
+import lotto.mvc.util.LottoRanking;
 
 public class LottoResult {
 

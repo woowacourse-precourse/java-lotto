@@ -1,7 +1,7 @@
 package lotto.util.number;
 
 import java.util.stream.IntStream;
-import lotto.domain.LottoNumber;
+import lotto.domain.number.LottoNumber;
 import lotto.util.message.LottoExceptionMessageUtils;
 
 public class LottoNumberFactory {

@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.number;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import lotto.util.message.LottoExceptionMessageUtils;
 import lotto.util.number.LottoNumberConst;
 import lotto.util.number.LottoNumberFactory;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 
 public class Lotto {
 

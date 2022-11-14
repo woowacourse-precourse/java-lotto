@@ -1,9 +1,9 @@
 package lotto.helper.util;
 
 import java.lang.reflect.Field;
-import lotto.domain.Lotto;
-import lotto.domain.LottoStore;
-import lotto.domain.Player;
+import lotto.domain.number.Lotto;
+import lotto.mvc.model.LottoStore;
+import lotto.domain.player.Player;
 import lotto.helper.exception.CannotReflectionException;
 
 public final class LottoStoreTestUtils {

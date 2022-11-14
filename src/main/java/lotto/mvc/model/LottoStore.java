@@ -1,6 +1,10 @@
-package lotto.domain;
+package lotto.mvc.model;
 
 import java.math.BigDecimal;
+import lotto.domain.number.Lotto;
+import lotto.domain.number.LottoNumber;
+import lotto.domain.player.LottoPurchaseAmount;
+import lotto.domain.player.Player;
 
 public class LottoStore {
 

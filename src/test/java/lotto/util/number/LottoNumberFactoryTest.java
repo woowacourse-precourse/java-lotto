@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.IntStream;
 import lotto.common.CommonExceptionTest;
-import lotto.domain.LottoNumber;
+import lotto.domain.number.LottoNumber;
 import lotto.helper.util.LottoNumberTestUtils;
 import lotto.util.message.LottoExceptionMessageUtils;
 import org.junit.jupiter.api.DisplayName;

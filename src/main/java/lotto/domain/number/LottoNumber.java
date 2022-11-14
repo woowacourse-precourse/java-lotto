@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.number;
 
 import java.util.Objects;
 import lotto.util.message.LottoExceptionMessageUtils;

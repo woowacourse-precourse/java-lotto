@@ -2,8 +2,8 @@ package lotto.helper.util;
 
 import java.lang.reflect.Field;
 import java.util.List;
-import lotto.domain.Lotto;
-import lotto.domain.LottoNumber;
+import lotto.domain.number.Lotto;
+import lotto.domain.number.LottoNumber;
 import lotto.helper.exception.CannotReflectionException;
 
 public final class LottoTestUtils {

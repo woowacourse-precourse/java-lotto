@@ -3,7 +3,7 @@ package lotto.domain.argument;
 import java.util.List;
 import java.util.stream.Stream;
 import lotto.helper.util.TestArgumentUtils;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 import org.junit.jupiter.params.provider.Arguments;
 
 public final class LottoStoreTestArgument {

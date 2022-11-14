@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.player;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

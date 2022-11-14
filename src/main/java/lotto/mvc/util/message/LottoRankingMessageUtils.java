@@ -1,7 +1,8 @@
-package lotto.util.message;
+package lotto.mvc.util.message;
 
 import java.util.Arrays;
-import lotto.util.ranking.LottoRanking;
+import lotto.util.message.LottoExceptionMessageUtils;
+import lotto.mvc.util.LottoRanking;
 
 public enum LottoRankingMessageUtils {
     RANKING_FIRST("6개 일치 %s - %s개", LottoRanking.RANKING_FIRST),

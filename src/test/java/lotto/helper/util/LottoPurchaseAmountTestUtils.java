@@ -2,7 +2,7 @@ package lotto.helper.util;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
-import lotto.domain.LottoPurchaseAmount;
+import lotto.domain.player.LottoPurchaseAmount;
 import lotto.helper.exception.CannotReflectionException;
 
 public final class LottoPurchaseAmountTestUtils {

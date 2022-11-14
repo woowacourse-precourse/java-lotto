@@ -1,9 +1,10 @@
-package lotto.util.ranking;
+package lotto.mvc.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import lotto.helper.util.LottoRankingTestUtils;
+import lotto.mvc.util.LottoRanking;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;

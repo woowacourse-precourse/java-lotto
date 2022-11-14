@@ -1,9 +1,9 @@
-package lotto.util.message;
+package lotto.mvc.util.message;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import lotto.common.CommonExceptionTest;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

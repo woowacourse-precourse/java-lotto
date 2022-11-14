@@ -2,7 +2,7 @@ package lotto.helper.util;
 
 import java.util.List;
 import java.util.Map;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 
 public final class TestArgumentUtils {
 

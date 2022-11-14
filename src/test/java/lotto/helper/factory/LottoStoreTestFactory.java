@@ -2,13 +2,13 @@ package lotto.helper.factory;
 
 import java.lang.reflect.Field;
 import java.util.List;
-import lotto.domain.LottoPurchaseAmount;
-import lotto.domain.LottoStore;
-import lotto.domain.Player;
+import lotto.domain.player.LottoPurchaseAmount;
+import lotto.mvc.model.LottoStore;
+import lotto.domain.player.Player;
 import lotto.helper.exception.CannotReflectionException;
 import lotto.helper.stub.StubWinningLotto;
 import lotto.helper.util.ReflectionFieldUtils;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 
 public final class LottoStoreTestFactory {
 

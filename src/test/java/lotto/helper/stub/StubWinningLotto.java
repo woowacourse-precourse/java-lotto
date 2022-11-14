@@ -1,9 +1,9 @@
 package lotto.helper.stub;
 
 import java.util.List;
-import lotto.domain.Lotto;
-import lotto.domain.LottoNumber;
-import lotto.util.ranking.LottoRanking;
+import lotto.domain.number.Lotto;
+import lotto.domain.number.LottoNumber;
+import lotto.mvc.util.LottoRanking;
 
 public class StubWinningLotto extends Lotto {
 

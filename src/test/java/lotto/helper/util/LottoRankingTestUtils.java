@@ -3,7 +3,7 @@ package lotto.helper.util;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import lotto.helper.exception.CannotReflectionException;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 
 public final class LottoRankingTestUtils {
 

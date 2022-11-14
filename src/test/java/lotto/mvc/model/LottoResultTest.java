@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.mvc.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,10 +6,14 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import lotto.domain.number.Lotto;
+import lotto.domain.number.LottoNumber;
+import lotto.domain.player.LottoPurchaseAmount;
+import lotto.domain.player.Player;
 import lotto.helper.stub.StubWinningLotto;
 import lotto.helper.util.LottoResultTestUtils;
 import lotto.util.number.LottoNumberFactory;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

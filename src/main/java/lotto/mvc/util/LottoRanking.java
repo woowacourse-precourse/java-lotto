@@ -1,4 +1,4 @@
-package lotto.util.ranking;
+package lotto.mvc.util;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

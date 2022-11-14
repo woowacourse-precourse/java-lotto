@@ -3,9 +3,9 @@ package lotto.helper.util;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Map;
-import lotto.domain.LottoResult;
+import lotto.mvc.model.LottoResult;
 import lotto.helper.exception.CannotReflectionException;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 
 public final class LottoResultTestUtils {
 

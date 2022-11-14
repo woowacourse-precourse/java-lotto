@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.player;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.math.BigDecimal;
@@ -6,9 +6,11 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.domain.number.Lotto;
+import lotto.domain.number.LottoNumber;
 import lotto.util.message.CommonMessageConst;
 import lotto.util.number.LottoNumberConst;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 
 public class Player {
 

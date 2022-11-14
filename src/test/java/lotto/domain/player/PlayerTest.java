@@ -1,13 +1,15 @@
-package lotto.domain;
+package lotto.domain.player;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.List;
+import lotto.domain.number.Lotto;
+import lotto.domain.number.LottoNumber;
 import lotto.helper.stub.StubWinningLotto;
 import lotto.helper.util.PlayerTestUtils;
 import lotto.util.number.LottoNumberFactory;
-import lotto.util.ranking.LottoRanking;
+import lotto.mvc.util.LottoRanking;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
