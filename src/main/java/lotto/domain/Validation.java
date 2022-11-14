@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.List;
+
 public class Validation {
     public static final String ERROR_MESSAGE = "[ERROR]";
     public static final int LOTTO_MONEY = 1000;
@@ -37,4 +39,9 @@ public class Validation {
         }
     }
 
+    public static void validateDuplication(List<Integer> winningNumber, int number) {
+        if(winningNumber.contains(number)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
 }
