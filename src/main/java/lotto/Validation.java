@@ -9,4 +9,11 @@ public class Validation {
         return false;
     }
 
+    public boolean isNumberInRange(int number) {
+        if (number >= 1 && number <= 45) {
+            return true;
+        }
+        return false;
+    }
+
 }
