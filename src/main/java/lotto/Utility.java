@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import jdk.jshell.execution.Util;
 
-import javax.xml.crypto.dsig.spec.HMACParameterSpec;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,7 +44,8 @@ public abstract class Utility {
         for(int i=0; i<howManyLotto; i++){
             curLotto = createLotto();
             purchaseLotto.add(curLotto);
-            printMessage(curLotto.toString());
+            List <Integer> _curLotto = curLotto.getNumbers();
+            printMessage(_curLotto.toString());
         }
         return purchaseLotto;
     }
