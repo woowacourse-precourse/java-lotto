@@ -4,6 +4,9 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+
+        final int bonusNumIdx = 6;
+
         // TODO: 프로그램 구현
 
         //구입금액 입력 받기
@@ -20,13 +23,15 @@ public class Application {
         //당첨 번호 입력 받기
         List<Integer> winningNums = InputNum.askWinningNumbers();
 
-        //보너스 번호 입력 받기
-        int bonusNum = InputNum.askBonusNum();
 
         for(Lotto lotto : lottos){
-            int cnt = lotto.countMatchNumbers(winningNums);
+            int cnt = lotto.countMatchedNumbers(winningNums);
+            boolean isBonusmatched = lotto.checkBonusMatched(winningNums.get(bonusNumIdx));
             System.out.println("cnt = " + cnt);
+            System.out.println("isBonusmatched = " + isBonusmatched);
         }
+        
+        
 
     }
 

@@ -25,11 +25,11 @@ public class Lotto {
     // TODO: 추가 기능 구현
 
     //당첨 개수 구하는 메소드
-    public int countMatchNumbers(List<Integer> winningNums) {
+    public int countMatchedNumbers(List<Integer> winningNums) {
         int matchNumCnt = 0;
 
         for(int num : winningNums){
-            if(isMatched(num,0,winningNums.size()-1)){
+            if(isMatched(num,0,5)){
                 matchNumCnt += 1;
             }
         }
@@ -38,7 +38,13 @@ public class Lotto {
         return matchNumCnt;
     }
 
-    //보너스 번호 일치 여부부
+    //보너스 번호 일치 여부
+    public boolean checkBonusMatched(int bonusNum) {
+        if (isMatched(bonusNum,0,5)){
+            return true;
+        }
+        return false;
+    }
 
    private boolean isMatched(int key, int low, int high){
         int mid;

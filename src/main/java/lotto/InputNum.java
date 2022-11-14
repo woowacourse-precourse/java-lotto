@@ -61,9 +61,10 @@ public class InputNum {
 
     private static void validateBonus(String inputNum) {
 
-        if(inputNum.length() != 1 || inputNum.matches("[a-zA-Z ㄱ-ㅎㅏ-ㅣ가-힣.,]")){
+        if (inputNum.matches("[a-zA-Z ㄱ-ㅎㅏ-ㅣ가-힣.,]")){
             throw new IllegalArgumentException("[ERROR] 1~45사이의 숫자 1개를 입력하여 주세요.");
         }
+
     }
 
     private static void validateRange(int Num){
