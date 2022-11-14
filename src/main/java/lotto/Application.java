@@ -29,7 +29,6 @@ public class Application {
             CompareLotto.printCompareLotto();
             CompareLotto.printRateOfReturn();
         }catch(IllegalArgumentException a){
-            System.out.println("[ERROR] ");
         }
     }
 

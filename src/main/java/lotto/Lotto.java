@@ -12,7 +12,6 @@ public class Lotto {
     private static final String INVALID_WINNING_NUMBER_LENGTH_ERROR = "당첨 번호는 6개의 숫자만 입력 가능합니다.";
     private static final String INVALID_LOTTO_NUMBERS = "당첨 번호는 정수만 입력 가능합니다.";
     private static final String WINNING_LOTTO = "당첨 번호를 입력해주세요.";
-    private static final String NEGATIVE_PRICE_ERROR = "음수인 금액은 입력할 수 없습니다.";
     private static final String PUT_BONUS_NUMBER = "보너스 번호를 입력해주세요";
     private static final int LOTTO_LENGTH = 6;
     public static int bonusNum;
