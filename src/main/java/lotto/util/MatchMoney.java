@@ -31,5 +31,8 @@ public enum MatchMoney {
         return bonus;
     }
 
-
+    public static MatchMoney of(int match, boolean bonus){
+        return Arrays.stream(MatchMoney.values()).filter(x -> x.matchNumber == match)
+                .filter(x -> x.bonus == bonus).findFirst().orElse(null);
+    }
 }
