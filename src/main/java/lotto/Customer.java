@@ -2,30 +2,31 @@ package lotto;
 
 public class Customer {
     private int money;
-    Customer(){
-        String input = camp.nextstep.edu.missionutils.Console.readLine();
-        try{
+    Customer(String input)throws IllegalArgumentException{
             int cash = validate(input);
             setMoney(cash);
-        }catch (IllegalArgumentException e){
-            System.out.println("[ERROR]\n" + e.getMessage());
-            System.exit(0);
-        }
     }
+
     private int validate(String input)throws IllegalArgumentException{
         int cash=0;
-
         if(isBitcoin(input))throw new IllegalArgumentException();
-        cash=Integer.getInteger(input);
+        try{
+            cash=Integer.parseInt(input);
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
         if(isntMod(cash))throw new IllegalArgumentException();
         if(isPoor(cash))throw new IllegalArgumentException();
         if(isElonMusk(cash))throw new IllegalArgumentException();
         return cash;
     }
 
-    private void setMoney(int input){
-        this.money=input;
+    private void setMoney(int cash){
+        this.money=cash;
         return;
+    }
+    public int getMoney(){
+        return this.money;
     }
 
     private boolean isBitcoin(String input){
@@ -37,7 +38,7 @@ public class Customer {
         return true;
     }
     private boolean isPoor(int cash){
-        if(cash < Money.MIN)return true;
+        if(cash <= Money.MIN)return true;
         return false;
     }
     private boolean isElonMusk(int cash){

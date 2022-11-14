@@ -1,3 +1,8 @@
+#  User Interface (UI)
+
+    inputMoney : 금액을 입력 받음
+
+
 #  금액 제한 설정(Money)
     MAX : 최대 금액 
     MIN : 최소 금액
@@ -24,6 +29,16 @@
 
 # **로또 판매점 (Store)**
 
-    고객의 정보를 가져옴(setCustomer)
-    금액만큼 로또 발급(buy)
+    
+**setCustomer**
+
+
+**buy**
+
+    makeLotto : 
+    saveLotto :
+
+buy
+
+
     
