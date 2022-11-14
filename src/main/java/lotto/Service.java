@@ -62,6 +62,14 @@ public class Service {
 		}
 	}
 
+	public void setPrize() {
+		prize.put(FIRST_PLACE.getWinnerPrize(), 0);
+		prize.put(SECOND_PLACE.getWinnerPrize(), 0);
+		prize.put(THIRD_PLACE.getWinnerPrize(), 0);
+		prize.put(FOURTH_PLACE.getWinnerPrize(), 0);
+		prize.put(FIFTH_PLACE.getWinnerPrize(), 0);
+	}
+
 	public void checkNumberSame(int number, List<Integer> onePurchaseLotto) {
 		if (onePurchaseLotto.contains(number)) {
 			numberCount.guessCount();
@@ -99,5 +107,4 @@ public class Service {
 	public double yield() {
 		return Math.round((double)totalPrize() / money * 1000) / 10.0;
 	}
-
 }
