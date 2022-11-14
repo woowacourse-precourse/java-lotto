@@ -1,8 +1,7 @@
-package lotto;
+package model;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -35,5 +34,9 @@ public class Lotto {
         HashSet<Integer> lottoNumbers = new HashSet<>(numbers);
 
         return lottoNumbers;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

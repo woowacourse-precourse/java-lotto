@@ -1,7 +1,5 @@
 package model;
 
-import lotto.Lotto;
-
 public class Game {
     private int purchaseNumber;
     private int bonusNumber;
