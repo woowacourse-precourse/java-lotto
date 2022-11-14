@@ -45,6 +45,7 @@ public class LottoController {
 
     private void draw() {
         Printer.print(LottoMessage.INPUT_NUMBERS.getMessage());
+        winningLotto = host.drawNumbers();
     }
 
 }
