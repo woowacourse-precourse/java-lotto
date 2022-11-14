@@ -27,13 +27,9 @@ public class LottoConsole {
         return Integer.parseInt(input);
     }
 
-    private List<Number> convertInputToNumbers(String input) {
-        String[] inputs = input.split(",");
-        List<Number> numbers = new ArrayList<>();
-        for (String number : inputs) {
-            this.validate(number);
-            numbers.add(new LottoNumber(convertInputToNumber(number)));
-        }
+    private List<Integer> convertInputToIntegers(String input) {
+        List<Integer> numbers = Arrays.asList(input.split(",")).stream().map(String::trim).map(Integer::parseInt)
+                .collect(Collectors.toList());
         return numbers;
     }
 
@@ -46,7 +42,7 @@ public class LottoConsole {
 
     public Lotto getWinningLottoNumbers() {
         String input = this.input.getWinningLottoNumbers();
-        List<Number> numbers = this.convertInputToNumbers(input);
+        List<Integer> numbers = this.convertInputToIntegers(input);
         return new Lotto(numbers);
     }
 
