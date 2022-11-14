@@ -47,7 +47,7 @@ public class LottoManager {
     }
 
     private void assignLottoAndAmount(String buyAmount) {
-        lottoGenerator.amountIsNumber(buyAmount);
+        judge.amountIsValid(buyAmount);
         userLottos = lottoGenerator.createLottoNumbers(buyAmount);
         amount = Integer.parseInt(buyAmount);
     }
@@ -62,9 +62,8 @@ public class LottoManager {
     private void inputBonusNumber() {
         System.out.println(Notice.INPUT_BONUS_NUMBER.getNotice());
         String bNumber = Console.readLine();
-        if(judge.isNumber(bNumber)) {
-            bonusNumber = Integer.parseInt(bNumber);
-        }
+        judge.isNumber(bNumber);
+        bonusNumber = Integer.parseInt(bNumber);
     }
 
     private void checkContain() {
