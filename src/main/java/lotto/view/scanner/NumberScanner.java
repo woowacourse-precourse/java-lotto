@@ -9,10 +9,10 @@ import static java.lang.Integer.parseInt;
 public class NumberScanner {
     private static final String DELIMITER = ",";
 
-    public String inputPayment() {
+    public int inputPayment() {
         String won = readLine();
         validateParseInt(won);
-        return won;
+        return parseInt(won);
     }
 
     public List<Integer> inputWinningLottoNumbers() {
