@@ -8,6 +8,7 @@ import java.util.List;
 public class Winning {
 
     private final List<Integer> winningNumbers;
+    private int bonusNumber;
 
     public Winning(List<String> winningNumbers) {
         List<Integer> parsingWinningNumbers = new ArrayList<>();
@@ -31,5 +32,12 @@ public class Winning {
         if (IllegalArgument.isRedundancy(winningNumbers)) {
             throw new IllegalArgumentException("[ERROR] 1부터 45까지의 중복되지 않는 숫자만 입력 가능합니다.");
         }
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        if (IllegalArgument.isRedundancyWithNumbers(bonusNumber, winningNumbers)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호와 중복되지 않는 숫자만 입력 가능합니다.");
+        }
+        this.bonusNumber = bonusNumber;
     }
 }

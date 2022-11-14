@@ -37,4 +37,13 @@ public class IllegalArgument {
         }
         return false;
     }
+
+    public static boolean isRedundancyWithNumbers(int bonusNumber, List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number == bonusNumber) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
