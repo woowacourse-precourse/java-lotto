@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -44,6 +45,4 @@ public class LottoStore {
     private void announceNumberOfIssuedLotto(Integer numOfLotto) {
         System.out.printf("%d개를 구매했습니다.\n", numOfLotto);
     }
-
-
 }
