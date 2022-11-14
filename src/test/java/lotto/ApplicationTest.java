@@ -54,6 +54,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 범위_밖의_값_입력() {
+        assertSimpleTest(() -> {
+            runException("1000","1,2,3,4,5,46");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
