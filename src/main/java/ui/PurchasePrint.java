@@ -1,5 +1,7 @@
 package ui;
 import lotto.Lotto;
+
+import java.util.Arrays;
 import java.util.List;
 
 public class PurchasePrint {
@@ -10,12 +12,10 @@ public class PurchasePrint {
         System.out.println(count +"개를 구매했습니다.");
     }
     public static void printLottoNumber(List<Lotto> numbers){
-        StringBuilder sb = new StringBuilder();
-        for(int i=0; i<numbers.size(); i++) {
-            sb.append(numbers.get(i).toString());
-            if(i!=numbers.size()-1)
-                sb.append("\n");
+        for(Lotto lotto :numbers){
+            Object[] arr = lotto.getNumbers().toArray();
+            Arrays.sort(arr);
+            System.out.println(Arrays.toString(arr));
         }
-        System.out.println(sb);
     }
 }
