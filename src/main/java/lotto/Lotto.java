@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -14,7 +15,21 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        int[] nums = new int[46];
+        for(int num : numbers) {
+            nums[num]++;
+            if (nums[num] > 1) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
-    // TODO: 추가 기능 구현
+    public boolean contains(int num) {
+        return this.numbers.contains(num);
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
