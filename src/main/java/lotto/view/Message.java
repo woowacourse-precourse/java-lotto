@@ -32,13 +32,16 @@ public class Message {
     public static void printWinningResult(User user) {
         System.out.println("당첨 통계" + "\n" + "---");
         for (Rank o : Rank.values()) {
+            if (o == Rank.NONE) {
+                continue;
+            }
             System.out.println(
-                    o.getCnt() + "개 일치"+ isBonus(o.isBonus())+" (" +
-                            o.getReward() + "원) - " +
-                            user.getResult().get(o) + "개"
+                    o.getCnt() + "개 일치" + isBonus(o.isBonus()) + " (" +
+                            formattingReward(o.getReward()) + "원) - " +
+                            user.getResult().getOrDefault(o, 0) + "개"
             );
         }
-        System.out.println("총 수익률은 "+user.calcProfit()+"%입니다.");
+        System.out.println("총 수익률은 " + user.calcProfit() + "%입니다.");
     }
 
     private static String formattingReward(int reward) {
@@ -46,6 +49,9 @@ public class Message {
     }
 
     private static String isBonus(boolean bonus) {
-        return ", 보너스 볼 일치";
+        if (bonus == true) {
+            return ", 보너스 볼 일치";
+        }
+        return "";
     }
 }
