@@ -80,7 +80,7 @@ class InputLottoValidatorTest {
     @Test
     void isDigitBonusNumber() {
         String nonDigitNumber = "a";
-        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+        String winningNumbers = "1,2,3,4,5,6";
 
         assertThatThrownBy(() -> new InputLottoValidator().validateBonusNumber(nonDigitNumber, winningNumbers))
             .isInstanceOf(IllegalArgumentException.class);
@@ -91,7 +91,7 @@ class InputLottoValidatorTest {
     void checkCountBonusNumber() {
         String insufficientNumber = "";
         String excessiveNumber = "1,3";
-        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+        String winningNumbers = "1,2,3,4,5,6";
 
         assertThatThrownBy(() -> new InputLottoValidator().validateBonusNumber(insufficientNumber, winningNumbers))
             .isInstanceOf(IllegalArgumentException.class);
@@ -104,7 +104,7 @@ class InputLottoValidatorTest {
     void checkRangeBonusNumber() {
         String underRangeNumber = "-1";
         String overRangeNumber = "46";
-        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+        String winningNumbers = "1,2,3,4,5,6";
 
         assertThatThrownBy(() -> new InputLottoValidator().validateBonusNumber(underRangeNumber, winningNumbers))
             .isInstanceOf(IllegalArgumentException.class);
@@ -116,7 +116,7 @@ class InputLottoValidatorTest {
     @Test
     void duplicateBonusNumber() {
         String duplicationNumber = "5";
-        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+        String winningNumbers = "1,2,3,4,5,6";
 
         assertThatThrownBy(() -> new InputLottoValidator().validateBonusNumber(duplicationNumber, winningNumbers))
             .isInstanceOf(IllegalArgumentException.class);

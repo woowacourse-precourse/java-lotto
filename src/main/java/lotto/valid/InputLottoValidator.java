@@ -71,7 +71,7 @@ public class InputLottoValidator {
         }
     }
 
-    public void validateBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
+    public void validateBonusNumber(String bonusNumber, String winningNumbers) {
         isDigit(bonusNumber);
         checkCountBonusNumber(bonusNumber);
         duplicateBonusNumber(bonusNumber, winningNumbers);
@@ -84,8 +84,8 @@ public class InputLottoValidator {
         }
     }
 
-    private void duplicateBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
-        if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
+    private void duplicateBonusNumber(String bonusNumber, String winningNumbers) {
+        if (Arrays.stream(winningNumbers.split(",")).anyMatch(v -> v.equals(bonusNumber))) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호와 다른 번호를 입력하여야 합니다.");
         }
     }
