@@ -89,9 +89,16 @@ public class LottoMachine {
         for(String token : tokenized) {
             try {
                 int winningNumber = Integer.parseInt(token);
+                validateNumberValue(winningNumber);
             } catch(NumberFormatException e) {
                 throw new IllegalArgumentException("[ERROR] 숫자 또는 ',' 이외의 문자가 포함되었습니다.");
             }
+        }
+    }
+
+    public void validateNumberValue(int winningNumber) {
+        if (winningNumber < 1 || winningNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 숫자의 범위는 1 ~ 45 입니다.");
         }
     }
 

@@ -20,9 +20,12 @@ public class Lotto {
 
         Set<Integer> numberConsisted = new HashSet<>();
         for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException("[ERROR] 숫자의 범위는 1 ~ 45 입니다.");
+            }
             numberConsisted.add(number);
         }
-        if(numberConsisted.size() != 6) {
+        if (numberConsisted.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재합니다.");
         }
     }

@@ -5,5 +5,7 @@ public class Application {
         LottoMachine lottoMachine = new LottoMachine();
         LottoContainer lottoContainer = lottoMachine.buy();
         lottoContainer.printLottos();
+
+        lottoMachine.setWinningNumbers();
     }
 }
