@@ -1,15 +1,16 @@
 package lotto.domain;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
 
     private List<Lotto> lottos = new ArrayList<>();
     private double money;
     private double winningAmount;
-    private int rank;
+    private Map<Number, Integer> rank = new HashMap<>();
     private double yield;
 
     public User() {
@@ -43,11 +44,11 @@ public class User {
         this.winningAmount = winningAmount;
     }
 
-    public int getRank() {
+    public Map<Number, Integer> getRank() {
         return rank;
     }
 
-    public void setRank(int rank) {
+    public void setRank(Map<Number, Integer> rank) {
         this.rank = rank;
     }
 
