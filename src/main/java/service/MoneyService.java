@@ -1,10 +1,19 @@
 package service;
 
+import repository.MoneyRepository;
+
 import java.util.regex.Pattern;
 
 public class MoneyService {
+    private final MoneyRepository moneyRepository;
+
+    public MoneyService() {
+        this.moneyRepository = new MoneyRepository();
+    }
+
     public void savePurchaseAmount(String amount) {
         validatePurchaseAmount(amount);
+        moneyRepository.save(Integer.parseInt(amount));
     }
 
     private void validatePurchaseAmount(String amount) {
