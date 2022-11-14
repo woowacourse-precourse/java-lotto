@@ -5,6 +5,7 @@ import lotto.utils.Generator;
 import lotto.vo.Lotto;
 import lotto.vo.LottoOfAnswer;
 import lotto.vo.LottoOfUser;
+import lotto.vo.PrizeOfUser;
 
 public class BusinessProgram {
 
@@ -24,7 +25,6 @@ public class BusinessProgram {
 
     public void printUserLottoResults(LottoOfUser userLotto, LottoOfAnswer answerLotto) {
         System.out.println("당첨통계\t---");
-        userLotto.matchWithAnswer(answerLotto);
-
+        PrizeOfUser userPrize = userLotto.matchWithAnswer(answerLotto);
     }
 }
