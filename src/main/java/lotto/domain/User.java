@@ -45,6 +45,7 @@ public class User {
         }
 
         addEarnings();
+        System.out.println(getStatisitcs());
     }
 
     private int inputPrice() {
@@ -82,5 +83,15 @@ public class User {
 
     private int getEarnings() {
         return earnings;
+    }
+
+    private String getStatisitcs() {
+        return "\n당첨 통계" +
+                "\n---" +
+                "\n3개 일치 (5,000원) - " + statistics[4] + "개" +
+                "\n4개 일치 (50,000원) - " + statistics[3] + "개" +
+                "\n5개 일치 (1,500,000원) - " + statistics[2] + "개" +
+                "\n5개 일치, 보너스 볼 일치 (30,000,000원) - " + statistics[1] + "개" +
+                "\n6개 일치 (2,000,000,000원) - " + statistics[0] + "개";
     }
 }
