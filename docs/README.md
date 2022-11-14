@@ -64,7 +64,7 @@
 - `util/Output` 클래스 : 출력 담당
   - `printInputMessage()`, `printBuyMessage()`, `printLotto()`, `printInputWinnings()`, `printInputBonus()`, `printStatistics()`, `printYield()`
 - `util/Calculator` 클래스 : 당첨 결과, 수익률 계산 수행
-  - `Map<Result, Integer> resultCount`
+  - `Map<Result, Integer> resultCount`, `int earn`
   - `calculateResult()`, `initializeMap()`, `calculateYield()`
 
 - `domain/Lotto` 클래스 : 사용자의 로또 1개를 저장, 관련 로직 수행
