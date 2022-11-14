@@ -84,4 +84,14 @@ class PrinterTest {
 				"6개 일치 (2,000,000,000원) - 0개\n";
 		assertThat(outputStream.toString()).isEqualTo(expected);
 	}
+
+	@DisplayName("수익률 출력하는 테스트")
+	@Test
+	void checkEarningRatePrintingTest() {
+		final double earningRate = 34.1;
+		Printer.showEarningRate(earningRate);
+
+		final String expected = "총 수익률은 34.1%입니다.\n";
+		assertThat(outputStream.toString()).isEqualTo(expected);
+	}
 }
