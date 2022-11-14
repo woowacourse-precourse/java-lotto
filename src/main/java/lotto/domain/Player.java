@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Player {
 
-    private static List<List<Integer>> allPlayerNumbers = new ArrayList<>();
+    private List<List<Integer>> allPlayerNumbers = new ArrayList<>();
 
     public Player(int ticketNumber) {
         createAllPlayerNumbers(ticketNumber);
@@ -21,7 +21,7 @@ public class Player {
         return allPlayerNumbers;
     }
 
-    private static void createAllPlayerNumbers(int ticketNumber) {
+    private void createAllPlayerNumbers(int ticketNumber) {
         do {
             allPlayerNumbers.add(createPlayerNumbers());
         } while (allPlayerNumbers.size() < ticketNumber);

@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Ranking {
-    private static List<Integer> matches = new ArrayList<>();
-    private static List<Boolean> bonusMatches = new ArrayList<>();
-    private static List<Rank> rankings = new ArrayList<>();
+    private List<Integer> matches = new ArrayList<>();
+    private List<Boolean> bonusMatches = new ArrayList<>();
+    private List<Rank> rankings = new ArrayList<>();
 
     public Ranking(List<Integer> matches, List<Boolean> bonusMatches) {
         this.matches = matches;
@@ -15,14 +15,14 @@ public class Ranking {
         setRankings(matches, bonusMatches);
     }
 
-    private static void setRankings(List<Integer> matches, List<Boolean> bonusMatches) {
+    private void setRankings(List<Integer> matches, List<Boolean> bonusMatches) {
         for (int i = 0; i < matches.size(); i++) {
             rankings.add(findRanking(matches.get(i), bonusMatches.get(i)));
         }
     }
 
     private static Rank findRanking(int match, boolean hasBonus) {
-        if (match == 5) {
+        if (match == Rank.SECOND.getMatch()) {
             if (hasBonus) {
                 return Rank.SECOND;
             }
