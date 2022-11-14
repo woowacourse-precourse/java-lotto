@@ -7,7 +7,9 @@ import java.util.Optional;
 
 public class LottoStats {
     private Map<StatsType,Integer> lottoStats = new LinkedHashMap<>();
-
+    private final Double POINT_CONST = 100.0;
+    private final Integer PERCENT = 100;
+    Double earning = 0d;
     public LottoStats() {
         StatsType[] types = StatsType.values();
         lottoStats.put(StatsType.five,0);
@@ -17,7 +19,15 @@ public class LottoStats {
         lottoStats.put(StatsType.first,0);
 
     }
-
+    private void calculationEarning(Integer cost){
+        earning = 0d;
+        for(var type  : lottoStats.keySet()){
+            earning += type.getMoney() * lottoStats.get(type);
+        }
+        earning /= cost;
+        earning *= PERCENT;
+        earning = Math.round(earning * POINT_CONST) / POINT_CONST;
+    }
     public void calculationStats(Purchase purchaseLotto , Lotto winningNumber , Integer bonus){
 
         for(int i = 0;i<purchaseLotto.getMyLotto().size();i++){
@@ -28,6 +38,7 @@ public class LottoStats {
                 lottoStats.put(statType, lottoStats.get(statType) + 1);
             }
         }
+        calculationEarning(purchaseLotto.getCost());
     }
 
     private Optional<StatsType> compareLotto(Lotto lotto,Lotto winningNumber,Integer bonus){
