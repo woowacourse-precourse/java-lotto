@@ -18,6 +18,7 @@ public class InputOutputController {
     private int lottoSize = 0;
     private List<Lotto> lottos;
     private Lotto winningNumbers;
+    private int bonusNumber;
 
     public void inputMoney(){
         Money money = inputView.printLotoBuyMoney();
@@ -32,5 +33,9 @@ public class InputOutputController {
 
     public void inputWinningNumbers(){
         winningNumbers = inputView.printWinningNumbers();
+    }
+
+    public void inputBonusNumber(){
+        bonusNumber = inputView.printbonusNumber();
     }
 }
