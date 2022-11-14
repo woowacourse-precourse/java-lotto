@@ -140,6 +140,16 @@ public class Model {
         return 0;
     }
 
+    // 1~45 사이의 랜덤 숫자들로 로또 번호 6개를 만드는 메서드
+    private List<Integer> getLottoNumber() {
+        List<Integer> lottoNumbers = new ArrayList<>
+                (Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE));
+        Collections.sort(lottoNumbers);
+
+        return lottoNumbers;
+    }
+
+    // 로또 번호 만드는 메서드를 입력한 돈의 크기 만큼 반복하는 메서드
     public void repeatGettingLottoNumber(int moneyNumber) {
         List<List<Integer>> usersLottos = new ArrayList<>();
 
@@ -150,14 +160,7 @@ public class Model {
         USERS_LOTTOS = usersLottos;
     }
 
-    private List<Integer> getLottoNumber() {
-        List<Integer> lottoNumbers = new ArrayList<>
-                (Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE));
-        Collections.sort(lottoNumbers);
-
-        return lottoNumbers;
-    }
-
+    // 순위 별 당첨금액이 저장된 enum클래스
     private enum Prize {
         FIRST(2_000_000),
         SECOND(30_000),
