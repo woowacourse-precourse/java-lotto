@@ -4,6 +4,7 @@ import static lotto.io.Message.ONLY_NUMBER;
 
 import java.util.List;
 import lotto.config.Config;
+import lotto.domain.IssuedLotto;
 import lotto.domain.Lotto;
 import lotto.domain.PurchaseAmount;
 import lotto.io.Reader;
@@ -31,8 +32,9 @@ public class LottoGame {
     }
 
     public void start() {
+        Writer.inputPurchaseAmount();
         PurchaseAmount purchaseAmount = new PurchaseAmount(Reader.readUserPurchaseAmount());
-        List<Lotto> issuedLotto = lottoIssueService.issueLotto(purchaseAmount);
+        IssuedLotto issuedLotto = lottoIssueService.issueLotto(purchaseAmount);
 
 
     }
