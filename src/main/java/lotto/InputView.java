@@ -7,6 +7,8 @@ import java.util.List;
 
 public class InputView {
 
+    private static final String DELIMITER = ",";
+
     private InputView(){}
 
     static public Calculator inputMoney() {
@@ -22,7 +24,6 @@ public class InputView {
         try {
             money = Long.parseLong(input);
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR]");
             throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
         }
         if (money % 1000 != 0 || money == 0) {
@@ -38,7 +39,7 @@ public class InputView {
     }
 
     static private List validateLotto(String winningNumber) {
-        String[] splitInput = winningNumber.split(",");
+        String[] splitInput = winningNumber.split(DELIMITER);
         List<Integer> numbers = new ArrayList<>();
         validateLottoType(splitInput, numbers);
 
