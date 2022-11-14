@@ -93,7 +93,8 @@ public class LottoRaffle {
         }
         setBoxRandom(boxNumbers);
     }
-    public void countWinLotto(List<Integer> lottoNumber, List<List<Integer>> boxRandomNumber, int count, int bonusNumber) {
+    public void countWinLotto(List<Integer> lottoNumber, List<List<Integer>> boxRandomNumber,
+                              int count, int bonusNumber) {
         List<Integer> countWinLotto = new ArrayList<>();
         DataProcessing dataProcessing = new DataProcessing();
         for (int i=0;i<count;++i)
