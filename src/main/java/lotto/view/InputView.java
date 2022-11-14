@@ -49,32 +49,40 @@ public class InputView {
 
 
     private static int inputNum() {
+        String number = Console.readLine();
+        System.out.println();
+        return Integer.parseInt(number);
+
+    }
+
+    public static int inputMoney() {
         try {
-            String number = Console.readLine();
-            System.out.println();
-            return Integer.parseInt(number);
+            System.out.println(Message.PURCHASE_AMOUNT.getValue());
+            int money = inputNum();
+            return money;
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException(ERROR_MESSAGE + IS_MONEY_ERROR_MESSAGE);
         }
     }
 
-    public static int inputMoney() {
-        System.out.println(Message.PURCHASE_AMOUNT.getValue());
-        int money = inputNum();
-        return money;
-    }
-
     public static int inputBonusNumber() {
-        System.out.println(Message.BONUS_NUMBER.getValue());
-        return inputNum();
+        try {
+            System.out.println(Message.BONUS_NUMBER.getValue());
+            Integer number = inputNum();
+            validateCheckNumberLimit(number);
+            return number;
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + IS_ONLY_NUMBER_ERROR_MESSAGE);
+        }
     }
 
 
     private static List<Integer> splitNumbers(final String numbersText) {
-        try{
-        return Arrays.stream(numbersText.split(Validation.REGEX.getValue())).map(Integer::parseInt)
-                .collect(Collectors.toList());
-        } catch(NumberFormatException numberFormatException){
+        try {
+            return Arrays.stream(numbersText.split(Validation.REGEX.getValue()))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException(ERROR_MESSAGE + LOTTO_ONLY_NUMBER_ERROR_MESSAGE);
         }
     }
@@ -115,12 +123,16 @@ public class InputView {
         }
     }
 
+    private static void validateCheckNumberLimit(Integer num){
+        if (num < 1 || num > 45) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + LIMIT_NUMBER_ERROR_MESSAGE);
+        }
+    }
+
 
     private static void validateCheckLimit(List<Integer> numbers) {
         for (Integer num : numbers) {
-            if (num < 1 || num > 45) {
-                throw new IllegalArgumentException(ERROR_MESSAGE + LIMIT_NUMBER_ERROR_MESSAGE);
-            }
+            validateCheckNumberLimit(num);
         }
     }
 }
