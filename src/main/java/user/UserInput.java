@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import static message.ErrorMessage.*;
 
-public class Input {
+public class UserInput {
     public List<Integer> userLotto(String str) {
         if (!(str.contains(","))) throw new IllegalArgumentException(USER_INPUT_ERROR.getStatus());
 
@@ -15,5 +15,11 @@ public class Input {
 
         if (userInput.size() != 6) throw new IllegalArgumentException(INPUT_COUNT_ERROR.getStatus());
         return userInput;
+    }
+
+
+    public int getBonusNumber(int bonusNum) {
+        if (bonusNum > 45 || bonusNum < 1) throw new IllegalArgumentException(ABOVE_ELEMENT.getStatus());
+        return bonusNum;
     }
 }

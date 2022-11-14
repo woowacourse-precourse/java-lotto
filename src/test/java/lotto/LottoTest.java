@@ -1,11 +1,11 @@
 package lotto;
 
-import game.CalculateGrade;
+import game.Calculate;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import user.BuyLotto;
-import user.Input;
+import user.UserInput;
 
 import java.util.List;
 
@@ -43,14 +43,14 @@ class LottoTest {
     }
 }
 
-class InputTest {
+class UserInputTest {
     @DisplayName("유저가 입력한 값 Sting -> Integer 형변환 테스트")
     @Test
     void cast() {
-        Input input = new Input();
+        UserInput userInput = new UserInput();
         String str = "1,2,3,4,5,6";
 
-        Assertions.assertThat(input.userLotto(str)).isEqualTo(List.of(1,2,3,4,5,6));
+        Assertions.assertThat(userInput.userLotto(str)).isEqualTo(List.of(1,2,3,4,5,6));
     }
 
 
@@ -96,58 +96,54 @@ class InputTest {
 }
 
 class Prize {
+    Calculate calculateGrade = new Calculate();
     @DisplayName("1등 등수를 출력한다.")
     @Test
     void grade1() {
-        CalculateGrade calculateGrade = new CalculateGrade();
         List<Integer> lotto = List.of(1,2,3,4,5,6);
         List<Integer> input = List.of(1,2,3,4,5,6);
         int bonus = 7;
 
-        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(1);
+        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(2_000_000_000);
     }
 
     @DisplayName("2등 등수를 출력한다.")
     @Test
     void grade2() {
-        CalculateGrade calculateGrade = new CalculateGrade();
         List<Integer> lotto = List.of(1,2,3,4,5,6);
         List<Integer> input = List.of(1,2,3,4,5,7);
         int bonus = 6;
 
-        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(2);
+        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(30_000_000);
     }
 
     @DisplayName("3등 등수를 출력한다.")
     @Test
     void grade3() {
-        CalculateGrade calculateGrade = new CalculateGrade();
         List<Integer> lotto = List.of(1,2,3,4,5,6);
         List<Integer> input = List.of(1,2,3,4,5,8);
         int bonus = 7;
 
-        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(3);
+        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(1_500_000);
     }
 
     @DisplayName("4등 등수를 출력한다.")
     @Test
     void grade4() {
-        CalculateGrade calculateGrade = new CalculateGrade();
         List<Integer> lotto = List.of(1,2,3,4,5,6);
         List<Integer> input = List.of(1,2,3,4,7,8);
         int bonus = 7;
 
-        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(4);
+        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(50_000);
     }
 
     @DisplayName("5등 등수를 출력한다.")
     @Test
     void grade5() {
-        CalculateGrade calculateGrade = new CalculateGrade();
         List<Integer> lotto = List.of(1,2,3,4,5,6);
         List<Integer> input = List.of(1,2,3,10,11,12);
         int bonus = 7;
 
-        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(5);
+        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(5_000);
     }
 }
