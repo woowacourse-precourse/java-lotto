@@ -1,5 +1,6 @@
 package lotto.view.scanner;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,7 +18,12 @@ public class NumberScanner {
 
     public List<Integer> inputWinningLottoNumbers() {
         String[] winningLottoNumberSplitBy = splitByDelimiter(readLine());
-        return Collections.emptyList();
+        List<Integer> winningLottoNumbers = new ArrayList<>();
+        for (String winningLottoNumber : winningLottoNumberSplitBy) {
+            validateParseInt(winningLottoNumber);
+            winningLottoNumbers.add(parseInt(winningLottoNumber));
+        }
+        return winningLottoNumbers;
     }
 
     private String[] splitByDelimiter(String winningLottoNumbers) {

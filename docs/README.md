@@ -3,7 +3,7 @@
 ### UI
 - [X] 로또 구매 금액을 입력 받는다. - NumberScanner#inputPayment()
   - [X] 정수로 변환할 수 없는 경우 예외처리 - NumberScanner#validateParseInt(String input)
-- [ ] 당첨 번호를 입력 받는다.  - NumberScanner#inputwinningLottoNumbers()
+- [X] 당첨 번호 입력 받기  - NumberScanner#inputwinningLottoNumbers()
   - [X] 쉼표(,)를 기준으로 당첨 번호 입력 값 나누기 - NumberScanner#splitByDelimiter()
   - [X] 각 문자열이 정수로 변환할 수 없는 경우 예외처리 - NumberScanner#validateParseInt(String input)
 - [ ] 보너스 번호를 입력 받는다. - NumberScanner#inputBonusNumber()
