@@ -21,12 +21,33 @@ public class LottoGame {
         this.output = output;
     }
 
+    public void play() {
+        try {
+            int money = inputMoney();
+            List<Lotto> lottos = buyLottos(money);
+            printLottos(lottos);
+
+            WinningNumbers winningNumbers = inputWinningNumbers();
+            MatchResults results = winningNumbers.matchAll(lottos);
+
+            printStatistics(results);
+            printYield(results, money);
+        } catch (IllegalArgumentException exception) {
+            output.writeErrorMessage(exception.getMessage());
+        }
+    }
+
     private int inputMoney() {
         output.writeEnterMoney();
         int money = input.readInt();
         output.writeEmptyLine();
 
         return money;
+    }
+
+    private List<Lotto> buyLottos(int money) {
+        LottoSeller seller = new LottoSeller();
+        return seller.buyLottos(money);
     }
 
     private void printLottos(List<Lotto> lottos) {
@@ -37,9 +58,16 @@ public class LottoGame {
         output.writeEmptyLine();
     }
 
+    private WinningNumbers inputWinningNumbers() {
+        List<Integer> standardNumbers = inputWinningStandardNumbers();
+        int bonusNumber = inputWinningBonusNumber();
+
+        return new WinningNumbers(standardNumbers, bonusNumber);
+    }
+
     private List<Integer> inputWinningStandardNumbers() {
         output.writeEnterWinningStandardNumbers();
-        List<Integer> numbers = input.readIntList();
+        List<Integer> numbers = input.readStandardWinningNumbers();
         output.writeEmptyLine();
 
         return numbers;
@@ -53,11 +81,17 @@ public class LottoGame {
         return bonusNumber;
     }
 
-    private WinningNumbers inputWinningNumbers() {
-        List<Integer> standardNumbers = inputWinningStandardNumbers();
-        int bonusNumber = inputWinningBonusNumber();
+    private void printStatistics(MatchResults results) {
+        output.writePrefixMatchStatistics();
+        for (Reward reward : Reward.values()) {
+            if (!reward.isRequireBonus()) {
+                printStatisticsWithNonBonus(results, reward);
+            }
 
-        return new WinningNumbers(standardNumbers, bonusNumber);
+            if (reward.isRequireBonus()) {
+                printStatisticsWithBonus(results, reward);
+            }
+        }
     }
 
     private void printStatisticsWithBonus(MatchResults results, Reward reward) {
@@ -74,42 +108,7 @@ public class LottoGame {
                 results.getCount(reward));
     }
 
-    private void printStatistics(MatchResults results) {
-        output.writePrefixMatchStatistics();
-        for (Reward reward : Reward.values()) {
-            if (!reward.isRequireBonus()) {
-                printStatisticsWithNonBonus(results, reward);
-            }
-
-            if (reward.isRequireBonus()) {
-                printStatisticsWithBonus(results, reward);
-            }
-        }
-    }
-
     private void printYield(MatchResults results, int money) {
         output.writeYield(getYield(results, money));
-    }
-
-    private List<Lotto> buyLottos(int money) {
-        LottoSeller seller = new LottoSeller();
-        return seller.buyLottos(money);
-    }
-
-    public void play() {
-        try {
-            int money = inputMoney();
-
-            List<Lotto> lottos = buyLottos(money);
-            printLottos(lottos);
-
-            WinningNumbers winningNumbers = inputWinningNumbers();
-            MatchResults results = winningNumbers.matchAll(lottos);
-
-            printStatistics(results);
-            printYield(results, money);
-        } catch (IllegalArgumentException exception) {
-            output.writeErrorMessage(exception.getMessage());
-        }
     }
 }
