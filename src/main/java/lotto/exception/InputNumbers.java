@@ -1,6 +1,14 @@
 package lotto.exception;
 
+import java.util.stream.Stream;
+
 public class InputNumbers extends CommonException {
+
+    public static void checkException(String numbers) {
+        checkNumberCount(numbers);
+        checkSeparationByComma(numbers);
+        Stream.of(numbers.split(",")).forEach(CommonException::checkInteger);
+    }
 
     private static void checkSeparationByComma(String numbers) {
         long count = numbers.chars().filter(c -> c == ',').count();
