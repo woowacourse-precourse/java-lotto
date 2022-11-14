@@ -16,7 +16,6 @@ public class MyTest {
     void 구입_금액이_1000으로_나누어_떨어지지_않을_경우_예외가_발생한다(){
         int input = 2500;
         InputValidator inputValidator = new InputValidator();
-        assertThat(inputValidator.validatePurchaseAmount(input);
         assertThatThrownBy(() -> inputValidator.validatePurchaseAmount(input)).isInstanceOf(IllegalArgumentException.class);
     }
 

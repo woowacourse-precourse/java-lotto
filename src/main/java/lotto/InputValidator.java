@@ -2,7 +2,9 @@ package lotto;
 
 public class InputValidator {
     public void validatePurchaseAmount(int cash) {
-        throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");
+        if (cash != cash / 1000 * 1000) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");
+        }
     }
 
     public void validateLottoNumber(int number) {
