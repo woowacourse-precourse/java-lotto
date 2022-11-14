@@ -1,4 +1,4 @@
-package lotto;
+package lotto.IO;
 
 import lotto.view.InputManager;
 import lotto.view.InputUser;
