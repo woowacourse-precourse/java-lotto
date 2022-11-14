@@ -80,8 +80,8 @@ class WinningNumberMakerTest {
         //given
         WinningNumberMaker winningNumberMaker = new WinningNumberMaker();
         //when
-        winningNumberMaker.make();
-        List<Integer> winningNumbers = winningNumberMaker.showWinningNumbers();
+        winningNumberMaker.makeWinningNumbers();
+        List<Integer> winningNumbers = winningNumberMaker.getWinningNumbers();
         //then
         List<Integer> expected = List.of(1, 4, 7, 8, 20, 34);
         assertThat(winningNumbers.size()).isEqualTo(6);
@@ -127,7 +127,7 @@ class WinningNumberMakerTest {
         //when
         WinningNumberMaker winningNumberMaker = new WinningNumberMaker();
         System.setIn(new ByteArrayInputStream(String.join(",", numbers).getBytes()));
-        winningNumberMaker.make();
+        winningNumberMaker.makeWinningNumbers();
         System.setIn(new ByteArrayInputStream(bonusNumberInput.getBytes()));
         //when //then
         assertThatThrownBy(() -> winningNumberMaker.makeBonusNumber())
