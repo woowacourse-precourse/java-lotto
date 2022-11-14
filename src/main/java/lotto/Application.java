@@ -18,6 +18,7 @@ public class Application {
         lotto.validateBonus(ui.getBonus());
 
         user.checkWinning(lotto.getNumbers(), ui.getBonus());
+        ui.showWinning(user.getFirst(), user.getSecond(), user.getThird(), user.getFourth(), user.getFifth());
 
     }
 }
