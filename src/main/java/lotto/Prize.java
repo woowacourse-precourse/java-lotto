@@ -22,6 +22,10 @@ public enum Prize {
         return prize;
     }
 
+    public int getNumber(){
+        return number;
+    }
+
     public static Prize findPrize(int number, boolean bonus){
         Prize result = Arrays.stream(Prize.values())
                 .filter(x->x.number==number)

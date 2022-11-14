@@ -13,6 +13,7 @@ public class Application {
         lotteryMachine.buyLottos(inputView.getAmount());
         outputView.printList(lotteryMachine.getLists());
         winningStat = lotteryMachine.compareNumbers(inputView.getLottoNumber(), inputView.getBonusNumber());
+        outputView.printStats(winningStat);
 
     }
 }
