@@ -18,7 +18,7 @@
 - [x] 보너스 번호가 로또 상한과 하한의 사이인지 확인한다 NumberInput#validateNumberInRange()
 - [x] 보너스 번호를 입력 받는다. NumberInput#getBonusNumber()
 - [x] 로또를 집계한다. WinLotto#setResult()
-- [x] 로또 결과를 가져온다. WinLotto#getResult();
+- [x] 로또 결과를 가져온다. WinLotto#getResult()
 - [x] 로또 당첨으로 인한 수익을 가져온다. WinLotto#getProfit()
 - [ ] 로또 당첨으로 인한 수익을 추가한다. WinLotto#addProfitByWinLotto()
 - [ ] 로또 당첨으로 인한 수익을 가져온다. WinLotto#getProfit()
@@ -26,7 +26,7 @@
 - [x] 당첨 순위에 해당하는 당첨금을 가져온다. LottoRank#getPrizeMoney()
 - [x] 로또 순위를 가져온다. LottoRank#getRank()
 - [x] 3등인지 확인한다. LottoRank#isThird()
-- [ ] 오름차순으로 정렬된 목록을 가져온다. LottoRank#getAscendRank()
+- [x] 오름차순으로 정렬된 목록을 가져온다. LottoRank#getAscendRank()
 - [x] 수익률을 가져온다. Profit#getPercentageProfit()
   - [x] 수익률을 계산한다. Profit#calculatePercentageProfit()
 - [x] "구입금액을 입력해 주세요." 출력한다. RequestView#displayEnterPurchaseAmount()
