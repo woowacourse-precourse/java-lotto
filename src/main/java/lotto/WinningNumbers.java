@@ -12,14 +12,14 @@ public class WinningNumbers {
     private Map<Rank, Integer> totalResult = new HashMap<>();
 
 
-    public WinningNumbers (List<Integer> lottoNumber, int bonusNumber) {
+    public WinningNumbers(List<Integer> lottoNumber, int bonusNumber) {
         validate(lottoNumber, bonusNumber);
         this.LOTTO_NUMBER = lottoNumber;
         this.BONUS_NUMBER = bonusNumber;
     }
 
     public void makeResult(List<List<Integer>> lottoNumbers) {
-        setTotalResult(); // Map 에 0 넣기
+        setTotalResult();
 
         for (List<Integer> lottoNumber : lottoNumbers) {
             Rank rank = prize(lottoNumber);
@@ -40,7 +40,7 @@ public class WinningNumbers {
     }
 
     private boolean isValidUnique(List<Integer> numbers, int number) {
-        return ! numbers.contains(number);
+        return !numbers.contains(number);
     }
 
     public Rank prize(List<Integer> lotto) {
@@ -68,14 +68,15 @@ public class WinningNumbers {
             return;
         }
         int winningCount = totalResult.get(rank);
-        totalResult.put(rank, winningCount+1);
+        totalResult.put(rank, winningCount + 1);
     }
 
     public Map<Rank, Integer> getTotalResult() {
         return this.totalResult;
     }
+
     private void validate(List<Integer> numbers, int number) {
-        if (! isValidUnique(numbers, number)) {
+        if (!isValidUnique(numbers, number)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
     }

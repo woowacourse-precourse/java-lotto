@@ -17,6 +17,7 @@ public class InputView {
         System.out.println("");
         return validDate(input);
     }
+
     public int getBonusNumber() {
         String input = getUserInput(INPUT_BONUS_NUMBER);
         System.out.println("");
@@ -30,7 +31,7 @@ public class InputView {
     }
 
     private String getUserInput(String output) {
-        System.out.println(output); // 상수로 변경하여 문자 출력
+        System.out.println(output);
         return Console.readLine();
     }
 

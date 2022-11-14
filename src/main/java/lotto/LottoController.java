@@ -44,6 +44,7 @@ public class LottoController {
         outputView.printBuyLotto(lottoNumbers); // 구매 로또 목록
         return lottoNumbers;
     }
+
     private Lotto inputLotto() {
         List<Integer> numbers = inputView.getWinningNumbers();
         return new Lotto(numbers);
@@ -58,7 +59,7 @@ public class LottoController {
         return new WinningNumbers(lottoNumber, bonusNumber);
     }
 
-    private void statistics (WinningNumbers winningNumbers, List<List<Integer>> buyLottoNumbers) {
+    private void statistics(WinningNumbers winningNumbers, List<List<Integer>> buyLottoNumbers) {
         winningNumbers.makeResult(buyLottoNumbers);
         Map<Rank, Integer> totalResult = winningNumbers.getTotalResult();
         outputView.printStatistics(totalResult);
