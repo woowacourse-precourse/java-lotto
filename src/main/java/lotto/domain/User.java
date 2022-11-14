@@ -8,11 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 
 public class User extends Valid {
-    private List<Lotto> lottos = new ArrayList<>();
-    private HashMap<Rank, Integer> result = new HashMap<>();
+    private List<Lotto> lottos;
+    private HashMap<Rank, Integer> result;
     private int money;
 
     public User() {
+        lottos = new ArrayList<>();
+        result = new HashMap<>();
     }
 
     public void buy() throws IllegalArgumentException {
@@ -24,7 +26,7 @@ public class User extends Valid {
 
     private void createLotto() throws IllegalArgumentException {
         for (int lotto = 0; lotto < (money / lottoPrice); lotto++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(startLottoNum, endLottoNum, lottoSize);
             lottos.add(new Lotto((numbers)));
         }
     }
