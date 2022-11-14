@@ -23,6 +23,9 @@ public class OutputConsole {
         LottoMachine lottoMachine = new LottoMachine();
         Map<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos, winningNumber, bonusNumber);
         for (Rank key: rankResult.keySet()){
+            if (key == Rank.NOTHING) {
+                continue;
+            }
             System.out.println(key.getScoreText() + "- " + rankResult.get(key) +"개");;
         }
     }
