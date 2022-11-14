@@ -18,6 +18,8 @@ public class Application {
             OutOfDigitException(amount);
 
             LottoList userLotto = new LottoList(new BigInteger(amount));
+
+
             PrintGameInfo.purchaseCount(userLotto.getLottoCount());
 
         } catch (IllegalArgumentException exception) {
