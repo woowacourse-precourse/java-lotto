@@ -1,13 +1,15 @@
 package lotto;
 
 import lotto.IO.InputManager;
+import lotto.IO.OutputManager;
 import lotto.IO.message.ErrorCode;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -132,12 +134,58 @@ class LottoTest {
     }
 
     @Nested
-    @DisplayName("입력 예외처리 테스트")
-    class IOTest {
+    @DisplayName("출력 테스트")
+    class OutputTest {
+        // stdout 출력 비교하기
+        // 참고 블로그 : https://eblo.tistory.com/123
+        final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        final PrintStream standardOut = System.out;
+
+        @BeforeEach
+        void setUp() {
+            System.setOut(new PrintStream(outputStreamCaptor));
+        }
+
+        @AfterEach
+        void tearDown() {
+            System.setOut(standardOut);
+        }
+
         @Test
-        @DisplayName("")
-        void wrongInput() {
-            //
+        @DisplayName("로또 리스트 출력")
+        void printLottos() {
+            List<Lotto> lottoList = List.of(
+                    new Lotto(List.of(1,2,3,4,5,6)),
+                    new Lotto(List.of(1,2,3,10,11,12)),
+                    new Lotto(List.of(40,41,42,43,44,45))
+            );
+
+            OutputManager.printLottoList(lottoList);
+
+            assertThat(outputStreamCaptor.toString().trim())
+                    .contains("[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 10, 11, 12]",
+                            "[40, 41, 42, 43, 44, 45]");
+        }
+
+        @Test
+        @DisplayName("로또 리스트 출력")
+        void printRank() {
+            Map<Integer, Integer> lottoRank = Map.of(
+                    0, 1,
+                    3, 2
+            );
+
+            OutputManager.printRanks(lottoRank, 2000100000, 250000);
+
+            assertThat(outputStreamCaptor.toString().trim())
+                    .contains("3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 2개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                            "6개 일치 (2,000,000,000원) - 1개",
+                            "총 수익률은 800040.0%입니다."
+                    );
         }
     }
 }
