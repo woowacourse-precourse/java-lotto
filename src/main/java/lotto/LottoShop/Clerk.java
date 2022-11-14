@@ -8,11 +8,11 @@ import static lotto.Enum.Constant.*;
 
 public class Clerk {
     private final MoneyValidator moneyValidator;
-    private final LottoPublishingMachine lottoProvidingMachine;
+    private final LottoPublishingMachine lottoPublishingMachine;
 
-    public Clerk(MoneyValidator moneyValidator, LottoPublishingMachine lottoProvidingMachine) {
+    public Clerk(MoneyValidator moneyValidator, LottoPublishingMachine lottoPublishingMachine) {
         this.moneyValidator = moneyValidator;
-        this.lottoProvidingMachine = lottoProvidingMachine;
+        this.lottoPublishingMachine = lottoPublishingMachine;
     }
 
     public List<Lotto> sellLotto(String purchaseAmount) {
@@ -20,7 +20,7 @@ public class Clerk {
 
         int lotto_amount = getLottoAmount(purchaseAmount);
 
-        List<Lotto> lotto_group = lottoProvidingMachine.makeLottoGroup(lotto_amount);
+        List<Lotto> lotto_group = lottoPublishingMachine.publishLottoGroup(lotto_amount);
 
         printPurchasedLotto(lotto_group);
 
@@ -33,8 +33,6 @@ public class Clerk {
 
     private void printPurchasedLotto(List<Lotto> lotto_group) {
         System.out.println(lotto_group.size() + MESSAGE_PURCHASE.getValue());
-        lotto_group.forEach(lotto -> {
-            System.out.println(lotto.getNumbers());
-        });
+        lotto_group.forEach(Lotto::printNumbers);
     }
 }
