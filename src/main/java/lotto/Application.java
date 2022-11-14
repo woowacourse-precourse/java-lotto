@@ -37,8 +37,6 @@ public class Application {
         validateSplitWinNumbersString(splitWinNumbersString);
         List<Integer> winNumbers = converseWinNumbersToInteger(splitWinNumbersString);
 
-
-
     }
 
     static void validateSplitWinNumbersString(List<String> splitWinNumbersString) {
@@ -59,6 +57,16 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 당첨 번호를 정확히 입력해 주시기 바랍니다.");
         }
         return winNumbers;
+    }
+    static void validateWinNumbers(List<Integer> winNumbers){
+        for(Integer num : winNumbers){
+            checkValidationOfNumber(num);
+        }
+    }
+    static void checkValidationOfNumber(Integer number){
+        if(number<1||number>45){
+            throw new IllegalArgumentException("[ERROR] 정확한 숫자를 입력해 주시기 바랍니다.");
+        }
     }
     static void validateInput(String inputMoney){
         try{
