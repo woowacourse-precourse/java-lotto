@@ -12,9 +12,6 @@ public class Result {
 
     /**
      * 로또들의 정보를 받아 당첨된 결과를 등수를 key, 개수를 value 로 가지는 Map 으로 저장하여 반환하는 메소드
-     * @param lottos
-     * @param winningNumber
-     * @return
      */
     public static Result of(List<Lotto> lottos, WinningNumber winningNumber) {
         Map<Rank, Integer> results = Rank.getRankWithCount();
@@ -37,5 +34,12 @@ public class Result {
         return results.keySet().stream()
                 .mapToInt(rank -> rank.getMoney() * results.get(rank))
                 .sum();
+    }
+
+    /**
+     * 구입 금액과 총 당첨금의 합으로 수익률을 계산하여 반환하는 메소드
+     */
+    private double getYeild(int amount) {
+        return Math.round(((sumOfMoney() / (double) amount) * 100) / 100.0);
     }
 }
