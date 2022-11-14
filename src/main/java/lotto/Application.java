@@ -19,6 +19,6 @@ public class Application {
 
         user.checkWinning(lotto.getNumbers(), ui.getBonus());
         ui.showWinning(user.getFirst(), user.getSecond(), user.getThird(), user.getFourth(), user.getFifth());
-
+        ui.showYield(user.calculateYield());
     }
 }
