@@ -8,6 +8,7 @@ import lotto.view.GameProgressView;
 import lotto.view.WinningStatsView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserController {
     private static UserRepository userRepository = new UserRepository();
@@ -33,5 +34,19 @@ public class UserController {
         ArrayList<Lotto> lotties = randomLottoService.randomLotteryGeneration(userRepository.getUser().getTotalNumberOflotties());
         userRepository.setUserLotties(lotties);
         gameProgressView.showBuyLottery(lotties);
+    }
+
+    public void enterWinningNumbersAndSave() {
+        winningStatsView.showLineBreak();
+        gameProgressView.showEnterWinningNumbersMessage();
+        String winningNumbers = userService.enterWinningNumbers();
+        //TODO : 예외 처리 필요
+        String[] items = winningNumbers.split(",");
+        List<Integer> numbers = new ArrayList<>();
+        for (String item : items) {
+            numbers.add(Integer.parseInt(item));
+        }
+        Lotto lotto = new Lotto(numbers);
+        userRepository.setUserWinningNumbers(lotto);
     }
 }
