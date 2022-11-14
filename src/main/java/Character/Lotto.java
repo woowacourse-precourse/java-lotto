@@ -14,6 +14,10 @@ public class Lotto {
         return super.clone();
     }
 
+    public List<Integer> getLotto() {
+        return numbers;
+    }
+
     public Lotto(List<Integer> numbers) {
         numberSizeValidate(numbers);
         duplicatedNumberValidate(numbers);
