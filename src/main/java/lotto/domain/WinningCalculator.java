@@ -34,7 +34,7 @@ public class WinningCalculator {
     }
 
     public void setWinningNumbers(String numbersRaw) {
-        validate(numbersRaw);
+        validateNumbersRaw(numbersRaw);
         List<Integer> winningNumbers = convertStringToIntegerList(numbersRaw);
         numbers = winningNumbers;
     }
@@ -84,7 +84,7 @@ public class WinningCalculator {
         return winningResult;
     }
 
-    private void validate(String numbersRaw) {
+    private void validateNumbersRaw(String numbersRaw) {
         try {
             List<Integer> numbers = convertStringToIntegerList(numbersRaw);
             validateNumbers(numbers);
