@@ -7,7 +7,6 @@ public class User {
     private int amountOfMoney;
     private List<Lotto> lottos;
     private Map<Ranking, Integer> numberOfLottosByRank;
-    private long winnings;
 
     public User(int amountOfMoney) {
         this.amountOfMoney = amountOfMoney;
@@ -19,19 +18,18 @@ public class User {
         return lottos;
     }
 
-    public void checkResult(WinningLotto winningLotto) {
-        WinningsCalculator calculator = new WinningsCalculator(lottos, winningLotto);
-        numberOfLottosByRank = calculator.getNumberOfRankedLottos();
-        winnings = calculator.calculateWinnings();
-    }
-
-    public Map<Ranking, Integer> getNumberOfLottosByRank() {
+    public Map<Ranking, Integer> checkResult(WinningLotto winningLotto) {
+        RankedLottoCounter calculator = new RankedLottoCounter(winningLotto);
+        numberOfLottosByRank = calculator.countRankedLottos(lottos);
         return numberOfLottosByRank;
     }
 
-    public double getYield() {
-        double yield = (double) winnings / amountOfMoney * 100;
-        return yield;
+    public double calculateYield() {
+        long winnings = 0L;
+        for (Map.Entry<Ranking, Integer> entry : numberOfLottosByRank.entrySet()) {
+            winnings += (long) entry.getKey().getReward() * entry.getValue();
+        }
+        return (double) winnings / amountOfMoney;
     }
 
     public List<Lotto> getLottos() {
