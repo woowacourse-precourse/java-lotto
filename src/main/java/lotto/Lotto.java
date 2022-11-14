@@ -48,12 +48,14 @@ public class Lotto {
         System.out.println("\n"+Constant.ASK_BONUS_NUMBER);
         String Bonus = Console.readLine();
         BonusNumber = Integer.parseInt(Bonus);
+
+        validateNumberRange(BonusNumber);
         BonusValidate(BonusNumber,numbers);
     }
 
     private void BonusValidate(int BonusNumber, List<Integer> numbers) {
         if (numbers.contains(BonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되지 않아야 합니다.");
         }
     }
 
