@@ -1,5 +1,5 @@
 # 로또 게임 기능 목록.
-
+![gif](./images/lotto-game.gif)
 ![image-20221114202950282](./images/image-20221114202950282.png)
 
 
