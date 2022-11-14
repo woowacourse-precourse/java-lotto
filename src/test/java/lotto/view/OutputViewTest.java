@@ -1,7 +1,6 @@
 package lotto.view;
 
 import lotto.service.WinningHistory;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

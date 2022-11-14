@@ -64,6 +64,6 @@ public class LottoService {
         totalPrizeMoney += (long) THIRD_PLACE.getQuantity() * THIRD_PLACE_PRIZE.getPrizeMoney();
         totalPrizeMoney += (long) FOURTH_PLACE.getQuantity() * FOURTH_PLACE_PRIZE.getPrizeMoney();
         totalPrizeMoney += (long) FIFTH_PLACE.getQuantity() * FIFTH_PLACE_PRIZE.getPrizeMoney();
-        return String.format("%,.1f", (totalPrizeMoney / quantity * LOTTERY_PRICE) * 100) + "%";
+        return String.format("%,.1f", (totalPrizeMoney / (quantity * LOTTERY_PRICE)) * 100) + "%";
     }
 }
