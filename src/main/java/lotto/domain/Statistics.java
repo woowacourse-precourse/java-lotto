@@ -31,7 +31,7 @@ public class Statistics {
     public int findTotalWinAmount() {
         for (LottoRank rank : winLottoInfo.keySet()) {
             Integer total = winLottoInfo.get(rank);
-            winAmount += rank.getMoney(total);
+            winAmount += rank.findTotalMoney(total);
         }
         return winAmount;
     }

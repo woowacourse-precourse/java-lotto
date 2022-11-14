@@ -12,29 +12,29 @@ public enum LottoRank {
 
     private final int matchCount;
 
-    private final int bonus;
+    private final int bonusCount;
 
     private final int winMoney;
 
-    LottoRank(int matchCount, int bonus, int winMoney) {
+    LottoRank(int matchCount, int bonusCount, int winMoney) {
         this.matchCount = matchCount;
-        this.bonus = bonus;
+        this.bonusCount = bonusCount;
         this.winMoney = winMoney;
     }
 
     public static LottoRank of(int result, int bonus) {
         return Arrays.stream(LottoRank.values())
                 .filter(lottoRank -> lottoRank.matchCount == result)
-                .filter(lottoRank -> lottoRank.bonus == bonus)
+                .filter(lottoRank -> lottoRank.bonusCount == bonus)
                 .findAny()
                 .orElseThrow();
     }
 
-    public int getMoney(int cnt) {
+    public int findTotalMoney (int cnt) {
         return winMoney * cnt;
     }
 
-
+    @Override
     public String toString() {
         return String.format("%d개 일치%s (%s원)", matchCount, isBonus(), splitByComma(winMoney));
     }
@@ -54,7 +54,7 @@ public enum LottoRank {
     }
 
     private String isBonus() {
-        if (bonus == 1) {
+        if (bonusCount == 1) {
             return ", 보너스 볼 일치";
         }
         return "";
@@ -62,5 +62,9 @@ public enum LottoRank {
 
     public int matchCount() {
         return matchCount;
+    }
+
+    public int bonusCount() {
+        return bonusCount;
     }
 }

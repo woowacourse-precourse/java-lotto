@@ -32,6 +32,7 @@ public class OutputView {
         List<LottoRank> collect = winLottoInfo.keySet()
                 .stream()
                 .sorted(Comparator.comparingInt(LottoRank::matchCount))
+                .sorted(Comparator.comparingInt(LottoRank::bonusCount))
                 .collect(Collectors.toList());
 
         for (LottoRank rank : collect) {
