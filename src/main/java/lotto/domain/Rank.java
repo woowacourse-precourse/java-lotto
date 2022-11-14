@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum Rank {
 	RANK_5TH(3, false, 5000),
 	RANK_4TH(4, false, 50000),
@@ -27,21 +29,13 @@ public enum Rank {
 	}
 
 	public static Rank getRank(int sameNumberCount, boolean bonusNumber) {
-		if (sameNumberCount == RANK_1ST.getSameWinningNumberCount()) {
-			return RANK_1ST;
-		}
-		if (sameNumberCount == RANK_2ND.getSameWinningNumberCount() && RANK_2ND.bonusBall == bonusNumber) {
+		if (RANK_2ND.sameNumberCount == sameNumberCount && RANK_2ND.bonusBall == bonusNumber) {
 			return RANK_2ND;
 		}
-		if (sameNumberCount == RANK_3RD.getSameWinningNumberCount()) {
-			return RANK_3RD;
-		}
-		if (sameNumberCount == RANK_4TH.getSameWinningNumberCount()) {
-			return RANK_4TH;
-		}
-		if (sameNumberCount == RANK_5TH.getSameWinningNumberCount()) {
-			return RANK_5TH;
-		}
-		return NO_RANK;
+		return Arrays.stream(Rank.values())
+			.filter(rank -> rank.sameNumberCount == sameNumberCount)
+			.filter(rank -> !rank.bonusBall)
+			.findFirst()
+			.orElse(NO_RANK);
 	}
 }
