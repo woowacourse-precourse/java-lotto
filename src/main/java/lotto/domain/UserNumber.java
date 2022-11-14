@@ -11,10 +11,11 @@ public class UserNumber {
     public UserNumber(String winNumbers, String bonusNumber) {
         validateWinNumbersType(winNumbers);
         validateBonusNumbers(bonusNumber);
-        validateSame(winNumbers, bonusNumber);
 
         this.winNumbers = new Lotto(toLotto(winNumbers));
         this.bonusNumber = Integer.parseInt(bonusNumber);
+
+        validateSame();
     }
 
     private void validateWinNumbersType(String winNumber) {
@@ -28,8 +29,10 @@ public class UserNumber {
         validateRange(bonusNumber);
     }
 
-    private void validateSame(String winNumbers, String bonusNumber) {
-        if (winNumbers.contains(bonusNumber)) {
+    private void validateSame() {
+        List<Integer> numbers = getWinNumbers().getNumbers();
+        int bonusNumber = getBonusNumber();
+        if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_SAME.getMessage());
         }
     }
