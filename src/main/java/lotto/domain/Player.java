@@ -42,4 +42,11 @@ public class Player {
         }
     }
 
+    public void compare(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            int matchingNumber = lotto.getMatchingNumber(numbers);
+        }
+
+    }
+
 }

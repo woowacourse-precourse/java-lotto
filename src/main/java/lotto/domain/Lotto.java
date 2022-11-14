@@ -23,9 +23,9 @@ public class Lotto {
         return numbers.get(index) == number;
     }
 
-    public int getMatchingNumber(List<Integer> computer) {
-        return (int) IntStream.range(0, computer.size())
-                .filter(index -> hasPlace(index, computer.get(index))).count();
+    public int getMatchingNumber(List<Integer> player) {
+        return (int) IntStream.range(0, player.size())
+                .filter(index -> hasPlace(index, player.get(index))).count();
     }
 
     public List<Integer> getSortedNumbers() {

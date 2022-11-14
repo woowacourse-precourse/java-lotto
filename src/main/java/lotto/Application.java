@@ -26,5 +26,6 @@ public class Application {
         int bonusNumber = getInt();
 
         Player player = new Player(numbers, bonusNumber);
+        player.compare(lottos);
     }
 }

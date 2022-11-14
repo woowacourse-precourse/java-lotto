@@ -33,12 +33,12 @@
   - [X] 쉼표(,)를 기준으로 구분했을 때 중복된 데이터가 있으면 예외 처리한다.
 - [X] 보너스 번호를 입력 받는다.
   - [X] '1~45범위의 숫자'가 아니면 예외 처리한다.
-- [ ] 컴퓨터의 수를 생성한다. 
+- [X] 컴퓨터의 수를 생성한다. 
   - [X] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - NumberGenerator#createDifferentRandomNumbers()
   - [X] 1부터 45까지의 임의의 수 1개를 생성한다. - NumberGenerator#createRandomNumber()
 - [X] 로또 등수를 알 수 있다. - Prize#findPrize()
-  - [X] 컴퓨터의 수(6자리)와 플레이어의 수(6자리)를 비교할 수 있다. 
-    - [X] 몇 개의 숫자가 일치하는지 알 수 있다. - Lotto#getNumberOfMatch()
+  - [X] 컴퓨터의 수(6자리)와 플레이어의 수(6자리)를 비교할 수 있다. - Player#compare()
+    - [X] 몇 개의 숫자가 일치하는지 알 수 있다. - Lotto#getMatchingNumber()
     - [X] 특정 자리에 특정 숫자가 있는지 알 수 있다. - Lotto#hasPlace()
   - [ ] 컴퓨터의 수(1자리)와 플레이어의 수(1자리)를 비교할 수 있다.
 - [X] 당첨 내역을 출력할 수 있다. - PrizeCount#toString()
