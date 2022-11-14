@@ -95,7 +95,7 @@ public class User {
         }
         return result;
     }
-    private void calculateEarningRate(List<Integer> winningNumbers, int bonus){
+    public void calculateEarningRate(List<Integer> winningNumbers, int bonus){
         int sum=0;
         for (Lotto lotto:lottos) {
             WinningRanking ranking = getWinningRanking(lotto, winningNumbers, bonus);
