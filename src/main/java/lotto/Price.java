@@ -19,6 +19,9 @@ public class Price {
         if (!isPositiveNumber())
             return false;
 
+        if (!isDividedBy1000())
+            return false;
+
         return true;
     }
 
@@ -35,6 +38,13 @@ public class Price {
     private boolean isPositiveNumber() {
         int price = Integer.parseInt(text);
         if (price > 0)
+            return true;
+        return false;
+    }
+
+    private boolean isDividedBy1000() {
+        int price = Integer.parseInt(text);
+        if ((price % 1000) == 0)
             return true;
         return false;
     }
