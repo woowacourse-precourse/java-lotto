@@ -71,7 +71,7 @@ public class LottoGame {
         for (int i = 0; i < str.length; i++) {
             winNumber.add(Integer.parseInt(str[i]));
         }
-        Lotto lotto = new Lotto(winNumber);
+        Lotto lotto = new Lotto(winNumber); // Exception 체큰
 
     }
 
