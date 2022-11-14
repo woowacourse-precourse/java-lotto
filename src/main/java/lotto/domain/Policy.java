@@ -1,9 +1,5 @@
 package lotto.domain;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 public class Policy {
 
     public static final int PRICE = 1000; // 로또 한장당 가격
@@ -55,15 +51,17 @@ public class Policy {
      * 각 등수별 당첨금액에 대한 정의
      */
     public enum WinningAmount {
-        WINNING_ONE(2000000000),
-        WINNING_TWO(30000000),
-        WINNING_THREE(1500000),
-        WINNING_FOUR(50000),
-        WINNING_FIVE(5000);
+        WINNING_ONE("WINNING_ONE", 2000000000),
+        WINNING_TWO("WINNING_TWO", 30000000),
+        WINNING_THREE("WINNING_THREE", 1500000),
+        WINNING_FOUR("WINNING_FOUR", 50000),
+        WINNING_FIVE("WINNING_FIVE", 5000);
 
+        private final String gradeName;
         private final long amount;
 
-        WinningAmount(long amount) {
+        WinningAmount(String gradeName, long amount) {
+            this.gradeName = gradeName;
             this.amount = amount;
         }
 
