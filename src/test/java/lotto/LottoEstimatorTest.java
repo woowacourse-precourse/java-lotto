@@ -37,4 +37,12 @@ public class LottoEstimatorTest {
 
         assertThat(result).isEqualTo(expected);
     }
+
+    @Test
+    void 수익률_구하기() {
+        lottoEstimator.estimate();
+        float result = lottoEstimator.getRateOfProfit();
+
+        assertThat(result).isEqualTo(1.015E8f);
+    }
 }
