@@ -21,7 +21,7 @@ public class View {
             }
         }
     }
-    private void validateUniqueNumberInput(List<Integer> numbers) {
+    private void validateUniqueNumbersInput(List<Integer> numbers) {
         List<Integer> noDuplicates = new ArrayList<>();
         for (int num : numbers) {
             if (noDuplicates.contains(num)) {
@@ -30,7 +30,7 @@ public class View {
             noDuplicates.add(num);
         }
     }
-    private void validateNumberInRange(List<Integer> numbers) {
+    private void validateNumbersInRange(List<Integer> numbers) {
         for (int num : numbers) {
             if ((45 < num) || num < 1) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다");
