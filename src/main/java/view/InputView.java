@@ -50,7 +50,7 @@ public class InputView {
         }
     }
 
-    public static String showEnterWinningNumberMessage() {
+    public static String showEnterWinningNumbersMessage() {
         System.out.println(ENTER_WINNING_NUMBER_MESSAGE);
         return Console.readLine();
     }

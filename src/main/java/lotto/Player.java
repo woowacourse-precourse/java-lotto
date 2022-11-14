@@ -19,6 +19,7 @@ public class Player {
     }
 
     public Player(int money) {
+        validateIsAmountThousandWon(money);
         this.money = money;
         getLotto(money);
     }
@@ -51,6 +52,12 @@ public class Player {
             lotto.generateBonusNumber();
             this.lottery.add(lotto);
             count++;
+        }
+    }
+
+    private void validateIsAmountThousandWon(int convertedAmount) {
+        if (convertedAmount % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
         }
     }
 
