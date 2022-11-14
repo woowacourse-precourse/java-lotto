@@ -64,6 +64,15 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @DisplayName("1미만의 숫자를 입력했을때 테스트")
+    @Test
+    void inputPriceTest() {
+        assertSimpleTest(() -> {
+            runException("0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
 
     @Override
     public void runMain() {
