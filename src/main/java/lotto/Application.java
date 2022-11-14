@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // 구입 금액 입력
+        System.out.println(OutputMessage.PRICE.get());
         Price p = new Price();
         System.out.println(p.get());
         // 당첨 번호, 보너스 번호 입력
