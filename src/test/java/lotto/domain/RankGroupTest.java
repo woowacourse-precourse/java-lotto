@@ -53,10 +53,10 @@ class RankGroupTest {
 		rankGroup.updateRankCount(Rank.firstRank, addNumber);
 
 		//when
-		String userStatisticsResult = rankGroup.userRankResultToString(Rank.firstRank);
+		Integer rankCountTest = rankGroup.findRankCount(Rank.firstRank);
 
 		//then
-		assertThat(userStatisticsResult).isEqualTo(RankConst.FIRST_RANK_RESULT + addNumber + RankConst.COUNT_STATEMENT);
+		assertThat(rankCountTest).isEqualTo(addNumber);
 	}
 
 	@DisplayName("사용자에게 보여즐 rank 통계 정보 출력 확인 테스트")

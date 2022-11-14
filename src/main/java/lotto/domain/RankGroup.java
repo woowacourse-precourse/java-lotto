@@ -25,6 +25,10 @@ public class RankGroup {
 		rankGroup.put(rank, rankGroup.get(rank) + number);
 	}
 
+	public Integer findRankCount(Rank rank) {
+		return rankGroup.get(rank);
+	}
+
 	public String userRankResultToString(Rank rank) {
 		return rank.getRankCountDescription() + rankGroup.get(rank) + RankConst.COUNT_STATEMENT;
 	}
