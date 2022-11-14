@@ -3,8 +3,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 public class Operation {
@@ -22,22 +20,18 @@ public class Operation {
     }
 
     static List<Integer> generateNumbers() {
-        HashSet<Integer> removeDuplication = new HashSet<>();
-        while (removeDuplication.size() < 6) {
-            removeDuplication.add(Randoms.pickNumberInRange(1, 45));
-        }
-        List<Integer> result = new ArrayList<>(removeDuplication);
-        Collections.sort(result);
+        List<Integer> result;
+        result= Randoms.pickUniqueNumbersInRange(1,45,6);
+        result.sort(null);
         return result;
     }
 
     static int calculateEarning(Match match) {
-        int earning = match.match3 * 5000
+        return match.match3 * 5000
                 + match.match4 * 50000
                 + match.match5 * 1500000
                 + match.match5Bonus * 30000000
                 + match.match6 * 2000000000;
-        return earning;
     }
 
     static double calculateEarningRate(int purchaseAmount, int earning) {
@@ -62,7 +56,7 @@ public class Operation {
             int earning = calculateEarning(match);
             double earningRate = calculateEarningRate(purchaseAmount, earning);
             Print.result(earningRate, match);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException ignored) {
         }
     }
 }
