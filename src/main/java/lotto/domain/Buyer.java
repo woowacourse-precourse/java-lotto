@@ -7,16 +7,16 @@ import lotto.Constants.NUMBER;
 import lotto.Ranking;
 
 public class Buyer {
-    private int totalPurchaseAmout = NUMBER.ZERO;
+    private int payment = NUMBER.ZERO;
     private int lottoPurchasedCount = NUMBER.ZERO;
     private long totalWinningPrize = NUMBER.ZERO;
-    private List<Lotto> lottoPurchased;
+    private List<Lotto> purchasedLotto;
     private HashMap<String, Integer> winningSummary;
 
 
     public Buyer() {
-        this.totalPurchaseAmout = 0;
-        this.lottoPurchased = new ArrayList<Lotto>();
+        this.payment = 0;
+        this.purchasedLotto = new ArrayList<Lotto>();
         this.winningSummary = new HashMap<String, Integer>() {
             {
                 put(Ranking.FIRST.getLabel(), NUMBER.ZERO);
@@ -38,13 +38,16 @@ public class Buyer {
         buyer.winningSummary.put(Ranking, prevCount + NUMBER.ONE);
     }
 
-    public void setTotalPurchaseAmout(int totalPurchaseAmout) {
-        this.totalPurchaseAmout = totalPurchaseAmout;
+    public int getPayment() {
+        return this.payment;
+    }
+    public void setPayment(int payment) {
+        this.payment = payment;
     }
 
-    public void setLottoPurchased(Lotto lotto) {
-        this.lottoPurchased.add(lotto);
-        this.lottoPurchasedCount = this.lottoPurchased.size();
+    public void setPurchasedLotto(Lotto lotto) {
+        this.purchasedLotto.add(lotto);
+        this.lottoPurchasedCount = this.purchasedLotto.size();
     }
 
     public long getTotalWinningPrize() {
@@ -55,12 +58,8 @@ public class Buyer {
         this.totalWinningPrize += totalWinningPrize;
     }
 
-    public int getTotalPurchaseAmout() {
-        return this.totalPurchaseAmout;
-    }
-
-    public List<Lotto> getLottoPurchased() {
-        return this.lottoPurchased;
+    public List<Lotto> getPurchasedLotto() {
+        return this.purchasedLotto;
     }
 
     public void setLottoPurchasedCount(int lottoPurchasedCount) {

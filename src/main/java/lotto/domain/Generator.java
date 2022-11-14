@@ -36,7 +36,7 @@ public class Generator {
     }
 
     public static void calculateRank(Buyer buyer) {
-        for (Lotto lotto : buyer.getLottoPurchased()) {
+        for (Lotto lotto : buyer.getPurchasedLotto()) {
             HashMap<String, Integer> correct = judgeWinningCount(lotto);
             Ranking rank = Ranking.getRank(correct.get(WINNINGCOUNT), correct.get(BONUSCOUNT));
             Buyer.setWinningSummary(buyer, rank.getLabel());
@@ -44,8 +44,7 @@ public class Generator {
 
     }
 
-    public static double profitCalculate(int purchased, long totalPrize) {
-        //TODO 반올림하기
+    public static double calculateProfit(int purchased, long totalPrize) {
         double profit = (double) totalPrize / purchased * 100 * 10;
         double result = Math.round(profit);
         return result / 10;

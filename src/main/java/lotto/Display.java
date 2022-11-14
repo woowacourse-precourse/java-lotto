@@ -64,8 +64,8 @@ public class Display {
     }
 
     public static void profitResult(Buyer buyer) {
-        double totalPrize = Generator.profitCalculate(
-                buyer.getTotalPurchaseAmout(), buyer.getTotalWinningPrize());
+        double totalPrize = Generator.calculateProfit(
+                buyer.getPayment(), buyer.getTotalWinningPrize());
         System.out.printf(PRINT.PROFIT_FORMAT, totalPrize);
     }
 
