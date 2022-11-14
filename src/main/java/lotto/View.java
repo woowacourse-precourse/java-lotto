@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.EnumMap;
 
 public class View {
@@ -36,7 +37,8 @@ public class View {
 
     void printBenfit(int input, long result) {
         double db = (double) result / input * 100;
-        String answer = String.format("%.1f", db);
+        DecimalFormat df = new DecimalFormat("#,###.0");
+        String answer = df.format(db);
         System.out.println("총 수익률은 " + answer + "%입니다.");
     }
 }
