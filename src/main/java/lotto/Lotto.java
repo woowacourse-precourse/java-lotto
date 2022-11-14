@@ -3,6 +3,8 @@ package lotto;
 import java.util.Iterator;
 import java.util.List;
 
+import static Error.ErrorLottoNumbers.isDuplicateLottos;
+
 public class Lotto {
   private final List<Integer> numbers;
 
@@ -13,6 +15,9 @@ public class Lotto {
 
   private void validate(List<Integer> numbers) {
     if (numbers.size() != 6) {
+      throw new IllegalArgumentException();
+    }
+    if (isDuplicateLottos(numbers)) {
       throw new IllegalArgumentException();
     }
   }
@@ -32,13 +37,6 @@ public class Lotto {
   }
 
   public void printLottoNumbers() {
-    Iterator<Integer> iter = numbers.iterator();
-    System.out.print("[");
-    while (iter.hasNext()) {
-      System.out.print(iter.next());
-      if (iter.hasNext())
-        System.out.print(", ");
-    }
-    System.out.println("]");
+    System.out.println(numbers.toString());
   }
 }
