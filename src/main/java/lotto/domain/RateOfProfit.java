@@ -2,7 +2,7 @@ package lotto.domain;
 
 public class RateOfProfit {
 
-    private static double profit;
+    public static double profit;
 
     public static void profit() {
         CorrectNum[] correctNumTypes = CorrectNum.values();

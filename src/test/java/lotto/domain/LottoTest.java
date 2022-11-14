@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import lotto.domain.Lotto;
 import org.assertj.core.api.Assertions;
@@ -23,6 +23,7 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
     @DisplayName("로또가 잘 생성 되었을까")
     @Test
     void createLotto() {
