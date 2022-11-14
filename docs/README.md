@@ -50,5 +50,5 @@
     - [X] 총 당첨 금액을 알 수 있다. - Profit#calculateAmount()
     - [X] 구입금액 대비 총 당첨 금액 비율(%)을 구할 수 있다. - Profit#calculateRate()
     - [X] 숫자를 소수점 둘째 자리에서 반올림할 수 있다. - NumberFormator#roundToTwoDecimalPlaces()
-- [ ] 예외가 발생하면 메시지를 출력한다.
+- [X] 예외가 발생하면 메시지를 출력한다.
   - [X] 예외마다 메시지가 다르다.
