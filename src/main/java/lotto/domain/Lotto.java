@@ -42,6 +42,10 @@ public class Lotto {
         return number < START_NUMBER || number > END_NUMBER;
     }
 
+    public List<Integer> get(){
+        return List.copyOf(numbers);
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
