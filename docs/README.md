@@ -1,3 +1,22 @@
+# java-lotto
+
+## 💻 프로그램 정보
+
+가상 로또 시뮬레이션 게임입니다.
+사용자는 로또 구입 금액을 입력하고, 당첨 번호 및 보너스 번호를 입력합니다.
+프로그램은 사용자의 로또 구입 금액을 토대로 자동으로 로또 번호를 발행합니다.
+사용자는 발행된 로또 번호를 바탕으로 수익률을 얻을 수 있습니다.
+
+<br>
+
+## 🎮 게임 플레이 방법
+
+1. `구입 금액을 입력해 주세요.` 문구 출력시 희망 구입금액을 입력합니다. 이 때, 가격은 1000원 단위여야합니다.
+2. `당첨 번호를 입력해 주세요.` 문구 출력시 희망 당첨 번호 6개를 입력합니다. 이 때, 각 수는 `,`로 구분합니다.
+3. `보너스 번호를 입력해 주세요.` 문구 출력시 보너스 번호 1개를 입력합니다.
+
+<br>
+
 ## 👨‍🍳 기능 목록
 
 - [ ] 로또 구입 금액을 입력받는다.
@@ -62,5 +81,5 @@ ex) "docs: 기능 목록 추가"
 
 ## 📌 Code Convention
 
-- 우아한테크코스 Java 코딩 컨벤션을 준수합니다. (https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java)
+- [우아한테크코스 Java 코딩 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java)을 준수합니다.
 - IntelliJ의 Formatter와 CheckStyle을 적용합니다.
