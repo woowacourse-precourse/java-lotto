@@ -29,7 +29,7 @@ public class Validation {
     }
 
     void validateIsNumber(String input) {
-        for (char c : String.join("", input).toCharArray()) {
+        for (char c : input.toCharArray()) {
             if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
             }
