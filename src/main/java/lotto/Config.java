@@ -1,8 +1,5 @@
 package lotto;
 
-import lotto.utils.Logger;
-import lotto.utils.Logger.LogType;
-
 public class Config {
     public static final int LOTTO_RANGE_START_NUMBER = 1;
     public static final int LOTTO_RANGE_END_NUMBER = 45;
@@ -34,29 +31,25 @@ public class Config {
 
     private static void checkRangeNumber(int start, int end) {
         if (start >= end) {
-            Logger.log(RANGE_NUMBER_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(RANGE_NUMBER_ERROR_MESSAGE);
         }
     }
 
     private static void checkNaturalNumber(int number) {
         if (number <= 0) {
-            Logger.log(NATURAL_NUMBER_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NATURAL_NUMBER_ERROR_MESSAGE);
         }
     }
 
     private static void checkZeroOrNaturalNumber(int number) {
         if (number < 0) {
-            Logger.log(ZERO_OR_NATURAL_NUMBER_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ZERO_OR_NATURAL_NUMBER_ERROR_MESSAGE);
         }
     }
 
     private static void checkIllegalLotto() {
         if (!(isLongerLottoThanBonus() && isLongerTotalThenNumber() && isRankAmount())) {
-            Logger.log(ILLEGAL_LOTTO_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ILLEGAL_LOTTO_ERROR_MESSAGE);
         }
     }
 

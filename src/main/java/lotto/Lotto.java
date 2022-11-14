@@ -1,11 +1,11 @@
 package lotto;
 
-import static lotto.Config.*;
+import static lotto.Config.LOTTO_LENGTH;
+import static lotto.Config.LOTTO_RANGE_END_NUMBER;
+import static lotto.Config.LOTTO_RANGE_START_NUMBER;
 
 import java.util.Collections;
 import java.util.List;
-import lotto.utils.Logger;
-import lotto.utils.Logger.LogType;
 
 public class Lotto {
     private static final String EXISTED_LOTTO_ERROR_MESSAGE = "로또 번호가 존재하지 않습니다.";
@@ -26,31 +26,27 @@ public class Lotto {
 
     private void checkExistedLotto(List<Integer> numbers){
         if(numbers == null){
-            Logger.log(EXISTED_LOTTO_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(EXISTED_LOTTO_ERROR_MESSAGE);
         }
     }
 
     private void checkLottoLength(List<Integer> numbers) {
         if (numbers.size() != LOTTO_LENGTH) {
-            Logger.log(LOTTO_LENGTH_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_LENGTH_ERROR_MESSAGE);
         }
     }
 
     private void checkRangeNumber(List<Integer> numbers) {
         if(!numbers.stream().allMatch(number ->
                 (LOTTO_RANGE_START_NUMBER <= number && LOTTO_RANGE_END_NUMBER >= number))){
-            Logger.log(RANGE_NUMBER_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(RANGE_NUMBER_ERROR_MESSAGE);
         };
     }
 
     private void checkDuplicatedNumber(List<Integer> numbers) {
         long distinctCount = numbers.stream().distinct().count();
         if(LOTTO_LENGTH != distinctCount){
-            Logger.log(DUPLICATED_NUMBER_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
     }
 

@@ -27,8 +27,7 @@ public class Logger {
             createLogMethod.invoke(logger, message);
         } catch (Exception e) {
             e.printStackTrace();
-            ERROR(NO_SUCH_METHOD_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NO_SUCH_METHOD_ERROR_MESSAGE);
         }
     }
 

@@ -1,6 +1,9 @@
 package lotto.domain;
 
-import static lotto.Config.*;
+import static lotto.Config.BONUS_LOTTO_LENGTH;
+import static lotto.Config.LOTTO_LENGTH;
+import static lotto.Config.LOTTO_RANGE_END_NUMBER;
+import static lotto.Config.LOTTO_RANGE_START_NUMBER;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -8,8 +11,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.utils.Logger;
-import lotto.utils.Logger.LogType;
 
 public class LottoMachine {
     private static final String INPUT_NUMBER_SIZE_ERROR_MESSAGE = "필요한 번호 개수만큼 입력하지 않았습니다.";
@@ -42,8 +43,7 @@ public class LottoMachine {
         inputs = inputs.stream().filter(s -> !s.isBlank()).map(s -> s.trim()).collect(Collectors.toList());
 
         if(inputs.size() != length){
-            Logger.log(INPUT_NUMBER_SIZE_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_NUMBER_SIZE_ERROR_MESSAGE);
         }
 
         return inputs;
@@ -58,15 +58,13 @@ public class LottoMachine {
 
     private void checkNumericString(String number) {
         if(!number.chars().allMatch(Character::isDigit)){
-            Logger.log(NUMERIC_STRING_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NUMERIC_STRING_ERROR_MESSAGE);
         }
     }
 
     private void checkAlreadyExistedNumber(List<Integer> numbers, int number) {
         if(numbers.contains(number)){
-            Logger.log(ALREADY_EXISTED_NUMBER_ERROR_MESSAGE, LogType.ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ALREADY_EXISTED_NUMBER_ERROR_MESSAGE);
         }
     }
 
