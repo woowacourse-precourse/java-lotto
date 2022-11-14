@@ -46,8 +46,8 @@
 ----[✅] <View> "보너스 번호를 입력해 주세요." --> LottoView#printBonusNumber()
 ----[✅] <Controller> 입력받은 보너스 번호 --> lotto#OrderBonusNumber()
 ----[✅] <Data> 입력받은 보너스 번호 --> lotto#LottoBonus()
--------------[✅] <TEST> 숫자 범위?
 -------------[✅] <TEST> 당첨번호와 중복되는가?
+-------------[✅] <TEST> 숫자 범위?
 
 [✅] 당첨 확인
 [로또 규칙에 맞게 당첨 내역 확인]
