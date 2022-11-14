@@ -36,36 +36,24 @@ public class LottoService {
     }
 
     public List<Integer> getResult(WinningLotto winningLotto, Lottos lottos) {
-        HashMap<Integer, Integer> resultMap = new HashMap<>();
+        HashMap<Integer, Integer> result = new HashMap<>();
         for (Lotto lotto : lottos.getLottos()) {
             int prize = calPrize(winningLotto, lotto);
-            updateResult(resultMap, prize);
+            updateResult(result, prize);
         }
-        return convertResultMapToResultList(resultMap);
-    }
-
-    private List<Integer> convertResultMapToResultList(HashMap<Integer, Integer> resultMap) {
-        ArrayList<Integer> result = new ArrayList<>();
-        for (int prize : PRIZES) {
-            result.add(resultMap.getOrDefault(prize, 0));
-        }
-        return result;
+        return TypeConverter.convertResultMapToResultList(result);
     }
 
     private static void updateResult(HashMap<Integer, Integer> resultMap, int prize) {
-        for (int prizeNumber : PRIZES) {
-            if (prize == prizeNumber) {
-                int count = resultMap.getOrDefault(prizeNumber, 0) + 1;
-                resultMap.put(prizeNumber, count);
-                break;
-            }
-        }
+        int count = resultMap.getOrDefault(prize, 0) + 1;
+        resultMap.put(prize, count);
     }
 
     public int calPrize(WinningLotto winningLotto, Lotto lotto) {
         Lotto WinningLottoNumber = winningLotto.getLotto();
-        int countOfNumbersMatchWinningLotto = getCountOfNumbersMatchWinningLotto(WinningLottoNumber, lotto);
         int bonusNumber = winningLotto.getBonusNumber();
+
+        int countOfNumbersMatchWinningLotto = getCountOfNumbersMatchWinningLotto(WinningLottoNumber, lotto);
 
         if (countOfNumbersMatchWinningLotto != 5) {
             return getPrizeByMatchCount(countOfNumbersMatchWinningLotto);
