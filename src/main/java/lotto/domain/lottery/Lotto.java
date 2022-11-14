@@ -39,4 +39,9 @@ public class Lotto {
             throw new IllegalArgumentException(USER_LOTTERY_NUMBERS_CONFLICT_ERROR);
         }
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }

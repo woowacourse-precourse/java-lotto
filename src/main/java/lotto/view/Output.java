@@ -8,6 +8,8 @@ import static lotto.domain.result.Rank.THREE_MATCHES;
 
 import java.util.List;
 import java.util.Map;
+import lotto.domain.lottery.Lotto;
+import lotto.domain.lottery.LottoGroup;
 import lotto.domain.result.Result;
 
 public class Output {
@@ -19,6 +21,13 @@ public class Output {
 
     public static void printError(String message) {
         System.out.println(ERROR_PREFIX + message);
+    }
+
+    public static void printLottoGroup(LottoGroup lottoGroup) {
+        List<Lotto> lottteries = lottoGroup.getLottoGroup();
+        for (Lotto lotto : lottteries) {
+            System.out.println(lotto.toString());
+        }
     }
 
     public static void printWinningStatistics(Result result) {

@@ -23,6 +23,8 @@ public class LottoController {
             Output.purchaseCountNotification(purchaseCount);
 
             LottoGroup lottoGroup = createLottoGroup(purchaseCount);
+            Output.printLottoGroup(lottoGroup);
+
             WinningLotto winningLotto = createWinningLotto();
             BonusNumber bonusNumber = createBonusNumber(winningLotto);
 
@@ -49,18 +51,7 @@ public class LottoController {
     }
 
     private LottoGroup createLottoGroup(int purchaseCount) {
-        LotteryDrawMachine lotteryDrawMachine = new LotteryDrawMachine();
-        List<Lotto> lotteries = new ArrayList<>();
-        for (int count = 0; count < purchaseCount; count++) {
-            Lotto lotto = createLotto(lotteryDrawMachine);
-            Output.printLotteryNumbers(lotto.getNumbers());
-            lotteries.add(lotto);
-        }
-        return new LottoGroup(lotteries);
-    }
-
-    private Lotto createLotto(LotteryDrawMachine lotteryDrawMachine) {
-        return new Lotto(lotteryDrawMachine.drawLotteryNumbers());
+        return new LottoGroup(purchaseCount);
     }
 
     private WinningLotto createWinningLotto() {
