@@ -2,18 +2,18 @@ package lotto.domain;
 
 import java.util.HashMap;
 import java.util.Map;
-import lotto.exception.domain.LottoNumberRangeException;
+import lotto.exception.domain.LottoBonusNumberRangeException;
 
 public class LottoBonusNumber {
-    private static final int LOTTO_NUMBER_MIN = 1;
-    private static final int LOTTO_NUMBER_MAX = 45;
+    private static final int LOTTO_BONUS_NUMBER_MIN = 1;
+    private static final int LOTTO_BONUS_NUMBER_MAX = 45;
     private static final Map<Integer, LottoBonusNumber> lottoNumberCash;
 
     private final int number;
 
     static {
         lottoNumberCash = new HashMap<>();
-        for (int number = LOTTO_NUMBER_MIN; number <= LOTTO_NUMBER_MAX; number++) {
+        for (int number = LOTTO_BONUS_NUMBER_MIN; number <= LOTTO_BONUS_NUMBER_MAX; number++) {
             lottoNumberCash.put(number, new LottoBonusNumber(number));
         }
     }
@@ -29,8 +29,8 @@ public class LottoBonusNumber {
     }
 
     private static void validateNumberRange(int number) {
-        if (number < LOTTO_NUMBER_MIN || number > LOTTO_NUMBER_MAX) {
-            throw new LottoNumberRangeException(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX);
+        if (number < LOTTO_BONUS_NUMBER_MIN || number > LOTTO_BONUS_NUMBER_MAX) {
+            throw new LottoBonusNumberRangeException(LOTTO_BONUS_NUMBER_MIN, LOTTO_BONUS_NUMBER_MAX);
         }
     }
 
