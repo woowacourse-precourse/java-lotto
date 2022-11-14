@@ -29,4 +29,12 @@ public class UserLottoTest {
                 .withMessageStartingWith(ERROR_NOT_VALID_COUNT);
     }
 
+    @DisplayName("로또 번호가 중복인지 검증")
+    @Test
+    void checkDuplicateLotto() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+                .withMessageStartingWith(ERROR_DUPLICATE_NUMBER);
+    }
+
 }
