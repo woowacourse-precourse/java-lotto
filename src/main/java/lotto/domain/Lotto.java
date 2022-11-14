@@ -5,6 +5,7 @@ import lotto.domain.enums.Number;
 import lotto.util.ExceptionHandler;
 import lotto.util.InputUtil;
 
+import javax.lang.model.type.ArrayType;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -51,9 +52,5 @@ public class Lotto {
     @Override
     public String toString() {
         return numbers.toString();
-    }
-
-    public void sortNumbers() {
-        Collections.sort(this.numbers);
     }
 }
