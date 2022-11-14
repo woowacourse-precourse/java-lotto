@@ -1,10 +1,12 @@
 package lotto.domain;
 
+import lotto.dto.GameResultResponseDtos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static lotto.dto.GameResultResponseDtos.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoResultTest {
@@ -27,5 +29,15 @@ class LottoResultTest {
                 LottoResult.THIRD,
                 LottoResult.SECOND);
         assertThat(LottoResult.sumWinnerPrice(lottoResults)).isEqualTo(61500000);
+    }
+
+    @DisplayName("LottoResult를 dto로 잘 반환하는지 검증")
+    @Test
+    void toResponseDto() {
+        GameResultResponseDto responseDto = LottoResult.SECOND.toResponseDto(3);
+        assertThat(responseDto.getSameNumberCount()).isEqualTo(5);
+        assertThat(responseDto.getWinnerPrice()).isEqualTo(30000000);
+        assertThat(responseDto.hasBonus()).isTrue();
+        assertThat(responseDto.getTotalCount()).isEqualTo(3);
     }
 }
