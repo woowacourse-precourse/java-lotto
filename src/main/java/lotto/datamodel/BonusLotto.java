@@ -6,6 +6,7 @@ public class BonusLotto {
     private final int bonusNumber;
     public BonusLotto(int number, List<Integer> winnumbers) {
         reduplication(number, winnumbers);
+        range(number);
         this.bonusNumber = number;
     }
 
@@ -15,5 +16,10 @@ public class BonusLotto {
         }
     }
 
+    private void range(int number) {
+        if(number < 1 || number > 45){
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
