@@ -29,13 +29,6 @@ public class Game {
         }
     }
 
-    public void Bonus() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String Bonus = Console.readLine();
-        int BonusNumber = Integer.parseInt(Bonus);
-        System.out.println(BonusNumber);
-    }
-
     public void Jackpot() {
         System.out.println("\n당첨 번호를 입력해 주세요.");
         String str1 = Console.readLine();
@@ -47,14 +40,31 @@ public class Game {
             numbers.add(Integer.parseInt(wo));
         }
         Lotto lotto = new Lotto(numbers);
-        System.out.println(lotto.getNumbers());
+        //System.out.println(lotto.getNumbers());
+
+        lotto.Bonus();
+        int[] countBonus = countBonus(datas);
+        for (int bonus : countBonus) {
+            System.out.print(bonus);
+        }
+
         List<Integer> counts = countNum(datas, numbers);
         System.out.println(counts);
-        int[] counter = prize(counts);
+        int[] counter = prize(counts,countBonus);
         Print(counter);
 
         float yield2 = this.yield(counter, LottoPrice);
         System.out.printf("\n총 수익률은 %.1f%%입니다.", yield2);
+    }
+
+    public int[] countBonus(List<List<Integer>> datas){
+        int[] count = new int[datas.size()];
+        for (int i=0; i< datas.size();i++) {
+            if(datas.get(i).contains(Lotto.BonusNumber)){
+                count[i]+=1;
+            }
+        }
+        return count;
     }
 
     public List<Integer> countNum(List<List<Integer>> datas, List<Integer> numbers) {
@@ -72,7 +82,7 @@ public class Game {
         return counts;
     }
 
-    public int[] prize(List<Integer> countNum) {
+    public int[] prize(List<Integer> countNum,int[] countBonus) {
         int counterSize = 5;
         int[] counter = new int[counterSize];
         for (int i = 0; i < countNum.size(); i++) {
@@ -80,10 +90,13 @@ public class Game {
                 counter[0] += 1;
             } else if (countNum.get(i) == 4) {
                 counter[1] += 1;
-            } else if (countNum.get(i) == 5) {
-                counter[2] += 1;
-            } else if (countNum.get(i) == 6) {
+            } else if (countNum.get(i) == 5 && countBonus[i]==1) {
                 counter[3] += 1;
+            } else if (countNum.get(i)==5){
+                counter[2] += 1;
+            }
+            else if (countNum.get(i) == 6) {
+                counter[4] += 1;
             }
         }
         for (int i = 0; i < counter.length; i++) {
@@ -93,11 +106,12 @@ public class Game {
     }
 
     public void Print(int[] counter) {
-        System.out.printf("\n당첨 통계\n---\n");
+        System.out.print("\n\n당첨 통계\n---\n");
         System.out.printf("3개 일치 (5,000원) - %d개\n", counter[0]);
         System.out.printf("4개 일치 (50,000원) - %d개\n", counter[1]);
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", counter[2]);
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개", counter[3]);
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", counter[3]);
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개", counter[4]);
     }
 
     public int yield(int[] counter, int LottoPrice) {
@@ -105,16 +119,8 @@ public class Game {
         sum += counter[0] * 5000;
         sum += counter[1] * 50000;
         sum += counter[2] * 1500000;
-        sum += counter[3] * 2000000000;
+        sum += counter[3] * 30000000;
+        sum += counter[4] * 2000000000;
         return sum / LottoPrice * 100;
     }
-    /*
-    3개 일치 (5,000원) - 1개
-    4개 일치 (50,000원) - 0개
-    5개 일치 (1,500,000원) - 0개
-    5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
-    6개 일치 (2,000,000,000원) - 0개
-    총 수익률은 62.5%입니다.
-     */
-
 }
