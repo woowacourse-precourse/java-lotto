@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,15 +30,11 @@ public class Output {
 
 	public static HashMap<String, Integer> calculateResult(ArrayList<List<Integer>> userNumber, ArrayList<Integer> winningNumber, int bonusNumber){
 		HashMap<String,Integer> result = new HashMap<String,Integer>();
-		result.put("three",0);
-		result.put("four",0);
-		result.put("five",0);
-		result.put("bonus",0);
-		result.put("six",0);
-
+		for (String s : Arrays.asList("three", "four", "five", "bonus", "six")) {
+			result.put(s,0);
+		}
 
 		for(int i=0;userNumber.size()>i;i++){
-
 			if (!userNumber.get(i).contains(bonusNumber)) {
 				userNumber.get(i).retainAll(winningNumber);
 			}
@@ -45,11 +42,10 @@ public class Output {
 				userNumber.get(i).retainAll(winningNumber);
 				userNumber.get(i).add(bonusNumber);
 			}
-
 			if (userNumber.get(i).size() == 3){
 				result.put("three",result.get("three")+1);
 			}
-			if (userNumber.get(i).size() == 4  && !userNumber.get(i).contains(bonusNumber)){
+			if (userNumber.get(i).size() == 4 ){
 				result.put("four",result.get("four")+1);
 			}
 			if (userNumber.get(i).size() == 5){

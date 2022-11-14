@@ -8,14 +8,18 @@ import camp.nextstep.edu.missionutils.Console;
 public class Input {
 	public static int budgetInput() {
 		System.out.println("게임을 구매하실 금액을 입력해주세요");
-		int budget = Integer.parseInt(Console.readLine());
-		validateBudget(budget);
-		int numberOfGame = budget/1000;
-		return numberOfGame;
+		try{
+			int budget = Integer.parseInt(Console.readLine());
+			validateBudget(budget);
+			int numberOfGame = budget/1000;
+			return numberOfGame;
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("[ERROR] 금액은 숫자로만 입력되어야 합니다.");
+		}
 	}
 	public static ArrayList<Integer> winningNumberInput() {
 		ArrayList<Integer> winningNumber = new ArrayList<>();
-		System.out.println("당첨번호 6자리를 ,로 나누어 입력하세요");
+		System.out.println("당첨번호 6자리를 ,로 나누어 입력하세요.");
 		String userInput = Console.readLine();
 		String[] array = userInput.split(",");
 
@@ -36,41 +40,39 @@ public class Input {
 
 	}
 	private static void validateBudget(int budget) {
+		System.out.println("여기");
 		if (budget < 1000) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR]");
 		}
 		if (budget % 1000 != 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR]");
 		}
 	}
 
 	private static void validateWinningNumber(ArrayList<Integer> integers) {
 		for (int i = 0;integers.size()>i;i++){
 			if (integers.get(i) < 1 || integers.get(i) > 45) {
-				System.out.println("잘못된 입력"+integers.get(i));
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("[ERROR]");
 			}
 		}
 		Set<Integer> hashIntegers = new HashSet<>(integers);
 		if (integers.size() != hashIntegers.size()) {
 			System.out.println("중복발생"+integers.size()+hashIntegers.size());
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR]");
 		}
 		if (integers.size() != 6) {
 			System.out.println("입력값개수오류"+integers.size());
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR]");
 		}
 	}
 
 	private static void validateBonusNumber(ArrayList<Integer> winningNumber,int bonusNumber) {
 		if(bonusNumber > 45 || bonusNumber < 1){
-			System.out.println("잘못된 입력"+bonusNumber);
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR]");
 		}
 		for(int i=0;winningNumber.size()>i;i++){
 			if(winningNumber.get(i) == bonusNumber){
-				System.out.println("중복된보너스 입력");
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("[ERROR]");
 			}
 		}
 	}

@@ -3,9 +3,11 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -16,12 +18,15 @@ public class Lotto{
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        System.out.println("여기가디스"+this.numbers);
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요");
+        }
+        Set<Integer> hashNumber = new HashSet<>(numbers);
+        if (hashNumber.size() != numbers.size()){
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력했습니다");
         }
     }
     public static ArrayList<List<Integer>> randomNumberGenerate(int numberOfGame){
