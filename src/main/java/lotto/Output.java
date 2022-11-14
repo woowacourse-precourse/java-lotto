@@ -1,9 +1,11 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 
 public class Output {
+	static DecimalFormat formatter = new DecimalFormat("###,###");
 
 	public static void printTicketCount(int totalNumberOfLotto) {
 		System.out.println();
@@ -25,12 +27,12 @@ public class Output {
 				continue;
 			}
 			if (rank == Rank.SECOND) {
-				System.out.println(rank.getMatchCount() + "개 일치, 보너스 볼 일치 (" + rank.getMoney() + "원) - "
+				System.out.println(rank.getMatchCount() + "개 일치, 보너스 볼 일치 (" + formatter.format(rank.getMoney()) + "원) - "
 					+ result.get(rank.getMatchCount()) + "개");
 				continue;
 			}
 			System.out.println(
-				rank.getMatchCount() + "개 일치 (" + rank.getMoney() + "원) - " + result.get(rank.getMatchCount()) + "개");
+				rank.getMatchCount() + "개 일치 (" + formatter.format(rank.getMoney()) + "원) - " + result.get(rank.getMatchCount()) + "개");
 		}
 	}
 
