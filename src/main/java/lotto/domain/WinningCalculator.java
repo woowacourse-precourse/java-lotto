@@ -82,10 +82,24 @@ public class WinningCalculator {
 
     private void validate(String numbersRaw) {
         try {
-            List<Integer> number = convertStringToIntegerList(numbersRaw);
+            List<Integer> numbers = convertStringToIntegerList(numbersRaw);
+            validateNumbers(numbers);
         }
         catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자가 너무 큽니다.");
         }
+    }
+
+    private void validateNumbers(List<Integer> numbers) {
+        checkLengthOfNumbers(numbers);
+        checkRangeOfNumberInNumers(numbers);
+        checkDuplicationOfNumers(numbers);
+    }
+
+    private void checkLengthOfNumbers(List<Integer> numbers) {
+        if (numbers.size() == 6) {
+            return;
+        }
+        throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
     }
 }
