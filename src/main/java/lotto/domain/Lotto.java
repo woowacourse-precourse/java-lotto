@@ -1,17 +1,21 @@
 package lotto.domain;
 
 import java.util.List;
+import lotto.exception.domain.LottoNumberRangeException;
 import lotto.exception.domain.LottoSizeException;
 import lotto.exception.domain.LottoNumberDuplicateException;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
+    private static final int LOTTO_NUMBER_MIN = 1;
+    private static final int LOTTO_NUMBER_MAX = 45;
 
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicate(numbers);
+        numbers.forEach(this::validateLottoNumberRange);
         this.numbers = numbers;
     }
 
@@ -24,6 +28,12 @@ public class Lotto {
     private void validateDuplicate(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new LottoNumberDuplicateException();
+        }
+    }
+
+    private void validateLottoNumberRange(int number) {
+        if (number < LOTTO_NUMBER_MIN || number > LOTTO_NUMBER_MAX) {
+            throw new LottoNumberRangeException(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX);
         }
     }
 
