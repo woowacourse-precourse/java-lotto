@@ -30,6 +30,12 @@ public class Application {
 
             // 사용자 입력 검증
             Lotto lotto = new Lotto(numberSplit.getNumber());
+
+            // 사용자 수와 로또의 수 비교
+            Compare compare = new Compare(numberSplit.getNumber(), lottoNumbers);
+
+            System.out.println(lottoNumbers);   // 잘 작동하는 지 확인하는 코드
+            System.out.println(compare.same);   // 잘 작동하는 지 확인하는 코드
         }
         // 보너스 번호
         // 당첨 내역
