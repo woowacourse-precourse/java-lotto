@@ -22,4 +22,18 @@ public class Lotto {
     public void printAscending() {
         System.out.println(numbers.toString());
     }
+
+    public Integer containsN(List<Integer> numbers) {
+        int numberOfSame = 0;
+        for (Integer number : numbers) {
+            if (this.numbers.contains(number)) {
+                numberOfSame += 1;
+            }
+        }
+        return numberOfSame;
+    }
+
+    public boolean contains(Integer number) {
+         return this.numbers.contains(number);
+    }
 }

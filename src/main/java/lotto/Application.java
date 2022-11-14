@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
-
+import java.util.Map;
+import java.util.EnumMap;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -122,6 +123,20 @@ public class Application {
         return lottos;
     }
 
+    public static Map<WIN, Integer> checkWinnings(List<Lotto> lottos) {
+        int sameNumbers = 0;
+        boolean sameBonus;
+        Map<WIN, Integer> winnings = new EnumMap<>(WIN.class);
+        WIN win;
+
+        for (Lotto lotto : lottos) {
+            sameNumbers = lotto.containsN(winningNumbers);
+            sameBonus = lotto.contains(bonusNumber);
+            win = WIN.getWIN(sameNumbers, sameBonus);
+            winnings.put(win, winnings.getOrDefault(win, 0));
+        }
+        return winnings;
+    }
 
 
 }
