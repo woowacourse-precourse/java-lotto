@@ -13,4 +13,9 @@ public class MessagePrint {
 	public void changeList(List<Integer> list) {
 		System.out.println(list);
 	}
+
+	public void countLottoPrint(String inputPrice) {
+		LottoProgram lottoProgram = new LottoProgram();
+		System.out.println(lottoProgram.countLotto(inputPrice) + Constants.COUNT_LOTTO_PRINT);
+	}
 }
