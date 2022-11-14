@@ -6,7 +6,8 @@ public class ErrorCheck {
             Integer.parseInt(userInput);
             return true;
         }catch(Exception e){
-            throw new IllegalArgumentException("[ERROR] 금액을 제대로 입력해주세요.");
+            System.out.println("[ERROR] 보너스 숫자를 제대로 입력해 주세요.");
+            throw new IllegalArgumentException();
         }
     }
 
