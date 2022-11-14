@@ -49,4 +49,8 @@ public class Person {
         return totalPrize;
     }
 
+    private float getReturnRate() {
+        return Math.round((sumPrize()/results.size())*10/10.0);
+    }
+
 }
