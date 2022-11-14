@@ -65,6 +65,12 @@ public enum Rank {
                 .sum();
     }
 
+    public long calculateCount(List<Rank> results) {
+        return results.stream()
+                .filter(rank -> rank.matchCount == this.getMatchCount())
+                .count();
+    }
+
     public int getPrize() {
         return prize;
     }
