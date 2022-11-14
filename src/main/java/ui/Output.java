@@ -10,7 +10,11 @@ public class Output {
     private static final String FIVE_AND_BONUS_WINNING = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     private static final String SIX_WINNING = "6개 일치 (2,000,000,000원) - ";
 
-    void printPriceInputMessage(){
+    void printPriceInputMessage() {
         System.out.println(PRICE_INPUT_MESSAGE);
+    }
+
+    void printPurchaseQuantity(int purchaseQuantity) {
+        System.out.println(purchaseQuantity + "개를 구매했습니다");
     }
 }
