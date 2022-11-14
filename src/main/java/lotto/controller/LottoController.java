@@ -29,11 +29,17 @@ public class LottoController {
     private void start() {
 
         LottoAmount lottoAmount = inputAmount();
+
         List<List<Integer>> lotto = buyLotto(lottoAmount);
+
         Lotto lottoNumber = inputLotto();
+
         BonusNumber bonusNumber = inputBonusNumber();
+
         WinningNumbers winningNumbers = resultNumbers(lottoNumber.getLottoNumber(), bonusNumber.getBonusNumber());
+
         Statistics statistics = summingUp();
+
         winningHistory(statistics, winningNumbers, lotto);
         calculator(statistics, lottoAmount);
     }
