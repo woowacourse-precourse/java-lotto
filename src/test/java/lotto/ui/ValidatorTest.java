@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class ValidatorTest {
     @Nested
     class isNumberForChar {
@@ -50,4 +52,21 @@ public class ValidatorTest {
         }
     }
 
+    @Nested
+    class isInRange {
+        @DisplayName("주어진 리스트의 모든 숫자가 범위 내인 경우")
+        @Test
+        void isInRange_범위안인경우() {
+            Assertions.assertThatThrownBy(
+                            () -> Validator.isInRange(List.of(0,1,2,3,4,5))
+                    )
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("주어진 리스트 중 특정 숫자가 범위 밖에 있는 경우")
+        @Test
+        void isInRange_범위밖인경우() {
+            Assertions.assertThat(Validator.isInRange(List.of(1,2,3,4,5,6))).isTrue();
+        }
+    }
 }
