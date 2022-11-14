@@ -19,7 +19,7 @@ public class InputTest extends NsTest {
     @Test
     void 입력금액단위_테스트(){
         assertSimpleTest(() -> {
-            run("1010");
+            run("1100");
             assertThat(output()).isEqualTo("[ERROR] 입력하신 금액은 1,000원 단위가 아닙니다.");
         });
     }

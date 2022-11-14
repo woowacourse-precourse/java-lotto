@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Service {
@@ -10,10 +11,13 @@ public class Service {
     }
     public void start(){
         int cash=cash();
+        int bonusNumber;
         List<List<Integer>> lottoBundle=buyLotto(cash/1000);
-        lottoBundlePrint(lottoBundle); //생성한 로또 번호 출력
-        //당첨 번호를 입력해 주세요
-        //보너스 번호를 입력해 주세요
+        lottoBundlePrint(lottoBundle);
+        System.out.println("당첨 번호를 입력해 주세요.");
+        Lotto lotto=new Lotto(input.getWinningNumbers());
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonusNumber=input.getBonusNumber();
         //당첨 통계
     }
     private int cash(){//이름 변경
@@ -28,7 +32,8 @@ public class Service {
     }
     private void lottoBundlePrint(List<List<Integer>> lottoBundle){
         for (List<Integer> lotto: lottoBundle) {
-            System.out.println(lotto);
+            Collections.sort(lotto);
+            System.out.println(lotto); //오름 차순으로 출력 까먹음
         }
     }
 }
