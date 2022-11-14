@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 
 public class DrawLotto {
     ListOfLottos lottoList;
@@ -27,5 +28,13 @@ public class DrawLotto {
             return true;
         }
         return false;
+    }
+
+    private Map<Ranking, Integer> setupComparison() {
+        Map<Ranking, Integer> comparison = new HashMap<Ranking, Integer>();
+        for (Ranking rank : Ranking.values()) {
+            comparison.put(rank, 0);
+        }
+        return comparison;
     }
 }
