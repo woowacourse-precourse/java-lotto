@@ -1,5 +1,7 @@
 package domain;
 
+import exception.WinningExceptionType;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -17,10 +19,10 @@ public class WinningNumber {
         return winningNumbers;
     }
 
-    public HashSet<Integer> numberCount(List<Integer> list){
+    public void numberCount(List<Integer> list){
         HashSet<Integer> set = new HashSet<>(list);
         if(set.size() != winning_cnt){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_NUMBER_COUNT.getErrorMessage());
         }
     }
 }
