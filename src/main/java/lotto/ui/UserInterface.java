@@ -3,8 +3,8 @@ package lotto.ui;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 import lotto.constant.WinningResult;
-import lotto.domain.Validator;
 
 public class UserInterface {
     private static final String INPUT_MONEY_ANNOUNCEMENT = "구입금액을 입력해 주세요.";
@@ -13,11 +13,12 @@ public class UserInterface {
     private static final String INPUT_BONUS_NUMBER_ANNOUNCEMENT = "보너스 번호를 입력해 주세요.";
     private static final String WINNING_STATISTICS_ANNOUNCEMENT = "당첨 통계\n---";
     private static final String YIELD_FORMAT_ANNOUNCEMENT =  "총 수익률은 %s%%입니다.";
+    private static final String INPUT_MONEY_PATTERN = "^[1-9]+[0-9]{3,8}+$";
 
     public static String getInputMoney() {
         System.out.println(INPUT_MONEY_ANNOUNCEMENT);
         String inputMoneyRaw = Console.readLine();
-//        Validator.checkInputMoney(inputMoneyRaw);
+        checkInputMoney(inputMoneyRaw);
         return inputMoneyRaw;
     }
 
@@ -34,7 +35,7 @@ public class UserInterface {
         System.out.println();
         System.out.println(INPUT_WINNING_NUMBERS_ANNOUNCEMENT);
         String numbersRaw = Console.readLine();
-//        Validator.checkInputWinningNumbers(numbersRaw);
+//        checkInputWinningNumbers(numbersRaw);
         return numbersRaw;
     }
 
@@ -42,7 +43,7 @@ public class UserInterface {
         System.out.println();
         System.out.println(INPUT_BONUS_NUMBER_ANNOUNCEMENT);
         String bonusNumberRaw = Console.readLine();
-//        Validator.checkInputBonusNumber(bonusNumberRaw);
+//        checkInputBonusNumber(bonusNumberRaw);
         return bonusNumberRaw;
     }
 
@@ -59,5 +60,15 @@ public class UserInterface {
 
     public static void printYield(String yield) {
         System.out.println(String.format(YIELD_FORMAT_ANNOUNCEMENT, yield));
+    }
+
+    private static void checkInputMoney(String inputMoneyRaw) {
+        boolean isMatch = Pattern.matches(INPUT_MONEY_PATTERN, inputMoneyRaw);
+        if (isMatch) {
+            return;
+        }
+        throw new IllegalArgumentException(
+                "[ERROR] 1000의 배수를 입력하세요. 단, 1000000000 미만의 수만 입력해주세요. (ex: 2000, 12345000)"
+        );
     }
 }
