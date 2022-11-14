@@ -36,10 +36,13 @@ public class WinningStatistics {
         return numbers.contains(bonusNumber);
     }
 
-    public static double getLottoYield(Map<WinningRank, Integer> winningDetails, int money) {
-        long winningAmount = winningDetails.entrySet().stream()
+    public static long getWinningAmount(Map<WinningRank, Integer> winningDetails) {
+        return winningDetails.entrySet().stream()
                 .mapToLong(entry -> (long) entry.getKey().getWinningPrice() * entry.getValue())
                 .sum();
+    }
+
+    public static double getLottoYield(long winningAmount, int money) {
         return PERCENTAGE + (double) (winningAmount - money) / money * PERCENTAGE;
     }
 }

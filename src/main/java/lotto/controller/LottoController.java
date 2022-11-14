@@ -34,6 +34,7 @@ public class LottoController {
     private void printWinningInformation(Map<WinningRank, Integer> winningDetails, int purchaseAmount) {
         OutputView.printWinningStatistics();
         OutputView.printWinningDetails(winningDetails);
-        OutputView.printLottoYield(WinningStatistics.getLottoYield(winningDetails, purchaseAmount));
+        long winningAmount = WinningStatistics.getWinningAmount(winningDetails);
+        OutputView.printLottoYield(WinningStatistics.getLottoYield(winningAmount, purchaseAmount));
     }
 }
