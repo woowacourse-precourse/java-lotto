@@ -76,10 +76,11 @@ public class Checker {
     }
 
     public void checkBoundary(List<Integer> numbers) {
-        for(int number:numbers){
+        for (int number : numbers) {
             checkBoundary(number);
         }
     }
+
     public void checkBoundary(int number) {
         if (45 < number && number < 1) {
             throw new IllegalArgumentException(String.format(LOTTO_CHECKER_ERROR, number, LOTTO_CHECKER_ERROR_ILLEGAL));
@@ -92,7 +93,7 @@ public class Checker {
         List<Integer> numbers = new ArrayList<>();
 
         for (String s : inputs) {
-            s=s.strip();
+            s = s.strip();
             int number = this.checkNumber(s);
             numbers.add(number);
         }

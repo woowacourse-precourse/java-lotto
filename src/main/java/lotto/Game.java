@@ -67,7 +67,7 @@ public class Game {
         printBonus = 1;
         winningBonus = 2;
         userResults = user.getResults();
-        for(List<Result> results1:userResults) System.out.println("!--Test: "+results1);
+        for (List<Result> results1 : userResults) System.out.println("!--Test: " + results1);
 
         lotteryCount = user.getLotteryCount();
         lotteryStat = checker.checkLotteryStat(winnings, lotteryCount);
@@ -76,7 +76,7 @@ public class Game {
         System.out.println();
         System.out.println(LOTTO_GAME_WINNING_STATS);
         System.out.println(LOTTO_GAME_DIVISION);
-        for (int i = MIN_COINCIDE; i < WINNINGS.length-1; ++i) {
+        for (int i = MIN_COINCIDE; i < WINNINGS.length - 1; ++i) {
             String coincideMessage;
             if (i == 6 && printBonus > 0) {
                 i -= 1;

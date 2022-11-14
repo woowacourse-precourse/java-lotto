@@ -19,7 +19,7 @@ public class User {
     public User(int amount) {
         this.setLotteryCount(amount);
         this.makeLotteries();
-        results=new ArrayList<>();
+        results = new ArrayList<>();
         this.setResultsReady();
         winnings = 0;
     }
@@ -82,11 +82,12 @@ public class User {
         return results;
     }
 
+    public void setLotteryStat(float lotteryStat) {
+        this.lotteryStat = lotteryStat;
+    }
+
     public float getLotteryStat() {
         return lotteryStat;
     }
 
-    public void setLotteryStat(float lotteryStat) {
-        this.lotteryStat = lotteryStat;
-    }
 }
