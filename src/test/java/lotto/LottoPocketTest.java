@@ -2,13 +2,13 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import domain.LottoPublisher;
-import dto.ScratchResult;
-import java.util.List;
 import domain.Lotto;
 import domain.LottoGrade;
 import domain.LottoPocket;
+import domain.LottoPublisher;
 import domain.WinningLotto;
+import dto.ScratchResult;
+import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -28,12 +28,15 @@ public class LottoPocketTest {
         Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto lottoB = new Lotto(List.of(2, 4, 6, 8, 10, 11));
         Lotto lottoC = new Lotto(List.of(13, 14, 15, 16, 17, 18));
-        Lotto lottoD = new Lotto(List.of(5, 6, 7, 8, 9, 10));
+        Lotto lottoD = new Lotto(List.of(5, 2, 11, 8, 9, 10));
+
+        System.out.println(lottoD.getCountOfMatchNumber(new Lotto(List.of(1, 2, 3, 4, 5, 8))));
+        System.out.println(lottoB.getCountOfMatchNumber(new Lotto(List.of(1, 2, 3, 4, 5, 8))));
 
         lottos = List.of(lottoA, lottoB, lottoC, lottoD);
         pocket = new LottoPocket(lottos);
 
-        winningLotto = new WinningLotto(List.of(2, 3, 4, 5, 6, 7), 1);
+        winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 8)), 6);
     }
 
     @Nested

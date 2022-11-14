@@ -24,24 +24,24 @@ public class WinningLottoTest {
             @Test
             @DisplayName("숫자가 6개가 로또 형식을 지키지 않는 경우 예외가 발생한다.")
             void createWinningLottoNotFollowsRule() {
-                assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6, 7), 8)).isInstanceOf(
+                assertThatThrownBy(() -> new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 5)), 8)).isInstanceOf(
                         IllegalArgumentException.class);
             }
 
             @Test
             @DisplayName("보너스 번호가 로또 번호 안에 있는 경우 예외가 발생한다.")
             void createWinningLottoBonusNumInLottoNumbers() {
-                assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 5)).isInstanceOf(
+                assertThatThrownBy(() -> new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 5)).isInstanceOf(
                         IllegalArgumentException.class);
             }
 
             @Test
             @DisplayName("보너스 번호가 [1,45] 범위를 벗어난 경우 예외가 발생한다.")
             void createWinningLottoBonusNumOutOfRange() {
-                assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 46)).isInstanceOf(
+                assertThatThrownBy(() -> new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 46)).isInstanceOf(
                         IllegalArgumentException.class);
 
-                assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 0)).isInstanceOf(
+                assertThatThrownBy(() -> new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 0)).isInstanceOf(
                         IllegalArgumentException.class);
             }
         }
@@ -50,9 +50,13 @@ public class WinningLottoTest {
         @Test
         @DisplayName("모든 조건을 만족하면 Winning Lotto 객체를 생성한다")
         void createNormalLotto() {
-            new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
-            new WinningLotto(List.of(42, 2, 3, 4, 5, 6), 45);
-            new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
+            Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            Lotto lottoB = new Lotto(List.of(42, 2, 3, 4, 5, 6));
+            Lotto lottoC = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+            new WinningLotto(lottoA, 7);
+            new WinningLotto(lottoB, 45);
+            new WinningLotto(lottoC, 7);
 
         }
     }
@@ -64,7 +68,8 @@ public class WinningLottoTest {
         @Test
         @DisplayName("로또 객체와의 비교 결과를 LottoGrade 형태로 반환한다.")
         void returnCompareResultAsLottoGrade() {
-            WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
+            Lotto winningNumbers = new Lotto(List.of(1,2,3,4,5,6));
+            WinningLotto winningLotto = new WinningLotto(winningNumbers, 7);
 
             Lotto lottoForFirst = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             Lotto lottoForSecond = new Lotto(List.of(1, 2, 3, 4, 5, 7));

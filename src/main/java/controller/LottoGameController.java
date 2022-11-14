@@ -30,10 +30,10 @@ public class LottoGameController {
             lottoPocket = new LottoPocket(lottos);
             outputView.printLottoPublishInfo(lottos);
 
-            List<Integer> winningNumber = inputView.getWinningNumbersFromUser();
+            Lotto winningNumbers = new Lotto(inputView.getWinningNumbersFromUser());
             int bonusNumber = inputView.getBonusNumberFromUser();
 
-            ScratchResult scratchResult = getScratchResult(winningNumber, bonusNumber);
+            ScratchResult scratchResult = getScratchResult(winningNumbers, bonusNumber);
             outputView.printScratchResult(scratchResult);
         } catch (IllegalArgumentException e) {
             outputView.printException(e);
@@ -44,7 +44,7 @@ public class LottoGameController {
         return Collections.unmodifiableList(LottoPublisher.publishLottos(money));
     }
 
-    private ScratchResult getScratchResult(List<Integer> winningNumbers, int bonusNumber) {
+    private ScratchResult getScratchResult(Lotto winningNumbers, int bonusNumber) {
         WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
         return lottoPocket.getScratchResult(winningLotto);
     }

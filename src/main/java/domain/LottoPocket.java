@@ -2,6 +2,7 @@ package domain;
 
 import dto.ScratchResult;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,7 @@ public class LottoPocket {
             numberOfWinsByGrade.put(grade, numberOfWinsByGrade.getOrDefault(grade, 0) + 1);
         });
 
+        System.out.println(numberOfWinsByGrade.get(LottoGrade.FIFTH));
         return Collections.unmodifiableMap(numberOfWinsByGrade);
     }
 

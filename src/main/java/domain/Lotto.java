@@ -2,7 +2,9 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 한장의 로또 티켓 정보를 관리하는 클래스
@@ -46,7 +48,7 @@ public class Lotto {
     // TODO: 추가 기능 구현
 
     public int getCountOfMatchNumber(Lotto otherLotto) {
-        List<Integer> copiedNumber = new ArrayList<>(numbers);
+        Set<Integer> copiedNumber = new HashSet<>(numbers);
         copiedNumber.retainAll(otherLotto.numbers);
 
         return copiedNumber.size();
