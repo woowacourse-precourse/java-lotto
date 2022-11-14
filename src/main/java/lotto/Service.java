@@ -97,5 +97,14 @@ public class Service {
         return false;
     }
 
+    public int sumAllWinnings(List<RankType> rankTypes) {
+        int allWinnings = 0;
+
+        for(RankType rankType : rankTypes) {
+            allWinnings += rankType.getReward();
+        }
+        return allWinnings;
+    }
+
 
 }

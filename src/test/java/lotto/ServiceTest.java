@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,14 +16,10 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 public class ServiceTest {
 
     private Service service;
-    private Lotto lotto;
-    private WinningNumber winningNumber;
 
     @BeforeEach
     void setUp() {
         service = new Service();
-        lotto = new Lotto(List.of(1,2,3,4,5,6));
-
     }
 
     @DisplayName("문자열을 정수로 변경시키는 메서드 테스트")
@@ -90,15 +87,34 @@ public class ServiceTest {
         assertThat(service.getLotteryRank(lotto, winningNumber)).isEqualTo(rankType);
     }
 
+    @DisplayName("모든 로또 당첨금을 반환하는 테스트")
+    @ParameterizedTest
+    @MethodSource("provideRankTypesAndSumAllWinnings")
+    void sumAllWinningsTest(List<RankType> rankTypes, int sumAllWinnings) {
+        assertThat(service.sumAllWinnings(rankTypes)).isEqualTo(sumAllWinnings);
+    }
+
     private static Stream<Arguments> provideLottoAndWinningNumber() {
         int bonusNumber = 20;
-        WinningNumber winningNumber = new WinningNumber(new Lotto(List.of(1,2,3,4,5,6)), bonusNumber);
+        WinningNumber winningNumber = new WinningNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)), bonusNumber);
         return Stream.of(
-                Arguments.of(new Lotto(List.of(1,2,3,4,5,6)), winningNumber, RankType.FIRST),   //1등
-                Arguments.of(new Lotto(List.of(1,2,3,4,5,20)), winningNumber, RankType.SECOND),  //2등
-                Arguments.of(new Lotto(List.of(1,2,3,4,5,7)), winningNumber, RankType.THIRD),  //3등..
-                Arguments.of(new Lotto(List.of(1,2,3,4,9,8)), winningNumber, RankType.FOURTH),
-                Arguments.of(new Lotto(List.of(1,2,3,10,11,20)), winningNumber, RankType.FIFTH)
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), winningNumber, RankType.FIRST),   //1등
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 20)), winningNumber, RankType.SECOND),  //2등
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 7)), winningNumber, RankType.THIRD),  //3등..
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 9, 8)), winningNumber, RankType.FOURTH),
+                Arguments.of(new Lotto(List.of(1, 2, 3, 10, 11, 20)), winningNumber, RankType.FIFTH)
+        );
+    }
+
+    private static Stream<Arguments> provideRankTypesAndSumAllWinnings() {
+        List<RankType> rankTypes = new ArrayList<>();
+        return Stream.of(
+                //1, 2, 3등 당첨금 더한 값은 2,031,500,000원
+                Arguments.of(List.of(RankType.FIRST, RankType.SECOND, RankType.THIRD), 2_031_500_000),
+                //1, 4, 5등 당첨금 더한 값은 2,000,055,000원
+                Arguments.of(List.of(RankType.FIRST, RankType.FOURTH, RankType.FIFTH), 2_000_055_000),
+                //당첨 안된 경우
+                Arguments.of(List.of(RankType.NONE, RankType.NONE, RankType.NONE), 0)
         );
     }
 }
