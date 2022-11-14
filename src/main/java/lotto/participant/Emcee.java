@@ -27,13 +27,13 @@ public class Emcee {
     }
 
     public void showPublishedLottos(List<Lotto> lottos) {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
+        System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
         System.out.println("Lotto 정보는 다음과 같습니다.");
         System.out.println("==================================================");
         for (Lotto lotto : lottos) {
             System.out.println(lotto);
         }
-        System.out.println("==================================================");
+        System.out.println("==================================================\n");
     }
 
     public void guideWinningNumber() {
@@ -43,13 +43,13 @@ public class Emcee {
     }
 
     public void guideBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         System.out.println("보너스 번호는 당첨 번호와 중복되지 않는 1부터 45 사이의 숫자입니다.");
         System.out.println("하나의 보너스 번호만 입력해 주세요.");
     }
 
     public void showStatistics(Map<Rank, Integer> tallyOfRanks) {
-        System.out.println("당첨 통계입니다.");
+        System.out.println("\n당첨 통계입니다.");
         System.out.println("=========================");
         System.out.println("3개 일치 (5,000원) - "
                 + tallyOfRanks.getOrDefault(FIFTH_THREE_MATCHED, 0) + "개");
