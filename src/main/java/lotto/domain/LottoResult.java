@@ -16,18 +16,18 @@ public enum LottoResult {
 
     private final int sameNumberCount;
     private final int winnerPrice;
-    private final boolean isSameBonus;
+    private final boolean hasBonus;
 
-    LottoResult(int sameNumberCount, int winnerPrice, boolean isSameBonus) {
+    LottoResult(int sameNumberCount, int winnerPrice, boolean hasBonus) {
         this.sameNumberCount = sameNumberCount;
         this.winnerPrice = winnerPrice;
-        this.isSameBonus = isSameBonus;
+        this.hasBonus = hasBonus;
     }
 
-    public static LottoResult of(int sameNumberCount, boolean isSameBonus) {
+    public static LottoResult of(int sameNumberCount, boolean hasBonus) {
         return Arrays.stream(LottoResult.values())
                 .filter(gameResult -> gameResult.isEqualSameNumberCount(sameNumberCount))
-                .filter(gameResult -> gameResult.isEqualSameBonus(isSameBonus))
+                .filter(gameResult -> gameResult.isEqualHasBonus(hasBonus))
                 .findFirst()
                 .orElse(ELSE);
     }
@@ -36,8 +36,8 @@ public enum LottoResult {
         return this.sameNumberCount == sameCount;
     }
 
-    private boolean isEqualSameBonus(boolean isSameBonus) {
-        return this.isSameBonus == isSameBonus;
+    private boolean isEqualHasBonus(boolean hasBonus) {
+        return this.hasBonus == hasBonus;
     }
 
     public static int sumWinnerPrice(List<LottoResult> lottoResults) {
@@ -51,7 +51,7 @@ public enum LottoResult {
     }
 
     public GameResultResponseDto toResponseDto(int totalCount) {
-        return new GameResultResponseDto(sameNumberCount, winnerPrice, isSameBonus, totalCount);
+        return new GameResultResponseDto(sameNumberCount, winnerPrice, hasBonus, totalCount);
     }
 
     public boolean isFirst() {
