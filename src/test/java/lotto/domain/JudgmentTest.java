@@ -16,4 +16,13 @@ class JudgmentTest {
         assertEquals(2, judgment.firstCount);
     }
 
+    @DisplayName("2등으로 당첨된 로또의 개수를 계산한다.")
+    @Test
+    void createSecondCount() {
+        Judgment judgment = new Judgment(List.of(List.of(1, 2, 3, 4, 5, 7),
+                List.of(2, 3, 4, 5, 6, 8),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 3, 4, 5, 6, 7)), List.of(1, 2, 3, 4, 5, 6), 7);
+        assertEquals(2, judgment.secondCount);
+    }
 }
