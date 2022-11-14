@@ -26,7 +26,7 @@ public class LottoMachine {
 
     private static void validatePurchaseAmount(int purchaseAmount) {
         if(purchaseAmount % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.WRONG_PURCHASE_AMOUNT.getExceptionMessage());
         }
     }
 
