@@ -2,12 +2,21 @@ package lotto.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import lotto.enums.LottoRank;
 
 public class LottoJudge {
+
+    private String lottoProfit;
+    private List<LottoRank> rankCount;
+
+    public String getLottoProfit() {
+        return lottoProfit;
+    }
+
+    public List<LottoRank> getRankCount() {
+        return rankCount;
+    }
 
     public String profitLotto(List<LottoRank> rankCount, int money) {
         double totalProfit = 0.0;
@@ -18,20 +27,22 @@ public class LottoJudge {
         }
 
         profitPercent = String.format("%.1f", (totalProfit / money) * 100.0);
+        this.lottoProfit = profitPercent;
         return profitPercent;
     }
 
-    public Map<LottoRank, Integer> judgeLotto(ArrayList<List<Integer>> lotteries,
+    public List<LottoRank> judgeLotto(ArrayList<List<Integer>> lotteries,
         List<Integer> winningNumbers,
         int bonusNumber) {
-        Map<LottoRank, Integer> rankCount = new HashMap<>();
+        List<LottoRank> rankCount = new ArrayList<>();
         ArrayList<List<Integer>> lottoResults = countLotto(lotteries, winningNumbers, bonusNumber);
         LottoRank lottoRank;
 
         for (List<Integer> lottoResult : lottoResults) {
             lottoRank = LottoRank.valueOf(lottoResult.get(0), lottoResult.get(1));
-            rankCount.put(lottoRank, rankCount.getOrDefault(lottoRank, 0) + 1);
+            rankCount.add(lottoRank);
         }
+        this.rankCount = rankCount;
         return rankCount;
     }
 

@@ -3,6 +3,7 @@ package lotto.model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import lotto.enums.LottoRank;
@@ -25,11 +26,11 @@ class LottoJudgeTest {
 
         LottoJudge lottoJudge = new LottoJudge();
 
-        Map<LottoRank, Integer> rankCount = lottoJudge.judgeLotto(lotteries, winningNumbers,bonusNumber);
+        List<LottoRank> rankCount = lottoJudge.judgeLotto(lotteries, winningNumbers,bonusNumber);
 
-        assertEquals(rankCount.get(LottoRank.FIRST), 1);
-        assertEquals(rankCount.get(LottoRank.SECOND), 1);
-        assertEquals(rankCount.get(LottoRank.THIRD), 2);
+        assertEquals(Collections.frequency(rankCount,LottoRank.FIRST), 1);
+        assertEquals(Collections.frequency(rankCount,LottoRank.SECOND), 1);
+        assertEquals(Collections.frequency(rankCount,LottoRank.THIRD), 2);
     }
 
     @DisplayName("총 수익률 판별")
