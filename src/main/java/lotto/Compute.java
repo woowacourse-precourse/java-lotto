@@ -8,6 +8,7 @@ package lotto;
 6개 일치 (2,000,000,000원) - 0개
  */
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -69,7 +70,7 @@ public class Compute {
     ) {
         boolean containsBonusNumber = lotto.contains(bonusNumber);
 
-        List<Integer> matchingNumbers = lotto;
+        List<Integer> matchingNumbers = new ArrayList<>(lotto);
         matchingNumbers.retainAll(winningNumbers);
         int count = matchingNumbers.size();
 
