@@ -8,6 +8,8 @@ package lotto;
 6개 일치 (2,000,000,000원) - 0개
  */
 
+import java.util.HashMap;
+
 public class Compute {
     private enum WinType {
         MATCH6("match6", "6개 일치 (2,000,000원) - $match6개"),
@@ -23,6 +25,15 @@ public class Compute {
             this.winTypeKey = winTypeKey;
             this.winTypeMessage = winTypeMessage;
         }
+    }
+
+    private HashMap<String, Integer> initializeWinRecords() {
+        HashMap<String, Integer> winRecords = new HashMap<>();
+
+        for (WinType winType : WinType.values()) {
+            winRecords.put(winType.winTypeKey, 0);
+        }
+        return winRecords;
     }
 }
 
