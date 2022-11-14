@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +45,8 @@ public class Application {
 
             List<List<Integer>> lotteries = lotteriesUI(lotteryQuantity);
 
+
+
         } catch (IllegalArgumentException e) {
             System.out.println(Messages.EXCEPTION_HEADER.getMessage() + e.getMessage());
         }
@@ -77,5 +82,30 @@ public class Application {
 
             System.out.println("[" + ticket + "]");
         }
+    }
+
+    private static List<Integer> jackpotUI() {
+        System.out.println(Messages.JACKPOT.getMessage());
+        String jackpotFigure = readLine();
+
+        validateJackpot(jackpotFigure);
+
+        List<Integer> jackpot = convertJackpotStringToList(jackpotFigure);
+        Collections.sort(jackpot);
+
+        new Lotto(jackpot);
+
+        return jackpot;
+    }
+
+    private static List<Integer> convertJackpotStringToList(String jackpotFigure) {
+        List<Integer> result = new ArrayList<>();
+        List<String> jackpotNumbers = Arrays.asList(jackpotFigure.split(Messages.DELIMITER.getMessage()));
+
+        for (String jackpotNumber : jackpotNumbers) {
+            result.add(Integer.valueOf(jackpotNumber));
+        }
+
+        return result;
     }
 }
