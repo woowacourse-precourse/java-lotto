@@ -62,18 +62,18 @@ public class LottoFacadeTest {
                     assertThat(result.getNumbers()).isEqualTo(lotto);
                 }),
                 DynamicTest.dynamicTest("잘못된 입력의 경우 예외를 던져준다.", () -> {
-                    final String input = "1,2,3,4,5,6,";
+                    final String input = "1,2,3,4,e,5";
 
                     assertThatThrownBy(() -> lottoFacade.registerWinLotto(input))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessageContaining("잘못된 입력값 입니다.");
                 }),
-                DynamicTest.dynamicTest("잘못된 입력의 경우 예외를 던져준다.", () -> {
+                DynamicTest.dynamicTest("잘못된 입력 길이의 경우 예외를 던져준다.", () -> {
                     final String input = "1,2,3,4,5";
 
                     assertThatThrownBy(() -> lottoFacade.registerWinLotto(input))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessageContaining(LottoEnum.LOTTO.getSize() +"개의 숫자를 입력해야 합니다.");
+                            .hasMessageContaining("입력 길이가 다릅니다.");
                 })
 
         );
