@@ -20,11 +20,7 @@ public enum Rank {
         return title;
     }
 
-    public HashMap<Rank, Integer> getRank() {
-        HashMap<Rank, Integer> rankInfo = new HashMap<>();
-        for (Rank rank : Rank.values()) {
-            rankInfo.put(rank, 0);
-        }
-        return rankInfo;
+    public long getReward() {
+        return reward;
     }
 }
