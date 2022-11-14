@@ -30,9 +30,15 @@
 - 랜덤 생성된 개별 로또 번호를 관리한다.
 - 로또 생성 기능, 유효성 확인 기능, 비교 기능을 제공한다.
 ### UI/InputManager
-- 사용자로 입력 처리 및 입력값 유효성 확인을 담당한다.
+- UIScanner을 통해 사용자로부터 값을 입력받는다.
+- 입력받은 값을 검증하고 LottoProgramManager로 전달한다.
+### UI/UIScanner
+- 사용자로부터 입력을 받는다.
 ### UI/OutputManager
-- UI 출력을 담당한다.
+- LottoProgramManager로부터 데이터를 받아 출력 양식에 맞게 가공한다.
+- UIPrinter를 통해 데이터를 UI로 출력한다.
+### UI/UIPrinter
+- stdout을 통한 UI 출력을 담당한다.
 ### UI/message/ErrorCode
 - enum 타입으로 에러 메세지를 저장한다.
 ### UI/message/UIMessage
