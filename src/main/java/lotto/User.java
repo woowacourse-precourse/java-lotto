@@ -19,6 +19,7 @@ public class User {
     }
 
     public void showWholeLotto() {
+        wholeLotto.forEach(System.out::println);
     }
 
     public List<Lotto> getWholeLotto() {

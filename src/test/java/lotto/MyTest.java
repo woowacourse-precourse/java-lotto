@@ -51,4 +51,19 @@ public class MyTest {
             assertThatThrownBy(() -> inputValidator.validateLotto(numbers)).isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @Test
+    @DisplayName("로또 구매 후 출력")
+    void 로또_구매_후_출력(){
+        User user = new User();
+        NumberGenerator numberGenerator = new NumberGenerator();
+        int numOfLotto = user.getNumberOfAvailableLotto(8000);
+        for(int i=0; i<8; i++){
+            List<Integer> numbers = numberGenerator.generateSixRandomNumbers();
+            Lotto lotto = new Lotto(numbers);
+            user.buyLotto(lotto);
+        }
+        user.showWholeLotto();
+    }
+
 }
