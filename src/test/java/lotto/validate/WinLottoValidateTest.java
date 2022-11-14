@@ -1,0 +1,25 @@
+package lotto.validate;
+
+import lotto.domain.Lotto;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
+
+class WinLottoValidateTest {
+    private static WinLottoValidate winLottoValidate;
+
+    @BeforeEach
+    public void beforeEach() {
+        winLottoValidate = new WinLottoValidate();
+    }
+    @Test
+    public void lottoBonusDuplicateTest() throws Exception {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(() -> winLottoValidate.validate(lotto, 6))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+}
