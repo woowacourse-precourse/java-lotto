@@ -5,6 +5,7 @@ import java.util.Objects;
 public class LottoNumber implements Comparable<LottoNumber> {
     public static final String ERROR_NUMBER_LESS_THAN_MAX_NUMBER = "[ERROR] 로또 번호는 45보다 큰 숫자를 입력 할 수 없습니다";
     public static final String ERROR_NUMBER_GREATER_THAN_MIN_NUMBER = "[ERROR] 로또 번호는 1보다 작은 숫자를 입력 할 수 없습니다";
+    public static final String ERROR_INPUT_IS_NUMBER = "[ERROR] 로또 번호는 숫자만 입력할 수 있습니다.";
     private static final Integer MAX_SIZE = 45;
     private static final Integer MIN_SIZE = 1;
 
@@ -21,7 +22,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
         validateInputIsNumber(input);
 
         var number = Integer.parseInt(input);
-        
+
         validateNumberLessThanMaxSize(number);
         validateNumberMoreThanMinSize(number);
         this.number = number;
@@ -31,7 +32,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
         try {
             Integer.parseInt(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(ERROR_INPUT_IS_NUMBER);
         }
 
     }
