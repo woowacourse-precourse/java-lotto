@@ -33,12 +33,23 @@ public enum InputValidator {
 
         List<Integer> jackpotNumbers =
                 Arrays.stream(jackpotInput.split(JACKPOT_INPUT_SEPARATOR))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList());
 
         LottoValidator.validate(jackpotNumbers);
 
         return jackpotNumbers;
+    }
+
+    public static int getValidBonusNumber(String bonusInput) throws IllegalArgumentException {
+        if (isParsableInt(bonusInput)) {
+            int bonusNumber = Integer.parseInt(bonusInput);
+            if (isInLottoRange(bonusNumber)) {
+                return bonusNumber;
+            }
+        }
+
+        throw new IllegalArgumentException(BONUS_NUMBER_RANGE_ERROR_MESSAGE);
     }
 
     private static void validateAllParsable(String jackpotInput) throws IllegalArgumentException {
@@ -50,22 +61,12 @@ public enum InputValidator {
         }
     }
 
+    private static boolean isInLottoRange(int lottoNumber) {
+        return (lottoNumber >= Lotto.MIN_NUMBER) && (lottoNumber <= Lotto.MAX_NUMBER);
+    }
+
     private static boolean isParsableInt(String userInput) {
         return (userInput.length() > 0) && !userInput.matches(NON_DIGIT);
-    }
-
-    public static void validateBonusNumber(String bonusNumberInput) {
-        checkNonDigit(bonusNumberInput);
-        int bonusNumber = Integer.parseInt(bonusNumberInput);
-        if (bonusNumber < Lotto.MIN_NUMBER || bonusNumber > Lotto.MAX_NUMBER) {
-            throw new IllegalArgumentException(BONUS_NUMBER_RANGE_ERROR_MESSAGE);
-        }
-    }
-
-    private static void checkNonDigit(String string) {
-        if (string.matches(NON_DIGIT)) {
-            throw new IllegalArgumentException(NOT_NATURAL_NUMBER_ERROR_MESSAGE);
-        }
     }
 
 }
