@@ -15,8 +15,18 @@ public class Lotto {
     }
 
     public LottoRank getCorrectLottoCount(Lotto winningLotto, int bounsNumber) {
-        int matchingCount = 0;
+        int matchingCount = getMatchingCount(winningLotto);
         boolean bounsFlag = false;
+
+        if (matchingCount == LOTTO_COUNT_BY_2ND_AWARD && numbers.contains(bounsNumber)) {
+            bounsFlag = true;
+        }
+
+        return LottoRank.getRank(matchingCount, bounsFlag);
+    }
+
+    private int getMatchingCount(Lotto winningLotto) {
+        int matchingCount = 0;
 
         for (Integer number : winningLotto.numbers) {
             if (numbers.contains(number)) {
@@ -24,11 +34,7 @@ public class Lotto {
             }
         }
 
-        if (matchingCount == LOTTO_COUNT_BY_2ND_AWARD && numbers.contains(bounsNumber)) {
-            bounsFlag = true;
-        }
-
-        return LottoRank.getRank(matchingCount, bounsFlag);
+        return matchingCount;
     }
 
     @Override
