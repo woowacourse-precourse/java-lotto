@@ -39,9 +39,26 @@ class ManagerTest {
             manager.inputMoney();
         });
     }
-
+    @DisplayName("로또 당첨 번호 입력 테스트")
     @Test
     void inputLottoNumber() {
+        String input = "1,2,3,4,5,6";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        List<Integer> result = manager.inputLottoNumber();
+        List<Integer> expect = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        assertThat(result).isEqualTo(expect);
+    }
+    @DisplayName("로또 당첨 번호 예외 입력 테스트")
+    @Test
+    void inputLottoNumberException() {
+        String input = "1,2,3,4,5,a";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            manager.inputLottoNumber();
+        });
+
     }
 
     @Test
