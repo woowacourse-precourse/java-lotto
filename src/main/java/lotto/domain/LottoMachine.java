@@ -38,4 +38,8 @@ public class LottoMachine {
     public int getRound() {
         return purchasePrice / UNIT_PRICE;
     }
+
+    public int getPurchasePrice() {
+        return purchasePrice;
+    }
 }
