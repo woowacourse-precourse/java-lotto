@@ -10,7 +10,7 @@ public class Inputer {
 
     List<Integer> inputlottoNumbers;
 
-    public int moneyandCount() throws IllegalArgumentException {
+    public int money() throws IllegalArgumentException {
         String input = Console.readLine();
         int money;
         if(!validate(input)) {
