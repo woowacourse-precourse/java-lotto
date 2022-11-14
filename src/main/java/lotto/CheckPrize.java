@@ -9,6 +9,7 @@ public class CheckPrize {
 
     public CheckPrize() {
         rankCount = new ArrayList<>(Collections.nCopies(SIZE, 0));
+        prize = 0;
     }
 
     // 당첨금을 구해주고 출력하는 함수
