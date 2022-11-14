@@ -40,7 +40,7 @@ public class ExceptionHandler {
     }
 
     public static void isMultipleOf(long target, int multiple) {
-        if (target % multiple != 0) {
+        if (target == 0 || target % multiple != 0) {
             Output.printMessage(ErrorMessage.NOT_MULTIPLE_ERROR.getMessage(multiple));
             throw new IllegalArgumentException();
         }

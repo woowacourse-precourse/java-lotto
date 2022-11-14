@@ -68,6 +68,14 @@ public class ExceptionHandlerTest {
     }
 
     @Test
+    @DisplayName("구매 금액이 0이면 에러 메시지를 출력하고 예외가 발생한다.")
+    void throwExceptionForZero() {
+        assertThatThrownBy(() -> ExceptionHandler.isMultipleOf(0, LottoStatistic.LOTTO_PRICE.getValue()))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(output()).isEqualTo("[ERROR] 구매 금액은 1000원으로 나누어 떨어져야 합니다.");
+    }
+
+    @Test
     @DisplayName("입력 숫자가 1~45 사이의 숫자가 아니면 에러 메시지를 출력하고 예외가 발생한다.")
     void throwExceptionForNotInRangeInput() {
         assertThatThrownBy(() -> ExceptionHandler.isWithinRange(52, 1, 45))
