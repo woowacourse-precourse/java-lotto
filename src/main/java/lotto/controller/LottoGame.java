@@ -12,14 +12,17 @@ public class LottoGame {
     WinLottoResult winLottoResult = new WinLottoResult();
 
     public void run() {
-        UserMoney userMoney = inputMoney.InputMoney();
-        countLottoPapers(userMoney);
-        pickRandomLottos(inputMoney.lottoCount);
-        List<Integer> answerLotto = inputLottoNumbers();
-        winLottosResult(answerLotto,randomLottoLists);
-        winLottoResult.calBenefit(winLottoResult.profitMoney, userMoney);
+        try {
+            UserMoney userMoney = inputMoney.InputMoney();
+            countLottoPapers(userMoney);
+            pickRandomLottos(inputMoney.lottoCount);
+            List<Integer> answerLotto = inputLottoNumbers();
+            winLottosResult(answerLotto, randomLottoLists);
+            winLottoResult.calBenefit(winLottoResult.profitMoney, userMoney);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
-
     public void countLottoPapers(UserMoney userMoney) {
         inputMoney.lottoCount(userMoney);
     }
