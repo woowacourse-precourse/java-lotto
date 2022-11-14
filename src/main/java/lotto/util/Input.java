@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.util;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -6,12 +6,26 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.util.Print.*;
+
 public class Input {
-    private static final int LOTTO_PRICE = 1000;
     private static final int COMMA_COUNT = 5;
     private static final int LOTTO_COUNT = 6;
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
+
+    /**
+     * 구입 금액을 입력받는 메소드
+     */
+    public static int inputAmount() {
+        try {
+            printAmountInputText();
+            String amount = Console.readLine();
+            return Integer.parseInt(amount);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액이 너무 크거나 입력이 잘못되었습니다.");
+        }
+    }
 
     /**
      * 입력한 문자열이 숫자로만 이루어진 것인지 확인하는 메소드

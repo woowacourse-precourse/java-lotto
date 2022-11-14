@@ -1,4 +1,6 @@
-package lotto.domain;
+package lotto.util;
+
+import lotto.domain.Lotto;
 
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class Print {
     /**
      * 로또 구입 금액 입력 문구 출력하는 함수
      */
-    public static void printInputPurchaseAmount() {
+    public static void printAmountInputText() {
         System.out.println("\n구입금액을 입력해 주세요.");
     }
 

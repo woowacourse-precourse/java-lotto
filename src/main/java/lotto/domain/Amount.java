@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Amount {
     private static final int LOTTO_PRICE = 1000;
     private final int amount;
@@ -13,13 +11,8 @@ public class Amount {
     /**
      * 구입 금액을 입력받아 저장하는 메소드
      */
-    public static Amount pay() {
-        printInputText();
-
-        int amount = input();
-
+    public static Amount pay(int amount) {
         validate(amount);
-
         return new Amount(amount);
     }
 
@@ -28,25 +21,6 @@ public class Amount {
      */
     public int getCount() {
         return amount / LOTTO_PRICE;
-    }
-
-    /**
-     * 로또 구입 금액 입력 문구 출력하는 함수
-     */
-    private static void printInputText() {
-        System.out.println("\n구입금액을 입력해 주세요.");
-    }
-
-    /**
-     * 구입 금액을 입력받는 메소드
-     */
-    private static int input() {
-        try {
-            String amount = Console.readLine();
-            return Integer.parseInt(amount);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액이 너무 크거나 입력이 잘못되었습니다.");
-        }
     }
 
     /**

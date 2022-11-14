@@ -1,16 +1,16 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.util.Input;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.domain.Amount.*;
-import static lotto.domain.Print.*;
-import static lotto.domain.Input.*;
+import static lotto.util.Print.*;
+import static lotto.util.Input.*;
 
 public class Purchase {
-    private static final int LOTTO_PRICE = 1000;
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
     private static final int LOTTO_COUNT = 6;
@@ -21,7 +21,7 @@ public class Purchase {
 
     public static void lotto() {
 
-        amount = pay();
+        amount = pay(inputAmount());
 
         createLottos();
         printLottos(lottos);
