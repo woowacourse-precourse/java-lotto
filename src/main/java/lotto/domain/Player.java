@@ -17,14 +17,13 @@ public class Player {
     public Player() {
         String purchaseAmount = InputView.readPurchaseAmount();
         validate(purchaseAmount);
+        this.purchaseAmount = Integer.parseInt(purchaseAmount);
     }
 
     private void validate(String purchaseAmount) {
         Validator.validateNaturalNumber(purchaseAmount);
         Validator.validateLeadingZero(purchaseAmount);
-
-        this.purchaseAmount = Integer.parseInt(purchaseAmount);
-        validateDivisibility(this.purchaseAmount);
+        validateDivisibility(Integer.parseInt(purchaseAmount));
     }
 
     private void validateDivisibility(int purchaseAmount) {
