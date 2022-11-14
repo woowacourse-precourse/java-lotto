@@ -39,13 +39,10 @@ public class ApplicationController {
     }
 
     public void control_WinningNumber() {
-        // TODO: 당첨 번호 저장
-        //  - [x] 당첨 번호 입력
-        //  - [x] 당첨 번호 리스트화
-        //  - [ ] 당첨 번호 검증 기능(6개 입력, 1~45 사이의 숫자)
-        //  - [ ] 당첨 번호 저장
         String input_WinningNumber = inputView.inputWinningNumber();
         List<Integer> winningNumber = inputValidator.convertStringIntoList(input_WinningNumber);
         inputValidator.validateWinningNumber(winningNumber);
+        player.setWinningNumber(winningNumber);
+        // TODO: 보너스 번호 과정 제어 기능 호출
     }
 }
