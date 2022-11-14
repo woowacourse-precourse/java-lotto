@@ -1,6 +1,7 @@
 package lotto.view;
 
 import java.util.HashMap;
+import java.util.List;
 import lotto.model.Buyer;
 import lotto.model.Lotto;
 import lotto.model.LottoStatics;
@@ -12,9 +13,9 @@ public class OutputView {
     private static final String MESSAGE_STATICS_INFO = "%s (%,d원) - %d개\n";
     private static final String MESSAGE_YIELD = "총 수익률은 %.1f%%입니다.";
 
-    public static void printBuyLottos(Buyer buyer) {
-        System.out.printf(MESSAGE_COUNT_BUY, buyer.getCountLottos());
-        for (Lotto lotto : buyer.getLottos()) {
+    public static void printLottos(List<Lotto> lottos) {
+        System.out.printf(MESSAGE_COUNT_BUY, lottos.size());
+        for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
     }

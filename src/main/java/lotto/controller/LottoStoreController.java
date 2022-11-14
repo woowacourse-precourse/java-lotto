@@ -11,7 +11,7 @@ import lotto.view.OutputView;
 public class LottoStoreController {
     public void run() {
         Buyer buyer = createBuyer();
-        OutputView.printBuyLottos(buyer);
+        OutputView.printLottos(buyer.getLottos());
 
         LottoStore store = createLottoStore();
 
