@@ -1,8 +1,10 @@
 package lotto;
 
+import java.util.List;
+
 public class Calculator {
 
-    public double getProfitRate() {
+    public double getProfitRate(List<Integer> results) {
         return 0;
     }
 
