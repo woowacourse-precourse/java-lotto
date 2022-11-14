@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -10,8 +11,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         duplicateValidate(numbers);
-        this.numbers = numbers;
-        sort(numbers);
+        this.numbers = sort(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -25,9 +25,11 @@ public class Lotto {
             throw new IllegalArgumentException("로또 번호가 중복되었습니다.");
     }
 
-    private void sort(List<Integer> numbers) {
+    private List<Integer> sort(List<Integer> numbers) {
         // 2-2. 로또 번호를 오름차순으로 정렬시킨다.
-        Collections.sort(numbers);
+        List<Integer> sortNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortNumbers);
+        return sortNumbers;
     }
 
     public List<Integer> getNumbers() {
