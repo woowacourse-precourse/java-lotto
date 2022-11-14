@@ -8,6 +8,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         CheckException.checkSixSize(numbers);
+        CheckException.checkDuplicatedNumber(numbers);
         this.numbers = numbers;
     }
 
