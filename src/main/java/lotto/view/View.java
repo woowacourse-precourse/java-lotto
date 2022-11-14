@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.object.WinningHistory;
+import lotto.object.Yield;
 
 import java.util.List;
 
@@ -25,5 +26,9 @@ public class View {
 
     public static void printWinningHistory(WinningHistory history) {
         System.out.println(history);
+    }
+
+    public static void printYield(Yield yield) {
+        System.out.println(String.format("총 수익률은 %s입니다.", yield.toString()));
     }
 }
