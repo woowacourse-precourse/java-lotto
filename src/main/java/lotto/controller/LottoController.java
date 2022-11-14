@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.*;
+import lotto.util.Statistics;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -32,20 +33,21 @@ public class LottoController {
         Lotto lottoNumber = inputLotto();
         BonusNumber bonusNumber = inputBonusNumber();
         WinningNumbers winningNumbers = resultNumbers(lottoNumber.getLottoNumber(), bonusNumber.getBonusNumber());
-        statistics(winningNumbers, lotto);
-        calculator(winningNumbers, lottoAmount);
+        Statistics statistics = summingUp();
+        winningHistory(statistics, winningNumbers, lotto);
+        calculator(statistics, lottoAmount);
     }
 
     private LottoAmount inputAmount() {
         int number = inputView.getPurchaseAmount();
         LottoAmount lottoAmount = new LottoAmount(number);
-        outputView.printBuyLottoTicket(number); // @@개를 구매했습니다.
+        outputView.printBuyLottoTicket(number);
         return lottoAmount;
     }
 
     private List<List<Integer>> buyLotto(LottoAmount lottoAmount) {
         List<List<Integer>> lottoNumbers = lottoAmount.buyLotto();
-        outputView.printBuyLotto(lottoNumbers); // 구매 로또 목록
+        outputView.printBuyLotto(lottoNumbers);
         return lottoNumbers;
     }
 
@@ -63,14 +65,18 @@ public class LottoController {
         return new WinningNumbers(lottoNumber, bonusNumber);
     }
 
-    private void statistics(WinningNumbers winningNumbers, List<List<Integer>> buyLottoNumbers) {
-        winningNumbers.makeResult(buyLottoNumbers);
-        Map<Rank, Integer> totalResult = winningNumbers.getTotalResult();
+    private Statistics summingUp() {
+        return new Statistics();
+    }
+
+    private void winningHistory(Statistics statistics, WinningNumbers winningNumbers, List<List<Integer>> lottoNumbers) {
+        statistics.makeTotalResult(winningNumbers, lottoNumbers);
+        Map<Rank, Integer> totalResult = statistics.getTotalResult();
         outputView.printStatistics(totalResult);
     }
 
-    private void calculator(WinningNumbers winningNumbers, LottoAmount lottoAmount) {
-        double percentage = winningNumbers.calculatorRevenue(lottoAmount.getPurchaseAmount());
+    private void calculator(Statistics statistics, LottoAmount lottoAmount) {
+        double percentage = statistics.calculatorRevenue(lottoAmount.getPurchaseAmount());
         outputView.printPercentage(percentage);
     }
 }
