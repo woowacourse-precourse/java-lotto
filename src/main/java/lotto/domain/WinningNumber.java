@@ -23,6 +23,7 @@ public class WinningNumber {
         checkBlank(input);
         checkNumber(input);
         int number = Integer.parseInt(input);
+        checkNumberRange(number);
         checkDuplicate(number);
     }
 
@@ -83,6 +84,13 @@ public class WinningNumber {
         HashSet<Integer> deduplication = new HashSet<>(winningNumber);
         if (deduplication.size() == Setting.LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력할 수 없습니다.");
+        }
+    }
+
+    // 1 이상 45 이하의 숫자인지 검증
+    private void checkNumberRange(int number) {
+        if (number < Setting.LOTTO_MIN_NUMBER || number > Setting.LOTTO_MAX_NUMBER) {
+            throw new IllegalArgumentException("[ERROR] 1이상 45이하의 숫자를 입력해야 합니다.");
         }
     }
 }
