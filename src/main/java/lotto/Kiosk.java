@@ -20,19 +20,34 @@ public class Kiosk {
             payment = getPurchaseAmount();
             int numberOfLottos = countLottos(payment);
             List<Lotto> lottos = Generator.generate(numberOfLottos);
-            Output.getNumberOfPurchase(numberOfLottos);
-            Output.printLottos(lottos);
+            printLottoInformation(numberOfLottos, lottos);
             buyer.buy(lottos);
-            Output.getWinningNumbers();
-            winningNumbers = Input.getWinningNumbers();
-            Output.getBonusNumber();
-            bonusNumber = Input.getBonusNumber();
-            EnumMap<RankNumber, Integer> resultStatistics = Checker.compareAll(buyer);
-            Output.showResultStatistics(resultStatistics);
-            Output.yield(Calculator.getYield(payment, resultStatistics));
+            winningNumbers = getWinningNumbers();
+            bonusNumber = getBonusNumber();
+            printResult(Checker.compareAll(buyer), payment);
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
+    }
+
+    static private void printLottoInformation(int numberOfLottos, List<Lotto> lottos) {
+        Output.getNumberOfPurchase(numberOfLottos);
+        Output.printLottos(lottos);
+    }
+
+    static private List<Integer> getWinningNumbers() {
+        Output.getWinningNumbers();
+        return Input.getWinningNumbers();
+    }
+
+    static private int getBonusNumber() {
+        Output.getBonusNumber();
+        return Input.getBonusNumber();
+    }
+
+    static private void printResult(EnumMap<RankNumber, Integer> resultStatistics, int payment) {
+        Output.showResultStatistics(resultStatistics);
+        Output.yield(Calculator.getYield(payment, resultStatistics));
     }
 
     static private int getPurchaseAmount() {
