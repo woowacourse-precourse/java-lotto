@@ -53,7 +53,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("getLottoPrinting 메서드는 로또의 값을 string으로 반환해줌")
+    @DisplayName("getLottoPrinting 메서드는 로또의 값을 String 으로 반환해줌")
     @ParameterizedTest
     @MethodSource("generateBasicLotto")
     void case1(Lotto lotto, String expected) {

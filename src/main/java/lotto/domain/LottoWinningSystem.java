@@ -69,8 +69,7 @@ public final class LottoWinningSystem {
 
         outputView.printInputBonusMessage();
         BonusNumber bonusNumber = new BonusNumber(inputView.getBonusNumber());
-        WinningLotto winningLotto = new WinningLotto(winLotto, bonusNumber);
 
-        return winningLotto;
+        return new WinningLotto(winLotto, bonusNumber);
     }
 }
