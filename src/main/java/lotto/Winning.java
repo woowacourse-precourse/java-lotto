@@ -35,19 +35,22 @@ public class Winning {
         validateBonusNumber(winningNumber, bonusNumber);
         List<Integer> matchList = new ArrayList<>();
         int[] prizeList = new int[5];
+        float yieldPrize;
 
         countMatchList(lottoTickets, winningNumber, matchList, bonusNumber);
         savePrize(matchList, prizeList);
 
         OutputView.printPrize(prizeList);
 
-        calculatePrize(amount, prizeList);
+        yieldPrize = calculatePrize(amount, prizeList);
+
+        OutputView.printYeild(yieldPrize);
     }
 
-    private static double calculatePrize(String amount, int[] prizeList) {
+    private static float calculatePrize(String amount, int[] prizeList) {
         int sum = 0;
         int existCost = Integer.parseInt(amount);
-        double result = 0;
+        float result = 0;
 
         sum += prizeList[0] * 5000;
         sum += prizeList[1] * 50000;
@@ -55,7 +58,7 @@ public class Winning {
         sum += prizeList[3] * 30000000;
         sum += prizeList[4] * 200000000;
 
-        result = (double) ((sum - existCost) / existCost) * 100;
+        result =  ((float) sum  / (float) existCost) * 100;
 
         return result;
     }
