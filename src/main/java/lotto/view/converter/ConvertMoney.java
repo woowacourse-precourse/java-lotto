@@ -13,9 +13,8 @@ public class ConvertMoney implements Converter<String, Integer>{
 
     @Override
     public Integer toNumbers(String input) {
-        if(!moneyValidation.validateInputIsInteger(input)) {
-            throw new IllegalArgumentException(ExceptionPhrase.EXCEPTION_INVALID_INPUT.getMessage());
-        }
+        moneyValidation.validateInputIsInteger(input);
+
         return Integer.parseInt(input);
     }
 }

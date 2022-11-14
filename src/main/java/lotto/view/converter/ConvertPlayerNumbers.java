@@ -14,10 +14,7 @@ public class ConvertPlayerNumbers implements Converter<String, List<Integer>> {
         lottoValidation = new LottoValidation();
     }
     public int toBonusNumber(String inputBonus) {
-        if(!lottoValidation.validateBonusNumber(inputBonus)) {
-            throw new IllegalArgumentException(ExceptionPhrase.EXCEPTION_INVALID_RESULT.getMessage());
-
-        }
+        lottoValidation.validateBonusNumber(inputBonus);
         return Integer.parseInt(inputBonus);
     }
 
@@ -25,9 +22,7 @@ public class ConvertPlayerNumbers implements Converter<String, List<Integer>> {
     public List<Integer> toNumbers(String input) {
         List<Integer> playerNumbers = new ArrayList<>();
 
-        if(!lottoValidation.validateInputIsInteger(input)) {
-            throw new IllegalArgumentException(ExceptionPhrase.EXCEPTION_INVALID_INPUT.getMessage());
-        }
+        lottoValidation.validateInputIsInteger(input);
 
         String[] numbers = input.split(",");
         for(String number : numbers) {

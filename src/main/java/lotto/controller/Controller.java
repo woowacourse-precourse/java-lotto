@@ -25,10 +25,8 @@ public class Controller {
 
     public void play() {
         int inputMoney = inputMoney();
-
         int count = lottoCount(inputMoney);
-        System.out.println(count);
-
+        System.out.println(count); //
         List<List<Integer>> lottoNumbers = showLottoNumbers(count);
 
         Lotto lotto = inputPlayerNumber();
@@ -38,7 +36,7 @@ public class Controller {
         Map<String, Integer> rewards = service.matchLotteryNumber(lottoNumbers,lotto.getNumbers(),bonus.getBonus());
 
         view.winningDetails(rewards);
-        showProfitRate(count);
+        showProfitRate(inputMoney);
     }
 
     private int inputMoney() {

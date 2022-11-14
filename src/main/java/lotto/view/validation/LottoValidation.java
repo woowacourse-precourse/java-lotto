@@ -1,26 +1,28 @@
 package lotto.view.validation;
 
+import lotto.exception.ExceptionPhrase;
+
+import java.util.NoSuchElementException;
+
 public class LottoValidation implements Validation{
     @Override
-    public boolean validateInputIsInteger(String input) {
+    public void validateInputIsInteger(String input) {
         String[] numbers = input.split(",");
-        try {
-            for (String number : numbers) {
-                number = number.trim();
-                Integer.parseInt(number);
+        for (String number : numbers) {
+            number = number.trim();
+            number = number.replaceAll("[0-9]","");
+            if(number.length() != 0) {
+                System.out.println(ExceptionPhrase.EXCEPTION_INVALID_INPUT);
+                throw new NoSuchElementException();
             }
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
         }
     }
 
-    public boolean validateBonusNumber(String number) {
-        try {
-            Integer.parseInt(number);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
+    public void validateBonusNumber(String number) {
+        number = number.replaceAll("[]0-9]","");
+        if(number.length() != 0) {
+            System.out.println(ExceptionPhrase.EXCEPTION_INVALID_INPUT);
+            throw new NoSuchElementException();
         }
     }
 

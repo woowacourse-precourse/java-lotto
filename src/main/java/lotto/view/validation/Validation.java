@@ -1,6 +1,8 @@
 package lotto.view.validation;
 
+import java.util.logging.Logger;
+
 public interface Validation {
 
-    public boolean validateInputIsInteger(String input);
+    public void validateInputIsInteger(String input);
 }

@@ -64,7 +64,7 @@ public class View {
         System.out.println("4개 일치 (50,000원) - " + lottoReward.get(LottoMoney.FOURTH.getReward())+"개");
         System.out.println("5개 일치 (1,500,000원) - " + lottoReward.get(LottoMoney.THIRD.getReward())+"개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoReward.get(LottoMoney.SECOND.getReward())+"개");
-        System.out.println("6개 일치 (2,000,000,000원) -  " + lottoReward.get(LottoMoney.FIRST.getReward())+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + lottoReward.get(LottoMoney.FIRST.getReward())+"개");
     }
 
     public void showProfitRate(String profitRate) {
