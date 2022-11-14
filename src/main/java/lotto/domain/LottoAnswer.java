@@ -59,7 +59,7 @@ public class LottoAnswer {
         Integer bonus = 0;
 
         try {
-            Integer.parseInt(bonusCommand);
+            bonus = Integer.parseInt(bonusCommand);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(LottoErrorCode.INVALID_LOTTO_RANGE.toString());
         }
