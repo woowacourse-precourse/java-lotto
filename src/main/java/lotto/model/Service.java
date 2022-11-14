@@ -28,7 +28,6 @@ public class Service {
     }
 
     public int[] getLottoResult() {
-
         int[] result = new int[Constant.WINNER_NUMBER];
         Arrays.fill(result, 0);
 
@@ -36,7 +35,7 @@ public class Service {
             List<Integer> lotto = Convertor.ExtractList(lottoNumbers, i);
             int ordinal = checkRank(lotto, playerLottoNumbers, playerBonusNumber);
 
-            if (ordinal == -1) {
+            if (ordinal == -1) { // 승리 조건과 일치하는 것이 없을 때
                 continue;
             }
             result[ordinal]++;
@@ -59,8 +58,7 @@ public class Service {
         return -1; // Rank 승리 조건과 일치하는 것이 없으면 -1 반환
     }
 
-    private int checkBonusNumber(List<Integer> lottoNumbers, List<Integer> playerLottoNumbers,
-                                 int playerBonusNumber) {
+    private int checkBonusNumber(List<Integer> lottoNumbers, List<Integer> playerLottoNumbers, int playerBonusNumber) {
         List<Integer> checkBonusNumber = new ArrayList<>(lottoNumbers);
         checkBonusNumber.removeAll(playerLottoNumbers);
 
