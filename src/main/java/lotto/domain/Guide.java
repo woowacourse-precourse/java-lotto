@@ -54,4 +54,7 @@ public class Guide {
         }
     }
 
+    public static void printRateOfReturn(double rateOfReturn) {
+
+    }
 }

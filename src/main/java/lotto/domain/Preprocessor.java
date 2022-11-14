@@ -26,7 +26,11 @@ public class Preprocessor {
         return new ArrayList<String>(Arrays.asList(numbers));
     }
 
-    public static String addNumberPunctuation(Number prizeMoney) {
-        return NumberFormat.getInstance().format(prizeMoney);
+    public static String addNumberPunctuation(Number number) {
+        return NumberFormat.getInstance().format(number);
+    }
+
+    public static String getRoundDecimalPlaceNumber(double number, int decimalPlace) {
+        return String.format("%." + convertIntToString(decimalPlace) + "f", number);
     }
 }

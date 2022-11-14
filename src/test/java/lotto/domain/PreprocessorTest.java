@@ -15,4 +15,12 @@ class PreprocessorTest {
     void createNumberPunctuation(int prizeMoney, String result) {
         assertThat(Preprocessor.addNumberPunctuation(prizeMoney)).isEqualTo(result);
     }
+
+    @DisplayName("반올림하여 n번째 자리까지 나타내기")
+    @ParameterizedTest(name = "{index}. before = {0}, n = {1}, after = {2}")
+    @CsvSource({"12.345, 2, 12.35", "100.0, 1, 100.0", "95.733, 1, 95.7"})
+    void createRoundedNumber(double before, int decimalPlace, String after) {
+        assertThat(Preprocessor.getRoundDecimalPlaceNumber(before, decimalPlace))
+                .isEqualTo(after);
+    }
 }
