@@ -10,12 +10,13 @@ public class Application {
     public static void main(String[] args) {
         int payment = correctPayment(UserInputUi.ENTERCOST.getAnswer());
         payment = getCountOfLotto(payment);
-        System.out.println(payment+"개를 구매했습니다.");
         LottoManager lottoManager = new LottoManager(payment);
+        lottoManager.setWinningNumbers(UserInputUi.ENTERWINNINGNUMBER.getAnswer());
 
     }
 
     public static int getCountOfLotto(int payment){
+        System.out.println((payment/1000)+"개를 구매했습니다.");
         return payment/1000;
     }
 
