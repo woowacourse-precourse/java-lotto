@@ -1,9 +1,9 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GetLotto {
@@ -15,10 +15,10 @@ public class GetLotto {
     private final int PICK_NUM = 6;
     public GetLotto(int money){
         this.lotto_count = money / price;
-        output_lotto(lotto_count);
+        outputLotto(lotto_count);
     }
 
-    public void output_lotto(int lotto_count) {
+    public void outputLotto(int lotto_count) {
         for(int i = 0; i < lotto_count; i++) {
             List<Integer> issuance = new ArrayList<>();
             issuance.addAll(Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, PICK_NUM));
@@ -26,5 +26,10 @@ public class GetLotto {
             get_lotto.add(issuance);
             System.out.println(issuance);
         }
+        choiceNumber();
+    }
+
+    public void choiceNumber() {
+        choiceLottoNumber choice_number = new choiceLottoNumber();
     }
 }

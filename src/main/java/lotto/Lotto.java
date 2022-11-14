@@ -12,7 +12,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 번호 6개를 입력하세요.");
+        }
+    }
+
+    public void validataOverlap(List<Integer> numbers) {
+        if(numbers.size() != numbers.stream().distinct().count()){
+            throw new IllegalArgumentException("[ERROR] 중복된 번호는 선택할 수 없습니다.");
         }
     }
 
