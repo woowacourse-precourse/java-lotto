@@ -14,11 +14,7 @@ public class Statistics {
 		this.correctLottoNumber = new CorrectLottoNumber();
 	}
 
-	public void match() {
-		compare(user, winningLotto);
-	}
-
-	private void compare(User user, WinningLotto winningLotto) {
+	public void compare() {
 		UserLotto userLotto = user.getUserLottoes();
 
 		for (Lotto l : userLotto.getUserLottoes()) {

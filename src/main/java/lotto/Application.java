@@ -8,6 +8,6 @@ public class Application {
 		WinningLotto winningLotto = new WinningLotto();
 
 		Statistics statistics = new Statistics(user, winningLotto);
-		statistics.match();
+		statistics.compare();
 	}
 }

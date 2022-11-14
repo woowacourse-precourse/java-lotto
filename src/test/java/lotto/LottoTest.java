@@ -101,11 +101,30 @@ class LottoTest {
 	//해당 과정은 3개, 4개, 5개, 6개(보너스포함) , 6개를 통해 5,4,3,2,1등을 판별하고, 이를 user의 당첨등수에 더한다.
 	//이 "몇개"를 통과받았는지에 대한 테스트 코드를 먼저 적는다.
 
-	@DisplayName("당첨 로또번호와 3개가 일치하면, 0번째원소가 1증가한다.")
+	@DisplayName("당첨 로또번호와 3개가 일치하면, 0번째원소가 1 증가한다.")
 	@Test
 	void matchCorrect3Numbers(){
 
 	}
 
-	
+	@DisplayName("당첨 로또번호 4개와 일치하면, 1번째원소가 1 증가한다.")
+	@Test
+	void matchCorrect4Numbers(){
+
+	}
+	@DisplayName("당첨 로또번호 5개와 일치하면, 2번째원소가 1 증가한다.")
+	@Test
+	void matchCorrect5Numbers(){
+
+	}
+	@DisplayName("당첨 로또번호 5개 + 보너스번호와 일치하면, 3번째원소가 1 증가한다.")
+	@Test
+	void matchCorrect6NumbersContainBonusNumber(){
+
+	}
+	@DisplayName("당첨 로또번호 6개와 일치하면, 4번째원소가 1 증가한다.")
+	@Test
+	void matchCorrect6Numbers(){
+
+	}
 }
