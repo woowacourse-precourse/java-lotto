@@ -16,9 +16,10 @@ public class Program {
     private final Statistics statistics = new Statistics();
     private List<Lotto> lottos;
     private Winning winning;
+    private int purchaseAmount;
 
     public void startProgram() {
-        int purchaseAmount = SystemUi.getPurchaseAmount();
+        purchaseAmount = SystemUi.getPurchaseAmount();
         lottos = lottoGenerator.generateLottos(purchaseAmount);
         SystemUi.printLotto(lottos);
     }
@@ -33,5 +34,6 @@ public class Program {
         List<List<Integer>> totalWinningCount = statistics.getTotalWinningCount(lottos, winning);
         List<Rank> rankCount = statistics.getRankCount(totalWinningCount);
         SystemUi.printResult(rankCount);
+        SystemUi.printRevenue(statistics.getRevenue(rankCount), purchaseAmount);
     }
 }

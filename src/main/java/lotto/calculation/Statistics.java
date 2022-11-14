@@ -6,9 +6,18 @@ import lotto.generation.Lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Statistics {
+
+    public long getRevenue(List<Rank> rankCount) {
+        long revenue = 0L;
+        for (Rank rank : Rank.values()) {
+            revenue += rank.getReward() * Collections.frequency(rankCount, rank);
+        }
+        return revenue;
+    }
 
     public List<Rank> getRankCount(List<List<Integer>> totalWinningCount) {
         List<Rank> rankCount = new ArrayList<>();
