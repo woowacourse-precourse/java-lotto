@@ -9,7 +9,6 @@ import static java.lang.Character.isDigit;
 public class User {
     static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
     static final String INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
-
     private int userMoney;
     private List<Integer> winningNumbers;
     private int bonusNumber;
@@ -102,6 +101,12 @@ public class User {
 
         if (notDuplicateWinningNumbers.size() != winningNumbers.size()) {
             throw new IllegalArgumentException("[ERROR] 서로 중복되지 않게 당첨 번호를 입력해주세요");
+        }
+    }
+
+    public void checkBonusNumberDuplicate(List<Integer> winningNumbers, int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 서로 중복되지 않게 보너스 번호를 입력해주세요");
         }
     }
 }
