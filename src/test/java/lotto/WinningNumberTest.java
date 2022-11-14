@@ -74,4 +74,18 @@ public class WinningNumberTest {
         //then
         assertThrows(IllegalArgumentException.class, () -> winningNumber.numberCount(list));
     }
+
+    @Test
+    public void 당첨번호범위검증() throws Exception{
+        //given
+        List<Integer> list = List.of(1,2,3,4,99);
+        //when
+        try{
+            winningNumber.numberRange(list);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        //then
+        assertThrows(IllegalArgumentException.class, () -> winningNumber.numberRange(list));
+    }
 }
