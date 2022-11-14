@@ -38,11 +38,5 @@ public class Lotto {
         return numbers;
     }
 
-    public static void printLotto(List<List<Integer>> lottoNumbers) {
-        for (List<Integer> lottoNumber : lottoNumbers) {
-            System.out.println(lottoNumber);
-        }
-    }
-
 
 }

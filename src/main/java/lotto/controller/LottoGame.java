@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static lotto.domain.Lotto.printLotto;
 import static lotto.enums.Error.ER_STRINGCHECK;
 import static lotto.enums.LottoRanking.*;
+import static lotto.view.Output.printLotto;
 import static lotto.view.Output.rateOfReturnOutput;
 
 public class LottoGame {

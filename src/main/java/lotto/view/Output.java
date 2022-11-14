@@ -2,6 +2,8 @@ package lotto.view;
 
 import lotto.enums.LottoRanking;
 
+import java.util.List;
+
 public class Output {
     private static final String END_GAME = "당첨 통계\n---";
     private static final String RATE_OF_RETURN = "총 수익률은 %.1f%%입니다.";
@@ -24,6 +26,11 @@ public class Output {
         LottoRanking[] grades = LottoRanking.values();
         for (LottoRanking grade : grades) {
             System.out.println(grade.getValue());
+        }
+    }
+    public static void printLotto(List<List<Integer>> lottoNumbers) {
+        for (List<Integer> lottoNumber : lottoNumbers) {
+            System.out.println(lottoNumber);
         }
     }
 }
