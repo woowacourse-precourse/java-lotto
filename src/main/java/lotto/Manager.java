@@ -51,7 +51,7 @@ public class Manager {
     }
 
     public void requestLottoNumberStatementPrint() {
-        System.out.println("\n" + requestLottoNumberStatement);
+        System.out.println(requestLottoNumberStatement);
     }
 
     public List<Integer> inputLottoNumber() {

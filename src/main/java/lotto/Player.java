@@ -19,6 +19,9 @@ public class Player {
     public void purchaseLotto() {
         manager.requestMoneyStatementPrint();
         int money = manager.inputMoney();
+        if (money < 1000) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_MONEY_IS_LACK);
+        }
         if (money % 1000 != 0) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_MONEY_IS_NOT_DIVISIBLE_BY_1000);
         }
@@ -49,7 +52,7 @@ public class Player {
     }
 
     public void showResult() {
-        System.out.println("당첨 통계");
+        System.out.println("\n" +"당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + result[0] + "개");
         System.out.println("4개 일치 (50,000원) - " + result[1] + "개");
