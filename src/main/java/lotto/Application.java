@@ -11,8 +11,15 @@ public class Application {
     public static List<Integer> issue_Number(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
+
+    public static void purchase_Output(){
+        System.out.println("구입 금액을 입력해주세요.");
+    }
+
     public static void main(String[] args) {
         issue_Number();
+        purchase_Output();
+
 
 
 //        int num = Integer.parseInt(Console.readLine());
