@@ -12,18 +12,28 @@ public class Controller {
     public void run() {
         User user = getUserByInput();
         if (user == null) return;
+
+        getAndPrintPurchaseNumbers(user);
+
         Lotto lotto = getLottoByInput();
         if (lotto == null) return;
-        int bonus = getBonusByInput();
-        if(bonus == -1) return;
 
-        try {
-            validBonus(lotto, bonus);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
+        int bonus = getBonusByInput();
+        if (bonus == -1) return;
+
+
+        if (isValidInputBonus(lotto, bonus)) return;
         printResult(user, lotto, bonus);
+    }
+
+    private boolean isValidInputBonus(Lotto lotto, int bonus) {
+        try {
+            lotto.bonusNotIncludeWinningNumbers(bonus);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return true;
+        }
+        return false;
     }
 
     private void printResult(User user, Lotto lotto, int bonus) {
@@ -31,15 +41,6 @@ public class Controller {
         View.printWinningStatistics(user.winResult);
         View.printEarningsRate(Calculator.getEarningsRate(user.inputCost, user.winResult));
     }
-
-    private void validBonus(Lotto lotto, int bonus) {
-        try {
-            lotto.bonusNotIncludeWinningNumbers(bonus);
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-
 
     private User getUserByInput() {
         View.printStartMessage();
@@ -50,9 +51,13 @@ public class Controller {
             System.out.println(e.getMessage());
             return null;
         }
-        user.getPurchaseLottoList();
-        View.printPurchaseList(user.purchaseNumbers);
+
         return user;
+    }
+
+    private void getAndPrintPurchaseNumbers(User user) {
+        user.getPurchaseNumbers();
+        View.printPurchaseList(user.purchaseNumbers);
     }
 
     private int getBonusByInput() {

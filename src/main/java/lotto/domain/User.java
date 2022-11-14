@@ -47,7 +47,7 @@ public class User {
         return result;
     }
 
-    public void getPurchaseLottoList() {
+    public void getPurchaseNumbers() {
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < inputCost / 1000; i++) {
             result.add(getLottoNumbers());

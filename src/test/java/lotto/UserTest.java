@@ -19,7 +19,7 @@ public class UserTest {
     @Test
     void 사용자의_구매횟수만큼_로또숫자_발행() {
         User user = new User("5000");
-        user.getPurchaseLottoList();
+        user.getPurchaseNumbers();
         assertThat(user.purchaseNumbers.size()).isEqualTo(5);
     }
     @Test
