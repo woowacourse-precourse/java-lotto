@@ -58,18 +58,14 @@ public enum Stats {
         return stats;
     }
 
-    public void profit() {
-
-    }
-
     public static String getCount(Stats stats) {
         return HYPHEN + stats.count + NUMBER_UNIT;
     }
 
     public static String getAmount(Stats stats) {
-        String s = String.valueOf(stats.amount);
+        String amount = String.valueOf(stats.amount);
         StringBuilder sb = new StringBuilder();
-        s.chars().forEach(sb::append);
+        amount.chars().forEach(sb::append);
         return sb.toString().replaceAll(AMOUNT_MARK_REGEX, COMMA);
     }
 
@@ -78,5 +74,9 @@ public enum Stats {
             return stats.name + ACCORD_NUMBER_FORMAT + ACCORD_NUMBER_AND_BONUS_FORMAT;
         }
         return stats.name + ACCORD_NUMBER_FORMAT;
+    }
+
+    public void profit() {
+
     }
 }
