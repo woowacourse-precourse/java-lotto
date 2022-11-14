@@ -16,5 +16,18 @@ public class Lotto {
         Validation.numberDuplicateValidation(numbers);
     }
 
-    // TODO: 추가 기능 구현
+    @Override
+    public String toString() {
+        StringBuffer result = new StringBuffer();
+        result.append("[");
+        for(int i = 0;i < numbers.size();i++) {
+            result.append(numbers.get(i));
+            if(i <= numbers.size() - 1)
+                result.append(", ");
+        }
+        result.append("]");
+        return result.toString();
+    }
+
+
 }
