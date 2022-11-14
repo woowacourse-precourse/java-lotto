@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.model.NoticeMessage;
 
 public class InputView {
-    public String inputMoney() {
+    public String inputPurchasingAmount() {
         return printMessage(NoticeMessage.PURCHASING_AMOUNT);
     }
 

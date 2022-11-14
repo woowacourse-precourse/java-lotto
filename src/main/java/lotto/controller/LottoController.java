@@ -28,9 +28,9 @@ public class LottoController {
 
     public void start() {
         try {
-            String moneyInput = inputView.inputMoney();
-            validatePurchasingAmount(moneyInput);
-            int purchasingAmount = Integer.parseInt(moneyInput);
+            String purchasingAmountInput = inputView.inputPurchasingAmount();
+            validatePurchasingAmount(purchasingAmountInput);
+            int purchasingAmount = Integer.parseInt(purchasingAmountInput);
 
             List<Lotto> issuedLotteries = lottoService.issueLotto(purchasingAmount);
             outputView.outputLotto(issuedLotteries);
