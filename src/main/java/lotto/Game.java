@@ -7,29 +7,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private final List<List<Integer>> datas = new ArrayList<>();
-    private int LottoPrice;
+    private final List<List<Integer>> GeneratedLotto = new ArrayList<>();
+    private int nLottoPrice;
+    private int nLotto;
 
-    public Game() {
-
-    }
-
-    public void HowMuch() {
+    public int HowMuch() {
         System.out.println("구입 금액을 입력해 주세요.");
         String price = Console.readLine();
-        LottoPrice = Integer.parseInt(price);
+        nLottoPrice = Integer.parseInt(price);
+        nLotto = nLottoPrice / 1000;
+        //Lotto exception 필요
+        return nLotto;
+    }
 
-        System.out.println("\n" + LottoPrice / 1000 + "개를 구매했습니다.");
-        for (int i = 0; i < LottoPrice / 1000; i++) {
+    public void BuyLotto(int nLotto){
+        System.out.println("\n" + nLotto + "개를 구매했습니다.");
+        for (int i = 0; i < nLotto; i++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            datas.add(lottoNumbers);
+            GeneratedLotto.add(lottoNumbers);
         }
-        for (int i = 0; i < LottoPrice / 1000; i++) {
-            System.out.println(datas.get(i));
+        PrintGeneratedLotto(nLotto, GeneratedLotto);
+    }
+
+    public void PrintGeneratedLotto(int nLotto, List<List<Integer>> GeneratedLotto){
+        for (int i = 0; i < nLotto; i++) {
+            System.out.println(GeneratedLotto.get(i));
         }
     }
 
     public void Jackpot() {
+        BuyLotto(HowMuch());
+        PrintGeneratedLotto(nLotto, GeneratedLotto);
+
         System.out.println("\n당첨 번호를 입력해 주세요.");
         String str1 = Console.readLine();
         String[] words = str1.split(",");
@@ -43,25 +52,25 @@ public class Game {
         //System.out.println(lotto.getNumbers());
 
         lotto.Bonus();
-        int[] countBonus = countBonus(datas);
+        int[] countBonus = countBonus(GeneratedLotto);
         for (int bonus : countBonus) {
             System.out.print(bonus);
         }
 
-        List<Integer> counts = countNum(datas, numbers);
+        List<Integer> counts = countNum(GeneratedLotto, numbers);
         System.out.println(counts);
-        int[] counter = prize(counts,countBonus);
+        int[] counter = prize(counts, countBonus);
         Print(counter);
 
-        float yield2 = this.yield(counter, LottoPrice);
+        float yield2 = this.yield(counter, nLottoPrice);
         System.out.printf("\n총 수익률은 %.1f%%입니다.", yield2);
     }
 
-    public int[] countBonus(List<List<Integer>> datas){
+    public int[] countBonus(List<List<Integer>> datas) {
         int[] count = new int[datas.size()];
-        for (int i=0; i< datas.size();i++) {
-            if(datas.get(i).contains(Lotto.BonusNumber)){
-                count[i]+=1;
+        for (int i = 0; i < datas.size(); i++) {
+            if (datas.get(i).contains(Lotto.BonusNumber)) {
+                count[i] += 1;
             }
         }
         return count;
@@ -82,7 +91,7 @@ public class Game {
         return counts;
     }
 
-    public int[] prize(List<Integer> countNum,int[] countBonus) {
+    public int[] prize(List<Integer> countNum, int[] countBonus) {
         int counterSize = 5;
         int[] counter = new int[counterSize];
         for (int i = 0; i < countNum.size(); i++) {
@@ -90,12 +99,11 @@ public class Game {
                 counter[0] += 1;
             } else if (countNum.get(i) == 4) {
                 counter[1] += 1;
-            } else if (countNum.get(i) == 5 && countBonus[i]==1) {
+            } else if (countNum.get(i) == 5 && countBonus[i] == 1) {
                 counter[3] += 1;
-            } else if (countNum.get(i)==5){
+            } else if (countNum.get(i) == 5) {
                 counter[2] += 1;
-            }
-            else if (countNum.get(i) == 6) {
+            } else if (countNum.get(i) == 6) {
                 counter[4] += 1;
             }
         }
