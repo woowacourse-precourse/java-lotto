@@ -6,7 +6,7 @@ public class Lotto {
     private static final String ERROR_MESSAGE = "[ERROR]";
     private static final String LOTTO_SIZE_ERROR = ERROR_MESSAGE + " 로또 번호는 6개 이어야 합니다.";
     private static final String DUPLICATION_ERROR = ERROR_MESSAGE + " 로또 번호 6개는 서로 다른 숫자이어야 합니다.";
-    private static final int LOTTO_SIZE = 6;
+    private static final int LOTTO_NUMBERS_SIZE = 6;
     private static final int RANK1 = 1;
     private static final int RANK2 = 2;
     private static final int RANK3 = 3;
@@ -23,7 +23,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_SIZE) {
+        if (numbers.size() != LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException(LOTTO_SIZE_ERROR);
         }
     }
