@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class MoneyTest {
 
@@ -23,5 +24,11 @@ public class MoneyTest {
     void createMoneyByNegative() {
         assertThatThrownBy(() -> new Money(0))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("정상 금액 입력시 예외가 발생하지 않는다.")
+    @Test
+    void createBonusBySuccess() {
+        assertDoesNotThrow(() -> new Money(3000));
     }
 }
