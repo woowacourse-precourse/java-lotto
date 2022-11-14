@@ -15,4 +15,8 @@ public class ResultView {
                 .forEachRemaining(lotto -> System.out.println(lotto.getNumbers()));
     }
 
+    public void displayPercentageProfit(String percentageProfit) {
+        System.out.println(percentageProfit);
+    }
+
 }

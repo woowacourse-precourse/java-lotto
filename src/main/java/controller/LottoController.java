@@ -44,7 +44,7 @@ public class LottoController {
     }
 
     public void statistics() {
-
+        resultView.displayPercentageProfit(profit.getPercentageProfit());
     }
 
 }
