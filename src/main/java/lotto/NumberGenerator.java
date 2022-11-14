@@ -9,15 +9,26 @@ public class NumberGenerator {
         List<Integer> winningNumbers = new ArrayList<>();
         String[] splitNumbers = inputNumbers.split(",");
         for (String number : splitNumbers) {
-            winningNumbers.add(Integer.parseInt(number));
+            checkNumber(number);
+            int winningNumber = Integer.parseInt(number);
+            checkScope(winningNumber);
+            winningNumbers.add(winningNumber);
         }
         return winningNumbers;
     }
 
-    public int createBonusNumbers(List<Integer> numbers, int inputNumber) {
-        checkScope(inputNumber);
-        checkOverlap(numbers, inputNumber);
-        return inputNumber;
+    public int createBonusNumbers(List<Integer> numbers, String inputNumber) {
+        checkNumber(inputNumber);
+        int bonusNumber = Integer.parseInt(inputNumber);
+        checkScope(bonusNumber);
+        checkOverlap(numbers, bonusNumber);
+        return bonusNumber;
+    }
+
+    public void checkNumber(String number) {
+        if (!number.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("당첨 번호에 문자가 포함되어있습니다.");
+        }
     }
 
     public void checkScope(int number) {

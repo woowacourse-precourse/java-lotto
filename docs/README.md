@@ -9,7 +9,7 @@
 
 ##기능 목록
 - [x] 로또 개수 입력 - LottoManager # inputLottoCount
-  - [ ] 숫자인지 확인
+  - [x] 숫자인지 확인
   - [x] 1000 원  위 확인
 - [x] 1부터 45까지 서로 다른 수로 이루어진 6개의 로또번호 생성 - NumberGenerator#createLottoNumber
   - [x] 사이즈 확인 - Lotto#validate
@@ -18,10 +18,11 @@
 - 1부터 45까지 서로 다른 수로 이루어진 6개의 번호와 1개의 서비스 번호를 입력한다.
   - [x] 당첨 번호 입력 - LottoManager #inputWinningNumbers
     - [x] 사이즈 확인 - WinningNumbers #validate
+    - [x] 숫자인지 확인 - NumberGenerator #checkNumber
     - [x] 중복 검사 - WinningNumbers #checkOverlap
     - [x] 범위 확인 - WinningNumbers #checkScope
   - [x] 보너스 번호 입력 - LottoManager# inputBonusNumber
-    - [ ] 숫자인지 확인
+    - [x] 숫자인지 확인
     - [x] 범위 확인 - WinningNumbers #checkScope
   - [x] 당첨번호가 보너스 번호를 포함하는지 확인 - WinningNumbers #checkInclusion
 - [x] 로또 번호(6자리)와 당첨 번호(6자리, 보너스 번호 1개)를 비교한다. - LottoCalculator #compare

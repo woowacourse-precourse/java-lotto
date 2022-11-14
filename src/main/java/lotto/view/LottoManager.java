@@ -43,9 +43,12 @@ public class LottoManager {
         return Console.readLine();
     }
 
-    public int inputBonusNumber() {
+    public String inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        String bonusNumber = Console.readLine();
+        checkNumber(bonusNumber);
+        return bonusNumber;
+//        return Console.readLine();
     }
 
     public void printWinningDetails(LottoCalculator lottoCalculator) {
