@@ -27,8 +27,9 @@ public class YieldMachine {
         this.yield = 0;
     }
 
-    public void run() {
-
+    public void run(User user) {
+        calculateYield(user);
+        printYield();
     }
 
     public void calculateYield(User user) {
