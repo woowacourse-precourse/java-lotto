@@ -18,7 +18,7 @@ public class StoreTest {
     StoreService storeService = new StoreService();
     UserService userService = new UserService(storeService);
 
-    UserController userController = new UserController(storeService, userService, store);
+    UserController userController = new UserController(userService, store);
 
     @Test
     @DisplayName("금액 입력 테스트")
