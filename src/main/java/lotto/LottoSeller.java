@@ -50,4 +50,8 @@ public class LottoSeller {
             bundleCopy.get(index).showLotto();;
         }
     }
+
+    void giveChange() {
+        System.out.println("잔돈은 " + change + "원입니다.");
+    }
 }
