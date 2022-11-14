@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
+import static lotto.support.ErrorMessage.NEGATIVE_MONEY_ERROR;
+import static lotto.support.ErrorMessage.NOT_DIVIDED_BY_LOTTO_PRICE_ERROR;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -29,7 +31,7 @@ class MoneyTest {
         //when then
         assertThatThrownBy(() -> new Money(money))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("구입 금액은 1000원으로 나누어 떨어져야 합니다.");
+                .hasMessage(NOT_DIVIDED_BY_LOTTO_PRICE_ERROR);
     }
 
     @Test
@@ -49,6 +51,6 @@ class MoneyTest {
         //when then
         assertThatThrownBy(() -> new Money(money))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("구입 금액은 음수일 수 없습니다.");
+                .hasMessage(NEGATIVE_MONEY_ERROR);
     }
 }

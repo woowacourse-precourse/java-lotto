@@ -1,10 +1,11 @@
 package lotto.domain;
 
+import static lotto.support.ErrorMessage.NEGATIVE_MONEY_ERROR;
+import static lotto.support.ErrorMessage.NOT_DIVIDED_BY_LOTTO_PRICE_ERROR;
+
 public class Money {
 
     private static final int LOTTO_PRICE = 1000;
-    private static final String NOT_DIVIDED_BY_LOTTO_PRICE_ERROR = "구입 금액은 1000원으로 나누어 떨어져야 합니다.";
-    private static final String NEGATIVE_MONEY_ERROR = "구입 금액은 음수일 수 없습니다.";
 
     private final int money;
 

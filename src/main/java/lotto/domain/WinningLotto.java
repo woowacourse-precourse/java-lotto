@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
-import static lotto.domain.Lotto.DUPLICATED_NUMBER_ERROR;
+import static lotto.support.ErrorMessage.DUPLICATED_NUMBER_ERROR;
 
 public class WinningLotto {
 

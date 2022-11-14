@@ -6,12 +6,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.support.ErrorMessage.PARSE_ERROR_MESSAGE;
+
 public class InputView {
 
     private static final String PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
-    private static final String PARSE_ERROR_MESSAGE = "올바른 입력이 아닙니다.";
     private static final String DELIMITER = ",";
 
     public static int inputPurchaseAmount() {

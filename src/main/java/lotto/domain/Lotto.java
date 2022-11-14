@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 import static lotto.domain.LottoGenerator.LOTTO_NUMBER_COUNT;
 import static lotto.domain.LottoGenerator.MAXIMUM_LOTTO_NUMBER;
 import static lotto.domain.LottoGenerator.MINIMUM_LOTTO_NUMBER;
+import static lotto.support.ErrorMessage.DUPLICATED_NUMBER_ERROR;
+import static lotto.support.ErrorMessage.INVALID_NUMBER_COUNT_ERROR;
+import static lotto.support.ErrorMessage.OUT_OF_RANGE_NUMBER_ERROR;
 
 public class Lotto {
 

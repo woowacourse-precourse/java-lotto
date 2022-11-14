@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static lotto.support.ErrorMessage.DUPLICATED_NUMBER_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -43,7 +44,7 @@ class WinningLottoTest {
             //when then
             assertThatThrownBy(() -> new WinningLotto(lotto, bonusNumber))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("중복된 당첨 번호가 존재합니다.");
+                    .hasMessage(DUPLICATED_NUMBER_ERROR);
         }
     }
 

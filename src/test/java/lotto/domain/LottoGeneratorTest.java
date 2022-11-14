@@ -11,7 +11,7 @@ import static lotto.domain.LottoGenerator.MINIMUM_LOTTO_NUMBER;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoGeneratorTest {
-    
+
     @RepeatedTest(10)
     @DisplayName("generate 테스트")
     void test() {
