@@ -47,4 +47,14 @@ class LottoMachineTest {
         assertThatThrownBy(() -> lottoMachine.getBonusNumber(bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또_구매_테스트")
+    @Test
+    void 로또_구매_테스트() {
+        int count = 8;
+        lottoMachine.buyLottos(count);
+        for (Lotto lotto : lottoMachine.getLottos()) {
+            System.out.println(lotto.toStringLotto());
+        }
+    }
 }
