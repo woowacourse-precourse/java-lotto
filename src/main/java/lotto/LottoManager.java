@@ -6,17 +6,17 @@ import java.util.List;
 
 public class LottoManager {
 
-    public static String error;
     private final int[] rewards = new int[]{ Prize.FIFTH_PRIZE.getPrize(),
             Prize.SECOND_PRIZE.getPrize(),
             Prize.THIRD_PRIZE.getPrize(),
             Prize.FOURTH_PRIZE.getPrize(),
             Prize.FIFTH_PRIZE.getPrize() };
-    private Judge judge;
-    private LottoGenerator lottoGenerator;
+    private final Judge judge;
+    private final LottoGenerator lottoGenerator;
     private List<Lotto> userLottos;
     private Lotto winningNumbers;
-    private int[] prize = new int[]{ 0, 0, 0, 0, 0 };
+    private static String error;
+    private final int[] prize = new int[]{ 0, 0, 0, 0, 0 };
     private int bonusNumber;
     private int amount;
     private float yield;
@@ -26,7 +26,11 @@ public class LottoManager {
         this.lottoGenerator = new LottoGenerator();
     }
 
-    public void compare() {
+    public static void terminateByError(String error) {
+        LottoManager.error = error;
+        throw new IllegalArgumentException();
+    }
+    private void compare() {
         int correct;
         boolean bonus;
         for(Lotto lotto : userLottos) {
@@ -35,15 +39,11 @@ public class LottoManager {
             checkResult(correct, bonus);
         }
     }
-    public void inputAmount() {
+
+    private void inputAmount() {
         System.out.println(Notice.INPUT_AMOUNT.getNotice());
         String buyAmount = Console.readLine();
         assignLottoAndAmount(buyAmount);
-    }
-
-    public static void terminateByError(String error) {
-        LottoManager.error = error;
-        throw new IllegalArgumentException();
     }
 
     private void assignLottoAndAmount(String buyAmount) {
@@ -52,14 +52,14 @@ public class LottoManager {
         amount = Integer.parseInt(buyAmount);
     }
 
-    public void inputWinningNumbers() {
+    private void inputWinningNumbers() {
         System.out.println(Notice.INPUT_WINNING_NUMBERS.getNotice());
         String inputNumbers = Console.readLine();
         judge.isAllNumber(inputNumbers);
         winningNumbers = lottoGenerator.changeToNumber(inputNumbers);
     }
 
-    public void inputBonusNumber() {
+    private void inputBonusNumber() {
         System.out.println(Notice.INPUT_BONUS_NUMBER.getNotice());
         String bNumber = Console.readLine();
         if(judge.isNumber(bNumber)) {
@@ -67,7 +67,7 @@ public class LottoManager {
         }
     }
 
-    public void checkContain() {
+    private void checkContain() {
         judge.isNotContain(winningNumbers, bonusNumber);
     }
 
@@ -108,7 +108,7 @@ public class LottoManager {
         isFifth(correct);
     }
 
-    public void calcYield() {
+    private void calcYield() {
         float total = 0;
         for (int i = 0; i < prize.length; i++) {
             total += prize[i] * rewards[i];
@@ -116,12 +116,13 @@ public class LottoManager {
         yield = (total / amount) * 100;
     }
 
-    public void showAllLottos() {
+    private void showAllLottos() {
         for(Lotto lotto : userLottos) {
             lotto.printSortedNumbers();
         }
     }
-    public void printResult() {
+
+    private void printResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println(String.format(Result.FIFTH.getResult(), prize[4]));
@@ -130,5 +131,19 @@ public class LottoManager {
         System.out.println(String.format(Result.SECOND.getResult(), prize[1]));
         System.out.println(String.format(Result.FIRST.getResult(), prize[0]));
         System.out.println(String.format(Result.YIELD.getResult(), yield));
+    }
+    public void gameStart() {
+        try{
+            inputAmount();
+            showAllLottos();
+            inputWinningNumbers();
+            inputBonusNumber();
+            checkContain();
+            compare();
+            calcYield();
+            printResult();
+        } catch(IllegalArgumentException e) {
+            System.out.println(LottoManager.error);
+        }
     }
 }
