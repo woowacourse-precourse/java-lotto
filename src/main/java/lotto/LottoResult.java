@@ -5,7 +5,7 @@ import static lotto.Constant.*;
 public class LottoResult {
 
     public int sum = 0;
-    public int returnRate;
+    public double returnRate;
 
 
     public void printResult(int numberOfLottos) {
@@ -26,7 +26,7 @@ public class LottoResult {
         if (sum == 0) {
             return 0;
         }
-        returnRate = (sum / numberOfLottos) * 100;
+        returnRate = (sum / (numberOfLottos * 1000)) * 100;
 
         return returnRate;
     }

@@ -15,7 +15,7 @@ public class GameController {
 
         orderLotto.getPayAmount();
         orderLotto.countNumberOfTickets();
-        orderLotto.generateTickets();
+        myLottos = orderLotto.generateTickets();
         orderLotto.printTicket();
     }
 
@@ -34,9 +34,12 @@ public class GameController {
     public void getResult() {
         NumberChecker numberChecker = new NumberChecker(winningNumbers, bonusNumber, myLottos);
 
-        numberChecker.compareNumber();
         numberChecker.countRanks();
 
+      /*  for(PrizeEnum p : PrizeEnum.values()){
+            System.out.println(p.getCount());
+        }
+*/
         LottoResult result = new LottoResult();
 
         result.printResult(myLottos.size());

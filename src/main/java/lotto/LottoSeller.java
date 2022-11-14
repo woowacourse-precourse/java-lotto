@@ -38,10 +38,12 @@ public class LottoSeller {
         return numberOfTickets;
     }
 
-    public void generateTickets() {
+    public List<List<Integer>> generateTickets() {
         NumberGenerator newNumbers = new NumberGenerator(numberOfTickets);
+
         newNumbers.generateNumbers();
         newLottos = newNumbers.myLotto;
+        return newLottos;
     }
 
     public void printTicket() {

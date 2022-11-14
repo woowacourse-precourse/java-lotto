@@ -26,11 +26,14 @@ public enum PrizeEnum {
         this.message = message;
     }
 
-    public void plusRankCount(List<Integer> ans) {
-        for (int i = 0; i < ans.size(); i++) {
-            if (this.correctNumber == ans.get(i) && NumberChecker.checkBonus() == this.bonusCorrect) {
-                this.count++;
-            }
+    public void plusRankCount(int numberOfCorrectNumbers, boolean checkBonus) {
+        /*System.out.println("jjjjjjjjj");
+
+        System.out.println("this.correctNumber" + this.correctNumber + ", correctNumbers.get(i) " + numberOfCorrectNumbers);
+        System.out.println("checkBonus" + checkBonus + ", this.bonusCorrect" + this.bonusCorrect);
+*/
+        if (numberOfCorrectNumbers == this.correctNumber && checkBonus == this.bonusCorrect) {
+            this.count++;
         }
     }
 
