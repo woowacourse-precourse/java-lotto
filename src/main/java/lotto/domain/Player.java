@@ -43,10 +43,10 @@ public class Player {
     }
 
     public void compare(List<Lotto> lottos, int lottoBonusNumber) {
-        Boolean hasBonusNumber = isEqualBonusNumber(lottoBonusNumber);
+        boolean hasBonusNumber = isEqualBonusNumber(lottoBonusNumber);
 
         for (Lotto lotto : lottos) {
-            int matchingNumber = lotto.getMatchingNumber(numbers);
+            Prize prize = Prize.findPrize(lotto.getMatchingNumber(numbers), hasBonusNumber);
         }
 
     }
