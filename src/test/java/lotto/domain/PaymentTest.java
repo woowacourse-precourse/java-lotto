@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import lotto.constant.ErrorMessage;
-import lotto.validator.UserInputValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -23,7 +22,7 @@ public class PaymentTest {
             String input = "로또게임";
 
             // when, then
-            assertThatThrownBy(() -> UserInputValidator.validateStringIsNumeric(input))
+            assertThatThrownBy(() -> new Payment(input))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.MONEY_IS_ALLOWED_ONLY_NUMERIC.getMessage());
         }
@@ -35,7 +34,7 @@ public class PaymentTest {
             String input = String.valueOf(UNIT_OF_LOTTO_PURCHASE);
 
             // when, then
-            assertThatCode(() -> UserInputValidator.validateStringIsNumeric(input))
+            assertThatCode(() -> new Payment(input))
                     .doesNotThrowAnyException();
         }
     }
