@@ -2,9 +2,10 @@ package lotto;
 
 import java.util.List;
 
+import static lotto.Constants.*;
+
 public class OutputView {
 
-    private static final String OUTPUT_COUNT_MSG = "개를 구매했습니다.";
 
     public static int getLottoCount(String purchaseAmount, int unit) {
         int lottoCount = Integer.getInteger(purchaseAmount) / unit;

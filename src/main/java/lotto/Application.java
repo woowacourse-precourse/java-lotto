@@ -6,12 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Application {
+import static lotto.Constants.*;
 
-    private static final int UNIT = 1000;
-    private static final int START_NUM = 1;
-    private static final int END_NUM = 45;
-    private static final int COUNT_NUM = 6;
+public class Application {
 
     public static void main(String[] args) {
         String purchaseAmount = InputView.getPurchaseAmount();
@@ -27,10 +24,10 @@ public class Application {
         try {
             userPurchaseAmount = Integer.parseInt(purchaseAmount);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 구입금액을 숫자로 입력해주세요");
+            throw new IllegalArgumentException(ERROR + "구입금액을 숫자로 입력해주세요");
         }
         if (!isDivide(userPurchaseAmount, UNIT)) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위로 구입이 가능합니다");
+            throw new IllegalArgumentException(ERROR + UNIT + "원 단위로 구입이 가능합니다");
         }
     }
 
