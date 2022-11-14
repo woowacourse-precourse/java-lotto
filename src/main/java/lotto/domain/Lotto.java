@@ -6,6 +6,7 @@ import lotto.exception.InvalidSizeLottoNumberException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
@@ -14,6 +15,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        numbers = sorted(numbers);
         this.numbers = numbers;
     }
 
@@ -33,5 +35,11 @@ public class Lotto {
         if (nonDuplicateNumbers.size() != LOTTO_SIZE) {
             throw new DuplicateLottoNumberException();
         }
+    }
+
+    public List<Integer> sorted(List<Integer> numbers) {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
