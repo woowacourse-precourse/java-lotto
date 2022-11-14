@@ -8,6 +8,24 @@ import java.util.stream.Collectors;
 
 public class LottoGenerator {
 
+    private static final int LOTTO_AMOUNT = 1000;
+
+    public static int findLottoCountByMoney(int money) {
+        validateMoney(money);
+        return money / LOTTO_AMOUNT;
+    }
+
+    private static void validateMoney(int money) {
+        if (money % LOTTO_AMOUNT != 0) {
+            throw new IllegalArgumentException("[ERROR] 금액이 " + LOTTO_AMOUNT + "로 나누어 떨어지지 않습니다.");
+        }
+    }
+
+    public static int enterToBuyLottoForMoney() {
+        String money = Console.readLine();
+        return Integer.parseInt(money);
+    }
+
     public static Lotto createLottoWithRandomNumbers() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         List<Integer> sortedNumbers = randomNumbers.stream().sorted().collect(Collectors.toList());

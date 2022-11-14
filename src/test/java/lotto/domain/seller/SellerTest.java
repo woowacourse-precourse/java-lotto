@@ -3,9 +3,9 @@ package lotto.domain.seller;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.LottoGenerator;
 import lotto.domain.lotto.LottoRanking;
 import lotto.domain.lotto.WinningLotto;
 import lotto.dto.LottoCount;
@@ -17,9 +17,8 @@ public class SellerTest {
     @DisplayName("[성공] 구입 금액을 통해서 로또를 몇 장 구매할 수 있는지 찾기")
     @Test
     void findLottoCountByMoney() {
-        Seller seller = new LottoMachine(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
         int money = 10000;
-        int lottoCount = seller.findLottoCountByMoney(money);
+        int lottoCount = LottoGenerator.findLottoCountByMoney(money);
         assertThat(lottoCount).isEqualTo(10);
     }
 
@@ -28,7 +27,7 @@ public class SellerTest {
     void findLottoCountByMoneyOfDivide1000() {
         Seller seller = new LottoMachine(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
         int money = 10001;
-        assertThatThrownBy(() -> seller.findLottoCountByMoney(money))
+        assertThatThrownBy(() -> LottoGenerator.findLottoCountByMoney(money))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
