@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Compare;
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 import lotto.domain.Winning;
 
 import java.util.ArrayList;
@@ -35,8 +36,10 @@ public class Application {
 
         Compare compare = new Compare();
         for(int i = 0; i < allLotto.size(); i++){
-            compare.matchCount(allLotto.get(i),Winning.numbers);
-            compare.matchBonus(allLotto.get(i), Winning.numbers);
+            int matchNumber = compare.matchCount(allLotto.get(i),Winning.numbers);
+            boolean matchBonus = compare.matchBonus(allLotto.get(i), Winning.numbers);
+
+            System.out.println(Rank.valueOf(matchNumber, matchBonus));
         }
     }
 
