@@ -2,6 +2,8 @@ package lotto.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -56,17 +58,19 @@ class LottoDrawingMachineTest {
     }
 
     @DisplayName("보너스 번호가 1~45 범위를 넘어가면 예외가 발생한다.")
-    @Test
-    void drawBonusNumberByOverRange() {
-        assertThatThrownBy(() -> drawingMachine.draw(List.of(1, 2, 3, 4, 5, 6), 47))
+    @ParameterizedTest
+    @ValueSource(ints = {0, 47, -1})
+    void drawBonusNumberByOverRange(Integer bonusNumber) {
+        assertThatThrownBy(() -> drawingMachine.draw(List.of(1, 2, 3, 4, 5, 6), bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ExceptionMessage.INVALID_LOTTO_NUMBER_RANGE);
     }
 
     @DisplayName("보너스 번호가 당첨 번호와 중복되면 예외가 발생한다.")
-    @Test
-    void drawBonusNumberByDuplicatedNumber() {
-        assertThatThrownBy(() -> drawingMachine.draw(List.of(1, 2, 3, 4, 5, 6), 6))
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6})
+    void drawBonusNumberByDuplicatedNumber(Integer bonusNumber) {
+        assertThatThrownBy(() -> drawingMachine.draw(List.of(1, 2, 3, 4, 5, 6), bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ExceptionMessage.INVALID_BONUS_NUMBER_DUPLICATION);
     }

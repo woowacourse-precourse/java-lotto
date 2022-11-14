@@ -6,7 +6,8 @@ import lotto.model.LottoWinningStatistics;
 import lotto.view.LottoView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 
@@ -27,9 +28,10 @@ class LottoControllerTest {
     }
 
     @DisplayName("로또 구매 금액으로 숫자 아닌 문자 입력 시 예외가 발생한다.")
-    @Test
-    void purchaseLottosExceptionTest() {
-        final byte[] buf = String.join("\n", "1004a").getBytes();
+    @ParameterizedTest
+    @ValueSource(strings = {"1004a", " ", "5,000"})
+    void purchaseLottosExceptionTest(String purchaseMoney) {
+        final byte[] buf = String.join("\n", purchaseMoney).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
         assertThatThrownBy(() -> lottoController.purchaseLottos())
@@ -38,9 +40,10 @@ class LottoControllerTest {
     }
 
     @DisplayName("당첨 번호로 숫자와 쉼표(,) 외의 문자 입력 시 예외가 발생한다.")
-    @Test
-    void drawLottoExceptionTestByWinningNumbers() {
-        final byte[] buf = String.join("\n", "1,2,3,4,5.6", "7").getBytes();
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3,4,5.6", "1,2,3a,4,5"})
+    void drawLottoExceptionTestByWinningNumbers(String winningNumbers) {
+        final byte[] buf = String.join("\n", winningNumbers).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
         assertThatThrownBy(() -> lottoController.drawLotto())
@@ -49,9 +52,10 @@ class LottoControllerTest {
     }
 
     @DisplayName("보너스 번호로 숫자 아닌 문자 입력 시 예외가 발생한다.")
-    @Test
-    void drawLottoExceptionTestByBonusNumber() {
-        final byte[] buf = String.join("\n", "1,2,3,4,5", "7a").getBytes();
+    @ParameterizedTest
+    @ValueSource(strings = {"5a", " ", "i"})
+    void drawLottoExceptionTestByBonusNumber(String bonusNumber) {
+        final byte[] buf = String.join("\n", "1,2,3,4,5", bonusNumber).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
         assertThatThrownBy(() -> lottoController.drawLotto())

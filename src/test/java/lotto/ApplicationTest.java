@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -112,90 +114,101 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 예외_테스트_로또_구입_금액_숫자_이외_문자_포함() {
+    @ParameterizedTest
+    @ValueSource(strings = {"1000j", " ", "5,000"})
+    void 예외_테스트_로또_구입_금액_숫자_이외_문자_포함(String purchaseMoney) {
         assertSimpleTest(() -> {
-            runException("1000j");
+            runException(purchaseMoney);
             assertThat(output()).contains(PREFIX + INVALID_INPUT_ONLY_NUMBER);
         });
     }
 
-    @Test
-    void 예외_테스트_로또_구입_금액_최소_금액_미만() {
+    @ParameterizedTest
+    @ValueSource(strings = {"700", "-500", "999"})
+    void 예외_테스트_로또_구입_금액_최소_금액_미만(String purchaseMoney) {
         assertSimpleTest(() -> {
-            runException("700");
+            runException(purchaseMoney);
             assertThat(output()).contains(PREFIX + INVALID_PURCHASE_MONEY_MIN);
         });
     }
 
-    @Test
-    void 예외_테스트_로또_구입_금액_최대_금액_초과() {
+    @ParameterizedTest
+    @ValueSource(strings = {"1000000", "150000", "100001"})
+    void 예외_테스트_로또_구입_금액_최대_금액_초과(String purchaseMoney) {
         assertSimpleTest(() -> {
-            runException("1000000");
+            runException(purchaseMoney);
             assertThat(output()).contains(PREFIX + INVALID_PURCHASE_MONEY_MAX);
         });
     }
 
-    @Test
-    void 예외_테스트_로또_구입_금액_단위() {
+    @ParameterizedTest
+    @ValueSource(strings = {"5500", "1999", "7001"})
+    void 예외_테스트_로또_구입_금액_단위(String purchaseMoney) {
         assertSimpleTest(() -> {
-            runException("5500");
+            runException(purchaseMoney);
             assertThat(output()).contains(PREFIX + INVALID_PURCHASE_MONEY_UNIT);
         });
     }
 
-    @Test
-    void 예외_테스트_당첨_번호_숫자_쉼표_이외_문자_포함() {
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3,4,5.6", "1,2,3,4,5a,6", "1,2,.3,4,5,6"})
+    void 예외_테스트_당첨_번호_숫자_쉼표_이외_문자_포함(String winningNumbers) {
         assertSimpleTest(() -> {
-            runException("1000", "1,2,3,4,5.6");
+            runException("1000", winningNumbers);
             assertThat(output()).contains(PREFIX + INVALID_INPUT_ONLY_NUMBER_COMMA);
         });
     }
 
-    @Test
-    void 예외_테스트_당첨_번호_갯수() {
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3,4", "1,2,3,4,5,6,7"})
+    void 예외_테스트_당첨_번호_갯수(String winningNumbers) {
         assertSimpleTest(() -> {
-            runException("1000", "1,2,3,4,5,6,7", "8");
+            runException("1000", winningNumbers, "8");
             assertThat(output()).contains(PREFIX + INVALID_LOTTO_NUMBER_COUNT);
         });
     }
 
-    @Test
-    void 예외_테스트_당첨_번호_범위() {
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3,4,5,50", "0,2,3,4,5,6", "1,2,3,-4,5,6"})
+    void 예외_테스트_당첨_번호_범위(String winningNumbers) {
         assertSimpleTest(() -> {
-            runException("1000", "1,2,3,4,5,50", "7");
+            runException("1000", winningNumbers, "7");
             assertThat(output()).contains(PREFIX + INVALID_LOTTO_NUMBER_RANGE);
         });
     }
 
-    @Test
-    void 예외_테스트_당첨_번호_중복() {
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3,4,5,5", "1,2,3,3,5,6", "1,2,3,1,5,1"})
+    void 예외_테스트_당첨_번호_중복(String winningNumbers) {
         assertSimpleTest(() -> {
-            runException("1000", "1,2,3,4,5,5", "7");
+            runException("1000", winningNumbers, "7");
             assertThat(output()).contains(PREFIX + INVALID_LOTTO_NUMBER_DUPLICATION);
         });
     }
 
-    @Test
-    void 예외_테스트_보너스_번호_숫자_이외_문자_포함() {
+    @ParameterizedTest
+    @ValueSource(strings = {"7a", " ", "i"})
+    void 예외_테스트_보너스_번호_숫자_이외_문자_포함(String bonusNumber) {
         assertSimpleTest(() -> {
-            runException("1000", "1,2,3,4,5,6", "7a");
+            runException("1000", "1,2,3,4,5,6", bonusNumber);
             assertThat(output()).contains(PREFIX + INVALID_INPUT_ONLY_NUMBER);
         });
     }
 
-    @Test
-    void 예외_테스트_보너스_번호_범위() {
+    @ParameterizedTest
+    @ValueSource(strings = {"-5", "0", "46"})
+    void 예외_테스트_보너스_번호_범위(String bonusNumber) {
         assertSimpleTest(() -> {
-            runException("1000", "1,2,3,4,5,6", "50");
+            runException("1000", "1,2,3,4,5,6", bonusNumber);
             assertThat(output()).contains(PREFIX + INVALID_LOTTO_NUMBER_RANGE);
         });
     }
 
-    @Test
-    void 예외_테스트_보너스_번호_중복() {
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2", "3", "4", "5", "6"})
+    void 예외_테스트_보너스_번호_중복(String bonusNumber) {
         assertSimpleTest(() -> {
-            runException("1000", "1,2,3,4,5,6", "6");
+            runException("1000", "1,2,3,4,5,6", bonusNumber);
             assertThat(output()).contains(PREFIX + INVALID_BONUS_NUMBER_DUPLICATION);
         });
     }

@@ -2,6 +2,8 @@ package lotto.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -83,16 +85,18 @@ class LottoTest {
     }
 
     @DisplayName("인자로 전달되는 로또 번호를 가지고 있는지 판단한다. - 가지고 있음")
-    @Test
-    void hasNumberTestTrue() {
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6})
+    void hasNumberTestTrue(Integer number) {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThat(lotto.hasNumber(3)).isTrue();
+        assertThat(lotto.hasNumber(number)).isTrue();
     }
 
     @DisplayName("인자로 전달되는 로또 번호를 가지고 있는지 판단한다. - 가지고 있지 않음")
-    @Test
-    void hasNumberTestFalse() {
+    @ParameterizedTest
+    @ValueSource(ints = {7, 8, 9, 10, 11, 12})
+    void hasNumberTestFalse(Integer number) {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThat(lotto.hasNumber(10)).isFalse();
+        assertThat(lotto.hasNumber(number)).isFalse();
     }
 }
