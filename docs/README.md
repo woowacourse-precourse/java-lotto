@@ -74,8 +74,8 @@
 - [X] 구매한 모든 로또에 대해 몇 등을 기록했는지 저장 - Statistics#record(Rank rank)
   - [X] Map<Rank, Integer> 자료 구조를 활용해 1~5등까지 각각 0개씩 초기화
 - [X] 로또 당첨 내역 자료 구조 반환 - Statistics#getRankRecord()
-- [ ] 수익률 반환 - Statistics#getEarningsRate()
-- [ ] 발행된 Lotto 수와 총 당첨금 정보를 활용해 수익률 계산 - Statistics#calculateEarningsRate()
+- [X] 수익률 반환 - Statistics#getEarningsRate()
+- [X] 발행된 Lotto 수와 총 당첨금 정보를 활용해 수익률 계산 - Statistics#calculateEarningsRate()
   - [X] 총 몇 개의 로또를 구매 했는지 계산 - Statistics#calculateNumberOfLottosPaid()
   - [X] 로또 등수 별로 상금 정보 초기화
   - [X] 총 당첨 수익 계산 - Statistics#calculateEarnings()

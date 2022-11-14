@@ -34,6 +34,10 @@ public class Statistics {
         return rankRecord;
     }
 
+    public String getEarningsRate() {
+        return roundToTwoDecimalPlaces();
+    }
+
     private String  roundToTwoDecimalPlaces() {
         return String.format("%.2f", calculateEarningsRate());
     }
