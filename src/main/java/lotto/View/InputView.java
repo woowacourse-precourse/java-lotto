@@ -36,17 +36,4 @@ public class InputView {
         String temp = readLine();
         Lotto.setBonusNumber(stringToInt(temp));
     }
-
-    public static int inputAmount(String input){
-        System.out.println(MONEY_INPUT);
-        int inputMoney;
-        try {
-            inputMoney = parseInt(input);
-        } catch (NumberFormatException exception) {
-            System.out.println(ERROR_MESSAGE+MONEY_CHAR_ERROR_MESSAGE);
-            throw new IllegalArgumentException(ERROR_MESSAGE);
-        }
-        return checkUnit(inputMoney);
-    }
-
 }
