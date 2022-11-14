@@ -3,15 +3,18 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.service.LottoService;
-import lotto.view.View;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.List;
 
 public class LottoController {
     private LottoService lottoService =  new LottoService();
+    private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
 
     public void startGame() {
-        String userInputMoney = View.printUserInputMoney();
+        String userInputMoney = inputView.printUserInputMoney();
         getTheNumberOfLotto(userInputMoney);
     }
 
@@ -26,18 +29,18 @@ public class LottoController {
     }
 
     private void showUserLotto(List<Lotto> userLotto) {
-        View.printUserLotto(userLotto);
+        outputView.printUserLotto(userLotto);
         createWinningNumber();
     }
 
     private void createWinningNumber() {
-        String winningNumber = View.printUserInputWinningNumber();
+        String winningNumber = inputView.printUserInputWinningNumber();
         lottoService.createWinningLotto(winningNumber);
         getBonusNumber();
     }
 
     private void getBonusNumber() {
-        String bonusNumber = View.printUserInputBonusNumber();
+        String bonusNumber = inputView.printUserInputBonusNumber();
         lottoService.createBonusNumber(bonusNumber);
         compareLotto();
     }
@@ -48,13 +51,13 @@ public class LottoController {
     }
 
     private void showWinningResult(List<Integer> result) {
-        View.printWinningResult(result);
+        outputView.printWinningResult(result);
         getProfit();
     }
 
     private void getProfit() {
         String profit = lottoService.getProfit();
-        View.printProfit(profit);
+        OutputView.printProfit(profit);
     }
 
 

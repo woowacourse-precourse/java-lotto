@@ -19,4 +19,6 @@ public class Money {
     public Integer getMoney() {
         return money;
     }
+
+
 }

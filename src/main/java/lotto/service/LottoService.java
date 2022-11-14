@@ -19,13 +19,13 @@ public class LottoService {
     private LottoRepository lottoRepository = new LottoRepository();
     private LottoComparator lottoComparator = new LottoComparator();
 
-    public  Money getTheNumberOfLotto(String purchaseMoney) {
+    public Money getTheNumberOfLotto(String purchaseMoney) {
         Money userMoney = InputValidator.checkUserInputMoney(purchaseMoney);
         saveUserMoney(userMoney);
         return userMoney;
     }
 
-    private  void saveUserMoney(Money userMoney) {
+    private void saveUserMoney(Money userMoney) {
         lottoRepository.saveUserMoney(userMoney);
     }
 
@@ -62,13 +62,14 @@ public class LottoService {
 
     public void createBonusNumber(String userBonusNumber) {
         Lotto winningLotto = lottoRepository.getWinningLotto();
-        BonusNumber bonusNumber =InputValidator.checkBonusNumber(userBonusNumber,winningLotto);
+        BonusNumber bonusNumber = InputValidator.checkBonusNumber(userBonusNumber, winningLotto);
         saveBonusNumber(bonusNumber);
     }
 
     private void saveBonusNumber(BonusNumber bonusNumber) {
         lottoRepository.saveBonusNumber(bonusNumber);
     }
+
     public List<Integer> compareLotto() {
         List<Lotto> userLottoGroup = lottoRepository.getUserLottoGroup();
         Lotto winningLotto = lottoRepository.getWinningLotto();
@@ -88,7 +89,7 @@ public class LottoService {
     public String getProfit() {
         List<Integer> winningResult = lottoRepository.getWinningResult();
         Double purchaseMoney = Double.valueOf(lottoRepository.getUserMoney().getMoney());
-        String totalProfit = calculateProfit(winningResult,purchaseMoney);
+        String totalProfit = calculateProfit(winningResult, purchaseMoney);
         return totalProfit;
     }
 

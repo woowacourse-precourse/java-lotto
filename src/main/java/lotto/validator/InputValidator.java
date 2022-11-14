@@ -16,10 +16,10 @@ public class InputValidator {
         if(checkZeroInHead(userInputMoney)){
             throw new IllegalArgumentException(ExceptionStatus.ZERO_IN_HEAD.getText());
         }
-        if (checkOnlyNumber(userInputMoney)) {
+        if (checkOnlyNumberInMoney(userInputMoney)) {
             throw new IllegalArgumentException(ExceptionStatus.ZERO_IN_HEAD.getText());
         }
-        if (checkDivide(userInputMoney)) {
+        if (checkDivideByBasePrice(userInputMoney)) {
             throw new IllegalArgumentException(ExceptionStatus.NOT_DIVIDE_BASE_PRICE.getText());
         }
         return new Money(Integer.parseInt(userInputMoney));
@@ -32,7 +32,7 @@ public class InputValidator {
         return false;
     }
 
-    private static boolean checkOnlyNumber(String userInputMoney) {
+    private static boolean checkOnlyNumberInMoney(String userInputMoney) {
         char[] inputMoneyPiece = userInputMoney.toCharArray();
         for (int i = 0; i < userInputMoney.length(); i++) {
             if (inputMoneyPiece[i] < BoundaryStatus.ZERO_ASCII.getNumber() ||
@@ -43,7 +43,7 @@ public class InputValidator {
         return false;
     }
 
-    private static boolean checkDivide(String userInputMoney) {
+    private static boolean checkDivideByBasePrice(String userInputMoney) {
         if(Integer.parseInt(userInputMoney)% NumberStatus.BASE_PRICE_OF_LOTTO.getNumber() != BoundaryStatus.ZERO.getNumber()){
             return true;
         }
@@ -52,17 +52,33 @@ public class InputValidator {
 
     public static void checkWinningNumber(String winningNumber) {
         List<String> checkNumber = Arrays.asList(winningNumber.split(","));
-        if(checkLength(checkNumber)){
+        if(checkCorrectShape(checkNumber)){
             throw new IllegalArgumentException(ExceptionStatus.NOT_CORRECT_SHAPE.getText());
         }
-        if(checkOnlyNumber(checkNumber)){
+        if(checkOnlyNumberInWinningNumber(checkNumber)){
             throw new IllegalArgumentException(ExceptionStatus.CONTAIN_ONLY_NUMBER.getText());
         }
         if(checkNumberBoundary(checkNumber)){
             throw new IllegalArgumentException(ExceptionStatus.NOT_BOUNDARY_NUMBER.getText());
         }
+    }
 
+    private static boolean checkCorrectShape(List<String> checkNumber) {
+        if(checkNumber.size() != NumberStatus.TOTAL_NUMBER_OF_LOTTO.getNumber()){
+            return true;
+        }
+        return false;
+    }
 
+    private static boolean checkOnlyNumberInWinningNumber(List<String> checkNumber) {
+        try{
+            for(String checkNumberPiece : checkNumber){
+                Integer.parseInt(checkNumberPiece);
+            }
+        }catch (NumberFormatException exception){
+            return true;
+        }
+        return false;
     }
 
     private static boolean checkNumberBoundary(List<String> checkNumber) {
@@ -74,25 +90,7 @@ public class InputValidator {
         }
         return false;
     }
-
-    private static boolean checkOnlyNumber(List<String> checkNumber) {
-        try{
-            for(String checkNumberPiece : checkNumber){
-                Integer.parseInt(checkNumberPiece);
-            }
-        }catch (NumberFormatException exception){
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean checkLength(List<String> checkNumber) {
-        if(checkNumber.size() != NumberStatus.TOTAL_NUMBER_OF_LOTTO.getNumber()){
-            return true;
-        }
-        return false;
-    }
-
+    
     public static BonusNumber checkBonusNumber(String bonusNumber, Lotto winningLotto) {
         if(checkIsNumber(bonusNumber)){
             throw new IllegalArgumentException(ExceptionStatus.NOT_NUMBER.getText());
@@ -107,13 +105,14 @@ public class InputValidator {
         return new BonusNumber(Integer.parseInt(bonusNumber));
     }
 
-    private static boolean checkNumberInWinningNumber(String bonusNumber, Lotto winningLotto) {
-        if(winningLotto.getNumbers().contains(Integer.parseInt(bonusNumber))){
+    private static boolean checkIsNumber(String bonusNumber) {
+        try{
+            Integer.parseInt(bonusNumber);
+        }catch (NumberFormatException exception){
             return true;
         }
         return false;
     }
-
     private static boolean checkNumberBoundary(String bonusNumber) {
         Integer checkNumber = Integer.parseInt(bonusNumber);
         if(checkNumber < NumberStatus.MIN_LOTTO_NUMBER.getNumber() ||
@@ -123,12 +122,11 @@ public class InputValidator {
         return false;
     }
 
-    private static boolean checkIsNumber(String bonusNumber) {
-        try{
-            Integer.parseInt(bonusNumber);
-        }catch (NumberFormatException exception){
+    private static boolean checkNumberInWinningNumber(String bonusNumber, Lotto winningLotto) {
+        if(winningLotto.getNumbers().contains(Integer.parseInt(bonusNumber))){
             return true;
         }
         return false;
     }
+
 }

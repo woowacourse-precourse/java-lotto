@@ -1,11 +1,11 @@
 package lotto.status;
 
 public enum WinningStatus {
-    FIRST( 7,6, 2000000000L),
-    SECOND( 6, 5,30000000L),
-    THIRD( 5, 5,1500000L),
-    FOURTH( 4, 4,50000L),
-    FIFTH( 3, 3,5000L);
+    FIRST(7, 6, 2000000000L),
+    SECOND(6, 5, 30000000L),
+    THIRD(5, 5, 1500000L),
+    FOURTH(4, 4, 50000L),
+    FIFTH(3, 3, 5000L);
 
     private final Integer luckyPoint;
     private final Integer numberMatchCount;

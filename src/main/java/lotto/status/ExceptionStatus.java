@@ -2,7 +2,7 @@ package lotto.status;
 
 public enum ExceptionStatus {
     ZERO_IN_HEAD("[ERROR] 올바르지 않은 숫자입니다."),
-    NOT_NUMBER("[ERROR] " + "숫자가 아닙니다."),
+    NOT_NUMBER("[ERROR] 숫자가 아닙니다."),
     NOT_DIVIDE_BASE_PRICE("[ERROR] 1000으로 나누어지는 수가 아닙니다."),
     NOT_CORRECT_SHAPE("[ERROR] 올바른 형태가 아닙니다."),
 

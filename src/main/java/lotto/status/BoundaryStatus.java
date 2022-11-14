@@ -7,7 +7,6 @@ public enum BoundaryStatus {
     NINE_ASCII(57);
 
 
-
     private int number;
 
     BoundaryStatus(int number) {
