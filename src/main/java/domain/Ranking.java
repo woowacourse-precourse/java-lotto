@@ -10,7 +10,7 @@ public enum Ranking {
     SECOND(30_000_000, 5, true),
     FIRST(2_000_000_000, 6, false);
 
-
+    private static final int BONUS_BALL_CHECK_CONDITION = 5;
     private final int prize;
     private final int count;
     private final boolean hasBonusNumber;
@@ -22,8 +22,11 @@ public enum Ranking {
     }
 
     public static Ranking findRanking(int cnt, boolean hasBonusNumber) {
+        if (cnt == BONUS_BALL_CHECK_CONDITION && hasBonusNumber) {
+            return SECOND;
+        }
         return Arrays.stream(values())
-                .filter(ranking -> ranking.count == cnt && ranking.hasBonusNumber == hasBonusNumber)
+                .filter(ranking -> ranking.count == cnt)
                 .findAny()
                 .orElse(NOTHING);
     }
