@@ -86,21 +86,26 @@ public class User {
         return this.lottos.size();
     }
 
-    public void updateRank(int rank) {
+    public void updateRankAndWinningAmount(int rank) {
         if (rank == Number.FIVE.getValue()) {
             rankResult.put(Number.FIVE, rankResult.get(Number.FIVE) + 1);
+            this.winningAmount += Number.FIFTH_WINNING_AMOUNT.getValue();
         }
         if (rank == Number.FOUR.getValue()) {
             rankResult.put(Number.FOUR, rankResult.get(Number.FOUR) + 1);
+            this.winningAmount += Number.FOURTH_WINNING_AMOUNT.getValue();
         }
         if (rank == Number.THREE.getValue()) {
             rankResult.put(Number.THREE, rankResult.get(Number.THREE) + 1);
+            this.winningAmount += Number.THIRD_WINNING_AMOUNT.getValue();
         }
         if (rank == Number.TWO.getValue()) {
             rankResult.put(Number.TWO, rankResult.get(Number.TWO) + 1);
+            this.winningAmount += Number.SECOND_WINNING_AMOUNT.getValue();
         }
         if (rank == Number.ONE.getValue()) {
             rankResult.put(Number.ONE, rankResult.get(Number.ONE) + 1);
+            this.winningAmount += Number.FIRST_WINNING_AMOUNT.getValue();
         }
     }
 }
