@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,10 +11,16 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != 6 || numbers.size() != new HashSet<>(numbers).size()) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    public boolean hasBonus(int bonus) {
+        return numbers.contains(bonus);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
