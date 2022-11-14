@@ -35,6 +35,11 @@ public class InputConsole {
         return true;
     }
 
+    private static boolean isDigit(String money) {
+        boolean isNumeric =  money.matches("[+-]?\\d*(\\.\\d+)?");
+        return isNumeric;
+    }
+
     public static List<Integer> winningNumber() {
         System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
         String numbers = Console.readLine();
