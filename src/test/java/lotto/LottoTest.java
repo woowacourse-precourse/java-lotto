@@ -43,8 +43,22 @@ class LottoTest {
         User user = new User();
         assertThatThrownBy(() ->  user.Count(8500))
                 .isInstanceOf(IllegalArgumentException.class);
-
     }
-    
+
+    @DisplayName("입력받은 로또번호와 자동으로생성한 로또번호를 대조해서 일치하는횟수를 list에 순서대로 저장후 리턴")
+    @Test
+    void CheckMatchCount(){
+        List<List<Integer>> AutoLotto = List.of(
+                List.of(25,40,1,6,41,8,11),
+                List.of(20, 35, 3, 10, 33, 21, 42)
+        );
+        List<Integer> UserLotto = List.of(25,40,1,42,8,7,9);
+        List<Integer> result = new ArrayList<>();
+        User user = new User();
+        result = user.CheckResult(AutoLotto,UserLotto);
+        assertThat(result.contains(3));
+    }
+
+   
 
 }

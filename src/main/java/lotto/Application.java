@@ -24,10 +24,8 @@ public class Application {
         List<List<Integer>> AutoLotto = user.Count(money);
         user.PrintNumber(AutoLotto);
         List<Integer> UserLotto = user.UserLotto();
-        System.out.println(UserLotto.size());
-        //Lotto lotto = new Lotto(UserLotto);
-        List<Integer> result = new ArrayList<>();
-        result = user.CheckResult(AutoLotto, UserLotto);
+        List<Integer> result = user.CheckResult(AutoLotto, UserLotto);
+        System.out.println(AutoLotto);
         CheckCount count = new CheckCount();
         int three = count.CheckThree(result);
         int four = count.CheckFour(result);

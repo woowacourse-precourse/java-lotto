@@ -13,10 +13,10 @@ public class User {
     public List<List<Integer>> Count(int money){
         int count = money/1000;
         List<List<Integer>> AutoLotto = new ArrayList<>();
-            CheckMoney(money);
-            for(int i = 0;i<count;i++){
-                AutoLotto.add(i,Randoms.pickUniqueNumbersInRange(1, 45, 7));
-            }
+        CheckMoney(money);
+        for(int i = 0;i<count;i++){
+            AutoLotto.add(i,Randoms.pickUniqueNumbersInRange(1, 45, 7));
+        }
         return AutoLotto;
     }
 
@@ -47,7 +47,6 @@ public class User {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-        System.out.println(UserLotto.size());
         Lotto lotto  = new Lotto(UserLotto);
         StringToBonusNum(UserLotto);
         return UserLotto;
@@ -89,8 +88,4 @@ public class User {
 
         return count;
     }
-
-
-
-
 }
