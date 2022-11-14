@@ -1,6 +1,7 @@
 package lotto.service;
 
 import lotto.domain.Lotto;
+import lotto.domain.Money;
 import lotto.repository.LottoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,13 +14,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoServiceTest {
     private LottoService lottoService = new LottoService();
+    private LottoRepository lottoRepository = new LottoRepository();
 
     @DisplayName("입력받은 금액만큼의 로또 생성 수를 생성한다.")
     @ParameterizedTest
     @ValueSource(strings = {"1000","2000","124000"})
-    void getTheNumberOfLotto(String money) {
-        Integer numberOfLotto = lottoService.getTheNumberOfLotto(money);
-        assertThat(numberOfLotto).isEqualTo(Integer.parseInt(money)/1000);
+    void getTheNumberOfLotto(String inputMoney) {
+        Money money = lottoService.getTheNumberOfLotto(inputMoney);
+        assertThat(money.getTheNumberOfLotto()).isEqualTo(Integer.parseInt(inputMoney)/1000);
     }
 
     @DisplayName("로또 수만큼의 로또를 생성한다.")
@@ -34,15 +36,14 @@ class LottoServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"1,2,3,4,5,6"})
     void createWinningLotto(String winningNumber) {
-        lottoService.createWinningLotto(winningNumber);
-        assertThat(LottoRepository.getLastWinningLotto().getNumbers().size()).isEqualTo(6);
+        List<Integer> result = lottoService.transferToNumbers(winningNumber);
+        assertThat(result.size()).isEqualTo(6);
     }
 
-    @Test
-    void getWinningAmount() {
-    }
-
+    @DisplayName("로또 당첨 결과에 따라 수익률을 계산한다.")
     @Test
     void getProfit() {
+        String profit = lottoService.calculateProfit(List.of(0,0,0,1,0,0,0,0),8000.0);
+        assertThat(profit).isEqualTo("62.5");
     }
 }

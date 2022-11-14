@@ -50,7 +50,7 @@ public class LottoService {
         saveWinningLotto(winningLotto);
     }
 
-    private List<Integer> transferToNumbers(String winningNumbers) {
+    public List<Integer> transferToNumbers(String winningNumbers) {
         return Arrays.asList(winningNumbers.split(",")).stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
@@ -61,7 +61,7 @@ public class LottoService {
     }
 
     public void createBonusNumber(String userBonusNumber) {
-        Lotto winningLotto = lottoRepository.getLastWinningLotto();
+        Lotto winningLotto = lottoRepository.getWinningLotto();
         BonusNumber bonusNumber =InputValidator.checkBonusNumber(userBonusNumber,winningLotto);
         saveBonusNumber(bonusNumber);
     }
@@ -70,8 +70,8 @@ public class LottoService {
         lottoRepository.saveBonusNumber(bonusNumber);
     }
     public List<Integer> compareLotto() {
-        List<Lotto> userLottoGroup = lottoRepository.getLastUserLottoGroup();
-        Lotto winningLotto = lottoRepository.getLastWinningLotto();
+        List<Lotto> userLottoGroup = lottoRepository.getUserLottoGroup();
+        Lotto winningLotto = lottoRepository.getWinningLotto();
         BonusNumber bonusNumber = lottoRepository.getBonusNumber();
 
         List<Integer> compareResult = lottoComparator.compareUserLottoAndWinningLotto(
@@ -88,6 +88,11 @@ public class LottoService {
     public String getProfit() {
         List<Integer> winningResult = lottoRepository.getWinningResult();
         Double purchaseMoney = Double.valueOf(lottoRepository.getUserMoney().getMoney());
+        String totalProfit = calculateProfit(winningResult,purchaseMoney);
+        return totalProfit;
+    }
+
+    public String calculateProfit(List<Integer> winningResult, Double purchaseMoney) {
         Long totalPrice = 0L;
         for (int i = BoundaryStatus.MIN_WINNING_COUNT.getNumber(); i < winningResult.size(); i++) {
             totalPrice += winningResult.get(i) * WinningStatus.find(i).getReward();

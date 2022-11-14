@@ -8,49 +8,49 @@ import java.util.List;
 
 public class LottoRepository {
 
-    private  List<Integer> lastCompareResult;
-    private  Money lastuserMoney;
-    private  List<Lotto> lastUserLottoGroup;
-    private  Lotto lastWinningLotto;
-    private  BonusNumber lastBonusNumber;
+    private List<Integer> compareResult;
+    private Money userMoney;
+    private List<Lotto> userLottoGroup;
+    private Lotto winningLotto;
+    private BonusNumber bonusNumber;
 
-    public  Money getUserMoney() {
-        return lastuserMoney;
+    public Money getUserMoney() {
+        return userMoney;
     }
 
-    public  void saveUserLotto(List<Lotto> userLottoGroup) {
-        lastUserLottoGroup = userLottoGroup;
+    public void saveUserLotto(List<Lotto> userLottoGroup) {
+        this.userLottoGroup = userLottoGroup;
     }
 
-    public  void saveWinningLotto(Lotto winningLotto) {
-        lastWinningLotto = winningLotto;
+    public void saveWinningLotto(Lotto winningLotto) {
+        this.winningLotto = winningLotto;
     }
 
-    public  Lotto getLastWinningLotto() {
-        return lastWinningLotto;
+    public Lotto getWinningLotto() {
+        return winningLotto;
     }
 
-    public  List<Lotto> getLastUserLottoGroup() {
-        return lastUserLottoGroup;
+    public List<Lotto> getUserLottoGroup() {
+        return userLottoGroup;
     }
 
-    public  void saveBonusNumber(BonusNumber bonusNumber) {
-        lastBonusNumber = bonusNumber;
+    public void saveBonusNumber(BonusNumber bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 
-    public  BonusNumber getBonusNumber() {
-        return lastBonusNumber;
+    public BonusNumber getBonusNumber() {
+        return bonusNumber;
     }
 
-    public  void saveWinningResult(List<Integer> winningResult) {
-        lastCompareResult = winningResult;
+    public void saveWinningResult(List<Integer> winningResult) {
+        compareResult = winningResult;
     }
 
-    public  List<Integer> getWinningResult() {
-        return lastCompareResult;
+    public List<Integer> getWinningResult() {
+        return compareResult;
     }
 
-    public  void saveUserMoney(Money userMoney) {
-        lastuserMoney = userMoney;
+    public void saveUserMoney(Money userMoney) {
+        this.userMoney = userMoney;
     }
 }
