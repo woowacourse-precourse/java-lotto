@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class BuyingLotto {
     static final String ORDER_MESSAGE = "개를 구매했습니다";
     static final int LOTTO_PRICE = 1000;
-    
     public static List<List<Integer>> lottoBundle = new ArrayList();
 
     public static String orderNumber(String money) {
