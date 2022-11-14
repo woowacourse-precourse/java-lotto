@@ -10,7 +10,7 @@ public class Lottos {
     private static final int LOTTO_NUMBER_SIZE = 6;
     private static final int LOTTO_START_RANGE = 1;
     private static final int LOTTO_END_RANGE = 45;
-    private List<Lotto> lottos;
+    private final List<Lotto> lottos;
 
     public Lottos() {
         lottos = new ArrayList<>();

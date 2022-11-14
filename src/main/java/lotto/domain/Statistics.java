@@ -8,7 +8,7 @@ public class Statistics {
     private static final int INCREASING_VALUE = 1;
     private static final int REVENUE_INITIAL_VALUE = 0;
     private static final int REVENUE_RATIO_VALUE = 100;
-    private Map<Prize, Integer> statisticsResult;
+    private final Map<Prize, Integer> statisticsResult;
 
     public Statistics() {
         statisticsResult = new HashMap<>();
