@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -23,6 +24,7 @@ public class Application {
 
         for (int cnt = 0; cnt < lottoNumber; cnt++) {
             List<Integer> numbers = makeRandom();
+            Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lotto_list.add(lotto); //로또 리스트에 담기
             lotto.getNumbers(); //로또 번호 출옴
