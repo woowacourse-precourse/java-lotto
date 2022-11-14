@@ -45,4 +45,13 @@ class ExceptionServiceTest {
         assertThatThrownBy(() -> exceptionService.exceptionHandlingOfWinningNumbers(winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("당첨 번호에 공백이 들어가면 예외가 발생한다.")
+    void checkForSpacesInWinningNumbersTest() {
+        ExceptionService exceptionService = new ExceptionService();
+        String winningNumbers = "1 ,2 ,3,4,5,6";
+        assertThatThrownBy(() -> exceptionService.exceptionHandlingOfWinningNumbers(winningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
