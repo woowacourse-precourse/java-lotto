@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +30,6 @@ public class PlayerTest {
     void buyLottos() {
         Lottos createLottos = LottosCreator.create(3000, createLottoNumbers());
 
-        System.out.println(createLottos);
         assertThat(createLottos.size()).isEqualTo(3);
     }
 
