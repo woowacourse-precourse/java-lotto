@@ -33,8 +33,4 @@ class LottoResultTest {
     }
 
 
-    @Test
-    void lotteryPrizeTest(){
-
-    }
 }

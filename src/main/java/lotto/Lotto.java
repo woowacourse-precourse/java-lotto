@@ -28,9 +28,9 @@ public class Lotto {
         }
     }
 
-    private void isAlreadyExisted(List<Integer> numbers) {
+    private void isAlreadyExisted(List<Integer> numbers,int bonusNumber) {
         for(int numberIndex=0; numberIndex<6; numberIndex++){
-            if(numbers.contains(numbers.get(numberIndex))){
+            if(numbers.contains(numbers.get(numberIndex))||numbers.contains(bonusNumber)){
                 throw new IllegalArgumentException("[ERROR] 중복되는 수가 있습니다.");
             }
         }
