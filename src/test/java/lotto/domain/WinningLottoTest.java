@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class WinningLottoTest {
@@ -19,6 +20,13 @@ class WinningLottoTest {
         List<Integer> myNumber = Stream.of(1, 2, 3, 4, 5, 6).collect(Collectors.toList());
 
         assertThat(winningLotto.containsBonus(myNumber)).isEqualTo(false);
+    }
+
+    @DisplayName("보너스가 중복일 경우")
+    @Test
+    void case3() {
+        assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 6))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
