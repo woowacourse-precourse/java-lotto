@@ -3,6 +3,8 @@ package lotto.service;
 import lotto.Lotto;
 import lotto.comparator.LottoComparator;
 import lotto.repository.LottoRepository;
+import lotto.status.BoundaryStatus;
+import lotto.status.NumberStatus;
 import lotto.status.WinningStatus;
 import lotto.validator.InputValidator;
 import lotto.utils.RandomUtils;
@@ -18,7 +20,7 @@ public class LottoService {
     public static Integer getTheNumberOfLotto(String purchaseMoney) {
         InputValidator.checkUserInputMoney(purchaseMoney);
         savePurchaseMoney(purchaseMoney);
-        return Integer.parseInt(purchaseMoney) / 1000;
+        return Integer.parseInt(purchaseMoney) / NumberStatus.BASE_PRICE_OF_LOTTO.getNumber();
     }
 
     private static void savePurchaseMoney(String purchaseMoney) {
@@ -27,7 +29,7 @@ public class LottoService {
 
     public List<Lotto> createUserLotto(Integer numberOfLotto) {
         List<Lotto> userLottoGroup = new ArrayList<>();
-        for (int i = 0; i < numberOfLotto; i++) {
+        for (int i = BoundaryStatus.ZERO.getNumber(); i < numberOfLotto; i++) {
             Lotto userLottoPiece = RandomUtils.createRandomUserLotto();
             userLottoGroup.add(userLottoPiece);
         }
@@ -65,7 +67,7 @@ public class LottoService {
         Lotto winningLotto = LottoRepository.getLastWinningLotto();
         Integer bonusNumber = LottoRepository.getBonusNumber();
         List<Integer> winningResult = LottoComparator.compareUserLottoAndWinningLotto(
-                userLottoGroup,bonusNumber,winningLotto);
+                userLottoGroup, bonusNumber, winningLotto);
 
         saveWinningResult(winningResult);
         return winningResult;
@@ -79,9 +81,9 @@ public class LottoService {
         List<Integer> winningResult = LottoRepository.getWinningResult();
         Double purchaseMoney = Double.valueOf(LottoRepository.getPurchaseMoney());
         Long totalPrice = 0L;
-        for (int i = 3 ; i < 8; i ++){
+        for (int i = BoundaryStatus.MIN_WINNING_COUNT.getNumber(); i < winningResult.size(); i++) {
             totalPrice += winningResult.get(i) * WinningStatus.find(i).getReward();
         }
-        return String.format("%.1f", totalPrice/purchaseMoney*100);
+        return String.format("%.1f", totalPrice / purchaseMoney * 100);
     }
 }

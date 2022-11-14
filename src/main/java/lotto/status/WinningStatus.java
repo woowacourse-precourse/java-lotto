@@ -7,12 +7,12 @@ public enum WinningStatus {
     FOURTH( 4, 4,50000L),
     FIFTH( 3, 3,5000L);
 
-    private final Integer luckyOrder;
+    private final Integer luckyPoint;
     private final Integer numberMatchCount;
     private final Long reward;
 
-    WinningStatus(Integer luckyOrder, Integer numberMatchCount, Long reward) {
-        this.luckyOrder = luckyOrder;
+    WinningStatus(Integer luckyPoint, Integer numberMatchCount, Long reward) {
+        this.luckyPoint = luckyPoint;
         this.numberMatchCount = numberMatchCount;
         this.reward = reward;
     }
@@ -26,17 +26,17 @@ public enum WinningStatus {
     }
 
 
-    public static WinningStatus find(int luckyOrder) {
-        if (luckyOrder == FIRST.luckyOrder) {
+    public static WinningStatus find(int luckyPoint) {
+        if (luckyPoint == FIRST.luckyPoint) {
             return FIRST;
         }
-        if (luckyOrder == SECOND.luckyOrder) {
+        if (luckyPoint == SECOND.luckyPoint) {
             return SECOND;
         }
-        if (luckyOrder == THIRD.luckyOrder) {
+        if (luckyPoint == THIRD.luckyPoint) {
             return THIRD;
         }
-        if (luckyOrder == FOURTH.luckyOrder) {
+        if (luckyPoint == FOURTH.luckyPoint) {
             return FOURTH;
         }
         return FIFTH;
