@@ -6,37 +6,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    static List<Lotto> lottoList = new ArrayList<Lotto>();
+    static List<Integer> winningNumber = new ArrayList<Integer>();
+    static int count = 0, totalWinningAmount = 0;
+    static int bonusNumber = 0;
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
-        System.out.println("구입금액을 입력해 주세요.");
-        User user = new User();
-        int amount = user.purchaseAmount();
-        System.out.println();
-        int count = 0, totalWinningAmount = 0;
-        List<Lotto> lottoList = new ArrayList<Lotto>();
-
-        List<Integer> winningNumber = new ArrayList<Integer>();
-
-        int bonusNumber = 0;
+        User user = getUser();
+        int amount = getAmount(user.purchaseAmount());
 
         try {
-            amountValidation(amount);
 
-            WinningHistory winningHistory = new WinningHistory();
-
-            Lotto[] lottos = new Lotto[amount / 1000];
-            lotteryNumberOutput(amount, lottoList, lottos);
-
-            winningNumber = getWinningNumber(user);
-
-            bonusNumber = getBonusNumber(user, winningNumber);
-
-            winningHistoryOutput((double) amount, count, totalWinningAmount, lottoList, winningNumber, bonusNumber, winningHistory);
+            play(user, amount);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void play(User user, int amount) {
+        amountValidation(amount);
+
+        WinningHistory winningHistory = new WinningHistory();
+
+        Lotto[] lottos = new Lotto[amount / 1000];
+        lotteryNumberOutput(amount, lottoList, lottos);
+
+        int[][] graph = new int[lottoList.size()][5]; //당첨 내역 출력을 위한 그래프
+
+        winningNumber = getWinningNumber(user);
+
+        bonusNumber = getBonusNumber(user, winningNumber);
+
+        winningHistoryOutput((double) amount, count, totalWinningAmount, lottoList, winningNumber, bonusNumber, winningHistory);
+    }
+
+    private static int getAmount(int user) {
+        int amount = user;
+        System.out.println();
+        return amount;
+    }
+
+    private static User getUser() {
+        System.out.println("구입금액을 입력해 주세요.");
+        User user = new User();
+        return user;
     }
 
     private static void winningHistoryOutput(double amount, int count, int totalWinningAmount, List<Lotto> lottoList,
@@ -63,7 +79,8 @@ public class Application {
         return totalWinningAmount;
     }
 
-    private static int lottoListCheck(int count, int totalWinningAmount, List<Lotto> lottoList, List<Integer> winningNumber, int bonusNumber, WinningHistory winningHistory) {
+    private static int lottoListCheck(int count, int totalWinningAmount, List<Lotto> lottoList,
+                                      List<Integer> winningNumber, int bonusNumber, WinningHistory winningHistory) {
         for (Lotto lotto : lottoList) {
             count = countWinningNumbers(count, winningNumber, lotto);
 
@@ -151,8 +168,7 @@ public class Application {
     private static int getBonusNumber(User user, List<Integer> winningNumber) {
 
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNumber = user.enterBonusNumber(winningNumber);
-        System.out.println();
+        int bonusNumber = getAmount(user.enterBonusNumber(winningNumber));
 
         return bonusNumber;
     }
