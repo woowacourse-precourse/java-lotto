@@ -1,5 +1,10 @@
 package lotto.model;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public enum Rank {
     FIRST(6, 0, 2000000000, 1),
     SECOND(5, 1, 30000000, 2),
@@ -8,17 +13,34 @@ public enum Rank {
     FIFTH(3, 0, 5000, 5),
     NONE(0, 0, 0, 0);
 
-
     private Integer matchedCount;
     private Integer bonusCount;
     private Integer amount;
-    private Integer toInteger;
+    private Integer rankNumber;
 
-    Rank(Integer matchedCount, Integer bonusCount, Integer amount, Integer toInteger){
+    Rank(Integer matchedCount, Integer bonusCount, Integer amount, Integer rankNumber){
         this.matchedCount = matchedCount;
         this.bonusCount = bonusCount;
         this.amount = amount;
-        this.toInteger = toInteger;
+        this.rankNumber = rankNumber;
     }
+
+    public Integer getMatchedCount() {
+        return matchedCount;
+    }
+
+    public Integer getBonusCount() {
+        return bonusCount;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public Integer getRankNumber() {
+        return rankNumber;
+    }
+
+
 
 }

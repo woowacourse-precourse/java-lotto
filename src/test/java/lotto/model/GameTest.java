@@ -26,6 +26,5 @@ class GameTest {
         game.setWinningLotto(List.of(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(() -> game.setBonus(3))
                 .isInstanceOf(IllegalArgumentException.class);
-
     }
 }
