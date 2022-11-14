@@ -11,11 +11,7 @@ public class WinningNumber {
     private final int bonusNumber;
 
     public WinningNumber(List<Integer> winningNumbers, int bonusNumber) {
-        validateNumberCount(winningNumbers);
-        validateNumbersRange(winningNumbers);
-        validateNumberRange(bonusNumber);
-        validateDuplication(winningNumbers);
-        validateContainsInWinningNumber(winningNumbers, bonusNumber);
+        validate(winningNumbers, bonusNumber);
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
@@ -26,6 +22,14 @@ public class WinningNumber {
 
     public boolean isEqualToBonusNumber(int number) {
         return bonusNumber == number;
+    }
+
+    private void validate(List<Integer> winningNumbers, int bonusNumber) {
+        validateNumberCount(winningNumbers);
+        validateNumbersRange(winningNumbers);
+        validateNumberRange(bonusNumber);
+        validateDuplication(winningNumbers);
+        validateContainsInWinningNumber(winningNumbers, bonusNumber);
     }
 
     private void validateNumberCount(List<Integer> winningNumbers) {
