@@ -36,11 +36,12 @@ public class LottoInputView {
         return lottoNumbers;
     }
 
-    public String getBonusNumber() {
+    public int getBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
-        String bonusNumber = Console.readLine();
-        validateBonusIsNumber(bonusNumber);
-        validateBonusNumberRange(bonusNumber);
+        String bonusNumberInput = Console.readLine();
+        validateBonusIsNumber(bonusNumberInput);
+        validateBonusNumberRange(bonusNumberInput);
+        int bonusNumber = toInt(bonusNumberInput);
         return bonusNumber;
     }
 
