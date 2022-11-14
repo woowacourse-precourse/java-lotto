@@ -38,6 +38,5 @@ class LottoTest {
         }catch(IllegalArgumentException IllegalArgumentException){
             success("IllegalArgumentException이 발생했다.");
         }
-
     }
 }
