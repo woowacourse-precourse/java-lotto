@@ -218,4 +218,14 @@ public class Application {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + totalRank.get(2) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + totalRank.get(1) + "개");
     }
+
+    static long calculateSumOfPrize(Map<Integer, Integer> totalRank) {
+        long sumOfPrize = 0;
+        sumOfPrize += totalRank.get(1) * 2000000000L;
+        sumOfPrize += totalRank.get(2) * 30000000L;
+        sumOfPrize += totalRank.get(3) * 1500000L;
+        sumOfPrize += totalRank.get(4) * 50000L;
+        sumOfPrize += totalRank.get(5) * 5000L;
+        return sumOfPrize;
+    }
 }
