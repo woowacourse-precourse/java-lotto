@@ -14,50 +14,48 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        User user = User.getInstance;
-        Banker banker = Banker.getInstance;
+        try {
 
+            User user = User.getInstance;
+            Banker banker = Banker.getInstance;
 
-        int userMoney = lottoMoney();
+            int userMoney = lottoMoney();
+            user.buyTicketMoney(userMoney);
 
-        List<Integer> winningNumber = getWinningNumber();
+            List<Integer> winningNumber = getWinningNumber();
 
-        int bonnusNumber = getBonnusNumber(winningNumber);
+            int bonnusNumber = getBonnusNumber(winningNumber);
 
-        user.buyTicketMoney(userMoney);
-        System.out.println(user.getNumberOfTickets() + "개를 구매했습니다.");
+            System.out.println(user.getNumberOfTickets() + "개를 구매했습니다.");
 
-        for (int i = 0; i < user.getNumberOfTickets(); i++) {
-            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
-            System.out.println(lotto);
-            user.getLottos().add(lotto);
+            for (int i = 0; i < user.getNumberOfTickets(); i++) {
+                Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+                System.out.println(lotto);
+                user.getLottos().add(lotto);
+            }
+
+            banker.setWinningNumber(winningNumber);
+            banker.setBonusNumber(bonnusNumber);
+
+            for (int i = 0; i < user.getNumberOfTickets(); i++) {
+                banker.compareCount(banker.correctCount(user.getLottos().get(i)));
+            }
+
+            banker.printWinner();
+
+            System.out.println("총 수익률은 " + banker.getWinnerMoney() + "%입니다.");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-
-        banker.setWinningNumber(winningNumber);
-        banker.setBonusNumber(bonnusNumber);
-
-        for (int i = 0; i < user.getNumberOfTickets(); i++) {
-            int[] check = banker.correctCount(user.getLottos().get(i));
-
-            banker.compareCount(check);
-
-        }
-
-        banker.printWinner();
-
-        System.out.println("총 수익률은 " + banker.getWinnerMoney() + "%입니다.");
-
     }
-
     public static int lottoMoney() {
         int money = 0;
         System.out.println("구입금액을 입력해 주세요.");
-        String str = Console.readLine();
-        isDigit(str);
-        money = Integer.parseInt(str);
-
+        money = changeInteger();
         return money;
     }
+
     public static List<Integer> getWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
@@ -88,14 +86,24 @@ public class Application {
         Integer number = Integer.valueOf(bonnusinput);
         return number;
     }
-    public static void isDigit(String str) throws IllegalArgumentException{
+
+    public static void isDigit(String str) {
         for (int i = 0; i < str.length(); i++) {
-        if (!Character.isDigit(str.charAt(i))) {
-            System.out.println("[ERROR]");
-            throw new IllegalArgumentException("[ERROR] 영문자는 사용할수 없습니다.");
+            if (!Character.isDigit(str.charAt(i))) {
+                System.out.println("[ERROR] 영문자는 사용할 수 없습니다.");
+                throw new IllegalArgumentException("[ERROR] 영문자는 사용할수 없습니다.");
+            }
         }
     }
 
+    public static int changeInteger() {
+        int money;
+        try {
+            money = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 입력된 값이 숫자가 아닙니다.");
+        }
+        return money;
     }
 
 }
