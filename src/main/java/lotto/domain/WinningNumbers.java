@@ -41,8 +41,7 @@ public class WinningNumbers {
 
 	private void validateNumberInRange(String userInput) {
 		if (!NUMBER_PATTERN.matcher(userInput).matches()) {
-			throw new IllegalArgumentException(
-				String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()));
+			throw new IllegalArgumentException(Error.NUMBER.getMessage());
 		}
 	}
 

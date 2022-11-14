@@ -23,7 +23,7 @@ public class Lotto {
 
 	private void validateSize(List<Integer> numbers) {
 		if (numbers.size() != Number.SIZE.getValue()) {
-			throw new IllegalArgumentException(String.format(Error.SIZE.getMessage(), Number.SIZE.getValue()));
+			throw new IllegalArgumentException(Error.SIZE.getMessage());
 		}
 	}
 

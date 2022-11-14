@@ -18,8 +18,7 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("a,b,c,d,e,f", "1");
 			});
-			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
-				exception.getMessage());
+			assertEquals(Error.NUMBER.getMessage(), exception.getMessage());
 		}
 
 		@Test
@@ -27,8 +26,7 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "0");
 			});
-			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
-				exception.getMessage());
+			assertEquals(Error.NUMBER.getMessage(), exception.getMessage());
 		}
 
 		@Test
@@ -36,8 +34,7 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "46");
 			});
-			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
-				exception.getMessage());
+			assertEquals(Error.NUMBER.getMessage(), exception.getMessage());
 		}
 
 		@Test
@@ -45,8 +42,7 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,6", "a");
 			});
-			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
-				exception.getMessage());
+			assertEquals(Error.NUMBER.getMessage(), exception.getMessage());
 		}
 
 		@Test
@@ -54,8 +50,7 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("1,2,3,4,5,46", "7");
 			});
-			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
-				exception.getMessage());
+			assertEquals(Error.NUMBER.getMessage(), exception.getMessage());
 		}
 
 		@Test
@@ -63,8 +58,7 @@ class WinningNumbersTest {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 				WinningNumbers winningNumbers = new WinningNumbers("10,20,30,40,41,42", "57");
 			});
-			assertEquals(String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()),
-				exception.getMessage());
+			assertEquals(Error.NUMBER.getMessage(), exception.getMessage());
 		}
 	}
 
