@@ -18,7 +18,12 @@ public class User implements Buyer {
     }
 
     @Override
-    public long calculateProfitRatio(int amount) {
-        return 0;
+    public double calculateProfitRatio(int amount) {
+        System.out.println(lottos.size());
+        if (lottos.size() == 0) {
+            return 0;
+        }
+        double profitRatio = ((double) amount * 100) / (lottos.size() * 1000);
+        return (Math.round(profitRatio * 10) / 10.0);
     }
 }

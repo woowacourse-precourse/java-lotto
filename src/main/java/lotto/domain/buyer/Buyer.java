@@ -4,5 +4,5 @@ public interface Buyer {
 
     int enterToBuyLottoForMoney();
 
-    long calculateProfitRatio(int amount);
+    double calculateProfitRatio(int amount);
 }

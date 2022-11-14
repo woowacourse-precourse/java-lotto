@@ -14,8 +14,12 @@ class BuyerTest {
     @Test
     void calculateProfitRatio() {
         List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        }
+
         Buyer buyer = new User(lottos);
-        long profitRatio = buyer.calculateProfitRatio(5000);
+        double profitRatio = buyer.calculateProfitRatio(5000);
         assertThat(profitRatio).isEqualTo(62.5);
     }
 }
