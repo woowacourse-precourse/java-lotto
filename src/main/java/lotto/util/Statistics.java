@@ -56,4 +56,5 @@ public class Statistics {
         }
         return Math.round((profit / (double) buyer.getBuyPrice() * 100) * 10) / 10.0;
     }
+
 }

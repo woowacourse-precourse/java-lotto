@@ -36,4 +36,5 @@ public class LottoRandomPeek {
         Collections.sort(newRandomNumbers);
         return newRandomNumbers;
     }
+
 }
