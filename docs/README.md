@@ -20,9 +20,8 @@
   - 확인할 조건 : 양수 ?, 1000원 단위 ?
   - 예외 : `IllegalArgumentException` 발생, [ERROR] 잘못된 금액 입력입니다.
 - [ ]  로또를 생성하는 기능
-  - 사용자 입력 금액 / 1000 개만큼의 로또 생성
+  - 중복이 없는, 6개의 숫자를 생성
   - 각 로또 번호들은 오름차순으로 정렬되어 `List<Integer>` 로 저장
-  - `List<Lotto> lottoList` 로 저장
 - [ ]  로또 생성 내역을 출력하는 기능
 - [ ]  당첨 번호를 입력받는 기능
   - 한 라인 기준으로 입력받고, 다음 기능에서 예외 확인
@@ -49,6 +48,8 @@
 # 필요한 자료구조
 - `ui/Validator` 클래스 : 유효성 검사
   - `isNumber()`, `isPositive()`, `isHundredUnit()`, `isInRange()`, `isDuplicate()`
+- `ui/LottoGenerator` 클래스 : 로또 생성
+  - `generate()`
 - `domain/Lotto` 클래스 : 사용자의 로또 1개를 저장하고, 로또와 관련된 로직 수행
   - `List<Integer> numbers`
   - `computeResult()`, `printLotto()`
