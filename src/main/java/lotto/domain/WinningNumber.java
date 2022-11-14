@@ -14,6 +14,11 @@ public class WinningNumber {
         this.bonusNumber = bonusNumber;
     }
 
+    public Ranking calculateRanking(Lotto otherLottoNumbers) {
+        int cnt = lotto.calculateSameCount(otherLottoNumbers);
+        return Ranking.findRanking(cnt, otherLottoNumbers.getLottoNumbers().contains(bonusNumber));
+    }
+
     private void validateDuplicateNumber(Lotto lotto, int bonusNumber) {
         if (lotto.getLottoNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException(DUPLICATE_ERROR);

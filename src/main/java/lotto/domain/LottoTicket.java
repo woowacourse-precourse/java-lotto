@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static lotto.domain.LottoNumber.MAX_NUM;
-import static lotto.domain.LottoNumber.MIN_NUM;
+import static lotto.domain.Lotto.MAX_NUM;
+import static lotto.domain.Lotto.MIN_NUM;
 
 public class LottoTicket {
     private final List<Lotto> lottoTickets = new ArrayList<>();
@@ -31,5 +31,14 @@ public class LottoTicket {
 
     public List<Lotto> getLottoTickets() {
         return Collections.unmodifiableList(lottoTickets);
+    }
+
+    public WinningResult calculateWinningStatistic(WinningNumber winningNumber) {
+        List<Ranking> rankings = new ArrayList<>();
+        for (Lotto lotto : lottoTickets) {
+            Ranking ranking = winningNumber.calculateRanking(lotto);
+            rankings.add(ranking);
+        }
+        return new WinningResult(rankings);
     }
 }
