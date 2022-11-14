@@ -39,9 +39,16 @@ public class GameMessage {
     public void printStatistics(Map<WinningScore, Integer> statistics) {
         print("\n" + GameConstants.OUTPUT_WINNING_STATS);
         for (WinningScore winningScore : WinningScore.values()) {
-            int count = statistics.get(winningScore);
-            print(winningScore.printWinningScore() + " - " + count + "개");
+            printWinningScore(winningScore, statistics);
         }
+    }
+
+    public void printWinningScore(WinningScore winningScore, Map<WinningScore, Integer> statistics) {
+        if (winningScore == WinningScore.NONE) {
+            return;
+        }
+        int count = statistics.get(winningScore);
+        print(winningScore.printWinningScore() + " - " + count + "개");
     }
 
     public void printRateOfReturn(double rateOfReturn) {

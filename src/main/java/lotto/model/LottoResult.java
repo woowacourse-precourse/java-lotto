@@ -27,23 +27,32 @@ public class LottoResult {
 
     public double computeRateOfReturn(int purchaseAmount) {
         double totalAmount = 0;
+
         for (Map.Entry<WinningScore, Integer> score : winningScoreResult.entrySet()) {
-            totalAmount += score.getKey().getMoney() * score.getValue();
+            int count = score.getValue();
+            totalAmount += score.getKey().getMoney() * count;
         }
+
         return totalAmount / purchaseAmount * 100;
     }
 
     public void computeWinningScore(Lotto userLotto, Lotto winningLotto) {
         WinningScore winningScore = compareNumber(userLotto.getNumbers(), winningLotto.getNumbers());
+        if (winningScore == WinningScore.NONE) {
+            return;
+        }
         if (isBonusScore(winningScore, userLotto.getNumbers())) {
             winningScoreResult.put(WinningScore.BONUS, winningScoreResult.get(WinningScore.BONUS) + 1);
             return;
         }
-        winningScoreResult.put(winningScore, winningScoreResult.get(winningScore) + 1);
+        winningScoreResult.put(winningScore, winningScoreResult.getOrDefault(winningScore, 0) + 1);
     }
 
     public WinningScore compareNumber(List<Integer> userNumber, List<Integer> winningNumber) {
         int count = (int) userNumber.stream().filter(num -> winningNumber.contains(num)).count();
+        if (count < 3) {
+            return WinningScore.NONE;
+        }
         return WinningScore.getScore(count);
     }
 

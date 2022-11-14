@@ -14,7 +14,8 @@ public enum WinningScore {
             return String.format("%d개 일치, 보너스 볼 일치 (%,d원)", FIVE.score, money);
         }
     },
-    SIX(6, 200_000_0000);
+    SIX(6, 200_000_0000),
+    NONE(0, 0);
 
     private static final Map<Integer, WinningScore> BY_COUNT =
             Stream.of(values()).collect(Collectors.toMap(WinningScore::getScore, e -> e));
