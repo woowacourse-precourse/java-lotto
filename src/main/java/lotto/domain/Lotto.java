@@ -20,6 +20,28 @@ public class Lotto {
         }
     }
 
+    public boolean isContain(Integer number){
+        if(numbers.contains(number)){
+            return true;
+        }
+        return false;
+    }
+
+    public int getContainValue(Integer number){
+        if(isContain(number)){
+            return 1;
+        }
+        return 0;
+    }
+
+    public int getMatchedCount(Lotto compareLotto){
+        int matchedCount = 0;
+        for(Integer number : numbers){
+            matchedCount += compareLotto.getContainValue(number);
+        }
+        return matchedCount;
+    }
+
     @Override
     public String toString() {
         numbers.sort(Comparator.naturalOrder());
