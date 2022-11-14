@@ -15,13 +15,6 @@ public class GameController {
         }
     }
 
-    private void printLotto(User user) {
-        System.out.printf("%d개를 구매했습니다.\n", user.getNumberOfLotto());
-        for (Lotto lotto: user.getLotto()) {
-            System.out.println(lotto.getLottoNum());
-        }
-    }
-
     private WinningNumber inputWinningNumAndBonusNum() {
         System.out.println("당첨 번호를 입력해 주세요");
         String input = Console.readLine().replace(" ", "");
@@ -44,32 +37,18 @@ public class GameController {
         return new WinningNumber(winningNum, bonusNum);
     }
 
-    private void printWinningStat(Calculator calc) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.printf(
-                "3개 일치 (5,000원) - %d개\n4개 일치 (50,000원) - %d개\n5개 일치 (1,500,000원) - %d개\n5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n6개 일치 (2,000,000,000원) - %d개\n",
-                calc.getCountByRank(5),
-                calc.getCountByRank(4),
-                calc.getCountByRank(3),
-                calc.getCountByRank(2),
-                calc.getCountByRank(1));
-    }
-
-    private void printYield(Calculator calc) {
-        System.out.printf("총 수익률은 %.1f%%입니다.", calc.getYield());
-    }
-
     public void run() {
+        Print print = new Print();
+
         User user = new User(inputAmount());
         LottoSeller lottoSeller = new LottoSeller();
         user.buyLotto(lottoSeller);
-        printLotto(user);
+        print.Lotto(user);
 
         WinningNumber winningNumber = inputWinningNumAndBonusNum();
 
         Calculator calc = new Calculator(winningNumber.getWinningNum(), winningNumber.getBonusNum(), user.getLotto());
-        printWinningStat(calc);
-        printYield(calc);
+        print.WinningStat(calc);
+        print.Yield(calc);
     }
 }
