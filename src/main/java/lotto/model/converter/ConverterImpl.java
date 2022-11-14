@@ -1,6 +1,6 @@
 package lotto.model.converter;
 
-import lotto.Lotto;
+import lotto.model.Lotto;
 
 import java.math.BigDecimal;
 import java.util.List;
