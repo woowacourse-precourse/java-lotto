@@ -38,6 +38,10 @@ class OutputTest extends NsTest {
 
     @Override
     protected void runMain() {
-        Output.main(new String[]{});
+        try {
+            Output.main(new String[]{});
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
