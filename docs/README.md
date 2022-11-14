@@ -41,7 +41,5 @@
     - 입력된 값을 정수로 변환한다.
     - `checkBonusNumber`메소드를 호출하여 입력된 정수가 적합한지 확인한다.
     - 예외가 발생할 시 `IllegalArgumentException`과 함께 에러메시지를 출력한다.
-  - checkBonusNumber 메소드
-    - 입력받은 정수가 `inputLottoNumber`에서 생성된 로또의 값들과 중복되지 않는지 확인한다.
-    - 예외가 발생할 시 `IllegalArgumentException`를 발생시킨다.
+  
 ---
