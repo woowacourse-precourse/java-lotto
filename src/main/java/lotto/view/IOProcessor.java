@@ -9,11 +9,11 @@ public class IOProcessor {
     private static final String ERROR_MESSAGE_PREFIX = "[ERROR]";
 
     private enum WinningMessageFormat {
-        WINNING_ONE("6개 일치 (%,d원) - %d개\n"),
-        WINNING_TWO("5개 일치, 보너스 볼 일치 (%,d원) - %d개\n"),
-        WINNING_THREE("5개 일치 (%,d원) - %d개\n"),
+        WINNING_FIVE("3개 일치 (%,d원) - %d개\n"),
         WINNING_FOUR("4개 일치 (%,d원) - %d개\n"),
-        WINNING_FIVE("3개 일치 (%,d원) - %d개\n");
+        WINNING_THREE("5개 일치 (%,d원) - %d개\n"),
+        WINNING_TWO("5개 일치, 보너스 볼 일치 (%,d원) - %d개\n"),
+        WINNING_ONE("6개 일치 (%,d원) - %d개\n");
 
         private final String format;
 
@@ -44,10 +44,11 @@ public class IOProcessor {
     }
 
     public static void printWinningStatistics(List<Integer> winningInfo) {
+        int[] test = { 5000, 50000, 1500000, 30000000, 2000000000 };
         System.out.println("당첨 통계\n---");
         WinningMessageFormat[] formats = WinningMessageFormat.values();
         for (int i = 0; i < formats.length; i++)
-            System.out.printf(formats[i].getFormat(), 0, winningInfo.get(i));
+            System.out.printf(formats[i].getFormat(), test[i], winningInfo.get(5-i));
     }
 
     public static void printMarginInfo(double margin) {
