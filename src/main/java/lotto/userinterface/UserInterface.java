@@ -8,6 +8,7 @@ import lotto.condition.Condition;
 import lotto.condition.lottonumber.IsAllNumberInRangeCond;
 import lotto.condition.lottonumber.NoDuplicateNumberCond;
 import lotto.condition.lottonumber.RightFormatCond;
+import lotto.condition.money.IsAllNumberCond;
 import lotto.condition.money.MinimumMoneyCond;
 import lotto.condition.money.MoneyDivisionCond;
 import lotto.validator.Validator;
@@ -46,6 +47,7 @@ public class UserInterface {
         String input = getInput();
 
         List<Condition> conditions = List.of(
+                IsAllNumberCond.getInstance(),
                 MinimumMoneyCond.getInstance(),
                 MoneyDivisionCond.getInstance()
         );
