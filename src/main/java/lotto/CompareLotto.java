@@ -3,7 +3,7 @@ package lotto;
 import java.util.ArrayList;
 
 public class CompareLotto {
-    public static void comparelotto(ArrayList<ArrayList<Integer>> total,String[] lottolst,int bonus){
+    public static ArrayList<Integer> comparelotto(ArrayList<ArrayList<Integer>> total, String[] lottolst, int bonus){
         ArrayList<Integer> result = new ArrayList<>();
         for(int i=0;i<total.size();i++){
             int cnt=0;
@@ -13,8 +13,15 @@ public class CompareLotto {
                 }
             }
             System.out.println(cnt);
-            result.add(cnt);
-        }
+            //보너스 번호 확인
+            if(cnt==5){
+                if (total.get(i).contains(bonus)){
+                    result.add(7,result.get(7)+1);
 
+                }
+            }else{
+            result.add(cnt,result.get(cnt)+1);}
+        }
+        return result;
     }
 }

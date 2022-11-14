@@ -35,10 +35,14 @@ public class Lotto {
         lottonum = Console.readLine();
         String[] lottolst = lottonum.split(",");
 
+        Output.printBonus();
         //보너스 번호 입력받기
         bonus = Integer.parseInt(Console.readLine());
 
         CompareLotto.comparelotto(total,lottolst,bonus);
+
+
+
 
 
 
