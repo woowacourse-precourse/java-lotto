@@ -1,6 +1,10 @@
 package lotto.controller;
 
-import lotto.domain.*;
+import lotto.domain.BonusNumber;
+import lotto.domain.Lotto;
+import lotto.domain.LottoAmount;
+import lotto.domain.Rank;
+import lotto.domain.WinningNumbers;
 import lotto.util.Statistics;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -10,8 +14,8 @@ import java.util.Map;
 
 public class LottoController {
 
-    private final InputView inputView;
-    private final OutputView outputView;
+    protected final InputView inputView;
+    protected final OutputView outputView;
 
     public LottoController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -27,7 +31,7 @@ public class LottoController {
     }
 
     private void start() {
-
+        // 시도해볼 거 리턴 없애고 계속 생성
         LottoAmount lottoAmount = inputAmount();
 
         List<List<Integer>> lotto = buyLotto(lottoAmount);
