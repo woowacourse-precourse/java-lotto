@@ -32,7 +32,7 @@ public class Display {
 
     private static void print2ndRankCount(Ranking rank, int rankCount) {
         System.out.printf(
-                PRINT.BONUS_CORRECT_FORMAT,
+                PRINT.SECOND_RANK_FORMAT,
                 rank.getWinningCount(),
                 rank.getPrizeLabel(),
                 rankCount
@@ -41,7 +41,7 @@ public class Display {
 
     private static void printRankCountExcept2nd(Ranking rank, int rankCount) {
         System.out.printf(
-                PRINT.GENERAL_CORRECT_FORMAT,
+                PRINT.OTHER_RANK_FORMAT,
                 rank.getWinningCount(), rank.getPrizeLabel(),
                 rankCount
         );
