@@ -20,22 +20,45 @@ public class LottoController {
     Lotto lotto;
 
     public void gameStart() throws IllegalArgumentException {
+        buyLottos();
+        getUserWinningNumber();
+        getUserBonnusNumber();
+        resultCalculation();
+
+    }
+
+    private void buyLottos() {
         userInput = userInterface.getUserInput(PURCHASE_AMOUNT);
         user = new User("구매금액");
         user.validateUserMoney(userInput);
         lottoCount = Integer.parseInt(userInput)/1000;
         auto = new Auto(lottoCount);
         userInterface.showAutoLottos(Auto.AUTO_LOTTOS, lottoCount);
+    }
+
+    private void getUserWinningNumber() {
         userInput = userInterface.getUserInput(WINNING_NUMBER);
         user = new User("당첨 번호");
         user.validateUserWinningNumber(userInput);
         auto.makeWinningNumbers(userInput);
         lotto = new Lotto(Auto.WINNING_NUMBERS);
+    }
+
+    private void getUserBonnusNumber() {
         userInput = userInterface.getUserInput(BONUS_NUMBER);
         user = new User("보너스 번호");
         user.validateUserBonusNumber(userInput, Auto.WINNING_NUMBERS);
+    }
+
+    private void resultCalculation() {
         auto.checkWining(Integer.parseInt(userInput));
         auto.yieldCalculation(lottoCount*1000);
         userInterface.printResult();
     }
+
+
+
+
+
+
 }
