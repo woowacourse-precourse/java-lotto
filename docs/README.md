@@ -31,9 +31,9 @@
 - [X] 플레이어의 입력이 잘 못된 경우 발생시킬 Exception 클래스 구현 - className : LottoException
   - [X] 메세지의 상수를 구현하고 에러에 따른 메세지를 반환한다. - createErrorMsg
 
-- [ ] 수익률 계산을 하는 클래스를 생성한다.
-  - [ ] 총 수익을 계산한다. 
-  - [ ] 수익률을 반환한다. 
+- [X] 수익률 계산을 하는 클래스를 생성한다. - LottoCalculator
+  - [X] 총 수익을 계산한다. - calPrizeProfit
+  - [X] 수익률을 반환한다. - getRate
 
 
 ### UI
@@ -43,10 +43,10 @@
     - [X] 당첨 번호 - prizeNumber
     - [X] 보너스 번호 - bonusNumber
 
-- [ ] 구매 완료 메세지를 출력한다. - buyLotto
-- [ ] 구매한 로또 목록을 출력한다. - buyLottoNumbers
-- [ ] 통계 결과값을 출력한다. - stats
-- [ ] 수익률을 출력한다. - getRate
+- [X] 구매 완료 메세지를 출력한다. - buyLotto
+- [X] 구매한 로또 목록을 출력한다. - buyLottoNumbers
+- [X] 통계 결과값을 출력한다. - stats
+- [X] 수익률을 출력한다. - getRate
 
 ## 기능 요구 사항
 
