@@ -24,6 +24,19 @@ public class LottoReader {
         return lottoResult;
     }
 
+    private int calculateTotalAmount() {
+        int totalWinningAmount = 0;
+
+        for (Entry<LottoRank, Integer> lottoResultEntry : lottoResult.entrySet()) {
+            LottoRank rank = lottoResultEntry.getKey();
+            Integer count = lottoResultEntry.getValue();
+
+            totalWinningAmount += rank.calculateTotalAmount(count);
+        }
+
+        return totalWinningAmount;
+    }
+
     private void putLottoRank(Map<Lotto, Integer> matchingResult, Bonus bonus) {
         for (Entry<Lotto, Integer> matchingResultEntry : matchingResult.entrySet()) {
             Integer matchingCount = matchingResultEntry.getValue();

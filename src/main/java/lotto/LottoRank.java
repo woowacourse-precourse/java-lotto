@@ -27,6 +27,10 @@ public enum LottoRank {
         return RANK5;
     }
 
+    public int calculateTotalAmount(int count) {
+        return prizeMoney * count;
+    }
+
     @Override
     public String toString() {
         String commaMoney = NumberFormat.getInstance().format(prizeMoney);
