@@ -96,12 +96,12 @@ public class View {
         Map<Prize, Long> prizeLongMap = prizeDto.groupByPrizes();
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.printf("3개 일치 (5,000원) - %s개\n", prizeLongMap.get(Prize.THREE));
-        System.out.printf("4개 일치 (50,000원) - %s개\n", prizeLongMap.get(Prize.FOUR));
-        System.out.printf("5개 일치 (1,500,000원) - %s개\n", prizeLongMap.get(Prize.FIVE));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %s개\n", prizeLongMap.get(Prize.FIVE_AND_BONUS));
-        System.out.printf("6개 일치 (2,000,000,000원) - %s개\n", prizeLongMap.get(Prize.SIX));
-        System.out.printf("총 수익률은 %,1f%%입니다.\n", prizeDto.getYield());
+        System.out.printf("3개 일치 (5,000원) - %s개\n", prizeLongMap.getOrDefault(Prize.THREE, 0L));
+        System.out.printf("4개 일치 (50,000원) - %s개\n", prizeLongMap.getOrDefault(Prize.FOUR, 0L));
+        System.out.printf("5개 일치 (1,500,000원) - %s개\n", prizeLongMap.getOrDefault(Prize.FIVE, 0L));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %s개\n", prizeLongMap.getOrDefault(Prize.FIVE_AND_BONUS, 0L));
+        System.out.printf("6개 일치 (2,000,000,000원) - %s개\n", prizeLongMap.getOrDefault(Prize.SIX, 0L));
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", prizeDto.getYield());
 
     }
 
