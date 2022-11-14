@@ -27,4 +27,17 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    @Override
+    public String toString() {
+        String returnString = "[";
+        for(int i=0 ; i<6 ; i++) {
+            returnString = returnString + numbers.get(i);
+            if(i != 5) {
+                returnString = returnString + ", ";
+            }
+        }
+        returnString = returnString + "]";
+        return returnString;
+    }
 }
