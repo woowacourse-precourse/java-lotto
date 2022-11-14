@@ -22,4 +22,11 @@ public class InputView {
         validator.isRightNumbers(input);
         return input;
     }
+
+    public String createBonusNumber(List<Integer> list){
+        System.out.println(INPUT_BONUS);
+        String input = Console.readLine();
+        validator.isValidBonusNumber(input,list);
+        return input;
+    }
 }
