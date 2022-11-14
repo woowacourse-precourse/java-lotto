@@ -1,24 +1,30 @@
 package lotto;
 
-import lotto.ui.Input;
-
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        /* 입력시 확인했지만 한번 더 확인한다. */
         validate(numbers);
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers(){
-        return this.numbers;
+    public boolean hasNumber(int number){
+        return numbers.contains(number);
+    }
+
+    public LottoRanking findLottoRankingBy(WinningLotto winningLotto){
+        int match = (int) numbers.stream()
+                .filter(winningLotto::hasMajorNumber)
+                .count();
+        boolean hasBonusNumber = numbers.stream()
+                .anyMatch(winningLotto::hasBonusNumber);
+        return LottoRanking.findByMatchingInformation(match, hasBonusNumber);
     }
 
     private void validate(List<Integer> numbers) {
-        validateRange(numbers);
+        validateLength(numbers);
         validateUnique(numbers);
         validateRange(numbers);
     }
