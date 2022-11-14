@@ -1,41 +1,30 @@
 package lotto.domain.raffleDevice;
 
+import lotto.domain.Rank;
 import lotto.domain.lottoData.Lotto;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class RaffleMachine {
 
-    public List<Integer> getResultOfLottos(List<Lotto> lottos, List<Integer> normalNumbers, Integer bonusNumbers) {
-        List<Integer> resultOfLottos = new ArrayList<>(Arrays.asList(0,0,0,0,0,0));
+    public Map<Rank, Integer> getWinnerPerRank(List<Lotto> lottos, List<Integer> normalNumbers, Integer bonusNumbers) {
+        // TODO : Integer 0으로 초기화하여 구현
+        Map<Rank, Integer> winnerPerRank = new HashMap<>();
 
         for (Lotto lotto : lottos) {
-            Integer rank = countWinner(lotto, normalNumbers, bonusNumbers);
-            int rankCount = resultOfLottos.get(rank)+1;
-            resultOfLottos.set(rank, rankCount);
+            Rank rank = decideRank(lotto, normalNumbers, bonusNumbers);
+            Integer winnerCount = winnerPerRank.get(rank) + 1;
+            winnerPerRank.put(rank, winnerCount);
         }
-        return resultOfLottos;
+        return winnerPerRank;
     }
 
-    public Integer countWinner(Lotto lotto, List<Integer> normalNumbers, Integer bonusNumber) {
-        int normalNumberCount = 0;
-        int bonusNumberCount = 0;
+    private Rank decideRank(Lotto lotto, List<Integer> normalNumbers, Integer bonusNumber) {
+        int normalNumberCount = countNormalNumbers(lotto, normalNumbers);
+        int bonusNumberCount = countBonusNumber(lotto, bonusNumber);
 
-        normalNumberCount = countNormalNumbers(lotto, normalNumbers);
-        bonusNumberCount = countBonusNumber(lotto, bonusNumber);
-
-        List<Integer> winnerResult = new ArrayList<>();
-        winnerResult.add(normalNumberCount);
-        winnerResult.add(bonusNumberCount);
-
-        Integer rank = decideRank(winnerResult);
-
-        return rank;
+        return getRank(normalNumberCount, bonusNumberCount);
     }
-
-
 
     private int countNormalNumbers(Lotto lotto, List<Integer> normalNumbers) {
         int winningNumberCount = 0;
@@ -48,14 +37,6 @@ public class RaffleMachine {
         return winningNumberCount;
     }
 
-    private boolean isTargetNumberInNumbers(Integer targetNumber, List<Integer> numbers) {
-        if (numbers.contains(targetNumber)) {
-            return true;
-        }
-        return false;
-    }
-
-
     private int countBonusNumber(Lotto lotto, Integer bonusNumber) {
         List<Integer> numbers = lotto.getNumbers();
         if (isTargetNumberInNumbers(bonusNumber, numbers)) {
@@ -64,22 +45,26 @@ public class RaffleMachine {
         return 0;
     }
 
-    private Integer decideRank(List<Integer> winnerResult) {
-        if (winnerResult.get(0) == 6) {
-            return 1;
+    private Rank getRank(int normalNumberCount, int bonusNumberCount) {
+        Rank[] ranks = Rank.values();
+        for (Rank rank : ranks) {
+            if (bonusNumberCount == 1 && rank.getNormalNumbers() == normalNumberCount) {
+                return Rank.SECOND;
+            }
+            if (rank.getNormalNumbers() == normalNumberCount) {
+                return rank;
+            }
         }
-        if (winnerResult.get(0) == 5 && winnerResult.get(1) == 1) {
-            return 2;
-        }
-        if (winnerResult.get(0) == 5) {
-            return 3;
-        }
-        if (winnerResult.get(0) == 4) {
-            return 4;
-        }
-        if (winnerResult.get(0) == 3) {
-            return 5;
-        }
-        return 0;
+        return Rank.NONE;
     }
+
+
+    private boolean isTargetNumberInNumbers(Integer targetNumber, List<Integer> numbers) {
+        if (numbers.contains(targetNumber)) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

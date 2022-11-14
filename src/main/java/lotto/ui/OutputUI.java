@@ -23,13 +23,13 @@ public class OutputUI {
         }
     }
 
-    public void printWinnerResult(TotalWinnerLotto totalWinnerLotto) {
+    public void printWinnerResult(List<Integer> winnerPerRank) {
         Rank[] ranks = Rank.values();
         for (Rank rank : ranks) {
             System.out.println(String.format("%d개 일치%s - %d개",
                     rank.getHitCount(),
                     rank.getRewardString(),
-                    totalWinnerLotto.getResultWithRank(rank.getRankInt())));
+                    winnerPerRank.get(rank.getRankInt())));
 
         }
     }

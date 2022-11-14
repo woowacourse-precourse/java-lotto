@@ -13,6 +13,15 @@ public class WinnerLotto {
         this.bonusNumber = lottoNumbers.get(6);
     }
 
+    public List<Integer> getNormalNumbers() {
+
+        return normalNumbers;
+    }
+
+    public Integer getBonusNumber() {
+        return bonusNumber;
+    }
+
     private void validateBonusNumber(List<Integer> normalNumbers, Integer bonusNumber) {
         if (normalNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException();

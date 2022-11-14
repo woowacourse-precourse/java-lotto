@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.lottoData.Lotto;
 import lotto.domain.lottoData.TotalWinnerLotto;
+import lotto.domain.lottoData.WinnerLotto;
 import lotto.domain.lottoDevice.LottoMachine;
 import lotto.domain.raffleDevice.RaffleMachine;
 import lotto.domain.raffleDevice.RaffleResultCalculator;
@@ -16,24 +17,23 @@ public class LottoController {
     private static final OutputUI outputUI = new OutputUI();
     private static final LottoMachine lottoMachine = new LottoMachine();
     private static final RaffleMachine raffleMachine = new RaffleMachine();
-    private static final RaffleResultCalculator raffleStaticCalculator = new RaffleResultCalculator();
+    private static final RaffleResultCalculator raffleResultCalculator = new RaffleResultCalculator();
 
     public void start() {
         // 로또 구매
         List<Lotto> lottos = buyLottos();
 
         // 로또 입력, normalNumbers, bonusNumbers 나옴 -> Lotto상속 받아서 구현하자.
-        List<Integer> normalNumbers = inputUI.getNormalNumbers();
-        Integer bonusNumbers = inputUI.getBonusNumber(normalNumbers);
+        WinnerLotto winnerLotto = new WinnerLotto(inputUI.getLottoNumbers());
 
-        List<Integer> resultOfLottos = raffleMachine.getResultOfLottos(lottos, normalNumbers, bonusNumbers);
-        double returnRate = raffleStaticCalculator.calculateStatics(resultOfLottos, lottos.size());
+        // 로또 당첨 결과 반환, TotalWinnerLottos라고 하자.
+        // lottos, normalNumbers, bonusNumbers 필요하다.
+        TotalWinnerLotto totalWinnerLotto = new TotalWinnerLotto(raffleMachine.getResultOfLottos(lottos, winnerLotto.getNormalNumbers(), winnerLotto.getBonusNumber()));
+        outputUI.printWinnerResult(totalWinnerLotto.getWinnerPerRank());
 
-        TotalWinnerLotto totalWinnerLotto = createResultLotto(resultOfLottos);
-        outputUI.printWinnerResult(totalWinnerLotto);
+        // 로또 수익률 계산
+        double returnRate = raffleResultCalculator.calculateStatics(totalWinnerLotto.getWinnerPerRank(), lottos.size());
         outputUI.printReturnRate(returnRate);
-
-
     }
 
     private TotalWinnerLotto createResultLotto(List<Integer> resultOfLottos) {

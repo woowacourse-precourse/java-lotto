@@ -9,13 +9,13 @@ public enum Rank {
     FIRST(1, 6, 2000000000, " (2,000,000,000원)");
 
     private int rankInt;
-    private int hitCount;
+    private int normalNumbers;
     private int rewardInt;
     private String rewardString;
 
-    Rank(int rankInt, int hitCount, int rewardInt, String rewardString) {
+    Rank(int rankInt, int normalNumbers, int rewardInt, String rewardString) {
         this.rankInt = rankInt;
-        this.hitCount = hitCount;
+        this.normalNumbers = normalNumbers;
         this.rewardInt = rewardInt;
         this.rewardString = rewardString;
     }
@@ -24,8 +24,8 @@ public enum Rank {
         return rankInt;
     }
 
-    public int getHitCount() {
-        return hitCount;
+    public int getNormalNumbers() {
+        return normalNumbers;
     }
 
     public int getRewardInt() {
