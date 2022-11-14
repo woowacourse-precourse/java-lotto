@@ -3,8 +3,9 @@ package lotto.domain;
 public class Purchase {
 
     private static final int LOTTO_PRICE = 1_000;
-    private int amount;
-    private int count;
+
+    private final int amount;
+    private final int count;
 
     public Purchase(int amount) {
         validate(amount);
@@ -17,4 +18,9 @@ public class Purchase {
             throw new IllegalArgumentException();
         }
     }
+
+    public int getCount() {
+        return count;
+    }
+
 }
