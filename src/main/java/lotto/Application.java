@@ -1,13 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
 public class Application {
 
 
@@ -17,23 +9,20 @@ public class Application {
 
         notice.purchasePrice();
         user.setPurchasePrice();
-        int purchaseNumber = user.getPurchaseNumber();
-        notice.purchaseNumber(purchaseNumber);
-        ArrayList<Lotto> lottos = getLottos(purchaseNumber);
 
-//        for (Lotto lotto : lottos) {
-//            System.out.println(lotto.getNumbers());
-//        }
+        notice.purchaseNumber(user.getPurchaseNumber());
+        Lottery lottery = new Lottery(user.getPurchaseNumber());
+
+        notice.lottery(lottery);
+
+        notice.winningNumber();
+        user.setWinningNumbers();
+
+        notice.bonusNumber();
+        user.setBonusNumber();
+
+        lottery.calcGrade(user);
+        notice.winningAnalysis(lottery.getGradeCount());
     }
 
-    public static ArrayList<Lotto> getLottos(int purchaseNumber) {
-        ArrayList<Lotto> lottos = new ArrayList<>();
-
-        for (int index = 0; index < purchaseNumber; index++) {
-            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            lottos.add(lotto);
-        }
-
-        return lottos;
-    }
 }
