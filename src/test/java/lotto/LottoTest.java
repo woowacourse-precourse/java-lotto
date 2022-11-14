@@ -41,11 +41,11 @@ class LottoTest {
     void 로또_번호_당첨_번호_일치_개수() {
         Lotto lotto1 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         List<Integer> winning1 = List.of(45, 2, 33, 17, 5, 6);
-        assertThat(lotto1.getSameNumberCount(winning1)).isEqualTo(3);
+        assertThat(lotto1.getMatchNumberCount(winning1)).isEqualTo(3);
 
         Lotto lotto2 = new Lotto(List.of(8, 21, 23, 41, 42, 43));
         List<Integer> winning2 = List.of(1, 2, 3, 4, 5, 6);
-        assertThat(lotto2.getSameNumberCount(winning2)).isEqualTo(0);
+        assertThat(lotto2.getMatchNumberCount(winning2)).isEqualTo(0);
     }
 
     @DisplayName("로또 번호에 보너스 번호가 있는지 여부를 반환한다.")

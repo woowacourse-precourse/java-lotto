@@ -19,7 +19,7 @@ public class Lotto {
         return lotto.toString();
     }
 
-    public int getSameNumberCount(List<Integer> winning) {
+    public int getMatchNumberCount(List<Integer> winning) {
         return (int) numbers.stream().filter(winning::contains).count();
     }
 
