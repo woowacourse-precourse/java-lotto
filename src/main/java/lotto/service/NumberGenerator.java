@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.constant.ExceptionConstant;
 import lotto.constant.LottoConstant;
+import lotto.domain.Player;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -11,27 +12,12 @@ import java.util.stream.Stream;
 
 public class NumberGenerator {
     List<List<Integer>> autoLotto;
-    List<Integer> computerLotto;
 
     public NumberGenerator() {
-        computerLotto = new ArrayList<>();
     }
 
     public int calculatorLottoQuantity(int purchasePrice) {
         return purchasePrice / LottoConstant.PRICE_UNIT;
-    }
-
-    public int enterPurchasePrice() {
-        String purchasePrice = Console.readLine();
-        int purchasePriceInt = LottoException.exceptionInvalidPurchasePrice(purchasePrice);
-        LottoException.exceptionDividedIntoThousands(purchasePriceInt);
-        return purchasePriceInt;
-    }
-
-    public void enterLottoNumbers() {
-        String inputLottoNumbers = Console.readLine();
-        String[] lottoNumbers = LottoException.exceptionInvalidLottoNumber(inputLottoNumbers);
-        computerLotto = addComputerNumber(new ArrayList<>(Arrays.asList(lottoNumbers)));
     }
 
     public List<Integer> addComputerNumber(List<String> computerLottoString) {
