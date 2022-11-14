@@ -56,20 +56,19 @@ public class calculateLotto {
         return -1;
     }
     void printWinLotto(List<Integer> winLottos, double rateLotto){
-        int count = 3;
-        for(int winLottoNumber : winLottos){
-            System.out.println(count+++"개 일치 "+" - "+winLottoNumber+"개");
+        //System.out.printf(lottoStatisticMessage);
+        for(WinnerbyLottoRank lottowinner : WinnerbyLottoRank.values()){
+            lottowinner.printWinnerbyLottoRank(winLottos.get(lottowinner.ordinal()));
         }
         System.out.printf(totalrateMessage,String.format("%.1f", rateLotto));
     }
     double rateLotto(int numberOflottos, List<Integer> winLottos){
-        // 계산하자 현재 가격을
-        int [] prizeMoney = {5000, 50000, 1500000, 30000000, 2000000000};
-        int getPrizeMoney = 0;
-        for(int i =0; i<winLottos.size();i++){
-            getPrizeMoney+=prizeMoney[i]*winLottos.get(i);
+        double getPrizeMoney = 0;
+        for(WinnerbyLottoRank lottowinner : WinnerbyLottoRank.values()){
+            getPrizeMoney+=lottowinner.prizeValue()*winLottos.get(lottowinner.ordinal());
         }
-        return (double)(getPrizeMoney / (numberOflottos*1000.0))*100.0;
+        return (getPrizeMoney / (numberOflottos*1000.0))*100;
     }
+
 
 }
