@@ -31,8 +31,7 @@ public class LottoStore {
         List<Integer> lottoNumbers = pickUniqueNumbersInRange(
                 MIN_NUMBER_OF_LOTTO,
                 MAX_NUMBER_OF_LOTTO,
-                COUNTS_OF_LOTTO_NUMBERS
-        );
+                COUNTS_OF_LOTTO_NUMBERS);
 
         return new Lotto(lottoNumbers);
     }

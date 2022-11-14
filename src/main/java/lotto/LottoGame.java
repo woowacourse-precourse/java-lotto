@@ -58,7 +58,9 @@ public class LottoGame {
     }
 
     private void makeFinalResults(LottoTickets lottoTickets, WinningLotto winningLotto) {
-        FinalResultsDto finalResultsDto = lottoService.finalResultsDto(lottoTickets, winningLotto);
+        FinalResultsDto finalResultsDto = lottoService
+                .finalResultsDto(lottoTickets, winningLotto);
+
         lottoPrinter.printFinalResults(finalResultsDto);
     }
 }
