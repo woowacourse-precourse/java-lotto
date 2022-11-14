@@ -21,7 +21,7 @@ public class Constants {
     public static final String INPUT_WINNING_LOTTO_GUIDE = "\n당첨 번호를 입력해 주세요.";
     public static final String INPUT_BONUS_GUIDE = "\n보너스 번호를 입력해 주세요.";
     public static final String RESULT_START_GUIDE = "\n당첨 통계\n---";
-    public static final String PROFIT_RATE_GUIDE = "총 수익률은 %.2f%%입니다.";
+    public static final String PROFIT_RATE_GUIDE = "총 수익률은 %.1f%%입니다.";
     public static final String CONDITION_MATCHING_INFORMATION_GUIDE = "%d개 일치";
     public static final String BONUS_BALL_MATCHING_INFORMATION_GUIDE = ", 보너스 볼 일치";
     public static final String BONUS_BALL_MISMATCHING_INFORMATION_GUIDE = "";
@@ -29,8 +29,8 @@ public class Constants {
     public static final String  COUNT_INFORMATION_GUIDE = " - %d개";
 
 
-    public static final String INPUT_IS_NOT_NUMBER = "[ERROR] 로또 번호는 숫자여야 합니다.";
-    public static final String INPUT_IS_NEGATIVE_NUMBER = "[ERROR] 로또 번호는 양수여야합니다.";
+    public static final String INPUT_IS_NOT_NUMBER = "[ERROR] 입력 값은 숫자여야 합니다.";
+    public static final String INPUT_IS_NEGATIVE_NUMBER = "[ERROR] 입력 값은 양수여야합니다.";
     public static final String INVALID_MONETARY_UNIT =
             String.format("[ERROR] 구입 금액은 %d 단위의 값이어야 합니다.", MONETARY_UNIT);
     public static final String INVALID_SIZE = "[ERROR] 로또는 총 %d개의 번호로 이뤄져야 합니다.";
