@@ -14,9 +14,10 @@ public class Buy {
     private static final int NUMBER_RANGE = 6;
 
     public static List<Integer> autoNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, FINAL_NUMBER, NUMBER_RANGE);
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> numbers = new ArrayList<>(
+                Randoms.pickUniqueNumbersInRange(START_NUMBER, FINAL_NUMBER, NUMBER_RANGE));
+        numbers.sort(Comparator.naturalOrder());
+        return Collections.unmodifiableList(numbers);
     }
 
     public static int orderTicket() {
@@ -41,25 +42,25 @@ public class Buy {
 
     }
 
-    public static List<Integer> inputLotteryNumber() {
+    public static List<Integer> inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
-        List<Integer> lotteryNumbers;
+        List<Integer> winningNumbers;
         try {
-            List<String> temporaryLotteryNumbers = Arrays.asList(numbers.split(","));
-            Check.isNumber(temporaryLotteryNumbers);
-            Check.rightRange(temporaryLotteryNumbers, START_NUMBER, FINAL_NUMBER);
-            Check.numberDuplicate(temporaryLotteryNumbers);
-            Check.winningNumberCount(temporaryLotteryNumbers);
+            List<String> temporaryWinningNumbers = Arrays.asList(numbers.split(","));
+            Check.isNumber(temporaryWinningNumbers);
+            Check.rightRange(temporaryWinningNumbers, START_NUMBER, FINAL_NUMBER);
+            Check.numberDuplicate(temporaryWinningNumbers);
+            Check.winningNumberCount(temporaryWinningNumbers);
 
-            lotteryNumbers = convertIntNumbers(temporaryLotteryNumbers);
+            winningNumbers = convertIntNumbers(temporaryWinningNumbers);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return inputLotteryNumber();
+            return inputWinningNumber();
         }
 
-        return lotteryNumbers;
+        return winningNumbers;
     }
 
     public static int inputBonusNumber(List<Integer> winningNumbers) {
