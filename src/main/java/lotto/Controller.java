@@ -63,6 +63,9 @@ public class Controller {
         String inputRealLottoBonusNumber = View.Input();
         Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
 
+        // 보너스 번호 추가
+        realLottoNumbers.add(realLottoBonusNumber);
+
         // Lotto 클래스 생성
         new Lotto(realLottoNumbers);
     }
