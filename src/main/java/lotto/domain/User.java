@@ -1,25 +1,32 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import lotto.exception.LottoException;
 
 import java.util.List;
 
 public class User {
-    private int PurchaseAmount;
+    private int purchaseAmount;
     private List<Lotto> LotteryNumbers;
 
     public void inputPurchaseAmount(String input){
         validate(input);
-        this.PurchaseAmount = Integer.parseInt(input);
+        this.purchaseAmount = Integer.parseInt(input);
     }
 
-    private boolean validate(String input){
+
+    
+    private void validate(String input) throws RuntimeException{
         char c;
+
         for(int i=0; i<input.length(); i++){
             c = input.charAt(i);
             if(!Character.isDigit(c))
-                return false;
+                throw new IllegalArgumentException(LottoException.NOT_DISIT.getErrorMessage());
         }
-        return true;
+
+        int intInput = Integer.parseInt(input);
+
+        if(intInput%1000 !=0)
+            throw new IllegalArgumentException(LottoException.NOT_EFFECTIVE_UNIT.getErrorMessage());
     }
 }
