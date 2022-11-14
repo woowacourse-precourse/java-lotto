@@ -14,6 +14,21 @@ public class Cashier {
     public void inputPlayerAnswerNumber(List<Integer> answerNumber) {
         this.answerNumber = answerNumber;
     }
-    
+
+    public void inputPlayerBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
+    }
+
+    public int getReceivedMoney() {
+        return receivedMoney;
+    }
+
+    public List<Integer> getAnswerNumber() {
+        return answerNumber;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
 
