@@ -4,7 +4,7 @@ import lotto.utils.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static lotto.utils.Input.*;
 
 public class GameManager {
@@ -46,14 +46,7 @@ public class GameManager {
 
     private Lotto publishRandomLotto() {
         Lotto lotto;
-        List<Integer> lottoNumbers = new ArrayList<>();
-
-        while (lottoNumbers.size() < 6) {
-            Integer lottoNumber = pickNumberInRange(1, 45);
-            if (!lottoNumbers.contains(lottoNumber)) {
-                lottoNumbers.add(lottoNumber);
-            }
-        }
+        List<Integer> lottoNumbers = pickUniqueNumbersInRange(1, 45, 6);
         lotto = new Lotto(lottoNumbers);
 
         return lotto;
