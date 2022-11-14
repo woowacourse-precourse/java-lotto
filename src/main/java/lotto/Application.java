@@ -25,5 +25,6 @@ public class Application {
         askBonusNumber();
         int bonusNumber = getInt();
 
+        Player player = new Player(numbers, bonusNumber);
     }
 }
