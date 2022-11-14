@@ -112,7 +112,9 @@ public class Application {
         printLottoNumbers();
     }
 
-    public static void guideWinningNumberFormat() { System.out.println("\n당첨 번호 6개를 쉼표로 구분해 입력해 주세요."); }
+    public static void guideWinningNumberFormat() {
+        System.out.println("\n1이상 45이하의 당첨 번호 6개를 쉼표로 구분해 입력해주세요.");
+    }
 
     public static boolean isComma(char charAtIndex) { return charAtIndex == ','; }
 
@@ -124,7 +126,7 @@ public class Application {
             char charAtIndex = numberInput.charAt(index);
             if (isComma(charAtIndex)) continue;
             if (isNumber(charAtIndex)) continue;
-            throw new IllegalArgumentException("쉼표와 숫자 외 다른 문자는 입력이 불가합니다.");
+            throw new IllegalArgumentException("[ERROR] 쉼표와 숫자 외 다른 문자는 입력이 불가합니다.");
         }
     }
 
@@ -137,6 +139,11 @@ public class Application {
         return winningNumbers;
     }
 
+    public static void isNoOfDigitsExceeds9(String splitNumber) {
+        if (splitNumber.length() > 9)
+            throw new IllegalArgumentException("[ERROR] 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
+    }
+
     public static void getWinningNumbers() {
         guideWinningNumberFormat();
         String winningNumberInput = Console.readLine();
@@ -145,6 +152,9 @@ public class Application {
         isInputCommaAndNumber(winningNumberInput);
 
         String[] splitNumbers = winningNumberInput.split(",");
+        for (String splitNumber : splitNumbers)
+            isNoOfDigitsExceeds9(splitNumber);
+
         List<Integer> splitNumbersAsInteger = parseNumbers(splitNumbers);
         winningNumbers = new Lotto(splitNumbersAsInteger);
     }
@@ -155,12 +165,12 @@ public class Application {
 
     public static void checkRange(int number) {
         if (number > 45 || number < 1)
-            throw new IllegalArgumentException("당첨 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
     }
 
     public static void isDuplicatedWithWinningNumbers(int number) {
         if (numberType[number] == NumberType.WINNING)
-            throw new IllegalArgumentException("당첨번호가 아닌 다른 보너스 번호를 입력하십시오.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호가 아닌 다른 번호를 입력하십시오.");
     }
 
     public static void getBonusNumber() {
@@ -169,6 +179,7 @@ public class Application {
 
         isVoidInput(bonusNumberInput);
         isInputNumber(bonusNumberInput);
+        isNoOfDigitsExceeds9(bonusNumberInput);
 
         int bonusNumber = Integer.parseInt(bonusNumberInput);
         checkRange(bonusNumber);

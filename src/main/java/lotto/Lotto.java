@@ -17,29 +17,29 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        checkRange(numbers);
         hasSixNumbers(numbers);
         isDuplicated(numbers);
-        checkRange(numbers);
     }
 
     private static void hasSixNumbers(List<Integer> numbers) {
         if (numbers.size() != 6)
-            throw new IllegalArgumentException("당첨 번호는 쉼표로 구분되는 6개의 수로 구성돼야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호를 쉼표로 구분되는 6개의 수로 입력해 주세요.");
+    }
+
+    private static void checkRange(List<Integer> numbers) {
+        for (int number : numbers)
+            if (number > 45 || number < 1)
+                throw new IllegalArgumentException("[ERROR] 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
     }
 
     private static void isDuplicated(List<Integer> numbers) {
         boolean[] isWinningNumber = new boolean[46];
         for (int number : numbers) {
             if (isWinningNumber[number])
-                throw new IllegalArgumentException("당첨 번호엔 중복된 숫자가 없어야 합니다.");
+                throw new IllegalArgumentException("[ERROR] 당첨 번호엔 중복된 숫자가 없어야 합니다.");
             isWinningNumber[number] = true;
         }
-    }
-
-    private static void checkRange(List<Integer> numbers) {
-        for (int number : numbers)
-            if (number > 45 || number < 1)
-                throw new IllegalArgumentException("당첨 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
     }
 
     private static void set(List<Integer> winningNumbers) {
