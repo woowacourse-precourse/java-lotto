@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class GameManager {
+    private static final Validation validation = new Validation();
+
     private final Publisher publisher;
 
     GameManager() {
@@ -64,7 +66,9 @@ public class GameManager {
     private int getMoney() {
         Printer.printInfoMoneyInput();
 
-        String moneyInput = Console.readLine();
-        return Integer.parseInt(moneyInput);
+        String money = Console.readLine();
+        validation.validateMoney(money);
+
+        return Integer.parseInt(money);
     }
 }
