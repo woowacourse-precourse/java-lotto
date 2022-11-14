@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.utils.StringToListConverter;
 import lotto.view.ProjectView;
 
 public class LottoShop {
@@ -19,7 +20,8 @@ public class LottoShop {
 
             String winningNumber = projectView.getWinningNumber();
             String bonusNumber = projectView.getBonusNumber();
-            LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(winningNumber, bonusNumber);
+            StringToListConverter converter = new StringToListConverter();
+            LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(converter, winningNumber, bonusNumber);
 
             WinningResult result = lottoWinningNumber.getResult(issuedLotto);
             projectView.printResult(result, Integer.parseInt(money));
