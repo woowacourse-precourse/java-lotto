@@ -18,13 +18,20 @@ public class WinningLottoTest {
 
     private static Stream<Arguments> generateLotto() {
         return Stream.of(
-                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoResult.SIX_CORRECT),
-                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 7)), LottoResult.FIVE_BONUS_CORRECT),
-                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 9)), LottoResult.FIVE_CORRECT),
-                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 8, 9)), LottoResult.FOUR_CORRECT),
-                Arguments.of(new Lotto(List.of(1, 2, 3, 8, 9, 10)), LottoResult.THREE_CORRECT),
-                Arguments.of(new Lotto(List.of(1, 2, 11, 12, 13, 14)), LottoResult.TWO_CORRECT),
-                Arguments.of(new Lotto(List.of(1, 12, 13, 14, 15, 16)), LottoResult.ONE_CORRECT)
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                        new LottoResult(LottoSameCount.from(6), LottoContainBonus.from(false))),
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                        new LottoResult(LottoSameCount.from(5), LottoContainBonus.from(true))),
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 9)),
+                        new LottoResult(LottoSameCount.from(5), LottoContainBonus.from(false))),
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 8, 9)),
+                        new LottoResult(LottoSameCount.from(4), LottoContainBonus.from(false))),
+                Arguments.of(new Lotto(List.of(1, 2, 3, 8, 9, 10)),
+                        new LottoResult(LottoSameCount.from(3), LottoContainBonus.from(false))),
+                Arguments.of(new Lotto(List.of(1, 2, 11, 12, 13, 14)),
+                        new LottoResult(LottoSameCount.from(2), LottoContainBonus.from(false))),
+                Arguments.of(new Lotto(List.of(1, 12, 13, 14, 15, 16)),
+                        new LottoResult(LottoSameCount.from(1), LottoContainBonus.from(false)))
         );
     }
 
@@ -47,8 +54,10 @@ public class WinningLottoTest {
     @DisplayName("getResult 메서드는 당첨 결과를 알맞게 LottoResult 형태로 반환한다")
     @ParameterizedTest
     @MethodSource("generateLotto")
-    void case3(Lotto lotto, LottoResult result) {
+    void case3(Lotto lotto, LottoResult expected) {
         WinningLotto winningLotto = new WinningLotto(winLotto, new BonusNumber(7));
-        assertThat(winningLotto.getResult(lotto)).isEqualTo(result);
+        LottoResult result = winningLotto.getResult(lotto);
+        assertThat(result).isEqualTo(expected);
+        System.out.println(result);
     }
 }

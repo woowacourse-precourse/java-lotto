@@ -21,7 +21,7 @@ public class LottoStatisticTest {
         );
         LottoStatistic lottoStatistic = new LottoStatistic(winningLotto, lottos);
         LottoScoreDto scoreDto = lottoStatistic.getScore();
-        assertThat(scoreDto.getSix()).isEqualTo(1);
-        assertThat(scoreDto.getRate()).isEqualTo(LottoResult.SIX_CORRECT.money() / 20);
+        assertThat(scoreDto.firstPrizeCount()).isEqualTo(1);
+        assertThat(scoreDto.getRate()).isEqualTo(LottoPrize.FIRST_PRIZE.getPrize() / 20);
     }
 }
