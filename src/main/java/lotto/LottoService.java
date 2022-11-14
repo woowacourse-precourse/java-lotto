@@ -1,9 +1,7 @@
 package lotto;
 
-import lotto.domain.Lotto;
-import lotto.domain.Money;
+import lotto.domain.*;
 import lotto.domain.Number;
-import lotto.domain.WinningResult;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +31,14 @@ public class LottoService {
         Number bonusNumber = convertToNumber(inputBonusNumber);
 
         winningResult = new WinningResult(winningNumber, bonusNumber);
+    }
+
+    public WinningResult result() {
+        for (Lotto lotto : lotteries) {
+            winningResult.compareLotto(lotto);
+        }
+
+        return winningResult;
     }
 
     private List<Number> convertToNumbers(String input) {
