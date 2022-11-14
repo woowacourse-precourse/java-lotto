@@ -1,12 +1,14 @@
 package lotto;
 
 import lotto.domain.Bonus;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class BonusTest {
 
@@ -22,6 +24,12 @@ public class BonusTest {
     void createBonusByOutRange() {
         assertThatThrownBy(() -> new Bonus(-3, List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("정상 보너스 번호 입력시 예외가 발생하지 않는다.")
+    @Test
+    void createBonusBySuccess() {
+        assertDoesNotThrow(() -> new Bonus(10, List.of(1, 2, 3, 4, 5, 6)));
     }
 
 }
