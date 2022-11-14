@@ -40,4 +40,8 @@ public class Purchase {
         System.out.println(count + "를 구매했습니다.");
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
 }
