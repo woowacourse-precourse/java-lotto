@@ -1,5 +1,7 @@
 package domain;
 
+import dto.WinningNumberDto;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class WinningNumber {
         bonusNumber = bonus;
     }
 
-    public  sendDTO(){
-
+    public WinningNumberDto sendDTO(){
+        return new WinningNumberDto(mainNumbers,bonusNumber);
     }
 }
