@@ -1,4 +1,4 @@
-package lotto;
+package domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,4 +30,6 @@ public class Lotto {
         }
         return lotto;
     }
+
+
 }

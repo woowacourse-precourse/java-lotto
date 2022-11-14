@@ -1,4 +1,7 @@
-package lotto;
+package view;
+
+import domain.Lotto;
+import domain.Lottos;
 
 public class OutputUtil {
     public static final int MIN_HIT = 3;
