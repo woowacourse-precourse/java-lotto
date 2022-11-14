@@ -29,7 +29,6 @@ public class LottoGenerator {
     }
 
     public Lotto changeToNumber(String numbers) {
-        judge.isAllNumber(numbers);
         String[] num = numbers.split(",");
         List<Integer> revertNumbers = new ArrayList<>();
         for(String n : num) {

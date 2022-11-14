@@ -47,7 +47,9 @@ public class LottoManager {
 
     public void inputWinningNumbers() {
         System.out.println(Notice.INPUT_WINNING_NUMBERS.getNotice());
-        winningNumbers = lottoGenerator.changeToNumber(Console.readLine());
+        String inputNumbers = Console.readLine();
+        judge.isAllNumber(inputNumbers);
+        winningNumbers = lottoGenerator.changeToNumber(inputNumbers);
     }
 
     public void inputBonusNumber() {
@@ -110,11 +112,11 @@ public class LottoManager {
     public void printResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + prize[4] + "개");
-        System.out.println("4개 일치 (50,000원) - " + prize[3] + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + prize[2] + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + prize[1] + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + prize[0] + "개");
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", yield));
+        System.out.println(String.format(Result.FIFTH.getResult(), prize[4]));
+        System.out.println(String.format(Result.FOURTH.getResult(), prize[3]));
+        System.out.println(String.format(Result.THIRD.getResult(), prize[2]));
+        System.out.println(String.format(Result.SECOND.getResult(), prize[1]));
+        System.out.println(String.format(Result.FIRST.getResult(), prize[0]));
+        System.out.println(String.format(Result.YIELD.getResult(), yield));
     }
 }
