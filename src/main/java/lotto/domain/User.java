@@ -34,16 +34,16 @@ public class User {
 
     //validate check
     public static void validate(int money) {
-        checkMoneyMinimum(money);
-        checkMoneyDivided(money);
+        validateMoneyMinimum(money);
+        validateMoneyDivided(money);
     }
-    public static void checkMoneyMinimum(int money) {
+    public static void validateMoneyMinimum(int money) {
         if (money < Lotto.PRICE) {
             throw new IllegalArgumentException("[ERROR] 금액은 1000원 이상이어야 합니다.");
         }
     }
 
-    public static void checkMoneyDivided(int money) {
+    public static void validateMoneyDivided(int money) {
         if (money % Lotto.PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
         }
