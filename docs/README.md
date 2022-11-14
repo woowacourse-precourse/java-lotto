@@ -9,19 +9,28 @@
 5. 구매한 로또의 당첨내역과 총 수익률를 계산한다.
 
 ## 기능 목록
- - validation class
-    > 입력에 대한 유효성 검증 기능
- 
- - Convert class
+- InputValidation class
+
+  > - 입력에 대한 검증 
+    ````
+    1. 숫자로 변환 될 수 없는 입력의 경우 예외  -> numberFormatExceptionValidation Message ; [ERROR] 숫자만 입력해주세요.
+    2. 당첨 번호에서 콤마로 구분되지 않은 경우 에외 -> winningNumberValidation ; [ERROR] 당첨 번호는 ','로 구분해주세요.
+    3. 보너스 번호가 당첨 번호 중 하나일 경우 예외 -> bonusNumberValidation ; [ERROR] 보너스 번호는 당첨 번호와 다른 숫자여야합니다."
+    ````
+
+- Convert class
     > 유효성 검증이 끝난 입력을 요구에 맞게 변환
+    ````
+
+    ````
  
- - Purchase Class
+- Purchase Class
     > 구매 금액에 맞게 로또를 구매 (구매 번호 생성)
  
- - Stats class
+- Stats class
     > 구매한 로또와 당첨 로또 및 보너스 번호에 대한 통계 기능
 
- - Render class
+- Render class
     > 결과를 출력하는 기능 
 
 ## 제한 사항
