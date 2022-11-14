@@ -117,4 +117,9 @@ public class LottoProgram {
 		exception.checkLottoRange(winNum);
 		exception.reduplicationLottoNumbers(lottoNumbers, winNum);
 	}
+
+	public void checkBonusNum(String inputBonus) {
+		exception.checkBonusOnlyNumber(inputBonus);
+		exception.checkBonusRange(inputBonus);
+	}
 }
