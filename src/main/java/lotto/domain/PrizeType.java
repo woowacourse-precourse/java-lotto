@@ -10,10 +10,10 @@ public enum PrizeType {
     FIVE_BONUS(5, true, "5개 일치, 보너스 볼 일치 (30,000,000원) - ", (profit -> profit * 30_000_000)),
     SIX(6, false, "6개 일치 (2,000,000,000원) - ", (profit -> profit * 2_000_000_000));
 
-    private int type;
-    private boolean bonus;
-    private String message;
-    private Function<Integer, Integer> expression;
+    private final int type;
+    private final boolean bonus;
+    private final String message;
+    private final Function<Integer, Integer> expression;
 
     PrizeType(int type, boolean bonus, String message, Function<Integer, Integer> expression) {
         this.type = type;
@@ -22,7 +22,7 @@ public enum PrizeType {
         this.expression = expression;
     }
 
-    public int calculateProfit(int count) {
+    public long calculateProfit(int count) {
         return expression.apply(count);
     }
 

@@ -6,13 +6,13 @@ import java.util.Map;
 public class LottoResult {
     private static final int INITIAL_COUNT = 0;
     private static final double INITIAL_RETURN_RATE = 0.0;
-    private Map<PrizeType, Integer> result = new HashMap<>();
+    private final Map<PrizeType, Integer> result = new HashMap<>();
     private double profitRate;
 
     public LottoResult(Lottos lottos, WinningLotto winningLotto, Money money) {
         initializeResult();
         checkResult(lottos, winningLotto);
-        // TODO : calculateProfitRate(money);
+        calculateProfitRate(money);
     }
 
     private void initializeResult() {
@@ -47,5 +47,20 @@ public class LottoResult {
         if (type != null) {
             result.put(type, count);
         }
+    }
+
+    private void calculateProfitRate(Money money) {
+        long profit = sumProfit();
+        if (profit != 0) {
+            profitRate = ((double) profit / money.getMoney()) * 100;
+        }
+    }
+
+    private long sumProfit() {
+        long profit = 0;
+        for (PrizeType type : result.keySet()) {
+            profit += type.calculateProfit(result.get(type));
+        }
+        return profit;
     }
 }
