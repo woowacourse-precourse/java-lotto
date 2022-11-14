@@ -42,6 +42,7 @@ public class User {
     private List<Lotto> lottos;
     private int price;
     private float earningRate;
+    private int[] rankingCount=new int[5];
 
 
     public User(int price) {
@@ -88,5 +89,16 @@ public class User {
             }
         }
         return result;
+    }
+    private void calculateEarningRate(List<Integer> winningNumbers, int bonus){
+        int sum=0;
+        for (Lotto lotto:lottos) {
+            WinningRanking ranking = getWinningRanking(lotto, winningNumbers, bonus);
+            if (ranking!=null){
+                sum+=ranking.getPrize();
+            }
+        }
+        float temp = (float)(100.0*((float)sum/(float)lottos.size()));
+        this.earningRate = Math.round(temp*10);
     }
 }
