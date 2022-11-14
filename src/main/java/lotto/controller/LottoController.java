@@ -1,11 +1,12 @@
-package lotto.Controller;
+package lotto.controller;
 
-import lotto.Model.Lotto;
-import lotto.Model.calculateIncome;
-import lotto.Model.lottoResult;
-import lotto.View.input;
-import lotto.View.output;
-import lotto.Model.lottoGenerator;
+import lotto.domain.Lotto;
+import lotto.domain.calculateIncome;
+import lotto.domain.lottoGenerator;
+import lotto.domain.lottoResult;
+import lotto.view.input;
+import lotto.view.output;
+
 import java.util.ArrayList;
 import java.util.List;
 
