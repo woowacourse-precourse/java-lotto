@@ -15,7 +15,7 @@ public class InputView {
     private static final String SPLIT_STANDARD = ",";
 
     public static int inputLottoPurchaseAmount() {
-        System.out.println(ViewMessage.INPUT_PURCHASE);
+        System.out.println(View.INPUT_PURCHASE.message());
         String input = Console.readLine();
         hasDigitsOnly(input);
         return Integer.parseInt(input);
@@ -28,7 +28,7 @@ public class InputView {
     }
 
     public static List<Integer> inputUserWinNumber() {
-        System.out.println(ViewMessage.INPUT_WIN_NUMBER);
+        System.out.println(View.INPUT_WIN_NUMBER.message());
         String input = Console.readLine();
         isDigitAndSplitByStandard(input);
         return mapToList(input);
@@ -47,14 +47,15 @@ public class InputView {
     }
 
     public static int inputUserBonusNumber() {
-        System.out.println(ViewMessage.INPUT_BONUS_NUMBER);
+        System.out.println(View.INPUT_BONUS_NUMBER.message());
         String input = Console.readLine();
         isBonusNumberDigit(input);
         return Integer.parseInt(input);
     }
 
     private static void isBonusNumberDigit(String bonusNumber) {
-        if (bonusNumber.length() != Constant.BONUS_NUMBER_SIZE || !bonusNumber.matches(REG_XP_DIGITS)) {
+        if (bonusNumber.length() != Constant.BONUS_NUMBER_SIZE
+                || !bonusNumber.matches(REG_XP_DIGITS)) {
             throw new IllegalArgumentException(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
     }

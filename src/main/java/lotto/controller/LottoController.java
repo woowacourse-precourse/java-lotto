@@ -39,7 +39,7 @@ public class LottoController {
 
     public Lotties createLottiesByPurchaseAmount(int purchase) {
         Lotties lotties = Lotties.create(purchase);
-        OutputView.printLottoList(lotties);
+        OutputView.printLottoList(lotties.getLotties());
         return lotties;
     }
 

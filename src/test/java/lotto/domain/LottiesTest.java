@@ -32,7 +32,9 @@ public class LottiesTest {
     @DisplayName("로또를 주어진 개수만큼 발행한다.")
     @Test
     void createLotties() {
-        Assertions.assertThat(lotties.getLottiesSize()).isEqualTo(2);
+        int lottoSize = lotties.getLotties().size();
+
+        Assertions.assertThat(lottoSize).isEqualTo(2);
     }
 
     @DisplayName("구입 금액 숫자 예외 처리 테스트")
