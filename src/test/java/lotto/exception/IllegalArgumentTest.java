@@ -18,6 +18,17 @@ public class IllegalArgumentTest {
 
     @Test
     void 쉼표_섞인_숫자_입력값() {
-        assertThat(IllegalArgument.isNumber("13,000")).isTrue();
+        assertThat(IllegalArgument.isNumber("1,343,000")).isTrue();
+    }
+
+    @Test
+    void 천원_단위_숫자_입력() {
+        assertThat(IllegalArgument.isThousandWon("13,000")).isTrue();
+    }
+
+    @Test
+    void 천원_단위_아닌_숫자_입력() {
+        assertThatThrownBy(() ->
+                IllegalArgument.isThousandWon("13,423")).isInstanceOf(IllegalArgumentException.class);
     }
 }

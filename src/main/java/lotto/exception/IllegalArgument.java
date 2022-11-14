@@ -9,4 +9,12 @@ public class IllegalArgument {
         }
         return true;
     }
+
+    public static boolean isThousandWon(String purchaseAmount) throws IllegalArgumentException {
+        purchaseAmount = purchaseAmount.replaceAll(",", "");
+        if (Integer.parseInt(purchaseAmount) % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 1,000원 단위의 숫자만 입력 가능합니다.");
+        }
+        return true;
+    }
 }
