@@ -1,15 +1,27 @@
 package lotto.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoCalculator {
-    private static final int ARRAY_LIST_SIZE = 1024;
+    private static final int MAP_SIZE = 1024;
+
+    private static final int ONE = 1;
     private static final int WIN_FIRST_COUNT = 6;
     private static final int WIN_THIRD_COUNT = 5;
     private static final int WIN_FOURTH_COUNT = 4;
     private static final int WIN_FIFTH_COUNT = 3;
+
+    private static final int BANG_TWO_COUNT = 2;
+
+    private static final int BANG_ONE_COUNT = 1;
+
+    private static final int BANG_ZERO_COUNT = 0;
+
 
     public LottoCalculator() {
 
@@ -18,15 +30,27 @@ public class LottoCalculator {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public List<LottoRankingType> getLottoRanking(List<Integer> winningNumbers, int bonusNumber, List<Lotto> lottos) {
-        List<LottoRankingType> lottoRankingTypes = new ArrayList<>(ARRAY_LIST_SIZE);
+    public Map<LottoRankingType, Integer> getLottoRanking(List<Integer> winningNumbers, int bonusNumber, List<Lotto> lottos) {
+        Map<LottoRankingType, Integer> lottoRankingTypes = new HashMap<>(MAP_SIZE);
+        lottoRankingTypesInitialize(lottoRankingTypes);
+
         for (Lotto lotto : lottos) {
             int winNumber = getWinNumberCount(winningNumbers, lotto);
             boolean winBonus = lotto.getNumbers().contains(bonusNumber);
+            LottoRankingType lottoRankingType = getLottoRanking(winNumber, winBonus);
 
-            lottoRankingTypes.add(getLottoRanking(winNumber, winBonus));
+            lottoRankingTypes.put(lottoRankingType, lottoRankingTypes.get(lottoRankingType).intValue() + ONE);
         }
         return lottoRankingTypes;
+    }
+
+    private void lottoRankingTypesInitialize(Map<LottoRankingType, Integer> lottoRankingTypes) {
+        lottoRankingTypes.put(LottoRankingType.FIRST_PLACE, 0);
+        lottoRankingTypes.put(LottoRankingType.SECOND_PLACE, 0);
+        lottoRankingTypes.put(LottoRankingType.THIRD_PLACE, 0);
+        lottoRankingTypes.put(LottoRankingType.FOURTH_PLACE, 0);
+        lottoRankingTypes.put(LottoRankingType.FIFTH_PLACE, 0);
+        lottoRankingTypes.put(LottoRankingType.BANG, 0);
     }
 
     private int getWinNumberCount(List<Integer> winningNumbers, Lotto lotto) {

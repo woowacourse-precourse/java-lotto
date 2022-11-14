@@ -1,22 +1,23 @@
 package lotto.model;
 
 public enum LottoRankingType {
-    FIRST_PLACE(6, BonusNumberType.IGNORE),
-    SECOND_PLACE(5, BonusNumberType.MATCH),
-    THIRD_PLACE(5, BonusNumberType.NOT_MATCH),
-    FOURTH_PLACE(4, BonusNumberType.IGNORE),
-    FIFTH_PLACE(3, BonusNumberType.IGNORE),
-    BANG_TWO_MATCH(2, BonusNumberType.IGNORE),
-    BANG_ONE_MATCH(1, BonusNumberType.IGNORE),
-    BANG_ZERO_MATCH(0, BonusNumberType.IGNORE);
+    FIRST_PLACE(6, BonusNumberType.IGNORE, 2000000000),
+    SECOND_PLACE(5, BonusNumberType.MATCH, 30000000),
+    THIRD_PLACE(5, BonusNumberType.NOT_MATCH, 1500000),
+    FOURTH_PLACE(4, BonusNumberType.IGNORE, 50000),
+    FIFTH_PLACE(3, BonusNumberType.IGNORE, 5000),
+    BANG(0, BonusNumberType.IGNORE, 0);
 
     private int matchedNumberCount;
 
     private BonusNumberType bonusNumberType;
 
-    LottoRankingType(int matchedNumberCount, BonusNumberType bonusNumberType) {
+    private int winningAmount;
+
+    LottoRankingType(int matchedNumberCount, BonusNumberType bonusNumberType, int winningAmount) {
         this.matchedNumberCount = matchedNumberCount;
         this.bonusNumberType = bonusNumberType;
+        this.winningAmount = winningAmount;
     }
 
     public int getMatchedNumberCount() {
@@ -25,5 +26,9 @@ public enum LottoRankingType {
 
     public BonusNumberType getBonusNumberType() {
         return this.bonusNumberType;
+    }
+
+    public int getWinningAmount() {
+        return this.winningAmount;
     }
 }
