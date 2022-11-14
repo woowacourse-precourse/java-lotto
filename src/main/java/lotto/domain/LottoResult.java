@@ -5,17 +5,20 @@ import static lotto.domain.LottoReference.NOPE;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Compare {
+public class LottoResult {
 
-    private LottoMachine lottoMachine;
-    private LottoWithBonus lottoWithBonus;
+    private Map<LottoReference, Integer> lottoResult;
 
-    public Compare(LottoMachine lottoMachine, LottoWithBonus lottoWithBonus) {
-        this.lottoMachine = lottoMachine;
-        this.lottoWithBonus = lottoWithBonus;
+    public LottoResult(LottoMachine lottoMachine, LottoWithBonus lottoWithBonus) {
+        this.lottoResult = calculateResult(lottoMachine, lottoWithBonus);
     }
 
-    public Map<LottoReference, Integer> getResult() {
+    public Map<LottoReference, Integer> getValue() {
+        return this.lottoResult;
+    }
+
+    private Map<LottoReference, Integer> calculateResult(LottoMachine lottoMachine,
+            LottoWithBonus lottoWithBonus) {
         Map<LottoReference, Integer> result = new HashMap<>();
         Lotto myLotto = lottoWithBonus.getLotto();
 
