@@ -1,8 +1,7 @@
 package lotto;
 
 public class Game {
-    public static final int lottoPrice = 1000;
-
+    public static final int LOTTO_PRICE = 1000;
 
 }
 
