@@ -11,19 +11,23 @@ import lotto.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        Money money = new Money(InputView.inputMoney());
-        LottoCount lottoCount = new LottoCount(money);
-        OutputView.printLottoCount(lottoCount);
+        try {
+            Money money = new Money(InputView.inputMoney());
+            LottoCount lottoCount = new LottoCount(money);
+            OutputView.printLottoCount(lottoCount);
 
-        Lottos lottos = new LottoNumberGenerator().generateLottos(lottoCount);
-        OutputView.printPurchasedLottoNumbers(lottos);
+            Lottos lottos = new LottoNumberGenerator().generateLottos(lottoCount);
+            OutputView.printPurchasedLottoNumbers(lottos);
 
-        String winningLottoNumbers = InputView.inputWinningLottoNumbers();
-        Integer bonusNumber = InputView.inputBonusNumber();
-        WinningLotto winningLotto = new WinningLotto(winningLottoNumbers, bonusNumber);
+            String winningLottoNumbers = InputView.inputWinningLottoNumbers();
+            Integer bonusNumber = InputView.inputBonusNumber();
+            WinningLotto winningLotto = new WinningLotto(winningLottoNumbers, bonusNumber);
 
-        Result result = new Result(lottos, winningLotto);
-        OutputView.printResult(result);
-        OutputView.printYield(result, money);
+            Result result = new Result(lottos, winningLotto);
+            OutputView.printResult(result);
+            OutputView.printYield(result, money);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
