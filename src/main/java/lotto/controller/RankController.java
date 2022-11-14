@@ -19,6 +19,7 @@ public class RankController {
     public String statistics(User user, String winningNumbers, String bonus){
         WinLotto winLotto = rankService.generateWinningLotto(winningNumbers, bonus);
         Rank ranking = rankService.calculateRanking(user, winLotto);
-        return rankingView.statistics(ranking);
+        double profit = rankService.calculateProfit(user, ranking);
+        return rankingView.statistics(ranking, profit);
     }
 }

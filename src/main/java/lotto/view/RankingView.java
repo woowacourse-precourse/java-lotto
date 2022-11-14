@@ -11,18 +11,19 @@ public class RankingView {
         return Message.CHOOSE_BONUS_NUMBER.toString();
     }
 
-    public String statistics(Rank rank) {
-        StringBuilder msg = new StringBuilder();
+    public String statistics(Rank rank, double profit) {
+        StringBuilder msg = new StringBuilder("당첨 통계\n---\n");
 
         for(RankInfo rankInfo : rank.getRank().keySet()){
             if (rankInfo == RankInfo.OTHERS) continue;
 
             msg.append(rankInfo.getMsg());
             msg.append(rankInfo.getPriceMsg());
-            msg.append(" - ");
-            msg.append(rank.getRank().get(rankInfo));
-            msg.append("개\n");
+            msg.append(" - "+rank.getRank().get(rankInfo)+"개\n");
         }
+        msg.append("총 수익률은");
+        msg.append(String.format("%.1f", profit));
+        msg.append("입니다.");
 
         return msg.toString();
     }

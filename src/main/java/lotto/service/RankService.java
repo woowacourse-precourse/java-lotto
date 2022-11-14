@@ -66,4 +66,13 @@ public class RankService {
         }
         return false;
     }
+
+    public Double calculateProfit(User user, Rank ranking){
+        double totalProfit = 0.0;
+        for (RankInfo rankInfo: ranking.getRank().keySet()){
+            totalProfit += ranking.getRank().get(rankInfo) * rankInfo.getMoney();
+        }
+        totalProfit /= user.getMoney();
+        return totalProfit;
+    }
 }

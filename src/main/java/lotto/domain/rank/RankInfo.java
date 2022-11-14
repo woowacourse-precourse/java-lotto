@@ -27,4 +27,8 @@ public enum RankInfo {
     public String getMsg() {
         return msg;
     }
+
+    public int getMoney() {
+        return money;
+    }
 }
