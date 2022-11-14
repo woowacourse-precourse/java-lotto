@@ -11,7 +11,7 @@ public class Input extends Valid {
 
 
     protected static List<Integer> returnList(){ //Lotto 당첨 번호 입력받기 List<Integer>로 반환
-        String input  = input()
+        String input  = input();
         checkLottonums(input);
         return ChangeType.string_to_listinteger(input);
     }
