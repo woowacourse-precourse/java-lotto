@@ -13,7 +13,15 @@ public enum Message {
 	FIVE_MATCHES("5개 일치 (1,500,000원) - "),
 	FIVE_BONUS_MATCHES("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
 	SIX_MATCHES("6개 일치 (2,000,000,000원) - "),
-	TOTAL_RETURN("총 수익률은 ");
+	TOTAL_RETURN("총 수익률은 "),
+	// Error 메시지 관련 문구들
+	ERROR("[ERROR] "),
+	INVALID_AMOUNT_NUMBER("숫자는 6개를 입력해야 합니다."),
+	DUPLICATED_NUMBER("중복된 숫자가 있습니다."),
+	OUT_OF_RANGE("로또 번호는 1부터 45 사이의 숫자여야 합니다."),
+	NOT_NUMERIC("숫자만 입력 가능합니다."),
+	INVALID_BONUS_AMOUNT("보너스 숫자는 1개만 입력 가능합니다.");
+
 	private final String message;
 
 	Message(String message){
