@@ -40,4 +40,10 @@ public class LottoGame {
         int[] rankingCount = WinningService.compareAllLottoWithWinningNumbers(lottos, winningNumber);
         printWinningStatistics(rankingCount);
     }
+
+    public void getRateOfReturn() {
+        long reward = RewardService.calcuateReward(rankingCount);
+        double rateOfReturn = RewardService.calculateRateOfReturn(purchaseAmount, reward);
+        printRateOfReturn(rateOfReturn);
+    }
 }
