@@ -35,6 +35,8 @@ public class Application {
         final int MONEY = validateMoneyInput(input);
         List<Lotto> boughtLottos = new ArrayList<Lotto>();
 
+        System.out.println(MONEY/1000+"개를 구매했습니다.");
+
         boughtLottos = buyLotto(boughtLottos, MONEY);
         printLottos(boughtLottos);
 
@@ -51,7 +53,7 @@ public class Application {
 
         int totalIncome = calculateTotalGain(boughtLottos, pickedNumbers, bonusNum);
         float rateOfReturn = getRateOfReturn(totalIncome, MONEY);
-        System.out.println("총 수익률은 "+rateOfReturn+"입니다.");
+        System.out.println("총 수익률은 "+rateOfReturn+"%입니다.");
     }
 
     public static float getRateOfReturn(int totalIncome, final int MONEY) {
@@ -61,7 +63,7 @@ public class Application {
 
     public static int calculateTotalGain(List<Lotto> boughtLottos, List<Integer> pickedNumbers, int bonusNum) {
         LotteryWon income;
-        HashMap<LotteryWon, Integer> history = new HashMap<LotteryWon, Integer>();
+        HashMap<LotteryWon, Integer> history = initializeHistory();
         int totalIncome = 0;
 
         for (int i = 0; i < boughtLottos.size(); i++) {
@@ -78,11 +80,11 @@ public class Application {
     public static void printHistory(HashMap<LotteryWon, Integer> history) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - "+history.get(LotteryWon.FifthPlace));
-        System.out.println("4개 일치 (50,000원) - "+history.get(LotteryWon.FourthPlace));
-        System.out.println("5개 일치 (1,500,000원) - "+history.get(LotteryWon.ThirdPlace));
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+history.get(LotteryWon.SecondPlace));
-        System.out.println("6개 일치 (2,000,000,000원) - "+history.get(LotteryWon.FifthPlace));
+        System.out.println("3개 일치 (5,000원) - "+history.get(LotteryWon.FifthPlace)+"개");
+        System.out.println("4개 일치 (50,000원) - "+history.get(LotteryWon.FourthPlace)+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+history.get(LotteryWon.ThirdPlace)+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+history.get(LotteryWon.SecondPlace)+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+history.get(LotteryWon.FifthPlace)+"개");
     }
 
     public static HashMap<LotteryWon, Integer> updateHistory(HashMap<LotteryWon, Integer> history, LotteryWon income) {
@@ -90,7 +92,17 @@ public class Application {
             history.replace(income, history.get(income) + 1);
             return history;
         }
-        history.put(income, 1);
+        return history;
+    }
+
+    public static HashMap<LotteryWon, Integer> initializeHistory() {
+        HashMap<LotteryWon, Integer> history = new HashMap<LotteryWon, Integer>();
+        history.put(LotteryWon.FirstPlace,0);
+        history.put(LotteryWon.SecondPlace,0);
+        history.put(LotteryWon.ThirdPlace,0);
+        history.put(LotteryWon.FourthPlace,0);
+        history.put(LotteryWon.FifthPlace,0);
+
         return history;
     }
 
@@ -158,7 +170,10 @@ public class Application {
 
             for (int j = 0; j < lottoItem.getNumbers().size(); j++) {
                 int number = lottoItem.getNumbers().get(j);
-                lottoNumbers.append(String.valueOf(number) + ", ");
+                lottoNumbers.append(String.valueOf(number));
+                if (j!=lottoItem.getNumbers().size()-1) {
+                    lottoNumbers.append(", ");
+                }
             }
 
             lottoNumbers.append("]\n");
