@@ -1,7 +1,8 @@
 package model;
 
-import java.util.Collections;
 import java.util.Map;
+
+import static constant.Config.INIT_COUNT;
 
 public class WinningResult {
     private final static int RATIO = 100;
@@ -14,6 +15,10 @@ public class WinningResult {
 
     public Map<Win, Integer> getWinningResult() {
         return winningResult;
+    }
+
+    public int getCount(Win win) {
+        return winningResult.getOrDefault(win, INIT_COUNT);
     }
 
     public EarningsRate getEarningsRate(Money money) {

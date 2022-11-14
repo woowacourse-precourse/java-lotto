@@ -30,13 +30,11 @@ public class OutputView {
         }
     }
 
-    public static void printWinningResult(WinningResult inputWinningResult) {
-        Map<Win, Integer> winningResult = inputWinningResult.getWinningResult();
-
+    public static void printWinningResult(WinningResult winningResult) {
         System.out.println(getResultMessage(winningResult));
     }
 
-    private static String getResultMessage(Map<Win, Integer> winningResult) {
+    private static String getResultMessage(WinningResult winningResult) {
         StringBuilder result = new StringBuilder();
         result.append(WINNING_STATISTICS);
 
@@ -48,7 +46,8 @@ public class OutputView {
             if (win.isBonusBall()) {
                 result.append(BONUS_BALL);
             }
-            result.append(String.format(WINNING_AMOUNT_AND_COUNT, win.getWinningAmount(), winningResult.getOrDefault(win, 0)));
+            result.append(String.format(WINNING_AMOUNT_AND_COUNT,
+                    win.getWinningAmount(), winningResult.getCount(win)));
         }
 
         return result.toString();

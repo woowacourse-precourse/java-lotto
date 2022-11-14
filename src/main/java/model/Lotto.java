@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
+import static constant.Config.INIT_COUNT;
 import static constant.Config.MAX_NUMBER;
 import static constant.Config.MIN_NUMBER;
 import static constant.Config.NUMBER_COUNT;
 import static constant.Config.RANGE_ERROR;
 
 public class Lotto {
-    private static final int INIT_COUNT = 0;
     private static final String SIZE_ERROR = String.format("로또 번호는 %d개의 숫자여야 합니다.", NUMBER_COUNT);
     private static final String DUPLICATE_ERROR = "로또 번호는 중복되지 않아야 합니다.";
     private final List<Integer> numbers;
@@ -85,14 +85,18 @@ public class Lotto {
                 .count();
     }
 
-    private void setWinningResult(Map<Win, Integer> wins, int matchCount, int bonusNumber) {
+    private void setWinningResult(Map<Win, Integer> winningResult, int matchCount, int bonusNumber) {
         for (Win win : Win.values()) {
             if (isMatch(win, matchCount, bonusNumber)) {
-                int count = wins.getOrDefault(win, INIT_COUNT);
-                wins.put(win, ++count);
+                putWinningResult(winningResult, win);
                 break;
             }
         }
+    }
+
+    private void putWinningResult(Map<Win, Integer> winningResult, Win win) {
+        int count = winningResult.getOrDefault(win, INIT_COUNT);
+        winningResult.put(win, ++count);
     }
 
     private boolean isMatch(Win win, int matchCount, int bonusNumber) {
