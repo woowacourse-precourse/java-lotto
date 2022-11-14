@@ -8,7 +8,7 @@ public class Input {
     private Pattern pattern;
     private Matcher matcher;
     //구입 금액 입력
-    public int enterCash(){
+    public int getCash(){
         String cash=Console.readLine();
         cashRegex(cash);
         return cashUnit(cash);

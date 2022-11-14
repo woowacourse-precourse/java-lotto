@@ -28,7 +28,7 @@ public class InputTest extends NsTest {
     protected void runMain() {
         try {
             Application.main(new String[]{
-                    String.valueOf(new Input().enterCash())
+                    String.valueOf(new Input().getCash())
             });
         }
         catch (IllegalArgumentException e){
