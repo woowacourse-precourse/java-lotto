@@ -51,7 +51,12 @@ public class LottoServiceImpl implements LottoService {
     }
 
     @Override
-    public double calculateRate(Map<Rank, Integer> results) {
-        return 0;
+    public double calculateRate(Map<Rank, Integer> results, int amount) {
+        double totalPrize = 0;
+        for (Rank rank : results.keySet()) {
+            int count = results.get(rank);
+            totalPrize += rank.getPrize() * count;
+        }
+        return totalPrize / amount;
     }
 }

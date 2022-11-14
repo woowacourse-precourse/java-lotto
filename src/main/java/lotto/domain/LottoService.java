@@ -10,5 +10,5 @@ public interface LottoService {
 
     Map<Rank, Integer> compare(List<Lotto> userLottos, Lotto prizeLotto, int bonusNumber);
 
-    double calculateRate(Map<Rank, Integer> results);
+    double calculateRate(Map<Rank, Integer> results, int amount);
 }
