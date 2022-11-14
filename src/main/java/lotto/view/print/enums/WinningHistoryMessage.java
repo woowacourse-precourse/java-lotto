@@ -1,4 +1,4 @@
-package lotto.view.print;
+package lotto.view.print.enums;
 
 public enum WinningHistoryMessage {
     PRINT_FIFTH("3개 일치 (5,000원) - ", "FIFTH"),

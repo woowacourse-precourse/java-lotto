@@ -1,5 +1,7 @@
 package lotto.view.print;
 
+import lotto.view.print.enums.GuideMessage;
+
 public class PrintGuideMessage {
     public static void printStartGuide() {
         System.out.println(GuideMessage.AMOUNT_INPUT_MESSAGE.getMessage());

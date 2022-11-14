@@ -1,4 +1,4 @@
-package lotto.view.print;
+package lotto.view.print.enums;
 
 public enum GuideMessage {
     AMOUNT_INPUT_MESSAGE("구입금액을 입력해 주세요. (1,000원 단위)"),
