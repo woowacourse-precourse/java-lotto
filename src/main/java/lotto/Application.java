@@ -52,5 +52,18 @@ public class Application {
 
         // 당첨번호를 Lotto 클래스에 입력 + 검증
         new Lotto(winningLotto);
+
+        // 보너스 번호 입력
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonus = Integer.parseInt(Console.readLine());
+
+        // 보너스 번호가 중복된 번호가 아닌지 검증
+        if (winningLotto.contains(bonus)) {
+            System.out.println("[Error] 로또 번호는 중복될 수 없습니다.");
+            throw new IllegalArgumentException();
+        }
+
+        // 보너스 번호를 추가
+        winningLotto.add(bonus);
     }
 }
