@@ -1,19 +1,15 @@
 package yieldMachine;
 
-import User.User;
 import YieldMachine.YieldMachine;
-import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.BoughtLotto;
-import lotto.WinningNumberLotto;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class YieldMachineTest {
@@ -67,7 +63,7 @@ public class YieldMachineTest {
                 = YieldMachine.class.getDeclaredMethod("calculateOneLottoReward", BoughtLotto.class);
         calculateOneLottoRewardMethod.setAccessible(true);
         calculateOneLottoRewardMethod.invoke(yieldMachine, lotto);
-        List<Integer> countOfReward = yieldMachine.getCountOfReward();
+        List<Integer> countOfReward = yieldMachine.getCountOfRewards();
         assertThat(countOfReward).isEqualTo(List.of(0, 1, 0, 0, 0));
     }
 
@@ -81,7 +77,7 @@ public class YieldMachineTest {
                 = YieldMachine.class.getDeclaredMethod("calculateOneLottoReward", BoughtLotto.class);
         calculateOneLottoRewardMethod.setAccessible(true);
         calculateOneLottoRewardMethod.invoke(yieldMachine, lotto);
-        List<Integer> countOfReward = yieldMachine.getCountOfReward();
+        List<Integer> countOfReward = yieldMachine.getCountOfRewards();
         assertThat(countOfReward).isEqualTo(List.of(0, 0, 0, 0, 0));
     }
 
@@ -95,7 +91,7 @@ public class YieldMachineTest {
                 = YieldMachine.class.getDeclaredMethod("calculateOneLottoReward", BoughtLotto.class);
         calculateOneLottoRewardMethod.setAccessible(true);
         calculateOneLottoRewardMethod.invoke(yieldMachine, lotto);
-        List<Integer> countOfReward = yieldMachine.getCountOfReward();
+        List<Integer> countOfReward = yieldMachine.getCountOfRewards();
         assertThat(countOfReward).isEqualTo(List.of(0, 0, 0, 1, 0));
     }
 
@@ -113,7 +109,7 @@ public class YieldMachineTest {
         calculateOneLottoRewardMethod.invoke(yieldMachine, new BoughtLotto(List.of(7, 8, 9, 10, 11, 12)));
         calculateOneLottoRewardMethod.invoke(yieldMachine, new BoughtLotto(List.of(1, 3, 7, 11, 20, 34)));
 
-        List<Integer> countOfReward = yieldMachine.getCountOfReward();
+        List<Integer> countOfReward = yieldMachine.getCountOfRewards();
         assertThat(countOfReward).isEqualTo(List.of(1, 1, 0, 1, 0));
     }
 }
