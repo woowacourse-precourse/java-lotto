@@ -55,4 +55,7 @@ public enum Rank {
     public int getRankNumber(){
         return rank;
     }
+    public int getReward() {
+        return reward;
+    }
 }

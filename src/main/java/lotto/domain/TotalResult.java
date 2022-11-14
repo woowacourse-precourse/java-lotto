@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -7,6 +8,7 @@ public class TotalResult {
 
     private static final int RANK_COUNT_DEFAULT_VALUE = 0;
     private static final String RANK_COUNT_MESSAGE_FORMAT = " - %d개";
+    private static final DecimalFormat yieldFormat = new DecimalFormat("###,###.##");
     private final JackpotBonus jackpotBonus;
     private final List<Lotto> lotteries;
 
@@ -24,6 +26,15 @@ public class TotalResult {
             rankCounts.put(rankOfLotto, currentCnt + 1);
         }
         return rankCounts;
+    }
+
+    public String getYield(Map<Rank, Integer> rankCounts) {
+        double sumOfRewards = Arrays.stream(Rank.values())
+                .mapToInt(rank -> rank.getReward() * rankCounts.getOrDefault(rank, RANK_COUNT_DEFAULT_VALUE))
+                .sum();
+
+
+        return yieldFormat.format(sumOfRewards / lotteries.size());
     }
 
     public List<String> getRankInfoWithCounts(Map<Rank, Integer> rankCounts) {
