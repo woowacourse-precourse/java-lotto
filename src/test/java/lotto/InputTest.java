@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InputTest {
-    @DisplayName("정상적인 구입 금액을 입력받는지 확인한다.")
+    @DisplayName("구입 금액이 숫자가 아닐 경우 예외가 발생한다.")
     @Test
     void checkPurchaseMoney() {
         final String ERROR_MESSAGE = "[ERROR]";
@@ -25,7 +25,7 @@ class InputTest {
         }
     }
 
-    @DisplayName("구입 금액이 1000단위인지 확인한다.")
+    @DisplayName("구입 금액이 1000단위가 아닐 경우 예외가 발생한다.")
     @Test
     void checkMoneyDivide() {
         final String ERROR_MESSAGE = "[ERROR]";
