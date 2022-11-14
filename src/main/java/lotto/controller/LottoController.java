@@ -2,10 +2,10 @@ package lotto.controller;
 
 import lotto.domain.Customer;
 import lotto.domain.LottoMachine;
+import lotto.dto.BuyAmountDto;
 import lotto.dto.LottoDto;
 import lotto.dto.LottoInformationDto;
 import lotto.dto.LottoResultDto;
-import lotto.dto.PurchaseAmountDto;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -35,8 +35,8 @@ public class LottoController {
     }
 
     private Customer buyLotto() {
-        PurchaseAmountDto purchaseAmountDto = inputView.inputPurchaseAmount();
-        Customer customer = new Customer(purchaseAmountDto.getPurchaseAmount());
+        BuyAmountDto BuyAmountDto = inputView.inputBuyAmount();
+        Customer customer = new Customer(BuyAmountDto.getAmount());
         LottoInformationDto lottoInformationDto = lottoService.buy(customer);
         outputView.printLottoInformation(lottoInformationDto);
         return customer;

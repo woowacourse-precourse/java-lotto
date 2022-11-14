@@ -106,5 +106,5 @@
 ### 추가 수정사항
 
 - [x]  LottoPrize의 당첨금액 Long으로 변경
-- [ ]  purchaseAmount -> buyAmount로 전체적인 메서드명, 변수명 변경
+- [x]  purchaseAmount -> buyAmount로 전체적인 메서드명, 변수명 변경
 - [x]  코드 전체적으로 메서드 순서, 빈칸, 형식 맞추기

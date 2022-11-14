@@ -20,7 +20,7 @@ class InputValidator {
     private InputValidator() {
     }
 
-    public static Integer validatePurchaseAmount(String inputAmount) {
+    public static Integer validateBuyAmount(String inputAmount) {
         Integer amount = toInteger(inputAmount);
         validateAmountRange(amount);
         return amount;
