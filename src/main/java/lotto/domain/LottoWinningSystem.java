@@ -65,7 +65,7 @@ public final class LottoWinningSystem {
 
     private Money getPlayerMoney() {
         outputView.printInputAmount();
-        final Money money = new Money(inputView.inputAmount());
+        final Money money = new Money(inputView.inputLong());
         outputView.printLottoAmountMessage(money);
         return money;
     }
@@ -78,10 +78,10 @@ public final class LottoWinningSystem {
 
     private WinningLotto createWinningLottery() {
         outputView.printInputLotteryMessage();
-        final Lotto winLotto = new Lotto(inputView.inputLotteryNumber());
+        final Lotto winLotto = new Lotto(inputView.inputListIntegers());
 
         outputView.printInputBonusMessage();
-        final BonusNumber bonusNumber = new BonusNumber(inputView.inputBonusNumber());
+        final BonusNumber bonusNumber = new BonusNumber(inputView.inputInt());
 
         return new WinningLotto(winLotto, bonusNumber);
     }

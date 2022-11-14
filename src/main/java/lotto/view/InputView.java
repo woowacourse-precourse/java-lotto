@@ -29,31 +29,31 @@ public final class InputView {
     }
 
     /**
-     * 사용자로부터 돈을 받아온다
+     * 사용자로부터 Long 타입의 숫자를 받아온다
      *
-     * @return 돈이 될 수 있는 정수값
+     * @return Long 타입의 숫자
      */
-    public long inputAmount() {
+    public long inputLong() {
         final String input = inputHandler.readLine();
         return InputValidator.toLong(input);
     }
 
     /**
-     * 사용자로부터 로또 번호들을 받아온다
+     * 사용자로부터 List<Integer>에 해당하는 숫자들을 받아온다
      *
-     * @return 숫자들을
+     * @return List<Integer>에 해당하는 객체
      */
-    public List<Integer> inputLotteryNumber() {
+    public List<Integer> inputListIntegers() {
         final String input = inputHandler.readLine();
         return InputValidator.splitToIntegers(input);
     }
 
     /**
-     * 사용자로부터 보너스 넘버를 받아온다
+     * 사용자로부터 int 타입의 정수를 받아온다
      *
-     * @return 보너스 넘버가 될 수 있는 숫자
+     * @return 사용자에게 받은 int 타입의 정수
      */
-    public int inputBonusNumber() {
+    public int inputInt() {
         final String input = inputHandler.readLine();
         return InputValidator.toInt(input);
     }
