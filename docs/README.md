@@ -2,10 +2,10 @@
 
 ### 기능 목록
 
-- [ ] 로또를 구입 금액에 따라 발행한다. - LottoGenerator#createLottos()
-  - [ ] 로또 발행 개수를 구한다. - LottoGenerator#getAmountOfLottos()
-  - [ ] 1부터 45까지의 서로 다른 임의의 숫자 6개를 생성한다. - LottoGenerator#createRandomNumbers()
-  - [ ] 오름차순으로 정렬한다
+- [x] 로또를 구입 금액에 따라 발행한다. - LottoGenerator#createLottos()
+  - [x] 로또 발행 개수를 구한다. - LottoGenerator#getAmountOfLottos()
+  - [x] 1부터 45까지의 서로 다른 임의의 숫자 6개를 생성한다. - LottoGenerator#createRandomNumbers()
+  - [x] 오름차순으로 정렬한다
 - [ ] 당첨 번호와 모든 발행 번호를 비교한다. - Collector#collectReults()
   - [ ] 결과 값들을 다 출력한다. - Collector#printReults()
 - [ ] 당첨 번호와 자신과 비교한다. - Lotto#compare()
