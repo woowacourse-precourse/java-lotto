@@ -59,9 +59,9 @@ public enum Rank {
                 .collect(Collectors.toList());
     }
 
-    public static int calculateEarning(List<Rank> results) {
+    public static long calculateEarning(List<Rank> results) {
         return results.stream()
-                .mapToInt(rank -> rank.getPrize())
+                .mapToLong(rank -> rank.getPrize())
                 .sum();
     }
 

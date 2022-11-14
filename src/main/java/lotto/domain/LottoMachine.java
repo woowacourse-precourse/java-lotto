@@ -10,7 +10,7 @@ import static lotto.util.Const.*;
 
 public class LottoMachine {
 
-    public static List<Lotto> order(int quantity) {
+    public static List<Lotto> order(long quantity) {
         List<Lotto> lottos = new ArrayList<>();
 
         while (lottos.size() != quantity) {

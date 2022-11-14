@@ -8,16 +8,16 @@ import static lotto.util.Const.*;
 
 public class User {
 
-    private final int inputMoney;
+    private final long inputMoney;
     private List<Lotto> lottos;
 
-    public User(int inputMoney, List<Lotto> lottos) {
+    public User(long inputMoney, List<Lotto> lottos) {
         validateMoney(inputMoney);
         this.inputMoney = inputMoney;
         this.lottos = lottos;
     }
 
-    public int getInputMoney() {
+    public long getInputMoney() {
         return inputMoney;
     }
 
@@ -25,11 +25,11 @@ public class User {
         return lottos;
     }
 
-    public void validateMoney(int inputMoney) {
+    public void validateMoney(long inputMoney) {
         MoneyValidator.check(inputMoney);
     }
 
-    public int getQuantity() {
+    public long getQuantity() {
         return inputMoney / LOTTO_PRICE_UNIT;
     }
 }

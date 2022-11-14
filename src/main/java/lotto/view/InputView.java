@@ -12,12 +12,12 @@ public class InputView {
     public static final String WINNING_NUMBER_INPUT_MESSAGE = "당첨 번호를 입력하세요: ";
     public static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력하세요: ";
 
-    public static int getUserMoney() {
+    public static long getUserMoney() {
         System.out.print(USER_MONEY_INPUT_MESSAGE);
 
         String money = Console.readLine();
         InputValidator.checkDigit(money);
-        return Integer.valueOf(money);
+        return Long.valueOf(money);
     }
 
     public static List<Integer> getWinningNumber() {

@@ -13,7 +13,7 @@ import static lotto.util.Const.*;
 public class GameController {
 
     public void run() {
-        int inputMoney = InputView.getUserMoney();
+        long inputMoney = InputView.getUserMoney();
         User user = new User(inputMoney, buyLotto(inputMoney));
         OutputView.showPurchasedLotto(user);
 
@@ -23,9 +23,9 @@ public class GameController {
         OutputView.showGameResult(ranks, inputMoney);
     }
 
-    public List<Lotto> buyLotto(int money) {
+    public List<Lotto> buyLotto(long money) {
         MoneyValidator.check(money);
-        int quantity = money / LOTTO_PRICE_UNIT;
+        long quantity = money / LOTTO_PRICE_UNIT;
 
         return LottoMachine.order(quantity);
     }

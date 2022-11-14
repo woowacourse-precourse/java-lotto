@@ -17,7 +17,7 @@ public class OutputView {
                 .forEach(lotto -> System.out.println(lotto));
     }
 
-    public static void showGameResult(List<Rank> results, int inputMoney) {
+    public static void showGameResult(List<Rank> results, long inputMoney) {
         System.out.println(STATISTIC_RESULT_MESSAGE);
         System.out.println(LINE_CHANGE_MESSAGE);
 
@@ -28,7 +28,7 @@ public class OutputView {
         System.out.println("총 수익률은 " + String.format("%.1f", getEarningRate(Rank.calculateEarning(results), inputMoney)) + "%입니다.");
     }
 
-    private static double getEarningRate(int profit, int inputMoney) {
+    private static double getEarningRate(long profit, long inputMoney) {
         return (double) (profit * 100) / inputMoney;
     }
 }
