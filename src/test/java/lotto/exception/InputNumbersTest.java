@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class InputNumbersTest {
@@ -43,5 +44,15 @@ public class InputNumbersTest {
 
         // when, then
         assertThrows(IllegalArgumentException.class, () -> InputNumbers.checkException(numbers));
+    }
+
+    @Test
+    @DisplayName("쉼표로 구분되어 있고, 모든 값이 숫자이면 에러가 발생하지 않는다.")
+    void checkException() {
+        // given
+        String numbers = "1,2,3,4,5,6";
+
+        // when, then
+        assertDoesNotThrow(() -> InputNumbers.checkException(numbers));
     }
 }
