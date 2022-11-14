@@ -34,7 +34,7 @@ public class Validator {
 		}
 	}
 
-	private static void isOnlyNumber(String[] tests) {
+	public static void isOnlyNumber(String[] tests) {
 		for (String test : tests) {
 			if (Integer.parseInt(test) > 9 || Integer.parseInt(test) < 1) {
 				throw new IllegalArgumentException(INVALID_INPUT);

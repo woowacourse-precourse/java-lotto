@@ -5,6 +5,7 @@ import static lotto.constant.Constants.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -53,10 +54,15 @@ public class NewInputView {
 	public void getMoney() {
 		System.out.println(MONEY_INPUT_MESSAGE);
 		String inputNumber = Console.readLine();
+		String[] test = inputNumber.split("");
 		try {
 			money = Integer.parseInt(inputNumber);
+			Validator.isMoneyValidate(money);
+			Validator.isOnlyNumber(test);
 		} catch (Exception exception) {
-			throw new IllegalArgumentException(INVALID_INPUT);
+			System.out.println(INVALID_INPUT);
+			throw new NoSuchElementException();
+			// throw new IllegalArgumentException(INVALID_INPUT);
 		}
 	}
 
