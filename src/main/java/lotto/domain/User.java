@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import lotto.util.PickUniqueNumbersInRange;
 
@@ -13,6 +15,7 @@ public class User {
 
         while (lottos.size()<lottoAmount){
             List<Integer> numbers = PickUniqueNumbersInRange.getNumbers();
+            Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
