@@ -31,19 +31,7 @@ public class Controller {
         }
     }
 
-    public void Solution(String inputLottoAmount) {
-        View.Output("당첨 번호를 입력해 주세요.");
-        String inputRealLottoNumber = View.Input();
-
-        String[] splittedRealLottoNumbers = Model.SplitInput(inputRealLottoNumber);
-        List<Integer> realLottoNumbers = Model.MakeStringToListInteger(splittedRealLottoNumbers);
-
-        View.Output("보너스 번호를 입력해 주세요.");
-        String inputRealLottoBonusNumber = View.Input();
-        Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
-
-        new Lotto(realLottoNumbers);
-
+    public static void Solution(String inputLottoAmount) {
         View.Output("구입금액을 입력해 주세요.");
         String inputLottoAmount = View.Input();
         Integer lottoAmount = Model.MakeStringToInteger(inputLottoAmount);
@@ -58,6 +46,16 @@ public class Controller {
         for (List<Integer> list : publishedLottoArray) {
             View.Output(Model.ListToString(list));
         }
+
+        View.Output("당첨 번호를 입력해 주세요.");
+        String inputRealLottoNumber = View.Input();
+
+        String[] splittedRealLottoNumbers = Model.SplitInput(inputRealLottoNumber);
+        List<Integer> realLottoNumbers = Model.MakeStringToListInteger(splittedRealLottoNumbers);
+
+        View.Output("보너스 번호를 입력해 주세요.");
+        String inputRealLottoBonusNumber = View.Input();
+        Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
 
         new Lotto(realLottoNumbers);
     }
