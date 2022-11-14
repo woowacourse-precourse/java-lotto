@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -59,7 +60,7 @@ public class Computer {
 
     private void notValidBonusNumberException(){
         System.out.println(BONUS_NUMBER_EXCEPTION);
-        throw new IllegalArgumentException(BONUS_NUMBER_EXCEPTION);
+        throw new NoSuchElementException(BONUS_NUMBER_EXCEPTION);
     }
 
     private void addBonusNumber(int bonusNumber){
