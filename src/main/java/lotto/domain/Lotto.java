@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.validator.LottoNumbersValidator;
+import lotto.domain.validator.NumbersValidator;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        LottoNumbersValidator.validate(numbers);
+        NumbersValidator.validate(numbers);
     }
 
     public List<Integer> getNumbers() {

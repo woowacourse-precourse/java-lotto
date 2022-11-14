@@ -6,7 +6,6 @@ import lotto.domain.generator.LottoGenerator;
 import lotto.domain.generator.WinningNumbersGenerator;
 import lotto.domain.validator.BonusNumberValidator;
 import lotto.domain.validator.MoneyValidator;
-import lotto.domain.validator.WinningNumbersValidator;
 import lotto.io.Inputter;
 import lotto.io.MessagePrinter;
 
@@ -62,7 +61,6 @@ public class LottoGameSimulator {
 
     public void selectWinningNumbers() {
         String winningNumbersInput = getInputOfWinningNumbers();
-        validateWinningNumbers(winningNumbersInput);
         generateWinningNumbers(winningNumbersInput);
     }
 
@@ -70,10 +68,6 @@ public class LottoGameSimulator {
         MessagePrinter.printWinningNumbersInputRequest();
         String winningNumbersInput = Inputter.readLine();
         return winningNumbersInput;
-    }
-
-    public void validateWinningNumbers(String winningNumbersInput) {
-        WinningNumbersValidator.validate(winningNumbersInput);
     }
 
     public void generateWinningNumbers(String winningNumbersInput) {
