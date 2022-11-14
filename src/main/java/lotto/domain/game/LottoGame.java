@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoMachine;
-import lotto.domain.lotto.LottoView;
 import lotto.domain.winning.WinningDetail;
 import lotto.domain.winning.WinningNumber;
 import lotto.domain.winning.WinningNumberComparator;
@@ -18,7 +17,8 @@ public class LottoGame {
     public void start() {
         Integer purchaseAmount = getPurchaseAmount();
         List<Lotto> boughtLottos = lottoMachine.buy(purchaseAmount);
-        printBoughtLottoList(boughtLottos);
+        LottoGameView.printBoughtCount(boughtLottos);
+        LottoGameView.printNumbersByList(boughtLottos);
         
         WinningNumber winningNumber = new WinningNumber(getWinningNormalNumbers(), getWinningBonusNumbers());
         
@@ -42,26 +42,18 @@ public class LottoGame {
     }
     
     private Integer getPurchaseAmount() {
-        System.out.println("구입금액을 입력해 주세요.");
+        LottoGameView.printPurchaseAmountInputMessage();
         return LottoInput.getPurchaseAmount();
     }
     
     private List<Integer> getWinningNormalNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        LottoGameView.printNormalNumberInputMessage();
         return LottoInput.getNormalNumbers();
     }
     
     private List<Integer> getWinningBonusNumbers() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        LottoGameView.printBonusNumberInputMessage();
         return List.of(LottoInput.getBonusNumber());
-    }
-    
-    private void printBoughtLottoList(List<Lotto> lottos) {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
-        
-        for (Lotto lotto : lottos) {
-            LottoView.printNumbersByArrayFormat(lotto);
-        }
     }
     
     private void printWinningStatistic(List<WinningDetail> winningDetails, Integer purchaseAmount) {
