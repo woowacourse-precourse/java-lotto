@@ -15,8 +15,8 @@ public class GameController {
     public void run() {
         int inputMoney = InputView.getUserMoney();
 
-        LottoMachine lottos = buyLotto(inputMoney);
-        User user = new User(inputMoney, lottos.getLottos());
+        LottoMachine purchasedLotto = buyLotto(inputMoney);
+        User user = new User(inputMoney, purchasedLotto.getLottos());
         WinningNumber winnerNumber = getWinningNumber();
 
         List<Rank> ranks = getRanks(user.getLottos(), winnerNumber);
@@ -24,11 +24,11 @@ public class GameController {
 
     public LottoMachine buyLotto(int money) {
         MoneyValidator.check(money);
-        int count = money / LOTTO_PRICE_UNIT;
+        int quantity = money / LOTTO_PRICE_UNIT;
 
-        LottoMachine lottos = new LottoMachine(count);
-        OutputView.showLottos(lottos);
-        return lottos;
+        LottoMachine purchasedLotto = new LottoMachine(quantity);
+        OutputView.showLottos(purchasedLotto);
+        return purchasedLotto;
     }
 
     public WinningNumber getWinningNumber() {
