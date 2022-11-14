@@ -28,13 +28,13 @@ public class InputChecker {
             return false;
         }
     }
-    public boolean isNotDuplication(Integer bonus, List<Integer> winningLotto){
+    public boolean isNotDuplication(Integer bonus, List<Integer> winningLotto) throws IllegalArgumentException{
         if(winningLotto.contains(bonus)){
             throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_DUPLICATION_ERROR.print());
         }
         return true;
     }
-    public boolean isNumberInRange(Integer bonus){
+    public boolean isNumberInRange(Integer bonus) throws IllegalArgumentException{
         if(bonus<1 || bonus>45){
             throw new IllegalArgumentException(ErrorMessage.LOTTO_RANGE_ERROR.print());
         }
@@ -58,7 +58,6 @@ public class InputChecker {
         if(!isNumeric(input)){
             throw new IllegalArgumentException(ErrorMessage.INPUT_LOTTO_NUMBERS_NOT_NUMERIC.print());
         }
-
         if(isNotDuplication(Integer.parseInt(input), winningLotto) && isNumberInRange(Integer.parseInt(input))) {
             return true;
         }
