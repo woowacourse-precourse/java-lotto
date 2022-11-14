@@ -47,4 +47,21 @@ class LottoTest {
                 , Arguments.of(new Lotto(List.of(11, 2, 3, 10, 8, 9)), 0)
         );
     }
+
+    @ParameterizedTest(name = "로또 비교 결과 {1}등 당첨!")
+    @MethodSource("lottoAndPrize")
+    void 로또_비교_결과가_몇_등_당첨인지_확인하는_기능(Lotto lotto, LottoPrize expected) {
+        assertThat(lotto.getPrize(winningNumbers)).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> lottoAndPrize() {
+        return Stream.of(
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoPrize.FIRST)
+                , Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 7)), LottoPrize.SECOND)
+                , Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 8)), LottoPrize.THIRD)
+                , Arguments.of(new Lotto(List.of(1, 2, 3, 4, 8, 9)), LottoPrize.FOURTH)
+                , Arguments.of(new Lotto(List.of(10, 2, 3, 4, 7, 9)), LottoPrize.FIFTH)
+                , Arguments.of(new Lotto(List.of(11, 2, 3, 10, 8, 9)), LottoPrize.LOSE)
+        );
+    }
 }
