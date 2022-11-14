@@ -14,20 +14,14 @@ public class IOManage {
     private int bonusNumber;
 
     IOManage() {
-        if (inputPayment()) {
-            outputLottoGeneration();
-            inputWinningNumbers();
-            inputBonusNumber();
-            outputStatistic();
-            outputEarningRate();
-        }
+        payFlowManage();
     }
 
     public boolean inputPayment() {
         System.out.println(Message.INPUT_PAYMENT.get());
         String input = Console.readLine();
 
-        if (control.validateNumber(input)){
+        if (control.validateNumber(input)) {
             inputPrice = Integer.parseInt(input);
             return true;
         }
@@ -46,22 +40,32 @@ public class IOManage {
         }
     }
 
-    public void inputWinningNumbers() {
+    public boolean inputWinningNumbers() {
         System.out.println(Message.INPUT_WINNING_NUMBER.get());
 
         String inputString = Console.readLine();
         List<Integer> numbers = control.inputToWinningNumbers(inputString);
 
+        if (numbers.size() != 6) {
+            return false;
+        }
+
         Lotto lotto = new Lotto(numbers);
         numbers = lotto.getNumbers();
         winningNumbers = numbers;
+        return true;
     }
 
-    public void inputBonusNumber() {
+    public boolean inputBonusNumber() {
         System.out.println(Message.INPUT_BONUS_NUMBER.get());
 
         String inputString = Console.readLine();
         bonusNumber = control.inputToBonusNumber(inputString, winningNumbers);
+
+        if (bonusNumber == -1) {
+            return false;
+        }
+        return true;
     }
 
     public void outputStatistic() {
@@ -81,5 +85,22 @@ public class IOManage {
         List<Integer> winningCount = check.totalWinningCount(generatedLotto, winningNumbers, bonusNumber);
         double earningRate = control.calculateEarningRate(winningCount, quantity);
         System.out.println(Message.EARNING_RATE.get() + earningRate + Message.ENDING.get());
+    }
+
+    public void payFlowManage() {
+        if (inputPayment()) {
+            numberFlowManage();
+        }
+    }
+
+    public void numberFlowManage() {
+        outputLottoGeneration();
+
+        if (inputWinningNumbers()) {
+            if (inputBonusNumber()) {
+                outputStatistic();
+                outputEarningRate();
+            }
+        }
     }
 }

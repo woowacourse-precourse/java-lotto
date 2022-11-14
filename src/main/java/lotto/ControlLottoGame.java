@@ -34,24 +34,28 @@ public class ControlLottoGame {
 
         for (String inputNumber : inputNumbers) {
             String noSpace = inputNumber.trim();
-            winningNumbers.add(Integer.parseInt(noSpace));
-        }
 
+            if(validateNumber(noSpace)){
+                winningNumbers.add(Integer.parseInt(noSpace));
+            }
+        }
         return winningNumbers;
     }
 
     public int inputToBonusNumber(String input, List<Integer> winningNumbers) {
-        int bonusNumber = Integer.parseInt(input);
+        if (validateNumber(input)) {
+            int bonusNumber = Integer.parseInt(input);
 
-        if ((bonusNumber < 0) || (bonusNumber > 45)) {
-            throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_RANGE.get());
+            if ((bonusNumber < 0) || (bonusNumber > 45)) {
+                throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_RANGE.get());
+            }
+
+            if (winningNumbers.contains(bonusNumber)) {
+                throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_DUPLICATED.get());
+            }
+            return bonusNumber;
         }
-
-        if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_DUPLICATED.get());
-        }
-
-        return bonusNumber;
+        return -1;
     }
 
     public double calculateEarningRate(List<Integer> winningCount, int quantity) {
