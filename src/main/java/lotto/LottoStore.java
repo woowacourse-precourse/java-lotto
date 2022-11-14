@@ -21,6 +21,13 @@ public class LottoStore {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
+    public void printUserLotto() {
+        System.out.printf("%d개를 구미했습니다.", purchaseNumber);
+        for (Lotto lotto : userLotto) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
+
     public void makePurchaseNumber(int money) {
         this.money = money;
         purchaseNumber = money / 1000;
