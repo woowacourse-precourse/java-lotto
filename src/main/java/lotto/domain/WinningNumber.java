@@ -20,7 +20,7 @@ public class WinningNumber {
         this.bonusNumber = bonusNumber;
     }
 
-    public boolean isContainedWinningNumber(int number) {
+    public boolean isContainedInWinningNumber(int number) {
         return winningNumbers.contains(number);
     }
 

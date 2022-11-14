@@ -25,7 +25,7 @@ public class Lotto {
 
     public int getHitCount(WinningNumber winningNumber) {
         return (int) numbers.stream()
-                .filter(winningNumber::isContainedWinningNumber)
+                .filter(winningNumber::isContainedInWinningNumber)
                 .count();
     }
 
