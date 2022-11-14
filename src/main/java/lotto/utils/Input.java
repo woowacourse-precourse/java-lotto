@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.type.LottoCondition.PRICE_UNIT;
 
 public class Input {
+    private static final int REMINDER_ZERO = 0;
 
     public static Integer inputPrice() {
         String price = readLine();
@@ -35,7 +37,7 @@ public class Input {
 
     private static void validatePrice(String inputPrice) throws IllegalArgumentException {
         int price = Integer.parseInt(inputPrice);
-        if (price % 1000 != 0) {
+        if (price % PRICE_UNIT.getNumber() != REMINDER_ZERO) {
             throw new IllegalArgumentException("[ERROR] 로또는 1000원단위로 구입해야 합니다.");
         }
     }

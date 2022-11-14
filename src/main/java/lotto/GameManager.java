@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static lotto.type.LottoCondition.*;
 import static lotto.utils.Input.*;
 
 public class GameManager {
@@ -30,7 +31,7 @@ public class GameManager {
     }
 
     private Integer getCountFromPrice(Integer Price) {
-        Integer lottoCount = Price / 1000;
+        Integer lottoCount = Price / PRICE_UNIT.getNumber();
         return lottoCount;
     }
 
@@ -46,7 +47,7 @@ public class GameManager {
 
     private Lotto publishRandomLotto() {
         Lotto lotto;
-        List<Integer> lottoNumbers = pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> lottoNumbers = pickUniqueNumbersInRange(BOUND_START.getNumber(), BOUND_END.getNumber(), BOUND_SIZE.getNumber());
         lotto = new Lotto(lottoNumbers);
 
         return lotto;

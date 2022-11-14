@@ -3,6 +3,8 @@ package lotto;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static lotto.type.LottoCondition.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -18,7 +20,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.size() != 6) {
+        if (numbers.size() != BOUND_SIZE.getNumber()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 서로 중복되지 않는 6개 숫자이어야 합니다.");
         }
     }
@@ -30,7 +32,7 @@ public class Lotto {
     }
 
     private void validateNumberBound(List<Integer> numbers) throws IllegalArgumentException {
-        if (!numbers.stream().allMatch(number -> (1 <= number) && (number <= 45))) {
+        if (!numbers.stream().allMatch(number -> (BOUND_START.getNumber() <= number) && (number <= BOUND_END.getNumber()))) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1-45의 숫자이어야 합니다.");
         }
     }

@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.EnumMap;
 
 public class LottoResult {
+    private static final int PERCENT_CONVERT_NUMBER = 100;
     EnumMap<Rank, Integer> ranks;
 
     public LottoResult(EnumMap<Rank, Integer> ranks) {
@@ -19,7 +20,7 @@ public class LottoResult {
         for (Rank rank : Rank.values()) {
             totalWinning = totalWinning + Long.valueOf(rank.getWinningMoney()) * ranks.getOrDefault(rank, 0);
         }
-        ratio = 100 * (totalWinning / (Float.valueOf(buyPrice)));
+        ratio = PERCENT_CONVERT_NUMBER * (totalWinning / (Float.valueOf(buyPrice)));
 
         return ratio;
     }

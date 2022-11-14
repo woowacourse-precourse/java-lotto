@@ -17,10 +17,11 @@ public class View {
     private static final String PUBLISH_LOTTO_MESSAGE = "개를 구매했습니다.";
 
     private static final String RESULT_STATISTICS_MESSAGE = "당첨 통계";
+    private static final String RESULT_STATISTICS_LINE = "---";
     private static final String RESULT_CORRECT_COUNT = "개 일치";
     private static final String RESULT_CORRECT_BONUS_COUT = "개 일치, 보너스 볼 일치";
-    private static final String RESULT_EARNING_RATIO1 = "총 수익률은";
-    private static final String RESULT_EARNING_RATIO2 = "입니다.";
+    private static final String RESULT_EARNING_RATIO_FRONT = "총 수익률은";
+    private static final String RESULT_EARNING_RATIO_BACK = "입니다.";
 
     public static void printPriceMessage() {
         System.out.println(REQUEST_PRICE_MESSAGE);
@@ -42,11 +43,11 @@ public class View {
     }
 
     public static void printLottoResult(LottoResult result, Integer buyPrice) {
-        System.out.printf("\n" + RESULT_STATISTICS_MESSAGE + "\n" + "---" + "\n");
+        System.out.printf("\n" + RESULT_STATISTICS_MESSAGE + "\n" + RESULT_STATISTICS_LINE + "\n");
         for (Rank rank : Rank.values()) {
             printRankResult(rank, result);
         }
-        System.out.printf(RESULT_EARNING_RATIO1 + " %.1f%%" + RESULT_EARNING_RATIO2, result.calculateEarningRatio(buyPrice));
+        System.out.printf(RESULT_EARNING_RATIO_FRONT + " %.1f%%" + RESULT_EARNING_RATIO_BACK, result.calculateEarningRatio(buyPrice));
     }
 
     private static void printRankResult(Rank rank, LottoResult result) {
@@ -61,6 +62,5 @@ public class View {
             System.out.println(numberForm.format(rank.getCorrectCount()) + RESULT_CORRECT_BONUS_COUT + " ("+priceForm.format(rank.getWinningMoney())+"원) - "
                     + numberForm.format(result.getWinningCount(rank)) + "개");
         }
-
     }
 }

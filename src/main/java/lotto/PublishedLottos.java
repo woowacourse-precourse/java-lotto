@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PublishedLottos {
+    private static final int RANK_TWO_OR_THREE_COUNT = 5;
     private final Lotto winningLotto;
     private final List<Lotto> publishedLottos;
 
@@ -28,7 +29,7 @@ public class PublishedLottos {
         Rank rank;
         int correctCount = winningLotto.compare(playerLotto);
 
-        if (correctCount == 5) {
+        if (correctCount == RANK_TWO_OR_THREE_COUNT) {
             return Rank.getRank(correctCount, playerLotto.hasBonusNumber(bonusNumber));
         }
         rank = Rank.getRank(correctCount, false);
