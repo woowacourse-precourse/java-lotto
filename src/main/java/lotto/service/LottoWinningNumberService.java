@@ -40,7 +40,7 @@ public class LottoWinningNumberService {
 
     private static List<String> separateStringByComma(String inputWinningNumbers) {
         List<String> separatedString = Arrays.asList(inputWinningNumbers.split(","));
-        if (separatedString.isEmpty()) {
+        if (separatedString.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 구분자를 확인해주세요.");
         }
         return separatedString;
