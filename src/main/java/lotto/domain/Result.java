@@ -22,11 +22,11 @@ public class Result {
         for(int i=0; i<input.size(); i++){
             check = compareLotto(input.get(i), winning);
             checkBonus = compareBonus(input.get(i),bonus);
-            togetherResult(check,checkBonus);
+            saveResult(check,checkBonus);
         }
         return allResult;
     }
-    private void togetherResult(int check, boolean checkBonus) {
+    private void saveResult(int check, boolean checkBonus) {
         ResultType resultType = makeTotalWinnings(check, checkBonus);
         if(allResult.containsKey(resultType))
             allResult.put(resultType,allResult.get(resultType)+1);
@@ -50,7 +50,7 @@ public class Result {
         return false;
     }
 
-    public double calculateRate(int purchase, int win){
+    public double calculateProfit(int purchase, int win){
         return Double.valueOf((double) win/purchase)*100;
     }
 

@@ -2,13 +2,13 @@ package lotto.domain;
 
 public class Purchase {
 
-    public int calculateAmount(String amount){
+    public int checkAmount(String amount){
         validateNumber(amount);
-        validate(Integer.parseInt(amount));
+        validateUnit(Integer.parseInt(amount));
         return Integer.parseInt(amount);
     }
 
-    private void validate(int amount){
+    private void validateUnit(int amount){
         if(amount%1000!=0){
             throw new IllegalArgumentException("[ERROR] 구입 금액이 1000원 단위로 나누어떨어지지 않습니다.");
         }

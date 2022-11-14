@@ -3,7 +3,6 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +38,7 @@ public class Play {
     private void printResult(Map<ResultType, Integer> totalResult) {
         System.out.println("\n"+WINNING_MESSAGE);
         result.printResult(totalResult);
-        double profit = result.calculateRate(total,prize);
+        double profit = result.calculateProfit(total,prize);
         System.out.printf(RATE_MESSAGE, profit);
     }
 
@@ -60,7 +59,7 @@ public class Play {
     private List<Integer> inputWinningNumber() {
         System.out.println("\n"+INPUT_WINNING_MESSAGE);
         String winning = Console.readLine();
-        List<Integer> winLotto = winningNumber.numberToString(winning);
+        List<Integer> winLotto = winningNumber.saveWinningNumber(winning);
         return winLotto;
     }
 
@@ -74,7 +73,7 @@ public class Play {
 
         String amount = Console.readLine();
         try{
-            total = purchase.calculateAmount(amount);
+            total = purchase.checkAmount(amount);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
