@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Input {
@@ -10,10 +12,11 @@ public class Input {
     }
 
     public static void receiveWinningNumbers(List<Integer> winningNumbers) {
-        String number;
-        for (int i = 0; i < 6; i++) {
-            number = camp.nextstep.edu.missionutils.Console.readLine();
-            winningNumbers.add(Integer.parseInt(number));
+        String input;
+        input = camp.nextstep.edu.missionutils.Console.readLine();
+        String[] numbers = input.split(",");
+        for (String item : numbers) {
+            winningNumbers.add(Integer.parseInt(item));
         }
     }
 
@@ -21,4 +24,5 @@ public class Input {
         String number = camp.nextstep.edu.missionutils.Console.readLine();
         winningNumbers.add(Integer.parseInt(number));
     }
+
 }
