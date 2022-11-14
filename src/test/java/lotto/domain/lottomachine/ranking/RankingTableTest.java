@@ -64,6 +64,15 @@ class RankingTableTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @DisplayName("getAllByAscendingRanking 메소드가 로또 번호가 맞춘 개수, 당첨 금액, 티켓 매수를 리스트에 담아 반환하는지 확인")
+    @ParameterizedTest
+    @ValueSource(strings = {"[[3, 5,000, 1], [4, 50,000, 2], [5, 1,500,000, 0], [5B, 30,000,000, 1], [6, 2,000,000,000, 2]]"})
+    void getAllByAscendingRanking_test(String expected) {
+        List<List<String>> actual = rankingTable.getAllByAscendingRanking();
+
+        assertThat(actual.toString()).isEqualTo(expected);
+    }
+
     static Stream<Arguments> provideArgumentsForChangingTest() {
         return Stream.of(
                 Arguments.of("403010.512", "40,301,051.2%"),
