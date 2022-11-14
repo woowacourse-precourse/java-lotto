@@ -29,7 +29,7 @@ public class LottoResult {
         for (int matchingNumbers = 3; matchingNumbers < 8; matchingNumbers++) {
             resultByMatchedNumber.put(matchingNumbers, Collections.frequency(results, matchingNumbers));
         }
-
+        System.out.println(resultByMatchedNumber);
         return resultByMatchedNumber;
     }
     public static int sumOfAllPrizes(LinkedHashMap<Integer, Integer> lotteryResult){
