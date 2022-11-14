@@ -28,4 +28,21 @@ class WinningStatisticsTest {
         Assertions.assertThat(winningStatistics.getWinningStatisticsMap().get(Ranking.SIXTH)).isEqualTo(7);
     }
 
+
+    @Test
+    @DisplayName("수익률 출력")
+    void calculateProfitRate() {
+        List<Ranking> rankingList = new ArrayList<>();
+        rankingList.add(Ranking.FIFTH);
+        rankingList.add(Ranking.SIXTH);
+        rankingList.add(Ranking.SIXTH);
+        rankingList.add(Ranking.SIXTH);
+        rankingList.add(Ranking.SIXTH);
+        rankingList.add(Ranking.SIXTH);
+        rankingList.add(Ranking.SIXTH);
+        rankingList.add(Ranking.SIXTH);
+        WinningStatistics winningStatistics = new WinningStatistics(rankingList);
+        double profitRate = winningStatistics.calculateProfitRate(8000);
+        Assertions.assertThat(Math.round(profitRate*100)/100.0).isEqualTo(62.5);
+    }
 }
