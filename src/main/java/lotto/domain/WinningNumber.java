@@ -2,6 +2,9 @@ package lotto.domain;
 
 import java.util.List;
 
+import static lotto.viewer.ErrorMessage.ENTER_RANGE_NUMBER;
+import static lotto.viewer.ErrorMessage.ENTER_UNIQUE_NUMBER;
+
 public class WinningNumber extends Lotto{
     private int bonusNumber;
     public WinningNumber(List<Integer> numbers, int bonusNumber) {
@@ -17,13 +20,13 @@ public class WinningNumber extends Lotto{
 
     private void validateContain(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("보너스 숫자는 당첨 번호와 달라야합니다.");
+            throw new IllegalArgumentException(ENTER_UNIQUE_NUMBER);
         }
     }
 
     private void validateOverNumber(int bonusNumber) {
         if (outOfRange(bonusNumber)) {
-            throw new IllegalArgumentException("보너스 숫자는 1이상 45이하의 숫자입니다.");
+            throw new IllegalArgumentException(ENTER_RANGE_NUMBER);
         }
     }
 
