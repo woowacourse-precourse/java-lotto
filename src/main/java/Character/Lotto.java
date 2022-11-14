@@ -9,6 +9,11 @@ public class Lotto {
         return numbers.toString();
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
     public Lotto(List<Integer> numbers) {
         numberSizeValidate(numbers);
         duplicatedNumberValidate(numbers);
