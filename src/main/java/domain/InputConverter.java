@@ -1,7 +1,5 @@
 package domain;
 
-import ui.SystemMessage;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,32 +33,26 @@ public class InputConverter {
     }
 
     private static void isValidMoneyInput(String moneyInput) {
-        int money;
-        try {
-            money = Integer.parseInt(moneyInput);
-        } catch (NumberFormatException e) {
-            SystemMessage.printErrorMessage(NOT_NUMERAL_MONEY_INPUT);
-            throw new IllegalArgumentException(NOT_NUMERAL_MONEY_INPUT);
-        }
-
+        int money = getInputAsInt(moneyInput, NOT_NUMERAL_MONEY_INPUT);
         if (money % LOTTO_PRICE != 0) {
-            SystemMessage.printErrorMessage(NOT_VALID_MONEY_UNIT);
             throw new IllegalArgumentException(NOT_VALID_MONEY_UNIT);
         }
     }
 
     private static void isValidInRangeNumber(String numberInput) {
-        int bonusNumber;
-        try {
-            bonusNumber = Integer.parseInt(numberInput);
-        } catch (NumberFormatException e) {
-            SystemMessage.printErrorMessage(NOT_NUMERAL_NUMBER_INPUT);
-            throw new IllegalArgumentException(NOT_NUMERAL_NUMBER_INPUT);
-        }
-
+        int bonusNumber = getInputAsInt(numberInput, NOT_NUMERAL_NUMBER_INPUT);
         if (bonusNumber < MINIMUM_NUMBER || bonusNumber > MAXIMUM_NUMBER) {
-            SystemMessage.printErrorMessage(NOT_IN_RANGE_NUMBER_INPUT);
             throw new IllegalArgumentException(NOT_IN_RANGE_NUMBER_INPUT);
         }
+    }
+
+    private static int getInputAsInt(String input, String errorMessage) {
+        int inputAsInt;
+        try {
+            inputAsInt = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+        return inputAsInt;
     }
 }
