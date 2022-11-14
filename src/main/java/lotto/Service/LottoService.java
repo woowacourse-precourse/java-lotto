@@ -35,7 +35,9 @@ public class LottoService {
 
     public WinningNumber getWinningNumsWithBonus() {
         List<Integer> winningLottoNums = getWinningNums();
-        return createWinningNums(winningLottoNums);
+        int bonusLottoNum  = getBonusNum(winningLottoNums);
+
+        return createWinningNums(winningLottoNums, bonusLottoNum);
     }
 
     public List<Integer> getWinningNums(){
@@ -43,8 +45,15 @@ public class LottoService {
         Validator.checkIsValidWinningNums(winningNums);
         return winningNums;
     }
+    public int getBonusNum(List<Integer> winningNums){
+        int bonusNum = InputView.getBonusNum();
+        Validator.checkIsValidBonusNum(winningNums, bonusNum);
+        return bonusNum;
+    }
 
-    private WinningNumber createWinningNums(List<Integer> winningNums) {
-        return new WinningNumber(winningNums);
+    private WinningNumber createWinningNums(List<Integer> winningNums, int bonusLottoNum) {
+        WinningNumber winningNumber = new WinningNumber(winningNums);
+        winningNumber.setBonusNum(bonusLottoNum);
+        return winningNumber;
     }
 }
