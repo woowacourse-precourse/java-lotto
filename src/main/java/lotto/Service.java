@@ -108,9 +108,10 @@ public class Service {
 	public double yield() {
 		return Math.round((double)totalPrize() / money * 1000) / 10.0;
 	}
-	
+
 	public void checkMoney(String inputMoney) {
 		exception.checkMissMatch(inputMoney);
 		exception.checkMoneySize(inputMoney);
+		exception.checkUnitMoney(inputMoney, Constant.PRICE);
 	}
 }
