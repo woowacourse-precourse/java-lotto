@@ -15,37 +15,37 @@ public class WinningNumbers {
 
     public WinningNumbers() {}
 
-    public void newWinningNumbers(List<Integer> newWinningNumbers) {
+    public void newWinningNumbers(List<Integer> newWinningNumbers) throws IllegalArgumentException {
         validateSize(newWinningNumbers);
         validatedLottoRange(newWinningNumbers);
         validateDuplicate(newWinningNumbers);
         winningNumbers = new Lotto(newWinningNumbers);
     }
 
-    public void newBonusNumber(int newBonusNumber) {
+    public void newBonusNumber(int newBonusNumber) throws IllegalArgumentException {
         validateNumberRange(newBonusNumber);
         bonusNumber = newBonusNumber;
     }
 
-    private void validateSize(List<Integer> inputs) {
+    private void validateSize(List<Integer> inputs) throws IllegalArgumentException {
         if(inputs.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_SIZE.getValue());
         }
     }
 
-    private void validatedLottoRange(List<Integer> inputs) {
+    private void validatedLottoRange(List<Integer> inputs) throws IllegalArgumentException {
         for (Integer input : inputs) {
             validateNumberRange(input);
         }
     }
 
-    private void validateNumberRange(int number) {
+    private void validateNumberRange(int number) throws IllegalArgumentException {
         if ((number < 1) || (number > 45)) {
             throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_RANGE.getValue());
         }
     }
 
-    private void validateDuplicate(List<Integer> inputs) {
+    private void validateDuplicate(List<Integer> inputs) throws IllegalArgumentException {
         HashSet<Integer> checkDuplicate = new HashSet<>(inputs);
         if (checkDuplicate.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_DUPLICATE.getValue());

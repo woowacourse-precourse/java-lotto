@@ -5,12 +5,12 @@ public class GameMoney {
 
     private long money;
 
-    public GameMoney(long insertMoney) {
+    public GameMoney(long insertMoney) throws IllegalArgumentException {
         validateAvailableOfPurchase(insertMoney);
         this.money = insertMoney;
     }
 
-    static void validateAvailableOfPurchase(long insertMoney) {
+    static void validateAvailableOfPurchase(long insertMoney) throws IllegalArgumentException {
         if (insertMoney % PRICE_PER_LOTTO != 0) {
             throw new IllegalArgumentException(Error.ERROR_GAME_MONEY_AVAILABLE.getValue());
         }
