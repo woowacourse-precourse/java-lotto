@@ -30,9 +30,7 @@ public class InputConfig {
     public static void checkPrizeLotto(List<Integer> lotto) {
         Set<Integer> transformed = new HashSet<>(lotto);
         hasCorrectSize(transformed);
-        for (int i : transformed) {
-            isInRange(i);
-        }
+        transformed.forEach(InputConfig::isInRange);
     }
 
     public static void isBonusNumberInLotto(Set<Integer> lotto, int bonus) {
@@ -61,9 +59,17 @@ public class InputConfig {
     // 구입 금액 입력
     public static void checkPurchaseInput(String input) {
         isNumber(input);
-        long value = Long.parseLong(input);
+        long value = isInLong(input);
         isMoreThanZero(value);
         isDividedByPrice(value);
+    }
+
+    private static Long isInLong(String input) {
+        try {
+            return Long.parseLong(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_NOT_POSITIVE_NUMBER);
+        }
     }
 
     private static void isNumber(String input) {

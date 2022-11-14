@@ -20,12 +20,8 @@ public class LottoComparator {
         int cnt = countNumberCorrectness(ownLotto, prizeLotto);
         boolean bonus = hasBonusNumber(ownLotto, bonusNumber);
 
-        for (Rank rank : Rank.values()) {
-            if (rank.matchRank(cnt, bonus)) {
-                return rank;
-            }
-        }
-        return Rank.NONE;
+        Optional<Rank> result = Arrays.stream(Rank.values()).filter(r -> r.matchRank(cnt, bonus)).findAny();
+        return result.orElse(Rank.NONE);
     }
 
     private static boolean hasBonusNumber(Lotto ownLotto, int bonusNumber) {
