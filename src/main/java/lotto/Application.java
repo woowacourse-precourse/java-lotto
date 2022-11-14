@@ -8,7 +8,14 @@ import lotto.input.WinningNumber;
 public class Application {
 
     public static void main(String[] args) {
-        LottoGameMachine lottoGameMachine = new LottoGameMachine(new RandomLottoGenerator(), new WinningNumber(), new SystemConsole());
-        lottoGameMachine.run();
+        LottoGameMachine lottoGameMachine = new LottoGameMachine(new RandomLottoGenerator(),
+                new WinningNumber(),
+                new SystemConsole());
+
+        try {
+            lottoGameMachine.run();
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
 }
