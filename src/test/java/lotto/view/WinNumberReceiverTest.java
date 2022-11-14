@@ -11,12 +11,15 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinNumberReceiverTest {
+
     @DisplayName("당첨번호로 6자리를 입력받는다.")
     @Test
     void WinNumberReceiver() {
-        List<Integer> expected = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
-        InputStream in = new ByteArrayInputStream(expected.toString().getBytes());
+        String inputExpected = "1,2,3,4,5,6";
+        List<Integer> expected = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+
+        InputStream in = new ByteArrayInputStream(inputExpected.getBytes());
         System.setIn(in);
-        assertThat(WinNumberReceiver.getWinNumber).isEqual(expected);
+        assertThat(WinNumberReceiver.getWinNumber()).isEqualTo(expected);
     }
 }
