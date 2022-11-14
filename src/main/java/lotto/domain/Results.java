@@ -14,7 +14,13 @@ public class Results {
         results.add(result);
     }
 
-    public List<Result> getResults() {
-        return results;
+    public Statistics generateStatistics() {
+        Statistics statistics = new Statistics();
+
+        for (Result result : results) {
+            Prize prize = Prize.generatePrize(result);
+            statistics.updateStatistics(prize);
+        }
+        return statistics;
     }
 }
