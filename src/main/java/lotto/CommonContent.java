@@ -28,6 +28,10 @@ public class CommonContent {
         public static String totalReturn(Integer totalReturn){
             return "총 수익률은 " + totalReturn + "입니다.";
         }
+
+        public java.lang.String getPrintStatement() {
+            return printStatement;
+        }
     }
 
     public enum PrintError{
@@ -46,6 +50,4 @@ public class CommonContent {
             return printStatement;
         }
     }
-
-
 }
