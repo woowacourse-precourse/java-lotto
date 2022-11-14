@@ -1,14 +1,22 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
+    @DisplayName("로또 숫자 오름차순 정렬")
+    @Test
+    void createLottoNumberSorted() {
+        assertThat(new Lotto(List.of(8, 10, 2, 1, 5, 7)).getNumbers())
+                .isEqualTo(List.of(1, 2, 5, 7, 8, 10));
+    }
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -40,4 +48,6 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 로또 번호는 1이상 45이하의 숫자만 가능합니다.");
     }
+
+    //오름차순 출력되는지 확인 테스트
 }
