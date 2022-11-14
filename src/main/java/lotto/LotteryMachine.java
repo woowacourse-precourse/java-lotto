@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class LotteryMachine {
     private static final int AMOUNT_UNIT = 1000;
     private final List<Lotto> lottos;
+    private WinningNumbers winningNumbers;
 
     public LotteryMachine() {
         lottos = new ArrayList<>();
@@ -19,9 +20,13 @@ public class LotteryMachine {
         drawLottos(amount / AMOUNT_UNIT);
     }
 
-    public WinningStat compareNumbers(Lotto winningNumbers, int bonusNumber) {
+    public void putWinningNumbers(List<Integer> numbers, int bonusNumber){
+        winningNumbers = new WinningNumbers(numbers, bonusNumber);
+    }
+
+    public WinningStat getWinningStat() {
         WinningStat winningStat = new WinningStat();
-        lottos.forEach(x -> winningStat.add(x.countNumbers(winningNumbers), x.hasNumber(bonusNumber)));
+        lottos.forEach(x->winningStat.add(winningNumbers.convertToPrize(x)));
         return winningStat;
     }
 

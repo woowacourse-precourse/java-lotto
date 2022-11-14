@@ -10,12 +10,12 @@ public class Application {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
         LotteryMachine lotteryMachine = new LotteryMachine();
-        WinningStat winningStat;
         try {
             int amount = inputView.getAmount();
             lotteryMachine.buyLottos(amount);
             outputView.printList(lotteryMachine.getLists());
-            winningStat = lotteryMachine.compareNumbers(inputView.getLottoNumber(), inputView.getBonusNumber());
+            lotteryMachine.putWinningNumbers(inputView.getLottoNumber(), inputView.getBonusNumber());
+            WinningStat winningStat = lotteryMachine.getWinningStat();
             outputView.printStats(winningStat);
             outputView.printYield(winningStat.yield(amount));
         } catch (IllegalArgumentException e) {

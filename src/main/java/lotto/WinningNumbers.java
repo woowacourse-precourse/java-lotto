@@ -10,8 +10,8 @@ public class WinningNumbers {
 
     public WinningNumbers(List<Integer> winningNumbers, int bonusNumber) {
         validateWinningNumbers(distinctNumbers(winningNumbers));
-        validateBonusNumber(bonusNumber);
         this.winningNumbers = winningNumbers;
+        validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 

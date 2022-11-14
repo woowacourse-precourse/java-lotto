@@ -13,9 +13,9 @@ public class InputView {
         return validateNumber(Console.readLine());
     }
 
-    public Lotto getLottoNumber() {
+    public List<Integer> getLottoNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        return new Lotto(validateNumbers(Console.readLine()));
+        return convertToList(Console.readLine());
     }
 
     public int getBonusNumber(){
@@ -31,7 +31,7 @@ public class InputView {
         }
     }
 
-    private List<Integer> validateNumbers(String input) {
+    private List<Integer> convertToList(String input) {
         return Arrays.stream(input.split(","))
                 .map(this::validateNumber)
                 .collect(Collectors.toList());

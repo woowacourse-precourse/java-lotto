@@ -14,8 +14,7 @@ public class WinningStat {
                 .forEach(x -> winningStat.put(x, 0));
     }
 
-    public void add(int number, boolean bonus) {
-        Prize prize = Prize.findPrize(number, bonus);
+    public void add(Prize prize) {
         if (prize !=Prize.NONE) {
             winningStat.replace(prize, winningStat.get(prize) + 1);
         }

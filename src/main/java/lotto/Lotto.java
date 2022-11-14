@@ -12,12 +12,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public int countNumbers(Lotto lotto) {
-        return (int) numbers.stream()
-                .filter(lotto::hasNumber)
-                .count();
-    }
-
     public boolean hasNumber(int number) {
         return numbers.contains(number);
     }
