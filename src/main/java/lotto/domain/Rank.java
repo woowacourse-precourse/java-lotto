@@ -46,4 +46,8 @@ public class Rank {
                 + ((long) Statistic.FOUR_PRICE.getValue() * ranks.get(Statistic.SAME_FOUR))
                 + ((long) Statistic.THREE_PRICE.getValue() * ranks.get(Statistic.SAME_THREE));
     }
+
+    public double getYield(Buyer buyer) {
+        return (getTotalAmount() / (double)buyer.getMoney()) * 100;
+    }
 }
