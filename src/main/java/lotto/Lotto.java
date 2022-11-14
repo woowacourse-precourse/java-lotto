@@ -21,4 +21,17 @@ public class Lotto {
     public void printNumbers(){
         System.out.println(numbers);
     }
+
+    public boolean isContainBounus(Integer bouns){
+        if(this.numbers.contains(bouns)) return true;
+        else return false;
+    }
+
+    public Integer getNumberOfMatch(List<Integer> num, Integer bounus){
+        int count=0;
+        for(Integer a : num){
+            if(this.numbers.contains(a)) count++;
+        }
+    return count;
+    }
 }

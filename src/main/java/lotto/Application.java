@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void validate(int value){
@@ -29,5 +31,39 @@ public class Application {
             myLottos.get(i).printNumbers();
         }
 
+        List<Integer> winningNum = new ArrayList<Integer>();
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String inputString = Console.readLine();
+        String winningStr[] = inputString.split(",");
+        for(String num:winningStr)
+        {
+            winningNum.add(Integer.parseInt(num));
+        }
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        Integer bounusNum = Integer.valueOf(Console.readLine());
+        Map<Ranking,Integer> myLottosMap = new HashMap<Ranking, Integer>(){{
+            put(Ranking.FIRST, 0);
+            put(Ranking.SECOND, 0);
+            put(Ranking.THIRD, 0);
+            put(Ranking.FOURTH, 0);
+            put(Ranking.FIFTH, 0);
+        }};
+        for (int i=0;i<countOfLotto;i++)
+        {
+            int countOfMatch = myLottos.get(i).getNumberOfMatch(winningNum,bounusNum);
+            boolean isMatchBounus = myLottos.get(i).isContainBounus(bounusNum);
+            Ranking thisRank = Ranking.getRank(countOfMatch, isMatchBounus);
+//            System.out.println("현재 등수 : "+thisRank + "상금 : "+price);
+            updateLottosMap(myLottosMap, thisRank);
+        }
+
+
+    }
+    public static void updateLottosMap(Map<Ranking, Integer> lottosMap, Ranking ranking){
+        if (ranking != Ranking.NONE)
+        {
+            lottosMap.put(ranking, lottosMap.get(ranking)+1);
+        }
     }
 }
