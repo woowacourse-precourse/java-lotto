@@ -34,6 +34,8 @@ public class WinningLotto {
 
     private List<Integer> convertStringToList(String input) {
         List<String> numberValues = List.of(input.split(","));
-        return numberValues.stream().map(Integer::parseInt).collect(Collectors.toList());
+        return numberValues.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
