@@ -1,5 +1,8 @@
 package lotto.view;
 
+import java.util.Collections;
+import java.util.List;
+import lotto.domain.LottoRanking;
 import lotto.domain.OutputMessage;
 import lotto.domain.UserLotto;
 
@@ -9,5 +12,13 @@ public class OutputView {
     }
     public void printLottoNumber(UserLotto userLotto) {
         System.out.println(userLotto.toString());
+    }
+
+    public void printLottoResult(List<LottoRanking> lottoResult) {
+        StringBuilder sb = new StringBuilder();
+        for(LottoRanking ranking : lottoResult) {
+            sb.append(ranking.getMessage()).append(Collections.frequency(lottoResult, ranking)).append(OutputMessage.PRINT_UNIT).append("\n");
+            System.out.println(sb);
+        }
     }
 }

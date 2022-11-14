@@ -3,6 +3,7 @@ package lotto.controller;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoRanking;
 import lotto.domain.UserLotto;
 import lotto.domain.WinningLotto;
 import lotto.view.InputView;
@@ -21,30 +22,25 @@ public class LottoSystem {
         userLotto = makeUserLottos(lottoQuantity);
         outputView.printLottoNumber(userLotto);
         WinningLotto winningLotto = inputView.inputLottoNumbers();
-        List<Integer> lottoResult = makeResult(winningLotto);
-
+        List<LottoRanking> lottoResult = makeResult(winningLotto);
+        outputView.printLottoResult(lottoResult);
     }
 
-    private int addBonusResult(int index, int bonusNumber) {
+    private LottoRanking addBonusResult(int index, int bonusNumber) {
         if(userLotto.getLottos(index).getNumbers().contains(bonusNumber)) {
-            return 1;
+            return LottoRanking.FIVE_AND_BONUS_RIGHT;
         }
-        return 0;
+        return LottoRanking.FIVE_RIGHT;
     }
 
-    public List<Integer> makeResult(WinningLotto winningLotto) {
-        List<Integer> lottoResult = new ArrayList<>();
-        for (int i = 0; i < userLotto.getSize(); i++) {
-            int countNumber = calculateLotto(userLotto.getLottos(i), winningLotto);
+    public List<LottoRanking> makeResult(WinningLotto winningLotto) {
+        List<LottoRanking> lottoResult = new ArrayList<>();
+        for (int index = 0; index < userLotto.getSize(); index++) {
+            int countNumber = calculateLotto(userLotto.getLottos(index), winningLotto);
             if(countNumber == 5) {
-                lottoResult.add(countNumber + addBonusResult(i, winningLotto.getBonusNumber()));
-                continue;
+                lottoResult.add(addBonusResult(index, winningLotto.getBonusNumber()));
             }
-            if(countNumber == 6) {
-                lottoResult.add(countNumber + 1);
-                continue;
-            }
-            lottoResult.add(countNumber);
+            lottoResult.add(LottoRanking.getByindex(index));
         }
         return lottoResult;
     }
