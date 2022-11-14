@@ -42,7 +42,7 @@ public class WinLotto {
         return lottoTicket.contains(bonusNumber);
     }
 
-    public void checkLotto(){
+    public Map<Ranking, Long> checkLotto(){
         for(List<Integer> lottoTicket : lottoTickets){
             int count = countMatchWinningNumber(lottoTicket);
             boolean bonus = false;
@@ -54,6 +54,7 @@ public class WinLotto {
 
             winningResult.put(ranking, winningResult.get(ranking) + 1);
         }
+        return winningResult;
     }
 
     public long calculatePrizeSum(){
