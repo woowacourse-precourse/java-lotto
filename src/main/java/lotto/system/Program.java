@@ -6,7 +6,6 @@ import lotto.calculation.Winning;
 import lotto.generation.Lotto;
 import lotto.generation.LottoGenerator;
 
-import javax.swing.*;
 import java.util.List;
 
 public class Program {

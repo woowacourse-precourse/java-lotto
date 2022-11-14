@@ -10,7 +10,7 @@ public class IllegalArgumentTest {
 
     @Test
     void 숫자가_아닌_입력값() {
-        assertThat(IllegalArgument.isNumber("숫자아님")).isFalse();
+        assertThat(IllegalArgument.isNumber("1000j")).isFalse();
     }
 
     @Test

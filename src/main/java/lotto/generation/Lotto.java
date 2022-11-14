@@ -2,7 +2,6 @@ package lotto.generation;
 
 import lotto.exception.IllegalArgument;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -23,7 +22,6 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        this.numbers.sort(Comparator.naturalOrder());
         return this.numbers;
     }
 }

@@ -4,11 +4,14 @@ import lotto.system.Program;
 
 public class Application {
 
-    private static final Program program = new Program();
-
     public static void main(String[] args) {
-        program.startProgram();
-        program.winningProgram();
-        program.statisticsProgram();
+        try {
+            Program program = new Program();
+            program.startProgram();
+            program.winningProgram();
+            program.statisticsProgram();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
     }
 }
