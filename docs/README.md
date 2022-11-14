@@ -7,7 +7,7 @@
 2. Lotto 클래스
    - 당첨 내역 확인하는 로직 메소드 (checkLotto)
    - 로또 번호 오름차순으로 정렬하는 메소드 (sortLotto)
-   - 로또 당첨이 5 숫자일 경우 보너스 숫자와 일치하는 확인하는 메소드 (checkBonusLotto)
+   - 로또 당첨이 5 숫자일 경우 보너스 숫자와 일치하는 확인하는 메소드 (checkBonus)
    - View 클래스의 validator를 활용한 validator 메소드 (validateLotto)
    - 로또를 출력하는 메소드 (printLotto)
 3. View 클래스: user input/output 클래스
