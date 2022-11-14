@@ -5,6 +5,7 @@ public enum ErrorType {
     INVALID_WINNING_NUMBER_INPUT("[ERROR] 당첨 번호는 쉼표로 구분하여 6자리를 입력 하여야 합니다."),
     INVALID_NUMBER_DIGITS("[ERROR] 6자리의 숫자가 생성되어야 합니다."),
     INVALID_NUMBER_RANGE("[ERROR] 숫자는 1~45 사이의 숫자여야 합니다."),
+    INVALID_DUPLICATED_NUMBER("[ERROR] 번호는 중복이될 수 없습니다"),
     INVALID_INPUT_TYPE("[ERROR] 숫자만 입력하여야 합니다.");
 
 
