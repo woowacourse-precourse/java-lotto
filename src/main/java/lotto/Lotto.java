@@ -33,7 +33,14 @@ public class Lotto {
     }
 
     private int countMatchingNumber(List<Integer> winningNumbers) {
-        return 0;
+        int count = 0;
+        for(int number: numbers) {
+            if(winningNumbers.contains(number)) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     private boolean matchBonusNumber(int bonusNumber) {
