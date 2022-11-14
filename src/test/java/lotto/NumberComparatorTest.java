@@ -72,28 +72,12 @@ public class NumberComparatorTest {
     }
 
     @Test
-    void setOversizeWholeNumber() {
-        assertThatThrownBy(() -> {
-            NumberComparator tester = new NumberComparator(List.of(1, 2, 3, 4, 5, 6, 7, 8));
-            tester.validateWholeNumber();
-        })
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void setUndersizeWholeNumber() {
-        assertThatThrownBy(() -> {
-            NumberComparator tester = new NumberComparator(List.of(3, 23, 35, 43, 12, 32));
-            tester.validateWholeNumber();
-        })
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
     void setRepetitiveWholeNumber() {
         assertThatThrownBy(() -> {
-            NumberComparator tester = new NumberComparator(List.of(32, 32, 12, 43, 5, 2, 3));
-            tester.validateWholeNumber();
+            NumberComparator tester = new NumberComparator(List.of(32, 32, 12, 43, 5, 2));
+
+            tester.bonus = 12;
+            tester.validateBonus();
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -101,8 +85,10 @@ public class NumberComparatorTest {
     @Test
     void setOverMaxWholeNumber() {
         assertThatThrownBy(() -> {
-            NumberComparator tester = new NumberComparator(List.of(40, 41, 42, 43, 44, 45, 46));
-            tester.validateWholeNumber();
+            NumberComparator tester = new NumberComparator(List.of(40, 41, 42, 43, 44, 45));
+
+            tester.bonus = 46;
+            tester.validateBonus();
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -110,8 +96,10 @@ public class NumberComparatorTest {
     @Test
     void setUnderMinWholeNumber() {
         assertThatThrownBy(() -> {
-            NumberComparator tester = new NumberComparator(List.of(0, 1, 2, 3, 4, 5, 6));
-            tester.validateWholeNumber();
+            NumberComparator tester = new NumberComparator(List.of(1, 2, 3, 4, 5, 6));
+
+            tester.bonus = 0;
+            tester.validateBonus();
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -119,15 +107,17 @@ public class NumberComparatorTest {
     @Test
     void compareNumberTest() {
         Lotto lotto1 = new Lotto(List.of(43, 21, 30, 42, 33, 1));
-        Lotto lotto2 = new Lotto(List.of(23, 5, 2, 7, 43, 15));
-        Lotto lotto3 = new Lotto(List.of(1, 34, 31, 23, 3, 4));
-        Lotto lotto4 = new Lotto(List.of(1, 2, 3, 4, 5, 24));
-        LottoSeller seller = new LottoSeller(List.of(lotto1, lotto2, lotto3, lotto4));
-        NumberComparator tester = new NumberComparator(List.of(1,2,3,4,5,6,7));
+        Lotto lotto2 = new Lotto(List.of(5, 4, 3, 2, 1, 45));
+        Lotto lotto3 = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        Lotto lotto4 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto5 = new Lotto(List.of(11, 12, 13, 14, 15, 16));
+        LottoSeller seller = new LottoSeller(List.of(lotto1, lotto2, lotto3, lotto4, lotto5));
+        NumberComparator tester = new NumberComparator(List.of(1,2,3,4,5,6));
+        tester.bonus = 7;
 
         seller.showBundle();
         System.out.println(tester.number);
         tester.compareNumbers(seller.get());
-        assertThat(tester.result).isEqualTo(List.of(1, 3, 3, 5));
+        assertThat(tester.result).isEqualTo(List.of(1, 5, 6, 7, 0));
     }
 }
