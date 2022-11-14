@@ -6,31 +6,27 @@ import java.util.List;
 import java.util.Map;
 
 public class Statistics {
-    // 당첨 갯수와 상을 모아두는 변수
     int PRIZE1 = 0, PRIZE2 = 0, PRIZE3 = 0, PRIZE4 = 0, PRIZE5 = 0;
 
-    // 당첨 여부를 확인하는 매서드 checkPrize
-    public void checkPrizeQuantity(List<Integer> answerLottoNumbers, int bounsNumber, List<Lotto> myLottoNumberBundle) {
-        // 몇개 맞는지 확인
+    public Map<String, Integer> checkPrizeQuantity(List<Integer> answerLottoNumbers, int bounsNumber,
+        List<Lotto> myLottoNumberBundle) {
         for (Lotto lottoNumbers : myLottoNumberBundle) {
             Map<String, Integer> matchNumberCount = checkMatchNumbersCount(answerLottoNumbers, bounsNumber,
                 lottoNumbers);
             int matchCount = matchNumberCount.get("matchCount");
             int bonusCount = matchNumberCount.get("bonusCount");
-            // 이게 무슨 상인지 확인
             updatePrizeQuantity(matchCount, bonusCount);
         }
-        // System.out.println(PRIZE1 + " " + PRIZE2 + " " + PRIZE3 + " " + PRIZE4 + " " + PRIZE5);
-
+        return createPrizeMap();
     }
 
-    public int myStat(int receivedMoney) {
+    public float myStat(int receivedMoney) {
         // 당첨금액 합계 구하고 통계내기
         int totalReward = PrizeType.PRIZE1.getReward() * PRIZE1 + PrizeType.PRIZE2.getReward() * PRIZE2
             + PrizeType.PRIZE3.getReward() * PRIZE3 + PrizeType.PRIZE4.getReward() * PRIZE4
             + PrizeType.PRIZE5.getReward() * PRIZE5;
 
-        return totalReward / receivedMoney;
+        return (float)totalReward / receivedMoney;
     }
 
     private Map<String, Integer> checkMatchNumbersCount(List<Integer> answerLottoNumbers, int bounsNumber,
@@ -61,5 +57,15 @@ public class Statistics {
             PRIZE4++;
         if (prizeType == PrizeType.PRIZE5)
             PRIZE5++;
+    }
+
+    public Map<String, Integer> createPrizeMap() {
+        return Map.of(
+            "PRIZE1", PRIZE1,
+            "PRIZE2", PRIZE2,
+            "PRIZE3", PRIZE3,
+            "PRIZE4", PRIZE4,
+            "PRIZE5", PRIZE5
+        );
     }
 }
