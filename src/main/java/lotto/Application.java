@@ -10,7 +10,7 @@ public class Application {
             LottoTickets lottoTickets = Controller.createLottoTickets();
             WinningNumbers winningNumbers = Controller.createWinningLotto();
             BonusNumber bonusNumber = Controller.createBonusNumber(winningNumbers);
-            Controller.createSummary(lottoTickets, winningNumbers, bonusNumber);
+            Controller.printSummary(lottoTickets, winningNumbers, bonusNumber);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

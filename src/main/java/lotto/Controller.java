@@ -30,7 +30,7 @@ public class Controller {
         return new BonusNumber(inputBonusNumber, winningNumbers);
     }
 
-    public static void createSummary(LottoTickets lottoTickets, WinningNumbers winningNumbers,
+    public static void printSummary(LottoTickets lottoTickets, WinningNumbers winningNumbers,
                                      BonusNumber bonusNumber) {
         Result result = new Result(lottoTickets, winningNumbers, bonusNumber);
         SummaryView.showResult(result);
