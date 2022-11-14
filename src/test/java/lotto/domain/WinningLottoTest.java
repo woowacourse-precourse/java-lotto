@@ -1,8 +1,10 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -26,6 +28,20 @@ class WinningLottoTest {
         assertThatThrownBy(() -> {
             winningLotto = new WinningLotto(input);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("정상 입력 시 Winning lotto 잘 저장하는지 1")
+    void validWinningLottoTest1() {
+        winningLotto = new WinningLotto("1,2,3,4,5,6");
+        assertThat(winningLotto.getWinningLottoNumbers().getNumbers()).hasSize(6).containsExactlyInAnyOrder(1,2,3,4,5,6);
+    }
+
+    @Test
+    @DisplayName("정상 입력 시 Winning lotto 잘 저장하는지 2")
+    void validWinningLottoTest2() {
+        winningLotto = new WinningLotto("38,9,10,23,44,45");
+        assertThat(winningLotto.getWinningLottoNumbers().getNumbers()).hasSize(6).containsExactlyInAnyOrder(38,9,10,23,44,45);
     }
 
 }

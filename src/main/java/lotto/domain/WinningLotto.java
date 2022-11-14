@@ -28,4 +28,8 @@ public class WinningLotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public Lotto getWinningLottoNumbers() {
+        return winningLottoNumbers;
+    }
 }
