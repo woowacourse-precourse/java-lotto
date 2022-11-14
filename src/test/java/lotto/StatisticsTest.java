@@ -16,7 +16,8 @@ class StatisticsTest {
 
     @Test
     public void 로또_통계() {
-        Map<Prize, Integer> produce = statistics.produce(new WinLotto(List.of(1, 2, 3, 4, 5, 6), 7),
+        WinLotto winLotto = new WinLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+        Map<Prize, Integer> produce = statistics.produce(winLotto,
                 List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                         new Lotto(List.of(1, 2, 3, 4, 5, 7)),
                         new Lotto(List.of(1, 2, 3, 4, 5, 11)),

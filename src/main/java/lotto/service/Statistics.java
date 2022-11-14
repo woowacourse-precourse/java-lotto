@@ -16,7 +16,7 @@ public class Statistics {
 
     public Map<Prize, Integer> produce(WinLotto winLotto, List<Lotto> lottos) {
         Map<Prize, Integer> output = getDefaultOutput();
-        Set<Integer> winNumbers = new HashSet<>(winLotto.getNumbers());
+        Set<Integer> winNumbers = new HashSet<>(winLotto.getLotto().getNumbers());
         int bonusNumber = winLotto.getBonusNumber();
 
         for (Lotto lotto : lottos) {

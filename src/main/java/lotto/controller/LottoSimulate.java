@@ -28,7 +28,7 @@ public class LottoSimulate {
         try {
             int purchasePrice = inputPurchasePrice();
             List<Lotto> lottos = buyLottos(purchasePrice);
-            WinLotto winLotto = new WinLotto(inputWinLottoNumbers(), inputWinLottoBonusNumber());
+            WinLotto winLotto = new WinLotto(new Lotto(inputWinLottoNumbers()), inputWinLottoBonusNumber());
             Map<Prize, Integer> lottoStatics = getLottoStatics(winLotto, lottos);
             calculateYield(purchasePrice, lottoStatics);
         } catch (IllegalArgumentException e) {
