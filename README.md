@@ -33,7 +33,7 @@ BUILD SUCCESSFUL in 0s
 
 ---
 
-## 🚀 기능 요구 사항
+## 🚀 기능 목록
 
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
 
@@ -48,14 +48,6 @@ BUILD SUCCESSFUL in 0s
     - 4등: 4개 번호 일치 / 50,000원
     - 5등: 3개 번호 일치 / 5,000원
 ```
-
-- 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다.
-- 로또 1장의 가격은 1,000원이다.
-- 당첨 번호와 보너스 번호를 입력받는다.
-- 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다.
-- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
-
-### 입출력 요구 사항
 
 #### 입력
 
@@ -79,6 +71,12 @@ BUILD SUCCESSFUL in 0s
 
 #### 출력
 
+- 구입금액의 입력 요구 문구를 출력한다.
+
+```
+구입금액을 입력해 주세요.
+```
+
 - 발행한 로또 수량 및 번호를 출력한다. 로또 번호는 오름차순으로 정렬하여 보여준다.
 
 ```
@@ -91,6 +89,13 @@ BUILD SUCCESSFUL in 0s
 [7, 11, 30, 40, 42, 43] 
 [2, 13, 22, 32, 38, 45] 
 [1, 3, 5, 14, 22, 45]
+```
+
+- 당첨 통계 문구를 출력한다.
+
+```
+당첨 통계
+---
 ```
 
 - 당첨 내역을 출력한다.
@@ -147,6 +152,34 @@ BUILD SUCCESSFUL in 0s
 총 수익률은 62.5%입니다.
 ```
 
+#### 기능
+
+- 1000원 단위의 금액을 입력.
+- 금액에 맞는 로또(자동) 생성.
+- 사용자가 지정한 당첨 번호 입력
+- 입력한 당첨번호 저장
+- 사용자가 지정한 당첨 번호 입력
+- 구입한로또와 당첨번호 보너스번호 비교후 저장
+    - 당첨금과 당첨개수 저장하는 공간 초기화
+    - 당첨번호와 보너스번호 비교후 일치하는 개수 저장
+    - 일칠하는 개수의 따라 당첨금과 몇개 당첨 됐는지 저장
+    - 일치하는 개수 카운트 0으로 초기화
+- 구입한 로또 중 전체 당첨금 계산
+- 구입한 금액 과 당첨금을 계산하여 수익률 계산
+
+#### 예외처리(모든 예외처리는 IllegalArgumentException를 발생시키고 에러 문구는 "[ERROR]"로 시작한다.)
+
+- 구입금액의 숫자가 자연수가 아닐때
+- 구입금액의 숫자가 0보다 작을때
+- 구입금액이 1000원 단위가 아닐때
+- 사용자가 입력한 당첨번호가 6개의 당첨번호가 아닐때
+- 사용자의 당첨번호가 자연수가 아닐때
+- 사용자의 당첨번호가 1~45사이의 범위가 아닐때
+- 사용자의 당첨번호가 중복될때
+- 사용자의 보너스번호가 1~45사이의 범위가 아닐때
+- 사용자의 보너스번호가 자연수가 아닐때
+- 사용자의 보너스번호가 당첨번호와 중복 됐을때
+
 ---
 
 ## 🎯 프로그래밍 요구 사항
@@ -179,14 +212,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
@@ -199,20 +233,20 @@ List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
 ```java
 public class Lotto {
-    private final List<Integer> numbers;
+	private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
+	public Lotto(List<Integer> numbers) {
+		validate(numbers);
+		this.numbers = numbers;
+	}
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
+	private void validate(List<Integer> numbers) {
+		if (numbers.size() != 6) {
+			throw new IllegalArgumentException();
+		}
+	}
 
-    // TODO: 추가 기능 구현
+	// TODO: 추가 기능 구현
 }
 ```
 
