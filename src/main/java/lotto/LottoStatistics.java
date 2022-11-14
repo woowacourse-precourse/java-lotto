@@ -45,4 +45,8 @@ public class LottoStatistics {
         double profits = (double) winningMoney / money;
         return profits;
     }
+
+    public Map<String, List<Integer>> getCountMatchingMoney() {
+        return countMatchingMoney;
+    }
 }
