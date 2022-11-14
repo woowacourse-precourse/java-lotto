@@ -22,8 +22,8 @@ public class WinningLotto {
         lotto.validateNonDuplicatedNumber(bonus);
     }
 
-    public boolean isContains(Integer number) {
-        return lotto.isContains(number);
+    public boolean contains(Integer number) {
+        return lotto.contains(number);
     }
 
     public boolean isBonusEqualTo(Integer number) {
