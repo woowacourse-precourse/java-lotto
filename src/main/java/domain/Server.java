@@ -20,9 +20,9 @@ public class Server {
         return money / LOTTO_PRICE;
     }
 
-    public Set<Integer> compareLottoNumber(List<Integer> lottoNumber, List<Integer> winLottoNumber, int winBonusNumber){
+    public int compareLottoNumber(List<Integer> lottoNumber, List<Integer> winLottoNumber){
         Set<Integer> common = new HashSet<>(lottoNumber);
         common.retainAll(winLottoNumber);
-        return common;
+        return common.size();
     }
 }
