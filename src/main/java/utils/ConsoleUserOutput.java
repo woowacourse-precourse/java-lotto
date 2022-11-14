@@ -5,6 +5,8 @@ import lotto.LottoCounter;
 import org.mockito.internal.verification.NoMoreInteractions;
 import statements.NormalStatements;
 
+import java.util.List;
+
 public class ConsoleUserOutput {
     LottoCounter lottoCounter = new LottoCounter();
     public static void insertBlankLine(){
@@ -27,32 +29,46 @@ public class ConsoleUserOutput {
         System.out.println(NormalStatements.ASK_BONUS_NUMBER.done());
     }
 
-    public void showWinningRate(){
+    public void showResultForm() {
         System.out.println(NormalStatements.SHOW_WINNING_RATE_FORM.done());
-
         System.out.println(NormalStatements.SHOW_WINNING_RATE_FORM_LINE.done());
+    }
 
-        System.out.println(NormalStatements.THREE_NUMBERS_MATCHED.done() +lottoCounter.threeMatchedTickets()
-                +NormalStatements.COUNTING_UNIT.done());
+    public void showTheNumberOfThreeMatchedTickets(List<Integer> ticketNumbers, List<Integer> winningNumbers) {
+        System.out.println(NormalStatements.THREE_NUMBERS_MATCHED.done()
+                + lottoCounter.threeMatchedTickets(ticketNumbers, winningNumbers)
+                + NormalStatements.COUNTING_UNIT.done());
+    }
+    public void showTheNumberOfFourMatchedTickets(List<Integer> ticketNumbers, List<Integer> winningNumbers) {
+        System.out.println(NormalStatements.FOUR_NUMBERS_MATCHED.done()
+                + lottoCounter.fourMatchedTickets(ticketNumbers, winningNumbers)
+                + NormalStatements.COUNTING_UNIT.done());
+    }
+    public void showTheNumberOfFiveMatchedTickets(List<Integer> ticketNumbers, List<Integer> winningNumbers) {
+        System.out.println(NormalStatements.FIVE_NUMBERS_MATCHED.done()
+                + lottoCounter.fiveMatchedTickets(ticketNumbers, winningNumbers)
+                + NormalStatements.COUNTING_UNIT.done());
+    }
 
-        System.out.println(NormalStatements.FOUR_NUMBERS_MATCHED.done() +lottoCounter.fourMatchedTickets()
-                +NormalStatements.COUNTING_UNIT.done());
-
-        System.out.println(NormalStatements.FIVE_NUMBERS_MATCHED.done() +lottoCounter.fiveMatchedTickets()
-                +NormalStatements.COUNTING_UNIT.done());
+    public void showTheNumberOfFiveAndBonusMatchedTickets(List<Integer> ticketNumbers, List<Integer> winningNumbers
+            ,int bonus) {
 
         System.out.println(NormalStatements.FIVE_NUMBERS_AND_BONUS_MATCHED.done()
-                +lottoCounter.fiveAndBonusMatchedTickets()
-                +NormalStatements.COUNTING_UNIT.done());
-
-        System.out.println(NormalStatements.SIX_NUMBERS_MATCHED.done()
-                +lottoCounter.sixMatchedTickets()
-                +NormalStatements.COUNTING_UNIT.done());
-
-        System.out.printf(NormalStatements.SHOW_WINNING_RATE1
-                +"%f"
-                +NormalStatements.SHOW_WINNING_RATE2,
-
-                lottoCounter.winningRate());
+                + lottoCounter.fiveAndBonusMatchedTickets(ticketNumbers, winningNumbers, bonus)
+                + NormalStatements.COUNTING_UNIT.done());
     }
+
+    public void showTheNumberOfSixMatchedTickets(List<Integer> ticketNumbers, List<Integer> winningNumbers) {
+        System.out.println(NormalStatements.SIX_NUMBERS_MATCHED.done()
+                + lottoCounter.sixMatchedTickets(ticketNumbers, winningNumbers)
+                + NormalStatements.COUNTING_UNIT.done());
+    }
+
+    /*public void showLottoYield(List<Integer> ticketNumbers, List<Integer> winningNumbers) {
+        System.out.printf(NormalStatements.SHOW_WINNING_RATE1
+                        + "%f"
+                        + NormalStatements.SHOW_WINNING_RATE2,
+                lottoCounter.countLottoYield());
+    }*/
 }
+
