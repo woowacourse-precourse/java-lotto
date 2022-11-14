@@ -32,6 +32,7 @@ public class BonusNumberVerifier {
     }
 
     private boolean isDuplicatedWithWinningNumber(String input, List<Integer> winningNumbers) {
-        return true;
+        int parseInt = Integer.parseInt(input);
+        return winningNumbers.contains(parseInt);
     }
 }
