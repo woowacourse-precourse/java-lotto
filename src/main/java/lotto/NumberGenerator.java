@@ -3,11 +3,11 @@ package lotto;
 import java.util.List;
 
 public class NumberGenerator {
-    public List<Integer> generateSixRandomNumbers(){
+    public List<Integer> generateSixRandomNumbers() {
         return null;
     }
 
-    public int generateRandomNumber(){
+    public int generateRandomNumber() {
         return 0;
     }
 }

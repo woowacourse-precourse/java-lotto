@@ -12,10 +12,10 @@ public class StatisticsAnalyzer {
         this.bonusNumber = bonusNumber;
     }
 
-    public double calculateRateOfReturn(List<Lotto> wholeLotto){
+    public double calculateRateOfReturn(List<Lotto> wholeLotto) {
         return 0;
     }
 
-    public void showWinResult(){
+    public void showWinResult() {
     }
 }
