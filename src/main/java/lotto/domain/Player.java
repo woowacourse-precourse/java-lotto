@@ -14,7 +14,7 @@ public class Player {
     private int purchaseAmount;
     private List<Lotto> lottos = new ArrayList<>();
 
-    public void insertMoney() {
+    public void getPurchaseAmount() {
         String purchaseAmount = InputView.readPurchaseAmount();
         validate(purchaseAmount);
     }
