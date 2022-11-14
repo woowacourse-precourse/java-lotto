@@ -8,9 +8,11 @@
 - [x] 1~45까지 서로 다른 임의의 수 6개를 생성한다 - LottoGenerator#createLottoNumbers()
 - [x] 로또의 수량만큼 6개의 수가 담긴 리스트들을 생성한다 - LottoGenerator#buyLottos()
 - [x] 발행한 로또 번호와 당첨 번호를 비교한다 - Lotto#compareLotto()
+- [x] 비교한 결과를 저장한다 - result[]
 - [ ] 출력
     - [x] 발행한 로또 수량 및 번호(오름차순)
-    - [ ] 당첨 내역
+    - [x] 당첨 내역
+    - [ ] 수익률
 
 
 ## 조건

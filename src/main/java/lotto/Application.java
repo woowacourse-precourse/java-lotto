@@ -42,5 +42,9 @@ public class Application {
         for (Lotto lotto:mylottos) {
             result[lotto.compareLotto(winningNumber,bonusNumber).getValue()]++;
         }
+
+        for(int i=0;i<5;i++){
+            System.out.println(당첨.valueOfValue(i).getResult()+" - "+result[i]+"개");
+        }
     }
 }
