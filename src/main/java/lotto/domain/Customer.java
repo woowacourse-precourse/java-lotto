@@ -1,8 +1,9 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.config.BaseValidation;
 
-import static lotto.config.BaseValidation.INVALID_PAY_MONEY;
+import static lotto.config.BaseValidation.*;
 
 public class Customer {
 
@@ -17,11 +18,14 @@ public class Customer {
     public void payMoney() {
 
         System.out.println(INPUT_MONEY);
-        this.money = Integer.parseInt(Console.readLine());
 
-        if ((getMoney() % LOTTO_PRICE) != REMAINDER) {
-            System.out.println(INVALID_PAY_MONEY.getMessage());
-            throw new IllegalArgumentException();
+        try {
+            this.money = Integer.parseInt(Console.readLine());
+            if ((getMoney() % LOTTO_PRICE) != REMAINDER) {
+                throw new IllegalArgumentException(INVALID_PAY_MONEY.getMessage());
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
         }
 
     }
