@@ -119,5 +119,15 @@ public class WinningRankTest {
             assertThat(rank.getReward()).isEqualTo(expected.getReward());
         });
     }
+    
+    @Test
+    void getSortedListByRankASC_메소드는_순위로_정렬된_리스트를_반환한다() {
+        List<WinningRank> sortedListByRankASC = WinningRank.getSortedListByRankASC();
+        int prevRank = -1;
+        for (WinningRank winningRank : sortedListByRankASC) {
+            Integer currRank = winningRank.getRank();
+            assertThat(currRank).isGreaterThan(prevRank);
+        }
+    }
 }
 
