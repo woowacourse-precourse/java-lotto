@@ -5,18 +5,22 @@ import lotto.view.InputView;
 import lotto.view.outputView;
 
 public class Game {
-
     public void play() {
-        Money money = new Money(InputView.inputMoney());
-        Lotteries lotteries = LottoStore.buyLotto(money);
+        try {
+            Money money = InputView.inputMoney();
 
-        outputView.printBuyLotto(money);
-        outputView.printLotteries(lotteries);
+            Lotteries lotteries = LottoStore.buyLotto(money);
 
-        WinningNumber winningNumber = new WinningNumber(InputView.inputWinningLottoNumber(),
-                InputView.inputWinningBonusNumber());
-        LottoResult lottoResult = lotteries.checkLottoResult(winningNumber);
+            outputView.printBuyLotto(money);
+            outputView.printLotteries(lotteries);
 
-        outputView.printLottoResult(lottoResult, lottoResult.calculateProfit(money));
+            WinningNumber winningNumber = InputView.inputWinningNumber();
+            LottoResult lottoResult = lotteries.checkLottoResult(winningNumber);
+
+            outputView.printLottoResult(lottoResult, lottoResult.calculateProfit(money));
+
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 }

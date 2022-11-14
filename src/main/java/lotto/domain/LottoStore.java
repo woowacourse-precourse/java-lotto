@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class LottoStore {
     public static Lotteries buyLotto(Money money) {
-        int lottoAmount = money.getLottoAmount();
+        int lottoAmount = money.calculateLottoAmount();
         return new Lotteries(
                 Stream.generate(LottoStore::makeLotto)
                         .limit(lottoAmount)

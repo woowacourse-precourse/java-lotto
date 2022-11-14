@@ -24,20 +24,20 @@ public class LottoResult {
         lottoResult.put(rank, lottoResult.get(rank) + 1);
     }
 
-    public float calculateProfit(Money money) {
-        return (((float) (Math.round((earningPrice() * 1.0 / money.getMoney()) * DECIMAL_POINT * PERCENTAGE)))
+    public double calculateProfit(Money money) {
+        return (((double) (Math.round((earningPrice() / money.getMoney()) * DECIMAL_POINT * PERCENTAGE)))
                 / DECIMAL_POINT);
     }
 
-    private int earningPrice() {
+    private double earningPrice() {
         return lottoResult.entrySet()
                 .stream()
                 .map(this::calculatePrice)
-                .reduce(0, Integer::sum);
+                .reduce(0.0, Double::sum);
     }
 
-    private int calculatePrice(Map.Entry<Rank, Integer> lottoResult) {
-        return (lottoResult.getKey().getWinningPrice() * lottoResult.getValue());
+    private double calculatePrice(Map.Entry<Rank, Integer> lottoResult) {
+        return ((double)lottoResult.getKey().getWinningPrice() * lottoResult.getValue());
     }
 
     @Override
