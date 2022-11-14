@@ -19,7 +19,7 @@ public class LottoStatisticsTest {
     void getNormalLottoResultDescriptionTest() {
         assertSimpleTest(() -> {
             String result = "3개 일치 (5,000원)";
-            assertThat(LottoResult.THIRD.getDescription()).isEqualTo(result);
+            assertThat(LottoResult.FIFTH.getDescription()).isEqualTo(result);
         });
     }
 
