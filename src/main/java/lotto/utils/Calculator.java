@@ -64,7 +64,6 @@ public class Calculator {
         int profit = 0;
         for (Rank rank : lottoRanks.keySet()) {
             profit += (findRewardWithRank(rank) * lottoRanks.get(rank));
-            System.out.println("profit = " + profit);
         }
         return profit;
     }
