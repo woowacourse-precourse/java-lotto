@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.NoSuchElementException;
 import lotto.LottoEnum.LottoReward;
 
 public class Model {
@@ -58,7 +59,8 @@ public class Model {
         try {
             return Integer.parseInt(string);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 입력된 값이 숫자가 아닙니다.");
+            View.Output("[ERROR] 입력된 값이 숫자가 아닙니다.");
+            throw new NoSuchElementException();
         }
     }
 
@@ -85,7 +87,8 @@ public class Model {
 
             return result;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 입력된 값이 숫자가 아닙니다.");
+            View.Output("[ERROR] 입력된 값이 숫자가 아닙니다.");
+            throw new NoSuchElementException("[ERROR] 입력된 값이 숫자가 아닙니다.");
         }
     }
 

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.NoSuchElementException;
 import lotto.LottoEnum.LottoReward;
 
 public class Controller {
@@ -16,7 +17,8 @@ public class Controller {
     public static void ValidatePlayerNumber(HashSet<Integer> playerNumbers) {
         // 집합의 크기가 6이 아니거나 1에서 45까지의 숫자가 아닌 숫자를 포함하면 예외를 발생한다.
         if (playerNumbers.size() != 6 || Collections.min(playerNumbers) < 1 || Collections.max(playerNumbers) > 45) {
-            throw new IllegalArgumentException("[ERROR] 입력된 당첨 번호와 보너스 번호가 유효하지 않습니다.");
+            View.Output("[ERROR] 입력된 당첨 번호와 보너스 번호가 유효하지 않습니다.");
+            throw new NoSuchElementException("[ERROR] 입력된 당첨 번호와 보너스 번호가 유효하지 않습니다.");
         }
     }
 
@@ -27,9 +29,11 @@ public class Controller {
      */
     public static void ValidatePurchaseAmount(Integer purchaseAmount) {
         if (purchaseAmount / 1000 < 1) {
+            View.Output("[ERROR] 구입 금액이 유효하지 않습니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
         }
         if (purchaseAmount % 1000 != 0) {
+            View.Output("[ERROR] 구입 금액이 유효하지 않습니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
         }
     }
