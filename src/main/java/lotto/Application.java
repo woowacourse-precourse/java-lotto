@@ -8,7 +8,9 @@ public class Application {
         if (inputView.inputMoney()) {
             return;
         }
-        Lotto lotto = inputView.inputWinningNumber();
+        if (inputView.inputWinningNumber()) {
+            return;
+        }
         int bonus = lotto.inputBonus();
         for (List<Integer> randomLotto : inputView.calculator.lotteries) {
             lotto.compareLotto(randomLotto, bonus);

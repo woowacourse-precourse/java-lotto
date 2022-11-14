@@ -12,6 +12,9 @@ public class InputView {
     private static final long ZERO = 0L;
 
     Calculator calculator;
+    Lotto lotto;
+
+    int bonus;
 
     public boolean inputMoney() {
         long money = ZERO;
@@ -40,11 +43,18 @@ public class InputView {
         }
     }
 
-    public Lotto inputWinningNumber() {
+    public boolean inputWinningNumber() {
         Message.INPUT_LOTTERY_NUMBER.print();
+        List numbers;
         String winningNumber = Console.readLine();
-        List numbers = validateLotto(winningNumber);
-        return new Lotto(numbers);
+        try {
+            numbers = validateLotto(winningNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return true;
+        }
+        lotto = new Lotto(numbers);
+        return false;
     }
 
     private List validateLotto(String winningNumber) {
