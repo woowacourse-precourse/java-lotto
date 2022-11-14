@@ -11,6 +11,7 @@ public class Inputer {
     List<Integer> inputlottoNumbers;
 
     public int money() throws IllegalArgumentException {
+        System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int money;
         if(!validate(input)) {
@@ -26,6 +27,7 @@ public class Inputer {
     }
 
     public void inputlotto() throws IllegalArgumentException {
+        System.out.println("당첨 번호를 입력해주세요.");
         String input = Console.readLine();
         inputlottoNumbers = splitToken(input);
         for(int data : inputlottoNumbers) {
@@ -37,6 +39,7 @@ public class Inputer {
     }
 
     public void inputbonus() throws IllegalArgumentException {
+        System.out.println("보너스 번호를 입력해주세요.");
         String input = Console.readLine();
         if(!validate(input)) {
             System.out.println("[ERROR] : Invalid argument!");
