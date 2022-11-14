@@ -31,7 +31,7 @@ public class Country implements Seller{
 
     @Override
     public boolean compareBonusNumber(List<Integer> numbers) {
-        return false;
+        return numbers.contains(winningLotto.getBonus());
     }
 
     private void validateMoney(int money) {
