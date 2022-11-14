@@ -18,12 +18,16 @@ public enum LottoRank {
 
     public static LottoRank findRank(int matchingCount) {
         for (LottoRank rank : LottoRank.values()) {
-            if (rank.matchingCount == matchingCount) {
+            if (matchingCount <= NONE.matchingCount) {
+                break;
+            }
+
+            if (matchingCount == rank.matchingCount) {
                 return rank;
             }
         }
 
-        return RANK5;
+        return NONE;
     }
 
     public int calculateTotalAmount(int count) {
