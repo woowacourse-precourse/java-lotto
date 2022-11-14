@@ -2,6 +2,9 @@ package view;
 
 import domain.Lotto;
 import domain.Lottos;
+import dto.LottosDto;
+
+import java.util.List;
 
 public class OutputUtil {
     public static final int MIN_HIT = 3;
@@ -16,11 +19,13 @@ public class OutputUtil {
         System.out.println(PURCHASE_INPUT);
     }
 
-    public void showPurchaseResult(Lottos lottos) {
-        Integer size = lottos.getSize();
+    public void showPurchaseResult(LottosDto lottosDto) {
+        List<Lotto> lottos = lottosDto.lottos;
+        Integer size = lottos.size();
+
         PURCHASE_RESULT= "\n"+Integer.toString(size)+PURCHASE_RESULT;
         System.out.println(PURCHASE_RESULT);
-        for (Lotto lotto: lottos.getLottos() ) {
+        for (Lotto lotto: lottos) {
             System.out.println(lotto);
         }
     }
