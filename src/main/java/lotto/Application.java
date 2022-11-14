@@ -1,6 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Application {
 
@@ -40,15 +44,38 @@ public class Application {
 
     }
 
+    public static List<Integer> generateLotto() {
+
+        List<Integer> lottoList = new ArrayList<>();
+
+        while (lottoList.size() < 6) {
+
+            int r = Randoms.pickNumberInRange(1, 45);   // 1, 45 포함
+            if (lottoList.contains(r)) {
+                continue;
+            }
+
+            lottoList.add(r);
+            System.out.println(r);
+        }
+
+        Lotto lotto = new Lotto(lottoList); // 생성한 로또에 대해 유효성 검사
+        Collections.sort(lottoList);
+
+        return lottoList;
+
+    }
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        enterPurchaseAmount();
-        printNumberOfTickets();
+        enterPurchaseAmount();      // 구매 금액 입력
+        printNumberOfTickets();     // 로또 개수 출력
 
-        int[] winningNums = enterTheWinningNumber();
+        List<Integer> lotto = generateLotto();   // 로또 랜덤으로 생성
 
+        int [] winningNums = enterTheWinningNumber();   // 당첨번호 입력 받기
 
     }
 }
