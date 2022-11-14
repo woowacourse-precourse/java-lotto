@@ -1,7 +1,7 @@
 package lotto.view;
 
-import lotto.domain.LottoMachine;
 import lotto.domain.Rank;
+import lotto.domain.User;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ public class OutputView {
     public static final String STATISTIC_RESULT_MESSAGE = "당첨 통계";
     public static final String LINE_CHANGE_MESSAGE = "---";
 
-    public static void showLottos(LottoMachine lottoMachine) {
-        System.out.println(lottoMachine.getCount() + BUY_RESULT_MESSAGE);
-        lottoMachine.getLottos().stream()
+    public static void showPurchasedLotto(User user) {
+        System.out.println(user.getQuantity() + BUY_RESULT_MESSAGE);
+        user.getLottos().stream()
                 .forEach(lotto -> System.out.println(lotto));
     }
 
