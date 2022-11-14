@@ -30,6 +30,29 @@ public class Lucky {
         return 0;
     }
 
+    public HashMap<Integer, Integer> compareResult(List<Integer> compareNumbers) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(5, 0);
+        map.put(4, 0);
+        map.put(3, 0);
+        map.put(7, 0);
+        map.put(1, 0);
+        for (int i = 0; i < compareNumbers.size(); i++) {
+            if (compareNumbers.get(i) == 3) {
+                map.put(5, map.get(5) + 1);
+            } else if (compareNumbers.get(i) == 4) {
+                map.put(4, map.get(4) + 1);
+            } else if (compareNumbers.get(i) == 5) {
+                map.put(3, map.get(3) + 1);
+            } else if (compareNumbers.get(i) == 7) {
+                map.put(7, map.get(7) + 1);
+            } else if (compareNumbers.get(i) == 6) {
+                map.put(1, map.get(1) + 1);
+            }
+        }
+        return map;
+    }
+
     public void showResult(HashMap<Integer, Integer> compareResult) {
         System.out.println("당첨 통계");
         System.out.println("---");
