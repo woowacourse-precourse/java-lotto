@@ -1,46 +1,26 @@
 package lotto.domain;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class LottoResult {
-    private static final int RANK_COUNT_DEFAULT_VALUE = 0;
-    private static final int DEFAULT_REWARD = 0;
-
-    private final Map<Rank, Integer> lottoResult;
+    private final List<Rank> lottoResult;
 
     public LottoResult(WinningLotto winningLotto, List<Lotto> lottos) {
-        this.lottoResult = new HashMap<>();
-        lottos.stream()
+        this.lottoResult = lottos.stream()
                 .map(winningLotto::rank)
-                .forEach(this::addResult);
-    }
-
-    private void addResult(Rank rank) {
-        lottoResult.put(rank, lottoResult.getOrDefault(rank, RANK_COUNT_DEFAULT_VALUE) + 1);
-    }
-
-    public Money reward() {
-        Money reward = new Money(DEFAULT_REWARD);
-        for (Entry<Rank, Integer> entry : rewardCalculateLottoResult()) {
-            Money rankReward = entry.getKey().reward();
-            reward = reward.add(rankReward.multiply(entry.getValue()));
-        }
-        return reward;
-    }
-
-    private List<Entry<Rank, Integer>> rewardCalculateLottoResult() {
-        return lottoResult.entrySet().stream()
-                .filter(rankIntegerEntry -> rankIntegerEntry.getKey().reward().notZero())
                 .collect(Collectors.toList());
     }
 
+    public Money reward() {
+        return Rank.totalReward(lottoResult);
+    }
+
     public int rankCount(Rank rank) {
-        return lottoResult.getOrDefault(rank, RANK_COUNT_DEFAULT_VALUE);
+        return Long.valueOf(this.lottoResult.stream()
+                .filter(rank::equals)
+                .count()).intValue();
     }
 
     @Override

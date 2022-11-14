@@ -12,6 +12,8 @@ public enum Rank {
     FIFTH(3, false, 5_000),
     MISS(0, false, 0);
 
+    private static final long DEFAULT_REWARD = 0;
+
     private final int matchCount;
     private final boolean matchBonusNumber;
     private final Money reward;
@@ -45,6 +47,14 @@ public enum Rank {
 
     private boolean isMatchCountEqual(int matchCount) {
         return this.matchCount == matchCount;
+    }
+
+    public static Money totalReward(List<Rank> lottoResult) {
+        Money money = new Money(DEFAULT_REWARD);
+        for (Rank rank : lottoResult) {
+            money = money.add(rank.reward);
+        }
+        return money;
     }
 
     public int matchCount() {

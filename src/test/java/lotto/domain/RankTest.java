@@ -2,7 +2,10 @@ package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -26,6 +29,14 @@ public class RankTest {
     @MethodSource("provideForResult")
     void result(int matchCount, boolean matchBonusNumber, Rank rank) {
         assertThat(Rank.result(matchCount, matchBonusNumber)).isEqualTo(rank);
+    }
+
+    @DisplayName("순위의 상금을 더한 돈을 반환한다.")
+    @Test
+    void reward() {
+        List<Rank> ranks = List.of(Rank.FIRST, Rank.SECOND, Rank.THIRD, Rank.FOURTH, Rank.FIFTH, Rank.MISS);
+
+        assertThat(Rank.totalReward(ranks)).isEqualTo(new Money(2_031_555_000));
     }
 
     private static Stream<Arguments> provideForMatchCount() {
