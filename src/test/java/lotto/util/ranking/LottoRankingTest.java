@@ -26,9 +26,10 @@ class LottoRankingTest {
         void lotto_ranking_reward_formatting_test(LottoRanking lottoRanking) {
             String message = lottoRanking.findRewardMessage();
 
-            assertThat(message).contains(OPEN_BRACKET);
-            assertThat(message).contains(CLOSE_BRACKET);
-            assertThat(message).contains(AMOUNT_UNIT);
+            assertThat(message)
+                    .contains(OPEN_BRACKET)
+                    .contains(CLOSE_BRACKET)
+                    .contains(AMOUNT_UNIT);
         }
     }
 
