@@ -2,7 +2,7 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Arrays;
+import java.util.List;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoPublication;
@@ -23,7 +23,7 @@ public class LottoPublicationTest {
     @DisplayName("로또 번호 오름차순 정렬 테스트")
     @Test
     void sortLottoNumber(){
-        Lotto lotto = new Lotto(Arrays.asList(1,6,2,5,3,4));
+        Lotto lotto = new Lotto(List.of(1,6,2,5,3,4));
         assertThat(lotto.toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
 }
