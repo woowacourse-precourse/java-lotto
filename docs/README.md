@@ -52,13 +52,14 @@
 
 
 ## 기능 구현 세부사항 List Up
-**Enum Class**
+### Enum Class
 - WinningPlace
   - 1등(FIRST_PLACE) : 6개 번호 일치
   - 2등(SECOND_PLACE) : 5개 번호 일치 + 보너스 번호
   - 3등(THIRD_PLACE) : 5개 번호 일치
   - 4등(FOURTH_PLACE) : 4개 번호 일치
   - 5등(FIFTH_PLACE) : 3개 번호 일치
+  - 미당첨(NOT_IN_LIST) : 3개 미만 당첨되는 경우
   - ENUM_VALUE(correspondingNumber, correspondingBonusNumber, winnings, message)
   - getWinnings() : 당첨금 반환
   - getMessage() : 당첨 관련 메세지 반환
@@ -67,7 +68,7 @@
   - INPUT_LOTTO_RANGE_ERROR
     - "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
   - INPUT_BONUS_NUMBER_RANGE_ERROR
-    - "[Error] 보너스 번호는 1부터 45 사이의 숫자여야 합니다."
+    - "[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다."
   - INPUT_WRONG_SIZE_ERROR
     - "[ERROR] 로또 당첨 번호느 6개의 수여야 합니다."
   - INPUT_BUYING_RANGE_ERROR
@@ -78,11 +79,8 @@
     - "[ERROR] 입력은 문자를 포함할 수 없습니다."
   - NOT_IN_WINNING_PLACE
     - "[ERROR] 일치하는 등수에 존재하지 않습니다."
-- BaseResponse(고민중)
-  - 사용자가 구입금액을 입력하고 검증이 된 경우 : "N개를 구매했습니다."
-  - 보너스 번호까지 입력이 완료된 경우 : "당첨 통게 --- ..."
 
-**Application Class**
+### Application Class
 - 사용자 입력 구매금액 숫자만으로 구성되어있는지 검증 : checkUserInputCondition(String input)
   - Character.isDigit() 활용해서 숫자로만 구성되어있는지 검증
 - 사용자 입력 구매금액 검증하고 변환: convertBuyingPriceIntoTicketAmount(int buyingPrice)
@@ -114,6 +112,11 @@
 - 사용자 보너스 번호 입력 모듈 : inputBonusNumebr()
   - validateBonusNumberRange() : 보너스번호 범휘 검증
   - 앞서 정의된 검증 함수 및 입출력 형식 코드 구성
+- 구매한 로또 번호에 대한 등수 구하기 : getWinningPlaceByTicket()
+  - iter 통한 ticket 순회
+  - 각 ticket당 기록 추가: addToHistory()
+  - **Streams 리팩토링**
+  - 기록 관리하는 winningHistory map에 기록 추가
 
 - 수익률 계산 : calculateEarningRate(int buyingPrice, Winning winningPlace)
   - int buyingPrice : 사용자의 구매
@@ -121,7 +124,7 @@
   - 수익률(earningRate) : winningPlace / buyingPrice
   - String.format("%.1f", double) : 소수 둘째 자리에서 반올림
 
-**Lotto Class**
+### Lotto Class
 - 랜덤 로또 번호 생성 : createRandomUniqueNumbers()
   - Randoms.pickUniqueNumbersInRange() 사용
   - 오름차순 정렬까지 포함 - Collections.sort()
