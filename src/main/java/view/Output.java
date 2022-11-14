@@ -28,11 +28,14 @@ public class Output {
         }
     }
 
-    public int checkOneLottoRank(List<Integer> answer, int bonus, List<List<Integer>> lottos, int index) {
-        int count = (int) answer.stream().filter(o -> lottos.get(index).stream()
+    public int countLottoSame(List<Integer> answer, int bonus, List<Integer> lotto) {
+        return (int) answer.stream().filter(o -> lotto.stream()
                 .anyMatch(Predicate.isEqual(o))).count();
+    }
+
+    public int checkOneLottoRank(int bonus, List<Integer> lotto, int count) {
         int rank = 8 - count;
-        if (count == 5 && lottos.get(index).contains(bonus)) {
+        if (count == 5 && lotto.contains(bonus)) {
             rank = 2;
         }
         if (count == 6) {
@@ -42,10 +45,11 @@ public class Output {
     }
 
     public void setRankList(List<List<Integer>> lottos, List<Integer> answer, int bonus) {
-        for(int i = 0; i < lottos.size(); i++) {
-            if( checkOneLottoRank(answer, bonus, lottos, i) <= 5) {
-                rankNumber.set(checkOneLottoRank(answer, bonus, lottos, i)-1,
-                        rankNumber.get(checkOneLottoRank(answer, bonus, lottos, i)-1)+1);
+        for (int i = 0; i < lottos.size(); i++) {
+            int count = countLottoSame(answer, bonus, lottos.get(i));
+            if (checkOneLottoRank(bonus, lottos.get(i), count) <= 5) {
+                rankNumber.set(checkOneLottoRank(bonus, lottos.get(i), count)-1,
+                        rankNumber.get(checkOneLottoRank(bonus, lottos.get(i), count)-1)+1);
             }
         }
     }
