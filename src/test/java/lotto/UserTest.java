@@ -37,18 +37,15 @@ public class UserTest {
         User.setUserInputMoney(inputMoney);
         User.setUserInputNumber(inputNumber);
         User.setUserInputBonusNumber(inputBonusNumber);
-        User.setLotteries(lotto);
 
         int money = User.getUserInputMoney();
         int bonusNumber = user.getUserInputBonusNumber();
         List<Integer> number = user.getUserInputNumber();
-        List<List<Integer>> lotteries = user.getLotteries();
 
         assertAll(
                 () -> assertThat(money).isEqualTo(validInputMoney),
                 () -> assertThat(number).isEqualTo(validInputNumber),
-                () -> assertThat(bonusNumber).isEqualTo(validInputBonusNumber),
-                ()-> assertThat(lotteries).isEqualTo(validLotteries)
+                () -> assertThat(bonusNumber).isEqualTo(validInputBonusNumber)
         );
     }
 
@@ -61,6 +58,16 @@ public class UserTest {
 
         assertAll(
                 () -> assertThat(lottoAmount).isEqualTo(validLottoAmount)
+        );
+    }
+
+    @DisplayName("발행된 로또가 저장되는지 테스트")
+    @Test
+    void checkLottoSave() {
+        User.setLotteries(lotto);
+        List<List<Integer>> lotteries = user.getLotteries();
+        assertAll(
+                () -> assertThat(lotteries).isEqualTo(validLotteries)
         );
     }
 }
