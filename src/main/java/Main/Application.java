@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import Print.Message;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -12,7 +13,7 @@ public class Application {
     public static void main(String[] args) {
         //BuyLotto butlotto = new BuyLotto();
     	
-    	System.out.println("구입금액을 입력해 주세요.");
+    	Message.INPUT_MONEY.print();
     	String s = Console.readLine();
     	try {
     		change(s);
@@ -29,7 +30,7 @@ public class Application {
     		arr[i] = new ArrayList<>();
     	}
     	
-    	System.out.println("\n" + n + "개를 구매했습니다.");
+    	Message.LOTTO_COUNT.print_count(n);
     	for(int i = 0; i < n; i++) {
     		
     		arr[i] = new ArrayList<>(input());
@@ -39,7 +40,7 @@ public class Application {
     		System.out.println(arr[i]);
     	}
     	
-    	System.out.println("\n당첨 번호를 입력해 주세요.");
+    	Message.INPUT_WINNER_NUMBER.print();
     	String[] win_number_string = Console.readLine().split(",");
     	
     	int[] win_number = new int[win_number_string.length];
@@ -52,11 +53,10 @@ public class Application {
     		}
     	}
     	
-    	System.out.println("\n보너스 번호를 입력해 주세요.");
+    	Message.INPUT_BONUS_NUMBER.print();
     	int bonus_number = Integer.parseInt(Console.readLine());
     	
-    	System.out.println("\n당첨 통계");
-    	System.out.println("---");
+    	Message.WINNING_STATES.print();
     	
     	int[] result_price = {0, 0, 0, 5000, 50000, 1500000, 30000000, 2000000000};
     	String[] result_print = {"", "", "", "3개 일치 (5,000원)", "4개 일치 (50,000원)", "5개 일치 (1,500,000원)", "5개 일치, 보너스 볼 일치 (30,000,000원)", "6개 일치 (2,000,000,000원)"};
@@ -75,16 +75,15 @@ public class Application {
     		result_count[count]++;
     	}
     	
-    	long sum = 0;
-    	BigDecimal percent = BigDecimal.ONE;
+    	double profit = 0;
     	for(int i = 3; i < result_print.length; i++) {
     		System.out.println(result_print[i] + " - " + result_count[i] + "개");
-    		sum += result_count[i] * result_price[i];
+    		profit += result_count[i] * result_price[i];
     	}
     	
-    	percent = new BigDecimal(sum).divide(new BigDecimal(n * 1000)).multiply(new BigDecimal(100));
+    	profit = profit / (n * 1000) * 100;
     	
-    	System.out.println("총 수익률은 " + String.format("%.1f", percent) + "%입니다.");
+    	Message.PROFIT.print_profit(profit);
     }
     
     public static void change(String s) {
