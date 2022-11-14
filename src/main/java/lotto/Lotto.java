@@ -1,7 +1,6 @@
 package lotto;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,6 +12,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR] 로또 번호는 6개 있어야 합니다.");
+            throw new IllegalArgumentException();
+        }
+        if (isDuplicatedNumber(numbers)) {
+            System.out.println("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
             throw new IllegalArgumentException();
         }
     }
@@ -32,5 +36,11 @@ public class Lotto {
 
     private void sort() {
         Collections.sort(this.numbers);
+    }
+
+    private boolean isDuplicatedNumber(List<Integer> number) {
+        Set<Integer> set = new HashSet<>(number);
+
+        return number.size() != set.size();
     }
 }
