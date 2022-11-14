@@ -198,7 +198,11 @@ class LottoTest {
         ProfitRate profitRate = new ProfitRate(50000, scoreList);
         System.out.println("profitRate.profit = " + profitRate.profit);
         System.out.println("bonus.bonus = " + bonus.bonus);
-
+        System.out.println("ticketNumbers.allTicket = " + ticketNumbers.allTicket);
+        System.out.println("checkScore.scoreList = " + checkScore.scoreList);
+        System.out.println("buyPrice = " + buyPrice.numberOfTickets);
+        System.out.println("buyPrice = " + buyPrice.buyCost);
+        System.out.println("profitRate.profitRate = " + profitRate.profitRate);
     }
 }
 

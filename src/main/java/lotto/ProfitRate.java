@@ -15,6 +15,8 @@ public class ProfitRate {
 
     static Integer profit ;
 
+    static float profitRate = 0;
+
     public ProfitRate(Integer input, List<Integer> output){ //input - 구입 가격 , output - correctList
         this.input = input;
         this.output = output;
@@ -48,6 +50,7 @@ public class ProfitRate {
         System.out.println("in = " + in);
         System.out.println("out = " + out);
         System.out.println("rate = " + rate);
+        profitRate = rate;
         return rate;
         }
         System.out.println(" 이득 없음 ");

@@ -11,6 +11,11 @@ public class BuyPrice {
     final static int zero = 0;
     private final String cost;
 
+    static Integer numberOfTickets;
+
+    static Integer buyCost;
+
+
     public BuyPrice(String cost){
         this.cost = cost;
         checkPrice();
@@ -25,6 +30,8 @@ public class BuyPrice {
         if(costs%thousand != zero ){
             new Exceptions("1000원으로 나눠져야 한다");
         }
+        numberOfTickets = costs/1000;
+        buyCost = costs;
         return costs/1000;
     }
 

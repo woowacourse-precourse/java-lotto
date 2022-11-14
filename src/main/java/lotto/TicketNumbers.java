@@ -10,7 +10,7 @@ import java.util.List;
 public class TicketNumbers {
 
     private final int tickets;
-    private final List<List<Integer>> allTicket = new ArrayList<>();
+    static List<List<Integer>> allTicket = new ArrayList<>();
 
     public TicketNumbers(int tickets){
         this.tickets = tickets;
