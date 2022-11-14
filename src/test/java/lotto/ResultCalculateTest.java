@@ -50,7 +50,7 @@ class ResultCalculateTest {
     }
     @DisplayName("2가지 일련번호에서 적절한 등수 List를 찾아내는지")
     @Test
-    void 다_같음(){
+    void 금액과_등수_종합(){
         List<Lotto> lottos = new LinkedList<>();
         List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7);
         lottos.add(new Lotto(Arrays.asList(1,2,3,4,5,6))); //1등
@@ -64,5 +64,14 @@ class ResultCalculateTest {
         assertThat(2_031_555_000).isEqualTo(ResultCalculate.synthesizeRanking(lottos,numbers).get(0));
         assertThat(true)
                 .isEqualTo(ResultCalculate.synthesizeRanking(lottos,numbers).equals(answer));
+    }
+    @DisplayName("수익과 원금으로 수익률 계산을 잘 수행하는지 test")
+    @Test
+    void 수익률_계산(){
+        assertThat(50.0)
+                .isEqualTo(ResultCalculate.calculatePercent(1000,2000));
+        assertThat(11142.9)
+                .isEqualTo(ResultCalculate.calculatePercent(780000,7000));
+
     }
 }
