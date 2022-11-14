@@ -18,7 +18,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != count) {
-            throw new IllegalArgumentException("[ERROR] " + count + "개가 넘는 숫자 입력");
+            throw new IllegalArgumentException("[ERROR] " + count + "개가 아닌 숫자 입력");
         }
 
         Long nonDuplicatedElementCnt = numbers.stream().distinct().count();
