@@ -32,11 +32,7 @@ public class GenerateLottoNumbers {
     }
 
     public static List<Integer> sortedList(List<Integer> unsortedList) {
-        List<Integer> sortedList = new ArrayList<>();
-        unsortedList
-                .stream()
-                .map(number -> sortedList.add(number))
-                .collect(Collectors.toList());
+        List<Integer> sortedList = new ArrayList<>(unsortedList);
         Collections.sort(sortedList);
         return sortedList;
     }
