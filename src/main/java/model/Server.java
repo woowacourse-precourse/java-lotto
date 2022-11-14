@@ -25,4 +25,8 @@ public class Server {
         common.retainAll(winLottoNumber);
         return common.size();
     }
+
+    public Boolean isInclude(List<Integer> winLottoNumber, int bonusNumber){
+        return winLottoNumber.contains(bonusNumber);
+    }
 }
