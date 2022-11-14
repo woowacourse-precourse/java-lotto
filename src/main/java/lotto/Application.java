@@ -15,7 +15,7 @@ public class Application {
         int buyMoney = buyLotto();
         List<Integer> lottoRandomNum = lottoRandomNum();
         List<List<Integer>> buyLottoPrint = buyLottoPrint(buyMoney);
-        List<Integer> myLottoNum = myLottoNum();
+        Lotto myLottoNum = myLottoNum();
         int bonusNum = bonusNum(myLottoNum);
 
     }
@@ -93,7 +93,7 @@ public class Application {
      * 
      * @param myLottoNum
      */
-    public static List<Integer> myLottoNum() {
+    public static Lotto myLottoNum() {
         System.out.print("당첨 번호를 입력해 주세요.");
         String myPickNum = Console.readLine();
 
@@ -109,7 +109,7 @@ public class Application {
                 throw new IllegalArgumentException("[ERROR] 입력 타입 오류.");
             }
         }
-        return myLottoNum;
+        return new Lotto(myLottoNum);
     }
 
     // 보너스 번호 입력
@@ -118,7 +118,7 @@ public class Application {
      * 
      * @return
      */
-    public static int bonusNum(List<Integer> myLottoNum) {
+    public static int bonusNum(Lotto myLottoNum) {
         System.out.print("보너스 번호를 입력해 주세요.");
         int bonusPick = 0;
         try {
@@ -128,14 +128,33 @@ public class Application {
         }
 
         int bonusNum = 0;
-        if (myLottoNum.contains(bonusPick)) {
+        if (((List<Integer>) myLottoNum).contains(bonusPick)) {
             throw new IllegalArgumentException("[ERROR] 중복입력.에러 발생.");
         }
-        if (!myLottoNum.contains(bonusPick)) {
+        if (!((List<Integer>) myLottoNum).contains(bonusPick)) {
             bonusNum = bonusPick;
         }
 
         return bonusNum;
     }
 
+    // 로또번호 대조
+    /**
+     * 4. lottoStart (로또 번호 대조하기) 완료 <br/>
+     * 
+     * @param lottoRandomNum
+     * @param myLottoNum
+     * @return
+     */
+    public static int lottoStart(List<Integer> lottoRandomNum, List<Integer> myLottoNum) {
+
+        int agreementCount = 0;
+
+        for (int i = 0; i < lottoRandomNum.size(); i++) {
+            if (myLottoNum.contains(lottoRandomNum.get(i))) {
+                agreementCount++;
+            }
+        }
+        return agreementCount;
+    }
 }
