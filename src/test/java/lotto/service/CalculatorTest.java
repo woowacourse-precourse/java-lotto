@@ -33,4 +33,18 @@ public class CalculatorTest {
         // then
         assertEquals("62.5%", yield);
     }
+
+    @Test
+    @DisplayName("당첨 금액이 없으면 수익률은 0.0%이다.")
+    void zeroYieldTest() {
+        // given
+        long totalWinningPrize = 0;
+        int purchaseAmount = 10000;
+
+        // when
+        String yield = Calculator.getYield(totalWinningPrize, purchaseAmount);
+
+        // then
+        assertEquals("0.0%", yield);
+    }
 }
