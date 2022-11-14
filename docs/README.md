@@ -16,7 +16,7 @@
     - [X] 구분자가 쉼표가 아니면 예외 처리
     - [ ] 로또 번호의 숫자 범위는 1~45까지가 아닐 경우 예외 처리(IllegalArgumentException)
     - [ ] 입력 받은 당첨 번호의 수가 서로 중복되는 경우 예외 처리(IllegalArgumentException)
-- [ ] 보너스 번호 입력 받는 기능
+- [X] 보너스 번호 입력 받는 기능
     - [ ] 입력 받은 보너스 번호가 앞서 입력한 당첨 번호와 중복되는 경우 예외 처리(IllegalArgumentException)
 
 ### 예외 처리
