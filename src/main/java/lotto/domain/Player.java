@@ -27,9 +27,8 @@ public class Player {
         validateDivisibility(this.purchaseAmount);
     }
 
-
-    private void validateDivisibility(int number) {
-        if (number % LOTTO_PRICE != 0) {
+    private void validateDivisibility(int purchaseAmount) {
+        if (purchaseAmount % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(PURCHASE_AMOUNT_INDIVISIBILITY_EXCEPTION.toString());
         }
     }
