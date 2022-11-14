@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+@DisplayName("LottoController 테스트")
 class LottoControllerTest {
     private final LottoController lottoController
             = new LottoController(

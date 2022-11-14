@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("ScoreInfo 테스트")
 class ScoreInfoTest {
     @Nested
     @DisplayName("ScoreInfo 생성자 테스트")

@@ -11,6 +11,7 @@ import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("LottoApplication 테스트")
 class LottoApplicationTest {
     @Nested
     @DisplayName("주요 애플리케이션 구동을 담당하는 run 메소드 테스트")
