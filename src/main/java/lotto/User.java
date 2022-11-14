@@ -52,7 +52,7 @@ public class User {
         while (all_lotto.size() < num) {
             all_lotto.add(lotto());
         }
-
+        System.out.println(all_lotto);
         for(int i = 0; i < all_lotto.size(); i++) {
             System.out.println(all_lotto.get(i));
         }
@@ -83,6 +83,8 @@ public class User {
         }
         return bonus_number;
     }
+
+
 
 
 }

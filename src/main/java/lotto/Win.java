@@ -1,5 +1,10 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
+
 public enum Win {
     FIRST(6, 2000000000),
     SECOND(5, 30000000),
@@ -37,9 +42,25 @@ public enum Win {
         if(cnt_match ==4) {
             return  FOURTH;
         }
-        if(cnt_match ==5){
+        if(cnt_match ==3){
             return  FIFTH;
         }
         return BLANK;
+    }
+    public static List<Integer> cnt_total_ranking(List<Integer> match, List<Boolean> match_bonus) {
+        List<Win> total_ranking = new ArrayList<>();
+        List<Integer> cnt_total_ranking = new ArrayList<>();
+        int i = 0;
+        while(total_ranking.size() < match.size()) {
+            total_ranking.add(ranking(match.get(i), match_bonus.get(i)));
+            i++;
+        }
+        Stream.of(Win.values()).forEachOrdered(r -> cnt_total_ranking.add(Collections.frequency(total_ranking, r)));
+        System.out.println("3개 일치 (5,000원) - " + cnt_total_ranking.get(4) + "개");
+        System.out.println("4개 일치 (50,000원) - " + cnt_total_ranking.get(3) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + cnt_total_ranking.get(2) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " +cnt_total_ranking.get(1) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + cnt_total_ranking.get(0) + "개");
+        return cnt_total_ranking;
     }
 }
