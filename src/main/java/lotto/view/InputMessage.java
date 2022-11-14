@@ -21,6 +21,6 @@ public class InputMessage {
 
     public void PurchasedLottoNumberMessage(List<List<Integer>> lotts) {
         lotts.forEach(System.out::println);
-        System.out.print(INPUT_WINNING_NUMBER);
+        System.out.println(INPUT_WINNING_NUMBER);
     }
 }
