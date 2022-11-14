@@ -37,7 +37,7 @@ public class Host {
         int correctCount = 0;
 
         for (int i = 0; i < Constants.LOTTO_LEN; i++) {
-            if (userLottoNumbers.get(i) == winningLottoNumbers.get(i)) {
+            if (winningLottoNumbers.contains(userLottoNumbers.get(i))) {
                 correctCount += 1;
             }
         }

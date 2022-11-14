@@ -21,8 +21,8 @@ public class Store {
     }
 
     private List<Integer> generateLottoNumber() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Constants.LOTTO_START_NUMBER,
-                Constants.LOTTO_END_NUMBER, Constants.LOTTO_LEN);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(Constants.LOTTO_START_NUMBER,
+                Constants.LOTTO_END_NUMBER, Constants.LOTTO_LEN));
 
         numbers.sort(null);
         return numbers;

@@ -22,6 +22,7 @@ public class Statistics {
     }
 
     public void printStatistics() {
+        System.out.println();
         System.out.println(Constants.STATISTICS_TITLE);
         System.out.println(Constants.STATISTICS_TITLE_SUFFIX);
 
