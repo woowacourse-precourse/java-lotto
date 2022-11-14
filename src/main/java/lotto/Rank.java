@@ -18,6 +18,11 @@ public enum Rank implements Comparator<Rank> {
 		this.winningMoney = winningMoney;
 	}
 
+	public int getWinningMoney() {
+		return winningMoney;
+	}
 
-
+	public int getCountOfMatch() {
+		return countOfMatch;
+	}
 }
