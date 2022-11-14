@@ -13,6 +13,7 @@ public class WinningNumber {
         return winning;
     }
     public List<Integer> numberToString(String input){
+        validateNumber(input);
         winningNumber = Arrays.stream(input.split(","))
                 .mapToInt(Integer::parseInt)
                 .boxed().collect(Collectors.toList());
@@ -29,5 +30,9 @@ public class WinningNumber {
     private void validateDuplicate(int bonus, List<Integer> winningNumber){
         if(winningNumber.contains(bonus))
             throw new IllegalArgumentException("[ERROR] 보너스 숫자는 당첨 번호와 중복되면 안됩니다.");
+    }
+    private void validateNumber(String input){
+        if(!input.matches("^[0-9,]*$"))
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자와 쉼표(,)로 이루어져야 합니다.");
     }
 }
