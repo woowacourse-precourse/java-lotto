@@ -62,6 +62,16 @@ public class RankTest {
     }
 
     @Test
+    @DisplayName("보너스 숫자와 당첨 숫자가 중복되는 경우")
+    void generateWinningLottoException4(){
+        String winningNumbers = "1 2 3 4 5 7";
+        String bonus = "7";
+        assertThatThrownBy(
+                () -> rankService.generateWinningLotto(winningNumbers, bonus)
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("등수 계산 테스트")
     void ranking(){
         String winningNumber = "1,2,3,4,5,6";

@@ -12,6 +12,7 @@ public class RankService {
 
     public WinLotto generateWinningLotto(String numbers, String bonus)
             throws IllegalArgumentException{
+        validate(numbers, bonus);
         try {
             List<Integer> winningNumbers = Arrays.stream(numbers.split(","))
                     .map(Integer::parseInt).collect(Collectors.toList());
@@ -20,6 +21,12 @@ public class RankService {
             return new WinLotto(winningNumbers, bonusNumber);
         }catch (Exception e){
             throw new IllegalArgumentException(ErrorMsg.INPUT_ERROR.toString());
+        }
+    }
+
+    private void validate(String numbers, String bonus) {
+        if (numbers.contains(bonus)) {
+            throw new IllegalArgumentException(ErrorMsg.DUPLICATE_BONUS_NUMBER.toString());
         }
     }
 
