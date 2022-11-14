@@ -72,7 +72,11 @@ public class Application {
         return equalNumberCount;
     }
 
-    private int changeLottoResultNumber(int count, boolean bonus, List<Integer> lottoResult) {
+    private boolean isContainBonusNumber(List<Integer> winningLotto, int bonusNumber) {
+        return winningLotto.contains(bonusNumber);
+    }
+
+    private int changeLottoResultNumber(int count, boolean bonus) {
 
         if (count == 6) {
             return 0;
