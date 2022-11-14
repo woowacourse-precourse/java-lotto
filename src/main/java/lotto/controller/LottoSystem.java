@@ -27,6 +27,13 @@ public class LottoSystem {
         int prizeMoney = calculatePrizeMoey(lottoResult);
     }
 
+    public double calculateYield(int prizeMoney, int userMoney) {
+        if(prizeMoney == 0) {
+            return 0;
+        }
+        return (((double) prizeMoney / (double) userMoney) * 100.0);
+    }
+
     public int calculatePrizeMoey(List<LottoRanking> lottoResult) {
         int prizeMoney = 0;
         for(LottoRanking ranking : lottoResult) {

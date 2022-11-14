@@ -20,9 +20,21 @@ import org.junit.jupiter.api.Test;
 class LottoSystemTest {
     LottoSystem lottoSystem = new LottoSystem();
 
+    @DisplayName("수익률 구하기")
+    @Test
+    public void calculateYieldTest() {
+        //given
+        int prizeMoney = 5000;
+        int userMoney = 8000;
+        //when
+        double expected = lottoSystem.calculateYield(prizeMoney, userMoney);
+        //then
+        assertThat(expected).isEqualTo(62.5);
+    }
+
     @DisplayName("당첨금액 구하기")
     @Test
-    public void calculatePrizeMoney() {
+    public void calculatePrizeMoneyTest() {
         //given
         List<LottoRanking> lottoResult = Arrays.asList(FIVE_RIGHT, FIVE_AND_BONUS_RIGHT, ZERO_RIGHT, ONE_RIGHT, THREE_RIGHT);
         //when
@@ -33,7 +45,7 @@ class LottoSystemTest {
 
     @DisplayName("로또 번호 당첨 개수 구하기")
     @Test
-    public void createResult() {
+    public void createResultTest() {
         //given
         Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
         WinningLotto winningLotto = new WinningLotto(Arrays.asList(1, 2, 3, 4, 5, 7), 6);
@@ -45,7 +57,7 @@ class LottoSystemTest {
 
     @DisplayName("입력 받은 금액만큼 로또 수량 출력")
     @Test
-    public void createLottoQuantity() {
+    public void createLottoQuantityTest() {
         //given
         int userMoney = 5000;
         //when
@@ -56,7 +68,7 @@ class LottoSystemTest {
     
     @DisplayName("로또 수량만큼 로또가 생성되는지 확인")
     @Test
-    public void createLottos() {
+    public void createLottosTest() {
         //given
         int quantity = 5;
         //when
