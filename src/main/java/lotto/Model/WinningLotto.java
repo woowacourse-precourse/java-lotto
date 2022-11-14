@@ -1,5 +1,6 @@
 package lotto.Model;
 
+import lotto.Service.LottoService;
 import lotto.Service.LottoValidator;
 
 import java.util.List;
@@ -16,7 +17,23 @@ public class WinningLotto extends Lotto {
 
     private void validate(List<Integer> numbers, int bonusNumber) {
         LottoValidator lottoValidator = new LottoValidator();
-        
+
         lottoValidator.validate(numbers, bonusNumber);
     }
+
+    public int compareAndCount(Lotto lotto) {
+        LottoService lottoService = new LottoService();
+
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        List<Integer> winningNumbers = this.getNumbers();
+
+        int count = lottoService.countWinning(lottoNumbers, winningNumbers);
+        if (count == LottoResult.FIVE_WINS.getValue()
+                && lottoNumbers.contains(this.bonusNumber)) {
+            count = LottoResult.FIVE_AND_BONUS_WINS.getValue();
+        }
+
+        return count;
+    }
+
 }
