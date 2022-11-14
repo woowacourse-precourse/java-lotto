@@ -1,6 +1,9 @@
 package view;
 
+import domain.Rank;
+
 import java.util.List;
+import java.util.Map;
 
 public class SystemMessage {
 
@@ -36,13 +39,49 @@ public class SystemMessage {
         System.out.println("");
     }
 
+    public void getResultMessage(Map<Rank, Integer> map){
+        StringBuilder stringBuilder = new StringBuilder();
+        winningMessage();
+        countMessage(stringBuilder, map);
+        System.out.println(stringBuilder);
+    }
+
     public void winningMessage(){
         System.out.println("당첨 통계");
         System.out.println("---");
     }
 
-    public void countMessage(int n){
-        int cnt = 0;
+    public String getBonus(Rank rank){
+        if(rank.isBonus() == true){
+            return ", 보너스 볼 일치";
+        }
+        return "";
+    }
+
+//3개 일치 (5,000원) - 1개
+//4개 일치 (50,000원) - 0개
+//5개 일치 (1,500,000원) - 0개
+//5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
+//6개 일치 (2,000,000,000원) - 0개
+    public void countMessage(StringBuilder stringBuilder, Map<Rank, Integer> map){
+        for(Rank rank : Rank.getRank()){
+            stringBuilder.append(rank.getCount());
+            stringBuilder.append("개 일치");
+            stringBuilder.append(getBonus(rank));
+
+            stringBuilder.append("(");
+            stringBuilder.append(rank.getReward()).append("원) - ");
+            stringBuilder.append(getCount(map, rank));
+            stringBuilder.append("개");
+            stringBuilder.append(System.lineSeparator());
+        }
+    }
+
+    public static int getCount(Map<Rank, Integer> map, Rank rank){
+        if(map.containsKey(rank)){
+            return map.get(rank);
+        }
+        return 0;
     }
 
 }
