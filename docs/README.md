@@ -25,21 +25,27 @@
 총 수익률은 62.5%입니다.
 ```
 
+### InputConverter
+- [ ] String Input ➡️ Integer로 변환 (구입 금액)
+  - [ ] 구입 금액이 숫자 이외에 문자가 존재할 경우 IllegalArgumentException 발생 시킨다.
+  - [ ] 보너스 번호가 숫자 이외에 문자가 존재할 경우 IllegalArgumentException 발생 시킨다.
+  
+- [ ] String Input ➡️ `List<Integer>`로 변환 (당첨 번호)
+  - [ ] **숫자, 쉼표`,` 이외에 문자**가 존재하는 경우 IllegalArgumentException 발생 시킨다. (`,` split 진행 후 각각 Integer.parseInt 예외가 발생한다.)
+
+
 ### InputValidator
 
-- [ ] 입력한 로또 구입 금액에 따른 로또의 갯수를 구한다.
+- [ ] InputConverter를 통해 변환된 구입 금액이 올바른 값인지 검사한다.
     - [ ] 1,000원 단위 입력이 아닐 경우 IllegalArgumentException 발생 시킨다. (1000으로 나눴을 때 나머지가 0이 아닐 때 예외가 발생한다.)
-    - [ ] 구입 금액이 숫자 이외에 문자가 존재할 경우 IllegalArgumentException 발생 시킨다. (Integer.parseInt 예외가 발생한다.)
 
 
-- [ ] 당첨 번호 입력값을 쉼표 기준으로 나눈다.
+- [ ] InputConverter를 통해 변환된 당첨 번호를 올바른 값인지 검사한다.
     - [ ] `1~45` **범위 이외의 숫자**일 경우 IllegalArgumentException 발생 시킨다. (범위 체크 메서드 return 값이 false일 경우 예외가 발생한다. )
     - [ ] 당첨 번호의 갯수가 6개가 아닌 경우 IllegalArgumentException 발생 시킨다. (size 체크시 6이 아닐 시 예외가 발생한다.)
-    - [ ] **숫자, 쉼표`,` 이외에 문자**가 존재하는 경우 IllegalArgumentException 발생 시킨다. (`,` split 진행 후 각각 Integer.parseInt 예외가 발생한다.)
     - [ ] 중복된 숫자가 존재하는 경우 IllegalArgumentException 발생 시킨다. (stream 이용하여 distinct().count()와 size가 다를 경우 예외가 발생한다.)
 
-
-- [ ] 보너스 번호 유효한 입력 값인지 당첨 번호를 이용하여 구한다.
+- [ ] InputConverter 를 통해 변환된 보너스 번호가 올바른 값인지 검사한다.
     - [ ] 위의 당첨 번호 예외 처리를 이용한다.
 
 
