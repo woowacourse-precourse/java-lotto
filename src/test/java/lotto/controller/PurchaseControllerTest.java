@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,14 +12,13 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PurchaseControllerTest {
     private PurchaseController purchaseController = new PurchaseController();
 
     @DisplayName("사용자가 잘못된 금액을 입력했을 경우 예외를 발생한다.")
     @ParameterizedTest
-    @ValueSource(strings = {"000","100","12001","abcd","100a"})
+    @ValueSource(strings = {"000","100","12001","abcd","100a","9000000","  1000"})
     void inputMoneyByUser(String input) {
         InputStream in = generateUserInput(input);
         System.setIn(in);
@@ -28,7 +26,6 @@ class PurchaseControllerTest {
 
         Assertions.assertThatThrownBy(() -> purchaseController.inputMoneyByUser())
                 .isInstanceOf(IllegalArgumentException.class);
-
     }
 
     @Test
