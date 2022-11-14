@@ -36,20 +36,19 @@ public class UahanBank {
     }
 
     private Score calculateLottoToScore(List<Integer> wonLotto, List<Integer> bonusLotto, List<Integer> lotto){
-        int win = 0, bonus = 0;
-
-        for(int index = 0; index < LOTTO_LENGTH; index++){
-            if(wonLotto.contains(lotto.get(index))){
-                ++win;
-            }
-        }
-
-        for (int index = 0; index < LOTTO_LENGTH; index++) {
-            if (bonusLotto.contains(lotto.get(index))) {
-                ++bonus;
-            }
-        }
+        int win = compareLottoNumber(wonLotto, lotto);
+        int bonus = compareLottoNumber(bonusLotto, lotto);
 
         return new Score(win, bonus);
+    }
+
+    private int compareLottoNumber(List<Integer> answer, List<Integer> predict){
+        int result = 0;
+        for (int index = 0; index < LOTTO_LENGTH; index++) {
+            if (answer.contains(predict.get(index))) {
+                ++result;
+            }
+        }
+        return result;
     }
 }

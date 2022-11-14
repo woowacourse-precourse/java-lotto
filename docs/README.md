@@ -72,7 +72,7 @@
 - [x] 등수별 점수 생성 - createRankScore
 - [ ] 등수별 당첨 금액 반환 - changeLottoToMoney
   - [x] 추점된 로또와 발행된 로또를 가지고 점수 반환 - calculateLottoToScore
-
+    - [x] 정답 번호들과 예측 번호들을 비교하여 맞은 개수를 반환 - compareLottoNumber
 ## 제어(`Controller`)
 
 게임의 실행과 전반적인 흐름을 담당
