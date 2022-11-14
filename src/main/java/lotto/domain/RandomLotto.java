@@ -12,6 +12,9 @@ public class RandomLotto {
     private List<List<Integer>> listOfListLotto;
     public int purchaseAmount;
     public int purchaseCount;
+    private final int lottoSize = 6;
+    private final int lottoNumStart = 1;
+    private final int lottoNumEnd = 45;
 
     public RandomLotto() throws IllegalArgumentException {
         this.purchaseLotto = new PurchaseLotto();
@@ -31,7 +34,7 @@ public class RandomLotto {
     // 6개의 난수 생성
     private List<Integer> createRandomList() {
         List<Integer> lottoNumbers = new ArrayList<>();
-        lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        lottoNumbers = Randoms.pickUniqueNumbersInRange(lottoNumStart, lottoNumEnd, lottoSize);
         return lottoNumbers;
     }
 

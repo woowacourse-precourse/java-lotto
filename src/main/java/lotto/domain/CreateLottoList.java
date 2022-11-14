@@ -11,6 +11,8 @@ public class CreateLottoList {
     private Lotto lotto;
     List<Integer> winningList;
     private int bonusNumber;
+    private final int lottoNumStart = 1;
+    private final int lottoNumEnd = 45;
 
     public CreateLottoList() throws IllegalArgumentException{
         this.winningList = inputLotto(Input.input());
@@ -66,7 +68,7 @@ public class CreateLottoList {
     // 보너스 번호가 범위 내에 있는지 검증하는 기능
     private void validRange(String bonus) throws IllegalArgumentException{
         int number = Integer.parseInt(bonus);
-        if (!(number > 0 && number < 46)) {
+        if (!(number >= lottoNumStart && number <= lottoNumEnd)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
         }
     }
