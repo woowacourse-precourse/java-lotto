@@ -5,35 +5,37 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class User{
-    public static int money = Integer.parseInt(Console.readLine());
+    public static int money ;
 
-    private final List<Integer> userNumList;
+    public final List<Integer> userNumList;
+    public static int bonusBall;
 
-    public User(List<Integer> userNumList){
+    public User(int money, List<Integer> userNumList, int bonusBall){
         this.userNumList = userNumList;
+        this.bonusBall = bonusBall;
     }
-
+    public static int getMoney() {
+        return Integer.parseInt(Console.readLine());
+    }
     public static List<Integer> getUserInput(){
         List<Integer> inputList = new ArrayList<>();
-        for (int i = 0; i< money / 1000; i++) {
-            String str = Console.readLine();
-            inputList = (List<Integer>) Arrays.stream((str.split(","))).mapToInt(Integer::parseInt);
 
-        }
+        String str = Console.readLine();
+        int[] List = Stream.of(str.split(",")).mapToInt(Integer::parseInt).toArray();
+        inputList = Arrays.stream(List).boxed().collect(Collectors.toList());
+
+        System.out.println(inputList);
         return inputList;
     }
 
-    public static List<Integer> stringToNum(String[] strlist){
-        List<Integer> numList = new ArrayList<>();
-        for (int i = 0; i < strlist.length; i++){
-            numList.add(Integer.parseInt(strlist[i]));
-        }
-        return numList;
+    public static int getBonusNum(){
+        return Integer.parseInt(Console.readLine());
     }
 
-    public static int bonusNum = Integer.parseInt(Console.readLine());
     public int get_index(int index){
         return userNumList.get(index);
     }

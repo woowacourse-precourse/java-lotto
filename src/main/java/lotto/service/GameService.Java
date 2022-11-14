@@ -4,14 +4,19 @@ import lotto.domain.Lotto;
 import lotto.domain.User;
 import lotto.utils.RewardType;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static lotto.utils.RewardType.getRating;
+
 
 public class GameService {
 
     public static int winNum;
     public static boolean bonusNum;
     //당첨 내역 및 수익률 출력
-    RewardType LottoReward ;
-    public int winLotto(Lotto Lotto, User User){
+
+    public static int winLotto(Lotto Lotto, User User){
         int count=0;
         for (int i = 0; i<6; i++){
             if (Lotto.contains(User.get_index(i))){
@@ -21,15 +26,25 @@ public class GameService {
         return count;
     }
 
-    public int bonusLotto(Lotto Lotto, int bonusNum){
-        int count =0;
+    public static boolean bonusLotto(Lotto Lotto, int bonusNum){
         for (int i=0; i<6; i++){
             if (Lotto.contains(bonusNum)){
-                count+=1;
+                return true;
             }
         }
-        return count;
+        return false;
     }
 
+    public static List<Integer> getResult(int matchNum, boolean containBonusBall){
+        RewardType Reward = getRating(matchNum, containBonusBall);
+        List<Integer> score = Arrays.asList(0,0,0,0,0,0);
+        if (Reward==RewardType.FIRST){score.set(0,score.get(0)+1);};
+        if (Reward==RewardType.SECOND){score.set(1,score.get(1)+1);};
+        if (Reward==RewardType.THIRD){score.set(2,score.get(2)+1);};
+        if (Reward==RewardType.FOURTH){score.set(3,score.get(3)+1);};
+        if (Reward==RewardType.FIFTH){score.set(4,score.get(4)+1);};
+        if (Reward==RewardType.MISS){score.set(5,score.get(5)+1);};
+        return score;
+    }
 
 }
