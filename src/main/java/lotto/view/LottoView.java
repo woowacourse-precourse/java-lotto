@@ -4,6 +4,8 @@ import lotto.model.LottoIssuingMachine;
 import lotto.model.LottoWinningStatistics;
 import lotto.model.LottoWinningStatus;
 
+import java.text.DecimalFormat;
+
 public class LottoView {
 
     private static LottoView instance;
@@ -38,6 +40,8 @@ public class LottoView {
             if (winningStatus == LottoWinningStatus.NOT_WINNING_STATUS) continue;
             System.out.println(winningStatus + " - " + winningStatistics.getWinningCount(winningStatus) + "개");
         }
-        System.out.println("총 수익률은 " + String.format("%.1f", winningStatistics.getEarningsRate()) + "%입니다.");
+
+        DecimalFormat formatter = new DecimalFormat("###,###.0");
+        System.out.println("총 수익률은 " + formatter.format(winningStatistics.getEarningsRate()) + "%입니다.");
     }
 }
