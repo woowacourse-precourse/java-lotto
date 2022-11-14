@@ -2,9 +2,9 @@ package lotto.domain.strategy;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import lotto.domain.LottoNumberGenerateStrategy;
+import lotto.domain.NumberGenerateStrategy;
 
-public class RandomLottoNumberGenerateStrategy implements LottoNumberGenerateStrategy {
+public class RandomNumberGenerateStrategy implements NumberGenerateStrategy {
     private static final int LOTTO_NUMBER_MIN = 1;
     private static final int LOTTO_NUMBER_MAX = 45;
     private static final int LOTTO_SIZE = 6;

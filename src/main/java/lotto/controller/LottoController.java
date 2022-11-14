@@ -7,7 +7,7 @@ import lotto.domain.LottoStore;
 import lotto.domain.Lottos;
 import lotto.domain.Money;
 import lotto.domain.WinningLotto;
-import lotto.domain.strategy.RandomLottoNumberGenerateStrategy;
+import lotto.domain.strategy.RandomNumberGenerateStrategy;
 import lotto.view.input.InputView;
 import lotto.view.output.OutputView;
 
@@ -21,7 +21,7 @@ public class LottoController {
     public LottoController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.manualLottoStore = new LottoStore(new RandomLottoNumberGenerateStrategy());
+        this.manualLottoStore = new LottoStore(new RandomNumberGenerateStrategy());
     }
 
     public void purchaseLotto() {
