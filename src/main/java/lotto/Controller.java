@@ -32,31 +32,38 @@ public class Controller {
     }
 
     public static void Solution() {
+        // 구입 금액 입력
         View.Output("구입금액을 입력해 주세요.");
         String inputLottoAmount = View.Input();
         Integer lottoAmount = Model.MakeStringToInteger(inputLottoAmount);
+
+        // 구입 금액 검증
         ValidatePurchaseAmount(lottoAmount);
 
-        Integer inputNumbers = Model.MakeStringToInteger(inputLottoAmount);
-        Integer lottoCount = Model.CountLottoAmount(inputNumbers);
+        // 로또 개수 계산
+        Integer lottoCount = Model.CountLottoAmount(lottoAmount);
 
+        // 로또 발행
         final List<List<Integer>> publishedLottoArray = Model.PublishLotto(lottoCount);
 
+        // 로또 발행 출력
         View.Output(lottoAmount+"개를 구매했습니다.");
         for (List<Integer> list : publishedLottoArray) {
             View.Output(Model.ListToString(list));
         }
 
+        // 당첨 번호 입력
         View.Output("당첨 번호를 입력해 주세요.");
         String inputRealLottoNumber = View.Input();
-
         String[] splittedRealLottoNumbers = Model.SplitInput(inputRealLottoNumber);
         List<Integer> realLottoNumbers = Model.MakeStringToListInteger(splittedRealLottoNumbers);
 
+        // 보너스 번호 입력
         View.Output("보너스 번호를 입력해 주세요.");
         String inputRealLottoBonusNumber = View.Input();
         Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
 
+        // Lotto 클래스 생성
         new Lotto(realLottoNumbers);
     }
 }
