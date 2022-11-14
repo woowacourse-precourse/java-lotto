@@ -1,12 +1,14 @@
 package lotto.service;
 
 import lotto.domain.Lotto;
+import lotto.domain.enumeration.Rating;
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.*;
 
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -63,4 +65,21 @@ class LottoGameMachineServiceTest {
         // Then
         assertThat(service.readBonusNumber()).isEqualTo(bonusNumber);
     }
+
+    @DisplayName("통계를 계산해야 한다. [다 맞을 경우]")
+    @Test
+    public void givenMoney_LottoNumber_whenCalculateStatistics_thenReturnRatingFirst(){
+        // Given
+        service.enterMoney(1000);
+        Lotto lotto = service.readLottoNumbers().get(0);
+        service.enterTheWinningNumbers(lotto);
+        service.enterBonusNumber(10);
+
+        // When
+        LinkedHashMap<Rating, Integer> rating = service.calculateStatistics();
+
+        // Then
+        assertThat(rating.get(Rating.FIRST)).isEqualTo(1);
+    }
+
 }
