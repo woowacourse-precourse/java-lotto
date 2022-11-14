@@ -25,6 +25,24 @@ public class Application {
         return Total_Lotto_numbers;
     }
 
+    public HashMap<Integer, Integer> Lotto_Choice(List<List<Integer>>Total_Lotto_numbers, List<Integer> Answer_Number, Integer Bonus_Number){
+        Lotto_Choice_Result.put(3, 0);
+        Lotto_Choice_Result.put(4, 0);
+        Lotto_Choice_Result.put(5, 0);
+        Lotto_Choice_Result.put(6, 0);
+        Lotto_Choice_Result.put(7, 0);
+        ;
+        for (List Lotto_numbers: Total_Lotto_numbers){
+            Integer Common_Number = Lotto_machine(Answer_Number,Bonus_Number,Lotto_numbers);
+            if (Common_Number >=3){
+                Lotto_Choice_Result.put(Common_Number, Lotto_Choice_Result.get(Common_Number)+1);
+            }
+        }
+        UI.Lotto_Choice_Result_Print(Lotto_Choice_Result);
+        return Lotto_Choice_Result;
+    }
+    
+
 
 
     public static void main(String[] args) {
