@@ -13,4 +13,6 @@ public interface Seller {
     boolean compareBonusNumber(List<Integer> numbers);
 
     LottoRanking findLottoRanking(LottoCount lottoCount);
+
+    int calculateTotalWinningAmount(List<LottoRanking> lottoRankings);
 }

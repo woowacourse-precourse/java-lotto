@@ -3,6 +3,7 @@ package lotto.domain.seller;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoRanking;
@@ -69,6 +70,17 @@ public class SellerTest {
         Seller seller = new LottoMachine(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
         LottoRanking lottoRanking = seller.findLottoRanking(new LottoCount(5, false));
         assertThat(lottoRanking).isEqualTo(LottoRanking.THIRD);
+    }
+
+    @DisplayName("[성공] 로또 총 당첨 금액이 얼마인지 구하기")
+    @Test
+    void calculateTotalWinningAmount() {
+        Seller seller = new LottoMachine(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
+        List<LottoRanking> lottoRankings = List.of(LottoRanking.FIRST, LottoRanking.FIFTH,
+            LottoRanking.LOSER);
+        int amount = seller.calculateTotalWinningAmount(lottoRankings);
+        assertThat(amount).isEqualTo(2000005000);
+
     }
 
 }

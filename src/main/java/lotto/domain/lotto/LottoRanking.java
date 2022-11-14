@@ -24,4 +24,8 @@ public enum LottoRanking {
         }
         return LottoRanking.LOSER;
     }
+
+    public int getWinningAmount() {
+        return winningAmount;
+    }
 }
