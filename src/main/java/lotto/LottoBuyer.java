@@ -18,8 +18,13 @@ public class LottoBuyer {
 
     private List<Lotto> lottos;
 
-    public LottoBuyer() throws IllegalArgumentException {
+    public LottoBuyer() {
+
+    }
+
+    public void setBuyer() throws IllegalArgumentException {
         try {
+            System.out.println("구입금액을 입력해 주세요.");
             setMoney();
             lottos = new ArrayList<Lotto>();
             int buyCount = LottoMachine.buyLotto(lottos, money);
