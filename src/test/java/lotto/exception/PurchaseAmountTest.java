@@ -3,10 +3,12 @@ package lotto.exception;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PurchaseAmountTest {
+    private final String notInTheThousandsMessage = "[ERROR] 구입 금액은 1,000원 단위여야 합니다.";
 
     @Test
     @DisplayName("1000 단위가 아닌 값은 에러가 발생한다.")
@@ -26,5 +28,20 @@ public class PurchaseAmountTest {
 
         // when, then
         assertDoesNotThrow(() -> PurchaseAmount.checkException(purchaseAmount));
+    }
+
+    @Test
+    @DisplayName("1000 단위가 아닌 값을 입력받아 에러가 발생하면 [ERROR]로 시작하는 메세지를 반환한다.")
+    void errorMessageTest() {
+        // given
+        String purchaseAmount = "12222";
+
+        try {
+            // when
+            PurchaseAmount.checkException(purchaseAmount);
+        } catch (IllegalArgumentException e) {
+            // then
+            assertThat(e.getMessage()).isEqualTo(notInTheThousandsMessage);
+        }
     }
 }
