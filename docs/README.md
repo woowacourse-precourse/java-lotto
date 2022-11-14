@@ -27,6 +27,7 @@
 - [x]  당첨 내역을 출력하는 기능
   - 3개 일치 ~ 6개 일치 순으로 출력
 - [x]  수익률을 출력하는 기능
+
 `**util/Validator**`
 - [x]  입력받은 금액의 예외 상황을 확인하는 기능
   - 확인할 조건 : 양수 ?, 1000원 단위 ?
@@ -47,6 +48,7 @@
 - [x]  당첨 여부를 계산하는 기능
   - 로또 하나씩 확인하면서, 당첨 번호 포함 개수를 구하고, 보너스 번호 포함 여부를 계산
   - `3개 일치`, `4개 일치`, `5개 일치`, `5개 + 보너스 일치`, `6개 일치` 로 매핑
+- [ ]  당첨 금액을 계산하는 기능
 - [x]  수익률을 계산하는 기능
   - `(사용 금액 / 당첨 금액) * 100`
 
@@ -62,6 +64,7 @@
 - `util/Output` 클래스 : 출력 담당
   - `printInputMessage()`, `printBuyMessage()`, `printLotto()`, `printInputWinnings()`, `printInputBonus()`, `printStatistics()`, `printYield()`
 - `util/Calculator` 클래스 : 당첨 결과, 수익률 계산 수행
+  - `Map<Result, Integer> resultCount`
   - `calculateResult()`, `initializeMap()`, `calculateYield()`
 
 - `domain/Lotto` 클래스 : 사용자의 로또 1개를 저장, 관련 로직 수행
