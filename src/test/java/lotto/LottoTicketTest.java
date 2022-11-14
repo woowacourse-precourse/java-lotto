@@ -16,6 +16,13 @@ class LottoTicketTest {
         assertThatThrownBy(() -> LottoTicket.countPaidLotteryTickets(3050)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("Check how many tickets were paid")
+    @Test
+    void countPaidLotteryTicketsTest() {
+        int result = LottoTicket.countPaidLotteryTickets(5000);
+        assertThat(result).isEqualTo(5);
+    }
+
     @DisplayName("Check that numbers are sorted in acending order.")
     @Test
     void lottoNumberOrderTest() {
