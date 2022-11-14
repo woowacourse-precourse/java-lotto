@@ -36,7 +36,7 @@ class LottoTest {
         int testCount = 1000;
         int errorCount = 0;
         //when
-        List<Integer> generateNumbers = Lotto.generateLotto();
+        List<Integer> generateNumbers = Lotto.generateAndSortLotto();
         for (int test = 0; test < testCount; test++) {
             try {
                 new Lotto(generateNumbers);
@@ -53,11 +53,14 @@ class LottoTest {
     @DisplayName("[Lotto] 오름차순 정렬 테스트")
     void sortAscendNumbers(){
         //given
-        List<Integer> notSortNumbers= Arrays.asList(43,21,3,2,23,1);
+        List<Integer> sortNumbers = Lotto.generateAndSortLotto();
         //when
-        Lotto lotto = new Lotto(notSortNumbers);
         //then
-        List<Integer> lottoNumbers = lotto.getNumbers();
-        assertThat(lottoNumbers).isEqualTo(Arrays.asList(1, 2, 3, 21, 23, 43));
+        for (int i = 0; i < sortNumbers.size(); i++) {
+            System.out.println("sortNumbers = " + sortNumbers.get(i));
+        }
+        for (int index = 0; index < sortNumbers.size() - 1; index++) {
+            assertThat(sortNumbers.get(index)).isLessThanOrEqualTo(sortNumbers.get(index + 1));
+        }
     }
 }

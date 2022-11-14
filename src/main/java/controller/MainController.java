@@ -71,7 +71,7 @@ public class MainController {
 
         List<Lotto> boughtLotto = new ArrayList<>();
         for (int count = 0; count < purchaseCount; count += 1) {
-            List<Integer> generateLotto = Lotto.generateLotto();
+            List<Integer> generateLotto = Lotto.generateAndSortLotto();
             boughtLotto.add(new Lotto(generateLotto));
         }
 

@@ -2,28 +2,27 @@ package model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
 import util.message.ErrorMessage;
-import view.PrintView;
 
 public class Lotto {
     public static final int PER_PRICE_LOTTO=1000;
+    public static final int MIN_LOTTO_NUM=1;
+    public static final int MAX_LOTTO_NUM=45;
+    public static final int LOTTO_SIZE=6;
 
-    protected List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        sortAscend(numbers);
         this.numbers = numbers;
     }
 
-    public Lotto() {
-    }
-
-    protected void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_LENGTH_SIZE_NOT_SIX);
         }
@@ -35,8 +34,10 @@ public class Lotto {
         }
     }
 
-    protected void sortAscend(List<Integer> numbers){
-        Collections.sort(numbers);
+    protected static List<Integer> sortAscend(List<Integer> numbers){
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        return sortedNumbers;
     }
 
     protected static boolean hasDuplicateNum(List<Integer> numbers) {
@@ -52,15 +53,21 @@ public class Lotto {
 
     protected static boolean isNumRangeLotto(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number < 1 || number > 45) {
+            if (number < MIN_LOTTO_NUM || number > MAX_LOTTO_NUM) {
                 return false;
             }
         }
         return true;
     }
 
-    public static List<Integer> generateLotto() {
-        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    public static List<Integer> generateAndSortLotto() {
+        List<Integer> lotto = generateLotto();
+        List<Integer> sortedLotto = sortAscend(lotto);
+        return sortedLotto;
+    }
+
+    private static List<Integer> generateLotto() {
+        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, LOTTO_SIZE);
         return lotto;
     }
 
