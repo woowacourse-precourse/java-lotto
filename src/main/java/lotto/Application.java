@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.List;
 import lotto.consumer.Profit;
 import lotto.consumer.Statistics;
 import lotto.machine.Tickets;
@@ -15,7 +16,10 @@ public class Application {
             Tickets lottoTickets = new Tickets(purchasePrice);
             Output.purchaseSuccessful(purchasePrice, lottoTickets.getTickets());
 
-            Winner winnerTicket = new Winner(Input.winningNumbers(), Input.bonusNumber());
+            List<Integer> WinningNumbers = Convertor.separate(Input.winningNumbers());
+            Integer BonusNumber = Convertor.toNumericValue(Input.bonusNumber());
+            Winner winnerTicket = new Winner(WinningNumbers, BonusNumber);
+
             Profit profit = new Profit(lottoTickets, winnerTicket);
             Statistics statistics = new Statistics(profit);
             Output.lottoResult(purchasePrice, statistics.getStatistics());

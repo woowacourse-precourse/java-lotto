@@ -13,11 +13,10 @@ public class Winner {
     private final Integer bonusNumber;
     private final Lotto winningNumbers;
 
-    public Winner(String winningNumbers, String bonusNumber) {
-        this.winningNumbers = new Lotto(Convertor.separate(winningNumbers));
-        this.bonusNumber = Convertor.toNumericValue(bonusNumber);
-
-        validateBonusNumber(this.winningNumbers.getNumbers(), this.bonusNumber);
+    public Winner(List<Integer> winningNumbers, Integer bonusNumber) {
+        validateBonusNumber(winningNumbers, bonusNumber);
+        this.winningNumbers = new Lotto(winningNumbers);
+        this.bonusNumber = bonusNumber;
     }
 
     public List<Integer> getWinningNumbers() {
