@@ -47,7 +47,7 @@ public class Display {
         );
     }
 
-    private static void countRanking(Buyer buyer) {
+    public static void winningResults(Buyer buyer) {
         System.out.println(PRINT.WINNING_RESULTS);
         List<Ranking> rankings = Ranking.getAll();
         HashMap<String, Integer> winningSummary = buyer.getWinningSummary();
@@ -61,10 +61,6 @@ public class Display {
                     }
                     printRankCountExcept2nd(rank, rankCount);
                 });
-    }
-
-    public static void winningResults(Buyer buyer) {
-        countRanking(buyer);
     }
 
     public static void profitResult(Buyer buyer) {

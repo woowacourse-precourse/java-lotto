@@ -33,7 +33,7 @@ public class Buyer {
         return this.winningSummary;
     }
 
-    public static void setWinningSummary(Buyer buyer, String Ranking) {
+    static void setWinningSummary(Buyer buyer, String Ranking) {
         int prevCount = buyer.winningSummary.get(Ranking).intValue();
         buyer.winningSummary.put(Ranking, prevCount + NUMBER.ONE);
     }

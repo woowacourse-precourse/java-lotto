@@ -16,15 +16,16 @@ public class LottoProgram {
     public static Buyer buyer = new Buyer();
 
     public static void init() throws IllegalArgumentException {
-        inputPayment();
-        inputWinningNumbers();
-        inputBonusNumber();
+        purchase();
+        issued();
+        setWinningNumbers();
+        setBonusNumber();
         Generator.calculateRank(buyer);
         Display.winningResults(buyer);
         Display.profitResult(buyer);
     }
 
-    private static void inputPayment() {
+    private static void purchase() {
         Display.inputPayment();
         String paymentInput = Console.readLine();
         Validator.payment(paymentInput);
@@ -38,10 +39,9 @@ public class LottoProgram {
         buyer.setLottoPurchasedCount(numbersOfLotto);
         Display.paidAmout(numbersOfLotto);
 
-        purchasedLottoSave();
     }
 
-    private static void inputWinningNumbers() {
+    private static void setWinningNumbers() {
         Display.inputWinningNumbers();
         String winningNumbers = Console.readLine();
         Validator.winningNumberFormat(winningNumbers);
@@ -53,7 +53,7 @@ public class LottoProgram {
 
     }
 
-    private static void inputBonusNumber() {
+    private static void setBonusNumber() {
         Display.inputBonusNumber();
         String bonusNumber = Console.readLine();
         Validator.bonusNumber(bonusNumber);
@@ -61,7 +61,7 @@ public class LottoProgram {
         Lotto.setBonusNumber(Integer.parseInt(bonusNumber));
     }
 
-    private static void purchasedLottoSave() {
+    private static void issued() {
         int count = buyer.getLottoPurchasedCount();
 
         for (int lottoCount = 0; lottoCount < count; lottoCount++) {
