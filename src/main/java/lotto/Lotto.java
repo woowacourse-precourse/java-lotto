@@ -3,8 +3,7 @@ package lotto;
 import java.util.HashSet;
 import java.util.List;
 
-import static lotto.Game.MAX_NUMBER;
-import static lotto.Game.MIN_NUMBER;
+import static lotto.Game.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,16 +13,14 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 번호는 6개여야 합니다.");
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
+        if (numbers.size() != BALL_COUNT) {
+            throw new IllegalArgumentException("[ERROR] 번호는 " + BALL_COUNT +"개여야 합니다.");
         }
         if (isDifferentNumbers(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 서로 다른 6개 번호여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 서로 다른 " + BALL_COUNT + "개 번호여야 합니다.");
         }
-        if (!checkNumberRange(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-        }
+        checkNumberRange(numbers);
     }
 
     // TODO: 추가 기능 구현
@@ -32,17 +29,19 @@ public class Lotto {
         return set.size() != numbers.size();
     }
 
-    private boolean checkNumberRange(List<Integer> numbers) {
+    private void checkNumberRange(List<Integer> numbers) throws IllegalArgumentException {
         for (int number : numbers) {
             if ((number < MIN_NUMBER) || (number > MAX_NUMBER)) {
-                return false;
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 "+ MIN_NUMBER +"부터 " + MAX_NUMBER + "사이의 숫자여야 합니다.");
             }
         }
-        return true;
     }
 
-    public void validateBonus(List<Integer> numbers) {
-
+    public void validateBonus(List<Integer> numbers, int bonus) throws IllegalArgumentException {
+        checkNumberRange(numbers);
+        if (numbers.contains(bonus)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호 외의 번호를 입력해야 합니다.");
+        }
     }
 
 }
