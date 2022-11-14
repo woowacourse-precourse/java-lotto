@@ -16,11 +16,16 @@ public class DrawLotto {
     public int checkLotto(Lotto lotto) {
         int matchCounts = 0;
         for (int value : winner) {
-            if (lotto.getLotto().contains(value)) {
+            if (lotto.contains(value)) {
                 matchCounts++;
             }
         }
         return matchCounts;
     }
-
+    public boolean checkBonus(Lotto lotto) {
+        if (lotto.contains(bonus)) {
+            return true;
+        }
+        return false;
+    }
 }

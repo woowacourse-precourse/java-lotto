@@ -21,8 +21,8 @@ public class Lotto {
         view.validateNumbersInRange(numbers);
     }
 
-    public List<Integer> getLotto() {
-        return this.numbers;
+    public boolean contains(int num) {
+        return numbers.contains(num);
     }
     public List<Integer> sortLotto() {
         List<Integer> sorted = numbers;
@@ -30,12 +30,7 @@ public class Lotto {
         return sorted;
     }
 
-    public boolean checkBonus(int bonus) {
-        if (numbers.contains(bonus)) {
-            return true;
-        }
-        return false;
-    }
+
     public void printLotto() {
         Iterator<Integer> itr = numbers.listIterator();
         System.out.print("[");
