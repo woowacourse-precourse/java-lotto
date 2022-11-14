@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -30,6 +31,11 @@ public class Lotto {
         if(numbers.size()!= testNumbers.size()){
             throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
         }
+    }
+
+    public int countMatchNumber(List<Integer> winningNumbers){
+        long count = numbers.stream().filter(winningNumbers::contains).count();
+        return Math.toIntExact(count);
     }
 
     public void printLotto(){
