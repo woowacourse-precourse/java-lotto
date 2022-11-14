@@ -23,7 +23,6 @@ public class WinningLottoValidator {
         isOverlap();
     }
 
-    ;
 
     private void isInteger() {
         try {
