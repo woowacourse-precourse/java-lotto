@@ -42,8 +42,11 @@ public class LottoSeller {
     public static List<Integer> receiveWinningNumbers() {
         printMessage(MessageType.WINNING_NUMBER);
         String userInput = Console.readLine();
-        validateWinningNumbers(userInput);
-
+        try {
+            validateWinningNumbers(userInput);
+        } catch (Exception e) {
+            return receiveWinningNumbers();
+        }
         List<String> winningNumbers = Arrays.asList(userInput.split(SEPARATOR));
 
         return winningNumbers.stream()
@@ -61,11 +64,6 @@ public class LottoSeller {
     private static void validateWinningNumbers(String input) {
         String[] numbers = input.split(SEPARATOR, 0);
 
-        if (numbers.length != LOTTO_SIZE) {
-            Error.printException(ErrorType.SIZE);
-            throw new IllegalArgumentException();
-        }
-
         for (int i = 0; i < numbers.length; i++) {
             validateNumber(numbers[i]);
         }
@@ -80,8 +78,11 @@ public class LottoSeller {
 
     private static int receiveNumber() {
         String userInput = Console.readLine();
-        validateNumber(userInput);
-
+        try {
+            validateNumber(userInput);
+        } catch (Exception e) {
+            return receiveNumber();
+        }
         return Integer.parseInt(userInput);
     }
 }
