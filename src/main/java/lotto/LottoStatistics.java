@@ -63,6 +63,17 @@ public class LottoStatistics {
     private BigInteger money;
     private Integer bonusNumber;
 
+    public void winTheLottery(){
+        Iterator<Lotto> lottoIter = lottos.iterator();
+
+        while (lottoIter.hasNext()){
+            Lotto tmpLotto = lottoIter.next();
+            List<Integer> tmpNumbers = new ArrayList<>(tmpLotto.getLottoInfo());
+            tmpNumbers.removeAll(lotto.getLottoInfo());
+            rankCount(tmpNumbers);
+        }
+    }
+
     /*등수별 카운트*/
     public void rankCount(List<Integer> numbers){
         if (numbers.size() == 0){
