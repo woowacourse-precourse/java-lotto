@@ -56,7 +56,7 @@ public class WinningLottoTest {
     @MethodSource("generateLotto")
     void case3(Lotto lotto, LottoResult expected) {
         WinningLotto winningLotto = new WinningLotto(winLotto, new BonusNumber(7));
-        LottoResult result = winningLotto.getResult(lotto);
+        LottoResult result = winningLotto.calculateBonusAndSameCount(lotto);
         assertThat(result).isEqualTo(expected);
         System.out.println(result);
     }

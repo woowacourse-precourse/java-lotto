@@ -16,7 +16,7 @@ final class LottoStatistic {
         this.lottos = generated;
     }
 
-    public LottoScoreDto getScore() {
+    public LottoScoreDto calculateStatistic() {
         List<LottoResult> scores = calculateScore();
         Map<LottoPrize, Integer> lottoPrizeCount = new HashMap<>();
         lottoPrizeCount.put(LottoPrize.FIRST_PRIZE, calculateFirstPrizeCount(scores));
@@ -25,13 +25,13 @@ final class LottoStatistic {
         lottoPrizeCount.put(LottoPrize.FOURTH_PRIZE, calculateFourthPrizeCount(scores));
         lottoPrizeCount.put(LottoPrize.FIFTH_PRIZE, calculateFifthPrizeCount(scores));
 
-        double rate = getRate(lottoPrizeCount);
+        double rate = calculateRate(lottoPrizeCount);
         return new LottoScoreDto(lottoPrizeCount, rate);
     }
 
     private List<LottoResult> calculateScore() {
         return lottos.toStream()
-                .map(winningLotto::getResult)
+                .map(winningLotto::calculateBonusAndSameCount)
                 .collect(Collectors.toList());
     }
 
@@ -65,7 +65,7 @@ final class LottoStatistic {
                 .count();
     }
 
-    private double getRate(Map<LottoPrize, Integer> prizeCount) {
+    private double calculateRate(Map<LottoPrize, Integer> prizeCount) {
         long totalPrize = prizeCount.keySet()
                 .stream()
                 .map(key -> key.getPrize() * prizeCount.get(key))

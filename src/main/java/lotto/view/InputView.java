@@ -20,17 +20,17 @@ public final class InputView {
         }
     }
 
-    public long getAmount() {
+    public long inputAmount() {
         String input = inputHandler.readLine();
         return InputValidator.toLong(input);
     }
 
-    public List<Integer> getLotteryNumber() {
+    public List<Integer> inputLotteryNumber() {
         String input = inputHandler.readLine();
         return InputValidator.splitToIntegers(input);
     }
 
-    public int getBonusNumber() {
+    public int inputBonusNumber() {
         String input = inputHandler.readLine();
         return InputValidator.toInt(input);
     }

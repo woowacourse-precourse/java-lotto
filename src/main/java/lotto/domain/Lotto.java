@@ -59,7 +59,7 @@ public final class Lotto {
         return numbers.stream().anyMatch(it -> it < LottoConstants.LOTTO_START_INCLUSIVE.value());
     }
 
-    public String getLottoPrinting() {
+    public String toPrintableFormat() {
         return MessageFormat.format(LOTTO_FORMAT, numbers.toArray());
     }
 
@@ -76,7 +76,7 @@ public final class Lotto {
         return false;
     }
 
-    public int getScore(Lotto other) {
+    public int calculateTotalSameCount(Lotto other) {
         return numbers.stream()
                 .reduce(0,
                         (total, number) -> total + calculateScore(number, other));

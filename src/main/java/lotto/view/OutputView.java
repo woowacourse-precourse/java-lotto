@@ -46,7 +46,7 @@ public final class OutputView {
     }
 
     private void printLotto(Lotto lotto) {
-        outputHandler.println(lotto.getLottoPrinting());
+        outputHandler.println(lotto.toPrintableFormat());
     }
 
     public void printInputLotteryMessage() {

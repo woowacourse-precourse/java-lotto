@@ -57,7 +57,7 @@ class LottoTest {
     @ParameterizedTest
     @MethodSource("generateBasicLotto")
     void case1(Lotto lotto, String expected) {
-        assertThat(lotto.getLottoPrinting()).isEqualTo(expected);
+        assertThat(lotto.toPrintableFormat()).isEqualTo(expected);
     }
 
     @DisplayName("contains 메서드는 로또 안에 특정 숫자가 있는지 검사한다")
@@ -83,7 +83,7 @@ class LottoTest {
     @MethodSource("generateBasicLotto")
     void case4(Lotto lotto) {
         Lotto lotto1 = new Lotto(List.of(1, 13, 14, 15, 16, 17));
-        assertThat(lotto.getScore(lotto)).isEqualTo(6);
-        assertThat(lotto.getScore(lotto1)).isEqualTo(1);
+        assertThat(lotto.calculateTotalSameCount(lotto)).isEqualTo(6);
+        assertThat(lotto.calculateTotalSameCount(lotto1)).isEqualTo(1);
     }
 }

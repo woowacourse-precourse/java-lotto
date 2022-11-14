@@ -17,8 +17,8 @@ final class WinningLotto {
         }
     }
 
-    public LottoResult getResult(Lotto other) {
-        LottoSameCount lottoSameCount = LottoSameCount.from(lotto.getScore(other));
+    public LottoResult calculateBonusAndSameCount(Lotto other) {
+        LottoSameCount lottoSameCount = LottoSameCount.from(lotto.calculateTotalSameCount(other));
         LottoContainBonus lottoContainBonus = LottoContainBonus.from(other.contains(bonusNumber));
         return new LottoResult(lottoSameCount, lottoContainBonus);
     }
