@@ -1,7 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.*;
-import lotto.view.input.LottoGenerator;
+import lotto.view.input.LottoCreator;
 import lotto.view.input.UserInput;
 import lotto.view.output.Guide;
 
@@ -11,7 +11,7 @@ import java.util.Map;
 public class LottoController {
     Guide guide = new Guide();
     UserInput userInput = new UserInput();
-    LottoGenerator generator = new LottoGenerator();
+    LottoCreator creator = new LottoCreator();
 
 
     public void start(){
@@ -39,7 +39,7 @@ public class LottoController {
     }
 
     private LottoGroup getLottoGroup(int lottoCount){
-        List<Lotto> lottos = generator.generateLottos(lottoCount);
+        List<Lotto> lottos = creator.createLottos(lottoCount);
         return new LottoGroup(lottos);
     }
 
