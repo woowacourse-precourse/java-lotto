@@ -1,14 +1,14 @@
 package lotto.domain;
 
-import lotto.view.OutputView;
+import lotto.util.Constants;
 
 public enum Rank {
-    FIFTH(3, 5_000, 0, OutputView.MESSAGE_FIFTH),
-    FOURTH(4, 50_000, 0, OutputView.MESSAGE_FOURTH),
-    THIRD(5, 1_500_000, 0, OutputView.MESSAGE_THIRD),
-    SECOND(5, 30_000_000, 0, OutputView.MESSAGE_SECOND),
+    FIFTH(3, 5_000, 0, Constants.MESSAGE_FIFTH),
+    FOURTH(4, 50_000, 0, Constants.MESSAGE_FOURTH),
+    THIRD(5, 1_500_000, 0, Constants.MESSAGE_THIRD),
+    SECOND(5, 30_000_000, 0, Constants.MESSAGE_SECOND),
 
-    FIRST(6, 2_000_000_000, 0, OutputView.MESSAGE_FIRST),
+    FIRST(6, 2_000_000_000, 0, Constants.MESSAGE_FIRST),
     NONE(0, 0, 0, "");
 
     private final int match;

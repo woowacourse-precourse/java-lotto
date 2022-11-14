@@ -6,11 +6,7 @@ import lotto.domain.Rank;
 public class OutputView {
 
     public static final String ERROR_STATEMENT = "[ERROR] ";
-    public static final String MESSAGE_FIRST = "6개 일치 (2,000,000,000원) - ";
-    public static final String MESSAGE_SECOND = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-    public static final String MESSAGE_THIRD = "5개 일치 (1,500,000원) - ";
-    public static final String MESSAGE_FOURTH = "4개 일치 (50,000원) - ";
-    public static final String MESSAGE_FIFTH = "3개 일치 (5,000원) - ";
+
 
     public static void printErrorMessage(Exception error) {
         System.out.println(ERROR_STATEMENT + error.getMessage());
