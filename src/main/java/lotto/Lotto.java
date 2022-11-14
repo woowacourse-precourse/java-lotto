@@ -18,7 +18,17 @@ public class Lotto {
 
         ArrayList<Integer> sortedNumbers = new ArrayList<>(numbers);
         Collections.sort(sortedNumbers);
-        this.numbers = numbers;
+        this.numbers = sortedNumbers;
+    }
+
+    public int calculateSameCount(Lotto lotto) {
+        return (int) lotto.numbers.stream()
+                .filter(this::checkContains)
+                .count();
+    }
+
+    public boolean checkContains(int otherLottoNumber) {
+        return numbers.contains(otherLottoNumber);
     }
 
     private void validate(List<Integer> numbers) {
@@ -36,8 +46,12 @@ public class Lotto {
     }
 
     private void validateDuplicateCount(List<Integer> numbers) {
-        if(numbers.size() != numbers.stream().distinct().count()) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(LOTTO_HAS_DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
