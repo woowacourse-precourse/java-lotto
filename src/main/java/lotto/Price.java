@@ -7,25 +7,27 @@ public class Price {
     public Price() {
         KeyboardInput k = new KeyboardInput();
         text = k.read();
-        if (!validate())
-            throw new IllegalArgumentException();
-        price = Integer.parseInt(text);
+        try {
+            if (!validate())
+                throw new IllegalArgumentException();
+            price = Integer.parseInt(text);
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(ErrorMessage.PRICE.get());
+        }
     }
 
     public int get() {
         return price;
     }
 
-    private boolean validate() {
+    private boolean validate(){
         if (!isNumber())
             return false;
-
         if (!isPositiveNumber())
             return false;
-
         if (!isDividedBy1000())
             return false;
-
         return true;
     }
 
