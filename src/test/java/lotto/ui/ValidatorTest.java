@@ -95,10 +95,7 @@ public class ValidatorTest {
         @DisplayName("주어진 숫자가 1000원 단위가 아닌 경우")
         @Test
         void isHundredTest_1000원단위아님() {
-            Assertions.assertThatThrownBy(
-                            () -> Validator.isHundredUnit(12314)
-                    )
-                    .isInstanceOf(IllegalArgumentException.class);
+            Assertions.assertThat(Validator.isHundredUnit(123141)).isFalse();
         }
     }
 }
