@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static final Integer LOTTO_AMOUNT_EACH = 1000;
+
+    private static final LottoStore lottoStore = new LottoStore();
 
     public static void main(String[] args) {
 
