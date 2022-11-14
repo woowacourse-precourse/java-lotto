@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.validator.LottoValidator;
 import lotto.validator.MoneyValidator;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public class User {
     private List<Lotto> lottos;
 
     public User(long inputMoney, List<Lotto> lottos) {
-        validateMoney(inputMoney);
+        validate(inputMoney, lottos);
         this.inputMoney = inputMoney;
         this.lottos = lottos;
     }
@@ -25,8 +26,11 @@ public class User {
         return lottos;
     }
 
-    public void validateMoney(long inputMoney) {
+    public void validate(long inputMoney, List<Lotto> lottos) {
         MoneyValidator.check(inputMoney);
+        lottos.stream()
+                .map(Lotto::getNumbers)
+                .forEach(LottoValidator::check);
     }
 
     public long getQuantity() {
