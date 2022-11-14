@@ -38,11 +38,20 @@ class LottoTest extends NsTest {
         });
     }
 
-    @DisplayName("로또 구입 금액이 1000원으로 나누어 떨어지지 않을때 예외가 발생한다..")
+    @DisplayName("로또 구입 금액이 1000원으로 나누어 떨어지지 않을때 예외가 발생한다.")
     @Test
     void 예외_테스트2() {
         assertSimpleTest(() -> {
             runException("5500");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("로또 구입 금액이 숫자가 아닐 때 예외 발생")
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() -> {
+            runException("20j1");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
