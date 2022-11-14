@@ -47,7 +47,7 @@ class LottoTest {
     @Test
     void InputWinningNumberTest() {
         /*given*/
-        List<Integer> winningNumberTest = List.of(1,2,3,4,5,6);
+        List<Integer> winningNumberTest = List.of(1, 2, 3, 4, 5, 6);
         /*when*/
         List<Integer> winningNumber = createLotto.winningNumber("1,2,3,4,5,6");
         /*then*/
@@ -82,6 +82,7 @@ class LottoTest {
     }
 
     PlayLotto playLotto = new PlayLotto();
+
     @DisplayName("티켓 갯수만큼 로또번호 생성한다.")
     @Test
     void playLottoTicketCountTest() {
@@ -99,8 +100,30 @@ class LottoTest {
         List<List<Integer>> ASCTest = playLotto.playLottoTicketCount(6);
         for (List<Integer> ASCTestMinimum : ASCTest) {
             for (int i = 0; i < 5; i++) {
-                assertThat(ASCTestMinimum.get(i)).isLessThan(ASCTestMinimum.get(i+1));
+                assertThat(ASCTestMinimum.get(i)).isLessThan(ASCTestMinimum.get(i + 1));
             }
         }
+    }
+
+    @DisplayName("티켓과 당첨번호가 일치하는 번호의 개수를 찾는다.")
+    @Test
+    void compareTicketAndWinningNumberTest() {
+        /*given*/
+        int compareTicketAndWinningTest = 6;
+        /*when*/
+        int compareTicketAndWinning = playLotto.compareTicketAndWinningNumber(List.of(1, 2, 3, 4, 5, 6), "1,2,3,4,5,6");
+        /*then*/
+        assertThat(compareTicketAndWinningTest).isEqualTo(compareTicketAndWinning);
+    }
+
+    @DisplayName("티켓에 보너스넘버와 일치하는 값이 있는지 찾는다.")
+    @Test
+    void compareTicketAndBonusNumberTest() {
+        /*given*/
+        boolean compareTicketAndBonusTest = true;
+        /*when*/
+        boolean compareTicketAndBonus = playLotto.compareTicketAndBonusNumber(List.of(1, 2, 3, 4, 5, 6),"1");
+        /*then*/
+        assertThat(compareTicketAndBonusTest).isEqualTo(compareTicketAndBonus);
     }
 }
