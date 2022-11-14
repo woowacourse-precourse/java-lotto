@@ -51,12 +51,19 @@ public class Validator {
 
     public static void validateBonus(String number, Lotto winningLotto) {
         isNumberInRange(number);
+        isDistinctBonus(number, winningLotto);
     }
 
     private static void isNumberInRange(String number) {
         String pattern = "[1-45]";
         if (!number.matches(pattern)) {
             throw new IllegalArgumentException(ErrorMessage.ONLY_ONE_NUMBER_IN_RANGE_POSSIBLE.getMessage());
+        }
+    }
+
+    private static void isDistinctBonus(String number, Lotto winningLotto) {
+        if (winningLotto.getNumbers().contains(Integer.parseInt(number))) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUS.getMessage());
         }
     }
 }

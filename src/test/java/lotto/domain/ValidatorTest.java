@@ -63,15 +63,26 @@ public class ValidatorTest {
     @Test
     void inputBonusOutOfRange() {
         String input = "46";
-        assertThatThrownBy(() -> validator.validateNumbers(input))
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(() -> validator.validateBonus(input, winningLotto))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스 번호가 1개가 아니면 예외가 발생한다.")
     @Test
     void inputBonusOverSize() {
-        String input = "1,2";
-        assertThatThrownBy(() -> validator.validateNumbers(input))
+        String input = "7,8";
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(() -> validator.validateBonus(input, winningLotto))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호에 보너스 번호와 중복된 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void inputBonusWithDuplicatedNumber() {
+        String input = "1";
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(() -> validator.validateBonus(input, winningLotto))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
