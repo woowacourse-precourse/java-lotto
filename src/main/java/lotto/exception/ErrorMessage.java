@@ -1,7 +1,12 @@
 package lotto.exception;
 
 public enum ErrorMessage {
-    INVALID_INPUT("잘못된 입력입니다.");
+    NOT_NUMBER("숫자가 아님"),
+    NOT_DIVIDED("1000으로 나누어 떨어지지 않음"),
+    SMALL_NUMBER("숫자가 1000보다 작음"),
+    NOT_LOTTO_SIZE("로또 번호 개수가 6이 아님"),
+    DUPLICATED_NUMBER("로또 번호가 중복됨"),
+    NOT_LOTTO_NUMBER("로또 번호(1~45)가 아님");
 
     private final String message;
 

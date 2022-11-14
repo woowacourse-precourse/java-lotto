@@ -42,7 +42,7 @@ public class InputView {
 
     private void isCorrectBonusNumber(int bonusNumber) {
         if (bonusNumber < START_VALUE || bonusNumber > END_VALUE) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_LOTTO_NUMBER.getMessage());
         }
     }
 
@@ -52,21 +52,21 @@ public class InputView {
                 .count();
 
         if (incorrectNumberCount > 0) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_LOTTO_NUMBER.getMessage());
         }
     }
 
     private void isUnique(List<Integer> winningLottoNumbers) {
         for (int i = 0; i < 6; i++) {
             if (!(winningLottoNumbers.indexOf(winningLottoNumbers.get(i)) == i)) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+                throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER.getMessage());
             }
         }
     }
 
     private void isCorrectLottoSize(List<Integer> winningLottoNumbers) {
-        if (winningLottoNumbers.size() > LOTTO_SIZE) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+        if (winningLottoNumbers.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_LOTTO_SIZE.getMessage());
         }
     }
 
@@ -77,17 +77,17 @@ public class InputView {
                     .boxed()
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER.getMessage());
         }
     }
 
     private void isValidationForMoney(int money) {
         if (isLessThan1000(money)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.SMALL_NUMBER.getMessage());
         }
 
         if (!(isDivideBy1000(money))) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_DIVIDED.getMessage());
         }
     }
 
@@ -95,7 +95,7 @@ public class InputView {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER.getMessage());
         }
     }
 
