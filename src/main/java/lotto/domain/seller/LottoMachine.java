@@ -3,12 +3,12 @@ package lotto.domain.seller;
 import java.util.List;
 import lotto.domain.lotto.WinningLotto;
 
-public class Country implements Seller{
+public class LottoMachine implements Seller{
     private static final int LOTTO_AMOUNT = 1000;
 
     private final WinningLotto winningLotto;
 
-    public Country(WinningLotto winningLotto) {
+    public LottoMachine(WinningLotto winningLotto) {
         this.winningLotto = winningLotto;
     }
 
