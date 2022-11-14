@@ -54,4 +54,8 @@ public class Lucky {
 
         return profitResult;
     }
+
+    public void showProfit(String profitResult) {
+        System.out.println("총 수익률은 " + profitResult + "%입니다.");
+    }
 }
