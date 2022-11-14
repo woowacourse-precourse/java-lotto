@@ -28,7 +28,7 @@ public class OutputView {
     public static void FirstLotto(int count) {
         System.out.println("6개 일치 (2,000,000,000원) - "+count+"개");
     }
-    public static void OutputYield(int yield) {
-        System.out.println("총 수익률은 "+yield+"입니다.");
+    public static void OutputYield(double yield) {
+        System.out.println("총 수익률은 "+yield+"%입니다.");
     }
 }
