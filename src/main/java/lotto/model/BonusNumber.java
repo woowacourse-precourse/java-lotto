@@ -8,34 +8,18 @@ public class BonusNumber {
     private static final int MAX_NUMBER_RANGE = 45;
     private final int bonusNumber;
 
-    public BonusNumber(String input, List<Integer> winningNumbers) {
-        bonusNumber = validate(input, winningNumbers);
+    public BonusNumber(int inputNumber, List<Integer> winningNumbers) {
+        validate(inputNumber, winningNumbers);
+        this.bonusNumber = inputNumber;
     }
 
     public int getBonusNumber() {
         return bonusNumber;
     }
 
-    private int validate(String input, List<Integer> winningNumbers) {
-        isBlank(input);
-        int inputNumber = isNumber(input);
+    private void validate(int inputNumber, List<Integer> winningNumbers) {
         isInCorrectRange(inputNumber);
         isContainsWinningNumbers(inputNumber, winningNumbers);
-        return inputNumber;
-    }
-
-    private void isBlank(String input) {
-        if (input.isBlank()) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호를 입력해 주세요.");
-        }
-    }
-
-    private int isNumber(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
-        }
     }
 
     private void isInCorrectRange(int inputNumber) {

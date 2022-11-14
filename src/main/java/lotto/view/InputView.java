@@ -13,6 +13,18 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
+    public static List<Integer> createWinningNumbers() {
+        String input = askWinningNumbers();
+        validateWinningNumbers(input);
+        return inputStringToList(input);
+    }
+
+    public static int createBonusNumber() {
+        String input = askBonusNumber();
+        validateBonusNumber(input);
+        return Integer.parseInt(input);
+    }
+
     private static String askPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         return Console.readLine();
@@ -23,13 +35,7 @@ public class InputView {
         Validator.isNumber(input);
     }
 
-    public static List<Integer> createWinningNumbers() {
-        String input = askWinningNumbers();
-        validateWinningNumbers(input);
-        return inputStringToList(input);
-    }
-
-    private static String askWinningNumbers() throws IllegalArgumentException {
+    private static String askWinningNumbers() {
         System.out.println();
         System.out.println("당첨 번호를 입력해 주세요.");
         return Console.readLine();
@@ -49,10 +55,14 @@ public class InputView {
         return winningNumbers;
     }
 
-    public static String askBonusNumber() {
+    private static String askBonusNumber() {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
-        String input = Console.readLine();
-        return input;
+        return Console.readLine();
+    }
+
+    private static void validateBonusNumber(String input) {
+        Validator.isBlank(input);
+        Validator.isNumber(input);
     }
 }
