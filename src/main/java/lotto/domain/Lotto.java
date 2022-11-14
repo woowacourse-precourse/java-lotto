@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.ErrorMessage;
 
 /**
  * 제공된 Lotto 클래스를 활용해 구현해야 한다.
@@ -39,8 +40,16 @@ public class Lotto {
 
 	private void validate(List<Integer> numbers) {
 		if (numbers.size() != 6) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.isInvalidNumberOfLottoNumbers());
 		}
+		if (isInvalidLottoNumber(numbers)) {
+			throw new IllegalArgumentException(ErrorMessage.isInvalidLottoNumber());
+		}
+	}
+
+	private boolean isInvalidLottoNumber(List<Integer> numbers) {
+		return numbers.stream()
+			.anyMatch(number -> number < 0 || number > 45);
 	}
 
 }
