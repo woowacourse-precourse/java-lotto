@@ -13,5 +13,7 @@ public class Validation {
        int numbersCount = numbers.stream()
                .filter(element->element >= 1 && element <= 45)
                .collect(Collectors.toList()).size();
+
+       if(numbersCount != 6) throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
    }
 }
