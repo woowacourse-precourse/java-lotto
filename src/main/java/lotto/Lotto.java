@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -17,22 +16,18 @@ public class Lotto {
         }
     }
 
-    public void rangeLottoNumbers(){if(numbers.size()==6)
-            Collections.sort(numbers);
-    }
-
     public List<Integer> getNumbers() {
         return numbers;
     }
 
-    public int matchLotto(List<Integer> lotto){
+    public int matchLotto(List<Integer> lotto) {
         return (int) this.numbers.stream()
                 .filter(lotto::contains)
                 .count();
     }
 
 
-    public boolean contains(List<Integer> lottoWinningNumbers){
+    public boolean contains(List<Integer> lottoWinningNumbers) {
         return numbers.contains(lottoWinningNumbers);
     }
 }

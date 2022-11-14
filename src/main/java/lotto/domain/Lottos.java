@@ -22,9 +22,6 @@ public class Lottos {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
             Lotto lotto=new Lotto(numbers);
             lottos.add(lotto);
-
-            //lotto.rangeLottoNumbers();
-            //lottos.add(lotto);
         }
     }
 
@@ -34,7 +31,6 @@ public class Lottos {
         for (Lotto lotto : lottos) {
             int matchNumbers = lotto.matchLotto(lottoWinningNumber);
             boolean containsBonus = lotto.contains(new ArrayList<>(lottoWinningNumber.get(6)));
-
             LottoRanking lottoRanking = LottoRanking.getLottoRanking(matchNumbers, containsBonus);
             lottoRankingResult.put(lottoRanking, lottoRankingResult.get(lottoRanking) + 1);
         }

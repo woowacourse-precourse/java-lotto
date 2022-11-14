@@ -8,18 +8,18 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
-    private static final String PROFIT_MESSAGE="총 수익률은 %.1f%%입니다";
+    private static final String PROFIT_MESSAGE = "총 수익률은 %.1f%%입니다";
 
     public static void printPurchaseLottoSet(int purchaseLottoSet) {
-        System.out.println("\n"+purchaseLottoSet + "개를 구매했습니다.");
+        System.out.println("\n" + purchaseLottoSet + "개를 구매했습니다.");
     }
 
     public static void printPurchaseLottoNumbers(List<Lotto> lottoNumbers) {
-        int i,j;
-        for ( i = 0; i < lottoNumbers.size(); i++) {
+        int i, j;
+        for (i = 0; i < lottoNumbers.size(); i++) {
             System.out.print("[");
-            List<Integer> lottoOneSetNumbers=new ArrayList<>(lottoNumbers.get(i).getNumbers());
-            for( j=0;j< 5; j++) {
+            List<Integer> lottoOneSetNumbers = new ArrayList<>(lottoNumbers.get(i).getNumbers());
+            for (j = 0; j < 5; j++) {
                 System.out.print(lottoOneSetNumbers.get(j) + ", ");
             }
             System.out.print(lottoOneSetNumbers.get(j) + "] \n");
@@ -38,6 +38,6 @@ public class OutputView {
     }
 
     public static void printLottoProfitRate(double profitRate) {
-        System.out.printf(PROFIT_MESSAGE,profitRate);
+        System.out.printf(PROFIT_MESSAGE, profitRate);
     }
 }
