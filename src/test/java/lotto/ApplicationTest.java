@@ -102,6 +102,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 보너스_번호가_숫자가_아닌_경우() {
+        assertSimpleTest(() -> {
+            runException("36000", "1,10,12,15,16,2", "이");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
