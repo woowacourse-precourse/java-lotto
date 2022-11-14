@@ -6,12 +6,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static lotto.util.ErrorMessage.DUPLICATED_NUMBER;
-import static lotto.util.ErrorMessage.NOT_DIVIDED_BY_THOUSAND;
+import static lotto.util.ErrorMessage.*;
 import static lotto.util.LottoCode.*;
 
 public class Validation {
-    private static final String REGEX_NOT_NUMBER = "[^\\d]";
+    private static final String REGEX_NOT_NUMBER = "\\D";
 
     public void validateMoneyInput(String input) {
         validateIsNumberInput(input);
@@ -23,8 +22,7 @@ public class Validation {
     private void validateDivedThousand(int money) {
         boolean match = (money % LOTTO_PRICE.getCode()) != 0;
         if (match) {
-            System.out.println(NOT_DIVIDED_BY_THOUSAND.getMessage());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_DIVIDED_BY_THOUSAND.getMessage());
         }
     }
 
@@ -37,7 +35,12 @@ public class Validation {
     }
 
     public void validateIsNumberInput(String bonus) {
-        validateByRegex(REGEX_NOT_NUMBER, bonus);
+        Pattern pattern = Pattern.compile(REGEX_NOT_NUMBER);
+        Matcher matcher = pattern.matcher(bonus);
+
+        if (matcher.find()) {
+            throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
+        }
     }
 
     public void validateBonusNumber(List<Integer> numbers, Integer bonusNumber) {
@@ -58,16 +61,7 @@ public class Validation {
     private void validateCountOfLottoNumbers(List<Integer> numbers) {
         boolean match = numbers.size() != COUNT_LOTTO_NUMBER.getCode();
         if (match) {
-            System.out.println();
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateByRegex(String Regex, String input) {
-        Pattern pattern = Pattern.compile(Regex);
-        Matcher matcher = pattern.matcher(input);
-        if (matcher.find()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
         }
     }
 
@@ -76,11 +70,10 @@ public class Validation {
     }
 
     private void validateOutOfRange(Integer number) {
-        boolean match = (number >= MIN_LOTTO_NUMBER.getCode()) && (number <= MAX_LOTTO_NUMBER.getCode());
+        boolean match = !((number >= MIN_LOTTO_NUMBER.getCode()) && (number <= MAX_LOTTO_NUMBER.getCode()));
 
         if (match) {
-            System.out.println(DUPLICATED_NUMBER.getMessage());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NUMBER_OUT_OF_RANGE.getMessage());
         }
     }
 
@@ -88,8 +81,7 @@ public class Validation {
         boolean match = numbers.size() != numbers.stream().distinct().count();
 
         if (match) {
-            System.out.println(DUPLICATED_NUMBER.getMessage());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATED_NUMBER.getMessage());
         }
     }
 
@@ -97,8 +89,7 @@ public class Validation {
         validateDuplicate(numbers);
         boolean match = numbers.contains(bonusNumber);
         if (match) {
-            System.out.println(DUPLICATED_NUMBER.getMessage());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATED_NUMBER.getMessage());
         }
     }
 
@@ -108,7 +99,7 @@ public class Validation {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
         }
     }
 }
