@@ -18,4 +18,8 @@ public class PrintOutputMessage {
         System.out.printf(PRINT_PURCHASE_AMOUNT,lottoAccount);
     }
 
+    public static void printException(Exception exception) {
+        System.out.println(exception.getMessage());
+    }
+
 }
