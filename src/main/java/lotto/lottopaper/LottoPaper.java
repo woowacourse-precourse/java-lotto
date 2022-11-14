@@ -23,7 +23,7 @@ public class LottoPaper {
 
         for (Lotto lotto : lottos) {
             int rank = lotto.getRank(userLotto, bonusNumber);
-            resultRanks.set(rank, resultRanks.get(rank)+1);
+            resultRanks.set(rank, resultRanks.get(rank) + 1);
         }
 
         return resultRanks;

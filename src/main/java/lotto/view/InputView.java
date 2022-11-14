@@ -14,7 +14,7 @@ public class InputView {
     public static List<Integer> inputLottoNumbers() {
         System.out.println(GameMessage.INPUT_NUMBERS);
         String userNumbers = Console.readLine();
-        InputNumbersValidation .validate(userNumbers);
+        InputNumbersValidation.validate(userNumbers);
         return InputUtil.convertUserInputToNumbers(userNumbers);
     }
 
