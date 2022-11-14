@@ -14,7 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 사이즈가 6이 아닙니다.");
         }
 
         Integer max = numbers.stream().max(Integer::compareTo).orElseThrow();
