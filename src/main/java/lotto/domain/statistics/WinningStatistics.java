@@ -21,7 +21,7 @@ public class WinningStatistics {
     // 각각 횟수 구하기
     // 수익률 구하기
     public void fillLottoPlaceCount() {
-        this.placeHistory = purchaseLottos.fillPlaceHistory(winningLotto);
+        this.placeHistory = purchaseLottos.placeHistoryFor(winningLotto);
     }
 
     public void setYieldRate() {

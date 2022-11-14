@@ -1,6 +1,7 @@
 package lotto.domain.lotto;
 
 import static lotto.domain.lotto.Lotto.makeRandomLotto;
+import static lotto.messages.PrintMessage.createPurchaseQuantityMsg;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,27 +27,41 @@ public class PurchaseLottos {
         return quantity() * 1000;
     }
 
-    public PlaceHistory fillPlaceHistory(WinningLotto winningLotto) {
+    public PlaceHistory placeHistoryFor(WinningLotto winningLotto) {
         PlaceHistory placeHistory = new PlaceHistory();
-        lottos.forEach(lotto -> placeHistory.updateFor(winningLotto.makeMatchResult(lotto)));
+
+        fillPlaceHistory(winningLotto, placeHistory);
+
         return placeHistory;
+    }
+
+    private void fillPlaceHistory(WinningLotto winningLotto, PlaceHistory placeHistory) {
+        lottos.forEach(lotto -> placeHistory.updateFor(winningLotto.makeMatchResult(lotto)));
     }
 
     @Override
     public String toString() {
         StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(createPurchaseQuantityMsg());
-        stringBuffer.append('\n');
-        lottos.forEach(lotto -> {
-            //로또 목록 만들기
-            stringBuffer.append(lotto.toString());
-            stringBuffer.append('\n');
-        });
+
+        appendPurchaseQuantity(stringBuffer);
+        appendLottos(stringBuffer);
 
         return stringBuffer.toString();
     }
 
-    private String createPurchaseQuantityMsg() {
-        return String.format("%d개를 구매했습니다.", quantity());
+    private void appendPurchaseQuantity(StringBuffer stringBuffer) {
+        stringBuffer.append(createPurchaseQuantityMsg(quantity()));
+        stringBuffer.append(System.lineSeparator());
+    }
+
+    private void appendLottos(StringBuffer stringBuffer) {
+        lottos.forEach(lotto -> {
+            appendLotto(stringBuffer, lotto);
+        });
+    }
+
+    private void appendLotto(StringBuffer stringBuffer, Lotto lotto) {
+        stringBuffer.append(lotto.toString());
+        stringBuffer.append(System.lineSeparator());
     }
 }
