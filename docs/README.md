@@ -37,7 +37,6 @@
 *****
 ### 🟧 service package
 **UserService**
->- [ ] Lotto System을 통해 당첨 통계를 조회하는 기능 ( getUserLottoResult ) ( Lotto System을 통해 구매한 로또 번호와 비교 )
 >- [x] 총 수익률을 계산하는 기능 ( setRevenue )
 >- [x] 총 수익률을 조회하는 기능 ( getRevenue )
 >- [x] 금액을 입력받는 기능 ( setPayMent )
