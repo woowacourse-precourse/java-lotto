@@ -37,12 +37,12 @@ public class InputLotto {
 
   private static List<Integer> splitByDelimiter(String input) {
     try {
-      List<String> numbers = List.of((Console.readLine()).split(DELIMITER));
+      List<String> numbers = List.of(input.split(DELIMITER));
       return numbers.stream()
               .map(s -> convertToInt(s))
               .collect(Collectors.toList());
     } catch (Exception e) {
-      throw new IllegalArgumentException("[ERROR] ???");
+      throw new IllegalArgumentException("[ERROR] 값을 올바르게 입력하지 않았습니다.");
     }
   }
 }
