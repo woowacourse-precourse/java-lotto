@@ -8,12 +8,6 @@ import lotto.dto.LottoStatsDTO;
 import lotto.dto.LottoTicketDTO;
 
 public class OutputView {
-    private static final String INPUT_PAID_AMOUNT = "구입금액을 입력해 주세요.";
-    private static final String INFO_LOTTO_COUNT = "\n%d개를 구매했습니다.\n";
-    private static final String INPUT_WINNING_NUMBER = "\n당첨 번호를 입력해 주세요.";
-    private static final String INPUT_BONUS_NUMBER = "\n보너스 번호를 입력해 주세요.";
-    private static final String OUTPUT_STATS_MESSAGE = "\n당첨 통계\n---";
-    private static final String OUTPUT_YIELD_PERCENT = "총 수익률은 %.1f%%입니다.";
     private static final List<String> OUTPUT_LOTTO_RANK = List.of(
         "3개 일치 (5,000원) - %d개",
         "4개 일치 (50,000원) - %d개",
@@ -22,11 +16,11 @@ public class OutputView {
         "6개 일치 (2,000,000,000원) - %d개");
 
     public static void printInputAmount() {
-        System.out.println(INPUT_PAID_AMOUNT);
+        System.out.println(OutputMessage.INPUT_PAID_AMOUNT.getValue());
     }
 
     public static void printPaidLotto(Integer lottoCount, LottoTicketDTO lottoTicketDTO) {
-        System.out.printf(INFO_LOTTO_COUNT, lottoCount / LottoNumberRule.LOTTO_PRICE.getValue());
+        System.out.printf(OutputMessage.INFO_LOTTO_COUNT.getValue(), lottoCount / LottoNumberRule.LOTTO_PRICE.getValue());
         printLottoNumbers(lottoTicketDTO);
     }
 
@@ -37,15 +31,20 @@ public class OutputView {
     }
 
     public static void printInputWinningNumber() {
-        System.out.println(INPUT_WINNING_NUMBER);
+        System.out.println(
+            OutputMessage.INPUT_WINNING_NUMBER.getValue()
+        );
     }
 
     public static void printInputBonusNumber() {
-        System.out.println(INPUT_BONUS_NUMBER);
+        System.out.println(
+            OutputMessage.INPUT_BONUS_NUMBER.getValue());
     }
 
     public static void printStatsMessage(LottoStatsDTO lottoStatsDTO) {
-        System.out.println(OUTPUT_STATS_MESSAGE);
+        System.out.println(
+            OutputMessage.OUTPUT_STATS_MESSAGE.getValue()
+        );
         printLottoRank(lottoStatsDTO.getRankCounts());
         printYieldPercent(lottoStatsDTO.getYieldPercent());
     }
@@ -58,6 +57,9 @@ public class OutputView {
     }
 
     private static void printYieldPercent(double yieldPercent) {
-        System.out.printf(OUTPUT_YIELD_PERCENT, yieldPercent);
+        System.out.printf(
+            OutputMessage.OUTPUT_YIELD_PERCENT.getValue(),
+            yieldPercent
+        );
     }
 }
