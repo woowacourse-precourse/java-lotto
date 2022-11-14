@@ -7,14 +7,14 @@ public enum Winnings {
 	FOURTH_PLACE(50_000),
 	FIFTH_PLACE(5_000);
 	
-	private final int prize;
+	private final int PRIZE;
 	
-	Winnings(int prize) {
-		this.prize = prize;
+	private Winnings(int prize) {
+		PRIZE = prize;
 	}
 	
 	public int getPrize() {
-		return prize;
+		return PRIZE;
 	}
 	
 }
