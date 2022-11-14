@@ -22,7 +22,7 @@ public enum WinInfo {
     }
 
     public boolean match(int matchCnt, int bonusMatchCnt) {
-        if (this.matchCnt == matchCnt && this.bonusMatchCnt >= bonusMatchCnt) {
+        if (this.matchCnt == matchCnt && this.bonusMatchCnt <= bonusMatchCnt) {
             return true;
         }
         return false;
