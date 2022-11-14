@@ -59,7 +59,7 @@
 - [ ] 1~6숫자, 보너스번호 중 중복된 숫자가 있는경우(EXC-B-2)
   - IllegalArgumentException, "[ERROR] 중복된 숫자는 입력이 불가합니다."
 - [ ] 그 외 숫자가 아닌 문자가 섞여있는경우(EXC-A-2 재사용)
-- [ ] 구분자 "," 형식에 맞지 않는경우
+- [ ] 구분자 "," 형식에 맞지 않는경우(EXC-B-3)
   - IllegalArgumentException, "[ERROR] 다음예제와 같이 입력하여 주십시오.(ex - 1,2,3,4,5,6)"
 
 
@@ -72,6 +72,9 @@
 - [ ] ConsoleMessage 리팩토링 (RF-3)
   - [ ] MESSAGE_PURCHASE_LOTTO 리네이밍 (RF-3-1)
   - ~개를 구매했습니다 상수화 (RF-3-2)
+- [ ] 요구사항에 맞는 Lotto 클래스 변경(RF-4)
+  - [ ] WinLotto 상속 풀기(RF-4-1)
+  - [ ] sortAscend 함수 리팩토링하여 테스트 코드 통과(RF-4-2)
 
 ## 프로그래밍 요구사항
 
