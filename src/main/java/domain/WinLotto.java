@@ -12,11 +12,13 @@ public class WinLotto {
     private final Lotto winnerNumber;
     private final int bonusNumber;
     private final Map<LottoRank, Integer> result;
+    private long profit;
 
     public WinLotto(List<Lotto> lotteries, Lotto winnerNumber, int bonusNumber) {
         this.lotteries = lotteries;
         this.winnerNumber = winnerNumber;
         this.bonusNumber = bonusNumber;
+        this.profit = 0;
         this.result = setResult();
     }
 
@@ -38,6 +40,10 @@ public class WinLotto {
 
     public Map<LottoRank, Integer> getResult() {
         return result;
+    }
+
+    public long getProfit() {
+        return profit;
     }
 
 }
