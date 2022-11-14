@@ -24,11 +24,21 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    // 아래에 추가 테스트 작성 가능
+
+    @DisplayName(("금액에 맞는 수 만큼 로또를 생성한다"))
     @Test
     void createLottosSizeCheck() {
         LottoMachine lottoMachine = new LottoMachine();
         assertThat(lottoMachine.buyLotto(3999)).size().isEqualTo(3);
     }
 
-    // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("당첨번호와 일치하는 로또번호의 일치 여부를 리턴한다")
+    @Test
+    void matchesTest() {
+        LottoRaffler raffler = new LottoRaffler(new Integer[]{1,2,3,4,5,6},7);
+
+        assertThat(raffler.checkMatches(8)).isEqualTo(0);
+    }
 }

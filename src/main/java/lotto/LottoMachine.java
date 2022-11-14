@@ -1,9 +1,11 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class LottoMachine {
 
@@ -13,6 +15,7 @@ public class LottoMachine {
     public List<Lotto> buyLotto(int money) {
 
         int lottoAmount = money / LOTTO_PRICE;
+
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < lottoAmount; i++) {
@@ -22,7 +25,6 @@ public class LottoMachine {
             lottos.add(lotto);
 
         }
-
         return lottos;
     }
 
@@ -34,8 +36,8 @@ public class LottoMachine {
         for (int i = 0; i < amount; i++) {
             Lotto lotto = lottos.get(i);
             lotto.printNumbers();
-
         }
+
     }
 
 
