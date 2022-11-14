@@ -236,4 +236,14 @@ public class SimulatorTest {
                 List.of(1, 3, 5, 10, 11, 12)
         );
     }
+
+    @DisplayName("1등부터 5등까지 당첨 금액 환산하기")
+    @Test
+    void convertFirstPlaceToWinningPrice() {
+        assertThat(Rank.valueOfRank(1).getWinningPrice()).isEqualTo(2_000_000_000);
+        assertThat(Rank.valueOfRank(2).getWinningPrice()).isEqualTo(30_000_000);
+        assertThat(Rank.valueOfRank(3).getWinningPrice()).isEqualTo(1_500_000);
+        assertThat(Rank.valueOfRank(4).getWinningPrice()).isEqualTo(50_000);
+        assertThat(Rank.valueOfRank(5).getWinningPrice()).isEqualTo(5_000);
+    }
 }
