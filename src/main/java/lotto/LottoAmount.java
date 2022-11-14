@@ -8,7 +8,6 @@ public class LottoAmount {
     }
 
     public int caculInputMoney(int money){
-         money = input.inputMoney();
          return money / 1000;
     }
 }
