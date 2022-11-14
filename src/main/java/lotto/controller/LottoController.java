@@ -29,5 +29,7 @@ public class LottoController {
     private void calculateResult(List<Lotto> lottoTickets, UserNumber userNumber, int purchaseMoney) {
         RankCalculator rankCalculator = new RankCalculator(lottoTickets, userNumber);
         ProfitCalculator profitCalculator = new ProfitCalculator(rankCalculator.getRanks(), purchaseMoney);
+        OutputView.printWinningHistory(rankCalculator.getRanks());
+        OutputView.printProfit(profitCalculator.getProfit());
     }
 }
