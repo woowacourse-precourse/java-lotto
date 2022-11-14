@@ -9,18 +9,21 @@ public class Validator {
     private static final String WRONG_INPUT_MONEY = "1_000원 단위 입력만 가능합니다.";
     private static final String MAX_INPUT_MONEY = "개인당 최대 구매 금액인 100_000원 입니다..";
     private static final int WINNING_NUMBER_COUNT = 6;
+    private final String number;
 
+    public Validator(String number){
+        this.number = number;
+    }
 
     //  음수입력 시 에러
     public static void validateNegativePrice(int price) {
         if (price < 0) {
-            throw new IllegalArgumentException(ERROR + NEGATIVE_PRICE_ERROR);
-        }
+            throw new IllegalArgumentException(ERROR + NEGATIVE_PRICE_ERROR);}
     }
 
     // 1000원 단위 입력
     public static void validateInputMoney(int price) {
-        if (price % 1000 != 0) {
+        if (price % 1000 != 0 || price < 1000) {
             throw new IllegalArgumentException(ERROR + WRONG_INPUT_MONEY);
         }
     }
