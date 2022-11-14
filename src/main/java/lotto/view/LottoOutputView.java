@@ -1,5 +1,7 @@
 package lotto.view;
 
+import static lotto.model.Constant.PERCENTAGE_CONSTANT;
+
 import java.util.List;
 import lotto.model.Lotto;
 
@@ -31,13 +33,13 @@ public class LottoOutputView {
         System.out.println(lotto.toString());
     }
 
-    public void printWinningStatistic(List<Integer> winningCounts, int grossProfitPercentage) {
+    public void printWinningStatistic(int[] winningCounts, double grossProfitPercentage) {
         System.out.println(WINNING_STATISTIC_STRING);
-        System.out.println(THREE_SAME_NUMBER + winningCounts.get(0) + COUNT_STRING);
-        System.out.println(FOUR_SAME_NUMBER + winningCounts.get(1) + COUNT_STRING);
-        System.out.println(FIVE_SAME_NUMBER + winningCounts.get(2) + COUNT_STRING);
-        System.out.println(FIVE_SAME_NUMBER_BONUS + winningCounts.get(3) + COUNT_STRING);
-        System.out.println(LOTTO_WIN + winningCounts.get(4) + COUNT_STRING);
-        System.out.println(GROSS_RETURN + grossProfitPercentage + GROSS_RETURN_END_STRING);
+        System.out.println(THREE_SAME_NUMBER + winningCounts[0] + COUNT_STRING);
+        System.out.println(FOUR_SAME_NUMBER + winningCounts[1] + COUNT_STRING);
+        System.out.println(FIVE_SAME_NUMBER + winningCounts[2] + COUNT_STRING);
+        System.out.println(FIVE_SAME_NUMBER_BONUS + winningCounts[3] + COUNT_STRING);
+        System.out.println(LOTTO_WIN + winningCounts[4] + COUNT_STRING);
+        System.out.println(GROSS_RETURN + grossProfitPercentage * PERCENTAGE_CONSTANT + GROSS_RETURN_END_STRING);
     }
 }
