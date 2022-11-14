@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
@@ -28,7 +26,7 @@ class PurchaseTest {
 
     @DisplayName("사용자가 지불한 금액이 입력 요구 사항에 맞지 않을 경우 예외를 발생시킨다.")
     @ParameterizedTest
-    @CsvSource({"000","100","12001"})
+    @CsvSource({"000","100","12001","110000"})
     void changeToLottoByNotNumberMoney(int money) {
         assertThatThrownBy(() -> purchase.changeToLotto(money))
                 .isInstanceOf(IllegalArgumentException.class);

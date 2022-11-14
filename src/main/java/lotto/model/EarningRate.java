@@ -7,7 +7,7 @@ public class EarningRate {
         this.money = money;
     }
 
-    public double computeEarningRate(int winnings) {
+    public double computeEarningRate(long winnings) {
         double earningRate = (winnings / (double) money) * 100.0;
         return earningRate;
     }

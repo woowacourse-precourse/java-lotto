@@ -49,7 +49,7 @@ class WinningLottoTest {
     @DisplayName("당첨 로또와 로또를 비교하여 순위를 반환한다.")
     @ParameterizedTest
     @CsvSource({"1,2,3,4,5,6,FIRST", "2,3,4,5,6,7,SECOND", "2,3,4,5,6,8,THIRD"
-            , "3,4,5,6,7,8,FOURTH", "3,4,5,6,7,8,FIFTH"})
+            , "3,4,5,6,7,8,FOURTH", "4,5,6,7,8,9,FIFTH"})
     public void computeRank(int n1, int n2, int n3, int n4, int n5, int n6, Rank result) {
         WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
         Rank rank = winningLotto.computeRank(new Lotto(List.of(n1, n2, n3, n4, n5, n6)));

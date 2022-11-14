@@ -8,7 +8,7 @@ import java.util.Map;
 public class RankCount {
     private final List<Lotto> lottos;
     private final WinningLotto winningLotto;
-    private EnumMap<Rank, Integer> winningLottoCounter;
+    private EnumMap<Rank, Integer> rankCounter;
 
     public RankCount(List<Lotto> lottos, WinningLotto winningLotto) {
         this.lottos = lottos;
@@ -17,21 +17,21 @@ public class RankCount {
     }
 
     private void initWinningLottoCounter() {
-        winningLottoCounter = new EnumMap<Rank, Integer>(Rank.class);
+        rankCounter = new EnumMap<Rank, Integer>(Rank.class);
         Rank[] ranks = Rank.values();
         for (Rank rank : ranks) {
-            winningLottoCounter.put(rank, 0);
+            rankCounter.put(rank, 0);
         }
     }
 
-    public Map countRank() {
+    public Map<Rank, Integer> countRank() {
         for (Lotto lotto : lottos) {
             Rank rank = winningLotto.computeRank(lotto);
-            winningLottoCounter.put(rank, winningLottoCounter.getOrDefault(rank, 0) + 1);
+            rankCounter.put(rank, rankCounter.getOrDefault(rank, 0) + 1);
         }
 
-        winningLottoCounter.remove(Rank.NOTHING);
+        rankCounter.remove(Rank.NOTHING);
 
-        return Collections.unmodifiableMap(winningLottoCounter);
+        return Collections.unmodifiableMap(rankCounter);
     }
 }
