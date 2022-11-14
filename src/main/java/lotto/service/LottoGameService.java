@@ -50,6 +50,10 @@ public class LottoGameService {
                 throw new IllegalArgumentException(
                     ErrorMessage.LOTTO_NUMBER_NOT_NUMBER.getErrorMessage());
             }
+            if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
+                throw new IllegalArgumentException(
+                    ErrorMessage.LOTTO_NUMBER_RANGE.getErrorMessage());
+            }
         }
     }
 
@@ -88,6 +92,6 @@ public class LottoGameService {
 
     public String calculateRate(LottoAnalyzer lottoAnalyzer) {
         float rate = (float) lottoAnalyzer.getWholePrizeMoney() / purchaseAmount * 100;
-        return String.format("%,.1f",rate)+"%";
+        return String.format("%,.1f", rate) + "%";
     }
 }

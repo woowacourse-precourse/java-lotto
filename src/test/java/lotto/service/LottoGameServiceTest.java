@@ -69,6 +69,14 @@ public class LottoGameServiceTest {
             .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호가 범위를 벗어나면 예외가 발생한다.")
+    @CsvSource({"1,2,3,4,5,67"})
+    @ParameterizedTest
+    void pickWinningNumbersOutRange(String input) {
+        assertThatThrownBy(() -> lottoGameService.pickWinningNumbers(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("보너스 번호가 숫자가 아니면 예외가 발생한다.")
     @CsvSource({"가나", "abs"})
     @ParameterizedTest
