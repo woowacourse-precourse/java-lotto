@@ -35,17 +35,17 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (isNumberNullOrEmpty(numbers)) {
-            Application.lottoError("로또 생성 시 빈 리스트는 사용할 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 생성 시 빈 리스트는 사용할 수 없습니다.");
         }
         if (!hasSixNumbers(numbers)) {
-            Application.lottoError("로또를 생성하기 위해선 6개의 번호가 필요합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또를 생성하기 위해선 6개의 번호가 필요합니다.");
         }
         for (int num : numbers) {
             if (hasDuplicateNumber(numbers, num)) {
-                Application.lottoError("로또 생성 시 중복된 번호는 허용하지 않습니다.");
+                throw new IllegalArgumentException("[ERROR] 로또 생성 시 중복된 번호는 허용하지 않습니다.");
             }
             if (!checkRange(num)) {
-                Application.lottoError("범위를 벗어난 로또 번호는 허용하지 않습니다.");
+                throw new IllegalArgumentException("[ERROR] 범위를 벗어난 로또 번호는 허용하지 않습니다.");
             }
         }
     }

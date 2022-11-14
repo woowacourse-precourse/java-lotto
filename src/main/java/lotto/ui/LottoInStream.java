@@ -32,10 +32,10 @@ public class LottoInStream {
         
         int number = convStrToInt(line);
         if (lotto.hasNumber(number)) {
-            Application.lottoError("보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
         }
         if (!Lotto.checkRange(number)) {
-            Application.lottoError("범위를 벗어난 보너스 번호는 허용하지 않습니다.");
+            throw new IllegalArgumentException("[ERROR] 범위를 벗어난 보너스 번호는 허용하지 않습니다.");
         }
         return (number);
     }
