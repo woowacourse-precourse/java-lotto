@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,4 +27,18 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호가 비어있다면 예외가 발생한다.")
+    @Test
+    void createLottoByNull() {
+        assertThatThrownBy(() -> new Lotto(List.of()))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("숫자 이외의 값이 들어올 수 없다.")
+    @Test
+    void createLottoByNotNumber() {
+        String input = "123abc";
+
+        assertThatThrownBy(() -> LottoView.isNumber(input)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
