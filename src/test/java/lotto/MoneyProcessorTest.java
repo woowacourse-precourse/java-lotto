@@ -1,8 +1,8 @@
 package lotto;
 
-import lotto.domain.MoneyProcessor;
-import lotto.domain.MoneyProcessorImpl;
-import lotto.domain.RankEnum;
+import lotto.domain.processor.MoneyProcessor;
+import lotto.domain.processor.MoneyProcessorImpl;
+import lotto.domain.enummodel.RankEnum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;

@@ -1,4 +1,7 @@
-package lotto.domain;
+package lotto.domain.processor;
+
+import lotto.domain.enummodel.LottoEnum;
+import lotto.domain.enummodel.PriceEnum;
 
 import java.util.List;
 

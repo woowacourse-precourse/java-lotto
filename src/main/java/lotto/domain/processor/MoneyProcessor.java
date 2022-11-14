@@ -1,4 +1,6 @@
-package lotto.domain;
+package lotto.domain.processor;
+
+import lotto.domain.enummodel.RankEnum;
 
 import java.util.List;
 

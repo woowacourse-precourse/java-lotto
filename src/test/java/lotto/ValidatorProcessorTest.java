@@ -1,6 +1,9 @@
 package lotto;
 
-import lotto.domain.*;
+import lotto.domain.enummodel.LottoEnum;
+import lotto.domain.enummodel.PriceEnum;
+import lotto.domain.processor.ValidatorProcessor;
+import lotto.domain.processor.ValidatorProcessorImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;

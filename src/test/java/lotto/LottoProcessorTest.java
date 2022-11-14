@@ -1,9 +1,9 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.domain.LottoEnum;
-import lotto.domain.LottoProcessor;
-import lotto.domain.LottoProcessorImpl;
+import lotto.domain.enummodel.LottoEnum;
+import lotto.domain.processor.LottoProcessor;
+import lotto.domain.processor.LottoProcessorImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;

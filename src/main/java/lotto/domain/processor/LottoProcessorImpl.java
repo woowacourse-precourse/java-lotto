@@ -1,6 +1,9 @@
-package lotto.domain;
+package lotto.domain.processor;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.Lotto;
+import lotto.domain.repository.LottoRepository;
+import lotto.domain.enummodel.LottoEnum;
 
 import java.util.ArrayList;
 import java.util.List;

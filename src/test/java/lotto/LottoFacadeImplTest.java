@@ -3,16 +3,13 @@ package lotto;
 import lotto.application.LottoFacade;
 import lotto.application.LottoFacadeImpl;
 import lotto.domain.Lotto;
-import lotto.domain.LottoEnum;
-import lotto.domain.RankEnum;
+import lotto.domain.enummodel.RankEnum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;

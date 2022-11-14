@@ -1,11 +1,14 @@
 package lotto.application;
 
 import lotto.domain.*;
+import lotto.domain.enummodel.LottoEnum;
+import lotto.domain.enummodel.PriceEnum;
+import lotto.domain.enummodel.RankEnum;
+import lotto.domain.processor.*;
 
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public class LottoFacadeImpl implements LottoFacade{
