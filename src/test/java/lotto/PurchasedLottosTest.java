@@ -37,13 +37,13 @@ public class PurchasedLottosTest {
     @DisplayName("구입한 로또의 개수는 (구입 금액 / 로또 개당 가격)과 일치한다.")
     @Test
     void 로또가_구입금액에_맞게_생성되는지_확인() {
-        assertThat(purchasedLottos.getLottos().size()).isEqualTo(purchasePrice / EACH_LOTTO_PRICE);
+        assertThat(purchasedLottos.getPurchasedLottos().size()).isEqualTo(purchasePrice / EACH_LOTTO_PRICE);
     }
 
     @DisplayName("구매한 로또의 번호는 오름차순으로 정렬된다.")
     @Test
     void 로또_번호가_오름차순으로_정렬되는지_확인() {
-        Lotto lotto = purchasedLottos.getLottos().get(0);
+        Lotto lotto = purchasedLottos.getPurchasedLottos().get(0);
         List<Integer> numbers = lotto.getNumbers();
         List<Integer> sortedNumbers = numbers.stream()
                 .sorted()

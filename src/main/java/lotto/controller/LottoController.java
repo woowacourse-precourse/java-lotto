@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.*;
 import lotto.view.ConsoleView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoController {
@@ -11,20 +12,39 @@ public class LottoController {
     private WinningStatistics winningStatistics;
 
     public void process() {
-        purchaseLotto();
+        purchaseLottos();
         showPurchasedLottos();
         setWinningLotto();
         createWinningStatistics();
         showWinningResult();
     }
 
-    private void purchaseLotto() {
+    private void purchaseLottos() {
         int payment = ConsoleView.inputPurchasePrice();
-        purchasedLottos = new PurchasedLottos(payment);
+        List<Lotto> randomLottos = createRandomLottos(payment);
+        purchasedLottos = new PurchasedLottos(randomLottos);
+    }
+
+    private List<Lotto> createRandomLottos(int payment) {
+        List<Lotto> randomLottos = new ArrayList<>();
+        for (int i = 0; i < payment / 1000; i++) {
+            Lotto lotto = createRandomLotto();
+            randomLottos.add(lotto);
+        }
+        return randomLottos;
+    }
+
+    private Lotto createRandomLotto() {
+        RandomNumbers randomNumbers = new RandomNumbers(
+                LottoCondition.MIN_NUMBER.getNumber(),
+                LottoCondition.MAX_NUMBER.getNumber(),
+                LottoCondition.COUNT.getNumber()
+        );
+        return new Lotto(randomNumbers.getRandomNumbers());
     }
 
     private void showPurchasedLottos() {
-        int amount = purchasedLottos.getLottos().size();
+        int amount = purchasedLottos.getPurchasedLottos().size();
         ConsoleView.printBlankLine();
         ConsoleView.printPurchaseAmount(amount);
         ConsoleView.printPurchasedLottos(purchasedLottos);
@@ -48,7 +68,7 @@ public class LottoController {
     }
 
     private void createWinningStatistics() {
-        winningStatistics =  new WinningStatistics(purchasedLottos, winningLotto);
+        winningStatistics = new WinningStatistics(purchasedLottos, winningLotto);
     }
 
     private void showWinningResult() {
@@ -58,7 +78,7 @@ public class LottoController {
     }
 
     private void showProfitRate() {
-        int purchasedAmount = purchasedLottos.getLottos().size() * LottoCondition.PRICE.getNumber();
+        int purchasedAmount = purchasedLottos.getPurchasedLottos().size() * LottoCondition.PRICE.getNumber();
         float profitRate = winningStatistics.calculateProfitRate(purchasedAmount);
         String profitRateWithFormat = String.format("%.1f", profitRate);
         ConsoleView.printProfitRate(profitRateWithFormat);

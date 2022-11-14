@@ -44,7 +44,7 @@ public class ConsoleView {
     }
 
     public static void printPurchasedLottos(PurchasedLottos purchasedLottos) {
-        List<Lotto> lottos = purchasedLottos.getLottos();
+        List<Lotto> lottos = purchasedLottos.getPurchasedLottos();
         for (Lotto lotto: lottos) {
             System.out.print(LEFT_BRACKET);
             printLottoNumbers(lotto);

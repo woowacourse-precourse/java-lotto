@@ -28,7 +28,7 @@ public class WinningStatistics {
     }
 
     private void calculateWinningStatistics(PurchasedLottos purchasedLottos, WinningLotto winningLotto) {
-        for (Lotto purchasedLotto: purchasedLottos.getLottos()) {
+        for (Lotto purchasedLotto: purchasedLottos.getPurchasedLottos()) {
             Rank rank = Rank.getRank(purchasedLotto, winningLotto);
             winningStatistics.put(rank, winningStatistics.get(rank) + 1);
         }
