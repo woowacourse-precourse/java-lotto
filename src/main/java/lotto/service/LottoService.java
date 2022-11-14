@@ -1,5 +1,7 @@
 package lotto.service;
 
+import static java.lang.String.format;
+
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Customer;
@@ -48,5 +50,11 @@ public class LottoService {
                 + "5개 일치 (1,500,000원) - " + winnings[2] + "개\n"
                 + "5개 일치, 보너스 볼 일치 (30,000,000원) - " + winnings[1] + "개\n"
                 + "6개 일치 (2,000,000,000원) - " + winnings[0] + "개\n";
+    }
+
+    public String calculateRate(int amount){
+        double rate = customer.calculateRate(amount);
+        String rateString = format("%.1f", rate);
+        return "총 수익률은 " + rateString + "%입니다.\n";
     }
 }
