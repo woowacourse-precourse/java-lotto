@@ -84,4 +84,9 @@ public class User {
         }
     }
 
+    private void validateNumberRange(String input) {
+        if (Integer.parseInt(input) < 1 || Integer.parseInt(input) > 45) {
+            throw new IllegalArgumentException(Error.NUMBER_OUT_OF_RANGE.getMessage());
+        }
+    }
 }

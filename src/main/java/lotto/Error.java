@@ -9,7 +9,8 @@ public enum Error {
     NOT_DIVIDED_1000WON("[ERROR] 1000원 단위로만 구매 가능합니다."),
     NOT_SIX_NUMBERS("[ERROR] 당첨 번호는 6개를 입력해야만 합니다."),
     DUPLICATED_NUMBERS("[ERROR] 수가 중복됩니다."),
-    SEPARATOR("[ERROR] 구분자는 콤마만 가능합니다.")
+    SEPARATOR("[ERROR] 구분자는 콤마만 가능합니다."),
+    NUMBER_OUT_OF_RANGE("[ERROR] 번호는 1 ~ 45 사이의 수만 가능합니다.")
     ;
 
     private final String message;
