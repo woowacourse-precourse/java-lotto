@@ -3,12 +3,14 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    public static void main(String[] args) {
-        int amount = getPurchaseAmount();
-        System.out.println(amount);
+    public static final Integer LOTTO_AMOUNT_EACH = 1000;
 
-        // ~개를 구매했습니다.
-        /*
+    public static void main(String[] args) {
+
+        Integer amount = printlnPurchaseNoticeMessage();
+        printlnLottoNumMessage(amount);
+
+        /* 로또 랜덤 발행
         [1, 2, 3, 4, 5, 6]
          */
 
@@ -29,14 +31,24 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    private static void printlnLottoNumMessage(Integer amount) {
+        Integer lottoNum = calcLottoNum(amount);
+        System.out.printf("%d개를 구매했습니다.\n", lottoNum);
+    }
+
+    private static Integer calcLottoNum(Integer amount) {
+        Integer lottoNum = amount / LOTTO_AMOUNT_EACH;
+        return lottoNum;
+    }
+
     private static int getPurchaseAmount() {
-        printlnPurchaseNoticeMessage();
         String input = Console.readLine();
-        // calcLottoEach(input);
         return Integer.parseInt(input);
     }
 
-    private static void printlnPurchaseNoticeMessage() {
+    private static int printlnPurchaseNoticeMessage() {
         System.out.println("구입금액을 입력해 주세요.");
+        Integer purAmount = getPurchaseAmount();
+        return purAmount;
     }
 }
