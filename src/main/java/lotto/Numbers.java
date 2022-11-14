@@ -3,6 +3,7 @@ package lotto;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Numbers {
     private final List<Integer> winningNumbers;
@@ -15,6 +16,15 @@ public class Numbers {
         validateRange(bonusNumber);
         validateDuplicateBonusNumber(winningNumbers, bonusNumber);
         this.bonusNumber = bonusNumber;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        List<Integer> numbers = winningNumbers.stream().collect(Collectors.toList());
+        return numbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 
     private void validateForWinningNumbers(List<Integer> winningNumbers){

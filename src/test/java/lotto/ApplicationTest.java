@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -62,6 +63,17 @@ class ApplicationTest extends NsTest {
         Money money = new Money(5000);
         List<Lotto> lottos = Application.createLottos(money.getNumberToPublishLottos());
         assertEquals(5, lottos.size());
+    }
+
+    @DisplayName("등수별 개수를 구한다.")
+    @Test
+    void getNumbersOfRanks() {
+        LottoGroups lottoGroups = new LottoGroups(List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Lotto(List.of(1, 2, 3, 4, 5, 7))));
+        Numbers numbers = new Numbers(List.of(1, 2, 3, 7, 12, 13), 9);
+        Map<Rank, Integer> numbersOfRanks = Application.numbersOfRanks(lottoGroups, numbers);
+
+        assertThat(numbersOfRanks.get(Rank.FIFTH)).isEqualTo(1);
+        assertThat(numbersOfRanks.get(Rank.FOURTH)).isEqualTo(1);
     }
 
     @Override
