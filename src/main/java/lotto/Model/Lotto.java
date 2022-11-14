@@ -5,13 +5,17 @@ import lotto.Service.LottoValidator;
 import java.util.List;
 
 public class Lotto {
-
-    private static LottoValidator lottoValidator = new LottoValidator();
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        lottoValidator.validate(numbers);
+        validate(numbers);
         this.numbers = numbers;
+    }
+
+    private void validate(List<Integer> numbers) {
+        LottoValidator lottoValidator = new LottoValidator();
+        
+        lottoValidator.validate(numbers);
     }
 
     @Override
