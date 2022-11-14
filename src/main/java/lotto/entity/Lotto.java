@@ -1,5 +1,6 @@
 package lotto.entity;
 
+import lotto.exception.CommonException;
 import lotto.exception.ErrorMessage;
 
 import java.util.List;
@@ -13,8 +14,10 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        checkNumbersSize(numbers);
+        checkDuplication(numbers);
+        for (int number : numbers) {
+            CommonException.checkNumberRange(number);
         }
     }
 

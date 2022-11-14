@@ -10,7 +10,7 @@ public class CommonException {
         }
     }
 
-    static void checkNumberRange(int number) {
+    public static void checkNumberRange(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_OUT_OF_RANGE.getMessage());
         }
