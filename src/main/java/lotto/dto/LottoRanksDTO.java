@@ -4,7 +4,6 @@ import lotto.domain.LottoRank;
 import lotto.domain.Lottos;
 import lotto.domain.WinningLottoNumbers;
 
-import java.util.Collections;
 import java.util.List;
 
 public class LottoRanksDTO {
@@ -15,6 +14,6 @@ public class LottoRanksDTO {
     }
     
     public List<LottoRank> getLottoRanks() {
-        return Collections.unmodifiableList(lottoRanks);
+        return lottoRanks;
     }
 }

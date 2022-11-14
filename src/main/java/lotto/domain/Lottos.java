@@ -14,7 +14,7 @@ public class Lottos {
     public List<LottoRank> parseRanks(final WinningLottoNumbers winningLottoNumbers) {
         return lottos.stream()
                 .map(lotto -> parseRank(winningLottoNumbers, lotto))
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
     
     private LottoRank parseRank(final WinningLottoNumbers winningLottoNumbers, final Lotto lotto) {
