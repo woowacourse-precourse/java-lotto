@@ -26,6 +26,9 @@ public class User {
 
         System.out.println("\n당첨 번호를 입력해 주세요.");
         lottoManager.inputLuckyNumbers();
+
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        lottoManager.inputBonusNumbers();
     }
 
     private int inputPrice() {

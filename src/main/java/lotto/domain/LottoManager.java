@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 public class LottoManager {
     private final LottoGenerator lottoGenerator;
     private List<Integer> luckyNumbers = new ArrayList<>();
+    private int bonusNumber = 0;
 
     public LottoManager() {
         lottoGenerator = new LottoGenerator();
@@ -35,5 +36,9 @@ public class LottoManager {
                 .map(String::trim)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public void inputBonusNumbers() {
+        bonusNumber = Integer.parseInt(Console.readLine());
     }
 }
