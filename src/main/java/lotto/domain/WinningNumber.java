@@ -61,7 +61,7 @@ public class WinningNumber {
 
     private void checkIfCharIsNumber(char c){
         if(c<zero || c>nine){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorResource.errorStart+ charIsNotNumber);
         }
     }
 
