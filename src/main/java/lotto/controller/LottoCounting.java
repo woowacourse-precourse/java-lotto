@@ -17,14 +17,14 @@ public class LottoCounting {
     public Map<Integer,Integer> countWinningPaper(Map<Lotto,Integer> countedLotto,Lotto winningLotto,int bonusNumber){
         Map<Integer,Integer> countedWinningPaper = new HashMap<>();
         countedLotto.forEach((lottoPaper,lottoRanking) -> {
-            addOneWinningPrize(countedWinningPaper,lottoRanking,winningLotto,bonusNumber);
+            addOneWinningPrize(countedWinningPaper,lottoRanking,lottoPaper,bonusNumber);
         });
         return countedWinningPaper;
     }
 
-    private void addOneWinningPrize(Map<Integer,Integer> countedLotto,int howMuchCorrect,Lotto winningLotto,int bonusNumber){
+    private void addOneWinningPrize(Map<Integer,Integer> countedLotto,int howMuchCorrect,Lotto oneLottoPaper,int bonusNumber){
 
-        int ranking = WinningPrize.findRanking(howMuchCorrect,winningLotto,bonusNumber);
+        int ranking = WinningPrize.findRanking(howMuchCorrect,oneLottoPaper,bonusNumber);
         try{
             int previousRankingCount = countedLotto.get(ranking);
             countedLotto.replace(ranking,previousRankingCount + 1);
