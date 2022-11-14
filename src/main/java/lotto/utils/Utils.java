@@ -2,6 +2,8 @@ package lotto.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.validation.Validation;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -15,8 +17,10 @@ public final class Utils {
         return Randoms.pickUniqueNumbersInRange(start, end, count);
     }
 
-    public static void sortListNaturalOrder(List<Integer> list) {
-        Collections.sort(list);
+    public static List<Integer> sortListNaturalOrder(List<Integer> list) {
+        List<Integer> orderedList = new ArrayList<Integer>(list);
+        Collections.sort(orderedList);
+        return orderedList;
     }
 
     public static int[] stringToIntArray(String string) {
