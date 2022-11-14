@@ -8,11 +8,16 @@ public class LottoNumber {
     private int lottoNumber;
 
     public LottoNumber(int lottoNumber) {
+        validateNumberRange(lottoNumber);
         this.lottoNumber = lottoNumber;
     }
 
     public int getLottoNumber() {
         return lottoNumber;
+    }
+
+    private void validateNumberRange(int lottoNumber) {
+        Validate.validateLottoNumberRange(lottoNumber);
     }
 
     @Override
