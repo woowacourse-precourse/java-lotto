@@ -70,7 +70,11 @@ public class User {
         return yield;
     }
 
-    public void setYield(double yield) {
+    public void calculateYield() {
+        double yield = this.winningAmount / this.money;
+        yield *= 1000;
+        yield = Math.round(yield);
+        yield /= 10;
         this.yield = yield;
     }
 
@@ -99,13 +103,5 @@ public class User {
             ranks.put(Number.ONE, ranks.get(Number.ONE) + 1);
             this.winningAmount += Number.FIRST_WINNING_AMOUNT.getValue();
         }
-    }
-
-    public double calculateYield() {
-        double yield = this.winningAmount / this.money;
-        yield *= 1000;
-        yield = Math.round(yield);
-        yield /= 10;
-        return yield;
     }
 }
