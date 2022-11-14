@@ -15,7 +15,6 @@ import java.util.Map;
 
 public class ViewConsole {
 
-    private static String SIX_CORRECT = "6개 일치 (2,000,000,000원) - %d개\n";
     private static String PLZ_INPUT_MONEY = "구입금액을 입력해 주세요.";
     private static String LOTTO_LINE_COUNT = "개를 구매했습니다.";
     private static String PLZ_INPUT_CORRECT_NUMBER = "당첨 번호를 입력해 주세요.";
@@ -26,6 +25,7 @@ public class ViewConsole {
     private static String THREE_CORRECT = "3개 일치 (5,000원) - %d개\n";
     private static String FOUR_CORRECT = "4개 일치 (50,000원) - %d개\n";
     private static String FIVE_CORRECT = "5개 일치 (1,500,000원) - %d개\n";
+    private static String SIX_CORRECT = "6개 일치 (2,000,000,000원) - %d개\n";
     private static String FIVE_CORRECT_WITH_BONUS = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
 
     public static void printInputMoney() {
