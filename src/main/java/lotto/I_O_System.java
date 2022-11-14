@@ -120,7 +120,7 @@ public class I_O_System {
     }
 
     public void Number_of_Win_Print(int[] Number_of_Win, int Bounus_Win, int Jackpot) {
-        float Sum = ((float) Jackpot / (float) this.Money_Enter) * 100;
+        double Sum = ((double) Jackpot / (double) this.Money_Enter) * 100;
         System.out.println(Three_Matche + Number_of_Win[3] + Point);
         System.out.println(Four_Matche + Number_of_Win[4] + Point);
         System.out.println(Five_Matche + Number_of_Win[5] + Point);
