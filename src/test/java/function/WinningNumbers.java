@@ -27,7 +27,7 @@ public class WinningNumbers {
 
     @DisplayName("숫자가 아닌 다른 값")
     @Test
-    void notNumber() {
+    void isNotNumber() {
         String data = "a,b,c,d,e,f";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> new LottoDrawMachine())
@@ -37,7 +37,7 @@ public class WinningNumbers {
 
     @DisplayName("','가 아닌 다른 값")
     @Test
-    void notComma() {
+    void isNotComma() {
         String data = "1 2 3 4 5 6";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> new LottoDrawMachine())
@@ -57,7 +57,7 @@ public class WinningNumbers {
 
     @DisplayName("6개의 숫자가 아님")
     @Test
-    void NotLength6() {
+    void isNotLength6() {
         String data = "1,2,3,4,5";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> new LottoDrawMachine())
@@ -67,7 +67,7 @@ public class WinningNumbers {
 
     @DisplayName("숫자의 범위가 1 ~ 45까지가 아님")
     @Test
-    void NotRangeFrom1To45() {
+    void isNotRangeFrom1To45() {
         String data = "1,2,3,46,5,6";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> new LottoDrawMachine())
@@ -77,7 +77,7 @@ public class WinningNumbers {
 
     @DisplayName("중복되는 숫자 존재")
     @Test
-    void duplicateNumbers() {
+    void DuplicateNumbers() {
         String data = "1,2,3,5,5,6";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> new LottoDrawMachine())
