@@ -5,6 +5,8 @@ import lotto.domain.Lotto;
 import lotto.enums.IntEnum;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.*;
@@ -16,7 +18,7 @@ public class LottoRandomPeek {
     public void drawLotto() {
         List<Integer> randomNumbers = pickUniqueNumbersInRange(
                 START_NUMBER.getValue(), LAST_NUMBER.getValue(), LOTTO_SIZE.getValue());
-        randomLottos.add(new Lotto(randomNumbers));
+        randomLottos.add(new Lotto(sortList(randomNumbers)));
     }
 
     public void generateRandom(int countLotto) {
@@ -27,5 +29,11 @@ public class LottoRandomPeek {
 
     public List<Lotto> getRandomLottos() {
         return randomLottos;
+    }
+
+    private List<Integer> sortList(List<Integer> randomNumbers) {
+        List<Integer> newRandomNumbers = new ArrayList<>(randomNumbers);
+        Collections.sort(newRandomNumbers);
+        return newRandomNumbers;
     }
 }
