@@ -25,21 +25,26 @@ public class WinningNumber {
 
     private List<Integer> StringToIntegerList(String string){
         List<Integer> numbers = new ArrayList<>();
-        int temporaryInt = initNumber;
+        int temporaryNumber = initNumber;
         for(int i=0;i<string.length();i++){
             char temporaryLetter = string.charAt(i);
             if(temporaryLetter == rest ){
-                checkIfNumberInRange(temporaryInt);
-                ifNumberAlreadyExist(numbers,temporaryInt);
-                numbers.add(temporaryInt);
-                temporaryInt = initNumber;
+                checkIfNumberInRange(temporaryNumber);
+                ifNumberAlreadyExist(numbers,temporaryNumber);
+                numbers.add(temporaryNumber);
+                temporaryNumber = initNumber;
                 continue;
             }
-            checkIfCharIsNumber(temporaryLetter);
-            checkIfNumberStartsWithZero(temporaryInt, temporaryLetter);
-            temporaryInt = temporaryLetter *mulNum + (temporaryLetter -zero);
+            temporaryNumber = getTemporaryNumber(temporaryNumber, temporaryLetter);
         }
         return numbers;
+    }
+
+    private int getTemporaryNumber(int temporaryNumber, char temporaryLetter) {
+        checkIfCharIsNumber(temporaryLetter);
+        checkIfNumberStartsWithZero(temporaryNumber, temporaryLetter);
+        temporaryNumber = temporaryLetter *mulNum + (temporaryLetter -zero);
+        return temporaryNumber;
     }
 
     private void ifNumberAlreadyExist(List<Integer> numbers,int newNumber){
