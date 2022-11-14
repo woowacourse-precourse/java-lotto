@@ -26,6 +26,10 @@ public class LottoNumberManagement {
         this.numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBERS_SIZE);
     }
 
+    public List<Integer> getRandomNumbers(){
+        return numbers;
+    }
+
     public void setWinningNumbers(List<Integer> winningNumbers) {
         validate(winningNumbers);
         this.winningNumbers = winningNumbers;
