@@ -19,16 +19,24 @@ public class Player {
     public void InputPurchaseMoney(){
         System.out.println(manager.INPUT_MONEY);
         String input = readLine();
-        if(!manager.isNumber(input))
-            throw new IllegalArgumentException("[ERROR] : 금액은 숫자로만 구성된 문자열이어야 합니다.");
+        checkPurchaseMoney(input);
+    }
+    public void checkPurchaseMoney(String input){
+        if(!manager.isNumber(input)){
+            System.out.println("[ERROR] : 금액은 숫자로만 구성된 문자열이어야 합니다.");
+            throw new IllegalArgumentException();
+        }
         int money = Integer.parseInt(input);
-        if(money < 1000)
-            throw new IllegalArgumentException("[ERROR] : 최소 1000원 이상의 금액을 입력해주세요.");
-        if(money % 1000 != 0)
-            throw new IllegalArgumentException("[ERROR] : 금액은 1000원으로 나누어 떨어져야 합니다.");
+        if(money < 1000){
+            System.out.println("[ERROR] : 최소 1000원 이상의 금액을 입력해주세요.");
+            throw new IllegalArgumentException();
+        }
+        if(money % 1000 != 0){
+            System.out.println("[ERROR] : 금액은 1000원으로 나누어 떨어져야 합니다.");
+            throw new IllegalArgumentException();
+        }
         this.PurchaseMoney = money;
     }
-
     public void calculateTotalLotto(){
         this.total_lotto = this.PurchaseMoney / this.LOTTO_PRICE;
     }
