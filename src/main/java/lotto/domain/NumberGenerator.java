@@ -8,16 +8,9 @@ import java.util.*;
 public class NumberGenerator {
 
     public static List<Integer> GenerateNumbers(){
-        Set<Integer> result = new HashSet<>();
+        List<Integer> result = Randoms.pickUniqueNumbersInRange(1,45,6);
+        Collections.sort(result);
 
-        while (result.size() < 6){
-            int number = Randoms.pickNumberInRange(1, 45);
-            result.add(number);
-        }
-
-        List<Integer> sortedResult = new ArrayList<>(result);
-        Collections.sort(sortedResult);
-
-        return sortedResult;
+        return result;
     }
 }
