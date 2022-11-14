@@ -1,7 +1,9 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import lotto.domain.util.Validation;
 
@@ -13,6 +15,7 @@ public class UserInputCheck {
             Validation.isItDivided(userInput);
         } catch (IllegalArgumentException err) {
             System.out.println(err);
+            return 0;
         }
         return Integer.parseInt(userInput);
     }
@@ -25,6 +28,7 @@ public class UserInputCheck {
             Validation.isItRange(numbers);
         }catch (IllegalArgumentException err){
             System.out.println(err);
+            return Collections.emptyList();
         }
         return Arrays.stream(numbers)
                 .mapToInt(Integer::parseInt)
@@ -33,9 +37,14 @@ public class UserInputCheck {
     }
 
     static int bonusNumberCheck(String userInput){
-        Validation.isNumber(userInput);
-        Validation.isValidLength(userInput);
-        Validation.isItRange(userInput);
+        try {
+            Validation.isNumber(userInput);
+            Validation.isValidLength(userInput);
+            Validation.isItRange(userInput);
+        }catch (IllegalArgumentException err){
+            System.out.println(err);
+            return 0;
+        }
         return Integer.parseInt(userInput);
     }
 }
