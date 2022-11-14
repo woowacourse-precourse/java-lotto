@@ -97,6 +97,24 @@ class AccountTest {
             assertThat(account.getYield()).isEqualTo("250.0");
         }
 
+        @DisplayName("5등 1개, 꽝 2개 당첨")
+        @Test
+        void winRank5And2RankNone() {
+            // given
+            Account account = new Account(winningCalculator);
+            List<Lotto> lottos = new ArrayList<>();
+            Lotto lottoRank5 = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 11, 12, 13)));
+            Lotto lottoFirstRankNone = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 11, 12, 13, 14)));
+            Lotto lottoSecondRankNone = new Lotto(new ArrayList<>(Arrays.asList(11, 12, 13, 14, 5, 6)));
+            lottos.add(lottoRank5);
+            lottos.add(lottoFirstRankNone);
+            lottos.add(lottoSecondRankNone);
+            // when
+            account.saveResult(lottos);
+            // then
+            assertThat(account.getYield()).isEqualTo("166.7");
+        }
+
         @DisplayName("꽝 2개 당첨")
         @Test
         void winRankNoneTwice() {
