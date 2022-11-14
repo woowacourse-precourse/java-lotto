@@ -14,20 +14,38 @@ public class GameStarter {
     CorrectNumberCounter correctNumberCounter = new CorrectNumberCounter();
     RevenueCalculater revenueCalculater = new RevenueCalculater();
 
+    private List<List<Integer>> userLottoNumberList;
+    private int userInputMoney;
+
+    private List<Integer> lottoWinNumber;
+    private int bonusNumber;
+
+
     public void gameStart() {
+        moneyInputLottoOutput();
 
+        lottoNumberInput();
+
+        revenueOutput();
+    }
+
+    public void moneyInputLottoOutput(){
         printer.printToDo(MONEY_INPUT);
-        int userInputMoney = inputer.inputMoney();
+        this.userInputMoney = inputer.inputMoney();
 
-        List<List<Integer>> userLottoNumberList = generator.generateLottoNumber(userInputMoney);
+        this.userLottoNumberList = generator.generateLottoNumber(userInputMoney);
         printer.printUserLottoNumber(userLottoNumberList);
+    }
 
+    public void lottoNumberInput(){
         printer.printToDo(WIN_INPUT);
-        List<Integer> lottoWinNumber = inputer.createLottoWinNumber();
+        this.lottoWinNumber = inputer.createLottoWinNumber();
 
         printer.printToDo(BONUS_INPUT);
-        int bonusNumber = inputer.inputLottoBonusNumber();
+        this.bonusNumber = inputer.inputLottoBonusNumber();
+    }
 
+    public void revenueOutput(){
         List<Integer> amountCorrectList = correctNumberCounter.correctNumberList(userLottoNumberList, lottoWinNumber,
                 bonusNumber);
         int revenue = revenueCalculater.caculateRevenue(amountCorrectList);
@@ -35,4 +53,5 @@ public class GameStarter {
         printer.printWinList(amountCorrectList);
         printer.printRevenuePercent(userInputMoney, revenue);
     }
+
 }
