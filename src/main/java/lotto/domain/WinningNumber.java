@@ -2,10 +2,10 @@ package lotto.domain;
 
 import java.util.List;
 
-public class User {
+public class WinningNumber {
     private final List<Integer> numbers;
 
-    public User(List<Integer> numbers){
+    public WinningNumber(List<Integer> numbers){
         validate(numbers);
         this.numbers = numbers;
     }
