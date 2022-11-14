@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class InputView {
-    private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요." + System.lineSeparator();
-    private static final String WINNING_NUMBER_INPUT_MESSAGE = "당첨 번호를 입력해 주세요." + System.lineSeparator();
-    private static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요." + System.lineSeparator();
+    private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String WINNING_NUMBER_INPUT_MESSAGE = System.lineSeparator() + "당첨 번호를 입력해 주세요.";
+    private static final String BONUS_NUMBER_INPUT_MESSAGE = System.lineSeparator() + "보너스 번호를 입력해 주세요.";
     private static final String INPUT_MONEY_TYPE_ERROR_MESSAGE = "[ERROR] 구입금액은 숫자여야만 합니다.";
     private static final String INPUT_WINNING_NUMBER_ERROR_MESSAGE = "[ERROR] 당첨 번호는 쉼표를 구분자로 6개의 숫자를 입력해야 합니다.";
     private static final String WINNING_NUMBER_TYPE_ERROR_MESSAGE = "[ERROR] 당첨 번호는 숫자여야만 합니다.";
