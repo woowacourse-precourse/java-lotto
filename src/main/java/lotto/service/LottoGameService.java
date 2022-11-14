@@ -16,15 +16,16 @@ public class LottoGameService {
         for (int i=0; i<ticketCnt; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottoList.add(new Lotto(numbers));
-            OutputView.printLottoNumbers(numbers);
+            OutputView.printLottoNumbers(sortAscending(numbers));
         }
         return lottoList;
     }
 
-//    private List<Integer> sortAscending(List<Integer> numbers) {
-//        Collections.sort(numbers);
-//        return numbers;
-//    }
+    private List<Integer> sortAscending(List<Integer> numbers) {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
 
     public Map<Prize, Integer> compareWinningLotto(List<Lotto> lottoList, Lotto winningLotto, int bonusNumber) {
         Map<Prize, Integer> prizeMap = Prize.initializeMap();
