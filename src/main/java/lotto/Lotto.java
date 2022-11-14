@@ -12,6 +12,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        exceptionHandling.removeDuplicateNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -44,19 +45,21 @@ public class Lotto {
         List<WinLotto> winLottoList = compareLottos(lottoList, winNumbers); // 당첨 번호 개수와 보너스 번호 포함 여부를 저장
 
         ShowMessage.showLottoStatistics(); // "당첨 통계\n---"를 출력
-        Map<WinStatistics, Integer> lottoStatisticsMap = calculateLotto(winLottoList);
+        Map<WinStatistics, Long> lottoStatisticsMap = calculateLotto(winLottoList); // 정산
+        WinStatistics.showWinStatistics(lottoStatisticsMap); // 정산 결과 출력
+        WinStatistics.calculateProfit(lottoStatisticsMap); // 총 수익률 계산
 
-        for (WinLotto number : winLottoList) {
-            System.out.println("보너스 번호:" + number.getBonusNumber() + ":");
-            System.out.println("당첨 번호 개수" + number.getWinLottoCount() + ":"); // matchNum
-            System.out.println("보너스 번호 포함 여부:" + number.getIsBonusNumber() + ":"); // bonusBall
-        }
-        System.out.println(lottoStatisticsMap.get(WinStatistics.UNSUCCESSFUL));
-        System.out.println(lottoStatisticsMap.get(WinStatistics.FIFTH));
-        System.out.println(lottoStatisticsMap.get(WinStatistics.FOURTH));
-        System.out.println(lottoStatisticsMap.get(WinStatistics.THIRD));
-        System.out.println(lottoStatisticsMap.get(WinStatistics.SECOND));
-        System.out.println(lottoStatisticsMap.get(WinStatistics.FIRST));
+//        for (WinLotto number : winLottoList) {
+//            System.out.println("보너스 번호:" + number.getBonusNumber() + ":");
+//            System.out.println("당첨 번호 개수" + number.getWinLottoCount() + ":"); // matchNum
+//            System.out.println("보너스 번호 포함 여부:" + number.getIsBonusNumber() + ":"); // bonusBall
+//        }
+//        System.out.println(lottoStatisticsMap.get(WinStatistics.UNSUCCESSFUL));
+//        System.out.println(lottoStatisticsMap.get(WinStatistics.FIFTH));
+//        System.out.println(lottoStatisticsMap.get(WinStatistics.FOURTH));
+//        System.out.println(lottoStatisticsMap.get(WinStatistics.THIRD));
+//        System.out.println(lottoStatisticsMap.get(WinStatistics.SECOND));
+//        System.out.println(lottoStatisticsMap.get(WinStatistics.FIRST));
     }
 
     public List<Integer> getLottoNumbers() {
@@ -78,19 +81,20 @@ public class Lotto {
     }
 
     public List<Integer> createLottoList() {
-        List<Integer> lotto = createLottoNumber();
+        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         sortLottoNumberAscending(lotto);
         return lotto;
     }
 
-    public List<Integer> createLottoNumber() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return lottoNumbers;
-    }
+//    public List<Integer> createLottoNumber() {
+//        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+//        return lottoNumbers;
+//    }
 
     public List<Integer> sortLottoNumberAscending(List<Integer> lotto) {
-        Collections.sort(lotto);
-        return lotto;
+        List<Integer> lottos = new ArrayList<>(lotto);
+        Collections.sort(lottos);
+        return lottos;
     }
 
     public List<WinLotto> compareLottos(List<Lotto> lottoNumber, List<Integer> winNumber) {
@@ -122,24 +126,23 @@ public class Lotto {
         return winLotto;
     }
 
-    public Map<WinStatistics, Integer> calculateLotto(List<WinLotto> winLottoList) {
-        Map<WinStatistics, Integer> lottoStatisticsMap = new EnumMap<WinStatistics, Integer>(WinStatistics.class);
+    public Map<WinStatistics, Long> calculateLotto(List<WinLotto> winLottoList) {
+        Map<WinStatistics, Long> lottoStatisticsMap = new EnumMap<WinStatistics, Long>(WinStatistics.class);
         lottoStatisticsMap = initEnumMap(lottoStatisticsMap);
         for (WinLotto winLotto : winLottoList) {
             WinStatistics winStatistics = WinStatistics.winCounter(winLotto.getWinLottoCount(), winLotto.getIsBonusNumber());
             lottoStatisticsMap.put(winStatistics, lottoStatisticsMap.get(winStatistics) + 1);
-            System.out.println(lottoStatisticsMap.get(winStatistics));
         }
         return lottoStatisticsMap;
     }
 
-    public Map<WinStatistics, Integer> initEnumMap(Map<WinStatistics, Integer> lottoStatisticsMap){
-        lottoStatisticsMap.put(WinStatistics.UNSUCCESSFUL, 0);
-        lottoStatisticsMap.put(WinStatistics.FIFTH, 0);
-        lottoStatisticsMap.put(WinStatistics.FOURTH, 0);
-        lottoStatisticsMap.put(WinStatistics.THIRD, 0);
-        lottoStatisticsMap.put(WinStatistics.SECOND, 0);
-        lottoStatisticsMap.put(WinStatistics.FIRST, 0);
+    public Map<WinStatistics, Long> initEnumMap(Map<WinStatistics, Long> lottoStatisticsMap) {
+        lottoStatisticsMap.put(WinStatistics.UNSUCCESSFUL, 0L);
+        lottoStatisticsMap.put(WinStatistics.FIFTH, 0L);
+        lottoStatisticsMap.put(WinStatistics.FOURTH, 0L);
+        lottoStatisticsMap.put(WinStatistics.THIRD, 0L);
+        lottoStatisticsMap.put(WinStatistics.SECOND, 0L);
+        lottoStatisticsMap.put(WinStatistics.FIRST, 0L);
         return lottoStatisticsMap;
     }
 
