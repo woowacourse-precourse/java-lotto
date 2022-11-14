@@ -19,13 +19,10 @@ public class LottoGameController {
     private LottoReader lottoReader = new LottoReader();
 
     public void start() {
-        // 로또 구매
         printPurchaseMoneyInput();
         int purchaseAmount = inputPurchaseAmount();
-        lottoMachine.inputMoney(purchaseAmount);
-        List<Lotto> publishedLotto = lottoMachine.publishLotto();
-        printPurchaseQuantity(publishedLotto.size());
-        printPublishedLottoNumbers(publishedLotto);
+
+        List<Lotto> publishedAllLotto = publishLotto(purchaseAmount);
 
         // 당첨 로또 및 보너스 번호 발행
         printWinningLottoNumbersInput();
@@ -34,9 +31,19 @@ public class LottoGameController {
         Bonus bonus = lottoMachine.publishBonus(inputBonusNumber(), winningLotto);
 
         // 구매한 로또의 당첨 결과 산출
-        Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedLotto, winningLotto, bonus);
+        Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedAllLotto, winningLotto, bonus);
         printLottoResult(lottoResult);
         String lottoYield = lottoReader.calculateYield(purchaseAmount);
         printYield(lottoYield);
+    }
+
+    private List<Lotto> publishLotto(int purchaseAmount) {
+        lottoMachine.inputMoney(purchaseAmount);
+        List<Lotto> publishedAllLotto = lottoMachine.publishLotto();
+
+        printPurchaseQuantity(publishedAllLotto.size());
+        printPublishedLottoNumbers(publishedAllLotto);
+
+        return publishedAllLotto;
     }
 }
