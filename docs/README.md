@@ -100,4 +100,4 @@
             - validate // 각 숫자가 0 ~ 45인가 확인
             - validate // 각 숫자가 서로 다른 숫자인가 확인
         - computer // 6자리 숫자 뽑기
-    c) number_check.java(입력 금액 검수)
+    c) pick.java(번호 6개 뽑기 및 검수)
