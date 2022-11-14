@@ -45,14 +45,14 @@ public class LottoResult {
     private void addResult(int count, boolean isBonus) {
         PrizeType type = PrizeType.getPrizeType(count, isBonus);
         if (type != null) {
-            result.put(type, count);
+            result.put(type, getResult().get(type) + 1);
         }
     }
 
     private void calculateProfitRate(Money money) {
         long profit = sumProfit();
         if (profit != 0) {
-            profitRate = ((double) profit / money.getMoney()) * 100;
+            profitRate = (double) profit / money.getMoney() * 100;
         }
     }
 
@@ -62,5 +62,13 @@ public class LottoResult {
             profit += type.calculateProfit(result.get(type));
         }
         return profit;
+    }
+
+    public Map<PrizeType, Integer> getResult() {
+        return result;
+    }
+
+    public double getProfitRate() {
+        return profitRate;
     }
 }
