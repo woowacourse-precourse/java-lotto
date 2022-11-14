@@ -2,10 +2,12 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.enums.LottoRank;
 import lotto.model.LottoGenerator;
 import lotto.model.LottoJudge;
 import lotto.model.WinningNumber;
 import lotto.view.LottoInput;
+import lotto.view.LottoOutput;
 
 public class LottoController {
 
@@ -32,6 +34,26 @@ public class LottoController {
         lottoGenerator = new LottoGenerator();
         lottoGenerator.generateLotto(money);
         return lottoGenerator.getLotteries();
+    }
+
+    public void printBuyNumber(String money) {
+        LottoOutput.printBuyLotto(Integer.parseInt(money));
+    }
+
+    public void printLottoNumber(ArrayList<List<Integer>> lotteries) {
+        LottoOutput.printLottoNumbers(lotteries);
+    }
+
+    public void printLottoRank(ArrayList<List<Integer>> lotteries, List<Integer> winningNumbers,
+        int bonusNUmber) {
+        lottoJudge = new LottoJudge();
+        lottoJudge.judgeLotto(lotteries, winningNumbers, bonusNUmber);
+        LottoOutput.printLottoRank(lottoJudge.getRankCount());
+    }
+
+    public void printLottoProfit(List<LottoRank> rankCount, int money) {
+        lottoJudge.profitLotto(rankCount, money);
+        LottoOutput.printLottoProfit(lottoJudge.getLottoProfit());
     }
 
 
