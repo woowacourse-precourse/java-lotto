@@ -17,7 +17,6 @@ public class Purchase {
     private static int amount;
     private static List<Lotto> lottos;
     private static WinningNumber winningNumber;
-    private static Result result;
 
     public static void buyLotto() {
         inputAmount();
@@ -28,8 +27,7 @@ public class Purchase {
         inputNumbers();
         inputBonusNumber();
 
-        result = Result.of(lottos, winningNumber);
-        result.printWinningStatistics(amount);
+        Result.of(lottos, winningNumber).printStatistics(amount);
     }
 
     /**

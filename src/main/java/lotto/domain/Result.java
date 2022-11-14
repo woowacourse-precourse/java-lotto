@@ -46,7 +46,7 @@ public class Result {
     /**
      * 당첨 결과에 대한 통계를 출력하는 메소드
      */
-    public void printWinningStatistics(int amount) {
+    public void printStatistics(int amount) {
         System.out.println("\n당첨 통계\n---");
         for (Rank rank : Rank.values()) {
             if (rank.equals(Rank.NO_LUCK)) {
