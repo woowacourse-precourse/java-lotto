@@ -58,6 +58,5 @@ public class WinningLottoTest {
         WinningLotto winningLotto = new WinningLotto(winLotto, new BonusNumber(7));
         LottoResult result = winningLotto.calculateBonusAndSameCount(lotto);
         assertThat(result).isEqualTo(expected);
-        System.out.println(result);
     }
 }
