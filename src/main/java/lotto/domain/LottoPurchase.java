@@ -7,12 +7,17 @@ public class LottoPurchase {
 
     private int money;
 
-    private int LottoCount;
+    private int LottoPublicationCount;
 
     public LottoPurchase(String input){
         validate(input);
         computeLottoCount();
     }
+
+    public int getLottoPublicationCount(){
+        return this.LottoPublicationCount;
+    }
+
     private void validate(String input){
         isInteger(input);
         isCorrectPrice(input);
@@ -25,6 +30,7 @@ public class LottoPurchase {
         }
     }
 
+
     private void isCorrectPrice(String input){
         int value = Integer.parseInt(input);
 
@@ -34,6 +40,6 @@ public class LottoPurchase {
     }
 
     private void computeLottoCount(){
-        this.LottoCount = this.money / Constants.LOTTO_PRICE;
+        this.LottoPublicationCount = this.money / Constants.LOTTO_PRICE;
     }
 }
