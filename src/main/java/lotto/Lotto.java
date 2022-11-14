@@ -8,7 +8,6 @@ public class Lotto {
     private static final int lottoStart = 1;
     private static final int lottoEnd = 45;
     private static final int lottoCount = 6;
-    private static final String printSalesLottoAmount = "%d개를 구매했습니다.";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -41,7 +40,7 @@ public class Lotto {
     }
 
     public static void PrintLotto(List<Lotto> lottos){
-        System.out.println(String.format(printSalesLottoAmount, lottos.size()));
+        System.out.println(String.format(PrintMessage.resultPurchasingAmount, lottos.size()));
 
         for(Lotto lotto : lottos){
             System.out.println(lotto.numbers.toString());

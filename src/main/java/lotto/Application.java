@@ -11,9 +11,6 @@ public class Application {
     private static final String EMPTY_STRING = "";
     private static final String REGEX = "[0-9]+";
     private static final int lottoPrice = 1000;
-    private static final String purchasingAmountWord = "구입금액을 입력해 주세요.";
-    private static final String InputWinningNumber = "당첨 번호를 입력해 주세요.";
-    private static final String InputBonusNumber = "보너스 번호를 입력해 주세요.";
     //endregion
     //region 변수
     public static int lottoNumber;
@@ -56,7 +53,7 @@ public class Application {
 
 
     private static void GetBonusNumber() {
-        System.out.println(InputBonusNumber);
+        System.out.println(PrintMessage.bonusNumber);
         String userInput = getUserInputData();
         BonusValidate(userInput);
         bonusNumber = Integer.parseInt(userInput);
@@ -98,7 +95,7 @@ public class Application {
     }
 
     private static void GetWinningNumber() {
-        System.out.println(InputWinningNumber);
+        System.out.println(PrintMessage.winningNumber);
         String userInput = getUserInputData();
         CastWinningNumberToLotto(userInput);
     }
@@ -124,7 +121,7 @@ public class Application {
     }
 
     public static void SalesLotto(){
-        System.out.println(purchasingAmountWord);
+        System.out.println(PrintMessage.purchasingAmount);
         String userInput = getUserInputData();
         SalesValidate(userInput);
 
