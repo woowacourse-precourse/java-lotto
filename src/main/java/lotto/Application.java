@@ -209,6 +209,11 @@ public class Application {
         gettingMoney+=THIRD_PRIZE*winLottoCnt.get(2);
         gettingMoney+=FOURTH_PRIZE*winLottoCnt.get(3);
         gettingMoney+=FIFTH_PRIZE*winLottoCnt.get(4);
-        System.out.println(gettingMoney);
+        getYield(gettingMoney,buyingMoney);
+    }
+    private static double getYield(int gettingMoney, int buyingMoney) {
+        double resultYield = (gettingMoney/(double)buyingMoney)*100;
+        System.out.println(YIELD_RESULT_START+String.format("%.1f",resultYield)+YIELD_RESULT_END);
+        return resultYield;
     }
 }
