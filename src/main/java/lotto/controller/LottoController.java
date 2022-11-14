@@ -15,7 +15,7 @@ public class LottoController {
         this.lottoService = lottoService;
     }
 
-    public void run() {
+    public void buyLotto() {
         String money = InputView.requestMoney();
         LottosDto lottosDto = lottoService.createLottos(money);
         OutputView.printLottos(lottosDto.toString());
