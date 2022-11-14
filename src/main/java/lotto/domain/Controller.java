@@ -54,7 +54,10 @@ public class Controller {
     }
 
     private void printPublishedLotto(List<Lotto> lottos) {
-
+        System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
+        lottos.forEach(lotto -> {
+            System.out.println(lotto.getNumbers());
+        });
     }
 
     private List<Integer> calculateWonLotto(List<Lotto> lottos) {
