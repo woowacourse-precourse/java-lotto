@@ -44,5 +44,11 @@ public class Input {
         check_Range(str);
         check_Overlap(str);
     }
+    private static void checkBouns(List<Integer> numbers, String str) { 
+        check_empty(str);
+        check_number(str);
+        check_Range(str);
+        check_Overlap(numbers);
+    }
 
 }
