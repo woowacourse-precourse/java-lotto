@@ -41,7 +41,7 @@ public final class Print {
         System.out.println(WINNING_NUMBERS_INPUT_MESSAGE);
     }
 
-    public static void printBonusLottoNumberInput() {
+    public static void requestBonusNumberInput() {
         System.out.println();
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
     }

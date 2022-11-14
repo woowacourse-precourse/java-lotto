@@ -3,7 +3,7 @@ package lotto;
 import static lotto.view.Input.inputBonusNumber;
 import static lotto.view.Input.inputPurchaseAmount;
 import static lotto.view.Input.inputWinningNumbers;
-import static lotto.view.Print.printBonusLottoNumberInput;
+import static lotto.view.Print.requestBonusNumberInput;
 import static lotto.view.Print.printLottoResult;
 import static lotto.view.Print.printPublishedLottoNumbers;
 import static lotto.view.Print.printPurchaseQuantity;
@@ -41,7 +41,7 @@ public class LottoGameController {
     }
 
     private Bonus publishBonus(Lotto winningLotto) {
-        printBonusLottoNumberInput();
+        requestBonusNumberInput();
         return lottoMachine.publishBonus(inputBonusNumber(), winningLotto);
     }
 
