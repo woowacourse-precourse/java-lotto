@@ -1,0 +1,11 @@
+# Lotto 기능 정리
+- [Enum] ExceptionType 생성 - Java Enum을 적용해 exception 목록 작성
+- amount 함수 - 로또 구입 금액을 입력받아 로또를 사는 횟수를 리턴하는 함수
+- createWinningnum 함수 - 당첨 번호 6개를 입력받는 함수
+- createBonusnum 함수 - 보너스 번호 1개를 입력받는 함수
+- publish 함수 - 발행한 로또 수량 및 번호를 리턴하고 출력하는 함수
+- compare 함수 - list 두개를 비교해서 같은 수가 몇개인지 리턴하는 함수
+- winResult 함수 - 3개 이상 로또 번호와 일치 할 시 list에 저장해 결과를 리턴하는 함수
+- winningHistory 함수 - 당첨내역을 출력하는 함수
+- yield 함수 - 수익률을 출력하는 함수
+- validate2 함수 - 로또 번호가 중복 되는지를 체크하는 함수
