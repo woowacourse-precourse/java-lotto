@@ -84,4 +84,29 @@ class UserTest {
         User user = new User();
         assertThatThrownBy(() -> user.setWinningNumbers()).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 보너스_번호_입력(){
+        int answer = 7;
+        String userInput = "7";
+
+        ByteArrayInputStream input = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(input);
+
+        User user = new User();
+        user.setBonusNumber();
+
+        assertThat(user.bonusNumber).isEqualTo(answer);
+    }
+
+    @Test
+    void 보너스_번호_예외처리(){
+        String userInput = "a";
+
+        ByteArrayInputStream input = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(input);
+
+        User user = new User();
+        assertThatThrownBy(() -> user.setBonusNumber()).isInstanceOf(IllegalArgumentException.class);
+    }
 }
