@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.utils.LottoInformation.LOTTO_SELECTION_COUNT;
 import static lotto.utils.LottoInformation.LOTTO_BONUS_NUMBER_COUNT;
+import static lotto.utils.LottoInformation.LOTTO_SELECTION_COUNT;
 
 public class Statistics {
     private final Ticket ticket;

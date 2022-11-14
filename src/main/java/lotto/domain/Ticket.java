@@ -24,13 +24,6 @@ public class Ticket {
         return money / LOTTO_PRICE;
     }
 
-    private void setLottos(int lottoCount) {
-        lottos = new ArrayList<>();
-        for (int count = 0; count < lottoCount; count++) {
-            lottos.add(createLotto());
-        }
-    }
-
     private Lotto createLotto() {
         Lotto lotto = new Lotto(
                 Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_SELECTION_COUNT)
@@ -49,6 +42,13 @@ public class Ticket {
 
     public List<Lotto> getLottos() {
         return lottos;
+    }
+
+    private void setLottos(int lottoCount) {
+        lottos = new ArrayList<>();
+        for (int count = 0; count < lottoCount; count++) {
+            lottos.add(createLotto());
+        }
     }
 
     @Override

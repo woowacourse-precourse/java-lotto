@@ -19,7 +19,7 @@ public enum Ranking {
     }
 
     public static Ranking getRanking(int match, boolean bonus) {
-        for (Ranking ranking: Ranking.values()) {
+        for (Ranking ranking : Ranking.values()) {
             if (ranking.match == match && ranking.bonus == bonus) {
                 return ranking;
             }
