@@ -10,23 +10,23 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (isLength(numbers)) {
-            throw new IllegalArgumentException();
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
+        if (!isLength(numbers)) {
+            throw new IllegalArgumentException("[ERROR] 6자리 숫자를 입력해주세요.");
         }
 
         for (int i=0; i<numbers.size(); i++) {
             if (!isInRange(numbers.get(i))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 1부터 45까지 숫자를 입력해주세요.");
             }
             if (isDuplicate(numbers, numbers.get(i), i)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
             }
         }
     }
 
     private static boolean isLength(List<Integer> numbers) {
-        return numbers.size() == 5;
+        return numbers.size() == 6;
     }
 
     private static boolean isInRange(Integer number) {
@@ -38,11 +38,11 @@ public class Lotto {
 
     private static boolean isDuplicate(List<Integer> numbers, Integer num, int index) {
         for (int j=0; j<index; j++) {
-            if(numbers.get(j).equals(num)) {
-                return false;
+            if (numbers.get(j).equals(num)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public List<Integer> getNumbers() {

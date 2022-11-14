@@ -10,33 +10,33 @@ public class ParserUtil {
     final static int MIN_PURCHASE_AMOUNT = 1000;
     final static int SIZE_OF_LOTTO_NUMBER = 6;
 
-    public static void parsePurchaseAmountInput(String input) {
+    public static void parsePurchaseAmountInput(String input) throws IllegalArgumentException {
         if (!ValidationUtil.validateIsDigit(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
         int purchaseAmount = Integer.parseInt(input);
 
         if (!ValidationUtil.validateMinNumber(purchaseAmount)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1000원 이상 금액을 입력해주세요.");
         }
         if (!ValidationUtil.validateRemainder(purchaseAmount)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요.");
         }
     }
 
-    public static void parseWinningNumbersInput(String winningNumInput) {
+    public static void parseWinningNumbersInput(String winningNumInput) throws IllegalArgumentException {
         if (!ValidationUtil.validateIsDigitAndComma(winningNumInput)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자와 콤마 이외에 문자를 입력할 수 없습니다.");
         }
     }
 
-    public static void parseBonusNumberInput(String bonusNumInput) {
+    public static void parseBonusNumberInput(String bonusNumInput) throws IllegalArgumentException {
         if (!ValidationUtil.validateIsDigit(bonusNumInput)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자 이외에 문자를 입력할 수 없습습니다.");
         }
         int bonusNum = Integer.parseInt(bonusNumInput);
         if (!ValidationUtil.validateIsInRange(bonusNum)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지 숫자를 입력해주세요.");
         }
     }
 

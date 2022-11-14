@@ -39,6 +39,34 @@ class ValidationUtilTest {
         assertThat(ValidationUtil.validateIsDigitAndComma(winningNum3)).isFalse();
     }
 
+    @Test
+    @DisplayName("입력값의 정수 여부 검토")
+
+    void validateIsDigit() {
+        String input = "17";
+        String input2 = "a";
+
+        boolean isDigit = ValidationUtil.validateIsDigit(input);
+        boolean isDigit2 = ValidationUtil.validateIsDigit(input2);
+
+        assertThat(isDigit).isTrue();
+        assertThat(isDigit2).isFalse();
+    }
+
+    @Test
+    @DisplayName("입력값의 숫자 범위 테스트")
+
+    void validateIsInRange() {
+        int input = 17;
+        int input2 = 46;
+
+        boolean isInRange = ValidationUtil.validateIsInRange(input);
+        boolean isInRange2 = ValidationUtil.validateIsInRange(input2);
+
+        assertThat(isInRange).isTrue();
+        assertThat(isInRange2).isFalse();
+    }
+
     /* @Test
     @DisplayName("당첨번호 입력값 길이 및 콤마 검증")
 

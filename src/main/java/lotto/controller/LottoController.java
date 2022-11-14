@@ -6,9 +6,13 @@ public class LottoController {
     LottoService lottoService;
 
     public void run() {
-        setLottery();
-        startLottery()
-        endLottery()
+        try {
+            setLottery();
+            startLottery();
+            endLottery();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void setLottery() {

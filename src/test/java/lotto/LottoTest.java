@@ -7,6 +7,7 @@ import lotto.domain.Lotto;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 class LottoTest {
@@ -30,5 +31,12 @@ class LottoTest {
     void createLottoByOverRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,46)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("정상적인 로또 번호 입력 테스트")
+    @Test
+
+    void createLotto() {
+        assertThat(new Lotto(List.of(1,2,3,4,5,6)).getNumbers()).isEqualTo(List.of(1,2,3,4,5,6));
     }
 }

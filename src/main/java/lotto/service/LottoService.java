@@ -27,8 +27,10 @@ public class LottoService {
 
     public LottoService() {
         OutputView.purchaseAmountMsg();
-        inputPurchaseAmount = InputView.getInputPurchaseAmount();
-        randomLottoNumber = RandomUtil.getLottoNumbers(inputPurchaseAmount);
+        this.inputPurchaseAmount = InputView.getInputPurchaseAmount();
+        int numOfLottery = RandomUtil.getCountFromMoney(inputPurchaseAmount);
+        this.randomLottoNumber = RandomUtil.getLottoNumbers(inputPurchaseAmount);
+        OutputView.purchaseResultMsg(randomLottoNumber, numOfLottery);
     }
 
     public void drawLotteries() {
@@ -37,19 +39,19 @@ public class LottoService {
         drawForWinner();
     }
 
-    private void createWinningNumber() {
+    public void createWinningNumber() {
         OutputView.winningNumberMsg();
         String winningNumberInput = InputView.getInputWinningNumber();
         ParserUtil.parseWinningNumbersInput(winningNumberInput);
         List<Integer> winningNumberList = InputView.revertInputToList(winningNumberInput);
-        winningNumber = new Lotto(winningNumberList);
+        this.winningNumber = new Lotto(winningNumberList);
     }
 
     private void createBonusNumber() {
         OutputView.bonusNumberMsg();
         String bonusNumberInput = InputView.getInputBonusNumber();
         ParserUtil.parseBonusNumberInput(bonusNumberInput);
-        bonusNumber = Integer.parseInt(bonusNumberInput);
+        this.bonusNumber = Integer.parseInt(bonusNumberInput);
     }
 
     private void drawForWinner() {
@@ -87,25 +89,25 @@ public class LottoService {
     private void updateNumOfPrize(RandomLottoNumber randomList) {
         Winner winningInfo = randomList.winner;
         if (winningInfo.getCount()==6) {
-            numOf1stPrize += 1;
+            this.numOf1stPrize += 1;
         }
-        if (winningInfo.getCount()==5 || winningInfo.isBonusNum()) {
-            numOf2ndPrize += 1;
+        if (winningInfo.getCount()==5 && winningInfo.isBonusNum()) {
+            this.numOf2ndPrize += 1;
         }
-        if (winningInfo.getCount()==5 || !winningInfo.isBonusNum()) {
-            numOf3rdPrize += 1;
+        if (winningInfo.getCount()==5 && !winningInfo.isBonusNum()) {
+            this.numOf3rdPrize += 1;
         }
         if (winningInfo.getCount()==4) {
-            numOf4thPrize += 1 ;
+            this.numOf4thPrize += 1 ;
         }
         if (winningInfo.getCount()==3) {
-            numOf5thPrize += 1;
+            this.numOf5thPrize += 1;
         }
     }
 
     private void updatedWinningPrize(RandomLottoNumber randomList) {
         Winner winningInfo = randomList.winner;
-        accumulatedWinningPrize += winningInfo.getPrize();
+        this.accumulatedWinningPrize += winningInfo.getPrize();
     }
 
     public void returnResult() {
@@ -114,14 +116,15 @@ public class LottoService {
         System.out.println("3개 일치 (5,000원) - " +numOf5thPrize+"개");
         System.out.println("4개 일치 (50,000원) - " +numOf4thPrize+"개");
         System.out.println("5개 일치 (1,500,000원) - " +numOf3rdPrize+"개");
-        System.out.println("5개 일치, 보너스 볼 일치(30,000원,000) - " +numOf2ndPrize+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " +numOf2ndPrize+"개");
         System.out.println("6개 일치 (2,000,000,000원) - " +numOf1stPrize+"개");
-        System.out.println("총 수익률은 "+getProfitRatio()+"입니다.");
+        System.out.println("총 수익률은 "+getProfitRatio()+"%입니다.");
     }
 
     private double getProfitRatio() {
         int purchaseAmount = Integer.valueOf(inputPurchaseAmount);
         double profitRatio = ((double) accumulatedWinningPrize / (double) purchaseAmount) * 100;
-        return Math.round(profitRatio*10/10.0);
+        //return Math.round(profitRatio*10/10.0);
+        return profitRatio;
     }
 }

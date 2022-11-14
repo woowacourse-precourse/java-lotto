@@ -17,7 +17,7 @@ public class RandomUtil {
         return createLottoNumberList(countFromMoney);
     }
 
-    private static int getCountFromMoney(String purchaseAmountInput) {
+    public static int getCountFromMoney(String purchaseAmountInput) {
         ParserUtil.parsePurchaseAmountInput(purchaseAmountInput);
         int purchaseAmount = Integer.parseInt(purchaseAmountInput);
         int countFromMoney = purchaseAmount / 1000;
@@ -43,8 +43,7 @@ public class RandomUtil {
     }
 
     private static boolean validateLottoNumbers(List<Integer> lottoNumbers) {
-        Collections.sort(lottoNumbers);
-        // 여기서 lotto 객체를 만드는 방향으로 수정할 것
+        // Collections.sort(lottoNumbers);
         for (int i=0; i<LENGTH_OF_LOTTO_NUMBERS; i++) {
             if (isDuplicate(lottoNumbers, i)) {
                 return false;

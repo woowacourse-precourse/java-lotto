@@ -14,21 +14,19 @@ class RandomUtilTest {
     @Test
     @DisplayName("로또번호가 금액에 맞는 개수만큼 생성되는지 테스트")
     void countOfLottoNumbers(){
-        int money = 5000;
-        int count = money / 1000;
+        String inputMoney = "8000";
 
-        List<RandomLottoNumber> lottoNumbers = RandomUtil.createLottoNumberList(count);
+        List<RandomLottoNumber> lottoNumbers = RandomUtil.getLottoNumbers(inputMoney);
 
-        assertThat(5).isEqualTo(lottoNumbers.size());
+        assertThat(8).isEqualTo(lottoNumbers.size());
     }
 
     @Test
     @DisplayName("로또 번호 하나가 6자리 숫자를 포함하는 지 테스트")
     void sizeOfLottoNumbers(){
-        int money = 1000;
-        int count = money / 1000;
+        String inputMoney = "8000";
 
-        List<RandomLottoNumber> lottoNumbers = RandomUtil.createLottoNumberList(count);
+        List<RandomLottoNumber> lottoNumbers = RandomUtil.getLottoNumbers(inputMoney);
 
         assertThat(6).isEqualTo(lottoNumbers.get(0).getRandomNum().size());
     }

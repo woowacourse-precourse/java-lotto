@@ -15,10 +15,10 @@ class OutputViewTest {
     @DisplayName("로또 생성값 출력")
     void purchaseResultMsg() {
 
-        int lottoPurchaseAmount = 6000;
+        String inputMoney = "6000";
         int countFromMoney = 6;
 
-        List<RandomLottoNumber> lottoNumbers = RandomUtil.createLottoNumberList(countFromMoney);
+        List<RandomLottoNumber> lottoNumbers = RandomUtil.getLottoNumbers(inputMoney);
         OutputView.purchaseResultMsg(lottoNumbers, countFromMoney);
     }
 }

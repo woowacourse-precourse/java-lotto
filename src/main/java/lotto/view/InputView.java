@@ -29,7 +29,6 @@ public class InputView {
     }
 
     public static String getInputBonusNumber() {
-        OutputView.bonusNumberMsg();
         String bonusNumberInput = Console.readLine();
         return bonusNumberInput;
     }
