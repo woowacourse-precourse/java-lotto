@@ -1,8 +1,9 @@
 package lotto.view;
 
+import static lotto.utils.Converter.convertToStringWithComma;
+
 import lotto.domain.Lotto;
 import lotto.domain.Ranking;
-
 import java.util.List;
 
 public class OutputView {
@@ -33,10 +34,10 @@ public class OutputView {
         int rankingIndex = 5;
         for (Ranking ranking : Ranking.values()) {
             String condition = ranking.getCondition();
-            String reward = ranking.getReward();
+            String reward = convertToStringWithComma(ranking.getReward());
             int count = rankingCount[rankingIndex--];
 
-            System.out.printf("%s (%s) - %d개\n", condition, reward, count);
+            System.out.printf("%s (%s원) - %d개\n", condition, reward, count);
         }
     }
 
