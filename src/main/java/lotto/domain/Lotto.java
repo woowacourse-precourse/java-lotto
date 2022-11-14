@@ -2,6 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.constance.LottoConstance.*;
@@ -20,7 +21,8 @@ public class Lotto {
     }
 
     private static List<Integer> createRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER, NUMBER_LENGTH);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER, NUMBER_LENGTH);
+        return new ArrayList<>(randomNumbers);
     }
 
     public List<Integer> getNumbers() {
