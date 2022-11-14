@@ -10,6 +10,9 @@
    - 로또 당첨이 5 숫자일 경우 보너스 숫자와 일치하는 확인하는 메소드 (checkBonus)
    - View 클래스의 validator를 활용한 validator 메소드 (validateLotto)
    - 로또를 출력하는 메소드 (printLotto)
+3. Program 클래스
+   - 유저의 인풋을 받아 순위 및 상금 등을 계산하기 전 상태로 셋업하는 메소드 (setup)
+   - 유저의 순위 계산하는 메소드 (findRank)
 3. View 클래스: user input/output 클래스
     - 구입 금액 입력 받아서 로또 뽑기 회수 리턴, 예외 상황 시 에러 발생시키는 메소드 (getMoneyInput)
       - 구입 금액이 1000으로 나눠떨어지지 않으면 IllegalArgumentException 발생시키는 메소드 (validateIsDivisible)
