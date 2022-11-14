@@ -2,6 +2,7 @@ package lotto.service;
 
 import lotto.entity.Lotto;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,5 +19,12 @@ public class WinningDecision {
         this.winningLotto = winningLotto;
         this.bonus = bonus;
         this.purchaseAmount = purchaseAmount;
+    }
+
+    public void initMyPrizes() {
+        winningPrizes = new HashMap<>();
+        for (WinningResult result : WinningResult.values()) {
+            winningPrizes.put(result.getPrize(), 0);
+        }
     }
 }
