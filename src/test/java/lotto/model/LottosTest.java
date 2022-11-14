@@ -1,37 +1,26 @@
 package lotto.model;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottosTest {
 
     @Test
-    @DisplayName("구매금액을 입력받아 로또 리스트 생성 성공")
-    void generateLottos_Success() {
+    @DisplayName("Lotto 리스트, 구매 금액을 사용하여 Lottos 객체 생성 성공")
+    void createLottos_Success() {
         // Given
-        int purchaseAmount = 8000;
-        int lottoPrice = 1000;
+        String purchaseAmountStr = "8000";
+        Lotto lotto1 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto2 = new Lotto(List.of(7, 8, 9, 10, 11, 12));
 
         // When
-        Lottos lottos = new Lottos(purchaseAmount);
+        Lottos lottos = new Lottos(List.of(lotto1, lotto2), purchaseAmountStr);
 
         // Then
-        assertThat(lottos.getLottos().size()).isEqualTo(purchaseAmount/lottoPrice);
+        assertThat(lottos.getLottos().size()).isEqualTo(2);
     }
 
-    @Test
-    @DisplayName("구매금액이 LOTTO_PRICE 단위가 아닌 경우 예외 발생")
-    void generateLottos_Exception() {
-        // Given
-        int purchaseAmount = 15500;
-        int lottoPrice = 1000;
-
-        // When // Then
-        assertThatThrownBy(() -> new Lottos(purchaseAmount))
-            .isInstanceOf(IllegalArgumentException.class);
-    }
 }
