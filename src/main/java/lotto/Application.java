@@ -19,7 +19,7 @@ public class Application {
 
             // 로또 수량 만큼 로또 생성
             createLottos(count);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < count; i++)
                 System.out.println(lottoList.get(i).get());
 
             // 당첨 번호, 보너스 번호 입력
