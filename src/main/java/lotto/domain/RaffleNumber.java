@@ -6,7 +6,7 @@ import lotto.ui.Message;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Raffle {
+public class RaffleNumber {
 
     public String inputWinningNumber() {
         System.out.println(Message.INPUT_WINNING);
@@ -26,15 +26,5 @@ public class Raffle {
         System.out.println(Message.INPUT_BONUS);
         String userInput = Console.readLine();
         return Integer.parseInt(userInput);
-    }
-
-    public int compareNumbers(List<Integer> lotto, List<Integer> winningNumber) {
-        int count = 0;
-        for (int number = 0; number < 6; number++) {
-            if (winningNumber.contains(lotto.get(number))) {
-                count++;
-            }
-        }
-        return count;
     }
 }
