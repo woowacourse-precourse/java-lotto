@@ -3,6 +3,7 @@ package lotto;
 import lotto.verifier.BonusNumberValidator;
 import lotto.verifier.WinningNumbersValidator;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,6 +38,7 @@ public class Collector {
 
     private void printRankResults(List<Integer> results) {
         Rank[] values = Rank.values();
+        DecimalFormat formatter = new DecimalFormat("###,###");
 
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -46,7 +48,7 @@ public class Collector {
             if (i == 3) { // 보너스 볼
                 System.out.print(", 보너스 볼 일치");
             }
-            System.out.println(" (" + value.getPrize() + "원) - " + results.get(i) + "개\n");
+            System.out.println(" (" + formatter.format(value.getPrize()) + "원) - " + results.get(i) + "개\n");
         }
     }
 }
