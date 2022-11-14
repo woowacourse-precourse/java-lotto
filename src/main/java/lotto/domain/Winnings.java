@@ -18,7 +18,6 @@ enum Prize {
 }
 
 public class Winnings {
-    static Map map;
     static final double[] correctNums = {3, 4, 5, 5.5, 6};
 
     public static int getWinnings(double num) {
