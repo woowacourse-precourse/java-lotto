@@ -1,4 +1,6 @@
-package lotto.condition;
+package lotto.condition.money;
+
+import lotto.condition.Condition;
 
 public class MoneyDivisionCond implements Condition {
 

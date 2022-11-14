@@ -1,19 +1,19 @@
-package lotto.userinterface.condition;
+package lotto.condition.money;
 
 import lotto.condition.Condition;
-import lotto.condition.MinimumMoneyCond;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MinimumMoneyCondTest {
+class MoneyDivisionCondTest {
 
-    private final static Condition condition = MinimumMoneyCond.getInstance();
+    private static final Condition condition = MoneyDivisionCond.getInstance();
 
     @Test
-    void 최소_금액_미만() {
+    void 천원으로_나누어_떨어지지_않는_금액() {
         // given
-        String money = "999";
+        String money = "1001";
+
         // when
         Boolean result = condition.isSatisfied(money);
 
@@ -21,15 +21,14 @@ class MinimumMoneyCondTest {
         assertThat(result).isFalse();
     }
 
-
     @Test
-    void 최소_금액_충족() {
+    void 천원으로_나누어_떨어지는_금액() {
         // given
-        String money = "1000";
+        String money = "3000";
+
         // when
         Boolean result = condition.isSatisfied(money);
 
-        // then
         assertThat(result).isTrue();
     }
 
