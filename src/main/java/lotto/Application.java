@@ -1,13 +1,34 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
+    static final int LOTTO_START = 1;
+    static final int LOTTO_END = 45;
+    static final int LOTTO_PICK_NUM = 6;
     public static void main(String[] args) {
         printInputMoney();
+
         int money = getMoneyInputFromUser();
         int numberOfLotteries = calculateNumberOfLotteries(money);
+
         printNumberOfLotteries(numberOfLotteries);
+
+        List<Lotto> lotteries = new LinkedList<>();
+        randomPickLotteries(lotteries, numberOfLotteries);
+    }
+
+    public static void randomPickLotteries(List<Lotto> lotteries, int numberOfLotteries) {
+        for (int i = 0; i < numberOfLotteries; i++) {
+            List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_START, LOTTO_END, LOTTO_PICK_NUM);
+            Collections.sort(uniqueNumbers);
+            lotteries.add(new Lotto(uniqueNumbers));
+            //TODO: 뽑은 로또 숫자 출력
+        }
     }
 
     private static void printNumberOfLotteries(int numberOfLotteries) {

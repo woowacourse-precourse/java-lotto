@@ -3,6 +3,8 @@ package lotto;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.LinkedList;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -50,5 +52,14 @@ class FunctionTest {
     void calculateNumberOfLotteriesTest() {
         int money = 8000;
         assertThat(Application.calculateNumberOfLotteries(money)).isEqualTo(8);
+    }
+
+    @Test
+    void randomPickLotteries_로또_개수_테스트() {
+        List<Lotto> lotteries = new LinkedList<>();
+        int numberOfLotteries = 8;
+
+        Application.randomPickLotteries(lotteries, numberOfLotteries);
+        assertThat(lotteries.size()).isEqualTo(numberOfLotteries);
     }
 }

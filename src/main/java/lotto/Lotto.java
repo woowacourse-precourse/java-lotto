@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Lotto {
@@ -17,4 +18,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        List<Integer> clonedNumbers = new LinkedList<>(numbers);
+        return clonedNumbers;
+    }
+
+
 }
