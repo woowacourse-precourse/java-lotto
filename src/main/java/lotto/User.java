@@ -11,7 +11,7 @@ public class User {
     public User(String input) {
         validatePurchasePrice(input);
         this.purchasePrice = Integer.parseInt(input);
-        this.lottoList = createLottoList(purchasePrice / 1000);
+        this.lottoList = createLottoList(purchasePrice);
     }
 
     public static void validatePurchasePrice(String input) {
