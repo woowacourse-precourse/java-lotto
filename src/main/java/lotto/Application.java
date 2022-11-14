@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
-    private static final String ERROR_MESSAGE = "[ERROR] ";
+    private static final String ERROR_MESSAGE = "[ERROR]";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현

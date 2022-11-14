@@ -9,7 +9,7 @@
   - [x] 발행한 로또 수량 및 번호(오름차순)
   - [x] 당첨 내역
   - [x] 수익률
-- [ ] 예외처리
+- [x] 예외처리
   - [x] 수의 범위가 1~45가 아니면 예외 발생 - Lotto#validate
   - [x] 수가 6개보다 많으면 예외 발생 - Lotto#validate
   - [x] 중복 체크 - Lotto#checkDuplicate
