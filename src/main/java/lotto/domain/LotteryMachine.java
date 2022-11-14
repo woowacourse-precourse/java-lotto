@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.inputValidators.MoneyValidator;
 import lotto.inputValidators.NumberValidator;
 import lotto.messages.InputMessage;
+import lotto.messages.LotteryMessage;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -16,8 +17,6 @@ public class LotteryMachine {
 
     private static final int MINIMUM_MATCH_NUMBER = 3;
     private static final int FIVE_NUMBERS_MATCH = 5;
-    private static final String PURCHASED_LOTTERY_NUMBER_MESSAGE = "개를 구매했습니다.";
-    private static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String WINNING_STATISTICS_MESSAGE = "당첨 통계\n---";
 
     private Lotto winningLotto;
@@ -35,7 +34,7 @@ public class LotteryMachine {
 
     public int calculateNumOfLotteries(int money) {
         int numberOfLotteries = money / LotteryNumber.LOTTERY_PRICE.getNumber();
-        System.out.println(numberOfLotteries + PURCHASED_LOTTERY_NUMBER_MESSAGE);
+        System.out.println(numberOfLotteries + LotteryMessage.PURCHASED_LOTTERY_NUMBER_MESSAGE.getMessage());
         return numberOfLotteries;
     }
 
@@ -67,7 +66,7 @@ public class LotteryMachine {
     }
 
     private int drawBonusNumber() {
-        System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
+        System.out.println(InputMessage.BONUS_NUMBER_INPUT_MESSAGE.getMessage());
         String bonusNumberInput = readLine();
 
         NumberValidator.validateBonusNumber(bonusNumberInput, winningLotto.getNumbers());
