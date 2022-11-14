@@ -13,6 +13,7 @@
   - 1개의 로또를 발행할 때 번호가 중복되면 안된다. - validateDuplicate
   - 총 6개의 숫자를 뽑는다. - validateSize
   - 잘못된 값이 들어온 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다. 
+- [x] 저장된 로또 번호를 오름차순으로 정렬한다.
 ### 구매자 - Buyer
 - [ ] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다. - buyLotto
   - [ ] 로또 구입 금액을 입력 받는다. - inputSeedMoney
@@ -31,7 +32,7 @@
 - [ ] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다. - sellLotto
   - [x] 로또 1장의 가격은 1,000원이다. - validateInputMoney
   - [x] 로또를 발행한다. - issueLotto
-  - [ ] 로또 번호는 오름차순으로 정렬하여 보여준다. - sortLotto
+  - [x] 로또 번호는 오름차순으로 정렬하여 보여준다. - sortLotto
   - [ ] 발행한 로또 수량 및 번호를 출력한다. - printLottoInform
 - [ ] 당첨 확인: 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역을 반환 - checkPrize
 ### 상품 정보 - Prize

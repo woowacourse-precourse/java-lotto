@@ -19,7 +19,8 @@ public class Store {
         return new Lotto(numbers);
     }
 
-    private void sortLotto() {
+    private void sortLotto(Lotto lotto) {
+        lotto.sortAscNumbers();
     }
 
     private void printLottoInform() {

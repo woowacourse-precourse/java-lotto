@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private static final int MINIMUM_NUMBER = 1;
@@ -52,5 +50,9 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public void sortAscNumbers() {
+        Collections.sort(numbers);
     }
 }
