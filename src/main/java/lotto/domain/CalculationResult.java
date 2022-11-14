@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import lotto.utils.Money;
 import lotto.view.GameOutput;
 
 public class CalculationResult {

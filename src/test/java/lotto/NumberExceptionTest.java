@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.exception.NumberException;
+import lotto.utils.NumberException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
