@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import lotto.exception.LottoNumberException;
+import lotto.exception.MoneyNotDividedByPriceException;
 import lotto.exception.WrongLengthException;
-import lotto.exception.WrongMoneyException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -43,10 +43,10 @@ class LottoTest {
                 .isInstanceOf(LottoNumberException.class);
     }
 
-    @DisplayName("구입 가격이 로또 가격으로 나누어 떨어지지 않으면 예외가 발생한다.")
+    @DisplayName("구입 금액이 로또 가격으로 나누어 떨어지지 않으면 예외가 발생한다.")
     @Test
     void moneyNotDividedByPrice() {
         assertThatThrownBy(() -> new Money(1400))
-                .isInstanceOf(WrongMoneyException.class);
+                .isInstanceOf(MoneyNotDividedByPriceException.class);
     }
 }

@@ -2,7 +2,7 @@ package lotto;
 
 import static lotto.constant.Rules.LOTTO_PRICE;
 
-import lotto.exception.WrongMoneyException;
+import lotto.exception.MoneyNotDividedByPriceException;
 
 public class Money {
 
@@ -15,7 +15,7 @@ public class Money {
 
     private void validate(int money) {
         if (!verifyUnit(money)) {
-            throw new WrongMoneyException();
+            throw new MoneyNotDividedByPriceException();
         }
     }
 
