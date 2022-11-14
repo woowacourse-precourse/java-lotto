@@ -31,7 +31,7 @@ public class Lotto {
         return true;
     }
 
-    private LottoRanking caculateRanking(){
-
+    private LottoRanking caculateRanking(List<Integer> userNumbers){
+        return LottoRanking.caculateRanking(this.numbers, this.bonusNumber, userNumbers);
     }
 }
