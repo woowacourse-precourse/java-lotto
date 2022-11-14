@@ -3,6 +3,7 @@ package lotto.domain.model;
 import lotto.domain.constant.LottoInfo;
 import lotto.domain.io.Multiple1000Validator;
 import lotto.domain.io.NumberValidator;
+import lotto.domain.io.ZeroAndMinusValidator;
 
 public class LottoNum {
 
@@ -15,9 +16,11 @@ public class LottoNum {
 
   private void validate(String amount) {
     NumberValidator numberValidator = new NumberValidator();
+    ZeroAndMinusValidator zeroAndMinusValidator = new ZeroAndMinusValidator();
     Multiple1000Validator multiple1000Validator = new Multiple1000Validator();
 
     int input = numberValidator.validate(amount);
+    zeroAndMinusValidator.validate(input);
     multiple1000Validator.validate(input);
   }
 
