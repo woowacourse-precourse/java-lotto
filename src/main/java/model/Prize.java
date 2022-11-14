@@ -33,9 +33,9 @@ public enum Prize {
         return BY_HIT.get(hit);
     }
 
-    Prize(double hit, int money, String meessage) {
+    Prize(double hit, int money, String message) {
         this.hit = hit;
         this.money = money;
-        this.message = meessage;
+        this.message = message;
     }
 }
