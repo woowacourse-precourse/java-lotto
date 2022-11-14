@@ -52,6 +52,7 @@ public class CalculationResult {
     public void toFiveMatchCase(boolean haveBonusNumber) {
         if (haveBonusNumber) {
             fivePlusBonusMatchCount++;
+            return;
         }
         fiveMatchCount++;
     }
@@ -65,7 +66,7 @@ public class CalculationResult {
     }
 
     public double calculateRate(int userInputMoney, int totalPrize) {
-        return ((double)totalPrize / (double)userInputMoney) * 100;
+        return ((double) totalPrize / (double) userInputMoney) * 100;
     }
 
     public void setTotalRate() {
