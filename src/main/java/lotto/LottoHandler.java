@@ -5,6 +5,7 @@ import type.LottoGrade;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.regex.Pattern.matches;
 import static lotto.LottoMachine.*;
 import static type.LottoGrade.*;
 
@@ -49,9 +50,12 @@ public class LottoHandler {
     }
 
     public static List<Integer> getWinningNumbers(String inputNumbers) {
-        return Arrays.asList(inputNumbers.split(",")).stream()
+        preValidate(inputNumbers);
+        List<Integer> winningNumbers = Arrays.asList(inputNumbers.split(",")).stream()
                 .map(inputNumber -> Integer.valueOf(inputNumber))
                 .collect(Collectors.toList());
+        validate(winningNumbers);
+        return winningNumbers;
     }
 
     private static Map<LottoGrade, Integer> initializeLottoGrade() {
@@ -63,5 +67,46 @@ public class LottoHandler {
                 FIFTH, 0,
                 NOTHING, 0
         ));
+    }
+
+    private static void preValidate(String inputNumbers) {
+        if (preValidateEmpty(inputNumbers) || preValidateNonDigitIsIn(inputNumbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validate(List<Integer> numbers) {
+        if (validateSizeOf(numbers) || validateBoundOf(numbers) || validateDuplicationOf(numbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static Boolean preValidateEmpty(String inputNumbers) {
+        if (inputNumbers.isEmpty()) return true;
+        return false;
+    }
+
+    private static Boolean preValidateNonDigitIsIn(String inputNumbers) {
+        String pattern = "^[[0-9]*[0-9][,]?]+$";
+        if (!matches(pattern, inputNumbers)) return true;
+        return false;
+    }
+
+    private static Boolean validateSizeOf(List<Integer> numbers) {
+        if (numbers.size() != 6) return true;
+        return false;
+    }
+
+    private static Boolean validateBoundOf(List<Integer> numbers) {
+        return numbers.stream()
+                .anyMatch(number -> number < 1 || number > 45);
+    }
+
+    private static Boolean validateDuplicationOf(List<Integer> numbers) {
+        return numbers.stream()
+                .mapToLong(targetNumber -> numbers.stream()
+                        .filter(targetNumber::equals)
+                        .count())
+                .anyMatch(count -> count >= 2);
     }
 }

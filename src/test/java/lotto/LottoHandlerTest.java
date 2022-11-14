@@ -32,6 +32,7 @@ class LottoHandlerTest {
     void getWinningNumbers() {
         String inputNumbers = "1,2,3,4,5,6";
         List<Integer> winningNumbers = LottoHandler.getWinningNumbers(inputNumbers);
+        assertThat(winningNumbers.size()).isEqualTo(6);
         assertThat(winningNumbers).containsAll(List.of(1, 2, 3, 4, 5, 6));
     }
 
@@ -65,11 +66,57 @@ class LottoHandlerTest {
         assertThat(rateOfReturn).isLessThan(63);
     }
 
+    @DisplayName("당첨 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
+    @Test
+    void createWinningNumbersByOverSize() {
+        assertThatThrownBy(() -> LottoHandler.getWinningNumbers("1,2,3,4,5,6,7"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호가 1~45의 범위를 벗어나면 예외가 발생한다.")
+    @Test
+    void createWinningNumbersOutOfBound() {
+        assertThatThrownBy(() -> LottoHandler.getWinningNumbers("1,2,3,4,5,48"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createWinningNumbersByDuplicatedNumber() {
+        assertThatThrownBy(() -> LottoHandler.getWinningNumbers("1,2,3,4,5,5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+    @DisplayName("입력 번호가 빈 문자열이면 예외가 발생한다.")
+    @Test
+    void enterEmptyInputNumbers() {
+        assertThatThrownBy(() -> LottoHandler.getWinningNumbers(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("쉼표(,)를 제외하고 숫자가 아닌 것을 입력하면 예외가 발생한다.")
+    @ParameterizedTest
+    @MethodSource("provideInputNumberContainingNonDigit")
+    void enterNonDigitInInputNumbers(String inputNumbers) {
+        assertThatThrownBy(() -> LottoHandler.getWinningNumbers(inputNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     private static Stream<Arguments> providePurchaseAmount() {
         return Stream.of(
                 Arguments.of(8000, 8),
                 Arguments.of(10000, 10),
                 Arguments.of(13000, 13)
+        );
+    }
+
+    private static Stream<Arguments> provideInputNumberContainingNonDigit() {
+        return Stream.of(
+                Arguments.of("1,2,3,4,5,A"),
+                Arguments.of("NonDigit"),
+                Arguments.of("1,2,3,4,5,%"),
+                Arguments.of("#@#$,3,6,5,1,2")
         );
     }
 
@@ -81,6 +128,4 @@ class LottoHandlerTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         return LottoHandler.getResultOfLotto(lottos, winningNumbers, Integer.valueOf(bonusNumber));
     }
-
-
 }
