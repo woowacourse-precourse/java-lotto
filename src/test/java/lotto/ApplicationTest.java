@@ -81,6 +81,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void check_Lotto_Range() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,46");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
 
     @Override
     public void runMain() {
