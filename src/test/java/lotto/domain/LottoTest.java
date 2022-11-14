@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -38,5 +37,13 @@ class LottoTest {
     void createLottoByAscendingOrder() {
         Lotto lotto = new Lotto(Arrays.asList(6, 5, 4, 3, 2, 1));
         assertThat(lotto.getNumbers()).isSortedAccordingTo(Comparator.naturalOrder());
+    }
+
+    @DisplayName("로또 번호 리스트의 보너스 번호 포함 여부를 알 수 있다.")
+    @Test
+    void containsBonusNumber() {
+        Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 1;
+        assertThat(lotto.containsBonusNumber(bonusNumber)).isTrue();
     }
 }
