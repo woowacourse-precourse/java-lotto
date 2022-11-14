@@ -11,5 +11,10 @@ public class Generator {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return numbers;
     }
-    
+    public List<List<Integer>> createLottoByPay(int pay) {
+        for (int i=0; i<pay; i++) {
+            lottery.add(createRandomLotto());
+        }
+        return lottery;
+    }
 }
