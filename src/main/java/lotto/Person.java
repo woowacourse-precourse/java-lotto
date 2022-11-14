@@ -13,7 +13,7 @@ public class Person {
 
     public void buyLottos() {
         purchaseAmount = Input.inputPurchaseAmount();
-        for (int i = 0; i < purchaseAmount; i += Game.lottoPice) {
+        for (int i = 0; i < purchaseAmount; i += Game.lottoPrice) {
             lottos.add(new Lotto(createRandomLottoNum()));
         }
     }
