@@ -45,4 +45,10 @@ class FunctionTest {
         int input = 5001;
         assertThat(Application.divisibleByThousand(input)).isEqualTo(false);
     }
+
+    @Test
+    void calculateNumberOfLotteriesTest() {
+        int money = 8000;
+        assertThat(Application.calculateNumberOfLotteries(money)).isEqualTo(8);
+    }
 }
