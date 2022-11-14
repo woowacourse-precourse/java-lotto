@@ -38,11 +38,9 @@
   - [x] 구입할 금액만큼 로또 번호를 반복하여 생성 - Lotto#createLottoList()
   - [x] 발행한 로또 번호를 오름차순으로 정렬한다. - Lotto#sortLottoNumberAscending()
 
-- [ ] 로또를 구매하기 - Lotto#buyLotto()
-- [ ] 당첨 확인 - Lotto#lottoCheckWin()
-
-- [x] 구매한 로또 번호들과 당첨 번호를 비교한다. - Lotto#lottoCompare()
+- [x] 구매한 로또 번호들과 당첨 번호를 비교, 로또 번호에 보너스 번호가 포함인지 검사한다. - Lotto#compareLottos()
   - [x] 로또 번호와 당첨 번호를 비교한다. -Lotto#compareLotto()
+  - [x] 로또 번호에 보너스 번호가 포함인지 검사한다. -Lotto#compareBonusNumber()
 
 - [x] 사용자에게 입력 받고 long으로 반환 - InputLotto#inputValueToLongs()
   - [x] 사용자에게 값을 입력 받는다. - InputLotto#inputValueOfUser()
@@ -65,7 +63,6 @@
 - [x] 입력한 당첨 번호가 중복인지 검사한다. - ExceptionHandling#removeDuplicateNumber()
 - [x] 입력한 보너스 번호가 당첨 번호와 중복인지 검사한다. - ExceptionHandling#containsBonusNumber()
 
-### enum으로 처리
 - [ ] "3개 일치 (5,000원) - n개"를 출력한다. - WinStatistics#showWinMessage()
 - [ ] "4개 일치 (50,000원) - n개"를 출력한다. - WinStatistics#showWinMessage()
 - [ ] "5개 일치 (1,500,000원) - n개"를 출력한다. - WinStatistics#showWinMessage()
