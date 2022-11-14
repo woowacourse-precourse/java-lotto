@@ -22,6 +22,7 @@ public class User extends Exception {
     }
 
     public static Integer convertToInteger(String input) {
+
         Pattern zeroToNine = Pattern.compile("^[0-9]*$");
         if (zeroToNine.matcher(input).matches()) {
             return checkMonetaryUnit(Integer.parseInt(input));

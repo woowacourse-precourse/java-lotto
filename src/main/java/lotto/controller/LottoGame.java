@@ -2,10 +2,12 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.UI.User;
+import lotto.enums.LottoRanking;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import static lotto.enums.Error.ER_STRINGCHECK;
 import static lotto.enums.LottoRanking.*;
@@ -47,6 +49,7 @@ public class LottoGame {
         }
     }
 
+
     public static Integer compareLottoNumber(List<Integer> user, List<Integer> computer, Integer bonusNumber) {
         int sameNumber = 0;
 
@@ -62,17 +65,13 @@ public class LottoGame {
     }
 
     public static void statisticsInput(Integer sameNumber) {
-        if (sameNumber == 3) {
-            FIFTH.count++;
-        } else if (sameNumber == 4) {
-            FOURTH.count++;
-        } else if (sameNumber == 5) {
-            THIRD.count++;
-        } else if (sameNumber == 7) {
-            SECOND.count++;
-        } else if (sameNumber == 6) {
-            FIRST.count++;
+        LottoRanking[] grades = LottoRanking.values();
+        for (LottoRanking grade : grades) {
+            if (Objects.equals(sameNumber, grade.rank)) {
+                grade.count++;
+            }
         }
+
     }
 
 }
