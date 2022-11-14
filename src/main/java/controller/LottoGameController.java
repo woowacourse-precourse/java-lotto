@@ -30,4 +30,8 @@ public class LottoGameController {
 		Lotto lotto = new Lotto(randomGenerator.randomUniqueNumbersGenerate());
 		return lotto;
 	}
+	
+	private void lottoPrint(Lotto lotto) {
+		outputLotto.showLotto(lotto);
+	}
 }
