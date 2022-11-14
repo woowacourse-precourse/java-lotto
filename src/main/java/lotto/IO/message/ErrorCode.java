@@ -7,8 +7,7 @@ public enum ErrorCode {
     LOTTO_PRICE_ZERO("로또 금액은 0원이 될 수 없습니다."),
     WRONG_PURCHASE_TYPE("로또 구매 금액은 자연수여야 합니다."),
     WRONG_PURCHASE_PRICE("로또 구매 금액은 로또 금액의 배수여야 합니다."),
-    WRONG_ANSWER("당첨 번호는 콤마(,)로 구분된 숫자로 이루어져야 합니다."),
-    WRONG_BONUS("보너스 번호는 1부터 45 사이의 수여야 합니다.");
+    WRONG_ANSWER("당첨 번호는 콤마(,)로 구분된 숫자로 이루어져야 합니다.");
 
     private final String value;
 
