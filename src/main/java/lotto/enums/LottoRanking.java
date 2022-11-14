@@ -22,12 +22,4 @@ public enum LottoRanking {
         return winningPhrase + count + "개";
     }
 
-
-    public static void main(String[] args) {
-
-
-        System.out.print("SSSS");
-
-
-    }
 }
