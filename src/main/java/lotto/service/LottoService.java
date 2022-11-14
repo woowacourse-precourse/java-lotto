@@ -3,6 +3,8 @@ package lotto.service;
 import lotto.domain.Purchaser;
 import lotto.repository.PurchaserRepository;
 
+import java.util.List;
+
 public class LottoService {
     private final PurchaserRepository purchaserRepository;
 
@@ -21,4 +23,8 @@ public class LottoService {
         purchaserRepository.save(purchaserId, purchaser);
     }
 
+    public List<List<Integer>> findPurchaserLottos(Long purchaserId) {
+        Purchaser purchaser = purchaserRepository.findById(purchaserId);
+        return purchaser.getLottos();
+    }
 }
