@@ -41,7 +41,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 숫자는 1~45 범위 밖의 숫자이면 예외가 발생한다.")
+    @DisplayName("로또 숫자가 1~45 범위 밖의 숫자이면 예외가 발생한다.")
     @Test
     void isNumberFrom1To45() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
@@ -59,6 +59,13 @@ class LottoTest {
     @Test
     void dontDuplicatePrizeNumber() {
         assertThatThrownBy(() -> InputNumberVerifier.bonusNumberVerifier(new Lotto(List.of(1, 2, 3, 4, 5, 6)), "1"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 숫자가 1~45 범위 밖의 숫자이면 예외가 발생한다.")
+    @Test
+    void isBonusNumberFrom1To45() {
+        assertThatThrownBy(() -> InputNumberVerifier.bonusNumberVerifier(new Lotto(List.of(1, 2, 3, 4, 5, 6)), "46"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
