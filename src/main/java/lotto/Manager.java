@@ -111,7 +111,7 @@ public class Manager {
     public void PrintGameResult(List<Lotto> lottos, List<Integer> winning, int bonus){
         int[] frequency = calculateResult(lottos, winning, bonus);
         System.out.print(INIT_RESULT);
-        for(int i=frequency.length-1;i>=1;i--){
+        for(int i=frequency.length-1; i>=1; i--){
             System.out.print(Constants.invert(i).getGameResult());
             System.out.print(" - ");
             System.out.println(frequency[i]+LOTTO_UNIT);
