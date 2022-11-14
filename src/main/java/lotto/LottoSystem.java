@@ -29,5 +29,13 @@ public class LottoSystem {
         this.bonusNumbers = bonusNumbers;
     }
 
-
+    private int getMatchedCnt(List<Integer> target){
+        int result = 0;
+        for(int i=0;i<target.size();i++){
+            if(target.get(i) == this.winNumbers.get(i)){
+                result++;
+            }
+        }
+        return result;
+    }
 }
