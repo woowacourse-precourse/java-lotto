@@ -23,10 +23,10 @@ public class RankingTableSystem {
     }
 
     public RankingTable createRankingTable(LottoTickets tickets) {
-        return new RankingTable(classifyByRank(tickets));
+        return new RankingTable(countFrequencyByRank(tickets));
     }
 
-    private Map<Ranking, Integer> classifyByRank(LottoTickets tickets) {
+    private Map<Ranking, Integer> countFrequencyByRank(LottoTickets tickets) {
         Map<Ranking, Integer> frequenciesByRank = new HashMap<>();
         List<String> matchingNumbers = countMatchingNumbersOf(tickets);
         for (Ranking value : Ranking.values()) {
@@ -40,11 +40,11 @@ public class RankingTableSystem {
         return tickets.matchWith(winningNumbers, bonus);
     }
 
-    private String getNumberOfMatchingOf(Ranking value) {
-        return value.getNumberOfMatching();
-    }
-
     private int countFrequency(List<String> numbers, String number) {
         return Collections.frequency(numbers, number);
+    }
+
+    private String getNumberOfMatchingOf(Ranking value) {
+        return value.getNumberOfMatching();
     }
 }

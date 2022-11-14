@@ -26,9 +26,9 @@ class RankingTableSystemTest {
     @BeforeEach
     void setUp() {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
-        WinningNumber bonus = new WinningNumber(7);
-        WinningNumbers winningNumbers = new WinningNumbers(numbers.stream()
-                .map(WinningNumber::new)
+        WinningNumber bonus = WinningNumber.from(7);
+        WinningNumbers winningNumbers = WinningNumbers.from(numbers.stream()
+                .map(WinningNumber::from)
                 .collect(Collectors.toList()));
 
         rankingTableSystem = RankingTableSystem.of(winningNumbers, bonus);
@@ -40,20 +40,20 @@ class RankingTableSystemTest {
     void countMatchingNumbersOf_test(List<List<Integer>> lottoNumbers, List<String> expected) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Method method = rankingTableSystem.getClass().getDeclaredMethod("countMatchingNumbersOf", LottoTickets.class);
         method.setAccessible(true);
-        LottoTickets tickets = new LottoTickets(lottoNumbers.stream()
+        LottoTickets tickets = LottoTickets.from(lottoNumbers.stream()
                 .map(Lotto::new)
                 .collect(Collectors.toList()));
 
         assertThat(method.invoke(rankingTableSystem, tickets)).isEqualTo(expected);
     }
 
-    @DisplayName("classifyByRank 메소드에 LottoTickets을 입력하면 순위별로 일치하는 수가 정리된 Map 객체를 반환하는지 확인")
+    @DisplayName("countFrequencyByRank 메소드에 LottoTickets을 입력하면 순위별로 일치하는 수가 정리된 Map 객체를 반환하는지 확인")
     @ParameterizedTest
     @MethodSource("provideArgumentsForClassifyingTest")
-    void classifyByRank_test(List<List<Integer>> lottoNumbers, Map<Ranking, Integer> expected) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method method = rankingTableSystem.getClass().getDeclaredMethod("classifyByRank", LottoTickets.class);
+    void countFrequencyByRank_test(List<List<Integer>> lottoNumbers, Map<Ranking, Integer> expected) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Method method = rankingTableSystem.getClass().getDeclaredMethod("countFrequencyByRank", LottoTickets.class);
         method.setAccessible(true);
-        LottoTickets tickets = new LottoTickets(lottoNumbers.stream()
+        LottoTickets tickets = LottoTickets.from(lottoNumbers.stream()
                 .map(Lotto::new)
                 .collect(Collectors.toList()));
 
@@ -64,7 +64,7 @@ class RankingTableSystemTest {
     @ParameterizedTest
     @MethodSource("provideArgumentsForCreatingTest")
     void createRankingTable_test(List<List<Integer>> lottoNumbers) {
-        LottoTickets tickets = new LottoTickets(lottoNumbers.stream()
+        LottoTickets tickets = LottoTickets.from(lottoNumbers.stream()
                 .map(Lotto::new)
                 .collect(Collectors.toList()));
 

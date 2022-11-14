@@ -90,18 +90,18 @@ class WinningNumberTest {
         assertThat(winningNumber.isSameValue(sameNumber)).isFalse();
     }
 
-    @DisplayName("countSameValue 메소드에 숫자 리스트를 입력하였을 때 포함 여부를 String으로 반환하는지 확인")
+    @DisplayName("checkSameValue 메소드에 숫자 리스트를 입력하였을 때 포함 여부를 String으로 반환하는지 확인")
     @ParameterizedTest()
-    @MethodSource("provideArgumentsForCountSameValueTest")
-    void countSameValue_test(List<Integer> numbers, int number, String expected) {
+    @MethodSource("provideArgumentsForCheckSameValueTest")
+    void checkSameValue_test(List<Integer> numbers, int number, String expected) {
         WinningNumber bonusNumber = WinningNumber.from(number);
 
-        String count = bonusNumber.countSameValue(numbers);
+        String result = bonusNumber.checkSameValue(numbers);
 
-        assertThat(count).isEqualTo(expected);
+        assertThat(result).isEqualTo(expected);
     }
 
-    static Stream<Arguments> provideArgumentsForCountSameValueTest() {
+    static Stream<Arguments> provideArgumentsForCheckSameValueTest() {
         return Stream.of(
                 Arguments.of(List.of(1,2,3,4,5,6), 7, ""),
                 Arguments.of(List.of(1,2,3,4,5,6), 6, "B")

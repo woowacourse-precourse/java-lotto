@@ -46,7 +46,7 @@ public class WinningNumber {
         return this.number == number;
     }
 
-    public String countSameValue(List<Integer> numbers) {
+    public String checkSameValue(List<Integer> numbers) {
         if (numbers.contains(number)) {
             return "B";
         }
