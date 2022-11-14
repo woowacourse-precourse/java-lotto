@@ -12,6 +12,10 @@ public class LottoBonus {
         this.bonus = bonus;
     }
 
+    public int getBonus(){
+        return bonus;
+    }
+
     private void validate(List<Integer> numbers, int bonus) {
         duplicate(numbers, bonus);
         notInclude(bonus);
