@@ -8,17 +8,12 @@ import view.InputView;
 import view.OutputView;
 
 public class LottoController {
-    private LotteryMachine lotteryMachine;
 
     public void run(){
-        buyLotto();
-        WinningNumber winningNumber = createWinningNumber();
-    }
-
-    private void buyLotto(){
         PurchaseMoney purchaseMoney = new PurchaseMoney(InputView.inputMoney());
-        lotteryMachine = new LotteryMachine(purchaseMoney.getLottoCount());
+        LotteryMachine lotteryMachine = new LotteryMachine(purchaseMoney.getLottoCount());
         OutputView.showLottos(lotteryMachine.getLottos());
+        WinningNumber winningNumber = createWinningNumber();
     }
 
     private WinningNumber createWinningNumber(){
