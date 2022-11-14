@@ -13,7 +13,7 @@ public class PurchasingLotto {
 
     public int calculateNumberOfLotto(int purchasingAmount) {
         int numberOfLotto = purchasingAmount / 1000;
-
+        amountOfLotto = numberOfLotto;
         return numberOfLotto;
     }
 
