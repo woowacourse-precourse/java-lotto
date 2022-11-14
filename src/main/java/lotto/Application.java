@@ -1,14 +1,30 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        play();
     }
 
-    private List<Integer> getRandomNumbers() {
+    private static void play() {
+        Integer purchaseAmount = UserIO.inputPurchaseAmount();
+        List<Lotto> lottos = buyLottos(purchaseAmount);
+        UserIO.printLottoNumbers(lottos);
+        List<Integer> winningNumbers = UserIO.inputWinningNumber();
+        Integer bonusNumber = UserIO.inputBonusNumber();
+
+        Map<Rank, Integer> resultMap = getResultOfAll(lottos, winningNumbers, bonusNumber);
+        UserIO.printWinStat(resultMap, calculateYield(resultMap, purchaseAmount));
+    }
+
+    private static List<Integer> getRandomNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
