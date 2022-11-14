@@ -31,8 +31,8 @@ public class Controller {
     }
 
     public void checkLottoNumbers() {
-        for (Lotto L : lottoNumbers) {
-            compareTwoNumbers(L.getNumbers());
+        for (Lotto l : lottoNumbers) {
+            compareTwoNumbers(l.getNumbers());
         }
     }
 
