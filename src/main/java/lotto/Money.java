@@ -1,15 +1,15 @@
 package lotto;
 
 public class Money {
-    private int money;
+    private Long money;
 
     public Money(String money) {
         this.money = getPurchaseAmount(money);
     }
 
-    private int getPurchaseAmount(String money) {
+    private Long getPurchaseAmount(String money) {
         validate(money);
-        return Integer.parseInt(money);
+        return Long.parseLong(money);
     }
 
     private void validate(String money) {
@@ -23,7 +23,7 @@ public class Money {
         }
     }
 
-    public int getMoney() {
+    public Long getMoney() {
         return money;
     }
 }
