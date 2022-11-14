@@ -28,6 +28,7 @@ public class Output {
             System.out.println(grade.getValue());
         }
     }
+
     public static void printLotto(List<List<Integer>> lottoNumbers) {
         for (List<Integer> lottoNumber : lottoNumbers) {
             System.out.println(lottoNumber);

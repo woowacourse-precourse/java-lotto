@@ -24,7 +24,7 @@ class UserTest {
         Integer monetaryUnitTest2 = 1500;
 
         // return true;
-        assertEquals(1000,user.checkMonetaryUnit(monetaryUnitTest1));
+        assertEquals(1000, user.checkMonetaryUnit(monetaryUnitTest1));
 
         // throw new IllegalArgumentException("[ERROR] 1,000원 단위의 숫자를 입력 해주세요.")
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
@@ -43,7 +43,7 @@ class UserTest {
         System.setIn(in);
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
                 user.lottoNumberReceiveInput());
-        assertEquals("[ERROR] 문자 또는 공백은 입력이 불가능합니다. 1~45 사이의 숫자 6개를 입력해 주세요.", illegalArgumentException.getMessage());
+        assertEquals("[ERROR] 문자 또는 공백은 입력이 불가능합니다. 1~45 사이의 6개의 숫자를 쉼표(,)로 구분해서 입력해 주세요.", illegalArgumentException.getMessage());
     }
 
     @DisplayName("보너스 번호 입력시 문자,공백 입력시 예외가 발생한다")
@@ -70,7 +70,7 @@ class UserTest {
         // throw new IllegalArgumentException("[ERROR] 1~45 사이의 숫자 한개를 입력해 주세요.")
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
                 user.bonusNumberRangeCheck(testFalse));
-        assertEquals("[ERROR] 로또 번호의 숫자 범위는 1~45까지 입니다.",illegalArgumentException.getMessage());
+        assertEquals("[ERROR] 로또 번호의 숫자 범위는 1~45까지 입니다.", illegalArgumentException.getMessage());
 
     }
 
@@ -78,13 +78,12 @@ class UserTest {
     @Test
     void 보너스_번호_로또_번호_중복_검사() {
         Integer bonusNumber = 8;
-        List<Integer> lottoNumbers = List.of(1,2,3,4,5,8);
+        List<Integer> lottoNumbers = List.of(1, 2, 3, 4, 5, 8);
 
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
-                user.bonusNumberCheckInLottoNumber(lottoNumbers,bonusNumber));
-        assertEquals("[ERROR] 보너스 번호와 로또 번호는 중복이 안됩니다.",illegalArgumentException.getMessage());
+                user.bonusNumberCheckInLottoNumber(lottoNumbers, bonusNumber));
+        assertEquals("[ERROR] 보너스 번호와 로또 번호는 중복이 안됩니다.", illegalArgumentException.getMessage());
 
     }
-
 
 }

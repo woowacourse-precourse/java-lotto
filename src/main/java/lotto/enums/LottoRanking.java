@@ -19,9 +19,6 @@ public enum LottoRanking {
         this.prizeMoney = prizeMoney;
     }
 
-    public Integer getRank() {
-        return rank;
-    }
 
     public String getValue() {
         return winningPhrase + count + "개";

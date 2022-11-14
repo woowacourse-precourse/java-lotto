@@ -38,5 +38,4 @@ public class Lotto {
         return numbers;
     }
 
-
 }

@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Objects;
 
 import static lotto.enums.Error.ER_STRINGCHECK;
-import static lotto.enums.LottoRanking.*;
 import static lotto.view.Output.printLotto;
 import static lotto.view.Output.rateOfReturnOutput;
 
@@ -39,7 +38,7 @@ public class LottoGame {
             printLotto(randomLottoNumbers);
             List<Integer> userNumbers = User.lottoNumberReceiveInput();
             Integer userBonusNumber = User.bonusNumberRangeCheck(User.inputBonusNumber());
-            User.bonusNumberCheckInLottoNumber(userNumbers,userBonusNumber);
+            User.bonusNumberCheckInLottoNumber(userNumbers, userBonusNumber);
             for (int size = 0; size < randomLottoNumbers.size(); size++) {
                 statisticsInput(compareLottoNumber(userNumbers, randomLottoNumbers.get(size), userBonusNumber));
             }
@@ -48,7 +47,6 @@ public class LottoGame {
             System.out.println(illegalArgumentException.getMessage());
         }
     }
-
 
     public static Integer compareLottoNumber(List<Integer> user, List<Integer> computer, Integer bonusNumber) {
         int sameNumber = 0;

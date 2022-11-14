@@ -51,9 +51,9 @@ class LottoGameTest {
         Integer BonusNumber2 = 7;
 
         lottoGame.statisticsInput(lottoGame.compareLottoNumber(TestUser1, TestComputer1, BonusNumber1));
-        assertEquals(THIRD.count , 1);
+        assertEquals(THIRD.count, 1);
         lottoGame.statisticsInput(lottoGame.compareLottoNumber(TestUser2, TestComputer2, BonusNumber2));
-        assertEquals(SECOND.count , 1);
+        assertEquals(SECOND.count, 1);
 
     }
 }

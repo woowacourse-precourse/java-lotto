@@ -70,13 +70,11 @@ public class User extends Exception {
         }
         return number;
     }
-    public static void bonusNumberCheckInLottoNumber(List<Integer> lottoNumber , Integer bonusNumber){
-        if(lottoNumber.contains(bonusNumber)){
+
+    public static void bonusNumberCheckInLottoNumber(List<Integer> lottoNumber, Integer bonusNumber) {
+        if (lottoNumber.contains(bonusNumber)) {
             throw new IllegalArgumentException(ER_BONUSNUMBERINLOTTONUMBER.getMessage());
         }
     }
-
-
-
 
 }
