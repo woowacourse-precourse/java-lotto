@@ -44,7 +44,7 @@ public class Lotto {
     }
 
     private boolean matchBonusNumber(int bonusNumber) {
-        return true;
+        return numbers.contains(bonusNumber);
     }
 
     private Rank getRank(int matchingCount, boolean matchBonus) {
