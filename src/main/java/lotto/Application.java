@@ -92,4 +92,19 @@ public class Application {
         }
         return revenue;
     }
+
+    public static void printWinning(List<Lotto> lottos, Lotto winningLotto, int bonus){
+        int[] win = {0,0,0,0,0};
+        for(Lotto lotto : lottos){
+            int rank = lottoRank(lotto, winningLotto, bonus);
+            if(rank > 5){
+                continue;
+            }
+            win[rank-1]++;
+        }
+        for(int i = 0; i < 5; i++){
+            Rank[] values = Rank.values();
+            System.out.println(values[4-i].getPrinting() + " - " + win[i] + "개");
+        }
+    }
 }
