@@ -29,7 +29,7 @@ public class InputUI {
 
         return normalNumbers;
     }
-    public List<Integer> getNormalNumbers() {
+    private List<Integer> getNormalNumbers() {
         outputUI.printMessage(NORMAL_NUMBER_INPUT_MESSAGE);
         String normalNumbers = Console.readLine();
         validator.validateNormalNumbers(normalNumbers);
@@ -42,7 +42,7 @@ public class InputUI {
         return normalNumberInteger;
     }
 
-    public Integer getBonusNumber(List<Integer> normalNumbers) {
+    private Integer getBonusNumber(List<Integer> normalNumbers) {
         outputUI.printMessage(BONUS_NUMBER_INPUT_MESSAGE);
         String bonusNumber = Console.readLine();
         validator.validateBonusNumber(normalNumbers, bonusNumber);

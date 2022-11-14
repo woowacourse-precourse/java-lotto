@@ -7,9 +7,10 @@ public class WinnerLotto {
     private final List<Integer> normalNumbers;
     private final Integer bonusNumber;
 
-    public WinnerLotto(List<Integer> normalNumbers, Integer bonusNumber) {
-        this.normalNumbers = normalNumbers;
-        this.bonusNumber = bonusNumber;
+    public WinnerLotto(List<Integer> lottoNumbers) {
+        validateBonusNumber(lottoNumbers.subList(0, 6), lottoNumbers.get(6));
+        this.normalNumbers = lottoNumbers.subList(0,6);
+        this.bonusNumber = lottoNumbers.get(6);
     }
 
     private void validateBonusNumber(List<Integer> normalNumbers, Integer bonusNumber) {
