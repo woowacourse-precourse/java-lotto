@@ -3,6 +3,7 @@ package lotto.View;
 import lotto.Model.Rank;
 
 import java.text.DecimalFormat;
+
 import java.util.List;
 import java.util.Map;
 

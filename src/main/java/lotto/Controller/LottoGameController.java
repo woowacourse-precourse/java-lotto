@@ -2,6 +2,7 @@ package lotto.Controller;
 
 import lotto.Model.Lotto;
 import lotto.Model.Rank;
+
 import lotto.Service.BonusNumberService;
 import lotto.Service.CalculateResultService;
 import lotto.Service.LottoNumberService;

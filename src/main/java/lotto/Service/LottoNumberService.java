@@ -2,6 +2,7 @@ package lotto.Service;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import lotto.Model.Lotto;
 
 import java.util.ArrayList;

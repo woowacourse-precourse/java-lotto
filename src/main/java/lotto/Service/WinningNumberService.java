@@ -1,12 +1,15 @@
 package lotto.Service;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import lotto.Model.Lotto;
 
 import java.util.List;
+
 import java.util.stream.Collectors;
 
-import static lotto.Application.*;
+import static lotto.Application.separator;
+import static lotto.Application.ERROR_MESSAGE;
 import static lotto.Application.errorContent;
 
 public class WinningNumberService {

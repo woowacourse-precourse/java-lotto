@@ -3,7 +3,6 @@ package lotto.Service;
 import lotto.Model.Lotto;
 import lotto.Model.Rank;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
