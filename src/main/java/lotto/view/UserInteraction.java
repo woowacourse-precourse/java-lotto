@@ -1,7 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.datamodel.PrizeMoney;
+import lotto.datamodel.util.Transform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,9 @@ public class UserInteraction {
     private static final String PAY_COUNT = "개를 구매했습니다.";
     private static final String INPUT_WIN_NUMBER = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    
+
+    private final Transform transformer = new Transform();
+
     public UserInteraction() {
     }
 
@@ -30,13 +32,13 @@ public class UserInteraction {
     public List<Integer> winningNumbers() {
         System.out.println(INPUT_WIN_NUMBER);
         String input = Console.readLine();
-        return numberTransform(input);
+        return transformer.numberTransform(input);
     }
 
     public int bonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
         String input = Console.readLine();
-        return bonusTransform(input);
+        return transformer.bonusTransform(input);
     }
 
     public void printResult(int lottoCount, float totalPrize, List<String> moneyInfo, List<Integer> winingLotto) {
@@ -49,18 +51,5 @@ public class UserInteraction {
             System.out.println(winingLotto.get(prizeCount)+"개");
         }
         System.out.println("총 수익률은 " + String.format("%.1f", totalPrize/lottoCount * 100)+"%입니다.");
-    }
-
-    private List<Integer> numberTransform(String input) {
-        String[] numbers = input.split(",");
-        List<Integer> winNumbers = new ArrayList<>();
-        for (String number : numbers) {
-            winNumbers.add(Integer.parseInt(number));
-        }
-        return winNumbers;
-    }
-
-    private int bonusTransform(String input) {
-        return Integer.parseInt(input);
     }
 }
