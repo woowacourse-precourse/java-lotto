@@ -17,8 +17,8 @@ public class Constants {
     public static final String PURCHASE_AMOUNT_IS_NOT_IN_RANGE_ERROR_MESSAGE = PREV_ERROR_MESSAGE + "1000원 이상이어야합니다.";
     public static final String PURCHASE_AMOUNT_IS_NOT_DIVIDED_ERROR_MESSAGE =
             PREV_ERROR_MESSAGE + "1000원으로 나누어떨어져야합니다.";
-    public static final String LOTTO_NUMBERS_IS_NOT_NUMBER_ERROR_MESSAGE = PREV_ERROR_MESSAGE + "숫자가 아닙니다.";
-    public static final String LOTTO_NUMBERS_IS_NOT_IN_RANGE_ERROR_MESSAGE = PREV_ERROR_MESSAGE + "1~45 수여야 합니다.";
+    public static final String LOTTO_NUMBER_IS_NOT_NUMBER_ERROR_MESSAGE = PREV_ERROR_MESSAGE + "숫자가 아닙니다.";
+    public static final String LOTTO_NUMBER_IS_NOT_IN_RANGE_ERROR_MESSAGE = PREV_ERROR_MESSAGE + "1~45 수여야 합니다.";
     public static final String LOTTO_NUMBERS_SIZE_IS_INVALID_ERROR_MESSAGE = PREV_ERROR_MESSAGE + "당첨번호가 6개여야합니다.";
     public static final String IS_NOT_LOTTO_NUMBERS_SIZE_ERROR_MESSAGE = PREV_ERROR_MESSAGE + "로또 숫자 개수가 6개여야합니다.";
 
