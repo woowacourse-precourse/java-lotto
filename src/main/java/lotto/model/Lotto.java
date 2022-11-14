@@ -43,8 +43,10 @@ public class Lotto {
         return number;
     }
 
-    public Boolean contains(Integer bonus){
-        return numbers.contains(bonus);
+    public Integer countBonus(Integer bonus)
+    {
+        if (numbers.contains(bonus)) return 1;
+        return 0;
     }
 
 
