@@ -19,6 +19,7 @@ public class RaffleNumber {
         List<String> separatedRaffleNumber = separateRaffleNumberByComma(raffleNumbers);
         validateProperQuantity(separatedRaffleNumber);
         validateDuplicatedNumbers(separatedRaffleNumber);
+        this.raffleNumbers = transform(separatedRaffleNumber, Integer::parseInt);
     }
     private void validateProperQuantity(List<String> raffleNumbers) {
         if (raffleNumbers.size() != PROPER_QUANTITY) {
@@ -41,5 +42,8 @@ public class RaffleNumber {
     }
     public List<String> separateRaffleNumberByComma(String raffleNumber){
         return List.of(raffleNumber.split(DELIMITER));
+    }
+    private <T, U> List<U> transform(List<T> list, Function<T, U> function){
+        return list.stream().map(function).collect(Collectors.toList());
     }
 }
