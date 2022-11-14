@@ -11,6 +11,11 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.Application.REWARD_FIFTH;
+import static lotto.Application.REWARD_FIRST;
+import static lotto.Application.REWARD_FOURTH;
+import static lotto.Application.REWARD_SECOND;
+import static lotto.Application.REWARD_THIRD;
 import static lotto.Application.getBonus;
 import static lotto.Application.getTheNumberOfLottoesAsMuchThePurchaseAmount;
 import static lotto.Application.getWinningNumbers;
@@ -20,6 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
@@ -91,7 +97,7 @@ class ApplicationTest extends NsTest {
         String str = "1,2,3,4,5,6";
         List<Integer> winningNumbers = getWinningNumbers(str);
 
-        assertThat(winningNumbers).isEqualTo(List.of(1,2,3,4,5,6));
+        assertThat(winningNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 
     @Test
@@ -104,8 +110,8 @@ class ApplicationTest extends NsTest {
 
     @Test
     void findTest() {
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
-        List<Integer> winning = List.of(1,2,3,6,7,8);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> winning = List.of(1, 2, 3, 6, 7, 8);
         Integer bonus = 10;
 
         Grade grade = Grade.find(match(lotto, winning, bonus));
@@ -115,21 +121,21 @@ class ApplicationTest extends NsTest {
 
     @Test
     void matchTest() {
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
-        List<Integer> winning = List.of(1,2,3,6,7,8);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> winning = List.of(1, 2, 3, 6, 7, 8);
         Integer bonus = 10;
         List<Integer> matching = Arrays.asList(lotto.compareTo(winning), lotto.compareToAdditional(bonus));
 
-        assertThat(matching).isEqualTo(List.of(4,0));
+        assertThat(matching).isEqualTo(List.of(4, 0));
     }
 
     @Test
     void makeStatsTest() {
         List<Lotto> lottoes = new ArrayList<>();
-        lottoes.add(new Lotto(List.of(1,2,3,4,5,6)));
-        lottoes.add(new Lotto(List.of(1,2,6,7,3,4)));
-        lottoes.add(new Lotto(List.of(7,5,4,2,1,3)));
-        List<Integer> winning = List.of(1,2,3,4,5,6);
+        lottoes.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottoes.add(new Lotto(List.of(1, 2, 6, 7, 3, 4)));
+        lottoes.add(new Lotto(List.of(7, 5, 4, 2, 1, 3)));
+        List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
         Integer bonus = 7;
         List<Integer> stats = new ArrayList<>();
 
@@ -142,11 +148,23 @@ class ApplicationTest extends NsTest {
             stats = renew(stats, grade.toString());
         }
 
-        assertThat(stats).isEqualTo(List.of(1,2,0,0,0));
+        assertThat(stats).isEqualTo(List.of(1, 2, 0, 0, 0));
     }
 
+    @Test
+    void calculateYieldTest() {
+        List<Integer> stats = List.of(1, 2, 0, 0, 0);
+        String purchase = "5000";
+        float purchaseAmount = (float) Integer.parseInt(purchase);
+        float yield = (float) (stats.get(0) * REWARD_FIRST
+                + stats.get(1) * REWARD_SECOND
+                + stats.get(2) * REWARD_THIRD
+                + stats.get(3) * REWARD_FOURTH
+                + stats.get(4) * REWARD_FIFTH
+        ) / purchaseAmount * 100;
 
-
+        assertThat(String.format("%.1f", yield)).isEqualTo("41200000.0");
+    }
 
 
     @Override
