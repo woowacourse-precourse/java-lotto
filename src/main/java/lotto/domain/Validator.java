@@ -82,7 +82,7 @@ public class Validator {
 
     public void validatePurchasedAmount(String purchasedAmount) {
         validateDigit(purchasedAmount);
-        validateUnit(purchasedAmount);
         validateMinimum(purchasedAmount);
+        validateUnit(purchasedAmount);
     }
 }
