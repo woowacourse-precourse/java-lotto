@@ -17,13 +17,13 @@ public class Bonus {
 
     void validateDuplicate(int number, List<Integer> lottoNumbers) {
         if (lottoNumbers.contains(number)) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_DUPLICATE_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.BONUS_DUPLICATE_ERROR.getMessage());
         }
     }
 
     void validateRange(int number) {
         if (number < 1 | number > 45) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_RANGE_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.BONUS_RANGE_ERROR.getMessage());
         }
     }
 
