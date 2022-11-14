@@ -4,11 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class BuyLotto {
     private static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String BUY_LOTTO_MESSAGE = "개를 구매했습니다.";
-    public static final String INVALIDATE_PRICE_UNIT_MESSAGE = "[ERROR] 구매금액은 1000원 단위여야 합니다.";
+    private static final String INVALIDATE_PRICE_UNIT_MESSAGE = "[ERROR] 구매금액은 1000원 단위여야 합니다.";
     private static final String INVALIDATE_NUMERIC_MESSAGE = "[ERROR] 구매금액은 숫자여야 합니다.";
     private static final int INPUT_UNIT = 1000;
     private String price;
@@ -46,12 +47,13 @@ public class BuyLotto {
     private void validateNumeric() {
         try {
             Integer.parseInt(price);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALIDATE_NUMERIC_MESSAGE);
+        } catch (NumberFormatException invalidateNumeric) {
+            System.out.println(INVALIDATE_NUMERIC_MESSAGE);
+            throw new NoSuchElementException();
         }
     }
 
-    public int numberOfLottoCount() {
+    private int numberOfLottoCount() {
         return Integer.parseInt(price) / INPUT_UNIT;
     }
 
