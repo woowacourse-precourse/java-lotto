@@ -19,13 +19,13 @@
 - [ ] 발행 로또가 로또 당첨 번호를 몇 개 가지고 있는지 확인한다. WinLotto#numberOfSameNumbers()
 - [ ] 발행 로또가 보너스 번호를 포함하는지 확인한다. WinLotto#isContainBonusNumber()
 - [ ] 로또 결과를 가져온다. WinLotto#getAllResult();
-- [x] 수익률을 가져온다. LottoStatistics#getPercentageOfProfit()
-  - [x] 수익률을 계산한다. LottoStatistics#calculatePercentageOfProfit()
+- [x] 수익률을 가져온다. Profit#getPercentageProfit()
+  - [x] 수익률을 계산한다. Profit#calculatePercentageProfit()
 - [x] "구입금액을 입력해 주세요." 출력한다. RequestView#displayEnterPurchaseAmount()
 - [x] "당첨 번호를 입력해 주세요." 출력한다. RequestView#displayEnterWinnerNumber()
 - [x] "보너스 번호를 입력해 주세요." 출력한다. RequestView#displayEnterBonusNumber()
 - [x] 발행한 로또 수량 및 번호를 출력한다. ResultView#displayAllLotteries()
-- [ ] 수익률을 출력한다. ResultView#displayProfitPercentage()
+- [ ] 수익률을 출력한다. ResultView#displayPercentageProfit()
 - [ ] 당첨 통계를 출력한다. ResultView#displayWinStatistics()
 - [ ] 당첨 조건별 일치 갯수와 보너스 볼 일치별 갯수를 출력한다. ResultView#displayWinners()
 
@@ -35,7 +35,7 @@
 - Lotto: 로또 검증
 - LottoMachine: 로또 발행
 - WinLotto: 당첨 관련
-- Profit: 통계 관련
+- Profit: 수익 관련
 - Money: 돈
 - MoneyInput: 돈 입력
 - NumberInput: 숫자 입력

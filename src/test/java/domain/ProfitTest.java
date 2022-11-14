@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-class LottoStatisticsTest {
+class ProfitTest {
 
 
 
@@ -14,7 +14,7 @@ class LottoStatisticsTest {
     void calculatePercentageOfProfit() {
         String percentageOfprofit = "62.5";
 
-        LottoStatistics lottoStatistics = new LottoStatistics(8000, 5000);
-        assertThat(lottoStatistics.getPercentageOfProfit()).isEqualTo(percentageOfprofit);
+        Profit profit = new Profit(8000, 5000);
+        assertThat(profit.getPercentageProfit()).isEqualTo(percentageOfprofit);
     }
 }
