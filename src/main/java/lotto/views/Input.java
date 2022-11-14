@@ -19,15 +19,12 @@ public class Input {
         output = new Output();
     }
 
-    public int getUserMoney() {
+    public String getUserMoney() {
         output.printGetLottoPrice();
 
         String question = Console.readLine();
-        inputValidation.checkNumber(question, Constant.REGEX_INPUT);
-        inputValidation.checkFirstNumberIsNotZero(question, Constant.REGEX_INPUT);
-        inputValidation.checkThousandMoney(question);
 
-        return Integer.parseInt(question);
+        return question;
     }
 
     public List<Integer> getWinningNumber() {

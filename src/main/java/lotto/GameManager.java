@@ -1,9 +1,6 @@
 package lotto;
 
-import lotto.domain.BonusNumber;
-import lotto.domain.Lotto;
-import lotto.domain.Prize;
-import lotto.domain.Wallet;
+import lotto.domain.*;
 import lotto.utils.Constant;
 import lotto.utils.Ranking;
 import lotto.views.Input;
@@ -17,6 +14,7 @@ public class GameManager {
 
     private final Input input;
     private final Output output;
+    private Money money;
     private Wallet wallet;
     private Lotto winningNumber;
     private BonusNumber bonusNumber;
@@ -28,8 +26,8 @@ public class GameManager {
     }
 
     public void run() {
-        int lottoPrice = input.getUserMoney();
-        int numberOfPurchase = changeNumberOfLottoToBuy(lottoPrice);
+        money = new Money(input.getUserMoney());
+        int numberOfPurchase = changeNumberOfLottoToBuy(money.getNumberOfPurchase());
         purchaseLotto(numberOfPurchase);
         output.printWallet(wallet.getLottos(), numberOfPurchase);
 
@@ -39,7 +37,7 @@ public class GameManager {
         prize = new Prize(makePrize());
 
         output.printPrize(prize);
-        output.printProfit(getProfit(lottoPrice));
+        output.printProfit(getProfit(money.getNumberOfPurchase()));
     }
 
     public int changeNumberOfLottoToBuy(int lottoPrice) {
