@@ -21,15 +21,15 @@ public class Output{
     public static void printResult(int[] result,int cost){
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) -"+ result[3]);
-        System.out.println("4개 일치 (50,000원)-"+ result[4]);
-        System.out.println("5개 일치 (1,500,000원)-"+ result[5]);
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) -"+ result[7]);
-        System.out.println("6개 일치 (2,000,000,000원) -"+ result[6]);
+        System.out.println("3개 일치 (5,000원) - "+ result[3]+"개");
+        System.out.println("4개 일치 (50,000원) - "+ result[4]+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+ result[5]+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ result[7]+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+ result[6]+"개");
 
         int earn=result[3]*5000+result[4]*50000+result[5]*1500000+result[7]*30000000+result[6]*2000000000;
-        int earnrate=100%(cost-earn);
-        System.out.println("총 수익률은"+String.format("%.2f", earnrate)+"%입니다");
+        double earnrate=100/(cost/earn);
+        System.out.println("총 수익률은 "+String.format("%.1f", earnrate)+"%입니다");
 
 
 

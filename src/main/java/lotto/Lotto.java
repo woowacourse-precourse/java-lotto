@@ -22,7 +22,7 @@ public class Lotto {
 
     public static void game(){
         int cost;
-        ArrayList<ArrayList<Integer>> total = new ArrayList<>();
+        List<List<Integer>> total = new ArrayList<>();
 
         Output.printCost();
         cost = Integer.parseInt(Console.readLine());
@@ -44,10 +44,6 @@ public class Lotto {
 
         int[] result = CompareLotto.comparelotto(total,lottolst,bonus);
         Output.printResult(result,cost);
-
-
-
-
 
 
     }
