@@ -1,8 +1,7 @@
 package lotto.Model;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -12,6 +11,8 @@ public class Lotto {
     private static final String RANGE_ERROR_SENTENCE = " 로또 번호는 1부터 45사이의 숫자여야 합니다.";
     private static final String LENGTH_ERROR_SENTENCE = " 숫자의 길이는 6자리로 제한 됩니다.";
     private static final String DUPLICATION_ERROR_SENTENCE = " 로또 번호는 겹치면 안됩니다.";
+    private static final String CHAR_EXCEPTION_SENTENCE = " 입력에 문자열이 포함되었습니다.";
+    private static final String BONUS_WITH_CHAR_EXCEPTION = " 숫자만 입력 해야 합니다.";
 
     private static List<Integer> winningNumbers;
     private static int bonusNumber;
@@ -62,6 +63,31 @@ public class Lotto {
                 throw new IllegalArgumentException(ERROR_MESSAGE + BONUS_NUMBER_DUPLICATION_ERROR_SENTENCE);
         }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public static List<Integer> stringToList(String winningNumber) {
+        List<String> numbers = Arrays.asList(winningNumber.split(","));
+        return convertTypeStringToInteger(numbers);
+    }
+
+    private static List<Integer> convertTypeStringToInteger(List<String> numbers) {
+        try{
+            return numbers.stream()
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        }catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + CHAR_EXCEPTION_SENTENCE);
+        }
+    }
+
+
+    public static int stringToInt(String bonusNumber) {
+        try {
+            return Integer.parseInt(bonusNumber);
+        }catch (NumberFormatException e) {
+
+            throw new IllegalArgumentException(ERROR_MESSAGE + BONUS_WITH_CHAR_EXCEPTION);
         }
     }
 

@@ -1,6 +1,7 @@
 package lotto.Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoSystem {
@@ -28,4 +29,9 @@ public class LottoSystem {
         }
         return score;
     }
+
+    public static int getFrequency(int countOfRanking) {
+        return Collections.frequency(winningStatics, countOfRanking);
+    }
+
 }

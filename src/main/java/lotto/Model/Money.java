@@ -44,17 +44,17 @@ public class Money {
     }
 
     public static double calcYield() {
-        double sum = 0.0;
+        double prizeSum = 0.0;
         for(int countOfCase : LottoSystem.getWinningStatics()) {
-            if(countOfCase == COUNT_OF_FIRST) sum+= findRanking(countOfCase).getPrize();
-            if(countOfCase == COUNT_OF_SECOND) sum+= findRanking(countOfCase).getPrize();
-            if(countOfCase == COUNT_OF_THIRD) sum+= findRanking(countOfCase).getPrize();
-            if(countOfCase == COUNT_OF_FOURTH) sum+= findRanking(countOfCase).getPrize();
-            if(countOfCase == COUNT_OF_FIFTH) sum+= findRanking(countOfCase).getPrize();
+            if(countOfCase == COUNT_OF_FIRST) prizeSum += findRanking(countOfCase).getPrize();
+            if(countOfCase == COUNT_OF_SECOND) prizeSum += findRanking(countOfCase).getPrize();
+            if(countOfCase == COUNT_OF_THIRD) prizeSum += findRanking(countOfCase).getPrize();
+            if(countOfCase == COUNT_OF_FOURTH) prizeSum += findRanking(countOfCase).getPrize();
+            if(countOfCase == COUNT_OF_FIFTH) prizeSum += findRanking(countOfCase).getPrize();
         }
-        sum /= getInputMoney();
-        sum *= 100;
-        return sum;
+        prizeSum /= getInputMoney();
+        prizeSum *= 100;
+        return prizeSum;
     }
 
 }

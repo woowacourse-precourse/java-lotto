@@ -1,11 +1,10 @@
 package lotto.View;
 
-import lotto.Model.LottoSystem;
 import lotto.Model.Money;
 
-import java.util.Collections;
 import java.util.List;
 
+import static lotto.Model.LottoSystem.getFrequency;
 import static lotto.Model.RandomLotto.getBundleOfLottoNumbers;
 
 
@@ -29,10 +28,6 @@ public class OutputView {
         System.out.println("5개 일치 (1,500,000원) - " + getFrequency(COUNT_OF_THIRD) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + getFrequency(COUNT_OF_SECOND) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + getFrequency(COUNT_OF_FIRST) + "개");
-    }
-
-    private static int getFrequency(int countOfRanking) {
-        return Collections.frequency(LottoSystem.getWinningStatics(), countOfRanking);
     }
 
     public static void printYield() {
