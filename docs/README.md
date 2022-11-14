@@ -2,14 +2,14 @@
 ## 구현 기능 목록
 
 ### 로또 시작 (LottoController)
-  * 예외처리 (IllegalArgumentException)
+  * [ ] 예외처리 (IllegalArgumentException)
 
 ### 구입 금액 입력 (InputView)
-  - [ ] 구매 금액 입력 받기 
+  - [x] 구매 금액 입력 받기 
     * 예외처리
     - [ ] 숫자로만 이루어져야 한다.
     - [ ] 1000원 단위여야 한다.
-  - [ ] 입력 금액으로 살 수 있는 로또 개수 출력 (OutputView)
+  - [x] 입력 금액으로 살 수 있는 로또 개수 출력 (OutputView)
 
 ### 개수에 맞게 랜덤 로또 번호 리스트 생성 (Computer)
   - [ ] 1부터 45까지의 서로 다른 임의의 수 6개 생성 (Computer)
