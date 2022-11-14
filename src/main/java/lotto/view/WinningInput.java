@@ -45,8 +45,8 @@ public class WinningInput {
 
     private static void winningIntArrToList(int[] winningIntArr) {
         winningNumbers = new ArrayList<>(winningIntArr.length);
-        for (int number : winningIntArr) {
-            winningNumbers.add(number);
+        for (int i : winningIntArr) {
+            winningNumbers.add(i);
         }
     }
 
@@ -60,10 +60,10 @@ public class WinningInput {
     }
 
     private static void validateWinningNumberException() {
-        validateWinningNumberSize(winningInput);
-        validateWinningNumber(winningInput);
-        validateInputSeparator(winningInput);
         validateInputString(winningInput);
+        validateInputSeparator(winningInput);
+        validateWinningNumber(winningInput);
+        validateWinningNumberSize(winningInput);
     }
 
     private static void validateWinningNumber(String winningInput) {
