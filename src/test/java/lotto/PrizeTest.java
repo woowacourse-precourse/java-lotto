@@ -26,4 +26,14 @@ public class PrizeTest {
         // then
         assertThat(price).isEqualTo(2_000_000_000);
     }
+
+    @DisplayName("enum 변수에 맞는 출력 문구를 반환한다.")
+    @Test
+    void getPhrase() {
+        // given
+        String phrase = Prize.getPhrase(Prize.FIRST);
+
+        // then
+        assertThat(phrase).isEqualTo("6개 일치 (2,000,000,000원) - ");
+    }
 }
