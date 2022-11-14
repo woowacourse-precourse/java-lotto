@@ -2,8 +2,6 @@ package lotto.domain;
 
 import lotto.utils.Utils;
 import lotto.validation.Validation;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {

@@ -1,14 +1,10 @@
 package lotto.service;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import lotto.domain.Buyer;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
 import lotto.domain.Rank;
 import lotto.utils.Utils;
-import lotto.view.InputMessage;
-import lotto.view.OutputMessage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

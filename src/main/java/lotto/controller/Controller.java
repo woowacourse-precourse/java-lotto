@@ -7,7 +7,6 @@ import lotto.service.Service;
 import lotto.utils.Utils;
 import lotto.view.InputMessage;
 import lotto.view.OutputMessage;
-
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
