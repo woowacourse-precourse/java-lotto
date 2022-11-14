@@ -2,6 +2,7 @@ package lotto.view;
 
 import java.util.Map;
 import lotto.model.domain.Rank;
+import lotto.model.dto.WinningStatisticsDto;
 
 public class OutputView {
 
@@ -34,7 +35,10 @@ public class OutputView {
         System.out.println(REQUEST_BONUS_NUMBER);
     }
 
-    public static void printWinningStatistics(Map<Rank, Integer> rankAndRankCount, double totalYield) {
+    public static void printWinningStatistics(WinningStatisticsDto winningStatisticsDto) {
+        Map<Rank, Integer> rankAndRankCount = winningStatisticsDto.getRankAndRankCount();
+        double totalYield = winningStatisticsDto.getTotalYield();
+
         System.out.println(WINNING_STATISTICS);
         System.out.printf(FIFTH_RANK, rankAndRankCount.get(Rank.FIFTH));
         System.out.printf(FOURTH_RANK, rankAndRankCount.get(Rank.FOURTH));

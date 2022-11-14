@@ -1,7 +1,5 @@
 package lotto.controller;
 
-import java.util.Map;
-import lotto.model.domain.Rank;
 import lotto.model.dto.LottosDto;
 import lotto.model.dto.WinningLottoDto;
 import lotto.model.dto.WinningStatisticsDto;
@@ -19,9 +17,9 @@ public class LottoController {
 
     public void run() {
         LottosDto lottosDto = buyLotto();
-        WinningLottoDto winningLotto = announceWinningLotto();
+        WinningLottoDto winningLottoDto = announceWinningLotto();
 
-        computeWinningStatistics(lottosDto, winningLotto);
+        computeWinningStatistics(lottosDto, winningLottoDto);
     }
 
     private LottosDto buyLotto() {
@@ -41,9 +39,7 @@ public class LottoController {
 
     private void computeWinningStatistics(LottosDto lottosDto, WinningLottoDto winningLottoDto) {
         WinningStatisticsDto winningStatisticsDto = lottoService.createWinningStatistics(lottosDto, winningLottoDto);
-        Map<Rank, Integer> rankAndRankCount = winningStatisticsDto.getRankAndRankCount();
-        double totalYield = winningStatisticsDto.getTotalYield();
 
-        OutputView.printWinningStatistics(rankAndRankCount, totalYield);
+        OutputView.printWinningStatistics(winningStatisticsDto);
     }
 }
