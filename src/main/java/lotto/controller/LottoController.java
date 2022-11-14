@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.LottoAmount;
 import lotto.domain.LottoTicket;
+import lotto.domain.WinningNumber;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -10,27 +11,13 @@ public class LottoController {
     public void start() {
         LottoAmount amount = inputAmount();
         LottoTicket lottoTicket = buyTickets(amount);
-        Lotto winningLotto = inputWinningLotto();
-        int bonus = inputBonus();
-        OutputView.printResult(lottoTicket, winningLotto, bonus);
+        WinningNumber winningNumber = inputWinningNumber();
     }
 
-    private int inputBonus() {
-        try {
-            return InputView.inputBonus();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            throw e;
-        }
-    }
-
-    private Lotto inputWinningLotto() {
-        try {
-            return new Lotto(InputView.inputWinningLotto());
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            throw e;
-        }
+    private WinningNumber inputWinningNumber() {
+        Lotto lotto = InputView.inputWinningNumber();
+        int bonus = InputView.inputBonusNumber();
+        return new WinningNumber(lotto, bonus);
     }
 
     private LottoAmount inputAmount() {
