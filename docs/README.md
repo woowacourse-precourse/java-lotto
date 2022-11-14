@@ -49,18 +49,26 @@
 - [ ]  수익률을 출력하는 기능
 
 # 필요한 자료구조
-
-- `Validator` 클래스 : 유효성 검사
+- `ui/Validator` 클래스 : 유효성 검사
     - `isNumber()`, `isPositive()`, `isHundredUnit()`, `isInRange()`, `isDuplicate()`
-- `Input` 클래스 : 입력 처리
+- `ui/Input` 클래스 : 입력 처리
     - `readMoney()`, `readWinningNumbers()`, `readBonusNumber()`
-- `Lotto` 클래스 : 사용자의 로또 1개를 저장하고, 로또와 관련된 로직 수행
+- `domain/Lotto` 클래스 : 사용자의 로또 1개를 저장하고, 로또와 관련된 로직 수행
     - `List<Integer> numbers`
     - `computeResult()`, `printLotto()`
-- `Manager` 클래스 : 구입 금액, 당첨 번호, 보너스 번호, 사용자 로또 리스트를 생성 및 저장하고, 당첨 관련 로직 수행
-    - `Set<Integer> winningNumbers`, `int bonusNumber`, `List<Lotto> lottoList`
-    - `buyLottos()`, `printLottos()`
+- `domain/Victory` 클래스 : 구입 금액, 당첨 번호, 보너스 번호를 저장, 관련 로직 수행
+    - `Set<Integer> winningNumbers`, `int bonusNumber`
     - `parseWinningNumbers()`, `setWinningNumbers()`, `setBonusNumber()`
+- `domain/Lottos` 클래스 : 사용자 구매 로또 리스트 생성 및 저장
+    - `List<Lotto> lottoList`
+    - `buyLottos()`, `printLottos()`
+- `domain/Manager` 클래스 : 당첨 관련 로직 수행
+    - result를 enum형으로 가짐
+        - `THREE("3개 일치", "5,000")`
+        - `FOUR("4개 일치", “50,000")`
+        - `FIVE(”5개 일치”, “1,500,000”)`
+        - `FIVEWITHBONUS(”5개 일치, 보너스 볼 일치", “30,000,000”)`
+        - `SIX(”6개 일치”, “2,000,000,000”)`
     - `compareLottos()`, `printResult()`
-- `Yield` 클래스 : 수익률 처리
+- `domain/Yield` 클래스 : 수익률 처리
     - `calculateYield()`, `printYield()`
