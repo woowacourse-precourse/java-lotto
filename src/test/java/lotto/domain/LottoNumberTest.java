@@ -1,9 +1,9 @@
 package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.stream.IntStream;
+import lotto.common.CommonExceptionTest;
 import lotto.helper.util.LottoNumberTestUtils;
 import lotto.util.message.LottoExceptionMessageUtils;
 import lotto.util.number.LottoNumberConst;
@@ -18,7 +18,7 @@ class LottoNumberTest {
 
     @Nested
     @DisplayName("int number를 매개변수로 받는 생성자는")
-    class IntConstructorTest {
+    class IntConstructorTest extends CommonExceptionTest {
 
         @Test
         @DisplayName("만약 1 ~ 45까지의 범위에 포함되는 숫자가 주어지면 숫자를 number로 초기화한 LottoNumber를 생성한다.")
@@ -34,9 +34,8 @@ class LottoNumberTest {
         @ValueSource(ints = {0, 46})
         @DisplayName("만약 1 ~ 45까지의 범위에 포함되지 않는 숫자가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void exception_test(int wrongNumber) {
-            assertThatThrownBy(() -> new LottoNumber(wrongNumber))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
+            assertIllegalArgumentExceptionWithMessage(() -> new LottoNumber(wrongNumber),
+                    LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
                             .findExceptionMessage(String.valueOf(wrongNumber)));
         }
     }

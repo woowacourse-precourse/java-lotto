@@ -3,6 +3,7 @@ package lotto.util.message;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import lotto.common.CommonExceptionTest;
 import lotto.util.ranking.LottoRanking;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -14,7 +15,7 @@ class LottoRankingMessageUtilsTest {
 
     @Nested
     @DisplayName("findLottoRankingMessage 메소드는")
-    class FindLottoRankingMessageMethodTest {
+    class FindLottoRankingMessageMethodTest extends CommonExceptionTest {
 
         @ParameterizedTest
         @CsvSource(
@@ -37,9 +38,9 @@ class LottoRankingMessageUtilsTest {
         @Test
         @DisplayName("만약 LottoRanking.NOTHING이 주어지면 IllegalArgumentException 예외가 발생한다.")
         void exception_test() {
-            assertThatThrownBy(() -> LottoRankingMessageUtils.findLottoRankingMessage(LottoRanking.RANKING_NOTHING, 0))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("[ERROR] 존재하지 않는 등수입니다. 입력 값 : RANKING_NOTHING");
+            assertIllegalArgumentExceptionWithMessage(() -> LottoRankingMessageUtils.
+                    findLottoRankingMessage(LottoRanking.RANKING_NOTHING, 0),
+                    "[ERROR] 존재하지 않는 등수입니다. 입력 값 : RANKING_NOTHING");
         }
     }
 }

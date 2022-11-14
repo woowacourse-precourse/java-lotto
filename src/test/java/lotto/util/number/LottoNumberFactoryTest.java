@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.stream.IntStream;
+import lotto.common.CommonExceptionTest;
+import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.helper.util.LottoNumberTestUtils;
 import lotto.util.message.LottoExceptionMessageUtils;
@@ -17,7 +19,7 @@ class LottoNumberFactoryTest {
 
     @Nested
     @DisplayName("int number를 매개변수로 받는 numberOf 메소드는")
-    class IntNumberOfMethodTest {
+    class IntNumberOfMethodTest extends CommonExceptionTest {
 
         @Test
         @DisplayName("만약 1 ~ 45까지의 범위에 포함되는 숫자가 주어지면 동일한 number의 LottoNumber를 반환한다.")
@@ -33,16 +35,15 @@ class LottoNumberFactoryTest {
         @ValueSource(ints = {0, 46})
         @DisplayName("만약 1 ~ 45까지의 범위에 포함되지 않는 숫자가 주어지면 IllegalArgumentException이 발생한다.")
         void exception_test(int wrongNumber) {
-            assertThatThrownBy(() -> LottoNumberFactory.numberOf(wrongNumber))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
+            assertIllegalArgumentExceptionWithMessage(() -> LottoNumberFactory.numberOf(wrongNumber),
+                    LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
                             .findExceptionMessage(String.valueOf(wrongNumber)));
         }
     }
 
     @Nested
     @DisplayName("String number를 매개변수로 받는 numberOf 메소드는")
-    class StringNumberOfMethodTest {
+    class StringNumberOfMethodTest extends CommonExceptionTest {
 
         @Test
         @DisplayName("만약 1 ~ 45까지의 범위에 포함되는 문자열이 주어지면 동일한 number의 LottoNumber를 반환한다.")
@@ -58,19 +59,17 @@ class LottoNumberFactoryTest {
         @ValueSource(strings = {"0", "46"})
         @DisplayName("만약 1 ~ 45까지의 범위에 포함되지 않는 문자열이 주어지면 IllegalArgumentException이 발생한다.")
         void wrong_range_exception_test(String wrongNumber) {
-            assertThatThrownBy(() -> LottoNumberFactory.numberOf(wrongNumber))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
-                            .findExceptionMessage(wrongNumber));
+            assertIllegalArgumentExceptionWithMessage(() -> LottoNumberFactory.numberOf(wrongNumber),
+                    LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
+                            .findExceptionMessage(String.valueOf(wrongNumber)));
         }
 
         @ParameterizedTest
         @ValueSource(strings = {"a", "t", "1@"})
         @DisplayName("만약 1 ~ 45까지의 범위에 포함되지 않는 문자열이 주어지면 IllegalArgumentException이 발생한다.")
         void wrong_number_format_exception_test(String wrongNumber) {
-            assertThatThrownBy(() -> LottoNumberFactory.numberOf(wrongNumber))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_FORMAT
+            assertIllegalArgumentExceptionWithMessage(() -> LottoNumberFactory.numberOf(wrongNumber),
+                    LottoExceptionMessageUtils.INVALID_NUMBER_FORMAT
                             .findExceptionMessage(wrongNumber));
         }
     }

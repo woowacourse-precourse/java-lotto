@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import lotto.common.CommonExceptionTest;
 import lotto.helper.util.LottoPurchaseAmountTestUtils;
 import lotto.util.message.LottoExceptionMessageUtils;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +18,7 @@ class LottoPurchaseAmountTest {
 
     @Nested
     @DisplayName("String playerInputAmount를 매개변수로 받는 메소드는")
-    class StringConstructorTest {
+    class StringConstructorTest extends CommonExceptionTest {
 
         @ParameterizedTest
         @ValueSource(strings = {"1000", "15000", "250000"})
@@ -34,9 +35,8 @@ class LottoPurchaseAmountTest {
         @ValueSource(strings = {"10001", "10010", "10100"})
         @DisplayName("만약 천원 단위가 아닌 입력을 받는다면 IllegalArgumentException 예외가 발생한다.")
         void invalid_amount_unit_exception_test(String invalidInput) {
-            assertThatThrownBy(() -> new LottoPurchaseAmount(invalidInput))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_PURCHASE_AMOUNT_UNIT
+            assertIllegalArgumentExceptionWithMessage(() -> new LottoPurchaseAmount(invalidInput),
+                    LottoExceptionMessageUtils.INVALID_PURCHASE_AMOUNT_UNIT
                             .findExceptionMessage(invalidInput));
         }
 
@@ -44,9 +44,8 @@ class LottoPurchaseAmountTest {
         @ValueSource(strings = {"a0000", " 0000", "@0000"})
         @DisplayName("만약 입력 값을 숫자로 치환할 수 없다면 IllegalArgumentException 예외가 발생한다.")
         void invalid_number_format_exception_test(String invalidInput) {
-            assertThatThrownBy(() -> new LottoPurchaseAmount(invalidInput))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_FORMAT
+            assertIllegalArgumentExceptionWithMessage(() -> new LottoPurchaseAmount(invalidInput),
+                    LottoExceptionMessageUtils.INVALID_NUMBER_FORMAT
                             .findExceptionMessage(invalidInput.charAt(0)));
         }
     }

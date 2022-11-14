@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import lotto.common.CommonExceptionTest;
 import lotto.helper.util.LottoTestUtils;
 import lotto.util.message.LottoExceptionMessageUtils;
 import lotto.util.number.LottoNumberConst;
@@ -44,7 +45,7 @@ class LottoTest {
 
     @Nested
     @DisplayName("List<Integer> numbers를 매개변수로 받는 생성자는")
-    class ListConstructorTest {
+    class ListConstructorTest extends CommonExceptionTest {
 
         @ParameterizedTest
         @ValueSource(strings = {"1,2,3,4,5,6", "23,43,15,17,12,39"})
@@ -75,16 +76,15 @@ class LottoTest {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
 
-            assertThatThrownBy(() -> new Lotto(numbers))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_SIZE
+            assertIllegalArgumentExceptionWithMessage(() -> new Lotto(numbers),
+                    LottoExceptionMessageUtils.INVALID_NUMBER_SIZE
                             .findExceptionMessage(numberCount));
         }
     }
 
     @Nested
     @DisplayName("String winningNumbers를 매개변수로 받는 생성자는")
-    class StringConstructorTest {
+    class StringConstructorTest extends CommonExceptionTest {
 
         @ParameterizedTest
         @ValueSource(strings = {"1,2,3,4,5,6", "11,12,13,14,15,16"})
@@ -105,9 +105,8 @@ class LottoTest {
             @ValueSource(strings = {"1,2,3,4,5", "12,23,34,21,24,123", "123,234,345,456,567,678"})
             @DisplayName("IllegalArgumentException 예외가 발생한다.")
             void invalid_input_length_exception_test(String invalidInput) {
-                assertThatThrownBy(() -> new Lotto(invalidInput))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_LENGTH
+                assertIllegalArgumentExceptionWithMessage(() -> new Lotto(invalidInput),
+                        LottoExceptionMessageUtils.INVALID_NUMBER_LENGTH
                                 .findExceptionMessage(invalidInput.length()));
             }
         }
@@ -116,9 +115,8 @@ class LottoTest {
         @ValueSource(strings = {"1:2:3:4:5:6", "111213141516", "1.2.3.4.5.6", "1@2@3@4@5@6"})
         @DisplayName("만약 유효한 구분자(,)가 오지 않은 경우 IllegalArgumentException 예외가 발생한다.")
         void invalid_separator_exception_test(String invalidInput) {
-            assertThatThrownBy(() -> new Lotto(invalidInput))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_SEPARATOR
+            assertIllegalArgumentExceptionWithMessage(() -> new Lotto(invalidInput),
+                    LottoExceptionMessageUtils.INVALID_SEPARATOR
                             .findExceptionMessage(invalidInput));
         }
 
@@ -149,17 +147,16 @@ class LottoTest {
         )
         @DisplayName("만약 입력한 숫자의 범위가 1 ~ 45 사이가 아니라면 IllegalArgumentException 예외가 발생한다.")
         void invalid_number_range_exception_test(String invalidInput, String message) {
-            assertThatThrownBy(() -> new Lotto(invalidInput))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
+            assertIllegalArgumentExceptionWithMessage(() -> new Lotto(invalidInput),
+                    LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
                             .findExceptionMessage(message));
         }
 
         @ParameterizedTest
         @CsvSource(
                 value = {
-                    "1,2,3,4,5:5",
-                    "12,41,32,17,42,1,2:7"
+                    "11,22,31,42,21:5",
+                    "1,4,2,7,3,9,5:7"
                 },
                 delimiter = ':'
         )
@@ -169,9 +166,8 @@ class LottoTest {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
 
-            assertThatThrownBy(() -> new Lotto(numbers))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_SIZE
+            assertIllegalArgumentExceptionWithMessage(() -> new Lotto(invalidInput),
+                    LottoExceptionMessageUtils.INVALID_NUMBER_SIZE
                             .findExceptionMessage(numberCount));
         }
     }
@@ -206,11 +202,7 @@ class LottoTest {
         @RepeatedTest(10)
         @DisplayName("생성한 Lotto의 numbers 필드를 오름차순으로 정해진 형식에 맞는 문자열을 반환한다.")
         void to_string_test() {
-            List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(
-                    LottoNumberConst.MIN_NUMBER_INT_VALUE,
-                    LottoNumberConst.MAX_NUMBER_INT_VALUE,
-                    LottoNumberConst.NUMBER_SIZE
-            );
+            List<Integer> uniqueNumbers = createUniqueNumbers();
 
             Lotto lotto = new Lotto(uniqueNumbers);
             String lottoPrintLog = lotto.toString();
@@ -225,6 +217,13 @@ class LottoTest {
 
             IntStream.range(0, numbers.size() - 1)
                     .forEach(i -> assertThat(numbers.get(i)).isLessThan(numbers.get(i + 1)));
+        }
+
+        private List<Integer> createUniqueNumbers() {
+            return Randoms.pickUniqueNumbersInRange(
+                    LottoNumberConst.MIN_NUMBER_INT_VALUE,
+                    LottoNumberConst.MAX_NUMBER_INT_VALUE,
+                    LottoNumberConst.NUMBER_SIZE);
         }
     }
 }

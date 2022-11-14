@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.common.CommonExceptionTest;
 import lotto.helper.factory.LottoStoreTestFactory;
 import lotto.helper.util.LottoResultTestUtils;
 import lotto.helper.util.LottoStoreTestUtils;
@@ -56,7 +57,7 @@ class LottoStoreTest {
 
     @Nested
     @DisplayName("createWinningLotto 메소드는")
-    class CreateWinningLottoMethodTest {
+    class CreateWinningLottoMethodTest extends CommonExceptionTest {
 
         private final LottoStore lottoStore = new LottoStore(new LottoPurchaseAmount("1000"));
 
@@ -91,9 +92,8 @@ class LottoStoreTest {
         @ValueSource(strings = {"1:2:3:4:5:6", "111213141516", "1.2.3.4.5.6", "1@2@3@4@5@6"})
         @DisplayName("만약 유효한 구분자(,)가 오지 않은 경우 IllegalArgumentException 예외가 발생한다.")
         void invalid_separator_exception_test(String invalidInput) {
-            assertThatThrownBy(() -> lottoStore.createWinningLotto(invalidInput))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_SEPARATOR
+            assertIllegalArgumentExceptionWithMessage(() -> lottoStore.createWinningLotto(invalidInput),
+                    LottoExceptionMessageUtils.INVALID_SEPARATOR
                             .findExceptionMessage(invalidInput));
         }
 
@@ -115,9 +115,8 @@ class LottoStoreTest {
         )
         @DisplayName("만약 입력한 숫자의 범위가 1 ~ 45 사이가 아니라면 IllegalArgumentException 예외가 발생한다.")
         void invalid_number_range_exception_test(String invalidInput, String message) {
-            assertThatThrownBy(() -> lottoStore.createWinningLotto(invalidInput))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
+            assertIllegalArgumentExceptionWithMessage(() -> lottoStore.createWinningLotto(invalidInput),
+                    LottoExceptionMessageUtils.INVALID_NUMBER_RANGE
                             .findExceptionMessage(message));
         }
 
@@ -135,9 +134,8 @@ class LottoStoreTest {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
 
-            assertThatThrownBy(() -> new Lotto(numbers))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_SIZE
+            assertIllegalArgumentExceptionWithMessage(() -> new Lotto(numbers),
+                    LottoExceptionMessageUtils.INVALID_NUMBER_SIZE
                             .findExceptionMessage(validNumberCount));
         }
     }
