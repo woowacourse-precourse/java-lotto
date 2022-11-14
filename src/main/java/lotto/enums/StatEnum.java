@@ -6,6 +6,13 @@ public enum StatEnum {
     FOUR_CORRECT(4),
     FIVE_CORRECT(5),
     SIX_CORRECT(6),
+
+    THREE_CORRECT_INDEX(0),
+    FOUR_CORRECT_INDEX(1),
+    FIVE_CORRECT_INDEX(2),
+    FIVE_BONUS_CORRECT_INDEX(3),
+    SIX_CORRECT_INDEX(4),
+
     INFO("\n당첨 통계\n---"),
     THREE_INFO("3개 일치 (5,000원) - "),
     FOUR_INFO("4개 일치 (50,000원) - "),
