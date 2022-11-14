@@ -5,15 +5,13 @@ import java.util.Map;
 
 public class PrizeCount {
 
-    private final Map<Prize, Integer> items = new HashMap<>() {
-        {
-            put(Prize.FIRST, 0);
-            put(Prize.SECOND, 0);
-            put(Prize.THIRD, 0);
-            put(Prize.FOURTH, 0);
-            put(Prize.FIFTH, 0);
+    private final Map<Prize, Integer> items = new HashMap<>();
+
+    public PrizeCount() {
+        for (Prize prize : Prize.values()) {
+            items.put(prize, 0);
         }
-    };
+    }
 
     public void addPrizeCount(Prize prize) {
         items.put(prize, items.get(prize) + 1);
