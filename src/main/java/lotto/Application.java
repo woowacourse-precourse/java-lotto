@@ -7,8 +7,19 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
+    private static final String ERROR_MESSAGE = "[ERROR]";
+    static Domain domain = new Domain();
+    static Ui ui = new Ui();
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        try {
+            process();
+        }catch (IllegalArgumentException e){
+            System.out.println(ERROR_MESSAGE + e.getMessage());
+        }
+    }
+
+    private void process() {
         int money = inputMoney();
         List<List<Integer>> lottoList = buyLotto(money);
         Map<String, List<Integer>> luckyNumMap = digitInput();
@@ -34,15 +45,13 @@ public class Application {
         return digitPick(purchaseMoney/1000);
     }
     public static int inputMoney(){
-        System.out.println("구입금액을 입력해 주세요");
-        int purchaseMoney = Integer.parseInt(Console.readLine());
-        int purchaseAmount = purchaseMoney / 1000;
-        if (purchaseMoney%1000!=0){
-            throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액을 입력하십시오.");
-        }
-        System.out.println(purchaseAmount+"개를 구매했습니다.");
+        ui.inputMoneyOutUi();
+        int purchaseMoney = domain.inputMoneyException(Console.readLine());
+        ui.numberOfPurchaseUi(purchaseMoney);
         return purchaseMoney;
     }
+
+
 
     private static List<List<Integer>> digitPick(int purchaseAmount){
         List<List<Integer>> lottoNums = new ArrayList<>();
