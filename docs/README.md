@@ -49,7 +49,8 @@
 - [ ]  수익률을 출력하는 기능
 
 # 필요한 자료구조
-- `Validation` 클래스 : 유효성 검사
+
+- `Validator` 클래스 : 유효성 검사
     - `isNumber()`, `isPositive()`, `isHundredUnit()`, `isInRange()`, `isDuplicate()`
 - `Input` 클래스 : 입력 처리
     - `readMoney()`, `readWinningNumbers()`, `readBonusNumber()`
@@ -58,4 +59,8 @@
     - `computeResult()`, `printLotto()`
 - `Manager` 클래스 : 구입 금액, 당첨 번호, 보너스 번호, 사용자 로또 리스트를 생성 및 저장하고, 당첨 관련 로직 수행
     - `Set<Integer> winningNumbers`, `int bonusNumber`, `List<Lotto> lottoList`
-    - `buyLottos()`, `createLotto()`, `printLottos()`, `parseWinningNumbers()`, `setWinningNumbers()`, `setBonusNumber()`, `compareLottos()`, `printResult()`, `calculateYield()`, `printYield()`
+    - `buyLottos()`, `printLottos()`
+    - `parseWinningNumbers()`, `setWinningNumbers()`, `setBonusNumber()`
+    - `compareLottos()`, `printResult()`
+- `Yield` 클래스 : 수익률 처리
+    - `calculateYield()`, `printYield()`
