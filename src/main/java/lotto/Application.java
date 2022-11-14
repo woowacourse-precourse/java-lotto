@@ -6,9 +6,9 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.Price;
 import lotto.domain.WinningLotto;
+import lotto.resource.message.ExceptionMessage;
 import lotto.view.InputView;
 import lotto.view.OutputView;
-import lotto.view.message.ExceptionMessage;
 
 public class Application {
     private static List<Lotto> lottoTicket = new ArrayList<>();

@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import lotto.resource.Constant;
-import lotto.view.message.ExceptionMessage;
+import lotto.resource.message.ExceptionMessage;
 
 public class WinningLotto {
     private final Lotto lotto;

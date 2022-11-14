@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.Set;
-import lotto.view.message.ExceptionMessage;
+import lotto.resource.message.ExceptionMessage;
 
 public class Lotto {
     private final List<Integer> numbers;

@@ -3,8 +3,8 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import lotto.view.message.ExceptionMessage;
-import lotto.view.message.FixedMessage;
+import lotto.resource.message.ExceptionMessage;
+import lotto.resource.message.FixedMessage;
 
 public class InputView {
     private static final String COMMA = ",";

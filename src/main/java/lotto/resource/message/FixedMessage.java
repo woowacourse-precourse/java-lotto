@@ -1,4 +1,4 @@
-package lotto.view.message;
+package lotto.resource.message;
 
 public enum FixedMessage {
     INPUT_PRICE("구입금액을 입력해 주세요."),

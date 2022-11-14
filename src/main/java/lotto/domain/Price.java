@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import lotto.resource.Constant;
-import lotto.view.message.ExceptionMessage;
+import lotto.resource.message.ExceptionMessage;
 
 public class Price {
     private final Integer purchasePrice;

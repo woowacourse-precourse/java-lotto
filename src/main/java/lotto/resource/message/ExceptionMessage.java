@@ -1,4 +1,4 @@
-package lotto.view.message;
+package lotto.resource.message;
 
 import lotto.resource.Constant;
 
