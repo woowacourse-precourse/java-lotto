@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import exception.LottoIllegalArgumentException;
+import exception.MoneyIllegalArgumentException;
 
 
 public class Money {
@@ -12,9 +12,9 @@ public class Money {
         this.money = money;
     }
 
-    private void validate(int money) throws LottoIllegalArgumentException {
+    private void validate(int money) throws MoneyIllegalArgumentException {
         if (divideLottoPriceIsNotZero(money)) {
-            throw new LottoIllegalArgumentException("구입 금액은 1,000원 단위여야 합니다.");
+            throw new MoneyIllegalArgumentException("구입 금액은 1,000원 단위여야 합니다.");
         }
     }
 
@@ -24,5 +24,9 @@ public class Money {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;
+    }
+
+    public int exchangeLotto() {
+        return money / LOTTO_PRICE;
     }
 }

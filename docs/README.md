@@ -6,6 +6,11 @@
 ### LottoServiceUseCase - Lotto 관련 기능 정의 인터페이스.
 - 받은 금액을 통해 로또 티켓 출력. - buyLotto 
 
+### 도메인 
+#### Money
+- 유효성 검사.(1000원 으로 나누어 떨어지는지.)
+
+
 ### View - 화면에 보여지는 것을 담당하는 클래스.
 - [X] 로또 거래 View - BuyLottoView
   - [X] 구입금액 입력 View
