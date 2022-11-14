@@ -10,13 +10,13 @@ public class WinningNumber extends Lotto {
 
     private int bonusNumber;
 
-    public WinningNumber (List<Integer> numbers, int bonusNumber) {
+    public WinningNumber (List<Integer> numbers, int bonusNumber) throws IllegalArgumentException {
         super(numbers);
         validateBonusNumber(numbers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
-    public void validateBonusNumber(List<Integer> numbers, int bonusNumber) {
+    public void validateBonusNumber(List<Integer> numbers, int bonusNumber) throws IllegalArgumentException {
         if (!DomainValidator.hasCorrectRange(bonusNumber)) {
             throw new IllegalArgumentException(INVALID_RANGE_ERROR);
         }

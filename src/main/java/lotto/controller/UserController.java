@@ -10,7 +10,7 @@ public class UserController {
     static UserService userService = new UserService();
     static LotterySellService lotterySellService = new LotterySellService();
 
-    public static void buyLotteryTicket() {
+    public static void buyLotteryTicket() throws IllegalArgumentException {
         int money = InputView.takeMoneyInput();
         User user = userService.createUser(money);
         lotterySellService.sell(user);

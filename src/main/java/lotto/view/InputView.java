@@ -16,7 +16,7 @@ public class InputView {
     static final String EMPTY_VALUE_IN_WINNING_NUMBER = ValidationErrorMessage.EMPTY_VALUE_IN_WINNING_NUMBER.getErrorMessage();
     static final String WINNING_NUMBER_DELIMITER = ",";
 
-    public static int takeMoneyInput() {
+    public static int takeMoneyInput() throws IllegalArgumentException {
         printPurchaseMoneyRequest();
         String input = Console.readLine().trim();
         validate(input);
@@ -27,17 +27,18 @@ public class InputView {
         System.out.println(InputGuidePhrase.PURCHASE_MONEY_REQUEST.getText());
     }
 
-    private static void validate (String input) {
+    private static void validate (String input) throws IllegalArgumentException {
         if (Validator.isEmpty(input)) {
             throw new IllegalArgumentException(EMPTY_VALUE_ERROR_MESSAGE);
         }
 
         if (!Validator.isNumber(input)) {
-            throw new IllegalArgumentException(NOT_NUMBER_ERROR_MESSAGE);
+            System.out.println(NOT_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 
-    public static List<Integer> takeWinningNumberInput() {
+    public static List<Integer> takeWinningNumberInput() throws IllegalArgumentException {
         System.out.println(WINNING_NUMBER_REQUEST);
         String input = Console.readLine().trim();
         validateWinningNumberInput(input);
@@ -46,7 +47,7 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
-    private static void validateWinningNumberInput (String input) {
+    private static void validateWinningNumberInput (String input) throws IllegalArgumentException {
         if (Validator.isEmpty(input)) {
             throw new IllegalArgumentException(EMPTY_VALUE_ERROR_MESSAGE);
         }

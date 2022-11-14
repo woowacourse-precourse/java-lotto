@@ -9,7 +9,7 @@ import lotto.repository.LotteryTicketRepository;
 import java.util.List;
 
 public class LotterySellService {
-    public void sell(User user) {
+    public void sell(User user) throws IllegalArgumentException {
         while (user.hasMoney()) {
             LotteryTicket lotteryTicket = createLotteryTicket();
             registerLotteryTicket(lotteryTicket);
@@ -17,7 +17,7 @@ public class LotterySellService {
         }
     }
 
-    public LotteryTicket createLotteryTicket() {
+    public LotteryTicket createLotteryTicket() throws IllegalArgumentException {
         List<Integer> lotteryNumbers = generateLotteryNumbers();
         return new LotteryTicket(lotteryNumbers);
     }

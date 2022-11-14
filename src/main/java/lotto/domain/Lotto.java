@@ -9,12 +9,12 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException {
         validate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (!DomainValidator.hasCorrectSize(numbers)) {
             throw new IllegalArgumentException(ValidationErrorMessage.INVALID_SIZE.getErrorMessage());
         }

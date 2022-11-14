@@ -15,13 +15,13 @@ public class User {
     private List<LotteryTicket> lotteryTickets;
     private LotteryResult lotteryResult;
 
-    public User (int money) {
+    public User (int money) throws IllegalArgumentException {
         validate(money);
         this.money = money;
         lotteryTickets = new ArrayList<>();
     }
 
-    public void validate (int money) {
+    public void validate (int money) throws IllegalArgumentException {
         if (!isMultipleOfThousand(money)) {
             throw new IllegalArgumentException(ValidationErrorMessage.INVALID_MONEY_AMOUNT.getErrorMessage());
         }

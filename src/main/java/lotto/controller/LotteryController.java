@@ -9,7 +9,7 @@ import java.util.List;
 public class LotteryController {
     static LotteryDrawService lotteryDrawService = new LotteryDrawService();
 
-    public static void draw() {
+    public static void draw() throws IllegalArgumentException {
         List<Integer> winningNumbers = InputView.takeWinningNumberInput();
         int bonusNumber = InputView.takeBonusNumberInput();
         WinningNumber winningNumber = lotteryDrawService.createWinningNumber(winningNumbers, bonusNumber);

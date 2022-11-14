@@ -8,7 +8,7 @@ import lotto.repository.LotteryTicketRepository;
 import java.util.List;
 
 public class LotteryDrawService {
-    public WinningNumber createWinningNumber (List<Integer> numbers, int bonusNumber) {
+    public WinningNumber createWinningNumber (List<Integer> numbers, int bonusNumber) throws IllegalArgumentException {
         return new WinningNumber(numbers, bonusNumber);
     }
 
