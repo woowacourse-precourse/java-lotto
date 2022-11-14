@@ -2,7 +2,7 @@ package lotto;
 
 public class Money {
 
-    private int money;
+    private final int money;
 
     public Money(String inputMoney) {
         inputMoney = inputMoney.trim();
