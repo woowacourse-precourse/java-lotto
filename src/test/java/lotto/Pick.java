@@ -1,14 +1,13 @@
 package lotto;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-
 import java.util.HashSet;
 import java.util.List;
 
 public class Pick {
 
   private final int count;
-  private static List<List<Integer>> pick_member;
+  private List<List<Integer>> pick_member;
 
   public Pick(int count) {
     this.count = count;
@@ -19,12 +18,10 @@ public class Pick {
   }
   //숫자뽑기
   private void pick_number(){
-    while(true){
-      List<Integer> sample_number =  pickUniqueNumbersInRange(1,46,6);
-      if(repeated(sample_number)){
-        pick_member.add(sample_number);
-        break;
-      }
+    List<Integer> sample_number =  pickUniqueNumbersInRange(1,46,6);
+    if(repeated(sample_number)){
+      pick_member.add(sample_number);
+      System.out.println(sample_number.toString());
     }
   }
   // 중복 숫자 확인
