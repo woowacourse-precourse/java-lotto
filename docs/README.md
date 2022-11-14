@@ -7,7 +7,7 @@
 ## 2. 로또 번호를 생성한다.  - PrizeNumber()
 - [x] 1~45까지 서로 다른 6개의 로또 번호를 입력받는다.  -PrizeNumber#lottoNumber()
 - [x] 생성된 6개의 번호를 오름차순으로 정렬한다.  - PrizeNumber#sort()
-- [] 보너스 번호를 입력받는다.  -PrizeNumber#bonusNumber()
+- [x] 보너스 번호를 입력받는다.  -PrizeNumber#bonusNumber()
 
 ## 3. 로또 결과를 분석한다.  - Analyze()
 
