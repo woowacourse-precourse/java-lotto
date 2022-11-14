@@ -50,10 +50,14 @@
   - `isNumber()`, `isPositive()`, `isHundredUnit()`, `isInRange()`, `isDuplicate()`
 - `ui/LottoGenerator` 클래스 : 로또 생성
   - `generate()`
+- `ui/Input` 클래스 : 입력 담당, 입력값에 대한 최소한의 유효성 검사 수행
+  - `int readMoney()`, `List<Integer> readWinningNumbers()`, `int readBonusNumber()`
+- `ui/Output` 클래스 : 출력 담당
+  - `println()`, `print()`
 - `domain/Lotto` 클래스 : 사용자의 로또 1개를 저장하고, 로또와 관련된 로직 수행
   - `List<Integer> numbers`
   - `computeResult()`, `printLotto()`
-- `domain/Victory` 클래스 : 당첨 번호, 보너스 번호를 저장, 관련 로직 수행
+- `domain/NumberBox` 클래스 : 당첨 번호, 보너스 번호를 저장, 관련 로직 수행
   - `Set<Integer> winningNumbers`, `int bonusNumber`
   - `parseWinningNumbers()`, `setWinningNumbers()`, `setBonusNumber()`
 - `domain/User` 클래스 : 구입 금액, 사용자 구매 로또 리스트 생성 및 저장
