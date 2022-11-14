@@ -14,13 +14,17 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        int lottoCount = getLottoCount(inputAmount());
-        final List<Lotto> lottos = getLottoList(lottoCount);
-        printLottoList(lottos);
-        final WinningLotto winningLotto = getWinningLotto();
-        WinningResult lottoResult = new WinningResult(winningLotto);
-        lottoResult.calcRank(lottos);
-        printWinningResult(lottoResult, lottoCount * 1000);
+        try {
+            int lottoCount = getLottoCount(inputAmount());
+            final List<Lotto> lottos = getLottoList(lottoCount);
+            printLottoList(lottos);
+            final WinningLotto winningLotto = getWinningLotto();
+            WinningResult lottoResult = new WinningResult(winningLotto);
+            lottoResult.calcRank(lottos);
+            printWinningResult(lottoResult, lottoCount * 1000);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     protected static int getLottoCount(String inputAmount) {
