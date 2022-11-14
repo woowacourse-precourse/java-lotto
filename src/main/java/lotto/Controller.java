@@ -131,9 +131,9 @@ public class Controller {
         // 당첨 통계 출력
         View.Output("당첨 통계");
         View.Output("---");
-        List<String> lottoResultKeys = new ArrayList<>(lottoResult.keySet());
+        List<Integer> lottoResultKeys = new ArrayList<>(lottoResult.keySet());
         for (int i = 0; i < 5; i++) {
-            String key = lottoResultKeys.get(i);
+            Integer key = lottoResultKeys.get(i);
             Integer result = lottoResult.get(i);
             Integer reward = LottoReward.getRewardByRank(i);
             View.Output(key+"개 일치 ("+reward+") - "+result+"개");
