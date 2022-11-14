@@ -34,7 +34,7 @@
   - [x] **숫자, 쉼표`,` 이외에 문자**가 존재하는 경우 IllegalArgumentException 발생 시킨다. (`,` split 진행 후 각각 Integer.parseInt 예외가 발생한다.)
 
 
-### InputValidator(LottoNumbersValidator)
+### validator(InputNumber + LottoNumbers Validator)
 
 - [x] InputConverter를 통해 변환된 구입 금액이 올바른 값인지 검사한다.
     - [x] 1,000원 단위 입력이 아닐 경우 IllegalArgumentException 발생 시킨다. (1000으로 나눴을 때 나머지가 0이 아닐 때 예외가 발생한다.)

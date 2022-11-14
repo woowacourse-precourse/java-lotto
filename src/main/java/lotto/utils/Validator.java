@@ -7,9 +7,9 @@ import java.util.Set;
 import lotto.Lotto;
 import lotto.exception.ErrorMessage;
 
-public class InputValidator {
+public class Validator {
 
-    private InputValidator() {
+    private Validator() {
     }
 
     public static void validatePurchaseAmount(Integer purchaseAmount) {
@@ -44,9 +44,13 @@ public class InputValidator {
         }
     }
 
+    public static void validateLottoNumber(List<Integer> numbers) {
+        validateWinningNumbers(numbers);
+    }
+
     private static boolean isOutOfRange(List<Integer> numbers) {
         return numbers.stream()
-                .anyMatch(InputValidator::isOutOfRange);
+                .anyMatch(Validator::isOutOfRange);
     }
 
     private static boolean isOutOfRange(Integer number) {
