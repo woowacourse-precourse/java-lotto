@@ -4,12 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class LottoServiceView {
     
-    public int inputMoney() {
+    public int buyLotto() {
 
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         validateInputMoney(input);
-        return 1;
+        int buyMoney = Integer.parseInt(input);
+
+        return buyMoney / 1000;
     }
 
     public void validateInputMoney(String input) {
