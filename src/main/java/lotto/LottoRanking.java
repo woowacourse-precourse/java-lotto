@@ -1,6 +1,7 @@
 package lotto;
 
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public enum LottoRanking {
@@ -66,5 +67,12 @@ public enum LottoRanking {
         }
 
         return null;
+    }
+
+
+
+    public String toString(){
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        return String.format("%s (%s원)",this.getMessage(), decFormat.format(this.getPrice()));
     }
 }
