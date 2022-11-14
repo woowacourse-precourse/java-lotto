@@ -39,4 +39,14 @@ public class Number {
         randomNumbers = Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER, LOTTO_SIZE);
     }
 
+    public int checkLottoNumber(List<Integer> userLotto, List<Integer> winningLottoNumber) {
+        int count = 0;
+        for (int i = 0; i < winningLottoNumber.size(); i++) {
+            if (userLotto.contains(winningLottoNumber.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 }
