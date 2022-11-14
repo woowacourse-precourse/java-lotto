@@ -18,7 +18,17 @@ import static lotto.view.OutputView.printResultIntro;
 public class LottoController {
     public void LottoStart(){
         LottoAmount amount = inputAmount();
+        LottoTicket lottoTicket = purchaseLottoTicket(amount);
     }
+    private LottoTicket purchaseLottoTicket(LottoAmount amount) {
+        int ticketCount = amount.calculateLottoCount();
+        printLottoTicketCount(ticketCount);
+
+        LottoTicket lottoTicket = new LottoTicket(ticketCount);
+        printTicket(lottoTicket);
+        return lottoTicket;
+    }
+
     private LottoAmount inputAmount() {
         try {
             return new LottoAmount(InputView.inputAmount());
