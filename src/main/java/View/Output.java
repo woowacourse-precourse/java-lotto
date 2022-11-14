@@ -5,6 +5,7 @@ import enumCollections.RankNumber;
 import enumCollections.ResultStatistics;
 import lotto.Lotto;
 
+import java.math.BigDecimal;
 import java.util.EnumMap;
 import java.util.List;
 
@@ -25,8 +26,10 @@ public class Output {
         getGuideMessage(GuideMessage.BONUS_NUMBER_INPUT);
     }
 
-    public static void yield(float yield) {
-        printFormatResultStatistics(ResultStatistics.YIELD, Float.toString(yield));
+    public static void yield(double yield) {
+        BigDecimal yieldIncludeZeros = new BigDecimal(Double.toString(yield));
+        printFormatResultStatistics(ResultStatistics.YIELD, yieldIncludeZeros.toPlainString());
+//        printFormatResultStatistics(ResultStatistics.YIELD, Double.toString(yield));
     }
 
     public static void showResultStatistics(EnumMap<RankNumber, Integer> resultStatistics) {
@@ -68,5 +71,4 @@ public class Output {
     public static void printFormatResultStatistics(ResultStatistics rank, String value) {
         System.out.printf(ResultStatistics.getMessage(rank).concat("\n"), value);
     }
-
 }

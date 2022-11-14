@@ -3,11 +3,12 @@ package lotto;
 import enumCollections.RankNumber;
 import enumCollections.Winnings;
 
+import java.math.BigDecimal;
 import java.util.EnumMap;
 
 public class Calculator extends Kiosk {
-    public static float getYield(int payment, EnumMap<RankNumber, Integer> resultStatistics) {
-        return getRoundedYield((getTotalWinnings(resultStatistics) / (float) payment) * 100);
+    public static Double getYield(int payment, EnumMap<RankNumber, Integer> resultStatistics) {
+        return getRoundedYield((getTotalWinnings(resultStatistics) / (double) payment) * 100);
     }
 
     private static int getTotalWinnings(EnumMap<RankNumber, Integer> resultStatistics) {
@@ -18,7 +19,7 @@ public class Calculator extends Kiosk {
         return totalWinnings;
     }
 
-    private static float getRoundedYield(float yield) {
-        return Math.round(yield * 10) / 10.0f;
+    private static double getRoundedYield(double yield) {
+        return Math.round(yield * 10) / 10.0;
     }
 }

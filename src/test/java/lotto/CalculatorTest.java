@@ -91,7 +91,7 @@ public class CalculatorTest {
     void 수익률_반올림_계산_테스트_7() {
         EnumMap<RankNumber, Integer> resultStatistics = Checker.initializeResultStatistics();
         resultStatistics.put(RankNumber.FIRST, 1);
-        float expected = 3_000_000.0f;
+        double expected = 3_000_000.0f;
 
         assertThat(Calculator.getYield(10_000, resultStatistics))
                 .isEqualTo(expected);
