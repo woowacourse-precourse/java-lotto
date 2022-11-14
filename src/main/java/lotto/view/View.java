@@ -1,20 +1,21 @@
 package lotto.view;
 
-import lotto.domain.Lotto;
+import lotto.Message;
+import lotto.Statistic;
+import lotto.domain.Buyer;
 import lotto.domain.Lottos;
+import lotto.domain.Rank;
+
+import static lotto.Message.*;
 
 public class View {
-    private static final String WELCOME_MESSAGE = "구입 금액을 입력해 주세요.";
-    private static final String COUNT_MESSAGE = "개를 구매하였습니다.";
-    private static final String INPUT_WINNING_MESSAGE = "당첨 번호를 입력해 주세요.";
-    private static final String INPUT_BONUS_MESSAGE = "보너스 번호를 입력해주세요.";
-    private static final String WINNING_STATIC_MESSAGE = "당첨통계\n---";
+
     public void printWelcomeMessage() {
-        System.out.println(WELCOME_MESSAGE);
+        System.out.println(WELCOME_MESSAGE.getValue());
     }
 
     public void printLottoCountMessage(int count) {
-        System.out.println(count + COUNT_MESSAGE);
+        System.out.println(count + COUNT_MESSAGE.getValue());
     }
 
     public void printLottosInfoByBuyer(Lottos lottos) {
@@ -22,14 +23,26 @@ public class View {
     }
 
     public void printInputWinningMessage() {
-        System.out.println(INPUT_WINNING_MESSAGE);
+        System.out.println(INPUT_WINNING_MESSAGE.getValue());
     }
 
     public void printInputBonusMessage() {
-        System.out.println(INPUT_BONUS_MESSAGE);
+        System.out.println(INPUT_BONUS_MESSAGE.getValue());
     }
 
     public void printWinningStatics() {
-        System.out.println(WINNING_STATIC_MESSAGE);
+        System.out.println(WINNING_STATIC_MESSAGE.getValue());
+    }
+
+    public void printWinningCount(Rank rank) {
+        System.out.printf(SAME_THREE_COUNT_MESSAGE.getValue(), rank.getRanks().get(Statistic.SAME_THREE));
+        System.out.printf(SAME_FOUR_COUNT_MESSAGE.getValue(), rank.getRanks().get(Statistic.SAME_FOUR));
+        System.out.printf(SAME_FIVE_COUNT_MESSAGE.getValue(), rank.getRanks().get(Statistic.SAME_FIVE));
+        System.out.printf(SAME_FIVE_BONUS_COUNT_MESSAGE.getValue(), rank.getRanks().get(Statistic.SAME_FIVE_BONUS));
+        System.out.printf(SAME_SIX_COUNT_MESSAGE.getValue(), rank.getRanks().get(Statistic.SAME_SIX));
+    }
+
+    public void printRateOfReturn(Buyer buyer, Rank rank) {
+        System.out.printf(TOTAL_YIELD_MESSAGE.getValue(), rank.getYield(buyer));
     }
 }
