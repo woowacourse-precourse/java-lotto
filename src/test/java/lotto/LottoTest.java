@@ -1,9 +1,12 @@
 package lotto;
 
+import lotto.domain.entity.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -23,5 +26,17 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    public void lottoByOverSizeExceptionMessageTest() throws Exception {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("[ERROR] " + "로또 번호는 반드시 6자리 숫자여야 합니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 46})
+    public void lottoNumberRangeExceptionTest(int number) throws Exception {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, number)))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }
