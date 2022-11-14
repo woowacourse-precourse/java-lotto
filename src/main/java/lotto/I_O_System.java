@@ -19,7 +19,7 @@ public class I_O_System {
     private final String Five_Matche = "5개 일치 (1,500,000원) - ";
     private final String Five_Matche_Bounus = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     private final String Six_Matche = "6개 일치 (2,000,000,000원) - ";
-    private  final  String Point = "개";
+    private final String Point = "개";
 
     private static final int Lottey_min = 1;
     private static final int Lottey_max = 6;
@@ -27,7 +27,7 @@ public class I_O_System {
     static final int lottey_price = 1000;
 
     private String Enter_Number = "0";
-    private int Money_Enter = 0;
+    private static int Money_Enter = 0;
     private int Ticket = 0;
 
     public boolean Enter_Price() {
@@ -118,13 +118,15 @@ public class I_O_System {
         Collections.sort(Print_Number);
         System.out.println(Print_Number);
     }
-    public void Number_of_Win_Print(int[] Number_of_Win) {
-        System.out.println(Three_Matche +Number_of_Win[3]+Point);
-        System.out.println(Four_Matche +Number_of_Win[4]+Point);
-        System.out.println(Five_Matche +Number_of_Win[5]+Point);
-        System.out.println(Five_Matche_Bounus +Number_of_Win[5]+Point);
-        System.out.println(Six_Matche +Number_of_Win[6]+Point);
-        System.out.println();
+
+    public void Number_of_Win_Print(int[] Number_of_Win, int Bounus_Win, int Jackpot) {
+        float Sum = ((float) Jackpot / (float) this.Money_Enter) * 100;
+        System.out.println(Three_Matche + Number_of_Win[3] + Point);
+        System.out.println(Four_Matche + Number_of_Win[4] + Point);
+        System.out.println(Five_Matche + Number_of_Win[5] + Point);
+        System.out.println(Five_Matche_Bounus + Bounus_Win + Point);
+        System.out.println(Six_Matche + Number_of_Win[6] + Point);
+        System.out.println("총 수익률은 " + String.format("%.1f", Sum) + "%입니다.");
 
     }
 
