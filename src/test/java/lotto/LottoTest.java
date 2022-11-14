@@ -32,7 +32,7 @@ class LottoTest {
 
     // 아래에 추가 테스트 작성 가능
     @Nested
-    @DisplayName("로또 테스트")
+    @DisplayName("로또 생성 테스트")
     class LottoGenerateTest {
         @Test
         @DisplayName("로또 번호가 seed 대로 생성되지 않으면 예외가 발생한다.")
@@ -55,7 +55,11 @@ class LottoTest {
                     List.of(6, 5, 4, 3, 2, 1)
             );
         }
+    }
 
+    @Nested
+    @DisplayName("로또 비교 테스트")
+    class LottoCompareTest {
         @Test
         @DisplayName("1등 당첨 테스트")
         void compareWithAnswerZero() {
