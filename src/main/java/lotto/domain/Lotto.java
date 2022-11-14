@@ -14,6 +14,10 @@ public class Lotto {
 
     private final List<LottoNumber> numbers;
 
+    public Lotto(Integer... numbers) {
+        this(List.of(numbers));
+    }
+
     public Lotto(List<Integer> numbers) {
         validateLength(numbers);
         validateNoDuplicate(numbers);
