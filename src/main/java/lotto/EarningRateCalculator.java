@@ -1,13 +1,11 @@
 package lotto;
 
-import jdk.jshell.spi.SPIResolutionException;
-
-import java.text.NumberFormat;
 import java.util.List;
 
 public class EarningRateCalculator{
 
     private volatile static EarningRateCalculator calculator;
+    private static final Integer DIVISION_VALUE = 100;
 
     private EarningRateCalculator(){}
     public double calculate(List<Prize> prizeLottos, Integer price) {
@@ -22,9 +20,9 @@ public class EarningRateCalculator{
 
     private double roundAtTwoDecimalPoint(double value)
     {
-        int divisionValue = 100;
-        double decimalValueForReturn = (double)Math.round(value*divisionValue);
-        return decimalValueForReturn/divisionValue;
+
+        double decimalValueForReturn = (double)Math.round(value*DIVISION_VALUE);
+        return decimalValueForReturn/DIVISION_VALUE;
     }
 
     private double getPercentage(double total ,double portion)
@@ -44,7 +42,6 @@ public class EarningRateCalculator{
                 }
             }
         }
-
         return calculator;
     }
 }
