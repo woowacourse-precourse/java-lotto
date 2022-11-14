@@ -31,4 +31,8 @@ public class Lotto {
         Collections.sort(numbersCopy);
         System.out.println(numbersCopy);
     }
+
+    public List<Integer> get() {
+        return numbers;
+    }
 }

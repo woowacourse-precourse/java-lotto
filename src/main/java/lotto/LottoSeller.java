@@ -12,7 +12,7 @@ public class LottoSeller {
     int money;
     int piece;
     int change;
-    List<Lotto> bundle = new ArrayList<Lotto>();
+    private List<Lotto> bundle = new ArrayList<Lotto>();
 
     LottoSeller() {
     }
@@ -53,5 +53,9 @@ public class LottoSeller {
 
     void giveChange() {
         System.out.println("잔돈은 " + change + "원입니다.");
+    }
+
+    List<Lotto> get() {
+        return this.bundle;
     }
 }

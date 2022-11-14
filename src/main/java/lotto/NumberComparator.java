@@ -8,12 +8,13 @@ import java.util.List;
 
 public class NumberComparator {
     List<Integer> number = new ArrayList<>();
+    List<Integer> result = new ArrayList<>();
 
     NumberComparator() {
     }
 
-    NumberComparator(List<Integer> Winningnumber) {
-        this.number = number;;
+    NumberComparator(List<Integer> number) {
+        this.number = number;
     }
 
     void setWinningNumber() {
@@ -35,6 +36,14 @@ public class NumberComparator {
 
         this.number.add(Integer.parseInt(number));
         validateWholeNumber();
+    }
+
+    void compareNumbers(List<Lotto> bundle) {
+        for (int index = 0; index < bundle.size(); index++) {
+            List<Integer> lottoNumber = new ArrayList<>(bundle.get(index).get());
+            lottoNumber.retainAll(number);
+            result.add(lottoNumber.size());
+        }
     }
 
     void validateWinningNumber() {
