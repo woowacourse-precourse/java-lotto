@@ -15,4 +15,9 @@ public class LottoProcessorImpl implements LottoProcessor{
         }
         return equalCount;
     }
+
+    @Override
+    public Boolean matchBonusNumber(Integer bonusNumber, Lotto lotto) {
+        return lotto.getNumbers().contains(bonusNumber);
+    }
 }

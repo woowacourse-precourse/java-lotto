@@ -6,9 +6,11 @@ public interface LottoProcessor {
 
 
     /**
-     * @param winLotto
+     * @pa호am winLotto
      * @param lotto
      * @return
      */
     int matchLottoNumber(Lotto winLotto, Lotto lotto);
+
+    Boolean matchBonusNumber(Integer bonusNumber, Lotto lotto);
 }

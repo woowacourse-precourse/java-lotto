@@ -17,8 +17,8 @@ public class LottoProcessorTest {
     private LottoProcessor lottoProcessor;
 
     @TestFactory
-    @DisplayName("LottoProcessor Test")
-    Stream<DynamicTest> lottoProcessorTest() {
+    @DisplayName("LottoProcessor MatchLottoNumber Test")
+    Stream<DynamicTest> lottoProcessorMatchLottoNumberTest() {
         lottoProcessor = new LottoProcessorImpl();
         final Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
@@ -50,6 +50,28 @@ public class LottoProcessorTest {
                     int result = lottoProcessor.matchLottoNumber(winLotto, lotto);
 
                     assertThat(result).isEqualTo(3);
+                })
+        );
+    }
+
+    @TestFactory
+    @DisplayName("LottoProcessor MatchBonusNumber Test")
+    Stream<DynamicTest> lottoProcessorMatchBonusNumberTest() {
+        lottoProcessor = new LottoProcessorImpl();
+        final int bonusNumber = 2;
+
+        return Stream.of(
+                DynamicTest.dynamicTest("일치하는 경우", () -> {
+                    final Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+                    Boolean result = lottoProcessor.matchBonusNumber(bonusNumber, lotto);
+
+                    assertThat(result).isEqualTo(true);
+                }),
+                DynamicTest.dynamicTest("일치하지 않는 경우", () -> {
+                    final Lotto lotto = new Lotto(List.of(1, 3, 4, 5, 6, 7));
+                    Boolean result = lottoProcessor.matchBonusNumber(bonusNumber, lotto);
+
+                    assertThat(result).isEqualTo(false);
                 })
         );
     }

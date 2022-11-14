@@ -45,3 +45,4 @@
 3. lotto 클래스의 getter 기능과 테스트
 4. lotto repository 의 create 기능과 테스트
 5. lotto 가 당첨번호와 몇개 일치하는지 알려주는 기능과 테스트
+6. 보너스번호 매치 기능과 테스트
