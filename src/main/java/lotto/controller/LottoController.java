@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.LottoQuantity;
 import lotto.domain.LottoRanking;
 import lotto.domain.Lottos;
+import lotto.utils.Validation;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -36,6 +37,7 @@ public class LottoController {
 
     public void getUserMoney() {
         userLottoMoney = InputView.requestPurchaseMoney();
+        Validation.validateMoneyRange(userLottoMoney);
     }
 
 
@@ -55,7 +57,13 @@ public class LottoController {
     }
 
     public void getUserBonusNumber() {
-        userLottoNumbers.add(InputView.requestBonusNumber());
+        int bonusNumber=InputView.requestBonusNumber();
+        System.out.println("-----1");
+        Validation.validateBonus(bonusNumber, userLottoNumbers);
+        System.out.println("-----2");
+        userLottoNumbers.add(bonusNumber);
+        System.out.println("-----3");
+        Validation.validateNumberDuplicate(userLottoNumbers);
     }
 
     public void compareLottos() {

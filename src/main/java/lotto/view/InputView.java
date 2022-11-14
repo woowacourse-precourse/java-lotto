@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.utils.Validation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +22,12 @@ public class InputView {
         String tmpInputNumbers = Console.readLine();
         List<Integer> inputNumbers = new ArrayList<>();
         String[] tmpInputNumber = tmpInputNumbers.split(COMMA);
+        Validation.validateNotNumber(tmpInputNumber);
 
         for (int i = 0; i < tmpInputNumber.length; i++) {
-            inputNumbers.add(Integer.parseInt(tmpInputNumber[i]));
+            int splitInputNumber=Integer.parseInt(tmpInputNumber[i]);
+            Validation.validateNumberRange(splitInputNumber);
+            inputNumbers.add(splitInputNumber);
         }
         return inputNumbers;
     }
