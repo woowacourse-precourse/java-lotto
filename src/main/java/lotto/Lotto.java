@@ -13,22 +13,33 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    /* 예외처리
+    사이즈 6인지 확인
+    1 ~ 45 확인
+    중복 확인
+     */
 
-    private void validate(List<Integer> numbers) {      // 리스트 사이즈가 6이 아니면 예외 처리한다.
+
+    private static void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("로또 번호는 6개로 구성되어야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개로 구성되어야 합니다.");
         }
 
-        // 중복인 경우, 예외 처리한다.
         Map<Integer, Integer> map = new HashMap<>();
 
         for (int n : numbers) {
             map.put(n, map.getOrDefault(n, 0) + 1);
 
             if (map.get(n) > 1) {
-                throw new IllegalArgumentException("로또 번호는 중복될 수 없습니다.");
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
 
             }
+
+            if (n < 1 || n > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+
+            }
+
         }
 
     }
