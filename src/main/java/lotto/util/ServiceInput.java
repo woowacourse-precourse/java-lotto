@@ -52,6 +52,21 @@ public class ServiceInput {
             throw new IllegalArgumentException();
         }
     }
+
+    public static int getBonusNumber(){
+        String inputBonusNumber = getInputBonusNumber();
+
+        int bonusNumber = Converter.StringToInteger(inputBonusNumber);
+        validateBonusNumber(bonusNumber);
+
+        return bonusNumber;
+    }
+
+    private static void validateBonusNumber(int bonusNumber) {
+
+        // TODO: 예외처리
+    }
+
     private static String getInputWinningNumbers() {
 
         String inputWinningNumbers = Console.readLine();
