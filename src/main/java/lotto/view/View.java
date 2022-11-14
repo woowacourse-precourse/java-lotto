@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import lotto.constant.LottoConstant;
+import lotto.LottoValidator;
 import lotto.type.Prize;
 
 public class View {
@@ -31,65 +31,36 @@ public class View {
         }
     }
 
-    public List<Integer> inputWinningAndBonusNumber() {
-        List<String> winningNumber = inputWinningNumber();
-        List<String> bonusNumber = inputBonusNumber();
-        winningNumber.addAll(bonusNumber);
-        validateHasNumber(winningNumber);
-        List<Integer> winingAndBonus = winningNumber.stream()
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-        validateLottoNumber(winingAndBonus);
-        return winingAndBonus;
-    }
-
-    private void validateHasNumber(List<String> list) {
-        String regex = "[0-9]+";
-        for (String number : list) {
-            if (!number.matches(regex)) {
-                throw new IllegalArgumentException("[ERROR] 정수만 입력해야 합니다.");
-            }
-        }
-    }
-
-    private List<String> inputWinningNumber() {
-        System.out.println("당첨 번호를 입력해 주세요");
-        String numbers = Console.readLine();
-        String[] input = numbers.split(",");
-        return Arrays.stream(input)
-                .sorted()
-                .collect(Collectors.toList());
-    }
-
-    private List<String> inputBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요");
-        String numbers = Console.readLine();
-        return Arrays.stream(numbers.split(","))
-                .sorted()
-                .collect(Collectors.toList());
-    }
-
-    private void validateLottoNumber(List<Integer> lottoNumbers) {
-        validateDuplicateNumber(lottoNumbers);
-        if (lottoNumbers.size() != LottoConstant.LOTTO_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 당첨번호는 6개 보너스 번호는 1개를 입력해야 합니다.");
-
-        }
-        for (Integer integer : lottoNumbers) {
-            if (integer > LottoConstant.MAX_LOTTO_NUMBER ||
-                    integer < LottoConstant.LOW_LOTTO_NUMBER) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            }
-        }
-    }
-
-    private void validateDuplicateNumber(List<Integer> lottoNumbers) {
-        long count = lottoNumbers.stream()
-                .distinct()
-                .count();
-        if (count != LottoConstant.LOTTO_SIZE) {
+    public LottoInputDto inputNumbers() {
+        List<Integer> winningNumbers = inputWinningNumbers();
+        int bonusNumber = inputBonusNumber();
+        if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 중복된 정수를 입력하면 안됩니다.");
         }
+        return new LottoInputDto(winningNumbers, bonusNumber);
+    }
+
+    private List<Integer> inputWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요");
+        String numbers = Console.readLine();
+        List<String> inputStrings = Arrays.stream(numbers.split(","))
+                .sorted()
+                .collect(Collectors.toList());
+        LottoValidator.validateHasNumber(inputStrings);
+
+        List<Integer> winningNumbers = inputStrings.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        LottoValidator.validateWinningNumber(winningNumbers);
+
+        return winningNumbers;
+    }
+
+    private int inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요");
+        String inputString = Console.readLine();
+        LottoValidator.validateHasNumber(List.of(inputString));
+        return Integer.parseInt(inputString);
     }
 
     public void printPrize(PrizeDto prizeDto) {
