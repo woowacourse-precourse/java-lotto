@@ -1,4 +1,7 @@
-package lotto;
+package lotto.domain.lotto;
+
+import lotto.domain.random.PickNumber;
+import lotto.validation.Validation;
 
 import java.math.BigInteger;
 

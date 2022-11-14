@@ -1,4 +1,8 @@
-package lotto;
+package lotto.domain.jackpot;
+
+import lotto.domain.lotto.Lotto;
+import lotto.domain.random.PickNumber;
+import lotto.validation.Validation;
 
 import static lotto.util.InputImport.*;
 
@@ -20,7 +24,6 @@ public class Jackpot {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 하며 6자리를 입력해야합니다.");
         }
 
-        System.out.println(jackpot_number);
         input_bonus_number();
     }
 
@@ -31,11 +34,11 @@ public class Jackpot {
     }
 
     public static void bonus_number_output_and_validate(String bonus_number){
+
         if (!Validation.bonus_number_validation(bonus_number)){
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45사이의 숫자여야하며 당첨번호와는 겹쳐선 안됩니다.");
 
         }
-        System.out.println(bonus_number);
         compare_jackpot_and_lotto();
     }
 

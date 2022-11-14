@@ -1,4 +1,6 @@
-package lotto;
+package lotto.app;
+
+import lotto.domain.lotto.BuyLotto;
 
 import static lotto.util.InputImport.*;
 

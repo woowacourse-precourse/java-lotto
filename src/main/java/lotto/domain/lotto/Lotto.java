@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain.lotto;
+
+import lotto.domain.jackpot.JackpotResult;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -42,6 +44,8 @@ public class Lotto {
         if (JackpotResult.return_jackpot_count()!=6){
             compare_bonus_number(Integer.parseInt(bonus_number),lotto_list,jr);
         }
+
+        jr.reset_count();
     }
 
     private static void compare_jackpot_number(int jackpot, List<Integer> lotto_list,

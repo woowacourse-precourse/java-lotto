@@ -1,4 +1,4 @@
-package lotto;
+package lotto.validation;
 
 import java.math.BigInteger;
 import java.util.Arrays;

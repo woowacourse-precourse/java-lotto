@@ -1,8 +1,7 @@
 package lotto.validation;
 
-import lotto.BuyLotto;
-import lotto.Jackpot;
-import lotto.Validation;
+import lotto.domain.lotto.BuyLotto;
+import lotto.domain.jackpot.Jackpot;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

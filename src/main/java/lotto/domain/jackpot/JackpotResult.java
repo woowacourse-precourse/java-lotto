@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain.jackpot;
 
 public class JackpotResult {
 	private static int jackpot_count=0;
