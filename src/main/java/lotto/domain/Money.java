@@ -27,7 +27,7 @@ public class Money {
     }
 
     public double calculateProfitRateOf(Money profit) {
-        return (double)profit.amount / amount * 100.0;
+        return (double)profit.amount / amount;
     }
 
     @Override

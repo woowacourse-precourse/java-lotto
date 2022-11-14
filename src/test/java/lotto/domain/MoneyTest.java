@@ -45,6 +45,6 @@ public class MoneyTest {
         Money spent = new Money(8000);
         Money earned = new Money(5000);
 
-        assertThat(spent.calculateProfitRateOf(earned)).isEqualTo(62.5);
+        assertThat(spent.calculateProfitRateOf(earned)).isEqualTo(0.625);
     }
 }
