@@ -28,9 +28,9 @@ public class Lotto {
 
     public static List<Integer> makeLuckyNumber(String luckyNumber){
         List<Integer> luckyBall = new ArrayList<>();
-        String[] luckyArr = luckyNumber.split(",");
-        for(int i=0;i<luckyArr.length;i++){
-            luckyBall.add(Integer.parseInt(luckyArr[i]));
+        String[] lucky = luckyNumber.split(",");
+        for(int i=0;i<lucky.length;i++){
+            luckyBall.add(Integer.parseInt(lucky[i]));
         }
         Lotto lotto = new Lotto(luckyBall);
         return luckyBall;

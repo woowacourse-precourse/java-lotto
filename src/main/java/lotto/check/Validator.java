@@ -69,8 +69,8 @@ public class Validator {
     public static void isInputNumber(String cash){
         try{
             Integer.parseInt(cash);
-        }catch (NumberFormatException e){
-            throw new NumberFormatException(Exception.NOT_NUMBER.getExceptionMessage());
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(Exception.NOT_NUMBER.getExceptionMessage());
         }
     }
 

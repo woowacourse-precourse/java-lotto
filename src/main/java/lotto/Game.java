@@ -5,6 +5,7 @@ import lotto.check.Check;
 import lotto.check.Validator;
 import lotto.domain.Lotto;
 import lotto.view.Print;
+import lotto.exception.Exception;
 
 import java.util.*;
 public class Game {
