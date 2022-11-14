@@ -1,6 +1,6 @@
 package lotto.domain.raffleDevice;
 
-import lotto.domain.Lotto;
+import lotto.domain.lottoData.Lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;

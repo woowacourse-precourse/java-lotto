@@ -1,11 +1,11 @@
-package lotto.domain;
+package lotto.domain.lottoData;
 
 import java.util.List;
 
-public class ResultLotto {
+public class TotalWinnerLotto {
     private final List<Integer> rankList;
 
-    public ResultLotto(List<Integer> rankList) {
+    public TotalWinnerLotto(List<Integer> rankList) {
         this.rankList = rankList;
     }
 

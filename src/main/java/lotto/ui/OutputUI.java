@@ -1,8 +1,8 @@
 package lotto.ui;
 
-import lotto.domain.Lotto;
+import lotto.domain.lottoData.Lotto;
 import lotto.domain.Rank;
-import lotto.domain.ResultLotto;
+import lotto.domain.lottoData.TotalWinnerLotto;
 
 import java.util.List;
 
@@ -23,13 +23,13 @@ public class OutputUI {
         }
     }
 
-    public void printWinnerResult(ResultLotto resultLotto) {
+    public void printWinnerResult(TotalWinnerLotto totalWinnerLotto) {
         Rank[] ranks = Rank.values();
         for (Rank rank : ranks) {
             System.out.println(String.format("%d개 일치%s - %d개",
                     rank.getHitCount(),
                     rank.getRewardString(),
-                    resultLotto.getResultWithRank(rank.getRankInt())));
+                    totalWinnerLotto.getResultWithRank(rank.getRankInt())));
 
         }
     }

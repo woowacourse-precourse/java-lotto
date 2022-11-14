@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.Lotto;
+import lotto.domain.lottoData.Lotto;
 
 public class LottoMachine {
 

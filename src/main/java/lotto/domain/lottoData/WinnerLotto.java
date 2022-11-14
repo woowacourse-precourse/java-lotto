@@ -1,13 +1,13 @@
-package lotto.domain;
+package lotto.domain.lottoData;
 
 import java.util.List;
 
-public class HitLotto {
+public class WinnerLotto {
 
     private final List<Integer> normalNumbers;
     private final Integer bonusNumber;
 
-    public HitLotto(List<Integer> normalNumbers, Integer bonusNumber) {
+    public WinnerLotto(List<Integer> normalNumbers, Integer bonusNumber) {
         this.normalNumbers = normalNumbers;
         this.bonusNumber = bonusNumber;
     }
