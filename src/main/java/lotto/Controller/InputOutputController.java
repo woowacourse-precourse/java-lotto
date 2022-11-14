@@ -17,6 +17,7 @@ public class InputOutputController {
     private final LogicService logicService = new LogicService();
     private int lottoSize = 0;
     private List<Lotto> lottos;
+    private Lotto winningNumbers;
 
     public void inputMoney(){
         Money money = inputView.printLotoBuyMoney();
@@ -27,5 +28,9 @@ public class InputOutputController {
         outputView.printLottoSize(lottoSize);
         lottos = logicService.makeLotto(lottoSize);
         outputView.printLottoNumbers(lottos);
+    }
+
+    public void inputWinningNumbers(){
+        winningNumbers = inputView.printWinningNumbers();
     }
 }
