@@ -20,10 +20,10 @@ class LottoCalculateServiceTest {
         int totalPrice = 5000;
 
         // when
-        double result = lottoCalculateService.getYieldOfLotto(user, totalPrice);
+        String result = lottoCalculateService.getYieldOfLotto(user, totalPrice);
 
         // then
-        assertThat(result).isEqualTo(62.5);
+        assertThat(result).isEqualTo("62.5");
     }
 
     @DisplayName("로또 번호 몇 개 맞았는지 테스트")
