@@ -10,7 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class CheckerTest {
+class WinGamesTest {
 	@Nested
 	@DisplayName("로또 당첨 게임의 개수를 구하는 기능 테스트")
 	class getTotalWinsTest {
@@ -27,7 +27,7 @@ class CheckerTest {
 			Lotto lotto4 = new Lotto(Arrays.asList(5, 7, 9, 10, 11, 12));
 			Lotto lotto5 = new Lotto(Arrays.asList(1, 4, 9, 20, 21, 22));
 			List<Lotto> lottoTicket = Arrays.asList(lotto1, lotto2, lotto3, lotto4, lotto5);
-			Checker checker = new Checker(lottoTicket, winningNumbers.getNumbers(), bonusNumber);
+			WinGames winGames = new WinGames(lottoTicket, winningNumbers.getNumbers(), bonusNumber);
 
 			Map<Grade, Integer> expected = new EnumMap<>(Grade.class);
 			expected.put(Grade.FIFTH, 1);
@@ -36,7 +36,7 @@ class CheckerTest {
 			expected.put(Grade.SECOND, 0);
 			expected.put(Grade.FIRST, 0);
 
-			assertThat(expected).isEqualTo(checker.getWinGames());
+			assertThat(expected).isEqualTo(winGames.getWinGames());
 		}
 
 		@Test
@@ -52,7 +52,7 @@ class CheckerTest {
 			Lotto lotto4 = new Lotto(Arrays.asList(5, 7, 9, 10, 11, 12));
 			Lotto lotto5 = new Lotto(Arrays.asList(1, 4, 9, 20, 21, 22));
 			List<Lotto> lottoTicket = Arrays.asList(lotto1, lotto2, lotto3, lotto4, lotto5);
-			Checker checker = new Checker(lottoTicket, winningNumbers.getNumbers(), bonusNumber);
+			WinGames winGames = new WinGames(lottoTicket, winningNumbers.getNumbers(), bonusNumber);
 
 			Map<Grade, Integer> expected = new EnumMap<>(Grade.class);
 			expected.put(Grade.FIFTH, 0);
@@ -61,7 +61,7 @@ class CheckerTest {
 			expected.put(Grade.SECOND, 1);
 			expected.put(Grade.FIRST, 0);
 
-			assertThat(expected).isEqualTo(checker.getWinGames());
+			assertThat(expected).isEqualTo(winGames.getWinGames());
 		}
 
 		@Test
@@ -77,7 +77,7 @@ class CheckerTest {
 			Lotto lotto4 = new Lotto(Arrays.asList(5, 7, 9, 10, 11, 12));
 			Lotto lotto5 = new Lotto(Arrays.asList(1, 4, 9, 20, 21, 22));
 			List<Lotto> lottoTicket = Arrays.asList(lotto1, lotto2, lotto3, lotto4, lotto5);
-			Checker checker = new Checker(lottoTicket, winningNumbers.getNumbers(), bonusNumber);
+			WinGames winGames = new WinGames(lottoTicket, winningNumbers.getNumbers(), bonusNumber);
 
 			Map<Grade, Integer> expected = new EnumMap<>(Grade.class);
 			expected.put(Grade.FIFTH, 0);
@@ -86,7 +86,7 @@ class CheckerTest {
 			expected.put(Grade.SECOND, 0);
 			expected.put(Grade.FIRST, 0);
 
-			assertThat(expected).isEqualTo(checker.getWinGames());
+			assertThat(expected).isEqualTo(winGames.getWinGames());
 		}
 	}
 
@@ -106,10 +106,10 @@ class CheckerTest {
 			Lotto lotto4 = new Lotto(Arrays.asList(5, 7, 9, 10, 11, 12));
 			Lotto lotto5 = new Lotto(Arrays.asList(1, 4, 9, 20, 21, 22));
 			List<Lotto> lottoTicket = Arrays.asList(lotto1, lotto2, lotto3, lotto4, lotto5);
-			Checker checker = new Checker(lottoTicket, winningNumbers.getNumbers(), bonusNumber);
+			WinGames winGames = new WinGames(lottoTicket, winningNumbers.getNumbers(), bonusNumber);
 			long expected = 1500000;
 
-			assertThat(expected).isEqualTo(checker.getTotalCashPrize());
+			assertThat(expected).isEqualTo(winGames.getTotalCashPrize());
 		}
 
 		@Test
@@ -125,10 +125,10 @@ class CheckerTest {
 			Lotto lotto4 = new Lotto(Arrays.asList(5, 7, 9, 10, 11, 12));
 			Lotto lotto5 = new Lotto(Arrays.asList(1, 4, 9, 20, 21, 22));
 			List<Lotto> lottoTicket = Arrays.asList(lotto1, lotto2, lotto3, lotto4, lotto5);
-			Checker checker = new Checker(lottoTicket, winningNumbers.getNumbers(), bonusNumber);
+			WinGames winGames = new WinGames(lottoTicket, winningNumbers.getNumbers(), bonusNumber);
 			long expected = 1510000;
 
-			assertThat(expected).isEqualTo(checker.getTotalCashPrize());
+			assertThat(expected).isEqualTo(winGames.getTotalCashPrize());
 		}
 	}
 }

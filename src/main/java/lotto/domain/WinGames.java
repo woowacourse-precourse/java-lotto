@@ -1,19 +1,17 @@
 package lotto.domain;
 
-import static lotto.domain.Grade.DEFAULT;
-
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
-public class Checker {
+public class WinGames {
 	private List<Lotto> lottoTicket;
 	private List<Integer> winningNumbers;
 	private int bonusNumber;
 	private Map<Grade, Integer> winGames = new EnumMap<>(Grade.class);
 
-	public Checker(List<Lotto> lottoTicket, List<Integer> winningNumbers, int bonusNumber) {
+	public WinGames(List<Lotto> lottoTicket, List<Integer> winningNumbers, int bonusNumber) {
 		this.lottoTicket = lottoTicket;
 		this.winningNumbers = winningNumbers;
 		this.bonusNumber = bonusNumber;
@@ -23,7 +21,7 @@ public class Checker {
 
 	private void resetWinGames() {
 		Arrays.stream(Grade.values())
-			.filter(grade -> grade != DEFAULT)
+			.filter(grade -> grade != Grade.DEFAULT)
 			.forEach(grade -> winGames.put(grade, 0));
 	}
 
@@ -51,7 +49,7 @@ public class Checker {
 	}
 
 	private void addWinGame(Grade grade) {
-		if (grade != DEFAULT) {
+		if (grade != Grade.DEFAULT) {
 			winGames.put(grade, winGames.get(grade) + 1);
 		}
 	}

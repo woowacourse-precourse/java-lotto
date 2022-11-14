@@ -28,8 +28,8 @@ public class LottoMachine {
 	}
 
 	private static void getResultOfWinning() {
-		Checker checker = new Checker(lottoTicket.getTicket(), winningNumbers.getNumbers(), bonusNumber.getNumber());
-		Earning earning = new Earning(money.getMoney(), checker.getTotalCashPrize());
-		StatisticsView.getStatisticsView(checker.getWinGames(), earning.getEarningRate());
+		WinGames winGames = new WinGames(lottoTicket.getTicket(), winningNumbers.getNumbers(), bonusNumber.getNumber());
+		Earning earning = new Earning(money.getMoney(), winGames.getTotalCashPrize());
+		StatisticsView.getStatisticsView(winGames.getWinGames(), earning.getEarningRate());
 	}
 }
