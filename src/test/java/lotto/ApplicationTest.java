@@ -11,8 +11,7 @@ import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -64,7 +63,7 @@ class ApplicationTest extends NsTest {
     void createLottoByNonInteger() {
         //given
         Application application = new Application();
-        makeLottoPrice("test");
+        insertInput("test");
         //then
         assertThatThrownBy(application::insertPriceAndSaveNumber)
                 .isInstanceOf(IllegalArgumentException.class);
@@ -75,7 +74,7 @@ class ApplicationTest extends NsTest {
     void createLottoByIntegerButNotMetCond() {
         //given
         Application application = new Application();
-        makeLottoPrice("124200");
+        insertInput("124200");
         //then
         assertThatThrownBy(application::insertPriceAndSaveNumber)
                 .isInstanceOf(IllegalArgumentException.class);
@@ -86,7 +85,7 @@ class ApplicationTest extends NsTest {
     void createRandomLottosArrayByLottoPriceIsSet() {
         //given
         Application application = new Application();
-        makeLottoPrice("8000");
+        insertInput("8000");
         application.insertPriceAndSaveNumber();
         //when
         application.makeArray();
@@ -99,7 +98,7 @@ class ApplicationTest extends NsTest {
     void createRandomLottsWithSixOtherNumbers() {
         //given
         Application application = new Application();
-        makeLottoPrice("8000");
+        insertInput("8000");
         application.insertPriceAndSaveNumber();
         application.makeArray();
         //when
@@ -115,7 +114,7 @@ class ApplicationTest extends NsTest {
     void createWinningPrice() {
         //given
         Application application = new Application();
-        makeLottoPrice("8000");
+        insertInput("8000");
         application.insertPriceAndSaveNumber();
         application.makeArray();
         //when
@@ -128,7 +127,7 @@ class ApplicationTest extends NsTest {
     void createWinningNumberWhichInRangeAndSize() {
         //given
         Application application = new Application();
-        makeWinningNumber("1,2,3,4,5,6");
+        insertInput("1,2,3,4,5,6");
         //when
         application.insertWinningNumber();
         //then
@@ -140,7 +139,7 @@ class ApplicationTest extends NsTest {
     void createRandomLottsWithNumberWhichOutOfRange() {
         //given
         Application application = new Application();
-        makeWinningNumber("1,2,3,4,5,57");
+        insertInput("1,2,3,4,5,57");
         //when
         //then
         assertThatThrownBy(application::insertWinningNumber)
@@ -152,7 +151,7 @@ class ApplicationTest extends NsTest {
     void createRandomLottsWithNumberWhichOutOfSize() {
         //given
         Application application = new Application();
-        makeWinningNumber("1,2,3,4,5");
+        insertInput("1,2,3,4,5");
         //when
         //then
         assertThatThrownBy(application::insertWinningNumber)
@@ -164,7 +163,7 @@ class ApplicationTest extends NsTest {
     void createBonusNumberWhichInRange() {
         //given
         Application application = new Application();
-        makeWinningNumber("1");
+        insertInput("1");
         //when
         application.insertBonusNumberSaveNumber();
         //then
@@ -176,7 +175,7 @@ class ApplicationTest extends NsTest {
     void createBonusNumberWhichOutOfRange() {
         //given
         Application application = new Application();
-        makeWinningNumber("60");
+        insertInput("60");
         //when
         //then
         assertThatThrownBy(application::insertBonusNumberSaveNumber)
@@ -188,7 +187,7 @@ class ApplicationTest extends NsTest {
     void createBonusNumberWhichIsNotNumber() {
         //given
         Application application = new Application();
-        makeWinningNumber("test");
+        insertInput("test");
         //when
         //then
         assertThatThrownBy(application::insertBonusNumberSaveNumber)
@@ -219,14 +218,7 @@ class ApplicationTest extends NsTest {
         return true;
     }
 
-    private void makeLottoPrice(String input) {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-    }
-
-    private void makeWinningNumber(String input) {
+    private void insertInput(String input) {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
