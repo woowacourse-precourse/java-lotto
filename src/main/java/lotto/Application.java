@@ -10,7 +10,9 @@ public class Application {
         UI ui = new UI();
         ui.printInputMoneyMessage();
         int money = inputManager.inputCustomerMoney();
-        System.out.println(money);
+        Customer customer = new Customer();
+        customer.purchaseLotto(money);
+        ui.printPurchaseHistory(customer);
     }
 
 
