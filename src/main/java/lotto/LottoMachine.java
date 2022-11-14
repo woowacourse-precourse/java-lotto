@@ -2,24 +2,22 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.sql.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LottoMachine {
     public static final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
     public static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static final String BONUS_NUMBER_INTEGER = "[ERROR] 보너스 번호는 숫자를 입력해야 합니다.";
 
+    Lotto winningNumber;
     int bonusNumber;
 
-    public Lotto inputWinningNumber() {
+    public void inputWinningNumber() {
         System.out.println(INPUT_WINNING_NUMBER);
         String inputNumber = Console.readLine();
 
-        return checkThatWinningNumberIsRightInput(inputNumber);
+        winningNumber = checkThatWinningNumberIsRightInput(inputNumber);
     }
 
     public List<String> splitNumber(String number) {
