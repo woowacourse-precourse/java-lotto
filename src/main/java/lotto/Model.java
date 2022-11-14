@@ -10,10 +10,33 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Model {
 
-    public List<Integer> checkLottoNumber (List<Integer> lottoNumbers, List<List<Integer>> usersLottos) {
+    public List<List<Integer>> USERS_LOTTOS;
+    public HashMap <Integer, Integer> PRIZE_RANKINGS;
+    private int MONEY;
+    private int BONUS_NUMBER;
+
+    public HashMap<Integer, Integer> checkPrize(int money, int bonusNumber, List<Integer> lottoNumbers) {
+        this.MONEY = money;
+        this.BONUS_NUMBER = bonusNumber;
+        checkLottoNumber(lottoNumbers);
+
+        return PRIZE_RANKINGS;
+    }
+
+    public double getRateOfProfit () {
+        return calculateRateOfProfit(MONEY);
+    }
+
+    public List<List<Integer>> getUsersLottos (int money) {
+        repeatGettingLottoNumber(money);
+
+        return this.USERS_LOTTOS;
+    }
+
+    public void checkLottoNumber (List<Integer> lottoNumbers) {
         List<Integer> duplicatedNumbers = new ArrayList<>();
 
-        for (List<Integer> lotto: usersLottos){
+        for (List<Integer> lotto: USERS_LOTTOS){
             List<Integer> comparingNumbers = lotto.stream()
                     .filter(lottoNumbers::contains)
                     .collect(Collectors.toList());
@@ -21,19 +44,19 @@ public class Model {
                 duplicatedNumbers.add(comparingNumbers.size());
             }
 
-        return duplicatedNumbers;
+        checkPrizeLotto(duplicatedNumbers);
     }
 
-    public HashMap<Integer, Integer> checkPrizeLotto (List<Integer> duplicatedNumbers, List<List<Integer>> usersLottos, int bonusNumber) {
+    public void checkPrizeLotto (List<Integer> duplicatedNumbers) {
         List<Integer> prizeRankings = new ArrayList<>();
 
         for (int number: duplicatedNumbers) {
             prizeRankings.add(addPrizeRanking(number));
         }
 
-        checkBonusNumber(prizeRankings, usersLottos, bonusNumber);
+        checkBonusNumber(prizeRankings);
 
-        return makeNumberByRanking(prizeRankings);
+        PRIZE_RANKINGS = makeNumberByRanking(prizeRankings);
     }
 
     private HashMap<Integer, Integer> makeNumberByRanking (List<Integer> prizeRankings) {
@@ -44,23 +67,24 @@ public class Model {
         }
 
         inputNumberByRanking(prizeRankings, numberByRanking);
+
         return numberByRanking;
     }
 
-    private void checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> usersLottos, int bonusNumber){
+    private void checkBonusNumber(List<Integer> prizeRankings){
         int changedRanking;
 
         for (int temp = 0; temp < prizeRankings.size(); temp++) {
 
             if (prizeRankings.get(temp) == Ranking.THIRD.getRanking()) {
-                changedRanking = upRanking(usersLottos.get(temp), bonusNumber);
+                changedRanking = upRanking(USERS_LOTTOS.get(temp), BONUS_NUMBER);
                 prizeRankings.set(temp, changedRanking);
             }
         }
     }
 
-    private int upRanking (List<Integer> usersLottos, int bonusNumber) {
-        if (usersLottos.contains(bonusNumber)) {
+    private int upRanking (List<Integer> usersLotto, int bonusNumber) {
+        if (usersLotto.contains(bonusNumber)) {
             return Ranking.SECOND.getRanking();
         }
         return Ranking.THIRD.getRanking();
@@ -83,11 +107,11 @@ public class Model {
         return 0;
     }
 
-    public double calculateRateOfProfit (HashMap<Integer, Integer> prizeRankings, int money) {
+    public double calculateRateOfProfit (int money) {
         int totalProfit = 0;
 
-        for (int ranking: prizeRankings.keySet()) {
-            totalProfit += profitByRanking(ranking, prizeRankings.get(ranking));
+        for (int ranking: PRIZE_RANKINGS.keySet()) {
+            totalProfit += profitByRanking(ranking, PRIZE_RANKINGS.get(ranking));
         }
 
         return (double)totalProfit / money;
@@ -102,14 +126,14 @@ public class Model {
         return 0;
     }
 
-    public List<List<Integer>> repeatGettingLottoNumber(int moneyNumber) {
+    public void repeatGettingLottoNumber(int moneyNumber) {
         List<List<Integer>> usersLottos = new ArrayList<>();
 
         for (int temp = 0; temp < moneyNumber; temp++) {
             usersLottos.add(getLottoNumber());
         }
 
-        return usersLottos;
+        USERS_LOTTOS = usersLottos;
     }
 
     private List<Integer> getLottoNumber() {
