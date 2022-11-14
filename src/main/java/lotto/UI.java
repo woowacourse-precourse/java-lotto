@@ -38,8 +38,7 @@ public class UI {
     }
 
     public void setPrizeNumbers(List<String> prizeNumbers) {
-        Validation.validatePrizeNumberInput(prizeNumbers);
-        this.lottoLogic.setPrizeNumbers(stringListToIntegerList(prizeNumbers));
+        this.lottoLogic.setPrizeNumbers(prizeNumbers);
     }
 
     public String bonusNumberInput() {
@@ -54,14 +53,6 @@ public class UI {
 
     public List<String> sliceInputNumber(String value) {
         return List.of(value.split(","));
-    }
-
-    public List<Integer> stringListToIntegerList(List<String> stringValues) {
-        List<Integer> integerValues = new ArrayList<>();
-        for (String value : stringValues) {
-            integerValues.add(Integer.parseInt(value));
-        }
-        return integerValues;
     }
 
     public void printLottoResult() {

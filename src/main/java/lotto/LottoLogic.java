@@ -82,8 +82,9 @@ public class LottoLogic {
         return this.earningRate;
     }
 
-    public void setPrizeNumbers(List<Integer> prizeNumbers) {
-        this.prizeNumbers = prizeNumbers;
+    public void setPrizeNumbers(List<String> prizeNumbers) {
+        validatePrizeNumbers(prizeNumbers);
+        this.prizeNumbers = stringListToIntegerList(prizeNumbers);
     }
 
     public void setBonusNumber(int bonusNumber) {
@@ -150,7 +151,19 @@ public class LottoLogic {
         calculateEarningRate();
     }
 
-    private void validateMoney(String money){
+    private void validateMoney(String money) {
         Validation.validateMoneyInput(money);
+    }
+
+    private void validatePrizeNumbers(List<String> prizeNumbers) {
+        Validation.validatePrizeNumberInput(prizeNumbers);
+    }
+
+    public List<Integer> stringListToIntegerList(List<String> stringValues) {
+        List<Integer> integerValues = new ArrayList<>();
+        for (String value : stringValues) {
+            integerValues.add(Integer.parseInt(value));
+        }
+        return integerValues;
     }
 }
