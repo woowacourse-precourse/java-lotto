@@ -50,4 +50,15 @@ public class UserLotto {
         }
         return lottoResult;
     }
+
+    public static double getRateOfReturn(List<Integer> lottoResult, UserLotto user) {
+        int total = 0;
+        for (Prize prize : Prize.values()) {
+            if (prize == Prize.NONE) {
+                break;
+            }
+            total += prize.getPrizeMoney() * lottoResult.get(prize.ordinal());
+        }
+        return total / (double) user.getLottoCount();
+    }
 }

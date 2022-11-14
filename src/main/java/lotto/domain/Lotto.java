@@ -23,7 +23,7 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 잘못된 복권 번호 개수");
         }
     }
-    
+
     private void validateLottoRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (!(1 <= number && number <= 45)) {
