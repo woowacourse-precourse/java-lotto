@@ -32,4 +32,14 @@ public class InputValidation {
             temp.add(winningNumber);
         }
     }
+
+    public void validateBonusNumber(String number) {
+        if (!Pattern.matches("^[0-9]{1,2}$", number)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (Integer.parseInt(number) > 45) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

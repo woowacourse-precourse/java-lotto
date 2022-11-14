@@ -26,6 +26,7 @@ public class WinningNumber {
 
     public void inputBonusNumber() {
         String number = Console.readLine();
+        inputValidation.validateBonusNumber(number);
         bonusNumber = Integer.parseInt(number);
     }
 }
