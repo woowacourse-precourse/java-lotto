@@ -69,5 +69,6 @@ public class OutputView {
     public static void printYield(Result result, Money money) {
         double winnings = result.getWinnings();
         double yield = (winnings / money.getMoney()) * ONE_HUNDRED;
+        System.out.printf(TOTAL_YIELD, yield);
     }
 }
