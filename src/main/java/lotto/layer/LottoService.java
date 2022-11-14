@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
@@ -44,6 +45,21 @@ public class LottoService {
         }
         table.saveFrequency(frequency);
         return frequency;
+    }
+
+    public double getBenefitRate() {
+        Money money = table.getMoney();
+        Map<WinningLotto, Integer> frequency = table.getFrequency();
+        int totalSum = 0;
+        for (Entry<WinningLotto, Integer> winningLottoEntry : frequency.entrySet()) {
+            WinningLotto winningLotto = winningLottoEntry.getKey();
+            int count = winningLottoEntry.getValue();
+            int winningMoney = winningLotto.getMoneyValue();
+            totalSum += winningMoney * count;
+        }
+        double benefitRate = (double) totalSum / money.intValue();
+        benefitRate *= 100;
+        return benefitRate;
     }
 
     private Map<WinningLotto, Integer> initWinningLotto() {
