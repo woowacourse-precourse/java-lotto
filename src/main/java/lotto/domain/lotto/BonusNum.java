@@ -1,28 +1,22 @@
 package lotto.domain.lotto;
 
-import java.util.Objects;
+import static lotto.domain.lotto.Lotto.isRanged;
 
 public class BonusNum {
     private final int num;
 
     public BonusNum(int num) {
+        validate(num);
         this.num = num;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
+    void validate(int num) {
+        if (!isRanged(num)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 숫자의 범위가 1 ~ 45 이내가 아닙니다.");
         }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        BonusNum bonusNum = (BonusNum) o;
-        return num == bonusNum.num;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(num);
+    public boolean isEqual(int otherNum) {
+        return otherNum == num;
     }
 }
