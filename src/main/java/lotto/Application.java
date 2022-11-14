@@ -11,7 +11,7 @@ public class Application {
         // TODO: 프로그램 구현
         int money = inputMoney();
         Lotto lotto = inputLottoNumber();
-
+        int bonus = inputBonusNumber(lotto);
     }
 
 
@@ -66,30 +66,40 @@ public class Application {
 
     public static Lotto createLotto(String[] numbers) throws IllegalArgumentException {
         List<Integer> lottoList = new ArrayList<>();
+        Lotto lotto;
         try {
             for (String s : numbers) {
                 lottoList.add(Integer.parseInt(s));
             }
             lottoList.sort(Comparator.naturalOrder());
-            checkValidityOfLotto(lottoList);
+            lotto = new Lotto(lottoList);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-
-        return new Lotto(lottoList);
+        return lotto;
     }
 
-    public static void checkValidityOfLotto(List<Integer> lottoList) throws IllegalArgumentException {
 
-        if (lottoList.size() != 6) {
+
+    public static int inputBonusNumber(Lotto lotto) {
+        String inputBonus = Console.readLine();
+        int bonus;
+        boolean inputBonusError = false;
+        try {
+            bonus = Integer.parseInt(inputBonus);
+        } catch (Exception e) {
+            inputBonusError = true;
             throw new IllegalArgumentException();
-        }
-        for (int i = 0; i < 5; i++) {
-            int currentNumber = lottoList.get(i);
-            int nextNumber = lottoList.get(i + 1);
-            if (currentNumber == nextNumber) {
-                throw new IllegalArgumentException();
+        }finally {
+            if (inputBonusError) {
+                System.out.println("[ERROR] ");
             }
         }
+
+        return bonus;
+    }
+
+    public static void checkValidityOfBonus() {
+
     }
 }
