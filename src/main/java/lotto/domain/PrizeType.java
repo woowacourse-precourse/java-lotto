@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.function.Function;
 
 public enum PrizeType {
@@ -23,5 +24,12 @@ public enum PrizeType {
 
     public int calculateProfit(int count) {
         return expression.apply(count);
+    }
+
+    public static PrizeType getPrizeType(int count) {
+        return Arrays.stream(PrizeType.values())
+                .filter(prize -> prize.type == count)
+                .findFirst()
+                .orElse(null);
     }
 }
