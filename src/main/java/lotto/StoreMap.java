@@ -20,4 +20,8 @@ public class StoreMap {
 	public void pushStoreMap(Rank rank) {
 		StoreMap.put(rank, StoreMap.get(rank) + 1);
 	}
+
+	public SortedMap<Rank, Integer> getStoreMap() {
+		return StoreMap;
+	}
 }
