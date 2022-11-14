@@ -21,9 +21,19 @@ public class LottoController {
     }
 
     public void run() {
-        Money money = insertMoney();
+        Money money;
+        WinningNumbers winningNumbers;
+        try {
+            money = insertMoney();
+        } catch (Exception exception) {
+            return;
+        }
+        try {
+            winningNumbers = chooseWinningNumbers();
+        } catch (Exception exception) {
+            return;
+        }
         LottoTicket lottoTicket = purchaseLottoTicket(money);
-        WinningNumbers winningNumbers = chooseWinningNumbers();
         Result result = new Result(lottoTicket.checkLottoTicketWinningCountByRank(winningNumbers));
         announceWinningResult(money, result);
     }
