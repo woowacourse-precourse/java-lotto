@@ -14,6 +14,8 @@ public class LottoController {
         WinLotto winLotto = checkWinningLotto(winningLotto, player);
         player.setWinningResult(winLotto.getWinningResult());
         player.setReturnRate(winLotto.calculateReturnRate());
+        OutputView.printWinningStatistics(player);
+        OutputView.printReturnRate(player);
     }
 
     public Player buyLotto(){
