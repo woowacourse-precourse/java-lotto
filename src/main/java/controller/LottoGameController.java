@@ -7,13 +7,15 @@ import lotto.LottoTickets;
 import view.InputView;
 import view.OutputView;
 
+import java.util.List;
+
 public class LottoGameController {
     private final LottoGenerator lottoTicketGenerator = new LottoGenerator();
 
     public void run() {
         LottoPurchaseAmount lottoPurchaseAmount = inputMoney();
         LottoTickets lottoTickets = purchaseLotto((int) lottoPurchaseAmount.calculateNumberOfLottoTickets());
-        
+        WinningTicket winningTicket = getWinningTicket();
     }
 
     private LottoPurchaseAmount inputMoney() {
@@ -26,5 +28,11 @@ public class LottoGameController {
         OutputView.printGeneratedLottoTickets(lottoTickets);
 
         return lottoTickets;
+    }
+
+    private WinningTicket getWinningTicket() {
+        List<Integer> winningTicket = InputView.inputWinningNumbers();
+        int bonusNumber = InputView.inputBonusNumber();
+        return lottoTicketGenerator.generateWinningTicket(winningTicket, bonusNumber);
     }
 }

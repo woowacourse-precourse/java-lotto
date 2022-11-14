@@ -20,4 +20,8 @@ public class LottoGenerator {
         }
         return new LottoTickets(lottoTickets);
     }
+
+    public WinningTicket generateWinningTicket(List<Integer> winningTicket, int bonusNumber) {
+        return new WinningTicket(winningTicket, bonusNumber);
+    }
 }
