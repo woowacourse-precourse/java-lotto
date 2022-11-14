@@ -61,6 +61,7 @@ public class LottoGameController {
     }
 
     public void printStatistics(LottoHistory history, String amount) {
+        PrintGuideMessage.printStatisticsGuide();
         PrintHistory.printWinningHistory(history);
         PrintHistory.printYield(history.getYield(history.getTotal(history.getWinningHistory()), amount));
     }
