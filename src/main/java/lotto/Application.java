@@ -27,8 +27,7 @@ public class Application {
             Statistics statistics = new Statistics(numberGenerator.purchaseAmount, judgment.firstCount, judgment.secondCount, judgment.thirdCount, judgment.fourthCount, judgment.fifthCount);
             System.out.println(statistics.resultMessage);
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR]");
-            //return;
+            System.out.println(e);
         }
     }
 
