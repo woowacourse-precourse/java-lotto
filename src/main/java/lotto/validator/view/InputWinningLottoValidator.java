@@ -11,7 +11,7 @@ public class InputWinningLottoValidator {
     private static final String EXIST_ZERO_AT_FIRST_PLACE_EXCEPTION_MESSAGE = "[ERROR] 숫자의 1번째 자리는 0일 수 없습니다.";
     private static final String DIGIT_OUT_OF_RANGE_EXCEPTION = "[ERROR] 숫자의 자릿수는 9자리를 초과할 수 없습니다.";
     private static final String WINNING_LOTTO_INPUT_FORM = "(\\d+,){5}\\d+";
-    private static final String EXIST_ZERO_AT_FIRST_PLACE_FORM = "0\\d+";
+    private static final String ZERO_AT_FIRST_PLACE_FORM = "0\\d+";
     private static final String DIGIT_OUT_OF_RANGE_FORM = "\\d{10}";
     private static final String COMMA_DELIMITER = ",";
     
@@ -52,7 +52,7 @@ public class InputWinningLottoValidator {
     }
     
     private static boolean isExistZeroAtFirstPlace(final String inputWinningLottoNumber) {
-        return matcher(inputWinningLottoNumber, EXIST_ZERO_AT_FIRST_PLACE_FORM).matches();
+        return matcher(inputWinningLottoNumber, ZERO_AT_FIRST_PLACE_FORM).matches();
     }
     
     private static void validateDigitRangeOfOut(final String inputWinningLottoNumbers) {
