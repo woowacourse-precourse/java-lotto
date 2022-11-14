@@ -12,7 +12,7 @@ public class LottoContainer {
     public void printLottos() {
         int size = lottos.size();
         System.out.println(size + "개를 구매했습니다.");
-        for(Lotto lotto: lottos) {
+        for (Lotto lotto: lottos) {
             lotto.printNumbers();
         }
     }

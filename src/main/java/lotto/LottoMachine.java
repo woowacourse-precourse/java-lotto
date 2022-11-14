@@ -6,11 +6,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class LottoMachine {
-    private final List<Integer> normalNumber;
+    private final List<Integer> normalNumbers;
     private final int bonusNumber;
 
-    public LottoMachine(List<Integer> normalNumber, int bonusNumber) {
-        this.normalNumber = normalNumber;
+    public LottoMachine(List<Integer> normalNumbers, int bonusNumber) {
+        this.normalNumbers = normalNumbers;
         this.bonusNumber = bonusNumber;
     }
 
