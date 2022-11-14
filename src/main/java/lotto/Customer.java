@@ -6,6 +6,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Customer {
     private int amount;
+
     public void inputAmount() {
         System.out.println(Ready.INSERT_AMOUNT);
         String amount = readLine();
@@ -14,6 +15,10 @@ public class Customer {
         }
     }
 
+    public int getAmount() {
+        return amount;
+    }
+    
     private boolean validateAmount(String amount) {
         return true;
     }
