@@ -1,17 +1,14 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CheckerTest {
 
@@ -60,10 +57,10 @@ class CheckerTest {
 
         HashMap<Integer, Integer> result = new HashMap<>() {{
             put(3, 1);
-            put(4, 1);
-            put(5, 1);
-            put(6, 1);
-            put(7, 1);
+            put(4, 0);
+            put(5, 0);
+            put(6, 0);
+            put(7, 0);
         }};
 
         for (int i = 0;i < numbers.size();i++) {
@@ -73,6 +70,32 @@ class CheckerTest {
         checker.showWinningStats();
 
         assertThat(checker.getWinningStats()).isEqualTo(result);
+
+    }
+
+    @Test
+    void 수익률_확인() {
+
+        double result = 62.5;
+
+        List<List<Integer>> numbers = List.of(
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(3, 5, 11, 16, 32, 38),
+                List.of(7, 11, 16, 35, 36, 44),
+                List.of(1, 8, 11, 31, 41, 42),
+                List.of(13, 14, 16, 38, 42, 45),
+                List.of(7, 11, 30, 40, 42, 43),
+                List.of(2, 13, 22, 32, 38, 45),
+                List.of(1, 3, 5, 14, 22, 45)
+        );
+
+        for (int i = 0;i < numbers.size();i++) {
+            checker.checkMyLotto(numbers.get(i));
+        }
+
+
+        checker.calculateRateOfReturn(8000);
+        assertThat(result).isEqualTo(checker.getReturnRate());
 
     }
 
