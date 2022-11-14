@@ -14,6 +14,10 @@ import java.util.Map.Entry;
 public class LottoReader {
     public Map<LottoRank, Integer> createLottoResult(List<Lotto> publishedLotto, Lotto winningLotto, Bonus bonus) {
         Map<Lotto, Integer> matchingResult = createMatchingResult(publishedLotto, winningLotto);
+        return putLottoRank(matchingResult, bonus);
+    }
+
+    private Map<LottoRank, Integer> putLottoRank(Map<Lotto, Integer> matchingResult, Bonus bonus) {
         Map<LottoRank, Integer> lottoResult = initLottoResult();
 
         for (Entry<Lotto, Integer> matchingResultEntry : matchingResult.entrySet()) {
