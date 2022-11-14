@@ -23,4 +23,17 @@ public class Start {
         showStatistics(Lotto,winner,bonus);
     }
 
+    public static int howMuch(){
+        System.out.println("구입금액을 입력해 주세요.");
+        int price = 0;
+        String input = Console.readLine();
+        try{
+            price = Integer.parseInt(input);
+        } catch (Exception e){
+            throw new IllegalArgumentException("[ERROR] 입력한 값이 숫자가 아닙니다.");
+        }
+        validatePurchase(price);
+        return price;
+    }
+
 }
