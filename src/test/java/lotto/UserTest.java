@@ -5,13 +5,22 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.*;
 
 class UserTest {
+    @ParameterizedTest
+    @CsvSource({"abc", "1000a", "2b000", "c3000", "1000O"})
+    void validate_notNum(String wrongInput) {
+        User user = new User();
+        assertThatThrownBy(() -> user.validate(wrongInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 숫자만 입력하세요");
+    }
 
     @ParameterizedTest
     @CsvSource({"999", "1234", "7750", "10500", "100001"})
-    void validate(int wrongInputAmount) {
+    void validate_notThousand(String wrongInput) {
         User user = new User();
-        assertThatThrownBy(() -> user.validate(wrongInputAmount))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> user.validate(wrongInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 구매 금액이 1000으로 나누어 떨어지지 않습니다");
     }
 
     @ParameterizedTest
