@@ -2,43 +2,37 @@ package lotto.view;
 
 import lotto.domain.LottoRank;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
 
-    private final String LOTTO_PURCHASE_PRICE_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
-    private final String LOTTO_PURCHASE_COMPLETE_MESSAGE = "개를 구매했습니다.";
-    private final String NUMBER_OF_THING = "개";
+    private static final String LOTTO_PURCHASE_PRICE_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String LOTTO_PURCHASE_COMPLETE_MESSAGE = "개를 구매했습니다.";
+    private static final String NUMBER_OF_THING = "개";
 
-    private final int FIRST_PLACE = 0;
-    private final int SECOND_PLACE = 1;
-    private final int THIRD_PLACE = 2;
-    private final int FOURTH_PLACE = 3;
-    private final int FIFTH_PLACE = 4;
-
-    public LottoRank lottoRank;
-    public void printPriceInputMessage() {
+    public static void printPriceInputMessage() {
         System.out.println(LOTTO_PURCHASE_PRICE_INPUT_MESSAGE);
     }
 
-    public void printLottoPurchaseCompleteMessage(int lottoChance) {
+    public static void printLottoPurchaseCompleteMessage(int lottoChance) {
         System.out.println(lottoChance + LOTTO_PURCHASE_COMPLETE_MESSAGE);
     }
 
-    public void printLottoNumber(List<List<Integer>> allLottoNumber) {
-        for (List<Integer> lottoNumbers : allLottoNumber) {
-            System.out.println(lottoNumbers);
-        }
-    }
-    public void printLottoRankResult(List<Integer> lottoResult) {
-        System.out.println(LottoRank.FIFTH.getResultMessage() + lottoResult.get(FIFTH_PLACE) + NUMBER_OF_THING);
-        System.out.println(LottoRank.FOURTH.getResultMessage() + lottoResult.get(FOURTH_PLACE) + NUMBER_OF_THING);
-        System.out.println(LottoRank.THIRD.getResultMessage() + lottoResult.get(THIRD_PLACE) + NUMBER_OF_THING);
-        System.out.println(LottoRank.SECOND.getResultMessage() + lottoResult.get(SECOND_PLACE) + NUMBER_OF_THING);
-        System.out.println(LottoRank.FIRST.getResultMessage() + lottoResult.get(FIRST_PLACE) + NUMBER_OF_THING);
+    public static void printLottoNumber(List<Integer> lotto) {
+        System.out.println(lotto);
     }
 
-    public void printLottoEarningRate(String earningRate) {
+    public static void printLottoResult(Map<LottoRank, Integer> result) {
+        System.out.println(LottoRank.FIFTH.getResultText()+ result.get(LottoRank.FIFTH)+NUMBER_OF_THING);
+        System.out.println(LottoRank.FOURTH.getResultText()+ result.get(LottoRank.FOURTH)+NUMBER_OF_THING);
+        System.out.println(LottoRank.THIRD.getResultText()+ result.get(LottoRank.THIRD)+NUMBER_OF_THING);
+        System.out.println(LottoRank.SECOND.getResultText()+ result.get(LottoRank.SECOND)+NUMBER_OF_THING);
+        System.out.println(LottoRank.FIRST.getResultText()+ result.get(LottoRank.FIRST)+NUMBER_OF_THING);
+    }
+
+    public static void printLottoEarningRate(double earningRate) {
         System.out.println("총 수익률은 "+ earningRate +"%입니다.");
     }
 }
