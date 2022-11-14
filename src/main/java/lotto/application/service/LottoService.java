@@ -14,8 +14,13 @@ public class LottoService implements LottoServiceUseCase {
 
     @Override
     public ResponseBuyLottoDto buyLotto(RequestBuyLottoDto requestBuyLottoDto) {
+        List<Lotto> lottos = new ArrayList<>();
         Money money = new Money(requestBuyLottoDto.convertToInteger());
         int lottoCount = money.exchangeLotto();
+        for (int i = 0; i < lottoCount; i++) {
+            lottos.add(createLotto());
+        }
+        return new ResponseBuyLottoDto(lottos);
     }
 
     private Lotto createLotto() {
