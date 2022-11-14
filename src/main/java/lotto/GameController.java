@@ -3,9 +3,11 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
-    List<List<Integer>> myLottoNumbers = new ArrayList<>();
-    List<Integer> winningLottoNumbers = new ArrayList<>();
+import static lotto.Constant.MESSAGE_NUMBER_OF_TICKET_IS;
+
+public class GameController {
+    List<List<Integer>> myLottos = new ArrayList<>();
+    List<Integer> winningNumbers = new ArrayList<>();
     int bonusNumber;
     List<Integer> myCorrectNumberResult = new ArrayList<>();
 
@@ -16,7 +18,7 @@ public class Game {
 
         NumberGenerator newNumbers = new NumberGenerator(lottoPurchase.numberOfTickets);
         newNumbers.generateNumbers();
-        myLottoNumbers = newNumbers.myLotto;
+        myLottos = newNumbers.myLotto;
     }
 
     public void drawLotto() {
@@ -25,19 +27,19 @@ public class Game {
         numberDrawing.getBonusNumber();
 
         Lotto winningNumbers = new Lotto(numberDrawing.winningNumbers);
-        winningLottoNumbers = winningNumbers.getNumbers();
+        this.winningNumbers = winningNumbers.getNumbers();
         bonusNumber = numberDrawing.bonusNumber;
+    }
+    public void printLotto(){
+        System.out.println(myLottos.size() + MESSAGE_NUMBER_OF_TICKET_IS);
+        for (List<Integer> lottoNumber : myLottos){
+            System.out.println(lottoNumber.toString());
+        }
     }
 
     public void getResult(){
-        NumberChecker numberChecker = new NumberChecker(winningLottoNumbers, bonusNumber, myLottoNumbers);
+        NumberChecker numberChecker = new NumberChecker(winningNumbers, bonusNumber, myLottos);
         numberChecker.compareNumber();
         numberChecker.getRanks();
-
-//        myCorrectNumberResult = numberChecker.numberOfCorrectNumbers;
-
-
-     //   PrizeResult.secondWinner_5_bonus.getRank();
-
     }
 }

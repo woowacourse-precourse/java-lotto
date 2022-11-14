@@ -16,7 +16,6 @@ public class LottoSeller {
     public int countTicket() {
         if (payAmount % 1000 == 0) {
             this.numberOfTickets = payAmount / 1000;
-            System.out.print(this.numberOfTickets + MESSAGE_NUMBER_OF_TICKET_IS);
         }
         if (payAmount % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);

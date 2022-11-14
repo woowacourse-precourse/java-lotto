@@ -32,7 +32,7 @@ public class NumberChecker {
     }
 
     public static List<Integer> getRanks(){
-        PrizeResult[] values = PrizeResult.values();
+        PrizeEnum[] values = PrizeEnum.values();
         for(int i = 0; i< values.length; i++) {
             values[i].plusCount(numberOfCorrectNumbers);
         }

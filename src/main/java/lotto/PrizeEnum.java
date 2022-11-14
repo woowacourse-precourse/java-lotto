@@ -3,7 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum PrizeResult {
+public enum PrizeEnum {
     fifthWinner_3(5000,3,false),
     fourthWinner_4(50000,4,false),
     thirdWinner_5(1500000,5,false),
@@ -16,7 +16,7 @@ public enum PrizeResult {
     private int count;
     private List<Integer> ans = new ArrayList<>(List.of(2,3,3,0,4));
 
-    PrizeResult(int prize, int correctNumber, boolean bonusCorrect) {
+    PrizeEnum(int prize, int correctNumber, boolean bonusCorrect) {
         this.prize = prize;
         this.correctNumber = correctNumber;
         this.bonusCorrect = bonusCorrect;
