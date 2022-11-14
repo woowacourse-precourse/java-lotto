@@ -87,7 +87,7 @@
     - [ ] 당첨 내역 결과 반환 - printCalculateWonLotto
       - [x] 당첨 금액을 당첨 등수로 변환 - changeMoneyToRank
       - [x] 당첨 내역 출력 - printWonLotto
-      - [ ] 수익률 출력 - printYield
+      - [x] 수익률 출력 - printYield
 
 
 

@@ -99,6 +99,12 @@ public class Controller {
         }
     }
 
-    private void printYield(int loss, int profit) {
+    private void printYield(double loss, double profit) {
+        double yield = 0.0;
+        if(profit > 0){
+            yield = profit / loss * 100.0;
+        }
+
+        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
     }
 }
