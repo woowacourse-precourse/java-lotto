@@ -14,9 +14,13 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    private Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = Numbers.sortAscending(numbers);
+    }
+
+    public static Lotto of(List<Integer> numbers) {
+        return new Lotto(numbers);
     }
 
     private void validate(List<Integer> numbers) {

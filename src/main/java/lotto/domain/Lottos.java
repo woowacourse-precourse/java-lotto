@@ -18,7 +18,7 @@ public class Lottos {
 
     private final List<Lotto> lottos = new ArrayList<>();
 
-    public Lottos(int money) {
+    private Lottos(int money) {
         validate(money);
         purchaseRandomLottos(money);
     }
@@ -29,6 +29,10 @@ public class Lottos {
             lottos.add(Lotto.creatRandom());
             balance -= LOTTO_PRICE;
         }
+    }
+
+    public static Lottos purchaseFor(int money) {
+        return new Lottos(money);
     }
 
     Lottos(Lotto... lottos) {

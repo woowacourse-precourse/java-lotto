@@ -16,7 +16,7 @@ class LottosTest {
     void createLottosForAmountOfMoney() {
         int money = 5000;
         int lottoPrice = 1000;
-        Lottos lottos = new Lottos(money);
+        Lottos lottos = Lottos.purchaseFor(money);
 
         assertThat(lottos.countTotal()).isEqualTo(money / lottoPrice);
     }
@@ -25,9 +25,8 @@ class LottosTest {
     @Test
     void createLottosWithIndivisibleMoney() {
         int money = 5100;
-        int lottoPrice = 1000;
 
-        assertThatThrownBy(() -> new Lottos(money))
+        assertThatThrownBy(() -> Lottos.purchaseFor(money))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.MONEY_LEFT_OVER);
 
@@ -37,11 +36,11 @@ class LottosTest {
     @Test
     void calculateProfit() {
         Lottos lottos = new Lottos(
-                new Lotto(List.of(1, 2, 3, 4, 44, 45)),
-                new Lotto(List.of(7, 8, 9, 10, 11, 12)),
-                new Lotto(List.of(1, 2, 7, 8, 9, 10))
+                Lotto.of(List.of(1, 2, 3, 4, 44, 45)),
+                Lotto.of(List.of(7, 8, 9, 10, 11, 12)),
+                Lotto.of(List.of(1, 2, 7, 8, 9, 10))
         );
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winningLotto = Lotto.of(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
 
         double profit = lottos.calculateProfit(winningLotto, bonusNumber);
@@ -53,11 +52,11 @@ class LottosTest {
     @Test
     void countWinningPirzes() {
         Lottos lottos = new Lottos(
-                new Lotto(List.of(1, 2, 3, 4, 44, 45)),
-                new Lotto(List.of(7, 8, 9, 10, 11, 12)),
-                new Lotto(List.of(1, 2, 7, 8, 9, 10))
+                Lotto.of(List.of(1, 2, 3, 4, 44, 45)),
+                Lotto.of(List.of(7, 8, 9, 10, 11, 12)),
+                Lotto.of(List.of(1, 2, 7, 8, 9, 10))
         );
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winningLotto = Lotto.of(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
 
         Map<LottoResult, Integer> winningCounts = lottos.getWinningCounts(winningLotto, bonusNumber);
