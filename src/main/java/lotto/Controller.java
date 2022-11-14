@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -126,17 +127,19 @@ public class Controller {
         View.Output("당첨 통계");
         View.Output("---");
         List<Integer> lottoResultKeys = new ArrayList<>(lottoResult.keySet());
+        DecimalFormat formatter = new DecimalFormat("###,###");
         for (int i = 5; 0 < i; i--) {
             Integer correctNumber = LottoReward.getCorrectNumberByRank(i);
             Integer result = lottoResult.get(i);
             Integer reward = LottoReward.getRewardByRank(i);
+            String rewardPrint = formatter.format(reward);
 
             if (i == 2) {
-                View.Output(correctNumber + "개 일치, 보너스 볼 일치 (" + reward + "원) - " + result + "개");
+                View.Output(correctNumber + "개 일치, 보너스 볼 일치 (" + rewardPrint + "원) - " + result + "개");
             }
 
             if (i != 2) {
-                View.Output(correctNumber + "개 일치 (" + reward + "원) - " + result + "개");
+                View.Output(correctNumber + "개 일치 (" + rewardPrint + "원) - " + result + "개");
             }
         }
     }
