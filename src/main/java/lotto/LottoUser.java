@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoUser {
     private long money;
+    private final long initMoney;
     private LottoSystem lottoSystem;
 
     private List<Lotto> lottos;
@@ -14,6 +15,7 @@ public class LottoUser {
     public LottoUser(long money, LottoSystem lottoSystem) {
         validate(money);
         this.money = money;
+        this.initMoney = money;
         this.lottoSystem = lottoSystem;
         this.lottos = new ArrayList<>();
         this.winInfomations = new ArrayList<>();
@@ -49,4 +51,12 @@ public class LottoUser {
         return this.winInfomations;
     }
 
+    //수익률 반환
+    public double getReturnRate(){
+        long sum = 0;
+        for(WinInfo winInfo : this.winInfomations){
+            sum += winInfo.getWinMoney();
+        }
+        return (double)sum / this.initMoney;
+    }
 }
