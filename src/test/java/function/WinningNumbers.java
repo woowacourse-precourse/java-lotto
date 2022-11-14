@@ -21,7 +21,7 @@ public class WinningNumbers {
         for (int i = 1; i <= 6; i++) {
             winningNumbers.add(i);
         }
-        assertThat(new LottoDrawMachine().getWinningNumbers())
+        assertThat(new LottoDrawMachine().getWinningNumbers().getNumbers())
                 .isEqualTo(winningNumbers);
     }
 
@@ -62,13 +62,13 @@ public class WinningNumbers {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> new LottoDrawMachine())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]: 당첨 번호는 6개의 숫자여야 합니다.");
+                .hasMessageContaining("[ERROR]: 로또의 사이즈는 6이여야 합니다.");
     }
 
     @DisplayName("숫자의 범위가 1 ~ 45까지가 아님")
     @Test
     void NotRangeFrom1To45() {
-        String data = "1,2,3,46,5";
+        String data = "1,2,3,46,5,6";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> new LottoDrawMachine())
                 .isInstanceOf(IllegalArgumentException.class)
@@ -77,8 +77,8 @@ public class WinningNumbers {
 
     @DisplayName("중복되는 숫자 존재")
     @Test
-    void duplicateNumber() {
-        String data = "1,2,3,5,5";
+    void duplicateNumbers() {
+        String data = "1,2,3,5,5,6";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> new LottoDrawMachine())
                 .isInstanceOf(IllegalArgumentException.class)
