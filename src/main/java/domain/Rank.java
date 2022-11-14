@@ -6,21 +6,23 @@ import java.util.stream.Collectors;
 
 public enum Rank {
 
-    FAIL(0, false, 0),
-    FIFTH(3, false, 5_000),
-    FOURTH(4, false, 50_000),
-    THIRD(5, false, 1_500_000),
-    SECOND(5, true, 30_000_000),
-    FIRST(6, false, 2_000_000_000);
+    FAIL(0, false, 0, 0),
+    FIFTH(3, false, 5_000, 5),
+    FOURTH(4, false, 50_000, 4),
+    THIRD(5, false, 1_500_000, 3),
+    SECOND(5, true, 30_000_000, 2),
+    FIRST(6, false, 2_000_000_000, 1);
 
     private final int count;
     private final boolean bonus;
     private final int reward;
+    private final int ranking;
 
-    Rank(int count, boolean bonus, int reward) {
+    Rank(int count, boolean bonus, int reward, int ranking) {
         this.count = count;
         this.bonus = bonus;
         this.reward = reward;
+        this.ranking = ranking;
     }
 
     public static Rank winningCondition(List<Integer> winning, List<Integer> user){
@@ -89,5 +91,9 @@ public enum Rank {
 
     public int getReward() {
         return reward;
+    }
+
+    public int getRanking() {
+        return ranking;
     }
 }
