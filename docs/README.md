@@ -1,5 +1,8 @@
 ## 기능목록
 
+### 예외처리 - LottoIllegalArgumentException
+- 모든 예외 메시지의 "[ERROR]" 를 앞에 붙여 출력.
+
 ### LottoServiceUseCase - Lotto 관련 기능 정의 인터페이스.
 - 받은 금액을 통해 로또 티켓 출력. - buyLotto 
 
