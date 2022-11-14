@@ -7,6 +7,7 @@ import lotto.constants.message.ExceptionMessage;
 
 public class WinnerNumber {
     public static final String LOTTO_NUMBER_CHECK = "^([0-9]*,){5}[0-9]*$";
+    public static final String BONUS_NUMBER_CHECK = "^[0-9]*$";
 
     public static final String COMMA = ",";
     public static final int LOTTO_NUMBER = 0;
@@ -46,7 +47,8 @@ public class WinnerNumber {
     }
 
     private boolean isOutOfBounds(List<String> splitInputWinningNumber) {
-        return getMaximumNumber(splitInputWinningNumber) > MAXIMUM_NUMBER || getMinimumNumber(splitInputWinningNumber) < MINIMUM_NUMBER;
+        return getMaximumNumber(splitInputWinningNumber) > MAXIMUM_NUMBER
+                || getMinimumNumber(splitInputWinningNumber) < MINIMUM_NUMBER;
     }
 
     private int getMinimumNumber(List<String> splitInputWinningNumber) {
@@ -70,5 +72,6 @@ public class WinnerNumber {
     }
 
     public void validateBonusNumber(String bonusNumber) {
+
     }
 }
