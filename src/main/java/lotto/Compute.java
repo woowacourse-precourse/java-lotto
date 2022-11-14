@@ -68,6 +68,24 @@ public class Compute {
         return winRecords;
     }
 
+    private void printWinRecords(HashMap<String, Integer> winRecords) {
+        final String TITLE = "당첨 통계";
+        final String DIVISION_LINE = "---";
+
+        System.out.println(TITLE);
+        System.out.println(DIVISION_LINE);
+
+        for (WinType winType : WinType.values()) {
+            String winMessage = winType.winTypeMessage;
+            int winNumber = winRecords.get(winType.winTypeKey);
+            String replaceFrom = "$";
+            replaceFrom = replaceFrom.concat(winType.winTypeKey);
+            winMessage = winMessage.replace(replaceFrom, Integer.toString(winNumber));
+
+            System.out.println(winMessage);
+        }
+    }
+
     private float computeProfit(int money, HashMap<String, Integer> winRecords) {
         float profit = 0;
 
