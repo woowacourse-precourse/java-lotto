@@ -57,6 +57,6 @@ public class LottoServiceImpl implements LottoService {
             int count = results.get(rank);
             totalPrize += rank.getPrize() * count;
         }
-        return totalPrize / amount;
+        return (totalPrize / amount) * 100;
     }
 }
