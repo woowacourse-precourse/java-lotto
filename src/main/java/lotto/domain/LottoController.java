@@ -25,7 +25,7 @@ public class LottoController {
         Lotto win_lotto = lottoInput();
 
         //보너스 번호 입력
-        //int bonus_num = bonusInput();
+        int bonus_num = bonusInput(win_lotto);
 
 
 
@@ -63,5 +63,20 @@ public class LottoController {
             }
         }
         return new Lotto(lottoNumber);
+    }
+    public static int bonusInput(Lotto lotto){
+        System.out.println("보너스번호를 입력해 주세요.");
+        String bonus_str = readLine();
+        try {
+            int bonus_num = Integer.parseInt(bonus_str);
+            if(bonus_num<1 && bonus_num>45)
+                throw new IllegalArgumentException();
+            return bonus_num;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+    private boolean isString_in_1to9(String str) {
+        return str.matches("[1-9.]+");
     }
 }
