@@ -23,10 +23,7 @@ enum Winning {
 }
 
 public class Result {
-    public static void compareLottoNumber(List<Lotto> myLotto,
-                                          Lotto winningNumber,
-                                          int bonusNumber,
-                                          int purchaseMoney) {
+    public static void compareLottoNumber(List<Lotto> myLotto, Lotto winningNumber, int bonusNumber, int purchaseMoney) {
         for (Lotto lotto : myLotto) {
             int winning = countWinningNumber(lotto, winningNumber);
             boolean bonus = containBonusNumber(lotto, bonusNumber);
@@ -84,15 +81,18 @@ public class Result {
     }
 
     public static void calculateTheProfit(int purchaseMoney) {
-        double prize = 0;
-
-        for (Winning winning : Winning.values()) {
-            prize += winning.multiple();
-        }
-
-        double profit = prize * 100 / purchaseMoney;
+        double profit = totalPrize() * 100 / purchaseMoney;
 
         printTheProfit(profit);
+    }
+
+    public static double totalPrize() {
+        double result = 0;
+        for(Winning winning : Winning.values()){
+            result += winning.multiple();
+        }
+
+        return result;
     }
 
     public static void printTheProfit(double profit) {
