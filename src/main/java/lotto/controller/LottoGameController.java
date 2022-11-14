@@ -32,7 +32,9 @@ public class LottoGameController {
     public void printTickets(String amount, List<Lotto> tickets) {
         PrintGuideMessage.printPurchaseGuide(game.calculateQuantity(amount));
         for (Lotto ticket : tickets) {
-            System.out.println(ticket.getNumbers().toString());
+            List<Integer> numbers = ticket.getNumbers();
+            ticket.ascending(numbers);
+            System.out.println(numbers.toString());
         }
     }
 
