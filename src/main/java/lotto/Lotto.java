@@ -1,5 +1,7 @@
 package lotto;
 
+import user.NumberComponent;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
@@ -10,18 +12,19 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        ArrayList<Integer> sortedNumbers = new ArrayList<>(numbers);
-        Collections.sort(sortedNumbers);
-        this.numbers = sortedNumbers;
+        validateLotto(numbers);
+        this.numbers = sortedNumbers(numbers);
     }
 
     public Lotto(String input) {
-        List<Integer> numbers = stringToList(input);
-        validate(numbers);
+        validateLotto(stringToList(input));
+        this.numbers = sortedNumbers(stringToList(input));
+    }
+
+    private List<Integer> sortedNumbers(List<Integer> numbers) {
         ArrayList<Integer> sortedNumbers = new ArrayList<>(numbers);
         Collections.sort(sortedNumbers);
-        this.numbers = sortedNumbers;
+        return sortedNumbers;
     }
 
     private List<Integer> stringToList(String input) {
@@ -33,47 +36,42 @@ public class Lotto {
         return result;
     }
 
-    private void validate(List<Integer> numbers) {
-        validateNull(numbers);
-        validateDuplicate(numbers);
-        validateLength(numbers);
+    private void validateLotto(List<Integer> numbers) {
+        validateLottoNull(numbers);
+        validateLottoSize(numbers);
+        validateLottoDuplicate(numbers);
         validateOutRange(numbers);
     }
 
-    private void validateNull(List<Integer> numbers) {
-        if (numbers.isEmpty()) {
+    private void validateLottoNull(List<Integer> numbers) {
+        if (numbers == null) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateLength(List<Integer> numbers) {
+    private void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateOutRange(List<Integer> numbers) {
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) < 1 || numbers.get(i) > 45) {
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
-    private void validateDuplicate(List<Integer> numbers) {
+    private void validateLottoDuplicate(List<Integer> numbers) {
         Set<Integer> numberSet = new HashSet<>(numbers);
         if (numberSet.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    public String toNumberForm() {
-        String message = "[";
-        for (int number : numbers) {
-            message += number + ", ";
+    private void validateOutRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            NumberComponent.checkLottoNumber(number);
         }
-        message = message.substring(0, message.length() - 2) + "]";
-        return message;
+    }
+
+    public String toNumberForm() {
+        String message = "[%d, %d, %d, %d, %d, %d]";
+        return String.format(message, numbers.get(0), numbers.get(1),
+                numbers.get(2), numbers.get(3), numbers.get(4), numbers.get(5));
     }
 
     public boolean hasBonus(int bonus) {
@@ -82,9 +80,10 @@ public class Lotto {
 
     public int compareLotto(Lotto userLotto) {
         int correctCount = 0;
-        for (int i = 0; i < 6; i++) {
-            if (userLotto.hasBonus(numbers.get(i)) == true)
+        for (int number : numbers) {
+            if (userLotto.hasBonus(number)) {
                 correctCount++;
+            }
         }
         return correctCount;
     }
