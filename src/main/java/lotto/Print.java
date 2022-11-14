@@ -11,7 +11,7 @@ public class Print {
         int buyAmount = Operation.buyAmount(purchaseAmount);
         System.out.printf("%d개를 구매했습니다.\n", buyAmount);
         for (Lotto lotto: lottos) {
-            lotto.printLotto();
+            System.out.println(lotto.getNumbers());
         }
     }
 

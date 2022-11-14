@@ -28,8 +28,8 @@ public class Lotto {
         return result;
     }
 
-    void printLotto(){
-        System.out.println(numbers);
+    List<Integer> getNumbers(){
+        return numbers;
     }
 
     int matchWinning(List<Integer> winning) {
