@@ -2,8 +2,11 @@ package lotto.Service;
 
 import lotto.Domain.LotteryTickets;
 import lotto.Domain.Validator;
+import lotto.Domain.WinningNumber;
 import lotto.View.InputView;
 import lotto.View.OutputView;
+
+import java.util.List;
 
 public class LottoService {
 
@@ -28,5 +31,20 @@ public class LottoService {
 
     public void showLottoPurchaseHistory(LotteryTickets lotteryTickets) {
         OutputView.showPurchasedLottos(lotteryTickets);
+    }
+
+    public WinningNumber getWinningNumsWithBonus() {
+        List<Integer> winningLottoNums = getWinningNums();
+        return createWinningNums(winningLottoNums);
+    }
+
+    public List<Integer> getWinningNums(){
+        List<Integer> winningNums = InputView.getWinningNums();
+        Validator.checkIsValidWinningNums(winningNums);
+        return winningNums;
+    }
+
+    private WinningNumber createWinningNums(List<Integer> winningNums) {
+        return new WinningNumber(winningNums);
     }
 }
