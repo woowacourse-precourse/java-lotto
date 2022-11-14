@@ -10,7 +10,7 @@
 - [X] 사용자의 입력값을 받아 Cashier에 저장한다. model/Cashier#inputPlayerValue
 - [X] 사용자가 입력한 금액에 맞춰 일정 갯수의 로또를 생성한다. model/Cashier#createLottos
 - [X] 당첨 여부를 확인한다. controller/model#checkPrizeQuantity
-- [ ] 당첨 통계를 낸다. controller/model#myStat
+- [X] 당첨 금액 통계를 낸다. controller/model#myStat
 
 # 🚀 기능 요구 사항
 

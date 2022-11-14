@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Statistics {
-
     // 당첨 갯수와 상을 모아두는 변수
     int PRIZE1 = 0, PRIZE2 = 0, PRIZE3 = 0, PRIZE4 = 0, PRIZE5 = 0;
 
@@ -20,10 +19,18 @@ public class Statistics {
             int bonusCount = matchNumberCount.get("bonusCount");
             // 이게 무슨 상인지 확인
             updatePrizeQuantity(matchCount, bonusCount);
-
         }
         // System.out.println(PRIZE1 + " " + PRIZE2 + " " + PRIZE3 + " " + PRIZE4 + " " + PRIZE5);
 
+    }
+
+    public int myStat(int receivedMoney) {
+        // 당첨금액 합계 구하고 통계내기
+        int totalReward = PrizeType.PRIZE1.getReward() * PRIZE1 + PrizeType.PRIZE2.getReward() * PRIZE2
+            + PrizeType.PRIZE3.getReward() * PRIZE3 + PrizeType.PRIZE4.getReward() * PRIZE4
+            + PrizeType.PRIZE5.getReward() * PRIZE5;
+
+        return totalReward / receivedMoney;
     }
 
     private Map<String, Integer> checkMatchNumbersCount(List<Integer> answerLottoNumbers, int bounsNumber,
