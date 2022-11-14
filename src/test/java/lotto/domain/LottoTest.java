@@ -72,7 +72,7 @@ public class LottoTest {
     @Test
     void isContains() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThat(lotto.isContains(1)).isTrue();
-        assertThat(lotto.isContains(7)).isFalse();
+        assertThat(lotto.isContains(new LottoNumber(1))).isTrue();
+        assertThat(lotto.isContains(new LottoNumber(7))).isFalse();
     }
 }

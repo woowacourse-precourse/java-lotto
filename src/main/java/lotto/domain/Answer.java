@@ -10,13 +10,13 @@ public class Answer {
     public static final int CRITERION_ZERO = 0;
 
     private final Lotto answer;
-    private final int bonusNumber;
+    private final LottoNumber bonusNumber;
 
     public Answer(List<Integer> answers, int bonusNumber) {
         LottoValidationUtils.validateDuplication(answers, bonusNumber);
         LottoValidationUtils.validateEachRange(bonusNumber);
         this.answer = new Lotto(answers);
-        this.bonusNumber = bonusNumber;
+        this.bonusNumber = new LottoNumber(bonusNumber);
     }
 
     public List<LottoResult> compare(Lottos lottos) {
