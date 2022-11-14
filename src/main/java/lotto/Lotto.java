@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
 
 public class Lotto {
 
-    public static int LOTTO_NUMBER_COUNT = 6;
+    public static int NUMBERS_COUNT = 6;
+    public static int PRICE = 1000;
 
     private final List<LottoNumber> numbers;
 
@@ -24,7 +25,7 @@ public class Lotto {
     }
 
     private static void validateNumberCount(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBER_COUNT) {
+        if (numbers.size() != NUMBERS_COUNT) {
             throw new IllegalArgumentException(
                     InvalidInputMessage.ERR_DEFAULT
                             + InvalidInputMessage.ERR_NUMBERS_COUNT
@@ -34,7 +35,7 @@ public class Lotto {
 
     private static void validateDuplication(List<Integer> numbers) {
         Set<Integer> set = new HashSet<Integer>(numbers);
-        if (set.size() != LOTTO_NUMBER_COUNT) {
+        if (set.size() != NUMBERS_COUNT) {
             throw new IllegalArgumentException(
                     InvalidInputMessage.ERR_DEFAULT
                             + InvalidInputMessage.ERR_DUPLICATED_NUMBER
