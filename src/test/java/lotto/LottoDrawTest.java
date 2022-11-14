@@ -15,7 +15,7 @@ public class LottoDrawTest {
 
     @DisplayName("쉼표로 구분한 요소가 6개가 아닌 경우 예외 발생")
     @Test
-    void case1_split_comma() {
+    void splitComma() {
         String input = "1,2,3,4,5";
         assertThatThrownBy(() -> lottoDraw.pickWinNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -23,7 +23,7 @@ public class LottoDrawTest {
 
     @DisplayName("쉼표로 구분한 요소가 숫자가 아닌 경우 예외 발생")
     @Test
-    void case2_validate_numeric() {
+    void splitCommaException() {
         String input = "1,2,3,4,5,j";
         assertThatThrownBy(() -> lottoDraw.pickWinNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -31,7 +31,7 @@ public class LottoDrawTest {
 
     @DisplayName("6개의 숫자에 중복이 있는 경우 예외 발생")
     @Test
-    void case3_duplication_in_numbers() {
+    void duplicationInNumbers() {
         String input = "1,2,3,4,5,5";
         assertThatThrownBy(() -> lottoDraw.pickWinNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -39,7 +39,7 @@ public class LottoDrawTest {
 
     @DisplayName("1~45 까지의 범위를 벗어난 숫자가 있는 경우 예외 발생")
     @Test
-    void case4_validate_range() {
+    void validateRange() {
         String input = "1, 2, 3, 4, 5, 46";
         assertThatThrownBy(() -> lottoDraw.pickWinNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -47,7 +47,7 @@ public class LottoDrawTest {
 
     @DisplayName("쉼표로 구분한 중복이 없는 6개의 숫자가 맞는 경우 리스트 반환")
     @Test
-    void case5_correct_data_result() {
+    void correctDataResult() {
         String input = "1,2,3,4,5,6";
         List<Integer> result = List.of(1, 2, 3, 4, 5, 6);
         assertThat(lottoDraw.pickWinNumbers(input)).isEqualTo(result);
@@ -55,7 +55,7 @@ public class LottoDrawTest {
 
     @DisplayName("보너스 번호에 구분자가 있는 경우 예외가 발생한다.")
     @Test
-    void case6_validate_separator() {
+    void validateSeparator() {
         String input = "1,2";
         assertThatThrownBy(() -> lottoDraw.pickBonusNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -63,7 +63,7 @@ public class LottoDrawTest {
 
     @DisplayName("보너스 번호가 숫자가 아닌 경우 예외가 발생한다.")
     @Test
-    void case7_validate_Numeric() {
+    void validateNumericException() {
         String input = "w";
         assertThatThrownBy(() -> lottoDraw.pickBonusNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -71,7 +71,7 @@ public class LottoDrawTest {
 
     @DisplayName("보너스 번호가 1~45 범위 외인 경우 예외가 발생한다.")
     @Test
-    void case8_validate_range() {
+    void validateRangeException() {
         String input = "0";
         assertThatThrownBy(() -> lottoDraw.pickBonusNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);

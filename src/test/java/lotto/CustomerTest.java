@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.user.Customer;
 import lotto.enumeration.LottoRankInformation;
+import lotto.user.Customer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,21 +16,21 @@ public class CustomerTest {
 
     @DisplayName("입력값이 숫자인 경우 Customer 객체를 생성한다.")
     @Test
-    void case1_validate_unit() {
+    void validateUnit() {
         assertThat(new Customer("1000"))
                 .isInstanceOf(Customer.class);
     }
 
     @DisplayName("입력값이 숫자가 아닌 아닌 경우 예외가 발생한다.")
     @Test
-    void case2_validate_unit() {
+    void validateUnitException() {
         assertThatThrownBy(() -> new Customer("1000j"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 구매내역을 출력한다.")
     @Test
-    void case3_print_out_lotto_list() {
+    void printOutLottoList() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             Customer input = new Customer("1000");
             String result = "1개를 구매했습니다.\n" + List.of(1, 2, 3, 4, 5, 6);
@@ -41,7 +41,7 @@ public class CustomerTest {
 
     @DisplayName("당첨번호와 비교 후 맞는 번호 개수를 출력한다.")
     @Test
-    void case4_count_the_duplicate_lotto_numbers() {
+    void countTheDuplicateLottoNumbers() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             Customer input = new Customer("2000");
             List<Integer> winNumber = List.of(1, 2, 3, 4, 5, 6);
@@ -53,7 +53,7 @@ public class CustomerTest {
 
     @DisplayName("보너스 번호가 있는지 출력한다.")
     @Test
-    void case5_count_the_duplicate_bonus_number() {
+    void countTheDuplicateBonusNumber() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             Customer input = new Customer("3000");
             int bonusNumber = 1;
@@ -65,7 +65,7 @@ public class CustomerTest {
 
     @DisplayName("당첨 번호와 보너스 번호를 기준으로 등수를 매긴다.")
     @Test
-    void case6_create_rankings() {
+    void createRankings() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             Map<LottoRankInformation, Integer> input = new Customer("2000")
                     .createWinnings("1,2,3,4,5,7", "6");
@@ -78,7 +78,7 @@ public class CustomerTest {
 
     @DisplayName("당첨 번호와 보너스 번호가 중복되면 예외를 출력한다.")
     @Test
-    void case7_validate_duplication_between_win_numbers_and_bonus_number() {
+    void validateDuplicationBetweenWinNumbersAndBonusNumber() {
         Customer input = new Customer("3000");
         assertThatThrownBy(() -> input.matchBonusNumber(1, List.of(1, 2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -86,7 +86,7 @@ public class CustomerTest {
 
     @DisplayName("최종 통계를 출력한다.")
     @Test
-    void case8_print_result() {
+    void printResult() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             Customer input = new Customer("2000");
             input.createWinnings("1,2,3,4,5,7", "6");

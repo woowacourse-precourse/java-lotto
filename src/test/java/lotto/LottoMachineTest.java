@@ -18,7 +18,7 @@ public class LottoMachineTest {
 
     @DisplayName("중복되지 않은 1~45 범위의 숫자 6개 생성")
     @Test
-    void case1_pick_random_unique_numbers() {
+    void pickRandomUniqueNumbers() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             List<Integer> result = List.of(1, 2, 3, 4, 5, 6);
             Method method = LottoMachine.class.getDeclaredMethod("extractRandomNumbers");
@@ -30,7 +30,7 @@ public class LottoMachineTest {
 
     @DisplayName("랜덤 숫자 6개 로또 객체로 바꾸기")
     @Test
-    void case2_convert_numbers_to_lotto() {
+    void convertNumbersToLotto() {
         try {
             Class<Lotto> result = Lotto.class;
             Method method = LottoMachine.class.getDeclaredMethod("convertLotto", List.class);
@@ -43,7 +43,7 @@ public class LottoMachineTest {
 
     @DisplayName("구입 금액이 천원 단위인 경우 금액에 맞게 로또 번호 뽑기")
     @Test
-    void case3_pick_lotteries() {
+    void pickLotteries() {
         List<Lotto> input = lottoMachine.pickLotteries(5000);
         int result = 5;
         assertThat(input.size()).isEqualTo(result);
@@ -51,7 +51,7 @@ public class LottoMachineTest {
 
     @DisplayName("구입 금액이 천원 단위가 아닌 경우 예외 발생")
     @Test
-    void case4_validate_unit() {
+    void validateUnitException() {
         assertThatThrownBy(() -> lottoMachine.pickLotteries(5005))
                 .isInstanceOf(IllegalArgumentException.class);
     }
