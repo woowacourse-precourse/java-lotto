@@ -22,7 +22,7 @@ public class CommonExceptionTest {
     @Test
     void 구매금액_단위_테스트() {
         assertThatIllegalArgumentException().isThrownBy(
-                () -> CommonException.validatePaymentUnit(10230)
+                () -> PaymentException.validateUnit(10230)
         );
     }
 
