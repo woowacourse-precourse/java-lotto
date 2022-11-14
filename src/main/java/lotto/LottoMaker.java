@@ -15,4 +15,13 @@ public class LottoMaker {
             }
         }
     }
+
+    public List<Lotto> makeUserLotto() {
+        List<Lotto> userLotto = new ArrayList<>();
+        for (List<Integer> lottoNumber : lottoNumbers) {
+            Lotto lotto = new Lotto(lottoNumber);
+            userLotto.add(lotto);
+        }
+        return userLotto;
+    }
 }
