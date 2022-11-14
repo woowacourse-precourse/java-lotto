@@ -1,10 +1,9 @@
-package lotto;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import lotto.domain.Validator;
 
 public class Lotto {
     private final List<Integer> numbers;

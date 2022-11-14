@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.Result;
 import lotto.domain.Validator;
