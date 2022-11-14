@@ -48,7 +48,7 @@ public class View {
         System.out.println("당첨 통계");
         System.out.println("---");
     }
-    protected static void rateView(Float rate){
+    protected static void rateView(Double rate){
         System.out.printf("총 수익률은 %.1f%s입니다.",rate,"%");
     }
 }

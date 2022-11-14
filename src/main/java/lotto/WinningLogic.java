@@ -5,7 +5,7 @@ import static lotto.Game.*;
 public class WinningLogic {
     private static Integer match;
     private static Boolean bonus;
-    private static float total = 0.0F;
+    private static double total = 0.0F;
     public static void addScore(){
         lottos.stream().forEach(lotto -> {
             int countMatch = countMatch(lotto);
@@ -15,9 +15,9 @@ public class WinningLogic {
     }
     public static void calculateRate(){
         for(Winning winning: Winning.values()){
-                    total += (float) winning.price * winning.count;
+                    total += (double) winning.price * winning.count;
         }
-        rate = total/Float.parseFloat(input) * 100;
+        rate = total/Double.parseDouble(input) * 100;
     }
     private static void countWinning(){
         for(Winning winning: Winning.values()){

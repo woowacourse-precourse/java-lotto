@@ -16,7 +16,7 @@ public class Game extends View {
     public static Integer count;
     public static Lotto winning;
     public static Integer bonusNumber;
-    public static Float rate;
+    public static Double rate;
     public Game(){
     }
 
