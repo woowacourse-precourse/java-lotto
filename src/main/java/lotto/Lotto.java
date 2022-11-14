@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -9,7 +10,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        sort(numbers);
         this.numbers = numbers;
     }
 
@@ -30,11 +30,14 @@ public class Lotto {
         }
     }
 
-    private void sort(List<Integer> numbers) {
-        numbers.sort(Comparator.comparingInt(o -> o));
-    }
-
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    @Override
+    public String toString() {
+        List<Integer> numbers = new ArrayList<>(this.numbers);
+        numbers.sort(Comparator.comparingInt(o -> o));
+        return numbers.toString();
     }
 }

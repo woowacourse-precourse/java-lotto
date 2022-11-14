@@ -27,7 +27,7 @@ public class Emcee {
         System.out.println("Lotto 정보는 다음과 같습니다.");
         System.out.println("==================================================");
         for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers());
+            System.out.println(lotto);
         }
         System.out.println("==================================================");
     }
