@@ -22,6 +22,7 @@ public class LottoStats {
     public Map<StatsType,Integer> statistics(){
         return lottoStats;
     }
+    public Double getEarning(){return earning;}
     private void calculationEarning(Integer cost){
         earning = 0d;
         for(var type  : lottoStats.keySet()){
