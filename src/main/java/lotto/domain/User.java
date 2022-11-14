@@ -10,6 +10,7 @@ public class User {
     private List<Lotto> lottos;
     private static List<LottoGrade> lottoGrades;
     private double profit;
+    private int lottoPayment;
 
     public void buyLottos(int lottoAmount){
         lottos = new ArrayList<>();
@@ -42,11 +43,15 @@ public class User {
         return (int) lottoGrades.stream().filter(grade -> lottoGrade.equals(grade)).count();
     }
 
-    public String getLottoProfit(String inputPayment) {
-        double payment = Double.parseDouble(inputPayment);
+    public String getLottoProfit() {
+        double payment = lottoPayment;
         for(LottoGrade lottoGrade :lottoGrades){
             profit += lottoGrade.getPrize();
         }
         return String.format("%.1f",profit/payment*100);
+    }
+
+    public void setLottoPayment(int lottoPayment) {
+        this.lottoPayment = lottoPayment;
     }
 }

@@ -9,12 +9,6 @@ public class LottoService {
 
     final static int LOTTO_PAYMENT = 1000;
 
-    public int buyLotto(String inputPayment){
-        int payment = inputPaymentToNumber(inputPayment);
-        int amount = getLottoAmount(payment);
-        return amount;
-    }
-
     public int inputPaymentToNumber(String inputPayment){
         int payment;
 
@@ -24,6 +18,11 @@ public class LottoService {
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
         }
+    }
+
+    public int buyLotto(int payment){
+        int amount = getLottoAmount(payment);
+        return amount;
     }
 
     public int getLottoAmount(int payment) {
