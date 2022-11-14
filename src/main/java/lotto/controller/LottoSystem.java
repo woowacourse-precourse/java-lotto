@@ -9,7 +9,7 @@ import lotto.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.utils.ErrorCode.INVALID_PRICE;
+import static lotto.utils.ErrorCode.*;
 
 public class LottoSystem {
 
@@ -49,5 +49,11 @@ public class LottoSystem {
             lottos.add(lotto);
         }
         return lottos;
+    }
+
+    private void validateBonusNumber(List<Integer> wonNumber, int bonusNumber) {
+        if (bonusNumber > 45 || bonusNumber < 1) {
+            throw new IllegalArgumentException(INVALID_NUMBER_RANGE.getMessage());
+        }
     }
 }
