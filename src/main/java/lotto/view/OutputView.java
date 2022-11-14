@@ -21,4 +21,11 @@ public class OutputView {
             System.out.println(lottoTicket);
         }
     }
+
+    public void printWinningStatistics(Player player){
+        for (Entry<Ranking, Long> entrySet : player.getWinningResult().entrySet()) {
+            System.out.println(entrySet.getKey().toString()
+                    + String.format(PHRASES_RANKING_COUNT.print(entrySet.getValue())));
+        }
+    }
 }
