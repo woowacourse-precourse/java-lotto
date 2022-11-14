@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UI {
@@ -47,8 +46,7 @@ public class UI {
     }
 
     public void setBonusNumber(String bonusInput) {
-        Validation.validateBonusInput(bonusInput, this.lottoLogic.getPrizeNumbers());
-        this.lottoLogic.setBonusNumber(Integer.parseInt(bonusInput));
+        this.lottoLogic.setBonusNumber(bonusInput);
     }
 
     public List<String> sliceInputNumber(String value) {

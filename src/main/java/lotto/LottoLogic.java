@@ -11,8 +11,8 @@ public class LottoLogic {
     private final static int END_LOTTO = 45;
     private final static int LOTTO_NUMBER = 6;
     private static final int ONE_LOTTO = 1000;
-    private int money;
-    private int numberOfLotto;
+    private final int money;
+    private final int numberOfLotto;
     private List<Lotto> myLottos;
     private List<Integer> prizeNumbers;
     private int bonusNumber;
@@ -54,10 +54,6 @@ public class LottoLogic {
         return this.myLottos;
     }
 
-    public List<Integer> getPrizeNumbers() {
-        return this.prizeNumbers;
-    }
-
     public int getThreeHit() {
         return this.threeHit;
     }
@@ -87,8 +83,9 @@ public class LottoLogic {
         this.prizeNumbers = stringListToIntegerList(prizeNumbers);
     }
 
-    public void setBonusNumber(int bonusNumber) {
-        this.bonusNumber = bonusNumber;
+    public void setBonusNumber(String bonusNumber) {
+        validateBonusNumber(bonusNumber);
+        this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
     private int comparePrizeNumber(Lotto lotto) {
@@ -157,6 +154,10 @@ public class LottoLogic {
 
     private void validatePrizeNumbers(List<String> prizeNumbers) {
         Validation.validatePrizeNumberInput(prizeNumbers);
+    }
+
+    private void validateBonusNumber(String bonusNumber) {
+        Validation.validateBonusInput(bonusNumber, this.prizeNumbers);
     }
 
     public List<Integer> stringListToIntegerList(List<String> stringValues) {
