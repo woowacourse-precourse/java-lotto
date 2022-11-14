@@ -2,6 +2,7 @@ package util;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringUtil {
     public static final String BLANK = " ";
@@ -12,7 +13,7 @@ public class StringUtil {
         return data.replace(BLANK, NO_BLANK);
     }
 
-    public static List <String> parseToNumbers(String data){
-        return Arrays.asList(data.split(DELIMITER));
+    public static List <Integer> parseToNumbers(String data){
+        return Arrays.stream(data.split(DELIMITER)).map(Integer::parseInt).collect(Collectors.toList());
     }
 }

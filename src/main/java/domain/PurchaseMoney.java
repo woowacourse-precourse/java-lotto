@@ -10,7 +10,6 @@ public class PurchaseMoney {
     public PurchaseMoney(String purchaseMoney) {
         validate(purchaseMoney);
         this.purchaseMoney = Integer.parseInt(purchaseMoney);
-
     }
 
     public void validate(String purchaseMoney) {

@@ -3,12 +3,21 @@ package domain;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static util.StringUtil.parseToNumbers;
+
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers.stream().sorted().collect(Collectors.toList());
+        this.numbers = numbers;
+        Collections.sort(this.numbers);
+    }
+
+    public Lotto(String inputNumbers){
+        this.numbers = parseToNumbers(inputNumbers);
+        validate(this.numbers);
+        Collections.sort(this.numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -19,7 +28,7 @@ public class Lotto {
     // TODO: 추가 기능 구현
     private void checkLength(List<Integer> numbers){
         if(numbers.size() != 6){
-            throw new IllegalArgumentException("[ERROR] 잘못된 복권입니다.");
+            throw new IllegalArgumentException("[ERROR] 잘못된 복권 번호입니다.");
         }
     }
 
@@ -27,7 +36,7 @@ public class Lotto {
         Set <Integer> checkDup = new HashSet <>(numbers);
 
         if(checkDup.size() != 6){
-            throw new IllegalArgumentException("[ERROR] 잘못된 복권입니다.");
+            throw new IllegalArgumentException("[ERROR] 잘못된 복권 번호입니다.");
         }
     }
 
