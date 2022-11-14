@@ -2,11 +2,13 @@ package lotto.domain;
 
 public class LottoMoney {
     private int money;
+    private int quantity;
 
     public void inputMoney(String input) {
         validateNumber(input);
         money = toInt(input);
         validateDivided();
+        quantity = money / 1000;
     }
 
     private void validateNumber(String input) {
@@ -25,7 +27,11 @@ public class LottoMoney {
         }
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     public int getLottoQuantity() {
-        return money / 1000;
+        return quantity;
     }
 }
