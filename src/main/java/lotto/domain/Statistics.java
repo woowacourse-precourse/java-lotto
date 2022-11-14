@@ -9,9 +9,9 @@ public class Statistics {
     private Map<Grade, Integer> gradeCount = new HashMap<>();
     private int earningRate;
 
-    public Statistics(WinningNumbers winningNumbers, List<Lotto> lottos){
-        countGrade(winningNumbers, lottos);
-        calculateEarningRate();
+    public Statistics(WinningNumbers winningNumbers, LottoGenerator lottoGenerator){
+        countGrade(winningNumbers, lottoGenerator.getLottos());
+        calculateEarningRate(lottoGenerator.getNumberOfLotto());
     }
 
     private void countGrade(WinningNumbers winningNumbers, List<Lotto> lottos){
@@ -45,8 +45,11 @@ public class Statistics {
         return Grade.NOTHING;
     }
 
-    private void calculateEarningRate(){
+    private void calculateEarningRate(int numberOfLotto){
+        int earning = calculateEarning();
+        int purchaseAmount = numberOfLotto * LottoGenerator.LOTTO_PRICE;
 
+        earningRate = earning / purchaseAmount * 100;
     }
 
     private int calculateEarning(){
