@@ -18,4 +18,9 @@ public class Validation {
         if(min<1||min>45) throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         if(max<1||max>45) throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
+
+    public static void validateBonus(List<Integer> winner, int bonus){
+        if(bonus<1 || bonus>45) throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        if(winner.contains(bonus)) throw new IllegalArgumentException("[ERROR] 입력하신 보너스 번호가 당첨번호에 포함되어 있습니다.");
+    }
 }

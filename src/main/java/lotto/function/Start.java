@@ -12,7 +12,6 @@ import java.util.stream.Stream;
 
 import static lotto.function.Tools.*;
 import static lotto.function.Validation.*;
-import static lotto.function.Validation.validateNumbers;
 
 public class Start {
 
@@ -60,6 +59,18 @@ public class Start {
         Collections.sort(winner);
         validateNumbers(winner);
         return winner;
+    }
+
+    public static int typeBonusNumber(List<Integer> winner){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonus=0;
+        try {
+            bonus = Integer.parseInt(Console.readLine());
+        } catch(Exception e){
+            throw new IllegalArgumentException("[ERROR] 입력한 값이 숫자가 아닙니다.");
+        }
+        validateBonus(winner,bonus);
+        return bonus;
     }
 
 }
