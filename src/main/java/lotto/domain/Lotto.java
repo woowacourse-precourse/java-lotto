@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
 
@@ -26,7 +27,9 @@ public class Lotto {
     }
 
     public static Lotto generateLottoNumber() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6).stream()
+                .sorted()
+                .collect(Collectors.toList()));
     }
 
     public void checkDuplicateNumber(List<Integer> numbers) {
