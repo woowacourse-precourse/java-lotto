@@ -5,6 +5,7 @@ import static lotto.Config.WINNING_RANK_AMOUNT;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import lotto.Lotto;
+import lotto.Score;
 import lotto.utils.Logger;
 import lotto.utils.Logger.LogType;
 
@@ -14,7 +15,10 @@ public class Controller {
 
     private static Controller instance;
 
+    private final UahanBank uahanBank;
+
     private Controller() {
+        uahanBank = new UahanBank();
     }
 
     public static Controller getInstance() {
@@ -78,6 +82,21 @@ public class Controller {
     }
 
     private void printWonLotto(List<Integer> rankCounts) {
+        System.out.println("\n당첨 통계");
+        System.out.println("---");
+        for(int index = WINNING_RANK_AMOUNT.length - 1; index >= 0; index--){
+            StringBuilder message = new StringBuilder();
+            Score score = uahanBank.rankScores.get(index);
+
+            message.append(score.winningNumberCount + "개 일치");
+            if(score.bonusNumberCount == 1){
+                message.append(", 보너스 볼 일치");
+            }
+            if(score.bonusNumberCount > 1){
+                message.append(", 보너스 볼" + score.bonusNumberCount + "개 일치");
+            }
+            message.append(" (" + WINNING_RANK_AMOUNT[index] + "원) - " + rankCounts.get(index) + "개");
+        }
     }
 
     private void printYield(int loss, int profit) {
