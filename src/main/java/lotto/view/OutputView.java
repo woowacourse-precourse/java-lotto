@@ -18,6 +18,8 @@ public class OutputView {
     public static final String NUMBER_UNIT = "개";
     private static final String START_PARENTHESES = "(";
     private static final String END_PARENTHESES = ")";
+    private static final String SPACE = " ";
+
     private OutputView() {
     }
 
@@ -33,7 +35,7 @@ public class OutputView {
         Arrays.stream(values())
                 .filter(element -> !element.equals(CONTINUE))
                 .forEach(element -> {
-                    System.out.print(Stats.getName(element) + " ");
+                    System.out.print(Stats.getName(element) + SPACE);
                     System.out.print(START_PARENTHESES + Stats.getAmount(element) + END_PARENTHESES);
                     System.out.println(Stats.getCount(element));
                 });

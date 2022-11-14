@@ -95,7 +95,7 @@ public class InputException {
     }
 
     private static int[] toIntArray(String inputNumbers) {
-        return Stream.of(inputNumbers.split(",")).mapToInt(Integer::parseInt).toArray();
+        return Stream.of(inputNumbers.split(COMMA)).mapToInt(Integer::parseInt).toArray();
     }
 
     private static List<Integer> toList(String inputNumbers) {
