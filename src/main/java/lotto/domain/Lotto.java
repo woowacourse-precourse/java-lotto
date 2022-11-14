@@ -39,8 +39,7 @@ public class Lotto {
         return Collections.unmodifiableList(numbers);
     }
 
-    @Override
-    public String toString() {
+    public String createMessage() {
         StringBuilder lottoResult = new StringBuilder();
         lottoResult.append(START_SYMBOL);
         numbers.stream()

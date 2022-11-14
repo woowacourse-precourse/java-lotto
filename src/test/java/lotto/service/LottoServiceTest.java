@@ -52,9 +52,9 @@ class LottoServiceTest {
                 .findAll();
 
         // when
-        List<String> boughtResultMessage = lottoService.createBoughtResultMessage();
-        System.out.println(boughtResultMessage.get(1));
+        List<String> boughtResultMessage = lottoService.createBuyingResultMessage();
+        Lotto lotto = lottos.get(0);
         // then
-        assertThat(lottos.get(0).toString()).isEqualTo(boughtResultMessage.get(1));
+        assertThat(lotto.createMessage()).isEqualTo(boughtResultMessage.get(1));
     }
 }

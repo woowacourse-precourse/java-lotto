@@ -12,7 +12,7 @@ public class LottoService {
 
     public List<String> buyLottos(int inputPrice) {
         lottoRepository.generateLottos(inputPrice / LOTTO_PRICE);
-        return createBoughtResultMessage();
+        return createBuyingResultMessage();
     }
 
 
@@ -21,16 +21,18 @@ public class LottoService {
                 .size();
     }
 
-    public List<String> createBoughtResultMessage() {
+    public List<String> createBuyingResultMessage() {
+        return List.of(String.valueOf(getCountOfLotto()), createBuyingLottoMessage());
+    }
+
+    private String createBuyingLottoMessage() {
         StringBuilder allLottoNumber = new StringBuilder();
-        List<Lotto> lottos = lottoRepository.findAll();
-        lottos.stream()
-                .map(Lotto::toString)
-                .limit(lottos.size() - ONE)
+        lottoRepository.findAll()
+                .stream()
+                .map(Lotto::createMessage)
                 .forEach(lotto -> allLottoNumber.append(lotto)
                         .append(NEXT_LINE));
-        allLottoNumber.append(lottos.get(lottos.size() - ONE)
-                .toString());
-        return List.of(String.valueOf(getCountOfLotto()), allLottoNumber.toString());
+        return allLottoNumber.deleteCharAt(allLottoNumber.length() - ONE)
+                .toString();
     }
 }
