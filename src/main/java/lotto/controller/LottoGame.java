@@ -6,7 +6,7 @@ import static lotto.utils.Converter.convertToCountsOfLotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.Lotto;
+import lotto.domain.Lotto;
 
 public class LottoGame {
 
