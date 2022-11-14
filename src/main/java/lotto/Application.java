@@ -45,7 +45,7 @@ public class Application {
 
             List<List<Integer>> lotteries = lotteriesUI(lotteryQuantity);
 
-
+            List<Integer> jackpot = jackpotUI();
 
         } catch (IllegalArgumentException e) {
             System.out.println(Messages.EXCEPTION_HEADER.getMessage() + e.getMessage());
