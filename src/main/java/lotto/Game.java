@@ -16,5 +16,7 @@ public class Game {
         ui.printLottos(lottos);
 
         String winningNumbers = ui.returnInputValue("당첨 번호를 입력해 주세요.");
+        String bonusNumber = ui.returnInputValue("보너스 번호를 입력해 주세요.");
+        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
     }
 }
