@@ -26,7 +26,9 @@ public class Application {
             //보너스 번호 저장
             lottoController.saveBonusNumber(new BonusNumber(Console.readLine()));
             //당첨 내역 출력
-            lottoController.winStatistics();
+            lottoController.printWinStatistics();
+            //수익률 출력
+            lottoController.printYield();
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }

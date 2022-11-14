@@ -21,6 +21,11 @@ public class WinnerNumber {
         }
         return result;
     }
+    private void lastValidate(List<Integer> target){
+        Validator.checkNumericalRange(target);
+        Validator.checkNumberOfDigit(NUMBER_OF_DIGIT,target);
+        Validator.checkDuplicate(target);
+    }
     private List<String> parser(String target){
         List<String> parser=new ArrayList<>();
         StringBuilder temp= new StringBuilder();
@@ -39,11 +44,6 @@ public class WinnerNumber {
             builder.delete(0,builder.length());
         }
     }
-    private void lastValidate(List<Integer> target){
-        Validator.checkNumericalRange(target);
-        Validator.checkNumberOfDigit(NUMBER_OF_DIGIT,target);
-        Validator.checkDuplicate(target);
-    }
     private List<Integer> stringToList(List<String> target){
         List<Integer> result=new ArrayList<>();
         for (String s : target) {
@@ -51,7 +51,6 @@ public class WinnerNumber {
         }
         return result;
     }
-
     public List<Integer> getWinnerNumber() {
         return winnerNumber;
     }
