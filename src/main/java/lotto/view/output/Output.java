@@ -5,6 +5,7 @@ import lotto.message.ErrorMessage;
 import lotto.message.GuideMessage;
 import lotto.message.NumberType;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Output {
@@ -43,7 +44,7 @@ public class Output {
                 + GuideMessage.PRIZE_UNIT.getGuideMessage());
     }
 
-    public void printProfitRate(double profitRate) {
+    public void printProfitRate(BigDecimal profitRate) {
         System.out.println(GuideMessage.PROFIT_RATE_PREFIX_MESSAGE.getGuideMessage()
                 + profitRate
                 + GuideMessage.PROFIT_RATE_SUFFIX_MESSAGE.getGuideMessage());

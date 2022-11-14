@@ -16,14 +16,19 @@ public enum NumberType {
     TEN(10),
 
     FORTY_FIVE(45),
+
     HUNDRED(100),
 
     NUMBER_OF_PRIZE_TYPE(5),
 
     FIRST_PRIZE(4),
+
     SECOND_PRIZE(3),
+
     THIRD_PRIZE(2),
+
     FOURTH_PRIZE(1),
+
     FIFTH_PRIZE(0),
 
     IN_THOUSANDS(1_000),

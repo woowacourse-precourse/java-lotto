@@ -10,6 +10,8 @@ import lotto.validation.Validator;
 import lotto.view.input.Input;
 import lotto.view.output.Output;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -112,27 +114,28 @@ public class LottoService {
         output.printResultGuideMessage();
         int[] prizeResult = getPrizeResult(luckyNumber);
         output.printPrizeResult(prizeResult);
-        double profitRate = calculateProfitRate(money, prizeResult);
+        BigDecimal profitRate = calculateProfitRate(money, prizeResult);
         output.printProfitRate(profitRate);
     }
 
-    public double calculateProfitRate(int moneyInput, int[] prizeResult) {
-        int totalPrize = calculateTotalPrize(prizeResult);
-        int money = moneyInput / NumberType.IN_THOUSANDS.getNumberType();
-        double profitRate = ((double)totalPrize / money) * NumberType.HUNDRED.getNumberType();
-        profitRate = Math.round(profitRate * NumberType.TEN.getNumberType());
-        profitRate = profitRate / NumberType.TEN.getNumberType();
+    public BigDecimal calculateProfitRate(int moneyInput, int[] prizeResult) {
+        BigDecimal totalPrize = calculateTotalPrize(prizeResult);
+        BigDecimal money = new BigDecimal(moneyInput / NumberType.IN_THOUSANDS.getNumberType());
+        BigDecimal hundred = new BigDecimal(NumberType.HUNDRED.getNumberType());
+        BigDecimal profitRate = totalPrize.divide(money, NumberType.THREE.getNumberType(), RoundingMode.HALF_UP)
+                .multiply(hundred)
+                .setScale(NumberType.ONE.getNumberType(), RoundingMode.DOWN);
         return profitRate;
     }
 
-    public int calculateTotalPrize(int[] prizeResult) {
+    public BigDecimal calculateTotalPrize(int[] prizeResult) {
         int totalPrize = 0;
         totalPrize += prizeResult[NumberType.FIRST_PRIZE.getNumberType()] * NumberType.FIRST_PRIZE_REWARD.getNumberType();
         totalPrize += prizeResult[NumberType.SECOND_PRIZE.getNumberType()] * NumberType.SECOND_PRIZE_REWARD.getNumberType();
         totalPrize += prizeResult[NumberType.THIRD_PRIZE.getNumberType()] * NumberType.THIRD_PRIZE_REWARD.getNumberType();
         totalPrize += prizeResult[NumberType.FOURTH_PRIZE.getNumberType()] * NumberType.FOURTH_PRIZE_REWARD.getNumberType();
         totalPrize += prizeResult[NumberType.FIFTH_PRIZE.getNumberType()] * NumberType.FIFTH_PRIZE_REWARD.getNumberType();
-        return totalPrize;
+        return new BigDecimal(totalPrize);
     }
 
     public int[] getPrizeResult(LuckyNumber luckyNumber) {
