@@ -26,14 +26,13 @@ public class LottoTicketSystem {
         List<Lotto> tickets = new ArrayList<>();
 
         for (int i = 0; i < numberOfTickets; i++) {
-            tickets.add(issueLottoTicket());
+            tickets.add(issueLotto());
         }
         return new LottoTickets(tickets);
     }
 
-    private Lotto issueLottoTicket() {
-        List<Integer> numbers = generateSixRandomNumbers();
-        numbers = sortInAscendingOrder(numbers);
+    private Lotto issueLotto() {
+        List<Integer> numbers = sortInAscendingOrder(generateSixRandomNumbers());
         return createLotto(numbers);
     }
 
