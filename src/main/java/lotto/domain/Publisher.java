@@ -23,8 +23,8 @@ public class Publisher {
         return ticketQuantity;
     }
 
-    public void issueLotto(List<Integer> numbers) throws IllegalArgumentException {
-        return;
+    public void issueLotto(List<Integer> numbers) {
+        lotteries.add(new Lotto(numbers));
     }
 
     public List<Integer> make() {
