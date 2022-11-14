@@ -7,7 +7,7 @@ public class InputMoneyHandler {
 
     public void checkException(String inputMoney) {
         checkIsNumber(inputMoney);
-        checkIsNonzero(inputMoney);
+        checkPositiveNumber(inputMoney);
         checkIsValidMoney(inputMoney);
     }
 
@@ -19,11 +19,11 @@ public class InputMoneyHandler {
         }
     }
 
-    public void checkIsNonzero(String inputMoney) {
+    public void checkPositiveNumber(String inputMoney) {
         int money = Integer.parseInt(inputMoney);
 
-        if(money == 0) {
-            throw new IllegalArgumentException(ERROR_ORDER+" 입력 금액은 0이 아니어야 합니다.");
+        if(money <= 0) {
+            throw new IllegalArgumentException(ERROR_ORDER+" 입력 금액은 0원 보다 크게 입력해야 합니다.");
         }
     }
 

@@ -42,7 +42,7 @@ class ApplicationTest extends NsTest {
         String inputMoney = "0";
 
         assertThatThrownBy(() -> {
-            inputMoneyHandler.checkIsNonzero(inputMoney);
+            inputMoneyHandler.checkPositiveNumber(inputMoney);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
