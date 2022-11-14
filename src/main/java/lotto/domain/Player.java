@@ -41,4 +41,18 @@ public class Player {
         }
     }
 
+    public int[] winningLottoMatching(List<Integer> winningNumbers,int bonusNumber){
+
+        int[] matchNumber = new int[8];
+        for (Lotto lotto : lottos){
+            int index = lotto.countMatchNumber(winningNumbers);
+            matchNumber[index]++;
+            if(index==5&&lotto.hasBonusNumber(bonusNumber)){
+                matchNumber[7]++;
+                matchNumber[5]--;
+            }
+        }
+        return matchNumber;
+    }
+
 }
