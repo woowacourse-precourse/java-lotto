@@ -58,6 +58,7 @@ public class Computer {
     }
 
     private void notValidBonusNumberException(){
+        System.out.println(BONUS_NUMBER_EXCEPTION);
         throw new IllegalArgumentException(BONUS_NUMBER_EXCEPTION);
     }
 

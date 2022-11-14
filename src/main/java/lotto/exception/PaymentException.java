@@ -1,5 +1,6 @@
 package lotto.exception;
 
+import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 
 public class PaymentException {
@@ -24,6 +25,7 @@ public class PaymentException {
     }
 
     private void paymentNotAcceptableException(){
+        System.out.println(NOT_RIGHT_PAYMENT_COMMENT);
         throw new IllegalArgumentException(NOT_RIGHT_PAYMENT_COMMENT);
     }
 }
