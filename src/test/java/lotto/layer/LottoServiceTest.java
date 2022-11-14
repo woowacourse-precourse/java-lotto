@@ -58,6 +58,7 @@ class LottoServiceTest {
         MockedStatic<Randoms> randoms = mockStatic(Randoms.class);
         List<Integer> expectValues = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         Lotto inputLotto = new Lotto(expectValues);
+        table.saveLottoAll(new ArrayList<>(List.of(inputLotto)));
         LottoNumber bonusNumber = LottoNumber.getInstance(7);
         given(Randoms.pickUniqueNumbersInRange(1, 45, 6)).willReturn(expectValues);
 
@@ -70,5 +71,23 @@ class LottoServiceTest {
         randoms.close();
     }
 
+    @DisplayName("당첨 빈도수에 2등 3등을 제외한 당첨은 bonusNumber의 영향 없이 빈도수 계산한다.")
+    @Test
+    void lottoServiceMakeFrequencyNotEffectBonusNumber() {
+        // given
+        MockedStatic<Randoms> randoms = mockStatic(Randoms.class);
+        List<Integer> expectValues = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto = new Lotto(expectValues);
+        table.saveLottoAll(new ArrayList<>(List.of(lotto)));
+        Lotto inputLotto = new Lotto(List.of(7, 10, 1, 2, 3, 11));
+        LottoNumber bonusNumber = LottoNumber.getInstance(4);
 
+        // when
+        Map<WinningLotto, Integer> frequency = lottoService.getWinningLottoFrequency(inputLotto,
+                bonusNumber);
+
+        // then
+        assertThat(frequency.get(WinningLotto.PLACE_5)).isEqualTo(1);
+        randoms.close();
+    }
 }
