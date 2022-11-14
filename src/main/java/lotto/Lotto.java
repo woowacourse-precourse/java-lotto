@@ -47,7 +47,26 @@ public class Lotto {
         WinNumber(String num) { this.num = num; }
         public String getBall(){return num;}
     }
+    public enum StatisticPrint{
+        PRINT_INIT("당첨 통계"),
+        PRINT_BORDER("---"),
+        PRINT_QUAN("개"),
+        PRINT_THREE("3개 일치 (5,000원) - "),
+        PRINT_FOUR("4개 일치 (50,000원) - "),
+        PRINT_FIVE("5개 일치 (1,500,000원) - "),
+        PRINT_FIVE_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+        PRINT_SIX("6개 일치 (2,000,000,000원) - "),
+        PRINT_EARN("총 수익률은 "),
+        PRINT_END("%입니다.");
 
+        private final String output;
+
+        StatisticPrint(String output){this.output = output;}
+
+        public String getOutput() {
+            return output;
+        }
+    }
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkWinNumber(numbers);
@@ -112,13 +131,13 @@ public class Lotto {
     }
     public static void calculate(List<String> winNum){
         System.out.println("");
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + Collections.frequency(winNum,WinNumber.THREE_BALL.getBall())+"개");
-        System.out.println("4개 일치 (50,000원) - " + Collections.frequency(winNum,WinNumber.FOUR_BALL.getBall())+"개");
-        System.out.println("5개 일치 (1,500,000원) - " + Collections.frequency(winNum,WinNumber.FIVE_BALL.getBall())+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Collections.frequency(winNum,WinNumber.FIVE_BALL_BONUS.getBall())+"개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + Collections.frequency(winNum,WinNumber.SIX_BALL.getBall())+"개");
+        System.out.println(StatisticPrint.PRINT_INIT.getOutput());
+        System.out.println(StatisticPrint.PRINT_BORDER.getOutput());
+        System.out.println(StatisticPrint.PRINT_THREE.getOutput() + Collections.frequency(winNum,WinNumber.THREE_BALL.getBall())+StatisticPrint.PRINT_QUAN.getOutput());
+        System.out.println(StatisticPrint.PRINT_FOUR.getOutput() + Collections.frequency(winNum,WinNumber.FOUR_BALL.getBall())+StatisticPrint.PRINT_QUAN.getOutput());
+        System.out.println(StatisticPrint.PRINT_FIVE.getOutput() + Collections.frequency(winNum,WinNumber.FIVE_BALL.getBall())+StatisticPrint.PRINT_QUAN.getOutput());
+        System.out.println(StatisticPrint.PRINT_FIVE_BONUS.getOutput() + Collections.frequency(winNum,WinNumber.FIVE_BALL_BONUS.getBall())+StatisticPrint.PRINT_QUAN.getOutput());
+        System.out.println(StatisticPrint.PRINT_SIX.getOutput() + Collections.frequency(winNum,WinNumber.SIX_BALL.getBall())+StatisticPrint.PRINT_QUAN.getOutput());
     }
     public static void calculateEarn(List<String> winNum){
         double earn = 5000* Collections.frequency(winNum,"3");
@@ -127,6 +146,6 @@ public class Lotto {
         earn += 30000000*Collections.frequency(winNum,"5b");
         earn += 2000000000*Collections.frequency(winNum,"6");
         earn /= 1000*winNum.size();
-        System.out.println("총 수익률은 "+String.format("%.1f",earn*100)+ "%입니다.");
+        System.out.println(StatisticPrint.PRINT_EARN.getOutput()+String.format("%.1f",earn*100)+ StatisticPrint.PRINT_END.getOutput());
     }
 }
