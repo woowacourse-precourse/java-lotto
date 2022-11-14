@@ -13,6 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        Valid.hasDuplicateNumber(numbers);
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }

@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Valid {
 	private static final int LOTTO_PRICE = 1000;
 	private static final int ZERO = 0;
@@ -35,6 +38,17 @@ public class Valid {
 			return true;
 		}
 		return false;
+	}
+
+	public static void hasDuplicateNumber(List<Integer> numbers) {
+		List<Integer> eraseDuplicate = numbers.stream()
+										.distinct()
+										.collect(Collectors.toList());
+
+		if (eraseDuplicate.size() != numbers.size()) {
+			System.out.println(Message.DUPLICATE_IN_LOTTO_NUMBER_ERROR);
+			throw new IllegalArgumentException(Message.DUPLICATE_IN_LOTTO_NUMBER_ERROR);
+		}
 	}
 
 	private static boolean isNumeric(String str) {
