@@ -1,45 +1,34 @@
 package lotto.domain.lottomachine.winningnumber;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class WinningNumberSystem {
-    public static final String REGULAR_EXPRESSION_FOR_WINNING_NUMBERS_INPUT = "\\d{1,2}\\,\\d{1,2}\\,\\d{1,2}\\,\\d{1,2}\\,\\d{1,2}\\,\\d{1,2}";
-    public static final String REGULAR_EXPRESSION_FOR_BONUS_NUMBER_INPUT = "\\d{1,2}";
 
-    public WinningNumbers receiveWinningNumber() {
-        String userInput = readUserInput(REGULAR_EXPRESSION_FOR_WINNING_NUMBERS_INPUT);
-        List<WinningNumber> numbers = createWinningNumberList(userInput);
-        return new WinningNumbers(numbers);
+    private WinningNumberSystem() {
     }
 
-    private List<WinningNumber> createWinningNumberList(String userInput) {
+    public static WinningNumberSystem getInstance() {
+        return new WinningNumberSystem();
+    }
+
+    public WinningNumbers createWinningNumbers(String userInput) {
+        List<WinningNumber> numbers = makeWinningNumbers(userInput);
+        return WinningNumbers.from(numbers);
+    }
+
+    private List<WinningNumber> makeWinningNumbers(String userInput) {
         return Arrays.stream(userInput.split(","))
                 .mapToInt(Integer::parseInt)
-                .mapToObj(WinningNumber::new)
+                .mapToObj(WinningNumber::from)
                 .collect(Collectors.toList());
     }
 
-    private String readUserInput(String regularExpression) {
-        String userInput = Console.readLine();
-        validateUserInput(userInput, regularExpression);
-        return userInput;
-    }
-
-    private void validateUserInput(String line, String regularExpression) {
-        if (!line.matches(regularExpression)) {
-            throw new IllegalArgumentException("[ERROR] 숫자 입력 형식이 맞지 않습니다.");
-        }
-    }
-
-    public WinningNumber receiveBonusNumber(WinningNumbers winningNumbers) {
-        int number = Integer.parseInt(readUserInput(REGULAR_EXPRESSION_FOR_BONUS_NUMBER_INPUT));
+    public WinningNumber creativeBonusNumber(String userInput, WinningNumbers winningNumbers) {
+        int number = Integer.parseInt(userInput);
         validateDuplication(number, winningNumbers);
-        return new WinningNumber(number);
+        return WinningNumber.from(number);
     }
 
     private void validateDuplication(int number, WinningNumbers winningNumbers) {
