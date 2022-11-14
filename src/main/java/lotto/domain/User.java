@@ -15,6 +15,8 @@ public class User {
 
 
     public User(int userMoney, List<Integer> winningNumbers, int bonusNumber) {
+        validateUserMoney(userMoney);
+
         this.userMoney = userMoney;
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
@@ -27,6 +29,12 @@ public class User {
         checkInteger(money);
 
         return Integer.parseInt(money);
+    }
+
+    public void validateUserMoney(int userMoney) {
+        if (userMoney % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액을 1000원 단위로 입력해주세요.");
+        }
     }
 
     public void checkInteger(String number) {
