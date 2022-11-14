@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.message.ErrorCode;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,14 +14,17 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorCode.WRONG_SIZE.getErrorMessage());
         }
 
         for(int i = 0; i < numbers.size(); i++) {
+            if(numbers.get(i) < 1 || numbers.get(i) > 45) {
+                throw new IllegalArgumentException(ErrorCode.OUT_RANGE.getErrorMessage());
+            }
             if(numbers.subList(0, i).contains(numbers.get(i))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorCode.DUPLICATE.getErrorMessage());
             }
         }
     }

@@ -12,13 +12,14 @@ public class LottoProgramManager {
     private List<Lotto> lottoBought;
 
     public void runProgram() {
-        int lottoNum = buyLotto();
-
-        generateLotto(lottoNum);
-
-        getAnswerAndBonus();
-
-        rankLotto();
+        try {
+            int lottoNum = buyLotto();
+            generateLotto(lottoNum);
+            getAnswerAndBonus();
+            rankLotto();
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private int buyLotto() {

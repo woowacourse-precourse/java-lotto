@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.message.ErrorCode;
 import lotto.message.IOMessage;
 
 import java.util.Arrays;
@@ -20,11 +21,11 @@ public class IOManager {
 
             return price;
         } catch(Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_PRICE.getErrorMessage());
         }
     }
 
-    public static List<Integer> scanAnswer() {
+    public static List<Integer> scanAnswer() throws IllegalArgumentException {
         try {
             System.out.println(IOMessage.ASK_ANSWER.getMessage());
 
@@ -32,19 +33,19 @@ public class IOManager {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorCode.WRONG_ANSWER.getErrorMessage());
         } finally {
             printEmptyLine();
         }
     }
 
-    public static int scanBonus() {
+    public static int scanBonus() throws IllegalArgumentException {
         try {
             System.out.println(IOMessage.ASK_BONUS.getMessage());
 
             return Integer.parseInt(Console.readLine());
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorCode.WRONG_ANSWER.getErrorMessage());
         } finally {
             printEmptyLine();
         }
