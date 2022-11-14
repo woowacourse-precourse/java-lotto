@@ -32,7 +32,7 @@ class LottoMachineTest {
         assertThat(lottos.size()).isEqualTo(countLottosByAmount);
     }
 
-    @DisplayName("입력 금액이 1,000의 배수가 아님 -> 예외님발생")
+    @DisplayName("입력 금액이 1,000의 배수가 아님 -> 예외발생")
     @Test
     void isNotMultipleOf1000() {
         assertThatThrownBy(() -> LottoMachine.publish(7001))
