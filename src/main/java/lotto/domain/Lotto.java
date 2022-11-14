@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -26,7 +27,7 @@ public class Lotto {
 
 	private void validate(List<Integer> numbers) {
 		if (numbers.size() != 6) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR] 입력된 숫자가 6개가 아닙니다.");
 		}
 	}
 
@@ -39,8 +40,9 @@ public class Lotto {
 	}
 
 	public Rank getRank(Lotto winnerLotto, int bonusNumber) {
-		this.numbers.removeAll(winnerLotto.getNumbers());
-		int count = 6 - this.numbers.size();
+		List<Integer> checkCountList = new ArrayList<>(this.numbers);
+		checkCountList.removeAll(winnerLotto.getNumbers());
+		int count = 6 - checkCountList.size();
 		boolean isBonus = false;
 		if (isBonusNumber(bonusNumber, count)) {
 			isBonus = true;
