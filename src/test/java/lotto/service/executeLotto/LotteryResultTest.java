@@ -28,8 +28,6 @@ public class LotteryResultTest {
 
         LotteryResult compare = new LotteryResult(USER_LOTTERIES, WINNING_NUMBERS);
         Map<Integer, Integer> result = compare.getScores(BONUS);
-        System.out.println(compare.getYield(result));
-
         assertThat(result).isEqualTo(EXPECTED_RESULT);
     }
 

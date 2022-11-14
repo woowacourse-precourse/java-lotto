@@ -18,8 +18,7 @@ public class LotteryResult {
     private static final int BONUS_SCORE_INDEX = 0;
 
     public Map<Integer, Integer> getScores(int bonusNumber) {
-        // TODO: 수정해야 할 것 ~ 여기 메서드 내에서가 아니라 따로 map 객체 생성을 해줘야 함.
-        Map<Integer, Integer> scoresCount = PrizeTable.setScoreTable();
+        Map<Integer, Integer> scoresCount = initScoreCount();
         userLotteries.forEach(lotteryTicket -> {
             int count = countSameNumber(lotteryTicket);
 
@@ -37,6 +36,10 @@ public class LotteryResult {
         double totalPrize = totalPrize(scores);
         double yield = totalPrize / (userLotteries.size());
         return Math.round(yield * 10) / 100.0;
+    }
+
+    private Map<Integer, Integer> initScoreCount() {
+        return PrizeTable.setScoreTable();
     }
 
     private int totalPrize(Map<Integer, Integer> scores) {
