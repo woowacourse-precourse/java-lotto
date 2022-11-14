@@ -15,8 +15,8 @@ public class InputView {
         System.out.println("구입금액을 입력해 주세요.");
         String userInput = SCANNER.nextLine();
 
-        validateBudget(Integer.valueOf(userInput));
         validateInteger(userInput);
+        validateBudget(Integer.valueOf(userInput));
 
         return Integer.valueOf(userInput);
     }

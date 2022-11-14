@@ -34,7 +34,7 @@ public class LottoController {
             getProfit();
         }
         catch (IllegalArgumentException e){
-            System.err.println("[ERROR]" + e);
+            System.out.println("[ERROR]" + e);
         }
     }
 
