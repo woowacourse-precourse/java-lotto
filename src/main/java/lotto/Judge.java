@@ -33,7 +33,7 @@ public class Judge {
 
     public double countEarningsRate(int money) {
         double rate = (double) countPrizeMoney() / money;
-        return (double) Math.round(rate * 10) / 10;
+        return (double) Math.round(rate * 1000) / 10;
     }
 
 }

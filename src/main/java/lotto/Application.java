@@ -14,7 +14,7 @@ public class Application {
         money = Input.receiveMoney();
         System.out.println();
 
-        for(int i=0; i<Store.countLines(money); i++){
+        for (int i = 0; i < Store.countLines(money); i++) {
             Lotto lottery = new Lotto(Store.makeNumbers());
             lotteries.add(lottery);
         }
