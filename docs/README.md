@@ -14,6 +14,10 @@
 
 - Raise 'IllegalArgumentException' if there are duplicated numbers
 
+#### Input lotto number
+
+- Read lotto number, split, and cast each number to int
+
 #### Generate lotto number
 
 - Generate lotto cases
@@ -46,9 +50,6 @@
 
 - Read cash and return
 
-#### Input lotto number
-
-- Read lotto number, split, and cast each number to int
 
 #### Input bonus number
 
