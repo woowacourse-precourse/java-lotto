@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.*;
 
 public class User {
@@ -36,21 +37,21 @@ public class User {
 
     void validate(String userInput) throws IllegalArgumentException {
         if (!isNum(userInput)) {
-            throw new IllegalArgumentException("[ERROR] 입력한 값이 숫자가 아닙니다. 숫자를 입력하세요.");
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요");
         } else if (purchasingAmount % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 구매 금액이 1000으로 나누어 떨어지지 않습니다.");
+            throw new IllegalArgumentException("[ERROR] 구매 금액이 1000으로 나누어 떨어지지 않습니다");
         }
     }
 
     Boolean isNum(String userInput) {
-        boolean numericOrNot = true;
+        boolean isNumeric = true;
 
         for (int letterIdx = 0; letterIdx < userInput.length(); letterIdx++) {
             if (!Character.isDigit(userInput.charAt(letterIdx))) {
-                numericOrNot = false;
+                isNumeric = false;
             }
         }
-        return numericOrNot;
+        return isNumeric;
     }
 
     void countTickets() {
@@ -65,7 +66,7 @@ public class User {
     }
 
     List<Integer> generateRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1,45,6);
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
     private void printTicketCount() {
