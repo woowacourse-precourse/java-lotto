@@ -13,6 +13,22 @@ public class Application {
 
     // 로또 구입 메소드
     private static int buyLottoCount() {
+//        System.out.println("구입금액을 입력해 주세요.");
+//        try {
+//
+//            int money = Integer.parseInt(Console.readLine());
+//            if(money%1000 != 0) {
+//                System.out.println("[ERROR] 구입금액은 1000원 단위로 입력해야 합니다.");
+//                throw new IllegalArgumentException();
+//            }
+//            int lottoCount = money/1000;
+//            return lottoCount;
+//        } catch(NumberFormatException e) {
+//            System.out.println("[ERROR] 구입금액은 숫자로 입력해야 합니다.");
+//            throw e;
+//        }
+
+
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         if(!checkNumber(input)) {
@@ -201,7 +217,35 @@ public class Application {
         }
         return winningResult;
     }
-    public static void main(String[] args) {
 
+    // 수익률 계산 메소드
+    private static String moneyResultPercent(int lottoCount, List<Integer> winningResult) {
+        List<Integer> winningMoney = winningLottoMoney();
+        int myMoneyResult = 0;
+        for(int i = 0; i < winningResult.size(); i++) {
+            myMoneyResult += winningMoney.get(i)*winningResult.get(i);
+        }
+        String myMoneyResultPercent = String.format("%.1f", (double)myMoneyResult/(lottoCount*1000)*100);
+        return myMoneyResultPercent;
+    }
+
+    // 로또 진행
+    private static void lottoProgram() {
+        int myLottoCount = buyLottoCount();
+        List<Lotto> myLotto = myLotto(myLottoCount);
+        printMyLotto(myLotto);
+        Lotto winningLotto = winningLotto();
+        int bonusLottoNumber = bonusLottoNumber(winningLotto);
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        List<Double> myWinningCount = myWinningCount(myLotto, winningLotto, bonusLottoNumber);
+        List<Integer> winningResult = printWinningResult(myWinningCount);
+        String myMoneyResultPercent = moneyResultPercent(myLottoCount, winningResult);
+        System.out.println("총 수익률은 " + myMoneyResultPercent + "%입니다.");
+    }
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        lottoProgram();
     }
 }
