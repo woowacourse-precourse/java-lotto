@@ -3,14 +3,19 @@ package lotto.domain;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public enum TotalResult {
-
-    INSTANCE;
+public class TotalResult {
 
     private static final int RANK_COUNT_DEFAULT_VALUE = 0;
     private static final String RANK_COUNT_MESSAGE_FORMAT = " - %d개";
+    private final JackpotBonus jackpotBonus;
+    private final List<Lotto> lotteries;
 
-    public static Map<Rank, Integer> getRankCounts(JackpotBonus jackpotBonus, List<Lotto> lotteries) {
+    public TotalResult(JackpotBonus jackpotBonus, List<Lotto> lotteries) {
+        this.jackpotBonus = jackpotBonus;
+        this.lotteries = lotteries;
+    }
+
+    public Map<Rank, Integer> getRankCounts() {
         Map<Rank, Integer> rankCounts = new EnumMap<>(Rank.class);
 
         for (Lotto lotto : lotteries) {
@@ -21,7 +26,7 @@ public enum TotalResult {
         return rankCounts;
     }
 
-    public static List<String> getRankInfoWithCounts(Map<Rank, Integer> rankCounts) {
+    public List<String> getRankInfoWithCounts(Map<Rank, Integer> rankCounts) {
         List<String> result = new ArrayList<>();
 
         List<Rank> reversedRanks = getReversedRanks();

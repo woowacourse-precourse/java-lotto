@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,18 +12,24 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TotalResultTest {
+    private static TotalResult totalResult;
+
+    @BeforeAll
+    static void setTotalResult() {
+        JackpotBonus jackpotBonus = new JackpotBonus(List.of(1, 2, 3, 4, 5, 6), 7);
+        List<Lotto> lotteries = getLotteries();
+
+        totalResult = new TotalResult(jackpotBonus, lotteries);
+    }
+
     @DisplayName("각 등수에 당첨된 로또의 개수를 반환한다")
     @Test
     void getRankCountsByEnumMap() {
-        JackpotBonus jackpotBonus = new JackpotBonus(List.of(1, 2, 3, 4, 5, 6), 7);
-        List<Lotto> lotteries = getLotteries();
         Map<Rank, Integer> expected = getExpected();
-
-        assertThat(TotalResult.getRankCounts(jackpotBonus, lotteries))
-                .isEqualTo(expected);
+        assertThat(totalResult.getRankCounts()).isEqualTo(expected);
     }
 
-    private static List<Lotto> getLotteries(){
+    private static List<Lotto> getLotteries() {
         List<List<Integer>> lottoNumbers = List.of(
                 List.of(7, 8, 9, 10, 11, 12),
                 List.of(1, 2, 7, 8, 9, 10),
@@ -38,8 +45,8 @@ public class TotalResultTest {
                 .collect(Collectors.toList());
     }
 
-    private static Map<Rank, Integer> getExpected(){
-        Map<Rank, Integer> expected = new EnumMap<Rank, Integer>(Map.of(
+    private static Map<Rank, Integer> getExpected() {
+        return new EnumMap<>(Map.of(
                 Rank.FIRST, 1,
                 Rank.SECOND, 1,
                 Rank.THIRD, 1,
@@ -47,8 +54,6 @@ public class TotalResultTest {
                 Rank.FIFTH, 1,
                 Rank.NO_LUCK, 2
         ));
-
-        return expected;
     }
 
 }
