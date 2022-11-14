@@ -1,5 +1,7 @@
 package lotto.views;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 import lotto.constants.enums.WinResultStatus;
@@ -13,6 +15,7 @@ public class OutputView {
     public static final int WIN_RESULT_COUNT = 5;
     public static final String NEXT_LINE = "\n";
     public static final int ZERO_WIN = 0;
+    public static final String PRICE_FORMAT = "#,##0.0";
 
 
     public void outputLottoBuyingResult(List<String> resultOfBuyingLotto) {
@@ -30,6 +33,7 @@ public class OutputView {
     }
 
     private String createStatisticsMessage(Object statistics) {
+        // TODO 리팩토링
         StringBuilder statisticsMessage = new StringBuilder();
         List<WinResultStatus> winResultStatuses = WinResultStatus.getWinResultStatuses();
         Map<WinResultStatus, Integer> statisticsCounts = (Map<WinResultStatus, Integer>) statistics;
@@ -56,6 +60,8 @@ public class OutputView {
     }
 
     private String createEarningsRateMessage(final double earningsRate) {
-        return String.format(OutputMessage.EARNINGS_RATIO_FORMAT, earningsRate);
+        NumberFormat decimalFormat = new DecimalFormat(PRICE_FORMAT);
+        String format = decimalFormat.format(earningsRate);
+        return String.format(OutputMessage.EARNINGS_RATIO_FORMAT, format);
     }
 }

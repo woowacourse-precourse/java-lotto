@@ -13,7 +13,7 @@ public class OutputMessage {
             "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개",
             "6개 일치 (2,000,000,000원) - %d개"
     );
-    public static final String EARNINGS_RATIO_FORMAT = "총 수익률은 %.1f%%입니다.";
+    public static final String EARNINGS_RATIO_FORMAT = "총 수익률은 %s%%입니다.";
 
     private OutputMessage() {
     }
