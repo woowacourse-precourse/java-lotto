@@ -5,8 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static lotto.model.ErrorMessage.*;
-import static lotto.model.LottoStatus.END;
-import static lotto.model.LottoStatus.START;
+import static lotto.model.LottoStatus.*;
 
 public class Validator {
 
@@ -52,14 +51,21 @@ public class Validator {
 
     public void validateLuckyNumberSize(String input) {
         String[] numbers = getNumbers(input);
-        if (numbers.length != LottoStatus.SIZE.getValue()) {
-            throw new IllegalArgumentException(INCORRECT_LUCKY_NUMBER_SIZE.toString());
-        }
+        checkNumbersSize(numbers);
+        checkNumberSize(numbers);
+    }
 
+    private void checkNumberSize(String[] numbers) {
         for (String number : numbers) {
             if (number.length() > END.getDigitsSize()) {
                 throw new IllegalArgumentException(INCORRECT_LUCKY_NUMBER_SIZE.toString());
             }
+        }
+    }
+
+    private void checkNumbersSize(String[] numbers) {
+        if (numbers.length != SIZE.getValue()) {
+            throw new IllegalArgumentException(INCORRECT_LUCKY_NUMBER_SIZE.toString());
         }
     }
 
