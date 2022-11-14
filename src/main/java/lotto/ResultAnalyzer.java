@@ -16,4 +16,7 @@ public class ResultAnalyzer {
         return 0;
     }
 
+    public int determineRank(Lotto lotto) {
+        return 0;
+    }
 }
