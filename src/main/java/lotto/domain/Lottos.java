@@ -16,4 +16,19 @@ public class Lottos {
     public ArrayList<Lotto> getLotts(){
         return this.lottos;
     }
+
+    public int getLottoCount(){
+        return this.lottos.size();
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+
+        for(Lotto lotto: lottos){
+            result.append(lotto.toString()+"\n");
+        }
+
+        return result.toString();
+    }
 }
