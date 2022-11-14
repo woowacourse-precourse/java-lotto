@@ -13,4 +13,8 @@ public enum LottoReward {
     LottoReward(int reward) {
         this.reward = reward;
     }
+
+    public int getReward() {
+        return this.reward;
+    }
 }
