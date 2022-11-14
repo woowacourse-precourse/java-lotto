@@ -29,4 +29,10 @@ public class OutputConsole {
             System.out.println(key.getScoreText() + "- " + rankResult.get(key) +"개");;
         }
     }
+
+    public static void printProfitRate(List<Lotto> lottos, int investmentMoney, List<Integer> winningNumber, int bonusNumber) {
+        ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator();
+        double profitRate = profitRateCalculator.calculate(lottos, investmentMoney, winningNumber, bonusNumber);
+        System.out.println("총 수익률은 " + profitRate+ "%입니다.");
+    }
 }
