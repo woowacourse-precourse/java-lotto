@@ -1,24 +1,37 @@
 package lotto;
 
+import static lotto.Result.getCount;
+
 public enum Rank {
-    FIRST(1, 2000000000),
-    SECOND(2, 30000000),
-    THIRD(3, 1500000),
-    FOURTH(4, 50000),
-    FIFTH(5, 5000);
+    FIFTH(5, "5,000원", "3개 일치"),
+    FOURTH(4, "50,000원", "4개 일치"),
+    THIRD(3, "1,500,000원", "5개 일치"),
+    SECOND(2, "30,000,000원", "5개 일치, 보너스 볼 일치"),
+    FIRST(1, "2,000,000,000원", "6개 일치");
 
     final private int rank;
-    final private long prize;
+    final private String prize;
+    final private String condition;
 
-    public int getRank(){
+    public int getRank() {
         return this.rank;
     }
-    public long getPrize(){
+
+    public String getPrize() {
         return this.prize;
     }
 
-    Rank(int rank, long prize) {
+    public String getCondition() {
+        return this.condition;
+    }
+
+    Rank(int rank, String prize, String condition) {
         this.rank = rank;
         this.prize = prize;
+        this.condition = condition;
+    }
+
+    public void printRank() {
+        System.out.println(condition + " (" + prize + ") - " + getCount(rank) + "개");
     }
 }

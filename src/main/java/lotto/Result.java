@@ -20,6 +20,20 @@ public class Result {
         addResult(StartLotto.winChecks);
     }
 
+    public static int getCount(int index) {
+        if (index == 1)
+            return first;
+        if (index == 2)
+            return second;
+        if (index == 3)
+            return third;
+        if (index == 4)
+            return fourth;
+        if (index == 5)
+            return fifth;
+        return 0;
+    }
+
     public static void addResult(List<WinCheck> winChecks) {
         for (WinCheck e : winChecks) {
             if (e.getMatchCnt() == 6)

@@ -25,7 +25,7 @@ public class StartLotto {
         winChecks = new ArrayList<>();
         checkSave();
         result = new Result();
-        printEnd();
+        printResult();
     }
 
     public static void checkSave() {
