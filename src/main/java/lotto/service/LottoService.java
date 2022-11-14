@@ -30,7 +30,7 @@ public class LottoService {
         this.output = new Output();
     }
 
-    public int getMoney() throws IllegalArgumentException{
+    public int getMoney() {
         String money = input.scanMoneyInput();
         if (!validator.isNumeric(money)) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_TYPE_ERROR.getErrorMessage());
@@ -41,7 +41,7 @@ public class LottoService {
         return Integer.parseInt(money);
     }
 
-    public void buyLotto(int money) throws IllegalArgumentException {
+    public void buyLotto(int money) {
         int purchaseQuantity = money/NumberType.IN_THOUSANDS.getNumberType();
         output.printLottoCountForBuy(purchaseQuantity);
         pickAndSaveLotto(purchaseQuantity);
@@ -57,20 +57,20 @@ public class LottoService {
         }
     }
 
-    public LuckyNumber pickLuckyNumber() throws IllegalArgumentException {
+    public LuckyNumber pickLuckyNumber() {
         HashSet<Integer> winningNumbers = pickWinningNumbers();
         int bonusNumber = pickBonusNumber(winningNumbers);
         LuckyNumber luckyNumber = new LuckyNumber(winningNumbers, bonusNumber);
         return luckyNumber;
     }
 
-    public int pickBonusNumber(HashSet<Integer> winningNumbers) throws IllegalArgumentException {
+    public int pickBonusNumber(HashSet<Integer> winningNumbers) {
         String bonusNumberInput = input.scanBonusNumber();
         checkBonusNumberInput(bonusNumberInput, winningNumbers);
         return Integer.parseInt(bonusNumberInput);
     }
 
-    public HashSet<Integer> pickWinningNumbers() throws IllegalArgumentException {
+    public HashSet<Integer> pickWinningNumbers() {
         String winningNumbersInput = input.scanWinnerNumbers();
         checkWinningNumberInput(winningNumbersInput);
         return changeStringToHashSet(winningNumbersInput);
@@ -84,7 +84,7 @@ public class LottoService {
         return winningNumber;
     }
 
-    public void checkWinningNumberInput(String winningNumbersInput) throws IllegalArgumentException {
+    public void checkWinningNumberInput(String winningNumbersInput) {
         if (!validator.isCorrectDigitAtComma(winningNumbersInput)) {
             throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_DIGIT_ERROR.getErrorMessage());
         }
@@ -99,7 +99,7 @@ public class LottoService {
         }
     }
 
-    public void checkBonusNumberInput(String bonusNumberInput, HashSet<Integer> winningNumbers) throws IllegalArgumentException {
+    public void checkBonusNumberInput(String bonusNumberInput, HashSet<Integer> winningNumbers) {
         if (!validator.isNumeric(bonusNumberInput)) {
             throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_TYPE_ERROR.getErrorMessage());
         }

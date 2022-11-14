@@ -12,13 +12,9 @@ public class LottoController {
     }
 
     public void run() {
-        try {
-            int money = lottoService.getMoney();
-            lottoService.buyLotto(money);
-            LuckyNumber luckyNumber = lottoService.pickLuckyNumber();
-            lottoService.printResult(luckyNumber, money);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        int money = lottoService.getMoney();
+        lottoService.buyLotto(money);
+        LuckyNumber luckyNumber = lottoService.pickLuckyNumber();
+        lottoService.printResult(luckyNumber, money);
     }
 }
