@@ -3,6 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.UserLotto;
 import lotto.validation.InputValidation;
+import lotto.validation.LottoValidation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,10 @@ public class InputView {
     public static List<Integer> inputWinningNumbers() {
         printRequestWinningNumbersMessage();
         String inputWinning = Console.readLine();
-        return castToList(inputWinning);
+        List<Integer> winningNumbers = castToList(inputWinning);
+
+        LottoValidation.isValidLotto(winningNumbers);
+        return winningNumbers;
     }
 
     private static void printRequestWinningNumbersMessage() {
