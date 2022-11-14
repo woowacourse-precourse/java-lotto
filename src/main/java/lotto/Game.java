@@ -31,9 +31,10 @@ public class Game {
         List<List<Result>> userResults;
         int lotteryCount;
         float lotteryStat;
+        float userLotteryStat;
 
-        checkedAmount=-1;
-        while(checkedAmount<0) {
+        checkedAmount = -1;
+        while (checkedAmount < 0) {
             try {
                 System.out.println(LOTTO_USER_INPUT_PURCHASE_AMOUNT);
                 amount = camp.nextstep.edu.missionutils.Console.readLine();
@@ -87,7 +88,7 @@ public class Game {
             if (i == 6 && printBonus > 0) {
                 i -= 1;
                 coincideMessage = String.format(LOTTO_GAME_COINCIDE_RESULT, i, LOTTO_GAME_COINCIDE_BONUS,
-                        DECIMAL_FORMAT.format(WINNINGS[i + winningBonus]), userResults.get(i).size());
+                        DECIMAL_FORMAT.format(WINNINGS[i + winningBonus]), userResults.get(i + winningBonus).size());
                 printBonus = 0;
                 winningBonus = 0;
             } else {
@@ -96,7 +97,9 @@ public class Game {
             }
             System.out.println(coincideMessage);
         }
-        System.out.println(String.format(LOTTO_GAME_LOTTERY_RETURN, lotteryStat));
+
+        userLotteryStat = user.getLotteryStat();
+        System.out.println(String.format(LOTTO_GAME_LOTTERY_RETURN, userLotteryStat));
 
     }
 }
