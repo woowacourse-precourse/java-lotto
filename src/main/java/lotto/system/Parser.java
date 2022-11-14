@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Parser {
 
-    public int validatePurchaseAmount(String purchaseAmount) throws IllegalArgumentException {
+    public int validatePurchaseAmount(String purchaseAmount) {
         purchaseAmount = purchaseAmount.replaceAll(",", "");
         if (!IllegalArgument.isNumber(purchaseAmount)) {
             throw new IllegalArgumentException("[ERROR] 1,000원 단위의 숫자만 입력 가능합니다.");
@@ -18,14 +18,14 @@ public class Parser {
         return Integer.parseInt(purchaseAmount);
     }
 
-    public List<String> parseWinningNumbers(String winningNumber) throws IllegalArgumentException {
+    public List<String> parseWinningNumbers(String winningNumber) {
         if (!IllegalArgument.isNumber(winningNumber.replaceAll(",", ""))) {
             throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력 가능합니다.");
         }
         return Arrays.asList(winningNumber.split(","));
     }
 
-    public int validateBonusNumber(String bonusNumber) throws IllegalArgumentException {
+    public int validateBonusNumber(String bonusNumber) {
         if (!IllegalArgument.isNumber(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력 가능합니다.");
         }
