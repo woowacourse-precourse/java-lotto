@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.stream.Collectors.toMap;
+import static lotto.domain.game.Lotto.LOTTO_BONUS_COUNT;
+import static lotto.domain.game.Lotto.LOTTO_COUNT;
 
 public class WinLotto {
     private final List<Integer> winningNumber;
@@ -38,5 +40,19 @@ public class WinLotto {
 
     public boolean isBonusNumberMatch(List<Integer> lottoTicket){
         return lottoTicket.contains(bonusNumber);
+    }
+
+    public void checkLotto(){
+        for(List<Integer> lottoTicket : lottoTickets){
+            int count = countMatchWinningNumber(lottoTicket);
+            boolean bonus = false;
+
+            if (count == LOTTO_COUNT - LOTTO_BONUS_COUNT){
+                bonus = isBonusNumberMatch(lottoTicket);
+            }
+            Ranking ranking = Ranking.findRanking(count, bonus);
+
+            winningResult.put(ranking, winningResult.get(ranking) + 1);
+        }
     }
 }
