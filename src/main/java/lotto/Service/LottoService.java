@@ -3,6 +3,7 @@ package lotto.Service;
 import lotto.Domain.LotteryTickets;
 import lotto.Domain.Validator;
 import lotto.View.InputView;
+import lotto.View.OutputView;
 
 public class LottoService {
 
@@ -25,4 +26,7 @@ public class LottoService {
         return purchaseAmount / LOTTO_PRICE;
     }
 
+    public void showLottoPurchaseHistory(LotteryTickets lotteryTickets) {
+        OutputView.showPurchasedLottos(lotteryTickets);
+    }
 }

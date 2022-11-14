@@ -11,8 +11,8 @@ public class LottoController {
 
         try {
             int purchase = lottoService.getPurchaseAmount();
-            LotteryTickets lotteryTickets  = lottoService.buyLottery(purchase);
-
+            LotteryTickets lotteryTickets = lottoService.buyLottery(purchase);
+            lottoService.showLottoPurchaseHistory(lotteryTickets);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
