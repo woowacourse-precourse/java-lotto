@@ -1,6 +1,7 @@
 package lotto.Input;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Domain.Exception.CheckException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class InputNumber {
 
         CheckException checkException = new CheckException();
         for (String userInput : userInputs) {
-            lottoSixNum.add(checkException.check_HaveChar(userInput));
+            lottoSixNum.add(checkException.check_HaveChar_And_Convert(userInput));
         }
 
         return lottoSixNum;

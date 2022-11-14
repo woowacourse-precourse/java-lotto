@@ -1,6 +1,6 @@
 package lotto.Domain;
 
-import lotto.Input.CheckException;
+import lotto.Domain.Exception.CheckException;
 
 import java.util.HashSet;
 import java.util.List;

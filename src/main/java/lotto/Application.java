@@ -13,6 +13,7 @@ public class Application {
     public int bonusNum;
     public List<Set<Integer>> publishedLottos;
 
+    public static final String ERROR = "[ERROR]";
     public static void main(String[] args) {
         try {
         Application application = new Application();
@@ -20,11 +21,11 @@ public class Application {
 
         Statistic statistic =
                 new Statistic(application.sixNum, application.bonusNum, application.publishedLottos);
-        Map<String,Integer> winningMap = statistic.getStatistic();
+        Map<String,Integer> winningMap = statistic.winningMap;
         Profit profit = new Profit();
         profit.printProfit(winningMap,application.publishedLottos.size()*1000);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            System.out.println(ERROR+e.getMessage());
         }
 
 

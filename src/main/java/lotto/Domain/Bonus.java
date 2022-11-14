@@ -1,7 +1,7 @@
 package lotto.Domain;
 
 
-import lotto.Input.CheckException;
+import lotto.Domain.Exception.CheckException;
 
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +16,7 @@ public class Bonus {
     private int convertAndValidate(String bonus, List<Integer> sixNum) throws IllegalArgumentException{
         CheckException checkException = new CheckException();
 
-        int number = checkException.check_HaveChar(bonus);
+        int number = checkException.check_HaveChar_And_Convert(bonus);
 
         sixNum.add(number);
         HashSet<Integer> compareNum = new HashSet<>(sixNum);

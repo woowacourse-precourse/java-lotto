@@ -24,9 +24,7 @@ public class PublishLotto {
 
         for(int count=0; count<publishLottosNum; count++) {
             Set<Integer> oneLotto = new TreeSet<>();
-            while(oneLotto.size() != LottoValue.SIZE.getNum()) {
-                oneLotto.add(Randoms.pickNumberInRange(LottoValue.MIN.getNum(), LottoValue.MAX.getNum()));
-            }
+            oneLotto.add(Randoms.pickNumberInRange(LottoValue.MIN.getNum(), LottoValue.MAX.getNum()));
             lottos.add(oneLotto);
         }
 
