@@ -73,11 +73,11 @@ class LottoTest {
     @DisplayName("수익률이 잘 계산되는지 확인한다.")
     @Test
     void printRateOfReturn() {
-        Long totalMoney = 5000L;
+        Long totalMoney = 50000L;
         int inputMoney = 3000;
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         Application.printRateOfReturn(totalMoney, inputMoney);
-        assertThat(out.toString().trim()).contains("총 수익률은 166.7%입니다.");
+        assertThat(out.toString().trim()).contains("총 수익률은 1,666.7%입니다.");
     }
 }

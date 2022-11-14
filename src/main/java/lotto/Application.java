@@ -182,7 +182,9 @@ public class Application {
     public static void printRateOfReturn(Long totalMoney, int inputMoney) {
         float rateOfReturn = 100 * totalMoney / (float) inputMoney;
         String rate = String.format("%.1f", rateOfReturn);
-        System.out.println("총 수익률은 " + rate + "%입니다.");
+        String rateUpper = addComma((int) Float.parseFloat(rate));
+        rate = rate.substring(rate.length() - 2);
+        System.out.println("총 수익률은 " + rateUpper + rate + "%입니다.");
     }
 
 }
