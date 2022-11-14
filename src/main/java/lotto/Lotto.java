@@ -24,4 +24,11 @@ public class Lotto {
 		return numbers;
 	}
 
+	public void reduplicationLotto(List<Integer> numbers) throws IllegalArgumentException {
+		List<Integer> newList = numbers.stream().distinct().collect(Collectors.toList());
+		if (numbers.size() != newList.size()) {
+			throw new IllegalArgumentException(Constants.ERROR_RE_DUPLICATION_LOTTO);
+		}
+	}
+
 }
