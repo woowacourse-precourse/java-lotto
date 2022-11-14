@@ -37,5 +37,12 @@ public class Input {
         return Console.readLine();
     }
 
+    private static void checkLottonums(String str) {
+        check_empty(str);
+        check_size(str);
+        check_number(str);
+        check_Range(str);
+        check_Overlap(str);
+    }
 
 }
