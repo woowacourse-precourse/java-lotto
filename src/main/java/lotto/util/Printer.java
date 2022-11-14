@@ -13,6 +13,10 @@ public class Printer {
         System.out.printf(message, n);
     }
 
+    public static void printf(String message, double n) {
+        System.out.printf(message, n);
+    }
+
     public static void divide() {
         System.out.println();
     }

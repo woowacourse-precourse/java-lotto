@@ -2,6 +2,7 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.*;
+import lotto.util.Calculator;
 import lotto.util.Printer;
 import lotto.view.LottoMessage;
 import lotto.view.ResultMessage;
@@ -62,6 +63,10 @@ public class LottoController {
         Printer.printf(ResultMessage.FIVE_HIT.getMessage(), rank[3]);
         Printer.printf(ResultMessage.FIVE_HIT_WITH_BONUS.getMessage(), rank[2]);
         Printer.printf(ResultMessage.SIX_HIT.getMessage(), rank[1]);
+
+        double profit = Calculator.rateProfit(user.getPay(), rank);
+        Printer.printf(ResultMessage.RATE_PROFIT.getMessage(), profit);
     }
+
 
 }
