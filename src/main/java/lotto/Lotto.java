@@ -18,7 +18,7 @@ public class Lotto {
         validate(numbers);
         List<Integer> sortedNumbers = new ArrayList<>(numbers);
         sortedNumbers.sort(Comparator.naturalOrder());
-        this.numbers = numbers;
+        this.numbers = sortedNumbers;
     }
 
     private void validate(List<Integer> numbers) {
