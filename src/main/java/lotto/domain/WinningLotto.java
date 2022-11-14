@@ -17,7 +17,7 @@ public class WinningLotto {
         List<Integer> winningNumbers= winningLotto.getNumbers();
 
         if(winningNumbers.contains(bonusNumber)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 입력한 보너스 번호가 이미 당첨 번호에 존재합니다.");
         }
     }
 }

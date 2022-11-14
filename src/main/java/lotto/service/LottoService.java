@@ -22,13 +22,13 @@ public class LottoService {
             payment = Integer.parseInt(inputPayment);
             return payment;
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
         }
     }
 
     public int getLottoAmount(int payment) {
         if(payment % LOTTO_PAYMENT != 0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 금액 단위로 입력해야 합니다.");
         }
         return payment/LOTTO_PAYMENT;
     }
@@ -50,7 +50,7 @@ public class LottoService {
             LottoUtils.checkNumberInRange(bonusNumber);
             return bonusNumber;
         }catch (Exception e){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
         }
     }
 

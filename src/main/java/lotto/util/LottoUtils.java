@@ -25,7 +25,7 @@ public class LottoUtils {
                     .collect(Collectors.toList());
             return numbers;
         }catch (Exception e){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
         }
     }
 
@@ -35,13 +35,13 @@ public class LottoUtils {
                 .collect(Collectors.toList());
 
         if(numbers.size() != numbers2.size()){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 중복된 번호가 당첨될 수 없습니다.");
         }
     }
 
     public static void checkNumberInRange(int number) {
         if(number<START_NUMBER || number>END_NUMBER){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 }
