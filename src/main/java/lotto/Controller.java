@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class Controller {
     public void run() {
@@ -30,11 +31,6 @@ public class Controller {
     }
 
     private void getResult(List<Lotto> lottos, WinningLotto winningLotto) {
-        for (Lotto lotto : lottos) {
-            int matchCount = lotto.getCountOfMatch(winningLotto.getWinningLottoNumbers());
-            boolean bonusMatch = lotto.containBonus(winningLotto.getBonusNumber());
-            System.out.println(matchCount + " " + bonusMatch);
-            System.out.println(LottoRank.valueOf(matchCount, bonusMatch));
-        }
+        Map<LottoRank, Integer> lottoResult = LottoGame.getLottoResult(lottos, winningLotto);
     }
 }
