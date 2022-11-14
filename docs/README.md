@@ -39,3 +39,15 @@
       - ex1) "3개 일치 (5,000원)"
       - ex2) "5개 일치, 보너스 볼 일치 (30,000,000원)"
     - [x] 당첨 번호와 똑같은 숫자의 개수에 따라 상금 조건과 일치하는지 판단
+
+
+- ConsoleInput
+  - [x] console을 통해 입력값을 받아 int 값으로 변환함
+    - 입력값이 int 값이 아닌 경우 `IllegalArgumentException`을 발생시킴
+  - [ ] console을 통해 입력값을 받아 List<Integer> 값으로 변환함
+    - 형식이 올바르지 않은 경우 `IllegalArgumentException`을 발생시킴
+    - 형식) 34,7,6,28,16,18
+
+
+- ConsoleOutput
+  - [ ] 메세지를 입력 받으면 출력하도록 함
