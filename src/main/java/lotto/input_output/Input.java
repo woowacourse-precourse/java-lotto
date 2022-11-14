@@ -18,5 +18,10 @@ public class Input {
         String input = Console.readLine();
         return Integer.parseInt(input);
     }
+    protected static List<Integer> returnLotteryNumber(){
+        String input = input();
+        checkLottonums(input);
+        return ChangeType.string_to_listinteger(input);
+    }
 
 }
