@@ -150,7 +150,15 @@ class LottoTest extends NsTest {
 			assertThat(output()).contains(ERROR_MESSAGE);
 		});
 	}
-	
+
+	@Test
+	void 보너스번호_중복_검사() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,5,45", "45");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
