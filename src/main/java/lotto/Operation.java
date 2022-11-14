@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class Operation {
     static int buyAmount(int purchaseAmount) {
@@ -13,7 +14,7 @@ public class Operation {
 
     static List<Lotto> buyLotto(int purchaseAmount) {
         List<Lotto> lottos = new ArrayList<>();
-        int buyAmount= buyAmount(purchaseAmount);
+        int buyAmount = buyAmount(purchaseAmount);
         for (int i = 0; i < buyAmount; i++) {
             lottos.add(new Lotto(generateNumbers()));
         }
@@ -21,7 +22,7 @@ public class Operation {
     }
 
     static List<Integer> generateNumbers() {
-        List<Integer> result = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45,6));
+        List<Integer> result = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         result.sort(Comparator.naturalOrder());
         return result;
     }
@@ -56,7 +57,9 @@ public class Operation {
             int earning = calculateEarning(match);
             double earningRate = calculateEarningRate(purchaseAmount, earning);
             Print.result(earningRate, match);
-        } catch (IllegalArgumentException ignored) {
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
+

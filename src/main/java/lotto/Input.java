@@ -52,55 +52,47 @@ public class Input {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 입력 값이 숫자가 아닙니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 입력 값이 숫자가 아닙니다.");
         } catch (Exception e) {
-            System.out.println("[ERROR] 입력 값이 잘못되었습니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 입력 값이 잘못되었습니다.");
         }
     }
 
     private static void validPurchase(int input) throws IllegalArgumentException {
         if (input % 1000 != 0) {
-            System.out.println("[ERROR] 1000원으로 나누어지는 수가 아닙니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1000원으로 나누어지는 수가 아닙니다.");
         }
     }
 
     private static void validWinning6Numbers(String[] split) throws IllegalArgumentException {
         if (split.length != 6) {
-            System.out.println("[ERROR] 쉼표로 구분된 6개의 문자가 아닙니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 쉼표로 구분된 6개의 문자가 아닙니다.");
         }
     }
 
     private static void validWinningRepetition(String[] split) throws IllegalArgumentException {
         HashSet<String> removeDuplication = new HashSet<>(List.of(split));
         if (removeDuplication.size() != 6) {
-            System.out.println("[ERROR] 중복되는 당첨 번호가 있습니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 중복되는 당첨 번호가 있습니다.");
         }
     }
 
     private static void validBonusRepetition(int bonus, List<Integer> winning) throws IllegalArgumentException {
         if (winning.contains(bonus)) {
-            System.out.println("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
         }
     }
 
     private static void valid1to45(int number) throws IllegalArgumentException {
         if ((number > 45) || (number < 1)) {
-            System.out.println("[ERROR] 숫자가 1에서 45 사이의 값이 아닙니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자가 1에서 45 사이의 값이 아닙니다.");
         }
     }
 
     private static void valid1to45(List<Integer> numbers) throws IllegalArgumentException {
         for (int number : numbers) {
             if ((number > 45) || (number < 1)) {
-                System.out.println("[ERROR] 숫자가 1에서 45 값이 아닙니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 숫자가 1에서 45 값이 아닙니다.");
             }
         }
     }
