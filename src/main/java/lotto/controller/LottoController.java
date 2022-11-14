@@ -17,5 +17,9 @@ public class LottoController implements Controller {
         service.buyLottos(money);
     }
 
+    public String outputLottoSize() {
+        return String.valueOf(service.getLottosSize());
+    }
+
     }
 }

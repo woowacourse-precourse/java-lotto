@@ -14,4 +14,8 @@ public class LottoGameService {
         LottoFactory factory = new LottoFactory(new RandomNumbers());
         this.lottos = new Lottos(factory.generateLottos(money));
     }
+
+    public int getLottosSize() {
+        return lottos.size();
+    }
 }

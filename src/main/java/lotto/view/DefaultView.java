@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.controller.LottoController;
 
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class DefaultView implements View {
 
@@ -16,9 +17,9 @@ public class DefaultView implements View {
     public void render() {
 
         System.out.println(Views.REQUEST_MONEY.render());
-
         request(controller::inputMoney);
 
+        renderLottos();
     }
 
     private void request(Consumer<String> consumer) {
@@ -29,7 +30,15 @@ public class DefaultView implements View {
             System.out.println(e.getMessage());
             throw new IllegalArgumentException();
         }
+    }
 
+    private String request(Supplier<String> supplier) {
+        return supplier.get();
+    }
+
+    private void renderLottos() {
+        String lottosSize = request(controller::outputLottoSize);
+        System.out.println(Views.LOTTOS_COUNT.render(lottosSize));
     }
     
 }

@@ -9,4 +9,8 @@ public class Lottos {
     public Lottos(List<Lotto> lottos) {
         this.lottos = List.copyOf(lottos);
     }
+
+    public int size() {
+        return lottos.size();
+    }
 }
