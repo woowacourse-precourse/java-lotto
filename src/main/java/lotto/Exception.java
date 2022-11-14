@@ -16,4 +16,14 @@ public class Exception {
 			throw new IllegalArgumentException(Constants.ERROR_NUMBER_PRICE);
 		}
 	}
+
+	public void checkLottoOnlyNumber(String input) throws IllegalArgumentException {
+		if (!Pattern.matches("^[0-9]*$", input)) {
+			throw new IllegalArgumentException(Constants.ERROR_LOTTO_ONLY_NUMBER);
+		}
+	}
 }
+
+
+
+
