@@ -35,6 +35,7 @@ public class Application {
     }
 
     private static Integer matchLottos(Lotto winLotto, List<Lotto> lottos) {
+        LottoUI.WinStatisticTitle();
         Integer matchThree = winLotto.matchWithList(lottos, THREE);
         LottoUI.printWinHistory(THREE, LottoEnum.MATCH_THREE_PRIZE.getValue(), matchThree);
         Integer matchFour = winLotto.matchWithList(lottos, FOUR);

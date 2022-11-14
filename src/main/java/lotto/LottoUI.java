@@ -23,6 +23,11 @@ public class LottoUI {
         System.out.println(sortedNumbers);
     }
 
+    public static void WinStatisticTitle() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
     public static void printWinHistory(final Integer machNumber, final Integer prizeMoney, final Integer winAmount) {
         System.out.printf("%d개 일치 (%,d원) - %d개\n", machNumber, prizeMoney, winAmount);
     }
