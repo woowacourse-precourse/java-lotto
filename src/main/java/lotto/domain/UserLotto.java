@@ -51,7 +51,7 @@ public class UserLotto {
         return lottoResult;
     }
 
-    public static double getRateOfReturn(List<Integer> lottoResult, UserLotto user) {
+    public double getRateOfReturn(List<Integer> lottoResult) {
         int total = 0;
         for (Prize prize : Prize.values()) {
             if (prize == Prize.NONE) {
@@ -59,6 +59,6 @@ public class UserLotto {
             }
             total += prize.getPrizeMoney() * lottoResult.get(prize.ordinal());
         }
-        return total / (double) user.getLottoCount();
+        return total / (double) this.getLottoCount();
     }
 }

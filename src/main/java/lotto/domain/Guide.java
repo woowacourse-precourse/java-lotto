@@ -13,7 +13,7 @@ public class Guide {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    public static void printGetLottoCount(int LottoCount) {
+    public static void printLottoCount(int LottoCount) {
         System.out.println("\n" + Integer.toString(LottoCount) + "개를 구매했습니다.");
     }
 

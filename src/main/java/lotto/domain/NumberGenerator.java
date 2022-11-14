@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
-    public List<Lotto> createLottoList(int lottoCount) {
+    public static List<Lotto> createLottoList(int lottoCount) {
 
         List<Lotto> boughtLotto = new ArrayList<Lotto>();
         for (int order = 0; order < lottoCount; order++) {
