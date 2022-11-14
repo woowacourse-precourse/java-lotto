@@ -12,6 +12,7 @@ import lotto.exception.MoneyNotDividedByPriceException;
 import lotto.exception.MoneyRangeException;
 import lotto.exception.WrongLengthException;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class LottoTest {
@@ -80,6 +81,12 @@ class LottoTest {
         LottoNumber bonusNumber = new LottoNumber(6);
         assertThatThrownBy(() -> new WinningLotto(winningNumbers, bonusNumber))
                 .isInstanceOf(BonusNumberDuplicationError.class);
+    }
+
+    @DisplayName("로또 생성 테스트")
+    @RepeatedTest(10)
+    void generateLotto() {
+        assertThat(LottoGenerator.generate()).isInstanceOf(Lotto.class);
     }
 
     private List<LottoNumber> convertIntegerListToLottoNumberList(List<Integer> numbers) {
