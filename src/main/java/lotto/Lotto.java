@@ -4,10 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import static Constant.ErrorMessage.*;
-import static Constant.Game.MAX_NUMBER;
-import static Constant.Game.MIN_NUMBER;
 
 public class Lotto {
     private final List<Integer> numbers;

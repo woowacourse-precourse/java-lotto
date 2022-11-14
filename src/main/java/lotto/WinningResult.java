@@ -1,7 +1,9 @@
 package lotto;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class WinningResult {
      WinningNumber winningNumber;
@@ -37,19 +39,17 @@ public class WinningResult {
      }
 
      float winningRate(Integer purchaseAmount) {
-          int winningAmount = 0;
           float result;
+          AtomicInteger winningAmount = new AtomicInteger();
+          Stream<Map.Entry<Rank, Integer>> ranks = rankCount.entrySet().stream();
 
-          Iterator<Map.Entry<Rank, Integer>> entry = rankCount.entrySet().iterator();
-
-          while (entry.hasNext()) {
-               Map.Entry<Rank, Integer> element = entry.next();
-               winningAmount += element.getKey().getWinningAmount() * element.getValue();
-          }
-
-          result = winningAmount / (float)purchaseAmount * 100;
-
+          ranks.forEach(rank -> winningAmount.addAndGet(rankPrize(rank)));
+          result = Integer.parseInt(String.valueOf(winningAmount)) / (float)purchaseAmount * 100;
           return result;
+     }
+
+     private int rankPrize(Map.Entry<Rank, Integer> rank) {
+          return (rank.getKey().getWinningAmount() * rank.getValue());
      }
 
      private List<Rank> checkRank(List<Lotto> lottos) {

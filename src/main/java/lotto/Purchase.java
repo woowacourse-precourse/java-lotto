@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import static Constant.ErrorMessage.NOT_INTEGER;
 import static Constant.ErrorMessage.UNITS_THOUSAND;
 
 public class Purchase {
