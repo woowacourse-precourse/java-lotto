@@ -3,14 +3,18 @@ package lotto;
 import lotto.domain.Lotto;
 import lotto.domain.LottoProcessor;
 import lotto.domain.LottoProcessorImpl;
+import lotto.domain.LottoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
+
+
 
 import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class LottoProcessorTest {
 
@@ -72,6 +76,33 @@ public class LottoProcessorTest {
                     Boolean result = lottoProcessor.matchBonusNumber(bonusNumber, lotto);
 
                     assertThat(result).isEqualTo(false);
+                })
+        );
+    }
+
+    @TestFactory
+    @DisplayName("LottoProcessor buyLotto Test")
+    Stream<DynamicTest> lottoProcessorBuyLottoTest() {
+        lottoProcessor = new LottoProcessorImpl();
+
+        return Stream.of(
+                DynamicTest.dynamicTest("3000원인 경우", () -> {
+                    final int money = 3000;
+                    List<Lotto> result = lottoProcessor.buyLotto(money);
+
+                    assertThat(result.size()).isEqualTo(3);
+                }),
+                DynamicTest.dynamicTest("1000원인 경우", () -> {
+                    final int money = 1000;
+                    List<Lotto> result = lottoProcessor.buyLotto(money);
+
+                    assertThat(result.size()).isEqualTo(1);
+                }),
+                DynamicTest.dynamicTest("8000원인 경우", () -> {
+                    final int money = 8000;
+                    List<Lotto> result = lottoProcessor.buyLotto(money);
+
+                    assertThat(result.size()).isEqualTo(8);
                 })
         );
     }
