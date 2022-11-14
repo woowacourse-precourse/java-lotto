@@ -11,6 +11,16 @@ public class WinningNumber {
 
     private final int winning_cnt = 6;
 
+    public List<Integer> validateWinningNumbers(String input){
+        notNumber(input);
+        notComma(input);
+        List<Integer> winningNumbers = convertStringToList(input);
+        numberCount(winningNumbers);
+        numberRange(winningNumbers);
+
+        return winningNumbers;
+    }
+
     public List<Integer> convertStringToList(String input){
         List<Integer> winningNumbers = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(input, ",");
