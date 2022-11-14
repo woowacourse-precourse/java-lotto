@@ -45,7 +45,7 @@ public class Lotto {
     }
 
     private static boolean hasCorrectSize(List<Integer> numbers) {
-        return numbers.size() != NUMBER_SIZE;
+        return numbers.size() == NUMBER_SIZE;
     }
 
     private static boolean noDuplicate(List<Integer> numbers) {
