@@ -1,17 +1,18 @@
 # 로또 게임
 
 ## 기능 목록
-- [x] 로또 번호를 생성한다.
-  - [x] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - LotteryDrawMachine#drawLotteryNumbers()
-  - [x] 로또 번호를 정렬하여 반환한다. - LotteryDrawMachine#getSortedNumbers()
-- [x] 사용자가 구매한 로또 번호와 당첨 번호(중복되지 않는 수 6개 + 보너스 번호 1개)를 비교한다.
-  - [x] 로또 번호와 당첨 번호를 비교해 일치하는 번호의 개수를 반환한다. - Comparator#getMatchCount()
-  - [x] 로또 번호와 보너스 번호를 비교한다. - Comparator#hasBonusNumber()
-- [x] 계산한다.
-  - [x] 당첨 결과를 계산한다. - Calculator#calculateMatchResults()
-  - [x] 총 수익을 계산한다. - Calculator#calculateProfit()
-  - [x] 수익률을 계산한다. - Calculator#calculateEarningsRate()
-    - 수익률은 소수점 둘째 자리에서 반올림한다. (ex. 100.0%, 51.5%, 1,000,000.0%)
+- [x] 1부터 45까지의 서로 다른 임의의 수 6개를 랜덤으로 생성한다. - RandomNumberGenerator#generateNumbers()
+- [x] 로또 번호를 정렬하여 반환한다. - RandomNumberGenerator#getSortedNumbers()
+- [x] 테스트를 위해 고정적인 수 6개를 생성한다. - FixedNumberGenerator#generateNumbers()
+
+- [x] 로또 번호와 당첨 번호를 비교해 일치하는 번호의 개수를 반환한다. - Lotto#getMatchCount()
+- [x] 로또 번호와 보너스 번호를 비교한다. - Lotto#hasBonusNumber()
+
+- [x] 당첨 결과를 계산한다. - WinningResult#calculateMatchResults()
+
+- [x] 총 수익을 계산한다. - Profit#calculateProfit()
+- [x] 수익률을 계산한다. - Profit#calculateEarningsRate()
+  - 수익률은 소수점 둘째 자리에서 반올림한다. (ex. 100.0%, 51.5%, 1,000,000.0%)
 
 ### 예외 상황
 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 를 발생시키고, `[ERROR]` 로 시작하는 에러 메시지를 출력 후 종료한다.
