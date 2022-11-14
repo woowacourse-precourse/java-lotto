@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,6 +12,11 @@ public class LottoOrder {
 
     public LottoOrder(String moneyCommand) throws IllegalArgumentException {
         int lottoCount = calcLottoCount(moneyCommand);
+
+        lottoTickets = new ArrayList<>();
+        for (int i = 0; i < lottoCount; i++) {
+            lottoTickets.add(new Lotto(generateRandomLottoNumber()));
+        }
 
         this.lottoCount = lottoCount;
     }
