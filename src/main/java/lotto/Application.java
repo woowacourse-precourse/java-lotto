@@ -19,7 +19,6 @@ public class Application {
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR+e.getMessage());
         }
-
     }
 
 }
