@@ -32,15 +32,20 @@ public class LottoResult {
         return (getTotalReward() / (double) purchaseAmount) * 100;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-
+    public List<LottoRank> getLottoRanksSortedByCount() {
         List<LottoRank> lottoRanks = new ArrayList<>(lottoScore.keySet());
 
         lottoRanks.sort((lottoRank1, lottoRank2) -> {
             return (int) (lottoRank1.getCount() - lottoRank2.getCount());
         });
+
+        return lottoRanks;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        List<LottoRank> lottoRanks = getLottoRanksSortedByCount();
 
         for (LottoRank lottoRank : lottoRanks) {
             if (lottoRank.equals(LottoRank.NONE)) {
