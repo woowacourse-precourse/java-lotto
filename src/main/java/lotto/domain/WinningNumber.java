@@ -22,6 +22,8 @@ public class WinningNumber {
     public void inputBonusNumber(String input) throws IllegalArgumentException {
         checkBlank(input);
         checkNumber(input);
+        int number = Integer.parseInt(input);
+        checkDuplicate(number);
     }
 
     // 올바른 당첨 번호 입력값인지 검증하는 기능
@@ -72,6 +74,15 @@ public class WinningNumber {
     private void checkBlank(String number) throws IllegalArgumentException {
         if (number.equals("")) {
             throw new IllegalArgumentException("[ERROR] 공백을 입력할 수 없습니다.");
+        }
+    }
+
+    // 당첨 번호와 중복되는지 검증
+    private void checkDuplicate(int number) {
+        List<Integer> winningNumber = lotto.getNumbers();
+        HashSet<Integer> deduplication = new HashSet<>(winningNumber);
+        if (deduplication.size() == Setting.LOTTO_SIZE) {
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력할 수 없습니다.");
         }
     }
 }
