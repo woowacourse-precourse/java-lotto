@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -35,5 +38,19 @@ public class Lotto {
         if (number < LottoConstant.MIN_NUMBER.getValue()) {
             throw new IllegalArgumentException(LottoConstant.MIN_NUMBER.getValue() + "보다 낮은 값은 입력될 수 없습니다.");
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < numbers.size(); i++) {
+            sb.append(numbers.get(i));
+            if (i != numbers.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }
