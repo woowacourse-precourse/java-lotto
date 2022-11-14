@@ -4,6 +4,8 @@ public class UserAmount {
 
     private static final int INPUT_AMOUNT_LENGTH_ZERO = 0;
     private static final String INPUT_AMOUNT_SPACE = " ";
+    private static final int LOTTO_PURCHASE_AMOUNT_CRITERIA = 1000;
+    private static final int REMAINING_AMOUNT = 0;
 
     private final Long amount;
 
@@ -31,10 +33,17 @@ public class UserAmount {
 
     private Long validateNumber(String amount) {
         try {
-            return Long.parseLong(amount);
-        } catch (IllegalArgumentException e) {
+            return validateAmount(Long.parseLong(amount));
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 입력하신 구입금액은 숫자가 아닙니다.");
         }
+    }
+
+    private Long validateAmount(Long amount) {
+        if (amount % LOTTO_PURCHASE_AMOUNT_CRITERIA != REMAINING_AMOUNT) {
+            throw new IllegalArgumentException("[ERROR] 구입금액이 1,000원으로 나누어 떨어지지 않습니다.");
+        }
+        return amount;
     }
 
     public Long getAmount() {
