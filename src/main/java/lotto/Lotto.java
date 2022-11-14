@@ -21,12 +21,16 @@ public class Lotto {
         }
     }
 
-    private void isDup(List<Integer> numbers){
+    private void isDup(List<Integer> numbers) {
         Set<Integer> dupCheck = new HashSet<>(numbers);
-        if (dupCheck.size() != 6){
+        if (dupCheck.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 숫자는 중복될 수 없습니다.");
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+// TODO: 추가 기능 구현
 }
