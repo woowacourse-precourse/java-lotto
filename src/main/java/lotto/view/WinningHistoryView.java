@@ -47,6 +47,7 @@ public class WinningHistoryView {
     }
 
     private static void showYield(ResponseRankAggregation responseRankAggregation, String pay) {
-        yieldService.calculate(responseRankAggregation, pay);
+        String calculate = yieldService.calculate(responseRankAggregation, pay);
+        System.out.println("총 수익률은 " + calculate + "%입니다.");
     }
 }
