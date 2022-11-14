@@ -28,8 +28,8 @@ public enum WinningPrize {
         return howManyNumbersIncluded;
     }
 
-    public static int findRanking(int amountOfCorrectNumbers, Lotto lottoPapers, int bonusNumber){
-        boolean isThirdPrize = (amountOfCorrectNumbers == 5) && !isBonusNumberIncludedInPapers(lottoPapers,bonusNumber);
+    public static int findRanking(int amountOfCorrectNumbers, Lotto oneLottoPaper, int bonusNumber){
+        boolean isThirdPrize = (amountOfCorrectNumbers == 5) && !isBonusNumberIncludedInPapers(oneLottoPaper,bonusNumber);
 
         for(WinningPrize prize : WinningPrize.values()){
             if(amountOfCorrectNumbers == prize.howManyNumbersIncluded){
@@ -47,8 +47,8 @@ public enum WinningPrize {
         return forFindingEnumByRank.get(ranking);
     }
 
-    private static boolean isBonusNumberIncludedInPapers(Lotto lottoPapers, int bonusNumber){
-        return lottoPapers.getNumbers().contains(bonusNumber);
+    private static boolean isBonusNumberIncludedInPapers(Lotto oneLottoPaper, int bonusNumber){
+        return oneLottoPaper.getNumbers().contains(bonusNumber);
     }
 
     private static Map<Integer, WinningPrize> forFindingEnumByRank(){
