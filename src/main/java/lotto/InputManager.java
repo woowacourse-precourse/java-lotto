@@ -25,13 +25,13 @@ public class InputManager {
         return Integer.parseInt(input);
     }
 
-    private int purchaseAmount() {
+    protected int purchaseAmount() {
         String input = Console.readLine();
         int temp = Integer.parseInt(input);
         if (temp % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] purchase Amount can't be divided by 1000");
         }
-        return temp % 1000;
+        return temp / 1000;
     }
 
     //입력한 숫자가 (1, 45) 인 수인지 검증 
