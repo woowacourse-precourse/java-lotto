@@ -1,5 +1,6 @@
 package user;
 
+
 import static message.ErrorMessage.INCORRECT_MONEY_UNIT;
 import static message.ErrorMessage.MORE_MONEY;
 

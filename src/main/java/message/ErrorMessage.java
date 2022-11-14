@@ -6,7 +6,10 @@ public enum ErrorMessage {
     ABOVE_ELEMENT("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
 
     MORE_MONEY("[ERROR] 값을 잘못 입력하였습니다."),
-    INCORRECT_MONEY_UNIT("[ERROR] 1000원 단위로 입력해야 합니다.");
+    INCORRECT_MONEY_UNIT("[ERROR] 1000원 단위로 입력해야 합니다."),
+
+    USER_INPUT_ERROR("[ERROR] 당첨번호는 쉼표를 기준으로 구분해야 합니다."),
+    INPUT_COUNT_ERROR("[ERROR] 당첨번호는 6개를 입력해야 합니다.");
 
     private String status;
 
