@@ -16,7 +16,7 @@ class InputViewTest {
     void revertInputToList() {
         String winningNumInput = "124,,123,4,12,3,1";
 
-        List<String> winningNumList = InputView.revertInputToList(winningNumInput);
+        List<Integer> winningNumList = InputView.revertInputToList(winningNumInput);
 
         assertThat(winningNumList).isEqualTo(Arrays.asList("124","","123","4","12","3","1"));
     }

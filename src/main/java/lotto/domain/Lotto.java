@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.List;
 
@@ -30,7 +30,10 @@ public class Lotto {
     }
 
     private static boolean isInRange(Integer number) {
-        return number > 0 && number < 46;
+        Integer minNum = 1;
+        Integer maxNum = 45;
+        return number.compareTo(minNum) != -1
+                && number.compareTo(maxNum) != 1;
     }
 
     private static boolean isDuplicate(List<Integer> numbers, Integer num, int index) {
@@ -42,4 +45,7 @@ public class Lotto {
         return true;
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }

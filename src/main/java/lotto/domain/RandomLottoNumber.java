@@ -3,9 +3,14 @@ package lotto.domain;
 import java.util.List;
 
 public class RandomLottoNumber {
-    public List<Integer> randomNumber;
+    private List<Integer> randomNumber;
+    public Winner winner;
 
     public RandomLottoNumber(List<Integer> randomNumber) {
         this.randomNumber = randomNumber;
+    }
+
+    public List<Integer> getRandomNum() {
+        return randomNumber;
     }
 }

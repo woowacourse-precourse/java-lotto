@@ -18,10 +18,20 @@ public class InputView {
         return winningNumberInput;
     }
 
-    public static List<String> revertInputToList(String winningNumberInput) {
+    public static List<Integer> revertInputToList(String winningNumberInput) {
+        List<Integer> winningNumberList = new ArrayList<>();
         String[] winningNumberArray = winningNumberInput.split(",");
-        List<String> winningNumberList = Arrays.asList(winningNumberArray);
+        for (String winningNumberStr : winningNumberArray) {
+            Integer winningNumber = Integer.parseInt(winningNumberStr);
+            winningNumberList.add(winningNumber);
+        }
         return winningNumberList;
+    }
+
+    public static String getInputBonusNumber() {
+        OutputView.bonusNumberMsg();
+        String bonusNumberInput = Console.readLine();
+        return bonusNumberInput;
     }
 
 

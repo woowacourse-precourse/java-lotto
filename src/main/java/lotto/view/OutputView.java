@@ -12,7 +12,7 @@ public class OutputView {
     public static void purchaseResultMsg(List<RandomLottoNumber> lottoNumberList, int countFromMoney) {
         System.out.println(countFromMoney+"개를 구매했습니다.");
         for (RandomLottoNumber lottoNumber : lottoNumberList) {
-            System.out.println(lottoNumber.randomNumber);
+            System.out.println(lottoNumber.getRandomNum());
         }
     }
 

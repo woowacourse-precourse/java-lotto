@@ -12,13 +12,12 @@ public class RandomUtil {
 
     static final int LENGTH_OF_LOTTO_NUMBERS = 6;
 
-    public static List<RandomLottoNumber> getLottoNumbers(int money){
-        int countFromMoney = getCountFromMoney();
+    public static List<RandomLottoNumber> getLottoNumbers(String purchaseAmountInput){
+        int countFromMoney = getCountFromMoney(purchaseAmountInput);
         return createLottoNumberList(countFromMoney);
     }
 
-    private static int getCountFromMoney() {
-        String purchaseAmountInput = InputView.getInputPurchaseAmount();
+    private static int getCountFromMoney(String purchaseAmountInput) {
         ParserUtil.parsePurchaseAmountInput(purchaseAmountInput);
         int purchaseAmount = Integer.parseInt(purchaseAmountInput);
         int countFromMoney = purchaseAmount / 1000;

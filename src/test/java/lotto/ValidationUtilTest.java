@@ -21,7 +21,7 @@ class ValidationUtilTest {
     void validatePurchaseAmountInput() {
         int purchaseAmount = -1004;
 
-        boolean isPositiveNum = ValidationUtil.validatePositiveNum(purchaseAmount);
+        boolean isPositiveNum = ValidationUtil.validateMinNumber(purchaseAmount);
         boolean isRemainder = ValidationUtil.validateRemainder(purchaseAmount);
 
         assertThat(isPositiveNum).isFalse();
@@ -34,9 +34,9 @@ class ValidationUtilTest {
         String winningNum2 = "a,2,3,4,5,6";
         String winningNum3 = "1, 2, 3, 4, 5, 6";
 
-        assertThat(ValidationUtil.isDigitAndComma(winningNum1)).isTrue();
-        assertThat(ValidationUtil.isDigitAndComma(winningNum2)).isFalse();
-        assertThat(ValidationUtil.isDigitAndComma(winningNum3)).isFalse();
+        assertThat(ValidationUtil.validateIsDigitAndComma(winningNum1)).isTrue();
+        assertThat(ValidationUtil.validateIsDigitAndComma(winningNum2)).isFalse();
+        assertThat(ValidationUtil.validateIsDigitAndComma(winningNum3)).isFalse();
     }
 
     /* @Test
