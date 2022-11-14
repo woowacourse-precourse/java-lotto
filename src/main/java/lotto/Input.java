@@ -50,6 +50,9 @@ public class Input {
             if(!(tempNumber >= 1 && tempNumber <= 45))
                 throw new IllegalArgumentException("[Error] 보너스 번호 값의 범위가 1부터 45 사이의 값이 아닙니다.");
 
+            if(this.numbers.contains(tempNumber))
+                throw new IllegalArgumentException("[Error] 보너스 번호가 이미 당첨 번호에 있습니다.");
+
         } catch (Exception e) {
             if(e.getClass() == NumberFormatException.class)
                 throw new IllegalArgumentException("[Error] 보너스 번호로 숫자가 아닌 값이 입력 되었습니다.");
