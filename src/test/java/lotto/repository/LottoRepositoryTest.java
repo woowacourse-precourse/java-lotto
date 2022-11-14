@@ -1,8 +1,12 @@
 package lotto.repository;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -27,6 +31,21 @@ class LottoRepositoryTest {
         assertThat(repository.getMoney()).isEqualTo(8000);
         assertThat(repository.getLottoQuantity()).isEqualTo(8);
         assertThat(repository.getLottoNumbers().size()).isEqualTo(8);
+    }
+
+    @DisplayName("당첨 번호가 저장이 된다.")
+    @Test
+    public void givenWinningNumbers_whenSaveWinningNumbers_thenReturnWinningNumbers(){
+        // Given
+        List<Integer> lottoNumber = new ArrayList<>(List.of(1,2,3,4,5,6));
+        Lotto winningNumbers = new Lotto(lottoNumber);
+
+        // When
+        repository.saveWinningNumbers(winningNumbers);
+
+        // Then
+        assertThat(repository.getWinningNumbers().size()).isEqualTo(6);
+        assertThat(repository.getWinningNumbers()).isEqualTo(lottoNumber);
     }
 
 }
