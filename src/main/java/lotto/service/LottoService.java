@@ -36,8 +36,6 @@ public class LottoService {
 
     public void publishWinningNumbersWithBonusNumber(View view) throws IllegalArgumentException {
         this.winningTicket = new WinningTicket(inputWinningNumbers(view), inputBonusNumber(view));
-        System.out.println(this.winningTicket.getWinnings());
-        System.out.println(this.winningTicket.getBonusNumber());
     }
 
     public List<Integer> inputWinningNumbers(View view) throws IllegalArgumentException {
@@ -58,5 +56,11 @@ public class LottoService {
         } catch (Exception e) {
             throw new IllegalArgumentException(BONUS_INPUT_MESSAGE);
         }
+    }
+
+    public void getWinningStatics(Buyer buyer, Rank rank) {
+        buyer.getLottos().forEach((lotto) ->
+                rank.setCount(lotto.countWinningNumbers(this.winningTicket.getWinnings()),
+                        lotto.isExistWinningNumber(this.winningTicket.getBonusNumber())));
     }
 }
