@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        int money, num, bonus;
+        int money = 0, num, bonus;
         int[] statistics = new int[5];
         double profit = 0, total = 0;
         List<Integer> win_numbers;
@@ -21,7 +21,23 @@ public class Application {
 
         System.out.println("구입금액을 입력해 주세요.");
 
-        money = Integer.parseInt(Console.readLine());
+        try {
+            String input = Console.readLine();
+            money = Lotto.check_input_validate(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 구입 금액의 입력은 숫자만 가능합니다.");
+            return;
+        }
+
+        try {
+            if (money % 1000 != 0) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 로또 구입의 최소 단위는 1,000원 입니다.");
+            return;
+        }
+
         num = money / 1000;
 
         System.out.println("\n" + num + "개를 구매했습니다.");

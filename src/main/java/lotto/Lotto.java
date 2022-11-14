@@ -56,4 +56,13 @@ public class Lotto {
         total += statistics[4] * 2_000_000_000;
         return total;
     }
+
+    public static int check_input_validate(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return Integer.parseInt(input);
+    }
 }
