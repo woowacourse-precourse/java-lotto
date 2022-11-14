@@ -1,9 +1,12 @@
 package lotto;
 
-import lotto.util.LOTTO_CONSTANTS;
+import lotto.util.InputHandler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -33,6 +36,20 @@ class LottoTest {
         List<Lotto> testLotto = new LottoGenerator().generateLotto(generationNumber);
         assertThat(testLotto.size()).isEqualTo(generationNumber);
     }
+
+    @DisplayName("입력한 값의 타입이 다르면 에러가 발생한다.")
+    @Test
+    void validateInputType() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        InputHandler inputHandler = new InputHandler();
+        Method validateMethod = inputHandler.getClass().getDeclaredMethod("validateType", String.class);
+        validateMethod.setAccessible(true);
+        List<Integer> actual = new ArrayList<>();
+        actual.add(1);
+        actual.add(2);
+        actual.add(3);
+        assertThat(validateMethod.invoke(inputHandler, "1,2,3")).isEqualTo(actual);
+    }
+
 
 
     // 아래에 추가 테스트 작성 가능

@@ -1,13 +1,13 @@
 package lotto.util;
 
-public enum LOTTO_CONSTANTS {
+public enum CONSTANTS {
     MINIMUM(1),
     MAXIMUM(45),
     LOTTO_COUNT(6);
 
     private int numbers;
 
-    LOTTO_CONSTANTS(int count) {
+    CONSTANTS(int count) {
         this.numbers = count;
     }
 

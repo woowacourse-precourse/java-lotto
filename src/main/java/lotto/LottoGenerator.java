@@ -1,7 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.util.LOTTO_CONSTANTS;
+import lotto.util.CONSTANTS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,6 @@ public class LottoGenerator {
     }
 
     private List<Integer> generateRandomNumbers() {
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_CONSTANTS.MINIMUM.getNumbers(), LOTTO_CONSTANTS.MAXIMUM.getNumbers(), LOTTO_CONSTANTS.LOTTO_COUNT.getNumbers());
-        return randomNumbers;
+        return Randoms.pickUniqueNumbersInRange(CONSTANTS.MINIMUM.getNumbers(), CONSTANTS.MAXIMUM.getNumbers(), CONSTANTS.LOTTO_COUNT.getNumbers());
     }
 }
