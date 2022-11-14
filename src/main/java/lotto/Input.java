@@ -32,7 +32,7 @@ public class Input {
         return lottoCount;
     }
 
-    public static void userInputLottoNumber(Lotto userInputLottoNumber, int userInputBonusNumber){
+    public Lotto userInputLottoNumber(){
         String userInputLotto;
         String[] userInputLottoTmp;
         List<Integer> numbers = new ArrayList<>();
@@ -43,10 +43,12 @@ public class Input {
               numbers.add(Integer.parseInt(userInputLottoTmp[i]));
         }
 
-        userInputLottoNumber = new Lotto(numbers);
-
-        System.out.println("\n보너스 번호를 입력해 주세요.");
-        userInputBonusNumber = Integer.parseInt(Console.readLine());
+        return new Lotto(numbers);
     }
 
+
+    public int getUserInputBonusNumber(){
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        return Integer.parseInt(Console.readLine());
+    }
 }

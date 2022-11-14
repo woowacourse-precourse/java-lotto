@@ -16,7 +16,8 @@ public class StartLotto {
         this.lottoCount = input.checkHowManyLotto(purchasedValue);
         lottoArray = new Lotto[lottoCount];
         makeLotto.makeLottoNumber(lottoArray, lottoCount);
-        input.userInputLottoNumber(userInputLottoNumber, userInputBonusNumber);
+        userInputLottoNumber = input.userInputLottoNumber();
+        userInputBonusNumber = input.getUserInputBonusNumber();
         check.numberCompare(lottoCount, lottoArray, userInputLottoNumber, userInputBonusNumber, purchasedValue);
     }
 }
