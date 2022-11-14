@@ -1,9 +1,12 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.Lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class LottoMachine {
     private final int LOTTO_PRICE = 1000;
@@ -23,6 +26,15 @@ public class LottoMachine {
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요.");
         }
     }
-
+    public List<Lotto> createLottoNumber() {
+        int cnt = paid / LOTTO_PRICE;
+        for(int index = 0; index < cnt; index ++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lotto = new Lotto(numbers);
+            lottos.add(lotto);
+        }
+        paid = 0;
+        return lottos;
+    }
 
 }
