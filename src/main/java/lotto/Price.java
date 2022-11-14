@@ -12,6 +12,10 @@ public class Price {
         price = Integer.parseInt(text);
     }
 
+    public int get() {
+        return price;
+    }
+
     private boolean validate() {
         if (!isNumber())
             return false;
