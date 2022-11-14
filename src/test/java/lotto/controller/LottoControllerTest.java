@@ -58,7 +58,11 @@ class LottoControllerTest {
         assertAll(
                 () -> assertThatThrownBy(() -> controller.inputBonusNumber("-1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(BonusNumberValidator.IS_NATURAL_NUMBER.getErrorMessage())
-        );
+                        .hasMessageContaining(BonusNumberValidator.IS_NATURAL_NUMBER.getErrorMessage()),
+
+                () -> assertThatThrownBy(() -> controller.inputBonusNumber("47"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(BonusNumberValidator.IS_IN_BOUNDS.getErrorMessage())
+                );
     }
 }

@@ -1,5 +1,7 @@
 package lotto.controller.validator;
 
+import lotto.domain.Config;
+
 import java.util.function.Predicate;
 
 public enum BonusNumberValidator implements Validator{
@@ -10,6 +12,13 @@ public enum BonusNumberValidator implements Validator{
             .map(i -> (char) i)
             .allMatch(c -> Character.getType(c) == Constants.NUMBER_TYPE)
     ),
+    IS_IN_BOUNDS(
+            "[ERROR] 보너스 번호는 로또 번호를 넘을 수 없습니다.",
+            (String input) -> {
+                int number = Integer.parseInt(input);
+                return !(number < Config.LOTTO_START_NUMBER || number > Config.LOTTO_END_NUMBER);
+            }
+    )
     ;
 
     private final String errorMessage;

@@ -47,5 +47,6 @@ public class LottoController implements Controller {
 
     public void inputBonusNumber(String input) {
         validateInput(input, BonusNumberValidator.values());
+        int number = Integer.parseInt(input);
     }
 }
