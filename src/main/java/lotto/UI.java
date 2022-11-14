@@ -22,10 +22,14 @@ public class UI {
             Collections.sort(tempNumbers);
             System.out.println(tempNumbers);
         }
+        System.out.println();
     }
 
     public static Lotto getLottoNumbers() {
+        System.out.println(MESSAGE_INSERT_LOTTO_NUMBER);
         String inputNumbers = Console.readLine();
+        System.out.println();
+
         List<Integer> numbers = Arrays.stream(inputNumbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -33,7 +37,9 @@ public class UI {
     }
 
     public static int getBonusNumber() {
+        System.out.println(MESSAGE_INSERT_BONUS_NUMBER);
         String inputNumber = Console.readLine();
+        System.out.println();
         return Integer.parseInt(inputNumber);
     }
 }
