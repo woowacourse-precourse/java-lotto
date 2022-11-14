@@ -5,9 +5,7 @@ import lotto.constant.Constant;
 import java.util.List;
 
 public class Validator {
-
     public static boolean hasNotCharacter(String numbers){
-
         final String REGEX = "[0-9]+";
         if (!numbers.matches(REGEX)) return false;
 
@@ -27,7 +25,6 @@ public class Validator {
     }
 
     public static boolean isNotComma(String inputWinningNumbers) {
-
         String[] splitInputWinningNumbers = inputWinningNumbers.split(",");
         if (splitInputWinningNumbers.length != Constant.LOTTO_SIZE) return true;
 
@@ -43,7 +40,6 @@ public class Validator {
     }
 
     public static boolean isListhasCharacter(List<String> inputNumbersList) {
-
         for(int i=0; i<inputNumbersList.size(); i++){
             if (!hasNotCharacter(inputNumbersList.get(i))) return true;
         }
@@ -52,7 +48,6 @@ public class Validator {
     }
 
     public static boolean isListRangeOut(List<Integer> numbersList){
-
         for (int i=0; i< numbersList.size(); i++){
             if (isRangeOut(numbersList.get(i))) return true;
         }
@@ -61,7 +56,6 @@ public class Validator {
     }
 
     public static boolean isListDuplicate(List<Integer> numbersList) {
-
         for (int i=0; i<numbersList.size(); i++){
             for (int j=0; j<numbersList.size(); j++){
                 if (isNotSameIndex(i,j) && isSame(numbersList.get(i), numbersList.get(j))) return true;

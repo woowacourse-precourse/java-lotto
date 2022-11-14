@@ -83,13 +83,12 @@ public class Message {
         System.out.println(START_WINNING_STATISTICS_MESSAGE);
     }
 
-
     public static void printWinningStatistics(int[] winningResult) {
-
         for (int i=0; i<winningResult.length; i++){
-            String winningMesssage = WinningInfo.values()[i].getMessage();
+            String winningMessage = WinningInfo.values()[i].getMessage();
             int winningCount = winningResult[i];
-            System.out.printf(WINNING_STATISTICS_MESSAGE, winningMesssage, winningCount);
+
+            System.out.printf(WINNING_STATISTICS_MESSAGE, winningMessage, winningCount);
         }
     }
 

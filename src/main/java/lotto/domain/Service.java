@@ -49,14 +49,12 @@ public class Service {
     }
 
     private void validateBonusNumberInWinningNumbers(int bonusNumber){
-
         for (int i=0; i< this.winningNumbers.size(); i++){
             validateDuplicateBonusNumber(bonusNumber, this.winningNumbers.get(i));
         }
     }
 
     private void validateDuplicateBonusNumber(int bonusNumber, int winningNumber) {
-
         if (Validator.isSame(bonusNumber,winningNumber)){
             Message.printInputErrorDuplicateBonusNumber();
             throw new IllegalArgumentException();
