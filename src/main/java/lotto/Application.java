@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.math.BigInteger;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
@@ -19,10 +20,11 @@ public class Application {
         // TODO: 프로그램 구현
 
 
-        System.out.println("구입 금액을 입력 해주세요.");
+        System.out.println("구입금액을 입력해 주세요.");
+
         // 구입 금액 입력 받기
         int account = setAccount();
-        System.out.println("account = " + account);
+        System.out.println(account);
 
         // 로또 생성
         List<List<Integer>> lottos = buyLotto(account);
@@ -32,80 +34,76 @@ public class Application {
         lottos.stream().forEach(System.out::println);
 
         // 당첨 번호 , 보너스 번호 입력 받기
+        System.out.println("당첨 번호를 입력해 주세요.");
         Set<Integer> winnerNumber = setWinnerNumber();
-        System.out.println("winnerNumber = " + winnerNumber);
-
+        
+        System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = setBonusNumber(winnerNumber);
-        System.out.println("bonusNumber = " + bonusNumber);
-
-        System.out.println("보너스 넘버 완료 ================");
 
         // 로또 당첨 여부 확인
         List<List<Integer>> result = checkLotto(lottos, winnerNumber, bonusNumber);
-        System.out.println("result = " + result);
 
         // 로또 당첨 내역 통계
-        List<int[]> sumResult = calResult(result);
+        int[] sumResult = calResult(result);
 
         // 로또 당첨 내역 출력
         announceResult(sumResult);
 
         // 수익율 계산
-        calYield(sumResult , account);
+        float yield = calYield(sumResult, account);
+        System.out.println("총 수익률은 " + yield + "%입니다.");
+
 
 
     }
 
-    private static void calYield(List<int[]> sumResult , int account) {
-        int total = 0;
-        int[] rightNumber = sumResult.get(0);
-        int[] bonusNumber = sumResult.get(1);
+    private static float calYield(int[] sumResult , int account) {
+        double total = 0;
+
         int[] value = {0, 0, 0, 5000, 50000, 1500000, 30000000 , 2000000000};
         for (int i = 3; i <= 6; i++) {
-            if(rightNumber[i] > 0){
-                total += (rightNumber[i] * value[i]);
+            if(sumResult[i] > 0){
+                total += (sumResult[i] * value[i]);
             }
-            if (rightNumber[5] >= 1 && bonusNumber[i] > 0) {
-                total += (rightNumber[i] * value[6]);
+            if (sumResult[5] >= 1 && sumResult[i] > 0) {
+                total += (sumResult[i] * value[6]);
             }
-            if (rightNumber[6] >= 1){
-                total += (rightNumber[i] * value[7]);
-            }
-        }
-
-        System.out.println("총 수익 : " + total);
-        System.out.println("총 투자 금액 : " + account);
-        float yield =  (account / (float) total) * 100;
-        System.out.println("총 수익률은" + yield + "% 입니다.");
-    }
-
-    private static void announceResult(List<int[]> sumResult) {
-        int[] rightNumber = sumResult.get(0);
-        int[] bonusNumber = sumResult.get(1);
-        for (int i = 3; i <= 6; i++) {
-            if(rightNumber[i] > 0){
-                System.out.println(i+"개 일치 (5,000원) - "+ rightNumber[i] + "개");
-            }
-            if (bonusNumber[i] > 0) {
-                System.out.println(i+"개 일치, 보너스 볼 일치 (5,000원) - "+ bonusNumber[i] + "개");
+            if (sumResult[6] >= 1){
+                total += (sumResult[i] * value[7]);
             }
         }
+
+        float yield =  ((float) total / account) * 100;
+        return yield;
     }
 
-    private static List<int[]> calResult(List<List<Integer>> result) {
-        int[] rightResult = {0, 0, 0, 0, 0, 0, 0};
-        int[] rightBonusResult = {0, 0, 0, 0, 0, 0, 0};
+    private static void announceResult(int[] sumResult) {
+
+        System.out.println(PriceMessage.RIGHT_THREE.message() + sumResult[3] + "개");
+        System.out.println(PriceMessage.RIGHT_FOUR.message() + sumResult[4] + "개");
+        System.out.println(PriceMessage.RIGHT_FIVE.message() + sumResult[5] + "개");
+        System.out.println(PriceMessage.RIGHT_FIVE_BONUS.message() + sumResult[6] + "개");
+        System.out.println(PriceMessage.RIGHT_ALL.message() + sumResult[6] + "개");
+    }
+
+    private static int[] calResult(List<List<Integer>> result) {
+        int[] rightResult = {0, 0, 0, 0, 0, 0, 0 , 0};
+
         result.forEach(lotto -> {
             int rightNumber = lotto.get(0);
             int bonusNumber = lotto.get(1);
             if(bonusNumber >= 1){
-                rightBonusResult[rightNumber]++;
+                rightResult[rightNumber+1]++;
+            }
+            if(bonusNumber >= 6){
+                rightResult[rightNumber+1]++;
             }
             if (bonusNumber == 0) {
                 rightResult[rightNumber]++;
             }
         });
-        return List.of(rightResult, rightBonusResult);
+
+        return rightResult;
     }
 
 
@@ -141,6 +139,7 @@ public class Application {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
         }
         if(bonusNumber >= 1 && bonusNumber <= 45){
+            System.out.println(input);
             return bonusNumber;
         }
         throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
@@ -162,6 +161,7 @@ public class Application {
             winnerNumber = Stream.of(input.split(",")).map(Integer::parseInt).collect(Collectors.toSet());
         }
         if(winnerNumber.size() == 6){
+            System.out.println(input);
             return winnerNumber;
         }
         throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
@@ -194,44 +194,37 @@ public class Application {
         List<List<Integer>> lottos = new ArrayList<>();
         while (account > 0) {
             List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-
-            list.stream()
-                    .sorted(Comparator.comparing(Integer::intValue));
-
-
-            lottos.add(list);
+            List<Integer> collect = list.stream()
+                    .sorted(Comparator.comparing(Integer::intValue))
+                    .collect(Collectors.toList());
+            System.out.println(list);
+            lottos.add(collect);
             account -= LOTTO_PRICE;
         }
         return lottos;
     }
 
-    private static int setAccount() {
+    private static int setAccount() throws IllegalArgumentException{
         String input = Console.readLine();
-
         // 입력 받은 금액 검증
         if(validAccount(input)){
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
+            return 0;
         }
-
         int account = Integer.parseInt(input);
         return account;
     }
 
     private static boolean validAccount(String input) {
-
-        boolean matches = Pattern.matches("[0-9]", input);
-
         // 부정형..
         if(! Pattern.matches("[0-9]+" , input)){
+            System.out.println("[ERROR] 잘못된 입력 값입니다.");
             return true;
         }
-
         int account = Integer.parseInt(input);
-
         if (account % 1000 == 0) {
             return false;
         }
-
+        System.out.println("[ERROR] 잘못된 입력 값입니다.");
         return true;
     }
 
