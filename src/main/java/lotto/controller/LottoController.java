@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.service.LottoService;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -15,5 +16,10 @@ public class LottoController {
     public void initWinningLotto() {
         String winningNumber = InputView.inputWinningNumber();
         lottoService.saveWinningLotto(winningNumber);
+    }
+
+    public void showUserLottoInfo() {
+        OutputView.printPurchasedLotto(lottoService.getUserLotties().size());
+        OutputView.printLottoNumbers(lottoService.getUserLotties());
     }
 }
