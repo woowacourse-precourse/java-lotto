@@ -21,6 +21,12 @@ public class LottoNumber {
         }
     }
 
+    @Override
+    public boolean equals(Object object){
+        LottoNumber lottoNumber = (LottoNumber) object;
+        return this.number == lottoNumber.number;
+    }
+
     public int getNumber() {
         return number;
     }
