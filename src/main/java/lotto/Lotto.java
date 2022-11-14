@@ -57,7 +57,6 @@ public class Lotto {
         result.add(String.format("총 수익률은 %.1f%s입니다.", GET_YIELD(Match, Amount), "%"));
         return result;
     }
-
     // TODO: 추가 기능 구현
 
     public int[][] CHECK_WINNER_SUB(int Bonus, List<Integer> One_Lotto, int[][] Match) {

@@ -82,7 +82,6 @@ public class Application {
     static Lotto m_Lotto;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         try{
             int Amount = PRINT_REQUEST_PAY();
             ArrayList<List<Integer>> My_Lotto_Number = PRINT_MY_LOTTO_NUMBER(Amount);
