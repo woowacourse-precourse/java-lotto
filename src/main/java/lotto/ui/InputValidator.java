@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class InputValidator {
     private static final String INPUT_MONEY_PATTERN = "^[1-9]+[0-9]{3,8}+$";
-    private static final String INPUT_WINNING_NUMBERS_PATTERN = "^[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},[0-9]{1,2},[0-9]{1,2}$";
+    private static final String INPUT_WINNING_NUMBERS_PATTERN = "^[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*$";
     private static final String INPUT_BONUS_NUMBER_PATTERN = "^[0-9]*$";
     private static final int MAXIMUM_DIGITS = 9;
 
