@@ -55,7 +55,7 @@ public class Game {
         Message.printWinningStatistics(this.winningResult);
 
         setProfitRate();
-        // TODO: 사용자의 수익률 출력
+        Message.printProfitRate(this.profitRate);
     }
 
     private void setWinningResult(int rank) {
