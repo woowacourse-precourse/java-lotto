@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    public static int BonusNumber;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -21,4 +22,14 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return this.numbers;
     }
+
+    public void Bonus() {
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        String Bonus = Console.readLine();
+        BonusNumber = Integer.parseInt(Bonus);
+
+        //BonusValidate(BonusNumber,numbers);
+    }
+
+
 }
