@@ -41,7 +41,7 @@ public class User {
         return money;
     }
 
-    public void setMoney(Double money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 
@@ -49,7 +49,7 @@ public class User {
         return winningAmount;
     }
 
-    public void setWinningAmount(Double winningAmount) {
+    public void setWinningAmount(double winningAmount) {
         this.winningAmount = winningAmount;
     }
 
