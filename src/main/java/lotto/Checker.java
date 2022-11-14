@@ -53,7 +53,7 @@ public class Checker extends Kiosk {
     public static int countSameNumbers(Lotto lotto) {
         int count = 0;
         for (int winningNumber : winningNumbers) {
-            if (lotto.hasNumber(winningNumber)) {
+            if (lotto.contains(winningNumber)) {
                 count++;
             }
         }
