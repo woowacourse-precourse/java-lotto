@@ -6,15 +6,17 @@ import camp.nextstep.edu.missionutils.Randoms;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
-    public List<Lotto> lottoSet;
+    public static List<Lotto> lottos;
     int numberOfLotto;
     int[] winningCount = new int[5];
 
-    public User(){
+    public User() {
         System.out.println("구입 금액을 입력해주세요.");
         numberOfLotto = getNumberOfLotto();
+        lottos = getlottos(numberOfLotto);
     }
-    public static int getNumberOfLotto(){
+
+    public static int getNumberOfLotto() {
         String totalPrice = readLine();
 
         // 예외 검사 실시 - 순서대로 - "사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다."
@@ -26,9 +28,19 @@ public class User {
 
         return numberOfLotto;
     }
+
     public static List<Integer> getLottoNumbers() { // 랜덤으로 6개의 숫자 뽑기
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
         return numbers;
     }
+
+    public static List<Lotto> getlottos(int numberOfLotto) {
+        List<Lotto> newLottos = new ArrayList<Lotto>();
+
+        for(int i=0;i<numberOfLotto;i++) newLottos.add(new Lotto(getLottoNumbers()));
+
+        return newLottos;
+    }
+
 }
