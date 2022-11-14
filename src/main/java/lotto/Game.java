@@ -17,6 +17,10 @@ public class Game {
         }
         return listOfLottos;
     }
-    
+    public void printAllLottos() {
+        for (Lotto lotto : listOfLottos) {
+            lotto.printLotto();
+        }
+    }
 
 }

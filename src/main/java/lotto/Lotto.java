@@ -49,6 +49,5 @@ public class Lotto {
             System.out.print(itr.next()+", ");
         }
         System.out.println(numbers.get(numbers.size()-1)+"]");
-
     }
 }
