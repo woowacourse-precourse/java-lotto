@@ -2,7 +2,6 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +12,8 @@ public class LottoDesignator {
     public static final LottoDesignator getInstance = new LottoDesignator();
     private static final String INT_REGEX = "^[0-9]*$";
     private static final int CIPHER = 6;
-    private static final int RANGE = 45;
+    private static final int RANGE_MAX = 45;
+    private static final int RANGE_MIN = 0;
 
     private String lottoInput;
 
@@ -65,14 +65,13 @@ public class LottoDesignator {
     }
 
     public void checkRange(String input) {
-        List<Integer> range = initRange();
         List<Integer> lotto = changeList(input);
-        for (int lottoIndex = 0; lottoIndex < lotto.size(); lottoIndex++) {
-            if (!range.contains(lotto.get(lottoIndex))) {
+        for(int lottoIndex = 0; lottoIndex < lotto.size(); lottoIndex++) {
+            int lottoNum = lotto.get(lottoIndex);
+            if (lottoNum < RANGE_MIN || lottoNum > RANGE_MAX) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 범위만 입력 가능합니다.");
             }
         }
-
     }
 
     public void checkBonusDuplication(String input, String number) {
@@ -93,15 +92,5 @@ public class LottoDesignator {
                 .boxed()
                 .toArray(Integer[]::new);
         return Arrays.asList(numbers);
-    }
-
-
-    private List<Integer> initRange() {
-        List<Integer> range = new ArrayList<>();
-        for (int rangeNum = 0; rangeNum < RANGE; rangeNum++) {
-            range.add(rangeNum + 1);
-        }
-
-        return range;
     }
 }
