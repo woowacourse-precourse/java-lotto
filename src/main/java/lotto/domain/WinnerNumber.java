@@ -72,6 +72,11 @@ public class WinnerNumber {
     }
 
     public void validateBonusNumber(String bonusNumber) {
-
+        if (!bonusNumber.matches(BONUS_NUMBER_CHECK)) {
+            throw new IllegalArgumentException(ExceptionMessage.NON_NUMERIC_INPUT);
+        }
+        if (Integer.parseInt(bonusNumber) < MINIMUM_NUMBER || Integer.parseInt(bonusNumber) > MAXIMUM_NUMBER) {
+            throw new IllegalArgumentException(ExceptionMessage.OUT_OF_BOUNDS);
+        }
     }
 }
