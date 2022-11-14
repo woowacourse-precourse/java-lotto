@@ -64,7 +64,17 @@ public class WinningNumbers {
 
 
     private int validateBonus(String bonusInput){
-        return 0;
+        try{
+            int bonus = Integer.parseInt(bonusInput);
+
+            if(bonus<LottoGenerator.LOTTO_NUMBER_RANGE_START && bonus>LottoGenerator.LOTTO_NUMBER_RANGE_END){
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.");
+            }
+
+            return bonus;
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
+        }
     }
 
     public List<Integer> getNumbers() {
