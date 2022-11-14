@@ -1,4 +1,6 @@
-package lotto;
+package lotto.view;
+
+import lotto.domain.Rank;
 
 import java.util.List;
 import java.util.Map;
