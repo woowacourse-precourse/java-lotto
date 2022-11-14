@@ -5,6 +5,7 @@ import lotto.domain.Lottos;
 import lotto.domain.WinningLotto;
 import lotto.domain.WinningType;
 import lotto.util.RandomNumberGenerator;
+import lotto.util.TypeConverter;
 
 import java.util.*;
 
@@ -17,9 +18,10 @@ public class LottoService {
     public static final int LOOSE = -1;
     public static final List<Integer> PRIZES = List.of(FIFTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE);
     public static final List<Integer> PRIZE_MONEY = WinningType.getMoneyList();
+    public static final int UNIT_MONEY = 1000;
 
     public int calBuyingCount(int money) {
-        return money / 1000;
+        return money / UNIT_MONEY;
     }
 
     public Lottos getLottos(int number) {
