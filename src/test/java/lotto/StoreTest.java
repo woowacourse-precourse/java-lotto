@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.user.User;
+import lotto.service.StoreService;
 import lotto.view.Store;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,8 @@ import static org.assertj.core.api.Assertions.*;
 
 public class StoreTest {
     Store store = new Store();
+
+    StoreService storeService = new StoreService();
 
     @Test
     @DisplayName("금액 입력 테스트")
@@ -30,6 +33,13 @@ public class StoreTest {
 
         assertThatThrownBy(() -> new User(money))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("로또 생성 테스트")
+    void generateLotto(){
+        assertThatCode(() -> storeService.sellLotto())
+                .doesNotThrowAnyException();
     }
 
 }
