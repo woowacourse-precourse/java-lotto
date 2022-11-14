@@ -46,7 +46,19 @@ class WinningLottoTest {
             //유효하지 않은 로또번호와 중복 보너스 번호
             Arguments.of(List.of(1, 2, 3, 12), 12),
             //유효하지 않은 보너스 번호
-            Arguments.of(List.of(1, 2, 3, 4,5,6), 55)
+            Arguments.of(List.of(1, 2, 3, 4, 5, 6), 55)
+        );
+    }
+
+    private static Stream<Arguments> provide_WinningLotto_And_Rank() {
+        return Stream.of(
+            Arguments.of(List.of(1, 2, 3, 4, 5, 6), 7, null), //null
+            Arguments.of(List.of(11, 12, 13, 14, 15, 16), 17, FIRST), //first
+            Arguments.of(List.of(11, 12, 13, 14, 15, 1), 16, SECOND), //second
+            Arguments.of(List.of(11, 12, 13, 14, 15, 1), 17, THIRD), //third
+            Arguments.of(List.of(11, 12, 13, 14, 1, 2), 16, FOURTH), // fourth
+            Arguments.of(List.of(11, 12, 13, 14, 1, 2), 17, FOURTH), // fourth
+            Arguments.of(List.of(11, 12, 13, 3, 1, 2), 16, FIFTH) //fifth
         );
     }
 
@@ -80,5 +92,14 @@ class WinningLottoTest {
             .isInstanceOf(IllegalArgumentException.class);
     }
 
+    // 생성 및 getRankOf 테스트 동시에
+    @DisplayName("유효한 값을 넣었을 때 WinningLotto를 생성하고, 예상한 등수(enum)를 반환하는지 테스트")
+    @ParameterizedTest
+    @MethodSource("provide_WinningLotto_And_Rank")
+    void createWinningLotto_And_GetRankTest(List<Integer> winningNumbers, int bonusNumber, Rank expected) {
+        lotto.domain.Lotto lotto = new Lotto(List.of(11, 12, 13, 14, 15, 16));
+        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+        assertThat(winningLotto.getRankof(lotto)).isEqualTo(expected);
+    }
 
 }
