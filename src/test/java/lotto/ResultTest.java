@@ -26,4 +26,31 @@ class ResultTest {
         assertThat(matchCount).isEqualTo(5);
     }
 
+    @DisplayName("로또 번호{1,2,3,4,5,6}에 보너스 번호(3)가 포함되면 true 반환한다.")
+    @Test
+    void checkMatchBonusReturnTrue() {
+        // given
+        Lotto perchasedLotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        int bonus = 3;
+
+        // when
+        boolean match = result.matchBonus(perchasedLotto, bonus);
+
+        // then
+        assertThat(match).isTrue();
+    }
+
+    @DisplayName("로또 번호{1,2,3,4,5,6}에 보너스 번호(8)가 포함되지 않으면 false를 반환한다.")
+    @Test
+    void checkMatchBonusReturnFalse() {
+        // given
+        Lotto perchasedLotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        int bonus = 8;
+
+        // when
+        boolean match = result.matchBonus(perchasedLotto, bonus);
+
+        // then
+        assertThat(match).isFalse();
+    }
 }
