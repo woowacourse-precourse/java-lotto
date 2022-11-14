@@ -32,7 +32,12 @@ public class YieldMachine {
     }
 
     private void calculateOneLottoReward(BoughtLotto boughtLotto) {
-
+        List<Integer> numberOfMatching = findCountOfSameNumberWithWinningNumber(boughtLotto);
+        Reward reward = Reward.getReward(numberOfMatching);
+        if (reward != Reward.EMPTY) {
+            int index = reward.getIndex();
+            countOfReward.set(index, countOfReward.get(index) + 1);
+        }
     }
 
     private void calculateAllLottoReward(List<BoughtLotto> boughtLottos) {
