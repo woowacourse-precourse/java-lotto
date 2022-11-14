@@ -18,6 +18,6 @@ public class Application {
         }
 
         LottoGenerator generator = new LottoGenerator();
-        List[] mylottos = generator.buyLottos(lottoQuantity);
+        Lotto[] mylottos = generator.buyLottos(lottoQuantity);
     }
 }
