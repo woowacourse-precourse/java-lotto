@@ -20,4 +20,11 @@ public class Person {
         return count.size();
     }
 
+    private int countCorrectBonusNumber(Lotto lotto) {
+        if (lotto.getLottoNumbers()
+                .contains(WinningLotto.getWinningBonusNumber()))
+            return 1;
+        return 0;
+    }
+
 }
