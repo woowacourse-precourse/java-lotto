@@ -10,8 +10,7 @@ public class MakeLotteriesFactory {
     public MakeLotteriesFactory(String input){
         PurchaseService purchaseService = new PurchaseService();
         purchaseService.parsePurchaseInput(input);
-        makeLotteriesService = new MakeLotteriesService();
-        makeLotteriesService.makeLotteries(purchaseService.getPurchaseAmount());
+        makeLotteriesService = new MakeLotteriesService(purchaseService.getPurchaseAmount());
     }
 
     public List<Lotto> getLotteries(){
