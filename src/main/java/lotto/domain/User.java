@@ -12,14 +12,18 @@ public class User{
 
     public User(List<List<Integer>> userNumList){
         this.userNumList = userNumList;
+    }
+
+    public static List<List<Integer>> getUserInput(){
+        List<List<Integer>> inputList = new ArrayList<>();
         for (int i = 0; i< money / 1000; i++) {
             String str = Console.readLine();
             String tempList[] = str.split(",");
 
-            userNumList.add(stringToNum(tempList));
+            inputList.add(stringToNum(tempList));
         }
+        return inputList;
     }
-
 
     public static List<Integer> stringToNum(String[] strlist){
         List<Integer> numList = new ArrayList<>();
