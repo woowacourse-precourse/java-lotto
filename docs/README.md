@@ -4,7 +4,7 @@
 		오류 확인 - class CoinErrorCheck
 	횟수 확인 - class Chance
 	횟수 만큼의 복권 생성 - class PlayerChoose - 문구 출력
-* 당첨 여부를 확인하는 단계 - package lotto
+* 당첨 여부를 확인하는 단계 - package 
 	로또 메인 실행 - calss Confirm
 	당첨번호 생성 - class WinNumList - 문구 출력
 		당첨 번호 입력 - class WinNumInput
