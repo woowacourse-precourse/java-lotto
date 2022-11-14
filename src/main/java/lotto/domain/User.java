@@ -4,11 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class User extends Valid {
+    private List<Lotto> lottos = new ArrayList<>();
+    private HashMap<Rank, Integer> result = new HashMap<>();
     private int money;
-    private List<Lotto> lottos;
 
     public User() {
     }
@@ -21,7 +23,6 @@ public class User extends Valid {
     }
 
     private void createLotto() throws IllegalArgumentException {
-        lottos = new ArrayList<>();
         for (int lotto = 0; lotto < (money / lottoPrice); lotto++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottos.add(new Lotto((numbers)));
@@ -39,5 +40,13 @@ public class User extends Valid {
 
     public List<Lotto> getLottos() {
         return lottos;
+    }
+
+    public void setResult(Rank rank) {
+        result.put(rank, result.getOrDefault(rank, 0) + 1);
+    }
+
+    public HashMap<Rank, Integer> getResult() {
+        return result;
     }
 }
