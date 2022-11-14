@@ -39,4 +39,10 @@ public class User {
             throw new IllegalArgumentException(Error.LESS_THAN_1000WON.getMessage());
         }
     }
+
+    public void validateMoneyDivided1000Won(String input) {
+        if (Integer.parseInt(input) % 1000 != 0) {
+            throw new IllegalArgumentException(Error.NOT_DIVIDED_1000WON.getMessage());
+        }
+    }
 }
