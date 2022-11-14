@@ -1,19 +1,33 @@
 package lotto.domain;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateSize(numbers);
+        validate(numbers);
         this.numbers = numbers;
     }
 
-    private void validateSize(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) {
+        validateSize(numbers);
+        validateDuplicate(numbers);
+    }
+
+    private static void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        Set<Integer> collect = new HashSet<>(numbers);
+        if (collect.size() != 6) {
+            throw new IllegalArgumentException("중복된 숫자는 허용되지 않습니다.");
         }
     }
 
@@ -21,6 +35,14 @@ public class Lotto {
         int matchedCount = matchedNumberCounter(answerLotto);
         boolean isExistBonus = isExistBounusNumber(answerLotto);
         return matchedPrizeFinder(matchedCount,isExistBonus);
+    }
+
+    private int matchedNumberCounter(LottoOfAnswer answerLotto) {
+        int count = 0;
+        for (Integer number : numbers) {
+            count += answerLotto.ifContainThenCountAdd(number);
+        }
+        return count;
     }
 
     private boolean isExistBounusNumber(LottoOfAnswer answerLotto) {
@@ -50,15 +72,7 @@ public class Lotto {
         return Prize.NONE;
     }
 
-    private int matchedNumberCounter(LottoOfAnswer answerLotto) {
-        int count = 0;
-        for (Integer number : numbers) {
-            count += answerLotto.ifContainThenCountAdd(number);
-        }
-        return count;
-    }
-
-    public void sortedAndPrint() {
+    public void print() {
         System.out.println(numbers.toString());
     }
 

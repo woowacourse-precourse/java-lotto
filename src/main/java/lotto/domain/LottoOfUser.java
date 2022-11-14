@@ -25,7 +25,7 @@ public class LottoOfUser {
 
     public void printAllLotto() {
         for (Lotto lotto : lottos) {
-            lotto.sortedAndPrint();
+            lotto.print();
         }
     }
 }
