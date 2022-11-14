@@ -3,14 +3,20 @@ package lotto.valid;
 import lotto.domain.Lotto;
 import lotto.domain.LottoIssuer;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public enum InputValidator {
     INSTANCE;
     private static final String NOT_NATURAL_NUMBER_ERROR_MESSAGE = "[ERROR] 0이상의 정수를 입력해야 합니다.";
     private static final String MONEY_ERROR_MESSAGE = "[ERROR] 1000원 단위의 금액을 입력해야 합니다.";
+    private static final String JACKPOT_ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45사이의 중복되지 않은 숫자 6개여야 합니다.";
     private static final String NON_DIGIT = "\\D";
-    private static final String JACKPOT_NUMBER_INPUT_FORMAT = "(\\d+),(\\d+),(\\d+),(\\d+),(\\d+),(\\d+)";
-    private static final String JACKPOT_NUMBER_FORMAT_ERROR_MESSAGE = "[ERROR] 올바른 형식으로 입력해야 합니다.";
     private static final String BONUS_NUMBER_RANGE_ERROR_MESSAGE = "[ERROR] 보너스 번호는 1부터 45사이의 숫자여야 합니다.";
+
+    private static final String JACKPOT_INPUT_SEPARATOR = ",";
 
     public static int getValidMoney(String moneyInput) throws IllegalArgumentException {
         if (isParsableInt(moneyInput)) {
@@ -22,14 +28,30 @@ public enum InputValidator {
         throw new IllegalArgumentException(MONEY_ERROR_MESSAGE);
     }
 
-    private static boolean isParsableInt(String userInput) {
-        return (userInput.length() > 0) && !userInput.matches(NON_DIGIT);
+    public static List<Integer> getValidJackpotNumbers(String jackpotInput) throws IllegalArgumentException {
+        validateAllParsable(jackpotInput);
+
+        List<Integer> jackpotNumbers =
+                Arrays.stream(jackpotInput.split(JACKPOT_INPUT_SEPARATOR))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        LottoValidator.validate(jackpotNumbers);
+
+        return jackpotNumbers;
     }
 
-    public static void validateJackpotNumberFormat(String jackpotNumberInput) {
-        if (!jackpotNumberInput.matches(JACKPOT_NUMBER_INPUT_FORMAT)) {
-            throw new IllegalArgumentException(JACKPOT_NUMBER_FORMAT_ERROR_MESSAGE);
+    private static void validateAllParsable(String jackpotInput) throws IllegalArgumentException {
+        boolean allParsable = Arrays.stream(jackpotInput.split(JACKPOT_INPUT_SEPARATOR))
+                .allMatch(InputValidator::isParsableInt);
+
+        if (!allParsable) {
+            throw new IllegalArgumentException(JACKPOT_ERROR_MESSAGE);
         }
+    }
+
+    private static boolean isParsableInt(String userInput) {
+        return (userInput.length() > 0) && !userInput.matches(NON_DIGIT);
     }
 
     public static void validateBonusNumber(String bonusNumberInput) {

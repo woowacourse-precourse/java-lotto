@@ -20,12 +20,12 @@ public class InputValidatorTest {
                 .isThrownBy(() -> InputValidator.getValidMoney(moneyInput));
     }
 
-    @DisplayName("입력된 당첨 번호가 잘못된 형식인 경우 예외가 발생한다")
+    @DisplayName("입력된 당첨 번호가 1부터 45사이의 중복되지 않은 숫자 6개가 아니면 예외가 발생한다")
     @ParameterizedTest
-    @ValueSource(strings = {"1,2,3,4,5.6", "1,,3,4,5,6"})
+    @ValueSource(strings = {"1,2,3,4,5.6", "1,,3,4,5,6", "1,1,2,3,4,5", "0,1,2,3,4,5", "1,2,3,4,5,47",""})
     void jackpotNumberInputByIncorrectFormat(String jackpotNumber) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> InputValidator.validateJackpotNumberFormat(jackpotNumber));
+                .isThrownBy(() -> InputValidator.getValidJackpotNumbers(jackpotNumber));
     }
 
     @DisplayName("입력된 보너스 번호가 정수 외의 문자를 포함하는 경우 예외가 발생한다")

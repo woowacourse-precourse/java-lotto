@@ -23,9 +23,13 @@
   `IllegalArguementException`을 발생시킨다
 
 
-- [x] 입력된 당첨 번호가 잘못된 형식인 경우 `[ERROR] 올바른 형식으로 입력해야 합니다.`
+- [x] 입력된 당첨 번호를 정수형 리스트로 반환한다
   
-  라는 에러 메시지와 함께 `IllegalArguementException`을 발생시킨다
+  1부터 45사이의 중복되지 않은 숫자 6개가 아닌 경우
+
+  `[ERROR] 1부터 45사이의 중복되지 않은 숫자 6개를 입력해야 합니다.` 라는 에러 메시지와 함께
+
+  `IllegalArguementException`을 발생시킨다
 
 
 - 입력된 보너스 번호가
