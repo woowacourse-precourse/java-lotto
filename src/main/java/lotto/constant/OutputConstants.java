@@ -9,11 +9,6 @@ public enum OutputConstants {
     INPUT_BONUS_NUMBER("보너스 번호를 입력해 주세요."),
 
     STATISTICS("당첨통계\n---"),
-    FIFTH_PLACE("3개 일치 (%,d원) - %d개"),
-    FOURTH_PLACE("4개 일치 (%,d원) - %d개"),
-    THIRD_PLACE("5개 일치 (%,d원) - %d개"),
-    SECOND_PLACE("5개 일치, 보너스 볼 일치 (%,d원) - %d개"),
-    FIRST_PLACE("6개 일치 (%,d원) - %d개"),
     PROFIT_RATE("총 수익률은 %.1f%입니다.");
 
     private final String message;
