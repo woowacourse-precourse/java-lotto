@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.utils.LottoNumbersValidator;
@@ -17,6 +18,12 @@ public class Lotto {
         this.numbers = numbers.stream()
                 .sorted()
                 .collect(Collectors.toList());
+    }
+
+    public static Lotto createLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOWER_BOUND_NUMBER, UPPER_BOUND_NUMBER,
+                LOTTO_NUMBERS_SIZE);
+        return new Lotto(numbers);
     }
 
     public List<Integer> getNumbers() {
