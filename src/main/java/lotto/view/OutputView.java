@@ -21,6 +21,6 @@ public class OutputView {
     }
 
     public void returnPrint(int quantity) {
-        System.out.println(lottoService.getReturn(quantity));
+        System.out.println("총 수익률은 " + lottoService.getReturn(quantity) + "입니다.");
     }
 }

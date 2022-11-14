@@ -1,12 +1,17 @@
 package lotto.domain;
 
+import lotto.exception.InputException;
+
 import java.util.List;
 
 public class Lotto {
+
     private final List<Integer> numbers;
+    InputException inputException = new InputException();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        isDuplicateNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -23,5 +28,10 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public boolean isDuplicateNumber(List<Integer> numbers) {
+        inputException.duplicateNumberException(numbers);
+        return false;
     }
 }
