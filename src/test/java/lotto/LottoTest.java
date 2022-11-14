@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import user.BuyLotto;
+import user.Input;
 
 import java.util.List;
 
@@ -43,6 +44,16 @@ class LottoTest {
 }
 
 class InputTest {
+    @DisplayName("유저가 입력한 값 Sting -> Integer 형변환 테스트")
+    @Test
+    void cast() {
+        Input input = new Input();
+        String str = "1,2,3,4,5,6";
+
+        Assertions.assertThat(input.userLotto(str)).isEqualTo(List.of(1,2,3,4,5,6));
+    }
+
+
     @DisplayName("금액에 맞게 로또를 발행해야 한다.")
     @Test
     void countLotto1 (){
