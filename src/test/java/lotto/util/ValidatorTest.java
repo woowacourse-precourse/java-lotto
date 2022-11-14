@@ -1,6 +1,6 @@
-package lotto;
+package lotto.util;
 
-import org.junit.jupiter.api.Test;
+import lotto.util.Validator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

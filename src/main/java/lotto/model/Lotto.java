@@ -2,8 +2,8 @@ package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Env;
-import lotto.Lang;
-import lotto.Validator;
+import lotto.util.Lang;
+import lotto.util.Validator;
 
 import java.util.Collections;
 import java.util.List;

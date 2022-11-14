@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public class Lang {
     public final static String NON_NUMERIC_CHARACTER = "입력한 내용 중 숫자가 아닌 문자가 있어요.";
