@@ -71,7 +71,7 @@ public class Lotto {
         lottoQuantity = pay / 1000;
         return lottoQuantity;
     }
-/*    public void Lotto_number(int[][]arr, int i , List<Integer> numbers){
+    public void Lotto_number(int[][]arr, int i , List<Integer> numbers){
         for(int j =0; j< numbers.size(); j++){
             arr[i][j] = numbers.get(j);
         }
@@ -82,7 +82,7 @@ public class Lotto {
             }
         }
     }
-    public void CheckLottoNumber(int[][]arr, int[] winNumber){ // 일치 개수 찾기
+/*    public void CheckLottoNumber(int[][]arr, int[] winNumber){ // 일치 개수 찾기
         int cnt = 0;
         int bonusCount = 0;
         for(int i = 0; i< lottoQuantity; i++){
