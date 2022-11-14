@@ -1,7 +1,16 @@
 package lotto;
 
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try {
+            // reset for prize status is required for multiple gradlew test
+            Prize.prizeReset();
+            InOutput ui = new InOutput();
+            ui.printAll();
+        } catch (IllegalArgumentException msg) {
+            System.out.println(msg);
+        }
     }
 }
+
