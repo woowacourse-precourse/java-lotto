@@ -38,34 +38,36 @@ public class View {
 
     public void printResult(Rank[] values, double yield) {
         try {
-            DecimalFormat df = new DecimalFormat("###,###");
             printLine("당첨 통계\n---");
-            for (int i = 0; i < values.length; i++) {
-                if (i == 3) {
-                    System.out.println(values[i].getSameNumber() + "개 일치, 보너스 볼 일치 "
-                            + "(" + df.format(values[i].getPrizeMoney()) + "원)" + " - " + values[i].getCount() + "개");
-                } else {
-                    System.out.println(values[i].getSameNumber() + "개 일치 "
-                            + "(" + df.format(values[i].getPrizeMoney()) + "원)" + " - " + values[i].getCount() + "개");
-                }
-            }
+            printInformOfRank(values);
             System.out.println("총 수익률은 " + yield + "%입니다.");
         } catch (IllegalArgumentException e) {
             throw e;
         }
     }
 
+    public void printInformOfRank(Rank[] values) {
+        DecimalFormat df = new DecimalFormat("###,###");
+        for (int i = 0; i < values.length; i++) {
+            if (i == 3) {
+                System.out.println(values[i].getSameNumber() + "개 일치, 보너스 볼 일치 "
+                        + "(" + df.format(values[i].getPrizeMoney()) + "원)" + " - " + values[i].getCount() + "개");
+            } else {
+                System.out.println(values[i].getSameNumber() + "개 일치 "
+                        + "(" + df.format(values[i].getPrizeMoney()) + "원)" + " - " + values[i].getCount() + "개");
+            }
+        }
+    }
+
     public int inputPrice() {
-        int i;
         try {
-            i = Integer.parseInt(Console.readLine());
+            int i = Integer.parseInt(Console.readLine());
             if (i % 1000 != 0) {
                 throw new IllegalArgumentException();
             }
             return i / 1000;
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] 로또 구입 번호가 올바르지 않습니다.");
-            throw e;
+            throw new IllegalArgumentException("[ERROR] 로또 구입 번호가 올바르지 않습니다.");
         }
     }
 
