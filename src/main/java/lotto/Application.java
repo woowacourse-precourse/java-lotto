@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     final static int AMOUNT_PER_LOTTO = 1000;
@@ -46,6 +48,7 @@ public class Application {
         while (lottos.size() < count){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             if (validateLottoNumber(numbers, lottos)){
+                System.out.println(numbers);
                 lottos.add(new Lotto(numbers));
             }
         }
@@ -72,10 +75,19 @@ public class Application {
      * @return 당첨 번호
      */
     public static Lotto pickLuckyNumber(){
-        // TODO: 쉼표로 구분된 1~45 사이의 숫자 6개를 입력받아 리턴
-        // TODO: 잘못된 값을 입력했을 경우 예외처리
-        return null;
+        List<String> input = List.of(Console.readLine().split(","));
+        List<Integer> numbers;
+        try{
+            numbers = input.stream()
+                    .map(s -> Integer.parseInt(s))
+                    .collect(Collectors.toList());
+        } catch(NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 숫자 이외의 값을 입력할 수 없습니다.");
+        }
+        Lotto luckyLotto = new Lotto(numbers);
+        return luckyLotto;
     }
+
 
     /**
      * 보너스 번호를 입력받음
