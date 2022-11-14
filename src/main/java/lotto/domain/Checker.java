@@ -2,9 +2,8 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,10 +21,20 @@ public class Checker {
     private static final String SHOW_RETURN_RATE_BACK = "입니다.";
 
     private List<Integer> winningNumbers = new ArrayList<>();
-    private List<Integer> winningStats;
+    private HashMap<Integer, Integer> winningStats = new HashMap<>() {{
+        put(3, 0);
+        put(4, 0);
+        put(5, 0);
+        put(6, 0);
+    }};
     private int bonusNumber;
-    private int count;
+    private int key;
     private float returnRate;
+
+    public Checker() {
+        winningNumbers = new ArrayList<>();
+
+    }
 
     public void insertWinningNumbers() {
         System.out.println(INSERT_WINNING_NUMBER);
@@ -50,8 +59,41 @@ public class Checker {
         return bonusNumber;
     }
 
-    public void checkMyLotto(List<List<Integer>> lottos) {
+    public void checkMyLotto(List<Integer> lotto) {
 
+        int oldCount;
+
+        key = 0;
+
+        checkWinningNumber(lotto);
+
+        if (key == 5) { // 당첨 번호가 5개 동일하면 보너스 번호 당첨 여부 확인
+            checkBonusNumber(lotto);
+        }
+
+        if (winningStats.containsKey(key)) {
+            oldCount = winningStats.get(key);
+            winningStats.replace(key, oldCount, oldCount + 1);
+        }
+
+    }
+
+    private void checkWinningNumber(List<Integer> lotto) {
+        for (int number : winningNumbers) {
+            if (lotto.contains(number)) {
+                key++;
+            }
+        }
+    }
+
+    private void checkBonusNumber(List<Integer> lotto) {
+        if (lotto.contains(bonusNumber)) {
+            key++;
+        }
+    }
+
+    public HashMap<Integer, Integer> getWinningStats() {
+        return winningStats;
     }
 
     public void showWinningStats() {
@@ -61,7 +103,6 @@ public class Checker {
     public float calculateRateOfReturn() {
         return returnRate;
     }
-
 
 
 }
