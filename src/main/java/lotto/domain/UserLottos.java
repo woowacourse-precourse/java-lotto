@@ -20,7 +20,7 @@ public class UserLottos {
 
     public void validateMoney(int money) {
         if (money < LOTTO_PRICE || money % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 돈을 넣어주세요.");
         }
     }
 
