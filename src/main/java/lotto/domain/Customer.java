@@ -13,22 +13,22 @@ public class Customer {
         return new WinningNumber(winningNumbers, bonusNumber);
     }
 
-    public Lottos purchaseLottos(int money) {
-        validateUnitOfTenThousand(money);
-        return new Lottos(IntStream.range(0, getLottoCount(money))
+    public Lottos purchaseLottos(int purchaseMoney) {
+        validateUnitOfTenThousand(purchaseMoney);
+        return new Lottos(IntStream.range(0, getLottoCount(purchaseMoney))
                 .mapToObj(index -> purchaseLotto())
                 .collect(Collectors.toList()));
     }
 
-    private int getLottoCount(int money) {
-        return money / LottoConstant.PRICE.getValue();
+    private int getLottoCount(int purchaseMoney) {
+        return purchaseMoney / LottoConstant.PRICE.getValue();
     }
 
     private Lotto purchaseLotto() {
-        return new Lotto(generateLottoNumber());
+        return new Lotto(generateLottoNumbers());
     }
 
-    private List<Integer> generateLottoNumber() {
+    private List<Integer> generateLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(
                 LottoConstant.START_NUMBER.getValue(),
                 LottoConstant.END_NUMBER.getValue(),
