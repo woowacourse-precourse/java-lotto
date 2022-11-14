@@ -5,15 +5,12 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class Problem {
-    Comment comment;
     WinningLotto winningLotto;
     User user;
     Map<Prize,Integer> winResult;
     long winMoney;
 
     Problem(){
-        comment=new Comment();
-        user=new User();
         winMoney=0;
         initializeWinResult();
     }
@@ -26,46 +23,12 @@ public class Problem {
     }
 
     void startProblem(){
-        setUserLotto();
-        setWinningLotto();
+        Setting setting=new Setting();
+        user=setting.userLotto();
+        winningLotto=setting.winningLotto();
         findResult();
         calculateResult();
         printAnswer();
-    }
-    private void setUserLotto(){
-        comment.inputMoney();
-        user.inputMoney();
-        user.setLottoQuantity();
-        user.printLottoQunantity();
-        user.buyingLotto();
-        user.printAllBuyingLotto();
-    }
-
-    private void setWinningLotto(){
-        comment.inputWinningNumber();
-        inputWinningNumber();
-        comment.inputBonusNumber();
-        inputBonusNumber();
-    }
-
-    private void inputWinningNumber(){
-        String []numbers=Console.readLine().split(",");
-        winningLotto=new WinningLotto(convertNumbers(numbers));
-    }
-
-    private List<Integer> convertNumbers(String[] inputNumbers){
-        List<Integer> numbers=new ArrayList<>();
-
-        for(String number :inputNumbers){
-            numbers.add(Integer.parseInt(number));
-        }
-
-        return numbers;
-    }
-
-    private void inputBonusNumber(){
-        int bonusNumber=Integer.parseInt((Console.readLine()));
-        winningLotto.inputBonusNumber(bonusNumber);
     }
 
     private void findResult(){
@@ -121,7 +84,7 @@ public class Problem {
     }
 
     void printAnswer(){
-        comment.startPrintAnswer();
+        Comment.startPrintAnswer();
         printAllPrizeNumber();
         printYield();
     }
