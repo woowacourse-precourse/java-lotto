@@ -8,7 +8,7 @@ public enum ExceptionCode {
     NOT_CORRECT_BONUS_NUM_RANGE("[ERROR] 보너스번호의 범위는 0보다 크고 46보다 작은 숫자입니다."),
     NOT_CORRECT_BONUS_NUM("[ERROR] 보너스번호는 당첨번호와 일치하지 않아야 합니다.");
 
-    private String message;
+    private final String message;
     ExceptionCode(String message) {
         this.message = message;
     }
