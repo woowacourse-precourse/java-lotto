@@ -8,13 +8,13 @@ public class RankTest {
     @Test
     void 올바른_등수_체크() {
         //given
-        int count = 5;
+        int count = 4;
         boolean bonus = true;
 
         //when
         Rank rank = Rank.of(count, bonus);
 
         //then
-        assertThat(Rank.SECOND).isEqualTo(rank);
+        assertThat(Rank.FOURTH).isEqualTo(rank);
     }
 }
