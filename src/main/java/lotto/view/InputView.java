@@ -13,18 +13,21 @@ public class InputView {
     public static int readAmountOfLottoPrice() {
         String playerInput = readLine();
         validateLottoPurchaseAmount(playerInput);
+        System.out.println();
         return Integer.parseInt(playerInput);
     }
 
     public static List<Integer> readWinningNumbers() {
         String playerInput = readLine();
         validateLottoWinningNumber(playerInput);
+        System.out.println();
         return convertToIntegerList(playerInput);
     }
 
     public static int readBonusNumber() {
         String playerInput = readLine();
         validateLottoBonusNumber(playerInput);
+        System.out.println();
         return Integer.parseInt(playerInput);
     }
 }
