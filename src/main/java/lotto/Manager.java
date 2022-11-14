@@ -20,7 +20,7 @@ public class Manager {
         System.out.println(requestMoneyStatement);
     }
 
-    public int inputMoney() {
+    public int inputMoney() throws IllegalArgumentException {
         int money;
         String inputMoneyString = Console.readLine();
         try {
@@ -37,9 +37,10 @@ public class Manager {
     }
 
     public List<Integer> generator() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> unOrderedNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> OrderedNumbers = new ArrayList<>(unOrderedNumbers);
+        Collections.sort(OrderedNumbers);
+        return OrderedNumbers;
     }
 
     public void generateLotto() {
