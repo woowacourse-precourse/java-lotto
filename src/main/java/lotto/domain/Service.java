@@ -32,7 +32,7 @@ public class Service {
         }
     }
 
-    public void setWinningNumbers() {
+    private void setWinningNumbers() {
         this.winningNumbers = ServiceInput.getWinningNumbers();
     }
 
