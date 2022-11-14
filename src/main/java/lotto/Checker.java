@@ -4,24 +4,30 @@ import enumCollections.RankIndex;
 import enumCollections.RankNumber;
 import enumCollections.Winnings;
 
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 
 public class Checker extends Kiosk {
-    public static int[] compare(Buyer buyer) {
-        int[] resultStatistics = initializeResultStatistics();
+    public static EnumMap<RankNumber, Integer> compare(Buyer buyer) {
+        EnumMap<RankNumber, Integer> resultStatistics = initializeResultStatistics();
         for (Lotto lotto : buyer.lottos) {
-            Enum lottoRank = getRank(countSameNumbers(lotto));
-            if (lottoRank.equals(RankIndex.THIRD) && hasBonusNumber(lotto)) {
-                lottoRank = RankIndex.SECOND;
+            RankNumber lottoRank = (RankNumber)getRank(countSameNumbers(lotto));
+            if (lottoRank.equals(RankNumber.THIRD) && hasBonusNumber(lotto)) {
+                lottoRank = RankNumber.SECOND;
             }
-            resultStatistics[lottoRank.ordinal()]++;
+            int oldCounts = resultStatistics.get(lottoRank);
+            resultStatistics.put(lottoRank, oldCounts + 1);
         }
         return resultStatistics;
     }
 
-    private static int[] initializeResultStatistics() {
-        return new int[]{0, 0, 0, 0, 0, 0};
+    public static EnumMap<RankNumber, Integer> initializeResultStatistics() {
+        EnumMap<RankNumber, Integer> emptyResultStatistics = new EnumMap<RankNumber, Integer>(RankNumber.class);
+        for (RankNumber rank : RankNumber.values()) {
+            emptyResultStatistics.put(rank, 0);
+        }
+        return emptyResultStatistics;
     }
 
     public static boolean hasBonusNumber(Lotto lotto) {
@@ -38,19 +44,7 @@ public class Checker extends Kiosk {
         return count;
     }
 
-    public static Enum getRank(int countSameNumbers) {
-        HashMap<Integer, Enum> countMatchingPrizes = createNumberMatchingRanks();
-        return countMatchingPrizes.get(countSameNumbers);
-    }
-
-    public static HashMap<Integer, Enum> createNumberMatchingRanks() {
-        HashMap<Integer, Enum> countMatchingPrizes = new HashMap<>();
-        for (RankNumber rank : RankNumber.values()) {
-            countMatchingPrizes.put(
-                    RankNumber.getRankNumber(rank),
-                    RankIndex.valueOf(rank.name())
-            );
-        }
-        return countMatchingPrizes;
+    public static Enum getRank(int sameNumbers) {
+        return RankNumber.getRank(sameNumbers);
     }
 }
