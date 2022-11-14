@@ -42,7 +42,7 @@ public class SettlementSystem {
                     .calculateProfits(rankAdnCount.getValue())
             );
         }
-        
+
         return profits;
     }
 
@@ -57,7 +57,8 @@ public class SettlementSystem {
             var rankScoreCount = String.format(MESSAGE_AMOUNT, rankAndCount.getValue());
 
             stringBuilder.append(rankScoreResult)
-                    .append(rankScoreCount);
+                    .append(rankScoreCount)
+                    .append("\n");
         }
 
         return stringBuilder.toString()
