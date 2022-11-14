@@ -11,7 +11,7 @@ public class LottoRangeFilter implements Filter {
         String[] numbers = number.split(SPLITTER);
 
         for (String i : numbers) {
-            int rangeCheckNumber = Character.getNumericValue(i.charAt(0));
+            int rangeCheckNumber = Integer.parseInt(i);
 
             if (rangeCheckNumber < ALLOW_MIN_RANGE || rangeCheckNumber > ALLOW_MAX_RANGE) {
                 throw new IllegalArgumentException("유효한 범위의 복권 번호가 아닙니다.");
