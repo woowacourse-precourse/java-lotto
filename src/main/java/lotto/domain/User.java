@@ -8,6 +8,7 @@ import lotto.domain.LotteryResult;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class User {
     private int money;
@@ -33,6 +34,12 @@ public class User {
     public void buyLotteryTicket(LotteryTicket lotteryTicket) {
         money -= LottoProperty.PRICE.getProperty();
         lotteryTickets.add(lotteryTicket);
+    }
+
+    public List<List<Integer>> findAllLotteryNumbers() {
+        List<List<Integer>> lotteryNumbers = new ArrayList<>();
+        return lotteryTickets.stream().map(Lotto::getNumbers)
+                .collect(Collectors.toList());
     }
 
     public boolean hasMoney() {
