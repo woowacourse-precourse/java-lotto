@@ -24,7 +24,13 @@ public class WinningLotto extends Lotto {
         }
     }
 
-    public int countMatchingLottoNumbers(Lotto lotto) {
+    public Rank computeRank(Lotto lotto) {
+        int matchingLottoNumbersCount = countMatchingLottoNumbers(lotto);
+        boolean hasBonusNumber = matchBonusNumber(lotto);
+        return Rank.of(matchingLottoNumbersCount, hasBonusNumber);
+    }
+
+    private int countMatchingLottoNumbers(Lotto lotto) {
         List<Integer> lottoNumbers = lotto.getLottoNumbers();
         int countMatching = 0;
 
@@ -36,7 +42,7 @@ public class WinningLotto extends Lotto {
         return countMatching;
     }
 
-    public boolean matchBonusNumber(Lotto lotto) {
+    private boolean matchBonusNumber(Lotto lotto) {
         List<Integer> lottoNumbers = lotto.getLottoNumbers();
         return lottoNumbers.contains(this.bonusNumber);
     }
