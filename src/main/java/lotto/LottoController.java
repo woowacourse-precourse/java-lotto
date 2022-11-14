@@ -18,6 +18,9 @@ public class LottoController {
             lottoView.printWinNumberQuestion();
             Lotto winNumber = getWinLottoNumber(inputWinNumber());
 
+            lottoView.printBonusNumberQuestion();
+            int bonusNumber = inputBonusNumber();
+
         } catch (IllegalArgumentException e) {
             return ;
         }
@@ -102,5 +105,11 @@ public class LottoController {
         Set<String> set = new HashSet<>(Arrays.asList(input));
 
         return input.length != set.size();
+    }
+
+    public int inputBonusNumber() {
+        String input = Console.readLine();
+        checkNumber(input);
+        return Integer.parseInt(input);
     }
 }

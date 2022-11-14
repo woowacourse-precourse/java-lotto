@@ -5,16 +5,20 @@ import java.util.List;
 public class LottoView {
     private String moneyQuestion = "구입금액을 입력해 주세요.";
     private String winNumberQuestion = "당첨 번호를 입력해 주세요.";
+    private String bonusNumberQuestion = "보너스 번호를 입력해 주세요.";
     private String numberFormatError = "[ERROR] 금액은 숫자만 입력 가능합니다.";
     private String invalidNumberError = "[ERROR] 금액은 1000원 이상이어야 하며 1000원 단위여야 합니다.";
     private String winNumberCountError = "[ERROR] 당첨 번호는 6개 있어야 합니다.";
-    private String notProperNumberError = "[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.";
+    private String notProperNumberError = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     private String duplicatedNumberError = "[ERROR] 당첨 번호에 중복된 숫자가 있습니다.";
     public void printMoneyQuestion() {
         System.out.println(moneyQuestion);
     }
     public void printWinNumberQuestion() {
         System.out.println(winNumberQuestion);
+    }
+    public void printBonusNumberQuestion() {
+        System.out.println(bonusNumberQuestion);
     }
     public void printNumberFormatError() {
         System.out.println(numberFormatError);
