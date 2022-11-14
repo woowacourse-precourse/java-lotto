@@ -14,16 +14,27 @@ public class LottoController {
     public void run() {
         try {
             Money money = InputView.inputMoney();
-            List<Lotto> lottos = LottoIssueMachine.issue(money.calculateQuantity());
-            OutputView.printLottos(lottos);
+            List<Lotto> lottos = buyLottos(money);
             Lotto winningNumbers = InputView.inputWinningNumbers();
             LottoNumber bonusNumber = InputView.inputBonusNumber();
-            WinningResult winningResult = new WinningResult(winningNumbers, bonusNumber);
-            WinningStatistics winningStatistics = winningResult.compileStatistics(lottos);
-            OutputView.printWinningStatistics(winningStatistics);
+            WinningStatistics winningStatistics = compieWinningStatistics(lottos, winningNumbers, bonusNumber);
             OutputView.printYield(money, winningStatistics);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static WinningStatistics compieWinningStatistics(List<Lotto> lottos, Lotto winningNumbers,
+                                                          LottoNumber bonusNumber) {
+        WinningResult winningResult = new WinningResult(winningNumbers, bonusNumber);
+        WinningStatistics winningStatistics = winningResult.compileStatistics(lottos);
+        OutputView.printWinningStatistics(winningStatistics);
+        return winningStatistics;
+    }
+
+    private static List<Lotto> buyLottos(Money money) {
+        List<Lotto> lottos = LottoIssueMachine.issue(money.calculateQuantity());
+        OutputView.printLottos(lottos);
+        return lottos;
     }
 }
