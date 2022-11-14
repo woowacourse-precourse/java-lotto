@@ -4,10 +4,10 @@ import static lotto.model.InputErrorMessage.DUPLICATE_BONUS_NUMBER;
 
 import java.util.List;
 
-public class WinningNumber extends Lotto{
+public class WinningLotto extends Lotto{
     private final int bonusNumber;
 
-    public WinningNumber(List<Integer> winningNumbers, int bonusNumber) {
+    public WinningLotto(List<Integer> winningNumbers, int bonusNumber) {
         super(winningNumbers);
         validateDuplicateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
