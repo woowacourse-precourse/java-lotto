@@ -1,36 +1,41 @@
 package lotto;
 
-import java.util.Collections;
 import java.util.List;
+
+import static Comment.ErrorMessage.*;
+import static lotto.Validation.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
+        validate(numbers);
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 총 6개의 숫자로 구성되어 있습니다.");
-        }
+        lengthValidation(numbers);
 
-        if (numbers.stream().distinct().count() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않습니다.");
-        }
+        overlapValidation(numbers);
 
-        for (int number : numbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1에서 45사이의 수 입니다.");
-            }
-        }
+        rangeValidation(numbers);
     }
 
     // TODO: 추가 기능 구현
     /* 리스트 불러오기 */
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    /* 등수 확인 */
+    public Rank getRank(int matchingCount, int bonusNumber) {
+        if (matchingCount == 5) {
+            if (numbers.contains(bonusNumber)) {
+                return Rank.valueOf(matchingCount, true);
+            }
+            return Rank.valueOf(matchingCount, false);
+        }
+
+        return Rank.valueOf(matchingCount, false);
     }
 }
