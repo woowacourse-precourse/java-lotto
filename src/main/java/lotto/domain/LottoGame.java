@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGame {
+    private final String INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
+    private final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
+    private final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+
 
     private Player player;
     private int money;
@@ -36,7 +40,7 @@ public class LottoGame {
     }
 
     private void inputPurchaseAmount(){
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(INPUT_PURCHASE_AMOUNT);
         String a = Console.readLine();
         if(a.matches("\\d+")){
             money = Integer.parseInt(a);
@@ -47,7 +51,7 @@ public class LottoGame {
     }
 
     private List<Integer> inputWinningNumbers(){
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(INPUT_WINNING_NUMBER);
         String[] sampleIntputNumbers = Console.readLine().split(",");
         List<Integer> winningNumbers = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
@@ -56,7 +60,7 @@ public class LottoGame {
         return winningNumbers;
     }
     private int inputBonusNumber(){
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(INPUT_BONUS_NUMBER);
         String bonusNumber = Console.readLine();
         return Integer.parseInt(bonusNumber);
     }
