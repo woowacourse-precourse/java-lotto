@@ -11,7 +11,7 @@ public class LottoMessage {
 
     public void printPurchasedLotteries(List<Lotto> lotteries) {
         for (Lotto lotto : lotteries) {
-            System.out.println(lotto.getNumbers());
+            System.out.println(lotto.toString());
         }
     }
 

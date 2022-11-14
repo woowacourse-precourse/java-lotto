@@ -9,5 +9,6 @@ public class Application {
         lottoController.purchase();
         lottoController.showPurchaseLotteries();
         lottoController.inputWinningNumber();
+        lottoController.inputBonusNumber();
     }
 }

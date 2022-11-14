@@ -32,4 +32,16 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    @Override
+    public String toString() {
+        return "[" +
+                numbers.get(0).getLottoNumber() + ", " +
+                numbers.get(1).getLottoNumber() + ", " +
+                numbers.get(2).getLottoNumber() + ", " +
+                numbers.get(3).getLottoNumber() + ", " +
+                numbers.get(4).getLottoNumber() + ", " +
+                numbers.get(5).getLottoNumber() +
+                "]";
+    }
 }
