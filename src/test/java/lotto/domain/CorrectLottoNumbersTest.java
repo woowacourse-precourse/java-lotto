@@ -9,6 +9,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class CorrectLottoNumbersTest {
     final int LOTTO_START_ONE = 1;
@@ -22,12 +23,12 @@ class CorrectLottoNumbersTest {
     @Test
     void 당첨번호_비교_일등() throws Exception {
         //given
-        ArrayList<Integer> temp = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
         for (int i = LOTTO_START_ONE; i < LOTTO_END_SEVEN; i++) {
             temp.add(i);
         }
 
-        ArrayList<LottoNumber> correctTemp = new ArrayList<>();
+        List<LottoNumber> correctTemp = new ArrayList<>();
         for (int i = LOTTO_START_ONE; i < CORRECT_NUMBER_END_EIGHT; i++) {
             correctTemp.add(new LottoNumber(i));
         }
@@ -44,13 +45,13 @@ class CorrectLottoNumbersTest {
     @Test
     void 당첨번호_비교_이등() throws Exception {
         //given
-        ArrayList<Integer> temp = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
         for (int i = LOTTO_START_ONE; i < LOTTO_END_SIX; i++) {
             temp.add(i);
         }
         temp.add(BONUS_NUMBER_SEVEN);
 
-        ArrayList<LottoNumber> correctTemp = new ArrayList<>();
+        List<LottoNumber> correctTemp = new ArrayList<>();
         for (int i = LOTTO_START_ONE; i < CORRECT_NUMBER_END_EIGHT; i++) {
             correctTemp.add(new LottoNumber(i));
         }
@@ -69,12 +70,12 @@ class CorrectLottoNumbersTest {
     @Test
     void 당첨번호_비교_등외() throws Exception {
         //given
-        ArrayList<Integer> temp = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
         for (int i = LOTTO_START_ELEVEN; i < LOTTO_END_SEVENTEEN; i++) {
             temp.add(i);
         }
 
-        ArrayList<LottoNumber> correctTemp = new ArrayList<>();
+        List<LottoNumber> correctTemp = new ArrayList<>();
         for (int i = LOTTO_START_ONE; i < CORRECT_NUMBER_END_EIGHT; i++) {
             correctTemp.add(new LottoNumber(i));
         }

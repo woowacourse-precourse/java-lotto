@@ -5,6 +5,7 @@ import lotto.domain.lotto.LottoNumbers;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -19,7 +20,7 @@ class LottoNumbersTest {
     @Test
     void 로또번호_범위테스트() throws Exception {
         //given
-        ArrayList<LottoNumber> temp = new ArrayList<>();
+        List<LottoNumber> temp = new ArrayList<>();
         for (int i = LOTTO_START_ONE; i < LOTTO_END_SEVEN; i++) {
             temp.add(new LottoNumber(i));
         }
@@ -36,7 +37,7 @@ class LottoNumbersTest {
     void 로또번호_범위테스트_예외() throws Exception {
         //given
         int duplicateNumber = 5;
-        ArrayList<LottoNumber> temp = new ArrayList<>();
+        List<LottoNumber> temp = new ArrayList<>();
         // 1~5
         for (int i = LOTTO_START_ONE; i < LOTTO_END_SIX; i++) {
             temp.add(new LottoNumber(i));

@@ -22,12 +22,12 @@ class LottosTest {
         int lineCount = 3;
 
         //given
-        ArrayList<Integer> temp = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
         for (int i = LOTTO_START_ONE; i < LOTTO_END_SEVEN; i++) {
             temp.add(i);
         }
 
-        ArrayList<Lotto> lottosTemp = new ArrayList<>();
+        List<Lotto> lottosTemp = new ArrayList<>();
         for (int i = 0; i < lineCount; i++) {
             lottosTemp.add(new Lotto(temp));
         }
@@ -46,12 +46,12 @@ class LottosTest {
     void 로또_라인_수_확인_예외() throws Exception {
 
         //given
-        ArrayList<Integer> temp = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
         for (int i = LOTTO_START_ONE; i < LOTTO_END_SEVEN; i++) {
             temp.add(i);
         }
 
-        ArrayList<Lotto> lottosTemp = new ArrayList<>();
+        List<Lotto> lottosTemp = new ArrayList<>();
         for (int i = 0; i < LINE_COUNT; i++) {
             lottosTemp.add(new Lotto(temp));
         }
@@ -69,17 +69,17 @@ class LottosTest {
     @Test
     void 로또_라인_값보기() throws Exception {
         //given
-        ArrayList<Integer> reverseTemp = new ArrayList<>();
+        List<Integer> reverseTemp = new ArrayList<>();
         for (int i = REVERSE_LOTTO_START_SIX; i > REVERSE_LOTTO_END_ZERO; i--) {
             reverseTemp.add(i);
         }
 
-        ArrayList<Integer> temp = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
         for (int i = LOTTO_START_ONE; i < LOTTO_END_SEVEN; i++) {
             temp.add(i);
         }
 
-        ArrayList<Lotto> lottosTemp = new ArrayList<>();
+        List<Lotto> lottosTemp = new ArrayList<>();
         for (int i = 0; i < LINE_COUNT; i++) {
             lottosTemp.add(new Lotto(reverseTemp));
         }
