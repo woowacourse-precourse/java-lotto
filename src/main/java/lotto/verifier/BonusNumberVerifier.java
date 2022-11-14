@@ -28,7 +28,7 @@ public class BonusNumberVerifier {
     }
 
     private boolean isDigit(String input) {
-        return true;
+        return '0' <= input.charAt(0) && input.charAt(0) <= '9';
     }
 
     private boolean isDuplicatedWithWinningNumber(String input, List<Integer> winningNumbers) {
