@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,7 +8,7 @@ import java.util.stream.Collectors;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class RandomLottos {
-    private List<Lotto> randomLottos;
+    private List<Lotto> randomLottos = new ArrayList<>();
     public RandomLottos(int money){
         validateMoney(money);
         for(int i = 0; i < money/1000; ++i) {
@@ -24,6 +25,7 @@ public class RandomLottos {
     }
 
     public void printRandomLottos(){
+        System.out.println("\n" + randomLottos.size() + "개를 구매했습니다.");
         for(Lotto lotto:randomLottos){
             lotto.printLottoNumbers();
         }
