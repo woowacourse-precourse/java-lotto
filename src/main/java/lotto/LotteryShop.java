@@ -8,6 +8,8 @@ import java.util.List;
 public class LotteryShop {
     public static int dollar;
     public static List<Lotto> my_lottery;
+    public static List<Integer> winning_numbers;
+    public static int bonus_number;
 
     public static int get_number_of_tickets() {
         int number_of_tickets = dollar / 1000;
