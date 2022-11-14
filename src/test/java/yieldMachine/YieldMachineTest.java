@@ -84,4 +84,36 @@ public class YieldMachineTest {
         List<Integer> countOfReward = yieldMachine.getCountOfReward();
         assertThat(countOfReward).isEqualTo(List.of(0, 0, 0, 0, 0));
     }
+
+    @DisplayName("로또 등수에 따른 리스트 값 확인 - 2등")
+    @Test
+    void calculateOneLottoReward_second()
+            throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        YieldMachine yieldMachine = new YieldMachine(List.of(1, 2, 3, 4, 7, 8), 11);
+        BoughtLotto lotto = new BoughtLotto(List.of(1, 2, 3, 4, 7, 11));
+        Method calculateOneLottoRewardMethod
+                = YieldMachine.class.getDeclaredMethod("calculateOneLottoReward", BoughtLotto.class);
+        calculateOneLottoRewardMethod.setAccessible(true);
+        calculateOneLottoRewardMethod.invoke(yieldMachine, lotto);
+        List<Integer> countOfReward = yieldMachine.getCountOfReward();
+        assertThat(countOfReward).isEqualTo(List.of(0, 0, 0, 1, 0));
+    }
+
+    @DisplayName("여러 로또의 맞은 개수 확인")
+    @Test
+    void calculateAllLottoReward()
+            throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        YieldMachine yieldMachine = new YieldMachine(List.of(1, 2, 3, 4, 7, 8), 11);
+        Method calculateOneLottoRewardMethod
+                = YieldMachine.class.getDeclaredMethod("calculateOneLottoReward", BoughtLotto.class);
+        calculateOneLottoRewardMethod.setAccessible(true);
+
+        calculateOneLottoRewardMethod.invoke(yieldMachine, new BoughtLotto(List.of(1, 2, 3, 4, 7, 11)));
+        calculateOneLottoRewardMethod.invoke(yieldMachine, new BoughtLotto(List.of(1, 2, 3, 4, 5, 6)));
+        calculateOneLottoRewardMethod.invoke(yieldMachine, new BoughtLotto(List.of(7, 8, 9, 10, 11, 12)));
+        calculateOneLottoRewardMethod.invoke(yieldMachine, new BoughtLotto(List.of(1, 3, 7, 11, 20, 34)));
+
+        List<Integer> countOfReward = yieldMachine.getCountOfReward();
+        assertThat(countOfReward).isEqualTo(List.of(1, 1, 0, 1, 0));
+    }
 }
