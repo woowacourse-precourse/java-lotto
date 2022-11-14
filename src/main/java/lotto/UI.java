@@ -18,8 +18,7 @@ public class UI {
     }
 
     public void lottoByMoney(String moneyInput) {
-        Validation.validateMoneyInput(moneyInput);
-        lottoLogic = new LottoLogic(Integer.parseInt(moneyInput));
+        lottoLogic = new LottoLogic(moneyInput);
     }
 
     public void printNumberOfLotto() {

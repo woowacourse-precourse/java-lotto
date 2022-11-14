@@ -24,8 +24,9 @@ public class LottoLogic {
     private int fiveHitAndBonus = 0;
     private int sixHit = 0;
 
-    public LottoLogic(int money) {
-        this.money = money;
+    public LottoLogic(String money) {
+        validateMoney(money);
+        this.money = Integer.parseInt(money);
         this.numberOfLotto = calculateNumberOfLotto();
         this.buyLotto();
     }
@@ -147,5 +148,9 @@ public class LottoLogic {
         calculateCountHit();
         calculateEarning();
         calculateEarningRate();
+    }
+
+    private void validateMoney(String money){
+        Validation.validateMoneyInput(money);
     }
 }
