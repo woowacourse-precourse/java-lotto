@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class PurchaseTest {
     @Test
@@ -13,27 +15,12 @@ class PurchaseTest {
         assertEquals(8, ticketNumber.getTicketNumber());
     }
 
-    @Test
-    @DisplayName("1,000원으로 나누어 떨어지지 않는 숫자를 입력하는 경우 예외 처리한다.")
-    void 천원으로_나누어_떨어지지_않는_경우() {
+    @ParameterizedTest
+    @DisplayName("1,000원으로 나누어 떨어지지 않는 숫자, 1,000원보다 작은 숫자, 문자는 예외 처리한다.")
+    @ValueSource(strings = {"8300", "900", "aaa"})
+    void 예외_테스트(String input) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new Purchase("8_300");
-        });
-    }
-
-    @Test
-    @DisplayName("1,000원보다 작은 금액을 입력하는 경우 예외 처리한다.")
-    void 최소_금액보다_작은_금액_입력() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new Purchase("900");
-        });
-    }
-
-    @Test
-    @DisplayName("입력값이 숫자가 아니면 예외 처리한다.")
-    void 숫자가_아닌_입력값() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new Purchase("aaa");
+            new Purchase(input);
         });
     }
 }
