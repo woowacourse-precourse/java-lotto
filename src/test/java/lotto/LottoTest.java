@@ -104,4 +104,20 @@ class LottoTest {
         assertThatThrownBy(() -> lottoNumberCreator.createLottoWinNumber(lottoWinNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 보너스 번호 숫자를 입력 안할 시 예외가 발생한다.")
+    @Test
+    void inputLottoBonusNumberByString() {
+        String money = "one";
+        InputStream is = new ByteArrayInputStream(money.getBytes());
+        System.setIn(is);
+
+        LottoNumberCreator lottoNumberCreator = new LottoNumberCreator();
+        Lotto lottoWinNumber = lottoNumberCreator.createLottoWinNumber("1, 2, 3, 4, 5, 6");
+        InputUi inputUi = new InputUi();
+        String lottoBonusNumber = inputUi.inputLottoBonusNumber();
+
+        assertThatThrownBy(() -> lottoNumberCreator.createLottoBonusBall(lottoBonusNumber, lottoWinNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
