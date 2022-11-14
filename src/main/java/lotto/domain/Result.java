@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.EnumMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -49,7 +50,7 @@ public class Result {
                 .sorted(Comparator.comparingInt(r -> r.getKey().getPrize()))
                 .collect(Collectors.toList());
 
-        Map<Rank, Integer> result = new EnumMap<>(Rank.class);
+        Map<Rank, Integer> result = new LinkedHashMap<>();
 
         for (Entry<Rank, Integer> entry : entries) {
             result.put(entry.getKey(), entry.getValue());
