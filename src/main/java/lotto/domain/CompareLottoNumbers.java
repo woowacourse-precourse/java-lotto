@@ -10,9 +10,8 @@ public class CompareLottoNumbers {
     private static final int FIT_FOUR = 4;
     private static final int FIT_THREE = 3;
 
-    public static int compareNumbers(List<Integer> myLotto, List<Integer> randomLottoes) {
+    public static int compareNumbers(List<Integer> myLotto, List<Integer> randomLottoes, int bonus) {
         int fit = 0;
-        int bonus = getBonusNumber();
         for (int i = 0; i < myLotto.size(); i++) {
             if (isThisInList(myLotto, randomLottoes.get(i)))
                 fit++;
