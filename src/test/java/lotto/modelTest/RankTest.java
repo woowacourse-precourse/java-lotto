@@ -22,4 +22,11 @@ public class RankTest {
         List<Integer> lottoState = List.of(5,1);
         assertThat(Rank.isSame(Rank.THIRD, lottoState)).isFalse();
     }
+    @Test
+    @DisplayName("로또 번호가 맞춘 추첨 번호의 상태를 보상표와 비교하여 해당하는 등수 객체를 반환한다.")
+    public void findByMatchState(){
+        List<Integer> lottoState = List.of(5,1);
+        assertThat(Rank.findByMatches(lottoState)).isEqualTo(Rank.SECOND);
+    }
+
 }
