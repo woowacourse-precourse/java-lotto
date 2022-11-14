@@ -30,4 +30,8 @@ public class MessagePrinter {
             System.out.println(lotto.getNumbers());
         }
     }
+
+    public void printStaticWinningLottoNumbersNotification() {
+        System.out.println(NOTIFY_INPUT_WINNING_LOTTO_NUMBERS);
+    }
 }
