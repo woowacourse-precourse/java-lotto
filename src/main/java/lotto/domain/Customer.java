@@ -21,17 +21,12 @@ public class Customer {
         return Integer.parseInt(willingToPay);
     }
 
-    public void buy(List<Lotto> lottos, Receipt receipt) {
+    public void buy(List<Lotto> lottos) {
         bag.setLottos(lottos);
-        bag.setReceipt(receipt);
     }
 
     public List<Lotto> getLottos() {
         return bag.getLottos();
-    }
-
-    public int getReceiptFee() {
-        return bag.getReceipt().getFee();
     }
 
     public void earn(int money) {

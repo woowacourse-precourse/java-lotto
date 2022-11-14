@@ -5,7 +5,6 @@ import java.util.List;
 public class Bag {
     private int amount;
     private List<Lotto> lottos;
-    private Receipt receipt;
 
     public int getAmount() {
         return getAmount();
@@ -21,13 +20,5 @@ public class Bag {
 
     public void setLottos(List<Lotto> lottos) {
         this.lottos = lottos;
-    }
-
-    public Receipt getReceipt() {
-        return receipt;
-    }
-
-    public void setReceipt(Receipt receipt) {
-        this.receipt = receipt;
     }
 }

@@ -20,7 +20,8 @@ public class BankTeller {
         List<LottoRank> lottoRanks = lottoReader.rank(customer.getLottos(), lottoCompany.getWinningNumbers(),
                 lottoCompany.getBonusNumber());
         int prize = prizeCalculator.getPrize(lottoRanks);
-        double returnOfInvest = prizeCalculator.getROI(prize, customer.getReceiptFee());
+        int fee = customer.getLottos().size()*Constants.LOTTO_PRICE;
+        double returnOfInvest = prizeCalculator.getROI(prize, fee);
         guideWinningBreakdown(lottoRanks, returnOfInvest);
         customer.earn(prize);
     }

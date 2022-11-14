@@ -16,8 +16,7 @@ public class LottoStoreClerk {
         int fee = customer.pay();
         int theAmountOfLottos = caculateTheAmountOfLottos(fee);
         List<Lotto> lottos = lottoPrinter.printLottos(theAmountOfLottos);
-        Receipt receipt = new Receipt(fee);
-        customer.buy(lottos, receipt);
+        customer.buy(lottos);
         checkNumbersOfLottos(lottos);
     }
 
