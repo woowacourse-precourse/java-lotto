@@ -10,8 +10,10 @@ public class Application {
 
     public static void main(String[] args) {
 
-        Integer amount = printlnPurchaseNoticeMessage();
-        printlnLottoNumMessage(amount);
+        System.out.println("구입금액을 입력해 주세요.");
+        String amountInput = Console.readLine();
+
+
 
         /* 로또 랜덤 발행
         [1, 2, 3, 4, 5, 6]
@@ -52,14 +54,7 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
-    private static int getPurchaseAmount() {
-        String input = Console.readLine();
-        return Integer.parseInt(input);
-    }
-
-    private static int printlnPurchaseNoticeMessage() {
-        System.out.println("구입금액을 입력해 주세요.");
-        Integer purAmount = getPurchaseAmount();
-        return purAmount;
+    private static void validateAmountInput(String amountInput) {
+        return;
     }
 }
