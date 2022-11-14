@@ -55,4 +55,8 @@ public class OutputView {
 		String roundYield = String.format("%.1f", yield);
 		System.out.println("총 수익률은 " + roundYield + "%입니다.");
 	}
+
+	public void printNewLine() {
+		System.out.println();
+	}
 }
