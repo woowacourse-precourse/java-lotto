@@ -27,4 +27,14 @@ public class WinningDecision {
             winningPrizes.put(result.getPrize(), 0);
         }
     }
+
+    private int getMatchingCount(List<Integer> myNumbers) {
+        int cnt = 0;
+        for (int myNumber : myNumbers) {
+            if (winningLotto.getNumbers().contains(myNumber)) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
 }
