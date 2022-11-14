@@ -42,9 +42,9 @@
 
 
 - ConsoleInput
-  - [x] console을 통해 입력값을 받아 int 값으로 변환함
+  - [x] console을 통해 입력값을 받아 Integer 값으로 변환함
     - 입력값이 int 값이 아닌 경우 `IllegalArgumentException`을 발생시킴
-  - [ ] console을 통해 입력값을 받아 List<Integer> 값으로 변환함
+  - [x] console을 통해 입력값을 받아 List<Integer> 값으로 변환함
     - 형식이 올바르지 않은 경우 `IllegalArgumentException`을 발생시킴
     - 형식) 34,7,6,28,16,18
 
