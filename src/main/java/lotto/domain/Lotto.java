@@ -11,10 +11,16 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (!isValidSize(numbers)) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    private boolean isValidSize(List<Integer> numbers) {
+        if (numbers.size() != LottoConstant.SIZE.getValue()) {
+            return false;
+        }
+        return true;
+    }
+
 }
