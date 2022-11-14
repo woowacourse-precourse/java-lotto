@@ -14,14 +14,13 @@ public class SettlementSystem {
     private static List<Award> awards;
     private static float yield;
 
-    public static void startProcess(WinningLotto winningLotto, UserLotto userLotto, BonusNumber bonusNumber) {
-        makeResults(winningLotto, userLotto, bonusNumber);
-        OutputView.printReward(awards);
-        OutputView.printYield(yield);
-    }
-
-    private static void makeResults(WinningLotto winningLotto, UserLotto userLotto, BonusNumber bonusNumber) {
+    public static void makeResults(WinningLotto winningLotto, UserLotto userLotto, BonusNumber bonusNumber) {
         awards = AwardManager.makeAwards(winningLotto, userLotto, bonusNumber);
         yield = YieldManager.makeYield(awards);
+    }
+
+    public static void renderResult() {
+        OutputView.printReward(awards);
+        OutputView.printYield(yield);
     }
 }

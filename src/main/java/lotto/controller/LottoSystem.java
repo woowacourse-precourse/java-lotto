@@ -5,7 +5,7 @@ import lotto.domain.UserLotto;
 import lotto.domain.WinningLotto;
 import lotto.view.OutputView;
 
-public final class LottoSystem {
+public class LottoSystem {
     private UserLotto userLotto;
     private WinningLotto winningLotto;
     private BonusNumber bonusNumber;
@@ -13,8 +13,8 @@ public final class LottoSystem {
     public void run() {
         try {
             initialize();
-            SettlementSystem.startProcess(winningLotto, userLotto, bonusNumber);
-
+            SettlementSystem.makeResults(winningLotto, userLotto, bonusNumber);
+            SettlementSystem.renderResult();
         } catch (IllegalArgumentException e) {
             OutputView.printIOMessage(e.getMessage());
         }
