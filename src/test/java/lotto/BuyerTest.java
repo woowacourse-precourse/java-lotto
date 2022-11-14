@@ -24,20 +24,20 @@ public class BuyerTest {
         String smallerThanOneThousand = "800";
 
         System.setIn(new ByteArrayInputStream(notMultipleOfThousand.getBytes()));
-        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readUserInput(Index.PURCHASE_AMOUNT)))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readUserInput(
+                InformMessage.PURCHASE_AMOUNT))).isInstanceOf(IllegalArgumentException.class);
 
         System.setIn(new ByteArrayInputStream(notNumber.getBytes()));
-        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readUserInput(Index.PURCHASE_AMOUNT)))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readUserInput(
+                InformMessage.PURCHASE_AMOUNT))).isInstanceOf(IllegalArgumentException.class);
 
         System.setIn(new ByteArrayInputStream(startWithZero.getBytes()));
-        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readUserInput(Index.PURCHASE_AMOUNT)))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readUserInput(
+                InformMessage.PURCHASE_AMOUNT))).isInstanceOf(IllegalArgumentException.class);
 
         System.setIn(new ByteArrayInputStream(smallerThanOneThousand.getBytes()));
-        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readUserInput(Index.PURCHASE_AMOUNT)))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readUserInput(
+                InformMessage.PURCHASE_AMOUNT))).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("구입 금액에 따라 올바른 수의 복권을 발행한다.")
@@ -49,7 +49,7 @@ public class BuyerTest {
         List<List<Integer>> lotteryTickets;
 
         System.setIn(new ByteArrayInputStream(eightThousand.getBytes()));
-        purchaseAmount = UserInterface.readUserInput(Index.PURCHASE_AMOUNT);
+        purchaseAmount = UserInterface.readUserInput(InformMessage.PURCHASE_AMOUNT);
         lotteryTickets = buyer.pickLotteryNumbers(Integer.parseInt(purchaseAmount) / 1000);
         assertEquals(8, lotteryTickets.size());
     }

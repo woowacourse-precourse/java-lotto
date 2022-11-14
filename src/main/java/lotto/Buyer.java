@@ -7,21 +7,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class Buyer {
-    private enum ErrorMessage {
-        INVALID_PURCHASE_AMOUNT("구매 금액은 1000원 이상, 1000원의 배수여야 합니다.");
-
-        private final String MESSAGE;
-        private final String ERROR_INDICATOR = "[ERROR] ";
-
-
-        ErrorMessage(final String message) {
-            this.MESSAGE = message;
-        }
-        @Override
-        public String toString() {
-            return (ERROR_INDICATOR + this.MESSAGE);
-        }
-    }
     private static final char INVALID_MOST_SIGNIFICANT_DIGIT = '0';
     private static final int SMALLEST_UNIT = 1000;
     private static final int SMALLEST_LOTTERY_NUMBER = 1;
@@ -49,7 +34,7 @@ public class Buyer {
 
     public void validatePurchaseAmount(String purchaseAmount) {
         if (!isDigits(purchaseAmount) || !isValidFormat(purchaseAmount) || !isMultipleOfThousand(purchaseAmount))
-            throw (new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_AMOUNT
+            throw (new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_EXCEPTION
                     .toString()));
     }
 
