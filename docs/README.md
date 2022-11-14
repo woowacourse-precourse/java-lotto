@@ -20,5 +20,5 @@
     - [ ] getter,setter 추가
 
 - [ ] 로또의 번호정보를 담는 클래스 => Lotto
-    - [ ] getter 추가
+    - [x] getter 추가
 
