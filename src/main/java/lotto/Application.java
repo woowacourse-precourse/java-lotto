@@ -1,8 +1,11 @@
 package lotto;
 
 import static java.lang.Integer.parseInt;
+import static lotto.Simulator.calculateRateOfReturn;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +23,10 @@ public class Application {
         printPurchaseHistory(lottoSimulator);
         Lotto winning = new Lotto(readNumbers(inputWinningNumbersMessage));
         int bonus = readNumber(inputBonusNumberMessage, bonusNonNumericErrorMessage);
-        lottoSimulator.setWinning(winning, bonus);
+        List<Integer> wins = lottoSimulator
+                        .setWinning(winning, bonus)
+                        .getStatistic();
+        printRateOfReturn(calculateRateOfReturn(wins, price));
     }
 
     private static int readNumber(String outputMessage, String errorMessage) {
@@ -49,5 +55,10 @@ public class Application {
         lottoSimulator.getLottos()
                 .stream()
                 .forEach(System.out::println);
+    }
+
+    private static void printRateOfReturn(BigDecimal rateOfReturn) {
+        DecimalFormat df = new DecimalFormat("#,###.0%");
+        System.out.println("총 수익률은 " + df.format(rateOfReturn) + "입니다.");
     }
 }
