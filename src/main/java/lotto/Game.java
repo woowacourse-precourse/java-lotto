@@ -18,10 +18,25 @@ public class Game {
     public int HowMuch() {
         System.out.println(ASK_PRICE);
         String price = Console.readLine();
-        nLottoPrice = Integer.parseInt(price);
+        nLottoPrice = validatePrice(price);
+        validate1000(nLottoPrice);
         nLotto = nLottoPrice / 1000;
         //Lotto exception 필요
         return nLotto;
+    }
+
+    public int validatePrice(String price){
+        try{
+            nLottoPrice = Integer.parseInt(price);
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 금액(숫자)을 입력하세요");}
+        return nLottoPrice;
+    }
+
+    public void validate1000(int nLottoPrice){
+        if (nLottoPrice % 1000 != 0){
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000의 배수여야 합니다.");
+        }
     }
 
     public void BuyLotto(int nLotto) {
@@ -94,7 +109,7 @@ public class Game {
         float prizeMoney = getPrizeMoney(WinTypeCounter);
         float getPercent = (prizeMoney / nLottoPrice) * 100;
 
-        System.out.println("\n\n" + WINNING_STATS + "\n---");
+        System.out.println(WINNING_STATISTICS);
         System.out.println(THREE_MATCH + WinTypeCounter[0] + PIECE);
         System.out.println(FOUR_MATCH + WinTypeCounter[1] + PIECE);
         System.out.println(FIVE_MATCH + WinTypeCounter[2] + PIECE);
