@@ -20,7 +20,7 @@ public class LottoContainer {
         }
     }
 
-    public void matchAll(List<Integer> normalNumbers, int bonusNumber) {
+    public Map<LottoResult, Integer> matchAll(List<Integer> normalNumbers, int bonusNumber) {
         Map<LottoResult, Integer> matchMap = getNothingMatchResult();
         for (Lotto lotto: lottos) {
             LottoResult lottoResult = lotto.getResult(normalNumbers, bonusNumber);
@@ -28,7 +28,8 @@ public class LottoContainer {
                 matchMap.put(lottoResult, matchMap.get(lottoResult) + 1);
             }
         }
-        printResult(matchMap);
+
+        return matchMap;
     }
 
     public Map<LottoResult, Integer> getNothingMatchResult() {

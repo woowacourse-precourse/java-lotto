@@ -44,4 +44,24 @@ public class LottoMachineTest {
         }
     }
 
+    @Test
+    void 당첨번호_정상_테스트() {
+        LottoMachine lottoMachine = new LottoMachine();
+        String inputNormalNumber = "1,12,23,34,44,45";
+
+        assertThatNoException()
+                .isThrownBy(() -> lottoMachine.validateWinningNumber(inputNormalNumber, 6));
+    }
+
+    @Test
+    void 당첨번호_비정상_테스트() {
+        LottoMachine lottoMachine = new LottoMachine();
+        List<String> inputNormalNumbers = Arrays.asList("1,12,23,34,44,44", "1,2,3,23a,4,5,6", "1,2,3", "1,2,3,4,5,6,46");
+
+        for(String inputNormalNumber: inputNormalNumbers) {
+            assertThatThrownBy(() -> lottoMachine.validateWinningNumber(inputNormalNumber, 6))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
 }

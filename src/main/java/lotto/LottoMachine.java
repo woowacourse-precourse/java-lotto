@@ -89,8 +89,8 @@ public class LottoMachine {
     }
 
     public void validateWinningNumber(String input, int size) {
-        String[] tokenized = input.split(",");
-        if (tokenized.length != size) {
+        List<String> tokenized = Arrays.asList(input.split(","));
+        if (tokenized.size() != size) {
             throw new IllegalArgumentException("[ERROR] 번호의 개수가 " + size + "개가 되어야 합니다.");
         }
         for (String token : tokenized) {
@@ -100,6 +100,17 @@ public class LottoMachine {
             } catch(NumberFormatException e) {
                 throw new IllegalArgumentException("[ERROR] 숫자 또는 ',' 이외의 문자가 포함되었습니다.");
             }
+        }
+        validateDuplicatedNumber(tokenized, size);
+    }
+
+    private void validateDuplicatedNumber(List<String> tokenized, int size) {
+        Set<String> tokens = new HashSet<>();
+        for (String token: tokenized) {
+            tokens.add(token);
+        }
+        if (tokens.size() != size) {
+            throw new IllegalArgumentException("[ERROR] 중복된 문자가 있습니다.");
         }
     }
 
