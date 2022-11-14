@@ -6,13 +6,11 @@ import java.util.List;
 public class Revenue {
     private static final int ZERO_COUNT=0;
     private static final int ZERO_REVENUE=0;
-    private final List<List<Integer>> matches;
-    private final HashMap<String, Integer> revenueStatics=new HashMap<>();
 
+    private final HashMap<String, Integer> revenueStatics=new HashMap<>();
     private int revenue;
 
-    public Revenue(Discriminator discriminator){
-        matches=discriminator.getMatches();
+    public Revenue(){
         revenue=ZERO_REVENUE;
     }
 
@@ -37,7 +35,7 @@ public class Revenue {
     public void settleRevenue(int winnings){
         revenue+=winnings;
     }
-    public void getStatics(){
+    public void makeStatics(List<List<Integer>> matches){
         String rankName;
         int winnings;
         initializeRevenueStatics();
