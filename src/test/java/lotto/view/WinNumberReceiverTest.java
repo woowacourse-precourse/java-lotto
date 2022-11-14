@@ -14,12 +14,12 @@ public class WinNumberReceiverTest {
 
     @DisplayName("당첨번호로 6자리를 입력받는다.")
     @Test
-    void WinNumberReceiver() {
+    void receiveWinNumber() {
         String inputExpected = "1,2,3,4,5,6";
         List<Integer> expected = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 
         InputStream in = new ByteArrayInputStream(inputExpected.getBytes());
         System.setIn(in);
-        assertThat(WinNumberReceiver.getWinNumber()).isEqualTo(expected);
+        assertThat(WinNumberReceiver.receiveWinNumber()).isEqualTo(expected);
     }
 }
