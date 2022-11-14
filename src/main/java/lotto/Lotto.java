@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -14,7 +15,21 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        List<Integer> check_duplicate = new ArrayList<Integer>();
+        for (int number : numbers) {
+            if (check_duplicate.contains(number)) {
+                throw new IllegalArgumentException();
+            }
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException();
+            }
+
+            check_duplicate.add(number);
+        }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> get_numbers() {
+        return numbers;
+    }
 }
