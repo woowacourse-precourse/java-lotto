@@ -26,7 +26,7 @@ public class LottoMachine {
     }
 
     // 구매한 로또 반환 기능
-    public List<List<Integer>> getPurchaseLottos() {
+    public List<List<Integer>> getBuyLottos() {
         return lottoStore.getLottos();
     }
 
