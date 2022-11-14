@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.model.EarningRate;
 import lotto.model.Purchase;
-import lotto.view.InputView;
-import lotto.view.OutputView;
 
 public class PurchaseController extends Controller{
     public int inputMoneyByUser() {
@@ -16,7 +13,7 @@ public class PurchaseController extends Controller{
     }
 
     private void validate(String input) {
-        String regex = "^[0-9]{1,}000$";
+        String regex = "^[0-9]{1,3}000$";
         if (!input.matches(regex)) {
             throw new IllegalArgumentException(FORMAT_ERROR_MESSAGE);
         }
