@@ -15,4 +15,28 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
+    public String getLottoNumbers() {
+        String input = Console.readLine();
+
+        try {
+            Validation.validateLottoNumbers(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return input;
+    }
+
+    public String getBonusNumber() {
+        String input = Console.readLine();
+
+        try {
+            Validation.validateBonusNumbers(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return input;
+    }
+
 }
