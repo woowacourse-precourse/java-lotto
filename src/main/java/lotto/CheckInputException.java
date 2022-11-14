@@ -50,15 +50,15 @@ class CheckInputException {
     }
 
     public static void checkBuyerInputIsNotSixNumbers(final String input) throws IllegalArgumentException {
-        List<Integer> list;
+        List<Integer> numbers;
 
         try {
-            list = Util.splitInteger(input, ",");
+            numbers = Util.splitInteger(input, ",");
         } catch (IllegalArgumentException iae) {
             throw iae;
         }
 
-        if (list.size() != 6) {
+        if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 입력한 당첨 번호가 6개가 아닙니다.");
         }
     }
