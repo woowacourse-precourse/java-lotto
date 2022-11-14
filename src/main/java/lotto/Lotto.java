@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.exception.ErrorCode;
+import lotto.exception.MyIllegalArgumentException;
+
 import java.util.List;
 
 public class Lotto {
@@ -14,8 +17,14 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (isInValidSize(numbers) || hasOutOfBoundNumber(numbers) || hasDuplicateNumber(numbers)) {
-            throw new IllegalArgumentException();
+        if (isInValidSize(numbers)) {
+            throw new MyIllegalArgumentException(ErrorCode.LOTTO_SIZE_ERROR);
+        }
+        if (hasOutOfBoundNumber(numbers)) {
+            throw new MyIllegalArgumentException(ErrorCode.LOTTO_BOUND_ERROR);
+        }
+        if (hasDuplicateNumber(numbers)) {
+            throw new MyIllegalArgumentException(ErrorCode.LOTTO_DUPLICATE_ERROR);
         }
     }
 
