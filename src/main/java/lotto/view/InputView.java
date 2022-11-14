@@ -87,4 +87,9 @@ public class InputView {
             }
         }
     }
+    public int input_Bonus_Number() {
+        System.out.println(BONUS_INPUT_MESSAGE);
+        int bonusNum = Integer.parseInt(getUserInput());
+        return bonusNum;
+    }
 }
