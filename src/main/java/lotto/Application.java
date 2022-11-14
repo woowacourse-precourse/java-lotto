@@ -1,10 +1,29 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+import lotto.exception.ErrorCode;
+import lotto.exception.MyIllegalArgumentException;
+
 public class Application {
     private static final int LOTTO_BUY_CURRENCY = 1000;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try {
+            int amount = askAmount();
+        } catch (MyIllegalArgumentException e) {
+            e.printErrorMessage();
+        }
+    }
+
+    public static int askAmount() {
+        try {
+            int money = Integer.parseInt(Console.readLine()) / 1000;
+            if (isValidMoney(money)) {
+                return money;
+            }
+        } catch (NumberFormatException ignored) {
+        }
+        throw new MyIllegalArgumentException(ErrorCode.MONEY_ERROR);
     }
 
     /**
