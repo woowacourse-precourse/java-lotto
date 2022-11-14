@@ -13,7 +13,6 @@ public class Inputer {
     private static final String REGEX = ",";
 
     public int inputMoney() {
-        System.out.println(MONEY_INPUT);
 
         int userInputMoney = Integer.parseInt(readLine());
 
@@ -22,8 +21,6 @@ public class Inputer {
 
     public List<Integer> createLottoWinNumber() {
 
-        System.out.println(WIN_INPUT);
-
         String lottoWin = readLine();
         List<Integer> lottoWinNumberList = lottoWinList(lottoWin);
 
@@ -31,7 +28,6 @@ public class Inputer {
     }
 
     public int inputLottoBonusNumber() {
-        System.out.println(BONUS_INPUT);
 
         int bonusNumber = Integer.parseInt(readLine());
 

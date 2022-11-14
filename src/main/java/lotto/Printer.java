@@ -8,6 +8,10 @@ import java.util.List;
 
 public class Printer {
 
+    public void printToDo(String toDo){
+        System.out.println(toDo);
+    }
+
     public void printUserLottoNumber(List<List<Integer>> lottoInput) {
 
         int amountLotto = lottoInput.size();
