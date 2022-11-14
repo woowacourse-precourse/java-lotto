@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface LottoService {
 
-    void compare(List<Lotto> userLottos, Lotto prizeLotto, int bonusNumber);
+    Map<Rank, Integer> compare(List<Lotto> userLottos, Lotto prizeLotto, int bonusNumber);
 
     double calculateRate(Map<Rank, Integer> results);
 }
