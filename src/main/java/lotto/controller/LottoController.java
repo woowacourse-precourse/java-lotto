@@ -49,7 +49,7 @@ public class LottoController {
     }
 
     public WinningLotto setWinningLotto() {
-        return lottoService.setWinningLotto(inputWinningNumber(), inputBonusNumber());
+        return new WinningLotto(inputWinningNumber(), inputBonusNumber());
     }
 
     public void showLottoResult() {
