@@ -26,7 +26,7 @@ public enum RewardType {
         return reward;
     }
 
-    public static RewardType getRating(final int matchNum, final boolean containBonusBall){
+    public static RewardType getRating(int matchNum, boolean containBonusBall){
         if (matchNum == THIRD.matchNum && !containBonusBall){
             return THIRD;
         }
