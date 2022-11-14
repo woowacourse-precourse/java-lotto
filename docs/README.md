@@ -71,7 +71,7 @@
 
 - [x] 등수별 점수 생성 - createRankScore
 - [ ] 등수별 당첨 금액 반환 - changeLottoToMoney
-  - [ ] 추점된 로또와 발행된 로또를 가지고 점수 반환 - calculateLottoToScore
+  - [x] 추점된 로또와 발행된 로또를 가지고 점수 반환 - calculateLottoToScore
 
 ## 제어(`Controller`)
 

@@ -5,6 +5,7 @@ import static org.mockito.Mockito.mock;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import lotto.Lotto;
 import lotto.Score;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -29,5 +30,21 @@ public class UahanBankTest {
                 new Score(3, 0));
 
         assertThat(createRankScoreMethod.invoke(uahanBank)).usingRecursiveComparison().isEqualTo(scores);
+    }
+
+    @DisplayName("당첨과 보너스 번호를 제출한 로또와 비교해서 점수로 반환한다.")
+    @Test
+    void testCalculateLottoToScore() throws Exception {
+        Method calculateLottoToScoreMethod = UahanBank.class.getDeclaredMethod("calculateLottoToScore", List.class,
+                List.class, List.class);
+        calculateLottoToScoreMethod.setAccessible(true);
+
+        List<Integer> wonLotto = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> bonusLotto = List.of(7);
+        List<Integer> lotto = List.of(1, 2, 3, 4, 5, 7);
+
+        Score score = new Score(5, 1);
+
+        assertThat(calculateLottoToScoreMethod.invoke(uahanBank, wonLotto, bonusLotto, lotto)).usingRecursiveComparison().isEqualTo(score);
     }
 }

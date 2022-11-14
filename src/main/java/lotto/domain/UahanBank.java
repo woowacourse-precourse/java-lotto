@@ -31,11 +31,25 @@ public class UahanBank {
         return Collections.unmodifiableList(scores);
     }
 
-    public int changeLottoToMoney(Lotto wonLotto, Lotto bonusLotto, Lotto lotto){
+    public int changeLottoToMoney(Lotto wonLotto, List<Integer> bonusLotto, Lotto lotto){
         return 0;
     }
 
-    private Score calculateLottoToScore(Lotto wonLotto, Lotto bonusLotto, Lotto lotto){
-        return null;
+    private Score calculateLottoToScore(List<Integer> wonLotto, List<Integer> bonusLotto, List<Integer> lotto){
+        int win = 0, bonus = 0;
+
+        for(int index = 0; index < LOTTO_LENGTH; index++){
+            if(wonLotto.contains(lotto.get(index))){
+                ++win;
+            }
+        }
+
+        for (int index = 0; index < LOTTO_LENGTH; index++) {
+            if (bonusLotto.contains(lotto.get(index))) {
+                ++bonus;
+            }
+        }
+
+        return new Score(win, bonus);
     }
 }
