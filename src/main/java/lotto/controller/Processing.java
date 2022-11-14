@@ -23,9 +23,9 @@ public class Processing {
 
     }
 
-    private double calculateTotalReturn(List<Integer> ranking, int money) {
+    private String calculateTotalReturn(List<Integer> ranking, int money) {
 
-        return calculator.df(reward.rewardMoneys(ranking), money);
+        return calculator.getyield(reward.rewardMoneys(ranking), money);
 
     }
 
