@@ -22,4 +22,8 @@ public class Lotto {
     public int getSameNumberCount(List<Integer> winning) {
         return (int) numbers.stream().filter(winning::contains).count();
     }
+
+    public boolean haveBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }
