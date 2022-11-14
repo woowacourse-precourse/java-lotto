@@ -7,6 +7,7 @@ import lotto.ui.InputView;
 import lotto.ui.OutputView;
 import lotto.vo.Lotto;
 import lotto.vo.LottoPurchaseInfo;
+import lotto.vo.LottoScore;
 import lotto.vo.LottoWinNumberInfo;
 
 public class LottoServiceImpl implements LottoService {
@@ -16,8 +17,7 @@ public class LottoServiceImpl implements LottoService {
 
     @Override
     public LottoPurchaseInfo getLottoPurchase() {
-        int lottoPrice = ConvertMoneyStringToInteger(inputView.getPrice());
-        LottoPurchaseInfo lottoPurchaseInfo = new LottoPurchaseInfo(lottoPrice);
+        LottoPurchaseInfo lottoPurchaseInfo = new LottoPurchaseInfo(inputView.getPrice());
         outputView.printPurchaseMessage(lottoPurchaseInfo.getLottoGameCount());
         return lottoPurchaseInfo;
     }
@@ -39,11 +39,17 @@ public class LottoServiceImpl implements LottoService {
     @Override
     public List<Lotto> createLottoNumbers(int lottoGameCount) {
         List<Lotto> lottoNumbers = new ArrayList<>();
-        for(int i = 0; i < lottoGameCount; i++) {
+        for (int i = 0; i < lottoGameCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottoNumbers.add(new Lotto(numbers));
         }
         return lottoNumbers;
+    }
+
+    @Override
+    public LottoScore getLottoRank(List<Lotto> lottoNumbers,
+        LottoWinNumberInfo lottoWinNumberInfo) {
+        return null;
     }
 
 
