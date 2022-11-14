@@ -12,5 +12,4 @@ class RandomNumberGeneratorTest {
         LottoNumberValidator.validateDuplicates(lottoNumbers);
         LottoNumberValidator.validateRange(lottoNumbers);
     }
-
 }

@@ -7,7 +7,6 @@ import lotto.domain.WinningType;
 import lotto.util.RandomNumberGenerator;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class LottoService {
     public static final int FIRST_PRIZE = 1;
