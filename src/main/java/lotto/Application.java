@@ -63,6 +63,10 @@ public class Application {
         }
     }
 
+    public static void Lotto_Output(){
+        System.out.println("당첨 번호를 입력해주세요.");
+    }
+
     public static void main(String[] args) {
         List<List<Integer>> issue_Numbers;
 
@@ -73,6 +77,8 @@ public class Application {
         purchase_Amount_Output(purchase_Amount(StringtoInteger(purchase_Input)));
         issue_Numbers = issue_Numbers((purchase_Amount(StringtoInteger(purchase_Input))));
         issue_Numbers_Output(issue_Numbers);
+        Lotto_Output();
+//        Number_exception();
 
 
 //        int num = Integer.parseInt(Console.readLine());
