@@ -7,10 +7,8 @@ import java.util.stream.Collectors;
 
 public class OutputConsole {
 
-    public static final String PURCHASE_HISTORY_OUTPUT_MESSAGE = "8개를 구매했습니다.";
-
     public static void printLottoList(List<Lotto> lottos) {
-        System.out.println(PURCHASE_HISTORY_OUTPUT_MESSAGE);
+        System.out.println(lottos.size() + "개를 구매했습니다.");
         for (int i = 0; i < lottos.size(); i++) {
             List<Integer> lottoNumbers= lottos.get(i).getNumbers();
             Collections.sort(lottoNumbers);
@@ -20,6 +18,8 @@ public class OutputConsole {
     }
 
     public static void printWinningList(List<Lotto> lottos, List<Integer> winningNumber, int bonusNumber) {
+        System.out.println("당첨통계");
+        System.out.println("---");
         LottoMachine lottoMachine = new LottoMachine();
         Map<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos, winningNumber, bonusNumber);
         for (Rank key: rankResult.keySet()){
