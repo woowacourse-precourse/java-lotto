@@ -1,5 +1,9 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+
 public class LottoService {
     public int getLottoAmount(String number) {
         int balance = 0;
@@ -15,5 +19,19 @@ public class LottoService {
         }
 
         return balance / 1000;
+    }
+
+    public List<Lotto> generateLottos(int amount) {
+        List<Lotto> lottoResult = new ArrayList<>();
+
+        for (int i = 0; i < amount; i++) {
+            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottoNumbers = new ArrayList<>(lottoNumbers);
+            lottoNumbers.sort(Integer::compareTo);
+
+            lottoResult.add(new Lotto(lottoNumbers));
+        }
+
+        return lottoResult;
     }
 }

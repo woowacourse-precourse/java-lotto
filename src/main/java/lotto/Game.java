@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+import lotto.domain.Lotto;
 import lotto.domain.LottoService;
 import lotto.ui.Ui;
 
@@ -15,5 +17,7 @@ public class Game {
     public void start() throws IllegalArgumentException {
         String balance = ui.inputBalance();
         int lottoAmount = service.getLottoAmount(balance);
+
+        List<Lotto> lottos = service.generateLottos(lottoAmount);
     }
 }
