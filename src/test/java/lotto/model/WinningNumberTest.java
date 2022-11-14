@@ -35,7 +35,7 @@ class WinningNumberTest {
         winningNumber = WinningNumber.of(validNumbers, validBonusNumber);
     }
 
-    static class ofNullAndEmptySourceProvider implements ArgumentsProvider {
+    static class OfNullAndEmptySourceProvider implements ArgumentsProvider {
         String validNumbers = "1,2,3,4,5,6";
         String validBonusNumber = "1";
 
@@ -73,7 +73,7 @@ class WinningNumberTest {
     @DisplayName("정적 팩토리 메서드 of 메서드는")
     class DescribeOf {
         @ParameterizedTest
-        @ArgumentsSource(ofNullAndEmptySourceProvider.class)
+        @ArgumentsSource(OfNullAndEmptySourceProvider.class)
         @DisplayName("null이나 빈문자열을 인자로 받으면 IllegalArgumentException을 반환한다.")
         void throwIllegalArgumentExceptionWhenNullAndEmptySource(String numbers, String bonusNumber) {
             Assertions.assertThatThrownBy(() -> WinningNumber.of(numbers, bonusNumber))
