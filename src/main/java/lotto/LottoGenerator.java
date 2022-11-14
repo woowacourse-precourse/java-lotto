@@ -5,6 +5,7 @@ import lotto.Lotto.Lotto;
 import lotto.Lotto.LottoInfo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator
@@ -15,7 +16,7 @@ public class LottoGenerator
 
     public List<Lotto> generateLotties(int price)
     {
-        if(price % LottoInfo.LOTTO_PRICE != 0) throw new IllegalArgumentException();
+        if(price % LottoInfo.LOTTO_PRICE != 0 || price < 0) throw new IllegalArgumentException(Message.getPriceInvalidErrorMessage());
 
         List<Lotto> lotties = new ArrayList<>();
         int lottoCount = price / LottoInfo.LOTTO_PRICE;
@@ -32,6 +33,7 @@ public class LottoGenerator
     {
         List<Integer> lottoNumbers =
                 Randoms.pickUniqueNumbersInRange(LottoInfo.START_LOTTO_NUMBER,LottoInfo.END_LOTTO_NUMBER,LottoInfo.LOTTO_SIZE);
+        Collections.sort(lottoNumbers);
         return lottoNumbers;
     }
 

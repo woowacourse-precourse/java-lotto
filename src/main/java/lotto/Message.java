@@ -25,6 +25,11 @@ public class Message {
         return String.join(DELIMITER,ERROR_HEADER,INPUT_INVALID_MESSAGE_BODY);
     }
 
+    public static String getPriceInvalidErrorMessage()
+    {
+        return String.join(DELIMITER,ERROR_HEADER,"제시된 금액이 유효하지 않습니다.\n");
+    }
+
     public static String getLottoSizeErrorMessage()
     {
         return String.join(DELIMITER,ERROR_HEADER,LOTTO_SIZE_ERROR_MESSAGE_BODY);
