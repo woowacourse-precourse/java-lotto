@@ -24,31 +24,22 @@ public class Validation {
     }
 
     private static void validateDuplication(List<Integer> numbers) {
-        try {
-            if (numbers.stream().distinct().count() != LOTTO_NUMBERS_SIZE) {
-                throw new IllegalArgumentException(ErrorStatus.NUMBER_DUPLICATION.printError());
-            }
-        } catch (IllegalArgumentException error) {
-            System.out.println(ErrorStatus.NUMBER_DUPLICATION.printError());
+        if (numbers.stream().distinct().count() != LOTTO_NUMBERS_SIZE) {
+            throw new IllegalArgumentException(ErrorStatus.NUMBER_DUPLICATION.printError());
         }
     }
 
     public static void validateMoney(int money) {
-        try {
-            if (money < LOTTO_PRICE) {
-                throw new IllegalArgumentException(ErrorStatus.MONEY_RANGE.printError());
-            }
-        } catch (IllegalArgumentException error) {
-            System.out.println(ErrorStatus.MONEY_RANGE.printError());
+        if (money < LOTTO_PRICE) {
+            throw new IllegalArgumentException(ErrorStatus.MONEY_RANGE.printError());
         }
     }
 
     public static void validateInputMoney(String inputMoney) {
         try {
             Integer.parseInt(inputMoney);
-        } catch (IllegalArgumentException error) {
-            System.out.println(ErrorStatus.NOT_NUMBER.printError());
-            InputView.inputPurchasePrice();
+        } catch (NumberFormatException error) {
+            throw new IllegalArgumentException(ErrorStatus.NOT_NUMBER.printError());
         }
     }
 
@@ -57,9 +48,8 @@ public class Validation {
             for (String inputWinningNumber : inputWinningNumbers) {
                 Integer.parseInt(inputWinningNumber);
             }
-        } catch (IllegalArgumentException error) {
-            System.out.println(ErrorStatus.NOT_NUMBER.printError());
-            throw new IllegalArgumentException();
+        } catch (NumberFormatException error) {
+            throw new IllegalArgumentException(ErrorStatus.NOT_NUMBER.printError());
         }
     }
 
@@ -69,12 +59,8 @@ public class Validation {
     }
 
     private static void validateBonusDuplication(String bonusNumber, List<Integer> winningNumbers) {
-        try {
-            if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
-                throw new IllegalArgumentException(ErrorStatus.BONUS_DUPLICATION.printError());
-            }
-        } catch (IllegalArgumentException error) {
-            System.out.println(ErrorStatus.BONUS_DUPLICATION.printError());
+        if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(ErrorStatus.BONUS_DUPLICATION.printError());
         }
     }
 
@@ -82,8 +68,7 @@ public class Validation {
         try {
             Integer.parseInt(bonusNumber);
         } catch (IllegalArgumentException error) {
-            System.out.println(ErrorStatus.NOT_NUMBER.printError());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorStatus.NOT_NUMBER.printError());
         }
     }
 }
