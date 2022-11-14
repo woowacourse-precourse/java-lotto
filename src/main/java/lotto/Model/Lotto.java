@@ -1,6 +1,5 @@
 package lotto.Model;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -13,16 +12,16 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR] 6개의 숫자를 입력하세요.");
             throw new IllegalArgumentException();
         }
-        Collections.sort(numbers);
 
         for (int i=1; i<numbers.size(); i++) {
             if (numbers.get(i - 1).equals(numbers.get(i))) {
+                System.out.println("[ERROR] 중복되지 않은 숫자를 입력하세요.");
                 throw new IllegalArgumentException();
             }
         }
-
     }
 
     public List<Integer> getNumbers() {
