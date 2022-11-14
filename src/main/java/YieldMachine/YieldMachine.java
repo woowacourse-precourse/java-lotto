@@ -73,7 +73,22 @@ public class YieldMachine {
     }
 
     private void printYield() {
-
+        for (Reward reward: Reward.values()) {
+            Integer prize = reward.getPrize();
+            List<Integer> matchingNumber = reward.getMatchingNumber();
+            Integer index = reward.getIndex();
+            if (matchingNumber.get(1) == 1) {
+                String message
+                        = String.format("5개 일치, 보너스 볼 일치 (%,d원) - %d개", prize, countOfRewards.get(index));
+                System.out.printf(message);
+                continue;
+            }
+            String message
+                    = String.format("%d개 일치 (%,d원) - %d개", matchingNumber.get(0), prize, countOfRewards.get(index));
+            System.out.println(message);
+        }
+        String yieldMessage = String.format("%.2f", yield);
+        System.out.println("총 수익률은 " + yieldMessage + "입니다.");
     }
 
     public List<Integer> getCountOfRewards() {
