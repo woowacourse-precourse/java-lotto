@@ -1,9 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.datamodel.Rank;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class UserInteraction {
@@ -47,23 +45,16 @@ public class UserInteraction {
         return Integer.parseInt(input);
     }
 
-    public void printResult(List<Integer> prize, int lottoCount) {
-        int frequency;
-        float totalPrize = 0;
+    public void printResult(int lottoCount, float totalPrize, List<String> moneyInfo, List<Integer> winingLotto) {
         System.out.println("\n 당첨 통계");
         System.out.println("---");
 
-        for (Rank rank : Rank.values()) {
-            if(rank != Rank.NONE){
-                frequency = Collections.frequency(prize, rank.getAmount());
-                totalPrize += ((float)rank.getAmount() / 1000 * frequency);
-                System.out.print(rank.getInformation());
-                System.out.print(" - ");
-                System.out.println(frequency+"개");
-            }
+        for(int prizeCount = 0; prizeCount < 5; prizeCount++){
+            System.out.print(moneyInfo.get(prizeCount));
+            System.out.print(" - ");
+            System.out.println(winingLotto.get(prizeCount)+"개");
         }
-
         System.out.println("총 수익률은 " + String.format("%.1f", totalPrize/lottoCount * 100)+"%입니다.");
     }
-    
+
 }
