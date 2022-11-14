@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.List;
 
@@ -20,4 +20,7 @@ public class Lotto {
         System.out.println(numbers);
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }

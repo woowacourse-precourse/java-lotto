@@ -1,19 +1,20 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
+import lotto.view.Output;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
+import static lotto.LottoGenerator.generateLotto;
 import static lotto.view.Input.*;
 
 public class Application {
     public static void main(String[] args) {
         try {
             int lottoCount = getLottoCount(inputAmount());
+
+            List<Lotto> lottos = generateLotto(lottoCount);
+            Output.outputLottoList(lottoCount, lottos);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
