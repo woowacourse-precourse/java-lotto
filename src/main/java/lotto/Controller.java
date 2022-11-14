@@ -117,7 +117,7 @@ public class Controller {
 
         // 보너스 번호 추가
         realLottoNumbers.add(realLottoBonusNumber);
-        
+
         // 로또 번호 분석
         LinkedHashMap<Integer, Integer> lottoResult = Controller.AnalyzePlayerNumbers
                 (realLottoNumbers, publishedLottoArray);

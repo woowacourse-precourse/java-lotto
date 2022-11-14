@@ -76,13 +76,17 @@ public class Model {
     }
 
     public static List<Integer> MakeStringToListInteger(String[] strings) {
-        List<Integer> result = new ArrayList<>();
+        try {
+            List<Integer> result = new ArrayList<>();
 
-        for (String str : strings) {
-            result.add(Integer.parseInt(str));
+            for (String str : strings) {
+                result.add(Integer.parseInt(str));
+            }
+
+            return result;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 입력된 값이 숫자가 아닙니다.");
         }
-
-        return result;
     }
 
     public static List<List<Integer>> PublishLotto(Integer lottoAmount) {
