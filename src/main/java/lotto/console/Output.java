@@ -5,6 +5,7 @@ import lotto.service.ErrorPrint;
 import lotto.service.printChart;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Output {
 
@@ -14,7 +15,7 @@ public class Output {
 
     public void printLotto(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
-            System.out.println(lotto.value());
+            System.out.println(lotto.value().stream().sorted().collect(Collectors.toList()));
         }
     }
 
