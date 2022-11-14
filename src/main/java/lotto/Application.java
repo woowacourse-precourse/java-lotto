@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Application {
+
+    final int [] profitTable = {5000, 50000, 15000000, 3000000, 2000000000};
 
     int insertedNumber;
     List<Integer> winningNumbers;
@@ -26,6 +27,34 @@ public class Application {
         application.insertWinningNumber();
         application.printInsertBonusNumber();
         application.insertBonusNumberSaveNumber();
+        int[] profitBoard = application.calcMatches();
+        double profitRate = application.makeProfitRate(profitBoard);
+    }
+
+    public double makeProfitRate(int[] profitBoard) {
+        double profits = 0;
+        for(int i=0; i<5; i++){
+            profits+=profitBoard[i] * profitTable[i];
+        }
+        double profitRate = profits / insertedNumber;
+        return Math.round(profitRate * 100) / 100.0;
+    }
+
+    public int[] calcMatches() {
+        int[] profitBoard = new int[5];
+        lottery.forEach(o->{
+            MatchDto matchDto = o.calcMatches(winningNumbers, bonusNumber);
+            makeProfitBoard(matchDto, profitBoard);
+        });
+        return profitBoard;
+    }
+
+    private void makeProfitBoard(MatchDto dto, int[] profitBoard){
+        if(dto.getMatchCount() == 3) profitBoard[0]++;
+        else if(dto.getMatchCount() == 4) profitBoard[1]++;
+        else if(dto.getMatchCount() == 5 && !dto.isBonusState()) profitBoard[2]++;
+        else if(dto.getMatchCount() == 5 && dto.isBonusState()) profitBoard[3]++;
+        else if(dto.getMatchCount() == 6) profitBoard[4]++;
     }
 
     private void printInsertPrice(){
