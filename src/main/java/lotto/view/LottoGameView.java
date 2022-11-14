@@ -4,12 +4,17 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.model.Buyer;
 
 public class LottoGameView{
-
+    private String purchaseAmount;
+    private String raffleNumbers;
+    private String bonusNumber;
     public void askPurchaseAmount(){
-        String purchaseAmount = Console.readLine();
+        purchaseAmount = Console.readLine();
     }
-    
+
     public void askRaffleNumbers(){
-        String raffleNumbers= Console.readLine();
+        raffleNumbers= Console.readLine();
+    }
+    public void askBonusNumber(){
+        bonusNumber=Console.readLine();
     }
 }
