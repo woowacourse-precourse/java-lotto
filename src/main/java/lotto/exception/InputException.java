@@ -21,6 +21,7 @@ public class InputException {
     }
 
     public static List<Integer> validatesWinLottoNumber(String number) {
+        validateNotSpace(number);
         validateNumberLength(number, NUMBER_LENGTH);
         validateOnlyNumber(number);
         validateSplitComma(number);
@@ -87,6 +88,12 @@ public class InputException {
             if (num > END_RANDOM_NUMBER) {
                 exception(BELOW_BONUS_NUMBER);
             }
+        }
+    }
+
+    private static void validateNotSpace(String number) {
+        if(!Pattern.matches(SPACE_REGEX, number)) {
+            exception(NOT_SPACE);
         }
     }
 
