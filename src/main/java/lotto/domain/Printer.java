@@ -15,7 +15,7 @@ public class Printer {
             System.out.println(lotto.getLotto());
         });
     }
-    
+
     public static void printInfoMoneyInput() {
         System.out.println("구입금액을 입력해 주세요.");
     }
@@ -41,6 +41,6 @@ public class Printer {
     }
 
     public static void printMoneyReturn(Double moneyReturn) {
-        System.out.println("총 수익률은 " + moneyReturn + "%입니다");
+        System.out.println("총 수익률은 " + moneyReturn + "%입니다.");
     }
 }
