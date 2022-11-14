@@ -8,7 +8,7 @@ public class Application {
         input.enterNumbers();
         Lotto lotto = new Lotto(input.getNumbers());
         input.enterBonusNumber();
-        Judgement judgement = new Judgement(lotto.getNumbers(), input.getBonusNumber());
+        Judgement judgement = new Judgement(lotto.getNumbers(), input.getBonusNumber(), input.getMoney());
         judgement.informLottoResult(lotteryNumber.getNumbers());
     }
 }
