@@ -10,6 +10,14 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-
+    public int checkLotto(List<Integer> winner) {
+        int matchCounts = 0;
+        for (int value : winner) {
+            if (numbers.contains(value)) {
+                matchCounts++;
+            }
+        }
+        return matchCounts;
+    }
 
 }
