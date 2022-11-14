@@ -17,6 +17,13 @@ public class Winning {
             }
             parsingWinningNumbers.add(Integer.parseInt(winningNumber));
         }
+        validate(parsingWinningNumbers);
         this.winningNumbers = parsingWinningNumbers;
+    }
+
+    private void validate(List<Integer> winningNumbers) {
+        if (winningNumbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 1부처 45까지의 숫자 6개를 입력하세요");
+        }
     }
 }
