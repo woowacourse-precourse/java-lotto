@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.model.Lotto;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class OutputView {
@@ -48,7 +49,10 @@ public class OutputView {
     }
 
     public void printOutputEarningRate(double earningRate) {
-        String earning = String.format(OutputConstants.OUTPUT_EARNING_RATE, earningRate);
+        DecimalFormat df = new DecimalFormat("###,###.0");
+        String earningRateForm = df.format(earningRate);
+
+        String earning = String.format(OutputConstants.OUTPUT_EARNING_RATE, earningRateForm);
         print(earning);
     }
 
