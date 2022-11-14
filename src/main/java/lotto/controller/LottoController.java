@@ -13,7 +13,7 @@ import lotto.domain.Purchase;
 import lotto.domain.Ranking;
 import lotto.domain.Statistics;
 import lotto.domain.Yield;
-import lotto.util.Util;
+import lotto.util.Formatter;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -53,7 +53,7 @@ public class LottoController {
 
     private static void setWinningNumbers() {
         OutputView.printWinningNumberInput();
-        Lotto lotto = new Lotto(Util.formatInput(InputView.getInput()));
+        Lotto lotto = new Lotto(Formatter.formatWinningNumbersInput(InputView.getInput()));
         winningNumbers = lotto.get();
     }
 

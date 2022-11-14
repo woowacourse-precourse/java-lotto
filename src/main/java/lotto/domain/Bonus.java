@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import static lotto.util.Util.removeSpace;
-import static lotto.util.Util.verifyRangeOfLottoNumber;
+import static lotto.util.Formatter.removeSpace;
+import static lotto.util.Formatter.verifyRangeOfLottoNumber;
 
 
 public class Bonus {

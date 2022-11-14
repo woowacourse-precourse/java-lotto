@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.util.Util.verifyRangeOfLottoNumber;
+import static lotto.util.Formatter.verifyRangeOfLottoNumber;
 
 import java.util.List;
 

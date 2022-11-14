@@ -1,15 +1,18 @@
 package lotto.util;
 
+import static lotto.util.Constants.LOTTO_RANGE_MAX;
+import static lotto.util.Constants.LOTTO_RANGE_MIN;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Util {
+public class Formatter {
     public static String removeSpace(String input) {
         return input.replaceAll("\\s", "");
     }
 
-    public static List<Integer> formatInput(String input) {
+    public static List<Integer> formatWinningNumbersInput(String input) {
         return convertStringListToIntList(separateStringByComma(removeSpace(input)));
     }
 
@@ -23,7 +26,7 @@ public class Util {
     }
 
     public static void verifyRangeOfLottoNumber(Integer number) {
-        if (number < 1 || number > 45) {
+        if (number < LOTTO_RANGE_MIN || number > LOTTO_RANGE_MAX) {
             throw new IllegalArgumentException();
         }
     }
