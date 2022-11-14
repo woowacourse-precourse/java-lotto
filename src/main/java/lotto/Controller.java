@@ -32,7 +32,8 @@ public class Controller {
     private void getResult(List<Lotto> lottos, WinningLotto winningLotto) {
         for (Lotto lotto : lottos) {
             int matchCount = lotto.getCountOfMatch(winningLotto.getWinningLottoNumbers());
-            System.out.printf("match count is %d\n", matchCount);
+            boolean bonusMatch = lotto.containBonus(winningLotto.getBonusNo());
+            System.out.println("match count is " + matchCount + ", and Bonus number is " + bonusMatch);
         }
     }
 }
