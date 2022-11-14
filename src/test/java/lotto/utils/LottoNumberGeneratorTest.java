@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class LottoNumberGeneratorTest {
+
     @DisplayName("6개의 숫자를 생성하는지 검증한다.")
     @Test
     void checkLottoNumberCount() {
