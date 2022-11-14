@@ -40,6 +40,14 @@ public class LottoGenerator {
     }
 
     private void printLotto(Lotto lotto) {
+        List<Integer> numbers = lotto.getNumbers();
 
+        System.out.print("[");
+        System.out.print(numbers.get(0));
+        for (int i = 1; i < numbers.size(); i++) {
+            int number = numbers.get(i);
+            System.out.print(", " + number);
+        }
+        System.out.print("]\n");
     }
 }
