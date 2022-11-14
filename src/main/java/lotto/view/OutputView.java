@@ -14,6 +14,10 @@ import lotto.domain.LottoTicket;
 
 public class OutputView {
 	private static final String PRINT_LOTTO_NUMBER = "\n%d개를 구매했습니다.";
+	private static final String LOTTO_NUMBER_INTRO = "[";
+	private static final String LOTTO_NUMBER_BOUNDARY = ", ";
+	private static final String LOTTO_NUMBER_OUTRO = "]";
+	private static final int LOTTO_NUMBER_CONTROL_LEGNTH = 2;
 	private static final String PRINT_PRIZE_RESULT_INTRO = "\n당첨 통계";
 	private static final String PRINT_PRIZE_RESULT_BORDER_LINE = "---";
 	private static final String PRINT_PRIZE_RESULT_FRONT = "%d개 일치";
@@ -28,13 +32,17 @@ public class OutputView {
 	public static void printLottoTickets(LottoTicket lottoTicket) {
 		List<Lotto> lottoTickets = lottoTicket.getLottoTickets();
 		for (Lotto lotto : lottoTickets) {
-			StringBuilder lottoNumbers = new StringBuilder("[");
-			for (Integer integer : lotto.getNumbers()) {
-				lottoNumbers.append(integer).append(", ");
-			}
-			lottoNumbers.delete(lottoNumbers.length() - 2, lottoNumbers.length());
-			lottoNumbers.append("]");
+			StringBuilder lottoNumbers = new StringBuilder(LOTTO_NUMBER_INTRO);
+			createTicketPrint(lottoNumbers, lotto);
+			lottoNumbers.delete(lottoNumbers.length() - LOTTO_NUMBER_CONTROL_LEGNTH, lottoNumbers.length());
+			lottoNumbers.append(LOTTO_NUMBER_OUTRO);
 			System.out.println(lottoNumbers);
+		}
+	}
+
+	private static void createTicketPrint(StringBuilder sb, Lotto lotto) {
+		for (Integer integer : lotto.getNumbers()) {
+			sb.append(integer).append(LOTTO_NUMBER_BOUNDARY);
 		}
 	}
 
