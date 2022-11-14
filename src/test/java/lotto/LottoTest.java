@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -71,12 +72,12 @@ class LottoTest {
     }
 
 
-
+/**
     // 당첨 번호 입력 테스트
     @DisplayName("당첨번호는 숫자로만 이뤄져야한다")
     @Test
     void winningNumberMustbeNumber(){
-        assertThatThrownBy(()-> new WinningNumber("1,2,3,4,5,a"))
+        assertThatThrownBy(()-> new Lotto("1,2,3,4,5,a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -117,6 +118,8 @@ class LottoTest {
         System.out.println("bonum = " + bonum);
     }
 
+
+ **/
     @DisplayName("제공된 Lotto 클래스의 정렬된 번호 넘겨주기")
     @Test
     void lottoTest(){
@@ -168,4 +171,35 @@ class LottoTest {
         System.out.println("lottoNumbers = " + lottoNumbers);
         System.out.println("score = " + score);
     }
+
+
+    @DisplayName("수익률 테스트")
+    @Test
+    void profitRateTest(){
+        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6);
+        Lotto lotto = new Lotto(numbers);
+        List<Integer> lottoNumbers = lotto.returnNumbers();
+        BuyPrice buyPrice = new BuyPrice("50000");
+        int tickets = buyPrice.checkPrice();
+        TicketNumbers ticketNumbers = new TicketNumbers(tickets);
+        List<List<Integer>> allTickets = ticketNumbers.collectTickets();
+        BonusNumber bonus = new BonusNumber("7",lottoNumbers);
+        int bonusNumber = bonus.makeBonusNumber();
+        List<List<Integer>> lucky = Arrays.asList(Arrays.asList(1,2,3,4,5,8));
+        CheckScore checkScore = new CheckScore(lottoNumbers, lucky, bonusNumber);
+        List<Integer> scoreList = checkScore.showScoreList();
+
+        System.out.println("ALL TICKETS = " + allTickets);
+        System.out.println("lottoNumbers = " + lottoNumbers);
+        System.out.println("bonusNumber = " + bonusNumber);
+        System.out.println("scoreList = " + scoreList);
+        System.out.println("allTickets size = " + allTickets.size());
+        System.out.println("scoreList.size() = " + scoreList.size());
+        ProfitRate profitRate = new ProfitRate(50000, scoreList);
+        System.out.println("profitRate.profit = " + profitRate.profit);
+        System.out.println("bonus.bonus = " + bonus.bonus);
+
+    }
 }
+
+

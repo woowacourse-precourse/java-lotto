@@ -8,6 +8,8 @@ public class BonusNumber {
 
     private final List<Integer> numbers;
 
+    static Integer bonus;
+
     public BonusNumber(String bonusNumber, List<Integer> numbers){
         this.bonusNumber = bonusNumber;
         this.numbers = numbers;
@@ -15,10 +17,11 @@ public class BonusNumber {
     }
 
     public int makeBonusNumber() {
-        int bonus = Integer.parseInt(bonusNumber);
+        int bonusNum = Integer.parseInt(bonusNumber);
         if(numbers.contains(bonus)){
             new Exceptions("보너스 번호가 중복됩니다.");
         }
-        return bonus;
+        bonus = bonusNum;
+        return bonusNum;
     }
 }
