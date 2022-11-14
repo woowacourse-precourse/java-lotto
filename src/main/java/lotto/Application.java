@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.Player.numberOfLottos;
+import static lotto.Player.winNumbers;
 
 public class Application {
     public static void main(String[] args) {
@@ -13,6 +14,11 @@ public class Application {
         List<Integer> numbers = new ArrayList<>();
         Print.requestMoneyMessage();
         Player.getMoney();
-        System.out.println("총 " + numberOfLottos + " 개의 로또 구입");
+        Print.howmanyLottos(numberOfLottos);
+        Print.requestWinNumbers();
+        Player.getWinNumbers();
+        System.out.println(winNumbers);
+
+        Print.requestBonusNumber();
     }
 }
