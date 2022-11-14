@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.data.LottoRank;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,5 +22,22 @@ public class LottoComparator {
             return;
 
         updateWinningAmount(winningCounts, winningCount, isSameWithBonus);
+    }
+
+    public Map<LottoRank, Integer> createWinningCounts(List<Lotto> lottos, List<Integer> winningNumbers, int bonus) {
+        Map<LottoRank, Integer> winningCounts = new HashMap<>();
+        initWinningCounts(winningCounts);
+
+        for (Lotto lotto : lottos) {
+            calculateWinningAmount(lotto, winningNumbers, bonus, winningCounts);
+        }
+
+        return winningCounts;
+    }
+
+    private void initWinningCounts(Map<LottoRank, Integer> winningCounts) {
+        for (LottoRank lottoRank : LottoRank.getLottoRanks()) {
+            winningCounts.put(lottoRank, 0);
+        }
     }
 }
