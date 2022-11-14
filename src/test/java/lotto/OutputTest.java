@@ -1,9 +1,13 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import controller.OutputController;
+import domain.MatchingNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -12,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class OutputTest extends NsTest {
     @DisplayName("7000원 구입 5등 두번 4등 한번")
     @Test
-    void OutputTest() {
+    void outputTest() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("7000", "4,5,6,11,13,14", "7");
@@ -41,6 +45,31 @@ public class OutputTest extends NsTest {
                 List.of(7, 11, 30, 40, 42, 43),
                 List.of(2, 13, 22, 32, 38, 45)
         );
+    }
+
+    @DisplayName("당첨번호, 로또번호 동일한 숫자 3개일때")
+    @Test
+    void outSameNumberTest() {
+        OutputController outputController = new OutputController();
+        List<Integer> winNum = Arrays.asList(1,2,3,4,5,6);
+        List<Integer> userNum = Arrays.asList(4,5,6,7,8,9);
+        int bonusnumber = 10;
+
+        assertThat(outputController.calMatchingNumber(winNum,userNum,10)).isEqualTo("Three");
+    }
+
+    @DisplayName("당첨금액 1,555,000 일때")
+    @Test
+    void winAmount() {
+        OutputController outputController = new OutputController();
+        HashMap<String,Integer> matching = new HashMap<>();
+        outputController.initHashmap(matching);
+        matching.put("Five",1);   matching.put("Four",1);   matching.put("Three",1);
+        MatchingNumber matchingNumber = new MatchingNumber(matching);
+
+        int price = outputController.winningAmount(matchingNumber);
+
+        assertThat(price).isEqualTo(1555000);
     }
 
     @Override
