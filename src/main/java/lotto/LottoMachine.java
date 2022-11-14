@@ -26,7 +26,7 @@ public class LottoMachine {
         return Arrays.asList(number.split(","));
     }
 
-    public void inputBonusNumber() {
+    public void inputBonusNumber() throws IllegalArgumentException {
         System.out.println(INPUT_BONUS_NUMBER);
 
         try {

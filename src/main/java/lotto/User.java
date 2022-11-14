@@ -22,15 +22,16 @@ public class User {
         checkThatPurchaseMoneyIsRightInput(money_str);
     }
 
-    public void checkThatPurchaseMoneyIsRightInput(String purchaseMoney) {
+    public void checkThatPurchaseMoneyIsRightInput(String purchaseMoney) throws IllegalArgumentException {
         money = Exception.isInteger(purchaseMoney);
 
-        if (Exception.isNotMultipleOfThousand(money)) {
-            throw new IllegalArgumentException(PURCHASE_MONEY_MULTIPLE_THOUSAND);
-        }
         if (Exception.isNotPositive(money)) {
             throw new IllegalArgumentException(PURCHASE_MONEY_MORE_THAN_ZERO);
         }
+        if (Exception.isNotMultipleOfThousand(money)) {
+            throw new IllegalArgumentException(PURCHASE_MONEY_MULTIPLE_THOUSAND);
+        }
+
     }
 
     public void purchaseLotto() {

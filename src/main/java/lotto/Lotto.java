@@ -11,30 +11,23 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         isOverlap(numbers);
-        isNotSixSize(numbers);
         isNotInRange(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void isOverlap(List<Integer> numbers) {
-        if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException(WINNING_NUMBER_OVERLAP);
-        }
-    }
-
-    private void isNotSixSize(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(WINNING_NUMBER_NOT_SIX);
         }
     }
 
-    private void isNotInRange(List<Integer> numbers) {
+    private void isOverlap(List<Integer> numbers) throws IllegalArgumentException {
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException(WINNING_NUMBER_OVERLAP);
+        }
+    }
+
+    private void isNotInRange(List<Integer> numbers) throws IllegalArgumentException {
         for (int number : numbers) {
             if (number < 1 || number > 45) {
                 throw new IllegalArgumentException(WINNING_NUMBER_OUT_OF_RANGE);
