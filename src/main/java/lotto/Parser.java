@@ -16,17 +16,17 @@ public class Parser {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.isNotNumber("로또 번호"));
         }
     }
 
     public static long money(String consoleInput) {
         try {
             long money = Long.parseLong(consoleInput);
-            if (money % 1000 != 0) throw new IllegalArgumentException();
+            if (money % 1000 != 0) throw new IllegalArgumentException(ErrorMessages.isUnableMoney("로또 구입금액"));
             return money;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.isNotNumber("로또 구입금액"));
         }
     }
 }

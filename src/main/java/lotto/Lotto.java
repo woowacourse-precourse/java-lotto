@@ -17,16 +17,16 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.isNotMatch("로또 번호"));
         }
         for (int number : numbers) {
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessages.isOutOfBounds("로또 번호"));
             }
         }
         Set<Integer> removeRepeatedNumbers = new HashSet<>(numbers);
         if (removeRepeatedNumbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.isRepeated("로또 번호"));
         }
     }
 

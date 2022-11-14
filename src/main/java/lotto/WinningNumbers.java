@@ -12,10 +12,10 @@ public class WinningNumbers {
 
     private void validate(Lotto winningNumbers, int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.isOutOfBounds("로또 번호"));
         }
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.isOutOfBounds("로또 번호"));
         }
     }
 }

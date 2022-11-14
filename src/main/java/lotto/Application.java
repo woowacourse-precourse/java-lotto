@@ -2,7 +2,11 @@ package lotto;
 
 public class Application {
     public static void main(String[] args) {
-        LottoGame lottoGame = LottoGame.start();
-        lottoGame.result();
+        try {
+            LottoGame lottoGame = LottoGame.start();
+            lottoGame.result();
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
