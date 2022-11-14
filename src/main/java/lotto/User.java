@@ -13,7 +13,6 @@ public class User {
 
     public int purchasePrice;
     public List<Integer> winningNumbers;
-
     public User() {
     }
 
@@ -26,7 +25,7 @@ public class User {
         throw new IllegalArgumentException();
     }
 
-    public boolean isValidPurchasePrice(String readLine) {
+    private boolean isValidPurchasePrice(String readLine) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, readLine);
         boolean isThousand = (Integer.parseInt(readLine) % 1000 == 0);
 
@@ -46,7 +45,7 @@ public class User {
         throw new IllegalArgumentException();
     }
 
-    public boolean isValidWinningNumbers(String winningNumbers) {
+    private boolean isValidWinningNumbers(String winningNumbers) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, winningNumbers);
         boolean isWinningNumberSize = (winningNumbers.length() == WINNING_NUMBER_SIZE);
 
