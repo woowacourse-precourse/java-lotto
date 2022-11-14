@@ -23,8 +23,8 @@ public class NumberGenerator {
         return convertedLottoNumbers(computerLottoString);
     }
 
-    public List<Integer> convertedLottoNumbers(List<String> computerLottoString) {
-        return computerLottoString.stream().map(Integer::parseInt).collect(Collectors.toList());
+    public List<Integer> convertedLottoNumbers(List<String> computerLotto) {
+        return computerLotto.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public void createLottos(int purchaseQuantity) {
