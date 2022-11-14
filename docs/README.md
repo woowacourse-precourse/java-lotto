@@ -2,8 +2,9 @@
 
 - [미션 개요](../README.md)
 - 계속 업데이트 중 - `살아있는 문서`
-- MVC 패턴 적용 상황
-- 문서 구성
+- 어플리케이션 2차 리팩터링 (ver 3.0)
+- MVC 패턴 적용 상황 (ver 2.0)
+- 문서 구성 (ver 1.0)
   - <번호> 기능
   - 기능 목록
   - 예외 처리
@@ -11,7 +12,45 @@
   - (오류 처리)
 
 
-## MVC 패턴 적용
+## 🗄 어플리케이션 2차 리팩터링 (ver 3.0)
+### 1. View 차원의 유효성 검증 / 도메인(Model) 로직 차원의 유효성 검증 분리
+- Purchase, WinningNumbers, BonusNumber 클래스
+  - input String 유효성 검증은 utils/Validator 로 분리
+    - 하나의 Validator 여러 View 메소드 재활용 가능
+  - 입력된 자료 구조(int, List<Integer> 등)에 대한 `비즈니스 로직(도메인 로직)` 유효성 검증만 Model 클래스에서 처리
+
+### 2. 클래스의 생성자 매개변수로 클래스를 지정
+- Model 들을 `일급 객체`화 하여 더 캡슐화되고 기능이 분리된 객체 지향 구현
+  - ex) 매개변수에 직접 클래스 할당
+```java
+    /*
+    Purchase purchase = new Purchase(inputAmount);
+    int amount = purchase.getAmount();
+    LottoTickets lottoTickets = new LottoTickets(amount);
+    */
+
+    Purchase purchase = new Purchase(inputAmount);
+    LottoTickets lottoTickets = new LottoTickets(puchase);
+```
+  - ex) Lotto 클래스를 `일급 객체`화 함으로써 WinningNumbers, LottoTickets 의 Lotto 숫자 생성에 활용
+
+### 3. Prize Enum 클래스 , Result 클래스 생성
+- Enum 클래스를 key로 하는 HashMap에 등수별 결과값 int 저장
+- output/SummaryView 결과값 반환에 활용
+
+### 4. Controller 클래스 생성
+- Application 클래스 main 메소드의 기능을 분담
+- 전체 기능 크게 4개 별로 메소드 분리
+
+### 5. 기타 변화
+- 클래스 이름 및 메소드 이름 명료화 - `의미 있는 이름 짓기`
+- 함수 분리
+  - 한 함수가 한 가지 기능만 담당
+- 문자열, 숫자 값 하드 코딩 리팩터링
+  - `static final`로 상수화
+  - 출력문 및 Exception 메세지에도 활용
+
+## 🗂 MVC 패턴 적용 (ver 2.0)
 ### 1. Model
 - 로또
   - 구입 금액 유효성 검증 및 인스턴스 필드 저장
@@ -41,7 +80,7 @@
   - 등수 정보 인스턴스 필드에 갱신
 
 
-## 구현할 기능 목록
+## 🗒 구현할 기능 목록 (ver 1.0)
 
 ## 1. 구입 금액 입력
 - [x] 로또 구입 금액을 입력하면 구입 수량을 반환한다
