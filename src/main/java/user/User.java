@@ -9,29 +9,30 @@ public class User {
 
     private final int BASE_MONEY = 1000;
     private List<Lotto> lottos;
-    private Money seedMoney;
-    private Money prizeMoney;
+    private int seedMoney;
+    private int prizeMoney;
 
     public User() {
-        seedMoney = new Money();
-        prizeMoney = new Money(0);
+        seedMoney = NumberComponent.makeMoney();
+        prizeMoney = 0;
     }
 
     public int getLottoMount() {
-        return seedMoney.getMoney() / BASE_MONEY;
+        return seedMoney / BASE_MONEY;
     }
 
     public void setLottos(List<Lotto> lottos) {
         this.lottos = lottos;
     }
 
-    public void setPrizeMoney(Money prize) {
+    public void setPrizeMoney(int prize) {
+        NumberComponent.checkMoney(prize);
         prizeMoney = prize;
     }
 
     public String getRatio() {
-        double prize = (double) prizeMoney.getMoney();
-        double seed = (double) seedMoney.getMoney();
+        double prize = (double) prizeMoney;
+        double seed = (double) seedMoney;
         return String.format("%.1f", prize / seed * 100);
     }
 
