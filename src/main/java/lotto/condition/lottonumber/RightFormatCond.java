@@ -6,6 +6,7 @@ import lotto.condition.Condition;
 public class RightFormatCond implements Condition {
 
     private static final Condition instance = new RightFormatCond();
+    private static final String ERROR_MESSAGE = "6개의 숫자를 콤마(,)로 구분하여 입력하세요";
 
     private RightFormatCond() {
     }
@@ -17,5 +18,10 @@ public class RightFormatCond implements Condition {
     @Override
     public Boolean isSatisfied(String input) {
         return input.split(",").length == LottoMachine.LOTTO_NUMBER_SIZE;
+    }
+
+    @Override
+    public String getErrorMessage() {
+        return ERROR_MESSAGE;
     }
 }

@@ -28,7 +28,7 @@ public class UserInterface {
 
         if (notPassConditionIndex != -1) {
             Condition notPassCondition = conditions.get(notPassConditionIndex);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(notPassCondition.getErrorMessage());
         }
 
         return Util.getParsedNumbers(input);
@@ -43,7 +43,7 @@ public class UserInterface {
 
         if (notPassConditionIndex != -1) {
             Condition notPassCondition = conditions.get(notPassConditionIndex);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(notPassCondition.getErrorMessage());
         }
 
         return Integer.parseInt(input);
@@ -72,7 +72,7 @@ public class UserInterface {
 
         if (notPassConditionIndex != -1) {
             Condition notPassCondition = conditions.get(notPassConditionIndex);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(notPassCondition.getErrorMessage());
         }
 
         return Integer.parseInt(input);

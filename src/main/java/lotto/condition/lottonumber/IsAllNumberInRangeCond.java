@@ -10,6 +10,7 @@ import static lotto.LottoMachine.NUMBER_RANGE_TOP;
 public class IsAllNumberInRangeCond implements Condition {
 
     private static final Condition instance = new IsAllNumberInRangeCond();
+    private static final String ERROR_MESSAGE = "1이상 45이하의 숫자를 입력해 주세요";
     private static final Integer SINGLE_DIGIT = 0;
 
     private IsAllNumberInRangeCond() {
@@ -32,6 +33,11 @@ public class IsAllNumberInRangeCond implements Condition {
         }
 
         return true;
+    }
+
+    @Override
+    public String getErrorMessage() {
+        return ERROR_MESSAGE;
     }
 
     private Boolean isDigit(List<String> digits) {

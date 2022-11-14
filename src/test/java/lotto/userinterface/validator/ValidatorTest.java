@@ -46,6 +46,11 @@ class ValidatorTest {
             public Boolean isSatisfied(String input) {
                 return true;
             }
+
+            @Override
+            public String getErrorMessage() {
+                return "[ERROR]";
+            }
         };
     }
 
@@ -54,6 +59,11 @@ class ValidatorTest {
             @Override
             public Boolean isSatisfied(String input) {
                 return false;
+            }
+
+            @Override
+            public String getErrorMessage() {
+                return "[ERROR]";
             }
         };
     }

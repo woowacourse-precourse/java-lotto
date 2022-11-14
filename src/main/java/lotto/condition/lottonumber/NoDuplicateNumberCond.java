@@ -10,6 +10,7 @@ import java.util.Set;
 public class NoDuplicateNumberCond implements Condition {
 
     private static final Condition instance = new NoDuplicateNumberCond();
+    private static final String ERROR_MESSAGE = "숫자를 중복하여 입력할 수 없습니다";
 
     private NoDuplicateNumberCond() {
     }
@@ -28,5 +29,10 @@ public class NoDuplicateNumberCond implements Condition {
         }
 
         return numbers.size() == uniqueNumbers.size();
+    }
+
+    @Override
+    public String getErrorMessage() {
+        return ERROR_MESSAGE;
     }
 }
