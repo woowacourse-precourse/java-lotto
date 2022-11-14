@@ -26,18 +26,21 @@ class PublisherTest {
     @ParameterizedTest(name = "{0}원이면 {1}장의 로또가 나온다")
     @CsvSource(value = {"1000:1", "2000:2", "10000:10", "4000:4"}, delimiter = ':')
     void getLottoCount(int money, int count) {
-        List<List<Integer>> lottoGroup = publisher.getLottoGroup(money);
+        List<Lotto> lottoGroup = publisher.getLottoGroup(money);
         assertEquals(lottoGroup.size(), count);
     }
 
     @ParameterizedTest(name = "로또는 오름차순으로 정렬되어있다.")
     @CsvSource(value = {"1000", "2000", "12000", "30000"})
     void getSortedLotto(int money) {
-        List<List<Integer>> lottoGroup = publisher.getLottoGroup(money);
-        for (List<Integer> lotto : lottoGroup) {
-            System.out.println(Arrays.toString(lotto.toArray()));
-            List<Integer> sorted = lotto.stream().sorted().collect(Collectors.toList());
-            assertEquals(lotto, sorted);
+        List<Lotto> lottoGroup = publisher.getLottoGroup(money);
+        for (Lotto lotto : lottoGroup) {
+            List<Integer> parsedLotto = lotto.getLotto();
+            System.out.println(Arrays.toString(parsedLotto.toArray()));
+            List<Integer> sorted = parsedLotto.stream()
+                    .sorted()
+                    .collect(Collectors.toList());
+            assertEquals(parsedLotto, sorted);
         }
     }
 }
