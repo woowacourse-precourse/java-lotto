@@ -1,6 +1,8 @@
 package lotto.domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Judgment {
     private static final String NEGATIVE_INTEGER_ERROR_MESSAGE = "[ERROR] 로또 구입 금액은 양의 정수여야 합니다.";
@@ -8,6 +10,7 @@ public class Judgment {
     private static final String NO_5_COMMAS_ERROR_MESSAGE = "[ERROR] 당첨 번호는 , 다섯 개로 구성되어야 합니다.";
     private static final String OUT_OF_BOUNDS_ERROR_MESSAGE = "[ERROR] 유효한 숫자 범위를 벗어났습니다.";
     private static final String NO_6_NUMBERS_ERROR_MESSAGE = "[ERROR] 당첨 번호는 숫자 여섯 개로 구성되어야 합니다.";
+    private static final String DUPLICATE_NUMBERS_ERROR_MESSAGE = "[ERROR] 당첨 번호가 중복됩니다.";
     
     public int countLottos(int money) {
         
@@ -55,6 +58,19 @@ public class Judgment {
     public void checkNumbersRange(List<Integer> numbers, int fromNumber, int toNumber) {
         for (Integer number : numbers) {
             checkRange(number, fromNumber, toNumber);
+        }
+    }
+    
+    public void duplicateCheck(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<Integer>();
+        
+        for (Integer number : numbers) {
+            
+            if (uniqueNumbers.contains(number)) {
+                throw new IllegalArgumentException(DUPLICATE_NUMBERS_ERROR_MESSAGE);
+            }
+            
+            uniqueNumbers.add(number);
         }
     }
 }
