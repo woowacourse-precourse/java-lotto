@@ -14,17 +14,17 @@ public enum LottoPrize {
     private int lottoPrizeMoney;
     private String description;
 
-    
+
     LottoPrize(int matches, String description, int prizeMoney) {
         this.matches = matches;
         this.description = description;
         this.lottoPrizeMoney = prizeMoney;
     }
-    
+
     public int getLottoPrizeMoney() {
         return lottoPrizeMoney;
     }
-    
+
     public LottoPrize getPrize(int matches) {
         LottoPrize[] val = values();
         for (int index = 0; index < val.length; index++) {
