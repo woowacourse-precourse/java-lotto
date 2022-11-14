@@ -105,4 +105,124 @@ public class SimulatorTest {
                         0))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("1등부터 5등까지 5개 로또 결과 합산하기.")
+    @Test
+    void firstToFifthGeneratedLottoTest() {
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonus = 7;
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    Simulator simulator = new Simulator(5000);
+                    assertThat(
+
+                            simulator
+                                    .setWinning(winningLotto, bonus)
+                                    .getStatistic()
+                    )
+                            .isEqualTo(List.of(1, 1, 1, 1, 1));
+                },
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 8),
+                List.of(1, 2, 3, 4, 8, 9),
+                List.of(1, 2, 3, 8, 9, 10)
+        );
+    }
+
+    @DisplayName("미당첨 5개 로또 결과 합산하기.")
+    @Test
+    void fiveNothingGeneratedLottoTest() {
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonus = 7;
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    Simulator simulator = new Simulator(5000);
+                    assertThat(
+
+                            simulator
+                                    .setWinning(winningLotto, bonus)
+                                    .getStatistic()
+                    )
+                            .isEqualTo(List.of(0, 0, 0, 0, 0));
+                },
+                List.of(7, 8, 9, 10, 11, 12),
+                List.of(11, 12, 13, 14, 15, 16),
+                List.of(7, 8, 9, 10, 11, 12),
+                List.of(17, 18, 19, 10, 11, 12),
+                List.of(7, 8, 9, 10, 11, 12)
+        );
+    }
+
+    @DisplayName("5개 중 1개 1등 로또 결과 합산하기.")
+    @Test
+    void oneFirstWinningGeneratedLottoTest() {
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonus = 7;
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    Simulator simulator = new Simulator(5000);
+                    assertThat(
+
+                            simulator
+                                    .setWinning(winningLotto, bonus)
+                                    .getStatistic()
+                    )
+                            .isEqualTo(List.of(1, 0, 0, 0, 0));
+                },
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(11, 12, 13, 14, 15, 16),
+                List.of(7, 8, 9, 10, 11, 12),
+                List.of(17, 18, 19, 10, 11, 12),
+                List.of(7, 8, 9, 10, 11, 12)
+        );
+    }
+
+    @DisplayName("5개 중 3개 2등 로또 결과 합산하기.")
+    @Test
+    void threeSecondWinningGeneratedLottoTest() {
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonus = 7;
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    Simulator simulator = new Simulator(5000);
+                    assertThat(
+
+                            simulator
+                                    .setWinning(winningLotto, bonus)
+                                    .getStatistic()
+                    )
+                            .isEqualTo(List.of(0, 3, 0, 0, 0));
+                },
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(17, 18, 19, 10, 11, 12),
+                List.of(7, 8, 9, 10, 11, 12)
+        );
+    }
+
+    @DisplayName("5개 중 5개 각기 다른 5등 로또 결과 합산하기.")
+    @Test
+    void fiveFifthWinningGeneratedLottoTest() {
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonus = 7;
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    Simulator simulator = new Simulator(5000);
+                    assertThat(
+
+                            simulator
+                                    .setWinning(winningLotto, bonus)
+                                    .getStatistic()
+                    )
+                            .isEqualTo(List.of(0, 0, 0, 0, 5));
+                },
+                List.of(1, 2, 3, 10, 11, 12),
+                List.of(2, 3, 4, 10, 11, 12),
+                List.of(3, 4, 5, 10, 11, 12),
+                List.of(4, 5, 6, 10, 11, 12),
+                List.of(1, 3, 5, 10, 11, 12)
+        );
+    }
 }
