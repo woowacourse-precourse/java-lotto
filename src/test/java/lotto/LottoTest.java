@@ -31,4 +31,11 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입금액이 1000원 단위로 떨어지지 않을 경우 예외가 발생한다.")
+    @Test
+    void buyLottoByMoneyNotDividedByThousand() {
+        assertThatThrownBy(() -> new LottoLogic("3500"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
