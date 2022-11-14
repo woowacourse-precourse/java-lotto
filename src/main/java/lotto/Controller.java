@@ -14,8 +14,8 @@ public class Controller {
      * @param playerNumbers 사용자가 입력한 로또 숫자
      */
     public static void ValidatePlayerNumber(HashSet<Integer> playerNumbers) {
-        // 집합의 크기가 7이 아니거나 1에서 45까지의 숫자가 아닌 숫자를 포함하면 예외를 발생한다.
-        if (playerNumbers.size() != 7 || Collections.min(playerNumbers) < 1 || Collections.max(playerNumbers) > 45) {
+        // 집합의 크기가 6이 아니거나 1에서 45까지의 숫자가 아닌 숫자를 포함하면 예외를 발생한다.
+        if (playerNumbers.size() != 6 || Collections.min(playerNumbers) < 1 || Collections.max(playerNumbers) > 45) {
             throw new IllegalArgumentException("[ERROR] 입력된 당첨 번호와 보너스 번호가 유효하지 않습니다.");
         }
     }
