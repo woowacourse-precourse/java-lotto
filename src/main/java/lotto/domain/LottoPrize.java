@@ -28,4 +28,8 @@ public enum LottoPrize {
         else if (lottoNumberCount == FIFTH_PRIZE.lottoNumberCount) return FIFTH_PRIZE;
         return NO_PRIZE;
     }
+
+    public int getPrize(){
+        return prize;
+    }
 }
