@@ -25,23 +25,20 @@ public class WinningLotto {
 		String inputBonusNumber = Console.readLine();
 		validateBonusNumber(inputBonusNumber);
 
-
 		bonusNumber = Integer.parseInt(inputBonusNumber);
 	}
 
-	private void validateWinningLotto(String[] stringWinningNumbers){
+	private void validateWinningLotto(String[] stringWinningNumbers) {
 		Exception.validateLottoLength(stringWinningNumbers);
 		Exception.validateLottoNumberRange(stringWinningNumbers);
 		Exception.validateDuplicateNumbers(stringWinningNumbers);
 	}
 
-	private void validateBonusNumber(String inputBonusNumber){
+	private void validateBonusNumber(String inputBonusNumber) {
 		Exception.validateNumber(inputBonusNumber);
 		Exception.validateLottoNumberRange(inputBonusNumber);
 		Exception.validateDuplicateNumbers(winningLotto, inputBonusNumber);
 	}
-
-
 
 	public List<Integer> getWinningLotto() {
 		return winningLotto.getNumbers();
