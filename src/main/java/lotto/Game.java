@@ -32,10 +32,16 @@ public class Game {
         int lotteryCount;
         float lotteryStat;
 
-        System.out.println(LOTTO_USER_INPUT_PURCHASE_AMOUNT);
-        amount = camp.nextstep.edu.missionutils.Console.readLine();
-
-        checkedAmount = checker.checkAmountInput(amount);
+        checkedAmount=-1;
+        while(checkedAmount<0) {
+            try {
+                System.out.println(LOTTO_USER_INPUT_PURCHASE_AMOUNT);
+                amount = camp.nextstep.edu.missionutils.Console.readLine();
+                checkedAmount = checker.checkAmountInput(amount);
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println(LOTTO_GAME_RESTART);
+            }
+        }
 
         user = new User(checkedAmount);
 
