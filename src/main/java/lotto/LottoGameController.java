@@ -1,6 +1,7 @@
 package lotto;
 
 import dto.LottoGameInfo;
+import util.InputUtil;
 
 /**
 * 
@@ -20,8 +21,8 @@ public class LottoGameController {
 	
 	//구입금액 입력받기
 	public void inputPurchaseAmount(){
-		
-	
+		long inputPrice = InputUtil.inputPurchaseAmount();
+		lottoGameInfo.setInputPrice(inputPrice);
 	}
 
 	//로또 발행하기
