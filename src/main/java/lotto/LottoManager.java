@@ -5,16 +5,18 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class LottoManager {
+
+    public static String error;
     private final int[] rewards = new int[]{ Prize.FIFTH_PRIZE.getPrize(),
             Prize.SECOND_PRIZE.getPrize(),
             Prize.THIRD_PRIZE.getPrize(),
             Prize.FOURTH_PRIZE.getPrize(),
             Prize.FIFTH_PRIZE.getPrize() };
-    private int[] prize = new int[]{ 0, 0, 0, 0, 0 };
-    private final Judge judge;
-    private final LottoGenerator lottoGenerator;
+    private Judge judge;
+    private LottoGenerator lottoGenerator;
     private List<Lotto> userLottos;
     private Lotto winningNumbers;
+    private int[] prize = new int[]{ 0, 0, 0, 0, 0 };
     private int bonusNumber;
     private int amount;
     private float yield;
@@ -37,6 +39,11 @@ public class LottoManager {
         System.out.println(Notice.INPUT_AMOUNT.getNotice());
         String buyAmount = Console.readLine();
         assignLottoAndAmount(buyAmount);
+    }
+
+    public static void terminateByError(String error) {
+        LottoManager.error = error;
+        throw new IllegalArgumentException();
     }
 
     private void assignLottoAndAmount(String buyAmount) {
@@ -109,6 +116,11 @@ public class LottoManager {
         yield = (total / amount) * 100;
     }
 
+    public void showAllLottos() {
+        for(Lotto lotto : userLottos) {
+            lotto.printSortedNumbers();
+        }
+    }
     public void printResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
