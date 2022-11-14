@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import static lotto.util.NumberValidator.checkDuplicate;
+import static lotto.util.NumberValidator.checkSize;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -14,9 +17,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        checkSize(numbers);
+        checkDuplicate(numbers);
     }
 
     public boolean hasPlace(int index, int number) {

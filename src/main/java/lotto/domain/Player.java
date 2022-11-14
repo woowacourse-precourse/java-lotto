@@ -1,8 +1,9 @@
 package lotto.domain;
 
-import java.util.HashSet;
+import static lotto.util.NumberValidator.*;
+
 import java.util.List;
-import java.util.Set;
+import lotto.util.NumberValidator;
 
 public class Player {
 
@@ -18,34 +19,21 @@ public class Player {
     private void validate(List<Integer> numbers, int bonusNumber) {
         checkSize(numbers);
         checkDuplicate(numbers);
-        numbers.forEach(this::checkRange);
+        numbers.forEach(NumberValidator::checkRange);
         checkRange(bonusNumber);
     }
 
-    private void checkSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void checkDuplicate(List<Integer> numbers) {
-        Set<Integer> check = new HashSet<>(numbers);
-
-        if (check.size() != numbers.size()) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void checkRange(int number) {
-        if (number < 1 || number > 45) {
-            throw new IllegalArgumentException();
-        }
-    }
 
     public void compare(PrizeCount prizeCount, List<Lotto> lottos, int lottoBonusNumber) {
-        boolean hasBonusNumber = isEqualBonusNumber(lottoBonusNumber);
+        boolean hasBonusNumber;
 
         for (Lotto lotto : lottos) {
+            hasBonusNumber = Boolean.FALSE;
+
+            if (isEqualBonusNumber(lottoBonusNumber)) {
+                hasBonusNumber = Boolean.TRUE;
+            }
+            System.out.println("lotto = " + lotto.getMatchingNumber(numbers)+ hasBonusNumber);
             prizeCount.add(Prize.findPrize(lotto.getMatchingNumber(numbers), hasBonusNumber));
         }
 
