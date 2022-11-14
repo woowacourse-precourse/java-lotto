@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static values.Constants.Console.TOTAL_PROFIT_PERCENT;
 import static values.Constants.Digit.*;
 import static values.Constants.Error.*;
 import static values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
@@ -60,14 +61,8 @@ public class LottoUtils {
         lottos.forEach(System.out::println);
     }
 
-    public String getTotalProfitMessage(String percent) {
-        StringBuilder message = new StringBuilder();
-
-        message.append("총 수익률은 ");
-        message.append(percent);
-        message.append("%입니다.");
-
-        return message.toString();
+    public static void printTotalProfitMessage(String percent) {
+        System.out.printf(TOTAL_PROFIT_PERCENT, percent);
     }
 
     public static List<Integer> getWinningNumbers() {
