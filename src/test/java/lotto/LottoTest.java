@@ -56,6 +56,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호가 1~45 사이의 숫자가 아닐 경우 예외가 발생한다.")
+    @Test
+    void inputPrizeNumbersByOverRange() {
+        LottoLogic lottoLogic = new LottoLogic("1000");
+        assertThatThrownBy(() -> lottoLogic.setPrizeNumbers(List.of("1","2","3","4","5","46")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("당첨 번호와 중복된 보너스 번호를 입력할 경우 예외가 발생한다.")
     @Test
     void inputBonusNumberByDuplicatedNumberByPrizeNumbers() {
