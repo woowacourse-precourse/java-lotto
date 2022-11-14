@@ -45,4 +45,11 @@ class ChangeTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("입력된 구입금액이 숫자로 변환되는지 확인한다.")
+    @Test
+    void number_정상동작(){
+        int input = Change.number("1000");
+        assertThat(input).isEqualTo(1000);
+    }
+
 }
