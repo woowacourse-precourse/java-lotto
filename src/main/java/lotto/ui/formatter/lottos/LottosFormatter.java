@@ -22,7 +22,7 @@ public class LottosFormatter implements OutputFormatter<Lottos> {
         int purchasedLottoSize = lottos.size();
         purchasedLottoAmountFormat(lottosFormat, purchasedLottoSize);
 
-        lottosFormat.append(lottos.lottoStream()
+        lottosFormat.append(lottos.stream()
                 .map(lottoOutputFormatter::outputFormat)
                 .collect(Collectors.joining(LOTTO_DIAMETER)));
 

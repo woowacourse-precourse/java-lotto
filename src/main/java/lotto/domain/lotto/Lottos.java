@@ -27,7 +27,7 @@ public class Lottos {
         return this.lottos.size();
     }
 
-    public Stream<Lotto> lottoStream() {
+    public Stream<Lotto> stream() {
         return lottos.stream();
     }
 

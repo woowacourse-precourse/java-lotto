@@ -16,7 +16,7 @@ public class LottoStatistics {
     }
 
     public static LottoStatistics of(Lottos lottos, LottoDraw lottoDraw) {
-        List<WinningType> winningTypes = lottos.lottoStream()
+        List<WinningType> winningTypes = lottos.stream()
                 .map(lottoDraw::match)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
