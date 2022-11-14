@@ -8,11 +8,9 @@ import lotto.controller.ManageLotto;
 
 public class Application {
     public static void main(String[] args) {
-        ManageLotto manageLotto = new ManageLotto();
-
         try {
-            manageLotto.numberOfLotto(UserInput.writeBudget());
-            UserOutput.viewLottos(manageLotto);
+            ManageLotto manageLotto = new ManageLotto(UserInput.writeBudget());
+            UserOutput.viewLotto(manageLotto);
 
             WinningNumber answer = new WinningNumber(UserInput.writeWinningNumber());
             answer.setBonusNumber(UserInput.writeBonusNumber(answer.getLottoNumbers()));

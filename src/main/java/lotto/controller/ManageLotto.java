@@ -9,10 +9,14 @@ import java.util.ArrayList;
 
 public class ManageLotto {
     private final static int LOTTOPRICE = 1000;
-    public int budget;
-    public static int lottoNum;
-    public List<Lotto> myLotto = new ArrayList<>();
+    private int lottoNum;
+    private int budget;
+    private List<Lotto> myLotto = new ArrayList<>();
 
+    public ManageLotto(int budget) {
+        numberOfLotto(budget);
+        makeMyLotto(lottoNum);
+    }
     public void makeMyLotto(int number) {
         myLotto.clear();
         for (int count = 0; count < number; count++) {
@@ -20,12 +24,24 @@ public class ManageLotto {
         }
     }
 
-    public List<Integer> pickNumbers() {
+    private List<Integer> pickNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public void numberOfLotto (int budget) {
+    private void numberOfLotto (int budget) {
         this.budget = budget;
         lottoNum = this.budget / LOTTOPRICE;
+    }
+
+    public int getLottoNum() {
+        return lottoNum;
+    }
+
+    public int getBudget() {
+        return budget;
+    }
+
+    public List<Lotto> getMyLotto() {
+        return myLotto;
     }
 }

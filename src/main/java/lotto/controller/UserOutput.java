@@ -8,10 +8,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public class UserOutput {
-    public static void viewLottos(ManageLotto manageLotto) {
-        System.out.println(String.format("%d개를 구매했습니다.", manageLotto.lottoNum));
-        manageLotto.makeMyLotto(manageLotto.lottoNum);
-        for (Lotto newLotto: manageLotto.myLotto) {
+    public static void viewLotto(ManageLotto manageLotto) {
+        System.out.println(String.format("%d개를 구매했습니다.", manageLotto.getLottoNum()));
+        for (Lotto newLotto: manageLotto.getMyLotto()) {
             List<Integer> tmpNumbers = new ArrayList<>(newLotto.getLottoNumbers());
             tmpNumbers.sort(Comparator.naturalOrder());
             System.out.println(tmpNumbers);
@@ -21,7 +20,7 @@ public class UserOutput {
 
     public static void viewLottoResult(ManageLotto manageLotto, WinningNumber winningNumber) {
         int[] ranks  = {0,0,0,0,0,0};
-        for (Lotto newLotto: manageLotto.myLotto) {
+        for (Lotto newLotto: manageLotto.getMyLotto()) {
             int index = LottoCalculator.rankOfThisLotto
                     (newLotto.getLottoNumbers(), winningNumber.getLottoNumbers(), winningNumber.getBonusNumber());
             ranks[index]++;
@@ -36,7 +35,7 @@ public class UserOutput {
                 ranks[5], ranks[4], ranks[3], ranks[2], ranks[1]));
 
         System.out.println(String.format(
-                "총 수익률은 %.1f%%입니다.", LottoCalculator.calculateYield(manageLotto.budget, ranks)
+                "총 수익률은 %.1f%%입니다.", LottoCalculator.calculateYield(manageLotto.getBudget(), ranks)
         ));
     }
 }
