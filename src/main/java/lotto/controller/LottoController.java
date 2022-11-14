@@ -1,8 +1,10 @@
 package lotto.controller;
 
+import java.util.List;
 import lotto.service.LottoService;
 import lotto.ui.InputView;
 import lotto.ui.OutputView;
+import lotto.vo.Lotto;
 import lotto.vo.LottoPurchaseInfo;
 import lotto.vo.LottoWinNumberInfo;
 
@@ -17,28 +19,35 @@ public class LottoController {
      */
     public void runLotto() {
         // 1. 로또 구매
-        LottoPurchaseInfo lottoPurchaseInfo = lottoPurchaseController();
+        LottoPurchaseInfo lottoPurchaseInfo = getLottoPurchase();
         // 2. 당첨 번호 입력
-        LottoWinNumberInfo lottoWinNumberInfo = lottoNumbersController();
+        LottoWinNumberInfo lottoWinNumberInfo = getLottoWinNumbers();
         // 3. 보너스 번호 입력
-        lottoWinNumberInfo = lottoBonusNumberController();
+        lottoWinNumberInfo = getLottoBonusNumber();
 
-    // 3. 결재한 금액만큼 로또 생성
+        // 4. 결재한 금액만큼 로또 생성
+        List<Lotto> lottoNumbers = getLottoNumbers(lottoPurchaseInfo.getLottoGameCount());
+
 }
 
-    private LottoPurchaseInfo lottoPurchaseController() {
-        LottoPurchaseInfo lottoPurchaseInfo = service.LottoPurchaseServcie();
+
+
+    private LottoPurchaseInfo getLottoPurchase() {
+        LottoPurchaseInfo lottoPurchaseInfo = service.getLottoPurchase();
         return lottoPurchaseInfo;
     }
 
-    private LottoWinNumberInfo lottoNumbersController() {
-        LottoWinNumberInfo lottoWinNumberInfo = service.lottoNumbersService();
+    private LottoWinNumberInfo getLottoWinNumbers() {
+        LottoWinNumberInfo lottoWinNumberInfo = service.getLottoWinNumbers();
         return lottoWinNumberInfo;
     }
 
-    private LottoWinNumberInfo lottoBonusNumberController() {
-        LottoWinNumberInfo lottoWinNumberInfo = service.lottoBonusNumberService();
+    private LottoWinNumberInfo getLottoBonusNumber() {
+        LottoWinNumberInfo lottoWinNumberInfo = service.getLottoBonusNumber();
         return lottoWinNumberInfo;
+    }
+
+    private List<Lotto> getLottoNumbers(int lottoGameCount) {
     }
 
     private void CreateLottoNumbers() {

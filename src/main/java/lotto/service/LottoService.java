@@ -5,9 +5,9 @@ import lotto.vo.LottoWinNumberInfo;
 
 public interface LottoService {
 
-    LottoPurchaseInfo LottoPurchaseServcie();
+    LottoPurchaseInfo getLottoPurchase();
 
-    LottoWinNumberInfo lottoNumbersService();
+    LottoWinNumberInfo getLottoWinNumbers();
 
-    LottoWinNumberInfo lottoBonusNumberService();
+    LottoWinNumberInfo getLottoBonusNumber();
 }
