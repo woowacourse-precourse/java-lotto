@@ -10,10 +10,12 @@ public class Validation {
 
     public static void purchaseNumberValid(String number){
         if (!number.matches("-?\\d+(\\.\\d+)?")){
+            OutputPrint.printError(ErrorType.INVALID_INPUT_TYPE.getText());
             throw new IllegalArgumentException();
         }
         int numberConversion = Integer.parseInt(number);
         if (numberConversion % 1000 != 0 || numberConversion == 0) {
+            OutputPrint.printError(ErrorType.INVALID_PRICE_INPUT.getText());
             throw new IllegalArgumentException(ErrorType.INVALID_PRICE_INPUT.getText());
         }
     }
