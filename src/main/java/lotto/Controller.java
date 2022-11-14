@@ -1,6 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Function.Checker;
+import lotto.Function.Generator;
+import lotto.Function.Pay;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,10 +11,21 @@ import java.util.List;
 
 public class Controller {
     User user = new User();
+    Generator generator = new Generator();
 
     public void cashInput() {
-        user.setUseCash(Integer.parseInt(Console.readLine()));
-        user.setWinningNumbers(changeWinningNumbers(Console.readLine()));
+        String cash = Console.readLine();
+        new Pay(cash);
+        user.setUseCash(Integer.parseInt(cash));
+    }
+
+    public void winningNumInput() {
+        List<Integer> list = changeWinningNumbers(Console.readLine());
+        new Lotto(list);
+        user.setWinningNumbers(list);
+    }
+
+    public void bonusNumInput() {
         user.setBonus_number(Integer.parseInt(Console.readLine()));
     }
 
