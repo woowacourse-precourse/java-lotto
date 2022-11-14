@@ -1,4 +1,4 @@
-package lotto;
+package controller;
 
 import java.util.List;
 
