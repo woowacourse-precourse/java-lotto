@@ -1,11 +1,16 @@
 package View;
 
+import Dto.Money;
+
 import static Dto.ConstDto.InputOutputConstDto.*;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
 
-    public void printLotoBuyMoney(){
+    public Money printLotoBuyMoney(){
         System.out.println(BUY_LOTTO_MESSAGE);
+        Money money = new Money(readLine());
+        return money;
     }
 
     public void printWinningNumbers(){
