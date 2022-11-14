@@ -1,6 +1,7 @@
 package lotto.Controller;
 
 import lotto.Model.Lotto;
+import lotto.Model.calculateIncome;
 import lotto.Model.lottoResult;
 import lotto.View.input;
 import lotto.View.output;
@@ -38,9 +39,12 @@ public class LottoController {
         // 당첨 통계
         output.printStatistics();
         lottoResult statistics = new lottoResult(groupLotto, winLotto, bonusNum);
-        output.printWinResult(statistics.getWinResult());
+        winResult = statistics.getWinResult();
+        output.printWinResult(winResult);
 
-
+        // 수익률
+        calculateIncome calculateincome = new calculateIncome(winResult);
+        output.printIncomeRate(calculateincome.getIncomeRate(amountLotto * 1000));
     }
 
 

@@ -41,6 +41,10 @@ public class output {
         System.out.println("---");
     }
 
+    public static void printIncomeRate(double incomeRate) {
+        System.out.println("총 수익률은 " + incomeRate + "%입니다.");
+    }
+
     public static void printWinResult(List<Integer> winResult) {
         System.out.println(Notice5thWin + winResult.get(0) + "개");
         System.out.println(Notice4thWin + winResult.get(1) + "개");
