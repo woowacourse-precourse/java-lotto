@@ -31,7 +31,7 @@ public class LottoProgramManager {
         }
     }
 
-    private int buyLotto() throws IllegalArgumentException {
+    private int buyLotto() {
         int price = InputManager.scanMoney();
 
         OutputManager.printLottoBought(price / LottoConfig.LOTTO_PRICE);
