@@ -116,13 +116,13 @@
 
 #### 1. 오름차순으로 정렬하는 메소드 구현
 
-- [ ] 숫자의 집합을 입력받아 오름차순으로 정렬하는 메소드를 구현합니다.
+- [x] 숫자의 집합을 입력받아 오름차순으로 정렬하는 메소드를 구현합니다.
 
 <br>
 
-##  [I] lotto.user.exception 패키지
+##  [I] lotto.user.validator패키지
 
-### [1] UserExceptionHandler 클래스
+### [1] UserValidator 클래스
 
 #### 1. 유저가 금액을 입력할 때 숫자가 아닌 문자를 넣었을 경우 `IllegalArgumentException`발생과 동시에 `[ERROR]`로 시작하는 에러 메시지를 출력하는 메소드를 구현합니다.
 
