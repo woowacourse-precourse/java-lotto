@@ -19,4 +19,20 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 구입금액은 숫자여야 합니다.");
     }
+
+
+    @Test
+    void validate_notCommaInput_Fail() {
+        assertThatThrownBy(() -> Validator.isCommaCorrect("1-2-3-4-5-6"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 당첨 번호는 콤마(',')로 숫자를 이어서 입력해야 합니다.");
+    }
+
+    @Test
+    void validate_NotNumberInput_Fail() {
+        assertThatThrownBy(() -> Validator.isAllNumber("1,2,3,4,a,6"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 당첨 번호는 숫자여야 합니다.");
+    }
+
 }
