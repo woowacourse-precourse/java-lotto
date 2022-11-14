@@ -4,13 +4,12 @@ import lotto.WinningStatus;
 
 public class LottoString {
     public static String INPUT_PURCHASE_PRICE =  "구입금액을 입력해 주세요.";
-    public static String INPUT_LOTTO_NUMBRES = "당첨 번호를 입력해 주세요.";
-    public static String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    public static String WINNING_STATISTICS = "당첨 통계\n---";
-    public static String UNMATCH_PRICE_UNIT = "[ERROR] 구입 금액은 천원 단위의 숫자 입니다.";
+    public static String INPUT_LOTTO_NUMBRES = "\n당첨 번호를 입력해 주세요.";
+    public static String INPUT_BONUS_NUMBER = "\n보너스 번호를 입력해 주세요.";
+    public static String WINNING_STATISTICS = "\n당첨 통계\n---";
 
-    public static String purchaserMessage(int price){
-        return String.format("%d개를 구매했습니다.", price);
+    public static String purchaseMessage(Integer price){
+        return String.format("\n%d개를 구매했습니다.", price/1000);
     }
 
     public static String winningStatistic(int threeMatch, int fourMatch, int fiveMatch,
@@ -30,6 +29,6 @@ public class LottoString {
         );
     }
     public static String winningRateMessage(double winningRate){
-        return String.format("총 수익률은 %.1f% 입니다.",winningRate);
+        return  "총 수익률은 "+winningRate*100 + "%입니다.";
     }
 }
