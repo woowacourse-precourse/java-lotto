@@ -20,9 +20,8 @@ public enum Message {
     ERROR_INCORRECT_RANGE("로또 번호는 1부터 45 사이의 숫자여야 합니다."),
     ERROR_INCORRECT_QUANTITY("로또 번호는 6자리 숫자로 이루어져야 합니다."),
     ERROR_DUPLICATED("로또 번호는 중복되지 않는 숫자로 이루어져야 합니다."),
-    ERROR_INCORRECT_FORM("로또 번호는 쉼표(,)로 구분되어야 합니다"),
 
-    ENDING("입니다."),
+    ENDING("%입니다."),
     COUNT("개"),
     ERROR("[ERROR] ")
     ;
