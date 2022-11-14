@@ -1,6 +1,10 @@
-package lotto;
+package lotto.view;
 
-import java.text.DecimalFormat;
+import lotto.domain.Lotto;
+import lotto.domain.Prize;
+import lotto.domain.WinningCheck;
+import lotto.domain.WinningNumbersIncludingBonus;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +29,7 @@ public class Output {
 	}
 
 	public static void printWinningStatistics(List<Lotto> lotteries, WinningNumbersIncludingBonus winnings) {
-		List<Prize> prizes = getPrizes(lotteries, winnings);
+		List<Prize> prizes = WinningCheck.getPrizes(lotteries, winnings);
 
 		System.out.println(PRINT_WINNING_STATISTICS);
 		System.out.println(PRINT_HORIZONTAL_LINE);
@@ -34,46 +38,9 @@ public class Output {
 		System.out.printf(PRINT_THIRD_PRIZE + "\n", Collections.frequency(prizes, Prize.THIRD));
 		System.out.printf(PRINT_SECOND_PRIZE + "\n", Collections.frequency(prizes, Prize.SECOND));
 		System.out.printf(PRINT_FIRST_PRIZE + "\n", Collections.frequency(prizes, Prize.FIRST));
-		System.out.printf(PRINT_RETURN_RATIO + "\n", getReturnRatio(prizes, lotteries.size() * 1_000));
+		System.out.printf(PRINT_RETURN_RATIO + "\n", WinningCheck.getReturnRatio(prizes, lotteries.size() * 1_000));
 		System.out.println();
 	}
 
-	private static List<Prize> getPrizes(List<Lotto> lotteries, WinningNumbersIncludingBonus winnings) {
-		List<Prize> prizes = new ArrayList<>();
-		for (Lotto lotto : lotteries) {
-			int hitCount = getHitCount(lotto, winnings.getWinningNumbers());
-			boolean bonusWinning = lotto.getNumbers().contains(winnings.getBonusNumber());
-			prizes.add(Prize.valueOf(hitCount, bonusWinning));
-		}
 
-		return prizes;
-	}
-
-	private static int getHitCount(Lotto lotto, Lotto winningNumbers) {
-		int count = 0;
-		for (int number : lotto.getNumbers()) {
-			if (winningNumbers.getNumbers().contains(number)) {
-				count++;
-			}
-		}
-
-		return count;
-	}
-
-	private static String getReturnRatio(List<Prize> prizes, int purchasePrice) {
-		int winningPrice = Collections.frequency(prizes, Prize.FIFTH) * Prize.FIFTH.getWinningPrice()
-				+ Collections.frequency(prizes, Prize.FOURTH) * Prize.FOURTH.getWinningPrice()
-				+ Collections.frequency(prizes, Prize.THIRD) * Prize.THIRD.getWinningPrice()
-				+ Collections.frequency(prizes, Prize.SECOND) * Prize.SECOND.getWinningPrice()
-				+ Collections.frequency(prizes, Prize.FIRST) * Prize.FIRST.getWinningPrice();
-
-		double returnRatio = (double)winningPrice / purchasePrice * 100;
-
-		String roundReturnRatio = String.format("%.1f", returnRatio);
-
-		DecimalFormat decFormat = new DecimalFormat("###,###.#");
-		String formattedRoundReturnRatio = decFormat.format(Double.parseDouble(roundReturnRatio));
-
-		return formattedRoundReturnRatio;
-	}
 }
