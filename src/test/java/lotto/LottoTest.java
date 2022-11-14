@@ -1,9 +1,13 @@
 package lotto;
 
 import lotto.domain.lotto.domain.Lotto;
+import lotto.domain.user.domain.User;
+import lotto.domain.user.presentation.UserController;
+import lotto.domain.user.service.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -25,4 +29,13 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 구입 가격을 1000원 단위로 입력하지 않으면 예외가 발생한다.")
+    @Test
+    void test() {
+        List<Lotto> lottos = new ArrayList<>();
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        lottos.add(lotto);
+        assertThatThrownBy(() -> new User(1100, lottos))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

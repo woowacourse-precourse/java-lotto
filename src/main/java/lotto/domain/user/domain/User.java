@@ -1,6 +1,7 @@
 package lotto.domain.user.domain;
 
 import lotto.domain.lotto.domain.Lotto;
+import lotto.domain.lotto.verifier.InputMoneyVerifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,15 +9,12 @@ import java.util.List;
 public class User {
 
     private final int money;
-    private List<Lotto> lottos = new ArrayList<>();
+    private final List<Lotto> lottos;
 
     public User(int money, List<Lotto> lottos) {
         this.lottos = lottos;
         this.money = money;
-    }
-
-    public int getMoney() {
-        return money;
+        InputMoneyVerifier.inputMoneyVerifier(String.valueOf(money));
     }
 
     public List<Lotto> getLottos() {
