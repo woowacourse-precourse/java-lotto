@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -21,5 +22,11 @@ public class Lotto {
     public String toString() {
         return numbers.stream().map(String::valueOf).collect(Collectors.joining(", "));
     }
-// TODO: 추가 기능 구현
+
+    public int compare(List<Integer> lotto) {
+        return (int) numbers.stream()
+                .filter(number -> lotto.stream()
+                .anyMatch(Predicate.isEqual(number)))
+                .count();
+    }
 }

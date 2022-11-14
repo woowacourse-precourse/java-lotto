@@ -2,7 +2,6 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -28,6 +27,10 @@ public class UserLotto {
             count++;
         }
         return count;
+    }
+
+    public Lotto getLottos(int index) {
+        return lottos.get(index);
     }
 
     @Override
