@@ -1,6 +1,7 @@
 package lotto.ui;
 
 import java.util.regex.Pattern;
+import lotto.constant.ErrorMessage;
 
 public class InputValidator {
     private static final String INPUT_MONEY_PATTERN = "^[1-9]+[0-9]{3,8}+$";
@@ -13,9 +14,7 @@ public class InputValidator {
         if (isMatch) {
             return;
         }
-        throw new IllegalArgumentException(
-                "[ERROR] 1000의 배수를 입력하세요. 단, 1000000000 미만의 수만 입력해주세요. (ex: 2000, 12345000)"
-        );
+        throw new IllegalArgumentException(ErrorMessage.INPUT_INCORRECT_MONEY);
     }
 
     public static void checkInputWinningNumbers(String numbersRaw) {
@@ -23,9 +22,7 @@ public class InputValidator {
         if (isMatch) {
             return;
         }
-        throw new IllegalArgumentException(
-                "[ERROR] 6개 숫자를 공백 없이 \",\"로 이어 입력해주세요. (ex: 4,13,34,25,7,9)"
-        );
+        throw new IllegalArgumentException(ErrorMessage.INPUT_INCORRECT_WINNING_NUMBERS);
     }
 
     public static void checkInputBonusNumber(String bonusNumberRaw) {
@@ -38,16 +35,12 @@ public class InputValidator {
         if (isMatch) {
             return;
         }
-        throw new IllegalArgumentException(
-                "[ERROR] 문자와 공백 없이, 숫자 1개를 입력해주세요. (ex: 7)"
-        );
+        throw new IllegalArgumentException(ErrorMessage.INPUT_INCORRECT_BONUS_NUMBER);
     }
 
     private static void checkIsOver9digits(String bonusNumberRaw) {
         if (bonusNumberRaw.length() > MAXIMUM_DIGITS) {
-            throw new IllegalArgumentException(
-                    "[ERROR] 너무 큰 수를 입력했습니다."
-            );
+            throw new IllegalArgumentException(ErrorMessage.INPUT_TOO_BIG_BONUS_NUMBER);
         }
     }
 }
