@@ -1,11 +1,9 @@
 package lotto.domain.menu;
 
 import lotto.Lotto;
-import lotto.constants.ExceptionConsole;
 import lotto.constants.SystemConsole;
 import lotto.domain.RandomLottoGenerator;
 import lotto.domain.WinningNumberAndLotto;
-import lotto.domain.exception.AmountPaymentException;
 import lotto.domain.subaction.WinningNumberPlace;
 import lotto.input.AdditionalNumber;
 import lotto.input.LottoTickets;
@@ -28,7 +26,11 @@ public class LottoGameMachine {
 
     public void run() {
         systemConsole.gameStartMessage();
-        List<List<Integer>> randomLotto = getRandomLotto();
+        LottoTickets lottoTickets = new LottoTickets();
+        int lottos = lottoTickets.getPaid();
+
+        systemConsole.completedPurchase(lottos);
+        List<List<Integer>> randomLotto = randomLottoGenerator.createTicket(lottos);
 
         systemConsole.winningNumbers();
         Lotto lottoAnswer = winningNumber.getCorrect();
@@ -44,20 +46,5 @@ public class LottoGameMachine {
         WinningNumberAndLotto winningNumberAndLotto = new WinningNumberAndLotto(
                 new WinningNumberPlace());
         return winningNumberAndLotto.comparison(randomLotto, lottoAnswer);
-    }
-
-    private List<List<Integer>> getRandomLotto() {
-        AmountPaymentException amountPaymentException = new AmountPaymentException(
-                new ExceptionConsole());
-
-        return randomLotto(amountPaymentException);
-    }
-
-    private List<List<Integer>> randomLotto(AmountPaymentException amountPaymentException) {
-        LottoTickets lottoTickets = new LottoTickets();
-        int lottos = lottoTickets.getPaid(amountPaymentException);
-
-        systemConsole.completedPurchase(lottos);
-        return randomLottoGenerator.createTicket(lottos);
     }
 }

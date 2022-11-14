@@ -9,8 +9,7 @@ public class Application {
 
     public static void main(String[] args) {
         LottoGameMachine lottoGameMachine = new LottoGameMachine(new RandomLottoGenerator(),
-                new WinningNumber(),
-                new SystemConsole());
+                new WinningNumber(), new SystemConsole());
 
         try {
             lottoGameMachine.run();

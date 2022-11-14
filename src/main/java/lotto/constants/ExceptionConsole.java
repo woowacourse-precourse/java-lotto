@@ -2,17 +2,15 @@ package lotto.constants;
 
 public class ExceptionConsole {
 
-    public void NON_NUMERIC_CHARACTERS() {
+    public void nonNumericCharacters() {
         System.out.println(ExceptionMessage.NON_NUMERIC_CHARACTERS);
     }
 
-    public void PAYMENT_AMOUNT_ZERO() {
+    public void paymentAmountZero() {
         System.out.println(ExceptionMessage.PAYMENT_AMOUNT_ZERO);
     }
 
-    public void THOUSAND_WON_UNIT_EXCEPTION() {
+    public void thousandWonUnitException() {
         System.out.println(ExceptionMessage.THOUSAND_WON_UNIT_EXCEPTION);
     }
-
-
 }

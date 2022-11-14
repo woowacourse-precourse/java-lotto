@@ -1,18 +1,10 @@
 package lotto.domain.exception;
 
-import lotto.constants.ExceptionConsole;
 import lotto.constants.ExceptionMessage;
 
 public class AmountPaymentException {
     private static final int PRICE = 1000;
-    private static final String REGULAR_PATTERN = "[0-9]+";
-
-    private final ExceptionMessage exceptionMessage;
-    private final ExceptionConsole exceptionConsole;
-
-    public AmountPaymentException(ExceptionConsole exceptionConsole) {
-        this.exceptionConsole = exceptionConsole;
-    }
+    private static final String REGULAR_PATTERN = "^[0-9]*$";
 
     public int inputVerification(int lottoPayment) {
         validateSizeLottos(lottoPayment);

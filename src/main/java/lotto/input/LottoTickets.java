@@ -7,9 +7,11 @@ public class LottoTickets {
     private static final int PRICE = 1000;
     private static int PURCHASE_AMOUNT;
 
-    public int getPaid(AmountPaymentException amountPaymentException) {
+    public int getPaid() {
+        AmountPaymentException amountPaymentException = new AmountPaymentException();
         String input = getInput(amountPaymentException);
         int money = Integer.parseInt(input);
+
         amountPaymentException.inputVerification(money);
         saveAmount(money);
         return sizeLottos(money);
