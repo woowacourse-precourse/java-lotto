@@ -22,9 +22,7 @@ public class LottoController {
         printLottos();
         getUserLottoNumbers();
         getUserBonusNumber();
-        System.out.println("userLottoNumbers: "+userLottoNumbers);
         compareLottos();
-        System.out.println("ranking: "+lottoRanking);
         getLottoResult();
     }
 

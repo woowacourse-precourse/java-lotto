@@ -22,10 +22,11 @@ public class OutputView {
             }
             System.out.print(lottoOneSetNumbers.get(j) + "] \n");
         }
+        System.out.println();
     }
 
     public static void printLottoResult(Map<LottoRanking, Integer> lottoResult) {
-        System.out.println("당첨 통계");
+        System.out.println("\n 당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) -" + lottoResult.get(LottoRanking.FIFTH) + "개");
         System.out.println("4개 일치 (50,000원) -" + lottoResult.get(LottoRanking.FOURTH) + "개");
