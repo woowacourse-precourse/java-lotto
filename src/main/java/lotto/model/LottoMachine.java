@@ -2,43 +2,44 @@ package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import lotto.util.RandomUtil;
 import lotto.util.constants.LottoConstants;
-import lotto.util.constants.WinningScore;
 
 public class LottoMachine {
-    private LottoResult lottoResult;
-    private Winning winning;
+    private int purchaseAmount;
+    private int lottoTicketCount;
+    private List<Lotto> lottoTickets;
 
-    public void createWinningLotto(Lotto lotto, int bonusNumber) {
-        winning = new Winning(lotto, bonusNumber);
-        lottoResult = new LottoResult();
+    public int getLottoTicketCount() {
+        return lottoTicketCount;
     }
 
-    public int computeLottoTicketsCount(int purchaseAmount) {
-        return purchaseAmount / LottoConstants.LOTTO_TICKET_PRICE;
+    public List<Lotto> getLottoTickets() {
+        return lottoTickets;
     }
 
-    public List<Lotto> publishLottoTickets(int countLottoTickets) {
-        List<Lotto> lottoTickets = new ArrayList<>();
+    public LottoMachine(int purchaseAmount) {
+        this.purchaseAmount = purchaseAmount;
+        computeLottoTicketsCount();
+        publishLottoTickets();
+    }
 
-        for (int ticketCount = 0; ticketCount < countLottoTickets; ticketCount++) {
+    private void computeLottoTicketsCount() {
+        this.lottoTicketCount = purchaseAmount / LottoConstants.LOTTO_TICKET_PRICE;
+    }
+
+    public void publishLottoTickets() {
+        lottoTickets = new ArrayList<>();
+        for (int ticketCount = 0; ticketCount < lottoTicketCount; ticketCount++) {
             Lotto lottoTicket = createLottoTicket();
             lottoTickets.add(lottoTicket);
         }
 
-        return lottoTickets;
     }
 
     public Lotto createLottoTicket() {
         RandomUtil lottoRandom = new RandomUtil();
         return new Lotto(lottoRandom.pickNumbers());
-    }
-
-    public Map<WinningScore, Integer> computeWinningResults(List<Lotto> userLottoTickets) {
-        Lotto winningLotto = winning.getWinningLotto();
-        return lottoResult.computeWinningScore(userLottoTickets, winningLotto);
     }
 
 }
