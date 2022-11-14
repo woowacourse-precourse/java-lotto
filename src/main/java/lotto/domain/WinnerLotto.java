@@ -22,6 +22,10 @@ public class WinnerLotto {
         isDuplicate();
     }
 
+    public Lotto getWinLotto() {
+        return winLotto;
+    }
+
     public LottoRank matchAll(Lotto lotto) {
         return matchRank(matchNumbers(lotto), matchBonus(lotto));
     }
