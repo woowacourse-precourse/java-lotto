@@ -18,12 +18,12 @@ public enum Rank {
         this.reward = reward;
     }
 
-    public Rank findRank(int cnt, boolean bonus) {
+    public static Rank findRank(int cnt, boolean bonus) {
         if (FIRST.cnt == cnt) {
             return FIRST;
         }
         if (SECOND.cnt == cnt) {
-            if (bonus == true) {
+            if (bonus == SECOND.bonus) {
                 return SECOND;
             }
             return THIRD;
