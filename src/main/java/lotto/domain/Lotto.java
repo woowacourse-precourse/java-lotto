@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static lotto.constants.ErrorCode.INVALID_NUMBER_OF_DIGITS;
@@ -11,6 +13,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validateDuplication(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -20,6 +23,8 @@ public class Lotto {
         }
     }
 
+
+    // TODO: 추가 기능 구현
     private void validateDuplication(List<Integer> numbers) {
         for (int i = 0; i<numbers.size(); i++) {
             List<Integer> subList = numbers.subList(i+1, numbers.size());
@@ -29,7 +34,6 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("[");
