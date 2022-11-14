@@ -3,6 +3,8 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -14,10 +16,11 @@ public class UserTest {
         User user = new User();
 
         // when
-        user.buyLotto("1000");
+        List<Lotto> lottos = user.buyLotto("1000");
 
         // then
-        assertThat(user.getLottoSheetCount()).isEqualTo(1);
+        assertThat(lottos.size())
+                .isEqualTo(1);
     }
 
     @DisplayName("구입금액에 숫자가 아니면 예외가 발생한다.")
