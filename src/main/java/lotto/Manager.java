@@ -50,7 +50,9 @@ public class Manager {
 
     public Lotto makeLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN, LOTTO_MAX, LOTTO_LENGTH);
+        Collections.sort(numbers);
         Lotto lotto = new Lotto(numbers);
         return lotto;
     }
+
 }
