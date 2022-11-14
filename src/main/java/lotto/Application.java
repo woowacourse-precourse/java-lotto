@@ -2,14 +2,20 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
+
     public static void main(String[] args) {
         int payment = correctPayment(UserInputUi.ENTERCOST.getAnswer());
-        payment = getNumberOfLottery(payment);
-        System.out.println("payment : " + payment);
+        payment = getCountOfLotto(payment);
+        System.out.println(payment+"개를 구매했습니다.");
+        LottoManager lottoManager = new LottoManager(payment);
+
     }
 
-    public static int getNumberOfLottery(int payment){
+    public static int getCountOfLotto(int payment){
         return payment/1000;
     }
 
