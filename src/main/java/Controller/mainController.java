@@ -1,6 +1,5 @@
 package Controller;
 
-import Service.gradeService;
 import domain.Grade;
 import lotto.Lotto;
 
@@ -8,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static Service.LottoService.lottos;
-import static domain.Game.bonusNumber;
 import static Controller.GameController.getWinning_numbers;
+import static domain.Game.*;
 import static domain.Grade.getGrade;
 
 
@@ -21,6 +20,7 @@ public class mainController {
     public static int third_count = 0;
     public static int fourth_count = 0;
     public static int fifth_count = 0;
+    public static int total_gain = 0;
 
     public static void setGrades() {
         for (Lotto lotto : lottos) {
@@ -38,13 +38,18 @@ public class mainController {
         }
     }
 
-    public static void print_Stactistics() {
-        System.out.println("3개 일치 (5000원)" + fifth_count + "개");
-        System.out.println("4개 일치 (50000원)" + fourth_count + "개");
-        System.out.println("5개 일치 (2000000원)" + third_count + "개");
-        System.out.println("5개 일치 + 보너스 번호 일치 (30000000원)" + second_count + "개");
-        System.out.println("6개 일치 (2000000000원)" + first_count + '개');
+    public static void set_totalGain() {
+        total_gain = (fifth_count * 5000) + (fourth_count * 50000) + (third_count * 2000000) + (second_count * 30000000) + (first_count * 2000000000);
     }
 
+    public static void print_gain() {
+        System.out.print(total_gain);
+
+    }
+
+    public static double get_stactiscs() {
+        double yield = 100.0 / getLottoCount() * (total_gain / 1000);
+        return yield;
+    }
 }
 
