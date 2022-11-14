@@ -1,11 +1,11 @@
 package lotto;
 
 public enum LottoResult {
-    FIFTHPLACE(3, false, 4, "3개 번호  (5,000원) - ", 5000),
-    FOURTHPLACE(4, false, 3, "4개 번호 일치 (50,000원) - ", 50000),
-    THIRDPLACE(5, false, 2, "5개 번호 일치 (1,500,000원) - ", 1500000),
-    SECONDPLACE(5, true, 1, "5개 번호 + 보너스 번호 일치 (30,000,000원) - ", 30000000),
-    FIRSTPLACE(6, false, 0, "6개 번호 일치 (2,000,000,000원) - ", 2000000000);
+    FIFTHPLACE(3, false, 4, "3개 일치 (5,000원) - ", 5000),
+    FOURTHPLACE(4, false, 3, "4개 일치 (50,000원) - ", 50000),
+    THIRDPLACE(5, false, 2, "5개 일치 (1,500,000원) - ", 1500000),
+    SECONDPLACE(5, true, 1, "5개 일치, 보너스 볼 일치 (30,000,000원) - ", 30000000),
+    FIRSTPLACE(6, false, 0, "6개 일치 (2,000,000,000원) - ", 2000000000);
 
     private final int count;
     private final boolean bonus;
