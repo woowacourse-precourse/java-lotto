@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -18,9 +19,15 @@ public class Application {
 //### 수익률 계산 메소드
 //### Enum활용하여 등수별 금액
 
+        int amount = getAmount(); //돈입력
+        int lottoCount = getNumberOfTimes(amount); //로또 몇개 살 수 있는지 숫자 계산
+        List<ArrayList<Integer>> lottos = new ArrayList<>();
+        for(int lotto = 0; lotto < lottoCount; lotto++){
+            lottos.add((ArrayList<Integer>) makeLottoNumber());
+        }
     }
     /* 돈 입력받는 메소드 */
-    public int getAmount(){
+    public static int getAmount(){
         System.out.println("구매금액을 입력해 주세요.");
         int amount = 0;
         try{
@@ -32,7 +39,7 @@ public class Application {
     }
 
     /* 몇개의 로또를 구입할 수 있는지 계산하는 메소드*/
-    private int getNumberOfTimes(int amount){
+    private static int getNumberOfTimes(int amount){
         if(amount % 1000 != 0)
             throw new IllegalArgumentException();
         int lottoCount = amount / 1000;
@@ -40,11 +47,16 @@ public class Application {
     }
 
     /*로또 번호 자동생성 메소드*/
-    public List<Integer> makeLottoNumber(){
+    public static List<Integer> makeLottoNumber(){
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         System.out.println(lottoNumbers);
         return lottoNumbers;
     }
 
+    /*당첨번호 입력 메소드*/
+    public String getWinningNumber(){
+        String winningNumber = readLine();
+        return winningNumber;
+    }
 
 }
