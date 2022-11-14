@@ -17,6 +17,10 @@ public class Input {
         return Console.readLine();
     }
 
+    public String inputBonusNumber(){
+        return Console.readLine();
+    }
+
 
 
 //    public void checkMoneyUnit(int money){
