@@ -62,6 +62,10 @@ public class Controller {
         });
     }
 
+    private int changeMoneyToRank(int money){
+        return 0;
+    }
+
     private void printCalculateWonLotto(List<Lotto> lottos, List<Lotto> wonLotto, List<Integer> bonusLotto) {
     }
 
