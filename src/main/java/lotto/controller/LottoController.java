@@ -1,12 +1,18 @@
 package lotto.controller;
 
 import java.util.HashMap;
+import lotto.data.dto.BonusNumberDto;
+import lotto.data.dto.LottoBundleDto;
+import lotto.data.dto.WinNumberDto;
 import lotto.service.AdminService;
+import lotto.type.LottoResultType;
+import lotto.type.MessageType;
 import lotto.type.StepType;
 import lotto.service.UserService;
 import lotto.service.LogInService;
 import lotto.view.LottoBundleView;
 import lotto.view.LottoResultView;
+import utils.InputReader;
 import utils.Logger;
 
 /**
@@ -43,18 +49,39 @@ public class LottoController {
     }
 
     private void init() {
+        userId = logInService.getNewId();
+        currentStep = currentStep.getNextStep();
     }
 
     private void buyLotto() {
+        Logger.log(MessageType.BUY.getMessage());
+        LottoBundleDto lottoBundleDto = LottoBundleDto.createWithInput(InputReader.readLine());
+        lottoBundleDto.setOwnerId(userId);
+        userService.purchaseLottoBundle(lottoBundleDto);
+        Logger.log(lottoBundleView.stringify(lottoBundleDto));
+        currentStep = currentStep.getNextStep();
     }
 
     private void decideWinner() {
+        Logger.log(MessageType.WIN.getMessage());
+        WinNumberDto winNumberDto = WinNumberDto.createWithInput(InputReader.readLine());
+        adminService.setWinNumber(winNumberDto);
+        currentStep = currentStep.getNextStep();
     }
 
     private void decideBonus() {
+        Logger.log(MessageType.BONUS.getMessage());
+        BonusNumberDto bonusNumberDto = BonusNumberDto.createWithInput(InputReader.readLine());
+        adminService.setBonusNumber(bonusNumberDto);
+        currentStep = currentStep.getNextStep();
     }
 
     private void giveResult() {
+        adminService.confirmWinNumber();
+        HashMap<LottoResultType, Integer> myResult = userService.getMyResult(userId);
+        Logger.log(myResult.toString());
+        Logger.log(lottoResultView.stringify(myResult));
+        currentStep = currentStep.getNextStep();
     }
 
     public static void run() {
