@@ -1,7 +1,9 @@
 package lotto;
 
+import lotto.userinterface.Hit;
 import lotto.userinterface.UserInterface;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Application {
@@ -16,13 +18,14 @@ public class Application {
         List<Integer> answerNumbers = UserInterface.getLottoNumbers();
 
         Integer bonusNumber = UserInterface.getBonusNumber(answerNumbers);
-/*
 
         Lotto answerLotto = Lotto.numberOf(answerNumbers);
 
-        UserInterface.printResult(randomLottos, answerLotto, bonusNumber);
-        UserInterface.printEarningRate();*/
+        HashMap<Hit, Integer> result = Calculator.getLottoResult(randomLottos, answerLotto, bonusNumber);
 
-        // TODO: 프로그램 구현
+        Float earningRate = Calculator.getEarningRate(result, money);
+
+        UserInterface.printResult(result);
+        UserInterface.printEarningRate(earningRate);
     }
 }
