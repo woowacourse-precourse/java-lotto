@@ -9,10 +9,10 @@ import lotto.view.OutputView;
 import lotto.view.OutputViewImpl;
 
 public class LottoApplication {
-	private LottoController lottoController;
-	private LottoService lottoService;
-	private InputView inputView;
-	private OutputView outputView;
+	protected LottoController lottoController;
+	protected LottoService lottoService;
+	protected InputView inputView;
+	protected OutputView outputView;
 
 	public void run() {
 		injectDependencies();
@@ -23,7 +23,7 @@ public class LottoApplication {
 		}
 	}
 
-	private void injectDependencies() {
+	protected void injectDependencies() {
 		inputView = new InputViewImpl();
 		outputView = new OutputViewImpl();
 		lottoService = new LottoServiceImpl();
