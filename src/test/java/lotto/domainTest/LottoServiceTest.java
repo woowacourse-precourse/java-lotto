@@ -60,4 +60,24 @@ public class LottoServiceTest {
         //then(검증)
         Assertions.assertThat(rank).isEqualTo(LottoRank.FIRST);
     }
+
+    @Test
+    void createLottoResultTest() {
+        //given(준비)
+        List<Integer> lotto = List.of(1,2,3,4,5,6);
+        BonusNumber.BONUS_NUMBER.setNumber(7);
+        List<List<Integer>> userLotto = List.of(List.of(1,2,3,4,5,6),
+                List.of(1,2,3,40,41,42),
+                List.of(1,2,3,4,40,41),
+                List.of(1,2,3,4,5,40),
+                List.of(1,2,3,4,5,7));
+
+        //when(실행)
+        List<LottoRank> lottoResult = lottoService.createLottoResult(lotto, userLotto);
+
+        //then(검증)
+        Assertions.assertThat(lottoResult).contains(LottoRank.FIRST, LottoRank.SECOND, LottoRank.THIRD,
+                LottoRank.FOURTH, LottoRank.FIFTH);
+    }
+    
 }

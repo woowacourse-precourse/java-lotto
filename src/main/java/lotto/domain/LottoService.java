@@ -45,7 +45,7 @@ public class LottoService {
 
     public LottoRank rankLotto(int count, boolean bonusNumber) {
         for(LottoRank rank : LottoRank.values()) {
-            System.out.println("count = " + count + " rankNumber = " + rank.getMatchNumber());
+
             if(count == rank.getMatchNumber() && bonusNumber == rank.getBonusNumber()) {
                 return rank;
             }
