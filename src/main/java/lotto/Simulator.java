@@ -1,14 +1,17 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Simulator {
     private int quantity;
+    private List<Lotto> lottos;
 
     public Simulator(int price) {
         validatePrice(price);
         this.quantity = toQuantity(price);
+        this.lottos = generate(this.quantity);
     }
 
     public int getQuantity() {
@@ -28,6 +31,13 @@ public class Simulator {
         return price / 1000;
     }
 
+    public static List<Lotto> generate(int quantity) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < quantity; i++) {
+            lottos.add(generate());
+        }
+        return lottos;
+    }
     public static Lotto generate() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
