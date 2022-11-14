@@ -2,6 +2,8 @@ package lotto.controller;
 
 import java.util.function.Predicate;
 
+import static lotto.viewer.ErrorMessage.*;
+
 public class Money {
     private final int money;
 
@@ -17,7 +19,7 @@ public class Money {
 
     private void validateDividable(int money) throws IllegalArgumentException {
         if (money%1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위의 돈을 입력해주세요.");
+            throw new IllegalArgumentException(UNIT_THOUSANDS);
         }
     }
 
@@ -26,7 +28,7 @@ public class Money {
                 .mapToObj(e->(char)e)
                 .anyMatch(Predicate.not(Character::isDigit));
         if (hasNoneDigit) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ENTER_NUMBER);
         }
     }
 

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static lotto.viewer.ErrorMessage.*;
+
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
     private static final int MAXIMUM_NUMBER = 45;
@@ -33,18 +35,18 @@ public class Lotto {
 
     private void validateOverSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ENTER_SIX_NUMBER);
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.stream().distinct().count() != LOTTO_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 중복되지 않은 숫자를 입력해주세요");
+            throw new IllegalArgumentException(ENTER_UNIQUE_NUMBER);
         }
     }
     private void validateOverNumber(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.stream().anyMatch(this::outOfRange)) {
-            throw new IllegalArgumentException("[ERROR] 1이상 45이하의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ENTER_RANGE_NUMBER);
         }
     }
 
