@@ -10,10 +10,10 @@ public class LottoCheck {
     }
 
     public int checkWinning(List<Integer> winnings, List<Integer> numbers) {
-        List<Integer> noneDuplicate = numbers.stream()
+        List<Integer> noneDuplication = numbers.stream()
                 .filter(number -> winnings.stream().noneMatch(Predicate.isEqual(number)))
                 .collect(Collectors.toList());
-        return NumbersType.NUMBERS_SIZE.getValue() - noneDuplicate.size();
+        return NumbersType.NUMBERS_SIZE.getValue() - noneDuplication.size();
     }
 
     public boolean checkBonus(int bonus, List<Integer> numbers) {
