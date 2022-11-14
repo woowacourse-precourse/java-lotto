@@ -22,7 +22,7 @@
       - 위의 validator 메소드를 한꺼번에 실행하는 메소드 (validateBonusInput)
     - 구입금액 입력 받을 때 메시지 출력하는 메소드 (printMoneyInputMsg)
     - 로또 구매 개수 출력하는 메소드 (printNumberOfLottosMsg)
-      ()
+      (로또 클래스 구현 이후 구현)
     - 로또 모두 출력하는 메소드 (printAllLottos)
     - 소수점 둘째 자리에서 반올림한 수익률 출력하는 메소드 (printProfitRateMsg)
     - 당첨 내역 출력하는 메소드 (printResult)
