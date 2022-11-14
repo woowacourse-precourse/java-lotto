@@ -33,4 +33,18 @@ public class MessagePrint {
 		lottoStoreMapView(storeMap.getStoreMap());
 		lottoPercentView(storeMap);
 	}
+
+	public void lottoStoreMapView(SortedMap<Rank, Integer> StoreMap) {
+		NumberFormat nf = NumberFormat.getInstance();
+		System.out.printf(Constants.WIN_TOTAL_MESSAGE, Rank.FIFTH.getCountOfMatch(), nf.format(Rank.FIFTH.getWinningMoney()),
+			StoreMap.get(Rank.FIFTH));
+		System.out.printf(Constants.WIN_TOTAL_MESSAGE, Rank.FOURTH.getCountOfMatch(), nf.format(Rank.FOURTH.getWinningMoney()),
+			StoreMap.get(Rank.FOURTH));
+		System.out.printf(Constants.WIN_TOTAL_MESSAGE, Rank.THIRD.getCountOfMatch(), nf.format(Rank.THIRD.getWinningMoney()),
+			StoreMap.get(Rank.THIRD));
+		System.out.printf(Constants.WIN_BONUS_TOTAL_MESSAGE, Rank.SECOND.getCountOfMatch(), nf.format(Rank.SECOND.getWinningMoney()),
+			StoreMap.get(Rank.SECOND));
+		System.out.printf(Constants.WIN_TOTAL_MESSAGE, Rank.FIRST.getCountOfMatch(), nf.format(Rank.FIRST.getWinningMoney()),
+			StoreMap.get(Rank.FIRST));
+	}
 }
