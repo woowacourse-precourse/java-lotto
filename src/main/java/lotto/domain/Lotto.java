@@ -1,6 +1,8 @@
 package lotto.domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -16,6 +18,10 @@ public class Lotto {
         }
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
+        }
+        Set<Integer> set = new HashSet<>(numbers);
+        if (set.size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 중복 숫자를 제거해주세요.");
         }
     }
 
