@@ -36,4 +36,16 @@ public enum Rank {
         }
         return NONE;
     }
+
+    public int getCnt() {
+        return cnt;
+    }
+
+    public boolean isBonus() {
+        return bonus;
+    }
+
+    public int getReward() {
+        return reward;
+    }
 }
