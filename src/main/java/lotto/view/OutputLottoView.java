@@ -41,7 +41,7 @@ public class OutputLottoView {
 
         earn /= runMoney;
         earn *= 100;
-        earn =  Math.round(earn * 10) / 10.0;
+        earn = Math.round(earn * 10) / 10.0;
         //System.out.println(earn);
         return earn;
     }

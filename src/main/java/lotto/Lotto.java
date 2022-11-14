@@ -42,7 +42,7 @@ public class Lotto {
         int bonus = getBonusNumber();
         //System.out.println(myLotto.numbers.size());//
         //System.out.println(myLotto.numbers + " + " + bonus);//
-        List<Integer> tempList = Arrays.asList(8, 21, 23, 41, 42, 43);
+        /*List<Integer> tempList = Arrays.asList(8, 21, 23, 41, 42, 43);
         randomLottoNumbers.add(tempList);
         tempList = Arrays.asList(3, 5, 11, 16, 32, 38);
         randomLottoNumbers.add(tempList);
@@ -57,10 +57,10 @@ public class Lotto {
         tempList = Arrays.asList(2, 13, 22, 32, 38, 45);
         randomLottoNumbers.add(tempList);
         tempList = Arrays.asList(1, 3, 5, 14, 22, 45);
-        randomLottoNumbers.add(tempList);
+        randomLottoNumbers.add(tempList);*/
 
         for (int i = 0; i < runCycle; i++) {
-            //randomLottoNumbers.add(createRandomLotto());
+            randomLottoNumbers.add(createRandomLotto());
             System.out.println(randomLottoNumbers.get(i));
         }
         for (int i = 0; i < runCycle; i++) {

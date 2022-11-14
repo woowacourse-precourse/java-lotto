@@ -7,7 +7,7 @@ public class CreateLottoNumber {
     private static final int LOTTO_MIN_NUMBER = 1;
     private static final int LOTTO_MAX_NUMBER = 45;
 
-    public static List<Integer> createRandomLotto(){
+    public static List<Integer> createRandomLotto() {
         return sortLotto(camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange(1, 45, 6));
 
         /*List<Integer> tempList = new ArrayList<>();
@@ -19,7 +19,8 @@ public class CreateLottoNumber {
         tempList.add(6);
         return tempList;*/
     }
-    private static List<Integer> sortLotto(List<Integer> sortYet){
+
+    private static List<Integer> sortLotto(List<Integer> sortYet) {
         return LottoNumber.sortListUpper(sortYet);
     }
 }
