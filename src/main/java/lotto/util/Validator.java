@@ -16,6 +16,10 @@ public class Validator {
         return true;
     }
 
+    public static boolean isRangeOut(int number){
+        return number < Constant.LOTTO_START_NUMBER || number > Constant.LOTTO_END_NUMBER;
+    }
+
     public static boolean isEmpty(String input) {
         return input.isEmpty();
     }
@@ -38,6 +42,17 @@ public class Validator {
 
         for(int i=0; i<inputNumbersList.size(); i++){
             if (!hasNotCharacter(inputNumbersList.get(i))){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean isListRangeOut(List<Integer> numbersList){
+
+        for (int i=0; i< numbersList.size(); i++){
+            if (isRangeOut(numbersList.get(i))){
                 return true;
             }
         }

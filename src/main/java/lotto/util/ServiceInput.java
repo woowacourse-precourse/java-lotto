@@ -35,10 +35,17 @@ public class ServiceInput {
         for (int i=0; i<splitInputWinningNumbers.size(); i++){
             winningNumbers.add(Converter.StringToInteger(splitInputWinningNumbers.get(i)));
         }
-
-        // TODO: 예외처리 구현
+        validateWinningNumbers(winningNumbers);
 
         return winningNumbers;
+    }
+
+    private static void validateWinningNumbers(List<Integer> winningNumbers) {
+
+        if (Validator.isListRangeOut(winningNumbers)){
+            Message.printInputErrorRangeOut();
+            throw new IllegalArgumentException();
+        }
     }
 
     private static String getInputWinningNumbers() {

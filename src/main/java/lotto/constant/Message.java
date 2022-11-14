@@ -13,6 +13,7 @@ public class Message {
     private static final String ERROR_MESSAGE = "[ERROR] ";
     private static final String INPUT_ERROR_HAS_CHARACTER_MESSAGE = ERROR_MESSAGE + "숫자가 아닌 수가 입력되었습니다. 게임을 종료합니다.";
     private static final String INPUT_ERROR_EMPTY_MESSAGE = ERROR_MESSAGE + "빈 값이 입력되었습니다. 게임을 종료합니다.";
+    private static final String INPUT_ERROR_RANGE_OUT_MESSAGE = ERROR_MESSAGE + "%d~%d 범위로만 입력 가능합니다. 게임을 종료합니다.%n";
     private static final String INPUT_ERROR_IS_NOT_COMMA_MESSAGE = ERROR_MESSAGE + "%d개가 아닌 개수로 입력되었습니다. 게임을 종료합니다.%n";
     private static final String INPUT_ERROR_USER_MONEY_MESSAGE = ERROR_MESSAGE + "%d단위로만 입력 가능합니다. 게임을 종료합니다.%n";
 
@@ -26,6 +27,10 @@ public class Message {
 
     public static void printInputErrorIsNotComma() {
         System.out.printf(INPUT_ERROR_IS_NOT_COMMA_MESSAGE, Constant.LOTTO_SIZE);
+    }
+
+    public static void printInputErrorRangeOut(){
+        System.out.printf(INPUT_ERROR_RANGE_OUT_MESSAGE, Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER);
     }
 
     public static void printInputUserMoney(){
