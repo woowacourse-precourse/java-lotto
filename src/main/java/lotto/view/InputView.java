@@ -7,4 +7,8 @@ public class InputView {
     public static int getInt() {
         return Integer.parseInt(readLine());
     }
+
+    public static String getString() {
+        return readLine();
+    }
 }
