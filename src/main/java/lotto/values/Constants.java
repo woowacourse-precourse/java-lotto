@@ -32,6 +32,11 @@ public class Constants {
         public static final int FOURTH_PLACE = 3;
         public static final int FIFTH_PLACE = 2;
 
+        public static final int SIX_CORRECT = 6;
+        public static final int FIVE_CORRECT = 5;
+        public static final int FOUR_CORRECT = 4;
+        public static final int THREE_CORRECT = 3;
+
         public static final int FIRST_PLACE_PRIZE = 2_000_000_000;
         public static final int SECOND_PLACE_PRIZE = 30_000_000;
         public static final int THIRD_PLACE_PRIZE = 1_500_000;
