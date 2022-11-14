@@ -36,5 +36,6 @@ public class Application {
         System.out.println("당첨 통계\n" +
                 "---");
         lottoGame.compareEachLotto(winningLotto);
+        System.out.println(lottoGame);
     }
 }
