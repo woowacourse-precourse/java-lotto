@@ -28,6 +28,7 @@ public class Game {
             printLottoNumbers();
             getWinningNumbers();
             getBonusNumber();
+            compareBonusWinning();
             calculateWin();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -85,6 +86,12 @@ public class Game {
         prize = winCalculator.getEachPrize(lottoTickets, winningNumbers, bonusNumber);
         view.printPrize(prize);
         view.printYield(prize, validAmount);
+    }
+
+    public void compareBonusWinning() {
+        if (winningNumbers.getNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException(GameConstant.DUPLICATE_EXCEPTION.getValue());
+        }
     }
 
 }
