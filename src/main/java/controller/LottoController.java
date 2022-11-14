@@ -34,20 +34,24 @@ public class LottoController {
 
     public void purchaseList() {
         resultView.displaySeparateLine();
+
         machine = new LottoMachine(validatedMoney.getMoney());
         lotteries = machine.lottoForAmount();
+
         resultView.displayAllLotteries(lotteries);
     }
 
     public void winnerNumber() {
         resultView.displaySeparateLine();
         requestView.displayEnterWinnerNumber();
+
         winnerNumber = new Lotto(numberInput.getWinningNumbers());
     }
 
     public void bonusNumber() {
         resultView.displaySeparateLine();
         requestView.displayEnterBonusNumber();
+
         bonusNumber = numberInput.getBonusNumber();
     }
 
@@ -55,8 +59,10 @@ public class LottoController {
         resultView.displaySeparateLine();
         resultView.displayWinStatistics();
         resultView.displaySeparator();
+
         winLotto = new WinLotto(lotteries, winnerNumber, bonusNumber);
         resultView.displayWinners(winLotto.getResult());
+
         profit = new Profit(validatedMoney.getMoney(), winLotto.getProfit());
         resultView.displayPercentageProfit(profit.getPercentageProfit());
     }
