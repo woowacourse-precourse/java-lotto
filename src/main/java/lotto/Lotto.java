@@ -32,4 +32,13 @@ public class Lotto {
         lottoResult.add(0);
         return lottoResult;
     }
+
+    public void printLotto() {
+        System.out.println("[" + numbers.get(0) +", "+
+                numbers.get(1) + ", " +
+                numbers.get(2) + ", " +
+                numbers.get(3) + ", " +
+                numbers.get(4) + ", " +
+                numbers.get(5) + "]" );
+    }
 }

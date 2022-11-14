@@ -14,6 +14,9 @@ public class LottoGame {
         this.purchaseAmount = Input.EnterPurchaseAmount();
         this.lottoAmount = lottoAmount(purchaseAmount);
         makeLotto();
+        printLottoList();
+        Input.EnterWinningNumber();
+        Input.EnterBonusNumber();
     }
 
     private int lottoAmount(int purchaseAmount) {
@@ -28,6 +31,14 @@ public class LottoGame {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(numbers);
             lottoList.add(lotto);
+        }
+    }
+
+    private void printLottoList() {
+        System.out.println();
+        System.out.println(lottoAmount + "개를 구매했습니다.");
+        for (Lotto lotto : lottoList) {
+            lotto.printLotto();
         }
     }
 }
