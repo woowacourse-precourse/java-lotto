@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoGenerator;
-import lotto.domain.LottoMachine;
-import lotto.domain.UserNumber;
+import lotto.domain.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -13,11 +10,12 @@ public class LottoController {
 
     public void start() {
         LottoMachine lottoMachine = new LottoMachine(InputView.inputPurchasePrice());
-        makeLotto(lottoMachine.getRound());
+        List<Lotto> lottoTickets = makeLotto(lottoMachine.getRound());
         UserNumber userNumber = new UserNumber(InputView.inputWinNumbers(), InputView.inputBonusNumbers());
+        calculateRank(lottoTickets, userNumber);
     }
 
-    private void makeLotto(int round) {
+    private List<Lotto> makeLotto(int round) {
         LottoGenerator lottoGenerator = new LottoGenerator(round);
         List<Lotto> lottoTickets = lottoGenerator.getLottoTickets();
 
@@ -25,5 +23,10 @@ public class LottoController {
         for (Lotto lotto : lottoTickets) {
             OutputView.printTickets(lotto.getNumbers());
         }
+        return lottoTickets;
+    }
+
+    private void calculateRank(List<Lotto> lottoTickets, UserNumber userNumber) {
+        RankCalculator rankCalculator = new RankCalculator(lottoTickets, userNumber);
     }
 }
