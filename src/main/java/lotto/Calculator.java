@@ -6,7 +6,7 @@ public class Calculator {
 
     public double getProfitRate(List<Integer> results, int money) {
         long profit = getProfit(results);
-        double profitRate = profit / money;
+        double profitRate = profit / (double)money * 100;
         return profitRate;
     }
 
