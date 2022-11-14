@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.model;
 
 public enum Message {
 	START("구입금액을 입력해 주세요."),

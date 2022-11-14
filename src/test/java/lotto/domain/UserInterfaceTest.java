@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.domain.model.Message;
 import lotto.domain.ui.Printer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

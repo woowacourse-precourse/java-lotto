@@ -1,11 +1,11 @@
-package lotto.domain;
+package lotto.domain.model;
 
 import lotto.domain.ui.Printer;
 
 public class Pay {
 	private final Integer pay;
 
-	Pay(int pay) {
+	public Pay(int pay) {
 		validate(pay);
 		this.pay = pay;
 	}
@@ -17,7 +17,7 @@ public class Pay {
 		}
 	}
 
-	int getPay() {
+	public int getPay() {
 		return this.pay;
 	}
 }

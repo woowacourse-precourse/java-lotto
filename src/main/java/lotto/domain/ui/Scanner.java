@@ -1,6 +1,6 @@
 package lotto.domain.ui;
 
-import lotto.domain.Message;
+import lotto.domain.model.Message;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 

@@ -1,10 +1,10 @@
 package lotto.domain;
 
+import lotto.domain.model.Pay;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PayTest {
 

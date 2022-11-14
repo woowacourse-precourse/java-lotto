@@ -1,5 +1,8 @@
-package lotto.domain;
+package lotto.domain.controller;
 
+import lotto.domain.model.Pay;
+import lotto.domain.model.Store;
+import lotto.domain.model.Message;
 import lotto.domain.ui.Printer;
 import lotto.domain.ui.Scanner;
 
