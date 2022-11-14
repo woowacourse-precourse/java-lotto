@@ -47,6 +47,25 @@ public class ExceptionTest extends NsTest {
                 List.of(1, 2, 3, 4, 5, 6)
         );
     }
+
+    @Test
+    void bonusNumberOutOfRangeException() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+
+                    assertThatThrownBy(()->run("1000","1,2,3,4,5,6","0")).isInstanceOf(IllegalArgumentException.class);
+                },
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+
+                    assertThatThrownBy(()->run("1000","1,2,3,4,5,6","46")).isInstanceOf(IllegalArgumentException.class);
+                },
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+    }
     @Override
     protected void runMain() {
         Application.main(new String[]{});
