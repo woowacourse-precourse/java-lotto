@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
+import lotto.utils.ErrorMessages;
 import lotto.utils.LottoInfo;
 import lotto.utils.Validator;
 
@@ -23,6 +24,12 @@ public class WinningNumbers {
         return count;
     }
 
+    public void checkBonusNumber(int bonusNumberInput) {
+        if (numbers.contains(bonusNumberInput)) {
+            throw new IllegalArgumentException(ErrorMessages.DUPLICATE_ERROR.getMessage());
+        }
+    }
+
     private void validate(List<Integer> numbers) {
         Validator.containDuplicate(numbers);
         Validator.listLengthCheck(numbers, LottoInfo.LENGTH.getNumber());
@@ -33,7 +40,7 @@ public class WinningNumbers {
 
     private int getCountForPlus(int lottoNumber) {
         if (numbers.contains(lottoNumber)) {
-           return 1;
+            return 1;
         }
         return 0;
     }

@@ -74,10 +74,10 @@ public class WinningNumbersTest {
     }
 
     @DisplayName("보너스번호가 위닝넘버에 포함되어있는 경우 테스트")
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} {displayName} input = {0}")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
     void checkBonusNumberDuplicated(int bonusNumber) {
-        assertThatThrownBy(() -> winningNumbers.checkBonusNumber())
+        assertThatThrownBy(() -> winningNumbers.checkBonusNumber(bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

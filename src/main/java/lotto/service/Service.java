@@ -44,6 +44,7 @@ public class Service {
     public void setBonusNumber(String bonusInput) {
         try {
             int bonusNumberInput = Converter.toIntFromString(bonusInput);
+            winningNumbers.checkBonusNumber(bonusNumberInput);
             bonusNumber = new BonusNumber(bonusNumberInput);
         } catch (IllegalArgumentException exception) {
             OutputView.printErrorMessage(exception.getMessage());
