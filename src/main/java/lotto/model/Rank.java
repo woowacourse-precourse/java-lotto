@@ -23,4 +23,12 @@ public enum Rank {
         return Arrays.equals(rank.NUMBER_OF_MATCHES.toArray(), matches.toArray());
     }
 
+    public static Rank findByMatches(List<Integer> matches){
+
+        return Arrays.stream(Rank.values()).
+                filter(rank -> Rank.isSame(rank, matches)).
+                findAny().
+                orElse(NOTHING);
+    }
+
 }
