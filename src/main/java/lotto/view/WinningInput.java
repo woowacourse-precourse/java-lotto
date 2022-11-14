@@ -63,6 +63,7 @@ public class WinningInput {
         validateWinningNumberSize(winningInput);
         validateWinningNumber(winningInput);
         validateInputSeparator(winningInput);
+        validateInputString(winningInput);
     }
 
     private static void validateWinningNumber(String winningInput) {
@@ -73,6 +74,15 @@ public class WinningInput {
         for (Integer number : winningNumberArr) {
             if (number < 1 || number > 45) {
                 throw new IllegalArgumentException(ErrorMessage.ERROR_NUMBER_RANGE.getErrorMessage());
+            }
+        }
+    }
+
+    private static void validateInputString(String winningInput) {
+        String[] numberStringCheck = winningInput.split(",");
+        for (String s : numberStringCheck) {
+            if (s.charAt(0) < '0' || s.charAt(0) > '9') {
+                throw new IllegalArgumentException(ErrorMessage.ERROR_WINNING_NUMBER.getErrorMessage());
             }
         }
     }
