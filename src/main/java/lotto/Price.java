@@ -15,6 +15,10 @@ public class Price {
     private boolean validate() {
         if (!isNumber())
             return false;
+
+        if (!isPositiveNumber())
+            return false;
+
         return true;
     }
 
@@ -26,5 +30,12 @@ public class Price {
         catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    private boolean isPositiveNumber() {
+        int price = Integer.parseInt(text);
+        if (price > 0)
+            return true;
+        return false;
     }
 }
