@@ -23,7 +23,7 @@ public class User {
             isNumericOrThrows(money);
             isDividedOrThrows(money);
         } catch (Exception e){
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
             throw new IllegalArgumentException(e.getMessage());
         }
     }
