@@ -33,11 +33,4 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
-    public List<Integer> getNumbers() {
-        List<Integer> clonedNumbers = new LinkedList<>(numbers);
-        return clonedNumbers;
-    }
-
-
 }
