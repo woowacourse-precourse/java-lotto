@@ -13,7 +13,7 @@ class ExceptionHandlingTest {
     @Test
     void notDivideException() {
         ExceptionHandling exceptionHandling = new ExceptionHandling();
-        assertThatThrownBy(() -> exceptionHandling.notDivide(3000000000L))
+        assertThatThrownBy(() -> exceptionHandling.notDivide(3000000001L))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
