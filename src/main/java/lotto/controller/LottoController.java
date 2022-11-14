@@ -63,7 +63,7 @@ public class LottoController {
         for(LottoRanking ranking:lottoRanking.keySet()){
             totalLottoMoney+=ranking.getLottoWinningMoney()*lottoRanking.get(ranking);
         }
-       // float percent=(float)totalLottoMoney/(userLottoMoney)*1000)
-        OutputView.printLottoProfitRate((double)totalLottoMoney/(userLottoMoney*1000));
+        float percent=(float)totalLottoMoney/(userLottoMoney)*100;
+        OutputView.printLottoProfitRate(percent);
     }
 }

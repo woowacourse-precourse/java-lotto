@@ -27,7 +27,7 @@ public class InputView {
         return inputNumbers;
     }
     public static int requestBonusNumber(){
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         String inputBonusNumber=Console.readLine();
         return Integer.parseInt(inputBonusNumber);
     }
