@@ -6,6 +6,7 @@ import static lotto.view.OutputView.*;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Player;
+import lotto.domain.PrizeCount;
 import lotto.domain.Purchase;
 
 public class Application {
@@ -27,7 +28,9 @@ public class Application {
         askBonusNumber();
         int bonusNumber = getInt();
 
+        PrizeCount prizeCount = new PrizeCount();
         Player player = new Player(numbers, bonusNumber);
-        player.compare(lottos, lottoBonusNumber);
+
+        player.compare(prizeCount, lottos, lottoBonusNumber);
     }
 }
