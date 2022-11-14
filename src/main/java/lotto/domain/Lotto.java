@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.Validation;
+
 import java.util.List;
 
 public class Lotto {
