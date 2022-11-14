@@ -42,7 +42,7 @@ public class InputView {
         String input = Console.readLine();
 
         int bonusNumber = stringToInt(input);
-        validateBonusNumberRange(bonusNumber);
+        validatePlayerNumberRange(bonusNumber);
         validateBonusNumberDuplicationInPlayerNumbers(bonusNumber, playerNumbers);
 
         return bonusNumber;

@@ -12,9 +12,8 @@ public class Validator {
     private static final String NOT_POSITIVE_NUMBER_ERROR_MESSAGE = "[ERROR] 0보다 작으면 안됩니다.";
     private static final String PURCHASE_AMOUNT_UNIT_ERROR_MESSAGE = "구입금액은 1,000원 단위여야 합니다.";
     private static final String PLAYER_NUMBERS_COUNT_STANDARD_ERROR_MESSAGE = "당첨 번호는 6개를 입력해야 합니다.";
-    private static final String PLAYER_NUMBERS_RANGE_ERROR_MESSAGE = "당첨 번호는 1부터 45 사이의 숫자여야 합니다.";
+    private static final String PLAYER_NUMBER_RANGE_ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String PLAYER_NUMBERS_DUPLICATION_ERROR_MESSAGE = "당첨 번호에 중복된 번호가 존재합니다.";
-    private static final String BONUS_NUMBER_RANGE_ERROR_MESSAGE = "[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String BONUS_NUMBER_DUPLICATION_ERROR_MESSAGE = "당첨 번호에 중복된 번호가 존재합니다.";
 
     public static void validatePositiveNumber(int number) {
@@ -38,16 +37,19 @@ public class Validator {
         }
     }
 
-    public static void validatePlayNumbersRange(List<Integer> playerNumbers) {
+    public static void validatePlayerNumberRange(int playerNumber) {
         int minRange = LottoNumberRange.MIN.getValue();
         int maxRange = LottoNumberRange.MAX.getValue();
 
-        boolean isPlayerNumbersInRange = playerNumbers.stream()
-                .allMatch(playerNumber -> minRange <= playerNumber && playerNumber <= maxRange);
+        boolean isPlayerNumberInRange = minRange <= playerNumber && playerNumber <= maxRange;
 
-        if (!isPlayerNumbersInRange) {
-            throw new IllegalArgumentException(PLAYER_NUMBERS_RANGE_ERROR_MESSAGE);
+        if (!isPlayerNumberInRange) {
+            throw new IllegalArgumentException(PLAYER_NUMBER_RANGE_ERROR_MESSAGE);
         }
+    }
+
+    public static void validatePlayNumbersRange(List<Integer> playerNumbers) {
+        playerNumbers.forEach(Validator::validatePlayerNumberRange);
     }
 
     public static void validatePlayNumbersDuplication(List<Integer> playerNumbers) {
@@ -57,17 +59,6 @@ public class Validator {
 
         if (count != PLAYER_NUMBERS_COUNT_STANDARD) {
             throw new IllegalArgumentException(PLAYER_NUMBERS_DUPLICATION_ERROR_MESSAGE);
-        }
-    }
-
-    public static void validateBonusNumberRange(int bonusNumber) {
-        int minRange = LottoNumberRange.MIN.getValue();
-        int maxRange = LottoNumberRange.MAX.getValue();
-
-        boolean isBonusNumberInRange = minRange <= bonusNumber && bonusNumber <= maxRange;
-
-        if (!isBonusNumberInRange) {
-            throw new IllegalArgumentException(BONUS_NUMBER_RANGE_ERROR_MESSAGE);
         }
     }
 
