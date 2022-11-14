@@ -40,15 +40,15 @@ public class LottoService {
     }
 
     public void buyLotto(int money) throws IllegalArgumentException {
-        int buyCount = money/1000;
-        output.printLottoCountForBuy(buyCount);
-        pickAndSaveLotto(buyCount);
+        int purchaseQuantity = money/NumberType.IN_THOUSANDS.getNumberType();
+        output.printLottoCountForBuy(purchaseQuantity);
+        pickAndSaveLotto(purchaseQuantity);
         List<Lotto> lottos = lottoRepository.findAll();
         output.printAllLottos(lottos);
     }
 
-    public void pickAndSaveLotto(int buyCount) {
-        while (buyCount-- > 0) {
+    public void pickAndSaveLotto(int purchaseQuantity) {
+        while (purchaseQuantity-- > 0) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(numbers);
             lottoRepository.add(lotto);
