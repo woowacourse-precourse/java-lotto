@@ -13,7 +13,8 @@ public enum IOMessage {
     RANK_1("5개 일치, 보너스 볼 일치 (%,d원) - %d개\n"),
     RANK_2("5개 일치 (%,d원) - %d개\n"),
     RANK_3("4개 일치 (%,d원) - %d개\n"),
-    RANK_4("3개 일치 (%,d원) - %d개\n");
+    RANK_4("3개 일치 (%,d원) - %d개\n"),
+    PROFIT("총 수익률은 %.1f%%입니다.\n");
 
     private final String message;
 

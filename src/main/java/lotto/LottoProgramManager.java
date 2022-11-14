@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoProgramManager {
+    private int lottoNum;
     private List<Lotto> lottoBought;
     private Lotto answer;
     private int bonus;
@@ -18,7 +19,7 @@ public class LottoProgramManager {
 
     public void runProgram() {
         try {
-            int lottoNum = buyLotto();
+            lottoNum = buyLotto();
             generateLotto(lottoNum);
             getAnswerAndBonus();
             rankLotto();
@@ -58,6 +59,7 @@ public class LottoProgramManager {
     }
 
     private void rankLotto() {
+        int totalProfit = 0;
         lottoResult = new HashMap<Integer, Integer>();
 
         for(Lotto lotto : lottoBought) {
@@ -65,8 +67,11 @@ public class LottoProgramManager {
 
             lottoResult.putIfAbsent(rank, 0);
             lottoResult.put(rank, lottoResult.get(rank) + 1);
+
+            if(rank != -1)
+                totalProfit += LottoConfig.awards.get(rank);
         }
 
-        OutputManager.printRanks(lottoResult);
+        OutputManager.printRanks(lottoResult, totalProfit, lottoNum * LottoConfig.LOTTO_PRICE);
     }
 }

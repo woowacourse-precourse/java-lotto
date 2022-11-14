@@ -35,11 +35,12 @@ public class OutputManager {
         System.out.println(lotto.toString());
     }
 
-    public static void printRanks(Map<Integer, Integer> ranks) {
+    public static void printRanks(Map<Integer, Integer> ranks, int profit, int spent) {
         System.out.println(IOMessage.LOTTO_RESULT);
         for(int rank = 4; rank >= 0; rank--) {
             System.out.printf(getRankMessage(rank), LottoConfig.awards.get(rank), ranks.getOrDefault(rank, 0));
         }
+        System.out.printf(IOMessage.PROFIT.getMessage(), 100.0 * profit / spent);
     }
     private static String getRankMessage(int idx) {
         if(idx == 0)
