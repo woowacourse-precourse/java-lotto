@@ -55,19 +55,6 @@ public class UserTest {
         User.setUserInputMoney(INPUT_MONEY);
         User.setLottoAmount();
         int lottoAmount = user.getLottoAmount();
-
-        assertAll(
-                () -> assertThat(lottoAmount).isEqualTo(VALID_LOTTO_AMOUNT)
-        );
-    }
-
-    @DisplayName("발행된 로또가 저장되는지 테스트")
-    @Test
-    void checkLottoSave() {
-        User.setLotteries(LOTTO);
-        List<List<Integer>> lotteries = user.getLotteries();
-        assertAll(
-                () -> assertThat(lotteries).isEqualTo(VALID_LOTTERIES)
-        );
+        assertThat(lottoAmount).isEqualTo(VALID_LOTTO_AMOUNT);
     }
 }
