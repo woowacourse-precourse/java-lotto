@@ -7,8 +7,6 @@ import java.util.stream.Collectors;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    private static final Integer LOTTO_PRICE = 1000;
-
     public static Integer inputPaidAmount() {
 	String AmountString = Console.readLine();
 	validateNumber(AmountString);
@@ -40,7 +38,7 @@ public class InputView {
     }
 
     private static void validateAmount(String amountString) {
-	if (Integer.parseInt(amountString) % LOTTO_PRICE != 0) {
+	if (Integer.parseInt(amountString) % LottoNumberRule.LOTTO_PRICE.getValue() != 0) {
 	    throw new IllegalArgumentException(ErrorMessage.ERROR_AMOUNT_MESSAGE.getValue());
 	}
     }
