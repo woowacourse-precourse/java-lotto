@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -24,7 +26,10 @@ public class Lotto {
     }
 
     public void printLottoNumbers(){
-        System.out.println(numbers);
+        List<Integer> sortedNumbers = numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
+        System.out.println(sortedNumbers);
     }
 
     private void validate(List<Integer> numbers) {
