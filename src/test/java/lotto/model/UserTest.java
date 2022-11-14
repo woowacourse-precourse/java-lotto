@@ -16,6 +16,7 @@ class UserTest {
     @CsvSource(value = {"8000, 8", "6000, 6", "100000, 100"})
     public void 구매금액만큼_로또생성(String userInput, int expected){
         User user = new User(userInput);
+        user.createUserLottos();
         assertThat(user.getUserLottos().size()).isEqualTo(expected);
     }
 

@@ -7,13 +7,12 @@ public class User {
     private static final int LOTTO_PRICE = 1000;
     private int purchaseAmount;
     private int myQuantity;
-    private List<Lotto> myLottos;
+    private List<Lotto> myLottos = new ArrayList<>();
 
     public User(String purchaseAmount){
         validate(purchaseAmount);
         this.purchaseAmount = Integer.parseInt(purchaseAmount);
         myQuantity = this.purchaseAmount/LOTTO_PRICE;
-        List<Lotto> myLottos = new ArrayList<>();
     }
 
     public void createUserLottos(){
