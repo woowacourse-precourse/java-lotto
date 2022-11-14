@@ -1,5 +1,7 @@
 package ui;
 
+import controller.Lotto;
+
 import java.util.List;
 
 public class Output {
@@ -20,8 +22,9 @@ public class Output {
         System.out.println(purchaseQuantity + "개를 구매했습니다");
     }
 
-    void printLottoNumber(List<List<Integer>> lottoNumbers) {
-        for (List<Integer> lottoNumber : lottoNumbers) {
+    void printLottoNumber(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            List<Integer> lottoNumber = lotto.getNumbers();
             System.out.println(lottoNumber);
         }
     }
