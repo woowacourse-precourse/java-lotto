@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Controller {
     public void run() {
-        getLottoInfo();
+        List<Lotto> lottos = getLottos();
     }
 
-    private void getLottoInfo() {
+    private List<Lotto> getLottos() {
         int lottoPrice = InputView.getLottoPrice();
         int lottoCount = LottoGame.getLottoCount(lottoPrice);
 
@@ -16,5 +16,7 @@ public class Controller {
         List<Lotto> lottos = LottoGame.getLottos(lottoCount);
 
         OutputView.printLottos(lottos);
+
+        return lottos;
     }
 }
