@@ -44,7 +44,8 @@ public class Validator {
         int originalSize = numbers.size();
         Set<Integer> numberSet = new HashSet<>(numbers);
         if (originalSize != numberSet.size()) {
-            throw new IllegalLottoNumberException(ERROR_BONUS_NUMBER_DUPLICATED);
+            System.out.println(ERROR_BONUS_NUMBER_DUPLICATED);
+            throw new IllegalLottoNumberException();
         }
     }
 
@@ -58,13 +59,13 @@ public class Validator {
     private void validateProperRangeOfNumber(int parseInt) {
         if (parseInt < 1 || parseInt > 45) {
             System.out.println(ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE);
-            throw new IllegalLottoNumberException(ERROR_NUMBER_IS_NOT_IN_RANGE_FROM_ONE_TO_FOURTYFIVE);
+            throw new IllegalLottoNumberException();
         }
     }
     private void validateConsistOfSixNumbers(List<Integer> numbersInString) {
         if (numbersInString.size() != 6) {
             System.out.println(ERROR_NUMBERS_ARE_NOT_CONSISTS_OF_SIX);
-            throw new IllegalLottoNumberException(ERROR_NUMBERS_ARE_NOT_CONSISTS_OF_SIX);
+            throw new IllegalLottoNumberException();
         }
     }
 

@@ -2,14 +2,13 @@ package lotto.exception;
 
 import java.util.NoSuchElementException;
 
-public class IllegalLottoNumberException extends RuntimeException {
+public class IllegalLottoNumberException extends IllegalArgumentException {
 
     public IllegalLottoNumberException() {
-        throw new IllegalArgumentException();
     }
 
     public IllegalLottoNumberException(String s) {
-        throw new IllegalArgumentException();
+        throw new NoSuchElementException(s);
     }
 
 }
