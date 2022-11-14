@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Game {
 
-    private final Checker checker = new Checker();
+    public static final Checker checker = new Checker();
     private User user;
     private WinningLotto winningLotto;
 
@@ -52,7 +52,6 @@ public class Game {
         bonusNumber = camp.nextstep.edu.missionutils.Console.readLine();
 
         checkedBonusNumber = checker.checkNumber(bonusNumber);
-        checker.checkDuplicated(checkedNumbers, checkedBonusNumber);
 
         winningLotto = new WinningLotto(checkedNumbers, checkedBonusNumber);
 
