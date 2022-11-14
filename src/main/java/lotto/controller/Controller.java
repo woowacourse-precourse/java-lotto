@@ -24,6 +24,7 @@ public class Controller {
             printLottos(lottoService.findPurchaserLottos(purchaserId));
             List<Integer> winningLottoNumbers = inputView.inputWinningLottoNumbers();
             int bonusNumber = inputView.inputBonusNumber();
+            lottoService.matchLottos(purchaserId, winningLottoNumbers, bonusNumber);
         } catch (IllegalArgumentException e) {
             outputView.printException(e.getMessage());
             return;

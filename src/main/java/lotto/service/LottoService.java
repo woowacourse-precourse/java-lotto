@@ -1,15 +1,19 @@
 package lotto.service;
 
 import lotto.domain.Purchaser;
+import lotto.domain.Statistics;
 import lotto.repository.PurchaserRepository;
+import lotto.repository.StatisticsRepository;
 
 import java.util.List;
 
 public class LottoService {
     private final PurchaserRepository purchaserRepository;
+    private final StatisticsRepository statisticsRepository;
 
     public LottoService() {
         purchaserRepository = new PurchaserRepository();
+        statisticsRepository = new StatisticsRepository();
     }
 
     public Long generatePurchaser(int money) {
@@ -26,5 +30,12 @@ public class LottoService {
     public List<List<Integer>> findPurchaserLottos(Long purchaserId) {
         Purchaser purchaser = purchaserRepository.findById(purchaserId);
         return purchaser.getLottos();
+    }
+
+    public void matchLottos(Long purchaserId, List<Integer> winningLottoNumbers, int bonusNumber) {
+        Purchaser purchaser = purchaserRepository.findById(purchaserId);
+        Statistics statistics = new Statistics();
+        statistics.countWinningLotto(purchaser.getLottos(), winningLottoNumbers, bonusNumber);
+        statisticsRepository.insert(purchaserId, statistics);
     }
 }
