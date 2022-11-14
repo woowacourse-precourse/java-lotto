@@ -9,6 +9,7 @@ import static lotto.view.InputView.*;
 
 public class LottoGame {
     static int purchaseAmount;
+    static int bonusNumber;
     static List<Integer> winningNumbers;
     static List<Lotto> lottos;
 
@@ -28,5 +29,10 @@ public class LottoGame {
     public void enterWinningNumber() {
         printWinningNumberInputNotice();
         winningNumbers = readWinningNumbers();
+    }
+
+    public void enterBonusNumber() {
+        printBonusNumberInputNotice();
+        bonusNumber = readBonusNumber();
     }
 }
