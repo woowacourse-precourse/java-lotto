@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 public class Result {
     public static int first;
@@ -60,11 +61,11 @@ public class Result {
         return sum;
     }
 
-    public static BigDecimal calculate() {
+    public static String calculate() {
         BigDecimal moneyInput = new BigDecimal(StartLotto.payment);
         BigDecimal revenue = totalPrize()
                 .multiply(new BigDecimal(100))
                 .divide(moneyInput, 1, RoundingMode.HALF_EVEN);
-        return revenue;
+        return new DecimalFormat("###,###.0").format(revenue);
     }
 }
