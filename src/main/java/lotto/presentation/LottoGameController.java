@@ -20,15 +20,19 @@ public class LottoGameController {
         List<Lotto> lottos = LottoService.getLottos(lottoAmount.getLottoCount());
         LottoGamePrinter.printLottosOrderByAsc(lottos);
 
-        GeneralWinNumber generalWinNumber = new GeneralWinNumber(LottoGameReader.readWinNumber());
-        BonusNumber bonusNumber = new BonusNumber(LottoGameReader.readBonusNumber());
-        WinNumber winNumber = LottoService.getWinNumber(generalWinNumber,bonusNumber);
+        Balls balls = drawBalls(LottoGameReader.readGeneralWinNumbers(), LottoGameReader.readBonusNumber());
 
-        List<Match> matches = LottoService.match(lottos,winNumber);
+        List<Match> matches = LottoService.match(lottos, balls);
         LottoGamePrinter.printMatchResult(matches);
 
-        double profit = LottoService.calculateProfit(lottoAmount,Match.calculateTotalPrizeMonay(matches));
+        double profit = LottoService.calculateProfit(lottoAmount.getLottoAmount(),Match.calculateTotalPrizeMoney(matches));
         LottoGamePrinter.printProfit(profit);
+    }
+
+    public static Balls drawBalls(List<Integer> unwrapWinningBalls, int unwrapBonusBall) {
+        WinningBalls winningBalls = new WinningBalls(unwrapWinningBalls);
+        BonusBall bonusBall = new BonusBall(unwrapBonusBall);
+        return LottoService.getBalls(winningBalls, bonusBall);
     }
 
 }
