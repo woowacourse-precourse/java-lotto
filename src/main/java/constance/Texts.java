@@ -10,7 +10,7 @@ public class Texts {
     public static final String LOTTO_GAME_COINCIDE_RESULT = "%d개 일치%s (%s원) - %d개";
     public static final String LOTTO_GAME_COINCIDE_BONUS = ", 보너스 볼 일치";
     public static final String LOTTO_GAME_LOTTERY_RETURN = "총 수익률은 %.1f%%입니다.";
-    public static final String LOTTO_CHECKER_ERROR = "[ERROR] 검사 대상 : %s %s 게임을 종료합니다.";
+    public static final String LOTTO_CHECKER_ERROR = "[ERROR] 검사 대상 : %s || %s 게임을 종료합니다.";
     public static final String LOTTO_CHECKER_ERROR_ILLEGAL = "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     public static final String LOTTO_CHECKER_ERROR_NEGATIVE = "입력값은 양수여야 합니다.";
     public static final String LOTTO_CHECKER_ERROR_NON_NUMERIC = "입력값은 숫자여야 합니다.";
