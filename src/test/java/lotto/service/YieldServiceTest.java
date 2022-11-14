@@ -49,7 +49,7 @@ class YieldServiceTest {
     @Test
     void yieldTest2() {
         List<Lotto> lottos = new ArrayList<>();
-        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottos.add(new Lotto(List.of(2, 1, 3, 4, 5, 6)));
         lottos.add(new Lotto(List.of(3, 5, 11, 16, 32, 38)));
         lottos.add(new Lotto(List.of(7, 11, 16, 35, 36, 44)));
         lottos.add(new Lotto(List.of(1, 8, 11, 31, 41, 42)));

@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,8 +13,11 @@ import lotto.validation.IntegerValidation;
 public class Lotto {
     private final List<Integer> numbers;
     public Lotto() {
-        this.numbers = Randoms.pickUniqueNumbersInRange(IntConstant.LOTTO_NUMBER_BIGGER_THAN.getValue(),
+        List<Integer> randomCreateLotto = Randoms.pickUniqueNumbersInRange(
+                IntConstant.LOTTO_NUMBER_BIGGER_THAN.getValue(),
                 IntConstant.LOTTO_NUMBER_SMALLER_THAN.getValue(), IntConstant.LOTTO_NUMBER_COUNT.getValue());
+        this.numbers = new ArrayList<>(randomCreateLotto);
+        Collections.sort(numbers);
     }
 
     public Lotto(List<Integer> numbers) {

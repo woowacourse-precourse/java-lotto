@@ -40,7 +40,7 @@ class LottoControllerTest extends NsTest {
                             "총 수익률은 25,000,062.5%입니다."
                     );
                 },
-                List.of(1, 2, 3, 4, 5, 6),
+                List.of(2, 1, 3, 4, 5, 6),
                 List.of(3, 5, 11, 16, 32, 38),
                 List.of(7, 11, 16, 35, 36, 44),
                 List.of(1, 8, 11, 31, 41, 42),
