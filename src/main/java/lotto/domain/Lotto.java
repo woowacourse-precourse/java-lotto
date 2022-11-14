@@ -3,6 +3,8 @@ package lotto.domain;
 import static lotto.util.NumberValidator.checkDuplicate;
 import static lotto.util.NumberValidator.checkSize;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -30,20 +32,15 @@ public class Lotto {
                 .filter(index -> hasPlace(index, player.get(index))).count();
     }
 
-    public List<Integer> getSortedNumbers() {
-        return numbers.stream().sorted().collect(Collectors.toList());
-    }
-
     @Override
     public String toString() {
-        List<Integer> sortedNumbers = getSortedNumbers();
         StringBuilder message = new StringBuilder();
 
         message.append("[");
-        for (int number : sortedNumbers) {
+        for (int number : numbers) {
             message.append(number);
 
-            if (number != sortedNumbers.get(sortedNumbers.size() - 1)) {
+            if (number != numbers.get(numbers.size() - 1)) {
                 message.append(", ");
             }
         }
