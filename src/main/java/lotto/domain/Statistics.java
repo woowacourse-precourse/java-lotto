@@ -4,7 +4,10 @@ package lotto.domain;
 import lotto.config.InputConfig;
 import lotto.util.LottoComparator;
 
-import java.util.*;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
 
 public class Statistics {
     private final Lotto prizeLotto;
@@ -19,18 +22,12 @@ public class Statistics {
 
     private void initResult() {
         Map<Rank, Integer> tmp = new EnumMap<>(Rank.class);
-        for (Rank rank : Rank.values()) {
-            tmp.put(rank, 0);
-        }
+        EnumSet.allOf(Rank.class).forEach(r -> tmp.put(r, 0));
         this.result = tmp;
     }
 
     long getTotalProfit() {
-        long total = 0;
-        for (Map.Entry<Rank, Integer> entry : result.entrySet()) {
-            int prizeMoney = entry.getKey().getPrizeMoney();
-            total += prizeMoney * entry.getValue();
-        }
+        long total = result.entrySet().stream().map(e -> e.getKey().getPrizeMoney() * e.getValue()).reduce(0, Integer::sum);
         return total;
     }
 
