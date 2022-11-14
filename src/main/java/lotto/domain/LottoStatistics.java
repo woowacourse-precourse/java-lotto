@@ -22,7 +22,11 @@ public class LottoStatistics {
 
     private static final Map<LottoResult,Integer> lottoResultMap = new LinkedHashMap<>();
 
-    protected void initLottoResultMap(){
+    public LottoStatistics(){
+        initLottoResultMap();
+    }
+
+    private void initLottoResultMap(){
         lottoResultMap.put(THREE,0);
         lottoResultMap.put(FOUR,0);
         lottoResultMap.put(FIVE,0);
@@ -48,7 +52,7 @@ public class LottoStatistics {
         return findRanking(count,oneLottoTicket);
     }
 
-    protected List<Integer> countContain(int number, List<Integer> winningSixNumbers, int winningBonusNumber, List<Integer> count){
+    public List<Integer> countContain(int number, List<Integer> winningSixNumbers, int winningBonusNumber, List<Integer> count){
         if (winningSixNumbers.contains(number)) count.set(0,count.get(0)+1);
         else if (number == winningBonusNumber) count.set(1,1);
         return count;

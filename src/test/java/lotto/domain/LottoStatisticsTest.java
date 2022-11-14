@@ -27,7 +27,6 @@ class LottoStatisticsTest {
         winningBonusNumber = 7;
         count = new ArrayList<>(List.of(0,0));
         lottoResultMap = new LinkedHashMap<>();
-        lottoStatistics.initLottoResultMap();
     }
 
     @DisplayName("복권 번호가 당첨 번호에 포함되는지 확인하는 테스트")

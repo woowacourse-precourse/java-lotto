@@ -29,7 +29,6 @@ public class LottoRankingTest {
         winningBonusNumber = 7;
         count = new ArrayList<>(List.of(0,0));
         lottoResultMap = new LinkedHashMap<>();
-        lottoStatistics.initLottoResultMap();
     }
 
     @DisplayName("순위를 알맞게 return 하는지 테스트(THREE)")
