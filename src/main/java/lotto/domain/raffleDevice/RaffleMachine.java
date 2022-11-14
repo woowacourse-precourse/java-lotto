@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.raffleDevice;
 
 import lotto.domain.Lotto;
 

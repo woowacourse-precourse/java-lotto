@@ -1,8 +1,10 @@
-package lotto.domain;
+package lotto.domain.raffleDevice;
+
+import lotto.domain.Rank;
 
 import java.util.List;
 
-public class RaffleStaticsCalculator {
+public class RaffleResultCalculator {
 
     public double calculateStatics(List<Integer> lottoResult, int lottosSize) {
         int totalWinningMoney = 0;

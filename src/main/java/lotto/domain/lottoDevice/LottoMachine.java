@@ -1,4 +1,4 @@
-package lotto.domain.lottoMachine;
+package lotto.domain.lottoDevice;
 
 import java.util.ArrayList;
 import java.util.Collections;
