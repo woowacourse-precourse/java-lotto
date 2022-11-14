@@ -44,4 +44,12 @@ public class PurchaseAmountTest {
             assertThat(e.getMessage()).isEqualTo(notInTheThousandsMessage);
         }
     }
+
+    @Test
+    @DisplayName("숫자가 아닌 값은 에러가 발생한다.")
+    void checkInteger() {
+        String purchaseAmount = "1000-";
+
+        assertThrows(IllegalArgumentException.class, () -> PurchaseAmount.checkException(purchaseAmount));
+    }
 }
