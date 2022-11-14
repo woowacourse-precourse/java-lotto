@@ -1,4 +1,4 @@
-package lotto;
+package myTest;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.View.Application;

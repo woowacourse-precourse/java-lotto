@@ -1,4 +1,4 @@
-package lotto;
+package myTest;
 
 import lotto.domain.NumberGenerator;
 import lotto.domain.User;
