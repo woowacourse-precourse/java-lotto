@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.Lotto;
+import lotto.domain.PurchasingAmount;
 import lotto.dto.ResultResponse;
 import lotto.service.LottoService;
 import lotto.domain.WinningNumber;
@@ -27,9 +28,9 @@ public class LottoController {
 
     public void start() {
         try {
-            int purchasingAmount = inputPurchasingAmount();
+            PurchasingAmount purchasingAmount = inputPurchasingAmount();
 
-            List<Lotto> issuedLotteries = lottoService.issueLotto(purchasingAmount);
+            List<Lotto> issuedLotteries = lottoService.issueLotto(purchasingAmount.getMoney());
             outputView.outputLotto(issuedLotteries);
 
             List<Integer> luckyNumber = inputLuckyNumber();
@@ -38,7 +39,7 @@ public class LottoController {
             ResultResponse result = checkLotto(issuedLotteries, luckyNumber, bonusNumberInput);
             outputView.outputWinningStatistics(result);
             outputView.outputEarningRate(lottoService.getEarningRate(
-                    purchasingAmount, lottoService.getEarning(result)));
+                    purchasingAmount.getMoney(), lottoService.getEarning(result)));
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
@@ -61,10 +62,10 @@ public class LottoController {
         return converter.convertToLuckyNumber(luckyNumberInput);
     }
 
-    private int inputPurchasingAmount() {
+    private PurchasingAmount inputPurchasingAmount() {
         String purchasingAmountInput = inputView.inputPurchasingAmount();
         validatePurchasingAmount(purchasingAmountInput);
-        return Integer.parseInt(purchasingAmountInput);
+        return new PurchasingAmount(Integer.parseInt(purchasingAmountInput));
     }
 
     private void validateBonusNumber(List<Integer> luckyNumber, String bonusNumber) {
