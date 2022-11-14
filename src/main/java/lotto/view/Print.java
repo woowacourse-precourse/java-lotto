@@ -67,7 +67,7 @@ public final class Print {
     }
 
     public static void printYield(double lottoYield) {
-        String formattedYield = String.format("%.1f", lottoYield);
+        String formattedYield = String.format("%,.1f", lottoYield);
         System.out.println(String.format(YIELD_BEFORE, formattedYield) + YIELD_AFTER);
     }
 
