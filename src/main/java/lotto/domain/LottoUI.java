@@ -30,6 +30,10 @@ public class LottoUI {
         System.out.println(Message.INPUT_WINNING_NUMBERS);
         String numbers = Console.readLine();
         lottoSystem.setWinningNumbers(numbers);
+        inputBonusNumber();
+    }
+
+    private void inputBonusNumber() {
         System.out.println(Message.INPUT_BONUS_NUMBER);
         String bonusNumber = Console.readLine();
         lottoSystem.setBonusNumber(bonusNumber);
