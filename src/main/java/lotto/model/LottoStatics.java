@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class LottoStatics {
     private static final int DEFAULT_WINNING = 0;
+    private static final int BONUS_SAME_COUNT = 5;
 
     private HashMap<Winning, Integer> staticsInfo;
 
@@ -39,7 +40,7 @@ public class LottoStatics {
 
     public void updateStaticsInfo(Lotto lotto, LottoStore store) {
         int sameCount = calculateSameCount(lotto, store);
-        boolean bonus = isBonus(lotto, store);
+        boolean bonus = isBonus(lotto, store, sameCount);
 
         Winning prize = Winning.findWinning(sameCount, bonus);
         staticsInfo.put(prize, staticsInfo.get(prize) + 1);
@@ -52,7 +53,10 @@ public class LottoStatics {
                 .count();
     }
 
-    private boolean isBonus(Lotto lotto, LottoStore store) {
-        return lotto.getNumbers().contains(store.getBonusNumber());
+    private boolean isBonus(Lotto lotto, LottoStore store, int sameCount) {
+        if (sameCount == BONUS_SAME_COUNT) {
+            return lotto.getNumbers().contains(store.getBonusNumber());
+        }
+        return false;
     }
 }
