@@ -98,29 +98,18 @@ class LottoTest {
         assertThat(lotto.calculateLottoResult(purchaseRecord, bonusNumber)).isEqualTo(List.of(1, 1, 1, 1, 1));
 
     }
-//
-//    @DisplayName("수익률을 계산한 뒤 그 값을 리턴한다.")
-//    @Test
-//    void calculateYield() {
-//
-//        int totalPayment = 14000;
-//
-//        double prizeOne = 10000;
-//        double prizeTwo = 10000000;
-//        double prizeThree = 1500000;
-//        double prizeFour = 50000;
-//
-//        String answerOne = String.format("%.1f", prizeOne / totalPayment);
-//        String answerTwo = String.format("%.1f", prizeOne / totalPayment);
-//        String answerThree = String.format("%.1f", prizeOne / totalPayment);
-//        String answerFour = String.format("%.1f", prizeOne / totalPayment);
-//
-//        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-//
-//        assertThat(lotto.calculateYield(prizeOne / totalPayment)).isEqualTo(answerOne);
-//        assertThat(lotto.calculateYield(prizeTwo / totalPayment)).isEqualTo(answerTwo);
-//        assertThat(lotto.calculateYield(prizeThree / totalPayment)).isEqualTo(answerThree);
-//        assertThat(lotto.calculateYield(prizeFour / totalPayment)).isEqualTo(answerFour);
-//    }
+
+    @DisplayName("수익률을 계산한 뒤 그 값을 리턴한다.")
+    @Test
+    void calculateYield() {
+
+        int totalPayment = 10000;
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        List<Integer> result = List.of(1, 1, 1, 1, 1);
+
+        assertThat(lotto.calculateYield(result, totalPayment)).isEqualTo("203155.5");
+    }
 
 }
