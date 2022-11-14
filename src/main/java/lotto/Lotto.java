@@ -23,4 +23,17 @@ public class Lotto {
         Collections.sort(sortedNumbers);
         return sortedNumbers;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[");
+        List<Integer> sortedNumbers = getSortedNumbers();
+
+        for (int number : sortedNumbers) {
+            sb.append(number).append(',').append(' ');
+        }
+        sb.delete(sb.length() - 2, sb.length()).append(']');
+
+        return sb.toString();
+    }
 }
