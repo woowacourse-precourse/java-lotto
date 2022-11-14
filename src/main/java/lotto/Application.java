@@ -18,12 +18,71 @@ public class Application {
         boughtLottos = buyLotto(boughtLottos, MONEY);
         printLottos(boughtLottos);
 
+        input = readInput();
+        List<Integer> pickedNumbers = validatePickedNumbers(input);
+
+        input = readInput();
+        int bonusNum = parseInt(input);
+        if (pickedNumbers.contains(bonusNum) || bonusNum<1 || bonusNum >45){
+            throw new IllegalArgumentException("[Error] Number should be in the range of 1 ~ 45");
+        }
+
+
 
     }
 
-    public static String readInput(){
-        String input = Console.readLine();
-        return input;
+    
+
+    public static List<Integer> validatePickedNumbers(String input) {
+        String [] numbers = input.split(",");
+        List<Integer> pickedNumbers = new ArrayList<Integer>();
+
+        if (numbers.length != 6){
+            throw new IllegalArgumentException("[Error] pick 6 different number between 1 to 45");
+        }
+
+        for (int i = 0; i<numbers.length; i++){
+            int number = parseInt(numbers[i]);
+
+            if (pickedNumbers.contains(number)){
+                throw new IllegalArgumentException("[Error] Duplicated number exists");
+            }
+            if (number<1 || number>45){
+                throw new IllegalArgumentException("[Error] Number should be in the range of 1 ~ 45");
+            }
+            pickedNumbers.add(number);
+        }
+
+        return pickedNumbers;
+    }
+
+    public static void printLottos(List lottos){
+        StringBuilder lottoNumbers = new StringBuilder();
+        for (int i = 0; i<lottos.size(); i++){
+            lottoNumbers.append("[");
+            Lotto lottoItem = (Lotto) lottos.get(i);
+
+            for (int j = 0; j<lottoItem.getNumbers().size(); j++){
+                int number = lottoItem.getNumbers().get(j);
+                lottoNumbers.append(String.valueOf(number)+", ");
+            }
+
+            lottoNumbers.append("]\n");
+        }
+
+        System.out.print(lottoNumbers);
+    }
+
+    public static List<Lotto> buyLotto(List lottos, int money){
+        int numberOfLottos = (money/1000);
+
+        for (int i = 0; i<numberOfLottos; i++){
+            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+            Lotto lottoItem = new Lotto(randomNumbers);
+            lottos.add(lottoItem);
+        }
+
+        return lottos;
     }
 
     public static int validateMoneyInput(String input){
@@ -46,33 +105,9 @@ public class Application {
         }
     }
 
-    public static List<Lotto> buyLotto(List lottos, int money){
-        int numberOfLottos = (money/1000);
-
-        for (int i = 0; i<numberOfLottos; i++){
-            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-            Lotto lottoItem = new Lotto(randomNumbers);
-            lottos.add(lottoItem);
-        }
-
-        return lottos;
-    }
-
-    public static void printLottos(List lottos){
-        StringBuilder lottoNumbers = new StringBuilder();
-        for (int i = 0; i<lottos.size(); i++){
-            lottoNumbers.append("[");
-            Lotto lottoItem = (Lotto) lottos.get(i);
-
-            for (int j = 0; j<lottoItem.getNumbers().size(); j++){
-                int number = lottoItem.getNumbers().get(j);
-                lottoNumbers.append(String.valueOf(number)+", ");
-            }
-
-            lottoNumbers.append("]\n");
-        }
-
-        System.out.print(lottoNumbers);
+    public static String readInput(){
+        String input = Console.readLine();
+        return input;
     }
 
 
