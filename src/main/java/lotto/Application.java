@@ -9,6 +9,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
+import static java.lang.Math.round;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -35,7 +37,6 @@ public class Application {
         for (int order = 0; order < digits.length; order++) {
             buyer.add(digits[order]);
         }
-
         Collections.sort(buyer);
         System.out.println(buyer);
 
@@ -43,11 +44,27 @@ public class Application {
         lottoNumbers.removeAll(buyer);
         System.out.println(lottoNumbers);
 
+        int three = 0;
+        int four = 0;
+        int five = 0;
+        int fiveBo = 0;
+        int six = 0;
+        double profit = 0;
+        profit = (5000 * three + 50000 * four + 1500000 * five + 30000000 * fiveBo + 2000000000 * six) / money);
 
-
-
+//당첨통계
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.printf("3개 일치 (5,000원) - %d개\n", three);
+        System.out.printf("4개 일치 (50,000원) - %d개\n", four);
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", five);
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", fiveBo);
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", six);
+        System.out.printf("총 수익률은 %d입니다.\n", (double)Math.round(profit*10)/10);
 
     }
+
+
 //        lotto.getNumbers();
 //        System.out.println(lotto.getNumbers());
 ////        while (bonus.getBonusNum().contains(lotto)) {
