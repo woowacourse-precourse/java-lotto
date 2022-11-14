@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LottoEnum.LOTTO.getCount()) {
+        if (numbers.size() != LottoEnum.LOTTO.getSize()) {
             throw new IllegalArgumentException();
         }
     }
@@ -20,7 +20,7 @@ public class Lotto {
     // TODO: 추가 기능 구현
     //중복이 있는지 확인하는 메서드
     private void checkDuplicate(List<Integer> numbers) {
-        if (numbers.stream().distinct().count() != LottoEnum.LOTTO.getCount()) {
+        if (numbers.stream().distinct().count() != LottoEnum.LOTTO.getSize()) {
             throw new IllegalArgumentException();
         }
     }

@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +34,7 @@ class LottoTest {
         Lotto lotto = new Lotto(numbers);
 
         List<Integer> result = lotto.getNumbers();
-        
+
         assertThat(result).isEqualTo(numbers);
     }
 }

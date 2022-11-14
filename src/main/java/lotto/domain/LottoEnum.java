@@ -1,17 +1,17 @@
-package lotto;
+package lotto.domain;
 
 public enum LottoEnum {
     LOTTO(1, 45, 6);
 
     private final int minNum;
     private final int maxNum;
-    private final int Count;
+    private final int Size;
 
 
-    LottoEnum(int minNum, int maxNum ,int Count) {
+    LottoEnum(int minNum, int maxNum ,int Size) {
         this.minNum = minNum;
         this.maxNum = maxNum;
-        this.Count = Count;
+        this.Size = Size;
     }
 
     public int getMinNum() {
@@ -22,7 +22,7 @@ public enum LottoEnum {
         return maxNum;
     }
 
-    public int getCount() {
-        return Count;
+    public int getSize() {
+        return Size;
     }
 }
