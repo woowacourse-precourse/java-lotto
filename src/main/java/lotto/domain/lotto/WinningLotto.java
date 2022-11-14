@@ -7,14 +7,23 @@ public class WinningLotto {
 
     public WinningLotto(Lotto lotto, int bonus) {
         this.lotto = lotto;
-        validate(bonus);
+        validateBonus(bonus);
         this.bonus = bonus;
     }
 
-    private void validate(int bonus) {
+    private void validateBonus(int bonus) {
+        validateBonusByDuplicatedNumber(bonus);
+        validateBonusByNumberRange(bonus);
+    }
+
+    private void validateBonusByDuplicatedNumber(int bonus) {
         if (lotto.getNumbers().contains(bonus)) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호에 포하되어 있지 않은 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호에 포함되어 있지 않은 숫자를 입력해주세요.");
         }
+    }
+
+    private void validateBonusByNumberRange(int bonus) {
+
     }
 
 

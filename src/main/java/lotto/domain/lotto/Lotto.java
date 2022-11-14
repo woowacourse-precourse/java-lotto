@@ -15,17 +15,28 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateNumbersByOverSize(numbers);
+        validateNumbersByDuplicatedNumber(numbers);
+        validateNumbersByNumberRange(numbers);
+    }
+
+    private void validateNumbersByOverSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBERS_SIZE_LIMIT) {
             throw new IllegalArgumentException();
         }
+    }
 
+    private void validateNumbersByDuplicatedNumber(List<Integer> numbers) {
         Set<Integer> nonDuplicatedNumbers = new HashSet<>(numbers);
         if (nonDuplicatedNumbers.size() != LOTTO_NUMBERS_SIZE_LIMIT) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateNumbersByNumberRange(List<Integer> numbers) {
+
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
