@@ -6,9 +6,9 @@ import java.util.List;
 import lotto.dto.LottoStatsDTO;
 
 public class LottoPurchase {
-    private static List<Integer> rankCounts = new ArrayList<>(List.of(0, 0, 0, 0, 0));
-    private static double yield = 0;
-    private static List<Lotto> lottery;
+    private List<Integer> rankCounts = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+    private List<Lotto> lottery;
+    private double yield = 0;
 
     public LottoPurchase(List<Lotto> lottery) {
 	this.lottery = lottery;

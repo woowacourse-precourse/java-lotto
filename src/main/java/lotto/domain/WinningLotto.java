@@ -3,8 +3,8 @@ package lotto.domain;
 import java.util.List;
 
 public class WinningLotto{
-    private static Lotto winningLottoNumber;
-    private static Integer bonusNumber;
+    private final Lotto winningLottoNumber;
+    private final Integer bonusNumber;
 
     public WinningLotto(Lotto winningLottoNumber, Integer bonusNumber) {
 	validateBonusNumber(bonusNumber);
@@ -26,7 +26,7 @@ public class WinningLotto{
 	}
     }
 
-    public static Integer compareWinningLotto(Lotto lottoNumbers) {
+    public Integer compareWinningLotto(Lotto lottoNumbers) {
 	int matchScore = 0;
 	for (Integer lottoNumber: lottoNumbers.getLottoNumbers()) {
 	    matchScore += isContainWinningNumber(lottoNumber);
@@ -38,21 +38,21 @@ public class WinningLotto{
 	return matchScore;
     }
 
-    private static int isContainWinningNumber(Integer lottoNumber) {
+    private int isContainWinningNumber(Integer lottoNumber) {
 	if (winningLottoNumber.getLottoNumbers().contains(lottoNumber)) {
 	    return 1;
 	}
 	return 0;
     }
 
-    private static int isContainBonusNumber(Integer lottoNumber) {
+    private int isContainBonusNumber(Integer lottoNumber) {
 	if (lottoNumber == bonusNumber) {
 	    return 1;
 	}
 	return 0;
     }
 
-    private static int isNotContainBonusNumber(List<Integer> lottoNumbers) {
+    private int isNotContainBonusNumber(List<Integer> lottoNumbers) {
 	if (!lottoNumbers.contains(bonusNumber)) {
 	    return 1;
 	}
