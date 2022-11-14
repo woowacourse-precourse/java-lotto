@@ -16,13 +16,13 @@ public class LottosCashier {
 
     public static Lottos create(int purchasePrice, List<List<Integer>> lottoNumbers) {
         int lottoCount = calculateLottoCount(purchasePrice);
-        LottosValidationUtils.validateSize(lottoCount, lottoNumbers);
+        LottosCashierValidUtils.validateSize(lottoCount, lottoNumbers);
 
         return new Lottos(mapToLotto(lottoNumbers));
     }
 
     public static int calculateLottoCount(int purchasePrice) {
-        LottosValidationUtils.validateCanPurchase(purchasePrice);
+        LottosCashierValidUtils.validateCanPurchase(purchasePrice);
         return purchasePrice / LOTTO_PRICE;
     }
 
