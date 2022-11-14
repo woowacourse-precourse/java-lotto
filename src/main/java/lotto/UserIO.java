@@ -7,19 +7,19 @@ import java.util.List;
 
 public class UserIO {
 
-    public void printLottoNumbers(List<List<Integer>> lotto) {
+    public static void printLottoNumbers(List<List<Integer>> lotto) {
         System.out.println(lotto.size()+"개를 구매했습니다.");
         for (List<Integer> paper : lotto) {
             System.out.println(paper);
         }
     }
 
-    public Integer inputPurchaseAmount() {
+    public static Integer inputPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         return Integer.parseInt(Console.readLine());
     }
 
-    public List<Integer> inputWinningNumber() {
+    public static List<Integer> inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         Integer[] numbers = Arrays.stream(Console.readLine().split(","))
             .map(Integer::parseInt)
@@ -27,12 +27,12 @@ public class UserIO {
         return new ArrayList<>(List.of(numbers));
     }
 
-    public Integer inputBonusNumber() {
+    public static Integer inputBonusNumber() {
         System.out.println("보너스 번호를 입력해주세요.");
         return Integer.parseInt(Console.readLine());
     }
 
-    public void printWinStat() {
+    public static void printWinStat() {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " +  "개");
