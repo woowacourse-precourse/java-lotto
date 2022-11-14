@@ -91,21 +91,16 @@ public class LottoController {
         OutputView.printYield(yield);
     }
 
-    public void run() {
+    public void run() throws IllegalArgumentException {
         try {
             createLottoPurchase();
-
             createWinChecker();
-
             Map<Rank, Integer> result = createResult();
-
             checkWin(result);
             checkYield(result);
         } catch (NumberFormatException e) {
             String errorMessage = "[ERROR] 올바른 입력 포맷이 아닙니다.";
-            OutputView.printErrorMessage(errorMessage);
-        } catch (IllegalArgumentException e) {
-            OutputView.printErrorMessage(e.getMessage());
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 }
