@@ -18,7 +18,7 @@ public class LottoMachine {
     public List<Lotto> publishLotto() {
         List<Lotto> publishedAllLotto = new ArrayList<>();
 
-        while (money != 0) {
+        while (hasMoney()) {
             publishedAllLotto.add(new Lotto(createRandomNumbers()));
             spendMoney();
         }
@@ -42,6 +42,10 @@ public class LottoMachine {
         }
 
         return convertedNumbers;
+    }
+
+    private boolean hasMoney() {
+        return money > 0;
     }
 
     private void spendMoney() {
