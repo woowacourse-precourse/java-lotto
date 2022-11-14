@@ -11,7 +11,10 @@ public class PlayLotto {
         for (int i = 0; i < ticketCount; i++) {
             CreateLotto createLotto = new CreateLotto();
             /*이 부분 createRandomBall 직접 받지 않도록 수정해야 할듯*/
+            Lotto lotto = new Lotto(createLotto.createRandomBall());
+            /*밑에 두줄 lotto에 포함시킬 수 있을 듯.*/
             Collections.sort(createLotto.createRandomBall());
+            lotto.printLottoNumber();
             allLottoNumber.add(createLotto.createRandomBall());
         }
         return allLottoNumber;
