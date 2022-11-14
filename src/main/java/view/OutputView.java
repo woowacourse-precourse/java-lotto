@@ -4,6 +4,7 @@ import domain.Ranking;
 
 import java.text.DecimalFormat;
 import java.util.Map;
+
 import lotto.Lotto;
 import lotto.LottoTickets;
 

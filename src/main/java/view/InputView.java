@@ -1,6 +1,7 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -54,6 +55,7 @@ public class InputView {
             throw new IllegalArgumentException(errorMessage);
         }
     }
+
     private static void checkDuplicated(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(LOTTO_HAS_DUPLICATED_NUMBER_ERROR_MESSAGE);
