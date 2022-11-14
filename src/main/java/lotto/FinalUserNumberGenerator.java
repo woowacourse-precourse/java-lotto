@@ -12,8 +12,5 @@ public class FinalUserNumberGenerator {
             correctNumberList.add(UserPickNumber);
         }
         return correctNumberList;
-
-
-
     }
 }
