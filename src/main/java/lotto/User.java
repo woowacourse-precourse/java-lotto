@@ -11,7 +11,7 @@ public class User {
     }
 
     public int getNumberOfAvailableLotto(int cash) {
-        return 0;
+        return cash / 1000;
     }
 
     public void buyLotto(Lotto lotto) {
