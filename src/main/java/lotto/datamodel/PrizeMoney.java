@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class PrizeMoney {
+    private static final int STANDARD_MONEY = 1000;
     private final List<Integer> prize;
 
     public PrizeMoney(List<Integer> prize) {
@@ -19,7 +20,7 @@ public class PrizeMoney {
         for (Rank rank : Rank.values()) {
             if (rank != Rank.NONE) {
                 frequency = Collections.frequency(prize, rank.getAmount());
-                totalPrize += ((float)rank.getAmount() / 1000 * frequency);
+                totalPrize += ((float)rank.getAmount() / STANDARD_MONEY * frequency);
             }
         }
         return totalPrize;

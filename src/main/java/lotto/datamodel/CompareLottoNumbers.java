@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompareLottoNumbers {
+    private static final int TOTAL_WIN_COUNT = 6;
     private final List<Integer> numbers;
     private final int bonusNumber;
 
@@ -30,7 +31,7 @@ public class CompareLottoNumbers {
         int count = 0;
         boolean bonusValid = false;
 
-        for (int i = 0; i < 6; i ++) {
+        for (int i = 0; i < TOTAL_WIN_COUNT; i ++) {
             if (oneNumbers.contains(numbers.get(i))) {
                 count++;
             }

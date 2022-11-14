@@ -1,6 +1,7 @@
 package lotto.datamodel;
 
 public class PurchaseAmount {
+    private static final int STANDARD_MONEY = 1000;
     private final int moneyCount;
 
     public PurchaseAmount(String input) {
@@ -23,9 +24,9 @@ public class PurchaseAmount {
     }
 
     private int moneyValid(int money){
-        if (money % 1000 != 0 || money == 0) {
+        if (money % STANDARD_MONEY != 0 || money == 0) {
             throw new IllegalArgumentException();
         }
-        return money / 1000;
+        return money / STANDARD_MONEY;
     }
 }
