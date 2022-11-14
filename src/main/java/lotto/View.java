@@ -31,4 +31,21 @@ public class View {
             System.out.println(lotto);
         }
     }
+
+    public static void moneyPrizes(int money, int prize){
+        System.out.printf("%d개 일치(%d 원)%n", money, prize);
+    }
+
+
+    public static void yield(float yield){
+        System.out.printf("수익률은 %.2f%% 입니다.%n",yield);
+    }
+
+    public static void prizes(List<Integer> moneyList){
+        moneyPrizes(5000, Collections.frequency(moneyList, 5000));
+        moneyPrizes(50000, Collections.frequency(moneyList, 50000));
+        moneyPrizes(1500000, Collections.frequency(moneyList, 1500000));
+        moneyPrizes(30000000, Collections.frequency(moneyList, 30000000));
+        moneyPrizes(2000000000, Collections.frequency(moneyList, 2000000000));
+    }
 }
