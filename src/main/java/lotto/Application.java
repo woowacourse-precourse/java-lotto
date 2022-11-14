@@ -18,7 +18,13 @@ public class Application {
 
     private static void enterPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
-        purchaseAmount = Integer.valueOf(readLine());
+        String temp = readLine();
+
+        try {
+            purchaseAmount = Integer.parseInt(temp);
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 구입금액은 숫자로 이루어져야합니다.");
+        }
     }
 
     private static void generateLottoNumbers() {
@@ -34,7 +40,9 @@ public class Application {
     private static void enterWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String[] temp = readLine().split(",");
+        if(temp.length > 6) throw new IllegalArgumentException("[ERROR] 로또 번호가 6개를 초과했습니다.");
         for (String num : temp) {
+            if(winningNumbers.contains(num)) throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
             winningNumbers.add(Integer.valueOf(num));
         }
 
@@ -67,6 +75,7 @@ public class Application {
 
     public static void main(String[] args) {
         enterPurchaseAmount();
+        if(purchaseAmount == null) return;
         generateLottoNumbers();
         enterWinningNumbers();
         determineWinningStatus();

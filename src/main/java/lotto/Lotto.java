@@ -15,6 +15,10 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        for(Integer number : numbers) {
+            long cnt = numbers.stream().filter(num -> num == number).count();
+            if(cnt >= 2) throw new IllegalArgumentException();
+        }
     }
 
     public void printNumbers() {
