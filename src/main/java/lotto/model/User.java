@@ -22,4 +22,8 @@ public class User {
     public int getUserGameCnt() {
         return userGameCnt;
     }
+
+    public int getUserPrice() {
+        return userPrice;
+    }
 }

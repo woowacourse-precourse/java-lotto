@@ -55,22 +55,6 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @Test
-    void 입력금액_테스트() {
-        assertSimpleTest(() -> {
-            run("4000");
-            assertThat(output()).contains("구입금액을 입력해 주세요.");
-        });
-    }
-
-    @Test
-    void 게임_횟수_테스트() {
-        assertSimpleTest(() -> {
-            run("4000");
-            assertThat(output()).contains("4");
-        });
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});

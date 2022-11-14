@@ -15,6 +15,6 @@ class OutputViewTest {
 
     @Test
     void 수익률_출력_테스트(){
-        OutputView.printRateOfReturn(5,50_000);
+        OutputView.printRateOfReturn(8000,5_000);
     }
 }

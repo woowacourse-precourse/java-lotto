@@ -25,7 +25,8 @@ public class OutputView {
         System.out.printf(RESULT_OF_VALUE_MESSAGE.getMessage(),6,SIX.getMessage(),resultArray[5]);
     }
 
-    public static void printRateOfReturn(int userCnt,int resultSum){
-        System.out.printf(RATE_OF_RETURN_MESSAGE.getMessage(),((double)resultSum)/(double)userCnt*1000);
+    public static void printRateOfReturn(int userPrice,int resultSum){
+        double rateOfReturn=(double)Math.round((((double)resultSum)/(double)userPrice)*1000.0)/10;
+        System.out.printf(RATE_OF_RETURN_MESSAGE.getMessage(),rateOfReturn);
     }
 }

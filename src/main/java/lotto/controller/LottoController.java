@@ -35,7 +35,7 @@ public class LottoController {
 
         result.calculatorResult(computer.getRandomNumbers(),lotto.getNumbers(),lotto.getBonusNumber());
         OutputView.printResult(result.getResultArray());
-        OutputView.printRateOfReturn(user.getUserGameCnt(),result.getPriceSum());
+        OutputView.printRateOfReturn(user.getUserPrice(),result.getPriceSum());
     }
 
     private void inIt(){
