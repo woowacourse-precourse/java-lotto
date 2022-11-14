@@ -34,4 +34,14 @@ public class InputNumbersTest {
             assertThat(e.getMessage()).isEqualTo(notSeparatedByCommaMessage);
         }
     }
+
+    @Test
+    @DisplayName("쉼표로 구분되어 있지만 숫자 이외의 값이 포함되어 있으면 에러가 발생한다.")
+    void checkInteger() {
+        // given
+        String numbers = "1,가,2,3,4,5";
+
+        // when, then
+        assertThrows(IllegalArgumentException.class, () -> InputNumbers.checkException(numbers));
+    }
 }
