@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
-    static final Integer cost = 1000;
+    static final Integer price = 1000;
 
     private final List<Integer> numbers;
 
@@ -25,4 +25,9 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public Integer calQuantityByPrice(Integer money) {
+        Integer quantity = money/price;
+
+        return quantity;
+    }
 }
