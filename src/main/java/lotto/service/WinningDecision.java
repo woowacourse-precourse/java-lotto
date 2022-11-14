@@ -37,4 +37,8 @@ public class WinningDecision {
         }
         return cnt;
     }
+
+    private boolean hasBonus(List<Integer> myNumbers) {
+        return myNumbers.contains(bonus);
+    }
 }
