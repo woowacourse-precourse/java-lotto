@@ -45,7 +45,10 @@ public class User {
         int number = money / 1000;
 
         System.out.println(number + "개를 구매했습니다.");
+        makeMyLotto(number);
+    }
 
+    public void makeMyLotto(int number) {
         for (int i = 0; i < number; i++) {
             List<Integer> lotto = getOneLotto();
             myLotto.add(new Lotto(lotto));
