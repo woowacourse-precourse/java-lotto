@@ -25,8 +25,8 @@ class LottoServiceTest {
     private final LottoGenerator generator = mock(LottoGenerator.class);
     private final LottoService lottoService = new LottoService(pricePerLotto, generator);
 
-    @Test
     @DisplayName("로또를 구매할 수 있다.")
+    @Test
     void purchaseLotto() {
         // given
         final Money payment = valueOf(10000);
@@ -43,8 +43,8 @@ class LottoServiceTest {
         assertThat(purchaseLottos).isEqualTo(lottos);
     }
 
-    @Test
     @DisplayName("로또 구매 시 지불한 가격이 로또 가격으로 나누어 떨어지지 않으면 오류가 발생한다.")
+    @Test
     void purchaseLottoThrowExceptionWhenPaymentIsNotValidate() {
         // given
         final Money payment = valueOf(10001);
@@ -56,8 +56,8 @@ class LottoServiceTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
     @DisplayName("원금과 구매한 로또들, 당첨 번호를 가지고 당첨 통계를 내어 반환한다.")
+    @Test
     void returnStatisticsByPrincipleAndPurchasedLottosAndWinningNumber() {
         // given
         final Money principle = valueOf(10000);

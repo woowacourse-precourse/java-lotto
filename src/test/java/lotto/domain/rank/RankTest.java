@@ -1,6 +1,5 @@
 package lotto.domain.rank;
 
-import lotto.domain.money.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -39,8 +38,9 @@ class RankTest {
         assertThat(Rank.matchRank(matchCount, false))
                 .isEqualTo(Rank.valueOf(rank));
     }
-    @Test
+
     @DisplayName("5개의 번호가 일치하고 보너스 번호가 일치하면 2등이다.")
+    @Test
     void fiveMatchNumberAndBonusMatchIsSecond() {
         // given
         final int matchCount = 5;

@@ -26,8 +26,8 @@ class LoggerTest {
         System.setOut(originalOut);
     }
 
-    @Test
     @DisplayName("예외 메세지를 남긴 후 지정한 예외를 발생시킨다.")
+    @Test
     void errorLogWithAssignException() {
         // given
         final Logger log = new Logger();
