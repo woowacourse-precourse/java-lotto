@@ -16,7 +16,7 @@ class LottoJudgeTest {
                 List.of(1, 2, 3, 4, 5, 6),
                 7,
                 List.of(1, 2, 3, 4, 5, 6),
-                LottoPlace.MATCHED_6
+                LottoPlace.FIRST
         );
     }
 
@@ -27,7 +27,7 @@ class LottoJudgeTest {
                 List.of(1, 2, 3, 4, 5, 6),
                 7,
                 List.of(1, 2, 3, 4, 5, 7),
-                LottoPlace.MATCHED_5_WITH_BONUS
+                LottoPlace.SECOND
         );
     }
 
@@ -38,7 +38,7 @@ class LottoJudgeTest {
                 List.of(1, 2, 3, 4, 5, 6),
                 7,
                 List.of(1, 2, 3, 4, 5, 26),
-                LottoPlace.MATCHED_5
+                LottoPlace.THIRD
         );
     }
 
@@ -49,7 +49,7 @@ class LottoJudgeTest {
                 List.of(1, 2, 3, 4, 5, 6),
                 7,
                 List.of(1, 2, 3, 44, 5, 26),
-                LottoPlace.MATCHED_4
+                LottoPlace.FORTH
         );
     }
 
@@ -60,7 +60,7 @@ class LottoJudgeTest {
                 List.of(1, 2, 3, 4, 5, 6),
                 7,
                 List.of(1, 16, 3, 34, 5, 26),
-                LottoPlace.MATCHED_3
+                LottoPlace.FIFTH
         );
     }
 
