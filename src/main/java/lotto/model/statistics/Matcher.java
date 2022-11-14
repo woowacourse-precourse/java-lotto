@@ -1,9 +1,10 @@
 package lotto.model.statistics;
 
 import lotto.model.Lotto;
+import lotto.model.WinningNumbers;
 
 
 public interface Matcher {
-    Integer getCorrectMatch(Lotto WinningNumber, Lotto IssuedNumber);
-    Boolean getBonusMatch(Integer BonusNumber, Lotto IssuedNumber);
+    Integer getCorrectMatch(WinningNumbers winningNumbers, Lotto IssuedNumber);
+    Boolean getBonusMatch(WinningNumbers winningNumbers, Lotto IssuedNumber);
 }

@@ -1,14 +1,15 @@
 package lotto.model.statistics;
 
 import lotto.model.Lotto;
+import lotto.model.WinningNumbers;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 public class MatcherImpl implements Matcher{
     @Override
-    public Integer getCorrectMatch(Lotto WinningNumber, Lotto IssuedNumber) {
-        List<Integer> winningNumbers = WinningNumber.getNumbers();
+    public Integer getCorrectMatch(WinningNumbers WinningNumber, Lotto IssuedNumber) {
+        List<Integer> winningNumbers = WinningNumber.getWinningNumbers();
         List<Integer> issuedNumbers = IssuedNumber.getNumbers();
 
         return (int) winningNumbers.stream()
@@ -18,9 +19,10 @@ public class MatcherImpl implements Matcher{
     }
 
     @Override
-    public Boolean getBonusMatch(Integer BonusNumber, Lotto IssuedNumber) {
+    public Boolean getBonusMatch(WinningNumbers winningNumbers, Lotto IssuedNumber) {
         List<Integer> numbers = IssuedNumber.getNumbers();
-        return numbers.contains(BonusNumber);
+        Integer bonusNumber = winningNumbers.getBonusNumber();
+        return numbers.contains(bonusNumber);
     }
 
 
