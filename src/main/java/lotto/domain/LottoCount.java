@@ -1,6 +1,7 @@
 package lotto.domain;
 
 public class LottoCount {
+    private static final int LOTTO_PRICE = 1000;
     private final int count;
 
     public LottoCount(Money money) {
@@ -9,7 +10,7 @@ public class LottoCount {
 
     private int countLottoByMoney(Money money) {
         int amount = money.getMoney();
-        return (amount / 1000);
+        return (amount / LOTTO_PRICE);
     }
 
     public int getCount() {
