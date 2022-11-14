@@ -35,13 +35,14 @@ public class GameOutput {
         }
     }
     public static void getDetailResult2(int money,List<Integer> RewardList){
-        int totalmoney=0;
+        double totalmoney=0;
         totalmoney+=RewardList.get(1)*RewardType.FIRST.getreward();
         totalmoney+=RewardList.get(2)*RewardType.SECOND.getreward();
         totalmoney+=RewardList.get(3)*RewardType.THIRD.getreward();
         totalmoney+=RewardList.get(4)*RewardType.FOURTH.getreward();
         totalmoney+=RewardList.get(5)*RewardType.FIFTH.getreward();
-
-        System.out.println(rating_result1+money/totalmoney+rating_result2);
+        System.out.println(money);
+        System.out.println(totalmoney);
+        System.out.println(rating_result1+String.format("%.1f", (double) totalmoney / money * 100)+rating_result2);
     }
 }
