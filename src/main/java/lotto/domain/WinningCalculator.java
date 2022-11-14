@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.constant.LottoRule.END_NUMBER;
+import static lotto.constant.LottoRule.START_NUMBER;
 import static lotto.constant.WinningResult.RANK_1;
 import static lotto.constant.WinningResult.RANK_2;
 import static lotto.constant.WinningResult.RANK_3;
@@ -12,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.constant.LottoRule;
 import lotto.constant.WinningResult;
 
 public class WinningCalculator {
@@ -101,5 +104,14 @@ public class WinningCalculator {
             return;
         }
         throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
+    }
+
+    private void checkRangeOfNumberInNumers(List<Integer> numbers) {
+        for (int number: numbers) {
+            if (START_NUMBER < number && number < END_NUMBER) {
+                continue;
+            }
+            throw new IllegalArgumentException("[ERROR] 범위에 맞는 번호를 당첨 번호를 입력해주세요.");
+        }
     }
 }
