@@ -33,4 +33,12 @@ public class WinningNumber {
             }
         }
     }
+
+    public void notNumber(String input){
+        for (int i = 0; i < input.length(); i+=2) {
+            if(input.charAt(i) < 48 || input.charAt(i) > 57){
+                throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_IS_NUMBER.getErrorMessage());
+            }
+        }
+    }
 }
