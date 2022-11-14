@@ -13,7 +13,12 @@ public class WinLotto {
         winNumbers = new ArrayList<>(winLotto.getNumbers());
         winNumbers.add(bonus);
     }
+
     private void validate(Lotto winLotto, int bonus) {
         new WinLottoValidate().validate(winLotto, bonus);
+    }
+
+    public List<Integer> getWinNumbers() {
+        return winNumbers;
     }
 }
