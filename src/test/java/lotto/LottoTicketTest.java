@@ -16,7 +16,7 @@ public class LottoTicketTest {
         LottoTicket lottoTicket = new LottoTicket();
 
         // when
-        List<Lotto> lottos = lottoTicket.buyLotto("1000");
+        List<Lotto> lottos = lottoTicket.buy("1000");
 
         // then
         assertThat(lottos.size())
@@ -30,7 +30,7 @@ public class LottoTicketTest {
         LottoTicket lottoTicket = new LottoTicket();
 
         // expect
-        assertThatThrownBy(() -> lottoTicket.buyLotto("1000j"))
+        assertThatThrownBy(() -> lottoTicket.buy("1000j"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 숫자만 입력해 주세요.");
     }
@@ -42,7 +42,7 @@ public class LottoTicketTest {
         LottoTicket lottoTicket = new LottoTicket();
 
         // expect
-        assertThatThrownBy(() -> lottoTicket.buyLotto("900"))
+        assertThatThrownBy(() -> lottoTicket.buy("900"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1,000원 이상을 입력해 주세요.");
     }
@@ -54,7 +54,7 @@ public class LottoTicketTest {
         LottoTicket lottoTicket = new LottoTicket();
 
         // expect
-        assertThatThrownBy(() -> lottoTicket.buyLotto("3800"))
+        assertThatThrownBy(() -> lottoTicket.buy("3800"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1,000원으로 나누어 떨어지는 금액만 입력해 주세요.");
     }

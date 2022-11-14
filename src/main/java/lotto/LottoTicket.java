@@ -7,7 +7,7 @@ import java.util.List;
 
 public class LottoTicket {
 
-    public List<Lotto> buyLotto(String input) {
+    public List<Lotto> buy(String input) {
         List<Lotto> lottos = new ArrayList<>();
         validateInteger(input);
         int money = Integer.parseInt(input);
