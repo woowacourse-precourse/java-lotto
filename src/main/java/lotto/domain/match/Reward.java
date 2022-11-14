@@ -23,27 +23,18 @@ public enum Reward {
         this.requireBonus = requireBonus;
     }
 
-    private static final Map<Integer, Reward> matchToNonRequireBonusReward =
+    private static final Map<Integer, Reward> MATCH_TO_NON_REQUIRE_BONUS_REWARD =
             Stream.of(values())
                     .filter(Predicate.not(Reward::isRequireBonus))
                     .collect(Collectors.toUnmodifiableMap(
                             Reward::getMatch, Function.identity()));
 
-    private static final Map<Integer, Reward> matchToRequireBonusReward =
-            Stream.of(values())
-                    .filter(Reward::isRequireBonus)
-                    .collect(Collectors.toUnmodifiableMap(
-                            Reward::getMatch, Function.identity()));
-
     public static Reward find(int match, boolean isBonusMatched) {
-        if (isBonusMatched) {
-            Reward found = matchToRequireBonusReward.get(match);
-            if (found != null) {
-                return found;
-            }
+        if (isBonusMatched && match == SECOND.match) {
+            return SECOND;
         }
 
-        return matchToNonRequireBonusReward.get(match);
+        return MATCH_TO_NON_REQUIRE_BONUS_REWARD.get(match);
     }
 
     public int getMatch() {
