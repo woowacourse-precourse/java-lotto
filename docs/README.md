@@ -34,28 +34,25 @@
   - [x] **숫자, 쉼표`,` 이외에 문자**가 존재하는 경우 IllegalArgumentException 발생 시킨다. (`,` split 진행 후 각각 Integer.parseInt 예외가 발생한다.)
 
 
-### InputValidator
+### InputValidator(LottoNumbersValidator)
 
-- [ ] InputConverter를 통해 변환된 구입 금액이 올바른 값인지 검사한다.
-    - [ ] 1,000원 단위 입력이 아닐 경우 IllegalArgumentException 발생 시킨다. (1000으로 나눴을 때 나머지가 0이 아닐 때 예외가 발생한다.)
+- [x] InputConverter를 통해 변환된 구입 금액이 올바른 값인지 검사한다.
+    - [x] 1,000원 단위 입력이 아닐 경우 IllegalArgumentException 발생 시킨다. (1000으로 나눴을 때 나머지가 0이 아닐 때 예외가 발생한다.)
 
 
-- [ ] InputConverter를 통해 변환된 당첨 번호를 올바른 값인지 검사한다.
-    - [ ] `1~45` **범위 이외의 숫자**일 경우 IllegalArgumentException 발생 시킨다. (범위 체크 메서드 return 값이 false일 경우 예외가 발생한다. )
-    - [ ] 당첨 번호의 갯수가 6개가 아닌 경우 IllegalArgumentException 발생 시킨다. (size 체크시 6이 아닐 시 예외가 발생한다.)
-    - [ ] 중복된 숫자가 존재하는 경우 IllegalArgumentException 발생 시킨다. (stream 이용하여 distinct().count()와 size가 다를 경우 예외가 발생한다.)
+- [x] InputConverter를 통해 변환된 당첨 번호를 올바른 값인지 검사한다.
+    - [x] `1~45` **범위 이외의 숫자**일 경우 IllegalArgumentException 발생 시킨다. (범위 체크 메서드 return 값이 false일 경우 예외가 발생한다. )
+    - [x] 당첨 번호의 갯수가 6개가 아닌 경우 IllegalArgumentException 발생 시킨다. (size 체크시 6이 아닐 시 예외가 발생한다.)
+    - [x] 중복된 숫자가 존재하는 경우 IllegalArgumentException 발생 시킨다. (stream 이용하여 distinct().count()와 size가 다를 경우 예외가 발생한다.)
 
-- [ ] InputConverter 를 통해 변환된 보너스 번호가 올바른 값인지 검사한다.
-    - [ ] 위의 당첨 번호 예외 처리를 이용한다.
+- [x] InputConverter 를 통해 변환된 보너스 번호가 올바른 값인지 검사한다.
+    - [x] 위의 당첨 번호 예외 처리를 이용한다.
 
 
 ## Lotto
 
 ### Lotto
 - [x] 유효한 랜덤 6자리 숫자를 생성한다.
-
-### LottoNumbersValidator
-- [x] 유효한 로또 번호인지 구분한다.
 
 ### LottoRank
 - [x] 당첨 번호와 상금을 정의한 Enum
