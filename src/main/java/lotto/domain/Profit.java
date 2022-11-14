@@ -5,8 +5,8 @@ import java.util.Map;
 import static lotto.util.Constants.INIT_PROFIT;
 
 public class Profit {
-    private int profit = 0;
-    private int investment;
+    private int profit = INIT_PROFIT;
+    private final int investment;
 
     public Profit(Map<RankingType, Integer> countByRankingType, int investment){
         for (RankingType rankingType : countByRankingType.keySet()) {

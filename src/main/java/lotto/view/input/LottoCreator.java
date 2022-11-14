@@ -15,7 +15,7 @@ public class LottoCreator {
 
     public List<Lotto> createLottosCandidate(int size) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
+        for (int count = 1; count <= size; count++) {
             Lotto lotto = new Lotto(createLottoNumbersCandidate());
             lottos.add(lotto);
         }

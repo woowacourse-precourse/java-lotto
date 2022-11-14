@@ -5,7 +5,7 @@ import lotto.validation.Validator;
 import java.util.List;
 
 public class WinningLotto {
-    private Lotto lotto;
+    private final Lotto lotto;
     private int bonus;
 
     public WinningLotto(List<Integer> numbers){
@@ -18,7 +18,7 @@ public class WinningLotto {
     }
 
     private void validateBonus(int bonus){
-        Validator.validateNumberRange(bonus, 1, 45);
+        Validator.validateNumberRange(bonus);
         Validator.validateNonDuplicatedBonusNumber(this, bonus);
     }
 
