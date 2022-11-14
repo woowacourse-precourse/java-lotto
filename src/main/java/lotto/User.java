@@ -29,10 +29,6 @@ public class User {
 
     }
 
-    public int numOfPurchasableLotto() {
-        return purchaseAmount / 1000;
-    }
-
     public int getPurchaseAmount() {
         return purchaseAmount;
     }
