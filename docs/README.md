@@ -1,3 +1,28 @@
+# 기능 목록
+1. 로또 구입 금액 입력
+2. 당첨 번호 및 보너스 번호 입력
+3. 입력 값 유효성 검사
+4. 입력값(로또 구입 금액) => Lotto Instance 생성
+5. Lotto Instance 유효성 검사
+6. 생성된 Lotto Instance의 수량 및 번호 출력
+7. 입력값(당첨번호, 보너스 번호) => winning Lotto Instance 생성
+8. winning Lotto 유효성 검사
+9. Lotto Instance와 winning Lotto 비교
+10. (4) => 로또 수량 및 번호 출력
+11. (8) => 당첨 내역 출력
+12. 예외 처리
+
+# 클래스 설계
+#### 1. Lotto
+기능 4,5
+#### 2. WinningLotto (extends Lotto)
+기능 7,8
+#### 3. IOController (maybe static, maybe split to Input and Output Class)
+기능 1,2,3,6,10,11
+#### 4. LottoRepository
+기능 9
+#### 5. Enum?
+
 # 기능 요구사항 - 로또
 ## 로또
 1. 숫자 범위 1~45, 중복X
@@ -32,3 +57,5 @@
 2. private numbers 유지
 3. 필드 추가X
 4. 패키지 변경은 가능
+
+
