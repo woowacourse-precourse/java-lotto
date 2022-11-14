@@ -1,4 +1,4 @@
-package lotto;
+package lotto.view;
 
 import static lotto.validator.CommonValidator.validateIsNumber;
 import static lotto.validator.PurchasePriceValidator.validatePurchasePrice;
@@ -6,6 +6,7 @@ import static lotto.validator.PurchasePriceValidator.validatePurchasePrice;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.Lotto;
 
 
 public class Input {
@@ -21,7 +22,7 @@ public class Input {
 		return Integer.parseInt(input);
 	}
 
-	public static List<Integer> winningNumbersInput() {
+	public static Lotto winningNumbersInput() {
 		System.out.println(PRINT_WINNING_NUMBERS);
 		String input = Console.readLine();
 		String[] splitInput = input.split(",");
@@ -33,7 +34,7 @@ public class Input {
 			winningNumbers.add(number);
 		}
 
-		return winningNumbers;
+		return new Lotto(winningNumbers);
 	}
 
 	public static int bonusNumberInput() {
