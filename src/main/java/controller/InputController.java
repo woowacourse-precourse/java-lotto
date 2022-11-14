@@ -3,11 +3,8 @@ package controller;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
-import util.Constant;
 import view.InputView;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -27,8 +24,7 @@ public class InputController {
     }
 
     public List<Lotto> makeLottoNumberList(int lottoPurAmount) {
-        List<Lotto> lottoNumbers = new ArrayList<>();
-        lottoNumbers = makeLottoNumber(lottoPurAmount);
+        List<Lotto> lottoNumbers = new ArrayList<>(makeLottoNumber(lottoPurAmount));
         return lottoNumbers;
     }
 
@@ -52,10 +48,17 @@ public class InputController {
         return lottonumber;
     }
 
-    public List<Integer> StringToIntNumber(String strlottonumber[]) {
+    public int insertBonusNumber() {
+        String bonusNumer = Console.readLine();
+        inputValidator.checkBonusNumber(bonusNumer);
+
+        return Integer.parseInt(bonusNumer);
+    }
+
+    public List<Integer> StringToIntNumber(String strLottoNumber[]) {
         List<Integer> numbers = new ArrayList<>();
-        for(int i=0; i<strlottonumber.length; i++) {
-            numbers.add(Integer.parseInt(strlottonumber[i]));
+        for(int i=0; i<strLottoNumber.length; i++) {
+            numbers.add(Integer.parseInt(strLottoNumber[i]));
         }
         return numbers;
     }
