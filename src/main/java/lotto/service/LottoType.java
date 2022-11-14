@@ -1,6 +1,6 @@
-package lotto;
+package lotto.service;
 
-public enum CalculatorLottoType {
+public enum LottoType {
 
     MATCHING_THREE(3, 5000),
     MATCHING_FOUR(4, 50000),
@@ -11,7 +11,7 @@ public enum CalculatorLottoType {
     private final Integer matchingCount;
     private final Integer matchingCountMoney;
 
-    CalculatorLottoType(Integer matchingCount, Integer matchingCountMoney) {
+    LottoType(Integer matchingCount, Integer matchingCountMoney) {
         this.matchingCount = matchingCount;
         this.matchingCountMoney = matchingCountMoney;
     }
