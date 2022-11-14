@@ -34,6 +34,7 @@ public class View {
 
     public void printResult(Rank[] values, int yield) {
         try {
+            printLine("당첨 통계\n---");
             for (Rank rank : values) {
                 System.out.println(rank.getSameNumber() + "개 일치"
                         + "(" + rank.getPrizeMoney() + ")" + " - " + rank.getCount() + "개");
