@@ -35,6 +35,16 @@ public class InputView {
             throw new IllegalArgumentException(NOT_NUMBER_ERROR_MESSAGE);
         }
     }
+
+    public static List<Integer> takeWinningNumberInput() {
+        System.out.println(WINNING_NUMBER_REQUEST);
+        String input = Console.readLine().trim();
+        validateWinningNumberInput(input);
+        return divideByDelimiter(input).stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
     private static void validateWinningNumberInput (String input) {
         if (Validator.isEmpty(input)) {
             throw new IllegalArgumentException(EMPTY_VALUE_ERROR_MESSAGE);
