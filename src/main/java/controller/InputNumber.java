@@ -23,12 +23,22 @@ public class InputNumber {
     public static List<Integer> parseBonusNumber(String userInput) {
         List<Integer> bonusNumber = new ArrayList<>();
         bonusNumber.add(Integer.parseInt(userInput));
-        return bonusNumber;
+        if(isAppropriateBonusLength(bonusNumber)){
+            return bonusNumber;
+        }
+        throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개여야 합니다.");
     }
 
     static boolean isAppropriateLength(List<Integer> winningNumber) throws IllegalArgumentException {
         if (winningNumber.size() != WINNING_NUMBER_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 당첨번호는 6개여야 합니다.");
+        }
+        return true;
+    }
+
+    static boolean isAppropriateBonusLength(List<Integer> bonusNumber) throws IllegalArgumentException {
+        if (bonusNumber.size() != BONUS_NUMBER_LENGTH) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개여야 합니다.");
         }
         return true;
     }
