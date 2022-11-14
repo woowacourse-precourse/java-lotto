@@ -117,14 +117,13 @@ public class ServiceInput {
     }
 
     private static void validateInputBonusNumber(String inputBonusNumber) {
-
-        if (!Validator.hasNotCharacter(inputBonusNumber)){
-            Message.printInputErrorHasCharacter();
+        if (Validator.isEmpty(inputBonusNumber)){
+            Message.printInputErrorEmpty();
             throw new IllegalArgumentException();
         }
 
-        if (Validator.isEmpty(inputBonusNumber)){
-            Message.printInputErrorEmpty();
+        if (!Validator.hasNotCharacter(inputBonusNumber)){
+            Message.printInputErrorHasCharacter();
             throw new IllegalArgumentException();
         }
     }
