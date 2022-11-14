@@ -89,6 +89,11 @@
     isOut : 45보다 큰 번호이면 false
     isntBonusReges : Bonus 정규식과 다르면 false
     isAlready : Bonus 값과 Win의 값들중 같은 값이 있는 경우
+
+**checkNumber**
+
+    숫자가 당첨 번호에 있을경우 true
+
 **checkLotto**
     
     로또와 당첨번호를 비교해 일치하는 개수 반환

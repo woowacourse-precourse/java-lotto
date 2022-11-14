@@ -3,7 +3,9 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class SaturdayTest {
 
@@ -37,6 +39,35 @@ public class SaturdayTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void testCheckNumberTrue(){
+        Saturday saturday = new Saturday("1,2,3,4,5,6","7");
+        DB.insert(new Lotto(List.of(1,2,3,4,5,6)));
+        assertThat(saturday.checkNumber(3)).isEqualTo(true);
+    }
+    @Test
+    void testCheckNumberFalse(){
+        Saturday saturday = new Saturday("1,2,3,4,5,6","7");
+        DB.insert(new Lotto(List.of(1,2,3,4,5,6)));
+        assertThat(saturday.checkNumber(8)).isEqualTo(false);
+    }
+    @Test
+    void testCheckLotto(){
+        Saturday saturday = new Saturday("1,2,3,4,5,6","7");
+        DB.insert(new Lotto(List.of(1,2,3,7,10,45)));
+        DB.insert(new Lotto(List.of(1,2,3,4,5,7)));
+        DB.insert(new Lotto(List.of(1,2,3,4,7,10)));
+        DB.insert(new Lotto(List.of(1,2,3,4,5,11)));
+        DB.insert(new Lotto(List.of(1,2,3,4,5,6)));
+
+        assertThat(saturday.checkLottoAt(0)).isEqualTo(4);
+        assertThat(saturday.checkLottoAt(1)).isEqualTo(50);
+        assertThat(saturday.checkLottoAt(2)).isEqualTo(5);
+        assertThat(saturday.checkLottoAt(3)).isEqualTo(5);
+        assertThat(saturday.checkLottoAt(4)).isEqualTo(6);
+
+
+    }
 
 
 }
