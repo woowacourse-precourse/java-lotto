@@ -1,6 +1,9 @@
 package lotto.Model;
 
-import lotto.Utils.Validator.Validation;
+import lotto.Utils.Converter;
+import lotto.Utils.Validator.IntegerValidator;
+import lotto.Utils.Validator.ListValidator;
+import lotto.Utils.Validator.NumberValidator;
 import lotto.View.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -21,27 +24,26 @@ public class Number {
         return winningNumberList;
     }
     public int getBonusNumber() {
+        NumberValidator.isBonusOverlap(winningNumberList, bonusNumber);
         return bonusNumber;
     }
+
     private List<Integer> inputNumber() {
         InputView.winNumber();
         String[] inputString = Console.readLine().split(",");
         for(String str : inputString){
-            Validation.Integer(str);
+            IntegerValidator.Integer(str);
         }
-        Validation.Overlaped(inputString);
-        return Validation.stringArrayToIntegerList(inputString);
+        ListValidator.Overlaped(inputString);
+        return Converter.stringArrayToIntegerList(inputString);
     }
+
     public int inputBonusNumber() {
         InputView.BonusNumber();
         String bonus = Console.readLine();
-        Validation.Integer(bonus);
-        Validation.validateRange(bonus);
+        IntegerValidator.Integer(bonus);
+        ListValidator.validateRange(bonus);
         return Integer.parseInt(bonus);
     }
-
-
-
-
 
 }

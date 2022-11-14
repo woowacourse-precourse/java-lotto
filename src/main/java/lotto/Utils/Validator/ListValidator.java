@@ -1,21 +1,16 @@
 package lotto.Utils.Validator;
 
 
+import lotto.Utils.Converter;
 import lotto.View.OutputView;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Validation {
+public class ListValidator {
 
-    public static void Integer(String string) {
-        if (!string.matches("-?\\d+")) {
-            OutputView.errorMessage("입력값이 옳지 않습니다.");
-            throw new IllegalArgumentException();
-        }
-    }
+
 
     public static void validateRange(String StringNumber) {
         int number = Integer.parseInt(StringNumber);
@@ -26,7 +21,7 @@ public class Validation {
     }
 
     public static void Overlaped(String[] stringArray) {
-        List<Integer> List = stringArrayToIntegerList(stringArray);
+        List<Integer> List = Converter.stringArrayToIntegerList(stringArray);
         Set<Integer> numSet = new HashSet<>(List);
 
         if (numSet.size() != List.size()) {
@@ -35,14 +30,7 @@ public class Validation {
         }
     }
 
-    public static List<Integer> stringArrayToIntegerList(String[] inputString) {
-        List<Integer> inputList = new ArrayList<Integer>();
 
-        for (String s : inputString) {
-            inputList.add(Integer.parseInt(s));
-        }
-        return inputList;
-    }
 
     public static void length(List<Integer> numbers) {
         if (numbers.size() != 6) {
@@ -51,10 +39,5 @@ public class Validation {
         }
     }
 
-    public static void price(int price) {
-        if (price % 1000 != 0) {
-            OutputView.errorMessage("금액이 올바르지 않습니다.");
-            throw new IllegalArgumentException();
-        }
-    }
+
 }

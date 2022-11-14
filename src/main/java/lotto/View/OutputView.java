@@ -1,5 +1,7 @@
 package lotto.View;
 
+import lotto.Utils.Validator.ListValidator;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -22,9 +24,12 @@ public class OutputView {
     public static void yield(float yield){
         System.out.printf("수익률은 %.2f%% 입니다.%n",yield*100);
     }
-    public static void lottoNumber(List<Integer> lotto) {
-        Collections.sort(lotto);
-        System.out.println(lotto);
+    public static void lottoNumber(List<List<Integer>> lottoBox) {
+        for (List<Integer> lottoNumber : lottoBox) {
+            ListValidator.length(lottoNumber);
+            Collections.sort(lottoNumber);
+            System.out.println(lottoNumber);
+        }
 
     }
 }

@@ -4,14 +4,14 @@ package lotto.Controller;
 import java.util.HashSet;
 import java.util.List;
 
-public class Match {
+public class MatchController {
 
     private final int lottoResults;
     public final List<Integer> winningNumbers;
     public final List<Integer> lotto;
     public final int bonusNumber;
 
-    public Match(List<Integer> winningNumers, List<Integer> lotto, int bounusNumber) {
+    public MatchController(List<Integer> winningNumers, List<Integer> lotto, int bounusNumber) {
         this.winningNumbers= winningNumers;
         this.lotto = lotto;
         this.bonusNumber=bounusNumber;
