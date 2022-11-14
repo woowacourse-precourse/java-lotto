@@ -6,7 +6,7 @@ import lotto.Ranking;
 import java.util.Map;
 
 public class Money {
-  private static int money;
+  private static long money;
   // 입력된 money가 숫자로만 이루어져 있는지.
   public static void checkMoneyIsDigit(String userMoney) {
     for (int i = 0; i < userMoney.length(); i++)
@@ -25,22 +25,22 @@ public class Money {
   }
 
   //1000원으로 나눠서 구매할 로또의 개수 반환
-  public static int countLotto(String userMoney) {
+  public static long countLotto(String userMoney) {
     checkMoneyIsDigit(userMoney);
     money = Integer.parseInt(userMoney);
     checkDividableMoney();
     return (money / 1000);
   }
 
-  public static double percentage(Map<Integer, Integer> maps) {
+  public static String percentage(Map<Integer, Integer> maps) {
     int threeMatchMoney = maps.getOrDefault(Ranking.THREE_MATCH.getRank(), 0) * Ranking.THREE_MATCH.getMoney();
     int fourMatchMoney = maps.getOrDefault(Ranking.FOUR_MATCH.getRank(), 0) * Ranking.FOUR_MATCH.getMoney();
     int fiveMatchMoney = maps.getOrDefault(Ranking.FIVE_MATCH.getRank(), 0) * Ranking.FIVE_MATCH.getMoney();
     int fiveBonusMatchMoney = maps.getOrDefault(Ranking.FIVE_AND_BONUS.getRank(), 0) * Ranking.FIVE_AND_BONUS.getMoney();
     int sixMatchMoney = maps.getOrDefault(Ranking.SIX_MATCH.getRank(), 0) * Ranking.SIX_MATCH.getMoney();
 
-    double sumAll = threeMatchMoney + fourMatchMoney + fiveMatchMoney + fiveBonusMatchMoney + sixMatchMoney + 0.0;
-    double result = sumAll / money;
-    return Math.round(result * 1000) / 10.0;
+    long sumAll = (long) (threeMatchMoney + fourMatchMoney + fiveMatchMoney + fiveBonusMatchMoney + sixMatchMoney + 0.0);
+    double result = ((double) sumAll / money) * 100;
+    return String.format(String.format("%.1f", result));
   }
 }

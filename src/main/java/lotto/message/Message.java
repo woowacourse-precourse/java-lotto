@@ -9,7 +9,7 @@ public class Message {
     System.out.println("구입금액을 입력해 주세요.");
   }
 
-  public static void lottoBuyMessage(int count) {
+  public static void lottoBuyMessage(long count) {
     System.out.println(count + "개를 구매했습니다.");
   }
 
@@ -35,7 +35,7 @@ public class Message {
     }
   }
 
-  public static void ratio(double percentage) {
+  public static void ratio(String percentage) {
     System.out.println("총 수익률은 " + percentage + "%입니다.");
   }
 }

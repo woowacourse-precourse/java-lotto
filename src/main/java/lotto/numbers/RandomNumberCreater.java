@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RandomNumberCreater {
-  public static List<Lotto> generateLottoNumber(int count) {
+  public static List<Lotto> generateLottoNumber(long count) {
 
     List<Lotto> lottoList = new ArrayList<>();
     for (int i = 0; i < count; i++)

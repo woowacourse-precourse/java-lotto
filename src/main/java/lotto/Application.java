@@ -13,7 +13,7 @@ public class Application { // 패키지 분리
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Message.requestInputMoneyMessage();
-        int count = Money.countLotto(UserNumberScan.requestValue());
+        long count = Money.countLotto(UserNumberScan.requestValue());
         Message.lottoBuyMessage(count);
         List<Lotto> countLotto = RandomNumberCreater.generateLottoNumber(count);
         for (int j = 0; j < count; j++) {
