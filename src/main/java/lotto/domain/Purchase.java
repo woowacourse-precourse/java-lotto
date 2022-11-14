@@ -4,21 +4,23 @@ import java.util.regex.Pattern;
 
 public class Purchase {
     public static final int LOTTO_PRICE = 1000;
-
     private static final Pattern MONEY_REGEX = Pattern.compile("^[0-9]*$");
-
     private int ticketNumber;
 
     public Purchase(String input) {
-        this.ticketNumber = calculateTicketNumber(input);
+        setTicketNumber(input);
+        this.ticketNumber = getTicketNumber();
     }
 
-    private int calculateTicketNumber(String input) {
+    private void setTicketNumber(String input) {
         validateInputType(input);
-        final int totalBudget = Integer.parseInt(input);
+        int totalBudget = Integer.parseInt(input);
         validateTotalBudget(totalBudget);
-        this.ticketNumber = totalBudget / LOTTO_PRICE;
-        return ticketNumber;
+        this.ticketNumber = calculateTicketNumber(totalBudget);
+    }
+
+    private static int calculateTicketNumber(int totalBudget) {
+        return totalBudget / LOTTO_PRICE;
     }
 
     private static void validateTotalBudget(int totalBudget) {
@@ -44,11 +46,8 @@ public class Purchase {
         }
     }
 
-    public int calculateTicketNumber() {
-        return ticketNumber;
-    }
-
     public int getTicketNumber() {
         return ticketNumber;
     }
+
 }
