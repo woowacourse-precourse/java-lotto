@@ -54,7 +54,8 @@ public class LottoGameView {
     }
 
     public void printLottos(Lottos lottos) {
-        System.out.println(lottos.getLottoCount() + InformationMessage.PRINT_PURCHASE_COUNT.getMessage());
+        System.out.println(lottos.getLottoCount() +
+                InformationMessage.PRINT_PURCHASE_COUNT.getMessage());
         lottos.getLottos().forEach(this::printSortedLotto);
     }
 
@@ -66,7 +67,8 @@ public class LottoGameView {
         InformationMessage.PRINT_WINNING_RESULT.print();
         InformationMessage.DIVISOR.print();
         Arrays.stream(WinningResultMessage.values())
-                .forEach(message -> message.print(rankCount.getOrDefault(message.getLottoRank(), 0)));
+                .forEach(message ->
+                        message.print(rankCount.getOrDefault(message.getLottoRank(), 0)));
     }
 
     public void printRateOfReturn(double rateOfReturn) {

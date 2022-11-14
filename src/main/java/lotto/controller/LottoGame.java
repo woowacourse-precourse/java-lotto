@@ -4,6 +4,7 @@ import lotto.domain.*;
 import lotto.util.LottoRank;
 import lotto.view.LottoGameView;
 
+import java.util.List;
 import java.util.Map;
 
 public class LottoGame {
@@ -21,11 +22,14 @@ public class LottoGame {
 
             lottoGameView.printLottos(lottos);
 
-            WinningNumber winningNumber = customer.generateWinningNumber(lottoGameView.inputWinningNumbers(), lottoGameView.inputBonusNumber());
-            Map<LottoRank, Integer> rankCounts = lottos.getRankCounts(winningNumber);
+            Map<LottoRank, Integer> rankCounts = lottos.getRankCounts(
+                    customer.generateWinningNumber(
+                            lottoGameView.inputWinningNumbers(),
+                            lottoGameView.inputBonusNumber()));
 
             lottoGameView.printWinningResult(rankCounts);
-            lottoGameView.printRateOfReturn(lottos.getRateOfReturn(lottos.getTotalPrizeMoney(rankCounts)));
+            lottoGameView.printRateOfReturn(
+                    lottos.getRateOfReturn(lottos.getTotalPrizeMoney(rankCounts)));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

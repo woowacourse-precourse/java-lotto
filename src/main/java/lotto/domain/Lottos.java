@@ -30,7 +30,10 @@ public class Lottos {
 
     public Map<LottoRank, Integer> getRankCounts(WinningNumber winningNumber) {
         Map<LottoRank, Integer> rankCount = new HashMap<>();
-        lottos.forEach(lotto -> rankCount.put(lotto.getRank(winningNumber), rankCount.getOrDefault(lotto.getRank(winningNumber), 0) + 1));
+        lottos.forEach(lotto ->
+                rankCount.put(
+                        lotto.getRank(winningNumber),
+                        rankCount.getOrDefault(lotto.getRank(winningNumber), 0) + 1));
         return rankCount;
     }
 
