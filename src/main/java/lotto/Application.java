@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.LottoGroup;
+import lotto.domain.Profit;
 import lotto.domain.RankingType;
 import lotto.domain.WinningNumber;
 import lotto.view.input.Generator;
@@ -32,5 +33,7 @@ public class Application {
         guide.printResultGuide();
         Map<RankingType, Integer> countByRankingType = lottoGroup.getCountByRankingType(winningNumber);
         guide.printResult(countByRankingType);
+        Profit profit = new Profit(countByRankingType, lottoCount * 1000);
+        guide.printProfitRate(profit.getProfitRate());
     }
 }

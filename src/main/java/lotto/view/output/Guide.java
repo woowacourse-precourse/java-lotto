@@ -48,7 +48,7 @@ public class Guide {
             sb.append(getConditionString(rankingTypesKey.getCondition()));
             sb.append(getBonusConditionString(rankingTypesKey.isNeedBonus()));
             sb.append(getPrizeMoney(rankingTypesKey.getPrizeMoney()));
-            sb.append(getConditionString(countByRankingType.get(rankingTypesKey)));
+            sb.append(getCountString(countByRankingType.get(rankingTypesKey)));
             sb.append("\n");
         }
         return sb.toString().trim();
@@ -69,7 +69,11 @@ public class Guide {
         return String.format(" (%,d원)",prizeMoney);
     }
 
-    private String getCount(int count){
+    private String getCountString(int count){
         return String.format(" - %d개", count);
+    }
+
+    public void printProfitRate(double profitRate) {
+        System.out.printf("총 수익률 : %.2f%%\n",profitRate);
     }
 }
