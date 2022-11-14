@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -22,6 +24,12 @@ public class Lotto {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
             }
         }
+    }
+
+    private List<Integer> execptduplicate(List<Integer> numbers){
+        List<Integer> noduplicatenumbers = new ArrayList<>();
+        noduplicatenumbers = numbers.stream().distinct().collect(Collectors.toList());
+        return noduplicatenumbers;
     }
     // TODO: 추가 기능 구현
 }
