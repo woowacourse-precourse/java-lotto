@@ -22,6 +22,17 @@ public enum LottoRank {
         this.hasBonusNumber = hasBonusNumber;
     }
 
+    public static LottoRank findRank(int count, boolean hasBonusNumber) {
+        return Arrays.stream(LottoRank.values())
+                .filter(r -> r.count == count && r.hasBonusNumber == hasBonusNumber)
+                .findAny()
+                .orElse(NONE);
+    }
+    public static List<LottoRank> getWithoutDefault() {
+        return Arrays.stream(LottoRank.values())
+                .filter(rank -> !rank.equals(NONE))
+                .collect(Collectors.toList());
+    }
 
     public long multiple(Integer count) {
         return (long) price * count;
