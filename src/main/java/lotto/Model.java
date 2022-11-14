@@ -85,7 +85,7 @@ public class Model {
     public static List<List<Integer>> PublishLotto(Integer lottoAmount) {
         List<List<Integer>> lottoList = new ArrayList<>();
 
-        for (int i = 1; i < 6; i++) {
+        for (int i = 1; i < lottoAmount+1; i++) {
             lottoList.add(CreateLottoNumber());
         }
 
