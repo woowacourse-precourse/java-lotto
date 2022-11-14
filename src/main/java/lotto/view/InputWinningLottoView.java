@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class inputWinningLottoView extends inputView {
+public class InputWinningLottoView extends InputView {
     private static final Pattern PATTERN = Pattern.compile("(\\d{1,2},){5}\\d{1,2}");
 
     public String getValue() {
