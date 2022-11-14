@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.validator.ErrorConstants;
 
 public enum Prize {
 	FIRST(6, 2_000_000_000),
@@ -8,8 +10,8 @@ public enum Prize {
 	FIFTH(3, 5_000),
 	NONE(0, 0);
 
-	private int winningNumberCount;
-	private int winningPrice;
+	private final int winningNumberCount;
+	private final int winningPrice;
 
 	Prize(int winningNumberCount, int winningPrice) {
 		this.winningNumberCount = winningNumberCount;
@@ -35,7 +37,7 @@ public enum Prize {
 			return NONE;
 		}
 
-		throw new IllegalArgumentException("[ERROR] 당첨 번호와 일치하는 개수에 오류가 있습니다.");
+		throw new IllegalArgumentException(ErrorConstants.ERROR_WINNING_NUMBER_COUNT);
 	}
 
 }
