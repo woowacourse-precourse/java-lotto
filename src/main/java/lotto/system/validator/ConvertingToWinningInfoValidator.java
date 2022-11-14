@@ -17,10 +17,7 @@ public class ConvertingToWinningInfoValidator {
 
     public static void validate(WinningInfoDto target) {
         List<Integer> winningNumbers = convertStringToWinningNumbers(target.getWinningNumbers());
-        validateWinningNumbers(winningNumbers);
-
         Integer bonus = convertStringToBonus(target.getBonus());
-        validateBonus(bonus);
 
         isWinningNumbersContainingBonus(winningNumbers, bonus);
     }
