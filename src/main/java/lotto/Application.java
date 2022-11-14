@@ -1,5 +1,11 @@
 package lotto;
 
+import lotto.model.Bonus;
+import lotto.model.Lotto;
+import lotto.model.Model;
+import lotto.model.Money;
+import lotto.view.View;
+
 import java.util.HashMap;
 import java.util.List;
 
