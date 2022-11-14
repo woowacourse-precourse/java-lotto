@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static lotto.utils.ErrorMessages.WINNING_NUMBERS_NOT_INTEGER;
 import static lotto.utils.ErrorMessages.WINNING_NUMBERS_SEPARATOR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -24,6 +25,15 @@ public class WinningNumbersTest {
         assertThatThrownBy(() -> new WinningNumbers(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(WINNING_NUMBERS_SEPARATOR);
+    }
+
+    @DisplayName("로또 당첨 번호가 숫자가 아닌 경우 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3,a,4,5", "!1,2,3,4,5,6", "a,b,c,d,e,f"})
+    void createWinningNumbersByNotInteger(String numbers) {
+        assertThatThrownBy(() -> new WinningNumbers(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(WINNING_NUMBERS_NOT_INTEGER);
     }
 
     @DisplayName("로또 당첨 번호를 리스트로 변환한다.")
