@@ -46,6 +46,15 @@ public class LottoFacadeImpl implements LottoFacade{
         return result;
     }
 
+    @Override
+    public Integer calculateMoney(List<Integer> result) {
+        return moneyProcessor.calculateWinning(result, RankEnum.FIRST)
+                + moneyProcessor.calculateWinning(result, RankEnum.SECOND)
+                + moneyProcessor.calculateWinning(result, RankEnum.THIRD)
+                + moneyProcessor.calculateWinning(result, RankEnum.FOURTH)
+                + moneyProcessor.calculateWinning(result, RankEnum.FIFTH);
+    }
+
     private int checkBonus(int bonus, Lotto lotto, int count) {
         if (count == RankEnum.SECOND.getMatchNumber()-1) {
             count = checkAndCountNumber(lottoProcessor.matchBonusNumber(bonus, lotto), count);

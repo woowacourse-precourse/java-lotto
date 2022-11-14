@@ -3,6 +3,7 @@ package lotto;
 import lotto.application.LottoFacade;
 import lotto.application.LottoFacadeImpl;
 import lotto.domain.Lotto;
+import lotto.domain.LottoEnum;
 import lotto.domain.RankEnum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
@@ -130,6 +131,34 @@ public class LottoFacadeImplTest {
 
                     assertThat(result).contains(RankEnum.SECOND.getMatchNumber(),RankEnum.FIFTH.getMatchNumber());
                     assertThat(result.size()).isEqualTo(3);
+                })
+        );
+    }
+
+    @TestFactory
+    @DisplayName("LottoFacade calculateMoney Test")
+    Stream<DynamicTest> calculateMoneyTest() {
+        lottoFacade = new LottoFacadeImpl();
+
+        return Stream.of(
+                DynamicTest.dynamicTest("총 당첨금액을 구하는 테스트 Case 2등 3등 5등 5등", () -> {
+                    final List<Integer> winningCount = List.of(5,6,3,3);
+                    Integer result = lottoFacade.calculateMoney(winningCount);
+
+                    assertThat(result)
+                            .isEqualTo(RankEnum.SECOND.getWinnings()
+                                    +RankEnum.THIRD.getWinnings()
+                                    +RankEnum.FIFTH.getWinnings()
+                                    +RankEnum.FIFTH.getWinnings());
+                }),
+                DynamicTest.dynamicTest("총 당첨금액을 구하는 테스트 Case 1등 4등 4등", () -> {
+                    final List<Integer> winningCount = List.of(7,4,4,2,1);
+                    Integer result = lottoFacade.calculateMoney(winningCount);
+
+                    assertThat(result)
+                            .isEqualTo(RankEnum.FIRST.getWinnings()
+                                    +RankEnum.FOURTH.getWinnings()
+                                    +RankEnum.FOURTH.getWinnings());
                 })
         );
     }

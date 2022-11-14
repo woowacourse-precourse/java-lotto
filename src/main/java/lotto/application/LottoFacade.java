@@ -13,4 +13,6 @@ public interface LottoFacade {
      String getMargin(Integer before, Integer after);
 
      List<Integer> checkWinning(Lotto winLotto, List<Lotto> clientLotto, Integer bonus);
+
+     Integer calculateMoney(List<Integer> result);
 }
