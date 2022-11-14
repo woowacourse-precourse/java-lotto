@@ -1,11 +1,17 @@
 package Domain;
 
+import Controller.Validation;
+import View.InputView;
+import View.OutputView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+
 public class LottoList {
-    tatic final int LOTTO_PRICE = 1000;
+    static final int LOTTO_PRICE = 1000;
 
     private int lottoPlayNumber;
     private List<Lotto> lottoList;
@@ -27,7 +33,7 @@ public class LottoList {
     private List<Lotto> makeRandomLottoNumbers(int lottoPlayNumber){
         List<Lotto> lottoList = new ArrayList<>();
         for(int playLottoCount=0; playLottoCount<lottoPlayNumber; playLottoCount++){
-            List<Integer> playLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> playLotto = pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(playLotto);
             lottoList.add(new Lotto(playLotto));
         }
