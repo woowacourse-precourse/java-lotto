@@ -3,12 +3,12 @@ package lotto.generator;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.Lotto;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.global.LottoConstants.*;
+import static lotto.global.LottoConstants.MAX_LOTTO_NUMBER;
+import static lotto.global.LottoConstants.MAX_LOTTO_NUMBER_COUNT;
+import static lotto.global.LottoConstants.MIN_LOTTO_NUMBER;
 
 public class RandomLottoGenerator {
 

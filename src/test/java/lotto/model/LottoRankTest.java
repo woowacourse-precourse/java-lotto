@@ -1,11 +1,9 @@
 package lotto.model;
 
-import lotto.model.LottoRank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("LottoRank Unit Test")
 class LottoRankTest {

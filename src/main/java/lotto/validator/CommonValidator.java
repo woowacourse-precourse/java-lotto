@@ -1,7 +1,6 @@
 package lotto.validator;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static lotto.global.ExceptionConstants.CANNOT_SATISFY_NUMBER_RANGE;
 import static lotto.global.ExceptionConstants.CAN_ONLY_INPUT_NUMBER;
