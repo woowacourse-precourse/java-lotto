@@ -69,11 +69,11 @@ public class Controller {
         for(int index = 0; index < randomlotto.size(); index++) {
             int duplicatenum = controller.countWin(winninglotto, randomlotto.get(index));
 
-            if(duplicatenum == 5) {
+            if (duplicatenum == 5) {
                 controller.judgeBonusNum(winninglotto, bonusnum, resultchart);
             }
 
-            if(duplicatenum != 5) {
+            if (duplicatenum != 5) {
                 resultchart.replace(duplicatenum, resultchart.get(duplicatenum) + 1);
             }
         }
@@ -88,11 +88,11 @@ public class Controller {
     }
 
     void judgeBonusNum(Lotto winninglotto, int bonusnum, HashMap<Integer, Integer> resultchart) {
-        if(winninglotto.getNumbers().contains(bonusnum)) {
+        if (winninglotto.getNumbers().contains(bonusnum)) {
             resultchart.replace(7, resultchart.get(7) + 1);
         }
 
-        if(winninglotto.getNumbers().contains(bonusnum) == false) {
+        if (winninglotto.getNumbers().contains(bonusnum) == false) {
             resultchart.replace(5, resultchart.get(5) + 1);
         }
     }

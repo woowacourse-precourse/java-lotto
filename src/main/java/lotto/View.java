@@ -15,14 +15,15 @@ public class View {
     private static final String LAST_STRING = "개";
 
     View(){
+
     }
 
     int inputMoneyAmount() {
         System.out.println(INPUT_AMOUNT_STRING);
         int money = 0;
-        try{
+        try {
             money = Integer.parseInt(Console.readLine());
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("[ERROR] : 올바른 값을 입력해주세요.");
         }
         System.out.println();
