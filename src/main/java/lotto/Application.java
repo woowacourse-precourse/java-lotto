@@ -37,7 +37,7 @@ public class Application {
         String input = Console.readLine();
 
         for(String number:input.split(",")){
-
+            winningnumbers.add(Integer.valueOf(number));
         }
         return winningnumbers;
     }
