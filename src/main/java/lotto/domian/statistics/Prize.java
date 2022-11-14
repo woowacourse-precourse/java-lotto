@@ -33,4 +33,11 @@ public enum Prize {
     public String phrase() {
         return phrase;
     }
+
+    private static final Map<Prize, Integer> BY_GRADENUM =
+            Stream.of(values()).collect(Collectors.toMap(Function.identity(), Prize::gradeNum));
+
+    public static Integer getGradeNum(Prize grade) {
+        return BY_GRADENUM.get(grade);
+    }
 }
