@@ -24,4 +24,12 @@ class LottoValidationUtilsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 로또 번호에는 중복 된 숫자가 없어야합니다.");
     }
+
+    @DisplayName("로또 번호 중 0이 있으면 예외 발생")
+    @Test
+    void validateRange() {
+        assertThatThrownBy(() -> LottoValidationUtils.validate(List.of(0, 1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 로또 번호는 1~45 사이의 숫자 이어야 합니다.");
+    }
 }
