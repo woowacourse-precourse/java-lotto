@@ -8,8 +8,8 @@ public class Lotto {
     public Lotto(List<Integer> numbers) throws IllegalArgumentException {
         validate(numbers);
         checkDuplicate(numbers);
-       // orderLotto(numbers);
-        this.numbers = numbers;
+        List<Integer> orderNum = orderLotto(numbers);
+        this.numbers = orderNum;
     }
 
     private void validate(List<Integer> numbers) {
@@ -26,11 +26,16 @@ public class Lotto {
         }
     }
     // TODO: 추가 기능 구현
-/*
-    private void orderLotto(List<Integer> numbers){
-        Collections.sort(numbers);
+
+    private List<Integer> orderLotto(List<Integer> numbers){
+        List<Integer> orderNum = new ArrayList<>();
+        for(Integer integer : numbers){
+            orderNum.add(integer);
+        }
+        Collections.sort(orderNum);
+        return orderNum;
     }
-*/
+
     public List<Integer> getLotto(){
         return numbers;
     }
