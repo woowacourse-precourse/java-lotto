@@ -15,7 +15,9 @@ public class LottoResult {
             result[index]++;
         }
 
-        return Arrays.stream(result).boxed().collect(Collectors.toList());
+        return Arrays.stream(result)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     public static int getLottoPlace(List<Integer> lottoNumbers, List<Integer> winningNumbers, Integer bonusNumber) {
