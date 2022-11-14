@@ -27,7 +27,7 @@ public class Application {
                 lottoCalculator.addRankCount(lottoCalculator.compare(lotto.getNumbers(), w.getNumbers(), w.getBonusNumber()));
             }
 
-            lottoManager.printWinningDetails(lottoCalculator.getRankCount(), lottoCalculator.RateOfReturn(lottoManager.getPurchaseMoney()));
+            lottoManager.printWinningDetails(lottoCalculator.getRankCount(), lottoCalculator.RateOfReturn(lottoCount * 1000));
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR]" + e.getMessage());
         }

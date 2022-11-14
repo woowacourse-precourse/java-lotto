@@ -6,19 +6,13 @@ import java.util.List;
 import lotto.model.Lotto;
 
 public class LottoManager {
-    private int purchaseMoney;
-
-    public int getPurchaseMoney() {
-        return purchaseMoney;
-    }
-
     public int inputPurchaseMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
         checkNumber(money);
-        purchaseMoney = Integer.parseInt(money);
-        checkAdequateMoney(purchaseMoney);
-        return purchaseMoney / 1000;
+
+        checkAdequateMoney(Integer.parseInt(money));
+        return Integer.parseInt(money) / 1000;
     }
 
     public void checkNumber(String number) {
