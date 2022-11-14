@@ -14,12 +14,12 @@
   - [O] 구입한 내역의 숫자와 당첨숫자 비교 결과를 반환합니다.(보너스숫자제외) - CompareNumber#jugementNumber()
   - [O] 보너스숫자를 포함한 결과를 리스트에 담아 반환합니다. - CompareNumberWithBonus#jugementNumberWithBonus()
 
-- 당첨 내용 출력 기능
+- 당첨 내용 계산 및 출력 기능
   - [O] 구매한 개수를 출력합니다. - PrintInputMoneyGenerator#printInputMoney()
   - [O] 구입 한 번호를 리스트 형식으로 모두 출력합니다. - UserNumberGenerator#createRandomNumbers()
   - [O] 당첨 통계 내역을 출력합니다. - PrintWinnerStatisticsGenerator#printWinner()
-  - [] 
-  - [] 수익률을 구매비용과 당첨비용을 비교하여 % 형식으로 출력합니다. - 
+  - [O] 수익률을 구매비용과 당첨비용을 계산합니다. - EarningRateGenerator#printEarningRate()
+  - [O] 수익률을 % 형식으로 출력합니다. - CalculateTotalEarningGenerator#calculateTotalEarning()
 
 
 
