@@ -8,6 +8,7 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoGame {
@@ -38,6 +39,7 @@ public class LottoGame {
         for(int i=0; i< money.getLottoCount(); i++) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             if (!lotto.getLotto().isEmpty()) {
+                Collections.sort(lotto.getLotto());
                 lottos.add(lotto);
             }
         }
