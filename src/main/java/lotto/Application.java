@@ -18,9 +18,18 @@ public class Application {
     }
     private static void generateLotto(){ //가격 입력받아서 로또들 생성
         System.out.println("구입금액을 입력해 주세요.");
-        int money = Integer.parseInt(Console.readLine());
-        initmoney = money;
-        for(int i = 0; i < money / 1000; i++){
+        try{
+            String tmp = Console.readLine();
+            System.out.println(tmp);
+            int money = Integer.parseInt(tmp);
+            initmoney = money;
+            System.out.println(initmoney);
+        } catch(Exception e){
+            System.out.println("[ERROR]");
+            throw new IllegalArgumentException();
+        }
+        lottos = new ArrayList<>();
+        for(int i = 0; i < initmoney / 1000; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottos.add(new Lotto(numbers));
         }
@@ -43,7 +52,8 @@ public class Application {
         truenum = convertTrueNum(lottolist);
     }
     private static List<Integer> calcFinal(){ //로또 보고 몇등인지 계산하고 저장
-        List<Integer> tmpres = List.of(new Integer[6]);
+        List<Integer> tmpres = new ArrayList<>(6);
+        for(int i = 0; i < 6; i++) tmpres.add(0);
         for(int i = 0; i < lottos.size(); i++){
             LottoRank rr = lottos.get(i).getRtn(truenum,bonusnum);
             tmpres.set(rr.getValue(),tmpres.get(rr.getValue())+1);
@@ -52,18 +62,19 @@ public class Application {
     }
     private static void printFinal(){ //마지막 결과 출력
         System.out.println("당첨 통계\n---\n");
-        int ressum = 0;
+        long ressum = 0;
         System.out.printf("3개 일치 (5,000원) - %d개\n", res.get(LottoRank.Fifth.getValue()));
         ressum += 5000 * res.get(LottoRank.Fifth.getValue());
         System.out.printf("4개 일치 (50,000원) - %d개\n",res.get(LottoRank.Fourth.getValue()));
-        ressum += 50000 * res.get(LottoRank.Fifth.getValue());
+        ressum += 50000 * res.get(LottoRank.Fourth.getValue());
         System.out.printf("5개 일치 (1,500,000원) - %d개\n",res.get(LottoRank.Third.getValue()));
-        ressum += 1500000 * res.get(LottoRank.Fifth.getValue());
+        ressum += 1500000 * res.get(LottoRank.Third.getValue());
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",res.get(LottoRank.Second.getValue()));
-        ressum += 30000000 * res.get(LottoRank.Fifth.getValue());
+        ressum += 30000000 * res.get(LottoRank.Second.getValue());
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n",res.get(LottoRank.First.getValue()));
-        ressum += 2000000000 * res.get(LottoRank.Fifth.getValue());
-        System.out.printf("총 수익률은 %1f%입니다.", ressum / initmoney);
+        ressum += (long)2000000000 * res.get(LottoRank.First.getValue());
+        //System.out.println(ressum);
+        System.out.printf("총 수익률은 %.1f%% 입니다.", ((double)(ressum)) / initmoney);
     }
     public static void main(String[] args) {
         //로또 생성
