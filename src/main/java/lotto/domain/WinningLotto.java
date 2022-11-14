@@ -22,6 +22,11 @@ public class WinningLotto {
         if (isInvalidNumber(bonusNumber)) {
             raiseInvalidNumberException();
         }
+
+        if (winningNumbers.contains(bonusNumber)) {
+            System.out.println(ExceptionMessage.DUPLICATE_NUMBER.getMessage());
+            throw new IllegalArgumentException();
+        }
     }
 
     private void raiseInvalidNumberException() {
