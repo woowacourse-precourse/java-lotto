@@ -22,7 +22,7 @@ public class LottoAmount {
         return DECIMAL * prizeSum / amount;
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings("unused")//
 	private int convertToInt(String input) {
         try {
             return Integer.parseInt(input);
