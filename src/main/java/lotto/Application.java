@@ -53,7 +53,7 @@ public class Application {
 
     private static void getBonusNumber() throws Exception {
         ConsoleOutput.printGuide(ConsoleOutput.BONUS_NUMBER);
-        bonusNumber = ConsoleInput.getBonusNumber();
+        bonusNumber = ConsoleInput.getBonusNumber(winningNumbers);
         System.out.println();
     }
 

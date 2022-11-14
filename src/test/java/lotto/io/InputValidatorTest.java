@@ -2,6 +2,8 @@ package lotto.io;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class InputValidatorTest {
@@ -29,11 +31,12 @@ class InputValidatorTest {
     @Test
     void testBonusNumber() {
         assertThrows(IllegalArgumentException.class, () -> {
-           InputValidator.validateBonusNumber("0");
-           InputValidator.validateBonusNumber("-1");
-           InputValidator.validateBonusNumber("46");
+           InputValidator.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6), "0");
+           InputValidator.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6), "-1");
+           InputValidator.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6), "46");
+           InputValidator.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6), "3");
         });
-        assertDoesNotThrow(() -> InputValidator.validateBonusNumber("1"));
-        assertDoesNotThrow(() -> InputValidator.validateBonusNumber("45"));
+        assertDoesNotThrow(() -> InputValidator.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6),"7"));
+        assertDoesNotThrow(() -> InputValidator.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6),"45"));
     }
 }

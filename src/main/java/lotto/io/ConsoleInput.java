@@ -12,9 +12,9 @@ public class ConsoleInput {
         return Integer.parseInt(amount);
     }
 
-    public static int getBonusNumber() throws Exception {
+    public static int getBonusNumber(List<Integer> winningNumbers) throws Exception {
         String number = Console.readLine();
-        InputValidator.validateBonusNumber(number);
+        InputValidator.validateBonusNumber(winningNumbers, number);
         return Integer.parseInt(number);
     }
 
