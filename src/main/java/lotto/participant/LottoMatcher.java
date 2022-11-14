@@ -16,9 +16,7 @@ public class LottoMatcher {
 
     public Map<Rank, Integer> matchAllLottos(List<Lotto> publishedLottos, WinningLotto winningLotto) {
         rankCounts = new HashMap<>();
-        for (Lotto publishedLotto : publishedLottos) {
-            matchLotto(publishedLotto, winningLotto);
-        }
+        publishedLottos.forEach(publishedLotto -> matchLotto(publishedLotto, winningLotto));
         return rankCounts;
     }
 
