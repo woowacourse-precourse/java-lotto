@@ -1,7 +1,7 @@
 package utils;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
+import model.Lotto;
 import model.Game;
 
 import java.util.ArrayList;
