@@ -21,6 +21,7 @@ public class Shop {
     }
 
     public List<Lotto> saleLottery() {
+
         List<Lotto> lotteryTickets = publishLotteryTicket(chargeMoney());
 
         showLotteryTickets(lotteryTickets);

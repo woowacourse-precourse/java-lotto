@@ -9,8 +9,12 @@ public class Application {
         LotteryMachine lotteryMachine = LotteryMachine.getInstance();
         Award award = Award.getInstance();
 
-        List<Lotto> myLotteries = shop.saleLottery();
-        lotteryMachine.setWinning();
-        award.compileStatistics(myLotteries);
+        try {
+            List<Lotto> myLotteries = shop.saleLottery();
+            lotteryMachine.setWinning();
+            award.compileStatistics(myLotteries);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
