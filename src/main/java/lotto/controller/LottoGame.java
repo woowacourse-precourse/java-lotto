@@ -10,11 +10,9 @@ public class LottoGame {
 
     private final User user;
 
-
     public LottoGame(User user) {
         this.user = user;
     }
-
 
     public void play() {
         try {
@@ -27,13 +25,11 @@ public class LottoGame {
 
     private void run() {
         PurchaseLottos purchaseLottos = purchaseLotto();
-
         user.displayPurchaseResult(purchaseLottos);
 
         WinningLotto winningLotto = inputWinningLotto();
 
         WinningStatistics winningStatistics = createWinningStatistics(purchaseLottos, winningLotto);
-
         user.displayGameResult(winningStatistics);
     }
 
