@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
-    private final int moneyUnit = 1000;
-    private final int minNumber = 1;
-    private final int maxNumber = 45;
-    private final int numberCount = 6;
+    private static final int moneyUnit = 1000;
+    private static final int minNumber = 1;
+    private static final int maxNumber = 45;
+    private static final int numberCount = 6;
 
     public static void main(String[] args) {
         Ui ui = new Ui();
