@@ -5,6 +5,8 @@ import lotto.LottoRank;
 import lotto.LottoResult;
 import lotto.Lottos;
 
+import java.util.Comparator;
+
 public class OutputView {
     private static final String LOTTO_PURCHASE_COUNT_OUTPUT_MESSAGE = "%s개를 구매했습니다.\n";
     private static final String LOTTO_RESULT_OUTPUT_MESSAGE = "당첨 통계\n---";
@@ -12,7 +14,7 @@ public class OutputView {
     private static final String LOTTO_FOURTH_OUTPUT_MESSAGE = "4개 일치 (50,000원) - %d개\n";
     private static final String LOTTO_THIRD_OUTPUT_MESSAGE = "5개 일치 (1,500,000원) - %d개\n";
     private static final String LOTTO_SECOND_OUTPUT_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
-    private static final String LOTTO_FIRST_OUTPUT_MESSAGE = "6개 일치 (2,000,000,000)원 - %d개\n";
+    private static final String LOTTO_FIRST_OUTPUT_MESSAGE = "6개 일치 (2,000,000,000원) - %d개\n";
     private static final String LOTTO_YIELD_OUTPUT_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
 
     public static void printLottoCount(int lottoCount) {

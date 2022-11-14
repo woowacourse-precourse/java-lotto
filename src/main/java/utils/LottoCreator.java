@@ -3,6 +3,7 @@ package utils;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,8 +13,11 @@ public class LottoCreator {
     private static final int END_INCLUSIVE = 45;
 
     public static Lotto createLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_NUMBER_COUNT);
-        Collections.sort(numbers);
-        return new Lotto(numbers);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_NUMBER_COUNT);
+        List<Integer> lottoNumbers = new ArrayList<>(randomNumbers);
+
+        Collections.sort(lottoNumbers);
+
+        return new Lotto(lottoNumbers);
     }
 }
