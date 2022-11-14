@@ -48,4 +48,8 @@ public class Player {
             OutputView.printLottoNumber(lotto);
         }
     }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }
