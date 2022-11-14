@@ -3,6 +3,7 @@
   - [ ] 1~45의 서로다른 임의의 수 6개를 생성한다. -createLottoNumbers()
     - [ ] camp.nextstep.edu.missionutils.Randoms의 pickUniqueNumbersInRange()를 활용한다.
     - [ ] 오름차순으로 정렬하여 출력한다.
+  - [ ] 돈으로 몇개의 로또를 살 수 있는지 계산한다. - countTimes()
   - [ ] 구입 금액을 1000으로 나눈 몫 만큼 리스트를 생성한다. - createLottos()
 
 
