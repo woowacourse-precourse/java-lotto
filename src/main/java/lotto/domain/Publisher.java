@@ -11,7 +11,6 @@ import static lotto.util.LottoCode.*;
 public class Publisher {
 
     public List<Lotto> getLottoGroup(int money) {
-        validate(money);
 
         int count = getLottoCount(money);
 
@@ -19,13 +18,7 @@ public class Publisher {
                 .mapToObj(index -> createLotto())
                 .collect(Collectors.toList());
     }
-
-    private void validate(int money) {
-        if (money % LOTTO_PRICE.getCode() != 0) {
-            throw new IllegalArgumentException();
-        }
-    }
-
+    
     private Lotto createLotto() {
         List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(
                 MIN_LOTTO_NUMBER.getCode(),
