@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.model;
 
 import lotto.domain.constant.LottoInfo;
 import lotto.domain.io.Multiple1000Validator;
