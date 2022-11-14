@@ -1,15 +1,21 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.lotto.domain.Lotto;
+import lotto.domain.lotto.presentation.LottoController;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -59,6 +65,23 @@ class ApplicationTest extends NsTest {
     @Test
     void printGameStart() {
         assertThat(output().contains("구입금액을 입력해 주세요."));
+    }
+
+    @DisplayName("1000원을 투자하고 숫자 4개 일치시 수익률은 50000.00%이다.")
+    @Test
+    void isBenefit5000Percent() {
+        // given
+        LottoController lottoController = new LottoController();
+        List<Lotto> lottos = new ArrayList<>();
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        Lotto prizeLotto = new Lotto(List.of(1, 2, 3, 4, 21, 22));
+        int bonusNumber = 44;
+
+        // when
+        Double benefit = lottoController.compareNumbers(lottos, prizeLotto, bonusNumber);
+
+        // then
+        Assertions.assertEquals(benefit, 50000.00);
     }
 
     @Override
