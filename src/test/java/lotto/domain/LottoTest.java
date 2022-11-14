@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LottoTest {
 
     @DisplayName("한개의 로또를 오름차순으로 정렬하는 기능")
-    @CsvSource(value = {"0:4", "1:7", "2:9", "3:10", "4:12", "5:14"}, delimiter = ':')
+    @CsvSource(value = {"0,4", "1,7", "2,9", "3,10", "4,12", "5,14"})
     @ParameterizedTest
      void sortLottoNumber(int index, int answer) {
         List<Integer> numbers = new ArrayList<>(List.of(7, 4, 9, 10, 14, 12));
@@ -24,5 +24,14 @@ public class LottoTest {
         List<Integer> sortNumbers = responseDto.getLottoNumber();
 
         assertThat(sortNumbers.get(index)).isEqualTo(answer);
+    }
+
+    @DisplayName("두개의 로또에서 겹치는 숫자 찾기")
+    @Test
+    void countContainsNumber() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto otherLotto = new Lotto(List.of(1, 2, 3, 7, 8, 9));
+
+        assertThat(lotto.countContainsNumber(otherLotto)).isEqualTo(3);
     }
 }
