@@ -13,6 +13,7 @@ public class LottoController {
         try {
             lottoService.buyLotto(money);
             initWinningLotto();
+            initBonusNumber();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -32,5 +33,15 @@ public class LottoController {
     public void showUserLottoInfo() {
         OutputView.printPurchasedLotto(lottoService.getUserLotties().size());
         OutputView.printLottoNumbers(lottoService.getUserLotties());
+    }
+
+    public void initBonusNumber() {
+        String bonusNumber = InputView.inputBonusNumber();
+
+        try {
+            lottoService.saveBonusNumber(bonusNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
