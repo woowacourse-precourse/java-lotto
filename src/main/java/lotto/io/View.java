@@ -8,14 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public class View {
-    private static final String REQUEST_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
-    private static final String PURCHASE_MESSAGE = "개를 구매했습니다.";
-    private static final String GET_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
-    private static final String GET_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    private static final String RESULT_INFO = "당첨 통계\n---";
-    private static final String EACH_RESULT = "%d개 일치 (%,d원) - %d개";
-    private static final String BONUS_RESULT = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개";
-    private static final String YIELD_RESULT = "총 수익률은 %.1f%%입니다.";
     private final Input input;
     private final Output output;
 
@@ -25,7 +17,7 @@ public class View {
     }
 
     public void requestAmount() {
-        output.printOutput(REQUEST_PURCHASE_AMOUNT);
+        output.printOutput(Message.REQUEST_PURCHASE_AMOUNT.toString());
     }
 
     public String getInput() {
@@ -38,15 +30,15 @@ public class View {
     }
 
     private void showCount(int count) {
-        output.printOutput(count + PURCHASE_MESSAGE);
+        output.printOutput(count + Message.PURCHASE_MESSAGE.toString());
     }
 
     public void requestNumbers() {
-        output.printOutput(GET_LOTTO_NUMBER);
+        output.printOutput(Message.GET_LOTTO_NUMBER.toString());
     }
 
     public void requestBonus() {
-        output.printOutput(GET_BONUS_NUMBER);
+        output.printOutput(Message.GET_BONUS_NUMBER.toString());
     }
 
     public void printError(String message) {
@@ -54,7 +46,7 @@ public class View {
     }
 
     public void showResult(LottoResult lottoResult) {
-        output.printOutput(RESULT_INFO);
+        output.printOutput(Message.RESULT_INFO.toString());
         lottoResult.getRank().entrySet()
                 .stream()
                 .filter(result -> !result.getKey().equals(LottoRank.SIXTH))
@@ -64,7 +56,7 @@ public class View {
 
     private void showYield(double yield) {
         output.printOutput(
-                String.format(YIELD_RESULT, yield));
+                String.format(Message.YIELD_RESULT.toString(), yield));
     }
 
     private void showAllResult(Map.Entry<LottoRank, Integer> result) {
@@ -77,13 +69,13 @@ public class View {
 
     private void showBonus(Map.Entry<LottoRank, Integer> result) {
         output.printOutput(
-                String.format(BONUS_RESULT, result.getKey().getMatchCount(),
+                String.format(Message.BONUS_RESULT.toString(), result.getKey().getMatchCount(),
                         result.getKey().getReward(), result.getValue()));
     }
 
     private void showCommon(Map.Entry<LottoRank, Integer> result) {
         output.printOutput(
-                String.format(EACH_RESULT, result.getKey().getMatchCount(),
+                String.format(Message.EACH_RESULT.toString(), result.getKey().getMatchCount(),
                         result.getKey().getReward(), result.getValue()));
     }
 }
