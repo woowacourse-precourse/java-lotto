@@ -8,9 +8,10 @@ public class Winning {
     private static final String LOTTO_OUT_OF_RANGE_ERROR = "로또 번호는 6개여야 합니다.";
     private static final String WINNING_NOT_NUMBER_ERROR = "입력 값이 숫자가 아닙니다.";
     private static final String WINNING_NOT_IN_RANGE_ERROR = "당첨번호는 1 ~ 45 사이의 수 이어야 합니다.";
-    private static final String WINNING_DUPLICATED = "당첨번호에 중복이 있습니다.";
-    private static final String BONUS_NUMBER_NOT_NUMBER = "보너스 번호는 숫자여야 합니다.";
-    private static final String BONUS_NUMBER_OUT_OF_RANGE = "보너스 번호는 1 ~ 45 사이의 수 이어야 합니다.";
+    private static final String WINNING_DUPLICATED_ERROR = "당첨번호에 중복이 있습니다.";
+    private static final String BONUS_NUMBER_NOT_NUMBER_ERROR = "보너스 번호는 숫자여야 합니다.";
+    private static final String BONUS_NUMBER_OUT_OF_RANGE_ERROR = "보너스 번호는 1 ~ 45 사이의 수 이어야 합니다.";
+    private static final String BONUS_NUMBER_DUPLICATED_ERROR = "보너스 번호와 당첨 번호가 중복됩니다.";
 
     public Winning() {
     }
@@ -30,7 +31,13 @@ public class Winning {
     }
 
     public static void prize(List<Lotto> lottoTickets, List<Integer> winningNumber, String bonusNumber) {
+        validateBonusNumber(winningNumber, bonusNumber);
+    }
+
+    private static void validateBonusNumber(List<Integer> winningNumber, String bonusNumber) {
         isValidateBonusNumber(bonusNumber);
+        isValidateBonusNumberRange(bonusNumber);
+        isDuplicatedBonusNumber(winningNumber, bonusNumber);
     }
 
     private static void validateNumbers(List<Integer> winningNumbers) {
@@ -67,7 +74,7 @@ public class Winning {
 
     private static void isDuplicatedWinningNumber(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != 6) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + WINNING_DUPLICATED);
+            throw new IllegalArgumentException(ERROR_MESSAGE + WINNING_DUPLICATED_ERROR);
         }
     }
 
@@ -75,7 +82,7 @@ public class Winning {
         try {
             Integer.parseInt(bonusNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + BONUS_NUMBER_NOT_NUMBER);
+            throw new IllegalArgumentException(ERROR_MESSAGE + BONUS_NUMBER_NOT_NUMBER_ERROR);
         }
     }
 
@@ -83,7 +90,16 @@ public class Winning {
         int number = Integer.parseInt(bonusNumber);
 
         if (number < 1 || number > 45) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + BONUS_NUMBER_OUT_OF_RANGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + BONUS_NUMBER_OUT_OF_RANGE_ERROR);
+        }
+    }
+
+    private static void isDuplicatedBonusNumber(List<Integer> winningNumbers, String bonusNumber) {
+        int number = Integer.parseInt(bonusNumber);
+        boolean contains = winningNumbers.contains(number);
+
+        if(contains) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + BONUS_NUMBER_DUPLICATED_ERROR);
         }
     }
 }
