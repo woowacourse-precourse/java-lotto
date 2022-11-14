@@ -45,7 +45,8 @@ public class Lotto {
         for (int i = 0; i < LOTTO_SIZE; i++) {
             int current = numbers.get(i);
 
-            if (ReferenceValue.LOTTO_START_RANGE > current || ReferenceValue.LOTTO_END_RANGE < current) {
+            if (ReferenceValue.Lotto.START_RANGE.getValue() > current
+                    || ReferenceValue.Lotto.END_RANGE.getValue() < current) {
                 Record.printRangeError();
                 throw new IllegalArgumentException();
             }
@@ -64,7 +65,7 @@ public class Lotto {
         List<Integer> lottoNumbers = new ArrayList<>();
         String[] numbers = input.split(",");
 
-        for (int i = 0; i < ReferenceValue.LOTTO_SIZE; i++) {
+        for (int i = 0; i < ReferenceValue.Lotto.SIZE.getValue(); i++) {
             Game.checkNumberError(numbers[i]);
             int number = Integer.valueOf(numbers[i]);
             lottoNumbers.add(number);
@@ -77,7 +78,7 @@ public class Lotto {
 
         List<Integer> result = new ArrayList<>();
 
-        for (int i = 0; i < ReferenceValue.LOTTO_SIZE; i++) {
+        for (int i = 0; i < ReferenceValue.Lotto.SIZE.getValue(); i++) {
             int number = winningNumbers.getLottoNumber(i);
             result = addResult(result, number);
         }
@@ -89,7 +90,7 @@ public class Lotto {
 
     private List<Integer> addBonus(List<Integer> result, int number) {
         if (numbers.contains(number)) {
-            result.add(777);
+            result.add(ReferenceValue.Lotto.IS_BONUS.getValue());
         }
         return result;
     }

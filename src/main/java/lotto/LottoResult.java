@@ -14,18 +14,21 @@ public class LottoResult {
     public boolean getIsBonus() {
         return isBonus;
     }
+    public List<Integer> getResult() {
+        return result;
+    }
     public int size() {
         return result.size();
     }
     private boolean isBonusResult(List<Integer> result) {
-        if (result.contains(ReferenceValue.IS_LOTTO_BONUS_NUMBER)) {
+        if (result.contains(ReferenceValue.Lotto.IS_BONUS.getValue())) {
             return true;
         }
         return false;
     }
     private List<Integer> splitBonusResult(List<Integer> result, boolean isBonus) {
         if (isBonus) {
-            result.remove(ReferenceValue.IS_LOTTO_BONUS_NUMBER);
+            result.remove(ReferenceValue.Lotto.IS_BONUS.getValue());
         }
         return result;
     }

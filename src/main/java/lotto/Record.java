@@ -4,65 +4,43 @@ import java.util.List;
 
 public class Record {
 
-    private static final String ENTER_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String ENTER_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
-    private static final String ENTER_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
-
     private static final String BUY_MESSAGE = "개를 구매했습니다.";
-
-    private static final String WINNING_STATS_BORDER = "당첨 통계" + "\n" + "---";
-    private static final String THREE_MATCHES_MESSAGE = "3개 일치 (5,000원) - ";
-    private static final String FOUR_MATCHES_MESSAGE = "4개 일치 (50,000원) - ";
-    private static final String FIVE_MATCHES_MESSAGE = "5개 일치 (1,500,000원) - ";
-    private static final String FIVE_BONUS_MATCHES_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-    private static final String SIX_MATCHES_MESSAGE = "6개 일치 (2,000,000,000원) - ";
-    private static final String TOTAL_RETURN_MESSAGE = " 총 수익률은 ";
     private static final String COUNT_MESSAGE = "개";
-    private static final String PERCENT_MESSAGE = "%입니다.";
-
-
-    private static final String ERROR_NUMBER_MESSAGE = ReferenceValue.IS_ERROR + " 입력값이 숫자로 바뀔 수 없습니다.";
-    private static final String ERROR_PRICE_MESSAGE = ReferenceValue.IS_ERROR + " 입력값이 1,000 으로 나눠떨어져야 합니다.";
-    private static final String ERROR_MINIMUM_MESSAGE = ReferenceValue.IS_ERROR + " 입력값이 1,000 이상 되야합니다.";
-    private static final String ERROR_SIZE_MESSAGE = ReferenceValue.IS_ERROR + " 입력 크기가 초과했습니다.";
-    private static final String ERROR_DUPLICATE_MESSAGE = ReferenceValue.IS_ERROR + " 중복된 숫자가 있습니다.";
-    private static final String ERROR_RANGE_MESSAGE = ReferenceValue.IS_ERROR + " 범위를 벗어난 숫자가 있습니다.";
-    private static final String ERROR_BONUS_DUPLICATE_MESSAGE = ReferenceValue.IS_ERROR + " 이미 당첨 번호에 해당 숫자가 있습니다.";
 
     public static void printNumberError() {
-        System.out.print(ERROR_NUMBER_MESSAGE);
+        System.out.println(ErrorMessage.IS_NUMBER.getMessage());
     }
 
     public static void printPriceError() {
-        System.out.print(ERROR_PRICE_MESSAGE);
+        System.out.println(ErrorMessage.DIVIDED_PRICE.getMessage());
     }
 
     public static void printMinimumError() {
-        System.out.print(ERROR_MINIMUM_MESSAGE);
+        System.out.println(ErrorMessage.MINIMUM_PRICE.getMessage());
     }
 
     public static void printSizeError() {
-        System.out.println(ERROR_SIZE_MESSAGE);
+        System.out.println(ErrorMessage.EXCEED_SIZE.getMessage());
     }
 
     public static void printRangeError() {
-        System.out.println(ERROR_RANGE_MESSAGE);
+        System.out.println(ErrorMessage.OUT_OF_RANGE.getMessage());
     }
 
     public static void printBonusDuplicateError() {
-        System.out.println(ERROR_BONUS_DUPLICATE_MESSAGE);
+        System.out.println(ErrorMessage.DUPLICATE_BONUS.getMessage());
     }
 
     public static void printDuplicateError() {
-        System.out.println(ERROR_DUPLICATE_MESSAGE);
+        System.out.println(ErrorMessage.DUPLICATE_NUMBER.getMessage());
     }
 
     public static String getBonusNumber() {
-        return ENTER_BONUS_NUMBER_MESSAGE;
+        return EnterMessage.BONUS_NUMBER.getMessage();
     }
 
     public static String getWinningNumbers() {
-        return ENTER_WINNING_NUMBER_MESSAGE;
+        return EnterMessage.WINNING_NUMBER.getMessage();
     }
 
     public static String getBuyCounts(int counts) {
@@ -75,50 +53,108 @@ public class Record {
     }
 
     public static void printEnterPrice() {
-        System.out.println(ENTER_MONEY_MESSAGE);
+        System.out.println(EnterMessage.MONEY.getMessage());
     }
 
     public static String getWinningStats(LottoTickets lottoTickets) {
-
-        StringBuilder winningStats = new StringBuilder();
-
-        winningStats.append(WINNING_STATS_BORDER + ReferenceValue.LINE_BREAK);
-
         int matchesListSize = 6;
-
+        StringBuilder winningStats = new StringBuilder();
         List<Integer> matches = lottoTickets.getMatches();
+        winningStats.append(ResultMessage.BORDER.getMessage() + ReferenceValue.LINE_BREAK);
 
-        for (int index = ReferenceValue.INDEX_THREE_MATCHES; index < matchesListSize; index++) {
+        int winningStart = ReferenceValue.
+                WinningStats.
+                THREE_MATCHES.
+                getIndex();
+
+        System.out.println(matches);
+
+        for (int index = winningStart; index < matchesListSize; index++) {
             int matchesCount = matches.get(index);
             String matchesMessage = getMatchesMessage(index, matchesCount);
             winningStats.append(matchesMessage + COUNT_MESSAGE + ReferenceValue.LINE_BREAK);
         }
 
-        double totalReturn = lottoTickets.getTotalReturn();
-        winningStats.append(TOTAL_RETURN_MESSAGE + totalReturn + PERCENT_MESSAGE + ReferenceValue.LINE_BREAK);
-
+        winningStats.append(getTotalReturnMessage(lottoTickets));
         return winningStats.toString();
     }
 
+    private static String getTotalReturnMessage(LottoTickets lottoTickets) {
+        double totalReturn = lottoTickets.getTotalReturn();
+        String message = ResultMessage.TOTAL_RETURN_FRONT.getMessage()
+                + totalReturn
+                + ResultMessage.TOTAL_RETURN_BACK.getMessage()
+                + ReferenceValue.LINE_BREAK;
+
+        return message;
+    }
 
     public static String getMatchesMessage(int index, int count) {
 
         String matchesMessage = "";
 
-        if (index == ReferenceValue.INDEX_THREE_MATCHES) {
-            matchesMessage = THREE_MATCHES_MESSAGE;
-        } else if (index == ReferenceValue.INDEX_FOUR_MATCHES) {
-            matchesMessage = FOUR_MATCHES_MESSAGE;
-        } else if (index == ReferenceValue.INDEX_FIVE_MATCHES) {
-            matchesMessage = FIVE_MATCHES_MESSAGE;
-        } else if (index == ReferenceValue.INDEX_FIVE_BONUS_MATCHES) {
-            matchesMessage = FIVE_BONUS_MATCHES_MESSAGE;
-        } else if (index == ReferenceValue.INDEX_SIX_MATCHES) {
-            matchesMessage = SIX_MATCHES_MESSAGE;
+        for (ReferenceValue.WinningStats winningStats : ReferenceValue.WinningStats.values()) {
+            if (winningStats.equalsIndex(index)) {
+                matchesMessage = winningStats.getMessage();
+            }
         }
 
         matchesMessage += count;
 
         return matchesMessage;
+    }
+
+    public enum ErrorMessage {
+        IS_ERROR("[ERROR]"),
+        EXCEED_SIZE(" 입력 크기가 초과했습니다."),
+        DUPLICATE_NUMBER(" 중복된 숫자가 있습니다."),
+        IS_NUMBER(" 입력값이 숫자로 바뀔 수 없습니다."),
+        OUT_OF_RANGE(" 범위를 벗어난 숫자가 있습니다."),
+        MINIMUM_PRICE(" 입력값이 1,000 이상 되야합니다."),
+        DIVIDED_PRICE(" 입력값이 1,000 으로 나눠떨어져야 합니다."),
+        DUPLICATE_BONUS(" 이미 당첨 번호에 해당 숫자가 있습니다.");
+
+        private final String message;
+
+        ErrorMessage(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return IS_ERROR.message + this.message;
+        }
+
+    }
+
+    public enum EnterMessage {
+        MONEY("구입금액을 입력해 주세요."),
+        WINNING_NUMBER("당첨 번호를 입력해 주세요."),
+        BONUS_NUMBER("보너스 번호를 입력해 주세요.");
+        private final String message;
+
+        EnterMessage(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return this.message;
+        }
+    }
+
+    public enum ResultMessage {
+
+        BORDER("당첨 통계 \n---"),
+        TOTAL_RETURN_FRONT("총 수익률은 "),
+        TOTAL_RETURN_BACK("%입니다.");
+
+        private final String message;
+
+        ResultMessage(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return this.message;
+        }
     }
 }

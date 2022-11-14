@@ -49,13 +49,13 @@ public class Game {
     }
 
     private static void enterLottoTickets() {
-        int counts = price / ReferenceValue.LOTTO_PRICE;
+        int counts = price / ReferenceValue.Lotto.PRICE.getValue();
         totalLog.append(Record.getBuyCounts(counts) + ReferenceValue.LINE_BREAK);
 
         List<Lotto> allLottery = new ArrayList<>();
         for (int i = 0; i < counts; i++) {
-            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(ReferenceValue.LOTTO_START_RANGE,
-                    ReferenceValue.LOTTO_END_RANGE, ReferenceValue.LOTTO_SIZE);
+            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(ReferenceValue.Lotto.START_RANGE.getValue(),
+                    ReferenceValue.Lotto.END_RANGE.getValue(), ReferenceValue.Lotto.SIZE.getValue());
 
             Lotto lotto = new Lotto(lottoNumbers);
             totalLog.append(Record.getLotto(lotto) + ReferenceValue.LINE_BREAK);
@@ -93,8 +93,8 @@ public class Game {
 
         int bonus = Integer.valueOf(bonusInput);
 
-        if (bonus < ReferenceValue.LOTTO_START_RANGE
-                || bonus > ReferenceValue.LOTTO_END_RANGE) {
+        if (bonus < ReferenceValue.Lotto.START_RANGE.getValue()
+                || bonus > ReferenceValue.Lotto.END_RANGE.getValue()) {
             Record.printRangeError();
             return true;
         }
@@ -112,18 +112,21 @@ public class Game {
         Record.printEnterPrice();
         String input = Console.readLine();
 
-        System.out.println(input);
-        System.out.println();
+        System.out.println(input + ReferenceValue.LINE_BREAK);
 
-        if (checkNumberError(input) || checkMinimumPriceError(input) || checkPriceError(input)) {
-            return ReferenceValue.IS_ERROR;
+        if (checkNumberError(input)
+                || checkMinimumPriceError(input)
+                || checkPriceError(input)) {
+            return Record
+                    .ErrorMessage
+                    .IS_ERROR
+                    .getMessage();
         }
 
         return input;
     }
 
     public static void checkError(boolean error) {
-
         if (error) {
             throw new IllegalArgumentException();
         }
@@ -132,7 +135,7 @@ public class Game {
     private static boolean checkMinimumPriceError(String input) {
         int price = Integer.parseInt(input);
 
-        if (price < ReferenceValue.LOTTO_PRICE) {
+        if (price < ReferenceValue.Lotto.PRICE.getValue()) {
             Record.printMinimumError();
             return true;
         }
@@ -143,7 +146,7 @@ public class Game {
     private static boolean checkPriceError(String input) {
         int price = Integer.parseInt(input);
 
-        if (price % ReferenceValue.LOTTO_PRICE != ReferenceValue.NOTHING) {
+        if (price % ReferenceValue.Lotto.PRICE.getValue() != ReferenceValue.NOTHING) {
             Record.printPriceError();
             return true;
         }

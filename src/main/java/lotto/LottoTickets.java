@@ -50,7 +50,7 @@ public class LottoTickets {
     }
 
     private static int getPurchaseAmount() {
-        return size * ReferenceValue.LOTTO_PRICE;
+        return size * ReferenceValue.Lotto.PRICE.getValue();
     }
 
     public static int getWinningAmounts() {
@@ -67,23 +67,20 @@ public class LottoTickets {
 
         int money = 0;
 
-        if (eachMatchIndex == ReferenceValue.INDEX_THREE_MATCHES) {
-            money = ReferenceValue.MONEY_THREE_MATCHES;
-        } else if (eachMatchIndex == ReferenceValue.INDEX_FOUR_MATCHES) {
-            money = ReferenceValue.MONEY_FOUR_MATCHES;
-        } else if (eachMatchIndex == ReferenceValue.INDEX_FIVE_MATCHES) {
-            money = ReferenceValue.MONEY_FIVE_MATCHES;
-        } else if (eachMatchIndex == ReferenceValue.INDEX_FIVE_BONUS_MATCHES) {
-            money = ReferenceValue.MONEY_FIVE_BONUS_MATCHES;
-        } else if (eachMatchIndex == ReferenceValue.INDEX_SIX_MATCHES) {
-            money = ReferenceValue.MONEY_SIX_MATCHES;
+        for (ReferenceValue.WinningStats winningStats : ReferenceValue.WinningStats.values()) {
+            if (winningStats.equalsIndex(eachMatchIndex)) {
+                money = winningStats.getMoney();
+                break;
+            }
         }
 
         return money;
     }
+
     public static List<Integer> getMatches() {
         return lottoMatches;
     }
+
     public void setMatches() {
 
         Map<Integer, Integer> matchesDictionary = inItMatchesDictionary();
@@ -104,40 +101,79 @@ public class LottoTickets {
 
         HashMap<Integer, Integer> matchesDictionary = new HashMap<>();
 
-        matchesDictionary.put(ReferenceValue.INDEX_OTHER_MATCHES, ReferenceValue.NOTHING);
-        matchesDictionary.put(ReferenceValue.INDEX_THREE_MATCHES, ReferenceValue.NOTHING);
-        matchesDictionary.put(ReferenceValue.INDEX_FOUR_MATCHES, ReferenceValue.NOTHING);
-        matchesDictionary.put(ReferenceValue.INDEX_FIVE_MATCHES, ReferenceValue.NOTHING);
-        matchesDictionary.put(ReferenceValue.INDEX_FIVE_BONUS_MATCHES, ReferenceValue.NOTHING);
-        matchesDictionary.put(ReferenceValue.INDEX_SIX_MATCHES, ReferenceValue.NOTHING);
+        matchesDictionary.put(
+                ReferenceValue
+                        .WinningStats
+                        .BELOW_STANDARD
+                        .getIndex(), ReferenceValue.NOTHING);
+        matchesDictionary.put(
+                ReferenceValue
+                        .WinningStats
+                        .THREE_MATCHES
+                        .getIndex(), ReferenceValue.NOTHING);
+        matchesDictionary.put(
+                ReferenceValue
+                        .WinningStats
+                        .FOUR_MATCHES
+                        .getIndex(), ReferenceValue.NOTHING);
+        matchesDictionary.put(
+                ReferenceValue
+                        .WinningStats
+                        .FIVE_MATCHES
+                        .getIndex(), ReferenceValue.NOTHING);
+        matchesDictionary.put(
+                ReferenceValue
+                        .WinningStats
+                        .FIVE_BONUS_MATCHES
+                        .getIndex(), ReferenceValue.NOTHING);
+        matchesDictionary.put(
+                ReferenceValue
+                        .WinningStats
+                        .SIX_MATCHES
+                        .getIndex(), ReferenceValue.NOTHING);
 
         return matchesDictionary;
     }
 
     private static int getMatchesIndex(LottoResult lottoResult) {
         int size = lottoResult.size();
+        int matchesIndex = ReferenceValue.WinningStats.BELOW_STANDARD.getIndex();
 
-        int matchesIndex = ReferenceValue.INDEX_OTHER_MATCHES;
+        if (size < ReferenceValue.WinningStats.THREE_MATCHES.getCount()) {
+            size = ReferenceValue.NOTHING;
+        }
 
-        if (size == ReferenceValue.COUNT_THREE_MATCHES) {
-            matchesIndex = ReferenceValue.INDEX_THREE_MATCHES;
-        } else if (size == ReferenceValue.COUNT_FOUR_MATCHES) {
-            matchesIndex = ReferenceValue.INDEX_FOUR_MATCHES;
-        } else if (size == ReferenceValue.COUNT_FIVE_MATCHES) {
+        for (ReferenceValue.WinningStats winningStats : ReferenceValue.WinningStats.values()) {
+            if (winningStats.equalsCount(size)) {
+                matchesIndex = winningStats.getIndex();
+                break;
+            }
+        }
+
+        boolean checkFive = ReferenceValue.WinningStats
+                .FIVE_MATCHES
+                .equalsIndex(matchesIndex);
+
+        if (checkFive) {
             matchesIndex = checkBonusIndex(lottoResult);
-        } else if (size == ReferenceValue.COUNT_SIX_MATCHES) {
-            matchesIndex = ReferenceValue.INDEX_SIX_MATCHES;
         }
 
         return matchesIndex;
     }
 
     public static int checkBonusIndex(LottoResult lottoResult) {
-        int matchesIndex = ReferenceValue.INDEX_FIVE_MATCHES;
+        int matchesIndex = ReferenceValue
+                .WinningStats
+                .FIVE_MATCHES
+                .getIndex();
+
         boolean isBonus = lottoResult.getIsBonus();
 
         if (isBonus) {
-            matchesIndex = ReferenceValue.INDEX_FIVE_BONUS_MATCHES;
+            matchesIndex = ReferenceValue
+                    .WinningStats
+                    .FIVE_BONUS_MATCHES
+                    .getIndex();
         }
 
         return matchesIndex;
