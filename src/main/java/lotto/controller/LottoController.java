@@ -13,6 +13,7 @@ import lotto.domain.Purchase;
 import lotto.domain.Ranking;
 import lotto.domain.Statistics;
 import lotto.domain.Yield;
+import lotto.util.Util;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -50,18 +51,22 @@ public class LottoController {
 
     }
 
-    private static void setBonusNumber() {
-        Bonus bonus = new Bonus(InputView.inputBonusNumber());
-        bonusNumber = bonus.get();
-    }
-
     private static void setWinningNumbers() {
-        Lotto lotto = new Lotto(InputView.inputWinningNumbers());
+        OutputView.printWinningNumberInput();
+        Lotto lotto = new Lotto(Util.formatInput(InputView.getInput()));
         winningNumbers = lotto.get();
     }
 
+    private static void setBonusNumber() {
+        OutputView.printBonusNumberInput();
+        Bonus bonus = new Bonus(InputView.getInput());
+        bonusNumber = bonus.get();
+    }
+
+
     private static void purchaseLotto() {
-        Purchase budget = new Purchase(InputView.inputTotalBudget());
+        OutputView.printCashInput();
+        Purchase budget = new Purchase(InputView.getInput());
         ticketNumber = budget.getTicketNumber();
         OutputView.printTicketNumber(ticketNumber);
         Player player = new Player(ticketNumber);
