@@ -5,7 +5,7 @@ import java.util.List;
 public class Controller {
     public void run() {
         List<Lotto> lottos = getLottos();
-        getWinningLottoNumbers();
+        WinningLotto winningLotto = getWinningLotto();
     }
 
     private List<Lotto> getLottos() {
@@ -21,9 +21,10 @@ public class Controller {
         return lottos;
     }
 
-
-    private void getWinningLottoNumbers() {
+    private WinningLotto getWinningLotto() {
         String winningLottoNumber = InputView.getWinningLottoNumbers();
         String winningBonusNumber = InputView.getWinningBonusNumber(winningLottoNumber);
+
+        return LottoGame.createWinningLotto(winningLottoNumber, winningBonusNumber);
     }
 }

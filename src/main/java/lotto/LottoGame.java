@@ -28,4 +28,11 @@ public class LottoGame {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public static WinningLotto createWinningLotto(String winningLottoNumber, String winningBonusNumber) {
+        List<Integer> winningLotto = spiltLottoNumber(winningLottoNumber);
+        int bonusNumber = Integer.parseInt(winningBonusNumber);
+
+        return new WinningLotto(new Lotto(winningLotto), bonusNumber);
+    }
 }
