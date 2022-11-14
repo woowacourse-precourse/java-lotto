@@ -29,7 +29,7 @@ public class Validate {
         int bonusNumber = Integer.parseInt(userInput);
         correctNumberRange(bonusNumber);
         if(winningNumber.contains(bonusNumber))
-            throw new IllegalArgumentException(ErrorMessage.CONTAIN_WINNINGNUMBER.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.CONTAIN_WINNING_NUMBER.getErrorMessage());
     }
     public void validUserWinningNumber(List<Integer> winningNumber)throws IllegalArgumentException{
         Set<Integer> duplicatedNumber = new HashSet<>(winningNumber);
