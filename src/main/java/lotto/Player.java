@@ -16,7 +16,7 @@ public class Player {
         lottoNumbers = new ArrayList<>();
     }
 
-    public void purchaseLotto() {
+    public void purchaseLotto() throws IllegalArgumentException{
         manager.requestMoneyStatementPrint();
         int money = manager.inputMoney();
         if (money < 1000) {
