@@ -58,7 +58,8 @@
   - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - InputLotto#splitStrings()
   - [x] 문자열을 long으로 변환 - InputLotto#toLongs()
 - [x] 입력한 숫자가 1 ~ 45의 숫자인지 검사한다. - ExceptionHandling#outRangeLottoNumber()
-- [x] 입력한 당첨 번호가 중복인지 검사한다. - ExceptionHandling#removeDuplicateNumber();
+- [x] 입력한 당첨 번호가 중복인지 검사한다. - ExceptionHandling#removeDuplicateNumber()
+- [x] 입력한 보너스 번호가 당첨 번호와 중복인지 검사한다. - ExceptionHandling#containsBonusNumber()
 
 ### enum으로 처리
 - [ ] "3개 일치 (5,000원) - n개"를 출력한다. - WinStatistics#showWinMessage()
@@ -75,3 +76,4 @@
 - [x] 로또(보너스) 숫자가 아닌 경우
 - [x] 로또(보너스) 숫자가 6개가 아닌 경우
 - [x] 당첨 번호를 입력 받을 때 중복 숫자가 있는 경우
+- [x] 보너스 번호 입력 시 기존 당첨 번호와 중복된 경우
