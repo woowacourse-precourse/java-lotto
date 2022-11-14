@@ -1,8 +1,10 @@
 package model;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public enum Result {
+public enum Result implements Comparable<Result>{
     THREE("5,000원",5000,3,false),
     FOUR("50,000원", 50000,4,false),
     FIVE("1,500,000원",1500000,5,false),
@@ -23,6 +25,11 @@ public enum Result {
         this.bonus = bonus;
     }
 
+    public static List<Result> getResultsWithoutLost() {
+        return Arrays.stream(values())
+                .filter(value -> !value.isMatch(0, false))
+                .collect(Collectors.toList());
+    }
 
     public static Result getResult(int coincideCount,boolean bonus) {
         return Arrays.stream(values())
@@ -42,7 +49,21 @@ public enum Result {
         return this.coincideCount == coincideCount && this.bonus == bonus;
     }
 
+
+
     public int getPriceNum() {
         return priceNum;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public int getCoincideCount() {
+        return coincideCount;
+    }
+
+    public boolean isBonus() {
+        return bonus;
     }
 }

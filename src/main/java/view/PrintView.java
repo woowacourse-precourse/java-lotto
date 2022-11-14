@@ -1,9 +1,12 @@
 package view;
 
+import java.util.HashMap;
 import java.util.List;
 import model.Lotto;
 import model.Purchase;
+import model.Result;
 import model.User;
+import model.WinningStatic;
 import util.message.ConsoleMessage;
 import util.message.ErrorMessage;
 
@@ -36,5 +39,44 @@ public class PrintView {
     public static void bonusNum() {
         System.out.println(ConsoleMessage.BONUS_NUMBER);
     }
+
+    public static void winningStatic(WinningStatic winningStatic){
+        System.out.println(ConsoleMessage.WINNING_STATIC_MESSAGE);
+        staticList(winningStatic);
+        totalYield(winningStatic);
+    }
+
+    private static void staticList(WinningStatic winningStatic){
+        HashMap<Result, Integer> resultStatic = winningStatic.getResultStatic();
+
+        List<Result> resultsWithoutLost = Result.getResultsWithoutLost();
+        for (Result result : resultsWithoutLost) {
+            Integer coincideCount = resultStatic.get(result);
+            if (coincideCount == null) {
+                coincideCount=0;
+            }
+            System.out.printf(ConsoleMessage.WINNING_STATIC,
+                    result.getCoincideCount(),
+                    getBonus(result),
+                    result.getPrice(),
+                    coincideCount
+            );
+        }
+    }
+
+    private static void totalYield(WinningStatic winningStatic) {
+        String yield = String.format("%.1f", winningStatic.getYield());
+        System.out.printf(ConsoleMessage.TOTAL_YIELD, yield);
+    }
+
+    private static String getBonus(Result result) {
+        if (result.isBonus()) {
+            return ConsoleMessage.BONUS_BALL;
+        }
+        return "";
+    }
+
+
+
 
 }

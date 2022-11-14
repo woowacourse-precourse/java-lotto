@@ -21,11 +21,15 @@ public class MainController {
             WinLotto winLotto = winLottoWithBonus();
             List<Result> results = getResults(user, winLotto);
             WinningStatic winningStatic = getWinningStatic(usersPurchase, results);
-
+            printStatic(winningStatic);
         } catch (IllegalArgumentException exception) {
             PrintView.error(exception.getMessage());
         }
 
+    }
+
+    private void printStatic(WinningStatic winningStatic) {
+        PrintView.winningStatic(winningStatic);
     }
 
     private WinningStatic getWinningStatic(Purchase usersPurchase, List<Result> results) {
