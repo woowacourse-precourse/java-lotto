@@ -28,22 +28,34 @@ public class Rank {
             wrongNumbers = getWrongNumbers(winningLottoNumbers, lotto);
             rightNumberCnt = rightNumbers.size();
 
-            ranking = checkRanking(ranking, bonusNumber, wrongNumbers, rightNumberCnt);
+            ranking = checkLottoRanking(ranking, bonusNumber, wrongNumbers, rightNumberCnt);
         }
         return new Rank(ranking);
     }
 
-    private static LinkedHashMap<Integer, Integer> checkRanking(LinkedHashMap<Integer, Integer> ranking, int bonusNumber, List<Integer> wrongNumbers, int rightNumberCnt) {
-        if (checkFirstPlace(rightNumberCnt)) {
-            ranking.put(FIRST_PLACE, ranking.get(FIRST_PLACE) + 1);
+    private static LinkedHashMap<Integer, Integer> checkLottoRanking(LinkedHashMap<Integer, Integer> ranking, int bonusNumber, List<Integer> wrongNumbers, int rightNumberCnt) {
+        Integer lottoRank = getLottoRank(rightNumberCnt, wrongNumbers, bonusNumber);
+        if (lottoRank != null) {
+            ranking.put(lottoRank, ranking.get(lottoRank) + 1);
         }
-        if (checkSecondPlace(rightNumberCnt, wrongNumbers, bonusNumber)) {
-            ranking.put(SECOND_PLACE, ranking.get(SECOND_PLACE) + 1);
+
+        return ranking;
+    }
+
+    private static Integer getLottoRank(int rightNumberCnt, List<Integer> wrongNumbers, int bonusNumber) {
+        Integer ranking = null;
+        if (rightNumberCnt == SIX_CORRECT) {
+            ranking = FIRST_PLACE;
+        } else if (rightNumberCnt == FIVE_CORRECT && wrongNumbers.contains(bonusNumber)) {
+            ranking = SECOND_PLACE;
+        } else if (rightNumberCnt == FIVE_CORRECT) {
+            ranking = THIRD_PLACE;
+        } else if (rightNumberCnt == FOUR_CORRECT) {
+            ranking = FOURTH_PLACE;
+        } else if (rightNumberCnt == THREE_CORRECT) {
+            ranking = FIFTH_PLACE;
         }
-        if (rightNumberCnt > 2) {
-            int rank = rightNumberCnt - 1;
-            ranking.put(rank, ranking.get(rank) + 1);
-        }
+
         return ranking;
     }
 
@@ -78,19 +90,5 @@ public class Rank {
             }
         }
         return wrongNumbers;
-    }
-
-    private static boolean checkFirstPlace(int rightNumberCnt) {
-        if (rightNumberCnt == LOTTO_NUMBER_COUNT) {
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean checkSecondPlace(int rightNumberCnt, List<Integer> wrongNumbers, int bonusNumber) {
-        if (rightNumberCnt == LOTTO_NUMBER_COUNT - 1 && wrongNumbers.contains(bonusNumber)) {
-            return true;
-        }
-        return false;
     }
 }
