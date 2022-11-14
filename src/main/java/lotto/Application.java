@@ -25,7 +25,7 @@ public class Application {
             String input = Console.readLine();
             money = Lotto.check_input_validate(input);
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] 구입 금액의 입력은 숫자만 가능합니다.");
+            System.out.println(ExceptionMessage.NumbersOnly.getMsg());
         }
 
         try {
@@ -33,7 +33,7 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] 로또 구입의 최소 단위는 1,000원 입니다.");
+            System.out.println(ExceptionMessage.PurchaseUnit.getMsg());
         }
 
         num = money / 1000;
