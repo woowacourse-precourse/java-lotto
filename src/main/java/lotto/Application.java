@@ -7,10 +7,8 @@ public class Application {
         player.getLottoNumbers();
         player.checkGetLottoNumbers();
 
-        player.manager.generateLotto();
+        player.makeGenerate();
         player.calculateResult();
-        player.
-        player.manager.
-
+        player.showResult();
     }
 }
