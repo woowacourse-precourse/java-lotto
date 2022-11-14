@@ -1,4 +1,4 @@
-package lotto.validator;
+package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -6,68 +6,70 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import lotto.constant.ErrorMessage;
 import lotto.constant.LottoNumber;
-import lotto.domain.Lotto;
+import lotto.generator.LottoGenerator;
+import lotto.validator.LottoNumberValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class LottoNumberValidatorTest {
+public class WinningLottoTest {
 
     @Nested
-    @DisplayName("로또를 만들 때")
-    class If_make_lotto {
+    @DisplayName("사용자가 입력한 문자열이")
+    class If_user_input_is {
 
         @Test
-        @DisplayName("중복된 숫자를 입력하면 예외를 던진다")
-        void with_duplicate_number_then_throw_exception() {
+        @DisplayName("숫자가 아닐 경우 예외를 던진다")
+        void not_numeric() {
             // given
-            List<Integer> numbers = List.of(1, 1, 1, 1, 1, 1);
+            Lotto lotto = LottoGenerator.generateByNumbers("1,2,3,4,5,6");
+            String input = "로또게임";
 
             // when, then
-            assertThatThrownBy(() -> LottoNumberValidator.validateExistDuplicateNumber(numbers))
+            assertThatThrownBy(() -> new WinningLotto(lotto, input))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.CAN_NOT_EXIST_DUPLICATE_NUMBER_IN_LOTTO.getMessage());
+                    .hasMessage(ErrorMessage.MONEY_IS_ALLOWED_ONLY_NUMERIC.getMessage());
         }
 
         @Test
-        @DisplayName("중복된 숫자가 입력하지 않으면 예외를 던지지 않는다")
-        void without_duplicate_number_then_throw_exception() {
+        @DisplayName("숫자일 경우 예외를 던지지 않는다")
+        void numeric() {
             // given
-            List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+            Lotto lotto = LottoGenerator.generateByNumbers("1,2,3,4,5,6");
+            String input = "7";
 
             // when, then
-            assertThatCode(() -> LottoNumberValidator.validateExistDuplicateNumber(numbers))
+            assertThatCode(() -> new WinningLotto(lotto, input))
                     .doesNotThrowAnyException();
         }
     }
 
     @Nested
-    @DisplayName("로또에 넣을 번호가")
-    class lotto_number {
+    @DisplayName("입력된 보너스 번호가 로또 규칙에")
+    class If_input_bonus_number {
 
         @Test
-        @DisplayName("규칙에서 정한 범위 밖이면 예외를 던진다")
-        void is_outside_limit_prescribed_rule() {
+        @DisplayName("맞지 않으면 예외를 던진다")
+        void does_not_comply_with_rule_then_throw_exception() {
             // given
-            List<Integer> numbers = List.of(LottoNumber.END_NUMBER_OF_LOTTO.getNumber() + 1);
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            int bonusNumber = LottoNumber.END_NUMBER_OF_LOTTO.getNumber() + 1;
 
             // when, then
-            assertThatThrownBy(() -> LottoNumberValidator.validateRangeOfNumber(numbers))
+            assertThatThrownBy(() -> new WinningLotto(lotto, bonusNumber))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.LOTTO_NUMBER_IS_OUT_OF_RANGE.getMessage());
         }
 
         @Test
-        @DisplayName("규칙에서 정한 범위 안이면 예외를 던지지 않는다")
-        void is_inside_limit_prescribed_rule() {
+        @DisplayName("맞다면 예외를 던지지 않는다")
+        void does_not_comply_with_rule_then_does_not_throw_exception() {
             // given
-            List<Integer> numbers = List.of(
-                    LottoNumber.START_NUMBER_OF_LOTTO.getNumber(),
-                    LottoNumber.END_NUMBER_OF_LOTTO.getNumber()
-            );
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            int bonusNumber = 7;
 
             // when, then
-            assertThatCode(() -> LottoNumberValidator.validateRangeOfNumber(numbers))
+            assertThatCode(() -> new WinningLotto(lotto, bonusNumber))
                     .doesNotThrowAnyException();
         }
     }
@@ -84,7 +86,7 @@ public class LottoNumberValidatorTest {
             int bonusNumber = 1;
 
             // when, then
-            assertThatThrownBy(() -> LottoNumberValidator.validateBonusNumberAndLottoAreDuplicate(lotto, bonusNumber))
+            assertThatThrownBy(() -> new WinningLotto(lotto, bonusNumber))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.BONUS_NUMBER_AND_WINNING_LOTTO_NUMBERS_ARE_DUPLICATE.getMessage());
         }
