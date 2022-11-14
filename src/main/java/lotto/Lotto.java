@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -20,7 +21,17 @@ public class Lotto {
     }
 
     private boolean isDuplicated(List<Integer> numbers) {
-        return true;
+        List<Integer> numbersCopy = new ArrayList<>(numbers);
+        while (!numbersCopy.isEmpty()) {
+            int currentNumber = numbersCopy.get(0);
+            numbersCopy.remove(0);
+
+            if (numbersCopy.contains(currentNumber)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public List<Integer> getNumbers() {
