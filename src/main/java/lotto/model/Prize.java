@@ -7,19 +7,19 @@ public enum Prize {
     SECOND(5, 30_000_000),
     FIRST(6, 2_000_000_000);
 
-    private final int winningCount;
-    private final long prize;
+    private final int matchingCount;
+    private final long reward;
 
-    Prize(int winningCount, long prize) {
-        this.winningCount = winningCount;
-        this.prize = prize;
+    Prize(int matchingCount, long reward) {
+        this.matchingCount = matchingCount;
+        this.reward = reward;
     }
 
-    public long getWinningCount() {
-        return this.winningCount;
+    public long getMatchingCount() {
+        return this.matchingCount;
     }
 
-    public long getPrize() {
-        return this.prize;
+    public long getReward() {
+        return this.reward;
     }
 }
