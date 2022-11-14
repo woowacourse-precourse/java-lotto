@@ -27,7 +27,7 @@ class LottoServiceViewTest {
     @ParameterizedTest
     @DisplayName("유효성 검사 테스트 - 오버플로우 검사")
     @ValueSource(strings = {"2147483648", "1000000000"})
-    void checkOverFlow(String inputMoney) {
+    void checkOverFlowTest(String inputMoney) {
         assertThatThrownBy(() -> lottoServiceView.checkOverFlow(inputMoney))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 구매 금액은 최대 10억 미만으로 입력해야 합니다.");
@@ -45,7 +45,7 @@ class LottoServiceViewTest {
     @ParameterizedTest
     @DisplayName("유효성 검사 테스트 - 최소금액 검사")
     @CsvSource(value = {"123", "567", "4", "56", "0", "1"})
-    void checkMinimumAmount(String inputMoney) {
+    void checkMinimumAmountTest(String inputMoney) {
 
         assertThatThrownBy(() -> lottoServiceView.validateInputMoney(inputMoney))
                 .isInstanceOf(IllegalArgumentException.class)
