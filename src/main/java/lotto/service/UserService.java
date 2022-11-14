@@ -36,7 +36,7 @@ public class UserService {
     }
 
     public void setInputMoney(User user) throws IllegalArgumentException {
-        System.out.println(Message.INPUT_PURCHASE_AMOUNT_MESSAGE);
+        OutputUtil.printInputPurchaseAmount();
         String input = InputUtil.getUserInput();
         try {
             ExceptionHandler.checkValidationMoney(input);

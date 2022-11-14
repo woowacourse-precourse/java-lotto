@@ -8,6 +8,10 @@ import java.util.Map;
 
 public class OutputUtil {
 
+    public static void printInputPurchaseAmount() {
+        System.out.println(Message.INPUT_PURCHASE_AMOUNT_MESSAGE);
+    }
+
     public static void printUserLottoCount(User user) {
         System.out.println("" + user.getLottoCount() + "개를 구매했습니다.");
     }
