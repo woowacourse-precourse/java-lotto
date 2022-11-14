@@ -1,8 +1,10 @@
 package lotto;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -53,5 +55,15 @@ public class SimulatorTest {
     void validPurchasePriceCase3() {
         Simulator simulator = new Simulator(14000);
         assertThat(simulator.getQuantity()).isEqualTo(14);
+    }
+
+    @DisplayName("복권 발행 출력 값 확인.")
+    @Test
+    void generateLottoStringOutputTest() {
+        Simulator simulator = new Simulator(1000);
+        assertRandomUniqueNumbersInRangeTest(
+                () -> assertThat(simulator.generate().toString()).isEqualTo("[1, 2, 3, 4, 5, 6]"),
+                List.of(1, 2, 3, 4, 5, 6)
+        );
     }
 }
