@@ -26,38 +26,32 @@ public class Statistics {
 		int count = 0;
 		
 		for (int number : numbers) {
-			if(winningNumbers.contains(number)) {
+			if (winningNumbers.contains(number)) {
 				count++;
 			}
 		}
 		
-		if (count == 3) {
-			fifthPlaceCount++;
-			return;
-		}
+		rankCount(winningNumbers, count, bonus);
+	}
+	
+	private void rankCount(List<Integer> winningNumbers, int count, int bonus) {
+		if (count == 3) { fifthPlaceCount++; return; }
 		
-		if (count == 4) {
-			fourthPlaceCount++;
-			return;
-		}
+		if (count == 4) { fourthPlaceCount++; return; }
 		
 		if (count == 5) {
 			if (winningNumbers.contains(bonus)) {
-				secondPlaceCount++;
-				return;
+				secondPlaceCount++; return;
 			}
 			
-			thirdPlaceCount++;
-			return;
+			thirdPlaceCount++; return;
 		}
 		
-		if (count == 6) {
-			firstPlaceCount++;
-			return;
-		}
+		if (count == 6) { firstPlaceCount++; return; }
 	}
 	
-	public void setTotalPrize() {
+	
+	private void setTotalPrize() {
 		int result = 0;
 		
 		result += Winnings.FIRST_PLACE.getPrize() * firstPlaceCount;
@@ -72,7 +66,7 @@ public class Statistics {
 	private void setRateOfReturn(int totalPrize, int money) {
 		double result = 0;
 		
-		if(totalPrize == 0) {
+		if (totalPrize == 0) {
 			rateOfReturn = 0;
 			return;
 		}
