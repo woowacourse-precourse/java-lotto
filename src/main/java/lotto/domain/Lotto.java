@@ -19,6 +19,7 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
         checkDuplicateNumber(numbers);
+        checkNumberRange(numbers);
     }
 
     public static Lotto generateLottoNumber() {
@@ -29,6 +30,14 @@ public class Lotto {
         Set<Integer> removeDuplicateNumber = new HashSet<>(numbers);
         if (removeDuplicateNumber.size() < numbers.size()) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+        }
+    }
+
+    public void checkNumberRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 사이의 숫자이어야 합니다.");
+            }
         }
     }
 }
