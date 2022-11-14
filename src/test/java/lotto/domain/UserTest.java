@@ -22,7 +22,7 @@ class UserTest {
         double money = 9000.0;
         user.setMoney(money);
         double winningAmount = 3000.0;
-        user.setWinningAmount(winningAmount);
+        user.setTotalPrize(winningAmount);
 
         userService.calculateYield(user);
         double expect = 33.3;

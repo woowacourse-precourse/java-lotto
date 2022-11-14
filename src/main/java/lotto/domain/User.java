@@ -10,13 +10,13 @@ public class User {
 
     private List<Lotto> lottos;
     private double money;
-    private double winningAmount;
+    private double totalPrize;
     private Map<Integer, Integer> ranks = new HashMap<>();
     private double yield;
 
     public User() {
         lottos = new ArrayList<>();
-        winningAmount = 0;
+        totalPrize = 0;
         initRank();
         yield = 0;
     }
@@ -45,12 +45,12 @@ public class User {
         this.money = money;
     }
 
-    public double getWinningAmount() {
-        return winningAmount;
+    public double getTotalPrize() {
+        return totalPrize;
     }
 
-    public void setWinningAmount(double winningAmount) {
-        this.winningAmount = winningAmount;
+    public void setTotalPrize(double totalPrize) {
+        this.totalPrize = totalPrize;
     }
 
     public Map<Integer, Integer> getRanks() {
@@ -70,7 +70,7 @@ public class User {
     }
 
     public void addWinningAmount(int winningAmount) {
-        this.winningAmount += winningAmount;
+        this.totalPrize += winningAmount;
     }
 
     public void setRankFifth() {
