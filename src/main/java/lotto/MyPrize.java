@@ -13,6 +13,10 @@ public class MyPrize {
         calculateProfitAmount(rankArr);
     }
 
+    public int[] getRankArr() {
+        return rankArr;
+    }
+
     private void calculateProfitAmount(int [] rankArr) {
         for(int i=1 ; i<6 ; i++) {
             if(rankArr[i] > 0) {

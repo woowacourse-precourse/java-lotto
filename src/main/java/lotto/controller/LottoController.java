@@ -3,6 +3,7 @@ package lotto.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 import lotto.MyLottoList;
+import lotto.MyPrize;
 import lotto.PrizeLotto;
 import lotto.view.LottoView;
 
@@ -42,7 +43,7 @@ public class LottoController {
         prizeLotto.setBonusNumber(bonusNum);
     }
 
-    public static void generateMyPrizeInstance(MyLottoList myLottoList, PrizeLotto prizeLotto) {
+    public static MyPrize generateMyPrizeInstance(MyLottoList myLottoList, PrizeLotto prizeLotto) {
         int [] rankArr = new int[6];
         for(Lotto lotto : myLottoList.getLotto()) {
             int rank = calculateRankOneLotto(lotto, prizeLotto);
@@ -50,6 +51,7 @@ public class LottoController {
                 rankArr[rank] = rankArr[rank] + 1;
             }
         }
+        return new MyPrize(rankArr);
     }
 
     public static int calculateRankOneLotto(Lotto lotto, PrizeLotto prizeLotto) {

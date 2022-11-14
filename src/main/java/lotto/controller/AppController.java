@@ -33,6 +33,7 @@ public class AppController {
         AppView.outputLine("");
         AppView.outputLine("당첨 통계");
         AppView.outputLine("---");
-        myPrize =
+        myPrize = generateMyPrizeInstance(myLottoList, prizeLotto);
+        LottoView.outputSynthesisEachRank(myPrize);
     }
 }
