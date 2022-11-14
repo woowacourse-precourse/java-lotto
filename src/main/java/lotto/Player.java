@@ -9,6 +9,7 @@ public class Player {
     private int total_lotto;
     private Manager manager;
     private List<Integer> winning;
+    private List<Lotto> lottos;
     private int Bonus;
     public Player(Manager manager){
         this.manager = manager;
@@ -47,6 +48,7 @@ public class Player {
     }
 
     public void InputWinningNumber(){
+        winning.clear();
         String input = readLine();
         checkWinningNumber(input);
     }
@@ -66,5 +68,12 @@ public class Player {
     public void InputBonusNumber(){
         String input = readLine();
         checkBonusNumber(input);
+    }
+
+    public void PurChaseLotto(){
+        lottos.clear();
+        for(int i=0; i<total_lotto; i++){
+            lottos.add(manager.makeLotto());
+        }
     }
 }
