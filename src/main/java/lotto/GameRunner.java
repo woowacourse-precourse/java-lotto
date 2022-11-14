@@ -72,6 +72,7 @@ public class GameRunner {
         player.compare(prizeCount, lottos, lottoBonusNumber);
 
         profit = new Profit(prizeCount, purchase.getAmount());
+        profit.calculate();
     }
 
     private void printResult() {
