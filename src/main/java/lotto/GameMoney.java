@@ -1,8 +1,6 @@
 package lotto;
 
 public class GameMoney {
-    private static final int PRICE_PER_LOTTO = 1000;
-
     private long money;
 
     public GameMoney(long insertMoney) throws IllegalArgumentException {
@@ -11,7 +9,7 @@ public class GameMoney {
     }
 
     static void validateAvailableOfPurchase(long insertMoney) throws IllegalArgumentException {
-        if (insertMoney % PRICE_PER_LOTTO != 0) {
+        if (insertMoney % Rules.PRICE_PER_LOTTO.getValue() != 0) {
             throw new IllegalArgumentException(Error.ERROR_GAME_MONEY_AVAILABLE.getValue());
         }
     }
@@ -21,6 +19,6 @@ public class GameMoney {
     }
 
     public int numberOfPurchases() {
-        return (int) money / PRICE_PER_LOTTO;
+        return (int) money / Rules.PRICE_PER_LOTTO.getValue();
     }
 }

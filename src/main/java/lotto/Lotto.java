@@ -14,7 +14,7 @@ public class Lotto {
     }
 
     private void validateLength(List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.size() != 6) {
+        if (numbers.size() != Rules.LOTTO_SIZE.getValue()) {
             throw new IllegalArgumentException();
         }
     }
@@ -26,14 +26,14 @@ public class Lotto {
     }
 
     private void validateNumberRange(int number) throws IllegalArgumentException {
-        if ((number < 1) || (number > 45)) {
+        if ((number < Rules.LOTTO_MIN_NUMBER.getValue()) || (number > Rules.LOTTO_MAX_NUMBER.getValue())) {
             throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_RANGE.getValue());
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) throws IllegalArgumentException {
         HashSet<Integer> checkDuplicate = new HashSet<>(numbers);
-        if (checkDuplicate.size() != 6) {
+        if (checkDuplicate.size() != Rules.LOTTO_SIZE.getValue()) {
             throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_DUPLICATE.getValue());
         }
     }

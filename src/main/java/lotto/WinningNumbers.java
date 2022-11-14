@@ -1,14 +1,8 @@
 package lotto;
 
-import java.util.HashSet;
 import java.util.List;
 
 public class WinningNumbers {
-    private static final int LOTTO_SIZE = 6;
-    private static final int SCORE_PER_LOTTO_NUMBER = 2;
-    private static final int SCORE_BONUS_NUMBER = 1;
-    private static final int SECOND_CLASS_COUNT = 5;
-
     private Lotto winningNumbers;
     private int bonusNumber;
 
@@ -24,7 +18,7 @@ public class WinningNumbers {
     }
 
     private void validateNumberRange(int number) throws IllegalArgumentException {
-        if ((number < 1) || (number > 45)) {
+        if ((number < Rules.LOTTO_MIN_NUMBER.getValue()) || (number > Rules.LOTTO_MAX_NUMBER.getValue())) {
             throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_RANGE.getValue());
         }
     }
@@ -39,7 +33,7 @@ public class WinningNumbers {
     private int includeNumberCount(Lotto lotto) {
         int includeNumberCount = 0;
         int lottoNumber;
-        for (int lottoIndex = 0; lottoIndex < LOTTO_SIZE; lottoIndex++) {
+        for (int lottoIndex = 0; lottoIndex < Rules.LOTTO_SIZE.getValue(); lottoIndex++) {
             lottoNumber = lotto.findLottoNumber(lottoIndex);
             if (winningNumbers.containNumber(lottoNumber)) {
                 includeNumberCount = includeNumberCount + 1;
@@ -53,9 +47,9 @@ public class WinningNumbers {
     }
 
     private int calculateScore(int includeNumberCount, boolean includeBonusNumber) {
-        int score = includeNumberCount * SCORE_PER_LOTTO_NUMBER;
-        if ((includeNumberCount == SECOND_CLASS_COUNT) && includeBonusNumber) {
-            score = score + SCORE_BONUS_NUMBER;
+        int score = includeNumberCount * Rules.SCORE_PER_LOTTO_NUMBER.getValue();
+        if ((includeNumberCount == Rules.SECOND_CLASS_COUNT.getValue()) && includeBonusNumber) {
+            score = score + Rules.SCORE_BONUS_NUMBER.getValue();
         }
         return score;
     }
