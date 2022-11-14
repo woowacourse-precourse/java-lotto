@@ -17,7 +17,7 @@ class LottoPublishServiceTest {
     LottoPublishService lottoPublishService;
     @BeforeEach
     void setup() {
-        lottoPublishService = LottoPublishService.getInstance();
+        lottoPublishService = LottoPublishService.getRenewInstance();
     }
 
     /**
@@ -40,8 +40,7 @@ class LottoPublishServiceTest {
     void 잘못된_형식의_구매금액() {
         assertThatThrownBy(() ->lottoPublishService.lottoPublish("1000j"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(UserInterfaceMessage.ERROR_PREFIX.getValue()
-                        + String.format(UserInterfaceMessage.ERROR_INPUT_BONUS_NUMBER_INCLUSIVE.getValue(),
+                .hasMessageContaining(String.format(UserInterfaceMessage.ERROR_INPUT_BONUS_NUMBER_INCLUSIVE.getValue(),
                         LottoNumberInclusive.START.getValue(), LottoNumberInclusive.END.getValue()));
 
     }
