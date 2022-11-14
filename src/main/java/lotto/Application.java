@@ -14,7 +14,7 @@ import java.util.Map;
 import static java.lang.Character.*;
 import static lotto.Rank.*;
 import static lotto.message.ExceptionMessage.*;
-import static lotto.message.ExceptionMessage.TYPE_EXCEPTION;
+import static lotto.message.Message.*;
 
 public class Application {
 
@@ -38,7 +38,7 @@ public class Application {
     }
 
     private static int requestAmount() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(REQUEST_AMOUNT);
         String input = Console.readLine();
         validate(input);
         return Integer.parseInt(input);
@@ -53,7 +53,7 @@ public class Application {
     }
 
     private static Lotto requestPrizeNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(REQUEST_PRIZE_NUMBERS);
         String input = Console.readLine();
 
         List<Integer> prizeNumbers = new ArrayList<>();
@@ -64,22 +64,23 @@ public class Application {
     }
 
     private static int requestBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(REQUEST_BONUS_NUMBER);
         String input = Console.readLine();
         validate(input);
         return Integer.parseInt(input);
     }
 
     private static void printLottos(List<Lotto> lottos) {
-        System.out.println(String.format("%d개를 구매했습니다.", lottos.size()));
+        String message = String.format(RESPONSE_LOTTO_SIZE, lottos.size());
+        System.out.println(message);
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
     }
 
     private static void printResults(Map<Rank, Integer> results) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(RESULTS);
+        System.out.println(DIV_LINE);
         for (Rank rank : Arrays.asList(FIFTH, FOURTH, THIRD, SECOND, FIRST)) {
             int count = results.getOrDefault(rank, 0);
             System.out.println(rank.getMessage(count));
@@ -87,6 +88,7 @@ public class Application {
     }
 
     private static void printRate(double rate) {
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", rate));
+        String message = String.format(RESPONSE_RATE, rate);
+        System.out.println(message);
     }
 }
