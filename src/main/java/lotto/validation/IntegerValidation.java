@@ -1,8 +1,8 @@
 package lotto.validation;
 
-import lotto.constant.IntConstant;
 
 public class IntegerValidation {
+
     public static boolean isNumeric(String userInput, int asciiGreaterThan, int asciiSmallerThan) {
         return userInput.length() == userInput.chars()
                 .filter(inputChar -> isNumber(inputChar, asciiGreaterThan, asciiSmallerThan))
@@ -22,4 +22,5 @@ public class IntegerValidation {
         return asciiGreaterThan <= inputChar
                 && inputChar <= asciiSmallerThan;
     }
+
 }

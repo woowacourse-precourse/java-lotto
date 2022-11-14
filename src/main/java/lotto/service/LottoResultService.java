@@ -1,16 +1,14 @@
 package lotto.service;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import lotto.constant.IntConstant;
 import lotto.constant.LottoResultConstant;
 import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 
 public class LottoResultService {
+
     public static Map<LottoResultConstant, Integer> getResult(List<Lotto> userLotto, WinningLotto winningLotto) {
         Map<LottoResultConstant, Integer> winningStatistics = initWinningStatistics();
         for (Lotto lotto : userLotto) {
@@ -49,9 +47,5 @@ public class LottoResultService {
         }
         return LottoResultConstant.EMPTY;
     }
-
-
-
-
 
 }

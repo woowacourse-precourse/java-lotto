@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import java.util.List;
-import javax.swing.SwingConstants;
 import lotto.constant.IntConstant;
 import lotto.constant.StringConstant;
 import lotto.validation.IntegerValidation;
@@ -47,4 +45,5 @@ public class WinningLotto {
         }
         return 0;
     }
+
 }

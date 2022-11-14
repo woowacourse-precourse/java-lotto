@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Objects;
 import lotto.constant.IntConstant;
 import lotto.constant.StringConstant;
 import lotto.validation.IntegerValidation;
@@ -35,4 +34,5 @@ public class Money {
             throw new IllegalArgumentException(StringConstant.MONEY_INPUT_NOT_DIVIDE_BY_LOTTO_MONEY_PER_ONE_MESSAGE.getMessage());
         }
     }
+
 }
