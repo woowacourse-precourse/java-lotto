@@ -10,7 +10,7 @@ public class LottoOutput {
 
         int amount = userLotto.size();
 
-        sb.append(amount)
+        sb.append("\n" + amount)
                 .append(Messages.LOTTO_AMOUNT.getMessage())
                 .append("\n");
 
@@ -26,9 +26,10 @@ public class LottoOutput {
         sb.append(Messages.LOTTO_RESULT.getMessage());
 
         for(LottoRank rank : LottoRank.values()) {
-            sb.append(createLottoResultMessage(rank, lottoResult));
+            sb.append(createLottoResultMessage(rank, lottoResult))
+                    .append("\n");
         }
-
+        sb.deleteCharAt(sb.length() - 1);
         System.out.println(sb);
     }
 
@@ -39,9 +40,9 @@ public class LottoOutput {
 
         if(rank != LottoRank.BLANK) {
             sb.append(rank.getMessage())
-                    .append(count)
-                    .append("\n");
+                    .append(count);
         }
+
         return sb.toString();
     }
 
