@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -74,6 +75,22 @@ class LottoTest {
         assertThatThrownBy(() ->  lottoService.isNumber(testWinningLottoNumber3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("수익률을 정상적으로 출력하는지 확인")
+    @Test
+    void 수익률_테스트() {
+        //given
+        Player player = new Player();
+        player.setLottoPrice(100000);
+        player.addLottoRevenue(65432);
+
+        //when
+        String yield = lottoService.calculatePlayerYield(player);
+
+        //then
+        assertThat(yield).isEqualTo("65.4");
+    }
+
 
 
 
