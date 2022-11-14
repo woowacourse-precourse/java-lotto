@@ -8,9 +8,12 @@ public class LottoAmount {
 
     private final int purchaseAmount;
 
-    private LottoAmount(int purchaseAmount) {
+    public LottoAmount(int purchaseAmount) {
         validateAmount(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
+    }
+    public int countTickets() {
+        return (purchaseAmount / MIN_AMOUNT);
     }
 
     private void validateAmount(int purchaseAmount) {
