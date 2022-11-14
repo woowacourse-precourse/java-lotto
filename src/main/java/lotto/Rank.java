@@ -15,7 +15,7 @@ public enum Rank {
     SECOND_CLASS("5개 일치, 보너스 볼 일치 (30,000,000원)", 30000000,11),
     THIRD_CLASS("5개 일치 (1,500,000원)", 1500000, 10),
     FIRTH_CLASS("4개 일치 (50,000원)", 50000, 8),
-    FIFTH_CLASS("3개 일치 (5,0000원)", 5000, 6),
+    FIFTH_CLASS("3개 일치 (5,000원)", 5000, 6),
     LOSE_LOTTO("낙첨",0, 0);
 
     private final static Map<Integer, Rank> BY_SCORE = Stream.of(values())

@@ -24,7 +24,7 @@ public class Judgment {
     public double calculateYield() {
         double investmentMoney = (double) user.getGameMoney();
         double totalPrizeMoney = (double) calculateTotalPrizeMoney();
-        return (totalPrizeMoney / investmentMoney) * 100;
+        return totalPrizeMoney / investmentMoney;
     }
 
     private long calculateTotalPrizeMoney() {
