@@ -1,6 +1,9 @@
 package lotto.ui;
 
+import lotto.domain.Result;
+
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Output {
@@ -20,5 +23,29 @@ public class Output {
                         .map(String::valueOf)
                         .collect(Collectors.joining(", ", "[", "]"))
         );
+    }
+
+    private static final String INPUT_WINNINGS = "당첨 번호를 입력해 주세요.";
+    public static void printInputWinnings() {
+        System.out.println(INPUT_WINNINGS);
+    }
+
+    private static final String INPUT_BONUS = "보너스 번호를 입력해 주세요.";
+    public static void printInputBonus() {
+        System.out.println(INPUT_BONUS);
+    }
+
+    private static final String STATISTICS = "당첨 통계\n---";
+    public static void printStatistics(Map<Result, Integer> resultCounts) {
+        System.out.println(STATISTICS);
+        for (Map.Entry<Result, Integer> resultCount : resultCounts.entrySet()) {
+            Result result = resultCount.getKey();
+            int count = resultCount.getValue();
+            System.out.println(result.getMessage() + " (" + result.getMoney() + "원)" + " - " + count + "개");
+        }
+    }
+
+    public static void printYield(double yield) {
+        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
     }
 }
