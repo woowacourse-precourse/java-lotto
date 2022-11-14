@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,10 @@ public class PrizeNumber {
                 .map(s -> Integer.valueOf(s))
                 .collect(Collectors.toList());
         return prizelotto;
+    }
+
+    public void sort(List<Integer> prizelotto){
+        prizelotto.sort(Comparator.naturalOrder());
     }
 
 }
