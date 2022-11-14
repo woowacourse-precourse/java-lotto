@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.joining;
 
 public class LottoTickets {
 
-    private List<Lotto> tickets;
+    private final List<Lotto> tickets;
 
     public LottoTickets(List<Lotto> tickets) {
         this.tickets = tickets;
