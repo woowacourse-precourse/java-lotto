@@ -17,7 +17,7 @@ public class Game {
 
     public void start() {
         askPrice();
-        price.inputPurchaseAmount();
+        int purchasePrice = price.inputPurchaseAmount();
         showNumberOfPurchase();
         numberGenerator.showPurchaseLottery(getCount());
         askWinningNumber();
@@ -28,6 +28,7 @@ public class Game {
         lotto.validateDuplicateWinningNumbersAndBonusNumber(number);
         lotto.duplicateWinningNumbersAndGeneratorNumbers(numberGenerator.numbers, number);
         showWinStatistics();
+        makeGrossReturn(purchasePrice);
     }
 
     public void askPrice() {
@@ -59,7 +60,7 @@ public class Game {
 
         for (PrizeMoney prizeMoney : prizeMoneys) {
             if (prizeMoney.equals(prizeBonus)) {
-                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원)- %d개\n",
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n",
                         prizeMoney.getMatchingNumbers(), formatCommaInPrize(prizeMoney.getPrize()),
                         prizeMoney.getCount());
             }
@@ -74,6 +75,16 @@ public class Game {
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         String commaPrize = decimalFormat.format(prize);
         return commaPrize;
+    }
+
+    public void makeGrossReturn(int purchasePrice) {
+        PrizeMoney[] prizeMoneys = PrizeMoney.values();
+        double result = 0;
+        for (PrizeMoney prizeMoney : prizeMoneys) {
+            result += prizeMoney.getPrize() * prizeMoney.getCount();
+        }
+        result = (result / purchasePrice) * 100;
+        System.out.println("총 수익률은 " + result + "%입니다.");
     }
 }
 
