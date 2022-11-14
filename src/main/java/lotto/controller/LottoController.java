@@ -21,7 +21,15 @@ public class LottoController {
         LottoTicket lottoTicket = purchaseLottoTicket(amount);
         WinningNumbers winningNumbers = createWinningNumbers();
         LottoResult lottoResult = getLottoResult(lottoTicket, winningNumbers);
+        printResult(amount, lottoResult);
     }
+
+    private void printResult(LottoAmount amount, LottoResult lottoResult) {
+        printResultIntro();
+        printLottoResult(lottoResult);
+        printProfit(amount.calculateProfit(lottoResult.calPriceSum()));
+    }
+
     private LottoResult getLottoResult(LottoTicket lottoTicket, WinningNumbers winningNumbers) {
         return lottoTicket.calLottoWinResult(winningNumbers);
     }
