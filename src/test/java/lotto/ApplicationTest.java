@@ -68,9 +68,16 @@ class ApplicationTest extends NsTest {
     @DisplayName("구입금액만큼 로또를 구입한다.")
     void perchaseLottoByNumberOfLotto() {
         int numberOfLotto = 10;
+        assertThat(Application.perchaseLotto(numberOfLotto).size())
+                .isEqualTo(numberOfLotto);
+    }
 
-        assertThat(Application.perchaseLotto(numberOfLotto).size()).isEqualTo(numberOfLotto);
-
+    @Test
+    @DisplayName("입력받은 로또 번호로 리스트 생성")
+    void createList() {
+        String inputNumbers = "1, 2, 3, 4, 5, 6";
+        assertThat(Application.stringToList(inputNumbers))
+                .isEqualTo(List.of(1, 2, 3, 4, 5,6));
     }
 
     @Override
