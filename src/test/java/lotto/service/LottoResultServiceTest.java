@@ -1,13 +1,9 @@
 package lotto.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import lotto.constant.IntConstant;
 import lotto.constant.LottoResultConstant;
-import lotto.controller.LottoController;
 import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 import org.assertj.core.api.Assertions;
@@ -16,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 class LottoResultServiceTest {
 
-    LottoResultService lottoResultService = new LottoResultService();
 //
 //    @DisplayName("WinningLotto 생성 잘 되는지 확인")
 //    @Test
@@ -42,7 +37,7 @@ class LottoResultServiceTest {
         List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
         int bonusLotto = 7;
 
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(lottos,
+        Map<LottoResultConstant, Integer> result = LottoResultService.getResult(lottos,
                 new WinningLotto(new Lotto(winningLotto), bonusLotto));
 
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_THREE)).isEqualTo(1);
@@ -69,7 +64,8 @@ class LottoResultServiceTest {
         List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
         int bonusLotto = 7;
 
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(lottos, new WinningLotto(new Lotto(winningLotto), bonusLotto));
+        Map<LottoResultConstant, Integer> result = LottoResultService.getResult(lottos,
+                new WinningLotto(new Lotto(winningLotto), bonusLotto));
 
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_THREE)).isEqualTo(1);
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_FOUR)).isEqualTo(0);
@@ -97,7 +93,7 @@ class LottoResultServiceTest {
         List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
         int bonusLotto = 7;
 
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(lottos,
+        Map<LottoResultConstant, Integer> result = LottoResultService.getResult(lottos,
                 new WinningLotto(new Lotto(winningLotto), bonusLotto));
 
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_THREE)).isEqualTo(1);
@@ -127,7 +123,7 @@ class LottoResultServiceTest {
         List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
         int bonusLotto = 7;
 
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(lottos,
+        Map<LottoResultConstant, Integer> result = LottoResultService.getResult(lottos,
                 new WinningLotto(new Lotto(winningLotto), bonusLotto));
 
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_THREE)).isEqualTo(1);
@@ -157,7 +153,7 @@ class LottoResultServiceTest {
         List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
         int bonusLotto = 7;
 
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(lottos,
+        Map<LottoResultConstant, Integer> result = LottoResultService.getResult(lottos,
                 new WinningLotto(new Lotto(winningLotto), bonusLotto));
 
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_THREE)).isEqualTo(1);
@@ -186,7 +182,7 @@ class LottoResultServiceTest {
         List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
         int bonusLotto = 7;
 
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(lottos,
+        Map<LottoResultConstant, Integer> result = LottoResultService.getResult(lottos,
                 new WinningLotto(new Lotto(winningLotto), bonusLotto));
 
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_THREE)).isEqualTo(1);

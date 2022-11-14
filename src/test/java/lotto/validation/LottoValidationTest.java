@@ -9,7 +9,7 @@ import lotto.constant.IntConstant;
 import org.junit.jupiter.api.DisplayName;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
+
 class LottoValidationTest extends NsTest{
     private static final String ERROR_MESSAGE = "[ERROR]";
     @DisplayName("당첨번호의 개수가 다른 입력이라면 IllegalArgumentException 을 발생시킨다.")

@@ -1,7 +1,6 @@
 package lotto.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -11,14 +10,10 @@ import lotto.constant.LottoResultConstant;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.WinningLotto;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class YieldServiceTest {
-
-    private LottoResultService lottoResultService = new LottoResultService();
-    private YieldService yieldService = new YieldService();
 
     @DisplayName("결과를 잘 뱉어내는지 확인한다")
     @Test
@@ -36,11 +31,11 @@ class YieldServiceTest {
         List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
         int bonusLotto = 7;
 
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(lottos,
+        Map<LottoResultConstant, Integer> result = LottoResultService.getResult(lottos,
                 new WinningLotto(new Lotto(winningLotto), bonusLotto));
         Money money = new Money("8000");
         DecimalFormat format = new DecimalFormat("###,###.#");
-        String format1 = format.format(yieldService.calculateYield(result, money));
+        String format1 = format.format(YieldService.calculateYield(result, money));
         assertThat(format1).isEqualTo("62.5");
 
     }
@@ -61,11 +56,11 @@ class YieldServiceTest {
         List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
         int bonusLotto = 7;
 
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(lottos,
+        Map<LottoResultConstant, Integer> result = LottoResultService.getResult(lottos,
                 new WinningLotto(new Lotto(winningLotto), bonusLotto));
         Money money = new Money("8000");
         DecimalFormat format = new DecimalFormat("###,###.#");
-        String format1 = format.format(yieldService.calculateYield(result, money));
+        String format1 = format.format(YieldService.calculateYield(result, money));
         assertThat("25,000,062.5").isEqualTo(format1);
     }
 }
