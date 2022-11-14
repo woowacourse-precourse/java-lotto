@@ -10,14 +10,14 @@ import java.util.List;
 
 public class Counter {
     private static List<Lotto> lottoList = new ArrayList<>(); //전체 로또 담을 리스트
+    public static List<Integer> record = new ArrayList<>(List.of(0, 0, 0, 0, 0)); //로또 통계 기록용 리스트
+    public static int BONUS;
+    public static String payMoney;
+    private static final String ERROR_MESSAGE = "[ERROR]";
+
     public static List<Lotto> getLottoList() {
         return lottoList;
     }
-    public static List<Integer> record = new ArrayList<>(List.of(0, 0, 0, 0, 0)); //로또 통계 기록용 리스트
-    public static int BONUS;
-    public static Lotto winningLotto;
-    public static String payMoney;
-    private static final String ERROR_MESSAGE = "[ERROR]";
 
     public static int buyLotto() {
         System.out.println(InfoEnum.MONEY.getMessage());
@@ -47,8 +47,8 @@ public class Counter {
 
         for (int cnt = 0; cnt < lottoNumber; cnt++) {
             Lotto lotto = new Lotto(makeRandom());
-            lottoList.add(lotto); //로또 리스트에 담기
-            lotto.printNumbers(); //로또 번호 출력
+            lottoList.add(lotto);
+            lotto.printNumbers();
         }
     }
 
@@ -66,11 +66,5 @@ public class Counter {
     public static void play() {
         int lottoNumber = buyLotto();
         printLotto(lottoNumber);
-
-        winningLotto = new Lotto(LottoMachine.winningNumber()); //당첨 로또
-        LottoMachine.bonusNumber();
-
-        Statistics stat = new Statistics();
-        stat.print();
     }
 }

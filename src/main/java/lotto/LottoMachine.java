@@ -8,11 +8,13 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class LottoMachine {
-    public static List<Integer> winningNumber() {
-        java.lang.System.out.println("\n" + InfoEnum.WINNING_NUMBER.getMessage());
+    public static Lotto winningLotto;
+
+    public static void winningNumber() {
+        System.out.println("\n" + InfoEnum.WINNING_NUMBER.getMessage());
         String numbers = Console.readLine();
 
-        Game.inputException(numbers);
+        Counter.inputException(numbers);
 
         List<Integer> winningNumbersList = new ArrayList<>(); //당첨 번호 담긴 리스트
         StringTokenizer st = new StringTokenizer(numbers, ",");
@@ -21,13 +23,17 @@ public class LottoMachine {
             int element = Integer.parseInt(st.nextToken());
             winningNumbersList.add(element);
         }
-
-        return winningNumbersList;
+        winningLotto = new Lotto(winningNumbersList); //당첨 로또
     }
 
     public static void bonusNumber() {
-        java.lang.System.out.println("\n" + InfoEnum.BONUS_NUMBER.getMessage());
+        System.out.println("\n" + InfoEnum.BONUS_NUMBER.getMessage());
         String tempBonus = Console.readLine();
-        Game.BONUS = Integer.parseInt(tempBonus);
+        Counter.BONUS = Integer.parseInt(tempBonus);
+    }
+
+    public static void run() {
+        winningNumber();
+        bonusNumber();
     }
 }
