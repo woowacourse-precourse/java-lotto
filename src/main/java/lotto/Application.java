@@ -4,9 +4,6 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Input input = new Input();
-        int purchaseAmount = input.getPurchaseAmount();
-        List<Integer> winningNumber = input.getWinningNumber();
-        int bonusNumber = input.getBonusNumber();
+        // TODO: LottoGame 클래스를 이용한 로또 게임 실행
     }
 }
