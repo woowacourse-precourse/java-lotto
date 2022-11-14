@@ -20,8 +20,8 @@ public class Notice {
         System.out.println(purchaseNumber + PURCHASE_NUMBER);
     }
 
-    public void lottos(ArrayList<Lotto> lottos) {
-        for (Lotto lotto : lottos) {
+    public void lottery(Lottery lottery) {
+        for (Lotto lotto : lottery.getLottery()) {
             System.out.println(lotto.getNumbers());
         }
     }
