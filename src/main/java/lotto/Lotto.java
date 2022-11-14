@@ -22,8 +22,9 @@ public class Lotto {
     }
 
     public static Lotto create() {
-        Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        return lotto;
+        List<Integer> randoms = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(randoms);
+        return new Lotto(randoms);
     }
 
     public List<Integer> getNumbers() {
