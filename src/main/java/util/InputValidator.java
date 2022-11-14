@@ -1,8 +1,10 @@
-package controller;
+package util;
 
+import domain.WinningNumber;
 import util.Constant;
 import util.Error;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -50,9 +52,10 @@ public class InputValidator {
         }
     }
 
-    public void checkBonusNumber(String bonusNumber) {
+    public void checkBonusNumber(String bonusNumber, WinningNumber winningNumber) {
         isDigitBonusNumber(bonusNumber);
         checkBonusNumberRange(bonusNumber);
+        checkSameNumber(bonusNumber,winningNumber);
     }
 
     public void isDigitBonusNumber(String bonusNumber) {
@@ -66,6 +69,16 @@ public class InputValidator {
     public void checkBonusNumberRange(String bonusNumber) {
         if(Integer.parseInt(bonusNumber) > Constant.MAXLOTTOVALUE || Integer.parseInt(bonusNumber) < Constant.MINLOTTOVALUE) {
             throw new IllegalArgumentException(Error.RANGE.getErrorMsg());
+        }
+    }
+
+    public void checkSameNumber(String bonusNumber, WinningNumber winningNumber) {
+        List<Integer> remWinNum = new ArrayList<>(winningNumber.getWinNumbers());
+        Integer remBonusNum = Integer.parseInt(bonusNumber);
+        for(int i=0; i<remWinNum.size(); i++) {
+            if(remBonusNum.equals(remWinNum.get(i))) {
+                throw new IllegalArgumentException(Error.SAMEBONUSNUMBER.getErrorMsg());
+            }
         }
     }
 }

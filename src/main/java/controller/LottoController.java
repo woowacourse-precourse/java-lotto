@@ -22,7 +22,7 @@ public class LottoController {
             WinningNumber winningNumber = new WinningNumber(inputController.insertLottoNumber());
 
             InputView.printInputBonusNumber();
-            int bonusNumber = inputController.insertBonusNumber();
+            int bonusNumber = inputController.insertBonusNumber(winningNumber);
             MatchingNumber matchingNumber = new MatchingNumber(outputController.matchingNumber(lottos,winningNumber.getWinNumbers(),bonusNumber));
             OutputView.printResult(matchingNumber);
             OutputView.printProfit(outputController.winningAmount(matchingNumber),lottoPurAmount);

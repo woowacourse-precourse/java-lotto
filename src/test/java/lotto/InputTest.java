@@ -2,7 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import controller.InputController;
-import controller.InputValidator;
+import util.InputValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +34,7 @@ public class InputTest extends NsTest {
     @Test
     void checkDivideLottoPrice() {
         assertSimpleTest(() -> {
-            runException("1030");
+            runException("900");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
         assertSimpleTest(() -> {

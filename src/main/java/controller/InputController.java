@@ -2,7 +2,9 @@ package controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import domain.WinningNumber;
 import lotto.Lotto;
+import util.InputValidator;
 import view.InputView;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +17,12 @@ public class InputController {
 
     public Integer insertLottoAmount() {
         InputView.printLottoPrice();
-        String stringpuramount = Console.readLine();
-        inputValidator.checkDigitPrice(stringpuramount);
-        Integer lottopuramount = Integer.parseInt(stringpuramount);
+        String purAmount = Console.readLine();
+        inputValidator.checkDigitPrice(purAmount);
+        Integer lottoPurAmount = Integer.parseInt(purAmount);
 
-        inputValidator.checkDividePrice(lottopuramount);
-        return lottopuramount;
+        inputValidator.checkDividePrice(lottoPurAmount);
+        return lottoPurAmount;
     }
 
     public List<Lotto> makeLottoNumberList(int lottoPurAmount) {
@@ -37,28 +39,27 @@ public class InputController {
 
     public List<Integer> insertLottoNumber() {
         InputView.printInputLottoNumber();
-        List<Integer> lottonumber = new ArrayList<>();
-        String strlottonumber = Console.readLine();
-        inputValidator.checkDigitNumber(strlottonumber);
+        String remNumber = Console.readLine();
+        inputValidator.checkDigitNumber(remNumber);
 
-        String[] numbers = strlottonumber.split(",");
-        lottonumber = StringToIntNumber(numbers);
-        inputValidator.checkWinNumber(lottonumber);
+        String[] numbers = remNumber.split(",");
+        List<Integer> lottoNumber = new ArrayList<>(StringToIntNumber(numbers));
+        inputValidator.checkWinNumber(lottoNumber);
 
-        return lottonumber;
+        return lottoNumber;
     }
 
-    public int insertBonusNumber() {
-        String bonusNumer = Console.readLine();
-        inputValidator.checkBonusNumber(bonusNumer);
+    public int insertBonusNumber(WinningNumber winningNumber) {
+        String bonusNumber = Console.readLine();
+        inputValidator.checkBonusNumber(bonusNumber, winningNumber);
 
-        return Integer.parseInt(bonusNumer);
+        return Integer.parseInt(bonusNumber);
     }
 
-    public List<Integer> StringToIntNumber(String strLottoNumber[]) {
+    public List<Integer> StringToIntNumber(String[] strLottoNumber) {
         List<Integer> numbers = new ArrayList<>();
-        for(int i=0; i<strLottoNumber.length; i++) {
-            numbers.add(Integer.parseInt(strLottoNumber[i]));
+        for (String s : strLottoNumber) {
+            numbers.add(Integer.parseInt(s));
         }
         return numbers;
     }
