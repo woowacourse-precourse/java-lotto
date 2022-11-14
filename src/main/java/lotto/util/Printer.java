@@ -9,6 +9,10 @@ public class Printer {
         System.out.println(message);
     }
 
+    public static void printf(String message, int n) {
+        System.out.printf(message, n);
+    }
+
     public static void divide() {
         System.out.println();
     }

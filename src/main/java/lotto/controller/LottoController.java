@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.*;
 import lotto.util.Printer;
 import lotto.view.LottoMessage;
+import lotto.view.ResultMessage;
 
 import java.util.List;
 
@@ -21,11 +22,15 @@ public class LottoController {
     private void playLotto() {
         int lottoNum = sell();
         Printer.divide();
+
         List<Lotto> lottos = issue(lottoNum);
         user.receive(lottos);
         Printer.divide();
-        draw();
 
+        draw();
+        Printer.divide();
+
+        showResult();
     }
 
     private int sell() {
@@ -47,6 +52,10 @@ public class LottoController {
         Printer.divide();
         Printer.print(LottoMessage.INPUT_BONUS.getMessage());
         bonus = host.drawBonus(winningLotto);
+    }
+
+    private void showResult() {
+        Printer.print(ResultMessage.RESULT.getMessage());
     }
 
 }
