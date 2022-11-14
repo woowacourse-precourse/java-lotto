@@ -29,4 +29,8 @@ public class Lotto {
                 .anyMatch(Predicate.isEqual(number)))
                 .count();
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }

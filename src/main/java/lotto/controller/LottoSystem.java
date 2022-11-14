@@ -25,10 +25,26 @@ public class LottoSystem {
 
     }
 
+    private int addBonusResult(int index, int bonusNumber) {
+        if(userLotto.getLottos(index).getNumbers().contains(bonusNumber)) {
+            return 1;
+        }
+        return 0;
+    }
+
     public List<Integer> makeResult(WinningLotto winningLotto) {
         List<Integer> lottoResult = new ArrayList<>();
         for (int i = 0; i < userLotto.getSize(); i++) {
-            lottoResult.add(calculateLotto(userLotto.getLottos(i), winningLotto));
+            int countNumber = calculateLotto(userLotto.getLottos(i), winningLotto);
+            if(countNumber == 5) {
+                lottoResult.add(countNumber + addBonusResult(i, winningLotto.getBonusNumber()));
+                continue;
+            }
+            if(countNumber == 6) {
+                lottoResult.add(countNumber + 1);
+                continue;
+            }
+            lottoResult.add(countNumber);
         }
         return lottoResult;
     }

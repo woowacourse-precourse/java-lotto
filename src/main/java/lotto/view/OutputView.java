@@ -1,7 +1,5 @@
 package lotto.view;
 
-import java.util.List;
-import lotto.domain.Lotto;
 import lotto.domain.OutputMessage;
 import lotto.domain.UserLotto;
 
