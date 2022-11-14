@@ -22,6 +22,12 @@ public class Exception {
 			throw new IllegalArgumentException(Constants.ERROR_LOTTO_ONLY_NUMBER);
 		}
 	}
+
+	public void checkLottoRange(String input) throws IllegalArgumentException {
+		if (Integer.parseInt(input) < 1 || Integer.parseInt(input) > 45) {
+			throw new IllegalArgumentException(Constants.ERROR_LOTTO_RANGE);
+		}
+	}
 }
 
 
