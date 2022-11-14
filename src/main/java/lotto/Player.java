@@ -44,4 +44,9 @@ public class Player {
             throw new IllegalArgumentException("[ERROR] : 6개의 당첨번호는 모두 다른 숫자여야 합니다.");
         this.winning = winnings;
     }
+
+    public void InputWinningNumber(){
+        String input = readLine();
+        checkWinningNumber(input);
+    }
 }
