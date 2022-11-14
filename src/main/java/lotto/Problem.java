@@ -9,8 +9,9 @@ public class Problem {
     User user;
     Map<Prize,Integer> winResult;
     long winMoney;
+    Comment comment;
     Problem(){
-        printInputGuide();
+        comment=new Comment();
         this.user=new User();
         this.winMoney=0;
         initializeWinResult();
@@ -23,9 +24,6 @@ public class Problem {
         }
     }
 
-    void printInputGuide(){
-        System.out.println("구입금액을 입력해 주세요.");
-    }
     void startProblem(){
         setUserLotto();
         setWinningLotto();
@@ -35,7 +33,7 @@ public class Problem {
     }
 
     void printAnswer(){
-        printAnswerComment();
+        comment.startPrintAnswer();
         printAllPrizeNumber();
         printYield();
     }
@@ -63,6 +61,7 @@ public class Problem {
     }
 
     private void setUserLotto(){
+        comment.inputMoney();
         this.user.inputMoney();
         this.user.setLottoQuantity();
         this.user.printLottoQunantity();
@@ -77,9 +76,9 @@ public class Problem {
     }
 
     private void setWinningLotto(){
-        printWinningNumberInputGuide();
+        comment.inputWinningNumber();
         inputWinningNumber();
-        printBonusNumberGuide();
+        comment.inputBonusNumber();
         inputBonusNumber();
     }
     private void findResult(){
@@ -129,10 +128,6 @@ public class Problem {
         return win;
     }
 
-    private void printWinningNumberInputGuide(){
-        System.out.println("당첨 번호를 입력해 주세요.");
-    }
-
     private void inputWinningNumber(){
         String []numbers=Console.readLine().split(",");
         this.winningLotto=new WinningLotto(convertNumbers(numbers));
@@ -145,11 +140,6 @@ public class Problem {
         }
 
         return numbers;
-    }
-
-    private void printBonusNumberGuide(){
-        System.out.println();
-        System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     private void inputBonusNumber(){
