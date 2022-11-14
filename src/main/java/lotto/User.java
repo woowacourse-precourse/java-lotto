@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class User {
-    final static String PURCHASE_PATTERN = "^[0-9]*$";
+    final static String PRICE_PATTERN = "^[0-9]*$";
     public int purchasePrice;
 
     public User() {
@@ -20,7 +20,7 @@ public class User {
     }
 
     public boolean isValidPurchasePrice(String readLine) {
-        boolean isNumeric = Pattern.matches(PURCHASE_PATTERN, readLine);
+        boolean isNumeric = Pattern.matches(PRICE_PATTERN, readLine);
         boolean isThousand = (Integer.parseInt(readLine) % 1000 == 0);
 
         return (isNumeric && isThousand);
