@@ -2,6 +2,10 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+
 public class Application {
     static final int lottoPrice = 1000;
 
@@ -40,6 +44,20 @@ public class Application {
         System.out.println(numOfLotto + "개를 구매했습니다.");
     }
 
+    public static List<Lotto> getLottos(int numOfLotto) {
+        List<Lotto> lottos = new ArrayList<>();
+        List<Integer> lottoNums;
+
+        for (int i = 0; i < numOfLotto; i++) {
+            lottoNums = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(lottoNums);
+            Lotto newLotto = new Lotto(lottoNums);
+            newLotto.printNumbers();
+            lottos.add(newLotto);
+        }
+
+        return lottos;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
