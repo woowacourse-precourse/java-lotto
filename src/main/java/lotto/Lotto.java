@@ -27,4 +27,8 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자들을 입력해주세요.");
         }
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
