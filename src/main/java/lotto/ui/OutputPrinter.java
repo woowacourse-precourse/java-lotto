@@ -16,11 +16,14 @@ public class OutputPrinter {
             System.out.println(singleLotto);
         }
     }
-
-    public void printWinningStatistics(Map<WinningNumbers, Long> winningCase) {
+    public void printFinalResult(Map<WinningNumbers, Long> winningCase, double rawRatio) {
         System.out.println("당첨 통계");
         System.out.println("---");
+        printWinningStatistics(winningCase);
+        printRewardRate(rawRatio);
+    }
 
+    private void printWinningStatistics(Map<WinningNumbers, Long> winningCase) {
         WinningNumbers[] allWinningNumbers = WinningNumbers.values();
         for (int winningNumberIndex = 0; winningNumberIndex < allWinningNumbers.length - 1; winningNumberIndex++) {
             WinningNumbers key = allWinningNumbers[winningNumberIndex];
@@ -33,7 +36,7 @@ public class OutputPrinter {
         }
     }
 
-    public void printRewardRate(double rawRatio) {
+    private void printRewardRate(double rawRatio) {
         System.out.println("총 수익률은 "+ String.format("%.1f", rawRatio) + "%입니다.");
     }
 }

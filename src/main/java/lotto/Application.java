@@ -10,11 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Application {
+    static NumbersReceiver numbersReceiver = new NumbersReceiver();
+    static Buyer buyer = new Buyer();
+    static OutputPrinter outputPrinter = new OutputPrinter();
     public static void main(String[] args) {
-        NumbersReceiver numbersReceiver = new NumbersReceiver();
-        Buyer buyer = new Buyer();
-        OutputPrinter outputPrinter = new OutputPrinter();
-
         long startMoney = numbersReceiver.insertMoney();
         long lottosBundleSize = buyer.countLottos(startMoney);
 
@@ -25,11 +24,8 @@ public class Application {
         int bonusNumber = numbersReceiver.setBonusNumber();
 
         Lotto lotto = new Lotto(basicWinningNumbers);
-
         Map<WinningNumbers, Long> winningCaseStatistics = lotto.countWinningCase(bonusNumber, purchasedLottos);
         double rawRewardRate = lotto.calculateRewardRate(bonusNumber, purchasedLottos, startMoney);
-
-        outputPrinter.printWinningStatistics(winningCaseStatistics);
-        outputPrinter.printRewardRate(rawRewardRate);
+        outputPrinter.printFinalResult(winningCaseStatistics, rawRewardRate);
     }
 }
