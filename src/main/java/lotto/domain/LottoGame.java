@@ -5,6 +5,7 @@ import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LottoGame {
@@ -14,6 +15,7 @@ public class LottoGame {
 
 
     private Player player;
+    private Lotto lotto;
     private int money;
 
     public LottoGame(){
@@ -41,28 +43,39 @@ public class LottoGame {
 
     private void inputPurchaseAmount(){
         System.out.println(INPUT_PURCHASE_AMOUNT);
-        String a = Console.readLine();
-        if(a.matches("\\d+")){
-            money = Integer.parseInt(a);
+        String purchaseAmount = Console.readLine();
+        if(isNumber(purchaseAmount)){
+            money = Integer.parseInt(purchaseAmount);
             this.player = new Player(money);
-            return;
         }
-        throw new IllegalArgumentException(ErrorCode.NOT_NUMBER.getMessage());
     }
 
     private List<Integer> inputWinningNumbers(){
+
         System.out.println(INPUT_WINNING_NUMBER);
-        String[] sampleIntputNumbers = Console.readLine().split(",");
-        List<Integer> winningNumbers = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            winningNumbers.add(Integer.parseInt(sampleIntputNumbers[i]));
+        String[] sampleNumbers = Console.readLine().split(",");
+        for (String sampleNumber : sampleNumbers) {
+            isNumber(sampleNumber);
         }
+        List<Integer> winningNumbers = new ArrayList<>();
+
+        for (int i = 0; i < 6; i++) {
+            winningNumbers.add(Integer.parseInt(sampleNumbers[i]));
+        }
+        lotto = new Lotto(winningNumbers);
         return winningNumbers;
     }
+
     private int inputBonusNumber(){
         System.out.println(INPUT_BONUS_NUMBER);
-        String bonusNumber = Console.readLine();
-        return Integer.parseInt(bonusNumber);
+        String inputBonusNumber = Console.readLine();
+        isNumber(inputBonusNumber);
+        int bonusNumber = Integer.parseInt(inputBonusNumber);
+        lotto.rangeCheck(bonusNumber);
+        if(lotto.hasBonusNumber(bonusNumber)){
+            throw new IllegalArgumentException(ErrorCode.DUPLICATION_NUMBER.getMessage());
+        }
+        return bonusNumber;
     }
 
     private double winningStatistics(List<Integer> winningNumbers, int bonusNumber){
@@ -75,6 +88,15 @@ public class LottoGame {
             System.out.println(winningType.printWinningMessage(matchNumber[index[i]]));
         }
         return Math.round((totalMoney/(double)money)*10000)/100.0;
+    }
+
+
+    public boolean isNumber(String number){
+
+        if(!number.matches("\\d+")){
+            throw new IllegalArgumentException(ErrorCode.NOT_ONE_NUMBER.getMessage());
+        }
+        return true;
     }
 
 }
