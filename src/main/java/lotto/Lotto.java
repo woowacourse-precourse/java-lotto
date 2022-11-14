@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -12,6 +13,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        numbers.stream().sorted(Comparator.naturalOrder());
         this.numbers = numbers;
     }
 
@@ -21,8 +23,8 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         isNotConstantSize(numbers);
-        isNotRangeFromMinToMax(numbers);
-        existsDuplicateNumbers(numbers);
+        isNotRange(numbers);
+        duplicateNumbers(numbers);
     }
 
     private void isNotConstantSize(List<Integer> numbers) {
@@ -31,17 +33,17 @@ public class Lotto {
         }
     }
 
-    private void isNotRangeFromMinToMax(List<Integer> numbers) {
-        numbers.stream().forEach(this::isNotRangeFromMinToMax);
+    private void isNotRange(List<Integer> numbers) {
+        numbers.stream().forEach(this::isNotRange);
     }
 
-    private void isNotRangeFromMinToMax(Integer number) {
+    private void isNotRange(Integer number) {
         if (number < MIN_VALUE || MAX_VALUE < number) {
             throw new IllegalArgumentException("[ERROR]: 숫자의 범위는 1 ~ 45까지여야 합니다.");
         }
     }
 
-    private void existsDuplicateNumbers(List<Integer> numbers) {
+    private void duplicateNumbers(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR]: 중복되는 숫자가 존재합니다.");
         }

@@ -11,20 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinningNumbers {
-
-    @DisplayName("정상적인 입력")
-    @Test
-    void correctInput() {
-        String data = "1,2,3,4,5,6";
-        System.setIn(new ByteArrayInputStream(data.getBytes()));
-        List<Integer> winningNumbers = new ArrayList<>();
-        for (int i = 1; i <= 6; i++) {
-            winningNumbers.add(i);
-        }
-        assertThat(new LottoDrawMachine().getWinningNumbers().getNumbers())
-                .isEqualTo(winningNumbers);
-    }
-
+    
     @DisplayName("숫자가 아닌 다른 값")
     @Test
     void isNotNumber() {
@@ -77,7 +64,7 @@ public class WinningNumbers {
 
     @DisplayName("중복되는 숫자 존재")
     @Test
-    void DuplicateNumbers() {
+    void duplicateNumbers() {
         String data = "1,2,3,5,5,6";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         assertThatThrownBy(() -> new LottoDrawMachine())

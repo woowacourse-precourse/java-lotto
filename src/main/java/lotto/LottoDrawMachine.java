@@ -13,25 +13,30 @@ public class LottoDrawMachine {
     public static final int MAX_VALUE = 45;
 
     private Lotto winningNumbers;
-
+    private final int bonusNumber;
 
     public Lotto getWinningNumbers() {
         return winningNumbers;
     }
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
     public LottoDrawMachine() {
         winningNumbers = createWinningNumbers();
+        bonusNumber = createBonusNumber();
     }
 
     private Lotto createWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
-        throwException(input);
+        throwExceptionWinningNumbers(input);
         List<String> numbersOfString = Arrays.asList(input.split(","));
         return (new Lotto(convertStringListToIntList(numbersOfString, Integer::parseInt)));
     }
 
-    private void throwException(String str) {
+    private void throwExceptionWinningNumbers(String str) {
         areNotDigitOrComma(str);
         existsEmptyValue(str);
     }
@@ -66,5 +71,47 @@ public class LottoDrawMachine {
         return listOfString.stream()
                 .map(function)
                 .collect(Collectors.toList());
+    }
+
+    private int createBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        validate(input);
+        return Integer.parseInt(input);
+    }
+
+    private void validate(String str) {
+        isNotAllDigit(str);
+        isEmptyNumber(str);
+        Integer number = Integer.parseInt(str);
+        isNotRange(number);
+        duplicateWinningNumbers(number);
+    }
+
+    private void isNotAllDigit(String str) {
+        for (int idx = 0; idx < str.length(); idx++) {
+            char ch = str.charAt(idx);
+            if (!Character.isDigit(ch)) {
+                throw new IllegalArgumentException("[ERROR]: 보너스 번호는 1개의 숫자만 입력 가능합니다.");
+            }
+        }
+    }
+
+    private void isEmptyNumber(String str) {
+        if (str.length() == 0) {
+            throw new IllegalArgumentException("[ERROR]: 빈 값은 들어올 수 없습니다.");
+        }
+    }
+
+    private void isNotRange(Integer number) {
+        if (number < MIN_VALUE || MAX_VALUE < number) {
+            throw new IllegalArgumentException("[ERROR]: 숫자의 범위는 1 ~ 45까지여야 합니다.");
+        }
+    }
+
+    private void duplicateWinningNumbers(Integer number) {
+        if (winningNumbers.getNumbers().contains(number)) {
+            throw new IllegalArgumentException("[ERROR]: 보너스 번호는 당첨 번호와 중복되면 안됩니다.");
+        }
     }
 }

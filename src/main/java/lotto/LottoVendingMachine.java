@@ -21,7 +21,6 @@ public class LottoVendingMachine {
         List<Lotto> lottos = new ArrayList<>();
         for (int count = 0; count < lottoTickets; count++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_VALUE, MAX_VALUE, LOTTO_NUMBERS_SIZE);
-            numbers.sort(Comparator.naturalOrder());
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
