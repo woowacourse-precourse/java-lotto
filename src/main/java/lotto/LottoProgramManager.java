@@ -20,7 +20,7 @@ public class LottoProgramManager {
             getAnswerAndBonus();
             rankLotto();
         } catch(Exception e) {
-            System.out.println(e.getMessage());
+            OutputManager.printError(e.getMessage());
         }
     }
 
