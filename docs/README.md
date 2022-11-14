@@ -84,7 +84,7 @@
         - [x] 1,000원으로 나누어 떨어지는지 확인 - checkDivisibleThousand
     - [ ] 당첨과 보너스 번호를 입력 처리
     - [x] 발행한 로또 수량 및 번호를 출력 - printPublishedLotto
-    - [ ] 당첨 내역과 총 금액 반환 - calculateWonLotto
+    - [x] 당첨 내역과 총 금액 반환 - calculateWonLotto
       - [x] 당첨 금액을 당첨 등수로 변환 - changeMoneyToRank
       - [x] 당첨 내역 출력 - printWonLotto
     - [x] 수익률 출력 - printYield

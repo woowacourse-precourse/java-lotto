@@ -3,23 +3,21 @@ package lotto.domain;
 import static lotto.Config.WINNING_RANK_AMOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.mock;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import lotto.Lotto;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class ControllerTest {
     private static Controller controller;
 
-    @DisplayName("테스트를 위해 Controller 클래스를 Mocking 처리한다.")
+    @DisplayName("테스트를 위해 Controller 클래스를 선언한다.")
     @BeforeAll
     public static void beforeALl() {
-        controller = mock(Controller.class);
+        controller = Controller.getInstance();
     }
 
     @DisplayName("숫자 형식의 문자열이 아닐 때 예외가 발생한다.")
@@ -71,5 +69,22 @@ public class ControllerTest {
         assertThat(
                 changeMoneyToRankMethod.invoke(controller, lotto1stMoney))
                 .isEqualTo(rank);
+    }
+
+    @DisplayName("총 금액을 반환한다.")
+    @Test
+    void testCalculateWonLotto() throws Exception {
+        Method calculateWonLottoMethod = Controller.class.getDeclaredMethod("calculateWonLotto", List.class, Lotto.class, List.class);
+        calculateWonLottoMethod.setAccessible(true);
+
+        List<Lotto> lottos = List.of(new Lotto(List.of(1,2,3,4,5,6)));
+        Lotto wonLotto = new Lotto(List.of(1,2,3,4,5,6));
+        List<Integer> bonusLotto = List.of(7);
+
+        int lotto1stMoney = WINNING_RANK_AMOUNT[0];
+
+        assertThat(
+                calculateWonLottoMethod.invoke(controller, lottos, wonLotto, bonusLotto))
+                .isEqualTo(lotto1stMoney);
     }
 }

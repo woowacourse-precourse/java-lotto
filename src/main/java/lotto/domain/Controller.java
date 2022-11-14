@@ -69,7 +69,20 @@ public class Controller {
     }
 
     private int calculateWonLotto(List<Lotto> lottos, Lotto wonLotto, List<Integer> bonusLotto) {
-        return 0;
+        int profit = 0;
+        List<Integer> rankCounts = new ArrayList<>(Collections.nCopies(WINNING_RANK_AMOUNT.length, 0));
+        for(int index = 0; index < lottos.size(); index++){
+            Lotto lotto = lottos.get(index);
+            int receivedMoney = uahanBank.changeLottoToMoney(wonLotto, bonusLotto, lotto);
+            profit += receivedMoney;
+
+            int rank = changeMoneyToRank(receivedMoney);
+            if(rank < uahanBank.rankScores.size()){
+                rankCounts.set(rank, rankCounts.get(rank) + 1);
+            }
+        }
+        printWonLotto(rankCounts);
+        return profit;
     }
 
     private int changeMoneyToRank(int money){
