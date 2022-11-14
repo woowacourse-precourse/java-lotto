@@ -8,10 +8,10 @@
   - [ ] 오름차순으로 정렬한다
 - [ ] 당첨 번호와 모든 발행 번호를 비교한다. - Collector#collectReults()
   - [ ] 결과 값들을 다 출력한다. - Collector#printReults()
-- [ ] 당첨 번호와 발행 번호를 비교한다. - Judgement#compare()
-  - [ ] 몇개의 번호가 같은지 구한다. - Judgement#countMatchingNumber()
-  - [ ] 보너스 번호와 같은지 비교한다. - Judgement#matchBounsNumber()
-  - [ ] 로또의 등수를 구한다. - Judgement#getRank()
+- [ ] 당첨 번호와 자신과 비교한다. - Lotto#compare()
+  - [ ] 몇개의 번호가 같은지 구한다. - Lotto#countMatchingNumber()
+  - [ ] 보너스 번호와 같은지 비교한다. - Lotto#matchBounsNumber()
+  - [ ] 로또의 등수를 구한다. - Lotto#getRank()
 - [ ] 수익률을 구한다. - Calculator#getProfitRate()
   - [ ] 총 수익을 구한다. - Calculator#getProfit()
 
