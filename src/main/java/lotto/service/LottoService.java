@@ -7,7 +7,6 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoGroup;
 import lotto.domain.Rank;
 import lotto.handler.CheckHandler;
-import lotto.handler.InputHandler;
 import lotto.repository.LottoRepository;
 import lotto.view.WinningStatisticsView;
 
@@ -32,15 +31,13 @@ public class LottoService {
 		return new LottoGroup(lottos);
 	}
 
-	public Lotto makeWinnerLotto() {
-		String inputLottoWinningNumber = InputHandler.inputLottoWinningNumber();
+	public Lotto makeWinnerLotto(String inputLottoWinningNumber) {
 		CheckHandler.isLotto(inputLottoWinningNumber);
 		List<Integer> lottoNumbers = lottoRepository.makeWinnerLotto(inputLottoWinningNumber);
 		return new Lotto(lottoNumbers);
 	}
 
-	public int makeWinnerBonusNumber() {
-		String bonusNumber = InputHandler.inputLottoWinningBonusNumber();
+	public int makeWinnerBonusNumber(String bonusNumber) {
 		CheckHandler.isNumber(bonusNumber);
 		CheckHandler.isLottoNumber(bonusNumber);
 		return Integer.parseInt(bonusNumber);

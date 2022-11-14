@@ -16,8 +16,9 @@ public class LottoController {
 		LottoGroup lottoGroup = makeLottoGroup();
 		int purchaseLottoCount = lottoGroup.getLottosSize();
 		System.out.println();
-		List<Rank> ranks = lottoGroup.winningStatistics(lottoService.makeWinnerLotto(),
-			lottoService.makeWinnerBonusNumber());
+		List<Rank> ranks = lottoGroup.winningStatistics(
+			lottoService.makeWinnerLotto(InputHandler.inputLottoWinningNumber()),
+			lottoService.makeWinnerBonusNumber(InputHandler.inputLottoWinningBonusNumber()));
 		lottoService.sumStatistics(ranks);
 		lottoService.calculatorYield(ranks, purchaseLottoCount);
 	}
