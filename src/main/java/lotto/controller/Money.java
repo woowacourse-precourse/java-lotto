@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 public class Money {
     private final int money;
 
-    public Money(String money) {
+    public Money(String money) throws IllegalArgumentException {
         validateNumber(money);
         int purchaseMoney = Integer.parseInt(money);
         validateDividable(purchaseMoney);
@@ -15,19 +15,17 @@ public class Money {
         return money/1000;
     }
 
-    private void validateDividable(int money) {
+    private void validateDividable(int money) throws IllegalArgumentException {
         if (money%1000 != 0) {
-            System.out.println("[ERROR] 1000원 단위의 돈을 입력해주세요.");
             throw new IllegalArgumentException("[ERROR] 1000원 단위의 돈을 입력해주세요.");
         }
     }
 
-    private void validateNumber(String money) {
+    private void validateNumber(String money) throws IllegalArgumentException {
         Boolean hasNoneDigit = money.chars()
                 .mapToObj(e->(char)e)
                 .anyMatch(Predicate.not(Character::isDigit));
         if (hasNoneDigit) {
-            System.out.println("[ERROR] 숫자를 입력해주세요.");
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
     }

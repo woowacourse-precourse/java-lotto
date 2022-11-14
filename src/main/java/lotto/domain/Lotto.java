@@ -15,7 +15,7 @@ public class Lotto {
     private static final int FIVE = 5;
     private List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException {
         validateOverSize(numbers);
         validateDuplicate(numbers);
         validateOverNumber(numbers);
@@ -31,20 +31,20 @@ public class Lotto {
         return from(Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER,MAXIMUM_NUMBER,LOTTO_SIZE));
     }
 
-    private void validateOverSize(List<Integer> numbers) {
+    private void validateOverSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException("6개의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요.");
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.stream().distinct().count() != LOTTO_SIZE) {
-            throw new IllegalArgumentException("중복되지 않은 숫자를 입력해주세요");
+            throw new IllegalArgumentException("[ERROR] 중복되지 않은 숫자를 입력해주세요");
         }
     }
-    private void validateOverNumber(List<Integer> numbers) {
+    private void validateOverNumber(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.stream().anyMatch(this::outOfRange)) {
-            throw new IllegalArgumentException("1이상 45이하의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 1이상 45이하의 숫자를 입력해주세요.");
         }
     }
 
