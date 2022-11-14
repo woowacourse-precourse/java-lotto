@@ -21,7 +21,7 @@ public class Application {
             double l = calculateLotto.rateLotto(numberOflottos,list);
             calculateLotto.printWinLotto(list,l);
         }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            System.out.println("[ERROR]"+e.getMessage());
         }
 
     }
