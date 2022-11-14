@@ -62,4 +62,13 @@ public class Lotto {
 
         return result;
     }
+
+    private boolean hasSameNumber(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (numbers.contains(number))
+                return true;
+        }
+
+        return false;
+    }
 }
