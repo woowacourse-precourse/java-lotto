@@ -59,4 +59,15 @@ public class Service {
         }
     }
 
+    public List<Lotto> getLottoTickets() {
+        return lottoTickets;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
