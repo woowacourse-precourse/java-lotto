@@ -21,9 +21,13 @@ public class Lotto {
         }
     }
 
+    private boolean hasDuplication(List<Integer> numbers) {
+        Set<Integer> DuplicationCheck = new HashSet<>(numbers);
+
+        return numbers.size() != DuplicationCheck.size();
+    }
+
     void printNumbers() {
         System.out.println(numbers);
     }
-
-    // TODO: 추가 기능 구현
 }
