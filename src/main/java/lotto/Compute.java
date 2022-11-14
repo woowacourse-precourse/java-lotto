@@ -52,25 +52,15 @@ public class Compute {
         matchingNumbers.retainAll(winningNumbers);
         int count = matchingNumbers.size();
 
-        if (count == 6) {
-            String key = WinType.MATCH6.winTypeKey;
-            winRecords.put(key, winRecords.get(key) + 1);
-        }
-        else if (count == 5 && containsBonusNumber) {
-            String key = WinType.MATCH5_PLUS_BONUS.winTypeKey;
-            winRecords.put(key, winRecords.get(key) + 1);
-        }
-        else if (count == 5) {
-            String key = WinType.MATCH5.winTypeKey;
-            winRecords.put(key, winRecords.get(key) + 1);
-        }
-        else if (count == 4) {
-            String key = WinType.MATCH4.winTypeKey;
-            winRecords.put(key, winRecords.get(key) + 1);
-        }
-        else if (count == 3) {
-            String key = WinType.MATCH3.winTypeKey;
-            winRecords.put(key, winRecords.get(key) + 1);
+        for (WinType winType : WinType.values()) {
+            if (containsBonusNumber && count == WinType.MATCH5.winTypeValue) {
+                String key = WinType.MATCH5_PLUS_BONUS.winTypeKey;
+                winRecords.put(key, winRecords.get(key) + 1);
+            }
+            else if (count == winType.winTypeValue) {
+                String key = winType.winTypeKey;
+                winRecords.put(key, winRecords.get(key) + 1);
+            }
         }
 
         return winRecords;
