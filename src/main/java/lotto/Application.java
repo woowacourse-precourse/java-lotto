@@ -58,6 +58,14 @@ public class Application {
 
         return lottos;
     }
+
+    public static Lotto getLuckyNumbers() {
+        List<Integer> inputNums = readLuckyNumbers();
+        validLuckyNumbers();
+        Lotto luckyNums = new Lotto(inputNums);
+        return luckyNums;
+    }
+    
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
