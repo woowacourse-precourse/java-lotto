@@ -18,6 +18,7 @@ public class LottoNumber {
     public static List<Integer> getLottoNumbers() {
         List<Integer> checkThis = makeInputToNumber(printInputLottoNumber());
         checkListRange(checkThis);
+        checkDuplicateInList(checkThis);
         return checkThis;
     }
 
