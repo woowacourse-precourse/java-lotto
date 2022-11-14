@@ -17,4 +17,8 @@ public class Lottos {
         }
         return lottos;
     }
+
+    public Integer getSize(){
+        return lottos.size();
+    }
 }
