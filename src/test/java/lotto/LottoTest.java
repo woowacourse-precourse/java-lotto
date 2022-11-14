@@ -30,7 +30,7 @@ class LottoTest {
     @DisplayName("범위에 맞지 않는 숫자가 입력되면 예외가 발생한다.")
     @Test
     void createLottoByOutOfRangeNumber() {
-        assertThatThrownBy(() -> new Lotto(List.of(59,1,2,3,4,5)))
+        assertThatThrownBy(() -> new Lotto(List.of(59, 1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -47,7 +47,7 @@ class LottoTest {
         assertThat(hashSet.size()).isEqualTo(6);
 
         //List 원소 범위 검사
-        for(Integer number : numbers){
+        for (Integer number : numbers) {
             assertThat(number).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(45);
         }
     }
