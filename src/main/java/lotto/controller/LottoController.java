@@ -10,12 +10,23 @@ public class LottoController {
 
     public void startLotto() {
         int money = Integer.parseInt(InputView.inputMoney());
-        lottoService.buyLotto(money);
+        try {
+            lottoService.buyLotto(money);
+            initWinningLotto();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void initWinningLotto() {
         String winningNumber = InputView.inputWinningNumber();
-        lottoService.saveWinningLotto(winningNumber);
+
+        try {
+            lottoService.saveWinningLotto(winningNumber);
+            showUserLottoInfo();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void showUserLottoInfo() {
