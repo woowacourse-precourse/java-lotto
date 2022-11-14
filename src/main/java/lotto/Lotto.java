@@ -10,7 +10,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        ValidatePlayerNumber(numbers);
+        HashSet<Integer> playerNumbers = Model.MakeListToSet(numbers);
+        ValidatePlayerNumber(playerNumbers);
         this.numbers = numbers;
     }
 
