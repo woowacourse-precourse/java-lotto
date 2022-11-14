@@ -2,7 +2,6 @@ package lotto.view;
 
 import lotto.domain.Lotto;
 
-import static lotto.constant.GameConstants.*;
 import static lotto.constant.OutputConstants.*;
 
 public class OutputView {
@@ -22,29 +21,8 @@ public class OutputView {
         System.out.println(STATISTICS);
     }
 
-    public static void printFifthPlace(int fifthPlaceCount) {
-        System.out.printf(FIFTH_PLACE.toString(), FIFTH_PRIZE, fifthPlaceCount);
-        System.out.println();
-    }
-
-    public static void printFourthPlace(int fourthPlaceCount) {
-        System.out.printf(FOURTH_PLACE.toString(), FOURTH_PRIZE, fourthPlaceCount);
-        System.out.println();
-    }
-
-    public static void printThirdPlace(int thirdPlaceCount) {
-        System.out.printf(THIRD_PLACE.toString(), THIRD_PRIZE, thirdPlaceCount);
-        System.out.println();
-    }
-
-    public static void printSecondPlace(int secondPlaceCount) {
-        System.out.printf(SECOND_PLACE.toString(), SECOND_PRIZE, secondPlaceCount);
-        System.out.println();
-    }
-
-    public static void printFirstPlace(int firstPlaceCount) {
-        System.out.printf(FIRST_PLACE.toString(), FIRST_PRIZE, firstPlaceCount);
-        System.out.println();
+    public static void printResult(String result) {
+        System.out.println(result);
     }
 
     public static void printProfitRate(float profitRate) {
