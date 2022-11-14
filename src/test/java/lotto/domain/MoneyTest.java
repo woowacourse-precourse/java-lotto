@@ -35,4 +35,13 @@ public class MoneyTest {
 
         assertThat(addedMoney).isEqualTo(new Money(expected));
     }
+
+    @DisplayName("수익률을 계산한다")
+    @Test
+    void calculate_profit_rate() {
+        Money spent = new Money(8000);
+        Money earned = new Money(5000);
+
+        assertThat(spent.calculateProfitRateOf(earned)).isEqualTo(62.5);
+    }
 }
