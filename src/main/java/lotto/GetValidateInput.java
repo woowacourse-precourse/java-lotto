@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 
 public class GetValidateInput {
     private final String number;
-    private final int moneyUnit = 1000;
+    private static final int moneyUnit = 1000;
+    private static final int minNumber = 1;
+    private static final int maxNumber = 45;
 
     public GetValidateInput(String number) {
         this.number = number;
@@ -60,9 +62,6 @@ public class GetValidateInput {
     }
 
     private void validateInRange(int bonus) {
-        int maxNumber = 45;
-        int minNumber = 1;
-
         if (minNumber > bonus || bonus > maxNumber) {
             throw new IllegalArgumentException(Error.NOT_IN_RANGE.getMessage());
         }
