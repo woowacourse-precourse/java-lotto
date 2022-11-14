@@ -13,6 +13,7 @@ import lotto.condition.money.MoneyDivisionCond;
 import lotto.validator.Validator;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserInterface {
 
@@ -70,5 +71,25 @@ public class UserInterface {
         for (Lotto lotto : lottos) {
             System.out.println(lotto);
         }
+    }
+
+    public static Integer getBonusNumber(List<Integer> answerNumbers) {
+        String input = getInput();
+
+        List<Condition> conditions = List.of(
+                IsAllNumberInRangeCond.getInstance(),
+                NoDuplicateNumberCond.getInstance()
+        );
+
+        String numbers = String.join(",", answerNumbers.stream().map((Integer number) -> Integer.toString(number)).collect(Collectors.toList())) + "," + input;
+
+        Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, input);
+
+        if (notPassConditionIndex != -1) {
+            Condition notPassCondition = conditions.get(notPassConditionIndex);
+            throw new IllegalArgumentException();
+        }
+
+        return Integer.parseInt(input);
     }
 }
