@@ -13,7 +13,7 @@ public class Profit {
         this.investment = investment;
     }
 
-    public void updateProfit(RankingType rankingType, int count){
+    private void updateProfit(RankingType rankingType, int count){
         this.profit += rankingType.getPrizeMoney() * count;
     }
 
