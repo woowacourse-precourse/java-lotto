@@ -17,8 +17,8 @@ class ProfitTest {
     @BeforeEach
     void setUp() {
         prizeCount.add(Prize.FIFTH);
-        profit = new Profit(prizeCount);
-        profit.calculate(PURCHASE_AMOUNT);
+        profit = new Profit(prizeCount, PURCHASE_AMOUNT);
+        profit.calculate();
     }
 
     @Test

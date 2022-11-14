@@ -6,16 +6,18 @@ public class Profit {
 
     private final PrizeCount prizeCount;
 
+    private final int purchaseAmount;
     private float amount;
     private float rate;
 
-    public Profit(PrizeCount prizeCount) {
+    public Profit(PrizeCount prizeCount, int purchaseAmount) {
         this.prizeCount = prizeCount;
+        this.purchaseAmount = purchaseAmount;
     }
 
-    public void calculate(int purchaseAmount) {
+    public void calculate() {
         calculateAmount();
-        calculateRate(purchaseAmount);
+        calculateRate();
     }
 
     public void calculateAmount() {
@@ -24,7 +26,7 @@ public class Profit {
         }
     }
 
-    public void calculateRate(int purchaseAmount) {
+    public void calculateRate() {
         rate = (amount / purchaseAmount) * 100;
     }
 

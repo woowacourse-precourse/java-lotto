@@ -7,6 +7,7 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Player;
 import lotto.domain.PrizeCount;
+import lotto.domain.Profit;
 import lotto.domain.Purchase;
 
 public class Application {
@@ -32,5 +33,7 @@ public class Application {
         Player player = new Player(numbers, bonusNumber);
 
         player.compare(prizeCount, lottos, lottoBonusNumber);
+        Profit profit = new Profit(prizeCount, purchase.getAmount());
+
     }
 }
