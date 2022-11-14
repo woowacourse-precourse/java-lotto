@@ -19,13 +19,6 @@ public class BuyLottoTest {
     }
 
     @Test
-    @DisplayName("숫자가_아닌_경우")
-    public void notNumber() {
-        assertThatThrownBy(() -> new BuyMoneyException().notNumber("12a"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
     @DisplayName("구매_금액_단위")
     public void buyMoney() {
         assertThatThrownBy(() -> new BuyMoneyException().notDivideThousands("1200"))

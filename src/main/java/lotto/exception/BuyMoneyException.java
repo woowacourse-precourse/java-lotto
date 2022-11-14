@@ -11,7 +11,7 @@ public class BuyMoneyException {
     public void notNumber(String money) {
         if (!IsOnlyNumber.matcher(money).matches()) {
             System.out.println(NOT_NUMBER);
-            throw new IllegalArgumentException(NOT_NUMBER);
+            throw new NoSuchElementException(NOT_NUMBER);
         }
     }
 
