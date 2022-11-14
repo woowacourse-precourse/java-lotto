@@ -16,7 +16,7 @@ public class Application {
         List<List> purchaseLotto = autoLotto(purchaseAmount);
         List<Integer> winnerLotto = winLotto();
         int bonusNumber = bonusLotto();
-        List<List> lottoResult = compareLotto(purchaseLotto,winnerLotto,bonusNumber);
+        List<List> compareResult = compareLotto(purchaseLotto,winnerLotto,bonusNumber);
     }
 
     public static int buyLotto(){
