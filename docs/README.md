@@ -1,3 +1,4 @@
+### 기능 목록
 - [x] 사용자에게서 로또 구입 금액을 입력받는다
     - [x] 로또 구입 금액이 1000으로 나눠 떨어지지 않으면 예외 발생 및 메시지 출력
     - [x] 로또 구입 금액이 1000 미만이면 예외 발생 및 메시지 출력
@@ -21,3 +22,24 @@
     - [x] 한 로또 당 번호가 6개 초과이거나 미만인 경우
     - [x] 숫자와 쉼표가 아닌 입력이 들어온 경우
     - [x] 중복되는 숫자가 있는 경우
+    
+### 패키지 및 클래스 분리
+- controller
+    - LottoController
+- model
+    - enums
+        - ErrorMessage
+        - GameMessage
+    - Lotto
+    - Lottos
+    - LuckySix
+    - LuckyBonus
+    - Price
+    - Profit
+    - WinningResult
+- view
+    - InputView
+    - OutputView
+- validator
+    - validator
+- Application
