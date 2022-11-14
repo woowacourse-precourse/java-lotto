@@ -36,6 +36,18 @@ public class OutputView {
             System.out.println(sentence);
         }
     }
+
+    private static String joinList(List<String> list) {
+        String str = String.join(DELIMITER + BLANK, list);
+        return String.format("%s%s%s", OPEN_BRACKET, str, CLOSE_BRACKET);
+    }
+
+    private static List<String> convertToStringList(List<Integer> lottoNumberList) {
+        return lottoNumberList.stream()
+                .sorted()
+                .map(lottoNumber -> Integer.toString((lottoNumber)))
+                .collect(Collectors.toList());
+    }
     public static void printException(Exception exception) {
         System.out.println(exception.getMessage());
     }
