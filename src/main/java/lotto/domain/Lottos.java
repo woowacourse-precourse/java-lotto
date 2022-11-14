@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LottoGroup {
+public class Lottos {
     Ranking ranking = new Ranking();
     private final List<Lotto> lottos;
 
-    public LottoGroup(List<Lotto> lottos) {
+    public Lottos(List<Lotto> lottos) {
         this.lottos = lottos;
     }
 
@@ -22,7 +22,7 @@ public class LottoGroup {
         return sb.toString().trim();
     }
 
-    private List<RankingType> getLottosRanking(WinningNumber winningNumber){
+    private List<RankingType> getLottosRanking(WinningLotto winningNumber){
         List<RankingType> rankings = new ArrayList<>();
         for (Lotto lotto : lottos) {
             RankingType ranking = this.ranking.getRanking(lotto, winningNumber);
@@ -31,7 +31,7 @@ public class LottoGroup {
         return rankings;
     }
 
-    public Map<RankingType, Integer> getRankingTypeCounts(WinningNumber winningNumber){
+    public Map<RankingType, Integer> getRankingTypeCounts(WinningLotto winningNumber){
         Map<RankingType, Integer> rankingTypeCounts = new HashMap<>();
         initCountByRankingType(rankingTypeCounts);
         List<RankingType> lottosRanking = getLottosRanking(winningNumber);

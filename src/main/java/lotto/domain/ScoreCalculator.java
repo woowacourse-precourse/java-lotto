@@ -3,10 +3,10 @@ package lotto.domain;
 import java.util.List;
 
 public class ScoreCalculator {
-     private int matching = 0;
-     private boolean isMatchingBonus = false;
+    private int matching = 0;
+    private boolean isMatchingBonus = false;
 
-    public void updateScore(Lotto lotto, WinningNumber winningNumber){
+    public void updateScore(Lotto lotto, WinningLotto winningNumber) {
         List<Integer> numbers = lotto.getNumbers();
         for (Integer number : numbers) {
             updateMatchingScore(number, winningNumber);
@@ -14,8 +14,8 @@ public class ScoreCalculator {
         }
     }
 
-    private void updateMatchingScore(int number, WinningNumber winningNumber){
-        if(winningNumber.isContains(number)  ){
+    private void updateMatchingScore(int number, WinningLotto winningNumber) {
+        if (winningNumber.isContains(number)) {
             matching++;
         }
     }
@@ -28,8 +28,8 @@ public class ScoreCalculator {
         return isMatchingBonus;
     }
 
-    private void updateIsMatchingBonus(int number, WinningNumber winningNumber){
-        if(winningNumber.isBonusEqualTo(number)){
+    private void updateIsMatchingBonus(int number, WinningLotto winningNumber) {
+        if (winningNumber.isBonusEqualTo(number)) {
             isMatchingBonus = true;
         }
     }

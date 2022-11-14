@@ -2,7 +2,7 @@ package lotto.domain;
 
 public class Ranking {
 
-    public RankingType getRanking(Lotto userLotto, WinningNumber winningNumber){
+    public RankingType getRanking(Lotto userLotto, WinningLotto winningNumber){
         ScoreCalculator calculator = new ScoreCalculator();
         calculator.updateScore(userLotto, winningNumber);
         int matchingScore = calculator.getMatching();

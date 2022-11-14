@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ public class WinningNumberTest {
     @Nested
     @DisplayName("보너스 번호 관련 검증 로직")
     class ValidateBonus{
-        WinningNumber winningNumber = new WinningNumber(Arrays.asList(1,2,3,4,5,6));
+        WinningLotto winningNumber = new WinningLotto(Arrays.asList(1,2,3,4,5,6));
 
         @Test
         @DisplayName("중복 숫자 입력시 예외 발생")

@@ -1,6 +1,6 @@
 package lotto.view.output;
 
-import lotto.domain.LottoGroup;
+import lotto.domain.Lottos;
 import lotto.domain.RankingType;
 
 import java.util.Arrays;
@@ -17,7 +17,7 @@ public class Guide {
         System.out.printf("%d개를 구매했습니다.%n", lottoCount);
     }
 
-    public void printInputWinningNumberGuide() {
+    public void printInputWinningLottoGuide() {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
@@ -25,7 +25,7 @@ public class Guide {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public void printLottoGroup(LottoGroup lottoGroup){
+    public void printLottoGroup(Lottos lottoGroup){
         System.out.println(lottoGroup.getLottosString());
     }
 

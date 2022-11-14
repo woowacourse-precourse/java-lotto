@@ -26,23 +26,18 @@ public class UserInput {
         return Integer.parseInt(userInput);
     }
 
-    public List<Integer> getWinningNumber(){
-        String userInput = getUserInput();
-        List<Integer> inputIntegers = getInputIntegers(userInput);
-        Validator.validateSize(inputIntegers, 6);
-        Validator.validateNumbersRange(inputIntegers, 1, 45);
-        Validator.validateNonDuplicatedList(inputIntegers);
-        return inputIntegers;
-    }
+    public List<Integer> getWinningNumbersCandidate(){
+        List<Integer> candidateNumbers = new ArrayList<>();
 
-    private List<Integer> getInputIntegers(String input){
-        List<Integer> lst = new ArrayList<>();
-        String[] split = getSplit(input);
-        for (String s : split) {
-            Validator.validateStringIsNumeric(s);
-            lst.add(Integer.parseInt(s));
+        String userInput = getUserInput();
+        String[] splitString = getSplit(userInput);
+
+        for (String str : splitString) {
+            Validator.validateStringIsNumeric(str);
+            candidateNumbers.add(Integer.parseInt(str));
         }
-        return lst;
+
+        return candidateNumbers;
     }
 
     public int getBonusNumber(){
