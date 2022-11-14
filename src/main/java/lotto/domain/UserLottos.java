@@ -17,13 +17,12 @@ public class UserLottos {
     }
 
     public void validateMoney(int money) {
-        if(money < LOTTO_PRICE  && money%LOTTO_PRICE !=0) {
+        if(money < LOTTO_PRICE || money%LOTTO_PRICE !=0) {
             throw new IllegalArgumentException();
         }
     }
 
     public void setCount(int money) {
-
         this.count = money/LOTTO_PRICE;
     }
 
