@@ -23,7 +23,7 @@ public class UserBet {
 	}
 
 	public void checkAmount() {
-		amount = bettingMoney / 1000;
+		amount = bettingMoney / EnumNumeric.PRICE_A_POP.getValue();
 	}
 
 	public void buyLottos() {
@@ -31,7 +31,13 @@ public class UserBet {
 
 		while(myLottos.size() < amount) {
 			List<Integer> randomLotto = new ArrayList<>();
-			randomLotto.addAll(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+			randomLotto.addAll(
+					Randoms.pickUniqueNumbersInRange(
+							EnumNumeric.LOTTO_START.getValue(),
+							EnumNumeric.LOTTO_END.getValue(),
+							EnumNumeric.LOTTO_NUMBERS_BOUND.getValue()
+					)
+			);
 			Collections.sort(randomLotto);
 
 			myLottos.add(randomLotto);
@@ -43,7 +49,7 @@ public class UserBet {
 	}
 
 	public void printResult() {
-		System.out.println(amount + "개를 구매했습니다.");
+		System.out.println(amount + EnumResult.BET_RESULT.getValue());
 
 		for(List<Integer> lottos : myLottos) {
 			System.out.println(lottos);

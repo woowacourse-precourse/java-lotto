@@ -18,8 +18,8 @@ public class Lotto {
     }
 
     public void validateLength(List<Integer> numbers) {
-        if(numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개 입니다.");
+        if(numbers.size() != EnumNumeric.LOTTO_NUMBERS_BOUND.getValue()) {
+            throw new IllegalArgumentException(EnumError.OUT_OF_BOUNDS.getValue());
         }
     }
 
@@ -28,7 +28,7 @@ public class Lotto {
 
         for(int number : numbers) {
             if(DuplicationValidator.contains(number)) {
-                throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+                throw new IllegalArgumentException(EnumError.DUPLICATED.getValue());
             }
 
             DuplicationValidator.add(number);

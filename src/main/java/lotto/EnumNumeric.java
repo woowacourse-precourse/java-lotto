@@ -1,5 +1,40 @@
 package lotto;
 
-public class EnumNumeric {
+public enum EnumNumeric {
 
+	BET_LIMIT_EXCESS(100_000),
+	BET_OVER_FLOW(0),
+	PRICE_A_POP(1000),
+	LOTTO_START(1),
+	LOTTO_END(45),
+	LOTTO_NUMBERS_BOUND(6),
+	INIT_COUNT(0),
+	CONTAIN_TRUE(1),
+	CONTAIN_FALSE(0),
+	WINNER_COLUMNS(5),
+	SIX_HITS(6),
+	FIRST_PLACE(0),
+	FIVE_HITS(5),
+	SECOND_PLACE(1),
+	THIRD_PLACE(2),
+	FOUR_HITS(4),
+	FOURTH_PLACE(3),
+	THREE_HITS(3),
+	FIFTH_PLACE(4),
+	FIRST_REWARD(2_000_000_000),
+	SECOND_REWARD(30_000_000),
+	THIRD_REWARD(1_500_000),
+	FOURTH_REWARD(50_000),
+	FIFTH_REWARD(5_000),
+	TO_PERCENTAGY(100);
+
+	private int value;
+
+	EnumNumeric(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
 }

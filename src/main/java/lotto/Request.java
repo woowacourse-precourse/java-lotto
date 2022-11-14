@@ -15,19 +15,19 @@ public class Request {
 	public Request() {}
 
 	public void requestBettingMoney() {
-		System.out.println("구입금액을 입력해 주세요.");
+		System.out.println(EnumRequestMessage.BET.getValue());
 		userInputBettingMoney = Console.readLine();
 	}
 
 	public void validateBettingMoney() {
-		if(!Pattern.matches("^1?[0-9]?[0-9]+000$", userInputBettingMoney)) {
-			throw new IllegalArgumentException("[ERROR] 유효하지 않은 입력입니다.");
+		if(!Pattern.matches(EnumPatterns.BET.getValue(), userInputBettingMoney)) {
+			throw new IllegalArgumentException(EnumError.INVALID_INPUT.getValue());
 		}
 
 		int input = Integer.parseInt(userInputBettingMoney);
 
-		if(input > 100000 || input == 0) {
-			throw new IllegalArgumentException("[ERROR] 소액으로 건전하게 즐기세요. 1회차 1인당 구매 한도는 10만원 입니다.");
+		if(input > EnumNumeric.BET_LIMIT_EXCESS.getValue() || input <= EnumNumeric.BET_OVER_FLOW.getValue()) {
+			throw new IllegalArgumentException(EnumError.LIMIT_EXCESS.getValue());
 		}
 	}
 
@@ -36,7 +36,7 @@ public class Request {
 	}
 
 	public void requestWinningNumbers() {
-		System.out.println("당첨 번호를 입력해 주세요.");
+		System.out.println(EnumRequestMessage.WINNING_NUMBERS.getValue());
 		userInputWinningNumbers = Console.readLine();
 	}
 
@@ -47,30 +47,30 @@ public class Request {
 	}
 
 	public void splitUserInput() {
-		String[] splitUserInput = userInputWinningNumbers.split(",");
+		String[] splitUserInput = userInputWinningNumbers.split(EnumPatterns.SPLITTER.getValue());
 
-		if(splitUserInput.length != 6) {
-			throw new IllegalArgumentException("[ERROR] 로또 숫자는 6자리 입니다.");
+		if(splitUserInput.length != EnumNumeric.LOTTO_NUMBERS_BOUND.getValue()) {
+			throw new IllegalArgumentException(EnumError.DIGIT_MISMATCH.getValue());
 		}
 	}
 
 	public void isLottoNumbers() {
-		String[] splitUserInput = userInputWinningNumbers.split(",");
+		String[] splitUserInput = userInputWinningNumbers.split(EnumPatterns.SPLITTER.getValue());
 
 		for(String eachNumber : splitUserInput) {
-			if(!Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", eachNumber)) {
-				throw new IllegalArgumentException("[ERROR] 1에서 45 사이 숫자를 입력해 주세요.");
+			if(!Pattern.matches(EnumPatterns.WINNING_NUMBERS.getValue(), eachNumber)) {
+				throw new IllegalArgumentException(EnumError.OUT_OF_BOUNDS.getValue());
 			}
 		}
 	}
 
 	public void validateDuplication() {
-		String[] splitUserInput = userInputWinningNumbers.split(",");
+		String[] splitUserInput = userInputWinningNumbers.split(EnumPatterns.SPLITTER.getValue());
 		winningNumbers = new ArrayList<>();
 
 		for(String eachNumbers : splitUserInput) {
 			if(winningNumbers.contains(Integer.parseInt(eachNumbers))) {
-				throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+				throw new IllegalArgumentException(EnumError.DUPLICATED.getValue());
 			}
 
 			winningNumbers.add(Integer.parseInt(eachNumbers));
@@ -82,7 +82,7 @@ public class Request {
 	}
 
 	public void requestBonusNumber() {
-		System.out.println("보너스 번호를 입력해 주세요.");
+		System.out.println(EnumRequestMessage.BONUS_NUMBER.getValue());
 		userInputBonusNumber = Console.readLine();
 	}
 
@@ -92,14 +92,14 @@ public class Request {
 	}
 
 	public void isBonusNumber() {
-		if(!Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", userInputBonusNumber)) {
-			throw new IllegalArgumentException("[ERROR] 유효하지 않은 입력입니다.");
+		if(!Pattern.matches(EnumPatterns.BONUS_NUMBER.getValue(), userInputBonusNumber)) {
+			throw new IllegalArgumentException(EnumError.INVALID_INPUT.getValue());
 		}
 	}
 
 	public void validateDuplicationWithWinningNumbers() {
 		if(winningNumbers.contains(Integer.parseInt(userInputBonusNumber))) {
-			throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+			throw new IllegalArgumentException(EnumError.DUPLICATED.getValue());
 		}
 	}
 

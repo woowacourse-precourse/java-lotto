@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Compare {
-	private int[] compareResult = {0, 0, 0, 0, 0};
+	private int[] compareResult = new int[EnumNumeric.WINNER_COLUMNS.getValue()];
 	private int sum;
 	private String yield;
 
@@ -11,7 +11,7 @@ public class Compare {
 
 	public void compareNumbers(List<List<Integer>> myLottos, List<Integer> winningNumbers, int bonusNumber) {
 		for(List<Integer> myLotto : myLottos) {
-			int hitCount = 0;
+			int hitCount = EnumNumeric.INIT_COUNT.getValue();
 
 			for(int winningNumber : winningNumbers) {
 				hitCount += isContains(myLotto, winningNumber);
@@ -23,10 +23,10 @@ public class Compare {
 
 	public int isContains(List<Integer> myLotto, int winningNumber) {
 		if(myLotto.contains(winningNumber)) {
-			return 1;
+			return EnumNumeric.CONTAIN_TRUE.getValue();
 		}
 
-		return 0;
+		return EnumNumeric.CONTAIN_FALSE.getValue();
 	}
 
 	public void setResult(int hitCount, List<Integer> myLotto, int bonusNumber) {
@@ -39,54 +39,59 @@ public class Compare {
 	}
 
 	public void setFirst(int hitCount) {
-		if(hitCount == 6) {
-			compareResult[0]++;
+		if(hitCount == EnumNumeric.SIX_HITS.getValue()) {
+			compareResult[EnumNumeric.FIRST_PLACE.getValue()]++;
 		}
 	}
 
 	public void setSecond(int htiCount, List<Integer> myLotto, int bonusNumber) {
-		if(htiCount == 5 && myLotto.contains(bonusNumber)) {
-			compareResult[1]++;
+		if(htiCount == EnumNumeric.FIVE_HITS.getValue() && myLotto.contains(bonusNumber)) {
+			compareResult[EnumNumeric.SECOND_PLACE.getValue()]++;
 		}
 	}
 
 	public void setThird(int hitCount, List<Integer> myLotto, int bonusNumber) {
-		if(hitCount == 5 && !myLotto.contains(bonusNumber)) {
-			compareResult[2]++;
+		if(hitCount == EnumNumeric.FIVE_HITS.getValue() && !myLotto.contains(bonusNumber)) {
+			compareResult[EnumNumeric.THIRD_PLACE.getValue()]++;
 		}
 	}
 
 	public void setFourth(int hitCount) {
-		if(hitCount == 4) {
-			compareResult[3]++;
+		if(hitCount == EnumNumeric.FOUR_HITS.getValue()) {
+			compareResult[EnumNumeric.FOURTH_PLACE.getValue()]++;
 		}
 	}
 
 	public void setFifth(int hitCount) {
-		if(hitCount == 3) {
-			compareResult[4]++;
+		if(hitCount == EnumNumeric.THREE_HITS.getValue()) {
+			compareResult[EnumNumeric.FIFTH_PLACE.getValue()]++;
 		}
 	}
 
 	public void sumWinnings() {
-		sum = (2_000_000_000 * compareResult[0]) +
-				(30_000_000 * compareResult[1]) +
-				(1_500_000 * compareResult[2]) +
-				(50_000 * compareResult[3]) +
-				(5_000 * compareResult[4]);
+		sum =	(EnumNumeric.FIRST_REWARD.getValue() * compareResult[EnumNumeric.FIRST_PLACE.getValue()]) +
+				(EnumNumeric.SECOND_REWARD.getValue() * compareResult[EnumNumeric.SECOND_PLACE.getValue()]) +
+				(EnumNumeric.THIRD_REWARD.getValue() * compareResult[EnumNumeric.THIRD_PLACE.getValue()]) +
+				(EnumNumeric.FOURTH_REWARD.getValue() * compareResult[EnumNumeric.FOURTH_PLACE.getValue()]) +
+				(EnumNumeric.FIFTH_REWARD.getValue() * compareResult[EnumNumeric.FIFTH_PLACE.getValue()]);
 	}
 
 	public void figureYield(int bettingMoney) {
-		yield = String.format("%.1f", (double) 100 * sum / bettingMoney);
+		yield = String.format(
+				EnumPatterns.FORMAT.getValue(),
+				(double) EnumNumeric.TO_PERCENTAGY.getValue() * sum / bettingMoney
+		);
 	}
 
 	public void printResult() {
-		System.out.println("\n당첨 통계\n---");
-		System.out.println("3개 일치 (5,000원) - " + compareResult[4] + "개");
-		System.out.println("4개 일치 (50,000원) - " + compareResult[3] + "개");
-		System.out.println("5개 일치 (1,500,000원) - " + compareResult[2] + "개");
-		System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + compareResult[1] + "개");
-		System.out.println("6개 일치 (2,000,000,000원) - " + compareResult[0] + "개");
-		System.out.println("총 수익률은 " + yield + "%입니다.");
+		System.out.println(
+				EnumResult.COMPARE_RESULT_TITLE.getValue() +
+				EnumResult.makeFifth(compareResult[EnumNumeric.FIFTH_PLACE.getValue()]) +
+				EnumResult.makeFourth(compareResult[EnumNumeric.FOURTH_PLACE.getValue()]) +
+				EnumResult.makeThird(compareResult[EnumNumeric.THIRD_PLACE.getValue()]) +
+				EnumResult.makeSecond(compareResult[EnumNumeric.SECOND_PLACE.getValue()]) +
+				EnumResult.makeFirst(compareResult[EnumNumeric.FIRST_PLACE.getValue()]) +
+				EnumResult.YIELD_RESULT_IS.getValue() + yield + EnumResult.TERMINATION.getValue()
+		);
 	}
 }
