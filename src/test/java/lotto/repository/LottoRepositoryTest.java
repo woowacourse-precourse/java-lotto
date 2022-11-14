@@ -48,4 +48,16 @@ class LottoRepositoryTest {
         assertThat(repository.getWinningNumbers()).isEqualTo(lottoNumber);
     }
 
+    @DisplayName("보너스 번호가 저장이 된다.")
+    @Test
+    public void givenBonusNumber_whenSaveBonusNumber_thenReturnBonusNumber(){
+        // Given
+        int bonusNumber = 1;
+
+        // When
+        repository.saveBonusNumber(bonusNumber);
+
+        // Then
+        assertThat(repository.getBonusNumber()).isEqualTo(1);
+    }
 }
