@@ -1,5 +1,7 @@
 package lotto.UI;
 
+import static lotto.CustomException.throwException;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,15 +39,6 @@ public class InputWinningAndBonusNumbers {
         }
         if (bonusNumber < 1 || bonusNumber > 45) {
             throwException("[Error] 보너스 번호는 1~45 사이의 숫자입니다.");
-        }
-    }
-
-    private void throwException(String s) throws IllegalArgumentException {
-        try {
-            throw new IllegalArgumentException();
-        } catch (IllegalArgumentException e) {
-            System.out.println(s);
-            throw e;
         }
     }
 

@@ -26,14 +26,14 @@ public class LottoGame {
         checkResult(view);
     }
 
-    private void checkResult(ConsoleView view) {
-        CheckLottosPrize checkPrize = new CheckLottosPrize(lottos, winningNumbers, bonusNumber);
+    private void buyLotto(InputMoney inputMoney, ConsoleView view) {
+        view.printRequestMoney();
+        money = inputMoney.input();
 
-        Map<String, Integer> totalPrize = checkPrize.getTotalPrize();
-        view.printTotalPrize(totalPrize);
-        CalculateProfitRate calculateProfitRate = new CalculateProfitRate(money, totalPrize);
-        profitRate = calculateProfitRate.getProfitRate();
-        view.printProfitRate(profitRate);
+        view.printNumberOfLotto(money);
+        LottoGenerator generator = new LottoGenerator(money);
+        lottos = generator.generateLottos();
+        view.printLottos(lottos);
     }
 
     private void drawLotto(InputWinningAndBonusNumbers inputAnswers, ConsoleView view) {
@@ -44,13 +44,13 @@ public class LottoGame {
         bonusNumber = inputAnswers.inputBonusNumber();
     }
 
-    private void buyLotto(InputMoney inputMoney, ConsoleView view) {
-        view.printRequestMoney();
-        money = inputMoney.input();
+    private void checkResult(ConsoleView view) {
+        CheckLottosPrize checkPrize = new CheckLottosPrize(lottos, winningNumbers, bonusNumber);
 
-        view.printNumberOfLotto(money);
-        LottoGenerator generator = new LottoGenerator(money);
-        lottos = generator.generateLottos();
-        view.printLottos(lottos);
+        Map<String, Integer> totalPrize = checkPrize.getTotalPrize();
+        view.printTotalPrize(totalPrize);
+        CalculateProfitRate calculateProfitRate = new CalculateProfitRate(money, totalPrize);
+        profitRate = calculateProfitRate.getProfitRate();
+        view.printProfitRate(profitRate);
     }
 }
