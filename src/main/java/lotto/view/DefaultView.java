@@ -24,6 +24,7 @@ public class DefaultView implements View {
         System.out.println(Views.REQUEST_WINNING_NUMBER.render());
         request(controller::inputWinningNumber);
 
+        System.out.println(Views.REQUEST_BONUS_NUMBER.render());
     }
 
     private void request(Consumer<String> consumer) {
