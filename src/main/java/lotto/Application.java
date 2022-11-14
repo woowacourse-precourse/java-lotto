@@ -7,9 +7,9 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int amount = InputView.showBuyingAmountMessage();
-        String winningInputNumbers = InputView.showEnterWinningNumbersMessage();
-        String winningBonusNumber = InputView.showEnterBonusNumberMessage();
+        int amount = InputView.readBuyingAmount();
+        String winningInputNumbers = InputView.readWinningNumbers();
+        String winningBonusNumber = InputView.readBonusNumber();
         Player player = new Player(amount);
         OutputView.showLottoNumbers(player);
 

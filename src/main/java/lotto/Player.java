@@ -14,6 +14,7 @@ public class Player {
 
     private final int money;
     private final int LOTTO_PRICE = 1000;
+
     public int getFifthPlace() {
         return fifthPlace;
     }
@@ -22,6 +23,12 @@ public class Player {
         validateIsAmountThousandWon(money);
         this.money = money;
         getLotto(money);
+    }
+
+    private void validateIsAmountThousandWon(int convertedAmount) {
+        if (convertedAmount % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
+        }
     }
 
     public void playTheLottery(WinningNumbers winningNumbers) {
@@ -39,8 +46,7 @@ public class Player {
     public double getLotteryYield() {
         double totalRevenue = getRevenue();
         double investment = getMoney();
-        double lotteryYield = (totalRevenue / investment) * 100;
-        return lotteryYield;
+        return (totalRevenue / investment) * 100;
     }
 
     private void getLotto(int money) {
@@ -55,14 +61,7 @@ public class Player {
         }
     }
 
-    private void validateIsAmountThousandWon(int convertedAmount) {
-        if (convertedAmount % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
-        }
-    }
-
     private int getRevenue() {
-        Rewards.values();
         int fifthRevenue = Rewards.FIFTH_PLACE.getReward() * fifthPlace;
         int fourthRevenue = Rewards.FOURTH_PLACE.getReward() * fourthPlace;
         int thirdRevenue = Rewards.THIRD_PLACE.getReward() * thirdPlace;

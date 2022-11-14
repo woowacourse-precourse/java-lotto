@@ -50,9 +50,4 @@ public class OutputView {
                         + String.format(WINNING_REVENUE_MESSAGE, reward.getReward())
                         + String.format(MATCHES_COUNT_MESSAGE, matchingNumberCount));
     }
-
-    public void showBonusNumber(Player player, int idx) {
-        System.out.println(player.getLottery().get(idx).getBonusNumber());
-    }
-
 }

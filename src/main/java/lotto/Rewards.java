@@ -1,6 +1,7 @@
 package lotto;
 
 public enum Rewards {
+
     FIRST_PLACE(6, false, 2000000000),
     SECOND_PLACE(5, true, 30000000),
     THIRD_PLACE(5, false, 1500000),
@@ -11,6 +12,12 @@ public enum Rewards {
     private final int matchingNumberCount;
     private final boolean isBonusNumberMatches;
     private final int reward;
+
+    Rewards(int matchingNumberCount, boolean isBonusNumberMatches, int reward) {
+        this.matchingNumberCount = matchingNumberCount;
+        this.isBonusNumberMatches = isBonusNumberMatches;
+        this.reward = reward;
+    }
 
     public static Rewards getReward(int matchingNumber, boolean isBonusNumberMatches) {
         for (int idx = 0; idx < Rewards.values().length; idx++) {
@@ -28,12 +35,6 @@ public enum Rewards {
 
     public boolean isBonusNumberMatches() {
         return isBonusNumberMatches;
-    }
-
-    Rewards(int matchingNumberCount, boolean isBonusNumberMatches, int reward) {
-        this.matchingNumberCount = matchingNumberCount;
-        this.reward = reward;
-        this.isBonusNumberMatches = isBonusNumberMatches;
     }
 
     public int getReward() {
