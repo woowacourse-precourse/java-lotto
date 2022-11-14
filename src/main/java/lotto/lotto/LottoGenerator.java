@@ -19,8 +19,9 @@ public class LottoGenerator {
 
     public Lotto convert2Lotto(String input) {
         List<Integer> lottos = LottoValidator.parseCommaString(input);
-        if (lottos.size() != 6)
-            throw new IllegalArgumentException("[ERROR] 로또 숫자의 개수는 6개여야 합니다.");
+        LottoValidator.validateDuplicateNumbers(lottos);
+        LottoValidator.validateLottoSize(lottos);
+
         return new Lotto(lottos);
     }
 }

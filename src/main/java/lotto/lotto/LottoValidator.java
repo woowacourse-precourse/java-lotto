@@ -36,4 +36,18 @@ public class LottoValidator {
         result.add(Integer.parseInt(num));
         return (result);
     }
+
+    public static void validateDuplicateNumbers(List<Integer> lottos) {
+        for(int i = 0; i < lottos.size(); i++) {
+            for(int j = i + 1; j < lottos.size(); j++) {
+                if (lottos.get(i).equals(lottos.get(j)))
+                    throw new IllegalArgumentException("[ERROR] 로또에는 중복된 숫자가 들어갈 수 없습니다.");
+            }
+        }
+    }
+
+    public static void validateLottoSize(List<Integer> lottos) {
+        if (lottos.size() != 6)
+            throw new IllegalArgumentException("[ERROR] 로또 숫자의 개수는 6개여야 합니다.");
+    }
 }

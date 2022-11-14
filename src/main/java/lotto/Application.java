@@ -20,9 +20,12 @@ public class Application {
 
         System.out.println();
         System.out.println("당첨 번호를 입력해 주세요.");
-        Lotto winner =  generator.convert2Lotto(user.getInput());
+        Lotto winner = generator.convert2Lotto(user.getInput());
 
-//        System.out.println();
-//        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+        winner.setBonusNumber(user.getInput());
+
+        System.out.println(winner);
     }
 }

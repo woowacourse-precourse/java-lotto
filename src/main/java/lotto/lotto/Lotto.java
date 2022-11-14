@@ -25,4 +25,10 @@ public class Lotto {
     public String toString() {
         return this.numbers.toString();
     }
+
+    public void setBonusNumber(String input) {
+        LottoValidator.validateLottoNumber(input);
+        numbers.add(Integer.parseInt(input));
+        LottoValidator.validateDuplicateNumbers(numbers);
+    }
 }
