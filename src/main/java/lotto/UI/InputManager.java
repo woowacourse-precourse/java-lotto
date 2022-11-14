@@ -16,8 +16,10 @@ public class InputManager {
             price = UIScanner.scanInt();
             UIPrinter.printEmptyLine();
 
-            assert(price > 0);
-            assert(price % LottoConfig.LOTTO_PRICE == 0);
+            if(price <= 0)
+                throw new Exception();
+            if(price % LottoConfig.LOTTO_PRICE != 0)
+                throw new Exception();
 
             return price;
         } catch(Exception e) {
