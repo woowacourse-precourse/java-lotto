@@ -43,7 +43,7 @@ public class Lotto {
         return true;
     }
 
-    private LottoRanking caculateRanking(List<Integer> userNumbers){
+    public LottoRanking caculateRanking(List<Integer> userNumbers){
         return LottoRanking.caculateRanking(this.numbers.subList(0,6), this.numbers.get(6), userNumbers);
     }
 }
