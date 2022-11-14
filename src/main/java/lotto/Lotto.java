@@ -16,5 +16,17 @@ public class Lotto {
         }
     }
 
+    public int checkResult(List<Integer> userNumbers) {
+        return 0;
+    }
+
+    public int compareSixNumber(List<Integer> userNumbers) {
+        return 0;
+    }
+
+    public int compareBonusNumber(List<Integer> userNumbers) {
+        return 0;
+    }
+
     // TODO: 추가 기능 구현
 }
