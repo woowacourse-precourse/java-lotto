@@ -23,9 +23,14 @@ public class Picker {
     public List<Rank> pick(List<Lotto> lottos) {
         List<Rank> ranks = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            Rank rank = Rank.from(lotto.countMatchesWith(winningLotto), lotto.contains(bonusNumber));
-            ranks.add(rank);
+            ranks.add(pick(lotto));
         }
         return ranks;
+    }
+
+    private Rank pick(Lotto lotto) {
+        long matchCount = lotto.countMatchesWith(winningLotto);
+        boolean hasBonusNumber = lotto.contains(bonusNumber);
+        return Rank.from(matchCount, hasBonusNumber);
     }
 }
