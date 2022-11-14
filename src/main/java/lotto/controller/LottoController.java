@@ -16,10 +16,7 @@ public class LottoController {
 
         OutputView.printLottos(user.getLottos());
 
-        List<Integer> numbers = InputView.readWinningNumbers();
-        int bonus = InputView.readBonusNumber();
-        Lotto lotto = new Lotto(numbers);
-        WinningLotto winningLotto = new WinningLotto(lotto, bonus);
+        WinningLotto winningLotto = InputView.readWinningLotto();
 
         Map<Ranking, Integer> numberOfRankedLottos = user.checkResult(winningLotto);
         double yield = user.calculateYield();
