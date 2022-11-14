@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -43,5 +45,13 @@ public class Lotto {
             return true;
 
         return false;
+    }
+    public void printSortedLottoNumbers(){
+        List<Integer> sortedNumbers = new ArrayList<>();
+
+        sortedNumbers.addAll(this.numbers);
+        sortedNumbers.sort(Comparator.naturalOrder());
+
+        System.out.println(sortedNumbers);
     }
 }
