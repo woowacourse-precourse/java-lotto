@@ -6,9 +6,9 @@ import lotto.model.Rank;
 
 public class ResultView implements View{
     private Map<Rank, Integer> result;
-    private float yield;
+    private double yield;
 
-    ResultView(Map<Rank, Integer> result, float yield){
+    public ResultView(Map<Rank, Integer> result, double yield){
         this.result = result;
         this.yield = yield;
     }
@@ -61,6 +61,8 @@ public class ResultView implements View{
     }
 
     private void printYield(){
-        System.out.println("총 수익률은 " + yield + "입니다.");
+        System.out.printf(
+                "총 수익률은 %.1f%%입니다.", yield
+        );
     }
 }
