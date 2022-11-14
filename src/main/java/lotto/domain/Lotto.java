@@ -19,23 +19,35 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != LOTTOSIZE) {
+        if (isDifferentSize(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTOSIZE_ERROR);
         }
     }
 
+    private static boolean isDifferentSize(List<Integer> numbers) {
+        return numbers.size() != LOTTOSIZE;
+    }
+
     private void validateNumber(List<Integer> numbers) {
         numbers.stream().forEach(number -> {
-            if (number < MIN_LOTTO_NUM || number > MAX_LOTTO_NUM) {
+            if (overRange(number)) {
                 throw new IllegalArgumentException(ErrorMessage.LOTTORANGE_ERROR);
             }
         });
     }
 
+    private static boolean overRange(Integer number) {
+        return number < MIN_LOTTO_NUM || number > MAX_LOTTO_NUM;
+    }
+
     private void validateDuplicate(List<Integer> numbers) {
-        if (numbers.size() != numbers.stream().distinct().count()) {
+        if (haveDuplicateNumber(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTONUMBER_DUPLICATE_ERROR);
         }
+    }
+
+    private static boolean haveDuplicateNumber(List<Integer> numbers) {
+        return numbers.size() != numbers.stream().distinct().count();
     }
 
     public List<Integer> getNumbers() {
