@@ -5,7 +5,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -112,5 +114,20 @@ public class NumberComparatorTest {
             tester.validateWholeNumber();
         })
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void compareNumberTest() {
+        Lotto lotto1 = new Lotto(List.of(43, 21, 30, 42, 33, 1));
+        Lotto lotto2 = new Lotto(List.of(23, 5, 2, 7, 43, 15));
+        Lotto lotto3 = new Lotto(List.of(1, 34, 31, 23, 3, 4));
+        Lotto lotto4 = new Lotto(List.of(1, 2, 3, 4, 5, 24));
+        LottoSeller seller = new LottoSeller(List.of(lotto1, lotto2, lotto3, lotto4));
+        NumberComparator tester = new NumberComparator(List.of(1,2,3,4,5,6,7));
+
+        seller.showBundle();
+        System.out.println(tester.number);
+        tester.compareNumbers(seller.get());
+        assertThat(tester.result).isEqualTo(List.of(1, 3, 3, 5));
     }
 }
