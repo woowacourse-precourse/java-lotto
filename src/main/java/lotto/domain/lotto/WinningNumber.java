@@ -1,6 +1,7 @@
 package lotto.domain.lotto;
 
 import lotto.domain.number.LottoNumber;
+import lotto.domain.rule.Rank;
 import lotto.resource.message.ErrorMessage;
 
 import java.util.Arrays;
@@ -48,6 +49,17 @@ public class WinningNumber {
                 );
             }
         }
+    }
+
+    public Rank getRank(Lotto lotto) {
+        int matchedCount = getMatchCount(lotto);
+        boolean hasBonusNumber = lotto.contains(bonusNumber);
+
+        return Rank.getRank(matchedCount, hasBonusNumber);
+    }
+
+    private int getMatchCount(Lotto lotto) {
+        return lottoNumbers.getMatchCount(lotto);
     }
 
     private List<String> getSplitLottoNumber(String lottoNumbers) {

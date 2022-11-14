@@ -31,6 +31,12 @@ public class Lotto {
         return numbers.contains(lottoNumber.getValueAsInt());
     }
 
+    public int getMatchCount(Lotto lotto) {
+        return (int) lotto.numbers.stream()
+                .filter(this.numbers::contains)
+                .count();
+    }
+
     public int getMaxNum() {
         return numbers.stream().reduce(Math::max).orElse(-1);
     }
@@ -42,4 +48,6 @@ public class Lotto {
     public int getCount() {
         return numbers.size();
     }
+
+
 }

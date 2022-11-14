@@ -20,4 +20,5 @@ public class LottoGroup {
         return Collections.unmodifiableList(lottos);
     }
 
+
 }
