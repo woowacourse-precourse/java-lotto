@@ -31,6 +31,7 @@ public class PurchaseManager {
     }
 
     private boolean isThousandUnit(String input) {
-        return true;
+        int money = Integer.parseInt(input);
+        return money % 1000 == 0;
     }
 }
