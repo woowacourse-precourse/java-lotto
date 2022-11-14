@@ -88,4 +88,14 @@ public class Lotto {
         }
         return Winning.NONE;
     }
+
+    public static long totalPrize(List<Integer> win) {
+        long total = 0;
+        List<Integer> prize = Arrays.asList(0, 2_000_000_000, 30_000_000, 1_500_000, 50000, 5000);
+        for (int i = 1; i < 6; i++) {
+            total += ((long) win.get(i) * prize.get(i));
+        }
+
+        return total;
+    }
 }
