@@ -22,6 +22,6 @@ public class LottoGenerator {
             .sorted()
             .collect(Collectors.toList());
         int bonusNumber = Integer.parseInt(Console.readLine());
-        return new WinningLotto(numbers, bonusNumber);
+        return new WinningLotto(new Lotto(numbers), bonusNumber);
     }
 }
