@@ -22,7 +22,7 @@
 - [x] Lotto, LottoMachine 기능을 이용하여 메인 로직 구현
 
 ### GameController
-- [ ] LottoHandler의 기능과 View의 기능을 이용하여 전체 게임 로직 구현
+- [x] LottoHandler의 기능과 View의 기능을 이용하여 전체 게임 로직 구현
 
 ### InputException
 - [ ] 구입 금액에 대한 예외 처리

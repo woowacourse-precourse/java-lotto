@@ -18,7 +18,7 @@ public class OutputView {
 
     public static void printLottoNumbers(List<Lotto> lottos) {
         System.out.println();
-        System.out.println(YOU_BOUGHT_SOME);
+        System.out.printf("%d" + YOU_BOUGHT_SOME + "\n", lottos.size());
         lottos.stream()
                 .map(Lotto::getNumbers)
                 .forEach(System.out::println);
@@ -32,6 +32,6 @@ public class OutputView {
         System.out.printf(THIRD + "%d" + "개\n", resultOfLotto.get(LottoGrade.THIRD));
         System.out.printf(SECOND + "%d" + "개\n", resultOfLotto.get(LottoGrade.SECOND));
         System.out.printf(FIRST + "%d" + "개\n", resultOfLotto.get(LottoGrade.FIRST));
-        System.out.printf("총 수익률은 " + "%.2f" + "입니다.", rateOfReturn);
+        System.out.printf("총 수익률은 " + "%.1f%%" + "입니다.", rateOfReturn);
     }
 }
