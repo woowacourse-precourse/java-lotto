@@ -31,6 +31,7 @@ public class Application {
     }
 
     private static int readNumber(String outputMessage, String errorMessage) {
+        System.out.println();
         System.out.println(outputMessage);
         try {
             return parseInt(Console.readLine());
@@ -40,6 +41,7 @@ public class Application {
     }
 
     private static List<Integer> readNumbers(String outputMessage) {
+        System.out.println();
         System.out.println(outputMessage);
         try {
             return Arrays.asList(Console.readLine().split(","))
@@ -52,6 +54,7 @@ public class Application {
     }
 
     private static void printPurchaseHistory(Simulator lottoSimulator) {
+        System.out.println();
         System.out.println(lottoSimulator.getQuantity() + "개를 구매했습니다.");
         lottoSimulator.getLottos()
                 .stream()
@@ -59,6 +62,7 @@ public class Application {
     }
 
     private static void printWinningHistory(List<Integer> wins) {
+        System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + wins.get(4) + "개");
