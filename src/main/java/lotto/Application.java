@@ -13,6 +13,7 @@ import java.util.Map;
 
 import static java.lang.Character.*;
 import static lotto.Rank.*;
+import static lotto.message.ExceptionMessage.*;
 import static lotto.message.ExceptionMessage.TYPE_EXCEPTION;
 
 public class Application {
@@ -32,7 +33,7 @@ public class Application {
             double rate = lottoService.calculateRate(results, amount);
             printRate(rate);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            System.out.println(PREFIX + e.getMessage());
         }
     }
 
