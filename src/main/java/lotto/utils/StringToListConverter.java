@@ -5,8 +5,9 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class StringToListConverter {
-    public static List<Integer> convert(String winningNumber) {
+public class StringToListConverter implements Converter<String, List<Integer>> {
+    @Override
+    public List<Integer> convert(String winningNumber) {
         String[] winningNumbers = validateSeparator(winningNumber);
         return Arrays.stream(winningNumbers)
                 .map(Integer::parseInt)
