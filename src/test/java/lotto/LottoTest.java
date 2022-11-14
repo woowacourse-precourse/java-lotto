@@ -23,5 +23,21 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("응모번호에 문자가 있으면 예외 발생.")
+    @Test
+    void createInputMoneyByNotNumber() {
+        assertThatThrownBy(() -> Application.isInteger("a1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("응모번호에 문자가 있으면 예외 발생.")
+    @Test
+    void createInputMoneyByDuplicatedNumber() {
+        assertThatThrownBy(() -> Application.isSplit(11223))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("응모번호에 문자가 있으면 예외 발생.")
+    @Test
+    void createLottoRandomly() {
+        System.out.println(Application.generateLotto());
+    }
 }
