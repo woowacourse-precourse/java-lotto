@@ -14,6 +14,12 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public static Lotto numberOf(List<Integer> numbers) {
+        validate(numbers);
+
+        return new Lotto(numbers);
+    }
+
     private static void validate(List<Integer> numbers) {
         if (numbers.size() != SIZE) {
             throw new IllegalArgumentException();
@@ -32,11 +38,5 @@ public class Lotto {
         }
 
         return uniqueNumbers.size() != numbers.size();
-    }
-
-    public static Lotto numberOf(List<Integer> numbers) {
-        validate(numbers);
-
-        return new Lotto(numbers);
     }
 }
