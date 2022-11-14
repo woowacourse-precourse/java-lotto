@@ -6,11 +6,15 @@ import java.util.List;
 public class WinningLotto extends Lotto {
     private final int bonusNumber;
     private final List<Integer> lottoRank;
+    private int grossEarning;
+    private int compareCount;
 
     public WinningLotto(List<Integer> lotto, int bonusNumber) {
         super(lotto);
         this.bonusNumber = bonusNumber;
         this.lottoRank = Arrays.asList(0, 0, 0, 0, 0, 0);
+        grossEarning = 0;
+        compareCount = 0;
     }
 
     public void compareLotto(List<Lotto> lottos) {
@@ -24,6 +28,9 @@ public class WinningLotto extends Lotto {
         LottoRank rank = LottoRank.getLottoRankByCorrectNumberCount(lotto, bonusNumber, count);
         int rankIndex = rank.ordinal();
         lottoRank.set(rankIndex, lottoRank.get(rankIndex) + 1);
+
+        grossEarning += rank.getMoney();
+        compareCount++;
     }
 
     public int lottoContainsCount(List<Integer> lotto) {
@@ -44,5 +51,7 @@ public class WinningLotto extends Lotto {
         return bonusNumber;
     }
 
+    public double getearningRate() {
+        return  grossEarning / ((double)compareCount * 1000) * 100;
     }
 }
