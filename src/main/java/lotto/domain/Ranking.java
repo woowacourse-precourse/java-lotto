@@ -16,10 +16,6 @@ public enum Ranking {
     private static final String NO_BONUS_NUMBER_MESSAGE = "%d개 일치 (%s원)";
     public static final int SECOND_RIGHT_COUNT = 5;
 
-    public int getPrize() {
-        return prize;
-    }
-
     private final int rightCount;
     private final int prize;
     private final boolean hasBonusNumber;
@@ -28,6 +24,10 @@ public enum Ranking {
         this.rightCount = rightCount;
         this.prize = prize;
         this.hasBonusNumber = hasBonusNumber;
+    }
+
+    public int getPrize() {
+        return prize;
     }
 
     public static Ranking findByRightCountAndHasBonusNumber(int rightCount, boolean hasBonusNumber) {
