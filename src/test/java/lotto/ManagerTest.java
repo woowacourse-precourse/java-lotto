@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,16 @@ class ManagerTest {
         int result = manager.inputMoney();
         int expect = 8000;
         assertThat(result).isEqualTo(expect);
+    }
+    @DisplayName("로또 구입 금액으로 숫자가 아닌 값이 입력되면 예외 발생")
+    @Test
+    void inputMoneyException() {
+        String input = "8000a";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            manager.inputMoney();
+        });
     }
 
     @Test
