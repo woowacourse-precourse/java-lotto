@@ -1,5 +1,7 @@
 package lotto.View;
 
+import static lotto.View.OutputView.printBlankLine;
+
 import lotto.Utils.Util;
 
 public class InputView {
@@ -14,11 +16,13 @@ public class InputView {
     }
 
     public static String WinningLottoInput() {
+        printBlankLine();
         System.out.println(PRINT_ASK_WINNING_LOTTO);
         return Util.getInput();
     }
 
     public static String BonusLottoInput() {
+        printBlankLine();
         System.out.println(PRINT_ASK_BONUS_LOTTO);
         return Util.getInput();
     }

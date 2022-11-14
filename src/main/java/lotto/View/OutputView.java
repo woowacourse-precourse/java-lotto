@@ -25,6 +25,7 @@ public class OutputView {
     public static final int ZERO = 0;
 
     public static void printBuyerLotto(Buyer buyer) {
+        printBlankLine();
         int count = buyer.getPurchaseCount();
         System.out.printf(PRINT_NUMBER_OF_LOTTO, count);
         System.out.println();
@@ -41,6 +42,7 @@ public class OutputView {
     }
 
     public static void printWinningStatistics(Calculator calculator) {
+        printBlankLine();
         System.out.println(PRINT_STATISTICS);
         System.out.println(PRINT_LINE);
         System.out.printf(PRINT_FIFTH_RANK + NEXT_LINE, calculator.CountOfRank(WinningRank.FIFTH));
@@ -51,5 +53,9 @@ public class OutputView {
         System.out.printf(PRINT_FIRST_RANK + NEXT_LINE, calculator.CountOfRank(WinningRank.FIRST));
         System.out.printf(PRINT_EARNED_RATIO, calculator.earnedRatio());
         System.out.print("%입니다.");
+    }
+
+    public static void printBlankLine(){
+        System.out.println("");
     }
 }
