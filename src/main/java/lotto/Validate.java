@@ -36,4 +36,25 @@ public class Validate {
 		throw new IllegalArgumentException(error + message);
 	}
 
+	public static void checkValidMoney(String money){
+		if (isNotNumeric(money)) errorThrow(Message.NOT_NUMERIC.getMessage());
+		if (isNotEnough(money)) errorThrow(Message.NOT_ENOUGH_MONEY.getMessage());
+		if (isNotDivisible(money)) errorThrow(Message.NOT_DIVISIBLE_MONEY.getMessage());
+	}
+
+	public static boolean isNotNumeric(String money){
+		return !money
+			.chars()
+			.allMatch(Character::isDigit);
+	}
+
+	public static boolean isNotEnough(String money){
+		return Integer.parseInt(money) < Constant.LOTTO_PRICE.getNumber();
+	}
+
+	public static boolean isNotDivisible(String money){
+		return Integer.parseInt(money) % Constant.LOTTO_PRICE.getNumber() > 0;
+	}
+
+
 }
