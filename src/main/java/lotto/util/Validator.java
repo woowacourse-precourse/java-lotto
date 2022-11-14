@@ -40,13 +40,13 @@ public class Validator {
     }
 
     public List<Integer> winningNumberInputValidator(String money) {
-            List<Integer> winningNumbers = Arrays.stream(money.split(","))
-                    .map(Validator::changeNumber)
-                    .filter((n) -> checkValidNumber(n))
-                    .collect(Collectors.toList());
-            checkLength(winningNumbers);
-            checkDuplication(winningNumbers);
-            return winningNumbers;
+        List<Integer> winningNumbers = Arrays.stream(money.split(","))
+                .map(Validator::changeNumber)
+                .filter((n) -> checkValidNumber(n))
+                .collect(Collectors.toList());
+        checkLength(winningNumbers);
+        checkDuplication(winningNumbers);
+        return winningNumbers;
     }
 
     public void checkLength(List list) {
