@@ -49,4 +49,8 @@ public class Money {
 			throw new IllegalArgumentException(NOT_VALID_UNIT_OF_MONEY);
 		}
 	}
+
+	public static int getPurchaseAmount() {
+		return money;
+	}
 }
