@@ -8,10 +8,10 @@ import java.util.List;
 
 class ClientTest {
 
-    @DisplayName("로또 구입시 문자열 5000을 입력받으면 숫자 5000이 반환된다")
+    @DisplayName("로또 구입시 문자열 5000을 입력받으면 숫자 5가 반환된다")
     @Test
     void buyLottoString5000ThenReturnInt5000() {
-        Assertions.assertThat(new Client(()->"5000").buy()).isEqualTo(5000);
+        Assertions.assertThat(new Client(()->"5000").buy()).isEqualTo(5);
     }
 
     @DisplayName("로또 구입시 숫자 입력이 아니라면 IllegalArgumentException을 발생시킨다")
