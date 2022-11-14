@@ -11,7 +11,6 @@ public class NumberGenerator {
         for (String number : splitNumbers) {
             checkNumber(number);
             int winningNumber = Integer.parseInt(number);
-            checkScope(winningNumber);
             winningNumbers.add(winningNumber);
         }
         return winningNumbers;

@@ -2,11 +2,14 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import lotto.Lotto;
-import lotto.LottoCalculator;
+import lotto.model.Lotto;
 
 public class LottoManager {
     private int purchaseMoney;
+
+    public int getPurchaseMoney() {
+        return purchaseMoney;
+    }
 
     public int inputPurchaseMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -37,9 +40,6 @@ public class LottoManager {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
-//        for (int i = 0; i < lottos.length; i++) {
-//            System.out.println(lottos[i].getNumbers());
-//        }
     }
 
     public String inputWinningNumbers() {
@@ -52,7 +52,6 @@ public class LottoManager {
         String bonusNumber = Console.readLine();
         checkNumber(bonusNumber);
         return bonusNumber;
-//        return Console.readLine();
     }
 
     public void printWinningDetails(List<Integer> rankCount) {
@@ -63,14 +62,9 @@ public class LottoManager {
         System.out.println("5개 일치 (1,500,000원) - " + rankCount.get(2) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankCount.get(3) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + rankCount.get(4) + "개");
-//        System.out.println("3개 일치 (5,000원) - " + lottoCalculator.getRankCount().get(0) + "개");
-//        System.out.println("4개 일치 (50,000원) - " + lottoCalculator.getRankCount().get(1) + "개");
-//        System.out.println("5개 일치 (1,500,000원) - " + lottoCalculator.getRankCount().get(2) + "개");
-//        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoCalculator.getRankCount().get(3) + "개");
-//        System.out.println("6개 일치 (2,000,000,000원) - " + lottoCalculator.getRankCount().get(4) + "개");
     }
 
-    public void printRateOfReturn(LottoCalculator lottoCalculator) {
-        System.out.println("총 수익률은 " + String.format("%.1f",lottoCalculator.RateOfReturn(purchaseMoney)) + "%입니다.");
+    public void printRateOfReturn(double rateOfReturn) {
+        System.out.println("총 수익률은 " + String.format("%.1f",rateOfReturn) + "%입니다.");
     }
 }

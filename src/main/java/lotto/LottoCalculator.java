@@ -2,6 +2,8 @@ package lotto;
 
 import java.util.Arrays;
 import java.util.List;
+import lotto.model.Lotto;
+import lotto.model.WinningNumbers;
 
 public class LottoCalculator {
     private List<Integer> rankCount;
@@ -16,9 +18,9 @@ public class LottoCalculator {
         return rankCount;
     }
 
-    public int compare(Lotto lotto, WinningNumbers winningNumbers, int bonusNumber) {
-        int count = judgement.correctCount(lotto.getNumbers(), winningNumbers.getNumbers());
-        if (count < 5 || !judgement.hasBonusNumbers(bonusNumber, lotto.getNumbers())) {
+    public int compare(List<Integer> lotto, List<Integer> winningNumbers, int bonusNumber) {
+        int count = judgement.correctCount(lotto, winningNumbers);
+        if (count < 5 || !judgement.hasBonusNumbers(bonusNumber, lotto)) {
             count--;
         }
         return count - 2;
