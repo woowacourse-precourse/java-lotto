@@ -22,10 +22,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR]: 정확한 숫자를 입력하세요.");
             throw new IllegalArgumentException();
         }
+
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != 6) {
+            System.out.println("[ERROR]: 정확한 숫자를 입력하세요.");
             throw new IllegalArgumentException();
         }
     }
