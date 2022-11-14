@@ -28,7 +28,7 @@ class LottoTest {
     void compareNumbers_1st() {
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
         Lotto answer = new Lotto(List.of(1,2,3,4,5,6));
-        assertThat(Lotto.compareNumbers(answer, lotto))
+        assertThat(lotto.compareNumbers(answer, lotto))
                 .isEqualTo(6);
     }
 
@@ -37,9 +37,9 @@ class LottoTest {
     void compareNumbers_2nd() {
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
         Lotto answer = new Lotto(List.of(1,2,3,4,5,7));
-        assertThat(Lotto.compareNumbers(answer, lotto))
+        assertThat(lotto.compareNumbers(answer, lotto))
                 .isEqualTo(5);
-        assertThat(Lotto.hasBonusNumber(6, lotto)).isTrue();
+        assertThat(lotto.hasBonusNumber(6, lotto)).isTrue();
     }
 
     @DisplayName("로또 번호 비교하기_3등")
@@ -47,9 +47,9 @@ class LottoTest {
     void compareNumbers_3rd() {
         Lotto lotto = new Lotto(List.of(5,9,12,13,26,37));
         Lotto answer = new Lotto(List.of(5,9,13,15,26,37));
-        assertThat(Lotto.compareNumbers(answer, lotto))
+        assertThat(lotto.compareNumbers(answer, lotto))
                 .isEqualTo(5);
-        assertThat(Lotto.hasBonusNumber(1, lotto)).isFalse();
+        assertThat(lotto.hasBonusNumber(1, lotto)).isFalse();
     }
 
     @DisplayName("로또 번호 비교하기_4등")
@@ -57,7 +57,7 @@ class LottoTest {
     void compareNumbers_4th() {
         Lotto lotto = new Lotto(List.of(2,14,17,21,35,36));
         Lotto answer = new Lotto(List.of(1,14,17,35,36,42));
-        assertThat(Lotto.compareNumbers(answer, lotto))
+        assertThat(lotto.compareNumbers(answer, lotto))
                 .isEqualTo(4);
     }
 
@@ -66,7 +66,7 @@ class LottoTest {
     void compareNumbers_5th() {
         Lotto lotto = new Lotto(List.of(11,16,17,25,36,44));
         Lotto answer = new Lotto(List.of(2,5,16,25,26,44));
-        assertThat(Lotto.compareNumbers(answer, lotto))
+        assertThat(lotto.compareNumbers(answer, lotto))
                 .isEqualTo(3);
     }
 
