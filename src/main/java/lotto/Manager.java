@@ -16,7 +16,8 @@ public class Manager {
         Compare compareLotto = new Compare();
 
         for(Lotto lotto : user.getLottos()) {
-            compareLotto.compareLotto(lotto);
+            Rank rank = compareLotto.compareLotto(lotto);
+            winningBoard.put(rank, (winningBoard.getOrDefault(rank,0))+1);
         }
     }
 
