@@ -40,7 +40,12 @@ public class LottoGame {
     }
 
     private boolean checkOnlyNumber(String answer) {
-        return (answer.matches("[^0-9]"));
+        try {
+            Integer.parseInt(answer);
+            return false;
+        } catch (NumberFormatException e) {
+            return true;
+        }
     }
 
     private boolean checkDivisibleNumber(String answer) {
