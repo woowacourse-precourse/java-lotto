@@ -23,14 +23,21 @@ public class Game {
 
     public static void start(){
         input = inputMoneyView();
+
+        notNumericalInputException(input);
         catchInputException(input);
+
         countMoney();
         makeLottos();
         countView();
         lottoView();
         makeWinning(inputWinningView());
-        bonusNumber = Integer.parseInt(inputBonusView());
+
+        String bonusString =inputBonusView();
+        notNumericalInputException(bonusString);
+        bonusNumber = Integer.parseInt(bonusString);
         catchOutOfRangeException(bonusNumber);
+
         WinningLogic.addScore();
         ResultView();
         calculateRate();
@@ -53,6 +60,7 @@ public class Game {
     }
 
     public static void makeWinning(String numbers){
+        notNumericalInputException(numbers);
         Arrays.asList(numbers.split(",")).stream().forEach(number->{
             int num = Integer.parseInt(number);
             catchOutOfRangeException(num);

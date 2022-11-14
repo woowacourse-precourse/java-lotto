@@ -66,6 +66,31 @@ public class ExceptionTest extends NsTest {
                 List.of(1, 2, 3, 4, 5, 6)
         );
     }
+
+    @Test
+    void inputNotNumberException() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+
+                    assertThatThrownBy(()->run("a","1,2,3,4,5,6")).isInstanceOf(IllegalArgumentException.class);
+                },
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+
+                    assertThatThrownBy(()->run("1000","a,1,3,4,5,6")).isInstanceOf(IllegalArgumentException.class);
+                },
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+
+                    assertThatThrownBy(()->run("1000","1,2,3,4,5,6","~")).isInstanceOf(IllegalArgumentException.class);
+                },
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+    }
     @Override
     protected void runMain() {
         Application.main(new String[]{});
