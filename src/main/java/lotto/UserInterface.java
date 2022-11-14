@@ -7,13 +7,18 @@ public class UserInterface {
 
     private HashMap<Rank, Integer> rankCount;
 
-    void printEnterAmout() {
+    void printEnterAmount() {
         System.out.println(ENTER_AMOUNT);
     }
 
     void printEnterWinningNumber() {
         System.out.println(ENTER_WINNING_NUMBER);
     }
+
+    void printEnterBonusNumber() {
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+    }
+
     void printPurchasedLotto(List<Lotto> lottos) {
         System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
         lottos.forEach(System.out::println);

@@ -19,13 +19,12 @@ public class LottoProgram {
         enterWinningNumber();
 
         winningResult = new WinningResult(winningNumber);
-
         userInterface.printWinningHistory(winningResult.winningHistory(purchasedLotto));
         userInterface.printWinningRate(winningResult.winningRate(purchase.purchaseAmount));
     }
 
     private List<Lotto> purchaseLotto() {
-        userInterface.printEnterAmout();
+        userInterface.printEnterAmount();
         List<Lotto> purchasedLotto = purchase.lottoPurchase();
         userInterface.printPurchasedLotto(purchasedLotto);
 
@@ -33,7 +32,6 @@ public class LottoProgram {
     }
 
     private void enterWinningNumber() {
-        userInterface.printEnterWinningNumber();
         winningNumber.getWinningNumber();
     }
 }

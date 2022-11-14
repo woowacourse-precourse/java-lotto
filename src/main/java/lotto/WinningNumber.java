@@ -18,9 +18,11 @@ public class WinningNumber {
 
     private Lotto lotto;
     private Integer bonus;
+    UserInterface userInterface = new UserInterface();
 
     public List<Integer> getWinningNumber() {
         List<Integer> result = new ArrayList<>();
+        userInterface.printEnterWinningNumber();
 
         String input = Console.readLine();
         String[] split = input.split(",");
@@ -29,7 +31,7 @@ public class WinningNumber {
         }
 
         lotto = new Lotto(result);
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        userInterface.printEnterBonusNumber();
         bonus = Integer.parseInt(Console.readLine());
 
         validateBonus();
