@@ -30,4 +30,8 @@ public class Money {
     private boolean verifyDividedByPrice(int money) {
         return money % LOTTO_PRICE == 0;
     }
+
+    public int calculateLottoCount() {
+        return money / LOTTO_PRICE;
+    }
 }
