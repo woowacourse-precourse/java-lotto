@@ -21,4 +21,14 @@ public class PrizeCount {
         return prize.getMoney() * items.get(prize);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder message = new StringBuilder();
+
+        for (Prize prize : Prize.values()) {
+            message.append(prize).append(" - ").append(items.get(prize)).append("개").append("\n");
+        }
+
+        return message.toString();
+    }
 }
