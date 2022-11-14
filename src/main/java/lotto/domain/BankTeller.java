@@ -31,6 +31,6 @@ public class BankTeller {
             System.out.println(String.format(STATIC_FORMAT,
                     rank.getCondition(), MONETARY_FORMAT.format(rank.getPrize()), count));
         }
-        System.out.println(String.format("총 수익률은 %.2f%%입니다.", roi*100));
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", roi*100));
     }
 }
