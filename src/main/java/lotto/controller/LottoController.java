@@ -41,7 +41,7 @@ public class LottoController {
 
     private List<Lotto> issue(int lottoNum) {
         List<Lotto> lottos = lottoMachine.issueLottos(lottoNum);
-        Printer.print(lottoNum + LottoMessage.PURCHASE_DONE.getMessage());
+        Printer.printf(LottoMessage.PURCHASE_DONE.getMessage(), lottoNum);
         Printer.printLottos(lottos);
         return lottos;
     }
