@@ -1,8 +1,6 @@
 package lotto.ui;
 
 import lotto.domain.LottoRank;
-import lotto.domain.LottoService;
-import lotto.domain.UserLotto;
 
 import java.util.List;
 
@@ -13,7 +11,7 @@ public class LottoOutput {
         int amount = userLotto.size();
 
         sb.append(amount)
-                .append(Messages.OUTPUT_USER_LOTTO.getMessage())
+                .append(Messages.LOTTO_AMOUNT.getMessage())
                 .append("\n");
 
         for(List<Integer> lotto : userLotto) {
@@ -23,9 +21,9 @@ public class LottoOutput {
         System.out.println(sb);
     }
 
-    public void printLottoResult(List<LottoRank> lottoResult, String profitPercent) {
+    public void printLottoResult(List<LottoRank> lottoResult) {
         StringBuilder sb = new StringBuilder();
-        sb.append(Messages.OUTPUT_LOTTO_RESULT.getMessage());
+        sb.append(Messages.LOTTO_RESULT.getMessage());
 
         for(LottoRank rank : LottoRank.values()) {
             sb.append(createLottoResultMessage(rank, lottoResult));
@@ -55,10 +53,4 @@ public class LottoOutput {
         return count;
     }
 
-    public static void main(String[] args) {
-        LottoOutput output = new LottoOutput();
-        List<LottoRank> lottoRanks = List.of(LottoRank.FIFTH, LottoRank.BLANK, LottoRank.FIRST);
-
-        output.printLottoResult(lottoRanks, "45");
-    }
 }

@@ -1,9 +1,6 @@
 package lotto;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoRank;
-import lotto.domain.LottoService;
-import lotto.domain.UserLotto;
+import lotto.domain.*;
 import lotto.ui.LottoInput;
 import lotto.ui.LottoOutput;
 
@@ -15,6 +12,7 @@ public class LottoController {
     private LottoService service = new LottoService();
     private Lotto lotto;
     private UserLotto userLotto;
+
 
     public void initLotto() {
         List<Integer> winningNumber = input.readWinningNumber();
@@ -30,8 +28,10 @@ public class LottoController {
         output.printUserLotto(userLotto.getUserLotto());
     }
 
-    public void start() {
-        List<LottoRank> lottoResult = service.createLottoResult(lotto.getNumbers(), userLotto.getUserLotto());
-        //수익률 문제 고치자
+    public void initBonusNumber() {
+        int bonusNumber = input.readBonusNumber();
+        BonusNumber.BONUS_NUMBER.setNumber(bonusNumber);
     }
+
+
 }
