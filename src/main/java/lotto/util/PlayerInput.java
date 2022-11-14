@@ -13,7 +13,7 @@ import lotto.view.View;
 public class PlayerInput {
 
     public static int getInteger() {
-        String input = Console.readLine();
+        String input = Console.readLine().trim();
 
         if (Validator.isEmpty(input)) {
             View.printInputIsEmpty();
@@ -28,7 +28,7 @@ public class PlayerInput {
     }
 
     public static List<Integer> getLottoNumbers() {
-        String input = Console.readLine();
+        String input = Console.readLine().trim();
         List<Integer> numbers;
 
         if (Validator.isEmpty(input)) {
