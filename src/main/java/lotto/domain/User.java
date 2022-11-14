@@ -12,6 +12,7 @@ public class User {
     public User(){
         Message.printInputUserLottoMoney();
         setLottoMoney();
+        Message.printNextLine();
 
         setnLottoTickets();
     }

@@ -17,11 +17,15 @@ public class Service {
         setLottoTickets(nLottoTickets);
         Message.printNumberLottoTickets(nLottoTickets);
         Message.printLottoTickets(this.lottoTickets);
+        Message.printNextLine();
 
         Message.printInputServiceWinningNumbers();
         setWinningNumbers();
+        Message.printNextLine();
+
         Message.printInputServiceBonusNumber();
         setBonusNumber();
+        Message.printNextLine();
     }
 
     private void setLottoTickets(int nLottoTickets){

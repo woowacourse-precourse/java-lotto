@@ -25,6 +25,10 @@ public class Message {
     private static final String INPUT_ERROR_IS_DUPLICATE_BONUS_NUMBER_MESSAGE = ERROR_MESSAGE + "보너스 번호가 당첨 번호와 중복됩니다. 게임을 종료합니다.";
     private static final String INPUT_ERROR_USER_LOTTO_MONEY_MESSAGE = ERROR_MESSAGE + "%d단위로만 입력 가능합니다. 게임을 종료합니다.%n";
 
+    public static void printNextLine(){
+        System.out.println();
+    }
+
     public static void printInputErrorHasCharacter() {
         System.out.println(INPUT_ERROR_HAS_CHARACTER_MESSAGE);
     }
