@@ -27,8 +27,6 @@ public class Validate {
     public void validateBonusNumber(List<Integer> winningNumber, String userInput)throws IllegalArgumentException{
         containOthers(userInput);
         int bonusNumber = Integer.parseInt(userInput);
-        if(userInput.length() > 2)
-            throw new IllegalArgumentException("[ERROR] 올바른 숫자를 입력하세요.");
         correctNumberRange(bonusNumber);
         if(winningNumber.contains(bonusNumber))
             throw new IllegalArgumentException("[ERROR] 당첨번호와 겹치지 않는 숫자를 입력하세요.");

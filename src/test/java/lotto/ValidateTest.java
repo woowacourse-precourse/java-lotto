@@ -29,13 +29,18 @@ class ValidateTest {
         assertThatThrownBy(() -> test.validateUserInput(testcase))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    @DisplayName("보너스 점수와 당첨번호가 중복되는지 에 대한 test")
+    @DisplayName("보너스 점수 유효성에 대한 test")
     @Test
     void validateBonusNumber() {
         String testcase = "1";
+        String testcase2 = "123";
         List<Integer> testcase1 = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(() -> test.validateBonusNumber(testcase1, testcase))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 당첨번호와 겹치지 않는 숫자를 입력하세요.");
+        assertThatThrownBy(() -> test.validateBonusNumber(testcase1, testcase2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 1 ~ 45 사이의 숫자를 입력하세요.");
     }
     @DisplayName("당첨번호의 유효성에 대한 test")
     @Test
