@@ -16,7 +16,7 @@ public class OutputViewImple implements OutputView {
     private static final String WINNING_STATUS_SECOND_RANK_CASE_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
     private static final String MONEY_PATTERN = "###,###";
     private static final String RETURN_RATIO_MESSAGE = "총 수익률은 %.1f%%입니다.";
-
+    private static final String ERROR_MESSAGE = "[ERROR] %s";
     @Override
     public void printPurchasedLottos(List<Lotto> lottos) {
         printPurchasedAmount(lottos);
@@ -64,7 +64,7 @@ public class OutputViewImple implements OutputView {
 
     @Override
     public void printErrorMessage(Exception e) {
-        //TODO: 구현
+        System.out.println(String.format(ERROR_MESSAGE, e.getMessage()));
     }
 
 
