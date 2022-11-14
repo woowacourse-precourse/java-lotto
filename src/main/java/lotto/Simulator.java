@@ -31,8 +31,8 @@ public class Simulator {
 
     public Simulator setWinning(Lotto winning, int bonus) {
         this.winning = winning;
-        Lotto.validateRange(bonus);
         this.bonus = bonus;
+        validateBonus();
         return this;
     }
 
@@ -45,6 +45,13 @@ public class Simulator {
             }
         }
         return wins;
+    }
+
+    private void validateBonus() {
+        Lotto.validateRange(this.bonus);
+        if (this.winning.contains(this.bonus)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_LOTTO_NUMBER);
+        }
     }
 
     private void validatePrice(int price) {
