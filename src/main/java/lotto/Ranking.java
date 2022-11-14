@@ -18,4 +18,18 @@ public enum Ranking {
         this.bonusMatch = bonusMatch;
     }
 
+    public int getMatch() {
+        return this.match;
+    }
+
+    public int getPrize() {
+        return this.prize;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+    public boolean getBonusMatch() {
+        return this.bonusMatch;
+    }
 }
