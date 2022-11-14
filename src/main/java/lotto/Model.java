@@ -97,4 +97,8 @@ public class Model {
 
         return lottoList;
     }
+
+    public static Double CalculateEarningRate(Integer spending, Integer income) {
+        return Math.round(income / spending * 100 * 100) / 10.0;
+    }
 }
