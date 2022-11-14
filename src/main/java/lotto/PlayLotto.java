@@ -6,7 +6,6 @@ import java.util.List;
 
 public class PlayLotto {
     CreateLotto createLotto = new CreateLotto();
-
     public List<List<Integer>> allTicket(Integer ticketCount) {
         List<List<Integer>> allLottoNumber = new ArrayList<>();
         for (int i = 0; i < ticketCount; i++) {
@@ -70,48 +69,48 @@ public class PlayLotto {
         return 9;
     }
 
-    public void print5th(List<Integer> countCorrectNumber) {
-        System.out.printf("3개 일치 (5,000원) - " + countCorrectNumber.get(4) + "개");
+    public void print5th(List<Integer> correctNumber) {
+        System.out.printf("3개 일치 (5,000원) - " + correctNumber.get(4) + "개");
     }
 
-    public void print4th(List<Integer> countCorrectNumber) {
-        System.out.printf("4개 일치 (50,000원) - " + countCorrectNumber.get(3) + "개");
+    public void print4th(List<Integer> correctNumber) {
+        System.out.printf("4개 일치 (50,000원) - " + correctNumber.get(3) + "개");
     }
 
-    public void print3rd(List<Integer> countCorrectNumber) {
-        System.out.printf("5개 일치 (1,500,000원) - " + countCorrectNumber.get(2) + "개");
+    public void print3rd(List<Integer> correctNumber) {
+        System.out.printf("5개 일치 (1,500,000원) - " + correctNumber.get(2) + "개");
     }
 
-    public void print2nd(List<Integer> countCorrectNumber) {
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - " + countCorrectNumber.get(1) + "개");
+    public void print2nd(List<Integer> correctNumber) {
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - " + correctNumber.get(1) + "개");
     }
 
-    public void print1st(List<Integer> countCorrectNumber) {
-        System.out.printf("6개 일치 (2,000,000,000원) - " + countCorrectNumber.get(0) + "개");
+    public void print1st(List<Integer> correctNumber) {
+        System.out.printf("6개 일치 (2,000,000,000원) - " + correctNumber.get(0) + "개");
     }
 
-    public int profit5th(List<Integer> countCorrectNumber) {
-        return countCorrectNumber.get(4) * Reward.FIFTH.getAmount();
+    public int profit5th(List<Integer> correctNumber) {
+        return correctNumber.get(4) * Reward.FIFTH.getAmount();
     }
 
-    public int profit4th(List<Integer> countCorrectNumber) {
-        return countCorrectNumber.get(3) * Reward.FOURTH.getAmount();
+    public int profit4th(List<Integer> correctNumber) {
+        return correctNumber.get(3) * Reward.FOURTH.getAmount();
     }
 
-    public int profit3rd(List<Integer> countCorrectNumber) {
-        return countCorrectNumber.get(2) * Reward.THIRD.getAmount();
+    public int profit3rd(List<Integer> correctNumber) {
+        return correctNumber.get(2) * Reward.THIRD.getAmount();
     }
 
-    public int profit2nd(List<Integer> countCorrectNumber) {
-        return countCorrectNumber.get(1) * Reward.SECOND.getAmount();
+    public int profit2nd(List<Integer> correctNumber) {
+        return correctNumber.get(1) * Reward.SECOND.getAmount();
     }
 
-    public int profit1st(List<Integer> countCorrectNumber) {
-        return countCorrectNumber.get(0) * Reward.FIFTH.getAmount();
+    public int profit1st(List<Integer> correctNumber) {
+        return correctNumber.get(0) * Reward.FIFTH.getAmount();
     }
 
-    public double yield(int money, List<Integer> countCorrectNumber) {
-        int allProfit = profit1st(countCorrectNumber) + profit2nd(countCorrectNumber) + profit3rd(countCorrectNumber) + profit4th(countCorrectNumber) + profit5th(countCorrectNumber);
+    public double yield(int money, List<Integer> correctNumber) {
+        int allProfit = profit1st(correctNumber) + profit2nd(correctNumber) + profit3rd(correctNumber) + profit4th(correctNumber) + profit5th(correctNumber);
         return Math.round(allProfit / money *10.0) / 10.0;
     }
 
