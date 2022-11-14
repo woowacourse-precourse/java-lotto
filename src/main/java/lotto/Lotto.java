@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -10,11 +11,28 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GameConstant.SIZE_EXCEPTION.getValue());
+        }
+
+        if (checkDuplicate(numbers)) {
+            throw new IllegalArgumentException(GameConstant.DUPLICATE_EXCEPTION.getValue());
         }
     }
 
-    // TODO: 추가 기능 구현
+    private boolean checkDuplicate(List<Integer> numbers) {
+        for (int element : numbers) {
+            if (Collections.frequency(numbers, element) != 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
