@@ -14,38 +14,48 @@ public class WinningLotto {
     }
 
     private void checkWinningLotto(List<Integer> number, List<List<Integer>> numbers) {
-        int cnt = 0;
+        for (List<Integer> num : numbers) {
+            countWinningLotto(number, num);
+        }
+    }
+
+    private void countWinningLotto(List<Integer> number, List<Integer> num) {
+        int cnt;
         int threeWinsNum = 0;
         int fourWinsNum = 0;
         int fiveWinsNum = 0;
         int fiveWinsIncludBonusNum = 0;
         int sixWinsNum = 0;
-        for (int i = 0; i < numbers.size() ; i++) {
-            for (int n = 0; n < number.size(); n++) {
-                if (numbers.get(i).contains(number.get(n))) {
-                    cnt++;
-                    if (!numbers.get(i).contains(number.get(6)) && cnt == 3) {
-                        threeWinsNum++;
-                        System.out.println(this.threeWins + threeWinsNum + "개");
-                    }
-                    if (!numbers.get(i).contains(number.get(6)) && cnt == 4) {
-                        fourWinsNum++;
-                        System.out.println(this.fourWins + fourWinsNum + "개");
-                    }
-                    if (!numbers.get(i).contains(number.get(6)) && cnt == 5) {
-                        fiveWinsNum++;
-                        System.out.println(this.fiveWins + fiveWinsNum + "개");
-                    }
-                    if (cnt == 5) {
-                        fiveWinsIncludBonusNum++;
-                        System.out.println(this.fiveWinsIncludBonus + fiveWinsIncludBonusNum + "개");
-                    }
-                    if (!numbers.get(i).contains(number.get(6)) && cnt == 6) {
-                        sixWinsNum++;
-                        System.out.println(this.sixWins + sixWinsNum + "개");
-                    }
-                }
+        cnt = countOverlapNumber(number, num);
+        if (!num.contains(number.get(6)) && cnt == 3) {
+            threeWinsNum++;
+            System.out.println(this.threeWins + threeWinsNum + "개");
+        }
+        if (!num.contains(number.get(6)) && cnt == 4) {
+            fourWinsNum++;
+            System.out.println(this.fourWins + fourWinsNum + "개");
+        }
+        if (!num.contains(number.get(6)) && cnt == 5) {
+            fiveWinsNum++;
+            System.out.println(this.fiveWins + fiveWinsNum + "개");
+        }
+        if (cnt == 5) {
+            fiveWinsIncludBonusNum++;
+            System.out.println(this.fiveWinsIncludBonus + fiveWinsIncludBonusNum + "개");
+        }
+        if (!num.contains(number.get(6)) && cnt == 6) {
+            sixWinsNum++;
+            System.out.println(this.sixWins + sixWinsNum + "개");
+        }
+    }
+
+    private static int countOverlapNumber(List<Integer> number, List<Integer> num) {
+        int cnt = 0;
+        for (int numberr : number) {
+            if (num.contains(numberr)) {
+                cnt++;
             }
         }
+        return cnt;
     }
 }
