@@ -80,4 +80,11 @@ class ChangeTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 1보다 작으면 예외를 발생한다.")
+    @Test
+    void bonusNumber_범위미만(){
+        assertThatThrownBy(() -> Change.bonusNumber("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
