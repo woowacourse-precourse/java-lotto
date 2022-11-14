@@ -14,7 +14,7 @@ public class Lucky {
                 }
             }
             if (count == 5) {
-                count += compareBonus(user.get(i),bonusNumber);
+                count += compareBonus(user.get(i), bonusNumber);
             }
             if (count > 2) {
                 compareNumbers.add(count);
@@ -28,5 +28,15 @@ public class Lucky {
             return 2;
         }
         return 0;
+    }
+
+    public void showResult(HashMap<Integer, Integer> compareResult) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + compareResult.get(5) + "개");
+        System.out.println("4개 일치 (50,000원) - " + compareResult.get(4) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + compareResult.get(3) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + compareResult.get(7) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + compareResult.get(1) + "개");
     }
 }
