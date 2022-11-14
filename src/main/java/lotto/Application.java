@@ -11,9 +11,9 @@ public class Application {
         if (inputView.inputWinningNumber()) {
             return;
         }
-        int bonus = lotto.inputBonus();
+        inputView.inputBonus();
         for (List<Integer> randomLotto : inputView.calculator.lotteries) {
-            lotto.compareLotto(randomLotto, bonus);
+            inputView.lotto.compareLotto(randomLotto, inputView.bonusNum);
         }
         inputView.calculator.printResult();
     }

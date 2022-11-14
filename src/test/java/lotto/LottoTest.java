@@ -45,11 +45,12 @@ class LottoTest {
 
     @Test
     void 보너스_숫자_중복() {
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        InputView inputView = new InputView();
+        inputView.lotto = new Lotto(List.of(1,2,3,4,5,6));
         String input = "6";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(() -> lotto.inputBonus())
+        assertThatThrownBy(() -> inputView.inputBonus())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

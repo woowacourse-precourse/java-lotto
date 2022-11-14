@@ -14,7 +14,7 @@ public class InputView {
     Calculator calculator;
     Lotto lotto;
 
-    int bonus;
+    int bonusNum;
 
     public boolean inputMoney() {
         long money = ZERO;
@@ -73,5 +73,11 @@ public class InputView {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
         }
+    }
+
+    public void inputBonus() {
+        Message.INPUT_BONUS_NUMBER.print();
+        String bonus = Console.readLine();
+        this.bonusNum = lotto.validateBonus(bonus);
     }
 }
