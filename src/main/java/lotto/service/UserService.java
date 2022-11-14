@@ -62,7 +62,8 @@ public class UserService {
     }
 
     public String enterPurchaseAmount () {
-        return Console.readLine();
+        String a = Console.readLine();
+        return a;
     }
 
     public String enterWinningNumbers() {
