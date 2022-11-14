@@ -20,4 +20,9 @@ public class ResultLotto {
     public Map<MatchMoney, Integer> getMap() {
         return map;
     }
+
+    public String calYield(int buyMoney){
+        double result = (double)sumTotalMoney() / (double)buyMoney;
+        return String.format("%.1f",result*100);
+    }
 }
