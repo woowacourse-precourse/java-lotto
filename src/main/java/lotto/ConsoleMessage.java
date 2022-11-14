@@ -15,7 +15,7 @@ public enum ConsoleMessage {
             String message = String.format(PURCHASE_MSG, purchasedLotto.size());
             System.out.println(message);
             for (Lotto lotto : purchasedLotto) {
-                System.out.println(lotto);
+                System.out.println(lotto.toString());
             }
         }
     },

@@ -11,7 +11,8 @@ public class LottoBot {
     public static final int THIRD_PRICE = 1_500_000;
     public static final int FOURTH_PRICE = 50_000;
     public static final int FIFTH_PRICE = 5_000;
-    private final int[] ranks = new int[Lotto.LOTTO_NUMBER_SIZE];
+    public static final int RANK_SIZE = 5;
+    private final int[] ranks = new int[RANK_SIZE];
     private final int[] prices = new int[]{FIRST_PRICE, SECOND_PRICE, THIRD_PRICE, FOURTH_PRICE, FIFTH_PRICE};
     private String[] winningNumbers;
     private String bonusNumber;

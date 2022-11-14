@@ -5,7 +5,11 @@ import camp.nextstep.edu.missionutils.Console;
 public class Player {
     private static final int LOTTO_PRICE = 1000;
     private final Exception exception = new Exception();
-    private final LottoBot lottoBot = new LottoBot();
+    private final LottoBot lottoBot;
+
+    public Player(LottoBot lottoBot) {
+        this.lottoBot = lottoBot;
+    }
 
     public int getLottoCountPurchased() {
         int money = getMoneyPurchased();

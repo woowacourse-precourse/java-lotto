@@ -81,7 +81,7 @@ public class Exception {
             storedNumbers.add(winningNumber);
         }
 
-        return true;
+        return false;
     }
 
     private boolean isValidNumberRange(String str) {
