@@ -14,4 +14,12 @@ class WinningLottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("로또 번호는 1 ~ 45 범위의 숫자여야 합니다.");
     }
+
+    @DisplayName("입력된 보너스 번호가 1 ~ 45의 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void inputBonusNumbersByOutOfBound() {
+        assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("로또 번호는 1 ~ 45 범위의 숫자여야 합니다.");
+    }
 }

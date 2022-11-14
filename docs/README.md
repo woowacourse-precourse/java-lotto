@@ -52,3 +52,4 @@
 
 ### WinningLottoTest
 - `inputWinningNumbersByOutOfBound` : 입력된 당첨 번호 중 1 ~ 45의 숫자가 아니면 예외가 발생한다.
+- `inputBonusNumbersByOutOfBound` : 입력된 보너스 번호가 1 ~ 45의 숫자가 아니면 예외가 발생한다.
