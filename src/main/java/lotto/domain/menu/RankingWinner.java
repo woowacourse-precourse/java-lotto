@@ -37,6 +37,7 @@ public class RankingWinner {
     }
 
     private void SystemConsole(List<Integer> winningRanking, SystemConsole systemConsole, int i) {
+
         if (i == 0) {
             systemConsole.WINNING_RANKING_FIFTH(winningRanking, i);
         }

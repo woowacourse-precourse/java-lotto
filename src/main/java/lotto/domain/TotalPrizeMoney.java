@@ -22,16 +22,21 @@ public class TotalPrizeMoney {
             result += Rank.FOURTH.getMoney();
         }
 
+        if (correctNumber == Rank.FIRST.getMatch()) {
+            result += Rank.FIRST.getMoney();
+        }
+
+        result = getCorrectFivePrize(winningRanking, result, correctNumber);
+        return result;
+    }
+
+    private int getCorrectFivePrize(List<Integer> winningRanking, int result, int correctNumber) {
         if (correctNumber == Rank.THIRD.getMatch() && winningRanking.get(2) == 1) {
             result += Rank.THIRD.getMoney();
         }
 
         if (correctNumber == Rank.SECOND.getMatch() && winningRanking.get(3) == 1) {
             result += Rank.SECOND.getMoney();
-        }
-
-        if (correctNumber == Rank.FIRST.getMatch()) {
-            result += Rank.FIRST.getMoney();
         }
         return result;
     }

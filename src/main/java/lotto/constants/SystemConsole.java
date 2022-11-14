@@ -30,31 +30,27 @@ public class SystemConsole {
     }
 
     public void WINNING_RANKING_FIFTH(List<Integer> winningRanking, int i) {
-        System.out.println(Rank.FIFTH.getMatch() + SystemMessage.THIRD_CORRECT_RANK_MESSAGE +
-                winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
+        System.out.println(Rank.FIFTH.getMatch() + SystemMessage.THIRD_CORRECT_RANK_MESSAGE + winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
     }
 
     public void WINNING_RANKING_FOURTH(List<Integer> winningRanking, int i) {
-        System.out.println(Rank.FOURTH.getMatch() + SystemMessage.FOURTH_CORRECT_RANK_MESSAGE +
-                winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
+        System.out.println(Rank.FOURTH.getMatch() + SystemMessage.FOURTH_CORRECT_RANK_MESSAGE + winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
     }
 
     public void WINNING_RANKING_THIRD(List<Integer> winningRanking, int i) {
-        System.out.println(Rank.THIRD.getMatch() + SystemMessage.FIFTH_CORRECT_RANK_MESSAGE +
-                winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
+        System.out.println(Rank.THIRD.getMatch() + SystemMessage.FIFTH_CORRECT_RANK_MESSAGE + winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
     }
 
     public void WINNING_RANKING_SECOND(List<Integer> winningRanking, int i) {
-        System.out.println(Rank.SECOND.getMatch() + SystemMessage.SECOND_CORRECT_RANK_MESSAGE +
-                winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
+        System.out.println(Rank.SECOND.getMatch() + SystemMessage.SECOND_CORRECT_RANK_MESSAGE + winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
     }
 
     public void WINNING_RANKING_FIRST(List<Integer> winningRanking, int i) {
-        System.out.println(Rank.FIRST.getMatch() + SystemMessage.FIRST_CORRECT_RANK_MESSAGE +
-                winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
+        System.out.println(Rank.FIRST.getMatch() + SystemMessage.FIRST_CORRECT_RANK_MESSAGE + winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
     }
 
     public void GROSS_YIELDS(double revenue) {
         System.out.println(String.format("총 수익률은 %.1f%%입니다.", revenue));
     }
+
 }
