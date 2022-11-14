@@ -10,10 +10,19 @@ import lotto.service.view.ViewConsole;
 
 public class Seller {
     private Money money;
+    private Lottos lottos;
+
 
     public void acceptMoney() {
         ViewConsole.printInputMoney();
         money = InputConsole.readMoney();
+        System.out.println();
+    }
+
+    public void makeLottos() {
+        lottos = LottoMachine.makeLottos(money);
+        ViewConsole.printLottoLineCount(lottos.getSizeOfLottoLines());
+        ViewConsole.printLottoLineDetails(lottos);
         System.out.println();
     }
 
