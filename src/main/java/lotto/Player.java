@@ -9,6 +9,7 @@ public class Player {
     private int total_lotto;
     private Manager manager;
     private List<Integer> winning;
+    private int Bonus;
     public Player(Manager manager){
         this.manager = manager;
     }
@@ -48,5 +49,18 @@ public class Player {
     public void InputWinningNumber(){
         String input = readLine();
         checkWinningNumber(input);
+    }
+
+    public void checkBonusNumber(String input){
+        if(!manager.isNumber(input))
+            throw new IllegalArgumentException("[ERROR] : 보너스번호는 반드시 숫자로만 이루어져야 합니다.");
+        List<Integer> list = new ArrayList<>();
+        int bonus = Integer.parseInt(input);
+        list.add(bonus);
+        if(!manager.ValidRangeOfLottoNumber(list))
+            throw new IllegalArgumentException("[ERROR] : 보너스번호는 1 ~ 45 범위에 해당하는 숫자여야 합니다.");
+        if(winning.contains(bonus))
+            throw new IllegalArgumentException("[ERROR] : 보너스 번호는 입력한 당첨 번호와 중복되서는 안됩니다.");
+        this.Bonus = bonus;
     }
 }
