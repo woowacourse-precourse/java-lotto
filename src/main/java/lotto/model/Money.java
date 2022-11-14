@@ -23,6 +23,10 @@ public class Money {
         return money % LOTTO_PRICE == 0;
     }
 
+    public int countLotto() {
+        return money / LOTTO_PRICE;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -20,4 +20,10 @@ class MoneyTest {
         assertThatThrownBy(() -> new Money(1_500))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입 금액에 따라 로또의 개수를 반환한다.")
+    @Test
+    void countLotto() {
+        assertThat(new Money(2_000).countLotto()).isEqualTo(2);
+    }
 }
