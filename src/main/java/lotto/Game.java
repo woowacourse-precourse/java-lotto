@@ -42,7 +42,10 @@ public class Game {
         }
         Lotto lotto = new Lotto(numbers);
         System.out.println(lotto.getNumbers());
-        System.out.println(countNum(datas, numbers));
+        List<Integer> counts = countNum(datas, numbers);
+        System.out.println(counts);
+        int[] counter = prize(counts);
+        //Print(counter);
     }
 
     public List<Integer> countNum(List<List<Integer>> datas, List<Integer> numbers) {
@@ -59,14 +62,29 @@ public class Game {
         }
         return counts;
     }
-
-    public void Print(List<Integer> countNum){
+    public int[] prize(List<Integer> countNum){
+        int counterSize = 5;
+        int[] counter = new int[counterSize];
         for (int i=0; i<countNum.size(); i++){
             if (countNum.get(i)==3){
-                System.out.println("3개 일치");
+                counter[0] += 1;
+            }
+            else if (countNum.get(i)==4){
+                counter[1] += 1;
+            }
+            else if (countNum.get(i)==5){
+                counter[2] += 1;
+            }
+            else if (countNum.get(i)==6){
+                counter[3] += 1;
             }
         }
+        for (int i=0; i<counter.length; i++) {
+            System.out.print(counter[i]);
+        }
+        return counter;
     }
+
     /*
     3개 일치 (5,000원) - 1개
     4개 일치 (50,000원) - 0개
