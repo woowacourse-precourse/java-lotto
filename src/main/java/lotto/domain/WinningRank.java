@@ -5,12 +5,13 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public enum WinningRank {
-    SIX_MATCH(6, false, 2000000000),
-    FIVE_MATCH_BONUS(5, true, 30000000),
-    FIVE_MATCH(5, false, 1500000),
-    FOUR_MATCH(4, false, 50000),
+    NO_MATCH(0, false, 0),
     THREE_MATCH(3, false, 5000),
-    NO_MATCH(0, false, 0);
+    FOUR_MATCH(4, false, 50000),
+    FIVE_MATCH(5, false, 1500000),
+    FIVE_MATCH_BONUS(5, true, 30000000),
+    SIX_MATCH(6, false, 2000000000);
+
 
     private final int matchingCount;
     private final boolean containsBonusNumber;
@@ -39,10 +40,6 @@ public enum WinningRank {
 
     public int getMatchingCount() {
         return matchingCount;
-    }
-
-    public boolean getContainsBonusNumber() {
-        return containsBonusNumber;
     }
 
     public int getWinningAmount() {
