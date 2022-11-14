@@ -9,11 +9,11 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Application {
-    static Game gameData;
+    static Game gameData = new Game();
 
     static StringBuilder sb = new StringBuilder();
 
-    static List<Lotto> lottos;
+    static List<Lotto> lottos = new ArrayList<>();
 
     final static int LOTTO_PRICE = 1000;
 
@@ -29,16 +29,6 @@ public class Application {
         calculateRate();
 
     }
-
-//    public static void gameStart(){
-//        int gameTurn = gameData.getLottoCount();
-//        while(gameTurn > 0){
-//
-//            if(){
-//                gameTurn--;
-//            }
-//        }
-//    }
 
     public static void saveInput(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -82,12 +72,13 @@ public class Application {
         final List<Integer> winningNumbers = gameData.getWinningNumbers();
         return numbers.stream()
                 .filter(
-                        num -> winningNumbers.stream().allMatch((Predicate.isEqual(num)))
+                        num -> winningNumbers.stream().anyMatch((Predicate.isEqual(num)))
                 )
                 .collect(Collectors.toList());
     }
 
     private static void setWinnings(int winningCount, boolean hasBonus){
+        System.out.println(winningCount);
         if(winningCount == 6 ) gameData.changehitSix(gameData.getHitSix()+1);
         if(winningCount == 5 && hasBonus) gameData.changehitFiveAndBonus(gameData.getHitFiveAndBonus()+1);
         if(winningCount == 5 && !hasBonus) gameData.changehitFive(gameData.getHitFive()+1);
@@ -114,8 +105,8 @@ public class Application {
         int earnMoney = (gameData.getHitThree() * 5000) + (gameData.getHitFour() * 50000) +
                 (gameData.getHitFive() * 1500000) + (gameData.getHitFiveAndBonus() * 30000000)
                 + (gameData.getHitSix() * 2000000000);
-        int rate = (earnMoney / gameData.getMoney() ) * 100;
-        System.out.println("총 수익률은 "+ rate + "%입니다.");
+        double rate = ((double) earnMoney / gameData.getMoney() ) * 100;
+        System.out.println("총 수익률은 "+ String.format("%.1f", rate) + "%입니다.");
     }
 
 }
