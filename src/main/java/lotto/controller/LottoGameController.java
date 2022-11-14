@@ -18,14 +18,18 @@ public class LottoGameController {
     }
 
     public void startGame() {
-        String amount = getAmount();
-        List<Lotto> tickets = game.createLottoTickets(amount);
-        printTickets(amount, tickets);
-        List<Integer> winnings = getWinnings();
-        int bonus = Integer.parseInt(getBonus(winnings));
-        List<String> checkResult = game.compare(winnings, tickets, bonus);
-        LottoHistory history = game.createHistory(checkResult, amount);
-        printStatistics(history, amount);
+        try {
+            String amount = getAmount();
+            List<Lotto> tickets = game.createLottoTickets(amount);
+            printTickets(amount, tickets);
+            List<Integer> winnings = getWinnings();
+            int bonus = Integer.parseInt(getBonus(winnings));
+            List<String> checkResult = game.compare(winnings, tickets, bonus);
+            LottoHistory history = game.createHistory(checkResult, amount);
+            printStatistics(history, amount);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
     public String getAmount() {
