@@ -3,7 +3,7 @@ package lotto.ui;
 public class Validator {
     public static boolean isNumber(char input) {
         if (!Character.isDigit(input)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 금액 입력입니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자여야 합니다.");
         }
         return true;
     }
