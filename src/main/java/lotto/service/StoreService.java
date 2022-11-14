@@ -13,4 +13,8 @@ public class StoreService {
                         LottoInfo.LENGTH.getValue());
         return new Lotto(numbers);
     }
+
+    public int numberOfSoldLotto(int money){
+        return money / LottoInfo.PRICE.getValue();
+    }
 }

@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.lotto.LottoInfo;
 import lotto.domain.user.User;
 import lotto.service.StoreService;
 import lotto.view.Store;
@@ -40,6 +41,15 @@ public class StoreTest {
     void generateLotto(){
         assertThatCode(() -> storeService.sellLotto())
                 .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("로또 구매 개수 테스트")
+    void numberOfLotto(){
+        int money = 8000;
+
+        assertThat(storeService.numberOfSoldLotto(money))
+                .isEqualTo(money / LottoInfo.PRICE.getValue());
     }
 
 }
