@@ -18,7 +18,7 @@ public enum LottoPrize {
         this.reward = reward;
     }
 
-    public static LottoPrize of(LottoResult result) {
+    public static LottoPrize of(ComparisonToWinningNumberResult result) {
         int matchedNumberCount = result.matchCount;
         boolean bonusMatched = result.isBonusMatched;
 

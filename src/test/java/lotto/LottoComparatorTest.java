@@ -12,7 +12,7 @@ class LottoComparatorTest {
     public void compare1() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningNumber winningNumber = new WinningNumber(List.of(44, 22, 33, 12, 1, 9), 6);
-        LottoResult result = LottoComparator.compare(lotto, winningNumber);
+        ComparisonToWinningNumberResult result = LottoComparator.compare(lotto, winningNumber);
         assertThat(result.matchCount).isEqualTo(1);
     }
 
@@ -21,7 +21,7 @@ class LottoComparatorTest {
     public void compare5() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 10), 6);
-        LottoResult result = LottoComparator.compare(lotto, winningNumber);
+        ComparisonToWinningNumberResult result = LottoComparator.compare(lotto, winningNumber);
         assertThat(result.matchCount).isEqualTo(5);
     }
 
@@ -30,7 +30,7 @@ class LottoComparatorTest {
     public void compare5AndBonus() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 10), 6);
-        LottoResult result = LottoComparator.compare(lotto, winningNumber);
+        ComparisonToWinningNumberResult result = LottoComparator.compare(lotto, winningNumber);
         assertThat(result.matchCount).isEqualTo(5);
     }
 
@@ -39,7 +39,7 @@ class LottoComparatorTest {
     public void compare6() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6), 8);
-        LottoResult result = LottoComparator.compare(lotto, winningNumber);
+        ComparisonToWinningNumberResult result = LottoComparator.compare(lotto, winningNumber);
         assertThat(result.matchCount).isEqualTo(6);
     }
 
@@ -48,7 +48,7 @@ class LottoComparatorTest {
     public void compareBonusNum() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 10), 6);
-        LottoResult result = LottoComparator.compare(lotto, winningNumber);
+        ComparisonToWinningNumberResult result = LottoComparator.compare(lotto, winningNumber);
         assertThat(result.isBonusMatched).isTrue();
     }
 
@@ -57,7 +57,7 @@ class LottoComparatorTest {
     public void compareDiffBonusNum() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 10), 9);
-        LottoResult result = LottoComparator.compare(lotto, winningNumber);
+        ComparisonToWinningNumberResult result = LottoComparator.compare(lotto, winningNumber);
         assertThat(result.isBonusMatched).isFalse();
     }
 }
