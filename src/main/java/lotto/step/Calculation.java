@@ -10,7 +10,7 @@ public class Calculation extends LottoStep {
 
     @Override
     public void execute() {
-        context.calculateWin();
+        context.judgeWinning();
     }
 
     @Override

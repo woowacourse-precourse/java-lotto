@@ -19,15 +19,23 @@ public class LottoApplicationContext {
 
     private final Logger log = new Logger();
 
+    // 로또 관련 요청을 처리할 Controller
     private final LottoController lottoController;
 
+    // 현재 진행중인 애플리케이션의 단계
     private Step step;
 
-    private WinningNumber winningNumber;
+    // 현재 문맥 속 사용자의 지불금액
     private Money payment;
 
-    private WinningResult winningResult;
+    // 현재 문맥 속 로또 구입 결과
     private LottoPurchaseResult purchaseResult;
+
+    // 현재 문맥 속 당첨번호
+    private WinningNumber winningNumber;
+
+    // 현재 문맥 속 당첨 결과
+    private WinningResult winningResult;
 
     public LottoApplicationContext(final LottoApplicationConfig config) {
         this.lottoController = config.lottoController();
@@ -64,7 +72,7 @@ public class LottoApplicationContext {
         this.winningNumber = new WinningNumber(winningLotto, bonusNumber);
     }
 
-    public void calculateWin() {
+    public void judgeWinning() {
         JudgeWinningRequest request = new JudgeWinningRequest(
                 payment,
                 purchaseResult.getLottos(),
