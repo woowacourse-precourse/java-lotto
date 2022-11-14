@@ -35,7 +35,6 @@ public class Application {
         String[] inputNumbers = input.split(",");
         List<Integer> numbers = new ArrayList<>();
         for (String inputNumber : inputNumbers) {
-            validateNumber(inputNumber);
             numbers.add(Integer.parseInt(inputNumber));
         }
         return numbers;
@@ -46,7 +45,7 @@ public class Application {
         return Integer.parseInt(input);
     }
 
-    public static void validateNumber(String input) {
+    public static void validateNumber(String input, List<Integer> winningLottoNumbers) {
         int number;
         try {
             number = Integer.parseInt(input);
@@ -56,12 +55,8 @@ public class Application {
         if (number > 45 || number < 1) {
             throw new IllegalArgumentException(Error.INVALID_INPUT_VALUE.getMessage());
         }
-    }
-
-    public static void validateNumber(String input, List<Integer> winningLottoNumbers) {
-        validateNumber(input);
         if (winningLottoNumbers.contains(Integer.parseInt(input))) {
-            throw new IllegalArgumentException(Error.INPUT_DUPLICATE.getMessage());
+            throw new IllegalArgumentException(Error.DUPLICATE_INPUT_VALUE.getMessage());
         }
     }
 
