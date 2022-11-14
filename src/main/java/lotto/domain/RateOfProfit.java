@@ -2,16 +2,18 @@ package lotto.domain;
 
 public class RateOfProfit {
 
-    public static Long profit() {
-        Long profit = 0L;
-        Correct[] correctTypes = Correct.values();
-        for (Correct correctType : correctTypes) {
-            profit += correctType.getPrizeMoney() * correctType.getCnt();
+    private static double profit;
+
+    public static void profit() {
+        CorrectNum[] correctNumTypes = CorrectNum.values();
+        for (CorrectNum correctNumType : correctNumTypes) {
+            profit += correctNumType.PrizeMoney() * correctNumType.Cnt();
         }
-        System.out.println(profit);
-        return profit;
     }
+
     public static double calculate(int amount) {
-        return Math.round(profit()/amount*100)/100;
+        profit();
+        double answer = profit / amount * 100.0;
+        return Math.round(answer * 100) / 100.0;
     }
 }
