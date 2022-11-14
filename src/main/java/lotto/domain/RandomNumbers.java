@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RandomNumbers {
     private final List<Integer> randomNumbers;
@@ -17,12 +18,6 @@ public class RandomNumbers {
     }
 
     private List<Integer> generateRandomNumbers(int minNumber, int maxNumber, int count) {
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(minNumber, maxNumber, count);
-        sortRandomNumbers(randomNumbers);
-        return randomNumbers;
-    }
-
-    private void sortRandomNumbers(List<Integer> randomNumbers) {
-        Collections.sort(randomNumbers);
+        return Randoms.pickUniqueNumbersInRange(minNumber, maxNumber, count);
     }
 }

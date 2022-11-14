@@ -1,6 +1,12 @@
 package lotto.controller;
 
-import lotto.domain.*;
+import lotto.domain.Lotto;
+import lotto.domain.LottoCondition;
+import lotto.domain.Payment;
+import lotto.domain.PurchasedLottos;
+import lotto.domain.RandomNumbers;
+import lotto.domain.WinningLotto;
+import lotto.domain.WinningStatistics;
 import lotto.view.ConsoleView;
 
 import java.util.ArrayList;
@@ -12,9 +18,15 @@ public class LottoController {
     private WinningStatistics winningStatistics;
 
     public void process() {
-        purchaseLottos();
-        showPurchasedLottos();
-        setWinningLotto();
+        try {
+            purchaseLottos();
+            showPurchasedLottos();
+            setWinningLotto();
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+            return;
+        }
+
         createWinningStatistics();
         showWinningResult();
     }

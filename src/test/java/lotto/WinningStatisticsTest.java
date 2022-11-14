@@ -1,6 +1,10 @@
 package lotto;
 
-import lotto.domain.*;
+import lotto.domain.Lotto;
+import lotto.domain.PurchasedLottos;
+import lotto.domain.Rank;
+import lotto.domain.WinningLotto;
+import lotto.domain.WinningStatistics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,14 +19,7 @@ public class WinningStatisticsTest {
 
     @BeforeEach
     void setWinningLotto() {
-        List<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(4);
-        numbers.add(5);
-        numbers.add(6);
-        Lotto lotto = new Lotto(numbers);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
         this.winningLotto = new WinningLotto(lotto, bonusNumber);
     }
@@ -53,18 +50,8 @@ public class WinningStatisticsTest {
     @DisplayName("1000원을 지불하여 5등에 당첨이 되면 수익률은 500.0%이다.")
     @Test
     void checkProfitRateWhenFirstAward() {
-        List<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(8);
-        numbers.add(9);
-        numbers.add(10);
-
-        Lotto lotto = new Lotto(numbers);
-        List<Lotto> lottos = new ArrayList<>();
-        lottos.add(lotto);
-        PurchasedLottos purchasedLottos = new PurchasedLottos(lottos);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 8, 9, 10));
+        PurchasedLottos purchasedLottos = new PurchasedLottos(List.of(lotto));
         WinningStatistics winningStatistics = new WinningStatistics(purchasedLottos, winningLotto);
 
         assertThat(winningStatistics.calculateProfitRate(1000)).isEqualTo(500.0f);
