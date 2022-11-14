@@ -104,5 +104,16 @@ public class LottoStatistics {
         }
         return totalPrize;
     }
+
+    public BigDecimal getRateOfReturn(){
+        BigInteger totalPrize = getTotalPrize();
+        BigDecimal buyerMoney = new BigDecimal(this.money);
+        BigDecimal spentMoney = new BigDecimal(totalPrize);
+        BigDecimal divMoney = spentMoney.divide(buyerMoney);
+        BigDecimal rateOfReturn = divMoney.multiply(new BigDecimal(100));
+
+        return rateOfReturn;
+    }
+
 }
 
