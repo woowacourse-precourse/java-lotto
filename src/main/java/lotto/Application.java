@@ -15,7 +15,7 @@ public class Application {
 
         try {
             if (!isNumeric(purchaseAmount_))
-                throw new IllegalArgumentException(ERROR_MESSAGE + "숫자만 입력해야합니다.");
+                throw new IllegalArgumentException();
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + "숫자만 입력해야합니다.");
             return;
@@ -29,7 +29,7 @@ public class Application {
                 throw new IllegalArgumentException();
 
         } catch (IllegalArgumentException e) {
-            System.out.println(ERROR_MESSAGE + "구입 금액은 1,000원 단위여야 합니다.");
+            System.out.println(ERROR_MESSAGE + "구입 금액은 1000원 단위여야 합니다.");
         }
 
 
