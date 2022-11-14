@@ -8,12 +8,14 @@ import domain.Lotto;
 import domain.LottoRank;
 import domain.LottoReward;
 import domain.Player;
+import java.util.logging.Logger;
 
 import java.util.*;
 
+
 public class LottoService {
 
-    LottoGameMessage lottoGameMessage = new LottoGameMessage();
+    private static final LottoGameMessage lottoGameMessage = new LottoGameMessage();
 
     public void gameProgress(){
         Player player = new Player();
@@ -168,6 +170,12 @@ public class LottoService {
         lottoGameMessage.printPlayerRandomLottoPickNumbers(player);
     }
 
+    public void printSortedPlayerLottoNumbers(List<Integer> playerLottoNumbers){
+        List<Integer> sortedPlayerLottoNumbers = new ArrayList<>(playerLottoNumbers);
+        Collections.sort(sortedPlayerLottoNumbers);
+        System.out.println(sortedPlayerLottoNumbers);
+    }
+
     public void isNumber(String number){
         try {
             Integer.parseInt(number);
@@ -179,7 +187,7 @@ public class LottoService {
     public void createPlayerRandomLottoPickNumbers(Player player){
         for (int lottoNum = 0; lottoNum < player.getLottoCount(); lottoNum++) {
             Lotto playerLotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            Collections.sort(playerLotto.getNumbers());
+            //Collections.sort(playerLotto.getNumbers());
             player.getPlayerLottoPickNumbers().add(playerLotto);
         }
     }
