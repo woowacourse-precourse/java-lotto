@@ -2,10 +2,8 @@
 
 1. ListOfLottos 클래스: 로또 로직을 구현한 클래스
     - 구입 금액에 맞게 로또 n개 생성기 (generateListOfLottos)
-    - 로또 리스트의 당첨 내역 확인하는 메소드 (checkListOfLottos)
    - 로또 모두 출력하는 메소드 (printAllLottos)
 2. Lotto 클래스
-   - 당첨 내역 확인하는 로직 메소드 (checkLotto)
    - 로또 번호 오름차순으로 정렬하는 메소드 (sortLotto)
    - 로또 당첨이 5 숫자일 경우 보너스 숫자와 일치하는 확인하는 메소드 (checkBonus)
    - View 클래스의 validator를 활용한 validator 메소드 (validateLotto)
@@ -41,6 +39,10 @@
    - enum 정의
    - 로또의 결과가 어느 랭킹에 해당하는지 찾는 메소드 (findRanking)
    - enum의 변수에 대한 get 메소드 (getMatch, getPrize, getBonusMatch, getDescription)
+5. DrawLotto 클래스
+   - 당첨 내역 확인하는 로직 메소드 (checkLotto)
+   - 로또 리스트의 당첨 내역 확인하는 메소드 (checkListOfLottos)
+   - 소수점 둘째 자리에서 반올림한 수익률 계산하는 메소드 (calculateProfitRate)
 5. LottoTest
    - Non-integer를 Input했을 때 IllegalArgumentException을 발생시키는지 확인
 6. ApplicationTest
