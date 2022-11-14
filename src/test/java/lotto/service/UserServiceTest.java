@@ -44,4 +44,13 @@ class UserServiceTest {
                 .isEqualTo(5);
     }
 
+    @Test
+    @DisplayName("입력된 금액으로 몇 개의 로또를 구입하는지 반환한다.")
+    void findTheNumberOfLotteryTicketsPurchasedTest() {
+        UserService userService = new UserService();
+        String purchaseAmount = "8000";
+        assertThat(userService.findTheNumberOfLotteryTicketsPurchased(purchaseAmount))
+                .isEqualTo(8);
+    }
+
 }
