@@ -33,6 +33,7 @@
 ### 기능 목록
 1. 로또 구입 금액을 입력 받는다.
   - [IllegalArgumentException] 입력받은 로또 구입 금액이 1,000원으로 나누어 떨어지지 않을 경우 -> [ERROR] 구입 급액은 1000원 단위여야 합니다.
+  - [IllegalArgumentException] 입력받은 로또 구입 금액이 숫자 외에 다른 문자가 포함되어 있을 경우 -> [ERROR] 구입 급액은 숫자 외에 다른 문자가 포함되지 않아야 합니다.
 
 
 2. 사용자의 구입 금액에 해당하는 만큼 로또를 발행한다.
@@ -57,7 +58,10 @@
 
 
 5. 보너스 번호를 입력 받는다.
-  - [IllegalArgumentException] 보너스 번호가 1개가 아닌 경우 -> [ERROR] 보너스 번호의 개수는 1개여야 합니다.
+  - [IllegalArgumentException] 입력받은 보너스 번호가 1개가 아닌 경우 -> [ERROR] 보너스 번호의 개수는 1개여야 합니다.
+  - [IllegalArgumentException] 입력받은 보너스 번호가 로또 당첨 번호와 중복될 경우 -> [ERROR] 보너스 번호는 로또 번호와 중복되지 않아야 합니다.
+  - [IllegalArgumentException] 입력받은 보너스 번호가 1 ~ 45의 범위를 벗어났을 경우 -> [ERROR] 보너스 번호는 1부터 45사이의 숫자여야 합니다.
+  - [IllegalArgumentException] 입력받은 보너스 번호가 숫자 외에 다른 문자가 포함되어 있을 경우 -> [ERROR] 보너스 번호는 숫자 외에 다른 문자가 포함되지 않아야 합니다.
 
 
 6. 당첨 통계를 출력한다.
@@ -80,11 +84,15 @@
   - 중복되지 않는 6개의 당첨 번호를 쉼표를 기준으로 구분하여 입력받는다.
   - 보너스 번호를 입력 받는다.
   - [IllegalArgumentException] 입력받은 로또 구입 금액이 1,000원으로 나누어 떨어지지 않을 경우 -> [ERROR] 구입 급액은 1000원 단위여야 합니다.
+  - [IllegalArgumentException] 입력받은 로또 구입 금액이 숫자 외에 다른 문자가 포함되어 있을 경우 -> [ERROR] 구입 급액은 숫자 외에 다른 문자가 포함되지 않아야 합니다.
   - [IllegalArgumentException] 입력받은 로또 당첨 번호의 개수가 6개가 아닌 경우 -> [ERROR] 로또 번호의 개수는 6개여야 합니다.
   - [IllegalArgumentException] 입력받은 로또 당첨 번호가 중복될 경우 -> [ERROR] 로또 번호는 중복되지 않아야 합니다.
   - [IllegalArgumentException] 입력받은 로또 당첨 번호가 1 ~ 45의 범위를 벗어났을 경우 -> [ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.
   - [IllegalArgumentException] 입력받은 로또 당첨 번호가 쉼표가 아닌 다른 기호로 구분이 되어있을 경우 -> [ERROR] 로또 번호는 쉼표를 기준으로 구분해야 합니다.
-  - [IllegalArgumentException] 보너스 번호가 1개가 아닌 경우 -> [ERROR] 보너스 번호의 개수는 1개여야 합니다.
+  - [IllegalArgumentException] 입력받은 보너스 번호가 1개가 아닌 경우 -> [ERROR] 보너스 번호의 개수는 1개여야 합니다.
+  - [IllegalArgumentException] 입력받은 보너스 번호가 로또 당첨 번호와 중복될 경우 -> [ERROR] 보너스 번호는 로또 번호와 중복되지 않아야 합니다.
+  - [IllegalArgumentException] 입력받은 보너스 번호가 1 ~ 45의 범위를 벗어났을 경우 -> [ERROR] 보너스 번호는 1부터 45사이의 숫자여야 합니다.
+  - [IllegalArgumentException] 입력받은 보너스 번호가 숫자 외에 다른 문자가 포함되어 있을 경우 -> [ERROR] 보너스 번호는 숫자 외에 다른 문자가 포함되지 않아야 합니다.
 
 #### LottoManager
   - 사용자가 입력한 구입 금액에 해당하는 만큼 로또를 발행한다.
