@@ -1,14 +1,16 @@
 package lotto.values;
 
+import static lotto.values.Constants.Console.*;
+
 public enum Hit {
-    THREE(Constants.Console.THREE_HIT_MESSAGE),
-    FOUR(Constants.Console.FOUR_HIT_MESSAGE),
-    FIVE(Constants.Console.FIVE_HIT_MESSAGE),
-    FIVE_BONUS(Constants.Console.FIVE_BONUS_HIT_MESSAGE),
-    SIX(Constants.Console.SIX_HIT_MESSAGE);
+    THREE(THREE_HIT_MESSAGE),
+    FOUR(FOUR_HIT_MESSAGE),
+    FIVE(FIVE_HIT_MESSAGE),
+    FIVE_BONUS(FIVE_BONUS_HIT_MESSAGE),
+    SIX(SIX_HIT_MESSAGE);
 
 
-    private String message;
+    private final String message;
 
     Hit(String message){
         this.message = message;

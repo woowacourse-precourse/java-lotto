@@ -4,13 +4,18 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.Rank;
+import lotto.values.Hit;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.values.Constants.Console.TOTAL_PROFIT_PERCENT_MESSAGE;
+import static lotto.domain.Lotto.*;
+import static lotto.domain.Money.inputMoney;
+import static lotto.domain.Rank.getLottosRanking;
+import static lotto.values.Constants.Console.*;
+import static lotto.values.Constants.Console.STATISTICS_MESSAGE;
 import static lotto.values.Constants.Digit.*;
 import static lotto.values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
 
@@ -22,9 +27,7 @@ public class LottoUtils {
     }
 
     public static void printLottoNumbers(List<Lotto> lottos) {
-        lottos.forEach(lotto -> {
-            System.out.println(lotto.getLottoNumbers().toString());
-        });
+        lottos.forEach(lotto -> System.out.println(lotto.getLottoNumbers().toString()));
     }
 
     public static void printTotalProfitMessage(String percent) {
@@ -85,5 +88,81 @@ public class LottoUtils {
         return prize * cnt;
     }
 
+    public static void start(){
+        Money money = getMoney();
+        List<Lotto> lottos = inputLottos(money);
+        Lotto winningLotto = inputWinningLotto();
+        int bonusNumber = inputBonusNumber();
+        Rank rank = getRankByValues(lottos, winningLotto, bonusNumber);
+        LinkedHashMap<Integer, Integer> ranking = rank.getRank();
+
+        printRanking(ranking);
+        printTotalProfitMessage(getProfitPercentage(rank, money.getMoney()));
+    }
+
+    private static void printRanking(LinkedHashMap<Integer, Integer> ranking) {
+        for (int i = FIFTH_PLACE; i <= FIRST_PLACE; i++) {
+            Hit hit = getHit(i);
+            Integer cnt = ranking.get(i);
+            System.out.printf(hit.getMessage(), cnt);
+        }
+        printEnter();
+    }
+
+    private static Hit getHit(int rank){
+        Hit hit = null;
+        if(rank == FIFTH_PLACE){
+            hit = Hit.THREE;
+        } else if(rank == FOURTH_PLACE){
+            hit = Hit.FOUR;
+        } else if(rank == THIRD_PLACE) {
+            hit = Hit.FIVE;
+        } else if (rank == SECOND_PLACE) {
+            hit = Hit.FIVE_BONUS;
+        } else if (rank == FIRST_PLACE) {
+            hit = Hit.SIX;
+        }
+        return hit;
+    }
+
+    private static Rank getRankByValues(List<Lotto> lottos, Lotto winningLotto, int bonusNumber) {
+        System.out.println(STATISTICS_MESSAGE);
+        Rank rank = getLottosRanking(winningLotto, bonusNumber, lottos);
+        return rank;
+    }
+
+    private static Lotto inputWinningLotto() {
+        System.out.println(INPUT_WINNING_NUMBERS_MESSAGE);
+        Lotto winningLotto = generateWinningLotto();
+        printEnter();
+        return winningLotto;
+    }
+    
+    private static int inputBonusNumber(){
+        System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
+        int bonusNumber = generateBonusNumber();
+        printEnter();
+        return bonusNumber;
+    }
+
+    private static List<Lotto> inputLottos(Money money) {
+        int lottoCnt = getLottoCntByMoney(money);
+        System.out.printf(OUTPUT_CNT_MESSAGE,lottoCnt);
+        List<Lotto> lottos = generateLottos(lottoCnt);
+        printLottoNumbers(lottos);
+        printEnter();
+        return lottos;
+    }
+
+    private static Money getMoney() {
+        System.out.println(INPUT_MONEY_MESSAGE);
+        Money money = inputMoney();
+        printEnter();
+        return money;
+    }
+
+    private static void printEnter(){
+        System.out.println();
+    }
 
 }
