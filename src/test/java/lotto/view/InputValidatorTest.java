@@ -49,7 +49,10 @@ class InputValidatorTest {
             "1,2,3,4,5,6,8",
             "",
             "1, 2, 3, 4, 5, 6",
-            "1, 2,3,4,5,6"
+            "1, 2,3,4,5,6",
+            " 1,2,3,4,5,6",
+            "1,2,3,4,5,6 ",
+            "123456"
     })
     void validateWinningNumbers_메서드는_올바른_당첨번호_형식의_문자열을_입력하지_않으면_IllegalArgumentException을_던진다(
             String winningNumbers
