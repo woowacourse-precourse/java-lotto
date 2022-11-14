@@ -1,143 +1,54 @@
 package lotto.domain;
 
-import static lotto.domain.Validator.*;
-import static org.assertj.core.api.Assertions.*;
+import static lotto.domain.Validator.validateBonusNumber;
+import static lotto.domain.Validator.validateDuplication;
+import static lotto.domain.Validator.validatePurchase;
+import static lotto.domain.Validator.validateWinningNumbers;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class ValidatorTest {
 
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-    @Nested
-    class Purchase{
-        @Test
-        @DisplayName("구입 금액에 영어가 들어오면 예외가 발생한다.")
-        void inputPurchaseEnglish() {
-            assertThatThrownBy(() -> validatePurchase("q"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
 
-        @Test
-        @DisplayName("구입 금액에 한글이 들어오면 예외가 발생한다.")
-        void inputPurchaseKorean() {
-            assertThatThrownBy(() -> validatePurchase("가나다라"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-
-        @Test
-        @DisplayName("구입 금액에 특수문자가 들어오면 예외가 발생한다.")
-        void inputPurchaseEscape() {
-            assertThatThrownBy(() -> validatePurchase("@"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-
-        @Test
-        @DisplayName("구입 금액이 천원으로 나누어 떨어지지 않으면 예외가 발생한다.")
-        void inputPurchaseLessThan() {
-            assertThatThrownBy(() -> validatePurchase("999"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
+    @DisplayName("구입 금액에 천 단위의 양의 정수가 아닐 경우 에러가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"q", "가나다라", "@", "100j","999"})
+    void inputPurchaseNotNumberUnitThousand(String purchase) {
+        assertThatThrownBy(() -> validatePurchase(purchase))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
     }
 
-    @Nested
-    class WinningNumber{
-        @Test
-        @DisplayName("당첨 번호가 쉼표로 구분되지 않는 경우 예외가 발생한다.")
-        void winningNumberNotContainComma(){
-            assertThatThrownBy(() -> validateWinningNumbers("1 2 3 4 5 6"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-
-        @Test
-        @DisplayName("당첨 번호가 숫자 이외의 문자가 포함된 경우 예외가 발생한다.")
-        void winningNumberContainNotNumber(){
-            assertThatThrownBy(() -> validateWinningNumbers("1,2,3,4,5,@"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-
-        @Test
-        @DisplayName("당첨 번호가 중복된 숫자가 포함된 경우 예외가 발생한다.")
-        void winningNumberContainDuplicationNumber(){
-            assertThatThrownBy(() -> validateWinningNumbers("1,2,3,4,5,1"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-
-        @Test
-        @DisplayName("당첨 번호가 1보다 작을 경우 예외가 발생한다.")
-        void winningNumberLessThanOne(){
-            assertThatThrownBy(() -> validateWinningNumbers("1,2,3,4,5,-1"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-
-        @Test
-        @DisplayName("당첨 번호가 45보다 클 경우 예외가 발생한다.")
-        void winningNumberGreaterThanFortyFive(){
-            assertThatThrownBy(() -> validateWinningNumbers("1,2,3,4,5,46"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-
-        @Test
-        @DisplayName("당첨 번호의 개수가 6개보다 많을 경우 예외가 발생한다.")
-        void winningNumberCountGreaterThanSix(){
-            assertThatThrownBy(() -> validateWinningNumbers("1,2,3,4,5,7,6"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-
-        @Test
-        @DisplayName("당첨 번호의 개수가 6개보다 적을 경우 예외가 발생한다.")
-        void winningNumberCountLessThanSix(){
-            assertThatThrownBy(() -> validateWinningNumbers("1,2,3,4,5"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
+    @ParameterizedTest
+    @DisplayName("당첨 번호가 중복되지 않는 1부터 45까지의 6개의 수가 아니면 에러가 발생한다.")
+    @ValueSource(strings = {"1 2 3 4 5 6", "1,2,3,4,5,@", "1,2,3,4,5,1", "1,2,3,4,5,-1", "1,2,3,4,5,46",
+            "1,2,3,4,5,7,6", "1,2,3,4,5"})
+    void winningNumbersDuplicationOrOverOutRange(String winningNumbers) {
+        assertThatThrownBy(() -> validateWinningNumbers(winningNumbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
     }
 
-    @Nested
-    class BonusNumber{
-        @Test
-        @DisplayName("보너스 번호가 숫자 이외의 값이 올 경우 예외가 발생한다.")
-        void BonusNumberNotNumber(){
-            assertThatThrownBy(() -> validateBonusNumber("q"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-        
-        @Test
-        @DisplayName("보너스 번호가 1보다 작을 경우 예외가 발생한다.")
-        void BonusNumberLessThanOne(){
-            assertThatThrownBy(() -> validateBonusNumber("-1"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-
-        @Test
-        @DisplayName("보너스 번호가 45보다 클 경우 예외가 발생한다.")
-        void BonusNumberGreaterThanFortyFive(){
-            assertThatThrownBy(() -> validateBonusNumber("46"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ERROR_MESSAGE);
-        }
-
+    @ParameterizedTest
+    @DisplayName("보너스 번호가 46보다 작은 양의 정수가 아닐 경우 에러가 발생한다.")
+    @ValueSource(strings = {"q", "-1","46"})
+    void bonusNumberNotNumberLessThanFortySix(String bonusNumber){
+        assertThatThrownBy(() -> validateBonusNumber(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
         @Test
         @DisplayName("보너스 번호가 당첨 번호에 존재한다면 예외가 발생한다.")
-        void BonusNumberAlreadyExistWinningNumber(){
-            assertThatThrownBy(() -> validateDuplication(List.of(1,2,3,4,5,6),5))
+        void BonusNumberAlreadyExistWinningNumber() {
+            assertThatThrownBy(() -> validateDuplication(List.of(1, 2, 3, 4, 5, 6), 5))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(ERROR_MESSAGE);
         }
-    }
 }
