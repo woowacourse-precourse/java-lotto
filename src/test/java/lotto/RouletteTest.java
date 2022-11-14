@@ -9,12 +9,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RouletteTest {
-    @DisplayName("당첨 번호와 로또 번호를 비교한다")
+    @DisplayName("당첨 번호와 로또 번호를 비교하여 개수 카운트")
     @Test
-    void compareNumbersTest() {
-        List<Integer> lottoNumber = List.of(6, 12, 24, 26, 32, 43);
-        List<Integer> winningNumber = List.of(2, 6, 10, 12, 25, 32);
+    void compareWithWinningNumber() {
+        List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> myLotto = List.of(1, 2, 3, 7, 8, 9);
         int result = 3;
-        assertThat(new Roulette().compareNumbers(lottoNumber, winningNumber)).isEqualTo(result);
+        Roulette roulette = new Roulette(winningNumber, 10);
+        assertThat(roulette.compareWithWinningNumber(myLotto)).isEqualTo(result);
     }
 }
