@@ -13,7 +13,7 @@ public enum InputValidator {
     private static final String JACKPOT_ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45사이의 중복되지 않은 숫자 6개여야 합니다.";
     private static final String BONUS_NUMBER_RANGE_ERROR_MESSAGE = "[ERROR] 보너스 번호는 1부터 45사이의 숫자여야 합니다.";
 
-    private static final String NON_DIGIT = "\\D";
+    private static final String NON_DIGIT = "(.*)\\D(.*)";
     private static final String JACKPOT_INPUT_SEPARATOR = ",";
 
     public static int getValidMoney(String moneyInput) throws IllegalArgumentException {
