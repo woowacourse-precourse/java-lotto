@@ -1,6 +1,6 @@
 ### 구현할 기능 목록
 
-1. Game 클래스: 로또 로직을 구현한 클래스
+1. ListOfLottos 클래스: 로또 로직을 구현한 클래스
     - 구입 금액에 맞게 로또 n개 생성기 (generateListOfLottos)
     - 로또 리스트의 당첨 내역 확인하는 메소드 (checkListOfLottos)
    - 로또 모두 출력하는 메소드 (printAllLottos)

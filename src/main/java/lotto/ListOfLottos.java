@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Game {
+public class ListOfLottos {
     private List<Lotto> listOfLottos;
 
     public List<Lotto> generateListOfLottos(int size) {
@@ -22,6 +22,4 @@ public class Game {
             lotto.printLotto();
         }
     }
-
-
 }
