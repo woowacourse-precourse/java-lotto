@@ -1,5 +1,10 @@
 package lotto.validator;
 
+import org.junit.platform.commons.logging.Logger;
+import org.junit.platform.commons.logging.LoggerFactory;
+
+import static java.lang.System.exit;
+
 public class NumberValidator {
     private final static int UNIT = 1000;
     private final static int MIN_RANGE_NUM = 1;
@@ -16,10 +21,9 @@ public class NumberValidator {
     }
 
     public static void validateNonNumeric(String input) {
-        for (char charString : input.toCharArray()) {
-            if ((int)charString >= 48 && (int)charString <= 57) {
-                continue;
-            }
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NON_NUMERIC_ERROR_MESSAGE);
         }
     }
