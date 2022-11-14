@@ -34,13 +34,6 @@ class ClientTest {
         Assertions.assertThat(new Client(()->"1,2,3,4,5,6").mark()).isEqualTo(List.of(1,2,3,4,5,6));
     }
 
-    @DisplayName("123456을 마킹하면 IllegalArgumentException을 발생시킨다")
-    @Test
-    void mark123456ThenIllegalArgumentException() {
-        Assertions.assertThatThrownBy(() -> new Client(()->"123456").mark())
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @DisplayName("일이삼사오육을 마킹하면 IllegalArgumentException을 발생시킨다")
     @Test
     void markOneTwoThreeFourFiveSixSplitWithCommaThenIllegalArgumentException() {
@@ -68,6 +61,4 @@ class ClientTest {
         Assertions.assertThatThrownBy(() -> new Client(()->"46").bonusMark())
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-
 }

@@ -31,8 +31,6 @@ public class Client {
         print(PrintMessage.numbers);
         String markedNumberString = clientInput.get();
 
-        validateIsSplittedByComma(markedNumberString);
-
         List<Integer> numbers = parseStringToIntegerListOrElseThrow(markedNumberString);
 
         return numbers;
@@ -77,13 +75,6 @@ public class Client {
         System.out.println(message);
     }
 
-    private void validateIsSplittedByComma(String target) {
-        for (int i = 1; i < target.length(); i += 2) {
-            if (target.charAt(i) != ',') {
-                throw new IllegalArgumentException(ErrorMessage.NUMBERS_SHOULD_BE_SPLITTED_WITH_COMMA);
-            }
-        }
-    }
 
     private List<Integer> parseStringToIntegerListOrElseThrow(String markedNumberString) {
         try {
