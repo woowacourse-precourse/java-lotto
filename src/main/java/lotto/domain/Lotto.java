@@ -9,7 +9,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        ascending(numbers);
         this.numbers = numbers;
     }
 
