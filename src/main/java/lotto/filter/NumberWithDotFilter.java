@@ -7,8 +7,6 @@ public class NumberWithDotFilter implements Filter {
 
     @Override
     public void doFilter(String numberWithDot) {
-        numberWithDot = numberWithDot.replace(" ", "");
-
         String[] numbers = numberWithDot.split(SPLITTER);
 
         if (numbers.length != VALID_SIZE) {

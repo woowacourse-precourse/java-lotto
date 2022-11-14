@@ -36,10 +36,10 @@ class NumberFilterTest {
                 .isThrownBy(() -> new NumberFilter().doFilter("8000"));
     }
 
-    @DisplayName("입력값이 공백을 포함한 천원 단위의 숫자일 경우 예외가 발생하지 않는다.")
+    @DisplayName("입력값이 공백을 포함한 천원 단위의 숫자일 경우 예외가 발생한다.")
     @Test
-    void successTestWithSpace() {
-        assertThatNoException()
-                .isThrownBy(() -> new NumberFilter().doFilter("8  0   0  0"));
+    void throwExceptionWhenValueIsMixedWithSpace() {
+        assertThatThrownBy(() -> new NumberFilter().doFilter("8  0   0  0"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
