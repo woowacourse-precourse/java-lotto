@@ -19,6 +19,15 @@ public enum Reward {
     }
 
 
+    public void setBonusNumber(int number){
+        this.bonusNumber = number;
+    }
+
+    public int getBonusNumber(){
+        return bonusNumber;
+    }
+
+
 
 
 }
