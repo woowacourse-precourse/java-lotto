@@ -13,14 +13,18 @@ public class LottoController {
 	private final LottoService lottoService = LottoService.getInstance();
 
 	public void run() {
-		LottoGroup lottoGroup = makeLottoGroup();
-		int purchaseLottoCount = lottoGroup.getLottosSize();
-		System.out.println();
-		List<Rank> ranks = lottoGroup.winningStatistics(
-			lottoService.makeWinnerLotto(InputHandler.inputLottoWinningNumber()),
-			lottoService.makeWinnerBonusNumber(InputHandler.inputLottoWinningBonusNumber()));
-		lottoService.sumStatistics(ranks);
-		lottoService.calculatorYield(ranks, purchaseLottoCount);
+		try {
+			LottoGroup lottoGroup = makeLottoGroup();
+			int purchaseLottoCount = lottoGroup.getLottosSize();
+			System.out.println();
+			List<Rank> ranks = lottoGroup.winningStatistics(
+				lottoService.makeWinnerLotto(InputHandler.inputLottoWinningNumber()),
+				lottoService.makeWinnerBonusNumber(InputHandler.inputLottoWinningBonusNumber()));
+			lottoService.sumStatistics(ranks);
+			lottoService.calculatorYield(ranks, purchaseLottoCount);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private LottoGroup makeLottoGroup() {
