@@ -64,6 +64,7 @@ public class DrawLotto {
         return profit;
     }
     public double calculateProfitRate(float money) {
-        return calculateProfit()/money*100;
+        double profitRate = calculateProfit()/money*100;
+        return Math.round(profitRate*100)/100.0;
     }
 }
