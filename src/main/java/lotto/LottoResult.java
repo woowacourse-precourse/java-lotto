@@ -9,9 +9,7 @@ public enum LottoResult {
     FOURTH(50000L),
     FIFTH(5000L),
     NOTHING(0L);
-    private Long compensation;
 
     LottoResult(Long compensation) {
-        this.compensation = compensation;
     }
 }
