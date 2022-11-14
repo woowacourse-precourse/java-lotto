@@ -19,7 +19,7 @@ public class WinningLotto {
 
     private void validateBonus(int bonus){
         Validator.validateNumberRange(bonus, 1, 45);
-        lotto.validateNonDuplicatedNumber(bonus);
+        Validator.validateNonDuplicatedBonusNumber(this, bonus);
     }
 
     public boolean contains(Integer number) {
