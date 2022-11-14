@@ -19,9 +19,8 @@ public class OutputUtil {
 
     public static void printUserLottos(User user) {
         for (Lotto lotto : user.getLottos()) {
-            List<Integer> tmp = new ArrayList<>(lotto.getNumbers());
-            Collections.sort(tmp);
-            System.out.println(tmp);
+            lotto.sortNumbers();
+            System.out.println(lotto);
         }
     }
 
