@@ -38,15 +38,6 @@ public class Lotto {
 
     @Override
     public String toString() {
-        String str = "[";
-
-        for (int idx = 0; idx < numbers.size(); idx++) {
-            str += numbers.get(idx);
-            if (idx != numbers.size() - 1) {
-                str += ", ";
-            }
-        }
-
-        return str + "]";
+        return numbers.toString();
     }
 }
