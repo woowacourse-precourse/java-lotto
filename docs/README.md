@@ -1,5 +1,6 @@
 ## 🎱 로또 게임
 
+<br/>
 
 ### Model
 
@@ -8,21 +9,26 @@
 |-----|:-------:|:------------:|
 | 1   | numbers | 로또 번호 6자리 저장 |       
 
+>#### 🧑🏻‍💻 User
+| No. |      변수명       |     역할     |   
+|-----|:--------------:|:----------:|
+| 1   |   lotteries    | 보유한 로또 리스트 |
+| 2   | winningHistory |   당첨 내역    |
+
+
 >#### 🏦 Host
 | No. |      변수명       |  역할   |   
 |-----|:--------------:|:-----:|
 | 1   | winningNumber  | 당첨 번호 |
 | 2   |bonusNumber|보너스 번호|
-| 3   | winningHistory | 당첨 내역 |
-| 4   |  earningsRate  |  수익률  |
 
->#### 🏆 PrizeEnum
+>#### 🏆 Prize (Enum)
 | No. |   변수명   |        기능        | 
 |-----|:-------:|:----------------:|
-| 1   | message | 등수별 당첨 내역 안내 메시지 |
-| 2   |  money  |    등수별 당첨 상금     |  
-|3| hit|  등수별 일치한 숫자의 개수  |
-|4|BY_HIT| hit -> Prize로 매핑 |
+| 1   |   HIT   |  등수별 일치한 숫자의 개수  |
+| 2   |  MONEY  |    등수별 당첨 상금     |
+| 3   | MESSAGE | 등수별 당첨 내역 안내 메시지 |
+| 4   | BY_HIT  | hit -> Prize로 매핑 |
 
 
 
@@ -33,20 +39,24 @@
 ### View
 
 > #### 🎰 LottoUI
-| No. |       함수명       |        기능         | 예외처리 |
-|-----|:---------------:|:-----------------:|:----:|
-| 1   | getLotterySales | 로또 구매액을 입력받음 |  4   |
-| 2   |  printLottery   | 발행한 로또 수량 및 번호 출력 |  -   |
+| No. |       함수명       |      기능      | 예외처리 |
+|-----|:---------------:|:------------:|:----:|
+| 1   |  printLottery   |    로또 출력     |  -   |
 
+> #### 🧑🏻‍💻 UserUI
+| No. |         함수명         |       기능       |  예외처리   |
+|-----|:-------------------:|:--------------:|:-------:|
+| 1   |  getPurchaseMoney   | 로또 구매액을 입력받음 |  4   |
+| 2   | printWinningHistory |    당첨 내역 출력    |    -    |
+| 3   |  printEarningsRate  |     수익률 출력     |    -    |
+| 4   | printLotteryResult  | 당첨 내역 + 수익률 출력 |    -    |
 
 >#### 🏦 HostUI
 | No. |         함수명         |       기능       |  예외처리   |
 |-----|:-------------------:|:--------------:|:-------:|
 | 1   |  getWinningNumber   | 당첨 번호 6자리를 입력받음  | 1, 2, 3 |
 | 2   |   getBonusNumber    | 하나의 보너스 번호를 입력받음 |  1, 2   | 
-| 3   | printWinningHistory |    당첨 내역 출력    |    -    |
-| 4   |  printEarningsRate  |     수익률 출력     |    -    |
-| 5   | printLotteryResult  | 당첨 내역 + 수익률 출력 |    -    |
+
 
 >#### 💣 ExceptionHandlerUI
 | No. |        함수명        |            기능            |
@@ -61,15 +71,23 @@
 | No. |     함수명     |      기능      |
 |-----|:-----------:|:------------:|
 | 1   | makeLottery | 로또 번호 6자리 생성 |
-| 2   |   howMuch   |  로또 구매 및 발행  |    
+
+>#### 🧑🏻‍💻 UserController
+| No. |        함수명        |      기능      |  
+|-----|:-----------------:|:------------:|
+| 1   |      howMuch      |    로또 구매     |
+| 2   | setWinningHistory |   당첨 내역 저장   |
+| 3   | calPurchaseAmount |    구매금 계산    |
+| 4   |  calWinningPrize  |    당첨금 계산    |
+| 5   |  calEarningsRate  |    수익률 계산    |
+
 
 >#### 🏦 HostController
-| No. |        함수명        |        기능         |  
-|-----|:-----------------:|:-----------------:|
-| 1   |    makeWinning    |     당첨 번호 생성      |
-| 2   |     winOrNot      | 로또의 당첨 등수 및 여부 판별 | 
-| 3   | setWinningHistory |     당첨 내역 저장      |
-| 4   |  calEarningsRate  |      수익률 계산       |  
+| No. |      함수명      |          기능          |  
+|-----|:-------------:|:--------------------:|
+| 1   | drawLotteries | 구매 수량만큼의 로또를 유저에게 전달 |
+| 2   |  makeWinning  |       당첨 번호 생성       |
+| 3   |   winOrNot    |  로또의 당첨 등수 및 여부 판별   |
 
 >#### 💣 ExceptionHandler
 | No. |           함수명           |            기능            |
