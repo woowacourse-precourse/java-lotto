@@ -24,4 +24,10 @@ public class BonusNumber {
             throw new IllegalArgumentException(BonusExceptionType.NOT_MATCH_BONUS_RANGE.getErrorMessage());
         }
     }
+
+    public void notNumber(String input){
+        if(input.charAt(0) < 48 || input.charAt(0) > 57){
+            throw new IllegalArgumentException(BonusExceptionType.NOT_NUMBER_BONUS.getErrorMessage());
+        }
+    }
 }
