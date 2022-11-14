@@ -22,13 +22,20 @@
   - 당첨 번호 입력 단계에서 입력 수를 콤마(,)로 구분하지 않았을 경우
   - 입력 양식이 잘못된 경우
 ## 기능 목록
+### Application
+- LottoProgramManager를 호출해 로또 프로그램을 시작한다.
 ### LottoProgramManager
 - 구매부터 수익률 계산까지 전체 로또 프로그램을 관리한다.
 ### Lotto
 - 랜덤 생성된 개별 로또 번호를 관리한다.
-### IOManager
-- UI를 통한 사용자 입출력 처리를 담당한다.
-### message/ErrorCode
+- 로또 생성 기능, 유효성 확인 기능, 비교 기능을 제공한다.
+### IO/InputManager
+- 사용자로 입력 처리 및 입력값 유효성 확인을 담당한다.
+### IO/OutputManager
+- UI 출력을 담당한다.
+### IO/message/ErrorCode
 - enum 타입으로 에러 메세지를 저장한다.
+### IO/message/UIMessage
+- enum 타입으로 UI 메세지를 저장한다.
 ### config/LottoConfig
 - 설정 상수값들을 저장한다.
