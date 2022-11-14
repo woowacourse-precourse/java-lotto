@@ -29,5 +29,7 @@ public class WinningLotto {
         }
     }
 
-
+    public Lotto getLotto() {
+        return lotto;
+    }
 }

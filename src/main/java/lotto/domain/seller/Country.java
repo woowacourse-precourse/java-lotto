@@ -1,12 +1,26 @@
 package lotto.domain.seller;
 
+import java.util.List;
+import lotto.domain.lotto.WinningLotto;
+
 public class Country implements Seller{
     private static final int LOTTO_AMOUNT = 1000;
+
+    private final WinningLotto winningLotto;
+
+    public Country(WinningLotto winningLotto) {
+        this.winningLotto = winningLotto;
+    }
 
     @Override
     public int findLottoCountByMoney(int money) {
         validateMoney(money);
         return money / LOTTO_AMOUNT;
+    }
+
+    public int compareNumbers(List<Integer> numbers) {
+
+        return 0;
     }
 
     private void validateMoney(int money) {
