@@ -69,6 +69,18 @@ public class Controller {
         return winning;
     }
 
+    public float bonusWinningCheck() {
+        float winning = 0;
+        for (int i = 0; i < user.userMatchNumber.size(); i++) {
+            List<Integer> lottoNum = user.getUserLottoNumber().get(i);
+            if (user.userMatchNumber.get(i) == 5 && lottoNum.contains(user.getBonus_number())) {
+                winning++;
+            }
+        }
+        return winning;
+    }
+
+
 
 
 }
