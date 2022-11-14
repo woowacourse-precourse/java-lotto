@@ -1,8 +1,6 @@
 package lotto.util;
 
 import org.junit.jupiter.api.Test;
-import lotto.util.InputUtil;
-
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
