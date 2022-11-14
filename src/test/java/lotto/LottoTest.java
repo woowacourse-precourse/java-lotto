@@ -24,4 +24,19 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("로또 범위의 숫자 범위는 1 ~ 45 까지여야 한다.")
+    @Test
+    void createLottoByOverRange(){
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,99)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호는 오름차순 정렬이어야 한다.")
+    @Test
+    void createLottoByOrder() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new Lotto(List.of(7, 5, 4, 3, 2, 1)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
