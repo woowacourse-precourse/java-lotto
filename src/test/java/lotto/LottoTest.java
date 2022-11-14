@@ -1,6 +1,7 @@
 package lotto;
 
 import domain.Lotto;
+import domain.LottoRank;
 import domain.Player;
 import lottoService.LottoService;
 import org.junit.jupiter.api.DisplayName;
@@ -89,6 +90,30 @@ class LottoTest {
 
         //then
         assertThat(yield).isEqualTo("65.4");
+    }
+
+    @DisplayName("사용자의 로또 결과를 잘 저장하는지 확인")
+    @Test
+    void 사용자_로또_결과_저장_테스트() {
+        //given
+        Player player1 = new Player();
+        for (int i = 0; i < 4; i++) {
+            player1.addLottoCount();
+        }
+
+        Player player2 = new Player();
+        for (int i = 0; i < 6; i++) {
+            player2.addLottoCount();
+        }
+        player2.bonusNumberIncludedWinningLottoNumber();
+
+        //when
+        lottoService.saveLottoResult(player1);
+        lottoService.saveLottoResult(player2);
+
+        //then
+        assertThat(player1.getWinningLottoCount().get(LottoRank.WIN_LOTTO_4)).isEqualTo(1);
+        assertThat(player2.getWinningLottoCount().get(LottoRank.WIN_LOTTO_5_BONUS)).isEqualTo(1);
     }
 
 
