@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -11,11 +11,7 @@ public class Auto {
 
     public static List<List<Integer>> AUTO_LOTTOS = new ArrayList<>();
     public static List<Integer> WINNING_NUMBERS = new ArrayList<>();
-    public static int FIRST;
-    public static int SECOND;
-    public static int THIRD;
-    public static int FOURTH;
-    public static int FIFTH;
+
     public static double YIELD;
 
     public Auto() {
@@ -25,9 +21,9 @@ public class Auto {
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> lotto = new ArrayList<>();
             lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            try{
+            try {
                 Collections.sort(lotto);
-            } catch (UnsupportedOperationException e){
+            } catch (UnsupportedOperationException e) {
             }
 
             AUTO_LOTTOS.add(lotto);
@@ -64,15 +60,16 @@ public class Auto {
     }
 
     private void countWinningResult(int win, int bonusWin) {
-        if (win == 6) FIRST++;
-        if (win == 5 && bonusWin == 1) SECOND++;
-        if (win == 5 && bonusWin == 0) THIRD++;
-        if (win == 4) FOURTH++;
-        if (win == 3) FIFTH++;
+        if (win == 6) Rank.FIRST.plusCount();
+        if (win == 5 && bonusWin == 1) Rank.SECOND.plusCount();
+        if (win == 5 && bonusWin == 0) Rank.THIRD.plusCount();
+        if (win == 4) Rank.FOURTH.plusCount();
+        if (win == 3) Rank.FIFTH.plusCount();
     }
 
     public void yieldCalculation(int money) {
-        long yield = 5000 * FIFTH + 50000 * FOURTH + 1500000 * THIRD + 30000000 * SECOND + 2000000000 * FIRST;
+        long yield = Rank.FIRST.getCount() * Rank.FIRST.getMoney() + Rank.SECOND.getCount() * Rank.SECOND.getMoney() + Rank.THIRD.getCount() * Rank.THIRD.getMoney()
+                    + Rank.FOURTH.getCount() * Rank.FOURTH.getMoney() + Rank.FIFTH.getCount() * Rank.FIFTH.getMoney();
         YIELD = yield / (double) money * 100;
     }
 }

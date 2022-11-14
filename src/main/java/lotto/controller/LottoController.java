@@ -1,8 +1,8 @@
 package lotto.controller;
 
-import lotto.model.Auto;
-import lotto.model.Lotto;
-import lotto.model.User;
+import lotto.domain.Auto;
+import lotto.domain.Lotto;
+import lotto.domain.User;
 import lotto.view.UserInterface;
 
 public class LottoController {
