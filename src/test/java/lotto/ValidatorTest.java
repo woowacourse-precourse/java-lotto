@@ -26,5 +26,12 @@ public class ValidatorTest {
     //중복 확인하는 메서드 체크
 
     // 1000으로 나누어 떨어지는지 확인하는 메서드 체크
+    @ParameterizedTest
+    @ValueSource(ints = {1400, 13200, 243400, 1382938923})
+    void 천으로_나누어떨어지는지_체크(int input){
+        assertThatThrownBy(()->{
+            Validator.validateBudget(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
