@@ -63,4 +63,8 @@ public class User {
         }
         return true;
     }
+
+    private boolean checkInputNumber(String money) {
+        return Integer.parseInt(money) % 1000 == 0;
+    }
 }
