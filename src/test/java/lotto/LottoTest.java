@@ -49,14 +49,32 @@ class LottoTest extends NsTest {
         );
     }
 
-//    @DisplayName("구매 금액이 1000의 배수가 아닐경우 예외가 발생한다")
-//    @Test
-//    void createNonMultipleOfThousandsInput(){
-//        assertSimpleTest(() -> {
-//            runException("1200");
-//            assertThat(output()).contains(ERROR_MESSAGE);
-//        });
-//    }
+    @DisplayName("보너스 번호 형식이 다르면 예외가 발생한다")
+    @Test
+    void createWrongBonusNumber() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("2000", "1,2,3,4,5,6", "46");
+                    assertThat(output()).contains(
+                            "2개를 구매했습니다.",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[3, 5, 11, 16, 32, 38]",
+                            ERROR_MESSAGE
+                    );
+                },
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(3, 5, 11, 16, 32, 38)
+        );
+    }
+
+    @DisplayName("구매 금액이 1000의 배수가 아닐경우 예외가 발생한다")
+    @Test
+    void createNonMultipleOfThousandsInput(){
+        assertSimpleTest(() -> {
+            runException("1200");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
 
     @Override
     public void runMain() {
