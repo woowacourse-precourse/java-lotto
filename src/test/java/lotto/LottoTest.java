@@ -26,7 +26,7 @@ class LottoTest {
     }
     @DisplayName("로또 번호가 1 미만 45 초과 하면 예외가 발생한다")
     @Test
-    void createLottoByRange(){
+    void createLottoByOverRange(){
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NOT_NUMBER_RANGE.getErrorMessage());
