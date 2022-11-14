@@ -40,7 +40,7 @@ public class Application {
         List<Integer> ranking = rank(lottos, winningLotto, bonusNumber);
         printRanking(ranking);
         printEarningRate(money, ranking);
-        
+
     }
 
     public static void validate(int money) {
@@ -121,6 +121,6 @@ public class Application {
         earnings += 1500000 * ranking.get(2);
         earnings += 50000 * ranking.get(3);
         earnings += 5000 * ranking.get(4);
-        System.out.println("총 수익률은 " + String.format("%1f", (double) earnings / money) + "%입니다.");
+        System.out.println("총 수익률은 " + String.format("%.1f", (double) earnings / money * 100) + "%입니다.");
     }
 }
