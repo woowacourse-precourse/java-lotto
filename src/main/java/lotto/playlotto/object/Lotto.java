@@ -1,6 +1,7 @@
 package lotto.playlotto.object;
 
 import lotto.input_output.Input;
+import lotto.valid.Valid;
 
 import java.util.List;
 
@@ -14,9 +15,9 @@ public class Lotto extends Input {
 
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
-        }
+        check_Overlap(numbers);
+        check_size(numbers);
+        check_Range(numbers);
     }
 
 
@@ -24,11 +25,6 @@ public class Lotto extends Input {
         return this.numbers;
     }
 
-    public static void main(String[] args) {
-        Lotto lotto = new Lotto(Lotto.returnList());
-        System.out.println(lotto.numbers);
-        System.out.println("numbers 사이즈: "+ lotto.numbers.size());
-    }
 
 
 }
