@@ -7,7 +7,7 @@ public enum WinningPrice {
     FOURTH_PRICE(50000),
     FIFTH_PRICE(5000);
 
-    private int winPrice;
+    private final int winPrice;
 
     WinningPrice(int winPrice) {
         this.winPrice = winPrice;
