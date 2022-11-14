@@ -3,6 +3,8 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -24,4 +26,15 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("사용자가 구입 금액을 숫자로 입력 안할 시 예외가 발생한다.")
+    @Test
+    void inputBuyAmountByString() {
+        String money = "100kd";
+        InputStream is = new ByteArrayInputStream(money.getBytes());
+        System.setIn(is);
+        LottoStore lottoStore = new LottoStore(new LottoNumberCreator());
+
+        assertThatThrownBy(() -> lottoStore.buyLotto())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
