@@ -84,6 +84,16 @@ public class InputTest extends NsTest {
         });
     }
 
+    @DisplayName("입력한 보너스 번호가 당첨 번호에 이미 존재하는 경우에는 예외가 발생한다.")
+    @Test
+    void enterBonusNumberByAlreadyNumber() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,6", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("[Error] 보너스 번호가 이미 당첨 번호에 있습니다.");
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
