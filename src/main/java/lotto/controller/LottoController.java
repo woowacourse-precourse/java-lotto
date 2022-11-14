@@ -17,17 +17,23 @@ public class LottoController {
     private BonusNumberView bonusNumberView;
     private MakeLotteriesFactory makeLotteriesFactory;
     private WinningNumberService winningNumberService;
+    private PurchaseView purchaseView;
 
     public void play(){
-        purchase();
-        makeLotteries();
-        getNumbers();
-        parseNumbers();
-        calculate();
+        try{
+            purchase();
+            makeLotteries();
+            getNumbers();
+            parseNumbers();
+            calculate();
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     private void purchase(){
-        PurchaseView purchaseView = new PurchaseView();
+        purchaseView = new PurchaseView();
         purchaseView.makeView();
         System.out.println();
 
