@@ -13,9 +13,9 @@ class LottoMachineTest {
     @Test
     void publishLotto() {
         // given
-        int inputMoney = 1000;
+        String inputMoneyRaw = "1000";
         // when
-        List<Lotto> lottos = LottoMachine.publish(inputMoney);
+        List<Lotto> lottos = LottoMachine.publish(inputMoneyRaw);
         // then
         assertThat(lottos.get(0)).isInstanceOf(Lotto.class);
     }
@@ -25,8 +25,9 @@ class LottoMachineTest {
     void publishLottosByAmount() {
         // given
         int inputMoney = AMOUNT_OF_ONE_LOTTO * 5;
+        String inputMoneyRaw = Integer.toString(AMOUNT_OF_ONE_LOTTO * 5);
         // when
-        List<Lotto> lottos = LottoMachine.publish(inputMoney);
+        List<Lotto> lottos = LottoMachine.publish(inputMoneyRaw);
         int countLottosByAmount = inputMoney / AMOUNT_OF_ONE_LOTTO;
         // then
         assertThat(lottos.size()).isEqualTo(countLottosByAmount);
@@ -35,7 +36,7 @@ class LottoMachineTest {
     @DisplayName("입력 금액이 1,000의 배수가 아님 -> 예외발생")
     @Test
     void isNotMultipleOf1000() {
-        assertThatThrownBy(() -> LottoMachine.publish(7001))
+        assertThatThrownBy(() -> LottoMachine.publish("7001"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

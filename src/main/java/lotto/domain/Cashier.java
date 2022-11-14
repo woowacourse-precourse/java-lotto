@@ -25,8 +25,7 @@ public class Cashier {
 
     public void publishLottos() {
         String inputMoneyRaw = UserInterface.getInputMoney();
-        int inputMoney = convertStringToInt(inputMoneyRaw);
-        this.lottos = LottoMachine.publish(inputMoney);
+        this.lottos = LottoMachine.publish(inputMoneyRaw);
     }
 
     public void saveResultInAccount() {
@@ -56,10 +55,6 @@ public class Cashier {
     private void setBonusNumber() {
         String bonusNumberRaw = UserInterface.getBonusNumber();
         this.winningCalculator.setBonusNumber(bonusNumberRaw);
-    }
-
-    private int convertStringToInt(String numberRaw) {
-        return Integer.parseInt(numberRaw);
     }
 
 }

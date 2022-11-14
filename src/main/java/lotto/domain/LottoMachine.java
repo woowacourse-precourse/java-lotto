@@ -13,12 +13,17 @@ import lotto.constant.ErrorMessage;
 import lotto.ui.UserInterface;
 
 public class LottoMachine {
-    public static List<Lotto> publish(int inputMoney) {
+    public static List<Lotto> publish(String inputMoneyRaw) {
+        int inputMoney = convertStringToInt(inputMoneyRaw);
         validate(inputMoney);
         int countOfLottos = getCountOfLottos(inputMoney);
         UserInterface.announceCountOfLottosPublished(countOfLottos);
         List<Lotto> lottos = publishLottosByCount(countOfLottos);
         return lottos;
+    }
+
+    private static int convertStringToInt(String numberRaw) {
+        return Integer.parseInt(numberRaw);
     }
 
     private static void validate(int inputMoney) {
