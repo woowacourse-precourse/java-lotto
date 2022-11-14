@@ -1,7 +1,6 @@
 package lotto;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -37,7 +36,6 @@ public class Controller {
 
     public static LinkedHashMap<Integer, Integer> AnalyzePlayerNumbers
             (List<Integer> numbers, List<List<Integer>> publishedLottoArray) {
-        int size = 0;
         LinkedHashMap<Integer, Integer> result = new LinkedHashMap<>();
         result.put(5, 0);
         result.put(4, 0);
@@ -55,7 +53,7 @@ public class Controller {
             HashSet<Integer> targetLottoNumbers = Model.MakeListToSet(list);
             HashSet<Integer> intersectionLottoNumbers = targetLottoNumbers;
             intersectionLottoNumbers.retainAll(lottoNumbersSet);
-            size = intersectionLottoNumbers.size();
+            int size = intersectionLottoNumbers.size();
 
             if (size == 3) {
                 result.put(5, result.get(5)+1);
