@@ -18,10 +18,8 @@ public class Lottos {
         this.lottos = lottos;
     }
 
-    public Map<LottoRank, Integer> getRankCounts(WinningNumber winningNumber) {
-        Map<LottoRank, Integer> rankCount = new HashMap<>();
-        lottos.forEach(lotto -> rankCount.put(lotto.getRank(winningNumber), rankCount.getOrDefault(lotto.getRank(winningNumber), 0) + 1));
-        return rankCount;
+    public double getRateOfReturn(int prizeMoney) {
+        return ((double) prizeMoney / (lottos.size() * LottoConstant.PRICE.getValue())) * PERCENTAGE;
     }
 
     public int getTotalPrizeMoney(Map<LottoRank, Integer> rankCount) {
@@ -30,8 +28,10 @@ public class Lottos {
                 .sum();
     }
 
-    public double getRateOfReturn(int prizeMoney) {
-        return ((double) prizeMoney / (lottos.size() * LottoConstant.PRICE.getValue())) * PERCENTAGE;
+    public Map<LottoRank, Integer> getRankCounts(WinningNumber winningNumber) {
+        Map<LottoRank, Integer> rankCount = new HashMap<>();
+        lottos.forEach(lotto -> rankCount.put(lotto.getRank(winningNumber), rankCount.getOrDefault(lotto.getRank(winningNumber), 0) + 1));
+        return rankCount;
     }
 
     public int getLottoCount() {

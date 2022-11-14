@@ -2,6 +2,8 @@ package lotto.domain;
 
 import lotto.util.ErrorMessage;
 import lotto.util.LottoConstant;
+
+import java.util.HashSet;
 import java.util.List;
 
 public class WinningNumber {
@@ -12,6 +14,7 @@ public class WinningNumber {
         validateNumberCount(winningNumbers);
         validateNumbersRange(winningNumbers);
         validateNumberRange(bonusNumber);
+        validateDuplication(winningNumbers);
         validateContainsInWinningNumber(winningNumbers, bonusNumber);
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
@@ -41,9 +44,15 @@ public class WinningNumber {
         }
     }
 
-    private void validateContainsInWinningNumber(List<Integer> winningNumber, int number) {
-        if (winningNumber.contains(number)) {
+    private void validateContainsInWinningNumber(List<Integer> winningNumbers, int number) {
+        if (winningNumbers.contains(number)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATION_BONUS_NUMBER.getMessage());
+        }
+    }
+
+    private void validateDuplication(List<Integer> winningNumbers) {
+        if (new HashSet<>(winningNumbers).size() != LottoConstant.NUMBER_COUNT.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT.getMessage());
         }
     }
 }

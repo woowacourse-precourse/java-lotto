@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.util.ErrorMessage;
 import lotto.util.LottoConstant;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +14,7 @@ public class Customer {
     }
 
     public Lottos purchaseLottos(int money) {
+        validateUnitOfTenThousand(money);
         return new Lottos(IntStream.range(0, getLottoCount(money))
                 .mapToObj(index -> purchaseLotto())
                 .collect(Collectors.toList()));
@@ -33,4 +35,9 @@ public class Customer {
                 LottoConstant.NUMBER_COUNT.getValue());
     }
 
+    private void validateUnitOfTenThousand(int money) {
+        if (money % LottoConstant.PRICE.getValue() != 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_UNIT_OF_MONEY.getMessage());
+        }
+    }
 }
