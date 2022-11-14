@@ -23,6 +23,7 @@ public class Application {
         System.out.println(numberOfLottoes + "개를 구매했습니다.");
 
         lottoes = createLottoes(numberOfLottoes);
+        printLottoes(lottoes);
 
         System.out.println("당첨 번호를 입력해 주세요.");
         winningNumbers = getWinningNumbers(Console.readLine());
@@ -71,6 +72,12 @@ public class Application {
         validateRanges(bonus);
 
         return bonus.get(0);
+    }
+
+    public static void printLottoes(List<Lotto> lottoes){
+        for (int i = 0; i < lottoes.size(); i++) {
+            lottoes.get(i).display();
+        }
     }
 
     public static void validatePurchaseAmount(Integer purchaseAmount) {
