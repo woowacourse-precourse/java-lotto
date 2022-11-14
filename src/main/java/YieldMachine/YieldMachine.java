@@ -15,12 +15,12 @@ public class YieldMachine {
 
     public YieldMachine() {
         this.winningNumberLotto = new WinningNumberLotto();
-        this.countOfReward = new ArrayList<>();
+        this.countOfReward = new ArrayList<>(List.of(0, 0, 0, 0, 0));
     }
 
     public YieldMachine(List<Integer> numbers, int number) {
         this.winningNumberLotto = new WinningNumberLotto(numbers, number);
-        this.countOfReward = new ArrayList<>();
+        this.countOfReward = new ArrayList<>(List.of(0, 0, 0, 0, 0));
     }
 
     public void run() {
