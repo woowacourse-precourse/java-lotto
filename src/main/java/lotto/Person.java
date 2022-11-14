@@ -27,9 +27,12 @@ public class Person {
         return new Person(lottos, lottos.size() * Constants.PRICE);
     }
 
-    public void printLottos() {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
-        lottos.forEach(System.out::println);
+    @Override
+    public String toString() {
+        String sizeDescription = String.format(lottos.size() + "개를 구매했습니다.\n");
+        StringBuilder description = new StringBuilder(sizeDescription);
+        lottos.forEach(lotto -> description.append(lotto).append('\n'));
+        return description.toString();
     }
 
     public Map<Rank, Integer> matchResult(WinningNumbers winningNumbers) {

@@ -25,7 +25,7 @@ public class LottoGame {
     private static Person generatePerson() {
         System.out.println(Constants.MONEY + inputSuffix);
         Person person = Person.from(Parser.money(Console.readLine()));
-        person.printLottos();
+        System.out.println(person);
         return person;
     }
 
