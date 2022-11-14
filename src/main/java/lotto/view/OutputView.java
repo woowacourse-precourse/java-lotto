@@ -4,11 +4,11 @@ import lotto.domain.Lotto;
 
 import java.util.List;
 
-public class OutputView {
-    public static String BUY_INFORM_MESSAGE = "%d개를 구매했습니다.";
+import static lotto.view.printer.OutputPrinter.printBuyInformMessage;
 
+public class OutputView {
     public static void printUserLottos(List<Lotto> userLottos){
-        System.out.println(String.format(BUY_INFORM_MESSAGE, userLottos.size()));
+        printBuyInformMessage(userLottos.size());
         for(Lotto lotto : userLottos){
             System.out.println(lotto.toString());
         }
