@@ -6,12 +6,15 @@
   - 6를 가지고 있는지
   - 중복 숫자가 있을 시 예외처리
 - play : 각 로또와 WinningNumber를 비교하여 Result를 반환한다.
+- generateLotto : 6개의 random한 숫자를 가진 로또를 발행한다.
 
 ## 2. WinningNumber
 - Lotto를 상송받고 보너스 값을 가진다.
 
 ## 3. Buyer
 - buyLotto : Lotto 혹은 List를 입력받는다.
+  - 구매해야 할 갯수를 입력받는다.
+  - 기존 로또와 중복시 구매하지 않는다.
 - play : 각 Lotto와 WinningNumber의 모든 결과를 History에 반영한다.
 
 ## 4. Result

@@ -9,8 +9,18 @@ public class Buyer {
         return new Buyer();
     }
 
-    public void buy(List<Integer> lotto) {
-        lottos.add(Lotto.from(lotto));
+    public void selectLotto(Lotto lotto) {
+        if (hasSameWith(lotto)) {
+            lottos.add(lotto);
+        }
     }
-
+    public void buyLotto(int number) {
+        while (lottos.size()<number) {
+            selectLotto(Lotto.generateLotto());
+        }
+    }
+    private boolean hasSameWith(Lotto newLotto) {
+        return lottos.stream()
+                .anyMatch(lotto -> equals(newLotto));
+    }
 }

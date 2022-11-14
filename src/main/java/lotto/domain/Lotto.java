@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
+import java.util.Objects;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
@@ -17,6 +20,9 @@ public class Lotto {
 
     public static Lotto from(List<Integer> lotto) {
         return new Lotto(lotto);
+    }
+    public static Lotto generateLotto() {
+        return from(Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER,MAXIMUM_NUMBER,LOTTO_SIZE));
     }
 
     private void validateOverSize(List<Integer> numbers) {
@@ -59,5 +65,18 @@ public class Lotto {
         return (int) numbers.stream()
                 .filter(winningNumber::contains)
                 .count();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lotto lotto = (Lotto) o;
+        return Objects.equals(numbers, lotto.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 }
