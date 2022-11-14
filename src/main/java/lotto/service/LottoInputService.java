@@ -6,7 +6,6 @@ import lotto.constant.enumtype.LottoNumberInclusive;
 import lotto.constant.enumtype.UserInterfaceMessage;
 
 public class LottoInputService {
-    private static final String ERROR_MESSAGE = "[ERROR]";
     private LottoInputService() {
     }
 
@@ -29,7 +28,6 @@ public class LottoInputService {
         try {
             Integer.parseInt(lottoPrice);
         } catch (NumberFormatException exception) {
-//            System.out.println(UserInterfaceMessage.ERROR_INPUT_BUY_INFO.getValue());
             throw new IllegalArgumentException(UserInterfaceMessage.ERROR_INPUT_BUY_INFO.getValue());
         }
 
