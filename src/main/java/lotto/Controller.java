@@ -9,6 +9,7 @@ public class Controller {
         int money = user.money();
         int num_lotto = user.num_lotto(money);
         List<List<Integer>> user_lotto = user.generate_lotto(num_lotto);
-        List<Integer> win = user.winning_number();
+        List<Integer> winning_number = user.winning_number();
+        int bonus_number = user.bonus_number();
     }
 }

@@ -72,6 +72,17 @@ public class User {
         return winning_number;
     }
 
+    public int bonus_number() {
+        int bonus_number = Integer.MAX_VALUE;
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonus_input = Console.readLine();
+        try{
+            bonus_number = Integer.parseInt(bonus_input);
+        } catch (IllegalArgumentException e) {
+            System.out.println("[Error]" + e.getMessage());
+        }
+        return bonus_number;
+    }
 
 
 }
