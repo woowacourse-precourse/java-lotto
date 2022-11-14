@@ -39,4 +39,13 @@ public class WinningNumbers {
             throw new IllegalArgumentException(DUPLICATE_BONUS_ERROR_MESSAGE);
         }
     }
+
+    public boolean isBonusMatchedIn(Lotto lotto) {
+        return lotto.isMatchedNumbersWith(bonus);
+    }
+
+    public int countWinningLottoNumbersMatchedIn(Lotto lotto) {
+        return lotto.countMatchedNumbersWith(winningLottoNumbers);
+    }
+
 }

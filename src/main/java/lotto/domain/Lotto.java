@@ -66,4 +66,8 @@ public class Lotto {
         return lottoNumbers.contains(number);
     }
 
+    public int countMatchedNumbersWith(Lotto otherLotto) {
+        return (int) lottoNumbers.stream().filter(otherLotto::isMatchedNumbersWith).count();
+    }
+
 }
