@@ -8,6 +8,7 @@ public class LottosResult {
     private static final int THIRD_PRIZE_COUNT_POSITION = 2;
     private static final int FOURTH_PRIZE_COUNT_POSITION = 3;
     private static final int FIFTH_PRIZE_COUNT_POSITION = 4;
+    private static final int LOSE_COUNT_POSITION = 5;
     private static final Map<LottoPrize, Integer> positions = new HashMap<>();
     private final List<Integer> lottosResult;
 
@@ -17,6 +18,7 @@ public class LottosResult {
         positions.put(LottoPrize.THIRD, THIRD_PRIZE_COUNT_POSITION);
         positions.put(LottoPrize.FOURTH, FOURTH_PRIZE_COUNT_POSITION);
         positions.put(LottoPrize.FIFTH, FIFTH_PRIZE_COUNT_POSITION);
+        positions.put(LottoPrize.LOSE, LOSE_COUNT_POSITION);
     }
 
     public LottosResult() {
@@ -28,9 +30,9 @@ public class LottosResult {
     }
 
     public void winLotto(LottoPrize lottoPrize) {
-        int index = positions.get(lottoPrize);
+        int position = positions.get(lottoPrize);
 
-        lottosResult.set(index, lottosResult.get(index) + 1);
+        lottosResult.set(position, lottosResult.get(position) + 1);
     }
 
     @Override
