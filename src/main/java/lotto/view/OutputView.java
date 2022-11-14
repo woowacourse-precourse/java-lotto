@@ -24,6 +24,18 @@ public class OutputView {
 
     private OutputView() {
     }
+
+    public static void printLottoTicketCount(int ticketCount) {
+        System.out.println(ticketCount + TICKET_PURCHASE_COUNT);
+    }
+
+    public static void printTicket(LottoTicket lottoTicket) {
+        for (Lotto lottoNumbers : lottoTicket.getLottoTickets()) {
+            List<Integer> lottoNumberList = lottoNumbers.getNumbers();
+            String sentence = joinList(convertToStringList(lottoNumberList));
+            System.out.println(sentence);
+        }
+    }
     public static void printException(Exception exception) {
         System.out.println(exception.getMessage());
     }
