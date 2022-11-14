@@ -9,9 +9,6 @@ import util.ValidateWinningLottoNumber;
 public class InputWinningLottoNumber {
 
 
-    private static final int MAX_NUMBER = 45;
-    private static final int MIN_NUMBER = 1;
-    private static final int TICKET_SIZE = 6;
     static List<Integer> winningLottoTicket = new ArrayList<>();
 
     public static void inputWinningLottoNumber() {

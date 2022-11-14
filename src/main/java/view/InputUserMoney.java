@@ -7,8 +7,6 @@ import util.ValidateUserMoney;
 public class InputUserMoney {
 
 
-    private static final int EXCEPTION_CODE = -1;
-
     static int userMoney;
 
     public static int inputMoney() {
