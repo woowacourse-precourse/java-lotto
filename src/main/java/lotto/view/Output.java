@@ -26,6 +26,7 @@ public class Output {
         System.out.println(FOURTH + " - " + getFourth() + "개");
         System.out.println(FIFTH + " - " + getFifth() + "개");
 
-        System.out.println("총 수익률은 " + stats.calcRate(prize) + "%입니다.");
+        System.out.println("총 수익률은 " + calcRate(prize) + "%입니다.");
     }
+
 }
