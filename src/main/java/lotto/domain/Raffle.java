@@ -23,6 +23,7 @@ public class Raffle {
     }
 
     public int inputBonusNumber() {
+        System.out.println(Message.INPUT_BONUS);
         String userInput = Console.readLine();
         return Integer.parseInt(userInput);
     }
