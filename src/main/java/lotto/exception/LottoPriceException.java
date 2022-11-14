@@ -1,9 +1,11 @@
 package lotto.exception;
 
 public class LottoPriceException {
+    //TODO 하드코딩한 값 상수로 빼기
+
 
     public static void checkLottoPrice(String priceInput) {
-        CommonInputException.checkCommonInput(priceInput, "로또 금액을");
+        CommonInputException.checkCommonInput(priceInput);
         Integer price = changePriceToInteger(priceInput);
         checkLessThanOneThousand(price);
         checkThousandUnits(price);

@@ -7,7 +7,7 @@ public class BonusNumberException {
     private static final int MIN_BONUS_NUMBER = 1;
 
     public static void checkBonusNumber(String bonusNumberInput) {
-        CommonInputException.checkCommonInput(bonusNumberInput, "보너스 번호를");
+        CommonInputException.checkCommonInput(bonusNumberInput);
         checkBonusNumberDigit(bonusNumberInput);
         checkBonusNumberRange(Integer.parseInt(bonusNumberInput));
     }

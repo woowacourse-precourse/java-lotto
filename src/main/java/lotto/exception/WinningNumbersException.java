@@ -12,7 +12,7 @@ public class WinningNumbersException {
     private static final int MIN_WINNING_NUMBER = 1;
 
     public static void checkWinningNumbers(String winningNumbersInput) {
-        CommonInputException.checkCommonInput(winningNumbersInput, "당첨 번호를");
+        CommonInputException.checkCommonInput(winningNumbersInput);
         List<String> winningNumbers = List.of(winningNumbersInput.split(","));
         checkRightWinningNumbersSize(winningNumbers);
         checkEachWinningNumber(winningNumbers);
@@ -33,7 +33,7 @@ public class WinningNumbersException {
 
     public static void checkEachWinningNumber(List<String> winningNumbers) {
         for (String winningNumber : winningNumbers) {
-            CommonInputException.checkHasBlankInInput(winningNumber, "당첨 번호를");
+            CommonInputException.checkHasBlankInInput(winningNumber);
             checkWinningNumberDigit(winningNumber);
             checkWinningNumberRange(Integer.parseInt(winningNumber));
         }
