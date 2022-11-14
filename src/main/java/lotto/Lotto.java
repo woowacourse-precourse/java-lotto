@@ -16,15 +16,24 @@ public class Lotto {
         }
     }
 
-    public int checkResult(List<Integer> userNumbers) {
-        return 0;
+    public int checkResult(List<Integer> winNumbers, Integer bonusNumber) {
+
     }
 
-    public int compareSixNumber(List<Integer> userNumbers) {
-        return 0;
+    public int compareWithWinNumbers(List<Integer> winNumbers) {
+        int result = 0;
+        for (Integer winNumber : winNumbers) {
+            if (numbers.contains(winNumber)) {
+                result++;
+            }
+        }
+        return result;
     }
 
-    public int compareBonusNumber(List<Integer> userNumbers) {
+    public int compareWithBonusNumber(Integer bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            return 1;
+        }
         return 0;
     }
 
