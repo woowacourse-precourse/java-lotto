@@ -16,4 +16,12 @@ public enum Prize {
         this.reward = reward;
     }
 
+    public String getMatchCount() {
+        return matchCount;
+    }
+
+    public Integer getReward() {
+        return reward;
+    }
+
 }
