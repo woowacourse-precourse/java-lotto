@@ -8,6 +8,7 @@ import static lotto.constant.LottoRule.START_NUMBER;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.ui.UserInterface;
 
 public class LottoMachine {
@@ -25,17 +26,19 @@ public class LottoMachine {
     private static List<Lotto> publishLottosByCount(int countOfLottos) {
         List<Lotto> lottos = new ArrayList<>();
         for (int count = 0; count < countOfLottos; count++) {
-            List<Integer> randomNumbers = getRandomNumbers();
+            List<Integer> randomNumbers = getSortedRandomNumbers();
             Lotto lotto = new Lotto(randomNumbers);
             lottos.add(lotto);
         }
         return lottos;
     }
 
-    private static List<Integer> getRandomNumbers() {
+    private static List<Integer> getSortedRandomNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
-                START_NUMBER, END_NUMBER, COUNT_OF_NUMBERS
-        );
+                        START_NUMBER, END_NUMBER, COUNT_OF_NUMBERS)
+                .stream()
+                .sorted()
+                .collect(Collectors.toList());
         return numbers;
     }
 }
