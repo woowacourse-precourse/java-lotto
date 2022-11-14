@@ -1,6 +1,6 @@
 package lotto.model;
 
-import static lotto.validator.LottoNumberValidator.hasValidLotteryNumber;
+import static lotto.validator.LottoNumberValidator.hasValidLottoNumber;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +15,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        hasValidLotteryNumber(numbers);
+        hasValidLottoNumber(numbers);
     }
 
     public boolean isContain(int number) {

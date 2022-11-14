@@ -6,7 +6,7 @@ import static lotto.validator.ErrorMessages.INVALID_LENGTH_ERROR_MESSAGE;
 import java.util.List;
 
 public class LottoNumberValidator extends NumberValidator {
-    public static void hasValidLotteryNumber(List<Integer> lotteryNumbers) {
+    public static void hasValidLottoNumber(List<Integer> lotteryNumbers) {
         hasValidLength(lotteryNumbers);
         hasNonDuplicateNumbers(lotteryNumbers);
         lotteryNumbers.forEach(NumberValidator::hasValidRange);

@@ -7,8 +7,7 @@ import static lotto.utils.NumberAdapter.fitPaidMoney;
 import static lotto.utils.NumberAdapter.fitWinningNumber;
 import static lotto.utils.NumberAdapter.fitWinningNumberWithBonusNumber;
 import static lotto.validator.BonusNumberValidator.hasValidBonusNumber;
-import static lotto.validator.LottoNumberValidator.hasValidLotteryNumber;
-import static lotto.validator.NumberValidator.hasValidType;
+import static lotto.validator.LottoNumberValidator.hasValidLottoNumber;
 
 import java.util.List;
 import java.util.Map;
@@ -34,7 +33,7 @@ public class Store {
 
     private List<Integer> pickWinningNumber(String beforeWinningNumber) {
         List<Integer> winningNumber = fitWinningNumber(beforeWinningNumber);
-        hasValidLotteryNumber(winningNumber);
+        hasValidLottoNumber(winningNumber);
         return winningNumber;
     }
 

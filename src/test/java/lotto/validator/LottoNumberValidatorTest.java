@@ -4,7 +4,7 @@ import static lotto.validator.ErrorMessages.DUPLICATE_LOTTO_NUMBER_ERROR_MESSAGE
 import static lotto.validator.ErrorMessages.INVALID_LENGTH_ERROR_MESSAGE;
 import static lotto.validator.LottoNumberValidator.hasNonDuplicateNumbers;
 import static lotto.validator.LottoNumberValidator.hasValidLength;
-import static lotto.validator.LottoNumberValidator.hasValidLotteryNumber;
+import static lotto.validator.LottoNumberValidator.hasValidLottoNumber;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -44,7 +44,7 @@ public class LottoNumberValidatorTest {
         List<Integer> validInput = List.of(1, 2, 3, 4, 5, 6);
 
         //when, then
-        assertThatNoException().isThrownBy(() -> hasValidLotteryNumber(validInput));
+        assertThatNoException().isThrownBy(() -> hasValidLottoNumber(validInput));
     }
 
 

@@ -1,7 +1,7 @@
 package lotto.utils;
 
 import static lotto.utils.LottoNumberGenerator.generateLottoNumber;
-import static lotto.validator.LottoNumberValidator.hasValidLotteryNumber;
+import static lotto.validator.LottoNumberValidator.hasValidLottoNumber;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +15,6 @@ public class LottoNumberGeneratorTest {
         List<Integer> numbers = generateLottoNumber();
 
         //then
-        hasValidLotteryNumber(numbers);
+        hasValidLottoNumber(numbers);
     }
 }
