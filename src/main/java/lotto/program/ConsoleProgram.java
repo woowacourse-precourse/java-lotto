@@ -37,6 +37,7 @@ public class ConsoleProgram {
 
     private void validateAnswer(String rawAnswerInput) {
         Validator.checkLottoFormat(rawAnswerInput);
+        Validator.checkDuplicate(rawAnswerInput);
     }
 
     private String requestBonusNumber() {

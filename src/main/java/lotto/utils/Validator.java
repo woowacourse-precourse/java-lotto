@@ -1,5 +1,9 @@
 package lotto.utils;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Validator {
     public static void checkNumber(String stringLiteral) {
         String isNumberRegularExpression = "^[0-9]+$";
@@ -33,6 +37,16 @@ public class Validator {
         boolean isNotBonusNumber = !(stringLiteral.matches(isBonusNumberRegularExpression));
         if (isNotBonusNumber) {
             throw new IllegalArgumentException("보너스 번호는 1부터 45까지의 숫자입니다.");
+        }
+    }
+
+    public static void checkDuplicate(String rawAnswerInput) {
+        String[] numbers = rawAnswerInput.split(",");
+        List<String> collect = Arrays.stream(numbers)
+                .distinct()
+                .collect(Collectors.toList());
+        if (collect.size() != 6) {
+            throw new IllegalArgumentException("당첨 번호는 중복 될 수 없습니다.");
         }
     }
 }
