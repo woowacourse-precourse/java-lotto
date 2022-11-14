@@ -1,6 +1,7 @@
 package YieldMachine;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public enum Reward {
@@ -10,15 +11,25 @@ public enum Reward {
     FOURTH1(50_000, Arrays.asList(4, 0)),
     FOURTH2(50_000, Arrays.asList(4, 1)),
     FIFTH1(5_000, Arrays.asList(3, 0)),
-    FIFTH2(5_000, Arrays.asList(3, 1));
+    FIFTH2(5_000, Arrays.asList(3, 1)),
+    EMPTY(0, Collections.EMPTY_LIST);
 
     private final Integer prize;
     private final List<Integer> matchingNumber;
+
     public Integer getReward() {
         return prize;
     }
+
     private Reward(Integer prize, List<Integer> matchingNumber) {
         this.prize = prize;
         this.matchingNumber = matchingNumber;
+    }
+
+    public static Reward getReward(List<Integer> numberOfMatching) {
+        return Arrays.stream(values())
+                .filter(reward -> reward.matchingNumber.equals(numberOfMatching))
+                .findAny()
+                .orElse(EMPTY);
     }
 }
