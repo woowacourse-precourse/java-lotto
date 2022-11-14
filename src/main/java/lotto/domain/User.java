@@ -4,6 +4,8 @@ import lotto.validator.MoneyValidator;
 
 import java.util.List;
 
+import static lotto.util.Const.*;
+
 public class User {
 
     private final int inputMoney;
@@ -23,7 +25,11 @@ public class User {
         return lottos;
     }
 
-    public void validateMoney(int inputMoney){
+    public void validateMoney(int inputMoney) {
         MoneyValidator.check(inputMoney);
+    }
+
+    public int getQuantity() {
+        return inputMoney / LOTTO_PRICE_UNIT;
     }
 }
