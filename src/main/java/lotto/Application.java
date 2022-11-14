@@ -103,7 +103,7 @@ public class Application {
 
         validateBonusNumber(bonusNumber, luckyLotto.getLottoNumbers());
 
-        return 0;
+        return bonusNumber;
     }
 
     public static void validateBonusNumber(int bonusNumber, List<Integer> luckyNumber){
