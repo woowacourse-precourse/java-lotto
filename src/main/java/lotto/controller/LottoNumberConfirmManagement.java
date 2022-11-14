@@ -1,59 +1,70 @@
 package lotto.controller;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LottoNumberConfirmManagement {
-  private final HashMap<Integer, Integer> winningTickets;
-  private final int BONUS_NUMBER = 100;
+    private final int INDEX_ADJUSTMENT_VALUE = 3;
+    private final int INIT_VALUE = 0;
+    private final int MINIMUM_QUALIFICATION = 3;
+    private final int THREE_MATCH_INDEX = 0;
+    private final int FOUR_MATCH_INDEX = 1;
+    private final int FIVE_MATCH_INDEX = 2;
+    private final int SIX_MATCH_INDEX = 3;
+    private final int FIVE_AND_BONUS_MATCH_INDEX = 4;
+    private final List<List<Integer>> numberIntegration;
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
 
-  private static List<List<Integer>> numberIntegration;
-  private static List<Integer> winningNumbers;
-  private static int bonusNumber;
-
-  LottoNumberConfirmManagement(List<List<Integer>> numbersIntegration, List<Integer> winningNumbers, int bonusNumber) {
-    winningTickets = new HashMap<>();
-    this.numberIntegration = numbersIntegration;
-    this.winningNumbers = winningNumbers;
-    this.bonusNumber = bonusNumber;
-  }
-
-  public HashMap<Integer, Integer> getWinningTickets() {
-    return winningTickets;
-  }
-
-  public void checkNumbers() {
-    for (List<Integer> numbers : numberIntegration) {
-      winningTickets.put(checkNumber(numbers), winningTickets.getOrDefault(checkNumber(numbers), 0) + 1);
+    private List<Integer> ticketResult;
+    LottoNumberConfirmManagement(List<List<Integer>> numberIntegration, List<Integer> winningNumbers, int bonusNumber) {
+        ticketResult = new ArrayList<>();
+        init();
+        this.numberIntegration = numberIntegration;
+        this.winningNumbers = winningNumbers;
+        this.bonusNumber = bonusNumber;
     }
-  }
 
-  private int checkNumber(List<Integer> numbers) {
-    int sameNumberCount = 0;
-    for (int number : numbers) {
-      if (winningNumbers.contains(number)) {
-        sameNumberCount++;
-      }
-      if(sameNumberCount==5){
-        if(checkBonusNumber(numbers)){
-          sameNumberCount = BONUS_NUMBER;
+    private void init() {
+        ticketResult = Arrays.asList(INIT_VALUE, INIT_VALUE, INIT_VALUE, INIT_VALUE, INIT_VALUE);
+    }
+
+    public List<Integer> getTicketsResult() {
+        for (List<Integer> oneTicket : numberIntegration) {
+            int matchNumbers = countMatchNumbers(oneTicket);
+            if (checkMinimumQualification(matchNumbers)) {
+                putTicketResult(matchNumbers, oneTicket);
+            }
         }
-      }
+        return ticketResult;
     }
-    return sameNumberCount;
-  }
 
-  private boolean containNumber(int number, List<Integer> winningNumbers) {
-    if (winningNumbers.contains(number)) {
-      return true;
+    private int countMatchNumbers(List<Integer> oneTicket) {
+        oneTicket.retainAll(winningNumbers);
+        return oneTicket.size();
     }
-    return false;
-  }
 
-  private boolean checkBonusNumber(List<Integer> numbers){
-    if(numbers.contains(bonusNumber)){
-      return true;
+    private void putTicketResult(int matchNumbers, List<Integer> oneTicket) {
+
+        if (matchNumbers == 5) {
+            checkBonusNumber(oneTicket);
+        }
+        int matchNumbersIndex = matchNumbers - INDEX_ADJUSTMENT_VALUE;
+        ticketResult.set(matchNumbersIndex, ticketResult.get(matchNumbersIndex) + 1);
     }
-    return false;
-  }
+
+    private boolean checkMinimumQualification(int matchNumbers) {
+        if (matchNumbers >= MINIMUM_QUALIFICATION) {
+            return true;
+        }
+        return false;
+    }
+
+    private void checkBonusNumber(List<Integer> fiveMatchTicket) {
+        if (fiveMatchTicket.contains(bonusNumber)) {
+            ticketResult.set(FIVE_AND_BONUS_MATCH_INDEX, ticketResult.get(FIVE_AND_BONUS_MATCH_INDEX) + 1);
+            ticketResult.set(FIVE_MATCH_INDEX, ticketResult.get(FIVE_MATCH_INDEX) - 1);
+        }
+    }
 }
