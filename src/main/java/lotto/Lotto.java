@@ -1,4 +1,4 @@
-package Exception;
+package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,10 @@ import java.util.regex.Pattern;
 
 public class Lotto {
 
-    private final List<Integer> numbers;
+    private static final String OVERSIZELOTTO_ERRORMESSAGE = "[ERROR] 6개의 숫자만 입력해주세요";
+    private static final String DUPLICATELOTTO_ERRORMESSAGE = "[ERROR] 중복된 숫자를 입력하지마세요.";
 
+    private final List<Integer> numbers;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -16,22 +18,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 6개의 숫자만 입력해주세요");
+            throw new IllegalArgumentException(OVERSIZELOTTO_ERRORMESSAGE);
         }
         if (Set.copyOf(numbers).size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력하지마세요.");
+            throw new IllegalArgumentException(DUPLICATELOTTO_ERRORMESSAGE);
         }
-        for(int number : numbers){
-            if (!Pattern.matches("^[0-9]*$", String.valueOf(number))) {
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
-            }
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[ERROR] 1~45사이의 숫자만 입력해주세요.");
-            }
-        }
-
     }
-
     public List<Integer> getNumbers() {
         return numbers;
     }
