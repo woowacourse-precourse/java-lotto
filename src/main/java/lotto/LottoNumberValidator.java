@@ -56,6 +56,22 @@ public class LottoNumberValidator {
         }
     }
 
+    public static void specialNumberInBoundValidation(Integer specialNumber)
+    {
+        if(LottoNumberValidator.isOutOfBound(specialNumber)) {
+            throw new IllegalArgumentException(
+                    Message.getLottoNumberOutOfBoundErrorMessageBody());
+        }
+    }
+
+    public static void specialNumberDuplicationValidate(List<Integer> numbers, Integer specialNumber)
+    {
+        if(numbers.contains(specialNumber))
+        {
+            throw new IllegalArgumentException(Message.getLottoNumberDuplicationErrorMessage());
+        }
+    }
+
 
 
 }
