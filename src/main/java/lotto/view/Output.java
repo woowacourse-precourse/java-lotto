@@ -1,14 +1,16 @@
-package lotto;
+package lotto.view;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 
+import lotto.service.EarningRate;
+import lotto.util.Rank;
+
 public class Output {
 	static DecimalFormat formatter = new DecimalFormat("###,###");
 
 	public static void printTicketCount(int totalNumberOfLotto) {
-		System.out.println();
 		System.out.println(totalNumberOfLotto + "개를 구매했습니다.");
 	}
 
@@ -19,7 +21,6 @@ public class Output {
 	}
 
 	public static void printResult(HashMap<Integer, Integer> result) {
-		System.out.println();
 		System.out.println("당첨 통계");
 		System.out.println("---");
 		for (Rank rank : Rank.values()) {

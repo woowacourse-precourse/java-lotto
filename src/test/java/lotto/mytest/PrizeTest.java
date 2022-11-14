@@ -1,14 +1,11 @@
 package lotto.mytest;
 
-import static org.assertj.core.api.Assertions.*;
-
 import java.util.EnumMap;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.Prize;
-import lotto.Rank;
+import lotto.util.Rank;
 
 public class PrizeTest {
 	EnumMap<Rank, Integer> prizeResult = new EnumMap<>(Rank.class);

@@ -1,6 +1,8 @@
-package lotto;
+package lotto.domain;
 
 import java.util.HashMap;
+
+import lotto.util.Rank;
 
 public class Prize {
 	public static Long getTotalPrizeMoney(HashMap<Integer, Integer> result) {

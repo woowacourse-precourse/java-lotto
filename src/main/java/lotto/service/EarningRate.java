@@ -1,4 +1,4 @@
-package lotto;
+package lotto.service;
 
 public class EarningRate {
 	public EarningRate() {

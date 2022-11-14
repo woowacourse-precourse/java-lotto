@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.EarningRate;
+import lotto.service.EarningRate;
 
 public class EarningRateTest {
 	int paidMoney;

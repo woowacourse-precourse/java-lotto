@@ -5,6 +5,12 @@ import java.util.List;
 
 import org.assertj.core.util.Lists;
 
+import lotto.domain.LotterySeller;
+import lotto.domain.Prize;
+import lotto.domain.WinningLotto;
+import lotto.view.Input;
+import lotto.view.Output;
+
 public class Operation {
 	private static Operation uniqueOperation = new Operation();
 

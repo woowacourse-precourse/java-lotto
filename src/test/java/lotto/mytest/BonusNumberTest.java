@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import lotto.BonusNumber;
+import lotto.service.BonusNumber;
 
 public class BonusNumberTest {
 	@DisplayName("숫자가 아닌 경우 예외가 발생")

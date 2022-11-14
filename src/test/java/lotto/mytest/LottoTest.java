@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.Lotto;
+import lotto.service.Lotto;
 
 public class LottoTest {
 	@DisplayName("로또 번호의 개수가 6개가 아닌 경우 예외가 발생")

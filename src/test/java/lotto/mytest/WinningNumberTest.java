@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import lotto.WinningNumber;
+import lotto.service.WinningNumber;
 
 public class WinningNumberTest {
 	@DisplayName("구분자가 쉼표가 아닌 경우 예외가 발생")

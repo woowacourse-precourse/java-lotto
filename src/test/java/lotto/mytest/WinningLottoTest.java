@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.WinningLotto;
+import lotto.domain.WinningLotto;
 
 public class WinningLottoTest {
 	HashMap<Integer, Integer> lottoResult = new HashMap<>();

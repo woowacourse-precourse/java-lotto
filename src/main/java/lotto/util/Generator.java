@@ -1,6 +1,6 @@
-package lotto;
+package lotto.util;
 
-import static lotto.Constants.*;
+import static lotto.util.Constants.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,7 +1,9 @@
-package lotto;
+package lotto.domain;
 
 import java.util.HashMap;
 import java.util.List;
+
+import lotto.util.Rank;
 
 public class WinningLotto {
 	static HashMap<Integer, Integer> result = new HashMap<>();

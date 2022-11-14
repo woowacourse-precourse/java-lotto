@@ -2,13 +2,12 @@ package lotto.mytest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.HashSet;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.Generator;
+import lotto.util.Generator;
 
 public class GeneratorTest {
 	Generator generator = new Generator();

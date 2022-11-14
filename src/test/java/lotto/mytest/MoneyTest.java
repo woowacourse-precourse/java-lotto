@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import lotto.Money;
+import lotto.service.Money;
 
 public class MoneyTest {
 	@DisplayName("금액 입력 예외처리 모음")

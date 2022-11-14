@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.Comparison;
+import lotto.domain.Comparison;
 
 public class ComparisonTest {
 	List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);

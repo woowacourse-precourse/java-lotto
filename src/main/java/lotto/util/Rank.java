@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public enum Rank {
 	NOTHING(0, 0),
