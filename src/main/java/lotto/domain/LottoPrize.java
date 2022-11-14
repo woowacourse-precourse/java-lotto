@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
+
 public enum LottoPrize {
     FIRST_PRIZE(6, 0, 2_000_000_000),
     SECOND_PRIZE(5, 1, 30_000_000),
@@ -31,5 +33,14 @@ public enum LottoPrize {
 
     public int getPrize(){
         return prize;
+    }
+
+    public String getPrizeInfo() {
+        String info = "";
+        DecimalFormat df = new DecimalFormat("###,###");
+        if (lottoNumberCount > 0) info += String.format("%d개 일치",lottoNumberCount);
+        if (bonusNumberCount > 0) info += String.format(", 보너스 볼 일치");
+        if (prize > 0) info += String.format(" (%s)원", df.format(prize));
+        return info;
     }
 }
