@@ -30,8 +30,7 @@ public enum LottoResult {
     }
 
     public int getPrize() {
-        // TODO 구현 필요
-        return 0;
+        return prize;
     }
 
     public String getDescription() {
