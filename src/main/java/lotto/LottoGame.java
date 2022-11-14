@@ -24,7 +24,7 @@ public class LottoGame {
 
     public void setWinningNumber(String[] answer) {
         checkArrayOnlyNumber(answer);
-        this.winningNumber = makeWinningLotto(answer);
+        this.winningNumber = makeArrayToLotto(answer);
     }
 
     public void setBonusNumber(String answer) {
@@ -90,7 +90,7 @@ public class LottoGame {
         return new Lotto(Randoms.pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.LOTTO_SIZE));
     }
 
-    private Lotto makeWinningLotto(String[] answer) {
+    private Lotto makeArrayToLotto(String[] answer) {
         List<Integer> answerNumber = new ArrayList<>();
         for (String number : answer) {
             answerNumber.add(Integer.parseInt(number));
