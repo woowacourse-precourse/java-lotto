@@ -31,6 +31,11 @@ public class OutputView {
         System.out.print(message);
     }
 
+    public static void printError(String error) {
+
+        System.out.println(error);
+    }
+
     public void printInputPurchaseAmount() {
 
         printlnMessage(INPUT_PURCHASE_AMOUNT_MESSAGE);

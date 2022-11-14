@@ -1,19 +1,28 @@
 package lotto.model;
 
+import lotto.service.LottoService;
+import lotto.view.OutputView;
+
 public class Player {
     private int purchaseAmount;
     private int ticketNumber;
+    private final String PURCHASE_AMOUNT_ERROR = "[ERROR] 구매 금액은 1000 단위의 숫자여야 합니다.";
 
     public Player(String amountString) {
         validate(amountString);
-        this.purchaseAmount = Integer.parseInt(amountString);
-        ticketNumber = purchaseAmount / 1000;
+        ticketNumber = purchaseAmount / Lotto.LOTTO_ONE_PRICE;
     }
 
     public void validate(String purchaseAmountString) {
-        int purchaseAmount = Integer.parseInt(purchaseAmountString);
-        if (purchaseAmount < 0 || purchaseAmount % 1000 != 0) {
-            throw new IllegalArgumentException();
+        try {
+            int purchaseAmount = Integer.parseInt(purchaseAmountString);
+            if (purchaseAmount < 0 || purchaseAmount % Lotto.LOTTO_ONE_PRICE != 0) {
+                throw new IllegalArgumentException();
+            }
+            this.purchaseAmount = purchaseAmount;
+        } catch (IllegalArgumentException e) {
+            LottoService.status = LottoService.ERROR_STATUS;
+            OutputView.printError(PURCHASE_AMOUNT_ERROR);
         }
     }
 

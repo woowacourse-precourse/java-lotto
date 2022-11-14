@@ -22,9 +22,15 @@ public class LottoController {
 
     public void playLotto() {
         player = lottoService.createPlayer();
+        if (LottoService.status != LottoService.NORMAL_STATUS) {
+            return;
+        }
         playerLottoList = lottoService.createPlayerLottoList(player.getTicketNumber());
         winLotto = lottoService.createWinLotto();
         bonusNumber = lottoService.createBonusNumber(winLotto.getNumbers());
+        if (LottoService.status != LottoService.NORMAL_STATUS) {
+            return;
+        }
         lottoRanks = lottoService.getLottoRanks(playerLottoList, winLotto, bonusNumber);
         lottoService.printResult(lottoRanks);
     }

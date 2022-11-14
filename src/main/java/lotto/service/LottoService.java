@@ -13,6 +13,9 @@ import static lotto.model.Lotto.*;
 public class LottoService {
     private final InputView inputView;
     private final OutputView outputView;
+    public static int status = 0;
+    public final static int ERROR_STATUS = -1;
+    public final static int NORMAL_STATUS = 0;
 
     public LottoService() {
         inputView = new InputView();
@@ -49,6 +52,9 @@ public class LottoService {
     }
 
     public BonusNumber createBonusNumber(List<Integer> winningNumber) {
+        if(status != NORMAL_STATUS){
+            return null;
+        }
         outputView.printInputBonusNumber();
         BonusNumber bonusNumber = new BonusNumber(inputView.inputBonusNumber(), winningNumber);
         return bonusNumber;
@@ -98,4 +104,5 @@ public class LottoService {
         Profit profit = new Profit(result.getRewardAmount(), result.getPurchaseAmount());
         outputView.printProfit(profit);
     }
+
 }
