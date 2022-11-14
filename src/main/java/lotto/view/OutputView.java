@@ -33,6 +33,12 @@ public class OutputView {
         printlnMessage(INPUT_BONUS_NUMBER_MESSAGE);
     }
 
+    public void printLottoList(List<Lotto> lottoList) {
+        for (int i = 0; i < lottoList.size(); i++) {
+            printLotto(lottoList.get(i));
+        }
+    }
+
     public void printLotto(Lotto lotto) {
         List<Integer> lottoNumbers = lotto.getNumbers();
         printMessage("[");
@@ -48,5 +54,6 @@ public class OutputView {
             }
         }
     }
+
 
 }
