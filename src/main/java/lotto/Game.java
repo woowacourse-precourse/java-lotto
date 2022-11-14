@@ -38,6 +38,15 @@ public class Game {
         return purchasedLotto;
     }
 
+    List<RANK> result(List<Lotto> lottos, List<Integer> winNumber, int bonusNumber){
+        List<RANK> ranks = new ArrayList<>();
+        for(Lotto playerNumber : lottos){
+            RANK rank = countRank(playerNumber,winNumber,bonusNumber);
+            ranks.add(rank);
+        }
+        return ranks;
+    }
+
     RANK countRank(Lotto playerLotto, List<Integer> winNumber, int bonusNumber){
         int countSame = playerLotto.countSameNumber(winNumber);
         boolean bonus = playerLotto.isBonusNumber(bonusNumber);
