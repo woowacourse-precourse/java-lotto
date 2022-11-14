@@ -1,7 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -40,8 +42,12 @@ public class Application {
      * @return 구매한 로또 개수 크기의 로또 번호가 들어있는 리스트
      */
     public static List<Lotto> pickLottoNumber(int count){
-        // TODO: 구매한 로또 당 로또 번호 6자리를 랜덤으로 선택
-        return null;
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < count; i++){
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottos.add(new Lotto(numbers));
+        }
+        return lottos;
     }
 
     /**
