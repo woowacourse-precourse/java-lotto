@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Discriminator {
@@ -40,6 +41,21 @@ public class Discriminator {
     public void addMatchOverThree(int raffleNumberMatches, int bonusNumberMatches) {
         if (raffleNumberMatches > LEAST_MATCH_COUNT) {
             MATCHES.add(List.of(raffleNumberMatches, bonusNumberMatches));
+        }
+    }
+    public List<List<Integer>> getMatches() {
+        return Collections.unmodifiableList(MATCHES);
+    }
+    public void discriminate(List<Lotto> lotteries) {
+        int raffleNumberMatches;
+        int bonusNumberMatches;
+
+        for (Lotto lotto : lotteries) {
+
+            raffleNumberMatches = guessLottoNumber(lotto);
+            bonusNumberMatches = guessBonusNumber(lotto, raffleNumberMatches);
+
+            addMatchOverThree(raffleNumberMatches, bonusNumberMatches);
         }
     }
 }
