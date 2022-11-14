@@ -24,8 +24,7 @@ public class Lotto {
 
     private void validate(final List<Integer> numbers) {
         if (numbers.size() != LOTTO_BALL_SIZE) {
-            Output.printExceptionMessage(LOTTO_NUMBERS_SIZE_EXCEPTION);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_NUMBERS_SIZE_EXCEPTION);
         }
     }
 
@@ -34,15 +33,13 @@ public class Lotto {
         if (lotto.size() == numbers.size()) {
             return numbers;
         }
-        Output.printExceptionMessage(DUPLICATION_NUMBER_EXCEPTION_MESSAGE);
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(DUPLICATION_NUMBER_EXCEPTION_MESSAGE);
     }
 
     private static void validateNumbersRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < MIN_LOTTO_NUMBER || MAX_LOTTO_NUMBER < number) {
-                Output.printExceptionMessage(LOTTO_NUMBER_RANGE_EXCEPTION);
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_EXCEPTION);
             }
         }
     }

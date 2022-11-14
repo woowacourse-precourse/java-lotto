@@ -18,16 +18,14 @@ public class LottoMoney {
         if (money % LOTTO_PRICE == 0 && money > 0) {
             return money;
         }
-        Output.printExceptionMessage(UNIT_OF_MONEY_ERROR);
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(UNIT_OF_MONEY_ERROR);
     }
 
     private long parseLong(String money) {
         try {
             return Long.parseLong(money);
         } catch (IllegalArgumentException e) {
-            Output.printExceptionMessage(MONEY_ONLY_NUMBER_MESSAGE);
-            throw e;
+            throw new IllegalArgumentException(MONEY_ONLY_NUMBER_MESSAGE);
         }
     }
 

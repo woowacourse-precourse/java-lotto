@@ -18,9 +18,13 @@ public class LottoController {
     }
 
     public void run() {
-        LottoMoney money = Input.inputMoney();
-        buyLotto(money);
-        createStatistics(money);
+        try {
+            LottoMoney money = Input.inputMoney();
+            buyLotto(money);
+            createStatistics(money);
+        } catch (IllegalArgumentException e) {
+            Output.printExceptionMessage(e.getMessage());
+        }
     }
 
     private void buyLotto(LottoMoney money) {

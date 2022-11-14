@@ -22,8 +22,7 @@ public class GradingMachine {
 
     private void validateContainBonusNumber(Lotto winnerLotto, int bonusNumber) {
         if (winnerLotto.getLotto().contains(bonusNumber)) {
-            Output.printExceptionMessage(BONUS_NUMBER_CONTAIN_EXCEPTION);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(BONUS_NUMBER_CONTAIN_EXCEPTION);
         }
     }
 
@@ -31,8 +30,7 @@ public class GradingMachine {
         if (bonusNumber >= MIN_LOTTO_NUMBER && MAX_LOTTO_NUMBER >= bonusNumber) {
             return bonusNumber;
         }
-        Output.printExceptionMessage(LOTTO_NUMBER_RANGE_EXCEPTION);
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_EXCEPTION);
     }
 
     public GradesResult gradesResultByLottoTicket(LottoTicket lottoTicket) {
