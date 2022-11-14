@@ -26,6 +26,7 @@ public class Application {
         }
         String winnigNumber = getWinningNumber(); //로또 정답 받기.
         List<Integer> winningNumbers = StringToIntegerList(winnigNumber); // List<Integer>로 변환
+        checkIsValid(winningNumbers);//제대로된 값이 들어왔는지 확인하는 메소드
 
     }
     /* 돈 입력받는 메소드 */
@@ -57,6 +58,7 @@ public class Application {
 
     /*당첨번호 입력 메소드*/
     public static String getWinningNumber(){
+        System.out.println("당첨 번호를 입력해 주세요");
         String winningNumber = readLine();
         return winningNumber;
     }
@@ -71,11 +73,20 @@ public class Application {
         return winningNumbers;
     }
 
-    /*중복되는 값이 있는지 예외처리하는 메소드*/
-    public static void checkDuplicated(List<Integer> winningNumbers){
+    /*중복되는 값이 있는지, 입력된 값이 6개인지 확인하는메소드*/
+    public static void checkIsValid(List<Integer> winningNumbers){
         Set<Integer> noDuplicableSet = new HashSet<>(winningNumbers);
-        if(winningNumbers.size() != noDuplicableSet.size()) {
+        if(noDuplicableSet.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
+
+    /*보너스 번호를 입력받는 메소드*/
+    public static int getBonusNum(){
+        //try
+        int bonusNum = Integer.parseInt(readLine());
+        return bonusNum;
+    }
+
+
 }
