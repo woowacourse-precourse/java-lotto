@@ -14,25 +14,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
 
-    private static Lotto lotto;
+    private static final int hasLotto = 8;
+    private static List<Lotto> lottos;
 
     @BeforeAll
     static void 로또_발행() {
         Store store = new Store();
-        List<Integer> numbers = store.drawNumber();
-        lotto = new Lotto(numbers);
-    }
-
-    @Test
-    void 로또_발행_확인() {
-
-        for (int number : lotto.getLotto()) {
-            System.out.printf(" %d", number);
+        store.drawNumber(hasLotto);
+        for (int i = 0;i < hasLotto;i++) {
+            lottos.add(new Lotto(store.getNumbers().get(i)));
         }
-        System.out.println();
-
-        assertThat(lotto.getLotto().size()).isEqualTo(LOTTO_NUMBER_CAPACITY);
-
     }
 
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -50,5 +41,4 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
 }
