@@ -31,7 +31,4 @@ public enum Rank {
         this.condition = condition;
     }
 
-    public void printRank() {
-        System.out.println(condition + " (" + prize + ") - " + getCount(rank) + "개");
-    }
 }

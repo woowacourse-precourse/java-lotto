@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static lotto.domain.Result.calculate;
+import static lotto.domain.Result.getCount;
 
 
 public class Output {
@@ -39,7 +40,11 @@ public class Output {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (Rank e : Rank.values())
-            e.printRank();
+            printRank(e);
         System.out.println("총 수익률은 " + calculate() + "%입니다.");
+    }
+
+    public static void printRank(Rank e) {
+        System.out.println(e.getCondition() + " (" + e.getPrize() + ") - " + getCount(e.getRank()) + "개");
     }
 }
