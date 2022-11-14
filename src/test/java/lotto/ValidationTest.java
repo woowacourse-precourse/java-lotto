@@ -16,6 +16,16 @@ class ValidationTest {
     }
 
     @ParameterizedTest
+    @CsvSource({"a", "1a", "-"})
+    void 문자가_포함된_입력(String input) {
+        try {
+            validation.validateNumber(input);
+        } catch (IllegalArgumentException e) {
+            assertEquals(Errors.NOT_INCLUDE_CHARACTER.toString(), e.getMessage());
+        }
+    }
+
+    @ParameterizedTest
     @CsvSource({"0", "46", "-1"})
     void 범위를_벗어난_숫자(int number) {
         try {
