@@ -46,4 +46,11 @@ public class Result {
         }
     }
 
+    // 등수로 결과 map을 초기화 하는 기능
+    public void initWinningRank() {
+        for (Rank rank : Rank.values()) {
+            result.put(rank, 0);
+        }
+    }
+
 }
