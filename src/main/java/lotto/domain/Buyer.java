@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Buyer {
@@ -19,11 +20,16 @@ public class Buyer {
 
         for (int index = 0; index < lottoCount; index++) {
             List<Integer> lotto = numberGenerator.createLottoNumbers();
+            sortLotto(lotto);
             lottos.add(lotto);
         }
     }
 
     public List<List<Integer>> getLottos() {
         return this.lottos;
+    }
+    
+    public void sortLotto(List<Integer> lotto) {
+        Collections.sort(lotto);
     }
 }
