@@ -21,7 +21,7 @@ public class GradingMachine {
     }
 
     private void validateContainBonusNumber(Lotto winnerLotto, int bonusNumber) {
-        if (winnerLotto.getLotto().contains(bonusNumber)) {
+        if (winnerLotto.hasBonusNumber(bonusNumber)) {
             throw new IllegalArgumentException(BONUS_NUMBER_CONTAIN_EXCEPTION);
         }
     }
