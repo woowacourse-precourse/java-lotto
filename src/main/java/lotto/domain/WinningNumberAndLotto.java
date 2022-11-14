@@ -20,8 +20,7 @@ public class WinningNumberAndLotto {
         for (List<Integer> random : randomLotto) {
             int countLotto = 0;
 
-            for (int numberLocation = 0; numberLocation < winningNumbers.size(); numberLocation++) {
-                int correctLotto = winningNumbers.get(numberLocation);
+            for (int correctLotto : winningNumbers) {
                 countLotto = winningNumberPlace.judgement(random, countLotto, correctLotto);
             }
             result.add(countLotto);

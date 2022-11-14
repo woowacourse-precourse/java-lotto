@@ -22,16 +22,12 @@ public class TotalPrizeMoney {
             result += Rank.FOURTH.getMoney();
         }
 
-        if (correctNumber == Rank.THIRD.getMatch()) {
-            if (winningRanking.get(2) == 1) {
-                result += Rank.THIRD.getMoney();
-            }
+        if (correctNumber == Rank.THIRD.getMatch() && winningRanking.get(2) == 1) {
+            result += Rank.THIRD.getMoney();
         }
 
-        if (correctNumber == Rank.SECOND.getMatch()) {
-            if (winningRanking.get(3) == 1) {
-                result += Rank.SECOND.getMoney();
-            }
+        if (correctNumber == Rank.SECOND.getMatch() && winningRanking.get(3) == 1) {
+            result += Rank.SECOND.getMoney();
         }
 
         if (correctNumber == Rank.FIRST.getMatch()) {
