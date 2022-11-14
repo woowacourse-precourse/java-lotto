@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.game.LottoGame;
+import lotto.util.View;
 
 public class Application {
     public static void main(String[] args) {
@@ -8,11 +9,7 @@ public class Application {
             LottoGame lottoGame = new LottoGame();
             lottoGame.start();
         } catch (IllegalArgumentException e) {
-            printErrorMessage(e);
+            View.printErrorMessage(e);
         }
-    }
-    
-    private static void printErrorMessage(Exception e) {
-        System.out.println("[ERROR] " + e.getMessage());
     }
 }
