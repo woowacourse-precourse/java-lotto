@@ -42,7 +42,7 @@ public class Lottos {
         return results;
     }
 
-    private void add(Lotto lotto) {
+    public void add(Lotto lotto) {
         lottos.add(lotto);
     }
 }
