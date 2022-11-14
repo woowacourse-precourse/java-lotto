@@ -31,4 +31,10 @@ public class InputConsole {
         List<Integer> winningNumbers = Arrays.stream(splitNumbers).boxed().collect(Collectors.toList());
         return winningNumbers;
     }
+
+    public static int bonusNumber() {
+        System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        return bonusNumber;
+    }
 }
