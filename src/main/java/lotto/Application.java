@@ -46,17 +46,33 @@ public class Application {
         System.out.println(input+"개를 구매했습니다.");
     }
 
-//    public static int purchase_Input(){
-//
-//    }
+    public static List<List<Integer>> issue_Numbers(int purchase_Amount){
+        int initNum = 0;
+        List<List<Integer>> numbers = new ArrayList<>();
+
+        while(initNum<purchase_Amount) {
+            numbers.add(issue_Number());
+            initNum++;
+        }
+        return numbers;
+    }
+
+    public static void issue_Numbers_Output( List<List<Integer>> issue_Numbers){
+        for(int i=0; i<issue_Numbers.size(); i++){
+            System.out.println(issue_Numbers.get(i));
+        }
+    }
 
     public static void main(String[] args) {
-        issue_Number();
+        List<List<Integer>> issue_Numbers;
+
         purchase_Output();
         String purchase_Input = Input();
         Number_exception(purchase_Input);
         Unit_exception(purchase_Input);
         purchase_Amount_Output(purchase_Amount(StringtoInteger(purchase_Input)));
+        issue_Numbers = issue_Numbers((purchase_Amount(StringtoInteger(purchase_Input))));
+        issue_Numbers_Output(issue_Numbers);
 
 
 
