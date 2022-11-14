@@ -22,10 +22,19 @@ public enum WinInfo {
     }
 
     public boolean match(int matchCnt, int bonusMatchCnt) {
-        if (this.matchCnt == matchCnt && this.bonusMatchCnt == bonusMatchCnt) {
+        if (this.matchCnt == matchCnt && this.bonusMatchCnt >= bonusMatchCnt) {
             return true;
         }
         return false;
+    }
+
+    public static WinInfo get(int matchCnt, int bonusMatchCnt) {
+        for (WinInfo winInfo : WinInfo.values()) {
+            if (winInfo.match(matchCnt, bonusMatchCnt)) {
+                return winInfo;
+            }
+        }
+        return WinInfo.NO_WIN;
     }
 
 }
