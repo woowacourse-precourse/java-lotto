@@ -1,8 +1,7 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Pattern;
 
 /*
 - 제공된 Lotto 클래스를 활용해 구현해야 한다.
@@ -23,8 +22,20 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        final String INPUT_PATTERN = "^[1-9]$|^[1-3][0-9]$|^4[0-5]$";
+
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+
+        if (uniqueNumbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+
+        for (int number : numbers) {
+            boolean isMatch = Pattern.matches(INPUT_PATTERN, Integer.toString(number));
+
+            if (!isMatch) {
+                throw new IllegalArgumentException("[ERROR]");
+            }
         }
     }
 
