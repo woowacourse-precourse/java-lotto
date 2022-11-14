@@ -14,7 +14,12 @@ public class Application {
 
         // 구매액 입력
         System.out.println("구입금액을 입력해 주세요.");
-        int money = Integer.parseInt(Console.readLine());
+        int money = 0;
+        try {
+            money = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 숫자만 입력해주세요");
+        }
         BuyLotto bl = new BuyLotto(money);
 
         // 구매할 로또 수 계산 후 안내문구 출력
@@ -44,7 +49,11 @@ public class Application {
 
         // 당첨번호 리스트화
         for (String s : winningNumbers) {
-            winningLotto.add(Integer.valueOf(s));
+            try {
+                winningLotto.add(Integer.valueOf(s));
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] 숫자만 입력해주세요");
+            }
         }
 
         // 입력한 당첨 번호 오름차순 정렬
@@ -75,7 +84,7 @@ public class Application {
 
         // 수익률 계산
         float gainMoney = calculator.getGainMoney(money, result);
-        System.out.println("총 수익률은 " + Math.round(gainMoney * 100)/100.00 + "%입니다.");
+        System.out.println("총 수익률은 " + Math.round(gainMoney * 100) / 100.00 + "%입니다.");
 
     }
     public static void PrintResult(List<Integer> result) {
