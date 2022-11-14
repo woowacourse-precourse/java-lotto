@@ -70,7 +70,7 @@ public class Validation {
         return number >= LOTTO_MIN && number <= LOTTO_MAX;
     }
 
-    public static boolean isCorrectRange(List<Integer> lottoNumbers) {
-        return lottoNumbers.stream().anyMatch(number -> number > LOTTO_MAX || number < LOTTO_MIN);
+    public static boolean isNumbersInCorrectRange(List<Integer> lottoNumbers) {
+        return lottoNumbers.stream().allMatch(Validation::isNumberInCorrectRnage);
     }
 }
