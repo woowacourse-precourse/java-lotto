@@ -35,4 +35,11 @@ public class Lotto {
         }
         return 0;
     }
+
+    private int checkBonusIsMatched(int number, int bonusNumber) {
+        if (number == bonusNumber) {
+            return 1;
+        }
+        return 0;
+    }
 }
