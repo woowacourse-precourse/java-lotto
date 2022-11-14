@@ -15,6 +15,9 @@ public class Application {
         Lotto winningNumber = inputWinningNumber();
         Integer bonus = inputBonusNumber(winningNumber);
 
+        LottoStats lottoStats = new LottoStats();
+        lottoStats.calculationStats(purchase,winningNumber,bonus);
+
 
     }
     public static void programStart(){
