@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.mockito.internal.util.collections.ListUtil;
 
 public class PurchaseLotto {
@@ -15,13 +16,17 @@ public class PurchaseLotto {
     public int inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String moneyInput = readLine();
+        notInt(moneyInput);
         int money = Integer.valueOf(moneyInput);
         return countLotto(money);
 
     }
     private void notInt(String money){
-
-
+        try {
+            Double.parseDouble(money);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+        }
     }
 
     public static int countLotto(int money) {
@@ -32,8 +37,7 @@ public class PurchaseLotto {
     }
 
     private List<Integer> myLottoNumber() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        numbers.sort(Comparator.naturalOrder());
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
         return numbers;
     }
     //2
