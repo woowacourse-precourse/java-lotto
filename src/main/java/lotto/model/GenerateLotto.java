@@ -7,14 +7,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class GenerateLotto {
-    private final List<Lotto> lottoTickets;
+    private static List<Lotto> lottoTickets;
     private final int LOTTO_NUM_START = 1;
     private final int LOTTO_NUM_END = 45;
     private final int LOTTO_SIZE = 6;
     public GenerateLotto() {
         Money money = new Money();
         int tickets = money.getLottoTickets();
-        this.lottoTickets = setLotto(tickets);
+        lottoTickets = setLotto(tickets);
     }
 
     public List<Lotto> setLotto(int tickets) {
@@ -30,5 +30,8 @@ public class GenerateLotto {
                 LOTTO_NUM_START, LOTTO_NUM_END, LOTTO_SIZE);
         Collections.sort(newLotto);
         return newLotto;
+    }
+    public List<Lotto> getLotto() {
+        return lottoTickets;
     }
 }

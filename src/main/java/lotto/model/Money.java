@@ -4,11 +4,11 @@ import lotto.view.InputView;
 import lotto.enums.Error;
 
 public class Money {
-    private int inputMoney;
+    private static int inputMoney;
     public void setInputMoney() {
         String input = InputView.purchaseInput();
         int money = isMoneyNumber(input);
-        if(isMoneyValid(money)) this.inputMoney = money;
+        if(isMoneyValid(money)) inputMoney = money;
     }
     public static Integer isMoneyNumber(String money) {
         try {
@@ -23,6 +23,6 @@ public class Money {
         return true;
     }
     public int getLottoTickets() {
-        return this.inputMoney/1000;
+        return inputMoney/1000;
     }
 }
