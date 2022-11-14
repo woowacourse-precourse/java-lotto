@@ -57,4 +57,12 @@ public class UserNumber {
                 .boxed()
                 .collect(Collectors.toList());
     }
+
+    public Lotto getWinNumbers() {
+        return winNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
