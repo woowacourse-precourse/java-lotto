@@ -58,7 +58,7 @@ public class GameTest extends NsTest {
                 },
                 List.of(1, 2, 3, 4, 5, 6),
                 List.of(1, 2, 3, 4, 5, 7),
-                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 6, 7),
                 List.of(1, 2, 3, 4, 5, 42),
                 List.of(1, 2, 3, 4, 5, 40),
                 List.of(1, 2, 3, 4, 5, 41),
