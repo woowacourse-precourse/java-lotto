@@ -1,12 +1,11 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.constant.ExceptionConstant;
-import lotto.service.CalculatorLottoType;
+import lotto.service.LottoType;
 import lotto.constant.LottoConstant;
+import lotto.service.LottoException;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -69,7 +68,7 @@ public class Lotto {
 
     private double calculateTotalYield(double purchasePrice, HashMap<Integer, Integer> matchingPair) {
         int sum = 0;
-        for (CalculatorLottoType type : CalculatorLottoType.values()) {
+        for (LottoType type : LottoType.values()) {
             sum += matchingPair.get(type.getMatchingCount()) * type.getMatchingCountMoney();
         }
         return (double) sum * LottoConstant.YIELD_OPERAND / purchasePrice;
@@ -100,5 +99,13 @@ public class Lotto {
             }
         }
         return matchingCount;
+    }
+
+    public static int getBonusNumber() {
+        return bonusNumber;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
