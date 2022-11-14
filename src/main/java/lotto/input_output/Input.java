@@ -1,12 +1,13 @@
 package lotto.input_output;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.valid.Valid;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Input {
+public class Input extends Valid {
 
 
     protected static List<Integer> returnList(){ //Lotto 당첨 번호 입력받기 List<Integer>로 반환
