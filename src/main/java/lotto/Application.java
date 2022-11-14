@@ -10,7 +10,8 @@ import java.util.stream.Collectors;
 public class Application {
 
     final int [] profitTable = {5000, 50000, 1500000, 30000000, 2000000000};
-    final String [] profitTableString = {" (5,000)", " (50,000)", " (1,500,000)", ",보너스 볼 일치 (30,000,000)", " (2,000,000,000)"};
+
+    final String [] profitTableString = {" (5,000원)", " (50,000원)", " (1,500,000원)", ", 보너스 볼 일치 (30,000,000원)", " (2,000,000,000원)"};
     final String [] profitTableCount = {"3", "4", "5", "5", "6"};
     int insertedNumber;
     List<Integer> winningNumbers;
@@ -48,7 +49,8 @@ public class Application {
             profits+=profitBoard[i] * profitTable[i];
         }
         double profitRate = profits / insertedNumber;
-        return Math.round(profitRate * 100) / 100.0;
+        double result = Math.round(profitRate * 1000) / 1000.0;
+        return result*100;
     }
 
     public int[] calcMatches() {
@@ -88,21 +90,11 @@ public class Application {
     }
 
     private List<Integer> makeUnDuplicatedArray(){
-        List<Integer> result = new ArrayList<>();
-        boolean [] check = new boolean[45];
-        int index = 0;
-        while(index < 6){
-            int random = Randoms.pickNumberInRange(1, 45);
-            if(check[random-1]) continue;
-            check[random-1]=true;
-            result.add(random);
-            index++;
-        }
-        return result;
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
     private void printLottery(){
-        System.out.println(insertedNumber/1000 + "를 구매했습니다.");
+        System.out.println(insertedNumber/1000 + "개를 구매했습니다.");
         lottery.forEach(o->{
             o.print();
             System.out.println();
