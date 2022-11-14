@@ -9,7 +9,6 @@ public class Store {
 
     public List<Lotto> sell(User user, int receivedMoney) {
         int sellCount = receivedMoney / Constants.LOTTO_PRICE;
-        user.setMoney(user.getMoney() - receivedMoney);
         return makeLottos(sellCount);
     }
 
@@ -25,7 +24,7 @@ public class Store {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Constants.LOTTO_START_NUMBER,
                 Constants.LOTTO_END_NUMBER, Constants.LOTTO_LEN);
 
-        Collections.sort(numbers);
+        numbers.sort(null);
         return numbers;
     }
 }

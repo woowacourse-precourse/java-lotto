@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.Map;
 
 public class User {
 
@@ -16,17 +17,14 @@ public class User {
         System.out.println();
 
         this.lottos = store.sell(this, this.money);
+        this.money = 0;
         int boughtLottosCount = this.lottos.size();
 
-        System.out.println(boughtLottosCount + Constants.CONSOLE_BUY_RESULT);
+        System.out.printf(Constants.CONSOLE_BUY_RESULT_SUFFIX, boughtLottosCount);
     }
 
-    protected int getMoney() {
-        return money;
-    }
-
-    protected void setMoney(int money) {
-        this.money = money;
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 
     public void printLotto() {
