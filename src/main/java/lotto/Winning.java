@@ -32,6 +32,29 @@ public class Winning {
 
     public static void prize(List<Lotto> lottoTickets, List<Integer> winningNumber, String bonusNumber) {
         validateBonusNumber(winningNumber, bonusNumber);
+        List<Integer> prizeList = new ArrayList<>();
+
+        savePrizeList(lottoTickets, winningNumber, prizeList);
+    }
+
+    private static void savePrizeList(List<Lotto> lottoTickets, List<Integer> winningNumber, List<Integer> prizeList) {
+        for(int i = 0; i < lottoTickets.size(); i++) {
+            int matchCount;
+            matchCount = winningNumberCount(lottoTickets, winningNumber, i);
+            prizeList.add(matchCount);
+        }
+    }
+
+    private static int winningNumberCount(List<Lotto> lottoTickets, List<Integer> winningNumber, int k) {
+        int match = 0;
+
+        for (int winNumber : winningNumber) {
+            if (lottoTickets.get(k).getNumbers().contains(winNumber)) {
+                match++;
+            }
+        }
+
+        return match;
     }
 
     private static void validateBonusNumber(List<Integer> winningNumber, String bonusNumber) {
