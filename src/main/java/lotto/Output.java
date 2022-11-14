@@ -28,8 +28,9 @@ public class Output{
         System.out.println("6개 일치 (2,000,000,000원) - "+ result[6]+"개");
 
         int earn=result[3]*5000+result[4]*50000+result[5]*1500000+result[7]*30000000+result[6]*2000000000;
-        double earnrate=100/(cost/earn);
-        System.out.println("총 수익률은 "+String.format("%.1f", earnrate)+"%입니다");
+        double earnrate=100/((double)cost/earn);
+
+        System.out.println("총 수익률은 "+Math.round(earnrate*100)/100.0+"%입니다.");
 
 
 

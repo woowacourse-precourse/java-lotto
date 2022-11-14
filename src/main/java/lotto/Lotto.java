@@ -22,16 +22,14 @@ public class Lotto {
 
     public static void game(){
         int cost;
-        List<List<Integer>> total = new ArrayList<>();
 
         Output.printCost();
         cost = Integer.parseInt(Console.readLine());
         int cnt = Output.printOrder(cost);
         //로또 생성
-        total=MakeLotto.totallotto(cnt);
 
+        List<List<Integer>> total = MakeLotto.totallotto(cnt);
         //당청 번호 입력 받기
-
         String lottonum;
         int bonus;
         Output.printNum();
