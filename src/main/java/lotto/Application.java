@@ -36,7 +36,9 @@ public class Application {
         List<Integer> winningnumbers = new ArrayList<>();
         String input = Console.readLine();
 
+        for(String number:input.split(",")){
 
+        }
         return winningnumbers;
     }
 }
