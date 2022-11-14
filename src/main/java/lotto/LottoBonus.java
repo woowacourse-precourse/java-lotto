@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 
 public class LottoBonus {
-    private int bonusNumber;
+    private static int bonusNumber;
 
     public LottoBonus(String input,List<Integer> winningNumber){
         validateRange(input);
@@ -27,7 +27,7 @@ public class LottoBonus {
         }
     }
 
-    public int getBonusNumber(){
+    public static int getBonusNumber(){
         return bonusNumber;
     }
 }
