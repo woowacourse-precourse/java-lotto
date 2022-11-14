@@ -44,6 +44,8 @@ public class Play {
 
         System.out.println("\n"+INPUT_BONUS_MESSAGE);
         String bonus = Console.readLine();
+        winningNumber.checkBonus(bonus);
+
 
         Map<ResultType,Integer> totalResult = result.calculateLotto(lotto,winLotto,bonus);
 
