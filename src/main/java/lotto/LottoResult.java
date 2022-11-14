@@ -15,7 +15,7 @@ public class LottoResult {
     }
 
     public static LinkedHashMap<Integer, Integer> compareResult(List<Integer> winningNumber, List<List<Integer>> ticketNumber) {
-        LinkedHashMap<Integer, Integer> resultByRank = new LinkedHashMap<>();
+        LinkedHashMap<Integer, Integer> resultByMatchedNumber = new LinkedHashMap<>();
         List<Integer> results = new ArrayList<>();
 
         for(int ticketIndex=0; ticketIndex<ticketNumber.size(); ticketIndex++){
@@ -23,15 +23,16 @@ public class LottoResult {
         }
 
         for (int matchingNumbers = 3; matchingNumbers < 7; matchingNumbers++) {
-            resultByRank.put(matchingNumbers,Collections.frequency(results, matchingNumbers));
+            resultByMatchedNumber.put(matchingNumbers,Collections.frequency(results, matchingNumbers));
         }
-        return resultByRank;
+        return resultByMatchedNumber;
     }
 
     public static int earningRatioCalculator(int totalMoney, int totalPrize) {
         int earnedRatio = totalPrize / totalMoney * 100;
         return earnedRatio;
     }
+
 
 
 }
