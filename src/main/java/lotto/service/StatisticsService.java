@@ -12,7 +12,7 @@ import static constants.Constants.*;
 public class StatisticsService {
     private static final DecimalFormat formatter = new DecimalFormat("###,###.##");
 
-    public Statistics calc(User user, WinningLotto winningLotto) {
+    public Statistics calculateRating(User user, WinningLotto winningLotto) {
         Map<Prize, Integer> prizeMap = new EnumMap<>(Prize.class);
 
         List<Lotto> lottos = user.getPurchaseLotto();

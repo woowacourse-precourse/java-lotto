@@ -17,7 +17,7 @@ public class Application {
         userService.printBoughtLotto(user);
         WinningLotto winningLotto = winningLottoService.scanWinningNums();
 
-        Statistics statistics = staticsService.calc(user, winningLotto);
+        Statistics statistics = staticsService.calculateRating(user, winningLotto);
         staticsService.printTotality(statistics);
         staticsService.printProfit(statistics, user);
 
