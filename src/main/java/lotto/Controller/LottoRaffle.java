@@ -1,4 +1,4 @@
-package lotto.View.Controller;
+package lotto.Controller;
 
 import lotto.Model.DataProcessing;
 import lotto.View.ErrorUtil;
