@@ -1,19 +1,18 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class RandomLottos {
     private List<Lotto> randomLottos = new ArrayList<>();
     public RandomLottos(int money){
         validateMoney(money);
         for(int i = 0; i < money/1000; ++i) {
-            List<Integer> list = pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(list);
+            List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             randomLottos.add(new Lotto(list));
         }
     }
