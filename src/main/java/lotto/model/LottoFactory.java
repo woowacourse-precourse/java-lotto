@@ -10,17 +10,19 @@ import java.util.stream.Stream;
 
 public class LottoFactory {
 
-    public static Lottos generate(int size) {
+    public static Lottos generate(int numberOfLottos) {
         List<Lotto> lottos = Stream.generate(LottoFactory::generate)
-                .limit(size)
+                .limit(numberOfLottos)
                 .collect(Collectors.toList());
 
         return new Lottos(lottos);
     }
 
     private static Lotto generate() {
-        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(Lotto.NUMBER_LOWER_BOUNDS
-                , Lotto.NUMBER_UPPER_BOUNDS, Lotto.NUMBERS_SIZE));
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(
+                Lotto.NUMBER_LOWER_BOUNDS, Lotto.NUMBER_UPPER_BOUNDS, Lotto.NUMBERS_SIZE
+        ));
+
         Collections.sort(numbers);
 
         return new Lotto(numbers);
