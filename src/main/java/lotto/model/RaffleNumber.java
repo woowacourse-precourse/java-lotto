@@ -54,9 +54,6 @@ public class RaffleNumber {
     public List<Integer> getRaffleNumbers() {
         return raffleNumbers;
     }
-    public int getBonusNumber() {
-        return bonusNumber;
-    }
 
     private <T, U> List<U> transform(List<T> list, Function<T, U> function){
         return list.stream().map(function).collect(Collectors.toList());
