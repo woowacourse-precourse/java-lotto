@@ -26,4 +26,9 @@ public class LottoCompany {
         if (!lottoWinningNumbers.contains(","))
             throw new IllegalArgumentException(ErrorMessage.NOT_COMMA.getErrorMessage());
     }
+
+    private void validateRange(int lottoWinningBonus){
+        if(lottoWinningBonus < 1 || lottoWinningBonus > 45)
+            throw new IllegalArgumentException(ErrorMessage.NOT_RANGE.getErrorMessage());
+    }
 }
