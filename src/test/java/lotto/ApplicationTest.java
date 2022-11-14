@@ -3,8 +3,11 @@ package lotto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import validate.Check;
 
+import java.io.*;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -60,51 +63,77 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 당첨번호_테스트() {
-        //given
-        String number = "1,2,3,4,5,6";
-
-        List<Integer> winningNumbers = lotto.Buy.makeWinningNumbers(number);
-
-        List<Integer> test =  List.of(1, 2, 3, 4, 5, 6);
-
-        assertThat(winningNumbers).isEqualTo(test);
-
-
-    }
-
-    @Test
-    void 당첨번호_중복_예외_테스트() {
-        //given
-        String number = "1,2,3,4,6, 6";
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            lotto.Buy.makeWinningNumbers(number);
-        });
-
-
-
-    }
-
-    @Test
     @DisplayName("천원단위가 아니면 예외 발생")
     void 주문_테스트() {
-        Long money = 11010L;
+        Long money = 11010123456L;
 
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             validate.Check.countLottoTicket(money);
         });
 
-        assertEquals("[ERROR] 올바른 금액이 아닙니다. (지폐만 가능)", exception.getMessage());
+        assertEquals("[ERROR] 올바른 금액을 투입해 주세요 (지폐만 가능)", exception.getMessage());
 
     }
 
     @Test
-    void 당첨번호_숫자_크기_테스트() {
-        String number = "1,2,3,4,5";
+    void 당첨번호_중복_테스트() {
+        List<String> numbers = List.of("1", "2", "3", "4", "5", "5");
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            lotto.Buy.makeWinningNumbers(number);
+            Check.numberDuplicate(numbers);
+        });
+    }
+
+    @Test
+    @DisplayName("당첨번호가 6개가 아니면 예외 발생")
+    void winningNumberCount() {
+        List<String> numbers = List.of("1", "2", "3", "4", "5");
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Check.winningNumberCount(numbers);
+        });
+    }
+
+    @Test
+    @DisplayName("보너스번호가 1개가 아니면 예외 발생")
+    void bonusNumberCount() {
+        List<String> numbers = List.of("1", "2", "3", "4", "5");
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Check.bonusNumberCount(numbers);
+        });
+    }
+
+    @Test
+    @DisplayName("돈 입력값이 숫자가 아니면 오류 발생")
+    void isNumber_money() {
+        String numbers = "1000원";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Check.isNumber(numbers);
+        });
+    }
+
+    @Test
+    @DisplayName("당첨번호 콤마 이외에 숫자가 아닌 문자가 들어오면 예외 발생")
+    void isNumber_winning() {
+        List<String> numbers = List.of("1", "2", "a", "4", "5");
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Check.isNumber(numbers);
+        });
+    }
+
+    @Test
+    @DisplayName("당첨번호 , 보너스번호가 1~45사이가 아니면 예외 발생")
+    void rightRange() {
+        List<String> numbers = List.of("0", "1", "2", "3", "4", "5");
+
+        int startNumber = 1;
+        int finishNumber = 45;
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Check.rightRange(numbers, startNumber, finishNumber);
         });
     }
 
