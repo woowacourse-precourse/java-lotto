@@ -3,7 +3,7 @@ package lotto.management;
 import java.util.Arrays;
 import java.util.List;
 
-public class LottoWinningManagement {
+public class LottoWinning {
     private final int THREE_NUMBERS_AMOUNT = 5000;
     private final int FOUR_NUMBERS_AMOUNT = 50000;
     private final int FIVE_NUMBERS_AMOUNT = 1500000;
@@ -16,7 +16,7 @@ public class LottoWinningManagement {
     private final int purchaseMoney;
     private int totalWinningAmount;
 
-    public LottoWinningManagement(List<Integer> ticketResult, int purchaseMoney) {
+    public LottoWinning(List<Integer> ticketResult, int purchaseMoney) {
         this.ticketResult = ticketResult;
         this.purchaseMoney = purchaseMoney;
         init();
