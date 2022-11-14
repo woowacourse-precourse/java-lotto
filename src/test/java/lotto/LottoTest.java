@@ -38,4 +38,11 @@ class LottoTest {
         assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 
+    @DisplayName("발행된 로또 번호에서 당첨번호가 몇개 되어있는지 확인")
+    @Test
+    void lottoFilterMatchCountByWinnerNumbers() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.numberOfSameNumbers(List.of(3, 4, 5, 6, 7, 8))).isEqualTo(4);
+    }
+
 }

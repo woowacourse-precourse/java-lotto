@@ -53,4 +53,10 @@ public class Lotto {
         return numbers;
     }
 
+    public int numberOfSameNumbers(List<Integer> winnerNumbers) {
+        return (int) getNumbers().stream()
+                .filter(winnerNumbers::contains)
+                .count();
+    }
+
 }

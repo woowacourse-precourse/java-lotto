@@ -4,7 +4,7 @@
 - [x] 입력받은 당첨 번호가 중복되지 않는지 검증한다. Lotto#validateDuplicateNumber()
 - [x] 1부터 ~ 45사이의 숫자인지 확인한다. Lotto#validateNumbersInRange
 - [x] 로또 번호를 오름차순으로 정렬한다. Lotto#sortAscend()
-- [ ] 당첨 번호를 몇 개 가지고 있는지 확인한다. Lotto#numberOfSameNumbers()
+- [x] 당첨 번호를 몇 개 가지고 있는지 확인한다. Lotto#numberOfSameNumbers()
 - [ ] 보너스 번호를 가지고 있는지 확인한다. Lotto#isContainBonusNumber()
 - [x] 로또 구입 금액만큼 로또를 발행한다. LottoMachine#LottoForAmount()
 - [x] 로또 구입 금액을 입력 받는다. MoneyInput#getPurchaseAmount()
