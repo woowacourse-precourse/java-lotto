@@ -1,6 +1,5 @@
 package lotto.model.converter;
 
-import lotto.model.Lotto;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -30,13 +29,6 @@ public class ConverterImpl implements Converter{
                 .collect(Collectors.toList());
         validateDuplicatedNumbers(numbers);
         return numbers;
-    }
-
-    @Override
-    public List<Lotto> convertNumbersToLotto(List<List<Integer>> numbersList) {
-        return numbersList.stream()
-                .map(Lotto::new)
-                .collect(Collectors.toList());
     }
 
     private void validateDuplicatedNumbers(List<Integer> numbers){

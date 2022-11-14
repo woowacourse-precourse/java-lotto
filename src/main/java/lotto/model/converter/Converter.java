@@ -1,6 +1,5 @@
 package lotto.model.converter;
 
-import lotto.model.Lotto;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,6 +9,5 @@ public interface Converter {
     Integer convertStringToNumber(String systemInput);
     BigDecimal convertMoneyToCount(BigDecimal money);
     List<Integer> convertStringToNumbers(String systemInput);
-    List<Lotto> convertNumbersToLotto(List<List<Integer>> numbersList);
 
 }
