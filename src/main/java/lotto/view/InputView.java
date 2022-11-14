@@ -17,15 +17,8 @@ public class InputView {
     private static final String NOT_NUMBER_ERROR = "[ERROR] 숫자 이외의 값을 입력할 수 없습니다.";
     private static final String COMMA_DELIMITER = ",";
 
-    public static WinningLotto readWinningLotto() {
-        List<Integer> numbers = InputView.readWinningNumbers();
-        int bonus = InputView.readBonusNumber();
-        Lotto lotto = new Lotto(numbers);
 
-        return new WinningLotto(lotto, bonus);
-    }
-
-    private static int readBonusNumber() {
+    public static int readBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
         String input = readWithoutWhiteSpace();
         System.out.println();
@@ -33,7 +26,7 @@ public class InputView {
         return convertStringToInteger(input);
     }
 
-    private static List<Integer> readWinningNumbers() {
+    public static List<Integer> readWinningNumbers() {
         System.out.println(INPUT_WINNING_NUMBERS);
         String input = readWithoutWhiteSpace();
         System.out.println();
