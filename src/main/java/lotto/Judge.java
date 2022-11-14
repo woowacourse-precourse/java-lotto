@@ -10,7 +10,7 @@ public class Judge {
         }
     }
     public void amountIsNaturalNumber(String amount) {
-        if(Integer.parseInt(amount) < 0) {
+        if(Integer.parseInt(amount) <= 0) {
             LottoManager.terminateByError(Errors.IS_NATURAL_NUMBER.getName());
         }
     }
