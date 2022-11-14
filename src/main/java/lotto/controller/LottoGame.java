@@ -1,7 +1,13 @@
-package lotto;
+package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import lotto.CalculateLotto;
+import lotto.ManagementLotto;
+import lotto.ProcessVariable;
+import lotto.model.Lotto;
+import lotto.model.LottoAnswer;
+import lotto.view.Message;
 
 public class LottoGame {
     private final Message message = new Message();
@@ -12,11 +18,11 @@ public class LottoGame {
         try {
             Integer purchasePrice = inputPurchasePrice();
             List<Lotto> lottos = purchaseLotto(purchasePrice);
-            LottoWin winNumber = inputWinNumber();
-            calculateLotto.calculateResult(lottos, winNumber);
+            LottoAnswer winNumber = inputWinNumber();
+            //message.printResult(calculateLotto.calculateResult(lottos, winNumber));
             calculateLotto.calculateROI();
         } catch (IllegalArgumentException exception) {
-            message.printError(exception.getMessage());
+            message.printMsg(exception.getMessage());
         }
     }
 
@@ -35,12 +41,12 @@ public class LottoGame {
         return lottos;
     }
 
-    private LottoWin inputWinNumber() throws IllegalArgumentException {
+    private LottoAnswer inputWinNumber() throws IllegalArgumentException {
         message.printPlsInputWinNumber();
         String winNumber = Console.readLine();
         message.printPlsInputBonusNumber();
         String bonusNumber = Console.readLine();
 
-        return new LottoWin(managementLotto.makeWinNumber(winNumber), managementLotto.makeBonusNumber(bonusNumber));
+        return new LottoAnswer(managementLotto.makeWinNumber(winNumber), managementLotto.makeBonusNumber(bonusNumber));
     }
 }

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import java.util.List;
 
@@ -16,7 +16,11 @@ public class Lotto {
         }
     }
 
-    public String getLottoNumber() {
+    public List<Integer> getLottoNumber() {
+        return numbers;
+    }
+
+    public String toString() {
         return numbers.toString();
     }
 }

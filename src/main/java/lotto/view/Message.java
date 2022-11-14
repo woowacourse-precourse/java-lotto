@@ -1,6 +1,9 @@
-package lotto;
+package lotto.view;
 
+import java.util.EnumMap;
 import java.util.List;
+import lotto.model.Lotto;
+import lotto.model.ResultEnum;
 
 public class Message {
     public void printPurchaseMsg() {
@@ -24,7 +27,15 @@ public class Message {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public void printError(String msg) {
+    public void printMsg(String msg) {
         System.out.println(msg);
     }
+
+    /*public void printResult(EnumMap<ResultEnum, Integer> result) {
+        printMsg("당첨 통계" + "\n" + "---");
+        for (ResultEnum resultEnum : result.keySet()) {
+
+
+        }
+    }*/
 }
