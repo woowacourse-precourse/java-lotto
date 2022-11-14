@@ -15,19 +15,16 @@ public class Application {
 
     private void run() {
         try {
-            firstStep();
+            firstPhase();
             printPurchaseResult();
-            secondStep();
-
-            managerService.judgeResult(user, manager);
-
-            lastStep();
+            secondPhase();
+            lastPhase();
         } catch (IllegalArgumentException illegalArgumentException) {
             OutputUtil.printEndProgram();
         }
     }
 
-    private void firstStep() {
+    private void firstPhase() {
         userService.setInputMoney(user);
         managerService.changeLottos(user);
     }
@@ -37,12 +34,13 @@ public class Application {
         OutputUtil.printUserLottos(user);
     }
 
-    private void secondStep() {
+    private void secondPhase() {
         managerService.setWinningNumber(manager);
         managerService.setBonusNumber(manager);
     }
 
-    private void lastStep() {
+    private void lastPhase() {
+        managerService.judgeResult(user, manager);
         userService.calculateYield(user);
         OutputUtil.printResult(user);
     }
