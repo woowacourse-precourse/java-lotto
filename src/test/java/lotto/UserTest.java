@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.domain.Lotto;
 import lotto.domain.User;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +12,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueN
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class UserTest extends NsTest {
+public class UserTest {
 
     @DisplayName("로또 구입 금액이 숫자가 아니면 예외가 발생한다.")
     @Test
@@ -61,10 +60,5 @@ public class UserTest extends NsTest {
     private void command(final String... args) {
         final byte[] buf = String.join("\n", args).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
-    }
-
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
     }
 }
