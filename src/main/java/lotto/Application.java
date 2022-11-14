@@ -78,7 +78,11 @@ public class Application {
     }
     public static void main(String[] args) {
         //로또 생성
-        generateLotto();
+        try {
+            generateLotto();
+        }catch(Exception e){
+            return;
+        }
         System.out.println(lottos.size() + "개를 구매했습니다.");
         printAllLottos();
         //당첨 번호
