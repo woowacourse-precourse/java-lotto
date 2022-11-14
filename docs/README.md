@@ -53,6 +53,11 @@
 
 ## Util
 
+- ### LottoGenerator
+```
+  - 사용자에게 랜덤한 번호의 로또를 발행해준다.
+```
+
 - ### LottoNumberValidator
 
 로또 번호를 검증하는 클래스
