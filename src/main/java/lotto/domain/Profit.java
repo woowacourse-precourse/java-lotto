@@ -13,11 +13,11 @@ public class Profit {
 
     public Double calculateProfit(Lottos lottos, WinningResult winningResult) {
         Double totalPrize = winningResult.calculateTotalPrize();
-        return lottos.calculateProfit(totalPrize) * 10.0;
+        return (double) Math.round(lottos.calculateProfit(totalPrize) * PERCENT_NUMBER) / PERCENT_NUMBER;
     }
 
     @Override
     public String toString() {
-        return String.format(PROFIT_MESSAGE, (double) Math.round(profit) / PERCENT_NUMBER);
+        return String.format(PROFIT_MESSAGE, profit);
     }
 }
