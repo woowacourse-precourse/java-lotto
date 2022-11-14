@@ -49,6 +49,7 @@ public class Application {
 
             int bonus = bonusUI(jackpot);
 
+            statisticsUI(lotteries, jackpot, bonus, budget);
         } catch (IllegalArgumentException e) {
             System.out.println(Messages.EXCEPTION_HEADER.getMessage() + e.getMessage());
         }
@@ -121,5 +122,29 @@ public class Application {
         validateBonus(bonus, jackpot);
 
         return bonus;
+    }
+
+    private static void statisticsUI(List<List<Integer>> lotteries, List<Integer> jackpot, int bonus, int budget) {
+        List<Integer> result = Lotto.getPrizes(lotteries, jackpot, bonus);
+        double earningRate = Lotto.getEarningRate(budget, result);
+
+        printStatistics(result, earningRate);
+    }
+
+    private static void printStatistics(List<Integer> result, double earningRate) {
+        String[] texts = { Messages.FIFTH.getMessage(),
+                Messages.FOURTH.getMessage(),
+                Messages.THIRD.getMessage(),
+                Messages.SECOND.getMessage(),
+                Messages.FIRST.getMessage()
+        };
+
+        System.out.printf(Messages.RESULT.getMessage());
+
+        for (int i=0; i<texts.length; i++) {
+            System.out.printf(texts[i], result.get(i));
+        }
+
+        System.out.printf(Messages.RATE.getMessage(), earningRate);
     }
 }
