@@ -14,42 +14,53 @@ public class InputViewConsole implements InputView {
     @Override
     public int askPurchaseAmount() {
         String userInput = Console.readLine();
+        isPurchaseAmountNumeric(userInput);
+        int purchaseAmount = Integer.parseInt(userInput);
+        validatePurchaseAmount(purchaseAmount);
+        return purchaseAmount;
+    }
+
+    private void isPurchaseAmountNumeric(String userInput) {
         if (!userInput.matches(NUMERIC_PATTERN)) {
             throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_NOT_NUMERIC.getMessage());
         }
-        int purchaseAmount = Integer.parseInt(userInput);
+    }
 
+    private void validatePurchaseAmount(int purchaseAmount) {
         if (purchaseAmount == 0) {
             throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_ZERO.getMessage());
         }
         if (purchaseAmount % Lottery.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_NOT_DIVIDE_LOTTERY_PRICE.getMessage());
         }
-        return purchaseAmount;
+    }
+
+    @Override
+    public Integer askBonusNumber() {
+        String userInput = Console.readLine();
+        isStringNumeric(userInput);
+        return Integer.valueOf(userInput);
+    }
+
+
+    private void isStringNumeric(String userInput) {
+        if (!userInput.matches(NUMERIC_PATTERN)) {
+            throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_NUMERIC.getMessage());
+        }
     }
 
     @Override
     public List<Integer> askWinningNumbers() {
         String userInput = Console.readLine();
         String[] splitInputs = userInput.split(WINNING_NUMBERS_SEPARATOR);
-        containOnlyNumber(splitInputs);
+        isWinningNumbersNumeric(splitInputs);
         return mapToIntegerList(splitInputs);
     }
 
-    @Override
-    public Integer askBonusNumber() {
-        String userInput = Console.readLine();
-        if (!userInput.matches(NUMERIC_PATTERN)) {
-            throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_NUMERIC.getMessage());
-        }
-        return Integer.valueOf(userInput);
-    }
 
-    private void containOnlyNumber(String[] splitInputs) {
+    private void isWinningNumbersNumeric(String[] splitInputs) {
         for (String numString : splitInputs) {
-            if (!numString.matches(NUMERIC_PATTERN)) {
-                throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_NUMERIC.getMessage());
-            }
+            isStringNumeric(numString);
         }
     }
 
