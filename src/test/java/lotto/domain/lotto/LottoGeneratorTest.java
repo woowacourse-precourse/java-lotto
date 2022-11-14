@@ -24,4 +24,6 @@ public class LottoGeneratorTest {
         List<Integer> sortedNumbers = lotto.getNumbers().stream().sorted().collect(Collectors.toList());
         assertThat(originNumbers).isEqualTo(sortedNumbers);
     }
+
+
 }
