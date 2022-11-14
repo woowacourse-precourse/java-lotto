@@ -6,6 +6,8 @@ import lotto.domain.lotto.LottoNumber;
 
 public class AnswerLottoSystem {
 
+    private final String MESSAGE_INPUT_ANSWER_NUMBER = "당첨 번호를 입력해 주세요.";
+    private final String MESSAGE_INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     private final IoSystem io;
 
     public AnswerLottoSystem(IoSystem ioSystem) {
@@ -17,19 +19,24 @@ public class AnswerLottoSystem {
     }
 
     public AnswerLotto generateAnswerLotto() {
-        io.printBeforeNextLine("당첨 번호를 입력해 주세요.");
-        io.println("");
-        var lottoInput = io.input();
+        this.printInputAnswerLottoMessage();
+        var lotto = this.generateLotto(io.input());
 
-        io.printBeforeNextLine("보너스 번호를 입력해 주세요");
-        io.println("");
+        this.printInputBonusNumberMessage();
+        var bonusNumber = new LottoNumber(io.input());
 
-        var bonusInput = io.input();
-
-        return new AnswerLotto(
-                this.generateLotto(lottoInput),
-                new LottoNumber(bonusInput)
-        );
+        return new AnswerLotto(lotto, bonusNumber);
     }
+
+    private void printInputBonusNumberMessage() {
+        io.printBeforeNextLine(MESSAGE_INPUT_BONUS_NUMBER);
+        io.println("");
+    }
+
+    private void printInputAnswerLottoMessage() {
+        io.printBeforeNextLine(MESSAGE_INPUT_ANSWER_NUMBER);
+        io.println("");
+    }
+
 
 }
