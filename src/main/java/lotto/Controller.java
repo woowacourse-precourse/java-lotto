@@ -6,6 +6,7 @@ public class Controller {
     public void run() {
         List<Lotto> lottos = getLottos();
         WinningLotto winningLotto = getWinningLotto();
+        getResult(lottos, winningLotto);
     }
 
     private List<Lotto> getLottos() {
@@ -26,5 +27,12 @@ public class Controller {
         String winningBonusNumber = InputView.getWinningBonusNumber(winningLottoNumber);
 
         return LottoGame.createWinningLotto(winningLottoNumber, winningBonusNumber);
+    }
+
+    private void getResult(List<Lotto> lottos, WinningLotto winningLotto) {
+        for (Lotto lotto : lottos) {
+            int matchCount = lotto.getCountOfMatch(winningLotto.getWinningLottoNumbers());
+            System.out.printf("match count is %d\n", matchCount);
+        }
     }
 }
