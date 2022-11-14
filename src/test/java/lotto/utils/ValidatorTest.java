@@ -18,6 +18,16 @@ class ValidatorTest {
     }
 
     @Test
+    public void 입력한_보너스_번호가_범위를_벗어난_경우() {
+        //given
+        List<Integer> lottoNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+        int input = 0;
+        //when
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidBonusNumber(lottoNumbers, input));
+        //then
+        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.LOTTO_NUMBER_IS_NOT_VALID_RANGE.toString());
+    }
+    @Test
     public void 입력한_번호가_로또번호_범위를_벗어난_경우() {
         //given
         List<Integer> input = Arrays.asList(1, 2, 3, 4, 5, 50);
