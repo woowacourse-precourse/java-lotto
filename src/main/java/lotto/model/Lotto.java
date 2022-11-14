@@ -1,6 +1,8 @@
 package lotto.model;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Lotto {
@@ -12,7 +14,9 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        List<Integer> lottoNumbers = new LinkedList<>(numbers);
+        Collections.sort(lottoNumbers);
+        this.numbers = lottoNumbers;
     }
 
     public List<Integer> getNumbers() {
