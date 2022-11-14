@@ -14,12 +14,12 @@ public class LottoResult {
         return matchCount;
     }
 
-    public static LinkedHashMap<Integer, Integer> compareResult(List<Integer> winningNumber, List<Integer> ticketNumber, int tickets) {
+    public static LinkedHashMap<Integer, Integer> compareResult(List<Integer> winningNumber, List<List<Integer>> ticketNumber) {
         LinkedHashMap<Integer, Integer> resultByRank = new LinkedHashMap<>();
         List<Integer> results = new ArrayList<>();
 
-        for(int ticketIndex=0; ticketIndex<tickets; ticketIndex++){
-            results.add(compareLotteryNumbers(winningNumber,ticketNumber));
+        for(int ticketIndex=0; ticketIndex<ticketNumber.size(); ticketIndex++){
+            results.add(compareLotteryNumbers(winningNumber,ticketNumber.get(ticketIndex)));
         }
 
         for (int matchingNumbers = 3; matchingNumbers < 7; matchingNumbers++) {
