@@ -2,6 +2,8 @@ package lotto;
 
 import java.util.List;
 
+import static lotto.Game.checker;
+
 public class WinningLotto extends Lotto {
     private int bonusNumber;
 
@@ -11,6 +13,7 @@ public class WinningLotto extends Lotto {
 
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
         super(numbers);
+        checker.checkDuplicated(numbers,bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 

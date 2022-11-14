@@ -3,10 +3,13 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.Game.checker;
+
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        checker.checkDuplicated(numbers);
         this.numbers = numbers;
     }
 
