@@ -29,8 +29,6 @@ public class Lotto {
         Collections.sort(sorted);
         return sorted;
     }
-
-
     public void printLotto() {
         Iterator<Integer> itr = numbers.listIterator();
         System.out.print("[");
