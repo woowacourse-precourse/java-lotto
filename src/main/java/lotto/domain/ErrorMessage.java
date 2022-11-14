@@ -9,8 +9,8 @@ public enum ErrorMessage {
     ERROR_LOTTO_LENGTH("[ERROR] 6개의 당첨번호를 입력해야 합니다."),
     ERROR_BONUS_NUMBER("[ERROR] 1부터 45 사이의 숫자들을 입력해야 합니다."),
     ERROR_SEPARATOR("[ERROR] 당첨 번호는 \",\" 쉼표를 기준으로 입력해야합니다."),
-    ERROR_INPUT_PRICE("[ERROR] 당첨 금액은 공백없이 숫자만 입력해야합니다."),
-    ERROR_BLANK("[ERROR] 입력한 당첨 번호에 공백이 있습니다. 공백없이 입력해주세요.");
+    ERROR_WINNING_NUMBER("[ERROR] 숫자만 입력해야합니다."),
+    ERROR_INPUT_PRICE("[ERROR] 당첨 금액은 공백없이 숫자만 입력해야합니다.");
 
     private final String errorMessage;
 
