@@ -35,7 +35,7 @@ public class Application {
         if(buymoney%1000 != 0)
             throw new IllegalArgumentException("[ERROR] 금액은 천원 단위여야 합니다.");
         buylotto = buymoney / 1000;
-        System.out.println("\n"+buylotto+"개를 구매했습니다.");
+        System.out.println(buylotto+"개를 구매했습니다.");
         return buylotto;
     }
     public static void printalllotto(List<List<Integer>> lottonumbers, int buylotto){
@@ -44,7 +44,7 @@ public class Application {
         }
     }
     public static List<Integer> askwinningnumbers(){
-        System.out.println("\n당첨 번호를 입력해 주세요.");
+        System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> winningnumbers = new ArrayList<>();
         String input = Console.readLine();
 
@@ -56,7 +56,7 @@ public class Application {
         return winningnumbers;
     }
     public static int askbonusnumber(List<Integer> winningnumbers){
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         int bonusnumber;
         for(int i=0;i<input.length();i++){
@@ -73,7 +73,7 @@ public class Application {
     }
     public static void printresult(int[] result, int buylotto){
         int totalmoney = 0;
-        System.out.println("\n당첨 통계\n---");
+        System.out.println("당첨 통계\n---");
         for(PrizeInfo info : PrizeInfo.values()){
             int index = info.ordinal();
             System.out.println(info.getCount()+" "+info.getPrintMoney()+" - "+result[index]+"개");
