@@ -1,14 +1,26 @@
 package lotto.domain;
 
-public class Profit {
-    private WinningTable winningTable;
+import java.util.List;
 
-    public Profit(WinningTable winningTable) {
-        this.winningTable = winningTable;
+public class Profit {
+
+    public Profit() {
     }
 
-    public int calProfit() {
-        int profit = winningTable.getPrice() - BuyLotto.LOTTO_PRICE;
-        return profit;
+    private int calProfit(int winningPrice, int lottoPrice) {
+        return winningPrice - lottoPrice;
+    }
+
+    public double calProfitRate(List<Integer> winningPrices, int lottoPrice) {
+        return sumProfit(winningPrices, lottoPrice) / (lottoPrice * winningPrices.size())  * 100;
+    }
+
+    private int sumProfit(List<Integer> winningPrices, int lottoPrice) {
+        int sum = 0;
+        for (Integer winningPrice : winningPrices) {
+            sum = sum + calProfit(winningPrice, lottoPrice);
+        }
+
+        return sum;
     }
 }
