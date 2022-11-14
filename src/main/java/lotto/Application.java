@@ -16,6 +16,9 @@ public class Application {
         User user = new User();
         winningNumbers = getWinningNumbers();
         bonusNumber = getBonusNumber();
+        user.getWinningNumbers(winningNumbers);
+        user.getBonusNumbers(bonusNumber);
+
 
     }
     public static List<Integer> getWinningNumbers(){
