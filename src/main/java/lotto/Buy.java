@@ -62,24 +62,14 @@ public class Buy {
     }
 
 
-    public static List<Integer> makeWinningNumbers(String numbers) {
-        List<Integer> winningNumbers = new ArrayList<>();
-        try {
-            List<String> temporaryWinningNumbers = new ArrayList<>();
-            temporaryWinningNumbers = Arrays.asList(numbers.split(","));
-            Check.isNumber(temporaryWinningNumbers);
-            Check.rightRange(temporaryWinningNumbers, START_NUMBER, FINAL_NUMBER);
-            Check.numberDuplicate(temporaryWinningNumbers);
-            Check.numberCount(temporaryWinningNumbers);
+    public static List<Integer> makeIntNumbers(List<String> temporaryNumbers) {
+        List<Integer> intNumbers;
 
-            winningNumbers = temporaryWinningNumbers.stream()
-                    .map(s -> Integer.parseInt(s))
-                    .collect(Collectors.toList());
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        intNumbers = temporaryNumbers.stream()
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
 
-        return winningNumbers;
+        return intNumbers;
     }
 
 
