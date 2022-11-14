@@ -37,4 +37,10 @@ public class View {
             }
         }
     }
+    private void validateNumberOfNumbers(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨번호 총 6개를 입력해야 합니다");
+        }
+    }
 }
+
