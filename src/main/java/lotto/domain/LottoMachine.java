@@ -12,6 +12,11 @@ public class LottoMachine {
         money = new Money(Input.input());
     }
 
+//  구매 개수 반환 기능
+    public int getNumberOfLottoPurchases() {
+        return (int)(money.getMoney() / Setting.PURCHASE_AMOUNT_UNIT);
+    }
+
 //    구매한 로또 반환 기능
 //    public List<List<Integer>> getLottos() {}
 
