@@ -3,8 +3,11 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +27,24 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("입력받은 금액 만큼 로또번호를 생성.")
+    @Test
+    void CreateLottoNumInputMoney(){
+        User user = new User();
+        List<List<Integer>> AutoLotto = new ArrayList<>();
+        AutoLotto = user.Count(8000);
+        assert(AutoLotto.size() == 8);
+    }
+
+    @DisplayName("입력받은 금액이 1000단위가아니면 오류")
+    @Test
+    void CheckMoney(){
+        User user = new User();
+        assertThatThrownBy(() ->  user.Count(8500))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
+    
+
 }

@@ -22,13 +22,9 @@ public class User {
 
 
     private void CheckMoney(int money){
-        try {
             if (money % 1000 != 0) {
-                throw new Exception("[ERROR] 금액은 1000단위로 만 입력할수있습니다.");
+                throw new IllegalArgumentException("[ERROR] 금액은 1000단위로 만 입력할수있습니다.");
             }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
     }
 
     public void PrintNumber(List<List<Integer>> AutoLotto){
@@ -48,12 +44,11 @@ public class User {
                     throw new Exception("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
                 }
             }
-
-
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-        Lotto lotto = new Lotto(UserLotto);
+        System.out.println(UserLotto.size());
+        Lotto lotto  = new Lotto(UserLotto);
         StringToBonusNum(UserLotto);
         return UserLotto;
     }
