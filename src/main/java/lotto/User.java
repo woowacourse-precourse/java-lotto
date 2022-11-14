@@ -80,5 +80,13 @@ public class User {
         }
     }
 
-
+    private int checkNumberByLottoAndWinning(int i, List<Integer> numbers) {
+        int count = 0;
+        for (int j = 0; j < lottoNumbers.get(i).size(); j++) {
+            if (lottoNumbers.get(i).contains(numbers.get(j))) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
