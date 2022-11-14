@@ -26,6 +26,7 @@ public class Application {
         List<Integer> wins = lottoSimulator
                         .setWinning(winning, bonus)
                         .getStatistic();
+        printWinningHistory(wins);
         printRateOfReturn(calculateRateOfReturn(wins, price));
     }
 
@@ -55,6 +56,17 @@ public class Application {
         lottoSimulator.getLottos()
                 .stream()
                 .forEach(System.out::println);
+    }
+
+    private static void printWinningHistory(List<Integer> wins) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + wins.get(4) + "개");
+        System.out.println("4개 일치 (50,000원) - " + wins.get(3) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + wins.get(2) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + wins.get(1) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + wins.get(0) + "개");
+
     }
 
     private static void printRateOfReturn(BigDecimal rateOfReturn) {
