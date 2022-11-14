@@ -4,9 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LottoManager {
     private final LottoGenerator lottoGenerator;
+    private List<Integer> luckyNumbers = new ArrayList<>();
 
     public LottoManager() {
         lottoGenerator = new LottoGenerator();
@@ -24,5 +27,13 @@ public class LottoManager {
         }
 
         return lottos;
+    }
+
+    public void inputLuckyNumbers() {
+        String inputNumbers = Console.readLine();
+        luckyNumbers = Stream.of(inputNumbers.split(","))
+                .map(String::trim)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }

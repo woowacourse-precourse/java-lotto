@@ -23,6 +23,9 @@ public class User {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
+
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        lottoManager.inputLuckyNumbers();
     }
 
     private int inputPrice() {
