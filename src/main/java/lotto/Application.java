@@ -1,5 +1,6 @@
-package lotto.View;
+package lotto;
 
+import lotto.View.Screen;
 import lotto.domain.*;
 
 public class Application {
