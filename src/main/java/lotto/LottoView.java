@@ -36,6 +36,19 @@ public class LottoView {
         }
     }
 
+    public static int bonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        try {
+            String bonusInput = Console.readLine();
+            isNull(bonusInput);
+            isNumber(bonusInput);
+            return Integer.parseInt(bonusInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+    }
+
     public static void validate(String input) {
         isNull(input);
         isNumber(input);
