@@ -41,6 +41,10 @@ public class OutputView {
         });
     }
 
+    public void printRateReturn(String rateReturn) {
+        System.out.println("총 수익률은 "+rateReturn+"%입니다.");
+    }
+
     private boolean isSecond(PrizeMoney prizeMoney) {
         return prizeMoney.equals(PrizeMoney.SECOND);
     }

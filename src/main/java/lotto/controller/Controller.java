@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import lotto.domain.PrizeMoney;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -27,15 +26,16 @@ public class Controller {
             int bonusNumber = inputView.inputBonusNumber();
             lottoService.matchLottos(purchaserId, winningLottoNumbers, bonusNumber);
             String rateReturn = lottoService.computeRateReturn(purchaserId);
-            printWinningStatistics(purchaserId);
+            printWinningStatistics(purchaserId, rateReturn);
         } catch (IllegalArgumentException e) {
             outputView.printException(e.getMessage());
             return;
         }
     }
 
-    private void printWinningStatistics(Long purchaserId) {
+    private void printWinningStatistics(Long purchaserId, String rateReturn) {
         outputView.printWinningHistory(lottoService.findPurchaserWinningHistory(purchaserId));
+        outputView.printRateReturn(rateReturn);
     }
 
     private void printLottos(List<List<Integer>> purchaserLottos) {
