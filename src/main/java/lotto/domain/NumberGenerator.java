@@ -19,7 +19,8 @@ public class NumberGenerator {
 
     private int validate(String money) {
         validateInteger(money);
-        validateUnit(Integer.parseInt(money));
+        validateUnit(money);
+        validateStartNumber(money);
         return Integer.parseInt(money);
     }
 
@@ -29,9 +30,15 @@ public class NumberGenerator {
         }
     }
 
-    private  void validateUnit(int money) {
-        if (money % 1000 != 0) {
+    private  void validateUnit(String money) {
+        if (!money.matches("000$")) {
             throw new IllegalArgumentException("[ERROR] 구입금액은 1,000원 단위로 입력해야 합니다.");
+        }
+    }
+
+    private  void validateStartNumber(String money) {
+        if (money.matches("^0")) {
+            throw new IllegalArgumentException("[ERROR] 구입금액은 0으로 시작할 수 없습니다.");
         }
     }
 
