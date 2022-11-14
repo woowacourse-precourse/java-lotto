@@ -32,6 +32,8 @@ public class Printer {
 
         List<Integer> amountEachWin = knowAmountEachWin(correctNumberList);
 
+        System.out.println("당첨 통계");
+        System.out.println("---");
 
         for (int i = 0; i < 5; i++) {
             System.out.println(list.get(i) + amountEachWin.get(i) + unit);

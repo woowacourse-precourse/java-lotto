@@ -1,37 +1,32 @@
 package lotto;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Inputer {
 
 
     public int inputMoney() {
-
-        Scanner scanner = new Scanner(System.in);
-
-        int userInputMoney = scanner.nextInt();
-
+        System.out.println("구입금액을 입력해 주세요.");
+        int userInputMoney = Integer.parseInt(readLine());
         return userInputMoney;
-
     }
 
-    public String createLottoWinNumber() {
-        Scanner scanner = new Scanner(System.in);
+    public List<Integer> createLottoWinNumber() {
+        Maker maker = new Maker();
 
-        String lottoWin = scanner.next();
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String lottoWin = readLine();
 
-        return lottoWin;
+        List<Integer> lottoWinNumberList = maker.lottoWinList(lottoWin);
+
+        return lottoWinNumberList;
     }
 
     public int inputLottoBonusNumber() {
-        Scanner scanner = new Scanner(System.in);
-
-        int bonusNumber = scanner.nextInt();
-
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = Integer.parseInt(readLine());
         return bonusNumber;
     }
 
