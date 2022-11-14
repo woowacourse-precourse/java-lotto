@@ -34,7 +34,7 @@ public class Lotto {
 
     private void checkDuplicateNumber(List<Integer> numbers, int index) {
         Integer uncheckedNumber = numbers.get(index);
-        for (int j = index; j < numbers.size(); j++) {
+        for (int j = index+1; j < numbers.size(); j++) {
             Integer nextNumber = numbers.get(j);
             if (uncheckedNumber.equals(nextNumber)) {
                 throw new IllegalArgumentException(InputErrorMessage.DUPLICATE_NUMBERS.getErrorMessage());
