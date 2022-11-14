@@ -38,4 +38,18 @@ public class Lotto {
     public void printLotto() {
         System.out.println(this.numbers);
     }
+
+    public Integer matchWinNumbers() {
+        Integer match = 0;
+        for (Integer number : this.numbers) {
+            if (winNumbers.contains(number)) {
+                match += 1;
+            }
+        }
+        return match;
+    }
+
+    public Boolean matchBonusNumber() {
+        return this.numbers.contains(Lotto.bonusNumber);
+    }
 }
