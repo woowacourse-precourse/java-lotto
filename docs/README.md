@@ -15,7 +15,7 @@
 ## 4. 로또 결과를 분석한다.  - Analyze()
 - [x] 로또 번호의 일치 갯수를 구한다.  -Analyze#matchCount
 - [x] 사용자의 모든 로또에 대한 일치 갯수를 구한다.  -Analyzer#matchCountPerLotto
-- [] 5개 일치할때 보너스 번호의 일치 여부를 판정한다.  -Analyze#matchBonus
+- [x] 사용자 로또의 보너스 번호 포함 여부를 판단한다.   -Analyze#matchBonus
 
 ## 5. 결과 정보를 출력한다.  - Print()
 

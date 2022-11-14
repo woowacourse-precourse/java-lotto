@@ -33,5 +33,17 @@ public class Analyze {
         return matchPerLotto;
     }
 
+    public List<Integer> matchBonus(){
+        List<Integer> bonusMatchPerLotto = new ArrayList<>();
+        for (int i = 0; i < userLottos.size(); i++){
+            int bonusMatchNumber = 0;
+            if (userLottos.get(i).contains(bonus)){
+                bonusMatchNumber = 1;
+            }
+            bonusMatchPerLotto.add(bonusMatchNumber);
+        }
+        return bonusMatchPerLotto;
+    }
+
 
 }
