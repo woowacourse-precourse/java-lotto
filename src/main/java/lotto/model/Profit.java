@@ -15,7 +15,7 @@ public class Profit {
     }
 
     private void setPrize() {
-        prizeMoney.addAll(List.of(Prize.PRIZE_3.getPrize(), Prize.PRIZE_4.getPrize(), Prize.PRIZE_5.getPrize(), Prize.PRIZE_5BONUS.getPrize(), Prize.PRIZE_6.getPrize());
+        prizeMoney.addAll(List.of(Prize.PRIZE_3.getPrize(), Prize.PRIZE_4.getPrize(), Prize.PRIZE_5.getPrize(), Prize.PRIZE_5BONUS.getPrize(), Prize.PRIZE_6.getPrize()));
     }
 
     private void calculateProfit(int price, WinningResult winningResult) {
