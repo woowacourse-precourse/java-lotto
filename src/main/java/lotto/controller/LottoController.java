@@ -8,6 +8,10 @@ import view.LottoView;
 
 public class LottoController {
 
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 45;
+    public static final int NUMBER_OF_NUMBERS = 6;
+
     private final LottoService lottoService;
     private final int countLotto;
 
@@ -25,7 +29,7 @@ public class LottoController {
     }
 
     private void createLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_OF_NUMBERS);
         Lotto lotto = new Lotto(numbers);
         lottoService.saveLotto(lotto);
     }

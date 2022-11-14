@@ -6,7 +6,7 @@ import lotto.domain.Lotto;
 
 public class LottoRepository {
 
-    private static final List lottos = new ArrayList();
+    private static final List<Lotto> lottos = new ArrayList<Lotto>();
 
     public Lotto save(Lotto lotto) {
         lottos.add(lotto);
