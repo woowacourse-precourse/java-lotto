@@ -16,7 +16,7 @@ public class BonusNumber {
 
     private void validate(int number) {
         if (! isValidRange(number)) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자는 1이상 45 이하의 숫자를 입력하셔야 합니다.");
+            throw new IllegalArgumentException("로또 숫자는 1이상 45 이하의 숫자를 입력하셔야 합니다.");
         }
     }
 

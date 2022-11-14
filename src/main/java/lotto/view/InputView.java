@@ -39,7 +39,7 @@ public class InputView {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주셔야 합니다.");
+            throw new IllegalArgumentException("숫자를 입력해주셔야 합니다.");
         }
     }
 
@@ -47,7 +47,7 @@ public class InputView {
         try {
             return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 숫자를 입력해주셔야 합니다.");
+            System.out.println("숫자를 입력해주셔야 합니다.");
             throw new IllegalArgumentException();
         }
     }

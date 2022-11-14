@@ -20,13 +20,13 @@ public class Lotto {
     // TODO: 추가 기능 구현
     private void validate(List<Integer> numbers) {
         if (!isValidSize(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 총 6개의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("총 6개의 숫자를 입력해주세요.");
         }
         if (!isValidRange(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자는 1이상 45 이하의 숫자를 입력하셔야 합니다.");
+            throw new IllegalArgumentException("로또 숫자는 1이상 45 이하의 숫자를 입력하셔야 합니다.");
         }
         if (!isValidUnique(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 중복되지 않은 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("중복되지 않은 숫자를 입력해주세요.");
         }
     }
 
