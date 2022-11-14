@@ -42,7 +42,7 @@ public class LottoController {
         int count = cost / 1000;
         if (cost % 1000 != 0)
             throw new IllegalArgumentException(Message.Exception_Not1000unit.getMessage());
-        if(count <= 0)
+        if (count <= 0)
             throw new IllegalArgumentException(Message.Exception_NegativeNum.getMessage());
         System.out.println("\n" + count + "개를 구매했습니다.");
         return count;
@@ -53,14 +53,19 @@ public class LottoController {
         String lotto_str = readLine();
         String[] num_list = lotto_str.split(",");
         List<Integer> lottoNumber = Strings2Integers(num_list);
-//                lottoNumber = new ArrayList<>();
-//        for (String num_str : num_list) {
-//            int num = String2Int(num_str);
-//            lottoNumber.add(num);
-//        }
         return new Lotto(lottoNumber);
     }
-    private List<Integer> Strings2Integers(String[] strings){
+
+    private int bonusInput(Lotto lotto) {
+        System.out.println(Message.Input_Bonus.getMessage());
+        String bonus_str = readLine();
+        int bonus_num = String2Int(bonus_str);
+        Lotto.rangeCheck(bonus_num);
+        lotto.bonus_duplicateCheck(bonus_num);
+        return bonus_num;
+    }
+
+    private List<Integer> Strings2Integers(String[] strings) {
         List<Integer> integerList = new ArrayList<>();
         for (String str : strings) {
             int num = String2Int(str);
@@ -68,29 +73,12 @@ public class LottoController {
         }
         return integerList;
     }
-    private int bonusInput(Lotto lotto) {
-        System.out.println(Message.Input_Bonus.getMessage());
-        String bonus_str = readLine();
-        int bonus_num = String2Int(bonus_str);
-        Lotto.rangeCheck(bonus_num);
-//        if (bonus_num < 1 || bonus_num > 45)
-//            throw new IllegalArgumentException(Message.Exception_NotInRange.getMessage());
-//        if (isBonusDuplicate(bonus_num, lotto))
-//            throw new IllegalArgumentException(Message.Exception_DuplicateNum.getMessage());
-        lotto.bonus_duplicateCheck(bonus_num);
-//        bonusDuplicateCheck(bonus_num,lotto);
-        return bonus_num;
-    }
-    private int String2Int(String str){
+
+    private int String2Int(String str) {
         try {
             return Integer.parseInt(str);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Message.Exception_NotInteger.getMessage());
         }
     }
-//    private void bonusDuplicateCheck(int num, Lotto lotto) {
-//        if(lotto.getNumbers().contains(num)){
-//            throw new IllegalArgumentException(Message.Exception_DuplicateNum.getMessage());
-//        }
-//    }
 }
