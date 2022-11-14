@@ -66,7 +66,7 @@ public class Validation {
         return lottoNnumbers.size() != lottoNnumbers.stream().distinct().count();
     }
 
-    public static boolean isCorrectRnage(int number) {
+    public static boolean isNumberInCorrectRnage(int number) {
         return number >= LOTTO_MIN && number <= LOTTO_MAX;
     }
 
