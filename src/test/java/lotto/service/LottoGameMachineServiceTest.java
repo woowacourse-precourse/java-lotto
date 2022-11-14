@@ -50,4 +50,17 @@ class LottoGameMachineServiceTest {
         assertThat(service.readWinningNumbers()).hasSize(6);
         assertThat(service.readWinningNumbers()).isEqualTo(winningNumbers);
     }
+
+    @DisplayName("보너스 번호가 입력되어야 한다.")
+    @Test
+    public void givenBonusNumber_whenEnterBonusNumber_thenReturnBonusNumber(){
+        // Given
+        int bonusNumber = 1;
+
+        // When
+        service.enterBonusNumber(bonusNumber);
+
+        // Then
+        assertThat(service.readBonusNumber()).isEqualTo(bonusNumber);
+    }
 }
