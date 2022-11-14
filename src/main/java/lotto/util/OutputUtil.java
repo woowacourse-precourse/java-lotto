@@ -50,4 +50,8 @@ public class OutputUtil {
         System.out.println(Message.RESULT_FIRST.getMessage() + ranks.get(Number.ONE) + "개");
         System.out.printf("총 수익률은 %.1f%%입니다.", user.getYield());
     }
+
+    public static void printEndProgram() {
+        System.out.println(Message.END_PROGRAM_MESSAGE);
+    }
 }

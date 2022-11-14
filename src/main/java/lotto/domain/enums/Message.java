@@ -16,7 +16,8 @@ public enum Message {
     INPUT_PURCHASE_AMOUNT_MESSAGE("구입금액을 입력해 주세요."),
     INPUT_WINNING_NUMBERS_MESSAGE("당첨 번호를 입력해 주세요."),
     INPUT_BONUS_NUMBER_MESSAGE("보너스 번호를 입력해 주세요."),
-    TOTAL_RESULT_MESSAGE("\n당첨 통계\n---");
+    TOTAL_RESULT_MESSAGE("\n당첨 통계\n---"),
+    END_PROGRAM_MESSAGE("로또 프로그램을 종료합니다.");
 
     private final String message;
 
