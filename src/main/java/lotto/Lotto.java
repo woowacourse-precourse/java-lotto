@@ -1,10 +1,12 @@
 package lotto;
 
+import ui.SystemMessage;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static util.Constant.NUMBER_OF_NUMBERS;
+import static util.Constant.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,6 +14,10 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+    }
+
+    public List<Integer> getUserLottoNumbers() {
+        return Collections.unmodifiableList(this.numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -22,9 +28,8 @@ public class Lotto {
 
     private void isValidNumberOfNumbers(List<Integer> winningNumbers) {
         if (winningNumbers.size() != NUMBER_OF_NUMBERS) {
-            String errorMessage = "[ERROR] 로또 번호는 6개의 숫자로 이루어져야 합니다.";
-            System.out.println(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
+            SystemMessage.printErrorMessage(NOT_VALID_LENGTH_NUMBERS);
+            throw new IllegalArgumentException(NOT_VALID_LENGTH_NUMBERS);
         }
     }
 
@@ -34,24 +39,17 @@ public class Lotto {
                 .collect(Collectors.toList());
 
         if (uniqueNumbers.size() != NUMBER_OF_NUMBERS) {
-            String errorMessage = "[ERROR] 로또 번호는 중복되지 않아야 합니다.";
-            System.out.println(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
+            SystemMessage.printErrorMessage(DUPLICATE_NUMBER_ERROR);
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR);
         }
     }
 
     private static void isInRangeNumbers(List<Integer> winningNumbers) {
         for (int number : winningNumbers) {
             if (number < 1 || number > 45) {
-                String errorMessage = "[ERROR] 로또 번호는 1~45 범위의 숫자여야 합니다.";
-                System.out.println(errorMessage);
-                throw new IllegalArgumentException(errorMessage);
+                SystemMessage.printErrorMessage(NOT_IN_RANGE_NUMBER_INPUT);
+                throw new IllegalArgumentException(NOT_IN_RANGE_NUMBER_INPUT);
             }
         }
-    }
-
-    // TODO: 추가 기능 구현
-    public List<Integer> getUserLottoNumbers() {
-        return Collections.unmodifiableList(this.numbers);
     }
 }

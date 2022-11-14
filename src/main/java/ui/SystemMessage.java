@@ -48,4 +48,8 @@ public class SystemMessage {
     public static void askBonusNumbers() {
         System.out.println("보너스 번호를 입력해주세요");
     }
+
+    public static void printErrorMessage(String errorMessage) {
+        System.out.println(errorMessage);
+    }
 }

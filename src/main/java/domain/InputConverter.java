@@ -1,5 +1,7 @@
 package domain;
 
+import ui.SystemMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,21 +33,18 @@ public class InputConverter {
         return Integer.parseInt(input);
     }
 
-
     private static void isValidMoneyInput(String moneyInput) {
         int money;
         try {
             money = Integer.parseInt(moneyInput);
         } catch (NumberFormatException e) {
-            String errorMessage = "[ERROR] 구입 금액에 숫자가 아닌 값이 포함되어 있습니다.";
-            System.out.println(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
+            SystemMessage.printErrorMessage(NOT_NUMERAL_MONEY_INPUT);
+            throw new IllegalArgumentException(NOT_NUMERAL_MONEY_INPUT);
         }
 
         if (money % LOTTO_PRICE != 0) {
-            String errorMessage = "[ERROR] 구입 금액은 1000원 단위로 입력되어야 합니다.";
-            System.out.println(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
+            SystemMessage.printErrorMessage(NOT_VALID_MONEY_UNIT);
+            throw new IllegalArgumentException(NOT_VALID_MONEY_UNIT);
         }
     }
 
@@ -54,15 +53,13 @@ public class InputConverter {
         try {
             bonusNumber = Integer.parseInt(numberInput);
         } catch (NumberFormatException e) {
-            String errorMessage = "[ERROR] 숫자가 아닌 값으로 입력되었습니다.";
-            System.out.println(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
+            SystemMessage.printErrorMessage(NOT_NUMERAL_NUMBER_INPUT);
+            throw new IllegalArgumentException(NOT_NUMERAL_NUMBER_INPUT);
         }
 
         if (bonusNumber < MINIMUM_NUMBER || bonusNumber > MAXIMUM_NUMBER) {
-            String errorMessage = "[ERROR] 로또 번호는 1~45 범위의 숫자여야 합니다.";
-            System.out.println(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
+            SystemMessage.printErrorMessage(NOT_IN_RANGE_NUMBER_INPUT);
+            throw new IllegalArgumentException(NOT_IN_RANGE_NUMBER_INPUT);
         }
     }
 }
