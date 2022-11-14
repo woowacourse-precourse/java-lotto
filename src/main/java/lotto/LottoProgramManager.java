@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.UI.InputManager;
 import lotto.UI.OutputManager;
+import lotto.UI.UIPrinter;
 import lotto.config.LottoConfig;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class LottoProgramManager {
             rankLotto();
 
         } catch(Exception e) {
-            OutputManager.printError(e.getMessage());
+            UIPrinter.printError(e.getMessage());
         }
     }
 

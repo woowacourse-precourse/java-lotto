@@ -10,9 +10,11 @@ import java.util.stream.Collectors;
 public class InputManager {
     public static int scanMoney() throws IllegalArgumentException {
         try {
-            System.out.println(UIMessage.ASK_PRICE.getMessage());
-            int price = UIScanner.scanInt();
-            OutputManager.printEmptyLine();
+            int price;
+
+            UIPrinter.printMessage(UIMessage.ASK_PRICE.getMessage());
+            price = UIScanner.scanInt();
+            UIPrinter.printEmptyLine();
 
             assert(price > 0);
             assert(price % LottoConfig.LOTTO_PRICE == 0);
@@ -31,7 +33,7 @@ public class InputManager {
         } catch (Exception e) {
             throw new IllegalArgumentException(ErrorCode.WRONG_ANSWER.getValue());
         } finally {
-            OutputManager.printEmptyLine();
+            UIPrinter.printEmptyLine();
         }
     }
 
@@ -43,7 +45,7 @@ public class InputManager {
         } catch (Exception e) {
             throw new IllegalArgumentException(ErrorCode.WRONG_ANSWER.getValue());
         } finally {
-            OutputManager.printEmptyLine();
+            UIPrinter.printEmptyLine();
         }
     }
 }
