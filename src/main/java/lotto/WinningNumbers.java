@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinningNumbers {
-    private final List<Integer> lotto;
-    private final int bonus;
+    final List<Integer> lotto;
+    final int bonus;
 
     WinningNumbers() {
         List<Integer> tmpLotto = getLotto();
