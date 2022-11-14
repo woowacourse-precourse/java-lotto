@@ -12,8 +12,13 @@ public class LottoController {
 
     // 로또 게임 시작 기능
     public void playLottoGame() {
-        lottoService.buyLotto();
-        lottoService.inputWinningNumber();
-        lottoService.showLottoYield();
+        try {
+            lottoService.buyLotto();
+            lottoService.inputWinningNumber();
+            lottoService.showLottoYield();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
     }
 }
