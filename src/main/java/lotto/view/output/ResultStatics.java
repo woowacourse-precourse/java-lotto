@@ -11,12 +11,13 @@ public class ResultStatics {
     public String getString(Map<RankingType, Integer> countByRankingType){
         StringBuilder sb = new StringBuilder();
         for (RankingType rankingType : RankingType.values()) {
-            sb.append(getRankingString(rankingType.getKorean()));
-            sb.append(getConditionString(rankingType.getCondition()));
-            sb.append(getBonusConditionString(rankingType.isNeedBonus()));
-            sb.append(getPrizeMoney(rankingType.getPrizeMoney()));
-            sb.append(getCountString(countByRankingType.get(rankingType)));
-            sb.append("\n");
+            if(rankingType != RankingType.DROP_OUT){
+                sb.append(getConditionString(rankingType.getCondition()));
+                sb.append(getBonusConditionString(rankingType.isNeedBonus()));
+                sb.append(getPrizeMoney(rankingType.getPrizeMoney()));
+                sb.append(getCountString(countByRankingType.get(rankingType)));
+                sb.append("\n");
+            }
         }
         return sb.toString().trim();
     }
