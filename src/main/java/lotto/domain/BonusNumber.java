@@ -42,6 +42,10 @@ public class BonusNumber {
         return winningNumbers.getWinningNumbers();
     }
 
+    public boolean isMatchBonusNumber(List<Integer> lottoNumbers) {
+        return lottoNumbers.contains(number);
+    }
+
     public int getNumber() {
         return this.number;
     }
