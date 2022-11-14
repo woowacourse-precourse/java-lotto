@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,6 +51,12 @@ public class LottoInterface {
     public static void winningStatistics(List<Lotto> purchaseLottos, Lotto winningLottoNum, int bonus){
         System.out.println("당첨 통계" );
         System.out.println("---");
-        LottoShop.confirmRank(purchaseLottos, winningLottoNum, bonus);
+        HashMap<WinningRank, Integer> ranking = LottoShop.confirmRank(purchaseLottos, winningLottoNum, bonus);
+        Arrays.stream(WinningRank.values()).filter(rank -> rank != WinningRank.BANG).map(rank -> rank.getRightNumCnt() + "개 일치" + (rank == WinningRank.SECOND ? ", 보너스 볼 일치" : "")
+                + " (" + rank.getReward() + "원) - " + ranking.get(rank) + "개").forEach(System.out::println);
+    }
+
+    public static void yield(){
+        System.out.println("총 수익률은 " + LottoShop.totalYield() + "%입니다.");
     }
 }

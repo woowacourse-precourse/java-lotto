@@ -2,14 +2,13 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LottoShop {
     private static int purchasePrise;
     private static int lottoCnt;
+    public static HashMap<WinningRank, Integer> rankingCnt = new LinkedHashMap<>();
 
     public LottoShop(int purchasePrise){
         this.purchasePrise = purchasePrise;
@@ -36,10 +35,25 @@ public class LottoShop {
         return newLottos;
     }
 
-    public static void confirmRank(List<Lotto> purchaseLottos, Lotto winningLottoNum, int bonus){
+    public static HashMap<WinningRank, Integer> confirmRank(List<Lotto> purchaseLottos, Lotto winningLottoNum, int bonus){
+        rankInitialization();
         for(Lotto lotto : purchaseLottos){
             int rightNumCnt = howManyRightWinningNum(winningLottoNum, lotto);
             boolean isContainBonus = checkContainBonus(winningLottoNum, bonus);
+
+            WinningRank rank = WinningRank.checkRank(rightNumCnt, isContainBonus);
+            rankUpdate(rank);
+        }
+
+        return rankingCnt;
+    }
+
+    public static void rankUpdate(WinningRank rank){
+        rankingCnt.put(rank, rankingCnt.get(rank)+1);
+    }
+    public static void rankInitialization(){
+        for(WinningRank rank : WinningRank.values()){
+            rankingCnt.put(rank, 0);
         }
     }
 
@@ -56,8 +70,18 @@ public class LottoShop {
 
         lottoNums.retainAll(winningLottoNums);
         int rightNumCnt = lottoNums.size();
-        System.out.println("몇개나 맞았나? : " + rightNumCnt);
 
         return rightNumCnt;
+    }
+
+    public static double totalYield(){
+        int benefit = 0;
+        for(WinningRank rank : WinningRank.values()){
+            int reward = rank.getReward();
+            benefit += rankingCnt.get(rank) * reward;
+        }
+
+        double benefitPercent = benefit/(double)purchasePrise*100;
+        return benefitPercent;
     }
 }

@@ -18,5 +18,6 @@ public class Application {
 
         // statistics
         LottoInterface.winningStatistics(purchaseLottos, winningLottoNum, bonus);
+        LottoInterface.yield();
     }
 }
