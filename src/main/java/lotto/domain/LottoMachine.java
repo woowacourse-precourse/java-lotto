@@ -1,11 +1,15 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.model.Lotto;
 
-public class User {
+import java.util.ArrayList;
+
+public class LottoMachine {
     private final int LOTTO_PRICE = 1000;
     private int paid;
-    public User() {
+    private ArrayList<Lotto> lottos = new ArrayList<>();
+    public LottoMachine() {
 
     }
     public void getInputMoney() {
@@ -19,4 +23,6 @@ public class User {
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요.");
         }
     }
+
+
 }
