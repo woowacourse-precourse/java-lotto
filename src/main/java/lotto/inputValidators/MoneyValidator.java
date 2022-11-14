@@ -1,10 +1,11 @@
 package lotto.inputValidators;
 
 import lotto.domain.ErrorMessage;
+import lotto.domain.LotteryNumber;
 
 public class MoneyValidator {
     static public void validateInputMoney(String inputMoney) {
-        if (includeNotNumericCharacter(inputMoney)) {
+        if (NumberValidator.includeNotNumericCharacter(inputMoney)) {
             System.out.println(ErrorMessage.MONEY_INPUT_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
@@ -13,18 +14,6 @@ public class MoneyValidator {
         if (!isMultipleOfOneThousand(userMoney)) {
             throw new IllegalArgumentException();
         }
-    }
-
-    static private boolean includeNotNumericCharacter(String userInput) {
-        if (userInput.charAt(0) == '0') {
-            return true;
-        }
-        for (int i = 0; i < userInput.length(); ++i) {
-            if (userInput.charAt(i) < '0' || userInput.charAt(i) > '9') {
-                return true;
-            }
-        }
-        return false;
     }
 
     static private boolean isMultipleOfOneThousand(int userMoney) {

@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.inputValidators.NumberValidator;
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
@@ -11,7 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LotteryMachineTest {
 
-    private static final InputValidator inputValidator = new InputValidator();
     private static final User user = new User();
     private static final LotteryMachine lotteryMachine = new LotteryMachine();
 
@@ -91,14 +91,14 @@ public class LotteryMachineTest {
     }
 
     private void winningNumbersCountTest(String[] winningNumbersInput) {
-        inputValidator.validateWinningNumbers(winningNumbersInput);
+        NumberValidator.validateWinningNumbers(winningNumbersInput);
     }
 
     private void winningNumbersInvalidTest(String[] winningNumbersInput) {
-        inputValidator.validateWinningNumbers(winningNumbersInput);
+        NumberValidator.validateWinningNumbers(winningNumbersInput);
     }
 
     private void bonusNumberTest(String bonusNumberInput, List<Integer> winningNumbers) {
-        inputValidator.validateBonusNumber(bonusNumberInput, winningNumbers);
+        NumberValidator.validateBonusNumber(bonusNumberInput, winningNumbers);
     }
 }
