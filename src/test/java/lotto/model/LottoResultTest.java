@@ -62,4 +62,20 @@ class LottoResultTest {
             i += 1;
         }
     }
+
+    @DisplayName("수익률을 계산한다.")
+    @Test
+    void 수익률_계산_테스트() {
+        int purchaseAmount = 8000;
+        lottoResult.computeWinningScore(new Lotto(List.of(1, 3, 5, 14, 22, 45)), winningLotto);
+        assertThat(lottoResult.computeRateOfReturn(purchaseAmount)).isEqualTo(62.5);
+    }
+
+    @DisplayName("수익률을 계산한다.")
+    @Test
+    void 수익률_계산_테스트_2() {
+        int purchaseAmount = 7000;
+        lottoResult.computeWinningScore(new Lotto(List.of(1, 3, 5, 14, 22, 45)), winningLotto);
+        assertThat(lottoResult.computeRateOfReturn(purchaseAmount)).isEqualTo(71.43);
+    }
 }
