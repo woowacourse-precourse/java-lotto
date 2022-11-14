@@ -6,6 +6,7 @@
    - camp.nextstep.edu.missionutils.Console의 readLine()을 활용
    - 6자리가 아니면 IllegalArgumentException
    - 1~45 범위를 벗어나면 IllegalArgumentException
+   - 중복되면 IllegalArgumentException
 3. 보너스번호 입력하기
    - 당첨번호와 중복 x
    - 1~45 범위
