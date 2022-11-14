@@ -12,7 +12,7 @@ public class WinningNumber {
 
     private static final String DELIM = ",";
 
-    Set<Integer> numbers;
+    private final Set<Integer> numbers;
 
     private WinningNumber(String numbers) {
         this.numbers = validateInput(numbers);
@@ -20,6 +20,10 @@ public class WinningNumber {
 
     public static WinningNumber saveWinningNumbers(String numbers) {
         return new WinningNumber(numbers);
+    }
+
+    public Set<Integer> getNumbers() {
+        return this.numbers;
     }
 
     private Set<Integer> validateInput(String numbers) {

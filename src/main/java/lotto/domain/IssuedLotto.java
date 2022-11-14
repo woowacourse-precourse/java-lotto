@@ -27,11 +27,19 @@ public class IssuedLotto {
         return this.lotto.size();
     }
 
+    public int getPrice() {
+        return this.lotto.size() * Lotto.PRICE;
+    }
+
+    public List<Lotto> getIssuedLotto() {
+        return this.lotto;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (Lotto l : lotto) {
-            sb.append(l).append(LF);
+            sb.append(l.toString()).append(LF);
         }
         return sb.toString();
     }

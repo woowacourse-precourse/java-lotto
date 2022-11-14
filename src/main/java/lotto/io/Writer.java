@@ -6,8 +6,10 @@ import static lotto.io.Message.INPUT_BONUS_NUMBER;
 import static lotto.io.Message.INPUT_PURCHASE_AMOUNT;
 import static lotto.io.Message.INPUT_WINNING_NUMBERS;
 import static lotto.io.Message.LF;
+import static lotto.io.Message.WINNING_STATISTICS;
 
 import lotto.domain.IssuedLotto;
+import lotto.domain.StatResult;
 
 public class Writer {
 
@@ -40,8 +42,11 @@ public class Writer {
         write(INPUT_BONUS_NUMBER);
     }
 
+    public static void printResult(StatResult statResult) {
+        write(WINNING_STATISTICS + statResult.toString());
+    }
+
     private static void write(String message) {
         System.out.println(message + LF);
     }
-
 }

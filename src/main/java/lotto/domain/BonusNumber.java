@@ -4,16 +4,20 @@ import static lotto.io.Message.INPUT_FROM_1_TO_45;
 
 public class BonusNumber {
 
-    private final int bonusNumber;
+    private final int number;
 
     private BonusNumber(String bonusNumber) {
-        int number = Integer.parseInt(bonusNumber);
-        validateRange(number);
-        this.bonusNumber = number;
+        int n = Integer.parseInt(bonusNumber);
+        validateRange(n);
+        this.number = n;
     }
 
     public static BonusNumber saveBonusNumber(String bonusNumber) {
         return new BonusNumber(bonusNumber);
+    }
+
+    public int getNumber() {
+        return this.number;
     }
 
     private void validateRange(int number) {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
 
@@ -18,6 +19,30 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+    }
+
+    public static Lotto issue() {
+        ArrayList<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(numbers);
+        return new Lotto(numbers);
+    }
+
+    public LottoResult getLottoResult(Set<Integer> winningNumbers, int bonusNumber) {
+        int correctCount = 0;
+        boolean havingBonusNumber = false;
+
+        for (int number : numbers) {
+            if (winningNumbers.contains(number)) {
+                correctCount++;
+               continue;
+            }
+
+            if (number == bonusNumber) {
+                havingBonusNumber = true;
+            }
+        }
+
+        return new LottoResult(correctCount, havingBonusNumber);
     }
 
     private void validate(List<Integer> numbers) {
@@ -37,10 +62,9 @@ public class Lotto {
         }
     }
 
-    public static Lotto issue() {
-        ArrayList<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        Collections.sort(numbers);
-        return new Lotto(numbers);
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 
 }
