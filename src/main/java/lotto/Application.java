@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -12,6 +13,9 @@ public class Application {
         int money = inputMoney();
         Lotto lotto = inputLottoNumber();
         int bonus = inputBonusNumber(lotto);
+
+        List<Lotto> issuedLotto = issueLotto(money);
+        printIssuedLotto(issuedLotto);
     }
 
 
@@ -24,7 +28,8 @@ public class Application {
             money = checkInput(inputMoneyString);
         } catch (Exception e) {
             inputMoneyError = true;
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력이 들어왔습니다.");
+//            System.out.println("[ERROR] 잘못된 입력이 들어왔습니다.");
         } finally {
             if (inputMoneyError) {
                 String errorMessage = "[ERROR] 잘못된 입력이 들어왔습니다.";
@@ -78,7 +83,6 @@ public class Application {
         return lotto;
     }
 
-
     public static int inputBonusNumber(Lotto lotto) {
         String inputBonus = Console.readLine();
         int bonus;
@@ -95,6 +99,29 @@ public class Application {
             }
         }
         return bonus;
+    }
+
+    public static List<Lotto> issueLotto(int money) {
+        List<Lotto> issuedLotto = new ArrayList<>();
+        int numberOfLotto = money / 1000;
+        System.out.println(numberOfLotto + "개를 구매했습니다.");
+        for (int i = 0; i < numberOfLotto; i++) {
+            Lotto newLotto = createNewLotto();
+            issuedLotto.add(newLotto);
+        }
+        return issuedLotto;
+    }
+
+    public static Lotto createNewLotto() {
+        List<Integer> newLottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        newLottoNumber.sort(Comparator.naturalOrder());
+        return new Lotto(newLottoNumber);
+    }
+
+    public static void printIssuedLotto(List<Lotto> lottoList) {
+        for (Lotto lotto : lottoList) {
+            lotto.printLotto();
+        }
     }
 
 }
