@@ -1,5 +1,6 @@
 package lotto.domain.vo;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -7,10 +8,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.List;
 import lotto.domain.constants.ErrorCode;
 import lotto.domain.vo.Lotto;
+import lotto.veiw.InputHandler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class LottoTest {
+
+    InputHandler inputHandler = new InputHandler();
 
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
@@ -27,32 +33,30 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    public void validateSixDigits_1234566_NOTSIXDIGITS() {
+    @DisplayName("Normal Lotto")
+    @ParameterizedTest(name = "[{index}] input {0} ")
+    @ValueSource(strings = {"1,2,3,4,5,6", "1,10,20,30,40,45", "40,41,42,43,44,45"})
+    void getBonusNumber_7_7(String inputString) {
+        Lotto lotto = new Lotto(inputHandler.stringToList(inputString));
+        assertThat(lotto.getLottoNumbers()).isEqualTo(inputHandler.stringToList(inputString));
+    }
+
+    @DisplayName("Not six digits")
+    @ParameterizedTest(name = "[{index}] input {0} ")
+    @ValueSource(strings = {"1,2,3,4,5", "1,10,20,30,40,45,2"})
+    public void validateSixDigits_1234566_NOTSIXDIGITS(String inputString) {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Lotto(List.of(1, 2, 3, 4, 5, 6, 7));
+            new Lotto(inputHandler.stringToList(inputString));
         });
         assertEquals(ErrorCode.NOT_SIX_DIGITS.getErrorMessage(), exception.getMessage());
     }
 
-    @Test
-    public void validateDuplicate_123455_NOTDUPLICATE() {
+    @DisplayName("Unvalidated range")
+    @ParameterizedTest(name = "[{index}] input {0} ")
+    @ValueSource(strings = {"0,2,3,4,5,6", "-1,10,20,30,40,45", "40,41,42,43,44,46"})
+    public void validateRange_0or46_NOTINRANGE(String inputString) {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Lotto(List.of(1, 2, 3, 4, 5, 5));
-        });
-        assertEquals(ErrorCode.NOT_DUPLICATE.getErrorMessage(), exception.getMessage());
-    }
-
-    @Test
-    @DisplayName("로또 번호의 숫자 범위 예외 메세지 확인.")
-    public void validateRange_0or46_NOTINRANGE() {
-        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Lotto(List.of(0, 2, 3, 4, 5, 45));
-        });
-        assertEquals(ErrorCode.NOT_IN_RANGE.getErrorMessage(), exception.getMessage());
-
-        exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Lotto(List.of(1, 2, 3, 4, 5, 46));
+            new Lotto(inputHandler.stringToList(inputString));
         });
         assertEquals(ErrorCode.NOT_IN_RANGE.getErrorMessage(), exception.getMessage());
     }

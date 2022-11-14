@@ -23,7 +23,7 @@ public class InputHandler {
         return stringToInt(readLine());
     }
 
-    private List<Integer> stringToList(String readLine) {
+    public List<Integer> stringToList(String readLine) {
         List<String> inputs = List.of(readLine.split(","));
         List<Integer> lottoNumbers = new ArrayList<>();
         for (String input : inputs) {
