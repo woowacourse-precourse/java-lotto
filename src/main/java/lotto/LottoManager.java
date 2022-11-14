@@ -1,7 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class LottoManager {
@@ -13,19 +11,23 @@ public class LottoManager {
             Prize.FOURTH_PRIZE.getPrize(),
             Prize.FIFTH_PRIZE.getPrize()
     };
-    private final Judge judge;
-    private final LottoGenerator lottoGenerator;
     private final int[] prize = new int[]{ 0, 0, 0, 0, 0 };
     private List<Lotto> userLottos;
     private Lotto winningNumbers;
+    private Judge judge;
+    private LottoGenerator lottoGenerator;
+    private Output output;
+    private Input input;
     private static String error;
     private int bonusNumber;
     private int amount;
     private float yield;
 
-    public LottoManager() {
-        this.judge = new Judge();
+    LottoManager() {
+        this.input = new Input();
+        this.output = new Output();
         this.lottoGenerator = new LottoGenerator();
+        this.judge = new Judge();
     }
 
     public static void terminateByError(String error) {
@@ -43,8 +45,7 @@ public class LottoManager {
     }
 
     private void inputAmount() {
-        System.out.println(Notice.INPUT_AMOUNT.getNotice());
-        String buyAmount = Console.readLine();
+        String buyAmount = input.amount();
         assignLottoAndAmount(buyAmount);
     }
 
@@ -55,15 +56,13 @@ public class LottoManager {
     }
 
     private void inputWinningNumbers() {
-        System.out.println(Notice.INPUT_WINNING_NUMBERS.getNotice());
-        String inputNumbers = Console.readLine();
+        String inputNumbers = input.winningNumbers();
         judge.isAllNumber(inputNumbers);
         winningNumbers = lottoGenerator.changeToNumber(inputNumbers);
     }
 
     private void inputBonusNumber() {
-        System.out.println(Notice.INPUT_BONUS_NUMBER.getNotice());
-        String bNumber = Console.readLine();
+        String bNumber = input.bonusNumber();
         judge.isNumber(bNumber);
         bonusNumber = Integer.parseInt(bNumber);
     }
@@ -116,35 +115,18 @@ public class LottoManager {
         }
         yield = (total / amount) * 100;
     }
-
-    private void showAllLottos() {
-        for(Lotto lotto : userLottos) {
-            lotto.printSortedNumbers();
-        }
-    }
-
-    private void printResult() {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println(String.format(Result.FIFTH.getResult(), prize[4]));
-        System.out.println(String.format(Result.FOURTH.getResult(), prize[3]));
-        System.out.println(String.format(Result.THIRD.getResult(), prize[2]));
-        System.out.println(String.format(Result.SECOND.getResult(), prize[1]));
-        System.out.println(String.format(Result.FIRST.getResult(), prize[0]));
-        System.out.println(String.format(Result.YIELD.getResult(), yield));
-    }
     public void gameStart() {
         try{
             inputAmount();
-            showAllLottos();
+            output.showAllLottos(userLottos);
             inputWinningNumbers();
             inputBonusNumber();
             checkContain();
             compare();
             calcYield();
-            printResult();
+            output.printResult(prize, yield);
         } catch(IllegalArgumentException e) {
-            System.out.println(LottoManager.error);
+            output.printError(LottoManager.error);
         }
     }
 }
