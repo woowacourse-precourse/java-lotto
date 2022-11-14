@@ -15,6 +15,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkNumberRange(numbers);
         this.numbers = numbers;
     }
 
@@ -29,5 +30,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    private void checkNumberRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            Validate.validateLottoNumberRange(number);
+        }
+    }
 
 }
