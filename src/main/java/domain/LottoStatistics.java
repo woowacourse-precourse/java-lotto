@@ -14,4 +14,8 @@ public class LottoStatistics {
         return String.format("%.1f", profit);
     }
 
+    public String getPercentageOfProfit() {
+        return percentageOfProfit;
+    }
+
 }

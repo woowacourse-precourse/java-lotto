@@ -2,6 +2,7 @@ package controller;
 
 import domain.Lotto;
 import domain.LottoMachine;
+import domain.LottoStatistics;
 import domain.Money;
 import input.MoneyInput;
 import input.NumberInput;
@@ -22,6 +23,7 @@ public class LottoController {
     private List<Lotto> lotteries;
     private Lotto winnerNumber;
     private int bonusNumber;
+    private LottoStatistics lottoStatistics;
 
     public void purchase() {
         requestView.displayEnterPurchaseAmount();
@@ -39,6 +41,10 @@ public class LottoController {
     public void bonusNumber() {
         requestView.displayEnterBonusNumber();
         bonusNumber = numberInput.getBonusNumber();
+    }
+
+    public void statistics() {
+
     }
 
 }

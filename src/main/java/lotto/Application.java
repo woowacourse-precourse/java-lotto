@@ -8,5 +8,6 @@ public class Application {
         lottoController.purchase();
         lottoController.winnerNumber();
         lottoController.bonusNumber();
+        lottoController.statistics();
     }
 }
