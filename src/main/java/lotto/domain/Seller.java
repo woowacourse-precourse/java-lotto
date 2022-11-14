@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Seller {
-
     private static final int LOTTO_PRICE = 1000;
     private static final String CHANGES_EXIST_EXCEPTION_MESSAGE = "금액이 나눠 떨어지지 않습니다";
 

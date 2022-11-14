@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Picker {
-
     private final Lotto winningLotto;
     private final LottoNumber bonusNumber;
 

@@ -1,7 +1,6 @@
 package lotto.domain;
 
 public class LottoNumber {
-
     static final int RANGE_MINIMUM = 1;
     static final int RANGE_MAXIMUM = 45;
     private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE =

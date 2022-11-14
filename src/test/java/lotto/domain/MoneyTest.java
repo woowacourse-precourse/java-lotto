@@ -9,7 +9,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class MoneyTest {
-
     @DisplayName("금액이 음수면 예외를 발생시킨다")
     @Test
     void negative_money_throws_IllegalArgumentException() {

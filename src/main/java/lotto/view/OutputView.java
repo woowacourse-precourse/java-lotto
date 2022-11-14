@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import lotto.dto.LottoDto;
 
 public class OutputView {
-
     private static final char ARRAY_BEGIN = '[';
     private static final char ARRAY_END = ']';
     private static final String ARRAY_SEPARATOR = ", ";
