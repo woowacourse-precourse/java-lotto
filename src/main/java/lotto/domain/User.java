@@ -34,6 +34,18 @@ public class User extends Valid {
         isCorrectPrice(amount);
     }
 
+    public double calcProfit() {
+        return Math.round((money / sumReward() * 100) * 10) / 10.0;
+    }
+
+    private int sumReward() {
+        int sum = 0;
+        for (Rank rank : this.result.keySet()) {
+            sum += rank.getReward() * this.result.get(rank);
+        }
+        return sum;
+    }
+
     private void setMoney(int money) {
         this.money = money;
     }
