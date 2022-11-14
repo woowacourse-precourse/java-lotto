@@ -50,4 +50,13 @@ public class Application {
             System.out.println(user_lotto[i]);
         }
     }
+
+    static List<Integer> MakeAnswer() {
+        List<Integer> answer = new ArrayList<>();
+
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+
+        return answer;
+    }
 }
