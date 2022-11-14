@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Application {
     static Map<String, Integer> sameNumberMap = new HashMap<>();
@@ -20,7 +22,7 @@ public class Application {
 
         try {
             System.out.println("구매금액을 입력해 주세요.");
-            buyMoney = Integer.parseInt(Console.readLine());
+            buyMoney = moneyFilter(Console.readLine());
             moneyUnitCheck(buyMoney);
             System.out.println();
 
@@ -34,12 +36,14 @@ public class Application {
 
             System.out.println("\n당첨 번호를 입력해 주세요.");
             String[] setWin = Console.readLine().split(",");
+            setWinSixNumberCheck(setWin);
             System.out.println("\n보너스 번호를 입력해 주세요.");
             bonusNumber = Integer.parseInt(Console.readLine());
             winningNumber = setWinNumber(setWin);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            return;
         }
 
         for(int i = 0; i < buyLottoCount; i++){
@@ -63,14 +67,34 @@ public class Application {
     }
 
     public static List<Integer> buyLottoRandomNumber(){
-        List<Integer> buyLottoNumber;
-        buyLottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> buyLottoNumber = new LinkedList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        buyLottoNumber.sort(Comparator.naturalOrder());
         return buyLottoNumber;
     }
 
-    public static void moneyUnitCheck(int inputMoney){
+    public static int moneyFilter(String inputMoney){
+        Pattern filterPattern = Pattern.compile("^[0-9]*$");
+        Matcher matcher = filterPattern.matcher(inputMoney);
+        if(!matcher.find()){
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
+        else{
+            return Integer.parseInt(inputMoney);
+        }
+    }
+
+    public static void moneyUnitCheck(Integer inputMoney){
         if(inputMoney % 1000 != 0){
             throw new IllegalArgumentException("[ERROR] 구매금액의 단위는 1000원 단위로 입력해주세요.");
+        }
+    }
+
+    public static void setWinSixNumberCheck(String[] winNumber){
+        if(Arrays.stream(winNumber).distinct().count() != winNumber.length){
+            throw new IllegalArgumentException("중복된 번호가 존재합니다.");
+        }
+        if(winNumber.length != 6){
+            throw  new IllegalArgumentException("로또는 총 6자리 입니다.");
         }
     }
 
