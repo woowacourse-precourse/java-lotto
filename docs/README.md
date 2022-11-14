@@ -55,11 +55,11 @@
 
     - [x] 1 ~ 5등 통계를 구한다. - getTotalScore
         - [x] 로또 번호들로부터 등수를 저장 - setResultScoreByLottoGroup
-            - [ ] 로또 번호로부터 등수를 저장 - setResultScoreByLotto
+            - [x] 로또 번호로부터 등수를 저장 - setResultScoreByLotto
+                - [x] 일치하는 번호 개수를 구한다. - getMatchedNumberCount
             - [x] 등수의 count를 올린다. - setScoreCountByPlace
             - [x] 2, 3등의 경우 보너스 번호를 포함하는지 구분한다. - setSecondOrThird
-                - [x] 보너스 점수를 포함하는지 여부 확인 - isContainBonusNumber
-            - [x] 일치하는 번호 개수를 구한다. - getMatchedNumberCount
+            - [x] 보너스 점수를 포함하는지 여부 확인 - isContainBonusNumber
 
 ## 💰 MoneyManger
 
