@@ -1,14 +1,13 @@
 package lotto.exception;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static lotto.constance.InputExceptionConstance.*;
 import static lotto.constance.LottoConstance.END_RANDOM_NUMBER;
 import static lotto.constance.LottoConstance.NUMBER_LENGTH;
+import static lotto.util.Util.toList;
+import static lotto.util.Util.toStringOfList;
 
 public class InputException {
     private InputException() {
@@ -39,7 +38,7 @@ public class InputException {
 
     private static void validateOnlyNumber(String number) {
         if (isWinLottoNumber(number)) {
-            number = toString(toList(number));
+            number = toStringOfList(toList(number));
         }
         if (!Pattern.matches(NUMBER_REGEX, number)) {
             exception(NOT_ONLY_NUMBER);
@@ -69,7 +68,7 @@ public class InputException {
         }
     }
 
-    private static void validateNotDuplicate(String number) {
+    public static void validateNotDuplicate(String number) {
         List<Integer> numbers = toList(number);
         if (numbers.stream().distinct().count() != NUMBER_LENGTH) {
             exception(NOT_DUPLICATE);
@@ -99,22 +98,5 @@ public class InputException {
 
     private static void exception(String message) {
         throw new IllegalArgumentException(ERROR_FORM + message);
-    }
-
-    private static int[] toIntArray(String inputNumbers) {
-        return Stream.of(inputNumbers.split(COMMA)).mapToInt(Integer::parseInt).toArray();
-    }
-
-    private static List<Integer> toList(String inputNumbers) {
-        int[] numbers = toIntArray(inputNumbers);
-        return Arrays.stream(numbers)
-                .boxed()
-                .collect(Collectors.toList());
-    }
-
-    private static String toString(List<Integer> numbers) {
-        StringBuilder sb = new StringBuilder();
-        numbers.forEach(sb::append);
-        return sb.toString();
     }
 }

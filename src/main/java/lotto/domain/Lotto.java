@@ -1,16 +1,21 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.exception.InputException;
+import lotto.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.constance.LottoConstance.*;
+import static lotto.exception.InputException.*;
+import static lotto.util.Util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        validateNotDuplicate(toStringOfList(numbers));
         this.numbers = numbers;
     }
 
