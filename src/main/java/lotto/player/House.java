@@ -1,11 +1,11 @@
 package lotto.player;
 
-import static lotto.data.Rank.RANK1;
-import static lotto.data.Rank.RANK2;
-import static lotto.data.Rank.RANK3;
-import static lotto.data.Rank.RANK4;
-import static lotto.data.Rank.RANK5;
-import static lotto.data.Rank.RANK_NONE;
+import static lotto.util.Rank.RANK1;
+import static lotto.util.Rank.RANK2;
+import static lotto.util.Rank.RANK3;
+import static lotto.util.Rank.RANK4;
+import static lotto.util.Rank.RANK5;
+import static lotto.util.Rank.RANK_NONE;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lotto.data.Lotto;
-import lotto.data.Rank;
+import lotto.util.Rank;
 
 public class House {
     private final Lotto win;

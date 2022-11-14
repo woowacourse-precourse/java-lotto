@@ -1,18 +1,18 @@
 package lotto;
 
 import lotto.data.Lotto;
-import lotto.data.Rank;
+import lotto.util.Rank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static lotto.data.Rank.RANK1;
-import static lotto.data.Rank.RANK2;
-import static lotto.data.Rank.RANK3;
-import static lotto.data.Rank.RANK4;
-import static lotto.data.Rank.RANK5;
-import static lotto.data.Rank.RANK_NONE;
+import static lotto.util.Rank.RANK1;
+import static lotto.util.Rank.RANK2;
+import static lotto.util.Rank.RANK3;
+import static lotto.util.Rank.RANK4;
+import static lotto.util.Rank.RANK5;
+import static lotto.util.Rank.RANK_NONE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

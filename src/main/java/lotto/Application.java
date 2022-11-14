@@ -2,7 +2,7 @@ package lotto;
 
 import java.util.LinkedHashMap;
 import java.util.Scanner;
-import lotto.data.Rank;
+import lotto.util.Rank;
 import lotto.player.House;
 import lotto.player.User;
 
