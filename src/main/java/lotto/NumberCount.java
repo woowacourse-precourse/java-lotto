@@ -12,4 +12,11 @@ public class NumberCount {
 		bonusGuess++;
 	}
 
+	public int getGuess() {
+		return guess;
+	}
+
+	public int getBonusGuess() {
+		return bonusGuess;
+	}
 }
