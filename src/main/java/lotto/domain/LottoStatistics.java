@@ -11,6 +11,7 @@ public class LottoStatistics {
     public void getLottoStatistics(LottoBuyer lottoBuyer, LottoWinningNumber lottoWinningNumber) {
         LottoResults lottoResults = lottoBuyer.getLottoResults();
         List<Lotto> lottoTickets = lottoBuyer.getLottoTickets();
+        
         List<Integer> winningNumbers = lottoWinningNumber.getLottoWinningNumbers();
         int bonusNumber = lottoWinningNumber.getBonusNumber();
 
