@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Store {
     private static final int lottoPrice = 1000;
+    private Lotto winningLotto;
+    private Integer bonusNumber;
 
     public List<Lotto> sellLotto(int money) {
         validateInputMoney(money);
@@ -50,7 +52,10 @@ public class Store {
         }
     }
 
-    public LottoResult checkPrize(List<Lotto> lottos, Lotto winningLotto, int bonusNumber) {
+    public LottoResult checkPrize(List<Lotto> lottos) {
+        validateWinningLotto();
+        validateBonusNumber();
+
         LottoResult lottoResult = new LottoResult();
         List<Integer> winningNumbers = winningLotto.getNumbers();
 
@@ -58,12 +63,22 @@ public class Store {
             List<Integer> numbers = lotto.getNumbers();
             int count = countMatchingNumbers(numbers, winningNumbers);
             boolean bonus = hasBonusNumber(numbers, bonusNumber);
-
             Prize prize = Prize.valueOf(count, bonus);
             lottoResult.addPrize(prize);
         }
 
         return lottoResult;
+    }
+
+    private void validateWinningLotto() {
+        if (winningLotto == null) {
+            throw new NullPointerException();
+        }
+    }
+    private void validateBonusNumber() {
+        if(bonusNumber == null) {
+            throw new NullPointerException();
+        }
     }
 
     // 보너스 넘버가 있는 경우 true를 반환
@@ -80,5 +95,12 @@ public class Store {
             }
         }
         return count;
+    }
+
+    public void setWinningLotto(Lotto winningLotto) {
+        this.winningLotto = winningLotto;
+    }
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 }

@@ -47,13 +47,15 @@ class StoreTest {
     void 당첨확인_1등_5등2개() {
         Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
+        store.setWinningLotto(winningLotto);
+        store.setBonusNumber(bonusNumber);
 
         List<Lotto> lottos = new ArrayList<Lotto>();
         lottos.add(new Lotto(List.of(1,2,3,4,5,6)));
         lottos.add(new Lotto(List.of(1,2,3,11,12,13)));
         lottos.add(new Lotto(List.of(1,2,3,11,12,13)));
 
-        LottoResult lr = store.checkPrize(lottos,winningLotto, bonusNumber);
+        LottoResult lr = store.checkPrize(lottos);
         assertThat(lr.getTotalMoney()).isEqualTo(2000010000);
         mathcingResult(lr, 1, 0, 0, 0, 2);
     }
@@ -62,12 +64,14 @@ class StoreTest {
     void 당첨확인_2등() {
         Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
+        store.setWinningLotto(winningLotto);
+        store.setBonusNumber(bonusNumber);
 
         List<Lotto> lottos = new ArrayList<Lotto>();
         lottos.add(new Lotto(List.of(1,2,3,4,5,7)));
         lottos.add(new Lotto(List.of(14,25,23,11,12,13)));
 
-        LottoResult lr = store.checkPrize(lottos,winningLotto, bonusNumber);
+        LottoResult lr = store.checkPrize(lottos);
         assertThat(lr.getTotalMoney()).isEqualTo(30000000);
         mathcingResult(lr, 0, 1, 0, 0, 0);
     }
@@ -76,12 +80,14 @@ class StoreTest {
     void 당첨확인_4등_2개ㅓ() {
         Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
+        store.setWinningLotto(winningLotto);
+        store.setBonusNumber(bonusNumber);
 
         List<Lotto> lottos = new ArrayList<Lotto>();
         lottos.add(new Lotto(List.of(1,2,3,4,27,28)));
         lottos.add(new Lotto(List.of(1,2,3,4,7,28)));
 
-        LottoResult lr = store.checkPrize(lottos,winningLotto, bonusNumber);
+        LottoResult lr = store.checkPrize(lottos);
         assertThat(lr.getTotalMoney()).isEqualTo(100000);
         mathcingResult(lr, 0, 0, 0, 2, 0);
     }
