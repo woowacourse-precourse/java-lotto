@@ -2,7 +2,7 @@ package lotto.config;
 
 import java.util.Arrays;
 
-public enum LottoRules {
+public enum LottoPrize {
 
     LOST(0, false, 0),
     FIFTH_PLACE(3, false, 5_000),
@@ -15,14 +15,14 @@ public enum LottoRules {
     private final boolean bonusNumber;
     private final int winnings;
 
-    LottoRules(int lottoNumber, boolean bonusNumber, int winnings) {
+    LottoPrize(int lottoNumber, boolean bonusNumber, int winnings) {
         this.lottoNumber = lottoNumber;
         this.bonusNumber = bonusNumber;
         this.winnings = winnings;
     }
 
-    public static LottoRules findByMatchAndBonus(int match, boolean bonus) {
-        return Arrays.stream(LottoRules.values())
+    public static LottoPrize findByMatchAndBonus(int match, boolean bonus) {
+        return Arrays.stream(LottoPrize.values())
                 .filter(winning -> winning.findByLottoNumber(match, bonus))
                 .findAny()
                 .orElse(LOST);
@@ -32,7 +32,7 @@ public enum LottoRules {
         return lottoNumber == match && bonusNumber == bonus;
     }
 
-    public int getWinnings() {
-        return winnings;
+    public static int getWinningsByPrize(String name){
+        return LottoPrize.valueOf(name).winnings;
     }
 }
