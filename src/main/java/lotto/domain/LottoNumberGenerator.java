@@ -8,15 +8,12 @@ import java.util.List;
 
 public class LottoNumberGenerator {
 
-    public static final int START_NUMBER = 1;
-    public static final int END_NUMBER = 45;
-    public static final int COUNT = 6;
-
     public LottoNumberGenerator() {
     }
 
     public List<Integer> generate() {
-        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, COUNT));
+        List<Integer> numbers = new ArrayList<>(
+                Randoms.pickUniqueNumbersInRange(Lotto.NUMBER_RANGE_START, Lotto.NUMBER_RANGE_END, Lotto.NUMBER_COUNT));
         numbers.sort(Comparator.naturalOrder());
         return Collections.unmodifiableList(numbers);
     }
