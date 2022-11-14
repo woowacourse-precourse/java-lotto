@@ -4,15 +4,16 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        int money = 0, num, bonus;
+        int money = 0, num, bonus = 0;
         int[] statistics = new int[5];
         double profit, total = 0;
-        List<Integer> win_numbers;
+        List<Integer> win_numbers = null;
         List<Lotto> buy_lists = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
@@ -52,13 +53,37 @@ public class Application {
 
         System.out.println("\n당첨 번호를 입력해 주세요.");
 
-        win_numbers = Arrays.stream(Console.readLine().split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        try {
+            String input = Console.readLine();
+            win_numbers = Arrays.stream(input.split(","))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+            Lotto.checkDuplicate(new HashSet<>(win_numbers));
+        } catch (IllegalArgumentException e) {
+            System.out.println(ExceptionMessage.Duplicated.getMsg());
+        }
+
+        try {
+            for (int number : win_numbers) {
+                Lotto.checkValidation(number);
+            }
+            if (win_numbers.size() != 6) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(ExceptionMessage.NotValidateNum.getMsg());
+        }
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
 
-        bonus = Integer.parseInt(Console.readLine());
+        try {
+            String input = Console.readLine();
+            Lotto.check_input_validate(input);
+            Lotto.checkValidation(Integer.parseInt(input));
+            bonus = Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ExceptionMessage.NotValidateBonusNum.getMsg());
+        }
 
         Lotto.set_statistics(buy_lists, bonus, win_numbers, statistics);
 

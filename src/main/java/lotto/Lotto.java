@@ -22,8 +22,14 @@ public class Lotto {
         checkDuplicate(new HashSet<>(numbers));
     }
 
-    private void checkDuplicate(Set<Integer> numbers) {
+    public static void checkDuplicate(Set<Integer> numbers) {
         if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void checkValidation(int num) {
+        if (!(num >= 1 && num <= 45)) {
             throw new IllegalArgumentException();
         }
     }
