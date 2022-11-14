@@ -13,7 +13,7 @@ public class OutputView {
     private static final String LOTTO_RESULT_STARTING_MESSAGE = "당첨 통계\n---";
     private static final String LOTTO_RANKING_MESSAGE = "%d개 일치 (%s원) - %d개";
     private static final String LOTTO_SECOND_RANKING_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
-    private static final String LOTTO_RETURN_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.";
+    private static final String LOTTO_RETURN_RATE_MESSAGE = "총 수익률은 %s입니다.";
 
     public static void printNumberOfIssuedLotto(int lottoNumbers) {
         printEmptyLine();
@@ -35,8 +35,8 @@ public class OutputView {
     }
 
     public static void printReturnRate(double returnRate) {
-        double result = returnRate * 100;
-        System.out.println(String.format(LOTTO_RETURN_RATE_MESSAGE, result));
+        DecimalFormat resultPercent = new DecimalFormat("###,###.0%");
+        System.out.println(String.format(LOTTO_RETURN_RATE_MESSAGE, resultPercent.format(returnRate)));
     }
 
     public static void printErrorMessage(String errorMessage) {
