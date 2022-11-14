@@ -16,7 +16,7 @@ public class Application {
     }
     public static void runLottoApp(){
 
-        int lottoCount = howMuchLottoBuy();
+        int lottoCount = howMuchLottoBuyInput();
 
         List<Lotto> lotto = issueLotto(lottoCount);
 
