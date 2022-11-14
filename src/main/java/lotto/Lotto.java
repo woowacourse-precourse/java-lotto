@@ -9,7 +9,15 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        validateLotto(numbers);
         this.numbers = numbers;
+    }
+
+    private void validateLotto(List<Integer> numbers) {
+        View view = new View();
+        view.validateUniqueNumbersInput(numbers);
+        view.validateNumberOfNumbers(numbers);
+        view.validateNumbersInRange(numbers);
     }
 
     public int checkLotto(List<Integer> winner) {

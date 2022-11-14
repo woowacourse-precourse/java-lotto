@@ -30,7 +30,7 @@ public class View {
         }
         return numbers;
     }
-    private void validateUniqueNumbersInput(List<Integer> numbers) {
+    public void validateUniqueNumbersInput(List<Integer> numbers) {
         List<Integer> noDuplicates = new ArrayList<>();
         for (int num : numbers) {
             validateUniqueNumber(numbers, num);
@@ -42,7 +42,7 @@ public class View {
             throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자만 입력이 가능합니다");
         }
     }
-    private void validateNumbersInRange(List<Integer> numbers) {
+    public void validateNumbersInRange(List<Integer> numbers) {
         for (int num : numbers) {
             validateNumberInRange(num);
         }
@@ -52,7 +52,7 @@ public class View {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다");
         }
     }
-    private void validateNumberOfNumbers(List<Integer> numbers) {
+    public void validateNumberOfNumbers(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 당첨번호 총 6개를 입력해야 합니다");
         }
