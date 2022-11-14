@@ -33,8 +33,8 @@ class LottoTest {
 
     @ParameterizedTest(name = "로또 당첨 금액은 {1}입니다.")
     @MethodSource("lottoAndMoney")
-    void 복권_상금_구하는_기능(Lotto lotto, int expected) {
-        assertThat(lotto.calculateWinningAmount(winningNumbers)).isEqualTo(expected);
+    void 로또_당첨금_구하는_기능(Lotto lotto, int expectedWinningAmount) {
+        assertThat(lotto.calculateWinningAmount(winningNumbers)).isEqualTo(expectedWinningAmount);
     }
 
     static Stream<Arguments> lottoAndMoney() {
