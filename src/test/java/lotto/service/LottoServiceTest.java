@@ -17,7 +17,7 @@ class LottoServiceTest {
 	private final LottoService lottoService = new LottoServiceImpl();
 
 	@Nested
-	@DisplayName("createLottos 테스트")
+	@DisplayName("주어진 로또 구매 개수만큼 로또를 발행하는 createLottos 테스트")
 	class CreateLottosTest {
 		@Test
 		@DisplayName("주어진 LottoBuyingInfo 값만큼 새로운 Lotto 객체를 만들어 반환한다.")
@@ -34,7 +34,7 @@ class LottoServiceTest {
 	}
 
 	@Nested
-	@DisplayName("makeScoreInfoBy 테스트")
+	@DisplayName("주어진 로또와 당첨 번호 정보로 당첨 정보를 계산하는 makeScoreInfoBy 테스트")
 	class MakeScoreInfoBy {
 		@Test
 		@DisplayName("발행한 로또 번호와 주어진 당첨 번호 정보를 비교해 당첨 정보를 반환한다.")
@@ -89,7 +89,7 @@ class LottoServiceTest {
 	}
 
 	@Nested
-	@DisplayName("calculateProfitBy 테스트")
+	@DisplayName("주어진 당첨 정보와 구매 정보를 바탕으로 수익률을 계산하는 calculateProfitBy 테스트")
 	class calculateProfitByTest {
 		@Test
 		@DisplayName("로또 구매 금액과 점수 정보를 분석하여 수익률을 백분율로 계산한다.")
