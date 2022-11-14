@@ -44,6 +44,6 @@ public class Lotto {
     }
 
     public LottoRanking caculateRanking(List<Integer> userNumbers){
-        return LottoRanking.caculateRanking(this.numbers.subList(0,6), this.numbers.get(6), userNumbers);
+        return LottoRanking.caculateRanking(new ArrayList<>(this.numbers.subList(0,6)), this.numbers.get(6), userNumbers);
     }
 }

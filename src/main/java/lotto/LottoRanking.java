@@ -4,11 +4,12 @@ package lotto;
 import java.util.List;
 
 public enum LottoRanking {
-    FIFTH("3개 일치", 5000, 3, 0),
-    FORTH("4개 일치", 50000, 4, 0),
-    THIRD("5개 일치", 1500000, 5, 0),
+    FIRST("6개 일치", 2000000000, 6, 0),
     SECOND("5개 일치, 보너스 볼 일치", 30000000, 5, 1),
-    FIRST("6개 일치", 2000000000, 6, 0);
+    THIRD("5개 일치", 1500000, 5, 0),
+    FORTH("4개 일치", 50000, 4, 0),
+    FIFTH("3개 일치", 5000, 3, 0)
+    ;
 
 
     private String message;
@@ -50,16 +51,20 @@ public enum LottoRanking {
                 bonusCount += 1;
             }
         }
+
         return findByCountAndBonusCount(count, bonusCount);
     }
 
     private static LottoRanking findByCountAndBonusCount(int count, int bonusCount){
-        for(LottoRanking ranking : values()){
-            if(ranking.getCount() == count && ranking.getBonusCount() == bonusCount){
+        for(LottoRanking ranking : values()) {
+            if (ranking.getCount() == count && ranking.getBonusCount() == bonusCount) {
+                return ranking;
+            }
+            else if(ranking.getCount() == count){
                 return ranking;
             }
         }
 
-        throw new IllegalArgumentException();
+        return null;
     }
 }

@@ -75,7 +75,7 @@ class LottoTest {
                 .isEqualTo(LottoRanking.FORTH);
 
         // 5등 테스트
-        assertThat(lotto.caculateRanking(List.of(2,3,4,10,8,9)))
+        assertThat(lotto.caculateRanking(List.of(2,3,10,4,8,9)))
                 .isEqualTo(LottoRanking.FIFTH);
     }
 }

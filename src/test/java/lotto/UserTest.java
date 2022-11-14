@@ -20,11 +20,37 @@ class UserTest {
     // 아래에 추가 테스트 작성 가능
     @DisplayName("사용자가 구매한 로또 개수 테스트")
     @Test
-    void getLottoRankingEnum(){
+    void getPurchasLottoCount(){
         User user = new User(4000);
 
         //1등 테스트
         assertThat(user.getUserLottos().size())
                 .isEqualTo(4);
+    }
+
+    @DisplayName("사용자의 당청 통계 계산 테스트")
+    @Test
+    void getCountRanking(){
+        User user = new User(6000);
+
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6),7);
+        user.setUserLottos(List.of(
+                List.of(1,2,3,4,5,6),
+                List.of(1,2,3,4,5,6),
+                List.of(2,3,4,5,6,7),
+                List.of(4,5,6,7,8,9),
+                List.of(1,2,3,7,8,9),
+                List.of(9,10,11,12,13,14)
+        ));
+
+        user.setCountRanking(lotto);
+
+        int i = 0;
+        int[] countArray = {2,1,0,0,2};
+        for(LottoRanking lottoRanking : LottoRanking.values()){
+            assertThat(user.getCountRanking().get(lottoRanking))
+                    .isEqualTo(countArray[i]);
+            i+=1;
+        }
     }
 }
