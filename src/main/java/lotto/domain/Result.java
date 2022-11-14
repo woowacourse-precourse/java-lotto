@@ -19,6 +19,14 @@ public enum Result {
         this.score = score;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public String getMoney() {
+        return money;
+    }
+
     public static Result getResult(int score) {
         return Arrays.stream(Result.values())
                 .filter(result -> result.score == score)
