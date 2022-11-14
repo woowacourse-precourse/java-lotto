@@ -11,8 +11,9 @@ public class Converter {
         try {
             return Integer.parseInt(s);
         } catch (Exception e) {
-            throw new IllegalArgumentException(Error.NOT_DIGIT_CHARACTER.getDesc());
+            Output.showError(Error.NOT_DIGIT_CHARACTER);
         }
+        throw new IllegalArgumentException("[ERROR] 올바르지 않은 입력");
     }
 
     public static List<Integer> stringToList(String s) {
@@ -21,7 +22,7 @@ public class Converter {
         for (String splitNum : splitNums) {
             int num = stringToInt(splitNum);
             if(!Validation.lottoNumRange(num))
-                throw new IllegalArgumentException(Error.LOTTO_NUM_RANGE.getDesc());
+                Output.showError(Error.LOTTO_NUM_RANGE);
             output.add(num);
         }
         return output;
