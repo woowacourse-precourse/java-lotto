@@ -12,6 +12,8 @@ import lotto.domain.model.UserLotto;
 
 public abstract class OutputData {
 
+    public static final double PERCENT_NUMBER = 10.0;
+
     public static void printUserLotto(final UserLotto userLotto, final Pay pay) {
         System.out.println();
         System.out.println(pay.calculateQuantity() + OUTPUT_PURCHASE_LOTTO.getMessage());
@@ -38,7 +40,7 @@ public abstract class OutputData {
 
     private static void printYield(final LottoResult lottoResult, final Pay pay) {
         System.out.printf((OUTPUT_YIELD_MESSAGE.getMessage()) + "%n",
-                Math.round(lottoResult.calculateYield(pay) * 10) / 10.0);
+                Math.round(lottoResult.calculateYield(pay) * PERCENT_NUMBER) / PERCENT_NUMBER);
 
     }
 }
