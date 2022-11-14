@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
@@ -57,5 +58,18 @@ class LottoTest {
                 MATCH_FIVE, 1, MATCH_FIVE_WITH_BONUS, 1, MATCH_SIX, 1);
 
         assertThat(lotto.calculateWinningAmount(lottoStatistics)).isEqualTo(BigInteger.valueOf(2031555000));
+    }
+
+    @DisplayName("이율 계산 정상 수행.")
+    @Test
+    void calculateProfitRatio() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        BigInteger income1 = BigInteger.valueOf(9000);
+        BigInteger income2 = BigInteger.valueOf(10000);
+        int expense = 5000;
+
+        assertAll(()->assertThat(lotto.calculateProfitRatio(income1, expense)).isEqualTo(BigDecimal.valueOf(55.6)),
+                ()->assertThat(lotto.calculateProfitRatio(income2, expense)).isEqualTo(BigDecimal.valueOf(50.0)));
+        ;
     }
 }
