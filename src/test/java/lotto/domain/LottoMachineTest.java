@@ -20,4 +20,20 @@ public class LottoMachineTest {
             assertThat(lottoNumbers.get(i)).isEqualTo(expected.get(i));
         }
     }
+
+    @Test
+    @DisplayName("당첨 번호 객체 생성 테스트")
+    void initLottoMachineNumberTest() {
+        String numbers = "1,2,3,4,5,6";
+        LottoMachine lottoMachine = LottoMachine.initLottoMachineNumber(numbers);
+        List<Integer> expected = List.of(1, 2, 3, 4, 5, 6);
+
+        for (int i = 0; i < lottoMachine.getNumbers().size(); i++) {
+            assertThat(lottoMachine.getNumbers().get(i)).isEqualTo(expected.get(i));
+        }
+
+        String bonusNumber = "30";
+        lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber));
+        assertThat(lottoMachine.getBonusNumber()).isEqualTo(30);
+    }
 }
