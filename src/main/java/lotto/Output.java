@@ -15,7 +15,7 @@ public class Output {
     }
 
     public static void lottoQuantity(int money) {
-
+        System.out.println(Store.countLines(money) + "개를 구매했습니다.");
     }
 
     public static void lotteriesNumbers() {
