@@ -5,11 +5,16 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.exception.Error;
 
 public class InputView {
 
     public static int getInt() {
-        return Integer.parseInt(readLine());
+        try {
+            return Integer.parseInt(readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(Error.WRONG_AMOUNT.getMessage());
+        }
     }
 
     public static String getString() {

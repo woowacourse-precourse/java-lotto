@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.exception.Error;
 
 public class Purchase {
 
@@ -18,7 +19,7 @@ public class Purchase {
 
     private void validate(int amount) {
         if (amount % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.WRONG_AMOUNT.getMessage());
         }
     }
 
