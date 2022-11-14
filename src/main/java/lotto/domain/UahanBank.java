@@ -32,7 +32,18 @@ public class UahanBank {
     }
 
     public int changeLottoToMoney(Lotto wonLotto, List<Integer> bonusLotto, Lotto lotto){
-        return 0;
+        int receivedMoney = 0;
+
+        Score score = calculateLottoToScore(wonLotto.getNumbers(), bonusLotto, lotto.getNumbers());
+
+        for(int index = 0; index < rankScores.size(); index++){
+            if(rankScores.get(index).compareTo(score) == 0){
+                receivedMoney += WINNING_RANK_AMOUNT[index];
+                break;
+            }
+        }
+
+        return receivedMoney;
     }
 
     private Score calculateLottoToScore(List<Integer> wonLotto, List<Integer> bonusLotto, List<Integer> lotto){

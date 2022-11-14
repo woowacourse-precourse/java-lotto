@@ -1,7 +1,7 @@
 package lotto.domain;
 
+import static lotto.Config.WINNING_RANK_AMOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -14,10 +14,10 @@ import org.junit.jupiter.api.Test;
 public class UahanBankTest {
     private static UahanBank uahanBank;
 
-    @DisplayName("테스트를 위해 UahanBank 클래스를 Mocking 처리한다.")
+    @DisplayName("테스트를 위해 UahanBank 클래스를 선언한다.")
     @BeforeAll
     public static void beforeALl() {
-        uahanBank = mock(UahanBank.class);
+        uahanBank = new UahanBank();
     }
 
     @DisplayName("등수별 점수 리스트를 생성한다.")
@@ -45,6 +45,18 @@ public class UahanBankTest {
 
         Score score = new Score(5, 1);
 
-        assertThat(calculateLottoToScoreMethod.invoke(uahanBank, wonLotto, bonusLotto, lotto)).usingRecursiveComparison().isEqualTo(score);
+        assertThat(
+                calculateLottoToScoreMethod.invoke(uahanBank, wonLotto, bonusLotto, lotto)).usingRecursiveComparison()
+                .isEqualTo(score);
+    }
+
+    @DisplayName("제공된 로또와 추첨된 로또를 비교하여 당첨 금액을 반환한다.")
+    @Test
+    void testChangeLottoToMoney() {
+        Lotto wonLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> bonusLotto = List.of(7);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        assertThat(uahanBank.changeLottoToMoney(wonLotto, bonusLotto, lotto)).isEqualTo(WINNING_RANK_AMOUNT[0]);
     }
 }
