@@ -38,7 +38,7 @@ public class WinningNumber {
 		return splitter;
 	}
 
-	private static Set<Integer> convertToSet(String winningNumber) {
+	public static Set<Integer> convertToSet(String winningNumber) {
 		StringTokenizer splitter = splitWinningNumber(winningNumber);
 		Set<Integer> numbers = new HashSet<>();
 		while (splitter.hasMoreTokens()) {

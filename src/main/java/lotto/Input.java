@@ -1,25 +1,31 @@
 package lotto;
 
 import java.util.List;
+import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
-	public static void enterMoney() {
+	public static int enterMoney() {
 		System.out.println("구입금액을 입력해 주세요.");
 		String userInput = Console.readLine();
 		Money.checkMoneyInput(userInput);
+		return Money.calculateMaximumLottoCount(userInput);
 	}
 
-	public static String enterWinningNumber() {
+	public static Set<Integer> enterWinningNumber() {
+		System.out.println();
 		System.out.println("당첨 번호를 입력해 주세요.");
 		String userInput = Console.readLine();
-		return userInput;
+		WinningNumber.checkWinningNumber(userInput);
+		return WinningNumber.convertToSet(userInput);
 	}
 
-	public static String enterBonusNumber() {
+	public static int enterBonusNumber() {
+		System.out.println();
 		System.out.println("보너스 번호를 입력해 주세요.");
 		String userInput = Console.readLine();
-		return userInput;
+		BonusNumber.checkBonusNumber(userInput);
+		return Integer.parseInt(userInput);
 	}
 }

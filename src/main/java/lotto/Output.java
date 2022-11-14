@@ -5,6 +5,7 @@ import java.util.List;
 public class Output {
 
 	public static void printTicketCount(int totalNumberOfLotto) {
+		System.out.println();
 		System.out.println(totalNumberOfLotto + "개를 구매했습니다.");
 	}
 
@@ -15,6 +16,7 @@ public class Output {
 	}
 
 	public static void printResult() {
+		System.out.println();
 		System.out.println("당첨 통계");
 		System.out.println("---");
 		System.out.println("3개 일치 (5,000원) - " + WinningLotto.result.getOrDefault("Fifth", 0) + "개");
