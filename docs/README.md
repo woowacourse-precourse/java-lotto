@@ -23,6 +23,7 @@
 - #### **로또 당첨 세팅**
     - ```FIRST``` ```SECOND``` ```THIRD``` ```FOURTH``` ```FIFTH```
     - 등수, 일치하는 번호 개수, 보너스볼 일치 여부, 당첨금
+    - ```getWinning``` : 당첨 개수, 보너스볼 당첨 여부를 확인해 WinningEnum을 반환
 
 ### **Money 클래스**
 - #### **로또 구입 금액**
@@ -31,6 +32,12 @@
       - ```validateInputMoneyIsAllNumber``` : 2의 63승 이하 숫자인지 검증
       - ```validateInputMoneyIsRightUnit``` : 단위에 맞게 입력했는지 검증
     - ```boughtLottoCount``` : 구매한 로또 개수 반환
+
+### **Lotto 클래스**
+- #### **구입한 로또 객체**
+    - ```getRank``` : 로또 당첨 등수 반환
+    - ```countCorrectNumbers``` : 맞춘 로또 번호 개수 반환
+    - ```isCorrectBonusNumber``` : 보너스 번호를 맞췄는지 확인
 
 ### **PickLotto 클래스**
 - #### **로또 번호 및 보너스 번호 입력**
