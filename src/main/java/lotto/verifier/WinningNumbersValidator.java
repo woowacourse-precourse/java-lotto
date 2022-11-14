@@ -13,7 +13,6 @@ public class WinningNumbersValidator {
         String input = Console.readLine();
 
         List<Integer> winningNumbers = validateInput(input);
-        ;
 
         return winningNumbers;
     }
@@ -50,11 +49,12 @@ public class WinningNumbersValidator {
     }
 
     private boolean isDuplicated(List<Integer> winningNumbers) {
-        while (!winningNumbers.isEmpty()) {
-            int currentNumber = winningNumbers.get(0);
-            winningNumbers.remove(0);
+        List<Integer> winningNumbersCopy = new ArrayList<>(winningNumbers);
+        while (!winningNumbersCopy.isEmpty()) {
+            int currentNumber = winningNumbersCopy.get(0);
+            winningNumbersCopy.remove(0);
 
-            if (winningNumbers.contains(currentNumber)) {
+            if (winningNumbersCopy.contains(currentNumber)) {
                 return true;
             }
         }

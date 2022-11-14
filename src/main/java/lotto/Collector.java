@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 public class Collector {
 
     public List<Integer> collectRankResults(List<Lotto> lottoList) {
-        WinningNumbersValidator winningNumberVerifier = new WinningNumbersValidator();
-        BonusNumberValidator bonusNumberVerifier = new BonusNumberValidator();
+        WinningNumbersValidator winningNumbersValidator = new WinningNumbersValidator();
+        BonusNumberValidator bonusNumberValidator = new BonusNumberValidator();
 
-        List<Integer> winningNumbers = winningNumberVerifier.askWinningNumbers();
-        int bonusNumber = bonusNumberVerifier.askBonusNumber(winningNumbers);
+        List<Integer> winningNumbers = winningNumbersValidator.askWinningNumbers();
+        int bonusNumber = bonusNumberValidator.askBonusNumber(winningNumbers);
 
         List<Integer> rankResults = getRankResults(winningNumbers, bonusNumber, lottoList);
         printRankResults(rankResults);
