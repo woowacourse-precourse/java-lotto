@@ -8,10 +8,14 @@ import java.util.Map;
 public class LottoMachine {
     private List<Lotto> lottos;
     private Map<WinningResult, Integer> statistics;
+    private long reward;
+    private double revenue;
 
     public LottoMachine() {
         this.lottos = new ArrayList<>();
         this.statistics = new EnumMap<WinningResult, Integer>(WinningResult.class);
+        this.reward = 0L;
+        this.revenue = 0;
     }
 
     public void buyLottos(int count) {
@@ -47,12 +51,24 @@ public class LottoMachine {
         return statistics;
     }
 
+    public double getRevenue() {
+        return revenue;
+    }
+
     public void calculateResult(List<Integer> winning, int bonus) {
         for (Lotto lotto : lottos) {
             int matchCount = lotto.getMatchNumberCount(winning);
             boolean haveBonus = lotto.haveBonusNumber(bonus);
             WinningResult key = WinningResult.findByMatchCountAndBonus(matchCount, haveBonus);
             statistics.put(key, statistics.getOrDefault(key, 0) + 1);
+            reward += key.getReward();
         }
+    }
+
+    public void calculateRevenue(int paidMoney) {
+        if (paidMoney == 0) {
+            return;
+        }
+        revenue = reward / (double) paidMoney;
     }
 }

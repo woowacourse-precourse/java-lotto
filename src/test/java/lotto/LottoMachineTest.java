@@ -89,7 +89,7 @@ class LottoMachineTest {
     @Test
     void 당첨_통계_내기() {
         lottoMachine.buyLottos(100);
-        List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> winning = Utils.pickUnique6Numbers();
         int bonus = 30;
         lottoMachine.calculateResult(winning, bonus);
     }
