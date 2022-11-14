@@ -50,8 +50,8 @@
   - [ ] 당첨된 결과 리스트 저장 하는 메서드
 - 예외 처리를 위한 기능
   - [ ] 올바른 금액이 들어왔는지 확인 해주는 메서드
-### LottoResult (Enum class)
-- 각 등수별 결과를 저장하는 필드
+### Reward (Enum class)
+- [ ] 각 등수별 결과를 저장 하고 조회 하는 기능
 ## Controller
 ### LottoController
 - [ ] 사용자가 로또를 구입 하도록 금액을 입력 받는 InputView 메서드를 호출하는 메서드
