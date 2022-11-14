@@ -7,6 +7,8 @@ import java.util.List;
 public class Simulator {
     private int quantity;
     private List<Lotto> lottos;
+    private Lotto winning;
+    private int bonus;
 
     public Simulator(int price) {
         validatePrice(price);
@@ -20,6 +22,11 @@ public class Simulator {
 
     public List<Lotto> getLottos() {
         return this.lottos;
+    }
+
+    public void setWinning(Lotto winning, int bonus) {
+        this.winning = winning;
+        this.bonus = bonus;
     }
 
     private void validatePrice(int price) {

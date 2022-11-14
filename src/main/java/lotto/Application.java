@@ -18,8 +18,9 @@ public class Application {
         int price = readNumber(inputPriceMessage, priceNonNumericErrorMessage);
         Simulator lottoSimulator = new Simulator(price);
         printPurchaseHistory(lottoSimulator);
-        List<Integer> winningNumbers = readNumbers(inputWinningNumbersMessage);
+        Lotto winning = new Lotto(readNumbers(inputWinningNumbersMessage));
         int bonus = readNumber(inputBonusNumberMessage, bonusNonNumericErrorMessage);
+        lottoSimulator.setWinning(winning, bonus);
     }
 
     private static int readNumber(String outputMessage, String errorMessage) {
