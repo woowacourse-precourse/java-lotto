@@ -15,8 +15,7 @@ public class Application {
         LottoCount lottoCount = new LottoCount(money);
         OutputView.printLottoCount(lottoCount);
 
-        LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
-        Lottos lottos = lottoNumberGenerator.generateLottos(lottoCount);
+        Lottos lottos = new LottoNumberGenerator().generateLottos(lottoCount);
         OutputView.printPurchasedLottoNumbers(lottos);
 
         String winningLottoNumbers = InputView.inputWinningLottoNumbers();
