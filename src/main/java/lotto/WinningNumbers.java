@@ -19,10 +19,19 @@ public class WinningNumbers {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 겹치지 않아햐 합니다.");
         }
     }
+
+    public Rank match(Lotto lotto, int bonusNumber){
+        int count = (int) lotto.getNumbers().stream()
+                .filter(i -> WinningNumber.getNumbers().contains(i)).count();
+        boolean isBonus = lotto.getNumbers().stream().anyMatch(i -> i==bonusNumber);
+
+        return Rank.value(count, isBonus);
+    }
     List<Integer> getWinningNumber(){
         return this.WinningNumber.getNumbers();
     }
     int getBonusNumber(){
         return this.BonusNumber;
     }
+
 }
