@@ -155,11 +155,12 @@ BUILD SUCCESSFUL in 0s
 4. [User] 구매할 로또의 개수만큼 3번에서 리턴한 list를 Lotto(객체)에 매개 변수로 넣어 User의 List<Lotto>에 저장하는 메서드 구현
 5. [User] 저장한 List<Lotto>를 출력하는 메서드 구현
 6. [Application] 당첨 번호를 입력받아 저장하는 메서드 구현
-7. [User] 당첨 번호와 User의 List<Lotto>의 Lotto들을 비교하는 메서드 구현
-8. [User] 당첨된 번호 개수를 count하여 저장하는 메서드 구현 
-9. [User] 당첨 통계를 출력하는 메서드 구현
-9. [User] user의 수익률을 계산하여 출력하는 메서드 구현
-10. [Lotto] validate 메서드 외에 다른 예외 사항을 throw하는 메서드 구현(아래-예외 사항 리스트)
+7. [User] 당첨된 로또의 개수를 등수로 구분하여 저장하는 EnumMap 추가
+8. [User] 당첨 번호와 User의 List<Lotto>의 Lotto들을 비교하여 같은 번호의 개수를 리턴하는 메서드 구현
+9. [User] 8번에서 리턴받은 개수 = EnumMap의 key값 으로 하여 key값에 해당하는 value를 더해주는 메서드 구현 
+10. [User] 당첨 통계를 출력하는 메서드 구현
+11. [User] user의 수익률을 계산하여 출력하는 메서드 구현
+12. [Lotto] validate 메서드 외에 다른 예외 사항을 throw하는 메서드 구현(아래-예외 사항 리스트)
     1)
     2)
     3)
