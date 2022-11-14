@@ -44,13 +44,13 @@ public class Lotto {
             if (hasDuplicateNumber(numbers, num)) {
                 Application.lottoError("로또 생성 시 중복된 번호는 허용하지 않습니다.");
             }
-            if (!isNumberInRangeForLotto(num)) {
+            if (!checkRange(num)) {
                 Application.lottoError("범위를 벗어난 로또 번호는 허용하지 않습니다.");
             }
         }
     }
 
-    public static boolean isNumberInRangeForLotto(int num) {
+    public static boolean checkRange(int num) {
         if (num >= _min_lotto_number && num <= _max_lotto_number) {
             return true;
         }
