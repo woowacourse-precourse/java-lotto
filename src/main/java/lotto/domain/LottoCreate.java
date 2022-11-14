@@ -28,8 +28,14 @@ public class LottoCreate {
             List<Integer> numbers = createLottoNum();
             lottos.add(new Lotto(numbers));
         }
+        printLottoNum(lottos);
 
         return lottos;
+    }
+    public void printLottoNum(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            lotto.printNumbers();
+        }
     }
 
 
