@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.util.NumberFormator;
+
 public class Profit {
 
     private final PrizeCount prizeCount;
@@ -26,4 +28,15 @@ public class Profit {
         rate = (amount / purchaseAmount) * 100;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder message = new StringBuilder();
+
+        message.append("총 수익률은 ")
+                .append(NumberFormator.roundToTwoDecimalPlaces(rate))
+                .append("%")
+                .append("입니다.");
+
+        return message.toString();
+    }
 }
