@@ -9,8 +9,11 @@
 - [x] 생성된 6개의 번호를 오름차순으로 정렬한다.  - PrizeNumber#sort()
 - [x] 보너스 번호를 입력받는다.  -PrizeNumber#bonusNumber()
 
-## 3. 로또 결과를 분석한다.  - Analyze()
+## 3. enum을 생성한다.  -PrizeCategory()
+- [] 사용자와 당첨번호의 일치 갯수에 따른 당첨금의 enum을 생성한다.  -PrizeCategory()
 
-## 4. 결과 정보를 출력한다.  - Print()
+## 4. 로또 결과를 분석한다.  - Analyze()
 
-## 5. 예외 처리  - Errors()
+## 5. 결과 정보를 출력한다.  - Print()
+
+## 6. 예외 처리  - Errors()
