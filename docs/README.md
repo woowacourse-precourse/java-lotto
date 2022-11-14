@@ -22,13 +22,14 @@
         - 중복 x
         - 쉼표(,)로 구분된 숫자 6개
     - [ ] 입력 조건에 맞지 않는 입력에 대해 예외 처리 : IllegalArgumentException("[ERROR] 에러 메시지")
-- [ ] 보너스 번호 설정
-    - [ ] 보너스 번호 입력 요청 메시지 출력 : "보너스 번호를 입력해 주세요."
-    - [ ] 보너스 번호 입력 받기 -> camp.nextstep.edu.missionutils.Console의 readLine() 사용
+- [x] 보너스 번호 설정
+    - [x] 보너스 번호 입력 요청 메시지 출력 : "보너스 번호를 입력해 주세요."
+    - [x] 보너스 번호 입력 받기 -> camp.nextstep.edu.missionutils.Console의 readLine() 사용
       - 입력 조건
         - 숫자 범위 : 1 ~ 45
         - 숫자 1개
-      - [ ] 입력 조건에 맞지 않는 입력에 대해 예외 처리 : IllegalArgumentException("[ERROR] 에러 메시지")
+        - 당첨 번호와 중복 x
+      - [x] 입력 조건에 맞지 않는 입력에 대해 예외 처리 : IllegalArgumentException("[ERROR] 에러 메시지")
 - [ ] 당첨 내역 출력
      ```
     당첨 통계
