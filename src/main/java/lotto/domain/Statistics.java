@@ -13,7 +13,6 @@ public class Statistics {
         winningHistory.put(PrizeMoney.THIRD, 0);
         winningHistory.put(PrizeMoney.SECOND, 0);
         winningHistory.put(PrizeMoney.FIRST, 0);
-        winningHistory.put(PrizeMoney.LOSING, 0);
     }
 
     public void countWinningLotto(List<List<Integer>> lottos, List<Integer> winningLottoNumbers, int bonusNumber) {
@@ -25,16 +24,22 @@ public class Statistics {
         }
     }
 
-    private void addPrizeMoney(int countOfMatch, boolean matchBonusNumber){
+    private void addPrizeMoney(int countOfMatch, boolean matchBonusNumber) {
         PrizeMoney prizeMoney = PrizeMoney.valueOf(countOfMatch, matchBonusNumber);
-        winningHistory.put(prizeMoney, incrementCountOfWinning(prizeMoney));
+        if(isPrize(prizeMoney)) {
+            winningHistory.put(prizeMoney, incrementCountOfWinning(prizeMoney));
+        }
+    }
+
+    private Boolean isPrize(PrizeMoney prizeMoney) {
+        return !prizeMoney.equals(PrizeMoney.LOSING);
     }
 
     private Boolean isMatchBonusNumber(List<Integer> lotto, int bonusNumber) {
         return lotto.contains(bonusNumber);
     }
 
-    private int incrementCountOfWinning(PrizeMoney prizeMoney){
+    private int incrementCountOfWinning(PrizeMoney prizeMoney) {
         return winningHistory.get(prizeMoney) + 1;
     }
 
