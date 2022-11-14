@@ -6,6 +6,10 @@
 - 놓치기 쉬운 요구사항 채크리스트
 - TODO LIST
 
+## 클래스 다이어그램
+
+![lotto-misson-class-diagram](./action-class-diagram.png)
+
 ## 기능 목록
 
 ---
