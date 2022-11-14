@@ -67,6 +67,56 @@ public class Application {
         System.out.println("당첨 번호를 입력해주세요.");
     }
 
+    public static String [] split(String str){
+        int i=0;
+        int count = str.split(",").length;
+        String [] array = new String[count];
+
+        while(i<count){
+            array[i] = str.split(",")[i];
+            i++;
+        }
+
+        return array;
+    }
+
+    public static void Lotto_Number_exception(String [] strings){
+        for(int i=0; i<strings.length; i++){
+            if(strings[i] != " ") {
+                Number_exception(strings[i]);
+            }
+            Range_exception(strings[i]);
+        }
+    }
+
+    public static void Range_exception(String str){
+        if(Integer.parseInt(str)<1 || Integer.parseInt(str)>45){
+            throw new IllegalArgumentException("[Error] 1~45사이의 정수를 입력해주세요.");
+        }
+    }
+
+    public static void Duplicate_exception(List<Integer> list){
+        int key = list.size()-1;
+        int temp = list.get(key);
+
+        list.remove(key);
+        if(list.contains(temp)){
+            throw new IllegalArgumentException("[Error] 중복되지 않는 값을 입력해주세요.");
+        }
+        list.add(temp);
+    }
+
+    public static List<Integer> StringtoInt(String [] str){
+        List<Integer> list = new ArrayList<>();
+
+        for (int i=0; i<str.length; i++){
+            list.add(StringtoInteger(str[i]));
+            Duplicate_exception(list);
+        }
+
+        return list;
+    }
+
     public static void main(String[] args) {
         List<List<Integer>> issue_Numbers;
 
@@ -78,7 +128,11 @@ public class Application {
         issue_Numbers = issue_Numbers((purchase_Amount(StringtoInteger(purchase_Input))));
         issue_Numbers_Output(issue_Numbers);
         Lotto_Output();
-//        Number_exception();
+        String Lotto_Input = Input();
+        Lotto_Number_exception(split(Lotto_Input));
+        System.out.println(StringtoInt(split(Lotto_Input)));
+//        Lotto lotto_number = new Lotto(StringtoInt(split(Lotto_Input)));
+//        System.out.println(lotto_number);
 
 
 //        int num = Integer.parseInt(Console.readLine());
