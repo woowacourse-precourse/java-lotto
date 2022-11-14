@@ -1,5 +1,6 @@
 package lotto.service;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,9 +32,9 @@ public class LottoCalculateService {
                 .forEach(userLotto -> countLottoWinning(user, userLotto.getNumbers(), lotto));
     }
 
-    public double getYieldOfLotto(User user, int totalPrice) {
-        double yield = ((double) totalPrice / user.getBuyingPrice() * 100.0);
-        return yield;
+    public String getYieldOfLotto(User user, int totalPrice) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.0");
+        return decimalFormat.format((double) totalPrice / user.getBuyingPrice() * 100);
     }
 
     public void countLottoWinning(User user, List<Integer> numbers, Lotto lotto) {

@@ -41,7 +41,7 @@ public class OutputView {
         System.out.println("6개 일치 (2,000,000,000원) - " + countOfWinning.getOrDefault(Winning.SIXTH, 0) + "개");
     }
 
-    public void responseYieldOfLotto(double yieldOfLotto) {
+    public void responseYieldOfLotto(String yieldOfLotto) {
         System.out.println("총 수익률은 " + yieldOfLotto + "%입니다.");
     }
 
