@@ -12,7 +12,7 @@ public class RankRepository {
         List<Integer> playerNumbers = playerLotto.getNumbers();
         int matchedCount = getMatchedCount(winningLotto, playerNumbers);
         boolean bonusMatch = isBonusMatch(winningLotto, playerNumbers);
-        return Optional.ofNullable(Rank.getRank(matchedCount, bonusMatch));
+        return Rank.getRank(matchedCount, bonusMatch);
     }
 
     private static int getMatchedCount(WinningLotto winningLotto, List<Integer> playerNumbers) {

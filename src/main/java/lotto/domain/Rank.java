@@ -4,6 +4,7 @@ import static lotto.domain.Rank.Bonus.ALL;
 import static lotto.domain.Rank.Bonus.MATCH;
 import static lotto.domain.Rank.Bonus.MISMATCH;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 /**
@@ -28,13 +29,13 @@ public enum Rank {
         this.descriptionMessage = descriptionMessage;
     }
 
-    public static Rank getRank(int matchCount, boolean bonusMatch) {
+    public static Optional<Rank> getRank(int matchCount, boolean bonusMatch) {
         for (Rank rank : Rank.values()) {
             if (rank.matchCount == matchCount && rank.bonusMatch.isMatch(bonusMatch)) {
-                return rank;
+                return Optional.of(rank);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public String getDescriptionMessage() {

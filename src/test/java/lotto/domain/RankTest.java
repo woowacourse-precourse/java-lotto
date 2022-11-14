@@ -12,8 +12,8 @@ class RankTest {
         // given
         int matchCount = 6;
         // when
-        Rank resultBonusMatch = Rank.getRank(matchCount, true);
-        Rank resultBonusMismatch = Rank.getRank(matchCount, true);
+        Rank resultBonusMatch = Rank.getRank(matchCount, true).get();
+        Rank resultBonusMismatch = Rank.getRank(matchCount, true).get();
         // then
         Assertions.assertThat(resultBonusMatch).isEqualTo(Rank.FIRST);
         Assertions.assertThat(resultBonusMismatch).isEqualTo(Rank.FIRST);
@@ -25,7 +25,7 @@ class RankTest {
         // given
         int matchCount = 5;
         // when
-        Rank result = Rank.getRank(matchCount, true);
+        Rank result = Rank.getRank(matchCount, true).get();
         // then
         Assertions.assertThat(result).isEqualTo(Rank.SECOND);
     }
@@ -36,7 +36,7 @@ class RankTest {
         // given
         int matchCount = 5;
         // when
-        Rank result = Rank.getRank(matchCount, false);
+        Rank result = Rank.getRank(matchCount, false).get();
         // then
         Assertions.assertThat(result).isEqualTo(Rank.THIRD);
     }
@@ -47,8 +47,8 @@ class RankTest {
         // given
         int matchCount = 4;
         // when
-        Rank resultBonusMatch = Rank.getRank(matchCount, true);
-        Rank resultBonusMismatch = Rank.getRank(matchCount, true);
+        Rank resultBonusMatch = Rank.getRank(matchCount, true).get();
+        Rank resultBonusMismatch = Rank.getRank(matchCount, true).get();
         // then
         Assertions.assertThat(resultBonusMatch).isEqualTo(Rank.FOURTH);
         Assertions.assertThat(resultBonusMismatch).isEqualTo(Rank.FOURTH);
@@ -60,8 +60,8 @@ class RankTest {
         // given
         int matchCount = 3;
         // when
-        Rank resultBonusMatch = Rank.getRank(matchCount, true);
-        Rank resultBonusMismatch = Rank.getRank(matchCount, true);
+        Rank resultBonusMatch = Rank.getRank(matchCount, true).get();
+        Rank resultBonusMismatch = Rank.getRank(matchCount, true).get();
         // then
         Assertions.assertThat(resultBonusMatch).isEqualTo(Rank.FIFTH);
         Assertions.assertThat(resultBonusMismatch).isEqualTo(Rank.FIFTH);
