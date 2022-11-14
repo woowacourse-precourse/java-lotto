@@ -49,4 +49,9 @@ public class Application {
                 .collect(Collectors.toList());
     }
 
+    private static int getBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Integer.parseInt(Console.readLine());
+    }
+
 }
