@@ -19,6 +19,12 @@ public class InputView {
         List<Integer> input = List.of(readLine().split(",")).stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
+        return ipnut;
+    }
+
+    public static int InputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int input = Integer.valueOf(readLine());
         return input;
     }
 }

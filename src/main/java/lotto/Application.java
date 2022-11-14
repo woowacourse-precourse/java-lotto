@@ -11,5 +11,6 @@ public class Application {
         Issue user = new Issue();
         List<Integer> numbers = InputView.InputWinNumber();
         Lotto winLotto = new Lotto(numbers);
+        int bonusLotto = InputView.InputBonusNumber();
     }
 }
