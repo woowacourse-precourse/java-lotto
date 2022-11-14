@@ -44,7 +44,12 @@ public class User {
     }
 
     public void inputBuyPrice() {
-        buyPrice = Integer.parseInt(readLine());
+        try {
+            String input = readLine();
+            buyPrice = Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
     }
 
     private void inputWinning() {
