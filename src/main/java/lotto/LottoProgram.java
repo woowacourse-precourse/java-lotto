@@ -50,6 +50,10 @@ public class LottoProgram {
 		messagePrint.inputWinNumPrint();
 		String winningNumber = Console.readLine();
 		String[] winNum = winningNumber.split(",");
+		for (int i = 0; i < winNum.length; i++) {
+			checkWinningNumber(winNum[i]);
+			lottoNumbers.add(Integer.parseInt(winNum[i]));
+		}
 	}
 
 }
