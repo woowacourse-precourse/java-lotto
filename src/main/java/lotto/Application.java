@@ -194,7 +194,11 @@ public class Application {
         List<List<Integer>> lottos = new ArrayList<>();
         while (account > 0) {
             List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(list);
+
+            list.stream()
+                    .sorted(Comparator.comparing(Integer::intValue));
+
+
             lottos.add(list);
             account -= LOTTO_PRICE;
         }
