@@ -12,7 +12,7 @@
 ## Lotto Random Peek
 - [x] 금액에 맞는 횟수만큼 복권발행
 - [x] 1~45 사이의 중복되지 않는 숫자 6개 뽑기
-- [ ] 로또 번호 오름차순으로 정렬
+- [x] 로또 번호 오름차순으로 정렬
 - [x] 발행된 랜덤복권 반환
 
 ## Lotto Random Peek Output
@@ -47,7 +47,14 @@
 ## Statistics Output
 - [x] 당첨내역과 수익률 출력
 
-
+## Lotto Service
+- [x] Buyer Generate 로 Buyer 클래스 생성(구입 금액입력)
+- [x] 구입금액에 따라 LottoRandomPeek 클래스 생성 및 랜덤로또 생성
+- [x] 생성된 랜덤로또 출력
+- [x] 당첨번호와 보너스번호 입력받아 WinLottoGenerate 로 WinLotto 클래스 생성
+- [x] 생성된 랜덤로또와 당첨번호, 보너스번호 비교
+- [x] 당첨 내역 출력
+- [x] 수익률 출력
 
 
 # 🚀 추가된 프로그래밍 요구 사항
