@@ -12,4 +12,10 @@ public class PurchaseTest {
         int money = 14000;
         assertThat(new Purchase().isValid(money)).isTrue();
     }
+
+    @Test
+    void canBuyLottoTest() {
+        int money = 14000;
+        assertThat(new Purchase().canBuyLotto(money)).isEqualTo(14);
+    }
 }
