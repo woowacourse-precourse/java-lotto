@@ -1,7 +1,19 @@
 package lotto.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class JudgmentTest {
+    @DisplayName("1등으로 당첨된 로또의 개수를 계산한다.")
+    @Test
+    void createFirstCount() {
+        Judgment judgment = new Judgment(List.of(List.of(1, 2, 3, 4, 5, 6),
+                                         List.of(2, 3, 4, 5, 6, 7),
+                                         List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 7);
+        assertEquals(2, judgment.firstCount);
+    }
 
 }

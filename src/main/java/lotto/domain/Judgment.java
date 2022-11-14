@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Judgment {
@@ -16,73 +15,59 @@ public class Judgment {
         this.collectionOfLottoNumbers = collectionOfLottoNumbers;
         this.firstCount = calculateFirst(numbers);
         this.secondCount = calculateSecond(numbers, bonusNumber);
-        this.thirdCount = calculateThird(numbers);
+        this.thirdCount = calculateThird(numbers, bonusNumber);
         this.fourthCount = calculateFourth(numbers);
         this.fifthCount = calculateFifth(numbers);
     }
 
     private int calculateFirst(List<Integer>numbers) {
         int count = 0;
-        List<Integer> check = new ArrayList<>();
-        for (int i = 0; i < collectionOfLottoNumbers.size(); i++) {
-            if (correctCount(collectionOfLottoNumbers.get(i), numbers) == 6) {
-                check.add(i);
+        for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
+            if (correctCount(collectionOfLottoNumber, numbers) == 6) {
                 count++;
             }
         }
-        removeNumbers(check);
         return count;
     }
 
     private int calculateSecond(List<Integer>numbers, int bonusNumber) {
         int count = 0;
-        List<Integer> check = new ArrayList<>();
-        for (int i = 0; i < collectionOfLottoNumbers.size(); i++) {
-            if (correctCountIncludingBonus(collectionOfLottoNumbers.get(i), numbers, bonusNumber)) {
-                check.add(i);
+        for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
+            if (correctCountIncludingBonus(collectionOfLottoNumber, numbers, bonusNumber)) {
                 count++;
             }
         }
-        removeNumbers(check);
         return count;
     }
 
-    private int calculateThird(List<Integer>numbers) {
+    private int calculateThird(List<Integer>numbers, int bonusNumber) {
         int count = 0;
-        List<Integer> check = new ArrayList<>();
-        for (int i = 0; i < collectionOfLottoNumbers.size(); i++) {
-            if (correctCount(collectionOfLottoNumbers.get(i), numbers) == 5) {
-                check.add(i);
+        for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
+            if (correctCount(collectionOfLottoNumber, numbers) == 5 && !correctCountIncludingBonus(
+                    collectionOfLottoNumber, numbers, bonusNumber)) {
                 count++;
             }
         }
-        removeNumbers(check);
         return count;
     }
 
     private int calculateFourth(List<Integer>numbers) {
         int count = 0;
-        List<Integer> check = new ArrayList<>();
-        for (int i = 0; i < collectionOfLottoNumbers.size(); i++) {
-            if (correctCount(collectionOfLottoNumbers.get(i), numbers) == 4) {
-                check.add(i);
+        for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
+            if (correctCount(collectionOfLottoNumber, numbers) == 4) {
                 count++;
             }
         }
-        removeNumbers(check);
         return count;
     }
 
     private int calculateFifth(List<Integer>numbers) {
         int count = 0;
-        List<Integer> check = new ArrayList<>();
-        for (int i = 0; i < collectionOfLottoNumbers.size(); i++) {
-            if (correctCount(collectionOfLottoNumbers.get(i), numbers) == 3) {
-                check.add(i);
+        for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
+            if (correctCount(collectionOfLottoNumber, numbers) == 3) {
                 count++;
             }
         }
-        removeNumbers(check);
         return count;
     }
 
@@ -114,11 +99,5 @@ public class Judgment {
             }
         }
         return false;
-    }
-
-    private void removeNumbers(List<Integer> check) {
-        for (int i = 0; i < check.size(); i++) {
-            collectionOfLottoNumbers.remove(i);
-        }
     }
 }
