@@ -16,7 +16,7 @@ class LottoGeneratorTest {
         LottoGenerator generator = LottoGenerator.getInstance();
         assertThatThrownBy(() -> generator.generateLottos(money))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 금액이 1000으로 나누어 떨어지지 않습니다");
+                .hasMessageContaining("구입 금액은 로또 가격의 배수여야 합니다");
     }
 
     @DisplayName("올바른 금액이면 구입 가능한 개수 만큼 로또 발행")

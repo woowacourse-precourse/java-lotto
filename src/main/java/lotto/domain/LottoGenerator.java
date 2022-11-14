@@ -19,7 +19,7 @@ public class LottoGenerator {
 
     public Lottos generateLottos(int money) {
         if (isNotDivisible(money)) {
-            throw new IllegalArgumentException("[ERROR]isNotDivisibleBy1000");
+            throw new IllegalArgumentException("구입 금액은 로또 가격의 배수여야 합니다");
         }
 
         List<Lotto> lottos = new ArrayList<>();

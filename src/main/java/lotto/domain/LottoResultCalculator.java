@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class LottoResultCalculator {
+
     public static Long calculatePrize(Map<LottoRank, Integer> ranks) {
         Long totalPrize = 0L;
         for (Entry<LottoRank, Integer> entry : ranks.entrySet()) {
@@ -20,3 +21,4 @@ public class LottoResultCalculator {
     }
 
 }
+

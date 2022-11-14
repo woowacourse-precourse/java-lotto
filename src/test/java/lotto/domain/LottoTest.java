@@ -14,7 +14,7 @@ class LottoTest {
     void createLottoByOverSize() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 로또 번호는 총 6개여야 합니다.");
+                .hasMessageContaining("로또 번호는 총 6개여야 합니다.");
 
     }
 
@@ -23,7 +23,7 @@ class LottoTest {
     void createLottoByUnderSize() {
         assertThatThrownBy(() -> new Lotto(List.of()))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 로또 번호는 총 6개여야 합니다.");
+                .hasMessageContaining("로또 번호는 총 6개여야 합니다.");
 
     }
 
@@ -32,7 +32,7 @@ class LottoTest {
     void createLottoByDuplicatedNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 로또 번호에 중복이 없어야 합니다.");
+                .hasMessageContaining("로또 번호에 중복이 없어야 합니다.");
 
     }
 
@@ -43,7 +43,7 @@ class LottoTest {
 
         assertThatThrownBy(() -> new Lotto(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 로또 번호는 1보다 크거나 같고 45보다 작거나 같아야 합니다.");
+                .hasMessageContaining("로또 번호는 1보다 크거나 같고 45보다 작거나 같아야 합니다.");
     }
 
 }

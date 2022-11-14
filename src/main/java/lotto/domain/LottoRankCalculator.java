@@ -44,7 +44,7 @@ public class LottoRankCalculator {
         int matched = 0;
         for (int index = 0; index < LottoRule.TOTAL_COUNT; index++) {
             Integer number = lotto.get(index);
-            if (winningNumbers.contains(number)) {
+            if (winningNumbers.mainDrawContains(number)) {
                 matched += 1;
             }
         }
