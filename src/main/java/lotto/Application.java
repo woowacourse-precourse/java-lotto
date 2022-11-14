@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.domain.LottoStore;
+import lotto.controller.LottoStore;
 
 public class Application {
     public static void main(String[] args) {
@@ -10,6 +10,5 @@ public class Application {
         } catch (IllegalArgumentException error) {
             System.out.println(error.getMessage());
         }
-
     }
 }

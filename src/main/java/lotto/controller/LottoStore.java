@@ -1,5 +1,6 @@
-package lotto.domain;
+package lotto.controller;
 
+import lotto.model.*;
 import lotto.views.InputView;
 
 import java.util.ArrayList;

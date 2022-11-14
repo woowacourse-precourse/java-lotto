@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 public class Bonus {
     private static int bonusNumber;

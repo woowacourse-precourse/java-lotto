@@ -1,11 +1,11 @@
 package lotto;
 
-import lotto.domain.Result;
+import lotto.model.Result;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static lotto.domain.PlaceStatus.*;
+import static lotto.model.PlaceStatus.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResultTest {

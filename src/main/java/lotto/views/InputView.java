@@ -1,7 +1,7 @@
 package lotto.views;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Bonus;
+import lotto.model.Bonus;
 import lotto.utils.Validation;
 
 import java.util.ArrayList;

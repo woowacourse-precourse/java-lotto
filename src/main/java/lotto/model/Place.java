@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 public class Place {
     public static final int CORRECT_NUMBER_SIX = 6;

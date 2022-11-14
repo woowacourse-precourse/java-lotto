@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.domain.Place;
-import lotto.domain.PlaceStatus;
+import lotto.model.Place;
+import lotto.model.PlaceStatus;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
