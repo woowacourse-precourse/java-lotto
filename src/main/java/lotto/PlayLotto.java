@@ -23,7 +23,7 @@ public class PlayLotto {
             boolean compareBonus = compareTicketAndBonusNumber(eachTicket, inputBonusNumber);
             int compareReward = compareReward(compareWinning,compareBonus);
             if (compareReward < 5) {
-                 correctNumber.add(compareReward,correctNumber.get(compareReward)+1);
+                 correctNumber.set(compareReward,correctNumber.get(compareReward)+1);
             }
         }
         return correctNumber;
