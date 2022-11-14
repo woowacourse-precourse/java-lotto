@@ -6,6 +6,12 @@ import lotto.constant.OutputMessage;
 import lotto.constant.WinningRating;
 
 public class OutputView {
+	public void printErrorMessage() {
+		System.out.println(OutputMessage.ERROR_MESSAGE.message());
+	}
+	public void printRateOfProfit(float rateOfProfit) {
+		System.out.printf(OutputMessage.DISPLAYING_RATE_OF_PROFIT.message(), rateOfProfit);
+	}
 	public void printWinningStatistics(EnumMap<WinningRating, Integer> countsOfWins) {
 		System.out.println();
 		System.out.println(OutputMessage.WINNING_STATISTICS_BEGINNING.message());
