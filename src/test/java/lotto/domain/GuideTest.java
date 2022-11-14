@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.domain.Guide.printRateOfReturn;
 import static org.assertj.core.api.Assertions.*;
 
 class GuideTest {
@@ -19,4 +20,9 @@ class GuideTest {
         Guide.printLottoStatistics(Guide.createLottoStatisticsMessage(lottoResult));
     }
 
+    @DisplayName("수익률 반올림하여 소수점 n번째 자리까지 출력")
+    @Test
+    void printRateOfReturnTest() {
+        printRateOfReturn(90.75, 1);
+    }
 }

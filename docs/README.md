@@ -37,8 +37,8 @@
   - [x] 당첨 통계 출력 - Guide
     - [x] 당첨 통계 메시지 생성 - Guide
   - [x] int 형식에 대한 String 형변환 - Preprocessor
-  - [ ] 수익률 출력 - Guide
-    - [ ] 소수점 n번째 자리에서 반올림
+  - [x] 수익률 출력 - Guide
+    - [x] 소수점 n번째 자리에서 반올림 - Preprocessor
 
 
 - [x] 입력 기능
@@ -58,4 +58,4 @@
 - [x] 몇 개의 번호가 당첨 번호와 일치하는지 확인 - Judgment
 - [x] 보너스 번호 일치 여부 확인 - Judgment
 - [x] 당첨결과 리스트 생성(당첨 통계) - UserLotto
-- [ ] 수익률 계산 - UserLotto
+- [x] 수익률 계산 - UserLotto

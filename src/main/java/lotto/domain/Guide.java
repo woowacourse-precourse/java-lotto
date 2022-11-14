@@ -54,7 +54,9 @@ public class Guide {
         }
     }
 
-    public static void printRateOfReturn(double rateOfReturn) {
-
+    public static void printRateOfReturn(double rateOfReturn, int decimalPlace) {
+        String result = String.format("총 수익률은 %s%% 입니다.",
+                getRoundDecimalPlaceNumber(rateOfReturn, decimalPlace));
+        System.out.println(result);
     }
 }
