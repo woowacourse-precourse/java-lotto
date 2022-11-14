@@ -13,6 +13,8 @@ public class Application {
             LotteryShop.get_my_lottery();
             LotteryShop.winning_numbers = get_winning_number();
             LotteryShop.bonus_number = get_bonus_number();
+            LotteryShop.get_result();
+            LotteryShop.print_result();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
