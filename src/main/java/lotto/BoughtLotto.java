@@ -17,7 +17,7 @@ public class BoughtLotto extends Lotto{
 
     public void printLottoNumber() {
         List<Integer> numbers = super.getLotto();
-        numbers.sort(Comparator.naturalOrder());
+//        numbers.sort(Comparator.naturalOrder());
         System.out.println(numbers);
     }
 }

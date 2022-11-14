@@ -42,7 +42,7 @@ public class YieldMachine {
             int rewardPrize = reward.getPrize();
             totalYield += countOfReward * rewardPrize;
         }
-        this.yield = totalYield / totalCost;
+        this.yield = totalYield / totalCost * 100;
     }
 
     private void calculateOneLottoReward(BoughtLotto boughtLotto) {
@@ -81,15 +81,15 @@ public class YieldMachine {
             if (matchingNumber.get(1) == 1) {
                 String message
                         = String.format("5개 일치, 보너스 볼 일치 (%,d원) - %d개", prize, countOfRewards.get(index));
-                System.out.printf(message);
+                System.out.printf(message + "\n");
                 continue;
             }
             String message
                     = String.format("%d개 일치 (%,d원) - %d개", matchingNumber.get(0), prize, countOfRewards.get(index));
-            System.out.println(message);
+            System.out.printf(message + "\n");
         }
-        String yieldMessage = String.format("%.2f", yield);
-        System.out.println("총 수익률은 " + yieldMessage + "입니다.");
+        String yieldMessage = String.format("%.1f", yield);
+        System.out.println("총 수익률은 " + yieldMessage + "%입니다.");
     }
 
     public List<Integer> getCountOfRewards() {
