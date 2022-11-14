@@ -1,10 +1,12 @@
 package View;
 
 import enumCollections.GuideMessage;
+import enumCollections.RankNumber;
 import enumCollections.ResultStatistics;
 import lotto.Lotto;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 
 public class Output {
@@ -25,22 +27,31 @@ public class Output {
     }
 
     public static void yield(float yield) {
-        System.out.printf("수익률은 %f 입니다.", yield);
+        System.out.printf(ResultStatistics.getMessage(ResultStatistics.YIELD), yield);
     }
 
-    public static List<String> getCompleteStatistics(int[] resultStatistics) {
-        List<String> statistics = new ArrayList<>();
-        for (ResultStatistics message : ResultStatistics.values()) {
+    public static void showResultStatistics(EnumMap<RankNumber, Integer> resultStatistics) {
+        getGuideMessage(ResultStatistics.GUIDE_MESSAGE);
+        getGuideMessage(ResultStatistics.LINE);
+        getCompleteStatistics(resultStatistics);
+    }
+
+    public static void getCompleteStatistics(EnumMap<RankNumber, Integer> resultStatistics) {
+        for (ResultStatistics rank : ResultStatistics.values()) {
+            if (rank.equals(ResultStatistics.GUIDE_MESSAGE)) {
+                break;
+            }
+            System.out.printf(ResultStatistics.getMessage(rank), resultStatistics.get(rank));
         }
     }
 
     public static void printLottos(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
-            System.out.println(lotto);
+            lotto.printLottoNumbers();
         }
     }
 
-    public static void getGuideMessage(GuideMessage message) {
+    public static void getGuideMessage(Enum message) {
         System.out.println(message);
     }
 
