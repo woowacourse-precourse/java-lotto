@@ -30,7 +30,9 @@ public class LottoMatcher {
         int countOfMatchedNumbers = 0;
         List<Integer> winningNumbers = winningLotto.getWinningNumbers();
         for (Integer winningNumber : winningNumbers) {
-            countOfMatchedNumbers += lottoNumbers.contains(winningNumber) ? 1 : 0;
+            if (lottoNumbers.contains(winningNumber)) {
+                ++countOfMatchedNumbers;
+            }
         }
         return countOfMatchedNumbers;
     }
