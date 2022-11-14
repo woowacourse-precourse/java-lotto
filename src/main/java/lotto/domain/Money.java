@@ -1,11 +1,25 @@
 package lotto.domain;
 
+import lotto.utils.Error;
+import lotto.utils.ErrorException;
+
 public class Money {
     private static final int MIN_MONEY = 1000;
     private final String money;
 
     public Money(String money) {
+        validateMoney(money);
         this.money = money;
+    }
+
+    private void validateMoney(String money) {
+        if (isNotNumeric(money)) { // 숫자가 아닌 값인 경우
+            throw new ErrorException(Error.IS_NOT_NUMERIC.toString());
+        }
+
+        if (isInvalidMoney(Integer.parseInt(money))) {
+            throw new ErrorException(Error.INVALID_BUY_MONEY.toString());
+        }
     }
 
     private boolean isNotNumeric(String money) {
