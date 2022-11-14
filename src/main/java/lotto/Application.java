@@ -17,7 +17,8 @@ public class Application {
         //로또 발행하기
         List<Lotto> lottos = Publish.makeLottoNums(lotto_cnt);
         
-
+        //당첨 번호 입력 받기
+        Lotto winningNums = InputNum.askWinningNumbers();
 
 
     }
