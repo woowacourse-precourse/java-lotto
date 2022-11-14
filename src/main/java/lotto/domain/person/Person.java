@@ -18,8 +18,9 @@ public class Person {
 		this.lottoAutoGenerator = new LottoAutoGenerator();
 	}
 
-	public void buyLotto() {
+	public List<Lotto> buyLotto() {
 		lottos = lottoAutoGenerator.createLottoAccordingToTheAmount(money);
+		return lottos;
 	}
 
 	public Money getMoney() {
