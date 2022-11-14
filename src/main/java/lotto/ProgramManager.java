@@ -76,7 +76,6 @@ public class ProgramManager {
     }
 
     private static void getUserPredictLottoNumbers() {
-        // 당첨 번호 입력받기
         System.out.println(ASK_PREDICT_LOTTO_NUMBER);
         try {
             userPredictLottoNumbers = UserManager.getInput_predictLottoNumber();
@@ -84,7 +83,6 @@ public class ProgramManager {
             System.out.println(ERROR_MESSAGE + ERROR_MESSAGE_WRONG_LOTTO_VALUE);
         }
 
-        // 보너스 번호 입력받기
         System.out.println(ASK_PREDICT_LOTTO_BONUS_NUMBER);
         try {
             userPredictBonusNumber = UserManager.getInput_predictBonusLottoNumber();
@@ -99,30 +97,32 @@ public class ProgramManager {
         System.out.println(lottoStatisticsMessage);
     }
 
-    private static String getLottoRevenueRateMessage() {
-        return LOTTO_STATISTICS_MESSAGE_BODY_REVENUE_RATE_PRE + String.format("%.1f", lottoRevenueRate) + LOTTO_STATISTICS_MESSAGE_BODY_REVENUE_RATE_POST;
-    }
-
     private static String getLottoRankResultMessage() {
-        DecimalFormat decFormat = new DecimalFormat("###,###");
         StringBuilder lottoRankResultMessage = new StringBuilder();
-
         for (LottoManager.Rank rank : LottoManager.Rank.values()) {
-            lottoRankResultMessage.append(rank.getNumberOfSameLottoNumber());
-            lottoRankResultMessage.append(LOTTO_STATISTICS_MESSAGE_BODY_SAME_NUMBER_PRE);
-
-            if (rank.toString().compareTo("second") == 0) {
-                lottoRankResultMessage.append(LOTTO_STATISTICS_MESSAGE_BODY_SAME_NUMBER_BONUS_BALL);
-            }
-            lottoRankResultMessage.append(LOTTO_STATISTICS_MESSAGE_BODY_REWARD_PRE);
-
-            int rewardPrice = rank.getRewardPrice();
-            lottoRankResultMessage.append(decFormat.format(rewardPrice));
-            lottoRankResultMessage.append(LOTTO_STATISTICS_MESSAGE_BODY_REWARD_POST);
-            lottoRankResultMessage.append(lottoRankResult.get(rank.toString()));
-            lottoRankResultMessage.append(LOTTO_STATISTICS_MESSAGE_BODY_REWARD_NUMBER);
+            lottoRankResultMessage.append(getLottoRankResultMessage_sameNumber(rank));
+            lottoRankResultMessage.append(getLottoRankResultMessage_reward(rank));
         }
         return lottoRankResultMessage.toString();
+    }
+
+    private static String getLottoRankResultMessage_reward(LottoManager.Rank rank) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        return LOTTO_STATISTICS_MESSAGE_BODY_REWARD_PRE + decFormat.format(rank.getRewardPrice()) + LOTTO_STATISTICS_MESSAGE_BODY_REWARD_POST
+                + lottoRankResult.get(rank.toString()) + LOTTO_STATISTICS_MESSAGE_BODY_REWARD_NUMBER;
+    }
+
+    private static String getLottoRankResultMessage_sameNumber(LottoManager.Rank rank) {
+        String lottoRankResultMessage_sameNumber
+                = rank.getNumberOfSameLottoNumber() + LOTTO_STATISTICS_MESSAGE_BODY_SAME_NUMBER_PRE;
+        if (rank.toString().compareTo("second") == 0) {
+            lottoRankResultMessage_sameNumber += LOTTO_STATISTICS_MESSAGE_BODY_SAME_NUMBER_BONUS_BALL;
+        }
+        return lottoRankResultMessage_sameNumber;
+    }
+
+    private static String getLottoRevenueRateMessage() {
+        return LOTTO_STATISTICS_MESSAGE_BODY_REVENUE_RATE_PRE + String.format("%.1f", lottoRevenueRate) + LOTTO_STATISTICS_MESSAGE_BODY_REVENUE_RATE_POST;
     }
 
 }

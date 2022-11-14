@@ -7,7 +7,7 @@ import java.util.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class LottoManager_lottoRankResultTest {
+public class LottoManager_getLottoRankResultTest {
 
     @BeforeAll
     static void init() throws IllegalArgumentException {
@@ -19,7 +19,7 @@ public class LottoManager_lottoRankResultTest {
      * getLottoResult - 당첨 내역 계산
      */
     @Test
-    void getLottoResult_1등_테스트() {
+    void getLottoRankResult_1등_테스트() {
         List<Integer> userPredictLottoNumbers = ProgramManager.lotto.get(0);
         int userPredictBonusNumber = ProgramManager.lotto.get(0).get(0);
 
@@ -34,7 +34,7 @@ public class LottoManager_lottoRankResultTest {
     }
 
     @Test
-    void getLottoResult_2등_테스트() {
+    void getLottoRankResult_2등_테스트() {
         List<Integer> userPredictLottoNumbers = getUserPredictLottoNumbers_modified(2);
         int userPredictBonusNumber_same = ProgramManager.lotto.get(0).get(LottoManager.LOTTO_LENGTH - 1);
 
@@ -49,7 +49,7 @@ public class LottoManager_lottoRankResultTest {
     }
 
     @Test
-    void getLottoResult_3등_테스트() {
+    void getLottoRankResult_3등_테스트() {
         List<Integer> userPredictLottoNumbers = getUserPredictLottoNumbers_modified(3);
         int userPredictBonusNumber_notSame = getNotSameBonusNumber();
 
@@ -75,7 +75,7 @@ public class LottoManager_lottoRankResultTest {
     }
 
     @Test
-    void getLottoResult_4등_테스트() {
+    void getLottoRankResult_4등_테스트() {
         List<Integer> userPredictLottoNumbers = getUserPredictLottoNumbers_modified(4);
         int userPredictBonusNumber = userPredictLottoNumbers.get(0);
 
@@ -90,7 +90,7 @@ public class LottoManager_lottoRankResultTest {
     }
 
     @Test
-    void getLottoResult_5등_테스트() {
+    void getLottoRankResult_5등_테스트() {
         List<Integer> userPredictLottoNumbers = getUserPredictLottoNumbers_modified(5);
         int userPredictBonusNumber = userPredictLottoNumbers.get(0);
 

@@ -62,7 +62,6 @@ public class LottoManager {
      */
     public static Map<String, Integer> getLottoRankResult(List<Integer> userPredictLottoNumbers, int userPredictBonusNumber) {
         Lotto userLotto = new Lotto(userPredictLottoNumbers);
-
         Map<String, Integer> lottoRankResult = initiateLottoRankResult();
         int numberOfSameLottoNumber;
         boolean isBonusNumberSame;
@@ -91,15 +90,15 @@ public class LottoManager {
     private static void setLottoResult(Map<String, Integer> lottoRankResult, int numberOfSameLottoNumber, boolean isBonusNumberSame) {
         for (Rank rank : Rank.values()) {
             int previousRankResult = lottoRankResult.get(rank.toString());
+            if (rank.toString().compareTo("second") != 0 && rank.toString().compareTo("third") != 0 && numberOfSameLottoNumber == rank.numberOfSameLottoNumber) {
+                lottoRankResult.replace(rank.toString(), previousRankResult + 1);
+                return;
+            }
             if (rank.toString().compareTo("second") == 0 && numberOfSameLottoNumber == rank.numberOfSameLottoNumber && isBonusNumberSame) {
                 lottoRankResult.replace(rank.toString(), previousRankResult + 1);
                 return;
             }
             if (rank.toString().compareTo("third") == 0 && numberOfSameLottoNumber == rank.numberOfSameLottoNumber && !isBonusNumberSame) {
-                lottoRankResult.replace(rank.toString(), previousRankResult + 1);
-                return;
-            }
-            if (rank.toString().compareTo("second") != 0 && rank.toString().compareTo("third") != 0 && numberOfSameLottoNumber == rank.numberOfSameLottoNumber) {
                 lottoRankResult.replace(rank.toString(), previousRankResult + 1);
                 return;
             }

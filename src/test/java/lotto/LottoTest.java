@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -43,25 +42,25 @@ class LottoTest {
 
     @Test
     void countSameLottoNumber_2등_테스트() {
-        List<Integer> userPredictLottoNumbers = LottoManager_lottoRankResultTest.getUserPredictLottoNumbers_modified(2);
+        List<Integer> userPredictLottoNumbers = LottoManager_getLottoRankResultTest.getUserPredictLottoNumbers_modified(2);
         assertThat(LottoManager.Rank.second.getNumberOfSameLottoNumber()).isEqualTo(new Lotto(userPredictLottoNumbers).countSameLottoNumber(ProgramManager.lotto.get(0)));
     }
 
     @Test
     void countSameLottoNumber_3등_테스트() {
-        List<Integer> userPredictLottoNumbers = LottoManager_lottoRankResultTest.getUserPredictLottoNumbers_modified(3);
+        List<Integer> userPredictLottoNumbers = LottoManager_getLottoRankResultTest.getUserPredictLottoNumbers_modified(3);
         assertThat(LottoManager.Rank.third.getNumberOfSameLottoNumber()).isEqualTo(new Lotto(userPredictLottoNumbers).countSameLottoNumber(ProgramManager.lotto.get(0)));
     }
 
     @Test
     void countSameLottoNumber_4등_테스트() {
-        List<Integer> userPredictLottoNumbers = LottoManager_lottoRankResultTest.getUserPredictLottoNumbers_modified(4);
+        List<Integer> userPredictLottoNumbers = LottoManager_getLottoRankResultTest.getUserPredictLottoNumbers_modified(4);
         assertThat(LottoManager.Rank.fourth.getNumberOfSameLottoNumber()).isEqualTo(new Lotto(userPredictLottoNumbers).countSameLottoNumber(ProgramManager.lotto.get(0)));
     }
 
     @Test
     void countSameLottoNumber_5등_테스트() {
-        List<Integer> userPredictLottoNumbers = LottoManager_lottoRankResultTest.getUserPredictLottoNumbers_modified(5);
+        List<Integer> userPredictLottoNumbers = LottoManager_getLottoRankResultTest.getUserPredictLottoNumbers_modified(5);
         assertThat(LottoManager.Rank.fifth.getNumberOfSameLottoNumber()).isEqualTo(new Lotto(userPredictLottoNumbers).countSameLottoNumber(ProgramManager.lotto.get(0)));
     }
 
