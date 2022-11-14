@@ -61,7 +61,7 @@ class InputViewTest {
 			inputView.getWinningNumbers();
 
 			//then
-			assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_WINNING_NUMBERS_MESSAGE + "\n");
+			assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_WINNING_NUMBERS_MESSAGE + "\n\n");
 		}
 
 		@Test
@@ -90,7 +90,7 @@ class InputViewTest {
 			inputView.getBonus();
 
 			//then
-			assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_BONUS_MESSAGE + "\n");
+			assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_BONUS_MESSAGE + "\n\n");
 		}
 
 		@Test

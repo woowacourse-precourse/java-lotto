@@ -18,13 +18,17 @@ public class InputViewImpl implements InputView {
 	@Override
 	public String getWinningNumbers() {
 		System.out.println(INPUT_WINNING_NUMBERS_MESSAGE);
-		return readInput();
+		String input = readInput();
+		System.out.println();
+		return input;
 	}
 
 	@Override
 	public String getBonus() {
 		System.out.println(INPUT_BONUS_MESSAGE);
-		return readInput();
+		String input = readInput();
+		System.out.println();
+		return input;
 	}
 
 	protected String readInput() {
