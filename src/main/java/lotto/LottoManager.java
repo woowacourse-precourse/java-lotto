@@ -1,7 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -12,45 +11,27 @@ public class LottoManager {
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 45;
 
-    public enum Reward {
-        fifth(5000),
-        fourth(50000),
-        third(1500000),
-        second(30000000),
-        first(2000000000);
-
-        private final int rewardPrice;
-
-        Reward(int rewardPrice) {
-            this.rewardPrice = rewardPrice;
-        }
-
-        public int getRewardPrice() {
-            return rewardPrice;
-        }
-    }
-
     public enum Rank {
-        fifth(3, 0),
-        fourth(4, 1),
-        third(5, 2),
-        second(5, 3),
-        first(6, 4);
+        fifth(3, 5000),
+        fourth(4, 50000),
+        third(5, 1500000),
+        second(5, 30000000),
+        first(6, 2000000000);
 
         private final int numberOfSameLottoNumber;
-        private final int indexInRankResult;
+        private final int rewardPrice;
 
-        Rank(int numberOfSameLottoNumber, int indexInRankResult) {
+        Rank(int numberOfSameLottoNumber, int rewardPrice) {
             this.numberOfSameLottoNumber = numberOfSameLottoNumber;
-            this.indexInRankResult = indexInRankResult;
+            this.rewardPrice = rewardPrice;
         }
 
         public int getNumberOfSameLottoNumber() {
             return numberOfSameLottoNumber;
         }
 
-        public int getIndexInRankResult() {
-            return indexInRankResult;
+        public int getRewardPrice() {
+            return rewardPrice;
         }
     }
 
@@ -79,10 +60,10 @@ public class LottoManager {
      * @param userPredictBonusNumber  사용자가 입력한 보너스 번호
      * @return 당첨 내역
      */
-    public static int[] getLottoRankResult(List<Integer> userPredictLottoNumbers, int userPredictBonusNumber) {
+    public static Map<String, Integer> getLottoRankResult(List<Integer> userPredictLottoNumbers, int userPredictBonusNumber) {
         Lotto userLotto = new Lotto(userPredictLottoNumbers);
 
-        int[] lottoRankResult = new int[Rank.values().length];
+        Map<String, Integer> lottoRankResult = initiateLottoRankResult();
         int numberOfSameLottoNumber;
         boolean isBonusNumberSame;
 
@@ -94,30 +75,34 @@ public class LottoManager {
         return lottoRankResult;
     }
 
+    private static Map<String, Integer> initiateLottoRankResult() {
+        Map<String, Integer> lottoRankResult = new HashMap<>();
+        for (Rank rank : Rank.values()) {
+            lottoRankResult.put(rank.toString(), 0);
+        }
+        return lottoRankResult;
+    }
+
     /**
      * @param lottoRankResult         당첨 내역 저장 배열
      * @param numberOfSameLottoNumber 당첨 번호 일치 개수
      * @param isBonusNumberSame       보너스 번호 일치 여부
      */
-    private static void setLottoResult(int[] lottoRankResult, int numberOfSameLottoNumber, boolean isBonusNumberSame) {
-        if (numberOfSameLottoNumber == Rank.first.numberOfSameLottoNumber) {
-            lottoRankResult[Rank.first.indexInRankResult]++;
-            return;
-        }
-        if (numberOfSameLottoNumber == Rank.second.numberOfSameLottoNumber && isBonusNumberSame) {
-            lottoRankResult[Rank.second.indexInRankResult]++;
-            return;
-        }
-        if (numberOfSameLottoNumber == Rank.third.numberOfSameLottoNumber && !isBonusNumberSame) {
-            lottoRankResult[Rank.third.indexInRankResult]++;
-            return;
-        }
-        if (numberOfSameLottoNumber == Rank.fourth.numberOfSameLottoNumber) {
-            lottoRankResult[Rank.fourth.indexInRankResult]++;
-            return;
-        }
-        if (numberOfSameLottoNumber == Rank.fifth.numberOfSameLottoNumber) {
-            lottoRankResult[Rank.fifth.indexInRankResult]++;
+    private static void setLottoResult(Map<String, Integer> lottoRankResult, int numberOfSameLottoNumber, boolean isBonusNumberSame) {
+        for (Rank rank : Rank.values()) {
+            int previousRankResult = lottoRankResult.get(rank.toString());
+            if (rank.toString().compareTo("second") == 0 && numberOfSameLottoNumber == rank.numberOfSameLottoNumber && isBonusNumberSame) {
+                lottoRankResult.replace(rank.toString(), previousRankResult + 1);
+                return;
+            }
+            if (rank.toString().compareTo("third") == 0 && numberOfSameLottoNumber == rank.numberOfSameLottoNumber && !isBonusNumberSame) {
+                lottoRankResult.replace(rank.toString(), previousRankResult + 1);
+                return;
+            }
+            if (rank.toString().compareTo("second") != 0 && rank.toString().compareTo("third") != 0 && numberOfSameLottoNumber == rank.numberOfSameLottoNumber) {
+                lottoRankResult.replace(rank.toString(), previousRankResult + 1);
+                return;
+            }
         }
     }
 
@@ -129,10 +114,11 @@ public class LottoManager {
      * @param lottoRankResult 당첨 내역
      * @return 수익률
      */
-    public static float getRevenueRate(int price, int[] lottoRankResult) {
+    public static float getRevenueRate(int price, Map<String, Integer> lottoRankResult) {
         float revenue = 0;
         for (Rank rank : Rank.values()) {
-            revenue += lottoRankResult[rank.indexInRankResult] * Reward.valueOf(rank.toString()).rewardPrice;
+            String rankName = rank.toString();
+            revenue += lottoRankResult.get(rankName) * Rank.valueOf(rankName).rewardPrice;
         }
         return (revenue / price) * 100;
     }

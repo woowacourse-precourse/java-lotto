@@ -3,10 +3,7 @@ package lotto;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -26,26 +23,55 @@ public class LottoManager_lottoRankResultTest {
         List<Integer> userPredictLottoNumbers = ProgramManager.lotto.get(0);
         int userPredictBonusNumber = ProgramManager.lotto.get(0).get(0);
 
-        int[] answerOfLottoRankResult = new int[]{0, 0, 0, 0, 1};
-        assertThat(true).isEqualTo(Arrays.equals(answerOfLottoRankResult, LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber)));
+        Map<String, Integer> answerOfLottoRankResult = Map.ofEntries(
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.fifth.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.fourth.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.third.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.second.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.first.toString(), 1)
+        );
+        assertThat(true).isEqualTo(answerOfLottoRankResult.equals(LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber)));
     }
 
     @Test
     void getLottoResult_2등_테스트() {
         List<Integer> userPredictLottoNumbers = getUserPredictLottoNumbers_modified(2);
-        int userPredictBonusNumber_same = userPredictLottoNumbers.get(userPredictLottoNumbers.size() - 1);
+        int userPredictBonusNumber_same = ProgramManager.lotto.get(0).get(LottoManager.LOTTO_LENGTH - 1);
 
-        int[] answerOfLottoRankResult = new int[]{0, 0, 0, 1, 0};
-        assertThat(true).isEqualTo(Arrays.equals(answerOfLottoRankResult, LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber_same)));
+        Map<String, Integer> answerOfLottoRankResult = Map.ofEntries(
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.fifth.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.fourth.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.third.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.second.toString(), 1),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.first.toString(), 0)
+        );
+        assertThat(true).isEqualTo(answerOfLottoRankResult.equals(LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber_same)));
     }
 
     @Test
     void getLottoResult_3등_테스트() {
         List<Integer> userPredictLottoNumbers = getUserPredictLottoNumbers_modified(3);
-        int userPredictBonusNumber_notSame = userPredictLottoNumbers.get(0);
+        int userPredictBonusNumber_notSame = getNotSameBonusNumber();
 
-        int[] answerOfLottoRankResult = new int[]{0, 0, 1, 0, 0};
-        assertThat(true).isEqualTo(Arrays.equals(answerOfLottoRankResult, LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber_notSame)));
+        Map<String, Integer> answerOfLottoRankResult = Map.ofEntries(
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.fifth.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.fourth.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.third.toString(), 1),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.second.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.first.toString(), 0)
+        );
+        assertThat(true).isEqualTo(answerOfLottoRankResult.equals(LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber_notSame)));
+    }
+
+    private int getNotSameBonusNumber() {
+        int number = 1;
+        List<Integer> lotto = ProgramManager.lotto.get(0);
+        while (true) {
+            if (!lotto.contains(number)) {
+                return number;
+            }
+            number++;
+        }
     }
 
     @Test
@@ -53,8 +79,14 @@ public class LottoManager_lottoRankResultTest {
         List<Integer> userPredictLottoNumbers = getUserPredictLottoNumbers_modified(4);
         int userPredictBonusNumber = userPredictLottoNumbers.get(0);
 
-        int[] answerOfLottoRankResult = new int[]{0, 1, 0, 0, 0};
-        assertThat(true).isEqualTo(Arrays.equals(answerOfLottoRankResult, LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber)));
+        Map<String, Integer> answerOfLottoRankResult = Map.ofEntries(
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.fifth.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.fourth.toString(), 1),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.third.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.second.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.first.toString(), 0)
+        );
+        assertThat(true).isEqualTo(answerOfLottoRankResult.equals(LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber)));
     }
 
     @Test
@@ -62,8 +94,14 @@ public class LottoManager_lottoRankResultTest {
         List<Integer> userPredictLottoNumbers = getUserPredictLottoNumbers_modified(5);
         int userPredictBonusNumber = userPredictLottoNumbers.get(0);
 
-        int[] answerOfLottoRankResult = new int[]{1, 0, 0, 0, 0};
-        assertThat(true).isEqualTo(Arrays.equals(answerOfLottoRankResult, LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber)));
+        Map<String, Integer> answerOfLottoRankResult = Map.ofEntries(
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.fifth.toString(), 1),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.fourth.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.third.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.second.toString(), 0),
+                new AbstractMap.SimpleEntry<>(LottoManager.Rank.first.toString(), 0)
+        );
+        assertThat(true).isEqualTo(answerOfLottoRankResult.equals(LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber)));
     }
 
     /**

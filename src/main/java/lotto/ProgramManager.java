@@ -2,6 +2,7 @@ package lotto;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Map;
 
 // 로또 게임 진행자
 public class ProgramManager {
@@ -36,7 +37,7 @@ public class ProgramManager {
     private static int userPredictBonusNumber;
 
     public static List<List<Integer>> lotto;
-    private static int[] lottoRankResult;
+    private static Map<String, Integer> lottoRankResult;
     private static float lottoRevenueRate;
 
     /**
@@ -115,10 +116,10 @@ public class ProgramManager {
             }
             lottoRankResultMessage.append(LOTTO_STATISTICS_MESSAGE_BODY_REWARD_PRE);
 
-            int rewardPrice = LottoManager.Reward.valueOf(rank.toString()).getRewardPrice();
+            int rewardPrice = rank.getRewardPrice();
             lottoRankResultMessage.append(decFormat.format(rewardPrice));
             lottoRankResultMessage.append(LOTTO_STATISTICS_MESSAGE_BODY_REWARD_POST);
-            lottoRankResultMessage.append(lottoRankResult[rank.getIndexInRankResult()]);
+            lottoRankResultMessage.append(lottoRankResult.get(rank.toString()));
             lottoRankResultMessage.append(LOTTO_STATISTICS_MESSAGE_BODY_REWARD_NUMBER);
         }
         return lottoRankResultMessage.toString();
