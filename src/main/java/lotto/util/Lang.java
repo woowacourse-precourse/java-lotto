@@ -1,13 +1,13 @@
 package lotto.util;
 
 public class Lang {
-    public final static String NON_NUMERIC_CHARACTER = "입력한 내용 중 숫자가 아닌 문자가 있어요.";
-    public final static String ELEMENT_INSUFFICIENT = "%d개 이하의 숫자를 입력했어요. %d개 숫자를 입력해 주세요.";
-    public final static String ELEMENT_DUPLICATE = "중복된 숫자를 입력했어요. 중복 없는 %d개 숫자를 입력해 주세요.";
-    public final static String OUT_RANGE = "%d ~ %d 숫자를 입력해 주세요.";
-    public static final String VARIABLE_NOT_DECLARE = "변수를 선언하지 않았어요.";
-    public static final String NUMBER_NEGATIVE = "음수가 아닌 숫자를 입력해 주세요.";
-    public static final String MONEY_LEFT_AFTER_BUY_LOTTO = "%d 단위로 입력해 주세요.";
+    public final static String THROW_NON_NUMERIC_CHARACTER = "입력한 내용 중 숫자가 아닌 문자가 있어요.";
+    public final static String THROW_ELEMENT_INSUFFICIENT = "%d개 이하의 숫자를 입력했어요. %d개 숫자를 입력해 주세요.";
+    public final static String THROW_ELEMENT_DUPLICATE = "중복된 숫자를 입력했어요. 중복 없는 %d개 숫자를 입력해 주세요.";
+    public final static String THROW_OUT_RANGE = "%d ~ %d 숫자를 입력해 주세요.";
+    public static final String THROW_VARIABLE_NOT_DECLARE = "변수를 선언하지 않았어요.";
+    public static final String THROW_NUMBER_NEGATIVE = "음수가 아닌 숫자를 입력해 주세요.";
+    public static final String THROW_MONEY_LEFT_AFTER_BUY_LOTTO = "%d 단위로 입력해 주세요.";
 
     public static final String VIEW_ENTER_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static final String VIEW_ENTER_RANGE_ONCE = "%d ~ %d 숫자 1개를 입력해 주세요.";

@@ -23,7 +23,7 @@ public class Bonus {
     private void validateCorrectRangeNumber(int bonus) {
         if (Validator.hasNotCorrectRangeNumber(bonus)) {
             throw new IllegalArgumentException(Lang.format(
-                    Lang.OUT_RANGE,
+                    Lang.THROW_OUT_RANGE,
                     Env.LOTTO_FIRST_NUMBER,
                     Env.LOTTO_LAST_NUMBER
             ));

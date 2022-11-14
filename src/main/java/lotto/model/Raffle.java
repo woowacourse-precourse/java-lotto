@@ -4,7 +4,6 @@ import lotto.type.PrizeType;
 import lotto.util.Lang;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class Raffle {
@@ -27,7 +26,7 @@ public class Raffle {
 
     private void validateBonusNotNull() {
         if (bonus != null) {
-            throw new RuntimeException(Lang.VARIABLE_NOT_DECLARE);
+            throw new RuntimeException(Lang.THROW_VARIABLE_NOT_DECLARE);
         }
     }
 

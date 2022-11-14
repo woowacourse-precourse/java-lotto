@@ -28,7 +28,7 @@ public class Lotto {
                     .boxed()
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Lang.NON_NUMERIC_CHARACTER);
+            throw new IllegalArgumentException(Lang.THROW_NON_NUMERIC_CHARACTER);
         }
     }
 
@@ -56,7 +56,7 @@ public class Lotto {
     private void validateCorrectLottoNumberSize(List<Integer> numbers) {
         if (Validator.isNotCorrectLottoNumberSize(numbers, false)) {
             throw new IllegalArgumentException(Lang.format(
-                    Lang.ELEMENT_INSUFFICIENT,
+                    Lang.THROW_ELEMENT_INSUFFICIENT,
                     Env.LOTTO_NUMBERS - 1,
                     Env.LOTTO_NUMBERS
             ));
@@ -66,7 +66,7 @@ public class Lotto {
     private void validateCorrectLottoNumberDeduplicateSize(List<Integer> numbers) {
         if (Validator.isNotCorrectLottoNumberSize(numbers, true)) {
             throw new IllegalArgumentException(Lang.format(
-                    Lang.ELEMENT_DUPLICATE,
+                    Lang.THROW_ELEMENT_DUPLICATE,
                     Env.LOTTO_NUMBERS
             ));
         }
@@ -75,7 +75,7 @@ public class Lotto {
     private void validateCorrectRangeNumbers(List<Integer> numbers) {
         if (Validator.hasNotCorrectRangeNumbers(numbers)) {
             throw new IllegalArgumentException(Lang.format(
-                    Lang.OUT_RANGE,
+                    Lang.THROW_OUT_RANGE,
                     Env.LOTTO_FIRST_NUMBER,
                     Env.LOTTO_LAST_NUMBER
             ));
