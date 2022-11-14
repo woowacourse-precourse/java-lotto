@@ -74,11 +74,15 @@ public class ExceptionHandler {
         String[] tokens = input.split(COMMA);
         for (String token : tokens) {
             int number = Integer.parseInt(token);
-            if (1 <= number && number <= 45) {
+            if (isValidate(number)) {
                 continue;
             }
             throw new IllegalArgumentException();
         }
+    }
+
+    private static boolean isValidate(int number) {
+        return Number.ONE.getValue() <= number && number <= Number.FORTY_FIVE.getValue();
     }
 
     public static void checkValidationBonusNumber(String input, List<Integer> winningNumbers) throws IllegalArgumentException {
