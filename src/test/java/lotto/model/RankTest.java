@@ -26,7 +26,7 @@ public class RankTest {
     @DisplayName("순위 생성 시 정의된 값으로 생성하는 경우 정상 생성된다.")
     @ParameterizedTest
     @ValueSource(ints = {1,2,3,4,5})
-    void createMoneyWithInvalidRange(int rankValue) {
+    void createMoneyWithValidValue(int rankValue) {
         //given
         String RANK_NAME_PREFIX = "NO_";
         //when
