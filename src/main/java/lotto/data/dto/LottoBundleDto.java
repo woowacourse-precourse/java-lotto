@@ -20,14 +20,14 @@ public class LottoBundleDto {
         this.lottos = Collections.unmodifiableList(lottos);
     }
 
-    public static LottoBundleDto createWithInput(String input) throws IllegalArgumentException {
+    public static LottoBundleDto createWithInput(String input) {
         validate(input);
         int buyableCount = getBuyableCount(Integer.parseInt(input));
         List<LottoDto> lottos = generateRandomLottos(buyableCount);
         return new LottoBundleDto(lottos);
     }
 
-    private static void validate(String input) throws IllegalArgumentException {
+    private static void validate(String input) {
         if(hasErroneousNumberFormat(input)) {
             throw ExceptionType.NUMBER.getException();
         }

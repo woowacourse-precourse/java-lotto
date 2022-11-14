@@ -11,7 +11,7 @@ import utils.Validator.StringValidator;
 
 public class WinNumberDto {
 
-    private Set<Integer> winNumbers;
+    private final Set<Integer> winNumbers;
 
     WinNumberDto(Set<Integer> winNumbers){
         this.winNumbers = Collections.unmodifiableSet(winNumbers);
@@ -19,10 +19,6 @@ public class WinNumberDto {
 
     public Set<Integer> getWinNumbers() {
         return this.winNumbers;
-    }
-
-    public void setWinNumbers(Set<Integer> winNumbers) {
-        this.winNumbers = winNumbers;
     }
 
     public static WinNumberDto createWithInput(String input) {

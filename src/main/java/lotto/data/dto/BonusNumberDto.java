@@ -5,7 +5,7 @@ import utils.Validator.StringValidator;
 
 public class BonusNumberDto {
 
-    private int bonusNumber;
+    private final int bonusNumber;
 
     BonusNumberDto(int bonusNumber){
         this.bonusNumber = bonusNumber;
@@ -13,10 +13,6 @@ public class BonusNumberDto {
 
     public int getBonusNumber() {
         return bonusNumber;
-    }
-
-    public void setBonusNumber(int bonusNumber) {
-        this.bonusNumber = bonusNumber;
     }
 
     public static BonusNumberDto createWithInput(String input) throws IllegalArgumentException{
