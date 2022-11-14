@@ -24,9 +24,10 @@ public class UserService {
         user = new User(payMent);
     }
 
-    public void buyLotto(){
+    public LottoSystemService buyLotto(){
         lottoSystemService = new LottoSystemService();
         lottoSystemService.setRandomLottoNumbers(user);
+        return lottoSystemService;
     }
 
     public List<List<Integer>> getUserLottoNumber(){

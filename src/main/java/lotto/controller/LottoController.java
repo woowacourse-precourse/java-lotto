@@ -9,19 +9,19 @@ import java.util.List;
 public class LottoController {
 
     private UserService userService = new UserService();
-    private LottoSystemService lottoSystemService = new LottoSystemService();
+    private LottoSystemService lottoSystemService;
     private final String START_MESSAGE = "구입금액을 입력해 주세요.";
     private final String BUY_MESSAGE = "개를 구매했습니다.";
     private final String ANSWER_MESSAGE = "당첨 번호를 입력해 주세요.";
     private final String BONUS_MESSAGE = "보너스 번호를 입력해 주세요.";
     private final String STATISTICS_MESSAGE = "당첨 통계\n---";
-    private final String REVENUE_MESSAGE_ONE = "총 수익률은";
+    private final String REVENUE_MESSAGE_ONE = "총 수익률은 ";
     private final String REVENUE_MESSAGE_TWO = "입니다.";
 
     public void inputUserMoney(){
         System.out.println(START_MESSAGE);
         userService.setPayMent();
-        userService.buyLotto();
+        this.lottoSystemService = userService.buyLotto();
     }
 
     public void printLottoNumber(){
@@ -44,10 +44,15 @@ public class LottoController {
         lottoSystemService.saveLottoNumbers();
     }
 
-    public List<String> printStatistics(){
+    public void printStatistics(){
+        List<String> total;
         System.out.println(STATISTICS_MESSAGE);
         lottoSystemService.setTotal();
-        return lottoSystemService.getTotal();
+        total = lottoSystemService.getTotal();
+
+        for(int i=0; i<total.size(); i++){
+            System.out.println(total.get(i));
+        }
     }
 
     public void printRevenue(){

@@ -13,6 +13,7 @@ public class User {
 
     public void setUserLottoNumber(List<List<Integer>> userLottoNumber){
         this.userLottoNumber = userLottoNumber;
+        System.out.println(userLottoNumber);
     }
 
     public Integer getUserPayAmount(){
