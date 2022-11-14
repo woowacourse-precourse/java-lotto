@@ -63,6 +63,14 @@ public class UserInput {
         }
     }
 
+    public static void bonusNumberOverlapCheck(String bonusNumber, String[] winningNumber) {
+        for(int i=0; i<6; i++) {
+            if (bonusNumber == winningNumber[i]) {
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않습니다.");
+            }
+        }
+    }
+
     public static void moneyCheck(String money) {
         UserInput.moneyNumberCheck(money);
         UserInput.moneyPriceCheck(money);
@@ -74,8 +82,9 @@ public class UserInput {
         UserInput.winningNumberOverlapCheck(winningNumber);
     }
 
-    public static void bonusNumberCheck(String bonusNumber) {
+    public static void bonusNumberCheck(String bonusNumber, String[] winningNumber) {
         UserInput.bonusNumberNumberCheck(bonusNumber);
         UserInput.bonusNumberRangeCheck(bonusNumber);
+        UserInput.bonusNumberOverlapCheck(bonusNumber, winningNumber);
     }
 }
