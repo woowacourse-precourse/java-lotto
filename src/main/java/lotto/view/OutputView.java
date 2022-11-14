@@ -1,6 +1,7 @@
 package lotto.view;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
 
@@ -15,8 +16,14 @@ public class OutputView {
 
     public static void printLottoNumbers(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
-            System.out.println(Arrays.toString(lotto.getNumbers().toArray()));
+            Object[] sortedLotto = sortAscendingOrder(lotto.getNumbers().toArray());
+            System.out.println(Arrays.toString(sortedLotto));
         }
+    }
+
+    private static Object[] sortAscendingOrder(Object[] lottoNumbers) {
+        Arrays.sort(lottoNumbers);
+        return lottoNumbers;
     }
 
     public static void messageWinningInput() {
