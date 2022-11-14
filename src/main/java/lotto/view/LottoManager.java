@@ -10,7 +10,6 @@ public class LottoManager {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
         checkNumber(money);
-
         checkAdequateMoney(Integer.parseInt(money));
         return Integer.parseInt(money) / 1000;
     }

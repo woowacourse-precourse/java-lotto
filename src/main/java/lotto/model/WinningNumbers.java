@@ -9,14 +9,13 @@ public class WinningNumbers {
     private final int bonusNumber;
     NumberGenerator numberGenerator;
 
-    public WinningNumbers(List<Integer> numbers, int bonusNumber) {
+    public WinningNumbers(List<String> numbers, int bonusNumber) {
         numberGenerator = new NumberGenerator();
-        validate(numbers);
-        checkOverlap(numbers);
-        checkScope(numbers);
-        this.numbers = numbers;
-        this.bonusNumber = numberGenerator.createBonusNumbers(numbers, bonusNumber);
-
+        this.numbers = numberGenerator.createWinningNumbers(numbers);
+        validate(this.numbers);
+        checkOverlap(this.numbers);
+        checkScope(this.numbers);
+        this.bonusNumber = numberGenerator.createBonusNumbers(this.numbers, bonusNumber);
     }
 
     public List<Integer> getNumbers() {

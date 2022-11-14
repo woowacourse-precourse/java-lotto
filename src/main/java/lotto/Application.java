@@ -11,7 +11,6 @@ public class Application {
     public static void main(String[] args) {
         final LottoManager lottoManager = new LottoManager();
         final LottoCalculator lottoCalculator = new LottoCalculator();
-        final NumberGenerator numberGenerator = new NumberGenerator();
 
         try {
             final int lottoCount = lottoManager.inputPurchaseMoney();
@@ -20,16 +19,18 @@ public class Application {
             Lottos lottos = new Lottos(lottoCount);
             lottoManager.printLottoNumbers(lottos.getLottos());
 
-            List<Integer> winningNumbers = numberGenerator.createWinningNumbers(lottoManager.inputWinningNumbers());
-            WinningNumbers w = new WinningNumbers(winningNumbers, lottoManager.inputBonusNumber());
+            WinningNumbers w = new WinningNumbers(lottoManager.inputWinningNumbers(), lottoManager.inputBonusNumber());
 
             for (Lotto lotto : lottos.getLottos()) {
                 lottoCalculator.addRankCount(lottoCalculator.compare(lotto.getNumbers(), w.getNumbers(), w.getBonusNumber()));
             }
-
-            lottoManager.printWinningDetails(lottoCalculator.getRankCount(), lottoCalculator.RateOfReturn(lottoCount * 1000));
+            lottoManager.printWinningDetails(lottoCalculator.getRankCount(), lottoCalculator.RateOfReturn(getPurchaseMoney(lottoCount)));
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR]" + e.getMessage());
         }
+    }
+
+    public static int getPurchaseMoney(int lottoCount) {
+        return lottoCount * 1000;
     }
 }
