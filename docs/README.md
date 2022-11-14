@@ -25,7 +25,7 @@
   - [x] 일치하는 번호 갯수를 센다. - Check.java -> matchCnt
   - [x] 해당하는 당첨 금액을 반환한다. - Check.java -> winMoney()
   - [x] 해당하는 당첨 등수를 반환한다. - Result.java ->getCount();
-- [x] 당첨 내역을 출력한다. - Result.java -> printResult()
+- [x] 당첨 내역을 출력한다. - Output.java -> printResult()
 - [x] 수익률을 출력한다. - Result.java -> Calculate()
   - [x] 소수 둘째 자리에서 반올림 
 - [ ] 게임 종료.

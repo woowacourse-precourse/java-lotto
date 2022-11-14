@@ -16,9 +16,8 @@ public class Result {
         third = 0;
         fourth = 0;
         fifth = 0;
-        for (WinCheck e : StartLotto.winChecks) {
+        for (WinCheck e : StartLotto.winChecks)
             addResult(e);
-        }
     }
 
     public static int getCount(int index) {
@@ -36,18 +35,18 @@ public class Result {
     }
 
     public static void addResult(WinCheck winChecks) {
-        if (winChecks.getMatchCnt() == 6)
+        if (winChecks.getMatchCount() == 6)
             first++;
-        if (winChecks.getMatchCnt() == 5) {
+        if (winChecks.getMatchCount() == 5) {
             if (winChecks.isBonusMatch()) {
                 second++;
                 return;
             }
             third++;
         }
-        if (winChecks.getMatchCnt() == 4)
+        if (winChecks.getMatchCount() == 4)
             fourth++;
-        if (winChecks.getMatchCnt() == 3)
+        if (winChecks.getMatchCount() == 3)
             fifth++;
     }
 
