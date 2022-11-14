@@ -48,8 +48,7 @@ public class LottoStatisticsTest {
                     LottoResult.FIFTH
             );
 
-            generator.setResult(lottoResults);
-            LottoStatistics statistics = generator.generate();
+            LottoStatistics statistics = generator.generate(lottoResults);
 
             String result = "3개 일치 (5,000원) - 1개\n" +
                     "4개 일치 (50,000원) - 1개\n" +
@@ -76,8 +75,7 @@ public class LottoStatisticsTest {
                     LottoResult.FIFTH
             );
 
-            generator.setResult(lottoResults);
-            LottoStatistics statistics = generator.generate();
+            LottoStatistics statistics = generator.generate(lottoResults);
 
             String result = "총 수익률은 381.9%입니다.";
             assertThat(statistics.getReturnRateDescription()).isEqualTo(result);
