@@ -8,6 +8,7 @@ import lotto.model.Lotto;
 import lotto.model.LottoGenerator;
 import lotto.model.Statistics;
 import lotto.view.Input;
+import lotto.view.Output;
 
 public class Play {
     Cashier cashier = new Cashier();
@@ -16,22 +17,26 @@ public class Play {
 
     public void play() {
         getPlayerInput();
+        Output.printYourStatistics(
+            statistics.checkPrizeQuantity(cashier.getAnswerNumber(), cashier.getBonusNumber(), lottoTicket),
+            statistics.myStat(cashier.getReceivedMoney()));
 
     }
 
     private void getPlayerInput() {
         cashier.inputPlayerMoney(Input.getYourMoney());
-        generateLottoTickets();
+        generateLottoTickets(cashier.getReceivedMoney());
         cashier.inputPlayerAnswerNumber(Input.getAnswerNumbers());
         cashier.inputPlayerBonusNumber(Input.getBonusNumber());
     }
 
-    private void generateLottoTickets() {
-        List<List<Integer>> tickets = LottoGenerator.createLottos(cashier.getReceivedMoney());
+    public List<Lotto> generateLottoTickets(int receivedMoney) {
+        List<List<Integer>> tickets = LottoGenerator.createLottos(receivedMoney);
         for (List<Integer> value : tickets) {
             System.out.println(value);
             lottoTicket.add(new Lotto(value));
         }
+        return lottoTicket;
     }
 
     public static void main(String[] args) {
