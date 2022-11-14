@@ -19,7 +19,7 @@ public class LottoGameSimulator {
         printGeneratedLotto();
         getInputOfWinningNumbers();
         getInputOfBonusNumber();
-        printResult();
+        generateResult();
     }
 
     public void getInputOfMoney() {
@@ -51,7 +51,7 @@ public class LottoGameSimulator {
         bonusNumber = BonusNumberGenerator.generateBonusNumber(bonusNumberInput);
     }
 
-    public void printResult() {
+    public void generateResult() {
         lottoGameResult = LottoGameResultGenerator.generateLottoGameResult(purchasedLottos,
                 winningNumbers, bonusNumber, userMoney);
     }
