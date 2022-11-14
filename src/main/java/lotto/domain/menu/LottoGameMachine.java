@@ -45,6 +45,7 @@ public class LottoGameMachine {
     private List<Integer> getSameNumberCount(List<List<Integer>> randomLotto, Lotto lottoAnswer) {
         WinningNumberAndLotto winningNumberAndLotto = new WinningNumberAndLotto(
                 new WinningNumberPlace());
+
         return winningNumberAndLotto.comparison(randomLotto, lottoAnswer);
     }
 }

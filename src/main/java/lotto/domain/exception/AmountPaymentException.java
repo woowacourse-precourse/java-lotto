@@ -6,10 +6,9 @@ public class AmountPaymentException {
     private static final int PRICE = 1000;
     private static final String REGULAR_PATTERN = "^[0-9]*$";
 
-    public int inputVerification(int lottoPayment) {
+    public void inputVerification(int lottoPayment) {
         validateSizeLottos(lottoPayment);
         validateZero(lottoPayment);
-        return lottoPayment;
     }
 
     public void validateCharacters(String readLine) {

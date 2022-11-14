@@ -5,15 +5,12 @@ import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.exception.WinningNumbersException;
 
 public class WinningNumber {
     public Lotto getCorrect() {
-        WinningNumbersException exception = new WinningNumbersException();
         List<Integer> answerNumbers = new ArrayList<>();
         String input = Console.readLine();
 
-        exception.winningNumbersVerification(input);
         answerNumbers = numberConversion(answerNumbers, input);
         return new Lotto(answerNumbers);
     }
