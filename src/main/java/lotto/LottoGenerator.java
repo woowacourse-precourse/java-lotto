@@ -17,6 +17,8 @@ public class LottoGenerator {
             lottoList.add(lotto);
         }
 
+        printLottos(lottoList);
+
         return lottoList;
     }
 
@@ -28,5 +30,13 @@ public class LottoGenerator {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(randomNumbers);
         return randomNumbers;
+    }
+
+    private void printLottos(List<Lotto> lottoList) {
+
+    }
+
+    private void printLotto(Lotto lotto) {
+
     }
 }
