@@ -65,12 +65,9 @@ public class Lotto {
         }
         if (result == 5) {
             ContainStatus status = input.isBonus(lotto);
-            result += status.getContain1Value();
-        }
-        if (result == 6) {
-            return WinningRank.two;
-        }
-        if (result == 5) {
+            if (status.getContain2Value()) {
+                return WinningRank.two;
+            }
             return WinningRank.three;
         }
         if (result == 4) {
