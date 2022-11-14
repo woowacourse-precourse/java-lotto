@@ -12,7 +12,9 @@ public class WinningLotto {
     }
 
     private void validate(int bonus) {
-
+        if (lotto.getNumbers().contains(bonus)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호에 포하되어 있지 않은 숫자를 입력해주세요.");
+        }
     }
 
 
