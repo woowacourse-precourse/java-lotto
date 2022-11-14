@@ -11,10 +11,25 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        if (numbers.size() != 6){
+            String message = "로또 번호는 총 6개의 숫자이여야 합니다.";
+            throwLottoException(message);
+        }
+        validateDuplicate(numbers);
+    }
+
+    public List<Integer> getNumbers(){
+        return this.numbers;
+    }
+
+    public void validateDuplicate(List<Integer> numbers){
+        String msg = "로또 번호 사이에는 중복이 없어야 합니다.";
+        for(int elem : numbers) {
+            if(numbers.indexOf(elem) != numbers.lastIndexOf(elem)) throwLottoException(msg);
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void throwLottoException(String message){
+        throw new IllegalArgumentException("[ERROR] " + message);
+    }
 }
