@@ -1,7 +1,179 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Application {
+    public enum Grade {
+        THREE(5000),
+        FOUR(50000),
+        FIVE(1500000),
+        FIVEANDBONUS(30000000),
+        SIX(2000000000);
+
+        public final int grade;
+
+        Grade(int grade) {
+            this.grade = grade;
+        }
+    }
+
+    private static List<Lotto> userLottoNum = new ArrayList<>(); // 사용자 구매 로또 번호
+    private static List<Integer> lottoNumbers = new ArrayList<>(); // 당첨 번호 6개 숫자
+    private static int lottoBonusNumber; // 보너스 번호
+    private static HashMap<Grade,Integer> lottoStatistics = new HashMap<>(); // 당첨 정보
+    private static double earningRate; // 수익률
+
+    // 구입금액 입력
+    private static int inputBuyMoney(){
+        System.out.println("구입금액을 입력해 주세요.");
+        int money;
+        try{
+            money = Integer.parseInt(Console.readLine());
+        } catch (IllegalArgumentException exception){
+            throw new IllegalArgumentException("[ERROR] 로또 구매 금액은 숫자를 입력해야 합니다.");
+        }
+
+        if(money%1000!=0){
+            throw new IllegalArgumentException("[ERROR] 로또 구매 금액은 1000원 단위로 입력해야 합니다.");
+        }
+        System.out.println();
+
+        return money;
+    }
+
+    // 로또 번호 생성
+    private static void generateLottoNumbers(int lottoCnt){
+        for(int i=0; i<lottoCnt; i++){
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lotto = new Lotto(numbers);
+            userLottoNum.add(lotto);
+        }
+    }
+
+    // 로또 번호 출력
+    private static void printLottoNumbers(){
+        System.out.println(userLottoNum.size()+"개를 구매했습니다.");
+        for(Lotto lotto : userLottoNum){
+            lotto.printLottoNumbers();
+        }
+        System.out.println();
+    }
+
+    // 당첨 번호 입력
+    private static void inputLottoNumbers(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        try {
+            String[] inputLottoNumbers = Console.readLine().split(",");
+            for(String number : inputLottoNumbers){
+                lottoNumbers.add(Integer.parseInt(number));
+            }
+        } catch (IllegalArgumentException exception){
+            throw new IllegalArgumentException("[ERROR] 잘못된 형식의 입력입니다.");
+        }
+
+        if(lottoNumbers.size()!=6){
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개를 입력해야 합니다.");
+        }
+        System.out.println();
+    }
+
+    // 보너스 번호 입력
+    private static void inputLottoBonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        try {
+            lottoBonusNumber = Integer.parseInt(Console.readLine());
+        } catch (IllegalArgumentException exception){
+            throw new IllegalArgumentException("[ERROR] 잘못된 형식의 입력입니다.");
+        }
+        System.out.println();
+    }
+
+    // 당첨 통계 계산
+    private static void calculateLottoGrade(){
+        for(Lotto userLotto : userLottoNum){
+            boolean checkBonus = userLotto.isBonusNumber(lottoBonusNumber);
+            int sameCnt = userLotto.getLottoNumber(lottoNumbers);
+            if(checkBonus){
+                saveCalculateLottoIncludeBonus(sameCnt);
+            } else if(checkBonus==false){
+                saveCalculateLottoNotIncludeBonus(sameCnt);
+            }
+        }
+    }
+
+    // 당첨 내역 저장 - 보너스 번호 있는 경우
+    private static void saveCalculateLottoIncludeBonus(int sameCnt){
+        if(sameCnt==5){
+            lottoStatistics.put(Grade.FIVEANDBONUS, lottoStatistics.getOrDefault(Grade.FIVEANDBONUS,0)+1);
+        }
+    }
+
+    // 당첨 내역 저장 - 보너스 번호 없는 경우
+    private static void saveCalculateLottoNotIncludeBonus(int sameCnt){
+        if(sameCnt==3){
+            lottoStatistics.put(Grade.THREE, lottoStatistics.getOrDefault(Grade.THREE,0)+1);
+        } else if(sameCnt==4){
+            lottoStatistics.put(Grade.FOUR, lottoStatistics.getOrDefault(Grade.FOUR,0)+1);
+        } else if(sameCnt==5){
+            lottoStatistics.put(Grade.FIVE, lottoStatistics.getOrDefault(Grade.FIVE,0)+1);
+        } else if(sameCnt==6){
+            lottoStatistics.put(Grade.SIX, lottoStatistics.getOrDefault(Grade.SIX,0)+1);
+        }
+    }
+
+    // 수익률 계산
+    private static void calculateEarningRate(){
+        int totalEarningMoney = 0;
+        for(Grade grade : lottoStatistics.keySet()){
+            totalEarningMoney+=grade.grade*lottoStatistics.get(grade);
+        }
+        earningRate = ((double) totalEarningMoney/(userLottoNum.size()*1000))*100;
+    }
+
+    // 당첨 통계/수익률 출력
+    private static void printStatisticsAndEarningRate(){
+        System.out.println("당첨 통계\n---");
+        System.out.println("3개 일치 (5,000원) - "+lottoStatistics.getOrDefault(Grade.THREE,0)+"개");
+        System.out.println("4개 일치 (50,000원) - "+lottoStatistics.getOrDefault(Grade.FOUR,0)+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+lottoStatistics.getOrDefault(Grade.FIVE,0)+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+lottoStatistics.getOrDefault(Grade.FIVEANDBONUS,0)+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+lottoStatistics.getOrDefault(Grade.SIX,0)+"개");
+        System.out.println("총 수익률은 "+String.format("%.1f", earningRate)+"%입니다.");
+    }
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try{
+            // 구입금액 입력
+            int lottoCnt = inputBuyMoney()/1000;
+
+            // 로또 번호 생성
+            generateLottoNumbers(lottoCnt);
+
+            // 로또 번호 출력
+            printLottoNumbers();
+
+            // 당첨 번호 입력
+            inputLottoNumbers();
+
+            // 보너스 번호 입력
+            inputLottoBonusNumber();
+
+            // 당첨 통계 저장
+            calculateLottoGrade();
+
+            // 수익률 계산
+            calculateEarningRate();
+
+            // 당첨 통계/수익률 출력
+            printStatisticsAndEarningRate();
+        } catch (IllegalArgumentException exception){
+            System.out.println("[ERROR] 프로그램 종료");
+        }
+
     }
 }
