@@ -4,7 +4,6 @@ public class NumberOfLotto {
     private final int number;
 
     public NumberOfLotto(Money money) {
-        // Money money = new Money();
         this.number = computeNumberOfLotto(money.getMoney());
         printGuideMessage();
     }

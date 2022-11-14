@@ -9,7 +9,6 @@ public class Lottos {
     private final List<Lotto> lottos;
 
     public Lottos(NumberOfLotto numberOfLotto) {
-        // LottoNumber lottoNumber = new LottoNumber();
         int number = numberOfLotto.getNumberOfLotto();
         List<Lotto> lottos = new ArrayList<>();
 
