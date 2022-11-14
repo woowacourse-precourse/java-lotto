@@ -1,9 +1,7 @@
 package lotto.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
@@ -23,7 +21,7 @@ class LottoNumberTest {
     @ValueSource(ints = {-11, -4, 0, 46, 455, 123})
     @DisplayName("LottoNumber를 1~45이외의 값으로 생성하면 LottoNumber는 예외를 발생시킨다.")
     void LottoNumber_예외_테스트(int intArgs) {
-        assertThatThrownBy(()->new LottoNumber(intArgs))
+        assertThatThrownBy(() -> new LottoNumber(intArgs))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR]: 로또 숫자는 1에서 45사이의 값이여야 합니다.");
     }

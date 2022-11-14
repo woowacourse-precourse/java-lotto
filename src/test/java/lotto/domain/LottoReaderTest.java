@@ -47,7 +47,7 @@ class LottoReaderTest {
         Lotto compareLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto lotto = new Lotto(lottoSource);
         int bonusNumber = 7;
-        WinningLotto winningLotto = new WinningLotto(compareLotto,bonusNumber);
+        WinningLotto winningLotto = new WinningLotto(compareLotto, bonusNumber);
         assertThat(LottoReader.getLottoRanking(lotto, winningLotto)).isEqualTo(expected);
     }
 

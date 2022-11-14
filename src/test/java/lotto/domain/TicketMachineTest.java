@@ -1,9 +1,6 @@
 package lotto.domain;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -24,21 +21,21 @@ class TicketMachineTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1500,2500,3500,47750})
+    @ValueSource(ints = {1500, 2500, 3500, 47750})
     @DisplayName("1000의 배수가 아닌 양의 정수로 입력하면 예외가 발생한다")
     void Ticket_가격의_배수가_아닐_경우_예외가_발생한다(int payment) {
 
-        assertThatThrownBy(()-> ticketMachine.getTicket(payment))
+        assertThatThrownBy(() -> ticketMachine.getTicket(payment))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 유효하지 않은 금액입니다. ");
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {-1000,-2000,-3000,-47000})
+    @ValueSource(ints = {-1000, -2000, -3000, -47000})
     @DisplayName("음수를 입력하면 예외를 발생시킨다.")
     void 음수를_입력하면_예외가_발생한다(int payment) {
 
-        assertThatThrownBy(()-> ticketMachine.getTicket(payment))
+        assertThatThrownBy(() -> ticketMachine.getTicket(payment))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 유효하지 않은 금액입니다. ");
     }
