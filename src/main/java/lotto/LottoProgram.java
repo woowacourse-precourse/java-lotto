@@ -100,11 +100,15 @@ public class LottoProgram {
 	public double lottoPercentCalculate(StoreMap storeMap) {
 		int totalCount = 0;
 		int totalPrize = 0;
-		for (SortedMap.Entry<Rank, Integer> elem : storeMap.getStoreMap().entrySet()) {
+		for (SortedMap.Entry<Rank,리 Integer> elem : storeMap.getStoreMap().entrySet()) {
 			totalCount += elem.getValue() * 1000;
 			totalPrize += (elem.getValue() * elem.getKey().getWinningMoney());
 		}
 		double total = (double)totalPrize / totalCount * 100;
 		return total;
+	}
+
+	public void checkPrize(String input) {
+		exception.checkInputPrice(input);
 	}
 }
