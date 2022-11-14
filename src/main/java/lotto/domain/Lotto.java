@@ -18,11 +18,11 @@ public class Lotto {
         return numbers.contains(number);
     }
 
-    public int compare(Lotto another) {
-        return another.compareRealValue(this.numbers);
+    public int compareWithAnotherLotto(Lotto another) {
+        return another.compareWithNumberList(this.numbers);
     }
 
-    public int compareRealValue(List<Integer> anotherNumbers) {
+    public int compareWithNumberList(List<Integer> anotherNumbers) {
         return (int) numbers.stream()
                         .filter(old -> anotherNumbers.stream()
                         .anyMatch(Predicate.isEqual(old)))

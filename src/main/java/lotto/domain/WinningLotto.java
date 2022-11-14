@@ -10,7 +10,7 @@ public class WinningLotto {
     }
 
     public int grade(Lotto lotto) {
-        return winningLotto.compare(lotto);
+        return winningLotto.compareWithAnotherLotto(lotto);
     }
 
     private void readWinningLotto() {
