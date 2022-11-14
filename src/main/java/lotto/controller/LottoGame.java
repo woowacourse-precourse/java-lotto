@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import lotto.model.Constant;
 import lotto.model.Lotto;
+import lotto.model.WinningLotto;
 import lotto.view.LottoInputView;
 import lotto.view.LottoOutputView;
 
@@ -13,6 +14,7 @@ public class LottoGame {
     private final LottoInputView lottoInputView;
     private final LottoOutputView lottoOutputView;
     private final List<Lotto> lottos;
+    private WinningLotto winningLotto;
 
     public LottoGame() {
         this.lottoInputView = new LottoInputView();
@@ -20,6 +22,11 @@ public class LottoGame {
         this.lottos = new ArrayList<>();
     }
     public void startLottoGame() {
+        purchaseLotto();
+        makeWinningNumber();
+    }
+
+    public void purchaseLotto() {
         int userMoney = lottoInputView.getLottoAmount();
         issueLotto(userMoney);
         lottoOutputView.printLottoCount(userMoney, lottos);
@@ -28,6 +35,12 @@ public class LottoGame {
     public void issueLotto(int userMoney) {
         int lottoPaperCount = userMoney / 1000;
         makeUserLottos(lottoPaperCount);
+    }
+
+    public void makeWinningNumber() {
+        List<Integer> winningLottoNumbers = lottoInputView.getLottoNumber();
+        int bonusNumber = lottoInputView.getBonusNumber();
+        winningLotto = new WinningLotto(winningLottoNumbers, bonusNumber);
     }
 
     public void makeUserLottos(int lottoPaperCount) {
