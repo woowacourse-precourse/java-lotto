@@ -2,6 +2,7 @@ package enumCollections;
 
 public enum RankNumber {
     FIRST(6),
+    SECOND(7), // 2등은 별도의 조건문으로 처리하므로 임의로 0 사용
     THIRD(5),
     FOURTH(4),
     FIFTH(3);
@@ -14,5 +15,14 @@ public enum RankNumber {
 
     public static int getRankNumber(RankNumber rank) {
         return rank.number;
+    }
+
+    public static RankNumber getRank(int sameNumbers) {
+        for (RankNumber rank : RankNumber.values()) {
+            if (rank.getRankNumber(rank) == sameNumbers) {
+                return rank;
+            }
+        }
+        return null;
     }
 }
