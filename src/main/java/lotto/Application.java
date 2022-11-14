@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static lotto.ValidationUtil.*;
+
 public class Application {
     static HashMap<LottoRank, Integer> winningHistory = new HashMap<>();
     static int inputPrice = 0;
@@ -20,7 +22,7 @@ public class Application {
             System.out.println(winnerNumber.getNumbers());
             System.out.println();
 
-            int bonusNumber = inputBonusNumber();
+            int bonusNumber = inputBonusNumber(winnerNumber);
 
             saveLottoRankByTicket(winnerNumber, myLottoTickets, bonusNumber);
 
@@ -66,7 +68,7 @@ public class Application {
     private static List<Lotto> buyLotto() {
         String userInput = Console.readLine();
         System.out.println();
-        int buyingPrice = checkUserInputCondition(userInput);
+        int buyingPrice = validateUserInputCondition(userInput);
 
         inputPrice = buyingPrice;
 
@@ -85,23 +87,6 @@ public class Application {
         System.out.println();
     }
 
-    public static String validateWinnerNumberContainsComma(String userInput) {
-        if (!userInput.contains(",")) {
-            throw new LottoException(ErrorResponse.INPUT_WITHOUT_COMMA_ERROR);
-        }
-
-        return userInput;
-    }
-
-    public static String validateWinnerNumberSize(String userInput) {
-        String[] trimmedInput = userInput.split(",");
-
-        if (trimmedInput.length != 6) {
-            throw new LottoException(ErrorResponse.INPUT_WRONG_SIZE_ERROR);
-        }
-
-        return userInput;
-    }
 
     public static List<Integer> convertStringWinnerNumberIntoListWinnerNumber(String userInput) {
         List<Integer> convertedNumber = new ArrayList<>();
@@ -114,13 +99,6 @@ public class Application {
         return convertedNumber;
     }
 
-    public static void validateWinnerNumberRange(List<Integer> winnerNumber) {
-        for (Integer eachNumber : winnerNumber) {
-            if (eachNumber < 1 || eachNumber > 45) {
-                throw new LottoException(ErrorResponse.INPUT_LOTTO_RANGE_ERROR);
-            }
-        }
-    }
 
     private static List<Integer> inputWinnerNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -134,19 +112,13 @@ public class Application {
         return convertedWinnerNumber;
     }
 
-    public static int validateBonusNumberRange(int bonusNumber) {
-        if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new LottoException(ErrorResponse.INPUT_LOTTO_RANGE_ERROR);
-        }
 
-        return bonusNumber;
-    }
-
-    private static int inputBonusNumber() {
+    private static int inputBonusNumber(Lotto winnerLotto) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String userInput = Console.readLine();
 
         int bonusNumber = checkUserInputCondition(userInput);
+        bonusNumber = validateBonusNumberIfExistInWinnerNumber(winnerLotto, bonusNumber);
 
         return bonusNumber;
     }
