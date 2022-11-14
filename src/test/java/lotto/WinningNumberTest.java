@@ -1,11 +1,21 @@
 package lotto;
 
 import domain.WinningNumber;
+import exception.LottoExceptionType;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class WinningNumberTest {
+
+    private WinningNumber winningNumber = new WinningNumber();
 
     @Test
     public void 당첨번호숫자인지확인() throws Exception{
@@ -36,5 +46,18 @@ public class WinningNumberTest {
             System.out.println(e);
         }
         assertThrows(IllegalArgumentException.class, () -> winningNumber.notComma(input));
+    }
+
+    @Test
+    public void 당첨번호리스트로변환() throws Exception{
+        //given
+        List<Integer> list = List.of(1,2,3,5,6,7);
+        String input = "1,2,3,5,6,7";
+
+        //when
+        List<Integer> test = winningNumber.convertStringToList(input);
+
+        //then
+        assertEquals(list, test);
     }
 }
