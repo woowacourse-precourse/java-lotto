@@ -12,21 +12,9 @@ public class Parser {
         return numbers;
     }
 
-    private static int number(String input) {
+    public static int number(String input) {
         try {
-            int number = Integer.parseInt(input);
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException();
-            }
-            return number;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static long money(String consoleInput) {
-        try {
-            return Long.parseLong(consoleInput);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
