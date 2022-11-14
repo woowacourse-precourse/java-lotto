@@ -1,12 +1,14 @@
 package lotto;
 
 import game.Calculate;
+import game.PlayGame;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import user.BuyLotto;
 import user.UserInput;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -145,5 +147,22 @@ class Prize {
         int bonus = 7;
 
         Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(5_000);
+    }
+}
+
+class CalculateTest{
+    Calculate calculate = new Calculate();
+    @Test
+    void resultTest1() {
+        List<List<Integer>> list = List.of(
+                List.of(1,2,3,4,5,6),
+                List.of(1,2,3,4,5,6),
+                List.of(1,2,3,4,5,7)
+        );
+        List<Integer> userInput = List.of(1,2,3,4,5,6);
+        int bonus = 7;
+        List<Integer> result = List.of(0,2,1,0,0,0);
+
+        Assertions.assertThat(calculate.correctLottoCount(list, userInput, bonus)).isEqualTo(result);
     }
 }
