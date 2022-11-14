@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.constant.LottoConstants;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,11 +21,8 @@ final class LottoStatistic {
     public LottoScoreDto calculateStatistic() {
         List<LottoResult> scores = calculateScore();
         Map<LottoPrize, Integer> lottoPrizeCount = new HashMap<>();
-        lottoPrizeCount.put(LottoPrize.FIRST_PRIZE, calculateFirstPrizeCount(scores));
-        lottoPrizeCount.put(LottoPrize.SECOND_PRIZE, calculateSecondPrizeCount(scores));
-        lottoPrizeCount.put(LottoPrize.THIRD_PRIZE, calculateThirdPrizeCount(scores));
-        lottoPrizeCount.put(LottoPrize.FOURTH_PRIZE, calculateFourthPrizeCount(scores));
-        lottoPrizeCount.put(LottoPrize.FIFTH_PRIZE, calculateFifthPrizeCount(scores));
+        Arrays.stream(LottoPrize.values())
+                .forEach(prize -> lottoPrizeCount.put(prize, calculatePrizeCount(scores, prize)));
 
         double rate = calculateRate(lottoPrizeCount);
         return new LottoScoreDto(lottoPrizeCount, rate);
@@ -36,33 +34,9 @@ final class LottoStatistic {
                 .collect(Collectors.toList());
     }
 
-    private int calculateFifthPrizeCount(List<LottoResult> scores) {
+    private int calculatePrizeCount(List<LottoResult> scores, LottoPrize expected) {
         return (int) scores.stream()
-                .filter(LottoResult::isFifthPrize)
-                .count();
-    }
-
-    private int calculateFourthPrizeCount(List<LottoResult> scores) {
-        return (int) scores.stream()
-                .filter(LottoResult::isFourthPrize)
-                .count();
-    }
-
-    private int calculateThirdPrizeCount(List<LottoResult> scores) {
-        return (int) scores.stream()
-                .filter(LottoResult::isThirdPrize)
-                .count();
-    }
-
-    private int calculateSecondPrizeCount(List<LottoResult> scores) {
-        return (int) scores.stream()
-                .filter(LottoResult::isSecondPrize)
-                .count();
-    }
-
-    private int calculateFirstPrizeCount(List<LottoResult> scores) {
-        return (int) scores.stream()
-                .filter(LottoResult::isFirstPrize)
+                .filter(it -> it.calculatePrize() == expected)
                 .count();
     }
 

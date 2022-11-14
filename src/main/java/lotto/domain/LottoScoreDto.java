@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public final class LottoScoreDto {
@@ -14,24 +15,22 @@ public final class LottoScoreDto {
     }
 
     private void validate(Map<LottoPrize, Integer> prizeCount) {
-        if (prizeCount == null) {
+        if (isNull(prizeCount)) {
             throw new IllegalArgumentException(NULL_MESSAGE);
         }
-        if (prizeCount.get(LottoPrize.FIRST_PRIZE) == null) {
+        if (containsNull(prizeCount)) {
             throw new IllegalArgumentException(NULL_MESSAGE);
         }
-        if (prizeCount.get(LottoPrize.SECOND_PRIZE) == null) {
-            throw new IllegalArgumentException(NULL_MESSAGE);
-        }
-        if (prizeCount.get(LottoPrize.THIRD_PRIZE) == null) {
-            throw new IllegalArgumentException(NULL_MESSAGE);
-        }
-        if (prizeCount.get(LottoPrize.FOURTH_PRIZE) == null) {
-            throw new IllegalArgumentException(NULL_MESSAGE);
-        }
-        if (prizeCount.get(LottoPrize.FIFTH_PRIZE) == null) {
-            throw new IllegalArgumentException(NULL_MESSAGE);
-        }
+    }
+
+
+    private boolean isNull(Map<LottoPrize, Integer> prizeCount) {
+        return prizeCount == null;
+    }
+
+    private boolean containsNull(Map<LottoPrize, Integer> prizeCount) {
+        return Arrays.stream(LottoPrize.values())
+                .anyMatch(prize -> prizeCount.get(prize) == null);
     }
 
     public int fifthPrizeCount() {
