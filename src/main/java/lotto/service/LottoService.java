@@ -26,11 +26,13 @@ public class LottoService {
     // 당첨 번호 입력하는 기능
     public void inputWinningNumber() throws IllegalArgumentException {
         lottoView.displayInputWinningNumber();
+        lottoMachine.inputWinningNumber();
     }
 
     // 보너스 번호 입력하는 기능
     public void inputBonusNumber() throws IllegalArgumentException {
-        lottoMachine.inputWinningNumber();
+        lottoView.displayInputBonusNumber();
+        lottoMachine.inputBonusNumber();
     }
 
     // 당첨 결과 보여주는 기능
