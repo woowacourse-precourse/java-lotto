@@ -4,7 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Store {
-    public void sellLotto() {
+    private static final int lottoPrice = 1000;
+
+    public List<Lotto> sellLotto(int money) {
+        validateInputMoney(money);
+        int count = money / 1000;
+
+        // 로또 발행
+        List<Lotto> lottos = new ArrayList<Lotto>();
+        for (int i = 0; i < count; i++) {
+            Lotto lotto = issueLotto();
+            sortLotto(lotto);
+            lottos.add(lotto);
+        }
+
+        // 출력
+        printLottoInform(lottos);
+        return lottos;
     }
 
     private void validateInputMoney(int money) {
@@ -34,6 +50,35 @@ public class Store {
         }
     }
 
-    public void checkPrize() {
+    public LottoResult checkPrize(List<Lotto> lottos, Lotto winningLotto, int bonusNumber) {
+        LottoResult lottoResult = new LottoResult();
+        List<Integer> winningNumbers = winningLotto.getNumbers();
+
+        for(Lotto lotto : lottos) {
+            List<Integer> numbers = lotto.getNumbers();
+            int count = countMatchingNumbers(numbers, winningNumbers);
+            boolean bonus = hasBonusNumber(numbers, bonusNumber);
+
+            Prize prize = Prize.valueOf(count, bonus);
+            lottoResult.addPrize(prize);
+        }
+
+        return lottoResult;
+    }
+
+    // 보너스 넘버가 있는 경우 true를 반환
+    private boolean hasBonusNumber(List<Integer> numbers, int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
+    // 당첨번호와 일치하는 숫자가 몇 개인지 확인
+    private int countMatchingNumbers(List<Integer> numbers, List<Integer> winningNumbers) {
+        int count = 0;
+        for (int number : numbers) {
+            if (winningNumbers.contains(number)) {
+                count++;
+            }
+        }
+        return count;
     }
 }
