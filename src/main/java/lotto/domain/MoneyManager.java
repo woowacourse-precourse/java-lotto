@@ -15,6 +15,8 @@ public class MoneyManager {
     }
 
     public Double getMoneyReturn(Map<ResultPrice, Integer> result) {
+        validation.validateResultPrice(result);
+        
         long totalPrice = getTotalPrice(result);
 
         return getRoundPrice(totalPrice);
