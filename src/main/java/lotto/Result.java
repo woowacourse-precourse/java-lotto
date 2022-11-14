@@ -27,4 +27,9 @@ public class Result {
         return matchCount;
     }
 
+    // 로또 번호에 보너스 번호가 포함되어있는지 판별하는 기능
+    public boolean matchBonus(Lotto lotto, int bonus) {
+        return lotto.getNumbers().contains(bonus);
+    }
+
 }
