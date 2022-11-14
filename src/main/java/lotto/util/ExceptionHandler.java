@@ -28,28 +28,27 @@ public class ExceptionHandler {
     }
 
     public static void checkValidationWinningNumber(String input) throws IllegalArgumentException {
+        String[] tokens = input.split(COMMA);
         try {
-            isSixNumbers(input);
-            isOnlyCommaAndNumber(input);
-            isAllDifferentNumbers(input);
-            isValidationRange(input);
+            isSixNumbers(tokens);
+            isOnlyCommaAndNumber(tokens);
+            isAllDifferentNumbers(tokens);
+            isValidationRange(tokens);
         } catch (IllegalArgumentException illegalArgumentException) {
             throw makeIllegalArgumentException(Message.INPUT_WINNING_NUMBER_ERROR);
         }
     }
 
-    private static void isSixNumbers(String input) throws IllegalArgumentException {
-        String[] numbers = input.split(COMMA);
-        if (numbers.length != Number.SIX.getValue()) {
+    private static void isSixNumbers(String[] tokens) throws IllegalArgumentException {
+        if (tokens.length != Number.SIX.getValue()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void isOnlyCommaAndNumber(String input) throws IllegalArgumentException {
-        String[] numbers = input.split(COMMA);
+    private static void isOnlyCommaAndNumber(String[] tokens) throws IllegalArgumentException {
         Pattern pattern = Pattern.compile(NOT_NUMBER_REGEX);
 
-        for (String number : numbers) {
+        for (String number : tokens) {
             Matcher matcher = pattern.matcher(number);
             if (matcher.find()) {
                 throw new IllegalArgumentException();
@@ -57,11 +56,10 @@ public class ExceptionHandler {
         }
     }
 
-    private static void isAllDifferentNumbers(String input) throws IllegalArgumentException {
-        String[] numbers = input.split(COMMA);
+    private static void isAllDifferentNumbers(String[] tokens) throws IllegalArgumentException {
         List<String> container = new ArrayList<>();
 
-        for (String number : numbers) {
+        for (String number : tokens) {
             if (container.contains(number)) {
                 throw new IllegalArgumentException();
             }
@@ -70,8 +68,7 @@ public class ExceptionHandler {
         }
     }
 
-    private static void isValidationRange(String input) throws IllegalArgumentException {
-        String[] tokens = input.split(COMMA);
+    private static void isValidationRange(String[] tokens) throws IllegalArgumentException {
         for (String token : tokens) {
             int number = Integer.parseInt(token);
             if (isValidate(number)) {
