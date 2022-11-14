@@ -1,4 +1,4 @@
-package lotto.dto;
+package lotto.domain;
 
 import java.util.Optional;
 
@@ -21,20 +21,14 @@ public enum Rank {
     }
 
     public static Optional<Rank> matchRank(int matchCount, boolean bonusMatch) {
-        if (matchCount == FIRST_PLACE.getMatchCount()) {
-            return Optional.of(FIRST_PLACE);
+        Rank[] ranksNotRelatedToBonusNumber = {FIRST_PLACE, THIRD_PLACE, FOURTH_PLACE, FIFTH_PLACE};
+        if (matchCount == SECOND_PLACE.matchCount && bonusMatch) {
+            return Optional.of(SECOND_PLACE);
         }
-        if (matchCount == SECOND_PLACE.getMatchCount()) {
-            if (bonusMatch) {
-                return Optional.of(SECOND_PLACE);
+        for (Rank rank : ranksNotRelatedToBonusNumber) {
+            if (matchCount == rank.matchCount) {
+                return Optional.of(rank);
             }
-            return Optional.of(THIRD_PLACE);
-        }
-        if (matchCount == FOURTH_PLACE.getMatchCount()) {
-            return Optional.of(FOURTH_PLACE);
-        }
-        if (matchCount == FIFTH_PLACE.getMatchCount()) {
-            return Optional.of(FIFTH_PLACE);
         }
         return Optional.empty();
     }
@@ -59,7 +53,7 @@ public enum Rank {
         this.count += 1;
     }
 
-    public void clearCount() {
+    public static void clearCount() {
         FIRST_PLACE.count = 0;
         SECOND_PLACE.count = 0;
         THIRD_PLACE.count = 0;
