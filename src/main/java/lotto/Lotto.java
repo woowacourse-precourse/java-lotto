@@ -16,6 +16,10 @@ public class Lotto {
         }
     }
 
+    private boolean isDuplicated(List<Integer> numbers) {
+        return true;
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }

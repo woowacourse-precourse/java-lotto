@@ -40,12 +40,21 @@ public class WinningNumbersValidator {
         String[] numbers = input.split(",");
 
         for (String number : numbers) {
-            if (!isFrom1To45(number)) {
+            if (!isDecimal(number)) {
                 return false;
             }
         }
 
         return true;
+    }
+
+    private boolean isDecimal(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     private boolean isDuplicated(List<Integer> winningNumbers) {
