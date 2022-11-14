@@ -11,10 +11,12 @@ public class InputView {
     }
 
     public static void printAfterLottoNumbers() {
+        System.out.println();
         System.out.println(ENTER_WINNING_NUMBERS);
     }
 
     public static void printAfterWinningNumbers() {
+        System.out.println();
         System.out.println(ENTER_BONUS_NUMBER);
     }
 }

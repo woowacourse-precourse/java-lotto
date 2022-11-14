@@ -16,22 +16,15 @@ public class LottoHandler {
     private static final Integer FOURTH_PRIZE_MONEY = 5 * (10 ^ 4);
     private static final Integer FIFTH_PRIZE_MONEY = 5 * (10 ^ 3);
 
-
-    public static void handleLotto(String inputAmount, String inputNumbers, String bonusNumber) {
-        Integer purchaseAmount = Integer.valueOf(inputAmount);
-        List<Integer> winningNumbers = getWinningNumbers(inputNumbers);
-
+    public static List<Lotto> getLottos(Integer purchaseAmount) {
         List<List<Integer>> multipleLottoNumbers = createMultipleLottoNumbers(purchaseAmount);
-        List<Lotto> lotteries = multipleLottoNumbers.stream()
+        List<Lotto> lottos = multipleLottoNumbers.stream()
                 .map(Lotto::new)
                 .collect(Collectors.toList());
-        Map<LottoGrade, Integer> resultOfLotto = getResultOfLotto(bonusNumber, winningNumbers, lotteries);
-        Long rateOfReturn = getRateOfReturn(resultOfLotto, purchaseAmount);
-
-        // TODO : OutputView에 대한 로직 추가
+        return lottos;
     }
 
-    private static Long getRateOfReturn(Map<LottoGrade, Integer> resultOfLotto, Integer purchaseAmount) {
+    public static Long getRateOfReturn(Map<LottoGrade, Integer> resultOfLotto, Integer purchaseAmount) {
         Long totalMoney = 0L;
         for (LottoGrade lottoGrade: resultOfLotto.keySet()) {
             Integer eachNumber = resultOfLotto.get(lottoGrade);
@@ -44,9 +37,9 @@ public class LottoHandler {
         return Long.valueOf(Math.round(totalMoney / purchaseAmount * 100));
     }
 
-    private static Map<LottoGrade, Integer> getResultOfLotto(String bonusNumber, List<Integer> winningNumbers, List<Lotto> lotteries) {
+    public static Map<LottoGrade, Integer> getResultOfLotto(String bonusNumber, List<Integer> winningNumbers, List<Lotto> lottos) {
         Map<LottoGrade, Integer> lottoGradeInfo = new HashMap<>();
-        for (Lotto lotto : lotteries) {
+        for (Lotto lotto : lottos) {
             Integer numberOfMatches = lotto.countNumbersIncluded(winningNumbers);
             Boolean containsBonusNumber = lotto.containsBonusNumber(Integer.valueOf(bonusNumber));
             LottoGrade lottoGrade = lotto.getLottoGrade(numberOfMatches, containsBonusNumber);
@@ -55,7 +48,7 @@ public class LottoHandler {
         return lottoGradeInfo;
     }
 
-    private static List<Integer> getWinningNumbers(String inputNumbers) {
+    public static List<Integer> getWinningNumbers(String inputNumbers) {
         return Arrays.asList(inputNumbers.split(",")).stream()
                 .map(inputNumber -> Integer.valueOf(inputNumber))
                 .collect(Collectors.toList());

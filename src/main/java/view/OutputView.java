@@ -24,13 +24,14 @@ public class OutputView {
                 .forEach(System.out::println);
     }
 
-    public static void printResultOfLotto(Map<LottoGrade, Integer> lottoGrade, Long rateOfReturn) {
+    public static void printResultOfLotto(Map<LottoGrade, Integer> resultOfLotto, Long rateOfReturn) {
+        System.out.println();
         System.out.println(RESULT_OF_LOTTO);
-        System.out.printf(FIFTH + "%d" + "개\n", lottoGrade.get(LottoGrade.FIFTH));
-        System.out.printf(FOURTH + "%d" + "개\n", lottoGrade.get(LottoGrade.FOURTH));
-        System.out.printf(THIRD + "%d" + "개\n", lottoGrade.get(LottoGrade.THIRD));
-        System.out.printf(SECOND + "%d" + "개\n", lottoGrade.get(LottoGrade.SECOND));
-        System.out.printf(FIRST + "%d" + "개\n", lottoGrade.get(LottoGrade.FIRST));
+        System.out.printf(FIFTH + "%d" + "개\n", resultOfLotto.get(LottoGrade.FIFTH));
+        System.out.printf(FOURTH + "%d" + "개\n", resultOfLotto.get(LottoGrade.FOURTH));
+        System.out.printf(THIRD + "%d" + "개\n", resultOfLotto.get(LottoGrade.THIRD));
+        System.out.printf(SECOND + "%d" + "개\n", resultOfLotto.get(LottoGrade.SECOND));
+        System.out.printf(FIRST + "%d" + "개\n", resultOfLotto.get(LottoGrade.FIRST));
         System.out.printf("총 수익률은 " + "%d" + "입니다.", rateOfReturn);
     }
 }
