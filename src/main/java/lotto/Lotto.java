@@ -1,23 +1,43 @@
 package lotto;
 
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException {
+        validateLength(numbers);
+        validatedLottoRange(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateLength(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validatedLottoRange(List<Integer> numbers) throws IllegalArgumentException {
+        for (Integer number : numbers) {
+            validateNumberRange(number);
+        }
+    }
+
+    private void validateNumberRange(int number) throws IllegalArgumentException {
+        if ((number < 1) || (number > 45)) {
+            throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_RANGE.getValue());
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) throws IllegalArgumentException {
+        HashSet<Integer> checkDuplicate = new HashSet<>(numbers);
+        if (checkDuplicate.size() != 6) {
+            throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_DUPLICATE.getValue());
+        }
+    }
+
     public int findLottoNumber(int index) {
         return numbers.get(index);
     }
