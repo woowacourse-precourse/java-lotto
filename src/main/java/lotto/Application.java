@@ -10,6 +10,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        Application aa = new Application();
+
+        int buyMoney = buyLotto();
+        List<Integer> lottoRandomNum = lottoRandomNum();
+        List<List<Integer>> buyLottoPrint = buyLottoPrint(buyMoney);
 
     }
 
@@ -45,6 +50,8 @@ public class Application {
      * 1. lottoRandomNum (Lotto 랜덤 숫자뽑기) 완료 <br/>
      * 숫자 1 ~ 45 Random, 중복되지 않는 숫자 6개 오름차순 저장
      * 
+     * @param i
+     * 
      * @return
      */
     public static List<Integer> lottoRandomNum() {
@@ -65,8 +72,9 @@ public class Application {
      * 10. buyLottoPrint (구매한 로또 lottoRandomNum 리스트 출력) 완료 <br/>
      * 
      * @param lottoRandomNum
+     * @return
      */
-    public static void buyLottoPrint(int buyLotto) {
+    public static List<List<Integer>> buyLottoPrint(int buyLotto) {
         List<List<Integer>> buyLottoPrint = new ArrayList<List<Integer>>();
         System.out.println(buyLotto + "개를 구매했습니다.");
 
@@ -76,6 +84,28 @@ public class Application {
         for (int i = 0; i < buyLottoPrint.size(); i++) {
             System.out.println(buyLottoPrint.get(i));
         }
-        return;
+        return buyLottoPrint;
+    }
+
+    // 당첨번호 입력
+    /**
+     * 2. myLottoNum (내가 뽑은 Lotto 숫자) 완료
+     * 
+     * @param myLottoNum
+     */
+    public static List<Integer> myLottoNum() {
+        System.out.print("당첨 번호를 입력해 주세요.");
+        String myPickNum = Console.readLine();
+
+        String[] myPickNumArray = myPickNum.split(",");
+
+        List<Integer> myLottoNum = new ArrayList<Integer>();
+
+        for (int i = 0; i < myPickNumArray.length; i++) {
+            int myNum = Integer.parseInt(myPickNumArray[i]);
+            myLottoNum.add(myNum);
+            Collections.sort(myLottoNum);
+        }
+        return myLottoNum;
     }
 }
