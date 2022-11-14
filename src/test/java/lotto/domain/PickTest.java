@@ -7,7 +7,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PickTest {
     @DisplayName("로또 추첨 결과를 집계할 수 있다.")
@@ -48,5 +47,68 @@ class PickTest {
         pick.drawLottoes(lottoes);
         scores = pick.getScores();
         assertThat(scores).isEqualTo(List.of(6, 0, 0, 0, 0, 0));
+    }
+
+    @DisplayName("수익률을 계산할 수 있다._1")
+    @Test
+    void calculateRateOfReturn() {
+        List<Integer> answer = List.of(1, 2, 3, 4, 5, 6);
+        int bonus = 7;
+        Pick pick = new Pick(answer, bonus);
+        List<Lotto> lottoes = List.of(
+                new Lotto(List.of(1, 2, 3, 8, 9, 10)), // 3개 -> 5등
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16))); // 0개 -> 미당첨(0)
+        List<Integer> scores;
+        double rateOfReturn;
+
+        pick.drawLottoes(lottoes);
+        rateOfReturn = pick.getRateOfReturn(8000);
+        assertThat(rateOfReturn).isEqualTo(62.5);
+    }
+
+    @DisplayName("수익률을 계산할 수 있다._2")
+    @Test
+    void calculateRateOfReturn2() {
+        List<Integer> answer = List.of(1, 2, 3, 4, 5, 6);
+        int bonus = 7;
+        Pick pick = new Pick(answer, bonus);
+        List<Lotto> lottoes = List.of(
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16))); // 0개 -> 미당첨(0)
+        List<Integer> scores;
+        double rateOfReturn;
+
+        pick.drawLottoes(lottoes);
+        rateOfReturn = pick.getRateOfReturn(8000);
+        assertThat(rateOfReturn).isEqualTo(0.0);
+    }
+
+    @DisplayName("수익률을 계산할 수 있다._3")
+    @Test
+    void calculateRateOfReturn3() {
+        List<Integer> answer = List.of(1, 2, 3, 4, 5, 6);
+        int bonus = 7;
+        Pick pick = new Pick(answer, bonus);
+        List<Lotto> lottoes = List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16))); // 0개 -> 미당첨(0)
+        List<Integer> scores;
+        double rateOfReturn;
+
+        pick.drawLottoes(lottoes);
+        rateOfReturn = pick.getRateOfReturn(8000);
+        assertThat(rateOfReturn).isEqualTo(25_000_000.0);
     }
 }
