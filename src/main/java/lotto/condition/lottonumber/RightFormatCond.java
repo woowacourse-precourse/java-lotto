@@ -7,6 +7,9 @@ public class RightFormatCond implements Condition {
 
     private static final Condition instance = new RightFormatCond();
 
+    private RightFormatCond() {
+    }
+
     public static Condition getInstance() {
         return instance;
     }

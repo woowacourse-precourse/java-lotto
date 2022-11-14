@@ -12,6 +12,9 @@ public class IsAllNumberInRangeCond implements Condition {
     private static final Condition instance = new IsAllNumberInRangeCond();
     private static final Integer SINGLE_DIGIT = 0;
 
+    private IsAllNumberInRangeCond() {
+    }
+
     public static Condition getInstance() {
         return instance;
     }
