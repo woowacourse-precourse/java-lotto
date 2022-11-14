@@ -14,12 +14,11 @@ public class LottoResult {
 
     public float calculateEarningRatio(Integer buyPrice) {
         float ratio;
-        Long totalWinning = (long)0;
+        long totalWinning = 0;
 
         for (Rank rank : Rank.values()) {
             totalWinning = totalWinning + Long.valueOf(rank.getWinningMoney()) * ranks.getOrDefault(rank, 0);
         }
-        System.out.println(totalWinning);
         ratio = 100 * (totalWinning / (Float.valueOf(buyPrice)));
 
         return ratio;
