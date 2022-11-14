@@ -25,16 +25,14 @@ public class NumberException {
     public static void isMultipleOfThousand(String userInput) {
         int userInputMoney = Integer.parseInt(userInput);
         if (userInputMoney % 1000 != 0) {
-            System.out.println("[ERROR] 구입금액은 1000으로 나누어 떨어져야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입금액은 1000으로 나누어 떨어져야 합니다.");
         }
     }
 
     public static void isNumber(String userInput) {
         for (int userInputIndex = 0; userInputIndex < userInput.length(); userInputIndex++) {
             if (!Character.isDigit(userInput.charAt(userInputIndex))) {
-                System.out.println("[ERROR] 구입금액은 숫자로 이루어져야 합니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 구입금액은 숫자로 이루어져야 합니다.");
             }
         }
     }
@@ -45,8 +43,7 @@ public class NumberException {
                 continue;
             }
             if (!Character.isDigit(userInput.charAt(userInputIndex))) {
-                System.out.println("[ERROR] 로또번호는 숫자로 이루어져야 합니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 로또번호는 숫자로 이루어져야 합니다.");
             }
         }
     }
@@ -55,8 +52,7 @@ public class NumberException {
         List<String> splitUserInput = Arrays.asList(userInput.split(","));
         Set<String> userInputSet = new HashSet<>(splitUserInput);
         if (splitUserInput.size() != userInputSet.size()) {
-            System.out.println("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
         }
     }
 
@@ -67,8 +63,7 @@ public class NumberException {
                 .collect(Collectors.toList());
         for (int number : userInputNumber) {
             if (number < 1 || number > 45) {
-                System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
     }
@@ -79,8 +74,7 @@ public class NumberException {
                 continue;
             }
             if (userInput.charAt(userInputIndex) != SEPARATOR) {
-                System.out.println("[ERROR] 로또 번호의 구분자는 쉼표(,)여야 합니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 로또 번호의 구분자는 쉼표(,)여야 합니다.");
             }
         }
     }
