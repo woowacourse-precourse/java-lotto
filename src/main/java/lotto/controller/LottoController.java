@@ -12,10 +12,14 @@ public class LottoController {
     public void start() {
         try {
             PurchaseMoney purchaseMoney = createPurchaseMoney();
+
             Lottos lottos = createLottos(purchaseMoney);
             printLottos(lottos);
+
             TotalPrizeNumbers totalPrizeNumbers = createPrizeNumbers();
 
+            WinningList winningList = createWinningList(lottos, totalPrizeNumbers);
+            printWinningList(winningList);
         } catch (IllegalArgumentException error) {
             printErrorMessage(error.getMessage());
         }
@@ -38,5 +42,11 @@ public class LottoController {
         Integer bonusNumber = insertBonusNumber(prizeNumbers);
 
         return new TotalPrizeNumbers(prizeNumbers, bonusNumber);
+    }
+
+    private WinningList createWinningList(Lottos lottos, TotalPrizeNumbers totalPrizeNumbers) {
+        WinningList winningList = LottoMachine.compute(lottos, totalPrizeNumbers);
+
+        return winningList;
     }
 }

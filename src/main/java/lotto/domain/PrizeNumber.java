@@ -11,4 +11,26 @@ public class PrizeNumber {
         this.prizeNumber = prizeNumber;
         this.numberType = numberType;
     }
+
+    public boolean isNormal() {
+        if (this.numberType == NumberType.NORMAL) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getPrizeNumber() {
+        return this.prizeNumber;
+    }
+
+    public NumberType getNumberType() {
+        return this.numberType;
+    }
+
+    public boolean isBonus() {
+        if (this.numberType == NumberType.BOUNS) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class TotalPrizeNumbers {
 
@@ -20,8 +21,8 @@ public class TotalPrizeNumbers {
 
     private final List<PrizeNumber> totalPrizeNumbers;
 
-    public TotalPrizeNumbers(List<Integer> prizeNumbers, Integer bonusNumber) {
-        this.totalPrizeNumbers = createTotalPrizeNumbers(prizeNumbers, bonusNumber);
+    public TotalPrizeNumbers(List<Integer> normalNumbers, Integer bonusNumber) {
+        this.totalPrizeNumbers = createTotalPrizeNumbers(normalNumbers, bonusNumber);
     }
 
     public static void validatePrizeNumbers(List<Integer> prizeNumbers) {
@@ -48,15 +49,31 @@ public class TotalPrizeNumbers {
         }
     }
 
-    private List<PrizeNumber> createTotalPrizeNumbers(List<Integer> prizeNumbers, Integer bonusNumber) {
+    private List<PrizeNumber> createTotalPrizeNumbers(List<Integer> normalNumbers, Integer bonusNumber) {
         List<PrizeNumber> totalPrizeNumbers = new ArrayList<>();
 
-        for (Integer number : prizeNumbers) {
-            PrizeNumber prizeNumber = new PrizeNumber(number, NumberType.NORMAL);
-            totalPrizeNumbers.add(prizeNumber);
+        for (Integer normalNumber : normalNumbers) {
+            totalPrizeNumbers.add(new PrizeNumber(normalNumber, NumberType.NORMAL));
         }
         totalPrizeNumbers.add(new PrizeNumber(bonusNumber, NumberType.BOUNS));
 
         return totalPrizeNumbers;
+    }
+
+    public List<PrizeNumber> getNormalNumbers() {
+        return this.totalPrizeNumbers.stream()
+                .filter(PrizeNumber::isNormal)
+                .collect(Collectors.toList());
+    }
+
+    public List<PrizeNumber> getTotalPrizeNumbers() {
+        return new ArrayList<>(totalPrizeNumbers);
+    }
+
+    public int getBonusNumber() {
+        return totalPrizeNumbers.stream()
+                .filter(PrizeNumber::isBonus)
+                .map(PrizeNumber::getPrizeNumber)
+                .findFirst().get();
     }
 }
