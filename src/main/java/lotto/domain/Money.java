@@ -1,19 +1,16 @@
 package lotto.domain;
 
 public class Money {
-
-    private static final String NEGATIVE_AMOUNT_EXCEPTION_MESSAGE = "금액은 음수이면 안됩니다";
-
     private final long amount;
 
     public Money(long amount) {
-        validateGreaterThanZero(amount);
+        validateNonNegative(amount);
         this.amount = amount;
     }
 
-    private void validateGreaterThanZero(long amount) {
+    private void validateNonNegative(long amount) {
         if (amount < 0) {
-            throw new IllegalArgumentException(NEGATIVE_AMOUNT_EXCEPTION_MESSAGE);
+            throw new IllegalArgumentException("금액은 음수일 수 없습니다");
         }
     }
 
