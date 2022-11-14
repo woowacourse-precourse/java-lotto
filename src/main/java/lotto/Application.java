@@ -17,6 +17,7 @@ public class Application {
         int price = readNumber(inputPriceMessage, priceNonNumericErrorMessage);
         Simulator lottoSimulator = new Simulator(price);
         printPurchaseHistory(lottoSimulator);
+        List<Integer> winningNumbers = readNumbers(inputWinningNumbersMessage);
     }
 
     private static int readNumber(String outputMessage, String errorMessage) {
@@ -25,6 +26,18 @@ public class Application {
             return parseInt(Console.readLine());
         } catch (Exception e) {
             throw new IllegalArgumentException(errorMessage);
+        }
+    }
+
+    private static List<Integer> readNumbers(String outputMessage) {
+        System.out.println(outputMessage);
+        try {
+            return Arrays.asList(Console.readLine().split(","))
+                    .stream()
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 숫자와 쉼표 형식입니다.");
         }
     }
 
