@@ -28,4 +28,10 @@ public class WinningStatistics {
             winningStatistics.put(rank, winningStatistics.get(rank) + 1);
         }
     }
+
+    private long getProfit() {
+        return winningStatistics.keySet().stream()
+                .mapToLong(rank -> rank.getPrize() * winningStatistics.get(rank))
+                .sum();
+    }
 }

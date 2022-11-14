@@ -7,20 +7,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public enum Rank {
-    FIRST(6, 2_000_000_000, false),
-    SECOND(5, 30_000_000, true),
-    THIRD(5, 1_500_000, false),
-    FORTH(4, 50_000, false),
-    FIFTH(3, 5_000, false),
-    MISS(0, 0, false);
+    FIRST(6, 2_000_000_000L, false),
+    SECOND(5, 30_000_000L, true),
+    THIRD(5, 1_500_000L, false),
+    FORTH(4, 50_000L, false),
+    FIFTH(3, 5_000L, false),
+    MISS(0, 0L, false);
 
     private static final int MATCHED_NUMBER_TO_CHECK_BONUS_NUMBER = 5;
 
     private final int matched;
-    private final int prize;
+    private final long prize;
     private final boolean bonus;
 
-    Rank(int matched, int prize, boolean bonus) {
+    Rank(int matched, long prize, boolean bonus) {
         this.matched = matched;
         this.prize = prize;
         this.bonus = bonus;
@@ -52,7 +52,7 @@ public enum Rank {
         return new DecimalFormat("###,###").format(prize);
     }
 
-    private int getPrize() {
+    public long getPrize() {
         return prize;
     }
 
