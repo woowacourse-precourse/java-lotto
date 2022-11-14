@@ -7,6 +7,9 @@ import java.util.List;
 
 public class Game {
     public static final int UNIT = 1000;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 45;
+    public static final int BALL_COUNT = 6;
     List<Integer> lottoNumbers = new ArrayList<>();
     List<List<Integer>> buyNumbers = new ArrayList<>();
     private int bonus;
@@ -31,8 +34,12 @@ public class Game {
         }
     }
 
-    public void setBonus(int bonus) {
-
+    public void setBonus() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String number = Console.readLine();
+        if (!isNumeric(number)) {
+            throw new IllegalArgumentException("[ERROR] 정수 1개만 입력해주세요.");
+        }
     }
 
     public List<Integer> getWinningNumbers() {
