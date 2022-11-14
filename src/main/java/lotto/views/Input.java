@@ -1,10 +1,9 @@
-package lotto;
+package lotto.views;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class Input {
     public static String readString() {
@@ -39,7 +38,7 @@ public class Input {
 
     private static void validateNumber(String input) throws IllegalArgumentException{
         if (input.matches("[0-9]*[^0-9]+[0-9]*")) {
-            throw new IllegalArgumentException(Error.ERROR_INPUT_PARSING_NUMBER.getValue());
+            throw new IllegalArgumentException(Errors.ERROR_INPUT_PARSING_NUMBER.getValue());
         }
     }
 }

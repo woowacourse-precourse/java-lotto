@@ -1,4 +1,7 @@
-package lotto;
+package lotto.domain;
+
+import lotto.views.Errors;
+import lotto.utils.Rules;
 
 public class GameMoney {
     private long money;
@@ -10,7 +13,7 @@ public class GameMoney {
 
     static void validateAvailableOfPurchase(long insertMoney) throws IllegalArgumentException {
         if (insertMoney % Rules.PRICE_PER_LOTTO.getValue() != 0) {
-            throw new IllegalArgumentException(Error.ERROR_GAME_MONEY_AVAILABLE.getValue());
+            throw new IllegalArgumentException(Errors.ERROR_GAME_MONEY_AVAILABLE.getValue());
         }
     }
 

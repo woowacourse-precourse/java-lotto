@@ -1,4 +1,4 @@
-package lotto;
+package lotto.utils;
 
 public enum Rules {
     LOTTO_SIZE(6),

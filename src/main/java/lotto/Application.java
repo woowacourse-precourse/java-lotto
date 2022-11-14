@@ -1,9 +1,13 @@
 package lotto;
 
-import net.bytebuddy.utility.visitor.ExceptionTableSensitiveMethodVisitor;
+import lotto.domain.Judgment;
+import lotto.domain.RankCounter;
+import lotto.domain.User;
+import lotto.domain.WinningNumbers;
+import lotto.views.Input;
+import lotto.views.Print;
 
 import java.util.List;
-import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -12,7 +16,6 @@ public class Application {
 
             Print.printInsertMoney();
             long money = Input.readLong();
-
 
             user.payMoney(money);
             user.buyLotto();

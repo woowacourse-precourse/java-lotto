@@ -1,8 +1,8 @@
 package lotto;
 
-import org.junit.jupiter.api.Assertions;
+import lotto.domain.Lotto;
+import lotto.domain.WinningNumbers;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -10,7 +10,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class WinningNumbersTest {
     @Test
@@ -56,6 +55,9 @@ class WinningNumbersTest {
     @Test
     void bonusNumberInputTest() throws Exception {
         WinningNumbers winningNumbers = new WinningNumbers();
+        Integer[] inputs = {1,2,3,4,5,6};
+        winningNumbers.newWinningNumbers(new ArrayList<>(List.of(inputs)));
+
 
         int testNumber = 7;
         winningNumbers.newBonusNumber(testNumber);

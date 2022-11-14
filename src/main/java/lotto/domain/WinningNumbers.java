@@ -1,4 +1,7 @@
-package lotto;
+package lotto.domain;
+
+import lotto.views.Errors;
+import lotto.utils.Rules;
 
 import java.util.List;
 
@@ -20,13 +23,13 @@ public class WinningNumbers {
 
     private void validateNumberRange(int number) throws IllegalArgumentException {
         if ((number < Rules.LOTTO_MIN_NUMBER.getValue()) || (number > Rules.LOTTO_MAX_NUMBER.getValue())) {
-            throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_RANGE.getValue());
+            throw new IllegalArgumentException(Errors.ERROR_LOTTO_NUMBER_RANGE.getValue());
         }
     }
 
     private void validateDuplicateBonusNumber(int bonusNumber) throws IllegalArgumentException {
         if(winningNumbers.containNumber(bonusNumber)) {
-            throw new IllegalArgumentException(Error.ERROR_LOTTO_BONUS_NUMBER_DUPLICATE.getValue());
+            throw new IllegalArgumentException(Errors.ERROR_LOTTO_BONUS_NUMBER_DUPLICATE.getValue());
         }
     }
 

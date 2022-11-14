@@ -1,6 +1,6 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
+import lotto.views.Input;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

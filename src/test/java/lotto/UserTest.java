@@ -1,15 +1,10 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import lotto.domain.User;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 

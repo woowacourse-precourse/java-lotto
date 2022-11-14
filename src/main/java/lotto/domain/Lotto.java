@@ -1,4 +1,7 @@
-package lotto;
+package lotto.domain;
+
+import lotto.views.Errors;
+import lotto.utils.Rules;
 
 import java.util.HashSet;
 import java.util.List;
@@ -27,14 +30,14 @@ public class Lotto {
 
     private void validateNumberRange(int number) throws IllegalArgumentException {
         if ((number < Rules.LOTTO_MIN_NUMBER.getValue()) || (number > Rules.LOTTO_MAX_NUMBER.getValue())) {
-            throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_RANGE.getValue());
+            throw new IllegalArgumentException(Errors.ERROR_LOTTO_NUMBER_RANGE.getValue());
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) throws IllegalArgumentException {
         HashSet<Integer> checkDuplicate = new HashSet<>(numbers);
         if (checkDuplicate.size() != Rules.LOTTO_SIZE.getValue()) {
-            throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_DUPLICATE.getValue());
+            throw new IllegalArgumentException(Errors.ERROR_LOTTO_NUMBER_DUPLICATE.getValue());
         }
     }
 

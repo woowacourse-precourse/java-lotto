@@ -1,6 +1,6 @@
-package lotto;
+package lotto.views;
 
-public enum Error {
+public enum Errors {
     ERROR_GAME_MONEY_AVAILABLE("[ERROR] 로또 1매 가격은 1000원입니다. 1000원 단위를 맞춰주세요."),
     ERROR_INPUT_PARSING_NUMBER("[ERROR] 해당 입력 값은 숫자형이 아닙니다."),
     ERROR_LOTTO_NUMBER_RANGE("[ERROR] 로또 번호는 1부터 45사이 숫자만 입력 가능합니다."),
@@ -10,7 +10,7 @@ public enum Error {
 
     private String errorMessage;
 
-    Error(String errorMessage) {
+    Errors(String errorMessage) {
         this.errorMessage = errorMessage;
     }
 
