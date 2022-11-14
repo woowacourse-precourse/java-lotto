@@ -8,6 +8,7 @@ import lotto.domain.Money;
 import lotto.domain.Picker;
 import lotto.domain.Rank;
 import lotto.domain.Seller;
+import lotto.dto.LottoDto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -24,6 +25,7 @@ public class Game {
     public void play() {
         Money capital = new Money(inputView.promptAmount());
         List<Lotto> lottos = new Seller().issueLottos(capital);
+        outputView.printIssuedLottos(new LottoDto(lottos));
 
         Lotto winningLotto = new Lotto(inputView.promptWinningNumbers());
         LottoNumber bonusNumber = new LottoNumber(inputView.promptBonusNumber());
