@@ -33,13 +33,11 @@ public class Yield {
     }
 
     public Float getYield() {
-        return ((float) revenue / (float) principal);
+        return ((float) revenue / (float) principal) * 100;
     }
 
     @Override
     public String toString() {
-        DecimalFormat df = new DecimalFormat("#.##%");
-
-        return df.format(this.getYield());
+        return String.format("%.1f%%", this.getYield());
     }
 }
