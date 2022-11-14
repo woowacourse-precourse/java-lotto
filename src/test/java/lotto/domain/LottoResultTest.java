@@ -3,24 +3,33 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+import lotto.domain.vo.BuyLottoList;
+import lotto.domain.vo.Lotto;
+import lotto.domain.vo.LottoWithBonus;
+import lotto.veiw.InputHandler;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class LottoResultTest {
 
-    @Test
-    void Compare_Test() {
-        List<Lotto> lottoList = new ArrayList<>();
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 27, 26));
-        Lotto lotto1 = new Lotto(List.of(1, 12, 13, 4, 5, 6));
-        Lotto lotto2 = new Lotto(List.of(1, 12, 13, 14, 15, 8));
+    Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+    LottoWithBonus lottoWithBonus = new LottoWithBonus(lotto, 7);
 
-        Lotto myLotto = new Lotto(List.of(1, 2, 3, 24, 25, 16));
-//        LottoVendingMachine lottoVendingMachine = new LottoVendingMachine(new Money(80000000));
-        LottoWithBonus lottoWithBonus = new LottoWithBonus(myLotto, 6);
-        lottoList.addAll(List.of(lotto, lotto1, lotto2));
+    @DisplayName("Normal Result Test")
+    @ParameterizedTest(name = "[{index}] input {0} ")
+    @CsvSource(value = {"SIX:1,2,3,4,5,6", "BONUS:1,2,3,4,5,7", "FIVE:1,2,3,4,5,8",
+            "FOUR:1,2,3,4,8,7", "THREE:1,2,3,9,8,7", "NOPE:1,2,10,9,8,7"}, delimiter = ':')
+    void Calculate_Result_Test(String result, String inputString) {
+        InputHandler inputHandler = new InputHandler();
+        List<Lotto> buyList = Collections.singletonList(
+                new Lotto(inputHandler.stringToList(inputString)));
+        BuyLottoList buyLottoList = new BuyLottoList(buyList);
 
-        LottoResult lottoResult = new LottoResult(new LottoMachine(lottoList), lottoWithBonus);
-//        assertThat(compare.getTotalPrize(compare.getResult())).isEqualTo(5000L);
+        LottoResult lottoResult = new LottoResult(buyLottoList, lottoWithBonus);
+        System.out.println(lottoResult.getValue());
+        assertThat(lottoResult.getValue().toString()).isEqualTo("{" + result + "=1}");
     }
 }
