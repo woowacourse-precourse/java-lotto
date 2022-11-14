@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Rank {
+
     enum Grade {
         THREE(3, 5000, false),
         FOUR(4, 50000, false),

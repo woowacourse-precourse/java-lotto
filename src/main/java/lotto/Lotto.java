@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -26,6 +27,20 @@ public class Lotto {
         if (!hasValidScope(numbers)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
+    }
+
+    public static boolean hasDuplication(List<Integer> numbers) {
+        Set<Integer> elements = new HashSet<>(numbers);
+        return elements.size() == 6;
+    }
+
+    public static boolean hasValidScope(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (!(0 < number && number < 46)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static Lotto inputWinningNumbers() {
@@ -47,29 +62,15 @@ public class Lotto {
         }
     }
 
-    public static boolean hasDuplication(List<Integer> numbers) {
-        Set<Integer> elements = new HashSet<>(numbers);
-        return elements.size() == 6;
-    }
-
-    public static boolean hasValidScope(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            if (!(0 < number && number < 46)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public static List<Lotto> getLottoList(int money) {
         List<Lotto> lottoList = new ArrayList<>();
         for (int index = 0; index < money / 1000; index++) {
-            lottoList.add(generateLottoList());
+            lottoList.add(generateRandomLotto());
         }
         return lottoList;
     }
 
-    private static Lotto generateLottoList() {
+    private static Lotto generateRandomLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers.stream()
                 .sorted()

@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import lotto.Rank.Grade;
 
 public class LottoGame {
+
     public static void startGame() {
         int money = getMoney();
 
