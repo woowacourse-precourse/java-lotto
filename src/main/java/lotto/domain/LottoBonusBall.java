@@ -19,7 +19,7 @@ public class LottoBonusBall {
     }
 
     /**
-     * 로또 보너스 번호 범위 적합성 로직
+     * 로또 보너스 번호 숫자가 1부터 45사이인지 검증하는 로직
      */
     private void validate(int bonusBall) {
         if (bonusBall < 1 || bonusBall > 45) {

@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class LottoNumberCreator {
     private static int NUMBER_OF_LOTTERY = 6;
+    private static int BONUS_BALL_NUMBER = 0;
 
     /**
      * 로또 번호 생성 후 Lotto class 에게 로또 발행시키기
@@ -45,8 +46,16 @@ public class LottoNumberCreator {
         return new Lotto(lottoWinNumbers);
     }
 
-
-
+    /**
+     * 로또 보너스 번호 생성
+     */
+    public LottoBonusBall createLottoBonusBall(String bonusBallWord, Lotto lottoWinNumber) {
+        String[] bonusBallWords = bonusBallWord.split("");
+        validateNumber(bonusBallWords);
+        int bonusBall = Integer.valueOf(bonusBallWords[BONUS_BALL_NUMBER]);
+        return new LottoBonusBall(bonusBall, lottoWinNumber);
+    }
+    
     /**
      * 숫자 개수 검증 로직
      */
@@ -61,7 +70,7 @@ public class LottoNumberCreator {
      * 문자가 숫자인지 검증하는 로직
      */
     private void validateNumber(String[] lottoWinNumberWords) {
-        for (int i = 0; i < NUMBER_OF_LOTTERY; ++i) {
+        for (int i = 0; i < lottoWinNumberWords.length; ++i) {
             try {
                 Integer.valueOf(lottoWinNumberWords[i].trim());
             } catch (NumberFormatException e) {
