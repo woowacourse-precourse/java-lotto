@@ -17,6 +17,7 @@ public class LottoGameController {
         WinningTicket winningTicket = getWinningTicket();
         LottoResult lottoResult = getLottoResult(lottoTickets, winningTicket);
         printResult(lottoResult.getLottoResult());
+        printProfit(lottoResult.calculateProfit(lottoPurchaseAmount.calculateNumberOfLottoTickets()));
     }
 
     private LottoPurchaseAmount inputMoney() {
@@ -43,5 +44,9 @@ public class LottoGameController {
 
     private void printResult(Map<Ranking, Integer> winningResult) {
         OutputView.printWinningStatistics(winningResult);
+    }
+
+    private void printProfit(double profit) {
+        OutputView.printProfitResult(profit);
     }
 }
