@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +25,10 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("정렬된 로또 번호 문자열로 변환")
+    @Test
+    void createLottoNumbersToString() {
+        assertThat(new Lotto(List.of(1, 4, 6, 5, 2, 3)).toString())
+                .isEqualTo(List.of(1, 2, 3, 4, 5, 6).toString());
+    }
 }
