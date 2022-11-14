@@ -20,4 +20,9 @@ public enum LottoRank {
     public int getSameCount() {
         return sameCount;
     }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
+
 }
