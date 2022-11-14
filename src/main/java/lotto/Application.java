@@ -40,7 +40,6 @@ public class Application {
         List<Lotto> lottos = Utils.issueLotto(numberOfIssues);
 
         Ui.printLottoNumbers(numberOfIssues, lottos);
-
         return lottos;
     }
 

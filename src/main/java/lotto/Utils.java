@@ -15,7 +15,7 @@ public class Utils {
     private static final int SECOND_THIRD_PLACE_STANDARD = 5;
     private static final int FOURTH_PLACE_STANDARD = 4;
     private static final int FIFTH_PLACE_STANDARD = 3;
-    private static final Map<Result, Integer> WINNING_DATA = new HashMap<>();
+    public static final Map<Result, Integer> WINNING_DATA = new HashMap<>();
 
     public static int getNumberOfIssues(int price) {
         return price / LOTTO_PRICE;

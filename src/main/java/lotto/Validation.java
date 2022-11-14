@@ -11,8 +11,8 @@ public class Validation {
             throw new IllegalArgumentException("로또 구입 금액은 0보다 커야 합니다.");
         }
 
-        if (price / LOTTO_PRICE > 10000) {
-            throw new IllegalArgumentException("한 번에 최대 만 장까지만 구매 가능합니다.");
+        if (price > 200000) {
+            throw new IllegalArgumentException("1회 구매 한도는 「복권 및 복권기금법」에 따라 20만원을 초과할 수 없습니다.");
         }
 
         if (price % LOTTO_PRICE != 0) {
