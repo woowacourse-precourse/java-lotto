@@ -27,13 +27,8 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void isLottoNumberOverlapping(List<Integer> numbers) {
-        if (numbers.size() != new HashSet<>(numbers).size()) {
-            throw new IllegalArgumentException(StringConstant.LOTTO_INPUT_NUMBER_OVERLAPPING_ERROR_MESSAGE.getMessage());
-        }
-    }
-
     // TODO: 추가 기능 구현
+
     @Override
     public String toString() {
         return this.numbers.toString();
@@ -41,7 +36,6 @@ public class Lotto {
     public boolean contains(int number) {
         return this.numbers.contains(number);
     }
-
     private void isLottoLength(List<Integer> numbers) {
         if (!(IntegerValidation.isBetween(numbers.size(), IntConstant.LOTTO_NUMBER_COUNT.getValue(),
                 IntConstant.LOTTO_NUMBER_COUNT.getValue()))) {
@@ -54,6 +48,12 @@ public class Lotto {
                 number -> IntegerValidation.isBetween(number, IntConstant.LOTTO_NUMBER_BIGGER_THAN.getValue(),
                         IntConstant.LOTTO_NUMBER_SMALLER_THAN.getValue())))) {
             throw new IllegalArgumentException(StringConstant.LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage());
+        }
+    }
+
+    private void isLottoNumberOverlapping(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException(StringConstant.LOTTO_INPUT_NUMBER_OVERLAPPING_ERROR_MESSAGE.getMessage());
         }
     }
 
