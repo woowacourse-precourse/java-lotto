@@ -14,12 +14,12 @@ import static lotto.model.Lotto.createLotto;
 
 public class LottoService {
 
-    private Map<LottoRank, Integer> lottoResult;
+    private Map<LottoRank, Integer> rankResult;
 
     public LottoService() {
-        this.lottoResult = new TreeMap<>();
+        this.rankResult = new TreeMap<>();
         for (LottoRank value : LottoRank.values()) {
-            lottoResult.put(value, 0);
+            rankResult.put(value, 0);
         }
     }
 
@@ -35,9 +35,9 @@ public class LottoService {
     public Map<LottoRank, Integer> compare(List<Lotto> lottos, WinnerLotto winnerLotto) {
         for (Lotto lotto : lottos) {
             LottoRank rank = winnerLotto.matchAll(lotto);
-            lottoResult.put(rank, lottoResult.get(rank) + 1);
+            rankResult.put(rank, rankResult.get(rank) + 1);
         }
-        return lottoResult;
+        return rankResult;
     }
 }
 
