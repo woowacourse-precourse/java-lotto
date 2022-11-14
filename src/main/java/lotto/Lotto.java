@@ -14,7 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복 없는 6자리 숫자여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리 숫자여야 합니다.");
         }
     }
 
@@ -26,10 +26,12 @@ public class Lotto {
         }
     }
 
-    private List<Integer> execptduplicate(List<Integer> numbers){
+    private void execptduplicate(List<Integer> numbers){
         List<Integer> noduplicatenumbers = new ArrayList<>();
         noduplicatenumbers = numbers.stream().distinct().collect(Collectors.toList());
-        return noduplicatenumbers;
+        if(noduplicatenumbers.size()!=6){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복이 없어야 합니다.");
+        }
     }
     // TODO: 추가 기능 구현
 }
