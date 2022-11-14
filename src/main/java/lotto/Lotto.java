@@ -162,17 +162,17 @@ class LottoSystem {
         int totalPrize = 0;
         float winningRate = 0f;
 
-        for (Map.Entry<LottoRanking, Integer> entry : winningCounts.entrySet()) {
-            totalPrize += (entry.getKey().getPrize() * entry.getValue());
+        for (Map.Entry<LottoRanking, Integer> result : winningCounts.entrySet()) {
+            totalPrize += (result.getKey().getPrize() * result.getValue());
         }
-        winningRate = (float)(totalPrize/purchasePayment);
+        winningRate = ((float)totalPrize/(float)purchasePayment) * 100f;
 
         PrintedGuidance.printResult(winningCounts.get(LottoRanking.FIRST),
                 winningCounts.get(LottoRanking.SECOND),
                 winningCounts.get(LottoRanking.THIRD),
                 winningCounts.get(LottoRanking.FOURTH),
                 winningCounts.get(LottoRanking.FIFTH),
-                Math.round(winningRate*10)/10);
+                Math.round(winningRate*10)/10f);
     }
 
 
@@ -213,7 +213,6 @@ class UserInput {
             isNumeric(number);
             numbers.add(Integer.parseInt(number));
         }
-
         return numbers;
     }
 
@@ -225,11 +224,10 @@ class UserInput {
     }
 
     private static void isNumeric(String input) {
-        try {
-            Integer.parseInt(input);
-        }
-        catch (NumberFormatException e) {
+        String REGEX = "[0-9]+";
+        if(!input.matches(REGEX)) {
             throw new IllegalArgumentException("[ERROR] 입력된 내용이 숫자가 아닙니다.");
+
         }
     }
 }
@@ -254,10 +252,10 @@ class PrintedGuidance {
         System.out.println(count + GUIDE_LOTTO_COUNT);
     }
 
-    public static void printResult(int first, int second, int third, int fourth, int fifth, int totalRate) {
+    public static void printResult(int first, int second, int third, int fourth, int fifth, float totalRate) {
         System.out.println("3개 일치 (5,000원) - " + fifth + "개");
         System.out.println("4개 일치 (50,000원) - " + fourth + "개");
-        System.out.println("5개 일치 (150,000원) - " + third + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + third + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + second + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + first + "개");
         System.out.println("총 수익률은 " + totalRate + "%입니다.");
