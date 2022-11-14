@@ -33,10 +33,13 @@ public class View {
     private void validateUniqueNumbersInput(List<Integer> numbers) {
         List<Integer> noDuplicates = new ArrayList<>();
         for (int num : numbers) {
-            if (noDuplicates.contains(num)) {
-                throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자만 입력이 가능합니다");
-            }
+            validateUniqueNumber(numbers, num);
             noDuplicates.add(num);
+        }
+    }
+    private void validateUniqueNumber(List<Integer> noDuplicates, int num) {
+        if (noDuplicates.contains(num)) {
+            throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자만 입력이 가능합니다");
         }
     }
     private void validateNumbersInRange(List<Integer> numbers) {
