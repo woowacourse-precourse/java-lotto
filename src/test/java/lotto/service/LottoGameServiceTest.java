@@ -1,10 +1,14 @@
 package lotto.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.in;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class LottoGameServiceTest {
 
@@ -21,5 +25,28 @@ public class LottoGameServiceTest {
         String purchaseAmount = "8000";
         int actual = lottoGameService.buyLottoTickets(purchaseAmount);
         assertThat(expect).isEqualTo(actual);
+    }
+
+    @DisplayName("구입 금액이 숫자가 아니라면 예외가 발생한다.")
+    @CsvSource({"가나", "sdg", "1가3"})
+    @ParameterizedTest
+    void buyLottoTicketsNotNumber(String input) {
+        assertThatThrownBy(() -> lottoGameService.buyLottoTickets(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구입 금액이 비어있다면 예외가 발생한다.")
+    @Test
+    void buyLottoTicketsIsEmpty() {
+        assertThatThrownBy(() -> lottoGameService.buyLottoTickets(" "))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구입 금액이 1000단위로 나누어 떨어지지 않는다면 예외가 발생한다.")
+    @CsvSource({"1200", "123", "1000001"})
+    @ParameterizedTest
+    void buyLottoTicketsDivide1000Won(String input) {
+        assertThatThrownBy(() -> lottoGameService.buyLottoTickets(input))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }
