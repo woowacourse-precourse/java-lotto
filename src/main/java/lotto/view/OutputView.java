@@ -28,4 +28,8 @@ public class OutputView {
                     + String.format(PHRASES_RANKING_COUNT.print(entrySet.getValue())));
         }
     }
+
+    public void printReturnRate(Player player){
+        System.out.println(RETURNRATE_MESSAGE.print(player.getReturnRate()));
+    }
 }
