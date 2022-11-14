@@ -1,19 +1,22 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Utils {
     public static void validateLottoNumbers(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        Set<Integer> overlapRemoveNumbers = new HashSet<>(numbers);
+        if (numbers.size() != 6 || overlapRemoveNumbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        if (!validateNumbersRange(numbers)) {
+        if (!validateNumbersRange(overlapRemoveNumbers)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static boolean validateNumbersRange(List<Integer> numbers) {
+    public static boolean validateNumbersRange(Set<Integer> numbers) {
         for (int n : numbers) {
             if (n < LottoInfo.START_NUMBER.getValue() || n > LottoInfo.END_NUMBER.getValue()) {
                 return false;

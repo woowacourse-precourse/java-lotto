@@ -25,7 +25,10 @@ public class LottoMachine {
         return numbers;
     }
 
-    public int getBonusNumber(int number) {
+    public int getBonusNumber(int number, List<Integer> winning) {
+        if (winning.contains(number)) {
+            throw new IllegalArgumentException();
+        }
         if (number < LottoInfo.START_NUMBER.getValue() || number > LottoInfo.END_NUMBER.getValue()) {
             throw new IllegalArgumentException();
         }

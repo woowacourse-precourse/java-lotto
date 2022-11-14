@@ -25,10 +25,26 @@ class LottoMachineTest {
         assertThat(lottoMachine.getWinningNumbers(input)).isEqualTo(input);
     }
 
-    @DisplayName("유효하지 않은 당첨 번호 입력 테스트")
+    @DisplayName("개수가 유효하지 않은 당첨 번호 입력시 에러 발생")
     @Test
-    void 유효하지_않은_당첨_번호_입력() {
+    void 개수가_유효하지_않은_당첨_번호_입력() {
         List<Integer> input = List.of(1, 2, 3, 4, 5, 6, 7);
+        assertThatThrownBy(() -> lottoMachine.getWinningNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("개수가 유효하지 않고 중복된 당첨 번호 입력시 에러 발생")
+    @Test
+    void 개수가_유효하지_않고_중복된_당첨_번호_입력() {
+        List<Integer> input = List.of(1, 2, 3, 4, 5, 6, 6);
+        assertThatThrownBy(() -> lottoMachine.getWinningNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("범위가 유효하지 않은 당첨 번호 입력시 에러 발생")
+    @Test
+    void 범위가_유효하지_않은_당첨_번호_입력() {
+        List<Integer> input = List.of(1, 2, 3, 100, 5, 6);
         assertThatThrownBy(() -> lottoMachine.getWinningNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -37,14 +53,25 @@ class LottoMachineTest {
     @Test
     void 올바른_보너스_번호_입력() {
         int bonus = 35;
-        assertThat(lottoMachine.getBonusNumber(bonus)).isEqualTo(bonus);
+        List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
+        assertThat(lottoMachine.getBonusNumber(bonus, winning)).isEqualTo(bonus);
     }
 
-    @DisplayName("유효하지 않은 보너스 번호 입력 테스트")
+    @DisplayName("범위가 유효하지 않은 보너스 번호 입력시 에러 발생")
     @Test
     void 유효하지_않은_보너스_번호_입력() {
         int bonus = 3515;
-        assertThatThrownBy(() -> lottoMachine.getBonusNumber(bonus))
+        List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
+        assertThatThrownBy(() -> lottoMachine.getBonusNumber(bonus, winning))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호와 중복되는 보너스 번호 입력시 에러 발생")
+    @Test
+    void 당첨_번호와_중복되는_보너스_번호_입력() {
+        int bonus = 3;
+        List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
+        assertThatThrownBy(() -> lottoMachine.getBonusNumber(bonus, winning))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
