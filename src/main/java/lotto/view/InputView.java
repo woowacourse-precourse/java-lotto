@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.UserLotto;
 import lotto.validation.InputValidation;
 
-public class InputView {
-    private static final String MESSAGE_REQUEST_MONEY = "구입금액을 입력해 주세요.";
+import static lotto.constant.MessageConstant.MESSAGE_INPUT_MONEY;
 
+public class InputView {
     public static UserLotto inputUserMoney() {
         printRequestMoneyInputMessage();
         String input = Console.readLine();
@@ -16,6 +16,6 @@ public class InputView {
     }
 
     private static void printRequestMoneyInputMessage() {
-        System.out.println(MESSAGE_REQUEST_MONEY);
+        System.out.println(MESSAGE_INPUT_MONEY);
     }
 }

@@ -2,9 +2,9 @@ package lotto.view;
 
 import lotto.domain.UserLotto;
 
-public class OutputView {
-    private static final String MESSAGE_PRINT_COUNT = "개를 구매했습니다.";
+import static lotto.constant.MessageConstant.MESSAGE_OUTPUT_COUNT;
 
+public class OutputView {
     private static void printBlankLine() {
         System.out.println();
     }
@@ -12,6 +12,6 @@ public class OutputView {
     public static void printCountOfPurchasedLotto(UserLotto userLotto) {
         int countOfPurchasedLotto = userLotto.countOfPurchasedLotto();
         printBlankLine();
-        System.out.println(countOfPurchasedLotto + MESSAGE_PRINT_COUNT);
+        System.out.println(countOfPurchasedLotto + MESSAGE_OUTPUT_COUNT);
     }
 }

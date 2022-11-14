@@ -2,8 +2,9 @@ package lotto.domain;
 
 import lotto.validation.UserLottoValidation;
 
+import static lotto.constant.LottoConstant.LOTTO_BASE_PRICE;
+
 public class UserLotto {
-    private static final int LOTTO_BASE_PRICE = 1000;
     private final int userMoney;
 
     public UserLotto(int userMoney) {

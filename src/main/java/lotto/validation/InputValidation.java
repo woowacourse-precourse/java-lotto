@@ -2,9 +2,10 @@ package lotto.validation;
 
 import java.util.Objects;
 
+import static lotto.constant.ErrorConstant.ERROR_BLANK_INPUT;
+import static lotto.constant.ErrorConstant.ERROR_NON_INTEGER;
+
 public class InputValidation {
-    private static final String ERROR_NON_INTEGER = "[ERROR] 숫자만 입력해주세요.";
-    private static final String ERROR_BLANK_INPUT = "[ERROR] 값을 입력하지 않았습니다.";
 
     public static void isValidInput(String input) {
         if (!checkBlankInput(input)) {
