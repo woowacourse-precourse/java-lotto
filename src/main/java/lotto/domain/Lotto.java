@@ -20,22 +20,23 @@ public class Lotto {
 	}
 
 	private void validateNumberSize(List<Integer> numbers) {
-		if (numbers.size() != 6) {
-			throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+		if (numbers.size() != LottoError.LOTTO_SIZE) {
+			throw new IllegalArgumentException(LottoError.LOTTO_SIZE_ERROR_MESSAGE);
 		}
 	}
 
 	private void validateDuplicateNumber(List<Integer> numbers) {
 		Set<Integer> notDuplicateNumbers = new HashSet<>(numbers);
-		if (notDuplicateNumbers.size() != 6) {
-			throw new IllegalArgumentException("[ERROR] 로또 번호끼리는 중복 될 수 없습니다.");
+		if (notDuplicateNumbers.size() != LottoError.LOTTO_SIZE) {
+			throw new IllegalArgumentException(LottoError.LOTTO_DUPLICATE_ERROR_MESSAGE);
 		}
 	}
 
 	private void validateNumberRange(List<Integer> numbers) {
-		int rightRangeNumberCount = (int)numbers.stream().filter(num -> 1 <= num && num <= 45).count();
-		if (rightRangeNumberCount != 6) {
-			throw new IllegalArgumentException("[ERROR] 로또 번호의 범위는 1부터 45까지 입니다.");
+		int rightRangeNumberCount = (int)numbers.stream()
+			.filter(num -> LottoError.LOTTO_START_RANGE <= num && num <= LottoError.LOTTO_END_RANGE).count();
+		if (rightRangeNumberCount != LottoError.LOTTO_SIZE) {
+			throw new IllegalArgumentException(LottoError.LOTTO_RANGE_ERROR_MESSAGE);
 		}
 	}
 
