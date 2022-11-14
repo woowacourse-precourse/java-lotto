@@ -28,4 +28,14 @@ public class Lotto {
     public String toString() {
         return numbers.toString();
     }
+
+    public int containsCount(Lotto lotto) {
+        return (int) numbers.stream()
+                .filter(lotto::contains)
+                .count();
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
 }
