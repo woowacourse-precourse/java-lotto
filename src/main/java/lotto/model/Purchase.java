@@ -6,8 +6,8 @@ public class Purchase {
 
     private final int amount;
 
-    public Purchase(String input) {
-        int money = validate(input);
+    public Purchase(int number) {
+        int money = validate(number);
         this.amount = money / PRICE_PER_AMOUNT;
     }
 
@@ -15,25 +15,9 @@ public class Purchase {
         return amount;
     }
 
-    private int validate(String input) {
-        isBlank(input);
-        int number = isNumber(input);
+    private int validate(int number) {
         isMultipleOfThousand(number);
         return number;
-    }
-
-    private void isBlank(String input) {
-        if (input.isBlank()) {
-            throw new IllegalArgumentException("[ERROR] 구입금액을 입력해주세요.");
-        }
-    }
-
-    private int isNumber(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
-        }
     }
 
     private void isMultipleOfThousand(int number) {

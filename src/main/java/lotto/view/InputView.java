@@ -1,13 +1,16 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.utils.Validator;
 
 public class InputView {
 
-    public static String askPurchaseAmount() {
+    public static int askPurchaseAmount() throws IllegalArgumentException {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
-        return input;
+        Validator.isBlank(input);
+        Validator.isNumber(input);
+        return Integer.parseInt(input);
     }
 
     public static String askWinningNumbers() {
