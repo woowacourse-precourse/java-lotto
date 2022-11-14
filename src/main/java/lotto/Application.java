@@ -64,7 +64,8 @@ public class Application {
     }
 
     private static void compareLotto(List<Lotto> lottoList) {
-
+        WinningCheck winningCheck = new WinningCheck(lottoList, getWinningNumbers(), getBonusNumber());
+        winningCheck.winningCheck();
     }
 
 }
