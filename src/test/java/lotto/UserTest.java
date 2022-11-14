@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 import lotto.domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -55,6 +56,29 @@ public class UserTest {
                 List.of(3, 5, 11, 16, 32, 38),
                 List.of(7, 11, 16, 35, 36, 44)
         );
+    }
+
+    @DisplayName("당첨 등수 저장 테스트")
+    @Test
+    void saveResult() {
+        User user = new User();
+        user.saveResult(Rank.FIRST);
+        user.saveResult(Rank.SECOND);
+        user.saveResult(Rank.SECOND);
+
+        assertThat(user.getResult().get(Rank.FIRST)).isEqualTo(1);
+        assertThat(user.getResult().get(Rank.SECOND)).isEqualTo(2);
+    }
+
+    @DisplayName("수익률 계산 테스트")
+    @Test
+    void calcProfit() {
+        User user = new User();
+        command("8000");
+        user.buy();
+        user.saveResult(Rank.FIFTH);
+
+        assertThat(user.calcProfit()).isEqualTo(62.5);
     }
 
     private void command(final String... args) {
