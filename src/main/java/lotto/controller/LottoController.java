@@ -10,11 +10,11 @@ import lotto.view.Output;
 
 public class LottoController {
 
-    private final Output output;
+    private Output output;
     private LottoTicket lottoTicket;
 
-    public LottoController(Output output) {
-        this.output = output;
+    public LottoController() {
+        this.output = new Output();
     }
 
     public void run() {
