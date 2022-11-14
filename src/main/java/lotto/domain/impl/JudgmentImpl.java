@@ -21,6 +21,11 @@ public class JudgmentImpl implements Judgment {
 
     @Override
     public boolean hasBonusNumber(List<Integer> userNumbers, int bonusNumber) {
+        for (int userNumber : userNumbers) {
+            if (userNumber == bonusNumber) {
+                return true;
+            }
+        }
         return false;
     }
 }
