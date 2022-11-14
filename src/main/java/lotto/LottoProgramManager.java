@@ -19,6 +19,8 @@ public class LottoProgramManager {
 
     public void runProgram() {
         try {
+            LottoConfig.validate();
+
             lottoNum = buyLotto();
             generateLotto(lottoNum);
             getAnswerAndBonus();
@@ -31,13 +33,6 @@ public class LottoProgramManager {
 
     private int buyLotto() throws IllegalArgumentException {
         int price = InputManager.scanMoney();
-
-        if(LottoConfig.LOTTO_PRICE == 0)
-            throw new IllegalArgumentException(ErrorCode.LOTTO_PRICE_ZERO.getValue());
-        if(price <= 0)
-            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_TYPE.getValue());
-        if(price % LottoConfig.LOTTO_PRICE != 0)
-            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_PRICE.getValue());
 
         OutputManager.printLottoBought(price / LottoConfig.LOTTO_PRICE);
         return price / LottoConfig.LOTTO_PRICE;

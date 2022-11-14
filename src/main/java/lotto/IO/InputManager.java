@@ -3,6 +3,7 @@ package lotto.IO;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.IO.message.ErrorCode;
 import lotto.IO.message.IOMessage;
+import lotto.config.LottoConfig;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,9 +16,12 @@ public class InputManager {
             int price = Integer.parseInt(Console.readLine());
             OutputManager.printEmptyLine();
 
+            assert(price > 0);
+            assert(price % LottoConfig.LOTTO_PRICE == 0);
+
             return price;
         } catch(Exception e) {
-            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_TYPE.getValue());
+            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_PRICE.getValue());
         }
     }
 
