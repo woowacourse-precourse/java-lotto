@@ -1,11 +1,11 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Constant;
 
 public class LottoBuyer {
 
     public static final LottoBuyer getInstance = new LottoBuyer();
-    private static final String INT_REGEX = "^[0-9]*$";
 
     public int getPay() {
         String input = Console.readLine();
@@ -24,7 +24,7 @@ public class LottoBuyer {
     }
 
     public void checkOnlyNumber(String input) {
-        if (!input.matches(INT_REGEX)) {
+        if (!input.matches(Constant.INT_REGEX)) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
         }
     }

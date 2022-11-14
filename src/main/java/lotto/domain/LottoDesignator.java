@@ -8,15 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static lotto.Constant.*;
+
 public class LottoDesignator {
     public static final LottoDesignator getInstance = new LottoDesignator();
-    private static final String INT_REGEX = "^[0-9]*$";
-    private static final int CIPHER = 6;
-    private static final int RANGE_MAX = 45;
-    private static final int RANGE_MIN = 0;
-
     private String lottoInput;
-
     public List<Integer> inputLotto() {
         lottoInput = Console.readLine();
 
