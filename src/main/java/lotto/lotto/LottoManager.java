@@ -1,7 +1,5 @@
 package lotto.lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,6 +76,6 @@ public class LottoManager {
     }
 
     public float calculateEarningRate() {
-        return (float) calculateTotalReward() / (float) buyingMoney *100f;
+        return (float) calculateTotalReward() / (float) buyingMoney * 100f;
     }
 }

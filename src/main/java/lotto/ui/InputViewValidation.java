@@ -34,12 +34,12 @@ public class InputViewValidation {
 
     public static void validateWinningNumbersFormat(String input) {
         if (!NUMBER_PATTERN.matcher(String.valueOf(input.charAt(0))).find() ||
-                !NUMBER_PATTERN.matcher(String.valueOf(input.charAt(input.length()-1))).find()) {
+                !NUMBER_PATTERN.matcher(String.valueOf(input.charAt(input.length() - 1))).find()) {
             throw new IllegalArgumentException(ERROR_INPUT_FORMAT);
         }
-        for (int i = 1; i < input.length()-1; i++) {
+        for (int i = 1; i < input.length() - 1; i++) {
             if (Objects.equals(input.charAt(i), ',')) {
-                if (!NUMBER_PATTERN.matcher(String.valueOf(input.charAt(i-1))).find() || !NUMBER_PATTERN.matcher(String.valueOf(input.charAt(i+1))).find()) {
+                if (!NUMBER_PATTERN.matcher(String.valueOf(input.charAt(i - 1))).find() || !NUMBER_PATTERN.matcher(String.valueOf(input.charAt(i + 1))).find()) {
                     throw new IllegalArgumentException(ERROR_INPUT_FORMAT);
                 }
             }
@@ -74,7 +74,7 @@ public class InputViewValidation {
     public static void validateWinningNumbersUnique(String input) {
         List<Integer> winningNumbers = Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
         HashSet<Integer> hashSet = new HashSet<>(winningNumbers);
-        if (hashSet.size() != LottoManager.LOTTO_NUMBER_COUNT){
+        if (hashSet.size() != LottoManager.LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBER);
         }
     }

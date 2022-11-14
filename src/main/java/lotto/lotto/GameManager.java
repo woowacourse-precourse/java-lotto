@@ -18,12 +18,12 @@ public class GameManager {
             calculateRank();
             OutputView.outputWinningStat(lottoManager.getRanks());
             OutputView.outputEarningRate(String.valueOf(Math.round(lottoManager.calculateEarningRate() * 10) / 10.0));
-        } catch (IllegalArgumentException illegalArgumentException){
+        } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
         }
     }
 
-    private void buyingLotto(){
+    private void buyingLotto() {
         int buyingAmount = InputView.inputBuyingAmount();
         OutputView.outputBlankLine();
         lottoManager = new LottoManager(buyingAmount, new RandomNumberGenerator());
@@ -34,16 +34,16 @@ public class GameManager {
         OutputView.outputBlankLine();
     }
 
-    private void inputWinningAndBonusNumber(){
+    private void inputWinningAndBonusNumber() {
         List<Integer> winningNumbers = InputView.inputWinningNumbers();
         this.winningLotto = new Lotto(winningNumbers);
         OutputView.outputBlankLine();
         this.bonusNumber = InputView.inputBonusNumber();
         OutputView.outputBlankLine();
-        LottoValidation.validateUniqueWinningNumbersWithBonus(winningNumbers,bonusNumber);
+        LottoValidation.validateUniqueWinningNumbersWithBonus(winningNumbers, bonusNumber);
     }
 
-    private void calculateRank(){
-        lottoManager.calculateTotalRanks(this.winningLotto,this.bonusNumber);
+    private void calculateRank() {
+        lottoManager.calculateTotalRanks(this.winningLotto, this.bonusNumber);
     }
 }
