@@ -3,6 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -170,9 +172,22 @@ public class Application {
      * 로또 구매 금액과 당첨 금액을 바탕으로 수익률을 계산
      * @return 수익률
      */
-    public static float getProfitRate(int buyingCharge, int profit){
-        // TODO: 로또 구매 금액과 당첨 금액을 바탕으로 수익률 계산
-        return 0f;
+    public static BigDecimal getProfitRate(int purchased, int profit){
+        // double 연산 시 연산 결과가 지수 표현으로 나오는 경우 -> 알아보기가 힘듦
+        // BigDecimal을 이용하여 지수 표현 제거
+        BigDecimal a = new BigDecimal(purchased / 100);
+        BigDecimal b = new BigDecimal(profit);
+        BigDecimal profitRate = b.divide(a, 2, RoundingMode.HALF_EVEN).stripTrailingZeros();
+        System.out.println(profitRate.toPlainString());
+        return profitRate;
+    }
+
+    public static int getProfit(HashMap<Prize, Integer> prizes){
+        int profit = 0;
+        for (Prize prize : prizes.keySet()){
+            profit += prizes.get(prize).intValue() * prize.getValue();
+        }
+        return profit;
     }
 
     /**
