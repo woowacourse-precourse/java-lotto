@@ -6,6 +6,8 @@ public class Application {
     public static void main(String[] args) {
         programStart();
         Integer cost = Convert.costConvert(Console.readLine());
+        Purchase purchase = new Purchase();
+        purchase.lotto(cost);
 
     }
     public static void programStart(){
