@@ -42,4 +42,5 @@ public class LottoMachine {
         sortedLotto.sort(Comparator.naturalOrder());
         return sortedLotto;
     }
+
 }
