@@ -35,7 +35,6 @@ public class Manager {
 
         for (int repeat = 1; repeat <= totalCount; repeat++) {
             Lotto lotto = lottoMachine.generateLotto();
-            lotto.sortNumbers();
             lottos.add(lotto);
         }
 
