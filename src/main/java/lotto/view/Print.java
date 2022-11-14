@@ -1,11 +1,11 @@
 package lotto.view;
 
+import static lotto.LottoRank.NONE;
 import static lotto.LottoRank.RANK2;
 
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import lotto.Lotto;
 import lotto.LottoRank;
 
@@ -51,12 +51,14 @@ public final class Print {
         System.out.println(WINNING_STATS);
         System.out.println(DIVIDE_LINE);
 
-        for (Entry<LottoRank, Integer> LottoResults : lottoResult.entrySet()) {
-            LottoRank rank = LottoResults.getKey();
-            Integer count = LottoResults.getValue();
-
+        for (LottoRank rank : lottoResult.keySet()) {
+            Integer count = lottoResult.get(rank);
             int matchingCount = rank.getMatchingCount();
             String winningAmount = convertToComma(rank.getWinningAmount());
+
+            if (rank == NONE) {
+                continue;
+            }
 
             if (rank == RANK2) {
                 System.out.printf((BONUS_WINNING_RESULT) + "%n", matchingCount, winningAmount, count);
