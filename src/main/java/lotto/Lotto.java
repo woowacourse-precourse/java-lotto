@@ -28,5 +28,18 @@ public class Lotto {
         }
     }
 
+    public List<Integer> match(List<List<Integer>> lotto) {
+        List<Integer> cnt = new ArrayList<>();
+        List<Integer> each_lotto = new ArrayList<>();
+        int i = 0;
+        while(cnt.size() != lotto.size()) {
+            each_lotto = lotto.get(i);
+            each_lotto.retainAll(this.numbers);
+            cnt.add(each_lotto.size());
+            i++;
+        }
+        return cnt;
+    }
+
     // TODO: 추가 기능 구현
 }
