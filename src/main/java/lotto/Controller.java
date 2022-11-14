@@ -24,5 +24,6 @@ public class Controller {
 
     private void getWinningLottoNumbers() {
         String winningLottoNumber = InputView.getWinningLottoNumbers();
+        String winningBonusNumber = InputView.getWinningBonusNumber();
     }
 }
