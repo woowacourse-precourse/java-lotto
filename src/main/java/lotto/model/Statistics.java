@@ -17,9 +17,9 @@ public class Statistics {
             Map<String, Integer> matchNumberCount = checkMatchNumbersCount(answerLottoNumbers, bounsNumber,
                 lottoNumbers);
             int matchCount = matchNumberCount.get("matchCount");
-            int bounsCount = matchNumberCount.get("bonusCount");
+            int bonusCount = matchNumberCount.get("bonusCount");
             // 이게 무슨 상인지 확인
-            updatePrizeQuantity(matchCount, bounsCount);
+            updatePrizeQuantity(matchCount, bonusCount);
 
         }
         // System.out.println(PRIZE1 + " " + PRIZE2 + " " + PRIZE3 + " " + PRIZE4 + " " + PRIZE5);
