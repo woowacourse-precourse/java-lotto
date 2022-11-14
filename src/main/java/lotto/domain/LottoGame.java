@@ -66,48 +66,48 @@ public class LottoGame {
     }
 
     private static eLottoPlace matchLotto(Lotto l1, Lotto l2, int bonus) {
-        int matches = 0;
+        int matchCount = 0;
 
         for (int num : l1.getNumbers()) {
             if (l2.getNumbers().contains(num)) {
-                matches += 1;
+                matchCount += 1;
             }
         }
-        return getLottoPlace(matches, l1.getNumbers().contains(bonus));
+        return getLottoPlace(matchCount, l1.getNumbers().contains(bonus));
     }
 
-    private static eLottoPlace getLottoPlace(int matches, boolean isBonusMatch) {
-        if (matches == 6)
+    private static eLottoPlace getLottoPlace(int matchCount, boolean isBonusMatch) {
+        if (matchCount == 6)
             return eLottoPlace.FIRST_PLACE;
-        if (matches == 5 && isBonusMatch)
+        if (matchCount == 5 && isBonusMatch)
             return eLottoPlace.SECOND_PLACE;
-        if (matches == 5)
+        if (matchCount == 5)
             return eLottoPlace.THIRD_PLACE;
-        if (matches == 4)
+        if (matchCount == 4)
             return eLottoPlace.FOURTH_PLACE;
-        if (matches == 3)
+        if (matchCount == 3)
             return eLottoPlace.FIFTH_PLACE;
         return eLottoPlace.NOTHING;
     }
 
 
-    private static int[] appendPlaceToResult(int[] matches, eLottoPlace place) {
+    private static int[] appendPlaceToResult(int[] matchTable, eLottoPlace place) {
         if (place == eLottoPlace.FIRST_PLACE)
-            matches[_1st_index] += 1;
+            matchTable[_1st_index] += 1;
         if (place == eLottoPlace.SECOND_PLACE)
-            matches[_2nd_index] += 1;
+            matchTable[_2nd_index] += 1;
         if (place == eLottoPlace.THIRD_PLACE)
-            matches[_3rd_index] += 1;
+            matchTable[_3rd_index] += 1;
         if (place == eLottoPlace.FOURTH_PLACE)
-            matches[_4th_index] += 1;
+            matchTable[_4th_index] += 1;
         if (place == eLottoPlace.FIFTH_PLACE)
-            matches[_5th_index] += 1;
-        return matches;
+            matchTable[_5th_index] += 1;
+        return matchTable;
     }
 
     // 수익률 계산 함수
-    public static BigDecimal calcRateOfReturn(int[] matches, int money) {
-        BigDecimal rateOfReturn = new BigDecimal(sumReward(matches));
+    public static BigDecimal calcRateOfReturn(int[] matchTable, int money) {
+        BigDecimal rateOfReturn = new BigDecimal(sumReward(matchTable));
 
         rateOfReturn = rateOfReturn.divide(new BigDecimal(String.valueOf(money)), 3, RoundingMode.CEILING);
         rateOfReturn = rateOfReturn.multiply(new BigDecimal("100"));
@@ -115,13 +115,13 @@ public class LottoGame {
         return rateOfReturn.setScale(1, RoundingMode.HALF_UP);
     }
 
-    private static BigInteger sumReward(int[] matches) {
+    private static BigInteger sumReward(int[] matchTable) {
         BigInteger reward = new BigInteger("0");
         String[] rewardTable = {_1st_reward, _2nd_reward, _3rd_reward, _4th_reward, _5th_reward};
 
-        for (int i = 0; i < matches.length; ++i) {
+        for (int i = 0; i < matchTable.length; ++i) {
             BigInteger nowReward = new BigInteger(rewardTable[i]);
-            BigInteger count = new BigInteger(String.valueOf(matches[i]));
+            BigInteger count = new BigInteger(String.valueOf(matchTable[i]));
 
             nowReward = nowReward.multiply(count);
             reward = reward.add(nowReward);
