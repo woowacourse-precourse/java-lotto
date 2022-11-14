@@ -32,16 +32,10 @@ public class NumberValidator {
         }
     }
 
-    public static void validateInputNumber(String input) {
-        validateCommon(input);
+    public static void validateNumber(String number) {
+        validateCommon(number);
 
-        if (Integer.parseInt(input) < 1) {
-            throw new IllegalArgumentException(LOWER_NUMBER.getMessage());
-        }
-
-        if (Integer.parseInt(input) > 45) {
-            throw new IllegalArgumentException(UPPER_NUMBER.getMessage());
-        }
+        validateNumber(Integer.parseInt(number));
     }
 
     public static void validateNumber(int number) {
