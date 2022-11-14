@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class InputConvertTest {
+
     @DisplayName(",뒤 숫자가 없는 경우에러가 발생한다")
     @Test
     void lottoNumberInputConvertErrorByNoInput() {
@@ -17,7 +18,7 @@ public class InputConvertTest {
     }
     @DisplayName("알파벳이 주어진 경우 에러가 발생한다.")
     @Test
-    void lottoNumberInputConvertErrorByAlphabet () {
+    void lottoNumberInputConvertErrorByAlphabet() {
         String input = "a,2,3,4,5,6";
         assertThatThrownBy(() -> InputConvert.lottoNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -40,12 +41,12 @@ public class InputConvertTest {
     @Test
     void lottoNumberConvert() {
         String input = "1,2,3,4,5,6";
-        assertThat(InputConvert.lottoNumber(input)).isEqualTo(List.of(1,2,3,4,5,6));
+        assertThat(InputConvert.lottoNumber(input)).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
     @DisplayName("\"1,2,3,4,20,45\"이 List인 [1, 2, 3, ,4, 20, 45]로 변환된다.")
     @Test
     void lottoNumberConvert2() {
         String input = "1,2,3,4,20,45";
-        assertThat(InputConvert.lottoNumber(input)).isEqualTo(List.of(1,2,3,4,20,45));
+        assertThat(InputConvert.lottoNumber(input)).isEqualTo(List.of(1, 2, 3, 4, 20, 45));
     }
 }
