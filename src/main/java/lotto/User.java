@@ -6,9 +6,17 @@ public class User {
 
     public void inputMoney() {
         String money = Console.readLine();
+        validateMoney(money);
     }
 
-
+    private void validateMoney(String money) {
+        validateInputNothing(money);
+        validateInputBlank(money);
+        validateInputWithBlank(money);
+        validateNumeric(money);
+        validateMoreThan1000Won(money);
+        validateMoneyDivided1000Won(money);
+    }
 
     public void validateInputNothing(String input) {
         if (input.equals("")) {
