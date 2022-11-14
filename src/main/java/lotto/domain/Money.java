@@ -17,7 +17,7 @@ public class Money {
     }
 
     private void checkNumber(String input) {
-        String[] split = input.split("");
+        String[] split = input.split(Constant.SPLIT_FOR_MONEY);
 
         boolean result = Arrays.stream(split).allMatch((alphbet) -> alphbet.charAt(0) >= '0' && alphbet.charAt(0) <= '9');
         if (!result)
@@ -25,7 +25,7 @@ public class Money {
     }
 
     private void checkFirstNumberIsNotZero(String input) {
-        String[] split = input.split("");
+        String[] split = input.split(Constant.SPLIT_FOR_MONEY);
 
         if (split.length > 1 && Integer.parseInt(split[0]) == 0)
             throw new IllegalArgumentException(ErrorMessage.FIRST_NUMBER_IS_NOT_ZERO);

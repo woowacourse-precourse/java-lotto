@@ -31,7 +31,7 @@ public class Lotto {
     }
 
     private void validateNumberSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != Constant.LOTTO_SIZE) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_SIX);
         }
     }
@@ -56,7 +56,7 @@ public class Lotto {
     }
 
     public void checkWinningNumber(String input) {
-        String[] split = input.split(",");
+        String[] split = input.split(Constant.SPLIT_FOR_WINNING_NUMBER);
 
         boolean result = Arrays.stream(split).allMatch((alphbet) -> alphbet.charAt(0) >= '0' && alphbet.charAt(0) <= '9');
         if (!result)
@@ -64,7 +64,7 @@ public class Lotto {
     }
 
     public List<Integer> convertToList(String numbers) {
-        String[] split = numbers.split(",");
+        String[] split = numbers.split(Constant.SPLIT_FOR_WINNING_NUMBER);
         List<Integer> result = new ArrayList<>();
 
         for (int i = 0; i < split.length; i++) {
@@ -75,7 +75,7 @@ public class Lotto {
     }
 
     public void checkNumberInRange(List<Integer> numbers) {
-        boolean inRange = numbers.stream().allMatch(number -> number >= 1 && number <= 45);
+        boolean inRange = numbers.stream().allMatch(number -> number >= Constant.LOTTO_MIN_NUMBER && number <= Constant.LOTTO_MAX_NUMBER);
 
         if (inRange == false)
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
