@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
@@ -58,6 +59,24 @@ public class Lotto {
             return 1;
         }
         return 0;
+    }
+
+    public int getIndividualLottoScore(List<Integer> lotto, int bonus) {
+        int matchCount = 0;
+
+        for (int i = 0; i < 6; i++) {
+            matchCount += checkNumberMatch(numbers.get(i), lotto.get(i));
+        }
+
+        if (matchCount < 3) {
+            matchCount = -1;
+        }
+
+        if (matchCount == 5 && lotto.contains(bonus)) {
+            matchCount = 7;
+        }
+
+        return matchCount;
     }
 
 }
