@@ -36,8 +36,10 @@ public class LottoServiceImpl implements LottoService {
                 hasBonusNumber = judgment.hasBonusNumber(userNumbers, bonusNumber);
             }
             Rank rank = getRank(count, hasBonusNumber);
-            int resultCount = results.getOrDefault(rank, 0);
-            results.put(rank, resultCount + 1);
+            if (rank != null) {
+                int resultCount = results.getOrDefault(rank, 0);
+                results.put(rank, resultCount + 1);
+            }
         }
 
         return results;
@@ -46,8 +48,10 @@ public class LottoServiceImpl implements LottoService {
     private Rank getRank(int count, boolean hasBonusNumber) {
         if (count == 5 && hasBonusNumber) {
             return SECOND;
+        } else if (ranks.get(count) != null) {
+            return ranks.get(count);
         }
-        return ranks.get(count);
+        return null;
     }
 
     @Override
