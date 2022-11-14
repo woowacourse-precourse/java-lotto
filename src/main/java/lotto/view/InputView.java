@@ -53,4 +53,11 @@ public class InputView {
 			.map(Integer::parseInt)
 			.collect(Collectors.toList());
 	}
+
+	public int inputBonusNumber() {
+		printMessage(INPUT_BONUS_NUMBER_MESSAGE);
+		String input = Console.readLine();
+		validateNumber(input);
+		return Integer.parseInt(input);
+	}
 }
