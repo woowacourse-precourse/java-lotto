@@ -17,13 +17,14 @@ public class LottoRating {
         this.winningLotto = winningLotto;
     }
 
-    public void rate() {
+    public Map<String, Integer> rate() {
         for (Lotto lotto : lottoBunch) {
             int matchingCount = compareLotto(lotto);
             if (isWinning(matchingCount)) {
                 saveWinningCount(matchingCount, lotto);
             }
         }
+        return winningCountRepository;
     }
 
     public int compareLotto(Lotto lotto) {
