@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.List;
 
@@ -41,6 +43,28 @@ public class LottoServiceTest {
         String winningNumberInput = "1,2,3,4,5,6";
         HashSet<Integer> winningNumber = lottoService.changeStringToHashSet(winningNumberInput);
         assertThat(winningNumber.size()).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("입력된 돈이 숫자가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
+    void getMoney_About_Numeric_Test() {
+        String input = "abc";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> lottoService.getMoney())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.MONEY_TYPE_ERROR.getErrorMessage());
+    }
+
+    @Test
+    @DisplayName("입력된 돈이 1000원 단위가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
+    void getMoney_About_Correct_Unit_Test() {
+        String input = "5100";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> lottoService.getMoney())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.MONEY_UNIT_ERROR.getErrorMessage());
     }
 
     @Test
