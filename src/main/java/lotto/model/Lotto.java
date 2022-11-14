@@ -42,9 +42,7 @@ public class Lotto {
     }
 
     public int getWinningAmount(WinningNumbers winningNumbers) {
-        CompareResult compareResult = compareWith(winningNumbers);
-
-        return Prize.toPrize(compareResult).getMoney();
+        return getWinningPrize(winningNumbers).getMoney();
     }
 
     public boolean isWinningLotto(Prize prize, WinningNumbers winningNumbers) {
