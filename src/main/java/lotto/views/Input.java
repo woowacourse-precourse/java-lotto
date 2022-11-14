@@ -2,7 +2,6 @@ package lotto.views;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.utils.Constant;
-import lotto.utils.GameMessage;
 import lotto.validation.InputValidation;
 
 import java.util.ArrayList;

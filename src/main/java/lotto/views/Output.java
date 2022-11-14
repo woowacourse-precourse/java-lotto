@@ -2,12 +2,15 @@ package lotto.views;
 
 import lotto.domain.Lotto;
 import lotto.domain.Prize;
-import lotto.utils.GameMessage;
 import lotto.utils.Ranking;
 
 import java.util.List;
 
 public class Output {
+    public static final String BUY_FOR_LOTTO = "구입금액을 입력해 주세요";
+    public static final String BUY_NUMBER_OF_LOTTO = "개를 구매했습니다.";
+    public static final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
+    public static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     public void printPrize(Prize prize) {
         System.out.println("당첨 통계");
@@ -32,21 +35,21 @@ public class Output {
     }
 
     public void printWallet(List<Lotto> lottos, int numberOfPurchase) {
-        System.out.printf("\n%d%s\n", numberOfPurchase, GameMessage.BUY_NUMBER_OF_LOTTO);
+        System.out.printf("\n%d%s\n", numberOfPurchase, BUY_NUMBER_OF_LOTTO);
         for (Lotto lotto : lottos) {
             printLotto(lotto.getNumbers());
         }
     }
 
     public void printGetLottoPrice() {
-        System.out.println(GameMessage.BUY_FOR_LOTTO);
+        System.out.println(BUY_FOR_LOTTO);
     }
 
     public void printGetWinningNumbers() {
-        System.out.print('\n' + GameMessage.INPUT_WINNING_NUMBER + '\n');
+        System.out.print('\n' + INPUT_WINNING_NUMBER + '\n');
     }
 
     public void printGetBonusNumber() {
-        System.out.print('\n' + GameMessage.INPUT_BONUS_NUMBER + '\n');
+        System.out.print('\n' + INPUT_BONUS_NUMBER + '\n');
     }
 }
