@@ -75,9 +75,15 @@ public class InputView {
         }
     }
 
-    public void inputBonus() {
+    public boolean inputBonus() {
         Message.INPUT_BONUS_NUMBER.print();
         String bonus = Console.readLine();
-        this.bonusNum = lotto.validateBonus(bonus);
+        try {
+            this.bonusNum = lotto.validateBonus(bonus);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return true;
+        }
+        return false;
     }
 }
