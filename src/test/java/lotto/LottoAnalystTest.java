@@ -11,7 +11,7 @@ class LottoAnalystTest {
     LottoAnalyst lottoAnalyst = new LottoAnalyst();
 
     @Test
-    @DisplayName("로또 카운터 반환")
+    @DisplayName("각 등수별로 2개씩 입력 후 LottoGradeCounter를 반환한다.")
     void getLottoGradeCounter() throws Exception {
         //given
         List<LottoGrade> lottoGrades = List.of(
@@ -32,7 +32,7 @@ class LottoAnalystTest {
     }
 
     @Test
-    @DisplayName("수익률 계산-1등시")
+    @DisplayName("1개 구매하여 1등 당첨시 수익률을 반환한다.")
     void getYieldTest1Grade() throws Exception {
         //given
         List<LottoGrade> lottoGrades = List.of(
@@ -47,7 +47,7 @@ class LottoAnalystTest {
     }
 
     @Test
-    @DisplayName("수익률 계산 - 8개 중 하나 5등")
+    @DisplayName("8개 구매하여 1개만 5등 당첨시 수익률을 반환한다.")
     void getYieldTestFifthTo8() throws Exception {
         //given
         List<LottoGrade> lottoGrades = List.of(

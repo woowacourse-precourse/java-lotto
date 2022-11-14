@@ -10,19 +10,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoMatcherTest {
     @Test
-    @DisplayName("로또 비교 수행")
-    void matchLotto() throws Exception {
+    @DisplayName("로또 목록들과 당첨번호를 비교한다.")
+    void matchLottosToWinningNumber() throws Exception {
         //given
-        Lotto winningNumbers = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto winningNumbers = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Integer bonusNumber = 7;
         LottoMatcher lottoMatcher = new LottoMatcher(winningNumbers, bonusNumber);
         Lottos lottos = new Lottos();
-        lottos.add(new Lotto(List.of(1,2,3,4,5,6))); //1등
-        lottos.add(new Lotto(List.of(1,2,3,4,5,7))); // 2등
-        lottos.add(new Lotto(List.of(1,2,3,4,5,8))); // 3등
-        lottos.add(new Lotto(List.of(1,2,3,4,8,9))); // 4등
-        lottos.add(new Lotto(List.of(1,2,3,8,9,10))); // 5등
-        lottos.add(new Lotto(List.of(1,2,8,9,10,11))); // 꽝
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6))); //1등
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 7))); // 2등
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 8))); // 3등
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 8, 9))); // 4등
+        lottos.add(new Lotto(List.of(1, 2, 3, 8, 9, 10))); // 5등
+        lottos.add(new Lotto(List.of(1, 2, 8, 9, 10, 11))); // 꽝
 
         List<LottoGrade> expect = new ArrayList<>();
         expect.add(LottoGrade.FIRST);
