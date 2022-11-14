@@ -54,8 +54,12 @@ public class GameConsole {
         }
     }
 
-    public void outputGameResult(Result result) {
-        Map<Rank, Integer> rankInfo = result.getRankInfo();
+    public void outputResult(Result result){
+        outputGameResult(result);
+        outputWinningAmount(result);
+    }
+
+    private void outputGameResult(Result result) {
         System.out.println("\n당첨 통계\n---");
 
         Map<Rank, Integer> rankInfo = result.sortedRankInfo();
@@ -69,7 +73,7 @@ public class GameConsole {
         }
     }
 
-    public void outputWinningAmount(Result result) {
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", result.getWinningAmount()));
+    private void outputWinningAmount(Result result) {
+        System.out.printf("총 수익률은 %.1f%%입니다.", result.getWinningAmount());
     }
 }

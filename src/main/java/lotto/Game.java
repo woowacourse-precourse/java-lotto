@@ -27,7 +27,6 @@ public class Game {
         result.matchLotto(winningNumbers, user.getLottos(), bonusNumber);
 
         result.initWinningAmount(purchase);
-        gameConsole.outputGameResult(result);
-        gameConsole.outputWinningAmount(result);
+        gameConsole.outputResult(result);
     }
 }
