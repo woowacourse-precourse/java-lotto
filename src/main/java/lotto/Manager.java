@@ -1,8 +1,6 @@
 package lotto;
 
 import java.util.*;
-import lotto.Lotto;
-import lotto.Constants;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Manager {
