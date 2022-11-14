@@ -56,7 +56,7 @@ public final class Print {
             Integer count = LottoResults.getValue();
 
             int matchingCount = rank.getMatchingCount();
-            String prizeMoney = convertCommaMoney(rank.getPrizeMoney());
+            String prizeMoney = convertCommaMoney(rank.getWinningAmount());
 
             if (rank == RANK2) {
                 System.out.printf((BONUS_WINNING_RESULT) + "%n", matchingCount, prizeMoney, count);
@@ -70,8 +70,8 @@ public final class Print {
         System.out.println(String.format(YIELD_BEFORE, lottoYield) + YIELD_AFTER);
     }
 
-    private static String convertCommaMoney(int prizeMoney) {
-        return NumberFormat.getInstance().format(prizeMoney);
+    private static String convertCommaMoney(int winningAmount) {
+        return NumberFormat.getInstance().format(winningAmount);
     }
 
     private Print() {

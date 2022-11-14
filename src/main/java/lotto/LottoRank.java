@@ -8,11 +8,11 @@ public enum LottoRank {
     RANK1(6, 2000000000);
 
     private final int matchingCount;
-    private final int prizeMoney;
+    private final int winningAmount;
 
-    LottoRank(int matchingCount, int prizeMoney) {
+    LottoRank(int matchingCount, int winningAmount) {
         this.matchingCount = matchingCount;
-        this.prizeMoney = prizeMoney;
+        this.winningAmount = winningAmount;
     }
 
     public static LottoRank findRank(int matchingCount) {
@@ -26,14 +26,14 @@ public enum LottoRank {
     }
 
     public int calculateTotalAmount(int count) {
-        return prizeMoney * count;
+        return winningAmount * count;
     }
 
     public int getMatchingCount() {
         return matchingCount;
     }
 
-    public int getPrizeMoney() {
-        return prizeMoney;
+    public int getWinningAmount() {
+        return winningAmount;
     }
 }
