@@ -1,9 +1,10 @@
 ## 기능 목록
-- 로또 번호 자동생성하기
-- 당첨 번호 입력 받기
+- 로또 번호 자동생성하기 ( makeLotto ) O
+- 당첨 번호 입력 받기 ( EnterWinningNumber ) O
 - 보너스 번호 입력 받기 (EnterBonusNumber) O
 - 로또 구입 금액 입력 받기 ( purchaseAmount ) O
 - 당첨 내역 계산하기 ( checkLottoNumber ) O
+- 로또 개수 계산하기 ( lottoAmount ) O
 - 당첨 내역 출력하기
 - 수익률 계산하기
 - 수익률 출력하기
