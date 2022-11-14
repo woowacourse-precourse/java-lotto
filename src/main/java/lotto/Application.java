@@ -46,6 +46,7 @@ public class Application {
         while (lottos.size() < count){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             if (validateLottoNumber(numbers, lottos)){
+                System.out.println(numbers);
                 lottos.add(new Lotto(numbers));
             }
         }
