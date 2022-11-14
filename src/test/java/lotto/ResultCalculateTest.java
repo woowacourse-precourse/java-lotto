@@ -12,11 +12,11 @@ class ResultCalculateTest {
     void 모든번호가_같음() {
         Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
         List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7);
-        assertThat(6).isEqualTo(ResultCalculate.compareTwoNumbers(lotto,numbers));
+        assertThat(1).isEqualTo(ResultCalculate.compareTwoNumbers(lotto,numbers));
     }
     @Test
     void 일부만_같음(){
-        assertThat(5)
+        assertThat(3)
                 .isEqualTo(ResultCalculate.
                         compareTwoNumbers(new Lotto(Arrays.asList(1,2,3,4,5,10)),List.of(1,2,3,4,5,6,7))
                 );
@@ -27,7 +27,7 @@ class ResultCalculateTest {
     }
     @Test
     void 다_다름(){
-        assertThat(0)
+        assertThat(7)
                 .isEqualTo(ResultCalculate.
                         compareTwoNumbers(new Lotto(Arrays.asList(1,2,3,4,5,6)),List.of(7,8,9,10,11,12,13))
                 );
