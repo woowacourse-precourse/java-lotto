@@ -73,7 +73,7 @@ public class LottoController {
         String bonus_str = readLine();
         try {
             int bonus_num = Integer.parseInt(bonus_str);
-            if (bonus_num < 1 && bonus_num > 45)
+            if (bonus_num < 1 || bonus_num > 45)
                 throw new IllegalArgumentException(Message.Exception_NotInRange.getMessage());
             if (isBonusDuplicate(bonus_num, lotto))
                 throw new IllegalArgumentException(Message.Exception_DuplicateNum.getMessage());

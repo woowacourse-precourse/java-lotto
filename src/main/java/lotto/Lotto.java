@@ -26,7 +26,7 @@ public class Lotto {
         }
         //1~45이외에 숫자가 있는 경우 Exception
         for (int num : numbers) {
-            if (num < 1 && num > 45)
+            if (num < 1 || num > 45)
                 throw new IllegalArgumentException(Message.Exception_NotInRange.getMessage());
         }
     }
