@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.domain.enums.Number;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,8 +37,16 @@ public class User {
         this.lottos = lottos;
     }
 
+    public double getMoney() {
+        return money;
+    }
+
     public void setMoney(Double money) {
         this.money = money;
+    }
+
+    public double getWinningAmount() {
+        return winningAmount;
     }
 
     public void setWinningAmount(Double winningAmount) {
@@ -54,11 +61,7 @@ public class User {
         return yield;
     }
 
-    public void calculateYield() {
-        double yield = this.winningAmount / this.money;
-        yield *= 1000;
-        yield = Math.round(yield);
-        yield /= 10;
+    public void setYield(double yield) {
         this.yield = yield;
     }
 
@@ -66,26 +69,32 @@ public class User {
         return this.lottos.size();
     }
 
-    public void updateRankAndWinningAmount(int rank) {
-        if (rank == Number.FIVE.getValue()) {
-            ranks.put(Number.FIVE, ranks.get(Number.FIVE) + 1);
-            this.winningAmount += Number.FIFTH_WINNING_AMOUNT.getValue();
-        }
-        if (rank == Number.FOUR.getValue()) {
-            ranks.put(Number.FOUR, ranks.get(Number.FOUR) + 1);
-            this.winningAmount += Number.FOURTH_WINNING_AMOUNT.getValue();
-        }
-        if (rank == Number.THREE.getValue()) {
-            ranks.put(Number.THREE, ranks.get(Number.THREE) + 1);
-            this.winningAmount += Number.THIRD_WINNING_AMOUNT.getValue();
-        }
-        if (rank == Number.TWO.getValue()) {
-            ranks.put(Number.TWO, ranks.get(Number.TWO) + 1);
-            this.winningAmount += Number.SECOND_WINNING_AMOUNT.getValue();
-        }
-        if (rank == Number.ONE.getValue()) {
-            ranks.put(Number.ONE, ranks.get(Number.ONE) + 1);
-            this.winningAmount += Number.FIRST_WINNING_AMOUNT.getValue();
-        }
+    public void addWinningAmount(int winningAmount) {
+        this.winningAmount += winningAmount;
+    }
+
+    public void setRankFifth() {
+        ranks.put(Number.FIVE, ranks.get(Number.FIVE) + 1);
+        addWinningAmount(Number.FIFTH_WINNING_AMOUNT.getValue());
+    }
+
+    public void setRankFourth() {
+        ranks.put(Number.FOUR, ranks.get(Number.FOUR) + 1);
+        addWinningAmount(Number.FOURTH_WINNING_AMOUNT.getValue());
+    }
+
+    public void setRankThird() {
+        ranks.put(Number.THREE, ranks.get(Number.THREE) + 1);
+        addWinningAmount(Number.THIRD_WINNING_AMOUNT.getValue());
+    }
+
+    public void setRankSecond() {
+        ranks.put(Number.TWO, ranks.get(Number.TWO) + 1);
+        addWinningAmount(Number.SECOND_WINNING_AMOUNT.getValue());
+    }
+
+    public void setRankFirst() {
+        ranks.put(Number.ONE, ranks.get(Number.ONE) + 1);
+        addWinningAmount(Number.FIRST_WINNING_AMOUNT.getValue());
     }
 }
