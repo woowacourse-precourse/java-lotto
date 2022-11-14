@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lotto.utils.Constants;
+import lotto.utils.ValidateUtils;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -19,12 +22,21 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        validateNumbersLength(numbers);
+    }
+
+    private void validateNumbersLength(List<Integer> numbers){
+        if (ValidateUtils.isInvalidLottoNumberLength(numbers)) {
+            ValidateUtils.throwIllegalArgumentException(Constants.INCORRECT_LOTTO_NUMBER_LENGTH_MESSAGE);
         }
     }
+
     @Override
     public String toString(){
         return numbers.toString();
+    }
+
+    public List<Integer> getNumbers(){
+        return this.numbers;
     }
 }
