@@ -1,15 +1,11 @@
 package lotto.domain;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
-
-import lotto.constant.WinningRating;
 
 class WinningStatisticsCompilerTest {
 
