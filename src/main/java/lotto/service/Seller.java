@@ -38,4 +38,8 @@ public class Seller {
         System.out.println();
     }
 
+    public void makeResult() {
+        CorrectLottoNumbers combinedCorrectLottoNumbers = LottoMachine.makeCorrectLotto(correctNumbers, bonusNumber);
+        ViewConsole.printCorrectStaticsList(lottos, combinedCorrectLottoNumbers, money);
+    }
 }
