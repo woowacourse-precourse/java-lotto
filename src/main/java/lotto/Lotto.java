@@ -67,11 +67,11 @@ public class Lotto {
         }
         return pay;
     }
-/*    public int NumberOfLotto(){ // 로또 개수
+    public int NumberOfLotto(){ // 로또 개수
         lottoQuantity = pay / 1000;
         return lottoQuantity;
     }
-    public void Lotto_number(int[][]arr, int i , List<Integer> numbers){
+/*    public void Lotto_number(int[][]arr, int i , List<Integer> numbers){
         for(int j =0; j< numbers.size(); j++){
             arr[i][j] = numbers.get(j);
         }
