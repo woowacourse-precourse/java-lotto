@@ -93,5 +93,16 @@ public class LottoStatistics {
         }
     }
 
+    public BigInteger getTotalPrize(){
+        BigInteger totalPrize = new BigInteger("0");
+
+        for (Rank rank : Rank.values()){
+            for (int index = 0; index < rank.getCount(); index++){
+                BigInteger tmpPrize = BigInteger.valueOf(rank.getPrize());
+                totalPrize = totalPrize.add(tmpPrize);
+            }
+        }
+        return totalPrize;
+    }
 }
 
