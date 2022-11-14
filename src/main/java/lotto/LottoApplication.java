@@ -14,6 +14,7 @@ public class LottoApplication {
     private final String DUPLICATE_NUMBER_ERROR = "[ERROR] 로또 번호가 중복됩니다.";
     private final String MONEY_INPUT = "구입금액을 입력해 주세요.";
     private final String BONUS_NUMBER_INPUT = "보너스 번호를 입력해 주세요.";
+    private final String NOT_NUMBER_ERROR = "[ERROR] 숫자 외의 것이 입력되었습니다.";
     private final String patten = "^[0-9]*$";
 
     private RandomLotto randomLottos;
@@ -51,7 +52,7 @@ public class LottoApplication {
         System.out.println(MONEY_INPUT);
         String input = Console.readLine();
         if (!(Pattern.matches(patten, input))) {
-            throw new IllegalArgumentException("[ERROR] 숫자 외의 것이 입력되었습니다.");
+            throw new IllegalArgumentException(NOT_NUMBER_ERROR);
         }
 
         int money = Integer.parseInt(input);
@@ -76,7 +77,7 @@ public class LottoApplication {
 
     private void winningNumberValidate(List<Integer> inputWinningLotto, String[] split, int idx) {
         if (!(Pattern.matches(patten, split[idx]))) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_NUMBER_ERROR);
         }
 
         if (inputWinningLotto.contains(Integer.parseInt(split[idx]))) {
@@ -88,7 +89,7 @@ public class LottoApplication {
         System.out.println(BONUS_NUMBER_INPUT);
         String inputBonusNumber = Console.readLine();
         if (!(Pattern.matches(patten, inputBonusNumber))) {
-            throw new IllegalArgumentException("[ERROR] 숫자 외의 것이 입력되었습니다.");
+            throw new IllegalArgumentException(NOT_NUMBER_ERROR);
         }
         bonusNumber = Integer.parseInt(inputBonusNumber);
 
@@ -111,6 +112,7 @@ public class LottoApplication {
             // 해당 rank 의 상금을 더해준다
             sum += rank.getReward();
         }
+
         return sum;
     }
 
