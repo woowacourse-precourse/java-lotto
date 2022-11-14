@@ -11,7 +11,7 @@ public class Application {
     public static void main(String[] args) {
         int money = 0, num, bonus;
         int[] statistics = new int[5];
-        double profit = 0, total = 0;
+        double profit, total = 0;
         List<Integer> win_numbers;
         List<Lotto> buy_lists = new ArrayList<>();
 
@@ -61,7 +61,7 @@ public class Application {
         bonus = Integer.parseInt(Console.readLine());
 
         for (Lotto buy_numbers : buy_lists) {
-            boolean match = false;
+            boolean match;
             match = Lotto.check_bonus(buy_numbers, bonus);
             int match_num = Lotto.check_win(win_numbers, buy_numbers);
             if (match_num == 3) {
@@ -70,10 +70,10 @@ public class Application {
             if (match_num == 4) {
                 statistics[1]++;
             }
-            if (match_num == 5 && match == false) {
+            if (match_num == 5 && !match) {
                 statistics[2]++;
             }
-            if (match_num == 5 && match == true) {
+            if (match_num == 5 && match) {
                 statistics[3]++;
             }
             if (match_num == 6) {
@@ -89,7 +89,7 @@ public class Application {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + statistics[3] + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + statistics[4] + "개");
 
-        profit = Lotto.check_profit(money, statistics, total) / money * 100.0;
+        profit = Lotto.check_profit(statistics, total) / money * 100.0;
 
         System.out.println("총 수익률은 " + Math.round(profit*10)/10.0 + "%입니다.");
     }

@@ -41,10 +41,7 @@ public class Lotto {
     }
 
     public static boolean check_bonus(Lotto buy_numbers, int bonus) {
-        if (buy_numbers.getList().contains(bonus)) {
-            return true;
-        }
-        return false;
+        return buy_numbers.getList().contains(bonus);
     }
 
     public static int check_win(List<Integer> win_numbers, Lotto buy_numbers) {
@@ -57,7 +54,7 @@ public class Lotto {
         return cnt;
     }
 
-    public static double check_profit(int money, int[] statistics, double total) {
+    public static double check_profit(int[] statistics, double total) {
         total += statistics[0] * 5_000;
         total += statistics[1] * 50_000;
         total += statistics[2] * 1_500_000;
