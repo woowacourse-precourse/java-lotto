@@ -1,12 +1,12 @@
 package view;
 
-import domain.LottoNumberList;
-import domain.LottoPurAmount;
 import domain.MatchingNumber;
+import lotto.Lotto;
 import util.ResultView;
 import util.WinNum;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,16 +16,18 @@ public class OutputView {
     private static final String END_WORD = "%입니다.";
 
 
-    public static void printBuyLottoNumber(LottoPurAmount lottoPurAmount) {
+    public static void printBuyLottoNumber(int lottoPurAmount) {
         String buynumber = "";
-        int divideprice = lottoPurAmount.getLottopuramount()/1000;
+        int divideprice = lottoPurAmount/1000;
         buynumber = divideprice + BUY;
         System.out.println("\n" + buynumber);
     }
 
-    public static void printAllLottoNumber(List<List<Integer>> lottonumberlist) {
-        for(int i=0; i<lottonumberlist.size(); i++) {
-            System.out.println(lottonumberlist.get(i).toString());
+    public static void printAllLottoNumber(List<Lotto> lottos) {
+        for(int i=0; i<lottos.size(); i++) {
+            List<Integer> lottoNumbers = new ArrayList<>(lottos.get(i).getLotto());
+            Collections.sort(lottoNumbers);
+            System.out.println(lottoNumbers);
         }
     }
 
