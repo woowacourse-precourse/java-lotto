@@ -1,7 +1,7 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
+import lotto.Lotto.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,11 +82,19 @@ public class Application {
 
     public static void Lotto_Number_exception(String [] strings){
         for(int i=0; i<strings.length; i++){
-            if(strings[i] != " ") {
-                Number_exception(strings[i]);
-            }
+            Number_exception(strings[i]);
             Range_exception(strings[i]);
         }
+    }
+
+    public static String [] replace_blank(String [] str){
+        String [] string = str;
+        for(int i=0; i<str.length; i++) {
+            if (str[i].contains(" ")) {
+                string[i] = str[i].replace(" ", "");
+            }
+        }
+        return string;
     }
 
     public static void Range_exception(String str){
@@ -117,8 +125,40 @@ public class Application {
         return list;
     }
 
+    public static void bonus_Output(){
+        System.out.println("보너스 번호를 입력해주세요.");
+    }
+
+    public static void Duplicate_exception_bonus(int bonus, List<Integer> winner_number){
+        if(winner_number.contains(bonus)) throw new IllegalArgumentException("[Error] 당첨 번호와 중복되지 않는 값을 입력해주세요.");
+    }
+
+//    public enum statistics{
+//        5등(5000, 3, 0, ,"3개 일치 (5,000원) - "),
+//        4등(50000, 4, 0, "4개 일치 (50,000원) - "),
+//        3등(1500000, 5, 0, "5개 일치 (1,500,000원) - "),
+//        2등(30000000, 5, 1, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+//        1등(2000000000, 6, 0, "6개 일치 (2,000,000,000원) - ")
+//
+//        private final int prize;
+//        private final int number;
+//        private final int bonus;
+//        private final String message;
+//
+//        History(int prize, int number, int bonus, String message){
+//            this.prize = prize;
+//            this.number = number;
+//            this.bonus = bonus;
+//            this.message = message;
+//        }
+//    }
+
+
     public static void main(String[] args) {
         List<List<Integer>> issue_Numbers;
+        String[] Lotto_Num;
+        List<Integer> winner_number;
+        String bonus_number;
 
         purchase_Output();
         String purchase_Input = Input();
@@ -129,14 +169,20 @@ public class Application {
         issue_Numbers_Output(issue_Numbers);
         Lotto_Output();
         String Lotto_Input = Input();
-        Lotto_Number_exception(split(Lotto_Input));
-        System.out.println(StringtoInt(split(Lotto_Input)));
-//        Lotto lotto_number = new Lotto(StringtoInt(split(Lotto_Input)));
+        Lotto_Num = replace_blank(split(Lotto_Input));
+        Lotto_Number_exception(Lotto_Num);
+        winner_number = StringtoInt(Lotto_Num);
+        bonus_number =  Input();
+        bonus_Output();
+        Range_exception(bonus_number);
+        Number_exception(bonus_number);
+        winner_number.add(StringtoInteger(bonus_number));
+        Duplicate_exception_bonus(StringtoInteger(bonus_number), winner_number);
+
+//        Lotto lotto_number = new Lotto(StringtoInt(Lotto_Num));
 //        System.out.println(lotto_number);
 
 
-//        int num = Integer.parseInt(Console.readLine());
-//        System.out.println(number);
 //        Lotto winning_number = new Lotto(number);
 
     }
