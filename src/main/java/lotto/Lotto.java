@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
+    private static final String LOTTERY_NUMBER_DUPLICATED = "[ERROR] 로또번호가 중복됩니다.";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -24,10 +25,9 @@ public class Lotto {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
 
         if (uniqueNumbers.size() != numbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTERY_NUMBER_DUPLICATED);
         }
     }
-
 
     public List<Integer> getNumbers() {
         return numbers;
