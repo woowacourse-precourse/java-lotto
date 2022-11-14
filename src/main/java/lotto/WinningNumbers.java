@@ -19,7 +19,7 @@ public class WinningNumbers {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력한 숫자 개수가 6개가 아닙니다.");
         }
     }
 
@@ -33,7 +33,7 @@ public class WinningNumbers {
     public void checkScope(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("1부터 45사이의 숫자를 입력하세요.");
             }
         }
     }

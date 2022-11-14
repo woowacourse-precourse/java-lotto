@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 import lotto.view.LottoManager;
 
@@ -11,10 +12,14 @@ public class Application {
             lottoManager.printLottoCount(lottoCount);
 
             final NumberGenerator numberGenerator = new NumberGenerator();
-            Lotto[] lottos = new Lotto[lottoCount];
-            for (int i = 0; i < lottos.length; i++) {
-                lottos[i] = new Lotto(numberGenerator.createLottoNumbers());
+            List<Lotto> lottos = new ArrayList<>(lottoCount);
+            for (int i = 0; i < lottoCount; i++) {
+                lottos.add(i, new Lotto(numberGenerator.createLottoNumbers()));
             }
+//            Lotto[] lottos = new Lotto[lottoCount];
+//            for (int i = 0; i < lottos.length; i++) {
+//                lottos[i] = new Lotto(numberGenerator.createLottoNumbers());
+//            }
             lottoManager.printLottoNumbers(lottos);
 
             List<Integer> winningNumbers = numberGenerator.createWinningNumbers(lottoManager.inputWinningNumbers());
@@ -27,7 +32,7 @@ public class Application {
                 lottoCalculator.addRankCount(correctCount);
             }
 
-            lottoManager.printWinningDetails(lottoCalculator);
+            lottoManager.printWinningDetails(lottoCalculator.getRankCount());
             lottoManager.printRateOfReturn(lottoCalculator);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR]" + e.getMessage());
