@@ -4,7 +4,7 @@
 
 - 사용자 입력 기능
   - [O] 사용자에게 구입금액을 입력받는다. - InputUserMoney#InputMoney()
-  - [] 구입 금액 만큼 1-45숫자중 중복되지 않는 6개의 숫자를 생성한다. - UserNumberGenerator#createRandomNumbers()
+  - [O] 구입 금액 만큼 1-45숫자중 중복되지 않는 6개의 숫자를 생성한다. - UserNumberGenerator#createRandomNumbers()
 
 - 당첨 번호 생성 기능
   - [] 1-45 범위의 숫자 중 중복되지 않는 6개의 당첨번호를 생성한다. - CorrectNumberGenerator#createCorrectNumber()
