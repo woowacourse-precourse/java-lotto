@@ -87,8 +87,8 @@ class UserTest {
 
     @Test
     void 보너스_번호_입력(){
-        int answer = 7;
-        String userInput = "7";
+        int answer = 10;
+        String userInput = "10";
 
         ByteArrayInputStream input = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(input);
