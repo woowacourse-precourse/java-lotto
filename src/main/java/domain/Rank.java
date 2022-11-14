@@ -27,9 +27,7 @@ public enum Rank {
 
     public static Rank winningCondition(List<Integer> winning, List<Integer> user){
         int cnt = match(winning, user);
-        System.out.println(cnt);
         boolean flag = isBonusPossible(winning.get(winning.size() - 1), user);
-        System.out.println(flag);
         Rank rank = FAIL;
 
         if(cnt == Rank.FIFTH.getCount()){
