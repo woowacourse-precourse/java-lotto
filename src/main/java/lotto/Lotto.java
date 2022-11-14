@@ -17,12 +17,13 @@ public class Lotto {
             throw new IllegalArgumentException("로또번호는 총 6개여야 합니다.");
         }
         List<Integer> distinctNumbers = numbers.stream().distinct().collect(Collectors.toList());
-        if(distinctNumbers.size() != numbers.size()){
+        if (distinctNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException("로또번호는 중복이 없어야 합니다.");
         }
     }
+
     // TODO: 추가 기능 구현
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return numbers;
     }
 

@@ -17,8 +17,8 @@ public class LottoGameController {
                 purchaseLottoList.add(LottoNumberGenerator.makeLottoNumberGenerator());
             }
             System.out.println();
-            System.out.println(purchaseMoney.getNumberLotteryPurchasesAvailable()+ "개를 구매했습니다.");
-            for(Lotto lotto : purchaseLottoList){
+            System.out.println(purchaseMoney.getNumberLotteryPurchasesAvailable() + "개를 구매했습니다.");
+            for (Lotto lotto : purchaseLottoList) {
                 UserOutputView.printPurchaseLottoNumber(lotto);
             }
             System.out.println();
@@ -29,8 +29,7 @@ public class LottoGameController {
             WinningLottoNumber winningLottoNumbers = new WinningLottoNumber(winningLottoNumber, bonusLottoNumber);
             LottoResult lottoResult = new LottoResult(purchaseLottoList, winningLottoNumbers);
             UserOutputView.printLottoResult(lottoResult);
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("[ERROR]" + e.getMessage());
         }
 

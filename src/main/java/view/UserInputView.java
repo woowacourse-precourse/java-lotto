@@ -20,8 +20,7 @@ public class UserInputView {
 
         try {
             return new PurchaseMoney(Integer.parseInt(purchaseMoney));
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("구매하시는 금액은 숫자만 입력하셔야 합니다.");
         }
 
@@ -31,7 +30,9 @@ public class UserInputView {
         System.out.println(INPUT_WINNING_NUMBER);
         String winNumber = Console.readLine();
         try {
-            List<Integer> winLottoNumber = Arrays.stream(winNumber.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+            List<Integer> winLottoNumber = Arrays.stream(winNumber.split(","))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
             return new Lotto(winLottoNumber);
 
         } catch (NumberFormatException e) {
