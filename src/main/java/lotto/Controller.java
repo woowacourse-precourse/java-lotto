@@ -88,6 +88,12 @@ public class Controller {
                 + "6개 일치 (2,000,000,000원) - " + (int) winningTableCheck(6) + "개";
     }
 
-
-
+    public String percent() {
+        float total = (((winningTableCheck(3) * 5000)
+                + (winningTableCheck(4) * 50000)
+                + (winningTableCheck(5) * 1500000)
+                + (winningTableCheck(7) * 30000000)
+                + (winningTableCheck(6) * 2000000000)) / user.getUseCash()) * 100;
+        return "총 수익률은 " + total + "%입니다.";
+    }
 }
