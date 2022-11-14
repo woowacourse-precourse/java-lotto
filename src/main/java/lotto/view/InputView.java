@@ -34,7 +34,6 @@ public class InputView {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            System.out.println(ERROR_NOT_INT);
             throw new IllegalArgumentException(ERROR_NOT_INT);
         }
     }

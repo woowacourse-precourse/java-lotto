@@ -34,14 +34,12 @@ public class Validator {
 
     private static void validateLottoRange(int number) {
         if (!(MIN_LOTTO_NUMBER <= number && number <= MAX_LOTTO_NUMBER)) {
-            System.out.println(ERROR_RANGE);
             throw new IllegalArgumentException(ERROR_RANGE);
         }
     }
 
     private static void validateSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
-            System.out.println(ERROR_SIZE);
             throw new IllegalArgumentException(ERROR_SIZE);
         }
     }
@@ -49,7 +47,6 @@ public class Validator {
     private static void validateDuplication(List<Integer> numbers) {
         Set<Integer> noDuplicated = new HashSet<>(numbers);
         if (noDuplicated.size() != numbers.size()) {
-            System.out.println(ERROR_DUPLICATED);
             throw new IllegalArgumentException(ERROR_DUPLICATED);
         }
     }
@@ -57,7 +54,6 @@ public class Validator {
     private static void validateBonusDuplication(Lotto lotto, int bonusNumber) {
         List<Integer> lottoNumbers = lotto.getNumbers();
         if (lottoNumbers.contains(bonusNumber)) {
-            System.out.println(ERROR_BONUS_DUPLICATED);
             throw new IllegalArgumentException(ERROR_BONUS_DUPLICATED);
         }
     }
