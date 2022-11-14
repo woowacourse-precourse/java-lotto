@@ -15,8 +15,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        exceptionLottoNumberOutOfRange(numbers);
-        exceptionLottoByDuplicatedNumber(numbers);
+        LottoException.exceptionLottoNumberOutOfRange(numbers);
+        LottoException.exceptionLottoByDuplicatedNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -31,9 +31,9 @@ public class Lotto {
     // TODO: 추가 기능 구현
     public void enterBonusNumber() {
         String bonusNumberInput = Console.readLine();
-        bonusNumber = exceptionInvalidBonusNumber(bonusNumberInput);
-        exceptionBonusNumberOutOfRange(bonusNumber);
-        exceptionBonusNumberByDuplicatedLotto(bonusNumber);
+        bonusNumber = LottoException.exceptionInvalidBonusNumber(bonusNumberInput);
+        LottoException.exceptionBonusNumberOutOfRange(bonusNumber);
+        LottoException.exceptionBonusNumberByDuplicatedLotto(numbers, bonusNumber);
     }
 
     public void processLotto(List<List<Integer>> userLottos, int purchasePrice) {
@@ -100,40 +100,5 @@ public class Lotto {
             }
         }
         return matchingCount;
-    }
-
-    private void exceptionLottoByDuplicatedNumber(List<Integer> numbers) throws IllegalArgumentException{
-        HashSet<Integer> lottoSetUniqueNumber = new HashSet<Integer>(numbers);
-        if (lottoSetUniqueNumber.size() != 6) {
-            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.DUPLICATED_LOTTO_NUMBERS);
-        }
-    }
-
-    public void exceptionBonusNumberByDuplicatedLotto(int bonusNumber) throws IllegalArgumentException{
-        if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.DUPLICATED_BONUS_WITH_LOTTO);
-        }
-    }
-
-    public void exceptionLottoNumberOutOfRange(List<Integer> numbers) throws IllegalArgumentException{
-        for (Integer lottoNumber : numbers) {
-            if (lottoNumber > LottoConstant.LOTTO_MAX_RANGE || lottoNumber < LottoConstant.LOTTO_MIN_RANGE) {
-                throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INVALID_LOTTO_RANGE);
-            }
-        }
-    }
-
-    private int exceptionInvalidBonusNumber(String bonusNumber) throws IllegalArgumentException{
-        try {
-            return Integer.parseInt(bonusNumber);
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INVALID_BONUS_RANGE);
-        }
-    }
-
-    public void exceptionBonusNumberOutOfRange(int bonusNumber) throws IllegalArgumentException{
-        if (bonusNumber > LottoConstant.LOTTO_MAX_RANGE || bonusNumber < LottoConstant.LOTTO_MIN_RANGE) {
-            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INVALID_BONUS_RANGE);
-        }
     }
 }
