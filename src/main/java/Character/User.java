@@ -51,6 +51,10 @@ public class User {
         return winningNumberCounting;
     }
 
+    public double getEarning() {
+        return earning;
+    }
+
     public void makeLottoBundle(int howManyLotto) {
         for (int lottoBundleIndex=0; lottoBundleIndex<howManyLotto; lottoBundleIndex++) {
             lottoBundle.add(lotteryTicketingMachine.ticketLotto());
