@@ -57,6 +57,11 @@ public class LottoController {
     private void showResult() {
         int[] rank = lottoMachine.determineWinners(user, winningLotto, bonus);
         Printer.print(ResultMessage.RESULT.getMessage());
+        Printer.printf(ResultMessage.THREE_HIT.getMessage(), rank[5]);
+        Printer.printf(ResultMessage.FOUR_HIT.getMessage(), rank[4]);
+        Printer.printf(ResultMessage.FIVE_HIT.getMessage(), rank[3]);
+        Printer.printf(ResultMessage.FIVE_HIT_WITH_BONUS.getMessage(), rank[2]);
+        Printer.printf(ResultMessage.SIX_HIT.getMessage(), rank[1]);
     }
 
 }

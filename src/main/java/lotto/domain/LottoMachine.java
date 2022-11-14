@@ -38,7 +38,6 @@ public class LottoMachine {
             int hits = countHits(lottoNumbers, winningNumbers, bonus);
             determineRank(lottoNumbers, hits, bonus, rank);
         }
-        System.out.println(rank[1]+" "+rank[2]+" "+rank[3]+" "+rank[4]+" "+rank[5]);
         return rank;
     }
 
