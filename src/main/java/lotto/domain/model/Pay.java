@@ -1,6 +1,6 @@
 package lotto.domain.model;
 
-import lotto.domain.ui.Printer;
+import lotto.domain.ErrorMessage;
 
 public class Pay {
 	private final Integer pay;
@@ -12,7 +12,7 @@ public class Pay {
 
 	private void validate(int pay) {
 		if (pay % 1000 != 0 || pay < 1000) {
-			new Printer().printMessage(Message.ERROR);
+			System.out.println(ErrorMessage.ERROR_WRONG_PRICE.getError_message());
 			throw new IllegalArgumentException();
 		}
 	}

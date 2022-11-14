@@ -1,7 +1,5 @@
 package lotto.domain.model;
 
-import lotto.domain.ui.Printer;
-
 import java.util.List;
 
 public class Lotto {
@@ -14,7 +12,6 @@ public class Lotto {
 
 	private void validate(List<Integer> numbers) {
 		if (numbers.size() != 6) {
-			new Printer().printMessage(Message.ERROR);
 			throw new IllegalArgumentException();
 		}
 	}

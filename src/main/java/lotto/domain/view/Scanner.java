@@ -1,6 +1,4 @@
-package lotto.domain.ui;
-
-import lotto.domain.model.Message;
+package lotto.domain.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -23,7 +21,7 @@ public class Scanner {
 		try {
 			integer = Integer.parseInt(input);
 		} catch (IllegalArgumentException exception) {
-			new Printer().printMessage(Message.ERROR);
+			new Print().message(Message.ERROR);	// todo errormessage
 			throw new IllegalArgumentException();
 		}
 	}

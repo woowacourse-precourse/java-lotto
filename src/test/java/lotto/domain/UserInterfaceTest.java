@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.domain.model.Message;
-import lotto.domain.ui.Printer;
+import lotto.domain.view.Message;
+import lotto.domain.view.Print;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,8 +30,8 @@ class UserInterfaceTest {
 	@Test
 	void 출력_테스트(){
 		String str = "구입금액을 입력해 주세요.";
-		Printer ui = new Printer();
-		ui.printMessage(Message.START);
+		Print ui = new Print();
+		ui.message(Message.START);
 		assertEquals(str, outputStreamCaptor.toString().trim());
 
 	}
