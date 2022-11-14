@@ -1,6 +1,5 @@
 package lotto.util;
 
-import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class ExceptionHandler {
             int inputNumber = Integer.parseInt(input);
             checkThousandUnit(inputNumber);
         } catch (IllegalArgumentException exception) {
-            throw makeIllegalArgumentException(Message.NOT_THOUSAND_UNIT_INPUT_ERROR);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -35,7 +34,7 @@ public class ExceptionHandler {
             isAllDifferentNumbers(tokens);
             isValidationRange(tokens);
         } catch (IllegalArgumentException illegalArgumentException) {
-            throw makeIllegalArgumentException(Message.INPUT_WINNING_NUMBER_ERROR);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -84,11 +83,7 @@ public class ExceptionHandler {
     public static void checkValidationBonusNumber(String input, List<Integer> winningNumbers) throws IllegalArgumentException {
         Integer bonusNumber = Integer.parseInt(input);
         if (winningNumbers.contains(bonusNumber)) {
-            throw makeIllegalArgumentException(Message.BONUS_NUMBER_INPUT_ERROR);
+            throw new IllegalArgumentException();
         }
-    }
-
-    public static IllegalArgumentException makeIllegalArgumentException(Message message) {
-        return new IllegalArgumentException(message.getMessage());
     }
 }
