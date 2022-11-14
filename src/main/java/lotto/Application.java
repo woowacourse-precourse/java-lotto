@@ -60,4 +60,8 @@ public class Application {
         }
         return nums;
     }
+
+    public static void revenuePrint(double useMoney, double revenue){
+        System.out.printf(".%2f", revenue/useMoney);
+    }
 }
