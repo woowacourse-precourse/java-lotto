@@ -16,8 +16,8 @@ public class LotteryNumbersDrawTest {
         String USER_INPUT = "3,  5,   7,   19,   8,     36";
         ArrayList<Integer> EXPECTED_RESULT = new ArrayList<>(Arrays.asList(3, 5, 7, 8, 19, 36));
 
-        LotteryNumbersDraw draw = new LotteryNumbersDraw(USER_INPUT);
-        List<Integer> result =  draw.drawNumbers();
+        LotteryNumbersDraw draw = new LotteryNumbersDraw();
+        List<Integer> result =  draw.drawNumbers(USER_INPUT);
 
         System.out.println(result);
         assertThat(result).isEqualTo(EXPECTED_RESULT);
@@ -29,7 +29,7 @@ public class LotteryNumbersDrawTest {
         String USER_INPUT = "3,  5,   7,   19,   8,     36";
         int BONUS_NUMBER = 4;
         int EXPECTED_RESULT = 4;
-        LotteryNumbersDraw draw = new LotteryNumbersDraw(USER_INPUT);
+        LotteryNumbersDraw draw = new LotteryNumbersDraw();
         Integer result =  draw.getBonusNumber(BONUS_NUMBER);
 
         assertThat(result).isEqualTo(EXPECTED_RESULT);
