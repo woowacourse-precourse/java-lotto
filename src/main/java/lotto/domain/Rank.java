@@ -1,5 +1,9 @@
 package lotto.domain;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public enum Rank {
 
     EMPTY(0, 0, false, "0개 일치 - "),
@@ -22,5 +26,36 @@ public enum Rank {
         this.matchCount = matchCount;
         this.bonus = bonus;
         this.message = message;
+    }
+
+    public static Rank calculate(Lotto lotto, WinningNumber winningNumber) {
+        final int matchCount = getMatchCount(lotto, winningNumber.getLotto().getNumbers());
+
+        boolean bonus = false;
+        if (matchCount == BONUS_CONTAIN_CONDITION) {
+            bonus = lotto.hasMatchedNumber(winningNumber.getBonusNumber());
+        }
+
+        return getRank(matchCount, bonus);
+    }
+
+    private static int getMatchCount(Lotto lotto, List<Integer> numbers) {
+        return (int) numbers.stream()
+                .filter(lotto::hasMatchedNumber)
+                .count();
+    }
+
+    private static Rank getRank(int matchCount, boolean bonus) {
+        return Arrays.stream(values())
+                .filter(rank -> rank.matchCount == matchCount)
+                .filter(rank -> rank.bonus == bonus)
+                .findAny()
+                .orElse(EMPTY);
+    }
+
+    public static List<Rank> getValidRanks() {
+        return Arrays.stream(Rank.values())
+                .filter(rank -> rank != Rank.EMPTY)
+                .collect(Collectors.toList());
     }
 }
