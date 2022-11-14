@@ -20,8 +20,8 @@ import static Constant.Game.MIN_NUMBER;
 
 public class WinningNumber {
 
-    private Lotto lotto;
-    private Integer bonus;
+    Lotto lotto;
+    Integer bonus;
     Utils util = new Utils();
     List<Integer> result;
     UserInterface userInterface = new UserInterface();
@@ -38,7 +38,7 @@ public class WinningNumber {
         return result;
     }
 
-    private List<Integer> validateNumbers(String input) {
+    List<Integer> validateNumbers(String input) {
         List<Integer> result = new ArrayList<>();
         String[] split = input.split(",");
 
