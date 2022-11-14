@@ -4,8 +4,10 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -31,5 +33,19 @@ class LottoMachineTest {
                 Arguments.of(List.of(1, 2, 3, 43, 44, 45), LottoPrize.FIFTH),
                 Arguments.of(List.of(1, 2, 42, 43, 44, 45), LottoPrize.NONE)
         );
+    }
+
+    @DisplayName("당첨 횟수를 구한다.")
+    @Test
+    void prizeCount() {
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        LottoMachine lottoMachine = new LottoMachine(new WinningLotto(winningLotto, 7));
+        Lottos lottos = new Lottos(List.of(winningLotto, winningLotto));
+        Map<LottoPrize, Integer> prizeCount = lottoMachine.getPrizeCount(lottos);
+
+        Integer integer = prizeCount.get(LottoPrize.FIRST);
+
+        assertThat(integer).isEqualTo(2);
+
     }
 }
