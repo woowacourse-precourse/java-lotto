@@ -45,6 +45,10 @@
       - .resolveLottoBought(): 구매한 로또의 번호를 알려줍니다.
       - .resolveLottoResult(): 로또 당첨 내역을 알려줍니다.
   - #### utils
+    - InputReader
+      - .readLine(): 콘솔로부터 입력을 받아옵니다.
+    - Logger
+      - .log(): 콘솔에 메시지를 남깁니다.
     - RandomNumberGenerator
       - .generateNumbersInRange(): 범위 내의 임의의 숫자를 지정된 갯수만큼 줍니다.
     - Validator
