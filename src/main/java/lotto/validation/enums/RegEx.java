@@ -1,4 +1,4 @@
-package lotto.validation;
+package lotto.validation.enums;
 
 public enum RegEx {
     NUMBER_REG_EX("^[0-9]*$"),

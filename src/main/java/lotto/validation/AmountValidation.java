@@ -1,6 +1,8 @@
 package lotto.validation;
 
 import java.util.regex.Pattern;
+import lotto.validation.enums.ErrorMessage;
+import lotto.validation.enums.RegEx;
 
 public class AmountValidation extends IllegalArgumentException {
     private static final int PRICE = 1000;

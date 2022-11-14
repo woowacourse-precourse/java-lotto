@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
+import lotto.validation.enums.ErrorMessage;
+import lotto.validation.enums.RegEx;
 
 public class WinningValidation extends IllegalArgumentException {
     private static final int START_INCLUSIVE = 1;
