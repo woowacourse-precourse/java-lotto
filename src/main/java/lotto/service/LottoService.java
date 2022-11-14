@@ -2,6 +2,7 @@ package lotto.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import lotto.constants.enums.WinResultStatus;
 import lotto.domain.Lotto;
 import lotto.domain.WinningNumber;
@@ -24,11 +25,12 @@ public class LottoService {
     }
 
     public List<String> createBuyingResultMessage() {
+        // TODO view에서 담당하는것이 맞아보임
         return List.of(String.valueOf(getCountOfLotto()), createBuyingLottoMessage());
     }
 
     private String createBuyingLottoMessage() {
-        // TODO 리팩토링
+        // TODO 리팩토링 view에서 담당하는게 맞아보임
         StringBuilder allLottoNumber = new StringBuilder();
         lottoRepository.findAll()
                 .stream()
@@ -44,5 +46,21 @@ public class LottoService {
         lottoRepository.findAll()
                 .forEach(lotto -> winResults.add(lotto.getWinResult(winningNumber)));
         return winResults;
+    }
+
+    public List<Object> createLottoResult(List<WinResultStatus> winResults) {
+        long prizeMoney = calculatePrizeMoney(winResults);
+        createStatistics(winResults);
+        return null;
+    }
+
+    private Map<WinResultStatus, Integer> createStatistics(List<WinResultStatus> winResults) {
+        return null;
+    }
+
+    private long calculatePrizeMoney(List<WinResultStatus> winResults) {
+        return winResults.stream()
+                .map(WinResultStatus::getPrizeMoney)
+                .count();
     }
 }

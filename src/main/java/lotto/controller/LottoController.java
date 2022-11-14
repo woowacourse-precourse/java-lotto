@@ -46,11 +46,14 @@ public class LottoController {
 
     private void requestWinningNumber() {
         try {
-            List<WinResultStatus> winResults = lottoService.createWinResults(
-                    new WinningNumber(inputView.inputWinningNumber()));
+            printLottoResult(lottoService.createWinResults(new WinningNumber(inputView.inputWinningNumber())));
         } catch (IllegalArgumentException exception) {
             printLogInfo(exception);
         }
+    }
+
+    private void printLottoResult(List<WinResultStatus> winResults) {
+        lottoService.createLottoResult(winResults);
     }
 
     private static void printLogInfo(IllegalArgumentException exception) {

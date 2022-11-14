@@ -9,9 +9,9 @@ public enum WinResultStatus {
     NOTHING(0, 0);
 
     final int winCount;
-    final int prizeMoney;
+    final long prizeMoney;
 
-    WinResultStatus(int winCount, int prizeMoney) {
+    WinResultStatus(int winCount, long prizeMoney) {
         this.winCount = winCount;
         this.prizeMoney = prizeMoney;
     }
@@ -30,5 +30,13 @@ public enum WinResultStatus {
             return FOURTH;
         }
         return FIFTH;
+    }
+
+    public int getWinCount() {
+        return winCount;
+    }
+
+    public long getPrizeMoney() {
+        return prizeMoney;
     }
 }
