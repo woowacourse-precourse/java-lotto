@@ -1,5 +1,8 @@
 package lotto.numbers;
 
+import lotto.Lotto;
+import lotto.money.Money;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +25,14 @@ public class MatchNumbers {
       count = 7;
     }
     maps.put(count, maps.getOrDefault(count, 0) + 1);
+  }
+
+  public void match(List<Lotto> countLotto, List<Integer> numbers, int validBonusNumber) {
+    for (int j = 0; j < Money.count; j++) {
+      Lotto lotto = countLotto.get(j);
+      List<Integer> numbers1 = lotto.getNumbers();
+      matchCount(numbers1, numbers, validBonusNumber);
+    }
   }
 
   public Map<Integer, Integer> getMaps() {
