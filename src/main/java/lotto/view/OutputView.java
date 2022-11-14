@@ -24,6 +24,10 @@ public class OutputView {
         System.out.println(numbers);
     }
 
+    public static void printLottoCount(int count) {
+        System.out.println(count + BUY_LOTTO_NUM_SUFFIX);
+    }
+
     public static void printString(String input) {
         System.out.println(input);
     }
