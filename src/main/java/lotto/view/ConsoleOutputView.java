@@ -3,8 +3,12 @@ package lotto.view;
 import java.util.List;
 
 public class ConsoleOutputView {
+    public void print(String text) {
+        System.out.print(text);
+    }
+
     public void println(String text) {
-        // TODO 구현 필요
+        System.out.println(text);
     }
 
     public void println(List<Integer> integers) {
