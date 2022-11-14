@@ -12,6 +12,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NoticeTest {
     @Test
+    void 로또_구매_개수_출력() {
+        String answer = "8개를 구매했습니다.\n"
+                .replaceAll("\\n", System.getProperty("line.separator"));;
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Notice notice = new Notice();
+        notice.purchaseNumber(8);
+        assertThat(out.toString()).isEqualTo(answer);
+    }
+
+    @Test
     void 수익률_출력1() {
         String answer = "총 수익률은 62.5%입니다.";
         OutputStream out = new ByteArrayOutputStream();
