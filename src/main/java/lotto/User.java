@@ -15,6 +15,7 @@ public class User {
     }
 
     public void buyLotto(Lotto lotto) {
+        wholeLotto.add(lotto);
     }
 
     public void showWholeLotto() {
