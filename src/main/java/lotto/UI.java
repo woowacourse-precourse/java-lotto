@@ -9,4 +9,9 @@ public class UI {
         return readLine();
     }
 
+    public String inputWinningNumber() {
+        System.out.println(Notice.INPUT_WINNING_NUMBER.message());
+        return readLine();
+    }
+
 }
