@@ -2,22 +2,20 @@ package lotto.domain;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
-import lotto.Lotto;
 
 public class Publisher {
     static final int TICKET_PRICE = 1000;
-    private int ticketQuantity;
-    private Map<Lotto, Integer> lotteries;
+    private final int ticketQuantity;
+    private Map<Lotto, Bonus> lotteries;
 
     public Publisher(int purchaseAmount) {
         validate(purchaseAmount);
         this.ticketQuantity = purchaseAmount / TICKET_PRICE;
-        this.lotteries = new HashMap<Lotto, Integer>(ticketQuantity);
+        this.lotteries = new HashMap<Lotto, Bonus>(ticketQuantity);
     }
 
-    public Map<Lotto, Integer> getLotteries() {
+    public Map<Lotto, Bonus> getLotteries() {
         return lotteries;
     }
 
@@ -26,7 +24,7 @@ public class Publisher {
     }
 
     public void issueLotto(List<Integer> numbers, int bonusNumber) {
-        lotteries.put(new Lotto(numbers), bonusNumber);
+        lotteries.put(new Lotto(numbers), new Bonus(bonusNumber));
     }
 
     public List<Integer> make() {
