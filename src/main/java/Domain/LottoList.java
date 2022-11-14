@@ -18,7 +18,7 @@ public class LottoList {
 
     public LottoList(){
         InputView.printBuyingLottoMessage();
-        lottoPlayNumber = getLottoPlayNumber();
+        lottoPlayNumber = setLottoPlayNumber();
         lottoList = makeRandomLottoNumbers(lottoPlayNumber);
         OutputView.printNumberOfLotto(lottoPlayNumber, lottoList);
     }
