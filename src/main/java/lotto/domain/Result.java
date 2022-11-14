@@ -39,8 +39,8 @@ public class Result {
     /**
      * 구입 금액을 파라미터로 받아 총 당첨금의 합으로 수익률(소수점 둘째 자리에서 반올림)을 계산하여 반환하는 메소드
      */
-    private double getYield(int amount) {
-        return Math.round(((sumOfMoney() / (double) amount) * 100)) / 100.0;
+    private String getYield(int amount) {
+        return String.format("%.1f", sumOfMoney() / (double) amount * 100);
     }
 
     /**
