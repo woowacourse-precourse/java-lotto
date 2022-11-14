@@ -9,13 +9,13 @@ public class Validate {
         if(money < 1000)
             throw new IllegalArgumentException("[ERROR] 1000원 이상의 금액을 입력하세요.");
         if(money % 1000 != 0)
-            throw new IllegalArgumentException("[ERROR] 유효한 값을 입력하세요.");
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 구매해주세요.");
         return money;
     }
     public void containOthers(String input)throws IllegalArgumentException{
         for(int i = 0; i < input.length(); i++){
             if(!Character.isDigit(input.charAt(i)))
-                throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
+                throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요.");
         }
     }
     public void validateUserInput(String input)throws IllegalArgumentException{

@@ -26,7 +26,7 @@ public class LottoStore {
     }
     public void printLottoPapers(List<LottoPaper> lottoPapers) {
         for (LottoPaper lottoPaper : lottoPapers) {
-            System.out.println(lottoPaper.number);
+            System.out.println(lottoPaper.lottoNumber);
         }
     }
 }

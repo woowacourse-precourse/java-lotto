@@ -12,7 +12,7 @@ public class CreateRandomLotto {
             List<Integer> copyOfLotto = new ArrayList<>(lotto);
             Collections.sort(copyOfLotto);
             LottoPaper eachNumber = new LottoPaper();
-            eachNumber.setNumber(copyOfLotto);
+            eachNumber.setLottoNumber(copyOfLotto);
             lottoPaper.add(eachNumber);
         }
         return lottoPaper;

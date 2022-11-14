@@ -12,9 +12,9 @@ class LottoPaperTest {
     @Test
     void getResult() {
         LottoPaper lottoPaper = new LottoPaper();
-        lottoPaper.number = new ArrayList<>(List.of(1, 2, 10, 11, 7, 9));
+        lottoPaper.lottoNumber = new ArrayList<>(List.of(1, 2, 10, 3, 4, 20));
         List<Integer> testLotto = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         int bonus = 10;
-        assertThat(lottoPaper.getResult(testLotto, bonus)).isEqualTo(2);
+        assertThat(lottoPaper.getResult(testLotto, bonus)).isEqualTo(4);
     }
 }

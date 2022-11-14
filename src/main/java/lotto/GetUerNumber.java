@@ -3,7 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateUerNumber {
+public class GetUerNumber {
       public List<Integer> makeWinningNumber(String userInput){
         Validate checkLottoNumber = new Validate();
         List<Integer> WinningNumber = new ArrayList<>();
