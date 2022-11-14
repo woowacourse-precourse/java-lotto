@@ -36,6 +36,15 @@ public class Inputer {
         }
     }
 
+    public void inputbonus() throws IllegalArgumentException {
+        String input = Console.readLine();
+        if(!validate(input)) {
+            System.out.println("[ERROR] : Invalid argument!");
+            throw new IllegalArgumentException();
+        }
+        lottoNumbers.add(Integer.parseInt(input));
+    }
+
     private List<Integer> splitToken(String data) {
         List<String> preresult = List.of(data.split(","));
         List<Integer> result = new ArrayList<>();
