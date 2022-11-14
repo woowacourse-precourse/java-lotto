@@ -24,14 +24,22 @@ public class Validation {
     }
 
     private static void validateDuplication(List<Integer> numbers) {
-        if (numbers.stream().distinct().count() != LOTTO_NUMBERS_SIZE) {
-            throw new IllegalArgumentException(ErrorStatus.NUMBER_DUPLICATION.printError());
+        try {
+            if (numbers.stream().distinct().count() != LOTTO_NUMBERS_SIZE) {
+                throw new IllegalArgumentException(ErrorStatus.NUMBER_DUPLICATION.printError());
+            }
+        } catch (IllegalArgumentException error) {
+            System.out.println(ErrorStatus.NUMBER_DUPLICATION.printError());
         }
     }
 
     public static void validateMoney(int money) {
-        if (money < LOTTO_PRICE) {
-            throw new IllegalArgumentException(ErrorStatus.MONEY_RANGE.printError());
+        try {
+            if (money < LOTTO_PRICE) {
+                throw new IllegalArgumentException(ErrorStatus.MONEY_RANGE.printError());
+            }
+        } catch (IllegalArgumentException error) {
+            System.out.println(ErrorStatus.MONEY_RANGE.printError());
         }
     }
 
@@ -61,8 +69,12 @@ public class Validation {
     }
 
     private static void validateBonusDuplication(String bonusNumber, List<Integer> winningNumbers) {
-        if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
-            throw new IllegalArgumentException(ErrorStatus.BONUS_DUPLICATION.printError());
+        try {
+            if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
+                throw new IllegalArgumentException(ErrorStatus.BONUS_DUPLICATION.printError());
+            }
+        } catch (IllegalArgumentException error) {
+            System.out.println(ErrorStatus.BONUS_DUPLICATION.printError());
         }
     }
 

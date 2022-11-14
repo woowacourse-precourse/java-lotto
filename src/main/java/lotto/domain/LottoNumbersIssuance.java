@@ -2,13 +2,17 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LottoNumbersIssuance {
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public LottoNumbersIssuance() {
-        this.numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        this.numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        sort();
         printLotto();
     }
 
@@ -23,5 +27,9 @@ public class LottoNumbersIssuance {
             }
         }
         return false;
+    }
+
+    public void sort() {
+        this.numbers.sort(Comparator.naturalOrder());
     }
 }
