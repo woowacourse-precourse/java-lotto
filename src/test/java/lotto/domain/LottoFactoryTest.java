@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class LottoFactoryTest {
 
@@ -35,12 +37,12 @@ public class LottoFactoryTest {
             .isEqualTo(7);
     }
 
-    @Test
-    void 랜덤로또_생성_검증() {
-        int lottoCount = 3;
-        Lottos lottos = LottoFactory.createRandomLottoByCnt(lottoCount);
-        assertThat(lottos.get().size())
-            .isEqualTo(3);
+    @DisplayName("input 만큼 로또를 생성한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 10, 30, 99})
+    void 랜덤로또_생성_검증(int input) {
+        Lottos lottos = LottoFactory.createRandomLottoByCnt(input);
+        assertThat(lottos.get().size()).isEqualTo(input);
     }
 
 }
