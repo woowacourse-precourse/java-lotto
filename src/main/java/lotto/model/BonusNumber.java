@@ -6,16 +6,16 @@ import java.util.List;
 
 public class BonusNumber {
 
-    OutputView outputView = new OutputView();
+    static OutputView outputView = new OutputView();
 
-    public int checkBonusNumber(List<Integer>number, String bonus) {
+    public static int checkBonusNumber(List<Integer> number, String bonus) {
         isNumber(bonus);
         rangeNumber(bonus);
         isEqualNumber(bonus, number);
         return Integer.parseInt(bonus);
     }
 
-    public boolean rangeNumber(String bonus){
+    public static boolean rangeNumber(String bonus){
         int number = Integer.parseInt(bonus);
         if(!(number >= 1 && number <=45)) {
             inputError(outputView.rangeMsg());
@@ -23,7 +23,7 @@ public class BonusNumber {
         return true;
     }
 
-    public boolean isNumber(String bonus){
+    public static boolean isNumber(String bonus){
         try {
             int number = Integer.parseInt(bonus);
         }catch (NumberFormatException e) {
@@ -32,7 +32,7 @@ public class BonusNumber {
         return true;
     }
 
-    public boolean isEqualNumber(String bonus, List<Integer> number) {
+    public static boolean isEqualNumber(String bonus, List<Integer> number) {
         int num = Integer.parseInt(bonus);
         for(Integer i : number) {
            isEqual(num,i);
@@ -40,13 +40,13 @@ public class BonusNumber {
         return true;
     }
 
-    private void isEqual(int num, int i) {
+    private static void isEqual(int num, int i) {
         if(num == i) {
             inputError(outputView.equalBonusMsg());
         }
     }
 
-    private void inputError(String error) {
+    private static void inputError(String error) {
         throw new IllegalArgumentException(error);
     }
 }

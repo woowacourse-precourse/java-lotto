@@ -12,7 +12,7 @@ public class OutputView {
         return "[ERROR] 1000원으로 나누어 떨어지지 않습니다.";
     }
 
-    public void lottoCountMsg(int count) {
+    public static void lottoCountMsg(int count) {
         System.out.println(count + "개를 구매했습니다.");
     }
 
@@ -61,7 +61,7 @@ public class OutputView {
         System.out.println("6개 일치 (2,000,000,000원) - " + count + "개");
     }
 
-    public void rateMsg(double rate) {
+    public static void rateMsg(double rate) {
         System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 

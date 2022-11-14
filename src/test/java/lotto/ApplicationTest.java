@@ -244,8 +244,6 @@ class ApplicationTest extends NsTest {
         Revenue revenue = new Revenue();
         long reward = revenue.revenue(result);
         assertThat(reward).isEqualTo(2033000000L);
-
-
     }
 
     @Override

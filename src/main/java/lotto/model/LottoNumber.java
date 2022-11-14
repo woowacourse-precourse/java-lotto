@@ -9,9 +9,9 @@ import java.util.List;
 
 public class LottoNumber {
 
-    OutputView outputView = new OutputView();
+    static OutputView outputView = new OutputView();
 
-    public List<List<Integer>> userLotto(int count) {
+    public static List<List<Integer>> userLotto(int count) {
         List<List<Integer>> lottos = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             lottos.add(oneLotto());
@@ -19,23 +19,23 @@ public class LottoNumber {
         return lottos;
     }
 
-    public void printUserLotto(List<List<Integer>> lotto) {
+    public static void printUserLotto(List<List<Integer>> lotto) {
         for(int index=0;index<lotto.size();index++){
             outputView.userLottoMsg(index, lotto);
         }
     }
 
-    private List<Integer> oneLotto() {
-        List<Integer> lotto = RandomNumber();
+    private static List<Integer> oneLotto() {
+        List<Integer> lotto = new ArrayList<>(RandomNumber());
         sortLotto(lotto);
         return lotto;
     }
 
-    private void sortLotto(List<Integer> lotto) {
+    private static void sortLotto(List<Integer> lotto) {
         Collections.sort(lotto);
     }
 
-    private List<Integer> RandomNumber(){
+    private static List<Integer> RandomNumber(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 

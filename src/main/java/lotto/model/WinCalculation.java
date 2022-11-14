@@ -6,18 +6,18 @@ import java.util.List;
 
 public class WinCalculation {
 
-    private int count=0;
-    private boolean bonusCheck = true;
-    List<List<Object>> rank = new ArrayList<>();
+    private static int count=0;
+    private static boolean bonusCheck = true;
+    static List<List<Object>> rank = new ArrayList<>();
 
-    public int winCount(List<Integer> win, List<Integer> number){
+    public static int winCount(List<Integer> win, List<Integer> number){
         for(Integer winIndex : win) {
             checkEqualNumber(winIndex,number);
         }
         return count;
     }
 
-    private void checkEqualNumber(int winIndex, List<Integer>number){
+    private static void checkEqualNumber(int winIndex, List<Integer> number){
         for(Integer numIndex:number){
             if(winIndex == numIndex){
                 countAdd();
@@ -25,16 +25,16 @@ public class WinCalculation {
         }
     }
 
-    private void countAdd(){
+    private static void countAdd(){
         count++;
     }
 
-    private void winCalculation(){
-        this.count = 0;
-        this.bonusCheck = true;
+    private static void winCalculation(int count, boolean bonusCheck){
+        count = 0;
+        bonusCheck = true;
     }
 
-    public boolean bonusNumber(int bonus, List<Integer>number) {
+    public static boolean bonusNumber(int bonus, List<Integer> number) {
         for(Integer numIndex : number) {
             if(numIndex == bonus) {
                 return true;
@@ -43,9 +43,9 @@ public class WinCalculation {
         return false;
     }
 
-    public List<List<Object>> winCal(List<Integer> win, List<List<Integer>>lottos,int bonus) {
+    public static List<List<Object>> winCal(List<Integer> win, List<List<Integer>> lottos, int bonus) {
         for (List<Integer> lotto : lottos) {
-            winCalculation();
+            winCalculation(count,bonusCheck);
             winCount(win, lotto);
             if (count == 5) {
                 bonusCheck = bonusNumber(bonus, lotto);
@@ -55,11 +55,11 @@ public class WinCalculation {
         return rank;
     }
 
-    private void rank(int count, boolean bonusCheck){
+    private static void rank(int count, boolean bonusCheck){
         rank.add(new ArrayList<>(Arrays.asList(count,bonusCheck)));
     }
 
-    public List<WinDetail> rankResult(List<List<Object>> rank){
+    public static List<WinDetail> rankResult(List<List<Object>> rank){
         List<WinDetail> result = new ArrayList<>();
         for (List<Object> objects : rank) {
             int match = (int) objects.get(0);
@@ -70,7 +70,7 @@ public class WinCalculation {
         return result;
     }
 
-    private WinDetail findRank(int match, boolean bonus){
+    private static WinDetail findRank(int match, boolean bonus){
         return WinDetail.findRankBy(match,bonus);
     }
 }

@@ -4,9 +4,9 @@ import lotto.view.OutputView;
 
 public class User {
 
-    OutputView outputView = new OutputView();
+    static OutputView outputView = new OutputView();
 
-    public boolean isNumber(String str){
+    public static boolean isNumber(String str){
         try {
             int value = Integer.parseInt(str);
         }catch (NumberFormatException e) {
@@ -15,7 +15,7 @@ public class User {
         return true;
     }
 
-    public boolean unitError(String str) {
+    public static boolean unitError(String str) {
         int value = Integer.parseInt(str);
         if(value % 1000 != 0) {
             inputError(outputView.unitErrorMsg());
@@ -23,16 +23,16 @@ public class User {
         return true;
     }
 
-    private void inputError(String error) {
+    private static void inputError(String error) {
         throw new IllegalArgumentException(error);
     }
 
-    public void checkError(String str) {
+    public static void checkError(String str) {
         isNumber(str);
         unitError(str);
     }
 
-    public int lottoCount(String str) {
+    public static int lottoCount(String str) {
         int count = Integer.parseInt(str);
         count = count / 1000;
         return count;
