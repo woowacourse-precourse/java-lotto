@@ -34,4 +34,15 @@ public class Validator {
     private static boolean isInRange(int number) {
         return START_NUMBER <= number && number <= END_NUMBER;
     }
+
+    public static boolean isDuplicate(List<Integer> numbers) {
+        boolean[] duplicateCheck = new boolean[END_NUMBER];
+        for (int number : numbers) {
+            if (duplicateCheck[number]) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
+            }
+            duplicateCheck[number] = true;
+        }
+        return false;
+    }
 }
