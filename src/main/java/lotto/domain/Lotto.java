@@ -37,9 +37,9 @@ public class Lotto {
         }
     }
 
-    public boolean isContainNumber(LottoNumber lottoNumber) {
+    public boolean isContainNumber(LottoBonusNumber lottoBonusNumber) {
         return this.numbers.stream()
-                .anyMatch(lottoNumber::equalNumber);
+                .anyMatch(lottoBonusNumber::equalNumber);
     }
 
     public int matchCount(Lotto matchLotto) {

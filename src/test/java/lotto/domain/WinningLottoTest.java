@@ -16,7 +16,7 @@ public class WinningLottoTest {
     @DisplayName("숫자 6개와 보너스 번호 1개 중 중복되는 숫자가 있으면 예외가 발생한다.")
     @Test
     void createWinningLottoByDuplicatedNumber() {
-        assertThatThrownBy(() -> new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.of(5)))
+        assertThatThrownBy(() -> new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoBonusNumber.of(5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -37,7 +37,7 @@ public class WinningLottoTest {
     @ParameterizedTest(name = "로또 번호와 당첨 번호를 비교하여 당첨 내역을 구한다")
     @MethodSource("provideForLottoResult")
     void lottoResult(Lotto lotto, Rank rank) {
-        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.of(7));
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoBonusNumber.of(7));
 
         assertThat(winningLotto.rank(lotto)).isEqualTo(rank);
     }

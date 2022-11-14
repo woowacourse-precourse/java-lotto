@@ -45,8 +45,8 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
         Assertions.assertAll(
-                () -> assertThat(lotto.isContainNumber(LottoNumber.of(4))).isTrue(),
-                () -> assertThat(lotto.isContainNumber(LottoNumber.of(7))).isFalse()
+                () -> assertThat(lotto.isContainNumber(LottoBonusNumber.of(4))).isTrue(),
+                () -> assertThat(lotto.isContainNumber(LottoBonusNumber.of(7))).isFalse()
         );
     }
 

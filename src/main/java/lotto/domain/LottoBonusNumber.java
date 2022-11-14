@@ -4,26 +4,26 @@ import java.util.HashMap;
 import java.util.Map;
 import lotto.exception.domain.LottoNumberRangeException;
 
-public class LottoNumber {
+public class LottoBonusNumber {
     private static final int LOTTO_NUMBER_MIN = 1;
     private static final int LOTTO_NUMBER_MAX = 45;
-    private static final Map<Integer, LottoNumber> lottoNumberCash;
+    private static final Map<Integer, LottoBonusNumber> lottoNumberCash;
 
     private final int number;
 
     static {
         lottoNumberCash = new HashMap<>();
         for (int number = LOTTO_NUMBER_MIN; number <= LOTTO_NUMBER_MAX; number++) {
-            lottoNumberCash.put(number, new LottoNumber(number));
+            lottoNumberCash.put(number, new LottoBonusNumber(number));
         }
     }
 
-    private LottoNumber(int number) {
+    private LottoBonusNumber(int number) {
         validateNumberRange(number);
         this.number = number;
     }
 
-    public static LottoNumber of(int number) {
+    public static LottoBonusNumber of(int number) {
         validateNumberRange(number);
         return lottoNumberCash.get(number);
     }

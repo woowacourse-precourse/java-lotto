@@ -1,7 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.Lotto;
-import lotto.domain.LottoNumber;
+import lotto.domain.LottoBonusNumber;
 import lotto.domain.LottoResult;
 import lotto.domain.LottoStore;
 import lotto.domain.Lottos;
@@ -43,7 +43,7 @@ public class LottoController {
 
     private WinningLotto getWinningLotto() {
         Lotto winningNumberLotto = new Lotto(inputView.inputWinningLotto());
-        LottoNumber bonusNumber = LottoNumber.of(inputView.inputBonusNumber());
+        LottoBonusNumber bonusNumber = LottoBonusNumber.of(inputView.inputBonusNumber());
         return new WinningLotto(winningNumberLotto, bonusNumber);
     }
 

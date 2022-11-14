@@ -9,22 +9,22 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class LottoNumberTest {
+public class LottoBonusNumberTest {
 
     @DisplayName("번호가 1부터 45를 벗어나면 에러를 반환한다.")
     @Test
-    void createLottoNumberOutOfRange() {
+    void createLottoBonusNumberOutOfRange() {
         Assertions.assertAll(
-                () -> assertThatThrownBy(() -> LottoNumber.of(0)).isInstanceOf(IllegalArgumentException.class),
-                () -> Assertions.assertDoesNotThrow(() -> LottoNumber.of(1)),
-                () -> Assertions.assertDoesNotThrow(() -> LottoNumber.of(45)),
-                () -> assertThatThrownBy(() -> LottoNumber.of(46)).isInstanceOf(IllegalArgumentException.class)
+                () -> assertThatThrownBy(() -> LottoBonusNumber.of(0)).isInstanceOf(IllegalArgumentException.class),
+                () -> Assertions.assertDoesNotThrow(() -> LottoBonusNumber.of(1)),
+                () -> Assertions.assertDoesNotThrow(() -> LottoBonusNumber.of(45)),
+                () -> assertThatThrownBy(() -> LottoBonusNumber.of(46)).isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @ParameterizedTest(name = "로또 숫자 값을 반환한다.")
     @ValueSource(ints = {1, 4, 16, 25, 35, 43, 45})
-    void name(int number) {
-        assertThat(LottoNumber.of(number).number()).isEqualTo(number);
+    void number(int number) {
+        assertThat(LottoBonusNumber.of(number).number()).isEqualTo(number);
     }
 }

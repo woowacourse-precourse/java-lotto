@@ -34,7 +34,7 @@ class LottosTest {
         lottoResult.addResult(Rank.FIFTH);
         lottoResult.addResult(Rank.MISS);
 
-        assertThat(lottos.result(new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.of(7))))
+        assertThat(lottos.result(new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoBonusNumber.of(7))))
                 .isEqualTo(lottoResult);
     }
 
