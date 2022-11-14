@@ -47,4 +47,18 @@ public class CalculatorTest {
         // then
         assertEquals("0.0%", yield);
     }
+
+    @Test
+    @DisplayName("수익률은 소수점 둘째 자리에서 반올림한다.")
+    void decimalTest() {
+        // given
+        long totalWinningPrize = 5000;
+        int purchaseAmount = 130000;
+
+        // when
+        String yield = Calculator.getYield(totalWinningPrize, purchaseAmount);
+
+        // then
+        assertEquals("3.8%", yield); // 3.84615384615...
+    }
 }
