@@ -3,46 +3,43 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class LottoController {
     LottoView lottoView = new LottoView();
 
     public void run() {
         try {
-            System.out.println("구입금액을 입력해 주세요.");
+            lottoView.printMoneyQuestion();
             int NumberOfLotto = getNumberOfLotto();
             List<Lotto> lottoList = makeBunchOfLotto(NumberOfLotto);
-
             lottoView.printLottoList(lottoList);
+
+            lottoView.printWinNumberQuestion();
+            Lotto winNumber = getWinLottoNumber(inputWinNumber());
+
         } catch (IllegalArgumentException e) {
             return ;
         }
     }
 
-    public static String inputMoney() {
-        String input;
-        input = Console.readLine();
-        return input;
-    }
-
-    public static void validateMoney(String input) {
+    public String inputMoney() {
+        String input = Console.readLine();
         int money;
         if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
-            System.out.println("[ERROR] 금액은 숫자만 입력 가능합니다.");
+            lottoView.printNumberFormatError();
             throw new IllegalArgumentException();
         }
         money = Integer.parseInt(input);
         if (money < 1000 || money % 1000 != 0) {
-            System.out.println("[ERROR] 금액은 1000원 이상이어야 하며 1000원 단위여야 합니다.");
+            lottoView.printInvalidNumberError();
             throw new IllegalArgumentException();
         }
+        return input;
     }
 
     public int getNumberOfLotto() {
         String input = inputMoney();
-        validateMoney(input);
         int money = Integer.parseInt(input);
 
         return money / 1000;
@@ -63,10 +60,47 @@ public class LottoController {
     }
 
     public String[] inputWinNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         String[] result = input.split(",");
-
+        if (result.length != 6) {
+            lottoView.printWinNumberCountError();
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < result.length; i++) {
+            checkNumber(result[i]);
+        }
+        if (isDuplicatedNumber(result)) {
+            lottoView.printDuplicatedNumberError();
+            throw new IllegalArgumentException();
+        }
         return result;
+    }
+
+    public Lotto getWinLottoNumber(String[] input) {
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < input.length; i++) {
+            numbers.add(Integer.parseInt(input[i]));
+        }
+        return new Lotto(numbers);
+    }
+
+    public void checkNumber(String input) {
+        int number = 0;
+
+        try {
+            number = Integer.parseInt(input);
+            if (number > 45 || number < 1) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            lottoView.printNotProperNumberError();
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public boolean isDuplicatedNumber(String[] input) {
+        Set<String> set = new HashSet<>(Arrays.asList(input));
+
+        return input.length != set.size();
     }
 }
