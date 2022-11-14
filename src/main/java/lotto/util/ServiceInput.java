@@ -113,7 +113,7 @@ public class ServiceInput {
         String inputBonusNumber = Console.readLine();
         validateInputBonusNumber(inputBonusNumber);
 
-        return getInputBonusNumber();
+        return inputBonusNumber;
     }
 
     private static void validateInputBonusNumber(String inputBonusNumber) {
