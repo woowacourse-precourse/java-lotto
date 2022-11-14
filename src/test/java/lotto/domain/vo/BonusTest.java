@@ -15,24 +15,26 @@ class BonusTest {
 
     Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
-    @Test
-    void getBonusNumber_7_7() {
-        LottoWithBonus bonusNumber = new LottoWithBonus(lotto, 7);
-        assertThat(bonusNumber.getBonusNumber()).isEqualTo(7);
+    @DisplayName("Normal value")
+    @ParameterizedTest(name = "[{index}] input {0} ")
+    @ValueSource(ints = {7, 20, 40, 45})
+    void getBonusNumber_7_7(int bonus) {
+        LottoWithBonus bonusNumber = new LottoWithBonus(lotto, bonus);
+        assertThat(bonusNumber.getBonusNumber()).isEqualTo(bonus);
     }
 
     @DisplayName("Contains Bonus")
-    @ParameterizedTest(name = "{index} input {0} ")
+    @ParameterizedTest(name = "[{index}] input {0} ")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
-    void validateContains_123456_6_NOTCONTAINS() {
+    void validateContains_123456_6_NOTCONTAINS(int bonus) {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-            new LottoWithBonus(lotto, 6);
+            new LottoWithBonus(lotto, bonus);
         });
         assertEquals(ErrorCode.NOT_CONTAINS_IN_LOTTO.getErrorMessage(), exception.getMessage());
     }
 
     @DisplayName("unvalidated Range")
-    @ParameterizedTest(name = "{index} input {0} ")
+    @ParameterizedTest(name = "[{index}] input {0} ")
     @ValueSource(ints = {-1, 0, 46})
     void validateRange_0or46_NOTINRANGE(int bonus) {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
