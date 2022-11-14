@@ -7,19 +7,39 @@ import java.util.stream.Collectors;
 
 public class LottoMachine {
 
+    private static final int COUNT = 1;
+    private static final int INIT_NUMBER = 0;
+
     public static Map<Prize, Integer> checkPrizes(Lotto winningNums, Lottos lottos,
-        int bonus) {
+        Bonus bonus) {
         Map<Prize, Integer> prizeBoard = initPrizeBoard();
-        for (Lotto lotto : lottos.lottos) {
-            boolean isBonus = isBonus(lotto, bonus);
-            int count = (int) lotto.getNumbers()
-                .stream()
-                .filter(number -> winningNums.getNumbers().contains(number))
-                .count();
-            Prize prize = Prize.valueOf(count, isBonus);
-            prizeBoard.put(prize, prizeBoard.get(prize) + 1);
-        }
+        cycleLottos(winningNums, lottos, bonus, prizeBoard);
         return prizeBoard;
+    }
+
+    private static void cycleLottos(Lotto winningNums, Lottos lottos, Bonus bonus,
+        Map<Prize, Integer> prizeBoard) {
+        for (Lotto lotto : lottos.lottos) {
+            boolean isBonus = isBonus(lotto, bonus.getBonusNum());
+            int count = countPerRank(winningNums, lotto);
+            Prize prize = Prize.valueOf(count, isBonus);
+            putPrize(prizeBoard, prize);
+        }
+    }
+
+    private static Integer putPrize(Map<Prize, Integer> prizeBoard, Prize prize) {
+        return prizeBoard.put(prize, addPrizeCount(prizeBoard, prize));
+    }
+
+    private static int countPerRank(Lotto winningNums, Lotto lotto) {
+        return (int) lotto.getNumbers()
+            .stream()
+            .filter(number -> winningNums.getNumbers().contains(number))
+            .count();
+    }
+
+    private static int addPrizeCount(Map<Prize, Integer> prizeBoard, Prize prize) {
+        return prizeBoard.get(prize) + COUNT;
     }
 
     private static boolean isBonus(Lotto lotto, int bonus) {
@@ -30,7 +50,7 @@ public class LottoMachine {
     private static Map<Prize, Integer> initPrizeBoard() {
         Map<Prize, Integer> prizeBoard = new HashMap<>();
         Arrays.stream(Prize.values())
-            .map(prize -> prizeBoard.put(prize, 0)).collect(Collectors.toList());
+            .map(prize -> prizeBoard.put(prize, INIT_NUMBER)).collect(Collectors.toList());
         return prizeBoard;
     }
 
