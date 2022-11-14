@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import lotto.domain.LottoPurchase;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -29,5 +31,12 @@ public class LottoPurchaseTest {
     void casePurchaseInputNotCorrectPriceUnit(){
         assertThatThrownBy(() -> new LottoPurchase("1800"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 구입 금액에 맞게 알맞은 로또 발행 개수를 리턴한다.")
+    @Test
+    void getLottoPublicationCount(){
+        LottoPurchase purchase = new LottoPurchase("2000");
+        assertThat(purchase.getLottoPublicationCount()).isEqualTo(2);
     }
 }
