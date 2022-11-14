@@ -1,33 +1,50 @@
 package lotto;
 
-import java.util.Scanner;
+
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int money = inputMoney();
+
+
     }
 
+
     public static int inputMoney() {
-        Scanner scanner = new Scanner(System.in);
-        String inputString = scanner.next();
+        String inputMoneyString = Console.readLine();
         int money;
+        boolean inputMoneyError = false;
 
         try {
-            money = checkInput(inputString);
+            money = checkInput(inputMoneyString);
         } catch (Exception e) {
-            String errorMessage = "[ERROR] 잘못된 입력이 들어왔습니다.";
-            throw new IllegalArgumentException(errorMessage);
+            inputMoneyError = true;
+            throw new IllegalArgumentException();
+        } finally {
+            if (inputMoneyError) {
+                String errorMessage = "[ERROR] 잘못된 입력이 들어왔습니다.";
+                System.out.println(errorMessage);
+            }
         }
 
         return money;
     }
 
+
     public static int checkInput(String input) {
+
         int inputInteger = Integer.parseInt(input);
         if (inputInteger % 1000 != 0) {
             throw new IllegalArgumentException();
         }
+
         return Integer.parseInt(input);
     }
+
+
+
+
 }
