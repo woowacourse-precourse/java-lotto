@@ -1,15 +1,11 @@
 package lotto;
 
-import lotto.domain.Customer;
-import lotto.domain.Lotto;
-import lotto.domain.LottoCompany;
-import lotto.domain.WinningNumber;
+import lotto.domain.*;
 import lotto.util.LottoRank;
 import lotto.view.LottoGameView;
 import lotto.view.ViewValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -149,9 +145,9 @@ class LottoTest {
         int money = 6000;
         int result = 6;
 
-        List<Lotto> lottos = customer.purchaseLottos(money);
+        Lottos lottos = customer.purchaseLottos(money);
 
-        assertThat(lottos.size()).isEqualTo(result);
+        assertThat(lottos.getLottoCount()).isEqualTo(result);
     }
 
     @DisplayName("당첨 번호가 1과 45사이의 값이 아니면 예외가 발생한다")
@@ -362,11 +358,10 @@ class LottoTest {
     @DisplayName("2개의 로또가 들어가면 2개의 당첨 결과가 나온다")
     @Test
     void getRankByLottos() {
-        List<Lotto> lottos = List.of(new Lotto(List.of(1, 10, 13, 25, 32, 43)), new Lotto(List.of(2, 11, 13, 25, 33, 45)));
+        Lottos lottos = new Lottos(List.of(new Lotto(List.of(1, 10, 13, 25, 32, 43)), new Lotto(List.of(2, 11, 13, 25, 33, 45))));
         WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
-        Customer customer = new Customer();
 
-        List<LottoRank> ranks = customer.getRanks(lottos, winningNumber);
+        List<LottoRank> ranks = lottos.getRanks(winningNumber);
 
         assertThat(ranks.size()).isEqualTo(2);
     }
@@ -374,22 +369,23 @@ class LottoTest {
     @DisplayName("랭크 결과 리스트를 입력하면 총 당첨금을 반환한다")
     @Test
     void getTotalPrizeMoneyByRanks() {
-        LottoCompany lottoCompany = new LottoCompany();
+        Lottos lottos = new Lottos(List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6))));
         List<LottoRank> ranks = List.of(LottoRank.SECOND_PLACE, LottoRank.SECOND_PLACE, LottoRank.THIRD_PLACE);
         int result = 61_500_000;
 
-        int totalPrizeMoney = lottoCompany.getTotalPrizeMoney(ranks);
+        int totalPrizeMoney = lottos.getTotalPrizeMoney(ranks);
 
         assertThat(totalPrizeMoney).isEqualTo(result);
     }
 
-    @DisplayName("지불한 금액과 상금을 입력하면 수익률이 반환된다")
+    @DisplayName("산 로또들과 랭크를 입력하면 수익률이 반환된다")
     @Test
     void getRateOfReturnByMoneyAndPrizeMoney() {
-        LottoCompany lottoCompany = new LottoCompany();
-        double result = 62.5;
+        Lottos lottos = new Lottos(List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6))));
+        List<LottoRank> ranks = List.of(LottoRank.SECOND_PLACE, LottoRank.SECOND_PLACE, LottoRank.THIRD_PLACE);
+        double result = 6_150_000.0;
 
-        double rateOfReturn = lottoCompany.getRateOfReturn(8000, 5000);
+        double rateOfReturn = lottos.getRateOfReturn(lottos.getTotalPrizeMoney(ranks));
 
         assertThat(rateOfReturn).isEqualTo(result);
     }
