@@ -27,7 +27,7 @@ public class Lotto {
     private void validateNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number >= 1 && number <= 45) {
-                return;
+                continue;
             }
             System.out.println(INVALID_NUMBER_RANGE_MESSAGE + number);
             throw new IllegalArgumentException(INVALID_NUMBER_RANGE_MESSAGE + number);
