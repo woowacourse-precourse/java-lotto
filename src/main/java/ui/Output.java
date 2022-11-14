@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.List;
+
 public class Output {
     private static final String PRICE_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String WINNING_NUMBER_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
@@ -16,5 +18,11 @@ public class Output {
 
     void printPurchaseQuantity(int purchaseQuantity) {
         System.out.println(purchaseQuantity + "개를 구매했습니다");
+    }
+
+    void printLottoNumber(List<List<Integer>> lottoNumbers) {
+        for (List<Integer> lottoNumber : lottoNumbers) {
+            System.out.println(lottoNumber);
+        }
     }
 }
