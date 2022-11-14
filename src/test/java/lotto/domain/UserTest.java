@@ -21,8 +21,8 @@ class UserTest {
         double winningAmount = 3000.0;
         user.setWinningAmount(winningAmount);
 
-        double result = user.calculateYield();
+        user.calculateYield();
         double expect = 33.3;
-        assertThat(result).isEqualTo(expect);
+        assertThat(user.getYield()).isEqualTo(expect);
     }
 }
