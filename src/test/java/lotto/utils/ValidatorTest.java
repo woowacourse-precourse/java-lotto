@@ -3,6 +3,7 @@ package lotto.utils;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import lotto.domain.ErrorMessage;
@@ -15,6 +16,17 @@ class ValidatorTest {
     @BeforeEach
     void beforeEach() {
         validator = new Validator();
+    }
+
+    @Test
+    public void 입력한_보너스_번호가_기존_로또_번호에_이미_있는_경우() {
+        //given
+        List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        int input = 3;
+        //when
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidBonusNumber(lottoNumbers, input));
+        //then
+        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.LOTTO_NUMBER_IS_DUPLICATED.toString());
     }
 
     @Test
