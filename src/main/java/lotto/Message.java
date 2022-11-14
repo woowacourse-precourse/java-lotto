@@ -16,6 +16,8 @@ public enum Message {
 	TOTAL_RETURN("총 수익률은 "),
 	// Error 메시지 관련 문구들
 	ERROR("[ERROR] "),
+	NOT_ENOUGH_MONEY("금액이 부족합니다."),
+	NOT_DIVISIBLE_MONEY("금액은 1000원으로 나누어 떨어져야 합니다."),
 	INVALID_AMOUNT_NUMBER("숫자는 6개를 입력해야 합니다."),
 	DUPLICATED_NUMBER("중복된 숫자가 있습니다."),
 	OUT_OF_RANGE("로또 번호는 1부터 45 사이의 숫자여야 합니다."),
