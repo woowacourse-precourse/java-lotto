@@ -32,6 +32,7 @@ public class CheckException {
         for (int winningNumber : winningNumbers) {
             checkValidBoundary(winningNumber);
         }
+        checkSixSize(winningNumbers);
     }
 
     public static void checkBonusNumber(int bonusNumber) throws IllegalArgumentException {
