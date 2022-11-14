@@ -16,7 +16,12 @@ public class InputView {
 
     public int getInputAmount() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
-        int inputAmount = parseInt(readLine());
+        int inputAmount = 0;
+        try {
+            inputAmount = parseInt(readLine());
+        } catch (NumberFormatException exception) {
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
         return validationInputAmount(inputAmount);
     }
 
