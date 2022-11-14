@@ -16,6 +16,6 @@ public class Output {
     }
 
     public static void showReturnOfRate(double returnOfRate) {
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", returnOfRate));
+        System.out.println(String.format("총 수익률은 %,.1f%%입니다.", returnOfRate));
     }
 }
