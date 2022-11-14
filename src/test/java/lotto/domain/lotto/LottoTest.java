@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -46,10 +47,29 @@ class LottoTest {
 
         var generatedIntegerNumberLotto = new Lotto(stringToIntegerList(input));
         var generatedStringLotto = new Lotto(input);
-        
+
         assertThat(generatedIntegerNumberLotto.numbers()).isSorted();
         assertThat(generatedStringLotto.numbers()).isSorted();
 
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1,2,3,4,5,6:1,2,3,4,5,6:6",
+            "1,2,3,4,5,6:1,2,3,4,5,7:5",
+            "1,2,3,4,5,6:1,2,3,4,7,8:4",
+            "1,2,3,4,5,6:1,2,3,7,8,9:3",
+            "1,2,3,4,5,6:1,2,7,8,9,10:2",
+            "1,2,3,4,5,6:1,7,8,9,10,11:1"
+    }, delimiterString = ":")
+    void 로또는_다른로또와_비교했을때_같은_번호를_가진_갯숫를_반환합니다(
+            final String lottoNumberInput,
+            final String otherLottoNumberInput,
+            final Integer count) {
+        var original = new Lotto(lottoNumberInput);
+        var target = new Lotto(otherLottoNumberInput);
+        var actual = original.getCountByCompareLotto(target);
+        assertThat(actual).isEqualTo(count);
     }
 
     private List<Integer> stringToIntegerList(final String input) {
