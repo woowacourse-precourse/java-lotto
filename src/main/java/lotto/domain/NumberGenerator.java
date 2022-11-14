@@ -20,6 +20,8 @@ public class NumberGenerator {
             Lotto quickPick = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             quickPicks.add(quickPick);
         }
+        Output.printQuickPick(quickPicks);
+
         return quickPicks;
     }
 }
