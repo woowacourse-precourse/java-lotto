@@ -1,30 +1,33 @@
-package lotto;
+package lotto.domain;
 
-public class Validation {
-    public static void money(String input) {
+public class Money {
+    private final int money;
+
+    public Money(String input) {
         validateNull(input);
         validateAllDigit(input);
         validateDividedByThousand(input);
+        this.money = Integer.parseInt(input);
     }
 
-    private static void validateNull(String input) {
+    private void validateNull(String input) {
         if (input == null) {
             throw (new IllegalArgumentException());
         }
     }
 
-    private static void validateAllDigit(String input) {
+    private void validateAllDigit(String input) {
         char c;
 
         for (int i = 0; i < input.length(); i++) {
             c = input.charAt(i);
             if (!Character.isDigit(c)) {
-                throw (new IllegalArgumentException());
+                throw (new IllegalArgumentException("[ERROR]오류"));
             }
         }
     }
 
-    private static void validateDividedByThousand(String input) {
+    private void validateDividedByThousand(String input) {
         int number = Integer.parseInt(input);
 
         if (number == 0) {
@@ -33,5 +36,9 @@ public class Validation {
         if ((number % 1000) != 0) {
             throw (new IllegalArgumentException());
         }
+    }
+
+    public int getMoney() {
+        return money;
     }
 }
