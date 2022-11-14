@@ -67,6 +67,6 @@ public class Application {
             totalmoney += (info.getRealMoney()* result.get(index));
         }
         double earn_rate = (double)(totalmoney/10)/(double)buylotto;
-        System.out.println("총 수익률은 "+earn_rate+"%입니다.");
+        System.out.println("총 수익률은 "+String.format("%.1f",earn_rate)+"%입니다.");
     }
 }
