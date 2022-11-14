@@ -92,7 +92,7 @@ public class Controller {
         // 구입 금액 입력
         View.Output("구입금액을 입력해 주세요.");
         String inputLottoAmount = View.Input();
-        Integer lottoAmount = Model.MakeStringToInteger(inputLottoAmount);
+        Integer lottoAmount = Integer.parseInt(inputLottoAmount);
 
         // 구입 금액 검증
         ValidatePurchaseAmount(lottoAmount);
