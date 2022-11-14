@@ -84,19 +84,19 @@ public class UserServiceTest {
     class bonusNumberTest {
         @ParameterizedTest
         @MethodSource("data")
-        void case1(String numbers, String bonusNumber, List<Integer> checkList) {
+        void case1(String numbers, String bonusNumber, Integer checkNumber) {
             userService.setMoneyToUser("1000");
             userService.setNumbersToUser(numbers);
             userService.setBonusNumber(bonusNumber);
             User user = userService.getUser();
-            Assertions.assertThat(user.getNumbers()).isEqualTo(checkList);
+            Assertions.assertThat(user.getBonusNumber()).isEqualTo(checkNumber);
         }
 
         Stream<Arguments> data() {
             return Stream.of(
-                    Arguments.of("1,2,3,4,5,6", "7", List.of(1, 2, 3, 4, 5, 6, 7)),
-                    Arguments.of("1,2,3,4,5,6", "8", List.of(1, 2, 3, 4, 5, 6, 8)),
-                    Arguments.of("1,2,3,4,45,6", "8", List.of(1, 2, 3, 4, 45, 6, 8))
+                    Arguments.of("1,2,3,4,5,6", "7", 7),
+                    Arguments.of("1,2,3,4,5,6", "8", 8),
+                    Arguments.of("1,2,3,4,45,6", "8", 8)
             );
         }
     }

@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.domain.Lotto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -33,17 +34,18 @@ public class LottoServiceTest {
     class lottoQuantityTest {
         @ParameterizedTest
         @MethodSource("data")
-        void case1(int money, int lottoQuantity) {
+        void case1(int quantity, int lottoQuantity) {
             LottoService lottoService = new LottoService();
-            lottoService.setLotto(money);
-            Assertions.assertThat(lottoQuantity).isEqualTo(lottoService.getLottoNumbers().size());
+            lottoService.setLotto(quantity);
+            int size = lottoService.getLottoNumbers().size();
+            Assertions.assertThat(size).isEqualTo(lottoQuantity);
         }
 
         Stream<Arguments> data() {
             return Stream.of(
-                    Arguments.of(1000, 1),
-                    Arguments.of(10000, 10),
-                    Arguments.of(123000, 123)
+                    Arguments.of(1, 1),
+                    Arguments.of(10, 10),
+                    Arguments.of(123, 123)
             );
         }
     }
