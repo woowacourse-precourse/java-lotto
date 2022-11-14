@@ -1,6 +1,5 @@
 package lotto.validator;
 
-import static lotto.constants.LottoConstant.LOTTERY_NUMBER_SEPARATOR;
 import static lotto.constants.LottoConstant.VALID_LOTTERY_NUMBER_LENGTH;
 import static lotto.constants.LottoConstant.VALID_MAX_RANGE;
 import static lotto.constants.LottoConstant.VALID_MIN_RANGE;
@@ -15,8 +14,7 @@ import java.util.Set;
 
 public class NumberValidator {
     public static void hasValidType(String number) throws IllegalArgumentException {
-        String tempNumber = number.replaceAll(LOTTERY_NUMBER_SEPARATOR, "");
-        if (!tempNumber.matches("-?\\d+")) {
+        if (!number.matches("-?\\d+")) {
             throw new IllegalArgumentException(INVALID_TYPE_ERROR_MESSAGE);
         }
     }
