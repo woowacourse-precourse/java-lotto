@@ -41,7 +41,16 @@ public class Application {
         UI.Lotto_Choice_Result_Print(Lotto_Choice_Result);
         return Lotto_Choice_Result;
     }
-    
+
+    public Integer Lotto_machine(List<Integer> Answer_Number,Integer Bonus_Number, List<Integer> Lotto_numbers){
+        Lotto_numbers.retainAll(Answer_Number);
+        Integer Common_Number = Lotto_numbers.size();
+        if (Common_Number ==5 & Answer_Number.contains(Bonus_Number) == true){
+            Common_Number = 7;
+        }
+        return Common_Number;
+    }
+
 
 
 
