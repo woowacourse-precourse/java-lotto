@@ -1,39 +1,31 @@
 package lotto.domain;
 
-import lotto.service.LottoGenerator;
-import lotto.service.UserIOService;
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static constants.Constants.LOTTO_PRICE;
-
 public class User {
-    public UserIOService ioService = new UserIOService();
-    public List<Lotto> purchaseLotto;
-    public int purchaseMoney;
-    public int purchaseLottoNum;
 
-    public void buyLotto() {
-        purchaseMoney = ioService.scanPayMoney();
-        purchaseLottoNum = purchaseMoney / LOTTO_PRICE;
-        purchaseLotto = issueLotto(purchaseLottoNum);
+    private int purchaseMoney;
+    private int purchaseLottoPiece;
+    private List<Lotto> purchaseLotto;
+
+    public User() {
     }
 
-    private List<Lotto> issueLotto(int purchaseLottoNum) {
-        LottoGenerator generator = new LottoGenerator();
-        List<Lotto> tempGeneratedLotto = new ArrayList<>();
-        for (int buy = 0; buy < purchaseLottoNum; buy++) {
-            List<Integer> generatedNums = generator.generateRandomNums();
-            Collections.sort(generatedNums);
-            tempGeneratedLotto.add(new Lotto(generatedNums));
-        }
-        return tempGeneratedLotto;
+    public User(int purchaseMoney, int purchaseLottoPiece, List<Lotto> purchaseLotto) {
+        this.purchaseMoney = purchaseMoney;
+        this.purchaseLottoPiece = purchaseLottoPiece;
+        this.purchaseLotto = purchaseLotto;
     }
 
-    public void printBoughtLotto(){
-        System.out.println(ioService.printIssuedLotto(purchaseLottoNum,purchaseLotto));
+    public int getPurchaseMoney() {
+        return purchaseMoney;
     }
 
+    public int getPurchaseLottoPiece() {
+        return purchaseLottoPiece;
+    }
+
+    public List<Lotto> getPurchaseLotto() {
+        return purchaseLotto;
+    }
 }

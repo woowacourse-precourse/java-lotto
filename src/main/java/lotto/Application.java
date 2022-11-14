@@ -2,19 +2,18 @@ package lotto;
 
 import lotto.domain.User;
 import lotto.domain.WinningLotto;
-import lotto.service.UserIOService;
+import lotto.service.UserService;
+import lotto.service.WinningLottoService;
 
 public class Application {
+    private static final UserService userService = new UserService();
+    private static final WinningLottoService winningLottoService = new WinningLottoService();
+
     public static void main(String[] args) {
 
-        User user = new User();
-        user.buyLotto();
-        user.printBoughtLotto();
-
-        UserIOService ioService = new UserIOService();
-        WinningLotto answer = new WinningLotto(ioService.scanWinningNumber());
-        System.out.println(answer);
-        
-
+        User user = userService.buyLotto();
+        userService.printBoughtLotto(user);
+        WinningLotto winningLotto = winningLottoService.scanWinningNums();
+        System.out.println(winningLotto);
     }
 }

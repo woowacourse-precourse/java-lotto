@@ -1,7 +1,7 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Lotto;
+import lotto.domain.WinningLotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,35 +10,19 @@ import java.util.stream.Collectors;
 
 import static constants.Constants.*;
 
-public class UserIOService {
+public class WinningLottoService {
 
-    public int scanPayMoney() {
-        System.out.println(START_MSG);
-        int money = Integer.parseInt(Console.readLine());
-        validateMoney(money);
-        return money;
+    public WinningLotto scanWinningNums(){
+        List<Integer> nums = scanNumbers();
+        int bonusNum = scanBonusNumber(nums);
+
+        return new WinningLotto(nums,bonusNum);
     }
 
-    public void validateMoney(int money) {
-        if (money % LOTTO_PRICE == 0) return;
-        throw new IllegalArgumentException(PAY_MONEY_ERROR);
-    }
-
-
-    public String printIssuedLotto(int purchaseLottoNum, List<Lotto> purchaseLotto) {
-        StringBuilder printString = new StringBuilder();
-        printString.append(BLANK_BR); //한줄 공백
-        printString.append(purchaseLottoNum).append(PURCHASE_MSG).append("\n");
-        for(Lotto now : purchaseLotto){
-            printString.append(now).append("\n");
-        }
-        return printString.toString();
-    }
-
-    public List<Integer> scanWinningNumber(){
+    public List<Integer> scanNumbers(){
         System.out.println(SCAN_ANSWER_MSG);
-        List<Integer> scanNumbers = Arrays.stream(Console.readLine().split(","))
-            .mapToInt(Integer::valueOf).sorted().boxed().collect(Collectors.toList());
+        List<Integer> scanNumbers = Arrays.stream(Console.readLine().split(",")).mapToInt(Integer::valueOf)
+            .sorted().boxed().collect(Collectors.toList());
         validateAnswer(scanNumbers);
         return scanNumbers;
     }
@@ -60,7 +44,7 @@ public class UserIOService {
 
     private void checkRange(List<Integer> scanNumbers) {
         for(int num:scanNumbers){
-            if(num<LOTTO_RANGE_START || LOTTO_RANGE_END<num)
+            if(num< LOTTO_RANGE_START || LOTTO_RANGE_END <num)
                 throw new IllegalArgumentException(ANSWER_RANGE_ERROR);
         }
     }
@@ -84,10 +68,10 @@ public class UserIOService {
     private void validateBonusNumber(int bonusNumber, List<Integer> lottoNumbers) {
         checkRange(List.of(bonusNumber));
         //checkBonusSize(bonusNumber);
-        checkBounsDuplicate(bonusNumber,lottoNumbers);
+        checkBonsDuplicate(bonusNumber,lottoNumbers);
     }
 
-    private void checkBounsDuplicate(int bonusNumber, List<Integer> lottoNumbers) {
+    private void checkBonsDuplicate(int bonusNumber, List<Integer> lottoNumbers) {
         if(lottoNumbers.contains(bonusNumber))
             throw new IllegalArgumentException(BONUS_DUPLICATE_ERROR);
     }
@@ -95,6 +79,5 @@ public class UserIOService {
 //    private void checkBonusSize(int bonusNumber) {
 //        if(bonusNumber)
 //    }
-
 
 }
