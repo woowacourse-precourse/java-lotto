@@ -21,8 +21,15 @@ public class InputConsole {
         return money;
     }
 
-    private boolean isEnoughMoney(String money) {
+    private static boolean isEnoughMoney(String money) {
         if (Integer.parseInt(money) < LOTTO_PRICE) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isOneThousandUnits(String money) {
+        if (Integer.parseInt(money) % LOTTO_PRICE != 0) {
             return false;
         }
         return true;
