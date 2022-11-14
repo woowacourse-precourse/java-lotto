@@ -18,6 +18,7 @@ public class Application {
         LottoStats lottoStats = new LottoStats();
         lottoStats.calculationStats(purchase,winningNumber,bonus);
 
+        Render.StatsResultPrint(lottoStats.statistics(),lottoStats.getEarning());
 
     }
     public static void programStart(){
