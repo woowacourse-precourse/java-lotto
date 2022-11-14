@@ -28,7 +28,7 @@ class LottoTest {
     @Test
     void sortNumbers() {
         //given
-        List<Integer> numbers = List.of(42,35,45,32,34,21);
+        List<Integer> numbers = List.of(42, 35, 45, 32, 34, 21);
 
         //when
         Lotto lotto = new Lotto(numbers);

@@ -15,35 +15,35 @@ public class WinnerLottoTest {
     @DisplayName("당첨번호 입력 시 숫자가 아닌값이 포함되면 예외가 발생한다.")
     @Test
     void numberNotInt() {
-        assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,안녕","7"))
+        assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,안녕", "7"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스번호 입력 시 숫자가 아닌값이 포함되면 예외가 발생한다.")
     @Test
     void bonusNotInt() {
-        assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,6","안녕"))
+        assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,6", "안녕"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스번호가 1개보다 많은 경우 예외가 발생한다.")
     @Test
     void bonusOverOne() {
-        assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,6","7,8"))
+        assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,6", "7,8"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스번호가 1개보다 적은 경우 예외가 발생한다.")
     @Test
     void bonusUnderOne() {
-        assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,6",""))
+        assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,6", ""))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스번호와 당첨번호 중복 시 예외가 발생한다.")
     @Test
     void bonusDuplicate() {
-        assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,6","4"))
+        assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,6", "4"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -52,7 +52,7 @@ public class WinnerLottoTest {
     void convertToLotto() {
         //given
         String inputNumbers = "1,2,3,4,5,6";
-        WinnerLotto winnerLotto = new WinnerLotto(inputNumbers,"7");
+        WinnerLotto winnerLotto = new WinnerLotto(inputNumbers, "7");
 
         //when
         Lotto lotto = winnerLotto.getWinLotto();
@@ -65,10 +65,10 @@ public class WinnerLottoTest {
     @Test
     void noReward() {
         //given
-        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6","7");
+        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6", "7");
 
         //when
-        Lotto lotto = new Lotto(List.of(38,39,40,41,43,45));
+        Lotto lotto = new Lotto(List.of(38, 39, 40, 41, 43, 45));
         LottoRank lottoRank = winnerLotto.matchAll(lotto);
 
         //then
@@ -80,10 +80,10 @@ public class WinnerLottoTest {
     @Test
     void noRewardAnd() {
         //given
-        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6","7");
+        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6", "7");
 
         //when
-        Lotto lotto = new Lotto(List.of(7,39,40,41,43,45));
+        Lotto lotto = new Lotto(List.of(7, 39, 40, 41, 43, 45));
         LottoRank lottoRank = winnerLotto.matchAll(lotto);
 
         //then
@@ -95,10 +95,10 @@ public class WinnerLottoTest {
     @Test
     void matchFifth() {
         //given
-        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6","7");
+        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6", "7");
 
         //when
-        Lotto lotto = new Lotto(List.of(1,2,3,41,43,45));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 41, 43, 45));
         LottoRank lottoRank = winnerLotto.matchAll(lotto);
 
         //then
@@ -110,10 +110,10 @@ public class WinnerLottoTest {
     @Test
     void matchFifthAnd() {
         //given
-        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6","7");
+        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6", "7");
 
         //when
-        Lotto lotto = new Lotto(List.of(1,2,3,7,43,45));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 7, 43, 45));
         LottoRank lottoRank = winnerLotto.matchAll(lotto);
 
         //then
@@ -125,10 +125,10 @@ public class WinnerLottoTest {
     @Test
     void matchFourth() {
         //given
-        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6","7");
+        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6", "7");
 
         //when
-        Lotto lotto = new Lotto(List.of(1,2,3,4,43,45));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 43, 45));
         LottoRank lottoRank = winnerLotto.matchAll(lotto);
 
         //then
@@ -140,10 +140,10 @@ public class WinnerLottoTest {
     @Test
     void matchFourthAnd() {
         //given
-        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6","7");
+        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6", "7");
 
         //when
-        Lotto lotto = new Lotto(List.of(1,2,3,4,7,45));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 7, 45));
         LottoRank lottoRank = winnerLotto.matchAll(lotto);
 
         //then
@@ -155,10 +155,10 @@ public class WinnerLottoTest {
     @Test
     void matchThird() {
         //given
-        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6","7");
+        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6", "7");
 
         //when
-        Lotto lotto = new Lotto(List.of(1,2,3,5,6,45));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 5, 6, 45));
         LottoRank lottoRank = winnerLotto.matchAll(lotto);
 
         //then
@@ -170,10 +170,10 @@ public class WinnerLottoTest {
     @Test
     void matchSecond() {
         //given
-        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6","7");
+        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6", "7");
 
         //when
-        Lotto lotto = new Lotto(List.of(1,2,3,5,6,7));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 5, 6, 7));
         LottoRank lottoRank = winnerLotto.matchAll(lotto);
 
         //then
@@ -185,10 +185,10 @@ public class WinnerLottoTest {
     @Test
     void matchFirst() {
         //given
-        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6","7");
+        WinnerLotto winnerLotto = new WinnerLotto("1,2,3,4,5,6", "7");
 
         //when
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         LottoRank lottoRank = winnerLotto.matchAll(lotto);
 
         //then

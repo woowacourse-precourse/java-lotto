@@ -39,19 +39,17 @@ public class LottoNumber implements Comparable<LottoNumber> {
 
     @Override
     public int compareTo(LottoNumber lotto) {
-        if (this.number > lotto.number) {
-            return 1;
-        } else if (this.number < lotto.number) {
-            return -1;
-        } else {
-            return 0;
-        }
+        return Integer.compare(this.number, lotto.number);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         LottoNumber that = (LottoNumber) o;
         return number == that.number;
     }

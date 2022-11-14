@@ -16,8 +16,8 @@ public class LottoResultTest {
     void lottoCount() {
         //given
         Map<LottoRank, Integer> rankResult = new TreeMap<>();
-        LottoRank rank1 = LottoRank.matchRank(3,true);
-        LottoRank rank2 = LottoRank.matchRank(4,false);
+        LottoRank rank1 = LottoRank.matchRank(3, true);
+        LottoRank rank2 = LottoRank.matchRank(4, false);
         rankResult.put(rank1, 1);
         rankResult.put(rank2, 1);
 
