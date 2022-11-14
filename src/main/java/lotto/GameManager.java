@@ -1,7 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.*;
+import lotto.domain.Checker;
+import lotto.domain.Lotto;
+import lotto.domain.MoneyManager;
+import lotto.domain.Publisher;
 import lotto.dto.LottoResultDto;
 import lotto.util.ResultPrice;
 
@@ -20,30 +23,20 @@ public class GameManager {
     }
 
     public void play() {
-        int money = getMoney();
+        Printer.printInfoMoneyInput();
+        String money = Console.readLine();
+
         MoneyManager moneyManager = new MoneyManager(money);
 
-        List<Lotto> lottoGroup = getLottoGroup(money);
+        List<Lotto> lottoGroup = publisher.getLottoGroup(money);
+
         Printer.printLottoGroup(lottoGroup);
-
         Map<ResultPrice, Integer> totalScore = getTotalScore(lottoGroup);
+
         Printer.printTotalScore(totalScore);
-
         Double moneyReturn = moneyManager.getMoneyReturn(totalScore);
+
         Printer.printMoneyReturn(moneyReturn);
-    }
-
-    private int getMoney() {
-        Printer.printInfoMoneyInput();
-
-        String money = Console.readLine();
-        validation.validateMoneyInput(money);
-
-        return Integer.parseInt(money);
-    }
-
-    private List<Lotto> getLottoGroup(int money) {
-        return publisher.getLottoGroup(money);
     }
 
     private List<Integer> getResultNumbers() {
