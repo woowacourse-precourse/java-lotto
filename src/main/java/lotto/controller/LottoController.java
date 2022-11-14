@@ -27,9 +27,10 @@ public class LottoController {
         this.bonusNumber = new BonusNumber();
         this.winningHistory = new WinningHistory();
     }
+
     //메소드명 필수 확인
     public void run() {
-        inputView.printRequest();
+        inputView.printLottoMoney();
         lottoMoney.inputMoney(Console.readLine());
         lottos.buy(lottoMoney.getLottoQuantity());
         outputView.printLottos(lottos.getLottos());
