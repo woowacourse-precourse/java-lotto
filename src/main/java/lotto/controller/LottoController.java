@@ -13,6 +13,8 @@ public class LottoController implements Controller {
 
     public void inputMoney(String input) {
         validateInput(input, MoneyValidator.values());
+        int money = Integer.parseInt(input);
+        service.buyLottos(money);
     }
 
     }
