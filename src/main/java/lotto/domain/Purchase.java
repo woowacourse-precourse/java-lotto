@@ -32,6 +32,10 @@ public class Purchase {
         return lottos;
     }
 
+    public int createLottoBonusNumber() {
+        return NumberGenerator.createRandomNumber();
+    }
+
     public void printCount() {
         System.out.println(count + "를 구매했습니다.");
     }
