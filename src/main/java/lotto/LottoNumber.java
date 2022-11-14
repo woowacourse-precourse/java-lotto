@@ -14,9 +14,12 @@ public class LottoNumber {
 
     public void LottoBuyPriceInput(){
         System.out.println("구입금액을 입력해 주세요.");
-        String buyPrice = Console.readLine();
+        int buyPrice = Integer.parseInt(Console.readLine());
         System.out.println();
-        int lottoNum = Integer.parseInt(buyPrice) / 1000;
+        if(buyPrice % 1000 != 0){
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위여야 합니다.");
+        }
+        int lottoNum = buyPrice / 1000;
         lottoAmount = lottoNum;
         System.out.println(lottoNum + "개를 구매했습니다.");
     }
