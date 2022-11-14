@@ -16,6 +16,7 @@ public class Application {
         application.insertPriceAndSaveNumber();
         application.makeArray();
         application.makeEachArrays();
+        application.printRandomLottos();
     }
 
     private void printInsertPrice(){
@@ -53,6 +54,19 @@ public class Application {
             index++;
         }
         return result;
+    }
+
+    private void printRandomLottos(){
+        System.out.println(insertedNumber/1000 + "를 구매했습니다.");
+        for(int i =0; i < insertedNumber/1000; i++){
+            System.out.print("[");
+            for(int j=0; j < 6; j++){
+                System.out.print(randomLottos.get(i).get(j));
+                if(j != 5) System.out.print(randomLottos.get(i).get(j) + ", ");
+            }
+            System.out.print("]");
+            System.out.println();
+        }
     }
 
     public List<List<Integer>> getRandomLottos() {
