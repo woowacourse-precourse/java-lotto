@@ -26,7 +26,7 @@ public class Lotto {
         return "[" + numbers.stream()
                 .sorted()
                 .map(String::valueOf)
-                .collect(Collectors.joining(","))
+                .collect(Collectors.joining(", "))
                 + "]";
     }
 

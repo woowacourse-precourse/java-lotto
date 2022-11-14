@@ -16,7 +16,9 @@ public class WinningStat {
 
     public void add(int number, boolean bonus) {
         Prize prize = Prize.findPrize(number, bonus);
-        winningStat.replace(prize, winningStat.get(prize) + 1);
+        if (prize !=Prize.NONE) {
+            winningStat.replace(prize, winningStat.get(prize) + 1);
+        }
     }
 
     public int getNumber(Prize prize) {
@@ -30,7 +32,8 @@ public class WinningStat {
                 .orElse(0);
     }
 
-    public String yield(int price) {
-        return String.format("%.2f", (double) totalPrize() / price * 10);
+    public String yield(int amount) {
+        System.out.println(totalPrize());
+        return String.format("%.1f", (double) totalPrize() / amount * 100);
     }
 }

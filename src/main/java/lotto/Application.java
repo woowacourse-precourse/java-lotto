@@ -9,11 +9,12 @@ public class Application {
         OutputView outputView = new OutputView();
         LotteryMachine lotteryMachine = new LotteryMachine();
         WinningStat winningStat;
+        int amount= inputView.getAmount();
 
-        lotteryMachine.buyLottos(inputView.getAmount());
+        lotteryMachine.buyLottos(amount);
         outputView.printList(lotteryMachine.getLists());
         winningStat = lotteryMachine.compareNumbers(inputView.getLottoNumber(), inputView.getBonusNumber());
         outputView.printStats(winningStat);
-
+        outputView.printYield(winningStat.yield(amount));
     }
 }
