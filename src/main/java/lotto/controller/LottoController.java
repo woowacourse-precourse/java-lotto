@@ -36,16 +36,16 @@ public class LottoController {
 		return new LottoTicket(lottoCount);
 	}
 
-	private LottoResult createLottoResult(LottoTicket tickets, WinningNumber winningNumber, BonusNumber bonusNumber) {
-		return tickets.calculateRank(winningNumber, bonusNumber);
-	}
-
 	private WinningNumber createWinningNumber() {
 		return new WinningNumber(InputView.inputWinningNumber());
 	}
 
 	private BonusNumber createBonusNumber(WinningNumber winningNumber) {
 		return new BonusNumber(InputView.inputBonusNumber(), winningNumber.getWinningNumber());
+	}
+
+	private LottoResult createLottoResult(LottoTicket tickets, WinningNumber winningNumber, BonusNumber bonusNumber) {
+		return tickets.calculateRank(winningNumber, bonusNumber);
 	}
 
 	private void printResult(LottoResult lottoResult, LottoAmount lottoAmount) {
