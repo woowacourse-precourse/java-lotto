@@ -5,8 +5,10 @@ import static lotto.domain.SystemMessage.DUPLICATE_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.IS_MONEY_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.IS_ONLY_NUMBER_ERROR_MESSAGE;
+import static lotto.domain.SystemMessage.LESS_THAN_THOUSAND_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.LIMIT_NUMBER_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.LOTTO_ONLY_NUMBER_ERROR_MESSAGE;
+import static lotto.domain.SystemMessage.MULTIPLE_THOUSAND_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.PATTERN_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -59,6 +61,7 @@ public class InputView {
         try {
             System.out.println(Message.PURCHASE_AMOUNT.getValue());
             int money = inputNum();
+            validateThousand(money);
             return money;
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException(ERROR_MESSAGE + IS_MONEY_ERROR_MESSAGE);
@@ -135,4 +138,18 @@ public class InputView {
             validateCheckNumberLimit(num);
         }
     }
+    private static void validateThousand(Integer money) {
+        validateLessThanThousand(money);
+        validateMultipleThousand(money);
+
+    }
+    private static void validateLessThanThousand(Integer money) {
+        if(money < 1000)
+            throw new IllegalArgumentException(ERROR_MESSAGE + LESS_THAN_THOUSAND_ERROR_MESSAGE);
+    }
+    private static void validateMultipleThousand(Integer money) {
+        if(money % 1000 != 0)
+            throw new IllegalArgumentException(ERROR_MESSAGE + MULTIPLE_THOUSAND_ERROR_MESSAGE);
+    }
+
 }

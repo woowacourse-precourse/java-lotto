@@ -10,5 +10,7 @@ public class SystemMessage {
     public static final String IS_MONEY_ERROR_MESSAGE = "구입 금액은 숫자여야 합니다.";
     public static final String LOTTO_ONLY_NUMBER_ERROR_MESSAGE = "당첨 번호는 숫자여야 합니다.";
     public static final String YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
-
-}
+    public static final String LESS_THAN_THOUSAND_ERROR_MESSAGE = "구입 금액은 1000 이상이어야 합니다.\n";
+    public static final String MULTIPLE_THOUSAND_ERROR_MESSAGE = "구입 금액은 1000원 단위여야 합니다\n";
+}   
+        
