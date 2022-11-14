@@ -16,8 +16,12 @@ public class LottoNumberManagement {
     private int bonusNumber;
 
     public LottoNumberManagement() {
+
     }
 
+    private void init(){
+        numbers.clear();
+    }
     public void setRandomNumbers() {
         this.numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBERS_SIZE);
     }
