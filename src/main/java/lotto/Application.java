@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,7 +17,7 @@ public class Application {
     }
     public static int askmoney(){
         System.out.println("구입금액을 입력해 주세요.");
-        String input = camp.nextstep.edu.missionutils.Console.readLine();
+        String input = Console.readLine();
         int buymoney = Integer.parseInt(input), buylotto;
 
         if(buymoney%1000 != 0)
@@ -29,5 +30,13 @@ public class Application {
         for(int i=0;i<buylotto;i++){
             System.out.println(lottonumbers.get(i));
         }
+    }
+    public static List<Integer> askwinningnum(){
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        List<Integer> winningnumbers = new ArrayList<>();
+        String input = Console.readLine();
+
+
+        return winningnumbers;
     }
 }
