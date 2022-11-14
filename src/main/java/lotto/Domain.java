@@ -76,13 +76,13 @@ public class Domain {
         return lottos;
     }
 
-    public float getYield(List<Integer> rankList, int numberOfLotto) {
+    public String getYield(List<Integer> rankList, int numberOfLotto) {
         float sumWinnings = 0;
         for (int i = 1; i < 6; i++) {
             sumWinnings += rankList.get(i) * getReward(i);
         }
 
-        return sumWinnings / (numberOfLotto*1000);
+        return String.format("%.1f", sumWinnings / (numberOfLotto * 10));
     }
 
     public int getReward(int rank) {
