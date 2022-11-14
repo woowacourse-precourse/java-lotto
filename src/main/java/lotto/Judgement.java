@@ -42,6 +42,10 @@ public class Judgement {
             compare(lotteryNumber);
         }
 
+        printResult();
+    }
+
+    private void printResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + search(3, false) + "개");
