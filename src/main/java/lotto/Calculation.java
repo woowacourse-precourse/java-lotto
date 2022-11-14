@@ -13,15 +13,21 @@ public class Calculation {
     public static int compareLotto(List<Integer> winNumbers, int bonus, List<Integer> lotto) {
         int[] result = new int[2];
         for (int number : lotto) {
-            if (winNumbers.contains(number)) {
-                result[0]++;
-                continue;
-            }
-            if (number == bonus) {
-                result[1]++;
-            }
+            int winOrBonus = isWinOrBonus(winNumbers, bonus, number);
+            if (winOrBonus != -1)
+                result[winOrBonus]++;
         }
         return getRank(result[0], result[1]);
+    }
+
+    public static int isWinOrBonus(List<Integer> winNumbers, int bonus, int number) {
+        if (winNumbers.contains(number)) {
+            return 0;
+        }
+        if (number == bonus) {
+            return 1;
+        }
+        return -1;
     }
 
     private static int getRank(int winCount, int bonusCount) {
