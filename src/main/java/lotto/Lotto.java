@@ -17,11 +17,6 @@ public class Lotto {
         }
     }
 
-    public List<Integer> printNumber() {
-        List<Integer> autoTicketNumbers = new ArrayList<>();
-        for (Integer data : numbers) {
-            autoTicketNumbers.add(data);
-        }
 
         return autoTicketNumbers;
     }
