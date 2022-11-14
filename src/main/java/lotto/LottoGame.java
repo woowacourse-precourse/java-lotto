@@ -49,7 +49,8 @@ public class LottoGame {
     public void getLottoWinningNumberInput(){
         String input=inputView.inputWinningNumber();
         List<String> inputWinningLottoNumbers = Arrays.asList(input.split(","));
-        if(inputChecker.checkInputWinningLottoNumbers(inputWinningLottoNumbers)){
+
+        if(inputChecker.checkInputWinningLottoNumbersIsNumeric(inputWinningLottoNumbers)){
 
         }
     }

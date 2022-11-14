@@ -19,11 +19,13 @@ public class InputChecker {
         }
         return true;
     }
-    public boolean isSizeSix(List<String> inputWinningLottoNumbers)throws IllegalArgumentException{
-        if(inputWinningLottoNumbers.size()!=6){
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_SIZE_ERROR.print());
+    public boolean isNumeric(String s){
+        try{
+            Integer.parseInt(s);
+            return true;
+        }catch (NumberFormatException e){
+            return false;
         }
-        return true;
     }
     public boolean checkInputMoney(String input) throws IllegalArgumentException{
         if(!isDigit(input) || !isMultipleThousand(Integer.parseInt(input))){
@@ -31,8 +33,12 @@ public class InputChecker {
         }
         return true;
     }
-    public boolean checkInputWinningLottoNumbers(List<String> inputWinningLottoNumbers) throws IllegalArgumentException{
-        if(!isSizeSix(inputWinningLottoNumbers)) return false;
+    public boolean checkInputWinningLottoNumbersIsNumeric(List<String> inputWinningLottoNumbers) throws IllegalArgumentException{
+        for(String number : inputWinningLottoNumbers){
+            if(!isNumeric(number)){
+                throw new IllegalArgumentException(ErrorMessage.INPUT_LOTTO_NUMBERS_NOT_NUMERIC.print());
+            }
+        }
         return true;
     }
 }
