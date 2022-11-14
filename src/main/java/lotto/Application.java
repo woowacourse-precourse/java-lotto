@@ -18,6 +18,7 @@ public class Application {
         // TODO: 프로그램 구현
 
 
+
         System.out.println("구입 금액을 입력 해주세요.");
         // 구입 금액 입력 받기
         int account = setAccount();
@@ -49,8 +50,33 @@ public class Application {
         // 로또 당첨 내역 출력
         announceResult(sumResult);
 
+        // 수익율 계산
+        calYield(sumResult , account);
 
 
+    }
+
+    private static void calYield(List<int[]> sumResult , int account) {
+        int total = 0;
+        int[] rightNumber = sumResult.get(0);
+        int[] bonusNumber = sumResult.get(1);
+        int[] value = {0, 0, 0, 5000, 50000, 1500000, 30000000 , 2000000000};
+        for (int i = 3; i <= 6; i++) {
+            if(rightNumber[i] > 0){
+                total += (rightNumber[i] * value[i]);
+            }
+            if (rightNumber[5] >= 1 && bonusNumber[i] > 0) {
+                total += (rightNumber[i] * value[6]);
+            }
+            if (rightNumber[6] >= 1){
+                total += (rightNumber[i] * value[7]);
+            }
+        }
+
+        System.out.println("총 수익 : " + total);
+        System.out.println("총 투자 금액 : " + account);
+        float yield =  (account / (float) total) * 100;
+        System.out.println("총 수익률은" + yield + "% 입니다.");
     }
 
     private static void announceResult(List<int[]> sumResult) {
