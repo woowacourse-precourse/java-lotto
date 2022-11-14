@@ -13,6 +13,8 @@ public final class OutputView {
     }
 
     public static void printReward(List<Award> awards) {
+        printMessage("당첨 통계");
+        printMessage("---");
         printMessage("3개 일치 (5,000원) - " + Collections.frequency(awards, Award.THREE) + "개");
         printMessage("4개 일치 (50,000원) - " + Collections.frequency(awards, Award.FOUR) + "개");
         printMessage("5개 일치 (1,500,000원) - " + Collections.frequency(awards, Award.FIVE) + "개");
