@@ -1,6 +1,5 @@
 package lotto;
 
-import enumCollections.RankIndex;
 import enumCollections.RankNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ public class CheckerTest {
     @DisplayName("로또번호와 당첨번호를 비교하여 당첨된 등수를 알 수 있다.")
     @Test
     void compareLottoNumbersTest() {
-        assertThat(Checker.getRank(5)).isEqualTo(RankIndex.THIRD);
+        assertThat(Checker.getRank(5)).isEqualTo(RankNumber.THIRD);
     }
 
     @DisplayName("당첨번호와 일치하는 번호의 개수를 알 수 있다.")
