@@ -26,15 +26,15 @@
   
 
 
-- [] 당첨 번호 구현 WinnningNumber
+- [X] 당첨 번호 구현 WinnningNumber
   - [X] 당첨번호 입력 조건: 번호개수 6, 중복X, 쉼표 기준 
     -  중복X WinningNumber#noDuplicateNumber
   - [X] 보너스 번호 입력 조건, 당첨번호와 중복X
 
 
-- [] 로또 등수 구현: Lotto#LottoChecker
-  - [] 로또 번호, 당첨 번호 비교
-    - [] 2등 조건 구현
+- [] 로또 등수 구현: Lotto#lottoChecker
+  - [] 로또 번호, 당첨 번호 비교 lotto#compareNumber
+    - [] 2등 조건 구현 lotto#secondPlaceCheck
 
   
 - [] 결과 출력 OutputPrinter

@@ -16,5 +16,21 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public int lottoChecker() {
+
+    }
+
+    private int compareNumber(List<Integer> winNumbers, List<Integer> lottoNumbers) {
+        int winCount = 0;
+        for (Integer winNumber: winNumbers) {
+            if (lottoNumbers.contains(winNumber)) {
+               winCount++;
+            }
+        }
+        return winCount;
+    }
+
+    private Boolean secondPlaceCheck() {
+
+    }
 }
