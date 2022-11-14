@@ -43,7 +43,7 @@ public class WinningStatistics {
         return numOfMatch == THIRD_SCORE && isBonusNumberMatch;
     }
 
-    public double computeTotalYield() {
+    private double computeTotalYield() {
         double rewardSum = sumOfReward();
         int lottoPriceSum = sumOfLottoPrice();
 
