@@ -7,6 +7,7 @@ import java.util.List;
 
 public class LotteryShop {
     public static int dollar;
+    public static List<Lotto> my_lottery;
 
     public static int get_number_of_tickets() {
         int number_of_tickets = dollar / 1000;
@@ -25,5 +26,10 @@ public class LotteryShop {
         }
 
         return tickets;
+    }
+
+    public static void get_my_lottery() {
+        int number_of_tickets = get_number_of_tickets();
+        my_lottery = generate_lottery(number_of_tickets);
     }
 }

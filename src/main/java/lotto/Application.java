@@ -10,6 +10,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             LotteryShop.dollar = get_dollar();
+            LotteryShop.get_my_lottery();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
