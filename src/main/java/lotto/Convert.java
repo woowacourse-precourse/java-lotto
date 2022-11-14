@@ -9,12 +9,12 @@ public class Convert {
         InputValidation.numberFormatExceptionValidation(cost);
         return Integer.parseInt(cost);
     }
-    public static Lotto winningConvert(String numbers){
-        InputValidation.winningNumberValidation(numbers);
-        return new Lotto(
-                Arrays.stream(numbers.split(","))
-                        .map(number->Integer.parseInt(number))
-                        .collect(Collectors.toList()));
+    public static Lotto winningConvert(String stringNumbers){
+        InputValidation.winningNumberValidation(stringNumbers);
+        List<Integer> numbers = Arrays.stream(stringNumbers.split(","))
+                .map(number->Integer.parseInt(number))
+                .collect(Collectors.toList());
+        return new Lotto(numbers);
     }
     public static Integer bonusConvert(String bonus,Lotto winningNumber){
         InputValidation.bonusNumberValidation(bonus,winningNumber);

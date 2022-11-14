@@ -17,7 +17,6 @@ public class InputValidation {
         try{
             Integer.parseInt(stringNumber);
         }catch (NumberFormatException e){
-
             throw new IllegalArgumentException(NUMBER_FORMAT_MESSAGE);
         }
         return true;
