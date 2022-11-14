@@ -22,7 +22,6 @@ public class ValidationException {
         String regExp = "[1-9]|[1-3]\\d|4[0-5]";
         for (String input : targetInput.split(",")) {
             if (!Pattern.matches(regExp, input)) {
-                System.out.println("input = " + input);
                 throw new IllegalArgumentException(ERROR + ERROR_MESSAGE_TARGET);
             }
         }

@@ -2,18 +2,18 @@ package lotto;
 
 import lotto.controller.LottoGenerator;
 import lotto.controller.ValidationException;
+import lotto.model.Lotto;
 import lotto.model.UserLottoNum;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static lotto.controller.LottoGenerator.generateLottoNumber;
 
 public class LottoManager {
 
     UserLottoNum userLottoNum;
+    Lotto targetLottoNum;
+    int bonusNumber;
 
     public void userWantLotto() {
 
@@ -27,8 +27,20 @@ public class LottoManager {
         }
     }
 
-    /*public void setLottoNumbers() {
+    public void setWinningLottoNum() {
 
+        String winningNumber = InputView.lottoInput();
+
+        if (ValidationException.checkValidTargetNumber(winningNumber)) {
+            targetLottoNum = new Lotto(LottoGenerator.splitTargetLotto(winningNumber));
+        }
     }
-*/
+
+    public void setBonusNumber() {
+        String bonusInput = InputView.bonusInput();
+        this.bonusNumber = Integer.parseInt(bonusInput);
+    }
+
+
+
 }

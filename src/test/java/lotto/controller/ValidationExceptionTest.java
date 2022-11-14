@@ -25,7 +25,7 @@ class ValidationExceptionTest {
 
     @Test
     @DisplayName("당첨 번호 유효성 검사")
-    void corretTargetNumber() {
+    void correctTargetNumber() {
         String input = "12,45,46,32,26,37";
         assertThrows(IllegalArgumentException.class, () -> ValidationException.checkValidTargetNumber(input));
     }

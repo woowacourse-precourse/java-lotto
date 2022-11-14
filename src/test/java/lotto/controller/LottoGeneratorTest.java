@@ -1,14 +1,14 @@
 package lotto.controller;
 
-import lotto.Lotto;
-import org.junit.jupiter.api.Assertions;
+import lotto.model.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoGeneratorTest {
 
@@ -37,6 +37,13 @@ class LottoGeneratorTest {
         for (Lotto lotto : lottos) {
             System.out.println("lotto.getLotto() = " + lotto.getLotto());
         }
-        assertThat(lottos.size()).isEqualTo(Integer.parseInt("5000")/1000);
+        assertThat(lottos.size()).isEqualTo(Integer.parseInt("5000") / 1000);
+    }
+
+    @Test
+    @DisplayName("당첨 로또 스플릿")
+    void splitLotto() {
+        Assertions.assertThat(LottoGenerator.splitTargetLotto("1,2,3,4,5,6"))
+                .isEqualTo(new ArrayList<>(List.of(1,2,3,4,5,6)));
     }
 }

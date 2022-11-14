@@ -1,11 +1,13 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
+import lotto.model.Lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoGenerator {
 
@@ -32,5 +34,12 @@ public class LottoGenerator {
 
     public static int calculateLottoCount(String userMoney) {
         return Integer.parseInt(userMoney)/1000;
+    }
+
+    public static List<Integer> splitTargetLotto(String targetInput) {
+        List<String> targetNumber = Arrays.asList(targetInput.split(","));
+        List<Integer> targetLotto = targetNumber.stream().map(Integer::parseInt).collect(Collectors.toList());
+
+        return targetLotto;
     }
 }

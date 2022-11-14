@@ -1,7 +1,6 @@
 package lotto.view;
 
-import lotto.Lotto;
-import lotto.constants.GuideMessage;
+import lotto.model.Lotto;
 
 import java.util.List;
 
