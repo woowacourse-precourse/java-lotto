@@ -27,7 +27,12 @@ public class Play {
         System.out.println(START_MESSAGE);
 
         String amount = Console.readLine();
-        int total = purchase.calculateAmount(amount);
+        int total = 0;
+        try{
+            total = purchase.calculateAmount(amount);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
         System.out.println("\n"+total+CHECK_MESSAGE);
         lotto = lottoNumbers.printLotto(total);

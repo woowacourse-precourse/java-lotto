@@ -15,6 +15,6 @@ public class Purchase {
     }
     private void validateNumber(String amount){
         if(!amount.matches("^[0-9]*$"))
-            throw new IllegalArgumentException("[ERROR] 숫자로만 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
     }
 }
