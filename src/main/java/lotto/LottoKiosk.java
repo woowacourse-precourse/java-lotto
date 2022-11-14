@@ -44,6 +44,9 @@ public class LottoKiosk {
     }
 
     void validateMoney() {
+        if (this.money < 1000) {
+            throw new IllegalArgumentException(ErrorMessage.MORE_THAN_THOUSAND.message);
+        }
         if (this.money % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessage.DIVIDE_DISABLE.message);
         }
@@ -51,10 +54,6 @@ public class LottoKiosk {
 
     long showInsertedMoney() {
         return this.money;
-    }
-
-    long showHowMany() {
-        return this.howMany;
     }
 
     void sellLotto(Customer customer) {
@@ -88,13 +87,17 @@ public class LottoKiosk {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
     }
 
-    List<Lotto> showAllLotto() {
-        return new ArrayList<>(lottos);
-    }
-
     void printAllLottoNumber() {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.showNumbers());
         }
+    }
+
+    List<Lotto> showAllLotto() {
+        return new ArrayList<>(lottos);
+    }
+
+    long showHowMany() {
+        return this.howMany;
     }
 }
