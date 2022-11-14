@@ -15,7 +15,7 @@ public class LottoNumber {
         return numbers;
     }
 
-    public List<Integer> winningNumberToList(String input){
+    public static List<Integer> winningNumberToList(String input){
         List<Integer> winningNumberList = Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
