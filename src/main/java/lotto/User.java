@@ -6,9 +6,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
+
     public static List<Lotto> lottos;
     int numberOfLotto;
     int[] winningCount = new int[5];
+    public static EnumMap<Application.Places,Integer> winnings;
 
     public User() {
         System.out.println("구입 금액을 입력해주세요.");
@@ -16,7 +18,11 @@ public class User {
 
         lottos = getlottos(numberOfLotto);
         printLottos(numberOfLotto,lottos);
+
+        winnings = new EnumMap<>(Application.Places.class); // 1~5등까지 로또 몇개가 들어있는 지 저장
+
     }
+
 
     public static int getNumberOfLotto() {
         String totalPrice = readLine();
@@ -33,7 +39,7 @@ public class User {
 
     public static List<Integer> getLottoNumbers() { // 랜덤으로 6개의 숫자 뽑기
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-
+        // sort
         return numbers;
     }
 
@@ -49,4 +55,5 @@ public class User {
         System.out.println( numberOfLotto + "개를 구매했습니다.");
         for(int orderOfLottos=0;orderOfLottos<lottos.size();orderOfLottos++) System.out.println(lottos.get(orderOfLottos));
     }
+
 }
