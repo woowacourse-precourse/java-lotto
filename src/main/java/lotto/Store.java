@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Store {
@@ -9,7 +10,10 @@ public class Store {
     private void validateInputMoney() {
     }
 
-    private void issueLotto() {
+    // 로또를 발행한다.
+    private Lotto issueLotto() {
+        List<Integer> numbers = Lotto.generateRandomNumbers();
+        return new Lotto(numbers);
     }
 
     private void sortLotto() {
