@@ -1,8 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -54,8 +57,55 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @DisplayName("로또 결과 체크 1")
+    @Test
+    void checkLottoResult() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        String bonusNumber = "7";
+        User user = new User();
+        user.userLotto = new ArrayList<>();
+        user.userLotto.add(new Lotto((List.of(1, 2, 3, 4, 10, 45))));
+        user.printWinningResult(lotto.printLottoNumber(), bonusNumber);
+
+        assertThat(output()).contains(
+                "당첨 통계",
+                "---",
+                "3개 일치 (5,000원) - 0개",
+                "4개 일치 (50,000원) - 1개",
+                "5개 일치 (1,500,000원) - 0개",
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                "6개 일치 (2,000,000,000원) - 0개"
+        );
+    }
+
+    @DisplayName("로또 결과 테스트")
+    @Test
+    void checkLottoWinningResult() {
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        String bonusNumber = "7";
+        lotto.getLottoBonusNumber(bonusNumber);
+
+        User user = new User();
+        user.userLotto = new ArrayList<>();
+        user.userLotto.add(new Lotto((List.of(1, 2, 3, 4, 7, 8))));
+        user.printWinningResult(lotto.printLottoNumber(), bonusNumber);
+        user.printWinningRatio(user.achieveMoney, 1000);
+
+        assertThat(output()).contains(
+                "당첨 통계",
+                "---",
+                "3개 일치 (5,000원) - 0개",
+                "4개 일치 (50,000원) - 0개",
+                "5개 일치 (1,500,000원) - 0개",
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                "6개 일치 (2,000,000,000원) - 0개",
+                "총 수익률은 3000000.0%입니다."
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
     }
+
 }
