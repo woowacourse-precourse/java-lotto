@@ -104,4 +104,10 @@ public class Application {
         return 4;
     }
 
+    public double getTotalProfit(List<Integer> lottoResult) {
+        double profit = 0;
+
+        return profit;
+    }
+
 }
