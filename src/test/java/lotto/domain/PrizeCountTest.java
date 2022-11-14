@@ -16,15 +16,13 @@ class PrizeCountTest {
         prizeCount.addPrizeCount(Prize.FIFTH);
     }
 
-    @DisplayName("$등수의 개수 맞는지 확인하기")
-    @Test
-    void getPrizeCount() {
-        assertThat(prizeCount.getPrizeCount(Prize.FIFTH)).isEqualTo(2);
-    }
 
     @DisplayName("$등수의 합산 금액이 맞는지 확인하기")
     @Test
     void getTotalPrizeMoney() {
         assertThat(prizeCount.getTotalPrizeMoney(Prize.FIFTH)).isEqualTo(Prize.FIFTH.getMoney() * 2);
     }
+
+
+
 }

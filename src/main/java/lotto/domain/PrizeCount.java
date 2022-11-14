@@ -17,10 +17,6 @@ public class PrizeCount {
         items.put(prize, items.get(prize) + 1);
     }
 
-    public int getPrizeCount(Prize prize) {
-        return items.get(prize);
-    }
-
     public int getTotalPrizeMoney(Prize prize) {
         return prize.getMoney() * items.get(prize);
     }
