@@ -61,3 +61,4 @@
 20. [x] (LottoController): 로또 구매 및 안내 Controller
 21. [x] (LottoController): 로또 당첨번호를 입력하는 기능
 22. [x] (LottoController): 로또 보너스번호를 입력하는 기능
+23. [x] (LottoController): 로또 당첨내역을 출력하는 기능
