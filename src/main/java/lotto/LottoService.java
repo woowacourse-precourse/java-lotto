@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
+import lotto.domain.WinningLotto;
 import lotto.domain.WinningType;
 import lotto.util.RandomNumberGenerator;
 
@@ -37,5 +38,77 @@ public class LottoService {
     public Lotto getNewLotto() {
         List<Integer> lottoNumbers = RandomNumberGenerator.makeRandomNumbers();
         return new Lotto(lottoNumbers);
+    }
+
+    public List<Integer> getResult(WinningLotto winningLotto, Lottos lottos) {
+        HashMap<Integer, Integer> resultMap = new HashMap<>();
+        for (Lotto lotto : lottos.getLottos()) {
+            int prize = calPrize(winningLotto, lotto);
+            updateResult(resultMap, prize);
+        }
+        return convertResultMapToResultList(resultMap);
+    }
+
+    private List<Integer> convertResultMapToResultList(HashMap<Integer, Integer> resultMap) {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int prize : PRIZES) {
+            result.add(resultMap.getOrDefault(prize, 0));
+        }
+        return result;
+    }
+
+    private static void updateResult(HashMap<Integer, Integer> resultMap, int prize) {
+        for (int prizeNumber : PRIZES) {
+            if (prize == prizeNumber) {
+                int count = resultMap.getOrDefault(prizeNumber, 0) + 1;
+                resultMap.put(prizeNumber, count);
+                break;
+            }
+        }
+    }
+
+    public int calPrize(WinningLotto winningLotto, Lotto lotto) {
+        Lotto WinningLottoNumber = winningLotto.getLotto();
+        int countOfNumbersMatchWinningLotto = getCountOfNumbersMatchWinningLotto(WinningLottoNumber, lotto);
+        int bonusNumber = winningLotto.getBonusNumber();
+
+        if (countOfNumbersMatchWinningLotto != 5) {
+            return getPrizeByMatchCount(countOfNumbersMatchWinningLotto);
+        }
+        return getPrizeByBonusNumber(bonusNumber, lotto);
+    }
+
+    public int getCountOfNumbersMatchWinningLotto(Lotto winningLotto, Lotto buyingLotto) {
+        int countOfNumber = 0;
+        Set<Integer> lottoNumberSet = new HashSet<>(winningLotto.getNumbers());
+        List<Integer> numbers = buyingLotto.getNumbers();
+
+        for (int number : numbers) {
+            if (lottoNumberSet.contains(number)) {
+                countOfNumber++;
+            }
+        }
+        return countOfNumber;
+    }
+
+    private int getPrizeByMatchCount(int countOfNumbersMatch) {
+        if (countOfNumbersMatch == 3) {
+            return FIFTH_PRIZE;
+        }
+        if (countOfNumbersMatch == 4) {
+            return FOURTH_PRIZE;
+        }
+        if (countOfNumbersMatch == 6) {
+            return FIRST_PRIZE;
+        }
+        return LOOSE;
+    }
+
+    private int getPrizeByBonusNumber(int bonusNumber, Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        if (lottoNumbers.contains(bonusNumber)) {
+            return SECOND_PRIZE;
+        }
+        return THIRD_PRIZE;
     }
 }
