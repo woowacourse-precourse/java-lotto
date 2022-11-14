@@ -6,8 +6,6 @@ import java.util.List;
 public class CompareNumberWithBonus {
     public static List<Integer> jugementNumberWithBonus(int InputMoney) {
         List<Integer> resultNumber = new ArrayList<>();
-
-//        int InputMoney = PrintInputMoneyGenerator.printInputMoney();
         /**
          * 함수 분리
          */
@@ -23,7 +21,7 @@ public class CompareNumberWithBonus {
             }
             resultNumber.add(returnNumber);
         }
-        System.out.println(resultNumber);
+//        System.out.println(resultNumber);
         return resultNumber;
     }
 }

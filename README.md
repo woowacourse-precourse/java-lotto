@@ -16,7 +16,7 @@
 
 - 당첨 내용 출력 기능
   - [O] 구매한 개수를 출력합니다. - PrintInputMoneyGenerator#printInputMoney()
-  - [] 구입 한 번호를 리스트 형식으로 모두 출력합니다. - UserNumberGenerator#createRandomNumbers()
+  - [O] 구입 한 번호를 리스트 형식으로 모두 출력합니다. - UserNumberGenerator#createRandomNumbers()
   - [] 당첨 통계 내역을 출력합니다. - PrintWinnerStatisticsGenerator#printWinner()
   - [] 수익률을 구매비용과 당첨비용을 비교하여 % 형식으로 출력합니다. - 
 
