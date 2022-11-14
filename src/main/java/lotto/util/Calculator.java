@@ -23,6 +23,10 @@ public class Calculator {
         updateTotalProfit();
     }
 
+    public List<Integer> getTotalProfit() {
+        return totalProfit;
+    }
+
     public void updateTotalProfit() {
         for (List<Integer> lottoTicket : lottoTickets) {
             Matcher matcher = new Matcher(lottoTicket, winningNumbers, bonusNumber);
@@ -33,13 +37,4 @@ public class Calculator {
             totalProfit.add(profit.getProfit());
         }
     }
-
-//    public static void updateStatistics(Map<Integer, Integer> statistics, List<Integer> profit) {
-//        for (Integer prizeMoney : profit) {
-//            if (statistics.containsKey(prizeMoney)) {
-//                int winCount = statistics.get(prizeMoney);
-//                statistics.replace(prizeMoney, winCount + 1);
-//            }
-//        }
-//    }
 }

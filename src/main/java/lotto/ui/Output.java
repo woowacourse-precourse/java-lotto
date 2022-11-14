@@ -1,5 +1,6 @@
 package lotto.ui;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.machine.Ranks;
@@ -24,14 +25,12 @@ public class Output {
         System.out.println();
     }
 
-    public static final void lottoResult(
-            Integer purchasePrice,
-            List<Integer> totalProfit,
-            Map<Integer, Integer> statistics
-    ) {
+    public static final void printStatistics(List<Integer> totalProfit, Integer purchasePrice) {
         System.out.println(STATS_TITLE);
         System.out.println(HORIZONTAL_RULE);
-        for (Map.Entry<Integer, Integer> history : statistics.entrySet()) {
+
+        Statistics statistics = new Statistics(totalProfit);
+        for (Map.Entry<Integer, Integer> history : statistics.getStatistics().entrySet()) {
             printWinCount(history.getKey(), history.getValue());
         }
         printReturnOnInvestment(totalProfit, purchasePrice);
@@ -63,5 +62,43 @@ public class Output {
 
     private static double roundOffToOneDecimalPlace(double number) {
         return Math.round((number) * 10) / 10.0;
+    }
+
+    private static class Statistics {
+        private final static int INITIAL_COUNT = 0;
+
+        private final Map<Integer, Integer> statistics;
+
+        public Statistics(List<Integer> totalProfit) {
+            statistics = createStatistics();
+            updateStatistics(totalProfit);
+        }
+
+        public Map<Integer, Integer> getStatistics() {
+            return statistics;
+        }
+
+        private Map<Integer, Integer> createStatistics() {
+            int initialWinCount = INITIAL_COUNT;
+            final Map<Integer, Integer> initialStatistics = new LinkedHashMap<>();
+
+            for (Ranks ranks : Ranks.values()) {
+                initialStatistics.put(ranks.getPrizeMoney(), initialWinCount);
+            }
+            return initialStatistics;
+        }
+
+        private void updateStatistics(List<Integer> totalProfit) {
+            for (Integer profit : totalProfit) {
+                updateWinCount(profit);
+            }
+        }
+
+        private void updateWinCount(Integer profit) {
+            if (statistics.containsKey(profit)) {
+                int winCount = statistics.get(profit);
+                statistics.replace(profit, winCount + 1);
+            }
+        }
     }
 }
