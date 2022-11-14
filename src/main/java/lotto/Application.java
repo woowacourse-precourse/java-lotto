@@ -59,6 +59,8 @@ public class Application {
     }
     public static void printresult(){
         System.out.println("\n당첨 통계\n---");
-
+        for(PrizeInfo info : PrizeInfo.values()){
+            System.out.println(info.getCount()+" "+info.getPrintMoney()+" - ");
+        }
     }
 }
