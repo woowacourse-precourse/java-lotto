@@ -7,4 +7,8 @@ public class InputMessage {
         System.out.println(GAME_START);
         System.out.println(PURCHASE_AMOUNT_MESSAGE);
     }
+
+    public void purchaseAmountMessage(String amount) {
+        System.out.println(amount);
+    }
 }
