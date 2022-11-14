@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class LottoResult {
@@ -49,12 +50,13 @@ public class LottoResult {
     public static void lotteryStatistics(LinkedHashMap<Integer, Integer> resultList) {
         System.out.println("당첨 통계");
         System.out.println("---");
+        DecimalFormat formatter = new DecimalFormat("###,###");
 
-        System.out.printf("3개 일치 (%d원) - %d개\n", PrizeList.FIFTH.money(), resultList.get(3));
-        System.out.printf("4개 일치 (%d원) - %d개\n", PrizeList.FOURTH.money(), resultList.get(4));
-        System.out.printf("5개 일치 (%d원) - %d개\n", PrizeList.THIRD.money(), resultList.get(5));
-        System.out.printf("5개 일치, 보너스 볼 일치 (%d원) - %d개\n", PrizeList.SECOND.money(), resultList.get(7));
-        System.out.printf("6개 일치 (%d원) - %d개\n", PrizeList.FIRST.money(), resultList.get(6));
+        System.out.printf("3개 일치 (%s원) - %d개\n", formatter.format(PrizeList.FIFTH.money()), resultList.get(3));
+        System.out.printf("4개 일치 (%s원) - %d개\n", formatter.format(PrizeList.FOURTH.money()), resultList.get(4));
+        System.out.printf("5개 일치 (%s원) - %d개\n", formatter.format(PrizeList.THIRD.money()), resultList.get(5));
+        System.out.printf("5개 일치, 보너스 볼 일치 (%s원) - %d개\n", formatter.format(PrizeList.SECOND.money()), resultList.get(7));
+        System.out.printf("6개 일치 (%s원) - %d개\n", formatter.format(PrizeList.FIRST.money()), resultList.get(6));
     }
 
 }
