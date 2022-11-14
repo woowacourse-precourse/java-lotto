@@ -6,4 +6,8 @@ public class Amounts {
     public Amounts(int money) {
         this.money = money;
     }
+
+    public int getMoney() {
+        return money;
+    }
 }
