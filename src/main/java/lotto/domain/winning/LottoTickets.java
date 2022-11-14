@@ -21,11 +21,10 @@ public class LottoTickets {
     List<Ranking> rankings(Lotto winningNumber, BonusNumber bonusNumber) {
         return winningCandidates(winningNumber)
                 .map(winningCandidate -> {
-                            int matchCounts = winningNumber.matchCounts(winningCandidate);
-                            boolean isMatchedBonus = bonusNumber.isIn(winningCandidate);
-                            return ranking(matchCounts, isMatchedBonus);
-                        }
-                ).collect(Collectors.toList());
+                    int matchCounts = winningNumber.matchCounts(winningCandidate);
+                    boolean isMatchedBonus = bonusNumber.isIn(winningCandidate);
+                    return ranking(matchCounts, isMatchedBonus);
+                }).collect(Collectors.toList());
     }
 
     private Stream<Lotto> winningCandidates(Lotto winningNumber) {

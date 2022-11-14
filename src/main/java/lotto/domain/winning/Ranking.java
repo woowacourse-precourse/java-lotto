@@ -38,8 +38,7 @@ public enum Ranking {
                     .filter(lottoRanking -> !lottoRanking.isMatchedBonus)
                     .collect(Collectors.toUnmodifiableMap(
                             lottoRanking -> lottoRanking.matchCounts,
-                            lottoRanking -> lottoRanking)
-                    );
+                            lottoRanking -> lottoRanking));
 
     private final int matchCounts;
     private final boolean isMatchedBonus;
@@ -60,8 +59,8 @@ public enum Ranking {
     }
 
     private static boolean isSecond(int matchCounts, boolean isMatchedBonus) {
-        final int MATCH_NUMBER_FOR_SECOND_OR_THIRD = 5;
-        return matchCounts == MATCH_NUMBER_FOR_SECOND_OR_THIRD && isMatchedBonus;
+        final int MATCH_COUNTS_FOR_SECOND_OR_THIRD = 5;
+        return matchCounts == MATCH_COUNTS_FOR_SECOND_OR_THIRD && isMatchedBonus;
     }
 
     long sumOfWinnings(int count) {
