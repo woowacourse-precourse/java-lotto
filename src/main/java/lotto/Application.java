@@ -37,12 +37,7 @@ public class Application {
     }
 
     public static int getInputMoney() {
-        int money;
-        try {
-            money = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR]Input error");
-        }
+        int money = userInputToInteger(Console.readLine());
 
         if (money < 1000) throw new IllegalArgumentException("[ERROR]Input error");
         if (money % 1000 != 0) throw new IllegalArgumentException("[ERROR]Input error");
@@ -68,28 +63,28 @@ public class Application {
 
         List<Integer> winningNumbers = new ArrayList<>();
         for (String num : winningNumberSplit) {
-            try {
-                winningNumbers.add(Integer.parseInt(num));
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("[ERROR]Winning number error");
-            }
+            int number = userInputToInteger(num);
+            winningNumbers.add(number);
         }
 
         return new Lotto(winningNumbers);
     }
 
     public static int getBonusInput(Lotto winningLotto) {
-        int bonus;
-        try {
-            bonus = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR]Bonus input error");
-        }
+        int bonus = userInputToInteger(Console.readLine());
 
         isBonusOutOfRange(bonus);
         isBonusNotDuplicated(winningLotto, bonus);
 
         return bonus;
+    }
+
+    public static int userInputToInteger(String consoleInput) {
+        try {
+            return Integer.parseInt(consoleInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 입력은 숫자여야 합니다");
+        }
     }
 
     public static void isBonusOutOfRange(int bonus) {
@@ -130,18 +125,18 @@ public class Application {
 
         Result history = new Result();
 
-        for(Lotto lotto : lottos) {
+        for (Lotto lotto : lottos) {
             int equalCount = equalNumberCounter(winningLotto, lotto, bonusNumber);
 
-            if(equalCount == 3)
+            if (equalCount == 3)
                 history.setEqualThree();
-            if(equalCount == 4)
+            if (equalCount == 4)
                 history.setEqualFour();
-            if(equalCount == 5)
+            if (equalCount == 5)
                 history.setEqualFive();
-            if(equalCount == 6)
+            if (equalCount == 6)
                 history.setEqualSix();
-            if(equalCount == 7)
+            if (equalCount == 7)
                 history.setEqualFiveWithBonus();
         }
 
@@ -151,18 +146,18 @@ public class Application {
     public static int equalNumberCounter(Lotto winningLotto, Lotto userLotto, int bonusNumber) {
 
         int count = 0;
-        for(Integer num : winningLotto.getElements())
+        for (Integer num : winningLotto.getElements())
             if (userLotto.getElements().contains(num))
                 count += 1;
 
-        if(count == 5)
-            if(userLotto.getElements().contains(bonusNumber)) count = 7;
+        if (count == 5)
+            if (userLotto.getElements().contains(bonusNumber)) count = 7;
 
         return count;
     }
 
     public static void calculateEarning(Result history, int money) {
-        double earning = (double)history.calculateElements() / (double)money;
+        double earning = (double) history.calculateElements() / (double) money;
 
         System.out.println("총 수익률은 " + earning * 100 + "%입니다.");
     }
