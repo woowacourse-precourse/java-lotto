@@ -7,6 +7,7 @@ public class Lotto {
 
 	public Lotto(List<Integer> numbers) {
 		validate(numbers);
+		overlap(numbers);
 		this.numbers = numbers;
 	}
 
@@ -17,6 +18,12 @@ public class Lotto {
 	}
 
 	// TODO: 추가 기능 구현
+
+	private void overlap(List<Integer> numbers) {
+		if (numbers.size() != numbers.stream().distinct().count()) {
+			throw new IllegalArgumentException(Constant.NUMBER_OVERLAP_ERROR);
+		}
+	}
 
 	public List<Integer> getNumbers() {
 		return numbers;
