@@ -15,6 +15,8 @@ public class Application {
         int buyMoney = buyLotto();
         List<Integer> lottoRandomNum = lottoRandomNum();
         List<List<Integer>> buyLottoPrint = buyLottoPrint(buyMoney);
+        List<Integer> myLottoNum = myLottoNum();
+        int bonusNum = bonusNum(myLottoNum);
 
     }
 
