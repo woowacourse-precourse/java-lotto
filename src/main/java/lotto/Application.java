@@ -3,10 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.math.BigInteger;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -19,12 +17,12 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-
-        System.out.println("구입금액을 입력해 주세요.");
-
+        // 구입 금액을 입력해주세요
+        IOUtils.requestSetAccount();
         // 구입 금액 입력 받기
         int account = setAccount();
-        System.out.println(account);
+        // 구입 금액 출력
+        IOUtils.responseSetAccount(account);
 
         // 로또 생성
         List<List<Integer>> lottos = buyLotto(account);
@@ -36,7 +34,7 @@ public class Application {
         // 당첨 번호 , 보너스 번호 입력 받기
         System.out.println("당첨 번호를 입력해 주세요.");
         Set<Integer> winnerNumber = setWinnerNumber();
-        
+
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = setBonusNumber(winnerNumber);
 
