@@ -3,6 +3,7 @@ package controller;
 import util.Constant;
 import util.Error;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class InputValidator {
@@ -27,8 +28,9 @@ public class InputValidator {
     }
 
     public void checkNumberQuantity(List<Integer> lottoNumber) {
-        if(lottoNumber.size() != Constant.LOTTONUMBERQUANTITY) {
-            throw new IllegalArgumentException(Error.SIX.getErrorMsg());
+        HashSet<Integer> setlottonumber = new HashSet<>(lottoNumber);
+        if(setlottonumber.size() != Constant.NUMBERQUANTITY) {
+            throw new IllegalArgumentException(Error.SAMENUMBER.getErrorMsg());
         }
     }
 
