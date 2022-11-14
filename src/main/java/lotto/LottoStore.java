@@ -58,4 +58,16 @@ public class LottoStore {
             throw new IllegalArgumentException();
         }
     }
+
+    private int getCorrectNumbersOfLotto(Lotto lotto) {
+        int correct = 0;
+        for(int num : lotto.getNumbers()) {
+            if (winNumbers.contains(num) || bonusNumber == num)
+                correct++;
+        }
+
+        return correct;
+    }
+
+
 }
