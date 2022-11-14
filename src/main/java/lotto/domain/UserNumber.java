@@ -8,9 +8,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public class UserNumber {
-    private final int countingNumber = 1000;
+    private static int countingNumber = 1000;
 
-    public int inputPrice() {
+    public static int inputPrice() {
         int price = Integer.valueOf(Console.readLine());
         return price / countingNumber;
     }

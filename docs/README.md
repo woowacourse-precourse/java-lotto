@@ -18,7 +18,7 @@
 - [x] 사용자 로또의 보너스 번호 포함 여부를 판단한다.   -Analyze#matchBonus
 - [x] 2등 여부를 판단한다.  -Analyze#judgeSecondPrize
 - [x] 일치한 숫자 갯수의 빈도를 구한다.  -Analyze#getMatchFrequency
-- [] 수익률을 계산한다.  -Analyze#profit
+- [x] 수익률을 계산한다.  -Analyze#profit
 
 ## 5. 결과 정보와 enum을 비교한다.  - Print()
 - [] 로또 구매 갯수를 출력한다.  -Print#lottoCount
