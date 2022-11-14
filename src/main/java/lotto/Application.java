@@ -62,7 +62,7 @@ public class Application {
     }
 
     public static void revenuePrint(double useMoney, double revenue){
-        System.out.printf(".%2f", revenue/useMoney);
+        System.out.printf("%.2f", revenue/useMoney);
     }
 
     public static int lottoRank(Lotto lotto,Lotto winningLotto, int bonus){
