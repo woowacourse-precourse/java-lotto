@@ -1,45 +1,46 @@
 package lotto;
 
-import static lotto.BonusNumber.BLANK;
-import static lotto.BonusNumber.INPUT_NUMBER_BLANK;
-
 public class Money {
 
+    public static final String BLANK = " ";
     private static final int BASE_AMOUNT = 1_000;
 
-    private static final String INPUT_AMOUNT_NOT_NUMBER = "[ERROR] 입력한 금액이 숫자가 아닙니다.";
-    private static final String INPUT_AMOUNT_THOUSAND_LESS = "[ERROR] 입력한 금액이 1,000원 미만 입니다.";
+    private final int money;
 
-    private final int inputMoney;
-
-    public Money(String inputMoney) {
-        this.inputMoney = validateDivideMoney(validateModifyInputMoneyType(validateBlank(inputMoney)));
+    public Money(String money) {
+        this.money = validateMoney(money);
     }
 
-    private String validateBlank(String inputMoney) {
-        if (inputMoney.contains(BLANK)) {
-            throw new IllegalArgumentException(INPUT_NUMBER_BLANK);
+    private int validateMoney(String money) {
+        String blank = validateBlank(money);
+        int number = validateModifyInputMoneyType(blank);
+        return validateDivideMoney(number);
+    }
+
+    private String validateBlank(String money) {
+        if (money.contains(BLANK)) {
+            throw new IllegalArgumentException("[ERROR] 공백이 포함되어 있습니다.");
         }
-        return inputMoney;
+        return money;
     }
 
-    private int validateModifyInputMoneyType(String inputMoney) {
+    private int validateModifyInputMoneyType(String money) {
         try {
-            return Integer.parseInt(inputMoney);
+            return Integer.parseInt(money);
         } catch (IllegalArgumentException exceptionMessage) {
-            throw new IllegalArgumentException(INPUT_AMOUNT_NOT_NUMBER);
+            throw new IllegalArgumentException("[ERROR] 입력한 금액이 숫자가 아닙니다.");
         }
     }
 
     private int validateDivideMoney(int moneyCount) {
         if (moneyCount < BASE_AMOUNT) {
-            throw new IllegalArgumentException(INPUT_AMOUNT_THOUSAND_LESS);
+            throw new IllegalArgumentException("[ERROR] 입력한 금액이 1,000원 미만 입니다.");
         }
         return moneyCount / BASE_AMOUNT;
     }
 
-    public int getInputMoney() {
-        return inputMoney;
+    public int getMoney() {
+        return money;
     }
 
 }
