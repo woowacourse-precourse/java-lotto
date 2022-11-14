@@ -31,3 +31,26 @@ public class Lotto {
         }
     }
 
+    public Lotto (String input){
+        String[] stringArr = input.split(DELIMITER);
+        validateLottoNumbers(stringArr);
+    }
+
+    private void validateLottoNumbers(String[] stringArr) {
+        validateLottoCount(stringArr);
+        validateDuplicateCount(stringArr);
+    }
+
+    private void validateLottoCount(String[] array) {
+        if (array.length != LOTTO_COUNT) {
+            throw new IllegalArgumentException(String.format("[ERROR] 로또 개수는 " + LOTTO_COUNT + "개로 제한됩니다."));
+        }
+    }
+
+    private void validateDuplicateCount(String[] arr) {
+        int distinctCount = calDistinctCountFromArray(arr);
+
+        if (arr.length != distinctCount) {
+            throw new IllegalArgumentException(String.format(DUPLICATE_ERROR));
+        }
+    }
