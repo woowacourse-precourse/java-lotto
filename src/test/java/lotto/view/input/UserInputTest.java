@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -94,52 +95,126 @@ class UserInputTest {
     @Nested
     @DisplayName("당첨 숫자 입력 로직 검증")
     class ValidateWinningNumber{
-        @Test
-        @DisplayName("숫자가 아닌 값 입력은 예외 발생")
-        void 숫자_아닌_입력(){
-            // given
-            String input = "1,2,3,a,b,c";
-            // when
-            setSetIn(input);
-            // then
-            assertThatThrownBy(() -> userInput.getWinningNumber())
-                    .isInstanceOf(IllegalArgumentException.class);
+
+        @Nested
+        @DisplayName("정상 입력")
+        class Valid{
+
+            @Test
+            @DisplayName("1,2,3,4,5,6 입력 -> [1,2,3,4,5,6] 리스트 반환")
+            void 정상_입력(){
+                // given
+                String input = "1,2,3,4,5,6";
+                setSetIn(input);
+                // when
+                List<Integer> result = userInput.getWinningNumbersCandidate();
+                // then
+                assertThat(result).isEqualTo(List.of(1,2,3,4,5,6));
+            }
         }
 
-        @Test
-        @DisplayName("범위에 벗어난 값 입력은 예외 발생")
-        void 범위에_벗어난_입력(){
-            // given
-            String input = "1,48,-1,9,2,3";
-            // when
-            setSetIn(input);
-            // then
-            assertThatThrownBy(() -> userInput.getWinningNumber())
-                    .isInstanceOf(IllegalArgumentException.class);
+        @Nested
+        @DisplayName("비정상 입력")
+        class Invalid{
+            @Test
+            @DisplayName("영어 입력시 예외 발생")
+            void 영어_입력(){
+                // given
+                String input = "1,2,3,a,b,c";
+                // when
+                setSetIn(input);
+                // then
+                assertThatThrownBy(() -> userInput.getWinningNumbersCandidate())
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+
+            @Test
+            @DisplayName("한국어 입력시 예외 발생")
+            void 한국어_입력(){
+                // given
+                String input = "1,2,3,ㄱ,가,나";
+                // when
+                setSetIn(input);
+                // then
+                assertThatThrownBy(() -> userInput.getWinningNumbersCandidate())
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+
+            @Test
+            @DisplayName("기호 입력시 예외 발생")
+            void 기호_입력(){
+                // given
+                String input = "1,2,3,+,-,*";
+                // when
+                setSetIn(input);
+                // then
+                assertThatThrownBy(() -> userInput.getWinningNumbersCandidate())
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+        }
+    }
+
+    @Nested
+    @DisplayName("보너스 숫자 입력 로직 검증")
+    class Bonus{
+
+        @Nested
+        @DisplayName("정상 입력")
+        class Valid{
+
+            @Test
+            @DisplayName("'1' 입력 -> 1 반환")
+            void 정상_입력(){
+                // given
+                String input = "1";
+                setSetIn(input);
+                // then
+                int result = userInput.getBonusNumber();
+                //
+                assertThat(result).isEqualTo(1);
+            }
         }
 
-        @Test
-        @DisplayName("중복 숫자 있는 리스트는 예외 발생")
-        void 중복_숫자_입력(){
-            // given
-            String input = "1,1,2,3,4,5";
-            // when
-            setSetIn(input);
-            // then
-            assertThatThrownBy(() -> userInput.getWinningNumber())
-                    .isInstanceOf(IllegalArgumentException.class);
-        }
+        @Nested
+        @DisplayName("비정상 입력")
+        class Invalid{
 
-        @Test
-        @DisplayName("지정 개수의 숫자 아닌 경우 예외 발생")
-        void 잘못된_개수의_숫자_입력(){
-            // given
-            String input = "1,2,3";
-            // when
-            setSetIn(input);
-            // then
-            assertThatThrownBy(() -> userInput.getWinningNumber())
-                    .isInstanceOf(IllegalArgumentException.class);
+            @Test
+            @DisplayName("영어 입력시 예외 발생")
+            void 영어_입력(){
+                // given
+                String input = "a";
+                setSetIn(input);
+                // when
+                // then
+                assertThatThrownBy(() -> userInput.getBonusNumber())
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+
+            @Test
+            @DisplayName("한국어 입력시 예외 발생")
+            void 한국어_입력(){
+                // given
+                String input = "가";
+                setSetIn(input);
+                // when
+                // then
+                assertThatThrownBy(() -> userInput.getBonusNumber())
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+
+            @Test
+            @DisplayName("기호 입력시 예외 발생")
+            void 기호_입력(){
+                // given
+                String input = "+";
+                setSetIn(input);
+                // when
+                // then
+                assertThatThrownBy(() -> userInput.getBonusNumber())
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+
         }
     }
 }
