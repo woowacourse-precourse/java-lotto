@@ -21,7 +21,7 @@ public class Lotto {
     }
 
     public Rank compare(List<Integer> winningNumbers, int bonusNumber) {
-        boolean matchBonus = matchBonusNumber(bonusNumber)
+        boolean matchBonus = matchBonusNumber(bonusNumber);
 
         int numberOfMatch = countMatchingNumber(winningNumbers);
         if(matchBonus) {
@@ -48,6 +48,19 @@ public class Lotto {
     }
 
     private Rank getRank(int matchingCount, boolean matchBonus) {
+        if(matchingCount == 5) {
+            if(matchBonus) {
+                return Rank.BONUS;
+            }
+            return Rank.FIVE;
+        }
+
+        for(Rank rank: Rank.values()) {
+            if(rank.getMatchingCount() == matchingCount) {
+                return rank;
+            }
+        }
+
         return null;
     }
 }
