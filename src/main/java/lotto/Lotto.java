@@ -2,6 +2,8 @@ package lotto;
 
 import java.util.List;
 
+import static lotto.CommonContent.PrintError.LOTTOSIZEERROR;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -12,12 +14,9 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTOSIZEERROR.getPrintStatement());
         }
     }
-
-    // TODO: 추가 기능 구현
-
 
     public List<Integer> getNumbers() {
         return numbers;

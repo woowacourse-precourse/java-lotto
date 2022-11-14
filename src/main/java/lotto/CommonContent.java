@@ -37,8 +37,10 @@ public class CommonContent {
     public enum PrintError{
         LOTTONUMBERERROR("로또 번호는 1부터 45 사이의 숫자여야 합니다."),
         PURCHASEAMOUNTERROR("구입 금액은 1,000원 단위여야합니다"),
+        NOBYELOTTOERROR("로또를 구매할 금액이 부족합니다."),
         WINNUMBERSERROR("당첨 번호는 'x,x,x,x,x,x'(x는 1부터 45 사이의 숫자)의 형태로 입력해야합니다."),
-        BONUSNUMBERERROR("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        BONUSNUMBERERROR("보너스 번호는 1부터 45 사이의 숫자여야 합니다."),
+        LOTTOSIZEERROR("로또의 크기는 6이상이어야합니다.");
 
         private String printStatement;
 
