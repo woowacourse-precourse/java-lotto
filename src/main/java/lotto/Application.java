@@ -52,6 +52,9 @@ public class Application {
         String input = Console.readLine();
         int bonusnumber = Integer.parseInt(input);
 
+        if(bonusnumber<1 && bonusnumber>45){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1에서 45사이의 숫자여야 합니다.");
+        }
         return bonusnumber;
     }
 }
