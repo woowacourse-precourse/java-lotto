@@ -9,17 +9,24 @@ public class WinningNumbers {
     public WinningNumbers() {}
 
     public void newWinningNumbers(List<Integer> newWinningNumbers) throws IllegalArgumentException {
-        winningNumbers = new Lotto(newWinningNumbers);
+        this.winningNumbers = new Lotto(newWinningNumbers);
     }
 
     public void newBonusNumber(int newBonusNumber) throws IllegalArgumentException {
         validateNumberRange(newBonusNumber);
-        bonusNumber = newBonusNumber;
+        validateDuplicateBonusNumber(newBonusNumber);
+        this.bonusNumber = newBonusNumber;
     }
 
     private void validateNumberRange(int number) throws IllegalArgumentException {
         if ((number < Rules.LOTTO_MIN_NUMBER.getValue()) || (number > Rules.LOTTO_MAX_NUMBER.getValue())) {
             throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_RANGE.getValue());
+        }
+    }
+
+    private void validateDuplicateBonusNumber(int bonusNumber) throws IllegalArgumentException {
+        if(winningNumbers.containNumber(bonusNumber)) {
+            throw new IllegalArgumentException(Error.ERROR_LOTTO_BONUS_NUMBER_DUPLICATE.getValue());
         }
     }
 
