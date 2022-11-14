@@ -5,7 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -55,11 +57,29 @@ class CalculatorTest {
 
     @DisplayName("로또번호 중 당첨번호의 개수를 옳게 계산하는지 확인한다")
     @Test
-    void checkWinningNumberMatcingCount() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException  {
+    void checkWinningNumberMatcingCount()
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = Calculator.class.getDeclaredMethod("getWinningNumberMatch", WinningNumbers.class, Lotto.class);
         method.setAccessible(true);
-        int result = (int)method.invoke( target, sampleWinningNumbers1, sampleLotto1);
+        int result = (int) method.invoke(target, sampleWinningNumbers1, sampleLotto1);
         assertThat(result).isEqualTo(0);
+    }
+
+    @DisplayName("등수 별 횟수 총 결과를 구한다.")
+    @Test
+    public void calculateStatistics()
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method method = Calculator.class.getDeclaredMethod("getRankCounts");
+        method.setAccessible(true);
+        Map<Rank, Integer> result = (Map<Rank, Integer>) method.invoke(getRankCount2);
+        assertThat(result).isEqualTo(new HashMap<Rank, Integer>() {{
+            put(Rank.FIRST, 1);
+            put(Rank.SECOND, 1);
+            put(Rank.THIRD, 0);
+            put(Rank.FOURTH, 0);
+            put(Rank.FIFTH, 0);
+            put(Rank.NOTHING, 2);
+        }});
     }
 
 }
