@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.model.Lotto;
+
 public class Message {
 
     public void inputPrice() {
@@ -8,5 +10,9 @@ public class Message {
 
     public void countLotto(int countLotto) {
         System.out.printf("%n%d개를 구매했습니다.%n", countLotto);
+    }
+
+    public void printLottoNumbers(Lotto lotto) {
+        System.out.println(lotto.getNumbers().toString());
     }
 }

@@ -17,6 +17,7 @@ public class GameController {
 
         for (int i = 0; i < user.getCountLotto(); i++) {
             Lotto lotto = computer.buyLotto();
+            message.printLottoNumbers(lotto);
         }
     }
 }
