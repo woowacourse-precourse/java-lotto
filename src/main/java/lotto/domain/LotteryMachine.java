@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.domain.Lotto.*;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +42,7 @@ public class LotteryMachine {
 	}
 
 	private void validate(List<Integer> numbers) {
-		if (numbers.size() != 6) {
+		if (numbers.size() != NUMBER_OF_LOTTO) {
 			throw new IllegalArgumentException(ErrorMessage.isInvalidNumberOfLottoNumbers());
 		}
 		if (isInvalidLottoNumber(numbers)) {
@@ -50,7 +52,7 @@ public class LotteryMachine {
 
 	private boolean isInvalidLottoNumber(List<Integer> numbers) {
 		return numbers.stream()
-			.anyMatch(number -> number < 0 || number > 45);
+			.anyMatch(number -> number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER);
 	}
 
 }
