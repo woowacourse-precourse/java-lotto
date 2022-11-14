@@ -33,4 +33,12 @@ public class SalesmanTest {
 		assertThatThrownBy(() -> salesman.sellLotto(purchaseBudget))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("로또 구입 금액이 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다.")
+	@Test
+	public void runIndivisibleBudgetTest() {
+		int purchaseBudget = 5100;
+		assertThatThrownBy(() -> salesman.sellLotto(purchaseBudget))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
 }
