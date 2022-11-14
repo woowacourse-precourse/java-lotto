@@ -51,6 +51,6 @@ class LottoTest {
     @CsvSource(value = {"3,true", "9,false"})
     void isContainNumberTest(int number, boolean expected) {
         Lotto lotto = makeBasicLottoForTest();
-        assertThat(lotto.isContainNumber(number)).isEqualTo(expected);
+        assertThat(lotto.containNumber(number)).isEqualTo(expected);
     }
 }

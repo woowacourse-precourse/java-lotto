@@ -24,12 +24,12 @@ public class WinningLotto extends Lotto {
         if (bonusNumberInput < MIN_NUMBER || bonusNumberInput > MAX_NUMBER) {
             throw new IllegalArgumentException(NUMBER_INPUT_RANGE_ERROR_MESSAGE);
         }
-        if (super.isContainNumber(bonusNumberInput)) {
+        if (super.containNumber(bonusNumberInput)) {
             throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
 
     public boolean containBonusNumber(Lotto lotto) {
-        return lotto.isContainNumber(bonusNumber);
+        return lotto.containNumber(bonusNumber);
     }
 }

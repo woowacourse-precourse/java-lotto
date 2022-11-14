@@ -51,7 +51,7 @@ public class LottoController {
         List<Integer> myLottoNumbers = lotto.getNumbers();
         int count = 0;
         for (Integer number : myLottoNumbers) {
-            if (winningLotto.isContainNumber(number)) {
+            if (winningLotto.containNumber(number)) {
                 count++;
             }
         }
