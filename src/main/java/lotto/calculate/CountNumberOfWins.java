@@ -1,4 +1,8 @@
-package lotto;
+package lotto.calculate;
+
+import lotto.grade.Grade;
+import lotto.lottocontroller.BuyLotto;
+import lotto.winningnumbers.WinningNumbers;
 
 import java.util.List;
 

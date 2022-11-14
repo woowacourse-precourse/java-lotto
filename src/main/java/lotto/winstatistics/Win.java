@@ -1,4 +1,8 @@
-package lotto;
+package lotto.winstatistics;
+
+import lotto.calculate.CountNumberOfWins;
+import lotto.lottocontroller.BuyLotto;
+import lotto.winningnumbers.WinningNumbers;
 
 public class Win {
     private static final String WIN_STATISTICS_MESSAGE = "당첨 통계";

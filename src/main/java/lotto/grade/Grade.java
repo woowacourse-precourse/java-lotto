@@ -1,4 +1,4 @@
-package lotto;
+package lotto.grade;
 
 import java.util.Arrays;
 
