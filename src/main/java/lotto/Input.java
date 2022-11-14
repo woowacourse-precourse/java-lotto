@@ -8,12 +8,14 @@ import java.util.List;
 
 public class Input {
     public int getPurchaseAmount() {
+        System.out.println("구입금액을 입력해 주세요.");
         String purchaseAmountInput = Console.readLine();
         int purchaseAmount = Integer.valueOf(purchaseAmountInput);
         return purchaseAmount;
     }
 
     public List getWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumberInput = Console.readLine();
         String[] splittedInput = winningNumberInput.split(",");
         List<Integer> winningNumber = new ArrayList<Integer>();
