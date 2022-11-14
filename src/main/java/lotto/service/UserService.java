@@ -1,6 +1,5 @@
 package lotto.service;
 
-import lotto.domain.Lotto;
 import lotto.domain.Manager;
 import lotto.domain.User;
 import lotto.domain.enums.Message;
@@ -8,8 +7,6 @@ import lotto.domain.enums.Number;
 import lotto.util.ExceptionHandler;
 import lotto.util.InputUtil;
 import lotto.util.OutputUtil;
-
-import java.util.List;
 
 public class UserService {
 

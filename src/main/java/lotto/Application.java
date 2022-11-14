@@ -6,8 +6,6 @@ import lotto.service.ManagerService;
 import lotto.service.UserService;
 import lotto.util.OutputUtil;
 
-import java.util.List;
-
 public class Application {
 
     UserService userService = new UserService();
