@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import common.message.Message;
