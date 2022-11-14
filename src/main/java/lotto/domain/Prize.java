@@ -21,13 +21,17 @@ public enum Prize {
     }
 
     public static Prize valueOf(int count, boolean bonus) {
-        if (count == FIVE_AND_BOUNS.count && bonus) {
+        if (countFiveAndBonus(count, bonus)) {
             return FIVE_AND_BOUNS;
         }
         return Arrays.stream(values())
             .filter(result -> result.count == count)
             .findFirst()
             .orElse(NOTHING);
+    }
+
+    private static boolean countFiveAndBonus(int count, boolean bonus) {
+        return count == FIVE_AND_BOUNS.count && bonus;
     }
 
     public int getMoney() {
