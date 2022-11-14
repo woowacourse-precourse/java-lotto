@@ -10,18 +10,18 @@ public class Maker {
     private final List<Integer> result;
     private final float earningRate;
 
-    Maker(Map<Lotto, Bonus> lotteries, int purchaseAmount) {
+    public Maker(Map<Lotto, Bonus> lotteries, int purchaseAmount) {
         result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0));
         generator = new Generator();
         make(lotteries);
         earningRate = calculateEarningRate(purchaseAmount);
     }
 
-    List<Integer> getResult() {
+    public List<Integer> getResult() {
         return result;
     }
 
-    float getEarningRate() {
+    public float getEarningRate() {
         return earningRate;
     }
 
