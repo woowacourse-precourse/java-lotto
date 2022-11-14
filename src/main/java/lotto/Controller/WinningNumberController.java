@@ -1,27 +1,43 @@
 package lotto.Controller;
 
+import lotto.Model.Lotto;
 import lotto.Model.WinningLotto;
 import lotto.Service.LottoService;
 import lotto.View.InputView;
+import lotto.View.OutputView;
+
+import java.util.List;
+import java.util.Map;
 
 public class WinningNumberController {
     private static LottoService lottoService = new LottoService();
+    private static WinningLotto winningLotto;
+    private static Map<Integer, Integer> resultMap;
 
     public void start() {
         input();
-        output();
+        compareLottoNumbers();
+        result();
     }
 
-    public void input() {
+    private void input() {
         InputView inputView = new InputView();
 
         String numbers = inputView.readWinningNumber();
         int bonusNumber = inputView.readBonusNumber();
 
-        WinningLotto winningNumbers = lottoService.createWinningLotto(numbers, bonusNumber);
+        winningLotto = lottoService.createWinningLotto(numbers, bonusNumber);
     }
 
-    public void output() {
+    private void compareLottoNumbers() {
+        LottoController lottoController = new LottoController();
+
+        List<Lotto> totalLotto = lottoController.getTotalLottoInstance();
+        resultMap = lottoService.compareLottoNumbers(totalLotto, winningLotto);
+    }
+
+    private void result() {
+        OutputView outputView = new OutputView();
 
     }
 }

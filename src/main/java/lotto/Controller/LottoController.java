@@ -17,13 +17,13 @@ public class LottoController {
 
     public void start() {
         input();
-        output();
+        result();
     }
 
-    public void input() {
+    private void input() {
         InputView inputView = new InputView();
 
-        int money = inputView.readInput();
+        int money = inputView.readMoney();
 
         Lotto lotto;
         int quantity = (money / MIN_COST);
@@ -33,10 +33,14 @@ public class LottoController {
         }
     }
 
-    public void output() {
+    private void result() {
         OutputView outputView = new OutputView();
 
-        outputView.printTotal(totalLotto);
+        outputView.printTotalLotto(totalLotto);
+    }
+
+    public List<Lotto> getTotalLottoInstance() {
+        return totalLotto;
     }
 
 }
