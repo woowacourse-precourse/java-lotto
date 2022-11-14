@@ -31,7 +31,6 @@ public class WinNumberTest {
     @ParameterizedTest
     @MethodSource("provideUserWinNumber")
     void isWinNumberInvalid(String winNumber,String bonusNumber) {
-
         assertThatThrownBy(() -> wn.makingWinNumber(winNumber,bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
