@@ -11,12 +11,12 @@ public class UI {
         User user = new User(money);
     }
 
-    public static void setLottoNumbers() {
+    public static Lotto getLottoNumbers() {
         String inputNumbers = Console.readLine();
         List<Integer> numbers = Arrays.stream(inputNumbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        Lotto lotto = new Lotto(numbers);
+        return new Lotto(numbers);
     }
 
     public static int getBonusNumber() {
