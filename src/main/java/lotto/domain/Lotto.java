@@ -14,11 +14,22 @@ public class Lotto {
         if (!isValidSize(numbers)) {
             throw new IllegalArgumentException();
         }
+        if (!isValidRange(numbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private boolean isValidSize(List<Integer> numbers) {
         if (numbers.size() != LottoConstant.SIZE.getValue()) {
             return false;
+        }
+        return true;
+    }
+
+    private boolean isValidRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < LottoConstant.STARTFROM.getValue()
+                    || number > LottoConstant.ENDTO.getValue()) return false;
         }
         return true;
     }
