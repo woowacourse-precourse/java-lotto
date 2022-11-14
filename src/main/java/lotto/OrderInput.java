@@ -7,7 +7,7 @@ import validate.Check;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class LottoMachine {
+public class OrderInput {
 
     private static final int START_NUMBER = 1;
     private static final int FINAL_NUMBER = 45;
