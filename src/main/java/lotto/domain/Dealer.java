@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class Maker {
+public class Dealer {
     private final Generator generator;
     private final List<Integer> result;
     private final float earningRate;
 
-    public Maker(Map<Lotto, Bonus> lotteries, int purchaseAmount) {
+    public Dealer(Map<Lotto, Bonus> lotteries, int purchaseAmount) {
         result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0));
         generator = new Generator();
         make(lotteries);
