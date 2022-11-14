@@ -33,23 +33,27 @@ public class calculateLotto {
     List<Integer> winLotto(List<Lotto> lottos){
         int[] correctNumber = {0,0,0,0,0};
         for (Lotto lotto : lottos){
-            int count =0;
+            int[] count ={0,0};
             Set<Integer> set= new HashSet<>(inputLottto.getNumbers());
             for(int i = 0; i<lotto.getNumbers().size();i++){
-                if(!set.add(lotto.getNumbers().get(i))) count++;
+                if(!set.add(lotto.getNumbers().get(i))) count[0]++;
             }
-            if(count<3) count=-1;
-            if(count>=3) count = count -3;
-            if(count == 6) count = 4;
-            if(lotto.getNumbers().contains(bonusLotto) && count== 5) {
-                count = 3;
+            if(lotto.getNumbers().contains(bonusLotto) && count[0]== 5) {
+                count[1]=1;
             }
-            if(count>=0) correctNumber[count] +=1;
+            int index = gradeNumber(count);
+            if(index>0)correctNumber[index] +=1;
         }
-
         return Arrays.stream(correctNumber)
                 .boxed()
                 .collect(Collectors.toList());
+    }
+
+    public int gradeNumber(int[] count){ // 3
+        if(count[1]==1) return 3;
+        if(count[0]==6) return 4;
+        if(count[1]!=1&&count[0]<6) return count[0]-3;
+        return -1;
     }
     void printWinLotto(List<Integer> winLottos, double rateLotto){
         int count = 3;
