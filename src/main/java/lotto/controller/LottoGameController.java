@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoGameController {
-    LottoGameService lottoGameService = new LottoGameService();
+    private final LottoGameService lottoGameService = new LottoGameService();
 
     public void start() {
         int money = InputView.inputMoney();

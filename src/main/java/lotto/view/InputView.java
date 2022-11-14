@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-    public static int inputMoney() {
+    public static int inputMoney() throws IllegalArgumentException {
         System.out.println("구입금액을 입력해 주세요.");
         int money;
         try {
             money = Integer.parseInt(Console.readLine());
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 공백을 제외한 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
         }
         return new Money(money).getPay();
     }
@@ -38,7 +38,7 @@ public class InputView {
                     .map(s -> Integer.parseInt(s))
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 구분자(,)로만 구분된 숫자를 입력해 주세요. ex) 1,2,3,4,5,6");
+            throw new IllegalArgumentException("[ERROR] 구분자(,)로 구분된 숫자를 입력해 주세요. ex) 1,2,3,4,5,6");
         }
         return numbers;
     }
@@ -49,7 +49,7 @@ public class InputView {
         try {
             number = Integer.parseInt(Console.readLine());
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 공백을 제외한 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
         }
         return new Bonus(number, winningNumbers.getNumbers()).getNumber();
     }
