@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Validator {
+    public static final int TICKET_PRICE = 1000;
     public static final int WINNING_NUMS = 6;
     public static void validateInteger(String input){
         if (! input.matches("[0-9]+")) {
@@ -31,6 +32,12 @@ public class Validator {
         Set<String> uniqueNumbers = new HashSet<>(numbers);
         if (uniqueNumbers.size() != WINNING_NUMS){
             throw new IllegalArgumentException("중복된 숫자가 존재합니다.");
+        }
+    }
+
+    public static void validateBudget(int budget){
+        if (budget % TICKET_PRICE != 0){
+            throw new IllegalArgumentException("구입 금액을 1000원으로 나누어 떨어지게 입력해주세요.");
         }
     }
 }

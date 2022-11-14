@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static lotto.utils.Validator.validateInteger;
-import static lotto.utils.Validator.validateWinningNumbers;
+import static lotto.utils.Validator.*;
 
 public class InputView {
 
@@ -16,6 +15,7 @@ public class InputView {
         System.out.println("구입금액을 입력해 주세요.");
         String userInput = SCANNER.nextLine();
 
+        validateBudget(Integer.valueOf(userInput));
         validateInteger(userInput);
 
         return Integer.valueOf(userInput);
