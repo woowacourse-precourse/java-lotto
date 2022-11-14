@@ -9,29 +9,9 @@ import static lotto.constant.Message.*;
 public class WinningLotto extends Lotto{
     private int bonusNumber;
 
-    public WinningLotto(List<Integer> numbers, String inputBonus) {
+    public WinningLotto(List<Integer> numbers, int bonusNumber) {
         super(numbers);
-        validate(numbers, inputBonus);
-        this.bonusNumber = Integer.parseInt(inputBonus);
-    }
-
-    private void validate(List<Integer> numbers, String inputBonus) {
-        validateDigit(inputBonus);
-        validateDuplicate(numbers, inputBonus);
-    }
-
-    private void validateDuplicate(List<Integer> numbers, String inputBonus) {
-        int bonus = Integer.parseInt(inputBonus);
-
-        if (numbers.contains(bonus)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE_LOTTO_NUMBER_MESSAGE);
-        }
-    }
-
-    private void validateDigit(String inputBonus) {
-        if (!Pattern.matches(DIGIT_REGEX, inputBonus)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
-        }
+        this.bonusNumber = bonusNumber;
     }
 
     public Rank compareLottoNumber(Lotto lotto) {
