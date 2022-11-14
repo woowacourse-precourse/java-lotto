@@ -1,4 +1,5 @@
 package lotto;
+
 /*
 설명 - 사용자 돈 객체
 getLottoNumber() - 몇개의 로또가 만들어저야하는지 개수 return

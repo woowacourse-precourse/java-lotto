@@ -12,8 +12,8 @@ import static camp.nextstep.edu.missionutils.Console.*;
 public class Application {
     public static void main(String[] args) {
         System.out.println("구입금액을 입력해 주세요.");
-        String userInput=readLine();
-        if (!checkErrorInput(userInput))return;
+        String userInput = readLine();
+        if (!checkErrorInput(userInput)) return;
         UserMoney userMoney = userInputMoney(userInput);
 
         List<Lotto> lottos = makeLotto(userMoney.getLottoNumber());
@@ -22,8 +22,9 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
         int ranking[] = compareUserInputLottos(lottos, numbers);
-        double earning=calculateEarnings(ranking, userMoney.getUserInputMoney());
+        double earning = calculateEarnings(ranking, userMoney.getUserInputMoney());
     }
+
     //사용자 돈 에러 체크 함수
     private static boolean checkErrorInput(String userInput) {
         for (int i = 0; i < userInput.length(); i++) {
@@ -38,6 +39,7 @@ public class Application {
         }
         return true;
     }
+
     // 수익률 계산 함수
     public static double calculateEarnings(int[] ranking, int userInputMoney) {
         int total = ranking[3] * RankingMoney.FIFTH.getMoney()
@@ -50,6 +52,7 @@ public class Application {
         System.out.println("총 수익률은 " + roundedEarnings + "%입니다.");
         return roundedEarnings;
     }
+
     // 사용자 입력 번호와 로또들 비교 함수
     // ranking[3]= 3개 맞음, ranking[4]=4개 맞음, ranking[5]=5개 맞음, ranking[7]=5+보너스 맞음
     // ranking[6]=다 맞음
@@ -68,6 +71,7 @@ public class Application {
         printRanking(ranking);
         return ranking;
     }
+
     // 사용자 입력 번호화 로또드 비교 출력 함수
     private static void printRanking(int[] ranking) {
         System.out.println("3개 일치 (5,000원) - " + ranking[3] + "개");
@@ -76,6 +80,7 @@ public class Application {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + ranking[7] + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + ranking[6] + "개");
     }
+
     // 5개 맞을 시 보너스 번호 체크 함수
     private static int checkBonussNumber(Lotto lotto, Integer integer) {
         if (lotto.getNumbers().contains(integer)) {
@@ -83,6 +88,7 @@ public class Application {
         }
         return 0;
     }
+
     // 로또 한개와 사용자 입력 숫자 한개 비교 함수
     private static int compareNumbers(Lotto lotto, int numbers) {
         if (lotto.getNumbers().contains(numbers)) {
@@ -90,12 +96,14 @@ public class Application {
         }
         return 0;
     }
+
     // 사용자 로또 번호 입력 함수
     private static List<Integer> userInputNumbers() {
         userNumbers userNumbers = new userNumbers(readLine());
         userNumbers.addBonusNumber(Integer.parseInt(readLine()));
         return userNumbers.getNumbers();
     }
+
     // 로또 만들기 함수
     public static List<Lotto> makeLotto(int lottoNum) {
         ArrayList<Lotto> lottos = new ArrayList<>();
@@ -112,6 +120,7 @@ public class Application {
         }
         return lottos;
     }
+
     // 로또 출력 함수
     private static void printLotto(List<Integer> lottonumbers) {
         System.out.print("[");

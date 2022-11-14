@@ -12,17 +12,18 @@ class UserMoneyTest {
 
     @Test
     void getLottoNumber() {
-        UserMoney userMoney =new UserMoney("1000");
+        UserMoney userMoney = new UserMoney("1000");
         assertThat(userMoney.getLottoNumber()).isEqualTo(1);
     }
 
     @Test
     void getUserInputMoney() {
-        UserMoney userMoney=new UserMoney("10000");
+        UserMoney userMoney = new UserMoney("10000");
         assertThat(userMoney.getUserInputMoney()).isEqualTo(10000);
     }
+
     @Test
-    void testCheckError(){
+    void testCheckError() {
         assertThatThrownBy(() -> new UserMoney("10000j"))
                 .isInstanceOf(IllegalArgumentException.class);
     }

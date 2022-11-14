@@ -12,19 +12,20 @@ class userNumbersTest {
 
     @Test
     void getNumbers() {
-        userNumbers userNumbers=new userNumbers("1,2,3,4,5,6");
+        userNumbers userNumbers = new userNumbers("1,2,3,4,5,6");
         assertThat(userNumbers.getNumbers().size()).isEqualTo(6);
     }
 
     @Test
     void addBonusNumber() {
-        userNumbers userNumbers=new userNumbers("1,2,3,4,5,6");
+        userNumbers userNumbers = new userNumbers("1,2,3,4,5,6");
         assertThat(userNumbers.getNumbers().size()).isEqualTo(6);
         userNumbers.addBonusNumber(7);
         assertThat(userNumbers.getNumbers().size()).isEqualTo(7);
     }
+
     @Test
-    void testErrorCheck(){
+    void testErrorCheck() {
         assertThatThrownBy(() -> new userNumbers("1,2,3,4,5"))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new userNumbers("1,2,3,4,5,46"))
