@@ -34,6 +34,11 @@ public abstract class Utility {
         return input;
     }
 
+    public static long convertStringToLong(String input){
+        long number = Long.parseLong(input);
+        return number;
+    }
+
     public static long calculateQuotient(long dividend, long divisor){
         return dividend/divisor;
     }
