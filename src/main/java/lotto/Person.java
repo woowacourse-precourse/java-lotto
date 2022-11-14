@@ -18,4 +18,9 @@ public class Person {
         }
         return new Person(lottos);
     }
+
+    public void printLottos() {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+        lottos.forEach(System.out::println);
+    }
 }
