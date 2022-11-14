@@ -32,4 +32,7 @@ public class LottoPrinter {
         System.out.printf("%s (%s원) - %d개\n", prize.matchCount, formattedReward, count);
     }
 
+    public static void printRateOfReturn(Double rateOfReturn) {
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", rateOfReturn);
+    }
 }

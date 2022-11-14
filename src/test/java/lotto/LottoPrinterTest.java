@@ -86,4 +86,23 @@ class LottoPrinterTest {
             LottoPrinter.printStatistics(statistics);
         }
     }
+
+    @Nested
+    @DisplayName("수익률 테스트")
+    class PrintRateOfReturnTest extends NsTest {
+        @Test
+        public void printFormatString() {
+            assertSimpleTest(
+                    () -> {
+                        run();
+                        assertThat(output().contains("총 수익률은 65.2%%입니다."));
+                    });
+        }
+
+        @Override
+        protected void runMain() {
+            double mockRateOfReturn = 65.234;
+            LottoPrinter.printRateOfReturn(mockRateOfReturn);
+        }
+    }
 }
