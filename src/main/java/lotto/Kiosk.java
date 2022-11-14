@@ -4,14 +4,16 @@ import ExceptionCollections.CommonException;
 import ExceptionCollections.PaymentException;
 import View.Input;
 import View.Output;
+import enumCollections.RankNumber;
 
+import java.util.EnumMap;
 import java.util.List;
 
 public class Kiosk {
     static final int LOTTO_PRICE = 1000;
     static protected List<Integer> winningNumbers;
     static protected int bonusNumber;
-    static protected int[] resultStatistics;
+    static protected EnumMap<RankNumber, Integer> resultStatistics;
     static int payment;
 
     static public void start(Buyer buyer) {
@@ -26,9 +28,9 @@ public class Kiosk {
         Output.getBonusNumber();
         bonusNumber = Input.getBonusNumber();
         resultStatistics = Checker.compare(buyer);
-//        Output.showResultStatistics(resultStatistics);
-        float yield = Calculator.getYield(payment, resultStatistics);
-        Output.yield(yield);
+        Output.showResultStatistics(resultStatistics);
+//        float yield = Calculator.getYield(payment, resultStatistics);
+//        Output.yield(yield);
     }
 
     static private int getPurchaseAmount() {

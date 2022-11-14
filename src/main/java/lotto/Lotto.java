@@ -23,7 +23,7 @@ public class Lotto {
     }
 
     public void printLottoNumbers() {
-        System.out.println(this.numbers);
+        System.out.println(this.numbers.toString());
     }
 
     private void checkDuplicate(List<Integer> numbers) {
@@ -56,5 +56,9 @@ public class Lotto {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public boolean hasNumber(int number) {
+        return numbers.contains(number);
     }
 }

@@ -1,18 +1,15 @@
 package lotto;
 
-import enumCollections.RankIndex;
 import enumCollections.RankNumber;
-import enumCollections.Winnings;
 
 import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.List;
 
 public class Checker extends Kiosk {
     public static EnumMap<RankNumber, Integer> compare(Buyer buyer) {
         EnumMap<RankNumber, Integer> resultStatistics = initializeResultStatistics();
         for (Lotto lotto : buyer.lottos) {
             RankNumber lottoRank = (RankNumber)getRank(countSameNumbers(lotto));
+            System.out.println(getRank(countSameNumbers(lotto)));
             if (lottoRank.equals(RankNumber.THIRD) && hasBonusNumber(lotto)) {
                 lottoRank = RankNumber.SECOND;
             }
