@@ -12,7 +12,9 @@ public enum ViewValue {
     WINNING_THIRD("5개 일치 (1,500,000원) - "),
     WINNING_SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     WINNING_FIRST( "6개 일치 (2,000,000,000원) - "),
-    WINNING_END("개");
+    WINNING_END("개"),
+    MARGIN_INFO_HEAD("총 수익률은 "),
+    MARGIN_INFO_END("%입니다.");
 
     private final String value;
 

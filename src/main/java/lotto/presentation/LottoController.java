@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.application.LottoFacade;
 import lotto.application.LottoFacadeImpl;
 import lotto.domain.Lotto;
+import lotto.domain.enummodel.PriceEnum;
 import lotto.domain.enummodel.RankEnum;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class LottoController {
         Lotto winLotto = inputWinLotto();
         int bonusNum = inputBonusNum();
         List<Integer> result = viewResult(clientLotto, winLotto, bonusNum);
+        viewMargin(clientLotto, result);
 
     }
 
@@ -69,5 +71,11 @@ public class LottoController {
                 ViewValue.WINNING_FIRST.getValue()
                         + result.stream().filter(value -> value==RankEnum.FIRST.getMatchNumber()+1).count() + ViewValue.WINNING_END.getValue()
         );
+    }
+
+    private void viewMargin(List<Lotto> clientLotto, List<Integer> result) {
+        Integer money = lottoFacade.calculateMoney(result);
+        String margin = lottoFacade.getMargin(clientLotto.size() * PriceEnum.LOTTO_PRICE.getValue(), money);
+        System.out.println(ViewValue.MARGIN_INFO_HEAD.getValue() + margin + ViewValue.MARGIN_INFO_END.getValue());
     }
 }
