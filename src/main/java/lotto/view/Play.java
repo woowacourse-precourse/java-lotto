@@ -17,13 +17,59 @@ public class Play {
 
     private Purchase purchase = new Purchase();
     private LottoNumbers lottoNumbers = new LottoNumbers();
-    private List<Lotto> lotto = new ArrayList<>();
     private WinningNumber winningNumber = new WinningNumber();
-    private String[] savedWinningNumber = new String[6];
     private Result result = new Result();
-    private int total = 0;
+    private int total;
+    private int prize;
+    private String bonus;
+    private List<Lotto> lotto;
+    private List<Integer> winLotto;
+    private Map<ResultType,Integer> totalResult;
 
     public void startPlay(){
+        inputAmount();
+        generateLotto();
+        winLotto = inputWinningNumber();
+        bonus = inputBonusNumber();
+        totalResult = makeResult(winLotto, bonus);
+        printResult(totalResult);
+
+    }
+
+    private void printResult(Map<ResultType, Integer> totalResult) {
+        System.out.println("\n"+WINNING_MESSAGE);
+        result.printResult(totalResult);
+        double profit = result.calculateRate(total,prize);
+        System.out.printf(RATE_MESSAGE, profit);
+    }
+
+    private Map<ResultType, Integer> makeResult(List<Integer> winLotto, String bonus) {
+        Map<ResultType,Integer> totalResult = result.calculateLotto(lotto, winLotto, bonus);
+
+        prize = result.makePrize(totalResult);
+        return totalResult;
+    }
+
+    private String inputBonusNumber() {
+        System.out.println("\n"+INPUT_BONUS_MESSAGE);
+        String bonus = Console.readLine();
+        winningNumber.checkBonus(bonus);
+        return bonus;
+    }
+
+    private List<Integer> inputWinningNumber() {
+        System.out.println("\n"+INPUT_WINNING_MESSAGE);
+        String winning = Console.readLine();
+        List<Integer> winLotto = winningNumber.numberToString(winning);
+        return winLotto;
+    }
+
+    private void generateLotto() {
+        lotto = lottoNumbers.printLotto(total/1000);
+        lottoNumbers.displayLotto(lotto);
+    }
+
+    private void inputAmount() {
         System.out.println(START_MESSAGE);
 
         String amount = Console.readLine();
@@ -32,34 +78,7 @@ public class Play {
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
-
         System.out.println("\n"+(total/1000)+CHECK_MESSAGE);
-        lotto = lottoNumbers.printLotto(total/1000);
-        lottoNumbers.displayLotto(lotto);
-
-        System.out.println("\n"+INPUT_WINNING_MESSAGE);
-        String winning = Console.readLine();
-
-        Lotto winningLotto = new Lotto(winningNumber.numberToString(winning));
-
-        List<Integer> winLotto = winningNumber.numberToString(winning);
-
-        System.out.println("\n"+INPUT_BONUS_MESSAGE);
-        String bonus = Console.readLine();
-        winningNumber.checkBonus(bonus);
-
-
-        Map<ResultType,Integer> totalResult = result.calculateLotto(lotto,winLotto,bonus);
-
-
-//        System.out.println(result.makePrize(totalResult));
-        int prize = result.makePrize(totalResult);
-
-        System.out.println("\n"+WINNING_MESSAGE);
-        result.printResult(totalResult);
-        double profit = result.calculateRate(total,prize);
-        System.out.printf(RATE_MESSAGE, profit);
-
     }
 
 

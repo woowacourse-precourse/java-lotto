@@ -33,8 +33,6 @@ public class Result {
 
     }
 
-
-
     private int compareLotto(Lotto lotto, List<Integer> winning) {
         int check = 0;
         for(int i = 0; i< lotto.getLotto().size(); i++){
@@ -88,8 +86,6 @@ public class Result {
         System.out.println(ResultType.FIVE.getDetail() + " - " + allResult.get(ResultType.FIVE) + "개");
         System.out.println(ResultType.FIVEPLUS.getDetail() + " - " + allResult.get(ResultType.FIVEPLUS) + "개");
         System.out.println(ResultType.SIX.getDetail() + " - " + allResult.get(ResultType.SIX) + "개");
-
-
     }
 
 }

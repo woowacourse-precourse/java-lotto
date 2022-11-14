@@ -7,11 +7,6 @@ import java.util.stream.Collectors;
 public class WinningNumber {
     private static List<Integer> winningNumber;
 
-    public Lotto saveWinningNumber(String input){
-        List<Integer> winningNumber = numberToString(input);
-        Lotto winning = new Lotto(winningNumber);
-        return winning;
-    }
     public List<Integer> numberToString(String input){
         validateNumber(input);
         winningNumber = Arrays.stream(input.split(","))
