@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,6 +40,25 @@ public class BuyLotto {
             Collections.sort(randomList);
             Lotto lotto = new Lotto(randomList);
             lottoList.add(lotto.getNumbers());
+        }
+    }
+    public void showLottos() {
+        for (List<Integer> list : lottoList) {
+            System.out.println(list);
+        }
+    }
+
+    public String inputSystem() {
+        String input = Console.readLine();
+        validateNumberCheck(input);
+        return input;
+    }
+
+    public void validateNumberCheck(String inputNumber) {
+        for (char input : inputNumber.toCharArray()) {
+            if (!Character.isDigit(input)) {
+                throw new IllegalArgumentException(PrintMessages.ERROR_NUMBER.getMessage());
+            }
         }
     }
 }
