@@ -6,18 +6,17 @@ import java.util.stream.Collectors;
 
 public class GetValidateInput {
     private final String number;
+    private final int moneyUnit = 1000;
 
     public GetValidateInput(String number) {
         this.number = number;
     }
 
     public int getMoney() {
-        try {
-            return changeNumberToString(number);
-        } catch (IllegalArgumentException e) {
-            System.out.println(Error.NOT_IN_RANGE.getMessage());
-            throw new IllegalArgumentException();
-        }
+        int money;
+        money = changeNumberToString(number);
+        validMoney(money);
+        return money;
     }
 
     public List<Integer> getNumbers() {
@@ -25,16 +24,16 @@ public class GetValidateInput {
     }
 
     public int getBonus(List<Integer> lotto) {
-        try {
-            int bonus = changeNumberToString(number);
+        int bonus;
+        bonus = changeNumberToString(number);
+        validateBonus(bonus, lotto);
+        validateInRange(bonus);
+        return bonus;
+    }
 
-            validateBonus(bonus, lotto);
-            validateInRange(bonus);
-
-            return bonus;
-        } catch (IllegalArgumentException e) {
-            System.out.println(Error.NOT_IN_RANGE.getMessage());
-            throw new IllegalArgumentException();
+    private void validMoney(int money) {
+        if (money < moneyUnit || money % moneyUnit != 0) {
+            throw new IllegalArgumentException(Error.NOT_VALIDATE_MONEY_UNIT.getMessage());
         }
     }
 
@@ -42,7 +41,7 @@ public class GetValidateInput {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.NOT_NUMBER.getMessage());
         }
     }
 
@@ -50,13 +49,13 @@ public class GetValidateInput {
         try {
             return Arrays.stream(number.split(",")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.WORNG_INPUT.getMessage());
         }
     }
 
     private void validateBonus(int bonus, List<Integer> lotto) {
         if (lotto.contains(bonus)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.IS_CONTAIN_BONUS_TO_LOTTO.getMessage());
         }
     }
 
@@ -65,7 +64,7 @@ public class GetValidateInput {
         int minNumber = 1;
 
         if (minNumber > bonus || bonus > maxNumber) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.NOT_IN_RANGE.getMessage());
         }
     }
 
