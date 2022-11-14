@@ -76,4 +76,32 @@ class LottoTest {
                     .doesNotThrowAnyException();
         }
     }
+
+    @Nested
+    @DisplayName("로또에 넣을 번호가")
+    class lotto_number {
+
+        @Test
+        @DisplayName("규칙에서 정한 범위 밖이면 예외를 던진다")
+        void is_outside_limit_prescribed_rule() {
+            // given
+            List<Integer> numbers = List.of(1, 2, 3, 4, 5, LottoNumber.END_NUMBER_OF_LOTTO.getNumber() + 1);
+
+            // when, then
+            assertThatThrownBy(() -> new Lotto(numbers))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.LOTTO_NUMBER_IS_OUT_OF_RANGE.getMessage());
+        }
+
+        @Test
+        @DisplayName("규칙에서 정한 범위 안이면 예외를 던지지 않는다")
+        void is_inside_limit_prescribed_rule() {
+            // given
+            List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+
+            // when, then
+            assertThatCode(() -> new Lotto(numbers))
+                    .doesNotThrowAnyException();
+        }
+    }
 }

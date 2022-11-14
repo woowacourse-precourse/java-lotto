@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import static lotto.validator.LottoNumberValidator.validateExistDuplicateNumber;
-import static lotto.validator.LottoNumberValidator.validateRangeOfNumber;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -49,6 +48,20 @@ public class Lotto {
                 );
             }
         }
+    }
+
+    private void validateRangeOfNumber(List<Integer> numbers) {
+        long outOfRangeCount = numbers.stream()
+                .filter(number -> !isInRange(number))
+                .count();
+        if (outOfRangeCount != 0) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_OUT_OF_RANGE.getMessage());
+        }
+    }
+
+    private boolean isInRange(int number) {
+        return LottoNumber.START_NUMBER_OF_LOTTO.getNumber() <= number
+                && number <= LottoNumber.END_NUMBER_OF_LOTTO.getNumber();
     }
 
     public List<Integer> getNumbers() {
