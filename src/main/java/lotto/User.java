@@ -27,4 +27,10 @@ public class User {
             throw new IllegalArgumentException(Error.INPUT_WITH_BLACK.getMessage());
         }
     }
+
+    public void validateNumeric(String input) {
+        if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
+            throw new IllegalArgumentException(Error.INPUT_NOT_NUMERIC.getMessage());
+        }
+    }
 }
