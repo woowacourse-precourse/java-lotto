@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.LottoSummary;
 import lotto.domain.LottoTickets;
@@ -36,8 +37,9 @@ public class LottoApplication {
 
     private WinningLotto getWinningLotto() {
         List<Integer> winningNumbers = InputView.inputWinningNumbers();
+        Lotto winningLotto = new Lotto(winningNumbers);
         int bonusNumber = InputView.inputBonusNumber();
-        return new WinningLotto(winningNumbers, bonusNumber);
+        return WinningLotto.from(winningLotto, bonusNumber);
     }
 
     private List<Rank> match(LottoTickets lottoTickets, WinningLotto winningLotto) {

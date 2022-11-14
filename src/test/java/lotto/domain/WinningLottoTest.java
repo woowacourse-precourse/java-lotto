@@ -26,53 +26,22 @@ class WinningLottoTest {
         @Test
         void 당첨_로또_생성_성공() {
             //given
-            List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             int bonusNumber = 7;
 
             //when then
             assertThatNoException()
-                    .isThrownBy(() -> new WinningLotto(numbers, bonusNumber));
-        }
-
-        @Test
-        void 로또_번호의_개수가_6개가_넘어가면_예외가_발생한다() {
-            //given
-            List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7);
-            int bonusNumber = 7;
-
-            //when then
-            assertThatThrownBy(() -> new WinningLotto(numbers, bonusNumber))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("당첨 번호는 6개여야 합니다.");
-        }
-
-        @Test
-        void 로또_번호에_중복된_숫자가_있으면_예외가_발생한다() {
-            //given
-            List<Integer> numbers = List.of(1, 2, 3, 4, 5, 5);
-            int bonusNumber = 7;
-
-            //when then
-            assertThatThrownBy(() -> new WinningLotto(numbers, bonusNumber))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("중복된 당첨 번호가 존재합니다.");
-        }
-
-        @Test
-        void _1_45_외의_숫자가_있으면_예외가_발생한다() {
-            assertThatThrownBy(() -> new Lotto(List.of(-11, 2, 3, 4, 5, 5)))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                    .isThrownBy(() -> new WinningLotto(lotto, bonusNumber));
         }
 
         @Test
         void 보너스_번호가_로또_번호에_중복된_숫자가_있으면_예외가_발생한다() {
             //given
-            List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             int bonusNumber = 6;
 
             //when then
-            assertThatThrownBy(() -> new WinningLotto(numbers, bonusNumber))
+            assertThatThrownBy(() -> new WinningLotto(lotto, bonusNumber))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("중복된 당첨 번호가 존재합니다.");
         }
@@ -89,7 +58,8 @@ class WinningLottoTest {
         void 번호_비교_테스트(List<Integer> numbers, List<Integer> winningNumbers, int bonusNumber, int expect) {
             //given
             Lotto lotto = new Lotto(numbers);
-            WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+            Lotto winning = new Lotto(winningNumbers);
+            WinningLotto winningLotto = new WinningLotto(winning, bonusNumber);
 
             //when
             int matchCount = winningLotto.match(lotto);
@@ -120,7 +90,7 @@ class WinningLottoTest {
         void 보너스_번호가_있으면_true를_반환한다() {
             //given
             List<Integer> numbers = List.of(3, 21, 25, 28, 4, 9);
-            WinningLotto winningLotto = new WinningLotto(List.of(21, 25, 3, 28, 4, 6), 9);
+            WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(21, 25, 3, 28, 4, 6)), 9);
 
             //when
             boolean res = winningLotto.isMatchedBonusNumber(numbers);
@@ -133,7 +103,7 @@ class WinningLottoTest {
         void 보너스_번호가_없으면_false를_반환한다() {
             //given
             List<Integer> numbers = List.of(3, 21, 25, 28, 4, 9);
-            WinningLotto winningLotto = new WinningLotto(List.of(21, 25, 3, 28, 4, 6), 45);
+            WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 45);
 
             //when
             boolean res = winningLotto.isMatchedBonusNumber(numbers);

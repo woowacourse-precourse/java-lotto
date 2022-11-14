@@ -36,7 +36,7 @@ class RankTest {
         void 등수_테스트(List<Integer> numbers, List<Integer> winningNumbers, int bonusNumber, Rank expect) {
             //given
             Lotto lotto = new Lotto(numbers);
-            WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+            WinningLotto winningLotto = new WinningLotto(new Lotto(winningNumbers), bonusNumber);
 
             //when
             Rank rank = Rank.from(winningLotto, lotto);

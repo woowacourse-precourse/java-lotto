@@ -2,14 +2,17 @@ package lotto.domain;
 
 import java.util.List;
 
-public class WinningLotto extends Lotto {
+import static lotto.domain.Lotto.DUPLICATED_NUMBER_ERROR;
 
+public class WinningLotto {
+
+    private final Lotto winningLotto;
     private final int bonusNumber;
 
-    public WinningLotto(List<Integer> numbers, int bonusNumber) {
-        super(numbers);
-        validateBonusNumberDuplicated(numbers, bonusNumber);
+    public WinningLotto(Lotto lotto, int bonusNumber) {
+        validateBonusNumberDuplicated(lotto.getNumbers(), bonusNumber);
         this.bonusNumber = bonusNumber;
+        this.winningLotto = lotto;
     }
 
     private void validateBonusNumberDuplicated(List<Integer> numbers, int bonusNumber) {
@@ -25,11 +28,15 @@ public class WinningLotto extends Lotto {
 
     private int countMatchNumbers(List<Integer> lottoNumbers) {
         return (int) lottoNumbers.stream()
-                .filter(number -> getNumbers().contains(number))
+                .filter(number -> winningLotto.getNumbers().contains(number))
                 .count();
     }
 
     public boolean isMatchedBonusNumber(List<Integer> lottoNumbers) {
         return lottoNumbers.contains(bonusNumber);
+    }
+
+    public static WinningLotto from(Lotto lotto, int bonusNumber) {
+        return new WinningLotto(lotto, bonusNumber);
     }
 }
