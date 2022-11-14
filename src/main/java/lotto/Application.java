@@ -52,16 +52,6 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
-    private static void printlnLottoNumMessage(Integer amount) {
-        Integer lottoNum = calcLottoNum(amount);
-        System.out.printf("%d개를 구매했습니다.\n", lottoNum);
-    }
-
-    private static Integer calcLottoNum(Integer amount) {
-        Integer lottoNum = amount / LOTTO_AMOUNT_EACH;
-        return lottoNum;
-    }
-
     private static int getPurchaseAmount() {
         String input = Console.readLine();
         return Integer.parseInt(input);
