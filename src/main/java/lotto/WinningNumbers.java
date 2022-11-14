@@ -23,8 +23,7 @@ public class WinningNumbers {
 
     public WinningNumbers() {
         printGuideMessage(GuideMessageType.WINNING_NUMBERS.message);
-        List<Integer> winningNumbers = convertNumbers();
-        this.winningNumbers = winningNumbers;
+        this.winningNumbers = convertNumbers();
 
         printGuideMessage(GuideMessageType.BONUS_NUMBER.message);
         String bonusNumber = setNumber();
