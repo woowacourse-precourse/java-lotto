@@ -13,17 +13,24 @@ public class LottoManager {
         this.inputManager = new InputManager();
     }
 
-    public void startLotto() {
+    public int startLotto() {
         HashMap<Integer, Integer> lottoResult = new HashMap<>();
-        int amount = inputManager.getPurchasingAmount();
-        int count = countBuyableLotto(amount);
-        lottos = buyLotto(count);
-        printLottoCount(count);
-        printLottos(lottos);
-        List<Integer> winningNumbers = inputManager.drawWinningNumbers();
-        int bonusNumber = inputManager.drawBonusNumber();
-        lottoMachine = new LottoMachine(winningNumbers, bonusNumber);
-        printLottoResult(lottoResult, lottos, lottoMachine, amount);
+        int amount;
+        try {
+            amount = inputManager.getPurchasingAmount();
+            int count = countBuyableLotto(amount);
+            lottos = buyLotto(count);
+            printLottoCount(count);
+            printLottos(lottos);
+            List<Integer> winningNumbers = inputManager.drawWinningNumbers();
+            int bonusNumber = inputManager.drawBonusNumber();
+            lottoMachine = new LottoMachine(winningNumbers, bonusNumber);
+            printLottoResult(lottoResult, lottos, lottoMachine, amount);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception);
+            return 1;
+        }
+        return 0;
     }
 
     public int countBuyableLotto(int amount) {
