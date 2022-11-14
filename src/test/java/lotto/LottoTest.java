@@ -144,7 +144,7 @@ class LottoTest {
     @Test
     void seprateTicketTest() {
         /*given*/
-        List<Integer> seprateTicketTest = new ArrayList<>(List.of(1, 1, 1, 1, 2));
+        List<Integer> seprateTicketTest = new ArrayList<>(List.of(2, 1, 1, 1, 1));
 
         /*when*/
         List<List<Integer>> randomLottoTest = new ArrayList<>(List.of(List.of(8, 21, 23, 41, 42, 43), /*1등*/
