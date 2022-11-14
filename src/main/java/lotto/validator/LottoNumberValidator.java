@@ -16,6 +16,18 @@ public class LottoNumberValidator {
         validateDuplicates(lottoNumbers);
     }
 
+    public static void validate(List<Integer> lottoNumbers) {
+        validateSize(lottoNumbers);
+        validateRange(lottoNumbers);
+        validateDuplicates(lottoNumbers);
+    }
+
+    private static void validateSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void validateFormat(List<String> lottos) {
         validateType(lottos);
         validateCount(lottos);
