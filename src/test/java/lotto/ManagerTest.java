@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -38,14 +41,6 @@ class ManagerTest {
     }
 
     @Test
-    void generator() {
-    }
-
-    @Test
-    void generateLotto() {
-    }
-
-    @Test
     void inputLottoNumber() {
     }
 
@@ -56,9 +51,14 @@ class ManagerTest {
     @Test
     void compareNumber() {
     }
-
+    @DisplayName("3개가 같은 로또 번호배열 비교하여 같은 개수 3을 반환")
     @Test
     void countSameNumber() {
+        List<Integer> from = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        List<Integer> to = new ArrayList<>(Arrays.asList(4, 5, 6, 7, 8, 9));
+        int result = manager.countSameNumber(from, to);
+        int expect = 3;
+        assertThat(result).isEqualTo(expect);
     }
 
     @Test
