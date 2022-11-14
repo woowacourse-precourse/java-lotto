@@ -22,7 +22,7 @@ public class ExceptionHandler {
     }
 
     private static void checkThousandUnit(int input) throws IllegalArgumentException {
-        if (input % Number.THOUSAND.getValue() != Number.ZERO.getValue()) {
+        if ((input % Number.THOUSAND.getValue()) != Number.ZERO.getValue()) {
             throw new IllegalArgumentException();
         }
     }
