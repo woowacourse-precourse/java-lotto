@@ -59,10 +59,10 @@ public class LottoResult {
 
         for(Rank rank : Rank.values()) {
             int count = resultMap.getOrDefault(rank, 0);
-            sb.append(String.format(rank.toString()+"\n",count));
+            sb.append(String.format(rank.getSentence()+"\n",count));
         }
 
-        return sb.toString();
+        return sb.toString().trim();
     }
 
 }

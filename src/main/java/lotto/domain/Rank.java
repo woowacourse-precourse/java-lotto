@@ -32,8 +32,7 @@ public enum Rank {
         return this.matchCount == matchCount ;
     }
 
-    @Override
-    public String toString() {
+    public String getSentence() {
         return this.sentence;
     }
 
