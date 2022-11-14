@@ -4,11 +4,12 @@ import java.util.Map;
 
 public class ProfitCalculator {
 
-    public static float calculateProfitRate(Map<Prize, Integer> prizeBoard, int money) {
-        float profit = calculateProfit(prizeBoard);
-        float profitRate = profit / money * 100;
+    private static final int RATE_UNIT = 100;
 
-        return (float) Math.round(profitRate * 100) / 100;
+    public static float calculateProfitRate(Map<Prize, Integer> prizeBoard, Money money) {
+        float profit = calculateProfit(prizeBoard);
+        float profitRate = profit / money.getMoney() * RATE_UNIT;
+        return (float) Math.round(profitRate * RATE_UNIT) / RATE_UNIT;
     }
 
     private static float calculateProfit(Map<Prize, Integer> prizeBoard) {
