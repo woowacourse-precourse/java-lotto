@@ -29,7 +29,7 @@ public class LottoBonus {
 
     private void notInclude(int bonus){
         if (bonus < 1 || bonus > 45) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45 사이의 숫자입니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자입니다.");
         }
     }
 }
