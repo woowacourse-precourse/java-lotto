@@ -3,6 +3,7 @@ package lotto.Service;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Model.Lotto;
 import lotto.Model.ValidNumbers;
+import lotto.Model.WinningLotto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,14 +24,14 @@ public class LottoService {
         return lotto;
     }
 
-    public Lotto createCustomLotto(String input) {
+    public WinningLotto createWinningLotto(String input, int bonusNumber) {
         List<Integer> numbers = Stream.of(input.split("\\s*,\\s*"))
                 .map(n -> (Integer.parseInt(n)))
                 .collect(Collectors.toList());
 
-        Lotto lotto = new Lotto(numbers);
+        WinningLotto winningLotto = new WinningLotto(numbers, bonusNumber);
 
-        return lotto;
+        return winningLotto;
     }
 
 }
