@@ -65,7 +65,7 @@ public class Lotto {
             sum += WinningNumbers.getMatchedReward(match, bonus);
         }
 
-        return sum/totalMoney;
+        return (sum / totalMoney) * 100L;
     }
 
     public Map<WinningNumbers, Long> countWinningCase(int bonusNumber, List<List<Integer>> lottoBundle) {
