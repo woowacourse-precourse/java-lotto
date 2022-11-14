@@ -18,4 +18,8 @@ public class Input {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public static int inputBonusNumber() {
+        return Integer.parseInt(Console.readLine());
+    }
 }
