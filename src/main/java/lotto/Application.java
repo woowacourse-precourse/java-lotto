@@ -12,7 +12,17 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("구입금액을 입력해 주세요.");
         String amount = Console.readLine();
-        int number = Integer.parseInt(amount) / 1000;
+        int number = 0;
+
+        try {
+            if (Integer.parseInt(amount) % 1000 != 0) {
+                throw new IllegalArgumentException("[ERROR] 1000 단위로 입력해 주세요.");
+            }
+            number = Integer.parseInt(amount) / 1000;
+        }catch (NumberFormatException e) {
+            System.out.println("[ERROR] 숫자만 입력해주세요.");
+        }
+
         System.out.println();
         System.out.println(number +"개를 구매했습니다.");
 
@@ -33,7 +43,21 @@ public class Application {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
 
-        user.setBonusNum(Integer.parseInt(Console.readLine()));
+        try {
+            int bonusNum = Integer.parseInt(Console.readLine());
+
+            if (lotto.getNumbers().contains(bonusNum)) {
+                throw new IllegalArgumentException("[ERROR] 당첨 번호와 중복 됩니다.");
+            }
+
+            if (bonusNum<0 || bonusNum>46) {
+                throw new IllegalArgumentException("[ERROR] 1 ~ 46의 숫자만 입력해 주세요.");
+            }
+
+            user.setBonusNum(bonusNum);
+        }catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요");
+        }
 
         winning.score(list, lotto.getNumbers(), user.getBonusNum());
 

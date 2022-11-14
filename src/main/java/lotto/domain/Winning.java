@@ -66,11 +66,23 @@ public class Winning {
 
         String[] split = win.split(",");
 
-        for (int i=0; i<split.length; i++) {
-            list.add(Integer.parseInt(split[i]));
+        try {
+            for (int i=0; i<split.length; i++) {
+                int num = Integer.parseInt(split[i]);
+                numberRange(num);
+                list.add(num);
+            }
+        }catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요");
         }
 
         return list;
+    }
+    
+    public void numberRange(int num) {
+        if (num<0 || num>46) {
+            throw new IllegalArgumentException("[ERROR] 1 ~ 46의 숫자만 입력해 주세요.");
+        }
     }
 
     public List<Integer> score() {
