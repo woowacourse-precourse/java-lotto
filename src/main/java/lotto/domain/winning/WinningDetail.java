@@ -1,7 +1,7 @@
 package lotto.domain.winning;
 
 import java.util.List;
-import lotto.domain.ball.Ball;
+import lotto.domain.winning.ball.Ball;
 
 public class WinningDetail {
     private final WinningRank rank;

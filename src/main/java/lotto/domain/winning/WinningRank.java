@@ -3,8 +3,8 @@ package lotto.domain.winning;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import lotto.domain.ball.Ball;
-import lotto.domain.ball.BallEnum;
+import lotto.domain.winning.ball.Ball;
+import lotto.domain.winning.ball.BallEnum;
 
 public class WinningRank {
     

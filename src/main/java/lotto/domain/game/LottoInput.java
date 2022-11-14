@@ -1,8 +1,8 @@
-package lotto.domain;
+package lotto.domain.game;
 
 import java.util.List;
-import lotto.domain.machine.LottoMachineEnum;
-import lotto.domain.number.LottoNumberEnum;
+import lotto.domain.lotto.LottoMachineEnum;
+import lotto.domain.lotto.LottoNumberEnum;
 import lotto.util.UserInput;
 
 public class LottoInput {

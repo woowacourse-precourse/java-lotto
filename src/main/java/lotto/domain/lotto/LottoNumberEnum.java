@@ -1,11 +1,11 @@
-package lotto.domain.machine;
+package lotto.domain.lotto;
 
-public enum LottoMachineEnum {
-    LOTTO_PRICE(1000);
+public enum LottoNumberEnum {
+    START_NUMBER(1), END_NUMBER(45), NUMBER_COUNT(6);
     
     private final Integer value;
     
-    LottoMachineEnum(Integer value) {
+    LottoNumberEnum(Integer value) {
         this.value = value;
     }
     

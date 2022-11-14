@@ -1,4 +1,4 @@
-package lotto.domain.ball;
+package lotto.domain.winning.ball;
 
 public class Ball {
     private final BallEnum type;

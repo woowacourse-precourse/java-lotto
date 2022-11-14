@@ -1,9 +1,11 @@
-package lotto.domain.number;
+package lotto.domain.lotto;
 
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.HashSet;
 import java.util.List;
+import lotto.domain.lotto.LottoNumberEnum;
+import lotto.domain.lotto.LottoNumberGenerator;
 import org.junit.jupiter.api.Test;
 
 public class LottoNumberGeneratorTest {

@@ -1,9 +1,7 @@
-package lotto.domain.machine;
+package lotto.domain.lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.Lotto;
-import lotto.domain.number.LottoNumberGenerator;
 
 public class LottoMachine {
     

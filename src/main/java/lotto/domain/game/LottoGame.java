@@ -1,12 +1,13 @@
-package lotto.domain;
+package lotto.domain.game;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import lotto.domain.comparator.LottoNumberComparator;
-import lotto.domain.machine.LottoMachine;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.LottoMachine;
 import lotto.domain.winning.WinningDetail;
 import lotto.domain.winning.WinningNumber;
+import lotto.domain.winning.WinningNumberComparator;
 import lotto.domain.winning.WinningStatistic;
 
 public class LottoGame {
@@ -25,10 +26,10 @@ public class LottoGame {
     }
     
     private List<WinningDetail> compareLottoList(List<Lotto> lottos, WinningNumber winningNumber) {
-        return getWinningDetails(lottos, new LottoNumberComparator(winningNumber));
+        return getWinningDetails(lottos, new WinningNumberComparator(winningNumber));
     }
     
-    private List<WinningDetail> getWinningDetails(List<Lotto> lottos, LottoNumberComparator comparator) {
+    private List<WinningDetail> getWinningDetails(List<Lotto> lottos, WinningNumberComparator comparator) {
         List<WinningDetail> result = new ArrayList<>();
         
         for (Lotto lotto : lottos) {

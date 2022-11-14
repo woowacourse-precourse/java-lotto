@@ -1,25 +1,23 @@
-package lotto.domain.comparator;
+package lotto.domain.winning;
 
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import lotto.domain.Lotto;
-import lotto.domain.winning.WinningDetail;
-import lotto.domain.winning.WinningNumber;
+import lotto.domain.lotto.Lotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class LottoNumberComparatorTest {
+public class WinningNumberComparatorTest {
     
-    LottoNumberComparator lottoNumberComparator;
+    WinningNumberComparator lottoNumberComparator;
     
     @BeforeEach
     void setUp() {
         WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6), List.of(7));
-        lottoNumberComparator = new LottoNumberComparator(winningNumber);
+        lottoNumberComparator = new WinningNumberComparator(winningNumber);
     }
     
     @DisplayName("당첨 번호를 갖는 로또 인스턴스를 비교 메소드로 실행했을 때 당첨 내역을 반환해야 한다.")

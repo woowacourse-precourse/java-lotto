@@ -1,19 +1,16 @@
-package lotto.domain.comparator;
+package lotto.domain.winning;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import lotto.domain.Lotto;
-import lotto.domain.ball.Ball;
-import lotto.domain.winning.WinningDetail;
-import lotto.domain.winning.WinningNumber;
-import lotto.domain.winning.WinningRank;
+import lotto.domain.winning.ball.Ball;
+import lotto.domain.lotto.Lotto;
 
-public class LottoNumberComparator {
+public class WinningNumberComparator {
     
     private final WinningNumber winningNumber;
     
-    public LottoNumberComparator(WinningNumber winningNumber) {
+    public WinningNumberComparator(WinningNumber winningNumber) {
         this.winningNumber = winningNumber;
     }
     
