@@ -21,14 +21,22 @@ public class Lotto {
     }
 
     public Rank compare(List<Integer> winningNumbers, int bonusNumber) {
-        return null;
+        boolean matchBonus = matchBonusNumber(bonusNumber)
+
+        int numberOfMatch = countMatchingNumber(winningNumbers);
+        if(matchBonus) {
+            numberOfMatch++;
+        }
+
+        Rank rank = getRank(numberOfMatch, matchBonus);
+        return rank;
     }
 
-    private int countMatchingNumber() {
+    private int countMatchingNumber(List<Integer> winningNumbers) {
         return 0;
     }
 
-    private boolean matchBonusNumber() {
+    private boolean matchBonusNumber(int bonusNumber) {
         return true;
     }
 
