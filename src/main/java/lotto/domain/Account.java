@@ -31,7 +31,7 @@ public class Account {
     }
 
     public void printResult() {
-        UserInterface.printResult(results);
+        UserInterface.printResult(this.results);
         UserInterface.printYield(getYield());
     }
 
@@ -47,7 +47,6 @@ public class Account {
         for (WinningResult result: results.keySet()) {
             this.winningAmount += results.get(result) * result.getMoney();
         }
-        System.out.println("winningAmount: " + winningAmount);
     }
 
     private String getYield() {
