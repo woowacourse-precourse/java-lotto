@@ -5,8 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoNumberGenerator {
-    public Lottos generateLottos(Money money) {
-        LottoCount lottoCount = new LottoCount(money);
+    public Lottos generateLottos(LottoCount lottoCount) {
         return generateLottoNumbers(lottoCount);
     }
 

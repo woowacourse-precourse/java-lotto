@@ -13,7 +13,7 @@ class LottoNumberGeneratorTest {
         LottoCount lottoCount = new LottoCount(money);
 
         LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
-        Lottos lottos = lottoNumberGenerator.generateLottos(money);
+        Lottos lottos = lottoNumberGenerator.generateLottos(lottoCount);
 
         assertThat(lottos.getLottos()).hasSize(lottoCount.getLottoCount());
     }
