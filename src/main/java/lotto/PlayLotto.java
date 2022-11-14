@@ -17,7 +17,7 @@ public class PlayLotto {
         return allLottoNumber;
     }
 
-    public List<Integer> seprateTicket(List<List<Integer>> RandomLottoTicket, String inputWinningNumber, String inputBonusNumber) {
+    public List<Integer> allTicketCheckCorrectNumber(List<List<Integer>> RandomLottoTicket, String inputWinningNumber, String inputBonusNumber) {
         List<Integer> correctNumber = new ArrayList<>(List.of(0, 0, 0, 0, 0));
         for (List<Integer> eachTicket : RandomLottoTicket) {
             int compareWinning = compareTicketAndWinningNumber(eachTicket, inputWinningNumber);

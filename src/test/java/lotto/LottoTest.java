@@ -142,7 +142,7 @@ class LottoTest {
 
     @DisplayName("등수 별 티켓이 몇장인지 찾는다.")
     @Test
-    void seprateTicketTest() {
+    void allTicketCheckCorrectNumberTest() {
         /*given*/
         List<Integer> seprateTicketTest = new ArrayList<>(List.of(2, 1, 1, 1, 1));
 
@@ -155,7 +155,7 @@ class LottoTest {
                 List.of(8, 21, 23, 41, 42, 43), /*1등*/
                 List.of(2, 13, 22, 32, 38, 45),
                 List.of(1, 3, 5, 14, 22, 45)));
-        List<Integer> seprateTicket = playLotto.seprateTicket(randomLottoTest, "8,21,23,41,42,43", "1");
+        List<Integer> seprateTicket = playLotto.allTicketCheckCorrectNumber(randomLottoTest, "8,21,23,41,42,43", "1");
 
         /*then*/
         assertThat(seprateTicketTest).isEqualTo(seprateTicket);
