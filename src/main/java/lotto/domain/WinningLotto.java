@@ -27,8 +27,16 @@ public class WinningLotto {
     }
 
     private void isDuplicate(int bonusNumber) {
-        if (this.winningLotto.isContainBonusNumber(bonusNumber)) {
+        if (this.winningLotto.isContainNumber(bonusNumber)) {
             throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATED_ERROR.toString());
         }
+    }
+
+    public Lotto getWinningLotto() {
+        return winningLotto;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }

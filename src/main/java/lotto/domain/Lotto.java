@@ -48,8 +48,8 @@ public class Lotto {
         }
     }
 
-    public boolean isContainBonusNumber(int bonusNumber) {
-        return this.numbers.contains(bonusNumber);
+    public boolean isContainNumber(int number) {
+        return this.numbers.contains(number);
     }
 
     public List<Integer> getNumbers() {
