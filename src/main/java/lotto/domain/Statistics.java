@@ -6,7 +6,6 @@ public class Statistics {
     private static Rank rank;
 
     public Statistics(List<Rank> rankings) { // [FIFTH, NONE, SECOND, THIRD, FIFTH]
-        this.rank = rank;
         for (Rank ranking : rankings) {
             ranking.addCount(ranking);
         }

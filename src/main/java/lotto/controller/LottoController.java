@@ -29,43 +29,13 @@ public class LottoController {
             purchaseLottoTickets();
             publishPlayerNumbers();
             determineWinningNumbersAndBonusNumber();
-
-            // 로또 결과 계산
-            LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
-            List<Integer> matches = result.getMatches(); // [3, 1, 5, 5, 3]
-            List<Boolean> bonusMatches = result.getBonusMatches(); // [true, false, true, false, false]
-
-            // 로또 순위 계산
-            Ranking ranking = new Ranking(matches, bonusMatches); // [FIFTH, NONE, SECOND, THIRD, FIFTH]
-            Statistics statistics = new Statistics(ranking.getRankings());
-
-            OutputView.printStatistics(statistics.getRank());
-
-            Yield yield = new Yield(ticketNumber * LOTTO_PRICE);
-            OutputView.printYield(yield.getYield());
+            aggregateStatisticResults();
+            calculateYield();
 
         } catch (Exception error) {
             OutputView.printErrorMessage(error);
         }
 
-    }
-
-    private static void setWinningNumbers() {
-        OutputView.printWinningNumberInput();
-        Lotto lotto = new Lotto(Formatter.formatWinningNumbersInput(InputView.getInput()));
-        winningNumbers = lotto.get();
-    }
-
-    private static void setBonusNumber() {
-        OutputView.printBonusNumberInput();
-        Bonus bonus = new Bonus(InputView.getInput());
-        bonusNumber = bonus.get();
-    }
-
-    private static void determineWinningNumbersAndBonusNumber() {
-        setWinningNumbers();
-        setBonusNumber();
-        validateDuplicates(winningNumbers, bonusNumber);
     }
 
     private static void purchaseLottoTickets() {
@@ -80,4 +50,35 @@ public class LottoController {
         allPlayerNumbers = new ArrayList<>(player.getAllPlayerNumbers());
         OutputView.printPlayerNumbers(allPlayerNumbers);
     }
+
+    private static void determineWinningNumbersAndBonusNumber() {
+        setWinningNumbers();
+        setBonusNumber();
+        validateDuplicates(winningNumbers, bonusNumber);
+    }
+
+    private static void setWinningNumbers() {
+        OutputView.printWinningNumberInput();
+        Lotto lotto = new Lotto(Formatter.formatWinningNumbersInput(InputView.getInput()));
+        winningNumbers = lotto.get();
+    }
+
+    private static void setBonusNumber() {
+        OutputView.printBonusNumberInput();
+        Bonus bonus = new Bonus(InputView.getInput());
+        bonusNumber = bonus.get();
+    }
+
+    private static void aggregateStatisticResults() {
+        LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
+        Ranking ranking = new Ranking(result.getMatches(), result.getBonusMatches());
+        Statistics statistics = new Statistics(ranking.getRankings());
+        OutputView.printStatistics(statistics.getRank());
+    }
+
+    private static void calculateYield() {
+        Yield yield = new Yield(ticketNumber * LOTTO_PRICE);
+        OutputView.printYield(yield.getYield());
+    }
+
 }
