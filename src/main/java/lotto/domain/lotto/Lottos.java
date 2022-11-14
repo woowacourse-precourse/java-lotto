@@ -3,10 +3,9 @@ package lotto.domain.lotto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
+import lotto.common.LottoConstants;
 
 public class Lottos {
-    private static final int AMOUNT_PER_LOTTO = 1_000;
-
     private final List<Lotto> lottos;
 
     private Lottos(List<Lotto> lottos) {
@@ -14,7 +13,7 @@ public class Lottos {
     }
 
     public static Lottos from(int lottoPurchasedAmount) {
-        int lottoCount = lottoPurchasedAmount / AMOUNT_PER_LOTTO;
+        int lottoCount = lottoPurchasedAmount / LottoConstants.AMOUNT_PER_LOTTO;
         List<Lotto> lottos = new ArrayList<>(lottoCount);
 
         for (int i = 0; i < lottoCount; i++) {
@@ -33,6 +32,6 @@ public class Lottos {
     }
 
     public int purchasedLottosAmount() {
-        return lottos.size() * AMOUNT_PER_LOTTO;
+        return lottos.size() * LottoConstants.AMOUNT_PER_LOTTO;
     }
 }
