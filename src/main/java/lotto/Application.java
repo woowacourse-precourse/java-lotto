@@ -10,27 +10,29 @@ public class Application {
         // TODO: 프로그램 구현
         int purchasePrice = getPurchasePrice(Console.readLine());
         List<Integer> winningLottoNumbers = getWinningLottoNumbers(Console.readLine());
-        int bonusNumber = getBonusNumber(Console.readLine(),winningLottoNumbers);
+        Lotto winningLotto = new Lotto(winningLottoNumbers);
+        List<Lotto> lottoList = createLottoList(purchasePrice);
+        int bonusNumber = getBonusNumber(Console.readLine(), winningLottoNumbers);
 
     }
 
-    public static int getPurchasePrice(String input){
+    public static int getPurchasePrice(String input) {
         validatePurchasePrice(input);
         return Integer.parseInt(input);
     }
 
-    public static List<Integer> getWinningLottoNumbers(String input){
+    public static List<Integer> getWinningLottoNumbers(String input) {
         String[] inputNumbers = input.split(",");
         List<Integer> numbers = new ArrayList<>();
-        for(String inputNumber : inputNumbers){
+        for (String inputNumber : inputNumbers) {
             validateNumber(inputNumber);
             numbers.add(Integer.parseInt(inputNumber));
         }
         return numbers;
     }
 
-    public static int getBonusNumber(String input, List<Integer> winningLottoNumbers){
-        validateNumber(input,winningLottoNumbers);
+    public static int getBonusNumber(String input, List<Integer> winningLottoNumbers) {
+        validateNumber(input, winningLottoNumbers);
         return Integer.parseInt(input);
     }
 
@@ -63,5 +65,14 @@ public class Application {
         if (winningLottoNumbers.contains(Integer.parseInt(input))) {
             throw new IllegalArgumentException(Error.INPUT_DUPLICATE.getMessage());
         }
+    }
+
+    public static List<Lotto> createLottoList(int purchasePrice) {
+        int range = purchasePrice / 1000;
+        List<Lotto> lottoList = new ArrayList<>();
+        for (int i = 0; i < range; i++){
+            lottoList.add(Lotto.createPurchaseLotto());
+        }
+        return lottoList;
     }
 }
