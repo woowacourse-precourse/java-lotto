@@ -27,6 +27,19 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        int numOfLottos = howManyLotto();
+        int totalMoney = lottoPrice * numOfLottos;
+        List<Lotto> lottos;
+        EnumMap<WIN, Integer> winnings;
+
+        lottos = getRandomNLotto(numOfLottos);
+        getWinningNumbers();
+        getBonusNumber();
+
+        winnings = checkWinnings(lottos);
+
+        printStats(winnings, totalMoney);
+
     }
 
     public static String addComma(int number) {
@@ -123,10 +136,10 @@ public class Application {
         return lottos;
     }
 
-    public static Map<WIN, Integer> checkWinnings(List<Lotto> lottos) {
+    public static EnumMap<WIN, Integer> checkWinnings(List<Lotto> lottos) {
         int sameNumbers = 0;
         boolean sameBonus;
-        Map<WIN, Integer> winnings = new EnumMap<>(WIN.class);
+        EnumMap<WIN, Integer> winnings = new EnumMap<>(WIN.class);
         WIN win;
 
         for (Lotto lotto : lottos) {
@@ -140,6 +153,8 @@ public class Application {
 
     public static void printStats(EnumMap<WIN, Integer> winnings, int inputMoney) {
         long totalMoney = 0L;
+        System.out.println("당첨 통계");
+        System.out.println("---");
         for (WIN win : winnings.keySet()) {
             if (win == WIN.WIN_NO)
                 continue;
@@ -156,7 +171,7 @@ public class Application {
         if (win == WIN.WIN_2ND) {
             msg += ", 보너스 볼 일치";
         }
-        msg += " (" + addComma(earnMoney) + "원)-"+ k + "개";
+        msg += " (" + addComma(earnMoney) + "원) - "+ k + "개";
 
         System.out.println(msg);
         return earnMoney * k;
