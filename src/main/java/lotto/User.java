@@ -9,6 +9,11 @@ public class User {
         validateMoney(money);
     }
 
+    public void inputWinningLottoNumbers() {
+        String number = Console.readLine();
+
+    }
+
     private void validateMoney(String money) {
         validateInputNothing(money);
         validateInputBlank(money);
