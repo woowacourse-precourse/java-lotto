@@ -23,6 +23,10 @@ public class Application {
         //보너스 번호 입력 받기
         int bonusNum = InputNum.askBonusNum();
 
+        for(Lotto lotto : lottos){
+            int cnt = lotto.countMatchNumbers(winningNums);
+            System.out.println("cnt = " + cnt);
+        }
 
     }
 

@@ -1,9 +1,6 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -27,8 +24,40 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
 
+    //당첨 개수 구하는 메소드
+    public int countMatchNumbers(List<Integer> winningNums) {
+        int matchNumCnt = 0;
+
+        for(int num : winningNums){
+            if(isMatched(num,0,winningNums.size()-1)){
+                matchNumCnt += 1;
+            }
+        }
 
 
+        return matchNumCnt;
+    }
+
+    private boolean isMatched(int key, int low, int high){
+        int mid;
+
+        if(low <= high){
+            mid = (low + high) /2;
+
+            if(key == numbers.get(mid)) {
+                return true;
+            } else if (key < numbers.get(mid)) {
+                return isMatched(key,low,mid-1);
+            } else if (key > numbers.get(mid)) {
+                return isMatched(key,mid+1,high);
+            }
+        }
+
+        return false;
+    }
+
+
+    //당첨 통계 메소드 구현
 
     
 

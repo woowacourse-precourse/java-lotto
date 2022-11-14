@@ -33,5 +33,5 @@ public class Publish {
     }
 
 
-    //당첨 통계 메소드 구현
+
 }
