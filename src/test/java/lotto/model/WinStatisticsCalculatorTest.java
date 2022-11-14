@@ -16,7 +16,7 @@ public class WinStatisticsCalculatorTest {
 
 		// List<List<Integer>> lotteryTickets = List.of(List.of(1, 2, 3, 4, 5, 7));
 
-		List<Integer> winningNumbers = List.of(8, 13, 24, 27, 36, 38, 42);
+		List<Integer> winningNumbers = List.of(2, 3, 4, 5, 6, 8, 7);
 		WinStatisticsCalculator winStatisticsCalculator = new WinStatisticsCalculator(lotteryTickets, winningNumbers);
 
 		//	when
@@ -26,5 +26,6 @@ public class WinStatisticsCalculatorTest {
 		System.out.println("lotteryTickets = " + lotteryTickets);
 		System.out.println("winningNumbers = " + winningNumbers);
 		Map<Integer, Integer> result = winStatisticsCalculator.getMatchResult();
+		System.out.println("result = " + result);
 	}
 }

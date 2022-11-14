@@ -21,10 +21,12 @@ public class WinningNumberValidatorTest {
 		String noComma = "123456";
 		String wrongInputPlace = "123456,,,,,";
 		String outboundNumber = "1,2,47,3,4,5";
+		String outRangeNumber = "1,2,3,4,5,6,7,8";
 		String correct = "1,2,3,4,5,6";
 
 		//	then
-		assertThatThrownBy(() -> winningNumberValidator.runWinningNumberValidator(outboundNumber))
+		// System.out.println(winningNumberValidator.runWinningNumberValidator(outRangeNumber));
+		assertThatThrownBy(() -> winningNumberValidator.runWinningNumberValidator(outRangeNumber))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining(COMMA_CLASSIFICATION.getErrorMessage());
 	}
