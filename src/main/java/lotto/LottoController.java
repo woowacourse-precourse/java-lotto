@@ -38,4 +38,9 @@ public class LottoController {
         user.setMoney(money);
         user.buyLotto();
     }
+
+    public void winningNumbersPublish(){
+        String input = inputView.createWinningNumbers();
+        winnigNumbers = new Lotto(input).getNumbers();
+    }
 }
