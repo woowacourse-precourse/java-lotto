@@ -11,14 +11,13 @@ public class Lottos {
         this.lottos = lottos;
     }
 
-
     public static Lottos of(List<Lotto> lottos) {
         return new Lottos(lottos);
     }
 
     private void validate(List<Lotto> lottos) {
-        if(lottos.isEmpty()){
-            throw new IllegalArgumentException("1개 이상의 로또가 포함되어 있어야합니다.");
+        if (lottos.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 1개 이상의 로또가 포함되어 있어야합니다.");
         }
     }
 
@@ -26,3 +25,5 @@ public class Lottos {
         return lottos;
     }
 }
+
+
