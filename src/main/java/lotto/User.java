@@ -18,6 +18,11 @@ public class User {
         validateWinningLottoNumbers(number);
     }
 
+    public void inputBonusNumber() {
+        String bonusNumber = Console.readLine();
+
+    }
+
     private void validateMoney(String money) {
         validateInputNothing(money);
         validateInputBlank(money);
