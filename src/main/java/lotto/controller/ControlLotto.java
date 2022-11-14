@@ -1,9 +1,9 @@
 package lotto.controller;
 
 import lotto.Lotto;
-import lotto.view.LottoPirnt;
+import lotto.viewer.LottoPirnt;
 import lotto.domain.UserNumberScan;
-import lotto.view.Message;
+import lotto.viewer.Message;
 import lotto.domain.Money;
 import lotto.domain.BonusNumber;
 import lotto.domain.MatchNumbers;

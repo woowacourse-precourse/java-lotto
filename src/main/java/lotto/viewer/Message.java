@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.viewer;
 
 import lotto.domain.Ranking;
 

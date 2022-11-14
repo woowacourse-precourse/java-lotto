@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.viewer;
 
 import lotto.Lotto;
 import lotto.domain.Money;
