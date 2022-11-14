@@ -27,4 +27,11 @@ public class Lotto {
             throw new IllegalArgumentException(ErrorMessage.NUMBERS_SIZE_NOT_SIX.getMessage());
         }
     }
+
+    private static void checkDuplication(List<Integer> winningNumbers) {
+        long deduplicatedCount = winningNumbers.stream().distinct().count();
+        if (winningNumbers.size() != deduplicatedCount) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATION_EXISTS.getMessage());
+        }
+    }
 }
