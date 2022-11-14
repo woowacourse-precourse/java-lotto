@@ -30,12 +30,14 @@ public class Validator {
             validateProperRangeOfNumber(number);
         }
         validateConsistOfSixNumbers(numbers);
+        validateNotDuplicatedNumber(numbers);
     }
 
     public void validateBonusNumber(List<Integer> normalNumbers, String bonusNumber) {
         validateConsistOfNumber(bonusNumber);
         validateProperRangeOfNumber(Integer.parseInt(bonusNumber));
-        validateNotDuplicatedNumber(normalNumbers, Integer.parseInt(bonusNumber));
+        normalNumbers.add(Integer.parseInt(bonusNumber));
+        validateNotDuplicatedNumber(normalNumbers);
     }
 
     private void validateNotDuplicatedNumber(List<Integer> numbers) {

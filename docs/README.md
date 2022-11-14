@@ -31,36 +31,37 @@
 - 일반 당첨번호 입력, 보너스 당첨번호 입력 → 각 숫자가 범위를 벗어남
 
 ## 기능 목록
-//TODO: README 재작성
 최종 결과가 나올 때 까지 어떤 기능을 거쳐가야할지 순서대로 기능을 생각해본다.
 
-- [x]  Lotto
-- [x]  WinnerLotto
-- [x]  TotalWinnerLotto
+### domain.lottoData
+- [x]  로또 데이터를 담기 위한 클래스 Lotto
+- [x]  해당 차수에서 당첨 번호를 담기 위한 클래스. WinnerLotto
+- [x]  해당 차수에서 당첨된 로또를 담기 위한 클래스. TotalWinnerLotto
+- [x]  당첨 정보를 일괄적으로 관리하기 위한 enum. Rank
 
-- [x]  로또 구입 금액 입력 메시지를 출력한다. OutputUI#printMessage()
-- [x]  당첨 일반 번호 입력 메시지를 출력한다. OutputUI#printMessage()
-- [ ]  당첨 보너스 번호 입력 메시지를 출력한다. OutputUI#printMessage()
-- [ ]  발행 받은 로또 용지를 출력한다. OutputUI#printLottos()
-- [ ]  당첨로또의 갯수를 출력한다. OutputUI#printWinnerResult()
-- [ ]  수익률을 출력한다. OutputUI#printReturnRate()
+### domain.ui
+- [x]  다른 클래스로부터 요청받은 메시지를 출력해준다.
+    - [x]  로또 구입 금액 입력을 요청하기 위한 메시지를 출력한다. OutputUI#printMessage()
+    - [x]  당첨 일반 번호 입력을 요청하기 위한 메시지를 출력한다. OutputUI#printMessage()
+    - [x]  당첨 보너스 번호 입력을 요청하기 위한 메시지를 출력한다. OutputUI#printMessage()
+- [x]  발행 받은 로또 용지를 출력한다. OutputUI#printLottos()
+- [x]  이번 회차수의 당첨로또의 갯수를 출력한다. OutputUI#printWinnerPerRank()
+- [x]  수익률을 출력한다. OutputUI#printProfitRate()
 
 - [x]  로또 구입 금액을 입력받는다. InputUI#getMoney()
 - [x]  당첨 번호를 입력받는다. Input#getLottoNumbers()
     - [x]  당첨 일반 번호를 입력받는다. InputUI#getNormalNumbers()
     - [x]  당첨 보너스번호를 입력받는다. InputUI#getBonusNumber()
 
-- [ ]  1000원 단위인지 검증한다. Validator#validateMoney()
-- [ ]  당첨 일반 번호를 검증한다. Validator#validateNormalNumbers()
-- [ ]  당첨 보너스 번호를 검증한다. Validator#validateBonusNumber()
+- [x]  로또를 구입하기 위해 알맞은 금액인지 검증한다. Validator#validateMoney()
+- [x]  당첨 일반 번호를 검증한다. Validator#validateNormalNumbers()
+- [x]  당첨 보너스 번호를 검증한다. Validator#validateBonusNumber()
 
-- [ ]  발행할 로또 갯수만큼 로또 용지를 발급한다. LottoMachine#createLottoWithMoney()
-    - [ ]  로또 용지를 발급한다. LottoMachine#createLotto()
+- [x]  금액을 받아 1000원 단위로 로또 용지를 발급한다. LottoMachine#createLottoWithMoney()
 
-- [ ]  구입한 로또의 당첨 결과를 계산한다. RaffleMachine#countWinner()
-    - [ ]  당첨 일반 번호가 몇개 있는지 확인한다. RaffleMachine#countNormalNumbers()
-    - [ ]  당첨 보너스 번호가 포함되어 있는지 확인한다. RaffleMachine#countBonusNumber()
-- [ ]  구입한 로또의 등수를 계산한다. RaffleResultCalculator#decideRank()
-- [ ]  수익률을 계산한다. RaffleResultCalculator#calculateStatics()
+- [x]  당첨 랭킹별로 승자를 반환한다. RaffleMachine#getWinnerPerRank()
+    - [x]  구입한 로또의 등수를 계산한다. RaffleResultCalculator#decideRank()
 
-- [ ]  로또 프로세스의 전반적인 흐름을 관리한다. LottoController#startLotto()
+- [x]  구입한 모든 로또의 수익률을 계산한다. RaffleResultCalculator#getProfitRate()
+
+- [x]  로또 프로젝트의 전반적인 흐름을 관리한다. LottoController#start()

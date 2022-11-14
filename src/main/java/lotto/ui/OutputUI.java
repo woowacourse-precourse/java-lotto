@@ -9,9 +9,6 @@ import java.util.Map;
 
 public class OutputUI {
 
-    public OutputUI() {
-    }
-
     public void printMessage(String message) {
         System.out.println(message);
     }
@@ -24,7 +21,7 @@ public class OutputUI {
         }
     }
 
-    public void printWinnerResult(Map<Rank, Integer> winnerPerRank) {
+    public void printWinnerPerRank(Map<Rank, Integer> winnerPerRank) {
         Rank[] ranks = Rank.values();
         for (Rank rank : ranks) {
             if (rank == Rank.NONE) continue;
@@ -35,8 +32,8 @@ public class OutputUI {
         }
     }
 
-    public void printReturnRate(double returnRate) {
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", returnRate));
+    public void printProfitRate(double profitRate) {
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", profitRate));
     }
 
 }
