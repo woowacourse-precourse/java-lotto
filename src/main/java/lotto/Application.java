@@ -1,10 +1,13 @@
 package lotto;
 
-import lotto.domain.Lotto;
-import lotto.domain.NumberGenerator;
+import static lotto.view.InputView.*;
+import static lotto.view.OutputView.*;
 
 public class Application {
+
     public static void main(String[] args) {
-        Lotto computer = new Lotto(NumberGenerator.createDifferentRandomNumbers());
+        askPurchaseAmount();
+        int purchaseAmount = getInt();
+
     }
 }
