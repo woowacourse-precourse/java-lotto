@@ -12,15 +12,22 @@ class ResultTest {
     void isProperPrize() {
         //given
         Prize prize = Prize.SECOND;
-        Result result = new Result();
-        for (int i = 0; i < 5; i++) {
-            result.increaseMatchCount();
-        }
-        result.matchBonus();
+        Result result = generateResult(5, true);
         //when
         boolean issProperPrize = result.isProperPrize(prize);
         //then
         assertThat(issProperPrize)
                   .isTrue();
+    }
+
+    Result generateResult(int number, boolean isBonus) {
+        Result result = new Result();
+        for (int i = 0; i < number; i++) {
+            result.increaseMatchCount();
+        }
+        if (isBonus) {
+            result.matchBonus();
+        }
+        return result;
     }
 }
