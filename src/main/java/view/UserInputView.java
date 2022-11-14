@@ -22,7 +22,7 @@ public class UserInputView {
             return new PurchaseMoney(Integer.parseInt(purchaseMoney));
         }
         catch (NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 구매하시는 금액은 숫자만 입력하셔야 합니다.");
+            throw new IllegalArgumentException("구매하시는 금액은 숫자만 입력하셔야 합니다.");
         }
 
     }
@@ -35,7 +35,7 @@ public class UserInputView {
             return new Lotto(winLottoNumber);
 
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력하지 않으셨습니다.");
+            throw new IllegalArgumentException("숫자를 입력하지 않으셨습니다.");
         }
     }
 

@@ -17,7 +17,7 @@ public class WinningLottoNumber {
         List<Integer> numbers = winningLottoNumber.getNumbers();
         for(int num : numbers){
             if(num == bonus.getBonusNumber()){
-                throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스번호는 중복될 수 없습니다.");
+                throw new IllegalArgumentException("당첨번호와 보너스번호는 중복될 수 없습니다.");
             }
         }
     }
