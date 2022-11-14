@@ -16,12 +16,13 @@ public class Input {
         return receivedMoney;
     }
 
-    public static List<String> getAnswerNumbers() {
+    public static List<Integer> getAnswerNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         // 예외처리 필요 1~45숫자의 사이가 맞는지, 6개가 맞는지.
         String value = Console.readLine();
 
         return Stream.of(value.split(","))
+            .map(Integer::parseInt)
             .collect(Collectors.toList());
     }
 
