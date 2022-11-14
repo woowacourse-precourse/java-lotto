@@ -46,7 +46,7 @@ public class Ui {
         }
     }
 
-    public void TotalProfitOutput(double profit) {
+    public void totalProfitOutput(double profit) {
         System.out.println("총 수익률은 " + profit + "%입니다.");
     }
 }
