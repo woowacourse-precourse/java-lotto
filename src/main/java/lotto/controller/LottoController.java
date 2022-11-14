@@ -1,13 +1,11 @@
 package lotto.controller;
 
-import lotto.domain.LottoGroup;
-import lotto.domain.Profit;
-import lotto.domain.RankingType;
-import lotto.domain.WinningNumber;
+import lotto.domain.*;
 import lotto.view.input.LottoGenerator;
 import lotto.view.input.UserInput;
 import lotto.view.output.Guide;
 
+import java.util.List;
 import java.util.Map;
 
 public class LottoController {
@@ -17,24 +15,58 @@ public class LottoController {
 
 
     public void start(){
-        guide.printInputPriceGuide();
-        int lottoCount = userInput.getLottoCount();
-
+        int lottoCount = getLottoCount();
         guide.printLottoCount(lottoCount);
-        LottoGroup lottoGroup = new LottoGroup(
-                generator.generateLottos(lottoCount));
+
+        LottoGroup lottoGroup = getLottoGroup(lottoCount);
         guide.printLottoGroup(lottoGroup);
 
-        guide.printInputWinningNumberGuide();
-        WinningNumber winningNumber = new WinningNumber(userInput.getWinningNumber());
+        WinningNumber winningNumber = getWinningNumber();
 
-        guide.printInputBonusGuide();
-        winningNumber.updateBonus(userInput.getBonusNumber());
+        int bonus = getBonus();
+        winningNumber.updateBonus(bonus);
 
-        guide.printResultGuide();
-        Map<RankingType, Integer> countByRankingType = lottoGroup.getCountByRankingType(winningNumber);
-        guide.printResult(countByRankingType);
-        Profit profit = new Profit(countByRankingType, lottoCount * 1000);
-        guide.printProfitRate(profit.getProfitRate());
+        Map<RankingType, Integer> rankingTypeCounts = lottoGroup.getRankingTypeCounts(winningNumber);
+        printResult(rankingTypeCounts);
+
+        double profitRate = getProfitRate(rankingTypeCounts, lottoCount);
+        guide.printProfitRate(profitRate);
     }
+
+    private int getLottoCount(){
+        guide.printInputPriceGuide();
+        return userInput.getLottoCount();
+    }
+
+    private LottoGroup getLottoGroup(int lottoCount){
+        List<Lotto> lottos = generator.generateLottos(lottoCount);
+        return new LottoGroup(lottos);
+    }
+
+    private WinningNumber getWinningNumber(){
+        guide.printInputWinningNumberGuide();
+        List<Integer> inputWinningNumber = userInput.getWinningNumber();
+        return new WinningNumber(inputWinningNumber);
+    }
+
+    private int getBonus(){
+        guide.printInputBonusGuide();
+        return userInput.getBonusNumber();
+    }
+
+    private void printResult(Map<RankingType, Integer> rankingTypeCounts){
+        guide.printResultGuide();
+        guide.printResult(rankingTypeCounts);
+    }
+
+    private double getProfitRate(Map<RankingType, Integer> rankingTypeCounts, int lottoCount){
+        int investment = getInvestment(lottoCount);
+        Profit profit = new Profit(rankingTypeCounts, investment);
+        return profit.getProfitRate();
+    }
+
+    private int getInvestment(int lottoCount){
+        return lottoCount * 1000;
+    }
+
 }

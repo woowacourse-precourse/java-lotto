@@ -31,15 +31,15 @@ public class LottoGroup {
         return rankings;
     }
 
-    public Map<RankingType, Integer> getCountByRankingType(WinningNumber winningNumber){
-        Map<RankingType, Integer> countByRankingType = new HashMap<>();
-        initCountByRankingType(countByRankingType);
+    public Map<RankingType, Integer> getRankingTypeCounts(WinningNumber winningNumber){
+        Map<RankingType, Integer> rankingTypeCounts = new HashMap<>();
+        initCountByRankingType(rankingTypeCounts);
         List<RankingType> lottosRanking = getLottosRanking(winningNumber);
         for (RankingType rankingType : lottosRanking) {
-            int beforeCount = countByRankingType.get(rankingType);
-            countByRankingType.put(rankingType, beforeCount + 1);
+            int beforeCount = rankingTypeCounts.get(rankingType);
+            rankingTypeCounts.put(rankingType, beforeCount + 1);
         }
-        return countByRankingType;
+        return rankingTypeCounts;
     }
 
     private void initCountByRankingType(Map<RankingType, Integer> map){
