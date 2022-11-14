@@ -90,5 +90,9 @@
 - [X] 로또 번호 리스트를 조회할 수 있다. - LottoTest#getLottoNumbers()
 
 
-#### BonusTest 
+#### Bonus 
 - [X] 보너스 번호가 1~45 숫자 범위에 포함되지 않은 경우 예외가 발생한다. - BonusTest#createBonusByExceedNumberRange()
+
+
+#### WinningLotto
+- [X] 당첨 로또 번호 리스트가 보너스 번호를 포함하고 있는 경우 예외가 발생한다. - WinningLottoTest#createWinningLottoByWinningLottoContainsBonusNumber()
