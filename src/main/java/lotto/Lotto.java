@@ -15,6 +15,13 @@ public class Lotto {
         Validation.numberRangeValidation(numbers);
         Validation.numberDuplicateValidation(numbers);
     }
+    public Long sameNumber(Lotto lotto,Integer bonus){
+        Long score = numbers.stream()
+                .filter(number -> lotto.getNumbers().contains(number))
+                .count() * 10;
+        if(score == 50 && numbers.contains(bonus)) score += 1;
+        return score;
+    }
     public List<Integer> getNumbers(){
         return numbers;
     }
