@@ -102,20 +102,22 @@ public class Application {
     }
 
     public static List<Lotto> issueLotto(int money) {
-        List<Lotto> issuedLotto = new ArrayList<>();
         int numberOfLotto = money / 1000;
         System.out.println(numberOfLotto + "개를 구매했습니다.");
+
+        return createNewLotto(numberOfLotto);
+    }
+
+    public static List<Lotto> createNewLotto(int numberOfLotto) {
+        List<Lotto> issuedLotto = new ArrayList<>();
+
         for (int i = 0; i < numberOfLotto; i++) {
-            Lotto newLotto = createNewLotto();
+            List<Integer> newLottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            newLottoNumber.sort(Comparator.naturalOrder());
+            Lotto newLotto = new Lotto(newLottoNumber);
             issuedLotto.add(newLotto);
         }
         return issuedLotto;
-    }
-
-    public static Lotto createNewLotto() {
-        List<Integer> newLottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        newLottoNumber.sort(Comparator.naturalOrder());
-        return new Lotto(newLottoNumber);
     }
 
     public static void printIssuedLotto(List<Lotto> lottoList) {
