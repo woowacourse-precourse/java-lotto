@@ -22,6 +22,7 @@ public class Application {
         application.printRandomLottos();
         application.printInsertWinningNumber();
         application.insertWinningNumber();
+        application.printInsertBonusNumber();
     }
 
     private void printInsertPrice(){
@@ -89,6 +90,10 @@ public class Application {
         isInRange(split);
         isRightSize(split);
         saveToList(split);
+    }
+
+    public void printInsertBonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     private void saveToList(String[] split) {
