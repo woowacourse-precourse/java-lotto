@@ -2,8 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -25,6 +24,9 @@ public class Application {
         for(int lotto = 0; lotto < lottoCount; lotto++){
             lottos.add((ArrayList<Integer>) makeLottoNumber());
         }
+        String winnigNumber = getWinningNumber(); //로또 정답 받기.
+        List<Integer> winningNumbers = StringToIntegerList(winnigNumber); // List<Integer>로 변환
+
     }
     /* 돈 입력받는 메소드 */
     public static int getAmount(){
@@ -54,9 +56,26 @@ public class Application {
     }
 
     /*당첨번호 입력 메소드*/
-    public String getWinningNumber(){
+    public static String getWinningNumber(){
         String winningNumber = readLine();
         return winningNumber;
     }
 
+    /*당첨번호를 list<Integer>로 바꾸는 메소드 */
+    public static List<Integer> StringToIntegerList(String winningNumber){
+        List<String> seperatedString = Arrays.asList(winningNumber.split(","));
+        List<Integer> winningNumbers = new ArrayList<>();
+        for(String character : seperatedString){
+            winningNumbers.add(Integer.parseInt(character));
+        }
+        return winningNumbers;
+    }
+
+    /*중복되는 값이 있는지 예외처리하는 메소드*/
+    public static void checkDuplicated(List<Integer> winningNumbers){
+        Set<Integer> noDuplicableSet = new HashSet<>(winningNumbers);
+        if(winningNumbers.size() != noDuplicableSet.size()) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
