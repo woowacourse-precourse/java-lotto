@@ -8,11 +8,8 @@ public enum Reward {
     FIRST(2_000_000_000, Arrays.asList(6, 0), 4),
     SECOND(30_000_000, Arrays.asList(5, 1), 3),
     THIRD(1_500_000, Arrays.asList(5, 0), 2),
-    FOURTH1(50_000, Arrays.asList(4, 0), 1),
-    FOURTH2(50_000, Arrays.asList(4, 1), 1),
-    FIFTH1(5_000, Arrays.asList(3, 0), 0),
-    FIFTH2(5_000, Arrays.asList(3, 1), 0),
-    EMPTY(0, Collections.EMPTY_LIST, 0);
+    FOURTH(50_000, Arrays.asList(4, 0), 1),
+    FIFTH(5_000, Arrays.asList(3, 0), 0);
 
     private final Integer prize;
     private final List<Integer> matchingNumber;
@@ -36,6 +33,6 @@ public enum Reward {
         return Arrays.stream(values())
                 .filter(reward -> reward.matchingNumber.equals(numberOfMatching))
                 .findAny()
-                .orElse(EMPTY);
+                .orElse(null);
     }
 }

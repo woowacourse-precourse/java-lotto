@@ -54,7 +54,7 @@ public class YieldMachineTest {
                 = YieldMachine.class.getDeclaredMethod("findCountOfSameNumberWithWinningNumber", BoughtLotto.class);
         findCountMethod.setAccessible(true);
         List<Integer> MatchingNumber = (List<Integer>) findCountMethod.invoke(yieldMachine, lotto);
-        assertThat(MatchingNumber).isEqualTo(List.of(2, 1));
+        assertThat(MatchingNumber).isEqualTo(List.of(2, 0));
     }
 
     @DisplayName("로또 등수에 따른 리스트 값 확인 - 4등")
