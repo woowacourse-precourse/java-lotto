@@ -2,7 +2,7 @@ package lotto.Output.MainValue;
 
 public enum PrintOutput {
     BUY("%d개를 구매했습니다.%n"),
-    PROFIT("총 수익률은 %.1f%입니다.%n");
+    PROFIT("총 수익률은 %.1f%%입니다.");
 
     private final String message;
 

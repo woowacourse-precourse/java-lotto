@@ -1,9 +1,8 @@
-package lotto.Output;
+package lotto.Domain.Statistic;
 
 import lotto.Output.MainValue.PrintOutput;
 
 import java.util.List;
-import java.util.Map;
 
 public class Profit {
     public void printProfit(List<Integer> prizeRanks, int userMoney) {
@@ -14,7 +13,7 @@ public class Profit {
                 prizeRanks.get(3) * 30000000 +
                 prizeRanks.get(4) * 2000000000;
 
-        double profit = total/userMoney * 100;
-        System.out.printf(PrintOutput.PROFIT.message(),profit);
+        double profit = (total / (userMoney * 1000)) * 100;
+        System.out.printf(PrintOutput.PROFIT.message(), profit);
     }
 }
