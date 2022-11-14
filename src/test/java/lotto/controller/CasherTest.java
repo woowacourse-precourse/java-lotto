@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CasherTest {
 
+    @Tag("issueTickets")
     @DisplayName("1000원 단위로 티켓을 발행한다.")
     @Test
     void issueTickets() {
@@ -18,6 +19,7 @@ public class CasherTest {
         assertThat(Casher.issueTickets(money)).isEqualTo(expected);
     }
 
+    @Tag("issueTickets")
     @DisplayName("잘못된 금액을 입력할 경우 예외를 발생시킨다.")
     @ParameterizedTest
     @ValueSource(strings = {"8001", "8000j"})
