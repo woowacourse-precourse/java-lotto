@@ -11,17 +11,19 @@ public class Profit {
         this.prizeCount = prizeCount;
     }
 
-    public void calculate() {
+    public void calculate(int purchaseAmount) {
+        calculateAmount();
+        calculateRate(purchaseAmount);
+    }
+
+    public void calculateAmount() {
         for (Prize prize : Prize.values()) {
             amount += prizeCount.getTotalPrizeMoney(prize);
         }
     }
 
-    public void setRate(int purchaseAmount) {
+    public void calculateRate(int purchaseAmount) {
         rate = (amount / purchaseAmount) * 100;
     }
 
-    public String getRate() {
-        return String.format("%.1f", rate);
-    }
 }
