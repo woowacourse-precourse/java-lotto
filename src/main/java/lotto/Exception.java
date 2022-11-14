@@ -28,6 +28,12 @@ public class Exception {
 			throw new IllegalArgumentException(Constants.ERROR_LOTTO_RANGE);
 		}
 	}
+
+	public void reduplicationLottoNumbers(List<Integer> inputList, String input) throws IllegalArgumentException {
+		if (inputList.contains(Integer.parseInt(input))) {
+			throw new IllegalArgumentException(Constants.ERROR_RE_DUPLICATION_LOTTO);
+		}
+	}
 }
 
 
