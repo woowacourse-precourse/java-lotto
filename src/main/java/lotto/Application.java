@@ -16,5 +16,6 @@ public class Application {
             return;
         }
         int bonusNum= user.bonusInput();
+        Lotto lotto = new Lotto(answerNum);
     }
 }
