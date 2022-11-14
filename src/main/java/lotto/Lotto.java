@@ -43,7 +43,7 @@ public class Lotto {
         bonus = Integer.parseInt(Console.readLine());
 
         int[] result = CompareLotto.comparelotto(total,lottolst,bonus);
-        Output.printResult(result);
+        Output.printResult(result,cost);
 
 
 
