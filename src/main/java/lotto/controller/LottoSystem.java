@@ -24,6 +24,15 @@ public class LottoSystem {
         WinningLotto winningLotto = inputView.inputLottoNumbers();
         List<LottoRanking> lottoResult = makeResult(winningLotto);
         outputView.printLottoResult(lottoResult);
+        int prizeMoney = calculatePrizeMoey(lottoResult);
+    }
+
+    public int calculatePrizeMoey(List<LottoRanking> lottoResult) {
+        int prizeMoney = 0;
+        for(LottoRanking ranking : lottoResult) {
+            prizeMoney += ranking.getPrizeMoney();
+        }
+        return prizeMoney;
     }
 
     private LottoRanking addBonusResult(int index, int bonusNumber) {

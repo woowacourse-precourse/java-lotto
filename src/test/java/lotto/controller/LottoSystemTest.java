@@ -1,10 +1,17 @@
 package lotto.controller;
 
+import static lotto.domain.LottoRanking.FIVE_AND_BONUS_RIGHT;
+import static lotto.domain.LottoRanking.FIVE_RIGHT;
+import static lotto.domain.LottoRanking.ONE_RIGHT;
+import static lotto.domain.LottoRanking.THREE_RIGHT;
+import static lotto.domain.LottoRanking.ZERO_RIGHT;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
+import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoRanking;
 import lotto.domain.UserLotto;
 import lotto.domain.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
@@ -12,6 +19,17 @@ import org.junit.jupiter.api.Test;
 
 class LottoSystemTest {
     LottoSystem lottoSystem = new LottoSystem();
+
+    @DisplayName("당첨금액 구하기")
+    @Test
+    public void calculatePrizeMoney() {
+        //given
+        List<LottoRanking> lottoResult = Arrays.asList(FIVE_RIGHT, FIVE_AND_BONUS_RIGHT, ZERO_RIGHT, ONE_RIGHT, THREE_RIGHT);
+        //when
+        int expected = lottoSystem.calculatePrizeMoey(lottoResult);
+        //then
+        assertThat(expected).isEqualTo(31505000);
+    }
 
     @DisplayName("로또 번호 당첨 개수 구하기")
     @Test
