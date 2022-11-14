@@ -27,4 +27,11 @@ public class Application {
 
         return lottoNumbers;
     }
+
+    // 로또 번호 List를 Lotto객체로 변환
+    public Lotto listToLottoObject(List<Integer> lottoNumbers){
+        Lotto lotto = new Lotto(lottoNumbers);
+
+        return lotto;
+    }
 }
