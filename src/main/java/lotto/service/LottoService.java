@@ -30,9 +30,9 @@ public class LottoService {
         return new LottoDto(numbers);
     }
 
-    public PrizeDto calcWinningResult(List<Integer> winningNumbers,int bonusNumber, Money money) {
-        List<Prize> prizes = confirmWinning(winningNumbers, bonusNumber);
-        Double yield = calcYield(prizes, money);
+    public PrizeDto calcWinningResult(LottoInputDto lottoInputDto) {
+        List<Prize> prizes = confirmWinning(lottoInputDto.getWinningNumbers(), lottoInputDto.getBonusNumber());
+        Double yield = calcYield(prizes, lottoInputDto.getMoney());
         return new PrizeDto(prizes, yield);
     }
 
