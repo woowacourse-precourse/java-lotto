@@ -1,7 +1,6 @@
 package lotto;
 
-import controller.Result;
-import controller.Service;
+import controller.Controller;
 import domain.LottoCompany;
 import domain.User;
 import view.ResultView;
@@ -10,37 +9,40 @@ import java.util.HashMap;
 
 public class LottoGame {
     User user;
-    Service service;
+
+    Controller controller;
     ResultView resultView;
     LottoCompany lottoCompany;
 
-    public void run(){
+    public void run() {
         gameSet();
         showSetResult();
         setLottoWinning();
         showResult();
     }
-    private void gameSet(){
-        service = new Service();
+
+    private void gameSet() {
+        controller = new Controller();
         user = new User();
-        user.setInputUserMoney(service.inputUserMoney());
-        user.setTotalLotto(user.getInputUserMoney()/1000);
-        user.setTotalLottoNumbers(service.createTotalLottoNumber(user.getTotalLotto()));
+        user.setInputUserMoney(controller.inputUserMoney());
+        user.setTotalLotto(user.getInputUserMoney() / 1000);
+        user.setTotalLottoNumbers(controller.createTotalLottoNumber(user.getTotalLotto()));
     }
-    private void showSetResult(){
+
+    private void showSetResult() {
         resultView = new ResultView();
         resultView.resultCountLotto(user.getTotalLotto());
         resultView.resultTotalLotto(user.getTotalLottoNumbers());
     }
 
-    private void setLottoWinning(){
+    private void setLottoWinning() {
         lottoCompany = new LottoCompany();
-        lottoCompany.setLottoWinningNumbers(service.inputLottoWinningNumbers());
-        lottoCompany.setLottoWinningBonus(service.inputBonusNumber());
+        lottoCompany.setLottoWinningNumbers(controller.inputLottoWinningNumbers());
+        lottoCompany.setLottoWinningBonus(controller.inputBonusNumber());
     }
 
-    private void showResult(){
-        HashMap<String, Integer> result = service.createWinningLotto(user.getTotalLottoNumbers(), lottoCompany.getLottoWinningNumbers(), lottoCompany.getLottoWinningBonus());
+    private void showResult() {
+        HashMap<String, Integer> result = controller.createWinningLotto(user.getTotalLottoNumbers(), lottoCompany.getLottoWinningNumbers(), lottoCompany.getLottoWinningBonus());
         resultView.resultLotto(result, user.getTotalLotto());
     }
 

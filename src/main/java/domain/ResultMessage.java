@@ -1,6 +1,6 @@
-package controller;
+package domain;
 
-public enum Result {
+public enum ResultMessage {
     FIFTH("3개 일치","5,000", "3"),
     FOURTH("4개 일치","50,000", "4"),
     THIRD("5개 일치","1,500,000", "5"),
@@ -10,7 +10,7 @@ public enum Result {
     private final String winningCount;
 
     private final String winningNumber;
-    Result(String condition, String winningCount, String winningNumber) {
+    ResultMessage(String condition, String winningCount, String winningNumber) {
         this.condition = condition;
         this.winningCount = winningCount;
         this.winningNumber = winningNumber;

@@ -21,4 +21,9 @@ public class LottoCompany {
     public void setLottoWinningBonus(int lottoWinningBonus) {
         this.lottoWinningBonus = lottoWinningBonus;
     }
+
+    private void validateComma(String lottoWinningNumbers) {
+        if (!lottoWinningNumbers.contains(","))
+            throw new IllegalArgumentException(ErrorMessage.NOT_COMMA.getErrorMessage());
+    }
 }

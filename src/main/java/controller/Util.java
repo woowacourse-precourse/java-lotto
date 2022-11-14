@@ -16,11 +16,5 @@ public class Util {
     public boolean compareBonusNumber(List<Integer> lottoNumbers, int bonusNumber) {
         return lottoNumbers.contains(bonusNumber);
     }
-    public HashMap<String,Integer> createWinning(){
-        HashMap<String, Integer> totalResult = new HashMap<>();
-        for (Result rank : Result.values()){
-            totalResult.put(rank.getWinningNumber(), 0);
-        }
-        return totalResult;
-    }
+
 }

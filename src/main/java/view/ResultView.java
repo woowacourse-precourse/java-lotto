@@ -1,8 +1,7 @@
 package view;
 
-import controller.Result;
+import domain.ResultMessage;
 import domain.Lotto;
-import domain.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +10,7 @@ public class ResultView {
 
     public void resultLotto(HashMap<String, Integer> winningLotto, int inputMoney) {
         int totalYield = 0;
-        for (Result rank : Result.values()) {
+        for (ResultMessage rank : ResultMessage.values()) {
             System.out.println(rank.getCondition() + " (" + rank.getWinningCount() + ")" + " - " + winningLotto.get(rank.getWinningNumber()) + "개");
             if (winningLotto.get(rank.getWinningNumber()) != 0) {
                 totalYield += convertToMoney(rank.getWinningCount());
