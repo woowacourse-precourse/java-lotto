@@ -2,7 +2,7 @@
 - [X] 로또 구입 금액 입력
   - [X] [예외 처리] 1000원으로 나누어 떨어지지 않는 경우
   - [X] [예외 처리] 문자열이 입력된 경우
-- [ ] 발행 로또 수량 출력
+- [X] 발행 로또 수량 출력
 - [ ] 로또 발행
   - [ ] 랜던 번호 생성(당첨 번호, 보너스 번호)
     - [ ] [예외 처리] 중복되는 숫자가 있는 경우
@@ -32,3 +32,6 @@
   - feat: add print class and print money input string
   - feat: add user's purchase amount
   - refactor: modify exception
+  - test: string to int money test
+  - feat: add output class and print the number of lottos
+  - style: change variable name
