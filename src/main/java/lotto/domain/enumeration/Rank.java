@@ -1,5 +1,7 @@
 package lotto.domain.enumeration;
 
+import java.util.Arrays;
+
 public enum Rank {
 
     FIRST(6, 2000000000),
@@ -18,22 +20,14 @@ public enum Rank {
     }
 
     public static Rank of(int count, boolean bonus) {
-        if (count == FIRST.count) {
-            return FIRST;
-        }
         if (bonus && count == SECOND.count) {
             return SECOND;
         }
-        if (count == THIRD.count) {
-            return THIRD;
-        }
-        if (count == FOURTH.count) {
-            return FOURTH;
-        }
-        if (count == FIFTH.count) {
-            return FIFTH;
-        }
-        return NOTHING;
+        return Arrays.stream(values())
+                .filter(value -> value.count == count)
+                .filter(value -> value != Rank.SECOND)
+                .findAny()
+                .orElse(NOTHING);
     }
 
     public int getPrizemoney() {
