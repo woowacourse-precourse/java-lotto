@@ -16,19 +16,23 @@ public class Kiosk {
     static int payment;
 
     static public void start(Buyer buyer) {
-        payment = getPurchaseAmount();
-        int numberOfLottos = countLottos(payment);
-        List<Lotto> lottos = Generator.generate(numberOfLottos);
-        Output.getNumberOfPurchase(numberOfLottos);
-        Output.printLottos(lottos);
-        buyer.buy(lottos);
-        Output.getWinningNumbers();
-        winningNumbers = Input.getWinningNumbers();
-        Output.getBonusNumber();
-        bonusNumber = Input.getBonusNumber();
-        EnumMap<RankNumber, Integer> resultStatistics = Checker.compareAll(buyer);
-        Output.showResultStatistics(resultStatistics);
-        Output.yield(Calculator.getYield(payment, resultStatistics));
+        try {
+            payment = getPurchaseAmount();
+            int numberOfLottos = countLottos(payment);
+            List<Lotto> lottos = Generator.generate(numberOfLottos);
+            Output.getNumberOfPurchase(numberOfLottos);
+            Output.printLottos(lottos);
+            buyer.buy(lottos);
+            Output.getWinningNumbers();
+            winningNumbers = Input.getWinningNumbers();
+            Output.getBonusNumber();
+            bonusNumber = Input.getBonusNumber();
+            EnumMap<RankNumber, Integer> resultStatistics = Checker.compareAll(buyer);
+            Output.showResultStatistics(resultStatistics);
+            Output.yield(Calculator.getYield(payment, resultStatistics));
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
     static private int getPurchaseAmount() {
