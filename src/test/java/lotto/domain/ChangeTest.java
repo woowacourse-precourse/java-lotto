@@ -73,4 +73,11 @@ class ChangeTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 45를 넘으면 예외를 발생한다.")
+    @Test
+    void bonusNumber_범위초과(){
+        assertThatThrownBy(() -> Change.bonusNumber("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
