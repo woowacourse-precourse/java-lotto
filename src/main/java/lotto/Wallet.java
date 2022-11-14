@@ -38,9 +38,11 @@ public class Wallet {
     }
 
     public void showMyLottos() {
+        System.out.println(myLottos.size() + "개를 구매했습니다.");
         for(Lotto l : myLottos) {
             System.out.println(l.getNumbers().toString());
         }
+        System.out.println();
     }
 
     public List<Lotto> getMyLottos() {
