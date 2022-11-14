@@ -6,6 +6,7 @@ import lotto.MessageGenerator;
 import lotto.condition.Condition;
 import lotto.condition.MinimumMoneyCond;
 import lotto.condition.MoneyDivisionCond;
+import lotto.condition.lottonumber.RightFormatCond;
 import lotto.validator.Validator;
 
 import java.util.Arrays;
@@ -22,7 +23,12 @@ public class UserInterface {
     public static List<Integer> getLottoNumbers() {
         String input = getInput();
 
-        List<Condition> conditions = List.of();
+        List<Condition> conditions = List.of(
+                RightFormatCond.getInstance()
+                IsAllNumberCond.getInstance(),
+                // NoDuplicateNumberCond.getInstance(),
+                // InRangeCond.getInstance()
+        );
 
         Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, input);
 

@@ -1,5 +1,6 @@
 package lotto.condition;
 
+import lotto.condition.lottonumber.RightFormatCond;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
