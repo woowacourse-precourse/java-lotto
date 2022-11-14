@@ -9,6 +9,7 @@
       - StepType: 로또 게임의 진행 단계 모음
       - LottoResultType: 로또 당첨 등급과 금액 모음
       - ConstantNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수 모음
+      - PatternType: 정규식에 사용되는 문자열 모음
     - dto
       - Lotto: 로또 1매에 포함된 숫자들
         - .validate(): 로또가 올바른지 검사한다.
