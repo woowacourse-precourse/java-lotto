@@ -3,7 +3,6 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class User {
@@ -40,6 +39,8 @@ public class User {
     }
 
     public void inputWinningNumbers(){
+        // 실행 결과 예시와 맞추기 위해 한 칸 띄우기
+        System.out.println();
         System.out.println(INPUT_WINNING_NUMBER_STR);
         String winningNumbers = Console.readLine();
 
@@ -53,6 +54,8 @@ public class User {
     }
 
     public void inputBonusNumber(){
+        // 실행 결과 예시와 맞추기 위해 한 칸 띄우기
+        System.out.println();
         System.out.println(INPUT_BONUS_NUMBER_STR);
         String bonusNumber = Console.readLine();
         try {
