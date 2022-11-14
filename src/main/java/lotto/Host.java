@@ -33,10 +33,10 @@ public class Host {
     }
 
     private boolean isIssued(List<Integer> numbers){
-        return false;
+        return issuanceHistory.stream().anyMatch(e -> e.equals(numbers));
     }
 
     public void showWinResult(User user){
-        System.out.println("당첨 통계\n---\n");
+
     }
 }
