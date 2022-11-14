@@ -4,7 +4,6 @@ import lotto.utils.Constants;
 import lotto.utils.ValidateUtils;
 
 public class LottoPurchase {
-
     private int money;
 
     private int LottoPublicationCount;
@@ -29,7 +28,6 @@ public class LottoPurchase {
             throw new IllegalArgumentException(Constants.INVALID_PURCHASE_INPUT_MESSAGE);
         }
     }
-
 
     private void isCorrectPrice(String input){
         int value = Integer.parseInt(input);
