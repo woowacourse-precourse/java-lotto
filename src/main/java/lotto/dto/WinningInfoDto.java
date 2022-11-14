@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningInfoDto {
-    private String winningNumbers;
-    private String bonus;
+    private final String winningNumbers;
+    private final String bonus;
 
     public WinningInfoDto(String winningNumbers, String bonus) {
         this.winningNumbers = winningNumbers;
