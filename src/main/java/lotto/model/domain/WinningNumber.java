@@ -1,10 +1,10 @@
-package lotto.domain;
+package lotto.model.domain;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import lotto.dto.WinningNumberDto;
+import lotto.model.dto.WinningNumberDto;
 import lotto.utils.Utils;
 
 public class WinningNumber {

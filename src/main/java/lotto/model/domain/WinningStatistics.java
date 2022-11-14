@@ -1,10 +1,10 @@
-package lotto.domain;
+package lotto.model.domain;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import lotto.dto.WinningStatisticsDto;
+import lotto.model.dto.WinningStatisticsDto;
 
 public class WinningStatistics {
 

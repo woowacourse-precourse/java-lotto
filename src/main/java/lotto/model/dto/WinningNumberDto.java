@@ -1,7 +1,7 @@
-package lotto.dto;
+package lotto.model.dto;
 
-import lotto.domain.BonusNumber;
-import lotto.domain.Lotto;
+import lotto.model.domain.BonusNumber;
+import lotto.model.domain.Lotto;
 
 public class WinningNumberDto {
 

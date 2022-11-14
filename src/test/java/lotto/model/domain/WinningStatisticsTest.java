@@ -1,9 +1,9 @@
-package lotto.domain;
+package lotto.model.domain;
 
 import java.util.List;
 import java.util.Map;
-import lotto.dto.WinningNumberDto;
-import lotto.dto.WinningStatisticsDto;
+import lotto.model.dto.WinningNumberDto;
+import lotto.model.dto.WinningStatisticsDto;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.DisplayName;

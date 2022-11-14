@@ -1,15 +1,15 @@
-package lotto.service;
+package lotto.model.service;
 
 import java.util.List;
-import lotto.domain.BonusNumber;
-import lotto.domain.Lotto;
-import lotto.domain.Lottos;
-import lotto.domain.PayingMoney;
-import lotto.domain.WinningNumber;
-import lotto.domain.WinningStatistics;
-import lotto.dto.LottosDto;
-import lotto.dto.WinningNumberDto;
-import lotto.dto.WinningStatisticsDto;
+import lotto.model.domain.BonusNumber;
+import lotto.model.domain.Lotto;
+import lotto.model.domain.Lottos;
+import lotto.model.domain.PayingMoney;
+import lotto.model.domain.WinningNumber;
+import lotto.model.domain.WinningStatistics;
+import lotto.model.dto.LottosDto;
+import lotto.model.dto.WinningNumberDto;
+import lotto.model.dto.WinningStatisticsDto;
 import lotto.utils.Utils;
 
 public class LottoService {

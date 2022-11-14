@@ -1,9 +1,9 @@
 package lotto.controller;
 
-import lotto.dto.LottosDto;
-import lotto.dto.WinningNumberDto;
-import lotto.dto.WinningStatisticsDto;
-import lotto.service.LottoService;
+import lotto.model.dto.LottosDto;
+import lotto.model.dto.WinningNumberDto;
+import lotto.model.dto.WinningStatisticsDto;
+import lotto.model.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -17,7 +17,7 @@ public class LottoController {
 
     public void run() {
         LottosDto lottosDto = buyLotto();
-        
+
         announceLottoWinningStatistics(lottosDto);
     }
 

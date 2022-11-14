@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model.domain;
 
 public enum Rank {
     NOTHING(0),

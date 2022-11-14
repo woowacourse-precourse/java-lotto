@@ -1,7 +1,7 @@
-package lotto.dto;
+package lotto.model.dto;
 
 import java.util.Map;
-import lotto.domain.Rank;
+import lotto.model.domain.Rank;
 
 public class WinningStatisticsDto {
 
