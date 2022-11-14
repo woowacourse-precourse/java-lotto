@@ -1,6 +1,7 @@
-package lotto;
+package lotto.Exception;
 
-import lotto.Exception.ExceptionType;
+import lotto.domain.Lotto;
+import lotto.util.TypeConverter;
 
 import java.util.HashSet;
 import java.util.List;
@@ -27,12 +28,12 @@ public class Validator {
         }
     }
 
-    public static void validateLotto(String input) {
+    public static void validateLottoString(String input) {
         List<String> lotto = List.of(input.split(","));
         validateLottoFormat(lotto);
-        List<Integer> lottoNumbers = convertStringListToIntegerList(lotto);
-        validateRange(lottoNumbers);
-        validateDuplicates(lottoNumbers);
+        List<Integer> lottoNumbers = TypeConverter.convertStringListToIntegerList(lotto);
+        validateLottoNumberRange(lottoNumbers);
+        validateLottoNumberDuplicates(lottoNumbers);
     }
 
     public static void validateLottoFormat(List<String> lottos) {
@@ -63,11 +64,7 @@ public class Validator {
         return true;
     }
 
-    public static List<Integer> convertStringListToIntegerList(List<String> lotto) {
-        return lotto.stream().map(Integer::parseInt).collect(Collectors.toList());
-    }
-
-    public static void validateRange(List<Integer> numbers) {
+    public static void validateLottoNumberRange(List<Integer> numbers) {
         numbers.forEach(number -> {
             if (number < 1 || number > 45) {
                 throw new IllegalArgumentException(ExceptionType.LOTTO_RANGE_EXCEPTION.getMessage());
@@ -75,7 +72,7 @@ public class Validator {
         });
     }
 
-    public static void validateDuplicates(List<Integer> numbers) {
+    public static void validateLottoNumberDuplicates(List<Integer> numbers) {
         Set<Integer> duplicateCheckSet = new HashSet<>();
         for (Integer number : numbers) {
             if (duplicateCheckSet.contains(number)) {
@@ -85,9 +82,9 @@ public class Validator {
         }
     }
 
-    public static void validateBonusNumber(List<Integer> lotto, String bonusNumber) {
+    public static void validateBonusNumber(Lotto lotto, String bonusNumber) {
         validateBonusType(bonusNumber);
-        validateBonusDuplicate(lotto, bonusNumber);
+        validateBonusDuplicate(lotto.getNumbers(), bonusNumber);
     }
 
     private static void validateBonusDuplicate(List<Integer> lotto, String bonusNumber) {
