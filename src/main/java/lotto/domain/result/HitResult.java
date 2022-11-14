@@ -16,11 +16,11 @@ import lotto.domain.lottery.Lotto;
 import lotto.domain.lottery.LottoGroup;
 import lotto.domain.lottery.WinningLotto;
 
-public class Result {
+public class HitResult { // 몇 개 맞춘게 몇 개 있는지
 
     private final Map<Integer, Integer> result = new HashMap<>();
 
-    public Result(LottoGroup lottoGroup,
+    public HitResult(LottoGroup lottoGroup,
             WinningLotto winningLotto, BonusNumber bonusNumber) {
         List<Integer> matchResults = calculateMatchResults(lottoGroup, winningLotto, bonusNumber);
         for (int rank = 0; rank < matchResults.size(); rank++) {

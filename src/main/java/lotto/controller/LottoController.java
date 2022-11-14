@@ -7,7 +7,7 @@ import lotto.domain.Cost;
 import lotto.domain.lottery.LottoGroup;
 import lotto.domain.lottery.WinningLotto;
 import lotto.domain.result.Profit;
-import lotto.domain.result.Result;
+import lotto.domain.result.HitResult;
 import lotto.view.Input;
 import lotto.view.Output;
 
@@ -21,7 +21,7 @@ public class LottoController {
             WinningLotto winningLotto = createWinningLotto();
             BonusNumber bonusNumber = createBonusNumber(winningLotto);
 
-            Result result = createResult(lottoGroup, winningLotto, bonusNumber);
+            HitResult result = createResult(lottoGroup, winningLotto, bonusNumber);
             Profit profit = createProfit(cost.getCost(), result);
 
             print(cost, lottoGroup, result, profit);
@@ -31,11 +31,11 @@ public class LottoController {
         }
     }
 
-    private Result createResult(LottoGroup lottoGroup, WinningLotto winningLotto, BonusNumber bonusNumber) {
-        return new Result(lottoGroup, winningLotto, bonusNumber);
+    private HitResult createResult(LottoGroup lottoGroup, WinningLotto winningLotto, BonusNumber bonusNumber) {
+        return new HitResult(lottoGroup, winningLotto, bonusNumber);
     }
 
-    private Profit createProfit(int purchaseCost, Result result) {
+    private Profit createProfit(int purchaseCost, HitResult result) {
         return new Profit(purchaseCost, result);
     }
 
@@ -56,7 +56,7 @@ public class LottoController {
         return new BonusNumber(Input.inputBonusNumbers(), winningLotto);
     }
 
-    private void print(Cost cost, LottoGroup lottoGroup, Result result, Profit profit) {
+    private void print(Cost cost, LottoGroup lottoGroup, HitResult result, Profit profit) {
         Output.purchaseCountNotification(cost.getPurchaseCount());
         Output.printLottoGroup(lottoGroup);
         Output.printWinningStatistics(result);

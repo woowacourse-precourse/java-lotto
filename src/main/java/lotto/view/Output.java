@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import lotto.domain.lottery.Lotto;
 import lotto.domain.lottery.LottoGroup;
-import lotto.domain.result.Result;
+import lotto.domain.result.HitResult;
 
 public class Output {
 
@@ -30,7 +30,7 @@ public class Output {
         }
     }
 
-    public static void printWinningStatistics(Result result) {
+    public static void printWinningStatistics(HitResult result) {
         Map<Integer, Integer> matchResult = result.getResult();
         System.out.println(WINNING_STATISTICS);
         System.out.println(THREE_MATCHES.getRank(matchResult));

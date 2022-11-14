@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 class ProfitTest {
 
-    private static Result result;
+    private static HitResult result;
 
     @BeforeAll
     static void initialize() {
@@ -21,7 +21,7 @@ class ProfitTest {
         LottoGroup lottoGroup = new LottoGroup(5, fixedNumberGenerator);
         WinningLotto winningLotto = new WinningLotto("1,2,3,5,10,12");
         BonusNumber bonusNumber = new BonusNumber("8", winningLotto);
-        result = new Result(lottoGroup, winningLotto, bonusNumber); // 0, 5, 0, 0, 0
+        result = new HitResult(lottoGroup, winningLotto, bonusNumber); // 0, 5, 0, 0, 0
     }
 
     @Test

@@ -10,7 +10,7 @@ public class Profit {
     private final int profit;
     private final double earningsRate;
 
-    public Profit(int purchaseCost, Result result) {
+    public Profit(int purchaseCost, HitResult result) {
         this.profit = calculateProfit(result);
         this.earningsRate = calculateEarningsRate(purchaseCost);
     }
@@ -19,7 +19,7 @@ public class Profit {
         return earningsRate;
     }
 
-    public int calculateProfit(Result matchResults) {
+    public int calculateProfit(HitResult matchResults) {
         int profit = 0;
         Map<Integer, Integer> result = matchResults.getResult();
         List<Integer> prizeMoneys = Stream.of(Rank.values())

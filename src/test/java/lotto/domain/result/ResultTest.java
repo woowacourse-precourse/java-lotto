@@ -20,7 +20,7 @@ class ResultTest {
         LottoGroup lottoGroup = new LottoGroup(5, fixedNumberGenerator);
         WinningLotto winningLotto = new WinningLotto("1,2,3,5,10,12");
         BonusNumber bonusNumber = new BonusNumber("8", winningLotto);
-        Result result = new Result(lottoGroup, winningLotto, bonusNumber);
+        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber);
 
         List<Integer> answer = List.of(0, 5, 0, 0, 0);
 
