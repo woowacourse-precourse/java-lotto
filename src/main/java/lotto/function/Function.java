@@ -49,33 +49,33 @@ public class Function {
         return trial;
     }
 
-    private static Boolean isInteger(String s) {
-        return (s != null) && (s.matches("[0-9.]+"));
+    private static boolean isInteger(String s) {
+        return (s == null) || (!s.matches("[0-9]+"));
     }
 
-    private static Boolean isInteger(String[] s) {
+    private static boolean isInteger(String[] s) {
         for (String c : s) {
-            if (!((c != null) && (c.matches("[0-9.]+")))) {
+            if (!((c != null) && (c.matches("[0-9]+")))) {
                 return false;
             }
         }
         return true;
     }
 
-    public static int validPrice(String price) {
+    public static boolean validPrice(String price) {
         try {
-            if (!isInteger(price)) {
-                throw new IllegalArgumentException("[ERROR] 로또 구매 금액은 1,000원 단위의 정수를 입력해 주세요.");
+            if (isInteger(price)) {
+                throw new IllegalArgumentException("로또 구매 금액은 1,000원 단위의 정수를 입력해 주세요.");
             }
             int prices = Integer.parseInt(price);
             if (prices % 1000 != 0) {
-                throw new IllegalArgumentException("[ERROR] 로또 구매 금액은 1,000원 단위여야 합니다.");
+                throw new IllegalArgumentException("로또 구매 금액은 1,000원 단위여야 합니다.");
             }
-            return prices;
         } catch (IllegalArgumentException e) {
             Display.displayError(e.getMessage());
-            throw e;
+            return false;
         }
+        return true;
     }
 
     public static String[] getWinningNumber() {
@@ -85,22 +85,26 @@ public class Function {
     }
 
     public static List<Integer> changeTypeofWinningNumber(String[] WinningNumbers) {
+        List<Integer> WinningNumber = new ArrayList<>();
+        for (String split : WinningNumbers) {
+            WinningNumber.add(Integer.parseInt(split));
+        }
+        return WinningNumber;
+    }
+
+    public static boolean validWinningNumberInput(String[] WinningNumbers) {
         try {
             if (!isInteger(WinningNumbers)) {
-                throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자가 입력되어야 합니다.");
+                throw new IllegalArgumentException("당첨 번호는 숫자가 입력되어야 합니다.");
             }
-            List<Integer> WinningNumber = new ArrayList<>();
-            for (String split : WinningNumbers) {
-                WinningNumber.add(Integer.parseInt(split));
-            }
-            return WinningNumber;
+            return true;
         } catch (Exception e) {
             Display.displayError(e.getMessage());
-            throw e;
+            return false;
         }
     }
 
-    private static Boolean isInRange(List<Integer> list) {
+    private static boolean isInRange(List<Integer> list) {
         for (Integer l : list) {
             if ((l > Constants.upper_bound) || (l < Constants.lower_bound)) {
                 return false;
@@ -109,15 +113,24 @@ public class Function {
         return true;
     }
 
-    private static Boolean isInRange(Integer l) {
+    private static boolean isInRange(Integer l) {
         return (l <= Constants.upper_bound) && (l >= Constants.lower_bound);
     }
 
-    public static void validWinningNumber(List<Integer> WinningNumber) {
+    public static boolean validWinningNumberCount(List<Integer> WinningNumber) {
         try {
             if (WinningNumber.size() != 6) {
                 throw new IllegalArgumentException("당첨 번호는 6개의 숫자가 입력되어야 합니다.");
             }
+            return true;
+        } catch (Exception e) {
+            Display.displayError(e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean validWinningNumberRange(List<Integer> WinningNumber) {
+        try {
             HashSet<Integer> set = new HashSet<>(WinningNumber);
             if (set.size() != WinningNumber.size()) {
                 throw new IllegalArgumentException("당첨 번호는 다른 숫자를 입력해야 합니다.");
@@ -125,9 +138,10 @@ public class Function {
             if (!isInRange(WinningNumber)) {
                 throw new IllegalArgumentException("당첨 번호는 1~45사이로 입력해야 합니다.");
             }
+            return true;
         } catch (Exception e) {
             Display.displayError(e.getMessage());
-            throw e;
+            return false;
         }
     }
 
@@ -136,9 +150,9 @@ public class Function {
         return Console.readLine();
     }
 
-    public static int validBonus(String bonus, List<Integer> winNumber) {
+    public static boolean validBonus(String bonus, List<Integer> winNumber) {
         try {
-            if (!isInteger(bonus)) {
+            if (isInteger(bonus)) {
                 throw new IllegalArgumentException("보너스 번호로 숫자를 입력해 주세요.");
             }
             int bonusNumber = Integer.parseInt(bonus);
@@ -148,10 +162,10 @@ public class Function {
             if (winNumber.contains(bonusNumber)) {
                 throw new IllegalArgumentException("보너스 번호는 당첨 번호와 달랴야 합니다.");
             }
-            return bonusNumber;
+            return true;
         } catch (Exception e) {
             Display.displayError(e.getMessage());
-            throw e;
+            return false;
         }
     }
 

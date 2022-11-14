@@ -9,10 +9,12 @@
     * simulate whole processes
 * **buyLotto()**
     * simulate related to buying lotto
+* **getWinNumber()**
+    * simulate related to getting win number
+* **getBonus()**
+    * simulate related to getting bonus number
 * **getResult()**
     * simulate related to get results
-* **calculateWinning()**
-    * calculate winning prices from result
 
 ## function.Function.java
 
@@ -27,23 +29,22 @@
     * check whether inputs are format of integers
 * **validPrice()**
     * check inputs are valid
-    * if the input is not sufficient for the conditions, throw error
 * **getWinningNumber()**
     * get inputs for winning numbers
 * **changeTypeofWinningNumber()**
     * change type of WinningNumber from string to list
-    * if string consist of non-integer, throw error
+* **validWinningNumberInput()**
+    * check inputs are able to change into integer
 * **isInRange()**
     * check whether inputs are in valid range
-* **validWinningNumber()**
-    * check inputs are valid for Winning Numbers
-    * if the input is not sufficient for the conditions, throw error
+* **validWinningNumberCount()**
+    * check inputs have 6 numbers
+* **validWinningNumberRange()**
+    * check inputs are valid for winning number
 * **getBonus()**
     * get inputs for bonus number
-    * if value overlapped to winning numbers, throw error
 * **validBonus()**
     * check inputs are valid for bonus number
-    * if the input is not sufficient for the conditions, throw error
 * **countMatching()**
     * count how many numbers are matched between lotto and WinningNumbers
 * **winLotto()**
@@ -61,6 +62,14 @@
     * display yield
 * **displayLotto**
     * display purchased lotto
+* **displayStart()**
+    * display start condition
+* **displayGettingWinNumber()**
+    * display situation getting winning number
+* **displayGettingBonus()**
+    * display situation getting bonus number
+* **displayError()**
+    * display error message
 
 ## function.Lotto.java
 

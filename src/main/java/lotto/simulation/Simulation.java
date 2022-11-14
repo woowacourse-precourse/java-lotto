@@ -5,34 +5,49 @@ import lotto.function.Function;
 import lotto.function.Lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Simulation {
     private static int prices = 0;
+    private static List<Lotto> trial = List.of();
+    private static List<Integer> winNumber = List.of();
+    private static int bonus = 0;
+    private static final List<Integer> result = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
 
     public static void simulateLotto() {
-        List<Lotto> trial = buyLotto();
+        String price = Function.getMoney();
+        if (Function.validPrice(price)) {
+            buyLotto(price);
+        }
+    }
+
+    private static void buyLotto(String price) {
+        prices = Integer.parseInt(price);
+        trial = Function.purchaseLotto(prices);
         Display.displayLotto(trial);
-        List<Integer> result = getResult(trial);
-        Display.displayResult(result);
-        String yield = calculateWinning(result);
-        Display.displayYield(yield);
+        getWinNumber();
     }
 
-    private static List<Lotto> buyLotto() {
-        String prices = Function.getMoney();
-        int price = Function.validPrice(prices);
-        Simulation.prices = price;
-        return Function.purchaseLotto(price);
-    }
-
-    private static List<Integer> getResult(List<Lotto> trial) {
+    private static void getWinNumber() {
         String[] winNumbers = Function.getWinningNumber();
-        List<Integer> winNumber = Function.changeTypeofWinningNumber(winNumbers);
-        Function.validWinningNumber(winNumber);
+        if (Function.validWinningNumberInput(winNumbers)) {
+            winNumber = Function.changeTypeofWinningNumber(winNumbers);
+            if (Function.validWinningNumberCount(winNumber) && Function.validWinningNumberRange(winNumber)) {
+                getBonus();
+            }
+        }
+    }
+
+    private static void getBonus() {
         String bonus_s = Function.getBonus();
-        int bonus = Function.validBonus(bonus_s, winNumber);
-        List<Integer> result = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+        if (Function.validBonus(bonus_s, Simulation.winNumber)) {
+            bonus = Integer.parseInt(bonus_s);
+            getResult();
+        }
+    }
+
+    private static void getResult() {
         for (Lotto lotto : trial) {
             int count = Function.countMatching(lotto, winNumber, bonus);
             List<Integer> temp_result = Function.winLotto(count);
@@ -40,11 +55,8 @@ public class Simulation {
                 result.set(j, result.get(j) + temp_result.get(j));
             }
         }
-        return result;
-    }
-
-    private static String calculateWinning(List<Integer> result) {
-        int winning = Function.calculateWinning(result);
-        return Function.calculateYield(prices, winning);
+        Display.displayResult(result);
+        String yield = Function.calculateYield(prices, Function.calculateWinning(result));
+        Display.displayYield(yield);
     }
 }
