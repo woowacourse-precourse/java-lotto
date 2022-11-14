@@ -17,34 +17,34 @@ public class Rank {
         return ranking;
     }
 
-    public static Rank getRank(Lotto winningLotto, int bonusNumber, List<Lotto> lottos) {
+    public static Rank getRanking(Lotto winningLotto, int bonusNumber, List<Lotto> lottos) {
         LinkedHashMap<Integer, Integer> ranking = createRankingBoard();
         List<Integer> winningLottoNumbers = winningLotto.getLottoNumbers();
         List<Integer> rightNumbers, wrongNumbers;
+        int rightNumberCnt;
 
         for (Lotto lotto : lottos) {
-            //getRightORWrongNumbers
             rightNumbers = getRightNumbers(winningLottoNumbers, lotto);
             wrongNumbers = getWrongNumbers(winningLottoNumbers, lotto);
-            int rightNumberCnt = rightNumbers.size();
+            rightNumberCnt = rightNumbers.size();
 
-            //checkFirstPlace
-            if (checkFirstPlace(rightNumberCnt)) {
-                ranking.put(FIRST_PLACE, ranking.get(FIRST_PLACE) + 1);
-                continue;
-            }
-            //checkSecondPlace
-            if (checkSecondPlace(rightNumberCnt, wrongNumbers, bonusNumber)) {
-                ranking.put(SECOND_PLACE, ranking.get(SECOND_PLACE) + 1);
-                continue;
-            }
-            //checkOtherPlace
-            if (rightNumberCnt > 2) {
-                int rank = rightNumberCnt - 1;
-                ranking.put(rank, ranking.get(rank) + 1);
-            }
+            ranking = checkRanking(ranking, bonusNumber, wrongNumbers, rightNumberCnt);
         }
         return new Rank(ranking);
+    }
+
+    private static LinkedHashMap<Integer, Integer> checkRanking(LinkedHashMap<Integer, Integer> ranking, int bonusNumber, List<Integer> wrongNumbers, int rightNumberCnt) {
+        if (checkFirstPlace(rightNumberCnt)) {
+            ranking.put(FIRST_PLACE, ranking.get(FIRST_PLACE) + 1);
+        }
+        if (checkSecondPlace(rightNumberCnt, wrongNumbers, bonusNumber)) {
+            ranking.put(SECOND_PLACE, ranking.get(SECOND_PLACE) + 1);
+        }
+        if (rightNumberCnt > 2) {
+            int rank = rightNumberCnt - 1;
+            ranking.put(rank, ranking.get(rank) + 1);
+        }
+        return ranking;
     }
 
     private static LinkedHashMap<Integer, Integer> createRankingBoard() {
