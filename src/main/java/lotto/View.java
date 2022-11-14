@@ -64,6 +64,9 @@ public class View {
         for (String num : numbersSplit) {
             numbersInteger.add(Integer.parseInt(num));
         }
+        validateNumbersInRange(numbersInteger);
+        validateNumberOfNumbers(numbersInteger);
+        validateUniqueNumbersInput(numbersInteger);
         return numbersInteger;
     }
 }
