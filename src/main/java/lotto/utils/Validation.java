@@ -1,4 +1,4 @@
-package lotto.uitls;
+package lotto.utils;
 
 import static lotto.uitls.Converter.convertToIntegerList;
 
