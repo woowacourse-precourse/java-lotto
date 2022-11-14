@@ -9,6 +9,17 @@ import java.util.List;
 public class LottoService {
     private static final int NUMBER_OF_RANKING = Ranking.values().length;
 
+    public int[] compareAllLottoWithWinningNumbers(List<Lotto> lottos, WinningNumber winningNumber) {
+        int[] rankingCount = new int[NUMBER_OF_RANKING + 1];
+
+        for (Lotto lotto : lottos) {
+            int ranking = compareWithWinningNumbers(lotto, winningNumber);
+            rankingCount[ranking] += 1;
+        }
+
+        return rankingCount;
+    }
+
     public int compareWithWinningNumbers(Lotto lotto, WinningNumber winningNumber) {
         List<Integer> winningNumbers = winningNumber.getNumbers();
         int bonusNumber = winningNumber.getBonusNumber();
