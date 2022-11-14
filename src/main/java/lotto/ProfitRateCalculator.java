@@ -9,7 +9,7 @@ public class ProfitRateCalculator {
         for (int i = 0; i < lottos.size(); i++) {
             totalWinningMoney += lottos.get(i).matchRank(winningNumber, bonusNumber).getMoney();
         }
-        double profitRate = ((double) investmentMoney / totalWinningMoney) * 100;
+        double profitRate = (totalWinningMoney / (double) investmentMoney) * 100;
         profitRate = Math.round(profitRate*100)/100.0;
         return profitRate;
     }
