@@ -38,4 +38,18 @@ public class LottoGame {
             createdLotto.printCreatedLotto();
         }
     }
+
+    public void confirmLotteriesPrized(Lotto winningLotto, int bonusNumber) {
+        Set<Integer> winningLottoNumbers = new HashSet<>(winningLotto.getNumbers());
+        List<Integer> count;
+        int matchedCount;
+        int bonus;
+        for (Lotto lotto : lotteries) {
+            count = lotto.countMatch(winningLottoNumbers, bonusNumber);
+            matchedCount = count.get(0);
+            bonus = count.get(1);
+            checkIsBonusPrized(matchedCount, bonus);
+            checkIsPrized(matchedCount, bonus);
+        }
+    }
 }

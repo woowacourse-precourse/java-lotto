@@ -29,6 +29,8 @@ public class User {
         System.out.println("보너스 번호를 입력해 주세요.");
         inputBonusNumber();
         System.out.println();
+
+        lottoGame.confirmLotteriesPrized(winningLotto, bonusNumber);
     }
 
     public void inputBuyPrice() {
