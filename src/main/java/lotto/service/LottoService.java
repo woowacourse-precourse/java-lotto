@@ -56,6 +56,6 @@ public class LottoService {
 		for (Rank rank : ranks) {
 			price += rank.getPrice();
 		}
-		WinningStatisticsView.printYield(((double)price / (double)(purchaseLottoCount * 1000L)) * 100 - 100);
+		WinningStatisticsView.printYield(((double)price / (double)(purchaseLottoCount * 1000L)) * 100);
 	}
 }
