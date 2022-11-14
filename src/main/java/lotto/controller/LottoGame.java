@@ -4,29 +4,49 @@ import lotto.domain.PurchaseAmount;
 import lotto.domain.User;
 import lotto.domain.lotto.PurchaseLottos;
 import lotto.domain.lotto.WinningLotto;
+import lotto.domain.statistics.WinningStatistics;
 
 public class LottoGame {
 
     private final User user;
-    private PurchaseLottos purchaseLottos;
-    private WinningLotto winningLotto;
 
 
     public LottoGame(User user) {
         this.user = user;
     }
 
-    public void run() {
-        purchaseLotto();
-        inputWinningLotto();
+
+    public void play() {
+        try {
+            run();
+        } catch (IllegalArgumentException illegalArgumentException) {
+            user.displayErrorMessage(illegalArgumentException);
+        }
+
     }
 
-    private void inputWinningLotto() {
-        this.winningLotto = user.inputLottoNum();
+    private void run() {
+        PurchaseLottos purchaseLottos = purchaseLotto();
+
+        user.displayPurchaseResult(purchaseLottos);
+
+        WinningLotto winningLotto = inputWinningLotto();
+
+        WinningStatistics winningStatistics = createWinningStatistics(purchaseLottos, winningLotto);
+
+        user.displayGameResult(winningStatistics);
     }
 
-    private void purchaseLotto() {
+    private WinningLotto inputWinningLotto() {
+        return user.inputLotto();
+    }
+
+    private PurchaseLottos purchaseLotto() {
         PurchaseAmount purchaseAmount = user.inputPurchaseAmount();
-        this.purchaseLottos = new PurchaseLottos(purchaseAmount.quantity());
+        return new PurchaseLottos(purchaseAmount.quantity());
+    }
+
+    private WinningStatistics createWinningStatistics(PurchaseLottos purchaseLottos, WinningLotto winningLotto) {
+        return new WinningStatistics(purchaseLottos, winningLotto);
     }
 }
