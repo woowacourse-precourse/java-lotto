@@ -43,6 +43,16 @@ public class Lotto {
         }
     }
 
+    public int compare(Lotto otherLotto) {
+        int count = 0;
+        for (Integer number : numbers) {
+            if (otherLotto.isMatch(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public boolean isMatch(int number) {
         return numbers.contains(number);
     }
