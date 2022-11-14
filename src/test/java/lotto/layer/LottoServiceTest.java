@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mockStatic;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
@@ -89,5 +90,29 @@ class LottoServiceTest {
         // then
         assertThat(frequency.get(WinningLotto.PLACE_5)).isEqualTo(1);
         randoms.close();
+    }
+
+    @DisplayName("수익률 공식에 따라 계산한다")
+    @Test
+    void lottoServiceAnalyzeBenefitRate() {
+        // given
+        table.saveMoney(new Money(1000));
+        Map<WinningLotto, Integer> frequency = makeFrequency();
+        table.saveFrequency(frequency);
+
+        // when
+        double benefitRate = lottoService.getBenefitRate();
+
+        // then
+        assertThat(benefitRate).isEqualTo(500);
+    }
+
+    private Map<WinningLotto, Integer> makeFrequency() {
+        Map<WinningLotto, Integer> frequency = new HashMap<>();
+        for (WinningLotto winningLotto : WinningLotto.values()) {
+            frequency.put(winningLotto, 0);
+        }
+        frequency.put(WinningLotto.PLACE_5, 1);
+        return frequency;
     }
 }
