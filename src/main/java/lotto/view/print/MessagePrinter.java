@@ -61,4 +61,8 @@ public class MessagePrinter {
     public void printStaticParagraphDivision() {
         System.out.println(NOTIFY_PARAGRAPH_DIVISION);
     }
+
+    public void printDynamicEarningsRate(Statistics statistics) {
+        System.out.printf((NOTIFY_EARNINGS_RATE) + "%n" + statistics.getEarningsRate());
+    }
 }

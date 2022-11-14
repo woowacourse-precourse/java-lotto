@@ -17,7 +17,7 @@
 - [X] 당첨 내역 출력(구매한 로또 리스트가 로또 등수 별로 몇 개씩 당첨 됐는지) - MessagePrinter#printDynamicWinningRecord()
 - [X] 당첨 통계 제목 출력 - MessagePrinter#printStaticStatisticsTopic()
 - [X] 문단 구분자 출력 - MessagePrinter#printStaticParagraphDivision()
-- [ ] 총 수익률 출력 - MessagePrinter#printDynamicEarningsRate()
+- [X] 총 수익률 출력 - MessagePrinter#printDynamicEarningsRate()
 ---
 
 
