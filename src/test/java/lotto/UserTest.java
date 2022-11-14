@@ -11,7 +11,7 @@ class UserTest {
     @Test
     @DisplayName("로또 구입 금액이 1000으로 나누어 떨어지지 않으면 예외 처리")
     void numberOfLotto() {
-        int input = 20001;
+        String input = "20001";
         User user = new User(input);
 
         assertThatThrownBy(() -> user.validatePurchaseAmount(input))

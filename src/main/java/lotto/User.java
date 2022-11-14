@@ -12,17 +12,22 @@ public class User {
     String earningsRate;
     Map<Rank, Integer> ranks = new TreeMap<>(Collections.reverseOrder());
 
-    User(int purchaseAmount) {
+    User(String input) {
         earningsRate = "0";
-        validatePurchaseAmount(purchaseAmount);
-        this.purchaseAmount = purchaseAmount;
+        validatePurchaseAmount(input);
+        this.purchaseAmount = Integer.parseInt(input);
         for (Rank rank : Rank.values()) {
             ranks.put(rank, 0);
         }
     }
 
-    public void validatePurchaseAmount(int purchaseAmount) {
-        if(purchaseAmount % LotteryDrawMachine.ea != 0) {
+    public void validatePurchaseAmount(String input) {
+        if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_SIGN.getErrorMessage()
+                    + " " + ErrorMessages.IS_NOT_NUMBER.getErrorMessage());
+        }
+        purchaseAmount = Integer.parseInt(input);
+        if (purchaseAmount % LotteryDrawMachine.ea != 0) {
             throw new IllegalArgumentException(ErrorMessages.ERROR_SIGN.getErrorMessage()
                     + " " + ErrorMessages.DIVIDE_ERROR.getErrorMessage());
         }
@@ -30,8 +35,8 @@ public class User {
 
     public void settleEarningsRate() {
         double sum = 0.0;
-        for(Rank rank : ranks.keySet()) {
-            double winning = (double)rank.getWinnings();
+        for (Rank rank : ranks.keySet()) {
+            double winning = (double) rank.getWinnings();
             sum += ranks.get(rank) * winning;
         }
         earningsRate = String.format("%.1f", (sum / purchaseAmount) * 100);
