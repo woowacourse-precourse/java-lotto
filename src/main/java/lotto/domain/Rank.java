@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.text.NumberFormat;
+
 public enum Rank {
     FIRST(6, 2000000000),
     SECOND(5, 30000000),
@@ -10,6 +12,7 @@ public enum Rank {
 
     private final int correctCount;
     private final int prize;
+    private final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance();
 
     Rank(int correctCount, int prize) {
         this.correctCount = correctCount;
@@ -22,5 +25,9 @@ public enum Rank {
 
     public int getPrize() {
         return prize;
+    }
+
+    public String getPrizeWithComna() {
+        return NUMBER_FORMAT.format(prize);
     }
 }

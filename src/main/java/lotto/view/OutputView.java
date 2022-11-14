@@ -27,7 +27,7 @@ public class OutputView {
             if (rank == Rank.NONE) {
                 continue;
             }
-            System.out.printf(isSecondMessage(rank), rank.getCorrectCount(), rank.getPrize(), winningHistory.get(rank));
+            System.out.printf(isSecondMessage(rank), rank.getCorrectCount(), rank.getPrizeWithComna(), winningHistory.get(rank));
         }
     }
 
