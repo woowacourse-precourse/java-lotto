@@ -16,30 +16,15 @@ public class LottoController {
     }
 
     public void run() {
-        LottosDto lottosDto = buyLotto();
-        WinningLottoDto winningLottoDto = announceWinningLotto();
-
-        computeWinningStatistics(lottosDto, winningLottoDto);
-    }
-
-    private LottosDto buyLotto() {
         String money = InputView.requestMoney();
         LottosDto lottosDto = lottoService.createLottos(money);
-
         OutputView.printLottos(lottosDto.toString());
-        return lottosDto;
-    }
 
-    private WinningLottoDto announceWinningLotto() {
         String winningNumber = InputView.requestWinningNumber();
         String bonusNumber = InputView.requestBonusNumber();
+        WinningLottoDto winningLottoDto = lottoService.createWinningNumber(winningNumber, bonusNumber);
 
-        return lottoService.createWinningNumber(winningNumber, bonusNumber);
-    }
-
-    private void computeWinningStatistics(LottosDto lottosDto, WinningLottoDto winningLottoDto) {
         WinningStatisticsDto winningStatisticsDto = lottoService.createWinningStatistics(lottosDto, winningLottoDto);
-
         OutputView.printWinningStatistics(winningStatisticsDto);
     }
 }
