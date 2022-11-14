@@ -11,26 +11,26 @@ public class UserService {
 
     public void calculateYield(User user) {
         double yield = user.getWinningAmount() / user.getMoney();
-        yield *= Number.THOUSAND.getValue();
+        yield *= Number.THOUSAND;
         yield = Math.round(yield);
-        yield /= Number.TEN.getValue();
+        yield /= Number.TEN;
         user.setYield(yield);
     }
 
     public void updateRankAndWinningAmount(User user, int rank) {
-        if (rank == Number.FIVE.getValue()) {
+        if (rank == Number.FIVE) {
             user.setRankFifth();
         }
-        if (rank == Number.FOUR.getValue()) {
+        if (rank == Number.FOUR) {
             user.setRankFourth();
         }
-        if (rank == Number.THREE.getValue()) {
+        if (rank == Number.THREE) {
             user.setRankThird();
         }
-        if (rank == Number.TWO.getValue()) {
+        if (rank == Number.TWO) {
             user.setRankSecond();
         }
-        if (rank == Number.ONE.getValue()) {
+        if (rank == Number.ONE) {
             user.setRankFirst();
         }
     }

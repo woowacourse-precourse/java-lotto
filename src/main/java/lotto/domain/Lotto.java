@@ -28,7 +28,7 @@ public class Lotto {
     }
 
     private void isSixNumbers(List<Integer> numbers) throws IllegalArgumentException{
-        if (numbers.size() != Number.SIX.getValue()) {
+        if (numbers.size() != Number.SIX) {
             throw new IllegalArgumentException();
         }
     }

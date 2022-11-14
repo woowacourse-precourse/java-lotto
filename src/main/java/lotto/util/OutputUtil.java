@@ -40,7 +40,7 @@ public class OutputUtil {
     }
 
     public static void printResult(User user) {
-        Map<Number, Integer> ranks = user.getRanks();
+        Map<Integer, Integer> ranks = user.getRanks();
         System.out.println(Message.TOTAL_RESULT_MESSAGE);
         System.out.println(Message.RESULT_FIFTH.getMessage() + ranks.get(Number.FIVE) + "개");
         System.out.println(Message.RESULT_FOURTH.getMessage() + ranks.get(Number.FOUR) + "개");

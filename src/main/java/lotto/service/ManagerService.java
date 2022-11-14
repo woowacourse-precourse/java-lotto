@@ -18,7 +18,7 @@ public class ManagerService {
 
     public void changeLottos(User user) {
         List<Lotto> lottos = new ArrayList<>();
-        int totalCount = (int)user.getMoney() / 1000;
+        int totalCount = (int)user.getMoney() / Number.THOUSAND;
 
         for (int repeat = 1; repeat <= totalCount; repeat++) {
             Lotto lotto = lottoMachine.generateLotto();
@@ -63,22 +63,22 @@ public class ManagerService {
     }
 
     public int judgeRank(int correctCount, boolean isCorrectBonus) {
-        if (correctCount == Number.THREE.getValue()) {
-            return Number.FIVE.getValue();
+        if (correctCount == Number.THREE) {
+            return Number.FIVE;
         }
-        if (correctCount == Number.FOUR.getValue()) {
-            return Number.FOUR.getValue();
+        if (correctCount == Number.FOUR) {
+            return Number.FOUR;
         }
-        if (!isCorrectBonus && correctCount == Number.FIVE.getValue()) {
-            return Number.THREE.getValue();
+        if (!isCorrectBonus && correctCount == Number.FIVE) {
+            return Number.THREE;
         }
-        if (isCorrectBonus && correctCount == Number.FIVE.getValue()) {
-            return Number.TWO.getValue();
+        if (isCorrectBonus && correctCount == Number.FIVE) {
+            return Number.TWO;
         }
-        if (correctCount == Number.SIX.getValue()) {
-            return Number.ONE.getValue();
+        if (correctCount == Number.SIX) {
+            return Number.ONE;
         }
-        return Number.ZERO.getValue();
+        return Number.ZERO;
     }
 
 

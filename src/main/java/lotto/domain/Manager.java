@@ -49,21 +49,21 @@ public class Manager {
     }
 
     public int getWinningAmount(int rank) {
-        if(rank == Number.FIVE.getValue()) {
-            return Number.FIFTH_WINNING_AMOUNT.getValue();
+        if(rank == Number.FIVE) {
+            return Number.FIFTH_WINNING_AMOUNT;
         }
-        if(rank == Number.FOUR.getValue()) {
-            return Number.FOURTH_WINNING_AMOUNT.getValue();
+        if(rank == Number.FOUR) {
+            return Number.FOURTH_WINNING_AMOUNT;
         }
-        if(rank == Number.THREE.getValue()) {
-            return Number.THIRD_WINNING_AMOUNT.getValue();
+        if(rank == Number.THREE) {
+            return Number.THIRD_WINNING_AMOUNT;
         }
-        if(rank == Number.TWO.getValue()) {
-            return Number.SECOND_WINNING_AMOUNT.getValue();
+        if(rank == Number.TWO) {
+            return Number.SECOND_WINNING_AMOUNT;
         }
-        if(rank == Number.ONE.getValue()) {
-            return Number.FIRST_WINNING_AMOUNT.getValue();
+        if(rank == Number.ONE) {
+            return Number.FIRST_WINNING_AMOUNT;
         }
-        return Number.ZERO.getValue();
+        return Number.ZERO;
     }
 }

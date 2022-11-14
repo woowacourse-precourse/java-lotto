@@ -1,21 +1,23 @@
 package lotto.domain.enums;
 
-public enum Number {
-    ZERO(0), ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), TEN(10), FORTY_FIVE(45), THOUSAND(1000),
-    LOTTO_SIZE(6),
-    FIFTH_WINNING_AMOUNT(5_000),
-    FOURTH_WINNING_AMOUNT(50_000),
-    THIRD_WINNING_AMOUNT(1_500_000),
-    SECOND_WINNING_AMOUNT(30_000_000),
-    FIRST_WINNING_AMOUNT(2_000_000_000);
+public class Number {
 
-    private final int value;
+    public static final int ZERO = 0;
+    public static final int ONE = 1;
+    public static final int TWO = 2;
+    public static final int THREE= 3;
+    public static final int FOUR = 4;
+    public static final int FIVE = 5;
+    public static final int SIX = 6;
+    public static final int TEN = 10;
+    public static final int FORTY_FIVE = 45;
+    public static final int THOUSAND = 1000;
 
-    Number(int value) {
-        this.value = value;
-    }
+    public static final int LOTTO_SIZE = 6;
 
-    public int getValue() {
-        return value;
-    }
+    public static final int FIFTH_WINNING_AMOUNT = 5_000;
+    public static final int FOURTH_WINNING_AMOUNT = 50_000;
+    public static final int THIRD_WINNING_AMOUNT = 1_500_000;
+    public static final int SECOND_WINNING_AMOUNT = 30_000_000;
+    public static final int FIRST_WINNING_AMOUNT = 2_000_000_000;
 }

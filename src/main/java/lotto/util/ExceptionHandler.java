@@ -22,7 +22,7 @@ public class ExceptionHandler {
     }
 
     private static void checkThousandUnit(int input) throws IllegalArgumentException {
-        if ((input % Number.THOUSAND.getValue()) != Number.ZERO.getValue()) {
+        if ((input % Number.THOUSAND) != Number.ZERO) {
             throw new IllegalArgumentException();
         }
     }
@@ -40,7 +40,7 @@ public class ExceptionHandler {
     }
 
     private static void isSixNumbers(String[] tokens) throws IllegalArgumentException {
-        if (tokens.length != Number.SIX.getValue()) {
+        if (tokens.length != Number.SIX) {
             throw new IllegalArgumentException();
         }
     }
@@ -79,7 +79,7 @@ public class ExceptionHandler {
     }
 
     private static boolean isValidate(int number) {
-        return Number.ONE.getValue() <= number && number <= Number.FORTY_FIVE.getValue();
+        return Number.ONE <= number && number <= Number.FORTY_FIVE;
     }
 
     public static void checkValidationBonusNumber(String input, List<Integer> winningNumbers) throws IllegalArgumentException {

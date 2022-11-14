@@ -11,7 +11,7 @@ public class User {
     private List<Lotto> lottos;
     private double money;
     private double winningAmount;
-    private Map<Number, Integer> ranks = new HashMap<>();
+    private Map<Integer, Integer> ranks = new HashMap<>();
     private double yield;
 
     public User() {
@@ -53,7 +53,7 @@ public class User {
         this.winningAmount = winningAmount;
     }
 
-    public Map<Number, Integer> getRanks() {
+    public Map<Integer, Integer> getRanks() {
         return ranks;
     }
 
@@ -74,27 +74,27 @@ public class User {
     }
 
     public void setRankFifth() {
-        ranks.put(Number.FIVE, ranks.get(Number.FIVE) + Number.ONE.getValue());
-        addWinningAmount(Number.FIFTH_WINNING_AMOUNT.getValue());
+        ranks.put(Number.FIVE, ranks.get(Number.FIVE) + Number.ONE);
+        addWinningAmount(Number.FIFTH_WINNING_AMOUNT);
     }
 
     public void setRankFourth() {
-        ranks.put(Number.FOUR, ranks.get(Number.FOUR) + Number.ONE.getValue());
-        addWinningAmount(Number.FOURTH_WINNING_AMOUNT.getValue());
+        ranks.put(Number.FOUR, ranks.get(Number.FOUR) + Number.ONE);
+        addWinningAmount(Number.FOURTH_WINNING_AMOUNT);
     }
 
     public void setRankThird() {
-        ranks.put(Number.THREE, ranks.get(Number.THREE) + Number.ONE.getValue());
-        addWinningAmount(Number.THIRD_WINNING_AMOUNT.getValue());
+        ranks.put(Number.THREE, ranks.get(Number.THREE) + Number.ONE);
+        addWinningAmount(Number.THIRD_WINNING_AMOUNT);
     }
 
     public void setRankSecond() {
-        ranks.put(Number.TWO, ranks.get(Number.TWO) + Number.ONE.getValue());
-        addWinningAmount(Number.SECOND_WINNING_AMOUNT.getValue());
+        ranks.put(Number.TWO, ranks.get(Number.TWO) + Number.ONE);
+        addWinningAmount(Number.SECOND_WINNING_AMOUNT);
     }
 
     public void setRankFirst() {
-        ranks.put(Number.ONE, ranks.get(Number.ONE) + Number.ONE.getValue());
-        addWinningAmount(Number.FIRST_WINNING_AMOUNT.getValue());
+        ranks.put(Number.ONE, ranks.get(Number.ONE) + Number.ONE);
+        addWinningAmount(Number.FIRST_WINNING_AMOUNT);
     }
 }

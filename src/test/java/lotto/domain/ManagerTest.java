@@ -55,26 +55,26 @@ class ManagerTest {
     @Test
     void judgeRankTest() {
         assertAll(
-            () -> assertThat(managerService.judgeRank(0, true)).isEqualTo(Number.ZERO.getValue()),
-            () -> assertThat(managerService.judgeRank(1, true)).isEqualTo(Number.ZERO.getValue()),
-            () -> assertThat(managerService.judgeRank(2, true)).isEqualTo(Number.ZERO.getValue()),
-            () -> assertThat(managerService.judgeRank(3, true)).isEqualTo(Number.FIVE.getValue()),
-            () -> assertThat(managerService.judgeRank(4, true)).isEqualTo(Number.FOUR.getValue()),
-            () -> assertThat(managerService.judgeRank(5, false)).isEqualTo(Number.THREE.getValue()),
-            () -> assertThat(managerService.judgeRank(5, true)).isEqualTo(Number.TWO.getValue()),
-            () -> assertThat(managerService.judgeRank(6, true)).isEqualTo(Number.ONE.getValue())
+            () -> assertThat(managerService.judgeRank(0, true)).isEqualTo(Number.ZERO),
+            () -> assertThat(managerService.judgeRank(1, true)).isEqualTo(Number.ZERO),
+            () -> assertThat(managerService.judgeRank(2, true)).isEqualTo(Number.ZERO),
+            () -> assertThat(managerService.judgeRank(3, true)).isEqualTo(Number.FIVE),
+            () -> assertThat(managerService.judgeRank(4, true)).isEqualTo(Number.FOUR),
+            () -> assertThat(managerService.judgeRank(5, false)).isEqualTo(Number.THREE),
+            () -> assertThat(managerService.judgeRank(5, true)).isEqualTo(Number.TWO),
+            () -> assertThat(managerService.judgeRank(6, true)).isEqualTo(Number.ONE)
         );
     }
 
     @Test
     void getWinningAmountTest() {
         assertAll(
-            () -> assertThat(manager.getWinningAmount(0)).isEqualTo(Number.ZERO.getValue()),
-            () -> assertThat(manager.getWinningAmount(1)).isEqualTo(Number.FIRST_WINNING_AMOUNT.getValue()),
-            () -> assertThat(manager.getWinningAmount(2)).isEqualTo(Number.SECOND_WINNING_AMOUNT.getValue()),
-            () -> assertThat(manager.getWinningAmount(3)).isEqualTo(Number.THIRD_WINNING_AMOUNT.getValue()),
-            () -> assertThat(manager.getWinningAmount(4)).isEqualTo(Number.FOURTH_WINNING_AMOUNT.getValue()),
-            () -> assertThat(manager.getWinningAmount(5)).isEqualTo(Number.FIFTH_WINNING_AMOUNT.getValue())
+            () -> assertThat(manager.getWinningAmount(0)).isEqualTo(Number.ZERO),
+            () -> assertThat(manager.getWinningAmount(1)).isEqualTo(Number.FIRST_WINNING_AMOUNT),
+            () -> assertThat(manager.getWinningAmount(2)).isEqualTo(Number.SECOND_WINNING_AMOUNT),
+            () -> assertThat(manager.getWinningAmount(3)).isEqualTo(Number.THIRD_WINNING_AMOUNT),
+            () -> assertThat(manager.getWinningAmount(4)).isEqualTo(Number.FOURTH_WINNING_AMOUNT),
+            () -> assertThat(manager.getWinningAmount(5)).isEqualTo(Number.FIFTH_WINNING_AMOUNT)
         );
     }
 }
