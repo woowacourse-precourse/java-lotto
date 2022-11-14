@@ -1,10 +1,11 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Lotto {
+public class Lotto implements Iterable<LottoNumber> {
 
     public static final int LOTTO_LENGTH = 6;
     private static final String ERROR_MATCH_LENGTH = "로또는 6개의 번호만 입력 가능합니다.";
@@ -38,6 +39,37 @@ public class Lotto {
                 throw new IllegalArgumentException(ERROR_DUPLICATE_VALUE);
             }
             list.add(lottoNumber);
+        }
+    }
+
+    public boolean contains(LottoNumber lottoNumber) {
+        return numbers.contains(lottoNumber);
+    }
+
+    @Override
+    public Iterator<LottoNumber> iterator() {
+        return new LottoIterator();
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
+
+    private class LottoIterator implements Iterator<LottoNumber> {
+
+        private int cursor;
+
+        @Override
+        public boolean hasNext() {
+            return cursor != LOTTO_LENGTH;
+        }
+
+        @Override
+        public LottoNumber next() {
+            int index = cursor;
+            cursor++;
+            return numbers.get(index);
         }
     }
 }
