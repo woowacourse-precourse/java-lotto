@@ -30,4 +30,25 @@ class JudgeWinningOfLottoTest {
         Assertions.assertThat(match).isEqualTo(result);
 
     }
+    @DisplayName("보너스 번호 포함")
+    @Test
+    void containBounsNumber(){
+        JudgeWinningOfLotto judgeWinningOfLotto = new JudgeWinningOfLotto();
+
+        boolean bonusStatus = judgeWinningOfLotto.isContainBounsNumber(List.of(1, 2, 3, 4, 5, 6), 6);
+        boolean result = true;
+
+        Assertions.assertThat(bonusStatus).isEqualTo(result);
+    }
+
+    @DisplayName("보너스 번호 미포함")
+    @Test
+    void notContainBounsNumber(){
+        JudgeWinningOfLotto judgeWinningOfLotto = new JudgeWinningOfLotto();
+
+        boolean bonusStatus = judgeWinningOfLotto.isContainBounsNumber(List.of(1, 2, 3, 4, 5, 6), 10);
+        boolean result = false;
+
+        Assertions.assertThat(bonusStatus).isEqualTo(result);
+    }
 }
