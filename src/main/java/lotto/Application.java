@@ -3,8 +3,10 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -119,12 +121,49 @@ public class Application {
      * 로또 번호들과 당첨 번호를 비교하여 당첨 결과를 반환
      * @param lottos 로또 번호들
      * @param luckyNumber 당첨 번호
-     * @param BonusNumber 보너스 숫자
+     * @param bonusNumber 보너스 숫자
      * @return
      */
-    public static List<Prize> getLottoResult(List<Lotto> lottos, Lotto luckyNumber, int BonusNumber){
-        // TODO: 로또 번호들과 당첨 번호 및 보너스 숫자를 비교하여 결과 도출
-        return null;
+    public static HashMap<Prize, Integer> getLottoResult(List<Lotto> lottos, Lotto luckyNumber, int bonusNumber){
+        HashMap<Prize, Integer> prizes = new HashMap<>();
+        for(Lotto lotto : lottos){
+            int duplicated = getDuplicatedNumber(lotto.getLottoNumbers(), luckyNumber.getLottoNumbers());
+            boolean bonused = hasBonusNumber(lotto.getLottoNumbers(), bonusNumber);
+            Prize prize = ranking(duplicated, bonused);
+            if (!prizes.containsKey(prize)){
+                prizes.put(prize, 0);
+            }
+            prizes.put(prize, prizes.get(prize).intValue() + 1);
+        }
+        return prizes;
+    }
+
+    public static int getDuplicatedNumber(List<Integer> target, List<Integer> luckyNumber){
+        int duplicated = 0;
+        for(Integer number : luckyNumber){
+            if (target.contains(number)){
+                duplicated++;
+            }
+        }
+        return duplicated;
+    }
+
+    public static boolean hasBonusNumber(List<Integer> target, int bonusNumber){
+        if (target.contains(bonusNumber))
+            return true;
+        return false;
+    }
+
+    public static Prize ranking(int duplicated, boolean bonused){
+        if (duplicated < 3){
+            return Prize.NONE;
+        }
+        if (duplicated == 5 && bonused){
+            return Prize.SECOND;
+        }
+        List<Prize> prizes = List.of(Prize.FIRST, Prize.THIRD, Prize.FOURTH, Prize.FIFTH);
+        Prize prize = prizes.get(6 - duplicated);
+        return prizes.get(6 - duplicated);
     }
 
     /**
@@ -140,7 +179,15 @@ public class Application {
      * 당첨 결과 상수를 정의하고 있는 enum
      */
     enum Prize{
-        // TODO: 당첨 결과 enum 구현
+        FIRST(2_000_000_000),
+        SECOND(30_000_000),
+        THIRD(1_500_000),
+        FOURTH(50_000),
+        FIFTH(5_000),
+        NONE(0);
+        private final int prizeMoney;
+        Prize(int prizeMoney) { this.prizeMoney = prizeMoney; }
+        public int getValue() { return prizeMoney; }
     }
 
 
