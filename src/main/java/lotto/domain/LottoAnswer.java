@@ -22,8 +22,8 @@ public class LottoAnswer {
         if (numbers.contains(bonus)) {
             throw new IllegalArgumentException(LottoErrorCode.DUPLICATE_LOTTO_NUMBER.toString());
         }
-        winningNumber = new Lotto(numbers);
-        bonusNumber = bonus;
+        this.winningNumber = new Lotto(numbers);
+        this.bonusNumber = bonus;
     }
 
     /**
