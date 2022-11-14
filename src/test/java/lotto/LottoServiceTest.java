@@ -42,4 +42,40 @@ public class LottoServiceTest {
         HashSet<Integer> winningNumber = lottoService.changeStringToHashSet(winningNumberInput);
         assertThat(winningNumber.size()).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("당첨번호가 6자리가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
+    void checkWinningNumber_About_Digit_Test() {
+        String winningNumberInput = "1,3,5,6,7";
+        assertThatThrownBy(() -> lottoService.checkWinningNumberInput(winningNumberInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.WINNING_NUMBER_DIGIT_ERROR.getErrorMessage());
+    }
+
+    @Test
+    @DisplayName("당첨번호가 숫자가 아닐 시 관련된 메세지를 담은 예외를 발생시킨다.")
+    void checkWinningNumber_About_Numeric_Test() {
+        String winningNumberInput = "a,b,c,d,e,f";
+        assertThatThrownBy(() -> lottoService.checkWinningNumberInput(winningNumberInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.WINNING_NUMBER_TYPE_ERROR.getErrorMessage());
+    }
+
+    @Test
+    @DisplayName("당첨번호들 가운데 1~45 숫자가 아닌 경우가 존재할 때 관련된 메세지를 담은 예외를 발생시킨다.")
+    void checkWinningNumber_About_Boundary_Test() {
+        String winningNumberInput = "47,1,2,3,4,5";
+        assertThatThrownBy(() -> lottoService.checkWinningNumberInput(winningNumberInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.WINNING_NUMBER_BOUNDARY_ERROR.getErrorMessage());
+    }
+
+    @Test
+    @DisplayName("당첨번호들 가운데 서로 중복된 숫자가 있을 시 관련된 메세지를 담은 예외를 발생시킨다.")
+    void checkWinningNumber_About_Duplicated_Test() {
+        String winningNumberInput = "3,3,1,2,4,5";
+        assertThatThrownBy(() -> lottoService.checkWinningNumberInput(winningNumberInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.WINNING_NUMBER_DUPLICATED_ERROR.getErrorMessage());
+    }
 }
