@@ -3,14 +3,14 @@ package lotto.domain.validator;
 import java.util.Collections;
 import java.util.List;
 
-public class LottoNumbersValidator {
+public class NumbersValidator {
     private static int LOTTO_NUMBERS_SIZE = 6;
     private static int MIN_LOTTO_NUMBER = 1;
     private static int MAX_LOTTO_NUMBER = 45;
-    private static String SIX_NUMBERS_ERROR_MESSAGE = "6개로 구성돼야 합니다";
-    private static String RANGE_ERROR_MESSAGE = String.format("%d ~ %d 사이의 숫자들로 구성돼야 합니다",
+    private static String SIX_NUMBERS_ERROR_MESSAGE = "[ERROR] 6개로 구성돼야 합니다";
+    private static String RANGE_ERROR_MESSAGE = String.format("[ERROR] %d ~ %d 사이의 숫자들로 구성돼야 합니다",
             MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER);
-    private static String DUPLICATE_ERROR_MESSAGE = "중복없이 구성돼야 합니다";
+    private static String DUPLICATE_ERROR_MESSAGE = "[ERROR] 중복없이 구성돼야 합니다";
 
     private static boolean isSixInputs(List<Integer> numbers) {
         return numbers.size() == LOTTO_NUMBERS_SIZE;
