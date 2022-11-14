@@ -6,8 +6,8 @@ public class Purchase {
         return purchaseAmount / Constant.LOTTO_PRICE;
     }
 
-    private static void checkNotDivide(int purchaseAmount){
-        if ((purchaseAmount % Constant.LOTTO_PRICE) != 0){
+    private static void checkNotDivide(int purchaseAmount) {
+        if ((purchaseAmount % Constant.LOTTO_PRICE) != 0) {
             throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
         }
     }

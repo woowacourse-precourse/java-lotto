@@ -60,9 +60,9 @@ public class Lotto {
         }
     }
 
-    private void checkSameCount(List<Integer> numbers){
+    private void checkSameCount(List<Integer> numbers) {
         Set<Integer> uniqueNumber = new HashSet<>(numbers);
-        if (uniqueNumber.size() != 6){
+        if (uniqueNumber.size() != 6) {
             System.out.println("[ERROR] 로또 번호는 중복되는 값이 없어야 합니다.");
             throw new IllegalArgumentException();
         }

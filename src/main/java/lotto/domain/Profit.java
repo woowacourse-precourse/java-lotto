@@ -1,7 +1,7 @@
 package lotto.domain;
 
 public class Profit {
-    private static double calculateRate(int purchaseAmount, int prizeMoney) {
+    public static double calculateRate(int purchaseAmount, int prizeMoney) {
         double rate = ((double) prizeMoney / (double) purchaseAmount) * 100;
         return Math.round(rate * 10) / 10.0;
     }
