@@ -8,22 +8,22 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-    private String inputToQuestion() {
+    private static String inputToQuestion() {
         return Console.readLine();
     }
 
-    public int convertToNumber() {
+    public static int convertToNumber() {
         try {
             return Integer.parseInt(inputToQuestion());
         }
         catch(Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 
-    public List<Integer> convertToList() {
+    public static List<Integer> convertToList() {
         try {
-            return Arrays.stream(inputToQuestion().split(", "))
+            return Arrays.stream(inputToQuestion().split(","))
                     .mapToInt(Integer::parseInt)
                     .boxed()
                     .collect(Collectors.toList());
