@@ -9,6 +9,7 @@ public class Application {
             lottoMainProgram.run();
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

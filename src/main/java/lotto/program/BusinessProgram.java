@@ -11,7 +11,6 @@ public class BusinessProgram {
 
     public LottoOfUser generateUserLotto(int money) {
         int ticket = Converter.moneyToTicket(money);
-        System.out.println(ticket+"개를 구매했습니다.");
         return generateLottoByTicket(ticket);
     }
 
@@ -21,6 +20,7 @@ public class BusinessProgram {
             Lotto newLotto = new Lotto(Generator.makeRandomLottoNumbers());
             userOfLotto.add(newLotto);
         }
+        System.out.println(ticket+"개를 구매했습니다.");
         return userOfLotto;
     }
 

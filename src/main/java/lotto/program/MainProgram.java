@@ -14,8 +14,10 @@ public class MainProgram {
 
     public void run() {
         int money = consoleProgram.requestMoney();
+
         LottoOfUser userLotto = businessProgram.generateUserLotto(money);
         businessProgram.printUserLotto(userLotto);
+
         LottoOfAnswer answerLotto = consoleProgram.requestAnswerLottoWithBonusNumber();
         businessProgram.printUserLottoResults(userLotto,answerLotto);
     }
