@@ -19,13 +19,11 @@ public class Money {
 
     public static Money inputMoney() {
         String money = Console.readLine();
-        return changeToMoney(money);
+        validateInputtedMoney(money);
+        return new Money(toInteger(money));
     }
 
-    private static Money changeToMoney(String inputtedMoney) {
-        validateInputtedMoney(inputtedMoney);
-        int money = Integer.parseInt(inputtedMoney);
-        return new Money(money);
-
+    private static int toInteger(String inputtedMoney) {
+        return Integer.parseInt(inputtedMoney);
     }
 }
