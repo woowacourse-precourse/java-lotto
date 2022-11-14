@@ -4,7 +4,7 @@ import java.util.List;
 
 public class WinningChecker {
 
-    public static int check(List<Integer> winningNumber, int bonusNumber, List<Integer> expectedNumber) {
+    public static String check(List<Integer> winningNumber, int bonusNumber, List<Integer> expectedNumber) {
         return checkGrade(checkNumbers(winningNumber, bonusNumber, expectedNumber));
     }
 
@@ -23,22 +23,11 @@ public class WinningChecker {
         return grade;
     }
 
-    private static int checkGrade(int[] grade) {
-        if(grade[0] == 6) {
-            return 1;
+    private static String checkGrade(int[] grade) {
+        Policy.WinningCriteria winning = Policy.WinningCriteria.find(grade);
+        if(winning == null) {
+            return "null";
         }
-        if(grade[0] == 5) {
-            if(grade[1] == 1) {
-                return 2;
-            }
-            return 3;
-        }
-        if(grade[0] == 4) {
-            return 4;
-        }
-        if(grade[0] == 3) {
-            return 5;
-        }
-        return 0;
+        return winning.name();
     }
 }
