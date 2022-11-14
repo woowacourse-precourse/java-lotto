@@ -35,6 +35,16 @@ public class Validator {
         }
     }
 
+    public void isValidBonusNumber(int bonusNumber) {
+        if(!isLottoRange(bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_NOT_VALID_RANGE.toString());
+        }
+    }
+
+    private boolean isLottoRange(int bonusNumber) {
+        return 1 <= bonusNumber && bonusNumber <= 45;
+    }
+
     private boolean isLottoRange(List<Integer> lottoNumbers) {
         for(int number : lottoNumbers) {
             if(!(0 < number && number < 46)) {
