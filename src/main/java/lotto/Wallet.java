@@ -45,4 +45,8 @@ public class Wallet {
     public List<Lotto> getMyLottos() {
         return myLottos;
     }
+
+    public void addReward(LottoReward reward) {
+        this.profit += reward.getReward();
+    }
 }
