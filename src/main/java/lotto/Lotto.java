@@ -12,12 +12,12 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public Prize raffle(List<Integer> ticketNumbers, int ticketBonus, int bonus) {
+    public Prize raffle(List<Integer> ticketNumbers, int bonus) {
         validateBonusDuplicate(bonus);
 
         int count = getContainCount(ticketNumbers);
 
-        return getPrize(count, ticketBonus, bonus);
+        return getPrize(count, ticketNumbers.contains(bonus));
     }
 
     private void validateBonusDuplicate(int bonus) {
@@ -26,12 +26,12 @@ public class Lotto {
         }
     }
 
-    private Prize getPrize(int count, int ticketBonus, int bonus) {
+    private Prize getPrize(int count, boolean isBonusCorrect) {
         switch (count) {
             case 6:
                 return Prize.FIRST;
             case 5:
-                return bonusPrize(ticketBonus, bonus);
+                return bonusPrize(isBonusCorrect);
             case 4:
                 return Prize.FOURTH;
             case 3:
@@ -41,8 +41,8 @@ public class Lotto {
         }
     }
 
-    private Prize bonusPrize(int ticketBonus, int bonus) {
-        if (ticketBonus == bonus) {
+    private Prize bonusPrize(boolean isBonusCorrect) {
+        if (isBonusCorrect) {
             return Prize.SECOND;
         }
         return Prize.THIRD;
