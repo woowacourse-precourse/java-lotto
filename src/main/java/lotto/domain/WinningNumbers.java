@@ -10,7 +10,8 @@ import lotto.view.InputView;
 public class WinningNumbers {
 
     public static final String SEPARATE_REGEX = ",";
-    
+    public static final String CHECK_UNIQUE_ERROR_MESSAGE = "[ERROR] 당첨 숫자에 보너스 숫자가 중복됩니다.";
+
     private Lotto winningNumbers;
 
     private Integer bonusNumber;
@@ -18,6 +19,18 @@ public class WinningNumbers {
     public WinningNumbers() {
         this.winningNumbers = new Lotto(getWinningNumbersByInput());
         this.bonusNumber = getBonusNumberByInput();
+        checkUnique();
+    }
+
+    public WinningNumbers(Lotto winningNumbers, Integer bonusNumber) {
+        this.winningNumbers = winningNumbers;
+        this.bonusNumber = bonusNumber;
+    }
+
+    public void checkUnique() {
+        if (winningNumbers.hasNumber(bonusNumber)) {
+            throw new IllegalArgumentException(CHECK_UNIQUE_ERROR_MESSAGE);
+        }
     }
 
     public List<Integer> getWinningNumbersByInput() {

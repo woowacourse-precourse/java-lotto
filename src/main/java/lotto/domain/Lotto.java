@@ -47,6 +47,10 @@ public class Lotto {
         return userLotto.size();
     }
 
+    public boolean hasNumber(Integer number) {
+        return numbers.contains(number);
+    }
+
     @Override
     public String toString() {
         return this.numbers.stream().sorted().collect(Collectors.toList()).toString();
