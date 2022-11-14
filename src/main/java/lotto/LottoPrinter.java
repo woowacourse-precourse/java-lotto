@@ -17,5 +17,6 @@ public class LottoPrinter {
         for (Lotto lotto : lottos) {
             System.out.println(lotto);
         }
+        System.out.println();
     }
 }
