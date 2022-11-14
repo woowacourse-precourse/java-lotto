@@ -1,17 +1,19 @@
 package lotto;
 
 public enum Constants {
-    FIRST("6개 일치", 2000000000),
-    SECOND("5개 일치, 보너스 볼 일치,", 30000000),
-    THIRD("5개 일치", 1500000),
-    FOURTH("4개 일치",50000),
-    FIFTH("3개 일치", 5000),
-    NONE("탈락", 0);
+    FIRST("6개 일치", 2000000000, 1),
+    SECOND("5개 일치, 보너스 볼 일치,", 30000000, 2),
+    THIRD("5개 일치", 1500000, 3),
+    FOURTH("4개 일치",50000, 4),
+    FIFTH("3개 일치", 5000, 5),
+    NONE("탈락", 0, 0);
     public String gameResult;
     public int money;
-    private Constants(String gameResult, int money){
+    public int rank;
+    private Constants(String gameResult, int money, int rank){
         this.gameResult = gameResult;
         this.money = money;
+        this.rank = rank;
     }
 
     public Constants calc(int match, int bonus){
@@ -36,5 +38,7 @@ public enum Constants {
         return this.money;
     }
 
-
+    public int getRank(){
+        return this.rank;
+    }
 }
