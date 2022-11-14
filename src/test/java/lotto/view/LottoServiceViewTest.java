@@ -1,27 +1,23 @@
 package lotto.view;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoServiceViewTest {
 
-    LottoServiceView lottoServiceView;
+    LottoBuyView lottoServiceView;
 
     @BeforeEach
     void beforeEach() {
-        lottoServiceView = new LottoServiceView();
+        lottoServiceView = new LottoBuyView();
     }
 
     @ParameterizedTest

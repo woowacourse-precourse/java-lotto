@@ -2,14 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
-
-public class LottoServiceView {
-
-    public List<Integer> inputWinningNumber() {
-
-        
-    }
+public class LottoBuyView {
 
     public int buyLotto() {
 
