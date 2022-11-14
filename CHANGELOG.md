@@ -1,3 +1,8 @@
+- refactor: java 컨벤션에 맞게 일부 수정 및 미사용 import문 제거
+- test(LottoManagerTest): Random 로또가 1,2,3,4,5,6일때 각 Rank 테스트 추가
+- test: TestNumberGenerator를 통해 Random Lotto 번호를 1,2,3,4,5,6으로 고정
+- refactor: Random 테스트를 위해 기존의 generateLotto 함수를 NumberGenertor인터페이스를 상속받는 RandomNumberGenerator 클래스로 기능 대체
+- docs(CHAGELOG.md): CHANGELOG.md 파일 자동 생성
 - refactor: Lotto 숫자의 개수 Lotto 숫자의 범위 상수 처리
 - refactor: package 생성 및 구분
 - test(LottoVallidationTest): LottoValidation 테스트 추가
