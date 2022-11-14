@@ -3,6 +3,8 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputValidatorTest {
@@ -39,5 +41,17 @@ class InputValidatorTest {
         assertThatThrownBy(() -> inputValidator.validateInputPurchaseAmount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    
+
+    @Test
+    @DisplayName("보너스 번호가 숫자가 아닐 때")
+    void bonusNotNumber() throws Exception {
+        //given
+        String input = "j";
+        Lotto winningNumber = new Lotto(List.of(1,2,3,4,5,6));
+        //when
+        //then
+        assertThatThrownBy(() -> inputValidator.validateInputBonusNumber(input, winningNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
