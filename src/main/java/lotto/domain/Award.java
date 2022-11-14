@@ -11,14 +11,14 @@ public enum Award {
 
     FIVE_BONUS(30_000_000);
 
-    private final int price;
+    private final int reward;
 
-    Award(int price) {
-        this.price = price;
+    Award(int reward) {
+        this.reward = reward;
     }
 
     public long getReward() {
-        return this.price;
+        return this.reward;
     }
 
     public static Award getByOrdinal(int ordinal) {
