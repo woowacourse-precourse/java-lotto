@@ -12,16 +12,17 @@ import static lotto.message.errorMessages.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        buyLotto();
+        int purchaseAmount = buyLotto();
+        List<List> purchaseLotto = autoLotto(purchaseAmount);
     }
 
-    public static void buyLotto(){
+    public static int buyLotto(){
         System.out.println(AMOUNT_MONEY_INPUT);
         String moneyInput = Console.readLine();
         int buyAmount = 0;
         checkPurchaseException(moneyInput);
         buyAmount = Integer.parseInt(moneyInput)/1000;
-        autoLotto(buyAmount);
+        return buyAmount;
     }
     private static void checkPurchaseException(String moneyInput){
         int money = 0;
