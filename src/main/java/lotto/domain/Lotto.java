@@ -7,6 +7,8 @@ import java.util.Set;
 
 public class Lotto {
 
+    private static final int LOTTO_LENGTH = 6;
+
     private final Set<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -15,7 +17,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (new HashSet<>(numbers).size() != 6) {
+        if (new HashSet<>(numbers).size() != LOTTO_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
