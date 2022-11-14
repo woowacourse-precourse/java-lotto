@@ -3,13 +3,14 @@ package lotto;
 import lotto.ENUMS.ErrorMessages;
 import lotto.ENUMS.Rank;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class User {
     int purchaseAmount;
     String earningsRate;
-    Map<Rank, Integer> ranks = new TreeMap<>();
+    Map<Rank, Integer> ranks = new TreeMap<>(Collections.reverseOrder());
 
     User(int purchaseAmount) {
         earningsRate = "0";
@@ -33,7 +34,7 @@ public class User {
             double winning = (double)rank.getWinnings();
             sum += ranks.get(rank) * winning;
         }
-        earningsRate = String.format("%.1f", sum / purchaseAmount);
+        earningsRate = String.format("%.1f", (sum / purchaseAmount) * 100);
     }
 
     public int getPurchaseAmount() {

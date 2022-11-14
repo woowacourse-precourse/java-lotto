@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.ENUMS.Rank;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,15 +32,15 @@ public class LotteryScratch {
 
     public void recordLotteryResult(Lotto lotto) {
         Map<Rank, Integer> ranks = user.getRanks();
-        List<Integer> original = lotto.getNumbers();
-        Lotto winningLotto = winningNumber.getWinningLotto(); // 1, 2, 3, 4, 5, 6
-        (lotto.getNumbers()).retainAll(winningLotto.getNumbers());
-        int size = lotto.size();
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        List<Integer> temp = new ArrayList<>(winningNumber.getWinningLotto().getNumbers());
+        temp.retainAll(lottoNumbers);
+        int size = temp.size();
 
         if (size == 6) {
             ranks.put(Rank.RANK1, ranks.get(Rank.RANK1) + 1);
         } else if (size == 5) {
-            if (original.contains(winningNumber.getBonusNumber())) {
+            if (lottoNumbers.contains(winningNumber.getBonusNumber())) {
                 ranks.put(Rank.RANK2, ranks.get(Rank.RANK2) + 1);
             } else {
                 ranks.put(Rank.RANK3, ranks.get(Rank.RANK3) + 1);
@@ -50,7 +51,5 @@ public class LotteryScratch {
             ranks.put(Rank.RANK5, ranks.get(Rank.RANK5) + 1);
         }
 
-        // 테스트 후에 ranks의 주소가 복사된게 아니었다면 삭제할 것
-        user.setRanks(ranks);
     }
 }
