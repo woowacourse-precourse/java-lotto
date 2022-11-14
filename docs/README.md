@@ -1,19 +1,24 @@
 # Java-lotto
 
 ## 구현할 기능 목록
-- [ ] 입력
+- [x] 입력
     - [x] 로또 구입 금액 (잘못된 값일 경우 예외처리)
     - [x] 당첨 번호
     - [x] 보너스 번호
+- [x] 출력
+  - [x] 발행한 로또 수량 및 번호(오름차순)
+  - [x] 당첨 내역
+  - [x] 수익률
+- [ ] 예외처리
+  - [x] 수의 범위가 1~45가 아니면 예외 발생 - Lotto#validate
+  - [x] 수가 6개보다 많으면 예외 발생 - Lotto#validate
+  - [x] 중복 체크 - Lotto#checkDuplicate
 - [x] 1~45까지 서로 다른 임의의 수 6개를 생성한다 - LottoGenerator#createLottoNumbers()
 - [x] 로또의 수량만큼 6개의 수가 담긴 리스트들을 생성한다 - LottoGenerator#buyLottos()
 - [x] 발행한 로또 번호와 당첨 번호를 비교한다 - Lotto#compareLotto()
 - [x] 비교한 결과를 저장한다 - result[]
 - [x] 수익금을 계산한다 
-- [ ] 출력
-    - [x] 발행한 로또 수량 및 번호(오름차순)
-    - [x] 당첨 내역
-    - [x] 수익률
+
 
 
 ## 조건

@@ -10,13 +10,25 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkDuplicate(numbers);
         numbers.sort(Comparator.naturalOrder());
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.");
+        }
+        for(int number:numbers){
+            if(number<1 || number>45)
+                throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    private void checkDuplicate(List<Integer> numbers){
+        for(int i=0;i<5;i++){
+            if(numbers.get(i)==numbers.get(i+1))
+                throw new IllegalArgumentException("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.");
         }
     }
 
