@@ -22,4 +22,8 @@ public class LottoProgram {
         int bonus = user.inputBonusNumber();
         lottoStore.makeBonusNumber(bonus);
     }
+
+    public void makeProfitsStatistics() {
+        lottoStore.printProfits();
+    }
 }
