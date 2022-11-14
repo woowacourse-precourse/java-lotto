@@ -6,6 +6,7 @@ import domain.Lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,16 +43,16 @@ public class Service {
         return Integer.parseInt(inputUser);
     }
 
-    public int compareWinningNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
-        List<Integer> sameNumbers = new ArrayList<>();
-        sameNumbers.addAll(lottoNumbers);
-        sameNumbers.retainAll(winningNumbers);
-        return sameNumbers.size();
-    }
-
-    public boolean compareBonusNumber(List<Integer> lottoNumbers, int bonusNumber, int winningNumbers){
-        if(winningNumbers == 5)
-            return lottoNumbers.contains(bonusNumber);
-        return false;
+    public HashMap<String,Integer> createWinningLotto(List<Lotto>totalLottoNumbers, List<Integer> winningNumbers, int bonusNumber){
+        Util util = new Util();
+        HashMap<String,Integer> totalResult = new HashMap<>();
+        for(int i = 0; i < totalLottoNumbers.size();i++)
+        {
+            int key = util.compareWinningNumber(totalLottoNumbers.get(i).getNumbers(), winningNumbers);
+            if(key == 5 && util.compareBonusNumber(totalLottoNumbers.get(i).getNumbers(), bonusNumber))
+                totalResult.put("Bonus", totalResult.get("Bonus") + 1);
+            totalResult.put(Integer.toString(key), totalResult.get(key) + 1);
+        }
+        return totalResult;
     }
 }

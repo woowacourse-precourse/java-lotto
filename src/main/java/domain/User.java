@@ -2,8 +2,10 @@ package domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class User {
-    private int inputUserMoney;
+    private final int inputUserMoney;
 
     public User(int inputUserMoney) {
         validateInputUserMoney(inputUserMoney);
@@ -18,6 +20,4 @@ public class User {
             System.exit(0);
         }
     }
-
-
 }
