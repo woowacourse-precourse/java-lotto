@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Analyze {
@@ -45,5 +48,12 @@ public class Analyze {
         return bonusMatchPerLotto;
     }
 
+    public List<Integer> getMatchFrequency(){
+        List<Integer> matchFrequency = new ArrayList<>();
+        for (int i = 3; i < 7; i++){
+            matchFrequency.add(Collections.frequency(matchCountPerLotto(), i));
+        }
+        return matchFrequency;
+    }
 
 }
