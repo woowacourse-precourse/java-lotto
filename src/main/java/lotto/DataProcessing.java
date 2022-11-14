@@ -8,26 +8,21 @@ public class DataProcessing {
     public List<Integer> lottoRandomNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
-
-
     public List<Integer> sortLottoNumbers(List<Integer> randomNumbers) {
         List<Integer> sortNumbers = new ArrayList<>(randomNumbers);
         Collections.sort(sortNumbers);
         return sortNumbers;
     }
-
     public int conversionMoney(String money) {
         ErrorUtil errorUtil = new ErrorUtil();
         int conversion = Integer.parseInt(money);
         errorUtil.errorInputMoney(conversion);
         return conversion;
     }
-
     public String[] splitLottoNumber(String lottoNumbers) {
         ErrorUtil errorUtil = new ErrorUtil();
         String[] splitNumbers = lottoNumbers.split(",");
-        for (int i=0;i<splitNumbers.length;++i)
-            errorUtil.errorInputCharacter(splitNumbers[i]);
+        for (String splitNumber : splitNumbers) errorUtil.errorInputCharacter(splitNumber);
         errorUtil.errorInputLottoNumber(splitNumbers);
         errorUtil.errorInputCountLottoNumber(splitNumbers);
         return splitNumbers;
@@ -44,7 +39,6 @@ public class DataProcessing {
             win = 7;
         return win;
     }
-
     public int totalMoney(int[] resultWin) {
         int result = 0;
         int[] winMoney = {5000, 50000, 1500000, 30000000, 2000000000};
@@ -52,7 +46,6 @@ public class DataProcessing {
             result += winMoney[i] * resultWin[i];
         return result;
     }
-
     public float totalReturn(int countLotto, int[] resultWin) {
         float principal = countLotto * 1000;
         float resultMoney = totalMoney(resultWin);
