@@ -60,5 +60,15 @@ public class Controller {
         }
     }
 
+    public float winningTableCheck(int num) {
+        float winning = 0;
+        for (int i = 0; i < user.userMatchNumber.size(); i++) {
+            if (user.userMatchNumber.get(i) == num)
+                winning++;
+        }
+        return winning;
+    }
+
+
 
 }
