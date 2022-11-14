@@ -12,7 +12,7 @@ public class Application {
             Lotto.createBonusnum(winNum);
 
             List<Integer> result = Lotto.winResult(winNum, ticket);
-
+            Lotto.winningHistory(result);
         }
     }
 }
