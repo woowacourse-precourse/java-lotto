@@ -9,12 +9,12 @@ public class LottoOfAnswer {
     private final int bonusNumber;
 
     public LottoOfAnswer(List<Integer> numbers, int bonusNumber) {
-        validate(numbers);
+        validate(numbers,bonusNumber);
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers,int bonusNumber) {
         validateSize(numbers);
         validateDuplicate(numbers);
         validateBonusNumber(numbers, bonusNumber);
