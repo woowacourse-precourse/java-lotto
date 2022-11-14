@@ -10,7 +10,6 @@ import lotto.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class LottoController {
     private static final OutputView outputView = new OutputView();
     private static final InputView inputView = new InputView();
@@ -55,5 +54,14 @@ public class LottoController {
             MatchMoney matchMoney = getMatchMoney(lotto.getNumbers());
             resultLotto.addMatchMoney(matchMoney);
         }
+    }
+
+    public MatchMoney getMatchMoney(List<Integer> lottoNumber){
+        boolean bonus = false;
+        int match =  (int)lottoNumber.stream().
+                filter(x -> winnigNumbers.contains(x)).count();
+        if(winnigNumbers.contains(bonusNumber))
+            bonus = true;
+        return MatchMoney.of(match,bonus);
     }
 }
