@@ -22,7 +22,7 @@ public class GetLottoNumber {
         return numbers;
     }
 
-/*    public String WinNumInput() { // 당첨번호 입력
+    public String WinNumInput() { // 당첨번호 입력
         winNum = new int[6];
         String[] temp;
         strWinNum = Console.readLine();
@@ -43,7 +43,7 @@ public class GetLottoNumber {
         return strWinNum;
     }
 
-    public int[] WinNum(String strWinNum) { // 당첨번호 배열에 저장
+/*    public int[] WinNum(String strWinNum) { // 당첨번호 배열에 저장
         if(strWinNum.equals("0")){
             return new int[]{0};
         }
