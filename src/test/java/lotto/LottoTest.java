@@ -59,6 +59,13 @@ class LottoTest {
         assertThat(result.contains(3));
     }
 
-   
+    @DisplayName("result 반환리스트안에 3이라는 숫자가 있는 갯수만큼의 수를 리턴")
+    @Test
+    void CheckResultThree(){
+        List<Integer> result = List.of(3,1,2,3);
+        CheckCount count = new CheckCount();
+        int Three = count.CheckThree(result);
+        assert(Three == 2);
+    }
 
 }
