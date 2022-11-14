@@ -42,23 +42,5 @@ class LottoPublisherTest {
             // then
             lottos.forEach(lotto -> assertThat(new HashSet<>(lotto.getNumbers()).size()).isEqualTo(6));
         }
-
-        @Test
-        @DisplayName("로또 수들은 오름차순으로 정렬되어 있어야 한다.")
-        void lottoShouldBeSortedInAscendingOrder() {
-            // given
-            LottoPublisher publisher = new LottoPublisher();
-
-            // when
-            List<Lotto> lottos = publisher.publishLottos(10000);
-
-            // then
-            lottos.forEach(lotto -> {
-                List<Integer> numbers = lotto.getNumbers();
-                List<Integer> copiedNumbers = List.copyOf(numbers);
-                numbers.sort(Comparator.comparingInt(o -> o));
-                assertThat(copiedNumbers.equals(numbers)).isTrue();
-            });
-        }
     }
 }
