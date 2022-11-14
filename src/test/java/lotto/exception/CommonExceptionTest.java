@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CommonExceptionTest {
     private final String notIntMessage = "[ERROR] 숫자를 입력해야 합니다.";
+    private final String outOfRangeMessage = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
 
     @Test
     @DisplayName("숫자 이외의 값은 에러가 발생한다.")
@@ -53,5 +54,20 @@ public class CommonExceptionTest {
 
         // when, then
         assertDoesNotThrow(() -> CommonException.checkNumberRange(number));
+    }
+
+    @Test
+    @DisplayName("1 ~ 45 범위를 벗어나는 값을 받아 에러가 발생하면 [ERROR]로 시작하는 메세지를 반환한다.")
+    void errorMessageTest2() {
+        // given
+        int number = 46;
+
+        try {
+            // when
+            CommonException.checkNumberRange(number);
+        } catch (IllegalArgumentException e) {
+            // then
+            assertThat(e.getMessage()).isEqualTo(outOfRangeMessage);
+        }
     }
 }
