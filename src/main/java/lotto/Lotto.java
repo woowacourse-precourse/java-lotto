@@ -39,4 +39,8 @@ public class Lotto {
         if(matchCount == 5 && bonusMatchFlag) winningStatus = WinningStatus.FIVE_MATCH_BONUS_MATCH;
         if(matchCount == 6) winningStatus = WinningStatus.SIX_MATCH;
     }
+
+    public WinningStatus getWinningStatus() {
+        return this.winningStatus;
+    }
 }

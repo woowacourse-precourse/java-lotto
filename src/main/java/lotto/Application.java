@@ -14,6 +14,8 @@ public class Application {
 
     private static List<Lotto> lottos = new ArrayList<>();
 
+    private static Double ROI;
+
     private static void enterPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         purchaseAmount = Integer.valueOf(readLine());
@@ -45,11 +47,22 @@ public class Application {
             lotto.setWinningStatus(winningNumbers, bonusNumber);
     }
 
+    private static void printWinningStatistics() {
+        System.out.println("당첨 통계\n---");
+        WinningStatus[] winningStatuses = WinningStatus.values();
+        for(WinningStatus winningStatus : winningStatuses) {
+            if (winningStatus == WinningStatus.FAILED) continue;
+            int matchCount = 0;
+            for (Lotto lotto : lottos) if (lotto.getWinningStatus() == winningStatus) matchCount++;
+            System.out.println(winningStatus.getDescription() + " - " + matchCount + "개");
+        }
+    }
+
     public static void main(String[] args) {
         enterPurchaseAmount();
         generateLottoNumbers();
         enterWinningNumbers();
         determineWinningStatus();
-
+        printWinningStatistics();
     }
 }

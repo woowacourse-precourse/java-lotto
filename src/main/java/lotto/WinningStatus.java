@@ -15,4 +15,12 @@ public enum WinningStatus {
         this.winningAmount = winningAmount;
         this.description = description;
     }
+
+    public Integer getWinningAmount() {
+        return winningAmount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
