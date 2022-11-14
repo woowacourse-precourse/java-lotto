@@ -17,18 +17,26 @@ public class LottoGame {
 
         String payment = inputView.push();
         Money money = new Money(payment);
-        List<Lotto> lottos = lottoShop.createLottoForPayment(money);
 
-        ConsumerLottoNumberView.show(lottos);
-
-        String winningNumberData = inputView.push2();
-        String bonusNumberData = inputView.push3();
-
-        WinningLottoNumber winningLottoNumberFor = lottoShop.createWinningLottoNumberFor(winningNumberData, bonusNumberData);
+        List<Lotto> lottos = lottoForPayment(lottoShop, money);
+        WinningLottoNumber winningLottoNumberFor = getWinningLottoNumber(lottoShop, inputView);
 
         LottoRankAggregation lottoRankCombine = new LottoRankAggregation();
         ResponseRankAggregation responseRankAggregation = lottoRankCombine.rankAggregation(lottos, winningLottoNumberFor);
 
         WinningHistoryView.showRankAggregation(responseRankAggregation, payment);
+    }
+
+    private WinningLottoNumber getWinningLottoNumber(LottoShop lottoShop, InputView inputView) {
+        String winningNumberData = inputView.push2();
+        String bonusNumberData = inputView.push3();
+        WinningLottoNumber winningLottoNumberFor = lottoShop.createWinningLottoNumberFor(winningNumberData, bonusNumberData);
+        return winningLottoNumberFor;
+    }
+
+    private List<Lotto> lottoForPayment(LottoShop lottoShop, Money money) {
+        List<Lotto> lottos = lottoShop.createLottoForPayment(money);
+        ConsumerLottoNumberView.show(lottos);
+        return lottos;
     }
 }
