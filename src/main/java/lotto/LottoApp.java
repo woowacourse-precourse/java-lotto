@@ -30,7 +30,7 @@ public class LottoApp {
             String bonusNumber = Console.readLine().trim();
             winningLotto.setBonusNumber(bonusNumber);
 
-            List<Integer> result = lottoService.getResult(winningLotto, lottos);
+            List<Integer> result = lottoService.getWinningResult(winningLotto, lottos);
             double rateOfReturn = lottoService.getRateOfReturn(Integer.parseInt(money), result);
             LottoView.printWinningStatistics(result, rateOfReturn);
 
