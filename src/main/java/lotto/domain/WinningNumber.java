@@ -20,8 +20,7 @@ public class WinningNumber {
 	}
 
 	private void validWinningNumber(List<Integer> winningNumber) {
-		if (isWrongSize(winningNumber) || isDuplicateNumber(winningNumber) || isWrongRangeWinningNumber(
-			winningNumber)) {
+		if (isWrongRangeNumber(winningNumber) || isWrongSize(winningNumber) || isDuplicateNumber(winningNumber)) {
 			throw new IllegalArgumentException(WinningNumberError.VALID_WIN_NUMBER_ERROR_MESSAGE);
 		}
 	}
@@ -30,7 +29,7 @@ public class WinningNumber {
 		return new HashSet<>(winNumbers).size() != Constant.LOTTO_SIZE;
 	}
 
-	private boolean isWrongRangeWinningNumber(List<Integer> winNumbers) {
+	private boolean isWrongRangeNumber(List<Integer> winNumbers) {
 		return !winNumbers.stream().allMatch(num -> Constant.MIN_VALUE <= num && num <= Constant.MAX_VALUE);
 	}
 
