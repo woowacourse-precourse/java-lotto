@@ -27,4 +27,8 @@ public enum WinDetail {
                 .findFirst()
                 .orElse(NONE);
     }
+
+    public int reward(){
+        return reward;
+    }
 }

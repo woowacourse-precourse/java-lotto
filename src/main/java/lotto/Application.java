@@ -16,6 +16,8 @@ public class Application {
     private static BonusNumber bonusNumber;
     private static LottoNumber lottoNumber;
     private static WinCalculation winCalculation;
+    private static Revenue revenue;
+
 
 
     public static void main(String[] args) {
@@ -28,6 +30,7 @@ public class Application {
 
         lottoNumber = new LottoNumber();
         winCalculation = new WinCalculation();
+        revenue = new Revenue();
 
         //WinDetail winDetail = WinDetail.findRankBy(5,true);
 
@@ -57,7 +60,10 @@ public class Application {
         List<List<Object>> rank;
 
         rank = winCalculation.winCal(numbers,lottos,bn);
-        winCalculation.rankResult(rank);
+        List<WinDetail> result = winCalculation.rankResult(rank);
+        revenue.revenue(result);
+
+
 
 
 
