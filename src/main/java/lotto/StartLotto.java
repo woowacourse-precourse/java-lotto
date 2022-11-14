@@ -15,9 +15,13 @@ public class StartLotto {
 	private Statistics statistics;
 
 	public StartLotto() {
-		inputMoney();
-		inputWinningNumbers();
-		inputBonus();
+		try {
+			inputMoney();
+			inputWinningNumbers();
+			inputBonus();
+		} catch(IllegalArgumentException e) {
+			return;
+		}
 
 		statistics = new Statistics(numbers.getNumbers(), lotto.getLotto(), money.getMoney(), bonus.getBonus());
 		System.out.println(statistics.toString());
@@ -26,9 +30,10 @@ public class StartLotto {
 	private void inputMoney() {
 		System.out.println("구입금액을 입력해 주세요.");
 		String input = Console.readLine();
+		
 		validateMoney(input);
-
 		money = new Money(Integer.parseInt(input));
+
 		int lottoCount = money.getLottoCount();
 		numbers = new Numbers(lottoCount);
 
@@ -61,7 +66,7 @@ public class StartLotto {
 
 	private void validateMoney(String input) {
 		for (int i = 0; i < input.length(); i++) {
-			if(input.charAt(i)  < 48 || 57 < input.charAt(i)) {
+			if (input.charAt(i)  < 48 || 57 < input.charAt(i)) {
 				throwException(ErrorMessage.TYPE_ERROR);
 			}
 		}
@@ -69,7 +74,7 @@ public class StartLotto {
 
 	private void validateNumbers(String input) {
 		for (int i = 0; i < input.length(); i++) {
-			if(input.charAt(i)  < 49 || 57 < input.charAt(i)) {
+			if (input.charAt(i)  < 49 || 57 < input.charAt(i)) {
 				throwException(ErrorMessage.TYPE_ERROR);
 			}
 		}
