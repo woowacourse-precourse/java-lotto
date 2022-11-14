@@ -18,8 +18,4 @@ public class BuyingLotto {
             System.out.println(lottos.get(i));
         }
     }
-
-    public static void main(String[] args) {
-        new BuyingLotto();
-    }
 }
