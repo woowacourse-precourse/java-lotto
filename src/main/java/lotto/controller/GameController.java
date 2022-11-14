@@ -20,6 +20,8 @@ public class GameController {
         WinningNumber winnerNumber = getWinningNumber();
 
         List<Rank> ranks = getRanks(user.getLottos(), winnerNumber);
+
+        OutputView.showGameResult(ranks, inputMoney);
     }
 
     public LottoMachine buyLotto(int money) {
