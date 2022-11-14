@@ -3,7 +3,6 @@ package lotto;
 import lotto.domain.Lotto;
 import lotto.domain.LottoProcessor;
 import lotto.domain.LottoProcessorImpl;
-import lotto.domain.LottoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
