@@ -42,6 +42,12 @@
     - [x] 당첨 번호와 똑같은 숫자의 개수에 따라 상금 조건과 일치하는지 판단
 
 
+- LottoApplication (전반적인 진행 담당)
+  - [x] 전반적인 과정 구현
+    - 로또 번호 자동으로 생성 및 내용 출력
+    - 당첨 번호 입력 받음
+    - 당첨 결과 출력
+
 - ConsoleInput
   - [x] console을 통해 입력값을 받아 Integer 값으로 변환함
     - 입력값이 int 값이 아닌 경우 `IllegalArgumentException`을 발생시킴
@@ -51,4 +57,4 @@
 
 
 - ConsoleOutput
-  - [ ] 메세지를 입력 받으면 출력하도록 함
+  - [x] 메세지를 입력 받으면 출력하도록 함
