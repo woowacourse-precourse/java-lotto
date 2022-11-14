@@ -15,6 +15,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public static boolean isValidNumber(int number) {
+        return LOTTO_MIN <= number && number <= LOTTO_MAX;
+    }
+
     private void validate(List<Integer> numbers) {
         if (!isValidLotto(numbers)) {
             throw new IllegalArgumentException();
