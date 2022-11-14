@@ -2,7 +2,7 @@ package lotto;
 
 import lotto.ui.Input;
 
-import java.util.ArrayList;
+import lotto.ui.Validator;
 import java.util.List;
 
 public class LottoConsole {
