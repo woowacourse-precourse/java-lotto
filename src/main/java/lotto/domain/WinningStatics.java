@@ -35,10 +35,6 @@ public class WinningStatics {
         lottoResults.put(lottoResult, lottoResults.get(lottoResult) + 1);
     }
 
-    public float getRateOfReturn() {
-        return rateOfReturn;
-    }
-
     @Override
     public String toString() {
         return lottoResults.entrySet().stream()

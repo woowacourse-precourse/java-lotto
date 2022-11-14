@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class WinningStaticsTest {
 
@@ -25,6 +25,8 @@ class WinningStaticsTest {
 
         long prizeMoney = LottoResult.FIFTH.calculatePrizeMoney(1);
         float rateOfReturn = Math.round((float) prizeMoney / purchaseMoney * 1000) / 10f;
-        assertEquals(rateOfReturn, winningStatics.getRateOfReturn());
+        assertThat(winningStatics)
+                .extracting("rateOfReturn")
+                .isEqualTo(rateOfReturn);
     }
 }

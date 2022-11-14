@@ -25,10 +25,6 @@ public class Lotto {
         return lottoNumbers.contains(bonusNumber);
     }
 
-    public List<LottoNumber> getLottoNumbers() {
-        return lottoNumbers;
-    }
-
     @Override
     public String toString() {
         return OPEN_BRACKET + lottoNumbers.stream()
