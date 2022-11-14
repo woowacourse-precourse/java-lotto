@@ -4,31 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Winning {
-    Lotto lotto;
-    WinningLotto wLotto;
-    WinningTable winningTable;
 
-    public Winning(Lotto lotto, WinningLotto wLotto) {
-        this.lotto = lotto;
-        this.wLotto = wLotto;
-    }
-
-    public WinningTable calMyScore() {
-        int correctedCount = compareNumbers();
-        boolean containsBonus = containsBonus();
+    public WinningTable calMyScore(Lotto lotto, WinningLotto winningLotto) {
+        int correctedCount = compareNumbers(lotto, winningLotto);
+        boolean containsBonus = containsBonus(lotto, winningLotto);
 
         return WinningTable.getRank(correctedCount, containsBonus);
     }
 
-    private int compareNumbers() {
+    private int compareNumbers(Lotto lotto, WinningLotto winningLotto) {
         List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
-        List<Integer> winningNumbers = wLotto.getNumbers();
+        List<Integer> winningNumbers = winningLotto.getNumbers();
         numbers.retainAll(winningNumbers);
         return numbers.size();
     }
 
-    private boolean containsBonus() {
-        int bonusNumber = wLotto.getBonusNumber();
+    private boolean containsBonus(Lotto lotto, WinningLotto winningLotto) {
+        int bonusNumber = winningLotto.getBonusNumber();
         return lotto.getNumbers().contains(bonusNumber);
     }
 }

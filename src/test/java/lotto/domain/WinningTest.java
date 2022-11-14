@@ -25,9 +25,8 @@ class WinningTest {
         when(winningLotto.getBonusNumber())
                 .thenReturn(7);
 
-        Winning w = new Winning(lotto, winningLotto);
-        assertThat(w.calMyScore()).isEqualTo(WinningTable.FIRST);
+        Winning w = new Winning();
+        assertThat(w.calMyScore(lotto, winningLotto)).isEqualTo(WinningTable.FIRST);
     }
-
 
 }
