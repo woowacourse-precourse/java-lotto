@@ -7,12 +7,12 @@ public class Constants {
         public static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
         public static final String OUTPUT_CNT = "개를 구매했습니다.";
         public static final String STATISTICS = "당첨 통계\n---";
-        public static final String THREE_HIT = "3개 일치 (5,000원) - %d개";
-        public static final String FOUR_HIT = "4개 일치 (50,000원) - %d개";
-        public static final String FIVE_HIT = "5개 일치 (1,500,000원) - %d개";
-        public static final String FIVE_BONUS_HIT = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
-        public static final String SIX_HIT = "6개 일치 (2,000,000,000원) - %d개";
-        public static final String TOTAL_PROFIT_PERCENT = "총 수익률은 %s%%입니다.";
+        public static final String THREE_HIT = "3개 일치 (5,000원) - %d개\n";
+        public static final String FOUR_HIT = "4개 일치 (50,000원) - %d개\n";
+        public static final String FIVE_HIT = "5개 일치 (1,500,000원) - %d개\n";
+        public static final String FIVE_BONUS_HIT = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
+        public static final String SIX_HIT = "6개 일치 (2,000,000,000원) - %d개\n";
+        public static final String TOTAL_PROFIT_PERCENT = "총 수익률은 %s%%입니다.\n";
     }
 
     public static class Util {
