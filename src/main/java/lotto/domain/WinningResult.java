@@ -8,26 +8,36 @@ import java.util.Map;
 public class WinningResult {
 
     private final Map<WinningTable, Integer> map;
-    private final List<WinningTable> list;
+    private final List<Integer> winningPrices;
 
     public Map<WinningTable, Integer> getMap() {
         return map;
     }
 
-    public List<WinningTable> getList() {
-        return list;
+    public List<Integer> getWinningPrices() {
+        return winningPrices;
     }
 
     public WinningResult(List<Lotto> lottos, WinningLotto winningLotto) {
-        list = calWinningInfo(lottos, winningLotto);
-        map = setMapFromwinningTables();
+        List<WinningTable> winningInfo = calWinningInfo(lottos, winningLotto);
+        winningPrices = calWinningPrices(winningInfo);
+        map = setMapFromwinningTables(winningInfo);
     }
 
-    private Map<WinningTable, Integer> setMapFromwinningTables() {
+    private List<Integer> calWinningPrices(List<WinningTable> winningInfo) {
+        List<Integer> list = new ArrayList<>();
+        for(WinningTable wt : winningInfo) {
+            list.add(wt.getPrice());
+        }
+
+        return list;
+    }
+
+    private Map<WinningTable, Integer> setMapFromwinningTables(List<WinningTable> winningInfo) {
         Map<WinningTable, Integer> map = new HashMap<>();
 
         for (WinningTable winningTable : WinningTable.values()) {
-            int count = (int) list
+            int count = (int) winningInfo
                     .stream()
                     .filter(a -> a == winningTable)
                     .count();
@@ -38,11 +48,11 @@ public class WinningResult {
 
     private List<WinningTable> calWinningInfo(List<Lotto> lottos, WinningLotto winningLotto) {
         Winning winning = new Winning();
-        List<WinningTable> list = new ArrayList<>();
+        List<WinningTable> winningInfo = new ArrayList<>();
         for (Lotto lotto : lottos) {
             WinningTable wt = winning.calMyScore(lotto, winningLotto);
-            list.add(wt);
+            winningInfo.add(wt);
         }
-        return list;
+        return winningInfo;
     }
 }
