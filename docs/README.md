@@ -4,8 +4,8 @@
 - [x] 구입 금액 입력 - PurchaseMoney#enterPurchaseMoney
   - [x] 입력 금액 유효성 검사 - PurchaseMoney#validatePurchaseMoney
 - [x] 로또 번호 발행 - LottoGenerator#makeLottoNumber
-- [ ] 당첨 번호(6자리) 입력 - WinNumber#enterSixNumber
-  - [ ] 당첨 번호(6자리) 유효성 검사 - WinNumber#validateSixNumber
+- [ ] 당첨 번호(6자리) 입력 - WinNumber#enterWinNumbers
+  - [ ] 당첨 번호(6자리) 유효성 검사 - WinNumber#validateWinNumbers
 - [ ] 보너스 번호(1자리) 입력 - WinNumber#enterBonusNumber
   - [ ] 보너스 번호(1자리) 유효성 검사 - WinNumber#validateBonusNumber
 - [ ] 당첨 확인 - Lotto#checkResult
