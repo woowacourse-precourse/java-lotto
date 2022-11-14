@@ -23,7 +23,6 @@ public class LottoController {
         String bonusNumber = InputView.requestBonusNumber();
         WinningNumberDto winningNumberDto = lottoService.createWinningNumber(winningNumber, bonusNumber);
         WinningStatisticsDto winningStatisticsDto = lottoService.createWinningStatistics(lottosDto, winningNumberDto);
-        OutputView.printWinningStatistics(winningStatisticsDto.getRankAndRankCount());
-        OutputView.printTotalYield(winningStatisticsDto.getTotalYield());
+        OutputView.printWinningStatistics(winningStatisticsDto);
     }
 }
