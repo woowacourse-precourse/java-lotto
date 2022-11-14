@@ -63,49 +63,50 @@ public class Game {
 
         List<Integer> winCounts = WinningCount(GeneratedLotto, JackpotNumbers);
         //System.out.println(counts);
-        int[] counter = prize(winCounts, countBonus);
-        PrintWinning(counter);
+        int[] WinTypeCounter = prize(winCounts, countBonus);
+        PrintWinning(WinTypeCounter);
     }
 
     public int[] prize(List<Integer> WinningCount, int[] countBonus) {
         int counterSize = 5;
-        int[] counter = new int[counterSize];
+        int[] WinTypeCounter = new int[counterSize];
         for (int i = 0; i < WinningCount.size(); i++) {
             if (WinningCount.get(i) == 3) {
-                counter[0] += 1;
+                WinTypeCounter[0] += 1;
             } else if (WinningCount.get(i) == 4) {
-                counter[1] += 1;
+                WinTypeCounter[1] += 1;
             } else if (WinningCount.get(i) == 5 && countBonus[i] == 1) {
-                counter[3] += 1;
+                WinTypeCounter[3] += 1;
             } else if (WinningCount.get(i) == 5) {
-                counter[2] += 1;
+                WinTypeCounter[2] += 1;
             } else if (WinningCount.get(i) == 6) {
-                counter[4] += 1;
+                WinTypeCounter[4] += 1;
             }
         }
-        for (int i = 0; i < counter.length; i++) {    //counter 출력중
-            System.out.print(counter[i]);
-        }
-        return counter;
+        /**
+        for (int i = 0; i < WinTypeCounter.length; i++) {    //counter 출력중
+            System.out.print(WinTypeCounter[i]);
+        }**/
+        return WinTypeCounter;
     }
 
-    public void PrintWinning(int[] counter) {
-        float prizeMoney = getPrizeMoney(counter);
+    public void PrintWinning(int[] WinTypeCounter) {
+        float prizeMoney = getPrizeMoney(WinTypeCounter);
         float getPercent = (prizeMoney/nLottoPrice)*100;
 
-        System.out.print("\n\n당첨 통계\n---\n");
-        System.out.printf("3개 일치 (5,000원) - %d개\n", counter[0]);
-        System.out.printf("4개 일치 (50,000원) - %d개\n", counter[1]);
-        System.out.printf("5개 일치 (1,500,000원) - %d개\n", counter[2]);
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", counter[3]);
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개", counter[4]);
+        System.out.println("\n\n당첨 통계\n---");
+        System.out.println("3개 일치 (5,000원) - " + WinTypeCounter[0] +"개");
+        System.out.println("4개 일치 (50,000원) - " + WinTypeCounter[1] +"개");
+        System.out.println("5개 일치 (1,500,000원) - " + WinTypeCounter[2] +"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + WinTypeCounter[3] +"개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + WinTypeCounter[4] +"개");
         System.out.println("총 수익률은 "+(Math.round(getPercent*100)/100.0)+"%입니다.");
     }
 
-    public int getPrizeMoney(int[] counter) {
+    public int getPrizeMoney(int[] WinTypeCounter) {
         int sum;
-        sum = counter[0] * 5000 + counter[1] * 50000 + counter[2] * 1500000 +
-                counter[3] * 30000000 + counter[4] * 2000000000;
+        sum = WinTypeCounter[0] * 5000 + WinTypeCounter[1] * 50000 + WinTypeCounter[2] * 1500000 +
+                WinTypeCounter[3] * 30000000 + WinTypeCounter[4] * 2000000000;
         return sum;
     }
 }
