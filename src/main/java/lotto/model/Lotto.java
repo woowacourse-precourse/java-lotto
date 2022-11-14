@@ -2,6 +2,7 @@ package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Env;
+import lotto.Lang;
 import lotto.Validator;
 
 import java.util.Collections;
@@ -26,7 +27,7 @@ public class Lotto {
                     .boxed()
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력한 내용 중 숫자가 아닌 문자가 있어요.");
+            throw new IllegalArgumentException(Lang.NON_NUMERIC_CHARACTER);
         }
     }
 
@@ -46,18 +47,40 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        this.validateCorrectLottoNumberSize(numbers);
+        this.validateCorrectLottoNumberDeduplicateSize(numbers);
+        this.validateCorrectRangeNumbers(numbers);
+    }
+
+    private void validateCorrectLottoNumberSize(List<Integer> numbers) {
         if (Validator.isNotCorrectLottoNumberSize(numbers, false)) {
-            throw new IllegalArgumentException("5개 이하의 숫자를 입력했어요. 6개 숫자를 입력해 주세요.");
-        }
-
-        if (Validator.isNotCorrectLottoNumberSize(numbers, true)) {
-            throw new IllegalArgumentException("중복된 숫자를 입력했어요. 중복 없는 6개 숫자를 입력해 주세요.");
-        }
-
-        if (Validator.hasNotCorrectRangeNumbers(numbers)) {
-            throw new IllegalArgumentException("1 ~ 45 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException(Lang.format(
+                    Lang.ELEMENT_INSUFFICIENT,
+                    Env.LOTTO_NUMBERS - 1,
+                    Env.LOTTO_NUMBERS
+            ));
         }
     }
+
+    private void validateCorrectLottoNumberDeduplicateSize(List<Integer> numbers) {
+        if (Validator.isNotCorrectLottoNumberSize(numbers, true)) {
+            throw new IllegalArgumentException(Lang.format(
+                    Lang.ELEMENT_DUPLICATE,
+                    Env.LOTTO_NUMBERS
+            ));
+        }
+    }
+
+    private void validateCorrectRangeNumbers(List<Integer> numbers) {
+        if (Validator.hasNotCorrectRangeNumbers(numbers)) {
+            throw new IllegalArgumentException(Lang.format(
+                    Lang.OUT_RANGE,
+                    Env.LOTTO_FIRST_NUMBER,
+                    Env.LOTTO_LAST_NUMBER
+            ));
+        }
+    }
+
 
     private List<Integer> sort(List<Integer> numbers) {
         return numbers
