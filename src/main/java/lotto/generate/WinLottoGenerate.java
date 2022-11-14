@@ -3,6 +3,7 @@ package lotto.generate;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.WinLotto;
+import lotto.enums.StringEnum;
 import lotto.output.Output;
 
 import java.util.Arrays;
@@ -34,14 +35,19 @@ public class WinLottoGenerate {
     }
 
     private Integer askBonus() {
-        Output.askBonusNumber();
+        askBonusNumberPrint();
         String bonus = Console.readLine();
         bonusValidate(bonus);
         return Integer.parseInt(bonus);
     }
-
+    public void askWinNumberPrint() {
+        System.out.println(StringEnum.WIN_NUMBER.getMessage());
+    }
+    public  void askBonusNumberPrint() {
+        System.out.println(StringEnum.BONUS_NUMBER.getMessage());
+    }
     private Lotto askWinNumber() {
-        Output.askWinNumber();
+        askWinNumberPrint();
         String winNumberInput = Console.readLine();
         winNumberValidate(winNumberInput);
         String[] winNumber = winNumberInput.split(",");

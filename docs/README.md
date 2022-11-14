@@ -23,6 +23,7 @@
 - [x] 랜덤 번호 갯수 확인, 예외시 Exception 발생
 - [x] 랜덤 번호 1~45 내의 숫자인지 확인, 예외시 Exception
 - [x] 랜덤 번호 중복 확인, 예외시 Exception
+- [x] 랜덤 번호 6자리 getter
 
 ## Win Lotto
 - [x] 당첨 번호와 보너스 번호 유효한지 확인 후 저장
@@ -45,7 +46,8 @@
 - [x] 수익률 반환
 - 
 ## Statistics Output
-- [x] 당첨내역과 수익률 출력
+- [x] 당첨내역 출력
+- [x] 수익률 출력
 
 ## Lotto Service
 - [x] Buyer Generate 로 Buyer 클래스 생성(구입 금액입력)

@@ -2,6 +2,7 @@ package lotto.generate;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Buyer;
+import lotto.enums.StringEnum;
 import lotto.output.Output;
 
 public class BuyerGenerate {
@@ -12,9 +13,11 @@ public class BuyerGenerate {
             throw new IllegalArgumentException("[ERROR] 입력값이 유효하지 않습니다.");
         }
     }
-
+    public void askBuyPrice() {
+        System.out.println(StringEnum.PRICE.getMessage());
+    }
     public Buyer generate() {
-        Output.askBuyPrice();
+        askBuyPrice();
         String input = Console.readLine();
         digitValidate(input);
         int buyPrice = Integer.parseInt(input);
