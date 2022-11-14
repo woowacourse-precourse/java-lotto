@@ -15,6 +15,11 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    // 당첨 번호 반환
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
     // 6개의 숫자인지 검증하는 기능
     private void validateSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != Setting.LOTTO_SIZE) {
