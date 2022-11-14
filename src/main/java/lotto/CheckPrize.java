@@ -14,13 +14,11 @@ public class CheckPrize {
 
     // 당첨금을 구해주고 출력하는 함수
     public int getPrize(List<Lotto> lottoList, ArrayList<Integer> winningNumber, int bonusNumber) {
-        System.out.println("당첨 통계\n---");
-
         for (Lotto l : lottoList)
             calcRank(l, winningNumber, bonusNumber);
 
         calcPrize();
-
+        printPrize();
         return prize;
     }
 
@@ -76,5 +74,15 @@ public class CheckPrize {
 
         for(int i = 0; i < rankCount.size(); i++)
             prize += prizes.get(i) * rankCount.get(i);
+    }
+
+    private void printPrize() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + rankCount.get(0) + "개");
+        System.out.println("4개 일치 (50,000원) - " + rankCount.get(1) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + rankCount.get(2) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankCount.get(3) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + rankCount.get(4) + "개");
     }
 }
