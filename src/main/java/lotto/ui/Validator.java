@@ -26,7 +26,7 @@ public class Validator {
     public static boolean isInRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (!isInRange(number)) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 ~ 45 사이의 숫자여야 합니다.");
+                return false;
             }
         }
         return true;
@@ -39,10 +39,7 @@ public class Validator {
     public static boolean isDuplicate(List<Integer> numbers) {
         int count = (int) numbers.stream().distinct().count();
 
-        if (count != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
-        }
-        return false;
+        return count != numbers.size();
     }
 
     public static boolean isHundredUnit(int money) {

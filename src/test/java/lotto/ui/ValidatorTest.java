@@ -57,10 +57,8 @@ public class ValidatorTest {
         @DisplayName("주어진 리스트의 모든 숫자가 범위 내인 경우")
         @Test
         void isInRange_범위안인경우() {
-            Assertions.assertThatThrownBy(
-                            () -> Validator.isInRange(List.of(0,1,2,3,4,5))
-                    )
-                    .isInstanceOf(IllegalArgumentException.class);
+            Assertions.assertThat(Validator.isInRange(List.of(0,1,2,3,4,5))).isFalse();
+
         }
 
         @DisplayName("주어진 리스트 중 특정 숫자가 범위 밖에 있는 경우")
@@ -81,10 +79,8 @@ public class ValidatorTest {
         @DisplayName("주어진 리스트에 중복이 존재하지 않는 경우")
         @Test
         void isDuplicate_중복있는경우() {
-            Assertions.assertThatThrownBy(
-                            () -> Validator.isDuplicate(List.of(1,2,3,4,5,5))
-                    )
-                    .isInstanceOf(IllegalArgumentException.class);
+            Assertions.assertThat(Validator.isDuplicate(List.of(1,2,3,4,5,5))).isTrue();
+
         }
     }
 
