@@ -15,19 +15,13 @@ public class Lottos {
                 .sum();
     }
 
-    public int countWinningLottos(Prize prize, WinningNumbers winningNumbers) {
-        return (int) lottos.stream()
-                .filter(lotto -> lotto.isWinningLotto(prize, winningNumbers))
-                .count();
-    }
-
     public WinningInfo getWinningInfo(WinningNumbers winningNumbers) {
         WinningInfo result = new WinningInfo();
 
         lottos.stream()
                 .map(lotto -> lotto.getWinningPrize(winningNumbers))
                 .filter(prize -> prize != Prize.NO_PRIZE)
-                .forEach(prize -> result.increaseWinningCount(prize));
+                .forEach(result::increaseWinningCount);
 
         return result;
     }
