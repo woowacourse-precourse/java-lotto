@@ -15,7 +15,7 @@ public class InputView {
     }
 
     public List<Integer> askWinningNumbers() {
-        System.out.println(FixedMessage.INPUT_WINNING_NUMBERS.getMessage());
+        System.out.println("\n" + FixedMessage.INPUT_WINNING_NUMBERS.getMessage());
         return getWinningNumbers(Console.readLine());
     }
 
@@ -28,7 +28,7 @@ public class InputView {
     }
 
     public Integer askBonusNumber() {
-        System.out.println(FixedMessage.INPUT_BONUS_NUMBER.getMessage());
+        System.out.println("\n" + FixedMessage.INPUT_BONUS_NUMBER.getMessage());
         return validateValue(Console.readLine());
     }
 
