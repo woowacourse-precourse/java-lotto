@@ -6,6 +6,7 @@ public class WinInfo {
     private int bonusMatchCnt;
     private long winMoney;
     private int order;
+
     public WinInfo(int matchCnt, int bonusMatchCnt, long winMoney, int order) {
         this.matchCnt = matchCnt;
         this.bonusMatchCnt = bonusMatchCnt;
