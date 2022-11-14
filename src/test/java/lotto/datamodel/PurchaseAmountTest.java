@@ -5,8 +5,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 public class PurchaseAmountTest {
     @DisplayName("입력 받은 구매금액이 숫자가 아니면 예외가 발생한다.")
     @Test

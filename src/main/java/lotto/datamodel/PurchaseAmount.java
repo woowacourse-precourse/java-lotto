@@ -18,14 +18,14 @@ public class PurchaseAmount {
         try {
             check = Integer.parseInt(input);
         } catch(Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 입력값은 숫자여야 합니다.");
         }
         return check;
     }
 
     private int moneyValid(int money){
         if (money % STANDARD_MONEY != 0 || money == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 입력값은 1000의 배수여야 합니다.");
         }
         return money / STANDARD_MONEY;
     }

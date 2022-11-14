@@ -8,15 +8,26 @@ public class Transform {
     }
 
     public List<Integer> numberTransform(String input) {
-        String[] numbers = input.split(",");
-        List<Integer> winNumbers = new ArrayList<>();
-        for (String number : numbers) {
-            winNumbers.add(Integer.parseInt(number));
+        List<Integer> winNumbers;
+        try {
+            String[] numbers = input.split(",");
+            winNumbers = new ArrayList<>();
+            for (String number : numbers) {
+                winNumbers.add(Integer.parseInt(number));
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 입력값은 ','와 숫자로 입력해야합니다.");
         }
         return winNumbers;
     }
 
     public int bonusTransform(String input) {
-        return Integer.parseInt(input);
+        int bonus;
+        try{
+            bonus = Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
+        }
+        return bonus;
     }
 }

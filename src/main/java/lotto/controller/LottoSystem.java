@@ -38,7 +38,7 @@ public class LottoSystem {
             user.printResult(lottoCount, money.reward(), money.moneyInformation(), money.getFrequency());
 
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] : 입력값을 정확하게 입력하세요");
+            System.out.println(e.getMessage());
         }
 
 
