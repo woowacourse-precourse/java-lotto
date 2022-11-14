@@ -38,13 +38,21 @@ public class Application {
         int bonusNumber = Integer.parseInt(Console.readLine());
 
         int[] result = {0,0,0,0,0,0};
-
+        int earnings = 0;
         for (Lotto lotto:mylottos) {
-            result[lotto.compareLotto(winningNumber,bonusNumber).getValue()]++;
+            당첨 rank = lotto.compareLotto(winningNumber,bonusNumber);
+            result[rank.getValue()]++;
+            earnings+= rank.getPrize();
         }
+        int earningsRate = earnings/purchaseAmount*100;
 
+        System.out.println("당첨 통계");
+        System.out.println("---");
         for(int i=0;i<5;i++){
-            System.out.println(당첨.valueOfValue(i).getResult()+" - "+result[i]+"개");
+            System.out.println(당첨.valueOfValue(i).getResult().replace("_",",")+" - "+result[i]+"개");
         }
+        System.out.println("총 수익률은 "+earningsRate+"%입니다.");
+
+
     }
 }
