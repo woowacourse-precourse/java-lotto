@@ -1,18 +1,42 @@
 package lotto.domain;
 
-import lotto.validation.UserLottoValidation;
+import camp.nextstep.edu.missionutils.Randoms;
+import lotto.validation.LottoValidation;
 
-import static lotto.constant.LottoConstant.LOTTO_BASE_PRICE;
+import java.util.ArrayList;
+import java.util.List;
+
+import static lotto.constant.LottoConstant.*;
 
 public class UserLotto {
     private final int userMoney;
+    private List<Lotto> userLottos;
 
     public UserLotto(int userMoney) {
-        UserLottoValidation.canBuyLotto(userMoney);
+        LottoValidation.canBuyLotto(userMoney);
         this.userMoney = userMoney;
+        createLottos();
+    }
+
+    public List<Lotto> getUserLottos() {
+        return userLottos;
     }
 
     public int countOfPurchasedLotto() {
         return userMoney / LOTTO_BASE_PRICE;
+    }
+
+    private void createLottos() {
+        int countOfPurchasedLotto = countOfPurchasedLotto();
+        userLottos = new ArrayList<>();
+
+        while (userLottos.size() != countOfPurchasedLotto) {
+            Lotto lotto = new Lotto(createLotto());
+            userLottos.add(lotto);
+        }
+    }
+
+    private List<Integer> createLotto() {
+        return Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_COUNT_NUMBER);
     }
 }
