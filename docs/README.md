@@ -4,6 +4,7 @@ Client : 사용자와 상호작용하는 UI
 Lotto : 로또
 LottoAgency : 로또를 발행하는 기관
 Calculator : 계산
+Prize : 당첨금
 
 # 요구 사항 구현
 
