@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoTicket {
@@ -22,15 +23,17 @@ public class LottoTicket {
         ticketCount = totalCash / ticketPrice;
         return ticketCount;
     }
-    public static List<List<Integer>> paidLotteryNumberGenerator(int numberofPaidLottery){
+    public static List<List<Integer>> paidLotteryNumberGenerator(int numberOfPaidLottery){
 
         List<List<Integer>> allOfLotteryNumbers = new ArrayList<>();
-        for(int ticketIndex=0; ticketIndex<numberofPaidLottery; ticketIndex++){
+        for(int ticketIndex=0; ticketIndex<numberOfPaidLottery; ticketIndex++){
             allOfLotteryNumbers.add(Randoms.pickUniqueNumbersInRange(1,45,6));
-        }
-        System.out.printf("%d개를 구매했습니다.\n",numberofPaidLottery);
+            Collections.sort(allOfLotteryNumbers.get(ticketIndex));
 
-        for(int i=0; i<numberofPaidLottery; i++){
+        }
+        System.out.printf("%d개를 구매했습니다.\n",numberOfPaidLottery);
+
+        for(int i=0; i<numberOfPaidLottery; i++){
             System.out.println(allOfLotteryNumbers.get(i));
         }
 
