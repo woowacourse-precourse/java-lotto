@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 public class Calculator {
+    private static final Integer COUNT_INIT = 0;
 
     private final Map<Rank, Integer> rankCounts = new HashMap<>();
 
     public Calculator(WinningNumbers winningNumbers, List<Lotto> lottos) {
         for (Rank rank : Rank.values()) {
-            rankCounts.put(rank, 0);
+            rankCounts.put(rank, COUNT_INIT);
         }
         calculate(winningNumbers, lottos);
     }
@@ -32,7 +33,7 @@ public class Calculator {
     }
 
     private static int getWinningNumberMatch(WinningNumbers winningNumbers, Lotto lotto) {
-        int count = 0;
+        int count = COUNT_INIT;
         for (Integer number : winningNumbers.getWinningNumbers().getNumbers()) {
             if (lotto.getNumbers().contains(number)) {
                 count += 1;
@@ -55,7 +56,7 @@ public class Calculator {
     }
 
     public int getTotalPrice() {
-        int total = 0;
+        int total = COUNT_INIT;
         for (Rank rank : Rank.values()) {
             int count = getCount(rank);
             total += count * rank.getPrice().getMoney();
