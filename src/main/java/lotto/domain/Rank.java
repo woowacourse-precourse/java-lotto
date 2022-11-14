@@ -21,7 +21,8 @@ public class Rank {
     public void countWinningRanks(List<List<Integer>> userLottoTickets, int bonusNumber) {
         setBonus(bonusNumber);
         for (List<Integer> userLottoNumbers : userLottoTickets) {
-            if (lotto.checkNumbers(userLottoNumbers) < 3) {
+            //5등의 일치 개수보다 적은 일치 개수는 넘어간다.
+            if (lotto.checkNumbers(userLottoNumbers) < Place.FIFTH.getMatchingNumber()) {
                 continue;
             }
             Place place = determine((lotto.checkNumbers(userLottoNumbers)),

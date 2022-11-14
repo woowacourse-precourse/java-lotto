@@ -11,7 +11,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NumberGenerateTest {
+public class LottoGeneratorTest {
 
     private LottoGenerator numberGenerate;
     int numberOfPurchases = 3;
