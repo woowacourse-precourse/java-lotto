@@ -14,4 +14,9 @@ public class WinningLotto {
         winningLottoNumber = winningLottoNumber;
         winningBonusNumber = winningBonusNumber;
     }
+
+    public static List<Integer> getWinningLottoNumber() {
+        return winningLottoNumber;
+    }
+
 }
