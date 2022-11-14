@@ -16,9 +16,9 @@ public class LottoService {
         this.lottoRepository = lottoRepository;
     }
 
-    public List<List<Integer>> createLottos(int money) {
+    public List<List<Integer>> createLottos(Money money) {
         List<List<Integer>> numbers = new ArrayList<>();
-        for (int i = 0; i < money / 1000; i++) {
+        for (int i = 0; i <money.calcLottoQuantity(); i++) {
             List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(randomNumbers);
             numbers.add(lottoRepository.save(lotto));
