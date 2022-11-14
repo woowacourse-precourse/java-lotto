@@ -11,9 +11,13 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력하세요");
+        } else if (hasDuplication(numbers)) {
+            throw new IllegalArgumentException("[ERROR] 중복되는 숫자가 있습니다");
+        } else if (outOfNumberRange(numbers)) {
+            throw new IllegalArgumentException("[ERROR] 1~45 범위 안의 수만 입력하세요");
         }
     }
 
