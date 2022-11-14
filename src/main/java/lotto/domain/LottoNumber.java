@@ -1,7 +1,7 @@
 package lotto.domain;
 
 
-import lotto.LottoInputException;
+import lotto.exception.LottoInputException;
 
 import java.util.Objects;
 

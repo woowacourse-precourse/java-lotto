@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.LottoInputException;
+import lotto.exception.LottoInputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

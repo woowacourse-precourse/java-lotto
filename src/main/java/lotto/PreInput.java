@@ -1,27 +1,13 @@
-package lotto.view;
+package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-import lotto.PreInput;
 import lotto.exception.NonNumberFailure;
 
 import java.util.regex.Pattern;
 
-public class InputView {
-    private static final String PURCHASE_GREETING = "구입금액을 입력해 주세요.";
-
+public class PreInput {
     private static final Pattern NOT_NUMBER = Pattern.compile("^\\D$");
 
-
-    public static int money() {
-        String input = Console.readLine();
-        checkInput(input);
-        return Integer.parseInt(input);
-    }
-
-    public static void startGuide() {
-        System.out.println(PURCHASE_GREETING);
-    }
-    private static void checkInput(String money) {
+    public static void checkInput(String money) {
         try {
             checkNonNumber(money);
         } catch (NonNumberFailure e) {
