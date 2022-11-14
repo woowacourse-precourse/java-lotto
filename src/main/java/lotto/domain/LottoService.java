@@ -69,4 +69,18 @@ public class LottoService {
         validateMatchNumbers(result);
         return result;
     }
+
+    public int getBonusNumber(String bonusNumber, List<Integer> matchNumbers) {
+        int result = 0;
+        try {
+            result = Integer.parseInt(bonusNumber);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("보너스 번호로 입력된 문자열이 올바르지 않습니다.");
+        }
+        if (matchNumbers.contains(result)) {
+            throw new IllegalArgumentException("보너스 번호가 당첨 번호와 중복됩니다.");
+        }
+
+        return result;
+    }
 }
