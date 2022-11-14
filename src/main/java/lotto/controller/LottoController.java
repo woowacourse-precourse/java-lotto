@@ -6,7 +6,6 @@ import lotto.views.InputView;
 import lotto.views.OutputView;
 
 public class LottoController {
-
     private final LottoService lottoService = new LottoService();
     private final InputValidator inputValidator = new InputValidator();
     private final InputView inputView = new InputView();
@@ -39,17 +38,15 @@ public class LottoController {
 
     private void printBroughtLottoMessage(int inputPrice) {
         outputView.outputLottoBuyingResult(lottoService.buyLottos(inputPrice));
-        requestWinningNumber();
+        requestWinnerNumber();
     }
 
-    private void requestWinningNumber() {
-        String inputWinningNumber = inputView.inputWinningNumber();
+    private void requestWinnerNumber() {
+        String inputLottoNumber = inputView.inputLottoNumber();
         try {
-            inputValidator.validateInputWinningNumber(inputWinningNumber);
+            inputValidator.validateInputLottoNumber(inputLottoNumber);
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
     }
-
-
 }

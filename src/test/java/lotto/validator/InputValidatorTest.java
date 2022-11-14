@@ -35,11 +35,11 @@ class InputValidatorTest {
     @DisplayName("당첨 번호 입력시 발생할 수 있는 모든 예외 검증 테스트")
     @ParameterizedTest
     @CsvSource({OUT_OF_FORMAT, DUPLICATED_NUMBER, OUT_OF_BOUNDS})
-    void 잘못된_당첨번호_입력시_모든_예외_발생(String inputWinningNumber, String exceptionMessage) {
+    void 잘못된_당첨번호_입력시_모든_예외_발생(String inputLottoNumber, String exceptionMessage) {
         // given
         // when
         // then
-        assertThatThrownBy(() -> inputValidator.validateInputWinningNumber(inputWinningNumber))
+        assertThatThrownBy(() -> inputValidator.validateInputLottoNumber(inputLottoNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(exceptionMessage);
     }

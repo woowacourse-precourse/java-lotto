@@ -41,14 +41,14 @@ public class InputValidator {
         return inputPrice % LOTTO_PRICE != NOTHING;
     }
 
-    public void validateInputWinningNumber(String inputWinningNumber) {
-        if (!inputWinningNumber.matches(WINNING_NUMBER)) {
+    public void validateInputLottoNumber(String inputLottoNumber) {
+        if (!inputLottoNumber.matches(WINNING_NUMBER)) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.WINNING_FORMAT_ERROR);
         }
-        if (isDuplicatedNumber(List.of(inputWinningNumber.split(COMMA)))) {
+        if (isDuplicatedNumber(List.of(inputLottoNumber.split(COMMA)))) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATED_NUMBER);
         }
-        if (isOutOfBounds(List.of(inputWinningNumber.split(COMMA)))) {
+        if (isOutOfBounds(List.of(inputLottoNumber.split(COMMA)))) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.OUT_OF_BOUNDS);
         }
     }
@@ -76,4 +76,5 @@ public class InputValidator {
                 .distinct()
                 .count() != MAX_NUMBER;
     }
+
 }
