@@ -19,9 +19,8 @@ public class ApplicationController {
     public void startApplication() {
         String input_purchaseAmount = inputView.inputPurchaseAmount();
         int purchaseAmount = inputValidator.convertStringIntoInt(input_purchaseAmount);
+        inputValidator.validatePurchaseAmount(purchaseAmount);
         player.setPurchaseAmount(purchaseAmount);
-
-        inputValidator.validatePurchaseAmount(player.getPurchaseAmount());
         control_CountIssueingLotto();
     }
 
