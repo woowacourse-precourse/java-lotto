@@ -41,10 +41,6 @@ public class GameConsole {
                 .collect(Collectors.toList());
     }
 
-    private static void notice(String inputMessage) {
-        System.out.println(inputMessage);
-    }
-
     public int inputBonusNumber() {
         notice(INPUT_BONUS_NUMBER_MESSAGE);
         String bonusNumber = Console.readLine();
@@ -64,6 +60,11 @@ public class GameConsole {
         printGameResult(result);
         printWinningAmount(result);
     }
+
+    private static void notice(String inputMessage) {
+        System.out.println(inputMessage);
+    }
+
 
     private void printGameResult(Result result) {
         System.out.println(PRIZE_STAT);

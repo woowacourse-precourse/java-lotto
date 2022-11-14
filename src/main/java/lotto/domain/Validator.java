@@ -37,12 +37,6 @@ public class Validator {
         isGreaterThanOneAndLessThanFortyFive(bonusNumber);
     }
 
-    private static void isGreaterThanOneAndLessThanFortyFive(String number) {
-        if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
-            throw new IllegalArgumentException(IN_RANGE_NUMBER_ERROR_MESSAGE);
-        }
-    }
-
     public static void validateDuplication(List<Integer> numbers) {
         HashSet<Integer> checkDuplicate = new HashSet<>(numbers);
         if (checkDuplicate.size() != 6) {
@@ -68,6 +62,12 @@ public class Validator {
             Integer.parseInt(number);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NOT_NUMBER_ERROR_MESSAGE);
+        }
+    }
+
+    private static void isGreaterThanOneAndLessThanFortyFive(String number) {
+        if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
+            throw new IllegalArgumentException(IN_RANGE_NUMBER_ERROR_MESSAGE);
         }
     }
 }
