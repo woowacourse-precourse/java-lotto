@@ -76,4 +76,50 @@ class InputLottoValidatorTest {
             .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 숫자가 아닐 경우 예외 처리")
+    @Test
+    void isDigitBonusNumber() {
+        String nonDigitNumber = "a";
+        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+
+        assertThatThrownBy(() -> new InputLottoValidator().validateBonusNumber(nonDigitNumber, winningNumbers))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 1개가 아닐 경우 예외 처리")
+    @Test
+    void checkCountBonusNumber() {
+        String insufficientNumber = "";
+        String excessiveNumber = "1,3";
+        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+
+        assertThatThrownBy(() -> new InputLottoValidator().validateBonusNumber(insufficientNumber, winningNumbers))
+            .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new InputLottoValidator().validateBonusNumber(excessiveNumber, winningNumbers))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 1부터 45 사이의 숫자가 아닐 경우 예외 처리")
+    @Test
+    void checkRangeBonusNumber() {
+        String underRangeNumber = "-1";
+        String overRangeNumber = "46";
+        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+
+        assertThatThrownBy(() -> new InputLottoValidator().validateBonusNumber(underRangeNumber, winningNumbers))
+            .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new InputLottoValidator().validateBonusNumber(overRangeNumber, winningNumbers))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복될 경우 예외 처리")
+    @Test
+    void duplicateBonusNumber() {
+        String duplicationNumber = "5";
+        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+
+        assertThatThrownBy(() -> new InputLottoValidator().validateBonusNumber(duplicationNumber, winningNumbers))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }

@@ -85,7 +85,7 @@ public class InputLottoValidator {
     }
 
     private void duplicateBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
-        if (winningNumbers.contains(bonusNumber)) {
+        if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호와 다른 번호를 입력하여야 합니다.");
         }
     }
