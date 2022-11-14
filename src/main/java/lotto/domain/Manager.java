@@ -3,6 +3,7 @@ package lotto.domain;
 import lotto.domain.enums.Number;
 import lotto.util.ExceptionHandler;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Manager {
@@ -30,10 +31,11 @@ public class Manager {
 
     public List<Lotto> changeLottos(double money) {
         List<Lotto> lottos = new ArrayList<>();
-        int totalCount = (int)money % 1000;
+        int totalCount = (int)money / 1000;
 
         for (int repeat = 1; repeat <= totalCount; repeat++) {
             Lotto lotto = lottoMachine.generateLotto();
+            lotto.sortNumbers();
             lottos.add(lotto);
         }
 
