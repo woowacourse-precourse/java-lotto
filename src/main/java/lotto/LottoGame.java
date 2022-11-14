@@ -18,6 +18,7 @@ public class LottoGame {
     private InputChecker inputChecker;
     private OutputView outputView;
     private List<Lotto> lottos;
+    private Lotto winningLotto;
 
     public LottoGame(){
         inputView=new InputView();
@@ -25,18 +26,19 @@ public class LottoGame {
         outputView=new OutputView();
         lottos=new ArrayList<>();
     }
-    public void startGame(){
+    public void startGame() throws IllegalArgumentException{
         getMoneyInput();
         getLottoNumberList();
+        getLottoWinningNumberInput();
     }
-    public void getMoneyInput(){
+    public void getMoneyInput() throws IllegalArgumentException{
         String input=inputView.inputMoney();
         if(inputChecker.checkInputMoney(input)){
             money=new Money(Integer.parseInt(input));
             System.out.printf("%d%s\n", money.getLottoCount(), outputView.printLottoPurchaseCount());
         }
     }
-    public void getLottoNumberList(){
+    public void getLottoNumberList() throws IllegalArgumentException {
         for(int i=0; i< money.getLottoCount(); i++) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             if (!lotto.getLotto().isEmpty()) {
@@ -46,12 +48,16 @@ public class LottoGame {
         }
         outputView.printLottoNumbersAll(lottos);
     }
-    public void getLottoWinningNumberInput(){
+    public void getLottoWinningNumberInput() throws IllegalArgumentException {
         String input=inputView.inputWinningNumber();
         List<String> inputWinningLottoNumbers = Arrays.asList(input.split(","));
 
         if(inputChecker.checkInputWinningLottoNumbersIsNumeric(inputWinningLottoNumbers)){
-
+            List<Integer> changeStringToIntegerLottoNunbers=new ArrayList<>();
+            for(String number : inputWinningLottoNumbers){
+                changeStringToIntegerLottoNunbers.add(Integer.parseInt(number));
+            }
+            winningLotto=new Lotto(changeStringToIntegerLottoNunbers);
         }
     }
 }
