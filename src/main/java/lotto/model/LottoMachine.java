@@ -2,14 +2,18 @@ package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import lotto.util.RandomUtil;
 import lotto.util.constants.LottoConstants;
+import lotto.util.constants.WinningScore;
 
 public class LottoMachine {
+    private LottoResult lottoResult;
     private Winning winning;
 
     public void createWinningLotto(Lotto lotto, int bonusNumber) {
         winning = new Winning(lotto, bonusNumber);
+        lottoResult = new LottoResult();
     }
 
     public int computeLottoTicketsCount(int purchaseAmount) {
@@ -32,7 +36,9 @@ public class LottoMachine {
         return new Lotto(lottoRandom.pickNumbers());
     }
 
-    public int compareLottoNumber(List<Integer> userLotto, List<Integer> winningLotto) {
-        return (int) userLotto.stream().filter(num -> winningLotto.contains(num)).count();
+    public Map<WinningScore, Integer> computeWinningResults(List<Lotto> userLottoTickets) {
+        Lotto winningLotto = winning.getWinningLotto();
+        return lottoResult.computeWinningScore(userLottoTickets, winningLotto);
     }
+
 }
