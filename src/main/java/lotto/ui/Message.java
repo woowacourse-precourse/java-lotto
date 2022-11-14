@@ -11,7 +11,7 @@ public class Message {
     }
 
     public void INPUT_NUMBER_MESSAGE() {
-        System.out.println(INPUT_PRICE_MESSAGE);
+        System.out.println(INPUT_NUMBER_MESSAGE);
     }
 
     public void INPUT_BONUS_NUMBER_MESSAGE() {
