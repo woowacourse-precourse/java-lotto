@@ -13,10 +13,8 @@ class LottoFactoryTest {
     void createRandom() throws Exception {
         //given
         int lottoCount = 10;
-
         //when
         Lottos lottos = lottoFactory.create(lottoCount);
-        lottos.forEach(System.out::println);
         //then
         assertThat(lottos.size()).isEqualTo(lottoCount);
     }
